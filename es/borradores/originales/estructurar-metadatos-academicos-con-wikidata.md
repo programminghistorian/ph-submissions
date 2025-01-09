@@ -1,6 +1,6 @@
 ---
-title: "Promoviendo la ciencia abierta con Wikidata: visibilidad y apertura de los Portales de Revistas Académicas"
-slug: estructurar-metadatos-academicos-con-wikidata
+title: "Utilizar Datos Abiertos Enlazados para describir revistas académicas con Wikidata"
+slug: datos-abiertos-enlazados-wikidata
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD
@@ -51,7 +51,7 @@ No es necesario ningún conocimiento previo.
 
 [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) es una plataforma libre, completamente abierta, que está totalmente construida con DAE. Esta base de datos, lanzada en octubre de 2012, es uno de los proyectos más novedosos para poder centralizar los datos de las diversas temáticas y comunidades operadas por la [Fundación Wikimedia](https://wikimediafoundation.org/es/) (Figura 1). Esta institución es una organización sin fines de lucro que, a través de múltiples proyectos, aporta información y conocimiento de manera libre para todas las personas del mundo.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-01.png" alt="Proyectos bajo la sombrilla de la Fundación Wikimedia organizados en cuatro categorías: proyectos de contenido, de contenido multilingüe, de divulgación y administración y proyectos técnicos y de desarrollo" caption="Figura 1. Un resumen de los diversos proyectos de la Fundación Wikimedia." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-01.png" alt="Proyectos bajo la sombrilla de la Fundación Wikimedia organizados en cuatro categorías: proyectos de contenido, de contenido multilingüe, de divulgación y administración y proyectos técnicos y de desarrollo" caption="Figura 1. Un resumen de los diversos proyectos de la Fundación Wikimedia." %}
 
 Según la definición de su propia [web](https://www.wikidata.org/wiki/Wikidata:Introduction/es), tanto el contenido como la estructura de Wikidata se encuentran en el dominio público; esto significa que podemos copiar, modificar, distribuir y presentar los datos, incluso con fines comerciales, sin necesidad de pedir permiso. Además, Wikidata tiene las siguientes características:
 
@@ -64,7 +64,7 @@ Según la definición de su propia [web](https://www.wikidata.org/wiki/Wikidata:
 
 En 2019 Wikidata contaba con aproximadamente 55 millones de elementos creados, mientras que, cuatro años más tarde, ya ha superado los 100 millones de elementos (Figura 2) de temáticas tan diversas como objetos, personas, lugares, informes, arte, edificios de interés cultural, animales, personas, y mucho más.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-02.png" alt="Gráfico que muestra el aumento en la creación de elementos entre los años 2013 y 2023" caption="Figura 2. Creación de elementos por fecha para Wikidata. Fuente: <https://commons.wikimedia.org/wiki/File:Wikidata_item_creation_progress_no_text.svg>" %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-02.png" alt="Gráfico que muestra el aumento en la creación de elementos entre los años 2013 y 2023" caption="Figura 2. Creación de elementos por fecha para Wikidata. Fuente: <https://commons.wikimedia.org/wiki/File:Wikidata_item_creation_progress_no_text.svg>" %}
 
 Wikidata ofrece, además, una gran variedad de herramientas para editar, consultar y visualizar sus datos. Este modelo de [web semántica](https://es.wikipedia.org/wiki/Web_semántica) contribuye a fomentar la justicia social, ya que, a través del acceso, aplicación y generación de conocimiento en abierto, comunidades pequeñas que no forman parte de la corriente principal de la ciencia, pueden tener un impacto global mayor y de un modo mucho más eficiente. Obregón Sierra, por ejemplo, la ha utilizado para incluir información sobre las bibliotecas de España, con la intención de que sean accesibles para cualquier usuario que quiera utilizarla alrededor de todo el mundo.[^6] Antes de comenzar con la introducción de los datos en Wikidata, el autor afirma que existían únicamente 303 elementos que se correspondían con bibliotecas situadas en España. Tras introducir todas las bibliotecas recogidas en el fichero del Gobierno de España, se crearon 7.861 bibliotecas más, y se mejoraron los datos de 206 de esos elementos ya creados. En cuanto al número de galerías, bibliotecas, archivos y museos (GLAMs, del inglés "Galleries, Libraries, Archives, and Museums") en España, existían 2.424 elementos creados, siendo el 13º país con mayor número, muy por detrás de los 47.586 con los que contaba Estados Unidos. Tras la introducción de todas las bibliotecas, España se situó en el segundo lugar del ranking.[^6]
 
@@ -78,7 +78,7 @@ Uno de los primeros términos con el que debemos familiarizarnos es el de los "e
 
 Cada elemento de Wikidata está formado por una etiqueta, que es un nombre descriptivo corto utilizado para identificar el concepto, seguido por un identificador único, que tiene como formato la letra Q seguido de un número. Por ejemplo: la revista _(The) Programming Historian en español_ tiene como identificador [Q96737788](https://www.wikidata.org/wiki/Q96737788) (Figura 3). Esta designación única permite referenciar y acceder fácilmente a un elemento específico, independientemente del idioma en el que esté descrito. No es necesario memorizar el número Q de cada elemento. 
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-03.png" alt="Elemento para la revista 'The Programming Historian en español' con su etiqueta e identificador Q" caption="Figura 3. Ejemplo de identificador en Wikidata: el número Q de la revista 'The Programming Historian en español'." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-03.png" alt="Elemento para la revista 'The Programming Historian en español' con su etiqueta e identificador Q" caption="Figura 3. Ejemplo de identificador en Wikidata: el número Q de la revista 'The Programming Historian en español'." %}
 
 Las etiquetas en Wikidata pueden ser ambiguas, como en el caso de "San Martín", que puede referirse a una persona, una ciudad, una isla o una región del Perú. Sin embargo, los identificadores son universalmente aplicables y eliminan la necesidad de un identificador por cada idioma. Esta característica facilita la lectura para las máquinas y también habilita a los "bots" para editar Wikidata de manera eficiente.
 
@@ -86,15 +86,15 @@ A continuación de la etiqueta y del identificador encontraremos una breve descr
 
 Los elementos también pueden tener alias, que son nombres alternativos o apodos. Estas distintas variantes adicionales de la etiqueta ayudan a facilitar la búsqueda de los elementos y que estos sean reconocibles por distintas comunidades (Figura 4).
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-04.png" alt="Elemento para Carlos III del Reino Unido" caption="Figura 4. Ejemplo de etiqueta, identificador, descripción y distintas variantes de nombre (alias) en Wikidata." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-04.png" alt="Elemento para Carlos III del Reino Unido" caption="Figura 4. Ejemplo de etiqueta, identificador, descripción y distintas variantes de nombre (alias) en Wikidata." %}
 
 Luego de este primer apartado (en donde incluye la etiqueta, el identificador precedido por la letra Q, la descripción y los alias), encontraremos la sección de idiomas, que amplía la accesibilidad y utilidad de la información al proporcionar traducciones de los elementos a varios idiomas. La Figura 5 muestra el ejemplo del elemento "lluvia" en Wikidata, acompañado de sus correspondientes traducciones en español, inglés y portugués. Esta sección multilingüe hace que la información sea más accesible y útil para una audiencia global, ya que facilita la comprensión del contenido en varios idiomas.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-05.png" alt="Elemento para 'lluvia' con traducciones en tres idiomas: 'lluvia', 'rain' y 'chuva'" caption="Figura 5. Ejemplo del multilingüismo en Wikidata: el caso del elemento 'lluvia'." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-05.png" alt="Elemento para 'lluvia' con traducciones en tres idiomas: 'lluvia', 'rain' y 'chuva'" caption="Figura 5. Ejemplo del multilingüismo en Wikidata: el caso del elemento 'lluvia'." %}
 
 Al describir un elemento en Wikidata, debemos hacerlo mediante declaraciones. Estas son afirmaciones que representan información estructurada específica sobre un elemento en la base de datos. Los elementos están conectados entre sí a través de una serie de propiedades (atributos o características) y valores asociados que forman estas declaraciones (Figura 6). Son estas las que establecen las relaciones y conforman la estructura jerárquica y modular que tiene Wikidata.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-06.png" alt="Elemento para la revista 'The Programming Historian en español' con cuatro declaraciones" caption="Figura 6. Las declaraciones en Wikidata: ejemplos de propiedades y valores." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-06.png" alt="Elemento para la revista 'The Programming Historian en español' con cuatro declaraciones" caption="Figura 6. Las declaraciones en Wikidata: ejemplos de propiedades y valores." %}
 
 Cada propiedad tiene un identificador único en Wikidata, que se utiliza para referirse a ella de manera única en la base de datos. Estos identificadores tienen la forma de una letra P seguida de un número. Las propiedades en Wikidata están diseñadas para ser reutilizables en diferentes contextos. Esto significa que una propiedad puede aplicarse a múltiples tipos de elementos y no está limitada a un solo uso. Cada propiedad tiene su propia página de documentación en Wikidata donde se proporciona información detallada sobre su propósito, su uso adecuado y ejemplos de su aplicación. Por otro lado, los valores en Wikidata representan la información concreta asociada a propiedades específicas para describir elementos en la base de datos. Los valores en Wikidata pueden ser de varios tipos, incluyendo texto, números, fechas, enlaces a otros elementos de Wikidata, coordenadas geográficas o archivos multimedia, entre otros. Los valores deben cumplir con las restricciones establecidas por el tipo de datos de la propiedad a la que están asociados. Por ejemplo, si una propiedad tiene un tipo de dato de "fecha", el valor asignado a esa propiedad debe ser una fecha válida. Además, los valores en Wikidata son susceptibles de ser editados por cualquier usuario de la plataforma. Esto permite una colaboración abierta y comunitaria para mantener y mejorar la calidad de la información en la base de datos.
 
@@ -102,13 +102,13 @@ Cada propiedad tiene un identificador único en Wikidata, que se utiliza para re
 
 Aunque no es estrictamente necesario tener una cuenta de usuario para editar en Wikidata, se recomienda crear una porque esto mejorará tu experiencia como editor y te permitirá una participación más efectiva con la comunidad de Wikidata. Si ya tienes una cuenta existente en cualquier otro proyecto de Wikimedia, también puedes usarla. Con la cuenta, es posible rastrear tus contribuciones, es decir, ver tu historial de ediciones. También posibilita la comunicación con otros usuarios, dejar mensajes en las páginas de discusión de otros editores, y recibir notificaciones sobre cambios en los elementos que estés siguiendo. Además, la comunidad tiende a confiar más en las ediciones realizadas por usuarios registrados. La figura resalta el botón con el enlace específico para iniciar este proceso.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-07.png" alt="Menú de la parte superior derecha de la página principal de Wikidata con el apartado para crear una cuenta de usuario" caption="Figura 7. Detalle del apartado de creación de cuenta en Wikidata." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-07.png" alt="Menú de la parte superior derecha de la página principal de Wikidata con el apartado para crear una cuenta de usuario" caption="Figura 7. Detalle del apartado de creación de cuenta en Wikidata." %}
 
 Puedes usar tu cuenta de Wikimedia o crear una nueva específicamente para Wikidata. En este caso, debes dirigirte a la página principal de Wikidata (<https://www.wikidata.org/>) y hacer clic en _Crear una cuenta_ (_Create Account_) en la esquina superior derecha.
 
 Después de iniciar sesión, antes de agregar un nuevo elemento, se recomienda que realices una búsqueda en Wikidata para asegurarte de que el elemento no exista ya. Si encuentras un elemento similar, puedes contribuir a él en lugar de crear uno nuevo. Si no encuentras un elemento existente, puedes crear uno nuevo. Haz clic en el botón _Crear un elemento nuevo_ en la parte superior derecha de la página principal de Wikidata (Figura 8).
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-08.png" alt="Menú del lado izquierdo de la página principal de Wikidata con el apartado para crear un elemento nuevo" caption="Figura 8. Proceso para crear un nuevo elemento en Wikidata." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-08.png" alt="Menú del lado izquierdo de la página principal de Wikidata con el apartado para crear un elemento nuevo" caption="Figura 8. Proceso para crear un nuevo elemento en Wikidata." %}
 
 A partir de ese momento ya puedes empezar a completar los campos, rellenando la información requerida para tu nuevo elemento. Se suele incluir al menos un nombre y una descripción para el nuevo ítem (Figura 9). Ten en cuenta que existen algunas convenciones preestablecidas que debemos seguir para mantener una consistencia en la presentación de la información en todo el proyecto:
 
@@ -119,7 +119,7 @@ A partir de ese momento ya puedes empezar a completar los campos, rellenando la 
 - **No llevan punto final:** Esto se hace para mantener la coherencia en el estilo de redacción y porque las descripciones son más parecidas a etiquetas informativas concisas que a oraciones completas.
 - **Idioma local:** Las descripciones deben seguir el idioma local del proyecto Wikidata. Por ejemplo, si estás contribuyendo en la versión en español de Wikidata, las descripciones deben estar en español.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-09.png" alt="Plantilla inicial para crear un elemento nuevo en Wikidata con los campos de 'idioma', 'etiqueta', 'descripción' y 'alias'" caption="Figura 9. Rellenando información para un nuevo elemento en Wikidata." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-09.png" alt="Plantilla inicial para crear un elemento nuevo en Wikidata con los campos de 'idioma', 'etiqueta', 'descripción' y 'alias'" caption="Figura 9. Rellenando información para un nuevo elemento en Wikidata." %}
 
 Posteriormente, es hora de empezar a introducir las declaraciones sobre este nuevo ítem, para enriquecer la información del elemento.
 
@@ -150,13 +150,13 @@ Las declaraciones en Wikidata constan de (al menos) un par propiedad-valor. La F
 
 En este contexto, vemos que se ha establecido además la categoría "library science journal" (revista de bibliotecología). Esto permite que la información sea accesible para usuarios de diferentes regiones y culturas.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-10.png" alt="Propiedad 'instancia de' con cuatro valores asociados para representar una revista académica de bibliotecología en acceso abierto" caption="Figura 10. Ejemplo de la declaración 'instancia de' para una revista." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-10.png" alt="Propiedad 'instancia de' con cuatro valores asociados para representar una revista académica de bibliotecología en acceso abierto" caption="Figura 10. Ejemplo de la declaración 'instancia de' para una revista." %}
 
 En Wikidata, no hay un límite específico en la cantidad de propiedades y valores que puedes agregar a una instancia. La elección dependerá de la información que desees incluir sobre la revista científica. Puedes usar tantas como sean relevantes y necesarias para describir completamente el elemento que estás representando. Por lo tanto, algunos otros valores que también podrían haber sido incluidos son "revista especializada" o "revista de la sociedad". Sin embargo, es importante tener en cuenta la relevancia y la precisión de la información que estás agregando. No se trata de agregar tantas como sea posible, sino de proporcionar información significativa y útil para los usuarios.
 
 Como podemos observar en la Figura 11, la siguiente propiedad que hemos agregado a este elemento en Wikidata ha sido ["nombre corto" (P1813)](https://www.wikidata.org/wiki/Property:P1813). En el caso de las revistas, se utiliza para registrar las abreviaturas del título de la revista. Seguidamente, hemos incluido el título oficial junto con su respectiva referencia. Siempre que sea posible, es buena práctica proporcionar referencias para respaldar la información que estás ingresando. Esto ayuda a mantener la fiabilidad y la verificabilidad de los datos en Wikidata. Las referencias pueden ser enlaces a fuentes fiables, como sitios web oficiales, bases de datos reconocidas, libros, artículos, o cualquier otra publicación académica que respalde la afirmación hecha en la declaración. Es importante resaltar que las redes sociales no son consideradas fuentes adecuadas para proporcionar referencias en Wikidata.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-11.png" alt="Elemento para la revista '_Acceso_' con tres propiedades y sus valores relacionados" caption="Figura 11. Ejemplo de descripción de datos de una revista en Wikidata: título, titulo corto y campo de trabajo." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-11.png" alt="Elemento para la revista '_Acceso_' con tres propiedades y sus valores relacionados" caption="Figura 11. Ejemplo de descripción de datos de una revista en Wikidata: título, titulo corto y campo de trabajo." %}
 
 Las referencias en Wikidata suelen seguir un formato estándar que incluye información como el título de la fuente, el autor (si está disponible), la fecha de publicación y un enlace URL o un identificador único (como un DOI (Digital Object Identifier) o un ISBN (International Standard Book Number)) que permite acceder a la fuente original.
 
@@ -173,7 +173,7 @@ Aun en lo que respecta a la información básica de una revista, otras propiedad
 
 La figura 12 muestra un ejemplo del uso de la propiedad ["indexado en la base de datos bibliográfica" (P8875)](https://www.wikidata.org/wiki/Property:P8875) en Wikidata. Es posible observar que, mediante los datos enlazados, los elementos se vinculan con otras bases de datos y catálogos externos.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-12.png" alt="Lista de bases de datos como valores relacionados con la propiedad 'indexado en la base de datos bibliográfica'" caption="Figura 12. Ejemplo del uso de la propiedad 'indexado en la base de datos bibliográfica' en Wikidata." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-12.png" alt="Lista de bases de datos como valores relacionados con la propiedad 'indexado en la base de datos bibliográfica'" caption="Figura 12. Ejemplo del uso de la propiedad 'indexado en la base de datos bibliográfica' en Wikidata." %}
 
 ## Describiendo datos de personas en Wikidata
 
@@ -185,11 +185,11 @@ Para crear datos sobre personas, particularmente personas vivas, es importante t
 
 El primer paso para crear datos sobre personas en Wikidata es asegurarte de que no exista un registro creado. Si no existe un registro, puedes crear un nuevo ítem. En la etiqueta, debes registrar la forma del nombre bajo la cual se conoce comúnmente a la persona. Además, debes redactar una descripción breve sobre la persona. Por último, puedes registrar otras variantes del nombre. Luego de completar la casilla de etiqueta y descripción, puedes comenzar con las declaraciones. La primera declaración es ["instancia de" (P31)](https://www.wikidata.org/wiki/Property:P31https://www.wikidata.org/wiki/Property:P31) con el valor de ["ser humano" (Q5)](https://www.wikidata.org/wiki/Q5). La Figura 13 ilustra el establecimiento de etiqueta, descripción y variantes del nombre para el filósofo puertorriqueño Francisco José Ramos (Q105725041).
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-13.png" alt="Elemento para una persona con su primera declaración" caption="Figura 13. Etiqueta, descripción y variantes del nombre en Wikidata." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-13.png" alt="Elemento para una persona con su primera declaración" caption="Figura 13. Etiqueta, descripción y variantes del nombre en Wikidata." %}
 
 Las siguientes declaraciones están relacionadas con el nombre. Puedes registrar el ["nombre de pila" (P735)](https://www.wikidata.org/wiki/Property:P735), el ["apellido" (P734)](https://www.wikidata.org/wiki/Property:P734) y el ["segundo apellido" (P1950)](https://www.wikidata.org/wiki/Property:P1950). Para nombres compuestos, debes registrar cada nombre como un valor independiente bajo la misma propiedad de "nombre de pila" y añadir el calificativo ["orden dentro de la serie" (P1545)](https://www.wikidata.org/wiki/Property:P1545) para designar el primer nombre y luego el segundo nombre. La Figura 14 ilustra el proceso para registrar el nombre de pila compuesto "Francisco José".
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-14.png" alt="Elemento para una persona con los valores asociados a la propiedad 'nombre de pila'" caption="Figura 14. Nombre de pila compuesto en Wikidata." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-14.png" alt="Elemento para una persona con los valores asociados a la propiedad 'nombre de pila'" caption="Figura 14. Nombre de pila compuesto en Wikidata." %}
 
 Para registrar apellidos hispanos, debes utilizar dos propiedades. La propiedad ["apellido" (P734)](https://www.wikidata.org/wiki/Property:P734) se utiliza para registrar el apellido paterno, mientras que ["segundo apellido" (P1950)](https://www.wikidata.org/wiki/Property:P1950) designa el apellido materno.
 
@@ -197,11 +197,11 @@ Otra propiedad muy común en la descripción de personas es el ["campo de trabaj
 
 También podemos registrar la ["ocupación" (P106)](https://www.wikidata.org/wiki/Property:P101) relacionada con el campo de trabajo. Esta propiedad admite valores múltiples y es útil para registrar las distintas facetas profesionales o artísticas de una persona. Recuerda que toda la información sobre personas debe provenir de fuentes confiables y accesibles. Dichas fuentes pueden registrarse como referencias en cada uno de los valores asociados a una propiedad. La Figura 15 muestra los valores para la propiedad de "ocupación", junto con las referencias tomadas de un artículo de Wikipedia.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-15.png" alt="Elemento para una persona con varios valores asociados a la propiedad de 'ocupación'" caption="Figura 15. Valores para la propiedad de 'ocupación' en Wikidata." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-15.png" alt="Elemento para una persona con varios valores asociados a la propiedad de 'ocupación'" caption="Figura 15. Valores para la propiedad de 'ocupación' en Wikidata." %}
 
 El registro de identificadores asociados a una persona es uno de los aspectos más importantes en Wikidata. Cada identificador asociado a una persona se registra como una propiedad individual. Por ejemplo, podemos registrar el [número ORCID (P496)](https://www.wikidata.org/wiki/Property:P496), el [identificador de Scopus (P1153)](https://www.wikidata.org/wiki/Property:P1153), el [identificador VIAF (P214)](https://www.wikidata.org/wiki/Property:P214), el [ISNI (P213)](https://www.wikidata.org/wiki/Property:P213), o identificadores de bibliotecas como la [Biblioteca del Congreso de Estados Unidos (P244)](https://www.wikidata.org/wiki/Property:P244) o la [Biblioteca Nacional de España (P950)](https://www.wikidata.org/wiki/Property:P950). La Figura 16 muestra una serie de identificadores para la misma persona.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-16.png" alt="Lista de identificadores relacionados con una persona" caption="Figura 16. Identificadores asociados a una persona en Wikidata." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-16.png" alt="Lista de identificadores relacionados con una persona" caption="Figura 16. Identificadores asociados a una persona en Wikidata." %}
 
 Estas son sólo algunas de las propiedades que se pueden utilizar en la creación de DAE para personas en Wikidata. A continuación, se mencionan otras propiedades relevantes que pueden brindar información más detallada sobre una persona. Sin embargo, debemos ser cuidadosos al registrar información de personas vivas y tener en cuenta las consideraciones éticas relacionadas con la dignidad, seguridad y privacidad de las personas.
 
@@ -218,13 +218,13 @@ Estas son sólo algunas de las propiedades que se pueden utilizar en la creació
 
 Wikidata ofrece diferentes herramientas o accesorios para facilitar el trabajo. Las herramientas están disponibles en el menú de Preferencias, bajo la sección de Accesorios (Figura 17). El menú de preferencias se muestra una vez hayas iniciado sesion en tu cuenta de usuario. Una herramienta útil para la creación y edición de entidades es Recoin (Relative Completeness Indicator) (Figura 18), que permite desplegar una lista en la página de la entidad con propiedades relevantes que podrías incluir. Esto es especialmente útil para usuarios nuevos que aún no están familiarizados con las propiedades en Wikidata.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-17.png" alt="Menú de preferencias para usuarios registrados con el apartado para acceder a los accesorios o herramientas" caption="Figura 17. Menú de preferencias de Wikidata." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-17.png" alt="Menú de preferencias para usuarios registrados con el apartado para acceder a los accesorios o herramientas" caption="Figura 17. Menú de preferencias de Wikidata." %}
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-18.png" alt="Lista de accesorios con la opción para activar la herramienta 'Recoin'" caption="Figura 18. Herramienta Recoin en Wikidata." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-18.png" alt="Lista de accesorios con la opción para activar la herramienta 'Recoin'" caption="Figura 18. Herramienta Recoin en Wikidata." %}
 
 Una vez activada, la herramienta Recoin aparecerá en la página de la entidad. Puedes hacer clic para ver la lista de propiedades relevantes que puedes incluir. A continuación, se presentan las propiedades más importantes para describir a una persona (Figura 19).
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-19.png" alt="Lista de propiedades relevantes para la descripción de una persona según la herramienta Recoin" caption="Figura 19. Propiedades relevantes según la herramienta Recoin en Wikidata." %}
+{% include figure.html filename="es-or-datos-abiertos-enlazados-wikidata-19.png" alt="Lista de propiedades relevantes para la descripción de una persona según la herramienta Recoin" caption="Figura 19. Propiedades relevantes según la herramienta Recoin en Wikidata." %}
 
 ## Conclusión
 

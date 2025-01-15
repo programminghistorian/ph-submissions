@@ -1,6 +1,7 @@
 ---
 title: "Introduction aux principes des données ouvertes liées"
-slug: intro-to-linked-data
+slug: intro-donnees-ouvertes-liees
+original: intro-to-linked-data
 layout: lesson
 collection: lesson
 date: 2017-05-07

@@ -1,5 +1,5 @@
 ---
-title: "Introduction aux principes des données ouvertes liées
+title: "Introduction aux principes des données ouvertes liées"
 slug: intro-to-linked-data
 layout: lesson
 collection: lesson
@@ -127,11 +127,11 @@ La disposition (ou la [syntaxe](https://fr.wikipedia.org/wiki/Syntaxe)) des trip
 
 Conventionnellement, la représentation d’un triplet sous forme de diagramme se présente ainsi&nbsp;:
 
-{% include figure.html filename="intro-to-linked-data-fig5.png" alt="Visual description of figure image" caption="the classic way to represent a triple" %}
+{% include figure.html filename="en-or-intro-to-linked-data-01.png" alt="Visual description of figure image" caption="the classic way to represent a triple" %}
 
 Donc notre triplet sur Jack Straw, dans une forme plus lisible, pourrait être représenté de cette façon&nbsp;:
 
-{% include figure.html filename="intro-to-linked-data-fig6.png" alt="Visual description of figure image" caption="triple diagram showing that Jack Straw represented Blackburn" %}
+{% include figure.html filename="en-or-intro-to-linked-data-02.png" alt="Visual description of figure image" caption="triple diagram showing that Jack Straw represented Blackburn" %}
 
 Pour l’instant, il y a trois éléments clés à garder en tête&nbsp;:
 
@@ -389,7 +389,7 @@ N.B. Ce point d’accès fonctionne avec la version anglophone de Wikipédia.
 
 Si vous accédez à l’URL de snorql (ci-dessus), vous remarquerez d’abord qu’un certain nombre de préfixes ont été préalablement déclarés pour nous, ce qui est pratique. Vous devriez également reconnaître certains d’entre eux.
 
-{% include figure.html filename="intro-to-linked-data-fig1.png" caption="snorql’s default query box, with some prefixes declared for you" %}
+{% include figure.html filename="en-or-intro-to-linked-data-03.png" caption="snorql’s default query box, with some prefixes declared for you" %}
 
 Dans l’éditeur de requête, sous les déclarations de préfixes, vous devriez voir&nbsp;:
 
@@ -416,7 +416,7 @@ Appuyez sur _Go!_.
 Si vous avez laissé la sélection du menu déroulant sur **Browse**, vous devriez obtenir deux colonnes avec les en-têtes **b** et **c**.
 Notez bien ici que la casse des caractères fait une différence&nbsp;: `lyndal_roper` ne renverra rien.
 
-{% include figure.html filename="intro-to-linked-data-fig2.png" caption="top of results lists for a query for all triples with 'Lyndal_Roper' as subject" %}
+{% include figure.html filename="en-or-intro-to-linked-data-04.png" caption="top of results lists for a query for all triples with 'Lyndal_Roper' as subject" %}
 
 Que s’est-il donc passé&nbsp;? Et comment savoir ce qu’il faut saisir&nbsp;?
 
@@ -451,7 +451,7 @@ J’ai fait ici un petit changement. Si seulement cette requête fonctionne, je 
 
 Exécutez la requête. Cela fonctionne-t-il pour vous&nbsp;? J’obtiens une longue liste de spécialistes en histoire.
 
-{% include figure.html filename="intro-to-linked-data-fig3.png" caption="historians, according to DBpedia" %}
+{% include figure.html filename="en-or-intro-to-linked-data-05.png" caption="historians, according to DBpedia" %}
 
 Ainsi, cela fonctionne pour créer des listes, ce qui est utile, mais il serait beaucoup plus efficient de combiner des listes afin de créer des intersections entre des ensembles. J’ai trouvé quelques éléments supplémentaires qu’il pourrait être intéressant de chercher dans les attributs de Lyndal Roper sur DBpedia&nbsp;: <http://dbpedia.org/class/yago/WikicatBritishHistorians> and <http://dbpedia.org/class/yago/WikicatWomenHistorians>. Il est très facile de combiner ces attributs en demandant qu’une variable soit renvoyée (dans notre cas`?nom`), puis de l’utiliser dans de multiples lignes d’une requête. Notez également l’espace et le point final de la première ligne commençant avec `?name`&nbsp;:
 
@@ -465,7 +465,7 @@ SELECT ?name
 
 Ça fonctionne&nbsp;! J’obtiens cinq entrées. Au moment d’écrire cette leçon, il y a cinq historiennes britanniques dans *DBpedia*...
 
-{% include figure.html filename="intro-to-linked-data-fig4.png" caption="British historians who are women, according to DBpedia" %}
+{% include figure.html filename="en-or-intro-to-linked-data-06.png" caption="British historians who are women, according to DBpedia" %}
 
 Seulement cinq historiennes&nbsp;? Bien sûr, en réalité, il y en a bien davantage, comme nous pourrions facilement le constater en remplaçant le nom par, disons, Alison Weir, dans notre première requête pour Lyndal Roper. Voilà qui nous mène au problème que j’ai mentionné plus tôt avec *Dbpedia*&nbsp;: cet entrepôt n’est pas vraiment constant quant au type d’information structurelle qu’il utilise. Nos requêtes permettent de lister quelques historiennes britanniques, mais tout indique qu’il est impossible de générer une liste significative de personnes dans cette catégorie. Tout ce que nous avons trouvé, ce sont les personnes qui ont une entrée sur *Wikipédia* en anglais et qui ont été catégorisées comme &laquo;&nbsp;historienne britannique&nbsp;&raquo;.
 

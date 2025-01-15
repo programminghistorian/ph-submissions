@@ -54,7 +54,7 @@ Afin de fournir une base solide pour la maîtrise de ces fondements, cette leço
 1. Le [web sémantique](https://fr.wikipedia.org/wiki/Web_sémantique) et [les processus d’inférence](https://fr.wikipedia.org/wiki/Moteur_d'inférence) sur les [jeux de données](https://fr.wikipedia.org/wiki/Jeu_de_données). Par exemple, un moteur d’inférence permettrait de déduire que George VI est le frère ou le demi-frère d’Edward VIII, étant donné que a) Edward VIII est le fils de George V et que b) George VI est le fils de George V. Cette leçon ne couvre pas ce type de tâche.
 2. La création et la mise en ligne de jeux de données ouvertes liées dans le [*linked data open cloud*](https://lod-cloud.net). Le partage de vos DOL est un important principe qui est encouragé plus bas. Cependant, les détails techniques de l’exposition des DOL dans le *linked data cloud* dépassent la portée de cette leçon. Quelques ressources pour vous aider avec cette tâche sont disponibles à la fin de la leçon.
 
-### Que sont les données ouvertes liées&nbsp;?
+## Que sont les données ouvertes liées&nbsp;?
 
 Les DOL sont constituées d’information structurée par des formats conçus pour un traitement par des [agents logiciels](https://fr.wikipedia.org/wiki/Agent_logiciel). Elles ne sont donc pas nécessairement agréables à l’œil. Ne vous laissez pas rebuter par cela, puisqu’en comprenant les principes des DOL, vous pourrez demander à un ordinateur d’en effectuer la lecture pour vous.
 
@@ -99,13 +99,11 @@ place=2655524
 
 À ce stade, vous pourriez penser qu’il s’agit en fait de la fonction d’un catalogue de bibliothèque. En effet, il s’agit bien du concept de la [notice d’autorité](https://fr.wikipedia.org/wiki/Autorité_(sciences_de_l'information)), idée centrale en sciences de l’information (un fichier d’autorité est une liste normalisée de termes qui peuvent être utilisés dans un contexte particulier, par exemple pour le catalogage d’un livre). Dans les deux exemples esquissés plus haut, nous avons utilisé des fichiers d’autorité pour assigner des numéros (les identifiants uniques) aux Jack et à Blackburn. Les numéros utilisés pour les deux Jack Straw viennent du [Virtual International Authority File](https://viaf.org) (VIAF), qui est maintenu par un consortium international de bibliothèques afin de gérer les problèmes qui découlent de la myriade de possibilités dont nous disposons pour nous référer à une même personne. L’identifiant unique utilisé pour la circonscription de Blackburn est tiré de [GeoNames](http://www.geonames.org), une base de données géographique en accès libre.
 
-Mais essayons d’être plus précis quant à ce que nous voulons dire par Blackburn dans cet exemple. Jack Straw représentait la circonscription parlementaire (un territoire représenté par un seul membre du parlement) de Blackburn dont les frontières ont changé à travers le temps. Le projet [Digging Into Linked Parliamentary Data](https://repository.jisc.ac.uk/6544/)[^fn1], sur lequel j’ai travaillé, a produit des identifiants uniques pour les affiliations parlementaires et les circonscriptions de chaque membre du parlement. Dans cet exemple, Jack Straw représentait la circonscription connue comme &laquo;&nbsp;Blackburn&nbsp;&raquo; dans sa version existante à partir de 1955&nbsp;:
+Mais essayons d’être plus précis quant à ce que nous voulons dire par Blackburn dans cet exemple. Jack Straw représentait la circonscription parlementaire (un territoire représenté par un seul membre du parlement) de Blackburn dont les frontières ont changé à travers le temps. Le projet [Digging Into Linked Parliamentary Data](https://repository.jisc.ac.uk/6544/)[^1], sur lequel j’ai travaillé, a produit des identifiants uniques pour les affiliations parlementaires et les circonscriptions de chaque membre du parlement. Dans cet exemple, Jack Straw représentait la circonscription connue comme &laquo;&nbsp;Blackburn&nbsp;&raquo; dans sa version existante à partir de 1955&nbsp;:
 
 ```txt
 blackburn1955-current
 ```
-
-[^fn1]: Note de la traduction&nbsp;: une des retombées intéressantes de ce projet encore accessible aujourd’hui se trouve dans la plateforme [lipad.ca](https://lipad.ca) pour l’exploration et l’interrogation des données parlementaires canadiennes.
 
 VIAF étant un fichier d’autorité très respecté et bien entretenu sur les personnes notables, il s’agissait naturellement d’un ensemble d’identifiants à utiliser pour Jack Straw. Comme la circonscription représentée par Straw était parfaitement couverte par les fichiers d’autorité créés dans le projet Dilipad, il s’agissait également d’une ressource pertinente à mobiliser. Malheureusement, il n’est pas toujours aussi évident de savoir quelle liste publiée en ligne est le meilleur choix. Une liste pourrait être plus largement utilisée qu’une autre, mais cette dernière pourrait être plus pertinente dans certains contextes. Dans certains cas, GeoNames pourrait mieux fonctionner que les identifiants Dilipad. Dans d’autres cas, il vous sera impossible de trouver un jeu de données contenant l’information nécessaire. Par exemple, imaginez que vous voudriez créer les paires attribut-valeur vous décrivant avec vos relations familiales immédiates. Dans ce cas, vous auriez à créer vos propres identifiants.
 
@@ -127,11 +125,11 @@ La disposition (ou la [syntaxe](https://fr.wikipedia.org/wiki/Syntaxe)) des trip
 
 Conventionnellement, la représentation d’un triplet sous forme de diagramme se présente ainsi&nbsp;:
 
-{% include figure.html filename="en-or-intro-to-linked-data-01.png" alt="Visual description of figure image" caption="the classic way to represent a triple" %}
+{% include figure.html filename="en-or-intro-to-linked-data-01.png" alt="Visual description of figure image" caption="Figure 1. the classic way to represent a triple" %}
 
 Donc notre triplet sur Jack Straw, dans une forme plus lisible, pourrait être représenté de cette façon&nbsp;:
 
-{% include figure.html filename="en-or-intro-to-linked-data-02.png" alt="Visual description of figure image" caption="triple diagram showing that Jack Straw represented Blackburn" %}
+{% include figure.html filename="en-or-intro-to-linked-data-02.png" alt="Visual description of figure image" caption="Figure 2. triple diagram showing that Jack Straw represented Blackburn" %}
 
 Pour l’instant, il y a trois éléments clés à garder en tête&nbsp;:
 
@@ -139,7 +137,7 @@ Pour l’instant, il y a trois éléments clés à garder en tête&nbsp;:
 - Les promoteurs de DOL visent la standardisation des références aux entités uniques
 - Les DOL sont constituées de triplets qui décrivent les relations entre les entités
 
-### Le rôle des identifiants uniformes de ressource (URI)
+## Le rôle des identifiants uniformes de ressource (URI)
 
 Les [identifiants uniformes de ressource](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier) (en anglais&nbsp;: *Uniform Resource Identifier*, ou URI) sont un élément essentiel des DOL. L’URI permet d’identifier de façon fiable et unique une entité (une personne, un objet, une relation, etc.), de manière à pouvoir être utilisé par quiconque à travers le monde. Dans la section précédente, nous avons utilisé deux différents numéros pour identifier nos deux différents Jack Straw&nbsp;:
 
@@ -171,15 +169,13 @@ L’univers des URI est quelque peu jargonneux. Elles peuvent être dites [dér�
 http://viaf.org/viaf/46784579
 ```
 
-Si vous l’essayez dans un navigateur, vous obtiendrez une page web sur Simon Schama, qui contient des données structurées à son sujet et son historique de publication. Voilà qui est très pratique, puisque dans ce cas l’URI ne permet pas de déterminer clairement à qui ou même ce à quoi on réfère. De la même manière, si nous utilisions un numéro de téléphone mobile (avec un code international) comme l’URI d’une personne, alors il devrait être déréférençable. À l’autre bout du fil, quelqu’un pourrait répondre et ce pourrait même être Schama[^ernbyu63].
-
-[^ernbyu63]: Les applications web présentent souvent les numéros de téléphone sous la forme d’un URI qui rencontre les critères de la spécification [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986), *Uniform Resource Identifier (URI): Generic Syntax*. Par exemple, l’URI tel:+1-816-555-1212 utilise un protocole (tel:) et un chemin (+1-816-555-1212) permettant d’exécuter une application téléphonique pour joindre l’entité identifiée, tout comme un URI utilisant le protocole HTTP permet d’accéder, s’il est déréférençable, à une description de la ressource identifiée dans un navigateur web.
+Si vous l’essayez dans un navigateur, vous obtiendrez une page web sur Simon Schama, qui contient des données structurées à son sujet et son historique de publication. Voilà qui est très pratique, puisque dans ce cas l’URI ne permet pas de déterminer clairement à qui ou même ce à quoi on réfère. De la même manière, si nous utilisions un numéro de téléphone mobile (avec un code international) comme l’URI d’une personne, alors il devrait être déréférençable. À l’autre bout du fil, quelqu’un pourrait répondre et ce pourrait même être Schama[^2].
 
 Mais ce n’est pas essentiel. De nombreux URI ne sont pas déréférençables, comme nous l’avons constaté précédemment avec le projet Tobias.
 
 L’exemple de VIAF nous mène vers une autre considération importante au sujet des URI&nbsp;: évitez d’en créer tant que ce n’est pas nécessaire. En effet, personnes et organismes ont concerté leurs efforts pour créer de bonnes listes d’URI. Les DOL ne pourront fonctionner adéquatement si nous dupliquons ces efforts en créant inutilement de nouveaux URI. VIAF, par exemple, bénéficie du support de nombreuses bibliothèques internationales. Si vous souhaitez utiliser des URI identifiant des personnes, VIAF est un excellent choix. Si une personne est introuvable dans VIAF ou dans d’autres fichiers d’autorité, c’est alors que vous devriez envisager de créer vos URI.
 
-### Comment s’organise la connaissance avec les DOL&nbsp;: les ontologies
+## Comment s’organise la connaissance avec les DOL&nbsp;: les ontologies
 
 Ce n’est peut-être pas évident d’après les triplets examinés dans la première partie, mais les DOL peuvent répondre à des questions complexes. Lorsque vous rassemblez vos triplets, ils se constituent comme un [graphe](https://fr.wikipedia.org/wiki/Graphe_conceptuel) grâce à la façon dont ils sont reliés. Supposons que nous voulons trouver une liste de toutes les personnes qui furent des élèves du compositeur Franz Liszt. Si l’information se trouve dans les triplets des données liées sur les pianistes et leurs professeurs, nous pourrons y accéder en utilisant une requête (nous examinerons ce langage de requête, appelé SPARQL, dans la dernière section).
 
@@ -232,13 +228,13 @@ Si vous n’êtes pas à l’aise avec les bases de données, ne vous en faites 
 Bien sûr, les bases de données relationnelles offrent des résultats similaires aux DOL. La grande différence, c’est que les DOL peuvent aller plus loin&nbsp;: elles peuvent connecter des ensembles de données qui ont été créés sans l’intention explicite d’être liés entre eux.
 Cela est rendu possible par l’utilisation du cadre de description [RDF](https://fr.wikipedia.org/wiki/Resource_Description_Framework) et des URI.
 
-### Le cadre de description [RDF](https://fr.wikipedia.org/wiki/Resource_Description_Framework) et ses formats
+## Le cadre de description [RDF](https://fr.wikipedia.org/wiki/Resource_Description_Framework) et ses formats
 
 Les DOL utilisent un standard défini par le [*World Wide Web Consortium*](https://www.w3.org) (W3C) nommé *[Resource Description Framework](https://en.wikipedia.org/wiki/Resource_Description_Framework)* (cadre de description RDF, ou simplement RDF). Les standards sont utiles dans la mesure où ils sont largement adoptés ― pensez au système métrique ou aux tailles de vis standards ― même s’ils sont essentiellement arbitraires. RDF a été largement adopté comme standard pour les DOL.
 
 Souvent, les DOL sont simplement appelées RDF (ou données RDF). Nous avons reporté la discussion sur RDF jusqu’à maintenant, car il s’agit d’un enjeu plutôt abstrait. RDF est un [modèle de données](https://fr.wikipedia.org/wiki/Modèle_de_données) qui décrit sur un plan théorique comment structurer des données. L’insistance sur l’utilisation des triplets (au lieu de quatre parties, de deux ou de neuf) est une règle de RDF. Mais sur le plan pratique, certaines options s’offrent à vous pour l’implémentation des graphes de données. Ainsi, RDF vous indique ce que vous devez faire, mais pas exactement comment vous y prendre. Ces choix se divisent en deux champs&nbsp;: la manière dont vous écrivez les choses (la sérialisation) et les relations que décrivent vos triplets.
 
-#### La sérialisation
+### La sérialisation
 
 La [sérialisation](https://fr.wikipedia.org/wiki/Sérialisation) est un terme technique pour parler de &laquo;&nbsp;la manière dont vous écrivez les choses&nbsp;&raquo;. Le mandarin standard peut s’écrire avec les caractères chinois traditionnels, avec les caractères chinois simplifiés ou avec le hanyu pinyin pour la romanisation. La langue elle-même ne change pas. De la même façon, RDF peut s’écrire sous différentes formes et nous examinerons deux d’entre elles. Il en existe d’autres, mais pour garder les choses simples, nous nous concentrerons sur les suivantes&nbsp;:
 
@@ -247,7 +243,7 @@ La [sérialisation](https://fr.wikipedia.org/wiki/Sérialisation) est un terme t
 
 Comprendre à quelle sérialisation vous avez affaire signifie que vous pourrez choisir les outils appropriés, conçus pour ce format. Par exemple, RDF peut se présenter dans une sérialisation au format [XML](https://fr.wikipedia.org/wiki/XML). Vous pourrez alors utiliser un outil ou une [bibliothèque logicielle](https://fr.wikipedia.org/wiki/Bibliothèque_logicielle) conçue spécifiquement pour le traitement de ce format, ce qui est utile si vous en connaissez déjà le fonctionnement. Reconnaître le format vous fournit également les bons mot-clés pour trouver de l’aide en ligne. Plusieurs ressources ouvrent leurs bases de données liées au téléchargement et vous pourriez être en mesure de choisir la sérialisation qui vous convient.
 
-##### Turtle
+#### Turtle
 
 &laquo;&nbsp;Turtle&nbsp;&raquo; est un jeu de mot en anglais. _Tur_ est le diminutif de &laquo;&nbsp;terse&nbsp;&raquo;, et _tle_ celui de &laquo;&nbsp;triple language&nbsp;&raquo;. Turtle est une façon simple et agréable d’écrire des triplets.
 
@@ -317,7 +313,7 @@ Examinez-les de nouveau. Cela demeure compliqué, mais ont-ils plus de sens main
 :"Jonathan Blaney" foaf:mbox <mailto:jonathan.blaney@sas.ac.uk> .
 ```
 
-##### RDF/XML
+#### RDF/XML
 
 Contrairement à Turtle, RDF/XML peut sembler un peu lourd. Pour commencer, convertissons un seul triplet des données Turtle que nous avons créées plus haut&nbsp;: celui affirmant que Shakespeare est le créateur de *The Two Noble Kinsmen*&nbsp;:
 
@@ -373,7 +369,7 @@ Si vous êtes familier avec XML, ce sera un jeu d’enfant pour vous. Autrement,
 
 Pour valider la syntaxe de Turtle, vous pourrez utiliser des outils en ligne ([Easy RDF Converter](http://www.easyrdf.org/converter) ou [IDLab Turtle Validator](http://ttl.summerofcode.be)) ou encore un outil facile à utiliser en [ligne de commande](https://github.com/IDLabResearch/TurtleValidator).
 
-### Explorer des données RDF avec SPARQL
+## Explorer des données RDF avec SPARQL
 
 Pour terminer, nous allons interroger des données ouvertes liées et explorer ce qu’on peut en tirer. Le langage de requête utilisé pour les DOL se nomme [SPARQL](https://fr.wikipedia.org/wiki/SPARQL). C’est l’un de ces acronymes récursifs chers au monde technologique&nbsp;: *SPARQL Protocol and RDF Query Language*.
 
@@ -389,7 +385,7 @@ N.B. Ce point d’accès fonctionne avec la version anglophone de Wikipédia.
 
 Si vous accédez à l’URL de snorql (ci-dessus), vous remarquerez d’abord qu’un certain nombre de préfixes ont été préalablement déclarés pour nous, ce qui est pratique. Vous devriez également reconnaître certains d’entre eux.
 
-{% include figure.html filename="en-or-intro-to-linked-data-03.png" caption="snorql’s default query box, with some prefixes declared for you" %}
+{% include figure.html filename="en-or-intro-to-linked-data-03.png" alt="Visual description of figure image" caption="Figure 3. snorql’s default query box, with some prefixes declared for you" %}
 
 Dans l’éditeur de requête, sous les déclarations de préfixes, vous devriez voir&nbsp;:
 
@@ -416,7 +412,7 @@ Appuyez sur _Go!_.
 Si vous avez laissé la sélection du menu déroulant sur **Browse**, vous devriez obtenir deux colonnes avec les en-têtes **b** et **c**.
 Notez bien ici que la casse des caractères fait une différence&nbsp;: `lyndal_roper` ne renverra rien.
 
-{% include figure.html filename="en-or-intro-to-linked-data-04.png" caption="top of results lists for a query for all triples with 'Lyndal_Roper' as subject" %}
+{% include figure.html filename="en-or-intro-to-linked-data-04.png" alt="Visual description of figure image" caption="Figure 4. top of results lists for a query for all triples with 'Lyndal_Roper' as subject" %}
 
 Que s’est-il donc passé&nbsp;? Et comment savoir ce qu’il faut saisir&nbsp;?
 
@@ -451,7 +447,7 @@ J’ai fait ici un petit changement. Si seulement cette requête fonctionne, je 
 
 Exécutez la requête. Cela fonctionne-t-il pour vous&nbsp;? J’obtiens une longue liste de spécialistes en histoire.
 
-{% include figure.html filename="en-or-intro-to-linked-data-05.png" caption="historians, according to DBpedia" %}
+{% include figure.html filename="en-or-intro-to-linked-data-05.png" alt="Visual description of figure image" caption="Figure 5. historians, according to DBpedia" %}
 
 Ainsi, cela fonctionne pour créer des listes, ce qui est utile, mais il serait beaucoup plus efficient de combiner des listes afin de créer des intersections entre des ensembles. J’ai trouvé quelques éléments supplémentaires qu’il pourrait être intéressant de chercher dans les attributs de Lyndal Roper sur DBpedia&nbsp;: <http://dbpedia.org/class/yago/WikicatBritishHistorians> and <http://dbpedia.org/class/yago/WikicatWomenHistorians>. Il est très facile de combiner ces attributs en demandant qu’une variable soit renvoyée (dans notre cas`?nom`), puis de l’utiliser dans de multiples lignes d’une requête. Notez également l’espace et le point final de la première ligne commençant avec `?name`&nbsp;:
 
@@ -465,7 +461,7 @@ SELECT ?name
 
 Ça fonctionne&nbsp;! J’obtiens cinq entrées. Au moment d’écrire cette leçon, il y a cinq historiennes britanniques dans *DBpedia*...
 
-{% include figure.html filename="en-or-intro-to-linked-data-06.png" caption="British historians who are women, according to DBpedia" %}
+{% include figure.html filename="en-or-intro-to-linked-data-06.png" alt="Visual description of figure image" caption="Figure 6. British historians who are women, according to DBpedia" %}
 
 Seulement cinq historiennes&nbsp;? Bien sûr, en réalité, il y en a bien davantage, comme nous pourrions facilement le constater en remplaçant le nom par, disons, Alison Weir, dans notre première requête pour Lyndal Roper. Voilà qui nous mène au problème que j’ai mentionné plus tôt avec *Dbpedia*&nbsp;: cet entrepôt n’est pas vraiment constant quant au type d’information structurelle qu’il utilise. Nos requêtes permettent de lister quelques historiennes britanniques, mais tout indique qu’il est impossible de générer une liste significative de personnes dans cette catégorie. Tout ce que nous avons trouvé, ce sont les personnes qui ont une entrée sur *Wikipédia* en anglais et qui ont été catégorisées comme &laquo;&nbsp;historienne britannique&nbsp;&raquo;.
 
@@ -474,16 +470,16 @@ Par exemple, en utilisant la bibliothèque numérique Persée ([https://data.per
 
 Quoi qu’il en soit, malgré son manque de constance, *DBpedia* demeure un excellent choix pour apprendre SPARQL. Cette leçon ne fut qu’une brève introduction, mais il y bien plus à faire avec la leçon de Lincoln, [*Using SPARQL to access Linked Open Data*]([/lessons/graph-databases-and-SPARQL](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL)).
 
-### Ressources et lectures complémentaires
+## Ressources et lectures complémentaires
 
-#### Ressources
+### Ressources
 
 - [Le blogue de Bob DuCharme](https://www.bobdc.com/blog/) vaut le détour
 - John Philip McCrae, *Linked Open Data Cloud*, [état actuel et historique du *LOD Cloud*](https://lod-cloud.net)
 - Max Schmachtenberg, Christian Bizer and Heiko Paulheim, [état du *LOD Cloud* en 2014 avec quelques statistiques intéressantes](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/)
 - L’article de Matthew Lincoln, [Using SPARQL to access Linked Open Data](/lessons/graph-databases-and-SPARQL) (les outils utilisés par la leçon sont obsolètes, mais la démarche d’exploration proposée par Lincoln est recommandée)
 
-#### Bibliographie sommaire
+### Bibliographie sommaire
 
 - Allemang, Dean, James A. Hendler et Fabien L. Gandon. 2020. *Semantic Web for the Working Ontologist: Effective Modeling for Linked Data, RDFS, and OWL*. Third Edition. ACM Books Series 33. New York&&nbsp;: Association for Computing Machinery. https://doi.org/10.1145/3382097.
 - Berners-Lee, Tim. 2009. &laquo;&nbsp;Linked Data&nbsp;&raquo;. *Design Issues*. 18 juin 2009. https://w3.org/DesignIssues/LinkedData.html.
@@ -494,6 +490,12 @@ Quoi qu’il en soit, malgré son manque de constance, *DBpedia* demeure un exce
 - Van Hooland, Seth et Ruben Verborgh. 2015. *Linked data for libraries, archives and museums: how to clean, link and publish your metadata*. Facet. https://doi.org/10.29085/9781783300389.
 - Wood, David, Marsha Zaidman, Luke Ruth et Michael Hausenblas. 2014. *Linked data: structured data on the Web*. Shelter Island&nbsp;: Manning.
 
-### Crédits
+## Crédits
 
 J’aimerais remercier Matthew Lincoln et Terhi Nurmikko-Fuller pour leurs relectures, ainsi que mon éditeur Adam Crymble, qui ont généreusement offert de leur temps pour m’aider à améliorer ce cours, grâce à de nombreuses suggestions, clarifications et corrections. Cette leçon est basée sur une autre leçon rédigée dans le cadre du [projet Tobias](https://gtr.ukri.org/projects?ref=AH%2FN003446%2F1#/) (*Thesaurus of British and Irish History as SKOS*, 2015-2016), qui fut financé par l’[AHRC](http://www.ahrc.ac.uk). Elle a été révisée pour *Programming Historian*.
+
+## Notes de fin
+
+[^1]: Note de traduction&nbsp;: une des retombées intéressantes de ce projet encore accessible aujourd’hui se trouve dans la plateforme [lipad.ca](https://lipad.ca) pour l’exploration et l’interrogation des données parlementaires canadiennes.
+
+[^2]: Les applications web présentent souvent les numéros de téléphone sous la forme d’un URI qui rencontre les critères de la spécification [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986), *Uniform Resource Identifier (URI): Generic Syntax*. Par exemple, l’URI tel:+1-816-555-1212 utilise un protocole (tel:) et un chemin (+1-816-555-1212) permettant d’exécuter une application téléphonique pour joindre l’entité identifiée, tout comme un URI utilisant le protocole HTTP permet d’accéder, s’il est déréférençable, à une description de la ressource identifiée dans un navigateur web.

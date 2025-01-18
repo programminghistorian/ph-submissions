@@ -340,13 +340,12 @@ The 0 A.D. project points to the superiority of free and open source software ov
     - a solid-state drive (SSD)
     - eight or more gigabytes (GB) of random access memory (RAM)
 
-The base game requires approximately 3.5 GB of storage space, and you should have a few spare GB available after installing 0 A.D. and GIMP in order to complete this lesson.
+    The base game requires approximately 3.5 GB of storage space, and you should have a few spare GB available after installing 0 A.D. and GIMP in order to complete this lesson.
 
 [^3]: The 0 A.D. project is released under three open source licenses:
     - Binaries (compiled): [GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
     - Engine and code: [GPL 2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) or later
     - Artwork, music, and other non-code resources: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
-
 [^4]: GIMP occupies about 250mb of storage space. It is licensed under the [GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) or later.
 
 [^5]: There is a superabudance of evidence that persons learn best with multisensory activation. For one summary discussion of the matter, see Scudellari, Megan. “The Science Myths That Will Not Die.” Nature 528, no. 7582 (December 2015): 322–25. https://doi.org/10.1038/528322a.

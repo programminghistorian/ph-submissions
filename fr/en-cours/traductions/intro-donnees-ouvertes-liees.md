@@ -16,7 +16,7 @@ editors:
 translator:
 - David Valentine
 translation-editor:
-- Forename Surname
+- Daphné Mathelier
 translation-reviewer:
 - Forename Surname
 - Forename Surname

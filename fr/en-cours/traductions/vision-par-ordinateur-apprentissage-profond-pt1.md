@@ -80,13 +80,13 @@ Cette leçon n'a pas pour but de :
 Nous vous suggérons d'aborder cette leçon en deux parties en deux temps :
 
 - Tout d'abord, lisez les informations de cette page, pour vous familiariser avec les questions conceptuelles clés et le flux de travail global pour l'entraînement d'un modèle de vision par ordinateur.
-- Ensuite, exécutez le code proposé dans une version carnet Jupyter de chaque leçon sur Kaggle (voir ci-dessous).
+- Ensuite, exécutez le code proposé dans [le carnet Jupyter associé](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/vision-par-ordinateur-apprentissage-profond-pt1-2).
 
 Dans cette leçon en deux parties, nous allons utiliser une approche de la vision par ordinateur basée sur l'apprentissage profond. Le processus de mise en place d'un environnement pour l'apprentissage profond est devenu plus facile mais peut encore être complexe. Nous avons essayé de conserver ce processus de configuration aussi simple que possible, et nous proposons un cheminement le plus direct possible pour commencer à exécuter le code de la leçon.
 
 ### Carnets
 
-Cette leçon en deux parties est disponible sous forme de carnets (*notebooks*) Jupyter. Nous vous recommandons d'exécuter le code de cette leçon à l'aide de ces carnets compagnons, ce qui convient parfaitement à la nature exploratoire que nous allons mettre en œuvre.
+Cette leçon en deux parties est disponible sous forme d'un carnet (*notebook*) Jupyter. Nous vous recommandons d'exécuter le code de cette leçon à l'aide de [ce carnet compagnon](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/vision-par-ordinateur-apprentissage-profond-pt1-2), ce qui convient parfaitement à la nature exploratoire que nous allons mettre en œuvre.
 
 ### Exécuter les carnets 
 

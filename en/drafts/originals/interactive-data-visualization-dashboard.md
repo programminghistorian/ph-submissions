@@ -56,7 +56,20 @@ In our case study, we will aim to discover patterns within a large amount of dat
 
 This lesson uses a free and open database from the Internet Archive's [Television Explorer](https://perma.cc/BT87-XD4G). This database tracks the amount of airtime that U.S. television stations give to certain keywords, based on the closed captioning text. The data-retrieval tool we'll use is the [2.0 TV API](https://perma.cc/BLW9-N9YL) made available by the Global Database of Events, Language and Tone (GDELT). We will retrieve the data for our dashboard via the 2.0 TV API then use it to prepare a dataset like the one below, on which we will build an interactive dashboard.
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-02.png" alt="A screenshot showing what the processed dataset looks like. There are three columns: date collected, Series, and Value." caption="Figure 2. Screenshot of the processed dataset." %}
+| date_col   | Series | Value  |
+|------------|--------|--------|
+| 2023-05-17 | CNN    | 3.9329 |
+| 2023-05-18 | CNN    | 3.7608 |
+| 2023-05-19 | CNN    | 4.2881 |
+| 2023-05-20 | CNN    | 5.2805 |
+| 2023-05-21 | CNN    | 5.8981 |
+| ...        | ...    | ...    |
+| 2024-05-06 | MSNBC  | 0.3536 |
+| 2024-05-07 | MSNBC  | 0.3777 |
+| 2024-05-08 | MSNBC  | 0.3917 |
+| 2024-05-09 | MSNBC  | 0.4252 |
+| 2024-05-10 | MSNBC  | 0.5889 |
+
 
 ### Why Dash in Python?
 
@@ -167,7 +180,7 @@ The encoding characters `%20` and `%22` represent space (` `) and double quotati
 
 ### Preparing Data for Visualization
 
-Once you have retrieved this data, you'll need to prepare it for visualization. Our goal is to transform the data into the format shown in Figure 2 above.
+Once you have retrieved this data, you'll need to prepare it for visualization. Our goal is to transform the data into the format shown in the table above.
 
 ```
 def to_df(queryurl):
@@ -300,7 +313,7 @@ dbc.Row([ # row 2
             dbc.Label("Select a date range:", className="fw-bold")])
 ```
 
-In Row 3, we define the key interactive feature of our dashboard: a date range picker, where a user can choose a start date and an end date (see Figure 3 below).
+In Row 3, we define the key interactive feature of our dashboard: a date range picker, where a user can choose a start date and an end date (see Figure 2 below).
 
 ```
 dbc.Row([ # row 3
@@ -315,7 +328,7 @@ dbc.Row([ # row 3
     ])
 ```
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.png" alt="A screenshot showing what the date range picker looks like" caption="Figure 3. The interactive date range picker feature." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.png" alt="A screenshot showing what the date range picker looks like" caption="Figure 2. The interactive date range picker feature." %}
 
 Using the code above, we have defined that when the dashboard is first loaded the date range will be set from the earliest possible to the latest possible date in the `date_col` column of the dataframe by default. Remember that those two dates are within a maximum range of 365 days apart (but the actual difference between eariest and latest as shown in the date picker could be shorter due to the fact that the most recent data may not be available yet).
 
@@ -460,7 +473,7 @@ If you are working in a Jupyter Notebook, you can also choose to review the dash
 
 The dashboard should look like this:
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-04.png" alt="A screenshot showing what the dashboard looks like. There are two line graphs: one shows how media attention to Ukraine-related words in TV stations changes over time; the other shows the same but for Russia-related words" caption="Figure 4. The TV airtime dashboard interface." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-04.png" alt="A screenshot showing what the dashboard looks like. There are two line graphs: one shows how media attention to Ukraine-related words in TV stations changes over time; the other shows the same but for Russia-related words" caption="Figure 3. The TV airtime dashboard interface." %}
 
 ## Deploying the Dashboard
 
@@ -505,9 +518,24 @@ The dashboard for the second example also makes use of a publicly available data
 
 The data-retrieval tool is [Chronicling America's API](https://chroniclingamerica.loc.gov/about/api/). You can use this API to retrieve the required data and prepare it for visualization in a tabular structure, like this:
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-05.png" alt="A screenshot showing what the dataset for the extended case looks like. The rows represent languages, the columns represent decades, and the cells represent count of newspapers." caption="Figure 5. Dataset for the second example." %}
+|                         | 1690 | 1700 | 1710 | 1720 | 1730 | 1740 | 1750 | 1760 | 1770 | 1780 | 1790 | 1800 | 1810 | 1820 | 1830 |
+|-------------------------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
+| Albanian               | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    |
+| Amharic                | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    |
+| Arabic                 | 3    | 3    | 3    | 3    | 3    | 3    | 3    | 3    | 3    | 3    | 3    | 3    | 3    | 3    | 3    |
+| Armenian               | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    |
+| Asue Awyu              | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    |
+| Austronesian (Other)   | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    |
+| Basque                 | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    |
+| Belarussian            | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    |
+| Bengali                | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    |
+| Bosnian                | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    |
+| Bulgarian              | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    | 1    |
+| Burmese                | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    |
+| Cebuano                | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    |
+| Central Huasteca Nahuatl | 0  | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    |
 
-In Figure 5, the rows represent different languages (sorted alphabetically), the columns represent decades (from the 1690s to the 2020s), and the cells represent newspaper counts. 
+In the table above, the rows represent different languages (sorted alphabetically), the columns represent decades (from the 1690s to the 2020s), and the cells represent newspaper counts. 
 
 You can use the cell values to calculate the proportion (percentage) of newspapers in a given language over a certain decade – relative to all non-English newspapers. The percentage is calculated by dividing the number of newspapers in a given language in a certain decade by the total number of non-English newspapers in that decade, and then multiplying by 100.
 
@@ -539,7 +567,7 @@ If you'd prefer to download the data directly yourself, I have provided [the nec
 
 If you have downloaded the data in CSV format, you can run the `app-rq2.py` script directly, without retrieving the data from Chronicling America. The final product should look like this:
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-06.png" alt="A screenshot showing what the dashboard for the extended case looks like. There are two pie graphs: one shows the top 10 non-English newspapers in the U.S. in the 1690s; the other shows the same but for 2020s" caption="Figure 6. The non-English-newspaper dashboard interface." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-06.png" alt="A screenshot showing what the dashboard for the extended case looks like. There are two pie graphs: one shows the top 10 non-English newspapers in the U.S. in the 1690s; the other shows the same but for 2020s" caption="Figure 4. The non-English-newspaper dashboard interface." %}
 
 Each pie chart shows the top 10 languages of non-English newspapers in a given decade. To deploy this dashboard online, you can follow the same procedure as for the TV airtime example.
 

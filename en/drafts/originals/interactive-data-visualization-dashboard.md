@@ -24,7 +24,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-To advance open scholarship in the humanities it is important to make research outputs more accessible, both to other scholars and the general public. Creating a web-based interactive dashboard to visualize data results has become a popular method to achieve this goal. There are a wide range of examples, such as [the StanceXplore project led by a team at Lund university](https://perma.cc/Y886-8MB5) that tracks social media data, [Stephanie Boddie and Amy Hillier's study](https://perma.cc/VE92-T796) that recreates W. E. B. Du Bois' study of black residents in Philadelphia, and [Johannes Burgers' project](https://perma.cc/Y3C5-XS79) that visualizes the narrative structure in William Faulkner's work. 
+To advance open scholarship in the humanities it is important to make research outputs more accessible, both to other scholars and the general public. Creating a web-based interactive dashboard to visualize data results has become a popular method to achieve this goal. There are a wide range of examples, such as [the StanceXplore project led by a team at Lund University](https://perma.cc/Y886-8MB5) that tracks social media data, [Stephanie Boddie and Amy Hillier's study](https://perma.cc/VE92-T796) that recreates W. E. B. Du Bois' study of black residents in Philadelphia, and [Johannes Burgers' project](https://perma.cc/Y3C5-XS79) that visualizes the narrative structure in William Faulkner's work. 
 
 Unlike static graphs, interactive dashboards allow readers to explore patterns in data based on their specific interests by filtering, sorting, or changing views. Features like hover-over tooltips can also provide additional information without cluttering the main display. This lesson will walk you through the process of creating interactive dashboards using the open-source [Dash library in Python](https://dash.plotly.com/) and publicly available datasets. Figure 1 shows a dashboard created by researcher Ann Marie Ward that illustrates the gender pay gap in Irish businesses and organizations[^1]. On the left, the interactive features include a radio button to switch between 2023 and 2022, and a dropdown menu to select a company. The data and the bar graph in the main panel will change depending on the year and company chosen by the user. This lesson will show you how to use Dash to create an interactive data dashboard of this kind.
 
@@ -32,7 +32,7 @@ Unlike static graphs, interactive dashboards allow readers to explore patterns i
 
 For demonstration, this lesson centers a contemporary case study in the field of media and communication studies. To further demonstrate the range of applications available with web-based dashboards, this lesson also runs through a second case study, using an example with a historical focus.
 
-The method taught by this lesson can be applied to a wide range of digital humanities projects. If your research involves retrieving data from a publicly available source, this lesson can help you to visualize your research outputs in an interactive manner. In addition, this lesson demonstrates how to deploy a dashboard via a free (freemium) web service, to make your dashboards widely and easily accessible. While this _Programming Historian_ lesson uses Python, you may also be interested in [Making an Interactive Web Application with R and Shiny](/en/lessons/shiny-leaflet-newspaper-map-tutorial).
+The method taught by this lesson can be applied to a wide range of digital humanities projects. If your research involves retrieving data from a publicly available source, this lesson can help you to visualize your research outputs in an interactive manner. In addition, this lesson demonstrates how to deploy a dashboard via a free (freemium) web service, to make your dashboards widely and easily accessible. While this _Programming Historian_ lesson uses Python, you may also be interested in Yann Ryan's lesson [Making an Interactive Web Application with R and Shiny](/en/lessons/shiny-leaflet-newspaper-map-tutorial).
 
 ### Lesson Goals
 
@@ -50,7 +50,7 @@ This lesson takes a sample dataset of publicly available transcriptions from U.S
 
 Research in mass communication studies has traditionally followed Quantitative Content Analysis (CA) methods. However, algorithmic text analysis (ATA) has also recently grown in popularity, due to increased availability of large quantities of textual data.[^2] Both methods aim to infer meaning from text, either through classification or measurement. Whereas CA relies heavily on carefully crafted codebooks that are built around research questions, and verified by multiple human coders,[^3] [^4] ATA makes use of computational methods like statistics and machine learning. You might have heard of other, conceptually similar terms: [text mining](https://perma.cc/9ZBJ-A3CU), or [Natural Language Processing](https://perma.cc/PW5F-PG2C), for example.[^5] 
 
-In our case study, we will aim to discover patterns within a large amount of data[^6] using an approach that is situated somewhere in between CA and ATA. On  one hand, our approach only conducts [distant reading](https://perma.cc/L4PQ-XGAP), relying less on human coders (as is often required in CA). On the other hand, this approach only measures the manifest features of text (for example, frequency) and does not involve any other types of algorithmic classification often seen in ATA. 
+In our case study, we will aim to discover patterns within a large amount of data[^6] using an approach that is situated somewhere in between CA and ATA. On the one hand, our approach only conducts [distant reading](https://perma.cc/L4PQ-XGAP), relying less on human coders (as is often required in CA). On the other hand, this approach only measures the manifest features of text (in this case, frequency) and does not involve any other types of algorithmic classification often seen in ATA. 
 
 ### Dataset
 
@@ -142,7 +142,7 @@ The `datetime` library is needed to manipulate date and time objects in Python. 
 
 ### Retrieving Data Using an API
 
-First, let's define a range of dates from which the API will retrieve data for our dataset. The goal is to create two string objects: `today_str` and `start_day_str`. Here, you are restricting the range to 365 days before today (including today):
+We are going to use an API query to retrieve data. First, let's define a range of dates from which the API will retrieve data for our dataset. The goal is to create two string objects: `today_str` and `start_day_str`. Here, you are restricting the range to 365 days before today (including today):
 
 ```
 today = date.today()
@@ -151,7 +151,7 @@ start_day = today - datetime.timedelta(365)
 start_day_str = start_day.strftime("%Y%m%d")
 ```
 
-Next, let's create two string objects which we'll use for our queries: one for Ukraine-related terms and one for Russia-related terms. The parameters to be specified include keywords, geographic market, output mode, output format, range of dates, and more:
+Next, let's create two string objects which we'll use for our retrieval queries: one for Ukraine-related terms and one for Russia-related terms. The parameters to be specified include keywords, geographic market, output mode, output format, range of dates, and more:
 
 ```
 query_url_ukr = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(ukraine%20OR%20ukrainian%20OR%20zelenskyy%20OR%20zelensky%20OR%20kiev%20OR%20kyiv)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={today_str}120000"
@@ -293,7 +293,7 @@ dbc.Col([html.H1('US National Television News Coverage of the War in Ukraine')],
 
 This code specifies that we only want one column in Row 1, and we use the `H1` HTML element to enclose the dashboard's title. `className` sets the [CSS](https://perma.cc/BK4W-2JKY) styling for the `H1` HTML element, in this case the title will be centered, with margins set on top and bottom.
 
-In Row 2, we're creating a text box which directs users to select a date range and setting the text font to bold:
+In Row 2, we're creating a text box with a bold font which directs users to select a date range:
 
 ```
 dbc.Row([ # row 2
@@ -438,7 +438,7 @@ line_fig_ukr.update_xaxes(tickformat="%b %d<br>%Y")
 line_fig_rus.update_xaxes(tickformat="%b %d<br>%Y")
 ```
 
-`%b` represents the shorthand name of the month (e.g. _Dec_ for Decemeber); `%d` is the day and month (e.g. 01-31); `<br>` is the newline element in HTML; and `%Y` is the four-digit year (e.g. 2024).
+`%b` represents the shorthand name of the month (e.g. _Dec_ for December); `%d` is the day of the month (01 to 31); `<br>` is the newline element in HTML; and `%Y` is the four-digit year (e.g. 2024).
  
 Finally, note that the two returned objects (`line_fig_ukr` and `line_fig_rus`) should again be ordered as they were in the callback decorator (so here, our Ukraine's line graph goes first).
 
@@ -475,7 +475,7 @@ If you want to host your own server, or someone at your institution can help you
 
 ### Setting up in GitHub
 
-You will need to upload the `ph-dash` folder to a GitHub repository. You can do this in the command line or using GitHub Desktop (see [Amanda Visconti's _Programming Historian_ lesson](/en/lessons/building-static-sites-with-jekyll-github-pages#github--github-pages-) if you are new to Git or GitHub).
+You will need to turn the `ph-dash` folder into a GitHub repository. You can do this in the command line or using GitHub Desktop (see [Amanda Visconti's _Programming Historian_ lesson](/en/lessons/building-static-sites-with-jekyll-github-pages#github--github-pages-) if you are new to Git or GitHub).
 
 Then, install one more library for deployment by entering `$pip install gunicorn`. The [`gunicorn`](https://gunicorn.org/) library allows Render to set up a web server for you.
 

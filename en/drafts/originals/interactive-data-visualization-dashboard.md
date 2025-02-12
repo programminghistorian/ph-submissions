@@ -52,6 +52,8 @@ Research in mass communication studies has traditionally followed Quantitative C
 
 In our case study, we will aim to discover patterns within a large amount of data[^6] using an approach that is situated somewhere in between CA and ATA. On the one hand, our approach only conducts [distant reading](https://perma.cc/L4PQ-XGAP), relying less on human coders (as is often required in CA). On the other hand, this approach only measures the manifest features of text (in this case, frequency) and does not involve any other types of algorithmic classification often seen in ATA. 
 
+This intermediate approach offers several advantages: it allows for efficient analysis of large-scale datasets while requiring minimal human resources (since it relies on little manual coding), and at the same time avoiding the complexities which often come with using more sophisticated ATA algorithms. What's more, by analysing only manifest features of text, it maintains a methodological transparency and reliability. This balance makes the approach particularly suitable for researchers who want to conduct systematic analyses of large text corpora while maintaining methodological practicality.
+
 ### Dataset
 
 This lesson uses a free and open database from the Internet Archive's [Television Explorer](https://perma.cc/BT87-XD4G). This database tracks the amount of airtime that U.S. television stations give to certain keywords, based on the closed captioning text. The data-retrieval tool we'll use is the [2.0 TV API](https://perma.cc/BLW9-N9YL) made available by the Global Database of Events, Language and Tone (GDELT). We will retrieve the data for our dashboard via the 2.0 TV API then use it to prepare a dataset like the one below, on which we will build an interactive dashboard.
@@ -73,9 +75,11 @@ This lesson uses a free and open database from the Internet Archive's [Televisio
 
 ### Why Dash in Python?
 
-There are many alternative tools available for creating interactive dashboards – for example, those discussed in [this lesson on Shiny in R](/en/lessons/shiny-leaflet-newspaper-map-tutorial). Some options do not even require any coding, such as the proprietary software [Tableau](https://www.tableau.com/) or [ArcGIS](https://www.arcgis.com/index.html). The case for Python is that it is a widely used programming language. Python is also flexible and powerful enough to process a dataset in its full life cycle (from data collection, through data analysis, and to data visualization). 
+There are many alternative tools available for creating interactive dashboards – for example, those discussed in [Yann Ryan's lesson on Shiny in R](/en/lessons/shiny-leaflet-newspaper-map-tutorial). Some options do not even require any coding, such as the proprietary software [Tableau](https://www.tableau.com/) or [ArcGIS](https://www.arcgis.com/index.html). The case for Python is that it is a widely used programming language. Python is also flexible and powerful enough to process a dataset in its full life cycle (from data collection, through data analysis, and to data visualization). 
 
-If you have already been using Python, the Dash library is a good option, as it is developed by [Plotly](https://plotly.com/), the go-to tool for data visualization in various programming languages including Python, R, and JavaScript. If you're interested in learning more, Grace Di Méo's lesson [Creating Interactive Visualizations with Plotly](/en/lessons/interactive-visualization-with-plotly) may also be of interest. As an alternative, you could use both Plotly and [Flask](https://flask.palletsprojects.com) (the web application framework underlying Dash) directly, but this requires deep knowledge of JavaScript and HTML. If you want to focus on data visualization rather than the technical details of web development, Dash is highly recommended because it provides an efficicient workflow for publishing interactive visualizations. 
+If you have already been using Python, the Dash library is a good option, as it is developed by [Plotly](https://plotly.com/), the go-to tool for creating static graphs in various programming languages including Python, R, and JavaScript (see for example Grace Di Méo's lesson [Creating Interactive Visualizations with Plotly](/en/lessons/interactive-visualization-with-plotly)). With Dash, you can design an interactive dashboard that allows users to filter the dataset and change the resulting graphs on the fly. You can also deploy your application on the web to make it available to a wider public. Essentially, while Plotly lets you create individual data graphs, Dash will let you incorporate them into a dashboard with features like drop-down menus, search boxes, checklists, or sliders. By publishing a dashboard rather than just a static graph, you let your readers explore the dataset themselves, instead of limiting them to seeing only the information you want to present. This is a powerful tool, especially in an academic context.
+
+As an alternative to Dash, you could use both Plotly and [Flask](https://flask.palletsprojects.com) (the web application framework underlying Dash) directly, but this requires deep knowledge of JavaScript and HTML. If you want to focus on data visualization rather than the technical details of web development, Dash is highly recommended because it provides an efficicient workflow for publishing interactive visualizations. 
 
 
 ## Preparatory Steps
@@ -87,7 +91,6 @@ In this lesson, you will write code in a `.py` file stored in a folder on your l
   * Python 3 (3.7.13 or later) (see [Mac Installation](/en/lessons/mac-installation), [Windows Installation](en/lessons/windows-installation), or [Linux Installation](en/lessons/linux-installation))
   * Command line (see introduction for [Windows](/en/lessons/intro-to-powershell) or [macOS/Linux](/en/lessons/intro-to-bash))
   * A text editor to write Python code (options include [Atom](https://atom.io/), [Notepad++](https://notepad-plus-plus.org/), [Visual Studio Code](https://code.visualstudio.com/))
-  * A web browser
   * A [GitHub](https://github.com) account
   * Have [git](https://git-scm.com/doc) ready to use in command line, or use either of the following (not covered in this lesson):
     * [GitHub Desktop](https://desktop.github.com/)
@@ -328,7 +331,7 @@ dbc.Row([ # row 3
     ])
 ```
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.png" alt="A screenshot showing what the date range picker looks like" caption="Figure 2. The interactive date range picker feature." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-02.gif" alt="A screen recording showing how editing the date on the date range picker changes the shape of the graph that is formed." caption="Figure 2. The interactive date range picker feature." %}
 
 Using the code above, we have defined that when the dashboard is first loaded the date range will be set from the earliest possible to the latest possible date in the `date_col` column of the dataframe by default. Remember that those two dates are within a maximum range of 365 days apart (but the actual difference between eariest and latest as shown in the date picker could be shorter due to the fact that the most recent data may not be available yet).
 
@@ -473,7 +476,7 @@ If you are working in a Jupyter Notebook, you can also choose to review the dash
 
 The dashboard should look like this:
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-04.png" alt="A screenshot showing what the dashboard looks like. There are two line graphs: one shows how media attention to Ukraine-related words in TV stations changes over time; the other shows the same but for Russia-related words" caption="Figure 3. The TV airtime dashboard interface." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.png" alt="A screenshot showing what the dashboard looks like. There are two line graphs: one shows how media attention to Ukraine-related words in TV stations changes over time; the other shows the same but for Russia-related words" caption="Figure 3. The TV airtime dashboard interface." %}
 
 ## Deploying the Dashboard
 
@@ -488,7 +491,7 @@ If you want to host your own server, or someone at your institution can help you
 
 ### Setting up in GitHub
 
-You will need to turn the `ph-dash` folder into a GitHub repository. You can do this in the command line or using GitHub Desktop (see [Amanda Visconti's _Programming Historian_ lesson](/en/lessons/building-static-sites-with-jekyll-github-pages#github--github-pages-) if you are new to Git or GitHub).
+You will need to turn the `ph-dash` folder into a GitHub repository. You can do this in the command line by executing `$git init` or using GitHub Desktop (see [Amanda Visconti's _Programming Historian_ lesson](/en/lessons/building-static-sites-with-jekyll-github-pages#github--github-pages-) if you are new to Git or GitHub).
 
 Then, install one more library for deployment by entering `$pip install gunicorn`. The [`gunicorn`](https://gunicorn.org/) library allows Render to set up a web server for you.
 
@@ -567,7 +570,7 @@ If you'd prefer to download the data directly yourself, I have provided [the nec
 
 If you have downloaded the data in CSV format, you can run the `app-rq2.py` script directly, without retrieving the data from Chronicling America. The final product should look like this:
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-06.png" alt="A screenshot showing what the dashboard for the extended case looks like. There are two pie graphs: one shows the top 10 non-English newspapers in the U.S. in the 1690s; the other shows the same but for 2020s" caption="Figure 4. The non-English-newspaper dashboard interface." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-04.png" alt="A screenshot showing what the dashboard for the extended case looks like. There are two pie graphs: one shows the top 10 non-English newspapers in the U.S. in the 1690s; the other shows the same but for 2020s" caption="Figure 4. The non-English-newspaper dashboard interface." %}
 
 Each pie chart shows the top 10 languages of non-English newspapers in a given decade. To deploy this dashboard online, you can follow the same procedure as for the TV airtime example.
 

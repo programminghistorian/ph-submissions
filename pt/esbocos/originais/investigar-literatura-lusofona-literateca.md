@@ -28,7 +28,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introdução
 
-Esta lição ensina a utilizar o [projeto Acesso a corpos / Disponibilização de corpos](https://www.linguateca.pt/ACDC/) (AC/DC), mais especificamente a Literateca, para investigar textos literários em português: por exemplo para estudar diferenças entre autores, escolas, e géneros literários ao longo do tempo. Além disso, ensina a apresentar os resultados da pesquisa por meio de vários tipos de visualização utilizando a linguagem R. 
+Esta lição ensina a utilizar o [projeto Acesso a corpos / Disponibilização de corpos](https://www.linguateca.pt/ACDC/) (AC/DC), mais especificamente a Literateca, para analisar textos literários em português. Usando a Literateca, é possível estudar, por exemplo, diferenças entre autores, escolas, e géneros literários ao longo do tempo. Além disso, ensina a apresentar os resultados da pesquisa por meio de vários tipos de visualização utilizando a linguagem R. 
 
 Para seguir a lição, tem de saber o que são folhas de registo (*dataframes*) em R, e estar familiarizado com as formas de produzir gráficos de barra (*bar plots*) e gráficos de caixa (*boxplots*) no R. Além de consultar as [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares), pode também seguir o curso [Visualização básica de dados tabulares com R](https://programminghistorian.org/pt/licoes/visualizacao-basica-dados-tabulares-R).
 
@@ -47,17 +47,17 @@ Após concluir esta lição, estará
 
 ## Apresentação do AC/DC
 
-O AC/DC é um projeto, já antigo, cujo objetivo é tornar disponíveis corpos para o português. Na presente lição vamos simplesmente usar o corpo [Literateca](https://www.linguateca.pt/acesso/corpus.php?corpus=LITERATECA), que contém mais de 900 obras escritas por mais de 280 escritores de língua portuguesa. (O AC/DC faz parte de um projeto maior, a [Linguateca]((https://www.linguateca.pt/).)
+O AC/DC é um projeto, já antigo, cujo objetivo é tornar disponíveis corpos para o português. Nesta lição vamos utilizar apenas o corpo [Literateca](https://www.linguateca.pt/acesso/corpus.php?corpus=LITERATECA), que contém mais de 900 obras escritas por mais de 280 escritores de língua portuguesa. (O AC/DC faz parte de um projeto maior, a [Linguateca]((https://www.linguateca.pt/).)
 
-Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso, o estudo da língua na literatura em português) e classificado (o que se chama geralmente metadadados). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^1] e enriquecidos com mais anotação semântica, como descrito em Santos (2014)[^2]. Vários exemplos de uso do AC/DC são também apresentados em Santos (2021)[^3].
+Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso, o estudo da língua na literatura em português) e classificado (o que se chama geralmente metadadados). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^1] e enriquecidos com anotação semântica adicional, como descrito em Santos (2014)[^2]. Vários exemplos de uso do AC/DC são também apresentados em Santos (2021)[^3].
 
 A procura nos corpos é feita usando o sistema [Open CWB](https://cwb.sourceforge.io/)[^4], que é um sistema para gerir e interrogar grandes corpos anotados (contendo até dois biliões de palavras).
 
 ### A sintaxe de procura
 
-Ao criar um corpo, define-se um conjunto de atributos que cada unidade (palavra, número ou sinal de pontuação) tem, e, no processo de anotação, preenchem-se os valores desses atributos, que depois servirão como critérios de procura.
+Ao criar um corpo, define-se um conjunto de atributos para cada unidade -- seja palavra, número ou sinal de pontuação. No processo de anotação, preenchem-se os valores desses atributos, que depois servirão como critérios de procura.
 
-O primeiro atributo é a unidade em si, em seguida temos atributos morfosintáticos (por exemplo o lema, a categoria gramatical, o género morfológico), semânticos (o campo semântico a que pertence, o grupo a que pertence), e extralinguísticos (o autor, o sexo do autor, a data de publicação, a variedade do português).
+O primeiro atributo é a própria unidade. Em seguida, há os atributos morfossintáticos, como o lema, a categoria gramatical e o género morfológico. Também existem semânticos, como o campo semântico e o grupo aos quais a unidade pertence. Por último, há os atributos extralinguísticos, que incluem informações como o autor, o sexo do autor, a data de publicação e a variedade do português.
 
 Isso é exemplificado na tabela seguinte:
 
@@ -85,7 +85,7 @@ Assim, para a mesma procura é possível escolher como resultado uma concordânc
 
 Assim, o AC/DC permite fazer buscas nos textos, e tanto identificar em contexto o resultado (para leitura próxima) como produzir um resumo quantitativo (a chamada leitura distante).
 
-A sintaxe da procura é muito mais poderosa – além de buscar por palavras, permite pesquisar em todos os atributos, e através de expressões regulares.
+A sintaxe da procura é muito mais poderosa – além de buscar por palavras, permite pesquisar em todos os atributos, e utilizar expressões regulares, quer nos valores dos atributos, quer sobre as próprias unidades.
 
 Alguns exemplos aqui:
 
@@ -104,9 +104,9 @@ Para a Literateca, temos os seguintes atributos, identificados pelo pedido de di
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-04.png" alt="Distribuições próprias da Literateca, mostrando as opções" caption="Figura 4. As distribuições de atributos extralinguísticos possíveis na Literateca" %}
 
-O género de texto (atributo classe) está dividido entre Teatro, Prosa e Poesia, e em relação à Prosa, pode ter um dos seguintes valores: romance, novela, contos (livro de contos), conto, ensaio, cronica, historia, viagens, memorias, sermao, narrativaBiblica, autobiografia e cartas.
+O género de texto (atributo classe) está dividido entre Teatro, Prosa e Poesia. No caso da Prosa, pode assumir um dos seguintes valores: romance, novela, contos (livro de contos), conto, ensaio, cronica, historia, viagens, memorias, sermao, narrativaBiblica, autobiografia e cartas.
 
-Para saber que obras ou autores foram incluídos, e qual a forma de os procurar, consulte a página [lista de autores](https://www.linguateca.pt/acesso/lista_autores_literateca.html).
+Para saber que obras ou autores foram incluídos, assim como a forma de os procurar, consulte a página [lista de autores](https://www.linguateca.pt/acesso/lista_autores_literateca.html).
 
 ### Outras formas de pesquisa
 
@@ -150,7 +150,7 @@ obra autor variante data decada
 
 e guardá-la num ficheiro com um nome apropriado. Escolhemos `distribuicaoObra.tsv`: [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv).
 
-É importante esclarecer que algumas obras não têm data, apenas o século a que pertencem. Nesse caso, pode colocar-se uma data indicativa (como o ano 1650 para representar o século XVII) ou retirar-se essas obras do ficheiro, antes de invocar o R. [^7]
+É importante esclarecer que algumas obras não possuem uma data específica, apenas o século a que pertencem. Nesse caso, pode-se atribuir uma data aproximada (como o ano 1650 para representar o século XVII) ou remver essas obras do ficheiro antes de processar os dados no R. [^7]
 
 Convém também converter os ficheiros para o formato UTF-8.
 
@@ -173,7 +173,7 @@ roupaObras$rouparel<-roupaObras$roupa/roupaObras$tamanho
 roupaObrasOrdenada<-roupaObras[order(roupaObras$rouparel, decreasing=TRUE),]
 ```
 
-Muito brevemente, as quatro primeiras linhas leem os ficheiros e dão o nome às colunas, a quinta junta a informação das duas folhas de registo (dataframes) numa só, a sexta calcula a frequência relativa de roupa por número de unidades, criando uma coluna extra chamada `rouparel`, e a sétima obtém uma nova folha de registo ordenada pelo peso relativo do vestuário (que está na coluna `rouparel`).
+De forma resumida, as quatro primeiras linhas leem os ficheiros e atribuem nomes às colunas. A quinta combina a informação das duas folhas de registo (dataframes) numa só. A sexta calcula a frequência relativa de roupa por número de unidades, criando uma nova coluna chamada `rouparel`. Por fim, a sétima linha obtém uma nova folha de registo ordenada pelo peso relativo do vestuário, que está na coluna `rouparel`.
 
 Com os próximos comandos, podemos visualizar isso num gráfico de barras (Figura 5) e num diagrama de caixa (boxplot) (Figura 6), neste caso para dez autores que têm várias obras na Literateca.
 
@@ -248,7 +248,7 @@ barplot(xtabs(aparencia$genrel~aparencia$gen+aparencia$decada),beside=TRUE,las=2
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de barras de caracterizações de aparência na Literateca por década, mostrando que, em quase todas, a aparência das mulheres é mais mencionada" caption="Figura 8. Caracterização da aparência feminina e masculina por década, num gráfico de barras" %}
 
-Vemos na Figura 8 que as mulheres têm quase sempre mais caracterização de aparência do que os homens, o que não deve constituir uma surpresa. Para muito mais informação sobre isto e sobre a construção social do género, veja-se o artigo Freitas &amp; Santos (2023)[^8].
+Vemos na Figura 8 que as mulheres têm quase sempre mais caracterização de aparência do que os homens, o que não deve constituir uma surpresa. Para obter mais informação sobre este tema e sobre a construção social do género, consultem o artigo Freitas &amp; Santos (2023)[^8].
 
 
 ### A localização na literatura portuguesa
@@ -267,7 +267,7 @@ Assim como podemos investigar qual a cidade mais falada por obra, usando o Distr
 ?variante=/PT/ sema=/Local:cidade/ obra lema
 ```
 
-Podem fazer um gráfico de barras que represente este resultado. 
+É naturalmente possível fazer um gráfico de barras que represente este resultado. 
 Aqui, vamos comparar o número de locais empregues por autores diferentes, em romances e novelas, usando mais uma vez o Distribuidor e guardando o resultado em [distribuicaoLocaisObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoLocaisObra.tsv):
 
 ```

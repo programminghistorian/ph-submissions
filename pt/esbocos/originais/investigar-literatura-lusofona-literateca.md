@@ -23,14 +23,14 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-## Objetivos
+
 
 
 ## Introdução
 
-Esta lição ensina a utilizar o [projeto Acesso a corpos / Disponibilização de corpos](https://www.linguateca.pt/ACDC/) (AC/DC), mais especificamente a Literateca, para investigar textos literários em português: por exemplo para estudar diferenças entre autores, escolas, e géneros literários ao longo do tempo. Além disso, ensina a apresentar os resultados da pesquisa com vários tipos de visualização utilizando a linguagem R. 
+Esta lição ensina a utilizar o [projeto Acesso a corpos / Disponibilização de corpos](https://www.linguateca.pt/ACDC/) (AC/DC), mais especificamente a Literateca, para investigar textos literários em português: por exemplo para estudar diferenças entre autores, escolas, e géneros literários ao longo do tempo. Além disso, ensina a apresentar os resultados da pesquisa por meio de vários tipos de visualização utilizando a linguagem R. 
 
-Para seguir a lição, tem de conhecer o que são folhas de registo (*dataframes*) em R, e estar familiarizado com as formas de produzir gráficos de barra (*bar plots*) e gráficos de caixa (*boxplots*) no R. Além de consultar as [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares), pode também seguir o curso [Visualização básica de dados tabulares com R](https://programminghistorian.org/pt/licoes/visualizacao-basica-dados-tabulares-R).
+Para seguir a lição, tem de saber o que são folhas de registo (*dataframes*) em R, e estar familiarizado com as formas de produzir gráficos de barra (*bar plots*) e gráficos de caixa (*boxplots*) no R. Além de consultar as [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares), pode também seguir o curso [Visualização básica de dados tabulares com R](https://programminghistorian.org/pt/licoes/visualizacao-basica-dados-tabulares-R).
 
 Os casos específicos discutidos são:
 
@@ -39,7 +39,7 @@ Os casos específicos discutidos são:
 * A localização na literatura portuguesa
 * O helenismo na literatura brasileira
 
-Depois de aprender esta lição, estará
+Após concluir esta lição, estará
 
 * familiarizado com o AC/DC para estudos literários
 * mais familiarizado com as ferramentas básicas de visualização do R
@@ -47,17 +47,17 @@ Depois de aprender esta lição, estará
 
 ## Apresentação do AC/DC
 
-O AC/DC é um projeto já antigo cujo objetivo era tornar disponíveis corpos para o português. Na presente lição vamos simplesmente usar o corpo [Literateca](https://www.linguateca.pt/acesso/corpus.php?corpus=LITERATECA), que contém mais de 900 obras escritas por mais de 280 escritores lusófonos.
+O AC/DC é um projeto, já antigo, cujo objetivo é tornar disponíveis corpos para o português. Na presente lição vamos simplesmente usar o corpo [Literateca](https://www.linguateca.pt/acesso/corpus.php?corpus=LITERATECA), que contém mais de 900 obras escritas por mais de 280 escritores de língua portuguesa. (O AC/DC faz parte de um projeto maior, a [Linguateca]((https://www.linguateca.pt/).)
 
-Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso o estudo da língua na literatura em português) e classificado (o que se chama geralmente metadata). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^1] e também são objeto de mais anotação semântica, como descrito em Santos (2014)[^2]. Vários exemplos de uso do AC/DC foram também descritos em Santos (2021)[^3].
+Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso, o estudo da língua na literatura em português) e classificado (o que se chama geralmente metadadados). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^1] e enriquecidos com mais anotação semântica, como descrito em Santos (2014)[^2]. Vários exemplos de uso do AC/DC são também apresentados em Santos (2021)[^3].
 
 A procura nos corpos é feita usando o sistema [Open CWB](https://cwb.sourceforge.io/)[^4], que é um sistema para gerir e interrogar grandes corpos anotados (contendo até dois biliões de palavras).
 
 ### A sintaxe de procura
 
-Ao criar um corpo, define-se um conjunto de atributos que cada unidade (palavra, número ou sinal de pontuação) tem, e durante a anotação, preenchem-se os valores desses atributos, que depois entram nas pesquisas.
+Ao criar um corpo, define-se um conjunto de atributos que cada unidade (palavra, número ou sinal de pontuação) tem, e, no processo de anotação, preenchem-se os valores desses atributos, que depois servirão como critérios de procura.
 
-O primeiro atributo é a unidade em si, depois temos atributos morfosintáticos (por exemplo o lema, a categoria gramatical, o género morfológico), semânticos (o campo semântico a que pertence, o grupo a que pertence), e extralinguísticos (o autor, o sexo do autor, a data de publicação, a variedade do português).
+O primeiro atributo é a unidade em si, em seguida temos atributos morfosintáticos (por exemplo o lema, a categoria gramatical, o género morfológico), semânticos (o campo semântico a que pertence, o grupo a que pertence), e extralinguísticos (o autor, o sexo do autor, a data de publicação, a variedade do português).
 
 Isso é exemplificado na tabela seguinte:
 
@@ -68,28 +68,28 @@ Isso é exemplificado na tabela seguinte:
 | pilhas | pilha | N | 0 |
 | ! | ! | PU | 0 |
 
-Tabela 1: Esta tabela contém um exemplo do texto "Estou sem pilhas!" no formato AC/DC, com quatro atributos (word, lema, pos, temcagr). Na realidade, a Literateca tem 27 atributos.
+Tabela 1: Esta tabela contém um exemplo do texto "Estou sem pilhas!" no formato AC/DC, com quatro atributos: word, lema, pos, temcagr (este último indica, conforme a categoria gramatica, o tempo verbal, o caso pronominal ou o grau adjetival). A Literateca contém 27 atributos.
 
 Um sistema de interrogação de corpos tem dois modos:
 
 * a identificação do que se procura em contexto (que no AC/DC é em geral uma frase), e se chama uma concordância; 
 * a distribuição quantitativa dos resultados do que se procurou
 
-Assim, para a mesma procura eu posso escolher como resultado uma concordância, ou a distribuição segundo um dos muitos atributos.
+Assim, para a mesma procura é possível escolher como resultado uma concordância, ou a distribuição segundo um dos muitos atributos.
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-01.png" alt="Pesquisa pedindo uma concordância, mostrando a expressão de procura e as primeiras quatro ocorrências da palavra cara" caption="Figura 1. Pesquisa pedindo uma concordância (apenas 4 dos 4889 resultados da pesquisa pela palavra 'cara')" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-01.png" alt="Pesquisa pedindo uma concordância, mostrando a expressão de procura e as primeiras quatro ocorrências da palavra cara" caption="Figura 1. Pesquisa pela palavra 'cara', pedindo uma concordância (a figura exibe apenas 4 dos 4889 resultados da pesquisa)" %}
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-02.png" alt="Pesquisa pedindo a distribuição por categoria gramatical da palavfra cara, mostrando a expressão de procura e as cinco categorias gramaticais em que aperece, com a frequência absoluta" caption="Figura 2. Pesquisa pedindo uma distribuição por categoria gramatical" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-02.png" alt="Pesquisa pedindo a distribuição por categoria gramatical da palavfra cara, mostrando a expressão de procura e as cinco categorias gramaticais em que aperece, com a frequência absoluta" caption="Figura 2. Pesquisa exibindo a distribuição por categoria gramatical" %}
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-03.png" alt="Pesquisa pedindo a distribuição por autor da palavra inquietantemente, que só aparece em dois autores" caption="Figura 3. Pesquisa pedindo uma distribuição por autor" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-03.png" alt="Pesquisa pedindo a distribuição por autor da palavra inquietantemente, que só aparece em dois autores" caption="Figura 3. Pesquisa exibindo uma distribuição por autor" %}
 
 Assim, o AC/DC permite fazer buscas nos textos, e tanto identificar em contexto o resultado (para leitura próxima) como produzir um resumo quantitativo (a chamada leitura distante).
 
-A sintaxe da procura é muito mais poderosa – não permite apenas procurar por palavras, é possível procurar em todos os atributos, e através de expressões regulares.
+A sintaxe da procura é muito mais poderosa – além de buscar por palavras, permite pesquisar em todos os atributos, e através de expressões regulares.
 
 Alguns exemplos aqui:
 
-* `[lema=".*ver" & pos="V.*"]` procurar casos de verbos acabados em *ver*
+* `[lema=".*ver" & pos="V.*"]` procurar casos de verbos que terminem em *ver*
 * `[pos="N"] [pos="ADJ.*" & word="re.*"]` procurar casos de substantivos imediatamente seguidos de adjetivos iniciados por *re*
 * `[lema="de"] [pos="DET.*"] [pos="N" & pessnum="S"]` procurar casos da preposição *de* seguida por um determinante e por um ou mais adjetivos e um substantivo no singular
 *  `[lema="gostar"] [pos!="[NV].*"]* [func="<PIV"] [func=">N"]* @[func="P<"]` procurar casos do verbo *gostar* até obter o núcleo do seu objeto de preposição
@@ -102,11 +102,11 @@ Enquanto a informação morfossintática e semântica é a mesma para todos os c
 
 Para a Literateca, temos os seguintes atributos, identificados pelo pedido de distribuição na figura 4.
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-04.png" alt="Distribuições próprias da Literateca, mostrando as opções" caption="Figura 4. Quais as distribuições de atributos extralinguísticos possíveis na Literateca" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-04.png" alt="Distribuições próprias da Literateca, mostrando as opções" caption="Figura 4. As distribuições de atributos extralinguísticos possíveis na Literateca" %}
 
 O género de texto (atributo classe) está dividido entre Teatro, Prosa e Poesia, e em relação à Prosa, pode ter um dos seguintes valores: romance, novela, contos (livro de contos), conto, ensaio, cronica, historia, viagens, memorias, sermao, narrativaBiblica, autobiografia e cartas.
 
-Para saber as obras ou autores incluídos, e qual a forma de os procurar, consulte a página [lista de autores](https://www.linguateca.pt/acesso/lista_autores_literateca.html).
+Para saber que obras ou autores foram incluídos, e qual a forma de os procurar, consulte a página [lista de autores](https://www.linguateca.pt/acesso/lista_autores_literateca.html).
 
 ### Outras formas de pesquisa
 
@@ -122,7 +122,7 @@ Se, por exemplo, quisermos saber a quantidade de menções a roupa distribuídas
 ?sema=/.*roupa.*/ obra autor variante
 ```
 
-e, escolhendo a opção tsv para Tipo de resultado, obtém-se um ficheiro que pode ser lido depois diretamente pelo R. Chamamos-lhe [distribuicaoRoupa.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoRoupa.tsv). Para mais informação sobre roupa, consulte o artigo Santos (2021).[^6]
+e, escolhendo a opção tsv (do inglês "tab separated values") para Tipo de resultado, obtém-se um ficheiro com dados tabulares que pode ser lido depois diretamente pelo R. Chamamos-lhe [distribuicaoRoupa.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoRoupa.tsv). Para mais informação sobre a exploração do vestuário na literatura em portuguẽs, consulte o artigo Santos (2021).[^6]
 
 
 Mostro aqui o princípio desse ficheiro:
@@ -140,9 +140,9 @@ Mostro aqui o princípio desse ficheiro:
 |A_semana | 533 | MacAss | BR | 533 | 100.00 |
 
 
-A primeira coluna indica o nome da obra, a segunda o número de vezes que uma palavra marcada como sendo do campo semântico da roupa foi encontrada nessa obra, depois vem a coluna com o nome do autor e com o nome da variante. As próximas colunas não são relevantes, visto que não há variação da obra em relação ao autor ou à variante (por exemplo, a obra *O primo Basílio* é totalmente escrita por Eça de Queirós, na variante de português de Portugal...).
+A primeira coluna indica o nome da obra, a segunda o número de vezes que uma palavra marcada como sendo do campo semântico da roupa foi encontrada nessa obra, depois vem a coluna com o nome do autor e com o nome da variante. As próximas colunas, relativas à frequência parcial, não são relevantes, visto que não há variação da obra em relação ao autor ou à variante (por exemplo, a obra *O Primo Basílio* é totalmente escrita por Eça de Queirós, na variante de português de Portugal...).
 
-Para ter informação extralinguística sobre todas as obras da Linguateca, basta pedir no Distribuidor essa informação, por exemplo:
+Para obter informação extralinguística sobre todas as obras da Linguateca, basta pedir no Distribuidor essa informação, assim:
 
 ```
 obra autor variante data decada
@@ -150,13 +150,13 @@ obra autor variante data decada
 
 e guardá-la num ficheiro com um nome apropriado. Escolhemos `distribuicaoObra.tsv`: [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv).
 
-É importante esclarecer que algumas obras não têm data, apenas o século a que pertencem. Nesse caso, pode colocar-se uma data indicativa (como o ano 1650 para representar o século XVII) ou retirar-se essa obras do ficheiro, antes de invocar o R. [^7]
+É importante esclarecer que algumas obras não têm data, apenas o século a que pertencem. Nesse caso, pode colocar-se uma data indicativa (como o ano 1650 para representar o século XVII) ou retirar-se essas obras do ficheiro, antes de invocar o R. [^7]
 
-Convém também converter os ficheiros para UTF8.
+Convém também converter os ficheiros para o formato UTF-8.
 
 ## O uso da linguagem R
 
-Para descrever e visualizar os resultados, podemos incluir os ficheiros produzidos pelo Distribuidor no ambiente de programação R.
+Para descrever e visualizar os resultados, podemos importar os ficheiros produzidos pelo Distribuidor no ambiente de programação R.
 
 ### Roupa na literatura
 
@@ -173,7 +173,7 @@ roupaObras$rouparel<-roupaObras$roupa/roupaObras$tamanho
 roupaObrasOrdenada<-roupaObras[order(roupaObras$rouparel, decreasing=TRUE),]
 ```
 
-Muito brevemente, as quatro primeiras linhas leem os ficheiros e dão o nome às colunas, a quinta junta a informação nas duas folhas de registo (dataframes) numa só, a sexta calcula a frequência relativa de roupa por número de unidades, criando uma coluna extra chamada `rouparel`, e a sétima obtém uma nova folha de registo ordenada pelo peso relativo do vestuário (que está na coluna `rouparel`).
+Muito brevemente, as quatro primeiras linhas leem os ficheiros e dão o nome às colunas, a quinta junta a informação das duas folhas de registo (dataframes) numa só, a sexta calcula a frequência relativa de roupa por número de unidades, criando uma coluna extra chamada `rouparel`, e a sétima obtém uma nova folha de registo ordenada pelo peso relativo do vestuário (que está na coluna `rouparel`).
 
 Com os próximos comandos, podemos visualizar isso num gráfico de barras (Figura 5) e num diagrama de caixa (boxplot) (Figura 6), neste caso para dez autores que têm várias obras na Literateca.
 
@@ -190,7 +190,7 @@ boxplot(dezautores$rouparel~dezautores$autor, xlab="",ylab="",las=2)
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-06.png" alt="Gráfico de caixa do peso da roupa em dez autores da Literateca, mostrando que Eça de Queirós, José de Alencar e Aluísio de Azevedo são os que mencionam mais roupa" caption="Figura 6. A distribuição de roupa por dez autores na Literateca, num gráfico de caixa" %}
 
-Vemos pelas duas visualizações que, embora as obras com mais menção relativa a roupa fossem contos de Machado de Assis (Figura 5), ao ver o conjunto das suas obras (Figura 6) é Eça de Queirós quem dá mais importância a esse campo semântico.
+Vemos pelas duas visualizações que, embora as obras com mais menção relativa a roupa fossem contos de Machado de Assis (Figura 5), ao ver o conjunto das suas obras (Figura 6) é Eça de Queirós quem dá mais importância a esse campo semântico (a mediana de EcaQue é significativamente mais elevada do que a de MacAss).
 
 Por outro lado, também podemos observar a menção ao campo semântico do vestuário ao longo do tempo, usando para isso a data ou a década a que cada obra pertence, na Figura 7.
 
@@ -199,6 +199,8 @@ boxplot(roupaObras$rouparel~roupaObras$decada,las=2,xlab="",ylab="")
 ```
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-07.png" alt="Gráfico de caixa da roupa por década, mostrando que a partir do fim do século XIX vai aumentando" caption="Figura 7. A distribuição de roupa por década na Literateca, num gráfico de caixa" %}
+
+Pela figura podemos observar que a partir de 1870 existem muito mais referências ao vestuário na literatura lusófona do que anteriormente.
 
 ### Diferenças entre as personagens femininas e masculinas
 
@@ -211,15 +213,15 @@ No AC/DC, marcamos todas as caracterizações como pertencendo a uma de quatro c
 
 Para explicação destas categorias e da forma de anotação, ver Freitas e Santos (2023)[^8].
 
-Vamos agora ver que casos femininos e masculinos estão marcados com pred:aparencia, ao longo do tempo.
+Vamos agora ver que casos femininos e masculinos estão marcados com `pred:aparencia`, ao longo do tempo.
 
-No distribuidor, pedimos a distribuição dos casos de aparência (no caso das obras literárias em prosa):
+No distribuidor, pedimos a distribuição dos casos de aparência, selecionando apenas as obras literárias em prosa:
 
 ```
 ?sema=/.*pred:aparencia.*/ ?classe=/Prosa:.*/ ?decada=/[12].../ decada gen
 ```
 
-e dos casos de predicação, seja ela qual for, em que se descreve uma pessoa (também no caso das obras literárias em prosa):
+e dos casos de predicação, seja ela qual for, em que se descreve uma pessoa (também selcionando as obras literárias em prosa):
 
 ```
 ?sema=/.*pred.*/ ?classe=/Prosa:.*/ ?decada=([12].../ decada gen
@@ -299,9 +301,8 @@ Sugiro que façam também uma análise semelhante por autores, para ver (grandes
 
 ### O helenismo na literatura brasileira
 
-Finalmente, apresento aqui um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia[^10], que estudou o helenismo na literatura brasileira.
-
-O trabalho dele é um bom exemplo de como simples tarefas de anotação, em colaboração com o AC/DC, são fáceis de executar e produzem resultados interessantes.
+Finalmente, apresento aqui um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia[^10], que estudou o helenismo na literatura brasileira. 
+O seu trabalho é um bom exemplo de como simples tarefas de anotação, em colaboração com o AC/DC, são fáceis de executar e produzem resultados interessantes.
 
 De facto, Marcus apenas mandou um conjunto de lexemas que, segundo ele, estavam associados à cultura grega, e anotámos o OBras, o principal corpo de literatura brasileira no AC/DC, com essa informação (a marcação `helen`). Assim tornou-se muito fácil medir o peso destas palavras num conjunto de autores brasileiros com obras no OBras.
 
@@ -311,7 +312,7 @@ O leitor é convidado a reproduzir as figuras da tese, visto que todos os comand
 
 Nesta lição tentei apresentar o AC/DC, com duas formas de interação, a "Procura" e o "Distribuidor", e depois, a partir dos resultados, obter gráficos agregadores usando o R.
 
-O objetivo foi demonstrar várias potencialidades do estudo da história da literatura lusófona, através da leitura distante, usando o AC/DC e em particular o corpo Literateca, que contém textos literários em português e está em constante expansão.
+O objetivo foi demonstrar diversas possibilidades de estudo da história da literatura lusófona, por meio da leitura distante, usando o AC/DC e em particular o corpo Literateca, que reúne textos literários em português e está em constante expansão.
 
 
 ## Referências
@@ -334,4 +335,4 @@ O objetivo foi demonstrar várias potencialidades do estudo da história da lite
 
 [^9]: Santos, Diana &amp; Eckhard Bick. "Distant reading places in Portuguese literature". *NorLit2021* (Trondheim, 14-16 June 2022). [pdf](https://www.linguateca.pt/Diana/download/SantosBickNorLit.pdf)
 
-[^10]: Correia, Marcus Vinicius Sousa. "Helenismo nos trópicos: Análise da presença do Helenismo na literatura brasileira pelo viés da leitura distante". Tese de mestrado, Universidade Estadual do Maranhão: UEMA, São Luís, MA, 2023.
+[^10]: Correia, Marcus Vinicius Sousa. "Helenismo nos trópicos: Análise da presença do Helenismo na literatura brasileira pelo viés da leitura distante". Tese de mestrado, Universidade Estadual do Maranhão: UEMA, São Luís, MA, 2023. [pdf](https://www.linguateca.pt/Repositorio/TeseMestradoMarcusViniciusSousaCorreia.pdf)

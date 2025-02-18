@@ -191,7 +191,7 @@ Iremos agora demonstrar como visualizar essas categorias no mapa.
 
 {% include figure.html filename="pt-tr-qgis-camadas-18.png" alt="Um mapa da porção oeste da Ilha de Prince Edward, preenchido pelas linhas azuis do mapa hidrográfico anterior, e também pelo novo gradiente de cores, ilustrando o uso do solo na ilha." caption="Figura 18" %}
 
--   Para voltar ao mapa inteiro da ilha, dê um clique-direito em qualquer uma das camadas e selecione _Aproximar para camada(s)_ (Zoom to Layer(s) na versão em PT-PT).
+-   Para voltar ao mapa inteiro da ilha, dê um clique-direito em qualquer uma das camadas e selecione _Aproximar para camada(s)_ (Aproximar à(s) Camada(s) na versão em PT-PT).
 
 
 {% include figure.html filename="pt-tr-qgis-camadas-19.png" alt="Menu de opções para a camada '1935 inventory_region', com a opção 'Aproximar para camada(s)' selecionada. Ao lado de 'Aproximar para camada(s)', há o ícone de uma lupa sobre uma folha de papel." caption="Figura 19" %}

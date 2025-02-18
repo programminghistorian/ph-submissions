@@ -1,6 +1,6 @@
 ---
-title: "Simulations in Historical Research: How to Create an Agent-Based Model of Communication Networks"
-slug: agent-based-model-communication-networks
+title: "Simulating Historical Communication Networks in Python"
+slug: simulating-historical-communication-networks-python
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD
@@ -18,7 +18,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/605
 difficulty: 3
 activity:
 topics:
-abstract: Short abstract of this lesson
+abstract: This lesson will introduce you to core concepts, methodologies and discussions surrounding simulation methods for historical inquiry. You will be introduced to the basic elements of programming a simulation model by building an Agent-Based Model of historical letter exchanges with the Python library mesa.
 avatar_alt: Drawing of young woman reading a letter by candlelight. 
 doi: XX.XXXXX/phen0000
 ---
@@ -315,7 +315,7 @@ empty_model = LetterModel(10) # create a model with 10 agents
 empty_model.step() # execute the step function once
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-01.png" alt="List of output of the model's agents, each printing the line 'Hi, I am agent X', with X ranging from 0 to 9." caption="Figure 1. Currently, the only thing our agents do is say 'Hi!'" %}
+{% include figure.html filename="en-or-simulating-historical-communication-networks-python-01.png" alt="List of output of the model's agents, each printing the line 'Hi, I am agent X', with X ranging from 0 to 9." caption="Figure 1. Currently, the only thing our agents do is say 'Hi!'" %}
 
 > **Bonus Question 1**:
 > Try changing the scheduler from `RandomActivation` to `BaseScheduler`. What do you observe at the agent's output? How would you need to define your agents if you would like to use StagedActivation?    
@@ -372,7 +372,7 @@ plt.ylabel("Number of Agents")
 plt.show()
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-02.png" alt="A histogram of the agents and the number of letters they received. The y-axis displays the number of agents that have received a certain amount of letters, displayed on the x-axis. For example, only 1 agent received 12 letters (the lowest number) while 2 agents received 26 letters (the highest number)." caption="Figure 2. Histogram of the letters received by all agents." %}
+{% include figure.html filename="en-or-simulating-historical-communication-networks-python-02.png" alt="A histogram of the agents and the number of letters they received. The y-axis displays the number of agents that have received a certain amount of letters, displayed on the x-axis. For example, only 1 agent received 12 letters (the lowest number) while 2 agents received 26 letters (the highest number)." caption="Figure 2. Histogram of the letters received by all agents." %}
 
 You should get something like the distribution above. Yours will almost certainly be slightly different, since each run of the model is random and unique.
 
@@ -401,7 +401,7 @@ plt.ylabel("Number of Agents")
 plt.show()
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-03.png" alt="A histogram of the agents and the number of letters they received. The y-axis displays the number of agents who have received a certain number of letters, displayed on the x-axis." caption="Figure 3. Histogram of the letters received by all agents after 100 model runs." %}
+{% include figure.html filename="en-or-simulating-historical-communication-networks-python-03.png" alt="A histogram of the agents and the number of letters they received. The y-axis displays the number of agents who have received a certain number of letters, displayed on the x-axis." caption="Figure 3. Histogram of the letters received by all agents after 100 model runs." %}
 
 This runs 100 instantiations of the model, each of which runs for 10 steps. (Notice that we set the histogram [bins](https://perma.cc/UQJ3-TEUB) to integers, since agents can only receive whole numbers of letters.) By running the model 100 times, we smooth out some of the 'noise' of randomness, and approach the model’s overall expected behavior. For now, the letter distribution looks close to a [normal distribution (or bell curve)](https://perma.cc/3WT5-45U9), which is expected since the process is random.
 
@@ -559,7 +559,7 @@ plt.colorbar(label="Number of Agents present in Cell")
 
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-04.png" alt="Two-dimensional grid where each cell is colored based on how many agents are present on it, on a scale of 0 to 3, with lighter yellow colors indicating more agents and darker blue colors indicating fewer agents." caption="Figure 4. Color mesh showing the number of agents present on each cell of our grid space." %}
+{% include figure.html filename="en-or-simulating-historical-communication-networks-python-04.png" alt="Two-dimensional grid where each cell is colored based on how many agents are present on it, on a scale of 0 to 3, with lighter yellow colors indicating more agents and darker blue colors indicating fewer agents." caption="Figure 4. Color mesh showing the number of agents present on each cell of our grid space." %}
 
 > **Bonus question 3**:   
 > Letters are currently sent to agents in the same cell, representing direct neighbors. How could you implement sending letters only to agents who 'live' further away, e.g. with at least a distance of three cells?   
@@ -651,7 +651,7 @@ agent_letters = model.datacollector.get_agent_vars_dataframe()
 agent_letters.tail()
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-05.png" alt="Table showing the number of letters sent and received by agents 33, 1, 7, 24, and 39, after 100 steps of the simulation. These numbers vary between 24 and 44." caption="Figure 5. Number of letters sent and received by a selection of agents, at step 100 of the simulation." %}
+{% include figure.html filename="en-or-simulating-historical-communication-networks-python-05.png" alt="Table showing the number of letters sent and received by agents 33, 1, 7, 24, and 39, after 100 steps of the simulation. These numbers vary between 24 and 44." caption="Figure 5. Number of letters sent and received by a selection of agents, at step 100 of the simulation." %}
 
 You'll see that the DataFrame's index consists of pairings of model step and agent ID. You can analyze it the way you would any other DataFrame, by following the _Programming Historian_ lesson on [Visualizing Data with Bokeh and Pandas](/en/lessons/visualizing-with-bokeh), for example. Let's get a histogram of the total numbers of letters sent by agents at the model's end:
 
@@ -666,7 +666,7 @@ plt.title("Distribution of Letters Sent by Agents")
 plt.show()
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-06.png" alt="Histogram where the y-axis shows the number of agents, and the x-axis shows how many letters were sent by those agents. The numbers of letters sent range from about 25 to over 50." caption="Figure 6. Histogram of letters sent by agents after 100 steps of simulating the model." %}
+{% include figure.html filename="en-or-simulating-historical-communication-networks-python-06.png" alt="Histogram where the y-axis shows the number of agents, and the x-axis shows how many letters were sent by those agents. The numbers of letters sent range from about 25 to over 50." caption="Figure 6. Histogram of letters sent by agents after 100 steps of simulating the model." %}
 
 You can also use pandas to export the data to a CSV ([comma-separated value](https://perma.cc/9VTL-EU5T)) file, which can be opened by any common spreadsheet application.
 
@@ -868,7 +868,7 @@ simulation = JupyterViz(
 simulation
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-07.png" alt="A screenshot the interactive simulation in a Notebook. There are interactive elements and buttons to start or stop the simulation, switch the reinforcement on or off, to control how many agents are initialized at the beginning. A 10-by-10-grid shows the number of agents in each cell, represented by dots which vary in color and size. There is also a histogram of letters received." caption="Figure 7. Interactive interface for the simulation with multiple real-time visualizations." %}
+{% include figure.html filename="en-or-simulating-historical-communication-networks-python-07.png" alt="A screenshot the interactive simulation in a Notebook. There are interactive elements and buttons to start or stop the simulation, switch the reinforcement on or off, to control how many agents are initialized at the beginning. A 10-by-10-grid shows the number of agents in each cell, represented by dots which vary in color and size. There is also a histogram of letters received." caption="Figure 7. Interactive interface for the simulation with multiple real-time visualizations." %}
 
 What difference do you observe in the visualization when switching between `reinforce` True or False?
 

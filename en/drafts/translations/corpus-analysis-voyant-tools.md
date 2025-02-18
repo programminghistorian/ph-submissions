@@ -20,7 +20,7 @@ translation-editor:
 - Giulia Taurino
 translation-reviewer:
 - Roberto Vargas
-- Marisol Andrade Munoz
+- Marisol Andrade Muñoz
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/608
 difficulty: 1
 activity: analyzing

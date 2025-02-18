@@ -8,8 +8,8 @@ authors:
 - Kristine Hardy
 - Mathieu Leclerc
 reviewers:
-- Forename Surname
-- Forename Surname
+- Jessica C. Linker
+- Steffen Bauer
 editors:
 - Massimiliano Carloni
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/607

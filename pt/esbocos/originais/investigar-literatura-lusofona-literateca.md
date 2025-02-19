@@ -49,11 +49,7 @@ Após concluir esta lição, estará
 
 O AC/DC é um projeto, já antigo, cujo objetivo é tornar disponíveis corpos para o português. Nesta lição vamos utilizar apenas o corpo [Literateca](https://www.linguateca.pt/acesso/corpus.php?corpus=LITERATECA), que contém mais de 900 obras escritas por mais de 280 escritores de língua portuguesa. (O AC/DC faz parte de um projeto maior, a [Linguateca]((https://www.linguateca.pt/).)
 
-<<<<<<< HEAD
 Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso, o estudo da língua na literatura em português) e classificado (o que se chama geralmente metadadados). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^1] e enriquecidos com anotação semântica adicional, como descrito em Santos (2014).[^2] Vários exemplos de uso do AC/DC são também apresentados em Santos (2021).[^3]
-=======
-Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso, o estudo da língua na literatura em português) e classificado (o que se chama geralmente metadadados). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^1] e enriquecidos com anotação semântica adicional, como descrito em Santos (2014)[^2]. Vários exemplos de uso do AC/DC são também apresentados em Santos (2021)[^3].
->>>>>>> 7c3b2730 (update local branch)
 
 A procura nos corpos é feita usando o sistema [Open CWB](https://cwb.sourceforge.io/),[^4] que é um sistema para gerir e interrogar grandes corpos anotados (contendo até dois biliões de palavras).
 
@@ -156,11 +152,7 @@ obra autor variante data decada
 
 e guardá-la num ficheiro com um nome apropriado. Escolhemos `distribuicaoObra.tsv`: [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv).
 
-<<<<<<< HEAD
 É importante esclarecer que algumas obras não possuem uma data específica, apenas o século a que pertencem. Nesse caso, pode-se atribuir uma data aproximada (como o ano 1650 para representar o século XVII) ou remver essas obras do ficheiro antes de processar os dados no R.[^7]
-=======
-É importante esclarecer que algumas obras não possuem uma data específica, apenas o século a que pertencem. Nesse caso, pode-se atribuir uma data aproximada (como o ano 1650 para representar o século XVII) ou remver essas obras do ficheiro antes de processar os dados no R. [^7]
->>>>>>> 7c3b2730 (update local branch)
 
 Convém também converter os ficheiros para o formato UTF-8.
 
@@ -200,11 +192,7 @@ boxplot(dezautores$rouparel~dezautores$autor, xlab="",ylab="",las=2)
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-07.png" alt="Gráfico de caixa do peso da roupa em dez autores da Literateca, mostrando que Eça de Queirós, José de Alencar e Aluísio de Azevedo são os que mencionam mais roupa" caption="Figura 7. A distribuição de roupa por dez autores na Literateca, num gráfico de caixa" %}
 
-<<<<<<< HEAD
 Vemos pelas duas visualizações que, embora as obras com mais menção relativa a roupa fossem contos de Machado de Assis (Figura 6), ao ver o conjunto das suas obras (Figura 7) é Eça de Queirós quem dá mais importância a esse campo semântico (a mediana de EcaQue é significativamente mais elevada do que a de MacAss).
-=======
-Vemos pelas duas visualizações que, embora as obras com mais menção relativa a roupa fossem contos de Machado de Assis (Figura 5), ao ver o conjunto das suas obras (Figura 6) é Eça de Queirós quem dá mais importância a esse campo semântico (a mediana de EcaQue é significativamente mais elevada do que a de MacAss).
->>>>>>> 7c3b2730 (update local branch)
 
 Por outro lado, também podemos observar a menção ao campo semântico do vestuário ao longo do tempo, usando para isso a data ou a década a que cada obra pertence, na Figura 8.
 
@@ -264,11 +252,7 @@ barplot(xtabs(aparencia$genrel~aparencia$gen+aparencia$decada),beside=TRUE,las=2
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-09.png" alt="Gráfico de barras de caracterizações de aparência na Literateca por década, mostrando que, em quase todas, a aparência das mulheres é mais mencionada" caption="Figura 9. Caracterização da aparência feminina e masculina por década, num gráfico de barras" %}
 
-<<<<<<< HEAD
 Vemos na Figura 9 que as mulheres têm quase sempre mais caracterização de aparência do que os homens, o que não deve constituir uma surpresa. Para obter mais informação sobre este tema e sobre a construção social do género, consultem o artigo Freitas &amp; Santos (2023).[^8]
-=======
-Vemos na Figura 8 que as mulheres têm quase sempre mais caracterização de aparência do que os homens, o que não deve constituir uma surpresa. Para obter mais informação sobre este tema e sobre a construção social do género, consultem o artigo Freitas &amp; Santos (2023)[^8].
->>>>>>> 7c3b2730 (update local branch)
 
 
 ### A localização na literatura portuguesa
@@ -321,11 +305,8 @@ Sugiro que façam também uma análise semelhante por autores, para ver (grandes
 
 ### O helenismo na literatura brasileira
 
-<<<<<<< HEAD
 Finalmente, apresento aqui um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia,[^10] que estudou o helenismo na literatura brasileira. 
-=======
-Finalmente, apresento aqui um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia[^10], que estudou o helenismo na literatura brasileira. 
->>>>>>> 7c3b2730 (update local branch)
+
 O seu trabalho é um bom exemplo de como simples tarefas de anotação, em colaboração com o AC/DC, são fáceis de executar e produzem resultados interessantes.
 
 De facto, Marcus apenas mandou um conjunto de lexemas que, segundo ele, estavam associados à cultura grega, e anotámos o OBras, o principal corpo de literatura brasileira no AC/DC, com essa informação (a marcação `helen`). Assim tornou-se muito fácil medir o peso destas palavras num conjunto de autores brasileiros com obras no OBras.

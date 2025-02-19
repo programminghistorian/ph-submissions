@@ -8,8 +8,8 @@ authors:
 - Igor Sosa Mayor
 - Nabeel Siddiqui
 reviewers:
-- Forename Surname
-- Forename Surname
+- Justin Wigard
+- Amanda Regan
 editors:
 - Giulia Osti
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/606
@@ -25,11 +25,11 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-After World War II, European cities faced a monumental task: rebuilding not just their physical infrastructure but also their international relationships. One fascinating lens for examining this post-war reconstruction is [sister cities](https://en.wikipedia.org/wiki/Sister_city), formal partnerships between cities that developed in the post-war period to foster cross-border cooperation and understanding.
+After [World War II](https://en.wikipedia.org/wiki/World_War_II), European cities faced a monumental task: rebuilding not just their physical infrastructure but also their international relationships. One fascinating lens through which to examine this post-war reconstruction is [sister cities](https://en.wikipedia.org/wiki/Sister_city). These formal partnerships were developed between cities in the post-war period to foster cross-border cooperation and understanding.
 
-Sister-city relationships present historians with both an opportunity and a challenge. The opportunity lies in their potential to reveal post-war reconciliation and diplomacy patterns. The challenge comes from their scale and complexity - a single city might have dozens of partnerships formed across different decades, and we must analyze thousands of relationships when multiplied across hundreds of European cities. This is where data visualization becomes important for historical research. By converting these complex networks of sister-city relationships into visual patterns, we can explore questions difficult to answer through traditional methods alone: Did West German cities preferentially form partnerships with French cities as part of post-war reconciliation? Did the Iron Curtain create distinct patterns of sister-city relationships between Eastern and Western Europe? How did city size and geographic distance influence diplomatic connections?
+Sister-city relationships present historians with both an opportunity and a challenge. The opportunity lies in their potential to reveal patterns of post-war reconciliation and diplomacy. The challenge comes from their scale and complexity: there are many hundreds of European cities to analyze, and each one might have formed dozens of partnerships across multiple decades. This case is a good example of how useful data visualization can be for historical research. By converting these complex networks of sister-city relationships into visual patterns, we can explore questions that are difficult to answer through traditional methods alone: 'Did cities of [West Germany](https://en.wikipedia.org/wiki/West_Germany) preferentially form partnerships with French cities as part of post-war reconciliation?' 'Did the [Iron Curtain](https://en.wikipedia.org/wiki/Iron_Curtain) create distinct patterns of sister-city relationships between Eastern and Western Europe?' 'How did city size and geographic distance influence diplomatic connections?'
 
-The R package [ggplot2](http://ggplot2.tidyverse.org) provides powerful tools for investigating these and similar questions through data visualization. While spreadsheets and basic charts can obscure patterns, ggplot2's sophisticated visualization capabilities allow historians to more easily uncover hidden relationships in data. For example, scatter plots can reveal correlations between numerical variables like population sizes and geographic distances, bar plots can show the distribution of partnerships across different categories of cities, and histograms can expose patterns in demographic data that might otherwise remain invisible.
+The R package [ggplot2](http://ggplot2.tidyverse.org) provides powerful tools for investigating these and similar questions through data visualization. While spreadsheets and basic charts can obscure patterns, ggplot2's sophisticated visualization capabilities allow historians to easily uncover hidden relationships in data. For example, [scatter plots](https://en.wikipedia.org/wiki/Scatter_plot) can reveal correlations between numerical variables like population sizes and geographic distances, [bar charts](https://en.wikipedia.org/wiki/Bar_chart) can show the distribution of partnerships across different categories of cities, and [histograms](https://en.wikipedia.org/wiki/Histogram) can expose patterns in demographic data that might otherwise remain invisible.
 
 This tutorial differs from standard ggplot2 guides by focusing specifically on the needs of urban historians. Rather than using generic datasets, we'll work with historical data about sister-city relationships to demonstrate how visualization techniques can illuminate historical patterns and processes. Through this approach, you'll learn to create visualizations that reveal complex partnerships and make historical findings more accessible to a broader audience.
 
@@ -37,15 +37,11 @@ This tutorial differs from standard ggplot2 guides by focusing specifically on t
 
 By the end of this lesson, you should be able to do the following with the `ggplot2` package:
 
-1. Create different types of plots to visualize urban and demographic data, including bar plots to show city relationships, histograms to display population distributions, and scatterplots to explore relationships between urban and demographic variables.
-
-2. Manipulate the aesthetic of plots, such as colors or sizes.
-
-3. Add meaningful labels to plots.
-
-4. Create grids of plots for data comparison.
-
-5. Create novel plots with ggplot2 extensions.
+- Create different types of plots to visualize urban and demographic data, including bar charts to show relationships between cities, histograms to display population distributions, and scatter plots to explore relationships between different variables.
+- Manipulate the appearance of plots, such as their color or size.
+- Add meaningful labels to plots.
+- Compare data across grids of plots.
+- Create novel plots with ggplot2 extensions.
 
 This tutorial assumes you have a rudimentary knowledge of R. The *Programming Historian* lessons [R Basics with Tabular Data](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data) and [Data Wrangling and Management in R](https://programminghistorian.org/en/lessons/data_wrangling_and_management_in_R) are recommended if you do not have this background.
 

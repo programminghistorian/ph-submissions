@@ -287,31 +287,41 @@ obras<-read.table("distribuicaoObra.tsv")
 names(obras)<-c("obra","tamanho", "autor","variante","data", "decada", "lixo","lixo2")
 locaisObras<-merge(locais, obras, by=c("obra","autor"))
 locaisObras$localrel<-locaisObras$num/locaisObras$tamanho
-attach(locaisObras)
-barplot(sort(tapply(localrel,obra,sum),decreasing=TRUE)[1:50],las=2)
+
+barplot(locaisObras[order(locaisObras$localrel,decreasing=TRUE),]$locarel[1:50],names=locaisObras[order(locaisObras$localrel,decreasing=TRUE),]$obra[1:50],las=2)
 ```
 
 As primeiras quatro linhas apenas leem e identificam as colunas das folhas de registo. A quinta junta ambas as informações, e a sexta calcula o número relativo de locais por número de palavras, para ser possível comparar obras de diferentes tamanhos.
 
-A sétima linha apenas instrói o R para se considerar "dentro" da folha de registo `locaisObras`, para não ser preciso estar sempre a preceder o nome da coluna pelo nome da folha de registo. `Tapply` é um comando no R que aplica uma função repetidamente, e neste caso é a função `sum` (soma), porque queremos somar todos os locais, sem interessar o tipo.
+Escolhi apresentar na Figura 10 o gráfico das cinquenta obras com mais locais relativos, calculado na sétima linha. (Depois de ordenar, pedi os casos de 1 a 50.)
 
-Escolhi apresentar na Figura 10 o gráfico das cinquenta obras com mais locais relativos, calculado na oitava linha. (Depois de ordenar, pedi os casos de 1 a 50.)
-
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-10.png" alt="Gráfico de caixa do peso dos locais, mostrando as obras (relativamente) com mais locais" caption="Figura 10. A distribuição de locais por obra (romances e novelas portuguesas) na Literateca, num gráfico de caixa" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-10.png" alt="Gráfico de barras do peso dos locais, mostrando as obras (relativamente) com mais locais" caption="Figura 10. A distribuição de locais por obra (romances e novelas portuguesas) na Literateca, num gráfico de barras" %}
 
 É interessante constatar que são os romances históricos, e de ficção científica, os que mais dão nome a lugares.
 
-Sugiro que façam também uma análise semelhante por autores, para ver (grandes) diferenças entre estes.
+Sugiro que façam também uma análise semelhante por autores, para ver (grandes) diferenças entre estes:
+
+```
+attach(locaisObras)
+barplot(sort(tapply(localrel,autor,sum),decreasing=TRUE)[1:50],las=2)
+```
+
+A primeira linha apenas instrói o R para se considerar "dentro" da folha de registo `locaisObras`, para não ser preciso estar sempre a preceder o nome da coluna pelo nome da folha de registo. 
+
+Na segunda linha, `tapply` é um comando no R que aplica uma função repetidamente, e neste caso é a função `sum` (soma), porque queremos somar todo os locais de um mesmo autor, sem interessar a obra.
 
 ### O helenismo na literatura brasileira
 
-Finalmente, apresento aqui um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia,[^10] que estudou o helenismo na literatura brasileira. 
+Finalmente, apresento aqui um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia[^10], que estudou o helenismo na literatura brasileira. 
 
 O seu trabalho é um bom exemplo de como simples tarefas de anotação, em colaboração com o AC/DC, são fáceis de executar e produzem resultados interessantes.
 
 De facto, Marcus apenas mandou um conjunto de lexemas que, segundo ele, estavam associados à cultura grega, e anotámos o OBras, o principal corpo de literatura brasileira no AC/DC, com essa informação (a marcação `helen`). Assim tornou-se muito fácil medir o peso destas palavras num conjunto de autores brasileiros com obras no OBras.
 
-O leitor é convidado a reproduzir as figuras da tese, visto que todos os comandos são apresentados num anexo.
+O leitor é convidado a reproduzir as figuras da tese, visto que todos os comandos são apresentados num anexo. Deixa-se a Figura 11, correspondente ao gráfico 3 da página 99, para aperitivo.
+
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-11.png" alt="Gráfico de barras de termos de helenismo por autores e género" caption="Figura 11. A distribuição de helenimsos por autor e género de texto, num gráfico de barras" %}
+
 
 ## Observações finais
 
@@ -326,17 +336,17 @@ O objetivo foi demonstrar diversas possibilidades de estudo da história da lite
 
 [^2]: Santos, Diana. "Corpora at Linguateca: Vision and roads taken", in Tony Berber Sardinha & Telma de Lurdes São Bento Ferreira (eds.), *Working with Portuguese Corpora*, Bloomsbury, 2014, pp. 219-236.
 
-[^3]: Santos, Diana. "A Gramateca e a Literateca como macroscópios linguísticos". *Domínios da Linguagem* 16, 4, 2022, pp. 1242-1265.
+[^3]: Santos, Diana Maria de Sousa Marques Pinto dos. "A Gramateca e a Literateca como macroscópios linguísticos". *Domínios da Linguagem* 16, 4, 2022, pp. 1242-1265. [pdf](https://seer.ufu.br/index.php/dominiosdelinguagem/article/view/63848/)
 
 [^4]: Evert, Stefan &amp Hardie, Andrew. "Twenty-first century Corpus Workbench: Updating a query architecture for the new millennium". In *Proceedings of the Corpus Linguistics 2011 conference*, University of Birmingham, UK, 2011. [pdf](http://www.birmingham.ac.uk/documents/college-artslaw/corpus/conference-archives/2011/Paper-153.pdf)
 
 [^5]: Santos, Diana. "A sintaxe do AC/DC: apresentação do CWB e das opções tomadas", Outono de 2012, notas para a disciplina de POR2102. [pdf](https://www.linguateca.pt/Diana/download/instrACDC.pdf)
 
-[^6]: Santos, Diana. "Explorando o vestuário na literatura em português". *TradTerm*, 37, 2, 2021, pp. 622-643. 
+[^6]: Santos, Diana. "Explorando o vestuário na literatura em português". *TradTerm*, 37, 2, 2021, pp. 622-643. [pdf](https://revistas.usp.br/tradterm/article/view/170266)
 
 [^7]: outra maneira ainda é especificar no Distribuidor que apenas pretende obter obras com data válida: `?data=/^[12].../ obra autor variante data decada`
 
-[^8]: Freitas, Cláudia &amp; Diana Santos. "Gender Depiction in Portuguese: Distant reading Brazilian and Portuguese literature". In *Journal of Computational Literary Studies*, 2023.
+[^8]: Freitas, Cláudia &amp; Diana Santos. "Gender Depiction in Portuguese: Distant reading Brazilian and Portuguese literature". In *Journal of Computational Literary Studies*, 2, 1, 2023. [pdf](https://jcls.io/article/id/3576/)
 
 [^9]: Santos, Diana &amp; Eckhard Bick. "Distant reading places in Portuguese literature". *NorLit2021* (Trondheim, 14-16 June 2022). [pdf](https://www.linguateca.pt/Diana/download/SantosBickNorLit.pdf)
 

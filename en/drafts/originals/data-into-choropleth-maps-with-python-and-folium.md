@@ -243,7 +243,7 @@ Just for fun, pick a county you're familiar with and see what it looks like:
 counties[(counties['NAME']=='Suffolk') & (counties['STUSPS']=='MA')].plot()
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-01.png" alt="Image of Suffolk county, MA" caption="Figure 1. GeoPandas' geometry can handle the oddly-shaped Suffolk County, MA" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-01.png" alt="Image of Suffolk county, MA" caption="Figure 1. GeoPandas' geometry can handle the oddly-shaped Suffolk County, MA." %}
 
 
 Since we don't need all the data in the `counties` dataframe, we will (a) rename the `GEOID` column to `FIPS` and (b) keep only columns we're interested in.
@@ -425,7 +425,7 @@ folium.Choropleth(
 baseMap # this displays the map
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-02.gif" alt="Map of the United States showing that map can be moved around and zoom in to see specific regions" caption="Figure 2. A basic interactive Folium choropleth map" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-02.gif" alt="Map of the United States showing that map can be moved around and zoom in to see specific regions" caption="Figure 2. A basic interactive Folium choropleth map." %}
 
 Folium creates interactive maps. Users can zoom in and out; using their mouse, they can move the map around to examine the area(s) in which they are most interested.
 
@@ -505,7 +505,7 @@ I find the easiest way to figure out what's going on with the data is to visuali
 map_df.boxplot(vert=False)
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-03.png" alt="A horizontal box plot showing the data distribution of the number of people killed by police in US counties" caption="Figure 3. Distribution of police killings per county" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-03.png" alt="A horizontal box plot showing the data distribution of the number of people killed by police in US counties" caption="Figure 3. Distribution of police killings per county." %}
 
 
 This allows us to see that there are fewer than ten counties where police have killed more than 75 civilians.
@@ -565,7 +565,7 @@ folium.Choropleth(
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-04.png" alt="A choropleth map of the US showing how the Fisher-Jenks algorithm creates different bins of data" caption="Figure 4. The map colorized by the Fisher-Jenks algorithm" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-04.png" alt="A choropleth map of the US showing how the Fisher-Jenks algorithm creates different bins of data" caption="Figure 4. The map colorized by the Fisher-Jenks algorithm." %}
 
 
 This is an improvement: the map shows a better range of contrasts. We can see that there are a fair number of counties outside the Southwest where police have killed several people (Florida, the Northwest, etc.)
@@ -661,7 +661,7 @@ baseMap
 ```
 
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-06.png" alt="The map colorized with log-values, but with a scale that shows non-log values" caption="Figure 6. The map colorized with a log-scale, but with non-log values on the scale" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-05.png" alt="The map colorized with log-values, but with a scale that shows non-log values" caption="Figure 5. The map colorized with a log-scale, but with non-log values on the scale." %}
 
 
 Note that the log values on the scale have been converted to the original (non-log) values.  Note, too, that the bins equal size, but their values increase exponentially, in line with their log10 values.
@@ -812,7 +812,7 @@ cp = folium.Choropleth(
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-07.png" alt="A map showing the number of police killings per 100K population" caption="Figure 07. The number of police killings per 100K population" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-06.png" alt="A map showing the number of police killings per 100K population" caption="Figure 06. The number of police killings per 100K population." %}
 
 Suddenly, high population counties (like Los Angeles and Cook) don't look so bad. Instead, low population counties with a single shooting are highlighted.
 
@@ -839,7 +839,7 @@ map_df['count_per_100K'].describe()
 map_df.boxplot(column=['count_per_100K'],vert=False)
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-08.png" alt="A boxplot showing the distribution of police killings per 100K population" caption="Figure 08. The distribution of the number of police killings per 100K population " %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-07.png" alt="A boxplot showing the distribution of police killings per 100K population" caption="Figure 07. The distribution of the number of police killings per 100K population." %}
 
 
 Wow! There are a LOT of outliers. Since this is a VERY uneven distribution, let's try using a log scale again.
@@ -851,7 +851,7 @@ map_df['MapScale'] = np.log10(map_df['count_per_100K'])
 map_df.boxplot(column=['MapScale'],vert=False)
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-09.png" alt="A boxplot showing the distrubtion of police killings per 100K population using a log-scale" caption="Figure 09. The distribution of the number of police killings per 100K population using a log-scale" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-08.png" alt="A boxplot showing the distrubtion of police killings per 100K population using a log-scale" caption="Figure 08. The distribution of the number of police killings per 100K population using a log-scale." %}
 
 This conversion transforms a skewed distribution into a more normal distribution of log values.
 
@@ -891,7 +891,7 @@ html.script.add_child(e)
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-10.png" alt="A map of police killings per 100K population using a log-scale" caption="Figure 10. The number of police killings per-100K population using a log-scale" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-09.png" alt="A map of police killings per 100K population using a log-scale" caption="Figure 09. The number of police killings per-100K population using a log-scale." %}
 
 
 **Normalizing** the data dramatically changes the appearance of the map. Our initial visualization suggested that the problem of police killing civilians was limited to a few counties, generally those with large populations. But when the data is normalized, it appears police killings of civilians is far more widespread. The counties with the highest **rates** of killings are those with low populations, even if they have relatively few killings. Trying to illustrate this issue with charts or tables would not show the issue nearly as well.
@@ -1071,7 +1071,7 @@ folium.GeoJsonTooltip(['NAME','population','count','count_per_100K'],
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-12.gif" alt="A second animated map showing a more complex set of data displayed with the Tooltip plugin" caption="Figure 12. The Tooltip plugin allows the display of variables" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-10.gif" alt="A second animated map showing a more complex set of data displayed with the Tooltip plugin" caption="Figure 10. The Tooltip plugin allows the display of variables." %}
 
 Adding an information box is complex but it can help users enormously.
 
@@ -1093,6 +1093,7 @@ Because Folium saves the maps as HTML documents, they can be added to websites o
 
 
 ## Conclusion
+
 Choropleth maps are an excellent tool for discovering and demonstrating patterns in data that might be otherwise hard to discern.
 
 My grandfather, who worked at the US Census bureau, loved to pore over the tables of [The Statistical Abstract of the United States](https://www.census.gov/library/publications/time-series/statistical_abstracts.html). But tables of data are hard for people to understand: charts that visualize the data are more helpful, as Alberto Cairo argues in [*How Charts Lie*](https://www.amazon.com/How-Charts-Lie-Getting-Information/dp/1324001569).

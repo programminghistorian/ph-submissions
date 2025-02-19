@@ -302,12 +302,12 @@ Sugiro que façam também uma análise semelhante por autores, para ver (grandes
 
 ```
 attach(locaisObras)
-barplot(sort(tapply(localrel,autor,sum),decreasing=TRUE)[1:50],las=2)
+barplot(sort(tapply(num,autor,sum)/tapply(tamanho,autor,sum),decreasing=TRUE)[1:25],las=2)
 ```
 
 A primeira linha apenas instrói o R para se considerar "dentro" da folha de registo `locaisObras`, para não ser preciso estar sempre a preceder o nome da coluna pelo nome da folha de registo. 
 
-Na segunda linha, `tapply` é um comando no R que aplica uma função repetidamente, e neste caso é a função `sum` (soma), porque queremos somar todo os locais de um mesmo autor, sem interessar a obra.
+Na segunda linha, `tapply` é um comando no R que aplica uma função repetidamente, e neste caso é a função `sum` (soma), porque queremos somar todos os locais de um mesmo autor, sem interessar a obra, e todo as palavras escritas pelo autor (segundo tapply).
 
 ### O helenismo na literatura brasileira
 

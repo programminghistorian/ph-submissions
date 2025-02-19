@@ -114,7 +114,7 @@ Além da interface de pesquisa direta, existem outras formas de pedir informaç�
 
 Enquanto o Comparador permite comparar duas distribuições com um único comando, o Distribuidor produz os resultados numa tabela que é facilmente utilizada em R.
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-05.png" alt="Visual description of figure image" caption="Figure 5. Caption text to display." %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-05.png" alt="Interface de pesquisa no distribuidor, pedindo a distribuição das palavras marcadas com roupa por obra, autor e variante" caption="Figura 5. Interface de pesquisa no distribuidor." %}
 
 Em primeiro lugar, é preciso escolher o corpo que se quer pesquisar. Neste caso,a Literateca.
 

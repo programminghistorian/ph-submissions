@@ -214,7 +214,7 @@ Before calibrating the radiocarbon dates obtained, several preliminary questions
 
 In this case study, several laboratories have dated the same objects. So first, we seek to know whether the dates obtained for each object by the different laboratories agree with each other. This compatibility is defined by also taking into account the uncertainties associated with dates.
 
-Once the data has been imported and formatted, the initial approach is to visualize it. We can therefore get a first idea of the compatibility of the results provided by the different laboratories for each dated object. The following code allows you to generate Figure 7, which shows the conventional date distributions for each sample.
+Once the data has been imported and formatted, the initial approach is to visualize it. We can therefore get an initial idea of the compatibility of the results provided by the different laboratories for each dated object. The following code allows you to generate Figure 7, which shows the conventional date distributions for each sample.
 
 ```r
 ## Set graphical parameters for your figure
@@ -268,7 +268,7 @@ From this average value, we can calculate a statistical test variable (\\(T\\)) 
 
 $$ T = \sum_{i=1}^{n}{\left( \frac{x_i - \bar{x}}{\sigma_i} \right)^2} $$
 
-\\(T\\) is a random variable which follows a \\(\chi^2\\) law with \\(n-1\\) degrees of freedom (\\(n\\) is the number of datings per object, here \\(n = 3\\) for the 3 labs). From \\(T\\), it is possible to calculate the \\(p\\) value, that is to say the risk of rejecting the null hypothesis even though it is true. By comparing the \\(p\\) value to a threshold \\(\alpha\\) fixed in advance, we can determine whether or not it is possible to reject \\(H_0\\) (if \\(p\\) is greater than \\(\alpha\\), then we cannot reject the null hypothesis). Here we set this \\(\alpha\\) value to 0.05. We therefore estimate that a 5% risk of making a mistake is acceptable.
+\\(T\\) is a random variable which follows a \\(\chi^2\\) distribution with \\(n-1\\) degrees of freedom (\\(n\\) is the number of datings per object, here \\(n = 3\\) for the 3 labs). From \\(T\\), it is possible to calculate the \\(p\\) value, that is to say the risk of rejecting the null hypothesis even though it is true. By comparing the \\(p\\) value to a threshold \\(\alpha\\) fixed in advance, we can determine whether or not it is possible to reject \\(H_0\\) (if \\(p\\) is greater than \\(\alpha\\), then we cannot reject the null hypothesis). Here we set this \\(\alpha\\) value to 0.05. We therefore estimate that a 5% risk of making a mistake is acceptable.
 
 The following code allows you to calculate for each sample, its average date, the associated uncertainty, the \\(T\\) statistic and the \\(p\\)-value.
 
@@ -436,7 +436,7 @@ for (i in 1:3) {
 }
 ```
 
-{% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-08.png" alt="Three graphs indicating the dates for samples 2, 3 and 4. Grey regions below the curve show a 95% (HPD interval) certainty. The x-axis is labeled with years BC/AD. These graphs use the IntCal20 curve." caption="Figure 8. Distribution of conventional and calendar dates of the mean ages of samples 2, 3 and 4. The dark gray areas correspond to the 95% HPD interval. IntCal20 calibration curve." %}
+{% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-08.png" alt="Three graphs indicating the dates for samples 2, 3 and 4. Grey regions below the curve show a 95% (HPD interval) certainty. The x-axis is labeled with years BC/AD. These graphs use the IntCal20 curve." caption="Figure 8. Distribution of conventional and calendar dates of the mean ages of samples 2, 3 and 4. The dark gray areas correspond to the 95% HPD interval. IntCal20 calibration curve is used." %}
 
 - The calendar date of sample 2 has a 95% chance (HPD interval) of being in the union of the intervals [1040;1109] (54%) and [1113;1158] (40%), in agreement with a dating expected around the 11th-12th centuries AD.
 
@@ -470,7 +470,7 @@ If the analysis of the conventional ages obtained by the different laboratories 
 
 In order to publish the radiocarbon dates in rigorous manner, and to enable the results to be verified and used by others, it is a good idea to always include a certain number of information elements. For example, we can write clearly:
 
-> Sample ETH-3883 is dated at 676 ± 24 years BP, calibrated at [671;633] (58%) or [589;563] (38%) cal BP or [1279;1317] (58%) or [ 1361;1387] (38%) AD (95% HPD intervals) with IntCal20 (Reimer et al. 2020), R 4.0.3 (R Core Team, 2020) and the rcarbon 1.4.1 package (Crema and Bevan, 2020 ).
+> Sample ETH-3883 is dated at 676 ± 24 years BP, calibrated at [671;633] (58%) or [589;563] (38%) cal BP or [1279;1317] (58%) or [1361;1387] (38%) AD (95% HPD intervals) with IntCal20 (Reimer et al. 2020), R 4.0.3 (R Core Team, 2020) and the rcarbon 1.4.1 package (Crema and Bevan, 2020 ).
 
 When we write our dates in this way, we have the following main points for others to read:[^15]
 
@@ -480,7 +480,7 @@ When we write our dates in this way, we have the following main points for other
 
 ## Conclusion
 
-Calibrating radiocarbon dates allows their transposition into a calendar time frame. This step is key to interpreting the results, especially since the rhythm of the carbon-14 "clock" varies over time. In this lesson, we learned how to combine conventional dates and test for consistency before calibrating them. We also saw how to graphically represent these date and how to present the results with all the information necessary for their reproduction.
+Calibrating radiocarbon dates allows their transposition into a calendar time frame. This step is key to interpreting the results, especially since the rhythm of the carbon-14 "clock" varies over time. In this lesson, we learned how to combine conventional dates and test for consistency before calibrating them. We also saw how to graphically represent these dates, and how to present the results with all the information necessary for their reproduction.
 
 ## Bibliography
 
@@ -491,6 +491,8 @@ Arnold, J. R., & W. F. Libby. 1949. "Age Determinations by Radiocarbon Content: 
 Bevan, A. & Crema, E. R. 2020. *rcarbon: Methods for calibrating and analysing radiocarbon dates*. Package R, v1.4.0. <https://CRAN.R-project.org/package=rcarbon>
 
 Calabrisotto, C. S., Amadio, M., Fedi, M. E., Liccioli, L. & Bombardieri, L. 2017. "Strategies for Sampling Difficult Archaeological Contexts and Improving the Quality of Radiocarbon Data: The Case of Erimi Laonin Tou Porakou, Cyprus." *Radiocarbon* 59 (6): 1919–30. <https://doi.org/10.1017/RDC.2017.92>.
+
+Carlson, D. L. (2017). Quantitative Methods in Archaeology Using R. Cambridge: Cambridge University Press.
 
 Colman, S. M., K. L. Pierce, & P. W. Birkeland. 1987. "Suggested Terminology for Quaternary Dating Methods." *Quaternary Research* 28 (2): 314-19. <https://doi.org/10.1016/0033-5894(87)90070-6>.
 
@@ -506,7 +508,6 @@ Libby, W. F. "Radiocarbon Dating". *Nobel Lecture*. Stockholm, 12 December 1960.
 
 Millard, A. R. 2014. "Conventions for Reporting Radiocarbon Determinations." *Radiocarbon* 56 (2): 555-59. <https://doi.org/10.2458/56.17455>.
 
-Millot, G. *Comprendre et réaliser les tests statistiques à l'aide de R - Manuel de biostatistique*. Troisième édition. Louvain-la-Neuve : De Boeck, 2014.
 
 O'Brien, M. J, & R. L. Lyman. *Seriation, Stratigraphy, and Index Fossils: The Backbone of Archaeological Dating*. Dordrecht : Springer, 2002.
 
@@ -532,7 +533,7 @@ Walsh, B., & Schwalbe, L. 2020. "An Instructive Inter-Laboratory Comparison: The
 
 [^4]: Colman, Pierce & Birkeland, 1987.
 
-[^5]: We use the year 1950 as our reference, because it corresponded to the standard astronomical era (during these first developments of the radiocarbon method). Today we use 1950 as it also allows us to have a reference which sufficiently precedes the consequences of atmosphere nuclear tests.
+[^5]: We are using the year 1950 as our reference, because it corresponded to the standard astronomical era (during these first developments of the radiocarbon method). Today we use 1950, because also allows us to have a reference which sufficiently precedes the consequences of atmospheric nuclear tests.
 
 [^6]:The reality is more complex, notably with the reality of [isotope fractionation](https://en.wikipedia.org/wiki/Isotope_fractionation).
 

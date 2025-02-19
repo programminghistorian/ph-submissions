@@ -163,11 +163,11 @@ If the lat/lon fields were not numbers, we would need to do some data cleaning t
 How many records have latitude/longitude (lat/lon) data? What percent of the database has this information?
 
 ```python
-print(sum(ff_df['latitude'].isna()))
+print(ff_df['latitude'].isna().sum())
 
     7,496
 
-sum(ff_df['latitude'].isna()) / len(ff_df)
+ff_df['latitude'].isna().sum() / len(ff_df)
 
     0.8900340100999691
 

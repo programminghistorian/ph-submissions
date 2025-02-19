@@ -278,7 +278,7 @@ Aqui, vamos comparar o número de locais empregues por autores diferentes, em ro
 ?variante=/PT/ ?classe=/Prosa:(romance|novela)/ ?sema=/Local:.*/ obra autor
 ```
 
-Vamos visualizar isso através de um gráfico de caixa no R. De notar que reutilizaremos o [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv) que obtivemos anteriormente.
+Vamos visualizar isso através de um gráfico de caixa no R. De notar que reutilizaremos o [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv) que obtivemos anteriormente. Além disso, conforme mencionado acima, editamos as datas marcadas com "séc..." e convertemos para UTF-8 antes de invocar o R.
 
 ```
 locais<-read.table("distribuicaoLocaisObra.tsv")
@@ -287,7 +287,6 @@ obras<-read.table("distribuicaoObra.tsv")
 names(obras)<-c("obra","tamanho", "autor","variante","data", "decada", "lixo","lixo2")
 locaisObras<-merge(locais, obras, by=c("obra","autor"))
 locaisObras$localrel<-locaisObras$num/locaisObras$tamanho
-
 barplot(locaisObras[order(locaisObras$localrel,decreasing=TRUE),]$locarel[1:50],names=locaisObras[order(locaisObras$localrel,decreasing=TRUE),]$obra[1:50],las=2)
 ```
 
@@ -320,7 +319,7 @@ De facto, Marcus apenas mandou um conjunto de lexemas que, segundo ele, estavam 
 
 O leitor é convidado a reproduzir as figuras da tese, visto que todos os comandos são apresentados num anexo. Deixa-se a Figura 11, correspondente ao gráfico 3 da página 99, para aperitivo.
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-11.png" alt="Gráfico de barras de termos de helenismo por autores e género" caption="Figura 11. A distribuição de helenimsos por autor e género de texto, num gráfico de barras" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-11.png" alt="Gráfico de barras de termos de helenismo por autores e género" caption="Figura 11. A distribuição de helenismos por autor e género de texto, num gráfico de barras" %}
 
 
 ## Observações finais

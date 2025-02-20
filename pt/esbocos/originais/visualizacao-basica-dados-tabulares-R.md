@@ -26,7 +26,7 @@ doi: XX.XXXXX/phen0000
 
 ## Requisitos
 
-Nesta lição consideramos que já possui algum conhecimento da linguagem R. Se ainda não completou a lição [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares), recomendamos que o faça primeiro.
+Nesta lição consideramos que o leitor já possui algum conhecimento da linguagem R. Se ainda não completou a lição [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares), recomendamos que o faça primeiro.
 
 ## Objetivos da lição
 
@@ -34,15 +34,15 @@ Esta lição visa apresentar a forma como dados tabulares podem ser visualizados
 
 ## Folha de registo
 
-Quem não teve já ao longo da sua vida de preencher uma folha de registo numa aula, ou para entrar num edifício, com o seu nome, telefone e correio eletrónico, e às vezes com a assinatura, e/ou com outras informações (data de entrada, hora de entrada, hora de saída, etc)?
+Quem não teve, ao longo da sua vida, de preencher uma folha de registo numa aula, ou para entrar num edifício, com o seu nome, telefone e correio eletrónico, e às vezes com a assinatura, e/ou com outras informações (data de entrada, hora de entrada, hora de saída, etc)?
 
 Se generalizarmos este conceito, vemos que para cada ocorrência (neste caso, pessoa que entra no edifício) preenche-se um conjunto de informações de vários tipos, e cada coluna tem o mesmo tipo de informação (nome, número de telefone, data...)
 
 Esta estrutura de dados (se usarmos agora o vocabulário de uma linguagem de programação) é muito útil para juntar vários tipos de informação sobre uma mesma entidade (linha), e em R chama-se *dataframe*, que traduzimos aqui por *folha de registo*.
 
-Uma folha de registo é pois representada por uma tabela, que tem o mesmo tipo de informação em cada uma das suas colunas, mas que pode ter colunas diferentes com informação diferente.
+Uma folha de registo é pois representada por uma tabela, que em cada uma das suas colunas tem o mesmo tipo de dados, mas que pode ter colunas diferentes com informação diferente.
 
-Praticamente todos os dados que usamos no R são organizados em folhas de registo, e existem várias funções que se aplicam a folhas de registo para fácil manipulação.
+Existem muitos dados em R que são organizados em folhas de registo, e existem várias funções que se aplicam a folhas de registo para fácil manipulação.
 
 ### Criação de raiz
 
@@ -52,7 +52,7 @@ Para efeitos pedagógicos, vamos criar algumas folhas de registo de raiz, mas de
 escritores <- data.frame(id=c("JulDin","CamCBra","AacAss","CoeNet"), nome=c("Júlio Dinis", "Camilo Castelo Branco","Machado de Assis","Coelho Neto"),nascimento=c(1839,1825,1839,1864), morte=c(1871,1890,1908,1934),nacionalidade=c("PT","PT","BR","BR"))
 ```
 
-O comando `data.frame()` cria uma folha de registo, `c()` cria um vetor com os argumentos.
+O comando `data.frame()` cria uma folha de registo, `c()` -- concatenar -- cria um vetor com os argumentos.
 
 É depois possível identificar cada coluna pelo nome, por exemplo a coluna que indica a data de nascimento é identificada assim: `escritores$nascimento`
 
@@ -77,6 +77,8 @@ No segundo exemplo, juntamos o sexo do autor, que nesse caso é sempre masculino
 ```
 escritores$sexo<-"masc"
 ```
+
+Embora apenas indicamos um valor (e não um vetor) o R automaticamente repete esse valor tantas vezes quantas a dimensão da coluna.
 
 #### Adição de linhas
 
@@ -112,7 +114,7 @@ leria o que estivesse no ficheiro `fich41.tsv`, usando a primeira linha como o n
 
 ### Processamento de colunas de uma folha de registo
 
-Muitas vezes o que escrevemos na tabela é para ser um código de um conjunto fixo de etiquetas, e não uma cadeira de carateres em português... nesse caso, devemos indicar ao R que aquilo é um factor (um termo do R) e não uma palavra.
+Muitas vezes o que escrevemos na tabela é para ser um código de um conjunto fixo de etiquetas, e não uma cadeira de carateres em português... nesse caso, devemos indicar ao R que aquilo é um factor (um termo do R que designa uma variável categórica em estatística) e não uma palavra.
 
 No caso da nossa folhinha de registo, BR e PT significam autor brasileiro e português respetivamente, e queremos considerá-los um fator. Idem para o sexo
 
@@ -156,6 +158,8 @@ table(escritores$nacionalidade)
 barplot(table(escritores$nacionalidade))
 ```
 
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-03.png" alt="Gráfico de barras com a nacionalidade" caption="Figura 3. Gráfico de barras com nacionalidade do autor" %}
+
 Mas vamos buscar folhas de registo muito mais ricas para demonstrar as potencialidades de visualização. Por exemplo, vejamos uma lista de obras literárias em português com informação sobre o seu autor, data de publicação, escola literária e contagens de vários atributos sintáticos e semânticos, usada no artigo Santos et al. (2020) [^1].
 
 ```
@@ -198,13 +202,16 @@ Se tivéssemos executado simplesmente os comandos
 periodizacao$escola2<-factor(periodizacao$escola2)
 barplot(table(periodizacao$escola2[periodizacao$escola2!="desc",]))
 ```
-o gráfico de barras apresentaria uma barra nula para `desc`.
+o gráfico de barras apresentaria uma barra nula para `desc`, como vemos na figura X2:
+
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-0X2.png" alt="Gráfico de barras com escola literária em inglês, com cinco classes, sem termos removido o valor desc do fator escola" caption="Figura X2. Gráfico de barras com escola literária em inglês, sem termos removido o valor desc do fator escola" %}
+
 
 A indicação `periodizacao[periodizacao$escola2!="desc",]` significa todas as linhas da folha de registo `periodizacao` cuja coluna `escola2` não tenha o valor `desc`, e todas as colunas. (Uma folha de registo tem sempre linhas e colunas, e podemos selecioná-las independentemente. Quando não pomos nada, como depois da vírgula, significa que selecionamos todas.)
 
 ## Gráficos de caixa
 
-Os gráficos de caixa representam um conjunto de números, mostrando a sua mediana, e a forma como estão distribuídos. A caixa propriamente dita representa 50% dos dados: a linha abaixo representa o valor dos 25% e a de cima o de 70%, chamados primeiro quartil e terceiro quartil. A diferença entre Q3 e Q1 chama-se a diferença entre quartis (*interquartile range* em inglês, geralmente abreviado por IQR). Os traços horizontais, também chamados bigodes (*whiskers*) são calculados da seguinte maneira:
+Os gráficos de caixa representam um conjunto de números, mostrando a sua mediana, e a forma como estão distribuídos. A caixa propriamente dita representa 50% dos dados: a linha abaixo representa o valor dos 25% e a de cima o de 75%, chamados primeiro quartil e terceiro quartil. A diferença entre Q3 e Q1 chama-se a diferença entre quartis (*interquartile range* em inglês, geralmente abreviado por IQR). Os traços horizontais, também chamados bigodes (*whiskers*) são calculados da seguinte maneira:
 
 * Bigode inferior: é o máximo de valor mínimo e de Q1-1.5*IQR
 * Bigode superior: é o mínimo do valor máximo e de Q3+1.5*IQR
@@ -257,7 +264,10 @@ Podemos ver quantas obras temos por autor:
 barplot(table(algunsAutores$autor))
 ```
 
-Mas o mais interessante será comparar estes quatro autores, por exemplo na frequência relativa de emoções, no uso de nomes próprios, ou na frequencia de orações no conjuntivo/subjuntivo:
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-0X3.png" alt="Gráfico de barras do número de obras por autor, mostrando que o autor com mais obras é , com " caption="Figura 03X. Gráfico de barras do número de obras por autor" %}
+
+
+Mas o mais interessante será comparar estes quatro autores, por exemplo na frequência relativa de emoções, no uso de nomes próprios, ou na frequência de orações no conjuntivo/subjuntivo:
 
 ```
 boxplot(algunsAutores$emocoes/algunsAutores$tamanho~algunsAutores$autor,xlab="",ylab="", main="Frequência relativa de uso de palavras de emoção em romances por autor")
@@ -273,13 +283,16 @@ boxplot(algunsAutores$conjuntivo/algunsAutores$oracoes~algunsAutores$autor,xlab=
 
 ### Juntar mais do que uma folha de registo numa só
 
-Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo, e da forma como a informação pode ser bem distribuída em folhas de registo diferentes, vamos criar uma nova folha de registo que contenha toda a informação contida em duas folhas de registo que já usámos: a `algunsAutores` e a `escritores`. A ideia é obter para cada obra, além do nome do autor, nova informação que temos sobre o autor, basicamente a variante, o tempo de vida e o sexo. Para isso usamos o comando `merge()`.
+Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo, e da forma como a informação pode ser bem distribuída em folhas de registo diferentes, vamos criar uma nova folha de registo que contenha toda a informação contida em duas folhas de registo que já usámos: a `algunsAutores` e a `escritores`. A ideia é obter para cada obra, além do nome do autor, nova informação que temos sobre o autor, basicamente a variante, o tempo de vida e o sexo. Para isso usamos o comando `merge()`. 
 
 ```
 maisInfo<-merge(algunsAutores,escritores,by.x=c("autor", "sexo"),by.y=c("id","sexo"))
 ```
+Esse comando é muito importante -- correspondente ao "join" das bases de dados -- porque permite estruturar o conhecimento em ficheiros  -- tabelas -- diferentes, mas juntá-lo quando queremos usar toda a informação. Na figura 0X4 vemos as primeira linhas da folha de registo `maisInfo`.
 
-O que nos permite por exemplo fazer um diagrama de caixa pela variedade do português, e não pelos autores. Escolhi observar o uso das vírgulas na Figura 10.
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-0X4.png" alt="As primeiras linhas da folha de registo MaisInfo, demonstrando que têm mais colunas que as duas folhas que foram amalgamadas" caption="Figura 0X4. O que o R mostra se pedirmos as primeiras linhas da folha de registo MaisInfo" %}
+
+O uso deste comando permite-nos, por exemplo, fazer um diagrama de caixa pela variedade do português, e não pelos autores. Escolhi observar o uso das vírgulas na Figura 10.
 
 ```
 boxplot(maisInfo$virg/maisInfo$tamanho~maisInfo$nacionalidade,xlab="",ylab="", main="Frequência relativa de uso de vírgulas em romances por variante")
@@ -316,7 +329,7 @@ boxplot(escritores$tempoVida~escritores$nacionalidade)
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-11.png" alt="Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade, em que só aparece um escritor angolano apesar de termos dois na folha de registo" caption="Figura 11. Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade" %}
 
-Como só existe um autor angolano com tempo de vida diferente de NA, Agostinho Neto, apenas um ponto é mostrado no gráfico de caixa.
+Como só existe um autor angolano com tempo de vida diferente de NA, Agostinho Neto, apenas um ponto -- visualido como uma lina -- é mostrado no gráfico de caixa.
 
 ## Observações finais
 

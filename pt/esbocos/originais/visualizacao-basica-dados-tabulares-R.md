@@ -22,8 +22,6 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-## Índice
-
 ## Requisitos
 
 Nesta lição consideramos que o leitor já possui algum conhecimento da linguagem R. Se ainda não completou a lição [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares), recomendamos que o faça primeiro.
@@ -158,7 +156,7 @@ table(escritores$nacionalidade)
 barplot(table(escritores$nacionalidade))
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-03.png" alt="Gráfico de barras com a nacionalidade" caption="Figura 3. Gráfico de barras com nacionalidade do autor" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-01X.png" alt="Gráfico de barras com a nacionalidade" caption="Figura 01X. Gráfico de barras com nacionalidade do autor" %}
 
 Mas vamos buscar folhas de registo muito mais ricas para demonstrar as potencialidades de visualização. Por exemplo, vejamos uma lista de obras literárias em português com informação sobre o seu autor, data de publicação, escola literária e contagens de vários atributos sintáticos e semânticos, usada no artigo Santos et al. (2020) [^1].
 
@@ -264,7 +262,7 @@ Podemos ver quantas obras temos por autor:
 barplot(table(algunsAutores$autor))
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-0X3.png" alt="Gráfico de barras do número de obras por autor, mostrando que o autor com mais obras é , com " caption="Figura 03X. Gráfico de barras do número de obras por autor" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-0X3.png" alt="Gráfico de barras do número de obras por autor, mostrando que o autor com mais obras é Eça de Queirós, com 15" caption="Figura 03X. Gráfico de barras do número de obras por autor" %}
 
 
 Mas o mais interessante será comparar estes quatro autores, por exemplo na frequência relativa de emoções, no uso de nomes próprios, ou na frequência de orações no conjuntivo/subjuntivo:
@@ -329,7 +327,7 @@ boxplot(escritores$tempoVida~escritores$nacionalidade)
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-11.png" alt="Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade, em que só aparece um escritor angolano apesar de termos dois na folha de registo" caption="Figura 11. Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade" %}
 
-Como só existe um autor angolano com tempo de vida diferente de NA, Agostinho Neto, apenas um ponto -- visualido como uma lina -- é mostrado no gráfico de caixa.
+Como só existe um autor angolano com tempo de vida diferente de NA, Agostinho Neto, apenas um ponto -- visualizado como uma linha -- é mostrado no gráfico de caixa.[^nota]
 
 ## Observações finais
 
@@ -344,3 +342,10 @@ Agora pode seguir para lições mais complicadas como [Investigar a literatura l
 [^2]: Em alguns navegadores esse comando pode produzir o seguinte erro: `Error in file(file, "rt") : cannot open the connection to ’https://www.linguateca.pt/...'` Nesse caso, leia o ficheiro para o seu próprio computador fora do R, e faça apenas `read.table("dadosPeriodLit.tsv", header=TRUE)`
 
 [^3]: Yi, Mike. A complete guide to box plots. <https://www.atlassian.com/data/charts/box-plot-complete-guide>. Último acesso: 3 de maio de 2024
+
+[^nota]: O comportamento pode variar em versões diferentes do R. Se obtiverem uma mensagem de erro do `boxplot`, executem os seguintes comandos, que retiram explicitamente os NA, transformam em inteiros as idades, antes de invocar o comando `boxplot`.
+```
+novoEscritores<-na.omit(escritores)
+novoEscritores$tempoVida<-as.integer(novoEscritores$tempoVida)
+boxplot(novoEscritores$tempoVida~novoEscritores$nacionalidade)
+```

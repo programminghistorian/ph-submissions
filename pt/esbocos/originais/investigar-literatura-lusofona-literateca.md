@@ -49,9 +49,9 @@ Após concluir esta lição, estará
 
 O AC/DC é um projeto, já antigo, cujo objetivo é tornar disponíveis corpos para o português. Nesta lição vamos utilizar apenas o corpo [Literateca](https://www.linguateca.pt/acesso/corpus.php?corpus=LITERATECA), que contém mais de 900 obras escritas por mais de 280 escritores de língua portuguesa. (O AC/DC faz parte de um projeto maior, a [Linguateca]((https://www.linguateca.pt/).)
 
-Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso, o estudo da língua na literatura em português) e classificado (o que se chama geralmente metadadados). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^1] e enriquecidos com anotação semântica adicional, como descrito em Santos (2014)[^2]. Vários exemplos de uso do AC/DC são também apresentados em Santos (2021)[^3].
+Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso, o estudo da língua na literatura em português) e classificado (o que se chama geralmente metadadados). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^1] e enriquecidos com anotação semântica adicional, como descrito em Santos (2014).[^2] Vários exemplos de uso do AC/DC são também apresentados em Santos (2021).[^3]
 
-A procura nos corpos é feita usando o sistema [Open CWB](https://cwb.sourceforge.io/)[^4], que é um sistema para gerir e interrogar grandes corpos anotados (contendo até dois biliões de palavras).
+A procura nos corpos é feita usando o sistema [Open CWB](https://cwb.sourceforge.io/),[^4] que é um sistema para gerir e interrogar grandes corpos anotados (contendo até dois biliões de palavras).
 
 ### A sintaxe de procura
 
@@ -94,7 +94,7 @@ Alguns exemplos aqui:
 * `[lema="de"] [pos="DET.*"] [pos="N" & pessnum="S"]` procurar casos da preposição *de* seguida por um determinante e por um ou mais adjetivos e um substantivo no singular
 *  `[lema="gostar"] [pos!="[NV].*"]* [func="<PIV"] [func=">N"]* @[func="P<"]` procurar casos do verbo *gostar* até obter o núcleo do seu objeto de preposição
 
-Para uma descrição mais completa da sintaxe do AC/DC, ver o texto Santos (2012)[^5], assim como os [exemplos](https://www.linguateca.pt/acesso/exemplos.html) e as [perguntas já respondidas](https://www.linguateca.pt/acesso/PJR.html) no sítio do AC/DC.
+Para uma descrição mais completa da sintaxe do AC/DC, ver o texto Santos (2012),[^5] assim como os [exemplos](https://www.linguateca.pt/acesso/exemplos.html) e as [perguntas já respondidas](https://www.linguateca.pt/acesso/PJR.html) no sítio do AC/DC.
 
 ### O corpo Literateca
 
@@ -113,6 +113,8 @@ Para saber que obras ou autores foram incluídos, assim como a forma de os procu
 Além da interface de pesquisa direta, existem outras formas de pedir informação de distribuição ao AC/DC, nomeadamente o [Comparador](https://www.linguateca.pt/comparador/) e o [Distribuidor](https://www.linguateca.pt/distribuidor/).
 
 Enquanto o Comparador permite comparar duas distribuições com um único comando, o Distribuidor produz os resultados numa tabela que é facilmente utilizada em R.
+
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-05.png" alt="Interface de pesquisa no distribuidor, pedindo a distribuição das palavras marcadas com roupa por obra, autor e variante" caption="Figura 5. Interface de pesquisa no distribuidor." %}
 
 Em primeiro lugar, é preciso escolher o corpo que se quer pesquisar. Neste caso,a Literateca.
 
@@ -150,7 +152,7 @@ obra autor variante data decada
 
 e guardá-la num ficheiro com um nome apropriado. Escolhemos `distribuicaoObra.tsv`: [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv).
 
-É importante esclarecer que algumas obras não possuem uma data específica, apenas o século a que pertencem. Nesse caso, pode-se atribuir uma data aproximada (como o ano 1650 para representar o século XVII) ou remver essas obras do ficheiro antes de processar os dados no R. [^7]
+É importante esclarecer que algumas obras não possuem uma data específica, apenas o século a que pertencem. Nesse caso, pode-se atribuir uma data aproximada (como o ano 1650 para representar o século XVII) ou remver essas obras do ficheiro antes de processar os dados no R.[^7]
 
 Convém também converter os ficheiros para o formato UTF-8.
 
@@ -175,7 +177,7 @@ roupaObrasOrdenada<-roupaObras[order(roupaObras$rouparel, decreasing=TRUE),]
 
 De forma resumida, as quatro primeiras linhas leem os ficheiros e atribuem nomes às colunas. A quinta combina a informação das duas folhas de registo (dataframes) numa só. A sexta calcula a frequência relativa de roupa por número de unidades, criando uma nova coluna chamada `rouparel`. Por fim, a sétima linha obtém uma nova folha de registo ordenada pelo peso relativo do vestuário, que está na coluna `rouparel`.
 
-Com os próximos comandos, podemos visualizar isso num gráfico de barras (Figura 5) e num diagrama de caixa (boxplot) (Figura 6), neste caso para dez autores que têm várias obras na Literateca.
+Com os próximos comandos, podemos visualizar isso num gráfico de barras (Figura 6) e num diagrama de caixa (boxplot) (Figura 7), neste caso para dez autores que têm várias obras na Literateca.
 
 ```
 par(mar=c(4,24,2,2)+0.1)
@@ -186,19 +188,21 @@ dezautores$autor<-dezautores$autor[drop=TRUE]
 boxplot(dezautores$rouparel~dezautores$autor, xlab="",ylab="",las=2)
 ```
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-05.png" alt="Gráfico de barras das vinte e cinco obras que falam mais de roupa na Literateca, mostrando que as primeiras cinco são textos curtos de Machado fde Assis" caption="Figura 5. As vinte e cinco obras que falam mais de roupa na Literateca, num gráfico de barras" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-06.png" alt="Gráfico de barras das vinte e cinco obras que falam mais de roupa na Literateca, mostrando que as primeiras cinco são textos curtos de Machado fde Assis" caption="Figura 6. As vinte e cinco obras que falam mais de roupa na Literateca, num gráfico de barras" %}
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-06.png" alt="Gráfico de caixa do peso da roupa em dez autores da Literateca, mostrando que Eça de Queirós, José de Alencar e Aluísio de Azevedo são os que mencionam mais roupa" caption="Figura 6. A distribuição de roupa por dez autores na Literateca, num gráfico de caixa" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-07.png" alt="Gráfico de caixa do peso da roupa em dez autores da Literateca, mostrando que Eça de Queirós, José de Alencar e Aluísio de Azevedo são os que mencionam mais roupa" caption="Figura 7. A distribuição de roupa por dez autores na Literateca, num gráfico de caixa" %}
 
-Vemos pelas duas visualizações que, embora as obras com mais menção relativa a roupa fossem contos de Machado de Assis (Figura 5), ao ver o conjunto das suas obras (Figura 6) é Eça de Queirós quem dá mais importância a esse campo semântico (a mediana de EcaQue é significativamente mais elevada do que a de MacAss).
+Vemos pelas duas visualizações que, embora as obras com mais menção relativa a roupa fossem contos de Machado de Assis (Figura 6), ao ver o conjunto das suas obras (Figura 7) é Eça de Queirós quem dá mais importância a esse campo semântico (a mediana de EcaQue é significativamente mais elevada do que a de MacAss).
 
-Por outro lado, também podemos observar a menção ao campo semântico do vestuário ao longo do tempo, usando para isso a data ou a década a que cada obra pertence, na Figura 7.
+Por outro lado, também podemos observar a menção ao campo semântico do vestuário ao longo do tempo, usando para isso a data ou a década a que cada obra pertence, na Figura 8.
 
 ```
 boxplot(roupaObras$rouparel~roupaObras$decada,las=2,xlab="",ylab="")
 ```
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-07.png" alt="Gráfico de caixa da roupa por década, mostrando que a partir do fim do século XIX vai aumentando" caption="Figura 7. A distribuição de roupa por década na Literateca, num gráfico de caixa" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de caixa da roupa por década, mostrando que a partir do fim do século XIX vai aumentando" caption="Figura 8. A distribuição de roupa por década na Literateca, num gráfico de caixa" %}
+
+Pela figura podemos observar que a partir de 1870 existem muito mais referências ao vestuário na literatura lusófona do que anteriormente.
 
 Pela figura podemos observar que a partir de 1870 existem muito mais referências ao vestuário na literatura lusófona do que anteriormente.
 
@@ -211,7 +215,7 @@ No AC/DC, marcamos todas as caracterizações como pertencendo a uma de quatro c
 * aparência
 * social
 
-Para explicação destas categorias e da forma de anotação, ver Freitas e Santos (2023)[^8].
+Para explicação destas categorias e da forma de anotação, ver Freitas e Santos (2023).[^8]
 
 Vamos agora ver que casos femininos e masculinos estão marcados com `pred:aparencia`, ao longo do tempo.
 
@@ -246,9 +250,9 @@ aparencia$genrel<-aparencia$tamapargen/aparencia$tampredgen
 barplot(xtabs(aparencia$genrel~aparencia$gen+aparencia$decada),beside=TRUE,las=2,legend.text=c("F","M"))
 ```
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de barras de caracterizações de aparência na Literateca por década, mostrando que, em quase todas, a aparência das mulheres é mais mencionada" caption="Figura 8. Caracterização da aparência feminina e masculina por década, num gráfico de barras" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-09.png" alt="Gráfico de barras de caracterizações de aparência na Literateca por década, mostrando que, em quase todas, a aparência das mulheres é mais mencionada" caption="Figura 9. Caracterização da aparência feminina e masculina por década, num gráfico de barras" %}
 
-Vemos na Figura 8 que as mulheres têm quase sempre mais caracterização de aparência do que os homens, o que não deve constituir uma surpresa. Para obter mais informação sobre este tema e sobre a construção social do género, consultem o artigo Freitas &amp; Santos (2023)[^8].
+Vemos na Figura 9 que as mulheres têm quase sempre mais caracterização de aparência do que os homens, o que não deve constituir uma surpresa. Para obter mais informação sobre este tema e sobre a construção social do género, consultem o artigo Freitas &amp; Santos (2023).[^8]
 
 
 ### A localização na literatura portuguesa
@@ -274,7 +278,7 @@ Aqui, vamos comparar o número de locais empregues por autores diferentes, em ro
 ?variante=/PT/ ?classe=/Prosa:(romance|novela)/ ?sema=/Local:.*/ obra autor
 ```
 
-Vamos visualizar isso através de um gráfico de caixa no R. De notar que reutilizaremos o [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv) que obtivemos anteriormente.
+Vamos visualizar isso através de um gráfico de caixa no R. De notar que reutilizaremos o [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv) que obtivemos anteriormente. Além disso, conforme mencionado acima, editamos as datas marcadas com "séc..." e convertemos para UTF-8 antes de invocar o R.
 
 ```
 locais<-read.table("distribuicaoLocaisObra.tsv")
@@ -283,30 +287,40 @@ obras<-read.table("distribuicaoObra.tsv")
 names(obras)<-c("obra","tamanho", "autor","variante","data", "decada", "lixo","lixo2")
 locaisObras<-merge(locais, obras, by=c("obra","autor"))
 locaisObras$localrel<-locaisObras$num/locaisObras$tamanho
-attach(locaisObras)
-barplot(sort(tapply(localrel,obra,sum),decreasing=TRUE)[1:50],las=2)
+barplot(locaisObras[order(locaisObras$localrel,decreasing=TRUE),]$locarel[1:50],names=locaisObras[order(locaisObras$localrel,decreasing=TRUE),]$obra[1:50],las=2)
 ```
 
 As primeiras quatro linhas apenas leem e identificam as colunas das folhas de registo. A quinta junta ambas as informações, e a sexta calcula o número relativo de locais por número de palavras, para ser possível comparar obras de diferentes tamanhos.
 
-A sétima linha apenas instrói o R para se considerar "dentro" da folha de registo `locaisObras`, para não ser preciso estar sempre a preceder o nome da coluna pelo nome da folha de registo. `Tapply` é um comando no R que aplica uma função repetidamente, e neste caso é a função `sum` (soma), porque queremos somar todos os locais, sem interessar o tipo.
+Escolhi apresentar na Figura 10 o gráfico das cinquenta obras com mais locais relativos, calculado na sétima linha. (Depois de ordenar, pedi os casos de 1 a 50.)
 
-Escolhi apresentar na Figura 9 o gráfico das cinquenta obras com mais locais relativos, calculado na oitava linha. (Depois de ordenar, pedi os casos de 1 a 50.)
-
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-09.png" alt="Gráfico de caixa do peso dos locais, mostrando as obras (relativamente) com mais locais" caption="Figura 9. A distribuição de locais por obra (romances e novelas portuguesas) na Literateca, num gráfico de caixa" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-10.png" alt="Gráfico de barras do peso dos locais, mostrando as obras (relativamente) com mais locais" caption="Figura 10. A distribuição de locais por obra (romances e novelas portuguesas) na Literateca, num gráfico de barras" %}
 
 É interessante constatar que são os romances históricos, e de ficção científica, os que mais dão nome a lugares.
 
-Sugiro que façam também uma análise semelhante por autores, para ver (grandes) diferenças entre estes.
+Sugiro que façam também uma análise semelhante por autores, para ver (grandes) diferenças entre estes:
+
+```
+attach(locaisObras)
+barplot(sort(tapply(num,autor,sum)/tapply(tamanho,autor,sum),decreasing=TRUE)[1:25],las=2)
+```
+
+A primeira linha apenas instrói o R para se considerar "dentro" da folha de registo `locaisObras`, para não ser preciso estar sempre a preceder o nome da coluna pelo nome da folha de registo. 
+
+Na segunda linha, `tapply` é um comando no R que aplica uma função repetidamente, e neste caso é a função `sum` (soma), porque queremos somar todos os locais de um mesmo autor, sem interessar a obra, e todo as palavras escritas pelo autor (segundo tapply).
 
 ### O helenismo na literatura brasileira
 
 Finalmente, apresento aqui um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia[^10], que estudou o helenismo na literatura brasileira. 
+
 O seu trabalho é um bom exemplo de como simples tarefas de anotação, em colaboração com o AC/DC, são fáceis de executar e produzem resultados interessantes.
 
 De facto, Marcus apenas mandou um conjunto de lexemas que, segundo ele, estavam associados à cultura grega, e anotámos o OBras, o principal corpo de literatura brasileira no AC/DC, com essa informação (a marcação `helen`). Assim tornou-se muito fácil medir o peso destas palavras num conjunto de autores brasileiros com obras no OBras.
 
-O leitor é convidado a reproduzir as figuras da tese, visto que todos os comandos são apresentados num anexo.
+O leitor é convidado a reproduzir as figuras da tese, visto que todos os comandos são apresentados num anexo. Deixa-se a Figura 11, correspondente ao gráfico 3 da página 99, para aperitivo.
+
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-11.png" alt="Gráfico de barras de termos de helenismo por autores e género" caption="Figura 11. A distribuição de helenismos por autor e género de texto, num gráfico de barras" %}
+
 
 ## Observações finais
 
@@ -315,23 +329,23 @@ Nesta lição tentei apresentar o AC/DC, com duas formas de interação, a "Proc
 O objetivo foi demonstrar diversas possibilidades de estudo da história da literatura lusófona, por meio da leitura distante, usando o AC/DC e em particular o corpo Literateca, que reúne textos literários em português e está em constante expansão.
 
 
-## Referências
+## Notas de fim
 
 [^1]: Bick, Eckhard."PALAVRAS, a Constraint Grammar-based Parsing System for Portuguese." In Tony Berber Sardinha & Thelma de Lurdes São Bento Ferreira (eds.), *Working with Portuguese Corpora*, London/New York: Bloomsbury Academic, 2014, pp. 279-302.
 
 [^2]: Santos, Diana. "Corpora at Linguateca: Vision and roads taken", in Tony Berber Sardinha & Telma de Lurdes São Bento Ferreira (eds.), *Working with Portuguese Corpora*, Bloomsbury, 2014, pp. 219-236.
 
-[^3]: Santos, Diana. "A Gramateca e a Literateca como macroscópios linguísticos". *Domínios da Linguagem* 16, 4, 2022, pp. 1242-1265.
+[^3]: Santos, Diana Maria de Sousa Marques Pinto dos. "A Gramateca e a Literateca como macroscópios linguísticos". *Domínios da Linguagem* 16, 4, 2022, pp. 1242-1265. [pdf](https://seer.ufu.br/index.php/dominiosdelinguagem/article/view/63848/)
 
 [^4]: Evert, Stefan &amp Hardie, Andrew. "Twenty-first century Corpus Workbench: Updating a query architecture for the new millennium". In *Proceedings of the Corpus Linguistics 2011 conference*, University of Birmingham, UK, 2011. [pdf](http://www.birmingham.ac.uk/documents/college-artslaw/corpus/conference-archives/2011/Paper-153.pdf)
 
 [^5]: Santos, Diana. "A sintaxe do AC/DC: apresentação do CWB e das opções tomadas", Outono de 2012, notas para a disciplina de POR2102. [pdf](https://www.linguateca.pt/Diana/download/instrACDC.pdf)
 
-[^6]: Santos, Diana. "Explorando o vestuário na literatura em português". *TradTerm*, 37, 2, 2021, pp. 622-643. 
+[^6]: Santos, Diana. "Explorando o vestuário na literatura em português". *TradTerm*, 37, 2, 2021, pp. 622-643. [pdf](https://revistas.usp.br/tradterm/article/view/170266)
 
 [^7]: outra maneira ainda é especificar no Distribuidor que apenas pretende obter obras com data válida: `?data=/^[12].../ obra autor variante data decada`
 
-[^8]: Freitas, Cláudia &amp; Diana Santos. "Gender Depiction in Portuguese: Distant reading Brazilian and Portuguese literature". In *Journal of Computational Literary Studies*, 2023.
+[^8]: Freitas, Cláudia &amp; Diana Santos. "Gender Depiction in Portuguese: Distant reading Brazilian and Portuguese literature". In *Journal of Computational Literary Studies*, 2, 1, 2023. [pdf](https://jcls.io/article/id/3576/)
 
 [^9]: Santos, Diana &amp; Eckhard Bick. "Distant reading places in Portuguese literature". *NorLit2021* (Trondheim, 14-16 June 2022). [pdf](https://www.linguateca.pt/Diana/download/SantosBickNorLit.pdf)
 

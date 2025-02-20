@@ -156,7 +156,7 @@ table(escritores$nacionalidade)
 barplot(table(escritores$nacionalidade))
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-01X.png" alt="Gráfico de barras com a nacionalidade" caption="Figura 01X. Gráfico de barras com nacionalidade do autor" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-0X1.png" alt="Gráfico de barras com a nacionalidade" caption="Figura 0X1. Gráfico de barras com nacionalidade do autor" %}
 
 Mas vamos buscar folhas de registo muito mais ricas para demonstrar as potencialidades de visualização. Por exemplo, vejamos uma lista de obras literárias em português com informação sobre o seu autor, data de publicação, escola literária e contagens de vários atributos sintáticos e semânticos, usada no artigo Santos et al. (2020) [^1].
 
@@ -198,9 +198,9 @@ Criamos uma nova folha de registo `periodSemDesc` a partir da folha de registo o
 Se tivéssemos executado simplesmente os comandos
 ```
 periodizacao$escola2<-factor(periodizacao$escola2)
-barplot(table(periodizacao$escola2[periodizacao$escola2!="desc",]))
+barplot(table(periodizacao[periodizacao$escola2!="desc",]$escola2))
 ```
-o gráfico de barras apresentaria uma barra nula para `desc`, como vemos na figura X2:
+o gráfico de barras apresentaria uma barra nula para `desc`, como vemos na figura 0X2:
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-0X2.png" alt="Gráfico de barras com escola literária em inglês, com cinco classes, sem termos removido o valor desc do fator escola" caption="Figura X2. Gráfico de barras com escola literária em inglês, sem termos removido o valor desc do fator escola" %}
 

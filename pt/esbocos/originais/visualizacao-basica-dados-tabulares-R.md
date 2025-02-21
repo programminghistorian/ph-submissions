@@ -345,8 +345,8 @@ Agora pode seguir para lições mais complicadas como [Investigar a literatura l
 
 [^4]: O comportamento pode variar em versões diferentes do R. Se obtiverem uma mensagem de erro do `boxplot`, executem os seguintes comandos, que retiram explicitamente os NA, transformam em inteiros as idades, antes de invocar o comando `boxplot`.
 
-```
-novoEscritores<-na.omit(escritores)
-novoEscritores$tempoVida<-as.integer(novoEscritores$tempoVida)
-boxplot(novoEscritores$tempoVida~novoEscritores$nacionalidade)
-```
+      <code>
+      novoEscritores<-na.omit(escritores)
+      novoEscritores$tempoVida<-as.integer(novoEscritores$tempoVida)
+      boxplot(novoEscritores$tempoVida~novoEscritores$nacionalidade)
+      </code>

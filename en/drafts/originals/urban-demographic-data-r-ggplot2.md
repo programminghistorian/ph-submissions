@@ -354,11 +354,11 @@ ggsave("eudata.png")
 
 ```
 
-This will create a [`.png`](https://en.wikipedia.org/wiki/Portable_Network_Graphics) file of the last plot you constructed. The function `ggsave()` also has [many parameters](http://ggplot2.tidyverse.org/reference/ggsave.html) which you can adjust if needed (dpi, height, width, format, and more).
+This will create a [`.png`](https://en.wikipedia.org/wiki/Portable_Network_Graphics) file of the last plot you constructed. The function `ggsave()` also comes with [many adjustable parameters](http://ggplot2.tidyverse.org/reference/ggsave.html) (dpi, height, width, format, and more).
 
-Sometimes, we want to enhance our graph by encoding additional information using different colors or shapes. This is particularly useful when we have categorical variables we want to visualize alongside the main variables of interest. In the scatterplot, we used static values for size and color. However, we can map these aesthetic properties to specific columns in our data to represent different categories.
+You may sometimes want to enhance your graph by encoding additional information, using different colors or shapes. This is particularly useful if you want to represent [categorical variables](https://en.wikipedia.org/wiki/Categorical_variable) alongside the main variables of interest. In the scatter plot (Figure 8), you used static values to determine the size and color of the points. However, you could also map these aesthetic properties to specific columns in the data, in order to systematically visualize your different categories.
 
-For instance, say we want to color the points in our scatterplot to distinguish different relationships based on the destination city location. Our dataset has a categorical variable called `typecountry` , indicating whether the destination city is in the same country as the origin city, in another EU country, or a non-EU country. To incorporate this information, we map the typecountry variable to the color aesthetic by passing the `aes()` function to `geom_point()`:
+For instance, say you want to distinguish between the different sister city relationships by highlighting the type of destination country in each pair. Our dataset's `typecountry` variable is a categorical variable which indicates whether the destination city is in the same country as the origin city, in another EU country, or another non-EU country. To incorporate this information, you can map the `typecountry` variable to the `color` parameter by passing the `aes()` function to `geom_point()`:
 
 ```
 
@@ -380,25 +380,23 @@ y = "Population of destination city (log)")
 
 ```
 
-{% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-10.png" alt="Scatterplot using colors to distinguish different types of sister city relationships based on the location of the destination city." caption="Figure 10. Using colors in scatterplots for showing different countries." %}
+{% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-10.png" alt="Scatterplot using colors to distinguish different types of sister city relationships based on the location of the destination city." caption="Figure 10. Using colors in scatterplots to visualize different country types." %}
 
-Above, we did two major manipulations. First, we modified `geom_point()` by adding an argument: `aes(color = typecountry)`. Since there are too many points, we added the parameter alpha to make them transparent. Again, ggplot2 has selected sensible default colors and legends for the graph.
+The code above made two major manipulations. First, we modified `geom_point()` by adding an argument: `aes(color = typecountry)`. Since there are too many overlapping points, we used the parameter `alpha` to make them 70% transparent. Again, ggplot2 has selected sensible default colors and legends for the graph.
 
 ### Scales: Colors, Legends, and Axes
 
-It's time to look at the scales function in ggplot2. Scales are crucial in determining how data is mapped to visual properties. They provide data transformation for position, size, color, and shape aesthetics. Additionally, scales define how aesthetics are displayed on the plot, including the range of values, the breaks or tick marks, and the labels.
+Next, we'll explore ggplot2's `scales` function. Scales are crucial for determining how data is mapped to visual properties. They provide data transformation for position, size, color, and shape aesthetics. Additionally, scales define how aesthetics are displayed on the plot, including the range of values, the breaks or tick marks, and the labels.
 
 In ggplot2, scales follow a naming convention consisting of three parts separated by underscores:
 
-1. The prefix "scale".
+1. The prefix `scale`.
+2. The type of aesthetic being modified (color, shape, x, y, etc.).
+3. The type of scale being applied (continuous, discrete, brewer).
 
-2. The name of the aesthetic being modified (e.g., color, shape, x, y).
+For example, `scale_color_continuous()` controls the color aesthetic using a continuous scale, while `scale_shape_discrete()` modifies the shape aesthetic using a discrete scale.
 
-2. The type of scale being applied (e.g., continuous, discrete, brewer).
-
-For example, `scale_color_continuous()` is used to control the color aesthetic with a continuous scale, while `scale_shape_discrete()` is used to modify the shape aesthetic with a discrete scale.
-
-One common use of scales is to change plot colors. We can manually specify colors using specific color values or predefined color scales. Let's store our previous plot in a variable to demonstrate this. This is a convenient way to create different versions of the same plot by modifying only certain aspects.
+One common use of scales is to change plot colors. You can manually specify colors using specific color values or predefined color scales. Before we do this, let's start by storing our previous plot in a variable `p1`: this is a convenient way to create different versions of the same plot by modifying only certain aspects.
 
 ```
 
@@ -420,7 +418,7 @@ y = "Population of destination city (log)")
 
 ```
 
-Now that we have stored the plot in the variable `p1`, we can modify the color scale. To manually specify colors, we can use the `scale_color_manual()` function and provide a vector of color values. In this case, we will use colors that [R has already defined](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf). We can also use hexadecimal codes for specific colors. As you see, [`scale_colour_manual()`](http://ggplot2.tidyverse.org/reference/scale_manual.html) takes a compulsory argument (`values =`), namely a vector with the names of colors.
+Now, you can easily modify the color scale. To manually specify colors, you can use the `scale_color_manual()` function and provide a vector of color values, using color names [defined by R](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) or their hexadecimal codes. [`scale_colour_manual()`](http://ggplot2.tidyverse.org/reference/scale_manual.html) takes a compulsory argument (`values =`), namely a vector of the color names.
 
 ```
 
@@ -428,7 +426,7 @@ p1 + scale_colour_manual(values = c("red", "blue", "green"))
 
 ```
 
-{% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-11.png" alt="Scatter plot that uses scale_colour_manual() to change the colors of the scatterplot points." caption="Figure 11. Using scale_colour_manual() to change the colors of the scatterplot points." %}
+{% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-11.png" alt="Scatter plot that uses scale_colour_manual() to change the colors of the scatterplot points." caption="Figure 11. Using scale_colour_manual() to change the colors of the scatter plot points." %}
 
 In this way, we can create graphs with our preferred colors. However, using already defined color scales, such as the [color brewer palettes](http://colorbrewer2.org), when possible, is better. ggplot2 already has these [integrated](http://ggplot2.tidyverse.org/reference/scale_brewer.html) and a scale for using them (`scale_colour_brewer()`):
 

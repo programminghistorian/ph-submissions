@@ -76,7 +76,7 @@ No segundo exemplo, juntamos o sexo do autor, que nesse caso é sempre masculino
 escritores$sexo<-"masc"
 ```
 
-Embora apenas indicamos um valor (e não um vetor) o R automaticamente repete esse valor tantas vezes quantas a dimensão da coluna.
+Embora apenas indiquemos um valor (e não um vetor) o R automaticamente repete esse valor tantas vezes quantas a dimensão da coluna.
 
 #### Adição de linhas
 

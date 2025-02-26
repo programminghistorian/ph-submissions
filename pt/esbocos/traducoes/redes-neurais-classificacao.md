@@ -5,7 +5,7 @@ original: image-classification-neural-networks
 layout: lesson
 collection: lessons
 date: 2023-03-23
-translation_date: 2023-MM-DD
+translation_date: YYYY-MM-DD
 authors:
 - Nabeel Siddiqui
 reviewers: 
@@ -18,8 +18,7 @@ translator:
 translation-editor:
 - Danielle Sanches
 translation-reviewer:
-- Salete Farias
-- A INDICAR
+- Alisson Soares
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/576
 difficulty: 2
 activity: analyzing

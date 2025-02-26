@@ -47,10 +47,14 @@ Existem muitos dados em R que são organizados em folhas de registo, e existem v
 Para efeitos pedagógicos, vamos criar algumas folhas de registo de raiz, mas devo desde já notar que na esmagadora maioria dos casos esses dados vêm de fora, e são lidos para o R através das suas funções de entrada/saída, em particular `read.table()`, de que falaremos mais tarde.
 
 ```
-escritores <- data.frame(id=c("JulDin","CamCBra","AacAss","CoeNet"), nome=c("Júlio Dinis", "Camilo Castelo Branco","Machado de Assis","Coelho Neto"),nascimento=c(1839,1825,1839,1864), morte=c(1871,1890,1908,1934),nacionalidade=c("PT","PT","BR","BR"))
+escritores <- data.frame(id=c("JulDin","CamCBra","MacAss","CoeNet"), nome=c("Júlio Dinis", "Camilo Castelo Branco","Machado de Assis","Coelho Neto"),nascimento=c(1839,1825,1839,1864), morte=c(1871,1890,1908,1934),nacionalidade=c("PT","PT","BR","BR"))
 ```
 
 O comando `data.frame()` cria uma folha de registo, `c()` -- concatenar -- cria um vetor com os argumentos.
+
+Para visualizar a folha de registo criada, basta escrever o seu nome, que o R mostra (quando não é grande demais). Na Figura 1 temos o resultado.
+
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-01.png" alt="O resultado da visualização da folha de registo pelo R, digitando o seu nome" caption="Figura 1. O resultado da inspeção da folha de registo criada" %}
 
 É depois possível identificar cada coluna pelo nome, por exemplo a coluna que indica a data de nascimento é identificada assim: `escritores$nascimento`
 
@@ -156,7 +160,7 @@ table(escritores$nacionalidade)
 barplot(table(escritores$nacionalidade))
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-03.png" alt="Figura 3. Gráfico de barras com a nacionalidade" caption="Figura 0X1. Gráfico de barras com nacionalidade do autor" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-03.png" alt="Figura 3. Gráfico de barras com a nacionalidade" caption="Figura 3. Gráfico de barras com nacionalidade do autor" %}
 
 Mas vamos buscar folhas de registo muito mais ricas para demonstrar as potencialidades de visualização. Por exemplo, vejamos uma lista de obras literárias em português com informação sobre o seu autor, data de publicação, escola literária e contagens de vários atributos sintáticos e semânticos, usada no artigo Santos et al. (2020) [^1].
 
@@ -200,7 +204,7 @@ Se tivéssemos executado simplesmente os comandos
 periodizacao$escola2<-factor(periodizacao$escola2)
 barplot(table(periodizacao[periodizacao$escola2!="desc",]$escola2))
 ```
-o gráfico de barras apresentaria uma barra nula para `desc`, como vemos na figura 0X2:
+o gráfico de barras apresentaria uma barra nula para `desc`, como vemos na figura 5:
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-05.png" alt="Gráfico de barras com escola literária em inglês, com cinco classes, sem termos removido o valor desc do fator escola" caption="Figura 5. Gráfico de barras com escola literária em inglês, sem termos removido o valor desc do fator escola" %}
 
@@ -286,11 +290,11 @@ Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo
 ```
 maisInfo<-merge(algunsAutores,escritores,by.x=c("autor", "sexo"),by.y=c("id","sexo"))
 ```
-Esse comando é muito importante -- correspondente ao "join" das bases de dados -- porque permite estruturar o conhecimento em ficheiros  -- tabelas -- diferentes, mas juntá-lo quando queremos usar toda a informação. Na figura 0X4 vemos as primeira linhas da folha de registo `maisInfo`.
+Esse comando é muito importante -- correspondente ao "join" das bases de dados -- porque permite estruturar o conhecimento em ficheiros  -- tabelas -- diferentes, mas juntá-lo quando queremos usar toda a informação. Na figura 13 vemos as primeira linhas da folha de registo `maisInfo`.
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-13.png" alt="As primeiras linhas da folha de registo MaisInfo, demonstrando que têm mais colunas que as duas folhas que foram amalgamadas" caption="Figura 13. O que o R mostra se pedirmos as primeiras linhas da folha de registo MaisInfo" %}
 
-O uso deste comando permite-nos, por exemplo, fazer um diagrama de caixa pela variedade do português, e não pelos autores. Escolhi observar o uso das vírgulas na Figura 10.
+O uso deste comando permite-nos, por exemplo, fazer um diagrama de caixa pela variedade do português, e não pelos autores. Escolhi observar o uso das vírgulas na Figura 14.
 
 ```
 boxplot(maisInfo$virg/maisInfo$tamanho~maisInfo$nacionalidade,xlab="",ylab="", main="Frequência relativa de uso de vírgulas em romances por variante")

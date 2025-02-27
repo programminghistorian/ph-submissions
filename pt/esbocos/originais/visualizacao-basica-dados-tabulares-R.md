@@ -64,7 +64,7 @@ Assim como é possível ter um resumo da folha de registo
 summary(escritores)
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-01.png" alt="O resultado do summary, mostrando informação por cada nome da coluna" caption="Figura 1. O resultado do comando summary" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-02.png" alt="O resultado do summary, mostrando informação por cada nome da coluna" caption="Figura 2. O resultado do comando summary" %}
 
 #### Adição de colunas
 
@@ -128,7 +128,7 @@ escritores$id<-factor(escritores$id)
 
 Reparem como o `summary` se torna muito mais legível:
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-02.png" alt="O novo resultado do summary, em que por exemplo a coluna nacionalidade tem duas linhas" caption="Figura 2. O novo resultado de summary" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-03.png" alt="O novo resultado do summary, em que por exemplo a coluna nacionalidade tem duas linhas" caption="Figura 3. O novo resultado de summary" %}
 
 Podemos, claro, adicionar mais valores ao fator
 
@@ -160,7 +160,7 @@ table(escritores$nacionalidade)
 barplot(table(escritores$nacionalidade))
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-03.png" alt="Figura 3. Gráfico de barras com a nacionalidade" caption="Figura 3. Gráfico de barras com nacionalidade do autor" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-04.png" alt="Gráfico de barras com a nacionalidade" caption="Figura 4. Gráfico de barras com nacionalidade do autor" %}
 
 Mas vamos buscar folhas de registo muito mais ricas para demonstrar as potencialidades de visualização. Por exemplo, vejamos uma lista de obras literárias em português com informação sobre o seu autor, data de publicação, escola literária e contagens de vários atributos sintáticos e semânticos, usada no artigo Santos et al. (2020) [^1].
 
@@ -195,7 +195,7 @@ periodSemDesc$escola2<-factor(periodSemDesc$escola2)
 barplot(table(periodSemDesc$escola2))
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-04.png" alt="Gráfico de barras com escola literária em inglês, com cinco classes. Romantism é a mais frequente" caption="Figura 4. Gráfico de barras com escola literária em inglês" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-05.png" alt="Gráfico de barras com escola literária em inglês, com cinco classes. Romantism é a mais frequente" caption="Figura 5. Gráfico de barras com escola literária em inglês" %}
 
 Criamos uma nova folha de registo `periodSemDesc` a partir da folha de registo original, com apenas os casos em que se conhece a escola literária. A indicação `escola2!="desc"` significa que o valor da coluna `escola2` deve ser diferente de `desc`. Se, pelo contrário, quiséssemos igual, usaríamos o sinal `==` em vez de `!=`.
 
@@ -204,9 +204,9 @@ Se tivéssemos executado simplesmente os comandos
 periodizacao$escola2<-factor(periodizacao$escola2)
 barplot(table(periodizacao[periodizacao$escola2!="desc",]$escola2))
 ```
-o gráfico de barras apresentaria uma barra nula para `desc`, como vemos na figura 5:
+o gráfico de barras apresentaria uma barra nula para `desc`, como vemos na figura 6:
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-05.png" alt="Gráfico de barras com escola literária em inglês, com cinco classes, sem termos removido o valor desc do fator escola" caption="Figura 5. Gráfico de barras com escola literária em inglês, sem termos removido o valor desc do fator escola" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-06.png" alt="Gráfico de barras com escola literária em inglês, com cinco classes, sem termos removido o valor desc do fator escola" caption="Figura 6. Gráfico de barras com escola literária em inglês, sem termos removido o valor desc do fator escola" %}
 
 
 A indicação `periodizacao[periodizacao$escola2!="desc",]` significa todas as linhas da folha de registo `periodizacao` cuja coluna `escola2` não tenha o valor `desc`, e todas as colunas. (Uma folha de registo tem sempre linhas e colunas, e podemos selecioná-las independentemente. Quando não pomos nada, como depois da vírgula, significa que selecionamos todas.)
@@ -222,7 +222,7 @@ Quando há casos fora desses limites descritos pelos bigodes, chamados valores d
 
 Veja-se esta figura, retirada do tutorial de Yi[^3] [A complete guide to boxplots](https://www.atlassian.com/data/charts/box-plot-complete-guide):
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-06.png" alt="Explicação de um gráfico de caixa, com um diagrama de todos os pontos e um gráfico de caixa. e dois valores discrepantes" caption="Figura 6. Explicação de um gráfico de caixa, retirada de Yi." %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-07.png" alt="Explicação de um gráfico de caixa, com um diagrama de todos os pontos e um gráfico de caixa. e dois valores discrepantes" caption="Figura 7. Explicação de um gráfico de caixa, retirada de Yi." %}
 
 Os gráficos de caixa são sobretudo úteis para comparar vários conjuntos de dados. Vejamos, no nosso caso, a diferença de uso de cor por escola literária:
 
@@ -232,7 +232,7 @@ boxplot(periodizacao$cor~periodizacao$escola2)
 
 O til (~) é como se designa por em R, e espera que a indicação à direita seja um fator. À esquerda teremos valores numéricos para fazer os variados gráficos de caixa, um por cada valor do fator.
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-07.png" alt="Gráfico de caixa da presença de palavras de cor por escola literária em inglês, mostrando seis gráficos de caixa, um por cada escola literária" caption="Figura 7. Gráfico de caixa da presença de palavras de cor por escola literária em inglês" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-08.png" alt="Gráfico de caixa da presença de palavras de cor por escola literária em inglês, mostrando seis gráficos de caixa, um por cada escola literária" caption="Figura 8. Gráfico de caixa da presença de palavras de cor por escola literária em inglês" %}
 
 Vemos pelo resultado que é o naturalismo que tem mais cor, e que o romantismo parece ter menos palavras de cor que o realismo. Não nos interessa aqui prosseguir nenhuma análise literária, mas apenas ilustrar o uso dos gráficos de caixa e a sua interpretação.
 
@@ -242,7 +242,7 @@ De facto, para poder comparar como deve ser um grande conjunto de obras de taman
 boxplot(periodizacao$cor/periodizacao$tamanho~periodizacao$escola2)
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-08.png" alt="Gráfico de caixa da presença relativa de palavras de cor por escola literária em inglês, mostrando seis gráficos de caixa, um por cada escola literária" caption="Figura 8. Gráfico de caixa da presença relativa de palavras de cor por escola literária em inglês" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-09.png" alt="Gráfico de caixa da presença relativa de palavras de cor por escola literária em inglês, mostrando seis gráficos de caixa, um por cada escola literária" caption="Figura 9. Gráfico de caixa da presença relativa de palavras de cor por escola literária em inglês" %}
 
 ## Mais operações sobre folhas de registo
 
@@ -266,7 +266,7 @@ Podemos ver quantas obras temos por autor:
 barplot(table(algunsAutores$autor))
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-09.png" alt="Gráfico de barras do número de obras por autor, mostrando que o autor com mais obras é Eça de Queirós, com 15" caption="Figura 09. Gráfico de barras do número de obras por autor" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-10.png" alt="Gráfico de barras do número de obras por autor, mostrando que o autor com mais obras é Eça de Queirós, com 15" caption="Figura 10. Gráfico de barras do número de obras por autor" %}
 
 
 Mas o mais interessante será comparar estes quatro autores, por exemplo na frequência relativa de emoções, no uso de nomes próprios, ou na frequência de orações no conjuntivo/subjuntivo:
@@ -277,11 +277,11 @@ boxplot(algunsAutores$proprios/algunsAutores$tamanho~algunsAutores$autor,xlab=""
 boxplot(algunsAutores$conjuntivo/algunsAutores$oracoes~algunsAutores$autor,xlab="",ylab="", main="Frequência de orações no conjuntivo em romances por autor")
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-10.png" alt="Gráfico de caixa da presença relativa de palavras de emoção por escola literária em inglês, em que Júlio Dinis domina" caption="Figura 10. Gráfico de caixa da presença relativa de palavras de emoção por escola literária em inglês" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-11.png" alt="Gráfico de caixa da presença relativa de palavras de emoção por escola literária em inglês, em que Júlio Dinis domina" caption="Figura 11. Gráfico de caixa da presença relativa de palavras de emoção por escola literária em inglês" %}
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-11.png" alt="Gráfico de caixa da presença relativa de nomes próprios por escola literária em inglês, em que Eça de Queirós é o autor que mais os usa" caption="Figura 11. Gráfico de caixa da presença relativa de nomes próprios por escola literária em inglês" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-12.png" alt="Gráfico de caixa da presença relativa de nomes próprios por escola literária em inglês, em que Eça de Queirós é o autor que mais os usa" caption="Figura 12. Gráfico de caixa da presença relativa de nomes próprios por escola literária em inglês" %}
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-12.png" alt="Gráfico de caixa da presença relativa de orações no conjuntivo por escola literária em inglês, liderada por Júlio Dinis" caption="Figura 12. Gráfico de caixa da presença relativa de orações no conjuntivo por escola literária em inglês" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-13.png" alt="Gráfico de caixa da presença relativa de orações no conjuntivo por escola literária em inglês, liderada por Júlio Dinis" caption="Figura 13. Gráfico de caixa da presença relativa de orações no conjuntivo por escola literária em inglês" %}
 
 ### Juntar mais do que uma folha de registo numa só
 
@@ -290,17 +290,17 @@ Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo
 ```
 maisInfo<-merge(algunsAutores,escritores,by.x=c("autor", "sexo"),by.y=c("id","sexo"))
 ```
-Esse comando é muito importante -- correspondente ao "join" das bases de dados -- porque permite estruturar o conhecimento em ficheiros  -- tabelas -- diferentes, mas juntá-lo quando queremos usar toda a informação. Na figura 13 vemos as primeira linhas da folha de registo `maisInfo`.
+Esse comando é muito importante -- correspondente ao "join" das bases de dados -- porque permite estruturar o conhecimento em ficheiros  -- tabelas -- diferentes, mas juntá-lo quando queremos usar toda a informação. Na figura 14 vemos as primeira linhas da folha de registo `maisInfo`.
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-13.png" alt="As primeiras linhas da folha de registo MaisInfo, demonstrando que têm mais colunas que as duas folhas que foram amalgamadas" caption="Figura 13. O que o R mostra se pedirmos as primeiras linhas da folha de registo MaisInfo" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-14.png" alt="As primeiras linhas da folha de registo MaisInfo, demonstrando que têm mais colunas que as duas folhas que foram amalgamadas" caption="Figura 14. O que o R mostra se pedirmos as primeiras linhas da folha de registo MaisInfo" %}
 
-O uso deste comando permite-nos, por exemplo, fazer um diagrama de caixa pela variedade do português, e não pelos autores. Escolhi observar o uso das vírgulas na Figura 14.
+O uso deste comando permite-nos, por exemplo, fazer um diagrama de caixa pela variedade do português, e não pelos autores. Escolhi observar o uso das vírgulas na Figura 15.
 
 ```
 boxplot(maisInfo$virg/maisInfo$tamanho~maisInfo$nacionalidade,xlab="",ylab="", main="Frequência relativa de uso de vírgulas em romances por variante")
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-14.png" alt="Gráfico de caixa da presença relativa de vírgulas por variante, em que os autores brasileiros as usam muito mais frequentemente" caption="Figura 14. Gráfico de caixa da presença relativa de vírgulas por variante" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-15.png" alt="Gráfico de caixa da presença relativa de vírgulas por variante, em que os autores brasileiros as usam muito mais frequentemente" caption="Figura 15. Gráfico de caixa da presença relativa de vírgulas por variante" %}
 
 ### Guardar folhas de registo
 
@@ -329,7 +329,7 @@ escritores<-rbind(escritores, data.frame(id="Pepet",nome="Pepetela",nascimento=1
 boxplot(escritores$tempoVida~escritores$nacionalidade)
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-15.png" alt="Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade, em que só aparece um escritor angolano apesar de termos dois na folha de registo" caption="Figura 15. Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-16.png" alt="Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade, em que só aparece um escritor angolano apesar de termos dois na folha de registo" caption="Figura 16. Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade" %}
 
 Como só existe um autor angolano com tempo de vida diferente de NA, Agostinho Neto, apenas um ponto -- visualizado como uma linha -- é mostrado no gráfico de caixa.[^4]
 

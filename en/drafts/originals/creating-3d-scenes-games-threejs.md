@@ -67,7 +67,7 @@ Some simple command line typing will be required. Most importantly you need to b
 
 - Web browser. Chrome, Safari, Edge etc.
 
-Chrome generally has the better developer tools for code debugging.
+Chrome generally has the better developer tools for code debugging. If your browser can display the [three.js](https://threejs.org) site and the various sample projects on the home page it should work.
 
 - [Node.js](https://nodejs.org) is a free JavaScript tool. 
 
@@ -382,31 +382,31 @@ Add:
 	const sphere = new THREE.SphereGeometry( 0.04, 15, 5); //radius, width segments, height segments
 
 	const sphere1 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.materialColor })); 
-	sphere1.position.set( sphereposx, gheight + .30, sphereposz); 
+	sphere1.position.set( sphereposx, gheight + 0.30, sphereposz); 
 
 	const sphere2 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilColor })); 
-	sphere2.position.set( sphereposx, gheight + .21, sphereposz); 
+	sphere2.position.set( sphereposx, gheight + 0.21, sphereposz); 
 
 	const sphere3 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.wangelaColor })); 
-	sphere3.position.set( sphereposx, gheight - .15, sphereposz); 
+	sphere3.position.set( sphereposx, gheight - 0.15, sphereposz); 
 
 	const sphere4 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.nabColor })); 
-	sphere4.position.set( sphereposx, gheight - .06, sphereposz); 
+	sphere4.position.set( sphereposx, gheight - 0.06, sphereposz); 
 
 	const sphere5 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleAddColor})); 
-	sphere5.position.set( sphereposx, gheight - *.35, sphereposz); 
+	sphere5.position.set( sphereposx, gheight - 0.35, sphereposz); 
 
 	const sphere6 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilBeatenColor})); 
-	sphere6.position.set( sphereposx, gheight + .03, sphereposz); 
+	sphere6.position.set( sphereposx, gheight + 0.03, sphereposz); 
 
 	const sphere7 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.amphColor })); 
-	sphere7.position.set( sphereposx, gheight - .44, sphereposz); 
+	sphere7.position.set( sphereposx, gheight - 0.44, sphereposz); 
 
 	const sphere8 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleColor})); 
-	sphere8.position.set( sphereposx, gheight - .25, sphereposz); 
+	sphere8.position.set( sphereposx, gheight - 0.25, sphereposz); 
 
 	const sphere9 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.ringTopColor})); 
-	sphere9.position.set( sphereposx, gheight + .12, sphereposz); 
+	sphere9.position.set( sphereposx, gheight + 0.12, sphereposz); 
 
 	scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
 
@@ -596,7 +596,7 @@ To avoid repetitive code we will define a function createModel(), and have the l
 Replace 
 
 ```
-	// most verbose
+	// verbose version
 	function onLoadAibom( gltf ) {				
 	...
 	}
@@ -938,7 +938,7 @@ replace:
 	}
 			...
 
-	loader.load( 'models/gltf/yabob.glb', function( gltf ) {
+	loader.load( 'models/yabob.glb', function( gltf ) {
 		...
 	}, undefined, function ( error ) {console.error( error );} );
 

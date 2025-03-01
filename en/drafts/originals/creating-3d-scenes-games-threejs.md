@@ -353,6 +353,8 @@ Add:
 	let desk = 0.8; // desk height
     	let gheight = desk + 0.55; //panel height
 	let psize = 1.0; // panel dimensions
+	let sphereposx = 0.84 // key sphere x position
+	let sphereposz = -0.75 // key sphere x position
 
 ```
 
@@ -380,31 +382,31 @@ Add:
 	const sphere = new THREE.SphereGeometry( 0.04, 15, 5); //radius, width segments, height segments
 
 	const sphere1 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.materialColor })); 
-	sphere1.position.set( 0.84, gheight + (psize *.30), -.75); 
+	sphere1.position.set( sphereposx, gheight + .30, sphereposz); 
 
 	const sphere2 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilColor })); 
-	sphere2.position.set( 0.84, gheight + (psize *.21), -.75); 
+	sphere2.position.set( sphereposx, gheight + .21, sphereposz); 
 
 	const sphere3 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.wangelaColor })); 
-	sphere3.position.set( 0.84, gheight - (psize *.15), -.75); 
+	sphere3.position.set( sphereposx, gheight - .15, sphereposz); 
 
 	const sphere4 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.nabColor })); 
-	sphere4.position.set( 0.84, gheight - (psize *.06), -.75); 
+	sphere4.position.set( sphereposx, gheight - .06, sphereposz); 
 
 	const sphere5 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleAddColor})); 
-	sphere5.position.set( 0.84, gheight - (psize *.35), -.75); 
+	sphere5.position.set( sphereposx, gheight - *.35, sphereposz); 
 
 	const sphere6 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilBeatenColor})); 
-	sphere6.position.set( 0.84, gheight + (psize *.03), -.75); 
+	sphere6.position.set( sphereposx, gheight + .03, sphereposz); 
 
 	const sphere7 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.amphColor })); 
-	sphere7.position.set( 0.84, gheight - (psize *.44), -.75); 
+	sphere7.position.set( sphereposx, gheight - .44, sphereposz); 
 
 	const sphere8 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleColor})); 
-	sphere8.position.set( 0.84, gheight - (psize *.25), -.75); 
+	sphere8.position.set( sphereposx, gheight - .25, sphereposz); 
 
 	const sphere9 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.ringTopColor})); 
-	sphere9.position.set( 0.84, gheight + (psize *.12), -.75); 
+	sphere9.position.set( sphereposx, gheight + .12, sphereposz); 
 
 	scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
 
@@ -457,32 +459,32 @@ const louisadeTexture = textureLoader.load( 'textures/Louisade.jpg' );
 const yabobTexture = textureLoader.load( 'textures/Yabob.jpg' );
 
 gallery = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: introTexture }));
-gallery.position.set( 0, gheight, -.75); 
+gallery.position.set( 0, gheight, sphereposz); 
 selectedPlane = gallery;
 const gallery2 = new THREE.Mesh(new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: keyTexture }));
-gallery2.position.set( 1.25, gheight, -.75); 
+gallery2.position.set( 1.25, gheight, sphereposz); 
 const gallery3 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize  ), new THREE.MeshBasicMaterial({ map: refTexture }));
-gallery3.position.set( -1.25, gheight, -.75); 
+gallery3.position.set( -1.25, gheight, sphereposz); 
 
 scene.add( gallery, gallery2, gallery3);
 
 adzeraG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: adzeraTexture }));
-adzeraG.position.set( 0, gheight, -.75); 
+adzeraG.position.set( 0, gheight, sphereposz); 
 
 aibomG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: aibomTexture }));
-aibomG.position.set( 0, gheight, -.75); 
+aibomG.position.set( 0, gheight, sphereposz); 
 
 mailuG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: mailuTexture }));
-mailuG.position.set( 0, gheight, -.75); 
+mailuG.position.set( 0, gheight, sphereposz); 
 
 dimiriG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: dimiriTexture }));
-dimiriG.position.set( 0, gheight, -.75); 
+dimiriG.position.set( 0, gheight, sphereposz); 
 
 louisadeG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: louisadeTexture }));
-louisadeG.position.set( 0, gheight, -.75); 
+louisadeG.position.set( 0, gheight, sphereposz); 
 
 yabobG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: yabobTexture }));
-yabobG.position.set( 0, gheight, -.75); 
+yabobG.position.set( 0, gheight, sphereposz); 
 
 scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
 adzeraG.visible = false;
@@ -493,7 +495,7 @@ louisadeG.visible = false;
 yabobG.visible = false;
 
 //the Map
-const mapGeometry = new THREE.PlaneGeometry( 3.0 * ratio, 1.5 * ratio );
+const mapGeometry = new THREE.PlaneGeometry( 6, 3 );
 const mapTexture = textureLoader.load('textures/png.png'); //from google maps
 mapTexture.generateMipmaps = true //saves gpu if false
 const theMap = new THREE.Mesh( mapGeometry, new THREE.MeshBasicMaterial({ map: mapTexture }));

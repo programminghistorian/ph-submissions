@@ -47,13 +47,13 @@ La leçon devrait vous prendre quelques heures à compléter, et il pourrait êt
 Si vous souhaitez apprendre à explorer les DOL en utilisant le langage de requête [SPARQL](https://fr.wikipedia.org/wiki/SPARQL), je recommande la leçon (en anglais) «&nbsp;[Using SPARQL to access Linked Open Data](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL)&nbsp;» de Matthew Lincoln, qui vous permettra d’effectuer un suivi pratique du survol conceptuel offert dans la présente leçon.
 
 <div class="alert alert-info">
-N.B. La leçon de Lincoln n’est plus à jour et n’est plus entretenue par *Programming Historian*. La méthodologie enseignée dans cette leçon demeure tout de même pertinente, et peut être adaptée à d’autres contextes. Pour en savoir plus, vous pouvez consulter la note en ouverture de la leçon.
+N.B. La leçon de Matthew Lincoln n’est plus à jour et n’est plus entretenue par le *Programming Historian*. La méthodologie enseignée dans cette leçon demeure tout de même fort pertinente, et pourrait être adaptée à d’autres contextes. Pour en savoir plus, vous pouvez consulter la note en ouverture de la leçon de Lincoln.
 </div>
 
 Afin de fournir une base solide pour la maîtrise de ces fondements, cette leçon ne permet pas la présentation exhaustive de l’ensemble des concepts liés aux DOL. Les deux concepts suivants ne seront pas couverts par cette leçon&nbsp;:
 
 1. Le [web sémantique](https://fr.wikipedia.org/wiki/Web_sémantique) et [les processus d’inférence](https://fr.wikipedia.org/wiki/Moteur_d'inférence) sur les [jeux de données](https://fr.wikipedia.org/wiki/Jeu_de_données). Par exemple, un moteur d’inférence permettrait de déduire que George VI est le frère ou le demi-frère d’Edward VIII, étant donné que a) Edward VIII est le fils de George V et que b) George VI est le fils de George V. Cette leçon ne couvre pas ce type de tâche.
-2. La création et la mise en ligne de jeux de données ouvertes liées dans le [*linked data open cloud*](https://lod-cloud.net). Le partage de vos DOL est un important principe qui est encouragé plus bas. Cependant, les détails techniques de l’exposition des DOL dans le *linked data cloud* dépassent la portée de cette leçon. Quelques ressources pour vous aider avec cette tâche sont disponibles à la fin de la leçon.
+2. La création et la mise en ligne de jeux de données ouvertes liées dans le [*linked open data cloud*](https://lod-cloud.net). Le partage de vos DOL est un important principe qui est encouragé plus bas. Cependant, les détails techniques de l’exposition des DOL dans le *linked data cloud* dépassent la portée de cette leçon. Quelques ressources pour vous aider avec cette tâche sont disponibles à la fin de la leçon.
 
 ## Que sont les données ouvertes liées&nbsp;?
 
@@ -114,23 +114,23 @@ Une fois que tous ces éléments sont dotés d’identifiants uniques, la procha
 
 ```txt
 personne:64183282
-rôle:députéeAuParlementBritanique
+rôle:aReprésentéAuParlementBritanique
 circonscription:"blackburn1955-current" .
 ```
 
-La disposition (ou la [syntaxe](https://fr.wikipedia.org/wiki/Syntaxe)) des triplets, incluant la ponctuation utilisée ci-dessus, sera abordée plus bas, dans la section sur RDF et sur les formats de données. Pour l’instant, concentrons-nous sur la structure fondamentale. Sans surprise, le triplet est constitué de trois parties, auxquelles on se réfère respectivement comme étant le sujet, le prédicat et l’objet&nbsp;:
+La disposition (ou la [syntaxe](https://fr.wikipedia.org/wiki/Syntaxe)) des triplets, incluant la ponctuation utilisée ci-dessus, sera abordée plus bas, dans la section sur RDF et sur les formats de données. Pour l’instant, concentrons-nous sur la structure fondamentale. Sans surprise, le triplet est constitué de trois parties, auxquelles on se réfère respectivement comme le sujet, le prédicat et l’objet&nbsp;:
 
-| le sujet     | le prédicat             | l’objet              |
+| sujet     | prédicat             | objet              |
 | --------------- | ------------------------- | ----------------------- |
-| personne 64183282 | députéeAuParlementBritanique | "blackburn1955-current" |
+| personne 64183282 | aReprésentéAuParlementBritanique | &#34;blackburn1955-current&#34; |
 
-Conventionnellement, la représentation d’un triplet sous forme de diagramme se présente ainsi&nbsp;:
+Typiquement, la représentation d’un triplet sous forme de diagramme se présente ainsi&nbsp;:
 
-{% include figure.html filename="en-or-intro-to-linked-data-01.png" alt="Visual description of figure image" caption="Figure 1. the classic way to represent a triple" %}
+{% include figure.html filename="fr-tr-intro-aux-donnees-liees-01.png" alt="Graphe constitué de deux nœuds qui représentent respectivement le sujet et l’objet d’un triplet RDF, sous la forme de deux ovales liés entre eux par un arc directionnel, lui-même constitué d’une flèche qui représente le prédicat du triplet, allant du sujet vers l’objet." caption="Figure&nbsp;1. Représentation visuelle typique d’un triplet" %}
 
-Donc notre triplet sur Jack Straw, dans une forme plus lisible, pourrait être représenté de cette façon&nbsp;:
+Donc notre triplet sur Jack Straw, dans une forme plus significative, pourrait être représenté de cette façon&nbsp;:
 
-{% include figure.html filename="en-or-intro-to-linked-data-02.png" alt="Visual description of figure image" caption="Figure 2. triple diagram showing that Jack Straw represented Blackburn" %}
+{% include figure.html filename="fr-tr-intro-aux-donnees-liees-02.png" alt="Graphe constitué de deux nœuds qui représentent respectivement Jack Straw et la circonscription électorale de Blackburn, sous la forme de deux ovales liés entre eux par un arc directionnel, lui-même constitué d’une flèche allant de Jack Straw vers Blackburn pour représenter la relation de représentation politique qui existe entre les deux entités." caption="Figure&nbsp;2. Représentation visuelle d’une triplet montrant que Jack Straw est député de Blackburn." %}
 
 Pour l’instant, il y a trois éléments clés à garder en tête&nbsp;:
 
@@ -233,7 +233,7 @@ Cela est rendu possible par l’utilisation du cadre de description [RDF](https:
 
 Les DOL utilisent un standard défini par le [*World Wide Web Consortium*](https://www.w3.org) (W3C) nommé *[Resource Description Framework](https://en.wikipedia.org/wiki/Resource_Description_Framework)* (cadre de description RDF, ou simplement RDF). Les standards sont utiles dans la mesure où ils sont largement adoptés ― pensez au système métrique ou aux tailles de vis standards ― même s’ils sont essentiellement arbitraires. RDF a été largement adopté comme standard pour les DOL.
 
-Souvent, les DOL sont simplement appelées RDF (ou données RDF). Nous avons reporté la discussion sur RDF jusqu’à maintenant, car il s’agit d’un enjeu plutôt abstrait. RDF est un [modèle de données](https://fr.wikipedia.org/wiki/Modèle_de_données) qui décrit sur un plan théorique comment structurer des données. L’insistance sur l’utilisation des triplets (au lieu de quatre parties, de deux ou de neuf) est une règle de RDF. Mais sur le plan pratique, certaines options s’offrent à vous pour l’implémentation des graphes de données. Ainsi, RDF vous indique ce que vous devez faire, mais pas exactement comment vous y prendre. Ces choix se divisent en deux champs&nbsp;: la manière dont vous écrivez les choses (la sérialisation) et les relations que décrivent vos triplets.
+Souvent, les DOL sont simplement appelées RDF (ou données RDF). Nous avons reporté la discussion sur RDF jusqu’à maintenant, car il s’agit d’un enjeu plutôt abstrait. RDF est un [modèle de données](https://fr.wikipedia.org/wiki/Modèle_de_données) qui décrit sur un plan théorique comment structurer des données. L’insistance sur l’utilisation des triplets (au lieu de quatre parties, de deux ou de neuf) est une règle de RDF. Mais sur le plan pratique, certaines options s’offrent à vous pour l’élaboration des graphes de données. Ainsi, RDF vous indique ce que vous devez faire, mais pas exactement comment vous y prendre. Ces choix se divisent en deux champs&nbsp;: la manière dont vous écrivez les choses (la sérialisation) et les relations que décrivent vos triplets.
 
 ### La sérialisation
 
@@ -289,7 +289,7 @@ lccn:n82011242 dc:creator viaf:96994048 ;
 Vous souvenez-vous de la structure d’un triplet, que nous avons traitée dans la section 1&nbsp;? Nous y avons vu cet exemple&nbsp;:
 
 ```txt
-1. personne 15601 (le sujet) 2. députéeAuParlementBritanique (le prédicat) 3. "Blackburn" (l’objet)
+1. personne 15601 (le sujet) 2. aReprésentéAuParlementBritanique (le prédicat) 3. "Blackburn" (l’objet)
 ```
 
 L’essentiel, c’est que le prédicat relie le sujet et l’objet. Il décrit la relation entre eux. Le sujet vient en premier dans le triplet, mais c’est une question de choix, comme nous l’avons vu avec l’exemple d’une personne qui a appris le piano de Liszt.
@@ -384,9 +384,9 @@ Le point d’accès SPARQL que j’utilise se nomme [snorql](http://dbpedia.org/
 N.B. Ce point d’accès fonctionne avec la version anglophone de Wikipédia.
 </div>
 
-Si vous accédez à l’URL de snorql (ci-dessus), vous remarquerez d’abord qu’un certain nombre de préfixes ont été préalablement déclarés pour nous, ce qui est pratique. Vous devriez également reconnaître certains d’entre eux.
+Si vous accédez à l’URL de l’interface snorql (ci-dessus), vous remarquerez d’abord qu’un certain nombre de préfixes ont été préalablement déclarés pour nous, ce qui est pratique. Vous devriez également reconnaître certains d’entre eux.
 
-{% include figure.html filename="en-or-intro-to-linked-data-03.png" alt="Visual description of figure image" caption="Figure 3. snorql’s default query box, with some prefixes declared for you" %}
+{% include figure.html filename="en-or-intro-to-linked-data-03.png" alt="Interface de requête snorql permettant d’effectuer des requêtes SPARQL sur le point d’accès de DBpedia, constituée d’une liste de préfixes déclarés par défaut, sous laquelle se trouve un champ de saisie pour la rédaction des requêtes." caption="Figure&nbsp;3. Interface de requête snorql par défaut, avec quelques préfixes préalablement déclarés" %}
 
 Dans l’éditeur de requête, sous les déclarations de préfixes, vous devriez voir&nbsp;:
 
@@ -413,7 +413,7 @@ Appuyez sur _Go!_.
 Si vous avez laissé la sélection du menu déroulant sur **Browse**, vous devriez obtenir deux colonnes avec les en-têtes **b** et **c**.
 Notez bien ici que la casse des caractères fait une différence&nbsp;: `lyndal_roper` ne renverra rien.
 
-{% include figure.html filename="en-or-intro-to-linked-data-04.png" alt="Visual description of figure image" caption="Figure 4. top of results lists for a query for all triples with 'Lyndal_Roper' as subject" %}
+{% include figure.html filename="en-or-intro-to-linked-data-04.png" alt="Extrait d’un tableau des résultats d’une requête SPARQL dont chaque ligne renvoie une correspondance avec le modèle de triplet exprimé dans la requête, en affichant deux colonnes correspondant respectivement aux variables «&nbsp;b&nbsp;» et «&nbsp;c&nbsp;» dans la requête." caption="Figure&nbsp;4. Extrait des résultats d’une requête qui vise à lister tous les triplets ayant «&nbsp;Lyndal_Roper&nbsp;» comme sujet." %}
 
 Que s’est-il donc passé&nbsp;? Et comment savoir ce qu’il faut saisir&nbsp;?
 
@@ -448,23 +448,22 @@ J’ai fait ici un petit changement. Si seulement cette requête fonctionne, je 
 
 Exécutez la requête. Cela fonctionne-t-il pour vous&nbsp;? J’obtiens une longue liste de spécialistes en histoire.
 
-{% include figure.html filename="en-or-intro-to-linked-data-05.png" alt="Visual description of figure image" caption="Figure 5. historians, according to DBpedia" %}
+{% include figure.html filename="en-or-intro-to-linked-data-05.png" alt="Extrait d’un tableau des résultats d’une requête SPARQL dont chaque ligne renvoie une correspondance avec le modèle de triplet exprimé dans la requête, en affichant deux colonnes correspondant respectivement aux variables «&nbsp;historian_name&nbsp;» et «&nbsp;predicate&nbsp;» du modèle." caption="Figure&nbsp;5. Spécialistes en histoire selon DBpedia" %}
 
 Ainsi, cela fonctionne pour créer des listes, ce qui est utile, mais il serait beaucoup plus efficient de combiner des listes afin de créer des intersections entre des ensembles. J’ai trouvé quelques éléments supplémentaires qu’il pourrait être intéressant de chercher dans les attributs de Lyndal Roper sur DBpedia&nbsp;: <http://dbpedia.org/class/yago/WikicatBritishHistorians> and <http://dbpedia.org/class/yago/WikicatWomenHistorians>. Il est très facile de combiner ces attributs en demandant qu’une variable soit renvoyée (dans notre cas`?nom`), puis de l’utiliser dans de multiples lignes d’une requête. Notez également l’espace et le point final de la première ligne commençant avec `?name`&nbsp;:
 
-```
-SELECT ?name
-    WHERE {
-        ?name ?b <http://dbpedia.org/class/yago/WikicatBritishHistorians> .
-        ?name ?b <http://dbpedia.org/class/yago/WikicatWomenHistorians>
+```sparql
+SELECT ?name WHERE {
+    ?name ?b <http://dbpedia.org/class/yago/WikicatBritishHistorians> .
+    ?name ?b <http://dbpedia.org/class/yago/WikicatWomenHistorians>
     }
 ```
 
 Ça fonctionne&nbsp;! J’obtiens cinq entrées. Au moment d’écrire cette leçon, il y a cinq historiennes britanniques dans *DBpedia*...
 
-{% include figure.html filename="en-or-intro-to-linked-data-06.png" alt="Visual description of figure image" caption="Figure 6. British historians who are women, according to DBpedia" %}
+{% include figure.html filename="en-or-intro-to-linked-data-06.png" alt="Liste des historiennes britaniques présentes dans les données de DBpedia en anglais, apparaîssant sous le champ de saisie dans lequel on peut y lire la requête correspondant aux résultats de la liste." caption="Figure&nbsp;6. Historiennes britaniques selon DBpedia" %}
 
-Seulement cinq historiennes&nbsp;? Bien sûr, en réalité, il y en a bien davantage, comme nous pourrions facilement le constater en remplaçant le nom par, disons, Alison Weir, dans notre première requête pour Lyndal Roper. Voilà qui nous mène au problème que j’ai mentionné plus tôt avec *Dbpedia*&nbsp;: cet entrepôt n’est pas vraiment constant quant au type d’information structurelle qu’il utilise. Nos requêtes permettent de lister quelques historiennes britanniques, mais tout indique qu’il est impossible de générer une liste significative de personnes dans cette catégorie. Tout ce que nous avons trouvé, ce sont les personnes qui ont une entrée sur *Wikipédia* en anglais et qui ont été catégorisées comme &laquo;&nbsp;historienne britannique&nbsp;&raquo;.
+Seulement cinq historiennes&nbsp;? Bien sûr, en réalité, il y en a bien davantage, comme nous pourrions facilement le constater en remplaçant le nom par Alison Weir, disons, dans notre première requête sur Lyndal Roper. Voilà qui nous mène au problème que j’ai mentionné plus tôt avec *Dbpedia*&nbsp;: cet entrepôt n’est pas vraiment constant quant à l’information structurelle sur les types de personnes qu’il utilise. Nos requêtes permettent de lister quelques historiennes britanniques, mais tout indique qu’il est impossible de générer une liste significative de personnes dans cette catégorie. Tout ce que nous avons trouvé, ce sont les personnes qui ont une entrée sur *Wikipédia* en anglais et qui ont été catégorisées comme &laquo;&nbsp;historienne britannique&nbsp;&raquo;.
 
 En utilisant SPARQL sur *DBpedia*, vous devez faire preuve de prudence quant aux incohérences des contenus alimentés par les communautés. Vous pourriez utiliser SPARQL exactement de la même manière sur un jeu de données construit à l’aide de méthodes de curation plus rigoureuses.
 Par exemple, en utilisant la bibliothèque numérique Persée ([https://data.persee.fr/explorer/sparql-endpoint/](https://data.persee.fr/explorer/sparql-endpoint/)), vous pouvez vous attendre à obtenir des résultats plus robustes (voici de la documentation sur cet entrepôt&nbsp;: [https://data.persee.fr/ressources/le-triplestore-de-persee/](https://data.persee.fr/ressources/le-triplestore-de-persee/), avec son schéma de données&nbsp;: [https://data.persee.fr/explorer/schemas-de-donnees/](https://data.persee.fr/explorer/schemas-de-donnees/)).

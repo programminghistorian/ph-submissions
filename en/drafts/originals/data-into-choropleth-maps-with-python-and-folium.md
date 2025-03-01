@@ -373,7 +373,7 @@ This shows that around 50% (1,522 of 3,234) of counties in the USA have had at l
 map_df.rename(columns={0:'count'})
 ```
 
-## Draw the Map
+# Create the Map
 
 To draw a map, we need to initalize a `folium.Map` object. Since we're going to be doing this multiple times in this notebook, I've created a little function that will initialize the map.
 
@@ -460,7 +460,7 @@ Here's the code:
 
 For a complete list of parameters, see the Choropleth documentation in [Folium](https://python-visualization.github.io/folium/modules.html?highlight=choro#folium.features.Choropleth)
 
-## The Problem of Uneven Distribution of Data
+# The Problem of Uneven Distribution of Data
 
 As noted earlier, the basic map is not terribly informative: the whole US is basically one color:
 * The grey counties are those for which the *Post* does not record any cases of fatal police shootings; this is about 50% of the counties in the USA.
@@ -560,7 +560,7 @@ This is an improvement: the map shows a better range of contrasts. We can see th
 
 But the scale is almost impossible to read! The algorithm correctly found natural breaks -- most of the values are less than 76, but at the lower end of the scale the numbers are illegible.
 
-### Solution #2: Create a Logarithm Scale-Value
+## Solution #2: Create a Logarithm Scale-Value
 
 Logarithmic scales are useful when the data is not normally distributed. The [definition of a logarithm](http://www.mclph.umn.edu/mathrefresh/logs3.html) is $$b^r = a$$ or $$log_b a = r$$. That is, the log value is the **exponent** $$r$$ that the base number $$b$$ would be raised to equal the original value $$a$$.
 
@@ -859,7 +859,7 @@ baseMap
 
 **Normalizing** the data dramatically changes the appearance of the map. Our initial visualization suggested that the problem of police killing civilians was limited to a few counties, generally those with large populations. But when the data is normalized, it appears police killings of civilians is far more widespread. The counties with the highest **rates** of killings are those with low populations, even if they have relatively few killings. Trying to illustrate this issue with charts or tables would not show the issue nearly as well.
 
-## Add a Floating Information Box
+## Add an Information Box to the Map
 
 Folium allows map maker to add a box that displays information about the area below the cursor. This might be a county name, its population, or the number of people killed by police officers.
 
@@ -1037,6 +1037,7 @@ baseMap
 Adding an information box is complex but it can help users enormously.
 
 ## Saving Maps
+
 Maps are saved as HTML files. They can be shared with other people, who can open them in a browser will have the ability to zoom, pan, and examine individual county statistics with by putting their cursor over different counties.
 
 Folium allows us to save maps easily with the `.save()` method.

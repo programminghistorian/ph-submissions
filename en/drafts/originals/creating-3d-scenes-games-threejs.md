@@ -1130,7 +1130,7 @@ Pots were made in many different forms by different communities in PNG and West 
 | manus.glb | Manus.jpg | 0.66* ratio, desk + 0.01, -0.2* ratio | paddleColor |
 | marik.glb | Marik.jpg |  0.575* ratio, desk + 0.01, 0.079* ratio | coilColor |
 | moto.glb | Moto.jpg |  0.71* ratio, desk + 0.01, 0.42* ratio | paddleColor |
-| pubineri.glb | Pubineri.jpg |  0.28* ratio, desk + 0.01, -0.01* ratio |  coilColor |
+| pubineri.glb | Pubineri.jpg |  0.53* ratio, desk + 0.01, 0.09* ratio |  coilColor |
 | triobriand.glb | Triobriand.jpg | 1.01* ratio, desk + 0.01, 0.33* ratio | amphColor |
 | tumleo.glb | Tumleo.jpg | 0.27* ratio, desk + 0.01, -0.12* ratio | paddleColor |
 | waiGeo.glb | Waigeo.jpg |  -0.65* ratio, desk + 0.01, -0.35* ratio | paddleAddColor |

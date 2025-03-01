@@ -23,7 +23,7 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-## Introduction
+# Introduction
 
 [Choropleth Maps](https://en.wikipedia.org/wiki/Choropleth_map) have become very familiar to us. They are commonly used to visualize information such as [Covid-19 infection/death rates](https://www.nytimes.com/interactive/2021/us/covid-cases.html#maps), [education spending per pupil](https://www.reddit.com/r/MapPorn/comments/bc9jwu/us_education_spending_map/), and other similar data.
 
@@ -48,6 +48,8 @@ The lesson visualizes data from the *Washington Post*'s [Fatal Force](https://gi
 My comments will reflect the data in the database as of June 2024. Tragically, I can confidently predict that these numbers will continue to increase. If you work with the data in the `assets` folder, your visualizations should resemble those in this article. If you access the *Post*'s database, the numbers will be different.
 
 Before getting started, a few comments about the tools used in this lesson.
+
+## Lesson Preqrequisites
 
 ### Folium
 
@@ -87,7 +89,9 @@ Non-Colab users will also need to be able to run a Jupyter notebook. Personally,
 
 Whether using Colab or another Jupyter notebook, readers will find it easier to follow this lesson if they open the [notebook](https://nbviewer.org/github/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/data-into-choropleth-maps-with-python-and-folium.ipynb) containing the lesson's code. 
 
-### Import Libraries
+# Getting Started
+
+## Import Libraries
 
 We start by loading the necessary Python libraries and assign their common aliases (`pd`, `gpd`, `np`). As you call methods from the libraries, you will use these aliases instead of the full library name.
 
@@ -128,10 +132,8 @@ If you want to see the most up-to-date version of the data from the *Washington 
 
 Next, you will look at the fatal force dataframe (ff_df) to see what sort of data it has, to check the data types, and look at the sample data.
 
-
 ```python
 ff_df.info()
-
     <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 9628 entries, 0 to 9628
     Data columns (total 19 columns):
@@ -190,7 +192,6 @@ This work would be necessary if you wanted to use this data for a study or in a 
 
 Instead, you will just create a smaller version of the DF that only includes rows with lat/lon data.
 
-
 ```python
 ff_df = ff_df[ff_df['latitude'].notna()]
 ```
@@ -227,7 +228,6 @@ counties.info()
     memory usage: 328.6+ KB
 ```
 
-
 ```python
 counties.sample(3)
 ```
@@ -250,16 +250,13 @@ The other column that we need is the `geometry` column. As can be seen in the `.
 
 Just for fun, pick a county you're familiar with and see what it looks like:
 
-
 ```python
 counties[(counties['NAME']=='Suffolk') & (counties['STUSPS']=='MA')].plot()
 ```
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-01.png" alt="Image of Suffolk county, MA" caption="Figure 1. GeoPandas' geometry can handle the oddly-shaped Suffolk County, MA." %}
 
-
 Since we don't need all the data in the `counties` dataframe, we will (a) rename the `GEOID` column to `FIPS` and (b) keep only columns we're interested in.
-
 
 ```python
 counties = counties.rename(columns={'GEOID':'FIPS'})
@@ -281,9 +278,7 @@ counties.info()
 # Preparing the Data
 Before we can create a choropleth map, we need to make sure we have a field common to both DFs. This will allow Folium to match the data from one DF with data in the other DF. 
 
-Our goal is to add `FIPS` values to the Fatal Force dataframe. To do so, we will use a **spacial join** which allows users to add (or merge) data from one DF to another. The [spacial join](https://geopandas.org/en/stable/docs/user_guide/mergingdata.html) is a tool available in GeoPandas that is similar to Pandas' standard [joins](https://www.geeksforgeeks.org/different-types-of-joins-in-pandas/), except that instead of matching key values, spacial joins correlate rows based on location information. 
-
-We will use a spacial join to match the lat/lon data in the Fatal Force DF to different counties, defined in the Counties DF.
+Our goal is to add `FIPS` values to the Fatal Force dataframe. To do so, we will use a **spacial join** which allows users to add (or merge) data from one DF to another. The [spacial join](https://geopandas.org/en/stable/docs/user_guide/mergingdata.html) is a tool available in GeoPandas that is similar to Pandas' standard [joins](https://www.geeksforgeeks.org/different-types-of-joins-in-pandas/), except that instead of matching key values, spacial joins correlate rows based on location information. We will use this  join to match the lat/lon data in the Fatal Force DF to different counties, defined in the Counties DF.
 
 To do so, we will create a new field in the Fatal Force DF, which will combine the data in the two lat/lon columns into a single `point` datatype. (`point` is a special datatype that Geopandas adds to the normal Pandas datatypes.)
 
@@ -292,7 +287,6 @@ To do so, we will create a new field in the Fatal Force DF, which will combine t
 As we do this, we need to specify a **coordinate reference system** [CRS](https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/coordinate-systems-and-projections.htm). The CRS is related the mathematical model that describes how lat/lon data (points on the surface of a sphere) is presented on a flat surface. For this lesson, the most important thing to know is that the dataframes need to use the same CRS before being joined.
 
 Finally, we will convert the `ff_df` from a Pandas DF to a Geopandas DF.
-
 
 ```python
 ff_df['points'] = gpd.points_from_xy(ff_df.longitude, ff_df.latitude, crs="EPSG:4326")
@@ -348,6 +342,7 @@ ff_df.info()
     dtypes: bool(2), datetime64[ns](1), float64(4), geometry(1), int64(1), object(14)
     memory usage: 1.3+ MB
 ```
+
 ## Counting the Data by County
 Now that we have a DF with data (`ff_df`) and a DF with county geometries (`counties`) that share a common field (`FIPS`) we are ready to draw a map.
 
@@ -471,12 +466,9 @@ As noted earlier, the basic map is not terribly informative: the whole US is bas
 * The grey counties are those for which the *Post* does not record any cases of fatal police shootings; this is about 50% of the counties in the USA.
 * A few major urban areas, such as Los Angeles, have strong colors. But most non-grey counties are a pale-yellow color.
 
-Why is this? 
-
-The clue is to look at the scale: it goes from zero to 342.
+Why is this? The clue is to look at the scale: it goes from zero to 342.
 
 Let's look at our data a bit more. Pandas' [`.describe()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html) method provides a useful summary of the data, including the mean, standard deviation, median, and quartile information.
-
 
 ```python
 map_df.describe()
@@ -493,7 +485,6 @@ map_df.describe()
 |75%|5.000000|
 |max|342.000000|
 
-
 This shows:
 1. 1,596 counties (out of the 3,142 in the USA) have reported at least one police killing.
 1. At least 75% of these counties have had 5 or fewer killings.
@@ -503,13 +494,10 @@ I find the easiest way to figure out what's going on with the data is to visuali
 
 > The default boxplot is vertical, but since most monitors are landscape-orientation, when I'm displaying the data on my monitor, I prefer to make the boxplot horizontal. To display the boxplot vertically, omit the `vert=False` keyword.
 
-
 ```python
 map_df.boxplot(vert=False)
 ```
-
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-03.png" alt="A horizontal box plot showing the data distribution of the number of people killed by police in US counties" caption="Figure 3. Distribution of police killings per county." %}
-
 
 This allows us to see that there are fewer than ten counties where police have killed more than 75 civilians.
 
@@ -530,7 +518,6 @@ Because the scale needs to cover ALL cases, when the vast majority of cases are 
 
 There are solutions to this problem, but none are ideal; some work better with some distributions of data than others. Mapmakers may need to experiment to see what map works best for a given set of data.
 
-
 ### Solution #1: Fisher-Jenks algorithm
 Folium allows users to pass a parameter to the choropleth algorithm that will automatically calculate "natural breaks" in the data; Folium's [documentation says](https://python-visualization.github.io/folium/modules.html?highlight=choro#folium.features.Choropleth) "this is useful when your data is unevenly distributed."
 
@@ -543,7 +530,6 @@ Because the [jenkspy](https://pypi.org/project/jenkspy/) library is not part of 
 ```
 
 Now that the `jenkspy` library is installed, we can pass the parameter to Folium and redraw our map.
-
 
 ```python
 baseMap = initMap()
@@ -570,18 +556,13 @@ baseMap
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-04.png" alt="A choropleth map of the US showing how the Fisher-Jenks algorithm creates different bins of data" caption="Figure 4. The map colorized by the Fisher-Jenks algorithm." %}
 
-
 This is an improvement: the map shows a better range of contrasts. We can see that there are a fair number of counties outside the Southwest where police have killed several people (Florida, the Northwest, etc.)
 
 But the scale is almost impossible to read! The algorithm correctly found natural breaks -- most of the values are less than 76, but at the lower end of the scale the numbers are illegible.
 
 ### Solution #2: Create a Logarithm Scale-Value
 
-Logarithmic scales are useful when the data is not normally distributed.
-
- The [definition of a logarithm](http://www.mclph.umn.edu/mathrefresh/logs3.html) is $$b^r = a$$ or $$log_b a = r$$.
-
-That is, the log value is the **exponent** $$r$$ that the base number $$b$$ would be raised to equal the original value $$a$$.
+Logarithmic scales are useful when the data is not normally distributed. The [definition of a logarithm](http://www.mclph.umn.edu/mathrefresh/logs3.html) is $$b^r = a$$ or $$log_b a = r$$. That is, the log value is the **exponent** $$r$$ that the base number $$b$$ would be raised to equal the original value $$a$$.
 
 For base 10, this is easy to calculate: 
 
@@ -590,7 +571,6 @@ $$10 = 10^1$$ so $$\log_{10}(10) = 1$$
 $$100 = 10^2$$ so $$\log_{10}(100) = 2$$
 
 Thus, using a base 10 logarithm, each time a log value increase by 1, the original value would increase 10 times. The most familiar example of a log scale is probably the [Richter scale](https://en.wikipedia.org/wiki/Richter_magnitude_scale), used to measure earthquakes.
-
 
 For our current data, since most counties have fewer than 5 police killings, most counties will have a log value between 0 and 1. The biggest value (302) have a log value of between 2 and 3 (that is, between $$10^2$$ and $$10^3$$).
 
@@ -1056,11 +1036,10 @@ baseMap
 
 Adding an information box is complex but it can help users enormously.
 
-### Saving Maps
+## Saving Maps
 Maps are saved as HTML files. They can be shared with other people, who can open them in a browser will have the ability to zoom, pan, and examine individual county statistics with by putting their cursor over different counties.
 
 Folium allows us to save maps easily with the `.save()` method.
-
 
 ```python
 baseMap.save('PoliceKillingsOfCivilians.html')
@@ -1072,7 +1051,7 @@ You can see the files you have saved to the virtual drive by clicking on the fil
 
 Because Folium saves the maps as HTML documents, they can be added to websites or shared with other people, who can open them with a web-brower.
 
-## Conclusion
+# Conclusion
 
 Choropleth maps are an excellent tool for discovering and demonstrating patterns in data that might be otherwise hard to discern.
 

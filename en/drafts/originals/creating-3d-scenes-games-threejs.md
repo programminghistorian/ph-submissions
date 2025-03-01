@@ -513,15 +513,15 @@ Save and reload. If the panels are black, the images are probably in the wrong p
 
 Three.js can load many different types of models. However, the size is very important and large models will not load. The less nodes or faces in the mesh the smaller the model size. Reducing the nodes or faces in a model, or retopology can be done in programs such as Blender. In Blender this is relatively easy, if the model is imported as a STL and if the model does not have an image texture. These models were primarily designed in Blender and reduced to under 700KB. They were exported as draco compressed glTF (GL Transmission Format) files.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-07.png" alt="Framework of a jar with a sculptured face." caption="Figure 7. Mesh of the Iatmul jar." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-07.png" alt="Framework of a jar with a sculptured face." caption="Figure 7. Mesh of the Aibom jar." %}
 
 As with the spheres, the jars will get a standard material with a colour. 
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-08.png" alt="Jar with a sculptured face coloured brown." caption="Figure 8. The Iatmul jar with a solid brown colour." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-08.png" alt="Jar with a sculptured face coloured brown." caption="Figure 8. The Aibom jar with a solid brown colour." %}
 
 We will later change the emissive property of the material to show if a jar is selected.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-09.png" alt="Jar with a sculptured face brightly coloured red." caption="Figure 9. The Iatmul jar with red emission." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-09.png" alt="Jar with a sculptured face brightly coloured red." caption="Figure 9. The Aibom jar with red emission." %}
 
 Draco-compressed GTLF files are one of the most memory efficient formats to use with three.js. They can also contain image textures for the model and many other features, but we will not use that here. However, they require the importation of additional loaders. It is also possible to have multiple models in one GTLF file and to separate them once imported.
 
@@ -587,7 +587,7 @@ add:
 		aibomM.userData.planes = aibomG;
 		jars.add( aibomM);
 	}
-	loader.load( 'models/gltf/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
+	loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
 ```
 Save and reload and you should see a model.
 
@@ -600,7 +600,7 @@ Replace
 	function onLoadAibom( gltf ) {				
 	...
 	}
-	loader.load( 'models/gltf/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
+	loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
 ```
 with
 ```
@@ -620,7 +620,7 @@ with
 		aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
 		jars.add( aibomM);
 	}
-	loader.load( 'models/gltf/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
+	loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
 
 ```
 Save and check the model still appears.
@@ -632,37 +632,37 @@ Replace
 	function onLoadAibom( gltf ) {							
 	...
 	}
-	loader.load( 'models/gltf/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
+	loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
 ```
 with
 ```
 	// directly has the onLoad function as an anonymous function in the loader.load
-	loader.load( 'models/gltf/aibom.glb', function( gltf ) {							
+	loader.load( 'models/aibom.glb', function( gltf ) {							
 		aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
 		jars.add( aibomM);
 	}, undefined, function ( error ) {console.error( error );} );
 
-	loader.load( 'models/gltf/mailu.glb', function( gltf) {							
+	loader.load( 'models/mailu.glb', function( gltf) {							
 		mailuM = createModel(gltf, 0.84, 0.48, parameters.nabColor, mailuG);			
 		jars.add( mailuM);
 	}, undefined, function ( error ) { console.error( error );} );
 
-	loader.load( 'models/gltf/louisade.glb', function( gltf ) {
+	loader.load( 'models/louisade.glb', function( gltf ) {
 		louisadeM = createModel(gltf, 0.99, 0.59, parameters.ringTopColor, louisadeG);			
 		jars.add(louisadeM);
 	}, undefined, function ( error ) {console.error( error );} );
 
-	loader.load( 'models/gltf/adzera.glb', function( gltf ) {
+	loader.load( 'models/adzera.glb', function( gltf ) {
 		adzeraM = createModel(gltf, 0.61, 0.15, parameters.coilBeatenColor, adzeraG);			
 		jars.add( adzeraM);
 	}, undefined, function ( error ) {console.error( error );} );
 
-	loader.load( 'models/gltf/dimiri.glb', function( gltf ) {
+	loader.load( 'models/dimiri.glb', function( gltf ) {
 		dimiriM = createModel(gltf, 0.43, 0, parameters.coilColor, dimiriG);			
 		jars.add( dimiriM);
 	}, undefined, function ( error ) {console.error( error );} );
 
-	loader.load( 'models/gltf/yabob.glb', function( gltf ) {
+	loader.load( 'models/yabob.glb', function( gltf ) {
 		yabobM = createModel(gltf, 0.572, 0.0396, parameters.paddleColor, yabobG);			
 		jars.add( yabobM);
 	}, undefined, function ( error ) {console.error( error );} );
@@ -783,7 +783,7 @@ add:
 	}	
 ```
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-11.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 11. Webpage showing the Iatmul jar selected with its red emission set to true, and the Iatmul information panel showing." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-11.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 11. Webpage showing the Aibom jar selected with its red emission set to true, and the Aibom information panel showing." %}
 
 The next sections are optional. You can turn the website into a puzzle game or add extra jars.
 
@@ -799,7 +799,7 @@ The goal for the user of this game is to start with the jars off the map and the
 
 Green tori will be used to mark the communities. They can be harder to aim for than discs, but most PNG communities use tori made of leaves to hold the vessels as they are being made. The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified. However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI *1/2).
 
-Because each torus is connected to a different information planel, they still need to be created separately and added to a torus group. The mouse click event listener has to be altered so that it targets the torus group instead of the jar group. 
+Because each torus is connected to a different information planel, they still need to be created separately and added to a tori group. The mouse click event listener has to be altered so that it targets the tori group instead of the jar group. 
 
 While each site COULD be added with code such as:
 ```
@@ -819,7 +819,7 @@ let jars;
 
 with 
 ```
-let jars, torus;
+let jars, tori;
 ```
 In the init function after
 ```
@@ -827,8 +827,8 @@ In the init function after
 ```
 add
 ```
-	torus = new THREE.Group();
-	scene.add( torus );
+	tori = new THREE.Group();
+	scene.add( tori );
 
 	//a function to make the site with the parameter specified
 	function createSite(x, z, gallery){
@@ -852,7 +852,7 @@ add
 
 	const yabobSite = createSite(0.572, 0.0396, yabobG);
 
-	torus.add(aibomSite, mailuSite, dimiriSite, louisadeSite, adzeraSite, yabobSite);
+	tori.add(aibomSite, mailuSite, dimiriSite, louisadeSite, adzeraSite, yabobSite);
 
 	selectedTorus = aibomSite; 
 ```
@@ -869,7 +869,7 @@ const intersects = raycasterM.intersectObjects( jars.children);
 to:
 
 ```
-const intersects = raycasterM.intersectObjects( torus.children);
+const intersects = raycasterM.intersectObjects( tori.children);
 ```
 
 save and check the mouse click and panel change now works on tori and not the jars.
@@ -957,32 +957,32 @@ with:
 		return model;
 	}
 	// directly has the onLoad function as an anonymous function in the loader.load
-	loader.load( 'models/gltf/aibom.glb', function( gltf ) {							
+	loader.load( 'models/aibom.glb', function( gltf ) {							
 		aibomM = createModel(gltf, parameters.materialColor, aibomSite);			
 		jars.add( aibomM);
 	}, undefined, function ( error ) {console.error( error );} );
 
-	loader.load( 'models/gltf/mailu.glb', function( gltf) {							
+	loader.load( 'models/mailu.glb', function( gltf) {							
 		mailuM = createModel(gltf, parameters.nabColor, mailuSite);			
 		jars.add( mailuM);
 	}, undefined, function ( error ) { console.error( error );} );
 
-	loader.load( 'models/gltf/louisade.glb', function( gltf ) {
+	loader.load( 'models/louisade.glb', function( gltf ) {
 		louisadeM = createModel(gltf, parameters.ringTopColor, louisadeSite);			
 		jars.add(louisadeM);
 	}, undefined, function ( error ) {console.error( error );} );
 
-	loader.load( 'models/gltf/adzera.glb', function( gltf ) {
+	loader.load( 'models/adzera.glb', function( gltf ) {
 		adzeraM = createModel(gltf, parameters.coilBeatenColor, adzeraSite);			
 		jars.add( adzeraM);
 	}, undefined, function ( error ) {console.error( error );} );
 
-	loader.load( 'models/gltf/dimiri.glb', function( gltf ) {
+	loader.load( 'models/dimiri.glb', function( gltf ) {
 		dimiriM = createModel(gltf, parameters.coilColor, dimiriSite);			
 		jars.add( dimiriM);
 	}, undefined, function ( error ) {console.error( error );} );
 
-	loader.load( 'models/gltf/yabob.glb', function( gltf ) {
+	loader.load( 'models/yabob.glb', function( gltf ) {
 		yabobM = createModel(gltf, parameters.paddleColor, yabobSite);			
 		jars.add( yabobM);
 	}, undefined, function ( error ) {console.error( error );} );
@@ -1001,12 +1001,12 @@ If the test is successful, there has to be a signal to the user. Here we will ch
 
 Change
 ```
-let jars, torus;
+let jars, tori;
 ```
 
 to
 ```
-let jars, torus, unmoveable;
+let jars, tori, unmoveable;
 let truesite = null;
 let selectedObject = null;
 ```
@@ -1045,11 +1045,11 @@ dragControls.addEventListener('dragend', function (event) {
 ```
 You can save and test this. Moving in 3D can be difficult, it is best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place it in the right spot, or vice versa.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-14.png" alt="While 5 jars are randomly above the map, the Iatmul jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Iatmul jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-14.png" alt="While 5 jars are randomly above the map, the Aibom jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Aibom jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-15.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Iatmul jar has been correctly positioned." caption="Figure 15. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-15.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Aibom jar has been correctly positioned." caption="Figure 15. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-16.png" alt="Normal view of the jars and map, with the Iatmul jar in its correct position." caption="Figure 16. The Iatmul jar in its correct position." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-16.png" alt="Normal view of the jars and map, with the Aibom jar in its correct position." caption="Figure 16. The Aibom jar in its correct position." %}
 
 This way of placing the jars on the sites can be frustrating for users and the onClick function is actually called at the end of a drag event, thus you can also alter the onClick function to register a correct match if the drag ends with the mouse on the correct site. This alternative means that the match is tested in 2D space instead of in 3D space (as in the first approach), and thus matches are easier, especially for players not experienced with digital 3D environments. If you develop your own games you might want to test different approaches to see what works best. 
 
@@ -1066,7 +1066,7 @@ function onClick( event ) {
 			pointer.x = event.clientX / window.innerWidth * 2 - 1
 			pointer.y = - (event.clientY / window.innerHeight) * 2 + 1
 			raycasterM.setFromCamera( pointer, camera );
-			const intersects = raycasterM.intersectObjects( torus.children);		
+			const intersects = raycasterM.intersectObjects( tori.children);		
 			if(intersects.length > 0){
 				selectedTorus.material.emissive.r = 0;
 				const found = intersects[ 0 ].object;
@@ -1140,7 +1140,7 @@ Pots were made in many different forms by different communities in PNG and West 
 ## Conclusion and Next Steps
 This has been an introduction to using three.js and the basic concepts in creating 3D scenes. The official [three.js](https://threejs.org) website shows how much more complex pages can be created, with additions such as animations and sound. The [three.js](https://threejs.org) site also contains example code that could be used for extending the puzzle created here, with sound effects for correct matches. Many sites, especially those with large models, feature loading bars, that give feedback to the user while the models load. Another possible extension is to enable the scene to be viewed and manipulated in VR.
 
-There are many ways cultural heritage models can be used interactively: vessels can be refitted (Hardy, 2023), site contexts could be toggled on and off, or objects could be virtually analysed (for p-XRF etc). Providing research data in such a format, has challenges, but also has the possibility for making findings more accessible and interesting to non-academic audiences.
+There are many ways cultural heritage models can be used interactively: vessels can be refitted (Hardy, 2023), site contexts could be toggled on and off, or objects could be virtually analysed, with images or measurements from scientific techniques revealed when the object is clicked on. Providing research data in such a format, has challenges, but also has the possibility for making findings more accessible and interesting to non-academic audiences.
 
 
 ## References

@@ -495,7 +495,7 @@ louisadeG.visible = false;
 yabobG.visible = false;
 
 //the Map
-const mapGeometry = new THREE.PlaneGeometry( 6, 3 );
+const mapGeometry = new THREE.PlaneGeometry( 3 * ratio, 1.5 * ratio );
 const mapTexture = textureLoader.load('textures/png.png'); //from google maps
 mapTexture.generateMipmaps = true //saves gpu if false
 const theMap = new THREE.Mesh( mapGeometry, new THREE.MeshBasicMaterial({ map: mapTexture }));
@@ -1111,7 +1111,7 @@ Pots were made in many different forms by different communities in PNG and West 
 
 | Model | Texture | Position | Colour |
 | --- | --- | --- | ---|
-| agarbai.glb | Agarabi.jpg |  0.55 * ratio, desk + 0.01, 0.15 * ratio | coilBeatenColor |
+| agarabi.glb | Agarabi.jpg |  0.55 * ratio, desk + 0.01, 0.15 * ratio | coilBeatenColor |
 | aloalo.glb | Aloalo.jpg | 0.9* ratio, desk + 0.01, 0.49* ratio | ringTopColor |
 | bau.glb | Bau.jpg | 0.535* ratio, desk + 0.01, 0.04* ratio | coilColor |
 | meno.glb | Meno.jpg |  0.28* ratio, desk + 0.01, -0.01* ratio | coilColor |

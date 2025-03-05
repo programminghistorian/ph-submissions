@@ -236,7 +236,7 @@ ggplot(eudata.filtered, aes(x=dist)) + geom_histogram()
 
 ```
 
-{% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-04.png" alt="Histogram showing distances (in log10) between sister cities." caption="Figure 4. Histogram showing distances (in log10) between sister cities." %}
+{% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-04.png" alt="Histogram showing distances (in natural log) between sister cities." caption="Figure 4. Histogram showing distances (in natural log) between sister cities." %}
 
 As shown by the code above, we only needed to add `geom_histogram()` to create a histogram. However, making an effective histogram involves a bit more work. It is important, for example, to determine a '[bin size](https://en.wikipedia.org/wiki/Data_binning)' that makes sense for the data. The bin size, also known as the 'interval' or 'bandwidth', refers to the width of each bar, and determines how data is grouped and displayed along the x-axis. In the histogram created in Figure 4, ggplot2 defaulted to a binwidth of 30 (`bins=30`) – but a warning message recommends picking a better value. You can explore more configuration possibilities in the [`geom_histogram()` documentation](http://ggplot2.tidyverse.org/reference/geom_histogram.html).
 

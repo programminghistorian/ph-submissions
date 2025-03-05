@@ -121,7 +121,7 @@ Cette section fournit les informations préalables à la création d'un projet q
 
 Tropy est un logiciel multi-plateformes (distributions Linux, Windows, macOS) dont l'installation se fait en local. Pour le moment, il n'existe pas d'application disponible en ligne, sachez donc que votre projet sera hébergé sur le disque dur de votre ordinateur. Il n'est pas non plus possible d'installer Tropy sur un serveur partagé pour travailler à plusieurs de manière synchrone.  
 
-Tropy peut être librement téléchargé depuis son [site web](https://tropy.org/). Une fois le téléchargement terminé, lancez l'installateur et laissez-vous guider par les instructions. Notre leçon mobilise la version 1.16.1 de Tropy et a été réalisée sur Windows 11.   
+Tropy peut être librement téléchargé depuis son [site web](https://tropy.org/). Une fois le téléchargement terminé, lancez l'installateur et laissez-vous guider par les instructions. Notre leçon mobilise la version 1.16.2 de Tropy et a été réalisée sur Windows 11.   
 
 ### Les éléments d'un projet dans Tropy 
 

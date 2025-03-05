@@ -37,9 +37,9 @@ Cross community comparisons of different aspects of material culture, such as po
 
 ## Lesson Goals
 
-The primary goal of this tutorial is to use the three.js library to create a webpage featuring a 3D scene with selectable components. Scene creation will involve adding lights, cameras, primitive and complex models, and controls. The models will get materials and/or image textures. Concepts such as model groups, scale and visibility, and 3D co-ordinates will be introduced. 
+This two part lesson is designed as a very brief introduction to the three.js JavaScript library, and involves a considerable amount of copy and pasting code. Part 1 introduces 3D models and some of the ethical issues associated with their generation and use. Users will explore some of a model’s components with the threejs web-based editor. Part 1 also shows how to set up and locally serve a basic web page featuring a 3D model with a scene with lights, using three.js.
 
-Turning websites with models into puzzles makes them more interesting. An additional goal, is to make the models moveable and positioned at random places. A test is introduced after each time a model is moved, to see if it has been placed in the correct position and successful matches trigger a background colour change.
+The primary goal of part 2 is to use three.js to create a webpage featuring a 3D scene with selectable components. Scene creation will involve adding lights, cameras, primitive and complex models, and controls. The models will get materials and/or image textures. Concepts such as model groups, scale and visibility, and 3D co-ordinates will be introduced. An additional goal of part 2, is to make the models moveable and positioned at random places. A test is introduced after each time a model is moved, to see if it has been placed in the correct position and successful matches trigger a background colour change.
 
 ## Papua New Guinea Pottery
 

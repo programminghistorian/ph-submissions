@@ -89,53 +89,65 @@ While in the editor it is useful to look at the red, green and blue arrows in th
 
 {% include figure.html filename="en-or-creating-3d-scenes-games-threejs-06.png" alt="Web editor showing a round jar, with its x, y and z positions visible in the geometry window." caption="Figure 6. The position of the Manus jar." %}
 
+## The Models Used in this Project
 
+The models used in this project, were created with CAD by the authors (who are not of Pacific Islander heritage) and are intended to be symbolic rather than realistic. While simplification of some of the designs results in the brilliance of some of the potteries being under-represented, it aids in avoiding impingement on the moral rights of the original communities. The individual vessel models used in this project were originally created by us as part of an exercise to learn CAD for 3D printing (Shaw, 2023). Most of the models were created using Blender by tracing or estimating the vessel profile (from sources cited in the website information panel), rotating the profile and then (if necessary) using the sculpting tools to add the decorations. As they were designed to be printed 5-10 cm tall, decoration was simplified, and was added in a way to be reflective of the different decoration types such as comb incision, impression, exposed coil and applique, favoured by the different communities. Some forms and decorations were slightly modified so they could be printed without supports. Many communities produced more than one type of pot, and forms for the original printed collection, were originally chosen to illustrate the variety of vessels in Papua.
 
-There are several different ways for creators to make websites that include 3D models. Many cultural heritage models are hosted on SketchFab (Maschner, 2022), which allows for interactive annotations. For more complex interactions with models, game engines such as Godot, Unity and Unreal Engine can be used. However websites can also be made relatively easily using the three.js JavaScript library. This guide provides an example of making such a website. While this tutorial uses three.js, many of the concepts are relevant to game engines and 3D modelling software.
+For use with a website, Blender was used to reduce the model polygon count and the individual vessel models (used in part 2) were exported as draco compressed glTF files. The composite model (used in part 1) was created in Blender, with the addition of the map (added via the ‘import image as planes’ extension). 
+
+The ethics of using different types of digital models in a website had previously been discussed with the University Librarian, Chief Scholarly Information Officer of the Australian National University. Their advice was that the use of symbolic models of non-ceremonial objects was acceptable, whereas the use of realistic (photogrammetry) models would require further attempts to obtain community permission to use. Programming Historian tutorials (and thus the models) are under a CC-BY 4.0 licence. 
+
+## Alternatives to three.js for Creating Websites Featuring Models
+
+Websites can be made relatively easily using the three.js JavaScript library. While this tutorial uses three.js, many of the concepts are relevant to game engines and 3D modelling software.
+
+There are several alternatives for creators to make websites that include 3D models. Many cultural heritage models, are hosted on SketchFab (Maschner, 2022), which allows for (limited) interactive annotations. [Models can be linked to] (https://sketchfab.com/3d-models/papua-jars-092acac028be4f10b4ba1f2f1ed2fbf9) or embedded in sites. [Smithsonian Voyager](https://smithsonian.github.io/dpo-voyager/), [3DHOP](https://3dhop.net/demo.php), [Kompakkt](https://kompakkt.de/home) allow for greater model annotation. 
+
+For more complex interactions with models, an alternative JavaScript library is [Babylon.js](https://www.babylonjs.com) and game engines such as [Godot](https://godotengine.org), [Unity](https://unity.com) and [Unreal Engine](https://www.unrealengine.com) could also be used. Some game engines have non-code approaches that might appeal to some users. 
 
 ## Software Requirements and Installation
 
 - Text editor (Visual Studio Code (VSC) recommended).
 
-VSC can be downloaded from https://visualstudio.microsoft.com, it is free and runs on Windows, macOS, and Linux. It also features a terminal. Install as per website instructions.
+VSC contains a text editor and can be downloaded from https://visualstudio.microsoft.com, it is free and runs on Windows, macOS, and Linux. It also features a terminal. Install as per website instructions. Many extensions are available for VSC and the code colouring can help detect issues such as unclosed tags or quotes. You can turn off error reporting in the settings or use the telemetry free [VSCodium](https://vscodium.com). 
 
-- Terminal (ie Windows PowerShell, or the terminal in macOS or Linux), or the terminal in VSC. 
+- Terminal (ie Windows PowerShell, or the terminal in macOS or Linux), or the terminal in VSC. The terminal in VSC can be obtained from Terminal > New Terminal. 
 
 Some simple command line typing will be required. Most importantly you need to be able to move to the folder that your website file will be in. If you use the VSC terminal, this should be automatic.
 
 - Web browser. Chrome, Safari, Edge etc.
 
-Chrome generally has the better developer tools for code debugging. If your browser can display the [three.js](https://threejs.org) site and the various sample projects on the home page it should work.
+Chrome generally has the better developer tools for code debugging. If your browser can display the [three.js site](https://threejs.org) and the various sample projects on the home page it should work, some Safari versions have problems. It is useful to know how to view the browser log console, in Chrome this can be done through View > Developer > JavaScript console. These console error messages can help identify why a site is not loading properly. You may have to use a search engine (such as Google) to understand the error message and you may have to reload a site while the console is open to see the error message. For more information on debugging code see the [threejs manual](https://threejs.org/manual/#en/debugging-javascript).
 
 - [Node.js](https://nodejs.org) is a free JavaScript tool. 
 
-It is easy to install (Windows, macOS, and Linux). This will allow you to ‘serve’ code internally to your browser (using an address in the browser such as http://localhost:3000), and see if the code is working, or how code changes affect your site. Node.js is probably the easiest way to serve code internally. Install as per website instructions, and check it is working in your terminal by typing 
+It is easy to install (Windows, macOS, and Linux). This will allow you to ‘serve’ code internally to your browser (using an address in the browser such as http://localhost:3000), and see if the code is working, or how code changes affect your site. Node.js is probably the easiest way to serve code internally. Install as per website instructions, and check it is working in the terminal you plan to use by typing 
 
 ```
 node -v
 ```
 
-and confirming that you get a version number and not an error message. 
+and confirming that you get a version number and not an error message. This code has been tested with version v18.14.1. If you have problems installing Node.js, try using a search engine with the error message for help or watch one of the many tutorials available on the web.
 
 - A GitHub page (recommended if deploying). 
 
-To deploy your page so that everybody can access it, you can use GitHub. You get one free page per account, ie my page at https://github.com/tosca-har/tosca-har.github.io, results in a website at https://tosca-har.github.io/. Alternatively you can deploy your site using a free service such as [Vercel](https://vercel.com/).
+To deploy your page so that everybody can access it, you can use GitHub. You get one free page per account, ie my page at https://github.com/tosca-har/tosca-har.github.io, results in a website at https://tosca-har.github.io/. Alternatively you can deploy your site using a free service such as [Vercel](https://vercel.com/). To deploy code, follow the instructions on GitHub or Vercel.
 
 - The three.js library.
 
 There are 2 ways to use the three.js JavaScript library. This tutorial will use the library via a content delivery network (CDN). Basically, code at the top of JavaScript script will fetch and import the library from a server. This removes the need for you to work with build tools like Vite, which you would have to do if you download the actual three.js code. Downloading, working and building the code is more robust long term but for this lesson the CDN approach is fine. This code will use three.js version 0.160.0, although it has been tested and works with later versions such as 0.166.1. If you want to change the version used you need to change both numbers in the import maps, i.e. use three@0.166.1 instead of three@0.160.0, and also change the version later on when importing the draco file compression loader. **Do not** mix versions. This lesson does not contain code likely to be affected by version changes but three.js versions are not necessarily backward compatible so it is possible that problems will occur if later versions are used. Browser updates also occasionally cause incompatibility problems.
 
-## Creating a Interactive 3D Scene
+## Creating an Interactive 3D Scene
 
 Now you need to set up the initial directories and files for the project.
-Make a new folder - call it myscene.
+Make a new folder - call it myscene. Within the myscene folder create a folders called models and textures. We will use the textures folder in part 2. Put the png_sceneDRACO.glb file you downloaded previously in the models folder.
 
 In VSC open the folder.
 
 Create a file and call it *index.html*  
-Note that it **must** be called this.
+Note that it **must** be called this as this is the html file that will be served by the browser by default when you go to the local host address.
 
-We are going to put all the code in this file, this is not the best practice but the point of the lesson is to learn about three.js.
+We are going to put all the code in this file, this is not the best practice but the point of the lesson is to learn about three.js. Generally you would have the JavaScript code in a separate (.js) file that would be imported by the index.html file. It is also good practice to have code properly indented and in some languages (such as Python), code indentation is important. However, in JavaScript you do not have to indent properly, so if the copy and pasting changes the indentation, you can choose to neaten it or not. Having it properly indented will help you copy and paste code into the correct spot.
 
 In the index.html file, copy and paste the following:
 
@@ -267,7 +279,11 @@ a, button, input, select {
 }
 ```
 
-This file came from the examples folder at three.js, it is a style file. Save the main.css file and then you can close it.
+This file came from the examples folder at three.js, it is a cascading style sheet file. Save the main.css file and then you can close it. 
+
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-07.png" alt="A screenshot of the VSC editor with the director structure of the myscene folder." caption="Figure 7. The directory structure can be seen in the left hand panel of the VSC editor. The index file contents are shown in the main panel. They are colour coded. A VSC terminal is open and shown in the bottom panel." %}
+
+If you want to understand the basic components of a website [w3schools](https://www.w3schools.com/howto/howto_make_a_website.asp) has a guide, as well as tutorials on html, css and JavaScript.
 
 Make sure that the command line of your terminal/shell indicates that you are in the myscene folder (...myscene %). In VSC, Terminal > New Terminal will give you a terminal. In the terminal type
 
@@ -277,9 +293,9 @@ npx serve
 
 this will serve your site, normally to port 3000, but check the message to see what local address is being used. Open a web browser and go to that address (ie http://localhost:3000) and if all is working you will see a black page with 'three.js The Jars of Papua'. 
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-01.png" alt="Black page with small title (three.js The Jars of Papua), top centre." caption="Figure 1. Webpage with black background and small title." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-08.png" alt="Black page with small title (three.js The Jars of Papua), top centre." caption="Figure 8. Webpage with black background and small title." %}
 
-To stop the server use Ctrl + C in the terminal. You can restart with 'npx serve', or use the keyboard up arrow to find previous terminal commands. You may need to reload the page in the browser to apply any code changes. 
+**To stop the server use Ctrl + C in the terminal. You can restart with 'npx serve', or use the keyboard up arrow to find previous terminal commands.** You may need to reload the page in the browser to apply any code changes. 
 
 ### Creating the Basic Web Page
 

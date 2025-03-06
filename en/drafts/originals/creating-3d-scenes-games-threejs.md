@@ -491,8 +491,6 @@ Dolbunova, E., Lucquin, A., McLaughlin, T.R., Bondetti, M., Courel, B., Oras, E.
 
 Gaffney, D., Summerhayes, G.R., Ford, A., Scott, J.M., Denham, T., Field, J., Dickinson, W.R. 2015. Earliest Pottery on New Guinea Mainland Reveals Austronesian Influences in Highland Environments 3000 Years Ago. PLoS ONE 10(9):e0134497.
 
-Hardy, K. 2023. The creation of 'Uvira's Pot', a virtual reality puzzle to promote engagement with archaeological research. Conference: Digital Humanities 2023. Collaboration as Opportunity (DH2023) At: Graz, Austria.
-
 Holtorf, C. 2005. From Stonehenge to Las Vegas. Archaeology as popular culture. Walnut Creek: AltaMira Press.
 
 Maschner, H. July 2022 (https://sketchfab.com/blogs/community/cultural-heritage-spotlight-global-digital-heritage/?utm_source=website&utm_campaign=newsfeed)
@@ -962,7 +960,7 @@ The goal for the user of this game is to start with the jars off the map and the
 
 Green tori will be used to mark the communities. They can be harder to aim for than discs, but most Papua New Guinea communities use tori made of leaves to hold the vessels as they are being made. The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified. However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI *1/2).
 
-Because each torus is connected to a different information planel, they still need to be created separately and added to a tori group. The mouse click event listener has to be altered so that it targets the tori group instead of the jar group. 
+Because each torus is connected to a different information panel, they still need to be created separately and added to a tori group. The mouse click event listener has to be altered so that it targets the tori group instead of the jars group. 
 
 While each site COULD be added with code such as:
 ```
@@ -986,7 +984,7 @@ let jars, tori;
 ```
 In the init function after
 ```
-	let piecescale = ratio;
+	scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
 ```
 add
 ```
@@ -1021,7 +1019,7 @@ add
 ```
 save and check the tori appear on site reload.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-12.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 12. Webpage with the jars sitting on tori." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-22.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 22. Webpage with the jars sitting on tori." %}
 
 in the onClick(event) function change:
 
@@ -1154,7 +1152,7 @@ with:
 
 Save and reload, you should see the jars starting above the map and if you reload, they will be in different random positions.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-13.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 13. Webpage with the jars at random start positions above the map." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-23.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 23. Webpage with the jars at random start positions above the map." %}
 
 ### Check for Successful Matches
 
@@ -1192,27 +1190,27 @@ to
 ```
 dragControls.addEventListener('dragend', function (event) {
     	controls.enabled = true;
-		selectedObject = event.object;
-		truesite = selectedObject.userData.site;
-		let testposition = new THREE.Vector3(0,0,0); //needs to be something first
-		truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z)
-		let aposition = selectedObject.position; //way 1 test object position
+	selectedObject = event.object;
+	truesite = selectedObject.userData.site;
+	let testposition = new THREE.Vector3(0,0,0); //needs to be something first
+	truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z)
+	let aposition = selectedObject.position; //way 1 test object position
 	
-		if ( aposition.distanceTo( testposition ) < .025 * ratio) {
-			scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
-			selectedObject.position.set(testposition.x, testposition.y, testposition.z);
-			selectedObject.rotation.set(0, 0, 0);
-			unmoveable.attach( selectedObject);
-		}	
+	if ( aposition.distanceTo( testposition ) < .025 * ratio) {
+		scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
+		selectedObject.position.set(testposition.x, testposition.y, testposition.z);
+		selectedObject.rotation.set(0, 0, 0);
+		unmoveable.attach( selectedObject);
+	}	
 })
 ```
 You can save and test this. Moving in 3D can be difficult, it is best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place it in the right spot, or vice versa.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-14.png" alt="While 5 jars are randomly above the map, the Aibom jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Aibom jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-24.png" alt="While 5 jars are randomly above the map, the Aibom jar has been moved close to its torus." caption="Figure 24. Moving jars, such as the Aibom jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-15.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Aibom jar has been correctly positioned." caption="Figure 15. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-25.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Aibom jar has been correctly positioned." caption="Figure 25. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-16.png" alt="Normal view of the jars and map, with the Aibom jar in its correct position." caption="Figure 16. The Aibom jar in its correct position." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-26.png" alt="Normal view of the jars and map, with the Aibom jar in its correct position." caption="Figure 26. The Aibom jar in its correct position." %}
 
 This way of placing the jars on the sites can be frustrating for users and the onClick function is actually called at the end of a drag event, thus you can also alter the onClick function to register a correct match if the drag ends with the mouse on the correct site. This alternative means that the match is tested in 2D space instead of in 3D space (as in the first approach), and thus matches are easier, especially for players not experienced with digital 3D environments. If you develop your own games you might want to test different approaches to see what works best. 
 
@@ -1298,35 +1296,18 @@ Pots were made in many different forms by different communities in Papua New Gui
 | tumleo.glb | Tumleo.jpg | 0.27* ratio, desk + 0.01, -0.12* ratio | paddleColor |
 | waiGeo.glb | Waigeo.jpg |  -0.65* ratio, desk + 0.01, -0.35* ratio | paddleAddColor |
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-17.png" alt="Many jars on a map of Papua." caption="Figure 17. Additional jars can be addded to the scene and puzzle." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-27.png" alt="Many jars on a map of Papua." caption="Figure 27. Additional jars can be addded to the scene and puzzle." %}
 
 ## Conclusion and Next Steps
-This has been an introduction to using three.js and the basic concepts in creating 3D scenes. The official [three.js](https://threejs.org) website shows how much more complex pages can be created, with additions such as animations and sound. The [three.js](https://threejs.org) site also contains example code that could be used for extending the puzzle created here, with sound effects for correct matches. Many sites, especially those with large models, feature loading bars, that give feedback to the user while the models load. Another possible extension is to enable the scene to be viewed and manipulated in VR.
+This has been an introduction to using three.js and the basic concepts in creating 3D scenes. The official [three.js](https://threejs.org) website shows how much more complex pages can be created, with additions such as animations and sound. The [three.js](https://threejs.org) site also contains example code that could be used for extending the puzzle created here, for example adding sound effects for correct matches. Many sites, especially those with large models, feature loading bars, that give feedback to the user while the models load. Another possible extension is to enable the scene to be viewed and manipulated in VR. The three.js site also contains links to places to ask the community for help, and links guides including [three.js Fundamentals](https://threejs.org/manual/#en/fundamentals). 
 
 There are many ways cultural heritage models can be used interactively: vessels can be refitted (Hardy, 2023), site contexts could be toggled on and off, or objects could be virtually analysed, with images or measurements from scientific techniques revealed when the object is clicked on. Providing research data in such a format, has challenges, but also has the possibility for making findings more accessible and interesting to non-academic audiences.
 
 
 ## References
 
-D’Andrea, A., Conyers, M., Courtney, K.K., Finch, E., Levine, M. Rountrey, A., Kettler, H.S., Webbink, K. 2022. "Copyright and Legal Issues Surrounding 3D Data." In 3D Data Creation to Curation: Community Standards for 3D Data Preservation, eds. Moore, J., Rountrey, A., Kettler, H.S. Chicago: Association of Research and College Libraries (ALA).
-
-Dolbunova, E., Lucquin, A., McLaughlin, T.R., Bondetti, M., Courel, B., Oras, E., Piezonka, H., Robson, H.K., Talbot, H., Adamczak, K., Andreev, K., Asheichyk, V., Charniauski, M., Czekai-Zastawny, A., Ezepenko, I., Grechkina, T., Gunnarssone, A., Gusentsova, T.M., Haskevych, D., Ivanischeva, M., Kabacinski, J., Karmanov, V, Kosorukova, N., Kostyleva, E., Kriiska, A., Kukawka, S., Lozovskaya, O., Mazurkevich, Z., Nedomolkina, N., Piliciauskas, G., Sinitsyna, G., Skorobogatov, A., Smolyaninov, R.V., Surkov, A., Tkachov, O., Tkachova, Ml, Tsybrij, A., Tsybrij, V., Vybornov, A.A., Wawrusiewicz, A., Yudin, A.I., Meadows, J., Heron, C., Craig O.E. 2023. The Transmission of Pottery Technology Among Prehistoric European Hunter-Gatherers. Nature Human Behaviour. 7:171. 
-
-Gaffney, D., Summerhayes, G.R., Ford, A., Scott, J.M., Denham, T., Field, J., Dickinson, W.R. 2015. Earliest Pottery on New Guinea Mainland Reveals Austronesian Influences in Highland Environments 3000 Years Ago. PLoS ONE 10(9):e0134497.
 
 Hardy, K. 2023. The creation of 'Uvira's Pot', a virtual reality puzzle to promote engagement with archaeological research. Conference: Digital Humanities 2023. Collaboration as Opportunity (DH2023) At: Graz, Austria.
-
-Holtorf, C. 2005. From Stonehenge to Las Vegas. Archaeology as popular culture. Walnut Creek: AltaMira Press.
-
-Maschner, H. July 2022 (https://sketchfab.com/blogs/community/cultural-heritage-spotlight-global-digital-heritage/?utm_source=website&utm_campaign=newsfeed)
-
-May, P., Tuckson, M. 2000. The Traditional Pottery of Papua New Guinea. Crawford House Publishing, Adelaide.
-
-O'Brien, M.J., Lyman, R.L., Collard, M., Holdern, C.J., Gray, R.D., Shennan, S.J. 2008. Transmission, Phylogenetics and the Evolution of Cultural Diversity. In: Cultural Transmission and Archaeology: Issues and Case Studies. Society for American Archaeology. Washington.
-
-Oruç, P. 2020 3D Digitisation of Cultural Heritage: Copyright Implications of the Methods, Purposes and Collaboration, 11 JIPITEC 149 para 1.  
-
-Pétrequin, A.-M., Pétrequin, P. 2006. Objets de Pouvoir en Nouvelle Guinée: Approche Ethnoarchéologique d’un Système de Signes Sociaux: Catalogue de la Donation Anne-Marie et Pierre Pétrequin. Réunion des Musées Nationaux, Paris.
 
 Schell, J. 2015. The Art of Game Design: A Book of Lenses. CRC Press. FL.
 

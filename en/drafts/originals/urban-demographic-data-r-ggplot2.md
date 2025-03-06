@@ -126,7 +126,7 @@ The tidyverse converts our data to a 'tibble' rather than a 'data frame'. Tibble
 
 We will start by exploring the data for cities in six EU countries: Germany, France, Portugal, Poland, Hungary, and Bulgaria (three Western European countries and three Eastern European countries). The tibble you saw above called `eudata` contains this data in 12 variables and 13081 rows.
 
-The tibble contains comprehensive information combining urban and demographic data about sister-city relationships. The urban data includes information about both origin and destination cities (`origincity`, `destinationcity`), their respective countries (`origincountry`, `destinationcountry`), and their geographical coordinates (`originlat`, `originlong`, `destinationlat`, `destinationlong`). It also contains information about the distance between paired cities (`dist`) and their administrative relationship status (`eu`). For demographic analysis, we have population data for both origin and destination cities (`originpopulation`, `destinationpopulation`). This combination of data types should allow us to explore how city characteristics and population patterns influence partnerships.
+The tibble contains comprehensive information combining urban and demographic data about sister-city relationships. The urban data includes information about both origin and destination cities (`origincity`, `destinationcity`), their respective countries (`origincountry`, `destinationcountry`), and their geographical coordinates (`originlat`, `originlong`, `destinationlat`, `destinationlong`). It also contains information about the distance between paired cities (`dist`) and their administrative relationship status (`eu`). For demographic analysis, we have the population size of both origin and destination cities (`originpopulation`, `destinationpopulation`). This combination of data types should allow us to explore how city characteristics and population patterns influence partnerships.
 
 ## Creating Your First Graph
 
@@ -200,7 +200,7 @@ geom_bar(stat = "identity", position="dodge")
 
 For this plot (Figure 3), we created a tibble that aggregated data per origin country and destination country type (EU, non-EU, domestic). We mapped the `origincountry` column to the `fill` aesthetic in the `ggplot()` command, which defines the color range of the bars. We also added the `dodge` position to `geom_bar(`) so that the bars do not get stacked (which is the default), but are instead placed side by side.
 
-Now that we have visualized urban relationships (partnerships between cities) and demographic patterns (population sizes), we can analyze how these two aspects of our data interact.
+Now that we have visualized urban relationships (partnerships between cities), let's explore how these patterns interact with demographic characteristics such population size.
 
 Figure 3 reveals that most countries in our analysis (Hungary, France, Poland and Germany) strongly prefer to establish sister-city relationships with other European Union countries, with approximately 60-80% of their partnerships in the EU. However, Bulgaria and Portugal differ from this trend. Both of these countries seem to have a roughly equal proportion of sister city relationships with EU and non-EU countries. This suggests that Bulgaria and Portugal have a more balanced approach towards forming partnerships that involves actively engaging with cities outside the European Union.
 
@@ -240,13 +240,15 @@ ggplot(eudata.filtered, aes(x=dist)) + geom_histogram()
 
 As shown by the code above, we only needed to add `geom_histogram()` to create a histogram. However, making an effective histogram involves a bit more work. It is important, for example, to determine a '[bin size](https://en.wikipedia.org/wiki/Data_binning)' that makes sense for the data. The bin size, also known as the 'interval' or 'bandwidth', refers to the width of each bar, and determines how data is grouped and displayed along the x-axis. In the histogram created in Figure 4, ggplot2 defaulted to a binwidth of 30 (`bins=30`) – but a warning message recommends picking a better value. You can explore more configuration possibilities in the [`geom_histogram()` documentation](http://ggplot2.tidyverse.org/reference/geom_histogram.html).
 
-In this simple graph, the distribution of the `dist` variable appears rather [skewed](https://en.wikipedia.org/wiki/Skewness): the number of destination cities located 1500-5000 kilometres away from their origin city is consistently and considerably lower across the chart than those located 0-1500 kms away.. This has implications for the analysis, as it suggests that while most sister cities tend to be geographically close, there are exceptions in which cities establish partnerships with far-off counterparts. 
+In this simple graph, the distribution of the `dist` variable appears rather [skewed](https://en.wikipedia.org/wiki/Skewness): the number of destination cities located 1500-5000 kilometres away from their origin city is consistently and considerably lower across the chart than those located 0-1500 kms away. This has implications for the analysis, as it suggests that while most sister cities tend to be geographically close, there are exceptions in which cities establish partnerships with far-off counterparts. 
 
-You can use a [cumulative distribution function (ECDF)](https://en.wikipedia.org/wiki/Empirical_distribution_function) to gain additional insights into this pattern and better understand the spatial distribution of sister-city relationships. The ECDF can also assess whether the skewness observed is a genuine feature of the data, or just a result of bin size. If the ECDF shows a similar pattern of skewness, with a steep increase on the left and a more gradual increase on the right, it would confirm skewness is an inherent characteristic of the `dist` variable. In ggplot2, you can create an ECDF by adding the `stat_ecdf()` layer to your plot. Here's an example:
+You can use a [cumulative distribution function (ECDF)](https://en.wikipedia.org/wiki/Empirical_distribution_function) to gain additional insights into this pattern and better understand the spatial distribution of sister-city relationships. Think of the ECDF like climbing a mountain: just as a mountain's profile reveals its shape, the ECDF's curve reveals the shape of the `dist` variable's distribution. A right-skewed distribution would look like a mountain with a steep initial ascent (many cities with short distances) followed by a gentle slope toward the summit (fewer cities with longer distances). This would confirm that the skewness observed in the `dist` variable is a genuine feature of how cities form partnerships. Unlike a histogram, which can change shape depending on how you group the distances, the ECDF's mountain profile remains consistent. 
+
+In ggplot2, you can create an ECDF by adding the `stat_ecdf()` layer to your plot. Here's an example:
 
 ```
 
-ggplot(eudata.filtered, aes(x=dist)) + stat_ecdf()
+ggplot(eudata, aes(x=dist)) + stat_ecdf()
 
 ```
 
@@ -330,7 +332,7 @@ y = log(destinationpopulation))) +
 
 geom_point(size = 3, color = "red") +
 
-labs(title = "Population data of origin and destination city",
+labs(title = "Population size of origin and destination city",
 
 caption = "Data: [www.wikidata.org](http://www.wikidata.org)",
 
@@ -370,7 +372,7 @@ y = log(destinationpopulation))) +
 
 geom_point(size = 3, alpha = 0.7, aes( color = typecountry )) +
 
-labs(title = "Population data of origin and destination city",
+labs(title = "Population size of origin and destination city",
 
 caption = "Data: [www.wikidata.org](http://www.wikidata.org)",
 
@@ -387,6 +389,10 @@ The code above has two major changes. First, we modified `geom_point()` by addin
 ### Scales: Colors, Legends, and Axes
 
 Next, you'll explore ggplot2's `scales` function. Scales are crucial for determining how data is mapped to visual properties. They provide data transformation for position, size, color, and shape aesthetics. Additionally, scales define how aesthetics are displayed on the plot, including the range of values, the breaks or tick marks, and the labels. 
+
+Next, you'll explore ggplot2's `scales` function. You can think of scales as a set of rules, or a mapping system. They take your raw data (like population numbers or country names) and define how those values should be represented visually – what color something should be, where it should be placed on the graph, how big it should appear, etc. Without scales, ggplot2 wouldn't know how to translate your data into a meaningful picture.
+
+Let's use the sister city data as an example. When you create a plot, scales work behind the scenes to transform your raw data into visual elements. They specify, for example, how country names convert into different colors ('French cities should be shown in blue'), or how distance between cities translates into point size ('cities with populations over one million should be shown as large points'). These rules ensure that every element of your data is displayed consistently throughout your visualization, making it easier for readers to understand the patterns and relationships you're trying to show.
 
 In ggplot2, scales follow a naming convention consisting of three parts separated by underscores:
 
@@ -408,7 +414,7 @@ y = log(destinationpopulation))) +
 
 geom_point(size = 3, alpha = 0.7, aes( color = typecountry )) +
 
-labs(title = "Population data of origin and destination city",
+labs(title = "Population size of origin and destination city",
 
 caption = "Data: [www.wikidata.org](http://www.wikidata.org)",
 
@@ -428,7 +434,7 @@ p1 + scale_colour_manual(values = c("red", "blue", "green"))
 
 {% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-11.png" alt="Scatter plot that uses scale_colour_manual() to change the colors of the scatterplot points." caption="Figure 11. Using scale_colour_manual() to change the colors of the scatter plot's points." %}
 
-However, you can also simply rely on predefined color scales, such as the [color brewer palettes](http://colorbrewer2.org). When possible, this is better. Fortunately, ggplot2 comes with `scale_colour_brewer()` already [integrated](http://ggplot2.tidyverse.org/reference/scale_brewer.html):
+However, you can also simply rely on predefined color scales, such as the [color brewer palettes](http://colorbrewer2.org). It's better to use these whenever possible, because choosing the right colors for visualizations is a very complicated issue (for instance, avoiding colors that are not distinguishable by people with impaired vision). Fortunately, ggplot2 comes with `scale_colour_brewer()` already [integrated](http://ggplot2.tidyverse.org/reference/scale_brewer.html):
 
 ```
 
@@ -450,7 +456,7 @@ y = log(destinationpopulation))) +
 
 geom_point(size = 3, aes( color = log(dist) )) +
 
-labs(title = "Population data of origin and destination city",
+labs(title = "Population size of origin and destination city",
 
 subtitle = "Colored by distance between cities",
 
@@ -464,7 +470,7 @@ p2
 
 ```
 
-{% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-13.png" alt="Scatter plot showing population data of origin and destination city colored by distance between cities." caption="Figure 13. Population data of origin and destination city colored by distance between cities." %}
+{% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-13.png" alt="Scatter plot showing population size of origin and destination city colored by distance between cities." caption="Figure 13. Population size of origin and destination city colored by distance between cities." %}
 
 Immediately, you'll notice that this graph has two major problems:
 
@@ -486,7 +492,7 @@ p2 + scale_colour_gradient(low = "white", high = "red3")
 
 ```
 
-{% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-14.png" alt="Scatter plot showing population data of origin and destination city colored by distance between cities using scale_colour_gradient()" caption="Figure 14. Population data of origin and destination city colored by distance between cities using scale_colour_gradient()." %}
+{% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-14.png" alt="Scatter plot showing population size of origin and destination city colored by distance between cities using scale_colour_gradient()" caption="Figure 14. Population size of origin and destination city colored by distance between cities using scale_colour_gradient()." %}
 
 What can we learn from this graph? It appears that smaller cities tend to establish relationships with cities that are closer, which seems to confirm the patterns we explored earlier. In the previous sections, we examined the distribution of distances between sister cities using a histogram and an ECDF plot. These visualizations revealed that most sister-city relationships are characterized by short distances, mostly within a radius of 500 to 1000 kilometers. Consistent findings across different visualizations strengthen our confidence in the observed patterns and highlight the importance of considering city size and distance as key variables.
 
@@ -510,7 +516,7 @@ p2
 
 ```
 
-{% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-15.png" alt="Scatter plot showing population data of origin and destination city colored by distance between cities using scale_colour_gradient() and guide_colorbar()." caption="Figure 15. Population data of origin and destination city colored by the distance between cities using scale_colour_gradient() and guide_colorbar()." %}
+{% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-15.png" alt="Scatter plot showing population size of origin and destination city colored by distance between cities using scale_colour_gradient() and guide_colorbar()." caption="Figure 15. population size of origin and destination city colored by the distance between cities using scale_colour_gradient() and guide_colorbar()." %}
 
 ### Faceting a Graph
 

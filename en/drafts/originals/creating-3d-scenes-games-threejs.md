@@ -509,15 +509,43 @@ Shaw, I., Leclerc, M. 2023. Unearthed: Art in Archaeology and Anthropology. ISBN
 
 # Part 2
 
-Now we will add some coloured spheres. Three.js has several basic geometries, including spheres, tori (donuts), planes and boxes. You could group many of these together to make a model, and we will use 9 spheres and a plane to make a vessel colour key for how the jars were made.
+In part 1 of this lesson we used three.js to create a website featuring a camera and a scene with lights, camera navigation controls and a model. In part 2 we will make the model more interactive and as part of this we will make or import the various model components separately. 
 
-All objects are made from meshes of nodes (points) joined with edges.
+## Setting Up
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-03.png" alt="A framework of nodes and edges in the shape of a sphere." caption="Figure 3. Mesh of a sphere with 15 width segments and 5 height segments." %}
+In addition to the requirements in part 1, you will need to download the models folder containing the individual jar models, and the textures folder with information about them, from this lesson’s /assets folder. If you are running the node.js server, stop it with Ctrl + C.
 
-Mesh backbones can then be decorated with 'materials' that have colour and other properties such as emission, roughness, metalness, opacity etc. They can also be decorated with image and other 'textures'.
+Put (or replace) the downloaded models and texture folders in the myscene folder (Figure 11-12). Keep the index.html and main.css files that you created in part 1.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-04.png" alt="Sphere with red material." caption="Figure 4. The sphere with a standard material and red colour. A directional light is used." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-11.png" alt="Screenshot of the VSC editor showing a list of glb files in the expanded models folder." caption="Figure 11. File structure for part 2 as shown in VSC, with the models folder expanded." %}
+
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-12.png" alt="Screenshot of the VSC editor showing a list of jpg files in the expanded textures folder." caption="Figure 12. File structure for part 2 as shown in VSC, with the textures folder expanded." %}
+
+In the index.html file from part 1, remove
+
+```
+    	function onLoadMap( gltf ) {                
+                thescene = gltf.scene.children[0];
+                thescene.position.set( 0, desk, 0);
+                thescene.scale.set( piecescale, piecescale, piecescale);
+                scene.add( thescene);
+	}
+loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
+
+```
+Start the local server with 
+```
+npx serve
+```
+and you should be back to an empty scene with a peach background.
+
+You might have noticed that the pots in the model of part 1 were different colours. These colours relate to how the pots were made and we will construct a key to communicate this to the viewer.
+
+To do this we will add some coloured spheres. Three.js has several basic geometries, including spheres, tori (donuts), planes and boxes. We will use 9 spheres and a plane to make a vessel colour key for how the jars were made.
+
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-13.png" alt="A framework of nodes and edges in the shape of a sphere." caption="Figure 13. Mesh of a sphere with 15 width segments and 5 height segments." %}
+
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-14.png" alt="Sphere with red material." caption="Figure 14. The sphere with a standard material and red colour. A directional light is used." %}
 
 A sphere 'geometry' is made with a size (in this case 0.04 m), number of width and height segments. If you increase the number of width or height segments you will get rounder spheres. The geometry is reused for 9 different sphere meshes. Each sphere mesh gets a material with a colour. We are using the standard material. There are alternatives that can be used and it is important to note that some material types are more dependent on lights than others. 
 
@@ -528,14 +556,13 @@ For each sphere we also set its position in x, y, z order.
 After:
 
 ```
-    // Variables
+    let desk = 0.8;
 ```
 
 Add:
 
 ```
     	let ratio = 2;
-	let desk = 0.8; // desk height
     	let gheight = desk + 0.55; //panel height
 	let psize = 1.0; // panel dimensions
 	let sphereposx = 0.84 // key sphere x position
@@ -599,7 +626,7 @@ Add:
 
 Save and reload in the browser.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-05.png" alt="Webpage with 9 spheres of different colours in a vertical line." caption="Figure 5. Webpage with nine differently coloured spheres." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-15.png" alt="Webpage with 9 spheres of different colours in a vertical line." caption="Figure 15. Webpage with nine differently coloured spheres." %}
 
 ### Adding the Information Panels and Map
 

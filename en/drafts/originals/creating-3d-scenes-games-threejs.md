@@ -513,7 +513,7 @@ In part 1 of this lesson we used three.js to create a website featuring a camera
 
 ## Setting Up
 
-In addition to the requirements in part 1, you will need to download the models folder containing the individual jar models, and the textures folder with information about them, from this lesson’s /assets folder. If you are running the node.js server, stop it with Ctrl + C.
+In addition to the requirements in part 1, you will need to download the [`/models` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/models) containing the individual jar models, and the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/textures) with information about them, from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs). If you are running the node.js server, stop it with Ctrl + C.
 
 Put (or replace) the downloaded models and texture folders in the myscene folder (Figure 11-12). Keep the index.html and main.css files that you created in part 1.
 
@@ -632,7 +632,7 @@ Save and reload in the browser.
 
 Now we will add some planes. We want the information panels to face the camera, and the default planes do this. However, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis.
 
-We will give the planes image 'textures'. Download the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/textures) from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs) and place it in the myscene folder. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. Here we will create all the information panels for all the jars but hide them (by making .visible = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
+We will give the planes image 'textures'. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. There are [alternatives](https://threejs.org/docs/index.html#manual/en/introduction/Creating-text). Here we will create all the information panels for all the jars but hide them (by making .visible = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
 
 Textures need to be loaded by a 'TextureLoader'.
 
@@ -661,15 +661,23 @@ add:
 const textureLoader = new THREE.TextureLoader()
 
 const introTexture = textureLoader.load( 'textures/Intro.jpg' );
-const refTexture = textureLoader.load( 'textures/sources.jpg' );			
+introTexture.generateMipmaps = true;
+const refTexture = textureLoader.load( 'textures/sources.jpg' );
+refTexture.generateMipmaps = true;			
 const keyTexture = textureLoader.load( 'textures/key.jpg' );
+keyTexture.generateMipmaps = true;
 const adzeraTexture = textureLoader.load( 'textures/Adzera.jpg' );
+adzeraTexture.generateMipmaps = true;
 const aibomTexture = textureLoader.load( 'textures/Aibom.jpg' );
+aibomTexture.generateMipmaps = true;
 const mailuTexture = textureLoader.load( 'textures/Mailu.jpg' );
+mailuTexture.generateMipmaps = true;
 const dimiriTexture = textureLoader.load( 'textures/Dimiri.jpg' );
+dimiriTexture.generateMipmaps = true;
 const louisadeTexture = textureLoader.load( 'textures/Louisade.jpg' );
+louisadeTexture.generateMipmaps = true;
 const yabobTexture = textureLoader.load( 'textures/Yabob.jpg' );
-
+yabobTexture.generateMipmaps = true;
 gallery = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: introTexture }));
 gallery.position.set( 0, gheight, sphereposz); 
 selectedPlane = gallery;
@@ -717,63 +725,49 @@ scene.add( theMap);
 
 ```
 
-Save and reload. If the panels are black, the images are probably in the wrong place. 
+Save and reload. If the panels are black, the images are probably in the wrong directory. 
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-06.png" alt="Webpage with 3 square panels of text and a horizontal map of Papua." caption="Figure 6. Webpage with three vertical information panels and a horizontal map." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-16.png" alt="Webpage with 3 square panels of text and a horizontal map of Papua." caption="Figure 16. Webpage with three vertical information panels and a horizontal map." %}
 
 ### Adding the Jar Models
 
-Three.js can load many different types of models. However, the size is very important and large models will not load. The less nodes or faces in the mesh the smaller the model size. Reducing the nodes or faces in a model, or retopology can be done in programs such as Blender. In Blender this is relatively easy, if the model is imported as a STL and if the model does not have an image texture. These models were primarily designed in Blender and reduced to under 700KB. They were exported as draco compressed glTF (GL Transmission Format) files.
+As you saw in part 1, the jar models are made of meshes (Figure 17).
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-07.png" alt="Framework of a jar with a sculptured face." caption="Figure 7. Mesh of the Aibom jar." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-17.png" alt="Framework of a jar with a sculptured face." caption="Figure 17. Mesh of the Aibom jar." %}
 
-As with the spheres, the jars will get a standard material with a colour. 
+As with the spheres, the jars will get a standard material with a colour (Figure 18). 
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-08.png" alt="Jar with a sculptured face coloured brown." caption="Figure 8. The Aibom jar with a solid brown colour." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-18.png" alt="Jar with a sculptured face coloured brown." caption="Figure 18. The Aibom jar with a solid brown colour." %}
 
-We will later change the emissive property of the material to show if a jar is selected.
+We will later change the emissive property of the material to show if a jar is selected (Figure 19).
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-09.png" alt="Jar with a sculptured face brightly coloured red." caption="Figure 9. The Aibom jar with red emission." %}
-
-Draco-compressed GTLF files are one of the most memory efficient formats to use with three.js. They can also contain image textures for the model and many other features, but we will not use that here. However, they require the importation of additional loaders. It is also possible to have multiple models in one GTLF file and to separate them once imported.
-
-Download the [/models folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/models) from this lesson's [/assets folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs) and put it in the myscene folder.
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-19.png" alt="Jar with a sculptured face brightly coloured red." caption="Figure 19. The Aibom jar with red emission." %}
 
 The jars will be added to a group (called 'jars') and the group will be added to the scene. This will allow us to specify later, that objects belonging to the jars group can be selected. 
 
 Each jar will get a userdata property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
 
-Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM. A function is defined 'onLoadAibom' that takes the .glb and loads it when called by the loader load function. The program will not stop while loading the file which can take a while so to avoid problems do not try to add the model to a group outside the loading function. 
+Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that takes the .glb and loads it when called by the loader load function. The program will not stop while loading the file which can take a while so to avoid problems do not try to add the model to a group outside the loading function. 
 
-After:
-
-```
-import * as THREE from 'three';
-```
-
-add:
+Replace:
 
 ```
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
-```
-
-After:
-
-```
-	// Variables
-```
-
-add:
+	let thescene;
+	let piecescale = 1;
+	let desk = 0.8;
+    	let ratio = 2;  
 
 ```
-	const loader = new GLTFLoader();
-	const dracoLoader = new DRACOLoader();
-	dracoLoader.setDecoderPath( 'https://unpkg.com/three@0.160.0/examples/jsm/libs/draco/' );
-	loader.setDRACOLoader( dracoLoader );
 
+with:
+
+```
+	let desk = 0.8;
+    	let ratio = 2; 
+	let piecescale = ratio; 	
 	let jars;
 	let adzeraM, aibomM, mailuM, louisadeM, dimiriM, yabobM;
+
 ```
 
 Within the init function after:
@@ -787,7 +781,6 @@ add:
 ```
 	jars = new THREE.Group();
 	scene.add( jars );
-	let piecescale = ratio;
 
 	// verbose version
 	function onLoadAibom( gltf ) {				
@@ -827,7 +820,7 @@ with
 		return model;
 	}
 
-	//calls the createModel funtion but still in a separately defined function
+	//calls the createModel function but still in a separately defined function
 	function onLoadAibom( gltf ) {							
 		aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
 		jars.add( aibomM);
@@ -840,7 +833,7 @@ The code can be condensed further by using 'anonymous' functions, i.e. the funct
 
 Replace 
 ```
-	//calls the createModel funtion but still in a separately defined function
+	//calls the createModel function but still in a separately defined function
 	function onLoadAibom( gltf ) {							
 	...
 	}
@@ -880,9 +873,9 @@ with
 	}, undefined, function ( error ) {console.error( error );} );
 
 ```
-Save and reload and you should see 5 models. Number 6 is out of camera view.
+Save and reload and you should see 5 models (Figure 20). You will have to move around to see the sixth.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-10.png" alt="Five jar models sit on a map of Papua." caption="Figure 10. Webpage with six jars from Papua, but one is out of camera range." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-20.png" alt="Five jar models sit on a map of Papua." caption="Figure 20. Webpage with six jars from Papua, but one is out of camera range." %}
 
 Note that if you change 'let piecescale = ratio;' to 'let piecescale = ratio*2;' the vessels become bigger, but some will overlap.
 
@@ -922,7 +915,7 @@ add:
 	window.addEventListener( 'click', onClick );
 ```
 
-Then we have to tell the listener what do do if there is a click in the window. We want to: make sure it does not use the orbit controls; take the click position and send a ray to the click position (from the camera) and see if any jars are there. If it finds any jars, it will unhighlight the last jar selected and hide that panel, it will then highlight (by making red emissive) the chosen jar, and make visible the panel that is linked to it in the userData.
+Then we have to tell the listener what do do if there is a click in the window. We want to: make sure it does not use the orbit controls; take the click position and cast a ray to the click position (from the camera) and see if any jars are there. If it finds any jars, it will unhighlight the last jar selected and hide that panel, it will then highlight (by making red emissive) the chosen jar, and make visible the panel that is linked to it in the userData.
 After the resize listener:
 
 ```
@@ -953,7 +946,7 @@ add:
 	}	
 ```
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-11.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 11. Webpage showing the Aibom jar selected with its red emission set to true, and the Aibom information panel showing." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-21.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 21. Webpage showing the Aibom jar selected with its red emission set to true, and the Aibom information panel showing." %}
 
 The next sections are optional. You can turn the website into a puzzle game or add extra jars.
 

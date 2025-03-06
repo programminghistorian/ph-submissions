@@ -299,12 +299,13 @@ this will serve your site, normally to port 3000, but check the message to see w
 
 ### Creating the Basic Web Page
 
-Every three.js website has a 'scene' to which cameras, lights and objects need to be added. 
-First create a scene with a background colour and a camera. The position of the camera is important, sometimes you can not see your models because the camera is looking away from them or they are outside its field of view. We will use a perspective camera with parameters that define the field of view, including boundaries for culling objects that are too close or too far from the camera. The units for three.js are metres, and this camera will not render to the screen anything nearer to 0.1m and further than 10m. When we introduce moving the camera later, you will see objects disappear if they get too close. 
+Every three.js website has a camera and a 'scene' to which lights and objects need to be added. The script will call two functions (blocks of code): init() and animate(). Most of the code will be in init() which will set up the scene and tell the page if it should ‘listen’ to any input from sources, such as the mouse and what it should do in response to that (ie we will add EventListeners). To start with we will add the standard EventListener for responding to window size changes. The animate function will continuously call the render function. Rendering is when the camera we add takes a 2D ‘photo’ of the scene. 
 
-The camera, and other positions are set in x, y and z order. Different graphics programs and game engines use [different co-ordinate systems](https://twitter.com/freyaholmer/status/1325556229410861056). In three.js x is left (-) and right (+), y is down (-) and up (+) and z is far (-) and near (+), i.e. it is a Y up, right-handed system. The camera is set at a height of 1.6m, and later the map will be at 0.8m, because this code was originally written for use in virtual reality. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
+First create a camera and a scene with a background colour. The position of the camera is important, sometimes you can not see your models because the camera is looking away from them or they are outside its field of view. We will use a perspective camera with parameters that define the field of view, including boundaries for culling objects that are too close or too far from the camera. The units for three.js are metres, and this camera will not render to the screen anything nearer to 0.1m and further than 10m. When we introduce moving the camera later, you will see objects disappear if they get too close. 
 
-This background will be peach (0xf7d382). To specify colours you can use the colour [hex code](https://www.color-hex.com) after '0x'.
+The camera, and other positions are set in x, y and z order. As mentioned previously, x is left (-) and right (+), y is down (-) and up (+) and z is far (-) and near (+). The camera is set at a height of 1.6m, and later the model will be at 0.8m. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
+
+We will make the page background peach (0xf7d382). To specify colours you can use the colour [hex code](https://www.color-hex.com) after '0x'.
 
 In the index.html file, **after** the import declare the variables (with **let**), call and define the init and other necessary functions. Variables are generally declared outside function definitions, but sometimes will be declared within a function definition if the variable is only referred to within the function definition. 
 
@@ -357,11 +358,11 @@ add:
 
 Reload the page after saving the index.html file and check that you have changed the background colour.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-02.png" alt="Basic webpage with peach background." caption="Figure 2. Webpage with peach background." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-09.png" alt="Basic webpage with peach background." caption="Figure 9. Webpage with peach background." %}
 
-Next we need to add lights and something to see.
+Next we need to add lights and the model.
 
-There are several different types of lights. We will add a hemisphere light and a directional light. The hemisphere light has 2 colours and an intensity (from 0 to 1), while the directional light has one colour and a position. Use the values supplied first and if everything is working later you can experiment with different values. You can add lights directly, like we do with the hemisphere light, or declare them, modify their parameters and then add them, like we do with the directional light.
+There are several different types of lights. We will add a [hemisphere light](https://threejs.org/docs/index.html#api/en/lights/HemisphereLight) and a [directional light](https://threejs.org/docs/index.html#api/en/lights/DirectionalLight). The hemisphere light has 2 colours and an intensity (from 0 to 1), while the directional light has one colour and a position. Use the values supplied first and if everything is working later you can experiment with different values. You can add lights directly, like we do with the hemisphere light, or declare them, modify their parameters and then add them, like we do with the directional light.
 
 In the function init() and after:
 
@@ -377,6 +378,136 @@ add:
 	light.position.set( 1, 6, 2 ); // x, y, z
 	scene.add( light );
 ```
+
+Three.js can load several different file types. Draco-compressed GTLF files require the importation of additional loaders.
+
+After:
+
+```
+import * as THREE from 'three';
+```
+
+add:
+
+```
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+```
+
+After:
+
+```
+	// Variables
+```
+
+add:
+
+```
+	const loader = new GLTFLoader();
+	const dracoLoader = new DRACOLoader();
+	dracoLoader.setDecoderPath( 'https://unpkg.com/three@0.160.0/examples/jsm/libs/draco/' );
+	loader.setDRACOLoader( dracoLoader );
+
+	let thescene;
+	let piecescale = 1;
+	let desk = 0.8;
+```
+
+Within the init function after:
+
+```
+	scene.add( light );
+```
+
+add:
+
+```
+	function onLoadMap( gltf ) {                
+                thescene = gltf.scene.children[0];
+                thescene.position.set( 0, desk, 0);
+                thescene.scale.set( piecescale, piecescale, piecescale);
+                scene.add( thescene);
+	}
+	loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
+	
+```
+Save and reload and you should see a model, but you will not be able to move around it yet.
+
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-10.png" alt="Several jar models sitting on a map of Papua." caption="Figure 10. The model of jars on a map of Papua." %}
+
+### Adding Camera Controls to Move Around
+
+We can add mouse controls to allow us to move around the scene. Some controls, including [orbit](https://threejs.org/examples/?q=controls#misc_controls_orbit), [map](https://threejs.org/examples/?q=controls#misc_controls_map), [fly](https://threejs.org/examples/?q=controls#misc_controls_fly), [pointer lock](https://threejs.org/examples/?q=controls#misc_controls_pointerlock) and [trackball](https://threejs.org/examples/?q=controls#misc_controls_trackball) change the position of the camera. Others such as [drag](https://threejs.org/examples/?q=controls#misc_controls_drag) and [transform](https://threejs.org/examples/?q=controls#misc_controls_transform) can alter the position of objects. We need to import any controls. We will first use 'orbit' controls that allow the user to navigate the scene with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key) or zooming (with mouse scrolling).
+
+After
+
+```
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+```
+
+add:
+
+```
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+```
+
+Change:
+
+```
+	let container, camera, scene, renderer; //declare the variables
+```
+
+to:
+
+```
+	let container, camera, scene, renderer, controls;
+```
+
+In the init, after:
+
+```
+	container.appendChild( renderer.domElement );
+```
+
+add:
+
+```
+	controls = new OrbitControls( camera, renderer.domElement);
+	controls.target.set( 0, 1.6, 0 );
+	controls.update();
+```
+
+If you save and reload you should be able to move around and zoom in and out.
+
+You could deploy your site using the instructions on GitHub or Vercel. You can investigate the [three.js manual](https://threejs.org/docs/index.html#manual/en/introduction/How-to-create-VR-content) for making the site viewable in virtual reality (VR).
+
+However, as noted previously there are other simpler tools for presenting models, and three.js is the most useful when you want to make the models interactive. To make the model interactive try part 2 of the lesson.  
+
+## References
+
+D’Andrea, A., Conyers, M., Courtney, K.K., Finch, E., Levine, M. Rountrey, A., Kettler, H.S., Webbink, K. 2022. "Copyright and Legal Issues Surrounding 3D Data." In 3D Data Creation to Curation: Community Standards for 3D Data Preservation, eds. Moore, J., Rountrey, A., Kettler, H.S. Chicago: Association of Research and College Libraries (ALA).
+
+Dolbunova, E., Lucquin, A., McLaughlin, T.R., Bondetti, M., Courel, B., Oras, E., Piezonka, H., Robson, H.K., Talbot, H., Adamczak, K., Andreev, K., Asheichyk, V., Charniauski, M., Czekai-Zastawny, A., Ezepenko, I., Grechkina, T., Gunnarssone, A., Gusentsova, T.M., Haskevych, D., Ivanischeva, M., Kabacinski, J., Karmanov, V, Kosorukova, N., Kostyleva, E., Kriiska, A., Kukawka, S., Lozovskaya, O., Mazurkevich, Z., Nedomolkina, N., Piliciauskas, G., Sinitsyna, G., Skorobogatov, A., Smolyaninov, R.V., Surkov, A., Tkachov, O., Tkachova, Ml, Tsybrij, A., Tsybrij, V., Vybornov, A.A., Wawrusiewicz, A., Yudin, A.I., Meadows, J., Heron, C., Craig O.E. 2023. The Transmission of Pottery Technology Among Prehistoric European Hunter-Gatherers. Nature Human Behaviour. 7:171. 
+
+Gaffney, D., Summerhayes, G.R., Ford, A., Scott, J.M., Denham, T., Field, J., Dickinson, W.R. 2015. Earliest Pottery on New Guinea Mainland Reveals Austronesian Influences in Highland Environments 3000 Years Ago. PLoS ONE 10(9):e0134497.
+
+Hardy, K. 2023. The creation of 'Uvira's Pot', a virtual reality puzzle to promote engagement with archaeological research. Conference: Digital Humanities 2023. Collaboration as Opportunity (DH2023) At: Graz, Austria.
+
+Holtorf, C. 2005. From Stonehenge to Las Vegas. Archaeology as popular culture. Walnut Creek: AltaMira Press.
+
+Maschner, H. July 2022 (https://sketchfab.com/blogs/community/cultural-heritage-spotlight-global-digital-heritage/?utm_source=website&utm_campaign=newsfeed)
+
+May, P., Tuckson, M. 2000. The Traditional Pottery of Papua New Guinea. Crawford House Publishing, Adelaide.
+
+O'Brien, M.J., Lyman, R.L., Collard, M., Holdern, C.J., Gray, R.D., Shennan, S.J. 2008. Transmission, Phylogenetics and the Evolution of Cultural Diversity. In: Cultural Transmission and Archaeology: Issues and Case Studies. Society for American Archaeology. Washington.
+
+Oruç, P. 2020 3D Digitisation of Cultural Heritage: Copyright Implications of the Methods, Purposes and Collaboration, 11 JIPITEC 149 para 1.  
+
+Pétrequin, A.-M., Pétrequin, P. 2006. Objets de Pouvoir en Nouvelle Guinée: Approche Ethnoarchéologique d’un Système de Signes Sociaux: Catalogue de la Donation Anne-Marie et Pierre Pétrequin. Réunion des Musées Nationaux, Paris.
+
+Shaw, I., Leclerc, M. 2023. Unearthed: Art in Archaeology and Anthropology. ISBN 978-0-6453425-0-5.
+
+# Part 2
 
 Now we will add some coloured spheres. Three.js has several basic geometries, including spheres, tori (donuts), planes and boxes. You could group many of these together to make a model, and we will use 9 spheres and a plane to make a vessel colour key for how the jars were made.
 
@@ -730,49 +861,7 @@ Note that if you change 'let piecescale = ratio;' to 'let piecescale = ratio*2;'
 
 You can calculate where to set the positions of the jars by taking into account the map dimensions.
 
-### Adding Camera Controls to Move Around
 
-We can add mouse controls to allow us to move around the scene. Some controls, including [orbit](https://threejs.org/examples/?q=controls#misc_controls_orbit), [map](https://threejs.org/examples/?q=controls#misc_controls_map), [fly](https://threejs.org/examples/?q=controls#misc_controls_fly), [pointer lock](https://threejs.org/examples/?q=controls#misc_controls_pointerlock) and [trackball](https://threejs.org/examples/?q=controls#misc_controls_trackball) change the position of the camera. Others such as [drag](https://threejs.org/examples/?q=controls#misc_controls_drag) and [transform](https://threejs.org/examples/?q=controls#misc_controls_transform) can alter the position of objects. We need to import any controls. We will first use 'orbit' controls that allow the user to navigate the scene with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key) or zooming (with mouse scrolling).
-
-After
-
-```
-import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
-```
-
-add:
-
-```
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-```
-
-Change:
-
-```
-	let container, camera, scene, renderer; //declare the variables
-```
-
-to:
-
-```
-	let container, camera, scene, renderer, controls;
-```
-
-In the init, after:
-
-```
-	container.appendChild( renderer.domElement );
-```
-
-add:
-
-```
-	controls = new OrbitControls( camera, renderer.domElement);
-	controls.target.set( 0, 1.6, 0 );
-	controls.update();
-```
-
-If you save and reload you should be able to move around and zoom in and out.
 
 ### Adding Jar Selection
 

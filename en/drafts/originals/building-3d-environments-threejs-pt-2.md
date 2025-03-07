@@ -33,9 +33,9 @@ In addition to the requirements in part 1, you will need to download the [`/mode
 
 Put (or replace) the downloaded models and texture folders in the myscene folder (Figure 11-12). Keep the index.html and main.css files that you created in part 1.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-11.png" alt="Screenshot of the VSC editor showing a list of glb files in the expanded models folder." caption="Figure 11. File structure for part 2 as shown in VSC, with the models folder expanded." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-01.png" alt="Screenshot of the VSC editor showing a list of glb files in the expanded models folder." caption="Figure 1. File structure for part 2 as shown in VSC, with the models folder expanded." %}
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-12.png" alt="Screenshot of the VSC editor showing a list of jpg files in the expanded textures folder." caption="Figure 12. File structure for part 2 as shown in VSC, with the textures folder expanded." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-02.png" alt="Screenshot of the VSC editor showing a list of jpg files in the expanded textures folder." caption="Figure 2. File structure for part 2 as shown in VSC, with the textures folder expanded." %}
 
 In the index.html file from part 1, remove
 
@@ -59,9 +59,9 @@ You might have noticed that the pots in the model of part 1 were different colou
 
 To do this we will add some coloured spheres. Three.js has several basic geometries, including spheres, tori (donuts), planes and boxes. We will use 9 spheres and a plane to make a vessel colour key for how the jars were made.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-13.png" alt="A framework of nodes and edges in the shape of a sphere." caption="Figure 13. Mesh of a sphere with 15 width segments and 5 height segments." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-03.png" alt="A framework of nodes and edges in the shape of a sphere." caption="Figure 3. Mesh of a sphere with 15 width segments and 5 height segments." %}
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-14.png" alt="Sphere with red material." caption="Figure 14. The sphere with a standard material and red colour. A directional light is used." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-04.png" alt="Sphere with red material." caption="Figure 4. The sphere with a standard material and red colour. A directional light is used." %}
 
 A sphere 'geometry' is made with a size (in this case 0.04 m), number of width and height segments. If you increase the number of width or height segments you will get rounder spheres. The geometry is reused for 9 different sphere meshes. Each sphere mesh gets a material with a colour. We are using the standard material. There are alternatives that can be used and it is important to note that some material types are more dependent on lights than others. 
 
@@ -142,7 +142,7 @@ Add:
 
 Save and reload in the browser.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-15.png" alt="Webpage with 9 spheres of different colours in a vertical line." caption="Figure 15. Webpage with nine differently coloured spheres." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-05.png" alt="Webpage with 9 spheres of different colours in a vertical line." caption="Figure 5. Webpage with nine differently coloured spheres." %}
 
 ### Adding the Information Panels and Map
 
@@ -243,21 +243,21 @@ scene.add( theMap);
 
 Save and reload. If the panels are black, the images are probably in the wrong directory. 
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-16.png" alt="Webpage with 3 square panels of text and a horizontal map of Papua." caption="Figure 16. Webpage with three vertical information panels and a horizontal map." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-06.png" alt="Webpage with 3 square panels of text and a horizontal map of Papua." caption="Figure 6. Webpage with three vertical information panels and a horizontal map." %}
 
 ### Adding the Jar Models
 
 As you saw in part 1, the jar models are made of meshes (Figure 17).
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-17.png" alt="Framework of a jar with a sculptured face." caption="Figure 17. Mesh of the Aibom jar." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-07.png" alt="Framework of a jar with a sculptured face." caption="Figure 7. Mesh of the Aibom jar." %}
 
 As with the spheres, the jars will get a standard material with a colour (Figure 18). 
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-18.png" alt="Jar with a sculptured face coloured brown." caption="Figure 18. The Aibom jar with a solid brown colour." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-08.png" alt="Jar with a sculptured face coloured brown." caption="Figure 8. The Aibom jar with a solid brown colour." %}
 
 We will later change the emissive property of the material to show if a jar is selected (Figure 19).
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-19.png" alt="Jar with a sculptured face brightly coloured red." caption="Figure 19. The Aibom jar with red emission." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-09.png" alt="Jar with a sculptured face brightly coloured red." caption="Figure 9. The Aibom jar with red emission." %}
 
 The jars will be added to a group (called 'jars') and the group will be added to the scene. This will allow us to specify later, that objects belonging to the jars group can be selected. 
 
@@ -391,7 +391,7 @@ with
 ```
 Save and reload and you should see 5 models (Figure 20). You will have to move around to see the sixth.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-20.png" alt="Five jar models sit on a map of Papua." caption="Figure 20. Webpage with six jars from Papua, but one is out of camera range." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-10.png" alt="Five jar models sit on a map of Papua." caption="Figure 10. Webpage with six jars from Papua, but one is out of camera range." %}
 
 Note that if you change 'let piecescale = ratio;' to 'let piecescale = ratio*2;' the vessels become bigger, but some will overlap.
 
@@ -462,7 +462,7 @@ add:
 	}	
 ```
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-21.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 21. Webpage showing the Aibom jar selected with its red emission set to true, and the Aibom information panel showing." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-11.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 11. Webpage showing the Aibom jar selected with its red emission set to true, and the Aibom information panel showing." %}
 
 The next sections are optional. You can turn the website into a puzzle game or add extra jars.
 
@@ -537,7 +537,7 @@ add
 ```
 save and check the tori appear on site reload.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-22.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 22. Webpage with the jars sitting on tori." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-12.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 12. Webpage with the jars sitting on tori." %}
 
 in the onClick(event) function change:
 
@@ -670,7 +670,7 @@ with:
 
 Save and reload, you should see the jars starting above the map and if you reload, they will be in different random positions.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-23.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 23. Webpage with the jars at random start positions above the map." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-13.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 13. Webpage with the jars at random start positions above the map." %}
 
 ### Check for Successful Matches
 
@@ -724,11 +724,11 @@ dragControls.addEventListener('dragend', function (event) {
 ```
 You can save and test this. Moving in 3D can be difficult, it is best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place it in the right spot, or vice versa.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-24.png" alt="While 5 jars are randomly above the map, the Aibom jar has been moved close to its torus." caption="Figure 24. Moving jars, such as the Aibom jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-14.png" alt="While 5 jars are randomly above the map, the Aibom jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Aibom jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-25.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Aibom jar has been correctly positioned." caption="Figure 25. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-15.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Aibom jar has been correctly positioned." caption="Figure 15. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-26.png" alt="Normal view of the jars and map, with the Aibom jar in its correct position." caption="Figure 26. The Aibom jar in its correct position." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-16.png" alt="Normal view of the jars and map, with the Aibom jar in its correct position." caption="Figure 16. The Aibom jar in its correct position." %}
 
 This way of placing the jars on the sites can be frustrating for users and the onClick function is actually called at the end of a drag event, thus you can also alter the onClick function to register a correct match if the drag ends with the mouse on the correct site. This alternative means that the match is tested in 2D space instead of in 3D space (as in the first approach), and thus matches are easier, especially for players not experienced with digital 3D environments. If you develop your own games you might want to test different approaches to see what works best. 
 
@@ -814,7 +814,7 @@ Pots were made in many different forms by different communities in Papua New Gui
 | tumleo.glb | Tumleo.jpg | 0.27* ratio, desk + 0.01, -0.12* ratio | paddleColor |
 | waiGeo.glb | Waigeo.jpg |  -0.65* ratio, desk + 0.01, -0.35* ratio | paddleAddColor |
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-27.png" alt="Many jars on a map of Papua." caption="Figure 27. Additional jars can be addded to the scene and puzzle." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-17.png" alt="Many jars on a map of Papua." caption="Figure 17. Additional jars can be addded to the scene and puzzle." %}
 
 ## Conclusion and Next Steps
 This has been an introduction to using three.js and the basic concepts in creating 3D scenes. The official [three.js](https://threejs.org) website shows how much more complex pages can be created, with additions such as animations and sound. The [three.js](https://threejs.org) site also contains example code that could be used for extending the puzzle created here, for example adding sound effects for correct matches. Many sites, especially those with large models, feature loading bars, that give feedback to the user while the models load. Another possible extension is to enable the scene to be viewed and manipulated in VR. The three.js site also contains links to places to ask the community for help, and links guides including [three.js Fundamentals](https://threejs.org/manual/#en/fundamentals). 

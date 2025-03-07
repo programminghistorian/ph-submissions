@@ -29,7 +29,7 @@ In part 1 of this lesson we used three.js to create a website featuring a camera
 
 ## Setting Up
 
-In addition to the requirements in part 1, you will need to download the [`/models` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/models) containing the individual jar models, and the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/textures) with information about them, from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs). If you are running the node.js server, stop it with Ctrl + C.
+In addition to the requirements in part 1, you will need to download the [`/models` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/models) containing the individual jar models, and the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/textures) with information about them, from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2). If you are running the node.js server, stop it with Ctrl + C.
 
 Put (or replace) the downloaded models and texture folders in the myscene folder (Figure 11-12). Keep the index.html and main.css files that you created in part 1.
 

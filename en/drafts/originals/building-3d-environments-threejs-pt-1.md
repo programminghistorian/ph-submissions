@@ -64,30 +64,30 @@ All models are made from meshes of nodes (points) joined with edges to give face
 Models made using many photographs and photogrammetry software, including those from phone aps such as [Polycam](https://poly.cam), will typically have image textures and be realistic. Models made using Computer Aided Design (CAD) software such as [Blender](https://www.blender.org) may be symbolic or made more realistic with the addition of image textures or complex materials. There are many different model formats, and some will only store the mesh. The GL Transmission Format (glTF) or GL Transmission Format Binary (glb) file format can store meshes, textures, materials, animations and other properties. glTF/glb files can also be compressed further with DRACO compression, Blender will export DRACO compressed glTF/glb files. There are some memory penalties in loading DRACO compressed files.
 glTF/glb can also store several models in a file. If you are creating a composite model scene for a website, you can choose to position, scale and colour/texture your models in software such as Blender, or the threejs editor and export as one glb file, such as the png_sceneDRACO.glb file we will use in part 1. Alternatively you can import the models individually and arrange and alter them via the website code, such as we will do in part 2. There is also the option of separating out the individual models from the composite model in the code, but that will not be used in this lesson.
 
-Download the composite model png_sceneDRACO.glb from the [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-2). Open the [three.js editor](https://threejs.org/editor/) in a new browser window (right click on the link) and import the model with File > Import (Figure 1). 
+Download the composite model png_sceneDRACO.glb from the [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2). Open the [three.js editor](https://threejs.org/editor/) in a new browser window (right click on the link) and import the model with File > Import (Figure 1). 
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-01.png" alt="Web editor showing a dark rectangular prism with small jars on it." caption="Figure 1. The threejs editor with the composite model imported." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-01.png" alt="Web editor showing a dark rectangular prism with small jars on it." caption="Figure 1. The threejs editor with the composite model imported." %}
 
 Change the view from SOLID to WIREFRAME using the selection box at the top right of the model view window and zoom in and move around with your mouse. You can also expand the model in the scene window and if you double click on a jar name (try the aibom_LOC) it should centre it. You should be able to see that the jars are made of polygons (Figure 2). The less nodes or faces in the mesh the smaller the model size. Large model files will not load or will be slow to respond in websites. Reducing the nodes or faces in a model, or retopology can be done in programs such as Blender. In Blender this is relatively easy, if the model is imported in STL format and if the model does not have an image texture. The individual jar models (used in part 2) were primarily designed in Blender and reduced to under 700KB. 
 
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-02.png" alt="Web editor showing the wireframes of jar meshes." caption="Figure 2. The threejs editor in wireframe view zoomed in on a jar mesh." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-02.png" alt="Web editor showing the wireframes of jar meshes." caption="Figure 2. The threejs editor in wireframe view zoomed in on a jar mesh." %}
 
 You may have models that you have made from photogrammetry, or downloaded from sites such as [SketchFab](https://sketchfab.com/), that have image textures, these are easier to retopolise in commercial software such as Agisoft’s Metashape, but it is possible to use Blender or the free photogrammetry software [Meshroom](https://meshroom-manual.readthedocs.io/en/latest/index.html). You can test your models by importing them into the threejs editor or (if they are gltf files, [this gltf viewer](https://gltf-viewer.donmccurdy.com)).
 
 When inspecting models, you may need to add lights as some materials do not work without them. Change WIREFRAME back to SOLID. In the editor add a hemisphere light from the add > light > hemisphere menu. If you select the hemisphere light in the scene window you can change the colour to white and the ground colour to black (Figure 3). You can use the editor to test different lights and light options.
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-03.png" alt="Web editor showing jar models in different colours." caption="Figure 3. The jars under a hemisphere light." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-03.png" alt="Web editor showing jar models in different colours." caption="Figure 3. The jars under a hemisphere light." %}
 
 If you zoom out you can see the map. The jars are coloured because they have materials but the map was made of a plane with an added image texture (Figure 4).
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-04.png" alt="Web editor showing that the rectangle the jars are on has a map of Papua New Guinea." caption="Figure 4. The Papua New Guinea map and its image texture (called a map in the Materials tab)." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-04.png" alt="Web editor showing that the rectangle the jars are on has a map of Papua New Guinea." caption="Figure 4. The Papua New Guinea map and its image texture (called a map in the Materials tab)." %}
 
 While in the editor it is useful to look at the red, green and blue arrows in the centre of the scene, which illustrate the co-ordinate system. In three.js, positions are set in x, y and z order. Different graphics programs and game engines use different co-ordinate systems. In three.js x is left (-) and right (+), y is down (-) and up (+) and z is far (-) and near (+) (Figure 5), i.e. it is a Y up, right-handed system. If you select a jar and look in the Object tab, you will see the x and z positions they were placed at (Figure 6), and you can change them and see the jar move. You can also change the scale or rotation of a jar and test what happens.
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-05.png" alt="Web editor with three arrows, coloured red, green and blue, showing the x, y and z axis." caption="Figure 5. The threejs co-ordinate system. Red arrow shows positive x direction, green arrow shows positive y direction, blue arrow shows positive z direction." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-05.png" alt="Web editor with three arrows, coloured red, green and blue, showing the x, y and z axis." caption="Figure 5. The threejs co-ordinate system. Red arrow shows positive x direction, green arrow shows positive y direction, blue arrow shows positive z direction." %}
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-06.png" alt="Web editor showing a round jar, with its x, y and z positions visible in the geometry window." caption="Figure 6. The position of the Manus jar." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-06.png" alt="Web editor showing a round jar, with its x, y and z positions visible in the geometry window." caption="Figure 6. The position of the Manus jar." %}
 
 ## The Models Used in this Project
 
@@ -281,7 +281,7 @@ a, button, input, select {
 
 This file came from the examples folder at three.js, it is a cascading style sheet file. Save the main.css file and then you can close it. 
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-07.png" alt="A screenshot of the VSC editor with the director structure of the myscene folder." caption="Figure 7. The directory structure can be seen in the left hand panel of the VSC editor. The index file contents are shown in the main panel. They are colour coded. A VSC terminal is open and shown in the bottom panel." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-07.png" alt="A screenshot of the VSC editor with the director structure of the myscene folder." caption="Figure 7. The directory structure can be seen in the left hand panel of the VSC editor. The index file contents are shown in the main panel. They are colour coded. A VSC terminal is open and shown in the bottom panel." %}
 
 If you want to understand the basic components of a website [w3schools](https://www.w3schools.com/howto/howto_make_a_website.asp) has a guide, as well as tutorials on html, css and JavaScript.
 
@@ -293,7 +293,7 @@ npx serve
 
 this will serve your site, normally to port 3000, but check the message to see what local address is being used. Open a web browser and go to that address (ie http://localhost:3000) and if all is working you will see a black page with 'three.js The Jars of Papua'. 
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-08.png" alt="Black page with small title (three.js The Jars of Papua), top centre." caption="Figure 8. Webpage with black background and small title." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-08.png" alt="Black page with small title (three.js The Jars of Papua), top centre." caption="Figure 8. Webpage with black background and small title." %}
 
 **To stop the server use Ctrl + C in the terminal. You can restart with 'npx serve', or use the keyboard up arrow to find previous terminal commands.** You may need to reload the page in the browser to apply any code changes. 
 
@@ -358,7 +358,7 @@ add:
 
 Reload the page after saving the index.html file and check that you have changed the background colour.
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-09.png" alt="Basic webpage with peach background." caption="Figure 9. Webpage with peach background." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-09.png" alt="Basic webpage with peach background." caption="Figure 9. Webpage with peach background." %}
 
 Next we need to add lights and the model.
 
@@ -433,7 +433,7 @@ add:
 ```
 Save and reload and you should see a model, but you will not be able to move around it yet.
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-10.png" alt="Several jar models sitting on a map of Papua." caption="Figure 10. The model of jars on a map of Papua." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-10.png" alt="Several jar models sitting on a map of Papua." caption="Figure 10. The model of jars on a map of Papua." %}
 
 ### Adding Camera Controls to Move Around
 

@@ -397,10 +397,8 @@ Let's use the sister city data as an example. When you create a plot, scales wor
 In ggplot2, scales follow a naming convention consisting of three parts separated by underscores:
 
 1. The prefix `scale`.
-2. The type of aesthetic being modified (color, shape, x, y, etc.).
+2. The name of the scale being modified. As we saw earlier, aesthetics define the visual properties of the plot that are mapped to data. Scales, on the other hand, control how those aesthetic mappings are translated into specific visual representations. This includes how data values are mapped to colors or shapes, and even their position on the x and y axes.
 3. The type of scale being applied (continuous, discrete, brewer).
-
-For example, `scale_color_continuous()` controls the color aesthetic using a continuous scale, while `scale_shape_discrete()` modifies the shape aesthetic using a discrete scale. 
 
 Before you start adding scales, it will be helpful to store your previous plot in a variable `p1`: this is a convenient way to create different versions of the same plot in order to vary only certain aspects.
 
@@ -444,7 +442,8 @@ p1 + scale_colour_brewer(palette = "Dark2") # you can try others such as "Set1",
 
 {% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-12.png" alt="Scatter plot that uses scale_colour_brewer() to change the colors of the scatterplot points." caption="Figure 12. Using scale_colour_brewer() to change the colors of the scatter plot's points." %}
 
-Now, let's look at a slightly different example. In the scatter plot above, you learned how to represent a qualitative (or categorical) variable (`typecountry`) using three different colors. What if you wanted to represent a [continuous variable](https://en.wikipedia.org/wiki/Continuous_or_discrete_variable#Continuous_variable) instead, such as the distance between cities? Here is what would happen if you told ggplot2 to represent distance by simply using varying intensities of the color 'red':
+In the scatter plot above, you learned how to represent a qualitative (or categorical) variable (`typecountry`) using three different colors. In the next scatter plot, let's try to represent a [continuous variable](https://en.wikipedia.org/wiki/Continuous_or_discrete_variable#Continuous_variable) instead – for example, the distance between origin and destination cities, which we can show using varying intensities of color. You might try to simply map this color to the distance `log(dist)`, which is the continuous variable in this case:
+
 
 ```
 
@@ -472,15 +471,13 @@ p2
 
 {% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-13.png" alt="Scatter plot showing population size of origin and destination city colored by distance between cities." caption="Figure 13. Population size of origin and destination city colored by distance between cities." %}
 
-Immediately, you'll notice that this graph has two major problems:
+Immediately, you'll notice that this code hasn't produced the most intuitive visualization:
 
-1. It is colored in blue, not red.
+1. By default, ggplot2 uses a blue color gradient for continuous variables when no specific color is specified.
 
-2. The scale is counterintuitive, because shorter distances are represented by a darker blue, not lighter.
+2. The default scale is also counterintuitive, because shorter distances are represented by a darker blue, not lighter (which we would expect).
 
-In the example shown in Figure 11, we used a discrete color scale ([`scale_color_manual()`](http://ggplot2.tidyverse.org/reference/scale_manual.html)) to assign distinct colors to each category of a qualitative variable. This approach works well in such instances, as it allows us to clearly distinguish between separate groups, highlighting their differences or similarities. 
-
-In this example, however, a gradient color scale is more suitable to represent our continuous variable. Gradient – or 'continuous' – color scales assign colors to values based on a smooth transition between hues or shades. This allows for a more accurate representation of the continuous variable, as the gradual color change corresponds to the change in the variable's value. Using a gradient scale, we can visualize the distribution of values and identify patterns or trends in the data.
+In this example, again, using a scale will provide the tools to correct these defaults and create visualizations that more accurately and effectively communicate the underlying data. To represent a continuous variable, gradient – or 'continuous' – color scales assign colors to values based on a smooth transition between hues or shades. This allows for an accurate representation of the continuous variable, as the gradual color change corresponds to the change in the variable's value. Using a gradient scale, we can visualize the distribution of values and identify patterns or trends in the data.
 
 There are [several methods for creating gradient scales in ggplot2](http://ggplot2.tidyverse.org/reference/scale_gradient.html). For our purpose, we will use the `scale_colour_gradient()` function. This allows you to assign specific colors to the minimum and maximum values of the continuous variable. ggplot2 then automatically interpolates the colors for the intermediate values based on the chosen gradient.
 

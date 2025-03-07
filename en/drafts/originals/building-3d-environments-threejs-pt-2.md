@@ -1,5 +1,5 @@
 ---
-title: "Building Interactive Environments for 3D Models with three.js (Part 2 - Games)"
+title: "Building Interactive Environments for 3D Models with three.js (Part 2)"
 slug: building-3d-environments-threejs-pt-2
 layout: lesson
 collection: lessons

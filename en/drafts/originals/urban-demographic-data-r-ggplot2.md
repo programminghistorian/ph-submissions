@@ -537,7 +537,7 @@ The tilde (`~`) operator is commonly used in R formulas. Here, it indicates whic
 
 ### Themes: Changing Static Elements
 
-Since the appearance of a graph is crucial for effectively communicating different insights, ggplot2 provides themes to help customize your visualizations further. These themes emphasize different aspects of the data, whether you're focusing on spatial relationships between cities, or demographic patterns across regions, for example.
+Since the appearance of a graph is crucial for effectively communicating different insights, ggplot2 provides themes to help customize your visualizations further. These themes control the non-data elements of the plot, such as the background color, axis labels, and font styles.
 
 Setting a theme is very simple: just apply it as a new layer using the `+` operator. Here's a classic dark-on-light theme:
 

@@ -195,7 +195,7 @@ periodSemDesc$escola2<-factor(periodSemDesc$escola2)
 barplot(table(periodSemDesc$escola2))
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-05.png" alt="Gráfico de barras com as escolas literárias em inglês, com cinco classes. Romantism é a mais frequente" caption="Figura 5. Gráfico de barras com as escolas literárias em inglês." %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-05.png" alt="Gráfico de barras com as escolas literárias em inglês, com cinco classes. Romantism é a mais frequente" caption="Figura 5. Gráfico de barras com as escolas literárias (em inglês)." %}
 
 Criamos uma nova folha de registo, chamada `periodSemDesc`, a partir da folha de registo original. Esta contém apenas os casos em que se conhece a escola literária. A indicação `escola2!="desc"` significa que o valor da coluna `escola2` deve ser diferente de `desc`. Se, pelo contrário, quiséssemos um valor igual, usaríamos o sinal `==` em vez de `!=`.
 
@@ -206,49 +206,49 @@ barplot(table(periodizacao[periodizacao$escola2!="desc",]$escola2))
 ```
 o gráfico de barras apresentaria uma barra nula para `desc`, como vemos na figura 6:
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-06.png" alt="Gráfico de barras com as escolas literárias em inglês, com cinco classes, sem termos removido o valor desc do fator escola" caption="Figura 6. Gráfico de barras com as escolas literárias em inglês, sem termos removido o valor desc do fator escola." %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-06.png" alt="Gráfico de barras com as escolas literárias em inglês, com cinco classes, sem termos removido o valor desc do fator escola" caption="Figura 6. Gráfico de barras com as escolas literárias (em inglês), sem termos removido o valor desc do fator escola." %}
 
 
 A indicação `periodizacao[periodizacao$escola2!="desc",]` significa todas as linhas da folha de registo `periodizacao` cuja coluna `escola2` não tenha o valor `desc` e todas as colunas. (Uma folha de registo tem sempre linhas e colunas e podemos selecioná-las de forma independente. Quando não colocamos nada, como depois da vírgula, significa que selecionamos todas.)
 
 ## Gráficos de caixa
 
-Os gráficos de caixa representam um conjunto de números, mostrando a sua mediana, e a forma como estão distribuídos. A caixa propriamente dita representa 50% dos dados: a linha abaixo representa o valor dos 25% e a de cima o de 75%, chamados primeiro quartil e terceiro quartil. A diferença entre Q3 e Q1 chama-se a diferença entre quartis (*interquartile range* em inglês, geralmente abreviado por IQR). Os traços horizontais, também chamados bigodes (*whiskers*) são calculados da seguinte maneira:
+Os gráficos de caixa representam um conjunto de números, mostrando a sua mediana e a forma como estão distribuídos. A caixa propriamente dita representa 50% dos dados: a linha de baixo representa o valor dos 25% e a de cima o dos 75%, designados por primeiro quartil e terceiro quartil. A diferença entre Q3 e Q1 designa-se diferença entre quartis (*interquartile range*, em inglês, geralmente abreviado por IQR). Os traços horizontais, também chamados de bigodes (*whiskers*, em inglês), são calculados da seguinte forma:
 
-* Bigode inferior: é o máximo de valor mínimo e de Q1-1.5*IQR
-* Bigode superior: é o mínimo do valor máximo e de Q3+1.5*IQR
+* Bigode inferior: é o máximo de valor mínimo e de Q1-1.5*IQR.
+* Bigode superior: é o mínimo do valor máximo e de Q3+1.5*IQR.
 
-Quando há casos fora desses limites descritos pelos bigodes, chamados valores discrepantes (*outliers*, em inglês), são marcados como pontos discretos.
+Quando há casos fora dos limites descritos pelos bigodes, chamados-lhes valores discrepantes (*outliers*, em inglês). Estes são marcados como pontos discretos.
 
-Veja-se esta figura, retirada do tutorial de Yi[^3] [A complete guide to boxplots](https://www.atlassian.com/data/charts/box-plot-complete-guide):
+Veja-se esta figura, retirada do tutorial de Yi, [A complete guide to boxplots](https://www.atlassian.com/data/charts/box-plot-complete-guide)[^3]:
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-07.png" alt="Explicação de um gráfico de caixa, com um diagrama de todos os pontos e um gráfico de caixa. e dois valores discrepantes" caption="Figura 7. Explicação de um gráfico de caixa, retirada de Yi." %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-07.png" alt="Explicação de um gráfico de caixa, com um diagrama de todos os pontos, um gráfico de caixa e dois valores discrepantes" caption="Figura 7. Explicação de um gráfico de caixa, retirada de Yi." %}
 
-Os gráficos de caixa são sobretudo úteis para comparar vários conjuntos de dados. Vejamos, no nosso caso, a diferença de uso de cor por escola literária:
+Os gráficos de caixa são úteis, sobretudo, para comparar vários conjuntos de dados. Vejamos, no nosso caso, a diferença no uso de cor por escola literária:
 
 ```
 boxplot(periodizacao$cor~periodizacao$escola2)
 ```
 
-O til (~) é como se designa por em R, e espera que a indicação à direita seja um fator. À esquerda teremos valores numéricos para fazer os variados gráficos de caixa, um por cada valor do fator.
+O til (~) é como se designa "por" em R e espera que a indicação à direita seja um fator. À esquerda, teremos valores numéricos para fazer os variados gráficos de caixa, um por cada valor do fator.
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-08.png" alt="Gráfico de caixa da presença de palavras de cor por escola literária em inglês, mostrando seis gráficos de caixa, um por cada escola literária" caption="Figura 8. Gráfico de caixa da presença de palavras de cor por escola literária em inglês" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-08.png" alt="Gráfico de caixa da presença de palavras de cor por escola literária em inglês, mostrando seis gráficos de caixa, um por cada escola literária" caption="Figura 8. Gráfico de caixa da presença de palavras de cor por escola literária (em inglês)." %}
 
-Vemos pelo resultado que é o naturalismo que tem mais cor, e que o romantismo parece ter menos palavras de cor que o realismo. Não nos interessa aqui prosseguir nenhuma análise literária, mas apenas ilustrar o uso dos gráficos de caixa e a sua interpretação.
+Através do resultado, observamos que o naturalismo tem mais cor. Já o romantismo parece ter menos palavras de cor do que o realismo. Não nos interessa, aqui, seguir uma análise literária, mas apenas ilustrar o uso dos gráficos de caixa e a sua interpretação.
 
-De facto, para poder comparar como deve ser um grande conjunto de obras de tamanho variável, deveríamos ter calculado a percentagem de palavras de cor e não o número de palavras de cor.
+De facto, para poder comparar devidamente um grande conjunto de obras de tamanho variável, deveríamos ter calculado a percentagem de palavras de cor e não o número de palavras de cor.
 
 ```
 boxplot(periodizacao$cor/periodizacao$tamanho~periodizacao$escola2)
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-09.png" alt="Gráfico de caixa da presença relativa de palavras de cor por escola literária em inglês, mostrando seis gráficos de caixa, um por cada escola literária" caption="Figura 9. Gráfico de caixa da presença relativa de palavras de cor por escola literária em inglês" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-09.png" alt="Gráfico de caixa da presença relativa de palavras de cor por escola literária em inglês, mostrando seis gráficos de caixa, um por cada escola literária" caption="Figura 9. Gráfico de caixa da presença relativa de palavras de cor por escola literária (em inglês)." %}
 
 ## Mais operações sobre folhas de registo
 
 ### Obter subconjuntos
 
-Vejamos agora mais potencialidades do uso e criação de folhas de registo, através da função ```subset()```, que permite escolher um subconjunto de colunas e de linhas e criar uma nova folha de registo, à qual aplicaremos mais visualizações:
+Vejamos, agora, mais potencialidades do uso e criação de folhas de registo, através da função ```subset()```, que permite escolher um subconjunto de colunas e de linhas e criar uma nova folha de registo, à qual aplicaremos mais visualizações:
 
 ```
 algunsAutores<-subset(periodizacao,(autor=="JulDin" | autor=="EcaQue" | autor=="MacAss"|autor=="CoeNet") & genero=="Prosa:romance",c(1:147))
@@ -266,10 +266,10 @@ Podemos ver quantas obras temos por autor:
 barplot(table(algunsAutores$autor))
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-10.png" alt="Gráfico de barras do número de obras por autor, mostrando que o autor com mais obras é Eça de Queirós, com 15" caption="Figura 10. Gráfico de barras do número de obras por autor" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-10.png" alt="Gráfico de barras com o número de obras por autor, mostrando que o autor com mais obras é Eça de Queirós, com 15" caption="Figura 10. Gráfico de barras com o número de obras por autor." %}
 
 
-Mas o mais interessante será comparar estes quatro autores, por exemplo na frequência relativa de emoções, no uso de nomes próprios, ou na frequência de orações no conjuntivo/subjuntivo:
+Mas, o mais interessante será comparar estes quatro autores, por exemplo, analisando a frequência relativa de emoções, no uso de nomes próprios ou na frequência de orações no conjuntivo/subjuntivo:
 
 ```
 boxplot(algunsAutores$emocoes/algunsAutores$tamanho~algunsAutores$autor,xlab="",ylab="", main="Frequência relativa de uso de palavras de emoção em romances por autor")
@@ -277,36 +277,36 @@ boxplot(algunsAutores$proprios/algunsAutores$tamanho~algunsAutores$autor,xlab=""
 boxplot(algunsAutores$conjuntivo/algunsAutores$oracoes~algunsAutores$autor,xlab="",ylab="", main="Frequência de orações no conjuntivo em romances por autor")
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-11.png" alt="Gráfico de caixa da presença relativa de palavras de emoção por escola literária em inglês, em que Júlio Dinis domina" caption="Figura 11. Gráfico de caixa da presença relativa de palavras de emoção por escola literária em inglês" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-11.png" alt="Gráfico de caixa da presença relativa de palavras de emoção por escola literária em inglês, em que Júlio Dinis domina" caption="Figura 11. Gráfico de caixa da presença relativa de palavras de emoção por escola literária (em inglês)." %}
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-12.png" alt="Gráfico de caixa da presença relativa de nomes próprios por escola literária em inglês, em que Eça de Queirós é o autor que mais os usa" caption="Figura 12. Gráfico de caixa da presença relativa de nomes próprios por escola literária em inglês" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-12.png" alt="Gráfico de caixa da presença relativa de nomes próprios por escola literária em inglês, em que Eça de Queirós é o autor que mais os usa" caption="Figura 12. Gráfico de caixa da presença relativa de nomes próprios por escola literária (em inglês)." %}
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-13.png" alt="Gráfico de caixa da presença relativa de orações no conjuntivo por escola literária em inglês, liderada por Júlio Dinis" caption="Figura 13. Gráfico de caixa da presença relativa de orações no conjuntivo por escola literária em inglês" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-13.png" alt="Gráfico de caixa da presença relativa de orações no conjuntivo por escola literária em inglês, liderada por Júlio Dinis" caption="Figura 13. Gráfico de caixa da presença relativa de orações no conjuntivo por escola literária (em inglês)." %}
 
 ### Juntar mais do que uma folha de registo numa só
 
-Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo, e da forma como a informação pode ser bem distribuída em folhas de registo diferentes, vamos criar uma nova folha de registo que contenha toda a informação contida em duas folhas de registo que já usámos: a `algunsAutores` e a `escritores`. A ideia é obter para cada obra, além do nome do autor, nova informação que temos sobre o autor, basicamente a variante, o tempo de vida e o sexo. Para isso usamos o comando `merge()`. 
+Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo e da forma como a informação pode ser bem distribuída em folhas de registo diferentes, vamos criar uma nova folha de registo que contenha toda a informação contida em duas folhas de registo que já usámos: `algunsAutores` e `escritores`. Para cada obra queremos obter, para além do nome do autor, informação nova que temos sobre ele, nomeadamente, a variante, o tempo de vida e o sexo. Para isso usamos o comando `merge()`. 
 
 ```
 maisInfo<-merge(algunsAutores,escritores,by.x=c("autor", "sexo"),by.y=c("id","sexo"))
 ```
-Esse comando é muito importante -- correspondente ao "join" das bases de dados -- porque permite estruturar o conhecimento em ficheiros  -- tabelas -- diferentes, mas juntá-lo quando queremos usar toda a informação. Na figura 14 vemos as primeira linhas da folha de registo `maisInfo`.
+Este comando é muito importante -- correspondente ao "join" das bases de dados -- porque permite estruturar o conhecimento em ficheiros  -- tabelas -- diferentes, mas juntá-lo quando queremos usar toda a informação. Na figura 14 vemos as primeira linhas da folha de registo `maisInfo`.
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-14.png" alt="As primeiras linhas da folha de registo MaisInfo, demonstrando que têm mais colunas que as duas folhas que foram amalgamadas" caption="Figura 14. O que o R mostra se pedirmos as primeiras linhas da folha de registo MaisInfo" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-14.png" alt="As primeiras linhas da folha de registo MaisInfo, demonstrando que têm mais colunas que as duas folhas que foram amalgamadas" caption="Figura 14. O que o R mostra se pedirmos as primeiras linhas da folha de registo MaisInfo." %}
 
-O uso deste comando permite-nos, por exemplo, fazer um diagrama de caixa pela variedade do português, e não pelos autores. Escolhi observar o uso das vírgulas na Figura 15.
+O uso deste comando permite-nos, por exemplo, fazer um diagrama de caixa pela variedade do português e não pelos autores. Na Figura 15 observamos o uso das vírgulas.
 
 ```
 boxplot(maisInfo$virg/maisInfo$tamanho~maisInfo$nacionalidade,xlab="",ylab="", main="Frequência relativa de uso de vírgulas em romances por variante")
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-15.png" alt="Gráfico de caixa da presença relativa de vírgulas por variante, em que os autores brasileiros as usam muito mais frequentemente" caption="Figura 15. Gráfico de caixa da presença relativa de vírgulas por variante" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-15.png" alt="Gráfico de caixa da presença relativa de vírgulas por variante, em que os autores brasileiros as usam muito mais frequentemente" caption="Figura 15. Gráfico de caixa da presença relativa de vírgulas por variante." %}
 
 ### Guardar folhas de registo
 
-Finalmente, assim como é possível ler folhas de registo de fora do R, também é possível guardá-las fora do R, para serem usadas por outros programas, ou para quando voltarmos ao R. Para isso o comando mais usual é o `write.table()`.
+Finalmente, assim como é possível ler folhas de registo de fora do R, também é possível guardá-las fora do R, para serem usadas por outros programas ou quando voltarmos a este software. Para isso o comando mais usual é o `write.table()`.
 
-Vamos guardar a folha de registo `maisInfo` num ficheiro chamado `obras4autoresComInfoAutor.txt` (mais propriamente, deveria ser chamado `.tsv`, visto que o separador vai ser um tabulador (indicado por `sep="\t"`, mas a extensão `.txt` permite ler diretamente num navegador (*browser*).)
+Vamos guardar a folha de registo `maisInfo` num ficheiro chamado `obras4autoresComInfoAutor.txt` (mais propriamente, deveria ser chamado `.tsv`, visto que o separador vai ser um tabulador (indicado por `sep="\t"`, mas a extensão `.txt` permite ler diretamente num navegador (*browser*, em inglês)).
 
 ```
 write.table(maisInfo,"obras4autoresComInfoAutor.txt", sep="\t", quote=FALSE)
@@ -316,38 +316,38 @@ write.table(maisInfo,"obras4autoresComInfoAutor.txt", sep="\t", quote=FALSE)
 
 ## Valores que faltam
 
-Uma questão real de observações empíricas é que pode haver valores a que não temos acesso. E folhas de registo com grandes quantidades de dados invariavelmente sofrem desse problema.
+Uma questão real de observações empíricas é que pode haver valores a que não temos acesso. As folhas de registo com grandes quantidades de dados invariavelmente sofrem desse problema.
 
-Por outro lado, pode haver razões para não haver dados em algumas colunas mesmo em questões triviais: no exemplo que temos vindo a esmiuçar, como preencher a data da morte de um autor ainda vivo?
+Por outro lado, pode haver razões para não haver dados em algumas colunas, mesmo em questões triviais: no exemplo que temos vindo a desenvolver, como preencher a data da morte de um autor ainda vivo?
 
-O R tem o conceito de valor `NA` (*not available*, inexistente), e praticamente todas as funções do R têm um comportamento apropriado para esses valores. Além disso, é possível testar e identificar os casos que faltam, através das funções `is.na()` ou `na.exclude()`.
+O R tem o conceito de valor `NA` (*not available*, em inglês, significando inexistente). Praticamente todas as funções do R têm um comportamento apropriado para esses valores. Além disso, é possível testar e identificar os casos que faltam, através das funções `is.na()` ou `na.exclude()`.
 
-No caso dos diagramas apresentados na presente lição, simplesmente esses casos são excluídos da visualização, como podemos ver adicionando um autor ainda vivo e pedindo um diagrama de caixa do tempo de vida:
+No caso dos diagramas apresentados na presente lição, apenas esses casos são excluídos da visualização, como podemos verificar adicionando um autor ainda vivo e pedindo um diagrama de caixa do tempo de vida:
 
 ```
 escritores<-rbind(escritores, data.frame(id="Pepet",nome="Pepetela",nascimento=1941,morte=NA,nacionalidade="AN",tempoVida=NA,sexo="masc"))
 boxplot(escritores$tempoVida~escritores$nacionalidade)
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-16.png" alt="Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade, em que só aparece um escritor angolano apesar de termos dois na folha de registo" caption="Figura 16. Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-16.png" alt="Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade, em que só aparece um escritor angolano apesar de termos dois na folha de registo" caption="Figura 16. Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade." %}
 
-Como só existe um autor angolano com tempo de vida diferente de NA, Agostinho Neto, apenas um ponto -- visualizado como uma linha -- é mostrado no gráfico de caixa.[^4]
+Como só existe um autor angolano com tempo de vida diferente de NA, nomeadamente, Agostinho Neto, apenas um ponto -- visualizado como uma linha -- é mostrado no gráfico de caixa.[^4]
 
 ## Observações finais
 
-Nesta lição tentei explicar o conceito e as funcionalidades de uma folha de registo, e algumas formas simples de visualizar o seu conteúdo, usando gráficos de barras e gráficos de caixa.
+Nesta lição explicámos o conceito e as funcionalidades de uma folha de registo e algumas formas simples de visualizar o seu conteúdo, usando gráficos de barras e gráficos de caixa.
 
-Agora pode seguir para lições mais complicadas como [Investigar a literatura lusófona através dos tempos usando a Literateca](), em que as folhas de registo vêm do projeto AC/DC.
+Agora, pode seguir para lições mais complicadas como [Investigar a literatura lusófona através dos tempos usando a Literateca](), em que as folhas de registo vêm do projeto AC/DC.
 
 ## Notas de fim
 
-[^1]: Santos, Diana, Emanoel Pires, João Marques Lopes, Rebeca Schumacher Fuão & Cláudia Freitas. "Periodização automática: Estudos linguístico-estatísticos de literatura lusófona". *Linguamática* 12 (1), 2020, pp. 80-95.
+[^1]: Santos, D., Pires, E., Lopes, J. M., Fuão, R. and Freitas, C.. "Periodização automática: Estudos linguístico-estatísticos de literatura lusófona" In *Linguamática*, vol. 12, nº 1 (2020): 80-95.
 
-[^2]: Em alguns navegadores esse comando pode produzir o seguinte erro: `Error in file(file, "rt") : cannot open the connection to ’https://www.linguateca.pt/...'` Nesse caso, leia o ficheiro para o seu próprio computador fora do R, e faça apenas `read.table("dadosPeriodLit.tsv", header=TRUE)`
+[^2]: Em alguns navegadores este comando pode produzir o seguinte erro: `Error in file(file, "rt") : cannot open the connection to ’https://www.linguateca.pt/...'` Nesse caso, leia o ficheiro no seu próprio computador fora do R e execute apenas `read.table("dadosPeriodLit.tsv", header=TRUE)`
 
-[^3]: Yi, Mike. A complete guide to box plots. <https://www.atlassian.com/data/charts/box-plot-complete-guide>. Último acesso: 3 de maio de 2024
+[^3]: Yi, Mike. *A complete guide to box plots*<https://www.atlassian.com/data/charts/box-plot-complete-guide>. Último acesso: 3 de maio de 2024
 
-[^4]: O comportamento pode variar em versões diferentes do R. Se obtiverem uma mensagem de erro do `boxplot`, executem os seguintes comandos, que retiram explicitamente os NA, transformam em inteiros as idades, antes de invocar o comando `boxplot`.
+[^4]: O comportamento pode variar em versões diferentes do R. Se obtiver uma mensagem de erro do `boxplot`, antes de o invocar, execute os comandos seguintes, que retiram explicitamente os NA e transformam em inteiros as idades:
 
       <code>
       novoEscritores<-na.omit(escritores)

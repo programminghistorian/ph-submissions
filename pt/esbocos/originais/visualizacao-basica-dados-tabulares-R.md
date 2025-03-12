@@ -28,11 +28,11 @@ Nesta lição consideramos que o leitor já possui algum conhecimento da linguag
 
 ## Objetivos da lição
 
-Esta lição pretende apresentar a forma como dados tabulares podem ser visualizados em R, explicando o conceito de folha de registo (*dataframe*) e os tipos de visualização que podem ser obtidos a partir dela.
+Esta lição pretende apresentar a forma como dados tabulares podem ser visualizados em R, explicando o conceito de folha de registo (*dataframe*, em inglês) e os tipos de visualização que podem ser obtidos a partir dela.
 
 ## Folha de registo
 
-Quem não teve, ao longo da sua vida, de preencher uma folha de registo numa aula ou para entrar num edifício, com informação com o seu nome, telefone, correio eletrónico e, por  vezes, com a assinatura, e/ou outras informações (data de entrada, hora de entrada, hora de saída, etc.)?
+Quem não teve, ao longo da sua vida, de preencher uma folha de registo numa aula ou para entrar num edifício, com informação como o seu nome, telefone, correio eletrónico e, por  vezes, com a assinatura, e/ou outras informações (data de entrada, hora de entrada, hora de saída, etc.)?
 
 Se generalizarmos este conceito, verificamos que, para cada ocorrência (neste caso, para cada pessoa que entra no edifício), preenche-se um conjunto de dados de vários tipos, onde cada coluna tem o mesmo tipo de informação (nome, número de telefone, data, etc.).
 
@@ -50,7 +50,7 @@ Para efeitos pedagógicos, vamos criar algumas folhas de registo de raiz, mas de
 escritores <- data.frame(id=c("JulDin","CamCBra","MacAss","CoeNet"), nome=c("Júlio Dinis", "Camilo Castelo Branco","Machado de Assis","Coelho Neto"),nascimento=c(1839,1825,1839,1864), morte=c(1871,1890,1908,1934),nacionalidade=c("PT","PT","BR","BR"))
 ```
 
-O comando `data.frame()` cria uma folha de registo. Por sua vez, `c()` -- concatenar -- cria um vetor com os argumentos.
+O comando `data.frame()` cria uma folha de registo. Por sua vez, `c()` — concatenar — cria um vetor com os argumentos.
 
 Para visualizar a folha de registo criada no R basta escrever o seu nome (será mostrada quando não é grande demais). Na Figura 1 temos o resultado.
 
@@ -80,11 +80,11 @@ No segundo exemplo, juntamos o sexo do autor que, neste caso, é sempre masculin
 escritores$sexo<-"masc"
 ```
 
-Embora apenas indiquemos um valor (e não um vetor) o R automaticamente repete esse valor tantas vezes quantas a dimensão da coluna.
+Embora apenas indiquemos um valor (e não um vetor), automaticamente o R repete esse valor tantas vezes quantas a dimensão da coluna.
 
 #### Adição de linhas
 
-Também se podem juntar mais linhas, usando a função `rbind()`, que significa "row bind" (ligar linhas), e que recebe como argumentos uma folha de registo e novas linhas ou duas folhas de registo. Mas, neste caso, temos de atribuir um valor a cada coluna. Se usássemos a função `c()` (concatenar), todos os valores seriam considerados cadeias de carateres.
+Também se podem juntar mais linhas, usando a função `rbind()`, que significa *row bind* (em inglês. Pode ser traduzido como "ligar linhas"), e que recebe como argumentos uma folha de registo e novas linhas ou duas folhas de registo. Mas, neste caso, temos de atribuir um valor a cada coluna. Se usássemos a função `c()` (concatenar), todos os valores seriam considerados cadeias de carateres.
 
 ```
 escritores<-rbind(escritores, c("JorAma","Jorge Amado",1912,2001,"BR",89,"masc"))
@@ -98,7 +98,7 @@ escritores<-rbind(escritores, data.frame(id="JorAma",nome="Jorge Amado",nascimen
 
 ### Leitura de fora do R
 
-Mas, como referido, a maneira mais natural é ler folhas de registo provenientes de fora do R. Nesse caso vêm, em geral, de planilhas ou folhas de cálculo. Ao observá-las é possível indicar:
+Como referido, a maneira mais natural é ler folhas de registo provenientes de fora do R. Nesse caso vêm, em geral, de planilhas ou folhas de cálculo. Ao observá-las é possível indicar:
 
 * se as colunas têm nome (se tiverem, lemos com a indicação `header=TRUE`).
 * qual o separador (por exemplo, `sep="\t"` se as várias colunas estiverem separadas por tabuladores, `sep=","` se estiverem separadas por vírgulas).
@@ -116,9 +116,9 @@ leria o que estivesse no ficheiro `fich41.tsv`, interpretando a primeira linha c
 
 ### Processamento de colunas de uma folha de registo
 
-Muitas vezes o que escrevemos na tabela é para ser um código de um conjunto fixo de etiquetas e não uma cadeia de carateres em português... nesse caso, devemos indicar ao R que aquilo é um fator (um termo do R que designa uma variável categórica em estatística) e não uma palavra.
+Muitas vezes o que escrevemos na tabela é para ser um código de um conjunto fixo de etiquetas e não uma cadeia de carateres em português. Nesse caso, devemos indicar ao R que é um fator (um termo do R que designa uma variável categórica em estatística) e não uma palavra.
 
-No caso da nossa folha de registo, BR e PT significam autor brasileiro e português, respetivamente, e queremos considerá-los um fator. O mesmo acontece para o sexo:
+Na nossa folha de registo, BR e PT significam autor brasileiro e português, respetivamente, e queremos considerá-los um fator. O mesmo acontece para o sexo:
 
 ```
 escritores$nacionalidade<-factor(escritores$nacionalidade)
@@ -136,7 +136,7 @@ Podemos, claro, adicionar mais valores ao fator:
 escritores$nacionalidade<-factor(escritores$nacionalidade,levels=c("PT","BR","AN"))
 ```
 
-E, agora, podemos adicionar escritores angolanos:
+E, agora, podemos adicionar os escritores angolanos:
 
 ```
 escritores<-rbind(escritores, data.frame(id="AgoNet",nome="Agostinho Neto",nascimento=1922,morte=1979,nacionalidade="AN",tempoVida=57,sexo="masc"))
@@ -144,7 +144,7 @@ escritores<-rbind(escritores, data.frame(id="AgoNet",nome="Agostinho Neto",nasci
 
 ### Tipos de colunas
 
-Para além de palavras simples ou texto, uma coluna pode ter valores de um grupo (fatores), valores lógicos (TRUE e FALSE) e valores numéricos. Estes últimos dividem-se em dois tipos:
+Para além de palavras simples ou texto, uma coluna pode ter valores de um grupo (fatores), valores lógicos (TRUE ou FALSE) e valores numéricos. Estes últimos dividem-se em dois tipos:
 
 * números inteiros, geralmente correspondentes a contagens.
 * números reais, geralmente correspondentes a medições.
@@ -160,7 +160,7 @@ table(escritores$nacionalidade)
 barplot(table(escritores$nacionalidade))
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-04.png" alt="Gráfico de barras com a nacionalidade do autor" caption="Figura 4. Gráfico de barras com nacionalidade do autor." %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-04.png" alt="Gráfico de barras com as nacionalidades dos autores" caption="Figura 4. Gráfico de barras com as nacionalidades dos autores." %}
 
 Mas, vamos buscar folhas de registo muito mais ricas para demonstrar as potencialidades de visualização. Por exemplo, vejamos uma lista de obras literárias em português, usada no artigo Santos _et al._ (2020), com informação sobre o autor, data de publicação, escola literária e contagens de vários atributos sintáticos e semânticos.[^1].
 
@@ -187,7 +187,7 @@ periodizacao$genero<-factor(periodizacao$genero)
 periodizacao$escola<-factor(periodizacao$escola)
 ```
 
-Podemos, assim, identificar as escolas (literárias) presentes no material (removemos da figura os casos em que a escola é desconhecida, marcados como `desc`):
+Podemos, assim, identificar as escolas literárias presentes no material (removemos da figura os casos em que a escola é desconhecida, marcados como `desc`):
 
 ```
 periodSemDesc<-subset(periodizacao, escola2!="desc")
@@ -204,7 +204,7 @@ Se tivéssemos executado simplesmente os comandos
 periodizacao$escola2<-factor(periodizacao$escola2)
 barplot(table(periodizacao[periodizacao$escola2!="desc",]$escola2))
 ```
-o gráfico de barras apresentaria uma barra nula para `desc`, como vemos na figura 6:
+o gráfico de barras apresentaria uma barra nula para `desc`, como vemos na Figura 6:
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-06.png" alt="Gráfico de barras com as escolas literárias em inglês, com cinco classes, sem termos removido o valor desc do fator escola" caption="Figura 6. Gráfico de barras com as escolas literárias (em inglês), sem termos removido o valor desc do fator escola." %}
 
@@ -266,7 +266,7 @@ Podemos ver quantas obras temos por autor:
 barplot(table(algunsAutores$autor))
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-10.png" alt="Gráfico de barras com o número de obras por autor, mostrando que o autor com mais obras é Eça de Queirós, com 15" caption="Figura 10. Gráfico de barras com o número de obras por autor." %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-10.png" alt="Gráfico de barras com o número de obras por autor, mostrando que o autor com mais obras é Eça de Queirós, com um total de 15" caption="Figura 10. Gráfico de barras com o número de obras por autor." %}
 
 
 Mas, o mais interessante será comparar estes quatro autores, por exemplo, analisando a frequência relativa de emoções, no uso de nomes próprios ou na frequência de orações no conjuntivo/subjuntivo:
@@ -285,14 +285,14 @@ boxplot(algunsAutores$conjuntivo/algunsAutores$oracoes~algunsAutores$autor,xlab=
 
 ### Juntar mais do que uma folha de registo numa só
 
-Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo e da forma como a informação pode ser bem distribuída em folhas de registo diferentes, vamos criar uma nova folha de registo que contenha toda a informação contida em duas folhas de registo que já usámos: `algunsAutores` e `escritores`. Para cada obra queremos obter, para além do nome do autor, informação nova que temos sobre ele, nomeadamente, a variante, o tempo de vida e o sexo. Para isso usamos o comando `merge()`. 
+Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo e da forma como a informação pode ser bem distribuída em folhas de registo diferentes, vamos criar uma nova que contenha toda a informação de duas folhas de registo que já usámos: `algunsAutores` e `escritores`. Para cada obra queremos obter, para além do nome do autor, informação nova que temos sobre ele, nomeadamente, a variante, o tempo de vida e o sexo. Para isso usamos o comando `merge()`. 
 
 ```
 maisInfo<-merge(algunsAutores,escritores,by.x=c("autor", "sexo"),by.y=c("id","sexo"))
 ```
-Este comando é muito importante -- correspondente ao "join" das bases de dados -- porque permite estruturar o conhecimento em ficheiros  -- tabelas -- diferentes, mas juntá-lo quando queremos usar toda a informação. Na figura 14 vemos as primeira linhas da folha de registo `maisInfo`.
+Este comando é muito importante — correspondente ao "join" das bases de dados —, porque permite estruturar o conhecimento em ficheiros (tabelas) diferentes, mas juntá-lo quando queremos usar toda a informação. Na Figura 14 vemos as primeiraa linhas da folha de registo `maisInfo`.
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-14.png" alt="As primeiras linhas da folha de registo MaisInfo, demonstrando que têm mais colunas que as duas folhas que foram amalgamadas" caption="Figura 14. O que o R mostra se pedirmos as primeiras linhas da folha de registo MaisInfo." %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-14.png" alt="As primeiras linhas da folha de registo MaisInfo, demonstrando que têm mais colunas que as duas folhas que foram unidas" caption="Figura 14. O que o R mostra se pedirmos as primeiras linhas da folha de registo MaisInfo." %}
 
 O uso deste comando permite-nos, por exemplo, fazer um diagrama de caixa pela variedade do português e não pelos autores. Na Figura 15 observamos o uso das vírgulas.
 
@@ -316,11 +316,11 @@ write.table(maisInfo,"obras4autoresComInfoAutor.txt", sep="\t", quote=FALSE)
 
 ## Valores que faltam
 
-Uma questão real de observações empíricas é que pode haver valores a que não temos acesso. As folhas de registo com grandes quantidades de dados invariavelmente sofrem desse problema.
+Uma questão real de observações empíricas é que pode haver valores a que não temos acesso. As folhas de registo com grandes quantidades de dados invariavelmente têm esse problema.
 
 Por outro lado, pode haver razões para não haver dados em algumas colunas, mesmo em questões triviais: no exemplo que temos vindo a desenvolver, como preencher a data da morte de um autor ainda vivo?
 
-O R tem o conceito de valor `NA` (*not available*, em inglês, significando inexistente). Praticamente todas as funções do R têm um comportamento apropriado para esses valores. Além disso, é possível testar e identificar os casos que faltam, através das funções `is.na()` ou `na.exclude()`.
+O R tem o conceito de valor `NA` (*not available*, em inglês, significando inexistente em português). Praticamente todas as funções do R têm um comportamento apropriado para estes valores. Além disso, é possível testar e identificar os casos que faltam, através das funções `is.na()` ou `na.exclude()`.
 
 No caso dos diagramas apresentados na presente lição, apenas esses casos são excluídos da visualização, como podemos verificar adicionando um autor ainda vivo e pedindo um diagrama de caixa do tempo de vida:
 
@@ -331,7 +331,7 @@ boxplot(escritores$tempoVida~escritores$nacionalidade)
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-16.png" alt="Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade, em que só aparece um escritor angolano apesar de termos dois na folha de registo" caption="Figura 16. Gráfico de caixa do tempo de vida de alguns escritores por nacionalidade." %}
 
-Como só existe um autor angolano com tempo de vida diferente de NA, nomeadamente, Agostinho Neto, apenas um ponto -- visualizado como uma linha -- é mostrado no gráfico de caixa.[^4]
+Como só existe um autor angolano com tempo de vida diferente de NA, nomeadamente, Agostinho Neto, só é mostrado no gráfico de caixa um ponto, visualizado como uma linha.[^4]
 
 ## Observações finais
 
@@ -343,9 +343,9 @@ Agora, pode seguir para lições mais complicadas como [Investigar a literatura 
 
 [^1]: Santos, D., Pires, E., Lopes, J. M., Fuão, R. and Freitas, C.. "Periodização automática: Estudos linguístico-estatísticos de literatura lusófona" In *Linguamática*, vol. 12, nº 1 (2020): 80-95.
 
-[^2]: Em alguns navegadores este comando pode produzir o seguinte erro: `Error in file(file, "rt") : cannot open the connection to ’https://www.linguateca.pt/...'` Nesse caso, leia o ficheiro no seu próprio computador fora do R e execute apenas `read.table("dadosPeriodLit.tsv", header=TRUE)`
+[^2]: Em alguns navegadores este comando pode produzir o seguinte erro: `Error in file(file, "rt") : cannot open the connection to ’https://www.linguateca.pt/...'` Nesse caso, leia o ficheiro no seu próprio computador fora do R e execute apenas `read.table("dadosPeriodLit.tsv", header=TRUE)`.
 
-[^3]: Yi, Mike. *A complete guide to box plots*<https://www.atlassian.com/data/charts/box-plot-complete-guide>. Último acesso: 3 de maio de 2024
+[^3]: Yi, Mike. *A complete guide to box plots*<https://www.atlassian.com/data/charts/box-plot-complete-guide>. Último acesso: 3 de maio de 2024.
 
 [^4]: O comportamento pode variar em versões diferentes do R. Se obtiver uma mensagem de erro do `boxplot`, antes de o invocar, execute os comandos seguintes, que retiram explicitamente os NA e transformam em inteiros as idades:
 

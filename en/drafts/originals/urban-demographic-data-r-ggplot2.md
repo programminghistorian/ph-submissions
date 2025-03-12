@@ -37,7 +37,7 @@ This lesson differs from standard ggplot2 guides by focusing specifically on the
 
 By the end of this lesson, you should be able to do the following with the ggplot2 package:
 
-- Create different types of plots to visualize urban and demographic data, including bar charts to show relationships between cities, 22, and scatter plots to explore relationships between different variables.
+- Create different types of plots to visualize urban and demographic data, including bar charts to show relationships between cities and scatter plots to explore relationships between different variables.
 - Manipulate the appearance of plots, such as their color or size.
 - Add meaningful labels to plots.
 - Compare data across grids of plots.

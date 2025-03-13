@@ -220,7 +220,7 @@ Os gráficos de caixa representam um conjunto de números, mostrando a sua media
 
 Quando há casos fora dos limites descritos pelos bigodes, chamamos-lhes valores discrepantes (*outliers*, em inglês). Estes são marcados como pontos discretos.
 
-Veja-se esta figura, retirada do tutorial de Yi, [A complete guide to boxplots](https://www.atlassian.com/data/charts/box-plot-complete-guide):[^3]
+Veja-se esta figura, retirada do tutorial de Yi, *[A complete guide to boxplots](https://www.atlassian.com/data/charts/box-plot-complete-guide)*:[^3]
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-07.png" alt="Explicação de um gráfico de caixa, com um diagrama de todos os pontos, um gráfico de caixa e dois valores discrepantes" caption="Figura 7. Explicação de um gráfico de caixa, retirada de Yi." %}
 

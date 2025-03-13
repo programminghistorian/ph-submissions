@@ -260,7 +260,7 @@ Como só temos quatro autores, faz sentido dizer que os outros valores do fator 
 algunsAutores$autor<-algunsAutores$autor[drop=TRUE]
 ```
 
-Podemos ver quantas obras temos por autor:
+Podemos verificar quantas obras temos por autor:
 
 ```
 barplot(table(algunsAutores$autor))
@@ -290,7 +290,7 @@ Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo
 ```
 maisInfo<-merge(algunsAutores,escritores,by.x=c("autor", "sexo"),by.y=c("id","sexo"))
 ```
-Este comando é muito importante — correspondente ao "join" das bases de dados —, porque permite estruturar o conhecimento em ficheiros (tabelas) diferentes, mas juntá-lo quando queremos usar toda a informação. Na Figura 14 vemos as primeiraa linhas da folha de registo `maisInfo`.
+Este comando é muito importante — correspondente ao *join* das bases de dados —, porque permite estruturar o conhecimento em ficheiros (tabelas) diferentes, mas juntá-lo quando queremos usar toda a informação. Na Figura 14 vemos as primeiras linhas da folha de registo `maisInfo`.
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-14.png" alt="As primeiras linhas da folha de registo MaisInfo, demonstrando que têm mais colunas que as duas folhas que foram unidas" caption="Figura 14. O que o R mostra se pedirmos as primeiras linhas da folha de registo MaisInfo." %}
 
@@ -345,10 +345,9 @@ Agora, pode seguir para lições mais complicadas como [Investigar a literatura 
 
 [^2]: Em alguns navegadores este comando pode produzir o seguinte erro: `Error in file(file, "rt") : cannot open the connection to ’https://www.linguateca.pt/...'` Nesse caso, leia o ficheiro no seu próprio computador fora do R e execute apenas `read.table("dadosPeriodLit.tsv", header=TRUE)`.
 
-[^3]: Yi, Mike. *A complete guide to box plots*<https://www.atlassian.com/data/charts/box-plot-complete-guide> (consultado a 3 de maio de 2024).
+[^3]: Yi, Mike. *A complete guide to box plots*, <https://www.atlassian.com/data/charts/box-plot-complete-guide> (consultado a 3 de maio de 2024).
 
-[^4]: O comportamento pode variar em versões diferentes do R. Se obtiver uma mensagem de erro do `boxplot`, antes de o invocar, execute os comandos seguintes, que retiram explicitamente os NA e transformam em inteiros as idades:
-
+[^4]: O comportamento pode variar em versões diferentes do R. Se obtiver uma mensagem de erro do `boxplot`, antes de o invocar, execute os comandos seguintes, que retiram explicitamente os NA e transformam as idades em inteiros:
       <code>
       novoEscritores<-na.omit(escritores)
       novoEscritores$tempoVida<-as.integer(novoEscritores$tempoVida)

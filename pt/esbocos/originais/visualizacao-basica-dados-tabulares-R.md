@@ -32,9 +32,9 @@ Esta lição pretende apresentar a forma como dados tabulares podem ser visualiz
 
 ## Folha de registo
 
-Quem não teve, ao longo da sua vida, de preencher uma folha de registo numa aula ou para entrar num edifício, com informação como o seu nome, telefone, correio eletrónico e, por  vezes, com a assinatura, e/ou outras informações (data de entrada, hora de entrada, hora de saída, etc.)?
+Quem não teve, ao longo da sua vida, de preencher uma folha de registo numa aula ou para entrar num edifício, com informação como o seu nome, telefone, correio eletrónico e, por  vezes, com a assinatura e/ou outras informações (data de entrada, hora de entrada, hora de saída, etc.)?
 
-Se generalizarmos este conceito, verificamos que, para cada ocorrência (neste caso, para cada pessoa que entra no edifício), preenche-se um conjunto de dados de vários tipos, onde cada coluna tem o mesmo tipo de informação (nome, número de telefone, data, etc.).
+Se generalizarmos este conceito verificamos que, para cada ocorrência (neste caso, para cada pessoa que entra no edifício), preenche-se um conjunto de dados de vários tipos, onde cada coluna tem o mesmo tipo de informação (nome, número de telefone, data, etc.).
 
 Esta estrutura de dados (se usarmos o vocabulário das linguagens de programação) é muito útil para juntar vários tipos de informação numa mesma entidade (linha). Em R chamamos-lhe *dataframe*, que aqui traduzimos como *folha de registo*.
 
@@ -52,7 +52,7 @@ escritores <- data.frame(id=c("JulDin","CamCBra","MacAss","CoeNet"), nome=c("Jú
 
 O comando `data.frame()` cria uma folha de registo. Por sua vez, `c()` — concatenar — cria um vetor com os argumentos.
 
-Para visualizar a folha de registo criada no R basta escrever o seu nome (será mostrada quando não é grande demais). Na Figura 1 temos o resultado.
+Para visualizar a folha de registo criada no R basta escrever o seu nome (será mostrada se não for grande de mais). Na Figura 1 temos o resultado.
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-01.png" alt="Resultado da visualização da folha de registo pelo R, ao digitar o seu nome" caption="Figura 1. Resultado da inspeção da folha de registo criada." %}
 
@@ -64,7 +64,7 @@ Também é possível visualizar um resumo da folha de registo.
 summary(escritores)
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-02.png" alt="Resultado do comando summary, mostrando informação por cada nome da coluna." caption="Figura 2. Resultado do comando summary." %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-02.png" alt="Resultado do comando summary, mostrando informação por cada nome da coluna" caption="Figura 2. Resultado do comando summary." %}
 
 #### Adição de colunas
 
@@ -84,7 +84,7 @@ Embora apenas indiquemos um valor (e não um vetor), automaticamente o R repete 
 
 #### Adição de linhas
 
-Também se podem juntar mais linhas, usando a função `rbind()`, que significa *row bind* (em inglês. Pode ser traduzido como "ligar linhas"), e que recebe como argumentos uma folha de registo e novas linhas ou duas folhas de registo. Mas, neste caso, temos de atribuir um valor a cada coluna. Se usássemos a função `c()` (concatenar), todos os valores seriam considerados cadeias de carateres.
+Também se podem juntar mais linhas, usando a função `rbind()`, que significa *row bind* (em inglês. Pode ser traduzido como *ligar linhas*), e que recebe como argumentos uma folha de registo e novas linhas ou duas folhas de registo. Mas, neste caso, temos de atribuir um valor a cada coluna. Se usássemos a função `c()` (concatenar), todos os valores seriam considerados cadeias de carateres.
 
 ```
 escritores<-rbind(escritores, c("JorAma","Jorge Amado",1912,2001,"BR",89,"masc"))
@@ -98,7 +98,7 @@ escritores<-rbind(escritores, data.frame(id="JorAma",nome="Jorge Amado",nascimen
 
 ### Leitura de fora do R
 
-Como referido, a maneira mais natural é ler folhas de registo provenientes de fora do R. Nesse caso vêm, em geral, de planilhas ou folhas de cálculo. Ao observá-las é possível indicar:
+Como referido, a forma mais comum é ler folhas de registo provenientes de fora do R. Nesse caso vêm, em geral, de planilhas ou folhas de cálculo. Ao observá-las é possível indicar:
 
 * se as colunas têm nome (se tiverem, lemos com a indicação `header=TRUE`).
 * qual o separador (por exemplo, `sep="\t"` se as várias colunas estiverem separadas por tabuladores, `sep=","` se estiverem separadas por vírgulas).
@@ -162,13 +162,13 @@ barplot(table(escritores$nacionalidade))
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-04.png" alt="Gráfico de barras com as nacionalidades dos autores" caption="Figura 4. Gráfico de barras com as nacionalidades dos autores." %}
 
-Mas, vamos buscar folhas de registo muito mais ricas para demonstrar as potencialidades de visualização. Por exemplo, vejamos uma lista de obras literárias em português, usada no artigo Santos _et al._ (2020), com informação sobre o autor, data de publicação, escola literária e contagens de vários atributos sintáticos e semânticos.[^1].
+Mas, vamos buscar folhas de registo muito mais ricas para demonstrar as potencialidades de visualização. Por exemplo, vejamos uma lista de obras literárias em português, usada no artigo Santos _et al._ (2020), com informação sobre o autor, data de publicação, escola literária e contagens de vários atributos sintáticos e semânticos.[^1]
 
 ```
 periodizacao<-read.table("https://www.linguateca.pt/Diana/UnivOslo/cursoR/dadosPeriodLit.tsv",header=TRUE)
 ```
 
-O primeiro argumento do comando `read.table()` indica onde se encontra o ficheiro que se pretende ler. Pode estar guardado localmente [dadosPeriodLit.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacao-basica-dados-tabulares-R/dadosPeriodLit.tsv) ou aceder-se através de um URL.[^2]
+O primeiro argumento do comando `read.table()` indica onde se encontra o ficheiro que se pretende ler. Pode estar guardado localmente ([dadosPeriodLit.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacao-basica-dados-tabulares-R/dadosPeriodLit.tsv)) ou aceder-se através de um URL.[^2]
 
 Através do comando `names()` podemos verificar os nomes das colunas. Já através de `str()` ou `summary()` podemos verificar o tipo de informação que cada coluna tem.
 

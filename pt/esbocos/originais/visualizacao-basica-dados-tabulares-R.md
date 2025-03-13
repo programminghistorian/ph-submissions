@@ -218,7 +218,7 @@ Os gráficos de caixa representam um conjunto de números, mostrando a sua media
 * Bigode inferior: é o máximo de valor mínimo e de Q1-1.5*IQR.
 * Bigode superior: é o mínimo do valor máximo e de Q3+1.5*IQR.
 
-Quando há casos fora dos limites descritos pelos bigodes, chamados-lhes valores discrepantes (*outliers*, em inglês). Estes são marcados como pontos discretos.
+Quando há casos fora dos limites descritos pelos bigodes, chamamos-lhes valores discrepantes (*outliers*, em inglês). Estes são marcados como pontos discretos.
 
 Veja-se esta figura, retirada do tutorial de Yi, [A complete guide to boxplots](https://www.atlassian.com/data/charts/box-plot-complete-guide):[^3]
 

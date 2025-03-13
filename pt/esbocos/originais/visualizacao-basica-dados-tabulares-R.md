@@ -345,7 +345,7 @@ Agora, pode seguir para lições mais complicadas como [Investigar a literatura 
 
 [^2]: Em alguns navegadores este comando pode produzir o seguinte erro: `Error in file(file, "rt") : cannot open the connection to ’https://www.linguateca.pt/...'` Nesse caso, leia o ficheiro no seu próprio computador fora do R e execute apenas `read.table("dadosPeriodLit.tsv", header=TRUE)`.
 
-[^3]: Yi, Mike. *A complete guide to box plots*<https://www.atlassian.com/data/charts/box-plot-complete-guide>. Último acesso: 3 de maio de 2024.
+[^3]: Yi, Mike. *A complete guide to box plots*<https://www.atlassian.com/data/charts/box-plot-complete-guide> (consultado a 3 de maio de 2024).
 
 [^4]: O comportamento pode variar em versões diferentes do R. Se obtiver uma mensagem de erro do `boxplot`, antes de o invocar, execute os comandos seguintes, que retiram explicitamente os NA e transformam em inteiros as idades:
 

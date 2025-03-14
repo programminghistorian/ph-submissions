@@ -53,19 +53,17 @@ Before getting started, a few comments about the tools used in this lesson.
 
 ### Python, Pandas, and Geopandas
 
-To get the most out of this lesson, readers should be famililar Python and Pandas.
+To get the most out of this lesson, readers should be famililar Python and especially Pandas.
 
-Python is the most popular programming language ([1](https://www.zdnet.com/article/programming-languages-python-just-took-a-big-jump-forward/), [2](https://www.infoworld.com/article/3669232/python-popularity-still-soaring.html)). It is especially useful for [data scientists](https://www.makeuseof.com/why-is-python-popular-for-data-science/) and others interested in analyzing data and visualizing data because it has an enormous library of tools specifically for these applications. Reades unfamiliar with Python may find Kaggle's  [Introduction to Python](https://www.kaggle.com/learn/python) tutorial helpful. *Programming Historian* also has lessons on [Python Introduction and Installation](https://programminghistorian.org/en/lessons/introduction-and-installation).
+Python is the most popular programming language ([1](https://www.zdnet.com/article/programming-languages-python-just-took-a-big-jump-forward/), [2](https://www.infoworld.com/article/3669232/python-popularity-still-soaring.html)). It is especially useful for [data scientists](https://www.makeuseof.com/why-is-python-popular-for-data-science/) and others interested in analyzing data and visualizing data because it has an enormous library of tools specifically for these applications. Readers unfamiliar with Python may find Kaggle's  [Introduction to Python](https://www.kaggle.com/learn/python) tutorial helpful. *Programming Historian* also has lessons on [Python Introduction and Installation](https://programminghistorian.org/en/lessons/introduction-and-installation).
 
-Written in Python, [Pandas](https://pandas.pydata.org/) is a powerful package for data manipulation, analysis, and visualization. Readers unfamiliar with Pandas will find some *Programming Historian* lessons ([1](https://programminghistorian.org/en/lessons/visualizing-with-bokeh), [2](https://programminghistorian.org/en/lessons/crowdsourced-data-normalization-with-pandas)) that explain how to install Python and Pandas and introduce using Pandas to analyze data. Kaggle also offers free [introduction to Pandas](https://www.kaggle.com/learn/pandas) lessons and Pandas also includes a useful [Getting started](https://pandas.pydata.org/docs/getting_started/index.html) tutorial. We will be using some basic Pandas methods such as [.describe()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html), [.info()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info), [.sample()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html), [.value_counts()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.value_counts.html), as well as some more advanced commands such as [.merge()](https://pandas.pydata.org/docs/reference/api/pandas.merge.html). 
+Written in Python (and C), [Pandas](https://pandas.pydata.org/) is a powerful package for data manipulation, analysis, and visualization. Readers unfamiliar with Pandas will find some *Programming Historian* lessons ([1](https://programminghistorian.org/en/lessons/visualizing-with-bokeh), [2](https://programminghistorian.org/en/lessons/crowdsourced-data-normalization-with-pandas)) that explain how to install Python and Pandas and introduce using Pandas to analyze data. Kaggle also offers free [introduction to Pandas](https://www.kaggle.com/learn/pandas) lessons and Pandas also includes a useful [Getting started](https://pandas.pydata.org/docs/getting_started/index.html) tutorial. We will be using some basic Pandas methods such as [.describe()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html), [.info()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info), [.sample()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html), [.value_counts()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.value_counts.html), as well as some more advanced commands such as [.merge()](https://pandas.pydata.org/docs/reference/api/pandas.merge.html). 
 
 [Geopandas](https://geopandas.org/en/stable/) extends Pandas' functionality by adding tools to make working with geospatial data easier. Notably, it adds some [shapely](https://shapely.readthedocs.io/en/stable/) datatypes to Pandas that include `point` and `geometry`. These facilitate working with geographic data: the `point` datatype can store latitude / longitude data; the `geometry` datatype can store points that define the shape of a state, county, congressional district, census tract, or other geographic region.
 
-> Hint: I have found artificial intelligence agents quite helpful at explaining what unfamiliar computer code does. If something is unclear, try copy-and-pasting the code into the AI box and asking it to explain what the code does. 
-
 ### Folium
 
-To create the maps, we will use [Folium](https://python-visualization.github.io/folium/), a Python library that automates creating Leaflet maps.
+The main software this lesson uses is [Folium](https://python-visualization.github.io/folium/), a Python library that automates creating Leaflet maps.
 
 [Leaflet](https://leafletjs.com/) is a JavaScript library that faciliates the creation of interactive HTML maps. To use Leaflet one needs to know some CSS and JavaScript, as explained in the Programming Historian's article ["Web Mapping with Python and Leaflet"](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet).
 
@@ -109,9 +107,9 @@ This lesson will show how to create a choropleth map using two data files:
 * A file with the data we want to count and visualize: the *Fatal Force* database.
 * A file with data about the shapes (in this case, counties) to draw on the map: the *cartographic boundaries* file.
 
-We will need to add an ID field to the *Fatal Force* database in order to match the records from these two files. Many datafiles will already have this field, but this lesson will walk through how to add it, should the information be missing. 
+We will need to add an ID field -- a FIPS numbber -- to the *Fatal Force* database in order to match the records from these two files. Many datafiles with county-level data will include the FIPS number, but this lesson will walk through how to add it. 
 
-Additionally, while this will show how to map data based on county geographies, if the *cartographic boundary* file has other boundaries (such as census tracts or police precincts), the same basic steps would be followed -- but the map that would be produced would reflect these different geometries.
+While this lesson will demonstrate how to map data based on county geographies, if the *cartographic boundary* file has other boundaries (such as census tracts or police precincts), the same basic steps would be followed -- but the map that would be produced would reflect these different geometries.
 
 ## Fatal Force Data
 The *Washington Post*'s "Fatal Force" data is the data to be counted and visualized. The *Post* provides [documentation](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-force-database-README.md) about the data in the database.
@@ -121,8 +119,7 @@ Pandas tries to parse data as it imports it. It is pretty good at recognizing *s
 This code block imports the data. To follow along with the lesson, use the code as written. If you want to see the most up-to-date version of the data from the *Washington Post*, comment-out (`#`) the first two lines and un-comment the lines for the WP's repo. This lesson uses the data from the *Programming Historian* website; if you use the data from the *Post*, the numbers will be different.
 
 ```python
- ff_df = pd.read_csv('https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-police-shootings-data.csv',
-                    parse_dates = ['date'])
+ff_df = pd.read_csv('https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-police-shootings-data.csv', parse_dates = ['date'])
 # ff_df = pd.read_csv('https://raw.githubusercontent.com/washingtonpost/data-police-shootings/master/v2/fatal-police-shootings-data.csv',
 #                    parse_dates = ['date'])
 
@@ -180,7 +177,6 @@ print(ff_df['latitude'].isna().sum())
 ff_df['latitude'].isna().sum() / len(ff_df)
 
     0.8900340100999691
-
 ```
 This shows that there are 7,496 rows that have latitude values, which is about 89% of all the records. 
 
@@ -280,7 +276,7 @@ Our goal is to add `FIPS` values to the Fatal Force dataframe. To do so, we will
 
 To do so, we will create a new field in the Fatal Force DF, which will combine the data in the two lat/lon columns into a single `point` datatype. (`point` is a special datatype that Geopandas adds to the normal Pandas datatypes.)
 
-> Note that the method to do this is `.points_from_xy`, so we need to specify the **longitude** *before* **latitude**, contrary to the standard way map coordinates are referenced.
+> Note that the method to create the new variable is `.points_from_xy`, so we need to specify the **longitude** *before* **latitude**, contrary to the standard way map coordinates are referenced.
 
 As we do this, we need to specify a **coordinate reference system** [CRS](https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/coordinate-systems-and-projections.htm). The CRS is related the mathematical model that describes how lat/lon data (points on the surface of a sphere) are presented on a flat surface. For this lesson, the most important thing to know is that the dataframes need to use the same CRS before being joined.
 
@@ -654,13 +650,13 @@ This is why choropleth maps often do not visualize *values* (that is, raw number
 
 ## Get county-level population statistics
 
-To do this, we need to get a dataset that includes county-by-county population statistics that, ideally, include a FIPS code.
+To normalize the population data, we need to get a dataset that includes county-by-county population statistics that, ideally, include a FIPS code.
 
 I found this data at the [US Census Bureau](https://www.census.gov/), which has a huge number of [datasets](https://www.census.gov/data/datasets.html) that it provides the public.
 
 The full dataset is huge, but when I read the [documentation](https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/totals/co-est2019-alldata.pdf), I realized I only needed three columns: `STATE`,`COUNTY`, and `POPESTIMATE2019`. (I selected 2019 because the *Post*'s data extends from 2015 to present; 2019 is roughly in the middle of that time frame).
 
-> Note: Depending on the research question / goal, it may be problematic to group several years of data together but to consider population data from a single year. It might be better to do this analysis year-by-year or to find the mean value of each county's population over the years studied to use as the denominator in the calculation below. Finding the mean value for the population of each county would not be difficult, but for the purpose of this lesson it seems unnecessarily complex.
+> Note: Depending on the research question / goal, it may be problematic to group several years of data together but to consider population data from a single year. It might be better analyze this annually or to find the mean value of each county's population over the years studied to use as the denominator in the calculation below. Finding the mean value for the population of each county would not be difficult, but for the purpose of this lesson it seems unnecessarily complex.
 
 Rather than loading the full database, Pandas allows us to specify specific columns to include with the `usecols` parameter. (Note that this file does not use the very common `utf-8` encoding scheme; I needed to specify the `"ISO-8859-1"` to avoid an `UnicodeDecodeError`.)
 
@@ -918,6 +914,7 @@ The `GeoJsonTooltip()` method allows us to extract and display data in the `prop
 ## Add data to the Choropleth map's "property" dictionary
 
 Unfortunately, as you can see from the above example, the GeoJSON data doesn't currently have the data we want to display. But we can add it by iterating over the GeoJSON data, finding the information in our `map_df` dataframe, and adding it to the GeoJSON properties dictionary. Here's how to do this:
+
 1. Create a `map_data_lookup` dataframe that uses FIPS as its index. This will facilitate searching for each county's FIPS number and extract data from the `map_df` (count of deaths, population, etc.) to be added to the GeoJSON data.
 1. Iterate over the GeoJSON data and add new property variables with data from the `map_df` dataframe.
 

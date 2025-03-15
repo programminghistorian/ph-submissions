@@ -59,7 +59,7 @@ The half-life of <sup>14</sup>C is 5,730 ± 40 years: for an initial quantity \\
 
 {% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-01.png" alt="Line graph showing the exponential decay of radioactive atoms over time. The x-axis displays the number of half-lives; the y-axis displays the number of atoms. From the upper-left side of the graph, the curve decreases steeply then flattens as the number of half-lives increase. Dotted lines on the graph indicate that at 2T, there remains only a quarter of the initial quantity of atoms." caption="Figure 1. Exponential decay of an initial quantity of radioactive atoms, over time (expressed in number of half-lives.)" %}
 
-14C is produced naturally in the upper atmosphere through the effect of cosmic radiation. It is then gradually absorbed by living organisms throughout the trophic chain, starting with photosynthetic organisms. The <sup>14</sup>C content in living organisms is constant and in equilibrium with the atmospheric content.[^6]
+<sup>14</sup>C is produced naturally in the upper atmosphere through the effect of cosmic radiation. It is then gradually absorbed by living organisms throughout the trophic chain, starting with photosynthetic organisms. The <sup>14</sup>C content in living organisms is constant and in equilibrium with the atmospheric content.[^6]
 
 When an organism dies, exchanges with its environment stop. Assuming that there is no external contamination, we consider this a closed system: radioactive decay is the only phenomenon affecting the quantity of <sup>14</sup>C contained in the organism's tissue. Therefore, the event dated by the radiocarbon is the death of the organism.
 
@@ -86,7 +86,7 @@ The use of Libby's premise nevertheless remains the only accessible way to estim
 
 ## How to Calibrate?
 
-We have just seen that it was necessary to calibrate radiocarbon dates. On paper, the calibration process is fairly simple, thanks to the conversion table between radiocarbon time and calendar time. In this way, the calibration process is complicated by taking into account the errors inevitably associated with physical measurements.
+As we have just seen, it is necessary to calibrate radiocarbon dates. On paper, the calibration process is fairly simple, thanks to the equivalence table between radiocarbon time and calendar time. However, in practice, the calibration process is made more complicated by the errors inevitably associated with physical measurements!
 
 A conventional date (noted here as \\(t\\)) is the result of a measurement and, as there is no perfect measurement, it is always accompanied by a term corresponding to the analytical uncertainty (\\(\Delta t\\)) and expressed in the form \\(t \pm \Delta t\\) (date, plus or minus its uncertainty). This uncertainty results from the combination of different sources of error within the laboratory: it is a random uncertainty inherent to the measurement.
 
@@ -104,14 +104,14 @@ The simplest approach for calibrating a radiocarbon date consists of interceptin
 
 However, this approach does not take into account the fact that a radiocarbon date is described by a normal distribution. In the range defined by the radiocarbon date, plus or minus its uncertainty, not all values have the same probability of coinciding with the true radiocarbon date, but calibration by simple interception assumes the opposite. Therefore, the approach widely used now[^12] also consists of taking into account the normal distribution of radiocarbon dates. We sometimes use the expression "probabilistic calibration" to refer to this. This calibration method uses numerical methods and the resulting distribution of calendar dates is not equally likely (fig. 5).
 
-It is easy to describe a conventional date and its uncertainty with a normal probability; but this cannot be done with a calendar date once it has been calibrated. Due to the oscillations of the calibration curve, it is actually not possible to describe the distribution of a calendar date with a specific probability distribution, as can be seen in Figure 5. Thus, a calibrated date has to be described as an interval.
+It is easy to describe a conventional date and its uncertainty with a normal distribution; but this cannot be done with a calendar date once it has been calibrated. Due to the oscillations of the calibration curve, it is actually not possible to describe the distribution of a calendar date with a specific probability distribution, as can be seen in Figure 5. Thus, a calibrated date has to be described as an interval.
 
 {% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-05.png" alt="A series of three graphs. The first graph shows probabilistic calibration, displaying conventional dates from 2200 BP to 2700 BP, against probabilities between 0 and 0.006. The symmetrical curve peaks at 24500 BP at just under 0.006 probability. The second graph displays calendar dates against conventional dates as an irregularly decreasing line. The third graph then displays calendar dates against probabilities: this time calendar dates range from 900 to 200 BC, and probabilities from 0 to 0.003. The curve rises steeply from 0 to 0.003 800 BC and falls steeply back down at 400 BC, leaving a slightly irregular plateau in between." caption="Figure 5. Distributions of a radiocarbon age of 2450 ± 75 years BP before and after calibration, respectively top left and bottom right. Top right: extract from the IntCal20 calibration curve (solid line) and associated error (gray band)." %}
 
-The interval to which a calendar date belongs is derived from from the uncertainty of the conventional date, from the shape of the calibration curve, and from the uncertainty associated with the latter. This interval, between the limits of which the calendar date has a given probability of being included, can be obtained in two distinct ways (fig. 6):
+The interval to which a calendar date belongs is derived from the uncertainty of the conventional date, from the shape of the calibration curve, and from the uncertainty associated with the latter. This interval, between the limits of which the calendar date has a given probability of being included, can be obtained in two distinct ways (fig. 6):
 
 - Highest Posterior Density Interval (HPDI): the limits of the interval correspond to the regions of the distribution whose cumulative probability is greater than a given threshold.
-- credibility interval (IC): the limits of the interval correspond to the [quantiles](https://en.wikipedia.org/wiki/Quantile) of the distribution.
+- credibility interval (Ci): the limits of the interval correspond to the [quantiles](https://en.wikipedia.org/wiki/Quantile) of the distribution.
 
 When the distribution of a calibrated date is multimodal, the interval at highest densities often corresponds to the union of several disjoint intervals, unlike the credibility interval which always provides a continuous range of values.[^13] The higher density interval is therefore often more informative, which is why it is commonly used to present calibrated results.
 
@@ -370,10 +370,10 @@ summary(datess_sam234, prob = 0.95)
 ##3 Sam. 4      670   682 to 653     NA to NA
 ```
 
-Some of the dates calibrated at 95% belong to the union of several HPD intervals. The hpdi() function allows you to calculate the HPD intervals for each calibrated date (note, hpdi() returns ages expressed in cal years BP) and the probability associated with each interval:
+Some of the dates calibrated at 95% belong to the union of several HPDI. The hpdi() function allows you to calculate the HPDI intervals for each calibrated date (note, hpdi() returns ages expressed in cal years BP) and the probability associated with each interval:
 
 ```r
-## HPD intervals at 95% of sample 1 ages
+## HPDis at 95% of sample 1 ages
 (hpd_sam1 <- hpdi(dates_sam1, credMass = 0.95))
 ```
 
@@ -394,7 +394,7 @@ Some of the dates calibrated at 95% belong to the union of several HPD intervals
 ```
 
 ```r
-## HPD intervals at 95% of sample ages 2, 3 and 4
+## HPDIs  at 95% of sample ages 2, 3 and 4
 (hpd_sam234 <- hpdi(datess_sam234, credMass = 0.95))
 ```
 
@@ -438,11 +438,11 @@ for (i in 1:3) {
 
 {% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-08.png" alt="Three graphs indicating the dates for samples 2, 3 and 4. Grey regions below the curve show a 95% (HPD interval) certainty. The x-axis is labeled with years BC/AD. These graphs use the IntCal20 curve." caption="Figure 8. Distribution of conventional and calendar dates of the mean ages of samples 2, 3 and 4. The dark gray areas correspond to the 95% HPD interval. IntCal20 calibration curve is used." %}
 
-- The calendar date of sample 2 has a 95% chance (HPD interval) of being in the union of the intervals [1040;1109] (54%) and [1113;1158] (40%), in agreement with a dating expected around the 11th-12th centuries AD.
+- The calendar date of sample 2 has a 95% chance (HPDI) of being in the union of the intervals [1040;1109] (54%) and [1113;1158] (40%), in agreement with a dating expected around the 11th-12th centuries AD.
 
-- The calendar date of sample 3 has a 95% chance (HPD interval) of being in the union of the intervals [-25;-17] (2%) and [7;121] (93%), in agreement with an expected dating between -110 and 75.
+- The calendar date of sample 3 has a 95% chance (HPDI) of being in the union of the intervals [-25;-17] (2%) and [7;121] (93%), in agreement with an expected dating between -110 and 75.
 
-- The calendar date of sample 4 has a 95% chance (HPD interval) of being between 1267 and 1297, in agreement with an expected dating between 1290 and 1310.
+- The calendar date of sample 4 has a 95% chance (HPDI) of being between 1267 and 1297, in agreement with an expected dating between 1290 and 1310.
 
 The radiocarbon dates obtained by the different laboratories for sample 1 were calibrated separately. The multiplot() function makes it possible to simultaneously represent the distributions of calibrated ages (expressed in years BC/AD) for the three laboratories (fig. 9).
 
@@ -462,7 +462,7 @@ multiplot(
 )
 ```
 
-{% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-09.png" alt="Three graphs indicating the distribution of calendar ages of sample 1, as seen by different laboratories (Arizona, Zurich, and Oxford). The focus of the graph is in the highlighted regions in dark grey, which show us our HPD interval area. Arizona has two distinct dark grey highlighted regions; Zurich has two; Oxford has one. The graphs all share an x-axis indicating the years AD." caption="Figure 9. Distribution of calendar ages of sample 1 obtained by the different laboratories. Dark gray areas correspond to the 95% HPD interval. IntCal20 curve." %}
+{% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-09.png" alt="Three graphs indicating the distribution of calendar ages of sample 1, as seen by different laboratories (Arizona, Zurich, and Oxford). The focus of the graph is in the highlighted regions in dark grey, which show us our HPDI area. Arizona has two distinct dark grey highlighted regions; Zurich has two; Oxford has one. The graphs all share an x-axis indicating the years AD." caption="Figure 9. Distribution of calendar ages of sample 1 obtained by the different laboratories. Dark gray areas correspond to the 95% HPDI. IntCal20 curve." %}
 
 If the analysis of the conventional ages obtained by the different laboratories for sample 1 reveals a certain heterogeneity, we nevertheless note that the calibrated dates all belong to the 13th and 14th centuries. Although we cannot give a more precise interval, these results are in agreement with the appearance of the first written mentions of the Shroud and reasonably allow us to exclude the hypothesis of authenticity of the relic.
 
@@ -470,7 +470,7 @@ If the analysis of the conventional ages obtained by the different laboratories 
 
 In order to publish the radiocarbon dates in rigorous manner, and to enable the results to be verified and used by others, it is a good idea to always include a certain number of information elements. For example, we can write clearly:
 
-> Sample ETH-3883 is dated at 676 ± 24 years BP, calibrated at [671;633] (58%) or [589;563] (38%) cal BP or [1279;1317] (58%) or [1361;1387] (38%) AD (95% HPD intervals) with IntCal20 (Reimer et al. 2020), R 4.0.3 (R Core Team, 2020) and the rcarbon 1.4.1 package (Crema and Bevan, 2020 ).
+> Sample ETH-3883 is dated at 676 ± 24 years BP, calibrated at [671;633] (58%) or [589;563] (38%) cal BP or [1279;1317] (58%) or [1361;1387] (38%) AD (95% HPDI) with IntCal20 (Reimer et al. 2020), R 4.0.3 (R Core Team, 2020) and the rcarbon 1.4.1 package (Crema and Bevan, 2020 ).
 
 When we write our dates in this way, we have the following main points for others to read:[^15]
 

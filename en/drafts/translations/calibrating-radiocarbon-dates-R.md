@@ -119,7 +119,7 @@ There are periods which are more or less suitable for radiocarbon dating, depend
 
 {% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-06.png" alt="Three graphs showing calendar dates, in years BC, against probability. The first and second graphs highlight the regions of highest density in the area under the curve. The third graph is a horizontal chronometer wwhich compares the credibility intervals mirroring the highlighted intervals in the graphs above." caption="Figure 6. Estimation of calibrated intervals. The top two graphs illustrate the estimate of the highest density regions at 68% and 95%. The bottom graph allows you to compare the HPDIs thus obtained and the corresponding credibility intervals (IC) (solid lines)." %}
 
-In some situations, it is common to keep calibrated dates expressed in years BP. In this case it is recommended to specify cal BP to avoid any confusion for the reader. These calendar ages in years BP can be converted to dates expressed before or after our era (BC/AD, before Christ/anno Domini). To do this, simply use the following calculation rule:
+In some situations, it is common practice to keep calibrated dates expressed in years BP. In these cases, it is recommended to specify cal BP to avoid any confusion for the reader. These calendar ages in years BP can be converted to dates expressed before or after our era (BC/AD, before Christ/anno Domini). To do this, simply use the following calculation rule:
 
 <div class="alert alert-warning">
 	<div class="mathjax">
@@ -132,13 +132,13 @@ In some situations, it is common to keep calibrated dates expressed in years BP.
   	</div>
 </div>
 
-By now it is clear that these details, if poorly understood, can quickly lead to overinterpretations. So when publishing a dating series, it is important to present all the data and choices that contributed to obtaining our calendar dates. The use of open tools promotes both transparency and reproducibility of results, which are two very important aspects with regard to the calibration of radiocarbon dates.
+By now it is clear that these details, if poorly understood, can quickly lead to overinterpretations. So when publishing a dating series, it is important to present all the data and choices that contributed to obtaining the calendar dates. The use of open tools promotes both transparency and reproducibility of results, which are two very important aspects with regard to the calibration of radiocarbon dates.
 
 ## Applications with R
 
 Many tools are now available to calibrate radiocarbon data, like [OxCal](https://c14.arch.ox.ac.uk/oxcal/), [CALIB](http://calib.org) and [ChronoModel](https://chronomodel.com). But these tools are rather intended to deal with [Bayesian](https://en.wikipedia.org/wiki/Bayesian_statistics) modeling problems of chronological sequences (which we don't cover in this lesson). R offers an interesting alternative to these tools which suits our needs. R is distributed under an open license, promotes reproducibility and lets us integrate the processing of radiocarbon date into larger projects (spatial analysis, etc.).
 
-Several R packages are useful for calibrating radiocarbon dates: for example, packages like ([Bchron](https://cran.r-project.org/package=Bchron) and [oxcAAR](https://cran.r-project.org/package=oxcAAR), etc.) are often oriented towards modeling (constructing chronologies, age-depth models, etc.). The package we will use in this lesson is called [rcarbon](https://cran.r-project.org/package=rcarbon) (Bevan and Crema 2020). It allows us to easily calibrate and analyze radiocarbon ages.
+Several R packages are useful for calibrating radiocarbon dates: for example, packages like [Bchron](https://cran.r-project.org/package=Bchron) and [oxcAAR](https://cran.r-project.org/package=oxcAAR) are often oriented towards modeling (constructing chronologies, age-depth models, etc.). The package we will use in this lesson is called [rcarbon](https://cran.r-project.org/package=rcarbon) (Bevan and Crema 2020). It allows us to easily calibrate and analyze radiocarbon ages.
 
 ### Case Study
 
@@ -146,7 +146,7 @@ In order to concretely address the question of calibrating radiocarbon ages, let
 
 In April 1988, a fabric sample was taken from the Shroud of Turin. Three different laboratories were selected the previous year and each received a fragment of this same sample. In addition, three other samples (from other items than the Shroud) whose calendar dates were known by other methods were also sampled. These three additional samples served as "control samples", in order to validate the results of each laboratory, and to ensure that the results of the different laboratories were compatible with each other. Each laboratory received four samples and carried out the measurements blindly, without knowing which one corresponded to the Shroud (Damon et al., 1989).
 
-Table 1 thus shows the radiocarbon dates gathered (\\(1\sigma\\)) as part of the study of the Shroud of Turin (Damon et al., 1989) for the three laboratories (Arizona, Oxford and Zurich). Sample 1 (Sample 1) corresponds to the fabric taken from the Shroud of Turin; sample 2 (Sample 2) represents a fragment of linen from a tomb at Qasr Ibrîm in Egypt, dated to the 11th-12th centuries AD; sample 3 (Sample 3) corresponds to a fragment of linen associated with a mummy from Thebes (Egypt), dated between -110 and 75. Finally, sample 4 (Sample 4) is made up of threads from the cope from St-Louis d'Anjou (France), dated between 1290 and 1310.
+Table 1 thus shows the radiocarbon dates gathered (\\(1\sigma\\)) as part of the study of the Shroud of Turin (Damon et al., 1989) for the three laboratories (Arizona, Oxford and Zurich). Sample 1 (Sample 1) corresponds to the fabric taken from the Shroud of Turin; sample 2 (Sample 2) represents a fragment of linen from a tomb at Qasr Ibrîm in Egypt, dated to the 11th-12th centuries AD; sample 3 (Sample 3) corresponds to a fragment of linen associated with a mummy from Thebes (Egypt), dated between -110 and 75. Finally, sample 4 (Sample 4) is made up of threads from the cope of St-Louis d'Anjou (France), dated between 1290 and 1310.
 
 
 | Lab Location | Sample 1   | Sample 2   | Sample 3    | Sample 4   |
@@ -416,12 +416,12 @@ Some of the dates calibrated at 95% belong to the union of several HPDI. The hpd
 
 ### How to Interpret these Dates
 
-We are first interested in control samples 2, 3 and 4. The distributions of conventional (y-axis) and calendar (x-axis) dates can be represented with the calibration curve using the plot() function. Figure 8 then shows that their calibrated dates are in agreement with the dating known elsewhere.
+Let's first focus on control samples 2, 3 and 4. The distributions of conventional (y-axis) and calendar (x-axis) dates can be represented with the calibration curve using the plot() function. Figure 8 then shows that their calibrated dates are in agreement with the dating known elsewhere.
 
 ```r
 par(mfrow = c(1, 3), mar = c(4, 1, 3, 1) + 0.1, las = 1)
 
-## For samples 2, 3, and 4:
+## For control samples 2, 3, and 4:
 for (i in 1:3) {
   plot(
     x = datess_sam234,
@@ -527,7 +527,7 @@ Walsh, B., & Schwalbe, L. 2020. "An Instructive Inter-Laboratory Comparison: The
 
 [^1]: As opposed to relative dating which orders a series of events. Strictly speaking, there is no absolute dating method because they all fit into a specific frame of reference. Some authors thus prefer to speak of quantifiable dating (O’Brien and Lyman, 2002). However, for convenience, we retain this terminology here, since it is understood that an absolute date is expressed as a point on a standard scale for measuring time (Dean, 1978).
 
-[^2]: As support for this lesson, it may be helpful to read the introductory chapters of _Comprendre et réaliser les tests statistiques à l’aide de R : Manuel de Biostatistique_ by Gaël Millot (2014) (in French).
+[^2]: As support for this lesson, it may be helpful to read the introductory chapters of _Comprendre et réaliser les tests statistiques à l’aide de R : Manuel de Biostatistique_ by Gaël Millot (2014) (in French). Or, for an English-language reference, see _Quantitative Methods in Archaeology Using R_ by D. L. Carlson (2017). 
 
 [^3]: Anderson et al. 1947.
 

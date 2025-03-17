@@ -75,6 +75,7 @@ La leçon offre la possibilité d'accéder à trois jeux de données distincts a
 
 Les scripts en R qui ont permis de travailler avec les [API](https://www.cnil.fr/fr/definition/interface-de-programmation-dapplication-api) de Gallica et de Flickr ont été préparés et exécutés par [Thomas Soubiran](https://numa.hypotheses.org/), ingénieur d'études en analyse de données au CNRS. 
 
+<!-->
 ### Les affiches numérisées de Mai 68
 
 Pour découvrir comment travailler avec Tropy, l'intention originelle était d'utiliser un corpus d'environ quatre cents affiches numérisées de [Mai 1968 en France](https://fr.wikipedia.org/wiki/Mai_68) accessibles sur le site de [Gallica](http://gallica.bnf.fr/), la bibliothèque numérique de la Bibliothèque nationale de France (ci-après BnF) et de ses institutions partenaires. Ces affiches, des [sérigraphies](https://fr.wikipedia.org/wiki/S%C3%A9rigraphie) pour la plupart, ont été des créations du dit [Atelier populaire de l'Ecole des Beaux-Arts](https://www.persee.fr/doc/mat_0769-3206_1988_num_11_1_403852) de Paris lors de l'occupation de cette école en mai-juin 1968, mais aussi d'ateliers de lutte du même type qui se sont constitués dans d'autres villes (Montpellier, Marseille, Strasbourg...). Gallica fournit un accès unifié à une collection numérisée quasi-complète qui rassemble des items physiquement présents dans diverses institutions. Les numérisations datent des années 2010 et témoignent aussi de la patrimonialisation de l'évènement Mai 68 et son effet sur la création de la source numérisée. 
@@ -89,7 +90,7 @@ Pourquoi n'est-il pas possible de partager les fichiers images des affiches dans
 
 [Lien vers les fichiers: description de la requête, rapport de recherche, script R pour collecter les fichiers images de affiches de Mai 68 via l'API de la BnF](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/gerer-sources-primaires-numeriques-avec-tropy/affiches-mai-68). 
 <!-- ne pas oublier d'insérer le bon chemin après lecture initiale et stabilisation des fichiers dans le repo-->  
-
+<!-->
 ### Les photos d'Occupy Wall Street sur Flickr
 
 Les mobilisations sociales survenues en septembre 2011 à New York puis propagées au reste des États-Unis et connues sous le nom [d'Occupy Wall Street](https://journals.openedition.org/amnis/9075), ont généré une production graphique considérable. Elles comptent aussi parmi les premières documentées sur les réseaux socionumériques. Le jeu de données comprend la liste des URL individuelles des images statiques d'un ensemble de photos collectées sur Flickr. Une première recherche sur l'interface habituelle de Flickr a été effectuée pour définir le périmètre de la collecte. La requête a utilisé la fonctionnalité de recherche avancée pour insérer le mot-clé "occupy wall street" et les restrictions suivantes: "Aucune restriction de droits d'auteur connue" et rechercher dans "Tags" (plutôt que dans "Tout"). 
@@ -101,7 +102,7 @@ Une fois les résultats vérifiés (environ 350 items sans restrictions de droit
 Les photos représentent principalement des personnes vivantes en train de participer aux occupations liées à OWS. Bien que leurs créateurs les aient placées sous licence libre, le partage direct du corpus que nous avons constitué pour la leçon serait une [réutilisation dans un but différent de la première diffusion](https://www.service-public.fr/particuliers/vosdroits/F32103). Pour en faire un usage éthique, le jeu de données consiste en une liste des URL individuelles des images statiques et des métadonnées élémentaires permettant de les contextualiser (identifiant de la publication, identifiant du compte utilisateur du créateur, titre, dimensions des images) que les lecteurs et lectrices peuvent utiliser à volonté pour expérimenter avec Tropy. Il est également possible, en utilisant le script R, de rappeler l'ensemble des fichiers images décrits. Ce jeu de données peut s'avérer utile pour qui serait plus à l'aise à travailler avec des données documentées en anglais. Par ailleurs, les liens des images statiques permettent de travailler avec [l'importation directe d'images depuis le web dans Tropy](/fr/#importer-des-images-depuis-une-page-web).    
 
 [Lien vers les fichiers pour obtenir le jeu de données des photos d'OWS sur Flickr](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/gerer-sources-primaires-numeriques-avec-tropy/photos-ows). 
-<!-- ne pas oublier d'insérer le bon chemin après lecture initiale et stabilisation des fichiers dans le repo-->  
+-->  
 
 ### Les affiches du Printemps érable 
 
@@ -121,7 +122,7 @@ Cette section fournit les informations préalables à la création d'un projet q
 
 Tropy est un logiciel multi-plateformes (distributions Linux, Windows, macOS) dont l'installation se fait en local. Pour le moment, il n'existe pas d'application disponible en ligne, sachez donc que votre projet sera hébergé sur le disque dur de votre ordinateur. Il n'est pas non plus possible d'installer Tropy sur un serveur partagé pour travailler à plusieurs de manière synchrone.  
 
-Tropy peut être librement téléchargé depuis son [site web](https://tropy.org/). Une fois le téléchargement terminé, lancez l'installateur et laissez-vous guider par les instructions. Notre leçon mobilise la version 1.16.2 de Tropy et a été réalisée sur Windows 11.   
+Tropy peut être librement téléchargé depuis son [site web](https://tropy.org/). Une fois le téléchargement terminé, lancez l'installateur et laissez-vous guider par les instructions. Notre leçon mobilise la version 1.16.2 de Tropy et a été réalisée sur Windows 11.    
 
 ### Les éléments d'un projet dans Tropy 
 

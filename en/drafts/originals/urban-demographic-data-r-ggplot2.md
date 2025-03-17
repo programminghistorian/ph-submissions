@@ -303,7 +303,7 @@ geom_point()
 
 {% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-07.png" alt="Scatter plot displaying the relationship of population (in natural logarithm) in 15% of the sister cities that were randomly selected." caption="Figure 7. Scatter plot comparing the population size (in natual logarithm) of randomly selected sister-city pairs." %}
 
-Now that you have created this basic plot, you can start playing with its appearance. Why not begin by applying a fixed size and color to the points:  
+Now that you have created this basic plot, you can start playing with its appearance. Why not begin by applying a fixed size and color to the points. The code below changes the point color to a dark burgundy, using the hex code #4B0000:
 
 ```
 
@@ -313,7 +313,7 @@ aes(x = log(originpopulation),
 
 y = log(destinationpopulation))) +
 
-geom_point(size = 0.8, color = "red")
+geom_point(size = 0.8, color = "#4B0000")
 
 ```
 
@@ -331,7 +331,7 @@ aes(x = log(originpopulation),
 
 y = log(destinationpopulation))) +
 
-geom_point(size = 0.8, color = "red") +
+geom_point(size = 0.8, color = "#4B0000") +
 
 labs(title = "Population size of origin and destination city",
 
@@ -480,7 +480,7 @@ In this example, again, using a scale will provide the tools to correct these de
 
 There are [several methods for creating gradient scales in ggplot2](http://ggplot2.tidyverse.org/reference/scale_gradient.html). For our purpose, we will use the `scale_colour_gradient()` function. This allows you to assign specific colors to the minimum and maximum values of the continuous variable. ggplot2 then automatically interpolates the colors for the intermediate values based on the chosen gradient.
 
-You can work with the `p2` object created earlier and use the `+` operator to modify it. You've already mapped the `dist` variable (distance between cities) to the color aesthetic using `color = dist` inside the `aes()` function. Now, add the `scale_colour_gradient()` function to customize the color gradient. In the code below, you set the color for the lowest value of the `dist` variable to white and the highest value to red. This means lighter shades of red will represent shorter distances, while darker shades represent longer distances.
+You can work with the `p2` object created earlier and use the `+` operator to modify it. You've already mapped the `dist` variable (distance between cities) to the color aesthetic using `color = dist` inside the `aes()` function. Now, add the `scale_colour_gradient()` function to customize the color gradient. In the code below, you set the color for the lowest value of the `dist` variable to white and the highest value to the hex code for a dark burgundy (#4B0000). This means lighter shades of red will represent shorter distances, while darker shades represent longer distances.
 
 ```
 

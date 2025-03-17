@@ -35,13 +35,13 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-In this tutorial, you will learn how to organize a set of texts for research; that is, you will learn the basic steps of creating a corpus. You will also learn the main metrics of quantitative text analysis. For this purpose, you will learn to use a platform that does not require installation (just an Internet connection): Voyant Tools (Sinclair and Rockwell, 2016). This tutorial is intended as a first step in an increasingly complex series of corpus linguistics methods. In this sense, this tutorial can be considered as one of the options for corpus analysis you can find in PH (see for example: “Corpus Analysis with Antconc”).
+In this tutorial, you will learn how to organize a set of texts for research; that is, you will learn the basic steps of creating a *corpus*. You will also learn the main metrics of quantitative text analysis. For this purpose, you will learn to use a platform that does not require installation (just an Internet connection): Voyant Tools (Sinclair and Rockwell, 2016). This tutorial is intended as a first step in an increasingly complex series of *corpus* linguistics methods. In this sense, this tutorial can be considered as one of the options for *corpus* analysis you can find in PH (see for example: “Corpus Analysis with Antconc”).
 
 ### Corpus Analysis
 
 Corpus analysis is a type of [content analysis](https://vocabularyserver.com/tadirah/en/index.php?tema=26&/content-analysis) that allows large-scale comparisons of a set of texts or a corpus.
 
-Since the advent of computing, both computational linguists and [information retrieval](https://vocabularyserver.com/tadirah/en/index.php?tema=107&/information-retrieval-analysis-content-analysis) specialists have created and used software to notice patterns that are not evident in traditional reading or to corroborate hypotheses they intuited when reading certain texts but required laborious, costly, and mechanical work. For example, to obtain patterns of increase and decline in usage of certain terms over a given period, it was necessary to hire people to manually review a text and note how many times the sought term appeared. Early on, observing the counting capabilities of computers, these specialists promptly wrote programs to facilitate the task of creating frequency lists or concordance tables (i.e., tables with the left and right contexts of a term). The program you will learn to use in this tutorial falls into this context.
+Since the advent of computing, both computational linguists and [information retrieval](https://vocabularyserver.com/tadirah/en/index.php?tema=107&/information-retrieval-analysis-content-analysis) specialists have created and used software to notice patterns that are not evident in apparent to the naked eye or to corroborate hypotheses they intuited when reading certain texts but required laborious, costly, and mechanical work. For example, to obtain patterns of increase and decline in usage of certain terms over a given period, it was necessary to hire people to manually review a text and note how many times the sought term appeared. Early on, observing the counting capabilities of computers, these specialists promptly wrote programs to facilitate the task of creating frequency lists or concordance tables (i.e., tables with the left and right contexts of a term). The program you will learn to use in this tutorial falls into this context.
 
 ### What You Will Learn in This Tutorial
 
@@ -52,8 +52,8 @@ As stated in this other [tutorial](https://programminghistorian.org/en/lessons/c
 By the end of this tutorial, you will be able to:
 
 - Assemble a plain text corpus
-- Load your corpus into Voyant Tools
-- Understand and apply different corpus segmentation techniques
+- Load your *corpus* into Voyant Tools
+- Understand and apply different *corpus* segmentation techniques
 - Identify basic characteristics of your text set:
   - Length of the uploaded documents
   - Lexical density (called vocabulary density on the platform)
@@ -63,11 +63,11 @@ By the end of this tutorial, you will be able to:
 
 ## Creating a Plain Text Corpus
 
-Although VoyantTools can work with many formats (HTML, XML, PDF, RTF, and MS Word), in this tutorial we will use plain text (`.txt`). Plain text has three fundamental advantages: it has no additional formatting, does not require a special program, and does not require extra knowledge of text analysis. The steps to create a plain text corpus are:
+Although VoyantTools can work with many formats (HTML, XML, PDF, RTF, and MS Word), in this tutorial we will use plain text (`.txt`). Plain text has three fundamental advantages: it has no additional formatting, does not require a special program, and does not require extra knowledge of text analysis. The steps to create a plain text *corpus* are:
 
 ### 1. Search for Texts
 
-The first thing you need to do is search for the information that interests you. For this tutorial, we have prepared a corpus of President George Washington's Annual Messages to Congress from 1789 to 1796. This corpus has been released under a Creative Commons CC BY 4.0 license and you can use it as long as you cite the source as follows:
+The first thing you need to do is search for the information that interests you. For this tutorial, we have prepared a *corpus* of President George Washington's annual messages to Congress from 1789 to 1796. This *corpus* has been released under a Creative Commons CC BY 4.0 license and you can use it as long as you cite the source as follows:
 
 > Cisneros, J., & Martinez, A. (2024). presidential-speeches-GW_v1 (Versión v1).
 > [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11456208.svg)](https://doi.org/10.5281/zenodo.11456208)
@@ -84,10 +84,10 @@ Once you have located the information, the second step is to copy the text you a
 
 When saving the text, you must consider three essential things.
 
-1. **Save your texts in UTF-8**, which is a standard encoding format for Spanish and other languages.
+1. **Save your texts in UTF-8**, which is a standard encoding format for English, Spanish and other languages.
 
    > **What is UTF-8?**  
-   > Although we see an "É" when typing an "É" on our screen; for a computer, "É" is a series of zeros and ones that are interpreted as an image depending on the "translator" or "encoder" being used. The encoder that contains binary codes for all the characters used in Spanish is UTF-8. Continuing with the example, "11000011" is an eight-bit string – that is, eight information spaces – which in UTF-8 are interpreted as "É".
+   > Although we see an "É" when typing an "É" on our screen; for a computer, "É" is a series of zeros and ones that are interpreted as an image depending on the "translator" or "encoder" being used. The encoder that contains binary codes for all the characters used in Spanish and English is UTF-8. Continuing with the example, "11000011" is an eight-bit string – that is, eight information spaces – which in UTF-8 are interpreted as "É".
 
    **On Windows**:
 
@@ -122,7 +122,7 @@ The second is that your file name should not contain accents nor spaces to ensur
    > **Why avoid accents and spaces in file names?**  
    > For similar reasons to the previous point, a file named Ébano.txt will not always be correctly understood by all operating systems since several have a different default encoder. Many use ASCII, for example, which only has seven bits, so the last bit (1) of "11000011" is interpreted as the start of the next character and the interpretation is skewed.
 
-3. **Integrate context metadata** (e.g., date, genre, author, origin) into the file name, allowing you to divide your corpus according to different criteria and also read the results better.
+3. **Integrate context metadata** (e.g., date, genre, author, origin) into the file name, allowing you to divide your *corpus* according to different criteria and also read the results better.
 
 For this tutorial, we have named the files with the month, day, year, and order in which President George Washington delivered the Annual Message to Congress.
 
@@ -134,7 +134,7 @@ For this tutorial, we have named the files with the month, day, year, and order 
 
 On the Voyant Tools homepage, you will find four simple options for loading texts. The first two options are in the white box. In this box, you can directly paste a text that you have copied from somewhere; or, paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on “Open” and select one of the two corpora that Voyant has preloaded (the works of Shakespeare or the novels of Austen: both in English).
 
-Finally, there is the option we will use in this tutorial, where you can directly upload the documents you have on your computer. In this case, we will upload the complete corpus of presidential speeches.
+Finally, there is the option we will use in this tutorial, where you can directly upload the documents you have on your computer. In this case, we will upload the complete *corpus* of presidential speeches.
 
 To upload the materials, click on the icon that says "Upload," open your file explorer, and, while holding down the "Shift" key, select all the files you want to analyze.
 
@@ -142,7 +142,7 @@ To upload the materials, click on the icon that says "Upload," open your file ex
 
 ## Exploring the Corpus
 
-Once all the files are uploaded, you will reach the "interface" ("skin") that has five default tools. Here is a brief explanation of each of these tools:
+Once all the files are uploaded, you will reach the "interface" that has five default tools. Here is a brief explanation of each of these tools:
 
 - Cirrus: word cloud showing the most frequent terms
 
@@ -152,7 +152,7 @@ Once all the files are uploaded, you will reach the "interface" ("skin") that ha
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-06.png" alt="Voyant Tools interface showing the 'Reader' window, where the full text of documents is displayed. A bar graph on the side indicates the length of each document in the corpus." caption="Figure 6. Reader" %}
 
-- Trends: distribution graph showing terms throughout the corpus (or within a document when only one is uploaded)
+- Trends: distribution graph showing terms throughout the *corpus* (or within a document when only one is uploaded)
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-07.png" alt="Graph in Voyant Tools showing the distribution of specific terms across a corpus over time. The graph visualizes how the frequency of terms varies throughout the documents." caption="Figure 7. Trends" %}
 
@@ -173,7 +173,7 @@ One of the most informative windows in Voyant is the summary. Here we get an ove
 
 The first sentence we read looks something like this:
 
-> This corpus has 9 documents with 17,893 total words and 3,169 unique word forms. Created 53 seconds ago.
+> This *corpus* has 9 documents with 17,893 total words and 3,169 unique word forms. Created 53 seconds ago.
 
 From the start, with this information, we know exactly how many distinct documents were uploaded (9); how many words there are in total (17,893); and how many unique words exist (3,169).
 
@@ -181,9 +181,9 @@ Below, you will find nine activities that can be resolved in groups or individua
 
 **Activity 1**
 
-If our corpus consisted of two documents; one that said: "I'm hungry"; and another that said: "I'm sleepy." What information would appear in the first line of the summary? Complete:
+If our *corpus* consisted of two documents; one that said: "I'm hungry"; and another that said: "I'm sleepy." What information would appear in the first line of the summary? Complete:
 
-> This corpus has __ documents with a total of __ words and __ unique words.
+> This *corpus* has __ documents with a total of __ words and __ unique words.
 
 ---
 
@@ -289,7 +289,7 @@ By default, a box that says "Apply globally" is selected; if this box is left se
 
 ### Frequencies with Filtered Stop Words
 
-Let’s go back to this section of the summary. As we said in the previous point, filtered words affect other fields in Voyant. In this case, if you left the "Apply globally" box selected, the list that appears below the legend: "Most frequent word in the corpus," will show the most repeated words excluding those that were filtered. In my case, it shows:
+As we said in the previous point, filtered words affect other fields in Voyant. In this case, if you left the "Apply globally" box selected, the list that appears below the legend: "Most frequent word in the corpus," will show the most repeated words excluding those that were filtered. In my case, it shows:
 
 > states (91); united (83); public (60); government (53); citizens (40)
 
@@ -305,7 +305,7 @@ Although frequencies can tell us something about our texts, there are many varia
 
 ### Normalized Frequency
 
-In the previous section, we observed the "gross frequency" of words. However, if we had a corpus of six words and another of 3,000 words, gross frequencies are not very informative. Three words in a corpus of six words represent 50% of the total, while three words in a corpus of 6,000 represent 0.1% of the total. To avoid the over-representation of a term, linguists have devised another measure called: "normalized relative frequency." This is calculated as follows:  
+In the previous section, we observed the "gross frequency" of words. However, if we had a *corpus* of six words and another of 3,000 words, gross frequencies are not very informative. Three words in a *corpus* of six words represent 50% of the total, while three words in a *corpus* of 6,000 represent 0.1% of the total. To avoid the over-representation of a term, linguists have devised another measure called: "normalized relative frequency." This is calculated as follows:  
 Gross Frequency * 1,000,000 / Total Number of Words
 
 Let’s analyze a verse as an example. Let’s take the phrase:  
@@ -316,7 +316,7 @@ Let’s analyze a verse as an example. Let’s take the phrase:
 | heart  | 1               | 1 * 1,000,000 / 7 = 142,857  |
 | says   | 2               | 2 * 1,000,000 / 7 = 285,714  |
 
-What is the advantage of this? If we had a corpus in which the word `corazón` had the same proportion, for example, 1,000 occurrences out of 7,000 words, while the gross frequency is very different, the normalized frequency would be the same, as `1,000 * 1,000,000 / 7,000 = 142,857`.
+What is the advantage of this? If we had a *corpus* in which the word `corazón` had the same proportion, for example, 1,000 occurrences out of 7,000 words, while the gross frequency is very different, the normalized frequency would be the same, as `1,000 * 1,000,000 / 7,000 = 142,857`.
 
 Let’s see how this works in Voyant Tools:
 
@@ -331,7 +331,7 @@ Let’s see how this works in Voyant Tools:
 
 3. If you sort the columns in descending order as you would in a spreadsheet program, you will see that the order of gross frequency ("Count") and relative frequency ("Relative") is the same.  
 
-> **Note**: This measure is more useful for comparing different corpora. A corpus is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If we wanted each speech to be a different corpus, we would have to save our text in a table (HTML or XML), where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).
+> **Note**: This measure is more useful for comparing different corpora. A *corpus* is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If we wanted each speech to be a different corpus, we would have to save our text in a table (HTML or XML), where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).
 
 ---
 
@@ -349,7 +349,7 @@ To obtain this measure in Voyant, repeat the steps you did to get the relative f
 
 ### Differentiated Words
 
-As you might suspect, the most interesting information is generally not found within the most frequent words, as these tend to be the most obvious. In the field of information retrieval, other measures have been devised that allow locating the terms that make one document stand out from another. One of the most commonly used measures is called **tf-idf** (*term frequency – inverse document frequency*). This measure seeks to express numerically how relevant a document is in a given collection; that is, in a collection of texts about "apples," the word `apple` can occur many times, but it tells us nothing new about the collection, so we do not want to know the gross frequency of the words (term frequency) but weigh it against how unique or common it is in the given collection (inverse document frequency).
+As you might suspect, the most interesting information is generally not found within the most frequent words, as these tend to be the most obvious. In the field of information retrieval, other measures have been devised that allow locating the terms that make one document stand out from another. One of the most commonly used measures is called **tf-idf** (*term frequency – inverse document frequency*). This measure seeks to express numerically how relevant a document is in a given collection; that is, in a collection of texts about "apples," the word `apple` can occur many times, but it tells us nothing new about the collection. For example, in a collection of texts about apples, the word “apple” can occur many times. The gross frequency of the “apple” (term frequency) tells us nothing new about the collection. Instead, we want to weigh its frequency in a document against its frequency in the given collection (inverse document frequency).
 
 In Voyant, tf-idf is calculated as follows:
 Gross Frequency (tf) / Number of Words (N) * log10 (Number of Documents / Number of times the term appears in the documents)
@@ -378,7 +378,7 @@ Look at the differentiated words (compared to the rest of the corpus) of each do
 
 ## Words in Context
 
-The project with which some histories inaugurate the Digital Humanities is the **Index Thomisticus**, a concordance of the work of Thomas Aquinas led by the philologist and religious Roberto Busa (Hockey, 2004), in which dozens of women participated in the coding (Terras, 2013). This project, which took years to complete, is a built-in function in Voyant Tools: in the lower right corner, in the **Contexts** window, it is possible to make left and right concordance queries of specific terms.
+The project with which some histories inaugurate the Digital Humanities is the **Index Thomisticus**, a concordance of the work of Thomas Aquinas led by the philologist and religious Roberto Busa (Hockey, 2004), and coded by a team of developers that included dozens of women (Terras, 2013). This project, which took years to complete, is a built-in function in Voyant Tools: in the lower right corner, in the **Contexts** window, it is possible to make left and right concordance queries of specific terms.
 
 The table we see has the following default columns:
 
@@ -425,7 +425,7 @@ Select all data (`Ctrl+A` or `Ctrl+E`); copy it (`Ctrl+C`) and paste it into a s
 
 **Activity 1**
 
-This corpus has 2 documents with a total of 4 words and 3 unique words (I'm, hungry, sleepy).
+This *corpus* has 2 documents with a total of 4 words and 3 unique words (I'm, hungry, sleepy).
 
 **Activity 2**
 
@@ -455,7 +455,7 @@ These results seem to indicate that President Kirchner, in addition to having th
 ## Bibliography
 
 - Hockey, Susan. 2004. “The History of Humanities Computing”. *A Companion to Digital Humanities*. Schreibman et al. (editors). Blackwell Publishing Ltd. doi:[10.1002/9780470999875.ch1](https://doi.org/10.1002/9780470999875.ch1).
-- Peña, Gilberto Anguiano, and Catalina Naumis Peña. 2015. «Extracción de candidatos a términos de un corpus de la lengua general». *Investigación Bibliotecológica: Archivonomía, Bibliotecología e Información* 29 (67): 19-45. <https://doi.org/10.1016/j.ibbai.2016.02.035>.
+- Peña, Gilberto Anguiano, and Catalina Naumis Peña. 2015. «Extracción de candidatos a términos de un *corpus* de la lengua general». *Investigación Bibliotecológica: Archivonomía, Bibliotecología e Información* 29 (67): 19-45. <https://doi.org/10.1016/j.ibbai.2016.02.035>.
 - Sinclair, Stéfan and Geoffrey Rockwell, 2016. *Voyant Tools*. Web. <http://voyant-tools.org/>.
 - Terras, Melissa, 2013. “For Ada Lovelace Day – Father Busa’s Female Punch Card Operatives”. *Melissa Terras’ Blog*. Web. <http://melissaterras.blogspot.com/2013/10/for-ada-lovelace-day-father-busas.html>.
 
@@ -463,5 +463,5 @@ These results seem to indicate that President Kirchner, in addition to having th
 
 ## Footnotes
 
-[^2]: There are more complex ways to load the corpus that you can consult in the English documentation.  
+[^2]: There are more complex ways to load the *corpus* that you can consult in the English documentation.  
 [^3]: For more information, consult the English documentation.

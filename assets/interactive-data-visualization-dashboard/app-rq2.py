@@ -6,7 +6,7 @@ from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 import plotly.express as px
 
-lang_asrow = pd.read_csv("data/data_lang_asrow.csv", encoding="utf-8", index_col=[0])
+lang_asrow = pd.read_csv("data_lang_asrow.csv", encoding="utf-8", index_col=[0])
 lang_asrow_noeng = lang_asrow.drop(['English'])
 lang_asrow_noeng.columns = lang_asrow_noeng.columns.astype(str)
 
@@ -72,4 +72,4 @@ def generate_chart(year_left, year_right):
     return fig_left, fig_right
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)

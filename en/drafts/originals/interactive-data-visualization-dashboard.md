@@ -60,17 +60,17 @@ This lesson uses a free and open database from the Internet Archive's [Televisio
 
 | date_col   | Series | Value  |
 |------------|--------|--------|
-| 2023-05-17 | CNN    | 3.9329 |
-| 2023-05-18 | CNN    | 3.7608 |
-| 2023-05-19 | CNN    | 4.2881 |
-| 2023-05-20 | CNN    | 5.2805 |
-| 2023-05-21 | CNN    | 5.8981 |
+| 2022-01-01 | CNN    | 4.7030 |
+| 2022-01-02 | CNN    | 5.0427 |
+| 2022-01-03 | CNN    | 4.9139 |
+| 2022-01-04 | CNN    | 3.1541 |
+| 2022-01-05 | CNN    | 1.7270 |
 | ...        | ...    | ...    |
-| 2024-05-06 | MSNBC  | 0.3536 |
-| 2024-05-07 | MSNBC  | 0.3777 |
-| 2024-05-08 | MSNBC  | 0.3917 |
-| 2024-05-09 | MSNBC  | 0.4252 |
-| 2024-05-10 | MSNBC  | 0.5889 |
+| 2022-12-27 | MSNBC  | 2.5190 |
+| 2022-12-28 | MSNBC  | 3.0935 |
+| 2022-12-29 | MSNBC  | 3.1923 |
+| 2022-12-30 | MSNBC  | 3.3307 |
+| 2022-12-31 | MSNBC  | 3.0781 |
 
 
 ### Why Dash in Python?
@@ -139,11 +139,9 @@ The next section will walk you through the major coding steps. You'll need to sa
 ### Importing Libraries
 
 ```
-import datetime
 import requests
 import pandas as pd
 from io import StringIO
-from datetime import date
 import dash
 from dash import dcc
 from dash import html
@@ -152,32 +150,30 @@ import dash_bootstrap_components as dbc
 import plotly.express as px
 ```
 
-The `datetime` library is needed to manipulate date and time objects in Python. The `StringIO` library is needed to treat a string object as a file-like object, which will be useful when you need to convert the output from an HTML request to a pandas dataframe. The `plotly.express` library is needed to draw basic graphs, such as a line graph. 
+The `StringIO` library is needed to treat a string object as a file-like object, which will be useful when you need to convert the output from an HTML request to a pandas dataframe. The `plotly.express` library is needed to draw basic graphs, such as a line graph. 
 
 `dcc`, `html`, `Input`, and `Output` are the specific modules within the `dash` library that will be needed at various points in the code below. `dcc` (Dash Core Components) provides a set of popular components like text-input boxes, sliders, and dropdowns; `html` contains components that represent standard HTML elements, allowing you to structure a layout using HTML tags; and `Input`/`Output` are used for defining the interactivity in a Dash app. They allow you to specify how changes in one component (Input) should affect another component (Output).
 
 ### Retrieving Data Using an API
 
-We are going to use an API query to retrieve data. First, let's define a range of dates from which the API will retrieve data for our dataset. The goal is to create two string objects: `today_str` and `start_day_str`. Here, you are restricting the range to 365 days before today (including today):
+We are going to use an API query to retrieve data. First, let's define a range of dates from which the API will retrieve data for our dataset. The goal is to create two string objects: `start_day_str` and `last_day_str`. Here, you are restricting the range to 365 days in 2022:
 
 ```
-today = date.today()
-today_str = today.strftime("%Y%m%d")
-start_day = today - datetime.timedelta(365)
-start_day_str = start_day.strftime("%Y%m%d")
+start_day_str = '20211228'
+last_day_str = '20221231'
 ```
 
-Next, let's create two string objects which we'll use for our retrieval queries: one for Ukraine-related terms and one for Russia-related terms. The parameters to be specified include keywords, geographic market, output mode, output format, range of dates, and more:
+The two dates in the above will retrieve data from January 1, 2022 to December 31, 2022. Next, let's create two string objects which we'll use for our retrieval queries: one for Ukraine-related terms and one for Russia-related terms. The parameters to be specified include keywords, geographic market, output mode, output format, range of dates, and more:
 
 ```
-query_url_ukr = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(ukraine%20OR%20ukrainian%20OR%20zelenskyy%20OR%20zelensky%20OR%20kiev%20OR%20kyiv)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={today_str}120000"
+query_url_ukr = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(ukraine%20OR%20ukrainian%20OR%20zelenskyy%20OR%20zelensky%20OR%20kiev%20OR%20kyiv)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={last_day_str}120000"
 ```
 
 ```
-query_url_rus = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(kremlin%20OR%20russia%20OR%20putin%20OR%20moscow%20OR%20russian)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={today_str}120000"
+query_url_rus = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(kremlin%20OR%20russia%20OR%20putin%20OR%20moscow%20OR%20russian)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={last_day_str}120000"
 ```
 
-The Ukraine-related keywords chosen for this lesson are _Ukraine_, _Ukrainian_, _Zelenskyy_, _Zelensky_, _Kyiv_, and _Kiev_; the Russia-related keywords are _Russia_, _Russian_, _Putin_, _Kremlin_, and _Moscow_. The chosen geographic market is 'National' (United States). The output mode is the normalized percentage of airtime (this will inform the y-axis of the line graph that we'll create [later in this lesson](#coding-the-frontend)), while the output format is set to [CSV (comma-separated values)](https://perma.cc/7Y9E-V645). We will specify the start and end dates using the corresponding object names `start_day_str` and `today_str`. 
+The Ukraine-related keywords chosen for this lesson are _Ukraine_, _Ukrainian_, _Zelenskyy_, _Zelensky_, _Kyiv_, and _Kiev_; the Russia-related keywords are _Russia_, _Russian_, _Putin_, _Kremlin_, and _Moscow_. The chosen geographic market is 'National' (United States). The output mode is the normalized percentage of airtime (this will inform the y-axis of the line graph that we'll create [later in this lesson](#coding-the-frontend)), while the output format is set to [CSV (comma-separated values)](https://perma.cc/7Y9E-V645). We will specify the start and end dates using the corresponding object names `start_day_str` and `last_day_str`. 
 
 The encoding characters `%20` and `%22` represent space (` `) and double quotation mark (`"`), respectively. The [GDELT Project documentation](https://perma.cc/S6S6-BGCX) includes a complete description of each query parameter.
 
@@ -333,7 +329,7 @@ dbc.Row([ # row 3
 
 {% include figure.html filename="en-or-interactive-data-visualization-dashboard-02.gif" alt="A screen recording showing how editing the date on the date range picker changes the shape of the graph that is formed." caption="Figure 2. The interactive date range picker feature." %}
 
-Using the code above, we have defined that when the dashboard is first loaded the date range will be set from the earliest possible to the latest possible date in the `date_col` column of the dataframe by default. Remember that those two dates are within a maximum range of 365 days apart (but the actual difference between eariest and latest as shown in the date picker could be shorter due to the fact that the most recent data may not be available yet).
+Using the code above, we have defined that when the dashboard is first loaded the date range will be set from the earliest possible to the latest possible date in the `date_col` column of the dataframe by default. Remember that those two dates are within a maximum range of 365 days apart.
 
 You are now ready to put the two line graphs in place in Row 4 and Row 5, respectively:
 
@@ -463,7 +459,7 @@ Finally, note that the two returned objects (`line_fig_ukr` and `line_fig_rus`) 
 Now, you can use the following code to actually see and test your dashboard:
 
 ```
-app.run_server(debug=True)
+app.run(debug=True)
 ```
 
 Debug mode is recommended to help you look into any errors you might encounter. 

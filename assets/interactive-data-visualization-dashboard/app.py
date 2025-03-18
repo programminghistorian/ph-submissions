@@ -1,8 +1,13 @@
-import datetime
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+This script creates the TV airtime dashboard in the Programming Historian Lesson - "Creating a Dashboard for Interactive Data Visualization with Dash in Python."
+"""
+
 import requests
 import pandas as pd
 from io import StringIO
-from datetime import date
 import dash
 from dash import dcc
 from dash import html
@@ -16,13 +21,11 @@ def to_df(queryurl):
   df = pd.read_csv(content_text)
   return df
 
-today = date.today()
-today_str = today.strftime("%Y%m%d")
-start_day = today - datetime.timedelta(365)
-start_day_str = start_day.strftime("%Y%m%d")
+start_day_str = '20211228'
+last_day_str = '20221231'
 
-query_url_ukr = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(ukraine%20OR%20ukrainian%20OR%20zelenskyy%20OR%20zelensky%20OR%20kiev%20OR%20kyiv)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={today_str}120000"
-query_url_rus = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(kremlin%20OR%20russia%20OR%20putin%20OR%20moscow%20OR%20russian)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={today_str}120000"
+query_url_ukr = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(ukraine%20OR%20ukrainian%20OR%20zelenskyy%20OR%20zelensky%20OR%20kiev%20OR%20kyiv)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={last_day_str}120000"
+query_url_rus = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(kremlin%20OR%20russia%20OR%20putin%20OR%20moscow%20OR%20russian)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={last_day_str}120000"
 
 df_ukr = to_df(query_url_ukr)
 df_rus = to_df(query_url_rus)
@@ -115,4 +118,4 @@ def update_output(start_date, end_date):
     return line_fig_ukr, line_fig_rus
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)

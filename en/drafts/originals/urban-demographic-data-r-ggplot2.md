@@ -213,13 +213,13 @@ While these initial observations provide a starting point for understanding rela
 ## Other Geoms: Histograms, Distribution Plots and Box Plots
 
 So far, you have been introduced to the key syntax needed to operate ggplot2: creating layers and adding parameters. One of the most important layers is the `geoms` layer. Using it is quite straightforward, as every plot type has its associated geom:
-- `geom_histogram()` for [histograms](http://ggplot2.tidyverse.org/reference/geom_histogram.html)
-- `geom_boxplot()` for [boxplots](http://ggplot2.tidyverse.org/reference/geom_boxplot.html)
-- `geom_violin()` for [violin plots](http://ggplot2.tidyverse.org/reference/geom_violin.html)
-- `geom_dotplot()` for [dotplots](http://ggplot2.tidyverse.org/reference/geom_dotplot.html)
-- `geom_point()` for [scatterplot](http://ggplot2.tidyverse.org/reference/geom_point.html)
+- `geom_histogram()` for [histograms](https://perma.cc/64E8-GDFB)
+- `geom_boxplot()` for [box plots](https://perma.cc/SE8K-5GPD)
+- `geom_violin()` for [violin plots](https://perma.cc/9PLE-352E)
+- `geom_dotplot()` for [dot plots](https://perma.cc/Y96C-HSYH)
+- `geom_point()` for [scatter plot](https://perma.cc/4WMT-JNNJ)
 
-[and so on](https://ggplot2.tidyverse.org/reference/#geoms).
+[and so on](https://perma.cc/QA4T-2Q3A).
 
 You can easily configure various aspects of each of these `geom()` types, such as their size and color.
 
@@ -239,11 +239,11 @@ ggplot(eudata.filtered, aes(x=dist)) + geom_histogram()
 
 {% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-04.png" alt="Histogram showing distances (in natural log) between sister cities." caption="Figure 4. Histogram showing distances between sister cities." %}
 
-As shown by the code above, you only needed to add `geom_histogram()` to create a histogram. However, making an effective histogram involves a bit more work. It is important, for example, to determine a [bin size](https://en.wikipedia.org/wiki/Data_binning) that makes sense for the data. The bin size, also known as the 'interval' or 'bandwidth', refers to the width of each bar, and determines how data is grouped and displayed along the x-axis. In the histogram created in Figure 4, ggplot2 defaulted to a binwidth of 30 (`bins=30`) – but a warning message recommends picking a better value. You can explore more configuration possibilities in the [`geom_histogram()` documentation](http://ggplot2.tidyverse.org/reference/geom_histogram.html).
+As shown by the code above, you only needed to add `geom_histogram()` to create a histogram. However, making an effective histogram involves a bit more work. It is important, for example, to determine a [bin size](https://perma.cc/4ABG-MV73) that makes sense for the data. The bin size, also known as the 'interval' or 'bandwidth', refers to the width of each bar, and determines how data is grouped and displayed along the x-axis. In the histogram created in Figure 4, ggplot2 defaulted to a binwidth of 30 (`bins=30`) – but a warning message recommends picking a better value. You can explore more configuration possibilities in the [`geom_histogram()` documentation](https://perma.cc/G29K-53LK).
 
-This simple graph shows a right-[skewed](https://en.wikipedia.org/wiki/Skewness) distribution: the `dist` variable tells us that while the majority of sister cities tend to be geographically close, there are a few exceptions in which cities form partnerships with far-off counterparts. 
+This simple graph shows a right-[skewed](https://perma.cc/LA9B-YVGG) distribution: the `dist` variable tells us that while the majority of sister cities tend to be geographically close, there are a few exceptions in which cities form partnerships with far-off counterparts. 
 
-You can use a [cumulative distribution function (ECDF)](https://en.wikipedia.org/wiki/Empirical_distribution_function) using the unfiltered dataset to gain additional insights into this pattern and better understand the spatial distribution of sister-city relationships. Think of the ECDF like climbing a mountain: just as a mountain's profile reveals its shape, the ECDF's curve reveals the shape of the `dist` variable's distribution. A right-skewed distribution would look like a mountain with a steep initial ascent (many cities with short distances) followed by a gentle slope toward the summit (fewer cities with longer distances). This would confirm that the skewness observed in the `dist` variable is a genuine feature of how cities form partnerships. Unlike a histogram, which can change shape depending on how you group the distances, the ECDF's mountain profile remains consistent. 
+You can use a [cumulative distribution function (ECDF)](https://perma.cc/QL57-3BGA) using the unfiltered dataset to gain additional insights into this pattern and better understand the spatial distribution of sister-city relationships. Think of the ECDF like climbing a mountain: just as a mountain's profile reveals its shape, the ECDF's curve reveals the shape of the `dist` variable's distribution. A right-skewed distribution would look like a mountain with a steep initial ascent (many cities with short distances) followed by a gentle slope toward the summit (fewer cities with longer distances). This would confirm that the skewness observed in the `dist` variable is a genuine feature of how cities form partnerships. Unlike a histogram, which can change shape depending on how you group the distances, the ECDF's mountain profile remains consistent. 
 
 In ggplot2, you can create an ECDF by adding the `stat_ecdf()` layer to your plot. Here's an example:
 
@@ -277,7 +277,7 @@ Let's explore how demographic characteristics influence urban relationships by e
 
 You will begin by creating a scatter plot connecting the population size of origin and destination cities. A scatter plot is a graph that uses dots or points to represent the intersecting values of two variables for each observation. In this case, each point on the scatterplot will represent a sister-city pair, with the x-coordinate indicating the population size of the origin city and the y-coordinate representing the population size of the destination city. If we observe a clear positive trend, with points clustering along a diagonal line from the bottom left to the top right of the plot, it will suggest that cities tend to form relationships with other cities of similar population size.
 
-Since `eudata` contains 13081 entries, using them all would lead to overplotting. Therefore, in this example, you will select a random sample of 15% of the cities in the data, using the function [`sample_frac()`](http://dplyr.tidyverse.org/reference/sample.html). It's also helpful to work with the [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the population size to overcome skewness. Since you are using a random data selection, you must 'set a seed' to ensure reproducibility. This means that if you run the code again, ggplot2 will reselect the same random sample. You can do this with the `set.seed()` function:
+Since `eudata` contains 13081 entries, using them all would lead to overplotting. Therefore, in this example, you will select a random sample of 15% of the cities in the data, using the function [`sample_frac()`](http://dplyr.tidyverse.org/reference/sample.html). It's also helpful to work with the [natural logarithm](https://perma.cc/C8NX-WHP7) of the population size to overcome skewness. Since you are using a random data selection, you must 'set a seed' to ensure reproducibility. This means that if you run the code again, ggplot2 will reselect the same random sample. You can do this with the `set.seed()` function:
 
 ```
 
@@ -319,9 +319,9 @@ geom_point(size = 0.8, color = "#4B0000")
 
 {% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-08.png" alt="Changing the size and color of the points of a scatterplot." caption="Figure 8. Changing the size and color of the points in the scatter plot." %}
 
-To discover other available arguments, you can visit the `geom_point()` function's [documentation](http://ggplot2.tidyverse.org/reference/geom_point.html), or simply type `?geom_point` in R.
+To discover other available arguments, you can visit the `geom_point()` function's [documentation](https://perma.cc/4WMT-JNNJ), or simply type `?geom_point` in R.
 
-You can keep improving the plot by adding axis labels and a title. Manipulating axes is usually done through the corresponding `scales` functions, which we will cover later on. But since changing the plot's legends is a very common action, ggplot also provides the shorter function [`labs()`](http://ggplot2.tidyverse.org/reference/labs.html) (which stands for labels) for this specific purpose:
+You can keep improving the plot by adding axis labels and a title. Manipulating axes is usually done through the corresponding `scales` functions, which we will cover later on. But since changing the plot's legends is a very common action, ggplot also provides the shorter function [`labs()`](https://perma.cc/544S-88AV) (which stands for labels) for this specific purpose:
 
 ```
 
@@ -357,9 +357,9 @@ ggsave("eudata.png")
 
 ```
 
-This will create a `.png` file of the last plot you constructed. The function `ggsave()` also comes with [many adjustable parameters](http://ggplot2.tidyverse.org/reference/ggsave.html) (dpi, height, width, format, and more).
+This will create a `.png` file of the last plot you constructed. The function `ggsave()` also comes with [many adjustable parameters](https://perma.cc/SL2S-X2PU) (dpi, height, width, format, and more).
 
-You may sometimes want to enhance your graph by encoding additional information, using different colors or shapes. This is particularly useful if you want to represent [categorical variables](https://en.wikipedia.org/wiki/Categorical_variable) alongside the main variables of interest. In the scatter plot (Figure 8), you used static values to determine the size and color of the points. However, you could also map these aesthetic properties to specific columns in the data, in order to systematically visualize your different categories.
+You may sometimes want to enhance your graph by encoding additional information, using different colors or shapes. This is particularly useful if you want to represent [categorical variables](https://perma.cc/FZ9W-FQ8L) alongside the main variables of interest. In the scatter plot (Figure 8), you used static values to determine the size and color of the points. However, you could also map these aesthetic properties to specific columns in the data, in order to systematically visualize your different categories.
 
 For instance, say you want to distinguish between the different sister-city relationships by highlighting the type of destination country in each pair. Our dataset's `typecountry` variable is a categorical variable which indicates whether the destination city is in the same country as the origin city, in another EU country, or another non-EU country. To incorporate this information, you can map the `typecountry` variable to the `color` parameter by passing the `aes()` function to `geom_point()`:
 
@@ -421,7 +421,7 @@ y = "Population of destination city (log)")
 
 ```
 
-One common use of scales is to change the colors of a plot. To manually specify the colors you want, you can use the `scale_color_manual()` function and provide a [vector](https://www.w3schools.com/r/r_vectors.asp) of color values, using color names [defined by R](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) or their hexadecimal codes. [`scale_colour_manual()`](http://ggplot2.tidyverse.org/reference/scale_manual.html) takes a compulsory argument (`values =`), namely a vector of the color names. In this way, you can create graphs with your chosen colors:
+One common use of scales is to change the colors of a plot. To manually specify the colors you want, you can use the `scale_color_manual()` function and provide a [vector](https://perma.cc/XV2R-DLSY) of color values, using color names [defined by R](https://perma.cc/TM3F-D8JP) or their hexadecimal codes. [`scale_colour_manual()`](https://perma.cc/T72S-NYXC) takes a compulsory argument (`values =`), namely a vector of the color names. In this way, you can create graphs with your chosen colors:
 
 ```
 
@@ -431,7 +431,7 @@ p1 + scale_colour_manual(values = c("red", "blue", "green"))
 
 {% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-11.png" alt="Scatter plot that uses scale_colour_manual() to change the colors of the scatterplot points." caption="Figure 11. Using scale_colour_manual() to specify the colors of the scatter plot's points." %}
 
-However, you can also simply rely on predefined color scales, such as the [color brewer palettes](http://colorbrewer2.org). It's better to use these whenever possible, because choosing the right colors for visualizations is a very complicated issue (for instance, avoiding colors that are not distinguishable by people with impaired vision). Fortunately, ggplot2 comes with `scale_colour_brewer()` already [integrated](http://ggplot2.tidyverse.org/reference/scale_brewer.html):
+However, you can also simply rely on predefined color scales, such as the [color brewer palettes](http://colorbrewer2.org). It's better to use these whenever possible, because choosing the right colors for visualizations is a very complicated issue (for instance, avoiding colors that are not distinguishable by people with impaired vision). Fortunately, ggplot2 comes with `scale_colour_brewer()` already [integrated](https://perma.cc/BST9-7GMG):
 
 ```
 
@@ -441,7 +441,7 @@ p1 + scale_colour_brewer(palette = "Dark2") # you can try others such as "Set1",
 
 {% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-12.png" alt="Scatter plot that uses scale_colour_brewer() to change the colors of the scatterplot points." caption="Figure 12. Using scale_colour_brewer() to change the colors of the scatter plot's points." %}
 
-In the scatter plot above, you learned how to represent a qualitative (or categorical) variable (`typecountry`) using three different colors. In the next scatter plot, let's try to represent a [continuous variable](https://en.wikipedia.org/wiki/Continuous_or_discrete_variable#Continuous_variable) instead – for example, the distance between origin and destination cities, which we can show using varying intensities of color. You might try to simply map this color to the distance `log(dist)`, which is the continuous variable in this case:
+In the scatter plot above, you learned how to represent a qualitative (or categorical) variable (`typecountry`) using three different colors. In the next scatter plot, let's try to represent a [continuous variable](https://perma.cc/DT7J-MQD3) instead – for example, the distance between origin and destination cities, which we can show using varying intensities of color. You might try to simply map this color to the distance `log(dist)`, which is the continuous variable in this case:
 
 
 ```
@@ -478,7 +478,7 @@ Immediately, you'll notice that this code hasn't produced the most intuitive vis
 
 In this example, again, using a scale will provide the tools to correct these defaults and create visualizations that more accurately and effectively communicate the underlying data. To represent a continuous variable, gradient – or 'continuous' – color scales assign colors to values based on a smooth transition between hues or shades. This allows for an accurate representation of the continuous variable, as the gradual color change corresponds to the change in the variable's value. Using a gradient scale, you can visualize the distribution of values and identify patterns or trends in the data.
 
-There are [several methods for creating gradient scales in ggplot2](http://ggplot2.tidyverse.org/reference/scale_gradient.html). For our purpose, we will use the `scale_colour_gradient()` function. This allows you to assign specific colors to the minimum and maximum values of the continuous variable. ggplot2 then automatically interpolates the colors for the intermediate values based on the chosen gradient.
+There are [several methods for creating gradient scales in ggplot2](https://perma.cc/K6J3-GSQS). For our purpose, we will use the `scale_colour_gradient()` function. This allows you to assign specific colors to the minimum and maximum values of the continuous variable. ggplot2 then automatically interpolates the colors for the intermediate values based on the chosen gradient.
 
 You can work with the `p2` object created earlier and use the `+` operator to modify it. You've already mapped the `dist` variable (distance between cities) to the color aesthetic using `color = dist` inside the `aes()` function. Now, add the `scale_colour_gradient()` function to customize the color gradient. In the code below, you set the color for the lowest value of the `dist` variable to white and the highest value to the hex code for a dark burgundy (#4B0000). This means lighter shades of red will represent shorter distances, while darker shades represent longer distances.
 
@@ -516,7 +516,7 @@ p2
 
 ### Facetting a Graph
 
-Another great feature of ggplot2 is that it allows you to split your data into different plots based on a certain variable. In ggplot2, this is called [facetting](http://ggplot2.tidyverse.org/reference/index.html#section-facetting). The simplest facetting function is `facet_wrap()`, but you can also check out the richer [`facet_grid()`](http://ggplot2.tidyverse.org/reference/facet_grid.html) for more options.
+Another great feature of ggplot2 is that it allows you to split your data into different plots based on a certain variable. In ggplot2, this is called [facetting](https://perma.cc/B8NV-6LVE). The simplest facetting function is `facet_wrap()`, but you can also check out the richer [`facet_grid()`](https://perma.cc/A5UY-5HUQ) for more options.
 
 Earlier in the lesson, you created a plot which highlighted whether destination cities were within the same country as the origin city, in a different EU or a non-EU country. Using the `eudata.perc.country` tibble, you could facet this graph by adding a `facet_wrap()` layer based on the different origin countries:
 
@@ -554,7 +554,7 @@ p3 + theme_bw()
 
 {% include figure.html filename="en-or-urban-demographic-data-r-ggplot2-17.png" alt="Faceted bar graph with changed static elements using the theme_bw() function." caption="Figure 17. Changing static elements using theme_bw()." %}
 
-You can also install several packages which provide additional themes, such as [ggthemes](https://github.com/jrnold/ggthemes) or [ggtech](https://github.com/ricardo-bion/ggtech). In these, you will find for example `theme_excel` (replicating the classic charts in Excel) and `theme_wsj` (based on the plots in [_The Wall Street Journal_](https://en.wikipedia.org/wiki/The_Wall_Street_Journal)). The advantage of using ggplot2's themes to replicate these recognizable styles is not only simplicity, but also the fact that ggplot2 automatically takes into account the grammar of graphics when mapping your data to elements of the graph. 
+You can also install several packages which provide additional themes, such as [ggthemes](https://github.com/jrnold/ggthemes) or [ggtech](https://github.com/ricardo-bion/ggtech). In these, you will find for example `theme_excel` (replicating the classic charts in Excel) and `theme_wsj` (based on the plots in [_The Wall Street Journal_](https://perma.cc/ZDD6-SP95)). The advantage of using ggplot2's themes to replicate these recognizable styles is not only simplicity, but also the fact that ggplot2 automatically takes into account the grammar of graphics when mapping your data to elements of the graph. 
 
 For instance, to mimic graphs created by _The Wall Street Journal_, you can write the following:
 
@@ -574,7 +574,7 @@ p3 + theme_wsj()
 
 One of ggplot2's strengths is its extensive collection of [extensions](http://www.ggplot2-exts.org/) that can help enhance your analysis with specialized visualizations like network graphs (useful for showing relationships between cities, for example), time series graphs (for tracking demographic changes over time), and ridgeline plots (for comparing population distributions across different urban areas).
 
-Let's explore an example showcasing a ggplot2 extension that creates more advanced and visually striking plots. In this case, we will create a [ridgeline plot](https://www.data-to-viz.com/graph/ridgeline.html) – also known as a 'joyplot' – designed to visualize changes in distributions over time, across different categories. Ridgeline plots are particularly effective for comparing multiple distributions in a compact and aesthetically pleasing manner.
+Let's explore an example showcasing a ggplot2 extension that creates more advanced and visually striking plots. In this case, we will create a [ridgeline plot](https://perma.cc/D9Z2-XHAV) – also known as a 'joyplot' – designed to visualize changes in distributions over time, across different categories. Ridgeline plots are particularly effective for comparing multiple distributions in a compact and aesthetically pleasing manner.
 
 To create a ridgeline plot, you're going to use the ggridges package (one of many ggplot2 extensions). This adds a new layer called `geom_density_ridges()` and a new theme `theme_ridges()`, which expands R's plotting possibilities.
 

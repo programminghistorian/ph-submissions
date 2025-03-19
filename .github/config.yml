@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Programming Historian Project Team
+    url: https://programminghistorian.org/en/project-team
+    about: English
+  - name: Programming Historian Equipo
+    url: https://programminghistorian.org/es/equipo-de-proyecto
+    about: español
+  - name: Programming Historian Équipe
+    url: https://programminghistorian.org/fr/equipe-projet
+    about: français
+ - name: Programming Historian Equipe
+    url: https://programminghistorian.org/pt/equipe
+    about: português

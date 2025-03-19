@@ -576,21 +576,21 @@ Interactive visualization contributes to digital humanities by facilitating know
 
 You have learned:
 
-* How to retrieve publicly available data using an API using the `requests` library
+- How to retrieve publicly available data using an API using the `requests` library
 
->The data owner may have a restriction on the amount of data to be requested. You need to respect such a policy. As shown in the non-English newspaper case, something you could do is to time your requests (that is, resend your request after a certain time). 
+The data owner may have a restriction on the amount of data to be requested. You need to respect such a policy. As shown in the non-English newspaper case, something you could do is to time your requests (that is, resend your request after a certain time). 
 
-* How to create the frontend of a dashboard
+- How to create the frontend of a dashboard
   
->The key is to understand the page layout as a grid that contains a certain number of rows and columns. We used a CSS framework called Bootstrap, which is user-friendly for non-web-developers. This can help you get off the ground quickly. We did not discuss the use of [wireframe](https://perma.cc/ANL8-RHDK) in the planning stage, but that could be useful to consider if you work in a team, or your dashboard has many features and outputs.
+The key is to understand the page layout as a grid that contains a certain number of rows and columns. We used a CSS framework called Bootstrap, which is user-friendly for non-web-developers. This can help you get off the ground quickly. We did not discuss the use of [wireframe](https://perma.cc/ANL8-RHDK) in the planning stage, but that could be useful to consider if you work in a team, or your dashboard has many features and outputs.
 
-* How to create the backend of a dashboard
+- How to create the backend of a dashboard
   
->One takeaway regarding the backend: any changes in the user input will trigger changes in the output. There are two things to keep in mind. Firstly, the `id` you specify in the frontend component helps you to define the input and output variables in the callback decorator; and secondly, that the dataframe needs to be updated based on the changes in the input variables.
+One takeaway regarding the backend: any changes in the user input will trigger changes in the output. There are two things to keep in mind. Firstly, the `id` you specify in the frontend component helps you to define the input and output variables in the callback decorator; and secondly, that the dataframe needs to be updated based on the changes in the input variables.
 
-* How to deploy a dashboard for free
+- How to deploy a dashboard for free
 
->To achieve greatest impact, your dashboard needs to be seen by others. We used Render for the deployment, but that is only one of many options available at the time of writing. There are even more options if you are willing to pay a certain amount of money. The key is to find a platform that is reliable and sustainable over the long term.
+To achieve greatest impact, your dashboard needs to be seen by others. We used Render for the deployment, but that is only one of many options available at the time of writing. There are even more options if you are willing to pay a certain amount of money. The key is to find a platform that is reliable and sustainable over the long term.
 
 The final message of this lesson is to encourage you to adapt the code provided for your own projects. There are also numerous free online resources for further study. To get started, all you need to do is open a command line tool, open a text editor, and try out the Python code yourself!
 

@@ -618,21 +618,21 @@ To gain a more thorough understanding of ggplot2, we recommend you explore some 
 
 * The [official ggplot2 site](https://ggplot2.tidyverse.org/).
 
-* Hadley Wickham's books [`ggplot2`: _Elegant Graphics for Data Analysis_](https://ggplot2-book.org/) and [_R for Data Science_](https://r4ds.had.co.nz/).
+* Hadley Wickham's books [`ggplot2`: _Elegant Graphics for Data Analysis_](https://ggplot2-book.org/) and [_R for Data Science_](http://r4ds.hadley.nz/).
 
-* Hadley Wickham's [original paper](https://www.tandfonline.com/doi/abs/10.1198/jcgs.2009.07098) on the grammar of graphics.
+* Hadley Wickham's [original paper](https://doi.org/10.1198/jcgs.2009.07098) on the grammar of graphics.
 
-* Leland Wilkson's original book [_The Grammar of Graphics_](https://www.springer.com/gp/book/9780387245447).
+* Leland Wilkson's original book [_The Grammar of Graphics_](https://doi.org/10.1007/0-387-28695-0).
 
-* Selva Prabhakaran's [tutorial on r-statistics.co](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html).
+* Selva Prabhakaran's [tutorial on r-statistics.co](https://perma.cc/6Q2Q-L7UD).
 
 * Data Science Dojo's video [Introduction to Data Visualization with ggplot2](https://www.youtube.com/watch?v=NXjPcXx42Yc).
 
-* UC Business Analytics' [R Programming Guide](https://uc-r.github.io/ggplot_intro).
+* UC Business Analytics' [R Programming Guide](https://perma.cc/KZT6-GW9C).
 
 * The official ggplot2 [extensions page](https://www.ggplot2-exts.org/) and [accompanying gallery](http://www.ggplot2-exts.org/gallery/).
 
-* R Project’s [overview about extending ggplot2](https://cran.r-project.org/web/packages/ggplot2/vignettes/extending-ggplot2.html).
+* R Project’s [overview about extending ggplot2](https://perma.cc/465N-F9WU).
 
 * The [general documentation](https://ggplot2.tidyverse.org/reference/).
 
@@ -640,4 +640,4 @@ To gain a more thorough understanding of ggplot2, we recommend you explore some 
 
 * This official [R cheatsheet](https://www.rstudio.com/resources/cheatsheets/).
 
-* The gradient scale [documentation page](http://ggplot2.tidyverse.org/reference/scale_gradient.html).
+* The gradient scale [documentation page](https://perma.cc/8BWE-MVLV).

@@ -472,7 +472,7 @@ If you are working in a Jupyter Notebook, you can also choose to review the dash
 
 The dashboard should look like this:
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.png" alt="A screenshot showing what the dashboard looks like. There are two line graphs: one shows how media attention to Ukraine-related words in TV stations changes over time; the other shows the same but for Russia-related words" caption="Figure 3. The TV airtime dashboard interface." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.gif" alt="A screen recording showing what the dashboard looks like. There are two line graphs: one shows how media attention to Ukraine-related words in TV stations changes over time; the other shows the same but for Russia-related words. The line graphs change when the date range is modified." caption="Figure 3. The TV airtime dashboard interface." %}
 
 ## Deploying the Dashboard
 

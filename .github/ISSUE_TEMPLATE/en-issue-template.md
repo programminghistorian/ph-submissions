@@ -1,6 +1,7 @@
 ---
-title: Lesson title
+title: EN lesson title
 labels: 0. Proposal, English
+about: New EN lesson proposal issue template
 assignees: 
 ---
 

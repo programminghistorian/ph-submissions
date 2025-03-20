@@ -3,6 +3,7 @@ name: New EN lesson proposal
 title: EN lesson title
 labels: 0. Proposal, English
 about: New EN lesson proposal issue template
+project: "/programminghistorian/projects/5/"
 assignees: 
 ---
 

@@ -1,5 +1,7 @@
 ---
-title: Lesson title
+name: New PT lesson proposal
+title: PT lesson title
+about: New PT lesson proposal issue template
 labels: 0. Proposal, Português
 assignees: 
 ---

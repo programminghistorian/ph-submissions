@@ -32,7 +32,7 @@ Le dossier de soumission doit inclure&nbsp;:
 
 Nous demandons à @auteur / @traducteur de partager leur dossier de soumission avec [notre équipe de publication par courriel] (mailto:admin@programminghistorian.org), en mettant en copie @éditeur. 
 
-Nous avons convenu d'une date de soumission de [90 JOURS PAR DÉFAUT, MAIS PLUS LONGUE SI CONVENU AVEC L'ÉDITEUR/ÉDITRICE]. Nous demandons à @auteur / @traducteur de nous contacter s'il/elle a besoin d'ajuster cette date limite. 
+Nous avons convenu d'une date de soumission de [90 JOURS]. Nous demandons à @auteur / @traducteur de nous contacter s'il/elle a besoin d'ajuster cette date limite. 
 
 Une fois le dossier de soumission reçu, notre équipe d'édition traitera le matériel et préparera un aperçu de la version initiale. Elle publiera un commentaire dans ce ticket pour indiquer l'emplacement des les fichiers clés, ainsi qu'un lien vers l'aperçu où les contributeurs pourront lire la leçon au fur et à mesure de la progression du projet. 
 

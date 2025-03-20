@@ -13,9 +13,9 @@ reviewers:
 editors:
 - Giulia Osti
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/606
-difficulty: 3
-activity: TBC
-topics: TBC
+difficulty: 2
+activity: presenting
+topics: r, data-visualization
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000

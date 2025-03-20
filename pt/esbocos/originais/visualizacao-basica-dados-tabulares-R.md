@@ -36,7 +36,7 @@ Quem não teve, ao longo da sua vida, de preencher uma folha de registo numa aul
 
 Se generalizarmos este conceito verificamos que, para cada ocorrência (neste caso, para cada pessoa que entra no edifício), preenche-se um conjunto de dados de vários tipos, onde cada coluna tem o mesmo tipo de informação (nome, número de telefone, data, etc.).
 
-Esta estrutura de dados (se usarmos o vocabulário das linguagens de programação) é muito útil para juntar vários tipos de informação numa mesma entidade (linha). Em R chamamos-lhe *dataframe*, que aqui traduzimos como *folha de registo*.
+Esta estrutura de dados (se usarmos o vocabulário das linguagens de programação) é muito útil para juntar vários tipos de informação sobre uma mesma entidade (linha). Em R chamamos-lhe *dataframe*, que aqui traduzimos por *folha de registo*.
 
 Uma folha de registo é representada por uma tabela. Cada coluna tem o mesmo tipo de dados. Mas as colunas podem ter informação diferente entre si.
 
@@ -52,13 +52,13 @@ escritores <- data.frame(id=c("JulDin","CamCBra","MacAss","CoeNet"), nome=c("Jú
 
 O comando `data.frame()` cria uma folha de registo. Por sua vez, `c()` — concatenar — cria um vetor com os argumentos.
 
-Para visualizar a folha de registo criada no R basta escrever o seu nome (será mostrada se não for grande de mais). Na Figura 1 temos o resultado.
+Para visualizar a folha de registo criada no R basta escrever o seu nome (será mostrada se não for grande demais). Na Figura 1 temos o resultado.
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-01.png" alt="Resultado da visualização da folha de registo pelo R, ao digitar o seu nome" caption="Figura 1. Resultado da inspeção da folha de registo criada." %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-01.png" alt="Resultado da visualização da folha de registo pelo R, após digitar o seu nome" caption="Figura 1. Resultado da inspeção da folha de registo criada." %}
 
 Nesta é possível identificar cada coluna pelo nome. Por exemplo, a coluna que indica a data de nascimento é identificada como `escritores$nascimento`.
 
-Também é possível visualizar um resumo da folha de registo.
+Também é possível obter um resumo da folha de registo.
 
 ```
 summary(escritores)
@@ -74,7 +74,7 @@ Para juntar mais colunas, basta dar-lhes um novo nome e dizer como os valores s�
 escritores$tempoVida<-escritores$morte-escritores$nascimento
 ```
 
-No segundo exemplo, juntamos o sexo do autor que, neste caso, é sempre masculino, e escolhemos marcar como "masc":
+No segundo exemplo, juntamos o sexo do autor que, neste caso, é sempre masculino, e escolhemos marcá-lo como "masc":
 
 ```
 escritores$sexo<-"masc"
@@ -84,7 +84,7 @@ Embora apenas indiquemos um valor (e não um vetor), automaticamente o R repete 
 
 #### Adição de linhas
 
-Também se podem juntar mais linhas, usando a função `rbind()`, que significa *row bind* (em inglês. Pode ser traduzido como *ligar linhas*), e que recebe como argumentos uma folha de registo e novas linhas ou duas folhas de registo. Mas, neste caso, temos de atribuir um valor a cada coluna. Se usássemos a função `c()` (concatenar), todos os valores seriam considerados cadeias de carateres.
+Também se podem juntar mais linhas, usando a função `rbind()`, que significa *row bind* (em inglês. Pode ser traduzido como *ligar linhas*), e que recebe como argumentos uma folha de registo e novas linhas ou duas folhas de registo. Mas, neste último caso, temos de atribuir um valor a cada coluna. Se usássemos a função `c()` (concatenar), todos os valores seriam considerados cadeias de carateres.
 
 ```
 escritores<-rbind(escritores, c("JorAma","Jorge Amado",1912,2001,"BR",89,"masc"))
@@ -98,7 +98,7 @@ escritores<-rbind(escritores, data.frame(id="JorAma",nome="Jorge Amado",nascimen
 
 ### Leitura de fora do R
 
-Como referido, a forma mais comum é ler folhas de registo provenientes de fora do R. Nesse caso vêm, em geral, de planilhas ou folhas de cálculo. Ao observá-las é possível indicar:
+Como referido, a forma mais comum é ler folhas de registo provenientes de fora do R. Nesse caso vêm, em geral, de planilhas ou folhas de cálculo. Ao lê-las é possível indicar:
 
 * se as colunas têm nome (se tiverem, lemos com a indicação `header=TRUE`).
 * qual o separador (por exemplo, `sep="\t"` se as várias colunas estiverem separadas por tabuladores, `sep=","` se estiverem separadas por vírgulas).
@@ -116,9 +116,9 @@ leria o que estivesse no ficheiro `fich41.tsv`, interpretando a primeira linha c
 
 ### Processamento de colunas de uma folha de registo
 
-Muitas vezes o que escrevemos na tabela é para ser um código de um conjunto fixo de etiquetas e não uma cadeia de carateres em português. Nesse caso, devemos indicar ao R que é um fator (um termo do R que designa uma variável categórica em estatística) e não uma palavra.
+Muitas vezes o que escrevemos na tabela é para ser um código de um conjunto fixo de etiquetas e não uma cadeia de carateres em português. Nesse caso, devemos indicar ao R que é um fator (`factor`, em R, que designa uma variável categórica em estatística) e não uma palavra.
 
-Na nossa folha de registo, BR e PT significam autor brasileiro e português, respetivamente, e queremos considerá-los um fator. O mesmo acontece para o sexo:
+Na nossa folhinha de registo, BR e PT significam autor brasileiro e português, respetivamente, e queremos considerá-los um fator. O mesmo acontece com o sexo:
 
 ```
 escritores$nacionalidade<-factor(escritores$nacionalidade)
@@ -136,7 +136,7 @@ Podemos, claro, adicionar mais valores ao fator:
 escritores$nacionalidade<-factor(escritores$nacionalidade,levels=c("PT","BR","AN"))
 ```
 
-E, agora, podemos adicionar os escritores angolanos:
+E, agora, podemos adicionar escritores angolanos:
 
 ```
 escritores<-rbind(escritores, data.frame(id="AgoNet",nome="Agostinho Neto",nascimento=1922,morte=1979,nacionalidade="AN",tempoVida=57,sexo="masc"))
@@ -153,22 +153,22 @@ A visualização é especialmente expressiva para valores numéricos, mas os fat
 
 ## Gráficos de barras
 
-Estes gráficos representam contagens de um certo número de características. Com a folha de registo que temos, a única contagem que faz sentido é a da nacionalidade. O primeiro comando tabula quantos casos temos por nacionalidade e o segundo produz um gráfico de barras.
+Estes gráficos representam contagens de um certo número de características. Com a folhinha de registo que temos, a única contagem que faz sentido é a da nacionalidade. O primeiro comando tabula quantos casos temos por nacionalidade e o segundo produz um gráfico de barras.
 
 ```
 table(escritores$nacionalidade)
 barplot(table(escritores$nacionalidade))
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-04.png" alt="Gráfico de barras com as nacionalidades dos autores" caption="Figura 4. Gráfico de barras com as nacionalidades dos autores." %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-04.png" alt="Gráfico de barras com a nacionalidade dos autores" caption="Figura 4. Gráfico de barras com a nacionalidade dos autores." %}
 
-Mas, vamos buscar folhas de registo muito mais ricas para demonstrar as potencialidades de visualização. Por exemplo, vejamos uma lista de obras literárias em português, usada no artigo Santos _et al._ (2020), com informação sobre o autor, data de publicação, escola literária e contagens de vários atributos sintáticos e semânticos.[^1]
+Mas vamos buscar folhas de registo muito mais ricas para demonstrar as potencialidades de visualização. Por exemplo, vejamos uma lista de obras literárias em português, usada no artigo Santos _et al._ (2020)[^1], com informação sobre o autor, data de publicação, escola literária e contagens de vários atributos sintáticos e semânticos.
 
 ```
 periodizacao<-read.table("https://www.linguateca.pt/Diana/UnivOslo/cursoR/dadosPeriodLit.tsv",header=TRUE)
 ```
 
-O primeiro argumento do comando `read.table()` indica onde se encontra o ficheiro que se pretende ler. Pode estar guardado localmente ([dadosPeriodLit.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacao-basica-dados-tabulares-R/dadosPeriodLit.tsv)) ou aceder-se através de um URL.[^2]
+O primeiro argumento do comando `read.table()` indica onde se encontra o ficheiro que se pretende ler. Pode estar guardado localmente ([dadosPeriodLit.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacao-basica-dados-tabulares-R/dadosPeriodLit.tsv)) ou estar acessível através de um URL.[^2]
 
 Através do comando `names()` podemos verificar os nomes das colunas. Já através de `str()` ou `summary()` podemos verificar o tipo de informação que cada coluna tem.
 
@@ -197,7 +197,7 @@ barplot(table(periodSemDesc$escola2))
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-05.png" alt="Gráfico de barras com as escolas literárias em inglês, com cinco classes. Romantism é a mais frequente" caption="Figura 5. Gráfico de barras com as escolas literárias (em inglês)." %}
 
-Criamos uma nova folha de registo, chamada `periodSemDesc`, a partir da folha de registo original. Esta contém apenas os casos em que se conhece a escola literária. A indicação `escola2!="desc"` significa que o valor da coluna `escola2` deve ser diferente de `desc`. Se, pelo contrário, quiséssemos um valor igual, usaríamos o sinal `==` em vez de `!=`.
+Criamos uma nova folha de registo, chamada `periodSemDesc`, a partir da folha de registo original, contendo apenas os casos em que se conhece a escola literária. A indicação `escola2!="desc"` significa que o valor da coluna `escola2` deve ser diferente de `desc`. Se, pelo contrário, quiséssemos um valor igual, usaríamos o sinal `==` em vez de `!=`.
 
 Se tivéssemos executado simplesmente os comandos
 ```
@@ -209,11 +209,11 @@ o gráfico de barras apresentaria uma barra nula para `desc`, como vemos na Figu
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-06.png" alt="Gráfico de barras com as escolas literárias em inglês, com cinco classes, sem termos removido o valor desc do fator escola" caption="Figura 6. Gráfico de barras com as escolas literárias (em inglês), sem termos removido o valor desc do fator escola." %}
 
 
-A indicação `periodizacao[periodizacao$escola2!="desc",]` significa todas as linhas da folha de registo `periodizacao` cuja coluna `escola2` não tenha o valor `desc` e todas as colunas. (Uma folha de registo tem sempre linhas e colunas e podemos selecioná-las de forma independente. Quando não colocamos nada, como depois da vírgula, significa que selecionamos todas.)
+A indicação `periodizacao[periodizacao$escola2!="desc",]` significa todas as linhas da folha de registo `periodizacao` cuja coluna `escola2` não tenha o valor `desc` e todas as colunas. (Uma folha de registo tem sempre linhas e colunas e podemos selecioná-las independentemente. Quando não colocamos nada, como depois da vírgula, significa que selecionamos todas.)
 
 ## Gráficos de caixa
 
-Os gráficos de caixa representam um conjunto de números, mostrando a sua mediana e a forma como estão distribuídos. A caixa propriamente dita representa 50% dos dados: a linha de baixo representa o valor dos 25% e a de cima o dos 75%, designados por primeiro quartil e terceiro quartil. A diferença entre Q3 e Q1 designa-se diferença entre quartis (*interquartile range*, em inglês, geralmente abreviado por IQR). Os traços horizontais, também chamados de bigodes (*whiskers*, em inglês), são calculados da seguinte forma:
+Os gráficos de caixa representam um conjunto de números, mostrando a sua mediana e a forma como estão distribuídos. A caixa propriamente dita representa 50% dos dados: a linha de baixo representa o valor dos 25% e a de cima o dos 75%, designados por primeiro quartil e terceiro quartil. A diferença entre Q3 e Q1 é chamada diferença entre quartis (*interquartile range*, em inglês, geralmente abreviado por IQR). Os traços horizontais, também chamados bigodes (*whiskers*, em inglês), são calculados da seguinte forma:
 
 * Bigode inferior: é o máximo de valor mínimo e de Q1-1.5*IQR.
 * Bigode superior: é o mínimo do valor máximo e de Q3+1.5*IQR.
@@ -234,7 +234,7 @@ O til (~) é como se designa "por" em R e espera que a indicação à direita se
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-08.png" alt="Gráfico de caixa da presença de palavras de cor por escola literária em inglês, mostrando seis gráficos de caixa, um por cada escola literária" caption="Figura 8. Gráfico de caixa da presença de palavras de cor por escola literária (em inglês)." %}
 
-Através do resultado, observamos que o naturalismo tem mais cor. Já o romantismo parece ter menos palavras de cor do que o realismo. Não nos interessa, aqui, seguir uma análise literária, mas apenas ilustrar o uso dos gráficos de caixa e a sua interpretação.
+O resultado mostra-nos que o naturalismo tem mais cor. Já o romantismo parece ter menos palavras de cor do que o realismo. Não nos interessa, aqui, efetuar uma análise literária, mas apenas ilustrar o uso dos gráficos de caixa e a sua interpretação.
 
 De facto, para poder comparar devidamente um grande conjunto de obras de tamanho variável, deveríamos ter calculado a percentagem de palavras de cor e não o número de palavras de cor.
 
@@ -269,7 +269,7 @@ barplot(table(algunsAutores$autor))
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-10.png" alt="Gráfico de barras com o número de obras por autor, mostrando que o autor com mais obras é Eça de Queirós, com um total de 15" caption="Figura 10. Gráfico de barras com o número de obras por autor." %}
 
 
-Mas, o mais interessante será comparar estes quatro autores, por exemplo, analisando a frequência relativa de emoções, no uso de nomes próprios ou na frequência de orações no conjuntivo/subjuntivo:
+Mas o mais interessante será comparar estes quatro autores analisando, por exemplo, a frequência relativa de emoções, no uso de nomes próprios ou na frequência de orações no conjuntivo/subjuntivo:
 
 ```
 boxplot(algunsAutores$emocoes/algunsAutores$tamanho~algunsAutores$autor,xlab="",ylab="", main="Frequência relativa de uso de palavras de emoção em romances por autor")
@@ -285,7 +285,7 @@ boxplot(algunsAutores$conjuntivo/algunsAutores$oracoes~algunsAutores$autor,xlab=
 
 ### Juntar mais do que uma folha de registo numa só
 
-Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo e da forma como a informação pode ser bem distribuída em folhas de registo diferentes, vamos criar uma nova que contenha toda a informação de duas folhas de registo que já usámos: `algunsAutores` e `escritores`. Para cada obra queremos obter, para além do nome do autor, informação nova que temos sobre ele, nomeadamente, a variante, o tempo de vida e o sexo. Para isso usamos o comando `merge()`. 
+Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo e da forma como a informação pode ser bem distribuída em folhas de registo diferentes, vamos criar uma nova que contenha toda a informação de duas folhas de registo que já usámos: `algunsAutores` e `escritores`. A cada obra queremos associar, para além do nome do autor, informação nova que temos sobre ele, nomeadamente, a variante, o tempo de vida e o sexo. Para isso usamos o comando `merge()`. 
 
 ```
 maisInfo<-merge(algunsAutores,escritores,by.x=c("autor", "sexo"),by.y=c("id","sexo"))
@@ -304,7 +304,7 @@ boxplot(maisInfo$virg/maisInfo$tamanho~maisInfo$nacionalidade,xlab="",ylab="", m
 
 ### Guardar folhas de registo
 
-Finalmente, assim como é possível ler folhas de registo de fora do R, também é possível guardá-las fora do R, para serem usadas por outros programas ou quando voltarmos a este software. Para isso o comando mais usual é o `write.table()`.
+Finalmente, assim como é possível ler folhas de registo de fora do R, também é possível guardá-las fora do R, para serem usadas por outros programas ou quando voltarmos a este ambiente (o R). Para isso o comando mais usual é o `write.table()`.
 
 Vamos guardar a folha de registo `maisInfo` num ficheiro chamado `obras4autoresComInfoAutor.txt` (mais propriamente, deveria ser chamado `.tsv`, visto que o separador vai ser um tabulador (indicado por `sep="\t"`, mas a extensão `.txt` permite ler diretamente num navegador (*browser*, em inglês)).
 
@@ -322,7 +322,7 @@ Por outro lado, pode haver razões para não haver dados em algumas colunas, mes
 
 O R tem o conceito de valor `NA` (*not available*, em inglês, significando inexistente em português). Praticamente todas as funções do R têm um comportamento apropriado para estes valores. Além disso, é possível testar e identificar os casos que faltam, através das funções `is.na()` ou `na.exclude()`.
 
-No caso dos diagramas apresentados na presente lição, apenas esses casos são excluídos da visualização, como podemos verificar adicionando um autor ainda vivo e pedindo um diagrama de caixa do tempo de vida:
+No caso dos diagramas apresentados na presente lição, esses casos são simplesmente excluídos da visualização, como podemos verificar adicionando um autor ainda vivo e pedindo um diagrama de caixa do tempo de vida:
 
 ```
 escritores<-rbind(escritores, data.frame(id="Pepet",nome="Pepetela",nascimento=1941,morte=NA,nacionalidade="AN",tempoVida=NA,sexo="masc"))
@@ -341,9 +341,9 @@ Agora, pode seguir para lições mais complicadas como [Investigar a literatura 
 
 ## Notas de fim
 
-[^1]: Santos, D., Pires, E., Lopes, J. M., Fuão, R. and Freitas, C.. "Periodização automática: Estudos linguístico-estatísticos de literatura lusófona" In *Linguamática*, vol. 12, nº 1 (2020): 80-95.
+[^1]: Santos, Diana, Pires, Emanoel, Lopes, João Marques, Fuão, Rebeca and Freitas, Cláudia. "Periodização automática: Estudos linguístico-estatísticos de literatura lusófona" In *Linguamática*, vol. 12, nº 1 (2020): 80-95.
 
-[^2]: Em alguns navegadores este comando pode produzir o seguinte erro: `Error in file(file, "rt") : cannot open the connection to ’https://www.linguateca.pt/...'` Nesse caso, leia o ficheiro no seu próprio computador fora do R e execute apenas `read.table("dadosPeriodLit.tsv", header=TRUE)`.
+[^2]: Em alguns navegadores este comando pode produzir o seguinte erro: `Error in file(file, "rt") : cannot open the connection to ’https://www.linguateca.pt/...'` Nesse caso, leia o ficheiro para o seu próprio computador fora do R e execute apenas `read.table("dadosPeriodLit.tsv", header=TRUE)`.
 
 [^3]: Yi, Mike. *A complete guide to box plots*, <https://www.atlassian.com/data/charts/box-plot-complete-guide> (em inglês, consultado a 3 de maio de 2024).
 

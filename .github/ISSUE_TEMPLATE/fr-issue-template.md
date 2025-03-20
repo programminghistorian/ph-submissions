@@ -1,6 +1,8 @@
 ---
-title: Lesson title
+name: New FR lesson proposal
+title: FR lesson title
 labels: 0. Proposal, Français
+about: New FR lesson proposal issue template
 assignees: 
 ---
 

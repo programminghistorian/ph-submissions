@@ -294,7 +294,7 @@ Este comando é muito importante — correspondente ao "join" das bases de dados
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-14.png" alt="As primeiras linhas da folha de registo MaisInfo, demonstrando que têm mais colunas que as duas folhas que foram unidas" caption="Figura 14. O que o R mostra se pedirmos as primeiras linhas da folha de registo MaisInfo." %}
 
-O uso deste comando permite-nos, por exemplo, fazer um diagrama de caixa pela variedade do português e não pelos autores. Na Figura 15 observamos o uso das vírgulas.
+O uso deste comando permite-nos, por exemplo, fazer um diagrama de caixa pela variedade do português e não pelos autores. Na Figura 15 observamos o uso das vírgulas:
 
 ```
 boxplot(maisInfo$virg/maisInfo$tamanho~maisInfo$nacionalidade,xlab="",ylab="", main="Frequência relativa de uso de vírgulas em romances por variante")
@@ -306,7 +306,7 @@ boxplot(maisInfo$virg/maisInfo$tamanho~maisInfo$nacionalidade,xlab="",ylab="", m
 
 Finalmente, assim como é possível ler folhas de registo de fora do R, também é possível guardá-las fora do R, para serem usadas por outros programas ou quando voltarmos a este ambiente (o R). Para isso o comando mais usual é o `write.table()`.
 
-Vamos guardar a folha de registo `maisInfo` num ficheiro chamado `obras4autoresComInfoAutor.txt` (mais propriamente, deveria ser chamado `.tsv`, visto que o separador vai ser um tabulador (indicado por `sep="\t"`, mas a extensão `.txt` permite ler diretamente num navegador (*browser*, em inglês)).
+Vamos guardar a folha de registo `maisInfo` num ficheiro chamado `obras4autoresComInfoAutor.txt` (mais propriamente, deveria ser chamado `.tsv`, visto que o separador vai ser um tabulador indicado por `sep="\t"`, mas a extensão `.txt` permite ler diretamente num navegador ("browser", em inglês)):
 
 ```
 write.table(maisInfo,"obras4autoresComInfoAutor.txt", sep="\t", quote=FALSE)
@@ -320,7 +320,7 @@ Uma questão real de observações empíricas é que pode haver valores a que n�
 
 Por outro lado, pode haver razões para não haver dados em algumas colunas, mesmo em questões triviais: no exemplo que temos vindo a desenvolver, como preencher a data da morte de um autor ainda vivo?
 
-O R tem o conceito de valor `NA` (*not available*, em inglês, significando inexistente em português). Praticamente todas as funções do R têm um comportamento apropriado para estes valores. Além disso, é possível testar e identificar os casos que faltam, através das funções `is.na()` ou `na.exclude()`.
+O R tem o conceito de valor `NA` ("not available" em inglês, significando inexistente em português). Praticamente todas as funções do R têm um comportamento apropriado para estes valores. Além disso, é possível testar e identificar os casos que faltam, através das funções `is.na()` ou `na.exclude()`.
 
 No caso dos diagramas apresentados na presente lição, esses casos são simplesmente excluídos da visualização, como podemos verificar adicionando um autor ainda vivo e pedindo um diagrama de caixa do tempo de vida:
 
@@ -337,19 +337,19 @@ Como só existe um autor angolano com tempo de vida diferente de NA, nomeadament
 
 Nesta lição explicámos o conceito e as funcionalidades de uma folha de registo e algumas formas simples de visualizar o seu conteúdo, usando gráficos de barras e gráficos de caixa.
 
-Agora, pode seguir para lições mais complicadas como [Investigar a literatura lusófona através dos tempos usando a Literateca](), em que as folhas de registo vêm do projeto AC/DC.
+Agora, pode seguir para lições mais complicadas como Investigar a literatura lusófona através dos tempos usando a Literateca (a publicar), em que as folhas de registo vêm do projeto AC/DC.
 
 ## Notas de fim
 
-[^1]: Santos, Diana, Pires, Emanoel, Lopes, João Marques, Fuão, Rebeca and Freitas, Cláudia. "Periodização automática: Estudos linguístico-estatísticos de literatura lusófona" In *Linguamática*, vol. 12, nº 1 (2020): 80-95.
+[^1]: Diana Santos, Emanoel Pires, João Marques Lopes, Rebeca Fuão & Cláudia Freitas. "Periodização automática: Estudos linguístico-estatísticos de literatura lusófona" In *Linguamática*, vol. 12, nº 1 (2020): 80-95.
 
-[^2]: Em alguns navegadores este comando pode produzir o seguinte erro: `Error in file(file, "rt") : cannot open the connection to ’https://www.linguateca.pt/...'` Nesse caso, leia o ficheiro para o seu próprio computador fora do R e execute apenas `read.table("dadosPeriodLit.tsv", header=TRUE)`.
+[^2]: Em alguns navegadores este comando pode produzir o seguinte erro: `Error in file(file, "rt") : cannot open the connection to ’https://www.linguateca.pt/...'`. Nesse caso, leia o ficheiro para o seu próprio computador fora do R e execute apenas `read.table("dadosPeriodLit.tsv", header=TRUE)`.
 
-[^3]: Yi, Mike. *A complete guide to box plots*, <https://www.atlassian.com/data/charts/box-plot-complete-guide> (em inglês, consultado a 3 de maio de 2024).
+[^3]: Mike Yi. *A complete guide to box plots*, <https://www.atlassian.com/data/charts/box-plot-complete-guide> (em inglês, consultado a 3 de maio de 2024).
 
 [^4]: O comportamento pode variar em versões diferentes do R. Se obtiver uma mensagem de erro do `boxplot`, antes de o invocar, execute os comandos seguintes, que retiram explicitamente os NA e transformam as idades em inteiros:
       <code>
-      novoEscritores<-na.omit(escritores)
-      novoEscritores$tempoVida<-as.integer(novoEscritores$tempoVida)
-      boxplot(novoEscritores$tempoVida~novoEscritores$nacionalidade)
+      novoEscritores<-na.omit(escritores)<br>
+      novoEscritores$tempoVida<-as.integer(novoEscritores$tempoVida)<br>
+      boxplot(novoEscritores$tempoVida~novoEscritores$nacionalidade)<br>
       </code>

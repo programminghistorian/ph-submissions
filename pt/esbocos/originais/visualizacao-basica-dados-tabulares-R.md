@@ -24,11 +24,11 @@ doi: XX.XXXXX/phen0000
 
 ## Requisitos
 
-Nesta lição consideramos que o leitor já possui algum conhecimento da linguagem R. Se ainda não completou a lição [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares), recomendamos que o faça primeiro.
+Nesta lição consideramos que o leitor já possui algum conhecimento da linguagem R. Se ainda não completou a lição [Noções básicas de R com dados tabulares](/pt/licoes/nocoes-basicas-R-dados-tabulares), recomendamos que o faça primeiro.
 
 ## Objetivos da lição
 
-Esta lição pretende apresentar a forma como dados tabulares podem ser visualizados em R, explicando o conceito de folha de registo (*dataframe*, em inglês) e os tipos de visualização que podem ser obtidos a partir dela.
+Esta lição pretende apresentar a forma como dados tabulares podem ser visualizados em R, explicando o conceito de folha de registo ("dataframe" em inglês) e os tipos de visualização que podem ser obtidos a partir dela.
 
 ## Folha de registo
 
@@ -36,7 +36,7 @@ Quem não teve, ao longo da sua vida, de preencher uma folha de registo numa aul
 
 Se generalizarmos este conceito verificamos que, para cada ocorrência (neste caso, para cada pessoa que entra no edifício), preenche-se um conjunto de dados de vários tipos, onde cada coluna tem o mesmo tipo de informação (nome, número de telefone, data, etc.).
 
-Esta estrutura de dados (se usarmos o vocabulário das linguagens de programação) é muito útil para juntar vários tipos de informação sobre uma mesma entidade (linha). Em R chamamos-lhe *dataframe*, que aqui traduzimos por *folha de registo*.
+Esta estrutura de dados (se usarmos o vocabulário das linguagens de programação) é muito útil para juntar vários tipos de informação sobre uma mesma entidade (linha). Em R chamamos-lhe "dataframe", que aqui traduzimos por "folha de registo".
 
 Uma folha de registo é representada por uma tabela. Cada coluna tem o mesmo tipo de dados. Mas as colunas podem ter informação diferente entre si.
 
@@ -52,13 +52,13 @@ escritores <- data.frame(id=c("JulDin","CamCBra","MacAss","CoeNet"), nome=c("Jú
 
 O comando `data.frame()` cria uma folha de registo. Por sua vez, `c()` — concatenar — cria um vetor com os argumentos.
 
-Para visualizar a folha de registo criada no R basta escrever o seu nome (será mostrada se não for grande demais). Na Figura 1 temos o resultado.
+Para visualizar a folha de registo criada no R basta escrever o seu nome (será mostrada se não for grande demais). Na Figura 1 temos o resultado:
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-01.png" alt="Resultado da visualização da folha de registo pelo R, após digitar o seu nome" caption="Figura 1. Resultado da inspeção da folha de registo criada." %}
 
 Nesta é possível identificar cada coluna pelo nome. Por exemplo, a coluna que indica a data de nascimento é identificada como `escritores$nascimento`.
 
-Também é possível obter um resumo da folha de registo.
+Também é possível obter um resumo da folha de registo:
 
 ```
 summary(escritores)
@@ -84,7 +84,7 @@ Embora apenas indiquemos um valor (e não um vetor), automaticamente o R repete 
 
 #### Adição de linhas
 
-Também se podem juntar mais linhas, usando a função `rbind()`, que significa *row bind* (em inglês. Pode ser traduzido como *ligar linhas*), e que recebe como argumentos uma folha de registo e novas linhas ou duas folhas de registo. Mas, neste último caso, temos de atribuir um valor a cada coluna. Se usássemos a função `c()` (concatenar), todos os valores seriam considerados cadeias de carateres.
+Também se podem juntar mais linhas, usando a função `rbind()`, que significa "row bind" em inglês (pode ser traduzido como "ligar linhas"), e que recebe como argumentos uma folha de registo e novas linhas ou duas folhas de registo. Mas, neste último caso, temos de atribuir um valor a cada coluna. Se usássemos a função `c()` (concatenar), todos os valores seriam considerados cadeias de carateres.
 
 ```
 escritores<-rbind(escritores, c("JorAma","Jorge Amado",1912,2001,"BR",89,"masc"))
@@ -100,10 +100,10 @@ escritores<-rbind(escritores, data.frame(id="JorAma",nome="Jorge Amado",nascimen
 
 Como referido, a forma mais comum é ler folhas de registo provenientes de fora do R. Nesse caso vêm, em geral, de planilhas ou folhas de cálculo. Ao lê-las é possível indicar:
 
-* se as colunas têm nome (se tiverem, lemos com a indicação `header=TRUE`).
-* qual o separador (por exemplo, `sep="\t"` se as várias colunas estiverem separadas por tabuladores, `sep=","` se estiverem separadas por vírgulas).
-* qual o separador para casos de números com casas decimais (`dec=","` ou `dec="."`).
-* se houver uma coluna que apenas contenha identificadores (todos diferentes, portanto), também podemos indicá-lo com
+* Se as colunas têm nome (se tiverem, lemos com a indicação `header=TRUE`).
+* Qual o separador (por exemplo, `sep="\t"` se as várias colunas estiverem separadas por tabuladores, `sep=","` se estiverem separadas por vírgulas).
+* Qual o separador para casos de números com casas decimais (`dec=","` ou `dec="."`).
+* Se houver uma coluna que apenas contenha identificadores (todos diferentes, portanto), também podemos indicá-lo com
 `rownames=4`, em que o algarismo indica o número da coluna.
 
 Por exemplo,
@@ -146,14 +146,14 @@ escritores<-rbind(escritores, data.frame(id="AgoNet",nome="Agostinho Neto",nasci
 
 Para além de palavras simples ou texto, uma coluna pode ter valores de um grupo (fatores), valores lógicos (TRUE ou FALSE) e valores numéricos. Estes últimos dividem-se em dois tipos:
 
-* números inteiros, geralmente correspondentes a contagens.
-* números reais, geralmente correspondentes a medições.
+* Números inteiros, geralmente correspondentes a contagens.
+* Números reais, geralmente correspondentes a medições.
 
 A visualização é especialmente expressiva para valores numéricos, mas os fatores são uma forma útil de organização.
 
 ## Gráficos de barras
 
-Estes gráficos representam contagens de um certo número de características. Com a folhinha de registo que temos, a única contagem que faz sentido é a da nacionalidade. O primeiro comando tabula quantos casos temos por nacionalidade e o segundo produz um gráfico de barras.
+Estes gráficos representam contagens de um certo número de características. Com a folhinha de registo que temos, a única contagem que faz sentido é a da nacionalidade. O primeiro comando tabula quantos casos temos por nacionalidade e o segundo produz um gráfico de barras:
 
 ```
 table(escritores$nacionalidade)

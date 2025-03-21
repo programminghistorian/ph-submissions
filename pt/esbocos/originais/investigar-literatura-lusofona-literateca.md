@@ -282,7 +282,7 @@ Vamos visualizar isso através de um gráfico de caixa no R. De notar que reutil
 
 ```
 locais<-read.table("distribuicaoLocaisObra.tsv")
-names(locais)<-c("tipo","lixo","obra","autor","num","lixo2")
+names(locais)<-c("obra","num","autor","lixo","lixo2")
 obras<-read.table("distribuicaoObra.tsv")
 names(obras)<-c("obra","tamanho", "autor","variante","data", "decada", "lixo","lixo2")
 locaisObras<-merge(locais, obras, by=c("obra","autor"))

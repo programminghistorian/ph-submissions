@@ -337,7 +337,7 @@ Como só existe um autor angolano com tempo de vida diferente de NA, nomeadament
 
 Nesta lição explicámos o conceito e as funcionalidades de uma folha de registo e algumas formas simples de visualizar o seu conteúdo, usando gráficos de barras e gráficos de caixa.
 
-Agora, pode seguir para lições mais complicadas como Investigar a literatura lusófona através dos tempos usando a Literateca (a publicar), em que as folhas de registo vêm do projeto AC/DC.
+Agora, pode seguir para lições mais complicadas como "Investigar a literatura lusófona através dos tempos usando a Literateca" (a publicar por _Programming Historian_ em 2025), em que as folhas de registo vêm do projeto AC/DC.
 
 ## Notas de fim
 

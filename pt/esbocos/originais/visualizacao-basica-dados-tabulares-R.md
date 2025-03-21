@@ -162,15 +162,15 @@ barplot(table(escritores$nacionalidade))
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-04.png" alt="Gráfico de barras com a nacionalidade dos autores" caption="Figura 4. Gráfico de barras com a nacionalidade dos autores." %}
 
-Mas vamos buscar folhas de registo muito mais ricas para demonstrar as potencialidades de visualização. Por exemplo, vejamos uma lista de obras literárias em português, usada no artigo Santos _et al._ (2020)[^1], com informação sobre o autor, data de publicação, escola literária e contagens de vários atributos sintáticos e semânticos.
+Mas vamos buscar folhas de registo muito mais ricas para demonstrar as potencialidades de visualização. Por exemplo, vejamos uma lista de obras literárias em português, usada no artigo Santos _et al._[^1], com informação sobre o autor, data de publicação, escola literária e contagens de vários atributos sintáticos e semânticos.
 
 ```
 periodizacao<-read.table("https://www.linguateca.pt/Diana/UnivOslo/cursoR/dadosPeriodLit.tsv",header=TRUE)
 ```
 
-O primeiro argumento do comando `read.table()` indica onde se encontra o ficheiro que se pretende ler. Pode estar guardado localmente ([dadosPeriodLit.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacao-basica-dados-tabulares-R/dadosPeriodLit.tsv)) ou estar acessível através de um URL.[^2]
+O primeiro argumento do comando `read.table()` indica onde se encontra o ficheiro que se pretende ler. Pode estar guardado localmente ([dadosPeriodLit.tsv](/assets/visualizacao-basica-dados-tabulares-R/dadosPeriodLit.tsv)) ou estar acessível através de um URL.[^2]
 
-Através do comando `names()` podemos verificar os nomes das colunas. Já através de `str()` ou `summary()` podemos verificar o tipo de informação que cada coluna tem.
+Através do comando `names()` podemos verificar os nomes das colunas. Já através de `str()` ou `summary()` podemos verificar o tipo de informação que cada coluna tem:
 
 ```
 names(periodizacao)
@@ -178,7 +178,7 @@ str(periodizacao)
 summary(periodizacao)
 ```
 
-Por agora, basta caracterizar o autor, o sexo, o género literário e a escola literária como fatores. `escola2` inclui uma versão simplificada da escola literária, com os nomes em inglês.
+Por agora, basta caracterizar o autor, o sexo, o género literário e a escola literária como fatores. `escola2` inclui uma versão simplificada da escola literária, com os nomes em inglês:
 
 ```
 periodizacao$autor<-factor(periodizacao$autor)
@@ -204,7 +204,7 @@ Se tivéssemos executado simplesmente os comandos
 periodizacao$escola2<-factor(periodizacao$escola2)
 barplot(table(periodizacao[periodizacao$escola2!="desc",]$escola2))
 ```
-o gráfico de barras apresentaria uma barra nula para `desc`, como vemos na Figura 6.
+o gráfico de barras apresentaria uma barra nula para `desc`, como vemos na Figura 6:
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-06.png" alt="Gráfico de barras com as escolas literárias em inglês, com cinco classes, sem termos removido o valor desc do fator escola" caption="Figura 6. Gráfico de barras com as escolas literárias (em inglês), sem termos removido o valor desc do fator escola." %}
 
@@ -213,12 +213,12 @@ A indicação `periodizacao[periodizacao$escola2!="desc",]` significa todas as l
 
 ## Gráficos de caixa
 
-Os gráficos de caixa representam um conjunto de números, mostrando a sua mediana e a forma como estão distribuídos. A caixa propriamente dita representa 50% dos dados: a linha de baixo representa o valor dos 25% e a de cima o dos 75%, designados por primeiro quartil e terceiro quartil. A diferença entre Q3 e Q1 é chamada diferença entre quartis (*interquartile range*, em inglês, geralmente abreviado por IQR). Os traços horizontais, também chamados bigodes (*whiskers*, em inglês), são calculados da seguinte forma:
+Os gráficos de caixa representam um conjunto de números, mostrando a sua mediana e a forma como estão distribuídos. A caixa propriamente dita representa 50% dos dados: a linha de baixo representa o valor dos 25% e a de cima o dos 75%, designados por primeiro quartil e terceiro quartil. A diferença entre Q3 e Q1 é chamada diferença entre quartis ("interquartile range" em inglês, geralmente abreviado por IQR). Os traços horizontais, também chamados bigodes ("whiskers" em inglês), são calculados da seguinte forma:
 
 * Bigode inferior: é o máximo de valor mínimo e de Q1-1.5*IQR.
 * Bigode superior: é o mínimo do valor máximo e de Q3+1.5*IQR.
 
-Quando há casos fora dos limites descritos pelos bigodes, chamamos-lhes valores discrepantes (*outliers*, em inglês). Estes são marcados como pontos discretos.
+Quando há casos fora dos limites descritos pelos bigodes, chamamos-lhes valores discrepantes ("outliers" em inglês). Estes são marcados como pontos discretos.
 
 Veja-se esta figura, retirada do tutorial de Yi, *[A complete guide to boxplots](https://www.atlassian.com/data/charts/box-plot-complete-guide)* (em inglês):[^3]
 
@@ -230,13 +230,13 @@ Os gráficos de caixa são úteis, sobretudo, para comparar vários conjuntos de
 boxplot(periodizacao$cor~periodizacao$escola2)
 ```
 
-O til (~) é como se designa "por" em R e espera que a indicação à direita seja um fator. À esquerda, teremos valores numéricos para fazer os variados gráficos de caixa, um por cada valor do fator.
+O til (`~`) é como se designa "por" em R e espera que a indicação à direita seja um fator. À esquerda, teremos valores numéricos para fazer os variados gráficos de caixa, um por cada valor do fator.
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-08.png" alt="Gráfico de caixa da presença de palavras de cor por escola literária em inglês, mostrando seis gráficos de caixa, um por cada escola literária" caption="Figura 8. Gráfico de caixa da presença de palavras de cor por escola literária (em inglês)." %}
 
 O resultado mostra-nos que o naturalismo tem mais cor. Já o romantismo parece ter menos palavras de cor do que o realismo. Não nos interessa, aqui, efetuar uma análise literária, mas apenas ilustrar o uso dos gráficos de caixa e a sua interpretação.
 
-De facto, para poder comparar devidamente um grande conjunto de obras de tamanho variável, deveríamos ter calculado a percentagem de palavras de cor e não o número de palavras de cor.
+De facto, para poder comparar devidamente um grande conjunto de obras de tamanho variável, deveríamos ter calculado a percentagem de palavras de cor e não o número de palavras de cor:
 
 ```
 boxplot(periodizacao$cor/periodizacao$tamanho~periodizacao$escola2)
@@ -248,7 +248,7 @@ boxplot(periodizacao$cor/periodizacao$tamanho~periodizacao$escola2)
 
 ### Obter subconjuntos
 
-Vejamos, agora, mais potencialidades do uso e criação de folhas de registo, através da função ```subset()```, que permite escolher um subconjunto de colunas e de linhas e criar uma nova folha de registo, à qual aplicaremos mais visualizações:
+Vejamos, agora, mais potencialidades do uso e criação de folhas de registo, através da função `subset()`, que permite escolher um subconjunto de colunas e de linhas e criar uma nova folha de registo, à qual aplicaremos mais visualizações:
 
 ```
 algunsAutores<-subset(periodizacao,(autor=="JulDin" | autor=="EcaQue" | autor=="MacAss"|autor=="CoeNet") & genero=="Prosa:romance",c(1:147))
@@ -285,12 +285,12 @@ boxplot(algunsAutores$conjuntivo/algunsAutores$oracoes~algunsAutores$autor,xlab=
 
 ### Juntar mais do que uma folha de registo numa só
 
-Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo e da forma como a informação pode ser bem distribuída em folhas de registo diferentes, vamos criar uma nova que contenha toda a informação de duas folhas de registo que já usámos: `algunsAutores` e `escritores`. A cada obra queremos associar, para além do nome do autor, informação nova que temos sobre ele, nomeadamente, a variante, o tempo de vida e o sexo. Para isso usamos o comando `merge()`. 
+Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo e da forma como a informação pode ser bem distribuída em folhas de registo diferentes, vamos criar uma nova que contenha toda a informação de duas folhas de registo que já usámos: `algunsAutores` e `escritores`. A cada obra queremos associar, para além do nome do autor, informação nova que temos sobre ele, nomeadamente, a variante, o tempo de vida e o sexo. Para isso usamos o comando `merge()`: 
 
 ```
 maisInfo<-merge(algunsAutores,escritores,by.x=c("autor", "sexo"),by.y=c("id","sexo"))
 ```
-Este comando é muito importante — correspondente ao *join* das bases de dados —, porque permite estruturar o conhecimento em ficheiros (tabelas) diferentes, mas juntá-lo quando queremos usar toda a informação. Na Figura 14 vemos as primeiras linhas da folha de registo `maisInfo`.
+Este comando é muito importante — correspondente ao "join" das bases de dados — porque permite estruturar o conhecimento em ficheiros (tabelas) diferentes, mas juntá-lo quando queremos usar toda a informação. Na Figura 14 vemos as primeiras linhas da folha de registo `maisInfo`:
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-14.png" alt="As primeiras linhas da folha de registo MaisInfo, demonstrando que têm mais colunas que as duas folhas que foram unidas" caption="Figura 14. O que o R mostra se pedirmos as primeiras linhas da folha de registo MaisInfo." %}
 

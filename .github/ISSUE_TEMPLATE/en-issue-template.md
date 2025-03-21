@@ -4,7 +4,7 @@ title: EN lesson title
 labels: 0. Proposal, English
 about: New EN lesson proposal issue template
 project: 
-    - name: "/programminghistorian/projects/5/"
+    name: "/programminghistorian/projects/5/"
     columns: ["0 Proposal"]
 assignees: 
 ---

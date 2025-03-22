@@ -47,7 +47,7 @@ Após concluir esta lição, estará
 
 ## Apresentação do AC/DC
 
-O AC/DC é um projeto, já antigo, cujo objetivo é tornar disponíveis corpos para o português. Nesta lição vamos utilizar apenas o corpo [Literateca](https://www.linguateca.pt/acesso/corpus.php?corpus=LITERATECA), que contém mais de 900 obras escritas por mais de 280 escritores de língua portuguesa. (O AC/DC faz parte de um projeto maior, a [Linguateca]((https://www.linguateca.pt/).)
+O AC/DC é um projeto, já antigo, cujo objetivo é tornar disponíveis corpos para o português. Nesta lição vamos utilizar apenas o corpo [Literateca](https://www.linguateca.pt/acesso/corpus.php?corpus=LITERATECA), que contém mais de 900 obras escritas por mais de 280 escritores de língua portuguesa. (O AC/DC faz parte de um projeto maior, a [Linguateca](https://www.linguateca.pt/).)
 
 Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso, o estudo da língua na literatura em português) e classificado (o que se chama geralmente metadadados). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^1] e enriquecidos com anotação semântica adicional, como descrito em Santos (2014).[^2] Vários exemplos de uso do AC/DC são também apresentados em Santos (2021).[^3]
 

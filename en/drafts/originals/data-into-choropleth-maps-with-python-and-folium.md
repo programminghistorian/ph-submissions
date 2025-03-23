@@ -31,13 +31,21 @@ Visualizing data in this way reveals patterns that might otherwise be hard to di
 
 The Python programming language and the Folium library makes creating choropleth maps quick and easy, as this lesson will show. But it is only easy once the data has been arranged properly.
 
-Most of the time, "properly arranged" data is not what one encounters in the real world. Most of this lesson demonstrates techniques used to organize data so that it will produce a useful map. Initially, this means combining the data to be graphed with shape files that define the county boundaries, which will allow the creation of a basic choropleth map. Because the initial map isn't especially informative, this lesson will show additional ways to manipulate the data to produce more meaningful maps.
+Unfortunately, often "properly arranged" data is not what one encounters in the real world. Thus, most of this lesson demonstrates techniques used to organize data so that it will produce a useful map. Initially, this means combining the data to be graphed with shape files that define the county boundaries, which will allow the creation of a basic choropleth map. Because the initial map isn't especially informative, this lesson will show additional ways to manipulate the data to produce more meaningful maps.
+
+## Mapping lessons on *Programming Historian*
+
+*PH* has several lessons under the "mapping" [rubric](https://programminghistorian.org/en/lessons/?topic=mapping). These include introductions to [Google Maps](https://programminghistorian.org/en/lessons/googlemaps-googleearth); several lessons explaining how to [install](https://programminghistorian.org/en/lessons/qgis-layers), add historical [georeferences](https://programminghistorian.org/en/lessons/georeferencing-qgis) and [creating layers](https://programminghistorian.org/en/lessons/vector-layers-qgis) in [QGIS](https://www.qgis.org/); directions on how use [Map Warper](https://programminghistorian.org/en/lessons/introduction-map-warper) to stretch historical maps to fit modern models; and how to use [Story Map JS](https://programminghistorian.org/en/lessons/displaying-georeferenced-map-knightlab-storymap-js) to create interactive stories that combine maps and images. 
+
+The *PH* lesson closest to this one explains how to [create HTML web maps with Leaflet and Python](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet). However, using Leaflet directly may be challenging for some users, since one needs to understand some CSS and JavaScript, as the article explains. 
+
+This article will introduce readers to [Folium](https://python-visualization.github.io/folium/), a Python library that automates creating Leaflet maps: it allows users to create a wide variety of interactive maps *without* needing to know JavaScript or CSS; one need only need to know Python, which is somewhat easier. 
 
 ## Lesson Goals
 
 At the end of the lesson you will be able to:
 * Load several types of data from web sources
-* Use Pandas / GeoPandas to create clean / "tidy" datasets that can be mapped
+* Use Pandas / GeoPandas to create clean datasets that can be mapped
 * Associate latitude/longitude points with county names, FIPS numbers, and geometry "shapes"
 * Create a basic choropleth map
 * Reflect on some issues that map-designers need to consider, especially the problem of dealing with highly skewed data distributions
@@ -60,13 +68,11 @@ Python is the most popular programming language ([1](https://www.zdnet.com/artic
 
 Written in Python (and C), [Pandas](https://pandas.pydata.org/) is a powerful package for data manipulation, analysis, and visualization. Readers unfamiliar with Pandas will find some *Programming Historian* lessons ([1](https://programminghistorian.org/en/lessons/visualizing-with-bokeh), [2](https://programminghistorian.org/en/lessons/crowdsourced-data-normalization-with-pandas)) that explain how to install Pandas and introduce using Pandas to analyze data. Kaggle also offers free [introduction to Pandas](https://www.kaggle.com/learn/pandas) lessons and Pandas also includes a useful [Getting started](https://pandas.pydata.org/docs/getting_started/index.html) tutorial. This lesson uses some basic Pandas methods such as [.describe()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html), [.info()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info), [.sample()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html), [.value_counts()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.value_counts.html), as well as some more advanced commands such as [.merge()](https://pandas.pydata.org/docs/reference/api/pandas.merge.html). 
 
-[Geopandas](https://geopandas.org/en/stable/) extends Pandas' functionality by adding tools to make working with geospatial data easier. Notably, it adds some [shapely](https://shapely.readthedocs.io/en/stable/) datatypes to Pandas that include `point` and `geometry`. These facilitate working with geographic data: the `point` datatype can store latitude / longitude data; the `geometry` datatype can store points that define the shape of a state, county, congressional district, census tract, or other geographic region.
+[Geopandas](https://geopandas.org/en/stable/) extends Pandas' functionality by adding tools to make working with geospatial data easier. Notably, it adds some [shapely](https://shapely.readthedocs.io/en/stable/) datatypes to Pandas including the `point` and `geometry` datatypes. These facilitate working with geographic data: the `point` datatype can store latitude / longitude data; the `geometry` datatype can store points that define the shape of a state, county, congressional district, census tract, or other geographic region.
 
 ### Folium
 
-The main software this lesson uses is [Folium](https://python-visualization.github.io/folium/), a Python library that automates creating Leaflet maps.
-
-[Leaflet](https://leafletjs.com/) is a JavaScript library that faciliates the creation of interactive HTML maps. To use Leaflet one needs to know some CSS and JavaScript, as explained in the Programming Historian's article ["Web Mapping with Python and Leaflet"](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet).
+As mentioned above, the main software this lesson uses is [Folium](https://python-visualization.github.io/folium/), a Python library that automates creating Leaflet maps.
 
 Folium makes it easy to create a wide variety of maps. For basic maps, the user doesn't need to work with HTML, CSS, or JavaScript: everything can be done within the Python ecosystem. Users can specify a variety of different basemaps (terrain, street maps, different colors) and display data with different markers, such as pins or circles. These can use different colors or sizes based on the data. 
 
@@ -77,7 +83,9 @@ Folium has a useful [Quickstart](https://python-visualization.github.io/folium/q
 
 According to Dombrowski, Gniady, and Kloster, because Jupyter notebooks give "equal weight" to prose and code, they "are increasingly replacing Microsoft Word as the default authoring environment for research." In their *Programming Historican* article [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks), they explain how to install and use Jupyter notebooks on a computer.
 
-Google's [Colab](https://colab.research.google.com/) system implements Juypter notebooks in the cloud. When teaching, I prefer this to using Jupyter notebooks on students' computers. Students can access Colab notebooks with any computer or tablet that runs a modern web-browser. This means that instructors don't need to write different instructions for Macs, PCs, Linux, Chromebooks, etc. The system is fast and powerful: the virtual machines generally have around 12GB RAM and 23GB disk space; designed for machine learning, Colab allows users to add a graphics card / hardware accelerator . Since computation is done in the cloud, users don't need to have a powerful machine to use the system. They do need to have a Google account, however.
+Google's [Colab](https://colab.research.google.com/) system implements Juypter notebooks in the cloud. When teaching, I prefer this to using Jupyter notebooks on students' computers. Students can access Colab notebooks with any computer or tablet that runs a modern web-browser. This means that instructors don't need to write different instructions for Macs, PCs, Linux, Chromebooks, etc. The system is fast and powerful: the virtual machines generally have around 12GB RAM and 23GB disk space; designed for machine learning, Colab allows users to add a virtual graphics card / hardware accelerator . Since computation is done in the cloud, users don't need to have a powerful machine to use the system. They do need to have a Google account, however. The basic tier of service is free; users can purchase more "compute" should they need it. This lesson runs on the free tier.
+
+For a more detailed comparision see the [Geeks for Geeks](https://www.geeksforgeeks.org/google-collab-vs-jupyter-notebook/) discussion of the two systems. Google has a helpful ["Welcome to Colab"](https://colab.research.google.com/notebooks/intro.ipynb) notebook that explains Colab's design goals and what it is capable of. It includes links how to use Pandas, machine learning, and some sample notebooks.
 
 Colab includes a very large collection of Python libraries, as it is intended for data science and machine learning. In this lesson, most of the libraries are part of the standard Colab system. For all these reasons, I recommend using the Colab environment. 
 
@@ -149,7 +157,7 @@ ff_df.info()
 ```
 As of May, 2024 there were about 9,600 records in the database.
 
-The datatype for most of the variables are `object` (which is what Pandas calls `string` or text) data. The `date` variable is a `datetime64` object. And there are numbers for the `latitude`,`longitude` and `age` fields (`float` and `integer`, respectively).
+The datatype for most of the variables is `object` (which is what Pandas calls `string` or text) data. The `date` variable is a `datetime64` object. There are numbers for the `latitude`,`longitude` and `age` fields: `float` values (numbers with decimals) and `integer` (whole numbers), respectively. And several fields are `bool`, with True / False boolean values.
 
 ```python
 ff_df.sample(3)
@@ -170,11 +178,11 @@ ff_df.sample(3)
 A common way to refer to county-level data is with a FIPS number (described below). This database lacks this information, but it can be added based on the latitude and longitude values. What percent of the records have lat/lon data?
 
 ```python
-print(ff_df['latitude'].isna().sum())
+print(ff_df['latitude'].notna().sum())
 
     7,496
 
-ff_df['latitude'].isna().sum() / len(ff_df)
+ff_df['latitude'].notna().sum() / len(ff_df)
 
     0.8900340100999691
 ```

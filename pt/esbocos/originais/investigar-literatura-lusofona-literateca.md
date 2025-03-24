@@ -204,8 +204,6 @@ boxplot(roupaObras$rouparel~roupaObras$decada,las=2,xlab="",ylab="")
 
 Pela figura podemos observar que a partir de 1870 existem muito mais referências ao vestuário na literatura lusófona do que anteriormente.
 
-Pela figura podemos observar que a partir de 1870 existem muito mais referências ao vestuário na literatura lusófona do que anteriormente.
-
 ### Diferenças entre as personagens femininas e masculinas
 
 No AC/DC, marcamos todas as caracterizações como pertencendo a uma de quatro classes

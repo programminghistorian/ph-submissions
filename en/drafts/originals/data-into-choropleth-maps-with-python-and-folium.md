@@ -7,12 +7,12 @@ date: YYYY-MM-DD
 authors:
 - Adam Porter
 reviewers:
-- Forename Surname
-- Forename Surname
+- Rob Nelson
+- Felipe Valdez
 editors:
 - Nabeel Siddiqui
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/604
-difficulty: intermediate
+difficulty: 2
 activity: TBC
 topics: TBC
 abstract: Short abstract of this lesson
@@ -23,65 +23,66 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-# Introduction
+## Introduction
 
-[Choropleth Maps](https://en.wikipedia.org/wiki/Choropleth_map) have become very familiar to us. They are commonly used to visualize information such as [Covid-19 infection/death rates](https://www.nytimes.com/interactive/2021/us/covid-cases.html#maps), [education spending per pupil](https://www.reddit.com/r/MapPorn/comments/bc9jwu/us_education_spending_map/), and other similar data.
+[Choropleth Maps](https://en.wikipedia.org/wiki/Choropleth_map) are often used in the media to visualize information such as [Covid-19 infection/death rates](https://www.nytimes.com/interactive/2021/us/covid-cases.html#maps), or [education spending per pupil](https://www.reddit.com/r/MapPorn/comments/bc9jwu/us_education_spending_map/). They are especially useful for visualizing data that varies by region. Representing data in this way reveals patterns that might otherwise be hard to discern: noticing spatial patterns in a table of numbers, for example, would be extremely challenging. The Python programming language, combined with the Folium library, makes creating choropleth maps quick and easy, as this lesson will show. 
 
-Visualizing data in this way reveals patterns that might otherwise be hard to discern. Tables of numbers are generally hard to read, but noticing spacial patterns is even more challenging. Choropleth maps can be especially useful in visualizing data that varies by region.
+First, however, you need to make sure your data has been arranged properly. Unfortunately, 'properly arranged' data is not something one encounters in the real world. Thus, most of this lesson will demonstrate techniques used to organize data so that it will produce a useful choropleth map. This will include joining your data to 'shape files' that define [county](https://en.wikipedia.org/wiki/County_(United_States)) boundaries, which will allow you to create of a basic choropleth map. Because a basic choropleth map isn't always especially informative, this lesson will show you additional ways to manipulate the data to produce more meaningful maps.
 
-The Python programming language and the Folium library makes creating choropleth maps quick and easy, as this lesson will show. But it is only easy once the data has been arranged properly.
+### Other *Programming Historian* lessons
 
-Unfortunately, often "properly arranged" data is not what one encounters in the real world. Thus, most of this lesson demonstrates techniques used to organize data so that it will produce a useful map. Initially, this means combining the data to be graphed with shape files that define the county boundaries, which will allow the creation of a basic choropleth map. Because the initial map isn't especially informative, this lesson will show additional ways to manipulate the data to produce more meaningful maps.
+*Programming Historian* has several other lessons under the ['mapping' rubric](https://programminghistorian.org/en/lessons/?topic=mapping). These include an [introductions to Google Maps](https://programminghistorian.org/en/lessons/googlemaps-googleearth); several lessons on [QGIS](https://www.qgis.org/) explaining how to [install](https://programminghistorian.org/en/lessons/qgis-layers), add historical [georeferences](https://programminghistorian.org/en/lessons/georeferencing-qgis) and [create layers](https://programminghistorian.org/en/lessons/vector-layers-qgis); directions on [how to use Map Warper](https://programminghistorian.org/en/lessons/introduction-map-warper) to stretch historical maps to fit modern models; and [how to use Story Map JS](https://programminghistorian.org/en/lessons/displaying-georeferenced-map-knightlab-storymap-js) to create interactive stories that combine maps and images. 
 
-## Mapping lessons on *Programming Historian*
+The *Programming Historian* lesson closest to this one explains [how to create HTML web maps with Leaflet and Python](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet). However, using Leaflet directly may be challenging for some users, since it requires an understanding of CSS and JavaScript. 
 
-*PH* has several lessons under the "mapping" [rubric](https://programminghistorian.org/en/lessons/?topic=mapping). These include introductions to [Google Maps](https://programminghistorian.org/en/lessons/googlemaps-googleearth); several lessons explaining how to [install](https://programminghistorian.org/en/lessons/qgis-layers), add historical [georeferences](https://programminghistorian.org/en/lessons/georeferencing-qgis) and [creating layers](https://programminghistorian.org/en/lessons/vector-layers-qgis) in [QGIS](https://www.qgis.org/); directions on how use [Map Warper](https://programminghistorian.org/en/lessons/introduction-map-warper) to stretch historical maps to fit modern models; and how to use [Story Map JS](https://programminghistorian.org/en/lessons/displaying-georeferenced-map-knightlab-storymap-js) to create interactive stories that combine maps and images. 
+The advantage of this lesson is that the [Folium](https://python-visualization.github.io/folium/) library we'll use automates the creation of Leaflet maps. This will allow you to create a wide variety of interactive maps *without* needing to know JavaScript or CSS: you only need to know Python, which is somewhat easier. 
 
-The *PH* lesson closest to this one explains how to [create HTML web maps with Leaflet and Python](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet). However, using Leaflet directly may be challenging for some users, since one needs to understand some CSS and JavaScript, as the article explains. 
-
-This article will introduce readers to [Folium](https://python-visualization.github.io/folium/), a Python library that automates creating Leaflet maps: it allows users to create a wide variety of interactive maps *without* needing to know JavaScript or CSS; one need only need to know Python, which is somewhat easier. 
-
-## Lesson Goals
+### Lesson Goals
 
 At the end of the lesson you will be able to:
 * Load several types of data from web sources
-* Use Pandas / GeoPandas to create clean datasets that can be mapped
-* Associate latitude/longitude points with county names, FIPS numbers, and geometry "shapes"
+* Use Pandas/GeoPandas to create clean datasets that can be mapped
+* Associate latitude/longitude points with county names, FIPS numbers, and geometry 'shapes'
 * Create a basic choropleth map
 * Reflect on some issues that map-designers need to consider, especially the problem of dealing with highly skewed data distributions
-* Process numeric data to plot *rates* of deaths, rather than *numbers* of deaths ("population normalization")
-* Enhance a basic Folium map with "pop-up" boxes that display specific data for each geographic region
+* Process numeric data to plot 'rates' of deaths, rather than 'numbers' of deaths ('population normalization')
+* Enhance a basic Folium map with pop-up boxes that display specific data for each geographic region
 
-The lesson visualizes data from the *Washington Post*'s [Fatal Force](https://github.com/washingtonpost/data-police-shootings) database, which is available in this lesson's associated `assets` [folder](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-police-shootings-data.csv), hosted on _Programming Historian_'s GitHub repository. In 2015, the *Post* started the database, which seeks to document every time an encounter with a police officer ends in the death of the civilian. This data isn't collected or reported systematically, so the *Post*'s work fills an important lacuna in understanding of how police interact with the people around them.
+The lesson uses data from the *[Washington Post](https://en.wikipedia.org/wiki/The_Washington_Post)*'s [Fatal Force database](https://github.com/washingtonpost/data-police-shootings), which is available to [download from _Programming Historian_'s GitHub repository](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-police-shootings-data.csv). The *Post* started the database in 2015, seeking to document every time a civilian encounter with a police officer ends in the death of the civilian. This data is neither reported nor collected systematically by any other body, so the *Post*'s work fills an important lacuna in understanding how police in the USA interact with the people around them.
 
-My comments will reflect the data in the database as of June 2024. Tragically, I can confidently predict that these numbers will continue to increase. If you work with the data in the `assets` folder, your visualizations should resemble those in this article. If you access the *Post*'s database, the numbers will be different.
+My comments will reflect the data in the database as of June 2024. If you work with the data downloaded from _Programming Historian_'s repository, your visualizations should resemble those in this lesson. However, if you access the *Post*'s database directly at your time of reading, the numbers will be different. Tragically, I can confidently predict that these numbers will continue to increase. 
 
 Before getting started, a few comments about the tools used in this lesson.
 
-## Lesson Preqrequisites
+### Lesson Preqrequisites
 
-### Python, Pandas, and Geopandas
+#### Python, Pandas, and Geopandas
 
-To get the most out of this lesson, readers should have some experience with Python and Pandas.
+To get the most out of this lesson, you should have some experience with Python and Pandas.
 
-Python is the most popular programming language ([1](https://www.zdnet.com/article/programming-languages-python-just-took-a-big-jump-forward/), [2](https://www.infoworld.com/article/3669232/python-popularity-still-soaring.html)). It is especially useful for [data scientists](https://www.makeuseof.com/why-is-python-popular-for-data-science/) and others interested in analyzing data and visualizing data because it has an enormous library of tools specifically for these applications. Readers unfamiliar with Python may find Kaggle's  [Introduction to Python](https://www.kaggle.com/learn/python) tutorial helpful. *Programming Historian* also has lessons on [Python Introduction and Installation](https://programminghistorian.org/en/lessons/introduction-and-installation).
+Python is the most popular programming language ([1](https://www.zdnet.com/article/programming-languages-python-just-took-a-big-jump-forward/), [2](https://www.infoworld.com/article/3669232/python-popularity-still-soaring.html)). It is especially useful for [data scientists](https://www.makeuseof.com/why-is-python-popular-for-data-science/), or anyone interested in analyzing and visualizing data, because it comes with an enormous library of tools specifically for these applications. If you are unfamiliar with Python, you may find Kaggle's [Introduction to Python](https://www.kaggle.com/learn/python) tutorial helpful. *Programming Historian* also has a lesson on [Python Introduction and Installation](https://programminghistorian.org/en/lessons/introduction-and-installation).
 
-Written in Python (and C), [Pandas](https://pandas.pydata.org/) is a powerful package for data manipulation, analysis, and visualization. Readers unfamiliar with Pandas will find some *Programming Historian* lessons ([1](https://programminghistorian.org/en/lessons/visualizing-with-bokeh), [2](https://programminghistorian.org/en/lessons/crowdsourced-data-normalization-with-pandas)) that explain how to install Pandas and introduce using Pandas to analyze data. Kaggle also offers free [introduction to Pandas](https://www.kaggle.com/learn/pandas) lessons and Pandas also includes a useful [Getting started](https://pandas.pydata.org/docs/getting_started/index.html) tutorial. This lesson uses some basic Pandas methods such as [.describe()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html), [.info()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info), [.sample()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html), [.value_counts()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.value_counts.html), as well as some more advanced commands such as [.merge()](https://pandas.pydata.org/docs/reference/api/pandas.merge.html). 
+Written in Python (and [C](https://en.wikipedia.org/wiki/C_(programming_language))), Pandas is a powerful package for data manipulation, analysis, and visualization. If you are unfamiliar with Pandas, you will find some basic *Programming Historian* lessons on [installing Pandas](https://programminghistorian.org/en/lessons/visualizing-with-bokeh),and [using Pandas to handle and analyze data](https://programminghistorian.org/en/lessons/crowdsourced-data-normalization-with-pandas). Kaggle also offers free [introduction to Pandas](https://www.kaggle.com/learn/pandas) lessons, and Pandas has its own useful [Getting Started tutorial](https://pandas.pydata.org/docs/getting_started/index.html). 
+
+This lesson uses several Pandas methods, such as:
+- [.describe()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html)
+- [.info()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info)
+- [.sample()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html)
+- [.value_counts()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.value_counts.html)
+- [.merge()](https://pandas.pydata.org/docs/reference/api/pandas.merge.html)
 
 [Geopandas](https://geopandas.org/en/stable/) extends Pandas' functionality by adding tools to make working with geospatial data easier. Notably, it adds some [shapely](https://shapely.readthedocs.io/en/stable/) datatypes to Pandas including the `point` and `geometry` datatypes. These facilitate working with geographic data: the `point` datatype can store latitude / longitude data; the `geometry` datatype can store points that define the shape of a state, county, congressional district, census tract, or other geographic region.
 
-### Folium
+#### Folium
 
-As mentioned above, the main software this lesson uses is [Folium](https://python-visualization.github.io/folium/), a Python library that automates creating Leaflet maps.
+As mentioned above, the main software this lesson uses is [Folium](https://python-visualization.github.io/folium/), a Python library that makes it easy to create a wide variety of Leaflet maps. You won't need to work with HTML, CSS, or JavaScrip: everything can be done within the Python ecosystem. You will be able to specify a variety of different basemaps (terrain, street maps, colors) and display data using various visual markers, such as pins or circles. The color and size of these markers can then be customized based on your data. 
 
-Folium makes it easy to create a wide variety of maps. For basic maps, the user doesn't need to work with HTML, CSS, or JavaScript: everything can be done within the Python ecosystem. Users can specify a variety of different basemaps (terrain, street maps, different colors) and display data with different markers, such as pins or circles. These can use different colors or sizes based on the data. 
-
-Folium has a useful [Quickstart](https://python-visualization.github.io/folium/quickstart.html) that serves as an introduction to the library. In addition to these basic maps, Folium offers advanced functions, such as creating cluster-maps and heat-maps. This lesson will explore how to create choropleth maps with Folium. 
+Folium has a useful [Getting Started guide](https://python-visualization.github.io/folium/latest/getting_started.html) that serves as an introduction to the library. In addition to these basic maps, Folium's advanced functions include creating cluster-maps and heat-maps.
 
 
-### Google Colab
+#### Google Colab
 
-According to Dombrowski, Gniady, and Kloster, because Jupyter notebooks give "equal weight" to prose and code, they "are increasingly replacing Microsoft Word as the default authoring environment for research." In their *Programming Historican* article [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks), they explain how to install and use Jupyter notebooks on a computer.
+According to Dombrowski, Gniady, and Kloster, because Jupyter notebooks give 'equal weight' to prose and code, they 'are increasingly replacing Microsoft Word as the default authoring environment for research.'[^x] In their *Programming Historican* lesson [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks), they explain how to install and use Jupyter notebooks on a computer.
 
 Google's [Colab](https://colab.research.google.com/) system implements Juypter notebooks in the cloud. When teaching, I prefer this to using Jupyter notebooks on students' computers. Students can access Colab notebooks with any computer or tablet that runs a modern web-browser. This means that instructors don't need to write different instructions for Macs, PCs, Linux, Chromebooks, etc. The system is fast and powerful: the virtual machines generally have around 12GB RAM and 23GB disk space; designed for machine learning, Colab allows users to add a virtual graphics card / hardware accelerator . Since computation is done in the cloud, users don't need to have a powerful machine to use the system. They do need to have a Google account, however. The basic tier of service is free; users can purchase more "compute" should they need it. This lesson runs on the free tier.
 
@@ -89,7 +90,7 @@ For a more detailed comparision see the [Geeks for Geeks](https://www.geeksforge
 
 Colab includes a very large collection of Python libraries, as it is intended for data science and machine learning. In this lesson, most of the libraries are part of the standard Colab system. For all these reasons, I recommend using the Colab environment. 
 
-#### Not using Colab?
+##### Not using Colab?
 
 While this lesson is written with Colab in mind, the code will run on personal computers, even low-powered chromebooks. The [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks) *Programming Historian* article explains how to install and use Jupyter notebooks on a variety of systems.
 
@@ -97,9 +98,9 @@ Personally, I use Microsoft's [Visual Studio Code](https://code.visualstudio.com
 
 Whether using Colab or another Jupyter notebook, readers will find it easier to follow this lesson if they open the [notebook](https://nbviewer.org/github/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/data-into-choropleth-maps-with-python-and-folium.ipynb) containing the lesson's code. 
 
-# Getting Started
+## Getting Started
 
-## Import Libraries
+### Import Libraries
 
 To start the lesson, open a Colab (or Jupyter) notebook, load the Python libraries, assigning them their common aliases (`pd`, `gpd`, `np`).
 
@@ -110,7 +111,7 @@ import folium
 import numpy as np
 ```
 
-# Get the Data
+## Get the Data
 
 This lesson will show how to create a choropleth map using two data files:
 * A file with the data to count and visualize: the *Fatal Force* database.
@@ -120,7 +121,7 @@ Using Pandas, these databases will be turned in to **dataframes** (DF). For the 
 
 While this lesson will demonstrate how to map data based on county geographies, if the *cartographic boundary* file has other boundaries (such as census tracts or police precincts), the same basic steps would be followed -- but the map that would be produced would reflect these different geometries.
 
-## Fatal Force Data
+### Fatal Force Data
 The *Washington Post*'s "Fatal Force" data is the data to be counted and visualized. The *Post* provides [documentation](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-force-database-README.md) about the data in the database.
 
 Pandas parses data as it imports it. It is pretty good at recognizing *string* (character) data and *numeric* data, importing them as `object` and `int64` or `float64` datatypes. But Pandas sometimes struggles with date-time fields. If you include the keyword `parse_dates=` parameter, along with the name of the date column, the likelihood Pandas will parse the date field correctly as a `datetime64` datatype increases.
@@ -134,7 +135,7 @@ ff_df = pd.read_csv('https://raw.githubusercontent.com/programminghistorian/ph-s
 
 ```
 
-### Inspect the Data
+#### Inspect the Data
 
 What does the data look like? Let's check with the **.info()** and **.sample()** methods:
 
@@ -194,7 +195,7 @@ If you wanted to use this data for a study or report, finding values for the mis
 ff_df = ff_df[ff_df['latitude'].notna()]
 ```
 
-## County Geometry Data
+### County Geometry Data
 To create the choropleth map, Folium needs a file that provides the geographic boundaries for the regions to be mapped. The [US Census](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html) has a number of different "cartographic boundary files". These include shape files for counties (at various resolutions), congressional districts, census tracts, and others. Many cities (such as [Chicago](https://www.chicago.gov/city/en/depts/dti/supp_info/geographic-information-systems.html)) have similar files with data for ward boundaries, police precincts, and the like.
 
 While these files are in the ZIP format, Geopandas knows how to read them and extract the information it needs. You can load these files directly from the Census' website, but the `cb_2021_us_county_5m.zip` file is [available to download](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/cb_2021_us_county_5m.zip) from the *PH* repository.
@@ -276,7 +277,7 @@ counties.info()
     memory usage: 75.9+ KB
 ```
 
-## Matching the Data
+### Matching the Data
 The `counties` DF has the FIPS information and geographic boundary information. To add FIPS values to the Fatal Force DF, you can use a special GeoPandas method.
 
 GeoPandas' [spacial join](https://geopandas.org/en/stable/docs/user_guide/mergingdata.html) is syntatically similar to a Pandas [join](https://www.geeksforgeeks.org/different-types-of-joins-in-pandas/). But where the latter matches values in one DF with values in another, the latter examines lat/lon values, matches it in geographic region data, and returns the FIPS value.
@@ -344,7 +345,7 @@ ff_df.info()
     memory usage: 1.3+ MB
 ```
 
-## Counting the Data by County
+### Counting the Data by County
 Now that the two DFs are correctly set up, Folium makes it easy to draw a map.
 
 The first map will count the number of times people have been killed by police officers in each county and produce a choropleth map that shows, via color and shading, which counties have larger or smaller numbers.
@@ -377,7 +378,7 @@ This shows that around 50% (1,522 of 3,234) of counties in the USA have had at l
 map_df.rename(columns={0:'count'})
 ```
 
-# Create the Map
+## Create the Map
 
 To draw a map, Folium needs to initalize a `folium.Map` object. Because this notebook will do this repeatedly, the next cell creates a function to do so.
 
@@ -461,7 +462,7 @@ Here's the code:
 
 For a complete list of parameters, see the Choropleth documentation in [Folium](https://python-visualization.github.io/folium/modules.html?highlight=choro#folium.features.Choropleth)
 
-# The Problem of Uneven Distribution of Data
+## The Problem of Uneven Distribution of Data
 
 As noted earlier, the basic map is not terribly informative: the whole US is basically two colors:
 * The grey counties are those for which the *Post* does not record any cases of fatal police shootings; this is about 50% of the counties in the USA.
@@ -517,7 +518,7 @@ Because the scale needs to cover ALL cases, when the vast majority of cases are 
 
 There are solutions to this problem, but none are ideal; some work better with some distributions of data than others. Mapmakers may need to experiment to see what map works best for a given set of data.
 
-## Solution #1: Fisher-Jenks algorithm
+### Solution #1: Fisher-Jenks algorithm
 Folium allows users specify a parameter (`use_jenks = True`) to the choropleth algorithm that will automatically calculate "natural breaks" in the data; Folium's [documentation says](https://python-visualization.github.io/folium/modules.html?highlight=choro#folium.features.Choropleth) "this is useful when your data is unevenly distributed."
 
 To use this parameter, Folium relies on the [jenkspy](https://pypi.org/project/jenkspy/) library. Because it is not part of Colab's standard collection of libraries, `jenkspy` must be installed with the **pip** command. 
@@ -562,7 +563,7 @@ This is an improvement: the map shows a better range of contrasts. You can see t
 
 But the scale is almost impossible to read! The algorithm correctly found natural breaks -- most of the values are less than 76, but at the lower end of the scale the numbers are illegible.
 
-## Solution #2: Create a Logarithm Scale-Value
+### Solution #2: Create a Logarithm Scale-Value
 
 Logarithmic scales are useful when the data is not normally distributed. The [definition of a logarithm](http://www.mclph.umn.edu/mathrefresh/logs3.html) is $$b^r = a$$ or $$log_b a = r$$. That is, the log value is the **exponent** $$r$$ that the base number $$b$$ would be raised to equal the original value $$a$$.
 
@@ -582,7 +583,7 @@ It is easy to add a log scale variable using [numpy](https://numpy.org/)'s `.log
     map_df['MapScale'] = np.log10(map_df['count'])
 ```
 
-### Solution #2a: Displaying a Logarithm Scale
+#### Solution #2a: Displaying a Logarithm Scale
 
 The problem with a log scale is that **most people won't know know to interpret it** -- what is the non-log (original) value of 1.5 or 1.8 on a log scale?
 
@@ -648,7 +649,7 @@ baseMap
 
 Note that the log values on the scale have been converted to the original (non-log) values.  While the bins are equal size their values increase exponentially.
 
-# **Normalizing** Population Data
+## **Normalizing** Population Data
 
 This map demonstrates a common characteristic of choropleth maps: the data tends to correlate closely with population centers. The counties with the largest number of police killings of civilians are those with large populations (Los Angeles, CA; Cook, IL; Dade, FL; etc.)
 
@@ -656,7 +657,7 @@ The same issue would arise for maps showing ocurrences of swine flu (correlated 
 
 This is why choropleth maps often do not visualize *values* (that is, raw numbers). Instead, they visual *ratios* (the number of cases per 100,000 population). Converting the data from values to ratios is called **normalizing** data. 
 
-## Get county-level population statistics
+### Get county-level population statistics
 
 To normalize the population data, you need a dataset that includes county-by-county population statistics, with, ideally, a FIPS code.
 
@@ -714,7 +715,7 @@ In the DF above, row 0 reports the total population for state **01** (Alabama), 
 
 Since the earlier DFs don't include rows with a FIPS number of ***XX*000** when Pandas does the join/merge, the state totals will be ignored.
 
-### Add County-Level Population Statistics to the Map dataframe
+#### Add County-Level Population Statistics to the Map dataframe
 
 To add the county-level population statistics, the [merge](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html) method adds the data from the **pop_df** to the **map_df**, matching on the **FIPS** column and using the **left** (that is, the **map_df**) DF as primary.
 
@@ -734,7 +735,7 @@ map_df.head(3)
 
 Looking at the **map_df** above, you can see that the DF has all the columns added earlier in this lesson. You could tidy this up a bit: at this point, the only columns that are needed are **FIPS**, **count**, and **POPESTIMATE2019**. But there isn't a pressing reason to do so -- it's a relatively small DF (with around 3,100 rows).
 
-### Calculate the *Rate* of people killed per 100,000 population
+#### Calculate the *Rate* of people killed per 100,000 population
 
 To calculate the **rate** of people killed, add a new column (**count_per_100k**) that divides the **count** variable by the county population divided by 100,000:
 
@@ -753,7 +754,7 @@ map_df.head(3))
 
 </div>
 
-## Re-draw the Map with *Rates* instead of *Numbers* of people killed
+### Re-draw the Map with *Rates* instead of *Numbers* of people killed
 
 To plot the rate of police killing per 100,000 people in a county, the only change required to the Folium code is to modify the **columns=[ ]** parameter to specify using `count_per_100K` as the variable to use to colorize the map.
 
@@ -852,7 +853,7 @@ baseMap
 
 **Normalizing** the data dramatically changes the appearance of the map. The initial visualization suggested that the problem of police killing civilians was limited to a few counties, generally those with large populations. But when the data is normalized, it appears police killings of civilians is far more widespread. The counties with the highest **rates** of killings are those with low populations, even if they have relatively few killings. Trying to illustrate this issue with charts or tables would not show the issue nearly as well.
 
-# Add an Information Box to the Map
+## Add an Information Box to the Map
 
 In the process of creating the map above, a number of different useful pieces of information have been created: the number of people killed in a county by police, the population of the county, the rate of people killed, and so forth. Folium allows map makers to display this sort of information in a floating box that will be displayed as the user moves their cursor over the map. This is very helpful, especially when examining areas one may not be familiar with. But it is a little complicated to get set up correctly.
 
@@ -901,7 +902,7 @@ The `.GeoJsonTooltip()` method accesses the `properties` nested dictionary. The 
      ...
 ```
 
-## Add data to the Choropleth map's "property" dictionary
+### Add data to the Choropleth map's "property" dictionary
 
 Unfortunately, as you can see from the above example, the GeoJSON data doesn't currently have all the data generated earlier in the lesson. It can be added by iterating over the GeoJSON data, finding the information in the `map_df` dataframe, and adding it, selectively, to the GeoJSON properties dictionary. Here's how to do this:
 
@@ -982,7 +983,7 @@ for row in cp.geojson.data['features']:
 folium.GeoJsonTooltip(['NAME','count'],aliases=['County:','N killed by Police:']).add_to(cp.geojson)
 
 ```
-## Add multiple data elements to the "property" dictionary
+### Add multiple data elements to the "property" dictionary
 
 This above example just reports the number of police killings reported. But this technique can be used to show multiple variables. The next example creates an information box that displays: 
 * the name of the county (since this is already in the cp.GeoJson properties dictionary, it doesn't need to be added)
@@ -1033,7 +1034,7 @@ baseMap
 
 Adding an information box to the map is complex but it can help users enormously.
 
-# Saving Maps
+## Saving Maps
 
 Maps are saved as HTML files. They can be shared with other people, who can open them in a browser will have the ability to zoom, pan, and examine individual county statistics with by putting their cursor over different counties.
 
@@ -1049,7 +1050,7 @@ You can see the files you have saved to the virtual drive by clicking on the fil
 
 Because Folium saves the maps as HTML documents, they can be added to websites or shared with other people, who can open them with a web-brower.
 
-# Conclusion
+## Conclusion
 
 Choropleth maps are an excellent tool for discovering and demonstrating patterns in data that might be otherwise hard to discern.
 
@@ -1061,6 +1062,6 @@ Choropleth maps may allow users to disern patterns in data that are otherwise di
 
 In short, choropleth maps are a powerful way to  displaying data and informing readers about topics. But they can also be tools to discover patterns in data that are otherwise hard to observe.
 
-## Acknowledgments
+### Acknowledgments
 
 Robert Nelson and Felipe Valdez provided very helpful feedback on drafts of this project. Alex Wermer-Colan helped guide me through the submission and review process. Nabeel Siddiqui's editorial assistance has been invaluable. Charlotte Chevrie and Anisa Hawes have been patient and helpful preparing this material for the *PH* website and shepherding me through the process. I appreciate everyone's assistance in improving this article; final responsibility, of course, remains mine. 

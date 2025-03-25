@@ -16,7 +16,7 @@ difficulty: 1
 activity: presenting
 topics: [r, data-visualization]
 abstract: Nesta lição são apresentadas algumas formas básicas de interagir com o R, detalhando o conceito de folha de registo (em inglês, "dataframe"), sua inspeção, manipulação e modificação. Também é dada uma introdução a visualizações simples, como os gráficos de barras e de caixa.
-avatar_alt: Visual description of lesson image
+avatar_alt: Circunferências e tabelas para representação de cálculos astronómicos; circunferência graduada com mecanismo giratório (Desenho à pena, sépia).
 doi: XX.XXXXX/phen0000
 ---
 

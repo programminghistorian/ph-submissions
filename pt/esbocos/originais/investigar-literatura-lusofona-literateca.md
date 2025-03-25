@@ -324,7 +324,8 @@ O leitor é convidado a reproduzir as figuras da tese, visto que todos os comand
 
 Nesta lição tentei apresentar o AC/DC, com duas formas de interação, a "Procura" e o "Distribuidor", e depois, a partir dos resultados, obter gráficos agregadores usando o R.
 
-O objetivo foi demonstrar diversas possibilidades de estudo da história da literatura lusófona, por meio da leitura distante, usando o AC/DC e em particular o corpo Literateca, que reúne textos literários em português e está em constante expansão.
+O objetivo foi demonstrar diversas possibilidades de estudo da história da literatura lusófona, por meio da leitura distante, usando o AC/DC e em particular o corpo Literateca, que reúne textos literários em português e está em constante expansão.[^agrad]
+
 
 
 ## Notas de fim
@@ -350,3 +351,6 @@ O objetivo foi demonstrar diversas possibilidades de estudo da história da lite
 [^9]: Santos, Diana &amp; Eckhard Bick. "Distant reading places in Portuguese literature". *NorLit2021* (Trondheim, 14-16 June 2022). [pdf](https://www.linguateca.pt/Diana/download/SantosBickNorLit.pdf)
 
 [^10]: Correia, Marcus Vinicius Sousa. "Helenismo nos trópicos: Análise da presença do Helenismo na literatura brasileira pelo viés da leitura distante". Tese de mestrado, Universidade Estadual do Maranhão: UEMA, São Luís, MA, 2023. [pdf](https://www.linguateca.pt/Repositorio/TeseMestradoMarcusViniciusSousaCorreia.pdf)
+
+[^agrad]: Agradeço sinceramente a Suemi Higuchi e a Larissa Freitas a sua revisão aturada desta lição, e as variadas sugestões de melhoria.
+

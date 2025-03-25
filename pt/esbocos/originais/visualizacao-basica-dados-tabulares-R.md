@@ -13,8 +13,8 @@ editors:
 - Eric Brasil
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/624
 difficulty: 1
-activity:
-topics:
+activity: presenting
+topics: [r, data-visualization]
 abstract: Nesta lição são apresentadas algumas formas básicas de interagir com o R, detalhando o conceito de folha de registo (em inglês, "dataframe"), sua inspeção, manipulação e modificação. Também é dada uma introdução a visualizações simples, como os gráficos de barras e de caixa.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000

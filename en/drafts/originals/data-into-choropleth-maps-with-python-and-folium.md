@@ -82,21 +82,21 @@ Folium has a useful [Getting Started guide](https://python-visualization.github.
 
 #### Google Colab
 
-According to Dombrowski, Gniady, and Kloster, because Jupyter notebooks give 'equal weight' to prose and code, they 'are increasingly replacing Microsoft Word as the default authoring environment for research.'[^x] In their *Programming Historican* lesson [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks), they explain how to install and use Jupyter notebooks on a computer.
+According to Dombrowski, Gniady, and Kloster, Jupyter notebooks 'are increasingly replacing Microsoft Word as the default authoring environment for research,' in large part because they give 'equal weight' to prose and code.[^x] Although you can choose to install and use Jupyter notebooks on a computer, I prefer to go through [Google Colab](https://colab.research.google.com/), a system that implements Juypter notebooks [in the cloud](https://en.wikipedia.org/wiki/Cloud_computing). Working in the cloud allows you to access Jupyter notebooks from any computer or tablet that runs on a modern web browser. This means that you can access it anywhere, and you don't need to adapt instructions for your own operating system. Google Colab is fast and powerful: its virtual machines generally have around 12GB RAM and 23GB disk space. You don't need to be working on a powerful machine to use it. Designed for machine learning, Colab can even provide a virtual graphics card and/or a hardware accelerator. What's more, most of the libraries needed for this lesson are already part of Colab's very large collection of Python libraries. For all these reasons, I recommend using the Colab environment. (For a more detailed comparision between Colab and Jupyter, see the [Geeks for Geeks](https://www.geeksforgeeks.org/google-collab-vs-jupyter-notebook/) discussion of the two systems.)
 
-Google's [Colab](https://colab.research.google.com/) system implements Juypter notebooks in the cloud. When teaching, I prefer this to using Jupyter notebooks on students' computers. Students can access Colab notebooks with any computer or tablet that runs a modern web-browser. This means that instructors don't need to write different instructions for Macs, PCs, Linux, Chromebooks, etc. The system is fast and powerful: the virtual machines generally have around 12GB RAM and 23GB disk space; designed for machine learning, Colab allows users to add a virtual graphics card / hardware accelerator . Since computation is done in the cloud, users don't need to have a powerful machine to use the system. They do need to have a Google account, however. The basic tier of service is free; users can purchase more "compute" should they need it. This lesson runs on the free tier.
-
-For a more detailed comparision see the [Geeks for Geeks](https://www.geeksforgeeks.org/google-collab-vs-jupyter-notebook/) discussion of the two systems. Google has a helpful ["Welcome to Colab"](https://colab.research.google.com/notebooks/intro.ipynb) notebook that explains Colab's design goals and what it is capable of. It includes links how to use Pandas, machine learning, and some sample notebooks.
-
-Colab includes a very large collection of Python libraries, as it is intended for data science and machine learning. In this lesson, most of the libraries are part of the standard Colab system. For all these reasons, I recommend using the Colab environment. 
+This lesson only requires Colab's basic tier, which you can access for free with any Google account. Should you need it for future projects, you can always purchase more 'compute' later. Google has a helpful [Welcome to Colab](https://colab.research.google.com/notebooks/intro.ipynb) notebook that explains Colab's design goals and capabilities. It includes links on how to use Pandas, machine learning, and various sample notebooks.
 
 ##### Not using Colab?
 
-While this lesson is written with Colab in mind, the code will run on personal computers, even low-powered chromebooks. The [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks) *Programming Historian* article explains how to install and use Jupyter notebooks on a variety of systems.
+While this lesson is written with Colab in mind, the code will still run on personal computers, even low-powered chromebooks. *Programming Historian*'s [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks) lesson explains how to install and use Jupyter notebooks on a variety of systems.
 
-Personally, I use Microsoft's [Visual Studio Code](https://code.visualstudio.com/) because it runs on a wide variety of different systems (Windows, Mac, Linux); supports Jupyter notebooks; can be used as an code editor / IDE for a wide variety of languages; integrates well with Github; and also supports text editing, including Markdown and Markdown previewing. 
+Personally, I use Microsoft's [Visual Studio Code](https://code.visualstudio.com/) because it:
+- runs on a wide variety of different systems (Windows, Mac, Linux)
+- supports Jupyter notebooks; can be used as an code editor / IDE for a wide variety of languages
+- integrates well with Github
+- and also supports text editing, including Markdown and Markdown previewing. 
 
-Whether using Colab or another Jupyter notebook, readers will find it easier to follow this lesson if they open the [notebook](https://nbviewer.org/github/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/data-into-choropleth-maps-with-python-and-folium.ipynb) containing the lesson's code. 
+Whether you are using Colab or another Jupyter notebook, you will find it easier to follow this lesson if you open the [notebook](https://nbviewer.org/github/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/data-into-choropleth-maps-with-python-and-folium.ipynb) containing the lesson's code. 
 
 ## Getting Started
 

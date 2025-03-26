@@ -35,7 +35,16 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-In this tutorial, you will learn how to organize a set of texts for research; that is, you will learn the basic steps of creating a *corpus*. You will also learn the main metrics of quantitative text analysis. For this purpose, you will learn to use a platform that does not require installation (just an Internet connection): Voyant Tools (Sinclair and Rockwell, 2016). This tutorial is intended as a first step in an increasingly complex series of *corpus* linguistics methods. In this sense, this tutorial can be considered as one of the options for *corpus* analysis you can find in PH (see for example: “Corpus Analysis with Antconc”).
+In this tutorial, you will learn how to organize a set of texts for research; that is, you will learn the basic steps of creating a *corpus*. You will also learn the main metrics of quantitative text analysis. For this purpose, we will use [Voyant Tools](http://voyant-tools.org/) (Sinclair and Rockwell, 2016), a web-based platform that does not require installation and works in any browser with an Internet connection.
+
+This tutorial is designed as a beginner-friendly introduction to *corpus* analysis and is part of a growing ecosystem of tools and methods in digital humanities. For a more advanced tool, see the [Programming Historian lesson on AntConc](https://programminghistorian.org/en/lessons/corpus-analysis-with-antconc). You may also be interested in other *Programming Historian* lessons on [text mining](https://programminghistorian.org/en/topics/text-mining), [natural language processing](https://programminghistorian.org/en/lessons/introduction-to-nlp-with-python), and [topic modeling](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet).
+
+### Prerequisites and Further Reading
+
+No prior experience with text analysis is required. However, for those who want to go deeper, we recommend the following resources:
+
+- **Voyant Tools Help Documentation**: [https://voyant-tools.org/docs/#!/guide/start](https://voyant-tools.org/docs/#!/guide/start)
+- **Hermeneuti.ca**: [http://hermeneuti.ca/](http://hermeneuti.ca/) — the companion site to the book *Hermeneutica: Computer-Assisted Interpretation in the Humanities* by Sinclair and Rockwell
 
 ### Corpus Analysis
 
@@ -183,6 +192,8 @@ Below, you will find nine activities that can be resolved in groups or individua
 
 If our *corpus* consisted of two documents; one that said: "I'm hungry"; and another that said: "I'm sleepy." What information would appear in the first line of the summary? Complete:
 
+*Hint: Count total documents (2), all words (“I’m hungry” and “I’m sleepy”), and how many of those are unique (repeated words like “I’m” only count once).*
+
 > This *corpus* has __ documents with a total of __ words and __ unique words.
 
 ---
@@ -198,6 +209,8 @@ The second thing we see is the "document length" section. Here is what it shows:
 
 1. What can we conclude about the longest and shortest texts considering the metadata in the file name (year, country, president)?  
 2. Why is it useful to know the length of the texts?
+
+*Hint: Use the metadata in the file names (year, month, etc.) to consider why certain speeches are longer or shorter. This might reflect historical context or changes in communication style.*
 
 ---
 
@@ -217,6 +230,8 @@ Vocabulary density is measured by dividing the number of unique words by the tot
    > Don't call my name, don't call my name Alejandro.  
    > I'm not your babe, I'm not your babe Fernando.  
    > Don't wanna kiss, don't wanna touch.
+
+*Hint: Compare the vocabulary richness in the two stanzas. A higher ratio of unique words to total words means higher density.*
 
 2. Read the lexical density data of the documents in our corpus, what do they tell you?
 
@@ -239,6 +254,8 @@ The way Voyant calculates sentence length should be considered a rough estimate,
 1. Look at the statistics of words per sentence (wps) and answer: what pattern or patterns can you observe if you consider the "wps" index and the metadata of country, president, and year contained in the document name?  
 2. Click on the names of some documents that interest you by their "wps" index. Direct your gaze to the "Reader" window and read a few lines. Does reading the original text add new information to your data reading? Comment on why.
 
+*Hint: Consider if longer sentences reflect complexity of expression or differences in transcription. Reading excerpts may help interpret the data.*
+
 ---
 
 ## Cirrus and Summary: Frequencies and Stop Word Filters
@@ -256,6 +273,8 @@ The first aspect we will work on is gross frequency, and for this, we will use t
 
 *Tip: hover your mouse over the words to get their exact frequencies.*
 
+*Hint: Some frequent words might not be significant—are they function words or context-specific?*
+
 ---
 
 ### Stop Words
@@ -266,6 +285,8 @@ Importance is not an intrinsic value and will always depend on our interests. Fo
 
 1. What stop words are in the word cloud?  
 2. Which ones would you eliminate and why?
+
+*Hint: Think about what words are getting in the way of seeing what's meaningful. Editing the stop list helps refine your focus.*
 
 Voyant already has a stop word list loaded for English; however, we can edit it as follows:
 
@@ -296,6 +317,8 @@ As we said in the previous point, filtered words affect other fields in Voyant. 
 **Activity 7**
 
 Reflect on these words and think about what information they provide and how this information differs from what you get by looking at the word cloud.
+
+*Hint: Compare which words appear most often once stopwords are removed. Does it shift the themes you identify in the corpus?*
 
 ---
 
@@ -374,6 +397,8 @@ Look at the differentiated words (compared to the rest of the corpus) of each do
 8. **november_6_1792_fourth**: `newspapers (6), cent (5), transmission (3), postage (3), case (4)`
 9. **october_25_1791_third**: `immediate (4), subscriptions (3), lands (4), possible (3), vacant (2)`
 
+*Hint: These words are unique to each document and can help you understand the specific themes or topics addressed in each speech.*
+
 ---
 
 ## Words in Context
@@ -405,6 +430,8 @@ Search for the use of a term that seems interesting to you, using some of the ad
 
 > **Note**:  
 > The order of the words in the "Left" column is reversed; that is, from right to left from the keyword.
+
+*Hint: Use the position and context to see how the term is used. Does it appear mostly at the beginning or end of the speech? Is the tone consistent?*
 
 ---
 

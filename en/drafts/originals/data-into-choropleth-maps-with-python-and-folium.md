@@ -280,13 +280,12 @@ counties.info()
 ```
 
 ### Matching the Data
-The `counties` DF has the FIPS information and geographic boundary information. To add FIPS values to the Fatal Force DF, you can use a special GeoPandas method.
 
-GeoPandas' [spacial join](https://geopandas.org/en/stable/docs/user_guide/mergingdata.html) is syntatically similar to a Pandas [join](https://www.geeksforgeeks.org/different-types-of-joins-in-pandas/). But where the latter matches values in one DF with values in another, the latter examines lat/lon values, matches it in geographic region data, and returns the FIPS value.
+To map the FIPS values from the `counties` dataframe to the Fatal Force dataframe, you can use the special GeoPandas method [spatial join](https://geopandas.org/en/stable/docs/user_guide/mergingdata.html), which is syntatically similar to a Pandas [join](https://www.geeksforgeeks.org/different-types-of-joins-in-pandas/). But where the latter only matches values from one dataframe to values in another, the spatial join examines coordinate values, matches them to geographic region data, and returns the associated FIPS code.
 
-To execute the **spacial join**, you will create a new field in the Fatal Force DF, which will combine the data in the two lat/lon columns into a single `point` datatype. (`point` is a special datatype that Geopandas adds to the normal Pandas datatypes.)
+To execute the spatial join, you will create a new field in the Fatal Force dataframe, which will combine the data in the two latitude and longitude columns into a single `point` data type. (`point` is a special data type added by Geopandas.)
 
-> Note that the method to create the new variable is `.points_from_xy`, so **longitude** must be specified *before* **latitude**, contrary to the standard way map coordinates are referenced.
+Note that the method to create the new variable is `.points_from_xy`, so **longitude** (x) must be specified *before* **latitude** (y), contrary to the standard way in which map coordinates are referenced.
 
 Additionally, you need to tell GeoPandas which **coordinate reference system** ([CRS](https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/coordinate-systems-and-projections.htm)) to use. The CRS is a type of mathematical model that describes how lat/lon data (points on the surface of a sphere) are presented on a flat surface. For this lesson, the most important thing to know is that the dataframes need to use the same CRS before being joined.
 

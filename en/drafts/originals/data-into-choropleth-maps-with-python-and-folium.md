@@ -283,24 +283,21 @@ counties.info()
 
 To map the FIPS values from the `counties` dataframe to the Fatal Force dataframe, you can use the special GeoPandas method [spatial join](https://geopandas.org/en/stable/docs/user_guide/mergingdata.html), which is syntatically similar to a Pandas [join](https://www.geeksforgeeks.org/different-types-of-joins-in-pandas/). But where the latter only matches values from one dataframe to values in another, the spatial join examines coordinate values, matches them to geographic region data, and returns the associated FIPS code.
 
-To execute the spatial join, you will create a new field in the Fatal Force dataframe, which will combine the data in the two latitude and longitude columns into a single `point` data type. (`point` is a special data type added by Geopandas.)
+To prepare to execute the spatial join, you will create a new field in the Fatal Force dataframe to combine the latitude and longitude columns into a single `point` data type. (`point` is a special data type added by Geopandas.)
 
 Note that the method to create the new variable is `.points_from_xy`, so **longitude** (x) must be specified *before* **latitude** (y), contrary to the standard way in which map coordinates are referenced.
 
-Additionally, you need to tell GeoPandas which **coordinate reference system** ([CRS](https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/coordinate-systems-and-projections.htm)) to use. The CRS is a type of mathematical model that describes how lat/lon data (points on the surface of a sphere) are presented on a flat surface. For this lesson, the most important thing to know is that the dataframes need to use the same CRS before being joined.
+Additionally, you need to tell GeoPandas which [coordinate reference system (CRS)](https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/coordinate-systems-and-projections.htm) to use. The CRS is a type of mathematical model that describes how latitude and longitude data (points on the surface of a sphere) are presented on a flat surface. For this lesson, the most important thing to know is that both dataframes need to use the same CRS before being joined.
 
-The next cell:
-1. Uses GeoPandas (`gpd`) to add a **points** column to the Fatal Force DF and tells it to use a specific CRS
-1. Uses GeoPandas to convert Fatal Force DF from a Pandas DF to a GeoPandas DF
+The next code block ties all this together. It:
+1. Uses GeoPandas (`gpd`) to add a **points** column to the Fatal Force dataframe and tells it to use a specific CRS
+2. Uses GeoPandas to convert the Fatal Force dataframe from a Pandas to a GeoPandas dataframes
+3. Converts the `counties` dataframe to the same CRS 
 
 ```python
 ff_df['points'] = gpd.points_from_xy(ff_df.longitude, ff_df.latitude, crs="EPSG:4326")
 ff_df = gpd.GeoDataFrame(data=ff_df,geometry='points')
-```
 
-Finally, to ensure the spacial join will match lat/lon and geographic regions correctly, both dataframes need to use the same CRS. The next cell converts the `counties` dataframe to the same CRS used by the Fatal Force DF.
-
-```python
 counties = counties.to_crs('EPSG:4326')
 counties.crs
 
@@ -317,9 +314,9 @@ counties.crs
     - Prime Meridian: Greenwich
 ```
 
-This is a lot of preparation, but now that the two DFs are properly set-up, the **spacial join** can be used to add FIPS data to each row of the Fatal Force DF.
+This is a lot of preparation, but now that the two dataframes are properly set up, you can use the spatial join to add FIPS data to each row of the Fatal Force dataframe.
 
-The next cell will create a new version of the Fatal Force DF, by using a `geopandas.sjoin()`. It specifies the two dataframes that are to be matched by `left_df` and `right_df`. The `how=` tells GeoPandas that it should treat the left DF as primary: the matching data from the right DF will be added to it.
+The next cell will create a new version of the Fatal Force dataframe, by using a `geopandas.sjoin()`. It specifies the two dataframes that are to be matched by `left_df` and `right_df`. The `how=` tells GeoPandas that it should treat the left DF as primary: the matching data from the right DF will be added to it.
 
 ```python
 ff_df = gpd.sjoin(left_df = ff_df,

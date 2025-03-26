@@ -102,7 +102,7 @@ Whether you are using Colab or another Jupyter notebook, you will find it easier
 
 ### Import Libraries
 
-To start the lesson, open a Colab (or Jupyter) notebook, load the Python libraries, assigning them their common aliases (`pd`, `gpd`, `np`).
+To start the lesson, load the Python libraries and assign them their common aliases (`pd`, `gpd`, `np`):
 
 ```python
 import pandas as pd
@@ -114,19 +114,20 @@ import numpy as np
 ## Get the Data
 
 This lesson will show how to create a choropleth map using two data files:
-* A file with the data to count and visualize: the *Fatal Force* database.
-* A file with data about the shapes (in this case, counties) to draw on the map: the *cartographic boundaries* file.
+* A file with the data to count and visualize: the _Fatal Force_ dataset
+* A file with data about the shapes (in this case, counties) to draw on the map: the 'cartographic boundaries' file
 
-Using Pandas, these databases will be turned in to **dataframes** (DF). For the computer to match records in the different DFs, there needs to be common variable. Since the maps will be plotting county-level data, the common variable will be the **Federal Information Processing Standard** (FIPS) number. Many databases with county-level data include the FIPS number, but because the *Fatal Force* database does not, this lesson will walk through how to add it. 
+Using Pandas, these datasets will be turned into dataframes (DF). In order for Folium to match records from one dataframe with the other, they need to share a common variable. The maps will be plotting county-level data, so the common variable will be the **Federal Information Processing Standard** (FIPS) [county code](https://en.wikipedia.org/wiki/FIPS_county_code). Many datasets of county-level data include the FIPS code, but unfortunately the *Fatal Force* database does not, so this lesson will first teach you how to add it. 
 
-While this lesson will demonstrate how to map data based on county geographies, if the *cartographic boundary* file has other boundaries (such as census tracts or police precincts), the same basic steps would be followed -- but the map that would be produced would reflect these different geometries.
+If the *cartographic boundary* file you were using was based on another boundary type (such as [census tracts](https://en.wikipedia.org/wiki/Census_tract), or [police precincts](https://en.wikipedia.org/wiki/Police_precinct)), the same basic steps would be followed – the map produced would simply reflect these different geometries instead.
 
 ### Fatal Force Data
-The *Washington Post*'s "Fatal Force" data is the data to be counted and visualized. The *Post* provides [documentation](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-force-database-README.md) about the data in the database.
 
-Pandas parses data as it imports it. It is pretty good at recognizing *string* (character) data and *numeric* data, importing them as `object` and `int64` or `float64` datatypes. But Pandas sometimes struggles with date-time fields. If you include the keyword `parse_dates=` parameter, along with the name of the date column, the likelihood Pandas will parse the date field correctly as a `datetime64` datatype increases.
+The *Washington Post*'s Fatal Force dataset contains the data to be counted and visualized. The *Post* provides [documentation](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-force-database-README.md) about how this data is collected and recorded.
 
-This code block imports the data. To follow along with the lesson, use the code as written. If you want to see the most up-to-date version of the data from the *Washington Post*, comment-out (`#`) the first two lines and un-comment the lines for the WP's repo. This lesson uses the data from the *Programming Historian* website; if you use the data from the *Post*, the numbers will be different.
+Pandas parses the data as it imports it. It is pretty good at recognizing 'string' (character) data and numeric data –importing them as `object` and `int64` or `float64` data types – but sometimes struggles with date-time fields. If you include the `parse_dates=` parameter, along with the name of the date column, it is more likely that Pandas will parse the date field correctly as a `datetime64` data type.
+
+Th code block below imports the data. To follow along with the lesson's archived dataset, use the code as written. If you want to see the most up-to-date version of the data from the *Washington Post* instead, comment-out (with `#`) the first two lines, and un-comment the last two lines.
 
 ```python
 ff_df = pd.read_csv('https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-police-shootings-data.csv', parse_dates = ['date'])
@@ -137,7 +138,7 @@ ff_df = pd.read_csv('https://raw.githubusercontent.com/programminghistorian/ph-s
 
 #### Inspect the Data
 
-What does the data look like? Let's check with the **.info()** and **.sample()** methods:
+Let's check the data with the `.info()` and `.sample()` methods:
 
 ```python
 ff_df.info()
@@ -156,9 +157,10 @@ ff_df.info()
     dtypes: bool(2), datetime64[ns](1), float64(3), int64(1), object(12)
     memory usage: 1.1+ MB
 ```
-As of May, 2024 there were about 9,600 records in the database.
 
-The datatype for most of the variables is `object` (which is what Pandas calls `string` or text) data. The `date` variable is a `datetime64` object. There are numbers for the `latitude`,`longitude` and `age` fields: `float` values (numbers with decimals) and `integer` (whole numbers), respectively. And several fields are `bool`, with True / False boolean values.
+In May 2024, there were over 9,600 records in the database.
+
+The different data types include `object` (most variables are text data); `datetime64` (for the `date` variable); `float64` for numbers with decimals (latitute, longitude, age) and `int64` for integers (whole numbers). Finally, we have a few `bool` data types, in the columns marked with 'True' or 'False' boolean values.
 
 ```python
 ff_df.sample(3)
@@ -174,9 +176,7 @@ ff_df.sample(3)
 
 </div>
 
-
-
-A common way to refer to county-level data is with a FIPS number (described below). This database lacks this information, but it can be added based on the latitude and longitude values. What percent of the records have lat/lon data?
+You can use the latitude and longitude values to map the FIPS code to each record. What percent of the records have this data?
 
 ```python
 print(ff_df['latitude'].notna().sum())
@@ -187,18 +187,20 @@ ff_df['latitude'].notna().sum() / len(ff_df)
 
     0.8900340100999691
 ```
-This shows that there are 7,496 rows that have latitude values, which is about 89% of all the records. 
 
-If you wanted to use this data for a study or report, finding values for the missing data would be important. For example, the Google Maps API will provide lat/lon data when given a street address. But since exploring these techniques goes beyond the goals of this lesson, the next cell will create a smaller version of the DF, one that only includes rows with lat/lon data.
+This shows that 7,496 rows contain latitude values, which is about 89% of all the records. 
+
+If you wanted to use this data for a study or report, finding values for the missing data would be important. For example, the Google Maps API can provide latitude/longitude data from a street address. But since exploring these techniques goes beyond the goals of this lesson, the next line of code will create a smaller version of the dataframe that only includes rows with latitude/longitude data.
 
 ```python
 ff_df = ff_df[ff_df['latitude'].notna()]
 ```
 
 ### County Geometry Data
-To create the choropleth map, Folium needs a file that provides the geographic boundaries for the regions to be mapped. The [US Census](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html) has a number of different "cartographic boundary files". These include shape files for counties (at various resolutions), congressional districts, census tracts, and others. Many cities (such as [Chicago](https://www.chicago.gov/city/en/depts/dti/supp_info/geographic-information-systems.html)) have similar files with data for ward boundaries, police precincts, and the like.
 
-While these files are in the ZIP format, Geopandas knows how to read them and extract the information it needs. You can load these files directly from the Census' website, but the `cb_2021_us_county_5m.zip` file is [available to download](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/cb_2021_us_county_5m.zip) from the *PH* repository.
+To create the choropleth map, Folium needs a file that provides the geographic boundaries of the regions to be mapped. The [US Census](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html) provides a number of different cartographic boundary files: shape files for counties (at various resolutions), congressional districts, census tracts, and more. Many cities (such as [Chicago](https://www.chicago.gov/city/en/depts/dti/supp_info/geographic-information-systems.html)) also publish similar files for ward boundaries, police precincts, and so on.
+
+We're going to use the Census website's `cb_2021_us_county_5m.zip` file, which is available to [download from the *Programming Historian* repository](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/cb_2021_us_county_5m.zip). Geopandas knows how to read the ZIP format and to extract the information it needs: 
 
 ```python
 counties = gpd.read_file('https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/cb_2021_us_county_5m.zip')
@@ -206,7 +208,7 @@ counties = gpd.read_file('https://raw.githubusercontent.com/programminghistorian
 # counties = gpd.read_file("https://www2.census.gov/geo/tiger/GENZ2021/shp/cb_2021_us_county_5m.zip")
 ```
 
-Let's look at the counties DF to make sure it has the information we're looking for.
+Let's check the counties data frame to make sure it has the information we're looking for:
 
 ```python
 counties.info()
@@ -241,15 +243,15 @@ counties.sample(3)
 
 </div>
 
-Pandas has imported the different fields in the correct format: all are objects (which is what Pandas calls string/character data), except for `ALAND` and `AWATER` (which record the area of the county that is land and water in square meters), and `geometry` which is a special Geopandas datatype: *geometry*.
+Geopandas has imported the different fields in the correct format: all are `objects`, except for `ALAND` and `AWATER` (which record the area of the county that is land or water in square meters), and `geometry`, which is a special Geopandas data type.
 
-As noted above, Folium needs to have a a unique identifier for each county in the **counties** DF. The US Census bureau has [assigned numbers](https://www.census.gov/library/reference/code-lists/ansi.html) to each state (`STATEFP`) and county (`COUNTYFP`); these are combined into a five digit *Federal Information Processing Standard* (**FIPS**) code. In the above table, the FIPS column is called `GEOID`. The next cell will rename this column as **FIPS**; while not required, I find it easier to use the same column names in different tables if they contain the same data. 
+The US Census bureau has [assigned numbers](https://www.census.gov/library/reference/code-lists/ansi.html) to each state (`STATEFP`) and county (`COUNTYFP`); these are combined into the five digit Federal Information Processing Standard (FIPS) county code (`GEOID` above). The next line of code will rename this column to **FIPS** – although this is not technically required, I find it easier to use the same column names in different tables if they contain the same data. 
 
 ```python
 counties = counties.rename(columns={'GEOID':'FIPS'})
 ```
 
-The other column Folium needs is the `geometry` column. As can be seen in the `.sample()` output, each row of this column is `polygon` datatype, comprised of the set of latitude and longitude points that define the shape of a county.
+The second column which Folium needs is the `geometry` column. As can be seen in the `.sample()` output, each row of this column is of the `polygon` data type, comprised of the set of latitude and longitude points that define the shape of a county.
 
 Just for fun, pick a county you're familiar with and see what it looks like:
 
@@ -259,7 +261,7 @@ counties[(counties['NAME']=='Suffolk') & (counties['STUSPS']=='MA')].plot()
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-01.png" alt="Image of Suffolk county, MA" caption="Figure 1. GeoPandas' geometry can handle the oddly-shaped Suffolk County, MA." %}
 
-The only columns needed in the `counties` dataframe are `FIPS`, `NAME`, and `geometry`, so the next cell creates a simplified version of the DF, containing only those columns.
+The only columns needed in the `counties` dataframe are `FIPS`, `NAME`, and `geometry`, so the next code block creates a simplified version containing only these columns:
 
 ```python
 counties = counties[['FIPS','NAME','geometry']]

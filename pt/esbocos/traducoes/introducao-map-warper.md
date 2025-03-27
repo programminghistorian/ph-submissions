@@ -201,7 +201,7 @@ Tabela 1: Lugares selecionados como pontos de controle.
 
 A partir deste conjunto de 32 pontos de controle temos:
 
-{% include figure.html filename="file-name-3.png" alt="Visual description of figure image" caption="Figura 3. Mapa em retificação." %} 
+{% include figure.html filename="pt-tr-introducao-map-warper-03.png" alt="Visual description of figure image" caption="Figura 3. Mapa em retificação." %} 
 
 
 <div class="alert alert-info">
@@ -214,7 +214,7 @@ Quando obtiver pontos suficientes e considerar que eles estão bem distribuídos
 
 As opções avançadas que permitem alterar o método de retificação e *resampling* não devem ser alterados. O Map Warper apresenta problemas de estabilidade ao selecionar outros métodos. Alterar o método de retificação não gera, na maioria dos casos, um ganho qualitativo do mapa final. Em contrapartida alterar o *resampling* para bilinear ou cúbico gera um raster com menos ruído, porém devido aos problemas de estabilidade causados pela demanda computacional, estes métodos alternativos não são aconselháveis.
 
-{% include figure.html filename="file-name-5.png" alt="Visual description of figure image" caption="Figura 5. Mapa de Villasboas georreferenciado." %}
+{% include figure.html filename="pt-tr-introducao-map-warper-05.png" alt="Visual description of figure image" caption="Figura 5. Mapa de Villasboas georreferenciado." %}
 
 >Georreferenciar mapas requer prática, você pode descobrir que seu mapa retificado cria um mapa ilegível e distorcido. Logo é natural que seja necessário revisar os Pontos de Controle, alterar localizações e até rever critérios de seleção de pontos.
 
@@ -228,7 +228,7 @@ A aba "Recortar" (*Crop*) permite que você corte uma seção do mapa carregado.
 
 Desenhe ao redor da área que você deseja manter. Então, para aplicar a Máscara ao mapa, clique em *Mask Map!*. Após este passo deves retornar a aba "Retificar" e no fundo da página ativar a opção "Verdadeiro" (*True*) e de novo selecionar a opção *Warp Image!*.
 
-{% include figure.html filename="file-name-6.png" alt="Visual description of figure image" caption="Figura 6. 'Mask Map' aplicado ao mapa de Villasboas." %}
+{% include figure.html filename="pt-tr-introducao-map-warper-06.png" alt="Visual description of figure image" caption="Figura 6. 'Mask Map' aplicado ao mapa de Villasboas." %}
 
 
 ### Alinhar

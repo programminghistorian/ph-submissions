@@ -127,9 +127,9 @@ Na página inicial os mapas importados estarão em Favoritos (Favourites) no cen
 
 Neste subponto irás compreender como georreferenciar o mapa importado. Clique na aba "Retificar" (*Rectify*), onde existirão duas janelas. À esquerda o mapa importado e à direita um mapa base (OpenstreetMap), será a partir deste mapa a direita que irás estabelecer pontos de controles. Abaixo destas janelas encontrarás o "Control Planel", que permite ajustar os pontos de controles e avaliar o seu nível de exatidão.
 
-![Layer](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon1.png): O icóne "Camada" (*Layer*), na janela da direita, permite a seleção dos elementos presentes no mapa base do OpenstreetMap ou Mapbox Satellite. Talvez existe a sobreposição entre os mapas para que possas identificar o que esta a ocorrer, depois de confirmar o georreferenciamento.
+![Layer](/es-or-introduccion-map-warper-icon1.png): O icóne "Camada" (*Layer*), na janela da direita, permite a seleção dos elementos presentes no mapa base do OpenstreetMap ou Mapbox Satellite. Talvez existe a sobreposição entre os mapas para que possas identificar o que esta a ocorrer, depois de confirmar o georreferenciamento.
 
-![Custombasemap](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon2.png) O ícone "Adicionar Mapa de Base personalizado" (*Add Custom Basemap*), na janela da direita, permite que se adicione uma camada XYZ Tiles format (como Google Maps, Bing, CARTO, ESRI, Stamen, and other layers).
+![Custombasemap](/es-or-introduccion-map-warper-icon2.png) O ícone "Adicionar Mapa de Base personalizado" (*Add Custom Basemap*), na janela da direita, permite que se adicione uma camada XYZ Tiles format (como Google Maps, Bing, CARTO, ESRI, Stamen, and other layers).
 
 Podes inclusive utilizar os seguintes URL para ter acesso a uma maior seleção de mapas de base no Map Warper:
 
@@ -141,18 +141,18 @@ Podes inclusive utilizar os seguintes URL para ter acesso a uma maior seleção 
 * Stamen Watercolor: https://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
 ```
 
-![AddControlPoint](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon3.gif): O ícone "Adicionar Ponto de Controle" (*Add Control Point*), em ambas as janelas, permite adicionar pontos de controle entre ambas as janelas.
+![AddControlPoint](/es-or-introduccion-map-warper-icon3.gif): O ícone "Adicionar Ponto de Controle" (*Add Control Point*), em ambas as janelas, permite adicionar pontos de controle entre ambas as janelas.
 
-![MoveControlPoint](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon4.gif): O ícone "Mover Ponto de Controle" (*Move Control Point*), em ambas as janelas, permite que se altere a localização de um ponto de controle previamente adicionado.
+![MoveControlPoint](/es-or-introduccion-map-warper-icon4.gif): O ícone "Mover Ponto de Controle" (*Move Control Point*), em ambas as janelas, permite que se altere a localização de um ponto de controle previamente adicionado.
 
-![MoveAroundMap](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon5.gif): O ícone "Mover pelo Mapa" (*Move Around Map*), em ambas as janelas, permite navegar por ambas as janelas e explorar os mapas.
+![MoveAroundMap](/es-or-introduccion-map-warper-icon5.gif): O ícone "Mover pelo Mapa" (*Move Around Map*), em ambas as janelas, permite navegar por ambas as janelas e explorar os mapas.
 
-O cadeado entre ambas as janelas permite o movimento controlado entre ambos os mapas. Ao selecionar a opção ![ZoomLock](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon6.png) "Cadeado fechado" (*Zoom Lock*) permite dar zoom concomitantemente entre as janelas. Sendo útil para localizar e verificar os pontos de controle. Clicar no cadeado novamente irá desbloquear ![LockOpen](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon7.png) e permitir a navegação independente.
+O cadeado entre ambas as janelas permite o movimento controlado entre ambos os mapas. Ao selecionar a opção ![ZoomLock](/es-or-introduccion-map-warper-icon6.png) "Cadeado fechado" (*Zoom Lock*) permite dar zoom concomitantemente entre as janelas. Sendo útil para localizar e verificar os pontos de controle. Clicar no cadeado novamente irá desbloquear ![LockOpen](/es-or-introduccion-map-warper-icon7.png) e permitir a navegação independente.
 
 **Atalhos de teclado** permite o acesso ágil as diferentes ferramentas para a ratificação:
-+ *p*: ativa o *Adicionar Ponto de Controle*![AddControlPoint](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon3.gif);
-+ *d*: ativa o *Mover Ponto de Controle*![MoveControlPoint](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon4.gif);
-+ *m*: ativa o *Mover pelo Mapa* ![MoveAroundMap](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon5.gif);
++ *p*: ativa o *Adicionar Ponto de Controle*![AddControlPoint](/es-or-introduccion-map-warper-icon3.gif);
++ *d*: ativa o *Mover Ponto de Controle*![MoveControlPoint](/es-or-introduccion-map-warper-icon4.gif);
++ *m*: ativa o *Mover pelo Mapa* ![MoveAroundMap](/es-or-introduccion-map-warper-icon5.gif);
 + *q*: adiciona um *Ponto de Controle* na localização do mouse;
 + *a*: adiciona um *Ponto de Controle* na localização do mouse em ambas as janelas; 
 + *Enter*: substitui a tecla do mouse para adicionar um *Ponto de Controle*;
@@ -222,9 +222,9 @@ As opções avançadas que permitem alterar o método de retificação e *resamp
 
 A aba "Recortar" (*Crop*) permite que você corte uma seção do mapa carregado. Isso é útil para dividir mapas em composições. A janela de exibição integra as seguintes ações:
 
--   ![MoveAroundMap](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon5.gif):  "Mover pelo Mapa" (*Move Around Map*)
--   ![DrawNewPolygon](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon10.gif):  "Desenhar novo Polígono para Máscara" (*Draw new Polygon to Mask*)
--   ![DeletePolygon](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon11.gif):  "Eliminar Polígono* (*Delete a Polygon*)
+-   ![MoveAroundMap](/es-or-introduccion-map-warper-icon5.gif):  "Mover pelo Mapa" (*Move Around Map*)
+-   ![DrawNewPolygon](/es-or-introduccion-map-warper-icon10.gif):  "Desenhar novo Polígono para Máscara" (*Draw new Polygon to Mask*)
+-   ![DeletePolygon](/es-or-introduccion-map-warper-icon11.gif):  "Eliminar Polígono* (*Delete a Polygon*)
 
 Desenhe ao redor da área que você deseja manter. Então, para aplicar a Máscara ao mapa, clique em *Mask Map!*. Após este passo deves retornar a aba "Retificar" e no fundo da página ativar a opção "Verdadeiro" (*True*) e de novo selecionar a opção *Warp Image!*.
 
@@ -254,7 +254,7 @@ A aba  "Exportar" (*Export*) permite exportar o mapa georreferenciado em diferen
 
 ### Atividade
 
-Na aba "Atividade" (*Ativicty*) é possível monitorar as intervenções realizadas. Sendo possível averiguar os seguintes campos: Hora, Usuário, Mapa, Resumo de atividades, Versão e Detalhes. Qualquer usuário do Map Warper pode monitorar as alterações no mapa. Além disso, ![RSS](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon12.png) **RSS Feed** permite que o usuário baixe informações gerais sobre todas as alterações no formato .rss.
+Na aba "Atividade" (*Ativicty*) é possível monitorar as intervenções realizadas. Sendo possível averiguar os seguintes campos: Hora, Usuário, Mapa, Resumo de atividades, Versão e Detalhes. Qualquer usuário do Map Warper pode monitorar as alterações no mapa. Além disso, ![RSS](/es-or-introduccion-map-warper-icon12.png) **RSS Feed** permite que o usuário baixe informações gerais sobre todas as alterações no formato .rss.
 
 ### Comentários
 

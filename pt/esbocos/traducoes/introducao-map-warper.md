@@ -1,6 +1,6 @@
 ---
 title: "Introdução ao Map Warper"
-slug: introdução-map-warper
+slug: introducao-map-warper
 original: introduccion-map-warper
 layout: lesson
 collection: lessons

@@ -1,0 +1,273 @@
+---
+title: "Introdução ao Map Warper"
+slug: introdução-map-warper
+original: introduccion-map-warper
+layout: lesson
+collection: lessons
+date: 2020-07-11
+translation_date: YYYY-MM-DD
+authors:
+- Anthony Picón Rodríguez
+- Miguel Cuadros
+reviewers:
+- José Luis Losada
+- Riva Quiroga
+editors:
+- Antonio Rojas Castro
+translator:
+- Bernardo de Souza
+translation-editor:
+- Forename Surname
+translation-reviewer:
+- Forename Surname
+- Forename Surname
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/665
+difficulty: 2
+activity: transforming
+topics: [mapping, data-visualization]
+abstract: Nesta lição aprenderás à georreferenciar imagens digitais com informação geográfica e vincular-la a sistemas de informação geográficos.
+avatar_alt: Imagen de un mapa Cafetero de la República de Colombia.
+doi: XX.XXXXX/phen0000
+---
+
+{% include toc.html %}
+
+<div class="alert alert-info">
+Nota Explicativa: a versão lusófona desta lição distingui-se da versão orginal por utilizar o mapa de c.1795 da Província do Entre Douro-e-Minho, elaborado por José Custódio Villasboas, e por combinar o texto original, em espanhol, com os acréscimos da tradução anglosaxã.
+</div>
+
+## O Map Warper
+
+O [Map Warper](http://mapwarper.net/) é uma ferrramenta de código aberto e de acesso livre. Desde 2008, o site tem sido desenvolvido e mantido por [Tim Waters](https://thinkwhere.wordpress.com/) para georreferenciar imagens de áreas geográficas ao compará-las com o [OpenStreetMap](https://perma.cc/52L2-Q9W8) sem a necessidade de se instalar um software. A ferramenta já fui utilizada em vários projetos digitais, por diversas instituições, e é utilizada por profissionais que não são necessariamente especializados na área da cartografia.
+
+Esta ferramenta foi criada para que fosse possível georreferenciar mapas antigos (mapas-múndi, portulanos, cartas marítimas, mapas topográficos, mapas de cadastro, etc.), fotografia aérea e outros documentos que expressam o espaço. O Map Warper permite, então, que o usuário gere uma imagem georreferenciada de tipo *raster* (ex. Tiff) que os Sistemas de Informação Geográfica ([QGIS ](https://qgis.org/), [Map Server](https://perma.cc/W2B8-QD4U), [JOSM ](https://perma.cc/YQ6S-62BA), [ArcGIS](https://www.arcgis.com/index.html), [Google Earth](https://earth.google.com/web/), [WorldMap](https://worldmap.maps.arcgis.com/home/index.html), etc.), online ou *desktop*,  são capazes de acessar e trabalhar com. A capacidade colaborativa do Map Warper permite descentralizar o processo de georreferenciamento, catalogação e visualização.
+
+É graças a estas caraterísticas que o Map Warper demonstra-se como uma ferramenta útil aos investigadores, professores e estudas, além de instituições que busquem digitizar seus acervos cartográficos como a [Biblioteca Nacional de Portugal](https://bndigital.bnportugal.gov.pt/colecoes). Contributos para o acesso e a utilização destas fontes nas Humanidades Digitais como um todo, principalmente nas iniciativas das Humanidades Espaciais e do SIG-Histórico. 
+
+### Objetivos da lição
+
+Ao concluir esta lição saberás como georreferenciais documentos cartográficos (mapas, cartas, ortofotos, etc.) através do Map Warper. Podes combinar os conhecimentos adquiridos com as lições *[Criar novas camadas vetoriais com o QGIS. 2.0](https://programminghistorian.org/pt/licoes/camadas-vetoriais-qgis)* e *[Georreferenciamento com o QGIS 3.2](https://programminghistorian.org/pt/licoes/georreferenciamento-qgis)*.
+
+Esta lição enquadra-se num conjunto de tutoriais que buscam orientar o uso de técnicas digitais para georreferenciar, vetorizar, extrair, organizar e experimentar com dados geográficos, presentes nos estudos de referência, fontes textuais ou mapas antigos de distintos repositórios de informação em processo de digitização.
+
+Neste tutorial vamos georreferenciar um mapa de c.1795 da [Província do Entre Douro-e-Minho](https://purl.pt/24996) elaborado por José Custódio Villasboas que se encontra na coleção da Biblioteca Nacional Digital. Este mapa representa a organização social da região noroeste de Portugal (os atuais distritos de Viana do Castelo, Braga e Porto) no final do Antigo Regime. Podes ter [acesso](https://purl.pt/24996/2/) ao mapa (em .jpg] ao clicar no símbolo «Guardar» no canto inferior direito e depois ao clicar no botão direito do rato e selecionando a opção «guardar em». Se quiseres podes ter acesso ao mapa em [formato .pdf](https://permalinkbnd.bnportugal.gov.pt/viewer/33587/download?file=d-94-r_0000.pdf&type=pdf&navigator=1), também.
+
+<div class="alert alert-info">
+ Em exercícios futuros recomenda-se que a imagem a ser georreferenciada possui a melhor resolução possível.
+</div>
+
+{% include figure.html filename="" caption="Mapa Província do Entre Douro-e-Minho, 1795." %}
+
+<div class="alert alert-info">
+ Recomenda-se que o mapa seja guardado numa pasta nova no Ambiente de Trabalho nomeada: Map Warper_Introdução. O ficheiro descarregado deve ser renomeado para: Mp_EDM_Villasboas_1795_SOBRENOME. Para que o nome seja único e possa ser importado para o Map Warper.
+</div>
+
+### Considerações técnicas
+
+O mundo que vivemos é marcado por um profundo desenvolvimento técnico e mudança epistemológico que tem dado uma maior atenção ao espaço e a espacialidade. Isto tem permitido as novas tecnologias influenciar e modificar como refletimos e compreendemos sobre as Ciências Sociais e Humanas. Nesse sentido, as novas ferramentas expandiram os horizontes dos estudos e da visualização de dados, o que altera como observamos e refletimos sobre o passado. O Mapa Warper é um produto e um produzente destas sínteses entre a tecnologia e a expansão questões ao espaço.
+
+O georreferenciamento é um processo que estabelece coordenadas geográficas num Sistema de Referência Cartográfica (SRC) à um documento que foi digitalizado. Vários historiadores georreferenciam mapas para estudar como lugares mudaram com a passagem do tempo. *Porém, ao se transformar a imagem original num documento georreferenciado esta a gerar uma nova compreensão da espacialidade representada na fonte original. É importante levar em conta o encontro, e o choque, causado ao se relacionar concepções pretéritas e digitais do espaço e de representação cartográfica.*
+
+Logo, antes de começar a georreferenciar uma imagem é importante considerar se o documento pode ser georreferenciado. É vital compreender as informações cartografadas no seu contexto histórico. É importante que se investigue o espaço a ser tratado. Ademais, mapas antigos podem não ter dados suficientes para identificar-se latitudes e longitudes impedindo seu georreferenciamento no Map Warper e subsequente uso num SIG. Alguns mapas podem, por sua falta de dados, sofrer tamanha transformação que se tornam ilegíveis ou são imprecisos. 
+
+Portanto, a escala, a resolução e a projeção cartográfica da imagem devem ser elementos de analise prévia, para alguns conselhos é possível consultar a [Lista de Recomendações da Esri](https://perma.cc/GF85-4YF6) (EN). Os mapas de escalas pequenas não são apropriados para georreferenciamentos de alta precisão e irão gerar problemas com a localização de lugares. Por outro lado, quando estiver a selecionar um mapa antigo é recomendado escolher um com uma resolução igual ou superior a 300 dpi, para que elementos menores se mantenham legíveis. É também aconselhável utilizar um SRC no SIG similar ao da imagem, apesar de ser virtualmente impossível com mapas antigos. Para mapas mais recentes com SRCs incomuns é recomendável o uso do QGIS. 
+
+Algumas questões previas podem ser:
+- Que conjunto de lugares está imagem representa?
+- Quais variações no padrão de povoamento ocorreram desde a construção deste mapa?
+- Atualmente ainda existem alguns pontos de referência presentes nesta imagem?
+- Qual é a orientação deste documento?
+
+## Primeiros passos
+
+### Criando uma conta
+
+A partir do navegador de internet preferido navegue até https://mapwarper.net/ e clique na aba "Create Account" no canto superior direito. Podes utilizar a tua conta pessoal Facebook, OpenstreetMap ou GitGub para fazer o login de modo expedito.
+
+{% include figure.html filename="" caption="Criando uma conta" %}
+
+### Upload do mapa antigo
+
+Na página inicial clique no botão verde "Upload Map", lado esquerdo do ecrã, para importar a imagem para o Map Warper diretamente do teu ficheiro ou a partir de um link de um repositório digital através de um URL. Já nesta etapa podes adicionar metadados ao documento.
+
+Para importar o mapa de Villasboas selecionas a opção de "Select File", no centro da página, e navegas no "Explorador de Ficheiros" até o Ambiente de Trabalho na Pasta "Map Warper_Introdução" e selecionas o ficheiro "Mp_EDM_Villasboas_1795_SOBRENOME.jpg".
+
+### Edição dos metadados
+
+A página pede que se preencha um conjunto de campos para a descrição do mapa (*vulgo* Metadados). A página de metadados também pode ser acessada através da aba "Metadata". Apesar de, para importação do mapa, somente o título ser necessário é recomendado que seja preenchido os vários campos. O repositório de informação (neste caso, a Biblioteca Nacional de Portugal) que forneceu a imagem deve ser capaz de informar alguns dados que permitam o preenchimento dos seguintes campos: 
+
+- Título (*Title*): Título e cota de registro.
+- Descrição (*Description*): referência a imagem.
+- Ano de publicação (*Issue Year*): ano de publicação ou elaboração.
+- Tags : de 3 à 5 palavras-chave.
+- Área temática (*Subject Area*): tipologia do documento.
+- Fonte (*Source*): URL para o acesso ao documento original.
+- Local de publicação (*Place of publication*): local depublicação ou elaboração.
+- Escala (*Scale*): escala numérica.
+- Sistema de projeção (*Metadata Projection*): projeção cartográfica.
+
+## Georreferenciamento
+
+A partir do upload do mapa será iniciado o processo de georreferenciamento através do Map Warper. No fim, ao ter-se concluído esta etapa, será possível exportar os pontos de georreferenciamento e a imagem *raster* numa grande variedade de tipos de ficheiro como WMS URL, Tiles, GeoTIFF ou KML. Tipos de ficheiro que são "inteligíveis" aos diversos SIG mencionados a montante, e onde será possível desenvolver etapas de analise e interpretação dos dados históricos georreferenciados.
+
+É útil identificar um conjunto de pontos para o georreferenciamento (núcleos populacionais, rede viária, jurisdições ou elementos da natureza física) e que poderiam ser cruzados com outros dados históricos recolhidos ou mapas elaborados antes desta ação. Estas considerações poderão oferecer um novo horizonte de questões, tendo em conta que a visualização de um conjunto de fenómenos num plano geográfico poderá permitir a análise critica do documentos.  
+
+### Navegação no Map Warper
+
+Na página inicial os mapas importados estarão em Favoritos (Favourites) no centro da tela. Ao clicar-se no mapa importado do Entre Douro-e-Minho irá abrir uma nova página com uma série de abas:
+
+- Mostrar  (*Show*): mostra unicamente a imagem digital do mapa;
+- Edição (*Edit*): possibilita a edição dos metadados;
+- Retificar (*Rectify*): onde dá-se o processo de georreferenciamento;
+- Alinhar (*Align*): onde é possível relacionar múltiplos mapas nas suas fronteiras;
+- Prévia (*Preview*): mostra o mapa sobreposto a um mapa de base contemporâneo;
+- Exportar (*Export*): permite o download do mapa georretificado em múltiplos formatos.
+
+### Como retificar
+
+Neste subponto irás compreender como georreferenciar o mapa importado. Clique na aba "Retificar" (*Rectify*), onde existirão duas janelas. À esquerda o mapa importado e à direita um mapa base (OpenstreetMap), será a partir deste mapa a direita que irás estabelecer pontos de controles. Abaixo destas janelas encontrarás o "Control Planel", que permite ajustar os pontos de controles e avaliar o seu nível de exatidão.
+
+![Layer](http://mapwarper.net/assets/openlayers/theme/dark/layer_switcher_maximize.png): O icóne "Camada" (*Layer*), na janela da direita, permite a seleção dos elementos presentes no mapa base do OpenstreetMap ou Mapbox Satellite. Talvez existe a sobreposição entre os mapas para que possas identificar o que esta a ocorrer, depois de confirmar o georreferenciamento.
+
+![Icon1](https://programminghistorian.org/images/introduccion-map-warper/addcustombasemap.png) O ícone "Adicionar Mapa de Base personalizado" (*Add Custom Basemap*), na janela da direita, permite que se adicione uma camada XYZ Tiles format (como Google Maps, Bing, CARTO, ESRI, Stamen, and other layers).
+
+Podes inclusive utilizar os seguintes URL para ter acesso a uma maior seleção de mapas de base no Map Warper:
+
+```
+* Google Maps: https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}
+* Google Satellite: https://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}
+* Bing Satellite: https://ecn.t3.tiles.virtualearth.net/tiles/a{q}.jpeg?g=0&dir=dir_n’
+* CARTO dark: https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
+* Stamen Watercolor: https://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
+```
+
+![Icon1](https://programminghistorian.org/images/introduccion-map-warper/add_control_point.gif): O ícone "Adicionar Ponto de Controle" (*Add Control Point*), em ambas as janelas, permite adicionar pontos de controle entre ambas as janelas.
+
+![Icon1](https://programminghistorian.org/images/introduccion-map-warper/move_control_point.gif): O ícone "Mover Ponto de Controle" (*Move Control Point*), em ambas as janelas, permite que se altere a localização de um ponto de controle previamente adicionado.
+
+![Alt Text](https://programminghistorian.org/images/introduccion-map-warper/move_around_map.gif): O ícone "Mover pelo Mapa" (*Move Around Map*), em ambas as janelas, permite navegar por ambas as janelas e explorar os mapas.
+
+O cadeado entre ambas as janelas permite o movimento controlado entre ambos os mapas. Ao selecionar a opção ![Icon1](https://programminghistorian.org/images/introduccion-map-warper/Zoom_lock.png) "Cadeado fechado" (*Zoom Lock*) permite dar zoom concomitantemente entre as janelas. Sendo útil para localizar e verificar os pontos de controle. Clicar no cadeado novamente irá desbloquear ![Icon1](https://programminghistorian.org/images/introduccion-map-warper/lock_open.png) e permitir a navegação independente.
+
+**Atalhos de teclado** permite o acesso ágil as diferentes ferramentas para a ratificação:
++ *p*: ativa o *Adicionar Ponto de Controle*![Icon1](https://programminghistorian.org/images/introduccion-map-warper/add_control_point.gif);
++ *d*: ativa o *Mover Ponto de Controle*![Icon1](https://programminghistorian.org/images/introduccion-map-warper/move_control_point.gif);
++ *m*: ativa o *Mover pelo Mapa* ![Alt Text](https://programminghistorian.org/images/introduccion-map-warper/move_around_map.gif);
++ *q*: adiciona um *Ponto de Controle* na localização do mouse;
++ *a*: adiciona um *Ponto de Controle* na localização do mouse em ambas as janelas; 
++ *Enter*: substitui a tecla do mouse para adicionar um *Ponto de Controle*;
+
+Ao clicar nos pontos de controle no Painel de Controle este passa a exibir uma tabela com os pares de coordenadas de latitude e longitude dos pontos de controle estabelecidos. Aqui é possível editar os valores ou eliminar pontos.
+
+Este tabela incluí uma sessão que define o erro da geometria do mapa antigo. O valor de variação é calculado em cada ponto e depois avaliado perante uma media global. O azul indicado uma variação baixa, o amarelo uma variação média, e a vermelho uma variação grande. Podes averiguar a metodologia de desvio ["Root-Mean-Square"](https://perma.cc/73LU-GHG5).
+
+É possível exportar os pontos como um ficheiro CSV (valores separados por vírgula) ao selecionar esta opção na parte inferior do Painel de Controle. Este ficheiro pode ser importado para outros softwares ou ser um meio para a preservação do processo de georreferenciamento da imagem.
+
+Ao clicar em **Adicionar Ponto de Controle Manualmente** (*Add Control Point Manually*) pode-se adicionar um Ponto de Controle com valores de coordenadas. Se existe a informação sobre as coordenadas geográficas sobre pontos do mapa antigo será possível uma retificação com maior exatidão.
+
+Similarmente, **Adicionar Ponto de Controle por CSV** (*Add Control Point from CSV*) permite o upload de um ficheiro .csv automatizando o processo de georreferenciamento. Neste ficheiro a primeira linha deve conter os elementos da tabela de Pontos de Controle. As subsequentes linhas devem exprimir os valores das coordenadas da imagem à retificar (x, y) e do mapa de base (lon, lat), separado por vírgulas.
+
+O seguinte exemplo ilustra as quatro colunas 'x', 'y', 'lon' e 'lat' e contém os 5 primeiros pontos de controle do mapa de Villasboas estabelecidos no próximo subponto:
+
+```
+x,y,lon,lat
+
+880.8691666666,6674.2112500001,-8.6721672981,41.1447748843 721.1608333334,5043.5891666668995,-8.7459816901,41.3401967666 240.43875000005,1688.1170833340002,-8.8685479133,41.8639170185 326.68125000005,2893.9150000007003,-8.8362755744,41.6823805398 534.3020833334,3778.6991666674,-8.7902703254,41.5396597421 
+```
+
+### Prática
+Neste subponto irás, de facto, georreferenciar o mapa importado. Clique e acesse a aba "Retificar". Ao clicar em **M** poderás mover-te pelos mapas, aproveita esta oportunidade para te orientares, dando zoom até estares confortável com o que vês nas janelas.
+
+É necessário estabelecer um conjunto de critérios selecionar quais pontos serão georreferenciados. Como o mapa de Villasboas contém um conjunto vasto de informações existem algumas estratégias possíveis. Porém, não devemos selecionar demasiados pontos, somente os necessários para termos uma versão georreferenciada do mapa antigo.
+
+Este mapa não possui uma projeção cartográfica sistemática, existem áreas com maior distorção do que outras. Logo, não podemos somente eleger pontos nas extremidades do mapa.
+
+A rede de núcleos de povoamento é razoavelmente vasta e bem detalhada, contudo, não podemos ter a certeza que os critérios para o mapeamento de todos os núcleos foram sistemáticos. De igual modo, devido a forma como a hidrografia e a topografia são desenhadas estabelecer pontos de controle com estes elementos pode ser problemático. 
+
+Contudo, existem soluções. Selecionar os principais núcleos de povoamento, como Cidades e Vilas; elementos naturais como a foz dos principais rios da Província; estruturas defensivas na fronteira com Espanha; e os núcleos de povoamento que são o encontramento de itinerários regionais. Desse modo, podemos estabelecer um sistema de georreferenciamento sistemático na costa, na fronteira norte/nordeste e no interior da Província. 
+
+
+| Cidade ou Vila| Entroncamento| Fortaleza minhota | Foz |
+| --------- | --------- | --------- | --------- |
+| Braga | Amarante | Caminha| Ave 
+| Barcelos| Ponte da Barca| Castro Laboreiro| Cávado
+| Guimarães  |  Ponte de Lima| Melgaço| Douro
+|Penafiel  | Póvoa de Lanhoso | Monção| Lima
+|Porto |Vª Nª de Famalicão | Vª Nª de Cerveira| Minho
+| Valença |St. Tirso | |
+
+
+Tabela 1: Lugares selecionados como pontos de controle.
+
+A partir deste conjunto de 32 pontos de controle temos:
+
+{% include figure.html filename="IMAGEM-NOMEFICHEIRO" caption="Mapa em retificação. ALT="Mapa em retificação." %}
+
+<div class="alert alert-info">
+Nota: Você verá que há um valor de erro para cada ponto de controle. O Map Warper usa um cálculo de variação baseado em Root-Mean-Square (RMS) para avaliar os diferentes pontos de controle. O RMS fornece um guia de quão consistentes seus pontos de controle são entre si e avalia o quão distorcido o mapa ficará. Valores altos de erro RMS indicam que seus pontos de controle são menos inteligiveis entre si, enquanto um valor baixo de erro RMS indica mais consistência. Geralmente, é recomendado manter os valores baixos e substituir ou remover pontos de controle com valores altos. O RMS é somente um indicador, logo sempre deve reavaliar o quão bem o mapa digitalizado corresponde ao mapa de base.
+</div>
+
+Quando obtiver pontos suficientes e considerar que eles estão bem distribuídos em seu mapa antigo, clique em *Warp Image!* na parte inferior da página. 
+
+{% include figure.html filename="IMAGEM-NOMEFICHEIRO" caption="Clique em *Warp Image!* para retificar o mapa." ALT="Mapa em retificação." %}
+
+As opções avançadas que permitem alterar o método de retificação e *resampling* não devem ser alterados. O Map Warper apresenta problemas de estabilidade ao selecionar outros métodos. Alterar o método de retificação não gera, na maioria dos casos, um ganho qualitativo do mapa final. Em contrapartida alterar o *resampling* para bilinear ou cúbico gera um raster com menos ruído, porém devido aos problemas de estabilidade causados pela demanda computacional, estes métodos alternativos não são aconselháveis.
+
+
+{% include figure.html filename="IMAGEM-NOMEFICHEIRO" caption="Mapa de Villasboas georreferenciado" ALT="Mapa de Villasboas georreferenciado" %}
+
+
+>Georreferenciar mapas requer prática, você pode descobrir que seu mapa retificado cria um mapa ilegível e distorcido. Logo é natural que seja necessário revisar os Pontos de Controle, alterar localizações e até rever critérios de seleção de pontos.
+
+### Recortar
+
+A aba "Recortar" (*Crop*) permite que você corte uma seção do mapa carregado. Isso é útil para dividir mapas em composições. A janela de exibição integra as seguintes ações:
+
+-   ![Move around map icon](https://programminghistorian.org/images/introduccion-map-warper/move_around_map.gif):  "Mover pelo Mapa" (*Move Around Map*)
+-   ![Polygon icon](https://programminghistorian.org/images/introduccion-map-warper/Draw_new_polygon.gif):  "Desenhar novo Polígono para Máscara" (*Draw new Polygon to Mask*)
+-   ![Delete a polygon icon](https://programminghistorian.org/images/introduccion-map-warper/delete_polygon.gif):  "Eliminar Polígono* (*Delete a Polygon*)
+
+Desenhe ao redor da área que você deseja manter. Então, para aplicar a Máscara ao mapa, clique em *Mask Map!*. Após este passo deves retornar a aba "Retificar" e no fundo da página ativar a opção "Verdadeiro" (*True*) e de novo selecionar a opção *Warp Image!*.
+
+{% include figure.html filename="" caption="*Mask Map* aplicado ao mapa de Villasboas" ALT="Mask Map* aplicado ao mapa de Villasboas" %}
+
+
+### Alinhar
+
+A aba "Alinha" (*Align*) permite ordenar um conjunto de mapas a partir de um mosaico. Uma ferramenta adequada para conectar mapas fragmentados, ortofotos e outros documentos. Contudo, não esqueças de clicar em "Alinhar o Mapa (*Align Map*) para que o Map Warper faça um mosaico.
+
+{% include figure.html filename="" caption="Visualização de como adicionar um mapa ao mosaico." alt="" %}
+
+### Pré-visualização
+
+A aba "Pré-visualização (*Preview*) permite observar os resultados da retificação. A sua consulta é um passo prático para a averiguação da retificação. Através das ferramentas de mover, zoom, transparência e camadas podemos comparar o mapa antigo georreferenciado de modo provisório antes de o exportarmos.
+
+## Visualização
+
+
+### Exportar o mapa
+
+A aba  "Exportar" (*Export*) permite exportar o mapa georreferenciado em diferentes formatos para softwares SIG. Os formatos exportáveis ​​são agrupados em três categorias:
+
++ **Imagens:** GeoTiff, PNG retificado. Esses formatos agregam coordenadas geográficas e um sistema de projeção no documento cartográfico, permitindo que o documento georreferenciado seja vinculado a SIG. Esse formato é recomendado para trabalhar em computadores sem conexão estável à Internet ou sem conexão.
++ **Serviços de Mapa:** KML, WMS, Tiles. Esses formatos geográficos são semelhantes aos de Imagens, mas só podem ser usados ​​em computadores com conexão à Internet.
++ **Pontos de Controle:** CSV. Essa categoria permite o download da tabela de Pontos de Controle criados. A tabela agrupa os pontos de controle entre a imagem raster (documento de mapa histórico) com o mapa vetorial do OpenStreetMap. Ou seja, associa as coordenadas X, Y com longitude, latitude, respectivamente.
+
+### Atividade
+
+Na aba "Atividade" (*Ativicty*) é possível monitorar as intervenções realizadas. Sendo possível averiguar os seguintes campos: Hora, Usuário, Mapa, Resumo de atividades, Versão e Detalhes. Qualquer usuário do Map Warper pode monitorar as alterações no mapa. Além disso, ![Iconeeee](https://mapwarper.net/assets/feed-icon-14x14-c61922c8668fd4f58ea3660692ba7854.png) **RSS Feed** permite que o usuário baixe informações gerais sobre todas as alterações no formato .rss.
+
+### Comentários
+A aba "Comentários" (*Commentary*) permite que os usuários agreguem comentários sobre o mapa. Este é um espaço aberto que permite que outros se comuniquem com o usuário que compartilhou o material cartográfico. Também é um lugar útil para enriquecer a descrição e catalogação do documento importado. Certifique-se de clicar em **Adicionar Comentário** (*Add Comment*) para salvar.
+
+## Considerações finais
+A técnica demonstrada nesta lição é útil para o georreferenciamento de mapas antigos, mas não só. É também um meio para a reflexão sobre o espaço perante o lugar, a localização, o tempo e o tema. Ademais, o Map Warper é um instrumento útil para relacionar fontes cartográficas com o meio digital dos SIG. Logo, mais do que ser uma introdução ao Map Warper, esta lição é um primeiro passo na inquirição e interpretação sobre fontes, o que virá continuar a estimular as Humanidades Espaciais.
+
+
+#### Sobre os autores
+Anthony Picón Rodríguez é pesquisador do Laboratorio Digital de Arquitectura y Urbanismo da Universidad Nacional da Colômbia, bibliotecário da Mapoteca Digital da Biblioteca Nacional da Colômbia e gerente da red Razón Cartográfica.
+
+Miguel Cuadros é historiador pela Universidad Industrial de de Santander e Mestre em História pela State University of New York (Estados Unidos da América) e é Professor na Universidad Industrial de Santander. Ele tem experiência como docente e pesquisa em tópicos relacionados à cartografia e ao conhecimento geográfico.
+
+#### Sugestão de citação
+Anthony Picón Rodríguez e Miguel Cuadros, "Introdução ao Map Warper," traduzido por Bernardo de Souza, *Programming Historian* (202#), **DOI**

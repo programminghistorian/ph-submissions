@@ -56,7 +56,7 @@ Neste tutorial vamos georreferenciar um mapa de c.1795 da [Província do Entre D
  Em exercícios futuros recomenda-se que a imagem a ser georreferenciada possui a melhor resolução possível.
 </div>
 
-{% include figure.html filename="" caption="Figura 1. Mapa Província do Entre Douro-e-Minho, 1795." %}
+{% include figure.html filename="file-name-1.png" alt="Visual description of figure image" caption="Figura 1. Mapa Província do Entre Douro-e-Minho, 1795." %} 
 
 <div class="alert alert-info">
  Recomenda-se que o mapa seja guardado numa pasta nova no Ambiente de Trabalho nomeada: Map Warper_Introdução. O ficheiro descarregado deve ser renomeado para: Mp_EDM_Villasboas_1795_SOBRENOME. Para que o nome seja único e possa ser importado para o Map Warper.
@@ -84,7 +84,7 @@ Algumas questões previas podem ser:
 
 A partir do navegador de internet preferido navegue até https://mapwarper.net/ e clique na aba "Create Account" no canto superior direito. Podes utilizar a tua conta pessoal Facebook, OpenstreetMap ou GitGub para fazer o login de modo expedito.
 
-{% include figure.html filename="" caption="Figure 2. Criando uma conta" %}
+{% include figure.html filename="file-name-2.png" alt="Visual description of figure image" caption="Figura 2. Criando uma conta." %} 
 
 ### Upload do mapa antigo
 
@@ -127,9 +127,9 @@ Na página inicial os mapas importados estarão em Favoritos (Favourites) no cen
 
 Neste subponto irás compreender como georreferenciar o mapa importado. Clique na aba "Retificar" (*Rectify*), onde existirão duas janelas. À esquerda o mapa importado e à direita um mapa base (OpenstreetMap), será a partir deste mapa a direita que irás estabelecer pontos de controles. Abaixo destas janelas encontrarás o "Control Planel", que permite ajustar os pontos de controles e avaliar o seu nível de exatidão.
 
-![Layer](http://mapwarper.net/assets/openlayers/theme/dark/layer_switcher_maximize.png): O icóne "Camada" (*Layer*), na janela da direita, permite a seleção dos elementos presentes no mapa base do OpenstreetMap ou Mapbox Satellite. Talvez existe a sobreposição entre os mapas para que possas identificar o que esta a ocorrer, depois de confirmar o georreferenciamento.
+![Layer](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon1.png): O icóne "Camada" (*Layer*), na janela da direita, permite a seleção dos elementos presentes no mapa base do OpenstreetMap ou Mapbox Satellite. Talvez existe a sobreposição entre os mapas para que possas identificar o que esta a ocorrer, depois de confirmar o georreferenciamento.
 
-![Icon1](https://programminghistorian.org/images/introduccion-map-warper/addcustombasemap.png) O ícone "Adicionar Mapa de Base personalizado" (*Add Custom Basemap*), na janela da direita, permite que se adicione uma camada XYZ Tiles format (como Google Maps, Bing, CARTO, ESRI, Stamen, and other layers).
+![Custombasemap](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon2.png) O ícone "Adicionar Mapa de Base personalizado" (*Add Custom Basemap*), na janela da direita, permite que se adicione uma camada XYZ Tiles format (como Google Maps, Bing, CARTO, ESRI, Stamen, and other layers).
 
 Podes inclusive utilizar os seguintes URL para ter acesso a uma maior seleção de mapas de base no Map Warper:
 
@@ -141,18 +141,18 @@ Podes inclusive utilizar os seguintes URL para ter acesso a uma maior seleção 
 * Stamen Watercolor: https://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
 ```
 
-![Icon1](https://programminghistorian.org/images/introduccion-map-warper/add_control_point.gif): O ícone "Adicionar Ponto de Controle" (*Add Control Point*), em ambas as janelas, permite adicionar pontos de controle entre ambas as janelas.
+![AddControlPoint](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon3.gif): O ícone "Adicionar Ponto de Controle" (*Add Control Point*), em ambas as janelas, permite adicionar pontos de controle entre ambas as janelas.
 
-![Icon1](https://programminghistorian.org/images/introduccion-map-warper/move_control_point.gif): O ícone "Mover Ponto de Controle" (*Move Control Point*), em ambas as janelas, permite que se altere a localização de um ponto de controle previamente adicionado.
+![MoveControlPoint](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon4.gif): O ícone "Mover Ponto de Controle" (*Move Control Point*), em ambas as janelas, permite que se altere a localização de um ponto de controle previamente adicionado.
 
-![Alt Text](https://programminghistorian.org/images/introduccion-map-warper/move_around_map.gif): O ícone "Mover pelo Mapa" (*Move Around Map*), em ambas as janelas, permite navegar por ambas as janelas e explorar os mapas.
+![MoveAroundMap](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon5.gif): O ícone "Mover pelo Mapa" (*Move Around Map*), em ambas as janelas, permite navegar por ambas as janelas e explorar os mapas.
 
-O cadeado entre ambas as janelas permite o movimento controlado entre ambos os mapas. Ao selecionar a opção ![Icon1](https://programminghistorian.org/images/introduccion-map-warper/Zoom_lock.png) "Cadeado fechado" (*Zoom Lock*) permite dar zoom concomitantemente entre as janelas. Sendo útil para localizar e verificar os pontos de controle. Clicar no cadeado novamente irá desbloquear ![Icon1](https://programminghistorian.org/images/introduccion-map-warper/lock_open.png) e permitir a navegação independente.
+O cadeado entre ambas as janelas permite o movimento controlado entre ambos os mapas. Ao selecionar a opção ![ZoomLock](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon6.png) "Cadeado fechado" (*Zoom Lock*) permite dar zoom concomitantemente entre as janelas. Sendo útil para localizar e verificar os pontos de controle. Clicar no cadeado novamente irá desbloquear ![LockOpen](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon7.png) e permitir a navegação independente.
 
 **Atalhos de teclado** permite o acesso ágil as diferentes ferramentas para a ratificação:
-+ *p*: ativa o *Adicionar Ponto de Controle*![Icon1](https://programminghistorian.org/images/introduccion-map-warper/add_control_point.gif);
-+ *d*: ativa o *Mover Ponto de Controle*![Icon1](https://programminghistorian.org/images/introduccion-map-warper/move_control_point.gif);
-+ *m*: ativa o *Mover pelo Mapa* ![Alt Text](https://programminghistorian.org/images/introduccion-map-warper/move_around_map.gif);
++ *p*: ativa o *Adicionar Ponto de Controle*![AddControlPoint](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon3.gif);
++ *d*: ativa o *Mover Ponto de Controle*![MoveControlPoint](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon4.gif);
++ *m*: ativa o *Mover pelo Mapa* ![MoveAroundMap](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon5.gif);
 + *q*: adiciona um *Ponto de Controle* na localização do mouse;
 + *a*: adiciona um *Ponto de Controle* na localização do mouse em ambas as janelas; 
 + *Enter*: substitui a tecla do mouse para adicionar um *Ponto de Controle*;
@@ -201,7 +201,8 @@ Tabela 1: Lugares selecionados como pontos de controle.
 
 A partir deste conjunto de 32 pontos de controle temos:
 
-{% include figure.html filename="IMAGEM-NOMEFICHEIRO" caption="Figura 3. Mapa em retificação. ALT="Mapa em retificação." %}
+{% include figure.html filename="file-name-3.png" alt="Visual description of figure image" caption="Figura 3. Mapa em retificação." %} 
+
 
 <div class="alert alert-info">
 Nota: Você verá que há um valor de erro para cada ponto de controle. O Map Warper usa um cálculo de variação baseado em Root-Mean-Square (RMS) para avaliar os diferentes pontos de controle. O RMS fornece um guia de quão consistentes seus pontos de controle são entre si e avalia o quão distorcido o mapa ficará. Valores altos de erro RMS indicam que seus pontos de controle são menos inteligiveis entre si, enquanto um valor baixo de erro RMS indica mais consistência. Geralmente, é recomendado manter os valores baixos e substituir ou remover pontos de controle com valores altos. O RMS é somente um indicador, logo sempre deve reavaliar o quão bem o mapa digitalizado corresponde ao mapa de base.
@@ -209,13 +210,11 @@ Nota: Você verá que há um valor de erro para cada ponto de controle. O Map Wa
 
 Quando obtiver pontos suficientes e considerar que eles estão bem distribuídos em seu mapa antigo, clique em *Warp Image!* na parte inferior da página. 
 
-{% include figure.html filename="IMAGEM-NOMEFICHEIRO" caption="Figura 4. Clique em *Warp Image!* para retificar o mapa." ALT="Mapa em retificação." %}
+{% include figure.html filename="file-name-4.png" alt="Visual description of figure image" caption="Figura 4. Clique em 'Warp Image!' para retificar o mapa." %}
 
 As opções avançadas que permitem alterar o método de retificação e *resampling* não devem ser alterados. O Map Warper apresenta problemas de estabilidade ao selecionar outros métodos. Alterar o método de retificação não gera, na maioria dos casos, um ganho qualitativo do mapa final. Em contrapartida alterar o *resampling* para bilinear ou cúbico gera um raster com menos ruído, porém devido aos problemas de estabilidade causados pela demanda computacional, estes métodos alternativos não são aconselháveis.
 
-
-{% include figure.html filename="IMAGEM-NOMEFICHEIRO" caption="Mapa de Villasboas georreferenciado" ALT="Mapa de Villasboas georreferenciado" %}
-
+{% include figure.html filename="file-name-5.png" alt="Visual description of figure image" caption="Figura 5. Mapa de Villasboas georreferenciado." %}
 
 >Georreferenciar mapas requer prática, você pode descobrir que seu mapa retificado cria um mapa ilegível e distorcido. Logo é natural que seja necessário revisar os Pontos de Controle, alterar localizações e até rever critérios de seleção de pontos.
 
@@ -223,20 +222,20 @@ As opções avançadas que permitem alterar o método de retificação e *resamp
 
 A aba "Recortar" (*Crop*) permite que você corte uma seção do mapa carregado. Isso é útil para dividir mapas em composições. A janela de exibição integra as seguintes ações:
 
--   ![Move around map icon](https://programminghistorian.org/images/introduccion-map-warper/move_around_map.gif):  "Mover pelo Mapa" (*Move Around Map*)
--   ![Polygon icon](https://programminghistorian.org/images/introduccion-map-warper/Draw_new_polygon.gif):  "Desenhar novo Polígono para Máscara" (*Draw new Polygon to Mask*)
--   ![Delete a polygon icon](https://programminghistorian.org/images/introduccion-map-warper/delete_polygon.gif):  "Eliminar Polígono* (*Delete a Polygon*)
+-   ![MoveAroundMap](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon5.gif):  "Mover pelo Mapa" (*Move Around Map*)
+-   ![DrawNewPolygon](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon10.gif):  "Desenhar novo Polígono para Máscara" (*Draw new Polygon to Mask*)
+-   ![DeletePolygon](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon11.gif):  "Eliminar Polígono* (*Delete a Polygon*)
 
 Desenhe ao redor da área que você deseja manter. Então, para aplicar a Máscara ao mapa, clique em *Mask Map!*. Após este passo deves retornar a aba "Retificar" e no fundo da página ativar a opção "Verdadeiro" (*True*) e de novo selecionar a opção *Warp Image!*.
 
-{% include figure.html filename="" caption="Figura 6. *Mask Map* aplicado ao mapa de Villasboas" ALT="Mask Map* aplicado ao mapa de Villasboas" %}
+{% include figure.html filename="file-name-6.png" alt="Visual description of figure image" caption="Figura 6. 'Mask Map' aplicado ao mapa de Villasboas." %}
 
 
 ### Alinhar
 
 A aba "Alinha" (*Align*) permite ordenar um conjunto de mapas a partir de um mosaico. Uma ferramenta adequada para conectar mapas fragmentados, ortofotos e outros documentos. Contudo, não esqueças de clicar em "Alinhar o Mapa (*Align Map*) para que o Map Warper faça um mosaico.
 
-{% include figure.html filename="" caption="Figura 7. Visualização de como adicionar um mapa ao mosaico." alt="" %}
+{% include figure.html filename="file-name-7.png" alt="Visual description of figure image" caption="Figura 7. Visualização de como adicionar um mapa ao mosaico." %}
 
 ### Pré-visualização
 
@@ -255,7 +254,7 @@ A aba  "Exportar" (*Export*) permite exportar o mapa georreferenciado em diferen
 
 ### Atividade
 
-Na aba "Atividade" (*Ativicty*) é possível monitorar as intervenções realizadas. Sendo possível averiguar os seguintes campos: Hora, Usuário, Mapa, Resumo de atividades, Versão e Detalhes. Qualquer usuário do Map Warper pode monitorar as alterações no mapa. Além disso, ![Iconeeee](https://mapwarper.net/assets/feed-icon-14x14-c61922c8668fd4f58ea3660692ba7854.png) **RSS Feed** permite que o usuário baixe informações gerais sobre todas as alterações no formato .rss.
+Na aba "Atividade" (*Ativicty*) é possível monitorar as intervenções realizadas. Sendo possível averiguar os seguintes campos: Hora, Usuário, Mapa, Resumo de atividades, Versão e Detalhes. Qualquer usuário do Map Warper pode monitorar as alterações no mapa. Além disso, ![RSS](/images/introduccion-map-warper/es-or-introduccion-map-warper-icon12.png) **RSS Feed** permite que o usuário baixe informações gerais sobre todas as alterações no formato .rss.
 
 ### Comentários
 

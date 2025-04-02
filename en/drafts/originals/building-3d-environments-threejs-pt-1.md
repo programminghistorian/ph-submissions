@@ -95,7 +95,7 @@ The models used in this project, were created with CAD by the authors (who are n
 
 For use with a website, Blender was used to reduce the model polygon count and the individual vessel models (used in part 2) were exported as draco compressed glTF files. The composite model (used in part 1) was created in Blender, with the addition of the map (added via the ‘import image as planes’ extension). 
 
-The ethics of using different types of digital models in a website had previously been discussed with the University Librarian, Chief Scholarly Information Officer of the Australian National University. Their advice was that the use of symbolic models of non-ceremonial objects was acceptable, whereas the use of realistic (photogrammetry) models would require further attempts to obtain community permission to use. Programming Historian tutorials (and thus the models) are under a CC-BY 4.0 licence. 
+The ethics of using different types of digital models in a website had previously been discussed with the University Librarian, Chief Scholarly Information Officer of the Australian National University. Their advice was that the use of symbolic models of non-ceremonial objects was acceptable, whereas the use of realistic (photogrammetry) models would require further attempts to obtain community permission to use. These models have a [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)[CC BY-NC-SA 4.0] licence which means they can be used and modified by others but not for commercial use. The CC BY-NC-SA licence also means that if they are used, reference should be made to the authors. 
 
 ## Alternatives to three.js for Creating Websites Featuring Models
 

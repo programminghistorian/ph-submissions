@@ -259,11 +259,11 @@ First, Open 0 A.D.
 
 From the main menu, click "Scenario Editor" to launch Atlas. When asked "Would you like to quit 0 A.D. and open the Scenario Editor?", click "Yes."
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-18.png" alt="From the game's main menu, select "Scenario Editor," and then click "Yes" in answer to the question "Are you sure that you want to quit 0 A.D. and open the Scenario Editor?"." caption="Figure 9. Opening Atlas, the Scenario Editor" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-18.png" alt="From the game's main menu, select 'Scenario Editor', and then click 'Yes' in answer to the question 'Are you sure that you want to quit 0 A.D. and open the Scenario Editor?'." caption="Figure 9. Opening Atlas, the Scenario Editor" %}
 
 * Inside Atlas, click "File" -> "Open Heightmap," and select the topographic map image that you have edited.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-19.png" alt="From Atlas's main menu, click "File," and then "Open Heightmap"." caption="Figure 10. Importing a heightmap file inside Atlas" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-19.png" alt="From Atlas's main menu, click 'File,' and then 'Open Heightmap'." caption="Figure 10. Importing a heightmap file inside Atlas" %}
 
 Here is how mine looks:
 
@@ -279,11 +279,11 @@ Before doing anything else to your terrain in Atlas, you ought to add water to i
 
 Here is how you add water to the terrain. From the main menu, click the sun-shaped icon for "Environment" settings. Then, drag the "Water height" slider until there is about the right amount of water in the terrain's points of low elevation (where there ought to be water).
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-20.png" alt="I have the sun-shaped "Environment" icon selected, and I am adjusting the "Water height" slider." caption="Figure 13. Adjusting the Water height to add water to the terrain" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-20.png" alt="I have the sun-shaped 'Environment' icon selected, and I am adjusting the 'Water height' slider." caption="Figure 13. Adjusting the Water height to add water to the terrain" %}
 
 To smooth the terrain, click the plain green icon for "Terrain" settings. Then, click "Smooth," and adjust the size of the tool to about 20 (leaving the strength at about 10), and work around the map as needed (left clicking on the areas for correction and dragging the cursor over them).
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-21.png" alt="I have the "Terrain" settings menu open with the "Smooth" tool selected, for which I have the size set to 20, and I am working my way around the terrain to achieve smoothing." caption="Figure 14. Smoothing the terrain" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-21.png" alt="I have the 'Terrain' settings menu open with the 'Smooth' tool selected, for which I have the size set to 20, and I am working my way around the terrain to achieve smoothing." caption="Figure 14. Smoothing the terrain" %}
 
 Here is how my terrain looks after adding water and performing an initial smoothing:
 
@@ -293,7 +293,7 @@ The other adjustments that you will need to perform at this stage will depend up
 
 For my sample, I have used the "Flatten," "Modify," and "Smooth" terrain adjustment tools only for a few minutes. Also, I have added a few rocky biomes to the northern mountains. Biomes are found on the bottom task bar in Atlas. 
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-22.png" alt="I have the "Terrain" settings menu open with the "Paint" tool open, and I have selected the Biome "Aegean cliff 01" as a sample to spread across the terrain." caption="Figure 16. Incorporating new biomes into the terrain" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-22.png" alt="I have the 'Terrain' settings menu open with the 'Paint' tool open, and I have selected the Biome 'Aegean cliff 01' as a sample to spread across the terrain." caption="Figure 16. Incorporating new biomes into the terrain" %}
 
 This is my result:
 
@@ -305,7 +305,7 @@ Now that you have your terrain's core features in place, it is time for you to a
 
 In Atlas, you will place all flora and fauna with the the "Object" tool, which has a person-shaped icon. Flora and fauna are categorized as units belonging to Gaia (Mother Earth). For a full list, then, filter by "gaia" (lowercase) in the top search bar.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-23.png" alt="I have the "Object" tool open, and I am sorting by "gaia." The first result is a black bear, which I have hovering to be placed in the terrain." caption="Figure 18. Using the Object tool to add flora and fauna to the terrain" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-23.png" alt="I have the Object tool open, and I am sorting by 'gaia'. The first result is a black bear, which I have hovering to be placed in the terrain." caption="Figure 18. Using the Object tool to add flora and fauna to the terrain" %}
 
 Mont Beuvray has a blend of deciduous and coniferous vegitation. Although the surrounding flatlands are all open fields today, they probably were forested in antiquity. Accordingly, I start adding decidious and coniferous trees throughout the terrain.
 
@@ -351,7 +351,7 @@ What you might do with these tools will depend on your specific scenario, but th
 
 Having finished crafting the historical scenario, it is time to save it for distribution. First, click the gear-shaped icon to switch to the "Map" tab. Next, enter a name for the scenario, as well as a short (1-2 sentence) description. 
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-26.png" alt="The Map tab is open with a sample name of "Programming Historian Map" and Description of "A sample map for Programming Historian."" caption="Figure 24. Making the universal settings for a map before saving it" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-26.png" alt="The Map tab is open with a sample name of 'Programming Historian Map' and Description of 'A sample map for Programming Historian.'" caption="Figure 24. Making the universal settings for a map before saving it" %}
 
 Finally, click "File" -> "Save," and type an easy-to-remember file name. Do *not* change any information under the "Random Map" area, since you are not making a Random Map. Custom scenarios are automatically saved in the game's default "mod" folder (see above), specifically `/0ad/mods/user/maps/scenarios/`. 
 

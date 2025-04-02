@@ -185,7 +185,7 @@ While you work through the steps outlined below, I recommend that you have the o
 
 Also, as a preparatory note, whenever you click "Save" (or "Save As") inside Atlas, make sure that you always choose Atlas's option for a **scenario** -- not a skirmish (nor a tutorial).
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-17.png" alt="The 'Save As' dialogue shows "Scenarios," "Skirmishes," and "Tutorials" as the 3 options for file save. While following this tutorial, always choose "Scenarios"." caption="Figure 6. Saving a Scenario file in Atlas" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-17.png" alt="The 'Save As' dialogue shows \"Scenarios,\" \"Skirmishes,\" and \"Tutorials\" as the 3 options for file save. While following this tutorial, always choose \"Scenarios\"." caption="Figure 6. Saving a Scenario file in Atlas" %}
 
 Scenarios have predefined civilizations, teams, units, and so on while allowing full multiplayer gameplay.
 

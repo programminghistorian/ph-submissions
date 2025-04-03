@@ -126,7 +126,7 @@ This lesson will show how to create a choropleth map using two data files:
 * A file with the data to count and visualize: the 'Fatal Force' dataset
 * A file with data about the shapes (in this case, counties) to draw on the map: the 'cartographic boundaries' file
 
-Using Pandas, these datasets will be turned into dataframes. In order for Folium to match records from one dataframe with the other, they need to share a common variable. The maps will be plotting county-level data, so the common variable will be the **Federal Information Processing Standard** (FIPS) [county code](https://en.wikipedia.org/wiki/FIPS_county_code). Many datasets of county-level data include the FIPS code, but unfortunately the Fatal Force database does not, so this lesson will first teach you how to add it. 
+Using Pandas, these datasets will be turned into DataFrames. In order for Folium to match records from one DataFrame with the other, they need to share a common variable. The maps will be plotting county-level data, so the common variable will be the **Federal Information Processing Standard** (FIPS) [county code](https://en.wikipedia.org/wiki/FIPS_county_code). Many datasets of county-level data include the FIPS code, but unfortunately the Fatal Force database does not, so this lesson will first teach you how to add it. 
 
 If the cartographic boundary file you were using was based on another boundary type (such as [census tracts](https://en.wikipedia.org/wiki/Census_tract), or [police precincts](https://en.wikipedia.org/wiki/Police_precinct)), the same basic steps would be followed – the map produced would simply reflect these different geometries instead.
 
@@ -195,7 +195,7 @@ ff_df['latitude'].notna().sum() / len(ff_df)
 
 This shows that 7,496 rows contain latitude values, which is about 89% of all the records. 
 
-If you wanted to use this data for a study or report, finding values for the missing data would be important. For example, the Google Maps API can provide latitude/longitude data from a street address. But since exploring these techniques goes beyond the goals of this lesson, the next line of code will create a smaller version of the dataframe that only includes rows with latitude/longitude data.
+If you wanted to use this data for a study or report, finding values for the missing data would be important. For example, the Google Maps API can provide latitude/longitude data from a street address. But since exploring these techniques goes beyond the goals of this lesson, the next line of code will create a smaller version of the DataFrame that only includes rows with latitude/longitude data.
 
 ```python
 ff_df = ff_df[ff_df['latitude'].notna()]
@@ -213,7 +213,7 @@ counties = gpd.read_file('https://raw.githubusercontent.com/programminghistorian
 # counties = gpd.read_file("https://www2.census.gov/geo/tiger/GENZ2021/shp/cb_2021_us_county_5m.zip")
 ```
 
-Let's check the counties data frame to make sure it has the information we're looking for:
+Let's check the counties DataFrame to make sure it has the information we're looking for:
 
 ```python
 counties.info()
@@ -266,7 +266,7 @@ counties[(counties['NAME']=='Suffolk') & (counties['STUSPS']=='MA')].plot()
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-01.png" alt="Image of Suffolk county, MA" caption="Figure 1. GeoPandas' geometry can handle the oddly-shaped Suffolk County, MA." %}
 
-The only columns needed in the `counties` dataframe are `FIPS`, `NAME`, and `geometry`, so the next code block creates a simplified version containing only these columns:
+The only columns needed in the `counties` DataFrame are `FIPS`, `NAME`, and `geometry`, so the next code block creates a simplified version containing only these columns:
 
 ```python
 counties = counties[['FIPS','NAME','geometry']]
@@ -286,20 +286,20 @@ counties.info()
 
 ### Matching the two Datasets
 
-To map the FIPS values from the `counties` dataframe to the Fatal Force dataframe, you can use the special GeoPandas method [spatial join](https://geopandas.org/en/stable/docs/user_guide/mergingdata.html), which is syntatically similar to a Pandas [join](https://www.geeksforgeeks.org/different-types-of-joins-in-pandas/). But where the latter only matches values from one dataframe to values in another, the spatial join examines coordinate values, matches them to geographic region data, and returns the associated FIPS code.
+To map the FIPS values from the `counties` DataFrame to the Fatal Force DataFrame, you can use the special GeoPandas method [spatial join](https://geopandas.org/en/stable/docs/user_guide/mergingdata.html), which is syntatically similar to a Pandas [join](https://www.geeksforgeeks.org/different-types-of-joins-in-pandas/). But where the latter only matches values from one DataFrame to values in another, the spatial join examines coordinate values, matches them to geographic region data, and returns the associated FIPS code.
 
-To prepare to execute the spatial join, you will create a new field in the Fatal Force dataframe to combine the latitude and longitude columns into a single `point` data type. (`point` is a special data type added by Geopandas.)
+To prepare to execute the spatial join, you will create a new field in the Fatal Force DataFrame to combine the latitude and longitude columns into a single `point` data type. (`point` is a special data type added by Geopandas.)
 
 <div class="alert alert-info">
 Note that the method to create the new variable is <code>.points_from_xy</code>, so longitude (x) must be specified <i>before</i> latitude (y), contrary to the standard way in which map coordinates are referenced.
 </div>
 
-Additionally, you need to tell GeoPandas which [coordinate reference system (CRS)](https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/coordinate-systems-and-projections.htm) to use. The CRS is a type of mathematical model that describes how latitude and longitude data (points on the surface of a sphere) are presented on a flat surface. For this lesson, the most important thing to know is that both dataframes need to use the same CRS before being joined.
+Additionally, you need to tell GeoPandas which [coordinate reference system (CRS)](https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/coordinate-systems-and-projections.htm) to use. The CRS is a type of mathematical model that describes how latitude and longitude data (points on the surface of a sphere) are presented on a flat surface. For this lesson, the most important thing to know is that both DataFrames need to use the same CRS before being joined.
 
 The next code block ties all this together. It:
-1. Uses GeoPandas (`gpd`) to add a **points** column to the Fatal Force dataframe and tells it to use a specific CRS
-2. Uses GeoPandas to convert the Fatal Force dataframe from a Pandas to a GeoPandas dataframes
-3. Converts the `counties` dataframe to the same CRS 
+1. Uses GeoPandas (`gpd`) to add a **points** column to the Fatal Force DataFrame and tells it to use a specific CRS
+2. Uses GeoPandas to convert the Fatal Force DataFrame from a Pandas to a GeoPandas DataFrames
+3. Converts the `counties` DataFrame to the same CRS 
 
 ```python
 ff_df['points'] = gpd.points_from_xy(ff_df.longitude, ff_df.latitude, crs="EPSG:4326")
@@ -321,9 +321,9 @@ counties.crs
     - Prime Meridian: Greenwich
 ```
 
-This is a lot of preparation, but now that the two dataframes are properly set up, you can use the spatial join to add FIPS data to each row of the Fatal Force dataframe.
+This is a lot of preparation, but now that the two DataFrames are properly set up, you can use the spatial join to add FIPS data to each row of the Fatal Force DataFrame.
 
-The next code block will use `geopandas.sjoin()` to create a new version of the Fatal Force dataframe. `left_df` and `right_df` specify which two dataframes are to be matched, and `how=` tells GeoPandas that it should treat the left dataframe as primary. This means that it will add the matching data from the right dataframe to the left.
+The next code block will use `geopandas.sjoin()` to create a new version of the Fatal Force DataFrame. `left_df` and `right_df` specify which two DataFrames are to be matched, and `how=` tells GeoPandas that it should treat the left DataFrame as primary. This means that it will add the matching data from the right DataFrame to the left.
 
 ```python
 ff_df = gpd.sjoin(left_df = ff_df,
@@ -352,13 +352,13 @@ ff_df.info()
 
 ## Creating your First Map
 
-Now that you've added the geographic data from `counties` into the Fatal Force dataframe, you're ready to draw a map with Folium. The first map you'll try will count the number of times people have been killed by police officers in each county and produce a choropleth map that shows, via color and shading, which counties have larger or smaller kill counts.
+Now that you've added the geographic data from `counties` into the Fatal Force DataFrame, you're ready to draw a map with Folium. The first map you'll try will count the number of times people have been killed by police officers in each county and produce a choropleth map that shows, via color and shading, which counties have larger or smaller kill counts.
 
 ### Counting the Data by County
 
-Since each record in the `ff_df` represents one person killed by a police officer, counting the number of times each county FIPS number appears in the dataframe will report the number of people killed in that given county. To do this, you can simply use the `.value_counts()` method on the `FIPS` column.
+Since each record in the `ff_df` represents one person killed by a police officer, counting the number of times each county FIPS number appears in the DataFrame will report the number of people killed in that given county. To do this, you can simply use the `.value_counts()` method on the `FIPS` column.
 
-The code below executes the `.value_counts()` method on the FIPS column. Because `.value_counts()` returns a series, the `.reset_index()` method will turn the series into a dataframe. The new dataframe is then assigned to `map_df`, the variable name that will be used in the mapping process.
+The code below executes the `.value_counts()` method on the FIPS column. Because `.value_counts()` returns a series, the `.reset_index()` method will turn the series into a DataFrame. The new DataFrame is then assigned to `map_df`, the variable name that will be used in the mapping process.
 
 ```python
 map_df = ff_df[['FIPS']].value_counts().reset_index()
@@ -433,10 +433,10 @@ Folium then processes the data and turns it into a map through the following cod
 ```
 
 * Line 1 calls the `folium.Choropleth()` method and line 12 adds it to the map object initalized earlier. The method plots a GeoJSON overlay on the `baseMap`.
-* Line 2 (`geo_data =`) identifies the GeoJSON source of the geographic geometries to be plotted. This is the `counties` dataframe downloaded from the US Census bureau.
-* Line 3 (`data =`) identifies the source of the data to be analyzed and plotted. This is the `map_df` dataframe (counting the number of kills above 0 in each county), pulled from the Fatal Force dataframe (`ff_df`).
-* Line 4 (`key_on =`) identifies the field in the GeoJSON data that will be bound (or linked) to the data from the `map_df`. As noted earlier, Folium needs a common column between both dataframes. In this case, this is the `FIPS` column.
-* Line 5 is required because the data source is a dataframe. The `column =` parameter tells Folium which columns in the DF to use.
+* Line 2 (`geo_data =`) identifies the GeoJSON source of the geographic geometries to be plotted. This is the `counties` DataFrame downloaded from the US Census bureau.
+* Line 3 (`data =`) identifies the source of the data to be analyzed and plotted. This is the `map_df` DataFrame (counting the number of kills above 0 in each county), pulled from the Fatal Force DataFrame (`ff_df`).
+* Line 4 (`key_on =`) identifies the field in the GeoJSON data that will be bound (or linked) to the data from the `map_df`. As noted earlier, Folium needs a common column between both DataFrames. In this case, this is the `FIPS` column.
+* Line 5 is required because the data source is a DataFrame. The `column =` parameter tells Folium which columns in the DF to use.
   * The first list element is the variable that should be matched with the `key_on=` value.
   * The second element is the variable to be used to draw the choropleth map's colors.
 * Line 6 (`bins =`) specifies how many [bins](https://en.wikipedia.org/wiki/Data_binning) to sort the data values into. (The maximum number is limited by the number of colors in the color palette selected. This is often 9.)
@@ -656,7 +656,7 @@ pop_df.info()
 Note that this file does not use the very common <code>utf-8</code> encoding scheme; I needed to specify the <code>"ISO-8859-1"</code> to avoid a <code>UnicodeDecodeError</code>.
 </div>
 
-In the earlier `counties` dataframe, the FIPS varible was an `object` (string) data type. In this dataframe, Pandas imported `STATE` and `COUNTY` as integers. Let's combine these values into the FIPS county code. The code block below:
+In the earlier `counties` DataFrame, the FIPS varible was an `object` (string) data type. In this DataFrame, Pandas imported `STATE` and `COUNTY` as integers. Let's combine these values into the FIPS county code. The code block below:
 
 1. Converts the numbers to string values with [.astype(str)](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.astype.html)
 2. Adds leading zeros with [.str.zfill](https://www.geeksforgeeks.org/python-pandas-series-str-zfill/)(2)
@@ -675,13 +675,13 @@ pop_df.head(3)
 |1|01|001|55869|01001|
 |2|01|003|223234|01003|
 
-This dataframe includes population statistics for both entire states (county code 000) and individual counties (county code 001 and up). Row 0 reports the total population for state **01** (Alabama), while Row 1 reports the population for county **001** of Alabama (Autauga).
+This DataFrame includes population statistics for both entire states (county code 000) and individual counties (county code 001 and up). Row 0 reports the total population for state **01** (Alabama), while Row 1 reports the population for county **001** of Alabama (Autauga).
 
-Since the dataframes we've used so far don't include the state rows (FIPS county code XX-000), these totals will be ignored by Pandas when it merges this dataframe. 
+Since the DataFrames we've used so far don't include the state rows (FIPS county code XX-000), these totals will be ignored by Pandas when it merges this DataFrame. 
 
 ### Adding the County-Level Data to the Map Dataframe
 
-To add these county-level population numbers, the [merge](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html) method lets you add the data from `pop_df` to `map_df`, matching on the **FIPS** column and using the left dataframe (that is, `map_df`) as primary.
+To add these county-level population numbers, the [merge](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html) method lets you add the data from `pop_df` to `map_df`, matching on the **FIPS** column and using the left DataFrame (that is, `map_df`) as primary.
 
 ```python
 map_df = map_df.merge(pop_df, on = 'FIPS', how = 'left')
@@ -697,7 +697,7 @@ map_df.head(3)
 
 </div>
 
-The snippet of `map_df` above shows that it contains all the columns you've added so far in this lesson. At this point, the only columns you need are **FIPS**, **count**, and **POPESTIMATE2019**, so you could decide to tidy it up a bit – but as it's a relatively small dataframe (around 3,100 rows), there isn't a pressing reason to do so.
+The snippet of `map_df` above shows that it contains all the columns you've added so far in this lesson. At this point, the only columns you need are **FIPS**, **count**, and **POPESTIMATE2019**, so you could decide to tidy it up a bit – but as it's a relatively small DataFrame (around 3,100 rows), there isn't a pressing reason to do so.
 
 ### Calculating the Rate of People Killed per 100k
 
@@ -868,9 +868,9 @@ The [JSON](https://stackoverflow.blog/2022/06/02/a-beginners-guide-to-json-the-d
 
 ### Adding data to the Choropleth map's Property Dictionary
 
-Unfortunately, the GeoJSON data above doesn't currently hold all the information you've generated so far. You can supplement it by iteratively selecting the desired information from the `map_df` dataframe and adding it to the GeoJSON property dictionary. Here's how to do this:
+Unfortunately, the GeoJSON data above doesn't currently hold all the information you've generated so far. You can supplement it by iteratively selecting the desired information from the `map_df` DataFrame and adding it to the GeoJSON property dictionary. Here's how to do this:
 
-1. Create a `map_data_lookup` dataframe that copies the `map_df`, using FIPS as its index. 
+1. Create a `map_data_lookup` DataFrame that copies the `map_df`, using FIPS as its index. 
 2. Iterate over the GeoJSON data and add new property variables using data from `map_df`.
 
 In the code below, I've added line numbers to clarify the subsequent explanation:
@@ -885,7 +885,7 @@ In the code below, I've added line numbers to clarify the subsequent explanation
 6.      row['properties']['count'] = 'No police killings reported'
 ```
 
-- Line 1 creates a dataframe from `map_df` and sets its index to the `FIPS` code. This is important because the GeoJSON data includes `FIPS` information. The code therefore uses it to find corresponding data in the `map_df` dataframe.
+- Line 1 creates a DataFrame from `map_df` and sets its index to the `FIPS` code. This is important because the GeoJSON data includes `FIPS` information. The code therefore uses it to find corresponding data in the `map_df` DataFrame.
 
 - Line 2 iterates over the GeoJSON data, examining the data for each county.
 
@@ -896,7 +896,7 @@ In the code below, I've added line numbers to clarify the subsequent explanation
 `f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.0f}"` assigns a value to this key.
 
 To understand this last bit of code, let's read it from the inside out:
-* [`.loc`](https://www.geeksforgeeks.org/python-pandas-dataframe-loc/) returns a value from a dataframe based on its `index value` and `column name`. In its simplist form, it looks like `value = df.loc[index,col]`.
+* [`.loc`](https://www.geeksforgeeks.org/python-pandas-dataframe-loc/) returns a value from a DataFrame based on its `index value` and `column name`. In its simplist form, it looks like `value = df.loc[index,col]`.
 * Because `map_data_lookup`'s index is the `FIPS` code, if you supply a `FIPS` and a column name (`'count'`), Pandas will search the table for the corresponding FIPS number and return the number in the `count` column.
 * As it iterates over the rows in the GeoJSON data, the `row['properties']['FIPS']` will supply the `FIPS` value for which to search.
 

@@ -682,13 +682,13 @@ pop_df.head(3)
 |1|01|001|55869|01001|
 |2|01|003|223234|01003|
 
-This dataframe includes population statistics for both entire states (county code 000) and individual counties. Row 0 reports the total population for state **01** (Alabama), while Row 1 reports the population for county **001** of Alabama (Autauga).
+This dataframe includes population statistics for both entire states (county code 000) and individual counties (county code 001 and up). Row 0 reports the total population for state **01** (Alabama), while Row 1 reports the population for county **001** of Alabama (Autauga).
 
-Since the earlier DFs don't include rows with a FIPS number of ***XX*000** when Pandas does the join/merge, the state totals will be ignored.
+Since the dataframes we've used so far don't include the state rows (FIPS county code XX-000), these totals will be ignored by Pandas when it merges this dataframe. 
 
 #### Add County-Level Population Statistics to the Map dataframe
 
-To add the county-level population statistics, the [merge](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html) method adds the data from the **pop_df** to the **map_df**, matching on the **FIPS** column and using the **left** (that is, the **map_df**) DF as primary.
+To add these county-level population numbers, the [merge](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html) method lets you add the data from `pop_df` to `map_df`, matching on the **FIPS** column and using the left dataframe (that is, `map_df`) as primary.
 
 ```python
 map_df = map_df.merge(pop_df, on = 'FIPS', how = 'left')
@@ -704,11 +704,11 @@ map_df.head(3)
 
 </div>
 
-Looking at the **map_df** above, you can see that the DF has all the columns added earlier in this lesson. You could tidy this up a bit: at this point, the only columns that are needed are **FIPS**, **count**, and **POPESTIMATE2019**. But there isn't a pressing reason to do so -- it's a relatively small DF (with around 3,100 rows).
+The snippet of `map_df` above shows that it contains all the columns you've added so far in this lesson. At this point, the only columns you need are **FIPS**, **count**, and **POPESTIMATE2019**, so you could decide to tidy it up a bit – but as it's a relatively small dataframe (around 3,100 rows), there isn't a pressing reason to do so.
 
-#### Calculate the *Rate* of people killed per 100,000 population
+#### Calculate the 'Rate' of People Killed
 
-To calculate the **rate** of people killed, add a new column (**count_per_100k**) that divides the **count** variable by the county population divided by 100,000:
+You can use the code below to calculate the '[rate](https://en.wikipedia.org/wiki/Rate_(mathematics))' of people killed per 100,000 people. It divides the kill **count** variable by the county population over 100,000, and stores it in the new column **count_per_100k**:
 
 ```python
 map_df['count_per_100K'] = map_df['count'] / (map_df['POPESTIMATE2019']/100000)
@@ -725,9 +725,9 @@ map_df.head(3))
 
 </div>
 
-### Re-draw the Map with *Rates* instead of *Numbers* of people killed
+### Re-draw the Map with Rates instead of Numbers of people killed
 
-To plot the rate of police killing per 100,000 people in a county, the only change required to the Folium code is to modify the **columns=[ ]** parameter to specify using `count_per_100K` as the variable to use to colorize the map.
+Now, you're ready to plot the rate of police killing per 100,000 people in each county. The only change required to the Folium code is to modify the `columns=[ ]` parameter to specify that it should use `count_per_100K` as the variable to colorize the map:
 
 ```python
 baseMap = initMap()
@@ -748,11 +748,11 @@ cp = folium.Choropleth(
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-06.png" alt="A map showing the number of police killings per 100K population" caption="Figure 06. The number of police killings per 100K population." %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-06.png" alt="A map showing the number of police killings per 100K population" caption="Figure 06. The rate of police killings per 100K." %}
 
-Now, high population counties (like Los Angeles and Cook) don't look so bad. Instead, low population counties with a single shooting are highlighted.
+Now, high population counties (like Los Angeles and Cook) don't appear so bad. Instead, low population counties with a single shooting are shown in dark red.
 
-Earlier, you saw that the distribution of `count` was wildly non-normal. Is the `count_per_100K` any better?
+[Earlier](#The-Problem-of-Uneven-Distribution-of-Data), you saw that the distribution of the `count` variable was wildly uneven. Is `count_per_100K` any better?
 
 ```python
 map_df['count_per_100K'].describe()
@@ -774,18 +774,18 @@ map_df.boxplot(column=['count_per_100K'],vert=False)
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-07.png" alt="A boxplot showing the distribution of police killings per 100K population" caption="Figure 07. The distribution of the number of police killings per 100K population." %}
 
-Again, there are a LOT of outliers. Since this is another uneven distribution, using a log scale for the count-variable may result in a more normal distribution.
+Again, there is a high number of outliers. Since this is another uneven distribution, using a log scale may result in a more normal distribution.
 
 ```python
 map_df['MapScale'] = np.log10(map_df['count_per_100K'])
 map_df.boxplot(column=['MapScale'],vert=False)
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-08.png" alt="A boxplot showing the distrubtion of police killings per 100K population using a log-scale" caption="Figure 08. The distribution of the number of police killings per 100K population using a log-scale." %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-08.png" alt="A boxplot showing the distrubtion of police killings per 100K population using a log-scale" caption="Figure 08. Box plot of police killings per 100K using a log scale." %}
 
 This conversion transforms a skewed distribution into a more normal distribution of log values.
 
-To plot the log-values of the count-per-100K population, the Folium code again needs only be adjusted to plot the **MapScale** variable. The special code to display the log-values on the scale has been added as well:
+To plot the log values on the map instead, you only need to make another small adjustement the Folium code so that is maps the `MapScale` variable. Below, I've also added the code to display the log values on the scale:
 
 ```python
 baseMap = initMap()
@@ -822,15 +822,13 @@ baseMap
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-09.png" alt="A map of police killings per 100K population using a log-scale" caption="Figure 09. The number of police killings per-100K population using a log-scale." %}
 
-**Normalizing** the data dramatically changes the appearance of the map. The initial visualization suggested that the problem of police killing civilians was limited to a few counties, generally those with large populations. But when the data is normalized, it appears police killings of civilians is far more widespread. The counties with the highest **rates** of killings are those with low populations, even if they have relatively few killings. Trying to illustrate this issue with charts or tables would not show the issue nearly as well.
+Normalizing the data dramatically changes the appearance of the map. The initial visualization suggested that the problem of police killing civilians was limited to a few counties, generally those with large populations. But when the data is normalized, it police killings of civilians seem far more widespread. The counties with the highest rates of killings are those with lower population numbers. Trying to illustrate this issue with charts or tables would not be nearly as effective.
 
 ## Add an Information Box to the Map
 
-In the process of creating the map above, a number of different useful pieces of information have been created: the number of people killed in a county by police, the population of the county, the rate of people killed, and so forth. Folium allows map makers to display this sort of information in a floating box that will be displayed as the user moves their cursor over the map. This is very helpful, especially when examining areas one may not be familiar with. But it is a little complicated to get set up correctly.
+In the process of creating the map above, you created vartious useful pieces of information: the number of people killed in each county by police, the county population, the rate of people killed, etc. Folium allows you to display such information in a floating box (using `folium.GeoJsonTooltip()`) that will show as the user moves their cursor over the map. This is very helpful, especially when examining areas one may not be familiar with – but it is a little complicated to get set up correctly.
 
-To add the floating information box, Folium provides a method called `folium.GeoJsonTooltip()`.
-
-To use this method, you will need to look "under-the-hood" of Folium. When Folium creates a choropleth map, it generates data about each geographic region. To access it, you need to save the choropleth data to a variable. 
+When Folium creates a choropleth map, it generates underlying GeoJSON data about each geographic region. You can see this data by saving it to a variable:
 
 ```python
 baseMap = initMap()
@@ -849,9 +847,7 @@ cp = folium.Choropleth( # <- add the 'cp' variable
         ).add_to(baseMap)
 
 ```
-The `cp` (**c**horo**p**leth) variable allows users to look at the underlying GeoJSON data. The [JSON](https://stackoverflow.blog/2022/06/02/a-beginners-guide-to-json-the-data-format-for-the-internet/) data format is a standard way of sending information around the internet. Users familiar with Python will see that it resembles a list of nested dictionary values.
 
-The `.GeoJsonTooltip()` method accesses the `properties` nested dictionary. The following example shows that the county `properties` are `key`:`value` pairs. For the first county, the **FIPS** key has a value of **'01059'**; the **NAME** key has a value of **'Franklin'**.
 ```python
 [{'id': '0',
   'type': 'Feature',
@@ -873,14 +869,16 @@ The `.GeoJsonTooltip()` method accesses the `properties` nested dictionary. The 
      ...
 ```
 
-### Add data to the Choropleth map's "property" dictionary
+The [JSON](https://stackoverflow.blog/2022/06/02/a-beginners-guide-to-json-the-data-format-for-the-internet/) data format is a standard way of sending information around the internet. Users familiar with Python will notice that it resembles a list of nested dictionary values. The example above shows that county `properties` are `key`:`value` pairs. County 0's `FIPS` key has a value of 01059; its `NAME` key has the value 'Franklin'.
 
-Unfortunately, as you can see from the above example, the GeoJSON data doesn't currently have all the data generated earlier in the lesson. It can be added by iterating over the GeoJSON data, finding the information in the `map_df` dataframe, and adding it, selectively, to the GeoJSON properties dictionary. Here's how to do this:
+### Add data to the Choropleth map's property dictionary
 
-1. Create a `map_data_lookup` dataframe that copies the `map_df` but which uses FIPS as its index. This will facilitate searching for each county's FIPS number and extracting the data from the `map_df` (count of deaths, population, etc.) to be added to the GeoJSON data.
-1. Iterate over the GeoJSON data and add new property variables with data from the `map_df` dataframe.
+Unfortunately, the GeoJSON data above doesn't currently hold all the information you've generated so far. You can add it by iteratively selecting the desired information in the `map_df` dataframe and adding it to the GeoJSON properties dictionary. Here's how to do this:
 
-Here's what the code looks like. The line numbers have been added to faciliate the explanation.
+1. Create a `map_data_lookup` dataframe that copies the `map_df`, using FIPS as its index. This will facilitate extracting data from the `map_df` (count of deaths, population, etc.) to be added to the GeoJSON data.
+2. Iterate over the GeoJSON data and add new property variables using data the from `map_df`.
+
+In the code below, I've added line numbers to clarify the subsequent explanation:
 
 ```python
 1. map_data_lookup = map_df.set_index('FIPS')
@@ -892,40 +890,37 @@ Here's what the code looks like. The line numbers have been added to faciliate t
 6.      row['properties']['count'] = 'No police killings reported'
 ```
 
-Line 1 creates a dataframe from the `map_df` dataframe and sets its index to the `FIPS` code. This is important because -- as noted above -- the GeoJSON data for counties includes `FIPS` information. The code below will use the `FIPS` from the county data to find data from the `map_df` dataframe.
+- Line 1 creates a dataframe from `map_df` and sets its index to the `FIPS` code. This is important because the GeoJSON data includes `FIPS` information. The code therefore uses it to find corresponding data in the `map_df` dataframe.
 
-Line 2 iterates over GeoJSON data, examining the data for each county.
+- Line 2 iterates over the GeoJSON data, examining the data for each county.
 
-Line 4 is where all the work happens, so let's look at it closely. 
+- Line 4 is where all the work happens, so let's look at it closely: 
 
-`row['properties']['count']` adds a new **key** called `count` to the `properties` dictionary.
+`row['properties']['count']` adds the `count` key to the `properties` dictionary.
 
-The **value** that gets assigned to the key is the code to the right of the equals sign: `f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.0f}"`. 
+`f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.0f}"` assigns the value to this key.
 
-To understand it, read it from the inside out:
-* The [`.loc`](https://www.geeksforgeeks.org/python-pandas-dataframe-loc/) method returns a value from a dataframe based on its `index value` and `column name`. 
-  * In its simplist form, it looks like this `value = df.loc[index,col]`.
-* Because the index of the `map_data_lookup` dataframe is the `FIPS` number, if you supply a `FIPS` and a column name (`'count'`), Pandas will search the table for the corresponding FIPS number and return the number in the `count` column.
+To understand this code, let's read it from the inside out:
+* [`.loc`](https://www.geeksforgeeks.org/python-pandas-dataframe-loc/) returns a value from a dataframe based on its `index value` and `column name`. In its simplist form, it looks like `value = df.loc[index,col]`.
+* Because `map_data_lookup`'s index is the `FIPS` code, if you supply a `FIPS` and a column name (`'count'`), Pandas will search the table for the corresponding FIPS number and return the number in the `count` column.
 * As it iterates over the rows in the GeoJSON data, the `row['properties']['FIPS']` will supply the `FIPS` value for which to search.
 
-At this point, `map_data_lookup.loc[row['properties']['FIPS'],'count']` has tried to find the `count` value for the given `FIPS`. If found, it is returned as an integer. To display it properly, it needs to be a string value. To convert it to a string, wrap the value in an f-string and specify that it should not include decimals: (`f"{count:.0f}"`).
+At this point, `map_data_lookup.loc[row['properties']['FIPS'],'count']` has tried to find the `count` value for every given `FIPS`. If found, it is returned as an integer. However, to display it properly, you need to convert it to a string, by wrapping the value in an f-string and specifying no decimals: (`f"{count:.0f}"`).
 
-Lines 3 and 5 prevent the program terminating when encounting a `KeyError` with `try:` and `except:` statements. What would cause a `KeyError`? When the `.loc[]` method is used but no data is found, Python will generate a `KeyError`. Since the GeoJSON data includes values for all the counties in the US, but the `map_data_lookup` dataframe will have values for only those counties in which a police officer has killed someone for about 50% of the counties, there will be no data -- causing `KeyError`s -- for about half the counties!
+- The `try:` and `except:` statements in lines 3 and 5 prevent the program from terminating if it encounters a `KeyError`, which happens when no data is found by `.loc[]`. Since the GeoJSON data includes values for all the counties in the US, but `map_data_lookup` only includes values for counties with 1 or more killings, about 50% of the `.loc[]` searches will return no data – causing `KeyError`s!
 
-Line 6 provides a default value when an error is encountered: when no value is found in the `count` columns for a county, the value for that county is "No police killings reported"
+- Line 6 gives a default value ("No police killings reported") when an error is encountered.
 
-<hr>
+Now that you've fully updated Folium's GeoJSON data, you can call the `folium.GeoJsonTooltip()` method. This will allow you to display values from the property dictionary, and let you specify 'aliases': the text you want to display in your tool tip box.
 
-Once the GeoJSON data has been updated, the code calls the `folium.GeoJsonTooltip()` method. This method allows values from the property dictionary to be displayed. It also allows the user to specify **aliases** -- the text to be displayed in the tool tip box.
-
-Finally, the `cp.geojson` variable is updated. Folium will use this data to create the map.
+Finally, you update the `cp.geojson` variable, which Folium will use to create the new map.
 
 ```python
 folium.GeoJsonTooltip(['NAME','count'],
                       aliases=['County:','Num of Police Killings:']).add_to(cp.geojson)
 ```
 
-Here's a code sample that includes the above matieral. 
+Here is a code example collating every step described in this section: 
 
 ```python
 baseMap = initMap()
@@ -954,13 +949,14 @@ for row in cp.geojson.data['features']:
 folium.GeoJsonTooltip(['NAME','count'],aliases=['County:','N killed by Police:']).add_to(cp.geojson)
 
 ```
+
 ### Add multiple data elements to the "property" dictionary
 
-This above example just reports the number of police killings reported. But this technique can be used to show multiple variables. The next example creates an information box that displays: 
-* the name of the county (since this is already in the cp.GeoJson properties dictionary, it doesn't need to be added)
-* the county's population (this variable, and the next two, are in the `map_data_lookup` dataframe; they need to be added to the cp.GeoJson properties dictionary)
-* the number of people killed by police
-* the number of deaths per 100K population
+In the example just above, you only report the number of police killings – but this technique can show multiple variables at once. In the next example, you create an information box that displays: 
+* The county (already in the `cp.GeoJson` properties dictionary)
+* The county's population
+* The number of people killed by police
+* The number of deaths per 100K population (these three variables still need to be added to the `cp.GeoJson` properties dictionary)
 
 ```python
 baseMap = initMap()
@@ -1001,25 +997,23 @@ folium.GeoJsonTooltip(['NAME','population','count','count_per_100K'],
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-10.gif" alt="A second animated map showing a more complex set of data displayed with the Tooltip plugin" caption="Figure 10. The Tooltip plugin allows the display of variables." %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-10.gif" alt="A second animated map showing a more complex set of data displayed with the Tooltip plugin" caption="Figure 10. The Tooltip plugin displays multiple variables in a floating information box." %}
 
-Adding an information box to the map is complex but it can help users enormously.
+Despite its complexity, adding the floating information box dramatically improves the user experience of exploring your map – so do give it a try.
 
 ## Saving Maps
 
-Maps are saved as HTML files. They can be shared with other people, who can open them in a browser will have the ability to zoom, pan, and examine individual county statistics with by putting their cursor over different counties.
-
-Folium allows users to save maps easily with the `.save()` method.
+You cna easily save your maps as HTML files with the `.save()` method. 
 
 ```python
 baseMap.save('PoliceKillingsOfCivilians.html')
 ```
 
-Note that this saves the file to the Colab virtual drive. Remember: **Everything on the virtual drive will disappear** when the Colab session is closed.
+These files can be shared with other people, who can open them in a browser and then zoom, pan, and examine individual county statistics by hovering their cursor over the map.
 
-You can see the files you have saved to the virtual drive by clicking on the file folder in the left margin of the browser window. To save the file to your local drive, hover your cursor over the file and select "Download." This will download the file to your local hard-drive's default download folder.
+Note that this code saves the file to the Colab virtual drive. Remember: **Everything on the virtual drive will disappear** when the Colab session is closed.
 
-Because Folium saves the maps as HTML documents, they can be added to websites or shared with other people, who can open them with a web-brower.
+You can see the files you've saved to your virtual drive by clicking on the file folder in the left margin of the browser window. Hover your cursor over the file and select _Download_ to save the file to your local hard-drive's default download folder.
 
 ## Conclusion
 
@@ -1031,8 +1025,8 @@ Maps are an excellent way to visualize data that has a geographic component. [Wi
 
 Choropleth maps may allow users to disern patterns in data that are otherwise difficult to observe. This is especially true for areas with arbitrary boundaries. Not knowing the edges of a police precinct, alderperson's ward, or census tract make it hard to interpret the meaning of all sorts of data (economic development, income, lead levels in the environment, life expectancy, etc.). But if that data is displayed in a choropleth map (or [a series of maps](https://www.chicagomag.com/news/there-is-one-map-of-chicago/)), one might notice correlations between variables that prompt additional investigation.
 
-In short, choropleth maps are a powerful way to  displaying data and informing readers about topics. But they can also be tools to discover patterns in data that are otherwise hard to observe.
+In short, choropleth maps are a powerful way to display data and inform readers about topics.
 
 ### Acknowledgments
 
-Robert Nelson and Felipe Valdez provided very helpful feedback on drafts of this project. Alex Wermer-Colan helped guide me through the submission and review process. Nabeel Siddiqui's editorial assistance has been invaluable. Charlotte Chevrie and Anisa Hawes have been patient and helpful preparing this material for the *PH* website and shepherding me through the process. I appreciate everyone's assistance in improving this article; final responsibility, of course, remains mine. 
+Robert Nelson and Felipe Valdez provided very helpful feedback on drafts of this project. Alex Wermer-Colan helped guide me through the submission and review process. Nabeel Siddiqui's editorial assistance has been invaluable. Charlotte Chevrie and Anisa Hawes have been patient and helpful preparing this material for the *Programming Historian* website and shepherding me through the process. I appreciate everyone's assistance in improving this article; final responsibility, of course, remains mine. 

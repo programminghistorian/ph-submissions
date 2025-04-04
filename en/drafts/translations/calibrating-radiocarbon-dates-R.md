@@ -46,7 +46,7 @@ This lesson will show you how to calibrate radiocarbon dates with  [R](https://w
 
 ## Prerequisites
 
-This lesson assumes that you are comfortable with the [basic use of R](/en/lessons/r-basics-with-tabular-data) and understand basic concepts of statistics.[^2] This lesson also uses the R integrated development enrivonment (IDE), [RStudio](https://posit.co/download/rstudio-desktop/). You should also be comfortable working with scripts, loading packages, and handling tabular data. If you're new to R or need a refresher, we recommend completing the one of the following Carpentries workshops to familiarize yourself with working with tabular/tidy data: 
+This lesson assumes that you are comfortable with the [basic use of R](/en/lessons/r-basics-with-tabular-data) and understand basic concepts of statistics.[^2] This lesson also uses the R integrated development enrivonment (IDE), [RStudio](https://posit.co/download/rstudio-desktop/). You should also be comfortable working with scripts, loading packages, and handling tabular data. If you're new to R or need a refresher, we recommend completing the one of the following Carpentries workshops to familiarize yourself with working with tabular and/or tidy data: 
 - for those with little to no coding knowledge or statistics knowledge, use [Introduction to R for Librarians](https://librarycarpentry.github.io/lc-r/), 
 - for those with experience working in genomics, use [Data Analysis and Visualization in R alpha](https://datacarpentry.github.io/R-genomics/index.html)
 - for those with experience working in ecology, use [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.github.io/R-ecology-lesson/)

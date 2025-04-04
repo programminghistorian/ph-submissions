@@ -46,7 +46,7 @@ This lesson will show you how to calibrate radiocarbon dates with  [R](https://w
 
 ## Prerequisites
 
-This lesson assumes that you are comfortable with the [basic use of R](/en/lessons/r-basics-with-tabular-data) and understand basic concepts of statistics.[^2] This lesson also uses the R integrated development enrivonment (IDE), [RStudio](https://posit.co/download/rstudio-desktop/). You should also be comfortable working with scripts, loading packages, and handling tabular data. If you're new to R or need a refresher, we recommend completing the one of the following Carpentries workshops to familiarize yourself with working with tabular and/or tidy data: 
+This lesson assumes that you are comfortable with the [basic use of R](/en/lessons/r-basics-with-tabular-data) and understand basic concepts of statistics.[^2] This lesson also uses the R integrated development enrivonment (IDE), [RStudio](https://posit.co/download/rstudio-desktop/). You should also be comfortable working with scripts, loading packages, and handling [tabular data](https://en.wikipedia.org/wiki/Table_(information)). If you're new to R or need a refresher, we recommend completing the one of the following Carpentries workshops to familiarize yourself with working with tabular and/or [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html): 
 - for those with little to no coding knowledge or statistics knowledge, use [Introduction to R for Librarians](https://librarycarpentry.github.io/lc-r/), 
 - for those with experience working in genomics, use [Data Analysis and Visualization in R alpha](https://datacarpentry.github.io/R-genomics/index.html)
 - for those with experience working in ecology, use [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.github.io/R-ecology-lesson/)
@@ -55,7 +55,7 @@ This lesson assumes that you are comfortable with the [basic use of R](/en/lesso
 ## Who is this Lesson for?
 
 This lesson is designed not only for archaeologists, but also for librarians, conservators, archivists, and other cultural heritage professionals who may encounter radiocarbon dates in their work with historical objects, manuscripts, or archaeological collections. Even if you do not have a background in radiocarbon science, understanding how to interpret and calibrate radiocarbon dates can help you evaluate the age of artifacts, enrich catalog records, or collaborate more effectively with researchers in interdisciplinary projects. For example, gallery, library, archives, and museum workers (GLAM) may encounter radiocarbon dates in various parts of their practice, especially when working with ancient, rare, or undocumented materials. Some examples include:
-- special collections and rare books: without clear provenance (such as manuscripts, scrolls, or parchment fragments) can have estimated creation dates based on radiocarbon testing. Understanding how these dates were derived, and what they mean in calibrated calendar years, can help support accurate cataloguing and metadata creation. In turn this supports accurate research work down the line.
+- special collections and rare books: without clear provenance (such as manuscripts, scrolls, or parchment fragments) can have estimated creation dates based on radiocarbon testing. Understanding how these dates were derived, and what they mean in calibrated calendar years, can help support accurate cataloguing and metadata creation. In turn this supports accurate research work down the line. For example, the World Museum in Liverpool, England has carbon-dated a [lower third molar (wisdom tooth)](https://www.liverpoolmuseums.org.uk/stories/radiocarbon-dating-world-museums-collections) after taking 3D images.
 - conservation and treatment decisions: are often made based on radiocarbon tests, which determine authenticity and establish degradation timelines. Later, in this lesson, we study the case of the Shroud of Turin as an example.
 
 Whether you are curating an exhibition, managing a collection, or preserving historical materials, this lesson offers a practical introduction to using R for date calibration — an increasingly valuable skill in the digital heritage field. No prior experience with radiocarbon calibration is assumed, though again, familiarity with basic R skills will help you get the most out of the lesson.
@@ -197,7 +197,7 @@ colnames(turin) <- c("age1", "age2", "age3", "age4",
 rownames(turin) <- c("Arizona", "Oxford", "Zurich")
 ```
 
-Then, we reformat the data in an array, thus obtaining a 3-dimensional table: the 1st dimension (rows) corresponds to the laboratories, the 2nd dimension (columns) corresponds to the samples, the 3rd dimension makes it possible to distinguish the dates and their uncertainties.
+Then, we reformat the data in an [array](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/array), thus obtaining a 3-dimensional table: the 1st dimension (rows) corresponds to the laboratories, the 2nd dimension (columns) corresponds to the samples, the 3rd dimension makes it possible to distinguish the dates and their uncertainties.
 
 ```r
 dim(turin) <- c(3, 4, 2)

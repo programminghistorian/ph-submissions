@@ -31,7 +31,7 @@ Choropleth maps are often used in the media to visualize geographic information 
 
 The Python programming language, combined with the Folium library, makes creating choropleth maps quick and easy, as this lesson will show. 
 
-First, however, you need to make sure your data has been arranged properly. Unfortunately, 'properly arranged' data is not something one usually encounters in the real world. Thus, most of this lesson will demonstrate techniques used to organize your data so that it can produce a useful choropleth map. This will include joining your data to 'shape files' that define [county](https://en.wikipedia.org/wiki/County_(United_States)) boundaries, which will allow you to create of a basic choropleth map. Because a basic choropleth map isn't always especially informative, this lesson will show you additional ways to manipulate your data to produce more meaningful maps.
+First, however, you need to make sure your data has been arranged properly. Unfortunately, 'properly arranged' data is not something one usually encounters in the real world. Thus, most of this lesson will demonstrate techniques to organize your data so that it can produce a useful choropleth map. This will include joining your data to 'shape files' that define [county](https://en.wikipedia.org/wiki/County_(United_States)) boundaries, which will allow you to create of a basic choropleth map. Because a basic choropleth map isn't always especially informative, this lesson will show you additional ways to manipulate your data to produce more meaningful maps.
 
 ### Lesson Goals
 

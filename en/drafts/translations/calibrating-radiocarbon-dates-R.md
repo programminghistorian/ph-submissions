@@ -51,10 +51,14 @@ This lesson assumes that you are comfortable with the [basic use of R](/en/lesso
 - for those with experience working in genomics, use [Data Analysis and Visualization in R alpha](https://datacarpentry.github.io/R-genomics/index.html)
 - for those with experience working in ecology, use [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.github.io/R-ecology-lesson/)
 - for those with experience working in geospatial data, use [Introduction to R for Geospatial Data](https://datacarpentry.github.io/r-intro-geospatial/)
-- 
+  
 ## Who is this Lesson for?
 
-This lesson is designed not only for archaeologists, but also for librarians, conservators, archivists, and other cultural heritage professionals who may encounter radiocarbon dates in their work with historical objects, manuscripts, or archaeological collections. Even if you do not have a background in radiocarbon science, understanding how to interpret and calibrate radiocarbon dates can help you evaluate the age of artifacts, enrich catalog records, or collaborate more effectively with researchers in interdisciplinary projects. Whether you are curating an exhibition, managing a collection, or preserving historical materials, this lesson offers a practical introduction to using R for date calibration — an increasingly valuable skill in the digital heritage field. No prior experience with radiocarbon calibration is assumed, though again, familiarity with basic R skills will help you get the most out of the lesson.
+This lesson is designed not only for archaeologists, but also for librarians, conservators, archivists, and other cultural heritage professionals who may encounter radiocarbon dates in their work with historical objects, manuscripts, or archaeological collections. Even if you do not have a background in radiocarbon science, understanding how to interpret and calibrate radiocarbon dates can help you evaluate the age of artifacts, enrich catalog records, or collaborate more effectively with researchers in interdisciplinary projects. For example, gallery, library, archives, and museum workers (GLAM) may encounter radiocarbon dates in various parts of their practice, especially when working with ancient, rare, or undocumented materials. Some examples include:
+- special collections and rare books: without clear provenance (such as manuscripts, scrolls, or parchment fragments) can have estimated creation dates based on radiocarbon testing. Understanding how these dates were derived, and what they mean in calibrated calendar years, can help support accurate cataloguing and metadata creation. In turn this supports accurate research work down the line.
+- conservation and treatment decisions: are often made based on radiocarbon tests, which determine authenticity and establish degradation timelines. Later, in this lesson, we study the case of the Shroud of Turin as an example.
+
+Whether you are curating an exhibition, managing a collection, or preserving historical materials, this lesson offers a practical introduction to using R for date calibration — an increasingly valuable skill in the digital heritage field. No prior experience with radiocarbon calibration is assumed, though again, familiarity with basic R skills will help you get the most out of the lesson.
 
 
 ## The Basic Principles of Radiocarbon Dating

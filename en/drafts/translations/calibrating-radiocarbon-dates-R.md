@@ -182,6 +182,8 @@ turin <- matrix(
   nrow = 3,
   byrow = TRUE
 )
+
+## define the column and row names
 colnames(turin) <- c("age1", "age2", "age3", "age4", 
                      "err1", "err2", "err3", "err4")
 rownames(turin) <- c("Arizona", "Oxford", "Zurich")

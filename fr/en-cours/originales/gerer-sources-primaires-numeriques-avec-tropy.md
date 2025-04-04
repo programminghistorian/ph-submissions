@@ -63,17 +63,37 @@ Tropy vise donc à offrir une infrastructure logicielle, simple d'utilisation et
 
 ## Le(s) jeu(x) de données de la leçon
 
-L'intention de cette leçon était de fournir un jeu de données de sources visuelles pertinentes pour un public francophone. La tâche s'est néanmoins avérée compliquée à cause des restrictions appliquées sinon à la collecte, définitivement à la réutilisation et surtout au partage des images en provenance d'archives institutionelles ou de réseaux sociaux numériques. Exposer ces difficultés, plutôt que de fournir simplement les jeux de données d'exercice actuellement proposés, vise à sensibiliser le lectorat quant aux réels défis posés par ce type de données de recherche et qu'il faudra relever. 
+Cette leçon a été enrichie de l'expérience de formations sur Tropy dispensées auprès de doctorant(e)s en histoire contemporaine de l'université de Lille. Pour cette raison, elle a été pensée à partir de la pluralité des sources et elle propose d'explorer les fonctionnalités du logiciel en mobilisant pour les démonstrations de différents types de sources selon le cas. 
+
+1. Le jeu de données principal consiste en un corpus de sources visuelles pertinentes pour un public francophone, [les affiches nativement numériques du mouvement étudiant québécois de 2012](/les-affiches-du-printemps-erable) <!--vérifier syntaxe du lien ancre-->. 
+
+2. [Le numéro 3 de *L'écho des marmites*](https://argonnaute.parisnanterre.fr/ark:/14707/9tks6j4d0bvf), Journal de tranchées daté de février 1915 - conservé et numérisé par [La Contemporaine](http://www.lacontemporaine.fr/). Ces ficiers sont nécessaires à télécharger pour effectuer l'exercice sur [comment représenter comme une seule entité, dans Tropy, un document avec plusieurs pages correspondant à de différentes photos](/#fusionner-des-fichiers-images-en-un-seul-objet). Attention, il n'est pas possible d'explorer cette fonctionnalité avec le corpus d'affiches numériques, de par le type de ces documents.
+
+Enfin, il vaut mieux ne pas être déconcerté(e) par l'exemple fourni pour démontrer [comment créer un formulaire de saisie sur mesure](/#personnaliser-le-modèle-de-saisie-des-métadonnées). L'exercice propose comment créer un formulaire adapté aux correspondances diplomatiques et, si c'est le cas, c'est que l'autrice a utilisé ce type de documents dans ses recherches, par conséquent l'exercice émande de besoins réels rencontrés au fur et à mesure d'une recherche.  
+
+### Les affiches du Printemps érable 
+
+Le principal jeu de données fourni consiste aux fichiers images des affiches du mouvement du Printemps érable québécois de 2012 disponibles sous licence libre sur [un site créé dans le cadre d'une recherche universitaire et qui sert d'archive vivante de la production visuelle du mouvement](https://www.printempserable.net/) en question. 
+
+La grève étudiante contre la hausse des frais de scolarité déclenchée au printemps 2012 au Québec, aussi appelée [Printemps érable](https://fr.wikipedia.org/wiki/Gr%C3%A8ve_%C3%A9tudiante_qu%C3%A9b%C3%A9coise_de_2012), a donné lieu à une production visuelle considérable. Une partie de celle-ci a été rassemblée, dans le cadre d'un travail universitaire, sur un site web qui sert ainsi d'[archive non-institutionnelle de la production graphique du mouvement](https://www.printempserable.net/). 
+
+Le jeu de données comprend l'ensemble des affiches du Printemps érable hébergées sur le site web *Printemps érable archives* soit 352 fichiers d'affiches créées à des fins militantes dans le cadre du mouvement étudiant du printemps 2012 au Québec, Canada (connu aussi sous le nom de Printemps érable). Ces affiches constituent par conséquent des sources nativement numériques qui documentent le mouvement.
+
+[Lien vers le jeu de données des affiches du Printemps érable déposé sur Zenodo](https://doi.org/10.5281/zenodo.13936156). 
+
+<!-->
+
+ L'intention de cette leçon était de fournir un jeu de données de sources visuelles pertinentes pour un public francophone. La tâche s'est néanmoins avérée compliquée à cause des restrictions appliquées sinon à la collecte, définitivement à la réutilisation et surtout au partage des images en provenance d'archives institutionelles ou de réseaux sociaux numériques. Exposer ces difficultés, plutôt que de fournir simplement les jeux de données d'exercice actuellement proposés, vise à sensibiliser le lectorat quant aux réels défis posés par ce type de données de recherche et qu'il faudra relever. -
 
 Dans une certaine mesure, Tropy fait pareil en permettant d'enregistrer systématiquement, [sous forme de métadonnées](#décrire-ses-sources), des informations sur les droits d'utiisation des images d'un corpus donné, anticipant une future mise en ligne ou une réutilisation quelconque. Il vaut mieux ne pas négliger d'enregistrer ce type d'informations dès le début d'un projet ou, à défaut, avoir conscience qu'il s'agit là d'une question à resoudre avant de publier ou partager des données de recherche, si l'intention existe. 
 
 La leçon offre la possibilité d'accéder à trois jeux de données distincts afin d'opter pour celui qui correspond au mieux aux intérêts - et aux niveaux des compétences numériques - des lecteurs et des lectrices.
 
 1. Le premier jeu de données consiste aux affiches numérisées de Mai 68, accessibles au moyen d'une recherche simple sur le site de [Gallica](http://gallica.bnf.fr/). Les conditions de réutilisation de ces images rendent préférable de fournir la requête précise, le rapport de recherche avec les résultats attendus, ainsi qu'un script écrit en [R](https://www.r-project.org/) afin que les lecteurs et lectrices puissent collecter ces données par leurs soins. 
-2. Le deuxième jeu de données rassemble principalement les [URL](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator) de l'ensemble des photos sous licence libre qui sont indexées sous le mot-clé "Occupy Wall Street" et disponibles sur le réseau social numérique [Flickr](https://fr.wikipedia.org/wiki/Flickr). Les fichiers ont été téléchargés en utilisant l'API de Flickr à l'aide d'un script R, mais seules les URL sont partagées pour que celles et ceux qui souhaitent travailler avec ce jeu de données puissent télécharger le nombre de photos susceptibles de correspondre à leurs besoins et intérêts. 
-3. Le troisième jeu de données consiste aux fichiers images des affiches du mouvement du Printemps érable québécois de 2012 disponibles sous licence libre sur [un site créé dans le cadre d'une recherche universitaire et qui sert d'archive vivante de la production visuelle du mouvement](https://www.printempserable.net/) en question. Des explications sont fournies ci-dessous pour contextualiser et pour accéder à chaque jeu de données.
+2. Le deuxième jeu de données rassemble principalement les [URL](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator) de l'ensemble des photos sous licence libre qui sont indexées sous le mot-clé "Occupy Wall Street" et disponibles sur le réseau social numérique [Flickr](https://fr.wikipedia.org/wiki/Flickr). Les fichiers ont été téléchargés en utilisant l'API de Flickr à l'aide d'un script R, mais seules les URL sont partagées pour que celles et ceux qui souhaitent travailler avec ce jeu de données puissent télécharger le nombre de photos susceptibles de correspondre à leurs besoins et intérêts.
 
-Les scripts en R qui ont permis de travailler avec les [API](https://www.cnil.fr/fr/definition/interface-de-programmation-dapplication-api) de Gallica et de Flickr ont été préparés et exécutés par [Thomas Soubiran](https://numa.hypotheses.org/), ingénieur d'études en analyse de données au CNRS. 
+
+Les scripts en R qui ont permis de travailler avec les [API](https://www.cnil.fr/fr/definition/interface-de-programmation-dapplication-api) de Gallica et de Flickr ont été préparés et exécutés par [Thomas Soubiran](https://numa.hypotheses.org/), ingénieur d'études en analyse de données au CNRS.  -->
 
 <!-->
 ### Les affiches numérisées de Mai 68
@@ -102,17 +122,11 @@ Une fois les résultats vérifiés (environ 350 items sans restrictions de droit
 Les photos représentent principalement des personnes vivantes en train de participer aux occupations liées à OWS. Bien que leurs créateurs les aient placées sous licence libre, le partage direct du corpus que nous avons constitué pour la leçon serait une [réutilisation dans un but différent de la première diffusion](https://www.service-public.fr/particuliers/vosdroits/F32103). Pour en faire un usage éthique, le jeu de données consiste en une liste des URL individuelles des images statiques et des métadonnées élémentaires permettant de les contextualiser (identifiant de la publication, identifiant du compte utilisateur du créateur, titre, dimensions des images) que les lecteurs et lectrices peuvent utiliser à volonté pour expérimenter avec Tropy. Il est également possible, en utilisant le script R, de rappeler l'ensemble des fichiers images décrits. Ce jeu de données peut s'avérer utile pour qui serait plus à l'aise à travailler avec des données documentées en anglais. Par ailleurs, les liens des images statiques permettent de travailler avec [l'importation directe d'images depuis le web dans Tropy](/fr/#importer-des-images-depuis-une-page-web).    
 
 [Lien vers les fichiers pour obtenir le jeu de données des photos d'OWS sur Flickr](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/gerer-sources-primaires-numeriques-avec-tropy/photos-ows). 
+
+Il est donc possible de suivre cette leçon en utilisant un des corpus d'images ci-dessus proposés. 
 -->  
 
-### Les affiches du Printemps érable 
-
-La grève étudiante contre la hausse des frais de scolarité déclenchée au printemps 2012 au Québec, aussi appelée [Printemps érable](https://fr.wikipedia.org/wiki/Gr%C3%A8ve_%C3%A9tudiante_qu%C3%A9b%C3%A9coise_de_2012), a donné lieu à une production visuelle considérable. Une partie de celle-ci a été rassemblée, dans le cadre d'un travail universitaire, sur un site web qui sert ainsi d'[archive non-institutionnelle de la production graphique du mouvement](https://www.printempserable.net/). 
-
-Le jeu de données comprend l'ensemble des affiches du Printemps érable hébergées sur le site web *Printemps érable archives* soit 352 fichiers d'affiches créées à des fins militantes dans le cadre du mouvement étudiant du printemps 2012 au Québec, Canada (connu aussi sous le nom de Printemps érable). Ces affiches constituent par conséquent des sources nativement numériques qui documentent le mouvement.
-
-[Lien vers le jeu de données des affiches du Printemps érable déposé sur Zenodo](https://doi.org/10.5281/zenodo.13936156). 
-
-Il est donc possible de suivre cette leçon en utilisant un des corpus d'images ci-dessus proposés. Pour qui préfère utiliser ses propres sources, il est possible de commencer avec le fruit d'une journée de travail à un centre d'archives&nbsp;: des centaines de fichiers de photos en forme brute, fraîchement copiés depuis un smartphone vers un disque dur, sans même avoir eu le temps de les renommer. C'est le moment de s'en occuper&nbsp;!  
+Pour qui préfère utiliser ses propres sources, il est possible de commencer avec le fruit d'une journée de travail à un centre d'archives&nbsp;: des centaines de fichiers de photos en forme brute, fraîchement copiés depuis un smartphone vers un disque dur, sans même avoir eu le temps de les renommer. C'est le moment de s'en occuper&nbsp;!  
 
 ## Démarrer avec Tropy 
 

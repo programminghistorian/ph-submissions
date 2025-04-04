@@ -82,7 +82,7 @@ When an organism dies, exchanges with its environment stop. Assuming that there 
 
 Unless we specifically are looking for when an organism died, the radiocarbon date can give a *terminus ante* or *post quem* for the archaeological event that we wish to position in time. In other words, this is the moment before or after which the archaeological or historical event of interest took place (for example, the abandonment of an object, combustion of a hearth, deposition of a sedimentary layer, etc.) depending on available contextual elements, like stratigraphy. These contextual elements are important as they help us interpret the results; in particular, they help us ensure the absence of [taphonomic](https://en.wikipedia.org/wiki/Taphonomy) problems, and that there is indeed a direct relationship between the dated sample and the event of interest.[^7]
 
-Thanks to the law of radioactive decay, if we know the initial quantity \\(N_0\\) of <sup>14</sup>C contained in an organism at its death (time \\(t_0\\) and the remaining quantity of <sup>14</sup>C at time \\(t\\)), it is possible to measure the time elapsed between \\(t_0\\) and \\(t\\): the radiocarbon date of an archaeological object. This is based on two key concepts:
+Thanks to the law of radioactive decay, if we know the initial quantity \\(N_0\\) of <sup>14</sup>C contained in an organism at its death (time \\(t_0\\) and the remaining quantity of <sup>14</sup>C at time \\(t\\)), we cab then measure the time elapsed between \\(t_0\\) and \\(t\\): the radiocarbon date of an archaeological object. This is based on two key concepts:
 
 - The current amount of <sup>14</sup>C in an object can be determined in the laboratory, either by counting the <sup>14</sup>C nuclei, or by counting the number of decays per unit of time and per amount of matter (specific activity).
 - To determine the initial quantity, we assume that the quantity of <sup>14</sup>C in the atmosphere is constant over time, and equal to the current content.
@@ -95,7 +95,7 @@ However, a challenge arose: studies carried out in the second half of the 20th c
 
 Contrary to Libby's premise, the <sup>14</sup>C content in the atmosphere is not constant over time, which partly explains the observed differences. The atmospheric <sup>14</sup>C content varies depending on natural phenomena (variations in the earth's magnetic field, solar activity, volcanic activity, carbon cycle, etc.) and anthropogenic phenomena. These phenomena can be contradictory: the use of fossil fuels releases very old carbon, and tends to reduce the relative content of <sup>14</sup>C ([Suess effect](https://en.wikipedia.org/wiki/Suess_effect)); conversely atmospheric nuclear tests have produced large quantities of <sup>14</sup>C.
 
-The chronometer given to us by the radiocarbon method therefore does not have a regular pattern, because the atmospheric <sup>14</sup>C content varies over time. Consequently, radiocarbon dates (we will subsequently use the expression "conventional dates", see figures 2A and 2B on the y-axis) belong to a reference frame that is specific to them.
+The chronometer given to us by the radiocarbon method therefore does not have a regular pattern, because the atmospheric <sup>14</sup>C content varies over time. So, radiocarbon dates (we will subsequently use the expression "conventional dates", see figures 2A and 2B on the y-axis) belong to a reference frame that is specific to them.
 
 The use of Libby's premise nevertheless remains the only accessible way to estimate the initial quantity of <sup>14</sup>C at the closure of the system. It is therefore necessary to carry out a calibration operation to transform a conventional date into a calendar date. This operation is carried out using a curve,[^9] the values for which are regularly updated by the scientific community.[^10] The calibration curve is constructed by thus providing an equivalence table between radiocarbon time and calendar time (fig. 2B).
 
@@ -136,7 +136,7 @@ There are periods which are more or less suitable for radiocarbon dating, depend
 
 {% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-06.png" alt="Three graphs showing calendar dates, in years BC, against probability. The first and second graphs highlight the regions of highest density in the area under the curve. The third graph is a horizontal chronometer wwhich compares the credibility intervals mirroring the highlighted intervals in the graphs above." caption="Figure 6. Estimation of calibrated intervals. The top two graphs illustrate the estimate of the highest density regions at 68% and 95%. The bottom graph allows you to compare the HPDIs thus obtained and the corresponding credibility intervals (CI) (solid lines)." %}
 
-In some situations, it is common practice to keep calibrated dates expressed in years BP. In these cases, it is recommended to specify cal BP to avoid any confusion for the reader. These calendar ages in years BP can be converted to dates expressed before or after our era (BC/AD, before Christ/anno Domini). To do this, simply use the following calculation rule:
+In some situations, it is common to keep calibrated dates expressed in "years BP." In these cases, it is recommended to specify cal BP to prevent the reader from being confused. These calendar ages in years BP can be converted to dates expressed before or after our era (BC/AD, before Christ/anno Domini). To do this, use this calculation:
 
 <div class="alert alert-warning">
 	<div class="mathjax">
@@ -149,7 +149,7 @@ In some situations, it is common practice to keep calibrated dates expressed in 
   	</div>
 </div>
 
-By now it is clear that these details, if poorly understood, can quickly lead to overinterpretations. So when publishing a dating series, it is important to present all the data and choices that contributed to obtaining the calendar dates. The use of open tools promotes both transparency and reproducibility of results, which are two very important aspects with regard to the calibration of radiocarbon dates.
+By now it is clear that these details, if poorly understood, can quickly lead to overinterpretations. So, when you publish a dating series, remember to present all the data and choices that contributed to obtaining the calendar dates. The use of open tools promotes both transparency and reproducibility of results, which are two very important aspects with regard to the calibration of radiocarbon dates.
 
 ## Applications with R
 

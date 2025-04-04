@@ -171,7 +171,6 @@ Table 1. Radiocarbon dates (\\(1\sigma\\) obtained as part of the study with the
 After installing the package `rcarbon`, the first step consists of creating the table of data where each line corresponds to a lab, and the first four columns correspond to conventional dates, and the last four columns correspond to the uncertainties.
 
 ```r
-## install the package
 install.packages("rcarbon")
 ## import data
 turin <- matrix(

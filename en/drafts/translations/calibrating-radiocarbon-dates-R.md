@@ -486,11 +486,11 @@ If the analysis of the conventional ages obtained by the different laboratories 
 
 ### How to Present your Results
 
-In order to publish the radiocarbon dates in rigorous manner, and to enable the results to be verified and used by others, it is a good idea to always include a certain number of information elements. For example, we can write clearly:
+We will want to include some specific information in order to publish the radiocarbon dates in rigorous manner, and so that others can verify our findings. For example, we can clearly write:
 
 > Sample ETH-3883 is dated at 676 ± 24 years BP, calibrated at [671;633] (58%) or [589;563] (38%) cal BP or [1279;1317] (58%) or [1361;1387] (38%) AD (95% HPDI) with IntCal20 (Reimer et al. 2020), R 4.0.3 (R Core Team, 2020) and the rcarbon 1.4.1 package (Crema and Bevan, 2020 ).
 
-When we write our dates in this way, we have the following main points for others to read:[^15]
+When we write our dates in this way, we have included this information for our readers:[^15]
 
 - The conventional date and its uncertainty (676 ± 24 years BP), accompanied by the identification number given by the laboratory (ETH-3883);
 - The calibrated date in the form of one or more intervals (due to its particular distribution, a calibrated date is always given in the form of intervals), specifying the probability associated with each interval and the temporal reference used (cal BP or BC/AD);

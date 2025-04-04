@@ -498,7 +498,7 @@ When we write our dates in this way, we have included this information for our r
 
 ## Conclusion
 
-Calibrating radiocarbon dates allows their transposition into a calendar time frame. This step is key to interpreting the results, especially since the rhythm of the carbon-14 "clock" varies over time. In this lesson, we learned how to combine conventional dates and test for consistency before calibrating them. We also saw how to graphically represent these dates, and how to present the results with all the information necessary for their reproduction.
+Calibrating radiocarbon dates allows us to convert them into a calendar time frame. This step is essential for interpreting the results, as the carbon-14 "clock" doesn’t tick at a constant rate over time. In this lesson, we learned how to combine conventional dates and check for consistency before calibrating them. We also explored how to graph these dates and present the results with all the necessary details for reproducibility. Further resources can be found below, in the bibliography.
 
 ## Bibliography
 

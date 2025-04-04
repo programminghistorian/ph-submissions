@@ -38,9 +38,9 @@ doi: XX.XXXXX/phen0000
 
 ## Calibrating Radiocarbon Dates with R
 
-Since its discovery and the revolution that ensued, the radiocarbon dating method has become common practice for archaeologists and historians. This is because it either constitutes the only source of chronological information, or because it complements other sources, whether they be material or textual.
+Since its discovery, radiocarbon dating has become a standard tool for archaeologists and historians. It often serves as the primary source of chronological information or complements other material and textual evidence.
 
-The purpose of this lesson is to learn how to calibrate individual radiocarbon dates, handle uncertainties if multiple carbon dates exist for a single object, by testing for differences. The radiocarbon method is a so-called "absolute"[^1] dating method, which has its own time frame. So, calibration is an essential step to this process, since it allows us to translate from a radiocarbon date of reference to a calendar date of reference.
+The goal of this lesson is to teach you how to calibrate individual radiocarbon dates and manage uncertaintiies when multiple dates exist for the same object, by testing for differences. Radiocarbon dating is called an "absolute"[^1] dating method, meaning that it exists on its own time frame. So, calibration is an essential step to this process, since it allows us to translate from a radiocarbon date of reference to a calendar date of reference that we can use in research meaningfully. 
 
 This lesson will show you how to calibrate radiocarbon dates with  [R](https://www.r-project.org/about.html). Using R allows you to set up data processing routines and guarantees the reproducibility of your results at the time of their publication. This lesson is limited to simple calibration cases and does not cover advanced cases (for example, marine calibration, reservoir effects, etc.) nor [Bayesian](https://en.wikipedia.org/wiki/Bayesian_statistics) chronological modeling problems.
 
@@ -63,9 +63,9 @@ Whether you are curating an exhibition, managing a collection, or preserving his
 
 ## The Basic Principles of Radiocarbon Dating
 
-Proposed in the late 1940s by Willard Libby and his colleagues,[^3] the radiocarbon method uses the radioactive decay of carbon-14 (<sup>14</sup>C) to construct a chronometer. This makes it possible to estimate dates, i.e. time intervals measured from the present.[^4] By convention, radiocarbon dates are thus expressed in (kilo) years BP (Before Present, before 1950).[^5]
+Radiocarbon dating was proposed in the late 1940s by Willard Libby and his colleagues[^3]. In simple terms, the radiocarbon method uses the radioactive decay of carbon-14 (<sup>14</sup>C) to construct a "chronometer" (the aforementioned "own time frame"). This makes it possible to estimate dates, i.e. time intervals measured from the present.[^4] By convention, radiocarbon dates are thus expressed in (kilo) years BP (Before Present, before 1950).[^5] But as a researcher, these dates are not useful unless we are able to convert (calibrate) them to a useful year in calendar terms, that we can understand! Remember, radiocarbon dating gives a "radiocarbon year," which can differ from the actual calendar year due to fluctuations in atmospheric carbon levels over time.
 
-To develop a chronometer, three necessary conditions must be met:
+But first, we have to understand that to develop a chronometer, three necessary conditions must be met:
 - The chosen phenomenon must follow a law which varies over time;
 - The law in question must be independent of environmental conditions;
 - An initial event must be able to be determined.

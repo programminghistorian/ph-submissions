@@ -42,7 +42,16 @@ Since its discovery and the revolution that ensued, the radiocarbon dating metho
 
 The purpose of this lesson is to learn how to calibrate individual radiocarbon dates, handle uncertainties if multiple carbon dates exist for a single object, by testing for differences. The radiocarbon method is a so-called "absolute"[^1] dating method, which has its own time frame. So, calibration is an essential step to this process, since it allows us to translate from a radiocarbon date of reference to a calendar date of reference.
 
-This lesson will show you how to calibrate radiocarbon dates with  [R](https://www.r-project.org/about.html). Using R allows you to set up data processing routines and guarantees the reproducibility of your results at the time of their publication. This lesson assumes that you are comfortable with the [basic use of R](/en/lessons/r-basics-with-tabular-data) and understand basic concepts of statistics.[^2] This lesson also uses the R IDE, [RStudio](https://posit.co/download/rstudio-desktop/). This lesson is limited to simple calibration cases and does not cover advanced cases (for example, marine calibration, reservoir effects, etc.) nor [Bayesian](https://en.wikipedia.org/wiki/Bayesian_statistics) chronological modeling problems.
+This lesson will show you how to calibrate radiocarbon dates with  [R](https://www.r-project.org/about.html). Using R allows you to set up data processing routines and guarantees the reproducibility of your results at the time of their publication. This lesson is limited to simple calibration cases and does not cover advanced cases (for example, marine calibration, reservoir effects, etc.) nor [Bayesian](https://en.wikipedia.org/wiki/Bayesian_statistics) chronological modeling problems.
+
+## Prerequisites
+
+This lesson assumes that you are comfortable with the [basic use of R](/en/lessons/r-basics-with-tabular-data) and understand basic concepts of statistics.[^2] This lesson also uses the R integrated development enrivonment (IDE), [RStudio](https://posit.co/download/rstudio-desktop/). You should also be comfortable working with scripts, loading packages, and handling tabular data. If you're new to R or need a refresher, we recommend completing the one of the following Carpentries workshops to familiarize yourself with working with tabular/tidy data: 
+- for those with little to no coding knowledge or statistics knowledge, use [Introduction to R for Librarians](https://librarycarpentry.github.io/lc-r/), 
+- for those with experience working in genomics, use [Data Analysis and Visualization in R alpha](https://datacarpentry.github.io/R-genomics/index.html)
+- for those with experience working in ecology, use [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.github.io/R-ecology-lesson/)
+- for those with experience working in geospatial data, use [Introduction to R for Geospatial Data](https://datacarpentry.github.io/r-intro-geospatial/)
+
 
 ## The Basic Principles of Radiocarbon Dating
 

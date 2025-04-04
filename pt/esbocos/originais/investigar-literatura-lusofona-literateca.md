@@ -162,7 +162,7 @@ Para descrever e visualizar os resultados, podemos importar os ficheiros produzi
 
 ### Roupa na literatura
 
-Vamos primeiro observar quais os autores que têm mais menções a roupa.
+Primeiro, vamos observar quais os autores que têm mais menções a roupa.
 
 
 ```
@@ -175,9 +175,9 @@ roupaObras$rouparel<-roupaObras$roupa/roupaObras$tamanho
 roupaObrasOrdenada<-roupaObras[order(roupaObras$rouparel, decreasing=TRUE),]
 ```
 
-De forma resumida, as quatro primeiras linhas leem os ficheiros e atribuem nomes às colunas. A quinta combina a informação das duas folhas de registo (*dataframes*) numa só. A sexta calcula a frequência relativa de roupa por número de unidades, criando uma nova coluna chamada `rouparel`. Por fim, a sétima linha obtém uma nova folha de registo ordenada pelo peso relativo do vestuário, que está na coluna `rouparel`.
+De forma resumida, as quatro primeiras linhas leem os ficheiros e atribuem nomes às colunas. A quinta combina a informação das duas folhas de registo (em inglês, *dataframes*) numa só. A sexta calcula a frequência relativa de roupa por número de unidades, criando uma nova coluna chamada `rouparel`. Por fim, a sétima linha obtém uma nova folha de registo ordenada pelo peso relativo do vestuário, que está na coluna `rouparel`.
 
-Com os próximos comandos, podemos visualizar isso num gráfico de barras (Figura 6) e num diagrama de caixa (boxplot) (Figura 7), neste caso para dez autores que têm várias obras na Literateca.
+Com os próximos comandos, podemos visualizá-lo num gráfico de barras (Figura 6) e num diagrama de caixa (em inglês, *boxplot*) (Figura 7), neste caso para dez autores que têm várias obras na Literateca.
 
 ```
 par(mar=c(4,24,2,2)+0.1)
@@ -188,19 +188,19 @@ dezautores$autor<-dezautores$autor[drop=TRUE]
 boxplot(dezautores$rouparel~dezautores$autor, xlab="",ylab="",las=2)
 ```
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-06.png" alt="Gráfico de barras das vinte e cinco obras que falam mais de roupa na Literateca, mostrando que as primeiras cinco são textos curtos de Machado fde Assis" caption="Figura 6. As vinte e cinco obras que falam mais de roupa na Literateca, num gráfico de barras" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-06.png" alt="Gráfico de barras das vinte e cinco obras que mais referem roupa na Literateca, mostrando que as primeiras cinco são textos curtos de Machado de Assis" caption="Figura 6. As vinte e cinco obras que mais referem roupa na Literateca, num gráfico de barras." %}
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-07.png" alt="Gráfico de caixa do peso da roupa em dez autores da Literateca, mostrando que Eça de Queirós, José de Alencar e Aluísio de Azevedo são os que mencionam mais roupa" caption="Figura 7. A distribuição de roupa por dez autores na Literateca, num gráfico de caixa" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-07.png" alt="Gráfico de caixa do peso da roupa em dez autores da Literateca, mostrando que Eça de Queirós, José de Alencar e Aluísio de Azevedo são os que mais mencionam roupa" caption="Figura 7. A distribuição de roupa por dez autores na Literateca, num gráfico de caixa." %}
 
-Vemos pelas duas visualizações que, embora as obras com mais menção relativa a roupa fossem contos de Machado de Assis (Figura 6), ao ver o conjunto das suas obras (Figura 7) é Eça de Queirós quem dá mais importância a esse campo semântico (a mediana de EcaQue é significativamente mais elevada do que a de MacAss).
+Vemos pelas duas visualizações que, embora as obras com mais menção relativa a roupa fossem contos de Machado de Assis (Figura 6), ao verificar o conjunto das suas obras (Figura 7) é Eça de Queirós quem dá mais importância a esse campo semântico (a mediana de EcaQue é significativamente mais elevada do que a de MacAss).
 
-Por outro lado, também podemos observar a menção ao campo semântico do vestuário ao longo do tempo, usando para isso a data ou a década a que cada obra pertence, na Figura 8.
+Também podemos observar a menção ao campo semântico de vestuário ao longo do tempo. Para isso, usamos a data ou a década a que cada obra pertence (Figura 8).
 
 ```
 boxplot(roupaObras$rouparel~roupaObras$decada,las=2,xlab="",ylab="")
 ```
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de caixa da roupa por década, mostrando que a partir do fim do século XIX vai aumentando" caption="Figura 8. A distribuição de roupa por década na Literateca, num gráfico de caixa" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de caixa da roupa por década, mostrando que a partir do fim do século XIX vai aumenta o número de referências" caption="Figura 8. Distribuição de roupa por década na Literateca, num gráfico de caixa." %}
 
 Pela figura podemos observar que a partir de 1870 existem muito mais referências ao vestuário na literatura lusófona do que anteriormente.
 
@@ -217,13 +217,13 @@ Para explicação destas categorias e da forma de anotação, ver Freitas e Sant
 
 Vamos agora ver que casos femininos e masculinos estão marcados com `pred:aparencia`, ao longo do tempo.
 
-No distribuidor, pedimos a distribuição dos casos de aparência, selecionando apenas as obras literárias em prosa:
+No Distribuidor, pedimos a distribuição dos casos de aparência, selecionando apenas as obras literárias em prosa:
 
 ```
 ?sema=/.*pred:aparencia.*/ ?classe=/Prosa:.*/ ?decada=/[12].../ decada gen
 ```
 
-e dos casos de predicação, seja ela qual for, em que se descreve uma pessoa (também selcionando as obras literárias em prosa):
+e dos casos de predicação, seja ela qual for, em que se descreve uma pessoa (também selecionando as obras literárias em prosa):
 
 ```
 ?sema=/.*pred.*/ ?classe=/Prosa:.*/ ?decada=([12].../ decada gen

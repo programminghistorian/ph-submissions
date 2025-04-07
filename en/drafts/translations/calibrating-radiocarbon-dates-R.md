@@ -27,7 +27,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/603
 difficulty: 2
 activity: analyzing
 topics: [data-manipulation, r, data-visualization]
-abstract: After reviewing the basic principles and challenges of radiocarbon dating, this  lesson teaches you to calibrate a set of dates, then explore and present your results.
+abstract: After reviewing the basic principles and challenges of radiocarbon dating, this lesson teaches you how to calibrate a set of dates, then explore and present your results.
 mathjax: true
 avatar_alt: Vases, furniture, and various objects painted in the tombs of kings
 doi: XX.XXXXX/phen0000
@@ -40,30 +40,36 @@ doi: XX.XXXXX/phen0000
 
 Since its discovery, radiocarbon dating has become a standard tool for archaeologists and historians. It often serves as the primary source of chronological information or complements other material and textual evidence.
 
-The goal of this lesson is to teach you how to calibrate individual radiocarbon dates and manage uncertaintiies when multiple dates exist for the same object, by testing for differences. Radiocarbon dating is called an "absolute"[^1] dating method, meaning that it exists on its own time frame. So, calibration is an essential step to this process, since it allows us to translate from a radiocarbon date of reference to a calendar date of reference that we can use in research meaningfully. 
+The goal of this lesson is to teach you how to calibrate individual radiocarbon dates by testing for differences, as well as how to manage uncertainties when multiple dates exist for the same object. Radiocarbon dating is called an "absolute"[^1] dating method, meaning that it exists on its own time frame. Calibration is an essential step to this process, since it allows you to translate from a radiocarbon date of reference to a calendar date of reference that you can use in research meaningfully. 
 
-This lesson will show you how to calibrate radiocarbon dates with  [R](https://www.r-project.org/about.html). Using R allows you to set up data processing routines and guarantees the reproducibility of your results at the time of their publication. This lesson is limited to simple calibration cases and does not cover advanced cases (for example, marine calibration, reservoir effects, etc.) nor [Bayesian](https://en.wikipedia.org/wiki/Bayesian_statistics) chronological modeling problems.
+This lesson will show you how to calibrate radiocarbon dates with [R](https://www.r-project.org/about.html). Using R allows you to set up data processing routines and guarantees the reproducibility of your results at the time of their publication. This lesson is limited to simple calibration cases and does not cover advanced cases (for example, marine calibration, reservoir effects, etc.) nor [Bayesian](https://en.wikipedia.org/wiki/Bayesian_statistics) chronological modeling problems.
 
 ## Prerequisites
 
-This lesson assumes that you are comfortable with the [basic use of R](/en/lessons/r-basics-with-tabular-data) and understand basic concepts of statistics.[^2] This lesson also uses the R integrated development enrivonment (IDE), [RStudio](https://posit.co/download/rstudio-desktop/). You should also be comfortable working with scripts, loading packages, and handling [tabular data](https://en.wikipedia.org/wiki/Table_(information)). If you're new to R or need a refresher, we recommend completing the one of the following Carpentries workshops to familiarize yourself with working with tabular and/or [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html): 
+This lesson assumes that you are comfortable with the [basic use of R](/en/lessons/r-basics-with-tabular-data) and understand introductory concepts in statistics.[^2] This lesson also uses the R integrated development enrivonment (IDE), [RStudio](https://posit.co/download/rstudio-desktop/). You should generally be comfortable working with scripts, loading packages, and handling [tabular data](https://en.wikipedia.org/wiki/Table_(information)). 
+
+If you're new to R or need a refresher, we recommend completing the one of the following Carpentries workshops to familiarize yourself with working with tabular and/or [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html): 
 - for those with little to no coding knowledge or statistics knowledge, use [Introduction to R for Librarians](https://librarycarpentry.github.io/lc-r/), 
 - for those with experience working in genomics, use [Data Analysis and Visualization in R alpha](https://datacarpentry.github.io/R-genomics/index.html)
 - for those with experience working in ecology, use [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.github.io/R-ecology-lesson/)
 - for those with experience working in geospatial data, use [Introduction to R for Geospatial Data](https://datacarpentry.github.io/r-intro-geospatial/)
   
-## Who is this Lesson for?
+## Intended Audience
 
-This lesson is designed not only for archaeologists, but also for librarians, conservators, archivists, and other cultural heritage professionals who may encounter radiocarbon dates in their work with historical objects, manuscripts, or archaeological collections. Even if you do not have a background in radiocarbon science, understanding how to interpret and calibrate radiocarbon dates can help you evaluate the age of artifacts, enrich catalog records, or collaborate more effectively with researchers in interdisciplinary projects. For example, gallery, library, archives, and museum workers (GLAM) may encounter radiocarbon dates in various parts of their practice, especially when working with ancient, rare, or undocumented materials. Some examples include:
-- special collections and rare books: without clear provenance (such as manuscripts, scrolls, or parchment fragments) can have estimated creation dates based on radiocarbon testing. Understanding how these dates were derived, and what they mean in calibrated calendar years, can help support accurate cataloguing and metadata creation. In turn this supports accurate research work down the line. For example, the World Museum in Liverpool, England has carbon-dated a [lower third molar (wisdom tooth)](https://www.liverpoolmuseums.org.uk/stories/radiocarbon-dating-world-museums-collections) after taking 3D images.
-- conservation and treatment decisions: are often made based on radiocarbon tests, which determine authenticity and establish degradation timelines. Later, in this lesson, we study the case of the Shroud of Turin as an example.
+This lesson is designed not only for archaeologists, but also for librarians, conservators, archivists, and other cultural heritage professionals who may encounter radiocarbon dates in their work with historical objects, manuscripts, or archaeological collections. Even if you do not have a background in radiocarbon science, understanding how to interpret and calibrate radiocarbon dates can help you evaluate the age of artifacts, enrich catalog records, and collaborate more effectively with researchers in interdisciplinary projects. 
 
-Whether you are curating an exhibition, managing a collection, or preserving historical materials, this lesson offers a practical introduction to using R for date calibration — an increasingly valuable skill in the digital heritage field. No prior experience with radiocarbon calibration is assumed, though again, familiarity with basic R skills will help you get the most out of the lesson.
+Gallery, library, archives, and museum (GLAM) workers may encounter radiocarbon dates in various parts of their practice, especially when working with ancient, rare, or undocumented materials. In the field of special collections and rare books conservation, whem materials lack clear provenance (such as manuscripts, scrolls, or parchment fragments), estimated creation dates can be based on radiocarbon testing. Understanding how these dates were derived, and what they mean in calibrated calendar years, can help support accurate cataloguing and metadata creation. In turn, this carbon-dating supports accurate research work down the line. For example, the World Museum in Liverpool, England has carbon-dated a [lower third molar (wisdom tooth)](https://www.liverpoolmuseums.org.uk/stories/radiocarbon-dating-world-museums-collections) after taking 3D images.
+
+Conservation and treatment decisions are often made based on radiocarbon tests, which determine authenticity and establish degradation timelines. Later, in this lesson, we study the case of the Shroud of Turin as an example.
+
+Whether you are curating an exhibition, managing a collection, or preserving historical materials, this lesson offers a practical introduction to using R for date calibration — an increasingly valuable skill in the digital heritage field. No prior experience with radiocarbon calibration is assumed, though familiarity with basic R skills will help you get the most out of the lesson.
 
 
 ## The Basic Principles of Radiocarbon Dating
 
-Radiocarbon dating was proposed in the late 1940s by Willard Libby and his colleagues[^3]. In simple terms, the radiocarbon method uses the radioactive decay of carbon-14 (<sup>14</sup>C) to construct a "chronometer" (the aforementioned "own time frame"). This makes it possible to estimate dates, i.e. time intervals measured from the present.[^4] By convention, radiocarbon dates are thus expressed in (kilo) years BP (Before Present, before 1950).[^5] But as a researcher, these dates are not useful unless we are able to convert (calibrate) them to a useful year in calendar terms, that we can understand! Remember, radiocarbon dating gives a "radiocarbon year," which can differ from the actual calendar year due to fluctuations in atmospheric carbon levels over time.
+Radiocarbon dating was proposed in the late 1940s by Willard Libby and his colleagues[^3]. In simple terms, the radiocarbon method uses the radioactive decay of carbon-14 (<sup>14</sup>C) to construct a "chronometer" (the aforementioned "own time frame"). This makes it possible to estimate dates, i.e. time intervals measured from the present.[^4] By convention, radiocarbon dates are thus expressed in (kilo) years BP (Before Present, before 1950).[^5] 
+
+For researchers, these dates are not useful unless you are able to convert (calibrate) them to a useful year in calendar terms that we can understand! Remember, radiocarbon dating gives a "radiocarbon year," which can differ from the actual calendar year due to fluctuations in atmospheric carbon levels over time.
 
 But first, we have to understand that to develop a chronometer, three necessary conditions must be met:
 - The chosen phenomenon must follow a law which varies over time;
@@ -80,9 +86,9 @@ The half-life of <sup>14</sup>C is 5,730 ± 40 years: for an initial quantity \\
 
 When an organism dies, exchanges with its environment stop. Assuming that there is no external contamination, we consider this a closed system: radioactive decay is the only phenomenon affecting the quantity of <sup>14</sup>C contained in the organism's tissue. Therefore, the event dated by the radiocarbon is the death of the organism.
 
-Unless we specifically are looking for when an organism died, the radiocarbon date can give a *terminus ante* or *post quem* for the archaeological event that we wish to position in time. In other words, this is the moment before or after which the archaeological or historical event of interest took place (for example, the abandonment of an object, combustion of a hearth, deposition of a sedimentary layer, etc.) depending on available contextual elements, like stratigraphy. These contextual elements are important as they help us interpret the results; in particular, they help us ensure the absence of [taphonomic](https://en.wikipedia.org/wiki/Taphonomy) problems, and that there is indeed a direct relationship between the dated sample and the event of interest.[^7]
+Unless you specifically are looking for when an organism died, the radiocarbon date can give a *terminus ante* or *post quem* for the archaeological event that you wish to position in time. In other words, this is the moment before or after which the archaeological or historical event of interest took place (for example, the abandonment of an object, combustion of a hearth, deposition of a sedimentary layer, etc.) depending on available contextual elements, like stratigraphy. These contextual elements are important as they help us interpret the results; in particular, they help us ensure the absence of [taphonomic](https://en.wikipedia.org/wiki/Taphonomy) problems, and that there is indeed a direct relationship between the dated sample and the event of interest.[^7]
 
-Thanks to the law of radioactive decay, if we know the initial quantity \\(N_0\\) of <sup>14</sup>C contained in an organism at its death (time \\(t_0\\) and the remaining quantity of <sup>14</sup>C at time \\(t\\)), we cab then measure the time elapsed between \\(t_0\\) and \\(t\\): the radiocarbon date of an archaeological object. This is based on two key concepts:
+Thanks to the law of radioactive decay, if you know the initial quantity \\(N_0\\) of <sup>14</sup>C contained in an organism at its death (time \\(t_0\\) and the remaining quantity of <sup>14</sup>C at time \\(t\\)), you can then measure the time elapsed between \\(t_0\\) and \\(t\\): the radiocarbon date of an archaeological object. This is based on two key concepts:
 
 - The current amount of <sup>14</sup>C in an object can be determined in the laboratory, either by counting the <sup>14</sup>C nuclei, or by counting the number of decays per unit of time and per amount of matter (specific activity).
 - To determine the initial quantity, we assume that the quantity of <sup>14</sup>C in the atmosphere is constant over time, and equal to the current content.
@@ -95,7 +101,7 @@ However, a challenge arose: studies carried out in the second half of the 20th c
 
 Contrary to Libby's premise, the <sup>14</sup>C content in the atmosphere is not constant over time, which partly explains the observed differences. The atmospheric <sup>14</sup>C content varies depending on natural phenomena (variations in the earth's magnetic field, solar activity, volcanic activity, carbon cycle, etc.) and anthropogenic phenomena. These phenomena can be contradictory: the use of fossil fuels releases very old carbon, and tends to reduce the relative content of <sup>14</sup>C ([Suess effect](https://en.wikipedia.org/wiki/Suess_effect)); conversely atmospheric nuclear tests have produced large quantities of <sup>14</sup>C.
 
-The chronometer given to us by the radiocarbon method therefore does not have a regular pattern, because the atmospheric <sup>14</sup>C content varies over time. So, radiocarbon dates (we will subsequently use the expression "conventional dates", see figures 2A and 2B on the y-axis) belong to a reference frame that is specific to them.
+The chronometer given to us by the radiocarbon method therefore does not have a regular pattern, because the atmospheric <sup>14</sup>C content varies over time. So, radiocarbon dates (you will subsequently use the expression "conventional dates", see figures 2A and 2B on the y-axis) belong to a reference frame that is specific to them.
 
 The use of Libby's premise nevertheless remains the only accessible way to estimate the initial quantity of <sup>14</sup>C at the closure of the system. It is therefore necessary to carry out a calibration operation to transform a conventional date into a calendar date. This operation is carried out using a curve,[^9] the values for which are regularly updated by the scientific community.[^10] The calibration curve is constructed by thus providing an equivalence table between radiocarbon time and calendar time (fig. 2B).
 
@@ -103,15 +109,15 @@ The use of Libby's premise nevertheless remains the only accessible way to estim
 
 ## How to Calibrate?
 
-As we have just seen, it is necessary to calibrate radiocarbon dates. On paper, the calibration process is fairly simple, thanks to the equivalence table between radiocarbon time and calendar time. However, in practice, the calibration process is made more complicated by the errors inevitably associated with physical measurements!
+As you have just seen, it is necessary to calibrate radiocarbon dates. On paper, the calibration process is fairly simple, thanks to the equivalence table between radiocarbon time and calendar time. However, in practice, the calibration process is made more complicated by the errors inevitably associated with physical measurements!
 
 A conventional date (noted here as \\(t\\)) is the result of a measurement and, as there is no perfect measurement, it is always accompanied by a term corresponding to the analytical uncertainty (\\(\Delta t\\)) and expressed in the form \\(t \pm \Delta t\\) (date, plus or minus its uncertainty). This uncertainty results from the combination of different sources of error within the laboratory: it is a random uncertainty inherent to the measurement.
 
 A conventional date is thus an estimator of the true radiocarbon date of the dated object. If the dating of the same sample is repeated a very large number of times, its value is likely to vary and there is very little chance that it will coincide exactly with the true radiocarbon date. So it is preferable to focus on an interval which is highly probable to contain the real (unknown) value of the conventional date. In this way, uncertainty characterizes the dispersion of values that could reasonably be attributed to the true date. A conventional date is the realization of a random process, radioactive decay, and can be modeled using a particular probability distribution: [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution).[^11]
 
-Only two parameters are necessary to characterize the distribution of values according to a normal distribution: the mean \\(\mu\\) (central tendency) and the standard deviation \\(\sigma\\) (dispersion of values). The properties of the normal distribution are such that the interval defined by \\(\mu \pm \sigma\\) contains 67% of the values. If we multiply the standard deviation by two, the interval \\(\mu \pm 2\sigma\\) contains 95% of the values (fig. 3).
+Only two parameters are necessary to characterize the distribution of values according to a normal distribution: the mean \\(\mu\\) (central tendency) and the standard deviation \\(\sigma\\) (dispersion of values). The properties of the normal distribution are such that the interval defined by \\(\mu \pm \sigma\\) contains 67% of the values. If you multiply the standard deviation by two, the interval \\(\mu \pm 2\sigma\\) contains 95% of the values (fig. 3).
 
-So, if we express the uncertainty of a conventional date as a function of the standard deviation, there is a 68% chance that the interval at \\(1\sigma\\) contains the real conventional date. Likewise, the interval at \\(2\sigma\\) has a 95% chance of containing the true conventional date. The interval at \\(1\sigma\\) is less dispersed, but it has less chance of being correct than at \\(2\sigma\\). The range of values retained is narrower, but it is less likely to contain the real conventional date.
+So, if you express the uncertainty of a conventional date as a function of the standard deviation, there is a 68% chance that the interval at \\(1\sigma\\) contains the real conventional date. Likewise, the interval at \\(2\sigma\\) has a 95% chance of containing the true conventional date. The interval at \\(1\sigma\\) is less dispersed, but it has less chance of being correct than at \\(2\sigma\\). The range of values retained is narrower, but it is less likely to contain the real conventional date.
 
 {% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-03.png" alt="Three graphs showing the normal distribution graph with the different cumulative regions highlighted in the surface under each curve. All three curves are symmetrical with respect to the y-axis, with high peaks and steep falls on either side." caption="Figure 3. Normal distribution with mean 0 and standard deviation 1 with normality ranges at 68%, 95% and 99% confidence levels. The distribution of values is such that the dispersion is symmetrical around the central tendency." %}
 
@@ -119,7 +125,7 @@ The simplest approach for calibrating a radiocarbon date consists of interceptin
 
 {% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-04.png" alt="Graph showing the calibration curve (IntCal20) to calibrate the example of 2725 ± 50 years BP. The x-axis shows the calendar date and the y-axis shows the conventional date. This graph shows readers how to use a calibration curve when given a conventional date." caption="Figure 4. Calibration of a conventional age of 2725 ± 50 years BP by interception of the IntCal20 calibration curve." %}
 
-However, this approach does not take into account the fact that a radiocarbon date is described by a normal distribution. In the range defined by the radiocarbon date, plus or minus its uncertainty, not all values have the same probability of coinciding with the true radiocarbon date, but calibration by simple interception assumes the opposite. Therefore, the approach widely used now[^12] also consists of taking into account the normal distribution of radiocarbon dates. We sometimes use the expression "probabilistic calibration" to refer to this. This calibration method uses numerical methods and the resulting distribution of calendar dates is not equally likely (fig. 5).
+However, this approach does not take into account the fact that a radiocarbon date is described by a normal distribution. In the range defined by the radiocarbon date, plus or minus its uncertainty, not all values have the same probability of coinciding with the true radiocarbon date, but calibration by simple interception assumes the opposite. Therefore, the approach widely used now[^12] also consists of taking into account the normal distribution of radiocarbon dates. We sometimes use the expression "probabilistic calibration" to refer to this approach. This calibration method uses numerical methods and the resulting distribution of calendar dates is not equally likely (fig. 5).
 
 It is easy to describe a conventional date and its uncertainty with a normal distribution; but this cannot be done with a calendar date once it has been calibrated. Due to the oscillations of the calibration curve, it is actually not possible to describe the distribution of a calendar date with a specific probability distribution, as can be seen in Figure 5. Thus, a calibrated date has to be described as an interval.
 
@@ -153,13 +159,13 @@ By now it is clear that these details, if poorly understood, can quickly lead to
 
 ## Applications with R
 
-Many tools are now available to calibrate radiocarbon data, like [OxCal](https://c14.arch.ox.ac.uk/oxcal/), [CALIB](http://calib.org) and [ChronoModel](https://chronomodel.com). But these tools are rather intended to deal with [Bayesian](https://en.wikipedia.org/wiki/Bayesian_statistics) modeling problems of chronological sequences (which we don't cover in this lesson). R offers an interesting alternative to these tools which suits our needs. R is distributed under an open license, promotes reproducibility and lets us integrate the processing of radiocarbon date into larger projects (spatial analysis, etc.).
+Many tools are now available to calibrate radiocarbon data, like [OxCal](https://c14.arch.ox.ac.uk/oxcal/), [CALIB](http://calib.org) and [ChronoModel](https://chronomodel.com). But these tools are rather intended to deal with [Bayesian](https://en.wikipedia.org/wiki/Bayesian_statistics) modeling problems of chronological sequences (which we don't cover in this lesson). R offers an interesting alternative to these tools which suits our needs. R is distributed under an open license, promotes reproducibility and lets integrate the processing of radiocarbon date into larger projects (spatial analysis, etc.).
 
-Several R packages are useful for calibrating radiocarbon dates: for example, packages like [Bchron](https://cran.r-project.org/package=Bchron) and [oxcAAR](https://cran.r-project.org/package=oxcAAR) are often oriented towards modeling (constructing chronologies, age-depth models, etc.). The package we will use in this lesson is called [rcarbon](https://cran.r-project.org/package=rcarbon) (Bevan and Crema 2020). It allows us to easily calibrate and analyze radiocarbon ages.
+Several R packages are useful for calibrating radiocarbon dates: for example, packages like [Bchron](https://cran.r-project.org/package=Bchron) and [oxcAAR](https://cran.r-project.org/package=oxcAAR) are often oriented towards modeling (constructing chronologies, age-depth models, etc.). The package you will use in this lesson is called [rcarbon](https://cran.r-project.org/package=rcarbon) (Bevan and Crema 2020). It allows you to easily calibrate and analyze radiocarbon ages.
 
 ### Case Study
 
-To explore the process of calibrating radiocarbon dates, let us look at the example of dating the [Shroud of Turin](https://en.wikipedia.org/wiki/Shroud_of_Turin). In the late 1980s, radiocarbon dating was used on a sample from the Shroud, making it a famous case of dating a historical object using the radiocarbon method. Three independent datings of the same sample were carried out blindly, with control samples.
+To explore the process of calibrating radiocarbon dates, let's look at the example of dating the [Shroud of Turin](https://en.wikipedia.org/wiki/Shroud_of_Turin). In the late 1980s, radiocarbon dating was used on a sample from the Shroud, making it a famous case of dating a historical object using the radiocarbon method. Three independent datings of the same sample were carried out blindly, with control samples.
 
 In April 1988, a fabric sample was taken from the Shroud of Turin. Three different laboratories were selected; each received a fragment of this same sample. Plus, three other samples (from items other than the Shroud), whose calendar dates were known by other methods, were also sampled. These served as "control samples", in order to validate the results of each laboratory, and to ensure that the results of the different laboratories were compatible with each other. Each laboratory received four samples and carried out the measurements blindly, without knowing which one actually corresponded to the Shroud (Damon et al., 1989).
 
@@ -197,7 +203,7 @@ colnames(turin) <- c("age1", "age2", "age3", "age4",
 rownames(turin) <- c("Arizona", "Oxford", "Zurich")
 ```
 
-Then, we reformat the data in an [array](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/array), thus obtaining a 3-dimensional table: the 1st dimension (rows) corresponds to the laboratories, the 2nd dimension (columns) corresponds to the samples, the 3rd dimension makes it possible to distinguish the dates and their uncertainties.
+Then, reformat the data in an [array](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/array), thus obtaining a 3-dimensional table: the 1st dimension (rows) corresponds to the laboratories, the 2nd dimension (columns) corresponds to the samples, the 3rd dimension makes it possible to distinguish the dates and their uncertainties.
 
 ```r
 dim(turin) <- c(3, 4, 2)
@@ -232,11 +238,11 @@ Before calibrating the radiocarbon dates obtained, several preliminary questions
 
 In this case study, several laboratories have dated the same objects. So first, we seek to know whether the dates obtained for each object by the different laboratories agree with each other. This compatibility is defined by also taking into account the uncertainties associated with dates.
 
-Once the data has been imported and formatted, the initial approach is to visualize it. We can therefore get an initial idea of the compatibility of the results provided by the different laboratories for each dated object. The following code allows you to generate Figure 7, which shows the conventional date distributions for each sample.
+Once the data has been imported and formatted, the initial approach is to visualize it. You can thereby get an initial idea of the compatibility of the results provided by the different laboratories for each dated object. The following code allows you to generate Figure 7, which shows the conventional date distributions for each sample.
 
 ```r
 ## Set graphical parameters for your figure
-## 'mfrow' allows us to attach 4 images in 2 rows and 2 columns
+## 'mfrow' allows you to attach 4 images in 2 rows and 2 columns
 par(mfrow = c(2, 2), mar = c(3, 4, 0, 0) + 0.1, las = 1)
 colours <- c("#DDAA33", "#BB5566", "#004488")
 
@@ -266,7 +272,7 @@ for (j in 1:ncol(turin)) {
 legend("topright", legend = rownames(turin), lty = 1, lwd = 1.5, col = colours)
 ```
 
-{% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-07.png" alt="Four graphs indicating the distribution of conventional ages found by each of the three laboratories for the four samples. Each graph has three curves representing the probabilities found by each different laboratory. There are some variances in the dates for each sample as we test the homogeneity of the results." caption="Figure 7. Distribution of conventional dates by laboratory, for samples 1 to 4." %}
+{% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-07.png" alt="Four graphs indicating the distribution of conventional ages found by each of the three laboratories for the four samples. Each graph has three curves representing the probabilities found by each different laboratory. There are some variances in the dates for each sample as you test the homogeneity of the results." caption="Figure 7. Distribution of conventional dates by laboratory, for samples 1 to 4." %}
 
 Figure 7 shows that sample 1 has dates that only slightly overlap, unlike the other three dated samples. Starting from this first observation, we will therefore test the agreement (compatability) of the results from the different laboratories.
 
@@ -274,7 +280,7 @@ Figure 7 shows that sample 1 has dates that only slightly overlap, unlike the ot
 
 To answer this question, the authors of the 1988 study follow the methodology proposed by Ward and Wilson (1978). This consists of carrying out a statistical test of homogeneity whose null hypothesis (\\(H_0\\)) can be formulated as follows: "the dates measured by the different laboratories on the same object are equal".
 
-To do this, we start by calculating the average date of each object (\\(\bar{x}\\)). This corresponds to the weighted average of the dates obtained by each laboratory. The use of a weighting factor (the inverse of the variance, \\(w_i = \frac{1}{\sigma_i^2}\\)) makes it possible to adjust the relative contribution of each date (\\(x_i\\)) to the average value.
+To do this, you start by calculating the average date of each object (\\(\bar{x}\\)). This corresponds to the weighted average of the dates obtained by each laboratory. The use of a weighting factor (the inverse of the variance, \\(w_i = \frac{1}{\sigma_i^2}\\)) makes it possible to adjust the relative contribution of each date (\\(x_i\\)) to the average value.
 
 $$ \bar{x}  = \frac{\sum_{i=1}^{n}{w_i x_i}}{\sum_{i=1}^{n}{w_i}} $$
 
@@ -282,11 +288,11 @@ This average date is also associated with an uncertainty (\\(\sigma\\)):
 
 $$ \sigma = \left(\sum_{i=1}^{n}{w_i}\right)^{-1/2} $$
 
-From this average value, we can calculate a statistical test variable (\\(T\\)) allowing the comparison of the measured ages to a theoretical date (here the average date) for each dated object.
+From this average value, you can calculate a statistical test variable (\\(T\\)) allowing the comparison of the measured ages to a theoretical date (here the average date) for each dated object.
 
 $$ T = \sum_{i=1}^{n}{\left( \frac{x_i - \bar{x}}{\sigma_i} \right)^2} $$
 
-\\(T\\) is a random variable which follows a \\(\chi^2\\) distribution with \\(n-1\\) degrees of freedom (\\(n\\) is the number of datings per object, here \\(n = 3\\) for the 3 labs). From \\(T\\), it is possible to calculate the \\(p\\) value, that is to say the risk of rejecting the null hypothesis even though it is true. By comparing the \\(p\\) value to a threshold \\(\alpha\\) fixed in advance, we can determine whether or not it is possible to reject \\(H_0\\) (if \\(p\\) is greater than \\(\alpha\\), then we cannot reject the null hypothesis). Here we set this \\(\alpha\\) value to 0.05. We therefore estimate that a 5% risk of making a mistake is acceptable.
+\\(T\\) is a random variable which follows a \\(\chi^2\\) distribution with \\(n-1\\) degrees of freedom (\\(n\\) is the number of datings per object, here \\(n = 3\\) for the 3 labs). From \\(T\\), it is possible to calculate the \\(p\\) value, that is to say the risk of rejecting the null hypothesis even though it is true. By comparing the \\(p\\) value to a threshold \\(\alpha\\) fixed in advance, you can determine whether or not it is possible to reject \\(H_0\\) (if \\(p\\) is greater than \\(\alpha\\), then you cannot reject the null hypothesis). Here you set this \\(\alpha\\) value to 0.05. You thereby estimate that a 5% risk of making a mistake is acceptable.
 
 The following code allows you to calculate for each sample, its average date, the associated uncertainty, the \\(T\\) statistic and the \\(p\\)-value.
 
@@ -335,13 +341,13 @@ dates
 ## Sam. 4  723.8513 19.93236 2.3856294 0.30336618
 ```
 
-We see that sample 1 has a \\(p\\)-value of 0.04. As this is lower than the threshold \\(\alpha\\) set, hypothesis \\(H_0\\) can be rejected. This means that the differences observed between the dates obtained in this sample are significant. The \\(p\\) values obtained for the other samples are respectively 0.92, 0.52 and 0.30: hypothesis \\(H_0\\) cannot therefore be rejected in these cases.
+You can see that sample 1 has a \\(p\\)-value of 0.04. As this is lower than the threshold \\(\alpha\\) set, hypothesis \\(H_0\\) can be rejected. This means that the differences observed between the dates obtained in this sample are significant. The \\(p\\) values obtained for the other samples are respectively 0.92, 0.52 and 0.30: hypothesis \\(H_0\\) cannot therefore be rejected in these cases.
 
 This fluctuation in the dates of sample 1 is probably linked to heterogeneity of the measurements within one of the laboratories.[^14]
 
 ### Date Calibration
 
-In accordance with the results of the previous tests, the different dates obtained for sample 1 will be calibrated separately, while we will be able to calibrate the average dates of samples 2, 3 and 4. The calibration is carried out with the `calibrate()` function of the rcarbon package. We can then use `summary()` to obtain a summary of the calibrated dates. By default, `summary()` displays dates in calendar years BP.
+In accordance with the results of the previous tests, the different dates obtained for sample 1 will be calibrated separately, while you will be able to calibrate the average dates of samples 2, 3 and 4. The calibration is carried out with the `calibrate()` function of the rcarbon package. You can then use `summary()` to obtain a summary of the calibrated dates. By default, `summary()` displays dates in calendar years BP.
 
 ```r
 ## load the rcarbon package
@@ -480,17 +486,17 @@ multiplot(
 )
 ```
 
-{% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-09.png" alt="Three graphs indicating the distribution of calendar ages of sample 1, as seen by different laboratories (Arizona, Zurich, and Oxford). The focus of the graph is in the highlighted regions in dark grey, which show us our HPDI area. Arizona has two distinct dark grey highlighted regions; Zurich has two; Oxford has one. The graphs all share an x-axis indicating the years AD." caption="Figure 9. Distribution of calendar ages of sample 1 obtained by the different laboratories. Dark gray areas correspond to the 95% HPDI. IntCal20 curve." %}
+{% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-09.png" alt="Three graphs indicating the distribution of calendar ages of sample 1, as seen by different laboratories (Arizona, Zurich, and Oxford). The focus of the graph is in the highlighted regions in dark grey, which show the HPDI area. Arizona has two distinct dark grey highlighted regions; Zurich has two; Oxford has one. The graphs all share an x-axis indicating the years AD." caption="Figure 9. Distribution of calendar ages of sample 1 obtained by the different laboratories. Dark gray areas correspond to the 95% HPDI. IntCal20 curve." %}
 
-If the analysis of the conventional ages obtained by the different laboratories for sample 1 reveals a certain heterogeneity, we nevertheless note that the calibrated dates all belong to the 13th and 14th centuries. Although we cannot give a more precise interval, these results are in agreement with the appearance of the first written mentions of the Shroud and reasonably allow us to exclude the hypothesis of authenticity of the relic.
+If the analysis of the conventional ages obtained by the different laboratories for sample 1 reveals a certain heterogeneity, you may nevertheless note that the calibrated dates all belong to the 13th and 14th centuries. Although we cannot give a more precise interval, these results are in agreement with the appearance of the first written mentions of the Shroud and reasonably allow you to exclude the hypothesis of authenticity of the relic.
 
 ### How to Present your Results
 
-We will want to include some specific information in order to publish the radiocarbon dates in rigorous manner, and so that others can verify our findings. For example, we can clearly write:
+You will want to include some specific information in order to publish the radiocarbon dates in rigorous manner, and so that others can verify your findings. For example, you can write:
 
 > Sample ETH-3883 is dated at 676 ± 24 years BP, calibrated at [671;633] (58%) or [589;563] (38%) cal BP or [1279;1317] (58%) or [1361;1387] (38%) AD (95% HPDI) with IntCal20 (Reimer et al. 2020), R 4.0.3 (R Core Team, 2020) and the rcarbon 1.4.1 package (Crema and Bevan, 2020 ).
 
-When we write our dates in this way, we have included this information for our readers:[^15]
+When you write  dates in this way, you have included the following information for your readers:[^15]
 
 - The conventional date and its uncertainty (676 ± 24 years BP), accompanied by the identification number given by the laboratory (ETH-3883);
 - The calibrated date in the form of one or more intervals (due to its particular distribution, a calibrated date is always given in the form of intervals), specifying the probability associated with each interval and the temporal reference used (cal BP or BC/AD);
@@ -498,7 +504,7 @@ When we write our dates in this way, we have included this information for our r
 
 ## Conclusion
 
-Calibrating radiocarbon dates allows us to convert them into a calendar time frame. This step is essential for interpreting the results, as the carbon-14 "clock" doesn’t tick at a constant rate over time. In this lesson, we learned how to combine conventional dates and check for consistency before calibrating them. We also explored how to graph these dates and present the results with all the necessary details for reproducibility. Further resources can be found below, in the bibliography.
+Calibrating radiocarbon dates allows you to convert them into a calendar time frame. This step is essential for interpreting the results, as the carbon-14 "clock" doesn’t tick at a constant rate over time. In this lesson, you learned how to combine conventional dates and check for consistency before calibrating them. You also explored how to graph these dates and present the results with all the necessary details for reproducibility. Further resources can be found below, in the bibliography.
 
 ## Bibliography
 
@@ -551,7 +557,7 @@ Walsh, B., & Schwalbe, L. 2020. "An Instructive Inter-Laboratory Comparison: The
 
 [^4]: Colman, Pierce & Birkeland, 1987.
 
-[^5]: We are using the year 1950 as our reference, because it corresponded to the standard astronomical era (during these first developments of the radiocarbon method). Today we use 1950, because also allows us to have a reference which sufficiently precedes the consequences of atmospheric nuclear tests.
+[^5]: We are using the year 1950 as our reference, because it corresponded to the standard astronomical era (during these first developments of the radiocarbon method). Today we use 1950, as it allows us to have a reference which sufficiently precedes the consequences of atmospheric nuclear tests.
 
 [^6]:The reality is more complex, notably with the reality of [isotope fractionation](https://en.wikipedia.org/wiki/Isotope_fractionation).
 

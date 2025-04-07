@@ -35,7 +35,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-In this tutorial, you will learn how to organize a set of texts for research; that is, you will learn the basic steps of creating a *corpus*. You will also learn the main metrics of quantitative text analysis. For this purpose, we will use [Voyant Tools](http://voyant-tools.org/) (Sinclair and Rockwell, 2016), a web-based platform that does not require installation and works in any browser with an Internet connection.
+In this lesson, you will learn how to organize a set of texts for research; that is, you will learn the basic steps of creating a *corpus*. You will also learn the main metrics of quantitative text analysis. For this purpose, you will use [Voyant Tools](http://voyant-tools.org/) (Sinclair and Rockwell, 2016), a web-based platform that does not require installation and works in any browser with an Internet connection.
 
 This tutorial is designed as a beginner-friendly introduction to *corpus* analysis and is part of a growing ecosystem of tools and methods in digital humanities. For a more advanced tool, see the [Programming Historian lesson on AntConc](https://programminghistorian.org/en/lessons/corpus-analysis-with-antconc). You may also be interested in other *Programming Historian* lessons on [text mining](https://programminghistorian.org/en/topics/text-mining), [natural language processing](https://programminghistorian.org/en/lessons/introduction-to-nlp-with-python), and [topic modeling](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet).
 
@@ -50,7 +50,7 @@ No prior experience with text analysis is required. However, for those who want 
 
 Corpus analysis is a type of [content analysis](https://vocabularyserver.com/tadirah/en/index.php?tema=26&/content-analysis) that allows large-scale comparisons of a set of texts or a corpus.
 
-Since the advent of computing, both computational linguists and [information retrieval](https://vocabularyserver.com/tadirah/en/index.php?tema=107&/information-retrieval-analysis-content-analysis) specialists have created and used software to notice patterns that are not evident in apparent to the naked eye or to corroborate hypotheses they intuited when reading certain texts but required laborious, costly, and mechanical work. For example, to obtain patterns of increase and decline in usage of certain terms over a given period, it was necessary to hire people to manually review a text and note how many times the sought term appeared. Early on, observing the counting capabilities of computers, these specialists promptly wrote programs to facilitate the task of creating frequency lists or concordance tables (i.e., tables with the left and right contexts of a term). The program you will learn to use in this tutorial falls into this context.
+Since the advent of computing, both computational linguists and [information retrieval](https://vocabularyserver.com/tadirah/en/index.php?tema=107&/information-retrieval-analysis-content-analysis) specialists have created and used software to notice patterns that are not evident in apparent to the naked eye or to corroborate hypotheses they intuited when reading certain texts but required laborious, costly, and mechanical work. For example, to obtain patterns of increase and decline in usage of certain terms over a given period, it was necessary to hire people to manually review a text and note how many times the sought term appeared. Early on, observing the counting capabilities of computers, these specialists promptly wrote programs to facilitate the task of creating frequency lists or concordance tables (i.e., tables with the left and right contexts of a term). The program you will learn to use in this lesson fits into this historical context.
 
 ### What You Will Learn in This Tutorial
 
@@ -72,7 +72,7 @@ By the end of this tutorial, you will be able to:
 
 ## Creating a Plain Text Corpus
 
-Although VoyantTools can work with many formats (HTML, XML, PDF, RTF, and MS Word), in this tutorial we will use plain text (`.txt`). Plain text has three fundamental advantages: it has no additional formatting, does not require a special program, and does not require extra knowledge of text analysis. The steps to create a plain text *corpus* are:
+Although VoyantTools can work with many formats (HTML, XML, PDF, RTF, and MS Word), in this tutorial you will use plain text (`.txt`) files. Plain text has three fundamental advantages: it has no additional formatting, does not require a special program, and does not require extra knowledge of text analysis. The steps to create a plain text *corpus* are:
 
 ### 1. Search for Texts
 
@@ -143,7 +143,7 @@ For this tutorial, we have named the files with the month, day, year, and order 
 
 On the Voyant Tools homepage, you will find four simple options for loading texts. The first two options are in the white box. In this box, you can directly paste a text that you have copied from somewhere; or, paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on “Open” and select one of the two corpora that Voyant has preloaded (the works of Shakespeare or the novels of Austen: both in English).
 
-Finally, there is the option we will use in this tutorial, where you can directly upload the documents you have on your computer. In this case, we will upload the complete *corpus* of presidential speeches.
+Finally, there is the option we will use in this tutorial, where you can directly upload the documents you have on your computer. In this case, you will upload the complete *corpus* of presidential speeches.
 
 To upload the materials, click on the icon that says "Upload," open your file explorer, and, while holding down the "Shift" key, select all the files you want to analyze.
 
@@ -176,21 +176,21 @@ Once all the files are uploaded, you will reach the "interface" that has five de
 
 ## Document Summary: Basic Characteristics of Your Set of Texts
 
-One of the most informative windows in Voyant is the summary. Here we get an overview of some statistics about our corpus, so it serves as a good starting point. In the following sections, you will get an explanation of the different measures that appear in this window.
+One of the most informative windows in Voyant is the summary. Here you can get an overview of some statistics about your corpus, so it serves as a good starting point. In the following sections, you will get an explanation of the different measures that appear in this window.
 
 ### Number of Texts, Words, and Unique Words
 
-The first sentence we read looks something like this:
+The first sentence looks something like this:
 
 > This *corpus* has 9 documents with 17,893 total words and 3,169 unique word forms. Created 53 seconds ago.
 
-From the start, with this information, we know exactly how many distinct documents were uploaded (9); how many words there are in total (17,893); and how many unique words exist (3,169).
+From the start, with this information, you know exactly how many distinct documents were uploaded (9); how many words there are in total (17,893); and how many unique words exist (3,169).
 
 Below, you will find nine activities that can be resolved in groups or individually. Five of them have answers at the end of the text to serve as a guide. The remaining four activities are designed to encourage reflection and discussion among participants who engage with them.
 
 **Activity 1**
 
-If our *corpus* consisted of two documents; one that said: "I'm hungry"; and another that said: "I'm sleepy." What information would appear in the first line of the summary? Complete:
+If your *corpus* consisted of two documents; one that said: "I'm hungry"; and another that said: "I'm sleepy." What information would appear in the first line of the summary? Complete:
 
 *Hint: Count total documents (2), all words (“I’m hungry” and “I’m sleepy”), and how many of those are unique (repeated words like “I’m” only count once).*
 
@@ -200,14 +200,14 @@ If our *corpus* consisted of two documents; one that said: "I'm hungry"; and ano
 
 ### Document Length
 
-The second thing we see is the "document length" section. Here is what it shows:
+The second thing you'll see is the "document length" section. Here is what it shows:
 
 - **Longest**: `november_19_1794_sixth (2926); december_7_1796_eighth (2864); november_6_1792_fourth (2345); october_25_1791_third (2267); december_8_1795_seventh (1977)`  
 - **Shortest**: `january_8_1790_first (848); december_8_1790_second (1400); april_30_1789_first_Inaug… (1433); december_3_1793_fifth (1833); december_8_1795_seventh (1977)`
 
 **Activity 2**
 
-1. What can we conclude about the longest and shortest texts considering the metadata in the file name (year, country, president)?  
+1. What can you conclude about the longest and shortest texts considering the metadata in the file name (year, country, president)?  
 2. Why is it useful to know the length of the texts?
 
 *Hint: Use the metadata in the file names (year, month, etc.) to consider why certain speeches are longer or shorter. This might reflect historical context or changes in communication style.*
@@ -233,7 +233,7 @@ Vocabulary density is measured by dividing the number of unique words by the tot
 
 *Hint: Compare the vocabulary richness in the two stanzas. A higher ratio of unique words to total words means higher density.*
 
-2. Read the lexical density data of the documents in our corpus, what do they tell you?
+2. Read the lexical density data of the documents in your corpus, what do they tell you?
 
    - **Highest**:  
      `january_8_1790_first (0.462); december_3_1793_fifth (0.436); april_30_1789_first_Inaug… (0.417); december_8_1790_second (0.409); december_8_1795_seventh (0.398)`
@@ -260,16 +260,16 @@ The way Voyant calculates sentence length should be considered a rough estimate,
 
 ## Cirrus and Summary: Frequencies and Stop Word Filters
 
-Since we have an idea of some global characteristics of our documents, it's time to start looking at the characteristics of the terms in our corpus, and one of the most common entry points is understanding what it means to analyze a text based on its frequencies.
+Since we have an idea of some global characteristics of your documents, it's time to start looking at the characteristics of the terms in your corpus, and one of the most common entry points is understanding what it means to analyze a text based on its frequencies.
 
 ### Unfiltered Frequencies
 
-The first aspect we will work on is gross frequency, and for this, we will use the Cirrus window.
+The first aspect you will work on is gross frequency, and for this, you will use the Cirrus window.
 
 **Activity 5**
 
 1. What are the most frequent words in the corpus?  
-2. What do these words tell us about the corpus? Are they all significant?  
+2. What do these words tell you about the corpus? Are they all significant?  
 
 *Tip: hover your mouse over the words to get their exact frequencies.*
 
@@ -279,7 +279,7 @@ The first aspect we will work on is gross frequency, and for this, we will use t
 
 ### Stop Words
 
-Importance is not an intrinsic value and will always depend on our interests. For this very reason, Voyant offers the option to filter certain words. A common procedure to obtain relevant words is to filter out grammatical lexical units or stop words: articles, prepositions, interjections, pronouns, etc. (Peña and Peña, 2015).
+Importance is not an intrinsic value and will always depend on your interests. For this very reason, Voyant offers the option to filter certain words. A common procedure to obtain relevant words is to filter out grammatical lexical units or stop words: articles, prepositions, interjections, pronouns, etc. (Peña and Peña, 2015).
 
 **Activity 6**
 
@@ -288,29 +288,29 @@ Importance is not an intrinsic value and will always depend on our interests. Fo
 
 *Hint: Think about what words are getting in the way of seeing what's meaningful. Editing the stop list helps refine your focus.*
 
-Voyant already has a stop word list loaded for English; however, we can edit it as follows:
+Voyant already has a stop word list loaded for English; however, you can edit it as follows:
 
-1\. Place our cursor at the top right of the Cirrus window and click on the icon that looks like a switch.
+1\. Place your cursor at the top right of the Cirrus window and click on the icon that looks like a switch.
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-10.png" alt="Voyant Tools interface highlighting the gear icon in the Cirrus word cloud, which opens a settings menu. This menu allows users to modify the appearance and filtering options of the word cloud." caption="Figure 10. Open options" %}
 
-2\. A window with different options will appear, we select the first one "Edit List."  
+2\. A window with different options will appear; you select the first one "Edit List."  
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-11.png" alt="Settings window in Voyant Tools showing how to edit the stop word list for the Cirrus word cloud. Users can add or remove words from the list to refine the analysis." caption="Figure 11. Edit list" %}
 
-3\. We add the "stop" words, always separated by a newline (Enter key).  
+3\. You add the "stop" words, always separated by a newline (Enter key).  
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-12.png" alt="Screenshot of the process in Voyant Tools for removing stop words from the word cloud. The edited stop word list is being saved to apply the changes across the corpus analysis." caption="Figure 12. Remove stopwords" %}
 
-4\. Once we have added the words we want to filter, we click on "Save."
+4\. Once you have added the words you want to filter, you can click on "Save."
 
 <div class="alert alert-warning">
-By default, a box that says "Apply globally" is selected; if this box is left selected, the word filtering will affect the metrics of all other tools. It is very important to document your decisions. A good practice is to save the stop word list in a text file (.txt). For this tutorial, we have created a <a href="https://github.com/ColmexBDCV/voyantTools/blob/main/stop_words.txt">list of words to filter</a>, and you can use it if you wish, just remember that this will affect your results.
+By default, a box that says "Apply globally" is selected; if this box is left selected, the word filtering will affect the metrics of all other tools. It is very important to document your decisions. A good practice is to save the stop word list in a text file (.txt). For this tutorial, you have created a <a href="https://github.com/ColmexBDCV/voyantTools/blob/main/stop_words.txt">list of words to filter</a>, and you can use it if you wish, just remember that this will affect your results.
 </div>
 
 ### Frequencies with Filtered Stop Words
 
-As we said in the previous point, filtered words affect other fields in Voyant. In this case, if you left the "Apply globally" box selected, the list that appears below the legend: "Most frequent word in the corpus," will show the most repeated words excluding those that were filtered. In my case, it shows:
+As you said in the previous point, filtered words affect other fields in Voyant. In this case, if you left the "Apply globally" box selected, the list that appears below the legend: "Most frequent word in the corpus," will show the most repeated words excluding those that were filtered. In my case, it shows:
 
 > states (91); united (83); public (60); government (53); citizens (40)
 
@@ -324,22 +324,22 @@ Reflect on these words and think about what information they provide and how thi
 
 ## Terms
 
-Although frequencies can tell us something about our texts, there are many variables that can make these numbers less meaningful. In the following sections, different statistics that can be obtained in the "Terms" tab to the left of the "Cirrus" button in Voyant’s default layout will be explained.
+Although frequencies can tell you something about your texts, there are many variables that can make these numbers less meaningful. In the following sections, different statistics that can be obtained in the "Terms" tab to the left of the "Cirrus" button in Voyant’s default layout will be explained.
 
 ### Normalized Frequency
 
-In the previous section, we observed the "gross frequency" of words. However, if we had a *corpus* of six words and another of 3,000 words, gross frequencies are not very informative. Three words in a *corpus* of six words represent 50% of the total, while three words in a *corpus* of 6,000 represent 0.1% of the total. To avoid the over-representation of a term, linguists have devised another measure called: "normalized relative frequency." This is calculated as follows:  
+In the previous section, you observed the "gross frequency" of words. However, if you had a *corpus* of six words and another of 3,000 words, gross frequencies are not very informative. Three words in a *corpus* of six words represent 50% of the total, while three words in a *corpus* of 6,000 represent 0.1% of the total. To avoid the over-representation of a term, linguists have devised another measure called: "normalized relative frequency." This is calculated as follows:  
 Gross Frequency * 1,000,000 / Total Number of Words
 
 Let’s analyze a verse as an example. Let’s take the phrase:  
-"But my heart says no, says no,"which has seven words in total. If we calculate its gross and relative frequency, we have:
+"But my heart says no, says no,"which has seven words in total. If you calculate its gross and relative frequency, you have:
 
 | word   | gross frequency | normalized frequency         |
 |--------|-----------------|------------------------------|
 | heart  | 1               | 1 * 1,000,000 / 7 = 142,857  |
 | says   | 2               | 2 * 1,000,000 / 7 = 285,714  |
 
-What is the advantage of this? If we had a *corpus* in which the word `corazón` had the same proportion, for example, 1,000 occurrences out of 7,000 words, while the gross frequency is very different, the normalized frequency would be the same, as `1,000 * 1,000,000 / 7,000 = 142,857`.
+What is the advantage of this? If you had a *corpus* in which the word `corazón` had the same proportion, for example, 1,000 occurrences out of 7,000 words, while the gross frequency is very different, the normalized frequency would be the same, as `1,000 * 1,000,000 / 7,000 = 142,857`.
 
 Let’s see how this works in Voyant Tools:
 
@@ -354,25 +354,25 @@ Let’s see how this works in Voyant Tools:
 
 3. If you sort the columns in descending order as you would in a spreadsheet program, you will see that the order of gross frequency ("Count") and relative frequency ("Relative") is the same.  
 
-> **Note**: This measure is more useful for comparing different corpora. A *corpus* is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If we wanted each speech to be a different corpus, we would have to save our text in a table (HTML or XML), where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).
-
----
+> **Note**: This measure is more useful for comparing different corpora. A *corpus* is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If you wanted each speech to be a different corpus, you would have to save your text in a table (HTML or XML), where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).
 
 ### Statistical Skewness
 
-Although relative frequency helps us understand the distribution of our corpus, there is a measure that gives us information about how constant a term is throughout our documents: **statistical skewness**.
+Although relative frequency helps you understand the distribution of your corpus, there is a measure that gives information about how constant a term is throughout your documents: **statistical skewness**.
 
-This measure gives us an idea of the probability distribution of a variable without having to make its graphical representation. It is calculated by observing the deviations of a frequency from the mean, to determine whether those occurring to the right of the mean (negative skewness) are greater than those to the left (positive skewness). The closer to zero the degree of statistical skewness is, the more regular the distribution of that term (i.e., it occurs with a very similar mean in all documents). What is not very intuitive is that if a term has statistical skewness with positive numbers, it means that term is below the mean, and the larger the number, the more skewed the term is (i.e., it occurs a lot in one document but hardly at all in the corpus). Negative numbers, on the other hand, indicate that the term tends to be above the mean.
+This measure gives you an idea of the probability distribution of a variable without having to make its graphical representation. It is calculated by observing the deviations of a frequency from the mean, to determine whether those occurring to the right of the mean (negative skewness) are greater than those to the left (positive skewness). The closer to zero the degree of statistical skewness is, the more regular the distribution of that term (i.e., it occurs with a very similar mean in all documents). 
+
+What is not very intuitive is that if a term has statistical skewness with positive numbers, it means that term is below the mean, and the larger the number, the more skewed the term is (i.e., it occurs a lot in one document but hardly at all in the corpus). Negative numbers, on the other hand, indicate that the term tends to be above the mean.
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-14.png" alt="Screenshot in Voyant Tools showing the selection of the 'Skew' option in the 'Terms' section. This measure indicates the statistical skewness of term distribution across the corpus." caption="Figure 14. Statistical asymmetry" %}
 
-To obtain this measure in Voyant, repeat the steps you did to get the relative frequency, but this time select **"Skew."** This measure allows us to observe, for example, that the word "war," despite having a high frequency, not only does not have a constant frequency throughout the corpus, but it tends to be below the mean because its statistical skewness is positive (0.8).
-
----
+To obtain this measure in Voyant, repeat the steps you did to get the relative frequency, but this time select **"Skew."** This measure allows you to observe, for example, that the word "war," despite having a high frequency, not only does not have a constant frequency throughout the corpus, but it tends to be below the mean because its statistical skewness is positive (0.8).
 
 ### Differentiated Words
 
-As you might suspect, the most interesting information is generally not found within the most frequent words, as these tend to be the most obvious. In the field of information retrieval, other measures have been devised that allow locating the terms that make one document stand out from another. One of the most commonly used measures is called **tf-idf** (*term frequency – inverse document frequency*). This measure seeks to express numerically how relevant a document is in a given collection; that is, in a collection of texts about "apples," the word `apple` can occur many times, but it tells us nothing new about the collection. For example, in a collection of texts about apples, the word “apple” can occur many times. The gross frequency of the “apple” (term frequency) tells us nothing new about the collection. Instead, we want to weigh its frequency in a document against its frequency in the given collection (inverse document frequency).
+As you might suspect, the most interesting information is generally not found within the most frequent words, as these tend to be the most obvious. In the field of information retrieval, other measures have been devised that allow locating the terms that make one document stand out from another. 
+
+One of the most commonly used measures is called **tf-idf** (*term frequency – inverse document frequency*). This measure seeks to express numerically how relevant a document is in a given collection; that is, in a collection of texts about "apples," the word `apple` can occur many times, but it tells you nothing new about the collection. For example, in a collection of texts about apples, the word “apple” can occur many times. The gross frequency of the “apple” (term frequency) tells you nothing new about the collection. Instead, you should weigh its frequency in a document against its frequency in the given collection (inverse document frequency).
 
 In Voyant, tf-idf is calculated as follows:
 Gross Frequency (tf) / Number of Words (N) * log10 (Number of Documents / Number of times the term appears in the documents)
@@ -381,7 +381,6 @@ Or as a formula:
 $$ tfidf_{t,d} = \left( \frac{tf_{t,d}}{N_i} \right) \cdot \log_{10} \frac{|D|}{\{ d \in D : t \in d \}} $$
 
 tfidf(t,d) = (tf(t,d) / Ni) * log10 ( |D| / { d ∈ D : t ∈ d } )
-
 
 **Activity 8**
 
@@ -399,13 +398,11 @@ Look at the differentiated words (compared to the rest of the corpus) of each do
 
 *Hint: These words are unique to each document and can help you understand the specific themes or topics addressed in each speech.*
 
----
-
 ## Words in Context
 
 The project with which some histories inaugurate the Digital Humanities is the **Index Thomisticus**, a concordance of the work of Thomas Aquinas led by the philologist and religious Roberto Busa (Hockey, 2004), and coded by a team of developers that included dozens of women (Terras, 2013). This project, which took years to complete, is a built-in function in Voyant Tools: in the lower right corner, in the **Contexts** window, it is possible to make left and right concordance queries of specific terms.
 
-The table we see has the following default columns:
+The table has the following default columns:
 
 - **Document**: name of the document in which the keyword(s) of the query occur(s)
 - **Left**: left context of the keyword (this can be modified to cover more or fewer words, and if you click on the cell, it expands to show more context)
@@ -433,8 +430,6 @@ Search for the use of a term that seems interesting to you, using some of the ad
 
 *Hint: Use the position and context to see how the term is used. Does it appear mostly at the beginning or end of the speech? Is the tone consistent?*
 
----
-
 ## Exporting Tables
 
 To export the data, click on the box with an arrow that appears when you hover over the right corner of **"Contexts"**. Then select the **"Export current data"** option and click on the last option **"Export all available data as tab separated values (text)"** grid.
@@ -456,28 +451,27 @@ This *corpus* has 2 documents with a total of 4 words and 3 unique words (I'm, h
 
 **Activity 2**
 
-1. We might observe, for example, that the longest texts are the sixth and eighth Annual Message to Congress. Regarding the shortest, we could see that while the shortest are the first and second Annual Message to Congress.
-2. Knowing the length of our texts allows us to understand the homogeneity or disparity of our corpus, as well as understand certain trends (for example, in which years speeches tended to be shorter, when the length changed, etc.).
+1. You might observe, for example, that the longest texts are the sixth and eighth Annual Message to Congress. Regarding the shortest, you can see that  the shortest are the first and second Annual Message to Congress.
+2. Knowing the length of your texts allows you to understand the homogeneity or disparity of your corpus, as well as understand certain trends (for example, in which years speeches tended to be shorter, when the length changed, etc.).
 
 **Activity 3**
 
 1. The first stanza has 22 words and 21 are unique words, so 21/22 equals a vocabulary density of 0.955.  
    The second stanza has 24 words and 13 are unique words, so 13/24 equals a vocabulary density of 0.542.
 
-   As we can see, the difference between a verse by Sor Juana Inés de la Cruz and another composed by Nadir Khayat and Stefani Germanotta has a density difference of 0.328, which is not very high. We must be careful in interpreting these numbers as they are only a quantitative indicator of vocabulary richness and do not include parameters such as rhyme complexity or term complexity.
+   As you can see, the difference between a verse by Sor Juana Inés de la Cruz and another composed by Nadir Khayat and Stefani Germanotta has a density difference of 0.328, which is not very high. You should be careful in interpreting these numbers as they are only a quantitative indicator of vocabulary richness and do not include parameters such as rhyme complexity or term complexity.
 
-   There seems to be a correspondence between shorter and denser speeches, which is natural since the shorter a text is, the less "opportunity" there is for words to repeat. However, this could also tell us something about the styles of different countries or presidents. The less dense, the more likely they are to use more rhetorical resources.
+   There seems to be a correspondence between shorter and denser speeches, which is natural since the shorter a text is, the less "opportunity" there is for words to repeat. However, this could also tell you something about the styles of different countries or presidents. The less dense, the more likely they are to use more rhetorical resources.
 
 **Activity 4**
 
-These results seem to indicate that President Kirchner, in addition to having the longest speeches, makes the longest sentences; however, we have to be careful with conclusions of this kind, as these are oral speeches where punctuation depends on who transcribes the text.
+These results seem to indicate that President Kirchner, in addition to having the longest speeches, makes the longest sentences; however, you have to be careful with conclusions of this kind, as these are oral speeches where punctuation depends on who transcribes the text.
 
 **Activity 5**
 
 1. `states (91); united (83); public (60); government (53); citizens (40).`
-2. The first and the second are words specific to the name of the country. If we wanted to omit them, the best approach would be to edit the stop words list and add them.
+2. The first and the second are words specific to the name of the country. If you wanted to omit them, the best approach would be to edit the stop words list and add them.
 
----
 
 ## Bibliography
 
@@ -486,7 +480,7 @@ These results seem to indicate that President Kirchner, in addition to having th
 - Sinclair, Stéfan and Geoffrey Rockwell, 2016. *Voyant Tools*. Web. <http://voyant-tools.org/>.
 - Terras, Melissa, 2013. “For Ada Lovelace Day – Father Busa’s Female Punch Card Operatives”. *Melissa Terras’ Blog*. Web. <http://melissaterras.blogspot.com/2013/10/for-ada-lovelace-day-father-busas.html>.
 
-> *This tutorial was written thanks to the support of the British Academy and prepared during the Programming Historian Writing Workshop at the Universidad de los Andes in Bogotá, Colombia, from July 31 to August 3, 2018.*
+> *This lesson was written thanks to the support of the British Academy and prepared during the Programming Historian Writing Workshop at the Universidad de los Andes in Bogotá, Colombia, from July 31 to August 3, 2018.*
 
 ## Footnotes
 

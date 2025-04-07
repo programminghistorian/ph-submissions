@@ -137,8 +137,6 @@ For this tutorial, we have named the files with the month, day, year, and order 
 
 `january_8_1790_first.txt` has the month of the speech separated by an underscore, the number of month, the year, and the order.
 
----
-
 ## Uploading the Corpus
 
 On the Voyant Tools homepage, you will find four simple options for loading texts. The first two options are in the white box. In this box, you can directly paste a text that you have copied from somewhere; or, paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on “Open” and select one of the two corpora that Voyant has preloaded (the works of Shakespeare or the novels of Austen: both in English).
@@ -164,7 +162,6 @@ Once all the files are uploaded, you will reach the "interface" that has five de
 - Trends: distribution graph showing terms throughout the *corpus* (or within a document when only one is uploaded)
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-07.png" alt="Graph in Voyant Tools showing the distribution of specific terms across a corpus over time. The graph visualizes how the frequency of terms varies throughout the documents." caption="Figure 7. Trends" %}
-
 
 - Summary: provides an overview of certain textual statistics of the current corpus
 
@@ -196,8 +193,6 @@ If your *corpus* consisted of two documents; one that said: "I'm hungry"; and an
 
 > This *corpus* has __ documents with a total of __ words and __ unique words.
 
----
-
 ### Document Length
 
 The second thing you'll see is the "document length" section. Here is what it shows:
@@ -211,8 +206,6 @@ The second thing you'll see is the "document length" section. Here is what it sh
 2. Why is it useful to know the length of the texts?
 
 *Hint: Use the metadata in the file names (year, month, etc.) to consider why certain speeches are longer or shorter. This might reflect historical context or changes in communication style.*
-
----
 
 ### Vocabulary Density
 
@@ -243,8 +236,6 @@ Vocabulary density is measured by dividing the number of unique words by the tot
 
 3. Compare them with the information about their length, what do you notice?
 
----
-
 ### Words per Sentence
 
 The way Voyant calculates sentence length should be considered a rough estimate, especially because it is complicated to distinguish between the end of an abbreviation and that of a sentence or other uses of punctuation (for example, in some cases a semicolon marks the boundary between sentences). The sentence analysis is performed by a template with instructions or "class" of the Java programming language called [BreakIterator](https://docs.oracle.com/javase/tutorial/i18n/text/about.html).
@@ -255,8 +246,6 @@ The way Voyant calculates sentence length should be considered a rough estimate,
 2. Click on the names of some documents that interest you by their "wps" index. Direct your gaze to the "Reader" window and read a few lines. Does reading the original text add new information to your data reading? Comment on why.
 
 *Hint: Consider if longer sentences reflect complexity of expression or differences in transcription. Reading excerpts may help interpret the data.*
-
----
 
 ## Cirrus and Summary: Frequencies and Stop Word Filters
 
@@ -274,8 +263,6 @@ The first aspect you will work on is gross frequency, and for this, you will use
 *Tip: hover your mouse over the words to get their exact frequencies.*
 
 *Hint: Some frequent words might not be significant—are they function words or context-specific?*
-
----
 
 ### Stop Words
 
@@ -319,8 +306,6 @@ As you said in the previous point, filtered words affect other fields in Voyant.
 Reflect on these words and think about what information they provide and how this information differs from what you get by looking at the word cloud.
 
 *Hint: Compare which words appear most often once stopwords are removed. Does it shift the themes you identify in the corpus?*
-
----
 
 ## Terms
 

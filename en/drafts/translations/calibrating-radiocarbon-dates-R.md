@@ -27,7 +27,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/603
 difficulty: 2
 activity: analyzing
 topics: [data-manipulation, r, data-visualization]
-abstract: After reviewing the basic principles and challenges of radiocarbon dating, this lesson teaches you how to calibrate a set of dates, then explore and present your results.
+abstract: After reviewing the basic principles and challenges of radiocarbon dating, this lesson teaches you how to use the R programming language to calibrate a set of dates, and then explore and present your results.
 mathjax: true
 avatar_alt: Vases, furniture, and various objects painted in the tombs of kings
 doi: XX.XXXXX/phen0000
@@ -504,7 +504,9 @@ When you write  dates in this way, you have included the following information f
 
 ## Conclusion
 
-Calibrating radiocarbon dates allows you to convert them into a calendar time frame. This step is essential for interpreting the results, as the carbon-14 "clock" doesn’t tick at a constant rate over time. In this lesson, you learned how to combine conventional dates and check for consistency before calibrating them. You also explored how to graph these dates and present the results with all the necessary details for reproducibility. Further resources can be found below, in the bibliography.
+Calibrating radiocarbon dates allows you to convert them into a calendar time frame. This step is essential for interpreting the results, as the carbon-14 "clock" doesn’t tick at a constant rate over time. 
+
+In this lesson, you learned how to combine conventional dates and check for consistency before calibrating them. You also explored how to graph these dates and present the results with all the necessary details for reproducibility. Further resources can be found below, in the bibliography.
 
 ## Bibliography
 
@@ -531,7 +533,6 @@ Hyndman, R. J. 1996. "Computing and Graphing Highest Density Regions." *The Amer
 Libby, W. F. "Radiocarbon Dating". *Nobel Lecture*. Stockholm, 12 December 1960. <http://www.nobelprize.org/nobel_prizes/chemistry/laureates/1960/libby-lecture.html>.
 
 Millard, A. R. 2014. "Conventions for Reporting Radiocarbon Determinations." *Radiocarbon* 56 (2): 555-59. <https://doi.org/10.2458/56.17455>.
-
 
 O'Brien, M. J, & R. L. Lyman. *Seriation, Stratigraphy, and Index Fossils: The Backbone of Archaeological Dating*. Dordrecht : Springer, 2002.
 

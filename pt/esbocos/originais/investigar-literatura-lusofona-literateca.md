@@ -236,7 +236,7 @@ Relembrando que
 
 e temos de guardar os ficheiros com nomes descritivos. No caso em questão, chamei-lhes `distribuicaoAparenciaDecadaGen.tsv` [distribuicaoAparenciaDecadaGen.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoAparenciaDecadaGen.tsv) e `distribuicaoPredDecadaGen.tsv` [distribuicaoPredDecadaGen.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoPredDecadaGen.tsv).
 
-No R, juntamos as duas informações, calculamos o peso relativo da aparência e depois produzimos uma figura ao longo do tempo:
+No R, juntamos as duas informações, calculamos o peso relativo da aparência e depois produzimos uma figura que nos mostra a evolução ao longo do tempo:
 
 ```
 apargen<-read.table("distribuicaoAparenciaDecadaGen.tsv")
@@ -248,22 +248,22 @@ aparencia$genrel<-aparencia$tamapargen/aparencia$tampredgen
 barplot(xtabs(aparencia$genrel~aparencia$gen+aparencia$decada),beside=TRUE,las=2,legend.text=c("F","M"))
 ```
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-09.png" alt="Gráfico de barras de caracterizações de aparência na Literateca por década, mostrando que, em quase todas, a aparência das mulheres é mais mencionada" caption="Figura 9. Caracterização da aparência feminina e masculina por década, num gráfico de barras" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-09.png" alt="Gráfico de barras de caracterizações de aparência na Literateca por década, mostrando que, em quase todas, a aparência das mulheres é mais mencionada" caption="Figura 9. Caracterização da aparência feminina e masculina por década, num gráfico de barras." %}
 
-Vemos na Figura 9 que as mulheres têm quase sempre mais caracterização de aparência do que os homens, o que não deve constituir uma surpresa. Para obter mais informação sobre este tema e sobre a construção social do género, consultem o artigo Freitas &amp; Santos (2023).[^8]
+Na Figura 9, vemos que as mulheres têm quase sempre mais caracterização de aparência do que os homens, o que não deve constituir uma surpresa. Para obter mais informação sobre este tema e sobre a construção social do género, consulte o artigo Freitas &amp; Santos (2023).[^8]
 
 
 ### A localização na literatura portuguesa
 
-Também está em curso um projeto de anotação de lugares, que distingue palavras que podem ser locais em alguns contextos e não noutros, que indica, no caso dos locais, qual o seu tipo e granularidade (cidade, país, rio, etc.) e, no caso de essas localidades serem reais, as suas coordenadas geográficas. Veja-se [Viagem](https://www.linguateca.pt/Gramateca/Viagem.html), assim como Santos &amp; Bick (2021)[^9] para mais informações.
+Também está em curso um projeto de anotação de lugares, que distingue palavras que podem ser locais em alguns contextos e não noutros. No caso da sua associação efetiva a espaços geográficos é indicado qual o seu tipo e granularidade (cidade, país, rio, etc.) e, no caso de essas localidades serem reais, as suas coordenadas geográficas. Para mais informações, veja-se [Viagem](https://www.linguateca.pt/Gramateca/Viagem.html), assim como Santos &amp; Bick (2021).[^9].
 
-Dado isso, podemos identificar quais as cidades mais faladas na literatura portuguesa, usando simplesmente esta procura no AC/DC:
+Assim, podemos identificar quais as cidades mais mencionadas na literatura portuguesa, usando simplesmente esta procura no AC/DC:
 
 ```
 [sema="Local:cidade.*" & variante="PT"]
 ```
 
-Assim como podemos investigar qual a cidade mais falada por obra, usando o Distribuidor e guardando o resultado por exemplo em [distribuicaoCidadesObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoCidadesObra.tsv).
+Também podemos investigar qual a cidade mais falada por obra, usando o Distribuidor e guardando o resultado, por exemplo, em [distribuicaoCidadesObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoCidadesObra.tsv).
 
 ```
 ?variante=/PT/ sema=/Local:cidade/ obra lema
@@ -276,7 +276,7 @@ Aqui, vamos comparar o número de locais empregues por autores diferentes, em ro
 ?variante=/PT/ ?classe=/Prosa:(romance|novela)/ ?sema=/Local:.*/ obra autor
 ```
 
-Vamos visualizar isso através de um gráfico de caixa no R. De notar que reutilizaremos o [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv) que obtivemos anteriormente. Além disso, conforme mencionado acima, editamos as datas marcadas com "séc..." e convertemos para UTF-8 antes de invocar o R.
+Vamos visualizá-lo através de um gráfico de caixa no R. De notar que reutilizaremos o ficheiro [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv) que obtivemos anteriormente. Além disso, conforme mencionado acima, editamos as datas marcadas com "séc..." e convertemos para UTF-8 antes de invocar o R.
 
 ```
 locais<-read.table("distribuicaoLocaisObra.tsv")
@@ -288,15 +288,15 @@ locaisObras$localrel<-locaisObras$num/locaisObras$tamanho
 barplot(locaisObras[order(locaisObras$localrel,decreasing=TRUE),]$locarel[1:50],names=locaisObras[order(locaisObras$localrel,decreasing=TRUE),]$obra[1:50],las=2)
 ```
 
-As primeiras quatro linhas apenas leem e identificam as colunas das folhas de registo. A quinta junta ambas as informações, e a sexta calcula o número relativo de locais por número de palavras, para ser possível comparar obras de diferentes tamanhos.
+As primeiras quatro linhas apenas leem e identificam as colunas das folhas de registo. A quinta junta ambas as informações. Já a sexta calcula o número relativo de locais por número de palavras, para ser possível comparar obras de diferentes tamanhos.
 
-Escolhi apresentar na Figura 10 o gráfico das cinquenta obras com mais locais relativos, calculado na sétima linha. (Depois de ordenar, pedi os casos de 1 a 50.)
+Escolhi apresentar na Figura 10 o gráfico das cinquenta obras com mais locais relativos, calculado na sétima linha (depois de ordenar, pedi os casos de 1 a 50).
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-10.png" alt="Gráfico de barras do peso dos locais, mostrando as obras (relativamente) com mais locais" caption="Figura 10. A distribuição de locais por obra (romances e novelas portuguesas) na Literateca, num gráfico de barras" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-10.png" alt="Gráfico de barras do peso dos locais, mostrando as obras com mais locais relativos" caption="Figura 10. Distribuição de locais por obra (romances e novelas portuguesas) na Literateca, num gráfico de barras." %}
 
 É interessante constatar que são os romances históricos, e de ficção científica, os que mais dão nome a lugares.
 
-Sugiro que façam também uma análise semelhante por autores, para ver (grandes) diferenças entre estes:
+Sugiro que faça também uma análise semelhante por autores, para ver (grandes) diferenças entre estes:
 
 ```
 attach(locaisObras)
@@ -305,52 +305,52 @@ barplot(sort(tapply(num,autor,sum)/tapply(tamanho,autor,sum),decreasing=TRUE)[1:
 
 A primeira linha apenas instrói o R para se considerar "dentro" da folha de registo `locaisObras`, para não ser preciso estar sempre a preceder o nome da coluna pelo nome da folha de registo. 
 
-Na segunda linha, `tapply` é um comando no R que aplica uma função repetidamente, e neste caso é a função `sum` (soma), porque queremos somar todos os locais de um mesmo autor, sem interessar a obra, e todas as palavras escritas pelo autor (segundo `tapply`).
+Na segunda linha, `tapply` é um comando no R que aplica uma função repetidamente. Neste caso é a função `sum` (soma), porque queremos somar todos os locais de um mesmo autor, sem interessar a obra, e todas as palavras escritas pelo autor (segundo `tapply`).
 
 ### O helenismo na literatura brasileira
 
-Finalmente, apresento aqui um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia[^10], que estudou o helenismo na literatura brasileira. 
+Finalmente, apresento um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia,[^10] que estudou o helenismo na literatura brasileira. 
 
 O seu trabalho é um bom exemplo de como simples tarefas de anotação, em colaboração com o AC/DC, são fáceis de executar e produzem resultados interessantes.
 
-De facto, Marcus apenas mandou um conjunto de lexemas que, segundo ele, estavam associados à cultura grega, e anotámos o OBras, o principal corpo de literatura brasileira no AC/DC, com essa informação (a marcação `helen`). Assim tornou-se muito fácil medir o peso destas palavras num conjunto de autores brasileiros com obras no OBras.
+De facto, Marcus apenas mandou um conjunto de lexemas que, segundo ele, estavam associados à cultura grega, e anotámos OBras, o principal corpo de literatura brasileira no AC/DC, com essa informação (com a marcação `helen`). Assim, tornou-se muito fácil medir o peso destas palavras num conjunto de autores brasileiros com obras no OBras.
 
-O leitor é convidado a reproduzir as figuras da tese, visto que todos os comandos são apresentados num anexo. Deixa-se a Figura 11, correspondente ao gráfico 3 da página 99, para aperitivo.
+O leitor é convidado a reproduzir as figuras da tese, visto que todos os comandos são apresentados num anexo. Deixa-se para aperitivo a Figura 11, correspondente ao gráfico 3 da página 99.
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-11.png" alt="Gráfico de barras de termos de helenismo por autores e género" caption="Figura 11. A distribuição de helenismos por autor e género de texto, num gráfico de barras" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-11.png" alt="Gráfico de barras de termos de helenismo por autores e género" caption="Figura 11. Distribuição de helenismos por autor e género de texto, num gráfico de barras." %}
 
 
 ## Observações finais
 
-Nesta lição tentei apresentar o AC/DC, com duas formas de interação, a "Procura" e o "Distribuidor", e depois, a partir dos resultados, obter gráficos agregadores usando o R.
+Nesta lição tentei apresentar o AC/DC, com duas formas de interação, a Procura e o Distribuidor e, depois, a partir dos resultados, obter gráficos agregadores usando o R.
 
-O objetivo foi demonstrar diversas possibilidades de estudo da história da literatura lusófona, por meio da leitura distante, usando o AC/DC e em particular o corpo Literateca, que reúne textos literários em português e está em constante expansão.[^agrad]
+O objetivo foi demonstrar diversas possibilidades de estudo da história da literatura lusófona, por meio da leitura distante, usando o AC/DC e, em particular, o corpo Literateca, que reúne textos literários em português e está em constante expansão.[^agrad]
 
 
 
 ## Notas de fim
 
-[^1]: Bick, Eckhard."PALAVRAS, a Constraint Grammar-based Parsing System for Portuguese." In Tony Berber Sardinha & Thelma de Lurdes São Bento Ferreira (eds.), *Working with Portuguese Corpora*, London/New York: Bloomsbury Academic, 2014, pp. 279-302.
+[^1]: Bick, Eckhard. "PALAVRAS, a Constraint Grammar-based Parsing System for Portuguese", in *Working with Portuguese Corpora*, ed. Tony Berber Sardinha and Thelma de Lurdes São Bento Ferreira (Bloomsbury Academic, 2014), 279-302.
 
-[^2]: Santos, Diana. "Corpora at Linguateca: Vision and roads taken", in Tony Berber Sardinha & Telma de Lurdes São Bento Ferreira (eds.), *Working with Portuguese Corpora*, Bloomsbury, 2014, pp. 219-236.
+[^2]: Santos, Diana, "Corpora at Linguateca: Vision and roads taken", in in *Working with Portuguese Corpora*, ed. Tony Berber Sardinha and Thelma de Lurdes São Bento Ferreira (Bloomsbury Academic, 2014), 219-236.
 
-[^3]: Santos, Diana Maria de Sousa Marques Pinto dos. "A Gramateca e a Literateca como macroscópios linguísticos". *Domínios da Linguagem* 16, 4, 2022, pp. 1242-1265. [pdf](https://seer.ufu.br/index.php/dominiosdelinguagem/article/view/63848/)
+[^3]: Santos, Diana Maria de Sousa Marques Pinto dos, "A Gramateca e a Literateca como macroscópios linguísticos", *Domínios da Linguagem* 16, no. 4 (2022): 1242-1265. https://doi.org/10.14393/DL52-v16n4a2022-2
 
-[^4]: Evert, Stefan &amp Hardie, Andrew. "Twenty-first century Corpus Workbench: Updating a query architecture for the new millennium". In *Proceedings of the Corpus Linguistics 2011 conference*, University of Birmingham, UK, 2011. [pdf](http://www.birmingham.ac.uk/documents/college-artslaw/corpus/conference-archives/2011/Paper-153.pdf)
+[^4]: Evert, Stefan and Hardie, Andrew, "Twenty-first century Corpus Workbench: Updating a query architecture for the new millennium", in *Proceedings of the Corpus Linguistics 2011 conference* (University of Birmingham, 2011). [pdf](http://www.birmingham.ac.uk/documents/college-artslaw/corpus/conference-archives/2011/Paper-153.pdf)
 
-[^5]: Santos, Diana. "A sintaxe do AC/DC: apresentação do CWB e das opções tomadas", Outono de 2012, notas para a disciplina de POR2102. [pdf](https://www.linguateca.pt/Diana/download/instrACDC.pdf)
+[^5]: Santos, Diana, "A sintaxe do AC/DC: apresentação do CWB e das opções tomadas", notas para a disciplina de POR2102, outono de 2012. [pdf](https://www.linguateca.pt/Diana/download/instrACDC.pdf)
 
-[^6]: Santos, Diana. "Explorando o vestuário na literatura em português". *TradTerm*, 37, 2, 2021, pp. 622-643. [pdf](https://revistas.usp.br/tradterm/article/view/170266)
+[^6]: Santos, Diana, "Explorando o vestuário na literatura em português", *TradTerm* 37, no. 2 (2021): 622-643. https://doi.org/10.11606/issn.2317-9511.v37p622-643
 
-[^7]: outra maneira ainda é especificar no Distribuidor que apenas pretende obter obras com data válida: `?data=/^[12].../ obra autor variante data decada`
+[^7]: Outra maneira ainda é especificar no Distribuidor que apenas pretende obter obras com data válida: `?data=/^[12].../ obra autor variante data decada`
 
 [^enc]: O mais simples é ler, através de `read.table`, usando a opção `encoding="latin1"`.
 
-[^8]: Freitas, Cláudia &amp; Diana Santos. "Gender Depiction in Portuguese: Distant reading Brazilian and Portuguese literature". In *Journal of Computational Literary Studies*, 2, 1, 2023. [pdf](https://jcls.io/article/id/3576/)
+[^8]: Freitas, Cláudia and Diana Santos, "Gender Depiction in Portuguese: Distant reading Brazilian and Portuguese literature", *Journal of Computational Literary Studies* 2, no. 1 (2023). https://doi.org/10.48694/jcls.3576 
 
-[^9]: Santos, Diana &amp; Eckhard Bick. "Distant reading places in Portuguese literature". *NorLit2021* (Trondheim, 14-16 June 2022). [pdf](https://www.linguateca.pt/Diana/download/SantosBickNorLit.pdf)
+[^9]: Santos, Diana and Eckhard Bick, "Distant reading places in Portuguese literature", *NorLit2021*, (Trondheim, 14-16 June 2022). [pdf](https://www.linguateca.pt/Diana/download/SantosBickNorLit.pdf)
 
-[^10]: Correia, Marcus Vinicius Sousa. "Helenismo nos trópicos: Análise da presença do Helenismo na literatura brasileira pelo viés da leitura distante". Tese de mestrado, Universidade Estadual do Maranhão: UEMA, São Luís, MA, 2023. [pdf](https://www.linguateca.pt/Repositorio/TeseMestradoMarcusViniciusSousaCorreia.pdf)
+[^10]: Correia, Marcus Vinicius Sousa, "Helenismo nos trópicos: Análise da presença do Helenismo na literatura brasileira pelo viés da leitura distante" (Tese de mestrado, Universidade Estadual do Maranhão: UEMA, São Luís, MA, 2023). [pdf](https://www.linguateca.pt/Repositorio/TeseMestradoMarcusViniciusSousaCorreia.pdf)
 
 [^agrad]: Agradeço sinceramente a Suemi Higuchi e a Larissa Freitas a sua revisão aturada desta lição, e as variadas sugestões de melhoria.
 

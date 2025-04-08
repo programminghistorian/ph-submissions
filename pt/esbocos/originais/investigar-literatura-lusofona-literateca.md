@@ -7,11 +7,10 @@ date: 2024-MM-DD
 authors:
 - Diana Santos
 reviewers:
-- Forename Surname
-- Forename Surname
+- Suemi Higuchi
+- Larissa Freitas
 editors:
-- Forename Surname
-- Forename Surname
+- Eric Brasil
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/599
 difficulty: 2
 activity:
@@ -30,9 +29,9 @@ doi: XX.XXXXX/phen0000
 
 Esta lição ensina a utilizar o [projeto Acesso a corpos / Disponibilização de corpos](https://www.linguateca.pt/ACDC/) (AC/DC), mais especificamente a Literateca, para analisar textos literários em português. Usando a Literateca, é possível estudar, por exemplo, diferenças entre autores, escolas, e géneros literários ao longo do tempo. Além disso, ensina a apresentar os resultados da pesquisa por meio de vários tipos de visualização utilizando a linguagem R. 
 
-Para seguir a lição, tem de saber o que são folhas de registo (em inglês, *dataframes*) em R e estar familiarizado com as formas de produzir gráficos de barras (em inglês, *bar plots*) e gráficos de caixa (em inglês, *boxplots*) no R. Além de consultar as [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares), também pode seguir a lição [Visualização básica de dados tabulares com R](https://programminghistorian.org/pt/licoes/visualizacao-basica-dados-tabulares-R).
+Para seguir a lição, tem de saber o que são folhas de registo (em inglês, *dataframes*) em R e estar familiarizado com as formas de produzir gráficos de barras (em inglês, *bar plots*) e gráficos de caixa (em inglês, *boxplots*) no R. Além de consultar as [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares), também pode seguir a lição [Visualização básica de dados tabulares com R](https://programminghistorian.org/pt/licoes/visualizacao-basica-dados-tabulares-r).
 
-Os casos específicos que iremos discutir são os seguintes:
+Os casos específicos que servirão de exemplo nesta lição são os seguintes:
 
 * A roupa na literatura lusófona
 * Diferenças entre a caracterização de personagens femininas e masculinas ao longo do tempo
@@ -47,7 +46,7 @@ Após concluir esta lição, estará
 
 ## Apresentação do AC/DC
 
-O AC/DC é um projeto, já antigo, cujo objetivo é tornar disponíveis corpos para o português. Nesta lição vamos utilizar apenas o corpo [Literateca](https://www.linguateca.pt/acesso/corpus.php?corpus=LITERATECA), que contém mais de 900 obras escritas por mais de 280 escritores de língua portuguesa. (O AC/DC faz parte de um projeto maior, a [Linguateca](https://www.linguateca.pt/).)
+O AC/DC é um projeto, já antigo, cujo objetivo é tornar disponíveis corpos para o português. Nesta lição vamos utilizar apenas o corpo [Literateca](https://www.linguateca.pt/acesso/corpus.php?corpus=LITERATECA), que contém mais de 900 obras escritas por mais de 280 escritores de língua portuguesa (o AC/DC faz parte de um projeto maior, a [Linguateca](https://www.linguateca.pt/)).
 
 Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso, o estudo da língua na literatura em português) e classificado (a que, geralmente, se chama de metadadados). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^1] e enriquecidos com anotação semântica adicional, como descrito em Santos (2014).[^2] Em Santos (2021) também são apresentados vários exemplos de uso do AC/DC.[^3]
 
@@ -57,9 +56,9 @@ A procura nos corpos é feita usando o sistema [Open CWB](https://cwb.sourceforg
 
 Ao criar um corpo, define-se um conjunto de atributos para cada unidade -- seja palavra, número ou sinal de pontuação. No processo de anotação, preenchem-se os valores desses atributos, que depois servirão como critérios de procura.
 
-O primeiro atributo é a própria unidade. Em seguida, há os atributos morfossintáticos, como o lema, a categoria gramatical e o género morfológico. Também existem atributos semânticos, como o campo semântico e o grupo ao qual a unidade pertence. Por último, há os atributos extralinguísticos, que incluem informações como o autor, o seu sexo, a data de publicação e a variedade do português.
+O primeiro atributo é a própria unidade. De seguida, há os atributos morfossintáticos, como o lema, a categoria gramatical e o género morfológico. Também existem atributos semânticos, como o campo semântico e o grupo ao qual a unidade pertence. Por último, há os atributos extralinguísticos, que incluem informações como o autor, o seu sexo, a data de publicação e a variedade do português.
 
-Isso é exemplificado na tabela seguinte:
+Isto é exemplificado na tabela seguinte:
 
 | word | lema | pos | temcagr |
 | --------- | --------- | --------- | --------- |
@@ -68,7 +67,7 @@ Isso é exemplificado na tabela seguinte:
 | pilhas | pilha | N | 0 |
 | ! | ! | PU | 0 |
 
-Tabela 1: Esta tabela contém um exemplo do texto "Estou sem pilhas!" no formato AC/DC, com quatro atributos: word, lema, pos, temcagr (este último indica, conforme a categoria gramatica, o tempo verbal, o caso pronominal ou o grau adjetival). A Literateca contém 27 atributos.
+Tabela 1: Esta tabela contém um exemplo do texto "Estou sem pilhas!" no formato AC/DC, com quatro atributos: word, lema, pos, temcagr (este último indica, conforme a categoria gramatical, o tempo verbal, o caso pronominal ou o grau adjetival). A Literateca contém 27 atributos.
 
 Um sistema de interrogação de corpos tem dois modos:
 
@@ -100,7 +99,7 @@ Para uma descrição mais completa da sintaxe do AC/DC, ver o texto Santos (2012
 
 Enquanto a informação morfossintática e semântica é a mesma para todos os corpos do AC/DC, cada corpo contém uma informação extralinguística própria, que depende da informação que foi possível -- e pertinente -- obter sobre cada texto.
 
-Para a Literateca, temos os seguintes atributos, identificados pelo pedido de distribuição na figura 4.
+Para a Literateca, temos os seguintes atributos, identificados pelo pedido de distribuição na Figura 4.
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-04.png" alt="Distribuições próprias da Literateca, mostrando as opções" caption="Figura 4. Distribuições de atributos extralinguísticos possíveis na Literateca." %}
 
@@ -175,9 +174,9 @@ roupaObras$rouparel<-roupaObras$roupa/roupaObras$tamanho
 roupaObrasOrdenada<-roupaObras[order(roupaObras$rouparel, decreasing=TRUE),]
 ```
 
-De forma resumida, as quatro primeiras linhas leem os ficheiros e atribuem nomes às colunas. A quinta combina a informação das duas folhas de registo (em inglês, *dataframes*) numa só. A sexta calcula a frequência relativa de roupa por número de unidades, criando uma nova coluna chamada `rouparel`. Por fim, a sétima linha obtém uma nova folha de registo ordenada pelo peso relativo do vestuário, que está na coluna `rouparel`.
+De forma resumida, as quatro primeiras linhas leem os ficheiros e atribuem nomes às colunas. A quinta combina a informação das duas folhas de registo numa só. A sexta calcula a frequência relativa de roupa por número de unidades, criando uma nova coluna chamada `rouparel`. Por fim, a sétima linha obtém uma nova folha de registo ordenada pelo peso relativo do vestuário, que está na coluna `rouparel`.
 
-Com os próximos comandos, podemos visualizá-lo num gráfico de barras (Figura 6) e num diagrama de caixa (em inglês, *boxplot*) (Figura 7), neste caso para dez autores que têm várias obras na Literateca.
+Com os próximos comandos, podemos visualizá-lo num gráfico de barras (Figura 6) e num gráfico de caixa (Figura 7), neste caso para dez autores que têm várias obras na Literateca.
 
 ```
 par(mar=c(4,24,2,2)+0.1)
@@ -192,7 +191,7 @@ boxplot(dezautores$rouparel~dezautores$autor, xlab="",ylab="",las=2)
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-07.png" alt="Gráfico de caixa do peso da roupa em dez autores da Literateca, mostrando que Eça de Queirós, José de Alencar e Aluísio de Azevedo são os que mais mencionam roupa" caption="Figura 7. A distribuição de roupa por dez autores na Literateca, num gráfico de caixa." %}
 
-Vemos pelas duas visualizações que, embora as obras com mais menção relativa a roupa fossem contos de Machado de Assis (Figura 6), ao verificar o conjunto das suas obras (Figura 7) é Eça de Queirós quem dá mais importância a esse campo semântico (a mediana de EcaQue é significativamente mais elevada do que a de MacAss).
+Vemos pelas duas visualizações que, embora as obras com mais menção relativa a roupa fossem contos de Machado de Assis (Figura 6), ao verificar o conjunto das obras (Figura 7) é Eça de Queirós quem dá mais importância a esse campo semântico (a mediana de EcaQue é significativamente mais elevada do que a de MacAss).
 
 Também podemos observar a menção ao campo semântico de vestuário ao longo do tempo. Para isso, usamos a data ou a década a que cada obra pertence (Figura 8).
 
@@ -215,7 +214,7 @@ No AC/DC, marcamos todas as caracterizações como pertencendo a uma de quatro c
 
 Para explicação destas categorias e da forma de anotação, ver Freitas e Santos (2023).[^8]
 
-Vamos agora ver que casos femininos e masculinos estão marcados com `pred:aparencia`, ao longo do tempo.
+Vamos agora ver que casos femininos e masculinos estão marcados com `pred:aparencia` ao longo do tempo.
 
 No Distribuidor, pedimos a distribuição dos casos de aparência, selecionando apenas as obras literárias em prosa:
 
@@ -234,7 +233,7 @@ Relembrando que
 * escolhemos o corpo Literateca
 * escolhemos a opção tsv
 
-e temos de guardar os ficheiros com nomes descritivos. No caso em questão, chamei-lhes `distribuicaoAparenciaDecadaGen.tsv` [distribuicaoAparenciaDecadaGen.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoAparenciaDecadaGen.tsv) e `distribuicaoPredDecadaGen.tsv` [distribuicaoPredDecadaGen.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoPredDecadaGen.tsv).
+e temos de guardar os ficheiros com nomes descritivos. No caso em questão, chamei-lhes `distribuicaoAparenciaDecadaGen.tsv`: [distribuicaoAparenciaDecadaGen.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoAparenciaDecadaGen.tsv); e `distribuicaoPredDecadaGen.tsv`: [distribuicaoPredDecadaGen.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoPredDecadaGen.tsv).
 
 No R, juntamos as duas informações, calculamos o peso relativo da aparência e depois produzimos uma figura que nos mostra a evolução ao longo do tempo:
 
@@ -255,7 +254,7 @@ Na Figura 9, vemos que as mulheres têm quase sempre mais caracterização de ap
 
 ### A localização na literatura portuguesa
 
-Também está em curso um projeto de anotação de lugares, que distingue palavras que podem ser locais em alguns contextos e não noutros. No caso da sua associação efetiva a espaços geográficos é indicado qual o seu tipo e granularidade (cidade, país, rio, etc.) e, no caso de essas localidades serem reais, as suas coordenadas geográficas. Para mais informações, veja-se [Viagem](https://www.linguateca.pt/Gramateca/Viagem.html), assim como Santos &amp; Bick (2021).[^9].
+Também está em curso um projeto de anotação de lugares, que distingue palavras que podem ser locais em alguns contextos e não noutros. No caso da sua associação efetiva a espaços geográficos é indicado qual o tipo e granularidade (cidade, país, rio, etc.) e, no caso de essas localidades serem reais, as suas coordenadas geográficas. Para mais informação, veja [Viagem](https://www.linguateca.pt/Gramateca/Viagem.html), assim como Santos &amp; Bick (2021).[^9].
 
 Assim, podemos identificar quais as cidades mais mencionadas na literatura portuguesa, usando simplesmente esta procura no AC/DC:
 
@@ -263,7 +262,7 @@ Assim, podemos identificar quais as cidades mais mencionadas na literatura portu
 [sema="Local:cidade.*" & variante="PT"]
 ```
 
-Também podemos investigar qual a cidade mais falada por obra, usando o Distribuidor e guardando o resultado, por exemplo, em [distribuicaoCidadesObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoCidadesObra.tsv).
+Também podemos investigar qual a cidade mais mencionada por obra, usando o Distribuidor e guardando o resultado, por exemplo, em [distribuicaoCidadesObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoCidadesObra.tsv).
 
 ```
 ?variante=/PT/ sema=/Local:cidade/ obra lema
@@ -292,9 +291,9 @@ As primeiras quatro linhas apenas leem e identificam as colunas das folhas de re
 
 Escolhi apresentar na Figura 10 o gráfico das cinquenta obras com mais locais relativos, calculado na sétima linha (depois de ordenar, pedi os casos de 1 a 50).
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-10.png" alt="Gráfico de barras do peso dos locais, mostrando as obras com mais locais relativos" caption="Figura 10. Distribuição de locais por obra (romances e novelas portuguesas) na Literateca, num gráfico de barras." %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-10.png" alt="Gráfico de barras do peso dos locais, mostrando as obras com mais locais relativos" caption="Figura 10. Distribuição de locais por obra (romances e novelas portugueses) na Literateca, num gráfico de barras." %}
 
-É interessante constatar que são os romances históricos, e de ficção científica, os que mais dão nome a lugares.
+É interessante constatar que são os romances históricos e de ficção científica os que mais dão nome a lugares.
 
 Sugiro que faça também uma análise semelhante por autores, para ver (grandes) diferenças entre estes:
 
@@ -309,13 +308,13 @@ Na segunda linha, `tapply` é um comando no R que aplica uma função repetidame
 
 ### O helenismo na literatura brasileira
 
-Finalmente, apresento um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia,[^10] que estudou o helenismo na literatura brasileira. 
+Finalmente, apresento um estudo feito no âmbito da dissertação de mestrado de Marcus Vinicius Sousa Correia, que estudou o helenismo na literatura brasileira.[^10] 
 
 O seu trabalho é um bom exemplo de como simples tarefas de anotação, em colaboração com o AC/DC, são fáceis de executar e produzem resultados interessantes.
 
 De facto, Marcus apenas mandou um conjunto de lexemas que, segundo ele, estavam associados à cultura grega, e anotámos OBras, o principal corpo de literatura brasileira no AC/DC, com essa informação (com a marcação `helen`). Assim, tornou-se muito fácil medir o peso destas palavras num conjunto de autores brasileiros com obras no OBras.
 
-O leitor é convidado a reproduzir as figuras da tese, visto que todos os comandos são apresentados num anexo. Deixa-se para aperitivo a Figura 11, correspondente ao gráfico 3 da página 99.
+O leitor é convidado a reproduzir as figuras da dissertação, visto que todos os comandos são apresentados na secção Anexos. Deixa-se para aperitivo a Figura 11, correspondente ao gráfico 3 da página 99.
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-11.png" alt="Gráfico de barras de termos de helenismo por autores e género" caption="Figura 11. Distribuição de helenismos por autor e género de texto, num gráfico de barras." %}
 
@@ -330,27 +329,27 @@ O objetivo foi demonstrar diversas possibilidades de estudo da história da lite
 
 ## Notas de fim
 
-[^1]: Bick, Eckhard. "PALAVRAS, a Constraint Grammar-based Parsing System for Portuguese", in *Working with Portuguese Corpora*, ed. Tony Berber Sardinha and Thelma de Lurdes São Bento Ferreira (Bloomsbury Academic, 2014), 279-302.
+[^1]: Bick, Eckhard, "PALAVRAS, a Constraint Grammar-based Parsing System for Portuguese", in *Working with Portuguese Corpora*, ed. Tony Berber Sardinha and Thelma de Lurdes São Bento Ferreira (Bloomsbury Academic, 2014), 279-302.
 
-[^2]: Santos, Diana, "Corpora at Linguateca: Vision and roads taken", in in *Working with Portuguese Corpora*, ed. Tony Berber Sardinha and Thelma de Lurdes São Bento Ferreira (Bloomsbury Academic, 2014), 219-236.
+[^2]: Santos, Diana, "Corpora at Linguateca: Vision and roads taken", in *Working with Portuguese Corpora*, ed. Tony Berber Sardinha and Thelma de Lurdes São Bento Ferreira (Bloomsbury Academic, 2014), 219-236.
 
-[^3]: Santos, Diana Maria de Sousa Marques Pinto dos, "A Gramateca e a Literateca como macroscópios linguísticos", *Domínios da Linguagem* 16, no. 4 (2022): 1242-1265. https://doi.org/10.14393/DL52-v16n4a2022-2
+[^3]: Santos, Diana Maria de Sousa Marques Pinto dos, "A Gramateca e a Literateca como macroscópios linguísticos", *Domínios da Linguagem* 16, no. 4 (2022): 1242-1265. [](https://doi.org/10.14393/DL52-v16n4a2022-2)
 
 [^4]: Evert, Stefan and Hardie, Andrew, "Twenty-first century Corpus Workbench: Updating a query architecture for the new millennium", in *Proceedings of the Corpus Linguistics 2011 conference* (University of Birmingham, 2011). [pdf](http://www.birmingham.ac.uk/documents/college-artslaw/corpus/conference-archives/2011/Paper-153.pdf)
 
 [^5]: Santos, Diana, "A sintaxe do AC/DC: apresentação do CWB e das opções tomadas", notas para a disciplina de POR2102, outono de 2012. [pdf](https://www.linguateca.pt/Diana/download/instrACDC.pdf)
 
-[^6]: Santos, Diana, "Explorando o vestuário na literatura em português", *TradTerm* 37, no. 2 (2021): 622-643. https://doi.org/10.11606/issn.2317-9511.v37p622-643
+[^6]: Santos, Diana, "Explorando o vestuário na literatura em português", *TradTerm* 37, no. 2 (2021): 622-643. [](https://doi.org/10.11606/issn.2317-9511.v37p622-643)
 
-[^7]: Outra maneira ainda é especificar no Distribuidor que apenas pretende obter obras com data válida: `?data=/^[12].../ obra autor variante data decada`
+[^7]: Outra maneira ainda é especificar no Distribuidor que apenas pretende obter obras com data válida: `?data=/^[12].../ obra autor variante data decada`.
 
 [^enc]: O mais simples é ler, através de `read.table`, usando a opção `encoding="latin1"`.
 
-[^8]: Freitas, Cláudia and Diana Santos, "Gender Depiction in Portuguese: Distant reading Brazilian and Portuguese literature", *Journal of Computational Literary Studies* 2, no. 1 (2023). https://doi.org/10.48694/jcls.3576 
+[^8]: Freitas, Cláudia and Santos, Diana, "Gender Depiction in Portuguese: Distant reading Brazilian and Portuguese literature", *Journal of Computational Literary Studies* 2, no. 1 (2023). [](https://doi.org/10.48694/jcls.3576)
 
-[^9]: Santos, Diana and Eckhard Bick, "Distant reading places in Portuguese literature", *NorLit2021*, (Trondheim, 14-16 June 2022). [pdf](https://www.linguateca.pt/Diana/download/SantosBickNorLit.pdf)
+[^9]: Santos, Diana and Bick, Eckhard, "Distant reading places in Portuguese literature", *NorLit2021*, (Trondheim, 14-16 June 2022). [pdf](https://www.linguateca.pt/Diana/download/SantosBickNorLit.pdf)
 
-[^10]: Correia, Marcus Vinicius Sousa, "Helenismo nos trópicos: Análise da presença do Helenismo na literatura brasileira pelo viés da leitura distante" (Tese de mestrado, Universidade Estadual do Maranhão: UEMA, São Luís, MA, 2023). [pdf](https://www.linguateca.pt/Repositorio/TeseMestradoMarcusViniciusSousaCorreia.pdf)
+[^10]: Correia, Marcus Vinicius Sousa, "Helenismo nos trópicos: Análise da presença do Helenismo na literatura brasileira pelo viés da leitura distante" (Dissertação de mestrado, Universidade Estadual do Maranhão, 2023). [pdf](https://www.linguateca.pt/Repositorio/TeseMestradoMarcusViniciusSousaCorreia.pdf)
 
 [^agrad]: Agradeço sinceramente a Suemi Higuchi e a Larissa Freitas a sua revisão aturada desta lição, e as variadas sugestões de melhoria.
 

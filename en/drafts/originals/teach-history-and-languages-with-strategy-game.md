@@ -13,7 +13,7 @@ editors:
 - Scott Kleinman
 - Caio Mello
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/613
-difficulty: intermediate
+difficulty: 2
 activity: 
 topics: 
 abstract: Short abstract of this lesson
@@ -24,95 +24,91 @@ doi: XX.XXXXX/phen0000
 {% include toc.html %}
 
 
-# Introduction
+## Introduction
 
-[0 A.D.: Empires Ascendant](https://play0ad.com/) is a cross-platform, scholarship-aware, and fully free and open source singleplayer and multiplayer historical [real-time strategy (RTS)](https://en.wikipedia.org/wiki/Real-time_strategy) computer game of ancient civilization building and warfare making that has been under continuous development since 2001. 0 A.D. stands alone as an entirely customizable digital game that is built with real ancient history as one of its guiding principles. It even includes reconstructed, pre-modern languages in both written and spoken forms. 0 A.D. is an ideal software platform for team-based history and language instruction.
+[0 A.D.: Empires Ascendant](https://play0ad.com/) is a cross-platform, free and open source [real-time strategy (RTS)](https://en.wikipedia.org/wiki/Real-time_strategy) computer game of ancient civilization building and warfare making. 0 A.D. is the only entirely customizable digital game that is built with real ancient history as one of its guiding principles. It even includes reconstructed, pre-modern languages in both written and spoken forms. Playable in singleplayer and multiplayer modes, 0 A.D. is an ideal software platform for history and language instruction.
 
-In this **intermediate-level** Programming Historian lesson, I presume some experience with installing software and playing computer games. As you progress, you will learn how to use the hackable [sandbox](https://en.wikipedia.org/wiki/Sandbox_game) that is 0 A.D. to help you teach history and languages. Since your students will need some onboarding with 0 A.D., it is advisable to implement the ideas that are contained in this tutorial during contexts in which you and your students are able to learn side-by-side.
+In this **intermediate-level** lesson, I presume some experience with installing software and playing computer games. As you progress, you will learn how to use the hackable [sandbox](https://en.wikipedia.org/wiki/Sandbox_game) that is 0 A.D. to help you teach history and languages. Since your students will need some onboarding with 0 A.D., it is advisable to implement this lesson content when you and your students are able to learn side-by-side.
 
-This tutorial should be fitting for you if you are a secondary or postsecondary instructor of materials connected with any of the following topics related to the pre-modern world, as well as for anyone looking to integrate gaming into your adult education:
-* classics and/or ancient history
-* biblical studies
-* medieval studies
-* ancient archaeology
-* ancient languages
+This lesson should be be of interest to you if you are a secondary or postsecondary instructor of any of the following topics related to the pre-modern world, as well as anyone looking to integrate gaming into your adult education:
+* Classics and/or ancient history
+* Biblical studies
+* Medieval studies
+* Ancient archaeology
+* Ancient languages
 
-In the example that I have assembled for this tutorial, I recreate one of [Julius Caesar](https://en.wikipedia.org/wiki/Julius_Caesar)'s famous battles during the [Gallic Wars](https://en.wikipedia.org/wiki/Gallic_Wars). Yet, you may choose to follow the tutorial to build a special scenario for your own class from a variety of ancient civilizations across Eurasia, Africa, and the Americas.
+In this example, I recreate one of [Julius Caesar](https://en.wikipedia.org/wiki/Julius_Caesar)'s famous battles during the [Gallic Wars](https://en.wikipedia.org/wiki/Gallic_Wars). However, you may choose to follow the steps to build a different scenario for your own purposes, choosing from a variety of ancient civilizations across Eurasia, Africa, and the Americas.
 
-## Sample 0 A.D. Class Experience
+For the last two weeks of the Spring semester of 2023, I brought 0 A.D. into my own university-level Classical and New Testament Greek class. My objective was to use the game as a tool for team building, historical study, and linguistic practice. This lesson is based on that trial, as well as my hundreds of hours of first-hand experience interacting with the software. 
 
-After starting a new game, in the role of an ancient civilization's controller, you and your few starting units, who are humbly in the early Village Phase of development with few technologies available, find yourselves isolated from the rest of the world. The game puts you in a position where you are unable to interact with anything beyond the small parcel of land that you control until you have sent scouts to explore beyond your territory. You must scramble to gather resources for building houses, farms, and barracks, as well as food, using the technologies that the civilization that you have chosen actually possessed in antiquity. 
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-01.png" alt="The author Corey Stephan introduces 0 A.D. to his university-level ancient Greek class via a projector screen, specifically showing the technological tree of the Spartan civilization." caption="Figure 1. Introducing 0 A.D. to my class via a projector screen." %}
 
-Gradually, you coordinate with your allies -- this computer game, 0 A.D, is best enjoyed in multiplayer modes -- to build a sophisticated trade network, advancing first to the Town Phase and then, eventually, the mighty City Phase. By researching historically accurate technologies and constructing many true-to-life buildings, your civilization becomes capable of creating an ever more sophisticated economy and ever more capable war machine. Each civilization has its own realistic economic and militaristic advantages and disadvantages that you must collaboratively exploit with your allies in order to defeat your enemies, ultimately achieving shared control over the entire geographic region.
+As Sylvester Arnab, Samantha Clarke, and Luca Morini write in their 2019 article "Co‑Creativity through Play and Game Design Thinking," "students discover the importance of elements such as empathy, purpose, meaning, art, creativity, and teamwork in their [game-based] learning regardless of the specific disciplines they are pursuing."[^1] If creativity is found at the intersection of apparently disconnected subjects, then it would be challenging to think of a more creative partner for secondary or postsecondary education than cooperative real-time strategy (RTS) game design and gameplay.
 
-While you progress toward the goal of regional control, you learn a great deal about the economies, militaries, and languages of the civilizations that are part of your match -- possibly even more than you would learn with the same amount of time spent doing traditional classwork.
+### 0 A.D. Gameplay
 
-## Lesson Background
+When the game begins, you (in the role of an ancient civilization's controller) and your few starting units, who are humbly in the early Village Phase of development with few technologies available, find yourselves isolated from the rest of the world. You are unable to interact with anything beyond the small parcel of land that you control until you have sent scouts to explore beyond your territory. You must scramble to gather food and resources to build houses, farms, and barracks, using the technologies that the civilization that you have chosen actually possessed in their time. 
 
-For the last two weeks of the spring semester of 2023, I brought 0 A.D. into my own university-level Classical and New Testament Greek class. My objective was to use the game as a tool for team building, historical study, and linguistic practice. This tutorial is based on that androgogical trial, as well as my hundreds of hours of first-hand experience interacting with the software.
+Gradually, you coordinate with your allies – 0 A.D, is best enjoyed in multiplayer modes – to build a sophisticated trade network, advancing first to the Town Phase and then, eventually, the mighty City Phase. By researching historically accurate technologies and constructing many true-to-life buildings, your civilization becomes capable of creating an ever more sophisticated economy and army. Each civilization has its own realistic economic and militaristic advantages and disadvantages, which you must collaboratively exploit with your allies in order to defeat your enemies, ultimately achieving shared control over the entire geographic region.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-01.png" alt="The author Corey Stephan introduces 0 A.D. to his university-level ancient Greek class via a projector screen, specifically showing the technological tree of the Spartan civilization." caption="Figure 1. Introducing 0 A.D. to my class via a projector screen" %}
+While you progress toward the goal of regional control, you learn a great deal about the economic, military, and linguistic aspects of the civilizations in your game – possibly even more than you would learn over the same amount of time doing traditional classwork.
 
-As Sylvester Arnab, Samantha Clarke, and Luca Morini write in their 2019 article "Co‑Creativity through Play and Game Design Thinking," "students discover the importance of elements such as empathy, purpose, meaning, art, creativity, and teamwork in their [game-based] learning regardless of the specific disciplines they are pursuing."[^1] If creativity is found at the intersection of apparently disconnected subjects, then it would be challenging to think of a more creative partner for secondary or postsecondary education than cooperative real-time strategy (RTS) gaming design and gameplay.
+### Learning Outcomes
 
-## Learning Outcomes
+After completing this lesson, you will be able to:
+* Understand what the 0 A.D. community project is, how to use its documentation, and why it may be said that the game is well-rooted in history and linguistics
+* Use 0 A.D. inside a history or language class for productive group study
+* Handle the simple customization options available for 0 A.D., including community-made gameplay modifications
+* Build your own realistic historical scenario by importing real-world topography and crafting a playable scene atop it
+* Begin drafting your own stand-alone 0 A.D. gameplay modification
 
-By the end of this tutorial, you will learn:
-* what the 0 A.D. community project is, how to use its documentation, and why it may be said that the game that the project team produces is well-rooted in history and linguistics
-* the basic methods with which you might use 0 A.D. inside a history or language class for productive group study
-* the simple customization options that are available for 0 A.D.'s use in the classroom, including community-made gameplay modifications
-* how to build your own realistic historical scenario by importing real-world topography and crafting a playable scene atop it
-* how to begin drafting your own stand-alone 0 A.D. gameplay modification
+### Requirements
 
-## Requirements
+This lesson is structured so that you only need basic familiarity with real-time strategy (RTS) gaming and image editing. For advanced work based on later sections of the lesson, some familiarity with computer coding would be helpful, but no programming knowledge is required.
 
-This Programming Historian tutorial is structured so that you only need to have basic familiarity with real-time strategy (RTS) gaming and image editing in order to complete it. For advanced work based on later portions of the tutorial, some familiarity with computer coding would be helpful. Yet, no programming knowledge is required for the tutorial as a whole.
+0 A.D.’s complete user interface (UI) is available in many modern languages, including all four of _Programming Historian_’s (English, Spanish, French, and Portuguese), and its gameplay features several ancient languages, such as Latin and Classical Greek.
 
-0 A.D.’s complete user interface (UI) is available in many modern languages, including all four of the Programming Historian’s (English, Spanish, French, and Portuguese), and its gameplay features several ancient languages, such as Latin and Classical Greek.
+#### Basic Installation
 
-### 0 A.D.: Basic Installation
+0 A.D. is accessible on every major desktop operating system (OS).[^2] For Apple MacOS or Microsoft Windows, the best place to find an installable package is on the 0 A.D. website's [Download page](https://play0ad.com/download/). For a libre Unix-like OS (such as GNU/Linux or a *BSD), the best place to find an installable package of the game is the OS's own package repository. 
 
-0 A.D. is accessible by community members on every major desktop operating system (OS).[^2] For Apple MacOS or Microsoft Windows, the best place to find an installable package is on the 0 A.D. website's [Download page](https://play0ad.com/download/). For a libre Unix-like OS (such as GNU/Linux or a *BSD), the best place to find an installable package of the game is the OS's own package repository. 
-
-### 0 A.D.: Advanced Installation and Setup Notes
+#### Advanced Installation and Setup Notes
 
 Per the [official minimum hardware requirements](https://play0ad.com/download/) for 0 A.D., the game should run on a majority of 32-bit or 64-bit x86 computer systems that are in operation for home and/or office use today, and the game is able to be compiled on ARM.[^3]
 
 Users of Unix-like OSes may elect to compile the game from [source](https://gitea.wildfiregames.com/0ad/0ad/wiki/CompilingUsingTheReleaseSourceArchives). 
 
-For multiplayer testing and/or gameplay, whether over a Local Area Network (LAN) or the Wide Area Network (WAN, "Internet"), it is best practice to have all players on wired network connections (rather than wireless/WiFi). Doing so reduces the risk of packet drops causing game stutters and/or crashes. If students should be using laptop computers rather than desktop machines (e.g. in a computer lab), simple USB to RJ-45 ("Ethernet") adapters can faciliate easy wired networking. Otherwise, if the wireless network itself is stable, wireless networking may suffice (I have fallen back on this arrangement with students successfully myself).
+For multiplayer testing and/or gameplay, whether over a Local Area Network (LAN) or the Wide Area Network (WAN, "Internet"), it is best practice to set up all players on wired network connections (rather than wireless/WiFi). Doing so reduces the risk of packet drops causing game stutters or crashes. If students are using laptops rather than desktop machines, simple USB to RJ-45 ("Ethernet") adapters can faciliate easy wired networking. Otherwise, if the wireless network itself is stable, wireless networking may suffice (I have successfully fallen back on this arrangement with students myself).
 
-### Image Editing Software (GIMP or other)
+#### Image Editing Software (GIMP or other)
 
-In this lesson, you will learn to use the free and open source GNU Image Manipulation Program ([GIMP](https://www.gimp.org/)) to model the image editing necessary to prepare real-world topographical data for import into 0 A.D. If you already know how to use another image editing program (such as Adobe Photoshop), then you ought to use that instead, replacing the lesson's steps for working in GIMP with the equivalents in the program of your choosing. 
+In this lesson, you will learn to use the free and open source GNU Image Manipulation Program ([GIMP](https://www.gimp.org/)) to prepare real-world topographical data which you'll import into 0 A.D. If you already know how to use another image editing program (such as Adobe Photoshop), then you ought to use that instead, replacing the lesson's steps with the equivalents in your chosen program. 
 
 Like 0 A.D., GIMP is available for every major desktop OS. For Apple MacOS or Microsoft Windows, the best place to find an installable package is on the official GIMP website's [Downloads page](https://www.gimp.org/downloads/). For a libre Unix-like OS (such as GNU/Linux or a *BSD), the officially recommended way to install GIMP is via the OS's own package repository. 
 
 GIMP has modest hardware requirements (lower than 0 A.D.).[^4]
 
-# What is 0 A.D.?
+## What is 0 A.D.?
 
-The 0 A.D. project was formed by [the partnership of at least three computer gaming communities](https://gitea.wildfiregames.com/0ad/0ad/wiki/0adStory) who were separately making gameplay modifications (mods) for Ensemble Studios' famous [Age of Empires (1997) and Age of Empires II (1999)](https://en.wikipedia.org/wiki/Age_of_Empires) RTS games. Age of Empires II in particular was instrumental in defining the multiplayer RTS genre, serving as a standby of [LAN parties](https://en.wikipedia.org/wiki/LAN_party) for many years and frequenting many major publications' lists of [the best/greatest video games of all time](https://en.wikipedia.org/wiki/List_of_video_games_considered_the_best). Modifying this title, such as by incorporating new civilizations, has been popular from its launch.
+The 0 A.D. project was formed by [the partnership of at least three computer gaming communities](https://gitea.wildfiregames.com/0ad/0ad/wiki/0adStory) who were separately making gameplay modifications ('mods') for Ensemble Studios' famous [Age of Empires (1997) and Age of Empires II (1999)](https://en.wikipedia.org/wiki/Age_of_Empires) RTS games. Age of Empires II in particular was instrumental in defining the multiplayer RTS genre, serving as a standby of [LAN parties](https://en.wikipedia.org/wiki/LAN_party) for many years and frequenting many major publications' lists of [the best/greatest video games of all time](https://en.wikipedia.org/wiki/List_of_video_games_considered_the_best). Modifying this game, for example by incorporating new civilizations, has been popular from its launch.
 
-Through interactions on the long-running [Age of Kings Heaven](https://aok.heavengames.com/) Forums, a discussion zone for fans of the Age of Empires games, the members of the three communities decided to collaborate to create a wholly new game that would be historically and strategically richer than they had found to be possible by modifying the Age of Empires titles. 
+Through interactions on the long-running [Age of Kings Heaven](https://aok.heavengames.com/) Forums, a discussion zone for fans of the Age of Empires games, the members of the three communities decided to collaborate to create a wholly new game that would be historically and strategically richer than they had found to be possible by modifying the Age of Empires titles. [Wildfire Games](https://wildfiregames.com/), the umbrella organization that they formed together circa 2002, now oversees the 0 A.D. project as a whole.
 
-One of the three founding groups was called Wildfire Studios. The three teams decided to adopt the name "Wildfire Games" for the umbrella organization that they formed together circa 2002. [Wildfire Games](https://wildfiregames.com/) now oversees not only the [Rome at War])(https://wildfiregames.com/raw/) overhaul modification for Age of Empires II: The Age of Kings that was the claim to fame of the original Wildfire Studios, but also [Pyrogenesis](https://www.moddb.com/engines/pyrogenesis), the built-from-scratch game engine behind 0 A.D., as well as the 0 A.D. project as a whole.
+In 2009, the project leaders decided to make the game's source code public under libre licenses, which allowed the project to progress much faster than in its earliest years. Not only did that decision open the door to the large number of mods available, but it also solidified O A. D.'s rare status as a completely cross-platform game, in which eight players can interact seamlessly across eight different machines.
 
-Since the 0 A.D. project was founded by gameplay modifiers, modification always has been a normal part of the playerbase's engagement with it. Yet, it was not until 2009 that the project leaders decided to make the game's source code public under libre licenses. Opening the source code seems to have allowed the project to progress at a more efficient pace than it had in its earliest years. Furthermore, that decision has made possible both the large number of mods that are available for 0 A.D. and 0 A.D.'s rare status as a completely cross-platform game in which eight persons can play together seamlessly across eight different desktop computers.
+As of May 2025, the current stable release of the base game (Alpha 27) features multiple ancient civilizations, all of which have believable architecture, attire, technology, military techniques, and heroes – plus, as much as possible, restored pronunciation of their original languages. The current [list of playable civilizations](https://play0ad.com/game-info/factions/) is as follows (ordered alphabetically): Achaemenids, Athenians, Britons, Carthaginians, Gauls, Hans, Iberian Tribes, Macedonians, Mauryans, Ptolemies, Republican Romans, Seleucids, and Spartans.
 
-As of May 2025, the current stable release of the base game, labeled "Alpha 27" because it is the 27th alpha version of an ever-in-development software project, features multiple ancient civilizations. All of those civilizations have believable architecture, attire, technologies, military techniques, and heroes –- plus, as much as possible, restored pronunciation of their original languages. The current [list of playable civilizations](https://play0ad.com/game-info/factions/) is as follows (ordered alphabetically): Achaemenids, Athenians, Britons, Carthaginians, Gauls, Hans, Iberian Tribes, Macedonians, Mauryans, Ptolemies, Republican Romans, Seleucids, and Spartans.
+### A Historically Accurate Community Endeavor
 
-## A Scholarship-aware Community Endeavor
+In a [2006 interview with Jason Adams of gamedev.net](https://www.gamedev.net/articles/industry/interviews/a-first-look-at-0-ad-r2321/), Paul Basar (a member of the "History Department" of Wildfire Games) said the following about his team's attention to historicity:
 
-In a [2006 interview with Jason Adams of gamedev.net](https://www.gamedev.net/articles/industry/interviews/a-first-look-at-0-ad-r2321/), the 0 A.D. project's Paul Basar, designated in the interview notes as a member of the "History Department" of Wildfire Games, said the following about his team's attention to historicity:
+> [Historical] accuracy is of the highest priority, with all weapons, helmets, armor, and shields to be of historical provenance. Literally dozens if not hundreds of historically accurate armor and weapon props have been modeled and textured, with more to come. Buildings are designed according to the style and appearance of their historical counterparts. Even the sound effects of construction have been made unique for each civilization to show the varied materials used by each people. Unit types are given in their original language, as close as can be determined... Each soldier, woman, priest, and trader is given an original personal name from his or her culture. Naval warfare has also been rigorously researched and planned by Ken Wood, our chief designer, promising one of the best historical naval combat experiences yet seen in an RTS. This is only a small sampling of the effort going into historical accuracy in 0 AD.
 
-> [Historical] accuracy is of the highest priority, with all weapons, helmets, armor, and shields to be of historical provenance. Literally dozens if not hundreds of historically accurate armor and weapon props have been modeled and textured, with more to come. Buildings are designed according to the style and appearance of their historical counterparts. Even the sound effects of construction have been made unique for each civilization to show the varied materials used by each people. Unit types are given in their original language, as close as can be determined ... Each soldier, woman, priest, and trader is given an original personal name from his or her culture. Naval warfare has also been rigorously researched and planned by Ken Wood, our chief designer, promising one of the best historical naval combat experiences yet seen in an RTS. This is only a small sampling of the effort going into historical accuracy in 0 AD.
+As the [Wikipedia article about 0 A.D.](https://en.wikipedia.org/wiki/0_A.D._(video_game)) says, 'the historical accuracy of the game elements has been the highest development priority.' The name '0 A.D.,' however, seems to serve as a reminder that, while the game has many true-to-life elements, it is still a game. The [Han Dynasty](https://en.wikipedia.org/wiki/Han_dynasty) and the [Spartan Empire](https://en.wikipedia.org/wiki/Classical_Greece#Foundation_of_a_Spartan_empire), for example, were never at war with each other, nor did they overlap temporally. The historical accuracy of 0 A.D. is not in the reality of specific civilizations encountering each other but, rather, in the details of each civilization itself. The Spartans are designed with the militaristic, economic, domestic, cultural, and religious trappings from their peak as the Spartan Empire, as have the Hans in their own way. The game might be best understood as an imagined clashing of multiple real, prominent civilizations between 500 BCE and 500 CE. 0 A.D. is [the year that never was](https://en.wikipedia.org/wiki/Anno_Domini#:~:text=There%20is%20no%20year%20zero,used%20until%20the%209th%20century.): a fictional nexus between civilizations and events that really were.
 
-As the [Wikipedia article about 0 A.D.](https://en.wikipedia.org/wiki/0_A.D._(video_game)) says, "the historical accuracy of the game elements has been the highest development priority." The name "0 A.D.," however, seems to serve as a reminder that, while the game has many true-to-life elements, it is still a game. The [Han Dynasty](https://en.wikipedia.org/wiki/Han_dynasty) and the [Spartan Empire](https://en.wikipedia.org/wiki/Classical_Greece#Foundation_of_a_Spartan_empire), for example, never were at war with each other, nor did their two civilizations overlap temporally. Yet, the point with 0 A.D. is not historicity in terms of the gameplay of specific civilizations being pitted against each other but, rather, historicity about each civilization itself. The Spartans have been designed as a playable civilization with many militaristic, economic, domestic, cultural, and religious trappings from their peak as the Spartan Empire, and the Hans have been recreated in the same way. The game might be understood best as an imagined clashing of multiple real civilizations that were of prominence between circa 500 BCE and 500 CE. "0 A.D." is the year that never was, a historically fictional nexus between civilizations and events that really were.
+An example of the game's balance between authentic historicity and engaging mechanics is the interoperation of the three main classes of human units: female citizens, citizen soldiers, and champions. As explained in the [Game Manual](https://play0ad.com/category/game-manual/#post-1984), female citizens are the "driving force of your economy." They specialize in gathering resources, especially food, and they are effective builders. They can attack invading units, but they are quickly outmatched in combat even by the weakest citizen soldiers. Citizen soldiers may gather resources, build, and fight. They have bonuses for collecting wood, metal, and stone. They are stronger than female citizens in combat, and they are able to lay the foundations for some military structures that female citizens cannot, but they also require more available resources to train (create). Furthermore, they are outmatched in combat by the third class of units, the champions. Champions are professional soldiers. They are the most expensive units to train, and they are incapable of gathering resources or building. Deploying them requires a deeply established economy, normally operated by a balanced mix of female citizens and citizen soldiers. Obviously, there never has been a time in human history in which roles have been so clear cut. Yet, the fact that different sets of people play different roles inside a civilization and that the units themselves are designed with attention to history leaves real fodder for class instruction.
 
-An example of the game's balance between authentic historicity and engaging mechanics is the interoperation of the three main classes of human units: female citizens, citizen soldiers, and champions. As explained in the [Game Manual](https://play0ad.com/category/game-manual/#post-1984), female citizens are the "driving force of your economy." They specialize in gathering resources, especially food, and they are effective builders. They can attack invading units, but they are quickly outmatched in combat even by the weakest citizen soldiers. Citizen soldiers may gather resources, build, and/or fight. They have bonuses for collecting wood, metal, and stone. They are stronger than female citizens in combat, and they are able to lay the foundations for some military structures that female citizens cannot, but they also require more available resources to train (create). Furthermore, they are outmatched in combat by the third class of units, that is, champions. Champions are professional soldiers. They are the most expensive units to train, and they are incapable of gathering resources or building. Deploying them requires a deeply established economy, normally operated by a balanced mixture of female citizens and citizen soldiers. Obviously, there never has been a time in human history in which roles have been so clear cut. Yet, the facts that different sets of people play different roles inside a civilization and that the units themselves are designed with attention to history leave real fodder for class instruction.
-
-## Linguistic Practice and Contribution
+### Linguistic Practice and Contribution
 
 If you are teaching an ancient or modern language, arguably the most effective means by which you and your students may aid the 0 A.D. project is by working to improve the game's languages, whether by serving as editors for a language that is already present or by adding a new one.
 
@@ -124,11 +120,11 @@ Playing the game with the UI set to the language that the class is learning and/
 
 Combining translation work with gameplay could make a compelling learning scenario. For example, students learning Latin might work toward bringing the half-finished Latin translation of the UI to completion for one portion of a class period, and then play as the Romans (who have finished in-game Latin) for another. Thus, they would be engaging Latin by writing it (tactilely), reading it (visually), and hearing it (aurally), as well as (presumably) by speaking it aloud (orally) with each other and the instructor.[^5]
 
-# Customizing 0 A.D. for Educational Use
+## Customizing 0 A.D. for Educational Use
 
 One aspect of 0 A.D. that makes it compelling for educational use is that the game itself is fully customizable. Here, I introduce you to three of the main ways to transform the game into a customized tool for your own didactic purposes, from simplest to most challenging: finding and installing community gameplay modifications; importing real-world geographic data to create a realistic historical scenario using Atlas, the game's built-in terrain and scenario editor; and building a modification from scratch.
 
-## Automatically Installing Community Gameplay Modifications
+### Automatically Installing Community Gameplay Modifications
 
 The easiest way to customize 0 A.D. for your class is to make use of prepackaged community gameplay modifications (mods). At any point in time, you may find dozens to hundreds of mods hosted at various places on the Web that are compatible with the most recent game release. Since 0 A.D. was founded by game modifiers (modders), the game has been built from scratch in such a way that installing and using those mods is straightforward.
 
@@ -152,7 +148,7 @@ To enable the mod(s) that you desire to use, click on each one in the top menu o
 
 Finally, click "Save and Restart" to relaunch the game with the mod(s) of your choosing ready for use.
 
-### Two Recommended Mods
+#### Two Recommended Mods
 
 Two regularly updated, featureful mods that are available in the game's built-in mod.io menu and that might be of particular interest to you as a reader of the Programming Historian are [Community Maps 2](https://github.com/0ad-matters/community-maps-2) and [Delenda Est](https://github.com/JustusAvramenko/delenda_est).
 
@@ -162,7 +158,7 @@ Delenda Est brings major additions to the civilizations and gameplay of the base
 
 While I have many good things to write about Delenda Est, I only recommend that you bring it into your classroom if you are able to schedule multiple hours for learning gameplay mechanics. The base game, as a real-time strategy game, has a modest but non-negligible learning curve, and Delenda Est introduces a steeper one. Further, Delenda Est is only suited for multiplayer use, since AI (computer) players are not programmed to handle its special mechanics.
 
-#### Manual Mod Installation
+##### Manual Mod Installation
 
 Installing a prepackaged mod outside 0 A.D.'s built-in mod.io menu (e.g. downloaded directly from a repository on GitHub) is trivial by design. With a mod downloaded as a .pyromod (custom Pyrogensis package) or .zip file, you may either right click the mod file and select "Open with 0 A.D." or perform the same task at the command line with `pyrogenesis [file].pyromod` or `pyrogenesis [file].zip`. Enable the mod inside the same in-game "Mod Selection" menu that you use with mods installed via the built-in mod.io menu.
 
@@ -172,13 +168,13 @@ To install the mod manually, locate the correct folder for inserting mods in the
 
 For more information, here are the 0 A.D. Wiki's official [directions for manual mod installation](https://gitea.wildfiregames.com/0ad/0ad/wiki/Mod_List#manual-installation).
 
-## Next Steps with Community Mods
+### Next Steps with Community Mods
 
 I recommend that you start by installing and enabling Community Maps 2 via the game's built-in mod.io-linked installation menu and trying some of its lovely terrains while you become familiar with the base game. Then, move to Delenda Est or another vetted mod available via mod.io that you might like to try in your own teaching context. 
 
 [Millenium A.D.](https://mod.io/g/0ad/m/millenniumad), for example, which is focused on the ninth and tenth centuries CE, has tens of thousands of downloads. As of May 2025, it is more of a work-in-progress than Delenda Est, but it already has playable iterations of the Anglo-Saxons, Byzantines, Carolingians, Norse, Rus, and Ummayads. There are many other mods even in the mod.io curated set that add new civilizations and/or other features that might be relevant for your classroom.
 
-# Importing Geographic Data to Create Historical Scenarios
+## Importing Geographic Data to Create Historical Scenarios
 
 As a teacher of history, you might wish to create fully custom historical scenarios in 0 A.D. to showcase for your classes, or you might wish to have your students make such scenarios themselves as class projects. For the most immersive experience possible, it is best to import real-world geographic data into the videogame.[^6]
 While you work through the steps outlined below, I recommend that you have the official [Atlas Manual](https://gitea.wildfiregames.com/0ad/0ad/wiki/Atlas_Manual) in the Wildfire Games Wiki open in case you should desire additional information about how to use Atlas, 0 A.D.'s built-in terrain and scenario editor. 
@@ -189,7 +185,7 @@ Also, as a preparatory note, whenever you click "Save" (or "Save As") inside Atl
 
 Scenarios have predefined civilizations, teams, units, and so on while allowing full multiplayer gameplay.
 
-## 1. Choose a Scenario
+### 1. Choose a Scenario
 
 The ideal historical scenario for recreation in 0 A.D. would be a battle between two or more civilizations that are available either in the base game or via a mod that took place in a location with sufficient geological diversity for intriguing gameplay.
 
@@ -199,7 +195,7 @@ The definitive [Battle of Bibracte](https://en.wikipedia.org/wiki/Battle_of_Bibr
 
 In this lesson, you will learn to make a simple recreation of the Battle of Bibracte.
 
-## 2. Find a Topographic Map
+### 2. Find a Topographic Map
 
 Although there are many databases of topographies online, [topographic-map.com](https://en-us.topographic-map.com/) is well suited for your use case because it [exclusively makes use of open access data](https://en-us.topographic-map.com/legal/), possesses detailed topographies of (nearly) everywhere around the globe, and presents topographies in a color-coded format that is easy to modify for importation into Atlas.
 
@@ -209,7 +205,7 @@ To feature the diverse landscape of the region surrounding Mont Beuvray, and to 
 
 {% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-02.png" alt="Screenshot from topographic-map.com showing a visual topography of Mont Beuvray and the surrounding French hillcountry, using a color scale to depict lower to higher elevations." caption="Figure 7. Selecting Mont Beuvray from topographic-map.com" %}
 
-## 3. Modify the Topographic Map Image
+### 3. Modify the Topographic Map Image
 
 Per the ["Heightmap Import"](https://gitea.wildfiregames.com/0ad/0ad/wiki/Atlas_Manual_Heightmap_Import) section of the Atlas Manual in the Wildfire Games Wiki, the final image must be a grayscale .png that is a perfect square with power of 2 dimensions. The brightness of a particular part of an image determines its elevation, with relative darkness corresponding to lower elevation and relative lightness corresponding to higher elevation.
  
@@ -251,7 +247,7 @@ Here is the final version of my image inside GIMP after doing all of these steps
 
 After clicking "Export," we are ready to advance to the next step, that is, actually importing the heightmap into Atlas.
 
-## 4. Import the Topographic Map Image into Atlas
+### 4. Import the Topographic Map Image into Atlas
 
 Now that you have chosen a historical scenario to recreate, found a topographic map to import, and edited the topographic map image, importing your topography into Atlas will be easy:
 
@@ -273,7 +269,7 @@ The source image could have used a bit more blurring to reduce the harshness (th
 
 {% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-05.png" alt="The topographic map of Mont Beuvray, edited and then re-imported to Atlas. The mountains have a much higher elevation and appear more realistic, and the elevational changes across the terrain are more gradual than in my first attempt." caption="Figure 12. Topographic map of Mont Beuvray, edited after initial import into Atlas and then re-imported" %}
 
-## 5. Add, Adjust, and Smoothen the Terrain's Features
+### 5. Add, Adjust, and Smoothen the Terrain's Features
 
 Before doing anything else to your terrain in Atlas, you ought to add water to it, perform a general landscape smoothing, and adjust its other core (elevational) features. These three tasks lay the foundation for everything else that you will place in your gameplay scenario.
 
@@ -299,7 +295,7 @@ This is my result:
 
 {% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-07.png" alt="The Mont Beuvray base terrain polished in Atlas with rocky biomes in the northern mountainous area, flattened fields. Waterways have been connected to be accessible in-game." caption="Figure 17. Mont Beuvray base terrain polished in Atlas" %}
 
-## 6. Add Flora and Fauna to the Terrain
+### 6. Add Flora and Fauna to the Terrain
 
 Now that you have your terrain's core features in place, it is time for you to add flora and fauna. Your objective should not be to effect a pebble-for-pebble and bird-for-bird depiction of the real-world equivalent but, rather, to capture its overall character and, more importantly, special features that matter for the historical scenario.
 
@@ -319,7 +315,7 @@ Make sure to add all four of the game's resources -- wood, stone, metal, and foo
 Without placing all four of 0 A.D.'s resources -- wood, stone, metal, and food -- inside the terrain, the scenario that you are making will not be playable. Do not forget to add all four.
 </div>
 
-## 7. Add Scenario-specific Features
+### 7. Add Scenario-specific Features
 
 Next, you need to add scenario-specific features to your terrain, that is, the units, structures, and everything else that will make the historical scenario actually playable.
 
@@ -347,7 +343,7 @@ To rotate units while placing them, keep the left mouse button pressed and move 
 
 What you might do with these tools will depend on your specific scenario, but the basic steps will be the same
 
-## 8. Save the scenario, and distribute it.
+### 8. Save the scenario, and distribute it.
 
 Having finished crafting the historical scenario, it is time to save it for distribution. First, click the gear-shaped icon to switch to the "Map" tab. Next, enter a name for the scenario, as well as a short (1-2 sentence) description. 
 
@@ -357,7 +353,7 @@ Finally, click "File" -> "Save," and type an easy-to-remember file name. Do *not
 
 To distribute the scenario, share the scenario's .xml and .pmp files (two files) from that location with each person whom you would like to play with you, instructing each person to place those two files in her/his `/0ad/mods/user/maps/scenarios/` folder. (If the folder "maps" and sub-folder "scenarios" do not exist, create them before pasting the files.)
 
-## 9. Play the scenario.
+### 9. Play the scenario.
 
 You may now play your custom historical scenario as either a singleplayer or multiplayer game. If this is the first time that you have setup a game in 0 A.D., I recommend that you read the ["Setting up a game"](https://gitea.wildfiregames.com/0ad/0ad/wiki/Manual_SettingUpAGame) article in the Wildfire Games Wiki. For classroom usage, the "Hosting / Joining a Multiplayer game" sub-section will be most important.
 
@@ -375,7 +371,7 @@ After "Roman Ruffian" (Player 2) clicks "I'm ready," "Gallic Guy" (Player 1, the
 
 Enjoy playful creativity in the classroom with a free and open source computer game.
 
-# Beyond? Join the Community, Build a Modification from Scratch, and More
+## Beyond? Join the Community, Build a Modification from Scratch, and More
 
 The most advanced way to incorporate 0 A.D. into the classroom is to build a gameplay modification (mod) from scratch. You, the instructor, might wish to bring a wholly new civilization into the game. You might like to make a custom hero for one of the base game's civilizations. You might assign mod making as a class project. Regardless of what you should decide to do, at the level of building a new mod for a game that is designed to be modifiable, your possibilities are only limited by the the Pyrogenesis game engine's own limits. The [Modding Guide](https://trac.wildfiregames.com/wiki/Modding_Guide) states:
 

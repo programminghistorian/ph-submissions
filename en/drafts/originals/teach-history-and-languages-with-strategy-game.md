@@ -106,242 +106,222 @@ In a [2006 interview with Jason Adams of gamedev.net](https://www.gamedev.net/ar
 
 As the [Wikipedia article about 0 A.D.](https://en.wikipedia.org/wiki/0_A.D._(video_game)) says, 'the historical accuracy of the game elements has been the highest development priority.' The name '0 A.D.,' however, seems to serve as a reminder that, while the game has many true-to-life elements, it is still a game. The [Han Dynasty](https://en.wikipedia.org/wiki/Han_dynasty) and the [Spartan Empire](https://en.wikipedia.org/wiki/Classical_Greece#Foundation_of_a_Spartan_empire), for example, were never at war with each other, nor did they overlap temporally. The historical accuracy of 0 A.D. is not in the reality of specific civilizations encountering each other but, rather, in the details of each civilization itself. The Spartans are designed with the militaristic, economic, domestic, cultural, and religious trappings from their peak as the Spartan Empire, as have the Hans in their own way. The game might be best understood as an imagined clashing of multiple real, prominent civilizations between 500 BCE and 500 CE. 0 A.D. is [the year that never was](https://en.wikipedia.org/wiki/Anno_Domini#:~:text=There%20is%20no%20year%20zero,used%20until%20the%209th%20century.): a fictional nexus between civilizations and events that really were.
 
-An example of the game's balance between authentic historicity and engaging mechanics is the interoperation of the three main classes of human units: female citizens, citizen soldiers, and champions. As explained in the [Game Manual](https://play0ad.com/category/game-manual/#post-1984), female citizens are the "driving force of your economy." They specialize in gathering resources, especially food, and they are effective builders. They can attack invading units, but they are quickly outmatched in combat even by the weakest citizen soldiers. Citizen soldiers may gather resources, build, and fight. They have bonuses for collecting wood, metal, and stone. They are stronger than female citizens in combat, and they are able to lay the foundations for some military structures that female citizens cannot, but they also require more available resources to train (create). Furthermore, they are outmatched in combat by the third class of units, the champions. Champions are professional soldiers. They are the most expensive units to train, and they are incapable of gathering resources or building. Deploying them requires a deeply established economy, normally operated by a balanced mix of female citizens and citizen soldiers. Obviously, there never has been a time in human history in which roles have been so clear cut. Yet, the fact that different sets of people play different roles inside a civilization and that the units themselves are designed with attention to history leaves real fodder for class instruction.
+An example of the game's balance between authentic historicity and engaging mechanics is the interoperation of the three main classes of human units: female citizens, citizen soldiers, and champions. As explained in the [Game Manual](https://play0ad.com/category/game-manual/#post-1984), female citizens are the "driving force of your economy." They specialize in gathering resources, especially food, and they are effective builders. They can attack invading units, but they are quickly outmatched in combat even by the weakest citizen soldiers. Citizen soldiers may gather resources, build, and fight. They have bonuses for collecting wood, metal, and stone. They are stronger than female citizens in combat, and they are able to lay the foundations for some military structures that female citizens cannot, but they also require more available resources to train (create). Furthermore, they are outmatched in combat by the third class of units, the champions. Champions are professional soldiers. They are the most expensive units to train, and they are incapable of gathering resources or building. Deploying them requires a deeply established economy, normally operated by a balanced mix of female citizens and citizen soldiers. Obviously, there never has been a time in human history in which roles have been so clear cut. Still, the fact that different sets of people play different roles inside a civilization, and that the units themselves are designed with attention to history, leaves real fodder for class instruction.
 
 ### Linguistic Practice and Contribution
 
-If you are teaching an ancient or modern language, arguably the most effective means by which you and your students may aid the 0 A.D. project is by working to improve the game's languages, whether by serving as editors for a language that is already present or by adding a new one.
+If you are teaching an ancient or modern language, the most effective way you and your students could contribute to the 0 A.D. project is by improving the game's languages, either by working on an existing language or by adding a new one.
 
-Not all of 0 A.D.'s civilizations have yet had persons volunteer to make audio recordings of their units speaking restored versions of their respective ancient languages. The [Audio Voice List](https://gitea.wildfiregames.com/0ad/0ad/wiki/Audio_Voice_List) in the Wildfire Games Wiki is the correct place to learn about what new translations for in-game units are needed, as well as to find up-to-date directions on how to submit them. As of May 2025, the three ancient languages that are already implemented as intended are Late Egyptian, Ancient Greek (both Attic and Koine), and (Classical) Latin. Meanwhile, there are open calls for Sanskrit and Old Persian, and the project's leaders have place holders for (Old) Welsh and/or Anglo-Saxon, (Classical) Hebrew, and Basque.
+Not all of 0 A.D.'s civilizations have audio recordings of their respective ancient languages. In the Wildfire Games Wiki's [Audio Voice List](https://gitea.wildfiregames.com/0ad/0ad/wiki/Audio_Voice_List), you'll find which new translations are needed for in-game speech, as well as to up-to-date instrucions on how to submit them. As of May 2025, the three ancient languages that are fully implemented are Late Egyptian, Ancient Greek (both Attic and Koine), and (Classical) Latin. Meanwhile, there are open calls for Sanskrit and Old Persian, and the project's leaders have placeholders for (Old) Welsh and/or Anglo-Saxon, (Classical) Hebrew, and Basque.
 
-Wayfire Games also relies entirely on community translators for the ancient and modern languages of its user interface (UI). In the official [Transifex page for 0 A.D.](https://explore.transifex.com/wildfire-games/0ad/), there are (as of May 2025) over 48,000 word strings in the default (American) English language, and the project managers have a list of 122 languages (and counting, since proposals for new languages are normally accepted) at every stage of translation, from fully finished (100%) to not yet started (0%). Any university-level language class could have as a project working to contribute to any language, ancient or modern, for the UI.
+Wildfire Games also relies entirely on community translators its user interface (UI). In the official [Transifex page for 0 A.D.](https://explore.transifex.com/wildfire-games/0ad/), there are (as of May 2025) over 48,000 word strings in the default (American) English language, and the project managers have listed 122 languages (and counting) at every stage of translation. Contributing to a language for the UI, whether ancient or modern, would be a great project for any university-level language class. Another way to enjoy linguistic practice within a language class would be to play the game together, with the UI and the civilization's in-game interactions set to the target language. 
 
-Playing the game with the UI set to the language that the class is learning and/or with civilizations who are entirely crafted in that language probably would be the most enjoyable way to do linguistic practice together as a class.
-
-Combining translation work with gameplay could make a compelling learning scenario. For example, students learning Latin might work toward bringing the half-finished Latin translation of the UI to completion for one portion of a class period, and then play as the Romans (who have finished in-game Latin) for another. Thus, they would be engaging Latin by writing it (tactilely), reading it (visually), and hearing it (aurally), as well as (presumably) by speaking it aloud (orally) with each other and the instructor.[^5]
+This way of combining translation work with gameplay would make a compelling learning scenario. For example, students learning Latin might work toward bringing the half-finished Latin translation of the UI to completion for one portion of a class period, and then play as the Romans (who are fully playable with in-game Latin) for another. Thus, they would be engaging Latin by writing it (tactilely), reading it (visually), and hearing it (aurally), as well as (presumably) by speaking it aloud (orally) with each other and the instructor.[^5]
 
 ## Customizing 0 A.D. for Educational Use
 
-One aspect of 0 A.D. that makes it compelling for educational use is that the game itself is fully customizable. Here, I introduce you to three of the main ways to transform the game into a customized tool for your own didactic purposes, from simplest to most challenging: finding and installing community gameplay modifications; importing real-world geographic data to create a realistic historical scenario using Atlas, the game's built-in terrain and scenario editor; and building a modification from scratch.
+Another aspect of 0 A.D. that makes it compelling for educational use is that the game itself is fully customizable. Here, I introduce you to three of the main ways to transform the game into a customized tool for your own didactic purposes, from simplest to most challenging: 
+- Finding and installing community-built gameplay modifications
+- Importing real-world geographic data to create a realistic historical scenario using Atlas, the game's built-in terrain and scenario editor
+- Building your own modification from scratch
 
-### Automatically Installing Community Gameplay Modifications
+### Installing Community Gameplay Modifications
 
-The easiest way to customize 0 A.D. for your class is to make use of prepackaged community gameplay modifications (mods). At any point in time, you may find dozens to hundreds of mods hosted at various places on the Web that are compatible with the most recent game release. Since 0 A.D. was founded by game modifiers (modders), the game has been built from scratch in such a way that installing and using those mods is straightforward.
+The easiest way to customize 0 A.D. for your class is to make use of prepackaged community gameplay modifications (or 'mods'). You'll find dozens to hundreds of mods hosted at various places on the Web that are compatible with the most recent game release. Since 0 A.D. was founded by game modifiers ('modders'), the game was built to make installing and using these mods straightforward.
 
-In fact, 0 A.D. comes with a built-in mod installer with click-to-install community mods that the game's makers [have verified for safety](https://gitea.wildfiregames.com/0ad/0ad/wiki/Mod_Verification_Process) and uploaded to [mod.io's 0 A.D. set](https://mod.io/g/0ad).
+In fact, 0 A.D. comes with a built-in mod installer and a selection of click-to-install community mods which have been [verified for safety](https://gitea.wildfiregames.com/0ad/0ad/wiki/Mod_Verification_Process) and uploaded to [mod.io's 0 A.D. set](https://mod.io/g/0ad).
 
-After launching the game, from the main menu, click "Settings," then "Mod Selection."
+After launching the game, from the main menu, click **Settings** > **Mod Selection**.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-13.png" alt="In-game Settings menu option for Mod Selection." caption="Figure 2. In-game Settings menu option for Mod Selection" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-13.png" alt="In-game Settings menu option for Mod Selection." caption="Figure 2. In-game Settings menu option for mod selection." %}
 
-Next, click "Download Mods" (on the bottom task bar). and then click "Accept" (for mod.io's Terms of Service) to be greeted with the full list.
+Next, click _Download Mods_ (on the bottom task bar). and then click _Accept_ (mod.io's Terms of Service) to be greeted with the full list.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-14.png" alt="Accepting mod.io's Terms of Service in order to download mods automatically in-game." caption="Figure 3. Accepting mod.io's Terms of Service" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-14.png" alt="Accepting mod.io's Terms of Service in order to download mods automatically in-game." caption="Figure 3. Accepting mod.io's Terms of Service." %}
 
-Then, click on a mod, and click "Download."
+Then, click on a mod to select it, and click _Download_.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-15.png" alt="Downloading the Community Maps 2 mod as the sample for this tutorial using the game's built-in mod downloader." caption="Figure 4. Downloading a modification in-game" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-15.png" alt="Downloading the Community Maps 2 mod as the sample for this tutorial using the game's built-in mod downloader." caption="Figure 4. Downloading a mod." %}
 
-To enable the mod(s) that you desire to use, click on each one in the top menu of available mods, and then click "Enable" on the bottom task bar.
+You'll need to enable the mod(s) by clicking on them and then _Enable_ on the bottom task bar.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-16.png" alt="Enabling the Community Maps 2 mod as the sample for this tutorial using the game's built-in mod manager." caption="Figure 5. Enabling a downloaded mod" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-16.png" alt="Enabling the Community Maps 2 mod as the sample for this tutorial using the game's built-in mod manager." caption="Figure 5. Enabling a downloaded mod." %}
 
-Finally, click "Save and Restart" to relaunch the game with the mod(s) of your choosing ready for use.
+Finally, click _Save and Restart_ to relaunch the game with your chosen mod(s) ready for use.
 
 #### Two Recommended Mods
 
-Two regularly updated, featureful mods that are available in the game's built-in mod.io menu and that might be of particular interest to you as a reader of the Programming Historian are [Community Maps 2](https://github.com/0ad-matters/community-maps-2) and [Delenda Est](https://github.com/JustusAvramenko/delenda_est).
+Two regularly updated mods with plenty of features that might be of particular interest to you are [Community Maps 2](https://github.com/0ad-matters/community-maps-2) and [Delenda Est](https://github.com/JustusAvramenko/delenda_est).
 
-Community Maps 2 adds a large, curated set of high quality gameplay terrains that their various makers have shared publicly. It is my opinion that every 0 A.D. installation should have Community Maps 2, since it adds diversity to the base game without changing its mechanics.
+Community Maps 2 adds a large, curated set of high quality gameplay terrains. It is my opinion that every 0 A.D. installation should have include this mod, since it adds diversity to the base game without changing its mechanics.
 
-Delenda Est brings major additions to the civilizations and gameplay of the base game, all oriented toward historical realism and depth of strategizing. Among many other new features, Delenda Est includes a novel fourth phase called the "Empire Phase," multiple new civilizations (as of the time of publication, these include Imperial Romans, Scythians, Suebian Germans, Syracusans, Thebans, Xiongnu, Yamatai Japanese, and Zapotecs), many options for a special start-of-game hero for each civilization that yield different bonuses, enslavement of foreign peoples, cultic worship, majorly reworked economics (including two new resources, Glory and Coin, to accompany the base game's original four of Wood, Food, Metal, and Stone), and expanded technological trees for every civilization from the base game.
+Delenda Est brings major additions to the civilizations and gameplay of the base game, all oriented toward historical realism and depth of strategizing. Among many other new features, Delenda Est introduces a fourth phase called the "Empire Phase," multiple new civilizations (as of the time of publication, these include Imperial Romans, Scythians, Suebian Germans, Syracusans, Thebans, Xiongnu, Yamatai Japanese, and Zapotecs), many options for a special start-of-game hero for each civilization that yield different bonuses, enslavement of foreign peoples, cultic worship, majorly reworked economics, and more.
 
-While I have many good things to write about Delenda Est, I only recommend that you bring it into your classroom if you are able to schedule multiple hours for learning gameplay mechanics. The base game, as a real-time strategy game, has a modest but non-negligible learning curve, and Delenda Est introduces a steeper one. Further, Delenda Est is only suited for multiplayer use, since AI (computer) players are not programmed to handle its special mechanics.
+While I have many good things to write about Delenda Est, I only recommend that you bring it into your classroom if you are able to schedule multiple hours to learn the gameplay mechanics. The base game has a modest but non-negligible learning curve, and Delenda Est makes it steeper. Further, Delenda Est is only suited for multiplayer use, since AI (computer) players are not programmed to handle its special mechanics.
 
 ##### Manual Mod Installation
 
-Installing a prepackaged mod outside 0 A.D.'s built-in mod.io menu (e.g. downloaded directly from a repository on GitHub) is trivial by design. With a mod downloaded as a .pyromod (custom Pyrogensis package) or .zip file, you may either right click the mod file and select "Open with 0 A.D." or perform the same task at the command line with `pyrogenesis [file].pyromod` or `pyrogenesis [file].zip`. Enable the mod inside the same in-game "Mod Selection" menu that you use with mods installed via the built-in mod.io menu.
+Installing a prepackaged mod outside of 0 A.D.'s built-in mod.io menu (e.g. downloaded directly from a repository on GitHub) is trivial by design. With a mod downloaded in `.pyromod` (custom Pyrogensis package) or `.zip` format, right click the file and select _Open with 0 A.D._. You can even do this in the command line with `pyrogenesis [file].pyromod` or `pyrogenesis [file].zip`. Then, enable the mod inside the same in-game mod.io **Mod Selection** menu. 
 
-Alternatively, you could move the entire mod folder into `*/mods` yourself, without having the game engine handle the installation, but you must make sure that the mod's parent folder and .zip that it contains have the exact same name as what is listed in the mod's mod.json file. 
+Alternatively, you could move the entire mod folder into `*/mods` yourself, without having the game engine handle the installation, but you must make sure that your mod's parent folder and the `.zip` it contains are under the same name as that listed in the mod's `mod.json` file. To install the mod manually, locate the `*/mods` in the game's installation directory. The Wiki currently specifies the Windows folder as `C:\Users\{name_of_user}\Documents\My Games\0ad\mods\`, the MacOS folder as `~/Library/Application﻿ Support/0ad/mods/`, and the default Unix-like OS folder as `~/.local/share/0ad/mods/`. Copy and paste the mod's parent folder (the entire mod) into that folder, then enable the mod inside the in-game **Mod Selection** menu.
 
-To install the mod manually, locate the correct folder for inserting mods in the game's installation directory, specifically `*/mods`. The Wiki currently specifies the Windows folder as `C:\Users\{name_of_user}\Documents\My Games\0ad\mods\`, the MacOS folder as `~/Library/Application﻿ Support/0ad/mods/`, and the default Unix-like OS folder as `~/.local/share/0ad/mods/`. Copy and paste the mod's parent folder (the entire mod) into that folder. Enable the mod inside the in-game "Mod Selection" menu.
-
-For more information, here are the 0 A.D. Wiki's official [directions for manual mod installation](https://gitea.wildfiregames.com/0ad/0ad/wiki/Mod_List#manual-installation).
+For more information, check out the 0 A.D. Wiki's official [directions for manual mod installation](https://gitea.wildfiregames.com/0ad/0ad/wiki/Mod_List#manual-installation).
 
 ### Next Steps with Community Mods
 
-I recommend that you start by installing and enabling Community Maps 2 via the game's built-in mod.io-linked installation menu and trying some of its lovely terrains while you become familiar with the base game. Then, move to Delenda Est or another vetted mod available via mod.io that you might like to try in your own teaching context. 
-
-[Millenium A.D.](https://mod.io/g/0ad/m/millenniumad), for example, which is focused on the ninth and tenth centuries CE, has tens of thousands of downloads. As of May 2025, it is more of a work-in-progress than Delenda Est, but it already has playable iterations of the Anglo-Saxons, Byzantines, Carolingians, Norse, Rus, and Ummayads. There are many other mods even in the mod.io curated set that add new civilizations and/or other features that might be relevant for your classroom.
+I recommend that you start by installing and enabling Community Maps 2 via the game's built-in mod.io menu, and try some of its lovely terrains while you become familiar with the base game. Then, move to Delenda Est or another of the many vetted mods for new civilizations or other features that might be relevant for your classroom. [Millenium A.D.](https://mod.io/g/0ad/m/millenniumad), for example, which is focused on the ninth and tenth centuries CE, offers playable iterations of the Anglo-Saxons, Byzantines, Carolingians, Norse, Rus, and Ummayads. has tens of thousands of downloads. As of May 2025, it is more of a work-in-progress than Delenda Est, but it already has tens of thousands of downloads.
 
 ## Importing Geographic Data to Create Historical Scenarios
 
-As a teacher of history, you might wish to create fully custom historical scenarios in 0 A.D. to showcase for your classes, or you might wish to have your students make such scenarios themselves as class projects. For the most immersive experience possible, it is best to import real-world geographic data into the videogame.[^6]
-While you work through the steps outlined below, I recommend that you have the official [Atlas Manual](https://gitea.wildfiregames.com/0ad/0ad/wiki/Atlas_Manual) in the Wildfire Games Wiki open in case you should desire additional information about how to use Atlas, 0 A.D.'s built-in terrain and scenario editor. 
+You might wish to create your own custom historical scenarios in 0 A.D., or you might have your students create these scenarios themselves as a class project. For the most immersive experience possible, it is best to import real-world geographic data into the videogame.[^6] While you work through the steps outlined below, I recommend that you keep the official [Atlas Manual](https://gitea.wildfiregames.com/0ad/0ad/wiki/Atlas_Manual) open in case you should need additional information about how to use 0 A.D.'s built-in terrain and scenario editor. Also, as a preparatory note, whenever you click _Save_ (or _Save As_) inside Atlas, make sure that you always select a 'scenario' – not a skirmish or tutorial. Scenarios contain predefined civilizations, teams, units, and so on, while allowing full multiplayer gameplay.
 
-Also, as a preparatory note, whenever you click "Save" (or "Save As") inside Atlas, make sure that you always choose Atlas's option for a **scenario** -- not a skirmish (nor a tutorial).
-
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-17.png" alt="The 'Save As' dialogue shows \"Scenarios,\" \"Skirmishes,\" and \"Tutorials\" as the 3 options for file save. While following this tutorial, always choose \"Scenarios\"." caption="Figure 6. Saving a Scenario file in Atlas" %}
-
-Scenarios have predefined civilizations, teams, units, and so on while allowing full multiplayer gameplay.
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-17.png" alt="The 'Save As' dialogue shows 'Scenarios', 'Skirmishes', and 'Tutorials' as the 3 options for file save. While following this tutorial, always choose 'Scenarios'." caption="Figure 6. Saving a Scenario file in Atlas." %}
 
 ### 1. Choose a Scenario
 
-The ideal historical scenario for recreation in 0 A.D. would be a battle between two or more civilizations that are available either in the base game or via a mod that took place in a location with sufficient geological diversity for intriguing gameplay.
+The ideal historical scenario to recreate in 0 A.D. would be a battle between two or more civilizations that are available either in the base game or via a mod, which took place in a location with sufficient geological diversity for intriguing gameplay. If you are a Classicist teaching a history class, then you could choose one of the critical battles from the [Gallic Wars](https://en.wikipedia.org/wiki/Gallic_Wars).: late Republican Romans, Gauls and Britons are in the base game, while early Imperial Romans are available in the Delenda Est mod. 
 
-If you are a Classicist teaching a history class, then you might choose one of the critical battles from the [Gallic Wars](https://en.wikipedia.org/wiki/Gallic_Wars). Late Republican Romans are in the base game, and early Imperial Romans are in the Delenda Est mod. Gauls and Britons are both in the base game, too. 
+In this lesson, you will learn to make a simple recreation of the [Battle of Bibracte](https://en.wikipedia.org/wiki/Battle_of_Bibracte), which took place about sixteen miles south of the actual historical [Bibracte hilltop Gallic fort](https://en.wikipedia.org/wiki/Bibracte), now known as [Mont Beuvray](https://fr.wikipedia.org/wiki/Mont_Beuvray).[^7] Beuvray is in a strip of hillcountry with hundreds of meters of elevational changes, and the surrounding area contains rich forests, open fields, and both rivers and streams. Julius Caesar's victory at Bibracte was crucial to his eventual triumph over Gaul. 
 
-The definitive [Battle of Bibracte](https://en.wikipedia.org/wiki/Battle_of_Bibracte) took place about sixteen miles south of the actual historical [Bibracte hilltop Gallic fort](https://en.wikipedia.org/wiki/Bibracte), which is now known as [Mont Beuvray](https://fr.wikipedia.org/wiki/Mont_Beuvray).[^7] Beuvray is in a strip of hillcountry with hundreds of meters of elevational changes, and the surrounding area contains rich forests, open fields, and both rivers and streams. Julius Caesar's victory at Bibracte was crucial to his eventual triumph over Gaul. 
-
-In this lesson, you will learn to make a simple recreation of the Battle of Bibracte.
 
 ### 2. Find a Topographic Map
 
-Although there are many databases of topographies online, [topographic-map.com](https://en-us.topographic-map.com/) is well suited for your use case because it [exclusively makes use of open access data](https://en-us.topographic-map.com/legal/), possesses detailed topographies of (nearly) everywhere around the globe, and presents topographies in a color-coded format that is easy to modify for importation into Atlas.
+There are many online topography databases to choose from, but [topographic-map.com](https://en-us.topographic-map.com/) is well suited for your use case because it [exclusively makes use of open access data](https://en-us.topographic-map.com/legal/), possesses detailed topographies of (nearly) everywhere around the globe, and presents topographies in a color-coded format that is easy to modify for importation into Atlas.
 
-Visit topographic-map.com, use the master search tool to find the topography that you would like to import, and select a (roughly) square area around the region that you require -- with a bit of extra space on all sides to spare -- using your operating system's screenshot or snipping tool. In order to have room for adjustments, aim for roughly 1024x1024 pixels (a more-or-less square shape between, say, 512x512 and 2048x2048).
+Use the master search tool to find a topography to import, then select a (roughly) square area around the region that you require – with a bit of extra space on all sides to spare – using your operating system's screenshot or snipping tool. In order to have room for adjustments, aim for roughly 1024x1024 pixels (or a more-or-less square shape between, say, 512x512 and 2048x2048).
 
-To feature the diverse landscape of the region surrounding Mont Beuvray, and to capture that the combat in the Battle of Bibracte actually took place some 25 kilometers south of the key Gallic *oppidum* (fortified settlement), I purposefully take a screenshot that includes a larger area.
+To feature the diverse landscape of the region surrounding Mont Beuvray, and to capture that the combat in the Battle of Bibracte actually took place some 25 kilometers south of the key Gallic *oppidum* (fortified settlement), I purposefully took a screenshot that includes a larger area.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-02.png" alt="Screenshot from topographic-map.com showing a visual topography of Mont Beuvray and the surrounding French hillcountry, using a color scale to depict lower to higher elevations." caption="Figure 7. Selecting Mont Beuvray from topographic-map.com" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-02.png" alt="Screenshot from topographic-map.com showing a visual topography of Mont Beuvray and the surrounding French hillcountry, using a color scale to depict lower to higher elevations." caption="Figure 7. Selecting Mont Beuvray from topographic-map.com." %}
 
 ### 3. Modify the Topographic Map Image
 
-Per the ["Heightmap Import"](https://gitea.wildfiregames.com/0ad/0ad/wiki/Atlas_Manual_Heightmap_Import) section of the Atlas Manual in the Wildfire Games Wiki, the final image must be a grayscale .png that is a perfect square with power of 2 dimensions. The brightness of a particular part of an image determines its elevation, with relative darkness corresponding to lower elevation and relative lightness corresponding to higher elevation.
+Per the [Heightmap Import](https://gitea.wildfiregames.com/0ad/0ad/wiki/Atlas_Manual_Heightmap_Import) section of the Atlas Manual in the Wildfire Games Wiki, the final image must be a perfectly square, grayscale `.png`. The brightness of a particular part of an image determines its elevation, with relative darkness corresponding to lower elevation and relative lightness corresponding to higher elevation.
  
-The hightmap importer in Atlas takes the image file as-is without any import time options, so it is important to modify the image to be as close to ideal for Atlas as possible prior to importing. Your objective is to minimize the amount of tuning that you will need to do after the import with Atlas's terrain tools.
+The hightmap importer in Atlas will take the image file as-is, so it is important to modify the image to be as close to ideal for Atlas as possible prior to importing. Your objective is to minimize the amount of tuning that you will need to do after the import using Atlas's terrain tools.
 
-Each of the following power of 2 dimensions corresponds with an [in-game terrain size that is explained in more detail (here) in the source code](https://gitea.wildfiregames.com/0ad/0ad/src/branch/main/binaries/data/mods/public/simulation/data/settings/map_sizes.json): 128x128 (Tiny), 192x192 (Small), 256x256 (Normal), 320x320 (Medium), 384x384 (Large), 448x448 (Very Large), and 512x512 (Giant). I view the Large (384x384) and Very Large (448x448) sizes to be ideal for full 8-player matches, which probably makes them the best for most classroom usage situations (contrary to Giant, which requires loading so many resources that it can cause game slowdowns). At the same time, smaller sized terrains require (much) less work in Atlas to make realistic.
+Each of the following dimensions corresponds to an in-game terrain size that is [explained in more detail (here) in the source code](https://gitea.wildfiregames.com/0ad/0ad/src/branch/main/binaries/data/mods/public/simulation/data/settings/map_sizes.json): 128x128 (Tiny), 192x192 (Small), 256x256 (Normal), 320x320 (Medium), 384x384 (Large), 448x448 (Very Large), and 512x512 (Giant). The Large (384x384) and Very Large (448x448) sizes are ideal for full 8-player matches, which probably makes them the best for most classroom usage situations (contrary to Giant, which requires loading so many resources that it can slow the game). Smaller sized terrains require (much) less work to make realistic.
 
-Since I am purposefully making a recreation of a large-scale battle that had tens of thousands of warring men on a geographically diverse parcel of land, I will make my terrain inside a 512x512 pixel square, that is, the right size to be imported as a Giant terrain in Atlas.
+Since we are purposefully recreating a large-scale battle that saw tens of thousands of warring men on a geographically diverse parcel of land, let's choose a 512x512 pixel square to be imported as a Giant terrain in Atlas. The final version of the terrain in-game will be a perfect circle fitting just inside your square (i.e. with a diameter of 512 pixels). The space just inside the perimeter of that circle will not be usable in-game.
 
-The final version of the terrain in-game will be a perfect circle from inside your square with a diameter the same as the length of one of the square's sides (e.g. 512 pixels), and some space just inside the perimeter of that circle will not be usable in-game.
+I recommend this simple workflow in GIMP to specify the image size and convert the image to grayscale, as it is likely to remain viable through future software updates:[^8]
 
-There are many workflows by which you could specify the image size and convert the image to grayscale. In GIMP, I recommend this simple one that is likely to remain viable through future software updates:[^8]
+* In the top bar menu, click **File** > **New**, type in the square value of your choosing (here: width = 512 px and height = 512 px), then click **OK**.
+* Click **File** > **Open as Layer** and select your unedited topographic map image.
+* Click **Layer** > **Scale**, and, leaving the proportions locked (the chain icon connected), type your desired width or height value (my width is 911 px and height is 814 px, so I type '512' in Height, setting the Width to 573 automatically) and click _Scale_.
+* With **Windows** > **Toolbox** open, click the four-way icon (or tap 'M' on your keyboard) to select the **Move** tool, then shift the layer to position the relevant geographic details where you need them in the final circular in-game terrain. Then, click **Layer** > **Layer to Image Size** to remove everything outside the correct image dimensions from the layer.
+* Click **Select** > **None**, then **Image** > **Mode** > **Grayscale**.
+* Finally, click **File** > _Save a copy_ to save a version of the image file upon which you can fallback at any time.
+  
+At this point, you have a correctly sized grayscale image that you theoretically could export in `.png` format for Atlas, but it probably has harsh edges and stark contrasts that would yield unrealistically) sharp rises and falls of elevation, and thus an unplayable a terrain. Plus, if your topographic data shows areas with higher elevation in darker shades rather than lighter when converted to grayscale (this happens with images from topographic-map.com), then it will be imported with elevational changes that are the opposite of what they should be.
 
-* From the menu (top bar), click "File" -> "New," and type the square value of your choosing (e.g. Width = 512 px and Height = 512 px), then click "OK."
-* Click "File" -> "Open as Layer," and select your unedited topographic map image.
-* Click "Layer" -> "Scale," and, leaving the proportions locked (the chain icon connected), type the desired width or height value (e.g. my width is 911 px and height is 814 px, so I type "512" next to Height, which makes the Width value 573 automatically) and click "Scale."
-* With the Toolbox open (click "Windows" -> "Toolbox"), click the four-way icon (or tap "M" on your keyboard) to select the "Move" tool, and move the layer so that the relevant geographic details are where you would like them to be in the final circular in-game terrain. Then, click "Layer" -> "Layer to Image Size" to remove everything outside the correct image dimensions from the layer.
-* Click "Select" -> "None."
-* Click "Image" -> "Mode" -> "Grayscale."
-* Click "File" -> "Save a copy" to save a version of the image file upon which you can fallback at any time.
+First, regardless of your specific terrain choice, you will need to smooth the image's internal rough edges by introducing blur. In GIMP, do the following:
+- Click **Filters** > **Blur** > **Gaussian Blur**.
+- Set the Size X and Size Y values to between 2.00 and 6.00, probably about 3.50 to start. The image should be distorted enough that it lacks any rigid edges, but not so distorted that its features are unrecognizable. Favor distortion over clarity.
 
-At this point, you have a correctly sized image that you theoretically could export as a grayscale .png file for import into Atlas, but it is most probable that it has harsh edges and stark contrasts that would yield a terrain with unplayably (and unrealistically) sharp rises and falls of elevation. Plus, if you selected topographic data in which areas with higher elevation appear darker rather than lighter when converted to grayscale (as is what happens with images from topographic-map.com), then many areas will be imported with elevational changes that are the opposite of what they should be.
+Second, if the elevated terrain in your topographic map image appears darker rather than lighter, you should rectify the issue by inverting the colors. Here is one way to achieve this in GIMP:
 
-First, regardless of your specific terrain choice, you will need to smooth the image's internal rough edges by introducing blur. In GIMP, do the following: Click "Filters" -> "Blur" -> "Gaussian Blur." Set the Size X and Size Y values to between 2.00 and 6.00, probably about 3.50 to start. The image should be distorted enough that it lacks any rigid edges but not so distorted that its features are unrecognizable. Favor distortion over clarity.
-
-Second, if you have a topographic map image in which areas of elevated terrain appear as darker rather than lighter, then you should rectify the issue by inverting the colors of those specific regions. Here is one way to achieve this in GIMP:
-
-* Click "Select" -> "By Color," and click on the relevant color to invert. You might need to click multiple times; GIMP compounds the selection automatically. (GIMP also allows undoing individual steps within compounded selections with CTRL+Z or "Edit" -> "Undo.")
-* Click "Colors" -> "Brightness-Contrast," and increase both values until the terrain that should be lighter (elevated) is in fact lighter.
-* For my specific image, the edges of the mountainous terrain have steep dark spots after this. I blur their edges manually with the "Smudge" tool (after clicking the pointing finger in the Toolbox or tapping "S" on my keyboard). I also add just a few drops of white paint (using the "Paint" tool, which is available by clicking the paintbrush icon in the Toolbox or tapping "P" on my keyboard) to the area in the north with especially higher peaks, including Mont Beuvray itself.
+* Click **Select** > **By Color**, and click on the relevant color to invert. You might need to click multiple times: GIMP compounds the selection automatically. (GIMP also allows you to undo individual steps within compounded selections with `CTRL + z` or **Edit** > **Undo**.)
+* Click **Colors** > **Brightness-Contrast**, and increase both values until the terrain that should be lighter (elevated) is in fact lighter.
+* In my specific image, this results in steep dark spots on the edges of the mountainous terrain. If this happens, you can blur their edges manually with the **Smudge** tool (click the pointing finger in the Toolbox, or type 'S' on your keyboard). It also helps to add just a few drops of white paint (using the **Paint** tool, which is available by clicking the paintbrush icon in the Toolbox or tapping "P" on my keyboard) to the area in the north with especially higher peaks, including Mont Beuvray itself.
 
 <div class="alert alert-warning">
-You probably will need to do some trial and error with the image that results from your editing by performing iterative imports inside Atlas, so make sure that you save fallback copies of the image at every stage of editing.
+You'll probably need to experiment with the resulting image by iteratively importing it to Atlas, so make sure that you save fallback copies of the image at every stage of editing.
 </div>
 
-Here is the final version of my image inside GIMP after doing all of these steps. I click "File" -> "Export," and I type "beauvray.png" as the name before unselecting all .png filetype export options (to make a simple file), choosing "16bpc GRAYA" for 16-bit grayscale with alpha, and turning off compression (setting the value to 0) in order to have the highest quality export possible.
+Below is the final version of the image in GIMP after following all of these steps. Click **File** > **Export**, and type `beauvray.png` before unselecting all `.png` filetype export options (to make a simple file). Choose **16bpc GRAYA** for 16-bit grayscale with alpha, and turn off compression (set the value to 0) to ensure the highest quality export possible.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-03.png" alt="The topographic map of Mont Beuvray and the surrounding area exported as a perfect 512x512 square, grayscale .png file. It has modest differences in shade between areas of lower elevation and areas of higher elevation, with relatively lower elevation shown in darker gray and releatively higher elevation shown in lighter gray (and the mountains' peaks near white)." caption="Figure 8. Mont Beuvray ready for import after editing in GIMP" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-03.png" alt="The topographic map of Mont Beuvray and the surrounding area exported as a perfect 512x512 square, grayscale .png file. It has modest differences in shade between areas of lower elevation and areas of higher elevation, with relatively lower elevation shown in darker gray and releatively higher elevation shown in lighter gray (and the mountains' peaks near white)." caption="Figure 8. Mont Beuvray ready for import after editing in GIMP." %}
 
-After clicking "Export," we are ready to advance to the next step, that is, actually importing the heightmap into Atlas.
+After clicking _Export_, you are ready for the next step: actually importing the heightmap into Atlas.
 
 ### 4. Import the Topographic Map Image into Atlas
 
-Now that you have chosen a historical scenario to recreate, found a topographic map to import, and edited the topographic map image, importing your topography into Atlas will be easy:
+Now that you have chosen a historical scenario to recreate, found a topographic map to import, and edited the topographic map image, importing your topography into Atlas will be easy.
 
-First, Open 0 A.D.
+First, open 0 A.D. From the main menu, click **Scenario Editor** to launch Atlas. When asked 'Would you like to quit 0 A.D. and open the Scenario Editor?', click **Yes**.
 
-From the main menu, click "Scenario Editor" to launch Atlas. When asked "Would you like to quit 0 A.D. and open the Scenario Editor?", click "Yes."
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-18.png" alt="From the game's main menu, select 'Scenario Editor', and then click 'Yes' in answer to the question 'Are you sure that you want to quit 0 A.D. and open the Scenario Editor?'." caption="Figure 9. Opening Atlas, the Scenario Editor." %}
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-18.png" alt="From the game's main menu, select 'Scenario Editor', and then click 'Yes' in answer to the question 'Are you sure that you want to quit 0 A.D. and open the Scenario Editor?'." caption="Figure 9. Opening Atlas, the Scenario Editor" %}
+In Atlas, click **File** > **Open Heightmap**, and select the file that you have edited.
 
-* Inside Atlas, click "File" -> "Open Heightmap," and select the topographic map image that you have edited.
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-19.png" alt="From Atlas's main menu, click 'File,' and then 'Open Heightmap'." caption="Figure 10. Importing a heightmap file inside Atlas." %}
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-19.png" alt="From Atlas's main menu, click 'File,' and then 'Open Heightmap'." caption="Figure 10. Importing a heightmap file inside Atlas" %}
+If you've followed the MOunt Beuvray example, here is how it would look:
 
-Here is how mine looks:
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-04.png" alt="The three dimensional-topographic map of Mont Beuvray initially imported into Atlas. It appears as a disk with grass-like texture, using shadows and shading to represent the varied elevations." caption="Figure 11. Topographic map of Mont Beuvray, initially imported into Atlas." %}
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-04.png" alt="The three dimensional-topographic map of Mont Beuvray initially imported into Atlas. It appears as a disk with grass-like texture, using shadows and shading to represent the varied elevations." caption="Figure 11. Topographic map of Mont Beuvray, initially imported into Atlas" %}
+The source image could have used a bit more blurring to reduce the harshness (the flat areas ought to be flatter, and the mountains ought to have more gradual slopes), as well as more contrast to bring the mountains at a noticeably higher altitude than the surrounding flatlands. After quickly reopening the saved backup image and making both of those changes in GIMP (per step 3), this is the result:
 
-The source image could have used a bit more blurring to reduce the harshness (the flat areas ought to be flatter, and the mountains ought to have less steep cliffs), as well as more contrast so that the mountains are actually at a noticeably higher altitude than the surrounding flatlands. After quickly reopening my saved backup in GIMP and making both of those changes (per step 3), this is the result:
-
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-05.png" alt="The topographic map of Mont Beuvray, edited and then re-imported to Atlas. The mountains have a much higher elevation and appear more realistic, and the elevational changes across the terrain are more gradual than in my first attempt." caption="Figure 12. Topographic map of Mont Beuvray, edited after initial import into Atlas and then re-imported" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-05.png" alt="The topographic map of Mont Beuvray, edited and then re-imported to Atlas. The mountains have a much higher elevation and appear more realistic, and the elevational changes across the terrain are more gradual than in my first attempt." caption="Figure 12. Topographic map of Mont Beuvray, edited after initial import into Atlas and then re-imported." %}
 
 ### 5. Add, Adjust, and Smoothen the Terrain's Features
 
-Before doing anything else to your terrain in Atlas, you ought to add water to it, perform a general landscape smoothing, and adjust its other core (elevational) features. These three tasks lay the foundation for everything else that you will place in your gameplay scenario.
+Before doing anything else to your terrain in Atlas, you should add water, perform a general landscape smoothing, and adjust its other core (elevational) features. These three tasks lay the foundation for everything else that you will place in your gameplay scenario.
 
-Here is how you add water to the terrain. From the main menu, click the sun-shaped icon for "Environment" settings. Then, drag the "Water height" slider until there is about the right amount of water in the terrain's points of low elevation (where there ought to be water).
+For water, from the main menu, click the sun-shaped icon for **Environment** settings. Then, drag the **Water height** slider until there is a reasonable amount of water in the terrain's points of low elevation.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-20.png" alt="I have the sun-shaped 'Environment' icon selected, and I am adjusting the 'Water height' slider." caption="Figure 13. Adjusting the Water height to add water to the terrain" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-20.png" alt="I have the sun-shaped 'Environment' icon selected, and I am adjusting the 'Water height' slider." caption="Figure 13. Adjusting the water height to add water to the terrain." %}
 
-To smooth the terrain, click the plain green icon for "Terrain" settings. Then, click "Smooth," and adjust the size of the tool to about 20 (leaving the strength at about 10), and work around the map as needed (left clicking on the areas for correction and dragging the cursor over them).
+To smooth the terrain, click the plain green icon for **Terrain** settings. Then, click **Smooth**, and adjust the size of the tool to about 20, leaving the strength at about 10, and work around the map as needed by left-clicking and dragging the cursor on the areas needing correction.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-21.png" alt="I have the 'Terrain' settings menu open with the 'Smooth' tool selected, for which I have the size set to 20, and I am working my way around the terrain to achieve smoothing." caption="Figure 14. Smoothing the terrain" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-21.png" alt="I have the 'Terrain' settings menu open with the 'Smooth' tool selected, for which I have the size set to 20, and I am working my way around the terrain to achieve smoothing." caption="Figure 14. Smoothing the terrain." %}
 
-Here is how my terrain looks after adding water and performing an initial smoothing:
+Here is the terrain after adding water and performing an initial smoothing:
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-06.png" alt="Topographical map of Mont Beuvray in Atlas. Water has been added in lower elevations and the terrain is starting to be smoothed. The terrain as a whole is approaching a playable match with its real-world counterpart." caption="Figure 15. Mont Beuvray in Atlas with water added and terrain smoothed" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-06.png" alt="Topographical map of Mont Beuvray in Atlas. Water has been added in lower elevations and the terrain is starting to be smoothed. The terrain as a whole is approaching a playable match with its real-world counterpart." caption="Figure 15. Mont Beuvray in Atlas with water added and terrain smoothed." %}
 
-The other adjustments that you will need to perform at this stage will depend upon your terrain. Experiment with the different terrain tools, keeping sizes of the modifiers small (and backup copies of the terrain saved) until you reach your desired result. 
+The other adjustments you will need to perform at this stage will depend upon your terrain. I recommend you experiment with the different terrain tools, keeping the modifier sizes to a minimum (and backing up copies of the terrain) until you reach your desired result. 
 
-For my sample, I have used the "Flatten," "Modify," and "Smooth" terrain adjustment tools only for a few minutes. Also, I have added a few rocky biomes to the northern mountains. Biomes are found on the bottom task bar in Atlas. 
+In this lesson's sample, I used the **Flatten**, **Modify**, and **Smooth** terrain adjustment tools only for a few minutes. Also, I added a few rocky biomes (found in Atlas' bottom task bar) to the northern mountains. 
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-22.png" alt="I have the 'Terrain' settings menu open with the 'Paint' tool open, and I have selected the Biome 'Aegean cliff 01' as a sample to spread across the terrain." caption="Figure 16. Incorporating new biomes into the terrain" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-22.png" alt="I have the 'Terrain' settings menu open with the 'Paint' tool open, and I have selected the Biome 'Aegean cliff 01' as a sample to spread across the terrain." caption="Figure 16. Incorporating new biomes into the terrain." %}
 
-This is my result:
+This is the result:
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-07.png" alt="The Mont Beuvray base terrain polished in Atlas with rocky biomes in the northern mountainous area, flattened fields. Waterways have been connected to be accessible in-game." caption="Figure 17. Mont Beuvray base terrain polished in Atlas" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-07.png" alt="The Mont Beuvray base terrain polished in Atlas with rocky biomes in the northern mountainous area, flattened fields. Waterways have been connected to be accessible in-game." caption="Figure 17. Mont Beuvray base terrain polished in Atlas." %}
 
 ### 6. Add Flora and Fauna to the Terrain
 
-Now that you have your terrain's core features in place, it is time for you to add flora and fauna. Your objective should not be to effect a pebble-for-pebble and bird-for-bird depiction of the real-world equivalent but, rather, to capture its overall character and, more importantly, special features that matter for the historical scenario.
+Now that your terrain's core features are in place, it is time for you to add flora and fauna. Your objective should not be to effect a pebble-for-pebble and bird-for-bird depiction of the real-world equivalent but, rather, to capture its overall character and, more importantly, to insert special features that matter in the historical scenario.
 
-In Atlas, you will place all flora and fauna with the the "Object" tool, which has a person-shaped icon. Flora and fauna are categorized as units belonging to Gaia (Mother Earth). For a full list, then, filter by "gaia" (lowercase) in the top search bar.
+To place flora and fauna, use the **Object** tool with the person-shaped icon. Flora and fauna are categorized as units belonging to '[Gaia](https://en.wikipedia.org/wiki/Gaia)' (Mother Earth): to retrieve a full list of options, filter by 'gaia' (lowercase) in the top search bar. Let's add deer and other wildlife native to the woodlands of central France.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-23.png" alt="I have the Object tool open, and I am sorting by 'gaia'. The first result is a black bear, which I have hovering to be placed in the terrain." caption="Figure 18. Using the Object tool to add flora and fauna to the terrain" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-23.png" alt="I have the Object tool open, and I am sorting by 'gaia'. The first result is a black bear, which I have hovering to be placed in the terrain." caption="Figure 18. Using the Object tool to add flora and fauna to the terrain." %}
 
-Mont Beuvray has a blend of deciduous and coniferous vegitation. Although the surrounding flatlands are all open fields today, they probably were forested in antiquity. Accordingly, I start adding decidious and coniferous trees throughout the terrain.
+Mont Beuvray has a blend of deciduous and coniferous vegitation. Although the surrounding flatlands are all open fields today, they were probably forested in antiquity.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-08.png" alt="Adding trees to the terrain around the mountain bases by selecting regionally appropriate trees via the Object tool. Specifically, I have selected gaia/tree/euro_birch to place the birch trees that are native to central France." caption="Figure 19. Adding trees in Atlas" %}
- 
-I do the same with deer and other wildlife native to the woodlands of central France.
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-08.png" alt="Adding trees to the terrain around the mountain bases by selecting regionally appropriate trees via the Object tool. Specifically, I have selected gaia/tree/euro_birch to place the birch trees that are native to central France." caption="Figure 19. Adding trees in Atlas." %}
 
-Make sure to add all four of the game's resources -- wood, stone, metal, and food -- to your terrain, whether or not the real-world equivalent actually possesses all four of those resources. Without them, the scenario will not be playable. Wood may be found in `gaia/tree/`, stone in `gaia/rock/`, and metal in `gaia/ore/`. For food, you may add any huntable animal, berry bushes, or fruit trees; browse through Gaia's flora and fauna for food options that make sense for your terrain.
-
-<div class="alert alert-warning">
-Without placing all four of 0 A.D.'s resources -- wood, stone, metal, and food -- inside the terrain, the scenario that you are making will not be playable. Do not forget to add all four.
-</div>
+Finally, make sure to add a form of all four of the game's resources – wood, stone, metal, and food – to your terrain, whether or not the real-world equivalent actually possesses all four of those resources. Without them, the scenario will not be playable. Wood is found under `gaia/tree/`, stone under `gaia/rock/`, and metal under `gaia/ore/`. For food, just add huntable animals, berry bushes, or fruit trees – you can browse through Gaia's flora and fauna for options that make sense for your terrain.
 
 ### 7. Add Scenario-specific Features
 
-Next, you need to add scenario-specific features to your terrain, that is, the units, structures, and everything else that will make the historical scenario actually playable.
+Next, you need to add scenario-specific features to your terrain, that is the units, structures, and everything else that will make the historical scenario actually playable.
 
-Most importantly, each civilization ought to start either with a civic center (which defines the civilization's starting territory while allowing the creation of female citizens and basic citizen soldiers) or sufficient resources to build a civic center (typically, as of Alpha 27, 500 Wood, 500 Stone, and 500 Metal -- but it is important to check the requirements for each specific civilization inside a specific game version), as well as at least 1 unit capable of resource gathering and building.
+Most importantly, each civilization needs to start with either of the following:
+- A 'civic center' (sorted by "[civilization]/civil" in the **Object** tool) which defines the civilization's starting territory and allows the creation of female citizens and basic citizen soldiers
+- Sufficient resources to build a civic center (typically, as of Alpha 27, 500 Wood, 500 Stone, and 500 Metal – but you should check the requirements for each specific civilization inside a specific game version), as well as at least 1 unit capable of resource gathering and building
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-24.png" alt="Creating a sample Player 1, who is assigned to be the Hans and has 500 Wood, 500 Stone, and 500 Metal in order to be able to build a civic center at the game's start." caption="Figure 20. Creating a sample Player 1" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-24.png" alt="Creating a sample Player 1, who is assigned to be the Hans and has 500 Wood, 500 Stone, and 500 Metal in order to be able to build a civic center at the game's start." caption="Figure 20. Creating a sample Player 1." %}
 
-Customarily, in addition to a civic center (sorted by "[civilization]/civil" in the Object tool), each civilization starts with two or three female citizens for gathering resources and building; two or three citizen soldiers for gathering resources, building, and (if needed) doing early game military defense; and a cavalryman who may serve as a scout to explore the terrain. Remember that each in-game unit can represent tens, hundreds, or even thousands of real-world counterparts.
+Customarily, each civilization starts with two or three female citizens to gather resources and build; two or three citizen soldiers to gather resources, build, and (if needed) early game military defense; and a cavalryman, who serves as a scout to explore undiscovered terrain. Each in-game unit actually represents tens, hundreds, or even thousands of real-world counterparts.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-25.png" alt="Planting the sample Player 1's first resources, namely, a civic center and a few female citizens." caption="Figure 21. Adding sample Player 1's civic center and female citizens" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-25.png" alt="Planting the sample Player 1's first resources, namely, a civic center and a few female citizens." caption="Figure 21. Adding sample Player 1's civic center and female citizens." %}
 
-For the Battle of Bibracte, I need to setup two civilizations: the Romans and the Gauls. For simplicity's sake, I have one player assigned per civilization (two total). I place the Gallic fortress on Mont Beuvray itself and a smaller Roman encampment in a field by the main river to the south, but I give considerably more starting resources to the Romans than to the Gauls.
+For the Battle of Bibracte, you need to setup two civilizations: the Romans and the Gauls. For simplicity's sake, you can assign one player per civilization (two total). Everything that you need to set up a game for two players with the correct civilizations and resources is located in the **Player** tab, whose icon looks like a small human face. First, click that tab. Then, set the number of players to 2. Finally, set Player 1 on Team 1 as the Gauls with the name '[Helvetii](https://en.wikipedia.org/wiki/Helvetii)', and Player 2 on Team 2 as the Romans with the name 'Caesar's [Legions](https://en.wikipedia.org/wiki/Roman_legion)'. Here, I give considerably more starting resources to the Romans than to the Gauls.
 
-Everything that I need to setup a game for two players with the correct civilizations and resources is located in the "Player" tab, whose icon looks like a small human face. First, I click that tab. Then, I set the number of players to 2. Finally, I set Player 1 on Team 1 as the Gauls with the name "Helvetii" and relatively low starting resources and Player 2 on Team 2 as the Romans with the name "Caesar's Legions" and relatively high starting resources:
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-09.png" alt="Adjusting the default player settings in Atlas's Player tab, specifically assigning the name 'Caesar's Legions' to the Roman civilization, assigning that civilization to Player 2 and Team 2, and giving 2000 of each resource to that civilization at the start of the game. Each of these things is available as an easy option inside the Player tab." caption="Figure 22. Adjusting the default player settings in Atlas's Player tab." %}
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-09.png" alt="Adjusting the default player settings in Atlas's Player tab, specifically assigning the name 'Caesar's Legions' to the Roman civilization, assigning that civilization to Player 2 and Team 2, and giving 2000 of each resource to that civilization at the start of the game. Each of these things is available as an easy option inside the Player tab." caption="Figure 22. Adjusting the default player settings in Atlas's Player tab" %}
+Next, switch to the **Object** tab and, at the bottom of the screen, click **Player 2** (the Roman civilization's manager) to make them onwer of the units. In a field by the main river to the south, you can add a Roman '[Castra](https://en.wikipedia.org/wiki/Castra)' (a specialty army camp structure). These are less advanced than civic centers, but allow the creation of citizen soldiers and some siege weapons. Do also place a proper civic center, mainly so that the Romans actually control their own starting territory. Then set a few citizen soldiers and a cavalryman, all filtered by 'rome' in the **Object** tab's search bar:
 
-Next, I switch to the "Object" tab, and on the bottom of the screen, I click "Player 2" to make Player 2, the Roman civilization's manager, the owner of the units. I add a Roman *Castra* (Army Camp, a specialty structure) in the south, which is less advanced than a civic center but allows the creation of citizen soldiers and some siege weapons. I also place a proper civic center, mainly so that the Romans actually control their own starting territory. I set a few citizen soldiers and a cavalryman, all filtered by "rome" in the "Object" tab's search bar:
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-10.png" alt="A zoomed-in view of the terrain showing Rome's starting position to the south of Mont Beuvray. I have placed a Castra, as well as a Civic Center, a few houses, a guard tower, and some starting infantryman and cavalrymen, found filtering Atlas's Object tab to show the units available for Rome." caption="Figure 23. Creating Rome's starting position to the south of Mont Beuvray." %}
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-10.png" alt="A zoomed-in view of the terrain showing Rome's starting position to the south of Mont Beuvray. I have placed a Castra, as well as a Civic Center, a few houses, a guard tower, and some starting infantryman and cavalrymen, found filtering Atlas's Object tab to show the units available for Rome." caption="Figure 23. Creating Rome's starting position to the south of Mont Beuvray" %}
+After switching to Player 1 at the bottom of the screen (in the **Object** tab), place the Gallic Fortress atop Mont Beuvray, and some Gallic infantry [javelineers](https://en.wikipedia.org/wiki/Javelin) (citizen soldiers) and female citizens.
 
-After switching the Player to Player 1 on the bottom of the screen (inside the "Object" tab), I create a Gallic Fortress atop Mont Beuvray, and I place some Gallic infantry javelineers (citizen soldiers) and female citizens.
+If you want to rotate units while placing them, keep the left mouse button pressed and move the cursor up or down. You can also adjust the rotation and location of any unit by clicking the four-way directional icon in Atlas, then clicking on the unit to adjust.
 
-To rotate units while placing them, keep the left mouse button pressed and move it up or down. You also may adjust the rotation and/or location of any placed unit by clicking the four-way directional icon in Atlas and then clicking on the unit whose rotation and/or location you wish to change.
-
-What you might do with these tools will depend on your specific scenario, but the basic steps will be the same
+Although you'll certainly adapt your use of these tools to your own scenario, the basic steps will remain the same.
 
 ### 8. Save the scenario, and distribute it.
 

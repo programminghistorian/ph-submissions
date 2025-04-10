@@ -48,7 +48,7 @@ Após concluir esta lição, estará
 
 O AC/DC é um projeto, já antigo, cujo objetivo é tornar disponíveis corpos para o português. Nesta lição vamos utilizar apenas o corpo [Literateca](https://www.linguateca.pt/acesso/corpus.php?corpus=LITERATECA), que contém mais de 900 obras escritas por mais de 280 escritores de língua portuguesa (o AC/DC faz parte de um projeto maior, a [Linguateca](https://www.linguateca.pt/)).
 
-Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso, o estudo da língua na literatura em português) e classificado (a que, geralmente, se chama de metadadados). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^1] e enriquecidos com anotação semântica adicional, como descrito em Santos (2014).[^2] Em Santos (2021) também são apresentados vários exemplos de uso do AC/DC.[^3]
+Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso, o estudo da língua na literatura em português) e classificado (a que, geralmente, se chama metadadados). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^1] e enriquecidos com anotação semântica adicional, como descrito em Santos (2014).[^2] Em Santos (2021) também são apresentados vários exemplos de uso do AC/DC.[^3]
 
 A procura nos corpos é feita usando o sistema [Open CWB](https://cwb.sourceforge.io/),[^4] que permite gerir e interrogar grandes corpos anotados (contendo até dois biliões de palavras).
 
@@ -71,7 +71,7 @@ Tabela 1: Esta tabela contém um exemplo do texto "Estou sem pilhas!" no formato
 
 Um sistema de interrogação de corpos tem dois modos:
 
-* a identificação do que se procura em contexto (que no AC/DC é, em geral, uma frase), ao que se dá o nome de concordância
+* a identificação do que se procura em contexto (que no AC/DC é, em geral, uma frase), a que se dá o nome de concordância
 * a distribuição quantitativa dos resultados do que se procurou
 
 Assim, para a mesma procura é possível escolher como resultado uma concordância ou a distribuição segundo um dos muitos atributos.
@@ -82,7 +82,8 @@ Assim, para a mesma procura é possível escolher como resultado uma concordânc
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-03.png" alt="Pesquisa pedindo a distribuição por autor da palavra inquietantemente, que só aparece em dois autores" caption="Figura 3. Pesquisa exibindo uma distribuição por autor da palavra 'inquietantemente'." %}
 
-Assim, o AC/DC permite fazer buscas nos textos, bem como identificar em contexto o resultado (para leitura próxima) e produzir um resumo quantitativo (a chamada leitura distante).
+Assim, o AC/DC permite fazer buscas nos textos. Tanto permite identificar em contexto o resultado (para leitura próxima) como produzir um resumo quantitativo (a chamada leitura
+distante).
 
 A sintaxe da procura é muito mais poderosa – além de buscar por palavras, permite pesquisar em todos os atributos e utilizar expressões regulares, quer nos valores dos atributos, quer sobre as próprias unidades.
 
@@ -141,7 +142,7 @@ Mostro aqui o princípio desse ficheiro:
 |A_semana | 533 | MacAss | BR | 533 | 100.00 |
 
 
-A primeira coluna indica o nome da obra; a segunda o número de vezes que uma palavra marcada como sendo do campo semântico de roupa foi encontrada nessa obra; a terceira coluna contém o nome do autor e o nome da variante. As colunas seguintes, relativas à frequência parcial, não são relevantes, visto que não há variação da obra em relação ao autor ou à variante (por exemplo, a obra *O Primo Basílio* é totalmente escrita por Eça de Queirós, na variante de português de Portugal).
+A primeira coluna indica o nome da obra; a segunda o número de vezes que uma palavra marcada como sendo do campo semântico de roupa foi encontrada nessa obra; a terceira coluna contém o nome do autor; e a quarta o nome da variante. As colunas seguintes, relativas à frequência parcial, não são relevantes, visto que não há variação da obra em relação ao autor ou à variante (por exemplo, a obra *O Primo Basílio* é totalmente escrita por Eça de Queirós, na variante de português de Portugal).
 
 Para obter informação extralinguística sobre todas as obras da Linguateca, basta pedir no Distribuidor essa informação da seguinte forma:
 
@@ -149,7 +150,7 @@ Para obter informação extralinguística sobre todas as obras da Linguateca, ba
 obra autor variante data decada
 ```
 
-e guardá-la num ficheiro com um nome apropriado. Escolhemos `distribuicaoObra.tsv`: [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv).
+e guardá-la num ficheiro com um nome apropriado. Escolhemos [`distribuicaoObra.tsv`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv).
 
 É importante esclarecer que algumas obras não possuem uma data específica, apenas o século a que pertencem. Nesse caso, pode-se atribuir uma data aproximada (como o ano 1650 para representar o século XVII) ou remover essas obras do ficheiro antes de processar os dados no R.[^7]
 
@@ -176,7 +177,7 @@ roupaObrasOrdenada<-roupaObras[order(roupaObras$rouparel, decreasing=TRUE),]
 
 De forma resumida, as quatro primeiras linhas leem os ficheiros e atribuem nomes às colunas. A quinta combina a informação das duas folhas de registo numa só. A sexta calcula a frequência relativa de roupa por número de unidades, criando uma nova coluna chamada `rouparel`. Por fim, a sétima linha obtém uma nova folha de registo ordenada pelo peso relativo do vestuário, que está na coluna `rouparel`.
 
-Com os próximos comandos, podemos visualizá-lo num gráfico de barras (Figura 6) e num gráfico de caixa (Figura 7), neste caso para dez autores que têm várias obras na Literateca.
+Com os próximos comandos, podemos visualizar o resultado num gráfico de barras (Figura 6) e num gráfico de caixa (Figura 7), neste caso para dez autores que têm várias obras na Literateca.
 
 ```
 par(mar=c(4,24,2,2)+0.1)
@@ -191,7 +192,7 @@ boxplot(dezautores$rouparel~dezautores$autor, xlab="",ylab="",las=2)
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-07.png" alt="Gráfico de caixa do peso da roupa em dez autores da Literateca, mostrando que Eça de Queirós, José de Alencar e Aluísio de Azevedo são os que mais mencionam roupa" caption="Figura 7. A distribuição de roupa por dez autores na Literateca, num gráfico de caixa." %}
 
-Vemos pelas duas visualizações que, embora as obras com mais menção relativa a roupa fossem contos de Machado de Assis (Figura 6), ao verificar o conjunto das obras (Figura 7) é Eça de Queirós quem dá mais importância a esse campo semântico (a mediana de EcaQue é significativamente mais elevada do que a de MacAss).
+Vemos pelas duas visualizações que, embora as obras com mais menção relativa a roupa fossem contos de Machado de Assis (Figura 6), ao considerar o conjunto das obras (Figura 7) é Eça de Queirós quem dá mais importância a esse campo semântico (a mediana de EcaQue é significativamente mais elevada do que a de MacAss).
 
 Também podemos observar a menção ao campo semântico de vestuário ao longo do tempo. Para isso, usamos a data ou a década a que cada obra pertence (Figura 8).
 
@@ -199,7 +200,7 @@ Também podemos observar a menção ao campo semântico de vestuário ao longo d
 boxplot(roupaObras$rouparel~roupaObras$decada,las=2,xlab="",ylab="")
 ```
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de caixa da roupa por década, mostrando que a partir do fim do século XIX vai aumenta o número de referências" caption="Figura 8. Distribuição de roupa por década na Literateca, num gráfico de caixa." %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de caixa da roupa por década, mostrando que a partir do fim do século XIX vai aumentando o número de referências" caption="Figura 8. Distribuição de roupa por década na Literateca, num gráfico de caixa." %}
 
 Pela figura podemos observar que a partir de 1870 existem muito mais referências ao vestuário na literatura lusófona do que anteriormente.
 
@@ -233,7 +234,7 @@ Relembrando que
 * escolhemos o corpo Literateca
 * escolhemos a opção tsv
 
-e temos de guardar os ficheiros com nomes descritivos. No caso em questão, chamei-lhes `distribuicaoAparenciaDecadaGen.tsv`: [distribuicaoAparenciaDecadaGen.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoAparenciaDecadaGen.tsv); e `distribuicaoPredDecadaGen.tsv`: [distribuicaoPredDecadaGen.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoPredDecadaGen.tsv).
+e temos de guardar os ficheiros com nomes descritivos. No caso em questão, chamei-lhes [`distribuicaoAparenciaDecadaGen.tsv`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoAparenciaDecadaGen.tsv) e [`distribuicaoPredDecadaGen.tsv`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoPredDecadaGen.tsv).
 
 No R, juntamos as duas informações, calculamos o peso relativo da aparência e depois produzimos uma figura que nos mostra a evolução ao longo do tempo:
 
@@ -275,7 +276,7 @@ Aqui, vamos comparar o número de locais empregues por autores diferentes, em ro
 ?variante=/PT/ ?classe=/Prosa:(romance|novela)/ ?sema=/Local:.*/ obra autor
 ```
 
-Vamos visualizá-lo através de um gráfico de caixa no R. De notar que reutilizaremos o ficheiro [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv) que obtivemos anteriormente. Além disso, conforme mencionado acima, editamos as datas marcadas com "séc..." e convertemos para UTF-8 antes de invocar o R.
+Vamos visualizar essa questão através de um gráfico de caixa no R. De notar que reutilizaremos o ficheiro [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv) que obtivemos anteriormente. Além disso, conforme mencionado acima, editamos as datas marcadas com "séc..." e convertemos para UTF-8 antes de invocar o R.
 
 ```
 locais<-read.table("distribuicaoLocaisObra.tsv")
@@ -291,7 +292,7 @@ As primeiras quatro linhas apenas leem e identificam as colunas das folhas de re
 
 Escolhi apresentar na Figura 10 o gráfico das cinquenta obras com mais locais relativos, calculado na sétima linha (depois de ordenar, pedi os casos de 1 a 50).
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-10.png" alt="Gráfico de barras do peso dos locais, mostrando as obras com mais locais relativos" caption="Figura 10. Distribuição de locais por obra (romances e novelas portugueses) na Literateca, num gráfico de barras." %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-10.png" alt="Gráfico de barras do peso dos locais, mostrando as obras com mais locais relativamente" caption="Figura 10. Distribuição de locais por obra (romances e novelas portugueses) na Literateca, num gráfico de barras." %}
 
 É interessante constatar que são os romances históricos e de ficção científica os que mais dão nome a lugares.
 
@@ -312,7 +313,7 @@ Finalmente, apresento um estudo feito no âmbito da dissertação de mestrado de
 
 O seu trabalho é um bom exemplo de como simples tarefas de anotação, em colaboração com o AC/DC, são fáceis de executar e produzem resultados interessantes.
 
-De facto, Marcus apenas mandou um conjunto de lexemas que, segundo ele, estavam associados à cultura grega, e anotámos OBras, o principal corpo de literatura brasileira no AC/DC, com essa informação (com a marcação `helen`). Assim, tornou-se muito fácil medir o peso destas palavras num conjunto de autores brasileiros com obras no OBras.
+De facto, Marcus apenas mandou um conjunto de lexemas que, segundo ele, estavam associados à cultura grega, e anotámos o corpo OBras, o principal corpo de literatura brasileira no AC/DC, com essa informação (com a marcação `helen`). Assim, tornou-se muito fácil medir o peso destas palavras num conjunto de autores brasileiros com obras no OBras.
 
 O leitor é convidado a reproduzir as figuras da dissertação, visto que todos os comandos são apresentados na secção Anexos. Deixa-se para aperitivo a Figura 11, correspondente ao gráfico 3 da página 99.
 

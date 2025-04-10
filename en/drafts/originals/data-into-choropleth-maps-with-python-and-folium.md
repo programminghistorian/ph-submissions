@@ -75,7 +75,7 @@ This lesson uses several Pandas methods, such as:
 
 ### Folium
 
-The main software you'll use in this lesson is [Folium](https://python-visualization.github.io/folium/), a Python library that makes it easy to create a wide variety of Leaflet maps. You won't need to work with HTML, CSS, or JavaScrip: everything can be done within the Python ecosystem. Folium allows you to specify a variety of different basemaps (terrain, street maps, colors) and display data using various visual markers, such as pins or circles. The color and size of these markers can then be customized based on your data. Folium's advanced functions include creating cluster maps and heat maps.
+The main software you'll use in this lesson is [Folium](https://python-visualization.github.io/folium/), a Python library that makes it easy to create a wide variety of Leaflet maps. You won't need to work with HTML, CSS, or JavaScrip: everything can be done within the Python ecosystem. Folium allows you to specify a variety of different basemaps (terrain, street maps, colors) and display data using various visual markers, such as pins or circles. The color and size of these markers can then be customized based on your data. Folium's advanced functions include creating [cluster maps](https://python-visualization.github.io/folium/latest/user_guide/plugins/marker_cluster.html) and [heat maps](https://python-visualization.github.io/folium/latest/user_guide/plugins/heatmap.html).
 
 Folium has a useful [Getting Started guide](https://python-visualization.github.io/folium/latest/getting_started.html) that serves as an introduction to the library. 
 
@@ -410,11 +410,11 @@ The following code then processes the data and turns it into a map (line numbers
 4        key_on = 'feature.properties.FIPS',        
 5        columns = ['FIPS','count'],
 6        bins = 9,
-7        fill_color='OrRd',
-8        fill_opacity=0.8,
-9        line_opacity=0.2,
+7        fill_color = 'OrRd',
+8        fill_opacity = 0.8,
+9        line_opacity = 0.2,
 10       nan_fill_color = 'grey',
-11       legend_name='Number of Fatal Police Shootings (2015-present)'
+11       legend_name = 'Number of Fatal Police Shootings (2015-present)'
 12       ).add_to(baseMap)
 13
 14 baseMap 
@@ -425,13 +425,13 @@ The following code then processes the data and turns it into a map (line numbers
 * Line 3 (`data =`) identifies the source of the data to be analyzed and plotted. This is the `map_df` DataFrame (counting the number of kills above 0 in each county), pulled from the Fatal Force DataFrame `ff_df`.
 * Line 4 (`key_on =`) identifies the field in the GeoJSON data that will be bound (or linked) to the data from the `map_df`. As noted earlier, Folium needs a common column between both DataFrames: here, the `FIPS` column.
 * Line 5 is required because the data source is a DataFrame. The `column =` parameter tells Folium which columns to use.
-  * The first list element is the variable that should be matched with the `key_on=` value.
+  * The first list element is the variable that should be matched with the `key_on =` value.
   * The second element is the variable to be used to draw the choropleth map's colors.
 * Line 6 (`bins =`) specifies how many [bins](https://en.wikipedia.org/wiki/Data_binning) to sort the data values into. (The maximum number is limited by the number of colors in the color palette selected, often 9.)
-* Line 7 (`fill_color=`) specifies the color palette to use. Folium's documentation identifes the following built-in palettes: ‘BuGn’, ‘BuPu’, ‘GnBu’, ‘OrRd’, ‘PuBu’, ‘PuBuGn’, ‘PuRd’, ‘RdPu’, ‘YlGn’, ‘YlGnBu’, ‘YlOrBr’, and ‘YlOrRd’.
-* Lines 8 (`fill_opacity=`) and 9 (`line_opacity=`) specify how opaque the overlay should be. The values range from 0 (transparent) to 1 (completely opaque). I like being able to see through the color layer a bit, so I can see city names, highways, etc.
-* Line 10 (`nan_fill_color=`) tells Folium which color to use for counties lacking data ([NaN](https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html) stands for 'not a number', which is what Pandas uses when missing data). This color should be distinct from the palette colors, so it is clear that data is missing.
-* Line 11 (`legend_name=`) allows you to label the scale. This is optional but helpful, so people know what they're reading.
+* Line 7 (`fill_color =`) specifies the color palette to use. Folium's documentation identifes the following built-in palettes: ‘BuGn’, ‘BuPu’, ‘GnBu’, ‘OrRd’, ‘PuBu’, ‘PuBuGn’, ‘PuRd’, ‘RdPu’, ‘YlGn’, ‘YlGnBu’, ‘YlOrBr’, and ‘YlOrRd’.
+* Lines 8 (`fill_opacity =`) and 9 (`line_opacity =`) specify how opaque the overlay should be. The values range from 0 (transparent) to 1 (completely opaque). I like being able to see through the color layer a bit, so I can see city names, highways, etc.
+* Line 10 (`nan_fill_color =`) tells Folium which color to use for counties lacking data ([NaN](https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html) stands for 'not a number', which is what Pandas uses when missing data). This color should be distinct from the palette colors, so it is clear that data is missing.
+* Line 11 (`legend_name =`) allows you to label the scale. This is optional but helpful, so people know what they're reading.
 * Line 14 simply displays the map:
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-02.gif" alt="Map of the United States showing that map can be moved around and zoom in to see specific regions" caption="Figure 2. A basic interactive Folium choropleth map." %}
@@ -601,7 +601,7 @@ Note that the log values on the scale have been converted to the original (non-l
 
 Figure 5 demonstrates a common characteristic of urban maps: the data tends to correlate closely with population centers. The counties with the largest number of police killings of civilians are those with large populations (Los Angeles, California; Cook, Illinois; Dade, Florida; etc.). The same trend would arise for maps showing ocurrences of [swine flu](https://en.wikipedia.org/wiki/Swine_influenza) (correlated with pig farms), [corn leaf blight](https://en.wikipedia.org/wiki/Northern_corn_leaf_blight_) (correlated with regions that grow corn).
 
-Choropleth maps are often more accurate when they visualize ratios rather than raw values: for example, the number of cases per 100,000 population. Converting the data from values to ratios is called 'normalizing' data. 
+Choropleth maps are often more accurate when they visualize rates rather than raw values: for example, the number of cases per 100,000 population. Converting the data from values to rates is called 'normalizing' data. 
 
 ### Getting County-level Population Data
 
@@ -799,13 +799,13 @@ baseMap
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-09.png" alt="A map of police killings per 100k using a log-scale" caption="Figure 09. The number of police killings per 100k using a log scale." %}
 
-Normalizing the data dramatically changes the appearance of the map. The initial visualization suggested that the problem of police killing civilians was limited to a few counties, generally those with large populations. But when the data is normalized, police killings of civilians seem far more widespread. The counties with the highest rates of killings are those with lower population numbers. Trying to illustrate this issue with charts or tables would not be nearly as effective.
+Normalizing the data dramatically changes the appearance of the map. The initial visualization (Figure 2) suggested that the problem of police killing civilians was limited to a few counties, generally those with large populations. But when the data is normalized, police killings of civilians seem far more widespread. The counties with the highest rates of killings are those with lower population numbers. Trying to illustrate this issue with charts or tables would not be nearly as effective.
 
 ## Adding an Information Box to the Map
 
 In the process of creating the map above (Figure 9), you gathered various useful pieces of information: the number of people killed in each county by police, the county population, the rate of people killed, etc. Folium allows you to display such information in a floating information box (using `folium.GeoJsonTooltip()`) that will show as the user hovers their cursor across the map. This is very helpful, especially when examining areas one may not be familiar with – but it is a little complicated to get set up correctly.
 
-When Folium creates a choropleth map, it generates underlying GeoJSON data about each geographic region. You can see this data by saving it to a variable:
+When Folium creates a choropleth map, it generates underlying GeoJSON data about each geographic region. You can see this data by saving it to a temporary variable – for example `cp`, which you used earlier to create the log scale and which can store data from the `folium.Choropleth()` method for a variety of uses:
 
 ```python
 baseMap = initMap()

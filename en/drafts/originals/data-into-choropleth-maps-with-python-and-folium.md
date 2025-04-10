@@ -355,15 +355,15 @@ map_df
 
 |     |FIPS  |count |
 |:----|:-----|:-----|
-|0    |06037 |302   |
-|1    |04013 |200   |
+|0    |06037 |341   |
+|1    |04013 |224   |
 |.....|......|......|
-|1520 |29083 |1     |
-|1521 |56029 |1     |
+|1591 |01041 |1     |
+|1592 |01039 |1     |
 
-Length: 1522, dtype: int64
+Length: 1593, dtype: int64
 
-This shows that around 50% (1,522 of 3,234) of US counties have had at least one instance of a police officer killing someone.
+This shows that around 50% (1,593 of 3,234) of US counties have had at least one instance of a police officer killing someone.
 
 <div class="alert alert-info">
 Note that while this works in Colab using Pandas version 2.2.2, older versions of Pandas may name the count column '0'. In this case, just rename the column as below:
@@ -484,9 +484,9 @@ Folium does not handle such uneven data distributions very well. Its basic algor
 * Bin 5 (152 - 190) has 0 cases.
 * Bin 6 (190 - 228) has 1 case.
 * Bins 7 and 8 (228 - 304) have 0 cases.
-* Bin 9 (304 - 342) has 1 case.
+* Bin 9 (304 - 341) has 1 case.
 
-Because the scale needs to cover all cases (0 to 342 killings), when the vast majority of cases are contained in just one or two bins, the map becomes somewhat uninformative: bins 4 - 9 are shown, but represent only 4 counties combined.
+Because the scale needs to cover all cases (0 to 341 killings), when the vast majority of cases are contained in just one or two bins, the map becomes somewhat uninformative: bins 4 - 9 are shown, but represent only 4 counties combined.
 
 There are solutions to this problem, but none are ideal; some work better with some distributions of data than others. Mapmakers may need to experiment to see what map works best for a given set of data.
 
@@ -531,7 +531,7 @@ baseMap
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-04.png" alt="A choropleth map of the US showing how the Fisher-Jenks algorithm creates different bins of data" caption="Figure 4. The map colorized by the Fisher-Jenks algorithm." %}
 
-This is already an improvement: the map shows a better range of contrasts. A higher number of counties outside the Southwest where police have killed several people (Florida, the Northwest, etc.) are now visible. However, the scale is almost impossible to read! The algorithm correctly found natural breaks – most of the values are less than 76 – but at the lower end of the scale, the numbers are illegible.
+This is already an improvement: the map shows a better range of contrasts. A higher number of counties outside the Southwest where police have killed several people (Florida, the Northwest, etc.) are now visible. However, the scale is almost impossible to read! The algorithm correctly found natural breaks – most of the values are less than 92 – but at the lower end of the scale, the numbers are illegible.
 
 ### Solution 2: Creating a Logarithmic Scale
 

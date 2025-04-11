@@ -428,7 +428,7 @@ The following code then processes the data and turns it into a map (line numbers
   * The first list element is the variable that should be matched with the `key_on =` value.
   * The second element is the variable to be used to draw the choropleth map's colors.
 * Line 6 (`bins =`) specifies how many [bins](https://en.wikipedia.org/wiki/Data_binning) to sort the data values into. (The maximum number is limited by the number of colors in the color palette selected, often 9.)
-* Line 7 (`fill_color =`) specifies the color palette to use. Folium's documentation identifes the following built-in palettes: ‘BuGn’, ‘BuPu’, ‘GnBu’, ‘OrRd’, ‘PuBu’, ‘PuBuGn’, ‘PuRd’, ‘RdPu’, ‘YlGn’, ‘YlGnBu’, ‘YlOrBr’, and ‘YlOrRd’.
+* Line 7 (`fill_color =`) specifies the color palette to use. Folium's [documentation](https://python-visualization.github.io/folium/latest/reference.html#module-folium.features) identifes the following built-in palettes: ‘BuGn’, ‘BuPu’, ‘GnBu’, ‘OrRd’, ‘PuBu’, ‘PuBuGn’, ‘PuRd’, ‘RdPu’, ‘YlGn’, ‘YlGnBu’, ‘YlOrBr’, and ‘YlOrRd’.
 * Lines 8 (`fill_opacity =`) and 9 (`line_opacity =`) specify how opaque the overlay should be. The values range from 0 (transparent) to 1 (completely opaque). I like being able to see through the color layer a bit, so I can see city names, highways, etc.
 * Line 10 (`nan_fill_color =`) tells Folium which color to use for counties lacking data ([NaN](https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html) stands for 'not a number', which is what Pandas uses when missing data). This color should be distinct from the palette colors, so it is clear that data is missing.
 * Line 11 (`legend_name =`) allows you to label the scale. This is optional but helpful, so people know what they're reading.

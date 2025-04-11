@@ -63,7 +63,7 @@ Afin de pouvoir suivre la leçon, il est nécessaire d'avoir :
 
 ### Qu'est ce que Plotly ? 
 
-Plotly est une société qui fournit un certain nombre de bibliothèques *open source* permettant aux utilisateurs de construire des visualisations interactives. Celles réalisées avec Plotly se démarquent des images statiques de par leur interactivité, à l'aide de boutons, d'outils pour se déplacer et zoomer, de visualisation en mosaïque et bien plus encore. Les bibliothèques Plotly sont disponibles à la fois en Python - le sujet de cette leçon - ainsi que dans d'autres langages de programmation comme R et Julia[^footnote_1]. Les librairies de Plotly permettent de réaliser une large variété de visualisations et ce à de nombreuses fins : statistiques, scientifiques, financières ou géographiques. Ces visualisations peuvent être affichées de plusieurs manières : à travers des *notebooks Jupyter*, des pages web (HTML) ou dans des applications web développées avec l'environnement Dash de Plotly. Il est aussi possible d'exporter les visualisations sous forme d'images statiques (non interactives) en pixels (*raster*) ou en vectoriel ou vectorielles.
+Plotly est une société qui fournit un certain nombre de bibliothèques *open source* permettant aux utilisateurs de construire des visualisations interactives. Celles réalisées avec Plotly se démarquent des images statiques de par leur interactivité, à l'aide de boutons, d'outils pour se déplacer et zoomer, de visualisation en mosaïque et bien plus encore. Les bibliothèques Plotly sont disponibles à la fois en Python - le sujet de cette leçon - ainsi que dans d'autres langages de programmation comme R et Julia.[^1] Les librairies de Plotly permettent de réaliser une large variété de visualisations et ce à de nombreuses fins : statistiques, scientifiques, financières ou géographiques. Ces visualisations peuvent être affichées de plusieurs manières : à travers des *notebooks Jupyter*, des pages web (HTML) ou dans des applications web développées avec l'environnement Dash de Plotly. Il est aussi possible d'exporter les visualisations sous forme d'images statiques (non interactives) en pixels (*raster*) ou en vectoriel ou vectorielles.
 
 > Tout le long de cette leçon, les visualisations générées à l'aide de Plotly seront affichées comme des images statiques. Pour utiliser les fonctionnalités interactives il faudra cliquer sur l'image ou bien le lien dans la description de l'image.
 
@@ -75,9 +75,7 @@ Il s'agit essentiellement de 3 modules distincts - dont les fonctionnalités peu
 
 - Plotly Express (`plotly.express` souvent importé avec l'alias `px`) est une interface de représentation graphique de haut niveau, facile à prendre en main, et qui permet de créer près de 30 différents types de représentations. Le module fournit des fonctions permettant de créer des visualisations avec une seule ligne de code (bien que plusieurs lignes de code sont nécessaires à la personnalisation de certains éléments), rendant les visualisations rapides et faciles à créer. Puisque `plotly.px` est une interface "de haut niveau", cela signifie que l’utilisateur.ice n’a pas besoin de s'attarder sur la structure sous-jacente des visualisations Plotly recommande aux débutant.e.s de commencer avec Express avant de travailler avec Plotly Graph Objects.
 - Les objets graphiques de Plotly - associés aux module Plotly Graph Objects (`plotly.graph_objects` souvent importé avec l'alias `go`) sont les véritables objets que Plotly créé lorsque l'on fait appel à Plotly Express. Plotly génère des Graph Objects pour garder en mémoire les données de la visualisation. Ces données incluent les informations à visualiser avec de nombreux autres attributs telles que les couleurs, formes et tailles des objets. Il est alors possible de créer une visualisation plus finement avec Plotly Graph Objects. Il est d'ailleurs possible de recréer n'importe quelle figure créée par Plotly Express à l'aide de Plotly Graph Objects. Il est, en général, recommandé d'utiliser Plotly Express là où c'est possible pour réduire le nombre de lignes de code. En revanche, comme nous le verrons par la suite, le recours seul à Plotly Express est impossible et il faudra nécessairement passer par Plotly Graph Objects.
-- Le module Plotly Dash (importé avec l'alias `dash`) est un environnement pour créer des applications web interactives (typiquement des dashboard) qui peuvent être incrustées dans des sites web et autres plateformes. on ajoute souvent des figures créées avec `plotly.px` `plotly.go` dans les applications Dash, faisant des modules de Plotly la boîte à outils parfaite pour créer, manipuler et publier des représentations graphiques interactives de nos données. Plotly Dash est construit sur `React.js` et `Plotly.js` afin de rendre possible l'intégration sur internet, cela signifie que les utilisateur.ice.s n'ont pas besoin de connaissances en Javascript, CSS ou HTML (seulement en Python)[^footnote_2].
-
-[^footnote_1]: `Plotly.Dash` est en dehors du cadre de cette leçon, qui se concentre plutôt sur Plotly Express et Plotly Graph Objects
+- Le module Plotly Dash (importé avec l'alias `dash`) est un environnement pour créer des applications web interactives (typiquement des dashboard) qui peuvent être incrustées dans des sites web et autres plateformes. on ajoute souvent des figures créées avec `plotly.px` `plotly.go` dans les applications Dash, faisant des modules de Plotly la boîte à outils parfaite pour créer, manipuler et publier des représentations graphiques interactives de nos données. Plotly Dash est construit sur `React.js` et `Plotly.js` afin de rendre possible l'intégration sur internet, cela signifie que les utilisateur.ice.s n'ont pas besoin de connaissances en Javascript, CSS ou HTML (seulement en Python).[^2]
 
 Plotly fournit une documentation complète pour travailler avec Express et Graph Objects ainsi que pour utiliser Dash.
 
@@ -85,39 +83,29 @@ Plotly fournit une documentation complète pour travailler avec Express et Graph
 
 Il existe actuellement une pléthore de librairies graphique disponibles sous python comme **Matplotlib**, **Seaborn**, **Bokeh** ou **Pygal**. chaque librairie présente des avantages. Selon le cas d'utilisation, les goûts esthétiques ou la facilité d'utilisation, tous ces points sont des critères qui permettent de choisir une librairie plutôt qu'une autre. Les avantages principaux de Plotly sont :
 
-- Plotly est l'un des seuls package qui est spécifiquement tourné vers les représentations interactives. Matplotlib et Pygal ne fournissent que très peu de fonctionnalités interactives. Bokeh[^footnote_3] est aussi prévu pour l'interactivité et se présente comme une alternative viable.
+- Plotly est l'un des seuls package qui est spécifiquement tourné vers les représentations interactives. Matplotlib et Pygal ne fournissent que très peu de fonctionnalités interactives. Bokeh[^3] est aussi prévu pour l'interactivité et se présente comme une alternative viable.
 - Plotly est la seule bibliothèque de Python qui assure à la fois une création de visualisations et une intégration dans des pages web simple.
 - Plotly intègre parfaitement les objets de Pandas (par exemple, on peut directement passer des `pandas.Dataframe` aux objets graphiques de Plotly)
 - Des visualisations 3D interactives sont disponibles (ce qui n'est pas le cas des autres librairies)
 - Plotly est simple d'utilisation, les animations et les menus déroulants sont relativement simples à utiliser
-
-[^footnote_2]: Pour plus d'informations sur Bokeh, voir la leçon de Charlie Harper sur [Visualizing Data with Bokeh and Pandas](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) dans la revue *Programming Historian*.
 
 ## Données utilisées comme exemple
 
 > **Message au rédacteur 2**<br>
 > Les données sont modifiées par rapport à la leçon originale pour s'adapter au contexte francophone.
 
-Le jeu de données utilisé pour cette leçon est issu de l'article "La Part Du Genre. Genre Et Approche Intersectionnelle Dans Les Sciences Sociales Françaises Au Xxie Siècle"[^footnote_3]. Celui-ci étudie la part des articles portant sur différentes thématiques, notamment le concept de genre, dans les publications scientifiques de sciences sociales françaises sur les vingt dernières années. Les données de l'enquête ont été rendues publiques dans une démarche de science ouverte, et sont disponibles [ici](https://osf.io/preprints/socarxiv/qamux_v1). La leçon se concentre plus spécifiquement sur le nombre d'articles publiés dans chaque discipline sur la période 2001-2023, ainsi que l'évolution des proportions d'articles mentionnant le genre ou la classe, mises en perspective avec d'autres critères comme le genre des auteur.ice.s.
-
-[^footnote_3]: Ollion, Etienne, Julien Boelaert, Samuel Coavoux, Estelle Delaine, Altaïr Desprès, Sibylle Gollac, Narguesse Keyhani, et al. 2025. “La Part Du Genre. Genre Et Approche Intersectionnelle Dans Les Sciences Sociales Françaises Au Xxie Siècle.” SocArXiv. March 19. doi:10.31235/osf.io/qamux_v1.
+Le jeu de données utilisé pour cette leçon est issu de l'article "La Part Du Genre. Genre Et Approche Intersectionnelle Dans Les Sciences Sociales Françaises Au Xxie Siècle".[^3] Celui-ci étudie la part des articles portant sur différentes thématiques, notamment le concept de genre, dans les publications scientifiques de sciences sociales françaises sur les vingt dernières années. Les données de l'enquête ont été rendues publiques dans une démarche de science ouverte, et sont disponibles [ici](https://osf.io/preprints/socarxiv/qamux_v1). La leçon se concentre plus spécifiquement sur le nombre d'articles publiés dans chaque discipline sur la période 2001-2023, ainsi que l'évolution des proportions d'articles mentionnant le genre ou la classe, mises en perspective avec d'autres critères comme le genre des auteur.ice.s.
 
 ## Construire des visualisations avec Plotly Express
 
 ### Configurer Plotly Express
 
-1. Avant de commencer, vous aurez besoin d'installer 3 modules à votre environnement[^footnote_4].
+1. Avant de commencer, vous aurez besoin d'installer 3 modules à votre environnement.[^4]
 	- Plotly : dans votre terminal, entrez `pip install plotly`
-	- pandas : dans votre terminal entrez `pip install pandas`[^footnote_5]
-	- Kaleido : dans votre terminal entre `pip install kaleido`[^footnote_6]
+	- pandas : dans votre terminal entrez `pip install pandas`[^5]
+	- Kaleido : dans votre terminal entre `pip install kaleido`[^6]
 2. Maintenant que ces packages sont installés, créez un nouveau Jupyter notebook (ou un nouveau fichier python dans votre logiciel d'édition de code). Idéalement, placez votre jeu de donnée et votre fichier python / notebook dans le même dossier.
 3. Importez les modules à l'aide de la commande `import` au début de votre fichier : 
-
-[^footnote_4]: Si vous travaillez avec des notebooks Jupiter, il y a une bonne chance que certaines dépendances soient déjà installées. En revanche, si vous travaillez avec un nouvel environnement Python ou dans un logiciel d'édition de code comme VS Code, il sera peut être nécessaire d'installer `ipykernel` (`pip install ipykernel`) et `nbformat` (`pip install nbformat`).
-
-[^footnote_5]: Nous utiliserons aussi Numpy mais cette librairie est automatiquement téléchargée avec l'installation de Pandas.
-
-[^footnote_6]: Kaleido est une bibliothèque python de génération d'images statiques (comme les formats JPG et SVG) et sera donc nécessaire pour exporter des visualisations statiques.
 
 ```python
 import numpy as numpy
@@ -203,7 +191,7 @@ fig.show()
     <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-01.png" alt="Bar graph plotting Charge on the x axis, against Size on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Sizes range from 0 to 500.">
 	</a>
 <figcaption>
-    <p>Figure 1. Un diagramme en barres avec une interactivité simple en utilisant Plotly Express. Si les lecteur.ice.s survolent les barres, on peut y voir apparaître des boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-01.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 1. Un diagramme en barres avec une interactivité simple en utilisant Plotly Express. Si les lecteur.ice.s survolent les barres, on peut y voir apparaître des boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-01.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -232,7 +220,7 @@ fig.show()
     <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-02.png" alt="Bar graph plotting Charge on the x axis, against Count on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 500. Each bar now has its own different color. The graph also features a legend which defines its color attributes.">
 	</a>
 <figcaption>
-    <p>Figure 2. Un diagramme en barres avec une interactivité simple en utilisant Plotly Express. Cette visualisation est une variante de la Figure 1 avec cette fois-ci des couleurs et une légende interactive qui permet aux lecteur.ice.s d'isoler ou bien de retirer des données. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-02.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 2. Un diagramme en barres avec une interactivité simple en utilisant Plotly Express. Cette visualisation est une variante de la Figure 1 avec cette fois-ci des couleurs et une légende interactive qui permet aux lecteur.ice.s d'isoler ou bien de retirer des données. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-02.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -273,7 +261,7 @@ fig.show()
     <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-03.png" alt="Line graph plotting Charges over time. The x axis is labeled with Years 1905 to 1930, while the y axis is labeled with Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. The graph also features a legend which defines its color attributes.">
 	</a>
 <figcaption>
-    <p>Figure 3. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 3. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -295,7 +283,7 @@ fig.show()
     <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-04.png" alt="Line graph plotting Charges over time. The x axis is labeled with Years 1905 to 1930, while the y axis is labeled Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. The graph also features a legend which defines its color attributes and an embedded title, which reads: Fig. 4: a formatted title!">
 	</a>
 <figcaption>
-    <p>Figure 4. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. Cette visualisation est une variante de la Figure 3 avec des polices d'écriture, couleurs et titre différent. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 4. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. Cette visualisation est une variante de la Figure 3 avec des polices d'écriture, couleurs et titre différent. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -331,7 +319,7 @@ fig.show()
     <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-05.png" alt="Scatterplot graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labeled Age of Accused 10 to 100, while the y axis is labeled Victim Age 0 to 90. The graph's legend defines its color attributes.">
 	</a>
 <figcaption>
-    <p>Figure 5. Nuage de points avec une interactivité simple. Survoler un point du jeu de donnée permet d'afficher la discipline ainsi que la proportion d'articles mentionnant le genre, puis la classe pour une revue (non affichée) donnée. De plus, la légende interactive permet d'isoler, comparer, retirer des catégories de points. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-05.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 5. Nuage de points avec une interactivité simple. Survoler un point du jeu de donnée permet d'afficher la discipline ainsi que la proportion d'articles mentionnant le genre, puis la classe pour une revue (non affichée) donnée. De plus, la légende interactive permet d'isoler, comparer, retirer des catégories de points. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-05.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -363,7 +351,7 @@ fig.show()
     <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-06.png" alt="A pair of bar graphs plotting prosecution Counts for each Weapon type. The x axes are labeled Weapon, and the y axes are labeled Size (representing prosecution count). The Weapon types include guns, knives, and poison. The counts range from 0 to 250. The left graph shows Counts for gender of accused - Female, while the right graph shows counts for gender of accused - Male. The graph's legend defines its color attributes.">
 	</a>
 <figcaption>
-    <p>Figure 6. Une mosaïque de 2 diagrammes en barres avec une interactivité simple créée avec Plotly Express en distinguant les articles écrits par une majorité de femmes et ceux écrits par une majorité d'hommes. La légende interactive permet aussi d'isoler, comparer ou retirer certaines disciplines. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-06.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 6. Une mosaïque de 2 diagrammes en barres avec une interactivité simple créée avec Plotly Express en distinguant les articles écrits par une majorité de femmes et ceux écrits par une majorité d'hommes. La légende interactive permet aussi d'isoler, comparer ou retirer certaines disciplines. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-06.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -399,7 +387,7 @@ fig.show()
     <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-07.png" alt="Amimated bar graph plotting Counts of homicide according to the Gender of accused assailants. The x axis is labeled Gender of Accused, and the y axis is labeled Count. A legend defines the bar graph's color attributes. Beneath the bar graph, there are Play and Stop buttons alongside a slider labeled with Years from 1902 to 1930. Upon initial click, the slider node is positioned at the year 1902.">
 	</a>
 <figcaption>
-    <p>Figure 7. Diagramme en barres animé associé à une barre de défilement créés grâce à Plotly Express. Comme précédemment, les lecteur.ice.s peuvent survoler les barres pour faire apparaître des boîtes flottantes. Les lecteur.ice.s peuvent appuyer sur les boutons play/pause ou utiliser la barre de défilement pour naviguer à travers les années. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-07.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 7. Diagramme en barres animé associé à une barre de défilement créés grâce à Plotly Express. Comme précédemment, les lecteur.ice.s peuvent survoler les barres pour faire apparaître des boîtes flottantes. Les lecteur.ice.s peuvent appuyer sur les boutons play/pause ou utiliser la barre de défilement pour naviguer à travers les années. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-07.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -526,7 +514,7 @@ fig.show()
     <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-08.png" alt="Scatterplot graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labeled Age of Accused 10 to 100, while the y axis is labeled Victim Age 0 to 90. The graph's legend defines its color attributes. A dropdown filter offers readers the option to isolate each category of Charge or display All Charges.">
 	</a>
 <figcaption>
-    <p>Figure 8. Nuage de points avec un filtre interactif sous la forme d'un menu déroulant créé grâce à Plotly Express. Cette figure contient une légende interactive qui permet au lecteur d'isoler, comparer et retirer des données. De plus survoler des points permet de faire apparaître des boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-08.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 8. Nuage de points avec un filtre interactif sous la forme d'un menu déroulant créé grâce à Plotly Express. Cette figure contient une légende interactive qui permet au lecteur d'isoler, comparer et retirer des données. De plus survoler des points permet de faire apparaître des boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-08.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -651,7 +639,7 @@ fig.show()
         whereas the lower bar shows the number of female accused.">
 	</a>
 <figcaption>
-    <p>Figure 9. Diagramme en barres horizontal avec une interactivité simple créé avec Plotly Graph Objects. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-09.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 9. Diagramme en barres horizontal avec une interactivité simple créé avec Plotly Graph Objects. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-09.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -677,7 +665,7 @@ fig.show()
         lower bar shows the number of female accused.">
 	</a>
 <figcaption>
-    <p>Figure 10. Diagramme en barres horizontal avec une interactivité simple créé avec `Plotly Express`. Les lecteurices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 10. Diagramme en barres horizontal avec une interactivité simple créé avec `Plotly Express`. Les lecteurices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -729,7 +717,7 @@ fig.show()
              Weapon, and Gang.">
 	</a>
 <figcaption>
-    <p>Figure 11. Tableau contenant les données de nos articles et créé avec Plotly Graph Object. Les Lecteur.ices peuvent faire défiler toutes les entrées du jeu de donnée comme iels le feraient dans un tableur. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-11.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 11. Tableau contenant les données de nos articles et créé avec Plotly Graph Object. Les Lecteur.ices peuvent faire défiler toutes les entrées du jeu de donnée comme iels le feraient dans un tableur. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-11.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -741,7 +729,7 @@ Une autre fonctionnalité très utile de `plotly.go` est le fait de pouvoir cré
 
 Puisque le code est particulièrement long pour créer des compositions de figures, cet exemple sera présenté pas à pas. Nous créerons une grille de 3x1 contenant 3 différentes figures : le premier sera un diagramme en barres standard pour quantifier le nombre d'articles mentionnant le genre à travers les disciplines; le deuxième sera une courbe affichant l'évolution de la part des articles mentionnaient le genre à travers les années. Enfin la dernière figure sera un diagramme en boîte (avec la représentation du minimum, maximum, interquartile d'une distribution) sur la distribution de la part d'auteurices dans les articles en fonction de si l'article est écrit en écriture inclusive ou non.
 
-##### Étape 1 : importer le module subplots et préparer les données
+**Étape 1 : importer le module subplots et préparer les données**
 
 ```python
 # Importer make_subplots
@@ -762,14 +750,14 @@ pourcentage_d_auteurice_femme_si_genre = df.\
     groupby("genre")
 ```
 
-##### Étape 2 : Création d'une composition de sousfigures vide avec une grille 3x1 grâce à la fonction `make_subplots`
+**Étape 2 : Création d'une composition de sousfigures vide avec une grille 3x1 grâce à la fonction `make_subplots`**
 
 ```python
 # 1 ligne, 3 colonnes
 fig = make_subplots(rows = 1, cols = 3)
 ```
 
-##### Étape 3 création de la première figure (le diagramme en barres) grace à la méthode `.add_trace()`
+**Étape 3 création de la première figure (le diagramme en barres) grace à la méthode `.add_trace()`**
 
 ```python
 fig.add_trace(
@@ -794,7 +782,7 @@ fig.add_trace(
         right) Female and Male.">
 	</a>
 <figcaption>
-    <p>Figure 12. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, et deux colonnes vides sur la droite. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-12.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 12. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, et deux colonnes vides sur la droite. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-12.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -805,7 +793,7 @@ fig.add_trace(
 
 > **Nota : si vous créez une composition de figure dans un Notebook Jupyter, relancer le code pourrait dupliquer la trace que vous venez d'ajouter et donc doubler la légende. Si vous avez besoin de relancer le code, il vaudrait mieux relancer à partir de la cellule qui définit la variable `fig` que vous modifiez.**
 
-##### Étape 4 : Ajouter la seconde figure (courbe)
+**Étape 4 : Ajouter la seconde figure (courbe)**
 
 ```python
 # Pour chaque discipline il faut créer un objet go.Scatter différent afin de créer 
@@ -840,11 +828,11 @@ for discipline, df_discipline in proportion_d_articles_mentionnant_le_genre_par_
         chart and the lines in the line chart.">
 	</a>
 <figcaption>
-    <p>Figure 13. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et une colonnes vide sur la droite. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-13.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 13. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et une colonnes vide sur la droite. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-13.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
-##### Étape 5 : Ajouter la dernière figure (diagramme en boîte)
+**Étape 5 : Ajouter la dernière figure (diagramme en boîte)**
 
 Nous n'avons pas encore exploré les diagrammes en boîte (*boxplot*), mais ils sont créés de la même manière que les autres figures et ont une interactivité native similaire (survoler une boîte nous montrera la valeur minimum, maximum, médiane, et les interquartiles des données affichées).
 
@@ -880,11 +868,11 @@ fig.add_trace(
         labels for all three subplots.">
 	</a>
 <figcaption>
-    <p>Figure 14. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux boîtes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-14.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 14. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux boîtes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-14.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
-##### Étape 6 : formattage de la Figure
+**Étape 6 : formattage de la Figure**
 
 Il est nécessaire d'ajuster certains paramètres, comme ajouter un titre général à la figure et des sous-titres pour tous les sous-figures. Vous pourriez aussi vouloir changer la police d'écriture, changer la position du texte, la taille de la figure -- vous pouvez utiliser la méthode `.update_layout()` pour changer toutes ces propriétés :
 
@@ -929,12 +917,12 @@ fig.update_layout(
         right).">
 	</a>
 <figcaption>
-    <p>Figure 15. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 14 avec une personalisation avancée. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-15.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 15. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 14 avec une personalisation avancée. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-15.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
 
-##### Étape 7 : Ajout d'annotations aux courbes
+**Étape 7 : Ajout d'annotations aux courbes**
 
 Puisque la légende a été retirée, il est impossible de sitinguer une discipline des autres. Nous pouvons utiliser la méthode `.update_layout` pour ajouter des flèches pointant vers chaque ligne avec une annotation : 
 
@@ -992,11 +980,11 @@ fig.update_layout(
         subplot (from left to right).">
 	</a>
 <figcaption>
-    <p>Figure 16. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 15 des annotations pour repérer les courbes du sous-figure du milieu. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-16.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 16. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 15 des annotations pour repérer les courbes du sous-figure du milieu. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-16.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
-#### Étape 8 : Ajout d'annotations en dessous de la figure 
+**Étape 8 : Ajout d'annotations en dessous de la figure**
 
 Nous pourrions avoir besoin d'ajouter des annotations en dessous de la figure pour spécifier la direction choisie pour notre analyse (cela s'avère très utile lorsqu'on publie des articles académiques), ce qui peut être fait grâce à la méthode `.add_annotation()`:
 
@@ -1038,7 +1026,7 @@ fig.add_annotation(
         (left); male vs. female suspects over time (middle); age distributions of male vs. female suspects (right).">
 	</a>
 <figcaption>
-    <p>Figure 17. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 16 avec des annotations supplémentaires sous les figures. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 17. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 16 avec des annotations supplémentaires sous les figures. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -1075,7 +1063,7 @@ fig.show()
         Manslaughter and Murder, and the Sizes range from 0 to 500.">
 	</a>
 <figcaption>
-    <p>Figure 18. Reproduction de la Figure 3, illustrant la fonction fig.show(). <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 18. Reproduction de la Figure 3, illustrant la fonction fig.show(). <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -1135,6 +1123,15 @@ Plotly offre la possibilité de créer des images de qualité, interactives en u
 
 ## Notes de fin
 
-[^1]: 
+[^1]: `Plotly.Dash` est en dehors du cadre de cette leçon, qui se concentre plutôt sur Plotly Express et Plotly Graph Objects
 
-[^2]: 
+[^2]: Pour plus d'informations sur Bokeh, voir la leçon de Charlie Harper sur [Visualizing Data with Bokeh and Pandas](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) dans la revue *Programming Historian*.
+
+[^3]: Ollion, Etienne, Julien Boelaert, Samuel Coavoux, Estelle Delaine, Altaïr Desprès, Sibylle Gollac, Narguesse Keyhani, et al. 2025. “La Part Du Genre. Genre Et Approche Intersectionnelle Dans Les Sciences Sociales Françaises Au Xxie Siècle.” SocArXiv. March 19. doi:10.31235/osf.io/qamux_v1.
+
+[^4]: Si vous travaillez avec des notebooks Jupiter, il y a une bonne chance que certaines dépendances soient déjà installées. En revanche, si vous travaillez avec un nouvel environnement Python ou dans un logiciel d'édition de code comme VS Code, il sera peut être nécessaire d'installer `ipykernel` (`pip install ipykernel`) et `nbformat` (`pip install nbformat`).
+
+[^5]: Nous utiliserons aussi Numpy mais cette librairie est automatiquement téléchargée avec l'installation de Pandas.
+
+[^6]: Kaleido est une bibliothèque python de génération d'images statiques (comme les formats JPG et SVG) et sera donc nécessaire pour exporter des visualisations statiques.
+

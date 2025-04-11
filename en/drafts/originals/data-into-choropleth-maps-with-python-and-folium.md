@@ -452,17 +452,17 @@ map_df.describe()
 
 | |count|
 |:----|:----|
-|count|1596.000000|
+|count|1593.000000|
 |mean|5.406642|
 |std|14.2966701|
 |min|1.000000|
 |25%|1.000000|
 |50%|2.000000|
 |75%|5.000000|
-|max|342.000000|
+|max|341.000000|
 
 This shows:
-1. 1,596 counties (out of the 3,142) have reported at least one police killing.
+1. 1,593 counties (out of the 3,142) have reported at least one police killing.
 1. At least 75% of these 1,596 counties have had 5 or fewer killings. Thus, there must be a few counties in the top quartile that have had many more killings.
 
 A [boxplot](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.boxplot.html) is a useful tool for visualizing this distribution:
@@ -475,7 +475,7 @@ map_df.boxplot(vert=False)
 
 Although imperfect, this allows us to see that there are fewer than ten counties in which police have killed more than ~75 civilians.
 
-Folium does not handle such uneven data distributions very well. Its basic algorithm divides the data range into a number of equally sized 'bins'. This is set to 9 (in Line 6 above), so each bin is about 38 units wide ($$342 / 9 = 38$$).
+Folium does not handle such uneven data distributions very well. Its basic algorithm divides the data range into a number of equally sized 'bins'. This is set to 9 (in Line 6 above), so each bin is about 38 units wide ($$341 / 9 = 37.8$$).
 
 * Bin 1 (0 - 38) contains almost all the data (since 75% of all all values are 5 or less).
 * Bin 2 (38 - 76) contains almost all the remaining data, judging by the boxplot in Figure 3.
@@ -535,7 +535,7 @@ This is already an improvement: the map shows a better range of contrasts. A hig
 
 ### Solution 2: Creating a Logarithmic Scale
 
-Logarithmic scales are useful when the data is not normally distributed. The [definition of a logarithm](http://www.mclph.umn.edu/mathrefresh/logs3.html) is $$b^r = a$$ or $$\log_b a = r$$. That is, the log value is the exponent $$r$$ to which the base number $$b$$ should be raised to equal the original value $$a$$.
+Logarithmic scales are useful when the data is not normally distributed. The [definition of a logarithm](http://www.mclph.umn.edu/mathrefresh/logs3.html) is $$b^r = a$$ or $$\log_b a = r$$. That is, the log value is the exponent, $$r$$, to which the base number, $$b$$, should be raised to equal the original value, $$a$$.
 
 For base 10, this is easy to calculate: 
 
@@ -615,7 +615,7 @@ Depending on the research question/goal, it could be problematic to group severa
 
 ```python
 #url = 'https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/totals/co-est2019-alldata.csv'
-url = 'https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/co-est2019-alldata.csv'
+url = 'https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/co-est2019-alldata.csv'
 
 pop_df = pd.read_csv(url,
                      usecols = ['STATE','COUNTY','POPESTIMATE2019'],
@@ -683,7 +683,7 @@ The snippet of `map_df` above shows that it contains all the columns you've adde
 
 ### Calculating the Rate of People Killed (per 100k)
 
-You can now use the code below to calculate the number of people killed per 100,000 people within each county. It divides the kill `count` variable by the county population over 100,000, and stores it in the new column **count_per_100k**:
+You can now use the code below to calculate the number of people killed per 100,000 people within each county. It divides the `count` variable by the county population over 100,000, and stores it in the new column **count_per_100k**:
 
 ```python
 map_df['count_per_100k'] = map_df['count'] / (map_df['POPESTIMATE2019']/100000)
@@ -734,12 +734,12 @@ Now, high population counties (like Los Angeles and Cook) don't appear so bad. I
 ```python
 map_df['count_per_100k'].describe()
 
-    count    1521.000000
-    mean        5.496997
-    std         6.162703
+    count    1592.000000
+    mean        5.478997
+    std         6.133703
     min         0.179746
     25%         2.164490
-    50%         3.813155
+    50%         3.793155
     75%         6.634455
     max        71.123755
     Name: count_per_100k, dtype: float64
@@ -805,7 +805,7 @@ Normalizing the data dramatically changes the appearance of the map. The initial
 
 In the process of creating the map above (Figure 9), you gathered various useful pieces of information: the number of people killed in each county by police, the county population, the rate of people killed, etc. Folium allows you to display such information in a floating information box (using `folium.GeoJsonTooltip()`) that will show as the user hovers their cursor across the map. This is very helpful, especially when examining areas one may not be familiar with – but it is a little complicated to get set up correctly.
 
-When Folium creates a choropleth map, it generates underlying GeoJSON data about each geographic region. You can see this data by saving it to a temporary variable – for example `cp`, which you used earlier to create the log scale and which can store data from the `folium.Choropleth()` method for a variety of uses:
+When Folium creates a choropleth map, it generates underlying GeoJSON data about each geographic region. You can see this data by saving it to a temporary variable such as `cp`. This variable was used earlier to create the log scale; it can be used again to store data from the `folium.Choropleth()` method for other uses:
 
 ```python
 baseMap = initMap()
@@ -824,6 +824,8 @@ cp = folium.Choropleth( # <- add the 'cp' variable
         ).add_to(baseMap)
 
 ```
+
+Here's what some of the GeoJson data looks like:
 
 ```python
 [{'id': '0',
@@ -904,7 +906,7 @@ In the example just above, you only reported the number of police killings (`cou
 * The county name (already in the `cp.GeoJson` property dictionary)
 * The number of people killed by police
 * The county's population
-* The number of kills per 100k population
+* The number of people killed per 100k population
 
 The last two variables also need to be added to the `cp.GeoJson` property dictionary:
 

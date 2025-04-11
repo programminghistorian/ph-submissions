@@ -187,11 +187,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-01.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-01.png" alt="Bar graph plotting Charge on the x axis, against Size on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Sizes range from 0 to 500.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-01.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-01.png" alt="Bar graph plotting Charge on the x axis, against Size on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Sizes range from 0 to 500.">
 	</a>
 <figcaption>
-    <p>Figure 1. Un diagramme en barres avec une interactivité simple en utilisant Plotly Express. Si les lecteur.ice.s survolent les barres, on peut y voir apparaître des boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-01.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 1. Un diagramme en barres avec une interactivité simple en utilisant Plotly Express. Si les lecteur.ice.s survolent les barres, on peut y voir apparaître des boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-01.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -216,11 +216,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-02.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-02.png" alt="Bar graph plotting Charge on the x axis, against Count on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 500. Each bar now has its own different color. The graph also features a legend which defines its color attributes.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-02.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-02.png" alt="Bar graph plotting Charge on the x axis, against Count on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 500. Each bar now has its own different color. The graph also features a legend which defines its color attributes.">
 	</a>
 <figcaption>
-    <p>Figure 2. Un diagramme en barres avec une interactivité simple en utilisant Plotly Express. Cette visualisation est une variante de la Figure 1 avec cette fois-ci des couleurs et une légende interactive qui permet aux lecteur.ice.s d'isoler ou bien de retirer des données. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-02.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 2. Un diagramme en barres avec une interactivité simple en utilisant Plotly Express. Cette visualisation est une variante de la Figure 1 avec cette fois-ci des couleurs et une légende interactive qui permet aux lecteur.ice.s d'isoler ou bien de retirer des données. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-02.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -257,11 +257,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-03.png" alt="Line graph plotting Charges over time. The x axis is labeled with Years 1905 to 1930, while the y axis is labeled with Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. The graph also features a legend which defines its color attributes.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-03.png" alt="Line graph plotting Charges over time. The x axis is labeled with Years 1905 to 1930, while the y axis is labeled with Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. The graph also features a legend which defines its color attributes.">
 	</a>
 <figcaption>
-    <p>Figure 3. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 3. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -279,11 +279,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-04.png" alt="Line graph plotting Charges over time. The x axis is labeled with Years 1905 to 1930, while the y axis is labeled Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. The graph also features a legend which defines its color attributes and an embedded title, which reads: Fig. 4: a formatted title!">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-04.png" alt="Line graph plotting Charges over time. The x axis is labeled with Years 1905 to 1930, while the y axis is labeled Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. The graph also features a legend which defines its color attributes and an embedded title, which reads: Fig. 4: a formatted title!">
 	</a>
 <figcaption>
-    <p>Figure 4. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. Cette visualisation est une variante de la Figure 3 avec des polices d'écriture, couleurs et titre différent. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 4. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. Cette visualisation est une variante de la Figure 3 avec des polices d'écriture, couleurs et titre différent. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -315,11 +315,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-05.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-05.png" alt="Scatterplot graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labeled Age of Accused 10 to 100, while the y axis is labeled Victim Age 0 to 90. The graph's legend defines its color attributes.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-05.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-05.png" alt="Scatterplot graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labeled Age of Accused 10 to 100, while the y axis is labeled Victim Age 0 to 90. The graph's legend defines its color attributes.">
 	</a>
 <figcaption>
-    <p>Figure 5. Nuage de points avec une interactivité simple. Survoler un point du jeu de donnée permet d'afficher la discipline ainsi que la proportion d'articles mentionnant le genre, puis la classe pour une revue (non affichée) donnée. De plus, la légende interactive permet d'isoler, comparer, retirer des catégories de points. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-05.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 5. Nuage de points avec une interactivité simple. Survoler un point du jeu de donnée permet d'afficher la discipline ainsi que la proportion d'articles mentionnant le genre, puis la classe pour une revue (non affichée) donnée. De plus, la légende interactive permet d'isoler, comparer, retirer des catégories de points. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-05.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -347,11 +347,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-06.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-06.png" alt="A pair of bar graphs plotting prosecution Counts for each Weapon type. The x axes are labeled Weapon, and the y axes are labeled Size (representing prosecution count). The Weapon types include guns, knives, and poison. The counts range from 0 to 250. The left graph shows Counts for gender of accused - Female, while the right graph shows counts for gender of accused - Male. The graph's legend defines its color attributes.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-06.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-06.png" alt="A pair of bar graphs plotting prosecution Counts for each Weapon type. The x axes are labeled Weapon, and the y axes are labeled Size (representing prosecution count). The Weapon types include guns, knives, and poison. The counts range from 0 to 250. The left graph shows Counts for gender of accused - Female, while the right graph shows counts for gender of accused - Male. The graph's legend defines its color attributes.">
 	</a>
 <figcaption>
-    <p>Figure 6. Une mosaïque de 2 diagrammes en barres avec une interactivité simple créée avec Plotly Express en distinguant les articles écrits par une majorité de femmes et ceux écrits par une majorité d'hommes. La légende interactive permet aussi d'isoler, comparer ou retirer certaines disciplines. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-06.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 6. Une mosaïque de 2 diagrammes en barres avec une interactivité simple créée avec Plotly Express en distinguant les articles écrits par une majorité de femmes et ceux écrits par une majorité d'hommes. La légende interactive permet aussi d'isoler, comparer ou retirer certaines disciplines. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-06.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -383,11 +383,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-07.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-07.png" alt="Amimated bar graph plotting Counts of homicide according to the Gender of accused assailants. The x axis is labeled Gender of Accused, and the y axis is labeled Count. A legend defines the bar graph's color attributes. Beneath the bar graph, there are Play and Stop buttons alongside a slider labeled with Years from 1902 to 1930. Upon initial click, the slider node is positioned at the year 1902.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-07.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-07.png" alt="Amimated bar graph plotting Counts of homicide according to the Gender of accused assailants. The x axis is labeled Gender of Accused, and the y axis is labeled Count. A legend defines the bar graph's color attributes. Beneath the bar graph, there are Play and Stop buttons alongside a slider labeled with Years from 1902 to 1930. Upon initial click, the slider node is positioned at the year 1902.">
 	</a>
 <figcaption>
-    <p>Figure 7. Diagramme en barres animé associé à une barre de défilement créés grâce à Plotly Express. Comme précédemment, les lecteur.ice.s peuvent survoler les barres pour faire apparaître des boîtes flottantes. Les lecteur.ice.s peuvent appuyer sur les boutons play/pause ou utiliser la barre de défilement pour naviguer à travers les années. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-07.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 7. Diagramme en barres animé associé à une barre de défilement créés grâce à Plotly Express. Comme précédemment, les lecteur.ice.s peuvent survoler les barres pour faire apparaître des boîtes flottantes. Les lecteur.ice.s peuvent appuyer sur les boutons play/pause ou utiliser la barre de défilement pour naviguer à travers les années. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-07.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -510,11 +510,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-08.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-08.png" alt="Scatterplot graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labeled Age of Accused 10 to 100, while the y axis is labeled Victim Age 0 to 90. The graph's legend defines its color attributes. A dropdown filter offers readers the option to isolate each category of Charge or display All Charges.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-08.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-08.png" alt="Scatterplot graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labeled Age of Accused 10 to 100, while the y axis is labeled Victim Age 0 to 90. The graph's legend defines its color attributes. A dropdown filter offers readers the option to isolate each category of Charge or display All Charges.">
 	</a>
 <figcaption>
-    <p>Figure 8. Nuage de points avec un filtre interactif sous la forme d'un menu déroulant créé grâce à Plotly Express. Cette figure contient une légende interactive qui permet au lecteur d'isoler, comparer et retirer des données. De plus survoler des points permet de faire apparaître des boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-08.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 8. Nuage de points avec un filtre interactif sous la forme d'un menu déroulant créé grâce à Plotly Express. Cette figure contient une légende interactive qui permet au lecteur d'isoler, comparer et retirer des données. De plus survoler des points permet de faire apparaître des boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-08.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -633,13 +633,13 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-09.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-09.png" alt="Horizontal bar chart. The x axis is labeled with Counts from 0
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-09.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-09.png" alt="Horizontal bar chart. The x axis is labeled with Counts from 0
         to 600, while the y axis is labeled Gender. The upper bar shows the number of male accused,
         whereas the lower bar shows the number of female accused.">
 	</a>
 <figcaption>
-    <p>Figure 9. Diagramme en barres horizontal avec une interactivité simple créé avec Plotly Graph Objects. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-09.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 9. Diagramme en barres horizontal avec une interactivité simple créé avec Plotly Graph Objects. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-09.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -659,13 +659,13 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-10.png" alt="Horizontal bar chart. The x axis is labeled with Counts from 0 to 600,
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-10.png" alt="Horizontal bar chart. The x axis is labeled with Counts from 0 to 600,
         while the y axis is labeled Gender. The upper bar shows the number of male accused, whereas the
         lower bar shows the number of female accused.">
 	</a>
 <figcaption>
-    <p>Figure 10. Diagramme en barres horizontal avec une interactivité simple créé avec `Plotly Express`. Les lecteurices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 10. Diagramme en barres horizontal avec une interactivité simple créé avec `Plotly Express`. Les lecteurices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -712,12 +712,12 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-11.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-11.png" alt="Table showing a portion of the Philadelphia Homicides dataset for the year 1902. Column headers are Year, Charge, Gender of accused, Victim age, 
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-11.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-11.png" alt="Table showing a portion of the Philadelphia Homicides dataset for the year 1902. Column headers are Year, Charge, Gender of accused, Victim age, 
              Weapon, and Gang.">
 	</a>
 <figcaption>
-    <p>Figure 11. Tableau contenant les données de nos articles et créé avec Plotly Graph Object. Les Lecteur.ices peuvent faire défiler toutes les entrées du jeu de donnée comme iels le feraient dans un tableur. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-11.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 11. Tableau contenant les données de nos articles et créé avec Plotly Graph Object. Les Lecteur.ices peuvent faire défiler toutes les entrées du jeu de donnée comme iels le feraient dans un tableur. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-11.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -776,13 +776,13 @@ fig.add_trace(
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-12.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-12.png" alt="A three-column plot with a bar chart in the left column and two empty columns on its right. The
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-12.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-12.png" alt="A three-column plot with a bar chart in the left column and two empty columns on its right. The
         y axis is labeled with counts from 0 to 600, while the bar charts on the x axis are labeled (from left to
         right) Female and Male.">
 	</a>
 <figcaption>
-    <p>Figure 12. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, et deux colonnes vides sur la droite. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-12.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 12. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, et deux colonnes vides sur la droite. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-12.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -820,15 +820,15 @@ for discipline, df_discipline in proportion_d_articles_mentionnant_le_genre_par_
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-13.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-13.png" alt="A three-column plot with a bar chart in the left column and a line graph in the middle column. The bar chart's
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-13.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-13.png" alt="A three-column plot with a bar chart in the left column and a line graph in the middle column. The bar chart's
         y axis is labeled with counts from 0 to 600, while the x axis is labeled (from left to right) Female and Male.
         The line graph's x axis is labeled with years from 1900 to 1930 and the y axis is labeled with counts from 0 to 150. A green line indicates the number 
         of male accused, and a red line indicates the number of female accused. A legend in the top right provides the color attributes for the bars in the bar 
         chart and the lines in the line chart.">
 	</a>
 <figcaption>
-    <p>Figure 13. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et une colonnes vide sur la droite. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-13.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 13. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et une colonnes vide sur la droite. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-13.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -858,8 +858,8 @@ fig.add_trace(
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-14.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-14.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-14.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-14.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
         y axis is labeled with counts from 0 to 600, while the x axis is labeled (from left to right) Female and Male.
         The line graph's x axis is labeled with years from 1900 to 1930 and the y axis is labeled with counts from 0 to 150. A green line indicates the number 
         of male accused, and a red line indicates the number of female accused.
@@ -868,7 +868,7 @@ fig.add_trace(
         labels for all three subplots.">
 	</a>
 <figcaption>
-    <p>Figure 14. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux boîtes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-14.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 14. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux boîtes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-14.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -906,8 +906,8 @@ fig.update_layout(
 ``` 
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-15.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-15.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-15.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-15.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
         y axis is labeled with counts from 0 to 600, while the x axis is labeled (from left to right) Female and Male.
         The line graph's x axis is labeled with years from 1900 to 1930 and the y axis is labeled with counts from 0 to 150. A green line indicates the number 
         of male accused, and a red line indicates the number of female accused.
@@ -917,7 +917,7 @@ fig.update_layout(
         right).">
 	</a>
 <figcaption>
-    <p>Figure 15. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 14 avec une personalisation avancée. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-15.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 15. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 14 avec une personalisation avancée. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-15.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -968,8 +968,8 @@ fig.update_layout(
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-16.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-16.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-16.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-16.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
         y axis is labeled with counts from 0 to 600, while the x axis is labeled (from left to right) Female and Male.
         The line graph's x axis is labeled with years from 1900 to 1930 and the y axis is labeled with counts from 0 to 150. A green line indicates the number 
         of male accused, and a red line indicates the number of female accused. An arrow with the label Males points to the green line and an arrow
@@ -980,7 +980,7 @@ fig.update_layout(
         subplot (from left to right).">
 	</a>
 <figcaption>
-    <p>Figure 16. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 15 des annotations pour repérer les courbes du sous-figure du milieu. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-16.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 16. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 15 des annotations pour repérer les courbes du sous-figure du milieu. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-16.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -1013,8 +1013,8 @@ fig.add_annotation(
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-17.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-17.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
         y axis is labeled with counts from 0 to 600, while the x axis is labeled (from left to right) Female and Male.
         The line graph's x axis is labeled with years from 1900 to 1930 and the y axis is labeled with counts from 0 to 150. A green line indicates the number 
         of male accused, and a red line indicates the number of female accused. An arrow with the label Males points to the green line and an arrow
@@ -1026,7 +1026,7 @@ fig.add_annotation(
         (left); male vs. female suspects over time (middle); age distributions of male vs. female suspects (right).">
 	</a>
 <figcaption>
-    <p>Figure 17. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 16 avec des annotations supplémentaires sous les figures. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 17. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 16 avec des annotations supplémentaires sous les figures. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -1058,12 +1058,12 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-03.png" alt="Bar graph plotting Charge on the x axis, against Size on the y axis. The Charges are Abortion,
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-03.png" alt="Bar graph plotting Charge on the x axis, against Size on the y axis. The Charges are Abortion,
         Manslaughter and Murder, and the Sizes range from 0 to 500.">
 	</a>
 <figcaption>
-    <p>Figure 18. Reproduction de la Figure 3, illustrant la fonction fig.show(). <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 18. Reproduction de la Figure 3, illustrant la fonction fig.show(). <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 

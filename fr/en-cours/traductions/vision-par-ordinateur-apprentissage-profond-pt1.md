@@ -96,23 +96,33 @@ Vous pouvez utiliser les carnets de différentes manières. Nous vous encourageo
 - Le code de cette leçon s'exécutera beaucoup plus rapidement si un type spécifique de carte graphique ([GPU](https://perma.cc/PW3J-BVHZ)) est disponible. Cela permettra une approche interactive du travail avec les modèles et leurs résultats.
 - Les GPU sont plus efficaces sur le plan [énergétique](https://doi.org/10.1109/BDCloud-SocialCom-SustainCom.2016.76) pour certaines tâches comparés aux unités centrales de traitement ([CPU](https://perma.cc/2P2P-EL4V)), y compris pour le type de tâches sur lesquelles nous allons travailler dans ces leçons.
 
-### Kaggle
 
-[Kaggle](https://perma.cc/9H6M-PDB6) est un site Web qui héberge des jeux de données, organise des concours de science des données et fournit des ressources pédagogique. Kaggle héberge également des carnets Jupyter, y compris avec accès à des GPU.
+<div class="alert alert warning">
+L'entraînement de modèles d'apprentissage supervisé est une tâche gourmande en ressources énergétiques, et par conséquent en ressources matérielles (eau notamment). Nous recommandons un usage modéré des entraînements dans votre découverte de ces techniques.
+</div>
 
-Pour exécuter le code de la leçon sur Kaggle, vous devrez :
+### Google Colab
 
-- Créer un compte sur [Kaggle](https://www.kaggle.com) (vous devrez fournir un numéro de téléphone), ou vous connecter à votre compte existant.
-- Aller sur [https://www.kaggle.com/code/davanstrien/progamming-historian-deep-learning-pt1](https://www.kaggle.com/code/davanstrien/progamming-historian-deep-learning-pt1). Les données utilisées dans cette leçon sont fournies avec ces carnets.
-- Cliquez sur le bouton "Copy&Edit" pour créer une copie du carnet.
-- Réglez l'option "Accelerator" sur "GPU" ; vous trouverez cette option dans l'onglet "Settings".
+[Google Colab](https://colab.research.google.com/) est un service de Google qui permet d'héberger et de faire tourner des carnets Jupyter. Il est possible d'accès à des GPU et donc de tester l'entraînement de modèles.
 
-{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-01.png" alt="Capture d'écran montrant l'option Accelerator réglée sur GPU" caption="Figure 1 : Menu de paramétrage des notebooks Kaggle" %}
+Pour exécuter le code de la leçon sur Colab, vous devrez :
 
-- L'interface des carnets Kaggle devrait vous être familière si vous avez déjà utilisé des carnets Jupyter. Pour exécuter une cellule contenant du code, cliquez sur le bouton en forme de triangle pointant vers la droite ou, si la cellule est sélectionnée, utilisez Maj + Entrée.
-- N'oubliez pas de fermer votre session une fois que vous avez fini de travailler avec les notebooks. Vous pouvez le faire en accédant au menu déroulant "Run" en haut d'un carnet Kaggle.
+- Créer un compte sur [Google](https://accounts.google.com/signup), nécessaire pour enregistrer et exécuter des carnets.
+- [Ouvrir le carnet](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/vision-par-ordinateur-apprentissage-profond-pt1-2/vision-par-ordinateur-apprentissage-profond-pt1-2.ipynb) et cliquer sur le bouton _Ouvrir dans Colab_.
+ Les données utilisées dans cette leçon sont fournies avec ces carnets.
+- Once the notebook is opened, you may want to save a copy to your own Google Drive. You can do this by selecting **File** > _Save a copy in Drive_.
+- Une fois le carnet ouvert, nous vous recommandons d'en enregistrer une copie dans votre propre Google Drive: **Fichier** > _Enregistrer une copie dans le Drive_.
+- Pour utiliser un GPU, cliquez sur **Exécution** > **Modifier le type d'exécution**, et choisissez un des boutons `GPU` parmi les boutons disponibles dans **Accélérateur matériel**. Google Colab change parfois la dénomination des GPU disponibles. À l'heure de la traduction de ce carnet, le nom est `GPU T4`.
 
-Kaggle dispose d'une [documentation sur l'utilisation de ses carnets](https://perma.cc/YF2N-C94Q) ainsi que de conseils sur [l'utilisation efficace des GPU](https://perma.cc/V8CZ-WZQ4).
+{% include figure.html filename="colab-hardware.png" alt="Capture d'écran montrant l'option de choix du matériel pour l'exécution du code" caption="Figure 1 : Menu de paramétrage des carnets Colab" %}
+
+
+- L'interface des carnets Colab devrait vous être familière si vous avez déjà utilisé des carnets Jupyter. Pour exécuter une cellule contenant du code, cliquez sur le bouton en forme de triangle pointant vers la droite (qui se trouve à gauche de la cellule) ou, si la cellule est sélectionnée, utilisez _Maj + Entrée_.
+- N'oubliez pas de fermer votre session une fois que vous avez fini de travailler avec les carnets, pour éviter d'utiliser inutilement le temps de calcul gratuit que Google vous attribue. Pour ce faire, cliquez sur **Exécution** > **Gérer les sessions** et cliquez sur l'icône représentant une poubelle au niveau de la session en cours.
+
+Colab dispose d'une [documentation sur l'utilisation de ses carnets](ttps://colab.research.google.com/notebooks/welcome.ipynb) ainsi qu'une [Foire aux Questions](https://perma.cc/8EFW-AA2U) très utile.
+
+
 
 
 ### Travailler en local 
@@ -132,9 +142,9 @@ count number spam_words in email:
 
 En revanche, une approche par apprentissage automatique entraînerait un [algorithme](https://perma.cc/PFX7-WB6J) d'apprentissage automatique sur des exemples étiquetés de courriels qui sont des «&#xA0;spam&#xA0;» et «&#xA0;non spam&#xA0;». Cet algorithme, après une exposition répétée aux exemples, «&#xA0;apprendrait&#xA0;» des modèles qui indiquent le type de courriels. Il s'agit d'un exemple [d'«&#xA0;apprentissage supervisé&#xA0;»](https://perma.cc/TFY2-YT7A), un processus dans lequel un algorithme est exposé à des données étiquetées, et c'est ce sur quoi ce tutoriel va se concentrer. Il existe différentes approches pour gérer ce processus d'apprentissage, dont certaines seront abordées dans cette leçon. Un autre type d'apprentissage automatique qui ne nécessite pas d'exemples étiquetés est [l'«&#xA0;apprentissage non supervisé&#xA0;»](https://perma.cc/S7QE-8D3T).
 
-**new**
+<div class="alert alert warning">
 Dans le domaine de la vision par ordinateur, reconnaître automatiquement des objets impose aussi d'identifier des signaux caractéristiques, ainsi la forme des oreilles d'un chat ou d'un chien, celle de leur museau, la taille des yeux, etc. Ces signaux doivent être identifiés (manuellement) pour chaque classe d'objet puis un algorithme doit s'appuyer sur ces signaux extraits des images pour tenter de dire si une image à reconnaître contient un chat ou un chien. Cette approche implique un travail laborieux à mener pour chaque contexte visuel à traiter (choix des caractéristiques, des algorithmes). Dans le cas de l'apprentissage automatique, tant la sélection des signaux caractéristiques que le processus de classification des objets sont appris par l'exemple (ici des images annotées chien/chat).
-**new**
+</div>
 
 L'apprentissage automatique présente des avantages et des inconvénients. Dans notre exemple de courrier électronique, il est notamment avantageux de ne pas avoir à identifier manuellement ce qui indique si un courrier électronique est un spam ou non. Cela est particulièrement utile lorsque les signaux peuvent être subtils ou difficiles à détecter. Si les caractéristiques des courriers électroniques non sollicités devaient changer à l'avenir, vous n'auriez pas besoin de réécrire l'ensemble de votre programme, mais vous pourriez réentraîner votre modèle avec de nouveaux exemples. Parmi les inconvénients, citons la nécessité de disposer d'exemples étiquetés, dont la création peut prendre du temps. L'une des principales limites des algorithmes d'apprentissage automatique est qu'il peut être difficile de comprendre comment ils ont pris une décision, c'est-à-dire pourquoi un courriel a été étiqueté comme spam ou non. Les implications de ce phénomène varient en fonction du «&#xA0;pouvoir&#xA0;» accordé à l'algorithme dans un système. À titre d'exemple, l'impact négatif potentiel d'un algorithme qui prend des décisions automatisées concernant une demande de prêt est probablement beaucoup plus élevé que celui d'un algorithme qui fait des recommandations de contenus sur un service de streaming. 
 
@@ -170,7 +180,7 @@ Une annonce textuelle [^8]:
 
 {% include figure.html filename="en-or-computer-vision-deep-learning-pt1-03.png" alt="Une image en noir et blanc d'une publicité de journal. La publicité ne contient que du texte et concerne une assurance incendie, avec l'adresse de la compagnie d'assurance." caption="Figure 3. Un exemple de publicité sans illustration" %}
 
-Notre classificateur sera entraîné à prédire à quelle catégorie appartient une publicité. Nous pourrions l'utiliser pour automatiser la recherche de publicités comportant des illustrations en vue d'une analyse «&#xA0;manuelle&#xA0;» plus poussée. Nous pourrions également utiliser ce classificateur plus directement pour quantifier le nombre d'annonces contenant des illustrations au cours d'une année donnée et découvrir si ce nombre a évolué dans le temps, ainsi que l'influence d'autres facteurs tels que le lieu de publication. L'utilisation prévue de votre modèle aura un impact sur les étiquettes sur lesquelles vous choisissez de l'entraîner et sur la manière dont vous choisissez d'évaluer si un modèle est suffisamment performant. Nous approfondirons ces questions au fil de cette leçon en deux parties.
+Notre classificateur sera entraîné à prédire à quelle catégorie appartient une publicité. Nous pourrions l'utiliser pour automatiser la recherche de publicités comportant des illustrations en vue d'une analyse «&#xA0;manuelle&#xA0;» plus poussée. Nous pourrions également utiliser ce classificateur plus directement pour quantifier le nombre d'annonces contenant des illustrations au cours d'une année donnée et découvrir si ce nombre a évolué dans le temps, ainsi que l'influence d'autres facteurs tels que le lieu de publication. Votre objectif de recherche pourra influencer la façon d'étiqueter votre corpus de données ainsi que la manière dont vous choisissez d'évaluer si un modèle est suffisamment performant. Nous approfondirons ces questions au fil de cette leçon en deux parties.
 
 ## Introduction à la bibliothèque fastai
 
@@ -186,7 +196,7 @@ La bibliothèque fastai a été choisie pour ce tutoriel pour plusieurs raisons 
 
 Bien que ce tutoriel se concentre sur fastai, de nombreuses techniques présentées sont également applicables à d'autres frameworks IA.
 
-### Creéer un classifieur d'images avec fastai
+### Créer un classifieur d'images avec fastai
 
 La section suivante décrit les étapes de la création et de l'apprentissage d'un modèle de classification permettant de prédire si une publicité est composée uniquement de texte ou contient également une illustration. Brièvement, les étapes seront les suivantes :
 
@@ -255,12 +265,12 @@ C'est un moyen utile de vérifier que vos étiquettes et vos données ont été 
 
 ## Créer le modèle
 
-Maintenant que fastai sait comment charger les données, l'étape suivante consiste à créer un modèle avec celles-ci. Pour créer un modèle adapté à la vision par ordinateur, nous allons utiliser la fonction `cnn_learner`. Cette fonction va créer un ['Convolutional Neural Network'](https://perma.cc/UH8L-L6MR), un type de modèle d'apprentissage profond souvent utilisé pour les applications de vision par ordinateur. Pour utiliser cette fonction, vous devez passer (au minimum) :
+Maintenant que fastai sait comment charger les données, l'étape suivante consiste à créer un modèle avec celles-ci. Pour créer un modèle adapté à la vision par ordinateur, nous allons utiliser la fonction `cnn_learner`. Cette fonction va créer un ['Convolutional Neural Network'](https://perma.cc/UH8L-L6MR) (un 'réseau de neurones convolutifs'), un type de modèle d'apprentissage profond souvent utilisé pour les applications de vision par ordinateur. Pour utiliser cette fonction, vous devez passer (au minimum) :
 
 - Les données que le modèle utilisera comme données d'entraînement
 - Le type de modèle que nous souhaitons utiliser
 
-C'est suffisant pour créer un modèle de vision par ordinateur avec fastai, mais vous pouvez aussi vouloir passer certaines métriques à suivre pendant l'entraînement. Cela vous permettra d'avoir une meilleure idée de la façon dont votre modèle effectue la tâche sur laquelle vous l'entraînez. Dans cet exemple, nous allons utiliser `accuracy` comme métrique.
+C'est suffisant pour créer un modèle de vision par ordinateur avec fastai, mais vous pouvez aussi vouloir passer certaines métriques à suivre pendant l'entraînement. Cela vous permettra d'avoir une meilleure idée de la façon dont votre modèle effectue la tâche sur laquelle vous l'entraînez. Dans cet exemple, nous allons utiliser `accuracy` (l'exactitude) comme métrique: il s'agit de calculer le taux de prédictions exactes par rapport au nombre total d'exemples testés.
 
 Créons ce modèle et assignons-le à une nouvelle variable `learn` :
 
@@ -352,7 +362,7 @@ learn.fine_tune(5)
   </tbody>
 </table>
 
-Lorsque vous exécutez cette méthode, vous verrez une barre de progression indiquant la durée de l'entraînement du modèle et le temps restant estimé. Vous verrez également un tableau qui affiche d'autres informations sur le modèle, comme la métrique de précision que nous avons suivie. Vous pouvez voir que dans cet exemple, nous avons obtenu une précision supérieure à 90 %. Si vous exécutez le code vous-même, le score obtenu peut être légèrement différent.
+Lorsque vous exécutez cette méthode, vous verrez une barre de progression indiquant la durée de l'entraînement du modèle et le temps restant estimé. Vous verrez également un tableau qui affiche d'autres informations sur le modèle, comme la métrique de précision que nous avons suivie. Vous pouvez voir que dans cet exemple, nous avons obtenu une exactitude supérieure à 90 %. Si vous exécutez le code vous-même, le score obtenu peut être légèrement différent.
 
 
 ## Résultats
@@ -382,7 +392,14 @@ En zoomant sur la partie du flux de travail relative à l'apprentissage profond,
 
 {% include figure.html filename="fr-tr-vision-par-ordinateur-apprentissage-profond-pt1-06.png" alt="Un diagramme montrant un flux de travail pour entraîner un modèle d'apprentissage profond. Le pipeline contient deux cases, 'préparer le lot d'entraînement' et 'entraînement du modèle'. Une flèche traverse ces deux boîtes jusqu'à une boîte  contenant le texte 'métriques'. Dans la case 'préparer le lot d'entraînement' se trouve un flux de travail montrant une image et une étiquette passant par une transformation, puis placées dans un lot. Ensuite, sous le titre 'entraînement du modèle', le flux de travail passe par un modèle, des prédictions et une valeur de perte. Ce flux comporte une flèche indiquant qu'il est répété. Il s'écoule également vers la boîte 'métriques'." caption="Figure 6. La boucle d'entraînement du deep learning" %}
 
-Un résumé abstrait de la boucle  d'entraînement pour l'apprentissage supervisé serait donc : commencer avec des images et des étiquettes, effectuer une préparation pour rendre l'entrée adaptée à un modèle d'apprentissage profond, passer les données à travers le modèle, faire des prédictions pour les étiquettes, calculer à quel point les prédictions sont erronées, mettre à jour le modèle dans le but de générer de meilleures prédictions la prochaine fois. Ce processus est répété un certain nombre de fois. Au cours de cette boucle d'apprentissage, des mesures sont communiquées pour permettre à l'utilisateur du modèle d'évaluer l'efficacité de ce dernier.
+Un résumé abstrait de la boucle  d'entraînement pour l'apprentissage supervisé serait donc : 
+- pré-traiter les images et les étiquettes (effectuer une préparation pour rendre l'entrée adaptée à un modèle d'apprentissage profond),
+- faire des prédictions sur chacu des données (passer les données à travers le modèle)
+- calculer à quel point les prédictions sont erronées en les comparant aux étiquettes `vraies`, 
+- mettre à jour le modèle dans le but de générer de meilleures prédictions la prochaine fois. 
+
+En général, on envoie les données par lot (*batch*) au modèle, afin de favoriser la généralisation: la mise à jour du modèle s'effectue à partir de la moyenne des erreurs sur l'ensemble du lot envoyé. Le *batch size* est l'hyperparamètre qui indique la quantité d'exemples envoyés à la fois.
+L'ensemble du corpus est donc divisé en lots, envoyés successivement au modèle. Le passage de l'ensemble du corpus s'appelle, nous le rappelons, une époque (ou communément *epoch*). Plusieurs époques sont nécessaires pour entraîner correctement un modèle. Au cours de cette boucle d'apprentissage, des mesures sont communiquées pour permettre à l'utilisateur du modèle d'évaluer l'efficacité de ce dernier.
 
 Il s'agit évidemment d'une vue synthétique. Examinons une à une les étapes de cette boucle. Bien que la section suivante présente ces étapes à l'aide de code, ne vous inquiétez pas si tout n'est pas clair au début.
 
@@ -413,11 +430,11 @@ Une fois que nous avons préparé les données pour qu'elles puissent être char
 
 {% include figure.html filename="fr-tr-vision-par-ordinateur-apprentissage-profond-pt1-07.png" alt="Schéma simplifié d'un réseau neuronal à trois couches. Le diagramme montre une image d'entrée à gauche se déplaçant à travers trois couches du réseau neuronal. Chaque couche comporte des sections en surbrillance illustrant l'activation de ces zones. Le diagramme pointe ensuite vers deux images, l'une représentant une publicité illustrée et l'autre une publicité textuelle. Dans ce diagramme, l'image montrée comporte une illustration, la flèche pointant vers l'étiquette illustrée est donc mise en évidence." caption="Figure 7. Un réseau neuronal à trois couches" %}
 
-Ce diagramme donne une vue d'ensemble des différents composants d'un modèle CNN. Dans ce type de modèle, une image passe par plusieurs couches avant de prédire une étiquette de sortie pour l'image («&#xA0;publicité textuelle&#xA0;» dans ce diagramme). Les couches de ce modèle sont mises à jour au cours de l'entraînement afin qu'elles «&#xA0;apprennent&#xA0;» quelles caractéristiques d'une image permettent de prédire une étiquette particulière. Ainsi, par exemple, le CNN que nous avons entraîné sur les publicités mettra à jour les paramètres appelés «&#xA0;poids&#xA0;» pour chaque couche, qui produit alors une représentation de l'image utile pour prédire si une publicité comporte une illustration ou non.
+Ce diagramme donne une vue d'ensemble des différents composants d'un modèle CNN. Dans ce type de modèle, une image passe par plusieurs couches avant de prédire une étiquette de sortie pour l'image («&#xA0;publicité textuelle&#xA0;» dans ce diagramme). Les couches de ce modèle sont mises à jour au cours de l'entraînement afin qu'elles «&#xA0;apprennent&#xA0;» quelles caractéristiques d'une image permettent de prédire une étiquette particulière. Ainsi, par exemple, le CNN que nous avons entraîné sur les publicités mettra à jour les paramètres [^11] pour chaque couche, qui produit alors une représentation de l'image utile pour prédire si une publicité comporte une illustration ou non.
 
 [Tensorflow playground](https://perma.cc/625S-TNS6) est un outil utile pour aider à développer une intuition sur la façon dont ces couches capturent différentes caractéristiques des données d'entrée, et comment ces caractéristiques, à leur tour, peuvent être utilisées pour classer les données d'entrée de différentes façons.
 
-La puissance des CNN et de l'apprentissage profond provient de la capacité de ces couches à coder des modèles très complexes dans les données[^11]. Cependant, il peut souvent être difficile de mettre à jour les poids de manière efficace.
+La puissance des CNN et de l'apprentissage profond provient de la capacité de ces couches à coder des modèles très complexes dans les données[^12]. Cependant, il peut souvent être difficile de mettre à jour les paramètres de manière efficace.
 
 
 ### Utiliser un modèle existant ?
@@ -435,25 +452,25 @@ Une fois le modèle créé et les données préparées, le processus d'entraîne
 
 1. Un modèle reçoit des données et des étiquettes, un lot à la fois. Chaque fois qu'un ensemble de données complet est passé à travers un modèle, on parle d'un *epoch*. Le nombre d'epochs utilisés pour entraîner un modèle est l'une des variables que vous devrez contrôler.
 
-2. Le modèle fait des prédictions pour ces étiquettes sur la base des données fournies, en utilisant un ensemble de poids internes. Dans ce modèle de réseau CNN, les poids sont contenus dans les couches du réseau.
+2. Le modèle fait des prédictions pour ces étiquettes sur la base des données fournies, en utilisant un ensemble de paramètres internes. Dans ce modèle de réseau CNN, les paramètres sont contenus dans les couches du réseau.
 
-3. Le modèle calcule le degré d'erreur des prédictions en les comparant aux étiquettes réelles. Une «&#xA0;[fonction de perte]&#xA0;»(https://perma.cc/JUD5-J6MQ) (*loss function*) est utilisée pour calculer le degré d'erreur des prédictions fournies par le modèle.
+3. Le modèle calcule le degré d'erreur des prédictions en les comparant aux étiquettes réelles. Une «&#xA0;[fonction de perte](https://perma.cc/JUD5-J6MQ)&#xA0;» (*loss function*) est utilisée pour calculer le degré d'erreur des prédictions fournies par le modèle.
 
-4. Le modèle modifie ses paramètres internes pour essayer de faire mieux la prochaine fois. La fonction de perte de l'étape précédente renvoie une &#xA0;valeur de perte&#xA0;» (*loss value*), souvent appelée simplement «&#xA0;perte&#xA0;», qui est utilisée par le modèle pour mettre à jour les poids.
+4. Le modèle modifie ses paramètres internes pour essayer de faire mieux la prochaine fois. La fonction de perte de l'étape précédente renvoie une &#xA0;valeur de perte&#xA0;» (*loss value*), souvent appelée simplement «&#xA0;perte&#xA0;», qui est utilisée par le modèle pour mettre à jour les paramètres.
 
 Un «&#xA0;taux d'apprentissage&#xA0;» (*learning rate*) est utilisé pour déterminer dans quelle mesure un modèle doit être mis à jour sur la base de la perte calculée. Il s'agit d'une autre variable importante qui peut être manipulée au cours du processus de formation. Dans la [Partie 2 de cette leçon](/fr/lessons/computer-vision-deep-learning-pt1), nous aborderons une manière possible d'essayer d'identifier un taux d'apprentissage approprié pour votre modèle.
 
 
 ##  Données de validation
 
-Lorsque nous entraînons un modèle d'apprentissage profond, nous le faisons généralement pour faire des prédictions sur de nouvelles données inédites qui ne contiennent pas d'étiquettes. Par exemple, nous pourrions vouloir utiliser notre classificateur de publicités sur toutes les images d'une période donnée pour compter le nombre de chaque type de publicité (illustrée ou non) apparaissant dans ce corpus. Nous ne voulons donc pas d'un modèle qui n'apprendrait à classer que les données d'apprentissage qui lui sont présentées. Par conséquent, nous utilisons presque toujours une sorte de «&#xA0;données de validation&#xA0;». Il s'agit de données utilisées pour vérifier que les poids qu'un modèle apprend sur les données d'entraînement s'appliqueront également à de nouvelles données. Dans la boucle d'entraînement, les données de validation sont uniquement utilisées pour «&#xA0;tester&#xA0;» les prédictions du modèle. Le modèle ne les utilise pas directement pour mettre à jour les poids. Cela permet de s'assurer que nous ne finissons pas par «&#xA0;suradapter&#xA0;» notre modèle. 
+Lorsque nous entraînons un modèle d'apprentissage profond, nous le faisons généralement pour faire des prédictions sur de nouvelles données inédites qui ne contiennent pas d'étiquettes. Par exemple, nous pourrions vouloir utiliser notre classificateur de publicités sur toutes les images d'une période donnée pour compter le nombre de chaque type de publicité (illustrée ou non) apparaissant dans ce corpus. Nous ne voulons donc pas d'un modèle qui n'apprendrait à classer que les données d'apprentissage qui lui sont présentées. Par conséquent, nous utilisons presque toujours une sorte de «&#xA0;données de validation&#xA0;». Il s'agit de données utilisées pour vérifier que les paramètres qu'un modèle apprend sur les données d'entraînement s'appliqueront également à de nouvelles données. Dans la boucle d'entraînement, les données de validation sont uniquement utilisées pour «&#xA0;tester&#xA0;» les prédictions du modèle. Le modèle ne les utilise pas directement pour mettre à jour les paramètres. Cela permet de s'assurer que nous ne finissons pas par «&#xA0;suradapter&#xA0;» notre modèle. 
 
 On parle de «&#xA0;surapprentissage&#xA0;» (*overfitting*) lorsqu'un modèle réussit à faire des prédictions sur les données d'apprentissage, mais que ces prédictions ne se généralisent pas au-delà des données d'apprentissage. En effet, le modèle se «&#xA0;souvient&#xA0;» des données d'apprentissage au lieu d'apprendre des caractéristiques plus générales pour faire des prédictions correctes sur de nouvelles données. Un ensemble de validation permet d'éviter ce problème en vous permettant de voir si le modèle fonctionne bien sur des données qu'il n'a pas apprises. Parfois, une division supplémentaire des données est effectuée et n'est utilisée pour faire des prédictions qu'à la fin de l'apprentissage d'un modèle. Cet ensemble est souvent appelé «&#xA0;ensemble de test&#xA0;». Un ensemble de test est utilisé pour valider les performances d'un modèle dans le cadre de concours de science des données, tels que ceux organisés sur Kaggle, et pour valider les performances des modèles créés par des partenaires externes. Cela permet de s'assurer qu'un modèle est robuste dans les situations où les données de validation ont été délibérément ou accidentellement utilisées pour «&#xA0;jouer&#xA0;» avec les performances d'un modèle. **pas très clair...**
 
 
 ## Apprentissage par transfert
 
-Dans notre premier classificateur, nous avons utilisé la méthode `fine_tune()` sur notre `learner` pour l'apprentissage. Que faisait cette méthode ? Vous aurez vu que la barre de progression se divise en deux parties. Le première epoch n'entraînait que les couches finales du modèle, après quoi les couches inférieures du modèle étaient également entraînées. C'est l'une des méthodes d'apprentissage par transfert dans Fastai. L'importance de l'apprentissage par transfert a déjà été abordée dans les sections précédentes. Pour rappel, l'apprentissage par transfert utilise les «&#xA0;poids&#xA0;» qu'un modèle a précédemment appris sur une autre tâche pour une nouvelle tâche. Dans le cas de la classification d'images, cela signifie généralement qu'un modèle a été entraîné sur un ensemble de données beaucoup plus important. Souvent, cet ensemble de données d'entraînement est ImageNet.
+Dans notre premier classificateur, nous avons utilisé la méthode `fine_tune()` sur notre `learner` pour l'apprentissage. Que faisait cette méthode ? Vous aurez vu que la barre de progression se divise en deux parties. Le première epoch n'entraînait que les couches finales du modèle, après quoi les couches inférieures du modèle étaient également entraînées. C'est l'une des méthodes d'apprentissage par transfert dans Fastai. L'importance de l'apprentissage par transfert a déjà été abordée dans les sections précédentes. Pour rappel, l'apprentissage par transfert utilise les «&#xA0;paramètres&#xA0;» qu'un modèle a précédemment appris sur une autre tâche pour une nouvelle tâche. Dans le cas de la classification d'images, cela signifie généralement qu'un modèle a été entraîné sur un ensemble de données beaucoup plus important. Souvent, cet ensemble de données d'entraînement est ImageNet.
 
 ImageNet est une vaste base de données d'images très utilisée dans la recherche en vision par ordinateur. ImageNet contient actuellement [14&#xA0;197&#xA0;122 images](https://perma.cc/U48T-WA6E) avec plus de 20 000 étiquettes différentes. Cet ensemble de données est souvent utilisé comme [référence](https://perma.cc/KM95-DXTR) par les chercheurs en vision pour comparer leurs approches. Les questions éthiques liées aux étiquettes et à la production d'ImageNet sont explorées dans _[The Politics of Images in Machine Learning Training Sets](https://perma.cc/NE8D-P6AW)_ par Crawford et Paglen.[^4]
 
@@ -464,7 +481,7 @@ Comme nous l'avons vu, l'apprentissage par transfert consiste à utiliser un mod
 
 Le diagramme d'un modèle CNN montre qu'il est constitué de différentes couches. Ces couches créent des représentations de l'image d'entrée qui s'appuient sur des caractéristiques particulières de l'image pour prédire une étiquette. Quelles sont ces caractéristiques ? Il peut s'agir de caractéristiques élémentaires, par exemple des formes simples. Il peut aussi s'agir de caractéristiques visuelles plus complexes, comme les traits du visage. Plusieurs techniques ont été développées pour aider à visualiser les différentes couches d'un réseau neuronal. Ces techniques ont permis de constater que les premières couches d'un réseau neuronal ont tendance à apprendre des caractéristiques «&#xA0;de base&#xA0;», par exemple, elles apprennent à détecter des formes géométriques telles que cercles ou lignes, tandis que les couches plus avancées du réseau contiennent des filtres qui codent des caractéristiques visuelles plus complexes, telles que les yeux. Étant donné que nombre de ces caractéristiques capturent des propriétés visuelles utiles pour de nombreuses tâches, le fait de commencer par un modèle déjà capable de détecter des caractéristiques dans des images permettra de détecter des caractéristiques importantes pour la nouvelle tâche, puisque ces nouvelles caractéristiques seront probablement des variantes des caractéristiques que le modèle connaît déjà, plutôt que de nouvelles caractéristiques.
 
-Lorsqu'un modèle est créé dans la bibliothèque fastai à l'aide de la méthode `cnn_learner`, une architecture existante est utilisée comme «&#xA0;corps&#xA0;» du modèle. Les couches plus profondes ajoutées sont appelées la «&#xA0;tête&#xA0;» du modèle. Le corps utilise par défaut les poids (paramètres) appris lors de l'entraînement sur ImageNet. La partie tête prend la sortie du corps comme entrée avant de passer à une couche finale qui est créée pour s'adapter aux données d'entraînement que vous passez à `cnn_learner`. La méthode `fine_tune` n'entraîne d'abord que la partie tête du modèle, c'est-à-dire les dernières couches du modèle, avant de «&#xA0;dégeler&#xA0;» les couches inférieures. Lorsque ces couches sont dégelées, les poids du modèle sont mis à jour par le biais du processus décrit précédemment. Il est aussi possible de contrôler plus activement la quantité d'entraînement des différentes couches du modèle, ce que nous verrons au fur et à mesure que nous avancerons dans un pipeline complet d'entraînement d'un modèle d'apprentissage profond.
+Lorsqu'un modèle est créé dans la bibliothèque fastai à l'aide de la méthode `cnn_learner`, une architecture existante est utilisée comme «&#xA0;corps&#xA0;» du modèle. Les couches plus profondes ajoutées sont appelées la «&#xA0;tête&#xA0;» du modèle. Le corps utilise par défaut les paramètres appris lors de l'entraînement sur ImageNet. La partie tête prend la sortie du corps comme entrée avant de passer à une couche finale qui est créée pour s'adapter aux données d'entraînement que vous passez à `cnn_learner`. La méthode `fine_tune` n'entraîne d'abord que la partie tête du modèle, c'est-à-dire les dernières couches du modèle, avant de «&#xA0;dégeler&#xA0;» les couches inférieures. Lorsque ces couches sont dégelées, les paramètres du modèle sont mis à jour par le biais du processus décrit précédemment. Il est aussi possible de contrôler plus activement la quantité d'entraînement des différentes couches du modèle, ce que nous verrons au fur et à mesure que nous avancerons dans un pipeline complet d'entraînement d'un modèle d'apprentissage profond.
 
 
 ## Suggestions d'expérimentation
@@ -580,7 +597,7 @@ learn_random_start.fine_tune(5)
   </tbody>
 </table>
 
-Le meilleur score de précision que nous obtenons lorsque nous initialisons les poids de manière aléatoire est de ~90%. En comparaison, si nous retournons à notre modèle original, qui est stocké dans une variable `learn`, et utilisons la méthode `validate()`, nous obtenons les métriques (dans ce cas la précision) calculées sur l'ensemble de validation :
+Le meilleur score de précision que nous obtenons lorsque nous initialisons les paramètres de manière aléatoire est de ~90%. En comparaison, si nous retournons à notre modèle original, qui est stocké dans une variable `learn`, et utilisons la méthode `validate()`, nous obtenons les métriques (dans ce cas la précision) calculées sur l'ensemble de validation :
 
 ```python
 learn.validate()
@@ -591,7 +608,7 @@ learn.validate()
     (#2) [0.04488467052578926,0.9800000190734863]
 ```
 
-Nous constatons qu'il existe une assez grande différence entre les performances des deux modèles. Nous avons conservé le même contexte excepté le drapeau `pretrained`, que nous avons positionné à `False`. Ce drapeau détermine si le modèle démarre à partir des poids appris lors de l'entraînement sur ImageNet ou à partir de poids «&#xA0;aléatoires&#xA0;»[^12]. Cela ne prouve pas de manière concluante que l'apprentissage par transfert fonctionne, mais cela suggère une qu'il est raisonnable de l'utiliser par défaut.
+Nous constatons qu'il existe une assez grande différence entre les performances des deux modèles. Nous avons conservé le même contexte excepté le drapeau `pretrained`, que nous avons positionné à `False`. Ce drapeau détermine si le modèle démarre à partir des paramètres appris lors de l'entraînement sur ImageNet ou à partir de paramètres «&#xA0;aléatoires&#xA0;»[^13]. Cela ne prouve pas de manière concluante que l'apprentissage par transfert fonctionne, mais cela suggère une qu'il est raisonnable de l'utiliser par défaut.
 
 
 # Notes
@@ -614,8 +631,10 @@ Nous constatons qu'il existe une assez grande différence entre les performances
 
 [^9]: Howard, Jeremy, and Sylvain Gugger. ‘Fastai: A Layered API for Deep Learning’. Information 11, no. 2 (16 February 2020): 108. [https://doi.org/10.3390/info11020108](https://doi.org/10.3390/info11020108).
 
-[^10]: Using 'star imports' est généralement déconseillé en Python. Cependant, fastai utilise [`__all__`](https://perma.cc/3GHR-V8RN) pour fournir une liste de packages qui devraient être importés lors de l'utilisation de l'import étoile. Cette approche est utile pour les travaux exploratoires, mais il se peut que vous souhaitiez modifier vos importations pour qu'elles soient plus explicites.
+[^10]: Utiliser les imports étoile ('star imports') est généralement déconseillé en Python. Cependant, fastai utilise [`__all__`](https://perma.cc/3GHR-V8RN) pour fournir une liste de packages qui devraient être importés lors de l'utilisation de l'import étoile. Cette approche est utile pour les travaux exploratoires, mais il se peut que vous souhaitiez modifier vos importations pour qu'elles soient plus explicites.
 
-[^11]: Les réseaux neuronaux sont théoriquement capables d'approximer n'importe quelle fonction. La preuve mathématique de cette capacité existe sous plusieurs formes, sous le nom de ["théorème d'approximation universelle"](https://perma.cc/2J3Q-PDTC). Ces preuves ne font pas partie des éléments que vous aurez besoin de connaître pour utiliser l'apprentissage profond dans la pratique. Toutefois, si vous êtes intéressé, vous trouverez un bon aperçu de l'idée dans cette [vidéo YouTube](https://youtu.be/Ijqkc7OLenI).
+[^11]: On peut représenter chaque neurone comme une fonction affine `y = ax + b`. Parler de *paramètres* du modèle, c'est se réfèrer à l'ensemble des constantes `a` (le poids, *weight*) et `b` (le biais, *bias*) propres à chaque neurone qui sont mises à jour au cours de chaque époque.
 
-[^12]: Cette initialisation n'est pas réellement aléatoire dans le framework fastai, et utilise à la place [l'initialisation Kaiming](https://perma.cc/2Y74-MB47). 
+[^12]: Les réseaux neuronaux sont théoriquement capables d'approximer n'importe quelle fonction. La preuve mathématique de cette capacité existe sous plusieurs formes, sous le nom de ["théorème d'approximation universelle"](https://perma.cc/2J3Q-PDTC). Ces preuves ne font pas partie des éléments que vous aurez besoin de connaître pour utiliser l'apprentissage profond dans la pratique. Toutefois, si vous êtes intéressé, vous trouverez un bon aperçu de l'idée dans cette [vidéo YouTube](https://youtu.be/Ijqkc7OLenI).
+
+[^13]: Cette initialisation n'est pas réellement aléatoire dans le framework fastai, et utilise à la place [l'initialisation Kaiming](https://perma.cc/2Y74-MB47). 

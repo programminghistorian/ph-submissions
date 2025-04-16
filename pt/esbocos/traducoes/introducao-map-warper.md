@@ -56,7 +56,7 @@ Neste tutorial vamos georreferenciar um mapa de c.1795 da [Província do Entre D
  Em exercícios futuros recomenda-se que a imagem a ser georreferenciada possui a melhor resolução possível.
 </div>
 
-{% include figure.html filename="file-name-1.png" alt="Visual description of figure image" caption="Figura 1. Mapa Província do Entre Douro-e-Minho, 1795." %} 
+{% include figure.html filename="pt-tr-introducao-map-warper-01.png" alt="Mapa antigo representando a porção noreste de Portugal entre os Rios Minho (Norte) e Douro (Sul)." caption="Figura 1. Mapa Província do Entre Douro-e-Minho, 1795." %} 
 
 <div class="alert alert-info">
  Recomenda-se que o mapa seja guardado numa pasta nova no Ambiente de Trabalho nomeada: Map Warper_Introdução. O ficheiro descarregado deve ser renomeado para: Mp_EDM_Villasboas_1795_SOBRENOME. Para que o nome seja único e possa ser importado para o Map Warper.
@@ -84,7 +84,7 @@ Algumas questões previas podem ser:
 
 A partir do navegador de internet preferido navegue até https://mapwarper.net/ e clique na aba "Create Account" no canto superior direito. Podes utilizar a tua conta pessoal Facebook, OpenstreetMap ou GitGub para fazer o login de modo expedito.
 
-{% include figure.html filename="file-name-2.png" alt="Visual description of figure image" caption="Figura 2. Criando uma conta." %} 
+{% include figure.html filename="pt-tr-introducao-map-warper-02.gif" alt="Gif demonstrando como acessar a aba para criação de um perfil no site Map Warper." caption="Figura 2. Criando uma conta." %} 
 
 ### Upload do mapa antigo
 
@@ -201,7 +201,7 @@ Tabela 1: Lugares selecionados como pontos de controle.
 
 A partir deste conjunto de 32 pontos de controle temos:
 
-{% include figure.html filename="pt-tr-introducao-map-warper-03.png" alt="Visual description of figure image" caption="Figura 3. Mapa em retificação." %} 
+{% include figure.html filename="pt-tr-introducao-map-warper-03.png" alt="Dois mapas que representam o mesmo espaço, mas com diferenças em suas projeções cartográficas que permitem comparar os pontos correspondentes." caption="Figura 3. Mapa em retificação." %} 
 
 
 <div class="alert alert-info">
@@ -210,11 +210,11 @@ Nota: Você verá que há um valor de erro para cada ponto de controle. O Map Wa
 
 Quando obtiver pontos suficientes e considerar que eles estão bem distribuídos em seu mapa antigo, clique em *Warp Image!* na parte inferior da página. 
 
-{% include figure.html filename="file-name-4.png" alt="Visual description of figure image" caption="Figura 4. Clique em 'Warp Image!' para retificar o mapa." %}
+{% include figure.html filename="pt-tr-introducao-map-warper-04.png" alt="Realce da ferramenta «Warp Image!»." caption="Figura 4. Clique em 'Warp Image!' para retificar o mapa." %}
 
 As opções avançadas que permitem alterar o método de retificação e *resampling* não devem ser alterados. O Map Warper apresenta problemas de estabilidade ao selecionar outros métodos. Alterar o método de retificação não gera, na maioria dos casos, um ganho qualitativo do mapa final. Em contrapartida alterar o *resampling* para bilinear ou cúbico gera um raster com menos ruído, porém devido aos problemas de estabilidade causados pela demanda computacional, estes métodos alternativos não são aconselháveis.
 
-{% include figure.html filename="pt-tr-introducao-map-warper-05.png" alt="Visual description of figure image" caption="Figura 5. Mapa de Villasboas georreferenciado." %}
+{% include figure.html filename="pt-tr-introducao-map-warper-05.png" alt="Mapa de Villasboas retificado, transformação que resulta em sua deformação, mas alinhamento com uma projeção cartográfica sistematica." caption="Figura 5. Mapa de Villasboas georreferenciado." %}
 
 >Georreferenciar mapas requer prática, você pode descobrir que seu mapa retificado cria um mapa ilegível e distorcido. Logo é natural que seja necessário revisar os Pontos de Controle, alterar localizações e até rever critérios de seleção de pontos.
 
@@ -228,14 +228,14 @@ A aba "Recortar" (*Crop*) permite que você corte uma seção do mapa carregado.
 
 Desenhe ao redor da área que você deseja manter. Então, para aplicar a Máscara ao mapa, clique em *Mask Map!*. Após este passo deves retornar a aba "Retificar" e no fundo da página ativar a opção "Verdadeiro" (*True*) e de novo selecionar a opção *Warp Image!*.
 
-{% include figure.html filename="pt-tr-introducao-map-warper-06.png" alt="Visual description of figure image" caption="Figura 6. 'Mask Map' aplicado ao mapa de Villasboas." %}
+{% include figure.html filename="pt-tr-introducao-map-warper-06.png" alt="Realce do mapa de Villasboas que será retificado." caption="Figura 6. 'Mask Map' aplicado ao mapa de Villasboas." %}
 
 
 ### Alinhar
 
 A aba "Alinha" (*Align*) permite ordenar um conjunto de mapas a partir de um mosaico. Uma ferramenta adequada para conectar mapas fragmentados, ortofotos e outros documentos. Contudo, não esqueças de clicar em "Alinhar o Mapa (*Align Map*) para que o Map Warper faça um mosaico.
 
-{% include figure.html filename="file-name-7.png" alt="Visual description of figure image" caption="Figura 7. Visualização de como adicionar um mapa ao mosaico." %}
+{% include figure.html filename="pt-tr-introducao-map-warper-07.gif" alt="Gif demonstrando como alinhar mapas em mosaicos." caption="Figura 7. Visualização de como adicionar um mapa ao mosaico." %}
 
 ### Pré-visualização
 

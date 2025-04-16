@@ -80,7 +80,7 @@ Cette leçon n'a pas pour but de :
 Nous vous suggérons d'aborder cette leçon en deux parties en deux temps :
 
 - Tout d'abord, lisez les informations de cette page, pour vous familiariser avec les questions conceptuelles clés et le flux de travail global pour l'entraînement d'un modèle de vision par ordinateur.
-- Ensuite, exécutez le code proposé dans [le carnet Jupyter associé](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/vision-par-ordinateur-apprentissage-profond-pt1-2).
+- Ensuite, exécutez le code proposé dans [le carnet Jupyter associé](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/vision-par-ordinateur-apprentissage-profond-pt1-2/vision-par-ordinateur-apprentissage-profond-pt1-2.ipynb).
 
 Dans cette leçon en deux parties, nous allons utiliser une approche de la vision par ordinateur basée sur l'apprentissage profond. Le processus de mise en place d'un environnement pour l'apprentissage profond est devenu plus facile mais peut encore être complexe. Nous avons essayé de conserver ce processus de configuration aussi simple que possible, et nous proposons un cheminement le plus direct possible pour commencer à exécuter le code de la leçon.
 
@@ -97,7 +97,7 @@ Vous pouvez utiliser les carnets de différentes manières. Nous vous encourageo
 - Les GPU sont plus efficaces sur le plan [énergétique](https://doi.org/10.1109/BDCloud-SocialCom-SustainCom.2016.76) pour certaines tâches comparés aux unités centrales de traitement ([CPU](https://perma.cc/2P2P-EL4V)), y compris pour le type de tâches sur lesquelles nous allons travailler dans ces leçons.
 
 
-<div class="alert alert warning">
+<div class="alert alert-info">
 L'entraînement de modèles d'apprentissage supervisé est une tâche gourmande en ressources énergétiques, et par conséquent en ressources matérielles (eau notamment). Nous recommandons un usage modéré des entraînements dans votre découverte de ces techniques.
 </div>
 
@@ -114,7 +114,7 @@ Pour exécuter le code de la leçon sur Colab, vous devrez :
 - Une fois le carnet ouvert, nous vous recommandons d'en enregistrer une copie dans votre propre Google Drive: **Fichier** > _Enregistrer une copie dans le Drive_.
 - Pour utiliser un GPU, cliquez sur **Exécution** > **Modifier le type d'exécution**, et choisissez un des boutons `GPU` parmi les boutons disponibles dans **Accélérateur matériel**. Google Colab change parfois la dénomination des GPU disponibles. À l'heure de la traduction de ce carnet, le nom est `GPU T4`.
 
-{% include figure.html filename="colab-hardware.png" alt="Capture d'écran montrant l'option de choix du matériel pour l'exécution du code" caption="Figure 1 : Menu de paramétrage des carnets Colab" %}
+{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-01.png" alt="Capture d'écran montrant l'option de choix du matériel pour l'exécution du code" caption="Figure 1 : Menu de paramétrage des carnets Colab" %}
 
 
 - L'interface des carnets Colab devrait vous être familière si vous avez déjà utilisé des carnets Jupyter. Pour exécuter une cellule contenant du code, cliquez sur le bouton en forme de triangle pointant vers la droite (qui se trouve à gauche de la cellule) ou, si la cellule est sélectionnée, utilisez _Maj + Entrée_.
@@ -142,7 +142,7 @@ count number spam_words in email:
 
 En revanche, une approche par apprentissage automatique entraînerait un [algorithme](https://perma.cc/PFX7-WB6J) d'apprentissage automatique sur des exemples étiquetés de courriels qui sont des «&#xA0;spam&#xA0;» et «&#xA0;non spam&#xA0;». Cet algorithme, après une exposition répétée aux exemples, «&#xA0;apprendrait&#xA0;» des modèles qui indiquent le type de courriels. Il s'agit d'un exemple [d'«&#xA0;apprentissage supervisé&#xA0;»](https://perma.cc/TFY2-YT7A), un processus dans lequel un algorithme est exposé à des données étiquetées, et c'est ce sur quoi ce tutoriel va se concentrer. Il existe différentes approches pour gérer ce processus d'apprentissage, dont certaines seront abordées dans cette leçon. Un autre type d'apprentissage automatique qui ne nécessite pas d'exemples étiquetés est [l'«&#xA0;apprentissage non supervisé&#xA0;»](https://perma.cc/S7QE-8D3T).
 
-<div class="alert alert warning">
+<div class="alert alert-info">
 Dans le domaine de la vision par ordinateur, reconnaître automatiquement des objets impose aussi d'identifier des signaux caractéristiques, ainsi la forme des oreilles d'un chat ou d'un chien, celle de leur museau, la taille des yeux, etc. Ces signaux doivent être identifiés (manuellement) pour chaque classe d'objet puis un algorithme doit s'appuyer sur ces signaux extraits des images pour tenter de dire si une image à reconnaître contient un chat ou un chien. Cette approche implique un travail laborieux à mener pour chaque contexte visuel à traiter (choix des caractéristiques, des algorithmes). Dans le cas de l'apprentissage automatique, tant la sélection des signaux caractéristiques que le processus de classification des objets sont appris par l'exemple (ici des images annotées chien/chat).
 </div>
 
@@ -160,7 +160,7 @@ Dans cette leçon, nous allons travailler avec un jeu de données dérivés du p
 
 Les données du projet Newspaper Navigator ont été créées à l'aide d'un modèle d'apprentissage profond pour la [détection d'objets](https://perma.cc/3DPY-P4A8). Ce modèle a été entraîné sur des pages annotées de Chronicling America datant de la Première Guerre mondiale, dont des annotations faites par les volontaires du projet de crowdsourcing [Beyond Words](https://perma.cc/ZBP2-US4H).[^6] Il a permis de classer ces images dans sept catégories, dont photographie et publicité.
 
-Si vous souhaitez en savoir plus sur la façon dont cet ensemble de données a été créé, reportez-vous à l'[article](https://doi.org/10.48550/arXiv.2005.01583) qui décrit ce travail, ou consulter le [dépôt GitHub](https://perma.cc/CFT7-RUJR) qui contient le code et les données d'entraînement. Nous ne reproduirons pas ce modèle. Nous allons plutôt utiliser la sortie de ce modèle comme point de départ pour créer les données que nous utilisons dans ce tutoriel. Puisque les données du Newspaper Navigator sont prédites par un modèle d'apprentissage automatique, elles contiendront des erreurs ; pour l'instant, nous accepterons que les données avec lesquelles nous travaillons soient imparfaites. Un certain degré d'imperfection et d'erreur est souvent le prix à payer si nous voulons travailler avec des collections «&#xA0;à l'échelle&#xA0;» en utilisant des méthodes informatiques.
+Si vous souhaitez en savoir plus sur la façon dont cet ensemble de données a été créé, reportez-vous à l'[article](https://perma.cc/Z9DD-AH84) qui décrit ce travail, ou consulter le [dépôt GitHub](https://perma.cc/CFT7-RUJR) qui contient le code et les données d'entraînement. Nous ne reproduirons pas ce modèle. Nous allons plutôt utiliser la sortie de ce modèle comme point de départ pour créer les données que nous utilisons dans ce tutoriel. Puisque les données du Newspaper Navigator sont prédites par un modèle d'apprentissage automatique, elles contiendront des erreurs ; pour l'instant, nous accepterons que les données avec lesquelles nous travaillons soient imparfaites. Un certain degré d'imperfection et d'erreur est souvent le prix à payer si nous voulons travailler avec des collections «&#xA0;à l'échelle&#xA0;» en utilisant des méthodes informatiques.
 
 
 ### Classer des publicités

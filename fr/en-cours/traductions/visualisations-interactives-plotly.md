@@ -313,7 +313,7 @@ Comme vous pouvez le voir, les nuages de points contiennent aussi certaines inte
 
 ## Créer une visualisation en mosaïque
 
-Pour créer une visualisation en mosaïque (*facet plots*) partageant certains axes et permettent de montrer des sous-ensembles de notre jeu de données. Plotly rend la création de telles visualisations très simple. En reprenant les exemples précédents, il suffit de spécifier le type de représentation que vous souhaitez dans les sous-figures. En deuxième instance il suffit d'utiliser le paramètre `facet_col` qui permet de préciser quelle variable utiliser pour distinguer les sous-figures. Dans l'exemple ci dessous, on créé une grille de 2x1 pour montrer la part d'articles qui mentionnent le genre en fonction de la discipline et si cela a été écrit par une majorité de femmes ou une majorité d'hommes :
+Les visualisations en mosaïque (*facet plots*) sont des visualisations subdivisées en plusieurs figures. Chaque subdivision illustre la même variable selon les mêmes axes mais pour des sous-ensembles différents. Plotly rend la création de telles visualisations très simple. En reprenant les exemples précédents, il suffit de spécifier le type de représentation que vous souhaitez dans les sous-figures. En deuxième instance il suffit d'utiliser le paramètre `facet_col` qui permet de préciser quelle variable utiliser pour distinguer les sous-figures. Dans l'exemple ci dessous, on créé une grille de 2x1 pour montrer la part d'articles qui mentionnent le genre en fonction de la discipline et si cela a été écrit par une majorité de femmes ou une majorité d'hommes :
 
 ```python
 proportion_par_discipline_maj_feminine = df.\
@@ -349,7 +349,7 @@ Comme nous l’avons vu, Plotly Express contient des fonctionnalités interactiv
 
 Une *animation frame* représente la manière dont les données changent en fonction d'un certain axe. Dans les recherches historiques, la mesure la plus utile est l'axe temporel bien que d'autres variables numérique avec une relation d'ordre (ex : les entiers, ou un intervalle comme $[0,1]$) peut fonctionner. Une figure Plotly Express avec une animation contient une barre de défilement interactive permettant de jouer/arrêter l'animation mais aussi de se déplacer manuellement dans les données.
 
-Pour créer une visualisation avec une animation, il faut commencer par sélectionner le type de représentation que nous voulons utiliser comme dans les exemples précédents. Puis, à l'intérieur de la fonction on utilise le paramètre `animation_frame` pour spécifier quel variable doit être utilisée pour visualiser l'évolution. Dans notre exemple, nous reprenons le nombre d'articles mentionnant le genre et affichons l'évolution à travers les années
+Pour créer une visualisation avec une animation, il faut commencer par sélectionner le type de représentation que nous voulons utiliser comme dans les exemples précédents. Puis, à l'intérieur de la fonction on utilise le paramètre `animation_frame` pour spécifier quelle variable doit être utilisée pour visualiser l'évolution. Dans notre exemple, nous reprenons le nombre d'articles mentionnant le genre et affichons l'évolution à travers les années
 
 ```python
 proportion_genre_animation = df.groupby(["annee_publication","discipline"],
@@ -359,7 +359,7 @@ fig = px.bar(
     proportion_genre_animation,
     x="discipline",
     y="size",
-    labels={"size": "Nombre d'articles mentionnant le genre publiés"},
+    labels={"size": "Nombre d'articles publiés mentionnant le genre"},
     range_y=[0,500],  # Le paramètre range_y permet de customiser l'intervale de l'axe y
     color="discipline",
     # title="Add a title here",
@@ -379,7 +379,7 @@ fig.show()
 
 ### Ajouter des animations : Menus déroulants
 
-Les menus déroulants sont légèrement plus difficiles que les *animation frames*. Ils permettent à l'utilisateur.ice de passer d'une configuration d'affichage à une autre comprenant une large variété de paramètres permettant de changer les couleurs, lignes, axes et mêmes les variables. Quand on créé une figure avec un menu déroulant, la première étape est de créer la figure initiale *sans menu déroulant* (qui correspondra à la première vue que l'utilisateur.ice verra). Dans cet exemple, nous travaillerons avec le nuage de points qui illustre la parts des articles mentionnant la classe et le genre. La construction est donc la suivante : 
+Les menus déroulants sont légèrement plus difficiles que les *animation frames*. Ils permettent à l'utilisateur.ice de passer d'une configuration d'affichage à une autre comprenant une large variété de paramètres permettant de changer les couleurs, lignes, axes et mêmes les variables. Quand on créé une figure avec un menu déroulant, la première étape est de créer la figure initiale *sans menu déroulant* (qui correspondra à la première vue que l'utilisateur.ice verra). Dans cet exemple, nous travaillerons avec le nuage de points qui illustre la part des articles mentionnant la classe et le genre. La construction est donc la suivante : 
 
 ```python
 fig = px.scatter(
@@ -392,7 +392,7 @@ fig = px.scatter(
 )
 ```
 
-Notons que la figure a été créée mais n'est pas visible puisque nous n'avons pas encore utilisé la fonction `fig.show()`. La figure sera affichée une fois que nous avons ajouté le menu dérorulant dans les prochaines étapes.<br>
+Notons que la figure a été créée mais n'est pas visible puisque nous n'avons pas encore utilisé la fonction `fig.show()`. La figure sera affichée une fois que nous avons ajouté le menu déroulant dans les prochaines étapes.<br>
 Après avoir créé la vue initiale, nous pouvons utiliser la méthode `update_layout` à nouveau pour ajouter un menu déroulant.
 
 C'est une étape plus complexe puisque les données de l'objet Plotly Express sont imbriquées à plusieurs niveaux *sous le capot*, donc nous avons besoin de modifier des attributs à un niveau plus profond qu'à l'habitude pour créer le menu.<br>
@@ -575,11 +575,11 @@ Examiner la sortie affichée devrait pouvoir vous aider à comprendre la structu
 - l'attribut `data` qualifie quel type de représentation est utilisé (ici `Scatter`).
 - l'attribut `layout` contient le titre de la figure.
 - l'attribut `layout` contient les données associées aux `buttons` (ie le menu déroulant).
-- Il n'y a pas d'attribut `frames` puisqu'il n'y a pas d'animation associées à la figure.
+- Il n'y a pas d'attribut `frames` puisqu'il n'y a pas d'animation associée à la figure.
 
 ### Utiliser `Plotly Graph Objects` vs `Plotly Express`
 
-Un autre point qu'il est important d'avoir à l'esprit c'est que créer des visualisations avec `plotly.go` requiert, en général, bien plus de code qu'en créant une visualisation identique avec `plotly.px`.
+Un autre point qu'il est important d'avoir à l'esprit c'est que créer des visualisations avec `plotly.go` requiert, en général, bien plus de code que pour créer les mêmes visualisations avec `plotly.px`.
 
 Voyez plutôt l'exemple suivant : construisons un diagramme en barres horizontal pour montrer le nombre d'articles mentionnant le genre par catégorie. Premièrement, créons un `DataFrame` qui compte le nombre d'articles mentionnant le genre par discipline :
 
@@ -663,7 +663,7 @@ Pour cela, suivons les 4 étapes suivantes :
 3. Dans la fonction `.Table()`, créer un dictionnaire entête (`header`) pour stocker la liste des colonnes de l'entête
 4. Dans la fonction `.Table()`, ajouter un dictionnaire cellules (`cells`) pour y mettre les valeurs du tableau
 
-Il est aussi possible de customiser grâce à des labels, couleurs, et des options d'alignement
+Il est aussi possible de personnaliser grâce à des labels, couleurs, et des options d'alignement
 
 Dans l'exemple ci dessous, nous créons un tableau pour stocker l'entièreté de la base de données de l'article.
 
@@ -726,7 +726,7 @@ pourcentage_d_auteurice_femme_si_genre = df.\
     groupby("genre")
 ```
 
-**Étape 2 : Création d'une composition de sousfigures vide avec une grille 3x1 grâce à la fonction `make_subplots`**
+**Étape 2 : Création d'une composition de sous-figures vide avec une grille 3x1 grâce à la fonction `make_subplots`**
 
 ```python
 # 1 ligne, 3 colonnes
@@ -872,7 +872,7 @@ fig.update_layout(
 
 **Étape 7 : Ajout d'annotations aux courbes**
 
-Puisque la légende a été retirée, il est impossible de sitinguer une discipline des autres. Nous pouvons utiliser la méthode `.update_layout` pour ajouter des flèches pointant vers chaque ligne avec une annotation : 
+Puisque la légende a été retirée, il est impossible de distinguer une discipline des autres. Nous pouvons utiliser la méthode `.update_layout` pour ajouter des flèches pointant vers chaque ligne avec une annotation : 
 
 ```python
 fig.update_layout(
@@ -965,7 +965,7 @@ fig.update_layout(margin = {"b" : 100})
 
 ## Afficher et Exporter les visualisations
 
-Dans les sections précédentes de la leçon, nous avons vu comment créer et modifier les visualisations interactives avec Plotly Express et Plotly Graph Objects. Nous allons maintenant apprendre comment faire apparaître les visualisations et les exproter pour les publier ou les partager.\\
+Dans les sections précédentes de la leçon, nous avons vu comment créer et modifier les visualisations interactives avec Plotly Express et Plotly Graph Objects. Nous allons maintenant apprendre comment faire apparaître les visualisations et les exproter pour les publier ou les partager.
 
 La méthode illustrée ici exportera la figure 3 créée plus tôt dans la leçon :
 ```python

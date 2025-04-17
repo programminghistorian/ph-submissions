@@ -31,35 +31,25 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-> **Message au rédacteur 1**<br>
-> Il est possible de se référer aux *datavis* de plusieurs manières différentes (visualisations, figures, représentations et graphes sont les plus courants). Dans le but d'être le plus correct et rigoureux possibles nous avons fait le choix d'écarter le mot 'graphe' qui est trop flou et dont la définition mathématique s'écarte trop de ce que l'on désigne.
-> 
-> Nous avons décidé d'utiliser les mots suivants dans les situations suivantes :
-> 
-> - "visualisation" : représente l'objet produit donc la représentation graphique dans son entièreté (légende, données, couleurs etc...). Il apparaît (très) souvent.
-> - "représentation" : se réfère uniquement à la manière de représenter des données. ie on peut proposer plusieurs représentations d'une distribution : représentation en histogramme, en violon, en boîte.
-> - "figure" : se réfère aux objets Plotly (appelés `fig` dans le code par convention) et dans les captions des images.
-> Cette définition n'est pas fixe et nous sommes curieux de votre avis sur la question :)
-
 ## Introduction
 
 ### Objectifs de la leçon
 
 Cette leçon montre comment créer des visualisations de données interactives avec la bibliothèque *open-source* Plotly. En particulier, vous apprendrez :
 
-- La différence entre **Plotly Express**, **Plotly Graph Objects** et **Plotly Dash**
-- Comment créer et exporter des visualisations à l'aide de `plotly.express` et `plotly.graph_objects`
-- Comment personnaliser vos visualisations
+- La différence entre **Plotly Express**, **Plotly Graph Objects** et **Plotly Dash**.
+- Comment créer et exporter des visualisations à l'aide de `plotly.express` et `plotly.graph_objects`.
+- Comment personnaliser vos visualisations.
 
 ### Les prérequis
 
 Afin de pouvoir suivre la leçon, il est nécessaire d'avoir :
 
-- installé python 3 et le gestionnaire de paquets (*package*) `pip`
+- installé python 3 et le gestionnaire de paquets (*package*) `pip`.
 - un niveau de compréhension intermédiaire du langage de programmation Python.
 - une connaissance générale des bibliothèques `pandas` et `numpy` (ces deux bibliothèques doivent être installées).
-- une connaissance de quelques techniques de base de visualisation de données (en particulier les histogrammes, les diagrammes en barres et les nuages de points)
-- Des notions de traitement des données (nous utiliserons `pandas`)
+- une connaissance de quelques techniques de base de visualisation de données (en particulier les histogrammes, les diagrammes en barres et les nuages de points).
+- Des notions de traitement des données (nous utiliserons `pandas`).
 
 ### Qu'est ce que Plotly ? 
 
@@ -73,9 +63,9 @@ Afin de comprendre comment utiliser Plotly, il est fondamental de comprendre les
 
 Il s'agit essentiellement de 3 modules distincts - dont les fonctionnalités peuvent se superposer - qui ont leurs propres objectifs :
 
-- Plotly Express (`plotly.express` souvent importé avec l'alias `px`) est une interface de représentation graphique de haut niveau, facile à prendre en main, et qui permet de créer près de 30 différents types de représentations. Le module fournit des fonctions permettant de créer des visualisations avec une seule ligne de code (bien que plusieurs lignes de code sont nécessaires à la personnalisation de certains éléments), rendant les visualisations rapides et faciles à créer. Puisque `plotly.px` est une interface "de haut niveau", cela signifie que l’utilisateur.ice n’a pas besoin de s'attarder sur la structure sous-jacente des visualisations Plotly recommande aux débutant.e.s de commencer avec Express avant de travailler avec Plotly Graph Objects.
+- Plotly Express (`plotly.express` souvent importé avec l'alias `px`) est une interface de représentation graphique *de haut niveau*, facile à prendre en main, et qui permet de créer près de 30 différents types de représentations. Le module fournit des fonctions permettant de créer des visualisations avec une seule ligne de code (bien que plusieurs lignes de code sont nécessaires à la personnalisation de certains éléments), rendant les visualisations rapides et faciles à créer. Puisque `plotly.px` est une interface *de haut niveau*, cela signifie que l’utilisateur.ice n’a pas besoin de s'attarder sur la structure sous-jacente des visualisations Plotly recommande aux débutant.e.s de commencer avec Express avant de travailler avec Plotly Graph Objects.
 - Les objets graphiques de Plotly - associés aux module Plotly Graph Objects (`plotly.graph_objects` souvent importé avec l'alias `go`) sont les véritables objets que Plotly créé lorsque l'on fait appel à Plotly Express. Plotly génère des Graph Objects pour garder en mémoire les données de la visualisation. Ces données incluent les informations à visualiser avec de nombreux autres attributs telles que les couleurs, formes et tailles des objets. Il est alors possible de créer une visualisation plus finement avec Plotly Graph Objects. Il est d'ailleurs possible de recréer n'importe quelle figure créée par Plotly Express à l'aide de Plotly Graph Objects. Il est, en général, recommandé d'utiliser Plotly Express là où c'est possible pour réduire le nombre de lignes de code. En revanche, comme nous le verrons par la suite, le recours seul à Plotly Express est impossible et il faudra nécessairement passer par Plotly Graph Objects.
-- Le module Plotly Dash (importé avec l'alias `dash`) est un environnement pour créer des applications web interactives (typiquement des dashboard) qui peuvent être incrustées dans des sites web et autres plateformes. on ajoute souvent des figures créées avec `plotly.px` `plotly.go` dans les applications Dash, faisant des modules de Plotly la boîte à outils parfaite pour créer, manipuler et publier des représentations graphiques interactives de nos données. Plotly Dash est construit sur `React.js` et `Plotly.js` afin de rendre possible l'intégration sur internet, cela signifie que les utilisateur.ice.s n'ont pas besoin de connaissances en Javascript, CSS ou HTML (seulement en Python).[^2]
+- Le module Plotly Dash (importé avec l'alias `dash`) est un environnement pour créer des applications web interactives (typiquement des dashboard) qui peuvent être incrustées dans des sites web et autres plateformes. on ajoute souvent des figures créées avec `plotly.px` `plotly.go` dans les applications Dash, faisant des modules de Plotly la boîte à outils parfaite pour créer, manipuler et publier des représentations graphiques interactives de nos données. Plotly Dash est construit sur `React.js` et `Plotly.js` afin de rendre possible l'intégration sur internet, cela signifie que les utilisateur.ice.s n'ont pas besoin de connaissances en Javascript, CSS ou HTML (seulement en Python)[^2].
 
 Plotly fournit une documentation complète pour travailler avec Express et Graph Objects ainsi que pour utiliser Dash.
 
@@ -85,26 +75,23 @@ Il existe actuellement une pléthore de librairies graphique disponibles sous py
 
 - Plotly est l'un des seuls package qui est spécifiquement tourné vers les représentations interactives. Matplotlib et Pygal ne fournissent que très peu de fonctionnalités interactives. Bokeh[^3] est aussi prévu pour l'interactivité et se présente comme une alternative viable.
 - Plotly est la seule bibliothèque de Python qui assure à la fois une création de visualisations et une intégration dans des pages web simple.
-- Plotly intègre parfaitement les objets de Pandas (par exemple, on peut directement passer des `pandas.Dataframe` aux objets graphiques de Plotly)
-- Des visualisations 3D interactives sont disponibles (ce qui n'est pas le cas des autres librairies)
-- Plotly est simple d'utilisation, les animations et les menus déroulants sont relativement simples à utiliser
+- Plotly intègre parfaitement les objets de Pandas (par exemple, on peut directement passer des `pandas.Dataframe` aux objets graphiques de Plotly).
+- Des visualisations 3D interactives sont disponibles (ce qui n'est pas le cas des autres librairies).
+- Plotly est simple d'utilisation, les animations et les menus déroulants sont relativement simples à utiliser.
 
 ## Données utilisées comme exemple
 
-> **Message au rédacteur 2**<br>
-> Les données sont modifiées par rapport à la leçon originale pour s'adapter au contexte francophone.
-
-Le jeu de données utilisé pour cette leçon est issu de l'article "La Part Du Genre. Genre Et Approche Intersectionnelle Dans Les Sciences Sociales Françaises Au Xxie Siècle".[^3] Celui-ci étudie la part des articles portant sur différentes thématiques, notamment le concept de genre, dans les publications scientifiques de sciences sociales françaises sur les vingt dernières années. Les données de l'enquête ont été rendues publiques dans une démarche de science ouverte, et sont disponibles [ici](https://osf.io/preprints/socarxiv/qamux_v1). La leçon se concentre plus spécifiquement sur le nombre d'articles publiés dans chaque discipline sur la période 2001-2023, ainsi que l'évolution des proportions d'articles mentionnant le genre ou la classe, mises en perspective avec d'autres critères comme le genre des auteur.ice.s.
+Le jeu de données utilisé pour cette leçon est issu de l'article « La Part Du Genre. Genre Et Approche Intersectionnelle Dans Les Sciences Sociales Françaises Au Xxie Siècle ».[^3] Celui-ci étudie la part des articles portant sur différentes thématiques, notamment le concept de genre, dans les publications scientifiques de sciences sociales françaises sur les vingt dernières années. Les données de l'enquête ont été rendues publiques dans une démarche de science ouverte, et sont disponibles [ici](https://osf.io/preprints/socarxiv/qamux_v1). La leçon se concentre plus spécifiquement sur le nombre d'articles publiés dans chaque discipline sur la période 2001-2023, ainsi que l'évolution des proportions d'articles mentionnant le genre ou la classe, mises en perspective avec d'autres critères comme le genre des auteur.ice.s.
 
 ## Construire des visualisations avec Plotly Express
 
 ### Configurer Plotly Express
 
 1. Avant de commencer, vous aurez besoin d'installer 3 modules à votre environnement.[^4]
-	- Plotly : dans votre terminal, entrez `pip install plotly`
-	- pandas : dans votre terminal entrez `pip install pandas`[^5]
-	- Kaleido : dans votre terminal entre `pip install kaleido`[^6]
-2. Maintenant que ces packages sont installés, créez un nouveau Jupyter notebook (ou un nouveau fichier python dans votre logiciel d'édition de code). Idéalement, placez votre jeu de donnée et votre fichier python / notebook dans le même dossier.
+	- Plotly : dans votre terminal, entrez `pip install plotly`.
+	- pandas : dans votre terminal entrez `pip install pandas`[^5].
+	- Kaleido : dans votre terminal entre `pip install kaleido`[^6].
+2. Maintenant que ces packages sont installés, créez un nouveau Jupyter notebook (ou un nouveau fichier python dans votre logiciel d'édition de code). Idéalement, placez votre jeu de données et votre fichier python / notebook dans le même dossier.
 3. Importez les modules à l'aide de la commande `import` au début de votre fichier : 
 
 ```python
@@ -113,13 +100,13 @@ import pandas as pd
 import plotly.express as px
 ```
 
-### Importer et nettoyer les Données
+### Importer et nettoyer les données
 
-La prochaine étape est d'importer le jeu de donnée et de le nettoyer à l'aide des fonctions de `pandas`. Les étapes à réaliser sont :
+La prochaine étape est d'importer le jeu de données et de le nettoyer à l'aide des fonctions de `pandas`. Les étapes à réaliser sont :
 
-- Importer uniquement les colonnes du jeu de donnée qui nous seront utiles
-- Remplacer les données numériques qui pourraient manquer par des `np.nan` (objet Numpy *Not a Number*)
-- Renommer et retirer certaines données pour plus de clarté et de précision
+- Importer uniquement les colonnes du jeu de données qui nous seront utiles.
+- Remplacer les données numériques qui pourraient manquer par des `np.nan` (objet Numpy *Not a Number*).
+- Renommer et retirer certaines données pour plus de clarté et de précision.
 
 ```python
 colonnes : list[str] = [
@@ -195,8 +182,8 @@ fig.show()
 </figcaption>
 </figure>
 
-Vous venez de créer votre première visualisation! Remarquons que cette visualisation est déjà en partie interactive : en passant la souris sur chaque barre, la figure nous spécifie combien d'articles sont représentés et la discipline des articles. Une autre fonctionnalité notable est que l'utilisateur.ice peut sauvegarder la visualisation comme un `.png` (comme image statique) cliquant sur l'icône *appareil photo* qui apparaît lorsque la souris se trouve dans le coin haut droit de l'image. Au même endroit on peut trouver des fonctions de zoom, defilement, changement d'échelle et réinitialiser la vue. Toutes ces fonctionnalités seront disponibles pour toutes les visualisations.<br>
-En revanche, la visualisation n'est pas des plus agréables, elle manque de couleurs, d'un titre et de titres d'axes plus visibles. Il est possible de préciser ces informations dès le début, en donnant plus d'arguments à la fonction `.bar()`. Par exemple, grâce à l'argument `labels` nous pouvons changer le nom des axes et grâce à l'argument `color` on peut changer la couleur des barres selon une variable de notre jeu de donnée (ici nous utiliserons "Nombres d'articles" pour l'axe vertical). Pour ajouter un titre, il suffit d'utiliser l'argument `title`.
+Vous venez de créer votre première visualisation! Remarquons que cette visualisation est déjà en partie interactive : en passant la souris sur chaque barre, la figure nous spécifie combien d'articles sont représentés et la discipline des articles. Une autre fonctionnalité notable est que l'utilisateur.ice peut sauvegarder la visualisation comme un `.png` (comme image statique) cliquant sur l'icône *appareil photo* qui apparaît lorsque la souris se trouve dans le coin haut droit de l'image. Au même endroit on peut trouver des fonctions de zoom, défilement, changement d'échelle et réinitialiser la vue. Toutes ces fonctionnalités seront disponibles pour toutes les visualisations.<br>
+En revanche, la visualisation n'est pas des plus agréables, elle manque de couleurs, d'un titre et de titres d'axes plus visibles. Il est possible de préciser ces informations dès le début, en donnant plus d'arguments à la fonction `.bar()`. Par exemple, grâce à l'argument `labels` nous pouvons changer le nom des axes et grâce à l'argument `color` on peut changer la couleur des barres selon une variable de notre jeu de données (ici nous utiliserons « Nombres d'articles » pour l'axe vertical). Pour ajouter un titre, il suffit d'utiliser l'argument `title`.
 
 ```python
 # Créé un bar chart en utilisant la fonction .bar()
@@ -208,7 +195,7 @@ fig = px.bar(
     labels={"size": "Nombres d'articles"},
 
     # Notez que l'argument "color" prend une chaine de caractères se référent à 
-    # la colonne "maj_feminine" du jeu de donnée
+    # la colonne "maj_feminine" du jeu de données
     color="discipline"
 )
 
@@ -272,7 +259,7 @@ fig.update_layout(
     font_family = "Courrier New",   # Modification de la police
     font_color = "blue",            # Modification de la couleur du texte
     legend_title_font_color = "red",# Modification de la couleur du titre de la légende
-    title = "Un titre formatté"
+    title = "Un titre formaté"
 )
 
 fig.show()
@@ -280,13 +267,12 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-04.png" alt="Courbe du nombre d'articles publiés entre 2001 et 2022 associée à une légende et un titre : \"Un titre formatté\". Quatres courbes sont présentées, une par discipline (Géographie, Sociologie, Économie et Études de Genre), chacune d'une couleur différente. Le nombre de publication par année varie entre 10 et 450.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-04.png" alt="Courbe du nombre d'articles publiés entre 2001 et 2022 associée à une légende et un titre : « Un titre formaté ». Quatres courbes sont présentées, une par discipline (Géographie, Sociologie, Économie et Études de Genre), chacune d'une couleur différente. Le nombre de publication par année varie entre 10 et 450.">
 	</a>
 <figcaption>
     <p>Figure 4. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. Cette visualisation est une variante de la Figure 3 avec des polices d'écriture, couleurs et titre différent. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
-
 
 ### Nuages de points
 
@@ -319,7 +305,7 @@ fig.show()
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-05.png" alt="Nuage de points plaçant une quarantaine de revues sur un plan. Les axes de ce plan sont : en abscisse, la proportion d'articles de la revue qui mentionne la de classe et en ordonnée la proportion d'articles de la revue qui mentionne le genre. Chaque point est associé à une discipline par une couleur décrite dans la légende.">
 	</a>
 <figcaption>
-    <p>Figure 5. Nuage de points avec une interactivité simple. Survoler un point du jeu de donnée permet d'afficher la discipline ainsi que la proportion d'articles mentionnant le genre, puis la classe pour une revue (non affichée) donnée. De plus, la légende interactive permet d'isoler, comparer, retirer des catégories de points. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-05.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 5. Nuage de points avec une interactivité simple. Survoler un point du jeu de données permet d'afficher la discipline ainsi que la proportion d'articles mentionnant le genre, puis la classe pour une revue (non affichée) donnée. De plus, la légende interactive permet d'isoler, comparer, retirer des catégories de points. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-05.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -407,30 +393,30 @@ fig = px.scatter(
 ```
 
 Notons que la figure a été créée mais n'est pas visible puisque nous n'avons pas encore utilisé la fonction `fig.show()`. La figure sera affichée une fois que nous avons ajouté le menu dérorulant dans les prochaines étapes.<br>
-Après avoir créé la vue initiale, nous pouvons utilisé la méthode `update_layout` à nouveau pour ajouter un menu déroulant.<br>
+Après avoir créé la vue initiale, nous pouvons utiliser la méthode `update_layout` à nouveau pour ajouter un menu déroulant.
+
 C'est une étape plus complexe puisque les données de l'objet Plotly Express sont imbriquées à plusieurs niveaux *sous le capot*, donc nous avons besoin de modifier des attributs à un niveau plus profond qu'à l'habitude pour créer le menu.<br>
 Une fois qu'on a appelé la méthode `update_layout`:
 
 - nous devons d'abord accéder au paramètre `updatemenus`: c'est une liste de dictionnaires, chaque dictionnaire contient les métadonnées pour plusieurs fonctionnalités.
 - la seule fonctionnalité qui nous intéresse est le `dropdown box`, qui est contenue dans le dictionnaire `buttons`.
-- la clef `bouton` contient comme valeur, une autre liste de dictionnaires, chaque dictionnaire représente les options disponibles dans le menu déroulant.
-- Nous aurons besoin de créer 5 `buttons` — one pour chaque sous-groupe de données — donc notre list `buttons` contiendra 5 dictionnaires.
+- la clef `buttons` contient comme valeur, une autre liste de dictionnaires, chaque dictionnaire représente les options disponibles dans le menu déroulant.
+- Nous aurons besoin de créer 5 `buttons` — un sous-groupe de données — donc notre list `buttons` contiendra 5 dictionnaires.
 - chacun de ces deux dictionnaires devront contenir 3 paires clef-valeur :
     - la première paire, avec pour clef `args` précisera le type de représentation que nous voulons afficher.
     - la deuxième paire, avec pour clef `label` précisera le titre à afficher à côté du menu déroulant.
-    - la troisième paire, avec pour clef `method`, précisera comment modifier la figure (modifications possibles `update`, `restyle`, `animer`, etc...)
-    
-> **Message au rédacteur 3**<br>
-> the original article is inconsistant
+    - la troisième paire, avec pour clef `method`, précisera comment modifier la figure (modifications possibles `update`, `restyle`, `animer`, etc...).
 
-Dans l'exemple ci dessous, nous regarderons comment utiliser le menu déroulant pour changer la catégorie de la variable affichée. Puisque nous travaillons avec un nuage de points qui affiche la part des journaux qui parlent de genre et de classe, nous ajouterons un menu déroulant qui permet d'afficher toutes les disciplines ensembles, puis seulement les journaux de sociologie, seulement les journaux de géographie.\\
+Dans l'exemple ci dessous, nous regarderons comment utiliser le menu déroulant pour changer la catégorie de la variable affichée. Puisque nous travaillons avec un nuage de points qui affiche la part des journaux qui parlent de genre et de classe, nous ajouterons un menu déroulant qui permet d'afficher toutes les disciplines ensembles, puis seulement les journaux de sociologie, seulement les journaux de géographie, d'économie et d'étude de genre.\\
 Pour créer le menu déroulant nous suivant les étapes suivantes :
+
  - à la clef `label` nous associons pour valeur, le texte à afficher dans le menu déroulant.
  - à la clef `method`, nous associons la valeur `update` puisque nous modifions l'affichage (`layout`) ET les données (`data`).
  - à la clef `args`, nous associons une autre liste de dictionnaires qui spécifiera quelle données seront `visible`(s) (vous trouverez plus d'informations à ce propos plus bas), le titre de la vue (paramètre optionnel), ainsi que les titres pour les axes x et y de cette vue (paramètre optionnel).
 
 Le paramètre `visible` contient une liste, chaque élément de cette liste indiquera si les données à cet index doivent être affichées où non. Dans notre exemple, la liste doit contenir 4 éléments puisque nous avons 4 catégories à l'écran. Dans notre cas, le premier bouton doit représenter la visualisation telle qu'elle sera initialement présentée à l'utilisateur.ice et doit donc spécifier `[True, True, True, True]` puisque nous souhaitons que toutes les disciplines soient affichées. Cependant, pour les 3 autres vues, nous devons seulement inscrire `True` pour un seul élément puisque nous souhaitons n’afficher qu’une discipline à la fois.
 Passons à la pratique :
+
 ```python
 # Nous utilisons la méthode .update_layout pour ajouter le menu déroulant
 fig.update_layout(
@@ -534,14 +520,12 @@ import plotly.graph_objects as go
 
 > **Notons que dans un script `.py` conventionnel, les librairies devraient être importées au début du script. On importe ici les librairies pour un soucis de claireté.**
 
-> **Message au rédacteur 4**<br>
-> Le constructeur `Line` n'est plus tellement utilisé. On aurait tendance à utiliser `go.Scatter(..., mode="markers+lines")`. C'est ce que j'ai fait pour la suite du tutoriel dans une volonté de mettre à jour les informations
-
 ### Ce ne sont que des Objets ! La structure des données de `Plotly Graph Objects` 
 
 Comme mentionné en introduction de cette leçon, toutes les figures créées avec `Plotly Express` sont en fait des `Graph Objects` sous le capot. Cela signifie que, lorsque nous créons une figure avec `plotly.px`, vous êtes en fait en train de créer une instance de `Graph Object`.
 
 Cela devient évident si l'on utilise la fonction `type` avec la variable `fig` :
+
 ```python
 # Résultat du type de la figure
 print(type(fig))
@@ -587,14 +571,11 @@ print(fig.to_json(pretty = True)[0:500] + "\n...")
 
 Examiner la sortie affichée devrait pouvoir vous aider à comprendre la structure de données sous-jacente et les propriétés d'un `Graph Object`. Si vous imprimez la sortie entière (en utilisant `fig.to_dict()`) vous noterez que : 
 
-- la structure de donnée contient des `data` pour chaque discipline (Géographie, Économie, Sociologie et Études de genre) chaque discipline dispose de son propre dictionnaire.
-- l'attribut `data` qualifie quel type de représentation est utilisé (ici `Scatter`)
-- l'attribut `layout` contient le titre de la figure
+- la structure de données contient des `data` pour chaque discipline (Géographie, Économie, Sociologie et Études de genre) chaque discipline dispose de son propre dictionnaire.
+- l'attribut `data` qualifie quel type de représentation est utilisé (ici `Scatter`).
+- l'attribut `layout` contient le titre de la figure.
 - l'attribut `layout` contient les données associées aux `buttons` (ie le menu déroulant).
 - Il n'y a pas d'attribut `frames` puisqu'il n'y a pas d'animation associées à la figure.
-
-> **Message au rédacteur 5**<br>
-> Erreur dans l'article original
 
 ### Utiliser `Plotly Graph Objects` vs `Plotly Express`
 
@@ -684,7 +665,7 @@ Pour cela, suivons les 4 étapes suivantes :
 
 Il est aussi possible de customiser grâce à des labels, couleurs, et des options d'alignement
 
-Dans l'exemple ci dessous, nous créons un tableau pour stocker l'entièreté de la base de donnée de l'article.
+Dans l'exemple ci dessous, nous créons un tableau pour stocker l'entièreté de la base de données de l'article.
 
 ```python
 fig = go.Figure(
@@ -712,7 +693,7 @@ fig.show()
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-11.png" alt="Tableau montrant une partie du jeu de données. Les colonnes visibles sont : annee_publication, revue, pourcentage_femme, inclusif, genre, classe, discipline, maj_feminine.">
 	</a>
 <figcaption>
-    <p>Figure 11. Tableau contenant les données de nos articles et créé avec Plotly Graph Object. Les Lecteur.ices peuvent faire défiler toutes les entrées du jeu de donnée comme iels le feraient dans un tableur. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-11.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 11. Tableau contenant les données de nos articles et créé avec Plotly Graph Object. Les Lecteur.ices peuvent faire défiler toutes les entrées du jeu de données comme iels le feraient dans un tableur. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-11.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -778,11 +759,6 @@ fig.add_trace(
     <p>Figure 12. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, et deux colonnes vides sur la droite. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-12.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
-
-**Nota : si vous créez une composition de figure dans un Notebook Jupyter, relancer le code pourrait dupliquer la trace que vous venez d'ajouter et donc doubler la légende. Si vous avez besoin de relancer le code, il vaudrait mieux redémarrer le kernel d'abord.**
-
-> **Message aux rédacteur 6**<br>
-> En vrai c'est pas nécessaire, il suffit de relancer la cellule où on définit la variable `fig`. Est ce qu'on veut corriger ?
 
 > **Nota : si vous créez une composition de figure dans un Notebook Jupyter, relancer le code pourrait dupliquer la trace que vous venez d'ajouter et donc doubler la légende. Si vous avez besoin de relancer le code, il vaudrait mieux relancer à partir de la cellule qui définit la variable `fig` que vous modifiez.**
 
@@ -855,12 +831,9 @@ fig.add_trace(
 </figcaption>
 </figure>
 
-**Étape 6 : formattage de la Figure**
+**Étape 6 : Formattage de la Figure**
 
 Il est nécessaire d'ajuster certains paramètres, comme ajouter un titre général à la figure et des sous-titres pour tous les sous-figures. Vous pourriez aussi vouloir changer la police d'écriture, changer la position du texte, la taille de la figure -- vous pouvez utiliser la méthode `.update_layout()` pour changer toutes ces propriétés :
-
-> **Message au rédacteur 7** <br>
-> ce passage est bizarre et je pense que c'est parce que l'auteur voulait utiliser qqch du genre `fig.layout = ...` (utiliser par littéralement personne) et qui explique les inconsistences dans la conclusion. Perso je ferais fi de ce commentaire.
 
 ```python
 fig.update_layout(
@@ -896,7 +869,6 @@ fig.update_layout(
     <p>Figure 15. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 14 avec une personalisation avancée. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-15.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
-
 
 **Étape 7 : Ajout d'annotations aux courbes**
 
@@ -978,6 +950,8 @@ fig.add_annotation(
         yref="paper",
     )
 )
+# On ajoute une petite marge pour que laisser la place aux annotations
+fig.update_layout(margin = {"b" : 100})
 ```
 
 <figure style="">
@@ -988,9 +962,6 @@ fig.add_annotation(
     <p>Figure 17. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre d'articles mentionnant le genre par discipline, une courbe au centre montrant l'évolution de la proportion d'articles mentionnant le genre par discipline et deux diagrammes en boîte représentant la distribution de la part d'autrices dans les articles selon s'il mentionne le genre ou non. Cette visualisation est une variante de la Figure 16 avec des annotations supplémentaires sous les figures. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
-
-> **Message au rédacteur 8**<br>
-> Du fait des annotations qui sont plus grandes que dans l'article original, j'ai du rajouter un terme `margin = {"b" : 100}` (L582 dans `article_routine.py`) pour que les annotations apparaissent. Sans quoi elles sont "hors cadre". J'ai le sentiment qu'il faudrait le spécifier, sans quoi en faisant tourner le code le résultat ne serait pas le même. Cela n'apparait pas dans l'article mais ça peut être interessant de le mentionner. 
 
 ## Afficher et Exporter les visualisations
 
@@ -1058,26 +1029,19 @@ fig.write_image("nom_visualisation.pdf")
 
 Plotly offre la possibilité de créer des images de qualité, interactives en utilisant Python ou bien d'autres langages de programmation. Cette leçon fournit un apperçu de Plotly, pourquoi cette librairie est utile et comment on peut l'utiliser sous Python. Elle montre aussi comment utiliser différents modules de Plotly (**Plotly Express** et **Plotly Graph Objects**) et les méthodes nécessaires pour créer, éditer et exporter des visualisations. Les syntaxes clefs sont : 
 
-- Installer Plotly en utilisant `pip install plotly`
-- Importer **Plotly Express** et **Plotly Graph Objects** à l'aide de `import plotly.express as px` et `import plotly.graph_objects as go`
+- Installer Plotly en utilisant `pip install plotly`.
+- Importer **Plotly Express** et **Plotly Graph Objects** à l'aide de `import plotly.express as px` et `import plotly.graph_objects as go`.
 - Dans **Plotly Express**
-    - Créer des visualisations à l'aide de `px.bar()`, `px.line()` et `px.scatter()`
+    - Créer des visualisations à l'aide de `px.bar()`, `px.line()` et `px.scatter()`.
     - Ajouter des personalisations tels qu'un titre, des titres d'axes ou modifier les couleurs à l'aide des paramètres (`title`, `labels` et `color`) et même ajouter des animations avec le paramètre `animation_frames`.
-    - Modifier les visualisations après leur création à l'aide de la méthode `.update_layout()` et ajouter des menus déroulants
+    - Modifier les visualisations après leur création à l'aide de la méthode `.update_layout()` et ajouter des menus déroulants.
 - Avec **Plotly Graph Objects**:
-    - Reconnaitre la structure sous-jacente de toutes les figures à travers les attributs `data`, `layout` et `frames`
-    - Créer de nouvelles visualisations vides avec la fonction `go.Figure()`
-    - Créer des visualisations avec les fonctions `go.Bar()`, `go.Box()`, `go.Line()` et des tables avec `go.Table()`
-    - Créer des mosaïques (en important le module `from plotly.subplots import make_subplots`, et réaliser l'implémentation grâce à la fonction `make_subplots` puis ajouter des données grâce à la méthode `.add_trace()`)
-    - Modifier les figures après leur création à l'aide de la méthode `.update_layout()`
-- Exporter des visualisations créés avec **Plotly Express** ou **Plotly Graph Objects** avec la méthode `.write_html()` ou bien `.write_image()`
-
-> **Message au rédacteur 9**<br>
-> j'ai retiré<br>
-> 
-> > Ajouter des personnalisation en modifiant directement l'attribut `layout`<br>
-> 
-> Parce que ce n'est pas dans le tuto et tout le monde utilise `.update_layout`
+    - Reconnaitre la structure sous-jacente de toutes les figures à travers les attributs `data`, `layout` et `frames`.
+    - Créer de nouvelles visualisations vides avec la fonction `go.Figure()`.
+    - Créer des visualisations avec les fonctions `go.Bar()`, `go.Box()`, `go.Scatter()` et des tables avec `go.Table()`.
+    - Créer des mosaïques (en important le module `from plotly.subplots import make_subplots`, et réaliser l'implémentation grâce à la fonction `make_subplots` puis ajouter des données grâce à la méthode `.add_trace()`).
+    - Modifier les figures après leur création à l'aide de la méthode `.update_layout()`.
+- Exporter des visualisations créés avec **Plotly Express** ou **Plotly Graph Objects** avec la méthode `.write_html()` ou bien `.write_image()`.
 
 ## Notes de fin
 

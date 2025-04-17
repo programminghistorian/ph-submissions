@@ -26,6 +26,7 @@ activity: presenting
 topics: [python, data-visualization]
 abstract: Cette leçon montre comment créer des visualisations de données interactives avec la bibliothèque *open-source* Plotly. Le jeu de données utilisé provient d'une étude sociologique portant sur des articles de sciences sociales parus ces 20 dernières années.
 avatar_alt: Dessin en noir et blanc d'un cygne contemplant son reflet dans l'eau.
+mathjax: true
 doi: XX.XXXXX/phen0000
 ---
 

@@ -539,13 +539,13 @@ Cela devient évident si l'on utilise la fonction `type` avec la variable `fig` 
 print(type(fig))
 ```
 
-```python
+```
 <class 'plotly.graph_objs._figure.Figure'>
 ``` 
 
 Il est alors important de toujours garder en tête que les figures créées avec Plotly sont des Graph Objects.
 
-Les `Graph Objects` sont représentés comme des structure de données en arbre (ie. hiérarchiques) avec trois racines :
+Les Graph Objects sont représentés comme des structure de données en arbre (ie. hiérarchiques) avec trois racines :
 
 - la racine `data` — *données* — contient des informations comme le type de représentation, les catégories disponibles, les points associés à chaque catégorie, l'option d'affichage dans la légende, le type de marqueurs utilisés, les informations à afficher lorsque l'on survole les points.
 - la racine `layout` — *affichage* — contient des informations telles que les dimensions de la figure, les polices et couleurs d'écriture à utiliser, les annotations, les coordonnées des sous-figures (*subplots*), et si des images doivent être utilisées comme arrière plan.
@@ -579,7 +579,7 @@ print(fig.to_json(pretty = True)[0:500] + "\n...")
 ...
 ```
 
-Examiner la sortie affichée devrait pouvoir vous aider à comprendre la structure de données sous-jacente et les propriétés d'un `Graph Object`. Si vous imprimez la sortie entière (en utilisant `fig.to_dict()`) vous noterez que : 
+Examiner la sortie affichée devrait pouvoir vous aider à comprendre la structure de données sous-jacente et les propriétés d'un Graph Object. Si vous imprimez la sortie entière (en utilisant `fig.to_dict()`) vous noterez que : 
 
 - la structure de données contient des `data` pour chaque discipline (Géographie, Économie, Sociologie et Études de genre) chaque discipline dispose de son propre dictionnaire.
 - l'attribut `data` qualifie quel type de représentation est utilisé (ici `Scatter`).
@@ -587,7 +587,7 @@ Examiner la sortie affichée devrait pouvoir vous aider à comprendre la structu
 - l'attribut `layout` contient les données associées aux `buttons` (ie le menu déroulant).
 - Il n'y a pas d'attribut `frames` puisqu'il n'y a pas d'animation associée à la figure.
 
-### Utiliser `Plotly Graph Objects` vs `Plotly Express`
+### Utiliser Plotly Graph Objects vs Plotly Express
 
 Un autre point qu'il est important d'avoir à l'esprit c'est que créer des visualisations avec `plotly.go` requiert, en général, bien plus de code que pour créer les mêmes visualisations avec `plotly.px`.
 
@@ -603,7 +603,7 @@ Construisons maintenant le diagramme en barres horizontal avec ces données, gr�
 
 ```python
 fig = go.Figure(
-    # On utilise go.Bar() pour spécifier le type de chart à utiliser
+    # Utiliser go.Bar() pour spécifier le type de représentation à créer
     go.Bar(
         x = articles_par_discipline_mention_genre["size"], 
         y = articles_par_discipline_mention_genre["discipline"],
@@ -615,7 +615,7 @@ fig = go.Figure(
 )
 
 fig.update_layout(
-    # Il est nécessaire d'utiliser la méthode update_layout pour ajouter des titres d'axes alors que c'est automatique avec plotly.px
+    # Nous devons modifier le layout pour les titres d'axes alors que c'est automatique avec plotly.px
     xaxis = {"title" : "Nombre d'articles"},
     yaxis = {"title" : "Discipline"}
 )
@@ -632,7 +632,7 @@ fig.show()
 </figcaption>
 </figure>
 
-Notons que lorsque l'on utilise `Plotly Graph Objects`, on peut fournir un titre en utilisant l'argument `layout`, qui prend un dictionnaire contenant la clef `title` et sa valeur.
+Notons que lorsque l'on utilise Plotly Graph Objects, on peut fournir un titre en utilisant l'argument `layout`, qui prend un dictionnaire contenant la clef `title` et sa valeur.
 
 Maintenant créons la même visualisation avec `plotly.px` :
 
@@ -652,24 +652,24 @@ fig.show()
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-10.png" alt="Diagramme en barres représentant, sur l'axe des abscisses, 4 disciplines de siences sociales (Géographie, Sociologie, Économie et Études de Genre) et sur l'axe des ordonnées le nombre d'articles publiés dans les disciplines respectives variant entre 1000 et 7000.">
 	</a>
 <figcaption>
-    <p>Figure 10. Diagramme en barres horizontal avec une interactivité simple créé avec `Plotly Express`. Les lecteurices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 10. Diagramme en barres horizontal avec une interactivité simple créé avec Plotly Express. Les lecteurices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
-Il est clair d'après les exemples précédents que `plotly.go` requiert plus de code que `plotly.px` car de nombreuses fonctionnalités nécessitent d'être manuellement créées dans `plotly.go`. Ainsi, il est en général recommandé d'utiliser `plotly.px` quand c'est possible.
+Il est clair d'après les exemples précédents que Plotly Graph Objects requiert plus de code que Plotly Express car de nombreuses fonctionnalités nécessitent d'être manuellement créées dans Plotly Graph Objects. Ainsi, il est en général recommandé d'utiliser Plotly Express quand c'est possible.
 
-### Pourquoi utiliser `Graph Objects`
+### Pourquoi utiliser Plotly Graph Objects
 
-Ceci devrait nous amener à la question centrale : si c'est si simple d'utiliser `plotly.px` pour créer des visualisations, pourquoi devrions nous nous embêter avec `plotly.go`? La réponse simple est qu'il y a en réalité de nombreuses fonctionnalités utiles qui ne sont accessibles qu'à travers `plotly.go`. Nous jetons un œil à deux de ces fonctionnalités dans cette section du tutoriel : les tableaux et les compositions de figures (*subplots*).
+Ceci devrait nous amener à la question centrale : si c'est si simple d'utiliser Plotly Express pour créer des visualisations, pourquoi devrions nous nous embêter avec Plotly Graph Objects ? La réponse simple est qu'il y a en réalité de nombreuses fonctionnalités utiles qui ne sont accessibles qu'à travers Plotly Graph Objects. Nous jetons un œil à deux de ces fonctionnalités dans cette section du tutoriel : les tableaux et les compositions de figures (*subplots*).
 
 #### Tableaux
 
-L'une des fonctionnalités de `plotly.go` la plus utile est l'option de créer des tableaux interactifs et propres.
+L'une des fonctionnalités de Plotly Graph Objects la plus utile est l'option de créer des tableaux interactifs et propres.
 
 Pour cela, suivons les 4 étapes suivantes :
 
 1. Créer une figure avec la fonction `.Figure()`
-2. à la racine `data`, utiliser la fonction `.Table()` pour spécifier que la figure doit être une table.
+2. À la racine `data`, utiliser la fonction `.Table()` pour spécifier que la figure doit être une table.
 3. Dans la fonction `.Table()`, créer un dictionnaire entête (`header`) pour stocker la liste des colonnes de l'entête
 4. Dans la fonction `.Table()`, ajouter un dictionnaire cellules (`cells`) pour y mettre les valeurs du tableau
 

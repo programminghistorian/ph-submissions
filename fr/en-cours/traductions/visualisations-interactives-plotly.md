@@ -58,7 +58,7 @@ Plotly est une société qui fournit un certain nombre de modules *open source* 
 
 > Tout le long de cette leçon, les visualisations générées à l'aide de Plotly seront affichées comme des images statiques. Pour utiliser les fonctionnalités interactives il faudra cliquer sur l'image ou bien le lien dans la description de l'image.
 
-### Plotly, une Librairie Graphique de Python : Plotly Express vs Plotly Graph Objects vs Plotly Dash
+### Plotly, une bibliothèque Graphique de Python : Plotly Express vs Plotly Graph Objects vs Plotly Dash
 
 Afin de comprendre comment utiliser Plotly, il est fondamental de comprendre les différences entre Plotly Express, Plotly Graph Objects et Plotly Dash.
 
@@ -711,9 +711,9 @@ De la même manière qu'avec `plotly.px`, les figures de `plotly.go` permettent 
 
 #### La compositions de figures (*subplots*)
 
-Une autre fonctionnalité très utile de `plotly.go` est le fait de pouvoir créer des compositions de figures. Bien que `plotly.px` permette de créer des visualisations en mosaïque, le champ des possibles est relativement limité puisque les sous-figures générées doivent toutes partager le même type de représentation, les axes et les variables à afficher. La composition de figures permet elle de créer des grilles contenant différents types de représentations avec leurs axes et variables propres afin de transformer les figures en des objets proches des *dashboard*.
+Une autre fonctionnalité très utile de Plotly Graph Objects est le fait de pouvoir créer des compositions de figures. Bien que Plotly Express permette de créer des visualisations en mosaïque, le champ des possibles est relativement limité puisque les sous-figures générées doivent toutes partager le même type de représentation, les axes et les variables à afficher. La composition de figures permet elle de créer des grilles contenant différents types de représentations avec leurs axes et variables propres afin de transformer les figures en des objets proches des *dashboards*.
 
-Puisque le code est particulièrement long pour créer des compositions de figures, cet exemple sera présenté pas à pas. Nous créerons une grille de 3x1 contenant 3 différentes figures : le premier sera un diagramme en barres standard pour quantifier le nombre d'articles mentionnant le genre à travers les disciplines; le deuxième sera une courbe affichant l'évolution de la part des articles mentionnaient le genre à travers les années. Enfin la dernière figure sera un diagramme en boîte (avec la représentation du minimum, maximum, interquartile d'une distribution) sur la distribution de la part d'auteurices dans les articles en fonction de si l'article est écrit en écriture inclusive ou non.
+Puisque le code est particulièrement long pour créer des compositions de figures, cet exemple sera présenté pas à pas. Nous créerons une grille de 3x1 contenant 3 différentes figures : le premier sera un diagramme en barres standard pour quantifier le nombre d'articles **mentionnant le genre** à travers les disciplines; le deuxième sera une courbe affichant l'évolution de la part des articles mentionnaient le genre à travers les années. Enfin la dernière figure sera un diagramme en boîte (avec la représentation du minimum, maximum, interquartile d'une distribution) sur la distribution de la part d'autrices dans les articles en fonction de si l'article mentionne le genre ou non.
 
 **Étape 1 : importer le module subplots et préparer les données**
 
@@ -732,7 +732,7 @@ proportion_d_articles_mentionnant_le_genre_par_annee = df.\
     groupby(["discipline", "annee_publication"], as_index = False).\
     mean()
 
-pourcentage_d_auteurice_femme_si_genre = df.\
+pourcentage_d_autrice_si_genre = df.\
     groupby("genre")
 ```
 
@@ -747,7 +747,7 @@ fig = make_subplots(rows = 1, cols = 3)
 
 ```python
 fig.add_trace(
-    # la fonction go.Bar permet de spécifier le type de représentation à créer
+    # Utiliser go.Bar() pour spécifier le type de représentation
     go.Bar(
         x = articles_par_discipline_mention_genre["size"],
         y = articles_par_discipline_mention_genre["discipline"],
@@ -782,7 +782,7 @@ fig.add_trace(
 for discipline, df_discipline in proportion_d_articles_mentionnant_le_genre_par_annee.\
                                     groupby("discipline") :
     fig.add_trace(
-        # la fonction go.Scatter permet de spécifier le type de représentation à créer
+        # Utiliser go.Scatter() pour spécifier le type de représentation
         go.Scatter(
             x = df_discipline["annee_publication"],
             y = df_discipline["genre"],
@@ -813,19 +813,19 @@ Nous n'avons pas encore exploré les diagrammes en boîte (*boxplot*), mais ils 
 
 ```python
 fig.add_trace(
-    # On utilise la fonction go.Box() pour spécifier qu'on créé un diagramme en boîte
+    # Utiliser go.Box() pour spécifier le type de représentation
     go.Box(
-        y = pourcentage_d_auteurice_femme_si_genre.\
+        y = pourcentage_d_autrice_si_genre.\
             get_group(True)["pourcentage_femme"],
         name = "Genre"),
         row = 1, col = 3 # puisque c'est la troisième, on le met sur la 3è colonne
 )
 
-# On ajoute le deuxième diagramme en boîte puisqu'on a deux groupes distincts pour 
+# On ajoute le deuxième diagramme en boîte puisqu'on a 2 groupes distincts pour
 # les articles avec et sans écriture inclusive
 fig.add_trace(
     go.Box(
-        y = pourcentage_d_auteurice_femme_si_genre.\
+        y = pourcentage_d_autrice_si_genre.\
             get_group(False)["pourcentage_femme"],
         name = "Pas genre"),
     row = 1, col = 3 
@@ -886,14 +886,13 @@ Puisque la légende a été retirée, il est impossible de distinguer une discip
 
 ```python
 fig.update_layout(
-    # Entre comme paramètre la list de dictionnaires où chaque dictionnaire 
-    # représente une annotation
+    # annotations reçoit une liste de disctionnaires, un dictionnaire = une annotation
     annotations = [
         # Notre première annotation sera pour identifier la catégorie "Études de Genre"
         dict(
             # coodinées du points de référence de l'annotation
             x = 2005, y = 0.897,
-            # Spécifie fans quel référentiel on se place, ici comme on annote la
+            # Spécifie dans quel référentiel on se place, ici comme on annote la
             # figure n°2 on donne comme référence x2, y2
             xref = "x2", yref = "y2",
             # Permet de spécifier la longueur de la flèche, et donc du déport du point
@@ -946,11 +945,11 @@ fig.add_annotation(
         y=-0.2,
         showarrow=False,
         text=(
-            "Nombre d'articles publiés par discipline (gauche);"
-            "Proportion d'articles mentionnant le genre à travers les années "
-            "(centre);<br>"
-            "Distribution de la part de femmes autrices lorsque l'article est "
-            "publié en écriture inclusive (droite)."),
+            "Nombre d'articles mentionnant le genre par discipline (gauche);"
+            " Proportion d'articles mentionnant le genre à travers les années"
+            " et par discipline (centre);<br>"
+            "Distribution de la part de femmes autrices lorsque l'article "
+            "mentionne le genre (droite)."),
         # Option pour changer l'orientation de l'écriture, utile pour la gestion de l'espace
         textangle=0,  
         xanchor="center",
@@ -1015,7 +1014,7 @@ Les figures Plotly peuvent être exportées en version statique (donc sans inter
 Exporter les figures en HTML conserve l'interactivité lorsqu'on les ouvre avec un moteur de recherche. Toute figure peut être sauvegardée en format HTML grâce à la fonction `.write_html()` :
 
 ```python
-# Sauvegarde de la visualisation en format HTML (figure que nous avons conservé sous la variable 'fig' pendant toute la leçon)
+# Sauvegarde de la visualisation en format HTML
 fig.write_html("nom_visualisation.html")
 ```
 
@@ -1023,10 +1022,10 @@ Par défaut toute figure exportée sera sauvegardée dans le même dossier que c
 
 #### Export d'images statistiques
 
-Plotly fournit de nombreuses options pour exporter des images pixellisées (`.png` ou `.jpg`) et images ej vectoriel (`.pdf` ou `.svg`). Pour cela, il suffit d'utiliser la méthode `write_image()` et spécifier quel type d'image nous souhaitons dans le nom du fichier :
+Plotly fournit de nombreuses options pour exporter des images pixellisées (`.png` ou `.jpg`) et images vectorielles (`.pdf` ou `.svg`). Pour cela, il suffit d'utiliser la méthode `write_image()` et spécifier quel type d'image vous souhaitez dans le nom du fichier :
 
 ```python
-# Export en images classiques (raster ?):
+# Export en images classiques (raster ):
 fig.write_image("nom_visualisation.png")
 fig.write_image("nom_visualisation.jpeg")
 
@@ -1037,21 +1036,21 @@ fig.write_image("nom_visualisation.pdf")
 
 ## Sommaire
 
-Plotly offre la possibilité de créer des images de qualité, interactives en utilisant Python ou bien d'autres langages de programmation. Cette leçon fournit un apperçu de Plotly, pourquoi cette librairie est utile et comment on peut l'utiliser sous Python. Elle montre aussi comment utiliser différents modules de Plotly (**Plotly Express** et **Plotly Graph Objects**) et les méthodes nécessaires pour créer, éditer et exporter des visualisations. Les syntaxes clefs sont : 
+Plotly offre la possibilité de créer des images de qualité, interactives en utilisant Python ou bien d'autres langages de programmation. Cette leçon fournit un apperçu de Plotly, pourquoi cette bibliothèque est utile et comment on peut l'utiliser sous Python. Elle montre aussi comment utiliser différents modules de Plotly (Plotly Express et Plotly Graph Objects) et les méthodes nécessaires pour créer, éditer et exporter des visualisations. Les syntaxes clefs sont : 
 
 - Installer Plotly en utilisant `pip install plotly`.
-- Importer **Plotly Express** et **Plotly Graph Objects** à l'aide de `import plotly.express as px` et `import plotly.graph_objects as go`.
-- Dans **Plotly Express**
+- Importer Plotly Express et Plotly Graph Objects à l'aide de `import plotly.express as px` et `import plotly.graph_objects as go`.
+- Avec **Plotly Express**
     - Créer des visualisations à l'aide de `px.bar()`, `px.line()` et `px.scatter()`.
-    - Ajouter des personalisations tels qu'un titre, des titres d'axes ou modifier les couleurs à l'aide des paramètres (`title`, `labels` et `color`) et même ajouter des animations avec le paramètre `animation_frames`.
+    - Ajouter des personnalisations tels qu'un titre, des titres d'axes ou modifier les couleurs à l'aide des paramètres (`title`, `labels` et `color`) et même ajouter des animations avec le paramètre `animation_frames`.
     - Modifier les visualisations après leur création à l'aide de la méthode `.update_layout()` et ajouter des menus déroulants.
 - Avec **Plotly Graph Objects**:
     - Reconnaitre la structure sous-jacente de toutes les figures à travers les attributs `data`, `layout` et `frames`.
     - Créer de nouvelles visualisations vides avec la fonction `go.Figure()`.
     - Créer des visualisations avec les fonctions `go.Bar()`, `go.Box()`, `go.Scatter()` et des tables avec `go.Table()`.
-    - Créer des mosaïques (en important le module `from plotly.subplots import make_subplots`, et réaliser l'implémentation grâce à la fonction `make_subplots` puis ajouter des données grâce à la méthode `.add_trace()`).
+    - Créer des compositions de figures (en important le module `from plotly.subplots import make_subplots`, et réaliser l'implémentation grâce à la fonction `make_subplots` puis ajouter des données grâce à la méthode `.add_trace()`).
     - Modifier les figures après leur création à l'aide de la méthode `.update_layout()`.
-- Exporter des visualisations créés avec **Plotly Express** ou **Plotly Graph Objects** avec la méthode `.write_html()` ou bien `.write_image()`.
+- Exporter des visualisations créés avec Plotly Express ou Plotly Graph Objects avec la méthode `.write_html()` ou bien `.write_image()`.
 
 ## Notes de fin
 
@@ -1063,7 +1062,7 @@ Plotly offre la possibilité de créer des images de qualité, interactives en u
 
 [^4]: Si vous travaillez avec des notebooks Jupiter, il y a une bonne chance que certaines dépendances soient déjà installées. En revanche, si vous travaillez avec un nouvel environnement Python ou dans un logiciel d'édition de code comme VS Code, il sera peut être nécessaire d'installer `ipykernel` (`pip install ipykernel`) et `nbformat` (`pip install nbformat`).
 
-[^5]: Nous utiliserons aussi Numpy mais cette librairie est automatiquement téléchargée avec l'installation de Pandas.
+[^5]: Nous utiliserons aussi Numpy mais cette bibliothèque est automatiquement téléchargée avec l'installation de Pandas.
 
-[^6]: Kaleido est une bibliothèque python de génération d'images statiques (comme les formats JPG et SVG) et sera donc nécessaire pour exporter des visualisations statiques.
+[^6]: Kaleido est une bibliothèque Python de génération d'images statiques (comme les formats JPG et SVG) et sera donc nécessaire pour exporter des visualisations statiques.
 

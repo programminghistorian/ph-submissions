@@ -997,11 +997,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-18.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-18.png" alt="Courbe du nombre d'articles publiés entre 2001 et 2022 associée à une légende. Quatres courbes sont présentées, une par discipline (Géographie, Sociologie, Économie et Études de Genre), chacune d'une couleur différente. Le nombre de publication par année varie entre 10 et 450.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-03.png" alt="Courbe du nombre d'articles publiés entre 2001 et 2022 associée à une légende. Quatres courbes sont présentées, une par discipline (Géographie, Sociologie, Économie et Études de Genre), chacune d'une couleur différente. Le nombre de publication par année varie entre 10 et 450.">
 	</a>
 <figcaption>
-    <p>Figure 18. Reproduction de la Figure 3, illustrant la fonction fig.show(). <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-18.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 18. Reproduction de la Figure 3, illustrant la fonction fig.show(). <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 

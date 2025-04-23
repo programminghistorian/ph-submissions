@@ -323,47 +323,49 @@ If you want to rotate units while placing them, keep the left mouse button press
 
 Although you'll certainly adapt your use of these tools to your own scenario, the basic steps will remain the same.
 
-### 8. Save the scenario, and distribute it.
+### 8. Save and Distribute the Scenario
 
-Having finished crafting the historical scenario, it is time to save it for distribution. First, click the gear-shaped icon to switch to the "Map" tab. Next, enter a name for the scenario, as well as a short (1-2 sentence) description. 
+Having finished crafting the historical scenario, it is time to save it for distribution. First, click the gear icon to switch to the **Map** tab. Next, enter a name and a short (1-2 sentence) description for the scenario. 
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-26.png" alt="The Map tab is open with a sample name of 'Programming Historian Map' and Description of 'A sample map for Programming Historian.'" caption="Figure 24. Making the universal settings for a map before saving it" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-26.png" alt="The Map tab is open with a sample name of 'Programming Historian Map' and Description of 'A sample map for Programming Historian.'" caption="Figure 24. Saving a map with universal settings." %}
 
-Finally, click "File" -> "Save," and type an easy-to-remember file name. Do *not* change any information under the "Random Map" area, since you are not making a Random Map. Custom scenarios are automatically saved in the game's default "mod" folder (see above), specifically `/0ad/mods/user/maps/scenarios/`. 
+Finally, click **File** > _Save_, and type an easy-to-remember file name. Don't change any information in the **Random Map** fields, because you are not making a Random Map. Custom scenarios are automatically saved in the game's default `mods` folder, specifically `/0ad/mods/user/maps/scenarios/`. 
 
-To distribute the scenario, share the scenario's .xml and .pmp files (two files) from that location with each person whom you would like to play with you, instructing each person to place those two files in her/his `/0ad/mods/user/maps/scenarios/` folder. (If the folder "maps" and sub-folder "scenarios" do not exist, create them before pasting the files.)
+To distribute the scenario, you'll share the scenario's `.xml` and `.pmp` files (two files) from that location with each person you would like to play with, instructing them to place both files in their own `/0ad/mods/user/maps/scenarios/` folder. (If the `maps` and `scenarios` folders do not exist, just create them before pasting the files.)
 
-### 9. Play the scenario.
+### 9. Play the Scenario
 
-You may now play your custom historical scenario as either a singleplayer or multiplayer game. If this is the first time that you have setup a game in 0 A.D., I recommend that you read the ["Setting up a game"](https://gitea.wildfiregames.com/0ad/0ad/wiki/Manual_SettingUpAGame) article in the Wildfire Games Wiki. For classroom usage, the "Hosting / Joining a Multiplayer game" sub-section will be most important.
+You may now play your custom historical scenario, either as a singleplayer or multiplayer game. If this is the first time that you have setup a game in 0 A.D., I recommend that you read the [Setting up a game](https://gitea.wildfiregames.com/0ad/0ad/wiki/Manual_SettingUpAGame) Wiki article. For classroom usage, the [Hosting / Joining a Multiplayer game](https://gitea.wildfiregames.com/0ad/0ad/wiki/Manual_SettingUpAGame#hosting--joining-a-multiplayer-game) sub-section will be most important.
 
 <div class="alert alert-warning">
 Depending on your network's settings, you might need to enable port forwarding on your network's firewall (0 A.D. defaults to UDP port 20595). If you have difficulty connecting with each other in your classroom or computer lab, then you ought to ask your information technology department for assistance with IP address assignments and/or the firewall's rules.
 </div>
 
-For my example, I will host a multiplayer game from a computer running FreeBSD and join it from a computer running OpenBSD. (The steps will be the same for you regardless of what desktop operating systems you are using.) After copying the scenario's two files into the correct directory on the second machine, I return to the hosting machine. Then, I open 0 A.D. and click "Multiplayer" -> "Host Game." I choose "Map Type" as "Scenario" and click the filter "All Maps" before selecting "Bibracte." I join from the second machine by typing the host machine's local IP address, and this is the result:
+For this lesson, I will host a multiplayer game from a computer running [FreeBSD](https://www.freebsd.org/) and join it from a computer running [OpenBSD](https://www.openbsd.org/) (but the steps will be the same for you regardless of what desktop operating systems you are using.) 
+
+After pasting the scenario's two files into the correct directory on the second machine, return to the hosting machine. There, open 0 A.D. and click **Multiplayer** > _Host Game_. For **Map Type**, choose **Scenario** and click the **All Maps** filter before selecting the map you've just created (**Bibracte**, below). When the second machine joins by typing the host machine's local IP address, this should be the result:
 
 {% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-11.png" alt="A full-screen parameters' window for hosting a multiplayer match with my custom scenario. Player 1, on Team 1, will play as the Gauls, and Player 2, on Team 2, will play as the Romans. The map type is Scenario, and the map that is selected is named 'Bibtracte.'" caption="Figure 25. Hosting a multiplayer match with my custom scenario" %}
 
-After "Roman Ruffian" (Player 2) clicks "I'm ready," "Gallic Guy" (Player 1, the host) clicks "Start Game," and the match begins:
+After Roman Ruffian (Player 2) clicks "I'm ready", Gallic Guy (Player 1, the host) clicks _Start Game_, and the match begins:
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-12.png" alt="A view of Player 1 (in this case, me) situated with his Gallic fort atop Mont Beuvray, indicating the beginning of a multiplayer match played using the custom historical scenario. Player 1 specifically has a civic center, multiple guard towers, a barracks, several houses, some female citizens, and several infantrymen." caption="Figure 26. Player 1 is ready for battle from his fortress atop Mont Beuvray" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-12.png" alt="A view of Player 1 (in this case, me) situated with their Gallic fort atop Mont Beuvray, indicating the beginning of a multiplayer match played using the custom historical scenario. Player 1 specifically has a civic center, multiple guard towers, a barracks, several houses, some female citizens, and several infantrymen." caption="Figure 26. Player 1 is ready for battle from their fortress atop Mont Beuvray." %}
 
-Enjoy playful creativity in the classroom with a free and open source computer game.
+Enjoy playful creativity in the classroom with a free and open source computer game!
 
-## Beyond? Join the Community, Build a Modification from Scratch, and More
+## Beyond – Join the Community, Build a Modification from Scratch, and More
 
 The most advanced way to incorporate 0 A.D. into the classroom is to build a gameplay modification (mod) from scratch. You, the instructor, might wish to bring a wholly new civilization into the game. You might like to make a custom hero for one of the base game's civilizations. You might assign mod making as a class project. Regardless of what you should decide to do, at the level of building a new mod for a game that is designed to be modifiable, your possibilities are only limited by the the Pyrogenesis game engine's own limits. The [Modding Guide](https://trac.wildfiregames.com/wiki/Modding_Guide) states:
 
-> 0 A.D. has been designed from the beginning for ease of modding. Not just art and sound, but also the code which makes the game come to life. All the textures, 3D models, animations, sounds, fonts, and scenarios found in the game are packaged into "mods" (modifications). Additionally, a large amount of the game's logic (written in JavaScript) is packaged in mods.
+> 0 A.D. has been designed from the beginning for ease of modding. Not just art and sound, but also the code which makes the game come to life. All the textures, 3D models, animations, sounds, fonts, and scenarios found in the game are packaged into 'mods' (modifications). Additionally, a large amount of the game's logic (written in JavaScript) is packaged in mods.
 
-I already have written about the two best sources of documentation for building a 0 A.D. mod from scratch: the official Wildfire Games Wiki and the Wildfire Games Forums. You should begin by reading the ["0 A.D. Modding Guide"](https://gitea.wildfiregames.com/0ad/0ad/wiki/Modding_Guide) and ["0 A.D. Mod Layout"](https://gitea.wildfiregames.com/0ad/0ad/wiki/Mod_Layout) entries in the Wiki, which themselves are cross-linked with information about what belongs where, which values change what settings, what sorts of 3D objects may be imported into the game, and more. The [Game Modification Forum](https://wildfiregames.com/forum/forum/18-game-modification/) has many active members who are eager to assist each other. As long as you have attempted to find an answer to your question or solution to your problem yourself, and you have documented the steps that you have taken toward that end, you are likely to receive a helpful answer there.
+I already have written about the two best sources of documentation for building a 0 A.D. mod from scratch: the official Wildfire Games Wiki and the Wildfire Games Forums. You should begin by reading the [0 A.D. Modding Guide](https://gitea.wildfiregames.com/0ad/0ad/wiki/Modding_Guide) and [0 A.D. Mod Layout](https://gitea.wildfiregames.com/0ad/0ad/wiki/Mod_Layout) entries, which themselves are cross-linked with information about what belongs where, which values change what settings, what sorts of 3D objects may be imported into the game, and more. The [Game Modification Forum](https://wildfiregames.com/forum/forum/18-game-modification/) has many active members who are eager to assist each other. As long as you have attempted to find an answer to your question or solution to your problem yourself, and you have documented the steps that you have taken toward that end, you are likely to receive a helpful answer there.
 
-The Portuguese language (Brazilian) Youtube channel "Ágora 0AD" also has a superb ["How to Mod" series](https://youtube.com/playlist?list=PLa048WBrsGonSNZqYDmHf7B8njclVBuW6), and you may find other information scattered throughout the Web. Yet, since the 0 A.D. project only progresses by end-user upstreaming, I recommend that you use and contribute back to the Wiki and the Forums, thinking of them as both the ultimate sources of truth for 0 A.D. modding and the final destinations for what you might uncover through your work on your modding activities.
+The Portuguese language (Brazilian) Youtube channel [Ágora 0AD](https://www.youtube.com/@agora0ad403) also has a superb ['How to Mod' series](https://youtube.com/playlist?list=PLa048WBrsGonSNZqYDmHf7B8njclVBuW6), and you may find other information scattered throughout the Web. Yet, since the 0 A.D. project only progresses by end-user upstreaming, I recommend that you use and contribute back to the Wiki and the Forums, thinking of them as both the ultimate sources of truth for 0 A.D. modding and the final destinations for what you might uncover through your work on your modding activities.
 
 If you should have an idea for a new gameplay modification, read the Modding Guide and Mod Layout pages in the Wiki. Then, outline a plan for the mod before starting to work on it.
 
-The 0 A.D. project points to the superiority of free and open source software over proprietary software for education. With a large playerbase whose members are devoted to realism, realism is more likely to be actualized than in, say, a traditionally corporate-backed game project. Further, 0 A.D.: Empires Ascendant is fully customizable -- even able to be overhauled -- for educational use. Limitless learning is better than limited learning.
+The 0 A.D. project points to the superiority of free and open source software over proprietary software for education. With a large playerbase whose members are devoted to realism, realism is more likely to be actualized than in, say, a traditionally corporate-backed game project. Further, 0 A.D.: Empires Ascendant is fully customizable – even able to be overhauled – for educational use. Limitless learning is better than limited learning.
 
 ## Endnotes
 

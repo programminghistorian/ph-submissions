@@ -12,7 +12,7 @@ reviewers:
 editors:
 - Eric Brasil
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/599
-difficulty: 2
+difficulty: 1
 activity:
 topics:
 abstract: Short abstract of this lesson

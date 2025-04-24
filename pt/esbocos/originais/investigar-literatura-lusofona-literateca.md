@@ -13,10 +13,10 @@ editors:
 - Eric Brasil
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/599
 difficulty: 1
-activity:
-topics:
-abstract: Short abstract of this lesson
-avatar_alt: Visual description of lesson image
+activity: analysing
+topics: [distant-reading, r, data-visualization]
+abstract: Esta lição ensina a utilizar o projeto Acesso a corpos / Disponibilização de corpos (AC/DC) para analisar textos literários em português, apresentando os resultados da pesquisa através de vários tipos de visualização produzidos com a linguagem R.
+avatar_alt: Desenho de uma máquina para ler muitos livros.
 doi: XX.XXXXX/phen0000
 ---
 

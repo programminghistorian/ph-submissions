@@ -46,7 +46,7 @@ Cette leçon montre comment créer des visualisations de données interactives a
 
 Afin de pouvoir suivre la leçon, il est nécessaire d'avoir :
 
-- installé python 3 et le gestionnaire de paquets (*package*) `pip`.
+- installé Python 3 et le gestionnaire de paquets (*package*) `pip`.
 - un niveau de compréhension intermédiaire du langage de programmation Python.
 - une connaissance générale des bibliothèques Pandas et Numpy (ces deux bibliothèques doivent être installées).
 - une connaissance de quelques techniques de base en visualisation de données (en particulier les histogrammes, les diagrammes en barres et les nuages de points).
@@ -72,9 +72,9 @@ Plotly fournit une documentation complète pour travailler avec Express et Graph
 
 ### Pourquoi Plotly ? 
 
-Il existe actuellement une pléthore de bibliothèques graphiques sous python comme **Matplotlib**, **Seaborn**, **Bokeh** ou **Pygal**. chaque bibliothèque présente des avantages. Selon le cas d'utilisation, les goûts esthétiques ou la facilité d'utilisation, tous ces points sont des critères qui permettent faire le choix d'une bibliothèque. Les avantages principaux de Plotly sont :
+Il existe actuellement une pléthore de bibliothèques graphiques sous Python comme Matplotlib, Seaborn, Bokeh ou Pygal. chaque bibliothèque présente des avantages. Selon le cas d'utilisation, les goûts esthétiques ou la facilité d'utilisation, tous ces points sont des critères qui permettent faire le choix d'une bibliothèque. Les avantages principaux de Plotly sont :
 
-- Plotly est l'une des seules bibliothèque qui est spécifiquement tournée vers les représentations interactives. Matplotlib et Pygal ne fournissent que très peu de fonctionnalités interactives. Bokeh[^3] est aussi prévu pour l'interactivité et se présente comme une alternative viable.
+- Plotly est l'une des seules bibliothèques qui est spécifiquement tournée vers les représentations interactives. Matplotlib et Pygal ne fournissent que très peu de fonctionnalités interactives. Bokeh[^3] est aussi prévu pour l'interactivité et se présente comme une alternative viable.
 - Plotly est la seule bibliothèque de Python qui assure à la fois une création de visualisations et une intégration dans des pages web simple.
 - Plotly intègre parfaitement les objets de Pandas (par exemple, on peut directement passer des `pandas.Dataframe` aux objets graphiques de Plotly).
 - Des visualisations 3D interactives sont disponibles (ce qui n'est pas le cas des autres bibliothèques).
@@ -92,7 +92,7 @@ Le jeu de données utilisé pour cette leçon est issu de l'article « La Part D
 	- Plotly : dans votre terminal, entrez `pip install plotly`.
 	- Pandas : dans votre terminal entrez `pip install pandas`[^5].
 	- Kaleido : dans votre terminal entre `pip install kaleido`[^6].
-2. Maintenant que ces bibliothèques sont installées, créez un nouveau Jupyter notebook (ou un nouveau fichier python dans votre logiciel d'édition de code). Idéalement, placez votre jeu de données et votre fichier python / notebook dans le même dossier.
+2. Maintenant que ces bibliothèques sont installées, créez un nouveau Jupyter notebook (ou un nouveau fichier Python dans votre logiciel d'édition de code). Idéalement, placez votre jeu de données et votre fichier Python / notebook dans le même dossier.
 3. Importez les modules à l'aide de la commande `import` au début de votre fichier : 
 
 ```python
@@ -188,7 +188,8 @@ fig.show()
 </figcaption>
 </figure>
 
-Vous venez de créer votre première visualisation! Remarquons que cette visualisation est déjà en partie interactive : en passant la souris sur chaque barre, la figure nous spécifie combien d'articles sont représentés et la discipline des articles. Une autre fonctionnalité notable est que l'utilisateur.ice peut sauvegarder la visualisation comme un `.png` (image statique) en cliquant sur l'icône *appareil photo* qui apparaît lorsque la souris se trouve dans le coin haut droit de l'image. Au même endroit on peut trouver des fonctions de zoom, défilement, changement d'échelle et réinitialiser la vue. Toutes ces fonctionnalités seront disponibles pour toutes les visualisations.<br>
+Vous venez de créer votre première visualisation! Remarquons que cette visualisation est déjà en partie interactive : en passant la souris sur chaque barre, la figure nous spécifie combien d'articles sont représentés et la discipline des articles. Une autre fonctionnalité notable est que l'utilisateur.ice peut sauvegarder la visualisation comme un `.png` (image statique) en cliquant sur l'icône *appareil photo* qui apparaît lorsque la souris se trouve dans le coin haut droit de l'image. Au même endroit on peut trouver des fonctions de zoom, défilement, changement d'échelle et réinitialiser la vue. Toutes ces fonctionnalités seront disponibles pour toutes les visualisations.
+
 En revanche, la visualisation n'est pas des plus agréables, elle manque de couleurs, d'un titre et de titres d'axes plus visibles. Il est possible de préciser ces informations dès le début, en donnant plus d'arguments à la fonction `.bar()`. Par exemple, grâce à l'argument `labels` nous pouvons changer le nom des axes et grâce à l'argument `color` on peut changer la couleur des barres selon une variable de notre jeu de données (ici nous utiliserons « Nombres d'articles » pour l'axe vertical). Pour ajouter un titre, il suffit d'utiliser l'argument `title`.
 
 ```python
@@ -217,7 +218,7 @@ fig.show()
 </figcaption>
 </figure>
 
-Comme montré ci dessus, Plotly ajoute automatiquement une légende à la visualisation si vous distinguez les objets par des couleurs (à savoir que la légende peut être retirée). La légende est elle aussi interactive : en cliquant une fois sur un élément, la barre correspondante disparaît de la visualisation; en double-cliquant sur un élément, cette fois-ci tous les autres objets disparaissent excepté celui que vous avez sélectionné.
+Comme montré ci-dessus, Plotly ajoute automatiquement une légende à la visualisation si vous distinguez les objets par des couleurs (à savoir que la légende peut être retirée). La légende est elle aussi interactive : en cliquant une fois sur un élément, la barre correspondante disparaît de la visualisation; en double-cliquant sur un élément, cette fois-ci tous les autres objets disparaissent excepté celui que vous avez sélectionné.
 
 ### Courbes
 
@@ -366,7 +367,7 @@ fig = px.bar(
     x="discipline",
     y="size",
     labels={"size": "Nombre d'articles mentionnant le genre publiés"},
-    range_y=[0,500],  # Le paramètre range_y permet de customiser l'intervalede l'axe y
+    range_y=[0,500],  # Le paramètre range_y permet de préciser l’intervalle de l’axe y
     color="discipline",
     # title="Titre de votre choix",
     # Utiliser le paramètre animation_frame pour spécfier l'axe d'évolution
@@ -399,10 +400,12 @@ fig = px.scatter(
 )
 ```
 
-Notons que la figure a été créée mais n'est pas visible puisque nous n'avons pas encore utilisé la fonction `fig.show()`. La figure sera affichée une fois que nous avons ajouté le menu déroulant dans les prochaines étapes.<br>
+Notons que la figure a été créée mais n'est pas visible puisque nous n'avons pas encore utilisé la fonction `fig.show()`. La figure sera affichée une fois que nous avons ajouté le menu déroulant dans les prochaines étapes.
+
 Après avoir créé la vue initiale, nous pouvons utiliser la méthode `update_layout` à nouveau pour ajouter un menu déroulant.
 
-C'est une étape plus complexe puisque les données de l'objet Plotly Express sont imbriquées à plusieurs niveaux *sous le capot*, donc nous avons besoin de modifier des attributs à un niveau plus profond qu'à l'habitude pour créer le menu.<br>
+C'est une étape plus complexe puisque les données de l'objet Plotly Express sont imbriquées à plusieurs niveaux *sous le capot*, donc nous avons besoin de modifier des attributs à un niveau plus profond qu'à l'habitude pour créer le menu.
+
 Une fois qu'on a appelé la méthode `update_layout`:
 
 - nous devons d'abord accéder au paramètre `updatemenus`: c'est une liste de dictionnaires, chaque dictionnaire contient les métadonnées pour plusieurs fonctionnalités.
@@ -526,7 +529,7 @@ Pour commencer à travailler avec Plotly Graph Objects, vous aurez besoin d'impo
 import plotly.graph_objects as go 
 ```
 
-> **Notons que dans un script `.py` conventionnel, les modules devraient être importés au début du script. On importe les modules ici pour un soucis de claireté.**
+> **Notons que dans un script `.py` conventionnel, les modules devraient être importés au début du script. On importe les modules ici pour un soucis de clarté.**
 
 ### Ce ne sont que des Objets ! La structure des données de Plotly Graph Objects 
 
@@ -707,7 +710,7 @@ fig.show()
 </figcaption>
 </figure>
 
-De la même manière qu'avec `plotly.px`, les figures de `plotly.go` permettent une certaine interactivité native. Les tableaux par exemple permettent aux utilisateur.ices de faire défiler les lignes du tableau (en utilisant le trackpad ou la bar de défilement sur la droite). Ces objets sont ainsi excellents pour économiser de la place. Il est aussi facile de déplacer des colonnes en cliquant sur l'entête d'une colonne et la déplaçant à droite ou à gauche. 
+De la même manière qu'avec `plotly.px`, les figures de `plotly.go` permettent une certaine interactivité native. Les tableaux par exemple permettent aux utilisateur.ices de faire défiler les lignes du tableau (en utilisant le trackpad ou la barre de défilement sur la droite). Ces objets sont ainsi excellents pour économiser de la place. Il est aussi facile de déplacer des colonnes en cliquant sur l'entête d'une colonne et la déplaçant à droite ou à gauche. 
 
 #### La compositions de figures (*subplots*)
 

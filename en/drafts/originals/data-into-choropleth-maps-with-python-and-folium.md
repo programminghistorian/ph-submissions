@@ -1,5 +1,5 @@
 ---
-title: "Turning Data into Choropleth Maps with Python and Folium"
+title: "Creating Choropleth Maps with Python and Folium"
 slug: data-into-choropleth-maps-with-python-and-folium
 layout: lesson
 collection: lessons

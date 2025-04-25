@@ -152,7 +152,7 @@ df["maj_feminine"] = df["pourcentage_femme"] >= 0.5
 
 ### Diagrammes en barres
 
-Maintenant que nous avons créé un `DataFrame` Pandas de notre jeu de donnée, nous pouvons commencer à créer quelques visualisations simples en utilisant Plotly Express. Commençons par créer un diagramme en barres pour représenter le nombre d'articles publiés dans chaque discipline. Puisque notre jeu de données ne contient pas le nombre d'articles (pour le moment, chaque ligne correspond à un article) nous allons d'abord créer un nouveau `DataFrame` qui regroupera les articles écrits pour chaque discipline puis évaluer le nombre d'entrées dans chaque tableau.
+Maintenant que nous avons créé un `DataFrame` Pandas de notre jeu de données, nous pouvons commencer à créer quelques visualisations simples en utilisant Plotly Express. Commençons par créer un diagramme en barres pour représenter le nombre d'articles publiés dans chaque discipline. Puisque notre jeu de données ne contient pas le nombre d'articles (pour le moment, chaque ligne correspond à un article) nous allons d'abord créer un nouveau `DataFrame` qui regroupera les articles écrits pour chaque discipline puis évaluer le nombre d'entrées dans chaque tableau.
 
 ```python
 # Création d'un nouveau DataFrame

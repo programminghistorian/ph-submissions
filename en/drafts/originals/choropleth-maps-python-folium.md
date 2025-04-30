@@ -1,6 +1,6 @@
 ---
 title: "Creating Choropleth Maps with Python and Folium"
-slug: data-into-choropleth-maps-with-python-and-folium
+slug: choropleth-maps-python-folium
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD
@@ -16,7 +16,7 @@ difficulty: 2
 activity: TBC
 topics: TBC
 abstract: Short abstract of this lesson
-avatar_alt: Visual description of lesson image
+avatar_alt: AI-generated drawing of a medieval cartographer at work (Google Gemini).
 mathjax: true
 doi: XX.XXXXX/phen0000
 ---
@@ -97,7 +97,7 @@ Personally, I use Microsoft's [Visual Studio Code](https://code.visualstudio.com
 - integrates well with GitHub
 - supports text editing, including Markdown and Markdown previewing
 
-Whether you are using Colab or another Jupyter notebook, you will find it easier to follow this lesson if you [open the notebook](https://nbviewer.org/github/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/data-into-choropleth-maps-with-python-and-folium.ipynb) containing the lesson's code. 
+Whether you are using Colab or another Jupyter notebook, you will find it easier to follow this lesson if you [open the notebook](https://nbviewer.org/github/programminghistorian/ph-submissions/blob/gh-pages/assets/choropleth-maps-python-folium/choropleth-maps-python-folium.ipynb) containing the lesson's code. 
 
 ## Getting Started
 
@@ -114,14 +114,14 @@ import numpy as np
 
 ### Getting the Fatal Force Data
 
-The lesson uses data from the *[Washington Post](https://perma.cc/QW8X-AQUN)*'s [Fatal Force database](https://github.com/washingtonpost/data-police-shootings), which is available to [download from _Programming Historian_'s GitHub repository](/assets/data-into-choropleth-maps-with-python-and-folium/fatal-police-shootings-data.csv). The *Post* started the database in 2015, seeking to document every time a civilian encounter with a police officer ends in the death of the civilian. This data is neither reported nor collected systematically by any other body, so the *Post*'s work fills an important lacuna in understanding how police in the US interact with the people around them. The *Post* provides [documentation](/assets/data-into-choropleth-maps-with-python-and-folium/fatal-force-database-README.md) about how this data is collected and recorded.
+The lesson uses data from the *[Washington Post](https://perma.cc/QW8X-AQUN)*'s [Fatal Force database](https://github.com/washingtonpost/data-police-shootings), which is available to [download from _Programming Historian_'s GitHub repository](/assets/choropleth-maps-python-folium/fatal-police-shootings-data.csv). The *Post* started the database in 2015, seeking to document every time a civilian encounter with a police officer ends in the death of the civilian. This data is neither reported nor collected systematically by any other body, so the *Post*'s work fills an important lacuna in understanding how police in the US interact with the people around them. The *Post* provides [documentation](/assets/choropleth-maps-python-folium/fatal-force-database-README.md) about how this data is collected and recorded.
 
 My comments will reflect the data in the database as of June 2024. If you work with the data downloaded from _Programming Historian_'s repository, your visualizations should resemble those in this lesson. However, if you access the *Post*'s database directly at your time of reading, the numbers will be different. Tragically, I can confidently predict that these numbers will continue to increase. 
 
 The code block below imports the Fatal Force data as the `ff_df` DataFrame. To follow along with the lesson's archived dataset, use the code as written. If you want to see the most up-to-date version of the data from the *Washington Post* instead, comment-out (with `#`) the first two lines, and un-comment the last two lines.
 
 ```python
-ff_df = pd.read_csv('https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-police-shootings-data.csv', parse_dates = ['date'])
+ff_df = pd.read_csv('https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/choropleth-maps-python-folium/fatal-police-shootings-data.csv', parse_dates = ['date'])
 # ff_df = pd.read_csv('https://raw.githubusercontent.com/washingtonpost/data-police-shootings/master/v2/fatal-police-shootings-data.csv',
 #                    parse_dates = ['date'])
 
@@ -173,12 +173,12 @@ ff_df.sample(3)
 
 To create the choropleth map, Folium needs a file that provides the geographic boundaries of the regions to be mapped. The US Census provides a number of [different cartographic boundary files](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html): shape files for counties (at various resolutions), congressional districts, census tracts, and more. Many cities (such as [Chicago](https://www.chicago.gov/city/en/depts/dti/supp_info/geographic-information-systems.html)) also publish similar files for ward boundaries, police precincts, and so on.
 
-We're going to use the Census website's `cb_2021_us_county_5m.zip` file, which is available to [download from the *Programming Historian* repository](/assets/data-into-choropleth-maps-with-python-and-folium/cb_2021_us_county_5m.zip). If the cartographic boundary file you were using was based on another boundary type (such as [census tracts](https://perma.cc/QD4A-RB4Y), or [police precincts](https://perma.cc/6DCM-CZVF)), you would follow the same basic steps – the map produced would simply reflect these different geometries instead.
+We're going to use the Census website's `cb_2021_us_county_5m.zip` file, which is available to [download from the *Programming Historian* repository](/assets/choropleth-maps-python-folium/cb_2021_us_county_5m.zip). If the cartographic boundary file you were using was based on another boundary type (such as [census tracts](https://perma.cc/QD4A-RB4Y), or [police precincts](https://perma.cc/6DCM-CZVF)), you would follow the same basic steps – the map produced would simply reflect these different geometries instead.
 
 GeoPandas knows how to read the ZIP format and to extract the information it needs: 
 
 ```python
-counties = gpd.read_file('https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/cb_2021_us_county_5m.zip')
+counties = gpd.read_file('https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/choropleth-maps-python-folium/cb_2021_us_county_5m.zip')
 
 # counties = gpd.read_file("https://www2.census.gov/geo/tiger/GENZ2021/shp/cb_2021_us_county_5m.zip")
 ```
@@ -234,7 +234,7 @@ Just for fun, pick a county you're familiar with and see what it looks like:
 counties[(counties['NAME']=='Suffolk') & (counties['STUSPS']=='MA')].plot()
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-01.png" alt="Image of Suffolk county, MA" caption="Figure 1. GeoPandas' geometry can handle the oddly-shaped Suffolk County, MA." %}
+{% include figure.html filename="en-or-choropleth-maps-python-folium-01.png" alt="Image of Suffolk county, MA" caption="Figure 1. GeoPandas' geometry can handle the oddly-shaped Suffolk County, MA." %}
 
 The next code block creates a simplified version containing only the `FIPS`, `NAME`, and `geometry` columns:
 
@@ -434,7 +434,7 @@ The following code then processes the data and turns it into a map (line numbers
 * Line 11 (`legend_name =`) allows you to label the scale. This is optional but helpful, so people know what they're reading.
 * Line 14 simply displays the map:
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-02.gif" alt="Map of the United States showing that map can be moved around and zoom in to see specific regions" caption="Figure 2. A basic interactive Folium choropleth map." %}
+{% include figure.html filename="en-or-choropleth-maps-python-folium-02.gif" alt="Map of the United States showing that map can be moved around and zoom in to see specific regions" caption="Figure 2. A basic interactive Folium choropleth map." %}
 
 ## The Problem of Unevenly Distributed Data
 
@@ -471,7 +471,7 @@ A [boxplot](https://perma.cc/7LH8-L9M5) is a useful tool for visualizing this di
 map_df.boxplot(vert=False)
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-03.png" alt="A horizontal boxplot showing the data distribution of the number of people killed by police in US counties" caption="Figure 3. Distribution of police killings per county." %}
+{% include figure.html filename="en-or-choropleth-maps-python-folium-03.png" alt="A horizontal boxplot showing the data distribution of the number of people killed by police in US counties" caption="Figure 3. Distribution of police killings per county." %}
 
 Although imperfect, this allows us to see that there are fewer than ten counties in which police have killed more than ~75 civilians.
 
@@ -529,7 +529,7 @@ folium.Choropleth(
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-04.png" alt="A choropleth map of the US showing how the Fisher-Jenks algorithm creates different bins of data" caption="Figure 4. The map colorized by the Fisher-Jenks algorithm." %}
+{% include figure.html filename="en-or-choropleth-maps-python-folium-04.png" alt="A choropleth map of the US showing how the Fisher-Jenks algorithm creates different bins of data" caption="Figure 4. The map colorized by the Fisher-Jenks algorithm." %}
 
 This is already an improvement: the map shows a better range of contrasts. A higher number of counties outside the Southwest where police have killed several people (Florida, the Northwest, etc.) are now visible. However, the scale is almost impossible to read! The algorithm correctly found natural breaks – most of the values are less than 92 – but at the lower end of the scale, the numbers are illegible.
 
@@ -607,7 +607,7 @@ colormap.add_to(baseMap)
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-05.png" alt="The map colorized with log-values, but with a scale that shows non-log values" caption="Figure 5. The map colorized with a log scale, with non-log values on the scale." %}
+{% include figure.html filename="en-or-choropleth-maps-python-folium-05.png" alt="The map colorized with log-values, but with a scale that shows non-log values" caption="Figure 5. The map colorized with a log scale, with non-log values on the scale." %}
 
 Note that the log values on the scale have been converted to the original (non-log) values. Although the bins are back to equal size, their values now increase exponentially.
 
@@ -629,7 +629,7 @@ Depending on the research question/goal, it could be problematic to group severa
 
 ```python
 #url = 'https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/totals/co-est2019-alldata.csv'
-url = 'https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/co-est2019-alldata.csv'
+url = 'https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/choropleth-maps-python-folium/co-est2019-alldata.csv'
 
 pop_df = pd.read_csv(url,
                      usecols = ['STATE','COUNTY','POPESTIMATE2019'],
@@ -737,7 +737,7 @@ cp = folium.Choropleth(
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-06.png" alt="A map showing the number of police killings per 100k." caption="Figure 06. The number of police killings per 100k." %}
+{% include figure.html filename="en-or-choropleth-maps-python-folium-06.png" alt="A map showing the number of police killings per 100k." caption="Figure 06. The number of police killings per 100k." %}
 
 Now, high population counties (like Los Angeles and Cook) don't appear so bad. Instead, low population counties with a single shooting are shown in dark red.
 
@@ -763,7 +763,7 @@ map_df['count_per_100k'].describe()
 map_df.boxplot(column=['count_per_100k'],vert=False)
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-07.png" alt="A boxplot showing the distribution of police killings per 100k." caption="Figure 07. The distribution of the number of police killings per 100k." %}
+{% include figure.html filename="en-or-choropleth-maps-python-folium-07.png" alt="A boxplot showing the distribution of police killings per 100k." caption="Figure 07. The distribution of the number of police killings per 100k." %}
 
 Again, this is an uneven distribution with a high number of outliers. Using a log scale may result in a more normal distribution:
 
@@ -772,7 +772,7 @@ map_df['MapScale'] = np.log10(map_df['count_per_100k'])
 map_df.boxplot(column=['MapScale'],vert=False)
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-08.png" alt="A boxplot showing the distrubtion of police killings per 100k population using a log-scale" caption="Figure 08. Boxplot of police killings per 100k using a log scale." %}
+{% include figure.html filename="en-or-choropleth-maps-python-folium-08.png" alt="A boxplot showing the distrubtion of police killings per 100k population using a log-scale" caption="Figure 08. Boxplot of police killings per 100k using a log scale." %}
 
 This conversion transforms a skewed distribution into a more normal distribution of log values.
 
@@ -817,7 +817,7 @@ colormap.add_to(baseMap)
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-09.png" alt="A map of police killings per 100k using a log-scale" caption="Figure 09. The number of police killings per 100k using a log scale." %}
+{% include figure.html filename="en-or-choropleth-maps-python-folium-09.png" alt="A map of police killings per 100k using a log-scale" caption="Figure 09. The number of police killings per 100k using a log scale." %}
 
 Normalizing the data dramatically changes the appearance of the map. The initial visualization (Figure 2) suggested that the problem of police killing civilians was limited to a few counties, generally those with large populations. But when the data is normalized, police killings of civilians seem far more widespread. The counties with the highest rates of killings are those with lower population numbers. Trying to illustrate this issue with charts or tables would not be nearly as effective.
 
@@ -969,7 +969,7 @@ folium.GeoJsonTooltip(['NAME','population','count','count_per_100k'],
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-10.gif" alt="A second animated map showing a more complex set of data displayed with the Tooltip plugin" caption="Figure 10. The tooltip plugin displays multiple variables in a floating information box." %}
+{% include figure.html filename="en-or-choropleth-maps-python-folium-10.gif" alt="A second animated map showing a more complex set of data displayed with the Tooltip plugin" caption="Figure 10. The tooltip plugin displays multiple variables in a floating information box." %}
 
 Despite its complexity, adding the floating information box dramatically improves the user experience of exploring your map – so do give it a try.
 

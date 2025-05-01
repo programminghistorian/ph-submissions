@@ -38,7 +38,7 @@ Nous allons voir dans ce tutoriel comment utiliser OpenRefine sur des données l
 
 Nous allons utiliser un jeu de données sous la forme d’une liste de douze ouvrages d’alchimie en deux colonnes : `Titre` (pour le titre de l’ouvrage) et `Date` (pour date de publication, certaines dates sont manquantes). Ce jeu de données ([téléchargeable](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie.csv)) est sous la forme d’un fichier CSV encodé en UTF-8 (voir Figure 1). C’est un format ouvert idéal pour traiter et archiver des données tabulées. Veuillez noter que les résultats des processus présentés ci-dessous peuvent se présenter différemment si vous refaites les mêmes actions, car les données de Wikidata auront changé.
 
-{% include figure.html filename="fr-tr-enrichir-donnees-reconciliation-openrefine-01.png" alt="Aperçu du fichier CSV contenant les données à enrichir." caption="Figure 1. Apercu du fichier CSV." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-01.png" alt="Aperçu du fichier CSV contenant les données à enrichir." caption="Figure 1. Apercu du fichier CSV." %}
 
 L’objectif est d’enrichir ces données en important des données supplémentaires provenant de Wikidata comme le lieu et la date de publication, le titre normalisé de l’ouvrage, l’auteur et la langue utilisée.
 
@@ -64,7 +64,7 @@ Cliquez sur les options de la colonne Titre \> Editer la colonne \> Ajouter une 
 
 Réconciliez la colonne Titre_RECON en cliquant sur les options de cette colonne \> Réconcilier \> Démarrer la réconciliation (voir Figure 2)
 
-{% include figure.html filename="fr-tr-enrichir-donnees-reconciliation-openrefine-02.png" alt="Capture d'écran montrant le menu déroulant des colonnes menant à la fonction de réconciliation." caption="Figure 2. Démarrer la réconciliation." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-02.png" alt="Capture d'écran montrant le menu déroulant des colonnes menant à la fonction de réconciliation." caption="Figure 2. Démarrer la réconciliation." %}
 
 Choisissez un service… : Wikidata reconci.link \> Suivant.
 
@@ -72,7 +72,7 @@ Dans la case de gauche (voir Figure 3), sélectionnez le type de données le plu
 
 Pour le moment, ignorez les autres options \> Démarrer la réconciliation…
 
-{% include figure.html filename="fr-tr-enrichir-donnees-reconciliation-openrefine-03.png" alt="Capture d'écran montrant les différentes options pour calibrer la réconciliation." caption="Figure 3. Options de réconciliation." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-03.png" alt="Capture d'écran montrant les différentes options pour calibrer la réconciliation." caption="Figure 3. Options de réconciliation." %}
 
 Attendez que le processus se termine. On peut voir la progression dans une zone jaune en haut du tableau principal.
 
@@ -81,11 +81,11 @@ Une fois terminé, observez plusieurs choses :
 -   Sous le titre de la colonne, une ligne verte indique le taux de réconciliation. Une ligne complètement verte indique ainsi que toutes les données ont été réconciliées. Il est aussi possible d’afficher et de sélectionner cette information dans les facettes du menu de gauche.
 -   Que plusieurs éléments de la colonne Titre_RECON sont désormais bleutés et cliquables. Cela veut dire qu’ils ont été appariés avec un élément Wikidata qui devrait leur correspondre (voir Figure 4).
 
-{% include figure.html filename="fr-tr-enrichir-donnees-reconciliation-openrefine-04.png" alt="Exemple d'une donnée réconciliée." caption="Figure 4. Exemple de donnée réconciliée." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-04.png" alt="Exemple d'une donnée réconciliée." caption="Figure 4. Exemple de donnée réconciliée." %}
 
 -   Que des éléments possèdent plusieurs choix. L’algorithme de réconciliation n’a pu décider quelle valeur choisir (voir Figure 5).
 
-{% include figure.html filename="fr-tr-enrichir-donnees-reconciliation-openrefine-05.png" alt="Exemple de donnée non-réconciliée avec un choix à effectuer." caption="Figure 5. Exemple de donnée non-réconciliée avec un choix à effectuer." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-05.png" alt="Exemple de donnée non-réconciliée avec un choix à effectuer." caption="Figure 5. Exemple de donnée non-réconciliée avec un choix à effectuer." %}
 
 -   Chaque choix est précédé de deux cases à cocher. La première case avec une coche unique permet de n’apparier que cette cellule. La seconde case à cocher avec deux coches permet d’apparier toutes les cellules identiques de la colonne avec la valeur choisie. Cela est très utile dans le cas d’un grand jeu de données avec des valeurs semblables qui se répètent.
 
@@ -99,7 +99,7 @@ En survolant les valeurs proposées en choix, il est possible de visualiser un e
 
 S’il n’y a pas de choix proposé ou si les choix proposés ne sont pas pertinents, alors cliquez sur Choisir une nouvelle correspondance. Il est alors possible de saisir une valeur plus courte ou mieux rédigée pour tenter de repérer l’élément correspondant (voir Figure 6).
 
-{% include figure.html filename="fr-tr-enrichir-donnees-reconciliation-openrefine-06.gif" alt="Animation montrant comment lancer une nouvelle recherche à partir d'une donnée." caption="Figure 6. Recherche d’une nouvelle correspondance." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-06.gif" alt="Animation montrant comment lancer une nouvelle recherche à partir d'une donnée." caption="Figure 6. Recherche d’une nouvelle correspondance." %}
 
 ### Enrichir son jeu de données
 
@@ -123,7 +123,7 @@ Recommencez en ajoutant les propriétés suivantes :
 
 Si ces propriétés ne sont pas listées dans Propriétés suggérées alors écrirez-les une par une dans la case sous Ajouter une propriété (voir Figure 7).
 
-{% include figure.html filename="fr-tr-enrichir-donnees-reconciliation-openrefine-07.gif" alt="Animation montrant comment ajouter des données issues de sources externes en saisissant des noms de données, ici des propriétés de Wikidata." caption="Figure 7. Enrichir en ajoutant des propriétés et leurs valeurs." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-07.gif" alt="Animation montrant comment ajouter des données issues de sources externes en saisissant des noms de données, ici des propriétés de Wikidata." caption="Figure 7. Enrichir en ajoutant des propriétés et leurs valeurs." %}
 
 Il est aussi possible de refaire la même opération à partir de la colonne *Place of Publication* pour récupérer les coordonnées géographiques (*Coordinate location (P625)*) dans le cas où on voudrait visualiser les données sur une carte.
 
@@ -133,7 +133,7 @@ Une fois le jeu de données enrichi, il est possible d’exporter le fichier au 
 
 Voici un aperçu du jeu des données enrichies (février 2025, figure 8). Il peut être [téléchargé en csv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie-donnees_enrichies.csv) ou au [format OpenRefine](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie-donnees_enrichies.tar.gz).
 
-{% include figure.html filename="fr-tr-enrichir-donnees-reconciliation-openrefine-08.png" alt="Capture d'écran montrant un jeu de données enrichies dans OpenRefine." caption="Figure 8. Jeu des données enrichies." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-08.png" alt="Capture d'écran montrant un jeu de données enrichies dans OpenRefine." caption="Figure 8. Jeu des données enrichies." %}
 
 
 ## Quelques bonnes pratiques

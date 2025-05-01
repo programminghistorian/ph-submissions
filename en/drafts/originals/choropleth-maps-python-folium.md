@@ -13,8 +13,8 @@ editors:
 - Nabeel Siddiqui
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/604
 difficulty: 2
-activity: TBC
-topics: TBC
+activity: presenting
+topics: [python, mapping, data-visualization]
 abstract: This lesson demonstrates how to visualize data through choropleth maps using Python and the Folium library. It discusses common problems encountered with choropleth maps and explains how to add interactive elements and save the maps for sharing.
 avatar_alt: AI-generated drawing of a medieval cartographer at work (Google Gemini).
 mathjax: true

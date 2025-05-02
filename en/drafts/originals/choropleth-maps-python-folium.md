@@ -27,7 +27,7 @@ doi: XX.XXXXX/phen0000
 
 [Choropleth maps](https://perma.cc/B38C-9JXN) are an excellent tool for discovering and demonstrating patterns in data that might be otherwise hard to discern. My grandfather, who worked at the [US Census Bureau](https://perma.cc/4WZ5-NCRJ), loved to pore over the tables of [The Statistical Abstract of the United States](https://perma.cc/89KC-NYLH). But tables are hard for people to understand: visualizations (like maps) are more helpful, as Alberto Cairo argues in _How Charts Lie_.[^1] 
 
-Choropleth maps are often used in the media to visualize geographic information which varies by region, such as [Covid-19 infection/death rates](https://www.nytimes.com/interactive/2021/us/covid-cases.html#maps), or [education spending per pupil](https://www.reddit.com/r/MapPorn/comments/bc9jwu/us_education_spending_map/). Wired describes[^2] how [Kenneth Field](https://perma.cc/EAD7-8ZNB) produced a [gallery](https://carto.maps.arcgis.com/apps/MinimalGallery/index.html?appid=b3d1fe0e8814480993ff5ad8d0c62c32#) of different maps representing the 2016 United States electoral results. US election maps are often colored in simple blue and red – for [democrats](https://en.wikipedia.org/wiki/Democratic_Party_(United_States)) or [republicans](https://en.wikipedia.org/wiki/Republican_Party_(United_States)) – showing which party won in each state or county. But most regions are not *all* red or *all* blue: most are shades of purple, as Field's gallery shows. Representing data in this way reveals patterns that might otherwise be hard to discern: choropleth maps allow users to tell different, perhaps more nuanced, stories about data. 
+Choropleth maps are often used in the media to visualize geographic information which varies by region, such as [Covid-19 infection/death rates](https://www.nytimes.com/interactive/2021/us/covid-cases.html#maps) or [education spending per pupil](https://www.reddit.com/r/MapPorn/comments/bc9jwu/us_education_spending_map/). _Wired_ describes[^2] how [Kenneth Field](https://perma.cc/EAD7-8ZNB) produced a [gallery](https://carto.maps.arcgis.com/apps/MinimalGallery/index.html?appid=b3d1fe0e8814480993ff5ad8d0c62c32#) of different maps representing the 2016 United States electoral results. US election maps are often colored in simple blue and red – for [democrats](https://en.wikipedia.org/wiki/Democratic_Party_(United_States)) or [republicans](https://en.wikipedia.org/wiki/Republican_Party_(United_States)) – showing which party won in each state or county. But most regions are not *all* red or *all* blue: most are shades of purple, as Field's gallery shows. Representing data in this way reveals patterns that might otherwise be hard to discern: choropleth maps allow users to tell different, perhaps more nuanced, stories about data. 
 
 The Python programming language, combined with the Folium library, makes creating choropleth maps quick and easy, as this lesson will show. This lesson will show how to create a choropleth map using two data files:
 * A file with the data to count and visualize: the 'Fatal Force' dataset
@@ -60,7 +60,7 @@ Before getting started, a few comments about the tools used in this lesson.
 
 To get the most out of this lesson, you should have some experience with [Python](https://www.python.org/) and [Pandas](https://pandas.pydata.org/).
 
-Python is the most popular programming language.[^3][^4] It is especially useful for data scientists,[^5] or anyone interested in analyzing and visualizing data, because it comes with an enormous library of tools specifically for these applications. If you are unfamiliar with Python, you may find Kaggle's [Introduction to Python](https://www.kaggle.com/learn/python) tutorial helpful. *Programming Historian* also has a lesson on [introducing and installing Python](/en/lessons/introduction-and-installation).
+Python is the most popular programming language.[^3], [^4] It is especially useful for data scientists,[^5] or anyone interested in analyzing and visualizing data, because it comes with an enormous library of tools specifically for these applications. If you are unfamiliar with Python, you may find Kaggle's [Introduction to Python](https://www.kaggle.com/learn/python) tutorial helpful. *Programming Historian* also has a lesson on [introducing and installing Python](/en/lessons/introduction-and-installation).
 
 Written in Python (and [C](https://perma.cc/6TQ6-S46L)), Pandas is a powerful package for data manipulation, analysis, and visualization. If you are unfamiliar with Pandas, you will find some basic *Programming Historian* lessons on [installing Pandas](/en/lessons/visualizing-with-bokeh), and [using Pandas to handle and analyze data](/en/lessons/crowdsourced-data-normalization-with-pandas). Kaggle also offers free [introduction to Pandas](https://www.kaggle.com/learn/pandas) lessons, and Pandas has its own useful [Getting Started tutorial](https://pandas.pydata.org/docs/getting_started/index.html). 
 
@@ -75,14 +75,14 @@ This lesson uses several Pandas methods, such as:
 
 ### Folium
 
-The main software you'll use in this lesson is [Folium](https://python-visualization.github.io/folium/), a Python library that makes it easy to create a wide variety of Leaflet maps. You won't need to work with HTML, CSS, or JavaScrip: everything can be done within the Python ecosystem. Folium allows you to specify a variety of different basemaps (terrain, street maps, colors) and display data using various visual markers, such as pins or circles. The color and size of these markers can then be customized based on your data. Folium's advanced functions include creating [cluster maps](https://perma.cc/RK4U-A5UW) and [heat maps](https://perma.cc/M5KY-NTNA).
+The main software you'll use in this lesson is [Folium](https://python-visualization.github.io/folium/), a Python library that makes it easy to create a wide variety of Leaflet maps. You won't need to work with HTML, CSS, or JavaScript: everything can be done within the Python ecosystem. Folium allows you to specify a variety of different basemaps (terrain, street maps, colors) and display data using various visual markers, such as pins or circles. The color and size of these markers can then be customized based on your data. Folium's advanced functions include creating [cluster maps](https://perma.cc/RK4U-A5UW) and [heat maps](https://perma.cc/M5KY-NTNA).
 
 Folium has a useful [Getting Started guide](https://perma.cc/EN5B-M4XF) that serves as an introduction to the library. 
 
 
 ### Google Colab
 
-According to Dombrowski, Gniady, and Kloster, [Jupyter Notebook](https://jupyter.org/) is 'increasingly replacing Microsoft Word as the default authoring environment for research,' in large part because it gives 'equal weight' to prose and code.[^6] Although you can choose to install and use Jupyter notebooks on a computer, I prefer to go through [Google Colab](https://colab.research.google.com/), a system that implements Juypter notebooks [in the cloud](https://perma.cc/3WKY-RA3G). Working in the cloud allows you to access Jupyter notebooks from any computer or tablet that runs on a modern web browser. This also means that you don't need to adapt instructions for your own operating system. Google Colab is fast and powerful: its virtual machines generally have around 12GB RAM and 23GB disk space. You don't need to be working on a powerful machine to use it. Designed for machine learning, Colab can even provide a virtual graphics card and/or a hardware accelerator. What's more, most of the libraries needed for this lesson are already part of Colab's very large collection of Python libraries. For all these reasons, I recommend using the Colab environment. (For a more detailed comparison between Colab and Jupyter, see the [Geeks for Geeks](https://perma.cc/V4TL-YVVY) discussion of the two systems.)
+According to Dombrowski, Gniady, and Kloster, [Jupyter Notebook](https://jupyter.org/) is 'increasingly replacing Microsoft Word as the default authoring environment for research,' in large part because it gives 'equal weight' to prose and code.[^6] Although you can choose to install and use Jupyter notebooks on a computer, I prefer to go through [Google Colab](https://colab.research.google.com/), a system that implements Juypter notebooks [in the cloud](https://perma.cc/3WKY-RA3G). Working in the cloud allows you to access Jupyter notebooks from any computer or tablet that runs a modern web browser. This also means that you don't need to adapt instructions for your own operating system. Google Colab is fast and powerful: its virtual machines generally have around 12GB RAM and 23GB disk space. You don't need to be working on a powerful machine to use it. Designed for machine learning, Colab can even provide a virtual graphics card and/or a hardware accelerator. What's more, most of the libraries needed for this lesson are already part of Colab's very large collection of Python libraries. For all these reasons, I recommend using the Colab environment. (For a more detailed comparison between Colab and Jupyter, see the [Geeks for Geeks](https://perma.cc/V4TL-YVVY) discussion of the two systems.)
 
 This lesson only requires Colab's basic tier, which you can access for free with any Google account. Should you need it for future projects, you can always purchase more 'compute' later. Google has a helpful [Welcome to Colab](https://colab.research.google.com/notebooks/intro.ipynb) notebook that explains Colab's design goals and capabilities. It includes links on how to use Pandas, machine learning, and various sample notebooks.
 
@@ -375,7 +375,7 @@ map_df.rename(columns={0:'count'})
 
 ### Initializing a Basic Map
 
-To create a map, Folium will need to initalize a `folium.Map` object. It will do this repeatedly through the following function:
+To create a map, Folium will need to initalize a `folium.Map` object. This lesson will do this repeatedly through the following function:
 
 ```python
 def initMap():
@@ -391,7 +391,7 @@ def initMap():
     return map
 ```
 
-The maps created by Folium are interactive: you can zoom in and out, and move the map around (using your mouse) to examine the area(s) in which you are most interested. To ensure the map is initially located over the center of the continential USA, the `location=` parameter tells Folium to use `center = [40,-96]` – a set of coordinate values – as the middle of the map. Because I find the default zoom level (`zoom_start = 10`) too large to show the continental USA well, the zoom level is set to 5 in the function below. (You can check Folium's [default values](https://perma.cc/BKE5-MCBG) for many of its parameters.)
+The maps created by Folium are interactive: you can zoom in and out, and move the map around (using your mouse) to examine the area(s) in which you are most interested. To ensure the map is initially located over the center of the continential USA, the `location=` parameter tells Folium to use `center = [40,-96]` – a set of coordinate values – as the middle of the map. Because I find the default zoom level (`zoom_start = 10`) too large to show the continental USA well, the zoom level is set to 5 in the function above. (You can check Folium's [default values](https://perma.cc/BKE5-MCBG) for many of its parameters.)
 
 Folium requires you to attribute specific map tiles (the underlying visual representation of the map): see the [Leaflet gallery](https://leaflet-extras.github.io/leaflet-providers/preview/) for examples, along with values for `tiles=` and `attr=`. 
 
@@ -442,7 +442,7 @@ Unfortunately, this basic map (Figure 2) is not terribly informative... The whol
 * The grey counties are those for which the *Post* have not recorded any cases of fatal police shootings. This represents about 50% of US counties.
 * Almost all the rest of the country is pale yellow, except for a few major urban areas, such as Los Angeles.
 
-Why is this? The clue is to look at the scale, which ranges from 0 to 342.
+Why is this? The clue is to look at the scale, which ranges from 0 to 341.
 
 Pandas' [`.describe()`](https://perma.cc/2LFV-NAN3) method provides a useful summary of your data, including the mean, standard deviation, median, and quartile information:
 
@@ -613,7 +613,7 @@ Note that the log values on the scale have been converted to the original (non-l
 
 ## Normalizing Population Data
 
-Figure 5 demonstrates a common characteristic of urban maps: the data tends to correlate closely with population centers. The counties with the largest number of police killings of civilians are those with large populations (Los Angeles, California; Cook, Illinois; Dade, Florida; etc.). The same trend would arise for maps showing ocurrences of [swine flu](https://perma.cc/BY2N-GACP) (correlated with pig farms), [corn leaf blight](https://perma.cc/2FAR-ULVU) (correlated with regions that grow corn).
+Figure 5 demonstrates a common characteristic of choropleth maps: the data tends to correlate closely with population centers. The counties with the largest number of police killings of civilians are those with large populations (Los Angeles, California; Cook, Illinois; Dade, Florida; etc.). The same trend would arise for maps showing ocurrences of [swine flu](https://perma.cc/BY2N-GACP) (correlated with pig farms), or [corn leaf blight](https://perma.cc/2FAR-ULVU) (correlated with regions that grow corn).
 
 Choropleth maps are often more accurate when they visualize rates rather than raw values: for example, the number of cases per 100,000 population. Converting the data from values to rates is called 'normalizing' data. 
 

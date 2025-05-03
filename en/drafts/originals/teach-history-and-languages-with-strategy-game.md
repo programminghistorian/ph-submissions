@@ -16,7 +16,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/613
 difficulty: 2
 activity: 
 topics: 
-abstract: Short abstract of this lesson
+abstract: Learn to teach ancient history and pre-modern languages with the free and open source computer game 0 A.D. so that your students may benefit from multisensory and project-based study. 
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
@@ -96,7 +96,7 @@ Through interactions on the long-running [Age of Kings Heaven](https://aok.heave
 
 In 2009, the project leaders decided to make the game's source code public under open licenses, which allowed the project to progress much faster than in its earliest years. Not only did that decision open the door to the large number of mods available, but it also solidified O A. D.'s rare status as a completely cross-platform game, in which eight players can interact seamlessly across eight different machines.
 
-As of May 2025, the current stable release of the base game (Alpha 27) features multiple ancient civilizations, all of which have believable architecture, attire, technology, military techniques, and heroes – plus, as much as possible, restored pronunciation of their original languages. The current [list of playable civilizations](https://play0ad.com/game-info/factions/) is as follows (ordered alphabetically): Achaemenids, Athenians, Britons, Carthaginians, Gauls, Hans, Iberian Tribes, Macedonians, Mauryans, Ptolemies, Republican Romans, Seleucids, and Spartans.
+As of May 2025, the current stable release of the base game (Alpha 27) features multiple ancient civilizations, all of which have believable architecture, attire, technology, military techniques, and heroes – plus, as much as possible, restored pronunciation of their original languages. The current [list of playable civilizations](https://0ad.fandom.com/wiki/Civilizations) is as follows (ordered alphabetically): Achaemenids, Athenians, Britons, Carthaginians, Gauls, Hans, Iberian Tribes, Macedonians, Mauryans, Ptolemies, Republican Romans, Seleucids, and Spartans.
 
 ### A Historically Accurate Community Endeavor
 
@@ -313,7 +313,7 @@ For the Battle of Bibracte, you need to set up two civilizations: the Romans and
 
 {% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-22.png" alt="Adjusting the default player settings in Atlas's Player tab, specifically assigning the name 'Caesar's Legions' to the Roman civilization, assigning that civilization to Player 2 and Team 2, and giving 2000 of each resource to that civilization at the start of the game. Each of these things is available as an easy option inside the Player tab." caption="Figure 22. Adjusting the default player settings in Atlas's Player tab." %}
 
-Next, switch to the **Object** tab and, at the bottom of the screen, click **Player 2** (the Roman civilization's manager) to make them owner of the units. In a field by the main river to the south, you can add a Roman '[Castra](https://en.wikipedia.org/wiki/Castra)' (a specialty army camp structure). These are less advanced than civic centers, but allow the creation of citizen soldiers and some siege weapons. Do also place a proper civic center, mainly so that the Romans actually control their own starting territory. Then set a few citizen soldiers and a cavalryman, all filtered by 'rome' in the **Object** tab's search bar:
+Next, switch to the **Object** tab and, at the bottom of the screen, click **Player 2** (the Roman civilization's manager) to make them controller of the units. In a field by the main river to the south, you can add a Roman '[Castra](https://en.wikipedia.org/wiki/Castra)' (a specialty army camp structure). These are less advanced than civic centers, but allow the creation of citizen soldiers and some siege weapons. Do also place a proper civic center, mainly so that the Romans actually control their own starting territory. Then set a few citizen soldiers and a cavalryman, all filtered by 'rome' in the **Object** tab's search bar:
 
 {% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-23.png" alt="A zoomed-in view of the terrain showing Rome's starting position to the south of Mont Beuvray. I have placed a Castra, as well as a Civic Center, a few houses, a guard tower, and some starting infantryman and cavalrymen, found filtering Atlas's Object tab to show the units available for Rome." caption="Figure 23. Creating Rome's starting position to the south of Mont Beuvray." %}
 
@@ -345,7 +345,7 @@ After pasting the scenario's two files into the correct directory on the second 
 
 {% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-25.png" alt="A full-screen parameters' window for hosting a multiplayer match with my custom scenario. Player 1, on Team 1, will play as the Gauls, and Player 2, on Team 2, will play as the Romans. The map type is Scenario, and the map that is selected is named 'Bibtracte.'" caption="Figure 25. Hosting a multiplayer match with my custom scenario." %}
 
-After Roman Ruffian (Player 2) clicks 'I'm ready', Gallic Guy (Player 1, the host) clicks _Start Game_, and the match begins:
+After Roman Ruffian (Player 2) clicks 'I'm ready', Gallic Guy (Player 1, the host) clicks _Start Game_, and the match begins (as seen on the host machine):
 
 {% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-26.png" alt="A view of Player 1 (in this case, me) situated with their Gallic fort atop Mont Beuvray, indicating the beginning of a multiplayer match played using the custom historical scenario. Player 1 specifically has a civic center, multiple guard towers, a barracks, several houses, some female citizens, and several infantrymen." caption="Figure 26. Player 1 is ready for battle from their fortress atop Mont Beuvray." %}
 

@@ -386,7 +386,7 @@ N.B. Ce point d’accès fonctionne avec la version anglophone de Wikipédia.
 
 Si vous accédez à l’URL de l’interface snorql (ci-dessus), vous remarquerez d’abord qu’un certain nombre de préfixes ont été préalablement déclarés pour nous, ce qui est pratique. Vous devriez également reconnaître certains d’entre eux.
 
-{% include figure.html filename="en-or-intro-to-linked-data-03.png" alt="Interface de requête snorql permettant d’effectuer des requêtes SPARQL sur le point d’accès de DBpedia, constituée d’une liste de préfixes déclarés par défaut, sous laquelle se trouve un champ de saisie pour la rédaction des requêtes." caption="Figure&nbsp;3. Interface de requête snorql par défaut, avec quelques préfixes préalablement déclarés" %}
+{% include figure.html filename="fr-tr-intro-aux-donnees-liees-03.png" alt="Interface de requête snorql permettant d’effectuer des requêtes SPARQL sur le point d’accès de DBpedia, constituée d’une liste de préfixes déclarés par défaut, sous laquelle se trouve un champ de saisie pour la rédaction des requêtes." caption="Figure&nbsp;3. Interface de requête snorql par défaut, avec quelques préfixes préalablement déclarés" %}
 
 Dans l’éditeur de requête, sous les déclarations de préfixes, vous devriez voir&nbsp;:
 
@@ -413,7 +413,7 @@ Appuyez sur _Go!_.
 Si vous avez laissé la sélection du menu déroulant sur **Browse**, vous devriez obtenir deux colonnes avec les en-têtes **b** et **c**.
 Notez bien ici que la casse des caractères fait une différence&nbsp;: `lyndal_roper` ne renverra rien.
 
-{% include figure.html filename="en-or-intro-to-linked-data-04.png" alt="Extrait d’un tableau des résultats d’une requête SPARQL dont chaque ligne renvoie une correspondance avec le modèle de triplet exprimé dans la requête, en affichant deux colonnes correspondant respectivement aux variables «&nbsp;b&nbsp;» et «&nbsp;c&nbsp;» dans la requête." caption="Figure&nbsp;4. Extrait des résultats d’une requête qui vise à lister tous les triplets ayant «&nbsp;Lyndal_Roper&nbsp;» comme sujet." %}
+{% include figure.html filename="fr-tr-intro-aux-donnees-liees-04.png" alt="Extrait d’un tableau des résultats d’une requête SPARQL dont chaque ligne renvoie une correspondance avec le modèle de triplet exprimé dans la requête, en affichant deux colonnes correspondant respectivement aux variables «&nbsp;b&nbsp;» et «&nbsp;c&nbsp;» dans la requête." caption="Figure&nbsp;4. Extrait des résultats d’une requête qui vise à lister tous les triplets ayant «&nbsp;Lyndal_Roper&nbsp;» comme sujet." %}
 
 Que s’est-il donc passé&nbsp;? Et comment savoir ce qu’il faut saisir&nbsp;?
 
@@ -448,7 +448,7 @@ J’ai fait ici un petit changement. Si seulement cette requête fonctionne, je 
 
 Exécutez la requête. Cela fonctionne-t-il pour vous&nbsp;? J’obtiens une longue liste de spécialistes en histoire.
 
-{% include figure.html filename="en-or-intro-to-linked-data-05.png" alt="Extrait d’un tableau des résultats d’une requête SPARQL dont chaque ligne renvoie une correspondance avec le modèle de triplet exprimé dans la requête, en affichant deux colonnes correspondant respectivement aux variables «&nbsp;historian_name&nbsp;» et «&nbsp;predicate&nbsp;» du modèle." caption="Figure&nbsp;5. Spécialistes en histoire selon DBpedia" %}
+{% include figure.html filename="fr-tr-intro-aux-donnees-liees-05.png" alt="Extrait d’un tableau des résultats d’une requête SPARQL dont chaque ligne renvoie une correspondance avec le modèle de triplet exprimé dans la requête, en affichant deux colonnes correspondant respectivement aux variables «&nbsp;historian_name&nbsp;» et «&nbsp;predicate&nbsp;» du modèle." caption="Figure&nbsp;5. Spécialistes en histoire selon DBpedia" %}
 
 Ainsi, cela fonctionne pour créer des listes, ce qui est utile, mais il serait beaucoup plus efficient de combiner des listes afin de créer des intersections entre des ensembles. J’ai trouvé quelques éléments supplémentaires qu’il pourrait être intéressant de chercher dans les attributs de Lyndal Roper sur DBpedia&nbsp;: <http://dbpedia.org/class/yago/WikicatBritishHistorians> and <http://dbpedia.org/class/yago/WikicatWomenHistorians>. Il est très facile de combiner ces attributs en demandant qu’une variable soit renvoyée (dans notre cas`?nom`), puis de l’utiliser dans de multiples lignes d’une requête. Notez également l’espace et le point final de la première ligne commençant avec `?name`&nbsp;:
 
@@ -461,7 +461,7 @@ SELECT ?name WHERE {
 
 Ça fonctionne&nbsp;! J’obtiens cinq entrées. Au moment d’écrire cette leçon, il y a cinq historiennes britanniques dans *DBpedia*...
 
-{% include figure.html filename="en-or-intro-to-linked-data-06.png" alt="Liste des historiennes britanniques présentes dans les données de DBpedia en anglais, apparaîssant sous le champ de saisie dans lequel on peut y lire la requête correspondant aux résultats de la liste." caption="Figure&nbsp;6. Historiennes britanniques selon DBpedia" %}
+{% include figure.html filename="fr-tr-intro-aux-donnees-liees-06.png" alt="Liste des historiennes britanniques présentes dans les données de DBpedia en anglais, apparaîssant sous le champ de saisie dans lequel on peut y lire la requête correspondant aux résultats de la liste." caption="Figure&nbsp;6. Historiennes britanniques selon DBpedia" %}
 
 Seulement cinq historiennes&nbsp;? Bien sûr, en réalité, il y en a bien davantage, comme nous pourrions facilement le constater en remplaçant le nom par Alison Weir, disons, dans notre première requête sur Lyndal Roper. Voilà qui nous mène au problème que j’ai mentionné plus tôt avec *Dbpedia*&nbsp;: cet entrepôt n’est pas vraiment constant quant à l’information structurelle sur les types de personnes qu’il utilise. Nos requêtes permettent de lister quelques historiennes britanniques, mais tout indique qu’il est impossible de générer une liste significative de personnes dans cette catégorie. Tout ce que nous avons trouvé, ce sont les personnes qui ont une entrée sur *Wikipédia* en anglais et qui ont été catégorisées comme &laquo;&nbsp;historienne britannique&nbsp;&raquo;.
 

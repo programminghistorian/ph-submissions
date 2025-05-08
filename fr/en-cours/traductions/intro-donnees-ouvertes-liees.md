@@ -33,7 +33,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction et portée de la leçon
 
-Cette leçon offre une brève et concise introduction aux [données ouvertes liées (DOL)](https://fr.wikipedia.org/wiki/Linked_open_data) (Linked Open Data, ou LOD, en anglais). Aucune connaissance préalable n’est attendue. Au terme de votre lecture, vous devriez avoir une bonne compréhension des concepts qui sous-tendent les DOL et de la façon dont elles sont créées et utilisées. La leçon s’organise en cinq sections auxquelles s’ajoutent des lectures complémentaires&nbsp;:
+Cette leçon offre une brève et concise introduction aux [données ouvertes liées (DOL)](https://fr.wikipedia.org/wiki/Linked_open_data) (*Linked Open Data*, ou LOD en anglais)[^3]. Aucune connaissance préalable n’est attendue. Au terme de votre lecture, vous devriez avoir une bonne compréhension des concepts qui sous-tendent les DOL et de la façon dont elles sont créées et utilisées. La leçon s’organise en cinq sections auxquelles s’ajoutent des lectures complémentaires&nbsp;:
 
 1. Que sont les données ouvertes liées&nbsp;?
 2. Le rôle des [identifiants uniformes de ressource](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier) (URI, *Uniform Resource Identifier*)
@@ -42,35 +42,35 @@ Cette leçon offre une brève et concise introduction aux [données ouvertes li�
 5. Explorer les données ouvertes liées avec [SPARQL](https://fr.wikipedia.org/wiki/SPARQL)
 6. Lectures et ressources complémentaires
 
-La leçon devrait vous prendre quelques heures à compléter, et il pourrait être utile d’en relire certaines parties pour solidifier votre compréhension. Les termes techniques ont été liés à leur page correspondante sur *Wikipédia* en français. Nous vous encourageons ainsi à prendre le temps de lire au sujet des termes qui vous posent problème. À la suite de votre initiation à certains principes fondamentaux des DOL, c’est la pratique qui demeure la meilleure façon d’améliorer et d’approfondir vos connaissances. Cette leçon fournit l’occasion de ce faire. À la fin de cette leçon, vous devriez comprendre les fondements des DOL, incluant les termes et les concepts clés.
+La leçon devrait vous prendre quelques heures à compléter. Il pourrait être utile d’en relire certaines parties pour solidifier votre compréhension. Les termes techniques ont été liés à leur page correspondante sur *Wikipédia* en français. Nous vous encourageons ainsi à prendre le temps de lire au sujet des termes qui vous posent problème. À la suite de votre initiation à certains principes fondamentaux des DOL, c’est la pratique qui demeure la meilleure façon d’améliorer et d’approfondir vos connaissances. Cette leçon propose une mise en pratique immédiate. À la fin de cette leçon, vous devriez comprendre les fondements des DOL, incluant les termes et les concepts clés.
 
 Si vous souhaitez apprendre à explorer les DOL en utilisant le langage de requête [SPARQL](https://fr.wikipedia.org/wiki/SPARQL), je recommande la leçon (en anglais) «&nbsp;[Using SPARQL to access Linked Open Data](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL)&nbsp;» de Matthew Lincoln, qui vous permettra d’effectuer un suivi pratique du survol conceptuel offert dans la présente leçon.
 
 <div class="alert alert-info">
-N.B. La leçon de Matthew Lincoln n’est plus à jour et n’est plus entretenue par le *Programming Historian*. La méthodologie enseignée dans cette leçon demeure tout de même fort pertinente, et pourrait être adaptée à d’autres contextes. Pour en savoir plus, vous pouvez consulter la note en ouverture de la leçon de Lincoln.
+N.B. La leçon de Matthew Lincoln n’est plus à jour et n’est plus entretenue par le *Programming Historian*. La méthodologie enseignée dans cette leçon demeure tout de même fort pertinente et pourrait être adaptée à d’autres contextes. Pour en savoir plus, vous pouvez consulter la note en ouverture de la leçon de Lincoln.
 </div>
 
-Afin de fournir une base solide pour la maîtrise de ces fondements, cette leçon ne permet pas la présentation exhaustive de l’ensemble des concepts liés aux DOL. Les deux concepts suivants ne seront pas couverts par cette leçon&nbsp;:
+Afin de fournir une base solide pour la maîtrise de ces fondements, cette leçon ne présentera pas de manière exhaustive l’ensemble des concepts liés aux DOL. Les deux notions suivantes ne seront pas couvertes par cette leçon&nbsp;:
 
 1. Le [web sémantique](https://fr.wikipedia.org/wiki/Web_sémantique) et [les processus d’inférence](https://fr.wikipedia.org/wiki/Moteur_d'inférence) sur les [jeux de données](https://fr.wikipedia.org/wiki/Jeu_de_données). Par exemple, un moteur d’inférence permettrait de déduire que George VI est le frère ou le demi-frère d’Edward VIII, étant donné que a) Edward VIII est le fils de George V et que b) George VI est le fils de George V. Cette leçon ne couvre pas ce type de tâche.
 2. La création et la mise en ligne de jeux de données ouvertes liées dans le [*linked open data cloud*](https://lod-cloud.net). Le partage de vos DOL est un important principe qui est encouragé plus bas. Cependant, les détails techniques de l’exposition des DOL dans le *linked data cloud* dépassent la portée de cette leçon. Quelques ressources pour vous aider avec cette tâche sont disponibles à la fin de la leçon.
 
 ## Que sont les données ouvertes liées&nbsp;?
 
-Les DOL sont constituées d’information structurée par des formats conçus pour un traitement par des [agents logiciels](https://fr.wikipedia.org/wiki/Agent_logiciel). Elles ne sont donc pas nécessairement agréables à l’œil. Ne vous laissez pas rebuter par cela, puisqu’en comprenant les principes des DOL, vous pourrez demander à un ordinateur d’en effectuer la lecture pour vous.
+Les DOL sont constituées d’informations structurées dans des formats conçus pour un traitement par des [agents logiciels](https://fr.wikipedia.org/wiki/Agent_logiciel). Elles ne sont donc pas toujours faciles à lire par les humains. Ne vous laissez pas rebuter par cela, puisqu’en comprenant les principes des DOL, vous pourrez demander à un ordinateur d’en effectuer la lecture pour vous.
 
 Si tous les jeux de données publiés étaient ouverts et utilisaient le même format pour structurer l’information, il serait possible de tous les interroger simultanément. L’analyse d’un grand volume de données est potentiellement beaucoup plus puissante que l’utilisation des jeux de données disséminés séparément sur le web, une pratique qui mène au phénomène des [silos d’information](https://en.wikipedia.org/wiki/Information_silo). Les jeux de données [interopérables](https://fr.wikipedia.org/wiki/Interopérabilité) sont l’objectif vers lequel tendent les communautés praticiennes des DOL.
 
 Pour atteindre ce but, il faut toujours se rappeler les trois principes suivants&nbsp;:
 
 1. **Utiliser un format standard reconnu pour les DOL**.
-Afin qu’elles fonctionnent adéquatement, les DOL doivent être [structurées](https://en.wikipedia.org/wiki/Data_structure) par des formats standards reconnus qui en permettent un traitement uniforme par les ordinateurs. Il existe plusieurs formats pour les DOL, dont certains sont abordés plus bas.
-2. **Référer à une entité de façon normalisée**. Si vous avez des données sur une même chose (que ce soit un lieu, un endroit ou une personne) dans plusieurs emplacements, il faut s’assurer de s’y référer de la même façon dans toutes les instances.
-3. **Publier des données ouvertes**. L’ouverture des données signifie que tout le monde peut accéder et utiliser les données sans frais et dans un format qui ne nécessite pas de [logiciel propriétaire](https://fr.wikipedia.org/wiki/Logiciel_propriétaire).
+Afin qu’elles fonctionnent adéquatement, les DOL doivent être [structurées](https://en.wikipedia.org/wiki/Data_structure) dans des formats standards afin que les ordinateurs qui les interrogent puissent les reconnaître et les traiter. Il existe plusieurs formats pour les DOL, dont certains sont abordés plus bas.
+2. **Référer à une entité de façon normalisée**. Si vous avez des données sur une même sujet (que ce soit un lieu, un endroit ou une personne) dans plusieurs emplacements, il faut s’assurer de s’y référer de la même façon dans toutes les instances.
+3. **Publier des données ouvertes**. L’ouverture des données signifie que tout le monde peut accéder et utiliser les données sans frais et dans un format qui ne soit pas dépendant d’un [logiciel propriétaire](https://fr.wikipedia.org/wiki/Logiciel_propriétaire).
 
 Commençons par un exemple de données qui décrivent une personne en utilisant une approche [attribut-valeur](https://en.wikipedia.org/wiki/Attribute–value_pair) (ou clé-valeur) typique en informatique&nbsp;:
 
-```ini
+```
 personne=nombre
 ```
 
@@ -78,7 +78,7 @@ Dans ce cas, l’attribut indique qu’il s’agit d’une personne et la valeur
 Le nombre assigné pourrait être généré de façon aléatoire ou utiliser un numéro existant préalablement associé à cet individu.
 Cette dernière approche comporte de grands avantages&nbsp;: si tous les jeux de données qui mentionnent cette personne utilisent *exactement le même numéro* et *exactement le même format*, alors nous pouvons assurément retrouver cet individu dans tout ensemble de données respectant ces règles. 
 
-Créons un exemple en utilisant Jack Straw&nbsp;: il s’agit du nom à la fois d’un rebelle anglais du XIV^e siècle et d’un important ministre britannique de l’administration de Tony Blair. Il sera évidemment utile de pouvoir différencier ces deux personnes qui partagent le même nom. En utilisant le modèle ci-dessus, dans lequel chaque personne est représentée par un numéro unique, associons le ministre britannique Jack Straw au numéro `64183282`. La paire attribut-valeur qui en résulte serait donc&nbsp;:
+Créons un exemple en utilisant Jack Straw&nbsp;: il s’agit du nom à la fois d’un rebelle anglais du XIV<sup>e</sup> siècle et d’un important ministre britannique de l’administration de Tony Blair. Il sera évidemment utile de pouvoir différencier ces deux personnes qui partagent le même nom. En utilisant le modèle ci-dessus, dans lequel chaque personne est représentée par un numéro unique, associons le ministre britannique Jack Straw au numéro `64183282`. La paire attribut-valeur qui en résulte serait donc&nbsp;:
 
 ```ini
 personne=64183282
@@ -106,9 +106,9 @@ Mais essayons d’être plus précis quant à ce que nous voulons dire par Black
 blackburn1955-current
 ```
 
-VIAF étant un fichier d’autorité très respecté et bien entretenu sur les personnes notables, il s’agissait naturellement d’un ensemble d’identifiants à utiliser pour Jack Straw. Comme la circonscription représentée par Straw était parfaitement couverte par les fichiers d’autorité créés dans le projet Dilipad, il s’agissait également d’une ressource pertinente à mobiliser. Malheureusement, il n’est pas toujours aussi évident de savoir quelle liste publiée en ligne est le meilleur choix. Une liste pourrait être plus largement utilisée qu’une autre, mais cette dernière pourrait être plus pertinente dans certains contextes. Dans certains cas, GeoNames pourrait mieux fonctionner que les identifiants Dilipad. Dans d’autres cas, il vous sera impossible de trouver un jeu de données contenant l’information nécessaire. Par exemple, imaginez que vous voudriez créer les paires attribut-valeur vous décrivant avec vos relations familiales immédiates. Dans ce cas, vous auriez à créer vos propres identifiants.
+VIAF étant un fichier d’autorité reconnu et maintenu dédié aux personnes notables, il était particulièrement pertinent d’avoir recours à ses identifiants pour décrire Jack Straw. Comme la circonscription représentée par Straw était parfaitement couverte par les fichiers d’autorité créés dans le projet Dilipad, il s’agissait également d’une ressource pertinente à mobiliser. Malheureusement, il n’est pas toujours aussi évident de savoir quelle liste publiée en ligne est le meilleur choix. Une liste pourrait être plus largement utilisée qu’une autre, mais cette dernière pourrait être plus pertinente dans certains contextes. Dans certains cas, GeoNames pourrait mieux fonctionner que les identifiants Dilipad. Dans d’autres cas, il vous sera impossible de trouver un jeu de données contenant l’information nécessaire. Par exemple, imaginez que vous voudriez créer les paires attribut-valeur vous décrivant avec vos relations familiales immédiates. Dans ce cas, vous auriez à créer vos propres identifiants.
 
-Le manque de régularité et de compatibilité des fichiers d’autorité est l’un des principaux défis auxquels les DOL sont confrontées à l’heure actuelle. [Tim Berners-Lee](https://fr.wikipedia.org/wiki/Tim_Berners-Lee), qui a proposé une méthode pour lier les documents entre eux à travers un réseau, ce qui a mené à la création du World Wide Web, a longtemps été un chef de file dans la promotion des DOL. Pour favoriser davantage les usages des DOL, il a également proposé le système d’évaluation cinq étoiles ([*five-star rating system*](https://w3.org/DesignIssues/LinkedData.html)) afin d’encourager tout le monde à tendre le plus possible vers les DOL. Essentiellement, il soutient que de publier des données ouvertes est une bonne chose, particulièrement si elles utilisent des formats ouverts et des standards accessibles, mais que le mieux consiste aussi à lier ces données à celles d’autres personnes.
+Le manque de régularité et de compatibilité des fichiers d’autorité est l’un des principaux défis auxquels les DOL sont confrontées à l’heure actuelle. [Tim Berners-Lee](https://fr.wikipedia.org/wiki/Tim_Berners-Lee), qui a proposé une méthode pour lier les documents entre eux à travers un réseau, ce qui a mené à la création du World Wide Web, a longtemps été un chef de file dans la promotion des DOL. Pour favoriser davantage les usages des DOL, il a également proposé le système d’évaluation cinq étoiles ([*five-star rating system*](https://w3.org/DesignIssues/LinkedData.html)) afin d’encourager tout le monde à tendre le plus possible vers les DOL. Essentiellement, il soutient non seulement la publication des données ouvertes, particulièrement si elles utilisent des formats ouverts et des standards accessibles, mais rappelle également qu'il est essentiel de lier ces données à celles des autres.
 
 Une fois que tous ces éléments sont dotés d’identifiants uniques, la prochaine étape clé dans la création de DOL consiste à trouver un moyen de *décrire* la relation entre Jack Straw (`64183282`) et Blackburn (`blackburn1955-current`). Dans les DOL, les relations sont exprimées sous la forme de ce qui est connu comme étant un [triplet](https://fr.wikipedia.org/wiki/Triplet_RDF). Créons donc un triplet qui représente la relation entre Jack Straw et sa circonscription&nbsp;:
 
@@ -130,17 +130,17 @@ Typiquement, la représentation d’un triplet sous forme de diagramme se prése
 
 Donc notre triplet sur Jack Straw, dans une forme plus significative, pourrait être représenté de cette façon&nbsp;:
 
-{% include figure.html filename="fr-tr-intro-aux-donnees-liees-02.png" alt="Graphe constitué de deux nœuds qui représentent respectivement Jack Straw et la circonscription électorale de Blackburn, sous la forme de deux ovales liés entre eux par un arc directionnel, lui-même constitué d’une flèche allant de Jack Straw vers Blackburn pour représenter la relation de représentation politique qui existe entre les deux entités." caption="Figure&nbsp;2. Représentation visuelle d’une triplet montrant que Jack Straw est député de Blackburn." %}
+{% include figure.html filename="fr-tr-intro-aux-donnees-liees-02.png" alt="Graphe constitué de deux nœuds qui représentent respectivement Jack Straw et la circonscription électorale de Blackburn, sous la forme de deux ovales liés entre eux par un arc directionnel, lui-même constitué d’une flèche allant de Jack Straw vers Blackburn pour représenter la relation de représentation politique qui existe entre les deux entités." caption="Figure&nbsp;2. Représentation visuelle d’un triplet montrant que Jack Straw est député de Blackburn." %}
 
 Pour l’instant, il y a trois éléments clés à garder en tête&nbsp;:
 
 - Les DOL doivent être ouvertes et accessibles à quiconque sur internet (autrement, elles ne sont pas ouvertes)
-- Les promoteurs de DOL visent la standardisation des références aux entités uniques
+- Les acteurs des DOL visent la standardisation des références aux entités uniques
 - Les DOL sont constituées de triplets qui décrivent les relations entre les entités
 
 ## Le rôle des identifiants uniformes de ressource (URI)
 
-Les [identifiants uniformes de ressource](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier) (en anglais&nbsp;: *Uniform Resource Identifier*, ou URI) sont un élément essentiel des DOL. L’URI permet d’identifier de façon fiable et unique une entité (une personne, un objet, une relation, etc.), de manière à pouvoir être utilisé par quiconque à travers le monde. Dans la section précédente, nous avons utilisé deux différents numéros pour identifier nos deux différents Jack Straw&nbsp;:
+Les [identifiants uniformes de ressource](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier) (*Uniform Resource Identifier*, ou URI en anglais) sont un élément essentiel des DOL. L’URI permet d’identifier de façon fiable et unique une entité (une personne, un objet, une relation, etc.), de manière à pouvoir être utilisé par quiconque à travers le monde. Dans la section précédente, nous avons utilisé deux différents numéros pour identifier nos deux différents Jack Straw&nbsp;:
 
 ```txt
 personne="64183282"
@@ -154,15 +154,15 @@ http://viaf.org/viaf/64183282/
 http://viaf.org/viaf/33059614/
 ```
 
-Tout comme le numéro unique permet de différencier nos deux Jack Straw, les URI ci-dessus nous aident cette fois à lever l’ambiguïté entre tous les différents fichiers d’autorité accessibles en ligne. Dans ce cas, l’URI indique explicitement que nous utilisons VIAF comme fichier d’autorité. Vous avez déjà vu plusieurs fois cette forme de distinction sur le web. Il existe de nombreux sites web dans le monde avec des pages nommées `/home` ou `/faq`. Mais il n’y a pas de confusion puisque le [domaine](https://fr.wikipedia.org/wiki/Nom_de_domaine), soit la première partie du [localisateur uniforme de ressource](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator) (en anglais&nbsp;: *Uniform Resource Locator*, ou URL), par exemple `bbc.co.uk` ou `viaf.org`, est unique. Ainsi, toutes les pages qui font partie d’un domaine se différencient des autres `/faq` ou `/home` sur d’autres sites web.
+Tout comme le numéro unique permet de différencier nos deux Jack Straw, les URI ci-dessus nous aident cette fois à lever l’ambiguïté entre tous les différents fichiers d’autorité accessibles en ligne. Dans ce cas, l’URI indique explicitement que nous utilisons VIAF comme fichier d’autorité. Vous avez déjà vu plusieurs fois cette forme de distinction sur le web. Il existe de nombreux sites web dans le monde avec des pages nommées `/home` ou `/faq`. Mais il n’y a pas de confusion puisque le [domaine](https://fr.wikipedia.org/wiki/Nom_de_domaine), soit la première partie du [localisateur uniforme de ressource](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator) (*Uniform Resource Locator*, ou URL en anglais), par exemple `bbc.co.uk` ou `viaf.org`, est unique. Ainsi, toutes les pages qui font partie d’un domaine se différencient des autres `/faq` ou `/home` sur d’autres sites web.
 
-Dans l’adresse `http://www.bbc.co.uk/faqs`, c’est la partie `bbc.co.uk` qui rend uniques les pages subséquentes. Ces considérations sont si évidentes pour les gens qui utilisent le web fréquemment qu’il n’y a même pas besoin d’y penser. De plus, vous savez probablement que si vous souhaitez créer un site web nommé `bbc.co.uk`, vous ne pourrez pas, puisque ce nom est déjà enregistré auprès de l’autorité appropriée, le [système de nom de domaine](https://en.wikipedia.org/wiki/Domain_Name_System) (*Domain Name System* en anglais, ou DNS). L’enregistrement d’un nom de domaine en garantit l’unicité. Les URI doivent également être uniques.
+Dans l’adresse `http://www.bbc.co.uk/faqs`, c’est la partie `bbc.co.uk` qui rend uniques les pages subséquentes. Ces considérations sont si évidentes pour les gens qui utilisent le web fréquemment qu’il n’y a même pas besoin d’y penser. De plus, vous savez probablement que si vous souhaitez créer un site web nommé `bbc.co.uk`, vous ne pourrez pas, puisque ce nom est déjà enregistré auprès de l’autorité appropriée, le [système de nom de domaine](https://en.wikipedia.org/wiki/Domain_Name_System) (*Domain Name System*, ou DNS en anglais). L’enregistrement d’un nom de domaine en garantit l’unicité. Les URI doivent également être uniques.
 
 Les exemples ci-dessus prennent la forme des URL, mais il est également possible de construire des URI qui n’ont rien de l’URL. Il existe de nombreuses façons d’utiliser des identifiants uniques pour les personnes et les choses. Pourtant, nous y pensons rarement&nbsp;: les codes-barres, les numéros de passeport ou même votre code postal sont tous conçus pour être uniques. Les numéros de téléphone sont fréquemment utilisés dans les annonces de commerce précisément parce qu’ils sont uniques. Toutes ces choses pourraient être utilisées comme des URI.
 
 Lorsque nous avons créé les URI des entités décrites par le projet [Tobias](https://gtr.ukri.org/projects?ref=AH%2FN003446%2F1#/), nous avons choisi d’utiliser la structure d’une URL avec notre espace web institutionnel, établissant `data.history.ac.uk/tobias-project/` comme l’espace dédié à l’hébergement de ces URI. En utilisant `data.history.ac.uk` plutôt que `history.ac.uk`, nous avons établi une distinction claire entre les URI et les pages du site web. Par exemple, nous utilisons l’URI `http://data.history.ac.uk/tobias-project/person/15601` dans le projet Tobias. Bien que le format des URI mentionnés précédemment soit celui d’une URL, ils ne pointent pas vers des pages web (essayez-les dans un navigateur web). Bien des gens qui découvrent les DOL sont confus par ces distinctions. Toutes les URL sont des URI, mais tous les URI ne sont pas des URL. Un URI peut identifier n’importe quoi, tandis qu’une URL identifie une chose qui se trouve sur le web.
 
-Une URL vous indique donc l’emplacement d’une page web, d’un fichier ou d’une ressource semblable. Un URI fait seulement le travail d’identification d’une chose, comme l’*International Standard Book Number*, ou l’[ISBN](https://www.iso.org/standard/65483.html) `978-0-1-873354-6` identifie de façon unique l’édition reliée de *Baptism, Brotherhood and Belief in Reformation Germany* de Kat Hill, sans vous indiquer où vous pourrez vous en procurer une copie. Pour ce faire, vous aurez besoin d’en connaitre la [cote](https://fr.wiktionary.org/wiki/cote), qui vous fournira l’emplacement exact du livre dans une bibliothèque donnée.
+Une URL vous indique donc l’emplacement d’une page web, d’un fichier ou d’une ressource semblable. Un URI fait seulement le travail d’identification d’une chose, comme l’*International Standard Book Number* ([ISBN](https://www.iso.org/standard/65483.html)). Ainsi, l’ISBN `978-0-1-873354-6` identifie de façon unique l’édition reliée de *Baptism, Brotherhood and Belief in Reformation Germany* de Kat Hill, sans vous indiquer où vous pourrez vous en procurer une copie. Pour ce faire, vous aurez besoin d’en connaître la [cote](https://fr.wiktionary.org/wiki/cote), qui vous fournira l’emplacement exact du livre dans une bibliothèque donnée.
 
 L’univers des URI est quelque peu jargonneux. Elles peuvent être dites [déréférençables](https://fr.wiktionary.org/wiki/déréférencer) ou non. Le déréférencement dénote simplement la transformation d’une référence abstraite en quelque chose d’autre. Par exemple, collez un URI dans la barre d’adresse d’un navigateur. Celui-ci renverra-t-il quelque chose&nbsp;? L’URI VIAF de l’historien Simon Schama est le suivant&nbsp;:
 
@@ -203,7 +203,7 @@ Peu importe ce que vous cherchez à représenter avec les DOL, nous vous suggér
 
 Puisque l’exemple présenté plus haut se concentre sur les pianistes, il serait convenable de repérer une ontologie appropriée plutôt que de créer notre propre système. Justement, il existe une [ontologie pour la musique](http://web.archive.org/web/20241003055811/http://musicontology.com) (en anglais). En plus d’offrir une spécification aboutie, la documentation propose aussi des exemples utiles d’utilisations courantes. Vous pouvez visiter les [pages d’introduction](http://web.archive.org/web/20241003052045/http://musicontology.com/docs/getting-started.html) (en anglais) pour vous faire une meilleure idée de la façon dont vous pourriez utiliser cette ontologie en particulier.
 
-Malheureusement, je ne trouve rien qui décrive la relation entre un professeur et son élève dans la *Music Ontology*. Mais elle est publiée de façon ouverte, ce qui permet de l’utiliser pour décrire d’autres caractéristiques du domaine de la musique, puis éventuellement de créer ma propre extension de ce modèle. Si je publie ainsi ouvertement mon extension, d’autres pourront l’utiliser à leur tour s’ils le souhaitent et elle pourrait même devenir un standard. Si la *Music Ontology* n’offre pas la relation dont j’ai besoin, le [projet Linked Jazz](https://linkedjazz.org) (en anglais) permet l’utilisation du terme &laquo;&nbsp;mentorOf&nbsp;&raquo; qui semble bien fonctionner dans notre cas. Ce n’est pas une solution idéale, mais c’en est une qui s’efforce d’utiliser ce qui existe déjà.
+Malheureusement, je ne trouve rien qui décrive la relation entre un professeur et son élève dans la *Music Ontology*. Mais elle est publiée de façon ouverte, ce qui permet de l’utiliser pour décrire d’autres caractéristiques du domaine de la musique, puis éventuellement de créer ma propre extension de ce modèle. Si je publie ainsi ouvertement mon extension, d’autres pourront l’utiliser à leur tour s’ils le souhaitent et elle pourrait même devenir un standard. Si la *Music Ontology* n’offre pas la relation dont j’ai besoin, le [projet Linked Jazz](https://linkedjazz.org) (en anglais) permet l’utilisation du terme `mentorOf` qui semble bien fonctionner dans notre cas. Ce n’est pas une solution idéale, mais c’en est une qui s’efforce d’utiliser ce qui existe déjà.
 
 Maintenant, si vous étudiiez l’histoire du [pianisme](https://fr.wiktionary.org/wiki/pianisme), vous pourriez chercher à identifier les pianistes qui ont appris des élèves de Liszt afin d’établir une sorte d’arbre généalogique et de voir si les &laquo;&nbsp;descendants&nbsp;&raquo; de Liszt avaient quelque chose en commun. Vous pourriez chercher les élèves de Liszt, en faire une liste exhaustive, puis pour chacun d’eux tenter de dresser la liste de tous les élèves qu’ils ont eus. Avec les DOL, vous pourriez créer (encore une fois, si les triplets existent) une requête dont les grandes lignes seraient&nbsp;:
 
@@ -212,7 +212,7 @@ Donne-moi les noms de tous les pianistes qui ont appris de x
     où x a appris le piano de Liszt
 ```
 
-Cela renverrait toutes les personnes existantes dans le jeu de données qui étaient élèves des élèves de Liszt. Cela dit, ne nous emballons pas trop vite&nbsp;: cette requête ne renverra pas tous les élèves de chaque élève de Liszt qui n’ont jamais vécu, car ces informations n’existent probablement pas, et n’existent dans aucun ensemble existant de triplets. Le traitement des données dans le monde réel révèle toutes sortes d’omissions et d’incohérences, comme nous pourrons le constater dans la section finale, alors que nous explorerons l’un des plus grands jeu de DOL, [DBpedia](https://fr.wikipedia.org/wiki/DBpedia).
+Cela renverrait toutes les personnes existantes dans le jeu de données qui étaient élèves des élèves de Liszt. Cela dit, ne nous emballons pas trop vite&nbsp;: cette requête ne renverra pas tous les élèves de chaque élève de Liszt qui n’ont jamais vécu, car toutes ces informations n’existent probablement pas ou ne sont tout simplement pas disponibles dans les ensembles existant de triplets. Le traitement des données dans le monde réel révèle toutes sortes d’omissions et d’incohérences, comme nous pourrons le constater dans la section finale, alors que nous explorerons l’un des plus grands jeu de DOL, [DBpedia](https://fr.wikipedia.org/wiki/DBpedia).
 
 Si vous avez déjà utilisé des [bases de données relationnelles](https://fr.wikipedia.org/wiki/Base_de_données_relationnelle), vous pourriez penser qu’elles offrent le même genre de fonctionnalité. Dans le cas de Liszt, les informations sur les pianistes décrits plus haut pourraient s’organiser dans la base de données à l’aide d’une [table](https://fr.wikipedia.org/wiki/Table_(base_de_données)) nommée &laquo;&nbsp;Élèves&nbsp;&raquo;&nbsp;:
 
@@ -231,7 +231,7 @@ Cela est rendu possible par l’utilisation du cadre de description [RDF](https:
 
 ## Le cadre de description [RDF](https://fr.wikipedia.org/wiki/Resource_Description_Framework) et ses formats
 
-Les DOL utilisent un standard défini par le [*World Wide Web Consortium*](https://www.w3.org) (W3C) nommé *[Resource Description Framework](https://en.wikipedia.org/wiki/Resource_Description_Framework)* (cadre de description RDF, ou simplement RDF). Les standards sont utiles dans la mesure où ils sont largement adoptés ― pensez au système métrique ou aux tailles de vis standards ― même s’ils sont essentiellement arbitraires. RDF a été largement adopté comme standard pour les DOL.
+Les DOL utilisent un standard défini par le [*World Wide Web Consortium*](https://www.w3.org) (W3C) nommé *[Resource Description Framework](https://en.wikipedia.org/wiki/Resource_Description_Framework)* (cadre de description RDF ou simplement RDF). Les standards sont utiles dans la mesure où ils sont largement adoptés ― pensez au système métrique ou aux tailles de vis standards ― même s’ils sont essentiellement arbitraires. RDF a été largement adopté comme standard pour les DOL.
 
 Souvent, les DOL sont simplement appelées RDF (ou données RDF). Nous avons reporté la discussion sur RDF jusqu’à maintenant, car il s’agit d’un enjeu plutôt abstrait. RDF est un [modèle de données](https://fr.wikipedia.org/wiki/Modèle_de_données) qui décrit sur un plan théorique comment structurer des données. L’insistance sur l’utilisation des triplets (au lieu de quatre parties, de deux ou de neuf) est une règle de RDF. Mais sur le plan pratique, certaines options s’offrent à vous pour l’élaboration des graphes de données. Ainsi, RDF vous indique ce que vous devez faire, mais pas exactement comment vous y prendre. Ces choix se divisent en deux champs&nbsp;: la manière dont vous écrivez les choses (la sérialisation) et les relations que décrivent vos triplets.
 
@@ -246,7 +246,7 @@ Comprendre à quelle sérialisation vous avez affaire signifie que vous pourrez 
 
 #### Turtle
 
-&laquo;&nbsp;Turtle&nbsp;&raquo; est un jeu de mot en anglais. _Tur_ est le diminutif de &laquo;&nbsp;terse&nbsp;&raquo;, et _tle_ celui de &laquo;&nbsp;triple language&nbsp;&raquo;. Turtle est une façon simple et agréable d’écrire des triplets.
+&laquo;&nbsp;Turtle&nbsp;&raquo; est un jeu de mot en anglais. _Tur_ est le diminutif de &laquo;&nbsp;terse&nbsp;&raquo; et _tle_ celui de &laquo;&nbsp;triple language&nbsp;&raquo;. Turtle est une façon simple et pratique d’écrire des triplets.
 
 Turtle utilise des alias ou des raccourcis que l’on appelle les [préfixes](https://www.w3.org/TeamSubmission/turtle/#sec-tutorial). Ceux-ci nous épargnent d’avoir à écrire chaque fois les URI complets. Retournons vers l’URI que nous avons créé dans la section précédente&nbsp;:
 
@@ -262,7 +262,7 @@ Nous ne voulons pas le saisir chaque fois que nous référons à cette personne 
 
 Ainsi, Jack est `toby:15601`, qui remplace la forme longue de l’URI et qui est plus agréable à l’œil. J’ai choisi `toby`, mais je pourrais tout aussi bien choisir n’importe quelle chaîne de lettres.
 
-Passons maintenant de Jack Straw à William Shakespeare et utilisons Turtle pour décrire certaines choses au sujet de ses œuvres. Nous devrons décider des fichiers d’autorité à utiliser, un processus qui, comme mentionné plus haut, se comprend mieux en examinant d’autres jeux de données ouvertes liées. Pour l’un de nos préfixes, nous utiliserons [Dublin Core](https://fr.wikipedia.org/wiki/Dublin_Core), un standard générique pour les [métadonnées](https://en.wikipedia.org/wiki/Metadata) documentaires, le fichier d’autorité du [*Library of Congress Control Number*](https://fr.wikipedia.org/wiki/Numéro_de_contrôle_de_la_Bibliothèque_du_Congrès) pour un autre préfixe, et un dernier (VIAF) qui devrait vous être familier. Ensemble, ces trois fichiers d’autorités fournissent des identifiants uniques pour toutes les entités que je planifie d’utiliser dans cet exemple&nbsp;:
+Passons maintenant de Jack Straw à William Shakespeare et utilisons Turtle pour décrire certaines choses au sujet de ses œuvres. Nous devrons décider des fichiers d’autorité à utiliser, un processus qui, comme mentionné plus haut, se comprend mieux en examinant d’autres jeux de données ouvertes liées. Pour l’un de nos préfixes, nous utiliserons [Dublin Core](https://fr.wikipedia.org/wiki/Dublin_Core), un standard générique pour les [métadonnées](https://en.wikipedia.org/wiki/Metadata) documentaires&nbsp;; le fichier d’autorité du [*Library of Congress Control Number*](https://fr.wikipedia.org/wiki/Numéro_de_contrôle_de_la_Bibliothèque_du_Congrès) pour un autre préfixe et un dernier (VIAF) qui devrait vous être familier. Ensemble, Dublin Core et ces deux fichiers d’autorités fournissent des identifiants uniques pour toutes les entités que je planifie d’utiliser dans cet exemple&nbsp;:
 
 ```txt
 @prefix lccn: <http://id.loc.gov/authorities/names/> .
@@ -306,7 +306,7 @@ Nous déclarons ici que Shakespeare (96994048) et John Fletcher (12323361) étai
 Les ontologies que je vous ai suggérées précédemment vous ont permis de jeter un œil sur les exemples de la [Music Ontology](http://web.archive.org/web/20170718143925/http://musicontology.com/docs/getting-started.html). J’espère qu’ils ne vous ont pas découragé.
 Examinez-les de nouveau. Cela demeure compliqué, mais ont-ils plus de sens maintenant&nbsp;?
 
-*Friend of a Friend*, ou [FOAF](https://fr.wikipedia.org/wiki/FOAF) est l’une des ontologies les plus accessibles. Elle est conçue pour décrire des personnes et est, pour cette raison peut-être, assez intuitive. Par exemple, si vous souhaitez m’écrire pour me dire que cette leçon est la meilleure chose que vous ayez jamais lue, voici mon adresse courriel exprimée par un triplet avec FOAF&nbsp;:
+*Friend of a Friend* ([FOAF](https://fr.wikipedia.org/wiki/FOAF)) est l’une des ontologies les plus accessibles. Elle est conçue pour décrire des personnes et les relations entre elles. Pour cette raison, elle est assez intuitive. Par exemple, si vous souhaitez m’écrire pour me dire que cette leçon est la meilleure chose que vous ayez jamais lue, voici mon adresse courriel exprimée par un triplet avec FOAF&nbsp;:
 
 ```
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -343,7 +343,7 @@ Passons à un autre exemple pour montrer comment RDF/XML combine les triplets et
 </skosConcept>
 ```
 
-Nous déclarons ici que le concept SKOS `21250`, abdication, possède une étiquette linguistique préférée, &laquo;&nbsp;Abdication&nbsp;&raquo;. Le fonctionnement repose sur l’imbrication du prédicat et de l’objet à l’intérieur de l’élément sujet (qui inclut la partie `21250/Abdication`, valeur de l’attribut dans les termes de XML). L’élément XML imbriqué est le prédicat et le [nœud textuel](https://fr.wikipedia.org/wiki/Arbre_enraciné#Vocabulaire) &laquo;&nbsp;Abdication&nbsp;&raquo; est l’objet. Cet exemple est tiré d’un projet de publication d’un [thésaurus de l’histoire britannique et irlandaise](https://gtr.ukri.org/projects?ref=AH%2FN003446%2F1#/).
+Nous déclarons ici que le concept SKOS `21250`, abdication, possède une étiquette linguistique préférentielle, &laquo;&nbsp;Abdication&nbsp;&raquo;. Le fonctionnement repose sur l’imbrication du prédicat et de l’objet à l’intérieur de l’élément sujet (qui inclut la partie `21250/Abdication`, valeur de l’attribut dans les termes de XML). L’élément XML imbriqué est le prédicat et le [nœud textuel](https://fr.wikipedia.org/wiki/Arbre_enraciné#Vocabulaire) &laquo;&nbsp;Abdication&nbsp;&raquo; est l’objet. Cet exemple est tiré d’un projet de publication d’un [thésaurus de l’histoire britannique et irlandaise](https://gtr.ukri.org/projects?ref=AH%2FN003446%2F1#/).
 
 Tout comme avec Turtle, nous pouvons ajouter davantage de triplets. Nous allons déclarer que le terme *Abdication crisis (1936)* est plus spécifique dans notre hiérarchie, d’un niveau inférieur à *Abdication*&nbsp;:
 
@@ -366,7 +366,7 @@ Vous souvenez-vous de la façon dont les prédicats et les objets sont imbriqué
 </skosConcept>
 ```
 
-Si vous êtes familier avec XML, ce sera un jeu d’enfant pour vous. Autrement, vous pourriez préférer un format comme Turtle. Mais l’avantage d’utiliser RDF/XML repose sur l’écosystème des outils disponibles avec XML, comme les éditeurs spécialisés et les processeurs XML permettant, par exemple, vérifier le bien formé de votre document RDF/XML. Si vous n’êtes pas du type XML, je vous recommande Turtle.
+Si vous êtes familier avec XML, ce sera un jeu d’enfant pour vous. Autrement, vous pourriez préférer un format comme Turtle. Mais l’avantage d’utiliser RDF/XML repose sur l’écosystème des outils disponibles avec XML, comme les éditeurs spécialisés et les processeurs XML permettant, par exemple, de vérifier que votre document RDF/XML est bien formé. Si vous n’êtes pas du type XML, je vous recommande Turtle.
 
 Pour valider la syntaxe de Turtle, vous pourrez utiliser des outils en ligne ([Easy RDF Converter](http://www.easyrdf.org/converter) ou [IDLab Turtle Validator](http://ttl.summerofcode.be)) ou encore un outil facile à utiliser en [ligne de commande](https://github.com/IDLabResearch/TurtleValidator).
 
@@ -374,7 +374,7 @@ Pour valider la syntaxe de Turtle, vous pourrez utiliser des outils en ligne ([E
 
 Pour terminer, nous allons interroger des données ouvertes liées et explorer ce qu’on peut en tirer. Le langage de requête utilisé pour les DOL se nomme [SPARQL](https://fr.wikipedia.org/wiki/SPARQL). C’est l’un de ces acronymes récursifs chers au monde technologique&nbsp;: *SPARQL Protocol and RDF Query Language*.
 
-Comme je l’ai mentionné d’emblée, *Programming Historian* propose une [leçon entièrement dédiée]([/lessons/graph-databases-and-SPARQL](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL)) à SPARQL par Matthew Lincoln. Ma section finale n’est qu’un survol des fondements conceptuels de SPARQL. Si cela pique votre curiosité, vous pourrez solidifier vos bases avec la leçon de Lincoln.
+Comme je l’ai mentionné d’emblée, *Programming Historian* propose une [leçon entièrement dédiée](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL) à SPARQL par Matthew Lincoln. Ma section finale n’est qu’un survol des fondements conceptuels de SPARQL. Si cela pique votre curiosité, vous pourrez solidifier vos bases avec la leçon de Lincoln.
 
 Nous exécuterons nos requêtes SPARQL avec [DBpedia](https://fr.wikipedia.org/wiki/DBpedia), qui est un très grand jeu de données dérivé de *Wikipédia*. En plus de contenir une foule d’informations difficiles à trouver en utilisant l’interface normale de *Wikipédia*, il possède plusieurs [points d’accès](https://fr.wikipedia.org/wiki/API_Web#Points_d'accès) SPARQL ― des interfaces où vous pouvez envoyer des requêtes SPARQL et obtenir les triplets correspondants de l’entrepôt DBpedia.
 
@@ -396,11 +396,11 @@ SELECT * WHERE {
 }
 ```
 
-Si vous avez déjà écrit une requête de base de données avec le langage de requête structuré (en anglais, *Structured Query Language*, mieux connu comme [SQL](https://fr.wikipedia.org/wiki/SQL)), cela devrait vous sembler assez familier et pourra vous aider à apprendre SPARQL. Dans le cas contraire, ne vous inquiétez pas. Les mots-clés utilisés, `SELECT` et `WHERE`, ne sont pas [sensibles à la casse des caractères](https://fr.wikipedia.org/wiki/Sensibilit%C3%A9_%C3%A0_la_casse), mais certaines parties de la requête SPARQL peuvent l’être (comme indiqué plus bas). Je vous recommande donc de vous en tenir à la casse proposée à travers les exemples de cette leçon.
+Si vous avez déjà écrit une requête de base de données avec le langage de requête structuré (*Structured Query Language*, en anglais, mieux connu comme [SQL](https://fr.wikipedia.org/wiki/SQL)), cela devrait vous sembler assez familier et pourra vous aider à apprendre SPARQL. Dans le cas contraire, ne vous inquiétez pas. Les mots-clés utilisés, `SELECT` et `WHERE`, ne sont pas [sensibles à la casse des caractères](https://fr.wikipedia.org/wiki/Sensibilit%C3%A9_%C3%A0_la_casse), mais certaines parties de la requête SPARQL peuvent l’être (comme indiqué plus bas). Je vous recommande donc de vous en tenir à la casse proposée à travers les exemples de cette leçon.
 
-`SELECT` signifie *affiche quelque chose* et `*` signifie *donne-moi tout* (autrement dit&nbsp;: affiche tout). `WHERE` présente une condition, et c’est là où nous détaillerons le genre de choses que nous voulons obtenir de notre requête.
+`SELECT` signifie *affiche quelque chose* et `*` signifie *donne-moi tout* (autrement dit&nbsp;: affiche tout). `WHERE` présente une condition et c’est là où nous détaillerons le genre de choses que nous voulons obtenir de notre requête.
 
-Commençons avec quelque chose de simple afin de voir comment cela fonctionne. Copiez (ou mieux, saisissez) ceci dans l’éditeur de requête&nbsp;:
+Commençons par un exemple simple afin de voir comment cela fonctionne. Copiez (ou mieux, saisissez) ceci dans l’éditeur de requête&nbsp;:
 
 ```sparql
 SELECT * WHERE {
@@ -417,10 +417,10 @@ Notez bien ici que la casse des caractères fait une différence&nbsp;: `lyndal_
 
 Que s’est-il donc passé&nbsp;? Et comment savoir ce qu’il faut saisir&nbsp;?
 
-En vrai dire, je ne le savais pas vraiment, ce qui est un problème avec les points d’accès SPARQL. Lorsque vous apprenez à connaitre un jeu de données, vous devez essayer de trouver quels sont les termes utilisés. Puisque ces données proviennent de *Wikipédia* et que je souhaitais obtenir de l’information sur des historiennes, j’ai consulté l’article de *Wikipédia* sur [Lyndal Roper](https://fr.wikipedia.org/wiki/Lyndal_Roper).
+En vrai dire, je ne le savais pas vraiment, ce qui est un problème avec les points d’accès SPARQL. Lorsque vous apprenez à connaître un jeu de données, vous devez essayer de trouver quels sont les termes utilisés. Puisque ces données proviennent de *Wikipédia* et que je souhaitais obtenir de l’information sur des historiennes, j’ai consulté l’article de *Wikipédia* sur [Lyndal Roper](https://fr.wikipedia.org/wiki/Lyndal_Roper).
 
 La partie finale de l’URL est `Lyndal_Roper` et j’ai conclu que cette chaîne de caractères était probablement la façon dont DBpedia se réfère à l’article. Parce que je n’en sais pas plus sur ce qui pourrait se trouver dans les triplets qui mentionnent Roper, j’utilise `?b` et `?c`&nbsp;:
-ce ne sont que des éléments de substitution. J’aurais tout aussi bien pu saisir `?peu_importe` et `?comme_vous_voulez`, et les en-têtes de colonnes auraient eu ces valeurs. Lorsque vous aurez besoin de plus de précision pour vos résultats, il sera important de nommer vos colonnes adéquatement.
+ce ne sont que des éléments de substitution. J’aurais tout aussi bien pu saisir `?peu_importe` et `?comme_vous_voulez` pour que les en-têtes de colonnes aient ces valeurs. Lorsque vous aurez besoin de plus de précision pour vos résultats, il sera important de nommer vos colonnes adéquatement.
 
 Essayez maintenant votre propre requête SPARQL&nbsp;: choisissez un article de *Wikipédia* (en anglais) et copiez la partie finale de l’URL, celle qui se trouve après la dernière barre oblique, puis collez-la à la place de`Lyndal_Roper` dans l’éditeur de requête snorql. Appuyez sur _Go!_
 
@@ -430,7 +430,7 @@ Revenons aux résultats de la requête que j’ai exécutée plus tôt&nbsp;:
 
 ```sparql
 SELECT * WHERE {
-    :Lyndal_Roper ?b ?c
+  :Lyndal_Roper ?b ?c
 }
 ```
 
@@ -461,7 +461,7 @@ SELECT ?name WHERE {
 
 Ça fonctionne&nbsp;! J’obtiens cinq entrées. Au moment d’écrire cette leçon, il y a cinq historiennes britanniques dans *DBpedia*...
 
-{% include figure.html filename="en-or-intro-to-linked-data-06.png" alt="Liste des historiennes britaniques présentes dans les données de DBpedia en anglais, apparaîssant sous le champ de saisie dans lequel on peut y lire la requête correspondant aux résultats de la liste." caption="Figure&nbsp;6. Historiennes britaniques selon DBpedia" %}
+{% include figure.html filename="en-or-intro-to-linked-data-06.png" alt="Liste des historiennes britanniques présentes dans les données de DBpedia en anglais, apparaîssant sous le champ de saisie dans lequel on peut y lire la requête correspondant aux résultats de la liste." caption="Figure&nbsp;6. Historiennes britanniques selon DBpedia" %}
 
 Seulement cinq historiennes&nbsp;? Bien sûr, en réalité, il y en a bien davantage, comme nous pourrions facilement le constater en remplaçant le nom par Alison Weir, disons, dans notre première requête sur Lyndal Roper. Voilà qui nous mène au problème que j’ai mentionné plus tôt avec *Dbpedia*&nbsp;: cet entrepôt n’est pas vraiment constant quant à l’information structurelle sur les types de personnes qu’il utilise. Nos requêtes permettent de lister quelques historiennes britanniques, mais tout indique qu’il est impossible de générer une liste significative de personnes dans cette catégorie. Tout ce que nous avons trouvé, ce sont les personnes qui ont une entrée sur *Wikipédia* en anglais et qui ont été catégorisées comme &laquo;&nbsp;historienne britannique&nbsp;&raquo;.
 
@@ -495,6 +495,8 @@ Quoi qu’il en soit, malgré son manque de constance, *DBpedia* demeure un exce
 J’aimerais remercier Matthew Lincoln et Terhi Nurmikko-Fuller pour leurs relectures, ainsi que mon éditeur Adam Crymble, qui ont généreusement offert de leur temps pour m’aider à améliorer ce cours, grâce à de nombreuses suggestions, clarifications et corrections. Cette leçon est basée sur une autre leçon rédigée dans le cadre du [projet Tobias](https://gtr.ukri.org/projects?ref=AH%2FN003446%2F1#/) (*Thesaurus of British and Irish History as SKOS*, 2015-2016), qui fut financé par l’[AHRC](http://www.ahrc.ac.uk). Elle a été révisée pour *Programming Historian*.
 
 ## Notes de fin
+
+[^3]: On rencontre couramment le sigle anglais LOD dans la littérature scientifique francophone, mais nous nous conformerons à sa version française DOL afin de refléter adéquatement la formule «&nbsp;données ouvertes liées&nbsp;».
 
 [^1]: Note de traduction&nbsp;: une des retombées intéressantes de ce projet encore accessible aujourd’hui se trouve dans la plateforme [lipad.ca](https://lipad.ca) pour l’exploration et l’interrogation des données parlementaires canadiennes.
 

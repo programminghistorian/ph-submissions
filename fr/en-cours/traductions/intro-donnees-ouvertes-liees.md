@@ -474,21 +474,21 @@ Quoi qu’il en soit, malgré son manque de constance, *DBpedia* demeure un exce
 
 ### Ressources
 
-- [Le blogue de Bob DuCharme](https://www.bobdc.com/blog/) vaut le détour
-- John Philip McCrae, *Linked Open Data Cloud*, [état actuel et historique du *LOD Cloud*](https://lod-cloud.net)
-- Max Schmachtenberg, Christian Bizer and Heiko Paulheim, [état du *LOD Cloud* en 2014 avec quelques statistiques intéressantes](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/)
-- L’article de Matthew Lincoln, [Using SPARQL to access Linked Open Data](/lessons/graph-databases-and-SPARQL) (les outils utilisés par la leçon sont obsolètes, mais la démarche d’exploration proposée par Lincoln est recommandée)
+- DuCharme Bob, [bobdc](https://www.bobdc.com/blog/), blog qui vaut le détour
+- McCrae John Philip, [Linked Open Data Cloud](https://lod-cloud.net), état actuel et historique du _LOD Cloud_
+- Schmachtenberg Max, Bizer Christian, Paulheim Heiko, [State of the LOD Cloud 2014](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/), état du _LOD Cloud_ en 2014 avec quelques statistiques intéressantes
+- Lincoln Matthew, [Using SPARQL to access Linked Open Data](https://programminghistorian.github.io/lessons/graph-databases-and-SPARQL), leçon de *Programming Historian* dédiée à SPARQL (les outils utilisés par la leçon sont obsolètes mais la démarche d’exploration proposée par Lincoln est recommandée)
 
 ### Bibliographie sommaire
 
-- Allemang, Dean, James A. Hendler et Fabien L. Gandon. 2020. *Semantic Web for the Working Ontologist: Effective Modeling for Linked Data, RDFS, and OWL*. Third Edition. ACM Books Series 33. New York&&nbsp;: Association for Computing Machinery. https://doi.org/10.1145/3382097.
-- Berners-Lee, Tim. 2009. &laquo;&nbsp;Linked Data&nbsp;&raquo;. *Design Issues*. 18 juin 2009. https://w3.org/DesignIssues/LinkedData.html.
-- DuCharme, Bob. 2013. *Learning SPARQL: Querying and Updating with SPARQL 1.1*. Second edition. O’Reilly. http://www.learningsparql.com.
-- Gartner, Richard. 2016. *Metadata: Shaping knowledge from Antiquity to the semantic web*. 1ère éd. Springer Publishing Company, Incorporated.
-- Nurmikko-Fuller, Terhi. 2023. *Linked Data for Digital Humanities*. London&nbsp;: Routledge. https://doi.org/10.4324/9781003197898.
-- Oldman, Dominic, Martin Doerr et Stefan Gradmann. 2015. &laquo;&nbsp;Zen and the Art of Linked Data&nbsp;&raquo;. Dans *A New Companion to Digital Humanities*, 251-273. John Wiley & Sons. https://doi.org/10.1002/9781118680605.ch18.
-- Van Hooland, Seth et Ruben Verborgh. 2015. *Linked data for libraries, archives and museums: how to clean, link and publish your metadata*. Facet. https://doi.org/10.29085/9781783300389.
-- Wood, David, Marsha Zaidman, Luke Ruth et Michael Hausenblas. 2014. *Linked data: structured data on the Web*. Shelter Island&nbsp;: Manning.
+- Allemang Dean, Hendler Jim, Gandon Fabien, _Semantic Web for the Working Ontologist: Effective Modeling for Linked Data, RDFS, and OWL_ (3<sup>e</sup> éd.), Association for Computing Machinery, ACM Books Series 33, 2020, https://doi.org/10.1145/3382097
+- Berners-Lee Tim, « Linked Data », _Design Issues_, 18 juin 2009, https://w3.org/DesignIssues/LinkedData.html
+- DuCharme Bob, _Learning SPARQL: Querying and Updating with SPARQL 1.1_ (2<sup>e</sup> éd.), O’Reilly, 2013, http://www.learningsparql.com
+- Gartner Richard, _Metadata: Shaping knowledge from Antiquity to the semantic web_ (1<sup>re</sup> éd.), Springer, 2016, https://doi.org/10.1007/978-3-319-40893-4
+- Nurmikko-Fuller Terhi, _Linked Data for Digital Humanities_ (1<sup>re</sup> éd.), Routledge, 2023, https://doi.org/10.4324/9781003197898
+- Oldman Dominic, Doerr Martin, Gradmann Stefan, « Zen and the Art of Linked Data », in Schreibman Susan, Siemens Ray, Unsworth John, _A New Companion to Digital Humanities_, John Wiley & Sons, 2016, 251-273, https://doi.org/10.1002/9781118680605.ch18
+- Van Hooland Seth, Verborgh Ruben, _Linked data for libraries, archives and museums: how to clean, link and publish your metadata_, Facet Publishing, 2015, https://doi.org/10.29085/9781783300389
+- Wood David, Zaidman Marsha , Ruth Luke, Hausenblas Michael, _Linked data: structured data on the Web_, Manning Publications, 2013, https://www.manning.com/books/linked-data
 
 ## Crédits
 

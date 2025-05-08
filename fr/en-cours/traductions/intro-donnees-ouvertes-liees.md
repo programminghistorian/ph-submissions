@@ -80,13 +80,13 @@ Cette dernière approche comporte de grands avantages&nbsp;: si tous les jeux de
 
 Créons un exemple en utilisant Jack Straw&nbsp;: il s’agit du nom à la fois d’un rebelle anglais du XIV<sup>e</sup> siècle et d’un important ministre britannique de l’administration de Tony Blair. Il sera évidemment utile de pouvoir différencier ces deux personnes qui partagent le même nom. En utilisant le modèle ci-dessus, dans lequel chaque personne est représentée par un numéro unique, associons le ministre britannique Jack Straw au numéro `64183282`. La paire attribut-valeur qui en résulte serait donc&nbsp;:
 
-```ini
+```
 personne=64183282
 ```
 
 Et associons maintenant Jack Staw, &laquo;&nbsp;le leader rebelle énigmatique&nbsp;&raquo; tel que décrit par l’*[Oxford Dictionary of National Biography](http://www.oxforddnb.com)* (Oxford DNB), au numéro `33059614`. La paire attribut-valeur serait cette fois&nbsp;:
 
-```ini
+```
 personne=33059614
 ```
 
@@ -94,7 +94,7 @@ Si toute personne qui crée des DOL utilise ces numéros pour faire référence 
 
 Les paires attribut-valeur peuvent également contenir de l’information sur d’autres types d’entités&nbsp;: des lieux, par exemple. Jack Straw, le politicien contemporain, était membre du parlement britannique, représentant de la circonscription de Blackburn. Au Royaume-Uni, il y a plus qu’un seul lieu nommé Blackburn, sans mentionner les autres Blackburn à travers le monde. En utilisant les principes esquissés jusqu’ici, nous pouvons désambiguïser les différentes instances de Blackburn en attribuant un identifiant unique au lieu lié à la circonscription britannique&nbsp;: Blackburn située dans le Lancashire, en Angleterre.
 
-```ini
+```
 place=2655524
 ```
 
@@ -102,7 +102,7 @@ place=2655524
 
 Mais essayons d’être plus précis quant à ce que nous voulons dire par Blackburn dans cet exemple. Jack Straw représentait la circonscription parlementaire (un territoire représenté par un seul membre du parlement) de Blackburn dont les frontières ont changé à travers le temps. Le projet [Digging Into Linked Parliamentary Data](https://repository.jisc.ac.uk/6544/)[^1], sur lequel j’ai travaillé, a produit des identifiants uniques pour les affiliations parlementaires et les circonscriptions de chaque membre du parlement. Dans cet exemple, Jack Straw représentait la circonscription connue comme &laquo;&nbsp;Blackburn&nbsp;&raquo; dans sa version existante à partir de 1955&nbsp;:
 
-```txt
+```
 blackburn1955-current
 ```
 
@@ -112,7 +112,7 @@ Le manque de régularité et de compatibilité des fichiers d’autorité est l�
 
 Une fois que tous ces éléments sont dotés d’identifiants uniques, la prochaine étape clé dans la création de DOL consiste à trouver un moyen de *décrire* la relation entre Jack Straw (`64183282`) et Blackburn (`blackburn1955-current`). Dans les DOL, les relations sont exprimées sous la forme de ce qui est connu comme étant un [triplet](https://fr.wikipedia.org/wiki/Triplet_RDF). Créons donc un triplet qui représente la relation entre Jack Straw et sa circonscription&nbsp;:
 
-```txt
+```
 personne:64183282
 rôle:aReprésentéAuParlementBritanique
 circonscription:"blackburn1955-current" .
@@ -142,14 +142,14 @@ Pour l’instant, il y a trois éléments clés à garder en tête&nbsp;:
 
 Les [identifiants uniformes de ressource](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier) (*Uniform Resource Identifier*, ou URI en anglais) sont un élément essentiel des DOL. L’URI permet d’identifier de façon fiable et unique une entité (une personne, un objet, une relation, etc.), de manière à pouvoir être utilisé par quiconque à travers le monde. Dans la section précédente, nous avons utilisé deux différents numéros pour identifier nos deux différents Jack Straw&nbsp;:
 
-```txt
+```
 personne="64183282"
 personne="33059614"
 ```
 
 Le problème ici repose dans l’existence de nombreuses bases de données à travers le monde contenant des informations sur des personnes qui utilisent ces mêmes numéros et qui, pourtant, sont probablement toutes différentes. À l’extérieur de notre contexte immédiat, ces numéros n’identifient pas d’individus uniques. Essayons d’arranger cela. Voici les mêmes identifiants, mais sous forme d’URI&nbsp;:
 
-```txt
+```
 http://viaf.org/viaf/64183282/
 http://viaf.org/viaf/33059614/
 ```
@@ -166,7 +166,7 @@ Une URL vous indique donc l’emplacement d’une page web, d’un fichier ou d�
 
 L’univers des URI est quelque peu jargonneux. Elles peuvent être dites [déréférençables](https://fr.wiktionary.org/wiki/déréférencer) ou non. Le déréférencement dénote simplement la transformation d’une référence abstraite en quelque chose d’autre. Par exemple, collez un URI dans la barre d’adresse d’un navigateur. Celui-ci renverra-t-il quelque chose&nbsp;? L’URI VIAF de l’historien Simon Schama est le suivant&nbsp;:
 
-```txt
+```
 http://viaf.org/viaf/46784579
 ```
 
@@ -182,14 +182,14 @@ Ce n’est peut-être pas évident d’après les triplets examinés dans la pre
 
 Par exemple, le pianiste Charles Rosen était un élève de Moriz Rosenthal, lui-même élève de Franz Liszt. Ceci s’exprime avec deux triplets (pour rendre les exemples plus lisibles, nous utiliserons des chaînes de caractères au lieu de numéros d’identification)&nbsp;:
 
-```txt
+```
 "Franz Liszt" aEnseignéPianoÀ "Moriz Rosenthal" .
 "Moriz Rosenthal" aEnseignéPianoÀ "Charles Rosen" .
 ```
 
 Nous pourrions également créer nos triplets de cette façon&nbsp;:
 
-```txt
+```
 "Charles Rosen" aApprisPianoDe "Moriz Rosenthal" .
 "Moriz Rosenthal" aApprisPianoDe "Franz Liszt" .
 ```
@@ -207,7 +207,7 @@ Malheureusement, je ne trouve rien qui décrive la relation entre un professeur 
 
 Maintenant, si vous étudiiez l’histoire du [pianisme](https://fr.wiktionary.org/wiki/pianisme), vous pourriez chercher à identifier les pianistes qui ont appris des élèves de Liszt afin d’établir une sorte d’arbre généalogique et de voir si les &laquo;&nbsp;descendants&nbsp;&raquo; de Liszt avaient quelque chose en commun. Vous pourriez chercher les élèves de Liszt, en faire une liste exhaustive, puis pour chacun d’eux tenter de dresser la liste de tous les élèves qu’ils ont eus. Avec les DOL, vous pourriez créer (encore une fois, si les triplets existent) une requête dont les grandes lignes seraient&nbsp;:
 
-```txt
+```
 Donne-moi les noms de tous les pianistes qui ont appris de x
     où x a appris le piano de Liszt
 ```
@@ -250,13 +250,13 @@ Comprendre à quelle sérialisation vous avez affaire signifie que vous pourrez 
 
 Turtle utilise des alias ou des raccourcis que l’on appelle les [préfixes](https://www.w3.org/TeamSubmission/turtle/#sec-tutorial). Ceux-ci nous épargnent d’avoir à écrire chaque fois les URI complets. Retournons vers l’URI que nous avons créé dans la section précédente&nbsp;:
 
-```txt
+```
 http://data.history.ac.uk/tobias-project/person/15601
 ```
 
 Nous ne voulons pas le saisir chaque fois que nous référons à cette personne (Jack Straw, souvenez-vous). Il suffit donc de déclarer notre raccourci&nbsp;:
 
-```txt
+```ttl
 @prefix toby: <http://data.history.ac.uk/tobias-project/person/> .
 ```
 
@@ -264,7 +264,7 @@ Ainsi, Jack est `toby:15601`, qui remplace la forme longue de l’URI et qui est
 
 Passons maintenant de Jack Straw à William Shakespeare et utilisons Turtle pour décrire certaines choses au sujet de ses œuvres. Nous devrons décider des fichiers d’autorité à utiliser, un processus qui, comme mentionné plus haut, se comprend mieux en examinant d’autres jeux de données ouvertes liées. Pour l’un de nos préfixes, nous utiliserons [Dublin Core](https://fr.wikipedia.org/wiki/Dublin_Core), un standard générique pour les [métadonnées](https://en.wikipedia.org/wiki/Metadata) documentaires&nbsp;; le fichier d’autorité du [*Library of Congress Control Number*](https://fr.wikipedia.org/wiki/Numéro_de_contrôle_de_la_Bibliothèque_du_Congrès) pour un autre préfixe et un dernier (VIAF) qui devrait vous être familier. Ensemble, Dublin Core et ces deux fichiers d’autorités fournissent des identifiants uniques pour toutes les entités que je planifie d’utiliser dans cet exemple&nbsp;:
 
-```txt
+```ttl
 @prefix lccn: <http://id.loc.gov/authorities/names/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix viaf: <http://viaf.org/viaf/> .
@@ -277,7 +277,7 @@ Notez l’espacement du point final à la dernière ligne. C’est la façon don
 Turtle vous permet également de lister des triplets sans vous obliger à répéter chaque URI lorsque vous venez tout juste de l’utiliser.
 Ajoutons la date à laquelle les universitaires pensent que Macbeth a été écrit, en utilisant une paire attribut-valeur avec le vocabulaire Dublin Core&nbsp;: `dc:created "YYYY"`&nbsp;:
 
-```txt
+```ttl
 @prefix lccn: <http://id.loc.gov/authorities/names/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix viaf: <http://viaf.org/viaf/> .
@@ -288,7 +288,7 @@ lccn:n82011242 dc:creator viaf:96994048 ;
 
 Vous souvenez-vous de la structure d’un triplet, que nous avons traitée dans la section 1&nbsp;? Nous y avons vu cet exemple&nbsp;:
 
-```txt
+```ttl
 1. personne 15601 (le sujet) 2. aReprésentéAuParlementBritanique (le prédicat) 3. "Blackburn" (l’objet)
 ```
 
@@ -296,7 +296,7 @@ L’essentiel, c’est que le prédicat relie le sujet et l’objet. Il décrit 
 
 Vous pouvez utiliser le point-virgule si le sujet est le même, mais que le prédicat et l’objet sont différents, ou une virgule si le sujet et le prédicat sont les mêmes et que seul l’objet diffère.
 
-```txt
+```ttl
 lccn:no2010025398 dc:creator viaf:96994048 ,
     viaf:12323361 .
 ```
@@ -308,25 +308,25 @@ Examinez-les de nouveau. Cela demeure compliqué, mais ont-ils plus de sens main
 
 *Friend of a Friend* ([FOAF](https://fr.wikipedia.org/wiki/FOAF)) est l’une des ontologies les plus accessibles. Elle est conçue pour décrire des personnes et les relations entre elles. Pour cette raison, elle est assez intuitive. Par exemple, si vous souhaitez m’écrire pour me dire que cette leçon est la meilleure chose que vous ayez jamais lue, voici mon adresse courriel exprimée par un triplet avec FOAF&nbsp;:
 
-```
+```ttl
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-:"Jonathan Blaney" foaf:mbox <mailto:jonathan.blaney@sas.ac.uk> .
+:Jonathan_Blaney foaf:mbox <mailto:jonathan.blaney@sas.ac.uk> .
 ```
 
 #### RDF/XML
 
 Contrairement à Turtle, RDF/XML peut sembler un peu lourd. Pour commencer, convertissons un seul triplet des données Turtle que nous avons créées plus haut&nbsp;: celui affirmant que Shakespeare est le créateur de *The Two Noble Kinsmen*&nbsp;:
 
-```txt
+```ttl
 lccn:no2010025398 dc:creator viaf:96994048 .
 ```
 
 En RDF/XML, avec les préfixes déclarés dans l’extrait XML suivant, cela donne&nbsp;:
 
-``` xml
+```xml
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:dc="http://purl.org/dc/terms/">
+  xmlns:dc="http://purl.org/dc/terms/">
   <rdf:Description rdf:about="http://id.loc.gov/authorities/names/no2010025398">
     <dc:creator rdf:resource="http://viaf.org/viaf/96994048"/>
   </rdf:Description>
@@ -339,7 +339,7 @@ Passons à un autre exemple pour montrer comment RDF/XML combine les triplets et
 
 ```xml
 <skosConcept rdf:about="http://www.ihr-tobias.org/concepts/21250/Abdication">
-    <skos:prefLabel>Abdication</skos:prefLabel>
+  <skos:prefLabel>Abdication</skos:prefLabel>
 </skosConcept>
 ```
 
@@ -349,11 +349,11 @@ Tout comme avec Turtle, nous pouvons ajouter davantage de triplets. Nous allons 
 
 ```xml
 <skosConcept rdf:about="http://www.ihr-tobias.org/concepts/21250/abdication">
-    <skos:prefLabel>Abdication</skos:prefLabel>
+  <skos:prefLabel>Abdication</skos:prefLabel>
 </skosConcept>
 
 <skosConcept rdf:about="http://www.ihr-tobias.org/concepts/21250/abdication">
-    <skos:narrower rdf:resource="http://www.ihr-tobias.org/concepts/19838/abdication_crisis_1936"/>
+  <skos:narrower rdf:resource="http://www.ihr-tobias.org/concepts/19838/abdication_crisis_1936"/>
 </skosConcept>
 ```
 
@@ -361,8 +361,8 @@ Vous souvenez-vous de la façon dont les prédicats et les objets sont imbriqué
 
 ```xml
 <skosConcept rdf:about="http://www.ihr-tobias.org/concepts/21250/abdication">
-    <skos:prefLabel>Abdication</skos:prefLabel>
-    <skos:narrower rdf:resource="http://www.ihr-tobias.org/concepts/19838/abdication_crisis_1936"/>
+  <skos:prefLabel>Abdication</skos:prefLabel>
+  <skos:narrower rdf:resource="http://www.ihr-tobias.org/concepts/19838/abdication_crisis_1936"/>
 </skosConcept>
 ```
 
@@ -404,7 +404,7 @@ Commençons par un exemple simple afin de voir comment cela fonctionne. Copiez (
 
 ```sparql
 SELECT * WHERE {
-    :Lyndal_Roper ?b ?c
+  :Lyndal_Roper ?b ?c
 }
 ```
 
@@ -440,7 +440,7 @@ Voici donc l’allure de ma requête&nbsp;:
 
 ```sparql
 SELECT * WHERE {
-    ?historian_name ?predicate <http://dbpedia.org/class/yago/Historian110177150>
+  ?historian_name ?predicate <http://dbpedia.org/class/yago/Historian110177150>
 }
 ```
 
@@ -454,9 +454,9 @@ Ainsi, cela fonctionne pour créer des listes, ce qui est utile, mais il serait 
 
 ```sparql
 SELECT ?name WHERE {
-    ?name ?b <http://dbpedia.org/class/yago/WikicatBritishHistorians> .
-    ?name ?b <http://dbpedia.org/class/yago/WikicatWomenHistorians>
-    }
+  ?name ?b <http://dbpedia.org/class/yago/WikicatBritishHistorians> .
+  ?name ?b <http://dbpedia.org/class/yago/WikicatWomenHistorians>
+}
 ```
 
 Ça fonctionne&nbsp;! J’obtiens cinq entrées. Au moment d’écrire cette leçon, il y a cinq historiennes britanniques dans *DBpedia*...

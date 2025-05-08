@@ -16,7 +16,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/613
 difficulty: 2
 activity: 
 topics: 
-abstract: Learn to teach ancient history and pre-modern languages with the free and open source computer game 0 A.D. so that your students may benefit from multisensory and project-based study. 
+abstract: This lesson shows how to prepare a geographically accurate historical battle scene in the free and open source computer game 0 A.D. It presents a multisensory, project-based environment for teaching or learning ancient history and pre-modern languages.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---

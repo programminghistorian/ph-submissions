@@ -150,11 +150,11 @@ Vous n'avez pas besoin d'être un expert en JavaScript pour utiliser CETEIcean, 
 
 {% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-02.png"  alt= "Capture d'écran qui montre l'option à choisir dans le menu déroulant qui s'ouvre en faisant un clic droit sur le fichier HTML." caption="Figure 2. Menu des options pour prévisualiser les fichiers en HTML sur VS Code." %}
 
-{% include figure.html filename="fr-tr-publier-archives-ceteicean-02-1.png"  alt= "Capture d'écran qui montre comment trouver l'option pour changer les paramètres de sécurité de l'extension 'HTML Preview' en faisant clic sur le bouton de 'Plus d'actions...' trouvé sur le côté droit de l'écran." caption="Figure 2.1. Bouton pour changer les paramètres de sécurité de l'extension 'HTML Preview' pour permettre l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
+{% include figure.html filename="fr-tr-publier-archives-ceteicean-03.png"  alt= "Capture d'écran qui montre comment trouver l'option pour changer les paramètres de sécurité de l'extension 'HTML Preview' en faisant clic sur le bouton de 'Plus d'actions...' trouvé sur le côté droit de l'écran." caption="Figure 3. Bouton pour changer les paramètres de sécurité de l'extension 'HTML Preview' pour permettre l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
 
-{% include figure.html filename="fr-tr-publier-archives-ceteicean-02-2.png"  alt= "Capture d'écran qui indique qu'il faut choisir l'option 'Disable' pour pouvoir prévisualiser les fichiers TEI avec CETEIcean." caption="Figure 2.2. Option à choisir pour activer l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
+{% include figure.html filename="fr-tr-publier-archives-ceteicean-04.png"  alt= "Capture d'écran qui indique qu'il faut choisir l'option 'Disable' pour pouvoir prévisualiser les fichiers TEI avec CETEIcean." caption="Figure 4. Option à choisir pour activer l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
 
-{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-03.png" alt= "Capture d'écran montrant une première prévisualisation de notre fichier TEI avec CETEIcean. Le fichier HTML et la prévisualisation apparaissent côte à côte : le fichier HTML à gauche et la prévisualisation à droite." caption="Figure 3. Première prévisualisation de notre fichier TEI avec CETEIcean." %}
+{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-05.png" alt= "Capture d'écran montrant une première prévisualisation de notre fichier TEI avec CETEIcean. Le fichier HTML et la prévisualisation apparaissent côte à côte : le fichier HTML à gauche et la prévisualisation à droite." caption="Figure 5. Première prévisualisation de notre fichier TEI avec CETEIcean." %}
 
 Si vous n'utilisez pas VS Code, vous pouvez faire la même chose en plaçant vos fichiers sur un serveur web. Si vous connaissez le fonctionnement de GitHub, vous pouvez utiliser GitHub Pages (voici un [tutoriel](https://docs.github.com/fr/pages/quickstart) en français) et créer un dépôt. Si vous avez installé Python sur votre ordinateur, vous pouvez exécuter un serveur web simple dans le répertoire de ce tutoriel (dans notre cas, le dossier 'tutoriel_fr'). À cette fin, vous devez ouvrir la console de commandes et vérifier que vous êtes dans le dossier souhaité (sinon, vous pouvez naviguer jusqu'à ce dossier avec la commande `cd + url du fichier`, par exemple : `cd Documents/tutoriel_fr`) et entrer la commande :
 
@@ -228,7 +228,7 @@ Ce nouveau comportement prend une fonction de JavaScript, ce qui fait que l'él�
 
 Si à ce stade, nous prévisualisons notre HTML sur VS Code, nous obtiendrons le résultat suivant :
 
-{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-04.png" alt= "Capture d'écran qui montre le fichier HTML sur le côté gauche et la prévisualisation de notre fichier TEI où on peut voir les titres en gras et en plus grande taille selon le niveau du titre sur le côté droit." caption="Figure 4. Prévisualisation de notre fichier TEI avec style pour les titres." %}
+{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-06.png" alt= "Capture d'écran qui montre le fichier HTML sur le côté gauche et la prévisualisation de notre fichier TEI où on peut voir les titres en gras et en plus grande taille selon le niveau du titre sur le côté droit." caption="Figure 6. Prévisualisation de notre fichier TEI avec style pour les titres." %}
 
 Avec cette prévisualisation, nous avons considérablement amélioré la présentation de notre document, mais les notes de l'édition rendent toujours la lecture du texte difficile. Pour résoudre ce problème, nous ajouterons encore un autre comportement à notre script. Cependant, pour atteindre cet objectif, nous devrons utiliser une séquence de commandes un peu plus longue et complexe que la précédente. Copiez et collez le texte suivant entre les lignes `"tei": {` et `"head": function(e) {` qui se trouvent dans le deuxième élément `<script>` de notre document `index.html`:
 
@@ -274,7 +274,7 @@ Avec cette prévisualisation, nous avons considérablement amélioré la présen
 
 Aux fins de compléter ce tutoriel, il n'est pas nécessaire de comprendre le fonctionnement de chaque ligne de ce comportement. Cependant, si vous observez le résultat de la prévisualisation, vous remarquerez qu'en l'incluant, les notes apparaissent à la fin du texte, hyperliées avec leurs références respectives :
 
-{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-05.png" alt= "Capture d'écran qui montre le fichier HTML sur le côté gauche et la prévisualisation de notre fichier TEI avec les numéros des notes sous forme de lien hypertexte sur le côté droit." caption="Figure 5. Prévisualisation de notre fichier TEI avec style pour les notes." %}
+{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-07.png" alt= "Capture d'écran qui montre le fichier HTML sur le côté gauche et la prévisualisation de notre fichier TEI avec les numéros des notes sous forme de lien hypertexte sur le côté droit." caption="Figure 7. Prévisualisation de notre fichier TEI avec style pour les notes." %}
 
 ## Étape 4 : Pour continuer à travailler avec CETEIcean
 

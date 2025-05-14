@@ -242,7 +242,7 @@ La [sérialisation](https://fr.wikipedia.org/wiki/Sérialisation) est un terme t
 1. [Turtle](https://fr.wikipedia.org/wiki/Turtle_(syntaxe))
 1. [RDF/XML](https://fr.wikipedia.org/wiki/RDF/XML)
 
-Comprendre à quelle sérialisation vous avez affaire signifie que vous pourrez choisir les outils appropriés, conçus pour ce format. Par exemple, RDF peut se présenter dans une sérialisation au format [XML](https://fr.wikipedia.org/wiki/XML). Vous pourrez alors utiliser un outil ou une [bibliothèque logicielle](https://fr.wikipedia.org/wiki/Bibliothèque_logicielle) conçue spécifiquement pour le traitement de ce format, ce qui est utile si vous en connaissez déjà le fonctionnement. Reconnaître le format vous fournit également les bons mot-clés pour trouver de l’aide en ligne. Plusieurs ressources ouvrent leurs bases de données liées au téléchargement et vous pourriez être en mesure de choisir la sérialisation qui vous convient.
+Comprendre à quelle sérialisation vous avez affaire signifie que vous pourrez choisir les outils appropriés, conçus pour ce format. Par exemple, RDF peut se présenter dans une sérialisation au format [XML](https://fr.wikipedia.org/wiki/XML). Vous pourrez alors utiliser un outil ou une [bibliothèque logicielle](https://fr.wikipedia.org/wiki/Bibliothèque_logicielle) conçue spécifiquement pour le traitement de ce format, ce qui est utile si vous en connaissez déjà le fonctionnement. Reconnaître le format vous fournit également les bons mots-clés pour trouver de l’aide en ligne. Plusieurs ressources ouvrent leurs bases de données liées au téléchargement et vous pourriez être en mesure de choisir la sérialisation qui vous convient.
 
 #### Turtle
 
@@ -288,7 +288,7 @@ lccn:n82011242 dc:creator viaf:96994048 ;
 
 Vous souvenez-vous de la structure d’un triplet, que nous avons traitée dans la section 1&nbsp;? Nous y avons vu cet exemple&nbsp;:
 
-```ttl
+```
 1. personne 15601 (le sujet) 2. aReprésentéAuParlementBritanique (le prédicat) 3. "Blackburn" (l’objet)
 ```
 

@@ -14,10 +14,10 @@ editors:
 - Caio Mello
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/613
 difficulty: 2
-activity: 
-topics: 
+activity: transforming
+topics: [creative-coding, mapping]
 abstract: This lesson shows how to prepare a geographically accurate historical battle scene in the free and open source computer game 0 A.D. It presents a multisensory, project-based environment for teaching or learning ancient history and pre-modern languages.
-avatar_alt: Visual description of lesson image
+avatar_alt: Ancient Roman mosaic depicting several men in togas learning under a tree.
 doi: XX.XXXXX/phen0000
 ---
 

@@ -16,7 +16,7 @@ editors:
 translator:
 - Felipe Valdez
 translation-editor:
-- Forename Surname
+- Caio Mello
 translation-reviewer:
 - Forename Surname
 - Forename Surname

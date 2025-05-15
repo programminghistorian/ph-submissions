@@ -284,21 +284,21 @@ If you’re interested in learning more about linked open data and Wikidata, we 
 
 ## References
 
-[^1] Daudinot Founier, Isabel. (2006). Organización y recuperación de información en Internet: teoría de los metadatos. ACIMED, 14(5) Recuperado el 27 de febrero de 2024, de [http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352006000500006&lng=es&tlng=es]
+[^1]: Daudinot Founier, Isabel. (2006). Organización y recuperación de información en Internet: teoría de los metadatos. ACIMED, 14(5) Recuperado el 27 de febrero de 2024, de [http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352006000500006&lng=es&tlng=es]
 
-[^2] Torres Pombert, Ania. (2006). ¿Catalogación en el entorno digital?: una breve aproximación a los metadatos. ACIMED, 14(5) Recuperado el 27 de febrero de 2024, de [http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352006000500009&lng=es&tlng=es]
+[^2]: Torres Pombert, Ania. (2006). ¿Catalogación en el entorno digital?: una breve aproximación a los metadatos. ACIMED, 14(5) Recuperado el 27 de febrero de 2024, de [http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352006000500009&lng=es&tlng=es]
 
-[^3] Cuba Rodríguez, Yariannis, & Olivera Batista, Dianelis. (2018). Los metadatos, la búsqueda y recuperación de información desde las Ciencias de la Información. E-Ciencias de la Información, 8(2), 146-158. [https://dx.doi.org/10.15517/eci.v8i2.30085]
+[^3]: Cuba Rodríguez, Yariannis, & Olivera Batista, Dianelis. (2018). Los metadatos, la búsqueda y recuperación de información desde las Ciencias de la Información. E-Ciencias de la Información, 8(2), 146-158. [https://dx.doi.org/10.15517/eci.v8i2.30085]
 
-[^4] Cadena López, Aydé, Ramos Luna, Lorena Litai, & Rivera González, Gibrán. (2022). Los datos abiertos en los estudios organizacionales: Reflexiones e implicaciones. Trace (México, DF), (82), 41-65. Epub 02 de diciembre de 2022. [https://doi.org/10.22134/trace.82.2022.819]
+[^4]: Cadena López, Aydé, Ramos Luna, Lorena Litai, & Rivera González, Gibrán. (2022). Los datos abiertos en los estudios organizacionales: Reflexiones e implicaciones. Trace (México, DF), (82), 41-65. Epub 02 de diciembre de 2022. [https://doi.org/10.22134/trace.82.2022.819]
 
-[^5] Ávila-Barrientos, Eder. (2022). Recuperación de información con Linked Open Data. Investigación bibliotecológica, 36(91), 125-146. Epub 15 de noviembre de 2022. [https://doi.org/10.22201/iibi.24488321xe.2022.91.58567]
+[^5]: Ávila-Barrientos, Eder. (2022). Recuperación de información con Linked Open Data. Investigación bibliotecológica, 36(91), 125-146. Epub 15 de noviembre de 2022. [https://doi.org/10.22201/iibi.24488321xe.2022.91.58567]
 
-[^6] Semantic triple [https://en.wikipedia.org/wiki/Semantic_triple]
+[^6]: Semantic triple [https://en.wikipedia.org/wiki/Semantic_triple]
 
-[^7] Obregón Sierra, Ángel. (2022). Inserción de metadatos de las bibliotecas españolas en Wikidata: un modelo de datos abiertos enlazados. Revista Española De Documentación Científica, 45(3), a330.[https://doi.org/10.3989/redc.2022.3.1870]
+[^7]: Obregón Sierra, Ángel. (2022). Inserción de metadatos de las bibliotecas españolas en Wikidata: un modelo de datos abiertos enlazados. Revista Española De Documentación Científica, 45(3), a330.[https://doi.org/10.3989/redc.2022.3.1870]
 
-[^8] Gutiérrez, Silvia & Fontenelle, Giovanna. (2023). #LD42023. Parte I: El futuro de Wikidata + Bibliotecas (Un taller). Diff: Wikimedia Community Blog. Recuperado el 31 de julio de 2024, de [https://perma.cc/H4FR-L3DY]
+[^8]: Gutiérrez, Silvia & Fontenelle, Giovanna. (2023). #LD42023. Parte I: El futuro de Wikidata + Bibliotecas (Un taller). Diff: Wikimedia Community Blog. Recuperado el 31 de julio de 2024, de [https://perma.cc/H4FR-L3DY]
 
-[^9] Werf, Titia van der. (2022). Gestión de la identidad del autor en la cadena del libro. Traducción de Francesc García Grimau. Hanging Together: the OCLC Research Blog. Recuperado el 15 de mayo de 2024, de [https://perma.cc/GS92-4HFQ]
+[^9]: Werf, Titia van der. (2022). Gestión de la identidad del autor en la cadena del libro. Traducción de Francesc García Grimau. Hanging Together: the OCLC Research Blog. Recuperado el 15 de mayo de 2024, de [https://perma.cc/GS92-4HFQ]
 

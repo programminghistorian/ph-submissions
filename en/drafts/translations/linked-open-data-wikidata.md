@@ -60,7 +60,7 @@ No prior knowledge is necessary.
 
 Projects under the Wikimedia Foundation umbrella are organized into four categories: content projects, multilingual content projects, outreach and administrative projects, and technical and development projects.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-01.png" alt="Visual description of figure image" caption="Figure 1. An overview of the Wikimedia Foundation’s projects." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-01.png" alt="Projects under the umbrella of the Wikimedia Foundation organized into four categories: content projects, multilingual content projects, outreach and administration projects, and technical and development projects." caption="Figure 1. An overview of the Wikimedia Foundation’s projects." %}
 
 According to its own [website](https://www.wikidata.org/wiki/Wikidata:Introduction), both the content and structure of Wikidata are in the public domain. This means that we can copy, modify, distribute, and present the data—even for commercial purposes—without the need for permission. In addition, Wikidata has the following features:
 
@@ -79,7 +79,7 @@ According to its own [website](https://www.wikidata.org/wiki/Wikidata:Introducti
 In 2019, Wikidata had approximately 55 million created items. Four years later, it had surpassed 100 million items (Figure 2), covering a wide range of topics such as objects, people, places, reports, art, buildings of cultural interest, animals, and much more.
 
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-02.png" alt="A graph showing the increase in item creation from 2013 to 2023." caption="Figure 2. Item creation over time in Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-02.png" alt="Graph showing the increase in the creation of elements between 2013 and 2023." caption="Figure 2. Item creation over time in Wikidata." %}
 
 
 Wikidata also offers a wide variety of tools to edit, query, and visualize its data. This [semantic web](https://en.wikipedia.org/wiki/Semantic_Web) model helps advance social justice, as it enables small communities that are often outside the mainstream of science to access, apply, and generate open knowledge and consequeyntly have a broader and more efficient global impact. Obregón Sierra[^7], for example, used Wikidata to include information about libraries in Spain so that they could be accessed by anyone, anywhere in the world. Before beginning the data entry process in Wikidata, the author noted that there were only 303 items corresponding to libraries in Spain. After importing all the libraries listed in the Spanish government’s dataset, 7,861 additional libraries were created, and data for 206 pre-existing items was improved. As for the number of galleries, libraries, archives, and museums (GLAMs) in Spain, there were 2,424 items, making it the 13th-ranked country—far behind the United States, which had 47,586. After importing all the libraries, Spain rose to second place in the ranking.[^7]
@@ -94,7 +94,7 @@ One of the first terms we need to become familiar with is “items.” These are
 
 Each Wikidata item consists of a label, which is a short descriptive name used to identify the concept, followed by a unique identifier formatted as the letter Q followed by a number. For example, the journal Programming Historian has the identifier Q50817399 (Figure 3). This unique designation allows for easy referencing and access to a specific item, regardless of the language in which it is described. It is not necessary to memorize each item’s Q-number.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-03.png" alt="Visual description of figure image" caption="Figure 3. Example of a Wikidata identifier: the Q number for the journal ‘Programming Historian’." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-03.png" alt="Element for the journal ‘Programming Historian’ with its label and Q identifier." caption="Figure 3. Example of a Wikidata identifier: the Q number for the journal ‘Programming Historian’." %}
 
 Labels in Wikidata can be ambiguous. For instance, “San Martín,” which could refer to a person, a city, an island, or a region in Peru. However, identifiers are universally applicable and eliminate the need for language-specific identifiers. This feature enhances machine readability and enables bots to efficiently edit Wikidata.
 
@@ -102,15 +102,15 @@ Following the label and identifier, each item includes a short description, whic
 
 Items may also include aliases, which are alternative names or nicknames. These additional variations help make items easier to find and recognizable by different communities (Figure 4).
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-04.png" alt="Visual description of figure image" caption="Figure 4. Example of a label, identifier, description, and name variants (aliases) in Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-04.png" alt="Element for Charles III of the United Kingdom" caption="Figure 4. Example of a label, identifier, description, and name variants (aliases) in Wikidata." %}
 
 After this initial section (which includes the label, Q-identifier, description, and aliases), we find the language section, which enhances the accessibility and usefulness of information by providing translations of items into multiple languages. Figure 5 shows the example of the item for “rain” in Wikidata, along with its translations in Spanish and Chinese. This multilingual section makes information more accessible and useful to a global audience by enabling understanding across languages.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-05.png" alt="Visual description of figure image" caption="Figure 5. Example of multilingualism in Wikidata: the case of the item ‘rain’." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-05.png" alt="Element for ‘rain’ with translations in Spanish and Chinese" caption="Figure 5. Example of multilingualism in Wikidata: the case of the item ‘rain’." %}
 
 When describing an item in Wikidata, we do so using statements. These are assertions that represent specific structured information about an item in the database. Items are connected to one another through a set of properties (attributes or characteristics) and associated values, which together form these statements (Figure 6). These statements establish the relationships and define Wikidata’s hierarchical and modular structure.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-06.png" alt="Visual description of figure image" caption="Figure 6. Statements in Wikidata: examples of properties and values." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-06.png" alt="Element for the journal ‘Programming Historian’ with five statements" caption="Figure 6. Statements in Wikidata: examples of properties and values." %}
 
 Each property has a unique identifier in Wikidata, formatted as the letter P followed by a number. Properties in Wikidata are designed to be reusable across different contexts. This means a property can be applied to multiple item types and is not limited to a single use. Each property has its own documentation page in Wikidata, providing detailed information about its purpose, proper use, and examples.
 
@@ -146,7 +146,7 @@ From there, you can begin filling out the fields by entering the required inform
 
 - Local language: Descriptions should be written in the local language of the Wikidata project. For example, if you’re contributing to the Enlgish version of Wikidata, the descriptions should be in English.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-09.png" alt="Visual description of figure image" caption="Figure 9. Filling out information for a new item on Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-09.png" alt="Template for creating a new item in Wikidata with ‘language’, ‘tag’, ‘description’ and ‘alias’ fields" caption="Figure 9. Filling out information for a new item on Wikidata." %}
 
 Next, it’s time to start adding statements to enrich the item’s information.
 
@@ -186,13 +186,13 @@ To understand how Wikidata can be used to describe entities related to academia 
 
 Statements in Wikidata consist of (at least) one property–value pair. Figure 10 shows the values that have been added for the first statement (“instance of”) for this item: academic journal, scientific journal, and open access publication.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-10.png" alt="Visual description of figure image" caption="Figure 10. Example of the ‘instance of’ statement for a journal." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-10.png" alt="'Instance of' property with four associated values to represent an open access scholarly journal of librarianship" caption="Figure 10. Example of the ‘instance of’ statement for a journal." %}
 
 There is no specific limit on the number of properties and values you can add to an item in Wikidata. The choice depends on the amount and relevance of information you wish to include about the scientific journal. You can add as many as are necessary to fully describe the item you are representing. For example, other values that could also be included are specialized journal or society journal. However, it’s important to consider the relevance and accuracy of the information you are contributing. The goal is not to add as much as possible, but rather to provide meaningful and useful data for users.
 
 As shown in Figure 11, the next property added to this item is [“short name” (P1813)](https://www.wikidata.org/wiki/Property:P1813). In the case of journals, this is used to record abbreviated titles. Following that, the full official title has been added, along with its reference. Whenever possible, it’s good practice to provide references to support the information you enter. This helps maintain the reliability and verifiability of Wikidata content. References can be links to trustworthy sources such as official websites, recognized databases, books, scholarly articles, or any other academic publication that supports the claim made in the statement. It's important to note that social media sources are not considered appropriate references in Wikidata.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-11.png" alt="Visual description of figure image" caption="Figure 11. Example of journal metadata in Wikidata: title, short title, and field of work." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-11.png" alt="Element for the journal ‘Acceso’ with three properties and their related values" caption="Figure 11. Example of journal metadata in Wikidata: title, short title, and field of work." %}
 
 References in Wikidata typically follow a standard format that includes information such as the source title, author (if available), publication date, and a URL or unique identifier (such as a DOI – Digital Object Identifier – or ISBN – International Standard Book Number) that allows users to access the original source.
 
@@ -214,7 +214,7 @@ Even when describing just the basic metadata for a journal, several additional p
 
 Figure 12 shows an example of how the property [“indexed in bibliographic database” (P8875)](https://www.wikidata.org/wiki/Property:P8875) is used in Wikidata. Through linked data, items can be connected to external databases and catalogs.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-12.png" alt="Visual description of figure image" caption="Figure 12. Example of using the 'indexed in bibliographic database' property in Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-12.png" alt="List of databases as values related to the property ‘indexed in bibliographic database’." caption="Figure 12. Example of using the 'indexed in bibliographic database' property in Wikidata." %}
 
 ## Describing people's data in Wikidata
 
@@ -226,11 +226,11 @@ When creating data about people, especially living individuals, it is important 
 
 The first step in creating a person record in Wikidata is to make sure a record does not already exist. If none exists, you may create a new item. In the label field, enter the name by which the person is most commonly known. Then, write a brief description of the person, and optionally include other name variants. After completing the label and description, you can begin adding statements. The first statement should be [“instance of” (P31)](https://www.wikidata.org/wiki/Property:P31) with the value [“human” (Q5)](https://www.wikidata.org/wiki/Q5). Figure 13 shows how this is done for Puerto Rican philosopher Francisco José Ramos [(Q105725041)](https://www.wikidata.org/wiki/Q105725041).
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-13.png" alt="Visual description of figure image" caption="Figure 13. Label, description, and name variants in Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-13.png" alt="Element for a person with his first statement" caption="Figure 13. Label, description, and name variants in Wikidata." %}
 
 The next statements relate to names. You can add [“given name” (P735)](https://www.wikidata.org/wiki/Property:P735), [“family name” (P734)](https://www.wikidata.org/wiki/Property:P734), and [“second family name” (P1950)](https://www.wikidata.org/wiki/Property:P1950). For compound given names, enter each name as a separate value under the “given name” property, and use the qualifier [“series ordinal” (P1545)](https://www.wikidata.org/wiki/Property:P1545) to indicate first and second name. Figure 14 illustrates this process for entering the compound given name “Francisco José.”
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-14.png" alt="Visual description of figure image" caption="Figure 14. Compound given name in Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-14.png" alt="Element for a person with the values associated with the property ‘first name’." caption="Figure 14. Compound given name in Wikidata." %}
 
 For Hispanic surnames, two properties should be used. The [“family name” (P734)](https://www.wikidata.org/wiki/Property:P734) is used for the paternal surname, while [“second family name” (P1950)](https://www.wikidata.org/wiki/Property:P1950) is used for the maternal surname.
 
@@ -238,11 +238,11 @@ Another common property when describing individuals is [“field of work” (P10
 
 You may also include the property [“occupation” (P106)](https://www.wikidata.org/wiki/Property:P106), which complements the field of work. This property allows multiple values and is useful for representing the different professional or artistic roles of a person. Keep in mind that all personal information should come from trustworthy and accessible sources. These sources should be cited as references for each value entered. Figure 15 shows the values for the occupation property, with references from a Wikipedia article.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-15.png" alt="Visual description of figure image" caption="Figure 15. Values for the 'occupation' property in Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-15.png" alt="Element for a person with several values associated with the ‘occupation’ property." caption="Figure 15. Values for the 'occupation' property in Wikidata." %}
 
 Recording identifiers associated with a person is one of the most important aspects of Wikidata. Each identifier is added as a distinct property. For example, you can include: [ORCID iD (P496)](https://www.wikidata.org/wiki/Property:P496), [Scopus Author ID (P1153)](https://www.wikidata.org/wiki/Property:P1153), [VIAF ID (P214)](https://www.wikidata.org/wiki/Property:P214), [ISNI (P213)](https://www.wikidata.org/wiki/Property:P213), Library identifiers such as the [Library of Congress authority ID (P244)](https://www.wikidata.org/wiki/Property:P244) or the [National Library of Spain ID (P950)](https://www.wikidata.org/wiki/Property:P950). Figure 16 shows a set of identifiers for the same person.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-16.png" alt="Visual description of figure image" caption="Figure 16. Identifiers associated with a person in Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-16.png" alt="List of identifiers related to a person" caption="Figure 16. Identifiers associated with a person in Wikidata." %}
 
 These are just some of the properties available for creating linked open data about individuals in Wikidata. Below are other relevant properties that can provide more detailed information. However, we must be especially cautious when entering data about living people and always consider ethical implications related to their dignity, safety, and privacy.
 
@@ -266,15 +266,15 @@ These are just some of the properties available for creating linked open data ab
 
 Wikidata offers a variety of tools or gadgets to make your work easier. These tools are available in the Preferences menu, under the Gadgets section (Figure 17). The Preferences menu becomes visible once you are logged into your user account. Click on the dropdown menu on the top right of the page to see the Preferences menu.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-17.png" alt="Visual description of figure image" caption="Figure 17. Wikidata Preferences menu." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-17.png" alt="Preferences menu for registered users with the section to access accessories or tools." caption="Figure 17. Wikidata Preferences menu." %}
 
 One helpful tool for creating and editing entities is Recoin (Relative Completeness Indicator) (Figure 18), which displays a list of relevant properties that could be added to an entity’s page. This is especially useful for new users who may not yet be familiar with Wikidata’s properties.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-18.png" alt="Visual description of figure image" caption="Figure 18. Recoin tool in Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-18.png" alt="List of accessories with the option to activate the ‘Recoin’ tool" caption="Figure 18. Recoin tool in Wikidata." %}
 
 Once activated, the Recoin tool appears on the entity’s page. You can click on it to view a list of relevant properties you may want to include. Below is a list of the most important properties for describing a person (Figure 19).
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-19.png" alt="Visual description of figure image" caption="Figure 19. Relevant properties suggested by the Recoin tool in Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-19.png" alt="List of properties relevant to the description of a person according to Recoin tool" caption="Figure 19. Relevant properties suggested by the Recoin tool in Wikidata." %}
 
 ## Conclusions
 

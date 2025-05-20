@@ -27,7 +27,7 @@ doi: XX.XXXXX/phen0000
 
 ### Lesson Goals
 
-This lesson demonstrates how to make high-quality, zoomable, shareable, interoperable images through the [International Image Interoperability Framework (IIIF)](https://en.wikipedia.org/wiki/International_Image_Interoperability_Framework). This lesson demonstrates three methods for creating basic IIIF-compliant images and creating and hosting IIIF manifests from images that you've downloaded to your local device. In particular, you will learn:
+This lesson demonstrates how to make high-quality, zoomable, shareable, interoperable images through the [International Image Interoperability Framework (IIIF)](https://en.wikipedia.org/wiki/International_Image_Interoperability_Framework). It provides three methods for creating basic IIIF-compliant images and creating and hosting IIIF manifests of images downloaded to your local device. In particular, you will learn:
 - How to create Level-0 (basic) compliant IIIF images
 - How to create a IIIF manifest to present Level-0 compliant IIIF images
 - How to host IIIF manifests on GitHub
@@ -41,9 +41,9 @@ There are no fees for processing and hosting through any of these methods and al
 - At least one image downloaded to your local computer, not copyrighted by someone else
 - A strong Internet connection
 
-If you're looking for an image for this lesson, you can use the [Creative Commons Search Portal](https://search.creativecommons.org/) to search for CC licensed images.
+Note that all screenshots in this lesson were taken on a MacBook, though these methods will work on any OS. Throughout this lesson, I will be using a downloaded photo of my cat as an example. If you're looking for an image for this lesson, you can use the [Creative Commons Search Portal](https://search.creativecommons.org/) to search for CC licensed images.
 
-Note that all of these methods rely on tools and workflows created by IIIF Technical Coordinator [Glen Robson](https://github.com/glenrobson). Methods get progressively harder and more intensive as you go through this lesson.
+All of these methods rely on tools and workflows created by IIIF Technical Coordinator [Glen Robson](https://github.com/glenrobson). Methods get progressively harder and more intensive as you go through this lesson.
 
 ### What is IIIF?
 
@@ -57,11 +57,36 @@ The [International Image Interoperability Framework](https://iiif.io/) describes
 
 An [International Image Interoperability Framework manifest](https://iiif.io/guides/using_iiif_resources/) is a file that contains all of the information about an image or group of images served using IIIF, including the [metadata](https://en.wikipedia.org/wiki/Metadata), order of presentation, size specifications, etc. for a digital object. Creating manifests for your images means that you can specify metadata about that image that will display when the manifest is viewed in a IIIF-compatible viewer. There are also tools, digital exhibition platforms, and viewers that only accept manifests, not images, so knowing how to create compliant images *and* manifests is important for effectively leveraging IIIF.
 
+Manifest editors are an easy way to visually put a manifest together, right in your browser. The two most popular manifest editors are [The Bodleian's IIIF Manifest Editor](https://digital.bodleian.ox.ac.uk/manifest-editor/) by the University of Oxford and the [Digirati IIIF Manifest Editor](https://manifest-editor.digirati.services/); both are free and web-based. This lesson uses the [Bodleian Manifest Editor](https://digital.bodleian.ox.ac.uk/manifest-editor/#/?_k=fsgx3h), since it offers less options and is therefore more straightforward to use. 
+
 ### Why use GitHub?
 
 [GitHub](https://github.com/) is a web-based code storage, sharing, and version control platform based on the version control system Git. GitHub also offers free web-hosting through GitHub Pages, which allows you to create a GitHub-hosted webpage from your code. Using GitHub and GitHub Pages, you can conveniently store, host, and access your IIIF images and manifests in one place on the web.
 
 Using GitHub also allows you to easily switch to alternative methods if your chosen method has deprecated or the software is no longer supported. For example, the [Internet Archive](https://archive.org/) is a popular tool for creating IIIF manifests, since they have a partnership with IIIF and images uploaded using their public upload feature are automatically IIIF compliant. In September 2024, however, the Internet Archive suspended its services for months [due to cyberattacks](https://www.forbes.com/sites/larsdaniel/2024/10/20/internet-archive-breached-again-third-cyber-attack-in-october-2024/). It became necessary to find an alternate method of rendering and serving IIIF manifests for free from personal photos and images found on the web, and most of these [open-source](https://en.wikipedia.org/wiki/Open_source) solutions are already on GitHub.
+
+### Which method should I choose? 
+Deciding which of these methods to use is dependent on:
+1. Your comfort and skill level with navigating the command line and using [Command Line Interface (CLI)](https://en.wikipedia.org/wiki/Command-line_interface) tools
+2. Your comfort and skill level with editing JSON files
+3. The amount of images you have to process
+4. Whether you have particular specification for how the images process
+
+Method 1 may be best for those with limited experience using the command line interface or manipulating JSON files, since the tool it uses has a visual editor that allows you to upload, process, and retrieve images and manifests without any programming skills. Method 1 may also be good for those who do not have particular specifications in terms of quality or the number of image tiles produced, as the tool it uses does not allow for these specifications. 
+
+Method 2 may be best for those with basic knowledge of the command line and with editing JSON files, but who may not have the knowledge to use arguments or to make significant changes to JSON files. Method 2 may also be good for those looking to batch edit many images at once. 
+
+Method 3 may be best for those with moderate knowledge of the command line and who have experience editing JSON files. Method 3 may also be good for those who have particular specifications in mind for their images to meet, as the CLI tool used in this method allows for a series of arguments that can enable highly-controlled resulting images. 
+
+Note that time is not included as a factor for consideration, as all of these methods entail significant processing time. 
+
+The following tables illustrates the basic pros and cons of each method, with the four factors above in mind:
+
+| Method 1                                                                                                                                             | Method 2                                                                                                                                                      | Method 3                                                                                                                                                               |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pros:<br>- Visual editor/interface<br>- No programming or command line knowledge needed<br>- No experience with JSON files needed                    | Pros:<br>- Batch processing and editing (100s of images at once)<br>- Some control over how the images process and resulting image or manifest specifications | Pros:<br>- Batch processing and editing (100s of images at once)<br>- High level of control over how the images process and resulting image or manifest specifications |
+| Cons:<br>- No batch processing or editing (must upload one-by-one)<br>- No control over processing or the resulting image or manifest specifications | Cons:<br>- No visual editor/interface<br>- Requires basic grasp of command line<br>- Requires knowledge of editing JSON files                                 | Cons:<br>- No visual editor/interface<br>- Requires **strong** grasp of command line<br>- Requires knowledge of editing JSON files                                         |
+|                                                                                                                                                      |                                                                                                                                                               |                                                                                                                                                                        |
 
 ## Method 1: IIIF Workbench in GitHub.com
 
@@ -87,7 +112,7 @@ If you have multiple images to download, it's best to place them all in the same
 
 #### Check your file sizes
 
-Either during the download process or after you've downloaded your image to your local computer, you'll want to check the size of the image file.
+Either during the download process or after you have downloaded your image to your local computer, you'll want to check the size of the image file.
 
 **On Mac**
 In Finder, go to your image file. Right-click (mouse) or two-finger click (trackpad) on the image. Click Get Info to open an info popup. In the popup, you should see the file size in bytes and KB or MB under General > File Size.
@@ -117,11 +142,11 @@ In the command line, navigate to the directory your image is in. Use the [conver
 
 To access IIIF Workbench, login to your [GitHub](github.com) account in a web browser. You'll need to give the IIIF Workbench access to your account's public repositories in order to create a new repository with your processed image files.
 
-Once you've logged in, you can access the [IIIF Workbench](https://workbench.gdmrdigital.com/login.xhtml) in a web browser at https://workbench.gdmrdigital.com/. You'll want to either select an existing project or create a new one. Each project is a separate repository in your GitHub account. The title you give a project in IIIF Workbench will be the title of that image file repository in your GitHub account.
+Once you have logged in, you can access the [IIIF Workbench](https://workbench.gdmrdigital.com/login.xhtml) in a web browser at [https://workbench.gdmrdigital.com/](https://workbench.gdmrdigital.com/). You'll want to either select an existing project or create a new one. Each project is a separate repository in your GitHub account. The title you give a project in IIIF Workbench will be the title of that image file repository in your GitHub account.
 
 #### Upload your images
 
-Once you've created your project, you can open an upload popup and upload your images one by one. IIIF Workbench does not allow batch uploads, so you will have to select each image file individually.
+Once you have created your project, you can open an upload popup and upload your images one by one. IIIF Workbench does not allow batch uploads, so you will have to select each image file individually.
 
 You will be prompted to select an IIIF Image Version. Both IIIF 2.x and 3.x are compatible with static images, so the selection is based on your preference for the structure of manifests. You can review the full [version 3.x documentation](https://iiif.io/api/image/3.0/) to see what differences arise between the two.
 
@@ -143,9 +168,7 @@ In IIIF Workbench, both of the identifiers are listed under the title of an imag
 
 #### Use a manifest editor
 
-Manifest editors are an easy way to visually put a manifest together. This lesson uses the [Bodleian Manifest Editor](https://digital.bodleian.ox.ac.uk/manifest-editor/#/?_k=fsgx3h), but there are other manifest editors available.
-
-To add your image to a manifest, create a new project and add a canvas to your manifest. Select the canvas. Add an image to the canvas metadata using the `info.json` URI or image API URI. The image should populate on the canvas.
+To add your image to a manifest, open a manifest editor and create a new project. Add a canvas to your manifest. Select the canvas. Add an image to the canvas metadata using the `info.json` URI or image URI. The image should populate on the canvas.
 
 Once you have added your image, it is best to add metadata to your canvas and manifest using the pre-populated fields. Metadata allows other viewers to understand what your image shows and what data it contains. When you are finished, save your manifest, give the file a unique title, and download it to your computer.
 
@@ -175,7 +198,7 @@ The downside of this method is that there is no visual editor or public-facing G
 
 Using the command line or your operating system's file management application (Finder, File Explorer, etc.), create a directory for your image files somewhere on your local computer. Since the tiler will operate within a specific directory, you need to be able to keep the tiler and all your desired images on a single, recognisable [file path](https://en.wikipedia.org/wiki/Path_(computing)). You can name your directory whatever you'd like, just make sure to edit the commands in succeeding steps of this lesson appropriately. This lesson will refer to the image file directory as `iiif-workshop`. 
 
-Downloaded your images to the `iiif-workshop` directory. As with Method 1, if you have the option, download your image(s) using the optimal file format available. For creating high-quality IIIF-compliant images, TIFFs are best, JPGs/JPEGs are second best, and PNGs are third best.
+Download your images to the `iiif-workshop` directory. As with Method 1, if you have the option, download your image(s) using the optimal file format available. For creating high-quality IIIF-compliant images, TIFFs are best, JPGs/JPEGs are second best, and PNGs are third best.
 
 As you're downloading your image files, **make sure your image filenames are distinct.** You cannot have files with the same exact name and file extension in the same directory, and the tiler will not be able to distinguish between files without distinct titles. 
 
@@ -206,11 +229,13 @@ Create a new repository on GitHub. Create an `images` folder. While in the `imag
 
 Create a `manifests` folder in the same repository. We will use this folder later to store and host our manifests.
 
+In your repository, go to Settings > GitHub Pages. Set the Source to "Deploy from a branch" and the Branch to "main /(root)".
+
 #### Clean up your image files
 
 Because you are using your local computer, the IIIF Tiler will populate `info.json` files for your images with your [local server address](https://en.wikipedia.org/wiki/Localhost) as the reference. For your images to be properly displayed, they need to reference the server they are actually located on. This will be a GitHub server.
 
-After all files have uploaded successfully to GitHub, open the `info.json` file for each image and update the `@id` field to: “https://`YOUR-GITHUB-USERNAME`.github.io/`YOUR-REPO-NAME`/images/`YOUR-IMAGE-NAME`/”.
+After all files have uploaded successfully to GitHub, open the `info.json` file for each image and update the `@id` field to: “https://`YOUR-GITHUB-USERNAME`.github.io/`YOUR-REPO-NAME`/images/`YOUR-IMAGE-NAME`”.
 
 <div class="alert alert-warning">
 Make sure you commit your changes as you go so that they save!
@@ -226,15 +251,13 @@ IIIF manifests rely on uniform identifiers to identify and access IIIF-compliant
 
 The `info.json` URI requests information about the image service, i.e. how the image is being served to the web. The image URI requests information about the image itself (dimensions, rotation, etc.) as processed by the IIIF Image API.
 
-The `info.json` URI for your image will include the path to the `info.json` file for that image in your GitHub repository: "hhttps://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/info.json"
+The `info.json` URI for your image will include the path to the `info.json` file for that image in your GitHub repository: "https\\:`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/`info.json`"
 
-The image API URI for your image will include the path to the folder with the full resolution tiles of your image in your GitHub repository: "hhttps://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/full/full/default/0.`IMAGE FILE EXTENSION`".
+The image API URI for your image will include the path to the folder with the full resolution tiles of your image in your GitHub repository: "https:\\`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/full/full/default/0/`IMAGE FILE EXTENSION`".
 
 #### Use a manifest editor
 
-Manifest editors are an easy way to visually put a manifest together. This lesson uses the [Bodleian Manifest Editor](https://digital.bodleian.ox.ac.uk/manifest-editor/#/?_k=fsgx3h), but there are other manifest editors available.
-
-To add your image to a manifest, create a new project and add a canvas to your manifest. Select the canvas. Add an image to the canvas metadata using the info.json URI or image URI. The image should populate on the canvas.
+To add your image to a manifest, open a manifest editor and create a new project. Add a canvas to your manifest. Select the canvas. Add an image to the canvas metadata using the `info.json` URI or image URI. The image should populate on the canvas.
 
 Once you have added your image, it is best to add metadata to your canvas and manifest using the pre-populated fields. Metadata allows other viewers to understand what your image shows and what data it contains. When you are finished, save the manifest, give your manifest file a unique title. and download it to your computer. Note that it is easiest to name your manifest file the same thing as your image title, so that you know at a glance which image the manifest displays. 
 
@@ -242,7 +265,7 @@ Once you have added your image, it is best to add metadata to your canvas and ma
 
 Now that you have your manifests, you must also host them somewhere, just like your images. On GitHub, you can follow the same steps for hosting manifests as you did for uploading and hosting your images.
 
-Open the "manifests" folder in your GitHub repository and upload all of your downloaded manifests. Open each manifest file to correct the `@id` so that it reads: "hhttps://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/manifests/`YOUR MANIFEST NAME`/". 
+Open the `manifests` folder in your GitHub repository and upload all of your downloaded manifests. Open each manifest file to correct the `@id` in line 3 so that it reads: “https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/manifests/`YOUR MANIFEST NAME`.json”. 
 
 <div class="alert alert-warning">
 Make sure you commit your changes as you go so that they save!
@@ -262,17 +285,17 @@ Some options for IIIF viewers include: [Theseus](https://theseusviewer.org/), [R
 
 Method 3 is very similar to Method 2, but uses libvips, an image-processing library, instead of IIIF Tiler to create Level 0 IIIF-compliant image tiles. It then uses GitHub to host those images and present them using the IIIF Presentation API through GitHub Pages.
 
-libvips tiles images similarly to iiif-tiler, but gives you more control over the specifications for the image, including tile overlap, tile size, depth, angle, and more. libvips creates [Deep Zoom (DZI)](https://en.wikipedia.org/wiki/Deep_Zoom) tile pyramids for your images, so that only the area of the image that is viewed in a particular zoom is loaded. For this reason, libvips tends to create more tiles for an image. The increased number of tiles can be difficult to upload, but the images tend to be of slightly better quality and more zoomable.
+libvips tiles images similarly to iiif-tiler, but gives you more control over the specifications for a single image, including tile overlap, tile size, depth, angle, and more. libvips creates [Deep Zoom (DZI)](https://en.wikipedia.org/wiki/Deep_Zoom) tile pyramids for your images, so that only the area of the image that is viewed in a particular zoom is loaded. For this reason, libvips tends to create more tiles for an image. The increased number of tiles can be difficult to upload, but the images tend to be of slightly better quality and more zoomable.
 
 ### Preparing your image directory and files
 
-Using the command line or your operating system's file management application (Finder, File Explorer, etc.), create a directory for your image files somewhere on your local computer. You can name your directory whatever you'd like. This lesson will refer to the image file directory as `iiif-libvips. 
+Using the command line or your operating system's file management application (Finder, File Explorer, etc.), create a directory for your image file somewhere on your local computer. You can name your directory whatever you'd like. This lesson will refer to the image file directory as `iiif-libvips. 
 
-Download your images to the `iiif-libvips` directory. As with the other methods, if you have the option, download your image(s) using the optimal file format available. For creating high-quality IIIF-compliant images, TIFFs are best, JPGs/JPEGs are second best, and PNGs are third best.
+Download your image to the `iiif-libvips` directory. As with the other methods, if you have the option, download your image using the optimal file format available. For creating high-quality IIIF-compliant images, TIFFs are best, JPGs/JPEGs are second best, and PNGs are third best.
 
-As you're downloading your image files, **make sure your image filenames are distinct.** You cannot have files with the same exact name and file extension in the same directory, and the tiler will not be able to distinguish between files without distinct titles. 
+If you are downloading multiple image files, **make sure your image filenames are distinct.** You cannot have files with the same exact name and file extension in the same directory, and the tiler will not be able to distinguish between files without distinct titles. 
 
-### Using libvips to tile images
+### Using libvips to tile an image
 
 The libvips pyramid constructor operates entirely in the command line using a set of arguments that specify filename, format, properties, and more. For a full set of arguments available for the deep zoom pyramids command, see the [libvips documentation](https://www.libvips.org/API/current/Making-image-pyramids.html).
 
@@ -284,13 +307,18 @@ Wait for the [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) file to appe
 
 Before continuing, be sure to open the ZIP file for each image so you can access the contents.
 
+#### Batch tiling images
+If you want to use libvips to tile multiple image files, you will need to use scripting language in the command line to identify all the files in a directory, batch them by name or file extension, and run the same command on all of them. In the bash command line, for example, you could run: `for filename in *.jpg; do vips dzsave $filename $(basename $filename .jpg)-pyr --layout iiif done`. Since this process is different on each operating system and can vary depending on scripting language, this lesson will not include step-by-step details for batch tiling with libvips. For Windows, see Steve Jansen's [Guide to Windows Batch Scripting](https://steve-jansen.github.io/guides/windows-batch-scripting/). For Mac and Linux, see [John Cupitt's bash solution on the libvips GitHub Issues](https://github.com/libvips/libvips/issues/1744).
+
 ### Create your image and manifest repository
 
 Now that you have all of these image tiles, what do you do with them? To store, host, access, and share your images, you can create a basic GitHub repository.
 
-Create a new repository on GitHub. Create an `images` folder. While in the `images` folder, upload all of the individual image folders (e.g image-1, image-2, etc.) in the `iiif-libvips` directory on your local computer. You may have to do this in batches due to GitHub's upload limits.
+Create a new repository on GitHub. Create an `images` folder. While in the `images` folder, upload all of the individual image folders (e.g image-1, image-2, etc.) in the `iiif-libvips` directory on your local computer. You may have to do this in batches due to GitHub's upload limits. You can delete the `vips-properties.xml` folder.
 
 Create a `manifests` folder in the same repository. We will use this folder later to store and host our manifests.
+
+In your repository, go to Settings > GitHub Pages. Set the Source to "Deploy from a branch" and the Branch to "main /(root)".
 
 #### Clean up your image files
 
@@ -312,15 +340,13 @@ IIIF manifests rely on uniform identifiers to identify and access IIIF-compliant
 
 The `info.json` URI requests information about the image service, i.e. how the image is being served to the web. The image URI requests information about the image itself (dimensions, rotation, etc.) as processed by the IIIF Image API.
 
-The info.json URI for your image will include the path to the info.json file for that image in your GitHub repository: "hhttps://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/info.json".
+The info.json URI for your image will include the path to the info.json file for that image in your GitHub repository: “https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/info.json”. 
 
-The image API URI for your image will include the path to the folder with the full resolution tiles of your image in your GitHub repository: "hhttps://Y`OUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/full/full/default/0.`IMAGE FILE EXTENSION`".
+The image API URI for your image will include the path to the folder with the full resolution tiles of your image in your GitHub repository: “https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/`IMAGE FILE EXTENSION`”. 
 
 #### Use a manifest editor
 
-Manifest editors are an easy way to visually put a manifest together. This lesson uses the [Bodleian Manifest Editor](https://digital.bodleian.ox.ac.uk/manifest-editor/#/?_k=fsgx3h), but there are other manifest editors available.
-
-To add your image to a manifest, create a new project and add a canvas to your manifest. Select the canvas. Add an image to the canvas metadata using the `info.json` URI or image URI. The image should populate on the canvas.
+To add your image to a manifest, open a manifest editor and create a new project. Add a canvas to your manifest. Select the canvas. Add an image to the canvas metadata using the `info.json` URI or image URI. The image should populate on the canvas.
 
 Once you have added your image, it is best to add metadata to your canvas and manifest using the pre-populated fields. Metadata allows other viewers to understand what your image shows and what data it contains. When you are finished, save your manifest, give the file a unique title, and download it to your local computer. Note that it is easiest to name your manifest file the same thing as the corresponding image file, so that you know at a glance which image the manifest displays. 
 
@@ -328,7 +354,7 @@ Once you have added your image, it is best to add metadata to your canvas and ma
 
 Now that you have your manifests, you must also host them somewhere, just like your images. On GitHub, you can follow the same steps for hosting manifests as you did for uploading and hosting your images.
 
-Open the `manifests` folder in your GitHub repository and upload all of your downloaded manifests. Open each manifest file to correct the `@id` so that it reads: "hhttps://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/manifests/`YOUR MANIFEST NAME`/. 
+Open the `manifests` folder in your GitHub repository and upload all of your downloaded manifests. Open each manifest file to correct the `@id` in line 3 so that it reads: “https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/manifests/`YOUR MANIFEST NAME`.json”. 
 
 Make sure you commit your changes.
 
@@ -341,5 +367,52 @@ The manifest URI is the unique identifier for a manifest. You can find the manif
 Some options for IIIF viewers include: [Theseus](https://theseusviewer.org/), [Ramp](https://ramp.avalonmediasystem.org/), [Aviary](https://iiif.aviaryplatform.com/), and [Clover](https://samvera-labs.github.io/clover-iiif/). Simply paste the manifest URI into the viewer to test your manifest.
 
 ### Conclusion
+IIIF is a great framework for publishing, displaying, using, and sharing images with rich, deep zooming and high quality presentation. In this lesson, we learned how take a downloaded image file and turn it into a highly usable and reusable IIIF manifest, including:
+- What IIIF, IIIF manifests, and level-0 IIIF compliance are
+- How to choose a method for creating level-0 compliant IIIF images and manifests that aligns with your skills and priorities
+- How to process images downloaded on your computer into IIIF-compliant, web-hosted images using the IIIF Workbench tool
+- How to edit IIIF image files and manifest files using GitHub
+- How to process images downloaded on your computer into IIIF-compatible tiles using the `iiif-tiler` and `libvips` command line tools
+- How to locate, identify, access, and edit your image URIs and manifest URIs for your IIIF images and manifests
+- How to host and access IIIF images and manifests using GitHub Pages
+- How to use manifest editors and IIIF viewers to load, view, share, and zoom in on your IIIF images 
 
-The methods within this are just some of the easiest ways you can use various programs to create static tiles and Level-0 compliant images. Given the pervasiveness and usefulness of IIIF for serving and presenting images, there are plenty of Python, Ruby, and Javascript libraries and tools for generating tiles. For more tools, see the community-built [Awesome IIIF GitHub repository](https://github.com/IIIF/awesome-iiif?tab=readme-ov-file#image-servers).
+By the end of this lesson, you should have at least one IIIF image URI and one IIIF manifest URI that you can plug into different projects and viewers and share with others to present a high-quality, highly-zoomable version of your original downloaded image. Need inspiration for using your new manifest? Try creating an exhibit or digital narrative using [Exhibit.so](https://www.exhibit.so/) or [Storiiies](https://storiiies-editor.cogapp.com/).
+
+### References and Resources
+The methods within this lesson are just some of the easiest ways you can use various programs to create static tiles and Level-0 compliant images. Given the pervasiveness and usefulness of IIIF for serving and presenting images, there are plenty of Python, Ruby, and Javascript libraries and tools for generating tiles, as well as other guides and documentation. Here are some of the resources mentioned in this lesson:
+#### Resources for Finding Images
+- [Creative Commons Search Portal](https://search.creativecommons.org/)
+- [Google Images](https://images.google.com/)
+	- Make sure to use the license filter to ensure that you are selecting an image that is [usable under copyright law](https://support.google.com/websearch/answer/29508).
+#### IIIF Manifest Editors
+IIIF manifest editors are the easiest way to visually create and edit your IIIF manifests, no code needed. There are two main IIIF manifest editors:
+- [The Bodleian's Manifest Editor](https://digital.bodleian.ox.ac.uk/manifest-editor/)
+	- A simple manifest editor that allows for multiple images in one manifest and limited AV support.
+- [Digirati Manifest Editor](https://manifest-editor.digirati.services/?tab=examples)
+	- A more complex manifest editor that allows for advanced AV support and various media types.
+#### IIIF Viewers
+In order to look at your IIIF images, you will need a IIIF-compatible viewer. Though different IIIF viewers are compatible with different types of manifests, all viewers support the basic single-image manifests we created in this lesson. For more in-depth information about each viewer, see the [IIIF Viewer Matrix](https://iiif.io/api/cookbook/recipe/matrix/).
+- [Theseus](https://theseusviewer.org/)
+- [Ramp](https://ramp.avalonmediasystem.org/)
+- [Aviary](https://iiif.aviaryplatform.com/)
+- [Clover](https://samvera-labs.github.io/clover-iiif/)
+- [Universal Viewer](https://universalviewer.io/)
+- [Mirador](https://mirador-dev.netlify.app/__tests__/integration/mirador/)
+- [OpenSeadragon](https://openseadragon.github.io/)
+- [Tify](https://tify.rocks/)
+- [IIIF Curation Viewer](https://codh.rois.ac.jp/icp/index.html.en)
+- [List of viewers and descriptions from IIIF](https://iiif.io/get-started/iiif-viewers/)
+#### Tool Documentation
+- [IIIF Get Started guide](https://iiif.io/get-started/#end-users)
+	- This guide is essential for understanding how IIIF works, what the different APIs do, and how image and manifest URIs are structured.
+- [version 3.x documentation](https://iiif.io/api/image/3.0/)
+	- This documentation reviews the changes in the Image API from version 2.x, and is helpful for deciding which version you'd like to structure your images for.
+- [version 2.x documentation](https://iiif.io/api/image/2.0/)
+	- This documentation reviews the specifications for version 2.x of the Image API, and is helpful for deciding which version you'd like to structure your images for.
+- [libvips documentation](https://www.libvips.org/API/current/Making-image-pyramids.html)
+	- This documentation includes all of the possible arguments and specifications you can use with the CLI tool libvips, allowing you to manipulate the processing of your image tiles to meet specific parameters.
+
+ For more tools and resources, see the community-built [Awesome IIIF GitHub repository](https://github.com/IIIF/awesome-iiif?tab=readme-ov-file#image-servers).
+
+

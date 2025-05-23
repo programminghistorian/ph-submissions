@@ -210,7 +210,7 @@ Download your images to the `iiif-workshop` directory. As with Method 1, if you 
 
 As you're downloading your image files, **make sure your image filenames are distinct.** You cannot have files with the same exact name and file extension in the same directory, and the tiler will not be able to distinguish between files without distinct titles.
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-05.png" alt="A computer folder in Finder named "iiif-workshop" containing five cat photos and one jar file with a coffee cup icon labeled 'iiif-tiler.jar.'" caption="Figure 5. The file folder setup needed for using iiif-tiler." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-05.png" alt="A computer folder in Finder named 'iiif-workshop' containing five cat photos and one jar file with a coffee cup icon labeled 'iiif-tiler.jar.'" caption="Figure 5. The file folder setup needed for using iiif-tiler." %}
 
 ### Using IIIF Tiler
 

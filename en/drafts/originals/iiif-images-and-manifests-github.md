@@ -342,7 +342,7 @@ Because you are using your local computer, `libvips` will populate `info.json` f
 
 After all files have uploaded successfully to GitHub, open the `info.json` file for each image and update the `@id` field to: “https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/”.
 
-{% include figure.html filename=en-or-iiif-images-and-manifests-github-09.png" alt="Part of an info.json file for a IIIF image. Line 29 with '@id' is highlighted in green, pointing to the edited image URI." caption="Figure 9. The updated image URI in an info.json file for an uploaded IIIF image processed using libvips." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-09.png" alt="Part of an info.json file for a IIIF image. Line 29 with '@id' is highlighted in green, pointing to the edited image URI." caption="Figure 9. The updated image URI in an info.json file for an uploaded IIIF image processed using libvips." %}
 
 <div class="alert alert-warning">
  Make sure you hit the green "commit" button to save your changes as you go!

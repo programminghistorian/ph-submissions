@@ -41,7 +41,7 @@ There are no fees for processing and hosting through any of these methods and al
 - At least one image downloaded to your local computer, not copyrighted by someone else
 - A strong Internet connection
 
-Note that all screenshots in this lesson were taken on a MacBook, though these methods will work on any OS. Throughout this lesson, I will be using a downloaded photo of my cat as an example. If you're looking for an image for this lesson, you can use the [Creative Commons Search Portal](https://search.creativecommons.org/) to search for CC licensed images.
+Note that all screenshots in this lesson were taken on a MacBook, though these methods will work on any OS. Throughout this lesson, I will be using a downloaded photo of my cat as an example. If you are looking for an image for this lesson, you can use the [Creative Commons Search Portal](https://search.creativecommons.org/) to search for CC licensed images.
 
 All of these methods rely on tools and workflows created by IIIF Technical Coordinator [Glen Robson](https://github.com/glenrobson). Methods get progressively harder and more intensive as you go through this lesson.
 
@@ -106,13 +106,13 @@ IIIF Workbench is overall a great tool, that prioritizes ease of use and feature
 
 #### Download your image(s)
 
-The first step is to download your image to your local computer from any source. Often online repositories like Google Images won't offer you an option for what file format you want to download the image in, but some repositories, like online museum collections, will. If you have the option, download your image using the optimal file format available. For creating high-quality IIIF-compliant images, [Tagged Image File Format (TIFF)](https://en.wikipedia.org/wiki/JPEG) is best, [Joint Photographic Experts Group (JPEG)](https://en.wikipedia.org/wiki/JPEG) is second best, and [Portable Network Graphics (PNG)](https://en.wikipedia.org/wiki/PNG) are third best.  
+The first step is to download your image to your local computer from any source. Often online repositories like Google Images will not offer you an option for what file format you want to download the image in, but some repositories, like online museum collections, will. If you have the option, download your image using the optimal file format available. For creating high-quality IIIF-compliant images, [Tagged Image File Format (TIFF)](https://en.wikipedia.org/wiki/JPEG) is best, [Joint Photographic Experts Group (JPEG)](https://en.wikipedia.org/wiki/JPEG) is second best, and [Portable Network Graphics (PNG)](https://en.wikipedia.org/wiki/PNG) are third best.  
 
-If you have multiple images to download, it's best to place them all in the same folder on your computer so that you can easily keep track of which images you're working with.
+If you have multiple images to download, it is best to place them all in the same folder on your computer so that you can easily keep track of which images you are working with.
 
 #### Check your file sizes
 
-Either during the download process or after you have downloaded your image to your local computer, you'll want to check the size of the image file.
+Either during the download process or after you have downloaded your image to your local computer, you will want to check the size of the image file.
 
 **On Mac**
 In Finder, go to your image file. Right-click (mouse) or two-finger click (trackpad) on the image. Click Get Info to open an info popup. In the popup, you should see the file size in bytes and KB or MB under General > File Size.
@@ -144,9 +144,9 @@ In the command line, navigate to the directory your image is in. Use the [conver
 
 #### Start a IIIF Workbench project
 
-To access IIIF Workbench, login to your [GitHub](github.com) account in a web browser. You'll need to give the IIIF Workbench access to your account's public repositories in order to create a new repository with your processed image files.
+To access IIIF Workbench, login to your [GitHub](github.com) account in a web browser. You will need to give the IIIF Workbench access to your account's public repositories in order to create a new repository with your processed image files.
 
-Once you have logged in, you can access the [IIIF Workbench](https://workbench.gdmrdigital.com/login.xhtml) in a web browser at [https://workbench.gdmrdigital.com/](https://workbench.gdmrdigital.com/). You'll want to either select an existing project or create a new one. Each project is a separate repository in your GitHub account. The title you give a project in IIIF Workbench will be the title of that image file repository in your GitHub account.
+Once you have logged in, you can access the [IIIF Workbench](https://workbench.gdmrdigital.com/login.xhtml) in a web browser at [https://workbench.gdmrdigital.com/](https://workbench.gdmrdigital.com/). You will want to either select an existing project or create a new one. Each project is a separate repository in your GitHub account. The title you give a project in IIIF Workbench will be the title of that image file repository in your GitHub account.
 
 #### Upload your images
 
@@ -184,11 +184,11 @@ Once you have added your image, it is best to add metadata to your canvas and ma
 
 All manifests must be hosted somewhere on the web for the IIIF Presentation API to access their content. Luckily, IIIF Workbench automatically uses GitHub pages to serve your project to the web. Now that you have your manifests, you can use IIIF Workbench to continue to host, store, and access them. 
 
-In the top menu in IIIF Workbench, navigate to Manifests. Upload a manifest by selecting the manifest file from your local computer. The manifest will upload into your GitHub repository for the project. When completed, you'll see a list of your manifests in IIIF Workbench that can be edited, downloaded, deleted, or viewed in Mirador or Universal Viewer from the Workbench.
+In the top menu in IIIF Workbench, navigate to Manifests. Upload a manifest by selecting the manifest file from your local computer. The manifest will upload into your GitHub repository for the project. When completed, you will see a list of your manifests in IIIF Workbench that can be edited, downloaded, deleted, or viewed in Mirador or Universal Viewer from the Workbench.
 
 ### Using your manifests
 
-In order to make sure your manifests are displaying as expected, try testing them out in viewers outside of IIIF Workbench. To use your manifests, you'll need the manifest URI.
+In order to make sure your manifests are displaying as expected, try testing them out in viewers outside of IIIF Workbench. To use your manifests, you will need the manifest URI.
 
 The manifest URI is the unique identifier for a manifest. In IIIF Workbench, you can access manifest URI by clicking on the IIIF logo next to your manifest and copying the URI in the search bar. The manifest URI will always end in **.json.** You can also see and download your manifest files in the corresponding folder in your project GitHub repository. 
 
@@ -200,15 +200,15 @@ Some options for IIIF viewers include: [Theseus](https://theseusviewer.org/), [R
 
 Method 2 using IIIF Tiler is slightly more hands-on than Method 1 with IIIF Workbench, but cuts out IIIF Workbench as the middleman and thus lets the user take more ownership of their processing and metadata creation. This method uses a Java-run iiif-tiler on your local computer, run through command line prompts, to process the images into Level-0 compliant images. We will then use GitHub to host those images and present them using the IIIF Presentation API through GitHub Pages.
 
-The downside of this method is that there is no visual editor or public-facing GUI that can make uploading, organizing, and processing images easier. The upside of this method is that it allows for batch processing of Level-0 compliant images through the command line. Unlike IIIF Workbench, you can process as many images as you want at once, as long as they're all located in the same [directory](https://en.wikipedia.org/wiki/Directory_(computing)) on your local computer. You can also process larger files, though these may take longer.
+The downside of this method is that there is no visual editor or public-facing GUI that can make uploading, organizing, and processing images easier. The upside of this method is that it allows for batch processing of Level-0 compliant images through the command line. Unlike IIIF Workbench, you can process as many images as you want at once, as long as they are all located in the same [directory](https://en.wikipedia.org/wiki/Directory_(computing)) on your local computer. You can also process larger files, though these may take longer.
 
 ### Preparing your image directory and files
 
-Using the command line or your operating system's file management application (Finder, File Explorer, etc.), create a directory for your image files somewhere on your local computer. Since the tiler will operate within a specific directory, you need to be able to keep the tiler and all your desired images on a single, recognisable [file path](https://en.wikipedia.org/wiki/Path_(computing)). You can name your directory whatever you'd like, just make sure to edit the commands in succeeding steps of this lesson appropriately. This lesson will refer to the image file directory as `iiif-workshop`. 
+Using the command line or your operating system's file management application (Finder, File Explorer, etc.), create a directory for your image files somewhere on your local computer. Since the tiler will operate within a specific directory, you need to be able to keep the tiler and all your desired images on a single, recognisable [file path](https://en.wikipedia.org/wiki/Path_(computing)). You can name your directory whatever you would like, just make sure to edit the commands in succeeding steps of this lesson appropriately. This lesson will refer to the image file directory as `iiif-workshop`. 
 
 Download your images to the `iiif-workshop` directory. As with Method 1, if you have the option, download your image(s) using the optimal file format available. For creating high-quality IIIF-compliant images, TIFFs are best, JPGs/JPEGs are second best, and PNGs are third best.
 
-As you're downloading your image files, **make sure your image filenames are distinct.** You cannot have files with the same exact name and file extension in the same directory, and the tiler will not be able to distinguish between files without distinct titles.
+As you are downloading your image files, **make sure your image filenames are distinct.** You cannot have files with the same exact name and file extension in the same directory, and the tiler will not be able to distinguish between files without distinct titles.
 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-05.png" alt="A computer folder in Mac's Finder named 'iiif-workshop' containing five cat photos and one JAR file with a coffee cup icon labeled 'iiif-tiler.jar.'" caption="Figure 5. The file folder setup needed for using iiif-tiler." %}
 
@@ -305,7 +305,7 @@ libvips tiles images similarly to iiif-tiler, but gives you more control over th
 
 ### Preparing your image directory and files
 
-Using the command line or your operating system's file management application (Finder, File Explorer, etc.), create a directory for your image file somewhere on your local computer. You can name your directory whatever you'd like. This lesson will refer to the image file directory as `iiif-libvips. 
+Using the command line or your operating system's file management application (Finder, File Explorer, etc.), create a directory for your image file somewhere on your local computer. You can name your directory whatever you would like. This lesson will refer to the image file directory as `iiif-libvips. 
 
 Download your image to the `iiif-libvips` directory. As with the other methods, if you have the option, download your image using the optimal file format available. For creating high-quality IIIF-compliant images, TIFFs are best, JPGs/JPEGs are second best, and PNGs are third best.
 
@@ -319,7 +319,7 @@ For this lesson, we will be using the deep zoom command and saving the tiled fil
 
 Open the command line on your local computer and change directories to your iiif-libvips directory. Run the following command: `vips dzsave YOUR-IMAGE-NAME --layout iiif YOUR-PREFERRED-FILENAME.zip`. `vips` is the libvips command. The `dzsave` argument specifies the desired format for the image as a Deep Zoom file. The `--layout iiif` argument specifies the arrangement of the tile files in the folder that make up the composite image, which will be IIIF-compliant. The `zip` extension specifies that we want the files to all be packaged together into one neat, compressed file package for easy access.
 
-Wait for the [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) file to appear in the iiif-libvips directory. When you open the ZIP file, you'll find folders containing the the various tile files that make up the IIIF image and an `info.json` file for each image. Each of the individual image folders thus makes up a a Level-0 compliant IIIF image.
+Wait for the [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) file to appear in the iiif-libvips directory. When you open the ZIP file, you will find folders containing the the various tile files that make up the IIIF image and an `info.json` file for each image. Each of the individual image folders thus makes up a a Level-0 compliant IIIF image.
 
 Before continuing, be sure to open the ZIP file for each image so you can access the contents.
 
@@ -438,9 +438,9 @@ In order to look at your IIIF images, you will need a IIIF-compatible viewer. Th
 - [IIIF Get Started guide](https://iiif.io/get-started/#end-users)
 	- This guide is essential for understanding how IIIF works, what the different APIs do, and how image and manifest URIs are structured.
 - [version 3.x documentation](https://iiif.io/api/image/3.0/)
-	- This documentation reviews the changes in the Image API from version 2.x, and is helpful for deciding which version you'd like to structure your images for.
+	- This documentation reviews the changes in the Image API from version 2.x, and is helpful for deciding which version you would like to structure your images for.
 - [version 2.x documentation](https://iiif.io/api/image/2.0/)
-	- This documentation reviews the specifications for version 2.x of the Image API, and is helpful for deciding which version you'd like to structure your images for.
+	- This documentation reviews the specifications for version 2.x of the Image API, and is helpful for deciding which version you would like to structure your images for.
 - [libvips documentation](https://www.libvips.org/API/current/Making-image-pyramids.html)
 	- This documentation includes all of the possible arguments and specifications you can use with the CLI tool libvips, allowing you to manipulate the processing of your image tiles to meet specific parameters.
  - [Guide to Windows Batch Scripting](https://steve-jansen.github.io/guides/windows-batch-scripting/)

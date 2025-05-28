@@ -138,7 +138,7 @@ Open the image in Photos. Right-click the image and click Resize. Click the elli
 **On Linux**
 In the command line, navigate to the directory your image is in. Use the [convert](https://imagemagick.org/script/convert.php) command to convert or resize the image by quality or pixels.
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-02.png" alt="A dialog box with text file export options over a blurred photo of a cat resting on a blanket Export options include filename, tags, download location, file format, quality, and file size." caption="Figure 2. The editor for resizing images in MacOS Preview." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-02.png" alt="A dialog box with file export options over a blurred photo of a cat resting on a blanket. Export options include filename, tags, download location, file format, quality, and file size." caption="Figure 2. The editor for resizing images in MacOS Preview." %}
 
 ### Using IIIF Workbench
 
@@ -158,7 +158,7 @@ Your image may take a while to process. IIIF Workbench must process the image fi
 
 When your image is done processing, you should see a small version of it appear in a box in IIIF Workbench. The image name will be under the photo, along with a link to an `info.json`. For all IIIF images and manifests, the `info.json` is a [JavaScript Object Notation (JSON)](https://en.wikipedia.org/wiki/JSON) file that contains the information that allows the IIIF APIs to process and serve the IIIF image to the web. The box for each image in IIIF Workbench will also display a hyperlink to the hosted image in your GitHub repository for the project. You can view all of your downloaded image files in your GitHub repository for the project as well.
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-03.png" alt="The Images dashboard of the IIIF Workbench web interface. In a small box, processed image of a cat resting on a blanket, with the caption 'camilla,' and 'info.json' and 'Full image' links, below." caption="Figure 3. The resulting processed image in the IIIF Workbench. The info.json link is the info.json URI and the 'Full image' link is the image URI." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-03.png" alt="The Images dashboard of the IIIF Workbench web interface. In a small box, processed image of a cat resting on a blanket, with the caption 'camilla,' and links to 'info.json' and 'Full image' below." caption="Figure 3. The resulting processed image in the IIIF Workbench. The info.json link is the info.json URI and the 'Full image' link is the image URI." %}
 
 ### Creating manifests
 
@@ -178,7 +178,7 @@ To add your image to a manifest, open a manifest editor and create a new project
 
 Once you have added your image, it is best to add metadata to your canvas and manifest using the pre-populated fields. Metadata allows other viewers to understand what your image shows and what data it contains. When you are finished, save your manifest, give the file a unique title, and download it to your computer.
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-04.png" alt="A dialog box in the Bodleian's Manifest Editor with the title 'Create Image Annotation on Canvas: Empty canvas'. Options include IIIF image URI, info.json URI, and existing annotation URI. The info.json URI option is selected with an image URI entered." caption="Figure 4. The interface add an image with the image URI or info.json URI to a manifest in the Bodleian's Manifest Editor." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-04.png" alt="A dialog box in the Bodleian's Manifest Editor with the title 'Create Image Annotation on Canvas: Empty canvas'. Options include 'IIIF image URI', 'info.json URI', and 'using existing annotation URI'. The info.json URI option is selected with an image URI entered." caption="Figure 4. The interface add an image with the image URI or info.json URI to a manifest in the Bodleian's Manifest Editor." %}
 
 ### Storing and hosting manifests in IIIF Workbench
 
@@ -210,7 +210,7 @@ Download your images to the `iiif-workshop` directory. As with Method 1, if you 
 
 As you're downloading your image files, **make sure your image filenames are distinct.** You cannot have files with the same exact name and file extension in the same directory, and the tiler will not be able to distinguish between files without distinct titles.
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-05.png" alt="A computer folder in Finder named 'iiif-workshop' containing five cat photos and one jar file with a coffee cup icon labeled 'iiif-tiler.jar.'" caption="Figure 5. The file folder setup needed for using iiif-tiler." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-05.png" alt="A computer folder in Mac's Finder named 'iiif-workshop' containing five cat photos and one JAR file with a coffee cup icon labeled 'iiif-tiler.jar.'" caption="Figure 5. The file folder setup needed for using iiif-tiler." %}
 
 ### Using IIIF Tiler
 
@@ -237,7 +237,7 @@ Now that you have all of these image tiles, what do you do with them? To store, 
 
 Create a new repository on GitHub. Create an `images` folder. While in the `images` folder, upload all of the individual image folders (e.g image-1, image-2, etc.) in the `iiif` folder of the `iiif-workshop` directory on your computer. You may have to do this in batches due to GitHub's upload limits.
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-06.png" alt="A split-screen view of a GitHub repository showing the 'Drop to upload your files' area on the left, with file folders in Finder visible on the right. Five IIIF tile folders labeled camilla, mimi-1, mimi-2, alfie-1, and mimi-3 are being dragged into the 'Drop to upload your files' area." caption="Figure 6. Dragging image tile files from a local computer to upload to the images folder in a GitHub repository." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-06.png" alt="A split-screen view of a GitHub repository showing the 'Drop to upload your files' area on the left, and the computer's Finder visible on the right. Five IIIF tile folders are being dragged from the Finder into GitHub's 'Drop to upload your files' area." caption="Figure 6. Dragging image tile files from a local computer to upload to the images folder in a GitHub repository." %}
 
 Create a `manifests` folder in the same repository. We will use this folder later to store and host our manifests.
 
@@ -249,7 +249,7 @@ Because you are using your local computer, the IIIF Tiler will populate `info.js
 
 After all files have uploaded successfully to GitHub, open the `info.json` file for each image and update the `@id` field to: “https://`YOUR-GITHUB-USERNAME`.github.io/`YOUR-REPO-NAME`/images/`YOUR-IMAGE-NAME`”.
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-07.png" alt="Part of an info.json file for a IIIF image. Line 29 with '@id' is highlighted in green, pointing to the edited image URI." caption="Figure 7. The updated image URI in an info.json file for an uploaded IIIF image processed using iiif-tiler." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-07.png" alt="Part of an info.json file for a IIIF image. Line 29 starting with '@id' is highlighted to show the edited image URI." caption="Figure 7. The updated image URI in an info.json file for an uploaded IIIF image processed using iiif-tiler." %}
 
 <div class="alert alert-warning">
 Make sure you commit your changes as you go so that they save!
@@ -281,7 +281,7 @@ Now that you have your manifests, you must also host them somewhere, just like y
 
 Open the `manifests` folder in your GitHub repository and upload all of your downloaded manifests. Open each manifest file to correct the `@id` in line 3 so that it reads: “https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/manifests/`YOUR MANIFEST NAME`.json”.
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-08.png" alt="Part of an info.json file for a IIIF manifest. Line 3 with '@id' is highlighted in green, pointing to the edited manifest URI." caption="Figure 8. The updated manifest URI in an info.json file for an uploaded IIIF manifest processed using Bodleian's Manifest Editor." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-08.png" alt="Part of an info.json file for a IIIF manifest. Line 3 starting with '@id' is highlighted to show the edited manifest URI." caption="Figure 8. The updated manifest URI in an info.json file for an uploaded IIIF manifest processed using Bodleian's Manifest Editor." %}
 
 <div class="alert alert-warning">
 Make sure you commit your changes as you go so that they save!
@@ -342,7 +342,7 @@ Because you are using your local computer, `libvips` will populate `info.json` f
 
 After all files have uploaded successfully to GitHub, open the `info.json` file for each image and update the `@id` field to: “https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/”.
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-09.png" alt="Part of an info.json file for a IIIF image. Line 29 with '@id' is highlighted in green, pointing to the edited image URI." caption="Figure 9. The updated image URI in an info.json file for an uploaded IIIF image processed using libvips." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-09.png" alt="Part of an info.json file for a IIIF image. Line 29 starting with '@id' is highlighted to show the edited image URI." caption="Figure 9. The updated image URI in an info.json file for an uploaded IIIF image processed using libvips." %}
 
 <div class="alert alert-warning">
  Make sure you hit the green "commit" button to save your changes as you go!
@@ -374,7 +374,7 @@ Now that you have your manifests, you must also host them somewhere, just like y
 
 Open the `manifests` folder in your GitHub repository and upload all of your downloaded manifests. Open each manifest file to correct the `@id` in line 3 so that it reads: “https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/manifests/`YOUR MANIFEST NAME`.json”. 
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-10.png" alt="Part of an info.json file for a IIIF manifest. Line 3 with '@id' is highlighted in green, pointing to the edited manifest URI." caption="Figure 10. The updated manifest URI in an info.json file for an uploaded IIIF manifest processed using Bodleian's Manifest Editor." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-10.png" alt="Part of an info.json file for a IIIF manifest. Line 3 starting with '@id' is highlighted to show the edited manifest URI." caption="Figure 10. The updated manifest URI in an info.json file for an uploaded IIIF manifest processed using Bodleian's Manifest Editor." %}
 
 <div class="alert alert-warning">
  Make sure you hit the green "commit" button to save your changes as you go!
@@ -389,6 +389,7 @@ The manifest URI is the unique identifier for a manifest. You can find the manif
 Some options for IIIF viewers include: [Theseus](https://theseusviewer.org/), [Ramp](https://ramp.avalonmediasystem.org/), [Aviary](https://iiif.aviaryplatform.com/), and [Clover](https://samvera-labs.github.io/clover-iiif/). Simply paste the manifest URI into the viewer to test your manifest.
 
 ### Conclusion
+
 IIIF is a great framework for publishing, displaying, using, and sharing images with rich, deep zooming and high quality presentation. In this lesson, we learned how take a downloaded image file and turn it into a highly usable and reusable IIIF manifest, including:
 - What IIIF, IIIF manifests, and level-0 IIIF compliance are
 - How to choose a method for creating level-0 compliant IIIF images and manifests that aligns with your skills and priorities
@@ -402,18 +403,25 @@ IIIF is a great framework for publishing, displaying, using, and sharing images 
 By the end of this lesson, you should have at least one IIIF image URI and one IIIF manifest URI that you can plug into different projects and viewers and share with others to present a high-quality, highly-zoomable version of your original downloaded image. Need inspiration for using your new manifest? Try creating an exhibit or digital narrative using [Exhibit.so](https://www.exhibit.so/) or [Storiiies](https://storiiies-editor.cogapp.com/).
 
 ### References and Resources
+
 The methods within this lesson are just some of the easiest ways you can use various programs to create static tiles and Level-0 compliant images. Given the pervasiveness and usefulness of IIIF for serving and presenting images, there are plenty of Python, Ruby, and Javascript libraries and tools for generating tiles, as well as other guides and documentation. Here are some of the resources mentioned in this lesson:
-#### Resources for Finding Images
+
+**Resources for Finding Images**
+
 - [Creative Commons Search Portal](https://search.creativecommons.org/)
 - [Google Images](https://images.google.com/)
 	- Make sure to use the license filter to ensure that you are selecting an image that is [usable under copyright law](https://support.google.com/websearch/answer/29508).
-#### IIIF Manifest Editors
+
+**IIIF Manifest Editors**
+
 IIIF manifest editors are the easiest way to visually create and edit your IIIF manifests, no code needed. There are two main IIIF manifest editors:
 - [The Bodleian's Manifest Editor](https://digital.bodleian.ox.ac.uk/manifest-editor/)
 	- A simple manifest editor that allows for multiple images in one manifest and limited AV support.
 - [Digirati Manifest Editor](https://manifest-editor.digirati.services/?tab=examples)
 	- A more complex manifest editor that allows for advanced AV support and various media types.
-#### IIIF Viewers
+ 
+**IIIF Viewers**
+
 In order to look at your IIIF images, you will need a IIIF-compatible viewer. Though different IIIF viewers are compatible with different types of manifests, all viewers support the basic single-image manifests we created in this lesson. For more in-depth information about each viewer, see the [IIIF Viewer Matrix](https://iiif.io/api/cookbook/recipe/matrix/).
 - [Theseus](https://theseusviewer.org/)
 - [Ramp](https://ramp.avalonmediasystem.org/)
@@ -425,7 +433,8 @@ In order to look at your IIIF images, you will need a IIIF-compatible viewer. Th
 - [Tify](https://tify.rocks/)
 - [IIIF Curation Viewer](https://codh.rois.ac.jp/icp/index.html.en)
 - [List of viewers and descriptions from IIIF](https://iiif.io/get-started/iiif-viewers/)
-#### Tool Documentation
+
+**Tool Documentation**
 - [IIIF Get Started guide](https://iiif.io/get-started/#end-users)
 	- This guide is essential for understanding how IIIF works, what the different APIs do, and how image and manifest URIs are structured.
 - [version 3.x documentation](https://iiif.io/api/image/3.0/)

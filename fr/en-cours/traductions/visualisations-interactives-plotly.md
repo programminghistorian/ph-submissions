@@ -792,8 +792,8 @@ for discipline, df_discipline in proportion_d_articles_mentionnant_le_genre_par_
             name = discipline,
             mode = "markers+lines",
             hovertemplate = (f"<b>Discipline :</b> {discipline}"
-                             "<br><b>Année :</b> %{x}<br><b>Propotion des "
-                             "particles :</b> %{y}")  
+                             "<br><b>Année :</b> %{x}<br><b>Proportion des "
+                             "articles :</b> %{y}")  
 
         ),
         # Les paramètres row et col permettent de positionner la figure dans la bonne case

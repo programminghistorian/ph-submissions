@@ -406,13 +406,13 @@ By the end of this lesson, you should have at least one IIIF image URI and one I
 
 The methods within this lesson are just some of the easiest ways you can use various programs to create static tiles and Level-0 compliant images. Given the pervasiveness and usefulness of IIIF for serving and presenting images, there are plenty of Python, Ruby, and Javascript libraries and tools for generating tiles, as well as other guides and documentation. Here are some of the resources mentioned in this lesson:
 
-**Resources for Finding Images**
+#### Resources for Finding Images
 
 - [Creative Commons Search Portal](https://search.creativecommons.org/)
 - [Google Images](https://images.google.com/)
 	- Make sure to use the license filter to ensure that you are selecting an image that is [usable under copyright law](https://support.google.com/websearch/answer/29508).
 
-**IIIF Manifest Editors**
+#### IIF Manifest Editors
 
 IIIF manifest editors are the easiest way to visually create and edit your IIIF manifests, no code needed. There are two main IIIF manifest editors:
 - [The Bodleian's Manifest Editor](https://digital.bodleian.ox.ac.uk/manifest-editor/)
@@ -420,7 +420,7 @@ IIIF manifest editors are the easiest way to visually create and edit your IIIF 
 - [Digirati Manifest Editor](https://manifest-editor.digirati.services/?tab=examples)
 	- A more complex manifest editor that allows for advanced AV support and various media types.
  
-**IIIF Viewers**
+#### IIIF Viewers
 
 In order to look at your IIIF images, you will need a IIIF-compatible viewer. Though different IIIF viewers are compatible with different types of manifests, all viewers support the basic single-image manifests we created in this lesson. For more in-depth information about each viewer, see the [IIIF Viewer Matrix](https://iiif.io/api/cookbook/recipe/matrix/).
 - [Theseus](https://theseusviewer.org/)
@@ -434,7 +434,7 @@ In order to look at your IIIF images, you will need a IIIF-compatible viewer. Th
 - [IIIF Curation Viewer](https://codh.rois.ac.jp/icp/index.html.en)
 - [List of viewers and descriptions from IIIF](https://iiif.io/get-started/iiif-viewers/)
 
-**Tool Documentation**
+#### Tool Documentation
 - [IIIF Get Started guide](https://iiif.io/get-started/#end-users)
 	- This guide is essential for understanding how IIIF works, what the different APIs do, and how image and manifest URIs are structured.
 - [version 3.x documentation](https://iiif.io/api/image/3.0/)
@@ -443,6 +443,11 @@ In order to look at your IIIF images, you will need a IIIF-compatible viewer. Th
 	- This documentation reviews the specifications for version 2.x of the Image API, and is helpful for deciding which version you'd like to structure your images for.
 - [libvips documentation](https://www.libvips.org/API/current/Making-image-pyramids.html)
 	- This documentation includes all of the possible arguments and specifications you can use with the CLI tool libvips, allowing you to manipulate the processing of your image tiles to meet specific parameters.
+ - [Guide to Windows Batch Scripting](https://steve-jansen.github.io/guides/windows-batch-scripting/)
+	 - This guide shows you how to run scripts in batches on a Windows machine, to process many files at once using one command.	
+ - [Batch editing in libvips with bash](https://github.com/libvips/libvips/issues/1744)
+   	- This guide shows you how to run scripts in batches in the bash command line (Mac, Linux, or WLS on Windows), to process many files at once using one command.	
+
 
  For more tools and resources, see the community-built [Awesome IIIF GitHub repository](https://github.com/IIIF/awesome-iiif?tab=readme-ov-file#image-servers).
 

@@ -25,8 +25,8 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/608
 difficulty: 1
 activity: analyzing
 topics: [distant-reading]
-abstract: En este tutorial se aprenderá cómo organizar y analizar un conjunto de textos con Voyant-Tools.
-avatar_alt: Grafas con diferentes graduaciones de oftanmología
+abstract: In this tutorial, you will learn how to organise a set of texts into a corpus and perform some basic linguistic analysis on it using the Voyant-Tools platform.
+avatar_alt: Set of four ophthalmological glasses of varying shades.
 mathjax: true
 doi: XX.XXXXX/phen0000
 ---

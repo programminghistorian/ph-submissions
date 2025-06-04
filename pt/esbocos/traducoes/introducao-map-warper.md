@@ -210,7 +210,7 @@ Nota: Verá que há um valor de erro para cada ponto de controle. O Map Warper u
 
 Quando obtiver pontos suficientes e considerar que eles estão bem distribuídos em seu mapa antigo, clique em *Warp Image!* na parte inferior da página. 
 
-{% include figure.html filename="pt-tr-introducao-map-warper-04.png" alt="Realce do botão "Warp Image!" no Map Warper." caption="Figura 4. Clique em 'Warp Image!' para retificar o mapa." %}
+{% include figure.html filename="pt-tr-introducao-map-warper-04.png" alt="Realce do botão 'Warp Image!' no Map Warper." caption="Figura 4. Clique em 'Warp Image!' para retificar o mapa." %}
 
 As opções avançadas que permitem alterar o método de retificação e "resampling" (em português, Reamostragem) não devem ser alterados. O Map Warper apresenta problemas de estabilidade ao selecionar outros métodos. Alterar o método de retificação não gera, na maioria dos casos, um ganho qualitativo no mapa final. Em contrapartida alterar o *resampling* (em português, Reamostragem) para bilinear ou cúbico gera um raster com menos ruído, porém devido aos problemas de estabilidade causados pela demanda computacional, estes métodos alternativos não são aconselháveis.
 

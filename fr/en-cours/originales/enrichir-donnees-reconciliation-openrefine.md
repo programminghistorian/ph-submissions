@@ -240,7 +240,7 @@ Recommencez en ajoutant les propriétés suivantes :
 
 - *publication date* (date de publication, P577),
 
-- *publisher (*publié par, P123),
+- *publisher* (publié par, P123),
 
 - *place of publication* (lieu de publication, P291).
 

@@ -46,9 +46,9 @@ Cette leçon montre comment créer des visualisations de données interactives a
 
 Afin de pouvoir suivre la leçon, il est nécessaire d'avoir :
 
-- installé [Python 3](https://docs.python.org/3/) et le [gestionnaire de paquets (*package*) `pip`](https://pip.pypa.io/en/stable/index.html).
+- installé [Python 3 (version `3.12.9`)](https://docs.python.org/3/) et le [gestionnaire de paquets (*package*) `pip` (version `24.2`](https://pip.pypa.io/en/stable/index.html).
 - un niveau de compréhension intermédiaire du langage de programmation Python.
-- une connaissance générale des bibliothèques [Pandas](https://pandas.pydata.org/docs/) et [Numpy](https://numpy.org/doc/stable/) (ces deux bibliothèques doivent être installées).
+- une connaissance générale des bibliothèques [Pandas (version `2.2.3`)](https://pandas.pydata.org/docs/) et [Numpy (version `2.0.1`)](https://numpy.org/doc/stable/) (ces deux bibliothèques doivent être installées).
 - une connaissance de quelques techniques de base en visualisation de données (en particulier les histogrammes, les diagrammes en barres et les nuages de points).
 - Des notions de traitement des données (nous utiliserons Pandas).
 
@@ -89,9 +89,9 @@ Le jeu de données utilisé pour cette leçon est issu de l'article « La Part D
 ### Configurer Plotly Express
 
 1. Avant de commencer, vous aurez besoin d'installer 3 bibliothèques dans votre environnement.[^4]
-	- Plotly : dans votre terminal, entrez `pip install plotly`.
-	- Pandas : dans votre terminal entrez `pip install pandas`[^5].
-	- Kaleido : dans votre terminal entre `pip install kaleido`[^6].
+	- Plotly (version `6.0.1`): dans votre terminal, entrez `pip install plotly`.
+	- Pandas (version `2.2.3`): dans votre terminal entrez `pip install pandas`[^5].
+	- Kaleido (version `0.2.1`): dans votre terminal entre `pip install kaleido`[^6].
 2. Maintenant que ces bibliothèques sont installées, créez un nouveau Jupyter notebook (ou un nouveau fichier Python dans votre logiciel d'édition de code). Idéalement, placez votre jeu de données et votre fichier Python / notebook dans le même dossier.
 3. Importez les modules à l'aide de la commande `import` au début de votre fichier : 
 

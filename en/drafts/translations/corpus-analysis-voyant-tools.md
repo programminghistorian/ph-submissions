@@ -130,7 +130,7 @@ For this tutorial, we have named the files using the month, day, year, and order
 
 ## Uploading the Corpus
 
-On the Voyant Tools homepage, you will find four simple options for loading texts.[^1] The first two options are directly available using the text box. In this box, you can directly paste a text that you have copied from somewhere, or paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on **Open** and select one of the few corpora that Voyant has preloaded (the works of [Shakespeare](https://en.wikipedia.org/wiki/William_Shakespeare), the novels of [Austen](https://en.wikipedia.org/wiki/Jane_Austen) or the works of [Shelley](https://en.wikipedia.org/wiki/Mary_Shelley), all in English).
+On the [Voyant Tools homepage](https://voyant-tools.org/), you will find four simple options for loading texts.[^1] The first two options are directly available using the text box. In this box, you can directly paste a text that you have copied from somewhere, or paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on **Open** and select one of the few corpora that Voyant has preloaded (the works of [Shakespeare](https://en.wikipedia.org/wiki/William_Shakespeare), the novels of [Austen](https://en.wikipedia.org/wiki/Jane_Austen) or the works of [Shelley](https://en.wikipedia.org/wiki/Mary_Shelley), all in English).
 
 Finally, the option we will use in this tutorial is to directly upload the documents you have on your computer. In this case, you will upload the complete corpus of presidential speeches.
 

@@ -25,7 +25,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/608
 difficulty: 1
 activity: analyzing
 topics: [distant-reading]
-abstract: In this tutorial, you will learn how to organise a set of texts into a corpus and perform some basic linguistic analysis on it using the Voyant-Tools platform.
+abstract: In this lesson, you will learn how to organise a set of texts into a corpus and perform some basic linguistic analysis on it using the Voyant-Tools platform.
 avatar_alt: Set of four ophthalmological glasses of varying shades.
 mathjax: true
 doi: XX.XXXXX/phen0000
@@ -37,7 +37,7 @@ doi: XX.XXXXX/phen0000
 
 In this lesson, you will learn how to organize a set of texts for research; that is, you will learn the basic steps of creating a 'corpus'. You will also learn the main metrics of quantitative text analysis. For this purpose, you will use [Voyant Tools](http://voyant-tools.org/) (Sinclair and Rockwell, 2016), a web-based platform that does not require installation and works in any browser with an internet connection.
 
-This tutorial is designed as a beginner-friendly introduction to corpus analysis and is part of a growing ecosystem of tools and methods in digital humanities. For a more advanced tool, see the _Programming Historian_ [lesson on corpus analysis with AntConc](/en/lessons/corpus-analysis-with-antconc). You may also be interested in other *Programming Historian* lessons on [text mining](https://programminghistorian.org/en/topics/text-mining), [natural language processing](https://programminghistorian.org/en/lessons/introduction-to-nlp-with-python), and [topic modeling](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet).
+This lesson is designed as a beginner-friendly introduction to corpus analysis and is part of a growing ecosystem of tools and methods in digital humanities. For a more advanced tool, see the _Programming Historian_ [lesson on corpus analysis with AntConc](/en/lessons/corpus-analysis-with-antconc). You may also be interested in other *Programming Historian* lessons on [text mining](/en/topics/text-mining), [natural language processing](/en/lessons/introduction-to-nlp-with-python), and [topic modeling](/en/lessons/topic-modeling-and-mallet).
 
 ### Prerequisites and Further Reading
 
@@ -52,11 +52,11 @@ Corpus analysis is a type of [content analysis](https://vocabularyserver.com/tad
 
 Since the advent of computing, both computational linguists and [information retrieval](https://vocabularyserver.com/tadirah/en/index.php?tema=107&/information-retrieval-analysis-content-analysis) specialists have created and used software to notice patterns that are not evident to the naked eye, or to corroborate hypotheses they intuited when reading certain texts but required laborious, costly, and mechanical work. For example, to obtain patterns of increase and decline in usage of certain terms over a given period, it was necessary to hire people to manually review a text and note how many times the sought term appeared. Early on, observing the counting capabilities of computers, these specialists promptly wrote programs to facilitate the task of creating [frequency lists](https://en.wikipedia.org/wiki/Word_list) or [concordance tables](https://en.wikipedia.org/wiki/Concordance_(publishing)). The program you will learn to use in this lesson fits into this historical context.
 
-### What You Will Learn in This Tutorial
+### What You Will Learn in This Lesson
 
 Voyant Tools is a web-based tool that does not require the installation of any specialized software as it works on any computer with an internet connection.
 
-As stated in this other _Programming Historian_ [lesson](https://programminghistorian.org/en/lessons/corpus-analysis-with-antconc), this tool is a good entry point to more complex methods.
+As stated in [Corpus Analysis with Antconc](/en/lessons/corpus-analysis-with-antconc), this tool is a good entry point to more complex methods.
 
 By the end of this lesson, you will be able to:
 
@@ -65,14 +65,14 @@ By the end of this lesson, you will be able to:
 - understand and apply different corpus segmentation techniques
 - identify basic characteristics of your text set:
   - length of the uploaded documents
-  - lexical density (called vocabulary density on the platform)
+  - lexical density (called 'vocabulary density' on the platform)
   - average words per sentence
 - read and understand different statistics about words: absolute frequency, normalized frequency, statistical skewness, and distinctive words
 - search for keywords in context and export data and visualizations in different formats (CSV, PNG, HTML)
 
 ## Creating a Plain Text Corpus
 
-Although VoyantTools can work with many formats (HTML, XML, PDF, RTF, and MS Word), in this tutorial you will use plain text (TXT) files. Plain text has three fundamental advantages: it has no additional formatting, does not require a special program, and does not require extra knowledge of text analysis. The steps to create a plain text corpus are:
+Although Voyant Tools can work with many formats (HTML, XML, PDF, RTF, and MS Word), in this lesson you will use plain text (TXT) files. Plain text has three fundamental advantages: it has no additional formatting, does not require a special program, and does not require extra knowledge of text analysis.
 
 ### 1. Choose your Texts
 
@@ -83,7 +83,7 @@ The first thing you need to do is search for the information that interests you.
 
 ### 2. Copy to a Plain Text Editor
 
-Once you have located the information, the second step is to copy the text you are interested in – from the first word to the last – and save it in a plain text editor. For example:
+Once you have located the information, the second step is to copy the text you are interested in and save it in a plain text editor. For example:
 
 - In Windows, it could be saved in [Notepad](https://web.archive.org/web/20091013225307/http://windows.microsoft.com/en-us/windows-vista/Notepad-frequently-asked-questions)
 - In Mac, in [TextEdit](https://support.apple.com/guide/textedit/start-new-documents-txtee6663a0e/mac)
@@ -108,7 +108,7 @@ First, save your text in UTF-8, a standard [encoding format](https://en.wikipedi
 
 1. Open TextEdit.
 2. Paste the text you want to save.
-3. Convert to plain text in the **Format** menu.
+3. Convert it to plain text in the **Format** menu.
 4. When saving, select 'Unicode (UTF-8)'. (Creative Corner, 2016)
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-02.gif" alt="Screenshot of TextEdit on a Mac, illustrating how to save a file as plain text with UTF-8 encoding. The 'Convert to Plain Text' option is selected from the Format menu, and 'UTF-8' is chosen in the encoding settings." caption="Figure 2. Save in UTF-8 on Mac." %}
@@ -126,13 +126,13 @@ For similar reasons to the previous point, a file named `Ébano.txt` will not al
 
 The third is to integrate context metadata (such as date, genre, author, or origin) into the file name, as this helps you to divide your corpus according to different criteria and also read the results better.
 
-For this tutorial, we have named the files using the month, day, year, and order in which President George Washington delivered the Annual Message to Congress. `january_8_1790_first.txt`, for example, is the first speech he delivered on January 8th of the year 1790. 
+For this lesson, we have named the files using the month, day, year, and order in which President George Washington delivered the Annual Message to Congress. `january_8_1790_first.txt`, for example, is the first speech he delivered on January 8th of the year 1790. 
 
 ## Uploading the Corpus
 
-On the [Voyant Tools homepage](https://voyant-tools.org/), you will find four simple options for loading texts.[^1] The first two options are directly available using the text box. In this box, you can directly paste a text that you have copied from somewhere, or paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on **Open** and select one of the few corpora that Voyant has preloaded (the works of [Shakespeare](https://en.wikipedia.org/wiki/William_Shakespeare), the novels of [Austen](https://en.wikipedia.org/wiki/Jane_Austen) or the works of [Shelley](https://en.wikipedia.org/wiki/Mary_Shelley), all in English).
+On the [Voyant Tools homepage](https://voyant-tools.org/), you will find four simple options for loading texts.[^1] The first two options are directly available using the text box. In this box, you can directly paste a text that you have copied from somewhere, or paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on **Open** and select one of the few corpora that Voyant has preloaded (the works of [Shakespeare](https://en.wikipedia.org/wiki/William_Shakespeare), the novels of [Austen](https://en.wikipedia.org/wiki/Jane_Austen) or [Shelley](https://en.wikipedia.org/wiki/Mary_Shelley)'s _Frankenstein_, all in English).
 
-Finally, the option we will use in this tutorial is to directly upload the documents you have on your computer. In this case, you will upload the complete corpus of presidential speeches.
+The fourth option, which we will use in this lesson, is to directly upload the documents you have on your computer. In this case, you will upload the complete corpus of presidential speeches.
 
 To upload the materials, click on the **Upload** icon, open your file explorer and select all the files you want to analyze.
 
@@ -140,31 +140,31 @@ To upload the materials, click on the **Upload** icon, open your file explorer a
 
 ## Exploring the Corpus
 
-Once all the files are uploaded, you will reach the interface that has five default tools. Here is a brief explanation of each of these tools:
+Once all the files are uploaded, you will reach the main interface with its five default tools. Here is a brief explanation of each of these tools:
 
-- Cirrus: word cloud showing the most frequent terms
+- **Cirrus** is a word cloud showing the most frequent terms:
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-05.png" alt="Word cloud generated by Voyant Tools, displaying the most frequent terms in a corpus. The most prominent words are shown in larger fonts, indicating higher frequency." caption="Figure 5. Cirrus." %}
 
-- Reader: space for reviewing and reading the complete texts with a bar graph indicating the amount of text each document has
+- **Reader** is a space for reviewing and reading the complete texts, with a bar graph indicating the amount of text each document has:
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-06.png" alt="Voyant Tools interface showing the 'Reader' window, where the full text of documents is displayed. A bar graph on the side indicates the length of each document in the corpus." caption="Figure 6. Reader" %}
 
-- Trends: graph showing the distribution of terms throughout the corpus (or within a document when only one is uploaded)
+- **Trends** is a graph showing the distribution of terms throughout the corpus (or within a document when only one is uploaded):
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-07.png" alt="Graph in Voyant Tools showing the distribution of specific terms across a corpus over time. The graph visualizes how the frequency of terms varies throughout the documents." caption="Figure 7. Trends." %}
 
-- Summary: an overview of certain textual statistics of the current corpus
+- **Summary** is an overview of certain textual statistics of the current corpus:
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-08.png" alt="Summary window in Voyant Tools providing an overview of key statistics for the current corpus, including the number of documents, total words, unique words, and other textual metrics." caption="Figure 8. Summary." %}
 
-- Contexts: concordance showing each occurrence of a keyword with a bit of surrounding context
+- **Contexts** is a concordance showing each occurrence of a keyword with a bit of surrounding context:
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-09.png" alt="Concordance window in Voyant Tools displaying each occurrence of a keyword within its surrounding context. The window shows the keyword centered with left and right contextual words." caption="Figure 9. Contexts." %}
 
 ## Document Summary: Basic Characteristics of Your Set of Texts
 
-One of the most informative windows in Voyant is the summary. Here you can get an overview of some statistics about your corpus, so it serves as a good starting point. In the following sections, you will get an explanation of the different measures that appear in this window.
+One of the most informative windows in Voyant is the **Summary**. Here you can get an overview of some statistics about your corpus, so it serves as a good starting point. In the following sections, you will get an explanation of the different measures that appear in this window.
 
 You will also find nine activities that can be resolved in groups or individually. Five of them have answers at the end of the text to serve as a guide. The remaining four activities are designed to encourage reflection and discussion among participants who engage with them.
 
@@ -180,13 +180,13 @@ From the start, with this information, you know exactly how many distinct docume
 
 If your corpus consisted of two documents, one that said: _I'm hungry_ and another that said: _I'm sleepy_, what information would appear in the first line of the summary? Complete:
 
-*Hint: Count total documents, all words, and how many of those are unique (repeated words like _I’m_ only count once).*
-
 > This corpus has __ documents with a total of __ words and __ unique words.
+
+*Hint: Count total documents, all words, and how many of those are unique (repeated words like _I’m_ only count once).*
 
 ### Document Length
 
-The second thing you'll see is the **Document length** section. Here is what it shows:
+The second thing you'll see is the **Document Length** section. Here is what it shows:
 
 - **Longest**: `november_19_1794_sixth (2926); december_7_1796_eighth (2864); november_6_1792_fourth (2345); october_25_1791_third (2267); december_8_1795_seventh (1977)`  
 - **Shortest**: `january_8_1790_first (848); december_8_1790_second (1400); april_30_1789_first_Inaug… (1433); december_3_1793_fifth (1833); december_8_1795_seventh (1977)`
@@ -229,7 +229,7 @@ Vocabulary density is measured by dividing the number of unique words by the tot
 
 ### Words per Sentence
 
-The way Voyant calculates sentence length should be considered a rough estimate, especially because it is complicated to distinguish between the end of an abbreviation and that of a sentence or other uses of punctuation (for example, in some cases a semicolon marks the boundary between sentences). The sentence analysis is performed by a template with instructions, a 'class' of the Java programming language called [BreakIterator](https://docs.oracle.com/javase/tutorial/i18n/text/about.html).
+The way Voyant Tools calculates sentence length should be considered a rough estimate, especially because it is complicated to distinguish between the end of an abbreviation and that of a sentence or other uses of punctuation (for example, in some cases a semicolon marks the boundary between sentences). The sentence analysis is performed by a template with instructions, a 'class' of the Java programming language called [BreakIterator](https://docs.oracle.com/javase/tutorial/i18n/text/about.html).
 
 **Activity 4:**
 
@@ -244,7 +244,7 @@ Since you have an idea of some global characteristics of your documents, it's ti
 
 ### Unfiltered Frequencies
 
-The first aspect you will work on is gross frequency, and for this, you will use the Cirrus window.
+The first aspect you will work on is gross frequency, and for this, you will use the **Cirrus** window.
 
 **Activity 5:**
 
@@ -266,15 +266,15 @@ Importance is not an intrinsic value and will always depend on your interests. F
 
 Voyant already has a stop word list loaded for English, which you can edit as follows:
 
-1\. Place your cursor at the top right of the Cirrus window and click on the icon that looks like a switch:
+1\. Place your cursor at the top right of the **Cirrus** window and click on the icon that looks like a switch:
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-10.png" alt="Voyant Tools interface highlighting the gear icon in the Cirrus word cloud, which opens a settings menu. This menu allows users to modify the appearance and filtering options of the word cloud." caption="Figure 10. Open Cirrus options." %}
 
-2\. A window with different options will appear; select the first one **Edit List**:
+2\. A window with different options will appear; select the first one called **Edit List**:
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-11.png" alt="Settings window in Voyant Tools showing how to edit the stop word list for the Cirrus word cloud. Users can add or remove words from the list to refine the analysis." caption="Figure 11. Edit list." %}
 
-3\. Add the stop words, always separated by a new line (_Enter_ key):
+3\. Add the stop words, each separated by a new line (using the _Enter_ key):
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-12.png" alt="Screenshot of the process in Voyant Tools for removing stop words from the word cloud. The edited stop word list is being saved to apply the changes across the corpus analysis." caption="Figure 12. Remove stopwords." %}
 
@@ -317,16 +317,16 @@ What is the advantage of this? If you had a corpus in which the word _heart_ had
 
 Let’s see how this works in Voyant Tools:
 
-1. In the Cirrus section (the word cloud), click on **Terms**. This will open a table that by default has three columns:  
+1. In the **Cirrus** section (the word cloud), click on **Terms**. This will open a table that by default has three columns:  
    - **Terms**: list of words in the documents (excluding the filtered ones)  
    - **Count**: gross or net frequency of each term  
    - **Trend**: graph of the distribution of a word considering its relative frequency
 
-2. To get information about the relative frequency of a term, in the column names bar on the far right, click on the triangle that offers more options, then select the **Relative** option in **Columns*** as shown in the image below:
+2. To get information about the relative frequency of a term, in the column names bar on the far right, click on the triangle that offers more options, then select the **Relative** option in **Columns** as shown in the image below:
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-13.png" alt="Voyant Tools interface showing the 'Terms' section with an additional column for relative frequency. This column provides normalized word frequency data, offering a more balanced view of term usage across the corpus." caption="Figure 13. Relative frequency." %}
 
-3. If you sort the columns in descending order as you would in a spreadsheet program, you will see that the order of gross frequency (Count) and relative frequency (Relative) is the same.  
+3. If you sort the columns in descending order as you would in a spreadsheet program, you will see that the order of gross frequency (**Count**) and relative frequency (**Relative**) is the same.  
 
 > **Note**: This measure is more useful for comparing different corpora. A corpus is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If you wanted each speech to be a different corpus, you would have to save your text in a table (HTML or XML), where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).[^2]
 
@@ -393,11 +393,11 @@ The **Position** column can also be added to indicate where the queried term is 
 > - `*th`: terms that end with the suffix “th” (health, truth, month)
 > - `peace, war`: you can search for more than one term by separating them with commas
 > - `“love for my Country”`: search for the exact phrase
-> - `“country precarious”~ 5`: search for the terms within the quotes – the order does not matter, and there can be up to 5 words in between _country_ and _precarious_.
+> - `“country precarious”~ 5`: search for the terms within the quotes – the order does not matter, and there can be up to 5 words in between 'country' and 'precarious'.
 
 **Activity 9:**
 
-Search for the use of a term that seems interesting to you, using some of the advanced query strategies. Sort the rows using the different columns (Document, Left, Right, and Position): what conclusions can you derive about your terms using the information from these columns?
+Search for the use of a term that seems interesting to you, using some of the advanced query strategies. Sort the rows using the different columns (**Document**, **Left**, **Right**, and **Position**): what conclusions can you derive about your terms using the information from these columns?
 
 *Hint: Use the position and context to see how the term is used. Does it appear mostly at the beginning or end of the speech? Is the tone consistent?*
 
@@ -409,7 +409,7 @@ This opens a page where the fields are separated by a tab.
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-16.png" alt="Voyant Tools interface demonstrating how to export concordance data. The export options are shown, with 'Export all available data as tab-separated values (text)' selected for comprehensive data output." caption="Figure 16. Export contexts." %}
 
-Select all data and copy-and-paste it into a spreadsheet. If this does not work, save the data as a TXT file in a simple text editor (don’t forget the UTF-8 encoding!) and then import the data into your spreadsheet. In Excel, this is done from the **Data** tab, then the **From Text** button.
+Select all the data and copy-and-paste it into a spreadsheet. If this does not work, save the data as a TXT file in a simple text editor (don’t forget the UTF-8 encoding!) and then import the data into your spreadsheet. In Excel, this is done from the **Data** tab, then the **From Text** button.
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-17.png" alt="Excel interface showing the steps to import data from a text file. The 'Data' tab is selected, with the 'From Text File' option highlighted to begin the import process." caption="Figure 17. Import data from a text file in Excel." %}
 
@@ -418,7 +418,7 @@ Select all data and copy-and-paste it into a spreadsheet. If this does not work,
 
 **Activity 1:**
 
-This corpus has 2 documents with a total of 4 words and 3 unique words (I'm, hungry, sleepy).
+This corpus has 2 documents with a total of 4 words and 3 unique words (_I'm_, _hungry_, _sleepy_).
 
 **Activity 2:**
 

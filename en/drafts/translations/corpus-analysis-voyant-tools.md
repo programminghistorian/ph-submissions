@@ -130,7 +130,7 @@ For this tutorial, we have named the files using the month, day, year, and order
 
 ## Uploading the Corpus
 
-On the Voyant Tools homepage, you will find four simple options for loading texts. The first two options are directly available using the text box. In this box, you can directly paste a text that you have copied from somewhere, or paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on **Open** and select one of the few corpora that Voyant has preloaded (the works of [Shakespeare](https://en.wikipedia.org/wiki/William_Shakespeare), the novels of [Austen](https://en.wikipedia.org/wiki/Jane_Austen) or the works of [Shelley](https://en.wikipedia.org/wiki/Mary_Shelley), all in English).
+On the Voyant Tools homepage, you will find four simple options for loading texts.[^1] The first two options are directly available using the text box. In this box, you can directly paste a text that you have copied from somewhere, or paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on **Open** and select one of the few corpora that Voyant has preloaded (the works of [Shakespeare](https://en.wikipedia.org/wiki/William_Shakespeare), the novels of [Austen](https://en.wikipedia.org/wiki/Jane_Austen) or the works of [Shelley](https://en.wikipedia.org/wiki/Mary_Shelley), all in English).
 
 Finally, the option we will use in this tutorial is to directly upload the documents you have on your computer. In this case, you will upload the complete corpus of presidential speeches.
 
@@ -328,7 +328,7 @@ Let’s see how this works in Voyant Tools:
 
 3. If you sort the columns in descending order as you would in a spreadsheet program, you will see that the order of gross frequency (Count) and relative frequency (Relative) is the same.  
 
-> **Note**: This measure is more useful for comparing different corpora. A corpus is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If you wanted each speech to be a different corpus, you would have to save your text in a table (HTML or XML), where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).
+> **Note**: This measure is more useful for comparing different corpora. A corpus is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If you wanted each speech to be a different corpus, you would have to save your text in a table (HTML or XML), where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).[^2]
 
 ### Statistical Skewness
 
@@ -455,5 +455,5 @@ These results seem to indicate that President Kirchner, in addition to having th
 
 ## Footnotes
 
-[^2]: There are more complex ways to load the corpus that you can consult in the English documentation.  
-[^3]: For more information, consult the English documentation.
+[^1]: There are more complex ways to load the corpus, which you can consult in the Voyant Tools [documentation](https://voyant-tools.org/docs/tutorial-corpuscreator.html).  
+[^2]: For more information, consult the [documentation](https://voyant-tools.org/docs/tutorial-corpuscreator.html).

@@ -46,9 +46,9 @@ Cette leçon montre comment créer des visualisations de données interactives a
 
 Afin de pouvoir suivre la leçon, il est nécessaire d'avoir :
 
-- installé Python 3 et le gestionnaire de paquets (*package*) `pip`.
+- installé [Python 3](https://docs.python.org/3/) et le [gestionnaire de paquets (*package*) `pip`](https://pip.pypa.io/en/stable/index.html).
 - un niveau de compréhension intermédiaire du langage de programmation Python.
-- une connaissance générale des bibliothèques Pandas et Numpy (ces deux bibliothèques doivent être installées).
+- une connaissance générale des bibliothèques [Pandas](https://pandas.pydata.org/docs/) et [Numpy](https://numpy.org/doc/stable/) (ces deux bibliothèques doivent être installées).
 - une connaissance de quelques techniques de base en visualisation de données (en particulier les histogrammes, les diagrammes en barres et les nuages de points).
 - Des notions de traitement des données (nous utiliserons Pandas).
 

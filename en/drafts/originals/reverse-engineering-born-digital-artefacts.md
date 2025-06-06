@@ -24,19 +24,19 @@ doi: XX.XXXXX/phen0000
 {% include toc.html %}
 
 
-## 1. Introduction
+## Introduction
 
 Our proposal enhances existing lessons by equipping historians with essential technical skills to analyse digital artifacts. These artifacts are more than their visible content, existing within interwoven layers that shape their function and meaning. Technically, they are embedded in systems of file formats, applications, operating systems, and hardware, but they are also influenced by environmental factors like infrastructure, data centres, and socio-economic conditions.
 
 In this lesson, readers would be given a thorough overview of reverse engineering and software archaeology. Next to getting a more profound understanding of this vast field, we present some foundational techniques and tools. These can be applied for accessing, interpreting, and critically analysing previously opaque digital materials—such as old databases, early video games, or proprietary file formats. This skill set would ultimately empower them to engage more confidently with the digital sources shaping insightful historical research today.
 
-## 2. Technical Requirements
+## Technical Requirements
 
 There are two fundamental technical requirements for this lesson that form the foundation of our digital archaeology approach. The first requirement centres on having appropriate tools to transform digital artifacts into a more accessible and analysable state. While numerous tools and methodologies exist for this purpose, we begin with a straightforward yet powerful hex viewer, which allows us to examine the raw binary data of digital files. A hex viewer displays the hexadecimal representation of binary data, making it possible to see patterns, headers, and structures that are otherwise hidden from conventional file viewers. We recommend using the command line tool `hexyl` or the browser-based [HexEd.it](https://hexed.it/) for reliable options that provide the necessary functionality for beginners while maintaining the depth required for more advanced analysis.
 
 The second essential requirement involves acquiring suitable born-digital objects for analysis, which varies significantly depending on your specific research question and can encompass digital images, databases, software applications, and various other digital artifacts. While we provide curated digital artifacts for the two case studies presented in this lesson, the broader challenge lies in identifying and accessing appropriate materials for independent research, which we can't cover in this lesson. 
 
-## 3. Reverse Engineering born-digital Media artifacts
+## Reverse Engineering born-digital Media artifacts
 
 In the study of born-digital artifacts, historians are increasingly confronted with the limitations of interpreting digital materials solely through their visual appearance. This issue, often described as *screen essentialism*[^1], refers to the tendency to understand digital objects only as they appear on screens rather than as complex, encoded structures with multiple layers of meaning. For the historian working with digital sources, this presents a significant methodological challenge: how can we analyse digital artifacts not just as static images or text, but as dynamic objects shaped by code, metadata, file formats, and usage contexts?
 
@@ -48,7 +48,7 @@ While preservation remains an important backdrop to this work, particularly in c
 
 This lesson argues that reverse engineering offers historians a critical methodological approach that counters screen-essentialism, enabling more profound insights into the sociocultural and technological contexts of digital artifacts.
 
-### 3.1 Closed-Source Digital Systems acting as Barriers to Historical Analysis
+### Closed-Source Digital Systems acting as Barriers to Historical Analysis
 
 Most contemporary digital technologies are effectively closed-source, meaning their inner workings are not publicly accessible. Consumer hardware relies on proprietary chips and firmware with hidden schematics and microcode. Operating systems like Windows and macOS are distributed only in compiled form, keeping source code hidden, unlike open-source exceptions such as Linux. Most software applications are closed-source, provided as opaque binaries rather than human-readable code. Even file formats are frequently proprietary with unpublished specifications, tying data to original software. These technologies function as sealed **"black boxes"** whose internal logic cannot be directly examined.[^3]
 
@@ -58,7 +58,7 @@ This pervasive opaqueness creates significant barriers for historians and archiv
 
 Even when digital artifacts are successfully preserved, researchers often lack access to original environments or software that generated them. Archives may hold the *bits* of decades-old documents or games, but without the closed software or hardware platform that originally interpreted those bits, their meaning remains elusive. Data can be kept *"perfectly secure and complete, but still be unreadable by machines and programs in the future"* if the requisite system is unavailable.[^10] Historians frequently confront "orphans": digital files estranged from proprietary applications that give them life. This underscores the core issue: preserving born-digital artifacts requires not just saving raw data, but preserving or rediscovering knowledge of how that data was produced and rendered. Without access to original closed-source systems, scholars must rely on painstaking reconstruction, emulation, and reverse engineering to reanimate and understand digital artifacts of our cultural heritage.
 
-### 3.2 Why use reverse engineering?
+### Why use reverse engineering?
 
 Reverse engineering is crucial for understanding digital sources beyond their surface-level content. It allows historians to recover lost or undocumented data, analyse software behaviours, and critically assess how digital artifacts were constructed within their historical and technological contexts. This approach aligns with the multi-layered perspective of digital source criticism, emphasizing that digital objects are not isolated but embedded in broader technological and socio-economic systems.
 
@@ -76,7 +76,7 @@ A computer operates through a layered architecture, where hardware and software 
 
 Understanding this architecture is crucial for reverse engineering because it allows engineers to trace how high-level software instructions translate into low-level machine code and hardware operations. This knowledge helps in uncovering hidden functionalities, debugging errors, analysing malware behaviour, and modifying or improving existing software. Reverse engineering often involves working at the boundary between software and hardware, requiring an in-depth understanding of how compilers, assemblers, and the instruction set architecture interact to produce executable code.
 
-### 3.3 Historical Context of Reverse Engineering
+### Historical Context of Reverse Engineering
 
 Reverse engineering has played a crucial role in the history of software development, tracing its roots to both the early days of computing and the hacking subcultures that emerged alongside it. The concept was first formalized in 1985 by M.G. Rekoff in the context of cloning hardware systems, but it quickly expanded to encompass software systems as well​.[^11] At its core, reverse engineering refers to the process of analysing a system—whether hardware or software—to identify its components and their relationships, often to recreate, modify, or extend its functionality.
 
@@ -90,11 +90,11 @@ The importance of reverse engineering in malware analysis reflects its broader h
 
 Thus, reverse engineering sits at the intersection of technical skill, critical analysis, and historical investigation. It allows developers to adapt existing systems for new contexts, hackers to modify and explore software, and historians to investigate the often-hidden dimensions of digital artifacts.
 
-## 4. The inner life of born-digital Media artifacts 
+## The inner life of born-digital Media artifacts 
 
 The goal of this lesson is to introduce the use of hex editors as a tool for reverse engineering and digital archaeology. By analysing raw hexadecimal data, historians and researchers can uncover hidden structures, embedded messages, and unexpected functionalities within digital files. Through practical examples, including a JPEG image of a cat that also functions as a ZIP archive, we aim to demonstrate how hex editing can reveal a file's true behaviour beyond its surface-level format. This lesson will equip you with the skills to identify file signatures, parse metadata, and recognize structural anomalies, fostering an understanding of how digital artifacts are constructed and how they may conceal multiple layers of information. By the end of this chapter, you will have the foundational knowledge needed to use hex editors for investigating and interpreting complex digital objects.
 
-### 4.1 Preparation
+### Preparation
 
 Before beginning this hands-on analysis, you'll need to gather the necessary materials and tools to effectively examine digital image formats. First, select a JPEG file with either a .jpg or .jpeg file extension that you'd like to analyse—this can be any digital photograph or image from your personal collection, or alternatively, you can work with the sample files we provide for this exercise. The choice of image isn't critical for learning the fundamental concepts, though selecting something familiar to you may make the analysis more engaging and meaningful. Next, you'll need to install a hex editor that will serve as your primary tool for examining the binary structure of the JPEG file. While numerous options exist, including both desktop applications and browser-based alternatives, we recommend using `hexyl`.
 
@@ -108,7 +108,7 @@ A hex dump is a textual representation of computer data in hexadecimal format, a
 
 For the following example, we will use hexyl. We chose it primarily because we appreciate its aesthetic, but you can use any hex viewer you want.
 
-### 4.2 The bit code of an image
+### The bit code of an image
 
 To illustrate this, we begin with the basic structure of a JPEG file, as shown in the diagram below. The JPEG format follows a clearly defined structure, starting with a file signature or “magic number” that identifies it as a JPEG, followed by metadata, image data, and an end-of-file marker. This predictable format allows hex editors to recognize and parse the file correctly.
 
@@ -148,7 +148,7 @@ The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG fil
 
 Similarly, ZIP files have their own distinct file signature `50 4B 03 04` that identifies them as compressed archives. While these file types are typically seen as distinct, their binary structures can be combined in creative ways, exploiting differences in how file parsers read them. JPEG files are read from the beginning of the file, while ZIP files are parsed from the end—creating an opportunity to embed a ZIP archive inside a JPEG without breaking the integrity of either format.
 
-### 4.3 Creating the Image Zip File
+### Creating the Image Zip File
 
 To demonstrate this, we can create a file that functions as both a valid JPEG and a ZIP archive. The process involves first creating a standard JPEG image file and then appending a ZIP archive to the end of the file. Since JPEG parsers will stop reading once they reach the end-of-file marker for the image, the additional ZIP data will remain hidden from the image viewer. However, a ZIP parser will read the file from the end and identify the ZIP header, enabling the file to function as a valid archive. This dual-format trick exploits the differences in how file types are interpreted by different software, effectively creating a file with two identities.
 
@@ -259,7 +259,7 @@ $ hexyl cat.jpeg | tail -n 16; hexyl cat-with-hidden-content.jpg | tail -n 16
 
 ```
 
-### 4.4 Analysing the Image Zip File
+### Analysing the Image Zip File
 
 When we open this hybrid file in a hex editor, the dual nature of the file becomes evident. The hex editor will display the initial JPEG file signature (`FF D8 FF E0`) at the beginning of the file, confirming its validity as an image. Scanning through the hex code, we can observe the image metadata and the compressed image data. However, at the end of the file, the ZIP file signature (`50 4B 03 04`) appears, indicating the presence of a valid ZIP archive. A hex editor allows us to parse the file structure manually, identifying the point where the image data ends and the ZIP archive begins. This example illustrates how hex editing can reveal hidden structures and dual functionalities within a single file, underscoring the value of reverse engineering in uncovering the hidden dimensions of digital artifacts.
 
@@ -293,17 +293,17 @@ $ hexyl --color never cat-with-hidden-content.jpg | grep '50 4b 03 04'
 
 This example illustrates how reverse engineering through hex analysis can uncover the layered nature of digital artifacts. What appears to be a simple image file may, in fact, be a container for additional data or hidden functionality. The ability to uncover and interpret these hidden structures is essential for understanding how digital objects are constructed and how their functionality can be manipulated or repurposed.
 
-### 4.5 More fun with files
+### More fun with files
 
 File structures and formats are especially interesting from a historical malware research perspective. One of the first computer viruses discovered in the wild, the Elk Cloner virus spread by attaching itself to a disk’s boot sector and activated whenever the infected disk was inserted into an Apple II computer.[^13] Around the same time, in early hacking culture, steganography — the art of hiding code or messages in images — also became a popular topic on message boards.[^14] If you want to dive deeper into file structures and formats, check out the work of Ange Albertini, a well-known reverse engineer who explores unusual file formats. His presentation, "Funky File Formats," at the chaos communication congress explores the concept of polyglot files—single files that are valid under multiple formats simultaneously. This exploration reveals how such files can function differently depending on the application interpreting them, offering unique insights into file format manipulation. Building upon this, Albertini developed Mitra, a tool designed to assist in crafting files that conform to multiple format specifications, streamlining the process of creating complex polyglots. Additionally, his Corkami project offers a comprehensive collection of hex patterns that illustrate various file format structures and anomalies, serving as a valuable reference for understanding the binary composition of different file types. For us digital Historians, it is essential to understand digital media artifacts as a structured or sometimes seemingly unstructured pile of binary data. One of the first jobs we do is to try to understand the underlying structure of those files. Engaging with resources like the Corkami project can deepen your understanding of file formats and uncover the hidden complexities within digital files, enhancing your skills in reverse engineering and digital archaeology.​ 
 
-## 5. Reverse Engineering a cracked Commodore 64 Game
+## Reverse Engineering a cracked Commodore 64 Game
 
 The second case study examines a cracked Commodore 64 game. The hex dump technique presented in the first case serves as the starting point for larger and more elaborate examinations of born-digital objects. Since media archaeology can become a complex endeavour, it is important to know where to start with reverse engineering digital artifacts. This second case expands our hex dump peeking approach through further investigating file types and basic comparison techniques.
 
 Game cracking evolved beyond mere piracy into a sophisticated technical pursuit, demonstrating programming skill and ingenuity. Crackers not only removed copy protection but also enhanced games with custom intro screens, gameplay modifications, language translations, performance optimizations, and new functionality. These specialized reverse engineers needed specialised knowledge of assembly language and hardware, and the understanding of how to  deconstruct and rebuild programs to suit their purposes.
 
-### 5.1 SCA’s Summer Games
+### SCA’s Summer Games
 
 The Swiss Crackers Association modified "Summer Games" by adding Switzerland's flag and anthem as a selectable country, demonstrating how reverse engineering served as cultural expression beyond mere copy protection removal. This modification required both technical skill to analyse the game's data structures and artistic sensitivity to maintain coherence with the original design, effectively claiming digital representation for Swiss identity.
 
@@ -311,7 +311,7 @@ SCA emerged in the mid-1980s as a notable multilingual collective that bridged E
 
 We've selected this SCA crack as our case study due to its research value for digital history, allowing us to reconstruct technical practices by examining disassembled code while revealing motivations beyond technical prowess. The addition of Swiss representation to an international sports game points to questions of national identity in early digital culture, showing how software became a platform for cultural expression and representation for communities overlooked in commercial products. The crack's code serves as a primary historical source that complements oral histories and other artifacts, transforming reverse engineering into a form of digital archaeology that expands our historical toolkit. When combined with ethnographic interviews, cracking documentation analysis, and media studies approaches, this technical examination reveals how knowledge circulated through informal pre-internet networks and provides a multidimensional understanding of early digital culture impossible through conventional historical methods alone.
 
-### 5.2 Getting Started
+### Getting Started
 
 For this example, we acquired the cracked[^15] and a supposedly clean[^16] version of the Commodore 64 game “Summer Games”. A first glance tells us that those games come as `.d64` files, which is a disk image—a virtual representation of a physical disk’s content. Since we are interested in investigating the cracked version, we need to contextualize our digital artefact towards that.
 
@@ -331,7 +331,7 @@ $ c1541 summer_games_clean.d64 -extract
 ```
 *The installation and operation of the VICE tools can't be covered here, all files are provided in the repository.*
 
-### 5.3 Comparing the Game's different Versions
+### Comparing the Game's different Versions
 
 Unpacking both game versions leaves us with two folders and a bunch of arbitrary labelled files, which we first check for content and file size.
 
@@ -483,7 +483,7 @@ This is the final observation in this example. Both files contain Commodore 64 B
 
 This example illustrates how reverse engineering transcends surface-level interpretations, revealing hidden technological, cultural, or historical dimensions.
 
-## 6. Summary
+## Summary
 
 This paper explores reverse engineering as a critical methodology for historical analysis of born-digital artifacts, emphasizing its role in overcoming "screen essentialism", which is the problematic practice of interpreting digital objects solely through their visual representations. By examining deeper into digital files using techniques such as hex editing and comparative hex dump analysis, historians can uncover hidden structures, metadata, and functionalities that remain invisible when analysed superficially.
 
@@ -493,7 +493,7 @@ However, this lesson also highlights significant challenges and technical hurdle
 
 Having explored hex editing and comparative hex dump analysis as foundational methods, historians might be interested in going further with digital archaeology. In the final section, this paper briefly introduces more advanced possibilities using Ghidra, a powerful open-source software suite designed to disassemble and analyse executable binaries. Rather than providing a detailed walkthrough, this discussion showcases some of Ghidra’s capabilities and outlines how historians could integrate such advanced tools into their workflow. Additionally, supplementary resources and further recommendations are provided to encourage readers to experiment and deepen their methodological approaches, enhancing their ability to critically engage with complex born-digital artifacts.
 
-## 7. Further Resources
+## Further Resources
 
 Reverse engineering has emerged as an essential method in digital historical research, enabling historians to investigate born-digital artifacts beyond their surface-level representations. Several compelling studies highlight the potential of this approach, such as the analyses of the *Mystery House* game (Apple II, 1980)[^17] and John Aycock’s *Amnesia Remembered*.[^18]
 
@@ -545,7 +545,7 @@ For visualizing and interpreting binary file structures, the **ImHex Patterns Re
 
 Together, these resources significantly reduce barriers to entry, fostering an open, collaborative community around reverse engineering. This introductory exploration serves as a foundation, underscoring that much remains to be discovered through reverse engineering. With tools and case studies like those presented here, historians are well-positioned to expand their digital literacy, enrich their interpretations, and actively contribute to preserving and understanding our digital past.
 
-## 8. References
+## Footnotes
 
 [^1]: Feichtinger, Moritz. 2024. “From Source-Criticism to System-Criticism, Born Digital Objects, Forensic Methods, and Digital Literacy for All.” September 13. [https://doi.org/10.5281/zenodo.13907816](https://doi.org/10.5281/zenodo.13907816).
 [^2]: Guay-Bélanger, Dany. 2022. “Assembling Auras: Towards a Methodology for the Preservation and Study of Video Games as Cultural Heritage Artefacts.” _Games and Culture_ 17 (5): 659–78. [https://doi.org/10.1177/15554120211020381](https://doi.org/10.1177/15554120211020381).

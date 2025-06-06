@@ -70,7 +70,7 @@ At its core, reverse engineering involves deconstructing a finished product to u
 
 But why invest time in reverse engineering old games? There are several motivations behind this practice. Historical preservation plays a significant role. Just as historians study traditional art and literature to understand human culture, examining Media artifacts like video games offers a window into the creative and technical history of modern digital culture. The act of reversing becomes a game in itself, where the challenge lies in unravelling the original developer's work.
 
-![Schematic visualization of a computer's hardware and software layers.](en-or-reverse-engineering-born-digital-artefacts-01.png)
+{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-01.png" alt="Visual description of figure image" caption="Figure 1. Schematic visualization of a computer's hardware and software layers." %} 
 
 A computer operates through a layered architecture, where hardware and software components work together to process and execute instructions. At the lowest level, transistors form the building blocks of digital circuits, which combine to create processors, memory, and input/output (I/O) systems. These hardware components are managed through the instruction set architecture (ISA), which defines how the processor interprets and executes machine code. Firmware and assemblers translate low-level machine code into instructions the hardware can execute, while higher-level software like compilers and interpreters convert human-readable code into machine instructions. The operating system serves as a bridge between hardware and software, managing system resources and enabling applications to run smoothly.
 
@@ -112,7 +112,7 @@ For the following example, we will use hexyl. We chose it primarily because we a
 
 To illustrate this, we begin with the basic structure of a JPEG file, as shown in the diagram below. The JPEG format follows a clearly defined structure, starting with a file signature or “magic number” that identifies it as a JPEG, followed by metadata, image data, and an end-of-file marker. This predictable format allows hex editors to recognize and parse the file correctly.
 
-![Infographic annotating a JPEG's file header in hexadecimal notation. (CC-BY 4.0) 2022 Ange Albertini](en-or-reverse-engineering-born-digital-artefacts-02.png)
+{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-02.png" alt="Visual description of figure image" caption="Figure 2. Infographic annotating a JPEG's file header in hexadecimal notation. (Ange Albertini 2022 – CC-BY 4.0 )" %}
 
 When we open a sample JPEG of a cat in a hex editor, the hex view immediately exposes this structure. The file signature (FF D8 FF E0) at the beginning confirms that it is a JPEG file. We can also see metadata fields describing the image’s dimensions, colour depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values.
 
@@ -123,7 +123,7 @@ $ hexyl imgs/001-cat.jpg -n 256
 
 The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG file. A PNG file, as another example, would start with `89 50 4E 47 0D 0A 1A 0A` [^12]. We can also see metadata fields describing the image’s dimensions, colour depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values.
 
-![A cat sitting on a couch](en-or-reverse-engineering-born-digital-artefacts-03.jpeg)
+{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-03.jpeg" alt="Visual description of figure image" caption="Figure 3. A cat sitting on a couch." %}
 
 ```shell
 ┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
@@ -475,9 +475,9 @@ $ hexyl "dump_clean/summer games" && hexyl "dump_sca/summer games"
 
 The file ‘summer games’ is the initial starting point when loading the game. After inserting the disk into a real Commodore 64 or one of the various emulators, and typing in the standard loading command, it’s this file that starts the process. Despite some gibberish, there are some discernible differences. The clean version’s ‘summer games’ file mentions “loader” which is a file that is not present in the cracked version. The cracked ‘summer games’ file, on the other hand, shows a tag by the games’ cracker “Saturnus the Invincible”, as well as being longer. The Commodore 64 used special characters that can’t be decoded on modern systems. Luckily, [C64-Tools](https://www.c64-tools.com/basic-2-extractor) and [SCA’s own platform](https://www.sca.ch/c64/software/sca-releases/SCA-Summer%20Games/SUMMER%20GAMES/view-source) allow us to display the file’s content with the correct characters.
 
-![Clean version’s ‘summer games’ file content, produced with C64-Tools.](en-or-reverse-engineering-born-digital-artefacts-04.png)
+{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-04.png" alt="Visual description of figure image" caption="Figure 4. Clean version’s 'summer games' file content, produced with C64-Tools." %}
 
-![SCA cracked version’s ‘summer games’ file content, provided by the SCA website.](en-or-reverse-engineering-born-digital-artefacts-05.png)
+{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-05.png" alt="Visual description of figure image" caption="Figure 5. SCA cracked version’s 'summer games' file content, provided by the SCA website." %}
 
 This is the final observation in this example. Both files contain Commodore 64 BASIC code. The clean version calls the ‘loader’ file first, and then proceeds to execute custom assembly code that has been loaded into the memory address `$C000` by the command `SYS 49152`. The cracked version instead directly executes codes at another address and has a comment displaying who cracked the game. This difference in the two initial files offers us important information on where to continue our investigation of the game's crack. From here on, we will need more specialised knowledge on how Commodore 64 games were programmed, protected, and cracked. We will also need specialised tools that can deal with machine code.
 

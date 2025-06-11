@@ -65,12 +65,12 @@ glTF/glb can also store several models in a file. If you are creating a scene wi
 
 Download the composite model png_sceneDRACO.glb from the [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2). Open the [three.js editor](https://threejs.org/editor/) in a new browser window (right click on the link) and import the model with File > Import (Figure 1). 
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-01.png" alt="Web editor showing a dark rectangular prism with small jars on it." caption="Figure 1. The threejs editor with the composite model imported." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-01.png" alt="Web editor showing a dark rectangular prism with small jars on it." caption="Figure 1. The three.js editor with the composite model imported." %}
 
 Change the view from SOLID to WIREFRAME using the selection box at the top right of the model view window and zoom in and move around with your mouse. You can also expand the model in the scene window and if you double click on a jar name (try the aibom_LOC) it should centre it. You should be able to see that the jars are made of polygons (Figure 2). The less nodes or faces in the mesh the smaller the model size. Large model files will not load or will be slow to respond in websites. Reducing the nodes or faces in a model, or retopology can be done in programs such as Blender. In Blender this is relatively easy, if the model is imported in STL format and if the model does not have an image texture. The individual jar models (used in part 2) were primarily designed in Blender and reduced to under 700KB. 
 
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-02.png" alt="Web editor showing the wireframes of jar meshes." caption="Figure 2. The threejs editor in wireframe view zoomed in on a jar mesh." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-02.png" alt="Web editor showing the wireframes of jar meshes." caption="Figure 2. The three.js editor in wireframe view zoomed in on a jar mesh." %}
 
 You may have models that you have made from photogrammetry, or downloaded from sites such as [SketchFab](https://sketchfab.com/), that have image textures, these are easier to retopolise in commercial software such as Agisoft’s Metashape, but it is possible to use Blender or the free photogrammetry software [Meshroom](https://meshroom-manual.readthedocs.io/en/latest/index.html). You can test your models by importing them into the three.js editor or (if they are glTF files, [this glTF viewer](https://gltf-viewer.donmccurdy.com)).
 

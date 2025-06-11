@@ -35,7 +35,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-In this lesson, you will learn how to organize a set of texts for research; that is, you will learn the basic steps of creating a 'corpus'. You will also learn the main metrics of quantitative text analysis. For this purpose, you will use [Voyant Tools](http://voyant-tools.org/) (Sinclair and Rockwell, 2016), a web-based platform that does not require installation and works in any browser with an internet connection.
+In this lesson, you will learn how to organize a set of texts for research; that is, you will learn the basic steps of creating a 'corpus'. You will also learn the main metrics of quantitative text analysis. For this purpose, you will use [Voyant Tools](http://voyant-tools.org/),[^1] a web-based platform that does not require installation and works in any browser with an internet connection.
 
 This lesson is designed as a beginner-friendly introduction to corpus analysis and is part of a growing ecosystem of tools and methods in digital humanities. For a more advanced tool, see the _Programming Historian_ [lesson on corpus analysis with AntConc](/en/lessons/corpus-analysis-with-antconc). You may also be interested in other *Programming Historian* lessons on [text mining](/en/topics/text-mining), [natural language processing](/en/lessons/introduction-to-nlp-with-python), and [topic modeling](/en/lessons/topic-modeling-and-mallet).
 
@@ -44,7 +44,7 @@ This lesson is designed as a beginner-friendly introduction to corpus analysis a
 No prior experience with text analysis is required. However, for those who want to go deeper, we recommend the following resources:
 
 - [Voyant Tools Help Documentation](https://voyant-tools.org/docs/#!/guide/start)
-- [Hermeneuti.ca](http://hermeneuti.ca/), the companion site to the book *Hermeneutica: Computer-Assisted Interpretation in the Humanities* by Sinclair and Rockwell
+- [Hermeneuti.ca](http://hermeneuti.ca/), the companion site to the book *Hermeneutica: Computer-Assisted Interpretation in the Humanities* by Sinclair and Rockwell[^2]
 
 ### Corpus Analysis
 
@@ -100,7 +100,7 @@ First, save your text in UTF-8, a standard [encoding format](https://en.wikipedi
 1. Open Notepad.
 2. After pasting or writing the text, click on **Save As**.
 3. In the **Encoding** window, select 'UTF-8'.
-4. Choose a file name and save it as .txt. (Torresblanca, 2014)
+4. Choose a file name and save it as .txt.
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-01.gif" alt="Screenshot of the Notepad application on Windows, showing the process of saving a file with UTF-8 encoding. The 'Save As' dialog box is open, with 'UTF-8' selected in the Encoding dropdown menu" caption="Figure 1. Save in UTF-8 on Windows." %}
 
@@ -109,7 +109,7 @@ First, save your text in UTF-8, a standard [encoding format](https://en.wikipedi
 1. Open TextEdit.
 2. Paste the text you want to save.
 3. Convert it to plain text in the **Format** menu.
-4. When saving, select 'Unicode (UTF-8)'. (Creative Corner, 2016)
+4. When saving, select 'Unicode (UTF-8)'.
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-02.gif" alt="Screenshot of TextEdit on a Mac, illustrating how to save a file as plain text with UTF-8 encoding. The 'Convert to Plain Text' option is selected from the Format menu, and 'UTF-8' is chosen in the encoding settings." caption="Figure 2. Save in UTF-8 on Mac." %}
 
@@ -130,7 +130,7 @@ For this lesson, we have named the files using the month, day, year, and order i
 
 ## Uploading the Corpus
 
-On the [Voyant Tools homepage](https://voyant-tools.org/), you will find four simple options for loading texts.[^1] The first two options are directly available using the text box. In this box, you can directly paste a text that you have copied from somewhere, or paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on **Open** and select one of the few corpora that Voyant has preloaded (the works of [Shakespeare](https://en.wikipedia.org/wiki/William_Shakespeare), the novels of [Austen](https://en.wikipedia.org/wiki/Jane_Austen) or [Shelley](https://en.wikipedia.org/wiki/Mary_Shelley)'s _Frankenstein_, all in English).
+On the [Voyant Tools homepage](https://voyant-tools.org/), you will find four simple options for loading texts.[^3] The first two options are directly available using the text box. In this box, you can directly paste a text that you have copied from somewhere, or paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on **Open** and select one of the few corpora that Voyant has preloaded (the works of [Shakespeare](https://en.wikipedia.org/wiki/William_Shakespeare), the novels of [Austen](https://en.wikipedia.org/wiki/Jane_Austen) or [Shelley](https://en.wikipedia.org/wiki/Mary_Shelley)'s _Frankenstein_, all in English).
 
 The fourth option, which we will use in this lesson, is to directly upload the documents you have on your computer. In this case, you will upload the complete corpus of presidential speeches.
 
@@ -148,7 +148,7 @@ Once all the files are uploaded, you will reach the main interface with its five
 
 - **Reader** is a space for reviewing and reading the complete texts, with a bar graph indicating the amount of text each document has:
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-06.png" alt="Voyant Tools interface showing the 'Reader' window, where the full text of documents is displayed. A bar graph on the side indicates the length of each document in the corpus." caption="Figure 6. Reader" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-06.png" alt="Voyant Tools interface showing the 'Reader' window, where the full text of documents is displayed. A bar graph on the side indicates the length of each document in the corpus." caption="Figure 6. Reader." %}
 
 - **Trends** is a graph showing the distribution of terms throughout the corpus (or within a document when only one is uploaded):
 
@@ -206,11 +206,11 @@ Vocabulary density is measured by dividing the number of unique words by the tot
 
 1\. Calculate the density of the following stanzas, then compare and comment:
 
-   **Stanza 1.** From “Silly Men Who Accuse” by Sor Juana Inés de la Cruz:  
+   **Stanza 1.** From “Silly Men Who Accuse” by Sor Juana Inés de la Cruz:[^4]  
    > For plain default of common sense, could any action be so queer  
    > as oneself to cloud the mirror, then complain that it’s not clear?
 
-   **Stanza 2.** From “Alejandro” by Nadir Khayat and Stefani Germanotta:  
+   **Stanza 2.** From “Alejandro” by Nadir Khayat and Stefani Germanotta:[^5]  
    > Don't call my name, don't call my name Alejandro.  
    > I'm not your babe, I'm not your babe Fernando.  
    > Don't wanna kiss, don't wanna touch.
@@ -255,7 +255,7 @@ The first aspect you will work on is gross frequency, and for this, you will use
 
 ### Stop Words
 
-Importance is not an intrinsic value and will always depend on your interests. For this very reason, Voyant offers the option to filter certain words. A common procedure to obtain relevant words is to filter out grammatical lexical units or stop words: articles, prepositions, interjections, pronouns, etc. (Peña and Peña, 2015).
+Importance is not an intrinsic value and will always depend on your interests. For this very reason, Voyant offers the option to filter certain words. A common procedure to obtain relevant words is to filter out grammatical lexical units or stop words: articles, prepositions, interjections, pronouns, etc.[^6]
 
 **Activity 6:**
 
@@ -328,7 +328,7 @@ Let’s see how this works in Voyant Tools:
 
 3. If you sort the columns in descending order as you would in a spreadsheet program, you will see that the order of gross frequency (**Count**) and relative frequency (**Relative**) is the same.  
 
-> **Note**: This measure is more useful for comparing different corpora. A corpus is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If you wanted each speech to be a different corpus, you would have to save your text in a table (HTML or XML), where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).[^2]
+> **Note**: This measure is more useful for comparing different corpora. A corpus is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If you wanted each speech to be a different corpus, you would have to save your text in a table (HTML or XML), where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).[^7]
 
 ### Statistical Skewness
 
@@ -352,7 +352,7 @@ In Voyant, tf-idf is calculated as follows:
 
 Gross Frequency (tf) / Number of Words (N) * log10 (Number of Documents / Number of times the term appears in the documents)
 
-Or as a formula:
+Or, as a formula:
 
 $$ tfidf_{t,d} = \left( \frac{tf_{t,d}}{N_i} \right) \cdot \log_{10} \frac{|D|}{\{ d \in D : t \in d \}} $$
 
@@ -374,7 +374,7 @@ Look at the differentiated words (compared to the rest of the corpus) of each do
 
 ## Words in Context
 
-The project which some argue inaugurated the field of Digital Humanities is the [Index Thomisticus](https://en.wikipedia.org/wiki/Index_Thomisticus), a concordance of the work of Thomas Aquinas led by the philologist and religious Roberto Busa (Hockey, 2004), and coded by a team of developers that included dozens of women (Terras, 2013). This project, which took years to complete, is a built-in function in Voyant Tools: in the lower right corner, in the **Contexts** window, it is possible to make left and right concordance queries of specific terms.
+The project which some argue inaugurated the field of Digital Humanities is the [Index Thomisticus](https://en.wikipedia.org/wiki/Index_Thomisticus), a concordance of the work of Thomas Aquinas led by the philologist and religious Roberto Busa,[^8] and coded by a team of developers that included dozens of women.[^9] This project, which took years to complete, is a built-in function in Voyant Tools: in the lower right corner, in the **Contexts** window, it is possible to make left and right concordance queries of specific terms.
 
 The table has the following default columns:
 
@@ -444,16 +444,16 @@ These results seem to indicate that President Kirchner, in addition to having th
 2. The first and the second are words specific to the name of the country. If you wanted to omit them, the best approach would be to edit the stop words list and add them.
 
 
-## Bibliography
-
-- Hockey, Susan. 2004. “The History of Humanities Computing”. *A Companion to Digital Humanities*. Schreibman et al. (editors). Blackwell Publishing Ltd. doi:[10.1002/9780470999875.ch1](https://doi.org/10.1002/9780470999875.ch1).
-- Peña, Gilberto Anguiano, and Catalina Naumis Peña. 2015. «Extracción de candidatos a términos de un corpus de la lengua general». *Investigación Bibliotecológica: Archivonomía, Bibliotecología e Información* 29 (67): 19-45. <https://doi.org/10.1016/j.ibbai.2016.02.035>.
-- Sinclair, Stéfan and Geoffrey Rockwell, 2016. *Voyant Tools*. Web. <http://voyant-tools.org/>.
-- Terras, Melissa, 2013. “For Ada Lovelace Day – Father Busa’s Female Punch Card Operatives”. *Melissa Terras’ Blog*. Web. <http://melissaterras.blogspot.com/2013/10/for-ada-lovelace-day-father-busas.html>.
-
-> *This [original Spanish] lesson was written thanks to the support of the British Academy and prepared during the Programming Historian Writing Workshop at the Universidad de los Andes in Bogotá, Colombia, from July 31 to August 3, 2018.*
+> *The [original Spanish] lesson was written thanks to the support of the British Academy and prepared during the Programming Historian Writing Workshop at the Universidad de los Andes in Bogotá, Colombia, from July 31 to August 3, 2018.*
 
 ## Footnotes
 
-[^1]: There are more complex ways to load the corpus, which you can consult in the Voyant Tools [documentation](https://voyant-tools.org/docs/tutorial-corpuscreator.html).  
-[^2]: For more information, consult the [documentation](https://voyant-tools.org/docs/tutorial-corpuscreator.html).
+[^1]: Stéfan Sinclair and Geoffrey Rockwell, _Voyant Tools_, Version 2.6.13, The Voyant Consortium, Web, 2016, <https://voyant-tools.org/>
+[^2]: Geoffrey Rockwell and Stéfan Sinclair, _Hermeneutica: Computer-Assisted Interpretation in the Humanities_ (Cambridge, MA: MIT Press, 2016), <https://doi.org/10.7551/mitpress/9522.001.0001>.
+[^3]: There are more complex ways to load the corpus, which you can consult in the Voyant Tools [documentation](https://voyant-tools.org/docs/tutorial-corpuscreator.html).  
+[^4]: Own translation of: Sor Juana Inés de la Cruz, "Hombres necios que acusáis" ("Silly Men Who Accuse"), in _Obras completas_ (México, D.F.: Porrúa, 1997), 109.
+[^5]: Nadir Khayat and Stefani Germanotta, "Alejandro," performed by Lady Gaga, on _The Fame Monster_, Interscope Records, 2009.
+[^6]: Gilberto Anguiano Peña and Catalina Naumis Peña, "Extracción de candidatos a términos de un corpus de la lengua general," _Investigación Bibliotecológica: Archivonomía, Bibliotecología e Información_ 29, no. 67 (2015): 19-45, <https://doi.org/10.1016/j.ibbai.2016.02.035>.
+[^7]: For more information, consult the [documentation](https://voyant-tools.org/docs/tutorial-corpuscreator.html).
+[^8]: Susan Hockey, "The History of Humanities Computing," in _A Companion to Digital Humanities_, ed. Susan Schreibman et al. (Oxford: Blackwell Publishing, 2004), <https://doi.org/10.1002/9780470999875.ch1>.
+[^9]: Melissa Terras, "For Ada Lovelace Day – Father Busa's Female Punch Card Operatives," _Melissa Terras' Blog_, October 9, 2013, <http://melissaterras.blogspot.com/2013/10/for-ada-lovelace-day-father-busas.html>.

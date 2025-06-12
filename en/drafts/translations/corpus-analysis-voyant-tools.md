@@ -281,7 +281,7 @@ Voyant already has a stop word list loaded for English, which you can edit as fo
 4\. Once you have added the words you want to filter, you can click on _Save_.
 
 <div class="alert alert-warning">
-By default, a box that says 'Apply Globally' is selected. If this box is left selected, the word filtering will affect the metrics of all other tools. It is very important to document your decisions. A good practice is to save the stop word list in a text file (.txt). For this lesson, we have created a <a href="https://github.com/ColmexBDCV/voyantTools/blob/main/stop_words.txt">list of words to filter</a>, and you can use it if you wish. Just remember that this will affect your results.
+By default, a box that says 'Apply Globally' is selected. If this box is left selected, the word filtering will affect the metrics of all other tools. It is very important to document your decisions. A good practice is to save the stop word list in a text file (.txt). For this lesson, we have created a <a href="/assets/corpus-analysis-voyant-tools/stop_words.txt">list of words to filter</a>, and you can use it if you wish. Just remember that this will affect your results.
 </div>
 
 ### Frequencies with Filtered Stop Words

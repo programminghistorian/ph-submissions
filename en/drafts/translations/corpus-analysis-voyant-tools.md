@@ -43,14 +43,14 @@ This lesson is designed as a beginner-friendly introduction to corpus analysis a
 
 No prior experience with text analysis is required. However, for those who want to go deeper, we recommend the following resources:
 
-- [Voyant Tools Help Documentation](https://voyant-tools.org/docs/#!/guide/start)
-- [Hermeneuti.ca](http://hermeneuti.ca/), the companion site to the book *Hermeneutica: Computer-Assisted Interpretation in the Humanities* by Sinclair and Rockwell[^2]
+- [Voyant Tools Help Documentation](https://perma.cc/6CRX-9B9D)
+- [Hermeneuti.ca](https://perma.cc/93VW-WC8V), the companion site to the book *Hermeneutica: Computer-Assisted Interpretation in the Humanities* by Sinclair and Rockwell[^2]
 
 ### Corpus Analysis
 
-Corpus analysis is a type of [content analysis](https://vocabularyserver.com/tadirah/en/index.php?tema=26&/content-analysis) that allows large-scale comparisons of a set of texts or a corpus.
+Corpus analysis is a type of [content analysis](https://perma.cc/Y8B2-RL89) that allows large-scale comparisons of a set of texts or a corpus.
 
-Since the advent of computing, both computational linguists and [information retrieval](https://vocabularyserver.com/tadirah/en/index.php?tema=107&/information-retrieval-analysis-content-analysis) specialists have created and used software to notice patterns that are not evident to the naked eye, or to corroborate hypotheses they intuited when reading certain texts but required laborious, costly, and mechanical work. For example, to obtain patterns of increase and decline in usage of certain terms over a given period, it was necessary to hire people to manually review a text and note how many times the sought term appeared. Early on, observing the counting capabilities of computers, these specialists promptly wrote programs to facilitate the task of creating [frequency lists](https://en.wikipedia.org/wiki/Word_list) or [concordance tables](https://en.wikipedia.org/wiki/Concordance_(publishing)). The program you will learn to use in this lesson fits into this historical context.
+Since the advent of computing, both computational linguists and [information retrieval](https://perma.cc/3F3M-3JV3) specialists have created and used software to notice patterns that are not evident to the naked eye, or to corroborate hypotheses they intuited when reading certain texts but required laborious, costly, and mechanical work. For example, to obtain patterns of increase and decline in usage of certain terms over a given period, it was necessary to hire people to manually review a text and note how many times the sought term appeared. Early on, observing the counting capabilities of computers, these specialists promptly wrote programs to facilitate the task of creating [frequency lists](https://perma.cc/F472-XM7K) or [concordance tables](https://perma.cc/AYP4-PVKR). The program you will learn to use in this lesson fits into this historical context.
 
 ### What You Will Learn in This Lesson
 
@@ -85,15 +85,15 @@ The first thing you need to do is search for the information that interests you.
 
 Once you have located the information, the second step is to copy the text you are interested in and save it in a plain text editor. For example:
 
-- In Windows, it could be saved in [Notepad](https://web.archive.org/web/20091013225307/http://windows.microsoft.com/en-us/windows-vista/Notepad-frequently-asked-questions)
-- In Mac, in [TextEdit](https://support.apple.com/guide/textedit/start-new-documents-txtee6663a0e/mac)
-- And in Linux, in [Gedit](https://gedit-technology.github.io/apps/gedit/)
+- In Windows, it could be saved in [Notepad](https://perma.cc/N45V-J2ST)
+- In Mac, in [TextEdit](https://perma.cc/9WKR-KB43)
+- And in Linux, in [Gedit](https://perma.cc/6WYD-5DGV)
 
 ### 3. Save the File
 
 When saving the text, you must consider three essential things.
 
-First, save your text in UTF-8, a standard [encoding format](https://en.wikipedia.org/wiki/Character_encoding) for English, Spanish and other languages. To illustrate, although we see an É when typing 'É' on our screen, É is a series of zeros and ones that are interpreted by the computer as an image, depending on the 'encoder' being used. The encoder that contains binary codes for all the characters used in Spanish and English is UTF-8. '11000011' is the eight-bit string – that is, eight information spaces – which in UTF-8 is interpreted as 'É'.
+First, save your text in UTF-8, a standard [encoding format](https://perma.cc/EQU9-3PAY) for English, Spanish and other languages. To illustrate, although we see an É when typing 'É' on our screen, É is a series of zeros and ones that are interpreted by the computer as an image, depending on the 'encoder' being used. The encoder that contains binary codes for all the characters used in Spanish and English is UTF-8. '11000011' is the eight-bit string – that is, eight information spaces – which in UTF-8 is interpreted as 'É'.
 
    **On Windows:**
 
@@ -122,7 +122,7 @@ First, save your text in UTF-8, a standard [encoding format](https://en.wikipedi
 
 The second thing to remember is that your file name should not contain accents or spaces to ensure it can be opened on other operating systems.
 
-For similar reasons to the previous point, a file named `Ébano.txt` will not always be correctly understood by all operating systems, since they sometimes use a different default encoder. Many use [ASCII](https://en.wikipedia.org/wiki/ASCII), for example, which only has seven bits, so the last bit ('1') of É in UTF-8 ('11000011') would be wrongly interpreted as the start of the next character.
+For similar reasons to the previous point, a file named `Ébano.txt` will not always be correctly understood by all operating systems, since they sometimes use a different default encoder. Many use [ASCII](https://perma.cc/9UA9-Y8UK), for example, which only has seven bits, so the last bit ('1') of É in UTF-8 ('11000011') would be wrongly interpreted as the start of the next character.
 
 The third is to integrate context metadata (such as date, genre, author, or origin) into the file name, as this helps you to divide your corpus according to different criteria and also read the results better.
 
@@ -130,7 +130,7 @@ For this lesson, we have named the files using the month, day, year, and order i
 
 ## Uploading the Corpus
 
-On the [Voyant Tools homepage](https://voyant-tools.org/), you will find four simple options for loading texts.[^3] The first two options are directly available using the text box. In this box, you can directly paste a text that you have copied from somewhere, or paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on **Open** and select one of the few corpora that Voyant has preloaded (the works of [Shakespeare](https://en.wikipedia.org/wiki/William_Shakespeare), the novels of [Austen](https://en.wikipedia.org/wiki/Jane_Austen) or [Shelley](https://en.wikipedia.org/wiki/Mary_Shelley)'s _Frankenstein_, all in English).
+On the [Voyant Tools homepage](https://voyant-tools.org/), you will find four simple options for loading texts.[^3] The first two options are directly available using the text box. In this box, you can directly paste a text that you have copied from somewhere, or paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on **Open** and select one of the few corpora that Voyant has preloaded (the works of [Shakespeare](https://perma.cc/MY33-K3J7), the novels of [Austen](https://perma.cc/X9AP-62VQ) or [Shelley](https://perma.cc/82MM-EY3E)'s _Frankenstein_, all in English).
 
 The fourth option, which we will use in this lesson, is to directly upload the documents you have on your computer. In this case, you will upload the complete corpus of presidential speeches.
 
@@ -229,7 +229,7 @@ Vocabulary density is measured by dividing the number of unique words by the tot
 
 ### Words per Sentence
 
-The way Voyant Tools calculates sentence length should be considered a rough estimate, especially because it is complicated to distinguish between the end of an abbreviation and that of a sentence or other uses of punctuation (for example, in some cases a semicolon marks the boundary between sentences). The sentence analysis is performed by a template with instructions, a 'class' of the Java programming language called [BreakIterator](https://docs.oracle.com/javase/tutorial/i18n/text/about.html).
+The way Voyant Tools calculates sentence length should be considered a rough estimate, especially because it is complicated to distinguish between the end of an abbreviation and that of a sentence or other uses of punctuation (for example, in some cases a semicolon marks the boundary between sentences). The sentence analysis is performed by a template with instructions, a 'class' of the Java programming language called [BreakIterator](https://perma.cc/2AU9-6WZR).
 
 **Activity 4:**
 
@@ -374,7 +374,7 @@ Look at the differentiated words (compared to the rest of the corpus) of each do
 
 ## Words in Context
 
-The project which some argue inaugurated the field of Digital Humanities is the [Index Thomisticus](https://en.wikipedia.org/wiki/Index_Thomisticus), a concordance of the work of Thomas Aquinas led by the philologist and religious Roberto Busa,[^8] and coded by a team of developers that included dozens of women.[^9] This project, which took years to complete, is a built-in function in Voyant Tools: in the lower right corner, in the **Contexts** window, it is possible to make left and right concordance queries of specific terms.
+The project which some argue inaugurated the field of Digital Humanities is the [Index Thomisticus](https://perma.cc/A4LP-9UEK), a concordance of the work of Thomas Aquinas led by the philologist and religious Roberto Busa,[^8] and coded by a team of developers that included dozens of women.[^9] This project, which took years to complete, is a built-in function in Voyant Tools: in the lower right corner, in the **Contexts** window, it is possible to make left and right concordance queries of specific terms.
 
 The table has the following default columns:
 
@@ -450,10 +450,10 @@ These results seem to indicate that President Kirchner, in addition to having th
 
 [^1]: Stéfan Sinclair and Geoffrey Rockwell, _Voyant Tools_, Version 2.6.13, The Voyant Consortium, Web, 2016, <https://voyant-tools.org/>
 [^2]: Geoffrey Rockwell and Stéfan Sinclair, _Hermeneutica: Computer-Assisted Interpretation in the Humanities_ (Cambridge, MA: MIT Press, 2016), <https://doi.org/10.7551/mitpress/9522.001.0001>.
-[^3]: There are more complex ways to load the corpus, which you can consult in the Voyant Tools [documentation](https://voyant-tools.org/docs/tutorial-corpuscreator.html).  
+[^3]: There are more complex ways to load the corpus, which you can consult in the Voyant Tools [documentation](https://perma.cc/CL4Q-XMZ5).  
 [^4]: Own translation of: Sor Juana Inés de la Cruz, "Hombres necios que acusáis" ("Silly Men Who Accuse"), in _Obras completas_ (México, D.F.: Porrúa, 1997), 109.
 [^5]: Nadir Khayat and Stefani Germanotta, "Alejandro," performed by Lady Gaga, on _The Fame Monster_, Interscope Records, 2009.
 [^6]: Gilberto Anguiano Peña and Catalina Naumis Peña, "Extracción de candidatos a términos de un corpus de la lengua general," _Investigación Bibliotecológica: Archivonomía, Bibliotecología e Información_ 29, no. 67 (2015): 19-45, <https://doi.org/10.1016/j.ibbai.2016.02.035>.
-[^7]: For more information, consult the [documentation](https://voyant-tools.org/docs/tutorial-corpuscreator.html).
+[^7]: For more information, consult the [documentation](https://perma.cc/CL4Q-XMZ5).
 [^8]: Susan Hockey, "The History of Humanities Computing," in _A Companion to Digital Humanities_, ed. Susan Schreibman et al. (Oxford: Blackwell Publishing, 2004), <https://doi.org/10.1002/9780470999875.ch1>.
-[^9]: Melissa Terras, "For Ada Lovelace Day – Father Busa's Female Punch Card Operatives," _Melissa Terras' Blog_, October 9, 2013, <http://melissaterras.blogspot.com/2013/10/for-ada-lovelace-day-father-busas.html>.
+[^9]: Melissa Terras, "For Ada Lovelace Day – Father Busa's Female Punch Card Operatives," _Melissa Terras' Blog_, October 9, 2013, [http://melissaterras.blogspot.com/2013/10/for-ada-lovelace-day-father-busas.html](https://perma.cc/4U4M-W84E).

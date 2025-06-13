@@ -1,5 +1,5 @@
 ---
-title: "Hexing Born-Digital Artifacts for Reverse Engineering"
+title: "Reverse Engineering Born-Digital Artifacts: A Beginner's Guide"
 slug: reverse-engineering-born-digital-artefacts
 layout: lesson
 collection: lessons

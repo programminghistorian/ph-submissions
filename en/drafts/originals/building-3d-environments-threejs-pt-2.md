@@ -31,13 +31,14 @@ In part 1 of this lesson we used three.js to create a website featuring a camera
 
 In addition to the requirements in part 1, you will need to download the [`/models` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/models) containing the individual jar models, and the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/textures) with information about them, from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2). If you are running the node.js server, stop it with Ctrl + C.
 
-Put (or replace) the downloaded models and texture folders in the myscene folder (Figure 11-12). Keep the index.html and main.css files that you created in part 1.
+Put (or replace) the downloaded models and texture folders in the myscene folder (Figures 1-2). Keep the index.html and main.css files that you created in part 1.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-01.png" alt="Screenshot of the VSC editor showing a list of glb files in the expanded models folder." caption="Figure 1. File structure for part 2 as shown in VSC, with the models folder expanded." %}
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-02.png" alt="Screenshot of the VSC editor showing a list of jpg files in the expanded textures folder." caption="Figure 2. File structure for part 2 as shown in VSC, with the textures folder expanded." %}
 
-In the index.html file from part 1, remove
+In the index.html file from part 1, remove the code that loads the glTF model used in part 1: 
+ie remove
 
 ```
     	function onLoadMap( gltf ) {                
@@ -59,11 +60,11 @@ You might have noticed that the pots in the model of part 1 were different colou
 
 To do this we will add some coloured spheres. Three.js has several basic geometries, including spheres, tori (donuts), planes and boxes. We will use 9 spheres and a plane to make a vessel colour key for how the jars were made.
 
+A sphere 'geometry' is made with a size (in this case 0.04 m), number of width and height segments (Figure 3). If you increase the number of width or height segments you will get rounder spheres. The geometry is reused for 9 different sphere meshes. Each sphere mesh gets a material with a colour (Figure 4). We are using the standard material. There are alternatives that can be used and it is important to note that some material types are more dependent on lights than others. 
+
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-03.png" alt="A framework of nodes and edges in the shape of a sphere." caption="Figure 3. Mesh of a sphere with 15 width segments and 5 height segments." %}
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-04.png" alt="Sphere with red material." caption="Figure 4. The sphere with a standard material and red colour. A directional light is used." %}
-
-A sphere 'geometry' is made with a size (in this case 0.04 m), number of width and height segments. If you increase the number of width or height segments you will get rounder spheres. The geometry is reused for 9 different sphere meshes. Each sphere mesh gets a material with a colour. We are using the standard material. There are alternatives that can be used and it is important to note that some material types are more dependent on lights than others. 
 
 The colours are set in the parameters list. We want to colour the jars by how they were made. Some communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres we are creating now will form part of the key that lets the viewer know how the pots were made, by having them in a parameter list, we can just change the hex code and the key and pots will all change. Start with these values and alter them later if you want.
 
@@ -140,7 +141,7 @@ Add:
 
 ```
 
-Save and reload in the browser.
+Save and reload in the browser and you should see a webpage with nine differently coloured spheres (Figure 5).
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-05.png" alt="Webpage with 9 spheres of different colours in a vertical line." caption="Figure 5. Webpage with nine differently coloured spheres." %}
 

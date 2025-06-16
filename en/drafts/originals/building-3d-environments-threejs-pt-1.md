@@ -279,9 +279,9 @@ a, button, input, select {
 
 This file came from the [examples folder at three.js](https://github.com/mrdoob/three.js/tree/master/examples), it is a cascading style sheet file. Save the main.css file and then you can close it. 
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-07.png" alt="A screenshot of the VSC editor with the director structure of the myscene folder." caption="Figure 7. The directory structure can be seen in the left hand panel of the VSC editor. The index file contents are shown in the main panel. They are colour coded. A VSC terminal is open and shown in the bottom panel." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-07.png" alt="A screenshot of the VSC editor with the director structure of the myscene folder." caption="Figure 7. The directory structure can be seen in the left hand panel of the VSC editor. The index.html file contents are shown in the main panel. They are colour coded. A VSC terminal is open and shown in the bottom panel." %}
 
-If you want to understand the basic components of a website [w3schools](https://www.w3schools.com/howto/howto_make_a_website.asp) has a guide, as well as tutorials on html, css and JavaScript.
+If you want to understand the basic components of a website [w3schools](https://www.w3schools.com/howto/howto_make_a_website.asp) has a guide, as well as tutorials on HTML, CSS and JavaScript.
 
 Make sure that the command line of your terminal/shell indicates that you are in the myscene folder (...myscene %). In VSC, Terminal > New Terminal will give you a terminal. In the terminal type
 
@@ -297,7 +297,7 @@ this will serve your site, normally to port 3000, but check the message to see w
 
 ### Creating the Basic Web Page
 
-Every three.js website has a camera and a 'scene' to which lights and objects need to be added. The script will call two functions (blocks of code): init() and animate(). Most of the code will be in init() which will set up the scene and tell the page if it should ‘listen’ to any input from sources, such as the mouse and what it should do in response to that (ie we will add EventListeners). To start with we will add the standard EventListener for responding to window size changes. The animate function will continuously call the render function. Rendering is when the camera we add takes a 2D ‘photo’ of the scene. 
+Every three.js website has a camera and a 'scene' to which lights and objects need to be added. The script will call two functions (blocks of code): init() and animate(). Most of the code will be in init() which will set up the scene and tell the page if it should ‘listen’ to any input from sources, such as the mouse and what it should do in response to that (ie we will add EventListeners). To start with we will add the standard EventListener for responding to window size changes. The animate function will continuously call the render function. Rendering is when the camera we add creates the 2D image that will be shown on the screen at that milisecond. 
 
 First create a camera and a scene with a background colour. The position of the camera is important, sometimes you can not see your models because the camera is looking away from them or they are outside its field of view. We will use a perspective camera with parameters that define the field of view, including boundaries for culling objects that are too close or too far from the camera. The units for three.js are metres, and this camera will not render to the screen anything nearer to 0.1m and further than 10m. When we introduce moving the camera later, you will see objects disappear if they get too close. 
 

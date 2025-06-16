@@ -248,15 +248,15 @@ Save and reload. If the panels are black, the images are probably in the wrong d
 
 ### Adding the Jar Models
 
-As you saw in part 1, the jar models are made of meshes (Figure 17).
+As you saw in part 1, the jar models are made of meshes (Figure 7).
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-07.png" alt="Framework of a jar with a sculptured face." caption="Figure 7. Mesh of the Aibom jar." %}
 
-As with the spheres, the jars will get a standard material with a colour (Figure 18). 
+As with the spheres, the jars will get a standard material with a colour (Figure 8). 
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-08.png" alt="Jar with a sculptured face coloured brown." caption="Figure 8. The Aibom jar with a solid brown colour." %}
 
-We will later change the emissive property of the material to show if a jar is selected (Figure 19).
+We will later change the emissive property of the material to show if a jar is selected (Figure 9).
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-09.png" alt="Jar with a sculptured face brightly coloured red." caption="Figure 9. The Aibom jar with red emission." %}
 
@@ -264,7 +264,7 @@ The jars will be added to a group (called 'jars') and the group will be added to
 
 Each jar will get a userdata property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
 
-Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that takes the .glb and loads it when called by the loader load function. The program will not stop while loading the file which can take a while so to avoid problems do not try to add the model to a group outside the loading function. 
+Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that takes the .glb file and loads it when called by the loader.load() function. The program will not stop while loading the file which can take a while so to avoid problems do not try to add the model to a group outside the loading function. 
 
 Replace:
 
@@ -390,7 +390,7 @@ with
 	}, undefined, function ( error ) {console.error( error );} );
 
 ```
-Save and reload and you should see 5 models (Figure 20). You will have to move around to see the sixth.
+Save and reload and you should see 5 models (Figure 10). You will have to move around to see the sixth.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-10.png" alt="Five jar models sit on a map of Papua." caption="Figure 10. Webpage with six jars from Papua, but one is out of camera range." %}
 
@@ -473,11 +473,11 @@ When designing a game or puzzle, plan and sketch the layout. Consider if the puz
 
 To transform the scene into a puzzle the information panel used needs to be altered, as it is the main source of user information. 
 
-The goal for the user of this game is to start with the jars off the map and the Papuan communities marked by selectable tokens. When the communities are selected (mouse click) the information panel will provide the information on the pots made by that community. Information on how the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured by the technique and a key is provided. The decoration technique may also serve as a guide. The user can move the jars (mouse). If they place the matching jar on the community marker then the jar becomes unmoveable and the background colour changes. 
+The goal for the user of this game is to start with the jars off the map and the Papuan communities marked by selectable tokens. When the communities are selected (mouse click) the information panel will provide the information on the pots made by that community. Information on the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured by the technique and a key is provided. The decoration technique may also serve as a guide. The user can move the jars (mouse). If they place the matching jar on the community marker then the jar becomes unmoveable and the background colour changes. 
 
 ### Adding Tori
 
-Green tori will be used to mark the communities. They can be harder to aim for than discs, but most Papua New Guinea communities use tori made of leaves to hold the vessels as they are being made. The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified. However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI *1/2).
+Green tori will be used to mark the communities. They can be harder to aim for than discs, but most Papua New Guinea communities use tori made of leaves to hold the vessels as they are being made. The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified. However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI /2).
 
 Because each torus is connected to a different information panel, they still need to be created separately and added to a tori group. The mouse click event listener has to be altered so that it targets the tori group instead of the jars group. 
 
@@ -820,7 +820,7 @@ Pots were made in many different forms by different communities in Papua New Gui
 ## Conclusion and Next Steps
 This has been an introduction to using three.js and the basic concepts in creating 3D scenes. The official [three.js](https://threejs.org) website shows how much more complex pages can be created, with additions such as animations and sound. The [three.js](https://threejs.org) site also contains example code that could be used for extending the puzzle created here, for example adding sound effects for correct matches. Many sites, especially those with large models, feature loading bars, that give feedback to the user while the models load. Another possible extension is to enable the scene to be viewed and manipulated in VR. The three.js site also contains links to places to ask the community for help, and links guides including [three.js Fundamentals](https://threejs.org/manual/#en/fundamentals). 
 
-There are many ways cultural heritage models can be used interactively: vessels can be refitted (Hardy, 2023), site contexts could be toggled on and off, or objects could be virtually analysed, with images or measurements from scientific techniques revealed when the object is clicked on. Providing research data in such a format, has challenges, but also has the possibility for making findings more accessible and interesting to non-academic audiences.
+There are many ways cultural heritage models can be used interactively: vessels can be refitted (Hardy, 2023), site contexts could be toggled on and off, or objects could be virtually analysed, with images or measurements from scientific techniques revealed when the object is clicked on. Providing research data in such a format has challenges, but also has the possibility for making findings more accessible and interesting to non-academic audiences.
 
 
 ## References

@@ -129,7 +129,7 @@ and confirming that you get a version number and not an error message. This code
 
 - A GitHub page (recommended if deploying). 
 
-To deploy your page so that everybody can access it, you can use GitHub. You get one free page per account, ie my page at https://github.com/tosca-har/tosca-har.github.io, results in a website at https://tosca-har.github.io/. Alternatively you can deploy your site using a free service such as [Vercel](https://vercel.com/). To deploy code, follow the instructions on GitHub or Vercel.
+To deploy your page so that everybody can access it, you can use [GitHub Pages](https://pages.github.com). You get one free page per GitHub account, ie my page at https://github.com/tosca-har/tosca-har.github.io, results in a website at https://tosca-har.github.io/. Alternatively you can deploy your site using a free service such as [Vercel](https://vercel.com/). To deploy code, follow the instructions on [GitHub Pages](https://pages.github.com) or [Vercel](https://vercel.com/).
 
 - The three.js library.
 

@@ -358,9 +358,9 @@ Reload the page after saving the index.html file and check that you have changed
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-09.png" alt="Basic webpage with peach background." caption="Figure 9. Webpage with peach background." %}
 
-Next we need to add lights and the model.
+Next we need to add lights.
 
-There are several different types of lights. We will add a [hemisphere light](https://threejs.org/docs/index.html#api/en/lights/HemisphereLight) and a [directional light](https://threejs.org/docs/index.html#api/en/lights/DirectionalLight). The hemisphere light has 2 colours and an intensity (from 0 to 1), while the directional light has one colour and a position. Use the values supplied first and if everything is working later you can experiment with different values. You can add lights directly, like we do with the hemisphere light, or declare them, modify their parameters and then add them, like we do with the directional light.
+There are several different types of lights. We will add a [hemisphere light](https://threejs.org/docs/index.html#api/en/lights/HemisphereLight) and a [directional light](https://threejs.org/docs/index.html#api/en/lights/DirectionalLight). The hemisphere light has 2 colours and an intensity (from 0 to 1), while the directional light has one colour and a position. Use the values supplied first. If everything is working, you can experiment with different values later. You can add lights directly, like we do with the hemisphere light, or declare them, modify their parameters and then add them, like we do with the directional light.
 
 In the function init() and after:
 
@@ -377,7 +377,7 @@ add:
 	scene.add( light );
 ```
 
-Three.js can load several different file types. DRACO compressed glTF files require the importation of additional loaders.
+Next we will add the model. Three.js can load several different file types. DRACO compressed glTF files require the importation of additional loaders.
 
 After:
 
@@ -479,7 +479,7 @@ If you save and reload you should be able to move around and zoom in and out.
 
 You could deploy your site using the instructions on GitHub or Vercel. You can investigate the [three.js manual](https://threejs.org/docs/index.html#manual/en/introduction/How-to-create-VR-content) for making the site viewable in virtual reality (VR).
 
-However, as noted previously there are other simpler tools for presenting models, and three.js is the most useful when you want to make the models interactive. To make the model interactive try part 2 of the lesson.  
+However, as noted previously there are other simpler tools, such as SketchFab, for presenting models, and three.js is the most useful when you want to make the models interactive. To make the model interactive try part 2 of the lesson.  
 
 ## References
 

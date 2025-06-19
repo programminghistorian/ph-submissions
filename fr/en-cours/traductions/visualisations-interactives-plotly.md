@@ -46,7 +46,7 @@ Cette leçon montre comment créer des visualisations de données interactives a
 
 Afin de pouvoir suivre la leçon, il est nécessaire d'avoir :
 
-- installé [Python 3 (version `3.12.9`)](https://docs.python.org/3/) et le [gestionnaire de paquets (*package*) `pip` (version `24.2`](https://pip.pypa.io/en/stable/index.html).
+- installé [Python 3 (version `3.12.9`)](https://docs.python.org/3/) et le [gestionnaire de paquets (*package*) `pip` (version `24.2)`](https://pip.pypa.io/en/stable/index.html).
 - un niveau de compréhension intermédiaire du langage de programmation Python.
 - une connaissance générale des bibliothèques [Pandas (version `2.2.3`)](https://pandas.pydata.org/docs/) et [Numpy (version `2.0.1`)](https://numpy.org/doc/stable/) (ces deux bibliothèques doivent être installées).
 - une connaissance de quelques techniques de base en visualisation de données (en particulier les histogrammes, les diagrammes en barres et les nuages de points).
@@ -54,7 +54,7 @@ Afin de pouvoir suivre la leçon, il est nécessaire d'avoir :
 
 ### Qu'est ce que Plotly ? 
 
-Plotly est une société qui fournit un certain nombre de modules *open source* permettant aux utilisateurs de construire des visualisations interactives. Contrairement à des images statiques, les visualisations réalisées avec Plotly offrent ainsi des outils/boutons pour se déplacer, zoomer et bien plus encore. La bibliothèque Plotly est disponible en Python - le sujet de cette leçon - ainsi que dans d'autres langages de programmation comme R et Julia[^1]. Les modules de Plotly permettent de réaliser une large variété de visualisations, que ce soit à des fins statistiques, scientifiques, financières ou géographiques. Ces visualisations peuvent être affichées de plusieurs manières : à travers des *notebooks Jupyter*, des pages web (HTML) ou dans des applications web développées avec l'environnement Dash de Plotly. Il est aussi possible d'exporter les visualisations sous forme d'images statiques (non interactives) en pixels (*raster*) ou vectorielles.
+Plotly est une société qui fournit un certain nombre de modules *open source* permettant aux utilisateur.ices de construire des visualisations interactives. Contrairement à des images statiques, les visualisations réalisées avec Plotly offrent ainsi des outils/boutons pour se déplacer, zoomer et bien plus encore. La bibliothèque Plotly est disponible en Python - le sujet de cette leçon - ainsi que dans d'autres langages de programmation comme R et Julia[^1]. Les modules de Plotly permettent de réaliser une large variété de visualisations, que ce soit à des fins statistiques, scientifiques, financières ou géographiques. Ces visualisations peuvent être affichées de plusieurs manières : à travers des *notebooks Jupyter*, des pages web (HTML) ou dans des applications web développées avec l'environnement Dash de Plotly. Il est aussi possible d'exporter les visualisations sous forme d'images statiques (non interactives) en pixels (*raster*) ou vectorielles.
 
 > Tout le long de cette leçon, les visualisations générées à l'aide de Plotly seront affichées comme des images statiques. Pour utiliser les fonctionnalités interactives il faudra cliquer sur l'image ou bien le lien dans la description de l'image.
 
@@ -82,7 +82,7 @@ Il existe actuellement une pléthore de bibliothèques graphiques sous Python co
 
 ## Données utilisées comme exemple
 
-Le jeu de données utilisé pour cette leçon est issu du site de données publiques [data.gouv.fr](https://www.data.gouv.fr/fr/) et agrégées par le [Ministère de l'Éducation nationale, des Sports et Jeunesse](https://www.education.gouv.fr/).  Le jeu de données rassemble, le nombre d'admissions au baccalauréat (général, technologique, professionnel et tout baccalauréat confondu) pour chaque origine sociale entre 1997 et 2024. Les données originales présentaient quelques défauts qui ont été corrigés. Le jeu de données original est disponible sur [la page de data.gouv.fr](https://www.data.gouv.fr/fr/datasets/reussite-au-baccalaureat-selon-lorigine-sociale/#/resources), le jeu de données corrigé ainsi que le traitement réalisé sont disponibles sur [la page Zenodo](google.com).
+Le jeu de données utilisé pour cette leçon est issu du site de données publiques [data.gouv.fr](https://www.data.gouv.fr/fr/) et agrégées par le [Ministère de l'Éducation nationale, des Sports et Jeunesse](https://www.education.gouv.fr/).  Le jeu de données rassemble, le nombre d'admissions au baccalauréat (général, technologique, professionnel et tout baccalauréat confondu) pour chaque origine sociale entre 1997 et 2024. Les données originales présentaient quelques défauts qui ont été corrigés. Le jeu de données original est disponible sur [la page de data.gouv.fr](https://www.data.gouv.fr/fr/datasets/reussite-au-baccalaureat-selon-lorigine-sociale/#/resources), le jeu de données corrigé ainsi que le traitement réalisé sont disponibles sur [la page Zenodo](https://google.com).
 
 ## Construire des visualisations avec Plotly Express
 
@@ -106,8 +106,8 @@ import plotly.express as px
 La prochaine étape est d'importer le jeu de données et de le nettoyer à l'aide des fonctions de Pandas. Les étapes à réaliser sont :
 
 - Importer uniquement les colonnes du jeu de données qui nous seront utiles.
-- Remplacer les données numériques qui pourraient manquer par des `np.nan` (objet Numpy *Not a Number*).
-- Renommer et retirer certaines données pour plus de clarté et de précision.
+- Remplacer certains champs par des champs plus cours.
+- Réorganiser le jeux de données en 5 colonnes contre 10 au départ.
 
 ```python
 colonnes : list[str] = [
@@ -121,10 +121,10 @@ colonnes : list[str] = [
     "Pourcentage d'admis au baccalauréat"
 ]
 
-raw_df : pd.DataFrame = pd.read_csv("data_article.csv",usecols = colonnes)
+df_brut : pd.DataFrame = pd.read_csv("data_article.csv",usecols = colonnes)
 
 # On raccourcis le nom de chaque colonne
-new_columns = {
+nouvelles_colonnes = {
     "Année" : "annee",
     "Origine sociale" : "origine_sociale",
     "Nombre d'admis au baccalaureat général" : "n_admis_bac_g",
@@ -136,11 +136,11 @@ new_columns = {
     "Nombre d'admis au baccalauréat" : "n_admis_bac",
     "Pourcentage d'admis au baccalauréat" : "p_admis_bac"
 }
-raw_df.rename(new_columns, axis = 1, inplace = True)
+df_brut.rename(nouvelles_colonnes, axis = 1, inplace = True)
 
 # On raccourcis le nom de certaines origines sociales pour alléger les visualisations
 # Et on sélectionne des origines sociales à retirer.
-raw_df["origine_sociale"] = raw_df["origine_sociale"].replace({
+df_brut["origine_sociale"] = df_brut["origine_sociale"].replace({
     # Raccourcir les noms
     "Professions intermédiaires" : "P. intermédiaires",
     "Cadres, professions intellectuelles supérieures" : "Cadres",
@@ -148,12 +148,13 @@ raw_df["origine_sociale"] = raw_df["origine_sociale"].replace({
     "Artisans, commerçants, chefs d'entreprise" : "Indépendants",
     "Agriculteurs exploitants" : "Agriculteurs",
     # Catégories à retirer
-    "Ensemble" : "TO_DROP",
-    "Indéterminé" : "TO_DROP"
+    "Ensemble" : "A_RETIRER",
+    "Indéterminé" : "A_RETIRER"
 })
 
-# On supprime les lignes associées aux origines sociales indésirables
-raw_df.drop(raw_df[raw_df["origine_sociale"] == "TO_DROP"].index, inplace = True)
+# On supprime les lignes associées aux origines sociales que l'on souhaite écarter 
+# pour cette leçon.
+df_brut.drop(raw_df[df_brut["origine_sociale"] == "A_RETIRER"].index, inplace = True)
 
 # Finalement, on réorganise la table en une table plus simple à 5 colonnes
 df = pd.DataFrame({}, columns = ["annee", "origine_sociale", "type", "n_admis",
@@ -220,7 +221,7 @@ Vous venez de créer votre première visualisation! Remarquons que cette visuali
 En revanche, la visualisation n'est pas des plus agréables, elle manque de couleurs, d'un titre et de titres d'axes plus visibles. Il est possible de préciser ces informations dès le début, en donnant plus d'arguments à la fonction `.bar()`. Par exemple, grâce à l'argument `labels` nous pouvons changer le nom des axes et grâce à l'argument `color` on peut changer la couleur des barres selon une variable de notre jeu de données (ici nous utiliserons « Nombre de personnes admises au baccalauréat » pour l'axe vertical). Pour ajouter un titre, il suffit d'utiliser l'argument `title`.
 
 ```python
-# Créer un bar chart en utilisant la fonction .bar()
+# Créer un diagramme en barres en utilisant la fonction .bar()
 fig = px.bar(
     num_admis_par_origine_sociale_2024,
     x="origine_sociale",
@@ -251,12 +252,12 @@ Comme montré ci-dessus, Plotly ajoute automatiquement une légende à la visual
 
 Tâchons maintenant de créer une courbe (*line chart*). De manière générale, la syntaxe pour créer une visualisation avec Plotly Express est toujours `px.type_de_representation()`  où `type_de_representation` désigne le type de représentation que l'on souhaite créer. Comme on a utilisé `px.bar()` pour créer un diagramme en barres (*bar chart*), ici nous utiliserons `px.line()` pour créer un *line chart*. Tous les types de représentations disponibles et les fonctions associées peuvent être trouvées dans la [documentation Plotly](https://perma.cc/U4N7-2VM5).
 
-Notre courbe représentera l'évolution du nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale à travers les années. Comme précédemment, nous sélectionnons une partie de notre jeu de données :
+Notre courbe représentera l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale à travers les années. Comme précédemment, nous sélectionnons une partie de notre jeu de données :
 
 ```python
 # Créer un nouveau DataFrame contenant le pourcentage d'admis au 
 # baccalauréat (tous types confondus) par origine sociale et par année
-num_admis_par_origine_sociale_par_annee = df.loc[
+prop_admis_par_origine_sociale_par_annee = df.loc[
     df["type"] == "bac", ["annee", "origine_sociale", "p_admis"]
 ]
 ```
@@ -264,9 +265,10 @@ num_admis_par_origine_sociale_par_annee = df.loc[
 Ensuite, nous créons plusieurs courbes en utilisant la fonction `.line()` et utilisons les mêmes paramètres que précédemment à savoir : `label` et `color`. Ici encore il est possible d'ajouter un titre à notre figure, il suffit de retirer le `#` devant l'argument `title` dans l'exemple suivant (et tous ceux qui suivent) :
 
 ```python
-# Créer des courbes avec la fonction px.line() et ajouter quelques personnalisations
+# Créer des courbes avec la fonction px.line() et ajouter quelques éléments de 
+# personnalisation
 fig = px.line(
-    num_admis_par_origine_sociale_par_annee,
+    prop_admis_par_origine_sociale_par_annee,
     x = "annee",
     y = "p_admis",
     # title = "Ajouter le titre de votre choix",
@@ -318,15 +320,12 @@ Il nous faut créer un nouveau `DataFrame` :
 # On prépare un vecteur de booléens pour sélectionner les 4 origines sociales à l'aide de la fonction
 # np.isin. np.isin est fonction qui adapte la syntaxe X in Y à des vecteurs.
 selection_origines_sociales = np.isin(
-    raw_df["origine_sociale"], 
+    df_brut["origine_sociale"], 
     ["Cadres", "Indépendants", "Ouvriers", "Agriculteurs"]
 )
-# On réutilise raw_df, plutôt que df, puisque raw_df comporte déjà une colonne par type de baccalauréat
-num_admis_bac_t_bac_g = raw_df.\
-    loc[selection_origines_sociales, : ].\
-    groupby(["origine_sociale", "annee"], as_index = False).\
-    agg(n_admis_bac_t = ("n_admis_bac_t", "sum"),
-        n_admis_bac_g = ("n_admis_bac_g", "sum"))
+# On réutilise df_brut, plutôt que df, puisque df_brut comporte déjà une colonne par type de baccalauréat
+num_admis_bac_t_bac_g = df_brut.\
+    loc[selection_origines_sociales, : ]
 ```
 
 ```python
@@ -356,9 +355,11 @@ Comme vous pouvez le voir, les nuages de points contiennent aussi certaines inte
 Les visualisations en mosaïque (*facet plots*) sont des visualisations subdivisées en plusieurs figures. Chaque subdivision illustre la même variable selon les mêmes axes mais pour des sous-ensembles différents. Plotly rend la création de telles visualisations très simple. En reprenant les exemples précédents, il suffit de spécifier le type de représentation que vous souhaitez dans les sous-figures. En deuxième instance il suffit d'utiliser le paramètre `facet_col` qui permet de préciser quelle variable utiliser pour distinguer les sous-figures. Dans l'exemple ci dessous, on créé une grille de 2x1 pour montrer le nombre de personnes admises au baccalauréat général et technologique en 2024 :
 
 ```python
+lignes_bac_technologique_et_general_2024 = \
+    (df["type"] == "bac_t") | (df["type"] == "bac_g") &\
+    (df["annee"] == 2024) # type = "bac_t" ou "bac_g" ET annee = 2024
 type_bac_origine_sociales = df.\
-    loc[(df["type"] == "bac_t")|(df["type"] == "bac_g")].\
-    groupby("annee").get_group(2024)
+    loc[lignes_bac_technologique_et_general_2024, :]
 
 # Utiliser la fonction px.bar pour spécifier le type de représentation
 fig = px.bar(
@@ -382,7 +383,7 @@ fig.show()
 </figcaption>
 </figure>
 
-Notez que cette méthode ne nécessite pas de spécifier les dimensions de la grille puisque Plotly Express divise automatiquement la figure par le nombre de catégories disponibles (ici 2 puisque les 2 catégories disponibles sont majorité masculine / féminine). Cependant, cette méthode ne peut fonctionner que pour des figures ne comportant qu’un seul type de visualisation (ici, des diagrammes en barres). Nous discuterons plus bas de la manière de créer des visualisations contenant des sous-figures de dimensions particulières à l’aide de Graph Objects.
+Notez que cette méthode ne nécessite pas de spécifier les dimensions de la grille puisque Plotly Express divise automatiquement la figure par le nombre de catégories disponibles (ici 2 puisque les 2 catégories disponibles sont baccalauréat technologique et général). Cependant, cette méthode ne peut fonctionner que pour des figures ne comportant qu’un seul type de visualisation (ici, des diagrammes en barres). Nous discuterons plus bas de la manière de créer des visualisations contenant des sous-figures de dimensions particulières à l’aide de Graph Objects.
 
 ### Ajouter des animations : évolution temporelle
 
@@ -402,7 +403,7 @@ fig = px.bar(
     x="origine_sociale",
     y="n_admis",
     labels={"n_admis": "Nombre de personnes admises au baccalauréat"},
-    range_y=[0,200e3],  # Le paramètre range_y permet de customiser l'intervalede l'axe y 
+    range_y=[0,200_000],  # Le paramètre range_y permet de customiser l'intervalede l'axe y 
     color="origine_sociale",
     # title="Titre de votre choix",
     # Utiliser le paramètre animation_frame pour spécfier l'axe d'évolution
@@ -416,7 +417,7 @@ fig.show()
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-07.png" alt="Diagramme en barres animé. Sur l'axe des abscisses on retrouve 8 origines sociales (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers) et sur l'axe des ordonnées, on trouve le nombre de personnes admises au baccalauréat (tous types confondus) pendant une année. Une barre de défilement permet d'animer la visualisation en changeant l'année, et donc le nombre de personnes admises. Chaque barre est d'une couleur différente décrite dans une légende.">
 	</a>
 <figcaption>
-    <p>Figure 7. Diagramme en barres animé associé à une barre de défilement créés grâce à Plotly Express. Comme précédemment, les lecteur.ice.s peuvent survoler les barres pour faire apparaître des boîtes flottantes. Les lecteur.ice.s peuvent appuyer sur les boutons play/pause ou utiliser la barre de défilement pour naviguer à travers les années. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-07.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 7. Diagramme en barres animé associé à une barre de défilement créé grâce à Plotly Express. Comme précédemment, les lecteur.ice.s peuvent survoler les barres pour faire apparaître des boîtes flottantes. Les lecteur.ice.s peuvent appuyer sur les boutons play/pause ou utiliser la barre de défilement pour naviguer à travers les années. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-07.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -431,7 +432,10 @@ fig = px.scatter(
     y="n_admis_bac_g",
     color="origine_sociale", 
     # title="Titre de votre choix",
-    # labels = {}
+    labels = {
+        "n_admis_bac_t" : "Nombre de personnes admises au baccalauréat technologique",
+        "n_admis_bac_g" : "Nombre de personnes admises au baccalauréat général"
+    }
 )
 ```
 
@@ -461,7 +465,6 @@ Pour créer le menu déroulant nous suivons les étapes suivantes :
  - à la clef `args`, nous associons une autre liste de dictionnaires qui spécifiera quelle données seront `visible`(s) (vous trouverez plus d'informations à ce propos plus bas), le titre de la vue (paramètre optionnel), ainsi que les titres pour les axes x et y de cette vue (paramètre optionnel).
 
 Le paramètre `visible` contient une liste, chaque élément de cette liste indiquera si les données à cet index doivent être affichées où non. Dans notre exemple, la liste doit contenir 4 éléments puisque nous avons 4 origines sociales à l'écran. Dans notre cas, le premier bouton doit représenter la visualisation telle qu'elle sera initialement présentée à l'utilisateur.ice et doit donc spécifier `[True, True, True, True]` puisque nous souhaitons que toutes les origines sociales soient affichées. Cependant, pour les 4 autres vues, nous devons seulement inscrire `True` pour un seul élément puisque nous souhaitons n’afficher qu’une seule origine sociale à la fois.
-
 Passons à la pratique :
 
 ```python
@@ -478,10 +481,18 @@ fig.update_layout(
                     {"visible" : [True, True, True, True]},
                     {
                         "title" : "Toutes les origines sociales",
-                        "xaxis" : {"title" : ("Nombre de personnes admises au"
-                                              " baccalauréat technologique")},
-                        "yaxis" : {"title" : ("Nombre de personnes admises au"
-                                              " baccalauréat général")}
+                        "xaxis" : {
+                            "title" : {
+                                "text" : ("Nombre de personnes admises au"
+                                              " baccalauréat technologique")
+                            }
+                        },
+                        "yaxis" : {
+                            "title" : {
+                                "text" : ("Nombre de personnes admises au"
+                                              " baccalauréat général")
+                            }
+                        }
                     }
                 ]
             ),
@@ -493,10 +504,18 @@ fig.update_layout(
                     {"visible" : [True, False, False, False]}, 
                     {
                         "title" : "Agriculteurs",
-                        "xaxis" : {"title" : ("Nombre de personnes admises au"
-                                              " baccalauréat technologique")},
-                        "yaxis" : {"title" : ("Nombre de personnes admises au"
-                                              " baccalauréat général")}
+                        "xaxis" : {
+                            "title" : {
+                                "text" : ("Nombre de personnes admises au"
+                                              " baccalauréat technologique")
+                            }
+                        },
+                        "yaxis" : {
+                            "title" : {
+                                "text" : ("Nombre de personnes admises au"
+                                              " baccalauréat général")
+                            }
+                        }
                     }
                 ]
             ),
@@ -508,10 +527,18 @@ fig.update_layout(
                     {"visible" : [False, True, False, False]}, 
                     {
                         "title" : "Cadres",
-                        "xaxis" : {"title" : ("Nombre de personnes admises au"
-                                              " baccalauréat technologique")},
-                        "yaxis" : {"title" : ("Nombre de personnes admises au"
-                                              " baccalauréat général")}
+                        "xaxis" : {
+                            "title" : {
+                                "text" : ("Nombre de personnes admises au"
+                                              " baccalauréat technologique")
+                            }
+                        },
+                        "yaxis" : {
+                            "title" : {
+                                "text" : ("Nombre de personnes admises au"
+                                              " baccalauréat général")
+                            }
+                        }
                     }
                 ]
             ),
@@ -523,10 +550,18 @@ fig.update_layout(
                     {"visible" : [False, False, True, False]},
                     {
                         "title" : "Indépendants",
-                        "xaxis" : {"title" : ("Nombre de personnes admises au"
-                                              " baccalauréat technologique")},
-                        "yaxis" : {"title" : ("Nombre de personnes admises au"
-                                              " baccalauréat général")}
+                        "xaxis" : {
+                            "title" : {
+                                "text" : ("Nombre de personnes admises au"
+                                              " baccalauréat technologique")
+                                }
+                        },
+                        "yaxis" : {
+                            "title" : {
+                                "text" : ("Nombre de personnes admises au"
+                                              " baccalauréat général")
+                            }
+                        }
                     }
                 ]
             ),
@@ -538,10 +573,18 @@ fig.update_layout(
                     {"visible" : [False, False, False, True]},
                     {
                         "title" : "Ouvriers",
-                        "xaxis" : {"title" : ("Nombre de personnes admises au"
-                                              " baccalauréat technologique")},
-                        "yaxis" : {"title" : ("Nombre de personnes admises au"
-                                              " baccalauréat général")}
+                        "xaxis" : {
+                            "title" : {
+                                "text" : ("Nombre de personnes admises au"
+                                              " baccalauréat technologique")
+                            }
+                        },
+                        "yaxis" : {
+                            "title" : {
+                                "text" : ("Nombre de personnes admises au"
+                                              " baccalauréat général")
+                            }
+                        }
                     }
                 ]
             ),
@@ -1123,7 +1166,6 @@ Plotly offre la possibilité de créer des images de qualité, interactives en u
 [^1]: `Plotly.Dash` est en dehors du cadre de cette leçon, qui se concentre plutôt sur Plotly Express et Plotly Graph Objects
 
 [^2]: Pour plus d'informations sur Bokeh, voir la leçon de Charlie Harper sur [Visualizing Data with Bokeh and Pandas](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) dans la revue *Programming Historian*.
-
 
 [^3]: Si vous travaillez avec des notebooks Jupiter, il y a une bonne chance que certaines dépendances soient déjà installées. En revanche, si vous travaillez avec un nouvel environnement Python ou dans un logiciel d'édition de code comme VS Code, il sera peut être nécessaire d'installer `ipykernel` (`pip install ipykernel`) et `nbformat` (`pip install nbformat`).
 

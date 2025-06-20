@@ -46,17 +46,17 @@ Cette leçon montre comment créer des visualisations de données interactives a
 
 Afin de pouvoir suivre la leçon, il est nécessaire d'avoir :
 
-- installé [Python 3 (version `3.12.9`)](https://docs.python.org/3/) et le [gestionnaire de paquets (*package*) `pip` (version `24.2)`](https://pip.pypa.io/en/stable/index.html).
-- un niveau de compréhension intermédiaire du langage de programmation Python.
-- une connaissance générale des bibliothèques [Pandas (version `2.2.3`)](https://pandas.pydata.org/docs/) et [Numpy (version `2.0.1`)](https://numpy.org/doc/stable/) (ces deux bibliothèques doivent être installées).
-- une connaissance de quelques techniques de base en visualisation de données (en particulier les histogrammes, les diagrammes en barres et les nuages de points).
+- Installé [Python 3 (version `3.12.9`)](https://docs.python.org/3/) et le [gestionnaire de paquets (*package*) `pip` (version `24.2)`](https://pip.pypa.io/en/stable/index.html).
+- Un niveau de compréhension intermédiaire du langage de programmation Python.
+- Une connaissance générale des bibliothèques [Pandas (version `2.2.3`)](https://pandas.pydata.org/docs/) et [Numpy (version `2.0.1`)](https://numpy.org/doc/stable/) (ces deux bibliothèques doivent être installées).
+- Une connaissance de quelques techniques de base en visualisation de données (en particulier les histogrammes, les diagrammes en barres et les nuages de points).
 - Des notions de traitement des données (nous utiliserons Pandas).
 
 ### Qu'est ce que Plotly ? 
 
 Plotly est une société qui fournit un certain nombre de modules *open source* permettant aux utilisateur.ices de construire des visualisations interactives. Contrairement à des images statiques, les visualisations réalisées avec Plotly offrent ainsi des outils/boutons pour se déplacer, zoomer et bien plus encore. La bibliothèque Plotly est disponible en Python - le sujet de cette leçon - ainsi que dans d'autres langages de programmation comme R et Julia[^1]. Les modules de Plotly permettent de réaliser une large variété de visualisations, que ce soit à des fins statistiques, scientifiques, financières ou géographiques. Ces visualisations peuvent être affichées de plusieurs manières : à travers des *notebooks Jupyter*, des pages web (HTML) ou dans des applications web développées avec l'environnement Dash de Plotly. Il est aussi possible d'exporter les visualisations sous forme d'images statiques (non interactives) en pixels (*raster*) ou vectorielles.
 
-> Tout le long de cette leçon, les visualisations générées à l'aide de Plotly seront affichées comme des images statiques. Pour utiliser les fonctionnalités interactives il faudra cliquer sur l'image ou bien le lien dans la description de l'image.
+> Tout le long de cette leçon, les visualisations générées à l'aide de Plotly seront affichées comme des images statiques. Pour utiliser les fonctionnalités interactives il faudra cliquer sur l'image ou bien sur le lien dans la description de l'image.
 
 ### Plotly, une bibliothèque Graphique de Python : Plotly Express vs Plotly Graph Objects vs Plotly Dash
 
@@ -66,13 +66,13 @@ Il s'agit essentiellement de 3 modules distincts - dont les fonctionnalités peu
 
 - Plotly Express (`plotly.express` souvent importé avec l'alias `px`) est une interface de représentation graphique *de haut niveau*, facile à prendre en main, et qui permet de créer près de 30 types différents de représentations. Le module fournit des fonctions permettant de créer des visualisations avec une seule ligne de code (bien que plusieurs lignes de code sont nécessaires à la personnalisation de certains éléments), rendant les visualisations rapides et faciles à créer. Puisque `plotly.px` est une interface *de haut niveau*, cela signifie que l’utilisateur.ice n’a pas besoin de s'attarder sur la structure sous-jacente des visualisations. Plotly recommande aux débutant.e.s de commencer avec Express avant de travailler avec Plotly Graph Objects.
 - Les objets graphiques de Plotly - associés aux module Plotly Graph Objects (`plotly.graph_objects` souvent importé avec l'alias `go`) sont les véritables objets que Plotly créé lorsque l'on fait appel à Plotly Express. Plotly génère des `plotly.graph_objs` pour garder en mémoire les données de la visualisation. Ces données incluent les informations à visualiser avec de nombreux autres attributs telles que les couleurs, formes et tailles des objets. Il est alors possible de créer une visualisation plus finement avec Plotly Graph Objects. Il est d'ailleurs possible de recréer n'importe quelle figure créée par Plotly Express à l'aide de Plotly Graph Objects. Il est en général recommandé d’utiliser Plotly Express pour réduire le nombre de lignes de code mais, comme nous le verrons par la suite, certaines visualisations imposent de passer par Plotly Graph Objects.
-- Le module Plotly Dash (importé avec l'alias `dash`) est un environnement pour créer des applications web interactives (typiquement des dashboards) qui peuvent être incrustées dans des sites web et autres plateformes. On ajoute souvent des figures créées avec Express ou Graph Objects dans les applications Dash, faisant des modules de Plotly la boîte à outils parfaite pour créer, manipuler et publier des représentations graphiques interactives de nos données. Plotly Dash est construit sur `React.js` et `Plotly.js` afin de rendre possible l'intégration sur internet, cela signifie que les utilisateur.ice.s n'ont pas besoin de connaissances en Javascript, CSS ou HTML (seulement en Python)[^2].
+- Le module Plotly Dash (importé avec l'alias `dash`) est un environnement pour créer des applications web interactives (typiquement des dashboards) qui peuvent être incrustées dans des sites web et autres plateformes. On ajoute souvent des figures créées avec Express ou Graph Objects dans les applications Dash, faisant des modules de Plotly la boîte à outils parfaite pour créer, manipuler et publier des représentations graphiques interactives de nos données. Plotly Dash est construit sur `React.js` et `Plotly.js` afin de rendre possible l'intégration sur internet, cela signifie que les utilisateur.ice.s n'ont pas besoin de connaissances en Javascript, CSS ou HTML (seulement en Python).
 
-Plotly fournit une documentation complète pour travailler avec Express et Graph Objects ainsi que pour utiliser Dash.
+Plotly fournit une documentation complète pour travailler avec Express et Graph Objects ainsi que pour utiliser Dash[^2].
 
 ### Pourquoi Plotly ? 
 
-Il existe actuellement une pléthore de bibliothèques graphiques sous Python comme Matplotlib, Seaborn, Bokeh ou Pygal. chaque bibliothèque présente des avantages. Selon le cas d'utilisation, les goûts esthétiques ou la facilité d'utilisation, qui permettent de choisir une bibliothèque. Les avantages principaux de Plotly sont :
+Il existe actuellement une pléthore de bibliothèques graphiques sous Python comme Matplotlib, Seaborn, Bokeh ou Pygal. Chaque bibliothèque présente des avantages. Le cas d'utilisation, les goûts esthétiques ou la facilité d'utilisation, sont tous des facteurs qui permettent de choisir une bibliothèque. Les avantages principaux de Plotly sont :
 
 - Plotly est l'une des seules bibliothèques spécifiquement tournée vers les représentations interactives. Matplotlib et Pygal ne fournissent que très peu de fonctionnalités interactives. Bokeh[^3] est aussi prévu pour l'interactivité et se présente comme une alternative viable.
 - Plotly est la seule bibliothèque de Python qui assure à la fois une création de visualisations et une intégration dans des pages web simple.
@@ -80,18 +80,20 @@ Il existe actuellement une pléthore de bibliothèques graphiques sous Python co
 - Des visualisations 3D interactives sont disponibles (ce qui n'est pas le cas des autres bibliothèques).
 - Plotly, ses animations et ses menus déroulants sont simples d’utilisation.
 
-## Données utilisées comme exemple
+## Données utilisées comme exemple 
 
-Le jeu de données utilisé pour cette leçon est issu du site de données publiques [data.gouv.fr](https://www.data.gouv.fr/fr/) et agrégées par le [Ministère de l'Éducation nationale, des Sports et Jeunesse](https://www.education.gouv.fr/).  Le jeu de données rassemble, le nombre d'admissions au baccalauréat (général, technologique, professionnel et tout baccalauréat confondu) pour chaque origine sociale entre 1997 et 2024. Les données originales présentaient quelques défauts qui ont été corrigés. Le jeu de données original est disponible sur [la page de data.gouv.fr](https://www.data.gouv.fr/fr/datasets/reussite-au-baccalaureat-selon-lorigine-sociale/#/resources), le jeu de données corrigé ainsi que le traitement réalisé sont disponibles sur [la page Zenodo](https://google.com).
+> Note : Le jeu de données original de la leçon portait sur les homicides à Philadelphie (USA) ([cf. section de l'article original](https://programminghistorian.org/en/lessons/interactive-visualization-with-plotly#sample-dataset)). Pour cette traduction, il a été choisi d'adapter le jeu de données au contexte francophone.
+
+Le jeu de données utilisé pour cette leçon est issu du site de données publiques [data.gouv.fr](https://www.data.gouv.fr/fr/) et agrégées par le [Ministère de l'Éducation nationale, des Sports et Jeunesse](https://www.education.gouv.fr/).  Le jeu de données rassemble le nombre d'admissions au baccalauréat (général, technologique, professionnel et tout baccalauréat confondu) en France, pour chaque origine sociale, et ce, entre 1997 et 2024. Pour faciliter le déroulement de la leçon, des erreurs de codage de données ont été corrigées. Le jeu de données original est disponible sur [la page de data.gouv.fr](https://www.data.gouv.fr/fr/datasets/reussite-au-baccalaureat-selon-lorigine-sociale/#/resources), le jeu de données corrigé ainsi que le traitement réalisé sont disponibles sur [la page Zenodo](https://google.com).
 
 ## Construire des visualisations avec Plotly Express
 
 ### Configurer Plotly Express
 
-1. Avant de commencer, vous aurez besoin d'installer 3 bibliothèques dans votre environnement.[^3]
+1. Avant de commencer, vous aurez besoin d'installer 3 bibliothèques dans votre environnement.[^4]
 	- Plotly (version `6.0.1`): dans votre terminal, entrez `pip install plotly`.
-	- Pandas (version `2.2.3`): dans votre terminal entrez `pip install pandas`[^4].
-	- Kaleido (version `0.2.1`): dans votre terminal entrez `pip install kaleido`[^5].
+	- Pandas (version `2.2.3`): dans votre terminal entrez `pip install pandas`[^5].
+	- Kaleido (version `0.2.1`): dans votre terminal entrez `pip install kaleido`[^6].
 2. Maintenant que ces bibliothèques sont installées, créez un nouveau Jupyter notebook (ou un nouveau fichier Python dans votre logiciel d'édition de code). Idéalement, placez votre jeu de données et votre fichier Python / notebook dans le même dossier.
 3. Importez les modules à l'aide de la commande `import` au début de votre fichier : 
 
@@ -106,7 +108,7 @@ import plotly.express as px
 La prochaine étape est d'importer le jeu de données et de le nettoyer à l'aide des fonctions de Pandas. Les étapes à réaliser sont :
 
 - Importer uniquement les colonnes du jeu de données qui nous seront utiles.
-- Remplacer certains champs par des champs plus cours.
+- Remplacer certains champs par des champs plus courts.
 - Réorganiser le jeux de données en 5 colonnes contre 10 au départ.
 
 ```python
@@ -154,7 +156,7 @@ df_brut["origine_sociale"] = df_brut["origine_sociale"].replace({
 
 # On supprime les lignes associées aux origines sociales que l'on souhaite écarter 
 # pour cette leçon.
-df_brut.drop(raw_df[df_brut["origine_sociale"] == "A_RETIRER"].index, inplace = True)
+df_brut.drop(df_brut[df_brut["origine_sociale"] == "A_RETIRER"].index, inplace = True)
 
 # Finalement, on réorganise la table en une table plus simple à 5 colonnes
 df = pd.DataFrame({}, columns = ["annee", "origine_sociale", "type", "n_admis",
@@ -164,19 +166,19 @@ for type_de_bac in ["bac_g", "bac_t", "bac_p", "bac"]:
     df = pd.concat((df, 
         pd.DataFrame({
             # Collecte des données
-            "annee" : raw_df["annee"].to_list(),
-            "origine_sociale" : raw_df["origine_sociale"].to_list(),
-            "n_admis" : raw_df[f"n_admis_{type_de_bac}"].to_list(),
-            "p_admis" : raw_df[f"p_admis_{type_de_bac}"].to_list(),
+            "annee" : df_brut["annee"].to_list(),
+            "origine_sociale" : df_brut["origine_sociale"].to_list(),
+            "n_admis" : df_brut[f"n_admis_{type_de_bac}"].to_list(),
+            "p_admis" : df_brut[f"p_admis_{type_de_bac}"].to_list(),
             # Ajoute un indicateur "type" pour repérer le type de baccalauréat
-            "type" : [type_de_bac] * len(raw_df)
+            "type" : [type_de_bac] * len(df_brut)
         })
     ))
 ```
 
 ### Diagrammes en barres
 
-Maintenant que nous avons créé un `DataFrame` Pandas de notre jeu de données, nous pouvons commencer à créer quelques visualisations simples en utilisant Plotly Express. Commençons par créer un diagramme en barres pour représenter le nombre de personnes admises au baccalauréat (tous types confondus) en 2024 selon leur origine sociale. Puisque notre jeu de données contient déjà ces données, il nous suffit de selectionner une sous partie de notre jeu de données entier.
+Maintenant que nous avons créé un `DataFrame` Pandas de notre jeu de données, nous pouvons commencer à créer quelques visualisations simples en utilisant Plotly Express. Commençons par créer un diagramme en barres pour représenter le nombre de personnes admises au baccalauréat (tous types confondus) en 2024 selon leur origine sociale. Puisque notre jeu de données contient déjà ces données, il nous suffit de selectionner une sous-partie de notre jeu de données entier.
 
 ```python
 # Création d'un nouveau DataFrame
@@ -197,7 +199,7 @@ print(num_admis_par_origine_sociale_2024)
 |195|  P. intermédiaires|  117017|
 |223|          Retraités|    7592|
 
-Il suffit alors de créer un histogramme en utilisant ce nouveau `DataFrame`. Remarquons que cette visualisation est sauvegardée sous la variable `fig`, qui est une convention lorsqu'on travaille avec Plotly :
+Il suffit alors de créer un diagramme en barres en utilisant ce nouveau `DataFrame`. Remarquons que cette visualisation est sauvegardée dans la variable `fig`, qui est une convention lorsqu'on travaille avec Plotly :
 
 ```python
 # Créer le diagramme en barres (bar chart) en utilisant la fonction .bar()
@@ -216,9 +218,9 @@ fig.show()
 </figcaption>
 </figure>
 
-Vous venez de créer votre première visualisation! Remarquons que cette visualisation est déjà en partie interactive : en passant la souris sur chaque barre, la figure nous spécifie combien de personnes ont été admises et leur origine sociale. Une autre fonctionnalité notable est que l'utilisateur.ice peut sauvegarder la visualisation comme un `.png` (image statique) en cliquant sur l'icône *appareil photo* qui apparaît lorsque la souris se trouve dans le coin haut droit de l'image. Au même endroit on peut trouver des fonctions de zoom, défilement, changement d'échelle et réinitialiser la vue. Ces fonctionnalités seront disponibles pour toutes les visualisations.
+Vous venez de créer votre première visualisation! Remarquons que cette visualisation est déjà en partie interactive : en passant la souris sur chaque barre, nous pouvons voir l'origine sociale de la catégorie et le nombre de personnes qui la compose. Une autre fonctionnalité notable est que l'utilisateur.ice peut sauvegarder la visualisation comme un `.png` (image statique) en cliquant sur l'icône *appareil photo* qui apparaît lorsque la souris se trouve dans le coin haut droit de l'image. Au même endroit on peut trouver des fonctions de zoom, défilement, changement d'échelle et réinitialiser la vue. Ces fonctionnalités seront disponibles pour toutes les visualisations.
 
-En revanche, la visualisation n'est pas des plus agréables, elle manque de couleurs, d'un titre et de titres d'axes plus visibles. Il est possible de préciser ces informations dès le début, en donnant plus d'arguments à la fonction `.bar()`. Par exemple, grâce à l'argument `labels` nous pouvons changer le nom des axes et grâce à l'argument `color` on peut changer la couleur des barres selon une variable de notre jeu de données (ici nous utiliserons « Nombre de personnes admises au baccalauréat » pour l'axe vertical). Pour ajouter un titre, il suffit d'utiliser l'argument `title`.
+En revanche, la visualisation n'est pas des plus agréable, elle manque de couleurs, d'un titre et de titres d'axes plus visibles. Il est possible de préciser ces informations dès le début, en donnant plus d'arguments à la fonction `.bar()`. Par exemple, grâce à l'argument `labels` nous pouvons changer le nom des axes et grâce à l'argument `color` on peut changer la couleur des barres selon une variable de notre jeu de données (ici nous utiliserons « Nombre de personnes admises au baccalauréat » pour l'axe vertical). Pour ajouter un titre, il suffit d'utiliser l'argument `title`.
 
 ```python
 # Créer un diagramme en barres en utilisant la fonction .bar()
@@ -348,7 +350,7 @@ fig.show()
 </figcaption>
 </figure>
 
-Comme vous pouvez le voir, les nuages de points contiennent aussi certaines interactions par défaut : survoler les points permet d'afficher les données spécifiques aux points comme les coordonnées du point (ie le nombre de personnes adises au baccalauréat technologique et général) et l'origine sociale. Cliquer ou double-cliquer sur le nom des origines sociales dans la légende permet d'isoler certains éléments.
+Comme vous pouvez le voir, les nuages de points contiennent aussi certaines interactions par défaut : survoler les points permet d'afficher les données spécifiques aux points comme les coordonnées du point (ie le nombre de personnes admises au baccalauréat technologique et général) et l'origine sociale. Cliquer ou double-cliquer sur le nom des origines sociales dans la légende permet d'isoler certains éléments.
 
 ## Créer une visualisation en mosaïque
 
@@ -447,24 +449,25 @@ C'est une étape plus complexe puisque les données de l'objet Plotly Express so
 
 Une fois qu'on a appelé la méthode `update_layout`:
 
-- nous devons d'abord accéder au paramètre `updatemenus`: c'est une liste de dictionnaires, chaque dictionnaire contient les métadonnées pour plusieurs fonctionnalités.
-- la seule fonctionnalité qui nous intéresse est la *dropdown box*, qui est contenue dans le dictionnaire `buttons`.
-- la clef `buttons` contient comme valeur, une autre liste de dictionnaires, chaque dictionnaire représente les options disponibles dans le menu déroulant.
+- Nous devons d'abord accéder au paramètre `updatemenus`: c'est une liste de dictionnaires, chaque dictionnaire contient les métadonnées pour plusieurs fonctionnalités.
+- La seule fonctionnalité qui nous intéresse est la *dropdown box*, qui est contenue dans le dictionnaire `buttons`.
+- La clef `buttons` contient comme valeur, une autre liste de dictionnaires, chaque dictionnaire représente les options disponibles dans le menu déroulant.
 - Nous aurons besoin de créer 5 `buttons` — un par sous-groupe de données — donc notre liste `buttons` contiendra 5 dictionnaires.
-- chacun de ces cinq dictionnaires devront contenir 3 paires clef-valeur :
-    - la première paire, avec pour clef `args` précisera le type de représentation que nous voulons afficher.
-    - la deuxième paire, avec pour clef `label` précisera le titre à afficher à côté du menu déroulant.
-    - la troisième paire, avec pour clef `method`, précisera comment modifier la figure (modifications possibles `update`, `restyle`, `animate`, etc...).
+- Chacun de ces cinq dictionnaires devront contenir 3 paires clef-valeur :
+    - La première paire, avec pour clef `args` précisera le type de représentation que nous voulons afficher.
+    - La deuxième paire, avec pour clef `label` précisera le titre à afficher à côté du menu déroulant.
+    - La troisième paire, avec pour clef `method`, précisera comment modifier la figure (modifications possibles `update`, `restyle`, `animate`, etc...).
 
 Dans l'exemple ci dessous, nous regarderons comment utiliser le menu déroulant pour changer la catégorie de la variable affichée. Puisque nous travaillons avec un nuage de points qui affiche le nombre de personnes admises au baccalauréat technologique et général pour 4 origines sociales différentes, nous ajouterons un menu déroulant qui permet d'afficher toutes les origines sociales ensembles, puis seulement les enfants d'agriculteurs, de cadres, d'indépendants et enfin d'ouvriers.
 
 Pour créer le menu déroulant nous suivons les étapes suivantes :
 
- - à la clef `label` nous associons pour valeur, le texte à afficher dans le menu déroulant.
- - à la clef `method`, nous associons la valeur `update` puisque nous modifions l'affichage (`layout`) ET les données (`data`).
- - à la clef `args`, nous associons une autre liste de dictionnaires qui spécifiera quelle données seront `visible`(s) (vous trouverez plus d'informations à ce propos plus bas), le titre de la vue (paramètre optionnel), ainsi que les titres pour les axes x et y de cette vue (paramètre optionnel).
+ - À la clef `label` nous associons pour valeur, le texte à afficher dans le menu déroulant.
+ - À la clef `method`, nous associons la valeur `update` puisque nous modifions l'affichage (`layout`) ET les données (`data`).
+ - À la clef `args`, nous associons une autre liste de dictionnaires qui spécifiera quelle données seront `visible`(s) (vous trouverez plus d'informations à ce propos plus bas), le titre de la vue (paramètre optionnel), ainsi que les titres pour les axes x et y de cette vue (paramètre optionnel).
 
 Le paramètre `visible` contient une liste, chaque élément de cette liste indiquera si les données à cet index doivent être affichées où non. Dans notre exemple, la liste doit contenir 4 éléments puisque nous avons 4 origines sociales à l'écran. Dans notre cas, le premier bouton doit représenter la visualisation telle qu'elle sera initialement présentée à l'utilisateur.ice et doit donc spécifier `[True, True, True, True]` puisque nous souhaitons que toutes les origines sociales soient affichées. Cependant, pour les 4 autres vues, nous devons seulement inscrire `True` pour un seul élément puisque nous souhaitons n’afficher qu’une seule origine sociale à la fois.
+
 Passons à la pratique :
 
 ```python
@@ -639,9 +642,9 @@ Il est alors important de toujours garder en tête que les figures créées avec
 
 Les Graph Objects sont représentés comme des structure de données en arbre (ie. hiérarchiques) avec trois racines :
 
-- la racine `data` — *données* — contient des informations comme le type de représentation, les catégories disponibles, les points associés à chaque catégorie, l'option d'affichage dans la légende, le type de marqueurs utilisés, les informations à afficher lorsque l'on survole les points.
-- la racine `layout` — *affichage* — contient des informations telles que les dimensions de la figure, les polices et couleurs d'écriture à utiliser, les annotations, les coordonnées des sous-figures (*subplots*), et si des images doivent être utilisées comme arrière plan.
-- la racine `frames` contient toutes les informations reliées aux animations utilisées dans la figure, comme les données à afficher à chaque *frame*. Cet attribut ne sera pas créé si vous n'ajoutez pas d'animation à la figure.
+- La racine `data` — *données* — contient des informations comme le type de représentation, les catégories disponibles, les points associés à chaque catégorie, l'option d'affichage dans la légende, le type de marqueurs utilisés, les informations à afficher lorsque l'on survole les points.
+- La racine `layout` — *affichage* — contient des informations telles que les dimensions de la figure, les polices et couleurs d'écriture à utiliser, les annotations, les coordonnées des sous-figures (*subplots*), et si des images doivent être utilisées comme arrière plan.
+- La racine `frames` contient toutes les informations reliées aux animations utilisées dans la figure, comme les données à afficher à chaque *frame*. Cet attribut ne sera pas créé si vous n'ajoutez pas d'animation à la figure.
 
 Il est facile de voir la structure de données sous-jacente d'une figure en l'imprimant comme un dictionnaire avec la fonction `fig.to_dict()`. Pour lire ces données plus facilement, on peut utiliser le format `JSON` avec la fonction `fig.to_json(pretty = True)`. Dans l'exemple ci dessous, nous ne montrons que les 500 premiers caractères comme extrait de sortie après utilisation de cette fonction (une fois encore, en utilisant la variable `fig` créée précédemment).
 
@@ -672,17 +675,17 @@ print(fig.to_json(pretty = True)[0:500] + "\n...")
 
 Examiner la sortie affichée devrait pouvoir vous aider à comprendre la structure de données sous-jacente et les propriétés d'un Graph Object. Si vous imprimez la sortie entière (en utilisant `fig.to_dict()`) vous noterez que : 
 
-- la structure de données contient des `data` pour chaque origine sociale (Agriculteurs, Cadres, Indépendants et Ouvriers) chaque origine sociale dispose de son propre dictionnaire.
-- l'attribut `data` qualifie quel type de représentation est utilisé (ici `Scatter`).
-- l'attribut `layout` contient le titre de la figure.
-- l'attribut `layout` contient les données associées aux `buttons` (ie le menu déroulant).
+- La structure de données contient des `data` chaque origine sociale (Agriculteurs, Cadres, Indépendants et Ouvriers) dispose de son propre dictionnaire.
+- L'attribut `data` qualifie quel type de représentation est utilisé (ici `Scatter`).
+- L'attribut `layout` contient le titre de la figure.
+- L'attribut `layout` contient les données associées aux `buttons` (ie le menu déroulant).
 - Il n'y a pas d'attribut `frames` puisqu'il n'y a pas d'animation associée à la figure.
 
 ### Utiliser Plotly Graph Objects vs Plotly Express
 
 Un autre point qu'il est important d'avoir à l'esprit c'est que créer des visualisations avec `plotly.go` requiert, en général, bien plus de code que pour créer les mêmes visualisations avec `plotly.px`.
 
-Voyez plutôt l'exemple suivant : construisons un diagramme en barres horizontal pour illustrer le nombre de personnes admises au baccalauréat (tous types confondus) en 2024. Premièrement, sélectionnons une partie `DataFrame` pour ne garder que l'année 2024 et le type `"bac"` :
+Voyez plutôt l'exemple suivant : construisons un diagramme en barres horizontales pour illustrer le nombre de personnes admises au baccalauréat (tous types confondus) en 2024. Premièrement, sélectionnons une partie `DataFrame` pour ne garder que l'année 2024 et le type `"bac"` :
 
 ```python
 num_admis_par_origine_sociale_2024 = df.loc[
@@ -690,7 +693,7 @@ num_admis_par_origine_sociale_2024 = df.loc[
 ]
 ```
 
-Construisons maintenant le diagramme en barres horizontal avec ces données, grâce à `plotly.go` :
+Construisons maintenant le diagramme en barres horizontales avec ces données, grâce à `plotly.go` :
 
 ```python
 fig = go.Figure(
@@ -757,7 +760,7 @@ Ceci devrait nous amener à la question centrale : si c'est si simple d'utiliser
 
 #### Tableaux
 
-L'une des fonctionnalités de Plotly Graph Objects la plus utile est l'option de créer des tableaux interactifs et propres.
+L'une des fonctionnalités de Plotly Graph Objects la plus utile est l'option de créer des tableaux interactifs et clairs.
 
 Pour cela, suivons les 4 étapes suivantes :
 
@@ -766,9 +769,9 @@ Pour cela, suivons les 4 étapes suivantes :
 3. Dans la fonction `.Table()`, créer un dictionnaire entête (`header`) pour stocker la liste des colonnes de l'entête
 4. Dans la fonction `.Table()`, ajouter un dictionnaire cellules (`cells`) pour y mettre les valeurs du tableau
 
-Il est aussi possible de personnaliser grâce à des labels, couleurs, et des options d'alignement
+Il est aussi possible de personnaliser grâce à des labels, couleurs, et des options d'alignement.
 
-Dans l'exemple ci dessous, nous créons un tableau pour stocker l'entièreté de la base de données.
+Dans l'exemple ci-dessous, nous créons un tableau pour stocker l'entièreté de la base de données.
 
 ```python
 fig = go.Figure(
@@ -806,7 +809,7 @@ De la même manière qu'avec `plotly.px`, les figures de `plotly.go` permettent 
 
 Une autre fonctionnalité très utile de Plotly Graph Objects est le fait de pouvoir créer des compositions de figures. Bien que Plotly Express permette de créer des visualisations en mosaïque, le champ des possibles est relativement limité puisque les sous-figures générées doivent toutes partager le même type de représentation, les axes et les variables à afficher. La composition de figures permet elle de créer des grilles contenant différents types de représentations avec leurs axes et variables propres afin de transformer les figures en des objets proches des *dashboards*.
 
-Puisque le code est particulièrement long pour créer des compositions de figures, cet exemple sera présenté pas à pas. Nous créerons une grille de 3x1 contenant 3 différentes figures : le premier sera un diagramme en barres standard pour quantifier le nombre de personnes admises au baccalauréat (tous types confondus) en 2024; le deuxième sera une courbe affichant l'évolution du pourcentage de personnes admises au baccalauréat (tous types confondus) entre 1997 et 2024. Enfin la dernière figure sera un diagramme en boîte (avec la représentation du minimum, maximum, interquartile d'une distribution) sur la distribution du pourcentage de personnes admises au baccalauréat général, technologique et professionnel.
+Puisque le code est particulièrement long pour créer des compositions de figures, cet exemple sera présenté pas-à-pas. Nous créerons une grille de 3x1 contenant 3 différentes figures : le premier sera un diagramme en barres standard pour quantifier le nombre de personnes admises au baccalauréat (tous types confondus) en 2024; le deuxième sera une courbe affichant l'évolution du pourcentage de personnes admises au baccalauréat (tous types confondus) entre 1997 et 2024. Enfin la dernière figure sera un diagramme en boîte (avec la représentation du minimum, maximum, interquartile d'une distribution) sur la distribution du pourcentage de personnes admises au baccalauréat général, technologique et professionnel.
 
 **Étape 1 : importer le module subplots et préparer les données**
 
@@ -974,7 +977,7 @@ fig.update_layout(
     yaxis3_title_text = "Distribution du pourcentage d'admission au baccalauréat",
     showlegend = False, # Retire la légende
     # Ajuste la taille de la visualisation  - pas toujours nécessaire mais peut 
-    # s'avérer utilse si les figures sont publiées sur internet
+    # s'avérer utile si les figures sont publiées sur internet
     height = 650
 )
 ``` 
@@ -1074,7 +1077,7 @@ fig.update_layout(margin = {"b" : 200})
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-17.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatres courbes de couleurs. Des annotations sont présentes pour indiquer l'origine sociale associée à chacune des quatre courbes. Dans la colonne de droite on trouve trois diagrammes en boîte. Une annotation décrit chacun des graphe : Nombre de personnes admises au baccalauréat (tous types confondus) en 2024 et par origine sociale (gauche); Proportion de personnes admises au baccalauréat (tous types confondus) à travers les années et par origine sociale (centre); Distribution du pourcentage d'admission pour les baccalauréats général, technologique et professionnel (droite).">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-17.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatres courbes de couleurs. Des annotations sont présentes pour indiquer l'origine sociale associée à chacune des quatre courbes. Dans la colonne de droite on trouve trois diagrammes en boîte. Une annotation décrit chacun des graphe : Nombre de personnes admises au baccalauréat (tous types confondus) en 2024 et par origine sociale (gauche); Proportion de personnes admises au baccalauréat (tous types confondus) à travers les années et par origine sociale (centre); Distribution du pourcentage d'admission pour le baccalauréat général, technologique et professionnel (droite).">
 	</a>
 <figcaption>
     <p>Figure 17. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par oringine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Cette visualisation est une variante de la Figure 16 avec des annotations supplémentaires sous les figures. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
@@ -1143,9 +1146,9 @@ fig.write_image("nom_visualisation.svg")
 fig.write_image("nom_visualisation.pdf")
 ```
 
-## Sommaire
+## Résumé
 
-Plotly offre la possibilité de créer des images de qualité, interactives en utilisant Python ou bien d'autres langages de programmation. Cette leçon fournit un apperçu de Plotly, pourquoi cette bibliothèque est utile et comment on peut l'utiliser sous Python. Elle montre aussi comment utiliser différents modules de Plotly (Plotly Express et Plotly Graph Objects) et les méthodes nécessaires pour créer, éditer et exporter des visualisations. Les syntaxes clefs sont : 
+Plotly offre la possibilité de créer des images de qualité, interactives en utilisant Python ou bien d'autres langages de programmation. Cette leçon fournit un aperçu de Plotly, pourquoi cette bibliothèque est utile et comment on peut l'utiliser sous Python. Elle montre aussi comment utiliser différents modules de Plotly (Plotly Express et Plotly Graph Objects) et les méthodes nécessaires pour créer, éditer et exporter des visualisations. Les syntaxes clefs sont : 
 
 - Installer Plotly en utilisant `pip install plotly`.
 - Importer Plotly Express et Plotly Graph Objects à l'aide de `import plotly.express as px` et `import plotly.graph_objects as go`.
@@ -1163,13 +1166,15 @@ Plotly offre la possibilité de créer des images de qualité, interactives en u
 
 ## Notes de fin
 
-[^1]: `Plotly.Dash` est en dehors du cadre de cette leçon, qui se concentre plutôt sur Plotly Express et Plotly Graph Objects
+[^1]: En réalité, toutes ces librairies sont construites à partir de la librairie Plotly pour JavaScript.
 
-[^2]: Pour plus d'informations sur Bokeh, voir la leçon de Charlie Harper sur [Visualizing Data with Bokeh and Pandas](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) dans la revue *Programming Historian*.
+[^2]: `Plotly.Dash` est en dehors du cadre de cette leçon, qui se concentre plutôt sur Plotly Express et Plotly Graph Objects
 
-[^3]: Si vous travaillez avec des notebooks Jupiter, il y a une bonne chance que certaines dépendances soient déjà installées. En revanche, si vous travaillez avec un nouvel environnement Python ou dans un logiciel d'édition de code comme VS Code, il sera peut être nécessaire d'installer `ipykernel` (`pip install ipykernel`) et `nbformat` (`pip install nbformat`).
+[^3]: Pour plus d'informations sur Bokeh, voir la leçon de Charlie Harper sur [Visualizing Data with Bokeh and Pandas](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) dans la revue *Programming Historian*.
 
-[^4]: Nous utiliserons aussi Numpy mais cette bibliothèque est automatiquement téléchargée avec l'installation de Pandas.
+[^4]: Si vous travaillez avec des notebooks Jupyter, il y a une bonne chance que certaines dépendances soient déjà installées. En revanche, si vous travaillez avec un nouvel environnement Python ou dans un logiciel d'édition de code comme VS Code, il sera peut être nécessaire d'installer `ipykernel` (`pip install ipykernel`) et `nbformat` (`pip install nbformat`).
 
-[^5]: Kaleido est une bibliothèque Python de génération d'images statiques (comme les formats JPG et SVG) et sera donc nécessaire pour exporter des visualisations statiques.
+[^5]: Nous utiliserons aussi Numpy mais cette bibliothèque est automatiquement téléchargée avec l'installation de Pandas.
+
+[^6]: Kaleido est une bibliothèque Python de génération d'images statiques (comme les formats JPG et SVG) et sera donc nécessaire pour exporter des visualisations statiques.
 

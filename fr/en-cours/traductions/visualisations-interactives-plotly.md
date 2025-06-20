@@ -98,7 +98,7 @@ Le jeu de données utilisé pour cette leçon est issu du site de données publi
 3. Importez les modules à l'aide de la commande `import` au début de votre fichier : 
 
 ```python
-import numpy as numpy
+import numpy as np
 import pandas as pd
 import plotly.express as px
 ```
@@ -141,7 +141,6 @@ nouvelles_colonnes = {
 df_brut.rename(nouvelles_colonnes, axis = 1, inplace = True)
 
 # On raccourcis le nom de certaines origines sociales pour alléger les visualisations
-# Et on sélectionne des origines sociales à retirer.
 df_brut["origine_sociale"] = df_brut["origine_sociale"].replace({
     # Raccourcir les noms
     "Professions intermédiaires" : "P. intermédiaires",
@@ -149,31 +148,35 @@ df_brut["origine_sociale"] = df_brut["origine_sociale"].replace({
     "Autres personnes sans activité professionnelle" : "Sans activité p.",
     "Artisans, commerçants, chefs d'entreprise" : "Indépendants",
     "Agriculteurs exploitants" : "Agriculteurs",
-    # Catégories à retirer
-    "Ensemble" : "A_RETIRER",
-    "Indéterminé" : "A_RETIRER"
 })
 
 # On supprime les lignes associées aux origines sociales que l'on souhaite écarter 
 # pour cette leçon.
-df_brut.drop(df_brut[df_brut["origine_sociale"] == "A_RETIRER"].index, inplace = True)
+df_brut.drop(df_brut[
+        (df_brut["origine_sociale"] == "Ensemble") | \
+        (df_brut["origine_sociale"] == "Indéterminé") 
+    ].index, inplace = True)
 
 # Finalement, on réorganise la table en une table plus simple à 5 colonnes
-df = pd.DataFrame({}, columns = ["annee", "origine_sociale", "type", "n_admis",
-                                "p_admis"]
-)
+# Pour ce faire, on créé un nouveau DataFrame à partir d'un dictionnaire de listes
+df = {
+    "annee" : [],
+    "origine_sociale" : [],
+    "n_admis" : [],
+    "p_admis" : [],
+    "type" : []
+}
+# Puis pour chaque colonne, on y entre les données
 for type_de_bac in ["bac_g", "bac_t", "bac_p", "bac"]: 
-    df = pd.concat((df, 
-        pd.DataFrame({
-            # Collecte des données
-            "annee" : df_brut["annee"].to_list(),
-            "origine_sociale" : df_brut["origine_sociale"].to_list(),
-            "n_admis" : df_brut[f"n_admis_{type_de_bac}"].to_list(),
-            "p_admis" : df_brut[f"p_admis_{type_de_bac}"].to_list(),
-            # Ajoute un indicateur "type" pour repérer le type de baccalauréat
-            "type" : [type_de_bac] * len(df_brut)
-        })
-    ))
+    df["annee"] +=  df_brut["annee"].to_list()
+    df["origine_sociale"] +=  df_brut["origine_sociale"].to_list()
+    df["n_admis"] +=  df_brut[f"n_admis_{type_de_bac}"].to_list()
+    df["p_admis"] +=  df_brut[f"p_admis_{type_de_bac}"].to_list()
+    # On ajoute un indicateur "type" pour repérer le type de baccalauréat
+    df["type"] += [type_de_bac] * len(df_brut)
+
+# Finalement on convertie le dictionnaire de listes en DataFrame.
+df = pd.DataFrame(df)
 ```
 
 ### Diagrammes en barres
@@ -223,7 +226,6 @@ Vous venez de créer votre première visualisation! Remarquons que cette visuali
 En revanche, la visualisation n'est pas des plus agréable, elle manque de couleurs, d'un titre et de titres d'axes plus visibles. Il est possible de préciser ces informations dès le début, en donnant plus d'arguments à la fonction `.bar()`. Par exemple, grâce à l'argument `labels` nous pouvons changer le nom des axes et grâce à l'argument `color` on peut changer la couleur des barres selon une variable de notre jeu de données (ici nous utiliserons « Nombre de personnes admises au baccalauréat » pour l'axe vertical). Pour ajouter un titre, il suffit d'utiliser l'argument `title`.
 
 ```python
-# Créer un diagramme en barres en utilisant la fonction .bar()
 fig = px.bar(
     num_admis_par_origine_sociale_2024,
     x="origine_sociale",
@@ -232,7 +234,7 @@ fig = px.bar(
     labels={"n_admis": "Nombre de personnes admises au baccalauréat"},
 
     # Notez que l'argument "color" prend une chaine de caractères se référant à 
-    # la colonne "oringine_sociale" du jeu de données
+    # la colonne "origine_sociale" du jeu de données
     color="origine_sociale"
 )
 
@@ -319,13 +321,15 @@ Les nuages de points (*scatterplots*), généralement utilisés pour visualiser 
 Il nous faut créer un nouveau `DataFrame` : 
 
 ```python
-# On prépare un vecteur de booléens pour sélectionner les 4 origines sociales à l'aide de la fonction
-# np.isin. np.isin est fonction qui adapte la syntaxe X in Y à des vecteurs.
+# On prépare un vecteur de booléens pour sélectionner les 4 origines sociales à 
+# l'aide de la fonction np.isin. np.isin est fonction qui adapte la syntaxe 
+# X in Y à des vecteurs.
 selection_origines_sociales = np.isin(
     df_brut["origine_sociale"], 
     ["Cadres", "Indépendants", "Ouvriers", "Agriculteurs"]
 )
-# On réutilise df_brut, plutôt que df, puisque df_brut comporte déjà une colonne par type de baccalauréat
+# On réutilise df_brut, plutôt que df, puisque df_brut comporte déjà une colonne 
+# par type de baccalauréat
 num_admis_bac_t_bac_g = df_brut.\
     loc[selection_origines_sociales, : ]
 ```
@@ -358,8 +362,8 @@ Les visualisations en mosaïque (*facet plots*) sont des visualisations subdivis
 
 ```python
 lignes_bac_technologique_et_general_2024 = \
-    (df["type"] == "bac_t") | (df["type"] == "bac_g") &\
-    (df["annee"] == 2024) # type = "bac_t" ou "bac_g" ET annee = 2024
+    ((df["type"] == "bac_t") | (df["type"] == "bac_g")) &\
+    (df["annee"] == 2024) # (type = "bac_t" ou "bac_g") ET annee = 2024
 type_bac_origine_sociales = df.\
     loc[lignes_bac_technologique_et_general_2024, :]
 
@@ -703,7 +707,9 @@ fig = go.Figure(
         y = num_admis_par_origine_sociale_2024["origine_sociale"],
         orientation = "h",
         # Nous devons formatter le "hover text" alors que c'est automatique avec plotly.px
-        hovertemplate = "Origine Sociale : %{y}<br>Nombre de personnes admises : %{x}<extra></extra>"  
+        hovertemplate = ("Origine Sociale : %{y}<br>"
+                         "Nombre de personnes admises : %{x}"
+                         "<extra></extra>"  )
     ),
     # layout = {"title" : "Ajouter le titre de votre choix"},
 )
@@ -818,16 +824,16 @@ Puisque le code est particulièrement long pour créer des compositions de figur
 from plotly.subplots import make_subplots
 
 # Préparation des données
-num_admis_par_origine_sociale_2024 = df.loc[
-    (df["annee"] == 2024)&(df["type"] == "bac"), ["origine_sociale", "n_admis"]
-]
+num_admis_par_origine_sociale = df.\
+    groupby(["type", "annee"]).\
+    get_group(("bac", 2024))
 
 # On ne garde que 4 origines sociales pour alléger le graphe
 selection_origines_sociales = np.isin(
     df["origine_sociale"], 
     ["Cadres", "Indépendants", "Ouvriers", "Agriculteurs"]
 )
-num_admis_par_origine_sociale_par_annee = df.\
+prop_admis_par_origine_sociale_par_annee = df.\
     loc[selection_origines_sociales, :].\
     groupby("type").get_group("bac")
 
@@ -879,7 +885,7 @@ fig.add_trace(
 # les différentes courbes. 
 # Pour se faire, on divise notre DataFrame par origine sociale et on procède comme 
 # précédemment en ne travaillant qu'avec les sous-dataset
-for origine_sociale, df_oringine_sociale in num_admis_par_origine_sociale_par_annee.\
+for origine_sociale, df_oringine_sociale in prop_admis_par_origine_sociale_par_annee.\
                                     groupby("origine_sociale") :
     fig.add_trace(
         # Utiliser go.Scatter() pour spécifier le type de représentation
@@ -888,14 +894,14 @@ for origine_sociale, df_oringine_sociale in num_admis_par_origine_sociale_par_an
             y = df_oringine_sociale["p_admis"],
             name = origine_sociale,
             mode = "markers+lines",
-            hovertemplate = (f"<b>Origine sociale :</b> {origine_sociale}"
-                            "<br><b>Année :</b> %{x}<br><b>Proportion de personnes "
-                            "admises :</b> %{y}")  
+            hovertemplate = (f"<b>Origine sociale :</b> {origine_sociale}<br>"
+                             "<b>Année :</b> %{x}<br>"
+                             "<b>Proportion de personnes admises :</b> %{y}")  
 
         ),
         # Les paramètres row et col permettent de positionner la figure dans la bonne case
         row = 1, col = 2 
-    )   
+    )
 ```
 
 <figure style="">
@@ -967,7 +973,7 @@ fig.update_layout(
     # ou des réels (floats))
     # title_x = 0.5 
     # ajout d'un titre d'axe pour l'absisse de la première figure
-    xaxis1_title_text = ("Nombre de personnes admises au baccalauréat (tous "
+    xaxis1_title_text = ("Nombre de personnes admises au baccalauréat <br>(tous "
                          "types confondus) en 2024"),
     # ajout d'un titre d'axe pour les ordonnées de la première figure
     yaxis1_title_text = "Origine sociale", 
@@ -1001,15 +1007,16 @@ fig.update_layout(
     annotations = [
         # Notre première annotation sera pour identifier l'origine sociale "Agriculteurs"
         dict(
-            # coodinées du points de référence de l'annotation
+            # coordonnées du points de référence de l'annotation
             x = 2000, y = 85,
             # Spécifie dans quel référentiel on se place, ici comme on annote la
             # figure n°2 on donne comme référence x2, y2
             xref = "x2", yref = "y2",
-            # Permet de spécifier la longueur de la flèche, et donc du déport du point
+            # Permet de spécifier la longueur de la flèche, et donc le décalage du 
+            # texte par rapport au point
             ax = 0, ay = -100,
             text = "Agriculteurs",
-            showarrow = True, # Utilisez False si vous ne voullez pas de la tête
+            showarrow = True, # Utilisez False si vous ne voulez pas de la tête
             # de flèche dans l'annotation
             arrowhead = 1, # change la taille de la tête de flèche
         ),
@@ -1025,7 +1032,7 @@ fig.update_layout(
             xref = "x2", yref = "y2",ax = 10, ay = 50,
             text = "Ouvriers",showarrow = True, arrowhead = 1, 
         ),
-        # Notre deuxième annotation sera pour identifier l'origine sociale "Cadres"
+        # Notre quatrième annotation sera pour identifier l'origine sociale "Cadres"
         dict(
             x = 2020, y = 98.25,
             xref = "x2", yref = "y2",ax = -100, ay = 0,
@@ -1060,7 +1067,7 @@ fig.add_annotation(
             " en 2024 et par origine sociale (gauche); <br>"
             "Proportion de personnes admises au baccalauréat (tous types"
             " confondus) à travers les années et par origine sociale (centre);<br>"
-            "Distribution du pourcentage d'admission pour les baccalauréats général,"
+            "Distribution du pourcentage d'admission pour le baccalauréat général,"
             " technologique et professionnel (droite)."),
         # Option pour changer l'orientation de l'écriture, utile pour la gestion de l'espace
         textangle=0,  
@@ -1071,7 +1078,7 @@ fig.add_annotation(
         yref="paper",
     )
 )
-# On ajoute une petite marge pour que laisser la place aux annotations
+# On ajoute une marge pour que laisser la place aux annotations
 fig.update_layout(margin = {"b" : 200})
 ```
 
@@ -1091,11 +1098,11 @@ Dans les sections précédentes de la leçon, nous avons vu comment créer et mo
 La méthode illustrée ici exportera la figure 3 créée plus tôt dans la leçon :
 ```python
 fig = px.line(
-    num_admis_par_origine_sociale_par_annee,
+    prop_admis_par_origine_sociale_par_annee,
     x = "annee",
     y = "p_admis",
     # title = "Ajouter le titre de votre choix",
-    labels = {"n_admis" : "Nombre de personnes admises au baccalauréat"},
+    labels = {"p_admis" : "Proportion de personnes admises au baccalauréat"},
     color = "origine_sociale"
 )
 ```

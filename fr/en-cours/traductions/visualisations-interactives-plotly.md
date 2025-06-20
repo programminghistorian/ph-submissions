@@ -175,7 +175,7 @@ for type_de_bac in ["bac_g", "bac_t", "bac_p", "bac"]:
     # On ajoute un indicateur "type" pour repérer le type de baccalauréat
     df["type"] += [type_de_bac] * len(df_brut)
 
-# Finalement on convertie le dictionnaire de listes en DataFrame.
+# Finalement on convertit le dictionnaire de listes en DataFrame.
 df = pd.DataFrame(df)
 ```
 
@@ -226,6 +226,7 @@ Vous venez de créer votre première visualisation! Remarquons que cette visuali
 En revanche, la visualisation n'est pas des plus agréable, elle manque de couleurs, d'un titre et de titres d'axes plus visibles. Il est possible de préciser ces informations dès le début, en donnant plus d'arguments à la fonction `.bar()`. Par exemple, grâce à l'argument `labels` nous pouvons changer le nom des axes et grâce à l'argument `color` on peut changer la couleur des barres selon une variable de notre jeu de données (ici nous utiliserons « Nombre de personnes admises au baccalauréat » pour l'axe vertical). Pour ajouter un titre, il suffit d'utiliser l'argument `title`.
 
 ```python
+# Créer un diagramme en barres en utilisant la fonction .bar()
 fig = px.bar(
     num_admis_par_origine_sociale_2024,
     x="origine_sociale",

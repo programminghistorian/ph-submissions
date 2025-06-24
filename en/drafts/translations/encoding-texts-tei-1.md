@@ -68,17 +68,17 @@ Type `Scholarly XML` in the search bar.
 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-04.png" alt="Side panel of VS Code showing the Scholarly XML extension with its install button higlighted" caption="Figure 4. Install Scholarly XML in VS Code" %}
 
-To learn more about Scholarly XML, you can [read about it on the Visual Stuidio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=raffazizzi.sxml) or [view its code repository on GitHub](https://github.com/raffazizzi/vscode-sxml).  For now, we will hilight several things this extension allows us to do with the code:
+To learn more about Scholarly XML, you can [read about it on the Visual Stuidio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=raffazizzi.sxml) or [view its code repository on GitHub](https://github.com/raffazizzi/vscode-sxml).  For now, we will highlight several things this extension allows us to do with the code:
 
 First, if you select any of the text in an XML document, you can use a keyboard shortcut to automatically enclose the text in an XML element in opening and closing tags.  Well-formed XML--that is, code that is structurally sound and able to be processed--requires every XML tag to be closed.  When you hit `ctrl+E` (on Windows or Linux) or `cmd+E` (on MacOS), VS code will open a window with the instruction “Enter abbreviation (Press Enter to confirm or Escape to cancel).”  Next, write the name of the element and hit the `enter` key.  The editor will then enclose the selected text between opening and closing tags.  When we work with XML, automatically creating the opening and closing tags can save us a lot of time while also decreasing the likelihood of introducing typos.   
 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-05.png" alt="name element highlighted in the search bar and in the body of the code" caption="Figure 5. Automatically Introduce an XML element in VS Code" %}
 
-Second, we can determine if the document is well-formed following the syntax of XML and is also valid semantically per the type of [RELAX NG](https://en.wikipedia.org/wiki/RELAX_NG) validation schema being used, such as the TEI schema (tei-all), which contains all the guidelines from the TEI for marking up documents.  (We will explain the concepts of being structurally well-formed vs. semantically valid below).  The extension checks for both structural well-formedness and semantic validity automatically.
+Second, we can use the extension to determine whether the document is structurally **well-formed** following the syntax of XML--whether all text is inside those open and close tags and whether those tags are properly nested.  The extension can also check whether the document is semantically **valid** per the type of [RELAX NG](https://en.wikipedia.org/wiki/RELAX_NG) validation schema being used, such as the TEI schema (tei-all).  (We will explain the concepts of being structurally well-formed vs. semantically valid below).  The extension checks for both structural well-formedness and semantic validity automatically.
 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-06.png" alt="XML error in the body of the code marked with a red underline" caption="Figure 6. Automatically identify XML errors in VS Code" %}
 
-Now, to perform the second type of validation, the document must specify the URL of a schema declaration `<?xml-model>` at the start of the document, like this:
+To perform the second type of validation, the document must start with an XML Processing Instruction (<?xml-model>) followed by the URL of the schema you want to use, like this:
 
 ```
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
@@ -86,7 +86,7 @@ Now, to perform the second type of validation, the document must specify the URL
   schematypens="http://purl.oclc.org/dsdl/schematron"?>
 ```
 
-You can download the basic template of a TEI-XML document [here](https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/introduccion-a-tei-1/plantilla-TEI.xml), with these lines included.
+You can download the basic template of a TEI-XML document [here](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/examples-TEI.html), with these lines included.
 
 Third, the extension also offers tools to autocomplete the XML code as part of the validation for the schema RELAX NG.  For example, if we introduce the element `<l>` (used to mark a line of poetry), we can hit the space bar after the opening `<l>` and VS Code will show us a list of possible attributes to select from the menu:
 
@@ -105,9 +105,7 @@ Now that we have configured our editing software, we can start to work in TEI-XM
 ## Visualization vs. categorization
 Those who are familiar with the markup language Markdown—common today in online technical forums, as well as in GitHub, GitLab, and other code repositories—will surely recognize the use of elements like asterisks (`*`), underscores (`_`), and number signs (`#`) to make text appear a certain way in a browser. For example, text wrapped in single asterisks will be shown in italics, and text wrapped in double asterisks will be in bold. In fact, the text of this lesson is written in Markdown following these conventions.
 
-The final goal of using markup languages is the visualization of text, not its categorization. In other words, Markdown’s markings or tags do not indicate that a text belongs to a certain category (for example, the name of a person, place, or written work), but only that the text should be visualized or shown in a certain way in a web browser or other medium.
-
-Understanding the difference between visualization markings (like Markdown’s) and semantic markings (or structural markings, like we will see later in TEI) is crucial to understanding the objective of text encoding. When we mark a text fragment to encode it, we do so without worrying at first how the text was originally represented or how it might eventually be represented in the future. We are only interested in the semantic or structural function that a particular bit of text may have. Therefore, we must try to precisely identify the functions or categories of text, setting aside, as much as possible, the way in which the text is shown on the page or screen.
+However, Markdown is a procedural markup language, focused on how a text should be processed and displayed, rather than a descriptive markup language like TEI.  Descriptive markup languages label pieces of text for their semantic or structural meaning rather than how they should appear on a screen.  When we mark a text fragment to encode it in TEI, we do so without worrying at first how the text was originally represented or how it might eventually be represented in the future. We are only interested in the semantic or structural function that a particular bit of text may have. Therefore, we must try to precisely identify the functions or categories of text, setting aside, as much as possible, the way in which the text is shown on the page or screen.  
 
 Let’s clarify this better by returning to our first example. Suppose we have a digitized text where all the proper names appear in italics, such as in Whitman’s “The Dead Tenor”:
 
@@ -124,12 +122,12 @@ Later we will see in greater detail what a tag is and how it works (or, more pre
 ## XML and TEI: towards a text encoding standard
 From the beginnings of digital humanities in the 1960s, there have been many attempts at text encoding. Nearly every encoding project had its own standard, meaning the projects were incompatible and untranslatable, making collaborative work more difficult and even impossible.
 
-To resolve this problem, about twenty years later, a convention of a large number of researchers from around the world, especially from Anglo universities, established a new standard for text encoding: the [Text Encoding Initiative (TEI)](https://es.wikipedia.org/wiki/Text_Encoding_Initiative).
+To resolve this problem, about twenty years later, a convention of a large number of researchers from around the world, especially from universities in primarily English-speaking countries, established a new standard for text encoding: the [Text Encoding Initiative (TEI)](https://es.wikipedia.org/wiki/Text_Encoding_Initiative).
 
-At the time, TEI was constructed based on the markup language [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language), which is why it can sometimes be called “TEI-XML” (or also “XML/TEI”). For its part, XML (which is the abbreviation for “eXtensible Markup Language”) is a computing language whose purpose is to describe, using a series of markings or tags, a particular text object. XML and TEI are markup languages, differentiated from programming languages like C, Python, or Java, which describe objects, functions, or processes which must be executed by a computer.
+TEI is one way to use the markup language [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language), which is why it can sometimes be called “TEI-XML” (or also “XML/TEI”). For its part, XML (which is the abbreviation for “eXtensible Markup Language”) is a computing language whose purpose is to describe, using a series of markings or tags, a particular text object. XML is a markup language, differentiated from programming languages like C, Python, or Java, which describe objects, functions, or processes which must be executed by a computer.  XML doesn't provide specific tags so much as a system for how any tag should be used; it is TEI that provides the vocabulary for what tags can appear and where.
 
 ## XML
-In this lesson, we will not go into detail on the syntaxes and functions of XML.  Therefore, we recommend you take a look at this other lesson for more information on XML [link], and see the bibliography and references at the end of this lesson.
+In this lesson, we will not go into detail on the syntaxes and functions of XML.  Therefore, we recommend you take a look at this other lesson for more information on [XML](https://programminghistorian.org/en/lessons/transforming-xml-with-xsl), and see the bibliography and references at the end of this lesson.
 
 For now, all you need to know is that every document in XML must comply with two basic rules to be valid:  
 1.	It must have a single root element (containing all other elements, if any)
@@ -142,7 +140,7 @@ XML is a language that is so general and abstract that it is totally indifferent
 
 TEI is a particular dialect of XML.  It is a series of rules that determine which elements and which attributes are permitted in a document of a certain type.  More precisely, TEI is a mark-up language to encode texts of all kinds.  Documents are encoded in TEI so that they can be processed by a computer, so that they can be analyzed, transformed, reproduced, and stored depending on the needs and interests of the users (both the real people and the computers). That is why we can say that TEI is the heart of the digital humanities (or at least one of their hearts!).  It is the standard to work computationally with a group of objects that are traditionally central to the humanities: texts.  So, while XML does not care about whether the elements of a document describe text, TEI is designed exclusively to work with texts.
 
-The types of elements and attributes that are permissible in TEI, and the relationships that exist between them, are specified in the [TEI Guidelines](https://tei-c.org/release/doc/tei-p5-doc/en/html/index.html).  For example, if we want to encode a poem, we can use the TEI element`<lg>` (line group).  The TEI guidelines determine which attributes can be used on which elements and which of those elements, at the same time, contain or can be contained by other elements.  TEI determines that every element `<lg>` should contain at least one element `<l>` (line).
+The types of elements and attributes that are permissible in TEI, and the relationships that exist between them, are specified in the [TEI Guidelines](https://tei-c.org/release/doc/tei-p5-doc/en/html/index.html).  For example, if we want to encode a poem, we can use the TEI element`<lg>` (line group).  The TEI guidelines determine which attributes can be used on which elements and which of those elements, at the same time, contain or can be contained by other elements.  TEI determines that every element `<lg>` should contain at least one element `<l>` ([verse line](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-l.html)).
 
 For an example, let’s examine the first verses of *Leaves of Grass* by Walt Whitman.
 
@@ -235,7 +233,7 @@ Suppose we want to encode *Leaves of Grass* by Walt Whitman, starting with [this
     </publicationStmt>
     <sourceDesc>
       <p>
-        The text is from the 1855 edition of Walt Whitman’s Leaves of Grass.  The original copy used in this transcription is at the University of Iowa Libraries, Special Collections & University Archives.  The full text, encoding, and images are available online on the Whitman Archive at: (whitmanarchive.org/item/ppp.00271)[whitmanarchive.org/item/ppp.00271].
+        The text is from the 1855 edition of Walt Whitman’s Leaves of Grass.  The original copy used in this transcription is at the University of Iowa Libraries, Special Collections &#38; University Archives.  The full text, encoding, and images are available online on the Whitman Archive at: (whitmanarchive.org/item/ppp.00271)[whitmanarchive.org/item/ppp.00271].
       </p>
     </sourceDesc>
   </fileDesc>

@@ -56,7 +56,7 @@ Download the most [recent version of VS Code](https://code.visualstudio.com/down
 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-01.png" alt="Initial window of Visual Studio Code" caption="Figure 1. VS Code initial view" %}
 
-Now we can install a VS Code extension for working more easily with XML and TEI-XML documents: [Scholarly XML](https://marketplace.visualstudio.com/items?itemName=raffazizzi.sxml).  You can click the [Scholarly XML link](https://marketplace.visualstudio.com/items?itemName=raffazizzi.sxml) to install the extension if you already have VS Code installed, or you can or follow the walkthrough.
+Now we can install a VS Code extension for working more easily with XML and TEI-XML documents: Scholarly XML.  You can click the [Scholarly XML link](https://marketplace.visualstudio.com/items?itemName=raffazizzi.sxml) to install the extension if you already have VS Code installed, or you can or follow the walkthrough.
 
 To do this, click the extensions button in the toolbar on the left side of the window:
 
@@ -68,9 +68,9 @@ Type `Scholarly XML` in the search bar.
 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-04.png" alt="Side panel of VS Code showing the Scholarly XML extension with its install button higlighted" caption="Figure 4. Install Scholarly XML in VS Code" %}
 
-This extension allows us to do several things with the code:
+To learn more about Scholarly XML, you can [read about it on the Visual Stuidio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=raffazizzi.sxml) or [view its code repository on GitHub](https://github.com/raffazizzi/vscode-sxml).  For now, we will hilight several things this extension allows us to do with the code:
 
-First, if you select any of the text in an XML document, you can use a keyboard shortcut to automatically enclose the text in an XML element.  When you hit `ctrl+E` (on Windows or Linux) or `cmd+E` (on MacOS), VS code will open a window with the instruction “Enter abbreviation (Press Enter to confirm or Escape to cancel).”  Next, write the name of the element and hit the `enter` key.  The editor will then enclose the selected text between opening and closing tags.  When we work with XML, automatically creating the opening and closing tags can save us a lot of time while also decreasing the likelihood of introducing typos.   
+First, if you select any of the text in an XML document, you can use a keyboard shortcut to automatically enclose the text in an XML element in opening and closing tags.  Well-formed XML--that is, code that is structurally sound and able to be processed--requires every XML tag to be closed.  When you hit `ctrl+E` (on Windows or Linux) or `cmd+E` (on MacOS), VS code will open a window with the instruction “Enter abbreviation (Press Enter to confirm or Escape to cancel).”  Next, write the name of the element and hit the `enter` key.  The editor will then enclose the selected text between opening and closing tags.  When we work with XML, automatically creating the opening and closing tags can save us a lot of time while also decreasing the likelihood of introducing typos.   
 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-05.png" alt="name element highlighted in the search bar and in the body of the code" caption="Figure 5. Automatically Introduce an XML element in VS Code" %}
 

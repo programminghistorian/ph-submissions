@@ -239,7 +239,7 @@ Suppose we want to encode *Leaves of Grass* by Walt Whitman, starting with [this
   </fileDesc>
 </teiHeader>
 ```
-*Note that, in the [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) paragraph, the ampersand (&) in "Special Collections & University Archives" cannot be written with the ampersand character (&) in XML. Instead, it must be keyed in with its [escape sequence](https://www.liquid-technologies.com/Reference/Glossary/XML_EscapingData.html),* `&amp;`.
+*Note that, in the* [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) *paragraph, the ampersand (&) in "Special Collections & University Archives" cannot be written with the ampersand character (&) in XML. Instead, it must be keyed in with its [escape sequence](https://www.liquid-technologies.com/Reference/Glossary/XML_EscapingData.html),* `&amp;`.
 
 This is the minimum information required to identify the encoded document.  It tells us the title and author of the text, the person responsible for the encoding, and the source from which the text was taken.
  

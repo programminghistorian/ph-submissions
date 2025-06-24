@@ -233,12 +233,13 @@ Suppose we want to encode *Leaves of Grass* by Walt Whitman, starting with [this
     </publicationStmt>
     <sourceDesc>
       <p>
-        The text is from the 1855 edition of Walt Whitman’s Leaves of Grass.  The original copy used in this transcription is at the University of Iowa Libraries, Special Collections &#38; University Archives.  The full text, encoding, and images are available online on the Whitman Archive at: (whitmanarchive.org/item/ppp.00271)[whitmanarchive.org/item/ppp.00271].
+        The text is from the 1855 edition of Walt Whitman’s Leaves of Grass.  The original copy used in this transcription is at the University of Iowa Libraries, Special Collections &amp; University Archives.  The full text, encoding, and images are available online on the Whitman Archive at: (whitmanarchive.org/item/ppp.00271)[whitmanarchive.org/item/ppp.00271].
       </p>
     </sourceDesc>
   </fileDesc>
 </teiHeader>
 ```
+*Note that, in the <sourceDesc> paragraph, the ampersand (&) in "Special Collections & University Archives" cannot be written with the ampersand character (&) in XML. Instead, it must be keyed in with its [escape sequence](https://www.liquid-technologies.com/Reference/Glossary/XML_EscapingData.html),* `&amp;`.
 
 This is the minimum information required to identify the encoded document.  It tells us the title and author of the text, the person responsible for the encoding, and the source from which the text was taken.
  

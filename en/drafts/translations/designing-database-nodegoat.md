@@ -1,4 +1,4 @@
-﻿---
+---
 title: "From Sources to Data, Designing a Database for the Humanities and Social Sciences with nodegoat"
 slug: designing-database-nodegoat
 original: concevoir-base-donnees-nodegoat

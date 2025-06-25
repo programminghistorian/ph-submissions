@@ -1,6 +1,6 @@
 ﻿---
-title: "Lesson Title Here"
-slug: lesson-file-name-here
+title: "From Sources to Data, Designing a Database for the Humanities and Social Sciences with nodegoat"
+slug: designing-database-nodegoat
 original: concevoir-base-donnees-nodegoat
 layout: lesson
 collection: lessons

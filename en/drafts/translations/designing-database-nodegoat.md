@@ -215,7 +215,7 @@ For the **Work**, on the other hand, we will only define the **Title** attribute
 
 {% include figure.html filename="en-tr-designing-database-nodegoat-06.jpg" alt="The attributes First name and Last name of an Author are selected by checking their Name boxes." caption="Figure 6. Choosing the attributes ‘First name’ and ‘Last name’ as the values of the object name ‘Author’." %} 
 
-{% include filename="en-tr-designing-database-nodegoat-07.jpg" alt="The Overviews option is left unchecked" caption="Figure 7. The ‘Overviews’ option is left unchecked." %} 
+{% include figure.html filename="en-tr-designing-database-nodegoat-07.jpg" alt="The Overviews option is left unchecked" caption="Figure 7. The ‘Overviews’ option is left unchecked." %} 
 
 We will now choose which object types we want to use in this project. This distinction is important because it is entirely possible to record a variety of object types in our database, without using all of them, or without exploring them in the same way, as determined by the project. And so, let’s navigate to the **Management** tab and click on the **Edit** option which appears on the right side of the project name.
 

@@ -123,7 +123,7 @@ In our example, we have identified three objects that interest us: works, publis
 
 {% include figure.html filename="en-tr-designing-database-nodegoat-01.jpg" alt="A logic diagram consisting of three circles which represent the work, the publishing house, and the author. Two arrows come out from the work: one points towards the publishing house and the other towards the author" caption="Figure 1. A logic diagram representing the relationships between works, publishing houses, and authors." %}
 
-This diagram corresponds more or less to a “conceptual data model”[^5]  representing the entities that interest us and the relationships that connect them. Here, each work is linked to a specific author who wrote it and to a specific publishing house that published it.
+This diagram corresponds more or less to a “conceptual data model”[^5] representing the entities that interest us and the relationships that connect them. Here, each work is linked to a specific author who wrote it and to a specific publishing house that published it.
 
 We must then ask ourselves the following questions we have already touched upon:
 - what information does each object contain?

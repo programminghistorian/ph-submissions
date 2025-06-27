@@ -63,6 +63,8 @@ Reverse engineering is crucial for understanding digital sources beyond their su
 
 To critically engage with digital sources, historians must see them as part of broader systems shaping their preservation and interpretation. Reverse engineering is key to developing digital literacy, enabling researchers to deconstruct digital objects, uncover hidden mechanisms, and analyse their structures. This approach deepens understanding of how digital materials are created, stored, and manipulated, helping assess their authenticity and historical significance. A lesson on reverse engineering bridges this gap by teaching historians how to analyse software, databases, video games, and other digital-born objects—revealing their underlying structures, assumptions, and hidden functionalities.
 
+File structures and formats are especially interesting from a historical malware research perspective. One of the first computer viruses discovered in the wild, the Elk Cloner virus spread by attaching itself to a disk’s boot sector and activated whenever the infected disk was inserted into an Apple II computer.[^13] Around the same time, in early hacking culture, steganography — the art of hiding code or messages in images — also became a popular topic on message boards.[^14] If you want to dive deeper into file structures and formats, check out the work of Ange Albertini, a well-known reverse engineer who explores unusual file formats. His presentation, "Funky File Formats," at the chaos communication congress explores the concept of polyglot files—single files that are valid under multiple formats simultaneously. This exploration reveals how such files can function differently depending on the application interpreting them, offering unique insights into file format manipulation. Building upon this, Albertini developed Mitra, a tool designed to assist in crafting files that conform to multiple format specifications, streamlining the process of creating complex polyglots. Additionally, his Corkami project offers a comprehensive collection of hex patterns that illustrate various file format structures and anomalies, serving as a valuable reference for understanding the binary composition of different file types. For us digital Historians, it is essential to understand digital media artifacts as a structured or sometimes seemingly unstructured pile of binary data. One of the first jobs we do is to try to understand the underlying structure of those files. Engaging with resources like the Corkami project can deepen your understanding of file formats and uncover the hidden complexities within digital files, enhancing your skills in reverse engineering and digital archaeology.​ 
+
 Reverse engineering is often misunderstood, with many questioning its purpose and value. However, understanding what reverse engineering entails and why it matters is essential for appreciating its significance, especially as a contemporary historian analysing old software pieces.
 
 At its core, reverse engineering involves deconstructing a finished product to understand how it was made—a process that essentially takes the original engineering process and runs it in reverse. This process allows for the discovery of design principles, coding techniques, and creative decisions that went into the original creation.
@@ -91,7 +93,7 @@ Thus, reverse engineering sits at the intersection of technical skill, critical 
 
 ## The inner life of born-digital Media artifacts 
 
-Before beginning this hands-on analysis, you'll need to gather the necessary materials and tools to effectively examine digital image formats. First, select a JPEG file with either a .jpg or .jpeg file extension that you'd like to analyse—this can be any digital photograph or image from your personal collection, or alternatively, you can work with the sample files we provide for this exercise. The choice of image isn't critical for learning the fundamental concepts, though selecting something familiar to you may make the analysis more engaging and meaningful. Next, you'll need to install a hex editor that will serve as your primary tool for examining the binary structure of the JPEG file. While numerous options exist, including both desktop applications and browser-based alternatives, we recommend using `hexyl`.
+Before beginning this hands-on analysis, you'll need to gather the necessary materials and tools to effectively examine digital image formats. First, select a JPEG file with either a .jpg or .jpeg file extension that you'd like to analyse—this can be any digital photograph or image from your personal collection, or alternatively, you can work with the sample files we provide for this exercise. [You can download the necessary files through this link.](https://github.com/programminghistorian/ph-submissions/raw/refs/heads/gh-pages/assets/reverse-engineering-born-digital-artefacts/reverse-engineering-born-digital-artefacts.zip). The choice of image isn't critical for learning the fundamental concepts, though selecting something familiar to you may make the analysis more engaging and meaningful. We also note that all following instructions are provided for our provided files. Next, you'll need to install a hex editor that will serve as your primary tool for examining the binary structure of the JPEG file. While numerous options exist, including both desktop applications and browser-based alternatives, we recommend using `hexyl`.
 
 A hex dump is a textual representation of computer data in hexadecimal format, achieved by converting bytes into a two-digit hexadecimal number. This makes raw binary data more human-readable and easier to interpret for reverse engineering, or forensic analysis. There are several tools available for viewing hex data from a file. Here, we have listed some of the most commonly used ones.
 
@@ -111,12 +113,11 @@ To illustrate this, we begin with the basic structure of a JPEG file, as shown i
 
 When we open a sample JPEG of a cat in a hex editor, the hex view immediately exposes this structure. The file signature (FF D8 FF E0) at the beginning confirms that it is a JPEG file. We can also see metadata fields describing the image’s dimensions, colour depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values. 
 
-*Make sure to be in the appropriate directory before entering the following command into your terminal. If you have downloaded the provided files, and unzipped them in your personal "Downloads" folder, you can usually navigate there by `cd Downloads` after opening the terminal. The `-n` option tells hexyl to only display the first 256 bytes. In the spirit of a cooking show, we already prepared some of this lesson's files, which is why you find several images in the `imgs` folder. You can ignore the others for now.*
+*Make sure to be in the appropriate directory before entering the following command into your terminal. If you have downloaded the provided files, and unzipped them in your personal "Downloads" folder, you can usually navigate there by `cd Downloads/reverse-engineering-born-digital-artefacts` after opening the terminal. The `-n` option tells hexyl to only display the first 256 bytes. In the spirit of a cooking show, we already prepared some of this lesson's files, which is why you find several images in the `jpg_zip` folder. You can ignore the others for now. The $ (dollar) sign in front of a line indicates a command to be copied into the terminal. The $ sign should not be coppied.*
 
 ```shell
-$ hexyl imgs/001-cat.jpg -n 256
+$ hexyl jpg_zip/cat.jpg -n 256
 ```
-
 
 The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG file. A PNG file, as another example, would start with `89 50 4E 47 0D 0A 1A 0A` [^12]. We can also see metadata fields describing the image’s dimensions, colour depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values.
 
@@ -147,41 +148,44 @@ Similarly, ZIP files have their own distinct file signature `50 4B 03 04` that i
 
 ### Creating the Image Zip File
 
-To demonstrate this, we can create a file that functions as both a valid JPEG and a ZIP archive. The process involves first creating a standard JPEG image file and then appending a ZIP archive to the end of the file. Since JPEG parsers will stop reading once they reach the end-of-file marker for the image, the additional ZIP data will remain hidden from the image viewer. However, a ZIP parser will read the file from the end and identify the ZIP header, enabling the file to function as a valid archive. This dual-format trick exploits the differences in how file types are interpreted by different software, effectively creating a file with two identities.
+To demonstrate this, we can create a file that functions as both a valid JPEG and a ZIP archive. The goal of this small exercise is to show how we can hide text in an image file. The process involves first creating a standard JPEG image file and then appending a ZIP archive to the end of the file. Since JPEG parsers will stop reading once they reach the end-of-file marker for the image, the additional ZIP data will remain hidden from the image viewer. However, a ZIP parser will read the file from the end and identify the ZIP header, enabling the file to function as a valid archive. This dual-format trick exploits the differences in how file types are interpreted by different software, effectively creating a file with two identities.
 
-The following commandos create a text file, compress it into a ZIP file, then continues to create a copy of our cat image and finally appends the ZIP file to the copied image file.
+The following commandos create a text file, compress it into a ZIP file, then continues to create a copy of our cat image and finally appends the ZIP file to the copied image file. We will first navigate directly into the `jpg_zip` folder, for easier application of the terminal commands. *A # symbol in front of a line indicates a comment for you, the reader, and doesn't need to be coppied.*
 
 *With PowerShell (Windows):*
 
 ```powershell
+# Let's move to the appropriate files folder
+$ cd jpg_zip
+
 # Create the text file
-"Hello World!" | Set-Content -Path hidden-content.txt -Encoding UTF8
+$ "Hello World!" | Set-Content -Path hidden-content.txt -Encoding UTF8
 
 # Create the zip archive
-Compress-Archive -Path hidden-content.txt -DestinationPath hidden-content.zip
+$ Compress-Archive -Path hidden-content.txt -DestinationPath hidden-content.zip
 
 # Copy the image file
-Copy-Item -Path cat.jpg -Destination cat-with-hidden-content.jpg
+$ Copy-Item -Path jpg_zip/cat.jpg -Destination cat-with-hidden-content.jpg
 
 # Append the zip file bytes to the copied image
-$zipBytes = Get-Content -Path hidden-content.zip -Encoding Byte -Raw
-Add-Content -Path cat-with-hidden-content.jpg -Value $zipBytes -Encoding Byte
+$ $zipBytes = Get-Content -Path hidden-content.zip -Encoding Byte -Raw
+$ Add-Content -Path cat-with-hidden-content.jpg -Value $zipBytes -Encoding Byte
 ```
 
 *Under macOS or Linux Terminal:*  
 
 ```shell
 # Let's move to the appropriate files folder
-$ cd files/jpg_zip
+$ cd jpg_zip
 
 # Create the text file
-$ echo "Hello World!" > hidden-content.txt
+$ echo "Hello World" > hidden-content.txt
 
 # Create the zip archive
 $ zip hidden-content.zip hidden-content.txt
 
 # Copy the image file
-$ cp cat.jpeg cat-with-hidden-content.jpg
+$ cp cat.jpg cat-with-hidden-content.jpg
 
 # Append the zip file bytes to the copied image
 $ cat hidden-content.zip >> cat-with-hidden-content.jpg
@@ -213,12 +217,12 @@ $ hexyl hidden-content.zip
 ```
 
 ```shell
-$ hexyl cat.jpeg | tail -n 16; hexyl cat-with-hidden-content.jpg | tail -n 16
+$ hexyl cat.jpg | tail -n 16; hexyl cat-with-hidden-content.jpg | tail -n 16
 ```
 *The `| tail -n` part will return only the last 16 rows of output*
 
 ```shell
-# Last lines of the hexdump of fig_003-cat.jpeg
+# Last lines of the hexdump of fig_003-cat.jpg
 │00031820│ 52 ce 7e 61 c5 45 1c e4 ┊ b9 08 06 cf 52 2b 4d 2d │R×~a×E•×┊×••×R+M-│
 │00031830│ 2d 63 1f 34 65 8f d6 9a ┊ 62 88 b1 0a 81 57 da 81 │-c•4e×××┊b××_×W××│
 │00031840│ 14 9d da 32 63 c7 0f de ┊ ac 26 88 6e d7 2b 70 17 │•××2c×•×┊×&×n×+p•│
@@ -281,7 +285,7 @@ The last command should return "Hello World!", the content of your original text
 ```shell
 $ hexyl --color never cat-with-hidden-content.jpg | grep '50 4b 03 04'
 ```
-*hexyl by default adds colour information to the hex dump, which interferes with our search.*
+*hexyl by default adds colour information to the hex dump, which interferes with our search. We can disable this behaviour with the option `--color never`. You should recieve the following output. If no zip file would have been present in our jpg, we wouldn't have received any output at all. The fact that we got something returned proves that our little trick worked.*
 
 ```shell
 # Output of our search for zip file header information in a jpg file.
@@ -289,10 +293,6 @@ $ hexyl --color never cat-with-hidden-content.jpg | grep '50 4b 03 04'
 ```
 
 This example illustrates how reverse engineering through hex analysis can uncover the layered nature of digital artifacts. What appears to be a simple image file may, in fact, be a container for additional data or hidden functionality. The ability to uncover and interpret these hidden structures is essential for understanding how digital objects are constructed and how their functionality can be manipulated or repurposed.
-
-### More fun with files
-
-File structures and formats are especially interesting from a historical malware research perspective. One of the first computer viruses discovered in the wild, the Elk Cloner virus spread by attaching itself to a disk’s boot sector and activated whenever the infected disk was inserted into an Apple II computer.[^13] Around the same time, in early hacking culture, steganography — the art of hiding code or messages in images — also became a popular topic on message boards.[^14] If you want to dive deeper into file structures and formats, check out the work of Ange Albertini, a well-known reverse engineer who explores unusual file formats. His presentation, "Funky File Formats," at the chaos communication congress explores the concept of polyglot files—single files that are valid under multiple formats simultaneously. This exploration reveals how such files can function differently depending on the application interpreting them, offering unique insights into file format manipulation. Building upon this, Albertini developed Mitra, a tool designed to assist in crafting files that conform to multiple format specifications, streamlining the process of creating complex polyglots. Additionally, his Corkami project offers a comprehensive collection of hex patterns that illustrate various file format structures and anomalies, serving as a valuable reference for understanding the binary composition of different file types. For us digital Historians, it is essential to understand digital media artifacts as a structured or sometimes seemingly unstructured pile of binary data. One of the first jobs we do is to try to understand the underlying structure of those files. Engaging with resources like the Corkami project can deepen your understanding of file formats and uncover the hidden complexities within digital files, enhancing your skills in reverse engineering and digital archaeology.​ 
 
 ## Reverse Engineering a cracked Commodore 64 Game
 

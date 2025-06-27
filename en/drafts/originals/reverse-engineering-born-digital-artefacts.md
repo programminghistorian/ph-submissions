@@ -105,16 +105,18 @@ For the following example, we will use hexyl. We chose it primarily because we a
 
 ### The bit code of an image
 
-To illustrate this, we begin with the basic structure of a JPEG file, as shown in the diagram below. The JPEG format follows a clearly defined structure, starting with a file signature or “magic number” that identifies it as a JPEG, followed by metadata, image data, and an end-of-file marker. This predictable format allows hex editors to recognize and parse the file correctly.
+To illustrate this, we begin with the basic structure of a JPEG file, as shown in the diagram below. The JPEG format follows a clearly defined structure, starting with a file signature or “magic number” that identifies it as a JPEG, followed by metadata, image data, and an end-of-file marker. This predictable format allows hex editors to recognize and parse the file correctly. The image below is an example of the bit code of an image. It is not necessary to fully understand this image at this point, but it shows some of the concepts that will be discussed in the lesson.
 
 {% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-02.png" alt="The illustration shows a color-coded hex dump on the left side. Some of the output is highlighted and connected with a dashed line to detailed explenations on the right side, indicating where the start of the image is, or where one could find more information about the files format." caption="Figure 2. Infographic annotating a JPEG's file header in hexadecimal notation. (Ange Albertini 2022 – CC-BY 4.0 )" %}
 
-When we open a sample JPEG of a cat in a hex editor, the hex view immediately exposes this structure. The file signature (FF D8 FF E0) at the beginning confirms that it is a JPEG file. We can also see metadata fields describing the image’s dimensions, colour depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values.
+When we open a sample JPEG of a cat in a hex editor, the hex view immediately exposes this structure. The file signature (FF D8 FF E0) at the beginning confirms that it is a JPEG file. We can also see metadata fields describing the image’s dimensions, colour depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values. 
+
+*Make sure to be in the appropriate directory before entering the following command into your terminal. If you have downloaded the provided files, and unzipped them in your personal "Downloads" folder, you can usually navigate there by `cd Downloads` after opening the terminal. The `-n` option tells hexyl to only display the first 256 bytes. In the spirit of a cooking show, we already prepared some of this lesson's files, which is why you find several images in the `imgs` folder. You can ignore the others for now.*
 
 ```shell
 $ hexyl imgs/001-cat.jpg -n 256
 ```
-*The `-n` option tells hexyl to only display the first 256 bytes*
+
 
 The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG file. A PNG file, as another example, would start with `89 50 4E 47 0D 0A 1A 0A` [^12]. We can also see metadata fields describing the image’s dimensions, colour depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values.
 

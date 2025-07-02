@@ -190,7 +190,7 @@ To set up CollectionBuilder for your exhibition, you first need to navigate to t
 In the top right-hand corner, you will see an option to "Use this template." If you don't see this button, you need to sign in to your GitHub account first.
 
 
-{% include figure.html filename="en-or-digital-exhibition-collectionbuilder-01.png" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
+{% include figure.html filename="en-or-digital-exhibition-collectionbuilder-01.png" alt="Screenshot of Github interface with the 'Use this template' button circled." caption="Figure 1. Choosing the CB template" %}
 
 
 When you click on that button, you will have two options. You want to "Create a new repository." This will let you copy all of the template files to your account so you can start building your exhibition. This will give you all the framework repository defaults to get you started.
@@ -379,8 +379,8 @@ Since this page is more complicated due to its functionality, we have to edit se
 
 - **_includes/jsbrowse-js.html** in this file you can change the text of the button that says "View Full Record" and edit the Item count, "# of # items". To do this you are looking for the line to replace the English preposition "of" and the noun "items"
 
-```// add number*
-
+```
+// add number*
 *document.querySelector(\"#numberOf\").innerHTML =
 filteredItems.length + \" of \" + items.length + \" items\";*
 ```

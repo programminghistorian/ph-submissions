@@ -1,23 +1,33 @@
 ---
 title: "Building a Digital Exhibition with CollectionBuilder"
 slug: digital-exhibition-collectionbuilder
+original: exhibicion-con-collection-builder
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD
+translation_date: YYYY-MM-DD
 authors:
+- Jennifer Isasi
+reviewers:
+- Juan Pablo Angarita Bernal
+- Matías Butelman
+editors:
+- Maria José Afanador-Llach
+- Isabelle Gribomont
+translator:
 - Natasha Nunn
 - Sarah Severson
-reviewers:
+translation-reviewer:
 - Forename Surname
 - Forename Surname
-editors:
+translation-editor:
 - Agustín Cosovschi
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/660
 difficulty: 
 activity: 
 topics: 
-abstract: Short abstract of this lesson
-avatar_alt: Visual description of lesson image
+abstract: En esta lección aprenderás a utilizar la versión ligera de CollectionBuilder para publicar una colección digital.
+avatar_alt: Interior de una sala de museo antiguo.
 doi: XX.XXXXX/phen0000
 ---
 

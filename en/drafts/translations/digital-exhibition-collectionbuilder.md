@@ -200,7 +200,7 @@ To set up CollectionBuilder for your exhibition, you first need to navigate to t
 In the top right-hand corner, you will see an option to "Use this template." If you don't see this button, you need to sign in to your GitHub account first.
 
 
-{% include figure.html filename="en-or-digital-exhibition-collectionbuilder-01.png" alt="Screenshot of Github interface with the 'Use this template' button circled." caption="Figure 1. Choosing the CB template" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-01.png" alt="Screenshot of Github interface with the 'Use this template' button circled." caption="Figure 1. Choosing the CB template" %}
 
 
 When you click on that button, you will have two options. You want to "Create a new repository." This will let you copy all of the template files to your account so you can start building your exhibition. This will give you all the framework repository defaults to get you started.
@@ -231,13 +231,13 @@ After you click the "Commit changes' button, your file is in the repository.
 
 Since your **_data folder** contains several metadata files, the next step is to tell the CollectionBuilder template which one to use for your exhibition.
 
-{% include figure.html filename="en-or-digital-exhibition-collectionbuilder-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
 
 To do this, we will edit the **\_config.yml** file, which can be found on the main repository page. Once you have located the **\_config.yml** file
 
 Under the heading \# COLLECTION SETTINGS, you will change the **metadata: demo-metadata** to the name of your metadata file you just uploaded. In our example, we changed it to **metadata: playbills-demo**
 
-{% include figure.html filename="en-or-digital-exhibition-collectionbuilder-03.png" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-03.png" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
 
 ### 3.4 Publish your site
 
@@ -245,7 +245,7 @@ While you could skip to the section to completely customize your exhibition befo
 
 To publish your site using GitHub Pages, you just need to edit a few settings. From your repository home page, click on the settings option at the top right.
 
-{% include figure.html filename="en-or-digital-exhibition-collectionbuilder-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
 
 Select **Pages** from the left side menu:
 
@@ -257,7 +257,7 @@ Select **Pages** from the left side menu:
 
 It will now take GitHub a few minutes to build your site using the contents of your repository for the first time.
 
-{% include figure.html filename="en-or-digital-exhibition-collectionbuilder-05.png" alt="Visual description of figure image" caption="Figure 5. Caption text to display" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-05.png" alt="Visual description of figure image" caption="Figure 5. Caption text to display" %}
 
 When your site is ready, refresh the page, and you will see the URL to your live site. The URL will follow the pattern: [https://username.github.io/repository-name](https://username.github.io/repository-name)
 
@@ -273,7 +273,7 @@ Did you follow all the above steps, and don't see what you expect?
 
 - Have all of your commits or changes been processed? You can click on the clock with the number of commits and look to see if they have a green check mark next to them.
 
-{% include figure.html filename="en-or-digital-exhibition-collectionbuilder-06.png" alt="Visual description of figure image" caption="Figure 6. Caption text to display" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-06.png" alt="Visual description of figure image" caption="Figure 6. Caption text to display" %}
 
 ## 4. Customizing your digital exhibition
 
@@ -287,7 +287,7 @@ The first change we will make is to add our logo and banner image and update the
 
 Open the **_config.yml** file again.Under **SITE SETTINGS**, you can update your site's title, tagline, and description.
 
-{% include figure.html filename="en-or-digital-exhibition-collectionbuilder-07.png" alt="Visual description of figure image" caption="Figure 7. Caption text to display" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-07.png" alt="Visual description of figure image" caption="Figure 7. Caption text to display" %}
 
 Under **Site/Organization Branding** section, you can add as much organizational information as you want. Here I've added our library name and the URL to our library, but I have not include a logo,
 
@@ -295,7 +295,7 @@ Next, we can add an image to the home page banner. If your exhibition includes i
 
 Since our collection consists solely of PDF objects, I needed to create a collage of some covers. To use this file in your header, you need to first upload it to the **/assets/img** folder and then add that path to the **theme.yml** file in the **data** folder.
 
-{% include figure.html filename="en-or-digital-exhibition-collectionbuilder-08.png" alt="Visual description of figure image" caption="Figure 8. Caption text to display" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-08.png" alt="Visual description of figure image" caption="Figure 8. Caption text to display" %}
 
 You can also use an external URL if you want to host your banner somewhere outside the project.
 
@@ -311,7 +311,7 @@ First, we will locate the line of code that creates the box by searching for "lo
 
 The next thing you can do is change the order of the boxes. In our example, I decided to move the subject box to the top and move the timeline down. The last thing I want to do is change the title of the Subject box to **Top Genre** to better reflect my metadata.
 
-{% include figure.html filename="en-or-digital-exhibition-collectionbuilder-09.png" alt="Visual description of figure image" caption="Figure 9. Caption text to display" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-09.png" alt="Visual description of figure image" caption="Figure 9. Caption text to display" %}
 
 ### 4.2 Item page
 
@@ -325,7 +325,7 @@ I also wanted a number of the new fields like Theatre Name, Play Title and Playw
 
 I also added a new URL field and included external_link = true so people could click on it to easily go to the item in the Internet Archive. The metadata field can either have text or an external link, not both. You'll notice in our edits that we left in the latitude and longitude fields, but since we don't have that in our metadata, they do not show up.
 
-{% include figure.html filename="en-or-digital-exhibition-collectionbuilder-10.png" alt="Visual description of figure image" caption="Figure 10. Caption text to display" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-10.png" alt="Visual description of figure image" caption="Figure 10. Caption text to display" %}
 
 For more ways that you can customize your exhibition, visit the CollectionBuilder documentation at [https://collectionbuilder.github.io/cb-docs/docs/customization/](https://collectionbuilder.github.io/cb-docs/docs/customization/)
 

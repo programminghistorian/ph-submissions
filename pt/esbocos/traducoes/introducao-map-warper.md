@@ -38,9 +38,9 @@ Nota Explicativa: a versão lusófona desta lição distingui-se da versão orgi
 
 ## O Map Warper
 
-O [Map Warper](http://mapwarper.net/) é uma ferrramenta de código aberto e de acesso livre. Desde 2008, o site tem sido desenvolvido e mantido por [Tim Waters](https://thinkwhere.wordpress.com/) para georreferenciar imagens de áreas geográficas ao compará-las com o [OpenStreetMap](https://perma.cc/52L2-Q9W8) sem a necessidade de se instalar um software. A ferramenta já foi utilizada em vários projetos digitais, por diversas instituições, e é utilizada por profissionais que não são necessariamente especializados na área da cartografia.
+O [Map Warper](http://mapwarper.net/) ("em inglês) é uma ferrramenta de código aberto e de acesso livre. Desde 2008, o site tem sido desenvolvido e mantido por [Tim Waters](https://thinkwhere.wordpress.com/) ("em inglês) para georreferenciar imagens de áreas geográficas ao compará-las com o [OpenStreetMap](https://perma.cc/52L2-Q9W8) ("em inglês) sem a necessidade de se instalar um software. A ferramenta já foi utilizada em vários projetos digitais, por diversas instituições, e é utilizada por profissionais que não são necessariamente especializados na área da cartografia.
 
-Esta ferramenta foi criada para que fosse possível georreferenciar mapas antigos (mapas-múndi, portulanos, cartas marítimas, mapas topográficos, mapas de cadastro, etc.), fotografias aéreas e outros documentos que expressam o espaço. O Map Warper permite, então, que o usuário gere uma imagem georreferenciada de tipo *raster* (ex. Tiff) que os Sistemas de Informação Geográfica (de que são exemplo: o [QGIS ](https://qgis.org/), o [Map Server](https://perma.cc/W2B8-QD4U), [JOSM ](https://perma.cc/YQ6S-62BA), [ArcGIS](https://www.arcgis.com/index.html), o [Google Earth](https://earth.google.com/web/), o [WorldMap](https://worldmap.maps.arcgis.com/home/index.html), etc.), online ou *desktop*,  são capazes de acessar e trabalhar com. A capacidade colaborativa do Map Warper permite descentralizar o processo de georreferenciamento, catalogação e visualização.
+Esta ferramenta foi criada para que fosse possível georreferenciar mapas antigos (mapas-múndi, portulanos, cartas marítimas, mapas topográficos, mapas de cadastro, etc.), fotografias aéreas e outros documentos que expressam o espaço. O Map Warper permite, então, que o usuário gere uma imagem georreferenciada de tipo *raster* (ex. Tiff). Os Sistemas de Informação Geográfica (de que são exemplo: o [QGIS ](https://qgis.org/) ("em inglês), o [Map Server](https://perma.cc/W2B8-QD4U) ("em inglês), [JOSM ](https://perma.cc/YQ6S-62BA) ("em inglês), [ArcGIS](https://www.arcgis.com/index.html) ("em inglês), o [Google Earth](https://earth.google.com/web/), o [WorldMap](https://worldmap.maps.arcgis.com/home/index.html), etc.) ("em inglês) são então capazes de trabalhar com este conjunto de dados georreferenciados na imagem *raster*. A capacidade colaborativa do Map Warper permite descentralizar o processo de georreferenciamento, catalogação e visualização.
 
 É graças a estas caraterísticas que o Map Warper demonstra ser uma ferramenta útil aos pesquisadores, professores e estudantes, além de instituições que busquem digitizar seus acervos cartográficos como a [Biblioteca Nacional de Portugal](https://bndigital.bnportugal.gov.pt/colecoes). 
 
@@ -64,7 +64,7 @@ Neste tutorial vamos georreferenciar um mapa de c.1795 da [Província do Entre D
 
 ### Considerações técnicas
 
-O mundo em que vivemos é marcado por um profundo desenvolvimento técnico e mudança epistemológica que tem dado uma maior atenção ao espaço e à espacialidade. Isto tem permitido às novas tecnologias influenciar e modificar como refletimos e compreendemos as Ciências Sociais e Humanas. Nesse sentido, as novas ferramentas expandiram os horizontes dos estudos e da visualização de dados, o que altera como observamos e refletimos sobre o passado. O Map Warper é um produto e um producente destas sínteses entre a tecnologia e a expansão questões relativas ao espaço.
+O mundo em que vivemos é marcado por um profundo desenvolvimento técnico e mudança epistemológica que tem dado uma maior atenção ao espaço e à espacialidade. Isto tem permitido às novas tecnologias influenciar e modificar como refletimos e compreendemos as Ciências Sociais e Humanas. Nesse sentido, as novas ferramentas expandiram os horizontes dos estudos e da visualização de dados, o que altera como observamos e refletimos sobre o passado. O Map Warper é um produto e um producente destas sínteses entre a tecnologia e a expansão de questões relativas ao espaço.
 
 O georreferenciamento é um processo que estabelece coordenadas geográficas num Sistema de Referência Cartográfica (SRC) a um documento que foi digitalizado. Vários historiadores georreferenciam mapas para estudar como lugares mudaram com a passagem do tempo. *Porém, ao se transformar a imagem original num documento georreferenciado está a gerar uma nova compreensão da espacialidade representada na fonte original. É importante levar em conta o encontro, e o choque, causado ao se relacionar concepções pretéritas e digitais do espaço e de representação cartográfica.*
 
@@ -82,7 +82,7 @@ Algumas questões previas podem ser:
 
 ### Criando uma conta
 
-A partir do navegador de internet preferido navegue até MapWarper(https://mapwarper.net/) e clique na aba "Create Account" (em português, Criar Conta) no canto superior direito. Pode utilizar a tua conta pessoal Facebook, OpenstreetMap ou GitGub para fazer o login de modo expedito.
+A partir do navegador de internet preferido navegue até Map Warper(https://mapwarper.net/) ("em inglês) e clique na aba "Create Account" (em português, Criar Conta) no canto superior direito. Pode utilizar a tua conta pessoal Facebook, OpenstreetMap ou GitGub para fazer o login de modo expedito.
 
 {% include figure.html filename="pt-tr-introducao-map-warper-02.gif" alt="Gif demonstrando como acessar a aba para criação de um perfil no site Map Warper." caption="Figura 2. Criando uma conta." %} 
 
@@ -90,7 +90,7 @@ A partir do navegador de internet preferido navegue até MapWarper(https://mapwa
 
 Na página inicial clique no botão verde "Upload Map" (em português, Carregar Mapa), lado esquerdo do ecrã, para importar a imagem para o Map Warper diretamente do teu ficheiro ou a partir de um link de um repositório digital através de um URL. Já nesta etapa pode adicionar metadados ao documento.
 
-Para importar o mapa de Villasboas selecionas a opção de "Select File" (em português, Selecionar ficheiro), no centro da página, e navegas no "Explorador de Ficheiros" até o Ambiente de Trabalho na Pasta "Map Warper_Introdução" e selecionas o ficheiro "Mp_EDM_Villasboas_1795_SOBRENOME.jpg".
+Para importar o mapa de Villasboas selecione a opção de "Select File" (em português, Selecionar ficheiro), no centro da página, e navege no "Explorador de Ficheiros" até o Ambiente de Trabalho na Pasta "Map Warper_Introdução" e selecione o ficheiro "Mp_EDM_Villasboas_1795_SOBRENOME.jpg".
 
 ### Edição dos metadados
 
@@ -125,7 +125,7 @@ Na página inicial os mapas importados estarão em Favoritos (Favourites) no cen
 
 ### Como retificar
 
-Neste subponto irás compreender como georreferenciar o mapa importado. Clique na aba "Rectify" (em português, Retificar), onde existirão duas janelas. À esquerda o mapa importado e à direita um mapa base (OpenstreetMap), será a partir deste mapa à direita que irás estabelecer pontos de controle. Abaixo destas janelas encontrarás o "Control Planel" (em português, Painel de Controle), que permite ajustar os pontos de controle e avaliar o seu nível de exatidão.
+Neste subponto irá compreender como georreferenciar o mapa importado. Clique na aba "Rectify" (em português, Retificar), onde existirão duas janelas. À esquerda o mapa importado e à direita um mapa base (OpenstreetMap), será a partir deste mapa à direita que irá estabelecer pontos de controle. Abaixo destas janelas encontrará o "Control Planel" (em português, Painel de Controle), que permite ajustar os pontos de controle e avaliar o seu nível de exatidão.
 
 ![Layer](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon1.png): O icóne "Layer" (em português, Camada), na janela da direita, permite a seleção dos elementos presentes no mapa base do OpenstreetMap ou Mapbox Satellite.
 
@@ -176,7 +176,7 @@ x,y,lon,lat
 ```
 
 ### Prática
-Neste subponto irás, de facto, georreferenciar o mapa importado. Clique e acesse a aba "Rectify" (em português, Retificar). Ao clicar em **M** poderás mover-te pelos mapas, aproveita esta oportunidade para te orientares, dando zoom até estares confortável com o que vês nas janelas.
+Neste subponto irá, de facto, georreferenciar o mapa importado. Clique e acesse a aba "Rectify" (em português, Retificar). Ao clicar em **M** poderá mover-te pelos mapas, aproveita esta oportunidade para te orientar, dando zoom até estar confortável com o que vês nas janelas.
 
 É necessário estabelecer um conjunto de critérios e selecionar quais pontos serão georreferenciados. Como o mapa de Villasboas contém um conjunto vasto de informações existem algumas estratégias possíveis. Porém, não devemos selecionar demasiados pontos, somente os necessários para termos uma versão georreferenciada do mapa antigo.
 
@@ -226,14 +226,14 @@ A aba "Crop" (em português, Recortar) permite que corte uma seção do mapa car
 -   ![DrawNewPolygon](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon10.gif):  "Draw new Polygon to Mask" (em português,Desenhar Novo Polígno para Mascará)
 -   ![DeletePolygon](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon11.gif):  "Delete a Polygon" (em português, Eliminar Polígno)
 
-Desenhe ao redor da área que deseja manter. Então, para aplicar a Máscara ao mapa, clique em *Mask Map!*. Após este passo deves retornar a aba "Rectify" (em português, Retificar) e no fundo da página ativar a opção "True" (em português, Verdadeiro) e de novo selecionar a opção *Warp Image!*.
+Desenhe ao redor da área que deseja manter. Então, para aplicar a Máscara ao mapa, clique em *Mask Map!*. Após este passo deve retornar a aba "Rectify" (em português, Retificar) e no fundo da página ativar a opção "True" (em português, Verdadeiro) e de novo selecionar a opção *Warp Image!*.
 
 {% include figure.html filename="pt-tr-introducao-map-warper-06.png" alt="Realce do mapa de Villasboas que será retificado." caption="Figura 6. 'Mask Map' aplicado ao mapa de Villasboas." %}
 
 
 ### Alinhar
 
-A aba "Align" (em português,Alinhar) permite ordenar um conjunto de mapas a partir de um mosaico. Uma ferramenta adequada para conectar mapas fragmentados, ortofotos e outros documentos. Contudo, não esqueças de clicar em "Align Map" (em português, Alinhar Mapa) para que o Map Warper faça um mosaico.
+A aba "Align" (em português, Alinhar) permite ordenar um conjunto de mapas a partir de um mosaico. Uma ferramenta adequada para conectar mapas fragmentados, ortofotos e outros documentos. Contudo, não esqueça de clicar em "Align Map" (em português, Alinhar Mapa) para que o Map Warper faça um mosaico.
 
 {% include figure.html filename="pt-tr-introducao-map-warper-07.gif" alt="Gif demonstrando como alinhar mapas em mosaicos." caption="Figura 7. Visualização de como adicionar um mapa ao mosaico." %}
 
@@ -258,7 +258,7 @@ Na aba "Ativicty" (em português, Atividade) é possível monitorar as interven�
 
 ### Comentários
 
-A aba "Commentary" (em português,Comentários) permite que os usuários agreguem comentários sobre o mapa. Este é um espaço aberto que permite que outros comuniquem com o usuário que compartilhou o material cartográfico. Também é um lugar útil para enriquecer a descrição e catalogação do documento importado. Certifique-se de clicar em **Adicionar Comentário** (*Add Comment*) para salvar.
+A aba "Commentary" (em português, Comentários) permite que os usuários agreguem comentários sobre o mapa. Este é um espaço aberto que permite que outros comuniquem com o usuário que compartilhou o material cartográfico. Também é um lugar útil para enriquecer a descrição e catalogação do documento importado. Certifique-se de clicar em **Adicionar Comentário** (*Add Comment*) para salvar.
 
 ## Considerações finais
 

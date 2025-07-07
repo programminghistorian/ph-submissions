@@ -498,7 +498,7 @@ Aycock’s *Amnesia Remembered* offers a detailed exploration of software reuse 
 
 Additional influential examples include the analysis of the Atari 2600 game *Entombed* (1982)[^19], which successfully reconstructed its maze-generation algorithm and uncovered hidden software issues, and Aycock's large-scale study, *The Sincerest Form of Flattery* (2022)[^20], examining nearly two thousand Atari game ROMs to identify widespread patterns of code reuse.
 
-To practically engage with reverse engineering, historians now have access to several approachable tools. One such tool is Radare2[^21], a powerful open-source reverse engineering framework widely used by cybersecurity professionals for binary analysis and software inspection. Although originally designed for low-level software diagnostics, exploit research, and malware analysis, Radare2 can also be leveraged by historians to explore the internal structure and behaviour of vintage software. Its command-line interface and modular toolkit support disassembly, debugging, and data visualization—making it possible to inspect software logic even in the absence of source code. The following image shows the reverse-engineered code from the game crack example, as visualized using Radare2.
+To practically engage with reverse engineering, historians now have access to several approachable tools. One such tool is Radare2[^21], a powerful open-source reverse engineering framework widely used by cybersecurity professionals for binary analysis and software inspection. Although originally designed for low-level software diagnostics, exploit research, and malware analysis, Radare2 can also be leveraged by historians to explore the internal structure and behaviour of vintage software. Its command-line interface and modular toolkit support disassembly, debugging, and data visualization—making it possible to inspect software logic even in the absence of source code. While a detailed explanation of its functionality would exceed the scope of this paper, further information on Radare2's installation and operational specifics can be found in its official documentation.[^22] The following shell output shows the reverse-engineered code from the game crack example, as visualized using Radare2.
 
 ```shell
 # Open a dump of the summer games sca crack with radare2
@@ -534,11 +534,11 @@ r2 -a 6502 -b 8 -m 0x0801 summer_games_clean.pr
 [0x000008ba]> 
 ```
 
-To make sense of this output, historians must become familiar with low-level machine instructions and how they operate within the architecture of the system they are studying—such as the 6502 processor in the Commodore 64.[^22] For example, the line `0x000008bc bee508 ldx 0x08e5,y` means “load the value from memory address 0x08e5 (offset by the Y register) into the X register.” Each line represents a discrete machine operation, and understanding these require learning a small set of core instructions (like `lda`, `sta`, `jsr`, `bne`) and how memory addresses and processor registers interact. While interpreting such code can be challenging at first, it opens up powerful avenues for understanding how software was constructed and modified in historical contexts.
+To make sense of this output, historians must become familiar with low-level machine instructions and how they operate within the architecture of the system they are studying—such as the 6502 processor in the Commodore 64.[^23] For example, the line `0x000008bc bee508 ldx 0x08e5,y` means “load the value from memory address 0x08e5 (offset by the Y register) into the X register.” Each line represents a discrete machine operation, and understanding these require learning a small set of core instructions (like `lda`, `sta`, `jsr`, `bne`) and how memory addresses and processor registers interact. While interpreting such code can be challenging at first, it opens up powerful avenues for understanding how software was constructed and modified in historical contexts.
 
-Similarly valuable is **RetroDebugger[^23]**, a visual debugger integrated with emulators for classic systems (such as the Commodore 64 and Atari 8-bit computers), enabling step-by-step exploration of vintage software execution and memory states. Platforms such as **RetroReversing.com[^24]** offer detailed tutorials, practical documentation, and a community environment designed to guide beginners smoothly into reverse engineering.
+Similarly valuable is **RetroDebugger[^24]**, a visual debugger integrated with emulators for classic systems (such as the Commodore 64 and Atari 8-bit computers), enabling step-by-step exploration of vintage software execution and memory states. Platforms such as **RetroReversing.com[^25]** offer detailed tutorials, practical documentation, and a community environment designed to guide beginners smoothly into reverse engineering.
 
-For visualizing and interpreting binary file structures, the **ImHex Patterns Repository** provides structured templates that simplify complex file format analysis, supporting a clearer, guided understanding of digital files. Furthermore, web-based emulators like **JS99er[^25]**—a TI-99/4A emulator accessible directly from any browser—allow historians immediate, authentic interaction with historical software.
+For visualizing and interpreting binary file structures, the **ImHex Patterns Repository** provides structured templates that simplify complex file format analysis, supporting a clearer, guided understanding of digital files. Furthermore, web-based emulators like **JS99er[^26]**—a TI-99/4A emulator accessible directly from any browser—allow historians immediate, authentic interaction with historical software.
 
 Together, these resources significantly reduce barriers to entry, fostering an open, collaborative community around reverse engineering. This introductory exploration serves as a foundation, underscoring that much remains to be discovered through reverse engineering. With tools and case studies like those presented here, historians are well-positioned to expand their digital literacy, enrich their interpretations, and actively contribute to preserving and understanding our digital past.
 
@@ -581,10 +581,12 @@ Together, these resources significantly reduce barriers to entry, fostering an o
 
 [^21]:  “Radareorg/Radare2.” C. 2012. Reprint, radare org, June 1, 2025. [https://github.com/radareorg/radare2](https://github.com/radareorg/radare2).
 
-[^22]:  “Steil, Michael. “6502 | Ultimate Commodore 64 Reference.” Accessed July 7, 2025. [https://www.pagetable.com/c64ref/6502/#](https://www.pagetable.com/c64ref/6502/#).
+[^22]: "Installation," in The Official Radare2 Book, accessed July 7, 2025,[https://book.rada.re/install/intro.html](https://book.rada.re/install/intro.html).
 
-[^23]:  slajerek. “Slajerek/RetroDebugger.” C, May 12, 2025. [https://github.com/slajerek/RetroDebugger](https://github.com/slajerek/RetroDebugger).
+[^23]:  “Steil, Michael. “6502 | Ultimate Commodore 64 Reference.” Accessed July 7, 2025. [https://www.pagetable.com/c64ref/6502/#](https://www.pagetable.com/c64ref/6502/#).
 
-[^24]:  “Retro Reverse Engineering.” Accessed May 21, 2025. [https://www.retroreversing.com/](https://www.retroreversing.com/).
+[^24]:  slajerek. “Slajerek/RetroDebugger.” C, May 12, 2025. [https://github.com/slajerek/RetroDebugger](https://github.com/slajerek/RetroDebugger).
 
-[^25]:  “JS99’er.” Accessed May 21, 2025. [https://js99er.net/](https://js99er.net/#/).
+[^25]:  “Retro Reverse Engineering.” Accessed May 21, 2025. [https://www.retroreversing.com/](https://www.retroreversing.com/).
+
+[^26]:  “JS99’er.” Accessed May 21, 2025. [https://js99er.net/](https://js99er.net/#/).

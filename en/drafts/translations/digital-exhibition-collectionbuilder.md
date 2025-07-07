@@ -61,7 +61,7 @@ CollectionBuilder offers three [different templates](https://collectionbuilder.g
 
 3.  **CB-CVS** allows for the most customization, but you must download software to your computer. More advanced display templates let you incorporate 360-degree panorama images, compound objects (like a scrapbook or an archival folder), and multiples (like a postcard with a front and back or texts and their transcripts).
 
-This lesson will use the **CB-GH template**, which has fewer software dependencies and uses a collection of digital objects already online in the Internet Archive. However, projects can later be moved to the more advanced CollectionBuilder-CSV template for further customization by following [their instructions](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/transfer-walkthrough/).
+This lesson will use the **CB-GH template**, which has fewer software dependencies and uses a collection of digital objects already online in the Internet Archive. However, projects can later be moved to the more advanced CollectionBuilder-CSV template for further customization by following [their instructions](https://collectionbuilder.github.io/cb-docs/docs/advanced/migrate-to-csv/).
 
 ## 1. Design your online exhibitions: What story do you want to tell?
 
@@ -472,4 +472,4 @@ w-50\" data-src=\"\' + thumbSrc + \'\" alt=\"Icon of \' + obj.title +
 }*
 ```
 
-Inspired and want to do more? You can always [migrate your project from the GH template to the CSV template](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/transfer-walkthrough/), allowing even further customization.
+Inspired and want to do more? You can always [migrate your project from the GH template to the CSV template](https://collectionbuilder.github.io/cb-docs/docs/advanced/migrate-to-csv/), allowing even further customization.

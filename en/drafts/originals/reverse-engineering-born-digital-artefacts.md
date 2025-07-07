@@ -581,7 +581,7 @@ Together, these resources significantly reduce barriers to entry, fostering an o
 
 [^21]:  “Radareorg/Radare2.” C. 2012. Reprint, radare org, June 1, 2025. [https://github.com/radareorg/radare2](https://github.com/radareorg/radare2).
 
-[^22]: "Installation," in The Official Radare2 Book, accessed July 7, 2025,[https://book.rada.re/install/intro.html](https://book.rada.re/install/intro.html).
+[^22]: "Installation," in The Official Radare2 Book, accessed July 7, 2025. [https://book.rada.re/install/intro.html](https://book.rada.re/install/intro.html).
 
 [^23]:  “Steil, Michael. “6502 | Ultimate Commodore 64 Reference.” Accessed July 7, 2025. [https://www.pagetable.com/c64ref/6502/#](https://www.pagetable.com/c64ref/6502/#).
 

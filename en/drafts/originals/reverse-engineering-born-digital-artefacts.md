@@ -28,9 +28,9 @@ doi: XX.XXXXX/phen0000
 
 Our proposal enhances existing lessons by equipping historians with essential technical skills to analyse digital artifacts. These artifacts are more than their visible content, existing within interwoven layers that shape their function and meaning. Technically, they are embedded in systems of file formats, applications, operating systems, and hardware, but they are also influenced by environmental factors like infrastructure, data centres, and socio-economic conditions.
 
-This lesson provides a thorough overview of reverse engineering and software archaeology. After outlining a basic overview of this field, we present some foundational techniques and tools. These can be applied for accessing, interpreting, and critically analysing previously opaque digital materials—such as old databases, early video games, or proprietary file formats. This skill set ultimately empowers readers to engage more confidently with the digital sources shaping insightful historical research today. The techniques and tools are illustrated through two case studies. The first is a presentation on how an image format can also be an archive, highlighting the necessity of looking beyond what is shown to us on screen. The second case is an investigation into a cracked Commdore 64 video game from 1984, in which we tie reverse engineering into studying the history of digital technology.
+This lesson provides a thorough overview of reverse engineering and software archaeology. After outlining a basic overview of this field, we present some foundational techniques and tools. These can be applied for accessing, interpreting, and critically analysing previously opaque digital materials—such as old databases, early video games, or proprietary file formats. This skill set ultimately empowers readers to engage more confidently with the digital sources shaping historical research today. The techniques and tools are illustrated through two case studies. The first is a presentation on how an image format can also be an archive, highlighting the necessity of looking beyond what is shown to us on screen. The second case is an investigation into a cracked Commdore 64 video game from 1984, in which we tie reverse engineering into studying the history of digital technology.
 
-The goal of this lesson is to introduce the use of hex editors as a tool for reverse engineering and digital archaeology. By analysing raw hexadecimal data, historians and researchers can uncover hidden structures, embedded messages, and unexpected functionalities within digital files. Through practical examples, including a JPEG image of a cat that also functions as a ZIP archive, we aim to demonstrate how hex editing can reveal a file's true behaviour beyond its surface-level format. This lesson will equip you with the skills to identify file signatures, parse metadata, and recognize structural anomalies, fostering an understanding of how digital artifacts are constructed and how they may conceal multiple layers of information. By the end of this chapter, you will have the foundational knowledge needed to use hex editors for investigating and interpreting complex digital objects.
+The goal of this lesson is to introduce the use of hex editors as a tool for reverse engineering and digital archaeology. By analysing raw hexadecimal data, historians and researchers can uncover hidden structures, embedded messages, and unexpected functionalities within digital files. Through practical examples, including a JPEG image of a cat that also functions as a ZIP archive, we aim to demonstrate how hex editing can reveal a file's true behaviour beyond its surface-level format. This lesson will equip you with the skills to identify file signatures, parse metadata, and recognize structural anomalies, fostering an understanding of how digital artifacts are constructed and how they may conceal multiple layers of information. By the end you will have the foundational knowledge needed to use hex editors for investigating and interpreting complex digital objects.
 
 There are two fundamental technical requirements for this lesson that form the foundation of our digital archaeology approach.
 
@@ -87,7 +87,17 @@ A hex dump is a textual representation of computer data in hexadecimal format, a
 | **hexyl**    | Windows, macOS, Linux | ❌   | CLI hex viewer with colours, fast and clean                           | [GitHub](https://github.com/sharkdp/hexyl) |
 | **HexEd.it** | Web-based             | ✅   | Full-featured online hex editor, great for quick edits               | [HexEd.it](https://hexed.it/)              |
 
-For the following example, we will use hexyl. We chose it primarily because we appreciate its aesthetic, but you can use any hex viewer you want.
+For the following example, we will use hexyl. We chose it primarily because we appreciate its functionality and aesthetics, but you can use any hex viewer you want. Installation packages are provided for most Linux distributions. You can install hexyl on maxOS either through the [Homebrew](https://brew.sh) or [MacPorts](https://www.macports.org/) package managers.
+
+```shell
+# Install hexyl on macOS with Homebrew
+brew install hexyl
+
+# Install hexyl on macOS with MacPorts
+sudo port install hexyl
+```
+
+On [hexyl's release page](https://github.com/sharkdp/hexyl/releases) you will also find installation packages for the Windows operating system.
 
 ### The bit code of an image
 
@@ -294,6 +304,8 @@ We've selected this SCA crack as our case study due to its research value for di
 
 ### Getting Started
 
+For this part of the lesson, we will work with files that we extracted from a disk image. The installation and operation of the VICE tools can't be covered here, and [you will find the necessary files to continue in the provided downloadable archive](https://github.com/programminghistorian/ph-submissions/raw/refs/heads/gh-pages/assets/reverse-engineering-born-digital-artefacts/reverse-engineering-born-digital-artefacts.zip).
+
 For this example, we acquired the cracked[^15] and a supposedly clean[^16] version of the Commodore 64 game “Summer Games”. A first glance tells us that those games come as `.d64` files, which is a disk image—a virtual representation of a physical disk’s content. Since we are interested in investigating the cracked version, we need to contextualize our digital artefact towards that.
 
 A standard Commodore 64 `.d64` disk image file does not preserve most hardware-based copy protections, which was common. The `.d64` format captures only the standard sector data of a disk and does not record the low-level, non-standard disk structures (such as sync marks, deliberate errors, or unusual track layouts) that many C64 copy protection schemes rely on. As a result, games or software with sophisticated disk-based copy protection often cannot be run or properly emulated from a `.d64` image. For preserving original disks with copy protection intact, the `.g64` format is preferred, as it stores the low-level information needed for these protections to function.
@@ -301,22 +313,23 @@ A standard Commodore 64 `.d64` disk image file does not preserve most hardware-b
 Finally, most `.d64` images available today have had their copy protection removed or bypassed to work in emulators. This would indicate that our virtual image of the cracked game might not contain everything we need to fully investigate this case. Let us have a closer look and compare our two versions. Since `.d64` is a container format, we need to unpack and reveal the container’s content first. There are many tools offering such a service, such as [C64-Tools](https://www.c64-tools.com/basic-2-extractor) or [DirMaster](https://style64.org/dirmaster). We’ll be using the Floppy Disk Emulator that comes with VICE, an emulator for the Commodore 64.
 
 ```shell
-# Let's move to the appropriate files folder
-cd files/summer_games
-
 # Dump the content of the clean Summer Games version
 $ c1541 summer_games_clean.d64 -extract
 
-# The dumps files have been moved to the folder 'dump_clean'.
-# Same procedure for the SCA version of the game.
+# Repeat the procedure for the cracked version.
 ```
-*The installation and operation of the VICE tools can't be covered here, all files are provided in the repository.*
+
+We then moved the dumped files to the respective folders 'summer_games/dump_clean' and 'summer_games/dump_sca'.
 
 ### Comparing the Game's different Versions
 
 Unpacking both game versions leaves us with two folders and a bunch of arbitrary labelled files, which we first check for content and file size.
 
 ```shell
+# Let's move to the appropriate files folder
+$ cd summer_games
+
+# Compare the files in the two dump folders by listing them.
 $ ls -l dump_clean && ls -l dump_sca
 ```
 

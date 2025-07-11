@@ -63,26 +63,42 @@ Tropy vise donc à offrir une infrastructure logicielle, simple d'utilisation et
 
 ## Le(s) jeu(x) de données de la leçon
 
-Cette leçon a été enrichie de l'expérience de formations sur Tropy dispensées auprès de doctorant(e)s en histoire contemporaine de l'université de Lille. Pour cette raison, elle a été pensée à partir de la pluralité des sources et elle propose d'explorer les fonctionnalités du logiciel en mobilisant pour les démonstrations de différents types de sources selon le cas. 
-
-1. Le jeu de données principal consiste en un corpus de sources visuelles pertinentes pour un public francophone, [les affiches nativement numériques du mouvement étudiant québécois de 2012](/les-affiches-du-printemps-erable) <!--vérifier syntaxe du lien ancre-->. 
-
-2. [Le numéro 3 de *L'écho des marmites*](https://argonnaute.parisnanterre.fr/ark:/14707/9tks6j4d0bvf), Journal de tranchées daté de février 1915 - conservé et numérisé par [La Contemporaine](http://www.lacontemporaine.fr/). Ces ficiers sont nécessaires à télécharger pour effectuer l'exercice sur [comment représenter comme une seule entité, dans Tropy, un document avec plusieurs pages correspondant à de différentes photos](/#fusionner-des-fichiers-images-en-un-seul-objet). Attention, il n'est pas possible d'explorer cette fonctionnalité avec le corpus d'affiches numériques, de par le type de ces documents.
-
-Enfin, il vaut mieux ne pas être déconcerté(e) par l'exemple fourni pour démontrer [comment créer un formulaire de saisie sur mesure](/#personnaliser-le-modèle-de-saisie-des-métadonnées). L'exercice propose comment créer un formulaire adapté aux correspondances diplomatiques et, si c'est le cas, c'est que l'autrice a utilisé ce type de documents dans ses recherches, par conséquent l'exercice émande de besoins réels rencontrés au fur et à mesure d'une recherche.  
+La conception de cette leçon doit beaucoup à une série de formations sur Tropy dispensées par l'autrice auprès de doctorant(e)s en histoire contemporaine de l'université de Lille. Ainsi, elle a été pensée pour tenir compte, d'une part, de la pluralité des sources et, d'autre part, des besoins réels d'organisation de sources fréquemment rencontrées dans le cadre d'une recherche en histoire. C'est à partir de ces portes d'entrée qu'elle explore les fonctionnalités du logiciel et, pour cette raison, elle mobilise de différents types de sources selon le cas, qui correspondent à de différents jeux de données. En somme, plutôt que de démontrer les fonctionnalités du logiciel à l'aide d'un jeu de données, le parti pris ici est de mobiliser des données pertinentes pour répondre à des questions réelles d'organisation des sources d'une recherche.    
 
 ### Les affiches du Printemps érable 
 
-Le principal jeu de données fourni consiste aux fichiers images des affiches du mouvement du Printemps érable québécois de 2012 disponibles sous licence libre sur [un site créé dans le cadre d'une recherche universitaire et qui sert d'archive vivante de la production visuelle du mouvement](https://www.printempserable.net/) en question. 
+Le jeu de données principal consiste en un corpus de sources visuelles, des affiches du mouvement étudiant québécois de 2012. 
+Ces affiches nativement numériques ont été créées dans le cadre de la grève étudiante contre la hausse des frais de scolarité déclenchée au printemps 2012 au Québec, aussi appelée [Printemps érable](https://fr.wikipedia.org/wiki/Gr%C3%A8ve_%C3%A9tudiante_qu%C3%A9b%C3%A9coise_de_2012). Le mouvement a donné lieu à une production visuelle considérable, dont une partie a été rassemblée, dans le cadre d'un travail universitaire, sur un site web, [*Printemps érable archives*](https://www.printempserable.net/), qui sert ainsi d'archive non-institutionnelle et vivante de la production graphique du mouvement. 
 
-La grève étudiante contre la hausse des frais de scolarité déclenchée au printemps 2012 au Québec, aussi appelée [Printemps érable](https://fr.wikipedia.org/wiki/Gr%C3%A8ve_%C3%A9tudiante_qu%C3%A9b%C3%A9coise_de_2012), a donné lieu à une production visuelle considérable. Une partie de celle-ci a été rassemblée, dans le cadre d'un travail universitaire, sur un site web qui sert ainsi d'[archive non-institutionnelle de la production graphique du mouvement](https://www.printempserable.net/). 
+Extrait du site web par nos soins, le corpus ne nécessite pas néanmoins une expertise numérique avancée pour être constitué (la procédure de sa collecte est expliquée dans la documentation qui accompagne les fichiers images). Le jeu de données comprend précisément l'ensemble des affiches du Printemps érable hébergées sur le site web *Printemps érable archives* soit 352 fichiers d'affiches créées à des fins militantes. Ces affiches constituent des sources nativement numériques qui documentent le mouvement.
 
-Le jeu de données comprend l'ensemble des affiches du Printemps érable hébergées sur le site web *Printemps érable archives* soit 352 fichiers d'affiches créées à des fins militantes dans le cadre du mouvement étudiant du printemps 2012 au Québec, Canada (connu aussi sous le nom de Printemps érable). Ces affiches constituent par conséquent des sources nativement numériques qui documentent le mouvement.
+[Lien pour accéder aux fichiers des affiches du Printemps érable déposés sur Zenodo](https://doi.org/10.5281/zenodo.13936156). 
 
-[Lien vers le jeu de données des affiches du Printemps érable déposé sur Zenodo](https://doi.org/10.5281/zenodo.13936156). 
+### Les journaux de tranchées
+
+Un journal de tranchées daté de février 1915, [le numéro 3 de *L'écho des marmites*](https://argonnaute.parisnanterre.fr/ark:/14707/9tks6j4d0bvf), sert à démontrer [comment représenter comme une seule entité, dans Tropy, un document avec plusieurs pages, où chaque page égale à un fichier image distinct](/#fusionner-des-fichiers-images-en-un-seul-objet). Attention, il n'est pas possible d'explorer cette fonctionnalité de Tropy avec les fichiers des affiches numériques, de par le type de ces documents-là, qui ne sont pas organisés en pages. Les journaux que nous avons téléchargés pour l'exercice font partie d'une riche collection de journaux de tranchées numérisés conservéq à la bibliothèque [La Contemporaine](http://www.lacontemporaine.fr/). 
+
+[Lien pour accéder aux fichiers des journaux de tranchées numérisés](assets/gerer-sources-primaires-numeriques-avec-tropy/journaux-tranchees-14-18)
+Dans le répertoire sont disponibles, en plus du no 3 de *L'écho des marmites*, qui est utilisé dans l'exercice,aussi un numéro du journal en anglais *Arrow* pour qui souhaite utiliser davantage de ressources pour enrichir l'exercice. 
+
+### Les documents diplomatiques
+
+La partie qui guide dans la [création d'un formulaire de saisie de sources sur mesure](/#personnaliser-le-modèle-de-saisie-des-métadonnées) utilise l'exemple des correspondances diplomatiques. Avant d'être un type de sources très approvoisé par les historiens et historiennes, les documents diplomatiques correspondent surtout à l'une des principales sources utilisées dans les recherches de l'autrice de cette leçon. Par conséquent, l'exercice tient compte de problémes et de besoins réels rencontrés dans le cadre d'une recherche. Cette option a été préférée à un exemple de création de formulaire pour les affiches, qui aurait été hypothétique dans notre cas. Il n'est pas nécessaire, pour cet exercice, de télécharger des fichiers.  
+
+### Autres données proposées
+
+L'intention initiale de cette leçon était de fournir un jeu de données de sources visuelles pertinentes pour un public francophone. La tâche s'est néanmoins avérée compliquée à cause des restrictions appliquées sinon à la collecte, définitivement au partage des images en provenance d'archives institutionelles ou de réseaux sociaux numériques, même pour un usage pédagogique. Les utilisateurs et utilisatrices plus averti(e)s pourront peut-être profiter de ces ressources, s'ils et elles préfèrent confirmer leurs compétences en méthodes numériques.   
+
+Le premier jeu de données consiste aux affiches numérisées de Mai 68, accessibles au moyen d'une recherche simple sur le site de [Gallica](http://gallica.bnf.fr/). Les conditions de réutilisation de ces images rendent préférable de fournir la requête précise, le rapport de recherche avec les résultats attendus, ainsi qu'un script écrit en [R](https://www.r-project.org/) afin que les lecteurs et lectrices puissent collecter ces données par leurs soins.
+
+Papastamkou, Sofia, et Thomas Soubiran. « Les affiches numérisées de mai 68 ». Zenodo, 17 mars 2025. [https://doi.org/10.5281/zenodo.15042019](https://doi.org/10.5281/zenodo.15042019).
+
+Le deuxième jeu de données rassemble principalement les [URL](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator) de l'ensemble des photos sous licence libre qui sont indexées sous le mot-clé "Occupy Wall Street" et disponibles sur le réseau social numérique [Flickr](https://fr.wikipedia.org/wiki/Flickr). Les fichiers ont été téléchargés en utilisant l'API de Flickr à l'aide d'un script R, mais seules les URL sont partagées pour que celles et ceux qui souhaitent travailler avec ce jeu de données puissent télécharger le nombre de photos susceptibles de correspondre à leurs besoins et intérêts.
+
+Papastamkou, Sofia, et Thomas Soubiran. « Les Photos D'occupy Wall Street Sur Flickr ». Zenodo, 17 mars 2025. [https://doi.org/10.5281/zenodo.15041921](https://doi.org/10.5281/zenodo.15041921).
 
 
-Pour qui préfère utiliser ses propres sources, il est possible de commencer avec le fruit d'une journée de travail à un centre d'archives&nbsp;: des centaines de fichiers de photos en forme brute, fraîchement copiés depuis un smartphone vers un disque dur, sans même avoir eu le temps de les renommer. C'est le moment de s'en occuper&nbsp;!  
+> Pour qui préfère utiliser ses propres sources, il est possible de commencer avec le fruit d'une journée de travail à un centre d'archives&nbsp;: des centaines de fichiers de photos en forme brute, fraîchement copiés depuis un smartphone vers un disque dur, sans même avoir eu le temps de les renommer. C'est le moment de s'en occuper&nbsp;!  
 
 ## Démarrer avec Tropy 
 

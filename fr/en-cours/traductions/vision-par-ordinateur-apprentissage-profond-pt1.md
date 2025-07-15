@@ -259,7 +259,7 @@ ad_data.show_batch()
 
 {% include figure.html filename="en-or-computer-vision-deep-learning-pt1-04.png" alt="La sortie de show batch. Le résultat est une grille 3x3 d'images de publicités de journaux avec des étiquettes indiquant si les publicités sont 'illustrées' ou textuelles" caption="Figure 4. La sortie de 'show_batch'" %}
 
-C'est un moyen utile de vérifier que vos étiquettes et vos données ont été chargées correctement. Vous pouvez voir ici que les étiquettes (`text-only` et `illustration`) ont été associées conformément à la façon dont nous voulons classer ces images. 
+Il s'agit d'un moyen utile de vérifier que vos étiquettes et vos données ont été chargées correctement. Vous pouvez voir ici que les étiquettes (`text-only` et `illustration`) ont été associées conformément à la façon dont nous voulons classer ces images. 
 
 
 ## Créer le modèle

@@ -125,7 +125,7 @@ colonnes : list[str] = [
 
 df_brut : pd.DataFrame = pd.read_csv("data_article.csv",usecols = colonnes)
 
-# On raccourcis le nom de chaque colonne
+# On raccourcit le nom de chaque colonne
 nouvelles_colonnes = {
     "Année" : "annee",
     "Origine sociale" : "origine_sociale",
@@ -140,7 +140,7 @@ nouvelles_colonnes = {
 }
 df_brut.rename(nouvelles_colonnes, axis = 1, inplace = True)
 
-# On raccourcis le nom de certaines origines sociales pour alléger les visualisations
+# On raccourcit le nom de certaines origines sociales pour alléger les visualisations
 df_brut["origine_sociale"] = df_brut["origine_sociale"].replace({
     # Raccourcir les noms
     "Professions intermédiaires" : "P. intermédiaires",
@@ -158,7 +158,7 @@ df_brut.drop(df_brut[
     ].index, inplace = True)
 
 # Finalement, on réorganise la table en une table plus simple à 5 colonnes
-# Pour ce faire, on créé un nouveau DataFrame à partir d'un dictionnaire de listes
+# Pour ce faire, on crée un nouveau DataFrame à partir d'un dictionnaire de listes
 df = {
     "annee" : [],
     "origine_sociale" : [],
@@ -234,7 +234,7 @@ fig = px.bar(
     title="Titre de votre choix",
     labels={"n_admis": "Nombre de personnes admises au baccalauréat"},
 
-    # Notez que l'argument "color" prend une chaine de caractères se référant à 
+    # Notez que l'argument "color" prend une chaîne de caractères se référant à 
     # la colonne "origine_sociale" du jeu de données
     color="origine_sociale"
 )
@@ -311,7 +311,7 @@ fig.show()
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-04.png" alt="Courbe du pourcentage d'admission au baccalauréat (tous types confondus) entre 1997 et 2024 associée à une légende. Huit courbes sont présentées, une par origine sociale (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers), chacune d'une couleur différente. Le nombre de publication par année varie entre 70% et 100%.">
 	</a>
 <figcaption>
-    <p>Figure 4. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. Cette visualisation est une variante de la Figure 3 avec des polices d'écriture, couleurs et titre différent. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 4. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. Cette visualisation est une variante de la Figure 3 avec des polices d'écriture, couleurs et titres différents. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -359,7 +359,7 @@ Comme vous pouvez le voir, les nuages de points contiennent aussi certaines inte
 
 ## Créer une visualisation en mosaïque
 
-Les visualisations en mosaïque (*facet plots*) sont des visualisations subdivisées en plusieurs figures. Chaque subdivision illustre la même variable selon les mêmes axes mais pour des sous-ensembles différents. Plotly rend la création de telles visualisations très simple. En reprenant les exemples précédents, il suffit de spécifier le type de représentation que vous souhaitez dans les sous-figures. En deuxième instance il suffit d'utiliser le paramètre `facet_col` qui permet de préciser quelle variable utiliser pour distinguer les sous-figures. Dans l'exemple ci dessous, on créé une grille de 2x1 pour montrer le nombre de personnes admises au baccalauréat général et technologique en 2024 :
+Les visualisations en mosaïque (*facet plots*) sont des visualisations subdivisées en plusieurs figures. Chaque subdivision illustre la même variable selon les mêmes axes mais pour des sous-ensembles différents. Plotly rend la création de telles visualisations très simple. En reprenant les exemples précédents, il suffit de spécifier le type de représentation que vous souhaitez dans les sous-figures. En deuxième instance il suffit d'utiliser le paramètre `facet_col` qui permet de préciser quelle variable utiliser pour distinguer les sous-figures. Dans l'exemple ci dessous, on crée une grille de 2x1 pour montrer le nombre de personnes admises au baccalauréat général et technologique en 2024 :
 
 ```python
 lignes_bac_technologique_et_general_2024 = \
@@ -410,7 +410,7 @@ fig = px.bar(
     x="origine_sociale",
     y="n_admis",
     labels={"n_admis": "Nombre de personnes admises au baccalauréat"},
-    range_y=[0,200_000],  # Le paramètre range_y permet de customiser l'intervalede l'axe y 
+    range_y=[0,200_000],  # Le paramètre range_y permet de personnaliser l'intervalle de l'axe y 
     color="origine_sociale",
     # title="Titre de votre choix",
     # Utiliser le paramètre animation_frame pour spécfier l'axe d'évolution
@@ -430,7 +430,7 @@ fig.show()
 
 ### Ajouter des animations : Menus déroulants
 
-Les menus déroulants sont légèrement plus difficiles que les *animation frames*. Ils permettent à l'utilisateur.ice de passer d'une configuration d'affichage à une autre comprenant une large variété de paramètres permettant de changer les couleurs, lignes, axes et mêmes les variables. Quand on créé une figure avec un menu déroulant, la première étape est de créer la figure initiale *sans menu déroulant* (qui correspondra à la première vue que l'utilisateur.ice verra). Dans cet exemple, nous travaillerons avec le nuage de points qui illustre le nombre de personnes admises au baccalauréat général et technologique. La construction est donc la suivante : 
+Les menus déroulants sont légèrement plus difficiles que les *animation frames*. Ils permettent à l'utilisateur.ice de passer d'une configuration d'affichage à une autre comprenant une large variété de paramètres permettant de changer les couleurs, lignes, axes et mêmes les variables. Quand on crée une figure avec un menu déroulant, la première étape est de créer la figure initiale *sans menu déroulant* (qui correspondra à la première vue que l'utilisateur.ice verra). Dans cet exemple, nous travaillerons avec le nuage de points qui illustre le nombre de personnes admises au baccalauréat général et technologique. La construction est donc la suivante : 
 
 ```python
 fig = px.scatter(
@@ -458,18 +458,18 @@ Une fois qu'on a appelé la méthode `update_layout`:
 - La seule fonctionnalité qui nous intéresse est la *dropdown box*, qui est contenue dans le dictionnaire `buttons`.
 - La clef `buttons` contient comme valeur, une autre liste de dictionnaires, chaque dictionnaire représente les options disponibles dans le menu déroulant.
 - Nous aurons besoin de créer 5 `buttons` — un par sous-groupe de données — donc notre liste `buttons` contiendra 5 dictionnaires.
-- Chacun de ces cinq dictionnaires devront contenir 3 paires clef-valeur :
+- Chacun de ces cinq dictionnaires devra contenir 3 paires clef-valeur :
     - La première paire, avec pour clef `args` précisera le type de représentation que nous voulons afficher.
     - La deuxième paire, avec pour clef `label` précisera le titre à afficher à côté du menu déroulant.
     - La troisième paire, avec pour clef `method`, précisera comment modifier la figure (modifications possibles `update`, `restyle`, `animate`, etc...).
 
-Dans l'exemple ci dessous, nous regarderons comment utiliser le menu déroulant pour changer la catégorie de la variable affichée. Puisque nous travaillons avec un nuage de points qui affiche le nombre de personnes admises au baccalauréat technologique et général pour 4 origines sociales différentes, nous ajouterons un menu déroulant qui permet d'afficher toutes les origines sociales ensembles, puis seulement les enfants d'agriculteurs, de cadres, d'indépendants et enfin d'ouvriers.
+Dans l'exemple ci dessous, nous regarderons comment utiliser le menu déroulant pour changer la catégorie de la variable affichée. Puisque nous travaillons avec un nuage de points qui affiche le nombre de personnes admises au baccalauréat technologique et général pour 4 origines sociales différentes, nous ajouterons un menu déroulant qui permet d'afficher toutes les origines sociales ensemble, puis seulement les enfants d'agriculteurs, de cadres, d'indépendants et enfin d'ouvriers.
 
 Pour créer le menu déroulant nous suivons les étapes suivantes :
 
  - À la clef `label` nous associons pour valeur, le texte à afficher dans le menu déroulant.
  - À la clef `method`, nous associons la valeur `update` puisque nous modifions l'affichage (`layout`) ET les données (`data`).
- - À la clef `args`, nous associons une autre liste de dictionnaires qui spécifiera quelle données seront `visible`(s) (vous trouverez plus d'informations à ce propos plus bas), le titre de la vue (paramètre optionnel), ainsi que les titres pour les axes x et y de cette vue (paramètre optionnel).
+ - À la clef `args`, nous associons une autre liste de dictionnaires qui spécifiera quelles données seront `visible`(s) (vous trouverez plus d'informations à ce propos plus bas), le titre de la vue (paramètre optionnel), ainsi que les titres pour les axes x et y de cette vue (paramètre optionnel).
 
 Le paramètre `visible` contient une liste, chaque élément de cette liste indiquera si les données à cet index doivent être affichées où non. Dans notre exemple, la liste doit contenir 4 éléments puisque nous avons 4 origines sociales à l'écran. Dans notre cas, le premier bouton doit représenter la visualisation telle qu'elle sera initialement présentée à l'utilisateur.ice et doit donc spécifier `[True, True, True, True]` puisque nous souhaitons que toutes les origines sociales soient affichées. Cependant, pour les 4 autres vues, nous devons seulement inscrire `True` pour un seul élément puisque nous souhaitons n’afficher qu’une seule origine sociale à la fois.
 
@@ -480,7 +480,7 @@ Passons à la pratique :
 fig.update_layout(
     updatemenus = [dict(
         buttons = [
-            # Création de la liste  de dictionaires pour chaque boutons du menu déroulant.
+            # Création de la liste de dictionaires pour chaque bouton du menu déroulant.
             dict(
                 label = "Toutes les origines sociales", # Nom pour la première vue
                 method = "update",
@@ -614,7 +614,7 @@ fig.show()
 
 Créer ce menu déroulant dans l’exemple ci-dessus permet aux utilisateur·ice·s d’isoler (et d’examiner) des éléments spécifiques à partir d'une visualisation plus générale. Nous avions découvert cette fonctionnalité de Plotly plus tôt en notant qu'un double-clic sur une catégorie de la légende permettait de retirer tous les autres groupes de la figure. Cependant, le menu déroulant apporte d'autres avantages : il nous permet de créer des titres dynamiques qui peuvent changer en fonction de ce que nous avons sélectionné.
 
-L'exemple ci-dessus montre qu'il est très facile de créer des visualisations avec Plotly Express et qu'il est relativement simple de rajouter de l'interactivité comme des animations ou des menus déroulants. Nous allons maintenant passer à la création de visualisations avec Plotly Graph Objects. Plus précisément, nous allons nous concentrer sur ce que sont les Graph Objects, comment ils fonctionnent et quand (ou pourquoi) vous pourriez avoir envie de créer des visualisations en utilisant Plotly Graph Objects plutôt qu'avec Plotly Express.
+L'exemple ci-dessus montre qu'il est très facile de créer des visualisations avec Plotly Express et qu'il est relativement simple de rajouter de l'interactivité comme des animations ou des menus déroulants. Nous allons maintenant passer à la création de visualisations avec Plotly Graph Objects. Plus précisément, nous allons nous concentrer sur ce que sont les Graph Objects, comment ils fonctionnent et quand (ou pourquoi) vous pourriez avoir envie de créer des visualisations en utilisant Plotly Graph Objects plutôt que Plotly Express.
 
 ## Création des visualisations avec Plotly Graph Objects
 
@@ -688,7 +688,7 @@ Examiner la sortie affichée devrait pouvoir vous aider à comprendre la structu
 
 ### Utiliser Plotly Graph Objects vs Plotly Express
 
-Un autre point qu'il est important d'avoir à l'esprit c'est que créer des visualisations avec `plotly.go` requiert, en général, bien plus de code que pour créer les mêmes visualisations avec `plotly.px`.
+Un autre point qu'il est important d'avoir à l'esprit : créer des visualisations avec `plotly.go` requiert, en général, bien plus de code que pour créer les mêmes visualisations avec `plotly.px`.
 
 Voyez plutôt l'exemple suivant : construisons un diagramme en barres horizontales pour illustrer le nombre de personnes admises au baccalauréat (tous types confondus) en 2024. Premièrement, sélectionnons une partie `DataFrame` pour ne garder que l'année 2024 et le type `"bac"` :
 
@@ -755,7 +755,7 @@ fig.show()
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-10.png" alt="Diagramme en barres représentant, sur l'axe des abscisses, 8 origines sociales (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers) et sur l'axe des ordonnées le nombre de personnes admises au baccalauréat en 2024 (tous types confondus), le nombre d'admis varie entre 6k et 200k.">
 	</a>
 <figcaption>
-    <p>Figure 10. Diagramme en barres horizontal avec une interactivité simple créé avec Plotly Express. Les lecteurices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 10. Diagramme en barres horizontal avec une interactivité simple créé avec Plotly Express. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -886,13 +886,13 @@ fig.add_trace(
 # les différentes courbes. 
 # Pour se faire, on divise notre DataFrame par origine sociale et on procède comme 
 # précédemment en ne travaillant qu'avec les sous-dataset
-for origine_sociale, df_oringine_sociale in prop_admis_par_origine_sociale_par_annee.\
+for origine_sociale, df_origine_sociale in prop_admis_par_origine_sociale_par_annee.\
                                     groupby("origine_sociale") :
     fig.add_trace(
         # Utiliser go.Scatter() pour spécifier le type de représentation
         go.Scatter(
-            x = df_oringine_sociale["annee"],
-            y = df_oringine_sociale["p_admis"],
+            x = df_origine_sociale["annee"],
+            y = df_origine_sociale["p_admis"],
             name = origine_sociale,
             mode = "markers+lines",
             hovertemplate = (f"<b>Origine sociale :</b> {origine_sociale}<br>"
@@ -910,7 +910,7 @@ for origine_sociale, df_oringine_sociale in prop_admis_par_origine_sociale_par_a
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-13.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatre courbes de couleurs. Une légende décrit les éléments affichés. La colonne de droite est vide.">
 	</a>
 <figcaption>
-    <p>Figure 13. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par oringine sociale et une colonnes vide sur la droite. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-13.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 13. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et une colonnes vide sur la droite. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-13.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -952,7 +952,7 @@ fig.add_trace(
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-14.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatres courbes de couleurs. Une légende décrit les éléments affichés. Dans la colonne de droite on trouve 2 diagrammes en boîte.">
 	</a>
 <figcaption>
-    <p>Figure 14. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par oringine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-14.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 14. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-14.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -994,7 +994,7 @@ fig.update_layout(
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-15.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatres courbes de couleurs. Dans la colonne de droite on trouve 2 diagrammes en boîte.">
 	</a>
 <figcaption>
-    <p>Figure 15. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par oringine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. Cette visualisation est une variante de la Figure 14 avec une personalisation avancée. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-15.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 15. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. Cette visualisation est une variante de la Figure 14 avec une personalisation avancée. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-15.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -1048,7 +1048,7 @@ fig.update_layout(
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-16.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatre courbes de couleurs. Des annotations sont présentes pour indiquer l'origine sociale associée à chacune des quatre courbes. Dans la colonne de droite on trouve 2 diagrammes en boîte.">
 	</a>
 <figcaption>
-    <p>Figure 16. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par oringine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. Cette visualisation est une variante de la Figure 15 des annotations pour repérer les courbes de la sous-figure du milieu. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-16.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 16. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Les lecteur.ices peuvent survoler les barres pour faire apparaître les boîtes flottantes. Cette visualisation est une variante de la Figure 15 des annotations pour repérer les courbes de la sous-figure du milieu. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-16.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 
@@ -1088,7 +1088,7 @@ fig.update_layout(margin = {"b" : 200})
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-17.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatres courbes de couleurs. Des annotations sont présentes pour indiquer l'origine sociale associée à chacune des quatre courbes. Dans la colonne de droite on trouve trois diagrammes en boîte. Une annotation décrit chacun des graphe : Nombre de personnes admises au baccalauréat (tous types confondus) en 2024 et par origine sociale (gauche); Proportion de personnes admises au baccalauréat (tous types confondus) à travers les années et par origine sociale (centre); Distribution du pourcentage d'admission pour le baccalauréat général, technologique et professionnel (droite).">
 	</a>
 <figcaption>
-    <p>Figure 17. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par oringine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Cette visualisation est une variante de la Figure 16 avec des annotations supplémentaires sous les figures. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
+    <p>Figure 17. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Cette visualisation est une variante de la Figure 16 avec des annotations supplémentaires sous les figures. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" target="_blank">Cliquez pour explorer une version interactive de cette figure</a>.</p>
 </figcaption>
 </figure>
 

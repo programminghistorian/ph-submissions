@@ -1,0 +1,17 @@
+width,height,iab_name,jiaa_name,jiaa_name_ja
+88,31,Micro Button,,
+120,240,Vertical Banner,,
+120,90,Button 1,Regular Badge,レギュラーバッジ
+120,60,Button 2,Small Badge,スモールバッジ
+120,600,,Regular Skyscraper,レギュラースカイスクレーパー
+125,125,Square Button,Large Badge,ラージバッジ
+148,800,,Large Skyscraper,ラージスカイスクレーパー
+160,600,,Wide Skyscraper,ワイドスカイスクレーパー
+200,200,,Small Rectangle,スモールレクタングル
+224,33,,Small Banner,スモールバナー
+234,60,Half Banner,,
+300,250,,Regular Rectangle,レギュラーレクタングル
+336,280,,Large Rectangle,ラージレクタングル
+392,72,Full Banner with Vertical Navigation Bar,,
+468,60,Full Banner,Regular Banner,レギュラーバナー
+728,90,,Large Banner,ラージバナー

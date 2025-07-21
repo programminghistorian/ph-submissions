@@ -46,9 +46,9 @@ Cette leçon montre comment créer des visualisations de données interactives a
 
 Afin de pouvoir suivre la leçon, il est nécessaire d'avoir :
 
-- Installé [Python 3 (version `3.12.9`)](https://docs.python.org/3/) et le [gestionnaire de paquets (*package*) `pip` (version `24.2)`](https://pip.pypa.io/en/stable/index.html).
+- Installé [Python 3 (version `3.13.2`)](https://docs.python.org/3/) et le [gestionnaire de paquets (*package*) `pip` (version `25.1)`](https://pip.pypa.io/en/stable/index.html).
 - Un niveau de compréhension intermédiaire du langage de programmation Python.
-- Une connaissance générale des bibliothèques [Pandas (version `2.2.3`)](https://pandas.pydata.org/docs/) et [Numpy (version `2.0.1`)](https://numpy.org/doc/stable/) (ces deux bibliothèques doivent être installées).
+- Une connaissance générale des bibliothèques [Pandas (version `2.2.3`)](https://pandas.pydata.org/docs/) et [Numpy (version `2.2.5`)](https://numpy.org/doc/stable/) (ces deux bibliothèques doivent être installées).
 - Une connaissance de quelques techniques de base en visualisation de données (en particulier les histogrammes, les diagrammes en barres et les nuages de points).
 - Des notions de traitement des données (nous utiliserons Pandas).
 
@@ -64,7 +64,7 @@ Afin de comprendre comment utiliser Plotly, il est fondamental de comprendre les
 
 Il s'agit essentiellement de 3 modules distincts - dont les fonctionnalités peuvent se superposer - qui ont leurs propres objectifs :
 
-- Plotly Express (`plotly.express` souvent importé avec l'alias `px`) est une interface de représentation graphique *de haut niveau*, facile à prendre en main, et qui permet de créer près de 30 types différents de représentations. Le module fournit des fonctions permettant de créer des visualisations avec une seule ligne de code (bien que plusieurs lignes de code sont nécessaires à la personnalisation de certains éléments), rendant les visualisations rapides et faciles à créer. Puisque `plotly.px` est une interface *de haut niveau*, cela signifie que l’utilisateur.ice n’a pas besoin de s'attarder sur la structure sous-jacente des visualisations. Plotly recommande aux débutant.e.s de commencer avec Express avant de travailler avec Plotly Graph Objects.
+- Plotly Express (`plotly.express` souvent importé avec l'alias `px`) est une interface de représentation graphique *de haut niveau*, facile à prendre en main, et qui permet de créer près de 30 types différents de représentations. Le module fournit des fonctions permettant de créer des visualisations avec une seule ligne de code (bien que plusieurs lignes de code soient nécessaires à la personnalisation de certains éléments), rendant les visualisations rapides et faciles à créer. Puisque `plotly.px` est une interface *de haut niveau*, cela signifie que l’utilisateur.ice n’a pas besoin de s'attarder sur la structure sous-jacente des visualisations. Plotly recommande aux débutant.e.s de commencer avec Express avant de travailler avec Plotly Graph Objects.
 - Les objets graphiques de Plotly - associés aux module Plotly Graph Objects (`plotly.graph_objects` souvent importé avec l'alias `go`) sont les véritables objets que Plotly créé lorsque l'on fait appel à Plotly Express. Plotly génère des `plotly.graph_objs` pour garder en mémoire les données de la visualisation. Ces données incluent les informations à visualiser avec de nombreux autres attributs telles que les couleurs, formes et tailles des objets. Il est alors possible de créer une visualisation plus finement avec Plotly Graph Objects. Il est d'ailleurs possible de recréer n'importe quelle figure créée par Plotly Express à l'aide de Plotly Graph Objects. Il est en général recommandé d’utiliser Plotly Express pour réduire le nombre de lignes de code mais, comme nous le verrons par la suite, certaines visualisations imposent de passer par Plotly Graph Objects.
 - Le module Plotly Dash (importé avec l'alias `dash`) est un environnement pour créer des applications web interactives (typiquement des dashboards) qui peuvent être incrustées dans des sites web et autres plateformes. On ajoute souvent des figures créées avec Express ou Graph Objects dans les applications Dash, faisant des modules de Plotly la boîte à outils parfaite pour créer, manipuler et publier des représentations graphiques interactives de nos données. Plotly Dash est construit sur `React.js` et `Plotly.js` afin de rendre possible l'intégration sur internet, cela signifie que les utilisateur.ice.s n'ont pas besoin de connaissances en Javascript, CSS ou HTML (seulement en Python).
 
@@ -72,11 +72,11 @@ Plotly fournit une documentation complète pour travailler avec Express et Graph
 
 ### Pourquoi Plotly ? 
 
-Il existe actuellement une pléthore de bibliothèques graphiques sous Python comme Matplotlib, Seaborn, Bokeh ou Pygal. Chaque bibliothèque présente des avantages. Le cas d'utilisation, les goûts esthétiques ou la facilité d'utilisation, sont tous des facteurs qui permettent de choisir une bibliothèque. Les avantages principaux de Plotly sont :
+Il existe actuellement une pléthore de bibliothèques graphiques sous Python comme Matplotlib, Seaborn, Bokeh ou Pygal. Chaque bibliothèque présente des avantages. Le cas d'utilisation, les goûts esthétiques ou la facilité d'utilisation, sont tous des critères qui permettent de choisir une bibliothèque. Les avantages principaux de Plotly sont :
 
 - Plotly est l'une des seules bibliothèques spécifiquement tournée vers les représentations interactives. Matplotlib et Pygal ne fournissent que très peu de fonctionnalités interactives. Bokeh[^3] est aussi prévu pour l'interactivité et se présente comme une alternative viable.
 - Plotly est la seule bibliothèque de Python qui assure à la fois une création de visualisations et une intégration dans des pages web simple.
-- Plotly intègre parfaitement les objets de Pandas (par exemple, on peut directement passer des `pandas.Dataframe` aux objets graphiques de Plotly).
+- Plotly intègre parfaitement les objets de Pandas (par exemple, on peut directement passer des `pandas.DataFrame` aux objets graphiques de Plotly).
 - Des visualisations 3D interactives sont disponibles (ce qui n'est pas le cas des autres bibliothèques).
 - Plotly, ses animations et ses menus déroulants sont simples d’utilisation.
 
@@ -84,7 +84,7 @@ Il existe actuellement une pléthore de bibliothèques graphiques sous Python co
 
 > Note : Le jeu de données original de la leçon portait sur les homicides à Philadelphie (USA) ([cf. section de l'article original](https://programminghistorian.org/en/lessons/interactive-visualization-with-plotly#sample-dataset)). Pour cette traduction, il a été choisi d'adapter le jeu de données au contexte francophone.
 
-Le jeu de données utilisé pour cette leçon est issu du site de données publiques [data.gouv.fr](https://www.data.gouv.fr/fr/) et agrégées par le [Ministère de l'Éducation nationale, des Sports et Jeunesse](https://www.education.gouv.fr/).  Le jeu de données rassemble le nombre d'admissions au baccalauréat (général, technologique, professionnel et tout baccalauréat confondu) en France, pour chaque origine sociale, et ce, entre 1997 et 2024. Pour faciliter le déroulement de la leçon, des erreurs de codage de données ont été corrigées. Le jeu de données original est disponible sur [la page de data.gouv.fr](https://www.data.gouv.fr/fr/datasets/reussite-au-baccalaureat-selon-lorigine-sociale/#/resources), le jeu de données corrigé ainsi que le traitement réalisé sont disponibles sur [la page Zenodo](https://google.com).
+Le jeu de données utilisé pour cette leçon est issu du site de données publiques français [data.gouv.fr](https://www.data.gouv.fr/fr/) et agrégées par le [Ministère de l'Éducation nationale, des Sports et Jeunesse](https://www.education.gouv.fr/). Le jeu de données rassemble le nombre d'admissions au baccalauréat (général, technologique, professionnel et tout baccalauréat confondu) en France, pour chaque origine sociale, et ce entre 1997 et 2024. Pour faciliter le déroulement de la leçon, des erreurs de codage de données ont été corrigées et une transformation des donnés a été réalisée pour limiter les manipulations dans la leçon. Le jeu de données original est disponible sur [la page de data.gouv.fr](https://www.data.gouv.fr/fr/datasets/reussite-au-baccalaureat-selon-lorigine-sociale/#/resources), le jeu de données corrigé ainsi que le traitement réalisé sont disponibles [ici](https://google.com).
 
 ## Construire des visualisations avec Plotly Express
 
@@ -109,40 +109,25 @@ La prochaine étape est d'importer le jeu de données et de le nettoyer à l'aid
 
 - Importer uniquement les colonnes du jeu de données qui nous seront utiles.
 - Remplacer certains champs par des champs plus courts.
-- Réorganiser le jeux de données en 5 colonnes contre 10 au départ.
 
 ```python
-colonnes : list[str] = [
-    "Année", "Origine sociale", "Nombre d'admis au baccalaureat général",
-    "Pourcentage d'admis au baccalaureat général",
-    "Nombre d'admis au baccalauréat technologique",
-    "Pourcentage d'admis au baccalauréat technologique",
-    "Nombre d'admis au baccalauréat professionnel",
-    "Pourcentage d'admis au baccalauréat professionnel",
-    "Nombre d'admis au baccalauréat",
-    "Pourcentage d'admis au baccalauréat"
-]
+colonnes = ["Année","Origine sociale","Nombre de personnes admises",
+    "Proportion de personnes admises","Type de baccalauréat"]
 
-df_brut : pd.DataFrame = pd.read_csv("data_article.csv",usecols = colonnes)
+df : pd.DataFrame = pd.read_csv("data_article.csv",usecols = colonnes)
 
 # On raccourcit le nom de chaque colonne
 nouvelles_colonnes = {
     "Année" : "annee",
     "Origine sociale" : "origine_sociale",
-    "Nombre d'admis au baccalaureat général" : "n_admis_bac_g",
-    "Pourcentage d'admis au baccalaureat général" : "p_admis_bac_g",
-    "Nombre d'admis au baccalauréat technologique" : "n_admis_bac_t",
-    "Pourcentage d'admis au baccalauréat technologique" : "p_admis_bac_t",
-    "Nombre d'admis au baccalauréat professionnel" : "n_admis_bac_p",
-    "Pourcentage d'admis au baccalauréat professionnel" : "p_admis_bac_p",
-    "Nombre d'admis au baccalauréat" : "n_admis_bac",
-    "Pourcentage d'admis au baccalauréat" : "p_admis_bac"
+    "Nombre de personnes admises" : "n_admis",
+    "Proportion de personnes admises" : "p_admis",
+    "Type de baccalauréat" : "type"
 }
-df_brut.rename(nouvelles_colonnes, axis = 1, inplace = True)
+df.rename(nouvelles_colonnes, axis = 1, inplace = True)
 
 # On raccourcit le nom de certaines origines sociales pour alléger les visualisations
-df_brut["origine_sociale"] = df_brut["origine_sociale"].replace({
-    # Raccourcir les noms
+df["origine_sociale"] = df["origine_sociale"].replace({
     "Professions intermédiaires" : "P. intermédiaires",
     "Cadres, professions intellectuelles supérieures" : "Cadres",
     "Autres personnes sans activité professionnelle" : "Sans activité p.",
@@ -150,33 +135,20 @@ df_brut["origine_sociale"] = df_brut["origine_sociale"].replace({
     "Agriculteurs exploitants" : "Agriculteurs",
 })
 
+# On raccourcit le nom des types de bacs
+df["type"] = df["type"].replace({
+    "baccalaureat général" : "bac_g",
+    "baccalauréat technologique" : "bac_t",
+    "baccalauréat professionnel" : "bac_p",
+    "baccalauréat" : "bac_tous",
+})
+
 # On supprime les lignes associées aux origines sociales que l'on souhaite écarter 
 # pour cette leçon.
-df_brut.drop(df_brut[
-        (df_brut["origine_sociale"] == "Ensemble") | \
-        (df_brut["origine_sociale"] == "Indéterminé") 
+df.drop(df[
+        (df["origine_sociale"] == "Ensemble") | \
+        (df["origine_sociale"] == "Indéterminé") 
     ].index, inplace = True)
-
-# Finalement, on réorganise la table en une table plus simple à 5 colonnes
-# Pour ce faire, on crée un nouveau DataFrame à partir d'un dictionnaire de listes
-df = {
-    "annee" : [],
-    "origine_sociale" : [],
-    "n_admis" : [],
-    "p_admis" : [],
-    "type" : []
-}
-# Puis pour chaque colonne, on y entre les données
-for type_de_bac in ["bac_g", "bac_t", "bac_p", "bac"]: 
-    df["annee"] +=  df_brut["annee"].to_list()
-    df["origine_sociale"] +=  df_brut["origine_sociale"].to_list()
-    df["n_admis"] +=  df_brut[f"n_admis_{type_de_bac}"].to_list()
-    df["p_admis"] +=  df_brut[f"p_admis_{type_de_bac}"].to_list()
-    # On ajoute un indicateur "type" pour repérer le type de baccalauréat
-    df["type"] += [type_de_bac] * len(df_brut)
-
-# Finalement on convertit le dictionnaire de listes en DataFrame.
-df = pd.DataFrame(df)
 ```
 
 ### Diagrammes en barres
@@ -186,7 +158,7 @@ Maintenant que nous avons créé un `DataFrame` Pandas de notre jeu de données,
 ```python
 # Création d'un nouveau DataFrame
 num_admis_par_origine_sociale_2024 = df.loc[
-    (df["annee"] == 2024)&(df["type"] == "bac"), ["origine_sociale", "n_admis"]
+    (df["annee"] == 2024)&(df["type"] == "bac_tous"), ["origine_sociale", "n_admis"]
 ]
 print(num_admis_par_origine_sociale_2024)
 ```
@@ -263,7 +235,7 @@ Notre courbe représentera l'évolution de la proportion de personnes admises au
 # Créer un nouveau DataFrame contenant le pourcentage d'admis au 
 # baccalauréat (tous types confondus) par origine sociale et par année
 prop_admis_par_origine_sociale_par_annee = df.loc[
-    df["type"] == "bac", ["annee", "origine_sociale", "p_admis"]
+    df["type"] == "bac_tous", ["annee", "origine_sociale", "p_admis"]
 ]
 ```
 
@@ -319,21 +291,71 @@ fig.show()
 
 Les nuages de points (*scatterplots*), généralement utilisés pour visualiser des relations entre 2 variables continues, peuvent être créés à l'aide de Plotly Express en utilisant la fonction `px.scatter()`. Pour notre jeu de données, il peut être intéressant d'utiliser un nuage de points pour montrer la relation entre le nombre de personnes admises au baccalauréat général et le nombre de personnes admises au baccalauréat technologique par origine sociale chaque année. Pour alléger la visualisations, nous représentons seulement 4 origines sociales, soient les Agriculteurs, Cadres, Indépendants et les Ouvriers. Chaque point représente le nombre de personnes admises aux 2 types de baccalauréat pour une année.
 
-Il nous faut créer un nouveau `DataFrame` : 
+Lorsqu'on crée un nuage de point à partir d'un tableau, chaque ligne sera représentée par un point, et chaque colonne représente une dimension. Pour la figure que l'on souhaite créer, il nous faut un tableau avec 4 colonnes, ce qui nous amène à créer un nouveau `DataFrame`. Les colonnes à créer sont :
+
+ - L'année (`annee`)
+ - L'origine sociale (`origine_sociale`)
+ - Le nombre de personnes admises au baccalaureat général (`n_admis_bac_g`)
+ - Le nombre de personnes admises au baccalaureat technologique (`n_admis_bac_t`)
+
+Dans notre cas, il nous faut transformer la structure de données en passant par des dictionnaires intermédiaires puis en recréant le tableau sous la forme d'un `DataFrame`. On procède par un regroupement par année et origine sociale, puis on récupère les informations nécessaire pour chaque entrée que l'on veut représenter.
+
+Ce traitement est bien entendu spécifique à la structure des données que nous utilisons ici.
 
 ```python
-# On prépare un vecteur de booléens pour sélectionner les 4 origines sociales à 
-# l'aide de la fonction np.isin. np.isin est fonction qui adapte la syntaxe 
-# X in Y à des vecteurs.
-selection_origines_sociales = np.isin(
-    df_brut["origine_sociale"], 
-    ["Cadres", "Indépendants", "Ouvriers", "Agriculteurs"]
-)
-# On réutilise df_brut, plutôt que df, puisque df_brut comporte déjà une colonne 
-# par type de baccalauréat
-num_admis_bac_t_bac_g = df_brut.\
-    loc[selection_origines_sociales, : ]
+num_admis_bac_t_bac_g = {
+    "annee" : [], 
+    "origine_sociale" : [],
+    "n_admis_bac_g" : [],
+    "n_admis_bac_t" : []
+}
+
+# Pour chaque combinaison d'année et origine sociale
+for (annee, origine_sociale), _ in df.groupby(["annee", "origine_sociale"]):
+    # On sauvegarde: l'année, l'origine sociale, le nombre de personnes admises 
+    # au baccalauréat général et au baccalauréat technologique
+    
+    # Si l'origine sociale n'est pas dans la liste suivante, on passe à la prochaine.
+    if origine_sociale not in ["Cadres", "Indépendants", "Ouvriers", "Agriculteurs"]:
+        continue
+    
+    num_admis_bac_t_bac_g["annee"].append(annee)
+    num_admis_bac_t_bac_g["origine_sociale"].append(origine_sociale)
+    num_admis_bac_t_bac_g["n_admis_bac_g"].append(
+        df.loc[
+            (df["type"]=="bac_g")&\
+            (df["annee"]==annee)&\
+            (df["origine_sociale"]==origine_sociale),
+            "n_admis"
+        ].item()
+    )
+    num_admis_bac_t_bac_g["n_admis_bac_t"].append(
+        df.loc[
+            (df["type"]=="bac_t")&\
+            (df["annee"]==annee)&\
+            (df["origine_sociale"]==origine_sociale),
+            "n_admis"
+        ].item()
+    )
+
+# Transformons maintenant le dictionnaire en DataFrame.
+num_admis_bac_t_bac_g = pd.DataFrame(num_admis_bac_t_bac_g)
+print(num_admis_bac_t_bac_g)
 ```
+
+||annee|origine_sociale|n_admis_bac_g|n_admis_bac_t|
+|-|-----|---------------|-------------|-------------|
+|0     |1997 |Agriculteurs | 8309 | 4980|
+|1     |1997 |Cadres | 111616 | 21858|
+|2     |1997 |Indépendants | 26253 | 14119|
+|3     |1997 |Ouvriers | 33038 | 32351|
+|4     |1998 |Agriculteurs | 8356 | 5390|
+|..    | ... |... | ... | ...|
+|107   |2023 |Ouvriers | 35609 | 20449|
+|108   |2024 |Agriculteurs | 3912 | 1206|
+|109   |2024 |Cadres | 148642 | 25299|
+|110   |2024 |Indépendants | 29309 | 10677|
+|111   |2024 |Ouvriers | 33534 | 20416|
 
 ```python
 fig = px.scatter(
@@ -402,7 +424,7 @@ Pour créer une visualisation avec une animation, il faut commencer par sélecti
 
 ```python
 num_admis_par_origine_sociale_par_annee = df.loc[
-    df["type"] == "bac", ["annee", "origine_sociale", "n_admis"]
+    df["type"] == "bac_tous", ["annee", "origine_sociale", "n_admis"]
 ]
 # On utilise px.bar pour créer un diagramme en barres
 fig = px.bar(
@@ -654,7 +676,6 @@ Les Graph Objects sont représentés comme des structure de données en arbre (i
 Il est facile de voir la structure de données sous-jacente d'une figure en l'imprimant comme un dictionnaire avec la fonction `fig.to_dict()`. Pour lire ces données plus facilement, on peut utiliser le format `JSON` avec la fonction `fig.to_json(pretty = True)`. Dans l'exemple ci dessous, nous ne montrons que les 500 premiers caractères comme extrait de sortie après utilisation de cette fonction (une fois encore, en utilisant la variable `fig` créée précédemment).
 
 ```python
-# print(fig.to_dict())
 print(fig.to_json(pretty = True)[0:500] + "\n...")
 ```
 
@@ -690,11 +711,11 @@ Examiner la sortie affichée devrait pouvoir vous aider à comprendre la structu
 
 Un autre point qu'il est important d'avoir à l'esprit : créer des visualisations avec `plotly.go` requiert, en général, bien plus de code que pour créer les mêmes visualisations avec `plotly.px`.
 
-Voyez plutôt l'exemple suivant : construisons un diagramme en barres horizontales pour illustrer le nombre de personnes admises au baccalauréat (tous types confondus) en 2024. Premièrement, sélectionnons une partie `DataFrame` pour ne garder que l'année 2024 et le type `"bac"` :
+Voyez plutôt l'exemple suivant : construisons un diagramme en barres horizontales pour illustrer le nombre de personnes admises au baccalauréat (tous types confondus) en 2024. Premièrement, sélectionnons une partie `DataFrame` pour ne garder que l'année 2024 et le type `"bac_tous"` :
 
 ```python
 num_admis_par_origine_sociale_2024 = df.loc[
-    (df["annee"] == 2024)&(df["type"] == "bac"), ["origine_sociale", "n_admis"]
+    (df["annee"] == 2024)&(df["type"] == "bac_tous"), ["origine_sociale", "n_admis"]
 ]
 ```
 
@@ -827,7 +848,7 @@ from plotly.subplots import make_subplots
 # Préparation des données
 num_admis_par_origine_sociale = df.\
     groupby(["type", "annee"]).\
-    get_group(("bac", 2024))
+    get_group(("bac_tous", 2024))
 
 # On ne garde que 4 origines sociales pour alléger le graphe
 selection_origines_sociales = np.isin(
@@ -836,10 +857,10 @@ selection_origines_sociales = np.isin(
 )
 prop_admis_par_origine_sociale_par_annee = df.\
     loc[selection_origines_sociales, :].\
-    groupby("type").get_group("bac")
+    groupby("type").get_group("bac_tous")
 
 pourcentage_reussite_par_type_de_bac = df.\
-    loc[df["type"] != "bac",["type", "p_admis"]].\
+    loc[df["type"] != "bac_tous",["type", "p_admis"]].\
     groupby("type")
 ```
 
@@ -877,7 +898,7 @@ fig.add_trace(
 </figcaption>
 </figure>
 
-> **Nota : si vous créez une composition de figure dans un Notebook Jupyter, relancer le code pourrait dupliquer la trace que vous venez d'ajouter et donc doubler la légende. Si vous avez besoin de relancer le code, il vaudrait mieux relancer à partir de la cellule qui définit la variable `fig` que vous modifiez.**
+> **Nota : si vous créez une composition de figures dans un Notebook Jupyter, relancer le code pourrait dupliquer la trace que vous venez d'ajouter et donc doubler la légende. Si vous avez besoin de relancer le code, il vaudrait mieux relancer à partir de la cellule qui définit la variable `fig` que vous modifiez.**
 
 **Étape 4 : Ajouter la seconde figure (courbe)**
 
@@ -1097,6 +1118,7 @@ fig.update_layout(margin = {"b" : 200})
 Dans les sections précédentes de la leçon, nous avons vu comment créer et modifier les visualisations interactives avec Plotly Express et Plotly Graph Objects. Nous allons maintenant apprendre comment faire apparaître les visualisations et les exporter pour les publier ou les partager.
 
 La méthode illustrée ici exportera la figure 3 créée plus tôt dans la leçon :
+
 ```python
 fig = px.line(
     prop_admis_par_origine_sociale_par_annee,

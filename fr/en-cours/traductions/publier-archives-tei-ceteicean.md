@@ -36,31 +36,30 @@ doi: XX.XXXXX/phen0000
 ---
 
 
+
 **Note :** Pour suivre ce tutoriel de manière exhaustive, vous devez savoir ce qu'est le langage de balisage XML-TEI développé par la [Text Encoding Initiative ou TEI](https://tei-c.org/) et quelle est sa fonction en tant que langage standard dans l'édition numérique savante de textes en Sciences humaines et sociales. Vous pouvez trouver des ressources et des tutoriels en français sur l'encodage de textes en TEI sur [La TEI Lite](https://www.tei-c.org/release/doc/tei-p5-exemplars/html/tei_lite_fr.doc.html). Nous vous recommandons également les parties 1 et 2 de la leçon [Introduction à l'encodage de textes en TEI par Nicolás Vaughan](/changer-pour-la-version-en-français) et l'[Initiation XML-TEI par Lauranne Bertrand](http://weburfist.univ-bordeaux.fr/wp-content/uploads/2016/12/20161209_BERTRAND-URFIST-TEI-1.pdf). Durant ce tutoriel, d'autres langages informatiques seront utilisés (comme le [JavaScript](https://www.javascript.com/) et le [CSS](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade)), mais il n'est pas nécessaire d'avoir des connaissances préalables sur leur fonctionnement pour utiliser [CETEIcean](https://github.com/TEIC/CETEIcean).
 
 ## Introduction et logiciels que nous utiliserons
-
 Pour ceux qui débutent avec la TEI, l'un des obstacles les plus courants est que, une fois que les textes ont été encodés avec ce langage de balisage, il est difficile de savoir comment les publier en ligne. Pour être visualisés dans un navigateur, les fichiers XML-TEI doivent d'abord être transformés en [HTML](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language) à l'aide de modèles [XSLT](https://fr.wikipedia.org/wiki/Extensible_Stylesheet_Language_Transformations). Cependant, ce processus requiert des connaissances techniques et des outils qui ne sont pas toujours à la portée de tous les humanistes numériques, en particulier ceux qui abordent l'utilisation de la TEI pour la première fois, ceux qui ne connaissent pas encore en profondeur l'utilisation de logiciels d'édition, ou ceux qui n'ont pas accès à des serveurs propres. CETEIcean est un logiciel d'édition numérique qui permet de visualiser des fichiers XML-TEI dans le navigateur sans avoir à appliquer une transformation XSLT.
 
 Ce tutoriel vous guidera à travers les étapes nécessaires pour publier un fichier TEI en ligne en utilisant CETEIcean, une librairie ouverte écrite dans le langage de programmation JavaScript. CETEIcean permet d'afficher les documents TEI dans un navigateur web sans les transformer au préalable en HTML. CETEIcean charge le fichier TEI dynamiquement dans le navigateur et change le nom des éléments TEI pour d'autres en HTML, de sorte que ceux-ci nous permettent de visualiser dans le navigateur web les phénomènes textuels que nous marquons dans nos fichiers en utilisant la TEI.
 
-Tout d'abord, une clarification concernant la visualisation de votre travail : la méthode par défaut de CETEIcean pour afficher les fichiers TEI consiste à charger les fichiers depuis un autre emplacement. Cependant, tous les navigateurs ne vous permettront pas de charger les fichiers s'ils sont stockés sur votre ordinateur. Vous pouvez essayer, mais si cela ne fonctionne pas, vous devrez générer un serveur local, placer les fichiers sur un serveur en ligne, ou utiliser un éditeur de code avec des fonctions de prévisualisation. Pour ce tutoriel, nous suivrons cette dernière option, car nous utiliserons l'éditeur [Visual Studio Code](https://code.visualstudio.com/), avec l'extension *HTML Preview* depuis le marketplace d'extensions. Néanmoins, il existe d'autres options libres pour éditer des fichiers TEI et générer des prévisualisations HTML, comme [jEdit](http://www.jedit.org/) ou [Atom](https://atom.io), ainsi que des versions propriétaires comme [Oxygen](https://www.oxygenxml.com/).
+Tout d'abord, une clarification concernant la visualisation de votre travail : la méthode par défaut de CETEIcean pour afficher les fichiers TEI consiste à charger les fichiers depuis un autre emplacement, souvent le navigateur. Cependant, tous les navigateurs ne vous permettront pas de charger les fichiers s'ils sont stockés sur votre ordinateur. Vous pouvez essayer, mais si cela ne fonctionne pas, vous devrez générer un serveur local, placer les fichiers sur un serveur en ligne, ou utiliser un éditeur de code avec des fonctions de prévisualisation. Pour ce tutoriel, nous suivrons cette dernière option, car nous utiliserons l'éditeur [Visual Studio Code](https://code.visualstudio.com/), avec l'extension *HTML Preview* depuis Extensions. Néanmoins, il existe d'autres options libres pour éditer des fichiers TEI et générer des prévisualisations HTML, comme [jEdit](http://www.jedit.org/) ou [Atom](https://atom.io), ainsi que des versions propriétaires comme [Oxygen](https://www.oxygenxml.com/).
 
 <div class="alert alert-warning">
-Mise à jour de mars 2025 : La version originale en espagnol a utilisé l'éditeur <em>Atom</em> ; cependant nous ne recommandons pas d'utiliser Atom, car le logiciel n'a pas reçu de maintenance ni de mises à jour depuis sa fermeture en décembre 2022. Nous avons alors decidé d'utiliser <em>VS Code</em> de la même manière, à condition d'installer également l'extension <em>HTML Preview</em> depuis le marketplace d'extensions.
+Mise à jour de mars 2025 : La version originale en espagnol a utilisé l'éditeur <em>Atom</em> ; cependant nous ne recommandons pas d'utiliser Atom, car le logiciel n'a pas reçu de maintenance ni de mises à jour depuis sa fermeture en décembre 2022. Nous avons alors decidé d'utiliser <em>VS Code</em> de la même manière, à condition d'installer également l'extension <em>HTML Preview</em> depuis Extensions.
 </div>
 
-Vous devrez donc télécharger et installer [Visual Studio Code](https://code.visualstudio.com/) avant de continuer avec ce tutoriel. Une fois VS Code en fonctionnement, installez l'extension *HTML Preview* (créé par George Oliveira) que vous pouvez trouver en ouvrant le marketplace d'extensions (cinquième bouton de la barre latérale gauche). Dans la barre de recherche, tapez le nom de l'extension *HTML Preview*. Lorsque l'extension que nous recherchons apparaît dans la liste des résultats, vous devez cliquer sur l'extension et ensuite sur le bouton bleu qui dit "Installer" dans la page qui s'ouvre à côté :
+Vous devrez donc télécharger et installer [Visual Studio Code](https://code.visualstudio.com/) avant de continuer avec ce tutoriel. Une fois VS Code en fonctionnement, installez l'extension *HTML Preview* (créé par George Oliveira) que vous pouvez trouver en ouvrant les Extensions (cinquième bouton de la barre latérale gauche). Dans la barre de recherche, tapez le nom de l'extension *HTML Preview*. Lorsque l'extension que nous recherchons apparaît dans la liste des résultats, vous devez cliquer sur l'extension et ensuite sur le bouton bleu qui dit "Installer" dans la page qui s'ouvre à côté :
 
-{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-01.png" alt= "Capture d'écran de l'application VS Code qui dirige les lecteurs vers le marketplace d'extensions (le cinquième bouton du menu à gauche) et qui montre comment après une recherche pour 'HTML Preview' les lecteurs peuvent installer l'extension." caption="Figure 1. Processus d'installation de l'extension HTML Preview pour prévisualiser les fichiers en HTML." %}
+{% include figure.html filename="screenshots/intallerHtmlPreview.png" alt= "Capture d'écran de l'application VS Code qui dirige les lecteurs vers Extensions (le cinquième bouton du menu à gauche) et qui montre comment après une recherche pour 'HTML Preview' les lecteurs peuvent installer l'extension." caption="Processus d'installation de l'extension HTML Preview pour prévisualiser les fichiers en HTML" %}
 
 Nous utiliserons en tant que texte de test *La Dernière Incarnation de Vautrin*, quatrième partie du roman *Splendeurs et misères des courtisanes*, par l'écrivain et essayiste français [Honoré de Balzac](https://fr.wikipedia.org/wiki/Honor%C3%A9_de_Balzac). Ce texte du XIXe siècle a paru en feuilleton dans *La Presse* du 13 avril au 17 mai 1847. Ce texte est la conclusion du roman susmentionné, lequel explore les aspects sousterrains, tels que le crime et la prostitutuion, de la société française du XIXe siècle. Vous pouvez trouver une édition numérique complète du texte réalisée par le projet *ANR Phœbus (« Projet d’hypertexte de l’œuvre de Balzac par l’utilisation de similarités »)* sur : [https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse](https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse).
 
 Nous commencerons avec un fichier simple (bien qu'un peu long) au format TEI P5, que nous voulons rendre visible dans un navigateur web : [`balzac-42-splendeurs-miseres-courtisanes-presse-derniere-incarnation-vautrin.xml`](https://api.nakala.fr/data/10.34847/nkl.4fb47i30/a29cf71aeb3f98543df574d5efddf11c8b34d7ef). Pour télécharger le fichier, faites un clic droit sur le lien de téléchargement et sélectionnez l'option 'Enregistrer sous...'.
 
 ## Étape 1 : Créer une structure pour nos fichiers
-
-Nous commencerons par établir une structure pour nos fichiers, c'est-à-dire un dossier conteneur avec le nom 'tutoriel_fr' avec les sous-dossiers et les fichiers que nous vous indiquerons ci-dessous. Vous pouvez télécharger le répertoire complet du dépôt [CETEIcean sur GitHub](https://github.com/TEIC/CETEIcean) et travailler dans le dossier 'tutoriel_fr', ou vous pouvez télécharger les fichiers individuellement, à condition qu'ils conservent la même structure que sur GitHub, qui est la suivante :
+Nous commencerons par établir une structure pour nos fichiers, c'est-à-dire un dossier conteneur avec le nom 'tutoriel_fr' avec les sous-dossiers et les fichiers que nous vous indiquerons ci-dessous. Vous pouvez télécharger le répertoire complet du dépôt [CETEIcean sur GitHub](https://github.com/TEIC/CETEIcean) et travailler dans le dossier 'tutoriel_fr', ou vous pouvez télécharger les fichiers individuellement, à condition qu'ils conservent la même structure que sur le dépôt git du projet, qui est la suivante :
 
 ```
   tutoriel_fr/
@@ -94,11 +93,12 @@ L'étape suivante consistera à créer un nouveau fichier sur VS Code avec le no
 </html>
 ```
 
-Ensuite, vous devez enregistrer ce fichier dans le répertoire racine (dans notre cas, le dossier 'tutoriel_fr') ; rappelez-vous que son titre doit être `index.html`. Ce fichier servira de structure dans laquelle nous mettrons les instructions pour afficher nos fichiers TEI. Tels que les fichiers TEI, les fichiers HTML ont un en-tête, appelé `head`, et un corps de texte, appelé `body`. Tout au long de ce tutoriel, nous utiliserons ce fichier pour ajouter des liens vers notre CSS (_Cascading Style Sheet_, également appelée _feuille de style_ ou [_feuille de styles en cascade_](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade) en français) et vers nos fichiers JavaScript, et nous écrirons un peu de JavaScript pour obtenir une visualisation de notre document TEI qui reflète les aspects du balisage qui nous intéressent de mettre en évidence. Dans la première ligne vide du `<head>`, écrivez :
+Ensuite, vous devez enregistrer ce fichier dans le répertoire racine (dans notre cas, le dossier 'tutoriel_fr') ; rappelez-vous que son titre doit être `index.html`. Ce fichier servira de structure dans laquelle nous mettrons les instructions pour afficher nos fichiers TEI. Tels que les fichiers TEI, les fichiers HTML ont un en-tête, appelé `head`, et un corps de texte, appelé `body`. Tout au long de ce tutoriel, nous utiliserons ce fichier pour ajouter des liens vers notre CSS (_Cascading Style Sheet_, également appelée _feuille de style_ ou [_feuille de styles en cascade_](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade) en français) et vers nos fichiers JavaScript, et nous écrirons un peu de JavaScript pour obtenir une visualisation de notre document TEI qui reflète les aspects du balisage que nous souhaitons mettre en évidence. Dans la première ligne vide du `<head>`, écrivez :
 
 ```html
   <link rel="stylesheet" href="css/tei.css">
 ```
+
 
 Cela connectera notre fichier CSS à notre page HTML, lui donnant accès aux directives de style qu'il contient (il n'y en a que quelques-unes, mais nous en ajouterons d'autres). Ensuite, nous inclurons la librairie CETEIcean, en ajoutant la ligne suivante après le lien vers la feuille de style :
 
@@ -127,8 +127,7 @@ Cela connectera notre fichier CSS à notre page HTML, lui donnant accès aux dir
 ```
 
 ## Étape 2 : Charger et prévisualiser le fichier TEI
-
-Nous sommes maintenant prêts à charger le fichier TEI. Pour cela, nous devons ajouter une séquence de commandes informatiques communément appelée par son nom anglais ["script"](https://fr.wikipedia.org/wiki/Langage_de_script), qui nous permettra de récupérer le document TEI de *La Dernière Incarnation de Vautrin* dans notre fichier HTML (celui que nous éditons en ce moment). Copiez et collez les lignes de code suivantes après le dernier élément que nous avons ajouté :
+Nous sommes maintenant prêts à charger le fichier TEI. Pour cela, nous devons ajouter une séquence de commandes informatiques communément appelée par son nom anglais ["script"](https://fr.wikipedia.org/wiki/Langage_de_script), qui nous permettra de récupérer le document TEI de *La Dernière Incarnation de Vautrin* dans notre fichier HTML (celui que nous éditons en ce moment). Copiez et collez les lignes de code suivantes après le dernier élément que nous avons ajouté (`<script src="js/CETEI.js"></script>`) :
 
 ```html
 <script>
@@ -141,20 +140,20 @@ let c = new CETEI();
 
 Vous n'avez pas besoin d'être un expert en JavaScript pour utiliser CETEIcean, mais apprendre son fonctionnement de base peut être utile. Si vous souhaitez inclure des fonctions avancées, vous devrez apprendre JavaScript. Sur le réseau pour développeurs de Mozilla, vous pouvez trouver un excellent [guide JavaScript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide) dans plusieurs langues, dont le français. Pour ce tutoriel, nous vous dirons seulement que les lignes de code que nous avons ajoutées font plusieurs choses :
 
-- En premier lieu, une variable `c` est définie comme un nouvel objet CETEI. Cela fera le travail de charger et de styler notre fichier source
+- En premier lieu, une variable `c` est définie comme un nouvel objet CETEI. Cela s'occupera de charger et de styler notre fichier source
 - Ensuite, nous indiquerons à `c` de charger le fichier source et de le convertir en HTML ([Custom Elements](https://fr.javascript.info/custom-elements)), et nous lui donnerons également une fonction qui prendra les résultats et les mettra dans le `<body>` de notre fichier `index.html`
 - Dans la ligne `document.getElementsByTagName('body')`, on appelle une fonction qui recherche tous les éléments `<body>` et les renvoie sous la forme d'une liste ordonnée (une liste dans laquelle on peut accéder aux membres qui la composent à travers leur numéro d'index)
 - Dans notre exemple, il n'y a qu'un seul élément `<body>`, nous obtiendrons donc une seule entrée dans notre liste, avec l'index 0. Cet élément, qui est un élément HTML, est attaché en tant qu'enfant du document TEI que nous venons de charger
 
 À ce stade, vous devriez pouvoir exécuter une prévisualisation du fichier HTML. Nous allons le prévisualiser avec l'extension que nous avons installé au début de ce tutoriel. Donc, allez faire un clic droit sur le fichier HTML et choisissez dans le menu déroulant l'option « *Open Preview* » :
 
-{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-02.png"  alt= "Capture d'écran qui montre l'option à choisir dans le menu déroulant qui s'ouvre en faisant un clic droit sur le fichier HTML." caption="Figure 2. Menu des options pour prévisualiser les fichiers en HTML sur VS Code." %}
+{% include figure.html filename="screenshots/tutoriel_fr_capture2.png"  alt= "Capture d'écran qui montre l'option à choisir dans le menu déroulant qui s'ouvre en faisant un clic droit sur le fichier HTML." caption="Menu des options pour prévisualiser les fichiers en HTML sur VS Code" %}
 
-{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-03.png"  alt= "Capture d'écran qui montre comment trouver l'option pour changer les paramètres de sécurité de l'extension 'HTML Preview' en faisant clic sur le bouton de 'Plus d'actions...' trouvé sur le côté droit de l'écran." caption="Figure 3. Bouton pour changer les paramètres de sécurité de l'extension 'HTML Preview' pour permettre l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
+{% include figure.html filename="fr-tr-publier-archives-ceteicean-02-1.png"  alt= "Capture d'écran qui montre comment trouver l'option pour changer les paramètres de sécurité de l'extension 'HTML Preview' en faisant clic sur le bouton de 'Plus d'actions...' trouvé à la droite de l'écran." caption="Figure 2.1. Bouton pour changer les paramètres de sécurité de l'extension 'HTML Preview' pour permettre l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
 
-{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-04.png"  alt= "Capture d'écran qui indique qu'il faut choisir l'option 'Disable' pour pouvoir prévisualiser les fichiers TEI avec CETEIcean." caption="Figure 4. Option à choisir pour activer l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
+{% include figure.html filename="fr-tr-publier-archives-ceteicean-02-2.png"  alt= "Capture d'écran qui indique qu'il faut choisir l'option 'Disable' pour pouvoir prévisualiser les fichiers TEI avec CETEIcean." caption="Figure 2.2. Option à choisir pour activer l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
 
-{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-05.png" alt= "Capture d'écran montrant une première prévisualisation de notre fichier TEI avec CETEIcean. Le fichier HTML et la prévisualisation apparaissent côte à côte : le fichier HTML à gauche et la prévisualisation à droite." caption="Figure 5. Première prévisualisation de notre fichier TEI avec CETEIcean." %}
+{% include figure.html filename="screenshots/HTML_preview_VSCode.png" alt= "capture d'écran de la première prévisualisation de notre fichier TEI avec CETEIcean" caption="Première prévisualisation de notre fichier TEI avec CETEIcean" %}
 
 Si vous n'utilisez pas VS Code, vous pouvez faire la même chose en plaçant vos fichiers sur un serveur web. Si vous connaissez le fonctionnement de GitHub, vous pouvez utiliser GitHub Pages (voici un [tutoriel](https://docs.github.com/fr/pages/quickstart) en français) et créer un dépôt. Si vous avez installé Python sur votre ordinateur, vous pouvez exécuter un serveur web simple dans le répertoire de ce tutoriel (dans notre cas, le dossier 'tutoriel_fr'). À cette fin, vous devez ouvrir la console de commandes et vérifier que vous êtes dans le dossier souhaité (sinon, vous pouvez naviguer jusqu'à ce dossier avec la commande `cd + url du fichier`, par exemple : `cd Documents/tutoriel_fr`) et entrer la commande :
 
@@ -228,7 +227,7 @@ Ce nouveau comportement prend une fonction de JavaScript, ce qui fait que l'él�
 
 Si à ce stade, nous prévisualisons notre HTML sur VS Code, nous obtiendrons le résultat suivant :
 
-{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-06.png" alt= "Capture d'écran qui montre le fichier HTML sur le côté gauche et la prévisualisation de notre fichier TEI où on peut voir les titres en gras et en plus grande taille selon le niveau du titre sur le côté droit." caption="Figure 6. Prévisualisation de notre fichier TEI avec style pour les titres." %}
+{% include figure.html filename="screenshots/Preview_style_titres.png" alt= "capture d'écran de la prévisualisation de notre fichier TEI avec style pour les titres" caption="Prévisualisation de notre fichier TEI avec style pour les titres" %}
 
 Avec cette prévisualisation, nous avons considérablement amélioré la présentation de notre document, mais les notes de l'édition rendent toujours la lecture du texte difficile. Pour résoudre ce problème, nous ajouterons encore un autre comportement à notre script. Cependant, pour atteindre cet objectif, nous devrons utiliser une séquence de commandes un peu plus longue et complexe que la précédente. Copiez et collez le texte suivant entre les lignes `"tei": {` et `"head": function(e) {` qui se trouvent dans le deuxième élément `<script>` de notre document `index.html`:
 
@@ -243,17 +242,17 @@ Avec cette prévisualisation, nous avons considérablement amélioré la présen
     /* Le premier bloc vérifie s'il y a des notes dans le texte et les ordonne dans une séquence*/
 
     let id = "note" + this.noteIndex;
-    let link = document.createElement("a");
-    link.setAttribute("id", "src" + id);
-    link.setAttribute("href", "#" + id);
-    link.innerHTML = this.noteIndex;
+    let lien = document.createElement("a");
+    lien.setAttribute("id", "src" + id);
+    lien.setAttribute("href", "#" + id);
+    lien.innerHTML = this.noteIndex;
     let contenu = document.createElement("sup");
     if (e.previousSibling.localName == "tei-note") {
       contenu.appendChild(document.createTextNode(","));
     }
     /* Le deuxième bloc ajoute un numéro à chaque note*/
 
-    contenu.appendChild(link);
+    contenu.appendChild(lien);
     let notes = this.dom.querySelector("ol.notes");
     if (!notes) {
       notes = document.createElement("ol");
@@ -274,7 +273,7 @@ Avec cette prévisualisation, nous avons considérablement amélioré la présen
 
 Aux fins de compléter ce tutoriel, il n'est pas nécessaire de comprendre le fonctionnement de chaque ligne de ce comportement. Cependant, si vous observez le résultat de la prévisualisation, vous remarquerez qu'en l'incluant, les notes apparaissent à la fin du texte, hyperliées avec leurs références respectives :
 
-{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-07.png" alt= "Capture d'écran qui montre le fichier HTML sur le côté gauche et la prévisualisation de notre fichier TEI avec les numéros des notes sous forme de lien hypertexte sur le côté droit." caption="Figure 7. Prévisualisation de notre fichier TEI avec style pour les notes." %}
+{% include figure.html filename="screenshots/Preview_notes.png" alt= "capture d'écran de la prévisualisation de notre fichier TEI avec style pour les notes" caption="Prévisualisation de notre fichier TEI avec style pour les notes" %}
 
 ## Étape 4 : Pour continuer à travailler avec CETEIcean
 
@@ -288,23 +287,28 @@ Si vous faites cela, vous voudrez peut-être ajouter des styles CSS ou des compo
 
 Dans ce tutoriel, nous n'avons pas épuisé toutes les possibilités pour la présentation de notre document source. Nous vous invitons à continuer à expérimenter par vous-même les différentes manières dont un balisage TEI peut être visualisé dans un navigateur en utilisant CETEICean. Vous pouvez trouver plus d'informations sur [CETEIcean](http://teic.github.io/CETEIcean/).
 
-## Références
+
+## Références bibliographiques
+
+Bertrand, Lauranne. « Initiation XML-TEI ». URFIST, BORDEAUX, 12 juillet 2016. http://weburfist.univ-bordeaux.fr/wp-content/uploads/2016/12/20161209_BERTRAND-URFIST-TEI-1.pdf.
+
+de Balzac, Honoré. ‘La Dernière Incarnation De Vautrin, Paru En Feuilleton Dans La Presse Du 13 Avril Au 17 Mai 1847’. NAKALA - Https://Nakala.fr (Huma-Num - CNRS), 2017. https://doi.org/10.34847/NKL.4FB47I30.
+
+Honoré de Balzac. « La Dernière Incarnation de Vautrin ». Critical edition. Avec ANR Phoebus e-Balzac. eBalzac, 2017. https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse.
+
+Sperberg-McQueen, Lou Burnard et C. M. « Encoder Pour Échanger : Une Introduction à La TEI Lou Burnard et C.M. Sperberg-McQueen. Traduction Française Sophie David ». Text. Consulté le 24 avril 2025. https://www.tei-c.org/release/doc/tei-p5-exemplars/html/tei_lite_fr.doc.html.
+
+Vaughan, Nicolás. 2021. "Introduction au codage de textes en TEI (partie 1)", *Programming Historian en español* 5 (2021), https://doi.org/10.46430/phes0053 (changer pour la version en français)
+
+
+## Outils techniques
 
 Atom. Un éditeur de texte hackable pour le 21e siècle. https://atom.io
 
-Bertrand, Lauranne. 2016. « Initiation XML-TEI ». URFIST – BORDEAUX, juillet 12. http://weburfist.univ-bordeaux.fr/wp-content/uploads/2016/12/20161209_BERTRAND-URFIST-TEI-1.pdf
-
 Cayless, Hugh et Viglianti, Raffaele. CETEIcean. http://teic.github.io/CETEIcean/
-
-de Balzac, H. (2017). La Dernière Incarnation de Vautrin, paru en feuilleton dans La Presse du 13 avril au 17 mai 1847. NAKALA - Https://Nakala.fr (Huma-Num - CNRS). https://doi.org/10.34847/NKL.4FB47I30
 
 Jedit. Éditeur de texte pour programmeurs. Version stable : 5.6.0. http://www.jedit.org/
 
 Oxygen. Éditeur XML. https://www.oxygenxml.com/
 
-Sperberg-McQueen, Lou Burnard et C. M. s. d. « Encoder Pour Échanger : Une Introduction à La TEI Lou Burnard et C.M. Sperberg-McQueen. Traduction Française Sophie David ». Text. Consulté le 23 avril 2025. https://www.tei-c.org/release/doc/tei-p5-exemplars/html/tei_lite_fr.doc.html
-
-Vaughan, Nicolás. 2021. "Introduction au codage de textes en TEI (partie 1)", *Programming Historian en español* 5 (2021), https://doi.org/10.46430/phes0053 (changer pour la version en français)
-
 Visual Studio Code. https://code.visualstudio.com/
-```

@@ -52,7 +52,7 @@ Mise à jour de mars 2025 : La version originale en espagnol a utilisé l'édite
 
 Vous devrez donc télécharger et installer [Visual Studio Code](https://code.visualstudio.com/) avant de continuer avec ce tutoriel. Une fois VS Code en fonctionnement, installez l'extension *HTML Preview* (créé par George Oliveira) que vous pouvez trouver en ouvrant les Extensions (cinquième bouton de la barre latérale gauche). Dans la barre de recherche, tapez le nom de l'extension *HTML Preview*. Lorsque l'extension que nous recherchons apparaît dans la liste des résultats, vous devez cliquer sur l'extension et ensuite sur le bouton bleu qui dit "Installer" dans la page qui s'ouvre à côté :
 
-{% include figure.html filename="screenshots/intallerHtmlPreview.png" alt= "Capture d'écran de l'application VS Code qui dirige les lecteurs vers Extensions (le cinquième bouton du menu à gauche) et qui montre comment après une recherche pour 'HTML Preview' les lecteurs peuvent installer l'extension." caption="Processus d'installation de l'extension HTML Preview pour prévisualiser les fichiers en HTML" %}
+{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-01.png" alt="Capture d'écran de l'application VS Code qui dirige les lecteurs vers Extensions (le cinquième bouton du menu à gauche) et qui montre comment après une recherche pour 'HTML Preview' les lecteurs peuvent installer l'extension." caption="Figure 1. Processus d'installation de l'extension HTML Preview pour prévisualiser les fichiers en HTML" %}
 
 Nous utiliserons en tant que texte de test *La Dernière Incarnation de Vautrin*, quatrième partie du roman *Splendeurs et misères des courtisanes*, par l'écrivain et essayiste français [Honoré de Balzac](https://fr.wikipedia.org/wiki/Honor%C3%A9_de_Balzac). Ce texte du XIXe siècle a paru en feuilleton dans *La Presse* du 13 avril au 17 mai 1847. Ce texte est la conclusion du roman susmentionné, lequel explore les aspects sousterrains, tels que le crime et la prostitutuion, de la société française du XIXe siècle. Vous pouvez trouver une édition numérique complète du texte réalisée par le projet *ANR Phœbus (« Projet d’hypertexte de l’œuvre de Balzac par l’utilisation de similarités »)* sur : [https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse](https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse).
 
@@ -147,13 +147,13 @@ Vous n'avez pas besoin d'être un expert en JavaScript pour utiliser CETEIcean, 
 
 À ce stade, vous devriez pouvoir exécuter une prévisualisation du fichier HTML. Nous allons le prévisualiser avec l'extension que nous avons installé au début de ce tutoriel. Donc, allez faire un clic droit sur le fichier HTML et choisissez dans le menu déroulant l'option « *Open Preview* » :
 
-{% include figure.html filename="screenshots/tutoriel_fr_capture2.png"  alt= "Capture d'écran qui montre l'option à choisir dans le menu déroulant qui s'ouvre en faisant un clic droit sur le fichier HTML." caption="Menu des options pour prévisualiser les fichiers en HTML sur VS Code" %}
+{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-02.png"  alt="Capture d'écran qui montre l'option à choisir dans le menu déroulant qui s'ouvre en faisant un clic droit sur le fichier HTML." caption="Figure 2. Menu des options pour prévisualiser les fichiers en HTML sur VS Code" %}
 
-{% include figure.html filename="fr-tr-publier-archives-ceteicean-02-1.png"  alt= "Capture d'écran qui montre comment trouver l'option pour changer les paramètres de sécurité de l'extension 'HTML Preview' en faisant clic sur le bouton de 'Plus d'actions...' trouvé à la droite de l'écran." caption="Figure 2.1. Bouton pour changer les paramètres de sécurité de l'extension 'HTML Preview' pour permettre l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
+{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-03.png"  alt="Capture d'écran qui montre comment trouver l'option pour changer les paramètres de sécurité de l'extension 'HTML Preview' en faisant clic sur le bouton de 'Plus d'actions...' trouvé à la droite de l'écran." caption="Figure 3 Bouton pour changer les paramètres de sécurité de l'extension 'HTML Preview' pour permettre l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
 
-{% include figure.html filename="fr-tr-publier-archives-ceteicean-02-2.png"  alt= "Capture d'écran qui indique qu'il faut choisir l'option 'Disable' pour pouvoir prévisualiser les fichiers TEI avec CETEIcean." caption="Figure 2.2. Option à choisir pour activer l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
+{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-04.png"  alt="Capture d'écran qui indique qu'il faut choisir l'option 'Disable' pour pouvoir prévisualiser les fichiers TEI avec CETEIcean." caption="Figure 4. Option à choisir pour activer l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
 
-{% include figure.html filename="screenshots/HTML_preview_VSCode.png" alt= "capture d'écran de la première prévisualisation de notre fichier TEI avec CETEIcean" caption="Première prévisualisation de notre fichier TEI avec CETEIcean" %}
+{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-05.png" alt="Capture d'écran de la première prévisualisation de notre fichier TEI avec CETEIcean" caption="Figure 5. Première prévisualisation de notre fichier TEI avec CETEIcean" %}
 
 Si vous n'utilisez pas VS Code, vous pouvez faire la même chose en plaçant vos fichiers sur un serveur web. Si vous connaissez le fonctionnement de GitHub, vous pouvez utiliser GitHub Pages (voici un [tutoriel](https://docs.github.com/fr/pages/quickstart) en français) et créer un dépôt. Si vous avez installé Python sur votre ordinateur, vous pouvez exécuter un serveur web simple dans le répertoire de ce tutoriel (dans notre cas, le dossier 'tutoriel_fr'). À cette fin, vous devez ouvrir la console de commandes et vérifier que vous êtes dans le dossier souhaité (sinon, vous pouvez naviguer jusqu'à ce dossier avec la commande `cd + url du fichier`, par exemple : `cd Documents/tutoriel_fr`) et entrer la commande :
 
@@ -227,7 +227,7 @@ Ce nouveau comportement prend une fonction de JavaScript, ce qui fait que l'él�
 
 Si à ce stade, nous prévisualisons notre HTML sur VS Code, nous obtiendrons le résultat suivant :
 
-{% include figure.html filename="screenshots/Preview_style_titres.png" alt= "capture d'écran de la prévisualisation de notre fichier TEI avec style pour les titres" caption="Prévisualisation de notre fichier TEI avec style pour les titres" %}
+{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-06.png" alt="capture d'écran de la prévisualisation de notre fichier TEI avec style pour les titres" caption="Figure 6. Prévisualisation de notre fichier TEI avec style pour les titres" %}
 
 Avec cette prévisualisation, nous avons considérablement amélioré la présentation de notre document, mais les notes de l'édition rendent toujours la lecture du texte difficile. Pour résoudre ce problème, nous ajouterons encore un autre comportement à notre script. Cependant, pour atteindre cet objectif, nous devrons utiliser une séquence de commandes un peu plus longue et complexe que la précédente. Copiez et collez le texte suivant entre les lignes `"tei": {` et `"head": function(e) {` qui se trouvent dans le deuxième élément `<script>` de notre document `index.html`:
 
@@ -273,7 +273,7 @@ Avec cette prévisualisation, nous avons considérablement amélioré la présen
 
 Aux fins de compléter ce tutoriel, il n'est pas nécessaire de comprendre le fonctionnement de chaque ligne de ce comportement. Cependant, si vous observez le résultat de la prévisualisation, vous remarquerez qu'en l'incluant, les notes apparaissent à la fin du texte, hyperliées avec leurs références respectives :
 
-{% include figure.html filename="screenshots/Preview_notes.png" alt= "capture d'écran de la prévisualisation de notre fichier TEI avec style pour les notes" caption="Prévisualisation de notre fichier TEI avec style pour les notes" %}
+{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-07" alt="capture d'écran de la prévisualisation de notre fichier TEI avec style pour les notes" caption="Figure 7. Prévisualisation de notre fichier TEI avec style pour les notes" %}
 
 ## Étape 4 : Pour continuer à travailler avec CETEIcean
 

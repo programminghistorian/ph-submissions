@@ -149,7 +149,7 @@ Vous n'avez pas besoin d'être un expert en JavaScript pour utiliser CETEIcean, 
 
 {% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-02.png"  alt="Capture d'écran qui montre l'option à choisir dans le menu déroulant qui s'ouvre en faisant un clic droit sur le fichier HTML." caption="Figure 2. Menu des options pour prévisualiser les fichiers en HTML sur VS Code" %}
 
-{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-03.png"  alt="Capture d'écran qui montre comment trouver l'option pour changer les paramètres de sécurité de l'extension 'HTML Preview' en faisant clic sur le bouton de 'Plus d'actions...' trouvé à la droite de l'écran." caption="Figure 3 Bouton pour changer les paramètres de sécurité de l'extension 'HTML Preview' pour permettre l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
+{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-03.png"  alt="Capture d'écran qui montre comment trouver l'option pour changer les paramètres de sécurité de l'extension 'HTML Preview' en faisant clic sur le bouton de 'Plus d'actions...' trouvé à la droite de l'écran." caption="Figure 3. Bouton pour changer les paramètres de sécurité de l'extension 'HTML Preview' pour permettre l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
 
 {% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-04.png"  alt="Capture d'écran qui indique qu'il faut choisir l'option 'Disable' pour pouvoir prévisualiser les fichiers TEI avec CETEIcean." caption="Figure 4. Option à choisir pour activer l'execution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
 
@@ -273,7 +273,7 @@ Avec cette prévisualisation, nous avons considérablement amélioré la présen
 
 Aux fins de compléter ce tutoriel, il n'est pas nécessaire de comprendre le fonctionnement de chaque ligne de ce comportement. Cependant, si vous observez le résultat de la prévisualisation, vous remarquerez qu'en l'incluant, les notes apparaissent à la fin du texte, hyperliées avec leurs références respectives :
 
-{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-07" alt="capture d'écran de la prévisualisation de notre fichier TEI avec style pour les notes" caption="Figure 7. Prévisualisation de notre fichier TEI avec style pour les notes" %}
+{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-07.png" alt="capture d'écran de la prévisualisation de notre fichier TEI avec style pour les notes" caption="Figure 7. Prévisualisation de notre fichier TEI avec style pour les notes" %}
 
 ## Étape 4 : Pour continuer à travailler avec CETEIcean
 

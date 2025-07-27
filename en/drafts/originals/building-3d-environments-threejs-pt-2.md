@@ -25,7 +25,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-In part 1 of this lesson we used three.js to create a website featuring a camera and a scene with lights, camera navigation controls and a model. In part 2 we will make the model more interactive and as part of this we will make or import the various model components separately. 
+In part 1 of this lesson we used three.js to create a website featuring a camera and a scene with lights, camera navigation controls and a model. In part 2 we will make the model more interactive and as part of this we will make or import the various model components separately. The primary goal of thia part is to use three.js to create a webpage featuring a 3D scene with selectable components. Scene creation will involve adding lights, cameras, primitive models (such as spheres and planes), complex models (the pot forms), and controls. The models will get materials and/or image textures. Concepts such as model groups, scale and visibility, and 3D co-ordinates will be introduced. An additional goal of part 2, is to change the webpage into a game by making the models moveable and initally positioned at random places, with the webpage viewer then required to match the vessel to its maker community. A test in the code is run after each time a model is moved, to see if it has been placed in the correct position and successful matches trigger a background colour change.
 
 ## Setting Up
 

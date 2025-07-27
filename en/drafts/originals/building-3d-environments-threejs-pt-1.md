@@ -107,7 +107,7 @@ For more complex interactions with models, an alternative JavaScript library is 
 
 - Text editor (Visual Studio Code (VSC) recommended).
 
-VSC contains a text editor and can be downloaded from https://visualstudio.microsoft.com, it is free and runs on Windows, macOS, and Linux. It also features a terminal. Install as per website instructions. Many extensions are available for VSC and the code colouring can help detect issues such as unclosed tags or quotes. You can turn off error reporting in the settings or use the telemetry free [VSCodium](https://vscodium.com). 
+VSC contains a text editor and can be downloaded from [https://visualstudio.microsoft.com](https://visualstudio.microsoft.com), it is free and runs on Windows, macOS, and Linux. It also features a terminal. Install as per website instructions. Many extensions are available for VSC and the code colouring can help detect issues such as unclosed tags or quotes. You can turn off error reporting in the settings or use the telemetry free [VSCodium](https://vscodium.com). 
 
 - Terminal (ie Windows PowerShell, or the terminal in macOS or Linux), or the terminal in VSC. The terminal in VSC can be obtained from Terminal > New Terminal. 
 

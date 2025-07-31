@@ -29,45 +29,45 @@ This tutorial presents a workflow for curating a dataset of named entities in te
 
 ## Learning objectives
 These objectives can be pursued individually or as a sequence:  
- - [Use Recogito to apply Named Entity Recognition for identifying people and places, reconcile places with gazetteers, and create manual annotations](#Recogito_id) 
- - [Use OpenRefine to reconcile people with Wikidata and enrich the dataset with Wikidata properties](#OpenRefine_id)
- - [Create new Wikidata items for unreconciled entities](#Wikidata_id)
- - [Transform the linked entity dataset into nodes and edges tables for network visualization in Gephi](#Gephi_id)
- - [Explore the linked entity dataset with an interactive customizable 3D network visualization](#3DVis_id)
+ - [Use Recogito to apply Named Entity Recognition for identifying people and places, reconcile places with gazetteers, and create manual annotations](#Name-Entity-Recognition-and-Annotation-with-Recogito) 
+ - [Use OpenRefine to reconcile people with Wikidata and enrich the dataset with Wikidata properties](#Knowledge-Base-Reconciliation-and-Augmentation-of-Named-Entities-in-OpenRefine)
+ - [Create new Wikidata items for unreconciled entities](#Create-new-Wikidata-items)
+ - [Transform the linked entity dataset into nodes and edges tables for network visualization in Gephi](#Setting-up-the-dataset-for-network-analysis-with-Gephi)
+ - [Explore the linked entity dataset with an interactive customizable 3D network visualization](#3D-Interactive-network-visualization-tool)
 
-# Introduction
+## Introduction
 
-## Linked entities in humanities texts
+### Linked entities in humanities texts
 
 Named entities, such as people, places, works, and historical events, are constitutive elements of textual corpora in the humanities, which are published as indexes in the scholarly apparatus of print and digital editions as well as cultural heritage archives. Their digital curation as linked entities facilitates the exploration of their correlations computationally, and when published as LOD using the Resource Description Framework (RDF), across the datasets on the Semantic Web, thus enabling semantic reasoning at scale. Digital Humanities projects are increasingly adopting graph data models, and in the context of digital scholarly editing there is growing appreciation for the informational content of a text through the semantic annotation of named entities and linguistic terms (Spadini et al 2021).[^1] As Vogeler (2019)[^2] describes the methodology for creating such “assertive editions”, its workflow begins with 
 
-> generic Natural Language Processing steps and then uses Named Entity Recognition to mark up the words representing people, locations, or organizations, temporal data, and quantifying data. The pipeline then relates these entities to one another, building connections between the entities”.
->
+>"generic Natural Language Processing steps and then uses Named Entity Recognition to mark up the words representing people, locations, or organizations, temporal data, and quantifying data. The pipeline then relates these entities to one another, building connections between the entities”.
+
 Named Entity Recognition (NER) assists the identification of named entities and Entity-Linking (EL) disambiguates them by relating them to the Uniform Resource Identifier (URI) of existing entries in a knowledge base. Although the advancement of Natural Language Processing (NLP) tools has automated this process to some extent, the humanities still face challenges due to insufficient gold standard annotated corpora for training, especially of historical documents (Linhares Pontes et al. 2020).[^3] Manual and semi-automated annotation and linking of named entities remain essential in the curation of LOD datasets (Nugues 2024).[^4] Despite the proliferation of born-digital archives and digital curation projects by domain experts, their interoperability and interconnectivity are lagging behind in the oft-lamented siloed landscape of the Digital Humanities (e.g., Brown and Simpson 2015;[^5] Hawkins 2021;[^6]). The vision of the Semantic Web for “a decentralized database of intertextual relations throughout numerous online editions and archives” (Oberreither 2023:72)[^7] relies on the broader participation by scholars and students across humanities domains. Whether we want to compile a dataset for digitally assisted text analysis, create a digital edition of our primary sources, annotate a text with explanatory commentary about historical persons and events, map all the geographic locations mentioned in it, research an author’s sources and intertexts, or enhance our text with additional structured information about the named entities mentioned, we can establish a solid foundation for these research queries and the publication of LOD humanities datasets by linking and enriching named entities with knowledge bases. 
 
-## The sample text and its source document: Montaigne’s _Essays_ online
+### The sample text and its source document: Montaigne’s _Essays_ online
 
 An eclectic work, [Michel de Montaigne’s _Essays_](https://en.wikipedia.org/wiki/Essays_%28Montaigne%29) are densely interspersed with quotations and references to historical and fictional persons and events, weaving a rich intertextual and cultural fabric. Although several scholarly digital projects have been dedicated to Montaigne, they haven't taken advantage of linked data for named entities.[^8] This lesson's dataset of linked entities of people and places to Wikidata in twenty chapters of the *Essays* is an original contribution to Montaigne scholarship. Since knowledge bases like Wikidata are language-agnostic, the dataset could be integrated into existing projects across languages, where it can be revised and expanded by other editors. The sample text used in this tutorial is a selection from the English translation of the *Essays* which can be downloaded as a digitized document at [Wikisource](https://en.wikisource.org/wiki/The_Essays_of_Montaigne) or at [Project Gutenberg](https://www.gutenberg.org/ebooks/3600), both of which are human-curated online digital libraries of texts in the public domain. For this exercise, I downloaded the sample corpus as individual plain text documents from [Wikisource](https://en.wikisource.org/wiki/Main_Page), where the text was edited by the volunteer community from an Optical Character Recognition (OCR) scan of the print edition by William Hazlitt (1877) but is not completely proofread. Indeed, while linking named entities I corrected several errors in the spelling of names (“Chyomatius” instead of Chromatius, Bishop of Aquileia; “Spissons” instead of the town of Soissons, etc.). Project Gutenberg uses the same translation with the same transcription errors in our sample. Wikisource, however, has the advantage of making available for download an individual document for each essay, which facilitates a modular approach to editing the corpus in separate files in order to explore correlations between them. Other advantages of Wikisource include its dynamic editing framework, which allows to make transcription corrections to the source document in real time, and the possibility to enrich it with our linked entity dataset. 
 
-# <a id="Recogito_id">Named Entity Recognition and Annotation with Recogito 
+## Named Entity Recognition and Annotation with Recogito 
 
-## Getting started with Recogito
+### Getting started with Recogito
 
 [Recogito](https://recogito.pelagios.org/) was developed by the Pelagios network as an open-source semantic annotation platform to support the LOD curation of places. The annotation workspace has a graphical interface which enables individuals and teams to apply Named Entity Recognition to places and people with Stanford CoreNLP for English, French, Spanish and German, and to link places to several [gazetteers](https://en.wikipedia.org/wiki/Gazetteer), among which Pleiades and GeoNames. Recogito furthermore enables the manual annotation of entities, of relations between tagged entities, free text comments, visualization of places on a digital map, and export of the annotated file in a number of formats for further processing and publication, such as CSV, TEI, Markdown, RDF. Recogito offers [tutorials](https://recogito.pelagios.org/help) in several languages; for recent applications to case studies, see also Rio Riande (2020)[^9] and Rojas Castro (2025)[^10].
 
 After registering for a free user account, you need to upload your document(s) in .txt UTF-8 or TEI format by clicking *+ New* below your username. Click on a document to activate the *Options* dropdown menu, where you can open, move, duplicate, or delete it, as well as apply NER. In the open document, you can edit its *Metadata* by going to *Document settings* (a wrench icon). This workspace has four additional functions: *Document view* where you will annotate the text, *Map view* of identified geolocations, *Annotation statistics*, and *Download options*, all of which appear as icons with hover-over descriptions. 
 
-## Parse your document for places and people
+### Parse your document for places and people
 
 To begin the automated annotation of places and people in your document, select *Named Entity Recognition* from the *Options* menu. This takes you to a popup window where you will choose the *Recognition Engine* for parsing the text—in our case, the English language model of Stanford CoreNLP. If the language of your document is not available, you can experiment with the model for a language from the same family, such as the Spanish model for an Italian text.  Below, you have the option to select *Authority Files* for places. Recogito is under active development and may include additional language models and authority files in the future. All gazetteers are selected by default, but if the historical and geographical contexts of your corpus correspond to any of them specifically, you can delimit the reconciliation process by checking only the relevant ones. Once the parsing is completed, double-click your document to access the *Document view*. Before you evaluate the annotations, you can view the *Annotation statistics* which for our sample document—Book I, Chapter 2, titled “On Sorrow”—shows 21 people and 13 places. When the evaluation is completed, the statistics will change to 30 people and 5 places, indicating that Recogito created some false positives for places and some people were not recognized. 
 
 Besides identifying and annotating missing entities through close reading, you could perform another NER with a different tool and compare the identified entities. For example, in [Voyant Tools](https://voyant-tools.org/), the [Reader tool](https://voyant-tools.org/?corpus=5cd40577eeb0d215a3bd92996e6a086d) has a lightbulb icon in the bottom right corner which activates several options for NER in English. The result for our sample text processed with SpaCy is 9 geo-political entities and 21 people. Although there are errors and missing entities, some are different, allowing to expand the annotated dataset. 
 
-## Evaluate the NER annotations and add manual annotations
+### Evaluate the NER annotations and add manual annotations
 
 The evaluation of tagged entities entails a degree of close reading, which depends on your previous familiarity with the text, and may require consultation of secondary scholarship and original research. In the *Document view*, select the *annotation mode*, and use the *quick* mode to focus on either places or people, or the *normal* mode to highlight the annotations by entity type (places in green and people in blue). As you click on each annotation a popup window activates several selections: delete the annotation, replace it with a different type of entity (place, person, event), add a custom tag, or add a comment. If the entity has been recognized as a place and linked to a gazetteer, you can also *Confirm* or *Change* the automatic match. The *Change* button shows a list of suggestions with a brief description and location on a map, which you can explore further by clicking on each id to connect to its gazetteer. If the correct suggestion is not listed, try modifying the spelling or adding context (e.g., the country) in the search box.
 
-### Place annotations
+#### Place annotations
 
 In our text, the reference to the Hungarian city of Buda in the sixteenth century is tagged correctly as a place, but the suggested location from GeoNames is a town in Romania, even though Hungary is tagged as a place just before Buda, in reference to King John of Hungary.
 
@@ -77,7 +77,7 @@ To link the correct identity of the place, you should *Change* the automatic mat
 
 {% include figure.html filename="en-or-named-entity-annotation-linking-augmentation-visualisation-2.png" alt="Visual description of figure image" caption="Figure 2. Recogito: a list of potential matches for a place with mapped locations." %}
 
-### Person annotations
+#### Person annotations
 
 In Montaigne’s _Essays_ there are quotes in multiple languages and their English translations, resulting in erroneous annotation of some words (“Lingua” as a person and “Labitur” as a place) which we need to delete. Conversely, some entities are not recognized, notably the ancient Greek author Sophocles, whom we have to tag manually (*+ Person*). Instead, the Roman author Ovid is misidentified as a place—Ovid Township in Michigan, which we need to first delete and then tag Ovid manually as a person. 
 
@@ -87,7 +87,7 @@ It is common to encounter references to people as pronouns or periphrasis. Here,
 
 As you modify or create a new annotation, Recogito will recognize other occurrences of the same character sequence and prompt you to re-apply the same annotation to all of them, which you should decide on individual case basis. When creating a new annotation, be careful to highlight only the relevant text, because although an automatic match for a name with a dash in front may be recognized by the software correctly as a person (e.g. “—Seneca”), the CSV export of the document will transform the tag into a question mark. 
 
-### Event annotations
+#### Event annotations
 
 Recogito has a third tag used for marking events, but it is not part of the NER function and has to be added manually. In our sample, the defeat of Cannae refers to the [Battle of Cannae](https://en.wikipedia.org/wiki/Battle_of_Cannae), where Cannae is already automatically recognized as a place and is correctly linked to its entry in the [Pleiades gazetteer](https://pleiades.stoa.org/home) of ancient places.
 
@@ -97,19 +97,19 @@ To mark the event, highlight the relevant text and click *+ Event*. The event ta
 
 {% include figure.html filename="en-or-named-entity-annotation-linking-augmentation-visualisation-5.png" alt="Visual description of figure image" caption="Figure 5. Recogito: purple highlight of an event superimposed on a green highlight of a place." %}
 
-### Custom tags and comments
+#### Custom tags and comments
 
 If you are interested in annotating other entity types manually, you can add custom tags, such as "work" and "quote". For example, Ovid’s _Metamorphoses_ (abbreviated as “Met.” in an editorial comment) is tagged incorrectly as a place. After deleting the place tag, you can enter the tag “work” which will color the annotation in yellow. Any custom tags you assign to text selections will be colored in yellows and stored in the *Add tag* dropdown menu, which is activated when you select a text fragment and place your cursor there. I can further describe the _Metamorphoses_ as an editorial comment that identifies the source of Montaigne’s quote, by adding “notes” in the *Add a comment* space. When applied comprehensively, this distinction will clarify which authors and works Montaigne tends to name explicitly and which he tends to quote without reference. 
 
 {% include figure.html filename="en-or-named-entity-annotation-linking-augmentation-visualisation-6.png" alt="Visual description of figure image" caption="Figure 6. Recogito: adding a custom tag and comments to a creative work." %}
 
-### Entity relations
+#### Entity relations
 
 Semantic relations between two entities, such as between the author and the work or between the quote and the work, can be added as one of the annotation modes in the *Document view*. Relations are represented visually by a dotted line with an arrow which has semantic directionality: you need to first click on the author and then on the work by dragging the dotted line in order to describe their relationship with the tag “isAuthorOf”. Conversely, if using the tag “hasAuthor” you will start from the _Metamorphoses_ and direct the arrow towards Ovid. Similarly, you can connect the quote with the tag “isPartOf” pointing towards the _Metamorphoses_. These tags are used in the Resource Description Framework (RDF) to describe relations between objects on the Semantic Web.
 
 {% include figure.html filename="en-or-named-entity-annotation-linking-augmentation-visualisation-7.png" alt="Screenshot showing a dotted line with an arrow and the tag 'isPartOf' going from a quote annotation to a work annotation and the same dotted line with an arrow and the tag 'isAuthorOf' going from a person annotation to the same work annotation" caption="Figure 7. Recogito: annotating a relation between a work and its author and between a quote and its source." %}
 
-### Export your file and sort the annotation data in a spreadsheet
+#### Export your file and sort the annotation data in a spreadsheet
 
 After completing the NER vetting and manual annotation, you could switch from the *Document view* to the *Map view* to double-check that your places have been plotted correctly. Then go to the *Download options* to export the annotations in CSV format for linking the people, as well as any other entities you may have added, to their Wikidata entries with OpenRefine. We first need to sort the annotation data in a spreadsheet and create separate CSV files for the different types of entities. In the export file you have columns with a Recogito unique id, the name of the file, the text that was tagged, the type of entity, the verification status, your custom tags and comments, etc. For our purposes, you need to keep the columns titled “Quote Transcription”, “Type”, “Comments” (if any), “Tags” (if any), the geographic coordinates “LAT” and “LNG”, and “URI” (the gazetteer ids). Then sort the columns by “Type” to separate the list of people from the list of places. Copy the places in a different file and save the places and people lists as two separate CSV files. You can rename the column “Quote Transcription” to “person name” and “place name” correspondingly. In the places spreadsheet you should have the columns "place name", "URU", "LAT", "LNG", and comments (if any); in the people spreadsheet you should have the columns "person name" and "comments" (if any).
 
@@ -119,11 +119,11 @@ After completing the NER vetting and manual annotation, you could switch from th
 
 Normalize any spelling variations by re-sorting the list alphabetically and comparing the records. There are duplicates for entities mentioned multiple times, which we want to keep for statistical queries and network visualization. If you have a lot of data, you can also use the data cleaning affordances of OpenRefine.
 
-# <a id="OpenRefine_id">Knowledge Base Reconciliation and Augmentation of Named Entities in OpenRefine
+## Knowledge Base Reconciliation and Augmentation of Named Entities in OpenRefine
 
 [OpenRefine](https://openrefine.org/) is an open-source desktop application with a browser interface. In this tutorial we are using Version 3.9.3. If you have to normalize your data before the reconciliation, you can review the software [documentation](https://openrefine.org/docs) and the tutorial [Cleaning Data with OpenRefine](https://programminghistorian.org/en/lessons/cleaning-data-with-openrefine). Our present objective is to link the list of person names to their corresponding entries in Wikidata. You can follow the same process to reconcile the list of place names, if Recogito did not provide adequate matches. Our dataset was reconciled with Wikidata for both people and place names, besides the Recogito gazetteers. 
 
-## Reconcile a list of names with Wikidata
+### Reconcile a list of names with Wikidata
 
 To get started, click the *Create project* tab in the upper-left corner of the OpenRefine workspace. Upload your CSV file with the list of people and click *Next*. A preview screen appears prompting you to configure parsing options, but OpenRefine usually detects the correct format automatically. In our sample dataset, the software identifies row 1 as containing the column headers “person name” and “comments”, so we can proceed by clicking *Create project* in the upper-right corner.   Once the project loads, go to the column labeled *person name* and click the downward arrow. From the dropdown menu, select *Facet* and then *Text facet*. This creates a *Facet* panel on the left, listing all unique text values in that column and their counts. Facets allow you to group your data and together with filters can be used for a variety of cleaning functions. If during the reconciliation process you decide to exclude some data from your list, you can remove a column from its dropdown menu, however in order to remove rows you have to use filters. To do so, in the *All* column mark the rows you want to delete with stars or flags, and then select the facet star or flag. OpenRefine now sorts the data into *true* and *false*, where *true* corresponds to the starred/flagged rows. Then, from the dropdown menu of the *All* column, select *Edit rows* and *Remove matching rows*. Note that OpenRefine tracks every editing step in the *Undo/Redo* panel next to the *Facet/Filter* panel, where you can resume editing from an earlier step and delete all subsequent ones.
 
@@ -163,7 +163,7 @@ If the name search fails to retrieve the correct entry or does not return any re
 
 {% include figure.html filename="en-or-named-entity-annotation-linking-augmentation-visualisation-18.png" alt="Visual description of figure image" caption="Figure 18. OpenRefine: linking an entity by adding its Wikidata QID in the 'Search for match' box." %}
 
-## <a id="Wikidata_id">Create new Wikidata items
+### Create new Wikidata items
 
 If you cannot match certain entities to items in Wikidata or other reconciliation services (such as VIAF), you may consider creating new Wikidata items for them. In our sample, no item exists for “Raïsciac, a German lord” whom Montaigne reports to have died of grief upon seeing the body of his son—killed in a battle near Buda during the conflict between Ferdinand I and Isabella Jagiellon. The text provides enough contextual information to create a structured Wikidata item for this individual. First, you should create a Wikidata account by registering a username and password. Before contributing, it is advisable to familiarize yourself with the structure of Wikidata items, especially those for the type of entity you want to create. For instance, the entry for [Psamtik III](https://www.wikidata.org/wiki/Q316278) includes a brief description, a list of aliases (to which we can add “Psammenitus” from Montaigne’s text), and multilingual labels. Below the description section, there is a list of *Statements* which consist of properties with their own Wikidata IDs prefixed with "P". These properties have values which are typically Wikidata items (prefixed with "Q"). For example, there is the property “date of birth” (P569) with value “6. century BCE”, the property “sex or gender” (P21) with value “male” (Q6581097), the property “country of citizenship” (P27) with value “Ancient Egypt” (Q11768), the property “manner of death” (P1196) with value “capital punishment” (Q8454), the property “occupation” (P106) with value “statesperson” (Q372436), etc. These properties can be exported from Wikidata after the reconciliation to enrich your dataset. Below the list of *Statements*, there is a section of *Identifiers* linking this person to other knowledge bases, such as [Encyclopædia Brittanica Online](https://www.britannica.com/biography/Psamtik-III).
 
@@ -177,13 +177,13 @@ Our new Wikidata item now has a [QID](https://www.wikidata.org/wiki/Q135004989) 
 
 We can now add the QID for Raiscïac to our OpenRefine dataset and proceed with importing properties from Wikidata for all reconciled entities.
 
-## Extract QIDs and URLs from reconciled data
+### Extract QIDs and URLs from reconciled data
 
 Once you have reconciled your data, you need to extract both QIDs and Wikidata URLs for each matched entity. QIDs are useful for disambiguating, sorting, aggregating, merging duplicates, and referencing entities internally (in networks or tables). Wikidata URLs are required for Linked Data and RDF export; they are unique machine-readable identifiers that connect your dataset to the Semantic Web. From the drop-down menu of the reconciled Wikidata column select *Reconcile* and then choose *Add column with URLs of matched entities*. You will be prompted to label the new column (e.g., "Wikidata URLs"), and then it will be added. Repeat the same steps to *Add entity identifiers column* and label this column "QIDs". The dataset now has linked entities, which can be exported as RDF or used in semantic enrichment.
 
 {% include figure.html filename="en-or-named-entity-annotation-linking-augmentation-visualisation-21.png" alt="Visual description of figure image" caption="Figure 21. OpenRefine: QIDs column and Wikidata URLs added from the reconciled column." %}
 
-## Enrich the dataset with Wikidata properties 
+### Enrich the dataset with Wikidata properties 
 
 We can proceed with extracting additional properties from the reconciled Wikidata column to enrich our dataset and enhance our queries. From the dropdown menu of the reconciled column, select *Edit column* and choose *Add columns from reconciled values*. A window will appear with a short list of suggested properties, a box where you can search for a property (such as *date of death*), and a preview pane where you can evaluate whether selected properties offer useful values. You can also configure each property by selecting a different choice of ranks and references than the default options. In our dataset, I have retrieved the values for death of birth, date of death, gender, occupation, and country of citizenship. After adding the new columns, you can remove, rearrange, and rename them through their dropdown menu. Since there can be multiple values assigned to a given property (e.g., occupations, children, notable works), you should switch the project view from rows to records. Thus, the record for Ferdinand I, Holy Roman Emperor has three rows for occupation: aristocrat, monarch, and politician.
 
@@ -193,7 +193,7 @@ We can now explore these properties quantitatively. For example, we can create a
 
 {% include figure.html filename="en-or-named-entity-annotation-linking-augmentation-visualisation-23.png" alt="Visual description of figure image" caption="Figure 23. OpenRefine: the occupations of individuals in the sample corpus listed by count in the Facet panel." %}
 
-## Apply the RDF extension and export the dataset
+### Apply the RDF extension and export the dataset
 
 After the reconciliation and enrichment of your dataset with Wikidata, you can export it as a CSV file to use in other applications and for further analysis. To publish your dataset as linked data, you must first model it using RDF and semantic vocabularies. A recommended lesson at this stage is [Introduction to the Principles of Linked Open Data](https://programminghistorian.org/en/lessons/intro-to-linked-data), and you can begin the modeling process by experimenting with the RDF extension in OpenRefine. First, you would need to install it by going to the main menu for creating a project and select the option *Extensions*. Then click *Discover extensions* to browse available plugins and download the RDF extension (rdf-extension-1.6.0). Unzip the folder and move it to the extensions directory of your OpenRefine application. The software [documentation](https://openrefine.org/docs/manual/installing#installing-extensions) gives detailed instructions for using different operation systems.
 
@@ -213,11 +213,11 @@ The RDF skeleton feature of OpenRefine includes several preloaded vocabularies (
 
 After aligning your data with the appropriate vocabulary terms, you can export the dataset in RDF Turtle format or, depending on your publication goals, continue refining the model using a more specialized RDF or ontology editor.
 
-# Named entity network visualization
+## Named entity network visualization
 
 You can explore the enriched named entity dataset through network visualizations that reveal their relationships. Network analysis helps us to evaluate how Montaigne’s discourse is structured through his historical and cultural references, and we can exploit the various attributes we extracted from Wikidata to refine the network. You can examine, for example, which essays are connected through particular people or places, which authors or works function as hubs connecting multiple essays, whether geographic areas or historical periods are correlated to specific themes, and generally whether the tripartite structure of the _Essays_ reflects certain clusters of entities within each book and between the three books. In this exercise, we will first use Gephi to create a basic bipartite network of people and the first ten essays of Book I in which they are mentioned. Then we will explore the complete dataset of Montaigne's *Essays* (people and places from Book I, Essays 1-10, Book II, Essays 1-5 and Book III, Essays 1-5) with a 3D visualization tool which can be customized to your own dataset. 
 
-## <a id="Gephi_id">Setting up the dataset for network analysis with Gephi 
+### Setting up the dataset for network analysis with Gephi 
 
 To prepare the dataset for network analysis with Gephi, you need to create two CSV files for each essay: a nodes table that lists each entity id and any of its attributes (e.g. gender, occupation), and an edges table that defines relationships between the entities. Thus, since Virgil is mentioned in Book I, Essay 2, this relationship becomes an edge in the network, where Virgil is a node with type "person" and Book I, Essay 2 is a node with type "essay". In the edges table, Book I, Essay 2 (represented by the id “01_02”) is described as the “source” and Virgil as the “target”. For our network of people and essays, from the OpenRefine CSV file we will copy the Wikidata column (normalized person names) as labels and the QIDs column as unique identifiers of the people nodes. 
 
@@ -225,19 +225,19 @@ To prepare the dataset for network analysis with Gephi, you need to create two C
 
 You can combine all people names in one set of nodes and edges tables, or you can create a separate set of nodes and edges for each essay. Choosing the latter gives you greater flexibility to combine different selections from the dataset to explore as a network, but you need to ensure that you append all the files to the same workspace in Gephi. 
 
-### Create the edges table
+#### Create the edges table
 
 For the edges table, create a column labeled “source” and a column labeled “target”. Copy the “QIDS” column of the first essay in the “target” column and input the value “01_01” in the “source” column for all rows, which indicates that these names are mentioned in Book 1, Essay 1. Since we are creating one table for all 10 essays, we will copy the name ids of the second essay below and input the value “01_02” in the source column for its set of 30 rows (all mentions of people in Essay 2). Proceed to add all sections of the corpus that you want to include in the network. The sequence in which you add data from each essay is irrelevant as long as each set of names (targets) is aligned with its essay number (source). The list of targets will include all the duplicate names as a measure of frequency: if Plato is mentioned five times in essay 01_01, there will be five identical rows. At the end, we will add a third column labeled “type” which specifies whether the graph is directed or undirected. In our case, all relationships are undirected: it does not matter whether Virgil is mentioned in essay 01_02 or whether essay 01_02 mentions Virgil. 
 
 {% include figure.html filename="en-or-named-entity-annotation-linking-augmentation-visualisation-29.png" alt="Visual description of figure image" caption="Figure 29. Edges table showing people targets from Book I, Essay 1 and partially from Essay 2." %}
 
-### Create the nodes table
+#### Create the nodes table
 
 For the nodes table, you will create an “id” column, a “label” column, and a “type” column. In the "id column", you will copy the QIDs column and in the "label" column you will copy the “Wikidata” column of each essay. Then you will delete the duplicates of the names (in Excel, simply sort the table)—the nodes should be unique, but Gephi will detect duplicate nodes and remove them. Then in the "id" column you will list the ten essay ids (from 01_01 to 01_10) and write their titles in the "label" column. In the "type" column you will input the two entity types, “essay” and “person”, in each corresponding row.  
 
 {% include figure.html filename="en-or-named-entity-annotation-linking-augmentation-visualisation-30.png" alt="Visual description of figure image" caption="Figure 30. Nodes table showing ten essay nodes and several person nodes." %}
 
-### Importing the dataset into Gephi and visualizing the network graph
+#### Importing the dataset into Gephi and visualizing the network graph
 
 After downloading [Gephi](https://gephi.org/) (current version 0.10), go to *New Project* and then File *import spreadsheet* to import the nodes file and then import the edges file. As you are importing the edges, you need to select the option *Append to existing workspace*. If you prefer to create individual sets of nodes and edges for each essay, this is where you would append all spreadsheets as you import each of them. 
 
@@ -251,7 +251,7 @@ To the right of the *Graph* workspace in the *Overview*, you can generate variou
 
 {% include figure.html filename="en-or-named-entity-annotation-linking-augmentation-visualisation-33.png" alt="Visual description of figure image" caption="Figure 33. Data Laboratory in Gephi, showing statistics for Weighted Degree, Eigenvector Centrality, and Betweenness Centrality." %}
 
-## <a id="3DVis_id">3D Interactive network visualization tool 
+### 3D Interactive network visualization tool 
 
 Finally, to explore these relationships more interactively in a three-dimensional space, you can employ a modern, React-based tool accessible at [Vite + React + TS](https://akhystophane.github.io/dh_project/). 
 
@@ -285,7 +285,7 @@ Upload any number of essays and select which attributes to include. The *Network
 
 The tool can be customized from Github: [Akhystophane/dh_project at network-visualization-tool](https://github.com/Akhystophane/dh_project/tree/network-visualization-tool) 
 
-### 🚀 Quick start
+#### 🚀 Quick start
 
 1. **Clone the repository:**
    ```bash
@@ -304,7 +304,7 @@ The tool can be customized from Github: [Akhystophane/dh_project at network-visu
 4. **Open your browser:**
    Go to [http://localhost:5173/dh_project/](http://localhost:5173/dh_project/) (or the URL shown in your terminal)
 
-### 🛠️ How to use or fork
+#### 🛠️ How to use or fork
 
 - **To use:**
   - Place your data/config files in the appropriate location (see below).
@@ -317,20 +317,20 @@ The tool can be customized from Github: [Akhystophane/dh_project at network-visu
   3. Commit and push your changes.
   4. Optionally, deploy your forked app (e.g., with Vercel, Netlify, or your own server).
 
-### 📁 Data format
+#### 📁 Data format
 
 - By default, the app looks for a `config.json` file describing your essays and entities.
 - You can also upload CSV files via the landing page.
 - See `frontend/public/config.json` for an example structure.
 
-### ✨ Features
+#### ✨ Features
 - 3D interactive network visualization
 - Node size, color, and shape reflect entity properties
 - Hover and click for details
 - Keyboard and trackpad navigation
 - Customizable appearance and layout
 
-### 🧹 Cleaning up
+#### 🧹 Cleaning up
 - All legacy scripts and HTML files have been removed.
 - This branch is focused on the React-based workflow only.
 

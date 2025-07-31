@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Named Entity Annotation, Linking, Augmentation and Network Visualization Using Open-Source Tools"
 slug: named-entity-annotation-linking-augmentation-visualisation
 layout: lesson

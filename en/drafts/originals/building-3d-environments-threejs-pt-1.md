@@ -65,7 +65,7 @@ All models are made from meshes of nodes (points) joined with edges (connecting 
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-03.png" alt="The dog and jars models in the model inspector in SketchFab and several stylistic models of jars from Papua, 5 with numbers. Informative text is shown for the jar numbered 5." caption="Figure 3. The Model Inspector in SketchFab for the Diva Dog and Papua Jars models and the jar models in SketchFab with 5 annotations." %}
 
-Models made using many photographs and photogrammetry software, including those from phone apps such as [Polycam](https://poly.cam), will typically have image textures and be realistic (Figure 2). Models made using Blender or other CAD software may be symbolic or made more realistic with the addition of image textures or complex materials (Figure 2). There are many different model formats, and some, such as STL, will only store the mesh. The GL Transmission Format (glTF) or GL Transmission Format Binary (glb) file format is one of the formats that can store meshes, textures, materials, animations and other properties. glTF/glb files can also be compressed further with DRACO compression, Blender will export DRACO compressed glTF/glb files. There are some memory penalties in loading DRACO compressed files.
+In photogrammetry models are computed from series of overlapping photographs of an object at various angles (Rahaman, 2021). Photogrammetric models, including those from phone apps such as [Polycam](https://poly.cam), will typically have image textures and be realistic (Figure 2). Models made using Blender or other CAD software may be symbolic or made more realistic with the addition of image textures or complex materials (Figure 2). There are many different model formats, and some, such as STL, will only store the mesh. The GL Transmission Format (glTF) or GL Transmission Format Binary (glb) file format is one of the formats that can store meshes, textures, materials, animations and other properties. glTF/glb files can also be compressed further with DRACO compression, Blender will export DRACO compressed glTF/glb files. There are some memory penalties in loading DRACO compressed files.
 
 glTF/glb can also store several models in a file. If you are creating a scene with several models for a website, you can choose to import each of the different models into a scene in software such as Blender (or the three.js editor), position, scale and colour/texture each of them, and export the resulting composite model as one glb file, such as the png_sceneDRACO.glb file we will use in part 1. Alternatively you can import the models individually and arrange and alter them via the website code, such as we will do in part 2. There is also the option of separating out the individual models from the composite model in the code, but that will not be used in this lesson.
 
@@ -503,9 +503,11 @@ May, P., Tuckson, M. 2000. The Traditional Pottery of Papua New Guinea. Crawford
 
 O'Brien, M.J., Lyman, R.L., Collard, M., Holdern, C.J., Gray, R.D., Shennan, S.J. 2008. Transmission, Phylogenetics and the Evolution of Cultural Diversity. In: Cultural Transmission and Archaeology: Issues and Case Studies. Society for American Archaeology. Washington.
 
-Oruç, P. 2020 3D Digitisation of Cultural Heritage: Copyright Implications of the Methods, Purposes and Collaboration, 11 JIPITEC 149 para 1.  
+Oruç, P. 2020. 3D Digitisation of Cultural Heritage: Copyright Implications of the Methods, Purposes and Collaboration, 11 JIPITEC 149 para 1.  
 
 Pétrequin, A.-M., Pétrequin, P. 2006. Objets de Pouvoir en Nouvelle Guinée: Approche Ethnoarchéologique d’un Système de Signes Sociaux: Catalogue de la Donation Anne-Marie et Pierre Pétrequin. Réunion des Musées Nationaux, Paris.
+
+Rahaman, H. 2021. Photogrammetry: What, How, and Where”, in: Champion, Erik M. (ed.): Virtual Heritage: A Guide. London: Ubiquity Press 25-37.
 
 Shaw, I., Leclerc, M. 2023. Unearthed: Art in Archaeology and Anthropology. ISBN 978-0-6453425-0-5.
 

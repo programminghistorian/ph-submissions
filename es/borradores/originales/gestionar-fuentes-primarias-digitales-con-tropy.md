@@ -189,7 +189,7 @@ Para crear una nueva etiqueta, hay múltiples opciones. Selecciona un objeto u o
 
 ## Exportación de fotos
 
-Es posible exportar imágenes individuales, objetos, (con o sin metadatos y anotaciones) y selecciones de imágenes en diferentes formatos. Haz clic derecho en un objeto en la vista de proyecto y selecciona "Exportar objeto" del menú contextual. En el submenú, podrás seleccionar JSON-LD o PDF (y dentro de PDF, puedes seleccionar orientación vertical o horizontal.)  Si exportas en formato .json, sólo exportarás los metadatos y notas asociados con la(s) imágen(es) seleccionadas. Para exportar la imágen con los metadatos y notas, habrá que seleccionar PDF.
+Es posible exportar imágenes individuales, objetos, (con o sin metadatos y anotaciones) y selecciones de imágenes en diferentes formatos. Haz clic derecho en un objeto en la vista de proyecto y selecciona "Exportar objeto" del menú contextual. En el submenú, podrás seleccionar JSON-LD o PDF (y dentro de PDF, puedes seleccionar orientación vertical o horizontal.)  Si exportas en formato .json, sólo exportarás los metadatos y notas asociados con la(s) imágen(es) seleccionadas—la imagen no está incluída. Para exportar la imágen con los metadatos y notas, habrá que seleccionar PDF.
 
 Exportar por esta ruta es parecida a "Imprimir" (Archivo>Imprimir) en formato PDF. Los parámetros para imágenes exportadas en PDF se encuentran en Preferencias. Puedes elegir a incluir o no fotos, metadatos, y notas, además de consideraciones de formato (optimizar tamaño y calidad de foto, incluir únicamente fotos con notas, y permitir el contenido de utilizar más de una página).
 

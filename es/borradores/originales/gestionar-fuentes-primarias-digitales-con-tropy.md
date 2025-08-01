@@ -221,7 +221,7 @@ En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una 
 
 3.  Haz clic derecho en el elemento de muestra y selecciona 'Exportar elemento...' del menú contextual y exportarlo en formato .json  [CSL JSON].
 
-4.  Abre el archivo .json exportado [se abrirá en el navegador web u otro aplicación por defecto] y toma nota de [los términos CSL usados](https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types) [en ingles] para cada campo que fue rellenado anteriormente...utilizarás estos términos en el paso 3d. Sólo las propiedades con valores en sus campos respectivos aparecerán en el archivo .json.
+4.  Abre el archivo .json exportado [se abrirá en el navegador web u otro aplicación por defecto] y toma nota de [los términos CSL usados](https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types) [en ingles] para cada campo que fue rellenado anteriormente...utilizarás estos términos en el paso 3 en la siguiente sección. Sólo las propiedades con valores en sus campos respectivos aparecerán en el archivo .json.
 
 ### Crear una plantilla personalizada en Tropy para importar objetos a Zotero
 
@@ -239,7 +239,7 @@ En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una 
 
 {% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-07.png" alt="Dos ventanas: uno de Firefox mostrando los componentes de un archivo CSL JSON exportado de Zotero, y el otro del editor de plantilla de Tropy, mostrando los parámetros de diferentes propiedades de metadatos" caption="Figura 7. Usan los términos encontrados en el archivo de CSL JSON para construir una plantilla para exportar a Zotero" %}
 
-5.  Aplicar la nueva plantilla a los objetos que deseas importar a Zotero
+5.  Aplica la nueva plantilla a los objetos que deseas importar a Zotero
 	* Poco debería cambiar en términos de los valores porque efectivamente estás mapeando nuevas etiquetas encima de las propiedades de metadatos pre-existentes.
 
 ### Exportar objeto(s) de Tropy como archivo CSL JSON
@@ -263,6 +263,6 @@ En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una 
 
 2.  Selecciona el archivo .json exportado, y después haz clic en Continuar en el cuadro de diálogo de importación (escoge si quieres crear una nueva colección)
 
-3.  Haz clic en 'Done' cuando la importación termine, y revisa para asegurar que los nuevos elementos importados llevan los campos de metadatos deseados (si no, repasa de nuevo el paso 4d)
+3.  Haz clic en 'Done' cuando la importación termine, y revisa para asegurar que los nuevos elementos importados llevan los campos de metadatos deseados (si no, repasa de nuevo el paso 4 en la sección anterior)
 
 4.  Ahora puedes manejar y citar estas referencias a través de tu instalación de Zotero.

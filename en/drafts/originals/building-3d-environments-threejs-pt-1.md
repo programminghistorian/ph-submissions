@@ -146,7 +146,7 @@ There are 2 ways to use the three.js JavaScript library. This tutorial will use 
 Now you need to set up the initial directories and files for the project.
 Make a new folder - call it myscene. Within the myscene folder create folders called models and textures. We will use the textures folder in part 2. Put the png_sceneDRACO.glb file you downloaded previously in the models folder.
 
-In VSC open the folder.
+In VSC open the myscene folder.
 
 Create a file and call it *index.html*  
 Note that it **must** be called this as this is the html file that will be served by the browser by default when you go to the local host address.
@@ -159,10 +159,13 @@ In the index.html file, copy and paste the following:
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<!--This is a html comment.  title tag gives the title of window -->
 		<title>PNG pottery</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+ 		<!--Link to the style sheet -->
 		<link type="text/css" rel="stylesheet" href="main.css">
+		<!--JavaScript. Get the three.js library files -->
 		<script type="importmap">
             {
               "imports": {
@@ -173,12 +176,14 @@ In the index.html file, copy and paste the following:
         </script>
 	</head>
 	<body>
-
+        <!--Link to three.js page and some text. Text colours specified in main.css. Could be used for interactive page instructions. -->
 		<div id="info">
 			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> The Jars of Papua
 		</div>
-
+        	<!--JavaScript. Here is where the three.js code goes. -->
 		<script type="module">
+            	// JavaScript comment
+            	// Library imports
 			import * as THREE from 'three';
 		</script>
 	</body>
@@ -289,7 +294,13 @@ This file came from the [examples folder at three.js](https://github.com/mrdoob/
 
 If you want to understand the basic components of a website [w3schools](https://www.w3schools.com/howto/howto_make_a_website.asp) has a guide, as well as tutorials on HTML, CSS and JavaScript.
 
-Make sure that the command line of your terminal/shell indicates that you are in the myscene folder (...myscene %). In VSC, Terminal > New Terminal will give you a terminal. In the terminal type
+In VSC, Terminal > New Terminal will give you a terminal. Make sure that the command line of your terminal/shell indicates that you are in the myscene folder (...myscene %). You can use the terminal command 
+```
+pwd
+```
+which stands for 'print working directory' to check what folder you are in. 
+
+In the terminal type
 
 ```
 npx serve
@@ -299,7 +310,7 @@ this will serve your site, normally to port 3000, but check the message to see w
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-11.png" alt="Black page with small title (three.js The Jars of Papua), top centre." caption="Figure 11. Webpage with black background and small title." %}
 
-**To stop the server use Ctrl + C in the terminal. You can restart with 'npx serve', or use the keyboard up arrow to find previous terminal commands.** You may need to reload the page in the browser to apply any code changes. 
+You do not normally need to stop the server when you change the code, but you may need to if a mistake causes issues, or if you want to take a break. **To stop the server use Ctrl + C in the terminal. You can restart with 'npx serve', or use the keyboard up arrow to find previous terminal commands.** You may need to reload the page in the browser to apply any code changes. 
 
 ### Creating the Basic Web Page
 

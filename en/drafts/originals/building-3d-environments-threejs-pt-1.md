@@ -334,30 +334,40 @@ add:
 
 ```
 	// Variable declaration and setting
-	let container, camera, scene, renderer; // declare the variables
+	let container, camera, scene, renderer;
 
 	// Function calls
-    	init(); // this is calling the init function, which will set up (initialise) the scene.
-	animate(); // this is calling the animate function which will continuously render the scene and respond to any user input being listened for.
+	// Call the init function, which will set up (initialise) the scene.
+    	init();
+	// Call the animate function which will continuously render the scene and respond to any user input being listened for.
+	animate(); 
+
 
 	// Function definitions
-	// Sets up the scene
+
+	// initialises scene, with a space (container), camera, renderer and a listener for window size changes
+	//
+	//
     	function init() {
-		container = document.createElement( 'div' ); //creates a space (container) for the scene.
-		document.body.appendChild( container ); // adds the container to the page
-        	scene = new THREE.Scene(); // creates a new scene
-		scene.background = new THREE.Color( 0xf7d382 ); // use the hexcode of any colour you want. Will colour the scene
-				
-		camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 ); //Creates a camera with arguments: vertical field of view, aspect, near plane, far plane. Values in metres. Note the aspect depends on the users window size
+		// create container html div element and add to html page (document)
+		container = document.createElement( 'div' );
+		document.body.appendChild( container );
+		// create a new scene with a start background colour
+        	scene = new THREE.Scene();
+		scene.background = new THREE.Color( 0xf7d382 ); // in hexcode.
+		// create a perspective camera and sets its initial position relative to the scene	
+		camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 ); //arguments: vertical field of view, aspect, near plane, far plane. Values in metres. Note the aspect depends on the users window size
 		camera.position.set( 0, 1.6, 3 ); // x, y, z Values in metres. The y value here estimates eye level as this was designed to work with virtual reality.
-        	renderer = new THREE.WebGLRenderer( { antialias: true } ); //creates a renderer to draw the scene
-		renderer.setPixelRatio( window.devicePixelRatio ); // sets renderer details from users device. Don't change.
-		renderer.setSize( window.innerWidth, window.innerHeight ); // sets renderer details from users device. Don't change.
-        	container.appendChild( renderer.domElement ); // add the renderer to the container
-       	 	window.addEventListener( 'resize', onWindowResize ); // listen for users resizing their window and call the onWindowResize function if they do
+		// create a renderer to draw the view from the camera. Set pixel ratio and size from users window browser details and add renderer to container
+        	renderer = new THREE.WebGLRenderer( { antialias: true } );
+		renderer.setPixelRatio( window.devicePixelRatio ); // Don't change this code.
+		renderer.setSize( window.innerWidth, window.innerHeight ); // Don't change this code.
+        	container.appendChild( renderer.domElement );
+		// listen for users resizing their browser windows and if they do call the onWindowResize function
+       	 	window.addEventListener( 'resize', onWindowResize );
 		}
 
-	// called if users resize their browser window, will update camera variables and dimensions for the renderer
+	// called if users resize their browser window, will update camera variables and renderer dimensions with new window widths and heights
 	function onWindowResize() { 
 		camera.aspect = window.innerWidth / window.innerHeight;
 		camera.updateProjectionMatrix();

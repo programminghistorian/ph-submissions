@@ -290,7 +290,7 @@ a, button, input, select {
 
 This file came from the [examples folder at three.js](https://github.com/mrdoob/three.js/tree/master/examples), it is a cascading style sheet file. Save the main.css file and then you can close it. 
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-010.png" alt="A screenshot of the VSC editor with the director structure of the myscene folder." caption="Figure 10. The directory structure can be seen in the left hand panel of the VSC editor. The index.html file contents are shown in the main panel. They are colour coded. A VSC terminal is open and shown in the bottom panel." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-10.png" alt="A screenshot of the VSC editor with the director structure of the myscene folder." caption="Figure 10. The directory structure can be seen in the left hand panel of the VSC editor. The index.html file contents are shown in the main panel. Note file shown is an earlier version that lacks comments. They are colour coded. A VSC terminal is open and shown in the bottom panel." %}
 
 If you want to understand the basic components of a website [w3schools](https://www.w3schools.com/howto/howto_make_a_website.asp) has a guide, as well as tutorials on HTML, CSS and JavaScript.
 

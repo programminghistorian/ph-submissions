@@ -37,17 +37,17 @@ Put (or replace) the downloaded models and texture folders in the myscene folder
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-02.png" alt="Screenshot of the VSC editor showing a list of jpg files in the expanded textures folder." caption="Figure 2. File structure for part 2 as shown in VSC, with the textures folder expanded." %}
 
-If you made autoRotate true, comment out that line (ie add // to the beginning of the line) and also comment out the controls.update in the render function. In the index.html file from part 1, remove the code that loads the glTF model used in part 1: 
+If you made autoRotate true, comment out that line (ie add // to the beginning of the line) and also comment out the controls.update in the render function (make sure not to touch the one in the init function). In the index.html file from part 1, remove the code that loads the glTF model used in part 1: 
 ie remove
 
 ```
                 // load model
                 // function used for loader
                 function onLoadMap( gltf ) {                
-				   	themodel = gltf.scene.children[0];
-                    themodel.position.set( 0, desk, 0); // x, y, z
-                    themodel.scale.set( 1, 1, 1); // x, y, z
-                    scene.add( themodel);
+			themodel = gltf.scene.children[0];
+                    	themodel.position.set( 0, desk, 0); // x, y, z
+                    	themodel.scale.set( 1, 1, 1); // x, y, z
+                    	scene.add( themodel);
 	            }
                 // the loader is given the model file name (first argument) which is passed to the function (second argument), function to do while loading (3rd argument), function called if error (4th argument).
 	            loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
@@ -268,7 +268,7 @@ The jars will be added to a group (called 'jars') and the group will be added to
 
 Each jar will get a userdata property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
 
-Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that takes the .glb file and loads it when called by the loader.load() function. The program will not stop while loading the file which can take a while so to avoid problems do not try to add the model to a group outside the loading function code. 
+Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that takes the .glb file and loads it when called by the loader.load() method. The program will not stop while loading the file which can take a while so to avoid problems do not try to add the model to a group outside the loading function code. 
 
 Replace:
 
@@ -402,18 +402,19 @@ You can calculate where to set the positions of the jars by taking into account 
 
 ### Adding Jar Selection
 
-Next we want to add an event listener, to be able to select a jar and change the information panel.
+Next we want to add an event listener, to be able to select a jar and change the information panel. As with the WindowResize event listener in part 1, this listener gets the event (in this case 'click'), and a function we will define. Input events pass event information to their function, some of which is dependent on the type of event. The 'click' event passes an object (commonly called 'event') that contains the mouse cursor's coordinates relative to the viewport/window. To determine what jar in 3D space is being targeted by the user's mouse in 2D space, three.js uses raycasting. The three.js raycaster 'sends' a 'ray' from the camera position to a pointer whose 2D position is calculated from the click event's information. The raycaster has an 'intersectObjects' method that returns an array of the 3D objects that the cast ray has hit. This array is ordered by distance to the camera so the first in the array will be the nearest object. We also tell the method what objects can be intersected  and here we will specify, children of the jars group. This is reason we made the group.
+
 
 After:
 
 ```
-	// Variables
+	// Variable declaration and setting
 ```
 
 add:
 
 ```
-	let raycasterM, pointer, selectedTorus; // for mouse controls
+	let raycasterM, pointer, selectedObj; // for mouse controls
 ```
 
 Within the init function definition, after:
@@ -425,10 +426,20 @@ Within the init function definition, after:
 add:
 
 ```
-	raycasterM = new THREE.Raycaster(); 
-    	pointer = new THREE.Vector2(); 
-	selectedTorus = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20  ), new THREE.MeshStandardMaterial({color: 0x006400})); 
+	// Mouse controls for jar selection
+	raycasterM = new THREE.Raycaster(); // ray to tell what is being pointed at
+	pointer = new THREE.Vector2(); // x, y co-ordinates for the ray to aim at, empty to start
+	selectedObj = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20  ), new THREE.MeshStandardMaterial({color: 0x006400})); // initialising the selected jar with something- here a torus, to prevent issues.
 
+```
+
+after:
+```
+	 window.addEventListener( 'resize', onWindowResize );
+```
+
+add:
+```
 	window.addEventListener( 'click', onClick );
 ```
 
@@ -444,24 +455,28 @@ After the resize listener:
 add:
 
 ```
-	function onClick( event ) {
-		event.preventDefault(); //stops the orbiting
-		pointer.x = event.clientX / window.innerWidth * 2 - 1
-		pointer.y = - (event.clientY / window.innerHeight) * 2 + 1
-		raycasterM.setFromCamera( pointer, camera );
-		const intersects = raycasterM.intersectObjects( jars.children);
-				
-		if(intersects.length > 0){
-			selectedTorus.material.emissive.r = 0;
-			const found = intersects[ 0 ].object;
-			selectedTorus = found;
-			found.material.emissive.r = 1;
-			selectedPlane.visible = false;
-			selectedPlane = found.userData.planes;
-			selectedPlane.visible = true;
+	// called on mouse click. Gets position of click, gets intersecting object, makes it emmisive gets the matching info plane
+	function onClick( event ) { // event is the input event information being passed from the event
+	event.preventDefault(); // stops the orbiting
+	// gets 2D click position
+	pointer.x = event.clientX / window.innerWidth * 2 - 1 // this formula comes from the three.js examples
+	pointer.y = - (event.clientY / window.innerHeight) * 2 + 1
+	// detects what the user is trying to select in 3D space from viewpoint and 2D pointer
+	raycasterM.setFromCamera( pointer, camera );
+	const intersects = raycasterM.intersectObjects( jars.children); // an array, nearest to camera will be first
+	// if there is a jar being clicked		
+	if(intersects.length > 0){
+		selectedObj.material.emissive.r = 0; // turn the current selected obj back to not emissive. 0 is off
+		const found = intersects[ 0 ].object; // get the selected jar, index 0 is the first
+		selectedObj = found;
+		found.material.emissive.r = 1; // turn the selected jar red emissive. 1 is on.
+		selectedPlane.visible = false; // hide the current information panel
+		selectedPlane = found.userData.planes; // get the new matching information panel for the selected jar
+		selectedPlane.visible = true; // make the new panel visible
 		}
 	}	
 ```
+Now you should be able to select a jar and the middle information panel should change to give information about that jar. You can try '.emissive.g' or 'emissive.b' if you want.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-11.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 11. Webpage showing the Aibom jar selected with its red emission set to true, and the Aibom information panel showing." %}
 
@@ -507,10 +522,11 @@ In the init function after
 ```
 add
 ```
+	// Add sites as tori, in a group
 	tori = new THREE.Group();
 	scene.add( tori );
 
-	//a function to make the site with the parameter specified
+	// a function to make the site with the location and matching information panel
 	function createSite(x, z, gallery){
 		const model = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
 		model.position.set( x * ratio, desk + 0.01, z * ratio);	
@@ -518,29 +534,23 @@ add
 		model.rotation.x = -Math.PI * 1/2;
 		model.userData.planes = gallery;
 		return model;
-	}
+		}
 
 	const aibomSite = createSite(0.36, -0.01, aibomG);
-
 	const dimiriSite = createSite(0.43, 0, dimiriG);
-
 	const louisadeSite = createSite(0.99, 0.59, louisadeG);
-
 	const mailuSite = createSite(0.84, 0.48, mailuG);
-
 	const adzeraSite = createSite(0.61, 0.15, adzeraG);
-
 	const yabobSite = createSite(0.572, 0.0396, yabobG);
-
 	tori.add(aibomSite, mailuSite, dimiriSite, louisadeSite, adzeraSite, yabobSite);
 
-	selectedTorus = aibomSite; 
 ```
-save and check the tori appear on site reload.
+
+save and check the tori appear on site reload. 
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-12.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 12. Webpage with the jars sitting on tori." %}
 
-in the onClick(event) function change:
+You will see that nothing happens when you click on them, as the raycaster is only checking the jars for intersections. So in the onClick(event) function change:
 
 ```
 const intersects = raycasterM.intersectObjects( jars.children);	

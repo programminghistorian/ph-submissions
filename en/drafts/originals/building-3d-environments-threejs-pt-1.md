@@ -520,17 +520,20 @@ add:
 
 ```
 
-If you save and reload you should be able to move around and zoom in and out. Note that the model is not being rotated but it is the camera that is being moved. The target.set function determines the centre that the camera will rotate around. If you want the camera to continuously rotate, you can uncomment out the controls.autoRotate but you must also add the call to update the controls in the render function, i.el
-change
+If you save and reload you should be able to move around and zoom in and out. Note that the model is not being rotated but it is the camera that is being moved. The target.set function determines the centre that the camera will rotate around. If you want the camera to continuously rotate, you can uncomment out the controls.autoRotate but you must also add the call to update the controls in the render function, ie
+
+Change:
 ```
 		function render() {
 		        renderer.render( scene, camera );
 	        }
 ```
-to 
+
+to: 
+
 ```
 	        function render() {
-                controls.update(); // use if controls.autoRotate = true
+                	controls.update(); // use if controls.autoRotate = true
 		        renderer.render( scene, camera );
 	        }
 

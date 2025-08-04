@@ -567,7 +567,7 @@ save and check the mouse click and panel change now works on tori and not the ja
 
 ### Enabling Jar Movement
 
-To be able to move the jars using the mouse, DragControls have to be imported and created.
+To be able to move the jars using the mouse, DragControls have to be imported and created. The first argument when creating the DragControls determines what they can drag.
 
 After:
 
@@ -596,21 +596,31 @@ to:
 in the init function after:
 
 ```
-controls.update();
+	pointer = new THREE.Vector2(); 
 
 ```
 
 add:
 
 ```
-	dragControls = new DragControls( [ jars ], camera, renderer.domElement );
+	// Mouse controls for jar dragging
+	dragControls = new DragControls( [ jars ], camera, renderer.domElement ); // first argument determines drag objects.	
+
+```
+Then we add event listeners for the 'dragstart' and 'dragstop' events. Here we will make the handler functions anonymous. We need to turn the orbital controls off while jars are being dragged.
+
+After:
+```
+	window.addEventListener( 'click', onClick );
+```
+add:
+```
 	dragControls.addEventListener('dragstart', function (event) {
-		controls.enabled = false
+		controls.enabled = false // orbit controls off
 	})
 	dragControls.addEventListener('dragend', function (event) {
-        	controls.enabled = true
-	})	
-
+        	controls.enabled = true // orbit controls back on
+	})
 ```
 
 save and reload and check that you can now move the jars around.
@@ -637,6 +647,7 @@ replace:
 with:
 
 ```
+	//a function to make the model with the parameter specified, model, colour, matching site
 	function createModel(gltf, col, site){
 		const model = gltf.scene.children[0];	
 		model.material = new THREE.MeshStandardMaterial();
@@ -677,6 +688,7 @@ with:
 		jars.add( yabobM);
 	}, undefined, function ( error ) {console.error( error );} );
 
+
 ```
 
 Save and reload, you should see the jars starting above the map and if you reload, they will be in different random positions.
@@ -686,6 +698,8 @@ Save and reload, you should see the jars starting above the map and if you reloa
 ### Check for Successful Matches
 
 At the end of each jar movement, you want to check if the jar was moved to the correct spot. One way to do this is to determine the distance between the jar and the matching site (torus). You need to set an allowed distance difference that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby, here we will use 5 cm (2.5cm * ratio).
+
+The event object for drag events contains the identity of the object being dragged ('event.object'), so we can use that in the handler function. We can get the matching site from its userData, and then use the getWorldPosition method to find out the coordinates of the matching site. The getWorldPosition method puts the coordinates into a vector (x, y, z) that is given as an argument, in this case 'testposition'. This vector can not be null to begin with so it is set as (0,0,0). Then we use another vector 'aposition' to get the position of the selected object. We call the distanceTo method on the aposition vector to determine the distance between the two vectors and test if it is smaller than our allowed distance.
 
 If the test is successful, there has to be a signal to the user. Here we will change the background colour to a random colour, and make the jar unmoveable (and rotate it to be upright). No signal will be given for an incorrect match. We will create an additional group called 'unmoveable' and attach any jars that are placed close enough to their torus to that group. Objects can only be attached to one group, so when a model is moved to 'unmoveable' it will no longer be in 'jars' and so the mouse will not detect it.
 
@@ -706,8 +720,9 @@ within the init function, after:
 ```
 add
 ```
+	// add unmoveable group for jars that have been put in the correct spot
 	unmoveable = new THREE.Group();
-	scene.add(unmoveable); 
+	scene.add(unmoveable);  
 ```
 For the mouse controls, change
 ```
@@ -718,22 +733,22 @@ dragControls.addEventListener('dragend', function (event) {
 to
 ```
 dragControls.addEventListener('dragend', function (event) {
-    	controls.enabled = true;
+	controls.enabled = true // turn the orbiting controls back on when dragging done
 	selectedObject = event.object;
 	truesite = selectedObject.userData.site;
 	let testposition = new THREE.Vector3(0,0,0); //needs to be something first
 	truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z)
 	let aposition = selectedObject.position; //way 1 test object position
-	
+					
 	if ( aposition.distanceTo( testposition ) < .025 * ratio) {
 		scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
 		selectedObject.position.set(testposition.x, testposition.y, testposition.z);
-		selectedObject.rotation.set(0, 0, 0);
-		unmoveable.attach( selectedObject);
+		selectedObject.rotation.set(0, 0, 0); // makes sure the jar is upright, necessary for VR.
+		unmoveable.attach( selectedObject); // adding to the unmoveable group will remove from the jar group.
 	}	
 })
 ```
-You can save and test this. Moving in 3D can be difficult, it is best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place it in the right spot, or vice versa.
+You can save and try to test this, but moving in 3D can be difficult and we will make it (somewhat) easier in the next step. Moving is best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place it in the right spot, or vice versa.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-14.png" alt="While 5 jars are randomly above the map, the Aibom jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Aibom jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
 
@@ -751,31 +766,38 @@ function onClick( event ) {
 ```
 with
 ```
+// will also test if the jar is in right spot as onClick called at the end of drag event
 function onClick( event ) {
-			event.preventDefault();
-			pointer.x = event.clientX / window.innerWidth * 2 - 1
-			pointer.y = - (event.clientY / window.innerHeight) * 2 + 1
-			raycasterM.setFromCamera( pointer, camera );
-			const intersects = raycasterM.intersectObjects( tori.children);		
-			if(intersects.length > 0){
-				selectedTorus.material.emissive.r = 0;
-				const found = intersects[ 0 ].object;
-				if(found == truesite){
-					scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
-					let testposition = new THREE.Vector3(0,0,0); //needs to be something first
-					truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z)
-					selectedObject.position.set(testposition.x, testposition.y, testposition.z);
-					selectedObject.rotation.set(0, 0, 0);
-					unmoveable.attach( selectedObject );
-				}
-				selectedTorus = found;
-				found.material.emissive.r = 1;
-				selectedPlane.visible = false;
-				selectedPlane = found.userData.planes;
-				selectedPlane.visible = true;
-			}
-			truesite = null;
+	event.preventDefault(); //stops the orbiting
+	// gets 2D click position
+	pointer.x = event.clientX / window.innerWidth * 2 - 1 
+	pointer.y = - (event.clientY / window.innerHeight) * 2 + 1
+	// detects what the user is trying to select in 3D space from viewpoint and 2D pointer
+	raycasterM.setFromCamera( pointer, camera );
+	const intersects = raycasterM.intersectObjects( tori.children);
+	// if tori being clicked		
+	if(intersects.length > 0){
+		selectedObj.material.emissive.r = 0; // turn the current selected obj back to not emissive
+		const found = intersects[ 0 ].object; // get the selected site
+		if(found == truesite){ // tests if site mouse is over is the same as the true jar site
+			// if match change colour of background
+			scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
+			// click to correct position in case slightly off
+			let testposition = new THREE.Vector3(0,0,0); //needs to be something first
+			truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z) this is the position of the site
+			selectedObject.position.set(testposition.x, testposition.y, testposition.z);
+			// makes sure jar is upright (in VR it tilts)
+			selectedObject.rotation.set(0, 0, 0); 
+			unmoveable.attach( selectedObject );
 		}
+		selectedObj = found;
+		found.material.emissive.r = 1; // turn the selected jar red emissive
+		selectedPlane.visible = false; // hide the current information panel
+		selectedPlane = found.userData.planes; // get the new matching information panel for the selected jar
+		selectedPlane.visible = true; // make the new panel visible
+	}
+	truesite = null;
+}	
 ```
 
 ### Update the Instructions

@@ -174,74 +174,75 @@ and within the init function, after:
 add:
 
 ```
-// add information panels, key panel and reference panel by loading textures then adding planes .
-				// load textures and generate Mipmaps
-				const textureLoader = new THREE.TextureLoader()
-				const introTexture = textureLoader.load( 'textures/Intro.jpg' );
-				introTexture.generateMipmaps = true;
-				const refTexture = textureLoader.load( 'textures/sources.jpg' );
-				refTexture.generateMipmaps = true;			
-				const keyTexture = textureLoader.load( 'textures/key.jpg' );
-				keyTexture.generateMipmaps = true;
-				const adzeraTexture = textureLoader.load( 'textures/Adzera.jpg' );
-				adzeraTexture.generateMipmaps = true;
-				const aibomTexture = textureLoader.load( 'textures/Aibom.jpg' );
-				aibomTexture.generateMipmaps = true;
-				const mailuTexture = textureLoader.load( 'textures/Mailu.jpg' );
-				mailuTexture.generateMipmaps = true;
-				const dimiriTexture = textureLoader.load( 'textures/Dimiri.jpg' );
-				dimiriTexture.generateMipmaps = true;
-				const louisadeTexture = textureLoader.load( 'textures/Louisade.jpg' );
-				louisadeTexture.generateMipmaps = true;
-				const yabobTexture = textureLoader.load( 'textures/Yabob.jpg' );
-				yabobTexture.generateMipmaps = true;
-				// add introduction information panel and set the selected panel to it
-				gallery = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: introTexture }));
-				gallery.position.set( 0, gheight, sphereposz); 
-				selectedPlane = gallery;
-				// add the panel for the key
-				const gallery2 = new THREE.Mesh(new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: keyTexture }));
-				gallery2.position.set( 1.25, gheight, sphereposz); 
-				// add the panel for the references
-				const gallery3 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize  ), new THREE.MeshBasicMaterial({ map: refTexture }));
-				gallery3.position.set( -1.25, gheight, sphereposz); 
+	// add information panels, key panel and reference panel by loading textures then adding planes .
+	// load textures and generate Mipmaps
+	const textureLoader = new THREE.TextureLoader()
+	const introTexture = textureLoader.load( 'textures/Intro.jpg' );
+	introTexture.generateMipmaps = true;
+	const refTexture = textureLoader.load( 'textures/sources.jpg' );
+	refTexture.generateMipmaps = true;			
+	const keyTexture = textureLoader.load( 'textures/key.jpg' );
+	keyTexture.generateMipmaps = true;
+	const adzeraTexture = textureLoader.load( 'textures/Adzera.jpg' );
+	adzeraTexture.generateMipmaps = true;
+	const aibomTexture = textureLoader.load( 'textures/Aibom.jpg' );
+	aibomTexture.generateMipmaps = true;
+	const mailuTexture = textureLoader.load( 'textures/Mailu.jpg' );
+	mailuTexture.generateMipmaps = true;
+	const dimiriTexture = textureLoader.load( 'textures/Dimiri.jpg' );
+	dimiriTexture.generateMipmaps = true;
+	const louisadeTexture = textureLoader.load( 'textures/Louisade.jpg' );
+	louisadeTexture.generateMipmaps = true;
+	const yabobTexture = textureLoader.load( 'textures/Yabob.jpg' );
+	yabobTexture.generateMipmaps = true;
 
-				scene.add( gallery, gallery2, gallery3);
-				// add the jar information panels then make them not visible
-				adzeraG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: adzeraTexture }));
-				adzeraG.position.set( 0, gheight, sphereposz); 
+	// add introduction information panel and set the selected panel to it
+	gallery = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: introTexture }));
+	gallery.position.set( 0, gheight, sphereposz); 
+	selectedPlane = gallery;
+	// add the panel for the key
+	const gallery2 = new THREE.Mesh(new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: keyTexture }));
+	gallery2.position.set( 1.25, gheight, sphereposz); 
+	// add the panel for the references
+	const gallery3 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize  ), new THREE.MeshBasicMaterial({ map: refTexture }));
+	gallery3.position.set( -1.25, gheight, sphereposz); 
 
-				aibomG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: aibomTexture }));
-				aibomG.position.set( 0, gheight, sphereposz); 
+	scene.add( gallery, gallery2, gallery3);
+	// add the jar information panels then make them not visible
+	adzeraG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: adzeraTexture }));
+	adzeraG.position.set( 0, gheight, sphereposz); 
 
-				mailuG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: mailuTexture }));
-				mailuG.position.set( 0, gheight, sphereposz); 
+	aibomG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: aibomTexture }));
+	aibomG.position.set( 0, gheight, sphereposz); 
 
-				dimiriG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: dimiriTexture }));
-				dimiriG.position.set( 0, gheight, sphereposz); 
+	mailuG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: mailuTexture }));
+	mailuG.position.set( 0, gheight, sphereposz); 
 
-				louisadeG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: louisadeTexture }));
-				louisadeG.position.set( 0, gheight, sphereposz); 
+	dimiriG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: dimiriTexture }));
+	dimiriG.position.set( 0, gheight, sphereposz); 
 
-				yabobG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: yabobTexture }));
-				yabobG.position.set( 0, gheight, sphereposz); 
+	louisadeG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: louisadeTexture }));
+	louisadeG.position.set( 0, gheight, sphereposz); 
 
-				scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
-				adzeraG.visible = false;
-				aibomG.visible = false;
-				mailuG.visible = false;
-				dimiriG.visible = false;
-				louisadeG.visible = false;
-				yabobG.visible = false;
+	yabobG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: yabobTexture }));
+	yabobG.position.set( 0, gheight, sphereposz); 
 
-				// add the map of New Guinea
-				const mapGeometry = new THREE.PlaneGeometry( 3 * ratio, 1.5 * ratio );
-				const mapTexture = textureLoader.load('textures/png.png'); // from google maps
-				mapTexture.generateMipmaps = true // saves gpu if false
-				const theMap = new THREE.Mesh( mapGeometry, new THREE.MeshBasicMaterial({ map: mapTexture }));
-				theMap.rotation.x = - Math.PI / 2; // Equal to 90 degrees
-				theMap.position.set( 0, desk, 0); // desk height
-				scene.add( theMap);
+	scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
+	adzeraG.visible = false;
+	aibomG.visible = false;
+	mailuG.visible = false;
+	dimiriG.visible = false;
+	louisadeG.visible = false;
+	yabobG.visible = false;
+
+	// add the map of New Guinea
+	const mapGeometry = new THREE.PlaneGeometry( 3 * ratio, 1.5 * ratio );
+	const mapTexture = textureLoader.load('textures/png.png'); // from google maps
+	mapTexture.generateMipmaps = true // saves gpu if false
+	const theMap = new THREE.Mesh( mapGeometry, new THREE.MeshBasicMaterial({ map: mapTexture }));
+	theMap.rotation.x = - Math.PI / 2; // Equal to 90 degrees
+	theMap.position.set( 0, desk, 0); // desk height
+	scene.add( theMap);
 
 ```
 
@@ -267,24 +268,18 @@ The jars will be added to a group (called 'jars') and the group will be added to
 
 Each jar will get a userdata property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
 
-Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that takes the .glb file and loads it when called by the loader.load() function. The program will not stop while loading the file which can take a while so to avoid problems do not try to add the model to a group outside the loading function. 
+Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that takes the .glb file and loads it when called by the loader.load() function. The program will not stop while loading the file which can take a while so to avoid problems do not try to add the model to a group outside the loading function code. 
 
 Replace:
 
 ```
-	let thescene;
-	let piecescale = 1;
-	let desk = 0.8;
-    	let ratio = 2;  
+	let themodel;
 
 ```
 
 with:
 
-```
-	let desk = 0.8;
-    	let ratio = 2; 
-	let piecescale = ratio; 	
+```	
 	let jars;
 	let adzeraM, aibomM, mailuM, louisadeM, dimiriM, yabobM;
 
@@ -299,10 +294,11 @@ Within the init function after:
 add:
 
 ```
+	// add jar models. Added in group so they can be selected.
 	jars = new THREE.Group();
 	scene.add( jars );
 
-	// verbose version
+	// loading function for Aibom jar model
 	function onLoadAibom( gltf ) {				
 		aibomM = gltf.scene.children[0];
 		aibomM.material = new THREE.MeshStandardMaterial();
@@ -321,7 +317,7 @@ To avoid repetitive code we will define a function createModel(), and have the l
 Replace 
 
 ```
-	// verbose version
+	// loading function for Aibom jar model
 	function onLoadAibom( gltf ) {				
 	...
 	}
@@ -362,6 +358,7 @@ Replace
 with
 ```
 	// directly has the onLoad function as an anonymous function in the loader.load
+	// load a jar (filename, load function, function while loading, error function)
 	loader.load( 'models/aibom.glb', function( gltf ) {							
 		aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
 		jars.add( aibomM);

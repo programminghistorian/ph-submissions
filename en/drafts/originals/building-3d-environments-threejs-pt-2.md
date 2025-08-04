@@ -29,7 +29,7 @@ In part 1 of this lesson we used three.js to create a website featuring a camera
 
 ## Setting Up
 
-In addition to the requirements in part 1, you will need to download the [`/models` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/models) containing the individual jar models, and the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/textures) with information about them, from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2). If you are running the node.js server, stop it with Ctrl + C.
+In addition to the requirements in part 1, you will need to download the [`/models` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/models) containing the individual jar models, and the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/textures) with information about them, from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2).
 
 Put (or replace) the downloaded models and texture folders in the myscene folder (Figures 1-2). Keep the index.html and main.css files that you created in part 1.
 
@@ -37,20 +37,23 @@ Put (or replace) the downloaded models and texture folders in the myscene folder
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-02.png" alt="Screenshot of the VSC editor showing a list of jpg files in the expanded textures folder." caption="Figure 2. File structure for part 2 as shown in VSC, with the textures folder expanded." %}
 
-In the index.html file from part 1, remove the code that loads the glTF model used in part 1: 
+If you made autoRotate true, comment out that line (ie add // to the beginning of the line) and also comment out the controls.update in the render function. In the index.html file from part 1, remove the code that loads the glTF model used in part 1: 
 ie remove
 
 ```
-    	function onLoadMap( gltf ) {                
-                thescene = gltf.scene.children[0];
-                thescene.position.set( 0, desk, 0);
-                thescene.scale.set( piecescale, piecescale, piecescale);
-                scene.add( thescene);
-	}
-loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
+                // load model
+                // function used for loader
+                function onLoadMap( gltf ) {                
+				   	themodel = gltf.scene.children[0];
+                    themodel.position.set( 0, desk, 0); // x, y, z
+                    themodel.scale.set( 1, 1, 1); // x, y, z
+                    scene.add( themodel);
+	            }
+                // the loader is given the model file name (first argument) which is passed to the function (second argument), function to do while loading (3rd argument), function called if error (4th argument).
+	            loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
 
 ```
-Start the local server with 
+If you do not have the local server running, start it with 
 ```
 npx serve
 ```
@@ -79,11 +82,10 @@ After:
 Add:
 
 ```
-    	let ratio = 2;
     	let gheight = desk + 0.55; //panel height
 	let psize = 1.0; // panel dimensions
 	let sphereposx = 0.84 // key sphere x position
-	let sphereposz = -0.75 // key sphere x position
+	let sphereposz = -0.75 // key sphere z position
 
 ```
 
@@ -96,7 +98,10 @@ scene.add( light );
 Add: 
 
 ```
-	const parameters = {
+	// add models
+
+	// add key for jar colours using spheres and a plane
+	const parameters = { // colours for the key spheres and the jars
 		materialColor: '#9c5315', 
 		ringTopColor: '#19ffE7',
 		coilColor: '#ff0000',
@@ -106,38 +111,29 @@ Add:
 		wangelaColor: '#BEBEBE', 
 		amphColor: '#fc9483',
 		nabColor: '#209F00' 
-    	}
-    //spheres for key
-	const sphere = new THREE.SphereGeometry( 0.04, 15, 5); //radius, width segments, height segments
-
+	}
+	//spheres for key
+	const sphere = new THREE.SphereGeometry( 0.04, 15, 5); //radius, width segments, height segments in metres. Will be reused.
 	const sphere1 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.materialColor })); 
 	sphere1.position.set( sphereposx, gheight + 0.30, sphereposz); 
-
 	const sphere2 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilColor })); 
 	sphere2.position.set( sphereposx, gheight + 0.21, sphereposz); 
-
 	const sphere3 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.wangelaColor })); 
 	sphere3.position.set( sphereposx, gheight - 0.15, sphereposz); 
-
 	const sphere4 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.nabColor })); 
 	sphere4.position.set( sphereposx, gheight - 0.06, sphereposz); 
-
 	const sphere5 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleAddColor})); 
 	sphere5.position.set( sphereposx, gheight - 0.35, sphereposz); 
-
 	const sphere6 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilBeatenColor})); 
 	sphere6.position.set( sphereposx, gheight + 0.03, sphereposz); 
-
 	const sphere7 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.amphColor })); 
 	sphere7.position.set( sphereposx, gheight - 0.44, sphereposz); 
-
 	const sphere8 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleColor})); 
 	sphere8.position.set( sphereposx, gheight - 0.25, sphereposz); 
-
 	const sphere9 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.ringTopColor})); 
 	sphere9.position.set( sphereposx, gheight + 0.12, sphereposz); 
-
 	scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
+	
 
 ```
 
@@ -156,89 +152,96 @@ Textures need to be loaded by a 'TextureLoader'.
 After:
 
 ```
-    // Variables
+    // Variable declaration and setting
 ```
 
 Add:
 
 ```
-    	let gallery, adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG;
-	let selectedPlane;			
+	let gallery, adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG; // information panels for the different jars
+	let selectedPlane;	// which information panel will be visible
+	let ratio = 2; 
+	let piecescale = ratio; 
+			
 ```
 
 and within the init function, after:
 
 ```
-camera.position.set( 0, 1.6, 3 );
+// add models
 ```
 
 add:
 
 ```
-const textureLoader = new THREE.TextureLoader()
+// add information panels, key panel and reference panel by loading textures then adding planes .
+				// load textures and generate Mipmaps
+				const textureLoader = new THREE.TextureLoader()
+				const introTexture = textureLoader.load( 'textures/Intro.jpg' );
+				introTexture.generateMipmaps = true;
+				const refTexture = textureLoader.load( 'textures/sources.jpg' );
+				refTexture.generateMipmaps = true;			
+				const keyTexture = textureLoader.load( 'textures/key.jpg' );
+				keyTexture.generateMipmaps = true;
+				const adzeraTexture = textureLoader.load( 'textures/Adzera.jpg' );
+				adzeraTexture.generateMipmaps = true;
+				const aibomTexture = textureLoader.load( 'textures/Aibom.jpg' );
+				aibomTexture.generateMipmaps = true;
+				const mailuTexture = textureLoader.load( 'textures/Mailu.jpg' );
+				mailuTexture.generateMipmaps = true;
+				const dimiriTexture = textureLoader.load( 'textures/Dimiri.jpg' );
+				dimiriTexture.generateMipmaps = true;
+				const louisadeTexture = textureLoader.load( 'textures/Louisade.jpg' );
+				louisadeTexture.generateMipmaps = true;
+				const yabobTexture = textureLoader.load( 'textures/Yabob.jpg' );
+				yabobTexture.generateMipmaps = true;
+				// add introduction information panel and set the selected panel to it
+				gallery = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: introTexture }));
+				gallery.position.set( 0, gheight, sphereposz); 
+				selectedPlane = gallery;
+				// add the panel for the key
+				const gallery2 = new THREE.Mesh(new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: keyTexture }));
+				gallery2.position.set( 1.25, gheight, sphereposz); 
+				// add the panel for the references
+				const gallery3 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize  ), new THREE.MeshBasicMaterial({ map: refTexture }));
+				gallery3.position.set( -1.25, gheight, sphereposz); 
 
-const introTexture = textureLoader.load( 'textures/Intro.jpg' );
-introTexture.generateMipmaps = true;
-const refTexture = textureLoader.load( 'textures/sources.jpg' );
-refTexture.generateMipmaps = true;			
-const keyTexture = textureLoader.load( 'textures/key.jpg' );
-keyTexture.generateMipmaps = true;
-const adzeraTexture = textureLoader.load( 'textures/Adzera.jpg' );
-adzeraTexture.generateMipmaps = true;
-const aibomTexture = textureLoader.load( 'textures/Aibom.jpg' );
-aibomTexture.generateMipmaps = true;
-const mailuTexture = textureLoader.load( 'textures/Mailu.jpg' );
-mailuTexture.generateMipmaps = true;
-const dimiriTexture = textureLoader.load( 'textures/Dimiri.jpg' );
-dimiriTexture.generateMipmaps = true;
-const louisadeTexture = textureLoader.load( 'textures/Louisade.jpg' );
-louisadeTexture.generateMipmaps = true;
-const yabobTexture = textureLoader.load( 'textures/Yabob.jpg' );
-yabobTexture.generateMipmaps = true;
-gallery = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: introTexture }));
-gallery.position.set( 0, gheight, sphereposz); 
-selectedPlane = gallery;
-const gallery2 = new THREE.Mesh(new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: keyTexture }));
-gallery2.position.set( 1.25, gheight, sphereposz); 
-const gallery3 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize  ), new THREE.MeshBasicMaterial({ map: refTexture }));
-gallery3.position.set( -1.25, gheight, sphereposz); 
+				scene.add( gallery, gallery2, gallery3);
+				// add the jar information panels then make them not visible
+				adzeraG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: adzeraTexture }));
+				adzeraG.position.set( 0, gheight, sphereposz); 
 
-scene.add( gallery, gallery2, gallery3);
+				aibomG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: aibomTexture }));
+				aibomG.position.set( 0, gheight, sphereposz); 
 
-adzeraG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: adzeraTexture }));
-adzeraG.position.set( 0, gheight, sphereposz); 
+				mailuG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: mailuTexture }));
+				mailuG.position.set( 0, gheight, sphereposz); 
 
-aibomG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: aibomTexture }));
-aibomG.position.set( 0, gheight, sphereposz); 
+				dimiriG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: dimiriTexture }));
+				dimiriG.position.set( 0, gheight, sphereposz); 
 
-mailuG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: mailuTexture }));
-mailuG.position.set( 0, gheight, sphereposz); 
+				louisadeG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: louisadeTexture }));
+				louisadeG.position.set( 0, gheight, sphereposz); 
 
-dimiriG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: dimiriTexture }));
-dimiriG.position.set( 0, gheight, sphereposz); 
+				yabobG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: yabobTexture }));
+				yabobG.position.set( 0, gheight, sphereposz); 
 
-louisadeG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: louisadeTexture }));
-louisadeG.position.set( 0, gheight, sphereposz); 
+				scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
+				adzeraG.visible = false;
+				aibomG.visible = false;
+				mailuG.visible = false;
+				dimiriG.visible = false;
+				louisadeG.visible = false;
+				yabobG.visible = false;
 
-yabobG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: yabobTexture }));
-yabobG.position.set( 0, gheight, sphereposz); 
-
-scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
-adzeraG.visible = false;
-aibomG.visible = false;
-mailuG.visible = false;
-dimiriG.visible = false;
-louisadeG.visible = false;
-yabobG.visible = false;
-
-//the Map
-const mapGeometry = new THREE.PlaneGeometry( 3 * ratio, 1.5 * ratio );
-const mapTexture = textureLoader.load('textures/png.png'); //from google maps
-mapTexture.generateMipmaps = true //saves gpu if false
-const theMap = new THREE.Mesh( mapGeometry, new THREE.MeshBasicMaterial({ map: mapTexture }));
-theMap.rotation.x = - Math.PI / 2;
-theMap.position.set( 0, desk, 0); //desk
-scene.add( theMap);
+				// add the map of New Guinea
+				const mapGeometry = new THREE.PlaneGeometry( 3 * ratio, 1.5 * ratio );
+				const mapTexture = textureLoader.load('textures/png.png'); // from google maps
+				mapTexture.generateMipmaps = true // saves gpu if false
+				const theMap = new THREE.Mesh( mapGeometry, new THREE.MeshBasicMaterial({ map: mapTexture }));
+				theMap.rotation.x = - Math.PI / 2; // Equal to 90 degrees
+				theMap.position.set( 0, desk, 0); // desk height
+				scene.add( theMap);
 
 ```
 

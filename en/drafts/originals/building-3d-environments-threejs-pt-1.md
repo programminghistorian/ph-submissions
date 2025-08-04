@@ -337,48 +337,48 @@ add:
 	let container, camera, scene, renderer;
 
 	// Function calls
-	// Call the init function, which will set up (initialise) the scene.
-    	init();
-	// Call the animate function which will continuously render the scene and respond to any user input being listened for.
-	animate(); 
+    	init(); // initialise scene
+	animate(); // updates scene by constant rendering
 
 
 	// Function definitions
 
-	// initialises scene, with a space (container), camera, renderer and a listener for window size changes
-	//
-	//
+	// Initialise scene: sets up container; scene; camera; renderer; lights; models; controls
     	function init() {
-		// create container html div element and add to html page (document)
+		// make html div element and add to html document
 		container = document.createElement( 'div' );
 		document.body.appendChild( container );
-		// create a new scene with a start background colour
+		// make scene and set background colour
         	scene = new THREE.Scene();
-		scene.background = new THREE.Color( 0xf7d382 ); // in hexcode.
-		// create a perspective camera and sets its initial position relative to the scene	
-		camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 ); //arguments: vertical field of view, aspect, near plane, far plane. Values in metres. Note the aspect depends on the users window size
-		camera.position.set( 0, 1.6, 3 ); // x, y, z Values in metres. The y value here estimates eye level as this was designed to work with virtual reality.
-		// create a renderer to draw the view from the camera. Set pixel ratio and size from users window browser details and add renderer to container
+		scene.background = new THREE.Color( 0xf7d382 ); // use the hexcode of any colour you want.
+		// make camera, set its start position	
+		camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 ); //arguments are: vertical field of view, aspect, near plane, far plane. Note the aspect depends on the users window size.
+		camera.position.set( 0, 1.6, 3 ); // arguments: x, y, z Values in metres. Approximates a persons eye level (designed for VR)
+
+		// make renderer and use users browser window values to set pixel ratio and size
         	renderer = new THREE.WebGLRenderer( { antialias: true } );
 		renderer.setPixelRatio( window.devicePixelRatio ); // Don't change this code.
 		renderer.setSize( window.innerWidth, window.innerHeight ); // Don't change this code.
         	container.appendChild( renderer.domElement );
-		// listen for users resizing their browser windows and if they do call the onWindowResize function
+
+		// add listeners. These check for user interaction with the window and mouse clicks and call the given function.
+                // listen for user browser window resizing and call the onWindowResize function that is defined below.
        	 	window.addEventListener( 'resize', onWindowResize );
 		}
 
-	// called if users resize their browser window, will update camera variables and renderer dimensions with new window widths and heights
-	function onWindowResize() { 
-		camera.aspect = window.innerWidth / window.innerHeight;
-		camera.updateProjectionMatrix();
-		renderer.setSize( window.innerWidth, window.innerHeight );
-	}
+	// function definitions
+	// called on resizing of window. Gets new browser window values and updates camera and renderer settings. Don't experiment with.
+	function onWindowResize() {
+		        camera.aspect = window.innerWidth / window.innerHeight; 
+		        camera.updateProjectionMatrix();
+		        renderer.setSize( window.innerWidth, window.innerHeight );
+	        }
 
-	//
+	// Constant loop of rendering.
 	function animate() {
 		renderer.setAnimationLoop( render );
 	}
-
+	// Called in loop by animate(), draws the scene in 2D as viewed by the camera at the camera's current position.
 	function render() {
 		renderer.render( scene, camera );
 	}
@@ -387,6 +387,8 @@ add:
 Reload the page after saving the index.html file and check that you have changed the background colour.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-12.png" alt="Basic webpage with peach background." caption="Figure 12. Webpage with peach background." %}
+
+Three.js uses window event listeners to detect user interactions with their browser. Here we will only listen for window resizing ('resize'), but in part 2 we will listen for mouse clicks ('click') and drags ('dragstart' and 'dragend'). Other possible input events include mouse movement ('mousemove') and keys being pressed on the keyboard ('keyup' and 'keydown'). The window event listeners have 2 arguments. The first identifies the input event (ie 'resize' for resizing), and the second the function that will be called (run) if the event occurs. The standard window resize function code gets the new browser dimensions from the global object 'window' and updates the camera aspect and the dimensions of the picture the renderer is drawing. As 'window' is a global object it is better to never call any of your variables 'window'.
 
 Next we need to add lights.
 
@@ -401,9 +403,10 @@ In the function init() and after:
 add:
 
 ```
-    	scene.add( new THREE.HemisphereLight( 0xffffbb, 0x080820, .5) ); //sky colour, ground colour, intensity
-	const light = new THREE.DirectionalLight( 0xffffff ); // colour
-	light.position.set( 1, 6, 2 ); // x, y, z
+    	// add a hemisphere light and a directional light
+	scene.add( new THREE.HemisphereLight( 0xffffbb, 0x080820, .5) ); // arguments: sky colour, ground colour, intensity
+	const light = new THREE.DirectionalLight( 0xffffff ); // argument: colour
+	light.position.set( 1, 6, 2 ); // x, y, z 
 	scene.add( light );
 ```
 
@@ -419,26 +422,28 @@ add:
 
 ```
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'; // needed if draco compression on gltf
 ```
 
 After:
 
 ```
-	// Variables
+	let container, camera, scene, renderer;
 ```
 
 add:
 
 ```
+	let themodel;
+	let desk = 0.8; // the height of the model (metres), desk height in VR.const loader = new GLTFLoader();
+
+	// Loader set up 
+	// Different model formats use different loaders
 	const loader = new GLTFLoader();
 	const dracoLoader = new DRACOLoader();
 	dracoLoader.setDecoderPath( 'https://unpkg.com/three@0.160.0/examples/jsm/libs/draco/' );
 	loader.setDRACOLoader( dracoLoader );
 
-	let thescene;
-	let piecescale = 1;
-	let desk = 0.8;
 ```
 
 Within the init function after:
@@ -450,18 +455,25 @@ Within the init function after:
 add:
 
 ```
+	// load model
+	// function used for loader
 	function onLoadMap( gltf ) {                
-                thescene = gltf.scene.children[0];
-                thescene.position.set( 0, desk, 0);
-                thescene.scale.set( piecescale, piecescale, piecescale);
-                scene.add( thescene);
+		themodel = gltf.scene.children[0]; // can also use just gltf.scene
+		themodel.position.set( 0, desk, 0); // x, y, z
+		themodel.scale.set( 1, 1, 1); // x, y, z
+		scene.add( themodel);
 	}
+	// the loader is given the model file name (first argument) which is passed to the function (second argument), function to do while loading (3rd argument), function called if error (4th argument).
 	loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
 	
 ```
 Save and reload and you should see a model, but you will not be able to move around it yet.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-13.png" alt="Several jar models sitting on a map of Papua." caption="Figure 13. The model of jars on a map of Papua." %}
+
+The model is loaded with the load function which can take 4 arguments. The first argument is the file name which must include its 'path', ie any folders it is in (e.g. 'models/png_sceneDRACO.glb'). It can also be a URL. The other three arguments are for "callback" functions that will be called to: load the model, while the model is loading, and if there is an error loading the model. Here we have defined the onLoadMap function separately in the function definitions. We have left the on progress function 'undefined', but sometimes a function is used that creates a loading bar or similar indication to the user that something is happening, especially if the model is large and will take some time to load. The error function is defined here anonymously (without a name) and will print the error to the browser console.
+
+The onLoadMap function, takes the filename and obtains the model using '.scene'. Using 'gltf.scene' instead of 'gltf.scene.children[0]' will also work here. gltf files can have hierarchies of groups and meshes (as you saw in the viewer), and for some purposes it does not matter if the object being imported is a group or a mesh, but for others (like raycasting) it does. Sometimes it is better to import the children of the scene and indexing starts with 0. The model load function can also be used to position, scale or rotate the model. You can experiment with changing the x, y or z values for position or scale and see the effects.
 
 ### Adding Camera Controls to Move Around
 
@@ -482,7 +494,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 Change:
 
 ```
-	let container, camera, scene, renderer; //declare the variables
+	let container, camera, scene, renderer; 
 ```
 
 to:
@@ -500,12 +512,29 @@ In the init, after:
 add:
 
 ```
-	controls = new OrbitControls( camera, renderer.domElement);
-	controls.target.set( 0, 1.6, 0 );
-	controls.update();
+		// create orbit controls
+                controls = new OrbitControls( camera, renderer.domElement);
+		controls.target.set( 0, 1.6, 0 ); // sets the scene rotational centre
+		controls.update(); // updates controls settings after creation
+                //controls.autoRotate = true; // set to true if camera is to rotate automatically BUT you must then call controls.update() in render function.
+
 ```
 
-If you save and reload you should be able to move around and zoom in and out.
+If you save and reload you should be able to move around and zoom in and out. Note that the model is not being rotated but it is the camera that is being moved. The target.set function determines the centre that the camera will rotate around. If you want the camera to continuously rotate, you can uncomment out the controls.autoRotate but you must also add the call to update the controls in the render function, i.el
+change
+```
+		function render() {
+		        renderer.render( scene, camera );
+	        }
+```
+to 
+```
+	        function render() {
+                controls.update(); // use if controls.autoRotate = true
+		        renderer.render( scene, camera );
+	        }
+
+```
 
 You could deploy your site using the instructions on GitHub or Vercel. You can investigate the [three.js manual](https://threejs.org/docs/index.html#manual/en/introduction/How-to-create-VR-content) for making the site viewable in virtual reality (VR).
 

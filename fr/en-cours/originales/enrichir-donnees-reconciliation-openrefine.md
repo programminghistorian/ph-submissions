@@ -36,7 +36,7 @@ Nous allons voir dans ce tutoriel comment utiliser OpenRefine sur des données l
 
 ## Choisir un jeu de données
 
-Nous allons utiliser un jeu de données sous la forme d’une liste de douze ouvrages d’alchimie en deux colonnes : `Titre` (pour le titre de l’ouvrage) et `Date` (pour date de publication, certaines dates sont manquantes). Ce jeu de données ([téléchargeable](.\data/traites-alchimie.csv)) est sous la forme d’un fichier CSV encodé en UTF-8 (voir Figure 1). C’est un format ouvert idéal pour traiter et archiver des données tabulées. Veuillez noter que les résultats des processus présentés ci-dessous peuvent se présenter différemment si vous refaites les mêmes actions, car les données de Wikidata auront changé.
+Nous allons utiliser un jeu de données sous la forme d’une liste de douze ouvrages d’alchimie en deux colonnes : `Titre` (pour le titre de l’ouvrage) et `Date` (pour date de publication, certaines dates sont manquantes). Ce jeu de données ([téléchargeable](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie.csv)) est sous la forme d’un fichier CSV encodé en UTF-8 (voir Figure 1). C’est un format ouvert idéal pour traiter et archiver des données tabulées. Veuillez noter que les résultats des processus présentés ci-dessous peuvent se présenter différemment si vous refaites les mêmes actions, car les données de Wikidata auront changé.
 
 {% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-01.png" alt="Aperçu du fichier CSV contenant les données à enrichir." caption="Figure 1. Apercu du fichier CSV." %}
 
@@ -131,7 +131,7 @@ Il est recommandé de faire ces opérations d’enrichissement à la fin de tous
 
 Une fois le jeu de données enrichi, il est possible d’exporter le fichier au format CSV en sélectionnant Exporter \> Valeurs séparées par des virgules. C’est un format recommandé pour sa simplicité et ses attributs [FAIR](https://fr.wikipedia.org/wiki/Fair_data) (Facile à trouver, Accessible, Interopérable, Réutilisable). Il est aussi possible de l’exporter au format Archive de projet OpenRefine pour permettre de reprendre le travail plus tard ou pour transférer le travail sur un autre ordinateur. Tous les projets OpenRefine en cours sont sauvegardés au fur et à mesure sans intervention de l’utilisateur et ils sont localisés, par défaut, sur l’ordinateur dans le dossier Utilisateur/AddData/Roaming/OpenRefine (le lien se trouve dans le bas de la page Ouvrir un projet).
 
-Voici un aperçu du jeu des données enrichies (février 2025, figure 8). Il peut être téléchargé [en CSV](.\data/traites-alchimie-donnees_enrichies.csv) ou au [format OpenRefine](.\data/traites-alchimie-donnees_enrichies.tar.gz).
+Voici un aperçu du jeu des données enrichies (février 2025, figure 8). Il peut être téléchargé [en CSV](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie-donnees_enrichies.csv) ou au [format OpenRefine](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie-donnees_enrichies.tar.gz).
 
 {% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-08.png" alt="Capture d'écran montrant un jeu de données enrichies dans OpenRefine." caption="Figure 8. Jeu des données enrichies." %}
 
@@ -298,3 +298,4 @@ Patenaude, Caroline. 2021. *OpenRefine : au secours des désordonnées.* Tutorie
 Tillman, Ruth. 2020. *Learning Cell Cross in OpenRefine.* <https://ruthtillman.com/talk/cell-cross-webinar-2020-03/>
 
 University of Toronto Libraries. *OpenRefine Augmenting Activity 2: Using Reconciliation Services*. 2019. <https://mdl.library.utoronto.ca/technology/tutorials/openrefine-augmenting-activity-2-using-reconciliation-services>
+

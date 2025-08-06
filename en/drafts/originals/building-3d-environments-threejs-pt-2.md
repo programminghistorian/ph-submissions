@@ -60,6 +60,8 @@ Before constructing a scene or game it is helpful to draft out (by hand or using
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-03.png" alt="Scene mock-ups in z, x and y views." caption="Figure 3. Affinity Design versions of the hand-drawn sketches for planning the game. Mock-ups of all 3 views are done, with rough coordinates and spacing for the scene assets (here the camera, light, the map, information panels and a key panel featuring 9 spheres, the jar/site positions, and the area that in the game the jars will randomly start). Coordinates are x, y, z. Note light is off the scale in the y axis." %}
 
+Planning also helps identify where you will be using the same value repeatedly, such as the x and z positions of the key spheres, and we can use variables for these values, so that if we want to alter them it is easier. It also identifies where measurements are dependent on other measurements. Here the height of the galleries is dependent on the height of the map, because we want them to be above the map, so we can have a variable 'desk' for the map height and a variable 'gheight' for the gallery height that is dependent on the desk variable (ie equal to desk + 0.55). The placement of the map at this y value was because the site was designed to be able to be viewed in VR. 
+
 ## Adding the Spheres for a Colour Key
 
 If you do not have the local server running, start it with 

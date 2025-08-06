@@ -53,6 +53,15 @@ ie remove
 	            loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
 
 ```
+
+## Planning
+
+Before constructing a scene or game it is helpful to draft out (by hand or using Powerpoint etc), mock ups in all three views (Figure 3). In the mock-ups include the positve and negative directions of the axis and rough measurements of distances between objects and their proportions. Three.js uses metres as the measurement unit, although this is really only important if you plan to have your site viewable in virtual reality (VR). Include a rough camera and light (for those that have them) position. The scene will have 4 planes (a map, and 3 gallery panels), 9 spheres (as part of the colour key), 6 jars (not really shown on the sketch, although their positions are indicated by the sites in the birds-eye view). The game will feature 6 tori for the sites, and the jars will appear in an area above the map. You can also use the (threejs editor)[https://threejs.org/editor/] to help visualise and refine placements.
+
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-03.png" alt="Scene mock-ups in z, x and y views." caption="Figure 3. Affinity Design versions of the hand-drawn sketches for planning the game. Mock-ups of all 3 views are done, with rough coordinates and spacing for the scene assets (here the camera, light, the map, information panels and a key panel featuring 9 spheres, the jar/site positions, and the area that in the game the jars will randomly start). Coordinates are x, y, z. Note light is off the scale in the y axis." %}
+
+## Adding the Spheres for a Colour Key
+
 If you do not have the local server running, start it with 
 ```
 npx serve
@@ -63,9 +72,8 @@ You might have noticed that the pots in the model of part 1 were different colou
 
 To do this we will add some coloured spheres. Three.js has several basic geometries, including spheres, tori (donuts), planes and boxes. We will use 9 spheres and a plane to make a vessel colour key for how the jars were made.
 
-A sphere 'geometry' is made with a size (in this case 0.04 m), number of width and height segments (Figure 3). If you increase the number of width or height segments you will get rounder spheres. The geometry is reused for 9 different sphere meshes. Each sphere mesh gets a material with a colour (Figure 4). We are using the standard material. There are alternatives that can be used and it is important to note that some material types are more dependent on lights than others. 
+A sphere 'geometry' is made with a size (in this case 0.04 m), number of width and height segments (Figure 4). If you increase the number of width or height segments you will get rounder spheres. The geometry is reused for 9 different sphere meshes. Each sphere mesh gets a material with a colour (Figure 4). We are using the standard material. There are alternatives that can be used and it is important to note that some material types are more dependent on lights than others. 
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-03.png" alt="A framework of nodes and edges in the shape of a sphere." caption="Figure 3. Mesh of a sphere with 15 width segments and 5 height segments." %}
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-04.png" alt="Sphere with red material." caption="Figure 4. The sphere with a standard material and red colour. A directional light is used." %}
 
@@ -113,7 +121,7 @@ Add:
 		nabColor: '#209F00' 
 	}
 	//spheres for key
-	const sphere = new THREE.SphereGeometry( 0.04, 15, 5); //radius, width segments, height segments in metres. Will be reused.
+	const sphere = new THREE.SphereGeometry( 0.04, 15, 5); //radius in metres, width segments, height segments. Will be reused.
 	const sphere1 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.materialColor })); 
 	sphere1.position.set( sphereposx, gheight + 0.30, sphereposz); 
 	const sphere2 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilColor })); 

@@ -46,7 +46,9 @@ L’objectif est d’enrichir ces données en important des données supplément
 
 Cliquez sur *Languages* et changez pour Français. Puis cliquez sur *Créer un projet* \> *Cet ordinateur* \> *Sélect. fichiers* \> Sélectionnez le fichier CSV \> *Suivant* \> Configurez les options d’analyse syntaxique : *Les colonnes sont séparées par* : *une virgule* \> Cliquez sur *Créer un projet*. Il est aussi possible de charger le fichier CSV directement depuis une URL.
 
-Vérifiez que tout est bien importé ou changez les paramètres de la page *Configurez les options d’analyse syntaxique*. On peut noter sur cette page, la possibilité d’importer les données depuis de nombreux formats : XLS et XLSX (Microsoft Excel), JSON (et JSON-LD), fichiers texte à base de lignes, fichiers CSV (ou TSV ou semblables comme notre exemple), fichiers textes à largeur de champ fixe, PC-Axis, MARC, RDF (/N3, /N-Triples, /Turtle, /XML), Wikitext, ODS (fichier de tableur de LibreOffice Calc).
+Vérifiez que tout est bien importé ou changez les paramètres de la page *Configurez les options d’analyse syntaxique* (voir Figure 1b). On peut noter sur cette page, la possibilité d’importer les données depuis de nombreux formats : XLS et XLSX (Microsoft Excel), JSON (et JSON-LD), fichiers texte à base de lignes, fichiers CSV (ou TSV ou semblables comme notre exemple), fichiers textes à largeur de champ fixe, PC-Axis, MARC, RDF (/N3, /N-Triples, /Turtle, /XML), Wikitext, ODS (fichier de tableur de LibreOffice Calc).
+
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-01b.gif" alt="Animation du processus d'importation du fichier CSV." caption="Figure 1b. Animation du processus d'importation du fichier CSV." %}
 
 Le processus de réconciliation consiste habituellement en deux étapes :
 
@@ -303,4 +305,5 @@ Saby, Mathieu. 2020. *Tutoriel OpenRefine 3.4 : nettoyer, préparer et transform
 Tillman, Ruth. 2020. *Learning Cell Cross in OpenRefine.* <https://ruthtillman.com/talk/cell-cross-webinar-2020-03/>
 
 University of Toronto Libraries. *OpenRefine Augmenting Activity 2: Using Reconciliation Services*. 2019. <https://mdl.library.utoronto.ca/technology/tutorials/openrefine-augmenting-activity-2-using-reconciliation-services>
+
 

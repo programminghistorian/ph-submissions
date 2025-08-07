@@ -22,7 +22,7 @@ doi:
 
 {% include toc.html %}
 
-## Introduction
+# Introduction
 
 Le logiciel [OpenRefine](https://openrefine.org/) est connu pour améliorer la qualité des données existantes, principalement en les « nettoyant » en lot selon des critères établis et reproductibles. Depuis 2017, OpenRefine peut aussi être utilisé pour lancer un processus appelé « [réconciliation](https://openrefine.org/docs/manual/reconciling) » ou « alignement » des données qui consiste à apparier ses données à d’autres. Ce processus permet principalement l’enrichissement des données, mais aussi la normalisation ou la correction d’erreurs, l’évaluation et l’exploration des données.
 
@@ -46,7 +46,7 @@ L’objectif est d’enrichir ces données en important des données supplément
 
 Cliquez sur *Languages* et changez pour Français. Puis cliquez sur *Créer un projet* \> *Cet ordinateur* \> *Sélect. fichiers* \> Sélectionnez le fichier CSV \> *Suivant* \> Configurez les options d’analyse syntaxique : *Les colonnes sont séparées par* : *une virgule* \> Cliquez sur *Créer un projet*. Il est aussi possible de charger le fichier CSV directement depuis une URL.
 
-Vérifiez que tout est bien importé ou changez les paramètres de la page Configurez les options d’analyse syntaxique.
+Vérifiez que tout est bien importé ou changez les paramètres de la page *Configurez les options d’analyse syntaxique*.
 
 On peut noter sur cette page, la possibilité d’importer les données depuis de nombreux formats : XLS et XLSX (Microsoft Excel), JSON (et JSON-LD), fichiers texte à base de lignes, fichiers CSV (ou TSV ou semblables comme notre exemple), fichiers textes à largeur de champ fixe, PC-Axis, MARC, RDF (/N3, /N-Triples, /Turtle, /XML), Wikitext, ODS (fichier de tableur de LibreOffice Calc).
 
@@ -165,11 +165,11 @@ De plus, il y a aussi des types de données enrichies mieux indexées que d’au
 
 - Pour les sujets de recherche : catégories plus génériques.
 
-### Dans quels cas la réconciliation n’est pas adaptée ?
+## Dans quels cas la réconciliation n’est pas adaptée ?
 
-Dans OpenRefine, lorsqu’une colonne de données peut être normalisée avec une liste de vocabulaire contrôlé de moins d’une vingtaine d’éléments, alors il est plus simple d’utiliser des facettes pour traiter les données. La réconciliation est plutôt adaptée pour tenter d’apparier ses données avec un grand ensemble de candidats potentiels.
+Dans OpenRefine, lorsqu’une colonne de données peut être normalisée avec une liste de vocabulaire contrôlé de moins d’une vingtaine d’éléments, alors il est plus simple d’utiliser des facettes pour traiter les données. La réconciliation est plutôt adaptée pour tenter d’apparier ses données avec un grand ensemble de candidats potentiels. Dans OpenRefine, une facette est un regroupement de données d'après une dimension choisie. Dans notre leçon, les facettes les plus pertinentes sont les *Facettes textuelles* et les facettes *Par avis* (dans le menu *Reconcilier*).
 
-### Est-il possible de réconcilier avec d’autres sources de données ?
+## Est-il possible de réconcilier avec d’autres sources de données ?
 
 Dans cette leçon, OpenRefine a été testé avec Wikidata en raison de la grande diversité des types de données que l’on y trouve. En 2025, on peut dire que les données les plus notables sont souvent présentes dans Wikidata et qu’elles sont plus ou moins bien indexées.
 
@@ -201,35 +201,35 @@ Voici quelques suggestions de méthodes si une institution ne possède pas de se
 
 - Téléchargez les données ou la liste des données d’une institution et faire une réconciliation avec les informations téléchargées et traitées.
 
-### Y a-t-il d’autres méthodes pour réconcilier des données ?
+## Y a-t-il d’autres méthodes pour réconcilier des données ?
 
-#### Avec des données d’un autre projet OpenRefine
+### Avec des données d’un autre projet OpenRefine
 
 Cette méthode est semblable à la formule RECHERCHEV (*VLOOKUP*) de LibreOffice Calc. Ce n’est pas tout à fait de la réconciliation, car c’est un appariement strict entre deux tables, basés sur une colonne commune contenant une clé. Ce [billet en anglais](https://ruthtillman.com/talk/cell-cross-webinar-2020-03/) de Ruth Tillman explique ce processus de croisement de cellules (*cell cross*).
 
 Comme ce processus de croisement de cellules est très rigoureux, il a des inconvénients : il est sensible à la casse, aux espaces, aux erreurs de saisie, etc. Pour pouvoir faire la même chose, mais bénéficier de l’algorithme de correspondance floue (*fuzz matching*) de la réconciliation, il faut installer une extension à OpenRefine qui s’appelle [reconcile-csv](https://okfnlabs.org/projects/reconcile-csv/).
 
-#### Avec un programme codé spécifiquement
+### Avec un programme codé spécifiquement
 
 Par exemple, il est possible de coder en Python (ou autre) un programme qui lance le processus de réconciliation de manière autonome pour repérer quels sont les meilleurs candidats pour une colonne de valeurs (par exemple avec [Reconciler](https://joao.bio.br/reconciler/)). De plus, il est ensuite possible à partir d’une colonne d’identifiants de créer une ou plusieurs colonnes de données externes importées (par exemple avec le package [WikidataIntegrator](https://github.com/SuLab/WikidataIntegrator) qui va utiliser la valeur du `Qid` et les codes des propriétés à importer).
 
-### Faire un plan et documenter chaque décision
+## Faire un plan et documenter chaque décision
 
 Avant de vous lancer dans un processus de réconciliation, définissez des objectifs et concevez un plan progressif de traitement des données pour atteindre cet objectif. Ensuite, lors du déroulement de ce plan, documentez toutes les décisions prises à chaque étape.
 
 Le processus de réconciliation peut être très lent si vous l’appliquez sur un grand nombre de données. Pour cette raison, je vous recommande de tester votre plan sur un petit nombre d’enregistrements (entre 10 et 20). Si ce plan est adapté, alors appliquez ce plan à toutes vos données.
 
-### Ajouter une colonne avec les identifiants
+## Ajouter une colonne avec les identifiants
 
 Avant l’exportation finale des données enrichies, je recommande d’ajouter une nouvelle colonne qui contient l’identifiant unique de chaque réconciliation (`SPARQL:qid` dans le cas de Wikidata). C’est particulièrement important si vous faites une exportation du jeu de données enrichies au format CSV. En effet, si vous ne le faites pas, seul le libellé de la cellule sera exporté et non la valeur de la clé d’appariement (de toutes les cases réconciliées bleutées).
 
 Pour cela, avec notre exemple ci-dessus, cliquez sur les options de la colonne `Titre_RECON` \> *Réconcilier* \> *Ajouter une colonne d’identifiants d’entités…* Donnez le titre de la colonne : `Titre_QID`
 
-### Comment améliorer la réconciliation ?
+## Comment améliorer la réconciliation ?
 
 Vous remarquerez probablement que la réconciliation est parfois peu satisfaisante. Voici quelques techniques pour réduire les réconciliations manuelles après une réconciliation automatique insatisfaisante.
 
-#### Pour une réconciliation plus stricte
+### Pour une réconciliation plus stricte
 
 - Relancez une nouvelle réconciliation en choisissant un autre type de données recommandé.
 
@@ -239,7 +239,7 @@ Vous remarquerez probablement que la réconciliation est parfois peu satisfaisan
   - Appariez des colonnes de vos données initiales avec des colonnes de la source externe.
   - Par exemple, dans notre cas on pourrait utiliser *Date* : `publication date (P577)`.
 
-#### Pour une réconciliation moins stricte (proposant ou résolvant plus de choix)
+### Pour une réconciliation moins stricte (proposant ou résolvant plus de choix)
 
 - Relancez une réconciliation en choisissant *Réconcilier sans type particulier*.
   - Observez les scores de réconciliation (entre parenthèses après les valeurs proposées, entre 0 et 100) et déterminez le score minimum adapté pour résoudre automatiquement les réconciliations.
@@ -252,13 +252,13 @@ Vous remarquerez probablement que la réconciliation est parfois peu satisfaisan
   - `Hist Sci Med`-\> `Histoire des sciences médicales` 
   - `AHA` -\> `American Historical Association`
 
-### À quoi correspond *Créer un nouvel élément* ?
+## À quoi correspond *Créer un nouvel élément* ?
 
 Cela permet de marquer un enregistrement pour créer un élément dans Wikidata depuis OpenRefine. Je n’utilise pas cette option, car je préfère créer de nouveaux éléments directement dans Wikidata (manuellement ou avec QuickStatements). Cela garantit une meilleure indexation et plus de contrôle sur le processus de création ou d’enrichissement. En effet, lorsque OpenRefine exporte des données dans Wikidata, les détails des résultats du versement (*log*) ne sont pas affichés à l’issue du processus. La boîte de dialogue d’OpenRefine signale certaines erreurs, mais celles-ci restent peu compréhensibles. Il est donc difficile d’évaluer le succès d’un versement de données sans regarder son propre historique de contributions directement dans Wikidata.
 
 Notez que si vous créez ou enrichissez un élément dans Wikidata, ce dernier ne sera pas immédiatement disponible dans OpenRefine pour la réconciliation ou l’importation de données externes. En effet, il faut plusieurs heures avant que le service de réconciliation Wikidata accède aux modifications.
 
-### Réconcilier pour normaliser les données
+## Réconcilier pour normaliser les données
 
 Notons qu’outre l’alignement avec des données externes et l’enrichissement des données initiales, une autre utilité de la réconciliation est de normaliser les données initiales via le service de réconciliation. En effet, comme nous l’avons vu, le contenu d’une cellule réconciliée est remplacé par le texte du libellé de la donnée correspondante de la base de données externe.
 
@@ -299,5 +299,6 @@ Patenaude, Caroline. 2021. *OpenRefine : au secours des désordonnées.* Tutorie
 Tillman, Ruth. 2020. *Learning Cell Cross in OpenRefine.* <https://ruthtillman.com/talk/cell-cross-webinar-2020-03/>
 
 University of Toronto Libraries. *OpenRefine Augmenting Activity 2: Using Reconciliation Services*. 2019. <https://mdl.library.utoronto.ca/technology/tutorials/openrefine-augmenting-activity-2-using-reconciliation-services>
+
 
 

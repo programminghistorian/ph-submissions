@@ -90,7 +90,7 @@ Cependant, pour réaliser le deuxième type de validation, il est nécessaire qu
   schematypens="http://purl.oclc.org/dsdl/schematron"?>
 ```
 
-Vous pouvez télécharger un modèle basique d'un document TEI-XML [ici]((https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/introduccion-a-tei-1/plantilla-TEI.xml), avec ces lignes déjà incluses.
+Vous pouvez télécharger un modèle basique d'un document TEI-XML [ici](https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/introduccion-a-tei-1/plantilla-TEI.xml), avec ces lignes déjà incluses.
 
 **Troisièmement**, l'extension offre également des outils pour saisir semi-automatiquement le code XML à partir du schéma de validation RELAX NG. Par exemple, si nous avons introduit dans le document un élément `<q>` (pour marquer un texte entre guillemets, par exemple une citation), nous pouvons appuyer sur la barre d'espace après le `q` de la balise d'ouverture et VS Code affichera une liste d'attributs possibles à sélectionner dans le menu :
 

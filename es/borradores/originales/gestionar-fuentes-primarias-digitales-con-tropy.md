@@ -34,7 +34,7 @@ Tropy es una herramienta desarrollada justamente para abarcar este problema de s
 
 -   Tropy fue estrenado en 2016 por el Roy Rosenzweig Center for History and New Media en George Mason University ([RRCHNM](https://rrchnm.org/))  en Fairfax, Virgínia, (EEUU). Su desarrollo prosiguió con el apoyo del RRCHNM y el Center for Contemporary and Digital Scholarship ([C2DH](https://www.c2dh.uni.lu/)) de la Universidad de Luxemburgo, y [Digital Scholar](https://digitalscholar.org/), la misma organización sin fines de lucro que administra otras herramientas de código abierto establecidas como Omeka y Zotero.
 
--   Tropy cuenta con diferentes recursos para orientar al principiante, la mayoría de los cuales son accesible por la página de web principal, [tropy.org](http://tropy.org). El código de Tropy reside en [el repositorio del proyecto en Github](https://github.com/tropy). Tropy tiene una [documentación completa](https://docs.tropy.org/) (en inglés) que proporciona una orientación textual a la herramienta. Además, es posible hacer preguntas, comentarios o sugerencias a través del [foro comunitario](https://forums.tropy.org/). El [canal de Youtube](https://www.youtube.com/tropy) de Tropy aloja videotutoriales en inglés y español--además, es posible encontrar grabaciones de talleres, tutoriales y webinars hechos por otros usuarios.
+-   Tropy cuenta con diferentes recursos para orientar al principiante, la mayoría de los cuales son accesibles por la página de web principal, [tropy.org](http://tropy.org). El código de Tropy reside en [el repositorio del proyecto en Github](https://github.com/tropy). Tropy tiene una [documentación completa](https://docs.tropy.org/) (en inglés) que proporciona una orientación textual a la herramienta. Además, es posible hacer preguntas, comentarios o sugerencias a través del [foro comunitario](https://forums.tropy.org/). El [canal de Youtube](https://www.youtube.com/tropy) de Tropy aloja videotutoriales en inglés y español--además, es posible encontrar grabaciones de talleres, tutoriales y webinars hechos por otros usuarios.
 
 -   Tropy es una herramienta útil para historiadores así como estudiosos de humanidades digitales. También tiene gran utilidad para cualquier investigador archival contemporáneo fuera de su conocimiento sobre programación. Aprender a usarlo es intuitivo, principalmente porque es un organizador de fotos diseñado para historiadores.
   
@@ -92,7 +92,7 @@ Es posible también importar una carpeta de imágenes a través del menú Archiv
 
 Si descargas tomos de la Sección Civil-Esclavos, puedes guardarlos en su disco preferido y luego importarlos a través de cualquier de los métodos mencionados. En el menú Tropy>Preferencias (Edit>Preferencias en Windows)>Proyecto, es posible designar una Carpeta monitoreada-cada vez que un formato compatible sea agregado a la carpeta designada, se importará al proyecto de Tropy. Usa el botón Navegar (Figura 2) para vincular una carpeta. <div class="alert alert-warning"> OJO: en el caso de descargar archivos de tamaño grande para importar a un proyecto convencional, debe considerar borrar las imagenes de la carpeta monitoreada, ya que Tropy hará una copia dentro del archivo del proyecto.</div>
 
-{% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-02.png" alt="Sección de la venta de Preferencias, mostrando los parámetros del proyecto" caption="Figura 2. En la sección de Proyecto bajo preferencias, es posible designar una carpeta monitoreada para facilitar la importación" %}
+{% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-02.png" alt="Sección de la venta de Preferencias, mostrando los parámetros del proyecto" caption="Figura 2. En la parte de Proyecto en la sección Preferencias, es posible designar una carpeta monitoreada para facilitar la importación" %}
 
 ## Acciones masivas
 
@@ -108,7 +108,7 @@ En la mano derecha de la vista de proyecto, se encuentra la plantilla de metadat
 
 Para revisar y editar los campos de metadatos para un objeto, haz clic en una imagen y completa todos los campos que desees. Para revisar y editar los campos de metadatos para múltiples objetos a la vez, haz clic derecho (Control+clic izquierda en Mac) en cada imagen, o usa "Selecciona todo" (Ctrl+A en Windows, Command+A en Mac) para seleccionar todos los objetos en el proyecto o en la lista seleccionada. Puedes editar los campos presentes en la plantilla seleccionada, y los cambios se aplicará a todos los objetos seleccionados. Del mismo modo, si editas los campos de metadatos de un objeto y luego lo seleccionas como parte de un conjunto, se aparecá un símbolo +, indicando que hay diferentes datos en el mismo campo para diferentes objetos. Si modificas este campo, se modificará al nuevo dato a través de todos los objetos seleccionados.   
 
-Los tomos de "Seccíon Civil-Esclavos" del ANHV llevan muchos metadatos en común; por ejemplo: Tipo, Fuente y Colección. Otros pueden variar según el tomo o expediente particular (Título, Creador, Fecha), así que se puede editar los campos de metadatos usando una combinación de acciones masivas y descripciones individuales. Más adelante, se explicará cómo desarrollar plantillas de metadatos personalizados para colecciones específicas. Es posible agregar campos adicionales para un objeto individual haciendo clic derecho (Ctrl+clic en Mac) en la plantilla de metadatos activa y seleccionado "Nuevo campo" del menú de contexto. Luego, usas la barra de búsqueda para encontrar la propiedad más apta. Tropy contiene una gran cantidad de vocabularios de metadatos, de la cual se hablará más adelante.
+Los tomos de "Seccíon Civil-Esclavos" del ANHV llevan muchos metadatos en común; por ejemplo: Tipo, Fuente y Colección. Otros pueden variar según el tomo o expediente particular (Título, Creador, Fecha), así que se puede editar los campos de metadatos usando una combinación de acciones masivas y descripciones individuales. Más adelante, se explicará cómo desarrollar plantillas de metadatos personalizados para colecciones específicas. Es posible agregar campos adicionales para un objeto individual haciendo clic derecho (Ctrl+clic en Mac) en la plantilla de metadatos activa y seleccionado "Nuevo campo" del menú contextual. Luego, usas la barra de búsqueda para encontrar la propiedad más apta. Tropy contiene una gran cantidad de vocabularios de metadatos, de la cual se hablará más adelante.
 
 ### Fusionar/Deconstruir
 
@@ -118,7 +118,7 @@ En el caso de un documento PDF con múltiples páginas, tal como en el caso de l
 
 En el caso de los expedientes de la Sección Civil-Esclavos: podría ser más provechoso para el investigador tener los expedientes apartados de los tomos anuales (Figura 3). Después de deconstruir un tomo importado, puedes fusionar de nuevo las imágenes de los folios separados para recrear los expedientes individuales, luego para agregar los metadatos únicos de cada expediente. 
 
-{% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-03.png" alt="Sección de la vista de galeria con el menú de contexto destacado, mostrando la función de Deconstruir." caption="Figura 3. La opción de fusionar y deconstruir objectos puede facilitar la transformación de imágenes individuales y PDF imensos en documentos digitales, según la preferencia del investigador" %}
+{% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-03.png" alt="Sección de la vista de galeria con el menú contextual destacado, mostrando la función de Deconstruir." caption="Figura 3. La opción de fusionar y deconstruir objectos puede facilitar la transformación de imágenes individuales y PDF imensos en documentos digitales, según la preferencia del investigador" %}
 
 ## Descripción de fotos
 
@@ -201,7 +201,7 @@ Para exportar una selección, busca el nombre de la selección en el panel de fo
 
 ## Instalación de programas adicionales (plugins)
 
-Plugins o programas adicionales son extensiones que puedes instalar para facilitar la importación y exportación de imágenes y metadatos. Los plugins oficiales residen en el [repositorio de Github](https://github.com/tropy) de Tropy. También, es posible encontrarlos a través de la página web de Tropy, al fondo de la página principal. Para instalar uno, navega al repositorio y descarga el plugin deseado. Existen plugins para integración con una instalación de Omeka S, exportación de objetos para Zotero (CSL), y exportación en formato .zip y .csv. Adicionalmente es posible importar archivos .csv y manifestos IIIF.
+Plugins o programas adicionales son extensiones que puedes instalar para facilitar la importación y exportación de imágenes y metadatos. Los plugins oficiales residen en el [repositorio de Github](https://github.com/tropy) de Tropy. También, es posible encontrarlos a través de la página web de Tropy, al fondo de la página principal. Para instalar uno, navega al repositorio y descarga el plugin deseado. Después, en la ventana de Preferencias de tu instalación de Tropy, debes activar el plugin (véanse los pasos abajo). Existen plugins para integración con una instalación de Omeka S, exportación de objetos para Zotero (CSL), y exportación en formato .zip y .csv. Adicionalmente es posible importar archivos .csv y manifestos IIIF.
 
 ## Caso de uso: Integración con Zotero
 
@@ -211,19 +211,19 @@ En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una 
 
 1. Descarga el último lanzamiento del plugin [repositorio de Github](https://github.com/tropy/tropy-plugin-csl), a la derecha bajo 'Releases' [Lanzamientos] ('tropy-plugin-csl-vx.x.x.zip').
 
-2. En tu instalación de Tropy, en la ventana Preferencias > Plugins, selecciona "Instalar Plugin."
+2. En tu instalación de Tropy, accede a la ventana de Preferencias (Tropy en Mac o Editar en Windows>Preferencias) accede a la sección de Plugins, y selecciona "Instalar Plugin."
 
 3. Selecciona el archivo .zip descargado del repositorio y después selecciona "Activar" en la ventana de Preferencias cuando aparezca. 
 
 ### ¿Qué tipo de elemento quieres importar en Zotero?
 
-1.  Abre tu instalación de Zotero, y crea un elemento de muestra que refleja el objeto que quieres importar de Tropy. Por ejemplo, puedes hacer lo siguiente Archivo>Nuevo elemento>'Libro' o 'Caso' con el fin de crear un elemento parecido a un tomo de expedientes de "Sección Civil-Esclavos" de la ANHV.
+1.  Abre tu instalación de Zotero, y crea un elemento de muestra que refleja el objeto que quieres importar de Tropy. Por ejemplo, puedes hacer lo siguiente: Archivo>Nuevo elemento>'Libro' o 'Caso' con el fin de crear un elemento parecido a un tomo de expedientes de "Sección Civil-Esclavos" de la ANHV.
 
 2.  En el elemento de muestra que has creado, rellena cualquier valor (por ejemplo, 'x') para las propiedades que quieres importar desde tus fuentes en Tropy. Estas propiedades deberían ser los que serán más importante para la construcción de tus referencias. (Título, Fecha, Volumen, etc.)
 
 3.  Haz clic derecho en el elemento de muestra y selecciona 'Exportar elemento...' del menú contextual y exportarlo en formato .json  [CSL JSON].
 
-4.  Abre el archivo .json exportado [se abrirá en el navegador web u otro aplicación por defecto] y toma nota de [los términos CSL usados](https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types) [en ingles] para cada campo que fue rellenado anteriormente...utilizarás estos términos en el paso 3 en la siguiente sección. Sólo las propiedades con valores en sus campos respectivos aparecerán en el archivo .json.
+4.  Abre el archivo .json exportado [se abrirá en el navegador web u otro aplicación por defecto] y toma nota de [los términos CSL usados](https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types) [en ingles] para cada campo que fue rellenado anteriormente...utilizarás estos términos en el paso 4 en la siguiente sección. Sólo las propiedades con valores en sus campos respectivos aparecerán en el archivo .json.
 
 ### Crear una plantilla personalizada en Tropy para importar objetos a Zotero
 
@@ -231,9 +231,9 @@ En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una 
 
 2.  Crea una copia de esta plantilla de metadatos.
 
-3.  Renombra la plantilla para distinguirla en el menú desplegable. (Por ejemplo: agrega 'Zotero' al nombre original de la plantilla.)
+3.  Renombra la copia que creaste para distinguirla en el menú desplegable de plantillas. (Por ejemplo: agrega 'Zotero' al nombre original de la plantilla.)
 
-4.  Re-etiqueta los rótulos de cada propiedad en la nueva plantilla usando los términos de CSL que aparecieron en el archivo .json del elemento de muestra  copiado en paso 2d, en letra minúscula, con atención a los guiones (Figura 7).
+4.  Re-etiqueta los rótulos de cada propiedad en la nueva plantilla usando los términos de CSL que aparecieron en el archivo .json del elemento de muestra copiado en el paso 4 de la última sección, en letra minúscula con atención a los guiones (Figura 7).
 	* Para importar a Zotero con éxito, tu plantilla debe incluir una propiedad de metadatos etiquetada 'type' con un elemento válido de Zotero como 'book', report', or 'article-journal' en el campo de metadatos (véase: [CSL types](https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types)). Puedes rellenar este campo para cada objeto que pretendes importar o ponerle como "Valor por defecto" para esta propiedad en el editor de plantillas.
 	* No se importarán todos los metadatos de Tropy a Zotero en el mismo formato: por ejemplo, valores de fechas o separación de apellidos y nombres. Para importar una fecha, se recomienda usar el término CSL  'issued.'
 	* Si cambias la lengua local en Tropy, necesitarás re-etiquetar tu plantilla para importación a Zotero de las etiquetas por defecto a las etiquetas CSL [en inglés]

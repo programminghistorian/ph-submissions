@@ -32,10 +32,18 @@ This lesson provides a thorough overview of reverse engineering and software arc
 
 The goal of this lesson is to introduce the use of hex editors as a tool for reverse engineering and digital archaeology. By analysing raw hexadecimal data, historians and researchers can uncover hidden structures, embedded messages, and unexpected functionalities within digital files. Through practical examples, including a JPEG image of a cat that also functions as a ZIP archive, we aim to demonstrate how hex editing can reveal a file's true behaviour beyond its surface-level format. This lesson will equip you with the skills to identify file signatures, parse metadata, and recognize structural anomalies, fostering an understanding of how digital artifacts are constructed and how they may conceal multiple layers of information. By the end you will have the foundational knowledge needed to use hex editors for investigating and interpreting complex digital objects.
 
+At the end of this lesson you will be able to:
+
+1. Understand the concept of reverse engineering and its relevance for analyzing born-digital artifacts in historical research.
+2. Identify and critique the limitations of “screen essentialism”, recognizing the multiple layers (code, metadata, structure) that comprise digital objects.
+3. Use hex editors to view the raw data of digital files, and perform comparative hex dump analysis to detect and interpret changes or anomalies between versions of digital files.
+4. Apply digital archaeology techniques to investigate modified or cracked software, uncovering evidence of historical, cultural, or technical interventions.
+5. Evaluate the limitations and challenges of reverse engineering, especially in the absence of original documentation or open-source code.
+
 ### Prerequisites and technical requirements
 There are two fundamental technical requirements for this lesson that form the foundation of our digital archaeology approach.
 
-1. The first requirement centres on having appropriate tools to transform digital artifacts into a more accessible and analysable state. While numerous tools and methodologies exist for this purpose, we begin with a straightforward yet powerful hex viewer, which allows us to examine the raw binary data of digital files. A hex viewer displays the hexadecimal representation of binary data, making it possible to see patterns, headers, and structures that are otherwise hidden from conventional file viewers. We recommend using the command line tool `hexyl` or the browser-based [HexEd.it](https://hexed.it/) for reliable options that provide the necessary functionality for beginners while maintaining the depth required for more advanced analysis.
+1. The first requirement centres on having appropriate tools to transform digital artifacts into a more accessible and analysable state. While numerous tools and methodologies exist for this purpose, we begin with a straightforward yet powerful hex viewer, which allows us to examine the raw binary data of digital files. A hex viewer displays the hexadecimal representation of binary data, making it possible to see patterns, headers, and structures that are otherwise hidden from conventional file viewers. We recommend using the command line tool `hexyl` or the browser-based [HexEd.it](https://hexed.it/) for reliable options that provide the necessary functionality for beginners while maintaining the depth required for more advanced analysis. For the examples in this lesson, we will exclusively use `hexyl`.
 2. The second essential requirement involves acquiring suitable born-digital objects for analysis, which varies significantly depending on your specific research question and can encompass digital images, databases, software applications, and various other digital artifacts. While we provide curated digital artifacts for the two case studies presented in this lesson, the broader challenge lies in identifying and accessing appropriate materials for independent research, which we can't cover in this lesson. 
 
 ## Reverse Engineering born-digital Media artifacts
@@ -100,13 +108,13 @@ When we open a sample JPEG of a cat in a hex editor, the hex view immediately ex
 
 *Make sure to be in the appropriate directory before entering the following command into your terminal. If you have downloaded the provided files, and unzipped them in your personal "Downloads" folder, you can usually navigate there by `cd Downloads/reverse-engineering-born-digital-artefacts` after opening the terminal. The `-n` option tells hexyl to only display the first 256 bytes. In the spirit of a cooking show, we already prepared some of this lesson's files, which is why you find several images in the `jpg_zip` folder. You can ignore the others for now. The $ (dollar) sign in front of a line indicates a command to be copied into the terminal. The $ sign should not be coppied.*
 
+
 ```shell
 $ hexyl jpg_zip/cat.jpg -n 256
 ```
 
-The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG file. A PNG file, as another example, would start with `89 50 4E 47 0D 0A 1A 0A` [^12]. We can also see metadata fields describing the image’s dimensions, colour depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values.
+Executing this command will give us the following output. The leftmost column is the address of the line of data we see. The second and third columns show our data in hexadecimal notation, which we can investigate when we know what to look for. The two last columns is our data shown as ASCII interpretation. This simply means that hexyl tries to display the data in normal readable form. It's those two columns which are of interest to our investigation if we're interested in text that was meant for humans to read.
 
-{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-03.jpeg" alt="The photo shows a rather silly cat on a couch. The cat looks upwards and has its tongue out, making it look like a defiant kid. It's an orange tabby cat with fluffy fur and the couch is upholstered in grey cotton fabric." caption="Figure 3. A cat sitting on a couch." %}
 
 ```shell
 ┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
@@ -128,6 +136,10 @@ The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG fil
 │000000f0│ 31 41 06 13 51 61 07 22 ┊ 71 14 32 81 91 a1 08 23 │1A••Qa•"┊q•2×××•#│
 └────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
 ```
+
+The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG file. A PNG file, as another example, would start with `89 50 4E 47 0D 0A 1A 0A` [^12]. We can also see metadata fields describing the image’s dimensions, colour depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values.
+
+{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-03.jpeg" alt="The photo shows a rather silly cat on a couch. The cat looks upwards and has its tongue out, making it look like a defiant kid. It's an orange tabby cat with fluffy fur and the couch is upholstered in grey cotton fabric." caption="Figure 3. A cat sitting on a couch." %}
 
 Similarly, ZIP files have their own distinct file signature `50 4B 03 04` that identifies them as compressed archives. While these file types are typically seen as distinct, their binary structures can be combined in creative ways, exploiting differences in how file parsers read them. JPEG files are read from the beginning of the file, while ZIP files are parsed from the end—creating an opportunity to embed a ZIP archive inside a JPEG without breaking the integrity of either format.
 
@@ -207,7 +219,7 @@ $ hexyl cat.jpg | tail -n 16; hexyl cat-with-hidden-content.jpg | tail -n 16
 *The `| tail -n` part will return only the last 16 rows of output*
 
 ```shell
-# Last lines of the hexdump of fig_003-cat.jpg
+# Last lines of the hexdump of cat.jpg
 │00031820│ 52 ce 7e 61 c5 45 1c e4 ┊ b9 08 06 cf 52 2b 4d 2d │R×~a×E•×┊×••×R+M-│
 │00031830│ 2d 63 1f 34 65 8f d6 9a ┊ 62 88 b1 0a 81 57 da 81 │-c•4e×××┊b××_×W××│
 │00031840│ 14 9d da 32 63 c7 0f de ┊ ac 26 88 6e d7 2b 70 17 │•××2c×•×┊×&×n×+p•│
@@ -301,16 +313,7 @@ For this example, we acquired the cracked[^13] and a supposedly clean[^14] versi
 
 A standard Commodore 64 `.d64` disk image file does not preserve most hardware-based copy protections, which was common. The `.d64` format captures only the standard sector data of a disk and does not record the low-level, non-standard disk structures (such as sync marks, deliberate errors, or unusual track layouts) that many C64 copy protection schemes rely on. As a result, games or software with sophisticated disk-based copy protection often cannot be run or properly emulated from a `.d64` image. For preserving original disks with copy protection intact, the `.g64` format is preferred, as it stores the low-level information needed for these protections to function.
 
-Finally, most `.d64` images available today have had their copy protection removed or bypassed to work in emulators. This would indicate that our virtual image of the cracked game might not contain everything we need to fully investigate this case. Let us have a closer look and compare our two versions. Since `.d64` is a container format, we need to unpack and reveal the container’s content first. There are many tools offering such a service, such as [C64-Tools](https://www.c64-tools.com/basic-2-extractor) or [DirMaster](https://style64.org/dirmaster). We’ll be using the Floppy Disk Emulator that comes with VICE, an emulator for the Commodore 64.
-
-```shell
-# Dump the content of the clean Summer Games version
-$ c1541 summer_games_clean.d64 -extract
-
-# Repeat the procedure for the cracked version.
-```
-
-We then moved the dumped files to the respective folders 'summer_games/dump_clean' and 'summer_games/dump_sca'.
+Finally, most `.d64` images available today have had their copy protection removed or bypassed to work in emulators. This would indicate that our virtual image of the cracked game might not contain everything we need to fully investigate this case. Let us have a closer look and compare our two versions. Since `.d64` is a container format, we need to unpack and reveal the container’s content first. There are many tools offering such a service, such as [C64-Tools](https://www.c64-tools.com/basic-2-extractor) or [DirMaster](https://style64.org/dirmaster). We prepared this step by using the Floppy Disk Emulator that comes with VICE, an emulator for the Commodore 64, and moved the dumped files to the respective folders 'summer_games/dump_clean' and 'summer_games/dump_sca'. In these two folders, you will find files without a file extension, that contain binary data as well as source code.
 
 ### Comparing the Game's different Versions
 

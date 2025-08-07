@@ -120,7 +120,7 @@ In this lesson, we will focus on a specific and fairly common type of database: 
 
 In our example, we have identified three objects of interest: works, publishing houses, and authors. How are they connected? The answer will depend mainly on our research questions. In the example proposed here, if our focus is on the book as an object of circulation, we can imagine a basic graph linking the work, the author, and the publishing house in this way:
 
-{% include figure.html filename="en-designing-database-nodegoat-01.jpg" alt="A logic diagram consisting of three circles which represent the work, the publishing house, and the author. Two arrows come out from the work: one points towards the publishing house and the other towards the author" caption="Figure 1. A logic diagram representing the relationships between works, publishing houses, and authors." %}
+{% include figure.html filename="en-tr-designing-database-nodegoat-01.jpg" alt="A logic diagram consisting of three circles which represent the work, the publishing house, and the author. Two arrows come out from the work: one points towards the publishing house and the other towards the author" caption="Figure 1. A logic diagram representing the relationships between works, publishing houses, and authors." %}
 
 This diagram corresponds more or less to a “conceptual data model”[^5]  representing the entities that interest us and the relationships that connect them. Here, each work is linked to a specific author who wrote it and to a specific publishing house that published it.
 
@@ -200,25 +200,25 @@ First, we will create our project, then define the data model, and build the dat
 
 Then, we will go to the **Model** tab in order to define our data model. To start, we will add an object type by clicking on the *Add Object Type* tab. In our model, we have already defined our three object types: the work, the author, and the publishing house.
 
-{% include figure.html filename="en-designing-database-nodegoat-04.jpg" alt="The Model panel and the option Add Object Type which allows us to begin defining our data model" caption="Figure 4. The **Model** tab and the “Add Object Type” option which allows us to define our data model." %} 
+{% include figure.html filename="en-tr-designing-database-nodegoat-04.jpg" alt="The Model panel and the option Add Object Type which allows us to begin defining our data model" caption="Figure 4. The Model tab and the Add Object Type option which allows us to define our data model." %} 
 
 Under **Name**, we can enter the name of the first object type in our dataset (i.e. “Work”) and under **Descriptions** we can define its attributes. The attributes of the **Work** object type are the title, the language of the first edition, and the date of publication. We must specify the type of value that each attribute takes: **String** (character string) for text values, such as the title of the work; **Date** for a specific format, like the date of publication, or [other](https://perma.cc/K42P-7YB7) kinds of values depending on the nature of the dataset.
 
 We should be careful here: since we include the title of the work as an attribute in **Descriptions**, we must uncheck the **Fixed Field** option (which defines the object type according to the value given in **Name**), and instead check the **Name** box under our first attribute, the **Title**. The objects belonging to the **Work** type in the database will thus take the value given to the **Title** attribute.
  
-{% include figure.html filename="en-designing-database-nodegoat-05.jpg" alt="The object type Work and its three attributes (titles, language, date of publication)" caption="Figure 5. Definition of the first object type by selecting ‘Add Object Type’." %} 
+{% include figure.html filename="en-tr-designing-database-nodegoat-05.jpg" alt="The object type Work and its three attributes (titles, language, date of publication)" caption="Figure 5. Definition of the first object type by selecting ‘Add Object Type’." %} 
 
 We will now create, following the same procedure, the other two object types of our model, namely the author and the publishing house. Under **Name**, we define the name of the object type (i.e. **Author**, then **Publishing House**) and under **Descriptions**, its attributes. As with the first object type, we will uncheck the **Fixed Field** option and instead check the Name box under the attribute which will serve as the object's display name. For the Author, we can select the attributes **First Name** and **Last Name**, which are separate attributes in our example. In doing so, each author's name will appear as a combination of these two values in the database overview.
 
 For the **Work**, on the other hand, we will only define the **Title** attribute as the object's **Name**. If we want to avoid having the database display the title of a work twice (once as the object's name and again as the **Title** attribute), we can uncheck the **Overviews** option (located next to **Fixed Field**). This ensures that the database only displays the values selected under **Name** (in this example, the **Title**).
 
-{% include figure.html filename="en-designing-database-nodegoat-06.jpg" alt="The attributes First name and Last name of an Author are selected by checking their Name boxes." caption="Figure 6. Choosing the attributes ‘First name’ and ‘Last name’ as the values of the object name ‘Author’." %} 
+{% include figure.html filename="en-tr-designing-database-nodegoat-06.jpg" alt="The attributes First name and Last name of an Author are selected by checking their Name boxes." caption="Figure 6. Choosing the attributes ‘First name’ and ‘Last name’ as the values of the object name ‘Author’." %} 
 
-{% include filename="en-designing-database-nodegoat-07.jpg" alt="The Overviews option is left unchecked" caption="Figure 7. The ‘Overviews’ option is left unchecked." %} 
+{% include figure.html filename="en-tr-designing-database-nodegoat-07.jpg" alt="The Overviews option is left unchecked" caption="Figure 7. The ‘Overviews’ option is left unchecked." %} 
 
 We will now select which object types we want to use in this project. This is an important step because it is entirely possible to enter multiple object types into a database, but without using all of them, or without exploring them in the same way, depending on the needs of the project. And so, we will navigate to the **Management** tab and click on the **Edit** option which appears on the right side of the project name.
 
-{% include figure.html filename="en-designing-database-nodegoat-08.jpg" alt="The Management panel, with the objects we created" caption="Figure 8. The ‘Management’ panel allows to organize the project and choose which objects will be used." %} 
+{% include figure.html filename="en-tr-designing-database-nodegoat-08.jpg" alt="The Management panel, with the objects we created" caption="Figure 8. The ‘Management’ panel allows to organize the project and choose which objects will be used." %} 
 
 In addition, nodegoat offers two types of pre-set objects, which are optional to use: “City” and “Geometry”. **Geometry** is useful for representing regions, countries, or other political units of the past or the present. The geospatial data of these two types of objects (perimeter, geographic coordinates, etc.) comes from external geographic databases, such as [GeoNames](https://perma.cc/9SVS-8MGJ), which are linked to nodegoat. These are two very useful and readily available types of objects that each user can implement in their research and, in turn, enrich them further. In our project, we will use the **City** object type which contains useful information about cities. In doing so, the software helps us enhance our data model by adding a fourth object type to our initial three, along with a number of attributes that we might not have included otherwise (such as, the country to which a city belongs).
 
@@ -228,7 +228,7 @@ There is still one fundamental step left to complete: to establish the relations
 
 Let’s start with the **Work** object type. With the *Edit* button we can access the **Object Types** tab and also the attributes (**Descriptions**). We are interested in two in particular: **Author** and **Publishing house**. The **Author** attribute links the **Work** object type to the **Author** type; the **Publishing house** attribute links the **Work** object type to the **Publishing house** type. In the drop-down menu to the right of the **Author** and **Publishing house** attributes, we will select the value **Reference: Object Type**. As soon as we do this, a new drop-down menu will appear listing the object types in our model. We will then select **Author** and **Publishing house** respectively. The **Work** object type, as defined in our conceptual model, is now linked to the **Author** and **Publishing house** object types through its **Author** and **Publishing house** attributes. The two types of objects, **Author** and **Publishing house**, therefore, become sources of information that can be integrated into the **Work** object type. We have thus rendered concrete the links that we defined in an abstract way in our model.
 
-{% include figure.html filename="en-designing-database-nodegoat-09.jpg" alt="Example of the 'Author' attribute with the option 'Reference: Object Type' in the drop-down menu, with the box for multiple authors selected, and a separator added as a semi-colon" caption="Figure 9. Connecting the objects through the attributes ‘Author’ and ‘Publishing house’ by selecting the value ‘Reference: Object Type’ from the first drop-down menu." %}
+{% include figure.html filename="en-tr-designing-database-nodegoat-09.jpg" alt="Example of the 'Author' attribute with the option 'Reference: Object Type' in the drop-down menu, with the box for multiple authors selected, and a separator added as a semi-colon" caption="Figure 9. Connecting the objects through the attributes ‘Author’ and ‘Publishing house’ by selecting the value ‘Reference: Object Type’ from the first drop-down menu." %}
 
 Here, we need to check the box **Multiple** under the **Author** attribute, in order to indicate that some works can have more than one author, as is the case of *The Intellectuals on the Road to Class Power*. We also need to select the symbol that nodegoat will use to separate multiple authors in the same box. The most commonly used separators are `,` or `;` or else `|`, however make sure to check which data separator was selected for the tabular format when exporting the CSV file. If the same separator also appears in the data, it may disrupt the structure of the exported file.
 
@@ -236,11 +236,11 @@ Finally, when defining our objects and their structures, we may be faced with un
 
 To do this, let’s go back to the **Model** tab to access the **Publishing house** object type. Most likely, we have defined the **Founding date** attribute in the same way as an author’s date of birth: under the **Objects** tab, in the **Descriptions** list, and by choosing the **Date** data type.
 
-{% include figure.html filename="en-designing-database-nodegoat-10.jpg" alt="The attribute 'Founding date' for the 'Publishing house' object type" caption="Figure 10. The ‘Founding date’ attribute." %}
+{% include figure.html filename="en-tr-designing-database-nodegoat-10.jpg" alt="The attribute 'Founding date' for the 'Publishing house' object type" caption="Figure 10. The ‘Founding date’ attribute." %}
 
 To enter a date as a time interval, we can use the **Sub-Object** tab. There, we will create a sub-object called **Founding date** and check both the **Date** and **Chronology** options. 
  
-{% include figure.html filename="en-designing-database-nodegoat-11.jpg" alt="The Sub-Object tab with Name 'Founding date' and the 'Chronology' option selected under the 'Date' sub-tab" caption="Figure 11. Creating a ‘Chronology’ sub-object for the ‘Publishing House’ type." %}
+{% include figure.html filename="en-tr-designing-database-nodegoat-11.jpg" alt="The Sub-Object tab with Name 'Founding date' and the 'Chronology' option selected under the 'Date' sub-tab" caption="Figure 11. Creating a ‘Chronology’ sub-object for the ‘Publishing House’ type." %}
 
 From now on, the **Publishing House** object type has a different attribute from **Author** and **Work**, which allows us to introduce temporal information as time intervals. Before we continue, we will need to remove the **Founding date** attribute from the **Objects** tab, as we have just replaced it with the **Chronology** sub-object.
 
@@ -248,27 +248,27 @@ From now on, the **Publishing House** object type has a different attribute from
 
 Our model, its object types, and their relationships are now defined. If we go back to the **Management** tab and click on the project name, nodegoat shows us a visualization of the model which, as you may notice, looks very similar to our original conceptual model:
  
-{% include figure.html filename="en-designing-database-nodegoat-12.jpg" alt="A data model connecting four tables each corresponding to Authors, Publishing houses, Works and Cities" caption="Figure 12. Visualization of our data model with nodegoat." %}
+{% include figure.html filename="en-tr-designing-database-nodegoat-12.jpg" alt="A data model connecting four tables each corresponding to Authors, Publishing houses, Works and Cities" caption="Figure 12. Visualization of our data model with nodegoat." %}
 
 We can now manually populate our database with the information we collect over the course of our research. To do this, go to the **Data** tab and click the *Add Object Type* option, which appears below the tab for each object type.
 
 Note that the attribute **Founding date** of the **Publishing house** object type is not displayed with the other attributes, but as an element of the **Sub-Objects**, and whose date is defined as **Chronology**. The software allows us to fill in the details of the chronology with a choice between three options accessible from the drop-down menu that pops up when we press the green “create” button below “Chronology”: 1) “Point” to indicate an exact date; 2) “Statement” to indicate a period after or before a certain date (year, month or day); 3) “Between Statements” to indicate a period between two dates (as in our example, between 1970 and 1979).
  
-{% include figure.html filename="en-designing-database-nodegoat-13.jpg" alt="Under the object Publishing house, there is the Founding date sub-tab which is used to create a Chronology for the Date" caption="Figure 13. Creating a timeline for Harvester Press." %}
+{% include figure.html filename="en-tr-designing-database-nodegoat-13.jpg" alt="Under the object Publishing house, there is the Founding date sub-tab which is used to create a Chronology for the Date" caption="Figure 13. Creating a timeline for Harvester Press." %}
 
-{% include figure.html filename="en-designing-database-nodegoat-14.jpg" alt="The Chronology tab for Between Statements, with two boxes for inserting a date in order to create a period between the two dates" caption="Figure 14. Example of a timeline defined as a period “between statements”." %}
+{% include figure.html filename="en-tr-designing-database-nodegoat-14.jpg" alt="The Chronology tab for Between Statements, with two boxes for inserting a date in order to create a period between the two dates" caption="Figure 14. Example of a timeline defined as a period 'between statements'." %}
 
 Once we have recorded all the works, authors, and publishing houses, the database interface will appear as shown in the images below. From there, simply click on any item to access its associated information:
  
-{% include figure.html filename="en-designing-database-nodegoat-15.jpg" alt="A table giving an overview of the works in our database with relevant information distributed in five columns, namely the title, the language of the first edition, the date of publication, the author, and the publishing house" caption="Figure 15. Overview of the works in our database." %}
+{% include figure.html filename="en-tr-designing-database-nodegoat-15.jpg" alt="A table giving an overview of the works in our database with relevant information distributed in five columns, namely the title, the language of the first edition, the date of publication, the author, and the publishing house" caption="Figure 15. Overview of the works in our database." %}
 
-{% include figure.html filename="en-designing-database-nodegoat-16.jpg" alt="A table giving an overview of the authors in our database with relevant information distributed in six columns, namely the name of the author, the first name, the last name, the nationality, the place of birth, and the date of birth" caption="Figure 16. Overview of the authors in our database." %}
+{% include figure.html filename="en-tr-designing-database-nodegoat-16.jpg" alt="A table giving an overview of the authors in our database with relevant information distributed in six columns, namely the name of the author, the first name, the last name, the nationality, the place of birth, and the date of birth" caption="Figure 16. Overview of the authors in our database." %}
 
 We can also import our entire dataset as CSV files after we have finished analyzing our sources, rather than manually registering each record one at a time.
 
 Regardless of the option that is chosen, once our database is built and populated, we can use the visualization tools offered by the software to further explore our objects and their relationships. Here, for example, is a map provided by nodegoat for visualizing the birthplaces of the authors as blue dots. 
  
-{% include figure.html filename="en-designing-database-nodegoat-17.jpg" alt="A geographical map of Europe with blue dots marking the places of birth of our dissident authors from Eastern Europe" caption="Figure 17. A geographical visualization in nodegoat of the birthplaces of the authors in our dataset." %}
+{% include figure.html filename="en-tr-designing-database-nodegoat-17.jpg" alt="A geographical map of Europe with blue dots marking the places of birth of our dissident authors from Eastern Europe" caption="Figure 17. A geographical visualization in nodegoat of the birthplaces of the authors in our dataset." %}
  
 In sum, nodegoat allows us to define our data model and to build a database in a relatively simple way. It offers multiple possibilities for recording geographical and temporal information, while taking into account the uncertainty that often comes with the type of information we collect in the humanities. In addition, the visualization tools allow us to appreciate the evolution of our research and identify certain tendencies. Finally, this research environment allows us to store and manage our data online, while offering the possibility of saving or exporting it for analysis with other tools.
 

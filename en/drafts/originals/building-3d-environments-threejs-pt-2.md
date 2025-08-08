@@ -44,7 +44,7 @@ ie remove
                 // load model
                 // function used for loader
                 function onLoadMap( gltf ) {                
-			themodel = gltf.scene.children[0];
+						themodel = gltf.scene.children[0];
                     	themodel.position.set( 0, desk, 0); // x, y, z
                     	themodel.scale.set( 1, 1, 1); // x, y, z
                     	scene.add( themodel);
@@ -81,7 +81,7 @@ We will use 9 spheres and a plane to make a vessel colour key for how the jars w
 
 The colours are set in the parameters list. We want to colour the jars by how they were made. Some communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres we are creating now will form part of the key that lets the viewer know how the pots were made, by having them in a parameter list, we can just change the hex code and the key and pots will all change. Start with these values and alter them later if you want.
 
-For each sphere we also set its position in x, y, z order. 
+For each sphere we also set its position in x, y, z order. We use the variables 'sphereposx' and 'sphereposz' for the x and z positions and vary the y position, so the spheres end up in a vertical line. 
 
 After:
 
@@ -147,15 +147,19 @@ Add:
 
 ```
 
-Save and reload in the browser and you should see a webpage with nine differently coloured spheres (Figure 5).
+Save and reload in the browser and you should see a webpage with nine differently coloured spheres (Figure 5). 
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-05.png" alt="Webpage with 9 spheres of different colours in a vertical line." caption="Figure 5. Webpage with nine differently coloured spheres." %}
 
 ### Adding the Information Panels and Map
 
-Now we will add some planes. We want the information panels to face the camera, and the default planes do this. However, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis.
+Now we will add some planes. We want the information panels to face the camera, and the default planes do this. However, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 
 
-We will give the planes image ‘textures’ that contain text describing the individual artefacts. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. There are [alternatives](https://threejs.org/docs/index.html#manual/en/introduction/Creating-text). Here we will create all the information panels for all the jars but hide them (by making .visible = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
+'Math' is a JavaScript object, which has properties, including Math.PI (ie π, 3.141), and methods, including Math.random() (used later in the lesson). See the (mdn web docs)[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math] for more properties and methods. Three.js uses radians for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when you are 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geograpical map must be -Math.PI/2 around the x axis to have the 'front' of the panel faceing upwards.
+
+We will give the planes image ‘textures’ that contain text describing the individual artefacts. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. By default only one side (the 'front') of a panel is textured. Here the dimensions of the panels match the image texture dimensions, in situations where they do not, different options, including image tiling can be used. The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. There are [alternatives](https://threejs.org/docs/index.html#manual/en/introduction/Creating-text). 
+
+Here we will create all the information panels for all the jars but hide them (by making .visible = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
 
 Textures need to be loaded by a 'TextureLoader'.
 

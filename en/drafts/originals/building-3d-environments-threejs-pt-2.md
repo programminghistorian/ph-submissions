@@ -76,7 +76,6 @@ To do this we will add some coloured objects. Three.js has several basic 2D geom
 
 We will use 9 spheres and a plane to make a vessel colour key for how the jars were made. A sphere 'geometry' is made with a radius size (in this case 0.04 m), number of width and height segments (Figure 4). If you increase the number of width or height segments you will get rounder spheres. The geometry is reused for 9 different sphere meshes. Each sphere mesh gets a material with a colour. We are using the standard material. There are alternatives that can be used and it is important to note that some material types are more dependent on lights than others. 
 
-
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-04.png" alt="Six different geometries: sphere, box, cyclinder, torus and lathe are shown in wireframe." caption="Figure 4. The 3D geometries that three.js can add include spheres, boxes, tori, cyclinders, tetrahedron and lathes. Parameters for the geometries often include length and segment number measurments. Lathe geometries are generated from a series of points (that are then rotated) and the most simple lathe is shown." %}
 
 The colours are set in the parameters list. We want to colour the jars by how they were made. Some communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres we are creating now will form part of the key that lets the viewer know how the pots were made, by having them in a parameter list, we can just change the hex code and the key and pots will all change. Start with these values and alter them later if you want.
@@ -282,7 +281,7 @@ The jars will be added to a group (called 'jars') and the group will be added to
 
 Each jar will get a userdata property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
 
-Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that takes the .glb file and loads it when called by the loader.load() method. The program will not stop while loading the file which can take a while so to avoid problems do not try to add the model to a group outside the loading function code. 
+Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that takes the .glb file and loads it when called by the loader.load() method. The script will continue on and run the next line of the code after loader.load() even if it the model is still loading. This means that if the next lines of the code refer to the model, there could be an error. Therefore the parameters such as position are altered, and the model is added to the group, within the loading function.
 
 Replace:
 
@@ -410,13 +409,15 @@ Save and reload and you should see 5 models (Figure 10). You will have to move a
 
 Note that if you change 'let piecescale = ratio;' to 'let piecescale = ratio*2;' the vessels become bigger, but some will overlap.
 
-You can calculate where to set the positions of the jars by taking into account the map dimensions.
-
-
+You can calculate where to set the positions of the jars by taking into account the map dimensions. This can be done on graph paper, although these positions were obtained via placement of the jars in Blender.
 
 ### Adding Jar Selection
 
-Next we want to add an event listener, to be able to select a jar and change the information panel. As with the WindowResize event listener in part 1, this listener gets the event (in this case 'click'), and a function we will define. Input events pass event information to their function, some of which is dependent on the type of event. The 'click' event passes an object (commonly called 'event') that contains the mouse cursor's coordinates relative to the viewport/window. To determine what jar in 3D space is being targeted by the user's mouse in 2D space, three.js uses raycasting. The three.js raycaster 'sends' a 'ray' from the camera position to a pointer whose 2D position is calculated from the click event's information. The raycaster has an 'intersectObjects' method that returns an array of the 3D objects that the cast ray has hit. This array is ordered by distance to the camera so the first in the array will be the nearest object. We also tell the method what objects can be intersected  and here we will specify, children of the jars group. This is reason we made the group.
+Next we want to add an event listener, to be able to select a jar and change the information panel. As with the WindowResize event listener in part 1, this listener gets the event (in this case 'click'), and a function (known as an 'event handler') we will define. Input events pass event information to their handler, some of which is dependent on the type of event. The 'click' event passes an object (commonly called 'event') that contains the mouse cursor's coordinates relative to the viewport/window. 
+
+To determine what jar in 3D space is being targeted by the user's mouse in 2D space, three.js uses raycasting. The three.js raycaster 'sends' a 'ray' from the camera position to a pointer whose 2D position is calculated from the click event's information. The raycaster has an 'intersectObjects' method that returns an array of the 3D objects that the cast ray has hit. This array is ordered by distance to the camera so the first in the array (index 0) will be the nearest object. We also tell the method what objects can be intersected and here we will specify children of the jars group. This is the primary reason we made the group.
+
+You may also notice that three.js stores coordinates in a 'vector'. A THREE.Vector2 is used for 2D coordinates (referred to as x and y) such as the pointer position, and a THREE.Vector3 is used for 3D coordinates (x, y and z). 
 
 
 After:
@@ -458,6 +459,7 @@ add:
 ```
 
 Then we have to tell the listener what do do if there is a click in the window. We want to: make sure it does not use the orbit controls; take the click position and cast a ray to the click position (from the camera) and see if any jars are there. If it finds any jars, it will unhighlight the last jar selected and hide that panel, it will then highlight (by making red emissive) the chosen jar, and make visible the panel that is linked to it in the userData.
+
 After the resize listener:
 
 ```
@@ -471,22 +473,22 @@ add:
 ```
 	// called on mouse click. Gets position of click, gets intersecting object, makes it emmisive gets the matching info plane
 	function onClick( event ) { // event is the input event information being passed from the event
-	event.preventDefault(); // stops the orbiting
-	// gets 2D click position
-	pointer.x = event.clientX / window.innerWidth * 2 - 1 // this formula comes from the three.js examples
-	pointer.y = - (event.clientY / window.innerHeight) * 2 + 1
-	// detects what the user is trying to select in 3D space from viewpoint and 2D pointer
-	raycasterM.setFromCamera( pointer, camera );
-	const intersects = raycasterM.intersectObjects( jars.children); // an array, nearest to camera will be first
-	// if there is a jar being clicked		
-	if(intersects.length > 0){
-		selectedObj.material.emissive.r = 0; // turn the current selected obj back to not emissive. 0 is off
-		const found = intersects[ 0 ].object; // get the selected jar, index 0 is the first
-		selectedObj = found;
-		found.material.emissive.r = 1; // turn the selected jar red emissive. 1 is on.
-		selectedPlane.visible = false; // hide the current information panel
-		selectedPlane = found.userData.planes; // get the new matching information panel for the selected jar
-		selectedPlane.visible = true; // make the new panel visible
+		event.preventDefault(); // stops the orbiting
+		// gets 2D click position
+		pointer.x = event.clientX / window.innerWidth * 2 - 1 // this formula comes from the three.js examples
+		pointer.y = - (event.clientY / window.innerHeight) * 2 + 1
+		// detects what the user is trying to select in 3D space from viewpoint and 2D pointer
+		raycasterM.setFromCamera( pointer, camera );
+		const intersects = raycasterM.intersectObjects( jars.children); // an array, nearest to camera will be first
+		// if there is a jar being clicked		
+		if(intersects.length > 0){
+			selectedObj.material.emissive.r = 0; // turn the current selected obj back to not emissive. 0 is off
+			const found = intersects[ 0 ].object; // get the selected jar, index 0 is the first
+			selectedObj = found;
+			found.material.emissive.r = 1; // turn the selected jar red emissive. 1 is on.
+			selectedPlane.visible = false; // hide the current information panel
+			selectedPlane = found.userData.planes; // get the new matching information panel for the selected jar
+			selectedPlane.visible = true; // make the new panel visible
 		}
 	}	
 ```
@@ -498,11 +500,11 @@ The next sections are optional. You can turn the website into a puzzle game or a
 
 ## Designing a Game
 
-When designing a game or puzzle, plan and sketch the layout. Consider if the puzzle is based on memory or logic. Consider consulting guides such as Schell (2015).
+When designing a game or puzzle, consider if the puzzle is based on memory or logic. The main aim of games featuring material culture is generally to help users appreciate the variety in artefact properties such as form and decoration, and not for them to remember the details. Often images of material culture are incorporated into the traditional memory game of finding matching images on overturned cards. See the 2D (Ho'omaka Hou Research Initiative Fishhook Memory Game)[https://data.bishopmuseum.org/archaeology/game.html]. This approach does introduce users to the variety of forms or decorations in material culture (including fishhooks) that they may not otherwise appreciate. In contrast jigsaw puzzles (which also commonly feature material culture), rely more on logic. 3D jigsaw puzzles can be made of material cultural artefacts and sites, but it can be quite difficult for users to manipulate pieces on a computer screen and they are more usable in VR. (Artsalad)[https://artsalad.net] is an opensource VR 3D puzzle game that was written with three.js.
 
-To transform the scene into a puzzle the information panel used needs to be altered, as it is the main source of user information. 
+If this scene featured realistic models of jars that the user needed to place at their correct site it would probably need to provide a way to ensure that the user can first view the correct placements. Alternatively, clues could be given which would get the user to study the models, resulting in less reliance on memory. Here, we will rely on the models being coloured by how they are made (build technique) and that this information is provided in the site information panel, to help the user match vessels to sites. The decoration style information may also help with matches. The approach of having models matched to information panels could have been done without the use of a map of New Guinea, but including the map helps reinforce the idea that the people of Papua New Guinea (and West Papua) made pots (and in many cases still do) and that there is a large variety in the material culture between the different communities. If you are planning to design a game consider consulting guides such as Schell (2015).
 
-The goal for the user of this game is to start with the jars off the map and the Papuan communities marked by selectable tokens. When the communities are selected (mouse click) the information panel will provide the information on the pots made by that community. Information on the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured by the technique and a key is provided. The decoration technique may also serve as a guide. The user can move the jars (mouse). If they place the matching jar on the community marker then the jar becomes unmoveable and the background colour changes. 
+To transform the scene into a puzzle the information panel used needs to be altered, as it is the main source of user information and we will do this as the last step. The goal for the user of this game is to start with the jars off the map and the Papuan communities marked by selectable tokens. When the communities are selected (mouse click) the information panel will provide the information on the pots made by that community. Information on the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured by the technique and a key is provided. The decoration technique may also serve as a guide. The user can move the jars (mouse). If they place the matching jar on the community marker then the jar becomes unmoveable and the background colour changes. 
 
 ### Adding Tori
 

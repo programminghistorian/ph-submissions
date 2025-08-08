@@ -40,7 +40,7 @@ Tropy es una herramienta desarrollada justamente para abarcar este problema de s
   
 ## Dataset
 
-A modo de ejemplo, este tutorial hace uso de una colección de expedientes judiciales de la colección "[Sección Civiles-Esclavos](https://archivo.redhistoriave.org/?_ga=2.88974747.1008451912.1691784501-889984938.1690214108&_gl=1*9i0xod*_ga*ODg5OTg0OTM4LjE2OTAyMTQxMDg.*_ga_64130MY5HV*MTY5MTc4NDUwMC4zLjEuMTY5MTc4NDUwOS4wLjAuMA..*_ga_JSBL2XLMXD*MTY5MTc4NDUwMC4zLjEuMTY5MTc4NDUwOS4wLjAuMA..)" del archivo de la Academia Nacional de la Historia de Venezuela (ANHV), digitalizada por la [Red Historia Venezuela](https://archivo.redhistoriave.org/) (RHV) (Figura 1). Se trata de 404 entradas, repartidas en 381 tomos y 23 cajas con expedientes sueltos. Son unos 123.800 folios, en poco más de 61.900 capturas. Para acceder a la colección, es necesario registrarse. A través de este tutorial, el usuario comprenderá cómo crear proyectos en Tropy basados en colecciónes digitales como ésta. 
+A modo de ejemplo, este tutorial hace uso de una colección de expedientes judiciales de la colección "[Sección Civiles-Esclavos](https://archivo.redhistoriave.org/?_ga=2.88974747.1008451912.1691784501-889984938.1690214108&_gl=1*9i0xod*_ga*ODg5OTg0OTM4LjE2OTAyMTQxMDg.*_ga_64130MY5HV*MTY5MTc4NDUwMC4zLjEuMTY5MTc4NDUwOS4wLjAuMA..*_ga_JSBL2XLMXD*MTY5MTc4NDUwMC4zLjEuMTY5MTc4NDUwOS4wLjAuMA..)" del archivo de la Academia Nacional de la Historia de Venezuela (ANHV), digitalizada por la [Red Historia Venezuela](https://archivo.redhistoriave.org/) (RHV) (Figura 1). Se trata de 404 entradas, repartidas en 381 tomos y 23 cajas con expedientes sueltos. Son unos 123.800 folios, en poco más de 61.900 capturas. Por ser un acervo digital amplio que resembla la organización de un archivo físico (con metadatos intactos), fue seleccionado para este tutorial. Sin embargo, para acceder a la colección completa detomos es necesario registrarse. Si prefieres no registrarte, se recomienda usar otro acervo digital o ya digitalizado, por ejemplo: la colección iconográfica de  [Vistas: Visual Culture in Spanish America, 1520-1820](https://vistas.ace.fordham.edu/)" o las colecciones de [Biblioteca Digital Hispánica](https://bdh.bne.es/bnesearch/Inicio.do)." Además, un tomo de la colección de la Sección Civiles-Esclavos es incluído en los recursos de este tutorial. En total, la meta es que a través de este tutorial el nuevo usuario comprenda cómo crear proyectos en Tropy basados tanto en colecciónes digitales como en el acervo de fotos que ha adquirido a través de su propia investigación de archivo. 
 
 {% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-01.png" alt="Página principipal de la Red Historia Venezuela con ménu de Archivo Digital abierto" caption="Figura 1. Página principal de la Red Historia Venezuela, repositorio digital de la colección utilizada en este tutorial" %}
 
@@ -168,7 +168,9 @@ Una de las herramientas más importantes es la de seleccionar. Haz click en la c
 
 ### Notas
 
-En el campo de notas (Figura 5), puedes hacer cualquier anotación con texto enriquecido. Este texto también es buscable desde la barra de búsqueda en la vista de proyecto. Según tu preferencia, puedes cambiar el modo de visualización del campo de notas de horizontal a lado a lado. Incluso es posible colocar links en el campo de notas. Puedes también hacer notas tanto en selecciones como en fotos. Para comenzar, simplemente escribe en el campo de notas--se guardará automáticamente en la base de datos del proyecto.
+En el campo de notas (Figura 5), puedes hacer cualquier anotación con texto enriquecido. Este texto también es buscable desde la barra de búsqueda en la vista de proyecto. Después de agregar una anotación al campo de notas, vuelve a la vista de proyecto y ingresa una palabra o frase que fue escrito en el campo de notas (por ejemplo, de la Figura 5: "Dios"). Todos los objetos que llevan esta palabra o frase (mejor dicho, este 'valor') <i>o en el campo de notas o en la plantilla de metadatos</i> aparecerán en la vista de proyecto. Para regresar a la vista con todos los objetos, borra el valor ingresado de la barra de búsqueda. Usando esta función, es posible descubrir y agrupar múltiples objectos desde la vista principal, facilitando conexiones entre documentos que mencionan los mismos términos. También, es una forma para ubicar rápidamente un documento individual a partir de la transcripción del documento o anotaciónes que has hecho.
+
+Según tu preferencia, puedes cambiar el modo de visualización del campo de notas de horizontal a lado a lado. Incluso es posible colocar links en el campo de notas. Puedes también hacer notas tanto en selecciones como en fotos. Para comenzar, simplemente escribe en el campo de notas-se guardará automáticamente en la base de datos del proyecto.
 
 {% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-05.png" alt="Vista de objeto en Tropy mostrando un documento, controles deslizantes de edición visual, y el campo de notas en moda vertical con un breve texto" caption="Figura 5. Diferentes funciones en la vista de objeto: el campo de notas, edición de imagen, y selecciones (el rectángulo azul). El campo de notas puede ubicarse abajo o al lado del documento." %}
 
@@ -187,7 +189,6 @@ Para crear una lista, haz clic derecho (Ctrl+clic en Mac) en la barra en la barr
 ### Etiquetas
 
 Para crear una nueva etiqueta, hay múltiples opciones. Selecciona un objeto u objetos en la vista del proyecto. A la mano derecha de la vista de proyecto, haz clic en el botón "Etiquetas" para entrar en el editor de etiquetas. Haz clic en "Añadir etiqueta a X objeto" [X es el número de objetos seleccionados] y escribe un nombre para la etiqueta. Un punto aparecerá en la barra de etiquetas y también al lado del título (o en el previsto en la vista de galería). Usando el menú contextual, puedes cambiar o configurar el color de la etiqueta.
-
 
 ## Exportación de fotos
 
@@ -268,3 +269,6 @@ En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una 
 3.  Haz clic en 'Done' cuando la importación termine, y revisa para asegurar que los nuevos elementos importados llevan los campos de metadatos deseados (si no, repasa de nuevo el paso 4 en la sección anterior)
 
 4.  Ahora puedes manejar y citar estas referencias a través de tu instalación de Zotero.
+
+## Conclusión
+

@@ -290,13 +290,13 @@ Dans ce tutoriel, nous n'avons pas épuisé toutes les possibilités pour la pr�
 
 ## Références bibliographiques
 
+Balzac, Honoré de. « La Dernière Incarnation de Vautrin ». In Splendeurs et misères des courtisanes, La Presse (1847), édité par Tania Duclos, Maxime Perret, et Amélie Canu. ANR Phoebus e-Balzac, 2017. https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse.
+
+Balzac, Honoré de. « La Dernière Incarnation de Vautrin, paru en feuilleton dans La Presse du 13 avril au 17 mai 1847 ». Critical edition 10.34847/nkl.4fb47i30. Avec Tania Duclos, Maxime Perret, et Amélie Canu. Nakala, 8 septembre 2021. XML. https://doi.org/10.34847/NKL.4FB47I30.
+
 Bertrand, Lauranne. « Initiation XML-TEI ». URFIST, BORDEAUX, 12 juillet 2016. http://weburfist.univ-bordeaux.fr/wp-content/uploads/2016/12/20161209_BERTRAND-URFIST-TEI-1.pdf.
 
-de Balzac, Honoré. ‘La Dernière Incarnation De Vautrin, Paru En Feuilleton Dans La Presse Du 13 Avril Au 17 Mai 1847’. NAKALA - Https://Nakala.fr (Huma-Num - CNRS), 2017. https://doi.org/10.34847/NKL.4FB47I30.
-
-Honoré de Balzac. « La Dernière Incarnation de Vautrin ». Critical edition. Avec ANR Phoebus e-Balzac. eBalzac, 2017. https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse.
-
-Sperberg-McQueen, Lou Burnard et C. M. « Encoder Pour Échanger : Une Introduction à La TEI Lou Burnard et C.M. Sperberg-McQueen. Traduction Française Sophie David ». Text. Consulté le 24 avril 2025. https://www.tei-c.org/release/doc/tei-p5-exemplars/html/tei_lite_fr.doc.html.
+Sperberg-McQueen, C. M., et Lou Burnard. « La TEI Lite : Encoder Pour Échanger : Une Introduction à La TEI ». Text. Traduit par Sophie David. Consulté le 12 août 2025. https://www.tei-c.org/release/doc/tei-p5-exemplars/html/tei_lite_fr.doc.html.
 
 Vaughan, Nicolás. 2021. "Introduction au codage de textes en TEI (partie 1)", *Programming Historian en español* 5 (2021), https://doi.org/10.46430/phes0053 (changer pour la version en français)
 

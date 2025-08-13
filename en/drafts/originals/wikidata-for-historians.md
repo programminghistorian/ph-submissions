@@ -12,9 +12,9 @@ reviewers:
 editors:
 - Forename Surname
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/661
-difficulty: 
-activity: 
-topics: 
+difficulty:
+activity:
+topics:
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000

@@ -101,10 +101,10 @@ library("tidyverse")
 
 Antes de importar datos, es importante comprender cómo deben estar formateados. Las aplicaciones de hoja de cálculo comunes, como Microsoft Excel o Apple Numbers, colocan los datos en un formato propietario. Aunque existen paquetes que pueden leer datos de Excel, como [readxl](https://readxl.tidyverse.org/), se recomienda utilizar formatos abiertos en su lugar, como `.csv` (valores separados por comas) o `.tsv` (valores separados por tabuladores), ya que son compatibles con una amplia gama de herramientas de software y es más probable que puedan ser leídos también en el futuro con cualquier software.
 
-R tiene comandos internos para leer estos archivos, pero usaremos la biblioteca [readr](https://readr.tidyverse.org/) del ecosistema tidyverse, que puede leer la mayoría de los formatos comunes. Para nuestro análisis, leeremos un archivo `.csv`. Vamos a [descargar el conjunto de datos](/assets/urban-demographic-data-r-ggplot2/sistercities.csv) y colocarlo en el directorio de trabajo actual del proyecto. A continuación, puedes usar [`read_csv()`](https://perma.cc/ED9L-9V98) con la ruta del archivo. (Si no instalaste tidyverse anteriormente, necesitarás cargar manualmente la biblioteca `readr` primero.)
+R tiene comandos internos para leer estos archivos, pero usaremos la biblioteca [readr](https://readr.tidyverse.org/) del ecosistema tidyverse, que puede leer la mayoría de los formatos comunes. Para nuestro análisis, leeremos un archivo `.csv`. Vamos a [descargar el conjunto de datos](/assets/datos-urbanos-demograficos-r-ggplot2/ciudadeshermanadas.csv) y colocarlo en el directorio de trabajo actual del proyecto. A continuación, puedes usar [`read_csv()`](https://perma.cc/ED9L-9V98) con la ruta del archivo. (Si no instalaste tidyverse anteriormente, necesitarás cargar manualmente la biblioteca `readr` primero.)
 
 ```
-eudata<-read_csv("sistercities.csv")
+eudata<-read_csv("ciudadeshermanadas.csv")
 ```
 
 Ahora, podemos mostrar los datos como un tibble (13,081 x 15):

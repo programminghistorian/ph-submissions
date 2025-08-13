@@ -1,9 +1,11 @@
 ---
 title: "Visualizando datos urbanos y demográficos en R con ggplot2"
 slug: datos-urbanos-demograficos-r-ggplot2
+original: urban-demographic-data-r-ggplot2
 layout: lesson
 collection: lessons
 date: 2025-03-27
+translation_date: YYYY-MM-DD
 authors:
 - Igor Sosa Mayor
 - Nabeel Siddiqui
@@ -12,15 +14,20 @@ reviewers:
 - Amanda Regan
 editors:
 - Giulia Osti
-translators:
+translator:
 - Igor Sosa Mayor
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/606
+translation-editor:
+- Jennifer Isasi
+translation-reviewer:
+- Forename Surname
+- Forename Surname
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/675
 difficulty: 2
 activity: presenting
 topics: [r, data-visualization]
 abstract: Esta lección demuestra cómo utilizar la biblioteca R ggplot2 para crear visualizaciones sofisticadas de datos mediante una gramática de gráficos. Utilizando datos históricos sobre relaciones de hermanamiento entre ciudades en Europa en el período posterior a la Segunda Guerra mundial, incluyendo acuerdos, tamaños de población y distancias geográficas, la lección guía a los lectores a través del proceso de creación de diferentes gráficos mientras explora patrones urbanos y demográficos.
 avatar_alt: Crop of hand-drawn nautical chart showing two cities in Spain
-doi: 10.46430/phen0123
+doi: 10.46430/xxxxxxx
 ---
 
 {% include toc.html %}

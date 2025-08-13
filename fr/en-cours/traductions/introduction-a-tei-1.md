@@ -30,6 +30,13 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
+Note de la traductrice :
+Dans la leçon originale, Nicolás Vaughan utilise des exemples tirés du *Quichotte* de Miguel de Cervantes, ainsi que les quatre premiers vers du sonnet «Amor constante más allá de la muerte» (« Amour constant au-delà de la mort ») de Francisco de Quevedo. Afin de mieux adapter la traduction à un lectorat francophone, lui proposant des textes originalement écrits en langue française, j’ai choisi de remplacer :
+1.	L’extrait du *Quichotte* par un extrait des *Misérables* de Victor Hugo, dans les exemples comprenant des petites capitales et la balise <name> ;
+2.	Les informations qui correspondent aux métadonnées de l’édition du *Quichotte* par des informations sur les métadonnées de l’édition des *Misérables*, lors de l’explication de l’élément <teiHeader> ;
+3.	Les quatre premiers vers du sonnet de Quevedo par les quatre premiers vers du « Sonnet VIII » de Louise Labé, lors de l’explication de l’encodage de textes en vers.
+
+
 # Introduction
 
 Un des problèmes centraux des humanités numériques a été le travail avec et sur les textes : leur capture (numérisation), reconnaissance, transcription, encodage, traitement, transformation et analyse. Dans cette leçon, nous nous concentrerons exclusivement sur l'encodage de texte, c'est-à-dire, sur leur catégorisation au moyen de balises (tags).

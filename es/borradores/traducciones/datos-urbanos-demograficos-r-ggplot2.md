@@ -25,7 +25,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/675
 difficulty: 2
 activity: presenting
 topics: [r, data-visualization]
-abstract: Esta lección demuestra cómo utilizar la biblioteca R ggplot2 para crear visualizaciones sofisticadas de datos mediante una gramática de gráficos. Utilizando datos históricos sobre relaciones de hermanamiento entre ciudades en Europa en el período posterior a la Segunda Guerra mundial, incluyendo acuerdos, tamaños de población y distancias geográficas, la lección guía a los lectores a través del proceso de creación de diferentes gráficos mientras explora patrones urbanos y demográficos.
+abstract: Esta lección demuestra cómo utilizar la biblioteca ggplot2 de R para crear visualizaciones sofisticadas de datos mediante una gramática de gráficos. Utilizando datos históricos sobre relaciones de hermanamiento entre ciudades en Europa en el período posterior a la Segunda Guerra mundial, incluyendo acuerdos, tamaños de población y distancias geográficas, la lección guía a los lectores a través del proceso de creación de diferentes gráficos mientras explora patrones urbanos y demográficos.
 avatar_alt: Crop of hand-drawn nautical chart showing two cities in Spain
 doi: 10.46430/xxxxxxx
 ---

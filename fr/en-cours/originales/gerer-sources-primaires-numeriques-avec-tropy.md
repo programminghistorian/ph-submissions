@@ -319,10 +319,6 @@ Gérer ses photos de recherche avec Tropy. Tutoriel de l'atelier de formation de
 
 Laillier, Benjamin. *Tutoriel Tropy* (version 4), août 2019 http://doi.org/10.5281/zenodo.3381981 
 
-<!-- le wiki est inaccessible
-“Tropy | Gestion d’images”, wiki Pole-Num-Scrums-Skills, https://wikis.univ-lille.fr/proj-polnum/accueil/manuels/guide-d-utilisation-de-tropy
---> 
-
 Valmalle, Delphine. &laquo;&nbsp;Utiliser Tropy pour la gestion de ses photos d'archives&nbsp;&raquo;. YouTube, *Geneatech*, 22 février 2021, [https://youtu.be/AiPqbdwP67E](https://youtu.be/AiPqbdwP67E) 
 
 ### Jeux de données pour Tropy

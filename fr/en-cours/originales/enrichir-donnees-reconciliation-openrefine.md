@@ -213,25 +213,25 @@ Vous remarquerez probablement que la réconciliation est parfois peu satisfaisan
 
 #### Pour une réconciliation plus stricte
 
-- Relancez une nouvelle réconciliation en choisissant un autre type de données recommandé.
-- Décochez *Correspondance automatique* des valeurs candidates pour pouvoir sélectionner tous les choix à faire.
-  - *Nombre maximal de candidats renvoyés* : définissez une valeur numérique.
-- Option *Utiliser également les détails pertinents des autres colonnes* :
-  - Appariez des colonnes de vos données initiales avec des colonnes de la source externe.
-  - Par exemple, dans notre cas on pourrait utiliser **Date** : `publication date (P577)`.
+- Relancez une nouvelle réconciliation en choisissant un autre type de données recommandé.    
+- Décochez *Correspondance automatique* des valeurs candidates pour pouvoir sélectionner tous les choix à faire.    
+      - *Nombre maximal de candidats renvoyés* : définissez une valeur numérique.    
+- Option *Utiliser également les détails pertinents des autres colonnes* :    
+      - Appariez des colonnes de vos données initiales avec des colonnes de la source externe.    
+      - Par exemple, dans notre cas on pourrait utiliser **Date** : `publication date (P577)`.    
 
 #### Pour une réconciliation moins stricte (proposant ou résolvant plus de choix)
 
-- Relancez une réconciliation en choisissant **Réconcilier sans type particulier**.
-  - Observez les scores de réconciliation (entre parenthèses après les valeurs proposées, entre 0 et 100) et déterminez le score minimum adapté pour résoudre automatiquement les réconciliations.
-  - Si ce n’est pas déjà fait, faites afficher la facette `Titre_RECON` : **meilleur score des candidats** (en cliquant sur les options de la colonne > **Réconcilier** > **Facettes** > **Meilleur score des candidats**).
-    - Déplacez l’intervalle vers 80-100.
-    - Cliquez sur les options de la colonne > **Réconcilier** > **Actions** > **Apparier chaque cellule avec son meilleur candidat**. Seule la meilleure des valeurs entre 80 et 100 sera utilisée. Une valeur sous 20 sera ignorée, même si c’est la meilleure parmi d’autres valeurs (ex : 9, 10, 12 et 15).
-- Relancez une réconciliation en choisissant un autre type de données recommandé.
+- Relancez une réconciliation en choisissant **Réconcilier sans type particulier**.        
+      - Observez les scores de réconciliation (entre parenthèses après les valeurs proposées, entre 0 et 100) et déterminez le score minimum adapté pour résoudre automatiquement les réconciliations.    
+      - Si ce n’est pas déjà fait, faites afficher la facette `Titre_RECON` : **meilleur score des candidats** (en cliquant sur les options de la colonne > **Réconcilier** > **Facettes** > **Meilleur score des candidats**).    
+      - Déplacez l’intervalle vers 80-100.    
+      - Cliquez sur les options de la colonne > **Réconcilier** > **Actions** > **Apparier chaque cellule avec son meilleur candidat**. Seule la meilleure des valeurs entre 80 et 100 sera utilisée. Une valeur sous 20 sera ignorée, même si c’est la meilleure parmi d’autres valeurs (ex : 9, 10, 12 et 15).    
+- Relancez une réconciliation en choisissant un autre type de données recommandé.    
 - Traitez les données de la cellule pour une forme plus courte (ou non abrégée, ou sans acronymes) et relancez une réconciliation. Par exemple :
-  - `De Alchemia (1541)` -> `De Alchemia` 
-  - `Hist Sci Med`-> `Histoire des sciences médicales` 
-  - `AHA` -> `American Historical Association`
+      - `De Alchemia (1541)` -> `De Alchemia`     
+      - `Hist Sci Med`-> `Histoire des sciences médicales`     
+      - `AHA` -> `American Historical Association`    
 
 ### À quoi correspond &laquo;&nbsp;Créer un nouvel élément&nbsp;&raquo; ?
 
@@ -284,6 +284,7 @@ Saby, Mathieu. 2020. *Tutoriel OpenRefine 3.4 : nettoyer, préparer et transform
 Tillman, Ruth. 2020. *Learning Cell Cross in OpenRefine.* <https://ruthtillman.com/talk/cell-cross-webinar-2020-03/>
 
 University of Toronto Libraries. *OpenRefine Augmenting Activity 2: Using Reconciliation Services*. 2019. <https://mdl.library.utoronto.ca/technology/tutorials/openrefine-augmenting-activity-2-using-reconciliation-services>
+
 
 
 

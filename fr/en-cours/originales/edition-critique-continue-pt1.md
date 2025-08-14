@@ -15,7 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/674
 difficulty: 3
 activity: transforming
 topics: [metadata, website, data-management]
-abstract: Cette leçon montre comment mettre en place une édition critique en continu d’un corpus TEI : définir un ODD, générer un schéma RELAX NG, compléter la validation avec Schematron et produire des sorties (texte/HTML/Markdown) via XSLT 2.0. L’exemple s’appuie sur la correspondance de Filippo Cavriana.
+abstract: Cette leçon montre comment mettre en place une édition critique en continu d’un corpus TEI : définir un ODD, générer un schéma RELAX NG, compléter la validation avec Schematron et produire des sorties (texte, HTML, Markdown) via XSLT 2.0. L’exemple s’appuie sur la correspondance de Filippo Cavriana.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
@@ -600,6 +600,7 @@ Dans le flux d'édition continue, cette transformation s'exécutera automatiquem
 
 Ce tutoriel a posé le socle local de l’édition continue&#x202F;: personnalisation de la TEI via un ODD, génération d’un schéma RELAX NG, validation (RELAX NG et Schematron) et transformations XSLT vers Markdown et HTML. Ces pratiques assurent cohérence, interopérabilité et portabilité du corpus. Elles permettent déjà de produire localement une édition de qualité professionnelle. 
 En intégrant ces pratiques dans des chaînes d'automatisation (Git, CI/CD), nous la publication instantanée et l'archivage pérenne est rendu possible. La seconde partie branchera ce socle sur une chaîne d’intégration et de déploiement continus&#x202F;: gestion de versions avec Git, automatisation (GitHub Actions/GitLab CI/CD), assignation d’un DOI à des instantanés sur Zenodo et publication d’un site statique à chaque modification. L’objectif est que la moindre modification d’un fichier TEI déclenche automatiquement contrôle, transformation et mise en ligne, réalisant ainsi la promesse de l’édition continue.
+
 
 
 

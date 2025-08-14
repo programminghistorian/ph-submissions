@@ -193,7 +193,7 @@ Comme ce processus de croisement de cellules est très rigoureux, il a des incon
 
 #### Avec un programme codé spécifiquement
 
-Par exemple, il est possible de coder en Python (ou autre) un programme qui lance le processus de réconciliation de manière autonome pour repérer les meilleurs candidats pour une colonne de valeurs (par exemple avec [Reconciler](https://joao.bio.br/reconciler/)). De plus, il est ensuite possible à partir d’une colonne d’identifiants de créer une ou plusieurs colonnes de données externes importées (par exemple avec le package [WikidataIntegrator](https://github.com/SuLab/WikidataIntegrator) qui va utiliser la valeur du **Qid** et les codes des propriétés à importer).
+Par exemple, il est possible de coder en Python (ou autre) un programme qui lance le processus de réconciliation de manière autonome pour repérer les meilleurs candidats pour une colonne de valeurs (par exemple avec [Reconciler](https://joao.bio.br/reconciler/)). De plus, il est ensuite possible à partir d’une colonne d’identifiants de créer une ou plusieurs colonnes de données externes importées (par exemple avec le package [WikidataIntegrator](https://github.com/SuLab/WikidataIntegrator) qui va utiliser la valeur du Qid et les codes des propriétés à importer).
 
 ### Faire un plan et documenter chaque décision
 
@@ -205,7 +205,7 @@ Le processus de réconciliation peut être très lent si vous l’appliquez sur 
 
 Avant l’exportation finale des données enrichies, je recommande d’ajouter une nouvelle colonne qui contient l’identifiant unique de chaque réconciliation (**SPARQL:qid** dans le cas de Wikidata). C’est particulièrement important si vous faites une exportation du jeu de données enrichies au format CSV. En effet, si vous ne le faites pas, seul le libellé de la cellule sera exporté et non la valeur de la clé d’appariement (de toutes les cases réconciliées bleutées).
 
-Pour cela, avec notre exemple ci-dessus, cliquez sur les options de la colonne **Titre_RECON** > **Réconcilier** > **Ajouter une colonne d’identifiants d’entités…** Puis, indiquez le titre de la colonne, **Titre_QID**.
+Pour cela, avec notre exemple ci-dessus, cliquez sur les options de la colonne **Titre_RECON** > **Réconcilier** > **Ajouter une colonne d’identifiants d’entités...** Puis, indiquez le titre de la colonne, **Titre_QID**.
 
 ### Comment améliorer la réconciliation ?
 
@@ -214,7 +214,6 @@ Vous remarquerez probablement que la réconciliation est parfois peu satisfaisan
 #### Pour une réconciliation plus stricte
 
 - Relancez une nouvelle réconciliation en choisissant un autre type de données recommandé.
-
 - Décochez *Correspondance automatique* des valeurs candidates pour pouvoir sélectionner tous les choix à faire.
   - *Nombre maximal de candidats renvoyés* : définissez une valeur numérique.
 - Option *Utiliser également les détails pertinents des autres colonnes* :
@@ -250,7 +249,7 @@ Comme le souligne Yann Audin (2024), &laquo;&nbsp;les logiciels, matériel infor
 
 Tout d’abord, le choix du service de réconciliation influence directement la qualité et l’exhaustivité des données enrichies. Par exemple, si l’on opte pour Wikidata, les entités les plus notables et déjà bien référencées bénéficieront d’un enrichissement plus précis et détaillé, tandis que les entités marginales, moins documentées ou issues de contextes historiographiques peu explorés, risquent d’être sous-représentées. Ce phénomène peut renforcer des biais existants dans la production et la transmission du savoir historique. Une manière de pallier ce biais consiste à contribuer activement à Wikidata en ajoutant de nouveaux éléments ou en améliorant ceux existants. Cette possibilité de correction n’existe pas toujours avec d’autres services de réconciliation, qui ne permettent pas nécessairement une contribution ouverte pour rectifier les asymétries dans les données. De plus, plutôt que de se limiter à un seul service comme Wikidata, il pourrait être intéressant d’explorer la combinaison de plusieurs sources pour réduire des biais liés à la sous-représentation d’entités marginales.
 
-Enfin, l’intégration de la réconciliation dans un flux de travail dynamique reste un défi méthodologique. Dans l’état actuel des outils comme OpenRefine, la réconciliation et l’enrichissement sont des processus ponctuels, réalisés à un instant donné, sans mécanisme intégré permettant une mise à jour automatique des données enrichies ni une synchronisation continue entre les sources originales et les bases externes. En effet, OpenRefine n'est pas un outil de gestion de bases de données mais plutôt un outil de traitement *ad hoc* de données tabulaires. Cette limitation entrave la construction de modèles de données évolutifs et interconnectés, ce que certains chercheurs qualifient de problème d’&laquo;&nbsp;interopérabilité verticale&nbsp;&raquo; (Macneil et Plankyté, 2025). Une première approche possible pour atténuer ce problème consiste à expliciter ces contraintes de votre projet de recherche dans un plan de gestion des données de recherche (PGD), afin d’assurer une documentation rigoureuse des choix méthodologiques et des limites inhérentes à l’usage de la réconciliation. De plus, comme mentionné dans cette leçon, une autre approche est de toujours conserver les données d’origine pour maintenir un système interopérable stable à travers plusieurs manipulations successives et espacées dans le temps.
+Enfin, l’intégration de la réconciliation dans un flux de travail dynamique reste un défi méthodologique. Dans l’état actuel des outils comme OpenRefine, la réconciliation et l’enrichissement sont des processus ponctuels, réalisés à un instant donné, sans mécanisme intégré permettant une mise à jour automatique des données enrichies ni une synchronisation continue entre les sources originales et les bases externes. En effet, OpenRefine n'est pas un outil de gestion de bases de données mais plutôt un outil de traitement *ad hoc* de données tabulaires. Cette limitation entrave la construction de modèles de données évolutifs et interconnectés, ce que certain·e·s chercheur·euse·s qualifient de problème d’&laquo;&nbsp;interopérabilité verticale&nbsp;&raquo; (Macneil et Plankyté, 2025). Une première approche possible pour atténuer ce problème consiste à expliciter ces contraintes de votre projet de recherche dans un plan de gestion des données de recherche (PGD), afin d’assurer une documentation rigoureuse des choix méthodologiques et des limites inhérentes à l’usage de la réconciliation. De plus, comme mentionné dans cette leçon, une autre approche est de toujours conserver les données d’origine pour maintenir un système interopérable stable à travers plusieurs manipulations successives et espacées dans le temps.
 
 ## Remerciements
 
@@ -285,6 +284,7 @@ Saby, Mathieu. 2020. *Tutoriel OpenRefine 3.4 : nettoyer, préparer et transform
 Tillman, Ruth. 2020. *Learning Cell Cross in OpenRefine.* <https://ruthtillman.com/talk/cell-cross-webinar-2020-03/>
 
 University of Toronto Libraries. *OpenRefine Augmenting Activity 2: Using Reconciliation Services*. 2019. <https://mdl.library.utoronto.ca/technology/tutorials/openrefine-augmenting-activity-2-using-reconciliation-services>
+
 
 
 

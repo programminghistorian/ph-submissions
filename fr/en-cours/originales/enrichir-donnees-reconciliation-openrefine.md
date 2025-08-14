@@ -3,7 +3,7 @@ title: "Enrichir ses données avec le processus de réconciliation d’OpenRefin
 slug: enrichir-donnees-reconciliation-openrefine
 layout: lesson
 collection: lessons
-date: DD/MM/YYYY
+date: YYYY-MM-DD
 authors:
 - Pascal Martinolli
 reviewers:
@@ -15,7 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/672
 difficulty: 1
 activity: [acquiring]
 topics: [data-management]
-abstract: Cette leçon vous initie à enrichir un jeu de données de recherche avec d’autres données liées provenant de diverses sources externes accessibles, Wikidata par exemple. Cet enrichissement, basé sur un processus nommé &laquo;&nbsp;réconciliation&nbsp;&raquo;, est géré par OpenRefine.
+abstract: Cette leçon vous initie à enrichir un jeu de données de recherche avec d’autres données liées provenant de sources externes telles que Wikidata. Cet enrichissement, basé sur un processus nommé &laquo;&nbsp;réconciliation&nbsp;&raquo;, est géré par OpenRefine.
 avatar_alt:  
 doi:
 ---
@@ -24,7 +24,7 @@ doi:
 
 ## Introduction
 
-Le logiciel [OpenRefine](https://openrefine.org/) est connu pour améliorer la qualité des données existantes, principalement en les &laquo;&nbsp;nettoyant&nbsp;&raquo; en lot selon des critères établis et reproductibles. Depuis 2017, OpenRefine peut aussi être utilisé pour lancer un processus appelé &laquo;&nbsp;[réconciliation](https://openrefine.org/docs/manual/reconciling)&nbsp;&raquo; ou &laquo;&nbsp;alignement&nbsp;&raquo; des données qui consiste à apparier ses données à d’autres. Ce processus permet principalement l’enrichissement des données, mais aussi la normalisation ou la correction d’erreurs, l’évaluation et l’exploration des données.
+Le logiciel [OpenRefine](https://openrefine.org/) est connu pour améliorer la qualité de données existantes, principalement en les &laquo;&nbsp;nettoyant&nbsp;&raquo; en lot selon des critères établis et reproductibles. Depuis 2017, OpenRefine peut aussi être utilisé pour lancer un processus appelé &laquo;&nbsp;[réconciliation](https://openrefine.org/docs/manual/reconciling)&nbsp;&raquo; ou &laquo;&nbsp;alignement&nbsp;&raquo; des données qui consiste à apparier ses données à d’autres. Ce processus permet principalement l’enrichissement des données, mais aussi la normalisation ou la correction d’erreurs, l’évaluation et l’exploration des données.
 
 Nous allons voir dans cette leçon comment utiliser OpenRefine sur des données locales pour les enrichir avec des données provenant de [Wikidata](https://www.wikidata.org/). Wikidata est une base de connaissances collaborative, structurée et multilingue, qui offre une grande richesse de contenus couvrant une vaste diversité de domaines, facilitant ainsi l’enrichissement des données et leur interconnexion dans l’écosystème des données ouvertes liées (&laquo;&nbsp;linked open data&nbsp;&raquo;). Ensuite, nous situerons cette leçon dans un cadre plus large afin d’améliorer ce processus, d’explorer d’autres services de réconciliation et d’adopter des méthodes similaires pertinentes pour la recherche en histoire. Enfin, nous terminerons par une réflexion sur l’apport et les biais de ces approches numériques.
 
@@ -36,11 +36,11 @@ Nous allons voir dans cette leçon comment utiliser OpenRefine sur des données 
 
 ### Choisir un jeu de données
 
-Nous allons utiliser comme jeu de données ([téléchargeable depuis le dépôt _Programming Historian_](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie.csv)) une liste de douze ouvrages d’alchimie en deux colonnes : **Titre** (pour le titre de l’ouvrage) et **Date** (pour date de publication, certaines dates sont manquantes). Il prend la forme d’un fichier CSV encodé en UTF-8 (voir Figure 1). C’est un format ouvert idéal pour traiter et conserver des données tabulées. Les données tabulées (ou tabulaires) sont des données organisées sous la forme de colonnes de valeurs qui peuvent être visualisées et éditées par des logiciels nommés tableurs (OpenRefine ou LibreOffice Calc par exemple). 
+Nous allons utiliser comme jeu de données ([téléchargeable depuis le dépôt _Programming Historian_](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie.csv)) une liste de douze ouvrages d’alchimie en deux colonnes : **Titre** (pour le titre de l’ouvrage) et **Date** (pour date de publication, certaines dates étant manquantes). Il prend la forme d’un fichier CSV encodé en UTF-8 (voir Figure 1). C’est un format ouvert idéal pour traiter et conserver des données tabulées. Les données tabulées (ou tabulaires) sont des données organisées sous la forme de colonnes de valeurs qui peuvent être visualisées et éditées par des logiciels nommés &laquo;&nbsp;tableurs&nbsp;&raquo; (OpenRefine ou LibreOffice Calc par exemple). 
 
 {% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-01.png" alt="Aperçu du fichier CSV contenant les données à enrichir." caption="Figure 1. Apercu du fichier CSV." %}
 
-L’objectif est d’enrichir ces données en important des données supplémentaires provenant de Wikidata comme le lieu et la date de publication, le titre normalisé de l’ouvrage, l’auteur et la langue utilisée.
+L’objectif est d’enrichir ces données en important des données supplémentaires provenant de Wikidata, telles que le lieu et la date de publication, le titre normalisé de l’ouvrage, l’auteur ou la langue utilisée.
 
 ### Lancer OpenRefine et importer les données
 
@@ -54,15 +54,15 @@ Le processus de réconciliation consiste habituellement en deux étapes :
 
 1.  La réconciliation proprement dite, qui permet de faire un lien entre (apparier) une colonne de données d'OpenRefine avec des données d’une source externe, ici Wikidata.
 
-2.  Puis l’enrichissement des données qui consiste à importer de nouvelles données de la source externe grâce à la colonne de données réconciliées.
+2.  L’enrichissement des données, qui consiste à importer de nouvelles données depuis la source externe grâce à la colonne de données réconciliées.
 
 ### Réconcilier une colonne
 
-Tout d’abord, nous allons créer un doublon de la colonne **Titre**. Cette étape est importante puisque le résultat d’une réconciliation réussie remplace souvent le contenu de la cellule originale par le texte du libellé (*label* dans Wikidata) de la valeur réconciliée. Or, il est souhaitable de pouvoir comparer la colonne de titre original avec la colonne de titre réconcilié. En science, il est toujours conseillé de ne pas modifier les données originales afin de garantir leur intégrité, leur traçabilité et leur reproductibilité. Toute modification pourrait entraîner des erreurs, des biais ou une perte d’informations importantes, compromettant ainsi la fiabilité des résultats obtenus. Conserver les données brutes permet également aux chercheur·euse·s de vérifier et de reproduire les analyses, de comparer différentes approches méthodologiques et de répondre à d’éventuelles critiques en s’appuyant sur des sources inchangées. C’est pourquoi il est recommandé d’effectuer toute transformation ou correction sur une copie des données originales plutôt que sur celles-ci directement.
+Tout d’abord, nous allons créer un doublon de la colonne **Titre**. Cette étape est importante puisque le résultat d’une réconciliation réussie remplace souvent le contenu de la cellule originale par le texte du libellé (&laquo;&nbsp;label&nbsp;&raquo; dans Wikidata) de la valeur réconciliée. Or, il est souhaitable de pouvoir comparer la colonne du titre original avec la colonne du titre réconcilié. En science, il est toujours conseillé de ne pas modifier les données originales afin de garantir leur intégrité, leur traçabilité et leur reproductibilité. Toute modification pourrait entraîner des erreurs, des biais ou une perte d’informations importantes, compromettant ainsi la fiabilité des résultats obtenus. Conserver les données brutes permet également aux chercheur·euse·s de vérifier et de reproduire les analyses, de comparer différentes approches méthodologiques et de répondre à d’éventuelles critiques en s’appuyant sur des sources inchangées. C’est pourquoi il est recommandé d’effectuer toute transformation ou correction sur une copie des données originales plutôt que sur celles-ci directement.
 
-Cliquez sur les options de la colonne **Titre** > **Éditer la colonne** > **Ajouter une colonne en fonction de cette colonne…**. Donnez le nom `Titre_RECON` > **Ne rien modifier d’autre** (c’est-à-dire que le contenu sera exactement l’expression *value*).
+Cliquez sur les options de la colonne **Titre** > **Éditer la colonne** > **Ajouter une colonne en fonction de cette colonne...** Donnez le nom &laquo;&nbsp;Titre_RECON&nbsp;&raquo; > **Ne rien modifier d’autre** (c’est-à-dire que le contenu sera exactement l’expression &laquo;&nbsp;value&nbsp;&raquo;).
 
-Réconciliez la colonne `Titre_RECON` en cliquant sur les options de cette colonne > **Réconcilier** > **Démarrer la réconciliation** (voir Figure 3) :
+Réconciliez la colonne **Titre_RECON** en cliquant sur les options de cette colonne > **Réconcilier** > **Démarrer la réconciliation** (voir Figure 3) :
 
 {% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-03.png" alt="Capture d&#39;écran montrant le menu déroulant des colonnes menant à la fonction de réconciliation." caption="Figure 3. Démarrer la réconciliation." %}
 
@@ -90,7 +90,7 @@ Certains éléments possèdent plusieurs choix. L’algorithme de réconciliatio
 
 Chaque choix est précédé de deux cases à cocher. La première case, contenant une seule coche, permet de n’apparier que cette cellule. La seconde case à cocher avec deux coches permet d’apparier toutes les cellules identiques de la colonne avec la valeur choisie. Cela est très utile dans le cas d’un grand jeu de données avec des valeurs semblables qui se répètent.
 
-Vous verrez aussi *Créer un nouvel élément* (pour cette cellule, ou pour cette cellule et toutes les cellules identiques) : ignorez pour le moment. *Chercher une correspondance* permet de relancer une recherche dans Wikidata avec un autre contenu. Souvent, ce qui fonctionne bien est une valeur de cellule plus restreinte (un titre ou un nom plus court, par exemple).
+Vous verrez aussi *Créer un nouvel élément* (pour cette cellule, ou pour cette cellule et toutes les cellules identiques) : ignorez pour le moment. *Chercher une correspondance* permet de relancer une recherche dans Wikidata avec un autre contenu. Souvent, ce qui fonctionne bien est d'utiliser une valeur de cellule plus restreinte (un titre ou un nom plus court, par exemple).
 
 Pour aller plus loin, rendez-vous à la section [Comment améliorer la réconciliation ?](#comment-améliorer-la-réconciliation) de cette leçon.
 
@@ -104,22 +104,18 @@ S’il n’y a pas de choix proposé ou si les choix proposés ne sont pas perti
 
 Toutes les cellules de données qui ont été réconciliées peuvent maintenant être enrichies par des données externes si celles-ci sont indexées dans les éléments correspondants de Wikidata.
 
-Cliquez sur les options de la colonne **Titre_RECON** > **Éditer la colonne** > **Ajouter des colonnes à partir de valeurs réconciliées** > **Ajouter une propriété**. Sélectionnez **Propriétés suggérées** : &laquo;&nbsp;Qid&nbsp;&raquo; > _OK_ (ou écrivez &laquo;&nbsp;Qid&nbsp;&raquo; dans la case de recherche et sélectionnez &laquo;&nbsp;SPARQL:qid&nbsp;&raquo;). Il est aussi possible de cliquer sur les options de la colonne **Titre_RECON** > **Réconcilier** > **Add column with URLs of matched entities…** et sélectionner : **Nom de la colonne : &laquo;&nbsp;Qid&nbsp;&raquo;**.
+Cliquez sur les options de la colonne **Titre_RECON** > **Éditer la colonne** > **Ajouter des colonnes à partir de valeurs réconciliées** > **Ajouter une propriété**. Sélectionnez **Propriétés suggérées** : &laquo;&nbsp;Qid&nbsp;&raquo; > **OK** (ou écrivez &laquo;&nbsp;Qid&nbsp;&raquo; dans la case de recherche et sélectionnez &laquo;&nbsp;SPARQL:qid&nbsp;&raquo;). Il est aussi possible de cliquer sur les options de la colonne **Titre_RECON** > **Réconcilier** > **Add column with URLs of matched entities…** et sélectionner : **Nom de la colonne : &laquo;&nbsp;Qid&nbsp;&raquo;**.
 
 Une nouvelle colonne **Qid** contenant l’identifiant Wikidata est créée (sous la forme d’un identifiant ou sous la forme d’une URL avec l’identifiant, selon la méthode utilisée précédemment).
 
 Recommencez en ajoutant les propriétés suivantes :
 
-- `author` (auteur ou autrice, P50),
-
+- `author` (auteur ou autrice, P50)
 - `language of work or name` (langue de l’œuvre, du nom ou du terme,
-  P407),
-
-- `publication date` (date de publication, P577),
-
-- `publisher` (publié par, P123),
-
-- `place of publication` (lieu de publication, P291).
+  P407)
+- `publication date` (date de publication, P577)
+- `publisher` (publié par, P123)
+- `place of publication` (lieu de publication, P291)
 
 Si ces propriétés ne sont pas listées dans les **Propriétés suggérées** alors écrivez-les une par une dans la case sous *Ajouter une propriété* (voir Figure 8).
 
@@ -166,16 +162,16 @@ Dans OpenRefine, lorsqu’une colonne de données peut être réconciliée avec 
 
 Dans cette leçon, OpenRefine a été testé avec Wikidata en raison de la grande diversité des types de données que l’on y trouve. En 2025, on peut dire que les données les plus notables sont souvent présentes dans Wikidata et qu'elles y sont indéxées pertinemment. Certains services, comme ceux présentés ci-dessous, proposent des jeux de données plus précis et plus spécialisés que Wikidata :
 
-- *ORCID* : pour récupérer l’identifiant de chercheur·euse·s.
-- *VIAF* : pour réconcilier avec un grand catalogue de documents, d’auteur·e·s ou de maisons d’édition.
+- ORCID : pour récupérer l’identifiant de chercheur·euse·s.
+- VIAF : pour réconcilier avec un grand catalogue de documents, d’auteur·e·s ou de maisons d’édition.
 
 [Liste des services](https://reconciliation-api.github.io/testbench/#/) actifs actuellement. Parmi ces services, voici une sélection intéressant plus particulièrement les historien·ne·s :
 
-- *Pleiades Geocollider* : anciens lieux géographiques (sites, villes, etc.).
-- *PeriodO* : périodes historiques ou archéologiques.
-- *Kerameikos* : informations sur l’amphorologie et les céramiques anciennes.
-- *GODOT – Graph of Dated Objects and Texts* : dates selon différents calendriers de Rome et de la Grèce antique.
-- *Nomisma* : informations numismatiques sur les monnaies anciennes.
+- Pleiades Geocollider : anciens lieux géographiques (sites, villes, etc.).
+- PeriodO : périodes historiques ou archéologiques.
+- Kerameikos : informations sur l’amphorologie et les céramiques anciennes.
+- GODOT – Graph of Dated Objects and Texts* : dates selon différents calendriers de Rome et de la Grèce antique.
+- Nomisma : informations numismatiques sur les monnaies anciennes.
 
 Voici quelques suggestions de méthodes si une institution ne possède pas de service de réconciliation :
 
@@ -289,6 +285,7 @@ Saby, Mathieu. 2020. *Tutoriel OpenRefine 3.4 : nettoyer, préparer et transform
 Tillman, Ruth. 2020. *Learning Cell Cross in OpenRefine.* <https://ruthtillman.com/talk/cell-cross-webinar-2020-03/>
 
 University of Toronto Libraries. *OpenRefine Augmenting Activity 2: Using Reconciliation Services*. 2019. <https://mdl.library.utoronto.ca/technology/tutorials/openrefine-augmenting-activity-2-using-reconciliation-services>
+
 
 
 

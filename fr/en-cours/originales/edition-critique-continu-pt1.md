@@ -138,8 +138,7 @@ wget https://raw.githubusercontent.com/Schematron/stf/master/iso-schematron-xslt
 cd ..
 ```
 
-
-### Qu’est‑ce que la TEI ?
+## Qu’est‑ce que la TEI ?
 
 La Text Encoding Initiative (TEI) constitue le standard international pour l’encodage de textes en humanités numériques. Née au milieu des années 1980 avec l’objectif d’un balisage commun en [SGML](https://fr.wikipedia.org/wiki/Standard_Generalized_Markup_Language) (Standard Generalized Markup Language), la TEI évolue à partir des années 2000 et adopte le format XML, plus léger et accessible. Cette réforme en a facilité grandement l’adoption.
 
@@ -267,7 +266,7 @@ La TEI étant très flexible, nous pouvons nourrir chaque entrée d'informations
 
 Cet aperçu de la TEI est minimal. Pour découvrir les centaines d'éléments et attributs propres à cette convention, on se reportera à la documentation officielle, *TEI: Recommandations pour l'encodage et l'échange de textes électroniques* ([https://tei-c.org/guidelines/](https://tei-c.org/release/doc/tei-p5-doc/fr/html/index.html)), et aux tutoriels de Nicolás Vaughan dans le _Programming Historian_ en espagnol&#x202F;: _Introducción a la codificación de textos en TEI_([https://programminghistorian.org/es/lecciones/introduccion-a-tei-1](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1)).
 
-### Prévention des erreurs, conformité syntaxique et validité
+## Prévention des erreurs, conformité syntaxique et validité
 
 Le XML est strict&#x202F;: un guillemet manquant, un caractère mal placé ou un espace de trop peut rendre le document illisible pour la machine. Pour limiter les problèmes, encodez toujours vos fichiers Unicode (UTF-8) et normalisez-les en NFC. Unicode offre deux possibilités&#x202F;: «&nbsp;é&nbsp;» peut être encodé soit en un seul point de code précomposé (U+00E9), soit comme «&nbsp;e&nbsp;» suivi de l’accent aigu combinant (U+0065 + U+0301). Visuellement identiques, ces deux formes diffèrent techniquement. La normalisation NFC privilégie la forme précomposée lorsqu’elle existe, ce qui stabilise les caractères accentués et fiabilise recherches, comparaisons et transformations XSLT.
 
@@ -601,6 +600,7 @@ Dans le flux d'édition continue, cette transformation s'exécutera automatiquem
 
 Ce tutoriel a posé le socle local de l’édition continue&#x202F;: personnalisation de la TEI via un ODD, génération d’un schéma RELAX NG, validation (RELAX NG et Schematron) et transformations XSLT vers Markdown et HTML. Ces pratiques assurent cohérence, interopérabilité et portabilité du corpus. Elles permettent déjà de produire localement une édition de qualité professionnelle. 
 En intégrant ces pratiques dans des chaînes d'automatisation (Git, CI/CD), nous la publication instantanée et l'archivage pérenne est rendu possible. La seconde partie branchera ce socle sur une chaîne d’intégration et de déploiement continus&#x202F;: gestion de versions avec Git, automatisation (GitHub Actions/GitLab CI/CD), assignation d’un DOI à des instantanés sur Zenodo et publication d’un site statique à chaque modification. L’objectif est que la moindre modification d’un fichier TEI déclenche automatiquement contrôle, transformation et mise en ligne, réalisant ainsi la promesse de l’édition continue.
+
 
 
 

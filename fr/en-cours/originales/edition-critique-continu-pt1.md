@@ -90,7 +90,7 @@ ls /usr/share/java/*saxon*.jar
 Une fois que vous avez l'adresse exacte, remplacez [nom-exact.jar] dans la commande ci-dessous et exécutez-la&#x202F;:
 
 ```bash
-echo 'export SAXON_JAR="$HOME/tools/saxon-he.jar"' >> ~/.bashrc
+echo 'export SAXON_JAR="/chemin/vers/[nom-exact.jar]"' >> ~/.bashrc
 echo 'alias saxon="java -jar $SAXON_JAR"' >> ~/.bashrc
 ```
 
@@ -478,10 +478,47 @@ Pour transformer un document, il faut d'abord pouvoir l'interroger. XPath (*XML 
 
 Un document XML forme un arbre où chaque élément peut avoir des enfants, des attributs et du contenu textuel. XPath navigue dans cet arbre avec une syntaxe qui ressemble aux chemins de fichiers dans un système d'exploitation, mais avec des capacités de recherche bien plus puissantes. Reprenons la lettre de Cavriana du 3 juillet 1568 pour visualiser sa structure&#x202F;:
 
-```
-
-TEI ├── teiHeader │ ├── fileDesc │ │ ├── titleStmt │ │ │ ├── title: "Update on Nevers' condition..." │ │ │ └── author: "Filippo Cavriana" │ │ └── sourceDesc │ │ └── msDesc │ │ └── msIdentifier │ │ ├── settlement: "Mantua" │ │ ├── repository: "Archivio di Stato..." │ │ ├── collection: "Archivio Gonzaga" │ │ └── idno: "b654, fols. 924r-924v" │ └── profileDesc │ └── correspDesc │ ├── correspAction [@type="sent"] │ │ ├── persName [@ref="#pers-cavriana-f"]: "Filippo Cavriana" │ │ ├── placeName [@ref="#place-nevers"]: "Nevers" │ │ └── date [@when="1568-07-03"] │ └── correspAction [@type="received"] │ ├── persName [@ref="#pers-gonzaga-g"]: "Guglielmo Gonzaga" │ └── placeName [@ref="#place-mantova"]: "Mantova" └── text └── body └── div [@type="letter"] ├── pb [@n="924r"] ├── opener │ └── salute │ └── choice (multiple)... ├── p │ ├── persName [@ref="#pers-gonzaga-l-nev"]: "Duca" │ ├── (texte) │ └── lb (multiple) └── closer ├── dateline │ ├── placeName [@ref="#place-nevers"]: "Nevers" │ └── date [@when="1568-07-03"]: "3 di luglio 1568" ├── salute └── signed └── persName [@ref="#pers-cavriana-f"]: "Filippo Cavriana"
-
+```text
+TEI
+├── teiHeader
+│   ├── fileDesc
+│   │   ├── titleStmt
+│   │   │   ├── title: "Update on Nevers' condition..."
+│   │   │   └── author: "Filippo Cavriana"
+│   │   └── sourceDesc
+│   │       └── msDesc
+│   │           └── msIdentifier
+│   │               ├── settlement: "Mantua"
+│   │               ├── repository: "Archivio di Stato..."
+│   │               ├── collection: "Archivio Gonzaga"
+│   │               └── idno: "b654, fols. 924r-924v"
+│   └── profileDesc
+│       └── correspDesc
+│           ├── correspAction [@type="sent"]
+│           │   ├── persName [@ref="#pers-cavriana-f"]: "Filippo Cavriana"
+│           │   ├── placeName [@ref="#place-nevers"]: "Nevers"
+│           │   └── date [@when="1568-07-03"]
+│           └── correspAction [@type="received"]
+│               ├── persName [@ref="#pers-gonzaga-g"]: "Guglielmo Gonzaga"
+│               └── placeName [@ref="#place-mantova"]: "Mantova"
+└── text
+    └── body
+        └── div [@type="letter"]
+            ├── pb [@n="924r"]
+            ├── opener
+            │   └── salute
+            │       └── choice (multiple)...
+            ├── p
+            │   ├── persName [@ref="#pers-gonzaga-l-nev"]: "Duca"
+            │   ├── (texte)
+            │   └── lb (multiple)
+            └── closer
+                ├── dateline
+                │   ├── placeName [@ref="#place-nevers"]: "Nevers"
+                │   └── date [@when="1568-07-03"]: "3 di luglio 1568"
+                ├── salute
+                └── signed
+                    └── persName [@ref="#pers-cavriana-f"]: "Filippo Cavriana"
 ```
 
 Dans cet arbre, XPath agit comme un langage de requête. La barre oblique `/` représente la racine, la double barre oblique `//` permet de chercher à n'importe quelle profondeur, le point `.` désigne le nœud courant, deux points `..` remontent au parent, l'arobase `@` accède aux attributs, et les crochets `[]` filtrent selon des conditions.
@@ -599,7 +636,8 @@ Dans le flux d'édition continue, cette transformation s'exécutera automatiquem
 ## Conclusion
 
 Ce tutoriel a posé le socle local de l’édition continue&#x202F;: personnalisation de la TEI via un ODD, génération d’un schéma RELAX NG, validation (RELAX NG et Schematron) et transformations XSLT vers Markdown et HTML. Ces pratiques assurent cohérence, interopérabilité et portabilité du corpus. Elles permettent déjà de produire localement une édition de qualité professionnelle. 
-En intégrant ces pratiques dans des chaînes d'automatisation (Git, CI/CD), nous la publication instantanée et l'archivage pérenne est rendu possible. La seconde partie branchera ce socle sur une chaîne d’intégration et de déploiement continus&#x202F;: gestion de versions avec Git, automatisation (GitHub Actions/GitLab CI/CD), assignation d’un DOI à des instantanés sur Zenodo et publication d’un site statique à chaque modification. L’objectif est que la moindre modification d’un fichier TEI déclenche automatiquement contrôle, transformation et mise en ligne, réalisant ainsi la promesse de l’édition continue.
+En intégrant ces pratiques dans des chaînes d'automatisation (Git, CI/CD), la publication instantanée et l'archivage pérenne est rendu possible. Dans la seconde partie, nous brancherons ce socle sur une chaîne d’intégration et de déploiement continus&#x202F;: gestion de versions avec Git, automatisation (GitHub Actions/GitLab CI/CD), assignation d’un DOI à des instantanés sur Zenodo. L’objectif est que la moindre modification d’un fichier TEI déclenche automatiquement contrôle, transformation et mise en ligne, réalisant ainsi la promesse de l’édition continue.
+
 
 
 

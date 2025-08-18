@@ -321,7 +321,7 @@ Nous avons imaginé un formulaire spécifique aux affiches qui, sans être parfa
 
 Vous pouvez [importer ce formulaire](/assets/gerer-sources-primaires-numeriques-avec-tropy/tropy-poster.ttp) pour l'explorer davantage et l'utiliser dans votre porjet d'affiches le cas échéant. La figure ci-dessous montre à quoi il ressemble une fois activé:
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-000.png" alt="Modèle de saisie spécifique aux affiches" caption="Figure 13. Modèle de saisie personnalisé imaginé pour des affiches intitulé Tropy Poster" %}
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-000.png" alt="Modèle de saisie spécifique aux affiches" caption="Figure . Modèle de saisie personnalisé imaginé pour des affiches intitulé Tropy Poster" %}
 
 ## Extensions d'un projet Tropy
 

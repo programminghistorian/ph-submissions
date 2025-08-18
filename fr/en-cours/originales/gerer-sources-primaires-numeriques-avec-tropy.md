@@ -311,6 +311,18 @@ Les champs que je souhaite insérer dans mon modèle de saisie sont destinés à
 
 {% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-13.png" alt="Modèle de saisie spécifique aux correspondances diplomatiques en cours de création" caption="Figure 13. Modèle de saisie en cours de personnalisation avec création d'une nouvelle propriété" %}
 
+Nous avons imaginé un formulaire spécifique aux affiches qui, sans être parfait, pourrait être adapté au corpus des affiches du Printemps érable. Sur la base du formulaire générique, et suivant les étapes décrites ci-dessous, ont été ajoutés les champs 
+* Titre forgé *au cas où une affiche n'a pas de titre, ce qui peut arriver à ce type de source*
+* Date de création 
+* Lieu de création 
+* Format 
+* URL de la source 
+* Droits d'utilisation 
+
+Vous pouvez [importer ce formulaire](/assets/gerer-sources-primaires-numeriques-avec-tropy/tropy-poster.ttp) pour l'explorer davantage et l'utiliser dans votre porjet d'affiches le cas échéant. La figure ci-dessous montre à quoi il ressemble une fois activé:
+
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-000.png" alt="Modèle de saisie spécifique aux affiches" caption="Figure 13. Modèle de saisie personnalisé imaginé pour des affiches intitulé Tropy Poster" %}
+
 ## Extensions d'un projet Tropy
 
 Il est possible d'exporter un projet Tropy à l'aide du menu principal en format JSON-LD ou PDF. 

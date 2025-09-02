@@ -46,13 +46,15 @@ L’objectif est d’enrichir ces données en important des données supplément
 
 Cliquez sur *Languages* et changez pour Français. Puis cliquez sur *Créer un projet* \> *Cet ordinateur* \> *Sélect. fichiers* \> Sélectionnez le fichier CSV \> *Suivant* \> Configurez les options d’analyse syntaxique : *Les colonnes sont séparées par* : *une virgule* \> Cliquez sur *Créer un projet*. Il est aussi possible de charger le fichier CSV directement depuis une URL.
 
-Vérifiez que tout est bien importé ou changez les paramètres de la page *Configurez les options d’analyse syntaxique*. On peut noter sur cette page, la possibilité d’importer les données depuis de nombreux formats : XLS et XLSX (Microsoft Excel), JSON (et JSON-LD), fichiers texte à base de lignes, fichiers CSV (ou TSV ou semblables comme notre exemple), fichiers textes à largeur de champ fixe, PC-Axis, MARC, RDF (/N3, /N-Triples, /Turtle, /XML), Wikitext, ODS (fichier de tableur de LibreOffice Calc).
+Vérifiez que tout est bien importé ou changez les paramètres de la page *Configurez les options d’analyse syntaxique* (voir Figure 2). On peut noter sur cette page, la possibilité d’importer les données depuis de nombreux formats : XLS et XLSX (Microsoft Excel), JSON (et JSON-LD), fichiers texte à base de lignes, fichiers CSV (ou TSV ou semblables comme notre exemple), fichiers textes à largeur de champ fixe, PC-Axis, MARC, RDF (/N3, /N-Triples, /Turtle, /XML), Wikitext, ODS (fichier de tableur de LibreOffice Calc).
+
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-02.gif" alt="Animation du processus d'importation du fichier CSV." caption="Figure 2. Animation du processus d'importation du fichier CSV." %}
 
 Le processus de réconciliation consiste habituellement en deux étapes :
 
-1.  La **réconciliation** proprement dite, qui permet de faire un lien (apparier) entre une colonne de données d'OpenRefine avec des données d’une source externe, ici Wikidata.
+1.  La **réconciliation** proprement dite, qui permet de faire un lien (apparier) entre une colonne de données d'OpenRefine avec des données d’une source externe, ici Wikidata.
 
-2.  Puis l’**enrichissement des données** qui consiste à importer de nouvelles données de la source externe grâce à la colonne de données réconciliées.
+2.  Puis l’**enrichissement des données** qui consiste à importer de nouvelles données de la source externe grâce à la colonne de données réconciliées.
 
 ## Réconcilier une colonne
 
@@ -60,31 +62,31 @@ Tout d’abord nous allons créer un doublon de la colonne `Titre`. Cette étape
 
 Cliquez sur les options de la colonne Titre \> *Éditer la colonne* \> *Ajouter une colonne en fonction de cette colonne…* \> Donnez le nom `Titre_RECON` \> Ne rien modifier d’autre (c’est-à-dire que le contenu sera exactement l’expression *value*).
 
-Réconciliez la colonne `Titre_RECON` en cliquant sur les options de cette colonne \> *Réconcilier* \> *Démarrer la réconciliation* (voir Figure 2)
+Réconciliez la colonne `Titre_RECON` en cliquant sur les options de cette colonne \> *Réconcilier* \> *Démarrer la réconciliation* (voir Figure 3)
 
-{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-02.png" alt="Capture d&#39;écran montrant le menu déroulant des colonnes menant à la fonction de réconciliation." caption="Figure 2. Démarrer la réconciliation." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-03.png" alt="Capture d&#39;écran montrant le menu déroulant des colonnes menant à la fonction de réconciliation." caption="Figure 3. Démarrer la réconciliation." %}
 
 Choisissez un service de réconciliation : `Wikidata reconci.link (en)` \> *Suivant*.
 
-Dans la case de gauche (voir Figure 3), sélectionnez le type de données le plus proche du contenu de la colonne. Dans notre cas, nous allons sélectionner *literary work* (Q7725634) ou bien choisir *Réconcilier sans type particulier*. [Q7725634](https://www.wikidata.org/wiki/Q7725634) est l'identifiant Wikidata de l'élément correspondant à une œuvre littéraire. C'est-à-dire que les œuvres littéraires bien indexées de Wikidata devraient avoir *nature de l'élément* (codé avec la propriété *P31*) = *œuvre littéraire* (*Q7725634*) ou un élément plus spécifique (*roman*, *essai*, etc.).
+Dans la case de gauche (voir Figure 4), sélectionnez le type de données le plus proche du contenu de la colonne. Dans notre cas, nous allons sélectionner *literary work* (Q7725634) ou bien choisir *Réconcilier sans type particulier*. [Q7725634](https://www.wikidata.org/wiki/Q7725634) est l'identifiant Wikidata de l'élément correspondant à une œuvre littéraire. C'est-à-dire que les œuvres littéraires bien indexées de Wikidata devraient avoir *nature de l'élément* (codé avec la propriété *P31*) = *œuvre littéraire* (*Q7725634*) ou un élément plus spécifique (*roman*, *essai*, etc.).
 
 Pour le moment, ignorez les autres options \> *Démarrer la réconciliation…*
 
-{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-03.png" alt="Les différentes options pour calibrer la réconciliation." caption="Figure 3. Options de réconciliation." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-04.png" alt="Les différentes options pour calibrer la réconciliation." caption="Figure 4. Options de réconciliation." %}
 
 Attendez que le processus se termine. On peut voir la progression dans une zone jaune en haut du tableau principal.
 
 Une fois terminé, observez plusieurs choses :
-- Sous le titre de la colonne, une ligne verte indique le taux de réconciliation. Une ligne complètement verte indique ainsi que toutes les données ont été réconciliées. Il est aussi possible d’afficher et de sélectionner cette information dans les facettes du menu de gauche. 
-- Que plusieurs éléments de la colonne `Titre_RECON` sont désormais bleutés et cliquables. Cela veut dire qu’ils ont été appariés avec un élément Wikidata qui devrait leur correspondre (voir Figure 4).
+- Sous le titre de la colonne, une ligne verte indique le taux de réconciliation. Une ligne complètement verte indique ainsi que toutes les données ont été réconciliées. Il est aussi possible d’afficher et de sélectionner cette information dans les facettes du menu de gauche. 
+- Que plusieurs éléments de la colonne `Titre_RECON` sont désormais bleutés et cliquables. Cela veut dire qu’ils ont été appariés avec un élément Wikidata qui devrait leur correspondre (voir Figure 5).
 
-{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-04.png" alt="Exemple d'une donnée réconciliée." caption="Figure 4. Exemple de donnée réconciliée. Il suffit de passer le curseur sur la donnée réconciliée pour accéder au contenu d'origine." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-05.png" alt="Exemple d'une donnée réconciliée." caption="Figure 5. Exemple de donnée réconciliée. Il suffit de passer le curseur sur la donnée réconciliée pour accéder au contenu d'origine." %}
 
 - Que le processus de réconciliation peut être fastidieux, surtout si on a un jeu de données volumineux. De plus, l'interface d'OpenRefine n'ai pas pratique lorsque l'on clique sur *Apparier toutes les cellules identiques* (rattacher plusieurs cellules ayant la même valeur au même élément Wikidata) car on est renvoyé à la ligne 1 du tableau. Cela fait perdre du temps à retrouver la ligne qu'on était en train de traiter.
 
-- Que des éléments possèdent plusieurs choix. L’algorithme de réconciliation n’a pu décider quelle valeur choisir (voir Figure 5).
+- Que des éléments possèdent plusieurs choix. L’algorithme de réconciliation n’a pu décider quelle valeur choisir (voir Figure 6).
 
-{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-05.png" alt="Exemple de donnée non-réconciliée avec un choix à effectuer." caption="Figure 5. Exemple de donnée non-réconciliée avec un choix à effectuer." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-06.png" alt="Exemple de donnée non-réconciliée avec un choix à effectuer." caption="Figure 6. Exemple de donnée non-réconciliée avec un choix à effectuer." %}
 
 - Chaque choix est précédé de deux cases à cocher. La première case avec une coche unique permet de n’apparier que cette cellule. La seconde case à cocher avec deux coches permet d’apparier toutes les cellules identiques de la colonne avec la valeur choisie. Cela est très utile dans le cas d’un grand jeu de données avec des valeurs semblables qui se répètent.
 
@@ -96,9 +98,9 @@ Pour aller plus loin, rendez-vous à la section [Comment améliorer la réconcil
 
 En survolant les valeurs proposées en choix, il est possible de visualiser un extrait de l’élément Wikidata. En cliquant sur le lien, cela ouvre un nouvel onglet vers cet élément Wikidata. Il est possible de choisir une valeur pour chaque cellule non résolue. À la fin de chaque choix pour chaque cellule, il y a un chiffre gris entre parenthèses. Ce chiffre est le score estimé de correspondance par OpenRefine (100 est le meilleur score).
 
-S’il n’y a pas de choix proposé ou si les choix proposés ne sont pas pertinents, alors cliquez sur *Choisir une nouvelle correspondance*. Il est alors possible de saisir une valeur plus courte ou mieux rédigée pour tenter de repérer l’élément correspondant (voir Figure 6).
+S’il n’y a pas de choix proposé ou si les choix proposés ne sont pas pertinents, alors cliquez sur *Choisir une nouvelle correspondance*. Il est alors possible de saisir une valeur plus courte ou mieux rédigée pour tenter de repérer l’élément correspondant (voir Figure 7).
 
-{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-06.gif" alt="Animation montrant comment lancer une nouvelle recherche à partir d'une donnée." caption="Figure 6. Recherche d’une nouvelle correspondance." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-07.gif" alt="Animation montrant comment lancer une nouvelle recherche à partir d'une donnée." caption="Figure 7. Recherche d’une nouvelle correspondance." %}
 
 ## Enrichir son jeu de données
 
@@ -113,7 +115,7 @@ Recommencez en ajoutant les propriétés suivantes :
 - `author` (auteur ou autrice, P50),
 
 - `language of work or name` (langue de l’œuvre, du nom ou du terme,
-  P407),
+  P407),
 
 - `publication date` (date de publication, P577),
 
@@ -121,21 +123,21 @@ Recommencez en ajoutant les propriétés suivantes :
 
 - `place of publication` (lieu de publication, P291).
 
-Si ces propriétés ne sont pas listées dans *Propriétés suggérées* alors écrirez-les une par une dans la case sous *Ajouter une propriété* (voir Figure 7).
+Si ces propriétés ne sont pas listées dans *Propriétés suggérées* alors écrirez-les une par une dans la case sous *Ajouter une propriété* (voir Figure 8).
 
-{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-07.gif" alt="Animation montrant comment ajouter des données issues de sources externes en saisissant des noms de données, ici des propriétés de Wikidata." caption="Figure 7. Enrichir en ajoutant des propriétés et leurs valeurs." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-08.gif" alt="Animation montrant comment ajouter des données issues de sources externes en saisissant des noms de données, ici des propriétés de Wikidata." caption="Figure 8. Enrichir en ajoutant des propriétés et leurs valeurs." %}
 
 Il est aussi possible de refaire la même opération à partir de la colonne `Place of Publication` pour récupérer les coordonnées géographiques (`Coordinate location (P625)`) dans le cas où on voudrait visualiser les données sur une carte.
 
 Il est recommandé de faire ces opérations d’enrichissement à la fin de tous vos processus de réconciliation, car il n’y a pas de boutons “mise à jour”. Si on veut refaire l’opération dans le futur, par exemple parce que les données Wikidata ont été améliorées entre temps, alors il faut supprimer la colonne et la recréer.
 
-Une fois le jeu de données enrichi, il est possible d’exporter le fichier au format `CSV` en sélectionnant *Exporter* \> *Valeurs séparées par des virgules*. C’est un format recommandé pour sa simplicité et ses attributs [FAIR](https://fr.wikipedia.org/wiki/Fair_data) (Facile à trouver, Accessible, Interopérable, Réutilisable). Il est aussi possible de l’exporter au format `Archive de projet OpenRefine` pour permettre de reprendre le travail plus tard ou pour transférer le travail sur un autre ordinateur. 
+Une fois le jeu de données enrichi, il est possible d’exporter le fichier au format `CSV` en sélectionnant *Exporter* \> *Valeurs séparées par des virgules*. C’est un format recommandé pour sa simplicité et ses attributs [FAIR](https://fr.wikipedia.org/wiki/Fair_data) (Facile à trouver, Accessible, Interopérable, Réutilisable). Il est aussi possible de l’exporter au format `Archive de projet OpenRefine` pour permettre de reprendre le travail plus tard ou pour transférer le travail sur un autre ordinateur. 
 
 Tous les projets OpenRefine en cours sont sauvegardés au fur et à mesure sans intervention de l’utilisateur et ils sont localisés, par défaut, sur l’ordinateur dans le dossier `Utilisateur/AddData/Roaming/OpenRefine` (le lien se trouve dans le bas de la page *Ouvrir un projet*).
 
-Voici un aperçu du jeu des données enrichies (février 2025, figure 8). Il peut être téléchargé [en CSV](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie-donnees_enrichies.csv) ou au [format OpenRefine](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie-donnees_enrichies.tar.gz). Veuillez noter que les données de Wikidata peuvent changer de par sa nature ouverte et contributive : les résultats de réconciliation présentés ci-dessus peuvent donc être différents si vous refaites les mêmes actions. 
+Voici un aperçu du jeu des données enrichies (février 2025, figure 9). Il peut être téléchargé [en CSV](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie-donnees_enrichies.csv) ou au [format OpenRefine](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie-donnees_enrichies.tar.gz). Veuillez noter que les données de Wikidata peuvent changer de par sa nature ouverte et contributive : les résultats de réconciliation présentés ci-dessus peuvent donc être différents si vous refaites les mêmes actions. 
 
-{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-08.png" alt="Capture d'écran montrant un jeu de données enrichies dans OpenRefine." caption="Figure 8. Jeu des données enrichies." %}
+{% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-09.png" alt="Capture d'écran montrant un jeu de données enrichies dans OpenRefine." caption="Figure 9. Jeu des données enrichies." %}
 
 # Quelques bonnes pratiques
 
@@ -207,7 +209,7 @@ Voici quelques suggestions de méthodes si une institution ne possède pas de se
 
 Cette méthode est semblable à la formule RECHERCHEV (*VLOOKUP*) de LibreOffice Calc. Ce n’est pas tout à fait de la réconciliation, car c’est un appariement strict entre deux tables, basés sur une colonne commune contenant une clé. Ce [billet en anglais](https://ruthtillman.com/talk/cell-cross-webinar-2020-03/) de Ruth Tillman explique ce processus de croisement de cellules (*cell cross*).
 
-Comme ce processus de croisement de cellules est très rigoureux, il a des inconvénients : il est sensible à la casse, aux espaces, aux erreurs de saisie, etc. Pour pouvoir faire la même chose, mais bénéficier de l’algorithme de correspondance floue (*fuzz matching*) de la réconciliation, il faut installer une extension à OpenRefine qui s’appelle [reconcile-csv](https://okfnlabs.org/projects/reconcile-csv/).
+Comme ce processus de croisement de cellules est très rigoureux, il a des inconvénients : il est sensible à la casse, aux espaces, aux erreurs de saisie, etc. Pour pouvoir faire la même chose, mais bénéficier de l’algorithme de correspondance floue (*fuzz matching*) de la réconciliation, il faut installer une extension à OpenRefine qui s’appelle [reconcile-csv](https://okfnlabs.org/projects/reconcile-csv/).
 
 ### Avec un programme codé spécifiquement
 
@@ -234,33 +236,33 @@ Vous remarquerez probablement que la réconciliation est parfois peu satisfaisan
 - Relancez une nouvelle réconciliation en choisissant un autre type de données recommandé.
 
 - Décochez *Correspondance automatique* des valeurs candidates pour pouvoir sélectionner tous les choix à faire.
-  - *Nombre maximal de candidats renvoyés* : définissez une valeur numérique
+  - *Nombre maximal de candidats renvoyés* : définissez une valeur numérique
 - Option *Utiliser également les détails pertinents des autres colonnes* :
-  - Appariez des colonnes de vos données initiales avec des colonnes de la source externe.
-  - Par exemple, dans notre cas on pourrait utiliser *Date* : `publication date (P577)`.
+  - Appariez des colonnes de vos données initiales avec des colonnes de la source externe.
+  - Par exemple, dans notre cas on pourrait utiliser *Date* : `publication date (P577)`.
 
 ### Pour une réconciliation moins stricte (proposant ou résolvant plus de choix)
 
 - Relancez une réconciliation en choisissant *Réconcilier sans type particulier*.
-  - Observez les scores de réconciliation (entre parenthèses après les valeurs proposées, entre 0 et 100) et déterminez le score minimum adapté pour résoudre automatiquement les réconciliations.
-  - Si ce n’est pas déjà fait, faites afficher la facette `Titre_RECON` : *meilleur score des candidats* (en cliquant sur les options de la colonne \> *Réconcilier* \> *Facettes* \> *Meilleur score des candidats*).
-    - Déplacez l’intervalle vers `80-100`.
-    - Cliquez sur les options de la colonne \> *Réconcilier* \> *Actions* \> *Apparier chaque cellule avec son meilleur candidat*. Seule la meilleure des valeurs entre 80 et 100 sera utilisée. Une valeur basse de 20 sera ignorée, même si c’est la meilleure parmi d’autres valeurs (ex : 9, 10, 12 et 15).
+  - Observez les scores de réconciliation (entre parenthèses après les valeurs proposées, entre 0 et 100) et déterminez le score minimum adapté pour résoudre automatiquement les réconciliations.
+  - Si ce n’est pas déjà fait, faites afficher la facette `Titre_RECON` : *meilleur score des candidats* (en cliquant sur les options de la colonne \> *Réconcilier* \> *Facettes* \> *Meilleur score des candidats*).
+    - Déplacez l’intervalle vers `80-100`.
+    - Cliquez sur les options de la colonne \> *Réconcilier* \> *Actions* \> *Apparier chaque cellule avec son meilleur candidat*. Seule la meilleure des valeurs entre 80 et 100 sera utilisée. Une valeur basse de 20 sera ignorée, même si c’est la meilleure parmi d’autres valeurs (ex : 9, 10, 12 et 15).
 - Relancez une réconciliation en choisissant un autre type de données recommandé.
 - Traitez les données de la cellule pour une forme plus courte (ou non abrégée, ou sans acronymes) et relancez une réconciliation. Par exemple :
-  - `De Alchemia (1541)` -\> `De Alchemia` 
-  - `Hist Sci Med`-\> `Histoire des sciences médicales` 
-  - `AHA` -\> `American Historical Association`
+  - `De Alchemia (1541)` -\> `De Alchemia` 
+  - `Hist Sci Med`-\> `Histoire des sciences médicales` 
+  - `AHA` -\> `American Historical Association`
 
 ## À quoi correspond *Créer un nouvel élément* ?
 
-Cela permet de marquer un enregistrement pour créer un élément dans Wikidata depuis OpenRefine. Je n’utilise pas cette option, car je préfère créer de nouveaux éléments directement dans Wikidata (manuellement ou avec QuickStatements). Cela garantit une meilleure indexation et plus de contrôle sur le processus de création ou d’enrichissement. 
+Cela permet de marquer un enregistrement pour créer un élément dans Wikidata depuis OpenRefine. Je n’utilise pas cette option, car je préfère créer de nouveaux éléments directement dans Wikidata (manuellement ou avec QuickStatements). Cela garantit une meilleure indexation et plus de contrôle sur le processus de création ou d’enrichissement. 
 
 ## Réconcilier pour normaliser les données
 
 Notons qu’outre l’alignement avec des données externes et l’enrichissement des données initiales, une autre utilité de la réconciliation est de normaliser les données initiales via le service de réconciliation. En effet, comme nous l’avons vu, le contenu d’une cellule réconciliée est remplacé par le texte du libellé de la donnée correspondante de la base de données externe. Comme mentionné précédemment, il est important de conserver la colonne des données initiales non réconciliées pour pouvoir comparer les deux.
 
-Pour conclure, j'aimerai insister sur le fait que la réconciliation doit être réalisée avec prudence et pas-à-pas. En effet, il peut exister de nombreux homonymes sur un même siècle, tout spécialement dans les domaines des sciences humaines et sociales. Des prises de décision de réconciliation trop hâtives et sans vérification peuvent entraîner des erreurs. 
+Pour conclure, j'aimerai insister sur le fait que la réconciliation doit être réalisée avec prudence et pas-à-pas. En effet, il peut exister de nombreux homonymes sur un même siècle, tout spécialement dans les domaines des sciences humaines et sociales. Des prises de décision de réconciliation trop hâtives et sans vérification peuvent entraîner des erreurs. 
 
 # Discussion
 
@@ -303,4 +305,7 @@ Saby, Mathieu. 2020. *Tutoriel OpenRefine 3.4 : nettoyer, préparer et transform
 Tillman, Ruth. 2020. *Learning Cell Cross in OpenRefine.* <https://ruthtillman.com/talk/cell-cross-webinar-2020-03/>
 
 University of Toronto Libraries. *OpenRefine Augmenting Activity 2: Using Reconciliation Services*. 2019. <https://mdl.library.utoronto.ca/technology/tutorials/openrefine-augmenting-activity-2-using-reconciliation-services>
+
+
+
 

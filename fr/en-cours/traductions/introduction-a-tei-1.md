@@ -30,6 +30,13 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
+Note de la traductrice :
+Dans la leçon originale, Nicolás Vaughan utilise des exemples tirés du *Quichotte* de Miguel de Cervantes, ainsi que les quatre premiers vers du sonnet «Amor constante más allá de la muerte» (« Amour constant au-delà de la mort ») de Francisco de Quevedo. Afin de mieux adapter la traduction à un lectorat francophone, lui proposant des textes originalement écrits en langue française, j’ai choisi de remplacer :
+1.	L’extrait du *Quichotte* par un extrait des *Misérables* de Victor Hugo, dans les exemples comprenant des petites capitales et la balise <name> ;
+2.	Les informations qui correspondent aux métadonnées de l’édition du *Quichotte* par des informations sur les métadonnées de l’édition des *Misérables*, lors de l’explication de l’élément <teiHeader> ;
+3.	Les quatre premiers vers du sonnet de Quevedo par les quatre premiers vers du « Sonnet VIII » de Louise Labé, lors de l’explication de l’encodage de textes en vers.
+
+
 # Introduction
 
 Un des problèmes centraux des humanités numériques a été le travail avec et sur les textes : leur capture (numérisation), reconnaissance, transcription, encodage, traitement, transformation et analyse. Dans cette leçon, nous nous concentrerons exclusivement sur l'encodage de texte, c'est-à-dire, sur leur catégorisation au moyen de balises (tags).
@@ -90,7 +97,7 @@ Cependant, pour réaliser le deuxième type de validation, il est nécessaire qu
   schematypens="http://purl.oclc.org/dsdl/schematron"?>
 ```
 
-Vous pouvez télécharger un modèle basique d'un document TEI-XML [ici](https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/introduccion-a-tei-1/plantilla-TEI.xml), avec ces lignes déjà incluses.
+Vous pouvez télécharger un [modèle basique d'un document TEI-XML](https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/introduction-a-tei-1/modele-TEI.xml) depuis le dépôt _Programming Historian_, avec ces lignes déjà incluses.
 
 **Troisièmement**, l'extension offre également des outils pour saisir semi-automatiquement le code XML à partir du schéma de validation RELAX NG. Par exemple, si nous avons introduit dans le document un élément `<q>` (pour marquer un texte entre guillemets, par exemple une citation), nous pouvons appuyer sur la barre d'espace après le `q` de la balise d'ouverture et VS Code affichera une liste d'attributs possibles à sélectionner dans le menu :
 

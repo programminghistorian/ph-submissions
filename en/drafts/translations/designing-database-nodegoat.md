@@ -45,7 +45,7 @@ Those who do research in the humanities often encounter difficulties at this sta
 
 Thus, researchers in the humanities may find it counterintuitive to read their sources, documents, or ethnographic notes with the goal of extracting information and arranging it into the fixed, discrete, structured categories of a spreadsheet. This process may even appear too simplistic and reductive: how can a political tradition, the affective dimension of a local cultural practice, the conceptual issues of modern philosophy, or the psychology of a literary character be translated into “data”?
 
-However, thinking about our research in terms of data does not necessarily need to lead to a simplification or flattening of the object of study, as demonstrated by the [new wave of projects in quantitative history](https://perma.cc/9VKT-Y2JJ) which appears to be making a strong comeback. This research shows that it is possible to adopt a data-driven methodological approach while allowing for complexity and subjectivity. As Johanna Drucker, a scholar of graphic design, reminds us, data cannot be separated from the act of recollection that produced it; rather, interpretation is always involved in the effort to capture, select and carve this data from reality. In other words, “all data is capta”.[^3]
+However, thinking about our research in terms of data does not necessarily need to lead to a simplification or flattening of the object of study, as demonstrated by the [new wave of projects in quantitative history](https://perma.cc/9VKT-Y2JJ) which appears to be making a strong comeback. This research shows that it is possible to adopt a data-driven methodological approach while allowing for complexity and subjectivity. As Johanna Drucker, a scholar of graphic design, reminds us, data cannot be separated from the act of collection that produced it; rather, interpretation is always involved in the effort to capture, select, and carve this data from reality. In other words, “all data is capta”.[^3]
 
 For his part, the historian Manfred Thaller emphasizes that data can represent reality, but only when it arises from an act of interpretation. He proposes a hierarchical schema that distinguishes between “data”, “information” and “knowledge”. Data consists of symbols that can be arranged in a system of representation. This system produces information when the data is interpreted within a defined context. Knowledge, in turn, emerges from information that leads to decision-making or action.[^4]
 
@@ -79,7 +79,7 @@ We could record information about these books in a simple format using the featu
 | Title | Place of Publication | Author |
 | :------ | :-------------------- | :---------|
 | The Gulag Archipelago | Paris | Aleksandr Solzhenitsyn |
-| Life and Destiny | Geneva | Vasily Grossman |
+| Life and Fate | Geneva | Vasily Grossman |
 | The New Class | New York | Milovan Djilas |
 | The Captive Mind | Paris | Czesław Miłosz |
 | Cogs in the Wheel | Paris | Michel Heller |
@@ -101,14 +101,14 @@ For now, this tool is sufficient because we are using it to store just a small a
 | Life and Fate | Geneva | French | 1980 | L’âge d’homme | 1955 |Vasily Grossman | Russian | Berdychiv | 1905 |
 | The New Class | New York | English | 1957 | Praeger | 1950 | Milovan Djilas | Montenegrin | Podbišće | 1911 |
 | The Captive Mind | Paris | English | 1953 | Instytut Literacki | 1946 | Czesław Miłosz | Polish | Šeteniai | 1911 |
-| Cogs in the Wheel | Paris | French | 1985 | Calmann-Lévy | 1920 | Michel Heller | Russe | Mogilev | 1922 |
+| Cogs in the Wheel | Paris | French | 1985 | Calmann-Lévy | 1920 | Michel Heller | Russian | Mogilev | 1922 |
 | The Intellectuals on the Road to Class Power| Brighton | English | 1979 | Harvester Press | ? |George Konrad, Iván Szelényi | Hungarian, Hungarian | Berettyóújfalu, Budapest | 1933, 1938 |
 
 </div> 
 
-Thanks to this new table, we can now cross-reference more information and go into more depth in our analysis by querying the relationships between various attributes of the works, the publishing houses, and the authors. We could, for example, formulate and test a hypothesis about whether Russian authors tend to publish more frequently in French, or ask whether certain publishing houses show a preference for authors of a certain age or nationality.
+Thanks to this new table, we can now cross-reference more information and go into more depth in our analysis by querying the relationships between various attributes of the works, the publishing houses, and the authors. We could, for example, formulate and test a hypothesis about whether Russian authors tend to publish more frequently in French, or ask whether certain publishing houses show a preference for authors of a given age or nationality.
 
-However, the more records we analyze and the more questions we ask, the more the information accumulates, which makes this table increasingly difficult to use. In some cases, the information itself is complex. For example, the book *The Intellectuals on the Road to Class Power* has more than one author. Its publishing house, Harvester Press, has no known founding date (because information about this small English publisher is rather limited). This is a classic example of the uncertainty that often characterizes research in the humanities. As a result, it becomes increasingly difficult to read, cross-reference, and interpret all of this information.
+However, the more records we analyze and the more questions we ask, the more the information accumulates, which makes this table increasingly difficult to use. In some cases, the information itself is complex. For example, the book *The Intellectuals on the Road to Class Power* has more than one author. Its publishing house, Harvester Press, has no known founding date (since information about this small English publisher is rather limited). This is a classic example of the uncertainty that often characterizes research in the humanities. As a result, it becomes increasingly difficult to read, cross-reference, and interpret all of this information.
 
 When this happens, it is often more useful to start thinking about the “relationships” that connect the different objects of our research and to build a table that represents them – [a data table](https://en.wikipedia.org/wiki/Table_%28database%29) – before gathering them into a [database](https://en.wikipedia.org/wiki/Database).
 
@@ -142,7 +142,7 @@ This now corresponds to what is generally called a “logical data model” whic
 | The Gulag Archipelago | French | 1973 | Le Seuil  | Aleksandr Solzhenitsyn | 
 | Life and Fate | French | 1980 | L’âge d’homme | Vasily Grossman | 
 | The New Class | English | 1957 | Praeger | Milovan Djilas | 
-| The Captive Mind | Anglais | 1953 | Instytut Literacki | Czesław Miłosz | 
+| The Captive Mind | English | 1953 | Instytut Literacki | Czesław Miłosz | 
 | Cogs in the Wheel | French | 1985 | Calmann-Lévy | Michel Heller | 
 | The Intellectuals on the Road to Class Power| English | 1979 | Harvester Press |George Konrad, Iván Szelényi |
 
@@ -152,11 +152,11 @@ This now corresponds to what is generally called a “logical data model” whic
 | First name | Last name | Nationality | Place of birth | Date of birth |  
 | :------ | :------ | :---------------- | :-------------------- | :--------------------- | 
 | Aleksandr | Solzhenitsyn | Russian | Kislovodsk | 1918 |
-| Vassili | Grossman | Russian | Berdychiv | 1905 |
+| Vasily | Grossman | Russian | Berdychiv | 1905 |
 | Milovan | Djilas | Montenegrin | Podbišće |  1911 |
 | Czesław | Miłosz | Polish | Šeteniai | 1911 |
 | Michel | Heller | Russian | Mogilev | 1922 |
-|George | Konrad | Hungarian| Berettyóújfalu | 1933 |
+| George | Konrad | Hungarian| Berettyóújfalu | 1933 |
 | Iván | Szelényi | Hungarian | Budapest | 1938 |
 
 **Table 3: publishing houses**
@@ -170,9 +170,9 @@ This now corresponds to what is generally called a “logical data model” whic
 | Calmann-Lévy | Paris | 1920 | 
 | Harvester Press | Brighton | ? |
 
-We have now organized this information into three tables that represent our dataset. In order to be able to navigate these tables and follow the relationships established in the data model diagram, we would need to connect them. To do so, we need to define both the possibilities and constraints of these relationships – we call this [cardinality](https://en.wikipedia.org/wiki/Cardinality_%28data_modeling%29).[^6]   
+We have now organized this information into three tables that represent our dataset. In order to be able to navigate these tables and follow the relationships established in the data model diagram, we would need to connect them. To do so, we need to define both the possibilities and constraints of these relationships – we call this definition [cardinality](https://en.wikipedia.org/wiki/Cardinality_%28data_modeling%29).[^6]   
 
-When building a relational database, we must carefully consider the types of relationships that can exist between tables: is each element in one table linked exclusively to a single element in another table, or does it have multiple and intersecting relationships (i.e. can it be connected to multiple entries across tables)? In our example of the relationships between authors and works: does each work have only one author (cardinality 1,1)? Or can it have two or more, as is the case with *The Intellectuals on the Road to Class Power* (cardinality 1,N)? Conversely, could each author of a work written by multiple authors also be the author of multiple other works (cardinality N,N)? These are the kinds of questions that inevitably arise during the process of building a database.[^7]  The answers will depend on our specific dataset. In the next section, we will see how to put all of this into practice.
+When building a relational database, we must carefully consider the types of relationships that can exist between tables: is each element in one table linked exclusively to a single element in another table, or does it have multiple and intersecting relationships (i.e. can it be connected to multiple entries across tables)? Thus, in our example of the relationships between authors and works, does each work have only one author (cardinality 1,1)? Or can it have two or more, as is the case with *The Intellectuals on the Road to Class Power* (cardinality 1,N)? Conversely, could each author of a work written by multiple authors also be the author of multiple other works (cardinality N,N)? These are the kinds of questions that inevitably arise during the process of building a database.[^7]  The answers will depend on our specific dataset. In the next section, we will see how to put all of this into practice.
 
 ## Building a database with nodegoat
 
@@ -186,7 +186,7 @@ nodegoat is an open-source, free to use online platform and can also be [install
 
 The instructions that follow are intended to guide readers through the workflow of creating a database with nodegoat according to the principles introduced in the first part of this lesson. The software's design closely reflects the approach described above for modeling research: it treats people, groups, and things as objects connected by various types of relationships.[^9]  nodegoat also offers tools for relational analysis and for creating visualizations, such as maps or networks. Most importantly, the platform accommodates uncertain or ambiguous data, which is common in humanities research. For example, it may suggest using a time interval if exact dates are not available, or drawing a polygon when exact geographic coordinates are not known.
 
-To be clear, the goal of this lesson is not to promote the exclusive use of nodegoat - you can certainly use [other database management software tools specifically designed for research in the humanities and social sciences](https://programminghistorian.org/fr/lecons/introduction-a-heurist). However, by combining all of these tools in a single environment, nodegoat significantly simplifies the process of modeling your research as data. Its main advantage for us, in this lesson, is that it makes it especially easy to define and implement the model we described in abstract terms above.
+To be clear, the goal of this lesson is not to promote the exclusive use of nodegoat - you can certainly use [other database management software tools specifically designed for research in the humanities and social sciences](https://programminghistorian.org/fr/lecons/introduction-a-heurist). However, by combining all of these functionalities in a single environment, nodegoat significantly simplifies the process of modeling your research as data. Its main advantage for us, in this lesson, is that it makes it especially easy to define and implement the model we described in abstract terms above.
 
 ### Setting up your project in nodegoat 
 
@@ -204,7 +204,7 @@ Then, we will go to the **Model** tab in order to define our data model. To star
 
 Under **Name**, we can enter the name of the first object type in our dataset (i.e. “Work”) and under **Descriptions** we can define its attributes. The attributes of the **Work** object type are the title, the language of the first edition, and the date of publication. We must specify the type of value that each attribute takes: **String** (character string) for text values, such as the title of the work; **Date** for a specific format, like the date of publication, or [other](https://perma.cc/K42P-7YB7) kinds of values depending on the nature of the dataset.
 
-We should be careful here: since we include the title of the work as an attribute in **Descriptions**, we must uncheck the **Fixed Field** option (which defines the object type according to the value given in **Name**), and instead check the **Name** box under our first attribute, the **Title**. The objects belonging to the **Work** type in the database will thus take the value given to the **Title** attribute.
+We should be careful here: since we include the title of the work as an attribute in **Descriptions**, we must uncheck the **Fixed Field** option (which defines the object type according to the value given in **Name**), and instead check the **Name** box under our first attribute, i.e., the **Title**. The objects belonging to the **Work** type in the database will thus take the value given to the **Title** attribute.
  
 {% include figure.html filename="en-tr-designing-database-nodegoat-05.jpg" alt="The object type Work and its three attributes (titles, language, date of publication)" caption="Figure 5. Definition of the first object type by selecting ‘Add Object Type’." %} 
 
@@ -242,7 +242,7 @@ To enter a date as a time interval, we can use the **Sub-Object** tab. There, we
  
 {% include figure.html filename="en-tr-designing-database-nodegoat-11.jpg" alt="The Sub-Object tab with Name 'Founding date' and the 'Chronology' option selected under the 'Date' sub-tab" caption="Figure 11. Creating a ‘Chronology’ sub-object for the ‘Publishing House’ type." %}
 
-From now on, the **Publishing House** object type has a different attribute from **Author** and **Work**, which allows us to introduce temporal information as time intervals. Before we continue, we will need to remove the **Founding date** attribute from the **Objects** tab, as we have just replaced it with the **Chronology** sub-object.
+From now on, the **Publishing house** object type has a different attribute from **Author** and **Work**, which allows us to introduce temporal information as time intervals. Before we continue, we will need to remove the **Founding date** attribute from the **Objects** tab, as we have just replaced it with the **Chronology** sub-object.
 
 #### Exploring and using the database
 
@@ -250,13 +250,13 @@ Our model, its object types, and their relationships are now defined. If we go b
  
 {% include figure.html filename="en-tr-designing-database-nodegoat-12.jpg" alt="A data model connecting four tables each corresponding to Authors, Publishing houses, Works and Cities" caption="Figure 12. Visualization of our data model with nodegoat." %}
 
-We can now manually populate our database with the information we collect over the course of our research. To do this, go to the **Data** tab and click the *Add Object Type* option, which appears below the tab for each object type.
+We can now manually populate our database with the information we collect over the course of our research. To do this, go to the **Data** tab and click the *Add Object Type* option which appears below the tab for each object type.
 
 Note that the attribute **Founding date** of the **Publishing house** object type is not displayed with the other attributes, but as an element of the **Sub-Objects**, and whose date is defined as **Chronology**. The software allows us to fill in the details of the chronology with a choice between three options accessible from the drop-down menu that pops up when we press the green “create” button below “Chronology”: 1) “Point” to indicate an exact date; 2) “Statement” to indicate a period after or before a certain date (year, month or day); 3) “Between Statements” to indicate a period between two dates (as in our example, between 1970 and 1979).
  
-{% include figure.html filename="en-tr-designing-database-nodegoat-13.jpg" alt="Under the object Publishing house, there is the Founding date sub-tab which is used to create a Chronology for the Date" caption="Figure 13. Creating a timeline for Harvester Press." %}
+{% include figure.html filename="en-tr-designing-database-nodegoat-13.jpg" alt="Under the object 'Publishing house', there is the 'Founding date' sub-tab which is used to create a 'Chronology' for the 'Date'" caption="Figure 13. Creating a timeline for Harvester Press." %}
 
-{% include figure.html filename="en-tr-designing-database-nodegoat-14.jpg" alt="The Chronology tab for Between Statements, with two boxes for inserting a date in order to create a period between the two dates" caption="Figure 14. Example of a timeline defined as a period 'between statements'." %}
+{% include figure.html filename="en-tr-designing-database-nodegoat-14.jpg" alt="The 'Chronology' tab for 'Between statements', with two boxes for inserting a date in order to create a period between the two dates" caption="Figure 14. Example of a timeline defined as a period 'between statements'." %}
 
 Once we have recorded all the works, authors, and publishing houses, the database interface will appear as shown in the images below. From there, simply click on any item to access its associated information:
  
@@ -297,6 +297,6 @@ To learn more about nodegoat's full potential in more depth, you are encouraged 
 
 [^7]: Bree, P. van, Kessels, G., (2013). nodegoat: a web-based data management, network analysis & visualisation environment, http://nodegoat.net from LAB1100. 
 
-[^8]: The version used to recreate the examples at the time of this translation is 8.4. 
+[^8]: The nodegoat version used to recreate the examples at the time of this translation is 8.4. 
 
 [^9]: The creators of nodegoat describe the relational approach of the software as “object-oriented”. Since this concept is most commonly used to describe a programming paradigm, we prefer to avoid the use of this term in order to avoid any confusion.

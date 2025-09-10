@@ -56,34 +56,34 @@ No prior knowledge is necessary.
 
 ## What is Wikidata?
 
-[Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) is a free, completely open platform that is entirely built with Linked Open Data (LOD). This database, launched in October 2012, is one of the most innovative projects aimed at centralizing data across a wide range of topics and communities operated by the Wikimedia Foundation (Figure 1). The foundation is a nonprofit organization that, through various projects, provides free information and knowledge around the world.
+[Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) is a free and open platform that is entirely built with Linked Open Data (LOD). Launched in October 2012 by the Wikimedia Foundation, this database represents one of the most innovative projects for centralizing data across diverse topics and communities (Figure 1). The foundation is a nonprofit organization that provides free information and knowledge.
 
 Projects under the Wikimedia Foundation umbrella are organized into four categories: content projects, multilingual content projects, outreach and administrative projects, and technical and development projects.
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-01.png" alt="Projects under the Wikimedia Foundation umbrella organized into four categories: content projects, multilingual content projects, outreach and administration projects, and technical and development projects." caption="Figure 1. An overview of the Wikimedia Foundation’s projects." %}
 
-According to its own [website](https://www.wikidata.org/wiki/Wikidata:Introduction), both the content and structure of Wikidata are in the public domain. This means that we can copy, modify, distribute, and present the data—even for commercial purposes—without the need for permission. In addition, Wikidata has the following features:
+According to its own [website](https://www.wikidata.org/wiki/Wikidata:Introduction), both the content and structure of Wikidata are in the public domain. This allows users to freely copy, modify, distribute, and present the data for any purpose, including commercial use, without seeking permission. Wikidata also has these key features:
 
 - Accessible to other projects: The data stored in Wikidata is available for use by other Wikimedia projects, such as Wikipedia. This creates a centralized source of information that can be leveraged by various applications and websites.
 
 - Collaborative: Content creation and editing in Wikidata is enriched by contributions from volunteer users around the world.
 
-- Continuously updated: The community actively contributes to the improvement and expansion of the database, which is constantly being updated. This helps ensure that the information is current, reflecting recent changes and discoveries.
+- Continuously updated: The community actively contributes to the improvement and expansion of the database. This helps ensure that the information is current, reflecting recent changes and discoveries.
 
 - Version history: Wikidata keeps a revision history for each item and statement, allowing changes to be tracked over time. This ensures transparency and the ability to revert edits if necessary.
 
 - Multilingual: It supports the representation of items and their descriptions in over 300 languages.
 
-- Structured data: This is a key feature—information is organized into specific fields and categories (that is, following a model with a set of rules and constraints). This improves consistency and makes it easier for both humans and machines to search for, access, retrieve, update, and reuse the data.
+- Structured data: All information is organized into specific fields and categories (following a model with a set of rules and constraints). This improves consistency and makes it easier for both humans and machines to search for, access, retrieve, update, and reuse the data.
 
 In 2019, Wikidata had approximately 55 million created items. Four years later, it had surpassed 100 million items (Figure 2), covering a wide range of topics such as objects, people, places, reports, art, buildings of cultural interest, animals, and much more.
 
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-02.png" alt="Line graph showing the increase in the creation of Wikidata elements, from 0 in 2013 to around 130 million in 2025." caption="Figure 2. Item creation over time in Wikidata." %}
 
-Wikidata also offers a wide variety of tools to edit, query, and visualize its data. This [semantic web](https://en.wikipedia.org/wiki/Semantic_Web) model helps advance social justice, as it enables small communities that are often outside the mainstream of science to access, apply, and generate open knowledge and consequeyntly have a broader and more efficient global impact. Obregón Sierra[^7], for example, used Wikidata to include information about libraries in Spain so that they could be accessed by anyone, anywhere in the world. Before beginning the data entry process in Wikidata, the author noted that there were only 303 items corresponding to libraries in Spain. After importing all the libraries listed in the Spanish government’s dataset, 7,861 additional libraries were created, and data for 206 pre-existing items was improved. As for the number of galleries, libraries, archives, and museums (GLAMs) in Spain, there were 2,424 items, making it the 13th-ranked country—far behind the United States, which had 47,586. After importing all the libraries, Spain rose to second place in the ranking.[^7]
+Wikidata offers a wide variety of tools to edit, query, and visualize its data. This [semantic web](https://en.wikipedia.org/wiki/Semantic_Web) model helps advance social justice, as it enables small communities that are often outside the mainstream of science to access, apply, and generate open knowledge and consequently have a broader impact. Obregón Sierra[^7], for example, used Wikidata to include information about libraries in Spain so that they could be accessed by anyone, anywhere in the world. Initially, Wikidata contained only 303 Spanish library entries. After importing the Spanish government's library dataset, the author created 7,861 new entries and enhanced 206 existing ones. This addition elevated Spain from 13th place (2,424 GLAM items) to second place in global GLAM rankings.[^7]
 
-Since Wikidata can connect local metadata with global data, many institutions with digital collections have begun working with it to increase their global reach. One institutional development worth highlighting is the widespread use of Wikidata in library cataloging.[^8] In this context, Wikidata identifiers have enabled libraries to enrich their records with data available in Wikidata. A [pilot project](https://www.wikidata.org/wiki/Wikidata:WikiProject_PCC_Wikidata_Pilot) from the Library of Congress’s Program for Cooperative Cataloging is an example of the tremendous potential that integrating Wikidata into library workflows can offer.
+Since Wikidata can connect local metadata with global data, many institutions with digital collections have begun working with it to increase their global reach. One institutional development worth highlighting is the widespread use of Wikidata in library cataloging.[^8] Wikidata identifiers have enabled libraries to enrich their own records. The [Library of Congress’s Program for Cooperative Cataloging pilot project](https://www.wikidata.org/wiki/Wikidata:WikiProject_PCC_Wikidata_Pilot) demonstrates the significant potential of integrating Wikidata into library workflows.
 
 ## Wikidata structure
 

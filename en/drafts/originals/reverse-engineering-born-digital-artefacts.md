@@ -254,8 +254,9 @@ $ hexyl cat.jpg | tail -n 16; hexyl cat-with-hidden-content.jpg | tail -n 16
 │000319b0│ 03 00 00 50 4b 05 06 00 ┊ 00 00 00 01 00 01 00 58 │•00PK••0┊000•0•0X│
 │000319c0│ 00 00 00 59 00 00 00 00 ┊ 00                      │000Y0000┊0       │
 └────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
-
 ```
+
+We are mainly interested in the last few lines of output, in the last two columns. The output of our `hidden-content.zip` file let's us discern some human-readable information, the name of the `hidden-content.txt` file as well as this textfile's contents. Whereas the imagefile `cat.jpg` doesn't contain any such indications, the output of `cat-with-hidden-content.jpg` does have similar output as the ZIP file. We can open both image file and they behave and look the same, but our altered version now secretly hosts a zipped text file.
 
 ### Analysing the Image Zip File
 

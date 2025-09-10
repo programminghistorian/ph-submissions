@@ -286,10 +286,3 @@ Tillman, Ruth. 2020. *Learning Cell Cross in OpenRefine.* <https://ruthtillman.c
 University of Toronto Libraries. *OpenRefine Augmenting Activity 2: Using Reconciliation Services*. 2019. <https://mdl.library.utoronto.ca/technology/tutorials/openrefine-augmenting-activity-2-using-reconciliation-services>
 
 
-
-
-
-
-
-
-

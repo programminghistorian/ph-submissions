@@ -113,7 +113,7 @@ Pour exécuter le code de la leçon sur Colab, vous devrez :
 - Une fois le carnet ouvert, nous vous recommandons d'en enregistrer une copie dans votre propre Google Drive: **Fichier** > _Enregistrer une copie dans le Drive_.
 - Pour utiliser un GPU, cliquez sur **Exécution** > **Modifier le type d'exécution**, et choisissez un des boutons `GPU` parmi les boutons disponibles dans **Accélérateur matériel**. Google Colab change parfois la dénomination des GPU disponibles. À l'heure de la traduction de ce carnet, le nom est `GPU T4`.
 
-{% include figure.html filename="colab-hardware.png" alt="Capture d'écran montrant l'option de choix du matériel pour l'exécution du code" caption="Figure 1 : Menu de paramétrage des carnets Colab" %}
+{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-01.png" alt="Capture d'écran montrant l'option de choix du matériel pour l'exécution du code" caption="Figure 1. Menu de paramétrage des carnets Colab" %}
 
 
 - L'interface des carnets Colab devrait vous être familière si vous avez déjà utilisé des carnets Jupyter. Pour exécuter une cellule contenant du code, cliquez sur le bouton en forme de triangle pointant vers la droite (qui se trouve à gauche de la cellule) ou, si la cellule est sélectionnée, utilisez _Maj + Entrée_.
@@ -173,11 +173,11 @@ Si vous regardez les images des publicités, vous verrez que certaines d'entre e
 
 Une publicité illustrée [^7] :
 
-{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-02.png" alt="Une image en noir et blanc d'une publicité de journal. L'image contient une illustration d'une boîte à café sur la gauche de l'annonce." caption="Figure 2. Un exemple de publicité illustrée" %}
+{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-02.jpg" alt="Une image en noir et blanc d'une publicité de journal. L'image contient une illustration d'une boîte à café sur la gauche de l'annonce." caption="Figure 2. Un exemple de publicité illustrée" %}
 
 Une annonce textuelle [^8]:
 
-{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-03.png" alt="Une image en noir et blanc d'une publicité de journal. La publicité ne contient que du texte et concerne une assurance incendie, avec l'adresse de la compagnie d'assurance." caption="Figure 3. Un exemple de publicité sans illustration" %}
+{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-03.jpg" alt="Une image en noir et blanc d'une publicité de journal. La publicité ne contient que du texte et concerne une assurance incendie, avec l'adresse de la compagnie d'assurance." caption="Figure 3. Un exemple de publicité sans illustration" %}
 
 Notre classifieur sera entraîné à prédire à quelle catégorie appartient une publicité. Nous pourrions l'utiliser pour automatiser la recherche de publicités comportant des illustrations en vue d'une analyse «&#xA0;manuelle&#xA0;» plus poussée. Nous pourrions également utiliser ce classifieur plus directement pour quantifier le nombre d'annonces contenant des illustrations au cours d'une année donnée et découvrir si ce nombre a évolué dans le temps, ainsi que l'influence d'autres facteurs tels que le lieu de publication. Votre objectif de recherche pourra influencer la façon d'étiqueter votre corpus de données ainsi que la manière dont vous choisissez d'évaluer si un modèle est suffisamment performant. Nous approfondirons ces questions au fil de cette leçon en deux parties.
 

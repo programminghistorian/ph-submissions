@@ -156,7 +156,7 @@ De plus, il y a aussi des types de données enrichies mieux indexées que d’au
 
 ### Dans quels cas la réconciliation n’est-elle pas adaptée ?
 
-Dans OpenRefine, lorsqu’une colonne de données peut être réconciliée avec une liste de termes de moins d’une vingtaine d’éléments, alors il est plus simple d’utiliser des facettes pour traiter les données. La réconciliation est plutôt adaptée pour tenter d’apparier ses données avec un grand ensemble de candidats potentiels. Dans OpenRefine, une facette est un regroupement de données d'après une dimension choisie. Dans notre leçon, les facettes les plus pertinentes sont les &laquo;&nbsp;Facettes textuelles&nbsp;&raquo; et les facettes &laquo;&nbsp;Par avis&nbsp;&raquo; (dans le menu **Reconcilier**).
+Dans OpenRefine, lorsqu’une colonne de données peut être réconciliée avec une liste de termes de moins d’une vingtaine d’éléments, alors il est plus simple d’utiliser des facettes pour traiter les données. La réconciliation est plutôt adaptée pour tenter d’apparier ses données avec un grand ensemble de candidats potentiels. Dans OpenRefine, une facette est un regroupement de données d'après une dimension choisie. Vous pouvez considérer une facette comme une lentille à travers laquelle [vous visualisez un sous-ensemble spécifique de données, en fonction d’un critère de votre choix](/fr/lecons/nettoyer-ses-donnees-avec-openrefine#appliquer-une-facette-et-regrouper-des-valeurs-proches). Dans notre leçon, les facettes les plus pertinentes sont les &laquo;&nbsp;Facettes textuelles&nbsp;&raquo; et les facettes &laquo;&nbsp;Par avis&nbsp;&raquo; (dans le menu **Reconcilier**).
 
 ### Est-il possible de réconcilier avec d’autres sources de données ?
 
@@ -284,6 +284,7 @@ Saby, Mathieu. 2020. *Tutoriel OpenRefine 3.4 : nettoyer, préparer et transform
 Tillman, Ruth. 2020. *Learning Cell Cross in OpenRefine.* <https://ruthtillman.com/talk/cell-cross-webinar-2020-03/>
 
 University of Toronto Libraries. *OpenRefine Augmenting Activity 2: Using Reconciliation Services*. 2019. <https://mdl.library.utoronto.ca/technology/tutorials/openrefine-augmenting-activity-2-using-reconciliation-services>
+
 
 
 

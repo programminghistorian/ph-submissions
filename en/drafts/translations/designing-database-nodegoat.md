@@ -164,7 +164,7 @@ This now corresponds to what is generally called a “logical data model” whic
 | Name | Place | Founding date | 
 | :-------------------- | :------ | :-------------------- | 
 | Le Seuil | Paris | 1930 | 
-| L’âge de l’homme | Geneva | 1955 |
+| L’âge d’homme | Geneva | 1955 |
 | Praeger | New York | 1950 |
 | Instytut Literacki | Paris | 1946 | 
 | Calmann-Lévy | Paris | 1920 | 

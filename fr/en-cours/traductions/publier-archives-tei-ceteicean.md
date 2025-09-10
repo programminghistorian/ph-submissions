@@ -17,10 +17,10 @@ editors:
 translator:
 - Yanet Hernández Pedraza
 translation-editor:
-- Forename Surname
+- Matthias Gille Levenson
 translation-reviewer:
-- Forename Surname
-- Forename Surname
+- Lucence Ing
+- Andrés Echavarria
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/672
 difficulty: 2
 activity: transforming

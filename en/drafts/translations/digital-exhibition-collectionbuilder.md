@@ -203,7 +203,7 @@ To do this, we will edit the **_config.yml** file:
 
 Under the heading # COLLECTION SETTINGS change line 37 **metadata: demo-metadata** to the name of your metadata file you just uploaded. In our example, we changed it to **metadata: playbills-demo**
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-3-config-collection-settings.png" alt="Screenshot of the relevant section of the _config.yml file showing where to point CollectionBuilder to your metadata file." caption="Figure 3. Screenshot of the relevant section of the `_config.yml` file showing where to point CollectionBuilder to your metadata file." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-3-config-collection-settings.png" alt="Screenshot of the relevant section of the config.yml file showing where to point CollectionBuilder to your metadata file." caption="Figure 3. Screenshot of the relevant section of the `config.yml` file showing where to point CollectionBuilder to your metadata file." %}
 
 ### 3.4 Publish your site
 
@@ -254,12 +254,12 @@ The first change we will make is to add our logo, banner image, and update the t
 
 Open the **_config.yml** file again. Under **# SITE SETTINGS**, update your site's title, tagline, and description.
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-8-site-settings.png" alt="Screenshot of the relevant text to update your site's title, tagline, and description in the _config.yml file." caption="Figure 8. Screenshot of the relevant text to update your site's title, tagline, and description in the `_config.yml` file." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-8-site-settings.png" alt="Screenshot of the relevant text to update your site's title, tagline, and description in the config.yml file." caption="Figure 8. Screenshot of the relevant text to update your site's title, tagline, and description in the `config.yml` file." %}
 
 Under ** Site/Organization Branding** section, you can add as much organizational information as you want. In this screenshot, you can see our library name and URL: 
 
 
- {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-9-site-org-branding.png" alt="Screenshot of the relevant text in the _config.yml file for updating your organizational information." caption="Figure 9. Screenshot of the relevant text in the `_config.yml` file for updating your organizational information." %}
+ {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-9-site-org-branding.png" alt="Screenshot of the relevant text in the config.yml file for updating your organizational information." caption="Figure 9. Screenshot of the relevant text in the `config.yml` file for updating your organizational information." %}
  
 Next, add a banner or a featured image to the home page by editing the **theme.yml** in the **_data** folder. If your exhibition includes images, you can add the **objectID** of any image to feature it. This has the added advantage of automatically including a link to the featured image in your collection, as seen in the [https://www.lib.uidaho.edu/digital/psychiana/](https://www.lib.uidaho.edu/digital/psychiana/) example.
 
@@ -275,7 +275,7 @@ Next, we can change the number and arrangement of content boxes that appear on t
 
 In our example, we’ve used the location metadata field to indicate the physical location of the playbill, which helps library staff retrieve the items if requested. However, you do not necessarily need to be able to browse that on the front page.
 
-To delete that box, first, locate the line of code between the {% and %} that uses **field="location"** and delete the entire line of code on line 19. We also want to delete the “objects” box line of code on line 21 since everything in our example exhibition is a PDF, so it didn’t give the viewer any useful information to browse.
+To delete that box, first, locate the line of code between the `and` that uses **field="location"** and delete the entire line of code on line 19. We also want to delete the “objects” box line of code on line 21 since everything in our example exhibition is a PDF, so it didn’t give the viewer any useful information to browse.
 
 The next thing you can do is change the order of the boxes. In our example, we moved the subject box to the top and pushed the timeline down. We also changed the title of the Subject box to **Top Genre** to better reflect the metadata.
 

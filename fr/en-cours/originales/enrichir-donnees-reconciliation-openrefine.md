@@ -16,7 +16,7 @@ difficulty: 1
 activity: [acquiring]
 topics: [data-management]
 abstract: Cette leçon vous initie à enrichir un jeu de données de recherche avec d’autres données liées provenant de sources externes telles que Wikidata. Cet enrichissement, basé sur un processus nommé &laquo;&nbsp;réconciliation&nbsp;&raquo;, est géré par OpenRefine.
-avatar_alt:  
+avatar_alt: Une gravure montrant des femmes fabriquant des morceaux de tissu dans un atelier.
 doi:
 ---
 
@@ -284,6 +284,7 @@ Saby, Mathieu. 2020. *Tutoriel OpenRefine 3.4 : nettoyer, préparer et transform
 Tillman, Ruth. 2020. *Learning Cell Cross in OpenRefine.* <https://ruthtillman.com/talk/cell-cross-webinar-2020-03/>
 
 University of Toronto Libraries. *OpenRefine Augmenting Activity 2: Using Reconciliation Services*. 2019. <https://mdl.library.utoronto.ca/technology/tutorials/openrefine-augmenting-activity-2-using-reconciliation-services>
+
 
 
 

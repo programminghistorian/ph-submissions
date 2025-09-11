@@ -89,31 +89,31 @@ Since Wikidata can connect local metadata with global data, many institutions wi
 
 In this section, we will explore the organization of Wikidata, examining its components and understanding their specific functions. Through this analysis, we will strengthen our understanding of Wikidata’s hierarchical and modular structure.
 
-One of the first terms we need to become familiar with is “items.” These are the fundamental units of Wikidata. Items represent unique concepts, which can cover a wide range of entities such as people, places, events, ideas, celestial bodies, living species, films, literary works, and more.
+'Items' are the fundamental units of Wikidata. They represent unique concepts, which can cover a wide range of entities such as people, places, events, ideas, celestial bodies, living species, films, literary works, and more.
 
 Each Wikidata item consists of a label, which is a short descriptive name used to identify the concept, followed by a unique identifier formatted as the letter Q followed by a number. For example, the journal Programming Historian has the identifier Q50817399 (Figure 3). This unique designation allows for easy referencing and access to a specific item, regardless of the language in which it is described. It is not necessary to memorize each item’s Q-number.
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-03.png" alt="Element for the journal ‘Programming Historian’ with its label and Q identifier." caption="Figure 3. Example of a Wikidata identifier: the Q number for the journal ‘Programming Historian’." %}
 
-Labels in Wikidata can be ambiguous. For instance, “San Martín,” which could refer to a person, a city, an island, or a region in Peru. However, identifiers are universally applicable and eliminate the need for language-specific identifiers. This feature enhances machine readability and enables bots to efficiently edit Wikidata.
+Labels in Wikidata can be ambiguous. For instance, “San Martín,” which could refer to a person, a city, an island, or a region in Peru. Identifiers, however, are universally applicable and eliminate the need for language-specific identifiers. This feature enhances machine readability and enables bots to efficiently edit Wikidata.
 
 Following the label and identifier, each item includes a short description, which provides additional details to help distinguish it from other potentially similar items. This description is key to understanding the item's context.
 
-Items may also include aliases, which are alternative names or nicknames. These additional variations help make items easier to find and recognizable by different communities (Figure 4).
+Items may also include aliases, which are alternative names or nicknames. These help make items easier to find and recognizable by different communities (Figure 4).
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-04.png" alt="Element for Charles III, King of the United Kingdom, with its various descriptions highlighted." caption="Figure 4. Example of a label, identifier, description, and name variants (aliases) in Wikidata." %}
 
-After this initial section (which includes the label, Q-identifier, description, and aliases), we find the language section, which enhances the accessibility and usefulness of information by providing translations of items into multiple languages. Figure 5 shows the example of the item for “rain” in Wikidata, along with its translations in Spanish and Chinese. This multilingual section makes information more accessible and useful to a global audience by enabling understanding across languages.
+After this initial section (which includes the label, Q-identifier, description, and aliases). Figure 5 shows the example of the item “rain” in Wikidata, along with its translations in Spanish and Chinese. This multilingual section makes information more accessible and useful to a global audience by enabling understanding across languages.
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-05.png" alt="Element for ‘rain’ with translations in Spanish and Chinese" caption="Figure 5. Example of multilingualism in Wikidata: the case of the item ‘rain’." %}
 
-When describing an item in Wikidata, we do so using statements. These are assertions that represent specific structured information about an item in the database. Items are connected to one another through a set of properties (attributes or characteristics) and associated values, which together form these statements (Figure 6). These statements establish the relationships and define Wikidata’s hierarchical and modular structure.
+Wikidata describes items through statements, structured assertions that capture specific information about entities in the database. Each statement consists of a property (an attribute or characteristic) paired with a corresponding value, creating connections between different items (Figure 6). This system of interconnected statements forms the foundation of Wikidata's hierarchical and modular architecture, establishing the relationships that define how knowledge is organized within the platform.
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-06.png" alt="Element for the journal ‘Programming Historian’ showing five of its statements." caption="Figure 6. Statements in Wikidata: examples of properties and values." %}
 
 Each property has a unique identifier in Wikidata, formatted as the letter P followed by a number. Properties in Wikidata are designed to be reusable across different contexts. This means a property can be applied to multiple item types and is not limited to a single use. Each property has its own documentation page in Wikidata, providing detailed information about its purpose, proper use, and examples.
 
-On the other hand, values in Wikidata represent the specific information associated with properties used to describe items in the database. Values can take many forms, including text, numbers, dates, links to other Wikidata items, geographic coordinates, or media files, among others. Values must conform to the constraints defined by the data type of the property they’re associated with. For instance, if a property has a data type of “date,” then the value assigned to that property must be a valid date.
+Values, on the other hand, represent the specific information associated with properties used to describe items in the database. Values can take many forms, including text, numbers, dates, links to other Wikidata items, geographic coordinates, or media files, among others. Values must conform to the constraints defined by the data type of the property they’re associated with. For instance, if a property has a data type of “date,” then the value assigned to that property must be a valid date.
 
 Furthermore, values in Wikidata are open to being edited by any user on the platform. This enables open, community-driven collaboration to maintain and improve the quality of information in the database.
 

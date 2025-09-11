@@ -104,9 +104,9 @@ S’il n’y a pas de choix proposé ou si les choix proposés ne sont pas perti
 
 Toutes les cellules de données qui ont été réconciliées peuvent maintenant être enrichies par des données externes si celles-ci sont indexées dans les éléments correspondants de Wikidata.
 
-Cliquez sur les options de la colonne **Titre_RECON** > **Éditer la colonne** > **Ajouter des colonnes à partir de valeurs réconciliées** > **Ajouter une propriété**. Sélectionnez **Propriétés suggérées** : &laquo;&nbsp;Qid&nbsp;&raquo; > **OK** (ou écrivez &laquo;&nbsp;Qid&nbsp;&raquo; dans la case de recherche et sélectionnez &laquo;&nbsp;SPARQL:qid&nbsp;&raquo;). Il est aussi possible de cliquer sur les options de la colonne **Titre_RECON** > **Réconcilier** > **Add column with URLs of matched entities…** et sélectionner : **Nom de la colonne : &laquo;&nbsp;Qid&nbsp;&raquo;**.
+Cliquez sur les options de la colonne **Titre_RECON** > **Éditer la colonne** > **Ajouter des colonnes à partir de valeurs réconciliées** > **Ajouter une propriété**. Sélectionnez **Propriétés suggérées** : &laquo;&nbsp;Qid&nbsp;&raquo; > **OK** (ou écrivez &laquo;&nbsp;Qid&nbsp;&raquo; dans la case de recherche et sélectionnez &laquo;&nbsp;SPARQL:qid&nbsp;&raquo;). Il est aussi possible de cliquer sur les options de la colonne **Titre_RECON** > **Réconcilier** > **Ajouter une colonne avec les URL des valeurs réconciliées…** et sélectionner : **Nom de la colonne : &laquo;&nbsp;Qid&nbsp;&raquo;**.
 
-Une nouvelle colonne **Qid** contenant l’identifiant Wikidata est créée (sous la forme d’un identifiant ou sous la forme d’une URL avec l’identifiant, selon la méthode utilisée précédemment).
+Une nouvelle colonne **Qid** (identifiant unique de chaque élément décrit dans Wikidata) est créée sous la forme d’un identifiant ou sous la forme d’une URL avec l’identifiant, selon la méthode utilisée précédemment.
 
 Recommencez en ajoutant les propriétés suivantes :
 
@@ -284,5 +284,6 @@ Saby, Mathieu. 2020. *Tutoriel OpenRefine 3.4 : nettoyer, préparer et transform
 Tillman, Ruth. 2020. *Learning Cell Cross in OpenRefine.* <https://ruthtillman.com/talk/cell-cross-webinar-2020-03/>
 
 University of Toronto Libraries. *OpenRefine Augmenting Activity 2: Using Reconciliation Services*. 2019. <https://mdl.library.utoronto.ca/technology/tutorials/openrefine-augmenting-activity-2-using-reconciliation-services>
+
 
 

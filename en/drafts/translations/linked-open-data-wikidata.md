@@ -119,25 +119,23 @@ Furthermore, values in Wikidata are open to being edited by any user on the plat
 
 ## Create an account and an element in Wikidata: Step-by-step
 
-Although it’s not strictly necessary to have a user account to edit Wikidata, it’s recommended to create one, as it will enhance your experience as an editor and allow you to engage more effectively with the Wikidata community. If you already have an account from any other Wikimedia project, you can use it here as well. With an account, you can track your contributions (i.e., view your edit history). It also enables communication with other users, lets you leave messages on other editors’ discussion pages, and receive notifications about changes to items you’re following. In addition, the community tends to place more trust in edits made by registered users. The figure highlights the button with the specific link to start this process.
+Although having a user account isn't strictly necessary to edit Wikidata, creating one is recommended because it will enhance your editing experience and allow you to engage more effectively with the Wikidata community. If you already have an account from any other Wikimedia project, you can use it here as well. With an account, you can track your contributions by viewing your edit history. It also enables communication with other users, allows you to leave messages on other editors' discussion pages, and lets you receive notifications about changes to items you're following. Additionally, the community tends to place more trust in edits made by registered users. The figure highlights the button that provides the specific link to start this process.
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-07.png" alt="Top-right menu on Wikidata’s homepage showing the option to create a user account." caption="Figure 7. Account creation section on Wikidata." %}
 
 You can use your existing Wikimedia account or create a new one specifically for Wikidata. To do so, go to the [Wikidata homepage](https://www.wikidata.org/) and click on Create Account in the upper-right corner.
 
-After logging in, before adding a new item, it’s recommended to search Wikidata to make sure the item doesn’t already exist. If you find a similar item, you can contribute to it instead of creating a new one. If the item doesn’t exist, you can create a new one. Click the Create a new item button at the top-right corner of the Wikidata homepage (Figure 8).
-
+After logging in and before adding a new item, it is recommended that you search Wikidata to ensure the item does not already exist. If you find a similar item, you can contribute to it instead of creating a new one. If the item does not exist, you can create a new one. Click the "Create a new item" button in the top-right corner of the Wikidata homepage (Figure 8).
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-08.png" alt="Left-side menu on Wikidata’s homepage showing the option to create a new item." caption="Figure 8. Creating a new item on Wikidata." %}
 
-
-From there, you can begin filling out the fields by entering the required information for your new item. Typically, you’ll include at least a name and a description for the new item (Figure 9). Keep in mind that there are a few established conventions that help ensure consistency across the project:
+From there, you can begin filling out the fields by entering the required information for your new item. Typically, you will include at least a name and description for the new item (Figure 9). Keep in mind that there are several established conventions that help ensure consistency across the project:
 
 - Lowercase: Descriptions generally start with a lowercase letter unless the first word is a proper noun that requires capitalization.
 
 - Brevity and clarity: Descriptions should be short and clear, offering concise information about the item in a way that’s easy to understand. In most cases, the proper length is between two and twelve words.
 
-- Avoid redundancy: Don’t repeat information already present in the item’s label. The description should add context or clarify the item.
+- Avoid redundancy: Do not repeat information already present in the item’s label. The description should add context or clarify the item.
 
 - No initial articles: Avoid starting descriptions with articles (such as “a” or “an”) to maintain uniformity and simplicity.
 
@@ -149,11 +147,11 @@ From there, you can begin filling out the fields by entering the required inform
 
 Next, it’s time to start adding statements to enrich the item’s information.
 
-In Wikidata, the first statement commonly added is the “instance of” property (P31), which indicates the type of entity the item represents. This statement helps classify and organize information within Wikidata. Due to the wide range of items in Wikidata, there are many possibilities for the “instance of” statement. Depending on what you’re creating, you’ll choose the entity type that best fits the nature of the object or concept.
+In Wikidata, the first statement commonly added is the “instance of” property (P31), which indicates the type of entity the item represents. This statement helps classify and organize information within Wikidata. Due to the wide range of items in Wikidata, there are many possibilities for the “instance of” statement. Depending on what you’re creating, you’ll choose the entity type that best fits the nature of your object or concept.
 
 For example:
 
-If you’re creating an item for a well-known person, you might use: instance of: human, while if you’re describing Paris, the first statement could be: instance of: city. This helps establish the basic nature of the item and connects it to other similar entries in the database. Here are some additional examples of “instance of” cases:
+If you’re creating an item for a well-known person, you might use: 'instance of: human', while if you’re describing Paris, the first statement could be: 'instance of: city'. This helps establish the basic nature of the item and connects it to other similar entries in the database. Here are some additional examples of “instance of” cases:
 
 - Human: For an entity representing a specific person
 
@@ -187,7 +185,7 @@ Statements in Wikidata consist of (at least) one property–value pair. Figure 1
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-10.png" alt="'Instance of' property with three associated values to represent an open access scholarly journal of librarianship" caption="Figure 10. Example of the ‘instance of’ statement for a journal." %}
 
-There is no specific limit on the number of properties and values you can add to an item in Wikidata. The choice depends on the amount and relevance of information you wish to include about the scientific journal. You can add as many as are necessary to fully describe the item you are representing. For example, other values that could also be included are specialized journal or society journal. However, it’s important to consider the relevance and accuracy of the information you are contributing. The goal is not to add as much as possible, but rather to provide meaningful and useful data for users.
+There is no limit on the number of properties and values you can add to an item in Wikidata. It depends on the amount of information you wish to include about the scientific journal. You can add as many as necessary to fully describe the item you are representing. For example, other values that could also be included are specialized journal or society journal. However, it’s important to consider the relevance and accuracy of the information you are contributing. The goal is not to add as much as possible, but rather to provide meaningful and useful data for users.
 
 As shown in Figure 11, the next property added to this item is [“short name” (P1813)](https://www.wikidata.org/wiki/Property:P1813). In the case of journals, this is used to record abbreviated titles. Following that, the full official title has been added, along with its reference. Whenever possible, it’s good practice to provide references to support the information you enter. This helps maintain the reliability and verifiability of Wikidata content. References can be links to trustworthy sources such as official websites, recognized databases, books, scholarly articles, or any other academic publication that supports the claim made in the statement. It's important to note that social media sources are not considered appropriate references in Wikidata.
 
@@ -223,7 +221,7 @@ Using Wikidata to create person records also supports identity management in lib
 
 When creating data about people, especially living individuals, it is important to consider ethical issues related to dignity, safety, and privacy. The Wikidata page [Wikidata:Living people](https://www.wikidata.org/wiki/Wikidata:Living_people) states that only verifiable information should be included, and that this information must not violate reasonable expectations of privacy. Statements about a person must be backed by reliable sources. Remember that social media is not considered an acceptable source on Wikidata.
 
-The first step in creating a person record in Wikidata is to make sure a record does not already exist. If none exists, you may create a new item. In the label field, enter the name by which the person is most commonly known. Then, write a brief description of the person, and optionally include other name variants. After completing the label and description, you can begin adding statements. The first statement should be [“instance of” (P31)](https://www.wikidata.org/wiki/Property:P31) with the value [“human” (Q5)](https://www.wikidata.org/wiki/Q5). Figure 13 shows how this is done for Puerto Rican philosopher Francisco José Ramos [(Q105725041)](https://www.wikidata.org/wiki/Q105725041).
+The first step in creating a person record in Wikidata is to make sure a record does not already exist. If none exists, you may create a new item. In the label field, enter the name by which the person is most commonly known. Then, write a brief description of the person, and optionally include other name variants. After completing the label and description, you can begin adding statements. The first statement should be [“instance of” (P31)](https://www.wikidata.org/wiki/Property:P31) with the value [“human” (Q5)](https://www.wikidata.org/wiki/Q5). Figure 13 shows how this was done for Puerto Rican philosopher Francisco José Ramos [(Q105725041)](https://www.wikidata.org/wiki/Q105725041).
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-13.png" alt="Element for Francisco José Ramos showing the first statement as 'instance of: human'." caption="Figure 13. Label, description, and name variants in Wikidata." %}
 
@@ -243,7 +241,7 @@ Recording identifiers associated with a person is one of the most important aspe
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-16.png" alt="List of various identifiers that can be related to a person" caption="Figure 16. Identifiers associated with a person in Wikidata." %}
 
-These are just some of the properties available for creating linked open data about individuals in Wikidata. Below are other relevant properties that can provide more detailed information. However, we must be especially cautious when entering data about living people and always consider ethical implications related to their dignity, safety, and privacy.
+These are just some of the properties available for creating linked open data about individuals in Wikidata. Below are other relevant properties that can provide more detailed information. However, we must be cautious when entering data about living people and always consider ethical implications related to their dignity, safety, and privacy.
 
 - [“place of birth” (P19)](https://www.wikidata.org/wiki/Property:P19): To specify the person’s known birthplace.
 

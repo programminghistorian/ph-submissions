@@ -189,11 +189,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-01.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-01.png" alt="Diagramme en barres représentant, sur l'axe des abscisses, 8 origines sociales (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers) et sur l'axe des ordonnées le nombre de personnes admises au baccalauréat en 2024 (tous types confondus), le nombre d'admis varie entre 6k et 200k.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-01.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-01.png" alt="Diagramme en barres représentant, sur l'axe des abscisses, 8 origines sociales (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers) et sur l'axe des ordonnées le nombre de personnes admises au baccalauréat en 2024 (tous types confondus), le nombre d'admis varie entre 6k et 200k.">
 	</a>
 <figcaption>
-    <p>Figure 1. Un diagramme en barres avec une interactivité simple en utilisant Plotly Express. Si les lecteur·rice·s survolent les barres, on peut y voir apparaître des boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-01.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 1. Un diagramme en barres avec une interactivité simple en utilisant Plotly Express. Si les lecteur·rice·s survolent les barres, on peut y voir apparaître des boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-01.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -219,11 +219,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-02.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-02.png" alt="Diagramme en barres représentant, sur l'axe des abscisses, 8 origines sociales (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers) et sur l'axe des ordonnées le nombre de personnes admises au baccalauréat en 2024 (tous types confondus), le nombre d'admis varie entre 6k et 200k. Chaque barre est d'une couleur différente et décrite dans une légende.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-02.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-02.png" alt="Diagramme en barres représentant, sur l'axe des abscisses, 8 origines sociales (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers) et sur l'axe des ordonnées le nombre de personnes admises au baccalauréat en 2024 (tous types confondus), le nombre d'admis varie entre 6k et 200k. Chaque barre est d'une couleur différente et décrite dans une légende.">
 	</a>
 <figcaption>
-    <p>Figure 2. Un diagramme en barres avec une interactivité simple en utilisant Plotly Express. Cette visualisation est une variante de la Figure 1 avec cette fois-ci des couleurs et une légende interactive qui permet aux lecteur·rice·s d'isoler ou bien de retirer certaines barres. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-02.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 2. Un diagramme en barres avec une interactivité simple en utilisant Plotly Express. Cette visualisation est une variante de la Figure 1 avec cette fois-ci des couleurs et une légende interactive qui permet aux lecteur·rice·s d'isoler ou bien de retirer certaines barres. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-02.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -261,11 +261,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-03.png" alt="Courbe du pourcentage d'admission au baccalauréat (tous types confondus) entre 1997 et 2024 associée à une légende. Huit courbes sont présentées, une par origine sociale (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers), chacune d'une couleur différente. Le nombre de publication par année varie entre 70% et 100%.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-03.png" alt="Courbe du pourcentage d'admission au baccalauréat (tous types confondus) entre 1997 et 2024 associée à une légende. Huit courbes sont présentées, une par origine sociale (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers), chacune d'une couleur différente. Le nombre de publication par année varie entre 70% et 100%.">
 	</a>
 <figcaption>
-    <p>Figure 3. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 3. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -283,11 +283,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-04.png" alt="Courbe du pourcentage d'admission au baccalauréat (tous types confondus) entre 1997 et 2024 associée à une légende. Huit courbes sont présentées, une par origine sociale (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers), chacune d'une couleur différente. Le nombre de publication par année varie entre 70% et 100%.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-04.png" alt="Courbe du pourcentage d'admission au baccalauréat (tous types confondus) entre 1997 et 2024 associée à une légende. Huit courbes sont présentées, une par origine sociale (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers), chacune d'une couleur différente. Le nombre de publication par année varie entre 70% et 100%.">
 	</a>
 <figcaption>
-    <p>Figure 4. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. Cette visualisation est une variante de la Figure 3 avec des polices d'écriture, couleurs et titres différents. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 4. Courbe avec une interactivité simple en utilisant Plotly Express. Survoler les lignes révèle une boîte flottante. Cette visualisation est une variante de la Figure 3 avec des polices d'écriture, couleurs et titres différents. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-04.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -373,11 +373,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-05.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-05.png" alt="Nuage de points plaçant 27 points (un par année entre 1997 et 2024) par origine sociale sur un plan. Les axes de ce plan sont : en abscisse, le nombre de personnes admises au baccalauréat technologique et en ordonnée le nombre de personnes admises au baccalauréat général. Chaque point est associé à une orignie sociale, identifiée par une couleur décrite dans la légende.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-05.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-05.png" alt="Nuage de points plaçant 27 points (un par année entre 1997 et 2024) par origine sociale sur un plan. Les axes de ce plan sont : en abscisse, le nombre de personnes admises au baccalauréat technologique et en ordonnée le nombre de personnes admises au baccalauréat général. Chaque point est associé à une orignie sociale, identifiée par une couleur décrite dans la légende.">
 	</a>
 <figcaption>
-    <p>Figure 5. Nuage de points avec une interactivité simple. Survoler un point du jeu de données permet d'afficher l'origine sociale ainsi que le nombre de personnes admises au baccalauréat général, puis le nombre de personnes admises au baccalauréat technologie (année non affichée). De plus, la légende interactive permet d'isoler, comparer, retirer des catégories de points. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-05.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 5. Nuage de points avec une interactivité simple. Survoler un point du jeu de données permet d'afficher l'origine sociale ainsi que le nombre de personnes admises au baccalauréat général, puis le nombre de personnes admises au baccalauréat technologie (année non affichée). De plus, la légende interactive permet d'isoler, comparer, retirer des catégories de points. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-05.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -408,11 +408,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-06.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-06.png" alt="Une paire de diagrammes en barre partageant un même axe des ordonnées représentant le nombre de personnes admises au baccalauréat général (à gauche) et technologique (à droite) en fonction de leur origine sociale (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers). Chaque origine sociale se voit associé une couleur décrite dans une légende.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-06.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-06.png" alt="Une paire de diagrammes en barre partageant un même axe des ordonnées représentant le nombre de personnes admises au baccalauréat général (à gauche) et technologique (à droite) en fonction de leur origine sociale (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers). Chaque origine sociale se voit associé une couleur décrite dans une légende.">
 	</a>
 <figcaption>
-    <p>Figure 6. Une mosaïque de deux diagrammes en barres avec une interactivité simple créée avec Plotly Express en distinguant le type de baccalauréat obtenu (technologique ou général). La légende interactive permet aussi d'isoler, comparer ou retirer certaines origines sociales. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-06.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 6. Une mosaïque de deux diagrammes en barres avec une interactivité simple créée avec Plotly Express en distinguant le type de baccalauréat obtenu (technologique ou général). La légende interactive permet aussi d'isoler, comparer ou retirer certaines origines sociales. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-06.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -446,11 +446,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-07.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-07.png" alt="Diagramme en barres animé. Sur l'axe des abscisses on retrouve 8 origines sociales (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers) et sur l'axe des ordonnées, on trouve le nombre de personnes admises au baccalauréat (tous types confondus) pendant une année. Une barre de défilement permet d'animer la visualisation en changeant l'année, et donc le nombre de personnes admises. Chaque barre est d'une couleur différente décrite dans une légende.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-07.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-07.png" alt="Diagramme en barres animé. Sur l'axe des abscisses on retrouve 8 origines sociales (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers) et sur l'axe des ordonnées, on trouve le nombre de personnes admises au baccalauréat (tous types confondus) pendant une année. Une barre de défilement permet d'animer la visualisation en changeant l'année, et donc le nombre de personnes admises. Chaque barre est d'une couleur différente décrite dans une légende.">
 	</a>
 <figcaption>
-    <p>Figure 7. Diagramme en barres animé associé à une barre de défilement créé grâce à Plotly Express. Comme précédemment, les lecteur·rice·s peuvent survoler les barres pour faire apparaître des boîtes flottantes. Les lecteur·rice·s peuvent appuyer sur les boutons play/pause ou utiliser la barre de défilement pour naviguer à travers les années. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-07.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 7. Diagramme en barres animé associé à une barre de défilement créé grâce à Plotly Express. Comme précédemment, les lecteur·rice·s peuvent survoler les barres pour faire apparaître des boîtes flottantes. Les lecteur·rice·s peuvent appuyer sur les boutons play/pause ou utiliser la barre de défilement pour naviguer à travers les années. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-07.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -630,11 +630,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-08.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-08.png" alt="Nuage de points plaçant 27 points (un par année entre 1997 et 2024) par origine sociale sur un plan. Les axes de ce plan sont : en abscisse, le nombre de personnes admises au baccalauréat technologique et en ordonnée le nombre de personnes admises au baccalauréat général. Chaque point est associé à une orignie sociale, identifiée par une couleur décrite dans la légende. Un menu déroulant permet de sélectionner une origine sociale à afficher.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-08.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-08.png" alt="Nuage de points plaçant 27 points (un par année entre 1997 et 2024) par origine sociale sur un plan. Les axes de ce plan sont : en abscisse, le nombre de personnes admises au baccalauréat technologique et en ordonnée le nombre de personnes admises au baccalauréat général. Chaque point est associé à une orignie sociale, identifiée par une couleur décrite dans la légende. Un menu déroulant permet de sélectionner une origine sociale à afficher.">
 	</a>
 <figcaption>
-    <p>Figure 8. Nuage de points avec un filtre interactif sous la forme d'un menu déroulant créé grâce à Plotly Express. Cette figure contient une légende interactive qui permet au lecteur d'isoler, comparer et retirer des données. De plus survoler des points permet de faire apparaître des boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-08.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 8. Nuage de points avec un filtre interactif sous la forme d'un menu déroulant créé grâce à Plotly Express. Cette figure contient une légende interactive qui permet au lecteur d'isoler, comparer et retirer des données. De plus survoler des points permet de faire apparaître des boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-08.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -753,11 +753,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-09.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-09.png" alt="Diagramme en barres représentant, sur l'axe des abscisses, 8 origines sociales (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers) et sur l'axe des ordonnées le nombre de personnes admises au baccalauréat en 2024 (tous types confondus), le nombre d'admis varie entre 6k et 200k.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-09.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-09.png" alt="Diagramme en barres représentant, sur l'axe des abscisses, 8 origines sociales (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers) et sur l'axe des ordonnées le nombre de personnes admises au baccalauréat en 2024 (tous types confondus), le nombre d'admis varie entre 6k et 200k.">
 	</a>
 <figcaption>
-    <p>Figure 9. Diagramme en barres horizontal avec une interactivité simple créé avec Plotly Graph Objects. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-09.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 9. Diagramme en barres horizontal avec une interactivité simple créé avec Plotly Graph Objects. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-09.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -778,11 +778,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-10.png" alt="Diagramme en barres représentant, sur l'axe des abscisses, 8 origines sociales (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers) et sur l'axe des ordonnées le nombre de personnes admises au baccalauréat en 2024 (tous types confondus), le nombre d'admis varie entre 6k et 200k.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-10.png" alt="Diagramme en barres représentant, sur l'axe des abscisses, 8 origines sociales (parmi lesquelles on retrouve les Agriculteurs, Cadres, Indépendants et les Ouvriers) et sur l'axe des ordonnées le nombre de personnes admises au baccalauréat en 2024 (tous types confondus), le nombre d'admis varie entre 6k et 200k.">
 	</a>
 <figcaption>
-    <p>Figure 10. Diagramme en barres horizontal avec une interactivité simple créé avec Plotly Express. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 10. Diagramme en barres horizontal avec une interactivité simple créé avec Plotly Express. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-10.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -829,11 +829,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-11.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-11.png" alt="Tableau montrant une partie du jeu de données. Les colonnes visibles sont : annee, origine_sociale, type, n_admis, p_admis.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-11.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-11.png" alt="Tableau montrant une partie du jeu de données. Les colonnes visibles sont : annee, origine_sociale, type, n_admis, p_admis.">
 	</a>
 <figcaption>
-    <p>Figure 11. Tableau contenant le jeu de données et créé avec Plotly Graph Object. Les lecteur·rice·s peuvent faire défiler toutes les entrées du jeu de données comme iels le feraient dans un tableur. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-11.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 11. Tableau contenant le jeu de données et créé avec Plotly Graph Object. Les lecteur·rice·s peuvent faire défiler toutes les entrées du jeu de données comme iels le feraient dans un tableur. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-11.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -896,11 +896,11 @@ fig.add_trace(
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-12.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-12.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres. La colonne centrale et de droite sont vides.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-12.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-12.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres. La colonne centrale et de droite sont vides.">
 	</a>
 <figcaption>
-    <p>Figure 12. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, et deux colonnes vides sur la droite. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-12.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 12. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, et deux colonnes vides sur la droite. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-12.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -935,11 +935,11 @@ for origine_sociale, df_origine_sociale in prop_admis_par_origine_sociale_par_an
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-13.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-13.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatre courbes de couleurs. Une légende décrit les éléments affichés. La colonne de droite est vide.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-13.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-13.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatre courbes de couleurs. Une légende décrit les éléments affichés. La colonne de droite est vide.">
 	</a>
 <figcaption>
-    <p>Figure 13. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et une colonnes vide sur la droite. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-13.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 13. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et une colonnes vide sur la droite. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-13.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -977,11 +977,11 @@ fig.add_trace(
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-14.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-14.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatres courbes de couleurs. Une légende décrit les éléments affichés. Dans la colonne de droite on trouve 2 diagrammes en boîte.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-14.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-14.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatres courbes de couleurs. Une légende décrit les éléments affichés. Dans la colonne de droite on trouve 2 diagrammes en boîte.">
 	</a>
 <figcaption>
-    <p>Figure 14. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-14.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 14. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-14.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -1019,11 +1019,11 @@ fig.update_layout(
 ``` 
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-15.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-15.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatres courbes de couleurs. Dans la colonne de droite on trouve 2 diagrammes en boîte.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-15.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-15.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatres courbes de couleurs. Dans la colonne de droite on trouve 2 diagrammes en boîte.">
 	</a>
 <figcaption>
-    <p>Figure 15. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. Cette visualisation est une variante de la Figure 14 avec une personalisation avancée. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-15.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 15. Une composition de figures avec 3 colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. Cette visualisation est une variante de la Figure 14 avec une personalisation avancée. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-15.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -1073,11 +1073,11 @@ fig.update_layout(
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-16.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-16.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatre courbes de couleurs. Des annotations sont présentes pour indiquer l'origine sociale associée à chacune des quatre courbes. Dans la colonne de droite on trouve 2 diagrammes en boîte.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-16.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-16.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatre courbes de couleurs. Des annotations sont présentes pour indiquer l'origine sociale associée à chacune des quatre courbes. Dans la colonne de droite on trouve 2 diagrammes en boîte.">
 	</a>
 <figcaption>
-    <p>Figure 16. Une composition de figures avec trois colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. Cette visualisation est une variante de la Figure 15 des annotations pour repérer les courbes de la sous-figure du milieu. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-16.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 16. Une composition de figures avec trois colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Les lecteur·rice·s peuvent survoler les barres pour faire apparaître les boîtes flottantes. Cette visualisation est une variante de la Figure 15 des annotations pour repérer les courbes de la sous-figure du milieu. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-16.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -1113,11 +1113,11 @@ fig.update_layout(margin = {"b" : 200})
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-17.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatres courbes de couleurs. Des annotations sont présentes pour indiquer l'origine sociale associée à chacune des quatre courbes. Dans la colonne de droite on trouve trois diagrammes en boîte. Une annotation décrit chacun des graphe : Nombre de personnes admises au baccalauréat (tous types confondus) en 2024 et par origine sociale (gauche); Proportion de personnes admises au baccalauréat (tous types confondus) à travers les années et par origine sociale (centre); Distribution du pourcentage d'admission pour le baccalauréat général, technologique et professionnel (droite).">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-17.png" alt="Une visualisation à trois colonnes, avec dans la colonne de gauche un diagramme en barres et dans la colonne centrale quatres courbes de couleurs. Des annotations sont présentes pour indiquer l'origine sociale associée à chacune des quatre courbes. Dans la colonne de droite on trouve trois diagrammes en boîte. Une annotation décrit chacun des graphe : Nombre de personnes admises au baccalauréat (tous types confondus) en 2024 et par origine sociale (gauche); Proportion de personnes admises au baccalauréat (tous types confondus) à travers les années et par origine sociale (centre); Distribution du pourcentage d'admission pour le baccalauréat général, technologique et professionnel (droite).">
 	</a>
 <figcaption>
-    <p>Figure 17. Une composition de figures avec trois colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Cette visualisation est une variante de la Figure 16 avec des annotations supplémentaires sous les figures. <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 17. Une composition de figures avec trois colonnes et une interactivité simple créée avec le module Plotly Graph Object, et avec un diagramme en barres sur la gauche montrant le nombre de personnes admises au baccalauréat (tous types confondus) par origine sociale en 2024, une courbe au centre montrant l'évolution de la proportion de personnes admises au baccalauréat (tous types confondus) par origine sociale et trois diagrammes en boîte représentant la distribution de la part de personnes admises selon le type de baccalauréat. Cette visualisation est une variante de la Figure 16 avec des annotations supplémentaires sous les figures. <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-17.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 
@@ -1147,11 +1147,11 @@ fig.show()
 ```
 
 <figure style="">
-<a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" style="" target="_blank">
-    <img src="/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-03.png" alt="Courbe montrant l'évolution de la part de candidats admis au baccalauréat entre 1997 et 2024 selon leur origine sociale. Huit courbes sont représentées, une par origine sociale et chacune d'une couleur différente. Les parts d'admission sont comprises entre 70% et 100%.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/fr-tr-visualisations-interactives-plotly-03.png" alt="Courbe montrant l'évolution de la part de candidats admis au baccalauréat entre 1997 et 2024 selon leur origine sociale. Huit courbes sont représentées, une par origine sociale et chacune d'une couleur différente. Les parts d'admission sont comprises entre 70% et 100%.">
 	</a>
 <figcaption>
-    <p>Figure 18. Reproduction de la Figure 3, illustrant la fonction fig.show(). <a href="/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
+    <p>Figure 18. Reproduction de la Figure 3, illustrant la fonction fig.show(). <a href="https://programminghistorian.github.io/ph-submissions/assets/visualisations-interactives-plotly/fr-tr-visualisations-interactives-plotly-03.html" target="_blank">Cliquez pour explorer une version interactive de cette figure.</a></p>
 </figcaption>
 </figure>
 

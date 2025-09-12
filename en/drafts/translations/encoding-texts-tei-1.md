@@ -135,7 +135,7 @@ For now, all you need to know is that every document in XML must comply with two
 
 Luckily, the XML code editors like VS Code (with the extension Scholarly XML) or OxygenXML allow us to easily detect this type of error.
 
-## What is TEI?
+### What is TEI?
 XML is a language that is so general and abstract that it is totally indifferent to its content.  For example, it can describe texts as different as a Classical Greek work from the eighth century BCE and a message that a smart thermostat would send to the smartphone app that controls it.
 
 TEI is a particular dialect of XML.  It is a series of rules that determine which elements and which attributes are permitted in a document of a certain type.  More precisely, TEI is a mark-up language to encode texts of all kinds.  Documents are encoded in TEI so that they can be processed by a computer, so that they can be analyzed, transformed, reproduced, and stored depending on the needs and interests of the users (both the real people and the computers). That is why we can say that TEI is the heart of the digital humanities (or at least one of their hearts!).  It is the standard to work computationally with a group of objects that are traditionally central to the humanities: texts.  So, while XML does not care about whether the elements of a document describe text, TEI is designed exclusively to work with texts.
@@ -169,7 +169,7 @@ The difference between the plain text and the encoded version for this part of t
 Now, all of this and much more is possible only by virtue of the fact that we have made explicit, thanks to TEI, the content of those sonnets.  If you only had had their plain text versions, it would be technically impossible to leverage computing tools designed for editing, transforming, visualizing, analyzing, and publishing.
 
 
-### A Minimal TEI Document
+## A Minimal TEI Document
 Now, let’s examine the following minimal document of TEI:
 ```
 <?xml version="1.0" encoding="UTF-8"?>

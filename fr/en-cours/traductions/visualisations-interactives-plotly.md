@@ -98,7 +98,7 @@ Le jeu de données utilisé pour cette leçon est issu du site de données publi
 	- Plotly (version `6.0.1`)&nbsp;: dans votre terminal, entrez `pip install plotly`.
 	- Pandas (version `2.2.3`)&nbsp;: dans votre terminal entrez `pip install pandas`.[^5]
 	- Kaleido (version `0.2.1`)&nbsp;: dans votre terminal entrez `pip install kaleido`.[^6]
-2. Maintenant que ces bibliothèques sont installées, créez un nouveau Jupyter notebook (ou un nouveau fichier Python dans votre logiciel d'édition de code). Idéalement, placez votre jeu de données et votre fichier Python/notebook dans le même dossier. Nous avons également préparé un notebook contenant l'intégralité du code présenté dans cette leçon, que vous pouvez télécharger depuis le dépôt de _Programming Historian_ ([visualisations-interactives-plotly.ipynb](/assets/visualisations-interactives-plotly/visualisations-interactives-plotly.ipynb)).
+2. Maintenant que ces bibliothèques sont installées, créez un nouveau Jupyter notebook (ou un nouveau fichier Python dans votre logiciel d'édition de code). Idéalement, placez votre jeu de données et votre fichier Python/notebook dans le même dossier. Nous avons également préparé un notebook contenant l'intégralité du code présenté dans cette leçon, que vous pouvez télécharger depuis le dépôt de _Programming Historian_ ([visualisations-interactives-plotly.ipynb](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualisations-interactives-plotly/visualisations-interactives-plotly.ipynb)).
 3. Importez les modules à l'aide de la commande `import` au début de votre fichier&nbsp;: 
 
 ```python

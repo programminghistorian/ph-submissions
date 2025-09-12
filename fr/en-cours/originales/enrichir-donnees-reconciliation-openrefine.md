@@ -24,7 +24,7 @@ doi:
 
 ## Introduction
 
-Le logiciel [OpenRefine](https://openrefine.org/) est connu pour améliorer la qualité de données existantes, principalement en les &laquo;&nbsp;nettoyant&nbsp;&raquo; en lot selon des critères établis et reproductibles. Depuis 2017, OpenRefine peut aussi être utilisé pour lancer un processus appelé &laquo;&nbsp;[réconciliation](https://openrefine.org/docs/manual/reconciling)&nbsp;&raquo; ou &laquo;&nbsp;alignement&nbsp;&raquo; des données qui consiste à apparier ses données à d’autres. Ce processus permet principalement l’enrichissement des données, mais aussi la normalisation ou la correction d’erreurs, l’évaluation et l’exploration des données.
+Le logiciel [OpenRefine](https://openrefine.org/) est connu pour améliorer la qualité de données existantes, principalement en les &laquo;&nbsp;nettoyant&nbsp;&raquo; en lot selon des critères établis et reproductibles. Depuis 2017, OpenRefine peut aussi être utilisé pour lancer un processus appelé &laquo;&nbsp;[réconciliation](https://perma.cc/YP4U-49W2)&nbsp;&raquo; ou &laquo;&nbsp;alignement&nbsp;&raquo; des données qui consiste à apparier ses données à d’autres. Ce processus permet principalement l’enrichissement des données, mais aussi la normalisation ou la correction d’erreurs, l’évaluation et l’exploration des données.
 
 Nous allons voir dans cette leçon comment utiliser OpenRefine sur des données locales pour les enrichir avec des données provenant de [Wikidata](https://www.wikidata.org/). Wikidata est une base de connaissances collaborative, structurée et multilingue, qui offre une grande richesse de contenus couvrant une vaste diversité de domaines, facilitant ainsi l’enrichissement des données et leur interconnexion dans l’écosystème des données ouvertes liées (&laquo;&nbsp;linked open data&nbsp;&raquo;). Ensuite, nous situerons cette leçon dans un cadre plus large afin d’améliorer ce processus, d’explorer d’autres services de réconciliation et d’adopter des méthodes similaires pertinentes pour la recherche en histoire. Enfin, nous terminerons par une réflexion sur l’apport et les biais de ces approches numériques.
 
@@ -36,7 +36,7 @@ Nous allons voir dans cette leçon comment utiliser OpenRefine sur des données 
 
 ### Choisir un jeu de données
 
-Nous allons utiliser comme jeu de données ([téléchargeable depuis le dépôt _Programming Historian_](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie.csv)) une liste de douze ouvrages d’alchimie en deux colonnes : **Titre** (pour le titre de l’ouvrage) et **Date** (pour date de publication, certaines dates étant manquantes). Il prend la forme d’un fichier CSV encodé en UTF-8 (voir Figure 1). C’est un format ouvert idéal pour traiter et conserver des données tabulées. Les données tabulées (ou tabulaires) sont des données organisées sous la forme de colonnes de valeurs qui peuvent être visualisées et éditées par des logiciels nommés &laquo;&nbsp;tableurs&nbsp;&raquo; (OpenRefine ou LibreOffice Calc par exemple). 
+Nous allons utiliser comme jeu de données ([téléchargeable depuis le dépôt _Programming Historian_](/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie.csv)) une liste de douze ouvrages d’alchimie en deux colonnes : **Titre** (pour le titre de l’ouvrage) et **Date** (pour date de publication, certaines dates étant manquantes). Il prend la forme d’un fichier CSV encodé en UTF-8 (voir Figure 1). C’est un format ouvert idéal pour traiter et conserver des données tabulées. Les données tabulées (ou tabulaires) sont des données organisées sous la forme de colonnes de valeurs qui peuvent être visualisées et éditées par des logiciels nommés &laquo;&nbsp;tableurs&nbsp;&raquo; (OpenRefine ou LibreOffice Calc par exemple). 
 
 {% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-01.png" alt="Aperçu du fichier CSV contenant les données à enrichir." caption="Figure 1. Apercu du fichier CSV." %}
 
@@ -125,11 +125,11 @@ Il est aussi possible de refaire la même opération à partir de la colonne **P
 
 Il est recommandé de faire ces opérations d’enrichissement à la fin de tous vos processus de réconciliation, car il n’y a pas de boutons &laquo;&nbsp;mise à jour&nbsp;&raquo;. Si on veut refaire l’opération dans le futur, par exemple parce que les données Wikidata ont été améliorées entre temps, alors il faut supprimer la colonne et la recréer.
 
-Une fois le jeu de données enrichi, il est possible d’exporter le fichier au format CSV en sélectionnant **Exporter** > **Valeurs séparées par des virgules**. C’est un format recommandé pour sa simplicité et ses attributs [FAIR](https://fr.wikipedia.org/wiki/Fair_data) (Facile à trouver, Accessible, Interopérable, Réutilisable). Il est aussi possible de l’exporter au format &laquo;&nbsp;Archive de projet OpenRefine&nbsp;&raquo; pour permettre de reprendre le travail plus tard ou pour transférer le travail sur un autre ordinateur. 
+Une fois le jeu de données enrichi, il est possible d’exporter le fichier au format CSV en sélectionnant **Exporter** > **Valeurs séparées par des virgules**. C’est un format recommandé pour sa simplicité et ses attributs [FAIR](https://perma.cc/83AW-GQ4H) (Facile à trouver, Accessible, Interopérable, Réutilisable). Il est aussi possible de l’exporter au format &laquo;&nbsp;Archive de projet OpenRefine&nbsp;&raquo; pour permettre de reprendre le travail plus tard ou pour transférer le travail sur un autre ordinateur. 
 
 Tous les projets OpenRefine en cours sont sauvegardés au fur et à mesure sans intervention de l’utilisateur·rice et ils sont localisés, par défaut, sur l’ordinateur dans le dossier `Utilisateur/AddData/Roaming/OpenRefine` (le lien se trouve dans le bas de la page **Ouvrir un projet**).
 
-Voici un aperçu du jeu des données enrichies (février 2025, Figure 9). Il peut être [téléchargé en CSV](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie-donnees_enrichies.csv) ou au [format OpenRefine](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie-donnees_enrichies.tar.gz). Veuillez noter que les données de Wikidata peuvent changer de par sa nature ouverte et contributive : les résultats de réconciliation présentés ci-dessus peuvent donc être différents si vous refaites les mêmes actions. 
+Voici un aperçu du jeu des données enrichies (février 2025, Figure 9). Il peut être [téléchargé en CSV](/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie-donnees_enrichies.csv) ou au [format OpenRefine](/assets/enrichir-donnees-reconciliation-openrefine/traites-alchimie-donnees_enrichies.tar.gz). Veuillez noter que les données de Wikidata peuvent changer de par sa nature ouverte et contributive : les résultats de réconciliation présentés ci-dessus peuvent donc être différents si vous refaites les mêmes actions. 
 
 {% include figure.html filename="fr-or-enrichir-donnees-reconciliation-openrefine-09.png" alt="Capture d'écran montrant un jeu de données enrichies dans OpenRefine." caption="Figure 9. Jeu des données enrichies." %}
 
@@ -165,7 +165,7 @@ Dans cette leçon, OpenRefine a été testé avec Wikidata en raison de la grand
 - ORCID : pour récupérer l’identifiant de chercheur·euse·s.
 - VIAF : pour réconcilier avec un grand catalogue de documents, d’auteur·e·s ou de maisons d’édition.
 
-[Liste des services](https://reconciliation-api.github.io/testbench/#/) actifs actuellement. Parmi ces services, voici une sélection intéressant plus particulièrement les historien·ne·s :
+[Liste des services](https://perma.cc/CML4-6C87) actifs actuellement. Parmi ces services, voici une sélection intéressant plus particulièrement les historien·ne·s :
 
 - Pleiades Geocollider : anciens lieux géographiques (sites, villes, etc.).
 - PeriodO : périodes historiques ou archéologiques.
@@ -177,9 +177,9 @@ Voici quelques suggestions de méthodes si une institution ne possède pas de se
 
 - Écrivez à l’institution pour qu’elle mette en place un tel service.
 
-- Utilisez les données de Wikidata comme intermédiaires, car de nombreuses métadonnées d’autres sources se trouvent déjà structurées dans Wikidata. Par exemple, les descripteurs de la [Library of Congress LCSH](https://www.loc.gov/aba/publications/FreeLCSH/LCSH-Main-intro.pdf) (lien en anglais) ne sont plus disponibles directement avec un service de réconciliation. Cependant, une partie des descripteurs LCSH sont indexés dans Wikidata.
+- Utilisez les données de Wikidata comme intermédiaires, car de nombreuses métadonnées d’autres sources se trouvent déjà structurées dans Wikidata. Par exemple, les descripteurs de la [Library of Congress LCSH](https://perma.cc/8AXH-KJ52) (lien en anglais) ne sont plus disponibles directement avec un service de réconciliation. Cependant, une partie des descripteurs LCSH sont indexés dans Wikidata.
 
-- Dans OpenRefine, utilisez une colonne d’URL de pages web pour récupérer le contenu de ces pages et traitez leurs contenus pour en [extraire les données](https://programminghistorian.org/en/lessons/fetch-and-parse-data-with-openrefine) voulues. Ainsi, si vous avez des URL vers des pages web de catalogues d’institution, il est raisonnablement programmable d’extraire leurs valeurs structurées.
+- Dans OpenRefine, utilisez une colonne d’URL de pages web pour récupérer le contenu de ces pages et traitez leurs contenus pour en [extraire les données](/en/lessons/fetch-and-parse-data-with-openrefine) voulues. Ainsi, si vous avez des URL vers des pages web de catalogues d’institution, il est raisonnablement programmable d’extraire leurs valeurs structurées.
 
 - Téléchargez les données ou la liste des données d’une institution et faites une réconciliation avec les informations téléchargées et traitées.
 
@@ -187,13 +187,13 @@ Voici quelques suggestions de méthodes si une institution ne possède pas de se
 
 #### Avec des données d’un autre projet OpenRefine
 
-Cette méthode est semblable à la formule RECHERCHEV (&laquo;&nbsp;VLOOKUP&nbsp;&raquo;) de LibreOffice Calc. Ce n’est pas tout à fait de la réconciliation, car c’est un appariement strict entre deux tables, basé sur une colonne commune contenant une clé. Ce [billet en anglais](https://ruthtillman.com/talk/cell-cross-webinar-2020-03/) de Ruth Tillman explique ce processus de croisement de cellules (&laquo;&nbsp;cell cross&nbsp;&raquo;).
+Cette méthode est semblable à la formule RECHERCHEV (&laquo;&nbsp;VLOOKUP&nbsp;&raquo;) de LibreOffice Calc. Ce n’est pas tout à fait de la réconciliation, car c’est un appariement strict entre deux tables, basé sur une colonne commune contenant une clé. Ce [billet en anglais](https://perma.cc/A4EG-MTLZ) de Ruth Tillman explique ce processus de croisement de cellules (&laquo;&nbsp;cell cross&nbsp;&raquo;).
 
-Comme ce processus de croisement de cellules est très rigoureux, il a des inconvénients : il est sensible à la casse, aux espaces, aux erreurs de saisie, etc. Pour pouvoir faire la même chose, mais bénéficier de l’algorithme de correspondance floue (&laquo;&nbsp;fuzz matching&nbsp;&raquo;) de la réconciliation, il faut installer une extension à OpenRefine qui s’appelle [reconcile-csv](https://okfnlabs.org/projects/reconcile-csv/).
+Comme ce processus de croisement de cellules est très rigoureux, il a des inconvénients : il est sensible à la casse, aux espaces, aux erreurs de saisie, etc. Pour pouvoir faire la même chose, mais bénéficier de l’algorithme de correspondance floue (&laquo;&nbsp;fuzz matching&nbsp;&raquo;) de la réconciliation, il faut installer une extension à OpenRefine qui s’appelle [reconcile-csv](https://perma.cc/RT2W-DE9U).
 
 #### Avec un programme codé spécifiquement
 
-Par exemple, il est possible de coder en Python (ou autre) un programme qui lance le processus de réconciliation de manière autonome pour repérer les meilleurs candidats pour une colonne de valeurs (par exemple avec [Reconciler](https://joao.bio.br/reconciler/)). De plus, il est ensuite possible à partir d’une colonne d’identifiants de créer une ou plusieurs colonnes de données externes importées (par exemple avec le package [WikidataIntegrator](https://github.com/SuLab/WikidataIntegrator) qui va utiliser la valeur du Qid et les codes des propriétés à importer).
+Par exemple, il est possible de coder en Python (ou autre) un programme qui lance le processus de réconciliation de manière autonome pour repérer les meilleurs candidats pour une colonne de valeurs (par exemple avec [Reconciler](https://perma.cc/H9PP-GAH4)). De plus, il est ensuite possible à partir d’une colonne d’identifiants de créer une ou plusieurs colonnes de données externes importées (par exemple avec le package [WikidataIntegrator](https://perma.cc/5UBV-J8RS) qui va utiliser la valeur du Qid et les codes des propriétés à importer).
 
 ### Faire un plan et documenter chaque décision
 
@@ -253,39 +253,34 @@ Enfin, l’intégration de la réconciliation dans un flux de travail dynamique 
 
 ## Remerciements
 
-Je remercie [Maxime Guénette](https://github.com/maxguen), doctorant en histoire à l’Université de Montréal, qui a suscité, relu et ajouté de nombreux conseils à cette leçon ; [Caroline Patenaude](https://github.com/crlnp/), bibliothécaire à l’Université de Montréal, pour sa relecture ; Laurence Charest et Teresa Bascik, bibliothécaires à l’Université de Montréal, pour leurs tests de versement de OpenRefine vers Wikidata ; toute l'équipe d'édition et de révision de *Programming Historian* en français ; et enfin je remercie la communauté Wikimédia et plus spécifiquement la communauté Wikidata pour leurs contributions.
+Je remercie [Maxime Guénette](https://perma.cc/8STD-L9AN), doctorant en histoire à l’Université de Montréal, qui a suscité, relu et ajouté de nombreux conseils à cette leçon ; [Caroline Patenaude](https://perma.cc/QAA3-X4KF), bibliothécaire à l’Université de Montréal, pour sa relecture ; Laurence Charest et Teresa Bascik, bibliothécaires à l’Université de Montréal, pour leurs tests de versement de OpenRefine vers Wikidata ; toute l'équipe d'édition et de révision de *Programming Historian* en français ; et enfin je remercie la communauté Wikimédia et plus spécifiquement la communauté Wikidata pour leurs contributions.
 
 ## Sources
 
 Audin, Yann. 2024. &laquo;&nbsp;For a General Theory of Scholars–Digital Tools Interactions&nbsp;&raquo; *Digital Studies/Le champ numérique* 15(1): 1-20. <https://doi.org/10.16995/dscn.11058>.
 
-Baer, Helen. 2024. *Reconciling Metadata with OpenRefine*. Digital Public Library of America <https://youtu.be/zWUdwN6s0ZU>
+Baer, Helen. 2024. *Reconciling Metadata with OpenRefine*. Digital Public Library of America <https://youtu.be/zWUdwN6s0ZU>.
 
-Bauer, Michael. 2015. *reconcile-csv*. <https://okfnlabs.org/projects/reconcile-csv/>
+Bauer, Michael. 2015. *reconcile-csv*. [https://okfnlabs.org/projects/reconcile-csv/](https://perma.cc/RT2W-DE9U).
 
-*Commons:OpenRefine*. <https://commons.wikimedia.org/wiki/Commons:OpenRefine/fr>
+*Commons:OpenRefine*. n.d. [https://commons.wikimedia.org/wiki/Commons:OpenRefine/fr](https://perma.cc/H9YD-JNVH).
 
-Delpeuch, Antonin. 2023. *My roadmap for OpenRefine* <https://antonin.delpeuch.eu/posts/my-roadmap-for-openrefine/#reconciliation>
+Delpeuch, Antonin. 2023. *My roadmap for OpenRefine* [https://antonin.delpeuch.eu/posts/my-roadmap-for-openrefine/#reconciliation](https://perma.cc/6AFD-PKAJ).
 
-Doten-Snitker, K., Pfaff, S. & Hsiao, Y. &laquo;&nbsp;Ideational diffusion and the great witch hunt in Central Europe&nbsp;&raquo; . *Theory and Society*  53, 1291-1319 (2024). <https://doi.org/10.1007/s11186-024-09576-1>
+Doten-Snitker, K., Steven Pfaff, and Yu Hsiao. 2024. &laquo;&nbsp;Ideational diffusion and the great witch hunt in Central Europe&nbsp;&raquo; . *Theory and Society*  53, 1291-1319 (2024). <https://doi.org/10.1007/s11186-024-09576-1>.
 
-LibreOffice contributors. 2000-2024. *LibreOffice*. <https://fr.libreoffice.org/>
+LibreOffice contributors. 2000-2024. *LibreOffice*. [https://fr.libreoffice.org/](https://perma.cc/6LGD-KXC7).
 
-Macneil, Rory & Plankyté, Vaida. 2025. &laquo;&nbsp;The time is now! Vertical interoperability between research tools: an essential enabler for the FAIRification of data&nbsp;&raquo;. *Upstream*. <https://doi.org/10.54900/8m9by-kfy03>
+Macneil, Rory, and Vaida Plankyté. 2025. &laquo;&nbsp;The time is now! Vertical interoperability between research tools: an essential enabler for the FAIRification of data&nbsp;&raquo;. *Upstream*. <https://doi.org/10.54900/8m9by-kfy03>.
 
-OpenRefine contributors. 2008-2024. *OpenRefine*. <https://openrefine.org/>
+OpenRefine contributors. 2008-2024. *OpenRefine*. [https://openrefine.org/](https://perma.cc/C8K5-8XTE).
 
-Patenaude, Caroline. 2021. *OpenRefine : au secours des désordonnées.* Tutoriel. Bibliothèque des lettres et sciences humaines, Université de Montréal. <https://crlnp.github.io/openrefine/>
+Patenaude, Caroline. 2021. *OpenRefine : au secours des désordonnées.* Tutoriel. Bibliothèque des lettres et sciences humaines, Université de Montréal. [https://crlnp.github.io/openrefine/](https://perma.cc/LPZ5-CJE4).
 
-Pressac, Jean-Baptiste. 2022. *Dépôt de données sur Wikidata avec OpenRefine*. Ateliers du Web sémantique. <https://les-ateliers-du-web-semantique.gitpages.huma-num.fr/les-ateliers-du-web-semantique/wikidata/>
+Pressac, Jean-Baptiste. 2022. *Dépôt de données sur Wikidata avec OpenRefine*. Ateliers du Web sémantique. [https://les-ateliers-du-web-semantique.gitpages.huma-num.fr/les-ateliers-du-web-semantique/wikidata/](https://perma.cc/CXB3-3QH3).
 
-Saby, Mathieu. 2020. *Tutoriel OpenRefine 3.4 : nettoyer, préparer et transformer des données*. <https://msaby.gitlab.io/tutoriel-openrefine/>
+Saby, Mathieu. 2020. *Tutoriel OpenRefine 3.4 : nettoyer, préparer et transformer des données*. [https://msaby.gitlab.io/tutoriel-openrefine/](https://perma.cc/2WZB-EVHY).
 
-Tillman, Ruth. 2020. *Learning Cell Cross in OpenRefine.* <https://ruthtillman.com/talk/cell-cross-webinar-2020-03/>
+Tillman, Ruth. 2020. *Learning Cell Cross in OpenRefine.* <https://ruthtillman.com/talk/cell-cross-webinar-2020-03/>.
 
-University of Toronto Libraries. *OpenRefine Augmenting Activity 2: Using Reconciliation Services*. 2019. <https://mdl.library.utoronto.ca/technology/tutorials/openrefine-augmenting-activity-2-using-reconciliation-services>
-
-
-
-
-
+University of Toronto Libraries. 2019. *OpenRefine Augmenting Activity 2: Using Reconciliation Services*. [https://mdl.library.utoronto.ca/technology/tutorials/openrefine-augmenting-activity-2-using-reconciliation-services](https://perma.cc/NVX8-W7QR).

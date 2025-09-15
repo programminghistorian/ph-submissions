@@ -36,11 +36,11 @@ doi: 10.46430/xxxxxxx
 
 Después de la Segunda Guerra Mundial, las ciudades europeas se enfrentaron a una tarea monumental: reconstruir no sólo su infraestructura física, sino también sus relaciones internacionales. Un foco fascinante a través del cual examinar la reconstrucción posbélica es las [ciudades hermanadas](https://perma.cc/H2ER-XTRS). Estas alianzas formales se desarrollaron entre las ciudades en el período de posguerra para fomentar la cooperación y el entendimiento transfronterizos.
 
-Las relaciones entre ciudades hermanadas enfrentan a los historiadores con oportunidades y desafíos. La oportunidad radica en su potencial para revelar patrones de reconciliación y diplomacia posbélica. El desafío proviene de su escala y complejidad: hay cinetos de ciudades europeas y cada una podría haber formado decenas de parejas de hermanamientos a lo largo de múltiples décadas. Al convertir estas complejas redes de relaciones hermanas en patrones visuales, podemos explorar preguntas difíciles de responder únicamente con métodos tradicionales. Por ejemplo, ¿prefirieron las ciudades de [Alemania Occidental](https://perma.cc/ALL6-TWXA) establecer relaciones con ciudades francesas inmediatamente después de la guerra? ¿Creó el [Telón de Acero](https://perma.cc/XH8M-XCJ9) patrones distintos de relaciones entre Europa del Este y del Oeste? ¿Cómo influyeron el tamaño de la ciudad y la distancia geográfica en las conexiones diplomáticas? Este caso es un buen ejemplo de cómo puede ser útil la visualización de datos para la investigación histórica.
+Las relaciones entre ciudades hermanadas enfrentan a los historiadores con oportunidades y desafíos. La oportunidad radica en su potencial para revelar patrones de reconciliación y diplomacia posbélica. El desafío proviene de su escala y complejidad: hay cientos de ciudades europeas y cada una podría haber formado decenas de parejas de hermanamientos a lo largo de múltiples décadas. Al convertir estas complejas redes de relaciones hermanas en patrones visuales, podemos explorar preguntas difíciles de responder únicamente con métodos tradicionales. Por ejemplo, ¿prefirieron las ciudades de [Alemania Occidental](https://perma.cc/ALL6-TWXA) establecer relaciones con ciudades francesas inmediatamente después de la guerra? ¿Creó el [Telón de Acero](https://perma.cc/XH8M-XCJ9) patrones distintos de relaciones entre Europa del Este y del Oeste? ¿Cómo influyeron el tamaño de la ciudad y la distancia geográfica en las conexiones diplomáticas? Este caso es un buen ejemplo de cómo puede ser útil la visualización de datos para la investigación histórica.
 
 El paquete de R [ggplot2](http://ggplot2.tidyverse.org) proporciona herramientas poderosas para investigar preguntas de esta índole a través de la visualización de datos. Aunque las hojas de cálculo y los gráficos básicos pueden ocultar patrones, las capacidades de visualización avanzadas de ggplot2 permiten a los historiadores descubrir relaciones ocultas en los datos. Por ejemplo, los [gráficos de scatter](https://perma.cc/47QY-KL2V) pueden revelar correlaciones entre variables numéricas como tamaños poblacionales y distancias geográficas, los [gráficos de barras](https://perma.cc/H58M-6UDU) pueden mostrar la distribución de hermanamientos en diferentes categorías de ciudades y los [histogramas](https://perma.cc/W7TW-9V52) pueden exponer patrones en los datos demográficos que de otro modo podrían permanecer invisibles.
 
-Este curso se diferencia de las guías estándar de ggplot2 al enfocarse específicamente en las necesidades de los historiadores urbanos. En lugar de utilizar conjuntos de datos generales, trabajaríamos con datos históricos sobre relaciones entre ciudades hermanadas para demostrar cómo los técnicas visuales pueden iluminar patrones y procesos históricos. A través de este enfoque, aprenderás a crear visualizaciones que revelen alianzas complejas y hacer encuentros históricos más accesibles a un público más amplio.
+Esta lección se diferencia de las guías estándar de ggplot2 al enfocarse específicamente en las necesidades de los historiadores urbanos. En lugar de utilizar conjuntos de datos generales, trabajaríamos con datos históricos sobre relaciones entre ciudades hermanadas para demostrar cómo los técnicas visuales pueden iluminar patrones y procesos históricos. A través de este enfoque, aprenderás a crear visualizaciones que revelen alianzas complejas y hacer encuentros históricos más accesibles a un público más amplio.
 
 ## Objetivos de la lección
 
@@ -64,7 +64,7 @@ La información demográfica complementa este análisis urbano revelando la dime
 
 Los historiadores pueden combinar estos tipos de datos para investigar el desarrollo urbano y las dinámicas demográficas. Como se mencionó anteriormente, analizaremos [ciudades hermanadas](https://perma.cc/H2ER-XTRS) – pares de ciudades que se han unido para promover vínculos culturales y comerciales. El concepto moderno de ciudades hermanadas se concibió después de la Segunda Guerra Mundial con el fin de fomentar la amistad y el entendimiento entre diferentes culturas y promover el comercio y el turismo. Estas alianzas a menudo implican intercambios estudiantiles, relaciones comerciales y eventos culturales. Al examinar estas alianzas, podemos evaluar si la proximidad geográfica, el idioma compartido o una población similar juegan un papel en la creación de una relación entre dos ciudades. También podemos explorar si las tensiones o alianzas históricas (como las entre Alemania, Francia e Polonia) o un patrimonio lingüístico compartido (por ejemplo, entre las ciudades hispanohablantes de América) moldean estas alianzas. En los últimos años, los historiadores han comenzado a [investigar de manera más cercana estas interacciones](https://perma.cc/8KW3-GKPR) de esta perspectiva.
 
-La primera pregunta que surge es dónde obtener datos sobre ciudades hermanadas. Una posibilidad es eludir uno de los mayores repositorios de datos del mundo: [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page). En Wikidata, cada una de las pequeñas ciudades del mundo ha sido asignada un identificador único y tiene su propia página, conteniendo una cierta cantidad de información. Por ejemplo, la página dedicada a [Londres](https://perma.cc/3DES-EQWV) muestra, entre otras cosas, una lista de sus 'corporaciones administrativas unidas' (es decir, sus ciudades hermanadas). Con el [Protocolo de SPARQL y Lenguaje de Consulta RDF](https://perma.cc/FHK3-CTEY), podemos consultar estos datos y extraer información sobre las ciudades asociadas con Londres. Como siempre en la investigación histórica, es importante considerar la precisión de los datos, un tema que ha sido [analizado varias veces](https://perma.cc/6AS3-LFFU) en el caso de Wikidata.
+La primera pregunta que surge es dónde obtener datos sobre ciudades hermanadas. Una posibilidad es acudir a uno de los mayores repositorios de datos del mundo: [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page). En Wikidata, cada una de las pequeñas ciudades del mundo ha sido asignada un identificador único y tiene su propia página, conteniendo una cierta cantidad de información. Por ejemplo, la página dedicada a [Londres](https://perma.cc/3DES-EQWV) muestra, entre otras cosas, una lista de sus 'corporaciones administrativas unidas' (es decir, sus ciudades hermanadas). Con el [Protocolo de SPARQL y Lenguaje de Consulta RDF](https://perma.cc/FHK3-CTEY), podemos consultar estos datos y extraer información sobre las ciudades asociadas con Londres. Como siempre en la investigación histórica, es importante considerar la precisión de los datos, un tema que ha sido [analizado varias veces](https://perma.cc/6AS3-LFFU) en el caso de Wikidata.
 
 Para los objetivos de este tema, hemos creado diversas consultas para extraer datos sobre ciudades en la [Unión Europea (UE)](https://perma.cc/R3PG-AJLC) y sus ciudades hermanadas. De este modo hemos compilado un conjunto de datos con los siguientes datos: el nombre, el país, el tamaño de la población y las coordenadas geográficas tanto de la "ciudad de origen" como de la "ciudad destino". También hemos calculado la distancia entre las dos ciudades, y hemos agregado una columna booleana indicando si la ciudad destino está dentro de la UE o no (todo origen está dentro de la UE). Puedes descargar este conjunto de datos desde el repositorio de _Programming Historian_'s.
 
@@ -74,13 +74,13 @@ Nuestra aproximación será fundamentalmente [exploratoria](https://perma.cc/SB6
 
 Tenemos muchas razones para elegir ggplot2 para este análisis. El paquete tiene un gran número de ventajas cuando se compara con otras opciones:
 
-- Se basa en un marco teórico (detallado a continuación) que asegura que tus gráficos transmitan de manera significativa la información, lo que es particularmente importante cuando se trabaja con conjuntos de datos urbanos y demográficos complejos.
-- Es relativamente sencillo de utilizar a pesar de su poder.
+- Se basa en un marco teórico (detallado a continuación) que asegura que tus gráficos transmitan de manera significativa la información siendo particularmente importante cuando se trabaja con conjuntos de datos urbanos y demográficos complejos.
+- Es relativamente sencillo de utilizar a pesar de su potencia.
 - Crea gráficos listos para la publicación.
 - Viene con extensiones desarrolladas por la comunidad (http://www.ggplot2-exts.org/) que lo enriquecen aún más, como funciones adicionales, gráficos y temas.
 - Es versátil, ya que puede manejar diversas estructuras de datos diversas como pueden ser
     * Datos numéricos (continuas e discretas)
-    * Datos categoriales (factores y cadenas de caracteres)
+    * Datos categóricos (factores y cadenas de caracteres)
     * Datos de fecha y hora
     * Coordenadas geográficas
     * Datos de texto
@@ -130,7 +130,7 @@ El tibble contiene información completa que combina datos urbanos y demográfic
 
 Empecemos creando un primer gráfico. Analicemos un patrón urbano que se relaciona con cuestiones más amplias sobre la integración europea y las relaciones internacionales: ¿los ayuntamientos de la UE tienden a formar relaciones de hermanas ciudades más sólidas con ciudades dentro del mismo país, en otros países de la UE o fuera de la UE? Al responder a esta pregunta, podemos comprender no solo las relaciones de ciudades hermanadas, sino también procesos históricos más amplios como la reconciliación tras la guerra, el desarrollo de la identidad europea y la naturaleza cambiante de la diplomacia urbana. Las técnicas de visualización similares podrían utilizarse para estudiar otras relaciones internacionales, como las alianzas comerciales, los intercambios culturales o las misiones diplomáticas.
 
-Vamos a empezar contando el número de ciudades de destino que son tanto nacionales (del mismo país que la ciudad de origen), de un país diferente de la UE o de un país no de la UE. Vamos a introducir el siguiente código:
+Vamos a empezar contando el número de ciudades de destino que son tanto nacionales (del mismo país que la ciudad de origen), de un país diferente de la UE o de un país de fuera de la UE. Vamos a introducir el siguiente código:
 
 ```
 ggplot(eudata, aes(x = tipopais)) +
@@ -143,7 +143,7 @@ El primer parámetro de la función `ggplot()` son los datos (tibble o dataframe
 
 La capa `geom()` le dice a ggplot2 qué tipo de gráfico deseas producir. Para crear un gráfico de barras, necesitas la capa `geom_bar()`, que se puede agregar rápidamente utilizando el comando `+` como se muestra en el código anterior.
 
-Entender el sintaxis de `ggplot()` puede ser confuso al principio pero una vez que comienza a hacer sentido, podrás ver la potencia del marco estándar que subyace a ggplot2 (la gramática de gráficos). Una manera de pensar en esta gramática es considerar la creación de gráficos como la construcción de una oración. En este ejemplo, le dijiste a R: "Crea un gráfico de ggplot utilizando los datos en `eudata`, mapea el campo `typecountry` a x y agrega una capa llamada `geom_bar()`. Esta estructura es relativamente sencilla. [`aes()`](https://perma.cc/AH27-4YE9) en sí mismo no es tan explicable, pero la idea detrás de ella es bastante simple: le dice a R que mapee ciertos campos en los datos a las propiedades visuales (estéticas) de los `geoms` en el gráfico. No te preocupes si no la entiendes completamente. Volveremos a profundizar más tarde.
+Entender el sintaxis de `ggplot()` puede ser confuso al principio pero una vez que comienza a hacer sentido, podrás ver la potencia del marco estándar que subyace a ggplot2 (la gramática de gráficos). Una manera de pensar en esta gramática es considerar la creación de gráficos como la construcción de una oración. En este ejemplo, le dijiste a R: "Crea un gráfico de ggplot utilizando los datos en `eudata`, mapea el campo `typecountry` a x y agrega una capa llamada `geom_bar()`. Esta estructura es relativamente sencilla. [`aes()`](https://perma.cc/AH27-4YE9) no es tan fácilmente explicable, pero la idea detrás de ella es bastante simple: le dice a R que mapee ciertos campos en los datos a las propiedades visuales (estéticas) de los `geoms` en el gráfico. No te preocupes si no la entiendes completamente. Volveremos a profundizar más tarde.
 
 ¡Ahora tienes tu primer gráfico! Podrás notar que ggplot2 ha realizado algunas decisiones por su cuenta: el color de fondo, el tamaño de la fuente de los etiquetas, etc. Las configuraciones por defecto suelen ser suficientes, pero puedes personalizar estos aspectos si lo prefieres.
 
@@ -201,7 +201,7 @@ Hasta ahora hemos presentado los elementos clave de la sintaxis para operar con 
 
 Se pueden configurar fácilmente aspectos de cada uno de estos `geoms`, como su tamaño y color. 
 
-Para practicar el uso de estos `geoms`, vamos a crear un histograma para visualizar un aspecto importante de las ciudades hermanadas: la distancia entre ellas. Este aspecto espacial ayuda a entender cómo la proximidad geográfica influye en este tipo de alianzas. Corre el siguiente código para filtrar los datos y visualizar el gráfico. Recuerda cargar `tidyverse` o `dplyr` primero, para evitar que la función `filter` dé un error (pues usaría la función original de R y no la de `dplyr`).
+Para practicar el uso de estos `geoms`, vamos a crear un histograma para visualizar un aspecto importante de las ciudades hermanadas: la distancia entre ellas. Este aspecto espacial ayuda a entender cómo la proximidad geográfica influye en este tipo de alianzas. Ejecuta el siguiente código para filtrar los datos y visualizar el gráfico. Recuerda cargar `tidyverse` o `dplyr` primero, para evitar que la función `filter` dé un error (pues usaría la función original de R y no la de `dplyr`).
 
 ```
 eudata.filtered <- filter(eudata, dist < 5000)
@@ -242,9 +242,9 @@ El gráfico 6 revela un patrón interesante de las ciudades alemanas, especialme
 
 ## Manipulaciones avanzadas de la apariencia del gráfico
 
-Hasta ahora, hemos dejado que ggplot2 decida automáticamente la apariencia del gráfico. Sin embargo, es probable que existan diversas razones para adaptar sus opciones, como mejorar la legibilidad, resaltar aspectos específicos de los datos o ajustarse a guías de estilo específicas. ggplot2 ofrece una amplia gama de opciones de personalización para ajustar finamente la apariencia de sus gráficos. Comenzaremos con un gráfico simple y iremos progresando de manera incremental.
+Hasta ahora, hemos dejado que ggplot2 decida automáticamente la apariencia del gráfico. Sin embargo, es probable que existan diversas razones para adaptar sus opciones, como mejorar la legibilidad, resaltar aspectos específicos de los datos o ajustarse a guías de estilo específicas. ggplot2 ofrece una amplia gama de opciones de personalización para ajustar finamente la apariencia de sus gráficos. Comenzaremos con un gráfico simple e iremos incrementando su dificultad de manera progresiva.
 
-Exploraremos cómo las características demográficas influencian las relaciones urbanas examinando la población de las ciudades hermanadas. Este análisis nos vincual con preguntas históricas más amplias sobre cómo el tamaño de la ciudad afecta la influencia internacional, cómo se desarrollan las jerarquías urbanas y cómo se modelan los patrones demográficos para los intercambios culturales y económicos. Enfoques similares podrían utilizarse para estudiar preguntas históricas sobre los patrones de urbanización, el desarrollo de las regiones metropolitanas o la relación entre el tamaño de la población y el desarrollo económico.
+Exploraremos cómo las características demográficas influencian las relaciones urbanas examinando la población de las ciudades hermanadas. Este análisis nos vincula a preguntas históricas más amplias sobre cómo el tamaño de la ciudad afecta su influencia internacional, cómo se desarrollan las jerarquías urbanas y cómo se modelan los patrones demográficos para los intercambios culturales y económicos. Se podrían utilizar enfoques similares para estudiar preguntas históricas sobre los patrones de urbanización, el desarrollo de las regiones metropolitanas o la relación entre el tamaño de la población y el desarrollo económico.
 
 Comenzaremos creando un gráfico de dispersión que conecta el tamaño de población de las ciudades de origen y destino. Un gráfico de dispersión es un gráfico que utiliza puntos o puntos para representar los valores de dos variables para cada observación relacionándolos en su punto de intersección. En este caso, cada punto del gráfico representará una pareja de ciudades hermanadas, con la coordenada `x` indicando el tamaño de población de la ciudad de origen y la coordenada `y` representando el tamaño de población de la ciudad de destino. Si observamos una clara tendencia positiva, con puntos agrupados a lo largo de una línea diagonal desde la izquierda inferior hasta la superior derecha, eso sugerirá que las ciudades tienden a formar relaciones con otras ciudades de un tamaño de población similar.
 
@@ -254,13 +254,13 @@ Dado que `eudata` contiene 13081 entradas, utilizar todas ellas daría un result
 set.seed(123)
 ```
 
-Ahora extraigamos una muestra aleatoria del 15% de las ciudades: 
+Ahora vamos a extraer una muestra aleatoria del 15% de las ciudades: 
 
 ```
 eudata.sample <- slice_sample(eudata, prop = 0.15)
 ```
 
-Y creemos el gráfico con el siguiente código:
+Y creamos el gráfico con el siguiente código:
 
 ```
 ggplot(data = eudata.sample,
@@ -296,13 +296,13 @@ ggplot(data = eudata.sample,
 
 {% include figure.html filename="es-tr-datos-urbanos-demograficos-r-ggplot2-09.png" alt="Gráfico de dispersión con títulos y pie añadidos usando la función labs()." caption="Figure 9. Títulos y etiquetas de ejes añadidas." %}
 
-Una vez que estés satisfecho con tu gráfico, lo puedes grabar:
+Una vez que estés satisfecho con tu gráfico, lo puedes guardar o salvar:
 
 ```
 ggsave("eudata.png")
 ```
 
-Para grabarlo como PDF, utiliza el siguiente comando:
+Para guardarlo como PDF, utiliza el siguiente comando:
 
 ```
 ggsave("eudata.pdf")
@@ -334,7 +334,7 @@ Tomemos nuestros propios datos como ejemplo. Cuando creas un gráfico, los `scal
 Los `scales` de ggplot2 siguen una convención de nomenclatura consistente en tres partes separadas por guiones bajos:
 
 1. El prefijo `scale`.
-2. El nombre de la escala que se modifica. Como se mencionó anteriormente, los estilos definen las propiedades visuales de la gráfica que se mapean a los datos. Las escalas, por otro lado, controlan cómo esas mapeos de los estilos se traducen en representaciones visuales específicas. Esto incluye cómo los valores de los datos se traducen en colores o formas, y su posición en las coordenadas x e y.
+2. El nombre de la escala que se modifica. Como se mencionó anteriormente, los estilos definen las propiedades visuales de la gráfica que se mapean a los datos. Las escalas, por otro lado, controlan cómo esos mapeos de los estilos se traducen en representaciones visuales específicas. Esto incluye cómo los valores de los datos se traducen en colores o formas, y su posición en las coordenadas x e y.
 3. El tipo de escala que se quiere aplicar (continua, discreta, brewer).
 
 Antes de comenzar a agregar escalas, será útil almacenar la gráfica anterior en una variable `p1`: esta es una forma conveniente de crear diferentes versiones de la misma gráfica para variar solo ciertas partes de ella.
@@ -409,7 +409,7 @@ p2 +
 
 A partir de estas consideraciones, ahora modifiquemos la leyenda del gráfico de dispersión. Personalizarla mejorará la claridad, haciéndolo más fácil de interpretar y entender para los lectores.
 
-Puedes modificar la leyenda alterando el parámetro `guide` dentro de la función `scale_colour_gradient()`. El parámetro `guide` especifica el título, la posición y la orientación de la leyenda. Aquí también se utilizará la función `guide_colorbar()` para crear una leyenda de color barra que represente la gama de distancias entre las ciudades.
+Puedes modificar la leyenda alterando el parámetro `guide` dentro de la función `scale_colour_gradient()`. El parámetro `guide` especifica el título, la posición y la orientación de la leyenda. Aquí también se utilizará la función `guide_colorbar()` para crear una leyenda de barra que represente las distancias entre las ciudades con una gama de colores.
 
 ```
 p2 <- p2 +
@@ -509,7 +509,7 @@ Para obtener una comprensión más profunda de ggplot2, se recomienda explorar l
 
 * Los libros de Hadley Wickham [`ggplot2`: _Gráficos elegantes para el análisis de datos_](https://ggplot2-book.org/) y [_R para el análisis de datos_](http://r4ds.hadley.nz/).
 
-* El [paper original de Hadley Wickham](https://doi.org/10.1198/jcgs.2009.07098) sobre la gramática de gráficos.
+* El [trabajo original de Hadley Wickham](https://doi.org/10.1198/jcgs.2009.07098) sobre la gramática de gráficos.
 
 * El libro original de Leland Wilkson [_La gramática de gráficos_](https://doi.org/10.1007/0-387-28695-0).
 

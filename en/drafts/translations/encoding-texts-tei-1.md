@@ -74,7 +74,7 @@ First, if you select any of the text in an XML document, you can use a keyboard 
 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-05.png" alt="name element highlighted in the search bar and in the body of the code" caption="Figure 5. Automatically Introduce an XML element in VS Code" %}
 
-Second, we can use the extension to determine whether the document is structurally **well-formed** following the syntax of XML--whether all text is inside those open and close tags and whether those tags are properly nested.  The extension can also check whether the document is semantically **valid** per the type of [RELAX NG](https://en.wikipedia.org/wiki/RELAX_NG) validation schema being used, such as the TEI schema (tei-all).  (We will explain the concepts of being structurally well-formed vs. semantically valid below.)  The extension checks for both structural well-formedness and semantic validity automatically.
+Second, we can use the extension to determine whether the document is structurally **well-formed** following the syntax of XML--whether all text is inside those open and close tags and whether those tags are properly nested.  The extension can also check whether the document is semantically **valid** per the type of [RELAX NG](https://en.wikipedia.org/wiki/RELAX_NG) validation schema being used, such as the TEI schema (tei-all).  We will explain the concepts of being structurally well-formed vs. semantically valid below.  The extension checks for both structural well-formedness and semantic validity automatically.
 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-06.png" alt="XML error in the body of the code marked with a red underline" caption="Figure 6. Automatically identify XML errors in VS Code" %}
 

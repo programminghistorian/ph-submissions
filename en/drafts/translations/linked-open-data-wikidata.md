@@ -58,7 +58,7 @@ No prior knowledge is necessary.
 
 [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) is a free and open platform that is entirely built with Linked Open Data (LOD). Launched in October 2012 by the Wikimedia Foundation, this database represents one of the most innovative projects for centralizing data across diverse topics and communities (Figure 1). The foundation is a nonprofit organization that provides free information and knowledge.
 
-Projects under the Wikimedia Foundation umbrella are organized into four categories: content projects, multilingual content projects, outreach and administrative projects, and technical and development projects.
+Projects under the Wikimedia Foundation umbrella are organized into four categories: content projects, multilingual content projects, outreach and administration projects, and technical and development projects.
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-01.png" alt="Projects under the Wikimedia Foundation umbrella organized into four categories: content projects, multilingual content projects, outreach and administration projects, and technical and development projects." caption="Figure 1. An overview of the Wikimedia Foundation’s projects." %}
 

@@ -582,7 +582,7 @@ Dans ce menu, vous pourrez sélectionner la face du jeu depuis votre disque loca
 
 Vous pouvez désormais jouer à votre version de Timeline en ligne avec jusqu'à neuf autres joueurs invités. De plus, si vous décidez de téléverser et de partager vos éléments de jeu via le [workshop de Tabletop Simulator sur Steam](https://perma.cc/X5SQ-C87S), vous pourrez ajouter votre jeu à une collection de plus de 11 000 jeux de cartes accessibles à une communauté de plus de 2 millions d’utilisateurs de TTS.[^19]
 
-{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-07.png" alt="Bien que l’une des fonctionnalités les plus amusantes de Tabletop Simulator soit de préparer la table, distribuer les cartes est également très plaisant."  caption="Figure 7. Bien que l’une des fonctionnalités les plus amusantes de Tabletop Simulator soit de préparer la table, distribuer les cartes est également très plaisant." %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-07.png" alt="Capture d’écran de l’interface du simulateur de jeu de table montrant la distribution des cartes. Les cartes du jeu semblent flotter au dessus d’une table hexagonale."  caption="Figure 7. Bien que l’une des fonctionnalités les plus amusantes de Tabletop Simulator soit de préparer la table, distribuer les cartes est également très plaisant." %}
 
 
 ## Conclusion
@@ -623,3 +623,4 @@ Espérons que cette expérience incitera d'autres personnes à créer des varian
 [^18]: Boyle, B. “How Board Gamers Embraced Tabletop Sims During Lockdown”, 29 May 2020, Vice. https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine. Accessed 25 Jan. 2024.
 [^19]: Berzerk Games. “Developer & Publisher Information.” Tabletop_Simulator, 2023, https://tabletopsimulator.com/contact/publishers.
 [^20]: Sayers, Jentery. Paper Computers. 2018, https://jntry.work/archive/syllabi/508v4/.
+

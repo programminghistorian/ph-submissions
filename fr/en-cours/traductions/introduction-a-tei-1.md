@@ -16,7 +16,7 @@ reviewers:
 translator:
   - Maritza Beatriz García Rodríguez
 translation-editor:
-  -
+  - Alexandre Wauthier
 translation-reviewer:
   -
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/671

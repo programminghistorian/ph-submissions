@@ -8,8 +8,8 @@ authors:
 - Adrian Demleitner
 - Daniel Gammenthaler
 reviewers:
-- Forename Surname
-- Forename Surname
+- Thorston Ries
+- Laurisa Sastoque Pabón
 editors:
 - Nabeel Siddiqui
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/664

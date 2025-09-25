@@ -31,13 +31,14 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
+
 ## Introduction
 
 One of the central issues in the digital humanities has been working on and with texts: the digitization, automated character recognition, transcription, encoding, processing, and analysis of them. In this lesson, we will focus exclusively on the encoding of text, which is the process of structuring and categorizing your text with tags.
 
-An example may help clarify this idea. Suppose we have a printed document that we have already digitized. We have the digital images of the pages, and, with the help optical character recognition ([OCR](https://en.wikipedia.org/wiki/Optical_character_recognition)) software, we have extracted their text. This text is often called '[plain text](https://en.wikipedia.org/wiki/Plain_text)' because it has neither formatting (italics, bold, etc.) nor other semantic structuring.
+An example may help clarify this idea. Suppose we have a printed document that we have already digitized. We have the digital images of the pages, and, with the help optical character recognition ([OCR](https://perma.cc/GRG3-QCD3)) software, we have extracted their text. This text is often called '[plain text](https://perma.cc/RDH6-6PWZ)' because it has neither formatting (italics, bold, etc.) nor other semantic structuring.
 
-Although it may seem strange, plain text is completely devoid of semantic meaning. To a computer, plain text is only a long chain of characters (including punctuation, spaces, and line breaks) in some [encoding](https://en.wikipedia.org/wiki/Character_encoding) (for instance, [UTF-8](https://en.wikipedia.org/wiki/UTF-8) or [ASCII](https://en.wikipedia.org/wiki/ASCII)) of some alphabet (for example, Latin, Greek, or Cyrillic). We human beings are the ones who identify words (in one or more languages), lines, paragraphs, as we read. We also identify the names of people and places, the titles of books and articles, dates, quotations, epigraphs, references (internal and external), footnotes, and endnotes. But, again, the computer is completely 'ignorant' of the said textual structures in a plain text without processing or encoding. Recent advances (machine learning, NLP techniques, LLMs) can help infer structure and semantics with varying degrees of accuracy, but they do not understand the text in the way that we do.
+Although it may seem strange, plain text is completely devoid of semantic meaning. To a computer, plain text is only a long chain of characters (including punctuation, spaces, and line breaks) in some [encoding](https://perma.cc/3EGJ-UG2U) (for instance, [UTF-8](https://perma.cc/DN7X-ED3Z) or [ASCII](https://perma.cc/KS4Z-QZP7)) of some alphabet (for example, Latin, Greek, or Cyrillic). We human beings are the ones who identify words (in one or more languages), lines, paragraphs, as we read. We also identify the names of people and places, the titles of books and articles, dates, quotations, epigraphs, references (internal and external), footnotes, and endnotes. But, again, the computer is completely 'ignorant' of the said textual structures in a plain text without processing or encoding. Recent advances (machine learning, NLP techniques, LLMs) can help infer structure and semantics with varying degrees of accuracy, but they do not understand the text in the way that we do.
 
 Without human assistance--for example, through [TEI (Text Encoding Initiative) Encoding](https://tei-c.org/)--a computer cannot reliably interpret the meaning of plain text. That means, among other things, that we cannot make structured queries of that text (such as for people, for places, or for dates), nor can we systematically extract and process such information without first telling the computer which strings of characters correspond with which semantic structures. For example, we must tell the computer that *this string is the name of a person,* and *this other name refers to the same person*. We would also have to tell the computer that *this is the name of a place*, or *this is a note in the margin that refers to a second person*, or *this paragraph belongs to this section of text*. Encoding the text indicates (through tags and other sources) that certain strings of plain text have specific significance. That is the difference between plain text and semantically structured text.
 
@@ -55,7 +56,7 @@ Download the most [recent version of VS Code](https://code.visualstudio.com/down
 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-01.png" alt="Initial window of Visual Studio Code" caption="Figure 1. VS Code initial view." %}
 
-Now we can install a VS Code extension for working more easily with XML and TEI-XML documents: Scholarly XML. You can click the [Scholarly XML link](https://marketplace.visualstudio.com/items?itemName=raffazizzi.sxml) to install the extension if you already have VS Code installed, or you can follow the walkthrough.
+Now we can install a VS Code extension for working more easily with XML and TEI-XML documents: Scholarly XML. You can click the [Scholarly XML link](https://perma.cc/3SY8-Z5Z4) to install the extension if you already have VS Code installed, or you can follow the walkthrough.
 
 To do this, click the _Extensions_ button in the toolbar on the left side of the window:
 
@@ -67,7 +68,7 @@ Type 'Scholarly XML' in the search bar.
 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-04.png" alt="Side panel of VS Code showing the Scholarly XML extension with its install button higlighted" caption="Figure 4. Install Scholarly XML in VS Code." %}
 
-To learn more about Scholarly XML, you can [read about it on the Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=raffazizzi.sxml) or [view its code repository on GitHub](https://github.com/raffazizzi/vscode-sxml). For now, we will highlight several things this extension allows us to do with the code:
+To learn more about Scholarly XML, you can [read about it on the Visual Studio Code Marketplace](https://perma.cc/3SY8-Z5Z4) or [view its code repository on GitHub](https://perma.cc/KS74-A5B3). For now, we will highlight several things this extension allows us to do with the code:
 
 First, if you select any of the text in an XML document, you can use a keyboard shortcut to automatically enclose the text in an XML element in opening and closing tags.  Well-formed XML--that is, code that is structurally sound and able to be processed--requires every XML tag to be closed. When you hit 'ctrl+E' (on Windows or Linux) or 'cmd+E' (on MacOS), VS code will open a window with the instruction _Enter abbreviation (Press Enter to confirm or Escape to cancel)_. Next, write the name of the element and hit the _enter_ key. The editor will then enclose the selected text between opening and closing tags. When we work with XML, automatically creating the opening and closing tags can save us a lot of time while also decreasing the likelihood of introducing typos.   
 
@@ -121,9 +122,9 @@ Later we will see in greater detail what a tag is and how it works (or, more pre
 ## XML and TEI: towards a text encoding standard
 From the beginnings of digital humanities in the 1960s, there have been many attempts at text encoding. Nearly every encoding project had its own standard, meaning the projects were incompatible and untranslatable, making collaborative work more difficult and even impossible.
 
-To resolve this problem, about twenty years later, a convention of a large number of researchers from around the world, especially from universities in primarily English-speaking countries, established a new standard for text encoding: the [Text Encoding Initiative (TEI)](https://es.wikipedia.org/wiki/Text_Encoding_Initiative).
+To resolve this problem, about twenty years later, a convention of a large number of researchers from around the world, especially from universities in primarily English-speaking countries, established a new standard for text encoding: the [Text Encoding Initiative (TEI)](https://perma.cc/H5ZE-ZTG9).
 
-TEI is one way to use the markup language [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language), which is why it can sometimes be called TEI-XML (or also XML/TEI). For its part, XML (which is the abbreviation for 'eXtensible Markup Language') is a computing language whose purpose is to describe, using a series of markings or tags, a particular text object. XML is a markup language, differentiated from programming languages like C, Python, or Java, which describe objects, functions, or processes which must be executed by a computer. XML doesn't provide specific tags so much as a system for how any tag should be used; it is TEI that provides the vocabulary for what tags can appear and where.
+TEI is one way to use the markup language [XML](https://perma.cc/5PNX-XUGW), which is why it can sometimes be called TEI-XML (or also XML/TEI). For its part, XML (which is the abbreviation for 'eXtensible Markup Language') is a computing language whose purpose is to describe, using a series of markings or tags, a particular text object. XML is a markup language, differentiated from programming languages like C, Python, or Java, which describe objects, functions, or processes which must be executed by a computer. XML doesn't provide specific tags so much as a system for how any tag should be used; it is TEI that provides the vocabulary for what tags can appear and where.
 
 ### XML
 In this lesson, we will not go into detail on the syntaxes and functions of XML. Therefore, we recommend you take a look at M. H. Beals's lesson _[Transforming Data for Reuse and Re-publication with XML and XSL](/en/lessons/transforming-xml-with-xsl) for more information on XML, and explore the [bibliography and references](#recommended-readings) at the end of this lesson.
@@ -139,7 +140,7 @@ XML is a language that is so general and abstract that it is totally indifferent
 
 TEI is a particular dialect of XML. It is a series of rules that determine which elements and which attributes are permitted in a document of a certain type. More precisely, TEI is a mark-up language to encode texts of all kinds. Documents are encoded in TEI so that they can be processed by a computer, so that they can be analyzed, transformed, reproduced, and stored depending on the needs and interests of the users (both the real people and the computers). That is why we can say that TEI is the heart of the digital humanities (or at least one of their hearts!). It is the standard to work computationally with a group of objects that are traditionally central to the humanities: texts. So, while XML does not care about whether the elements of a document describe text, TEI is designed exclusively to work with texts.
 
-The types of elements and attributes that are permissible in TEI, and the relationships that exist between them, are specified in the [TEI Guidelines](https://tei-c.org/release/doc/tei-p5-doc/en/html/index.html). For example, if we want to encode a poem, we can use the TEI element `<lg>` (line group). The TEI guidelines determine which attributes can be used on which elements and which of those elements, at the same time, contain or can be contained by other elements. TEI determines that every element `<lg>` should contain at least one element `<l>` ([verse line](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-l.html)).
+The types of elements and attributes that are permissible in TEI, and the relationships that exist between them, are specified in the [TEI Guidelines](https://perma.cc/P9ML-E6NR). For example, if we want to encode a poem, we can use the TEI element `<lg>` (line group). The TEI guidelines determine which attributes can be used on which elements and which of those elements, at the same time, contain or can be contained by other elements. TEI determines that every element `<lg>` should contain at least one element `<l>` ([verse line](https://perma.cc/9E9Q-SQU8)).
 
 For an example, let’s examine the first verses of *Leaves of Grass* by Walt Whitman.
 
@@ -197,8 +198,8 @@ Now, let’s examine the following minimal document of TEI:
 The first line is the traditional declaration for an XML document. The second line contains the first element, or 'root' element of the document: `<TEI>`. The attribute `@xmlns` with the value `http://www.tei-c.org/ns/1.0` simply declares that all the 'child' elements and attributes in `<TEI>` belong to the 'namespace' of TEI (represented here by the URL). We will not have to worry about this later on.
 
 The interesting thing comes later in lines 3-16, right after the 'root' element, which contain (respectively) the two following 'child' elements:
-- [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html)
-- [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html)
+- [`<teiHeader>`](https://perma.cc/XRM3-ZNDL)
+- [`<text>`](https://perma.cc/F4CY-4TQG)
 
 Now we will see what those elements consist of.
 
@@ -207,16 +208,16 @@ All of the metadata in the document is encoded in the element `<teiHeader>`: the
 
 `<teiHeader>` should contain at least an element called `<fileDesc>` (from 'file description'), which should then contain three 'child' elements:
 
-* [`<titleStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-titleStmt.html) (from 'title statement'): the information about the title of the document (inside [`<title>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-title.html)); optional elements could also include data about the author(s) (inside [`<author>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-author.html))  
-* [`<publicationStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publicationStmt.html) (from 'publication statement'): the information about how the work is published and made available (that is, the TEI document itself; not the original source). In this sense it is analogous to the information about the publisher on the copyright page of a book. It can be a descriptive paragraph (inside the generic element for a paragraph, [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html)), or it can be structured in one or more of the following elements:  
-    * [`<address>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-address.html): the postal address of the person who edited or encoded the document  
-    * [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html): the date the document was published  
-    * [`<pubPlace>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-pubPlace.html): the place the document was published  
-    * [`<publisher>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publisher.html): the person who edited or encoded the document  
-    * [`<ref>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ref.html) (or [`<ptr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ptr.html)): an external link (URL) where the document is available  
-* [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) (from 'source description'): the information about the source from which the encoded text is being taken. It can be a descriptive paragraph (inside the generic element for a paragraph, `<p>`). It can also be structured in many ways. For example, it can use the element [`<bibl>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-bibl.html) and include the bibliographic reference without more structuring elements (for example, `<bibl>Walt Whitman, *Leaves of Grass* Brooklyn, New York: Walt Whitman, 1855</bibl>`). Or, it can contain a structured reference in [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html), which contains other relevant elements.  
+* [`<titleStmt>`](https://perma.cc/KKW4-JFKB) (from 'title statement'): the information about the title of the document (inside [`<title>`](https://perma.cc/A45X-9GUJ)); optional elements could also include data about the author(s) (inside [`<author>`](https://perma.cc/KK2Q-UC38))  
+* [`<publicationStmt>`](https://perma.cc/6E9V-5DMT) (from 'publication statement'): the information about how the work is published and made available (that is, the TEI document itself; not the original source). In this sense it is analogous to the information about the publisher on the copyright page of a book. It can be a descriptive paragraph (inside the generic element for a paragraph, [`<p>`](https://perma.cc/VRK8-U8AM)), or it can be structured in one or more of the following elements:  
+    * [`<address>`](https://perma.cc/7ZST-SSQJ): the postal address of the person who edited or encoded the document  
+    * [`<date>`](https://perma.cc/7JWC-LC8W): the date the document was published  
+    * [`<pubPlace>`](https://perma.cc/934J-3K4G): the place the document was published  
+    * [`<publisher>`](https://perma.cc/TV64-RKFT): the person who edited or encoded the document  
+    * [`<ref>`](https://perma.cc/4CP3-VXPN) (or [`<ptr>`](https://perma.cc/3FAW-5CSM)): an external link (URL) where the document is available  
+* [`<sourceDesc>`](https://perma.cc/255B-NZRM) (from 'source description'): the information about the source from which the encoded text is being taken. It can be a descriptive paragraph (inside the generic element for a paragraph, `<p>`). It can also be structured in many ways. For example, it can use the element [`<bibl>`](https://perma.cc/TJ8N-KSC3) and include the bibliographic reference without more structuring elements (for example, `<bibl>Walt Whitman, *Leaves of Grass* Brooklyn, New York: Walt Whitman, 1855</bibl>`). Or, it can contain a structured reference in [`<biblStruct>`](https://perma.cc/2UZ7-YYKA), which contains other relevant elements.  
 
-Suppose we want to encode *Leaves of Grass* by Walt Whitman, starting with [this freely available edition on the Walt Whitman Archive](https://whitmanarchive.org/item/ppp.00271). The `<teiHeader>` of our TEI document could look like the following:
+Suppose we want to encode *Leaves of Grass* by Walt Whitman, starting with [this freely available edition on the Walt Whitman Archive](https://perma.cc/ZCG9-2YLQ). The `<teiHeader>` of our TEI document could look like the following:
 
 ```
 <teiHeader>
@@ -238,7 +239,7 @@ Suppose we want to encode *Leaves of Grass* by Walt Whitman, starting with [this
   </fileDesc>
 </teiHeader>
 ```
->Note that, in the [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) paragraph, the ampersand in "Special Collections & University >Archives" cannot be written with the ampersand character (&) in XML. Instead, it must be keyed in with its [escape sequence](https://www.liquid-technologies.com/Reference/Glossary/XML_EscapingData.html), `&amp;`.
+>Note that, in the [`<sourceDesc>`](https://perma.cc/255B-NZRM) paragraph, the ampersand in "Special Collections & University >Archives" cannot be written with the ampersand character (&) in XML. Instead, it must be keyed in with its [escape sequence](https://perma.cc/WWZ6-XFZN), `&amp;`.
 
 This is the minimum information required to identify the encoded document. It tells us the title and author of the text, the person responsible for the encoding, and the source from which the text was taken.
  
@@ -277,23 +278,23 @@ However, it is possible--and sometimes desirable--to specify more details in the
 
 The choice about how complete to make the `<teiHeader>` depends on the availability of the information, as well as the purposes of the encoding and the interests of the editor. Now, although the metadata in `<teiHeader>` in a TEI document don’t necessarily appear literally in encoded text, they are not irrelevant to the process of encoding, editing, and eventually transforming. In fact, the extent that the `<teiHeader>` has been correctly and completely encoded is the same extent that you can extract and transform the information contained in the document.  
 
-For example, if it is important to us to distinguish between the different editions and imprints of *Leaves of Grass*, the information contained in `<teiHeader>` about those distinct documents would be sufficient to differentiate between them automatically. In effect, we can leverage the elements `<edition>` and `<imprint>` to this end, and with the help of technology like [XSLT](https://www.w3.org/TR/xslt/), [XPath](https://www.w3.org/TR/xpath/) and [XQuery](https://www.w3.org/TR/xquery/) we can locate, extract, and process all of this information.
+For example, if it is important to us to distinguish between the different editions and imprints of *Leaves of Grass*, the information contained in `<teiHeader>` about those distinct documents would be sufficient to differentiate between them automatically. In effect, we can leverage the elements `<edition>` and `<imprint>` to this end, and with the help of technology like [XSLT](https://perma.cc/V2JP-X9K9), [XPath](https://perma.cc/MTG6-D2GU) and [XQuery](https://perma.cc/P846-8STT) we can locate, extract, and process all of this information.
 
 In conclusion, the more complete and thoroughly the metadata about the text is encoded in `<teiHeader>` in our TEI documents, the more control we will have about its identity and display online.
 
 
 ### The `<text>` element
-As we saw above in the minimal document, `<text>` is the second child of `<TEI>`. It contains all of the text in the document, properly speaking. According to the [TEI guidelines](https://tei-c.org/guidelines/p5/), `<text>` can contain a series of elements in which the text must be structured.
+As we saw above in the minimal document, `<text>` is the second child of `<TEI>`. It contains all of the text in the document, properly speaking. According to the [TEI guidelines](https://perma.cc/6TNX-58FU), `<text>` can contain a series of elements in which the text must be structured.
 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-11.png" alt="List of elements that can appear within the text tage" caption="Figure 11. Possible elements within `<text>`." %}
 
-The most important of these elements is [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-body.html), which contains the main body of the text. However, other important child elements of `<text>` are [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-front.html), which contains the frontmatter of a text (introduction, prologue, etc), and [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-back.html), which contains the backmatter (final pages, appendices, indexes, etc.).
+The most important of these elements is [`<body>`](https://perma.cc/7SX2-DXM8), which contains the main body of the text. However, other important child elements of `<text>` are [`<front>`](https://perma.cc/8UBW-JM2V), which contains the frontmatter of a text (introduction, prologue, etc), and [`<back>`](https://perma.cc/8TJG-4H6X), which contains the backmatter (final pages, appendices, indexes, etc.).
 
 For its part, the `<body>` element can contain many other elements:
 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-12.png" alt="List of elements that can appear within the body tag" caption="Figure 12. Possible elements within `<body>`." %}
  
-At first glance, all the possibilities may seem overwhelming. However, it is important to remember that a text is usually naturally divided into sections or parts. It is advisable, therefore, to use the element [`<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html) for each of these sections, and to use the attribute `@type` or `@n` to distinguish different classes and their positions in the text (for example, `<div n=“3” type= “subsection”>…</div>`).
+At first glance, all the possibilities may seem overwhelming. However, it is important to remember that a text is usually naturally divided into sections or parts. It is advisable, therefore, to use the element [`<div>`](https://perma.cc/X6FL-T3BW) for each of these sections, and to use the attribute `@type` or `@n` to distinguish different classes and their positions in the text (for example, `<div n=“3” type= “subsection”>…</div>`).
 
 If our text is short and simple, we can use just one `<div>`. For example:
 
@@ -325,7 +326,7 @@ But if our text is more complex, we can use various `<div>` elements:
 
 The structure of our TEI document should, at least in principle, be similar to the structure of our text object, that is the text we want to encode. Therefore, if our text object is divided in chapters, and those chapters are divided into sections or parts, and those, in turn, in paragraphs, it is recommended that we replicate the same structure in the TEI document.
 
-For the chapters and the sections, we can use the element `<div>`, and for the paragraphs the element [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html). Let’s look, for example, at the following schema:
+For the chapters and the sections, we can use the element `<div>`, and for the paragraphs the element [`<p>`](https://perma.cc/VRK8-U8AM). Let’s look, for example, at the following schema:
 
 ```
 <text>
@@ -350,7 +351,7 @@ For the chapters and the sections, we can use the element `<div>`, and for the p
 
 Although TEI allows us to exhaustively encode many of the aspects and properties of a text, sometimes we are not interested in all of them. Plus, the process of encoding can take more time than it needs to if we encode elements that we are never going to take advantage of in the eventual transformation. For example, if we want to encode the text of a printed edition, the line breaks in the paragraphs may not be relevant to our encoding.
 
-In this case, we can ignore those breaks and can keep only the paragraph breaks, without going into greater detail. Or perhaps we feel the temptation of systematically encoding all of the dates and places (with the elements [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html) and [`<placeName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-placeName.html), respectively) that appear in our text object, even though we never use them later. Encoding them is not a mistake, per se, but we may waste valuable time by doing so.
+In this case, we can ignore those breaks and can keep only the paragraph breaks, without going into greater detail. Or perhaps we feel the temptation of systematically encoding all of the dates and places (with the elements [`<date>`](https://perma.cc/7JWC-LC8W) and [`<placeName>`](https://perma.cc/8VZ8-4HRW), respectively) that appear in our text object, even though we never use them later. Encoding them is not a mistake, per se, but we may waste valuable time by doing so.
 
 In conclusion, we can formulate the 'golden rule' of encoding: we encode all the elements that have a certain meaning for us, but only those elements, so that we can eventually use them for specific purposes.
 
@@ -364,9 +365,9 @@ The second part of this lesson is not yet available in English, but is forthcomi
 
 
 ## Recommended Readings
-* The [TEI Guidelines](https://tei-c.org/guidelines/) have the complete documentation of TEI. 
-* A good tutorial for XML is available at [https://www.w3schools.com/xml/](https://www.w3schools.com/xml/) and at [https://www.tutorialspoint.com/xml/index.htm](https://www.tutorialspoint.com/xml/index.htm). 
-* The TEI Consortium also offers a [good introduction to XML](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/SG.html).
-* The official documentation of XML is available at the [W3C Consortium](https://www.w3.org/XML/). There is also [documentation for all of the XSL family](https://www.w3.org/Style/XSL/), including XSLT. 
-* The Mozilla Foundation also offers good [documentation about XSLT and associated technologies](https://developer.mozilla.org/en-US/docs/Web/XSLT). 
+* The [TEI Guidelines](https://perma.cc/2FYX-38WC) have the complete documentation of TEI. 
+* A good tutorial for XML is available at [https://www.w3schools.com/xml/](https://perma.cc/MC39-8BGD) and at [https://www.tutorialspoint.com/xml/index.htm](https://perma.cc/F8NJ-ZASB). 
+* The TEI Consortium also offers a [good introduction to XML](https://perma.cc/K2U5-28HK).
+* The official documentation of XML is available at the [W3C Consortium](https://perma.cc/627D-XYTT). There is also [documentation for all of the XSL family](https://perma.cc/2CT3-AAHV), including XSLT. 
+* The Mozilla Foundation also offers good [documentation about XSLT and associated technologies](https://perma.cc/EM9W-UN4D). 
 * A _Programming Historian_ lesson about XML and the transformations of XSL is [Transforming Data for Reuse and Republication with XML and XSL](/en/lessons/transforming-xml-with-xsl) by M. H. Beals. 

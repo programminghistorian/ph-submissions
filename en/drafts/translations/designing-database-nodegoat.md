@@ -18,8 +18,8 @@ translator:
 translation-editor:
 - Laura Alice Chapot
 translation-reviewer:
-- Forename Surname
-- Forename Surname
+- Felix Vanden Borre
+- Maneesha Sane
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/658
 difficulty: 1
 activity: transforming

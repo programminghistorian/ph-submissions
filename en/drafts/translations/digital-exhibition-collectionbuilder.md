@@ -334,15 +334,13 @@ In our example, you could edit the **display_name** in our navigation bar from S
 
 With those final edits, you have a fully customized exhibition site that is ready for the world to see. Congratulations!
 
-## Bonus Customizations
+## Bonus Customization: Adding Thumbnails when you have PDF files
 
-If you are comfortable experimenting with code and HTML, here’s an example of an advanced customization option that goes beyond the prerequisites for this tutorial. These two are just examples of the types of customization you can achieve by working directly with the code. 
+If you are comfortable experimenting with code and HTML, here’s an example of an advanced customization option that goes beyond the prerequisites for this tutorial.  
 
-### 5.1 Adding Thumbnails when you have PDF files
+If you are using PDF files, as we did in our example, by default, you will not have thumbnails when browsing. To add a thumbnail, the first step is to add the URL to the image to your metadata CSV, [see our example](https://github.com/sarahseverson/ph-demo-playbills/blob/main/_data/ph-demo-playbills.csv), in your **_data folder** in a new column named **image_thumb**. 
 
-If you are using PDF files like we did in our example, by default, you will not have any thumbnails when you browse. To add a thumbnail, the first step is to add the URL to the image to your metadata CSV, [see our example](https://github.com/sarahseverson/ph-demo-playbills/blob/main/_data/ph-demo-playbills.csv), in your **_data folder** in a new column named **image_thumb**. 
-
-The second step is configuring some layout files to tell the page: if a custom thumbnail image is available, use that instead of the default icon.
+The second step is to configure some layout files to instruct the page: if a custom thumbnail image is available, use it instead of the default icon.
 
 1. Find the following file: **_includes/js/browse-js.html.**  
 2. Find the section that starts with:

@@ -349,8 +349,6 @@ p1 <- ggplot(data = eudata.sample,
          y = "Población de la ciudad destino (log)")
 ```
 
-One common use of scales is to change the colors of a plot. To manually specify the colors you want, you can use the `scale_color_manual()` function and provide a [vector](https://perma.cc/XV2R-DLSY) of color values, using color names [defined by R](https://perma.cc/TM3F-D8JP) or their hexadecimal codes. [`scale_colour_manual()`](https://perma.cc/T72S-NYXC) takes a compulsory argument (`values =`), namely a vector of the color names. In this way, you can create graphs with your chosen colors:
-
 Un uso común de los `scales` es cambiar los colores de un gráfico. Para especificar manualmente los colores que deseas, puedes utilizar la función `scale_color_manual()` y proporcionar un [vector](https://perma.cc/XV2R-DLSY) de valores de color, utilizando nombres de color [definidos por R](https://perma.cc/TM3F-D8JP) o sus códigos hexadecimales. La función `scale_colour_manual()` [requiere un argumento obligatorio](https://perma.cc/T72S-NYXC), a saber, un vector de nombres de color. De esta manera, puedes crear gráficos con los colores que elijas (los nombres han de estar en inglés pues así están codificados en R y ggplot):
 
 ```

@@ -94,7 +94,7 @@ To prepare the exhibit, you first need a collection of objects described in a CS
 
 If you are like us and have a collection of described digital objects already in the Internet Archive (IA), you can use their [Advanced Search](https://archive.org/advancedsearch.php) page to craft specific queries and export the existing metadata to a CSV file.
 
-The first step is to use the Advanced search form to create a query that isolates the objects you want to download. You can also construct a query with keywords, Field-Specific searches and Boolean operators. Experiment with different queries until you get your desired results. Every time you do an advanced search with the form, IA converts your query into their desired query syntax, which you need in the second section, “**Advanced Search, returning JSON, XML, and more***”*. 
+The first step is to use the Advanced search form to create a query that isolates the objects you want to download. You can also construct a query with keywords, Field-Specific searches and Boolean operators. Experiment with different queries until you get your desired results. Every time you do an advanced search with the form, IA converts your query into their desired query syntax, which you need in the second section, “**Advanced Search, returning JSON, XML, and more**”. 
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-01.png" alt="Screenshot of the Internet Archive's advanced search interface showing relevant metadata highlighted and the CSV format chosen." caption="Figure 1. Screenshot of the Internet Archive's advanced search interface" %}
 
@@ -227,7 +227,7 @@ When your site is ready, refresh the page, and you will see the URL to your live
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-06.png" alt="Screenshot of the message you will receive when your site is live." caption="Figure 6. Screenshot of the message you will receive when your site is live." %}
 
-Click on the link, and ** VOILA**, your digital exhibition, using *the defaults* from the CollectionBuilder template, and your metadata are live.
+Click on the link, and **VOILA**, your digital exhibition, using *the defaults* from the CollectionBuilder template, and your metadata are live.
 
 
 #### Troubleshooting
@@ -252,11 +252,11 @@ The first thing someone sees when they visit your site is the home page, and the
 
 The first change we will make is to add our logo, banner image, and update the text in the description box.
 
-Open the **_config.yml** file again. Under **# SITE SETTINGS**, update your site's title, tagline, and description.
+Open the **_config.yml** file again. Under **#SITE SETTINGS**, update your site's title, tagline, and description.
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-08.png" alt="Screenshot of the relevant text to update your site's title, tagline, and description in the config.yml file." caption="Figure 8. Screenshot of the relevant text to update your site's title, tagline, and description in the `config.yml` file." %}
 
-Under ** Site/Organization Branding** section, you can add as much organizational information as you want. In this screenshot, you can see our library name and URL: 
+Under **Site/Organization Branding** section, you can add as much organizational information as you want. In this screenshot, you can see our library name and URL: 
 
 
  {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-09.png" alt="Screenshot of the relevant text in the config.yml file for updating your organizational information." caption="Figure 9. Screenshot of the relevant text in the `config.yml` file for updating your organizational information." %}
@@ -275,7 +275,7 @@ Next, we can change the number and arrangement of content boxes that appear on t
 
 In our example, we’ve used the location metadata field to indicate the physical location of the playbill, which helps library staff retrieve the items if requested. However, you do not necessarily need to be able to browse that on the front page.
 
-To delete that box, first, locate the line of code between the `and` that uses **field="location"** and delete the entire line of code on line 19. We also want to delete the “objects” box line of code on line 21 since everything in our example exhibition is a PDF, so it didn’t give the viewer any useful information to browse.
+To delete that box, first, locate the line of code between the `and` that uses `field="location"` and delete the entire line of code on line 19. We also want to delete the “objects” box line of code on line 21 since everything in our example exhibition is a PDF, so it didn’t give the viewer any useful information to browse.
 
 The next thing you can do is change the order of the boxes. In our example, we moved the subject box to the top and pushed the timeline down. We also changed the title of the Subject box to **Top Genre** to better reflect the metadata.
 

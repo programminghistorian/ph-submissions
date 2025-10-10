@@ -96,7 +96,7 @@ If you are like us and have a collection of described digital objects already in
 
 The first step is to use the Advanced search form to create a query that isolates the objects you want to download. You can also construct a query with keywords, Field-Specific searches and Boolean operators. Experiment with different queries until you get your desired results. Every time you do an advanced search with the form, IA converts your query into their desired query syntax, which you need in the second section, “**Advanced Search, returning JSON, XML, and more***”*. 
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-1-ia-advanced-search.png" alt="Screenshot of the Internet Archive's advanced search interface showing relevant metadata highlighted and the CSV format chosen." caption="Figure 1. Screenshot of the Internet Archive's advanced search interface" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-01.png" alt="Screenshot of the Internet Archive's advanced search interface showing relevant metadata highlighted and the CSV format chosen." caption="Figure 1. Screenshot of the Internet Archive's advanced search interface" %}
 
 Now that you have a query, the second step is to download the desired metadata fields in a usable format. Select which metadata fields you want to include in your download from the list on the left-hand side. This list contains both the descriptive metadata as defined by the uploader and the administrative metadata from the IA platform. If you are not sure which fields you want, you can select all and then go through them later. For more information on what each metadata field contains, you can look at the [IA metadata schema](https://archive.org/developers/metadata-schema/index.html%20), but not all metadata in IA will follow this schema, so be cautious! 
 
@@ -169,7 +169,7 @@ To set up CollectionBuilder for your exhibition, you first need to copy the temp
 
 In the top right-hand corner, you will see a “Use this template” button. If you don’t see this button, make sure you are signed into your GitHub account.
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-2-clone-repo.png" alt="Screenshot of the CollectionBuilder GitHub repository with the Use this Template button circled in yellow." caption="Figure 2. Screenshot of the CollectionBuilder GitHub repository with the Use this Template button highlighted" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-02.png" alt="Screenshot of the CollectionBuilder GitHub repository with the Use this Template button circled in yellow." caption="Figure 2. Screenshot of the CollectionBuilder GitHub repository with the Use this Template button highlighted" %}
 
 When you click on the “Use this template” button, you will have two options. Choose “Create a new repository.” This will let you copy all of the template files, with all the framework repository defaults, to your GitHub account so you can start building your exhibition. 
 
@@ -203,7 +203,7 @@ To do this, we will edit the **_config.yml** file:
 
 Under the heading # COLLECTION SETTINGS change line 37 **metadata: demo-metadata** to the name of your metadata file you just uploaded. In our example, we changed it to **metadata: playbills-demo**
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-3-config-collection-settings.png" alt="Screenshot of the relevant section of the config.yml file showing where to point CollectionBuilder to your metadata file." caption="Figure 3. Screenshot of the relevant section of the `config.yml` file showing where to point CollectionBuilder to your metadata file." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-03.png" alt="Screenshot of the relevant section of the config.yml file showing where to point CollectionBuilder to your metadata file." caption="Figure 3. Screenshot of the relevant section of the `config.yml` file showing where to point CollectionBuilder to your metadata file." %}
 
 ### 3.4 Publish your site
 
@@ -211,7 +211,7 @@ While you could skip to the section to completely customize your exhibition befo
 
 To publish your site using GitHub Pages, you just need to edit a few settings. From your repository home page, click on the settings option at the top right.
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-4-github-settings.png" alt="Screenshot of GitHub demo repository page with a yellow circle around the Settings button." caption="Figure 4. Screenshot of GitHub demo repository page with a yellow circle around the Settings button." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-04.png" alt="Screenshot of GitHub demo repository page with a yellow circle around the Settings button." caption="Figure 4. Screenshot of GitHub demo repository page with a yellow circle around the Settings button." %}
 
 Select **Pages** from the left side menu:
 
@@ -221,11 +221,11 @@ Select **Pages** from the left side menu:
 
 It will now take GitHub a few minutes to build your site using the contents of your repository for the first time.
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-5-build-site.png" alt="Screenshot of the GitHub message you will get while GitHub is building your site." caption="Figure 5. Screenshot of the GitHub message you will get while GitHub is building your site." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-05.png" alt="Screenshot of the GitHub message you will get while GitHub is building your site." caption="Figure 5. Screenshot of the GitHub message you will get while GitHub is building your site." %}
 
 When your site is ready, refresh the page, and you will see the URL to your live site. The URL will follow the pattern: [https://username.github.io/repository-name](https://username.github.io/repository-name)
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-6-live-site.png" alt="Screenshot of the message you will receive when your site is live." caption="Figure 6. Screenshot of the message you will receive when your site is live." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-06.png" alt="Screenshot of the message you will receive when your site is live." caption="Figure 6. Screenshot of the message you will receive when your site is live." %}
 
 Click on the link, and ** VOILA**, your digital exhibition, using *the defaults* from the CollectionBuilder template, and your metadata are live.
 
@@ -239,7 +239,7 @@ Did you follow all the above steps, and don’t see what you expect?
 * Have all of your commits or changes been processed? You can click on the clock with the number of commits and check if they have a green check mark next to them.
 
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-7-commits.png" alt="Screenshot of GitHub demo repository page with a yellow circle around the Commits link, which you can use to check the status of your commits." caption="Figure 7. Screenshot of GitHub demo repository page with a yellow circle around the Commits link, which you can use to check the status of your commits." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-07.png" alt="Screenshot of GitHub demo repository page with a yellow circle around the Commits link, which you can use to check the status of your commits." caption="Figure 7. Screenshot of GitHub demo repository page with a yellow circle around the Commits link, which you can use to check the status of your commits." %}
 
 
 ## 4. Customizing your digital exhibition
@@ -254,18 +254,18 @@ The first change we will make is to add our logo, banner image, and update the t
 
 Open the **_config.yml** file again. Under **# SITE SETTINGS**, update your site's title, tagline, and description.
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-8-site-settings.png" alt="Screenshot of the relevant text to update your site's title, tagline, and description in the config.yml file." caption="Figure 8. Screenshot of the relevant text to update your site's title, tagline, and description in the `config.yml` file." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-08.png" alt="Screenshot of the relevant text to update your site's title, tagline, and description in the config.yml file." caption="Figure 8. Screenshot of the relevant text to update your site's title, tagline, and description in the `config.yml` file." %}
 
 Under ** Site/Organization Branding** section, you can add as much organizational information as you want. In this screenshot, you can see our library name and URL: 
 
 
- {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-9-site-org-branding.png" alt="Screenshot of the relevant text in the config.yml file for updating your organizational information." caption="Figure 9. Screenshot of the relevant text in the `config.yml` file for updating your organizational information." %}
+ {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-09.png" alt="Screenshot of the relevant text in the config.yml file for updating your organizational information." caption="Figure 9. Screenshot of the relevant text in the `config.yml` file for updating your organizational information." %}
  
 Next, add a banner or a featured image to the home page by editing the **theme.yml** in the **_data** folder. If your exhibition includes images, you can add the **objectID** of any image to feature it. This has the added advantage of automatically including a link to the featured image in your collection, as seen in the [https://www.lib.uidaho.edu/digital/psychiana/](https://www.lib.uidaho.edu/digital/psychiana/) example.
 
 Since our collection consists solely of PDF objects, we created a collage of some covers for the banner. To use this file in your header, you need to first upload it to the **/assets/img** folder and then add that path to the **theme.yml** file in the **_data** folder.
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-10-theme-home-page.png" alt="Screenshot of the relevant text in the theme.yml file for configuring the display of the banner image if you are not using an object from your collection." caption="Figure 10. Screenshot of the relevant text in the theme.yml file for configuring the display of the banner image if you are not using an object from your collection." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-10.png" alt="Screenshot of the relevant text in the theme.yml file for configuring the display of the banner image if you are not using an object from your collection." caption="Figure 10. Screenshot of the relevant text in the theme.yml file for configuring the display of the banner image if you are not using an object from your collection." %}
 
 You can also use an external URL if you want to host your banner somewhere outside the project.
 
@@ -279,7 +279,7 @@ To delete that box, first, locate the line of code between the `and` that uses *
 
 The next thing you can do is change the order of the boxes. In our example, we moved the subject box to the top and pushed the timeline down. We also changed the title of the Subject box to **Top Genre** to better reflect the metadata.
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-11-home-infographic.png" alt="Screenshot of home-infographic.html code showing the changes to the box order and the title of the subject box." caption="Figure 11. Screenshot of home-infographic.html code showing the changes to the box order and the title of the subject box." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-11.png" alt="Screenshot of home-infographic.html code showing the changes to the box order and the title of the subject box." caption="Figure 11. Screenshot of home-infographic.html code showing the changes to the box order and the title of the subject box." %}
 
 ### 4.2 Item page
 
@@ -287,9 +287,9 @@ Next, let’s examine the default item page where your viewer will see your digi
 
 To make changes, go to the **_data** folder and open the **config-metadata.csv** file. The top line (1) is the table header, which tells us what each column means. Field references the metadata field name in your metadata CSV file, and display_name is what is shown on your item page.  The browse_link and external_link columns are where you can turn on hyperlinking of fields or make a field link to an external website after each row below matches up to a metadata field that is displayed on your item page.  
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-12-1-config-metadata.png" alt="Screenshot of the config-metadata.csv file with the updates specified in the lesson" caption="Figure 12.1. Screenshot of the `config-metadata.csv` file with the updates specified in the lesson" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-12.png" alt="Screenshot of the config-metadata.csv file with the updates specified in the lesson" caption="Figure 12. Screenshot of the `config-metadata.csv` file with the updates specified in the lesson" %}
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-12-2-item-metadata.png" alt="Screenshot of the metadata section of the demo exhibit." caption="Figure 12.2. Screenshot of the metadata section of the demo exhibit to show the same changes from the `config-metadata.csv` file" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-13.png" alt="Screenshot of the metadata section of the demo exhibit." caption="Figure 13. Screenshot of the metadata section of the demo exhibit to show the same changes from the `config-metadata.csv` file" %}
 
 For the playbills example, you can add some new metadata terms to the item page that were specific to these materials, like Playwright and Theatre Name and change the display_name of the title field to the more descriptive, Play Title. 
 

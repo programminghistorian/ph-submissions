@@ -46,7 +46,7 @@ If you are new to Python and HTML, you can consult Programming Historian lessons
 
 Each code snippet in the lesson is designed to be run as a cell in a [Jupyter notebook](https://programminghistorian.org/en/lessons/jupyter-notebooks), and they must be run in order of appearance. If you are not familiar with Jupyter notebooks, you can consult the Programming Historian lesson [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks). 
 
-You can follow the lesson on any mainstream operating system you prefer. On Python, you will need to have the following libraries installed:
+You can follow the lesson on any mainstream operating system. On Python, you will need to have the following libraries installed:
 
 - [requests](https://requests.readthedocs.io/en/latest/)
 - [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)
@@ -77,9 +77,7 @@ In the rest of the lesson, we will use the term **resource** to refer to any typ
 
 Web archive scholars have long emphasized that the web page snapshots displayed on the Wayback Machine are not necessarily identical to how pages originally appeared in the past, due to technical complexities in capturing and rendering web content.[^3] While a full discussion of these complexities is beyond the scope of this lesson, since we will be scraping media resources on archived web pages, it is important to know that on an archived web page accessed through the Wayback Machine's web interface, embedded media elements may have actually been captured on different dates than the page itself.
 
-A web page consists of an HTML file plus embedded media files - such as images, scripts, and stylesheets - that are referenced in the HTML by their URLs. When the user requests an archived web page snapshot, the Wayback Machine will deliver a "best effort" reconstruction of a web page by rewriting URLs in the archived HTML file so that each embedded resource loads from the closest available archived version on the Wayback Machine, based on the timestamp of the main HTML file. This process is known in web archive scholarship as **recomposition**.[^4]
-
-However, the Wayback Machine's crawler usually cannot capture all embedded resources on a web page simultaneously with the web page itself. This means that, when recomposing a web page for display, the Wayback Machine may have to draw snapshots of embedded resources captured at different times than the main page - sometimes months or even years apart - creating temporal inconsistencies that may complicate historical interpretation. 
+A web page consists of an HTML file plus embedded media files - such as images, scripts, and stylesheets - that are referenced in the HTML by their URLs. However, when capturing a web page for preservation, due to technical and network constraints, the Wayback Machine's crawler usually cannot capture all embedded resources on a web page simultaneously with the page itself. Therefore, when a user requests an archived web page snapshot, the Wayback Machine will deliver a "best effort" reconstruction of a web page by rewriting URLs in the archived HTML file so that each embedded resource loads from the closest available archived version on the Wayback Machine, based on the timestamp of the main HTML file. This process is known in web archive scholarship as **recomposition**.[^4] Sometimes, the Wayback Machine has to draw archived snapshots of embedded page resources captured months or even years away from the capture date of the web page itself, creating temporal inconsistencies that may complicate historical interpretation. 
 
 In this lesson, we will learn how to evaluate whether an embedded resource is **temporally coherent** with the recomposed web page snapshot displaying it - that is, whether a user in the past visiting the original web page on the date of capture would likely have encountered the same version of the embedded resource that now appears on the recomposed page snapshot accessed through the Wayback Machine's web interface. 
 
@@ -140,7 +138,7 @@ The returned value should be a timestamp in the [HTTP Date header format](https:
 x-archive-orig-last-modified: Tue, 29 Feb 2000 08:46:01 GMT
 ```
 
-This header suggests that the image captured on April 7, 2000 was last modified on Google's server on February 29, 2000. Therefore, it stands to reason that a user visiting Google on March 1, 2000 would have seen the same image as the one captured on April 7, 2000, and thus the image is temporally coherent with the snapshot. 
+This header suggests that the image captured on April 7, 2000 was last modified on Google's server on February 29, 2000. Therefore, it stands to reason that a user visiting Google on March 1, 2000 would likely have seen the same image as the one captured on April 7, 2000, and thus the image is temporally coherent with the snapshot. 
 
 In addition to the `x-archive-orig-last-modified` header, the Wayback Machine also provides a special header named `memento-datetime`, which indicates the capture date of the requested snapshot. We can use curl again to retrieve the `memento-datetime` header of the Google logo snapshot:
 
@@ -168,7 +166,7 @@ Return to the Google logo URL again:
 
 The part between the timestamp and the original URL (which is `im_` in the URL) is called a **rewrite modifier**.[^5] It tells the Wayback Machine how to serve the archived content. The `im_` modifier instructs the Wayback Machine to return an image file to be displayed on an archived web page snapshot. If you [access the snapshot of the Google logo without the modifier](https://web.archive.org/web/20000407103739/http://google.com/images/Title_HomPg2.gif) in your browser, the Wayback Machine will return the image alongside with its toolbar for users to navigate between snapshots captured at different dates. 
 
-Usually, rewrite modifiers are added by the Wayback Machine when rewriting URLs during the recomposition process. When we scrape the Wayback Machine, we can also manually add rewrite modifiers to control how the Wayback Machine returns archived web content. 
+Usually, rewrite modifiers are added by the Wayback Machine when rewriting URLs during recomposition. When we scrape the Wayback Machine, we can also manually add rewrite modifiers to control how the Wayback Machine returns archived web content. 
 
 In our case study, we will use the `im_` modifier to fetch images and the `id_` modifier to get raw HTML for analysis. 
 
@@ -176,9 +174,9 @@ A list of common rewrite modifiers are listed below for your reference[^6]:
 
 | Rewrite modifier            | Meaning                        |
 | --------------- | ------------------------------- |
-| `im_`, `oe_`    | Return most image, audio, and video files for display inside a web page. `oe_` is mainly used for (usually legacy) embedded media formats like Flash and VRML.      |
-| `id_`           | Return an archived HTML, CSS, or JavaScript file as-is, without rewriting links.     |
-| `cs_`, `js_`    | Used for rewriting internal URLs in CSS and JavaScript files. For unmodified versions of these files, use the `id_` modifier.     |
+| `im_`, `oe_`    | Return most image, audio, and video files for display inside a web page. `oe_` is usually used for legacy embedded media formats like Flash and VRML.      |
+| `id_`           | Return an archived HTML, CSS, or JavaScript file as-is, without rewriting internal URLs.     |
+| `cs_`, `js_`    | Return a CSS or JavaScript file with internal URLs rewritten.   |
 | `if_`, `fw_`    | Used originally by the Wayback Machine for displaying HTML content in `<iframe>` and `<frame>` elements. We can also manually apply either of them to retrieve a recomposed archived web page without the Wayback Machine toolbar showing. |
 
 ## Case Study: Building a Dataset of Historical Banner Ads Appearing on Popular Japanese Websites
@@ -324,7 +322,7 @@ def download_cdx_data(original_url):
 
 In the function, we store the API parameters in `params`, and then query the API using the responses library. The `response.raise_for_status()` line ensures that any HTTP status codes indicating errors raise exceptions. This makes potential issues visible to you while running the notebook. A manual two-second delay is added to avoid triggering rate limits. 
 
-Note that the CDX Server API will return a `403` status code if a URL is excluded from the Wayback Machine (usually at the site owner's request). While you should not encounter any such URLs in this lesson, you can adjust the code to process `403` status codes if you are reusing the code for other scraping projects. The API returns an empty response with a `200` status code if the Wayback Machine does not have any archived snapshots of the URL requested with the filtering parameters applied. 
+Note that the CDX Server API will return a `403` status code if a URL is excluded from the Wayback Machine (usually at the site owner's request). While you should not encounter any such URLs in this lesson, you can adjust the code to process `403` status codes if you reuse the code for other projects. The API returns an empty response with a `200` status code if the Wayback Machine does not have any archived snapshots of the URL requested with the filtering parameters applied. 
 
 Using the function, we loop through all URLs in `urls_data` to query the CDX Server API, and save the results to `data/urls/[website URL]/cdx.csv`. The code also checks for and skips any files already downloaded, so you do not have to restart from the beginning if the process is interrupted. 
 
@@ -722,9 +720,9 @@ Keep the terminal window open, and point your web browser to [http://localhost:8
 
 We found 42 `<img>` tags matching known banner ad dimensions across 41 downloaded web page snapshots. The most common formats are 88 x 31, 468 x 60 and 224 x 33 pixels. The popularity of the 224 x 33 format - a format included in the JIAA recommendations but not in the IAB recommendations - demonstrates the importance of adapting web scraping techniques to particular cultural and linguistic contexts. 
 
-Most websites displayed ads hosted on their own domains or those of affiliated companies (e.g. biglobe.ne.jp showed an ad hosted on cplaza.ne.jp; both websites were owned by the company NEC; geocities.co.jp showed an ad hosted on Yahoo, which owned GeoCities). Only one website (goo.ne.jp) displayed ads from an external ad network (ad.jp.doubleclick.net), partially corroborating Aoki’s observation that Japanese websites of this period tended to display in-house ads.[^9] Note that though we technically managed to download two out of the three ad images hosted on ad.jp.doubleclick.net, the two images were both 1x1 GIFs, which means they were probably a placeholder image served by the ad network for unknown reasons.   
+Most websites displayed ads hosted on their own domains or those of affiliated companies (e.g. biglobe.ne.jp showed an ad hosted on cplaza.ne.jp; both websites were owned by the company NEC; geocities.co.jp showed an ad hosted on Yahoo, which owned GeoCities). Only one website (goo.ne.jp) displayed ads from an external ad network (ad.jp.doubleclick.net), partially corroborating Aoki’s observation that Japanese websites of this period tended to display in-house ads.[^9] 
 
-We were able to download archived snapshots of ad images for 32 out of all 42 detected image tags, but only 14 downloaded images are temporally coherent with the web page snapshots they appear on. The low temporal coherence rate demonstrates the need for researchers to take a more critical approach when interpreting recomposed archived web pages accessed via the Wayback Machine.
+We were able to download archived snapshots of ad images for 32 out of all 42 detected image tags, but only 14 downloaded images are temporally coherent with the web page snapshots they appear on. The low temporal coherence rate demonstrates the need for researchers to take a more critical approach when interpreting recomposed archived web pages accessed via the Wayback Machine. Note that though we technically managed to download two out of the three ad images hosted on ad.jp.doubleclick.net, the two images were both 1x1 GIFs, which means they were probably a placeholder image served by the ad network for unknown reasons. 
 
 ### Limitations and Potential Improvements to the Scraping Code
 
@@ -736,7 +734,7 @@ To better handle such cases, consider using a browser automation framework like 
 
 #### Detecting and Scraping Non-Image Media Formats from the Late 1990s and Early 2000s
 
-We scraped only image-based ads in our lesson. However, web users in the 1990s and early 2000s may remember that many ads from that era were based on [Flash](https://en.wikipedia.org/wiki/Adobe_Flash), a proprietary web media format. By modifying the BeautifulSoup scraping criteria, you can easily adapt the sample code in the lesson to scrape a wide range of media formats on the Wayback Machine, including Flash. The same techniques for CDX Server API querying and evaluating temporal coherence remain generally applicable across different types of embedded media content. 
+We scraped only image-based ads in our lesson. However, web users in the 1990s and early 2000s may remember that many ads from that era were based on [Flash](https://en.wikipedia.org/wiki/Adobe_Flash), a proprietary web media format. By modifying the BeautifulSoup scraping criteria, you can easily scrape a wide range of media formats on the Wayback Machine, including Flash. The same techniques for CDX Server API querying and evaluating temporal coherence remain generally applicable across different media formats. 
 
 In the late 1990s and early 2000s, two HTML tags were commonly used to embed non-image media: `<embed>` and `<object>`. These tags can be used to embed audio and video clips (e.g. MIDI, QuickTime, RealMedia, Windows Media), Flash/Shockwave content, Java applets, [VRML](https://en.wikipedia.org/wiki/VRML) worlds, PDF documents, and other plugin-based interactive media. 
 
@@ -753,13 +751,13 @@ During the [1990s browser wars](https://en.wikipedia.org/wiki/Browser_wars#First
 
 In this example, you can find the URL of the Flash movie in both the `<param name="movie">` tag under the parent `<object>` tag and the `src` attribute on the nested `<embed>` tag. During recomposition, the Wayback Machine will typically rewrite URLs of embedded media files with the `oe_` rewrite modifier, which you should also use when downloading these files. 
 
-Keep in mind that many older media formats require emulation or specialized legacy software for playback on modern hardware. The digital preservation activist organization ArchiveTeam maintains a [wiki of file formats](http://justsolve.archiveteam.org/wiki/Main_Page) that you may find useful for identifying obsolete or arcane file formats.
+Keep in mind that many older media formats require emulation or specialized legacy software for playback on modern computers. The digital preservation activist organization ArchiveTeam maintains a [wiki of file formats](http://justsolve.archiveteam.org/wiki/Main_Page) that you may find useful for identifying obsolete or arcane file formats.
 
 #### Deduplicating with Image File Hash and Using a Database to Manage Scraping
 
 In our lesson, we only scraped one snapshot each for 44 historical URLs to look for banner ads. If we are scraping banner ads from a larger set of historical URLs, chances are you will encounter identical ads appearing on different web page snapshots across time. To reduce redundancy and obtain additional insights about how banner ads circulated across different websites or ad networks, you can calculate a unique [hash (such as MD5 or SHA1)](https://en.wikipedia.org/wiki/Hash_function) for each ad image as its ID. This would allow you to group, count, or map each image's occurrences across multiple pages and time periods.
 
-Larger-scale scraping projects may also benefit from using a database like SQLite to manage scraping. A database can keep the scraping process organized by storing metadata of scraped data alongside references to scraped files without relying on scattered data files across the filesystem. This makes it easier to track the scraping process and enable quick searches and queries across large collections. By using a database, you can create a more scalable and efficient workflow for large-scale projects.
+Larger-scale scraping projects may also benefit from using a database like SQLite to manage scraping. Using a database can make it easier to track the scraping process and enable quicker and more complex queries of the scraped data. By using a database, you can create a more scalable and efficient workflow for large-scale projects.
 
 ## Concluding Remarks
 
@@ -769,7 +767,7 @@ Scraping archived web content from the past is usually a process full of excepti
 
 ## Useful Resources
 
-The [Python library `wayback`](https://github.com/edgi-govdata-archiving/wayback) packages a number of useful CDX Server API features into Python functions, which you can easily use in your own scraping projects.
+The [Python library wayback](https://github.com/edgi-govdata-archiving/wayback) packages a number of useful CDX Server API features into Python functions, which you can easily use in your own scraping projects.
 
 The Memento Framework is a standardized HTTP-based protocol that adds a “datetime” dimension to content negotiation. Memento support is available in many web archives, including the Wayback Machine. For more information, check out [RFC7089](https://datatracker.ietf.org/doc/html/rfc7089).
 

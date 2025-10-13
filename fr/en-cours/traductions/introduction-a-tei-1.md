@@ -99,9 +99,9 @@ Cependant, pour réaliser le deuxième type de validation, il est nécessaire qu
 
 Vous pouvez télécharger un [modèle basique d'un document XML-TEI](https://raw.githubusercontent.com/programminghistorian/ph-submissions/refs/heads/gh-pages/assets/introduction-a-tei-1/modele-TEI.xml) depuis le dépôt _Programming Historian_, avec ces lignes déjà incluses.
 
-**Troisièmement**, l'extension offre également des outils pour saisir semi-automatiquement le code XML à partir du schéma de validation RELAX NG. Par exemple, si nous avons introduit dans le document un élément `<q>` (qui signifie ["quoted"](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-q.html), pour marquer un texte entre guillemets, par exemple une citation), nous pouvons appuyer sur la barre d'espace après le `q` de la balise d'ouverture et VS Code affichera une liste d'attributs possibles à sélectionner dans le menu :
+**Troisièmement**, l'extension offre également des outils pour saisir semi-automatiquement le code XML à partir du schéma de validation RELAX NG. Par exemple, si nous avons introduit dans le document un élément `<q>` : ["quoted"](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-q.html) (pour marquer un texte entre guillemets, par exemple une citation), nous pouvons appuyer sur la barre d'espace après le `q` de la balise d'ouverture et VS Code affichera une liste d'attributs possibles à sélectionner dans le menu :
 
-{% include figure.html filename="fr-tr-introduction-a-tei-1-08.png" alt="Menu d'autocomplétion de code XML sur VS Code, figure obtenue par capture d'écran de l'élément body d'un document XML sur VS Code. À l'intérieur de la balise ouvrante q, l'espace entre q et le chevron fermant déploie un menu avec la liste d'attributs." caption="Figure 8. Menu d'autocomplétion de code XML sur VS Code." %}
+{% include figure.html filename="fr-tr-introduction-a-tei-1-08.png" alt="Menu d'autocomplétion de code XML sur VS Code, figure obtenue par capture d'écran de l'élément body d'un document XML sur VS Code. À l'intérieur de la balise ouvrante <q>, l'espace entre q et le chevron fermant déploie un menu avec la liste d'attributs." caption="Figure 8. Menu d'autocomplétion de code XML sur VS Code." %}
 
 Cependant, pour pouvoir utiliser cette extension ou d'autres dans VS Code, il est nécessaire que l'éditeur **ne** soit **pas** en mode restreint (*Restricted Mode*), comme ce qui s'affiche sur cette fenêtre :
 
@@ -130,42 +130,41 @@ Comme nous le verrons plus tard, la TEI nous permet d'encoder, par le moyen d'un
 ```
 Quand <name>Zoïle</name> insulte <name>Homère</name>, quand <name>Mævius</name> insulte <name>Virgile</name>, quand <name>Visé</name> insulte <name>Molière</name>, 
 quand <name>Pope</name> insulte <name>Shakespeare</name>, quand <name>Fréron</name> insulte <name>Voltaire</name>, c’est une vieille loi d’envie 
-et de haine qui s’exécute ; les génies attirent l’injure, les grands hommes sont toujours plus ou
-moins aboyés.
+et de haine qui s’exécute ; les génies attirent l’injure, les grands hommes sont toujours plus ou moins aboyés.
 ```
-Plus tard, nous verrons en détail ce qu'est et comment fonctionne une balise (ou plus précisément un élément) en XML et TEI. Pour le moment, remarquons qu'une balise ne signifie pas que le texte ait été représenté originalement en petite capitale (ni d'une autre manière). Cela signifie seulement que le texte qu'elle contient a la catégorie de nom propre, indépendamment de comment il est représenté. De fait, nous pouvons encoder exhaustivement un document avec des centaines ou des milliers de balises, sans qu'aucune d'elles n'apparaisse à la fin dans une éventuelle représentation.
+Plus tard, nous verrons en détail ce qu'est et comment fonctionne une balise (ou plus précisément un élément) en XML et TEI. Pour le moment, remarquons qu'une balise ne signifie pas que le texte ait été représenté originalement en petite capitale (ni d'une autre manière). Cela signifie seulement que le texte qu'elle contient a la catégorie de nom propre, indépendamment de comment il est représenté. De fait, nous pouvons encoder exhaustivement un document avec des centaines ou des milliers de balises, sans qu'aucune d'elles n'apparaisse, à la fin, dans une éventuelle représentation.
 
 # XML et TEI : vers un standard de l'encodage de textes
 
-Depuis les débuts des humanités numériques dans les années soixante, il y a eu beaucoup d'approximations à l'encodage de textes. Presque chaque projet d'encodage contenait son propre standard, ce qui conduisait au fait que les projets soient incompatibles et intraduisibles entre eux, entravant voire rendant impossible le travail collaboratif.
+Depuis les débuts des humanités numériques, dans les années soixante, il y a eu beaucoup d'approximations à l'encodage de textes. Presque chaque projet d'encodage contenait son propre standard, ce qui conduisait au fait que les projets soient incompatibles et intraduisibles entre eux, entravant, voire rendant impossible, le travail collaboratif.
 
-Pour résoudre ce problème, une vingtaine d'années plus tard, on a établi un nouveau standard d'encodage de textes, rassemblant un grand nombre de chercheurs et chercheuses de partout dans le monde, particulièrement d'universités anglosaxonnes : la [Text Encoding Initiative (TEI)](https://fr.m.wikipedia.org/wiki/Text_Encoding_Initiative).
+Pour résoudre ce problème, une vingtaine d'années plus tard, on a établi un nouveau standard d'encodage de textes, rassemblant un grand nombre de chercheurs et chercheuses à travers le monde, particulièrement dans les universités anglosaxonnes : la [Text Encoding Initiative (TEI)](https://fr.m.wikipedia.org/wiki/Text_Encoding_Initiative).
 
-La TEI est en même temps construite sur le langage de marquage [XML](https://fr.m.wikipedia.org/wiki/Extensible_Markup_Language) et c'est pourquoi il est parfois dénommé comme "TEI-XML" (ou encore "XML/TEI"). De son côté, le XML (le sigle d'"eXtensible Markup Language") est un langage d'ordinateur dont le propos est de décrire, par le moyen d'une série de marques ou de balises (_tags_ en anglais), un objet-texte donné.
+La TEI est également construite sur le langage de marquage [XML](https://fr.m.wikipedia.org/wiki/Extensible_Markup_Language), c'est pourquoi elle est parfois dénommée comme "XML-TEI" (ou encore "TEI-XML"). De son côté, le XML (le sigle d'"eXtensible Markup Language") est un langage d'ordinateur dont le propos est de décrire, par le moyen d'une série de marques ou de balises (_tags_ en anglais), un objet-texte donné.
 
 Le XML et la TEI sont des langages de marquage et c'est en cela qu'ils se différencient des langages de programmation comme C, Python ou Java, qui décrivent des objets, des fonctions ou des procédures qui doivent être exécutés par un ordinateur.
 
 ## XML
 
-Dans cette leçon nous n'entrerons pas en détail dans la syntaxe et le fonctionnement de XML. Nous recommandons donc que le lecteur jette un coup d'œil à [cette autre leçon](https://programminghistorian.org/en/lessons/transforming-xml-with-xsl) pour plus d'information sur XML, ainsi qu'à la bibliographie et aux références suggérées à la fin de cette leçon.
+Dans cette leçon, nous n'entrerons pas dans le détail de la syntaxe ni du fonctionnement de XML. Nous recommandons donc que le lecteur ou la lectrice jette un coup d'œil à [cette autre leçon](https://programminghistorian.org/en/lessons/transforming-xml-with-xsl) (en anglais) pour plus d'information sur le XML, ainsi qu'à la bibliographie et aux références suggérées à la fin de cette leçon.
 
-Pour le moment nous devons seulement savoir que tout document XML doit respecter deux règles basiques pour être valable :
+Pour le moment nous devons seulement savoir que tout document XML doit respecter deux règles essentielles pour être valable :
 
-1. Il doit y avoir un seul élément racine (qui contient tous les autres éléments, s'il y en a d'autres).
+1. Il ne doit y avoir qu'un seul élément racine (qui contient tous les autres éléments, s'il y en a d'autres).
 2. Toute balise d'ouverture doit avoir une balise de fermeture.
 
-Heureusement, les éditeurs de code XML comme VS code (avec l'extension Scholarly XML) ou OxygenXML nous permettent de détecter facilement des erreurs de ce type.
+Heureusement, les éditeurs de code XML comme VS Code (avec l'extension Scholarly XML) ou OxygenXML nous permettent de détecter facilement des erreurs de ce type.
 
 ## Qu'est-ce que la TEI ?
 
-Le XML est un langage tellement général et abstrait qu'il est totalement indifférent à l'égard de son contenu. Il peut être utilise, par exemple, pour décrire des choses tellement différentes comme un texte en grec classique du VIII siècle av. J.-C. et un message qu'un thermostat intelligent envoie à une application de smartphone utilisée pour le contrôler.
+Le XML est un langage si général et abstrait qu'il est totalement indifférent à l'égard de son contenu. Il peut être utilisé, par exemple, pour décrire des choses très différentes, allant d'un texte en grec classique du VIII siècle av. notre ère à un message qu'un thermostat intelligent envoie à une application de smartphone utilisée pour le contrôler.
 
-La TEI est une implémentation particulière de XML. C'est-à dire que c'est une série de règles qui déterminent quels éléments et quels attributs sont permis dans un document d'un certain type. Plus précisément, la TEI est un langage de marquage pour encoder tous types de texte. Et cela afin qu'ils soient traités par un ordinateur, de sorte qu'ils puissent être analysés, transformés, reproduits et stockés, selon les besoins et les intérêts des usagers (ceux en chair et en os comme les numériques). C'est pourquoi nous pouvons dire que la TEI est au cœur des humanités numériques (ou du moins dans l'un de ses cœurs !). C'est un standard pour travailler informatiquement avec une classe d'objets traditionnellement centrale aux humanités : les textes.
-Ceci étant, alors que le XML reste indifférent quand les éléments d'un document décrivent des textes (ou des propriétés de textes), la TEI est conçue pour travailler avec eux.
+La TEI est une implémentation particulière de XML. C'est-à-dire que c'est une série de règles qui déterminent quels éléments et quels attributs sont permis dans un document d'un certain type. Plus précisément, la TEI est un langage de marquage pour encoder tous types de textes. Cela permet qu'ils soient traités par un ordinateur, de sorte qu'ils puissent être analysés, transformés, reproduits et stockés, selon les besoins et les intérêts des usager·e·s (tant en chair et en os que numériques). C'est pourquoi nous pouvons dire que la TEI est au cœur des humanités numériques (ou du moins dans l'un de ses cœurs !). C'est un standard pour travailler informatiquement avec une classe d'objets traditionnellement centrale aux humanités : les textes.
+Ceci étant, alors que le XML reste indifférent lorsque les éléments d'un document décrivent des textes (ou des propriétés de textes), la TEI est conçue pour travailler avec eux.
 
-Le type d'éléments et d'attributs permissibles en TEI, et les relations existantes entre eux, sont spécifiés par les [règles de la TEI](https://tei-c.org/release/doc/tei-p5-doc/en/html/index.html). Par exemple, si nous voulons encoder un poème, nous pouvons utiliser l'élément [`<lg>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lg.html) (de _line group_, "groupe de lignes") de la TEI. Les règles de la TEI déterminent quels types d'attributs peut avoir cet élément et quels éléments peuvent, eux-mêmes, contenir ou être contenus par lui. La TEI détermine que tout élément <`lg`> doit avoir au moins un élément [`<l>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-l.html) (de _line_, "ligne").
+Le type d'éléments et d'attributs permissibles en TEI, et les relations existant entre eux, sont spécifiés par les [règles de la TEI]([https://tei-c.org/release/doc/tei-p5-doc/en/html/index.html](https://tei-c.org/release/doc/tei-p5-doc/fr/html/index.html)). Par exemple, si nous voulons encoder un poème, nous pouvons utiliser l'élément [`<lg>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-lg.html) (de _line group_, "groupe de lignes") de la TEI. Les règles de la TEI déterminent quels types d'attributs peut avoir cet élément et quels éléments peuvent, eux-mêmes, contenir ou être contenus par lui. La TEI détermine que tout élément <`lg`> doit avoir au moins un élément [`<l>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-l.html) (de _line_, "ligne").
 
-Pour illustrer nos propos, examinons les premiers quatre vers du *Sonnet VIII* de Louise Labé (à continuation, en texte brut) :
+Pour illustrer nos propos, examinons les quatre premiers vers du *Sonnet VIII* de Louise Labé (ci-dessous, en texte brut) :
 
 ```XML
 Je vis, je meurs : je me brûle et me noie,
@@ -185,13 +184,13 @@ Nous pouvons proposer l'encodage en TEI qui suit :
 </lg>
 ```
 
-Dans ce cas, nous avons fait appel à l'attribut `@rhyme` de l'élément `<lg>`, pour faire encoder le type de rime du passage ; de l'attribut `@met`pour indiquer le type de métrique du premier vers (décasyllabe) (nous aurions dû faire cela pour chacun des vers, mais pour la clarté du code, nous l'avons fait seulement dans le premier) ; et finalement l'attribut `@n` pour indiquer le numéro du vers à l'intérieur de chaque groupe.
+Dans le cas présent, nous avons fait appel à l'attribut `@rhyme` de l'élément `<lg>`, pour faire encoder le type de rime du passage ; à l'attribut `@met` pour indiquer le type de métrique du premier vers – décasyllabe – (nous aurions dû faire cela pour chacun des vers, mais pour la clarté du code, nous l'avons fait seulement dans le premier) ; et finalement à l'attribut `@n` pour indiquer le numéro du vers à l'intérieur de chaque groupe.
 
-La comparaison entre le texte brut du fragment du sonnet avec son encodage nous permet de commencer à voir les avantages de la TEI en tant que langage de marqueurs de textes. Il n'est pas juste indiqué explicitement que les lignes (dans le code précédent) deux à cinq sont des vers d'un poème, mais qu'elles ont un type de rime et de métrique. Une fois encodé tout le poème, ou tous les poèmes d'un recueil, nous pouvons, par exemple, utiliser un logiciel pour réaliser des requêtes structurées, de sorte que cela donne comme résultat tous les poèmes qui possèdent une certaine métrique. Ou alors, nous pouvons utiliser (ou créer) une application pour déterminer combien de vers des sonnets de Louise Labé – s'il y en a – ont une métrique imparfaite. Ou alors, nous pouvons comparer les différentes versions (les "témoins" ou les "témoignages" manuscrits et imprimés) des sonnets, pour réaliser leur édition critique.
+La comparaison entre le texte brut du fragment du sonnet et son encodage nous permet de commencer à voir les avantages de la TEI en tant que langage de marqueur de texte. Il n'est pas seulement indiqué explicitement que les lignes (dans le code précédent) deux à cinq sont des vers d'un poème, mais qu'elles ont un type de rime et de métrique. Une fois tout le poème encodé, ou tous les poèmes d'un recueil, nous pouvons, par exemple, utiliser un logiciel pour réaliser des requêtes structurées, de sorte que cela donne comme résultat tous les poèmes qui possèdent une certaine métrique. Ou alors, nous pouvons utiliser (ou créer) une application pour déterminer combien de vers des sonnets de Louise Labé – s'il y en a – ont une métrique imparfaite. Ou alors, nous pouvons comparer les différentes versions (les "témoins" ou les "témoignages" manuscrits et imprimés) des sonnets, pour réaliser leur édition critique.
 
 Toutefois, tout cela et bien plus encore est possible seulement en vertu d'avoir rendu explicite le contenu de ces sonnets grâce à la TEI. Si nous avions seulement leur texte brut, il serait techniquement impossible de profiter des outils informatiques conçus pour les éditer, transformer, visualiser, analyser ou publier.
 
-# Un document minimal de la TEI
+# Structure minimale d'un document TEI
 
 Examinons maintenant le document minimal de la TEI qui suit :
 
@@ -219,22 +218,22 @@ Examinons maintenant le document minimal de la TEI qui suit :
 </TEI>
 ```
 
-La première ligne est déjà la déclaration traditionnelle du document XML. 
+La première ligne est la déclaration traditionnelle du document XML. 
 
-La deuxième ligne contient l'élément principal ou "racine" de ce document : l'élément `<TEI>`. L'attribut `@xmlns` avec la valeur `http://www.tei-c.org/ns/1.0` déclare simplement que tous les éléments et les attributs enfants de l'élément `<TEI>` appartiennent au "namespace" de la TEI (ici représenté par cet URL). Désormais, cela ne devra plus nous préoccuper.
+La deuxième ligne contient l'élément principal ou "racine" de ce document : l'élément `<TEI>`. L'attribut `@xmlns` avec la valeur `http://www.tei-c.org/ns/1.0` déclare simplement que tous les éléments et les attributs enfants de l'élément `<TEI>` appartiennent au "namespace" de la TEI (représenté ici par cette URL). Désormais, cela ne devra plus nous préoccuper.
 
-Ce qui est intéressant arrive après, dans les lignes trois et seize, qui contiennent respectivement les deux enfants immédiats de la racine :
+Ce qui nous intéresse arrive après, dans les lignes 3 et 16, qui contiennent respectivement les deux enfants immédiats de la racine :
 
-- [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html)
-- [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html)
+- [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-teiHeader.html)
+- [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-text.html)
 
 Voyons maintenant en quoi consistent ces deux éléments.
 
 ## L'élément \<teiHeader\>
 
-Toutes les métadonnées du document sont encodées dans l’élément `<teiHeader>` : le titre, les auteurs ou les autrices, où, quand et comment il a été publié, sa source, d'où a été tirée la source, etcétéra. Il est habituel que les personnes qui commencent à encoder des textes en TEI passent outre ces informations, remplissant ces champs avec des données génériques et incomplètes. Cependant, l'information du `<teiHeader>` est essentielle à la tâche de l'encodeur, car elle sert à identifier avec toute précision le texte encodé.
+Toutes les métadonnées du document sont encodées dans l’élément `<teiHeader>` : le titre, les auteurs ou les autrices, où, quand et comment il a été publié, sa source, d'où a été tirée la source, etc. Il est courant que les personnes qui commencent à encoder des textes en TEI passent outre ces informations, remplissant ces champs avec des données génériques et incomplètes. Cependant, l'information du `<teiHeader>` est essentielle à la tâche de l'encodeur·euse, car elle sert à identifier avec précision le texte encodé.
 
-Le `<teiHeader>` doit contenir au moins un élément nommé `<fileDesc>` (_file description_ ou description du fichier), qui en même temps contient trois éléments enfants :
+Le `<teiHeader>` doit contenir au moins un élément nommé `<fileDesc>` (_file description_ ou description du fichier), qui contient trois éléments enfants en même temps :
 
 - [`<titleStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-titleStmt.html) (_title statement_ ou énoncé de titre) : l'information sur le titre du document (à l'intérieur de l'élément [`<title>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-title.html)) ; optionnellement, il peut aussi inclure des données sur l'auteur ou les auteurs (à l'intérieur de l'élément [`<author>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-author.html))
 - [`<publicationStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publicationStmt.html) (_publication statement_ ou énoncé de publication) : l'information sur comment le document est publié ou disponible (autrement dit, le document TEI lui-même, non pas sa source). Dans ce sens, il est analogue à l'information de l'éditeur/imprimerie dans l'"imprint" ou la page de mentions légales d'un livre. Il peut être un paragraphe descriptif (à l'intérieur d'un élément générique de paragraphe [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html)) ou il peut être structuré dans un ou plusieurs champs à l'intérieur des éléments suivants :

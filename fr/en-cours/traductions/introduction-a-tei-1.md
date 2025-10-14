@@ -310,25 +310,25 @@ Cependant, il est possible – et parfois souhaitable – de spécifier plus en 
 </teiHeader>
 ```
 
-Le choix sur l'exhaustivité de l'information du `<teiHeader>` dépend de sa disponibilité, et obéit aux objectifs de l'encodage et aux intérêts de la personne qui édite ou encode. Cependant, bien que les métadonnées contenues dans le `<teiHeader>` d'un document TEI n'apparaissent pas nécessairement de façon littérale dans le texte encodé, cela ne signifie pas qu'elles ne sont pas pertinentes pour le processus d'encodage, d'édition et d'éventuelle transformation. En effet, dans la mesure où le `<teiHeader>` a été correcte et exhaustivement encodé, on pourra extraire et transformer l'information contenue dans le document.
+Le choix sur l'exhaustivité de l'information du `<teiHeader>` dépend de sa disponibilité, et obéit aux objectifs de l'encodage et aux intérêts de la personne qui édite ou encode. Cependant, bien que les métadonnées contenues dans le `<teiHeader>` d'un document TEI n'apparaissent pas nécessairement de façon littérale dans le texte encodé, cela ne signifie pas qu'elles ne sont pas pertinentes pour le processus d'encodage, d'édition et d'éventuelle transformation. En effet, dans la mesure où le `<teiHeader>` a été correctement et exhaustivement encodé, on pourra extraire et transformer l'information contenue dans le document.
 
-Par exemple, s'il était important pour nous de distinguer entre les différentes éditions et impressions des *Misérables*, l'information contenue dans les `<teiHeader>` des différents documents transcrits serait suffisante pour pouvoir les discriminer automatiquement. En effet, on pourrait profiter des éléments `<edition>` et `<imprint>` à cette fin, et avec l'aide de technologies comme [XSLT](https://www.w3.org/TR/xslt/), [XPath](https://www.w3.org/TR/xpath/) et [XQuery](https://www.w3.org/TR/xquery/),  nous pourrions situer, extraire et traiter toute cette information.
+Par exemple, s'il était important pour nous de distinguer les différentes éditions et impressions des *Misérables*, l'information contenue dans les `<teiHeader>` des différents documents transcrits serait suffisante pour pouvoir les discriminer automatiquement. En effet, on pourrait profiter des éléments `<edition>` et `<imprint>` à cette fin, et avec l'aide de technologies comme [XSLT](https://www.w3.org/TR/xslt/), [XPath](https://www.w3.org/TR/xpath/) et [XQuery](https://www.w3.org/TR/xquery/),  nous pourrions situer, extraire et traiter toute cette information.
 
-En conclusion, plus les métadonnées des textes sont encodées de manière complète et minutieuse dans le `<teiHeader>` de nos documents TEI, plus nous arriverons à contrôler son identité et sa nature.
+En définitive, plus les métadonnées des textes sont encodées de manière complète et minutieuse dans le `<teiHeader>` de nos documents TEI, plus nous arriverons à contrôler son identité et sa nature.
 
 # L'élément \<text\>
 
-Comme nous l'avons vu ci-dessous dans le document minimal, `<text>` est le deuxième enfant de `<TEI>`. Il contient tout le texte du document, proprement dit. Selon la [documentation de la TEI](https://guidelines.tei-c.de/en/html/index.html), `<text>` peut contenir une série d'éléments dans lesquels l'objet-texte doit être structuré :
+Comme nous l'avons vu ci-dessus dans le document minimal, `<text>` est le deuxième enfant de `<TEI>`. Il contient tout le texte du document, proprement dit. Selon la [documentation de la TEI](https://guidelines.tei-c.de/fr/html/index.html), `<text>` peut contenir une série d'éléments dans lesquels l'objet-texte doit être structuré :
 
 {% include figure.html filename="fr-tr-introduction-a-tei-1-12.png" alt="Liste des éléments qui peuvent être contenus dans la balise text, organisés selon leur fonction." caption="Figure 12. Des éléments possibles de `<text>`." %}
 
-Le plus important parmi ces éléments est [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-body.html), qui contient le corps principal du texte. Néanmoins, d'autres éléments importants enfants de `<text>` sont [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-front.html), qui contient le _frontmatter_ (les pages préliminaires) d'un texte (introduction, prologue, etc.), et [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-back.html), qui contient le _backmatter_ (les pages finales, des annexes, des index, etcétéra).
+Le plus important parmi ces éléments est [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-body.html), qui contient le corps principal du texte. Néanmoins, d'autres éléments importants enfants de `<text>` sont [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-front.html), qui contient le _frontmatter_ (les pages préliminaires) d'un texte (introduction, prologue, etc.), et [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-back.html), qui contient le _backmatter_ (les pages finales, des annexes, des index, etc.).
 
 Pour sa part, l'élément `<body>` peut lui-même contenir beaucoup d'autres éléments :
 
 {% include figure.html filename="fr-tr-introduction-a-tei-1-13.png" alt="Liste des éléments qui peuvent être contenus dans la balise body, organisés selon leur fonction." caption="Figure 13. Des éléments possibles de `<body>`." %}
 
-Bien que toutes ces possibilités puissent nous accabler à première vue, nous devons nous rappeler que, d'habitude, un texte se divise naturellement en sections ou parties constitutives. Il est donc recommandable d'utiliser l'élément [`<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html) pour chacune d'elles et d'utiliser des attributs tels que `@type` ou `@n` pour qualifier leurs différentes classes et positions dans le texte (par exemple, `<div n="3" type="sous-section">...</div>`).
+Bien que toutes ces possibilités puissent nous accabler à première vue, nous devons nous rappeler que, d'habitude, un texte se divise naturellement en sections ou parties constitutives. Il est donc recommandable d'utiliser l'élément [`<div>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-div.html) pour chacune d'elles et d'utiliser des attributs tels que `@type` ou `@n` pour qualifier leurs différentes classes et positions dans le texte (par exemple, `<div n="3" type="sous-section">...</div>`).
 
 Si notre texte est court ou simple, nous pourrions utiliser qu'un seul `<div>`. Par exemple :
 
@@ -358,9 +358,9 @@ Mais si notre texte est plus complexe, nous utiliserions plusieurs éléments `<
 </text>
 ```
 
-En principe, la structure de notre document TEI doit être similaire à la structure de l'objet-texte, c'est-à-dire, du texte que nous voulons encoder. Ainsi donc, si notre objet-texte se divise en chapitres, et ceux-ci, en même temps, en paragraphes, alors nous recommandons de reproduire la même structure dans le document TEI.
+En principe, la structure de notre document TEI doit être similaire à la structure de l'objet-texte, c'est-à-dire, du texte que nous voulons encoder. Ainsi, si notre objet-texte se divise en chapitres, et ceux-ci, en même temps, en paragraphes, alors nous recommandons de reproduire la même structure dans le document TEI.
 
-Pour les chapitres et les sections, nous pouvons utiliser l'élément `<div>` et pour les paragraphes l'élément `<p>`(https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html).
+Pour les chapitres et les sections, nous pouvons utiliser l'élément `<div>` et pour les paragraphes l'élément `<p>`(https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-p.html).
 Observons, par exemple, le schéma suivant :
 
 ```XML
@@ -384,20 +384,20 @@ Observons, par exemple, le schéma suivant :
 </text>
 ```
 
-Bien que la TEI nous permette d'encoder exhaustivement beaucoup des aspects et des propriétés d'un texte, parfois ils ne nous intéressent pas tous. De plus, le processus d'encodage peut s'étaler dans le temps de manière inutile si nous encodons des éléments dont nous ne profiterons pas lors d'une éventuelle transformation. Par exemple, si nous sommes en train d'encoder le texte d'une édition imprimée, il peut arriver que les divisions de ligne dans les paragraphes ne soient pas pertinentes pour notre encodage.
+Bien que la TEI nous permette d'encoder exhaustivement beaucoup d'aspects et de propriétés d'un texte, parfois il ne nous intéresse pas nécessairement tous. De plus, le processus d'encodage peut s'étaler dans le temps de manière inutile si nous encodons des éléments dont nous ne profiterons pas lors d'une éventuelle transformation. Par exemple, si nous sommes en train d'encoder le texte d'une édition imprimée, il peut arriver que les divisions de ligne dans les paragraphes ne soient pas pertinentes pour notre encodage.
 
-Dans ce cas, nous pouvons les ignorer et garder seulement les divisions de paragraphe, sans descendre au-delà de celles-ci. Ou peut-être nous ressentons la tentation d'encoder systématiquement toutes les dates et les noms de lieux (avec les éléments [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html) et [`<placeName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-placeName.html), respectivement) qui apparaissent dans notre objet-texte, même si nous n'en profitons pas ultérieurement. Faire cela n'est pas une erreur, mais nous risquons de perdre un temps précieux là-dessus.
+Dans ce cas, nous pouvons les ignorer et garder seulement les divisions de paragraphe, sans descendre au-delà de celles-ci. Peut-être ressentons-nous aussi la tentation d'encoder systématiquement toutes les dates et les noms de lieux (avec les éléments [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-date.html) et [`<placeName>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-placeName.html), respectivement) qui apparaissent dans notre objet-texte, même si nous n'en profiterons pas ultérieurement. Faire cela n'est pas une erreur, mais nous risquons de perdre un temps précieux là-dessus.
 
-En somme, nous pourrions ainsi formuler la "règle d'or" de l'encodage : encodons tous les élements qui ont pour nous une signification déterminée, et seulement ceux-là, tout en prenant compte que nous pourrons en profiter éventuellement à des fins concrètes.
+En somme, nous pourrions ainsi formuler la "règle d'or" de l'encodage : encodons tous les éléments qui ont pour nous une signification déterminée, et seulement ceux-là, tout en prenant en compte le fait que nous pourrons éventuellement en profiter de manière concrète.
 
 ## Conclusion
 
 Dans cette première partie de la leçon, vous avez appris :
 
-1. Ce que signifie encoder un texte
-2. Ce que sont les documents XML et XML-TEI
+1. Ce que signifie encoder un texte.
+2. Ce que sont les documents XML et XML-TEI.
 
-Dans [la deuxième partie](/es/lecciones/introduccion-a-tei-2) vous verrez en détail deux exemples d'encodage de textes.
+Dans [la deuxième partie](https://programminghistorian.org/es/lecciones/introduccion-a-tei-2), qui n'existe actuellement qu'en espagnol, vous verrez en détail deux exemples d'encodages de textes.
 
 ## Références recommandées
 
@@ -405,14 +405,14 @@ Dans [la deuxième partie](/es/lecciones/introduccion-a-tei-2) vous verrez en d�
 
 - Le livre *Qu'est-ce que la Text Encoding Initiative ?* de Lou Burnard (Marseille: OpenEdition Press, 2015), [disponible gratuitement en ligne](https://doi.org/10.4000/books.oep.1237), est une bonne introduction à la TEI.
 
-- Un bon tutoriel pour XML est disponible sur : [https://www.w3schools.com/xml/](https://www.w3schools.com/xml/).
+- Un bon tutoriel pour XML est disponible sur : [https://www.w3schools.com/xml/](https://www.w3schools.com/xml/) (ressource en anglais).
 
-- Le consortium de la TEI offre aussi [une bonne introduction à XML](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/SG.html).
+- Le consortium de la TEI offre aussi [une bonne introduction à XML](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/SG.html) (ressource en anglais).
 
-- La documentation officielle de XML est disponible sur [le site du consortium W3C](https://www.w3.org/XML/). [La documentation pour toute la famille XSL](https://www.w3.org/Style/XSL/) (y compris XSLT) est aussi disponible.
+- La documentation officielle de XML est disponible en anglais sur [le site du consortium W3C](https://www.w3.org/XML/). [La documentation pour toute la famille XSL](https://www.w3.org/Style/XSL/) (y compris XSLT) est aussi disponible en anglais.
 
 - La Mozilla Foundation offre aussi un bon site sur XSLT et des technologies associées [en français](https://developer.mozilla.org/fr/docs/Web/XML/XSLT) et [en anglais](https://developer.mozilla.org/en-US/docs/Web/XSLT).
 
-- Le site [TTHUB](https://tthub.io) contient une excellente ["Introducción a la Text Encoding Initiative"](https://tthub.io/aprende/introduccion-a-tei/) par Susanna Allés Torrent (2019).
+- Le site [TTHUB](https://tthub.io) contient une excellente ["Introducción a la Text Encoding Initiative"](https://tthub.io/aprende/introduccion-a-tei/), en langue espagnole, par Susanna Allés Torrent (2019).
 
-- Une leçon d'introduction de _Programming Historian_ à XML et aux transformations XSL est [*Transforming Data for Reuse and Re-publication with XML and XSL*](https://programminghistorian.org/en/lessons/transforming-xml-with-xsl), de M. H. Beals.
+- Une leçon d'introduction de _Programming Historian_ à XML et aux transformations XSL est [*Transforming Data for Reuse and Re-publication with XML and XSL*](https://programminghistorian.org/en/lessons/transforming-xml-with-xsl), de M. H. Beals (ressource en anglais).

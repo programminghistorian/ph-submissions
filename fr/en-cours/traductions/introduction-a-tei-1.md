@@ -30,8 +30,8 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-Note de la traductrice :
-<div class="alert alert-warning">Dans la leçon originale, Nicolás Vaughan utilise des exemples tirés du *Quichotte* de Miguel de Cervantes, ainsi que les quatre premiers vers du sonnet «Amor constante más allá de la muerte» (« Amour constant au-delà de la mort ») de Francisco de Quevedo. Afin de mieux adapter la traduction à un lectorat francophone, lui proposant des textes originalement écrits en langue française, j’ai choisi de remplacer :
+<div class="alert alert-warning">Note de la traductrice :
+Dans la leçon originale, Nicolás Vaughan utilise des exemples tirés du *Quichotte* de Miguel de Cervantes, ainsi que les quatre premiers vers du sonnet «Amor constante más allá de la muerte» (« Amour constant au-delà de la mort ») de Francisco de Quevedo. Afin de mieux adapter la traduction à un lectorat francophone, lui proposant des textes originalement écrits en langue française, j’ai choisi de remplacer :
 1.	L’extrait du *Quichotte* par un extrait des *Misérables* de Victor Hugo, dans les exemples comprenant des petites capitales et la balise <name> ;
 2.	Les informations qui correspondent aux métadonnées de l’édition du *Quichotte* par des informations sur les métadonnées de l’édition des *Misérables*, lors de l’explication de l’élément <teiHeader> ;
 3.	Les quatre premiers vers du sonnet de Quevedo par les quatre premiers vers du « Sonnet VIII » de Louise Labé, lors de l’explication de l’encodage de textes en vers.</div>
@@ -310,7 +310,7 @@ Cependant, il est possible – et parfois souhaitable – de spécifier plus en 
 </teiHeader>
 ```
 
-Le choix sur l'exhaustivité de l'information du `<teiHeader>` dépend de sa disponibilité, et obéit aux objectifs de l'encodage et aux intérêts de la personne qui édite ou encode. Cependant, bien que les métadonnées contenues dans le `<teiHeader>` d'un document TEI n'apparaissent pas nécessairement de façon littérale dans le texte encodé, cela ne signifie pas qu'elles ne sont pas pertinentes pour le processus d'encodage, d'édition et d'éventuelle transformation. En effet, dans la mesure où le `<teiHeader>` a été correctement et exhaustivement encodé, on pourra extraire et transformer l'information contenue dans le document.
+Le choix sur l'exhaustivité de l'information du `<teiHeader>` dépend de sa disponibilité, et obéit aux objectifs de l'encodage et aux intérêts de la personne qui édite ou encode. Cependant, bien que les métadonnées contenues dans le `<teiHeader>` d'un document TEI n'apparaissent pas nécessairement de façon littérale dans le texte encodé, cela ne signifie pas qu'elles ne sont pas pertinentes pour le processus d'encodage, d'édition et d'éventuelle transformation. De fait, dans la mesure où le `<teiHeader>` a été correctement et exhaustivement encodé, on pourra extraire et transformer l'information contenue dans le document.
 
 Par exemple, s'il était important pour nous de distinguer les différentes éditions et impressions des *Misérables*, l'information contenue dans les `<teiHeader>` des différents documents transcrits serait suffisante pour pouvoir les discriminer automatiquement. En effet, on pourrait profiter des éléments `<edition>` et `<imprint>` à cette fin, et avec l'aide de technologies comme [XSLT](https://www.w3.org/TR/xslt/), [XPath](https://www.w3.org/TR/xpath/) et [XQuery](https://www.w3.org/TR/xquery/),  nous pourrions situer, extraire et traiter toute cette information.
 
@@ -407,7 +407,7 @@ Dans [la deuxième partie](https://programminghistorian.org/es/lecciones/introdu
 
 - Un bon tutoriel pour XML est disponible sur : [https://www.w3schools.com/xml/](https://www.w3schools.com/xml/) (ressource en anglais).
 
-- Le consortium de la TEI offre aussi [une bonne introduction à XML](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/SG.html) (ressource en anglais).
+- Le consortium de la TEI offre aussi [une bonne introduction à XML](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/SG.html) en anglais.
 
 - La documentation officielle de XML est disponible en anglais sur [le site du consortium W3C](https://www.w3.org/XML/). [La documentation pour toute la famille XSL](https://www.w3.org/Style/XSL/) (y compris XSLT) est aussi disponible en anglais.
 

@@ -321,13 +321,13 @@ En définitive, plus les métadonnées des textes sont encodées de manière com
 
 Comme nous l'avons vu ci-dessus dans la structure minimale, `<text>` est le deuxième enfant de `<TEI>`. Il contient tout le texte du document, proprement dit. Selon la [documentation de la TEI](https://guidelines.tei-c.de/fr/html/index.html), `<text>` peut contenir une série d'éléments dans lesquels l'objet-texte doit être structuré :
 
-{% include figure.html filename="fr-tr-introduction-a-tei-1-12.png" alt="Liste des éléments qui peuvent être contenus dans la balise text, organisés selon leur fonction." caption="Figure 12. Des éléments possibles de `<text>`." %}
+{% include figure.html filename="fr-tr-introduction-a-tei-1-12.png" alt="Liste des éléments qui peuvent être contenus dans la balise <text>, organisés selon leur fonction." caption="Figure 12. Des éléments possibles de `<text>`." %}
 
 Le plus important parmi ces éléments est [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-body.html), qui contient le corps principal du texte. Néanmoins, d'autres éléments importants enfants de `<text>` sont [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-front.html), qui contient le _frontmatter_ (les pages préliminaires) d'un texte (introduction, prologue, etc.), et [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-back.html), qui contient le _backmatter_ (les pages finales, des annexes, des index, etc.).
 
 Pour sa part, l'élément `<body>` peut lui-même contenir beaucoup d'autres éléments :
 
-{% include figure.html filename="fr-tr-introduction-a-tei-1-13.png" alt="Liste des éléments qui peuvent être contenus dans la balise body, organisés selon leur fonction." caption="Figure 13. Des éléments possibles de `<body>`." %}
+{% include figure.html filename="fr-tr-introduction-a-tei-1-13.png" alt="Liste des éléments qui peuvent être contenus dans la balise <body>, organisés selon leur fonction." caption="Figure 13. Des éléments possibles de `<body>`." %}
 
 Bien que toutes ces possibilités puissent nous accabler à première vue, nous devons nous rappeler que, d'habitude, un texte se divise naturellement en sections ou parties constitutives. Il est donc recommandable d'utiliser l'élément [`<div>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-div.html) pour chacune d'elles et d'utiliser des attributs tels que `@type` ou `@n` pour qualifier leurs différentes classes et positions dans le texte (par exemple, `<div n="3" type="sous-section">...</div>`).
 
@@ -406,7 +406,7 @@ Dans [la deuxième partie](https://programminghistorian.org/es/lecciones/introdu
 
 - Le livre *Qu'est-ce que la Text Encoding Initiative ?* de Lou Burnard (Marseille: OpenEdition Press, 2015), [disponible gratuitement en ligne](https://doi.org/10.4000/books.oep.1237), est une bonne introduction à la TEI.
 
-- Un bon tutoriel pour XML est disponible sur : [https://www.w3schools.com/xml/](https://www.w3schools.com/xml/) (ressource en anglais).
+- Un bon tutoriel pour XML est disponible en anglais sur : [https://www.w3schools.com/xml/](https://www.w3schools.com/xml/).
 
 - Le consortium de la TEI offre aussi [une bonne introduction à XML](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/SG.html) en anglais.
 

@@ -470,7 +470,7 @@ Seulement cinq historiennes&nbsp;? Bien sûr, en réalité, il y en a bien davan
 En utilisant SPARQL sur *DBpedia*, vous devez faire preuve de prudence quant aux incohérences des contenus alimentés par les communautés. Vous pourriez utiliser SPARQL exactement de la même manière sur un jeu de données construit à l’aide de méthodes de curation plus rigoureuses.
 Par exemple, en utilisant la bibliothèque numérique Persée ([https://data.persee.fr/explorer/sparql-endpoint/](https://data.persee.fr/explorer/sparql-endpoint/)), vous pouvez vous attendre à obtenir des résultats plus robustes (voici de la documentation sur cet entrepôt&nbsp;: [https://data.persee.fr/ressources/le-triplestore-de-persee/](https://data.persee.fr/ressources/le-triplestore-de-persee/), avec son schéma de données&nbsp;: [https://data.persee.fr/explorer/schemas-de-donnees/](https://data.persee.fr/explorer/schemas-de-donnees/)).
 
-Quoi qu’il en soit, malgré son manque de constance, *DBpedia* demeure un excellent choix pour apprendre SPARQL. Cette leçon ne fut qu’une brève introduction, mais il y bien plus à faire avec la leçon de Lincoln, [*Using SPARQL to access Linked Open Data*]([/lessons/graph-databases-and-SPARQL](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL)).
+Quoi qu’il en soit, malgré son manque de constance, *DBpedia* demeure un excellent choix pour apprendre SPARQL. Cette leçon ne fut qu’une brève introduction, mais il y bien plus à faire avec la leçon de Lincoln, [*Using SPARQL to access Linked Open Data*](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL).
 
 ## Ressources et lectures complémentaires
 
@@ -479,18 +479,18 @@ Quoi qu’il en soit, malgré son manque de constance, *DBpedia* demeure un exce
 - DuCharme Bob, [bobdc](https://www.bobdc.com/blog/), blog qui vaut le détour
 - McCrae John Philip, [Linked Open Data Cloud](https://lod-cloud.net), état actuel et historique du _LOD Cloud_
 - Schmachtenberg Max, Bizer Christian, Paulheim Heiko, [State of the LOD Cloud 2014](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/), état du _LOD Cloud_ en 2014 avec quelques statistiques intéressantes
-- Lincoln Matthew, [Using SPARQL to access Linked Open Data](https://programminghistorian.github.io/lessons/graph-databases-and-SPARQL), leçon de *Programming Historian* dédiée à SPARQL (les outils utilisés par la leçon sont obsolètes mais la démarche d’exploration proposée par Lincoln est recommandée)
+- Lincoln Matthew, [Using SPARQL to access Linked Open Data](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL), leçon de *Programming Historian* dédiée à SPARQL (les outils utilisés par la leçon sont obsolètes mais la démarche d’exploration proposée par Lincoln est recommandée)
 
 ### Bibliographie sommaire
 
-- Allemang Dean, Hendler Jim, Gandon Fabien, _Semantic Web for the Working Ontologist: Effective Modeling for Linked Data, RDFS, and OWL_ (3<sup>e</sup> éd.), Association for Computing Machinery, ACM Books Series 33, 2020, https://doi.org/10.1145/3382097
+- Allemang Dean, Hendler Jim, Gandon Fabien, _Semantic Web for the Working Ontologist: Effective Modeling for Linked Data, RDFS, and OWL_ (3<sup>e</sup> éd.), Association for Computing Machinery, ACM Books Series 33, 2020, [https://doi.org/10.1145/3382097](https://doi.org/10.1145/3382097)
 - Berners-Lee Tim, « Linked Data », _Design Issues_, 18 juin 2009, https://w3.org/DesignIssues/LinkedData.html
-- DuCharme Bob, _Learning SPARQL: Querying and Updating with SPARQL 1.1_ (2<sup>e</sup> éd.), O’Reilly, 2013, http://www.learningsparql.com
-- Gartner Richard, _Metadata: Shaping knowledge from Antiquity to the semantic web_ (1<sup>re</sup> éd.), Springer, 2016, https://doi.org/10.1007/978-3-319-40893-4
-- Nurmikko-Fuller Terhi, _Linked Data for Digital Humanities_ (1<sup>re</sup> éd.), Routledge, 2023, https://doi.org/10.4324/9781003197898
-- Oldman Dominic, Doerr Martin, Gradmann Stefan, « Zen and the Art of Linked Data », in Schreibman Susan, Siemens Ray, Unsworth John, _A New Companion to Digital Humanities_, John Wiley & Sons, 2016, 251-273, https://doi.org/10.1002/9781118680605.ch18
-- Van Hooland Seth, Verborgh Ruben, _Linked data for libraries, archives and museums: how to clean, link and publish your metadata_, Facet Publishing, 2015, https://doi.org/10.29085/9781783300389
-- Wood David, Zaidman Marsha , Ruth Luke, Hausenblas Michael, _Linked data: structured data on the Web_, Manning Publications, 2013, https://www.manning.com/books/linked-data
+- DuCharme Bob, _Learning SPARQL: Querying and Updating with SPARQL 1.1_ (2<sup>e</sup> éd.), O’Reilly, 2013, [http://www.learningsparql.com](http://www.learningsparql.com)
+- Gartner Richard, _Metadata: Shaping knowledge from Antiquity to the semantic web_ (1<sup>re</sup> éd.), Springer, 2016, [https://doi.org/10.1007/978-3-319-40893-4](https://doi.org/10.1007/978-3-319-40893-4)
+- Nurmikko-Fuller Terhi, _Linked Data for Digital Humanities_ (1<sup>re</sup> éd.), Routledge, 2023, [https://doi.org/10.4324/9781003197898](https://doi.org/10.4324/9781003197898)
+- Oldman Dominic, Doerr Martin, Gradmann Stefan, « Zen and the Art of Linked Data », in Schreibman Susan, Siemens Ray, Unsworth John, _A New Companion to Digital Humanities_, John Wiley & Sons, 2016, 251-273, [https://doi.org/10.1002/9781118680605.ch18](https://doi.org/10.1002/9781118680605.ch18)
+- Van Hooland Seth, Verborgh Ruben, _Linked data for libraries, archives and museums: how to clean, link and publish your metadata_, Facet Publishing, 2015, [https://doi.org/10.29085/9781783300389](https://doi.org/10.29085/9781783300389)
+- Wood David, Zaidman Marsha , Ruth Luke, Hausenblas Michael, _Linked data: structured data on the Web_, Manning Publications, 2013, [https://www.manning.com/books/linked-data](https://www.manning.com/books/linked-data)
 
 ## Crédits
 

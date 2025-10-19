@@ -30,13 +30,42 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-<div class="alert alert-warning">Note de la traductrice :
-Dans la leçon originale, Nicolás Vaughan utilise des exemples tirés du *Quichotte* de Miguel de Cervantes, ainsi que les quatre premiers vers du sonnet «Amor constante más allá de la muerte» (« Amour constant au-delà de la mort ») de Francisco de Quevedo. Afin de mieux adapter la traduction à un lectorat francophone, lui proposant des textes originalement écrits en langue française, j’ai choisi de remplacer :
-1.	L’extrait du *Quichotte* par un extrait des *Misérables* de Victor Hugo, dans les exemples comprenant des petites capitales et la balise <name> ;
-2.	Les informations qui correspondent aux métadonnées de l’édition du *Quichotte* par des informations sur les métadonnées de l’édition des *Misérables*, lors de l’explication de l’élément <teiHeader> ;
-3.	Les quatre premiers vers du sonnet de Quevedo par les quatre premiers vers du « Sonnet VIII » de Louise Labé, lors de l’explication de l’encodage de textes en vers.
-L’éditeur de code proposé lors de cette leçon sera Visual Studio Code (VSCode), un logiciel libre créé par Microsoft, mais qui inclut de la télémétrie par défaut et dont certaines extensions ne sont pas libres. Il nous semble donc important de mentionner une alternative, VSCodium, proposée par une communauté open-source. À la différence de VSCode, VSCodium n'active pas la télémétrie par défaut, ne met à disposition que des extensions non propriétaires et offre systématiquement une licence MIT de réutilisation.</div>
+<div class="alert alert-warning">
+  <p><strong>Note de la traductrice :</strong></p>
 
+  <p>
+    Dans la leçon originale, Nicolás Vaughan utilise des exemples tirés du 
+    <em>Quichotte</em> de Miguel de Cervantes, ainsi que les quatre premiers vers 
+    du sonnet « Amor constante más allá de la muerte » (« Amour constant au-delà de la mort ») 
+    de Francisco de Quevedo. Afin de mieux adapter la traduction à un lectorat francophone, 
+    lui proposant des textes originalement écrits en langue française, j’ai choisi de remplacer :
+  </p>
+
+  <ol>
+    <li>
+      L’extrait du <em>Quichotte</em> par un extrait des <em>Misérables</em> de Victor Hugo, 
+      dans les exemples comprenant des petites capitales et la balise <code>&lt;name&gt;</code> ;
+    </li>
+    <li>
+      Les informations qui correspondent aux métadonnées de l’édition du <em>Quichotte</em> par des 
+      informations sur les métadonnées de l’édition des <em>Misérables</em>, lors de l’explication 
+      de l’élément <code>&lt;teiHeader&gt;</code> ;
+    </li>
+    <li>
+      Les quatre premiers vers du sonnet de Quevedo par les quatre premiers vers du 
+      « Sonnet VIII » de Louise Labé, lors de l’explication de l’encodage de textes en vers.
+    </li>
+  </ol>
+
+  <p>
+    L’éditeur de code proposé lors de cette leçon sera <strong>Visual Studio Code (VSCode)</strong>, 
+    un logiciel libre créé par Microsoft, mais qui inclut de la télémétrie par défaut et dont certaines 
+    extensions ne sont pas libres. Il nous semble donc important de mentionner une alternative, 
+    <strong>VSCodium</strong>, proposée par une communauté open-source. À la différence de VSCode, 
+    VSCodium n'active pas la télémétrie par défaut, ne met à disposition que des extensions non 
+    propriétaires et offre systématiquement une licence MIT de réutilisation.
+  </p>
+</div>
 
 # Introduction
 

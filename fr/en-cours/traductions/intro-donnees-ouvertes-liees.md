@@ -410,7 +410,7 @@ SELECT * WHERE {
 }
 ```
 
-Appuyez sur _Go!_.
+Appuyez sur _Go!_[^5]
 
 Si vous avez laissé la sélection du menu déroulant sur **Browse**, vous devriez obtenir deux colonnes avec les en-têtes **b** et **c**.
 Notez bien ici que la casse des caractères fait une différence&nbsp;: `lyndal_roper` ne renverra rien.
@@ -419,7 +419,7 @@ Notez bien ici que la casse des caractères fait une différence&nbsp;: `lyndal_
 
 Que s’est-il donc passé&nbsp;? Et comment savoir ce qu’il faut saisir&nbsp;?
 
-En vrai dire, je ne le savais pas vraiment, ce qui est un problème avec les points d’accès SPARQL. Lorsque vous apprenez à connaître un jeu de données, vous devez essayer de trouver quels sont les termes utilisés. Puisque ces données proviennent de *Wikipédia* et que je souhaitais obtenir de l’information sur des historiennes, j’ai consulté l’article de *Wikipédia* sur [Lyndal Roper](https://fr.wikipedia.org/wiki/Lyndal_Roper).
+À vrai dire, je ne le savais pas vraiment, ce qui est un problème avec les points d’accès SPARQL. Lorsque vous apprenez à connaître un jeu de données, vous devez essayer de trouver quels sont les termes utilisés. Puisque ces données proviennent de *Wikipédia* et que je souhaitais obtenir de l’information sur des historiennes, j’ai consulté l’article de *Wikipédia* sur [Lyndal Roper](https://fr.wikipedia.org/wiki/Lyndal_Roper).
 
 La partie finale de l’URL est `Lyndal_Roper` et j’ai conclu que cette chaîne de caractères était probablement la façon dont DBpedia se réfère à l’article. Parce que je n’en sais pas plus sur ce qui pourrait se trouver dans les triplets qui mentionnent Roper, j’utilise `?b` et `?c`&nbsp;:
 ce ne sont que des éléments de substitution. J’aurais tout aussi bien pu saisir `?peu_importe` et `?comme_vous_voulez` pour que les en-têtes de colonnes aient ces valeurs. Lorsque vous aurez besoin de plus de précision pour vos résultats, il sera important de nommer vos colonnes adéquatement.
@@ -505,3 +505,5 @@ J’aimerais remercier Matthew Lincoln et Terhi Nurmikko-Fuller pour leurs relec
 [^2]: Les applications web présentent souvent les numéros de téléphone sous la forme d’un URI qui rencontre les critères de la spécification [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986), *Uniform Resource Identifier (URI): Generic Syntax*. Par exemple, l’URI tel:+1-816-555-1212 utilise un protocole (tel:) et un chemin (+1-816-555-1212) permettant d’exécuter une application téléphonique pour joindre l’entité identifiée, tout comme un URI utilisant le protocole HTTP permet d’accéder, s’il est déréférençable, à une description de la ressource identifiée dans un navigateur web.
 
 [^4]: De pair avec DBpedia, [Wikidata](https://www.wikidata.org) est également un incontournable des jeux de données ouvertes liées. En plus d’appliquer les principes du [wiki](https://fr.wikipedia.org/wiki/Wiki) aux données, il revêt aujourd’hui une importance particulière dans les écosystèmes d’information web : comme VIAF (dont les notices sont liées à Wikidata), il peut faire figure de fichier d’autorité.
+
+[^5]: Veuillez noter que l’exécution des requêtes peut mettre un certain temps à aboutir. Si le délai d’attente est dépassé (il s’agit typiquement d’un *timeout*), il suffit de réessayer quelques minutes plus tard.

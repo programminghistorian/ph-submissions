@@ -289,7 +289,9 @@ lccn:n82011242 dc:creator viaf:96994048 ;
 Vous souvenez-vous de la structure d’un triplet, que nous avons traitée dans la section 1&nbsp;? Nous y avons vu cet exemple&nbsp;:
 
 ```ttl
-1. personne 15601 (le sujet) 2. aReprésentéAuParlementBritanique (le prédicat) 3. "Blackburn" (l’objet)
+1. personne 15601 (le sujet)
+2. aReprésentéAuParlementBritanique (le prédicat)
+3. "Blackburn" (l’objet)
 ```
 
 L’essentiel, c’est que le prédicat relie le sujet et l’objet. Il décrit la relation entre eux. Le sujet vient en premier dans le triplet, mais c’est une question de choix, comme nous l’avons vu avec l’exemple d’une personne qui a appris le piano de Liszt.

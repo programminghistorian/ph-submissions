@@ -47,7 +47,7 @@ La leçon devrait vous prendre quelques heures à compléter. Il pourrait être 
 Si vous souhaitez apprendre à explorer les DOL en utilisant le langage de requête [SPARQL](https://fr.wikipedia.org/wiki/SPARQL), je recommande la leçon (en anglais) «&nbsp;[Using SPARQL to access Linked Open Data](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL)&nbsp;» de Matthew Lincoln, qui vous permettra d’effectuer un suivi pratique du survol conceptuel offert dans la présente leçon.
 
 <div class="alert alert-info">
-N.B. La leçon de Matthew Lincoln n’est plus à jour et n’est plus entretenue par le *Programming Historian*. La méthodologie enseignée dans cette leçon demeure tout de même fort pertinente et pourrait être adaptée à d’autres contextes. Pour en savoir plus, vous pouvez consulter la note en ouverture de la leçon de Lincoln.
+N.B. La leçon de Matthew Lincoln n’est plus à jour et n’est plus entretenue par le <em>Programming Historian</em>. La méthodologie enseignée dans cette leçon demeure tout de même fort pertinente et pourrait être adaptée à d’autres contextes. Pour en savoir plus, vous pouvez consulter la note en ouverture de la leçon de Lincoln.
 </div>
 
 Afin de fournir une base solide pour la maîtrise de ces fondements, cette leçon ne présentera pas de manière exhaustive l’ensemble des concepts liés aux DOL. Les deux notions suivantes ne seront pas couvertes par cette leçon&nbsp;:
@@ -84,7 +84,7 @@ Créons un exemple en utilisant Jack Straw&nbsp;: il s’agit du nom à la fois 
 personne=64183282
 ```
 
-Et associons maintenant Jack Staw, &laquo;&nbsp;le leader rebelle énigmatique&nbsp;&raquo; tel que décrit par l’*[Oxford Dictionary of National Biography](http://www.oxforddnb.com)* (Oxford DNB), au numéro `33059614`. La paire attribut-valeur serait cette fois&nbsp;:
+Et associons maintenant [Jack Straw, le leader rebelle]( https://fr.wikipedia.org/wiki/Jack_Straw_(leader_rebelle)), au numéro `33059614`. La paire attribut-valeur serait cette fois&nbsp;:
 
 ```
 personne=33059614
@@ -95,7 +95,7 @@ Si toute personne qui crée des DOL utilise ces numéros pour faire référence 
 Les paires attribut-valeur peuvent également contenir de l’information sur d’autres types d’entités&nbsp;: des lieux, par exemple. Jack Straw, le politicien contemporain, était membre du parlement britannique, représentant de la circonscription de Blackburn. Au Royaume-Uni, il y a plus qu’un seul lieu nommé Blackburn, sans mentionner les autres Blackburn à travers le monde. En utilisant les principes esquissés jusqu’ici, nous pouvons désambiguïser les différentes instances de Blackburn en attribuant un identifiant unique au lieu lié à la circonscription britannique&nbsp;: Blackburn située dans le Lancashire, en Angleterre.
 
 ```
-place=2655524
+lieu=2655524
 ```
 
 À ce stade, vous pourriez penser qu’il s’agit en fait de la fonction d’un catalogue de bibliothèque. En effet, il s’agit bien du concept de la [notice d’autorité](https://fr.wikipedia.org/wiki/Autorité_(sciences_de_l'information)), idée centrale en sciences de l’information (un fichier d’autorité est une liste normalisée de termes qui peuvent être utilisés dans un contexte particulier, par exemple pour le catalogage d’un livre). Dans les deux exemples esquissés plus haut, nous avons utilisé des fichiers d’autorité pour assigner des numéros (les identifiants uniques) aux Jack et à Blackburn. Les numéros utilisés pour les deux Jack Straw viennent du [Virtual International Authority File](https://viaf.org) (VIAF), qui est maintenu par un consortium international de bibliothèques afin de gérer les problèmes qui découlent de la myriade de possibilités dont nous disposons pour nous référer à une même personne. L’identifiant unique utilisé pour la circonscription de Blackburn est tiré de [GeoNames](http://www.geonames.org), une base de données géographique en accès libre.
@@ -201,7 +201,7 @@ Une ontologie est plus flexible, car elle n’est pas strictement hiérarchique.
 
 Peu importe ce que vous cherchez à représenter avec les DOL, nous vous suggérons de trouver un vocabulaire existant et de l’utiliser, plutôt que de tenter de créer le vôtre. Vous trouvez plusieurs des vocabulaires les plus utilisés en consultant le site [Linked Open Vocabularies (LOV)](https://lov.linkeddata.es/dataset/lov).
 
-Puisque l’exemple présenté plus haut se concentre sur les pianistes, il serait convenable de repérer une ontologie appropriée plutôt que de créer notre propre système. Justement, il existe une [ontologie pour la musique](http://web.archive.org/web/20241003055811/http://musicontology.com) (en anglais). En plus d’offrir une spécification aboutie, la documentation propose aussi des exemples utiles d’utilisations courantes. Vous pouvez visiter les [pages d’introduction](http://web.archive.org/web/20241003052045/http://musicontology.com/docs/getting-started.html) (en anglais) pour vous faire une meilleure idée de la façon dont vous pourriez utiliser cette ontologie en particulier.
+Puisque l’exemple présenté plus haut se concentre sur les pianistes, il serait convenable de repérer une ontologie appropriée plutôt que de créer notre propre système. Justement, il existe une [ontologie pour la musique](http://musicontology.com) (en anglais). En plus d’offrir une spécification aboutie, la documentation propose aussi des exemples utiles d’utilisations courantes. Vous pouvez visiter les [pages d’introduction](http://musicontology.com/docs/getting-started.html) (en anglais) pour vous faire une meilleure idée de la façon dont vous pourriez utiliser cette ontologie en particulier.
 
 Malheureusement, je ne trouve rien qui décrive la relation entre un professeur et son élève dans la *Music Ontology*. Mais elle est publiée de façon ouverte, ce qui permet de l’utiliser pour décrire d’autres caractéristiques du domaine de la musique, puis éventuellement de créer ma propre extension de ce modèle. Si je publie ainsi ouvertement mon extension, d’autres pourront l’utiliser à leur tour s’ils le souhaitent et elle pourrait même devenir un standard. Si la *Music Ontology* n’offre pas la relation dont j’ai besoin, le [projet Linked Jazz](https://linkedjazz.org) (en anglais) permet l’utilisation du terme `mentorOf` qui semble bien fonctionner dans notre cas. Ce n’est pas une solution idéale, mais c’en est une qui s’efforce d’utiliser ce qui existe déjà.
 
@@ -212,7 +212,7 @@ Donne-moi les noms de tous les pianistes qui ont appris de x
     où x a appris le piano de Liszt
 ```
 
-Cela renverrait toutes les personnes existantes dans le jeu de données qui étaient élèves des élèves de Liszt. Cela dit, ne nous emballons pas trop vite&nbsp;: cette requête ne renverra pas tous les élèves de chaque élève de Liszt qui n’ont jamais vécu, car toutes ces informations n’existent probablement pas ou ne sont tout simplement pas disponibles dans les ensembles existant de triplets. Le traitement des données dans le monde réel révèle toutes sortes d’omissions et d’incohérences, comme nous pourrons le constater dans la section finale, alors que nous explorerons l’un des plus grands jeu de DOL, [DBpedia](https://fr.wikipedia.org/wiki/DBpedia).
+Cela renverrait toutes les personnes existantes dans le jeu de données qui étaient élèves des élèves de Liszt. Cela dit, ne nous emballons pas trop vite&nbsp;: cette requête ne renverra pas tous les élèves de chaque élève de Liszt qui n’ont jamais vécu, car toutes ces informations n’existent probablement pas ou ne sont tout simplement pas disponibles dans les ensembles existant de triplets. Le traitement des données dans le monde réel révèle toutes sortes d’omissions et d’incohérences, comme nous pourrons le constater dans la section finale, alors que nous explorerons l’un des plus grands jeu de DOL, [DBpedia](https://www.dbpedia.org) (en anglais).
 
 Si vous avez déjà utilisé des [bases de données relationnelles](https://fr.wikipedia.org/wiki/Base_de_données_relationnelle), vous pourriez penser qu’elles offrent le même genre de fonctionnalité. Dans le cas de Liszt, les informations sur les pianistes décrits plus haut pourraient s’organiser dans la base de données à l’aide d’une [table](https://fr.wikipedia.org/wiki/Table_(base_de_données)) nommée &laquo;&nbsp;Élèves&nbsp;&raquo;&nbsp;:
 
@@ -227,7 +227,7 @@ Si vous avez déjà utilisé des [bases de données relationnelles](https://fr.w
 Si vous n’êtes pas à l’aise avec les bases de données, ne vous en faites pas. Mais vous pouvez probablement tout de même constater que certains pianistes de cette table ont le même professeur (les numéros 17 et 28). Sans entrer dans les détails, si Liszt était dans cette table, il serait assez facile d’extraire les élèves des élèves de Liszt en utilisant une [jointure](https://fr.wikipedia.org/wiki/Jointure_(informatique)).
 
 Bien sûr, les bases de données relationnelles offrent des résultats similaires aux DOL. La grande différence, c’est que les DOL peuvent aller plus loin&nbsp;: elles peuvent connecter des ensembles de données qui ont été créés sans l’intention explicite d’être liés entre eux.
-Cela est rendu possible par l’utilisation du cadre de description [RDF](https://fr.wikipedia.org/wiki/Resource_Description_Framework) et des URI.
+Cela est rendu possible par l’utilisation du cadre de description RDF et des URI.
 
 ## Le cadre de description [RDF](https://fr.wikipedia.org/wiki/Resource_Description_Framework) et ses formats
 

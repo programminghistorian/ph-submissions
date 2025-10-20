@@ -158,7 +158,7 @@ Tout comme le numéro unique permet de différencier nos deux Jack Straw, les UR
 
 Dans l’adresse `http://www.bbc.co.uk/faqs`, c’est la partie `bbc.co.uk` qui rend uniques les pages subséquentes. Ces considérations sont si évidentes pour les gens qui utilisent le web fréquemment qu’il n’y a même pas besoin d’y penser. De plus, vous savez probablement que si vous souhaitez créer un site web nommé `bbc.co.uk`, vous ne pourrez pas, puisque ce nom est déjà enregistré auprès de l’autorité appropriée, le [système de nom de domaine](https://fr.wikipedia.org/wiki/Domain_Name_System) (*Domain Name System*, ou DNS en anglais). L’enregistrement d’un nom de domaine en garantit l’unicité. Les URI doivent également être uniques.
 
-Les exemples ci-dessus prennent la forme des URL, mais il est également possible de construire des URI qui n’ont rien de l’URL. Il existe de nombreuses façons d’utiliser des identifiants uniques pour les personnes et les choses. Pourtant, nous y pensons rarement&nbsp;: les codes-barres, les numéros de passeport ou même votre code postal sont tous conçus pour être uniques. Les numéros de téléphone sont fréquemment utilisés dans les annonces de commerce précisément parce qu’ils sont uniques. Toutes ces choses pourraient être utilisées comme des URI.
+Les exemples ci-dessus prennent la forme des URL, mais il est également possible de construire des URI qui n’ont rien de l’URL. Il existe de nombreuses façons d’utiliser des identifiants uniques pour les personnes et les choses. Pourtant, nous y pensons rarement&nbsp;: les codes-barres, les numéros de passeport ou même votre code postal sont tous conçus pour être uniques. Les numéros de téléphone sont fréquemment utilisés dans les annonces commerciales précisément parce qu’ils sont uniques. Toutes ces choses pourraient être utilisées comme des URI.
 
 Lorsque nous avons créé les URI des entités décrites par le projet [Tobias](https://gtr.ukri.org/projects?ref=AH%2FN003446%2F1#/) (en anglais), nous avons choisi d’utiliser la structure d’une URL avec notre espace web institutionnel, établissant `data.history.ac.uk/tobias-project/` comme l’espace dédié à l’hébergement de ces URI. En utilisant `data.history.ac.uk` plutôt que `history.ac.uk`, nous avons établi une distinction claire entre les URI et les pages du site web. Par exemple, nous utilisons l’URI `http://data.history.ac.uk/tobias-project/person/15601` dans le projet Tobias. Bien que le format des URI mentionnés précédemment soit celui d’une URL, ils ne pointent pas vers des pages web (essayez-les dans un navigateur web). Bien des gens qui découvrent les DOL sont confus par ces distinctions. Toutes les URL sont des URI, mais tous les URI ne sont pas des URL. Un URI peut identifier n’importe quoi, tandis qu’une URL identifie une chose qui se trouve sur le web.
 
@@ -180,7 +180,7 @@ L’exemple de VIAF nous mène vers une autre considération importante au sujet
 
 Ce n’est peut-être pas évident d’après les triplets examinés dans la première partie, mais les DOL peuvent répondre à des questions complexes. Lorsque vous rassemblez vos triplets, ils se constituent comme un [graphe](https://fr.wikipedia.org/wiki/Graphe_conceptuel) grâce à la façon dont ils sont reliés. Supposons que nous voulons trouver une liste de toutes les personnes qui furent des élèves du compositeur Franz Liszt. Si l’information se trouve dans les triplets des données liées sur les pianistes et leurs professeurs, nous pourrons y accéder en utilisant une requête (nous examinerons ce langage de requête, appelé SPARQL, dans la dernière section).
 
-Par exemple, le pianiste Charles Rosen était un élève de Moriz Rosenthal, lui-même élève de Franz Liszt. Ceci s’exprime avec deux triplets (pour rendre les exemples plus lisibles, nous utiliserons des chaînes de caractères au lieu de numéros d’identification)&nbsp;:
+Par exemple, le pianiste Charles Rosen était un élève de Moriz Rosenthal, lui-même élève de Franz Liszt. Ceci s’exprime avec deux triplets (pour rendre les exemples plus lisibles, nous utiliserons des chaînes de caractères au lieu de numéros d’identification[^6])&nbsp;:
 
 ```
 "Franz Liszt" aEnseignéPianoÀ "Moriz Rosenthal" .
@@ -216,7 +216,7 @@ Cela renverrait toutes les personnes existantes dans le jeu de données qui éta
 
 Si vous avez déjà utilisé des [bases de données relationnelles](https://fr.wikipedia.org/wiki/Base_de_données_relationnelle), vous pourriez penser qu’elles offrent le même genre de fonctionnalité. Dans le cas de Liszt, les informations sur les pianistes décrits plus haut pourraient s’organiser dans la base de données à l’aide d’une [table](https://fr.wikipedia.org/wiki/Table_(base_de_données)) nommée &laquo;&nbsp;Élèves&nbsp;&raquo;&nbsp;:
 
-| IDélève | IDprofesseur |
+| IDeleve | IDprofesseur |
 | ------- | ------------ |
 | 31      | 17           |
 | 35      | 17           |
@@ -507,3 +507,5 @@ J’aimerais remercier Matthew Lincoln et Terhi Nurmikko-Fuller pour leurs relec
 [^4]: De pair avec DBpedia, [Wikidata](https://www.wikidata.org) est également un incontournable des jeux de données ouvertes liées. En plus d’appliquer les principes du [wiki](https://fr.wikipedia.org/wiki/Wiki) aux données, il revêt aujourd’hui une importance particulière dans les écosystèmes d’information web : comme VIAF (dont les notices sont liées à Wikidata), il peut faire figure de fichier d’autorité.
 
 [^5]: Veuillez noter que l’exécution des requêtes peut mettre un certain temps à aboutir. Si le délai d’attente est dépassé (il s’agit typiquement d’un *timeout*), il suffit de réessayer quelques minutes plus tard.
+
+[^6]: Le modèle RDF 1.1 repose sur l’utilisation des [identifiants internationalisés de ressource](https://fr.wikipedia.org/wiki/Internationalized_Resource_Identifier) (*Internationalized Resource Identifier*, ou IRI en anglais) pour l’identification des entités. Dans cette leçon, il n’est question que d’URI et d’URL, car ce sont des formes d’IRI couramment utilisés pour l’échange d’information sur le web. Les IRI ont la particularité de permettre l’utilisation des caractères [Unicode](https://fr.wikipedia.org/wiki/Unicode), mais il est généralement déconseillé d’utiliser ces caractères directement dans les URI ou les URL pour des enjeux de compatibilité. Les exemples qui suivent utilisent des caractères accentués pour favoriser la lisibilité.

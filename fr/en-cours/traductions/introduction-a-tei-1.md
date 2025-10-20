@@ -160,7 +160,8 @@ Comme nous le verrons plus tard, la TEI nous permet d'encoder, par le moyen d'un
 ```
 Quand <name>Zoïle</name> insulte <name>Homère</name>, quand <name>Mævius</name> insulte <name>Virgile</name>, quand <name>Visé</name> insulte <name>Molière</name>, 
 quand <name>Pope</name> insulte <name>Shakespeare</name>, quand <name>Fréron</name> insulte <name>Voltaire</name>, c’est une vieille loi d’envie 
-et de haine qui s’exécute ; les génies attirent l’injure, les grands hommes sont toujours plus ou moins aboyés.
+et de haine qui s’exécute ; les génies attirent l’injure, les grands hommes sont toujours plus ou
+moins aboyés.
 ```
 Plus tard, nous verrons en détail ce qu'est et comment fonctionne une balise (ou plus précisément un élément) en XML et TEI. Pour le moment, remarquons qu'une balise ne signifie pas que le texte ait été représenté originalement en petite capitale (ni d'une autre manière). Cela signifie seulement que le texte qu'elle contient a la catégorie de nom propre, indépendamment de comment il est représenté. De fait, nous pouvons encoder exhaustivement un document avec des centaines ou des milliers de balises, sans qu'aucune d'elles n'apparaisse, à la fin, dans une éventuelle représentation.
 

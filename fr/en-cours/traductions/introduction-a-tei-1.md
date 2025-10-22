@@ -56,15 +56,6 @@ doi: XX.XXXXX/phen0000
       « Sonnet VIII » de Louise Labé, lors de l’explication de l’encodage de textes en vers.
     </li>
   </ol>
-
-  <p>
-    L’éditeur de code proposé lors de cette leçon sera <strong>Visual Studio Code (VSCode)</strong>, 
-    un logiciel libre créé par Microsoft, mais qui inclut de la télémétrie par défaut et dont certaines 
-    extensions ne sont pas libres. Il nous semble donc important de mentionner une alternative, 
-    <strong>VSCodium</strong>, proposée par une communauté open-source. À la différence de VSCode, 
-    VSCodium n'active pas la télémétrie par défaut, ne met à disposition que des extensions non 
-    propriétaires et offre systématiquement une licence MIT de réutilisation.
-  </p>
 </div>
 
 # Introduction
@@ -86,6 +77,17 @@ Dans cette leçon, vous apprendrez à encoder des textes en utilisant un langage
 ## Le logiciel que nous utiliserons
 
 N'importe quel éditeur de texte brut (en format `.txt`) nous servira pour faire tout ce dont nous aurons besoin dans cette leçon : le [Bloc-notes (Notepad) de Windows](https://fr.wikipedia.org/wiki/Bloc-notes_(Windows)), par exemple, est parfaitement approprié pour cela. Néanmoins, il y a d'autres éditeurs de texte qui offrent des outils ou des fonctionnalités conçus pour faciliter le travail avec du XML (Extensible Markup Language), voire avec de la TEI. [Oxygen XML Editor](https://www.oxygenxml.com) est l'un des plus recommandés actuellement, disponible pour Windows, macOS et Linux. Néanmoins, ce n'est pas un logiciel gratuit (la licence académique coûte environ 84€) ni à code source ouvert, par conséquent nous ne l'utiliserons pas dans cette leçon.
+
+<div class="alert alert-warning">
+  <p>
+    L’éditeur de code proposé lors de cette leçon sera <strong>Visual Studio Code (VS Code)</strong>, 
+    un logiciel libre créé par Microsoft, mais qui inclut de la télémétrie par défaut et dont certaines 
+    extensions ne sont pas libres. Il nous semble donc important de mentionner une alternative, 
+    <strong>VSCodium</strong>, proposée par une communauté open-source. À la différence de VS Code, 
+    VSCodium n'active pas la télémétrie par défaut, ne met à disposition que des extensions non 
+    propriétaires et offre systématiquement une licence MIT de réutilisation.
+  </p>
+</div>
 
 Pour cette leçon, nous utiliserons l'éditeur [Visual Studio Code](https://code.visualstudio.com/) (VS Code, plus brièvement), créé par Microsoft et entretenu actuellement par une grande communauté de programmeur·euse·s de logiciels libres. C'est une application complètement gratuite et à [code source ouvert](https://github.com/microsoft/vscode), disponible pour Windows, macOS et Linux.
 

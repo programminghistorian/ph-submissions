@@ -212,7 +212,7 @@ En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una 
 
 1. Descarga el último lanzamiento del plugin [repositorio de Github](https://github.com/tropy/tropy-plugin-csl), a la derecha bajo 'Releases' [Lanzamientos] ('tropy-plugin-csl-vx.x.x.zip').
 
-2. En tu instalación de Tropy, accede a la ventana de Preferencias (Tropy en Mac o Editar en Windows>Preferencias) accede a la sección de Plugins, y selecciona "Instalar Plugin."
+2. En tu instalación de Tropy, accede a la ventana de Preferencias (Tropy en Mac o Editar en Windows>Preferencias) y accede a la sección de Plugins. Selecciona "Instalar Plugin."
 
 3. Selecciona el archivo .zip descargado del repositorio y después selecciona "Activar" en la ventana de Preferencias cuando aparezca. 
 
@@ -228,7 +228,7 @@ En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una 
 
 ### Crear una plantilla personalizada en Tropy para importar objetos a Zotero
 
-1.  En tu instalación de Tropy, bajo el menu Archivo(Tropy en Mac)>Preferencias>Plantillas, selecciona la plantilla usada para los objetos que se importarán a Zotero. 
+1.  En tu instalación de Tropy, accede a la ventana de Preferencias (Tropy en Mac o Editar en Windows>Preferencias) y seleccionar Plantillas. Selecciona la plantilla usada para los objetos que se importarán a Zotero. 
 
 2.  Crea una copia de esta plantilla de metadatos.
 

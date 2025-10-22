@@ -228,7 +228,7 @@ En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una 
 
 ### Crear una plantilla personalizada en Tropy para importar objetos a Zotero
 
-1.  En tu instalación de Tropy, bajo el menu Archivo>Preferencias>Plantillas, selecciona la plantilla usada para los objetos que se importarán a Zotero. 
+1.  En tu instalación de Tropy, bajo el menu Archivo(Tropy en Mac)>Preferencias>Plantillas, selecciona la plantilla usada para los objetos que se importarán a Zotero. 
 
 2.  Crea una copia de esta plantilla de metadatos.
 

@@ -36,7 +36,7 @@ doi: XX.XXXXX/phen0000
   <p>
     Dans la leçon originale, Nicolás Vaughan utilise des exemples tirés du 
     <em>Quichotte</em> de Miguel de Cervantes, ainsi que les quatre premiers vers 
-    du sonnet « Amor constante más allá de la muerte » (« Amour constant au-delà de la mort ») 
+    du sonnet "Amor constante más allá de la muerte" ("Amour constant au-delà de la mort") 
     de Francisco de Quevedo. Afin de mieux adapter la traduction à un lectorat francophone, 
     lui proposant des textes originalement écrits en langue française, j’ai choisi de remplacer :
   </p>
@@ -53,7 +53,7 @@ doi: XX.XXXXX/phen0000
     </li>
     <li>
       Les quatre premiers vers du sonnet de Quevedo par les quatre premiers vers du 
-      « Sonnet VIII » de Louise Labé, lors de l’explication de l’encodage de textes en vers.
+      "Sonnet VIII" de Louise Labé, lors de l’explication de l’encodage de textes en vers.
     </li>
   </ol>
 </div>

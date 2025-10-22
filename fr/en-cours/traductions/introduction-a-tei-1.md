@@ -86,7 +86,7 @@ Téléchargez la version la plus récente de VS Code sur le lien [https://code.v
 
 <div class="alert alert-warning">
   <p>
-    L’éditeur de code proposé lors de cette leçon sera <strong>Visual Studio Code (VS Code)</strong>, 
+    L’éditeur de code proposé lors de cette leçon est <strong>Visual Studio Code (VS Code)</strong>, 
     un logiciel libre créé par Microsoft, mais qui inclut de la télémétrie par défaut et dont certaines 
     extensions ne sont pas libres. Il nous semble donc important de mentionner une alternative, 
     <strong>VSCodium</strong>, proposée par une communauté open-source. À la différence de VS Code, 

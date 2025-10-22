@@ -126,8 +126,6 @@ Una de las funciones más importantes de Tropy es la de describir las fuentes a 
 
 Al hacer doble clic en un objeto (una imagen individual o imágenes fusionadas), el proyecto pasará a la vista de objeto (haz clic en la flecha en la parte superior izquierda para volver a la vista de galería), donde además de continuar ingresando metadatos, puedes editar ligeramente la(s) foto(s) en un objeto y agregar notas o anotaciones. En la vista de objeto, la plantilla de metadatos aparece a la mano izquierda de la interfaz. En esta vista, es más fácil analizar la imagen para agregar metadatos individuales. Siempre es recomendable ingresar los metadatos de una manera consistente. Por ejemplo, si ingresas el nombre del creador (autor) de un expediente por apellidos seguidos por primeros nombres, deberías seguir con este formato. De la misma manera, es recomendado que uses el formato de [fecha ISO](https://es.wikipedia.org/wiki/Organizaci%C3%B3n_Internacional_de_Normalizaci%C3%B3n) (AAAA-MM-DD, es decir, año con cuatro numerales, mes y día con dos numerales) para los valores en el campo para "Fecha." (1730-02-01 se convertirá en 1 feb 1730). Tropy reproducirá la fecha legible para organizar en columnas de forma cronológica. 
 
-> Agregué el enlace--es correcto decir que a ingresar 1730-02-01 en el campo de Fecha, se convertirá a 1 feb 1730.
-
 Personalizando metadatos
 
 Tropy cuenta con un editor de plantillas para facilitar la creación de plantillas de metadatos personalizadas. En Preferencias, navega a plantillas, donde puedes revisar cualquier plantilla en la instalación.

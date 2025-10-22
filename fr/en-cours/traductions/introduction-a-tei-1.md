@@ -78,6 +78,12 @@ Dans cette leçon, vous apprendrez à encoder des textes en utilisant un langage
 
 N'importe quel éditeur de texte brut (en format `.txt`) nous servira pour faire tout ce dont nous aurons besoin dans cette leçon : le [Bloc-notes (Notepad) de Windows](https://fr.wikipedia.org/wiki/Bloc-notes_(Windows)), par exemple, est parfaitement approprié pour cela. Néanmoins, il y a d'autres éditeurs de texte qui offrent des outils ou des fonctionnalités conçus pour faciliter le travail avec du XML (Extensible Markup Language), voire avec de la TEI. [Oxygen XML Editor](https://www.oxygenxml.com) est l'un des plus recommandés actuellement, disponible pour Windows, macOS et Linux. Néanmoins, ce n'est pas un logiciel gratuit (la licence académique coûte environ 84€) ni à code source ouvert, par conséquent nous ne l'utiliserons pas dans cette leçon.
 
+Pour cette leçon, nous utiliserons l'éditeur [Visual Studio Code](https://code.visualstudio.com/) (VS Code, plus brièvement), créé par Microsoft et entretenu actuellement par une grande communauté de programmeur·euse·s de logiciels libres. C'est une application complètement gratuite et à [code source ouvert](https://github.com/microsoft/vscode), disponible pour Windows, macOS et Linux.
+
+Téléchargez la version la plus récente de VS Code sur le lien [https://code.visualstudio.com/](https://code.visualstudio.com/) et installez-la sur votre ordinateur. Ouvrez-le et il s'affichera un écran comme le suivant :
+
+{% include figure.html filename="fr-tr-introduction-a-tei-1-01.png" alt="Vue initiale de VS Code, figure obtenue par capture d'écran de la page de bienvenue de VS Code. Celle-ci se divise en trois sections : 'Start', 'Recent' et 'Walkthroughs'. En haut de cette page se trouvent la barre de menu et, à gauche, la barre latérale." caption="Figure 1. Vue initiale de VS Code." %}
+
 <div class="alert alert-warning">
   <p>
     L’éditeur de code proposé lors de cette leçon sera <strong>Visual Studio Code (VS Code)</strong>, 
@@ -88,12 +94,6 @@ N'importe quel éditeur de texte brut (en format `.txt`) nous servira pour faire
     propriétaires et offre systématiquement une licence MIT de réutilisation.
   </p>
 </div>
-
-Pour cette leçon, nous utiliserons l'éditeur [Visual Studio Code](https://code.visualstudio.com/) (VS Code, plus brièvement), créé par Microsoft et entretenu actuellement par une grande communauté de programmeur·euse·s de logiciels libres. C'est une application complètement gratuite et à [code source ouvert](https://github.com/microsoft/vscode), disponible pour Windows, macOS et Linux.
-
-Téléchargez la version la plus récente de VS Code sur le lien [https://code.visualstudio.com/](https://code.visualstudio.com/) et installez-la sur votre ordinateur. Ouvrez-le et il s'affichera un écran comme le suivant :
-
-{% include figure.html filename="fr-tr-introduction-a-tei-1-01.png" alt="Vue initiale de VS Code, figure obtenue par capture d'écran de la page de bienvenue de VS Code. Celle-ci se divise en trois sections : 'Start', 'Recent' et 'Walkthroughs'. En haut de cette page se trouvent la barre de menu et, à gauche, la barre latérale." caption="Figure 1. Vue initiale de VS Code." %}
 
 Maintenant, nous allons installer une extension de VS Code pour travailler plus facilement avec des documents XML et XML-TEI : [Scholarly XML](https://marketplace.visualstudio.com/items?itemName=raffazizzi.sxml).
 

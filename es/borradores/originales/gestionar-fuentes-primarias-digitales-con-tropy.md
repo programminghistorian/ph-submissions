@@ -194,7 +194,9 @@ Para crear una nueva etiqueta, hay múltiples opciones. Selecciona un objeto u o
 
 Es posible exportar imágenes individuales, objetos, (con o sin metadatos y anotaciones) y selecciones de imágenes en diferentes formatos. Haz clic derecho en un objeto en la vista de proyecto y selecciona "Exportar objeto" del menú contextual. En el submenú, podrás seleccionar [JSON-LD](https://es.wikipedia.org/wiki/JSON-LD) o PDF (y dentro de PDF, puedes seleccionar orientación vertical o horizontal.)  Si exportas en formato .json, sólo exportarás los metadatos y notas asociados con la(s) imágen(es) seleccionadas—la imagen no está incluída. Para exportar la imágen con los metadatos y notas, habrá que seleccionar PDF.
 
-Exportar por esta ruta es parecida a "Imprimir" (Archivo>Imprimir) en formato PDF. Los parámetros para imágenes exportadas en PDF se encuentran en Preferencias. Puedes elegir a incluir o no fotos, metadatos, y notas, además de consideraciones de formato: optimizar tamaño y calidad de foto, incluir únicamente fotos con notas, y permitir el contenido de utilizar más de una página (Figure XX).
+Exportar por esta ruta es parecida a "Imprimir" (Archivo>Imprimir) en formato PDF. Los parámetros para imágenes exportadas en PDF se encuentran en Preferencias. Puedes elegir a incluir o no fotos, metadatos, y notas, además de consideraciones de formato: optimizar tamaño y calidad de foto, incluir únicamente fotos con notas, y permitir el contenido de utilizar más de una página (Figura 7).
+
+{% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-07-2" alt="Las opciones de imprimir en preferencias" caption="Las opciones de imprimir en preferencias" %}
 
 [Imagen: Opciones de imprimir en Preferencias]
 
@@ -234,13 +236,13 @@ En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una 
 
 3.  Renombra la copia que creaste para distinguirla en el menú desplegable de plantillas. (Por ejemplo: agrega 'Zotero' al nombre original de la plantilla.)
 
-4.  Re-etiqueta los rótulos de cada propiedad en la nueva plantilla usando los términos de CSL que aparecieron en el archivo .json del elemento de muestra copiado en el paso 4 de la última sección, en letra minúscula con atención a los guiones (Figura 7).
+4.  Re-etiqueta los rótulos de cada propiedad en la nueva plantilla usando los términos de CSL que aparecieron en el archivo .json del elemento de muestra copiado en el paso 4 de la última sección, en letra minúscula con atención a los guiones (Figura 8).
 	* Para importar a Zotero con éxito, tu plantilla debe incluir una propiedad de metadatos etiquetada 'type' con un elemento válido de Zotero como 'book', report', or 'article-journal' en el campo de metadatos (véase: [CSL types](https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types)). Puedes rellenar este campo para cada objeto que pretendes importar o ponerle como "Valor por defecto" para esta propiedad en el editor de plantillas.
 	* No se importarán todos los metadatos de Tropy a Zotero en el mismo formato: por ejemplo, valores de fechas o separación de apellidos y nombres. Para importar una fecha, se recomienda usar el término CSL  'issued.'
 	* Si cambias la lengua local en Tropy, necesitarás re-etiquetar tu plantilla para importación a Zotero de las etiquetas por defecto a las etiquetas CSL [en inglés]
 	* Hasta el momento, no hay ninguna forma de transferir el texto del campo de notas de Tropy a Zotero. Una solución temporal sería agregar una propiedad de metadatos a la plantilla de exportación y etiquetarla con el término CSL 'note', y entonces copiar y pegar las notas en ese campo. Las notas aparecerán en Zotero en el campo 'Extra' incluído en todos los elementos.
 
-{% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-07.png" alt="Dos ventanas: uno de Firefox mostrando los componentes de un archivo CSL JSON exportado de Zotero, y el otro del editor de plantilla de Tropy, mostrando los parámetros de diferentes propiedades de metadatos" caption="Figura 7. Usan los términos encontrados en el archivo de CSL JSON para construir una plantilla para exportar a Zotero" %}
+{% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-07.png" alt="Dos ventanas: uno de Firefox mostrando los componentes de un archivo CSL JSON exportado de Zotero, y el otro del editor de plantilla de Tropy, mostrando los parámetros de diferentes propiedades de metadatos" caption="Figura 8. Usan los términos encontrados en el archivo de CSL JSON para construir una plantilla para exportar a Zotero" %}
 
 5.  Aplica la nueva plantilla a los objetos que deseas importar a Zotero
 	* Poco debería cambiar en términos de los valores porque efectivamente estás mapeando nuevas etiquetas encima de las propiedades de metadatos pre-existentes.

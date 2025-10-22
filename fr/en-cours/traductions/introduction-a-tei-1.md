@@ -97,7 +97,7 @@ Téléchargez la version la plus récente de VS Code sur le lien [https://code.v
 
 Maintenant, nous allons installer une extension de VS Code pour travailler plus facilement avec des documents XML et XML-TEI : [Scholarly XML](https://marketplace.visualstudio.com/items?itemName=raffazizzi.sxml).
 
-Pour ce faire, cliquez sur le bouton "Extensions" dans la barre latérale sur le côté gauche de fenêtre principale :
+Pour ce faire, cliquez sur le bouton "Extensions" dans la barre latérale sur le côté gauche de la fenêtre principale :
 
 {% include figure.html filename="fr-tr-introduction-a-tei-1-02.png" alt="Extensions de VS Code, figure obtenue par la capture d'écran d'une fenêtre de VS Code. Sur la barre latérale et entouré par un cercle rouge, l'icône des extensions, à côté duquel la liste d'extensions installées et recommandées se déploie à la verticale." caption="Figure 2. Extensions de VS Code." %}
 
@@ -111,7 +111,7 @@ Enfin, cliquez sur "Install" :
 
 Cette extension nous permet de faire plusieurs choses avec le code :
 
-**Premièrement**, Scholarly XML permet de sélectionner n'importe quel texte dans un document XML, d'utiliser des raccourcis clavier et d'inclure automatiquement le texte sélectionné à l'intérieur d'un élément XML. Lorsque nous appuyons sur `Ctrl+E` (sur Windows ou Linux) ou `Cmd+E` (sur macOS), VS Code ouvre une petite fenêtre avec l'instruction `Enter Abbreviation (Press Enter to confirm or Escape to cancel)` — "Introduisez le raccourci (Appuyez sur 'Entrée' pour confirmer votre saisie, ou sur 'Échap' pour l'annuler)". Ensuite, nous écrivons le nom de l'élément et appuyons sur la touche `Entrée`. Ainsi, l'éditeur intégrera le texte sélectionné entre une balise d'ouverture et une autre de fermeture avec le nom de l'élément. Lorsque nous travaillons avec XML, automatiser l'introduction de balises d'ouverture et de fermeture peut nous faire économiser beaucoup de temps, tout en diminuant la probabilité d'introduire des erreurs typographiques dans le code.
+**Premièrement**, Scholarly XML permet de sélectionner n'importe quel texte dans un document XML, d'utiliser des raccourcis clavier et d'inclure automatiquement le texte sélectionné à l'intérieur d'un élément XML. Lorsque nous appuyons sur `Ctrl+E` (sur Windows ou Linux) ou `Cmd+E` (sur macOS), VS Code ouvre une petite fenêtre avec l'instruction `Enter Abbreviation (Press Enter to confirm or Escape to cancel)` — "Introduisez le raccourci (Appuyez sur 'Entrée' pour confirmer votre saisie, ou sur 'Échap' pour l'annuler)". Ensuite, nous écrivons le nom de l'élément et appuyons sur la touche `Entrée`. Ainsi, l'éditeur intégrera le texte sélectionné entre une balise d'ouverture et une autre de fermeture avec le nom de l'élément. Lorsque nous travaillons avec XML, automatiser l'introduction de balises d'ouverture et de fermeture peut nous faire économiser beaucoup de temps, tout en diminuant la probabilité d'introduire des erreurs typographiques dans le code.
 
 {% include figure.html filename="fr-tr-introduction-a-tei-1-05.png" alt="Introduire automatiquement un élément XML sur VS Code, figure obtenue par la capture d'écran d'une fenêtre de VS Code. En haut, dans la barre de recherche, le mot 'quote' est entouré en rouge. Dans le corps du document modele.xml et entouré en rouge, le mot 'publication' est entre deux balises quote, l'une d'ouverture et l'autre de fermeture." caption="Figure 5. Introduire automatiquement un élément XML sur VS Code." %}
 
@@ -181,7 +181,7 @@ Le XML et la TEI sont des langages de marquage et c'est en cela qu'ils se diffé
 
 Dans cette leçon, nous n'entrerons pas dans le détail de la syntaxe ni du fonctionnement de XML. Nous recommandons donc que le lecteur ou la lectrice jette un coup d'œil à [cette autre leçon](https://programminghistorian.org/en/lessons/transforming-xml-with-xsl) (en anglais) pour plus d'information sur le XML, ainsi qu'à la bibliographie et aux références suggérées à la fin de cette leçon.
 
-Pour le moment nous devons seulement savoir que tout document XML doit respecter deux règles essentielles pour être valable :
+Pour le moment, nous devons seulement savoir que tout document XML doit respecter deux règles essentielles pour être valable :
 
 1. Il ne doit y avoir qu'un seul élément racine (qui contient tous les autres éléments, s'il y en a d'autres).
 2. Toute balise d'ouverture doit avoir une balise de fermeture.
@@ -316,7 +316,7 @@ Cependant, il est possible – et parfois souhaitable – de spécifier plus en 
     <publicationStmt>
       <publisher>Maritza Beatriz García Rodríguez</publisher>
       <pubPlace>Lyon, France</pubPlace>
-      <date>2025(</date>
+      <date>2025</date>
       <availability>
         <p>Cette œuvre est en accès libre sous la licence Creative Commons Attribution 4.0 International.</p>
       </availability>
@@ -393,7 +393,7 @@ Mais si notre texte est plus complexe, nous utiliserions plusieurs éléments `<
 
 En principe, la structure de notre document TEI doit être similaire à la structure de l'objet-texte, c'est-à-dire, du texte que nous voulons encoder. Ainsi, si notre objet-texte se divise en chapitres, et ceux-ci, en même temps, en paragraphes, alors nous recommandons de reproduire la même structure dans le document TEI.
 
-Pour les chapitres et les sections, nous pouvons utiliser l'élément `<div>` et pour les paragraphes l'élément `<p>`(https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-p.html).
+Pour les chapitres et les sections, nous pouvons utiliser l'élément `<div>` et pour les paragraphes l'élément [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-p.html).
 Observons, par exemple, le schéma suivant :
 
 ```XML

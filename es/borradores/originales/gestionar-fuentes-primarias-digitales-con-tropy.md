@@ -194,7 +194,7 @@ Es posible exportar imágenes individuales, objetos, (con o sin metadatos y anot
 
 Exportar por esta ruta es parecida a "Imprimir" (Archivo>Imprimir) en formato PDF. Los parámetros para imágenes exportadas en PDF se encuentran en Preferencias. Puedes elegir a incluir o no fotos, metadatos, y notas, además de consideraciones de formato: optimizar tamaño y calidad de foto, incluir únicamente fotos con notas, y permitir el contenido de utilizar más de una página (Figura 7).
 
-{% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-07" alt="Las opciones de imprimir en preferencias" caption="Figura 7. Las opciones de imprimir en preferencias" %}
+{% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-07.png" alt="Las opciones de imprimir en preferencias" caption="Figura 7. Las opciones de imprimir en preferencias" %}
 
 [Imagen: Opciones de imprimir en Preferencias]
 

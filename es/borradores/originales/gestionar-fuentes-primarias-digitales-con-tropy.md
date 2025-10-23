@@ -196,8 +196,6 @@ Exportar por esta ruta es parecida a "Imprimir" (Archivo>Imprimir) en formato PD
 
 {% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-07.png" alt="Las opciones de imprimir en preferencias" caption="Figura 7. Las opciones de imprimir en preferencias" %}
 
-[Imagen: Opciones de imprimir en Preferencias]
-
 Para exportar una selección, busca el nombre de la selección en el panel de fotos debajo de la plantilla de metadatos. Haz clic derecho (Control+clic en Mac) en su nombre en la lista y elige "Exportar selección" del menú contextual. Se exportará la selección en formato .jpg, sin metadatos. 
 
 ## Instalación de programas adicionales (plugins)

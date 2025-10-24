@@ -234,16 +234,16 @@ En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una 
 
 4.  Re-etiqueta los rótulos de cada propiedad en la nueva plantilla usando los términos de CSL que aparecieron en el archivo .json del elemento de muestra copiado en el paso 4 de la última sección, en letra minúscula con atención a los guiones (Figura 8).
 	* Para importar a Zotero con éxito, tu plantilla debe incluir una propiedad de metadatos etiquetada 'type' con un elemento válido de Zotero como 'book', report', or 'article-journal' en el campo de metadatos (véase: [CSL types](https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types)). Puedes rellenar este campo para cada objeto que pretendes importar o ponerle como "Valor por defecto" para esta propiedad en el editor de plantillas.
-	* No se importarán todos los metadatos de Tropy a Zotero en el mismo formato: por ejemplo, valores de fechas o separación de apellidos y nombres. Para importar una fecha, se recomienda usar el término CSL  'issued.'
+	* No se importarán todos los metadatos de Tropy a Zotero en el mismo formato: por ejemplo, valores de fechas o separación de apellidos y nombres. Para importar una fecha, se recomienda usar el término CSL 'issued.'
 	* Si cambias la lengua local en Tropy, necesitarás re-etiquetar tu plantilla para importación a Zotero de las etiquetas por defecto a las etiquetas CSL [en inglés]
-	* Hasta el momento, no hay ninguna forma de transferir el texto del campo de notas de Tropy a Zotero. Una solución temporal sería agregar una propiedad de metadatos a la plantilla de exportación y etiquetarla con el término CSL 'note', y entonces copiar y pegar las notas en ese campo. Las notas aparecerán en Zotero en el campo 'Extra' incluído en todos los elementos.
+	* OJO: Hasta el momento, no hay ninguna forma de transferir el texto del campo de notas de Tropy a Zotero. Una solución temporal sería agregar una propiedad de metadatos a la plantilla de exportación y etiquetarla con el término CSL 'note', y entonces copiar y pegar las notas en ese campo. Las notas aparecerán en Zotero en el campo 'Extra' incluído en todos los elementos.
 
 {% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-08.png" alt="Dos ventanas: uno de Firefox mostrando los componentes de un archivo CSL JSON exportado de Zotero, y el otro del editor de plantilla de Tropy, mostrando los parámetros de diferentes propiedades de metadatos" caption="Figura 8. Usan los términos encontrados en el archivo de CSL JSON para construir una plantilla para exportar a Zotero" %}
 
 5.  Aplica la nueva plantilla a los objetos que deseas importar a Zotero
 	* Poco debería cambiar en términos de los valores porque efectivamente estás mapeando nuevas etiquetas encima de las propiedades de metadatos pre-existentes.
 
-### Exportar objeto(s) de Tropy como archivo CSL JSON
+### Exportar objeto(s) de Tropy como archivo CSL JSON (para luego importar a Zotero)
 
 1.  En Archivo>Preferencias bajo Plugins, selecciona CSL y luego selecciona Parámetros.
 
@@ -252,7 +252,7 @@ En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una 
 3.  Selecciona la plantilla que acabas de crear.
 	* Toma en cuenta que puedes crear múltiples plantillas y opciones de exportar para diferentes elementos de Zotero
 
-4.  Regresa a la vista de proyecto y haz clic derecho en el objeto u objetos que quieres exportar como archivo .json.
+4.  Regresa a la vista de proyecto y haz clic derecho en el objeto (u objetos) que quieres exportar como archivo .json.
 
 5.  Selecciona 'Exportar objeto>[nombre de la instancia del plugin]
 
@@ -260,14 +260,17 @@ En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una 
 
 ### Importar a Zotero
 
-1.  En tu instalación de Zotero, selecciona Archivo>Importar... y escoge 'Un archivo'
+1.  En tu instalación de Zotero, selecciona Archivo>Importar... y escoge 'Un archivo'.
 
-2.  Selecciona el archivo .json exportado, y después haz clic en Continuar en el cuadro de diálogo de importación (escoge si quieres crear una nueva colección)
+2.  Selecciona el archivo .json exportado, y después haz clic en Continuar en el cuadro de diálogo de importación (y escoge si quieres crear una nueva colección.)
 
-3.  Haz clic en 'Done' cuando la importación termine, y revisa para asegurar que los nuevos elementos importados llevan los campos de metadatos deseados (si no, repasa de nuevo el paso 4 en la sección anterior)
+3.  Haz clic en 'Done' cuando la importación termine, y revisa para asegurar que los nuevos elementos importados llevan los campos de metadatos deseados. (Si no, repasa de nuevo el paso 4 en la sección anterior.)
 
 4.  Ahora puedes manejar y citar estas referencias a través de tu instalación de Zotero.
 
 ## Conclusión
 
 Tropy es una herramienta flexible e intuitiva para organizar y describir las fuentes archivisticas y digitalizadas, y este tutorial ha intendado demostrar algunos de los usos más típicos, además de un caso de uso más especializado para integrar con Zotero. Además, mientras existen usos y integraciones avanzados con la aplicación de plugins, es posible utilizar sus funciones básicas durante cualquier fase de investigación: antes de comenzar un nuevo proyecto, o en medio de otro cuando ya se ha adquirido muchos fotos que requieren alguna organización. Tropy cuenta con algunos [videos tutoriales en inglés y español](https://www.youtube.com/@tropy), además de un foro activo donde usuarios principiantes y avanzandos pueden hacer preguntas y ofrecer sugerencias y observaciones al equipo del proyecto y a la comunidad más amplio de usuarios. Los usuarios avanzados también pueden [seguir el proyecto por Github](https://github.com/tropy). En conclusión, Tropy es una herramienta que no sólo ayuda con la organización; también, es una manera para reconceber la lógica de los archivos y buscar nuevas formas para hacer conexiones entre diversos materiales de diferentes coleciones. De tal manera, el caos ya no será el modo por defecto después de comenzar a usar Tropy.
+
+## Agradecimientos
+Al autor le gustaría agradecer a Dras. Anita Lucchesi y Sofia Papastamkou por su papel en la conceptualización inicial de esta lección y a los miembros del equipo de Tropy pasados y presentes por su labor en desarrollar esta herramienta.

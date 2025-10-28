@@ -52,7 +52,7 @@ Al final de esta lección, deberás ser capaz de hacer las siguientes cosas con 
 - Comparar datos a través de grillas de gráficos.
 - Mejorar tus gráficos con extensiones de ggplot2.
 
-Esta lección supone que tienes conocimientos básicos de R. Se recomienda familiarizarse con las lecciones de *Programming Historian* [R Basics with Tabular Data](/en/lessons/r-basics-with-tabular-data) y [Data Wrangling and Management in R](/en/lessons/data-wrangling-and-management-in-r).
+Esta lección supone que tienes conocimientos básicos de R. Se recomienda familiarizarse con las lecciones de *Programming Historian* [Datos tabulares en R](/es/lecciones/datos-tabulares-en-r) y [Data Wrangling and Management in R (en inglés)](/en/lessons/data-wrangling-and-management-in-r).
 
 ## Nuestros datos: ciudades hermanadas en la Unión Europea
 
@@ -163,7 +163,7 @@ ggplot(data = eudata.perc, aes(x = tipopais, y = perc)) +
 
 Hay una diferencia importante entre el primer gráfico (Figura 1) y este. En el gráfico anterior, ggplot2 contó el número de ciudades en cada grupo (doméstico, UE, no-UE). En este gráfico nuevo, la tibble ya contenía el valor numérico de cada barra, almacenado en la columna **perc**. Esta es la razón por la que especificamos `y = perc` como un parámetro de `aes()`. La parte difícil es que por defecto, `geom_bar()` utilizará el parámetro `stat = "count"`. Esto significa que contará cuántas veces aparece un valor. En otras palabras, agrupará los datos para ti. Sin embargo, puedes informar a ggplot2 que ya has calculado tus valores utilizando el parámetro `stat = "identity"`.
 
-El gráfico 2 muestra que la mayoría de las ciudades hermanas son de un país diferente al de origen, aún así dentro de la UE (cerca del 68%). Esto podría deberse a la proximidad geográfica, similitudes culturales o vínculos económicos dentro de la Unión Europea. Puedes obtener una mirada más detallada agregando el nombre de cada país de origen al gráfico. Podrías decidir visualizar esto de varias maneras, por ejemplo, dividiendo cada barra en porcentajes por país de origen (el gráfico 3), o creando gráficos separados para cada país de origen (esto se llama "faceting" en el lenguaje de ggplot2, que [abordaremos más abajo](#Faceting-a-Graph)). Vamos a intentar la primera aproximación, agrupando los datos por país y por tipo de país y agregando una nueva columna con porcentajes:
+El gráfico 2 muestra que la mayoría de las ciudades hermanas son de un país diferente al de origen, aún así dentro de la UE (cerca del 68%). Esto podría deberse a la proximidad geográfica, similitudes culturales o vínculos económicos dentro de la Unión Europea. Puedes obtener una mirada más detallada agregando el nombre de cada país de origen al gráfico. Podrías decidir visualizar esto de varias maneras, por ejemplo, dividiendo cada barra en porcentajes por país de origen (el gráfico 3), o creando gráficos separados para cada país de origen (esto se llama "faceting" en el lenguaje de ggplot2, que [abordaremos más abajo](#faceteando-un-grafico)). Vamos a intentar la primera aproximación, agrupando los datos por país y por tipo de país y agregando una nueva columna con porcentajes:
 
 ```
 eudata.perc.country <- eudata %>%
@@ -335,7 +335,7 @@ Los `scales` de ggplot2 siguen una convención de nomenclatura consistente en tr
 
 1. El prefijo `scale`.
 2. El nombre de la escala que se modifica. Como se mencionó anteriormente, los estilos definen las propiedades visuales de la gráfica que se mapean a los datos. Las escalas, por otro lado, controlan cómo esos mapeos de los estilos se traducen en representaciones visuales específicas. Esto incluye cómo los valores de los datos se traducen en colores o formas, y su posición en las coordenadas x e y.
-3. El tipo de escala que se quiere aplicar (continua, discreta, brewer).
+3. El tipo de escala que se quiere aplicar (continua, discreta o los colores de las [paletas brewer](https://es.wikipedia.org/wiki/Cynthia_Brewer)).
 
 Antes de comenzar a agregar escalas, será útil almacenar la gráfica anterior en una variable `p1`: esta es una forma conveniente de crear diferentes versiones de la misma gráfica para variar solo ciertas partes de ella.
 
@@ -353,7 +353,7 @@ Un uso común de los `scales` es cambiar los colores de un gráfico. Para especi
 
 ```
 p1 +
-  scale_colour_manual(values = c("red", "blue", "green"))
+  scale_colour_manual(values = c("red", "blue", "green")) # rojo, azul y verde
 ```
 
 {% include figure.html filename="es-tr-datos-urbanos-demograficos-r-ggplot2-11.png" alt="Gráfico de dispersión que usa scale_colour_manual() para cambiar los colores de los puntos." caption="Figura 11. Uso de scale_colour_manual() para especificar los colores de los puntos." %}
@@ -398,7 +398,7 @@ Puedes trabajar con el objeto `p2` creado anteriormente y utilizar el operador `
 
 ```
 p2 +
-  scale_colour_gradient(low = "white", high = "red3")
+  scale_colour_gradient(low = "white", high = "red3") # 'white' blanco en inglés y red3 uno de los rojos 
 ```
 
 {% include figure.html filename="es-tr-datos-urbanos-demograficos-r-ggplot2-14.png" alt="Gráfico de dispersión que muestra tamaño de población de ciudad de origen y destino, coloreado por distancia entre ciudades utilizando scale_colour_gradient()" caption="Figura 14. Tamaño de población de ciudad de origen y ciudad de destino coloreado según la distancia entre ambas usando scale_colour_gradient()." %}

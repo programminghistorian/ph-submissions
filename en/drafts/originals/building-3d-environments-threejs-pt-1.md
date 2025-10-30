@@ -339,34 +339,34 @@ add:
 	let container, camera, scene, renderer;
 
 	// Function calls
-    	init(); // initialise scene
+	init(); // initialise scene
 	animate(); // updates scene by constant rendering
 
 
 	// Function definitions
 
 	// Initialise scene: sets up container; scene; camera; renderer; lights; models; controls
-    	function init() {
+	function init() {
 		// make html div element and add to html document
 		container = document.createElement( 'div' );
 		document.body.appendChild( container );
 		// make scene and set background colour
-        	scene = new THREE.Scene();
+		scene = new THREE.Scene();
 		scene.background = new THREE.Color( 0xf7d382 ); // use the hexcode of any colour you want.
 		// make camera, set its start position	
 		camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 ); //arguments are: vertical field of view, aspect, near plane, far plane. Note the aspect depends on the users window size.
 		camera.position.set( 0, 1.6, 3 ); // arguments: x, y, z Values in metres. Approximates a persons eye level (designed for VR)
 
 		// make renderer and use users browser window values to set pixel ratio and size
-        	renderer = new THREE.WebGLRenderer( { antialias: true } );
+		renderer = new THREE.WebGLRenderer( { antialias: true } );
 		renderer.setPixelRatio( window.devicePixelRatio ); // Don't change this code.
 		renderer.setSize( window.innerWidth, window.innerHeight ); // Don't change this code.
-        	container.appendChild( renderer.domElement );
+		container.appendChild( renderer.domElement );
 
 		// add listeners. These check for user interaction with the window and mouse clicks and call the given function.
-                // listen for user browser window resizing and call the onWindowResize function that is defined below.
-       	 	window.addEventListener( 'resize', onWindowResize );
-		}
+		// listen for user browser window resizing and call the onWindowResize function that is defined below.
+		window.addEventListener( 'resize', onWindowResize );
+	}
 
 	// function definitions
 	// called on resizing of window. Gets new browser window values and updates camera and renderer settings. Don't experiment with.
@@ -374,7 +374,7 @@ add:
 		        camera.aspect = window.innerWidth / window.innerHeight; 
 		        camera.updateProjectionMatrix();
 		        renderer.setSize( window.innerWidth, window.innerHeight );
-	        }
+	}
 
 	// Constant loop of rendering.
 	function animate() {
@@ -386,11 +386,11 @@ add:
 	}
 ```
 
-Reload the page after saving the index.html file and check that you have changed the background colour.
+Reload the page after saving the index.html file, and check that you have changed the background colour (Figure 13).
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-13.png" alt="Basic webpage with peach background." caption="Figure 13. Webpage with peach background." %}
 
-Three.js uses window event listeners to detect user interactions with their browser. Here we will only listen for window resizing (```resize```), but in part 2 we will listen for mouse clicks (```click```) and drags (```dragstart``` and ```dragend```). Other possible input events include mouse movement (```mousemove```) and keys being pressed on the keyboard (```keyup``` and ```keydown```). The window event listeners have 2 arguments. The first identifies the input event (ie ```resize``` for resizing), and the second the function that will be called (run) if the event occurs. The standard window resize function code gets the new browser dimensions from the global object 'window' and updates the camera aspect and the dimensions of the picture the renderer is drawing. As 'window' is a global object it is better to never call any of your variables 'window'.
+Three.js uses window event listeners to detect user interactions with their browser. Here we will only listen for window resizing (```resize```), but in part 2 we will listen for mouse clicks (```click```) and drags (```dragstart``` and ```dragend```). Other possible input events include mouse movement (```mousemove```) and keys being pressed on the keyboard (```keyup``` and ```keydown```). The window event listeners have 2 arguments. The first identifies the input event (ie ```resize``` for resizing), and the second the function that will be called (run) if the event occurs. The standard window resize function code gets the new browser dimensions from the global object 'window' and updates the camera aspect and the dimensions of the picture the renderer is drawing. As 'window' is a global object, it is better to never call any of your variables 'window'.
 
 Next we need to add lights.
 
@@ -522,7 +522,7 @@ add:
 
 ```
 
-If you save and reload, you should be able to move around and zoom in and out. Note that the model is not being rotated but it is the camera that is being moved. The target.set method determines the centre that the camera will rotate around. If you want the camera to continuously rotate, you can uncomment out the controls.autoRotate but you must also add the call to update the controls in the render function, ie
+If you save and reload, you should be able to move around and zoom in and out. Note that the model is not being rotated but it is the camera that is being moved. The target.set method determines the centre that the camera will rotate around. If you want the camera to continuously rotate, you can uncomment out the ```controls.autoRotate``` but you must also add the call to update the controls in the render function, ie
 
 Change:
 ```

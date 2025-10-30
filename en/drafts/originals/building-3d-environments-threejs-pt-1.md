@@ -543,7 +543,7 @@ to:
 
 You could deploy your site using the instructions on GitHub or Vercel. You can investigate the [three.js manual](https://threejs.org/docs/index.html#manual/en/introduction/How-to-create-VR-content) for making the site viewable in virtual reality (VR).
 
-However, as noted previously there are other simpler tools, such as SketchFab, for presenting models, and three.js is the most useful when you want to make the models interactive. To make the model interactive try part 2 of the lesson.  
+However, as noted previously, there are other simpler tools, such as SketchFab, for presenting models, and three.js is the most useful when you want to make the models interactive. To make the model interactive, try part 2 of the lesson.  
 
 ## References
 

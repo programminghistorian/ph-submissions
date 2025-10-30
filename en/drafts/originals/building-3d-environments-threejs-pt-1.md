@@ -475,11 +475,11 @@ Save and reload and you should see a model, but you will not be able to move aro
 
 The model is loaded with the load method which can take 4 arguments. The first argument is the file name which must include its 'path', ie any folders it is in (e.g. 'models/png_sceneDRACO.glb'). It can also be a URL. The other three arguments are for "callback" functions that will be called to: load the model, while the model is loading, and if there is an error loading the model. Here we have defined the onLoadMap function separately in the function definitions. We have left the on progress function 'undefined', but sometimes a function is used that creates a loading bar or similar indication to the user that something is happening, especially if the model is large and will take some time to load. The error function is defined here anonymously (without a name) and will print the error to the browser console.
 
-The onLoadMap function, takes the filename and obtains the model using '.scene'. Using 'gltf.scene' instead of 'gltf.scene.children[0]' will also work here. gltf files can have hierarchies of groups and meshes (as you saw in the viewer), and for some purposes it does not matter if the object being imported is a group or a mesh, but for others (like raycasting) it does. Sometimes it is better to import the children of the scene and indexing starts with 0. The model load function can also be used to position, scale or rotate the model. You can experiment with changing the x, y or z values for position or scale and see the effects.
+The onLoadMap function takes the filename and obtains the model using '.scene'. Using 'gltf.scene' instead of 'gltf.scene.children[0]' will also work here. glTF files can have hierarchies of groups and meshes (as you saw in the scene tab of the three.js editor), and for some purposes it does not matter if the object being imported is a group or a mesh, but for others (like raycasting, which will be used in part 2) it does. Sometimes it is better to import the children of the scene and indexing starts with 0. You can also position, scale or rotate the model in the onLoadMap function. You can experiment with changing the x, y or z values for position or scale and see the effects.
 
 ### Adding Camera Controls to Move Around
 
-We can add mouse controls to allow us to move around the scene. Some controls, including [orbit](https://threejs.org/examples/?q=controls#misc_controls_orbit), [map](https://threejs.org/examples/?q=controls#misc_controls_map), [fly](https://threejs.org/examples/?q=controls#misc_controls_fly), [pointer lock](https://threejs.org/examples/?q=controls#misc_controls_pointerlock) and [trackball](https://threejs.org/examples/?q=controls#misc_controls_trackball) change the position of the camera. Others such as [drag](https://threejs.org/examples/?q=controls#misc_controls_drag) and [transform](https://threejs.org/examples/?q=controls#misc_controls_transform) can alter the position of objects. We need to import any controls. We will first use 'orbit' controls that allow the user to navigate the scene with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key) or zooming (with mouse scrolling).
+We can add mouse controls to allow us to move around the scene. Some controls, including [orbit](https://threejs.org/examples/?q=controls#misc_controls_orbit), [map](https://threejs.org/examples/?q=controls#misc_controls_map), [fly](https://threejs.org/examples/?q=controls#misc_controls_fly), [pointer lock](https://threejs.org/examples/?q=controls#misc_controls_pointerlock) and [trackball](https://threejs.org/examples/?q=controls#misc_controls_trackball), change the position of the camera. Others, such as [drag](https://threejs.org/examples/?q=controls#misc_controls_drag) and [transform](https://threejs.org/examples/?q=controls#misc_controls_transform), can alter the position of objects. We need to import any controls. We will first use 'orbit' controls that allow the user to navigate the scene with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key, or using the right mouse button) or zooming (with mouse scrolling).
 
 After
 
@@ -505,7 +505,7 @@ to:
 	let container, camera, scene, renderer, controls;
 ```
 
-In the init, after:
+In the init function, after:
 
 ```
 	container.appendChild( renderer.domElement );
@@ -515,14 +515,14 @@ add:
 
 ```
 		// create orbit controls
-                controls = new OrbitControls( camera, renderer.domElement);
+		controls = new OrbitControls( camera, renderer.domElement);
 		controls.target.set( 0, 1.6, 0 ); // sets the scene rotational centre
 		controls.update(); // updates controls settings after creation
-                //controls.autoRotate = true; // set to true if camera is to rotate automatically BUT you must then call controls.update() in render function.
+		//controls.autoRotate = true; // set to true if camera is to rotate automatically BUT you must then call controls.update() in render function.
 
 ```
 
-If you save and reload you should be able to move around and zoom in and out. Note that the model is not being rotated but it is the camera that is being moved. The target.set method determines the centre that the camera will rotate around. If you want the camera to continuously rotate, you can uncomment out the controls.autoRotate but you must also add the call to update the controls in the render function, ie
+If you save and reload, you should be able to move around and zoom in and out. Note that the model is not being rotated but it is the camera that is being moved. The target.set method determines the centre that the camera will rotate around. If you want the camera to continuously rotate, you can uncomment out the controls.autoRotate but you must also add the call to update the controls in the render function, ie
 
 Change:
 ```
@@ -535,7 +535,7 @@ to:
 
 ```
 	        function render() {
-                	controls.update(); // use if controls.autoRotate = true
+                controls.update(); // use if controls.autoRotate = true
 		        renderer.render( scene, camera );
 	        }
 

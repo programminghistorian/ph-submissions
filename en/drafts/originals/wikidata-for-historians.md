@@ -128,7 +128,7 @@ Our Abdel Nasser case study compares him to other state leaders--but what is a l
 
 While there is (probably) general consensus on the meaning of "date of birth," most concepts are not so clear cut. Take, for example, "head of state"([Q48352](https://www.wikidata.org/wiki/Q48352)), which we used in the age query above to identify Abdel Nasser and his counterparts in other countries. But Wikidata also contains an item labeled "head of government"([Q2285706](https://www.wikidata.org/wiki/Q2285706))--perhaps we ought to have used it instead? 
 
-Let's take a closer look at "head of state" and "head of government." Now is the time to introduce a concept that may be new to most historians: **class**. Let's disambiguate this meaning of "class" from the "class" of "class struggle," though! In database ontology, [class](https://en.wikipedia.org/wiki/Class_(knowledge_representation)) is a logical term organizing concepts in a data structure. 
+Let's take a closer look at "head of state" and "head of government." Now is the time to introduce a concept that may be new to most historians: **class**. Let's disambiguate this meaning of "class" from the "class" of "class struggle," though![^4] In database ontology, [class](https://en.wikipedia.org/wiki/Class_(knowledge_representation)) is a logical term organizing concepts in a data structure. 
 
 Looking again at item pages, we see that "head of state"([Q48352](https://www.wikidata.org/wiki/Q48352)) is an "instance of"([P31](https://www.wikidata.org/wiki/Property:P31)) (or kind or example of) "public office"([Q294414](https://www.wikidata.org/wiki/Q294414)), but a "subclass of"([P279](https://www.wikidata.org/wiki/Property:P279)) "statesperson"([Q372436](https://www.wikidata.org/wiki/Q372436)) and "leader"([Q1251441](https://www.wikidata.org/wiki/Q1251441)), This latter statement means that all heads of state are statespersons and leaders, but not all statesperson and leaders are heads of state.
 
@@ -156,7 +156,7 @@ Table 1: Top 10 subclasses of two similar classes (November 2025)
 Confronted with this mass of examples, you might feel somewhat confused, both by particular instances and by the overall picture. This empirically-generated account is a long way from the synthetic statements of Wikipedia. Such ambiguous bodies of results embody the virtue and value of Wikidata for historians. It is not an automatic answer box. It is an elaborate logical structure giving precise answers to abstract questions about which there is no real consensus. Any serious user must learn which taxonomies Wikidata already uses to describe their topics of interest. Users must also use their knowledge of context to mediate between the theoretical and the empirical. Fortunately, this is exactly what historians are trained to do.
 
 ### Thinking with taxonomies
-Let's run the age-of-first-taking-office query we used in the Abdel Nasser example above, [but use "head of government" instead of "head of state"](https://w.wiki/E$kN). This query returns Abdel Nasser's age when he became prime minister rather than president. But this query accurately captures other leaders who are not returned with the "head of state" query. For instance, it returns prime ministers in states where the president is largely ceremonial. But it also includes some mayors. And there are other oddities–for example, at the time of writing (autumn 2025), no US president appears in either list.[^4] In sum, different forms of a similar question yield valid but different, incomplete, and imperfect answers. 
+Let's run the age-of-first-taking-office query we used in the Abdel Nasser example above, [but use "head of government" instead of "head of state"](https://w.wiki/E$kN). This query returns Abdel Nasser's age when he became prime minister rather than president. But this query accurately captures other leaders who are not returned with the "head of state" query. For instance, it returns prime ministers in states where the president is largely ceremonial. But it also includes some mayors. And there are other oddities–for example, at the time of writing (autumn 2025), no US president appears in either list.[^5] In sum, different forms of a similar question yield valid but different, incomplete, and imperfect answers. 
 
 Historians tend to be sceptical of taxonomic schemes, with good reason. But explicit taxonomies can do great work for us as a means to discover and explore information. No doubt you will find (what you consider to be) errors in this taxonomy. You can certainly "correct" those errors–Wikidata is open–but don't be too hasty. The taxonomies already existing in Wikidata are organic and collectively produced, and they are not exclusive. There are ways to work around the parts you don't agree with. Don't change the knowledge base itself until you have learned how to do this.
 
@@ -176,7 +176,7 @@ Generally speaking, questions about specifics, like dates and locations and labe
 
 Our internet search engine habit of searching via keyword and string, on the other hand, does not play to Wikidata's strengths in aggregate search. Strings work well to find particular items; you can search by label and alias in the simple seach box at the top right of the [Wikidata main page](https://www.wikidata.org/wiki/Wikidata:Main_Page) and every item and property page. (Supplying a comprehensive list of aliases will certainly improve the discoverability and disambiguation of items of interest to you.) But the powerful query service, as we have already seen, is not designed around string searches.
 
-It takes a while to get the hang of the [Wikidata query service](https://query.wikidata.org/). The best way to query this service is by using the SPARQL query language, which is incredibly powerful but takes some learning--and is not forgiving of typos. It is relatively straightforward to use SPARQL Wikidata queries in Python and other programming languages. As a next step after this lesson, Wikidata's own [SPARQL tutorial](https://www.wikidata.org/wiki/Wikidata:SPARQL_tutorial) is very good.[^5] 
+It takes a while to get the hang of the [Wikidata query service](https://query.wikidata.org/). The best way to query this service is by using the SPARQL query language, which is incredibly powerful but takes some learning--and is not forgiving of typos. It is relatively straightforward to use SPARQL Wikidata queries in Python and other programming languages. As a next step after this lesson, Wikidata's own [SPARQL tutorial](https://www.wikidata.org/wiki/Wikidata:SPARQL_tutorial) is very good.[^6] 
 
 As an even more friendly introductory path for new users, I want to walk you through some shortcuts. The idea here is to find functioning SPARQL queries similar to the query you want, then adapt them for your purposes. In so doing, you will begin to decode SPARQL's sytax. Bots like Claude and ChatGPT do a good job of explaining what's going on in SPARQL, and you should ask them for clarification whenever needed. Playing around with SPARQL examples is one of the easiest paths to learn about Wikidata–and about linked data in general. 
 
@@ -198,7 +198,7 @@ Maybe this makes sense to you. To me, what makes sense is to think of the proper
 
 But we are trying to find out something different: which colleges these heads of state attended. So, let's click the "Add Condition" button on the query form. This opens another pair of property/value fields. What property to use? "Educated at" seems about right. What value to use? This step is confusing, because we are trying to find out *where* these heads of state were educated. We could enter a particular school, which would return a list of all heads of state educated there. But there is no way, using this form, to produce a list of the schools themselves, or a count of schools of the sort that we saw above. 
 
-If Wikidata had an inverse property named something like "gave an education to," which took schools as its subject and people as its object, we could use this form to find an answer to our question. (We would put "head of state" in the value field.) There is no such property in Wikidata, however; as a consequence, the query builder will not work for us in this case.[^6]
+If Wikidata had an inverse property named something like "gave an education to," which took schools as its subject and people as its object, we could use this form to find an answer to our question. (We would put "head of state" in the value field.) There is no such property in Wikidata, however; as a consequence, the query builder will not work for us in this case.[^7]
 
 > ***Insight***: Wikidata is a relatively flexible database, but its rules and vocabulary are rigid. In order to use it effectively, you cannot go rogue–you have to rely on the properties and values that previous users have used when building out the data. Sometimes the existing vocabulary will be well-tailored to your purposes. More frequently, you will have to find a workaround. Fortunately, SPARQL is flexible enough to pose almost any question you can imagine. Unfortunately, figuring out how to use SPARQL is a fair bit more involved than the simple Query Builder form. 
 
@@ -269,11 +269,13 @@ To do so, let's explore political ideology classification schemes that Wikidata 
 
 {% include figure.html filename="en-or-wikidata-for-historians-08.png" alt="Screenshot of the portion of Wikidata item page for Gamal Abdel Nasser containing five statements about movements associated with him: Nasserism, Arab nationalism, Arab socialism, progressivism, Egyptian nationalism" caption="Figure 8: Abdel Nasser movement statements." %}
 
-As a historian of Egypt, I'm convinced that this list is mere hypothesis. But I'm interested to know how these ideas are described on Wikidata. Who have users classified as Nasserist, for example? If I click on Nasserism, I am taken to that item page. Then, by clicking on the "What links here" hyperlink, I find a list of items--mostly persons and political parties--that are linked to Nasserism. This gives me a rough sense of the (relatively small) footprint of this idea on Wikidata. As I mentioned earlier, the knowledge base handles concrete factoids more convincingly than abstractions.
+As a historian of Egypt, I'm convinced that this list is mere hypothesis. But I'm interested to know how these ideas are described on Wikidata. Who have users classified as Nasserist, for example? If I click on Nasserism, I am taken to that item page. Then, by clicking on the "What links here" hyperlink, I find a list of items--mostly persons and political parties--that are linked to Nasserism. This gives me a rough sense of the (relatively small) footprint of this idea on Wikidata.
 
 {% include figure.html filename="en-or-wikidata-for-historians-09.png" alt="Screenshot of the top portion of Wikidata item page for Nasserism, with a red circle indicating the What links here hyperlink in the left hand menu" caption="Figure 9: What links to Nasserism item." %}
 
-But abstraction and ambiguity can be fascinating for historians. I am intrigued by Abdel Nasser's association with progressivism. Let's see what a SPARQL query can tell me. I'll start with the simple "Cats" query example that we encountered above.
+As I mentioned earlier, the knowledge base handles concrete factoids more convincingly than abstractions. But abstraction and ambiguity can be fascinating for historians. I am intrigued by Wikidata's claim that Abdel Nasser was associated with progressivism. 
+
+Let's see what a SPARQL query can tell us about how progressivism is described in Wikidata. We can start with the simple "Cats" query example that we encountered above.
 
 ```sparql
 #Cats
@@ -285,9 +287,13 @@ WHERE
 }
 ```
 
-Let's consider this example query in a bit more detail than we did when we first looked at it. SPARQL queries employ **triples**, the three-term statements at the heart of Wikidata's data structure. In this example, the key triple comes on the fifth line: `?item wdt:P31 wd:Q146.` The first term, `?item`, is a variable; words in green starting with a question mark stand in for the things we seek. The second term, `wdt:P31`, is a property, just like the properties we see in every statement. The third term, `wd:Q146`, is an item--its Q-number (the number for "cat") is easy to spot.
+Let's consider this example query in a bit more detail than we did when we first looked at it. 
 
-The three terms in a triple have a syntax that is sometimes described as "subject-verb-object" or "item-property-attribute". In natural language, `?item wdt:P31 wd:Q146` means "(Return any item) (that is) (a cat)." We can swap out any term in this triple statement. We are interested in [progressivism (Q821102)](https://www.wikidata.org/wiki/Q821102), so let's swap `Q821102` for `Q146` (Cat). But this will not be enough to give us a useful query. The problem is the middle term in the triple: `wdt:P31` is the property "is an instance of." But we are not looking for instances of progressivism--we are looking for people who belonged to the progressivism movement. So we need a different property P-number in our triple. The Abdel Nasser page links the man to the progressivism using the property [movement (P135)](https://www.wikidata.org/wiki/Property:P135), so let's do the same in our query. Now we have (with the comments removed this time):
+SPARQL queries employ **triples**, the three-term statements at the heart of Wikidata's data structure. In this example, the key triple comes on the fifth line: `?item wdt:P31 wd:Q146.` The first term, `?item`, is a variable; words in green starting with a question mark stand in for the things we seek. The second term, `wdt:P31`, is a property, just like the properties we see in every statement. The third term, `wd:Q146`, is an item--its Q-number (the number for "cat") is easy to spot.
+
+The three terms in a triple have a syntax that is sometimes described as "subject-verb-object" or "item-property-attribute". In natural language, `?item wdt:P31 wd:Q146` means "(Return any item) (that is) (a cat)." We can swap out any term in this triple statement. We are interested in [progressivism (Q821102)](https://www.wikidata.org/wiki/Q821102), so let's swap `Q821102` for `Q146` (Cat). 
+
+But this will not be enough to give us a useful query. The problem is the middle term in the triple: `wdt:P31` is the property "is an instance of." But we are not looking for instances of progressivism--we are looking for people who belonged to the progressivism movement. So we need a different property P-number in our triple. The Abdel Nasser page links the man to the progressivism using the property "[movement (P135)](https://www.wikidata.org/wiki/Property:P135)", so let's do the same in our query. Now our query (with the comments removed this time) looks like this:
 
 ```sparql
 SELECT ?item ?itemLabel
@@ -298,7 +304,7 @@ WHERE
 }
 ```
 
-This query is disappointing: it returns only a couple of items. We know that progressivism is bigger than this, however. There may be a problem with the middle term (the property) in our triple statement. In other words, its seems that progressivism is rarely considered a [movement (P135)](https://www.wikidata.org/wiki/Property:P135) in Wikidata. Users must be describing it using a different property.
+But the results are disappointing: this query returns only a couple of items. We know that progressivism is bigger than this, however. There may be a problem with the middle term (the property) in our triple statement. In other words, its seems that progressivism is rarely considered a [movement (P135)](https://www.wikidata.org/wiki/Property:P135) in Wikidata. Users must be describing it using a different property.
 
 But what property is that? Here's a [SPARQL query that counts the instances of every property that takes "progressivism" as its value](https://w.wiki/FsGk). This shows that [political ideology (P1142)](https://www.wikidata.org/wiki/Property:P1142) is used far more than [movement (P135)](https://www.wikidata.org/wiki/Property:P135). So, let's reconfigure our SPARQL query accordingly.
 
@@ -311,7 +317,9 @@ WHERE
 }
 ```
 
-This query is more satisfying: it produces hundreds of results. There are lots of political parties, and lots of persons. Let's say we want to filter these results. We can add a line specifying that we want only progressives who are persons. To do so, we'll add a new triple to our list of conditions. We will reuse our variable `?item` as the first term. For the second term, we'll use the ubiquitous property "[instance of (P31)](https://www.wikidata.org/wiki/Property:P31)," which basically means "is." For the third term, we will use the almost-as-ubiquitious item "[human (Q5)](https://www.wikidata.org/wiki/Q5)." This query will return items that satisfy two conditions: they have the political ideology prgressivism, and they are humans.
+This query is more satisfying: it produces hundreds of results. There are lots of political parties, and lots of persons. 
+
+Let's say we want to filter these results. We can add a line specifying that we want only progressives who are persons. To do so, we'll add a new triple to our list of conditions. We will reuse our variable `?item` as the first term. For the second term, we'll use the ubiquitous property "[instance of (P31)](https://www.wikidata.org/wiki/Property:P31)," which basically means "is." For the third term, we will use the almost-as-ubiquitious item "[human (Q5)](https://www.wikidata.org/wiki/Q5)." This query will return items that satisfy two conditions: they have the political ideology prgressivism, and they are humans.
 
 ```sparql
 SELECT ?item ?itemLabel
@@ -335,7 +343,7 @@ WHERE
 }
 ```
 
-This is a far richer context--and this list suggests that Gamal Abdel Nasser might find himself out of place in progressivism as it is described in Wikidata! 
+This is a far richer context--and this list suggests that Gamal Abdel Nasser might find some strange bedfellows if he were to attend a conference on progressivism as it is described in Wikidata! 
 
 ## Conclusion
 
@@ -352,8 +360,9 @@ On the second count, you may feel daunted by how much important historical data 
 ## Endnotes
 
 [^1]: Take, for example, this line from Blaney's 2017 lesson: "Unfortunately I can’t find anything that describes the relationship between a teacher and a pupil in the Music Ontology. But the ontology is published openly, so I can use it to describe other features of music and then create my own extension." With Wikidata, it is no longer necessary to create such extensions, because its ontology is already quite thoroughly realized. To take Blaney's example, [the item page for Moriz Rosenthal](https://www.wikidata.org/wiki/Q213772) shows that he was a "student of"[P1066](https://www.wikidata.org/wiki/Property:P1066) Franz Liszt, and that Charles Rosen was his "student"[P802](https://www.wikidata.org/wiki/Property:P802).
-[^2]: Rosenzweig, Roy. "Can History Be Open Source? Wikipedia and the Future of the Past."" *Journal of American History* 93, no. 1 (June 1, 2006): 117–46. https://doi.org/10.2307/4486062.
-[^3]: This is the approach of the [impresso project](https://www.impresso-project.ch/), described at Düring, M., Bunout, E., & Guido, D. "Transparent generosity. Introducing the impresso interface for the exploration of semantically enriched historical newspapers," *Historical Methods: A Journal of Quantitative and Interdisciplinary History*, 57, no. 1 (2024)"" 20–40. https://doi.org/10.1080/01615440.2024.2344004.
-[^4]: The reason for this quirk is straightforward: at the time of writing, "President of the United States" ([Q11696](https://www.wikidata.org/wiki/Q11696)) is defined as "instance of"([P31](https://www.wikidata.org/wiki/Property:P31)) rather than "subclass of"([P279](https://www.wikidata.org/wiki/Property:P279)) "head of state"([Q48352](https://www.wikidata.org/wiki/Q48352)) and "head of government"([Q2285706](https://www.wikidata.org/wiki/Q2285706)). These statements differ from the way most heads of state are described in Wikidata--and may have been changed by the time you read this.
-[^5]: SPARQL is [introduced in another (currently retired) Programming Historian lesson](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL). 
-[^6]: Unlike new items, new properties cannot be created at whim. In fact, there are only about 10,000 properties, compared to 110,000,000 items.
+[^2]: Roy Rosenzweig, "Can History Be Open Source? Wikipedia and the Future of the Past." *Journal of American History* 93, no. 1 (2006): 117–46. https://doi.org/10.2307/4486062.
+[^3]: This is the approach of the [impresso project](https://www.impresso-project.ch/), described in Marten Düring et al., "Transparent Generosity. Introducing the Impresso Interface for the Exploration of Semantically Enriched Historical Newspapers," *Historical Methods: A Journal of Quantitative and Interdisciplinary History*, 57, no. 1 (2024): 20–40. https://doi.org/10.1080/01615440.2024.2344004.
+[^4]: As mentioned earlier, Wikidata is one of the world's great disambiguation resources. We can easily distinguish [Q16889133](https://www.wikidata.org/wiki/Q16889133) from [Q187588](https://www.wikidata.org/wiki/Q187588), or [Q37517](https://www.wikidata.org/wiki/Q37517) or [Q18204](https://www.wikidata.org/wiki/Q18204) or [Q217594](https://www.wikidata.org/wiki/Q217594).
+[^5]: The reason for this quirk is straightforward: at the time of writing, "President of the United States" ([Q11696](https://www.wikidata.org/wiki/Q11696)) is defined as "instance of"([P31](https://www.wikidata.org/wiki/Property:P31)) rather than "subclass of"([P279](https://www.wikidata.org/wiki/Property:P279)) "head of state"([Q48352](https://www.wikidata.org/wiki/Q48352)) and "head of government"([Q2285706](https://www.wikidata.org/wiki/Q2285706)). These statements differ from the way most heads of state are described in Wikidata--and may have been changed by the time you read this.
+[^6]: SPARQL is [introduced in another (currently retired) Programming Historian lesson](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL). 
+[^7]: Unlike new items, new properties cannot be created at whim. In fact, there are only about 10,000 properties, compared to 110,000,000 items.

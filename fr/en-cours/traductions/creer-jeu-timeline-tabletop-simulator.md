@@ -64,7 +64,7 @@ En 2013, le concepteur de jeux Eric Zimmerman a publié un « Manifesto for a Lu
 >
 >Dans les dernières décennies, nous avons identifié de nouveaux types d’alphabétisation : visuelle, technologique… Mais dans le Siècle ludique, être vraiment alphabétisé, c’est aussi maîtriser le langage des jeux. La place prise par les jeux dans notre culture est à la fois la cause et la conséquence de l’alphabétisation aux jeux dans le Siècle ludique.
 >
->**Dans le Siècle ludique, tout le monde sera game designer.**
+>**Dans le Siècle ludique, tout le monde sera concepteur de jeu.**
 >
 >Les jeux modifient la nature de la consommation culturelle. La musique est jouée par les musiciens, mais la plupart des gens ne sont pas des musiciens – ils écoutent la musique que quelqu’un d’autre a faite. A l’opposé, les jeux requièrent une participation active.
 >
@@ -125,7 +125,7 @@ Cela étant, il se peut que vous soyez intéressé, pour la création de prototy
 ## Présentation de nanDECK et mode d’emploi
 Un aspect fondamental de la conception d’un jeu réside dans l’ajustement progressif des cartes du jeu, à travers un processus itératif de tests et d’observation des effets des modifications apportées au design. nanDECK est un logiciel développé pour Windows et conçu pour aider les créateurs de jeux dans le processus de conception et d'impression de jeux de cartes destinés au prototypage et aux phases de test.
 
-L'outil a été créé et mis à disposition gratuitement par Andrea 'Nand' Nini. Le logiciel est en cours de développement depuis sa version 1.0 sortie en avril 2006. La version la plus récente (au moment de la rédaction de cet article) est nanDECK 1.273, publiée en novembre 2023.
+L'outil a été créé et mis à disposition gratuitement par Andrea 'Nand' Nini. Le logiciel est en cours de développement depuis sa version 1.0 sortie en avril 2006. La version la plus récente (au moment de la rédaction de cet article) est NanDECK 1.28.3, publiée en août 2025.
 
 Bien qu’initialement conçu pour créer des cartes à jouer, nanDECK peut également être utilisé pour générer des graphismes destinés à d’autres éléments de jeu, tels que les jetons ou les tuiles.
 
@@ -146,7 +146,7 @@ Le manuel officiel de nanDECK[^16] propose une solution de contournement qui con
 En cas de problème d’installation, vous pouvez consulter plusieurs forums en ligne où des utilisateurs proposent volontiers leur aide. Le développeur de nanDECK, Andrea Nand, participe activement au [forum des utilisateurs de nanDECK sur BoardGameGeek](https://perma.cc/FJ9V-N4VA). Il existe également une communauté plus restreinte, mais toujours active, d'[utilisateurs de nanDECK sur Reddit](https://www.reddit.com/r/nanDECK/).
 
 ## Comment utiliser nanDECK pour créer des cartes
-Cette partie débute par une présentation de l'interface de nanDECK et de ses principaux éléments. Elle propose ensuite un script de 12 lignes, accompagné d’explications détaillées ligne par ligne, afin d’en clarifier les instructions et le fonctionnement. L'exemple présenté provient d’un projet réalisé par la traductrice de la version française de cet article, destiné à générer un jeu *Timeline" de 59 cartes portant sur l’histoire de l’île de La Réunion (France). Ce cas pratique repose sur un fichier Excel hébergé localement, contenant les libellés de chaque carte ainsi que les emplacements des fichiers image nécessaires à leur illustration. Des instructions spécifiques sont également fournies pour ceux qui préfèrent utiliser Google Sheets à la place d’Excel. Enfin, cette partie propose des liens vers un ensemble de fichiers permettant aux lecteurs de générer leur propre jeu de six cartes *Timeline*.
+Cette partie débute par une présentation de l'interface de nanDECK et de ses principaux éléments. Elle propose ensuite un script de 12 lignes, accompagné d’explications détaillées ligne par ligne, afin d’en clarifier les instructions et le fonctionnement. L'exemple présenté provient d’un projet réalisé par la traductrice de la version française de cet article, destiné à générer un jeu *Timeline* de 59 cartes portant sur l’histoire de l’île de La Réunion (France). Ce cas pratique repose sur un fichier Excel hébergé localement, contenant les libellés de chaque carte ainsi que les emplacements des fichiers image nécessaires à leur illustration. Des instructions spécifiques sont également fournies pour ceux qui préfèrent utiliser Google Sheets à la place d’Excel. Enfin, cette partie propose des liens vers un ensemble de fichiers permettant aux lecteurs de générer leur propre jeu de six cartes *Timeline*.
 
 Cette leçon se limite à l’analyse d’un script permettant de générer un jeu de cartes de type Timeline ; elle ne fournit pas d'instructions générales sur l’utilisation de nanDECK. Pour une introduction vidéo très utile à nanDECK, je recommande la [série de cinq tutoriels de Ryan Langewisch sur YouTube](https://www.youtube.com/watch?v=I1IPl3nT1Og&list=PLdHW9On5G8NJm5m1mULabskVYsM84M_SL). Le manuel de nanDECK, rédigé par Andrea Nini et disponible en ligne sous la forme d'un [document PDF de 188 pages](https://perma.cc/49KL-BJA6), est également très utile.
 
@@ -223,16 +223,17 @@ Il est également possible d’ajouter un commentaire en fin de ligne, après un
 ```
 
 ### Ligne 2 : PAGE
-La commande `PAGE` définit la taille et l'orientation du papier,ce qui s’avère utile pour la création et l’impression du PDF.
+La commande `PAGE` définit la taille et l'orientation du papier, ce qui s’avère utile pour la création et l’impression du PDF.
 
 
 >Paramètres :
 >
->* **height** (hauteur)  : hauteur de la page (en cm)_
->* _**orientation** : l'orientation peut être choisie entre :
+>* **width** (largeur)  : largeur de la page (en cm)
+>* **height** (hauteur)  : hauteur de la page (en cm)
+>* **orientation** : l'orientation peut être choisie entre :
 >	* LANDSCAPE (paysage) : horizontal
 >	* PORTRAIT : vertical
->* **Flags** (options de mise en forme) : pour spécifier un comportement spécial pour les pages, dont les valeurs possibles sont :
+>* **Flags** (options) : pour spécifier un comportement spécial pour les pages, dont les valeurs possibles sont :
 >* H : les cartes sont centrées horizontalement
 >* V : les cartes sont centrées verticalement
 
@@ -623,6 +624,7 @@ Espérons que cette expérience incitera d'autres personnes à créer des varian
 [^18]: Boyle, B. “How Board Gamers Embraced Tabletop Sims During Lockdown”, 29 May 2020, Vice. https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine. Accessed 25 Jan. 2024.
 [^19]: Berzerk Games. “Developer & Publisher Information.” Tabletop_Simulator, 2023, https://tabletopsimulator.com/contact/publishers.
 [^20]: Sayers, Jentery. Paper Computers. 2018, https://jntry.work/archive/syllabi/508v4/.
+
 
 
 

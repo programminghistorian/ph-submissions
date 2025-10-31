@@ -34,11 +34,11 @@ doi:
 
 Nous n'exigeons plus des élèves qu'ils mémorisent par cœur des tableaux d'événements historiques avec leurs dates, comme c'était le cas dans l'Amérique du milieu du dix-neuvième siècle[^1]. Sans entrer dans les divers débats[^2] sur l’intérêt d’enseigner ou non la chronologie en classe, cette leçon part du principe qu'il est utile « d'aider les élèves à développer de solides connaissances de base dans nos disciplines »[^3] et que les jeux constituent un excellent outil pour atteindre cet objectif.
 
-Inviter les élèves à créer leurs propres jeux - ou à proposer une modification d’un jeu existant (un “mod”) - peut être l'occasion de leur apprendre à manipuler et à transformer des fichiers numériques en objets concrets, lesquels peuvent ensuite être réutilisés pour offrir d’enrichissantes expériences pédagogiques. Ce tutoriel montrera comment les élèves peuvent créer leur propre jeu, en version papier ou numérique, en s'appuyant sur la mécanique de construction chronologique popularisée par le jeu commercial de Frédéric Henry : Timeline.
+Inviter les élèves à créer leurs propres jeux - ou à proposer une modification d’un jeu existant (un “mod”) - peut être l'occasion de leur apprendre à manipuler et à transformer des objets numériques en objets concrets, lesquels peuvent ensuite être réutilisés pour offrir d’enrichissantes expériences pédagogiques. Ce tutoriel montrera comment les élèves peuvent créer leur propre jeu, en version papier ou numérique, en s'appuyant sur la mécanique de construction chronologique popularisée par le jeu commercial de Frédéric Henry : Timeline.
 
 Tout comme les auteurs ou les éditeurs utilisent des traitements de texte pour créer des livres imprimés, les concepteurs de jeux utilisent régulièrement des outils numériques pour réaliser des prototypes papier de leurs créations. Ce tutoriel vous présentera deux de ces outils numériques spécialisés : nanDECK d'Andrea Nini et Tabletop Simulator.
 
-En tant qu'enseignant, vous aurez l'occasion d'attirer l'attention des élèves sur les différentes possibilités offertes par les versions papier et numériques d'un même objet informationnel. Grâce à la possibilité de jouer au même jeu à la fois physiquement et en ligne, les élèves pourront réfléchir à la manière dont le support influence l'expérience de jeu. Grâce à leur nouvelle capacité à modifier les éléments ou les pièces d’un jeu familier, les élèves pourront explorer ce qui se passe lorsque les règles d’un jeu bien connu sont modifiées[^4].
+En tant qu'enseignant, vous aurez l'occasion d'attirer l'attention des élèves sur les différentes possibilités offertes par les versions papier et numériques d'un même objet informationnel. Grâce à la possibilité de jouer au même jeu à la fois physiquement et de façon dématérialisée, les élèves pourront réfléchir à la manière dont le support influence l'expérience de jeu. Grâce à leur nouvelle capacité à modifier les éléments ou les pièces d’un jeu familier, les élèves pourront explorer ce qui se passe lorsque les règles d’un jeu bien connu sont modifiées[^4].
 
 
 ## Aperçu de la leçon
@@ -623,5 +623,6 @@ Espérons que cette expérience incitera d'autres personnes à créer des varian
 [^18]: Boyle, B. “How Board Gamers Embraced Tabletop Sims During Lockdown”, 29 May 2020, Vice. https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine. Accessed 25 Jan. 2024.
 [^19]: Berzerk Games. “Developer & Publisher Information.” Tabletop_Simulator, 2023, https://tabletopsimulator.com/contact/publishers.
 [^20]: Sayers, Jentery. Paper Computers. 2018, https://jntry.work/archive/syllabi/508v4/.
+
 
 

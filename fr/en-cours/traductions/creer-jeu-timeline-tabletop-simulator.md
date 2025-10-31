@@ -338,7 +338,7 @@ nanDECK comprend un éditeur visuel de base qui permet de dessiner des formes ou
 De nombreux paramètres et indicateurs sont associés à la directive `IMAGE`, comme en témoigne sa syntaxe :
 
 
->IMAGE = plage, fichier image, position x, position y, largeur, hauteur, angle, option de mise en forme, alpha, largeur de texture, hauteur de texture, inclinaison x, inclinaison y, largeur de l’image, hauteur de l’image, position x, position y, copie x, copie y.
+>IMAGE = plage, fichier image, position x, position y, largeur, hauteur, angle, option, alpha, largeur de texture, hauteur de texture, inclinaison x, inclinaison y, largeur de l’image, hauteur de l’image, position x, position y, copie x, copie y.
 
 
 Comprendre l’ordre des éléments dans la syntaxe peut nous aider à interpréter la directive IMAGE dans notre script :
@@ -354,9 +354,15 @@ Dans la fenêtre d'instruction, il peut parfois être difficile de déterminer p
 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-04.png" alt="Le texte en surbrillance correspond à la variable sur laquelle le curseur de la souris est actuellement positionné."  caption="Figure 4. Le texte en surbrillance correspond à la variable sur laquelle le curseur de la souris est actuellement positionné." %}
 
-Le script de la figure 4 demande à nanDECK d'insérer l'image indiquée dans le champ "Image" de la feuille de calcul, de la placer à la position 0,0, et de lui permettre de remplir 100 % de la largeur de la carte (si possible), mais seulement 60 % de la hauteur (si possible). La sélection de l’option P indique à nanDECK de conserver les proportions originales de l'image. J’ai également choisi de convertir toutes les images en niveaux de gris en utilisant l’option G, afin d’apporter une certaine uniformité aux cartes du jeu. Vous pouvez voir le résultat dans l'exemple ci-dessous, où nanDECK a inséré l'image située dans Images/Sandwich_First.jpg :
+Le script de la figure 4 demande à nanDECK d'insérer l'image indiquée dans le champ "Image" de la feuille de calcul, de la placer à la position 0,0, et de lui permettre de remplir 100 % de la largeur de la carte (si possible), mais seulement 60 % de la hauteur (si possible). La sélection de l’option P indique à nanDECK de conserver les proportions originales de l'image. J’ai également choisi de convertir toutes les images en niveaux de gris en utilisant l’option G, afin d’apporter une certaine uniformité aux cartes du jeu. Vous pouvez voir le résultat dans l'exemple ci-dessous, où nanDECK a inséré l'image située dans {(Images/revolte-des-esclaves.jpg)} :
 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-05.png" alt="Une carte générée avec nanDECK."  caption="Figure 5. Une carte générée avec nanDECK." %}
+
+
+
+
+
+
 
 
 ### Lignes 7 et 9 : POLICE
@@ -624,6 +630,7 @@ Espérons que cette expérience incitera d'autres personnes à créer des varian
 [^18]: Boyle, B. “How Board Gamers Embraced Tabletop Sims During Lockdown”, 29 May 2020, Vice. https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine. Accessed 25 Jan. 2024.
 [^19]: Berzerk Games. “Developer & Publisher Information.” Tabletop_Simulator, 2023, https://tabletopsimulator.com/contact/publishers.
 [^20]: Sayers, Jentery. Paper Computers. 2018, https://jntry.work/archive/syllabi/508v4/.
+
 
 
 

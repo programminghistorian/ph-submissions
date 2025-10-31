@@ -354,16 +354,9 @@ Dans la fenêtre d'instruction, il peut parfois être difficile de déterminer p
 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-04.png" alt="Le texte en surbrillance correspond à la variable sur laquelle le curseur de la souris est actuellement positionné."  caption="Figure 4. Le texte en surbrillance correspond à la variable sur laquelle le curseur de la souris est actuellement positionné." %}
 
-Le script de la figure 4 demande à nanDECK d'insérer l'image indiquée dans le champ "Image" de la feuille de calcul, de la placer à la position 0,0, et de lui permettre de remplir 100 % de la largeur de la carte (si possible), mais seulement 60 % de la hauteur (si possible). La sélection de l’option P indique à nanDECK de conserver les proportions originales de l'image. J’ai également choisi de convertir toutes les images en niveaux de gris en utilisant l’option G, afin d’apporter une certaine uniformité aux cartes du jeu. Vous pouvez voir le résultat dans l'exemple ci-dessous, où nanDECK a inséré l'image située dans {(Images/revolte-des-esclaves.jpg)} :
+Le script de la figure 4 demande à nanDECK d'insérer l'image indiquée dans le champ "Image" de la feuille de calcul, de la placer à la position 0,0, et de lui permettre de remplir 100 % de la largeur de la carte (si possible), mais seulement 60 % de la hauteur (si possible). La sélection de l’option {(P)} indique à nanDECK de conserver les proportions originales de l'image. J’ai également choisi de convertir toutes les images en niveaux de gris en utilisant l’option {(G)}, afin d’apporter une certaine uniformité aux cartes du jeu. Vous pouvez voir le résultat dans l'exemple ci-dessous, où nanDECK a inséré l'image située dans {(Images/revolte-des-esclaves.jpg)} :
 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-05.png" alt="Une carte générée avec nanDECK."  caption="Figure 5. Une carte générée avec nanDECK." %}
-
-
-
-
-
-
-
 
 ### Lignes 7 et 9 : POLICE
 
@@ -420,13 +413,13 @@ L'un des principaux atouts de nanDECK est sa capacité à générer des faces et
 
 
 ```
-DUPLEX = “plage de cartes face”, “plage de cartes back”, numéro
+DUPLEX = “plage de cartes face”, “plage de cartes dos”, numéro
 ```
 
-Afin d'aligner les faces et les dos des cartes, désignez la plage que vous souhaitez dupliquer. Dans le cas de mon jeu personnel, il y a 59 cartes uniques : les rectos seront générés à partir des cartes de la plage 1 à 59, et les versos à partir des cartes de la plage 60 à 118.
+Afin d'aligner les faces et les dos des cartes, désignez la plage que vous souhaitez dupliquer. Dans le cas de mon jeu personnel, il y a 60 cartes uniques : les rectos seront générés à partir des cartes de la plage 1 à 60, et les versos à partir des cartes de la plage 61 à 120.
 
 ```
-11. DUPLEX = 1-59,60-118
+11. DUPLEX = 1-60,61-120
 12. PRINT = DUPLEX
 ```
 
@@ -443,9 +436,9 @@ Afin de vous aider à démarrer avec nanDECK et Tabletop Simulator, j'ai mis à 
 
 Le sous-dossier `nanDECK` contient :
 
-- [**PH_nandeck_Your_Timeline.txt**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/PH_nandeck_Your_Timeline.txt) : le script à ouvrir dans nanDECK_
-- [**Build-Your-Own-Timeline.xlsx**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/Build-Your-Own-Timeline.xlsx) : la feuille de calcul que le script utilise dans nanDECK pour localiser les éléments et construire le jeu de cartes_
-- Six images au format `.png`_
+- [**PH_nandeck_Your_Timeline.txt**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/PH_nandeck_Your_Timeline.txt) : le script à ouvrir dans nanDECK
+- [**Build-Your-Own-Timeline.xlsx**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/Build-Your-Own-Timeline.xlsx) : la feuille de calcul que le script utilise dans nanDECK pour localiser les éléments et construire le jeu de cartes
+- Six images au format `.png`
 
 Comme dans l'exemple précédent, [**PH_nandeck_Your_Timeline.txt**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/PH_nandeck_Your_Timeline.txt) commence par trois lignes de commentaires, suivies de onze lignes de directives. Contrairement à l'exemple précédent, ce script est relié à un tableur Google Sheets plutôt qu'à un fichier Excel.
 
@@ -468,7 +461,7 @@ Comme dans l'exemple précédent, [**PH_nandeck_Your_Timeline.txt**](https://pro
 
 La ligne 4 indique à nanDECK que la taille de la page correspond à l'équivalent métrique d'un format 8½ x 11 pouces, qu'elle doit être orientée en mode portrait, et que les cartes doivent être centrées sur la page, à la fois horizontalement et verticalement. La ligne 5 définit la taille de chaque carte, en centimètres.
 
-La ligne 6 exploite le codage dur de nanDECK, qui interprète automatiquement le `LIEN` comme une URL vers une feuille de calcul Google.  L’identifiant `1lP2mFRcxEsJeDniVy8byPMkwRe7JfkI78OR7NDe9zkU` est ainsi compris comme devant remplacer le paramètre `SAMPLE_ID`, dans ce format d'URL : `https://docs.google.com/spreadsheets/d/SAMPLE_ID/edit?usp=sharing`. nanDECK le traduira en https://docs.google.com/spreadsheets/d/1lP2mFRcxEsJeDniVy8byPMkwRe7JfkI78OR7NDe9zkU/edit?usp=sharing.
+La ligne 6 exploite les fonctionnalités de nanDECK, qui interprète automatiquement le `LIEN` comme une URL vers une feuille de calcul Google.  L’identifiant `1lP2mFRcxEsJeDniVy8byPMkwRe7JfkI78OR7NDe9zkU` est ainsi compris comme devant remplacer le paramètre `SAMPLE_ID`, dans ce format d'URL : `https://docs.google.com/spreadsheets/d/SAMPLE_ID/edit?usp=sharing`. nanDECK le traduira en https://docs.google.com/spreadsheets/d/1lP2mFRcxEsJeDniVy8byPMkwRe7JfkI78OR7NDe9zkU/edit?usp=sharing.
 
 La capacité de nanDECK à utiliser les ressources d’un dossier externe permet de développer une version personnalisée de *Timeline* (ou d'une autre variante d'un jeu de cartes) sans que cela soit nécessairement un travail individuel. Une classe entière d'étudiants peut ainsi rassembler des images et des évènements dans un dossier et un tableur communs. L'inconvénient de cette approche étant que les "secrets" des cartes de chacun deviennent visibles, ce qui enlève l’effet de surprise lors des futures parties. C'est pourquoi cette leçon recommande que chaque élève crée son propre jeu, avant de les réunir, afin de découvrir par le jeu ce que les autres ont conçu.
 
@@ -478,7 +471,7 @@ La ligne 8 indique que, dans la mesure du possible, les images doivent être pla
 
 La ligne 9 indique à nanDECK la police dans laquelle le texte suivant doit être imprimé : ici, Arial 14 point en gras et noir, sur un fond transparent.
 
-La ligne 10 indique à nanDECK d'imprimer l'année (`YEAR`) pour chaque ligne de la feuille Google Sheets dont le champ "année" est renseigné, en la positionnant horizontalement au centre, mais un peu au-delà de la moitié de la hauteur de la carte.
+La ligne 10 indique à nanDECK d'imprimer l'année (`YEAR`) pour chaque ligne de la feuille Google Sheets dont le champ "année" est renseigné, en la positionnant horizontalement au centre, mais un peu en dessous de la moitié de la hauteur de la carte.
 
 La ligne 11 modifie la police, passant de 14 points à 7,5 points (Arial), en noir mais sans gras. Elle définit ainsi le style utilisé à la ligne 12, qui imprime, pour les cartes concernées, l’évènement (`FACT`), centré, sous l’année (`YEAR`). La ligne 12 indique également à nanDECK d'ajuster le texte s'il dépasse les dimensions de la carte.
 
@@ -496,7 +489,7 @@ Cependant, il existe d'autres moyens de faire découvrir notre nouveau jeu au pu
 
 ## Pourquoi importer votre jeu dans Tabletop Simulator ?
 
-nanDECK s’intègre parfaitement à une autre plateforme appelée Tabletop Simulator. [Tabletop Simulator](https://perma.cc/BKE8-DRRN) est un "bac à sable" physique, dans lequel jusqu'à dix joueurs peuvent manipuler et jouer avec des pièces de jeu numériques. Il est actuellement disponible sur [Steam](https://store.steampowered.com/app/286160/Tabletop_Simulator/) au prix de 19,99 $.
+nanDECK s’intègre parfaitement à une autre plateforme appelée Tabletop Simulator. [Tabletop Simulator](https://perma.cc/BKE8-DRRN) est un "bac à sable" physique, dans lequel jusqu'à dix joueurs peuvent manipuler et jouer avec des pièces de jeu numériques. Il est actuellement disponible sur [Steam](https://store.steampowered.com/app/286160/Tabletop_Simulator/) au prix de 19,50€.
 
 Bien que Tabletop Simulator (TTS) ne soit pas la seule plateforme numérique permettant à des personnes de jouer ensemble à des jeux de cartes ou de société, son nom est bien connu, et elle est utilisée par les créateurs pour observer des joueurs tester les premiers prototypes d’un jeu. Il peut être difficile de réunir, dans son entourage immédiat, suffisamment de volontaires prêts à tester un jeu en cours de développement. TTS permet aux concepteurs de faire tester leurs nouvelles créations à des joueurs répartis dans le monde entier.[^17] TTS n'est pas seulement un espace de rencontre pour les passionnés partageant des centres d’intérêt de niche, c'est aussi une excellente solution pour ceux qui ne peuvent pas jouer en personne, en raison de problèmes de santé, de contraintes de temps, de budget, ou lors de pandémies mondiales.[^18]
 
@@ -587,7 +580,7 @@ Vous devriez maintenant vous retrouver face à une table vide. Dans le menu sup�
 
 Dans ce menu, vous pourrez sélectionner la face du jeu depuis votre disque local. Veillez à cocher la case située à côté de l'option **Unique backs** (dos uniques). Laissez la largeur sur 10 et la hauteur sur 7, mais ajustez le curseur pour qu’il reflète le nombre exact de cartes dans votre jeu. Une fois ces étapes terminées, cliquez sur le bouton *Import* et votre jeu sera prêt pour une partie virtuelle.
 
-Vous pouvez désormais jouer à votre version de Timeline en ligne avec jusqu'à neuf autres joueurs invités. De plus, si vous décidez de téléverser et de partager vos éléments de jeu via le [workshop de Tabletop Simulator sur Steam](https://perma.cc/X5SQ-C87S), vous pourrez ajouter votre jeu à une collection de plus de 11 000 jeux de cartes accessibles à une communauté de plus de 2 millions d’utilisateurs de TTS.[^19]
+Vous pouvez désormais jouer à votre version de Timeline en ligne avec jusqu'à neuf autres joueurs invités. De plus, si vous décidez de téléverser et de partager vos éléments de jeu via le [workshop de Tabletop Simulator sur Steam](https://perma.cc/X5SQ-C87S), vous pourrez ajouter votre jeu à une collection de plus de 25 000 jeux de cartes accessibles à une communauté de plus de 2 millions d’utilisateurs de TTS.[^19]
 
 {% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-07.png" alt="Capture d’écran de l’interface du simulateur de jeu de table montrant la distribution des cartes. Les cartes du jeu semblent flotter au dessus d’une table hexagonale."  caption="Figure 7. Distribution des cartes avec Tabletop Simulator. Bien que l’une des fonctionnalités les plus amusantes de Tabletop Simulator soit de préparer la table, distribuer les cartes est également très plaisant. Le jeu de cartes en anglais présenté ici [a été créé par Mita Williams](https://programminghistorian.org/en/lessons/designing-a-timeline-tabletop-simulator)." %}
 
@@ -606,7 +599,7 @@ Zimmerman n'est pas le seul à le penser. Les jeux de société ont déjà été
 
 Cette leçon a pour but d’aider les étudiants en histoire et/ou les concepteurs de jeux débutants à créer et générer leurs propres variantes du jeu *Timeline*, en choisissant peut-être un thème ou un aspect spécifique de l'histoire, puis à partager leur travail avec d'autres. Ces jeux de cartes peuvent être combinés pour mêler, par exemple, l'histoire locale et l'histoire internationale. Grâce à ce processus, les joueurs découvriront des moments de simultanéité et de chevauchements historiques à la fois surprenants et fascinants (saviez-vous que l'université d'Oxford est plus ancienne que l'empire aztèque ?)
 
-Espérons que cette expérience incitera d'autres personnes à créer des variantes de jeux existants. On pourrait imaginer créer et ajouter ses propres cartes à des jeux comme “ Trivial Pursuit", "Magic : The Gathering" ou même "Uno". Peut-être cela mènera-t-il à la création d’un tout nouveau jeu.
+Espérons que cette expérience incitera d'autres personnes à créer des variantes de jeux existants. On pourrait imaginer créer et ajouter ses propres cartes à des jeux comme “ Trivial Pursuit", "Magic : The Gathering" ou même "Uno". Peut-être cela conduira même à la création d’un tout nouveau jeu.
 
 ## Notes de fin
 
@@ -630,6 +623,7 @@ Espérons que cette expérience incitera d'autres personnes à créer des varian
 [^18]: Boyle, B. “How Board Gamers Embraced Tabletop Sims During Lockdown”, 29 May 2020, Vice. https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine. Accessed 25 Jan. 2024.
 [^19]: Berzerk Games. “Developer & Publisher Information.” Tabletop_Simulator, 2023, https://tabletopsimulator.com/contact/publishers.
 [^20]: Sayers, Jentery. Paper Computers. 2018, https://jntry.work/archive/syllabi/508v4/.
+
 
 
 

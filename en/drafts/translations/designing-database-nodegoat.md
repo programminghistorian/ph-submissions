@@ -59,8 +59,8 @@ Finally, structuring information in a database allows us to easily share it with
 
 In this lesson, we will discuss the challenges that newcomers to digital research are likely to encounter when designing a database for use in humanities scholarship. We will therefore:
 
-- [introduce key concepts and technical tools needed to design a data model](#dataentry_id)
-- [walk through the first steps in building a database using the online platform *nodegoat*](#database_id) 
+- [introduce key concepts and technical tools needed to design a data model](#from-data-entry-to-data-modeling)
+- [walk through the first steps in building a database using the online platform *nodegoat*](#building-a-database-with-nodegoat) 
  
 In doing so, we hope to demonstrate the advantages of a research method whose logic may not be immediately evident to researchers trained in the humanities.
 

@@ -416,10 +416,10 @@ L'un des principaux atouts de nanDECK est sa capacité à générer des faces et
 DUPLEX = “plage de cartes face”, “plage de cartes dos”, numéro
 ```
 
-Afin d'aligner les faces et les dos des cartes, désignez la plage que vous souhaitez dupliquer. Dans le cas de mon jeu personnel, il y a 60 cartes uniques : les rectos seront générés à partir des cartes de la plage 1 à 60, et les versos à partir des cartes de la plage 61 à 120.
+Afin d'aligner les faces et les dos des cartes, désignez la plage que vous souhaitez dupliquer. Dans le cas de mon jeu personnel, il y a 59 cartes uniques : les rectos seront générés à partir des cartes de la plage 1 à 59, et les versos à partir des cartes de la plage 60 à 118.
 
 ```
-11. DUPLEX = 1-60,61-120
+11. DUPLEX = 1-59,60-118
 12. PRINT = DUPLEX
 ```
 
@@ -623,6 +623,7 @@ Espérons que cette expérience incitera d'autres personnes à créer des varian
 [^18]: Boyle, B. “How Board Gamers Embraced Tabletop Sims During Lockdown”, 29 May 2020, Vice. https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine. Accessed 25 Jan. 2024.
 [^19]: Berzerk Games. “Developer & Publisher Information.” Tabletop_Simulator, 2023, https://tabletopsimulator.com/contact/publishers.
 [^20]: Sayers, Jentery. Paper Computers. 2018, https://jntry.work/archive/syllabi/508v4/.
+
 
 
 

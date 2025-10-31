@@ -264,13 +264,10 @@ Vous pouvez également connecter nanDECK à un tableur Google Sheets en suivant 
 
 >Vous pouvez également connecter un document Google Sheets en utilisant l'identifiant (ID) du fichier à la place du paramètre "filename” (nom de fichier), mais vous devez d’abord le partager en suivant ces étapes :
 >
->• Sélectionnez le fichier dans la page web de Google Drive
->
->• Cliquez sur l'icône Partager (en haut à droite)
->
->• Dans la fenêtre, cliquez sur le menu déroulant sous « Accès général »
->
->• Choisissez une option de partage par lien, par exemple « Tous les utilisateurs qui ont le lien »
+>* Sélectionnez le fichier dans la page web de Google Drive
+>* Cliquez sur l'icône Partager (en haut à droite)
+>* Dans la fenêtre, cliquez sur le menu déroulant sous « Accès général »
+>* Choisissez une option de partage par lien, par exemple « Tous les utilisateurs qui ont le lien »
 >
 >Google vous affichera alors un lien du type : `https://docs.google.com/spreadsheets/d/SAMPLE_ID/edit?usp=sharing`
 >
@@ -282,9 +279,9 @@ Vous pouvez également connecter nanDECK à un tableur Google Sheets en suivant 
 >Exemple :
 >LINK=SAMPLE_ID!Beta
 >Mais vous devez activer le partage sur le web en suivant ces étapes :
->• Ouvrez la feuille de calcul dans un navigateur
->• Dans le menu, sélectionnez Fichier → Partager → Publier sur le Web
->• Cliquez sur le bouton "Publier”
+>* Ouvrez la feuille de calcul dans un navigateur
+>* Dans le menu, sélectionnez Fichier → Partager → Publier sur le Web
+>* Cliquez sur le bouton "Publier”
 
 
 À noter : nanDECK part du principe que la première ligne du fichier lié contient les noms des champs importés.
@@ -627,6 +624,7 @@ Espérons que cette expérience incitera d'autres personnes à créer des varian
 [^18]: Boyle, B. “How Board Gamers Embraced Tabletop Sims During Lockdown”, 29 May 2020, Vice. https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine. Accessed 25 Jan. 2024.
 [^19]: Berzerk Games. “Developer & Publisher Information.” Tabletop_Simulator, 2023, https://tabletopsimulator.com/contact/publishers.
 [^20]: Sayers, Jentery. Paper Computers. 2018, https://jntry.work/archive/syllabi/508v4/.
+
 
 
 

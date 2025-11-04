@@ -324,11 +324,11 @@ Every three.js website has a camera and a 'scene' to which lights and objects ne
 
 First create a camera and a scene with a background colour. The position of the camera is important, sometimes you can not see your models because the camera is looking away from them or they are outside its field of view. We will use a perspective camera with parameters that define the field of view, including boundaries for culling objects that are too close or too far from the camera. The units for three.js are metres, and this camera will not render to the screen anything nearer to 0.1m and further than 10m. When we introduce moving the camera later, you will see objects disappear if they get too close. 
 
-The camera, and other positions are set in x, y and z order. As mentioned previously, x is left (-) and right (+), y is down (-) and up (+) and z is far (-) and near (+). The camera is set at a height of 1.6m, and later the model will be at 0.8m. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
+The camera and other positions are set in x, y and z order. As mentioned previously, x is left (-) and right (+), y is down (-) and up (+) and z is far/'into the screen' (-) and near/'coming out from the screen' (+). The camera is set at a height of 1.6m, and later the model will be at 0.8m. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
 
 We will make the page background peach (0xf7d382). To specify colours you can use the colour [hex code](https://www.color-hex.com) after '0x'.
 
-In the index.html file, **after** the import declare the variables (with **let**), call and define the init and other necessary functions. Variables are generally declared outside function definitions, but sometimes will be declared within a function definition if the variable is only referred to within the function definition. 
+In the index.html file, **after** the import, declare the variables (with **let**), call and define the init() and other necessary functions. Variables are generally declared outside function definitions, but sometimes will be declared within a function definition if the variable is only referred to within the function definition. 
 
 After:
 

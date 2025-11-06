@@ -33,16 +33,16 @@ doi: XX.XXXXX/phen0000
 {% include toc.html %}
 
 <div class="alert alert-info">
-Nota Explicativa: a versão lusófona desta lição distingui-se da versão orginal por utilizar o mapa de c.1795 da Província do Entre Douro-e-Minho, elaborado por José Custódio Villasboas, e por combinar o texto original, em espanhol, com os acréscimos da tradução anglo-saxã.
+Nota Explicativa: a versão lusófona desta lição distingue-se da versão original por utilizar o mapa de c.1795 da Província do Entre Douro-e-Minho, elaborado por José Custódio Villasboas, e por combinar o texto original, em espanhol, com os acréscimos da tradução anglo-saxã.
 </div>
 
 ## O Map Warper
 
-O [Map Warper](http://mapwarper.net/) ("em inglês) é uma ferrramenta de código aberto e de acesso livre. Desde 2008, o site tem sido desenvolvido e mantido por [Tim Waters](https://thinkwhere.wordpress.com/) ("em inglês) para georreferenciar imagens de áreas geográficas ao compará-las com o [OpenStreetMap](https://perma.cc/52L2-Q9W8) ("em inglês) sem a necessidade de se instalar um software. A ferramenta já foi utilizada em vários projetos digitais, por diversas instituições, e é utilizada por profissionais que não são necessariamente especializados na área da cartografia.
+O [Map Warper](http://mapwarper.net/) ("em inglês) é uma ferramenta de código aberto e de acesso livre. Desde 2008, o site tem sido desenvolvido e mantido por [Tim Waters](https://thinkwhere.wordpress.com/) ("em inglês) para georreferenciar imagens de áreas geográficas ao compará-las com o [OpenStreetMap](https://perma.cc/52L2-Q9W8) ("em inglês) sem a necessidade de se instalar um software. A ferramenta já foi utilizada em vários projetos digitais, por diversas instituições, e é utilizada por profissionais que não são necessariamente especializados na área da cartografia.
 
 Esta ferramenta foi criada para que fosse possível georreferenciar mapas antigos (mapas-múndi, portulanos, cartas marítimas, mapas topográficos, mapas de cadastro, etc.), fotografias aéreas e outros documentos que expressam o espaço. O Map Warper permite, então, que o usuário gere uma imagem georreferenciada de tipo *raster* (ex. Tiff). Os Sistemas de Informação Geográfica (de que são exemplo: o [QGIS ](https://qgis.org/) ("em inglês), o [Map Server](https://perma.cc/W2B8-QD4U) ("em inglês), [JOSM ](https://perma.cc/YQ6S-62BA) ("em inglês), [ArcGIS](https://www.arcgis.com/index.html) ("em inglês), o [Google Earth](https://earth.google.com/web/), o [WorldMap](https://worldmap.maps.arcgis.com/home/index.html), etc.) ("em inglês) são então capazes de trabalhar com este conjunto de dados georreferenciados na imagem *raster*. A capacidade colaborativa do Map Warper permite descentralizar o processo de georreferenciamento, catalogação e visualização.
 
-É graças a estas caraterísticas que o Map Warper demonstra ser uma ferramenta útil aos pesquisadores, professores e estudantes, além de instituições que busquem digitizar seus acervos cartográficos como a [Biblioteca Nacional de Portugal](https://bndigital.bnportugal.gov.pt/colecoes). 
+É graças a estas caraterísticas que o Map Warper demonstra ser uma ferramenta útil aos pesquisadores, professores e estudantes, além de instituições que busquem digitizar os peças cartográficas como os mapas disponiveis na [Biblioteca Nacional de Portugal](https://bndigital.bnportugal.gov.pt/colecoes), na [Biblioteca Nacional do Rio de Janeiro](https://bndigital.bn.gov.br/) ou no [David Rumsey Map Collection](https://www.davidrumsey.com/). 
 
 ### Objetivos da lição
 
@@ -70,7 +70,7 @@ O georreferenciamento é um processo que estabelece coordenadas geográficas num
 
 Logo, antes de começar a georreferenciar uma imagem é importante considerar se o documento pode ser georreferenciado. É vital compreender as informações cartografadas no seu contexto histórico. É importante que se investigue o espaço a ser tratado. Ademais, mapas antigos podem não ter dados suficientes para permitir identificar latitudes e longitudes impedindo o seu georreferenciamento no Map Warper e subsequente uso num SIG. Alguns mapas podem, por sua falta de dados, sofrer tamanha transformação que se tornam ilegíveis ou imprecisos. 
 
-Portanto, a escala, a resolução e a projeção cartográfica da imagem devem ser elementos de analise prévia, para alguns conselhos é possível consultar a [Lista de Recomendações da Esri](https://perma.cc/GF85-4YF6) (em inglês). Os mapas de escalas pequenas não são apropriados para georreferenciamentos de alta precisão e irão gerar problemas com a localização de lugares. Por outro lado, quando estiver a selecionar um mapa antigo é recomendado escolher um com uma resolução igual ou superior a 300 dpi, para que elementos menores se mantenham legíveis. É também aconselhável utilizar um SRC no SIG similar ao da imagem, apesar de ser virtualmente impossível com mapas antigos. Para mapas mais recentes com SRCs incomuns é recomendável o uso do QGIS. 
+Portanto, a escala, a resolução e a projeção cartográfica da imagem devem ser elementos de analise prévia, para alguns conselhos é possível consultar a [Lista de Recomendações da Esri](https://perma.cc/GF85-4YF6) (em inglês). Os mapas de escalas pequenas não são apropriados para georreferenciamento de alta precisão e irão gerar problemas com a localização de lugares. Por outro lado, quando estiver a selecionar um mapa antigo é recomendado escolher um com uma resolução igual ou superior a 300 dpi, para que elementos menores se mantenham legíveis. É também aconselhável utilizar um SRC no SIG similar ao da imagem, apesar de ser virtualmente impossível com mapas antigos. Para mapas mais recentes com SRCs incomuns é recomendável o uso do QGIS. 
 
 Algumas questões previas podem ser:
 - Que conjunto de lugares esta imagem representa?
@@ -147,7 +147,7 @@ Pode inclusive utilizar os seguintes URL para ter acesso a uma maior seleção d
 
 ![MoveAroundMap](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon5.gif): O ícone "Move Around Map" (em português, Navegar pelo MApa), em ambas as janelas, permite navegar por ambas as janelas e explorar os mapas.
 
-O cadeado entre as janelas permite o movimento controlado entre os mapas. Ao selecionar a opção ![ZoomLock](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon6.png) "Zoom Lock" (em português, Bloqueio de Zoom) permite dar zoom concomitantemente entre as janelas, sendo útil para localizar e verificar os pontos de controle. Clicar no cadeado novamente irá desbloquear ![LockOpen](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon7.png) e permitir a navegação independente.
+O cadeado entre as janelas permite o movimento sincronizado entre os mapas. Ao selecionar a opção ![ZoomLock](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon6.png) "Zoom Lock" (em português, Bloqueio de Zoom) permite dar zoom concomitantemente entre as janelas, sendo útil para localizar e verificar os pontos de controle. Clicar no cadeado novamente irá desbloquear ![LockOpen](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon7.png) e permitir a navegação independente.
 
 **Atalhos de teclado** permitem o acesso ágil às diferentes ferramentas para a retificação:
 + *p*: ativa o *Adicionar Ponto de Controle*![AddControlPoint](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon3.gif);
@@ -159,7 +159,7 @@ O cadeado entre as janelas permite o movimento controlado entre os mapas. Ao sel
 
 Ao clicar nos pontos de controle no Painel de Controle este passa a exibir uma tabela com os pares de coordenadas de latitude e longitude dos pontos de controle estabelecidos. Aqui é possível editar os valores ou eliminar pontos.
 
-Este tabela incluí uma sessão que define o erro da geometria do mapa antigo. O valor de variação é calculado em cada ponto e depois avaliado perante uma média global. O azul indica uma variação baixa, o amarelo uma variação média, e a vermelho uma variação grande. Pode averiguar a metodologia de desvio ["Valor eficaz"]((https://pt.wikipedia.org/wiki/Valor_eficaz)).
+Esta tabela incluí uma secção que define o erro da geometria do mapa antigo. O valor de variação é calculado em cada ponto e depois avaliado perante uma média global. O azul indica uma variação baixa, o amarelo uma variação média, e a vermelho uma variação grande. Pode averiguar a metodologia de desvio ["Valor eficaz"]((https://pt.wikipedia.org/wiki/Valor_eficaz)).
 
 É possível exportar os pontos como um ficheiro CSV (valores separados por vírgula) ao selecionar esta opção na parte inferior do Painel de Controle. Este ficheiro pode ser importado para outros softwares ou ser um meio para a preservação do processo de georreferenciamento da imagem.
 
@@ -182,9 +182,9 @@ Neste subponto irá, de facto, georreferenciar o mapa importado. Clique e acesse
 
 Este mapa não possui uma projeção cartográfica sistemática, existem áreas com maior distorção do que outras. Logo, não podemos somente eleger pontos nas extremidades do mapa.
 
-A rede de núcleos de povoamento é razoavelmente vasta e bem detalhada, contudo, não podemos ter a certeza que os critérios para o mapeamento de todos os núcleos foram sistemáticos. De igual modo, devido à forma como a hidrografia e a topografia são desenhadas estabelecer pontos de controle com estes elementos pode ser problemático. 
+A rede de núcleos de povoamento é razoavelmente vasta e bem detalhada, contudo, não podemos ter a certeza de que os critérios para o mapeamento de todos os núcleos foram sistemáticos. De igual modo, devido à forma como a hidrografia e a topografia são desenhadas, estabelecer pontos de controle com estes elementos pode ser problemático. 
 
-Contudo, existem soluções. Selecionar os principais núcleos de povoamento, como cidades e vilas; elementos naturais como a foz dos principais rios da província; estruturas defensivas na fronteira com Espanha; e os núcleos de povoamento que são o ponto de encontro de itinerários regionais. Desse modo, podemos estabelecer um sistema de georreferenciamento sistemático na costa, na fronteira norte/nordeste e no interior da Província. 
+Contudo, existem soluções como: selecionar os principais núcleos de povoamento (cidades, vilas); elementos naturais (p.e., foz de rios principais); estruturas defensivas na fronteira com Espanha; e, os núcleos de povoamento que são o ponto de encontro de itinerários regionais. Desse modo, podemos estabelecer um sistema de georreferenciamento sistemático na costa, na fronteira norte/nordeste e no interior da Província. 
 
 
 | Cidade ou Vila| Entroncamento| Fortaleza minhota | Foz |
@@ -205,7 +205,7 @@ A partir deste conjunto de 32 pontos de controle temos:
 
 
 <div class="alert alert-info">
-Nota: Verá que há um valor de erro para cada ponto de controle. O Map Warper usa um cálculo de variação baseado em Root-Mean-Square (RMS) para avaliar os diferentes pontos de controle. O RMS fornece um guia de quão consistentes seus pontos de controle são entre si e avalia o quão distorcido o mapa ficará. Valores altos de erro RMS indicam que seus pontos de controle são menos inteligíveis entre si, enquanto um valor baixo de erro RMS indica mais consistência. Geralmente, é recomendado manter os valores baixos e substituir ou remover pontos de controle com valores altos. O RMS é somente um indicador, logo sempre deve reavaliar o quão bem o mapa digitalizado corresponde ao mapa de base.
+Nota: Verá que há um valor de erro para cada ponto de controle. O Map Warper usa um cálculo de variação baseado em Root-Mean-Square (RMS) para avaliar os diferentes pontos de controle. O RMS fornece um guia de quão consistentes os pontos são de controle são entre si e avalia o quão distorcido o mapa ficará. Valores altos de erro RMS indicam que seus pontos de controle são menos inteligíveis entre si, enquanto um valor baixo de erro RMS indica maior consistência. Geralmente, é recomendado manter os valores baixos e substituir ou remover pontos de controle com valores altos. O RMS é somente um indicador, logo sempre deve reavaliar o quão bem o mapa digitalizado corresponde ao mapa de base.
 </div>
 
 Quando obtiver pontos suficientes e considerar que eles estão bem distribuídos em seu mapa antigo, clique em *Warp Image!* na parte inferior da página. 
@@ -216,15 +216,15 @@ As opções avançadas que permitem alterar o método de retificação e "resamp
 
 {% include figure.html filename="pt-tr-introducao-map-warper-05.png" alt="Mapa de Villasboas retificado, transformação que resulta em sua deformação, mas alinhamento com uma projeção cartográfica sistematica." caption="Figura 5. Mapa de Villasboas georreferenciado." %}
 
->Georreferenciar mapas requer prática, pode descobrir que seu mapa retificado cria um mapa ilegível e distorcido. Logo é natural que seja necessário revisar os Pontos de Controle, alterar localizações e até rever critérios de seleção de pontos.
+>Georreferenciar mapas requer prática, pode descobrir que seu mapa retificado cria um mapa ilegível e distorcido. Logo, é natural que seja necessário revisar os Pontos de Controle, alterar localizações e até rever critérios de seleção de pontos.
 
 ### Recortar
 
 A aba "Crop" (em português, Recortar) permite que corte uma seção do mapa carregado. Isso é útil para dividir mapas em composições. A janela de exibição integra as seguintes ações:
 
 -   ![MoveAroundMap](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon5.gif):  "Move Around Map" (em português, Navegar pelo Mapa)
--   ![DrawNewPolygon](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon10.gif):  "Draw new Polygon to Mask" (em português,Desenhar Novo Polígno para Mascará)
--   ![DeletePolygon](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon11.gif):  "Delete a Polygon" (em português, Eliminar Polígno)
+-   ![DrawNewPolygon](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon10.gif):  "Draw new Polygon to Mask" (em português,Desenhar Novo Polígono para Máscar)
+-   ![DeletePolygon](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon11.gif):  "Delete a Polygon" (em português, Eliminar Polígono)
 
 Desenhe ao redor da área que deseja manter. Então, para aplicar a Máscara ao mapa, clique em *Mask Map!*. Após este passo deve retornar a aba "Rectify" (em português, Retificar) e no fundo da página ativar a opção "True" (em português, Verdadeiro) e de novo selecionar a opção *Warp Image!*.
 
@@ -239,7 +239,7 @@ A aba "Align" (em português, Alinhar) permite ordenar um conjunto de mapas a pa
 
 ### Pré-visualização
 
-A aba "Preview" (em português, PRé-visualização) permite observar os resultados da retificação. A sua consulta é um passo prático para a averiguação da retificação. Através das ferramentas de mover, zoom, transparência e camadas podemos comparar o mapa antigo georreferenciado de modo provisório antes de o exportarmos.
+A aba "Preview" (em português, Pré-Visualização) permite observar os resultados da retificação. A sua consulta é um passo prático para a averiguação da retificação. Através das ferramentas de mover, zoom, transparência e camadas podemos comparar o mapa antigo georreferenciado de modo provisório antes de o exportarmos.
 
 ## Visualização
 

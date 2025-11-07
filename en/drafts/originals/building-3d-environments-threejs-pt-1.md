@@ -145,7 +145,7 @@ To deploy your page so that everybody can access it, you can use [GitHub Pages](
 
 - The three.js library.
 
-There are 2 ways to use the three.js JavaScript library. This tutorial will use the library via a content delivery network (CDN). Basically, code at the top of JavaScript script will fetch and import the library from a server. This removes the need for you to work with build tools like [Vite](https://vite.dev), which you would have to do if you download the actual three.js code. Downloading, working and building the code is more robust long term but for this lesson the CDN approach is fine. This code will use three.js version 0.160.0, although it has been tested and works with later versions such as 0.166.1. If you want to change the version used, you need to change both numbers in the code where the import maps are referred to, i.e. use ```three@0.166.1``` instead of ```three@0.160.0```, and also change the version later on when importing the DRACO file compression loader. **Do not** mix versions. This lesson does not contain code likely to be affected by version changes but three.js versions are not necessarily backward compatible so it is possible that problems will occur if later versions are used. Browser updates also occasionally cause incompatibility problems.
+There are 2 ways to use the three.js JavaScript library. This tutorial will use the library via a content delivery network (CDN). Basically, code at the top of JavaScript script will fetch and import the library from a server. This removes the need for you to work with build tools like [Vite](https://vite.dev), which you would have to do if you download the actual three.js code. Downloading, working and building the code is more robust long term but for this lesson the CDN approach is fine. This code will use three.js version 0.160.0, although it has been tested and works with later versions such as 0.166.1. If you want to change the version used, you need to change both numbers in the code where the import maps are referred to, i.e. use ```three@0.166.1``` instead of ```three@0.160.0```, and also change the version later on when importing the DRACO file compression loader. **Do not** mix versions. This lesson does not contain code likely to be affected by version changes but three.js versions are not necessarily backward compatible, so it is possible that problems will occur if later versions are used. Browser updates also occasionally cause incompatibility problems.
 
 ## Creating an Interactive 3D Scene
 
@@ -154,10 +154,10 @@ Make a new folder - call it myscene. Within the myscene folder create folders ca
 
 In VSC open the myscene folder.
 
-Create a file and call it *index.html*  
+Create a file and call it *index.html*.  
 Note that it **must** be called this as this is the html file that will be served by the browser by default when you go to the local host address.
 
-We are going to put all the code in this file, this is not the best practice but the point of the lesson is to learn about three.js. Generally you would have the JavaScript code in a separate (.js) file that would be imported by the index.html file. It is also good practice to have code properly indented and in some languages (such as Python), code indentation is important. However, in JavaScript you do not have to indent properly, so if the copy and pasting changes the indentation, you can choose to neaten it or not. Having it properly indented will help you copy and paste code into the correct spot.
+We are going to put all the code in this file. This is not the best practice but the point of the lesson is to learn about three.js. Generally you would have the JavaScript code in a separate (.js) file that would be imported by the index.html file. It is also good practice to have code properly indented and in some languages (such as Python), code indentation is important. However, in JavaScript you do not have to indent properly, so if the copy and pasting changes the indentation, you can choose to neaten it or not. Having it properly indented will help you copy and paste code into the correct spot.
 
 In the index.html file, copy and paste the following:
 
@@ -196,7 +196,7 @@ In the index.html file, copy and paste the following:
 </html>
 ```
 
-Save the file. This html file is: creating a basic page with a link to the three.js site and a title; importing the three.js library and addons; and linking to a style sheet (which we will create next). The link with the anchor tags (i.e. &lt;a> &lt;/a>) is not needed for three.js to work and is there because this page was developed from the three.js example pages, you could remove it or change it to link to any site you want. Anything written within the script tags (i.e. &lt;script> &lt;/script>) will be in the JavaScript language. In JavaScript code, comments are marked by '//' and anything on that line after that will be ignored.
+Save the file. This html file is: creating a basic page with a link to the three.js site and a title; importing the three.js library and addons; and linking to a style sheet (which we will create next). The link with the anchor tags (i.e. ```&lt;a> &lt;/a>```) is not needed for three.js to work and is there because this page was developed from the three.js example pages; you could remove it or change it to link to any site you want. Anything written within the script tags (i.e. ```&lt;script> &lt;/script>```) will be in the JavaScript language. In JavaScript code, comments are marked by ```//``` and anything on that line after that will be ignored.
 
 In the myscene directory create another new file called 'main.css' and paste in the following. 
 

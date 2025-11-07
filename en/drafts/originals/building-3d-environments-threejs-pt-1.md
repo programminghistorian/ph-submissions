@@ -99,9 +99,9 @@ Change the view from SOLID to WIREFRAME using the drop down menu at the top righ
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-06.png" alt="Web editor showing the wireframes of jar meshes." caption="Figure 6. The three.js editor in wireframe view zoomed in on a jar mesh." %}
 
-You may have models that you have made from photogrammetry, or downloaded from sites such as [SketchFab](https://sketchfab.com/), that have image textures. These are easier to retopolise in commercial software such as [Agisoft’s Metashape](https://www.agisoft.com), but it is possible to use Blender or the free photogrammetry software [Meshroom](https://meshroom-manual.readthedocs.io/en/latest/index.html). You can test your models by importing them into the three.js editor or if they are glTF files, [Don McCurdy's glTF viewer](https://gltf-viewer.donmccurdy.com).
+You may have models that you have made from photogrammetry, or downloaded from sites such as [SketchFab](https://sketchfab.com/), that have image textures. These are easier to retopolise in commercial software such as [Agisoft’s Metashape](https://www.agisoft.com), but it is also possible to use Blender or the free photogrammetry software [Meshroom](https://meshroom-manual.readthedocs.io/en/latest/index.html). You can test your models by importing them into the three.js editor or, if they are glTF files, [Don McCurdy's glTF viewer](https://gltf-viewer.donmccurdy.com).
 
-When inspecting models, you may need to add lights as some materials do not work without them. Change WIREFRAME back to SOLID. In the editor add a hemisphere light from the add > light > hemisphere menu. If you select the hemisphere light in the scene window you can change the colour to white and the ground colour to black (Figure 7), which results in white light originating from the sky and changing colour to black as it nears the ground. You can use the editor to test different lights and light options.
+When inspecting models you may need to add lights as some materials do not work without them. Change WIREFRAME back to SOLID. In the editor add a hemisphere light from the Add > Light > Hemisphere menu. If you select the hemisphere light in the Scene tab, you can change the colour to white and the ground colour to black (Figure 7), which results in white light originating from the sky and changing colour to black as it nears the ground. You can use the editor to test different lights and light options.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-07.png" alt="Web editor showing jar models in different colours." caption="Figure 7. The jars under a hemisphere light." %}
 
@@ -109,11 +109,11 @@ If you zoom out you can see the map. The jars are coloured because they have mat
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-08.png" alt="Web editor showing that the rectangle the jars are on has a map of Papua New Guinea." caption="Figure 8. The Papua New Guinea map and its image texture (called a map in the Materials tab)." %}
 
-While in the editor it is useful to look at the red, green and blue arrows in the centre of the scene, which illustrate the co-ordinate system. In three.js, positions are set in x, y and z order. Different graphics programs and game engines use different co-ordinate systems. In three.js x is left (-) and right (+), y is down (-) and up (+) and z is far (-) and near (+) (Figure 9), i.e. it is a Y up, right-handed system. If you select a jar and look in the Object tab, you will see the x, y and z positions they were placed at (Figure 10), and you can change them and see the jar move. You can also change the scale or rotation of a jar and test what happens.
+While in the editor, it is useful to look at the red, green and blue arrows in the centre of the scene, which illustrate the co-ordinate system. In three.js, positions are set in x, y and z order. Different graphics programs and game engines use different co-ordinate systems. In three.js x is left (-) and right (+), y is down (-) and up (+) and z is far (-) and near (+) (Figure 9), i.e. it is a Y up, right-handed system. If you select a jar and look in the Object tab, you will see the x, y and z positions it was placed at (Figure 10), and you can change them and see the jar move. You can also change the scale or rotation of a jar and test what happens.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-09.png" alt="Web editor with three arrows, coloured red, green and blue, showing the x, y and z axis." caption="Figure 9. The three.js co-ordinate system. Red arrow shows positive x direction, green arrow shows positive y direction, blue arrow shows positive z direction." %}
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-10.png" alt="Web editor showing a round jar, with its x, y and z positions visible in the geometry window." caption="Figure 10. The position of the jar made by one of the communities on Manus Island." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-10.png" alt="Web editor showing a round jar (manus001), with its x, y and z positions visible in the geometry window." caption="Figure 10. The position of the jar made by one of the communities on Manus Island." %}
 
 ## Software Requirements and Installation
 
@@ -123,7 +123,7 @@ VSC contains a text editor and can be downloaded from [https://visualstudio.micr
 
 - Terminal (ie Windows PowerShell, or the terminal in macOS or Linux), or the terminal in VSC. The terminal in VSC can be obtained from Terminal > New Terminal. 
 
-Some simple command line typing will be required. Most importantly you need to be able to move to the folder that your website file will be in. If you use the VSC terminal, this should be automatic.
+Some simple command line typing will be required. Most importantly, you need to be able to move to the folder that your website file will be in. If you use the VSC terminal, this should be automatic.
 
 - Web browser. Chrome, Safari, Edge etc.
 

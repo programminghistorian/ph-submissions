@@ -50,11 +50,7 @@ Ao concluir esta lição, saberá como georreferenciar documentos cartográficos
 
 Esta lição enquadra-se num conjunto de tutoriais que buscam orientar o uso de técnicas digitais para georreferenciar, vetorizar, extrair, organizar e experimentar com dados geográficos, presentes nos estudos de referência, fontes textuais ou mapas antigos de distintos repositórios de informação em processo de digitização.
 
-Neste tutorial vamos georreferenciar um mapa de c.1795 da [Província do Entre Douro-e-Minho](https://purl.pt/24996) elaborado por José Custódio Villasboas que se encontra na coleção da Biblioteca Nacional Digital. Este mapa representa a organização social do espaço da região noroeste de Portugal (os atuais distritos de Viana do Castelo, Braga e Porto) no final do Antigo Regime. Pode ter [acesso](https://purl.pt/24996/2/) ao mapa (em .jpg) ao clicar no símbolo "Guardar" no canto inferior direito e depois ao clicar no botão direito do rato e selecionando a opção "guardar em" ![icon_save](https://purl.pt/24996/2/images/icon-save.png). Se quiseres pode ter acesso ao mapa em [formato .pdf](https://permalinkbnd.bnportugal.gov.pt/viewer/33587/download?file=d-94-r_0000.pdf&type=pdf&navigator=1), também.
-
-<div class="alert alert-info">
- Em exercícios futuros recomenda-se que a imagem a ser georreferenciada possua a melhor resolução possível.
-</div>
+Neste tutorial iremos georreferenciar um mapa de c.1795 da [Província do Entre Douro-e-Minho](https://purl.pt/24996) elaborado por José Custódio Villasboas que se encontra na coleção da Biblioteca Nacional Digital. Este mapa representa a organização social do espaço da região noroeste de Portugal (os atuais distritos de Viana do Castelo, Braga e Porto) no final do Antigo Regime. Pode [acessar](https://purl.pt/24996/2/) ao mapa (em .jpg) ao clicar no símbolo "Guardar" no canto inferior direito e depois ao clicar no botão direito do rato e selecionando a opção "guardar em" ![icon_save](https://purl.pt/24996/2/images/icon-save.png). Pode, também, acessar ao mapa em [formato .pdf](https://permalinkbnd.bnportugal.gov.pt/viewer/33587/download?file=d-94-r_0000.pdf&type=pdf&navigator=1), também.
 
 {% include figure.html filename="pt-tr-introducao-map-warper-01.png" alt="Mapa antigo representando a porção noroeste de Portugal entre os rios Minho (Norte) e Douro (Sul)." caption="Figura 1. Mapa Província do Entre Douro-e-Minho, 1795." %} 
 
@@ -64,13 +60,13 @@ Neste tutorial vamos georreferenciar um mapa de c.1795 da [Província do Entre D
 
 ### Considerações técnicas
 
-O mundo em que vivemos é marcado por um profundo desenvolvimento técnico e mudança epistemológica que tem dado uma maior atenção ao espaço e à espacialidade. Isto tem permitido às novas tecnologias influenciar e modificar como refletimos e compreendemos as Ciências Sociais e Humanas. Nesse sentido, as novas ferramentas expandiram os horizontes dos estudos e da visualização de dados, o que altera como observamos e refletimos sobre o passado. O Map Warper é um produto e um producente destas sínteses entre a tecnologia e a expansão de questões relativas ao espaço.
+O mundo em que vivemos é marcado por um profundo desenvolvimento técnico e mudança epistemológica que tem dado uma maior atenção ao espaço e à espacialidade. Isto tem permitido às novas tecnologias influenciar e modificar como refletimos e compreendemos as Ciências Sociais e Humanas. Nesse sentido, as novas ferramentas expandiram os horizontes dos estudos e da visualização de dados, o que altera como observamos e refletimos sobre o passado. O Map Warper é um produto e um produtor destas sínteses entre a tecnologia e a expansão de questões relativas ao espaço.
 
 O georreferenciamento é um processo que estabelece coordenadas geográficas num Sistema de Referência Cartográfica [(SRC)](https://docs.qgis.org/3.40/pt_BR/docs/gentle_gis_introduction/coordinate_reference_systems.html) a um documento que foi digitalizado. Vários historiadores georreferenciam mapas para estudar como lugares mudaram com a passagem do tempo. Porém, ao se transformar a imagem original num documento georreferenciado está a gerar uma nova compreensão da espacialidade representada na fonte original, logo, o processo de georreferenciação pode impor uma conceptualização do espaço que se distancia da experiência histórica original. Uma questão que não deve ser esquecida em etapas futuras de análise. É importante levar em conta o encontro, e o choque, causado ao se relacionar concepções pretéritas e digitais do espaço e de representação cartográfica.
 
 Logo, antes de começar a georreferenciar uma imagem é importante considerar se o documento pode ser georreferenciado. É vital compreender as informações cartografadas no seu contexto histórico. É importante que se investigue o espaço a ser tratado. Ademais, mapas antigos podem não ter dados suficientes para permitir identificar latitudes e longitudes impedindo o seu georreferenciamento no Map Warper e subsequente uso num SIG. Alguns mapas podem, por sua falta de dados, sofrer tamanha transformação que se tornam ilegíveis ou imprecisos. 
 
-Portanto, a escala, a resolução e a projeção cartográfica da imagem devem ser elementos de analise prévia, para alguns conselhos é possível consultar a [Lista de Recomendações da Esri](https://perma.cc/GF85-4YF6) (em inglês). Os mapas de escalas pequenas não são apropriados para georreferenciamento de alta precisão e irão gerar problemas com a localização de lugares. Por outro lado, quando estiver a selecionar um mapa antigo é recomendado escolher um com uma resolução igual ou superior a 300 dpi, para que elementos menores se mantenham legíveis. É também aconselhável utilizar um SRC no SIG similar ao da imagem, apesar de ser virtualmente impossível com mapas antigos. Para mapas mais recentes com SRCs incomuns é recomendável o uso do QGIS. 
+Portanto, a escala, a resolução e a projeção cartográfica da imagem devem ser elementos de analise prévia, para alguns conselhos é possível consultar a [Lista de Recomendações da Esri](https://perma.cc/GF85-4YF6) (em inglês). Os mapas de escalas pequenas não são apropriados para georreferenciamento de alta precisão e irão gerar problemas com a localização de lugares. Por outro lado, quando estiver a selecionar um mapa antigo é recomendado escolher um com uma resolução igual ou superior a 300 dpi, para que elementos menores se mantenham legíveis. Sempre que possível, aconselha-se o uso do SRC do SIG similar ao da imagem. Para mapas mais recentes com SRCs incomuns é recomendável o uso do QGIS. 
 
 Algumas questões previas podem ser:
 - Que conjunto de lugares esta imagem representa?
@@ -82,13 +78,13 @@ Algumas questões previas podem ser:
 
 ### Criando uma conta
 
-A partir do navegador de internet preferido navegue até Map Warper(https://mapwarper.net/) ("em inglês) e clique na aba "Create Account" (em português, Criar Conta) no canto superior direito. Pode utilizar a tua conta pessoal Facebook, OpenstreetMap ou GitGub para fazer o login de modo expedito.
+A partir do navegador de internet preferido navegue até Map Warper(https://mapwarper.net/) ("em inglês) e clique na aba "Create Account" (em português, Criar Conta) no canto superior direito. Pode utilizar a conta pessoal Facebook, OpenstreetMap ou GitGub para fazer o login de modo expedito.
 
 {% include figure.html filename="pt-tr-introducao-map-warper-02.gif" alt="Gif demonstrando como acessar a aba para criação de um perfil no site Map Warper." caption="Figura 2. Criando uma conta." %} 
 
 ### Upload do mapa antigo
 
-Na página inicial clique no botão verde "Upload Map" (em português, Carregar Mapa), lado esquerdo do ecrã, para importar a imagem para o Map Warper diretamente do teu ficheiro ou a partir de um link de um repositório digital através de um URL. Já nesta etapa pode adicionar metadados ao documento.
+Na página inicial clique no botão verde "Upload Map" (em português, Carregar Mapa), lado esquerdo do ecrã, para importar a imagem para o Map Warper diretamente do ficheiro ou a partir de um link de um repositório digital através de um URL. Já nesta etapa pode adicionar metadados ao documento.
 
 Para importar o mapa de Villasboas selecione a opção de "Select File" (em português, Selecionar ficheiro), no centro da página, e navege no "Explorador de Ficheiros" até o Ambiente de Trabalho na Pasta "Map Warper_Introdução" e selecione o ficheiro "Mp_EDM_Villasboas_1795_SOBRENOME.jpg".
 
@@ -108,7 +104,7 @@ A página pede que se preencha um conjunto de campos para a descrição do mapa 
 
 ## Georreferenciamento
 
-A partir do upload do mapa será iniciado o processo de georreferenciamento através do Map Warper. No fim, ao ter-se concluído esta etapa, será possível exportar os pontos de georreferenciamento e a imagem *raster* numa grande variedade de tipos de ficheiro como WMS URL, Tiles, GeoTIFF ou KML. Tipos de ficheiro que são 'inteligíveis' aos diversos SIG mencionados a montante, e onde será possível desenvolver etapas de análise e interpretação dos dados históricos georreferenciados.
+A partir do upload do mapa será iniciado o processo de georreferenciamento através do Map Warper. Depois desta etapa, será possível exportar os pontos de georreferenciamento e a imagem *raster* numa grande variedade de tipos de ficheiro como WMS URL, Tiles, GeoTIFF ou KML. Tipos de ficheiro que são 'inteligíveis' aos diversos SIG mencionados a montante, e onde será possível desenvolver etapas de análise e interpretação dos dados históricos georreferenciados.
 
 É útil identificar um conjunto de pontos para o georreferenciamento (núcleos populacionais, rede viária, jurisdições ou elementos da natureza física) e que poderiam ser cruzados com outros dados históricos recolhidos ou mapas elaborados antes desta ação. Estas considerações poderão oferecer um novo horizonte de questões, tendo em conta que a visualização de um conjunto de fenómenos num plano geográfico poderá permitir a análise critica do documentos.  
 
@@ -125,7 +121,7 @@ Na página inicial os mapas importados estarão em Favoritos (Favourites) no cen
 
 ### Como retificar
 
-Neste subponto irá compreender como georreferenciar o mapa importado. Clique na aba "Rectify" (em português, Retificar), onde existirão duas janelas. À esquerda o mapa importado e à direita um mapa base (OpenstreetMap), será a partir deste mapa à direita que irá estabelecer pontos de controle. Abaixo destas janelas encontrará o "Control Planel" (em português, Painel de Controle), que permite ajustar os pontos de controle e avaliar o seu nível de exatidão.
+Neste subponto irá compreender como georreferenciar o mapa importado. Clique na aba "Rectify" (em português, Retificar), onde existirão duas janelas. À esquerda o mapa importado e à direita um mapa base (OpenstreetMap), será a partir deste mapa à direita que irá estabelecer pontos de controle, após selecionar pontos correspondentes cada janela e clicar no botão "Add Control Point" (em português, Adicionar Ponto de Controle). Abaixo destas janelas encontrará o "Control Planel" (em português, Painel de Controle), que permite ajustar os pontos de controle e avaliar o seu nível de exatidão.
 
 ![Layer](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon1.png): O icóne "Layer" (em português, Camada), na janela da direita, permite a seleção dos elementos presentes no mapa base do OpenstreetMap ou Mapbox Satellite.
 
@@ -159,7 +155,7 @@ O cadeado entre as janelas permite o movimento sincronizado entre os mapas. Ao s
 
 Ao clicar nos pontos de controle no Painel de Controle este passa a exibir uma tabela com os pares de coordenadas de latitude e longitude dos pontos de controle estabelecidos. Aqui é possível editar os valores ou eliminar pontos.
 
-Esta tabela incluí uma secção que define o [erro da geometria](https://mapscaping.com/fixing-geometry-error-in-qgis/) do mapa antigo. O valor de variação é calculado em cada ponto e depois avaliado perante uma média global. O azul indica uma variação baixa, o amarelo uma variação média, e a vermelho uma variação grande. Pode averiguar a metodologia de desvio ["Valor eficaz"](https://pt.wikipedia.org/wiki/Valor_eficaz).
+Esta tabela incluí uma secção que define o [erro da geometria](https://mapscaping.com/fixing-geometry-error-in-qgis/) do mapa antigo. O valor de variação é calculado em cada ponto e depois avaliado perante uma média global. O azul indica uma variação baixa, o amarelo uma variação média, e a vermelho uma variação grande. Pode compreender a metodologia do Desvio Valor Eficaz ["aqui"](https://pt.wikipedia.org/wiki/Valor_eficaz).
 
 É possível exportar os pontos como um ficheiro CSV (valores separados por vírgula) ao selecionar esta opção na parte inferior do Painel de Controle. Este ficheiro pode ser importado para outros softwares ou ser um meio para a preservação do processo de georreferenciamento da imagem.
 
@@ -176,7 +172,7 @@ x,y,lon,lat
 ```
 
 ### Prática
-Neste subponto irá, de facto, georreferenciar o mapa importado. Clique e acesse a aba "Rectify" (em português, Retificar). Ao clicar em **M** poderá mover-te pelos mapas, aproveita esta oportunidade para te orientar, dando zoom até estar confortável com o que vês nas janelas.
+Neste subponto irá, de facto, georreferenciar o mapa importado. Clique e aceda à "Rectify" (em português, Retificar). Ao clicar em **M** poderá mover pelos mapas, aproveita esta oportunidade para orientar-se, dando zoom até estar confortável com o que se vê nas janelas.
 
 É necessário estabelecer um conjunto de critérios e selecionar quais pontos serão georreferenciados. Como o mapa de Villasboas contém um conjunto vasto de informações existem algumas estratégias possíveis. Porém, não devemos selecionar demasiados pontos, somente os necessários para termos uma versão georreferenciada do mapa antigo.
 

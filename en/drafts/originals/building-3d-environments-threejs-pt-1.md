@@ -95,7 +95,7 @@ Before starting to code we can explore a model in the [three.js editor](https://
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-05.png" alt="Web editor showing a dark rectangular prism with small jars on it." caption="Figure 5. The three.js editor with the composite model imported." %}
 
-Change the view from SOLID to WIREFRAME using the drop down menu at the top right of the model view window and zoom in and move around with your mouse. You can also expand the model (click on the + png_sceneDRACO.glb, then the subsequent + ) in the scene window (on the right) and if you double click on a jar name (try the aibom_LOC) it should centre it. You should be able to see that the jars are made of polygons (Figure 6). The less nodes or faces in the mesh, the smaller the model size. Large model files will not load or will be slow to respond in websites. Reducing the nodes or faces in a model, or retopology, can be done in programs such as Blender. In Blender this is relatively easy, if the model is imported in STL format and if the model does not have an image texture. The individual jar models (used in part 2) were designed and retopologised in Blender to under 700KB. Reducing the number of faces can reduce the details in a model.
+Change the view from SOLID to WIREFRAME using the drop down menu at the top right of the model view window and zoom in and move around with your mouse. Expand the model hierarchy in the 'SCENE' window/tab (on the right) by clicking on the + symbol next to "png_sceneDRACO.glb" and then the subsequent + symbols in the hierarchy. Double click on a jar name (try the aibom_LOC) and it should centre that jar. You can also double click on a jar model in the main window. You should be able to see that the jars (and the plane) are made of triangles (Figure 6). The less nodes or faces in the mesh, the smaller the model size. Reducing the number of faces can reduce the details in a model, but large model files will not load or will be slow to respond in websites. Reducing the nodes or faces in a model, or retopology, can be done in programs such as Blender. In Blender this is relatively easy, if the model is imported in STL format and if the model does not have an image texture. The individual jar models (used in part 2) were designed and retopologised in Blender to under 700KB. 
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-06.png" alt="Web editor showing the wireframes of jar meshes." caption="Figure 6. The three.js editor in wireframe view zoomed in on a jar mesh." %}
 
@@ -119,7 +119,7 @@ While in the editor, it is useful to look at the red, green and blue arrows in t
 
 - Text editor (Visual Studio Code (VSC) recommended).
 
-VSC contains a text editor and can be downloaded from [https://visualstudio.microsoft.com](https://visualstudio.microsoft.com), it is free and runs on Windows, macOS, and Linux. It also features a terminal. Install as per website instructions. Many extensions are available for VSC and the code colouring can help detect issues such as unclosed tags or quotes. You can turn off error reporting in the settings or use the telemetry free [VSCodium](https://vscodium.com). 
+VSC contains a text editor and can be downloaded from [https://visualstudio.microsoft.com](https://visualstudio.microsoft.com), it is free and runs on Windows, macOS, and Linux. It also features a terminal. Install as per website instructions. Many extensions are available for VSC and the code colouring can help detect issues such as unclosed tags or quotes. [VSCodium](https://vscodium.com) is a user tracking/AI chat-free alternative. 
 
 - Terminal (ie Windows PowerShell, or the terminal in macOS or Linux), or the terminal in VSC. The terminal in VSC can be obtained from Terminal > New Terminal. 
 
@@ -296,7 +296,7 @@ a, button, input, select {
 
 This file came from the [examples folder at three.js](https://github.com/mrdoob/three.js/tree/master/examples); it is a cascading style sheet file. Save the main.css file and then you can close it. 
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-11.png" alt="A screenshot of the VSC editor with the director structure of the myscene folder." caption="Figure 11. The directory structure can be seen in the left hand panel of the VSC editor. The index.html file contents are shown in the main panel. Note file shown is an earlier version that lacks comments. A VSC terminal is open and shown in the bottom panel." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-11.png" alt="A screenshot of the VSC editor with the director structure of the myscene folder." caption="Figure 11. The directory structure can be seen in the left hand panel of the VSC editor. The index.html file contents are shown in the main panel. A VSC terminal is open and shown in the bottom panel." %}
 
 If you want to understand the basic components of a website, [w3schools](https://www.w3schools.com/howto/howto_make_a_website.asp) has a guide, as well as tutorials on HTML, CSS and JavaScript.
 

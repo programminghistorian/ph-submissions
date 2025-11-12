@@ -123,14 +123,14 @@ Despite the difference in capture dates, this Google logo captured on April 7, 2
 
 Web archive scholars Scott G. Ainsworth, Michael L. Nelson, and Herbert Van de Sompel proposed a method to determine whether an archived on-page resource is *temporally coherent* with the web page it appears on by observing the [`Last-Modified` HTTP response header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Last-Modified) of archived resources.[^4] 
 
-An [HTTP response header](https://developer.mozilla.org/en-US/docs/Glossary/Response_header) is a short piece of metadata that a web server sends to a client alongside with a web resource, providing contextual information that helps browsers (and researchers) interpret how the resource should be understood and used. The `Last-Modified` header indicates the date and time a particular resource was last modified on the server. 
+An [HTTP response header](https://developer.mozilla.org/en-US/docs/Glossary/Response_header) is a short piece of metadata that a web server sends to a client (a browser, a crawler, or a scraping script) alongside with a web resource, providing contextual information that helps browsers (and researchers) interpret how the resource should be understood and used. The `Last-Modified` header indicates the date and time a particular resource was last modified on the server. 
 
 The Wayback Machine logs the `Last-Modified` header it receives when capturing resources from the live web, and it [passes the original](https://ws-dl.blogspot.com/2015/08/2015-08-28-original-header-replay.html) `Last-Modified` header under the name `x-archive-orig-last-modified` in the HTTP response headers of archived snapshots. 
 
 While the headers are normally not visible to users, we can use the command-line tool [curl](https://en.wikipedia.org/wiki/Curl) to get the value of the `x-archive-orig-last-modified` header of the redirected image snapshot. Run the following command in your terminal program:  
 
 ```shell
-curl -sI "https://web.archive.org/web/20000407103739im_/http://google.com/images/Title_HomPg2.gif"   | grep -i "x-archive-orig-last-modified"
+curl -ksI "https://web.archive.org/web/20000407103739im_/http://google.com/images/Title_HomPg2.gif" | grep -i "x-archive-orig-last-modified"
 ```
 
 The returned value should be a timestamp in the [HTTP Date header format](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Date):
@@ -161,10 +161,10 @@ In the sections to follow, you will learn how to access these headers in Python 
 Return to the Google logo URL again:
 
 ```
-/web/20000301105534im_/http://google.com/images/Title_HomPg2.gif
+https://web.archive.org/web/20000407103739im_/http://google.com/images/Title_HomPg2.gif
 ```
 
-The part between the timestamp and the original URL (which is `im_` in the URL) is called a **rewrite modifier**.[^5] It tells the Wayback Machine how to serve the archived content. The `im_` modifier instructs the Wayback Machine to return an image file to be displayed on an archived web page snapshot. If you [access the snapshot of the Google logo without the modifier](https://web.archive.org/web/20000407103739/http://google.com/images/Title_HomPg2.gif) in your browser, the Wayback Machine will return the image alongside with its toolbar for users to navigate between snapshots captured at different dates. 
+The part between the timestamp and the original URL (which is `im_` in the URL) is called a **rewrite modifier**.[^5] It tells the Wayback Machine how to serve the archived content. The `im_` modifier instructs the Wayback Machine to return an image file to be displayed on an archived web page snapshot. If you [access the snapshot of the Google logo without the modifier](https://web.archive.org/web/20000407103739/http://google.com/images/Title_HomPg2.gif) in your browser, the Wayback Machine will return the image alongside with a toolbar for users to navigate between snapshots of the logo captured at different dates. 
 
 Usually, rewrite modifiers are added by the Wayback Machine when rewriting URLs during recomposition. When we scrape the Wayback Machine, we can also manually add rewrite modifiers to control how the Wayback Machine returns archived web content. 
 
@@ -252,13 +252,13 @@ The default column order is:
 "urlkey","timestamp","original","mimetype","statuscode","digest","length"
 ```
 
-A detailed explanation of the meanings of the columns is available [here](https://support.archive-it.org/hc/en-us/articles/115001790023-Access-Archive-It-s-Wayback-index-with-the-CDX-C-API)[^12], but the key columns we will use are `timestamp` and `statuscode`.
+A detailed explanation of the meanings of the columns is available on the [documentation website](https://support.archive-it.org/hc/en-us/articles/115001790023-Access-Archive-It-s-Wayback-index-with-the-CDX-C-API) of Internet Archive's Archive-It service.[^12] The key columns we will use in this lesson are `timestamp` and `statuscode`.
 
 The `timestamp` identifies the exact point in time a web resource was captured. It is the same timestamp you would see in a Wayback Machine URL. The example line therefore represents a snapshot of [http://google.com](http://www.google.com), captured on May 11, 2000, at 23:35:32 UTC. 
 
 The `statuscode` represents the [HTTP response status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status) received by the Wayback Machine's crawler from a web server when the crawler attempts to capture a resource from that server. 
 
-HTTP response status codes are three-digit numbers sent by a web server to a client (a browser, a crawler, or a scraping script) indicating the result of an HTTP request. The status code in the returned CDX data can reveal whether a resource was successfully captured by the crawler (usually indicated by a `200` status code, as in the example above). A `3XX` status code indicates a redirect, and a `4XX`/`5XX` status code generally indicates an unsuccessful request.   
+HTTP response status codes are three-digit numbers sent by a web server to a client indicating the result of an HTTP request. The status code in the returned CDX data can reveal whether a resource was successfully captured by the crawler (usually indicated by a `200` status code, as in the example above). A `3XX` status code indicates a redirect, and a `4XX`/`5XX` status code generally indicates an unsuccessful request.   
 
 These status codes should be distinguished from the status codes sent by the Wayback Machine's server, which can indicate whether a resource is archived by the Wayback Machine, whether a URL is excluded from the Wayback Machine, and whether we are sending excessive requests to the Wayback Machine. We will handle Wayback Machine's status codes in the following sections. 
 
@@ -279,7 +279,7 @@ retry = tenacity.retry(
 )
 ```
 
-You can apply the decorator by adding `@retry` before any function. The decorator automatically reruns the decorated function after a failure, with exponentially increasing wait times between attempts (starting at 2 seconds and up to 64 seconds). It stops after twelve attempts, then raises an exception. This should help us identify potential issues in your code or network connection. 
+You can apply the decorator by adding `@retry` before any function. The decorator automatically reruns the decorated function after a failure, with exponentially increasing wait times between attempts (starting at 2 seconds and up to 64 seconds). It stops after twelve attempts, then raises an exception. This should help you identify potential issues in your code or network connection. 
 
 #### Batch Querying the CDX Server API
 
@@ -320,7 +320,7 @@ def download_cdx_data(original_url):
     return response.text
 ```
 
-In the function, we store the API parameters in `params`, and then query the API using the responses library. The `response.raise_for_status()` line ensures that any HTTP status codes indicating errors raise exceptions. This makes potential issues visible to you while running the notebook. A manual two-second delay is added to avoid triggering rate limits. 
+In the function, we store the API parameters in `params`, and then query the API using Python's requests library. The `response.raise_for_status()` line ensures that any HTTP status codes indicating an unsuccessful API request (`4XX` and `5XX`) raise exceptions. This makes potential issues visible to you while running the notebook. A manual two-second delay is added to avoid triggering rate limits. 
 
 Note that the CDX Server API will return a `403` status code if a URL is excluded from the Wayback Machine (usually at the site owner's request). While you should not encounter any such URLs in this lesson, you can adjust the code to process `403` status codes if you reuse the code for other projects. The API returns an empty response with a `200` status code if the Wayback Machine does not have any archived snapshots of the URL requested with the filtering parameters applied. 
 

@@ -123,14 +123,20 @@ Despite the difference in capture dates, this Google logo captured on April 7, 2
 
 Web archive scholars Scott G. Ainsworth, Michael L. Nelson, and Herbert Van de Sompel proposed a method to determine whether an archived on-page resource is *temporally coherent* with the web page it appears on by observing the [`Last-Modified` HTTP response header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Last-Modified) of archived resources.[^4] 
 
-An [HTTP response header](https://developer.mozilla.org/en-US/docs/Glossary/Response_header) is a short piece of metadata that a web server sends to a client (a browser, a crawler, or a scraping script) alongside with a web resource, providing contextual information that helps browsers (and researchers) interpret how the resource should be understood and used. The `Last-Modified` header indicates the date and time a particular resource was last modified on the server. 
+An [HTTP response header](https://developer.mozilla.org/en-US/docs/Glossary/Response_header) is a piece of metadata that a web server sends to a client (a browser, a crawler, or a scraping script) alongside with a web resource, providing contextual information about the resource being served. The `Last-Modified` header indicates the date and time a particular resource was last modified on the server. 
 
 The Wayback Machine logs the `Last-Modified` header it receives when capturing resources from the live web, and it [passes the original](https://ws-dl.blogspot.com/2015/08/2015-08-28-original-header-replay.html) `Last-Modified` header under the name `x-archive-orig-last-modified` in the HTTP response headers of archived snapshots. 
 
-While the headers are normally not visible to users, we can use the command-line tool [curl](https://en.wikipedia.org/wiki/Curl) to get the value of the `x-archive-orig-last-modified` header of the redirected image snapshot. Run the following command in your terminal program:  
+While HTTP headers are normally not visible to users, we can use the command-line tool [curl](https://en.wikipedia.org/wiki/Curl) to get the value of the `x-archive-orig-last-modified` header of the redirected image snapshot. Linux and macOS users can run the following command in your terminal:  
 
 ```shell
 curl -ksI "https://web.archive.org/web/20000407103739im_/http://google.com/images/Title_HomPg2.gif" | grep -i "x-archive-orig-last-modified"
+```
+
+Windows users can run the following command in your PowerShell: 
+
+```powershell
+curl.exe -ksI "https://web.archive.org/web/20000407103739im_/http://google.com/images/Title_HomPg2.gif" | Select-String -Pattern "x-archive-orig-last-modified"
 ```
 
 The returned value should be a timestamp in the [HTTP Date header format](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Date):
@@ -138,12 +144,18 @@ The returned value should be a timestamp in the [HTTP Date header format](https:
 x-archive-orig-last-modified: Tue, 29 Feb 2000 08:46:01 GMT
 ```
 
-This header suggests that the image captured on April 7, 2000 was last modified on Google's server on February 29, 2000. Therefore, it stands to reason that a user visiting Google on March 1, 2000 would likely have seen the same image as the one captured on April 7, 2000, and thus the image is temporally coherent with the snapshot. 
+This header suggests that the image captured on April 7, 2000 was last modified on Google's server on February 29, 2000. Therefore, it stands to reason that a user visiting Google on March 1, 2000 would likely have seen the same image as the one captured on April 7, 2000, and thus the image is *prima facie* temporally coherent with the snapshot. 
 
-In addition to the `x-archive-orig-last-modified` header, the Wayback Machine also provides a special header named `memento-datetime`, which indicates the capture date of the requested snapshot. We can use curl again to retrieve the `memento-datetime` header of the Google logo snapshot:
+In addition to the `x-archive-orig-last-modified` header, the Wayback Machine also provides a special header named `memento-datetime`, which indicates the capture date of the requested snapshot. We can use curl again to retrieve the `memento-datetime` header of the Google logo snapshot. Linux and macOS users can run: 
 
 ```shell
-curl -sI "https://web.archive.org/web/20000407103739im_/http://google.com/images/Title_HomPg2.gif"   | grep -i "memento-datetime"
+curl -ksI "https://web.archive.org/web/20000407103739im_/http://google.com/images/Title_HomPg2.gif" | grep -i "memento-datetime"
+```
+
+Windows users can run: 
+
+```powershell
+curl.exe -ksI "https://web.archive.org/web/20000407103739im_/http://google.com/images/Title_HomPg2.gif" | Select-String -Pattern "memento-datetime"
 ```
 
 You should see the following output: 
@@ -164,9 +176,9 @@ Return to the Google logo URL again:
 https://web.archive.org/web/20000407103739im_/http://google.com/images/Title_HomPg2.gif
 ```
 
-The part between the timestamp and the original URL (which is `im_` in the URL) is called a **rewrite modifier**.[^5] It tells the Wayback Machine how to serve the archived content. The `im_` modifier instructs the Wayback Machine to return an image file to be displayed on an archived web page snapshot. If you [access the snapshot of the Google logo without the modifier](https://web.archive.org/web/20000407103739/http://google.com/images/Title_HomPg2.gif) in your browser, the Wayback Machine will return the image alongside with a toolbar for users to navigate between snapshots of the logo captured at different dates. 
+The part between the timestamp and the original URL (which is `im_` in the URL) is called a **rewrite modifier**.[^5] It tells the Wayback Machine how to serve the archived content. The `im_` modifier instructs the Wayback Machine to return an image file to be displayed on a web page snapshot. If you [access the snapshot of the Google logo without the modifier](https://web.archive.org/web/20000407103739/http://google.com/images/Title_HomPg2.gif) in your browser, the Wayback Machine will return the image alongside with a toolbar for users to navigate between different snapshots of the URL. 
 
-Usually, rewrite modifiers are added by the Wayback Machine when rewriting URLs during recomposition. When we scrape the Wayback Machine, we can also manually add rewrite modifiers to control how the Wayback Machine returns archived web content. 
+Usually, rewrite modifiers are added by the Wayback Machine when rewriting URLs during recomposition. When we scrape the Wayback Machine, we can also use them to control how the Wayback Machine returns archived web content. 
 
 In our case study, we will use the `im_` modifier to fetch images and the `id_` modifier to get raw HTML for analysis. 
 
@@ -189,7 +201,7 @@ A dataset of banner ads can be useful for researchers interested in the history 
 
 We will build a miniature version of that dataset focusing on Japanese-language banner ads. To do this, we will scrape archived snapshots of home pages of a small set of Japanese-language websites, detect and download banner ads appearing on these web pages, and organize them into a structured dataset. 
 
-To follow the steps described below, you need to download the lesson files [here](http://example.com/placeholder). You should unzip the downloaded file into a new directory, and create a Jupyter notebook in that directory for running the code snippets. We have also included a Jupyter notebook named `lesson-notebook.ipynb` that contains all code snippets in the lesson. 
+To follow the lesson, you need to download the lesson files [here](http://example.com/placeholder). You should unzip the downloaded file into a new directory, and create a Jupyter notebook in that directory for running the code snippets. We have also included a Jupyter notebook named `lesson-notebook.ipynb` that contains all code snippets in the lesson. 
 
 ### Getting a List of URLs
 
@@ -197,7 +209,7 @@ We will use a list of the top-50 most visited websites by home Internet users in
 
 For this lesson, we will download the last archived snapshot of each website’s home page captured in May 2000 and extract banner ads from them. A CSV file containing the list of websites is provided in the lesson files under the name `nikkeibp-may2000-abridged.csv`.
 
-In the CSV file, we removed four websites that do not feature mainly Japanese-language content: microsoft.com (ranked #2), msn.com (ranked #9), real.com (ranked #44), and geocities.com (ranked #46). Following the original study and manual observation of archived snapshots, we also removed nifty.ne.jp (ranked #6) and infoweb.ne.jp (ranked #11), because both redirected to nifty.com (ranked #5) in May 2000. This leaves us with 44 websites to scrape.
+In the CSV file, we removed four websites that do not feature mainly Japanese-language content: microsoft.com (ranked #2), msn.com (ranked #9), real.com (ranked #44), and geocities.com (ranked #46). Following the original study and through manual observation of archived snapshots, we also removed nifty.ne.jp (ranked #6) and infoweb.ne.jp (ranked #11), because both redirected to nifty.com (ranked #5) in May 2000. This leaves us with 44 websites to scrape.
 
 The CSV file is formatted as follows:
 
@@ -212,9 +224,9 @@ The CSV file is formatted as follows:
 
 #### Ethical and Legal Concerns in Using Archived Web Data
 
-Before scraping, it is important to consider ethical and legal issues in using web archives for research purposes. Archived web content may have been publicly accessible when first captured, but much of it was never intended for public scrutiny. In the case study, we scrape banner ads on popular websites, which should entail minimal risk since these ads and websites were designed for public display. When designing your own scraping projects, you should remain mindful of the historical context in which the content was created and archived, and strive to minimize potential harms for all stakeholders involved.[^10]
+Before scraping, it is important to consider ethical and legal issues in using web archives for research purposes. Archived web content may have been publicly accessible when first captured, but much of it was never intended for public scrutiny. In the case study, we scrape banner ads on popular websites, which should entail minimal privacy risk since these ads and websites were designed for public display. When designing your own scraping projects, you should remain mindful of the historical context in which the content was created and archived, and strive to minimize potential harms for all stakeholders involved.[^10]
 
-Copyright of materials in web archives usually belongs to their original authors, but limited use of copyrighted materials is often allowed for research and education purposes in many jurisdictions. In the United States, such use generally falls under the [Fair Use](https://www.copyright.gov/title17/92chap1.html#107) doctrine. You should always check local laws before reusing or publishing archived material. 
+Copyright of archived web materials usually belongs to their original authors, but limited use of copyrighted materials is often allowed for research and education purposes in many jurisdictions. In the United States, such use generally falls under the [Fair Use](https://www.copyright.gov/title17/92chap1.html#107) doctrine. You should always check local laws before reusing or publishing archived material. 
 
 Lastly, large-scale scraping can strain the technical infrastructure of web archives. In the lesson, we will demonstrate how to reduce the potential impact of our scraping by implementing delays. When designing your own scraping projects, you should always strive to minimize your traffic footprint on the archive’s servers.
 
@@ -232,15 +244,15 @@ The base URL to access the CDX Server API is:
 https://web.archive.org/cdx/search/cdx?url=[original URL of a web resource]
 ```
 
-By default, the API returns all snapshots of the given URL along with their metadata, but you can use a number of query parameters to format and filter the results. A full list of available parameters can be found on the API's [documentation page](https://archive.org/developers/wayback-cdx-server.html) on the Internet Archive Developer Portal.
+By default, the API returns all snapshots of the given URL along with their metadata, but you can use query parameters to format and filter the results. A full list of available parameters can be found on the API's [documentation page](https://archive.org/developers/wayback-cdx-server.html) on the Internet Archive Developer Portal.
 
-Let us use the API to fetch a list of snapshots of google.com. The Wayback Machine currently has [more than 18 million snapshots](https://web.archive.org/web/20010101000000*/google.com) archived of google.com. In our API request, we can add the parameters `from`, `to`, `filter`, and `limit` to make the API return only the last five snapshots captured between May 1 and May 31, 2000 with the HTTP response status code `200` (we will talk about the meanings of HTTP response status codes below):
+Let us use the API to fetch a list of snapshots of google.com. The Wayback Machine currently has [more than 18 million snapshots](https://web.archive.org/web/20010101000000*/google.com) archived of google.com. We can add the parameters `from`, `to`, `filter`, and `limit` to make the API return only the last five snapshots captured between May 1 and May 31, 2000 with the HTTP response status code `200` (we will talk about the meanings of HTTP response status codes below):
 
 ```
 https://web.archive.org/cdx/search/cdx?url=google.com&from=20000501000000&to=20000531235959&filter=statuscode:200&limit=-5
 ```
 
-You can access the results of this request directly in your browser. The returned data is in a tabular format with the columns separated by spaces, and each line represents a snapshot of the URL. The first line looks like this:
+You can access the results of this request directly in your browser. The returned data is in a tabular format with the columns separated by spaces. Each line represents a snapshot of the URL. The first line looks like this:
 
 ```csv
 com,google)/ 20000511233532 http://www.google.com:80/ text/html 200 GEXLB6VHTSJANXBP6HPHSZIZAK3KJZCU 1810
@@ -298,7 +310,7 @@ with open(csv_file, mode='r', encoding='utf-8') as file:
     urls_data = list(reader)
 ```
 
-For the purposes of this lesson, we will only scrape the last snapshot of the home page of each website made between May 1, 2000 and May 31, 2000 with a HTTP status code `200`. We can therefore build a simple function `download_cdx_data` to download information about available snapshots for a given `original_url`: 
+For the purposes of this lesson, we will only scrape the last snapshot of the home page of each website made between May 1, 2000 and May 31, 2000 with an HTTP status code `200`. We can build a simple function `download_cdx_data` to get information about available snapshots for a given `original_url`: 
 
 ```python
 import time
@@ -358,7 +370,7 @@ Each CSV file contains the CDX Server API response for a particular URL. Some CS
 
 #### Building a Download Function
 
-Since we will later download banner ad files, and since both images and web pages can be accessed on the Wayback Machine using the same URL pattern, we will first build a unified download function that can handle both resource types.
+Since we will later download banner ad files, and since both images and web pages can be accessed on the Wayback Machine using the same URL pattern, we will first build a download function that can handle both resource types.
 
 In addition to downloading a snapshot, our function should also:
  - Return HTTP response headers. As mentioned earlier, this would help us determine whether a banner ad image is temporally coherent with the web page snapshot containing it. Additionally, we will use the [HTTP header `Content-Type`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Type) to detect the file type of the downloaded content. 
@@ -478,7 +490,7 @@ In the following code, we will define a function named `extract_ad_tags` that wi
 
 For each tag, we scrape the following information: 
  - original ad image file URL in the `src` attribute. 
- - the URL that the ad is linked to, found in the `href` attribute of its parent `<a>` element. The values in the `href` attributes might be useful for historians looking to collect websites that banner ads pointed to. 
+ - the URL that the ad is linked to, found in the `href` attribute of its parent `<a>` element. The values in the `href` attributes might be useful for historians looking to collect web pages that banner ads pointed to. 
  - its [alt text](https://en.wikipedia.org/wiki/Alt_attribute) in the `alt` attribute. 
 
 ```python
@@ -569,7 +581,7 @@ In the code above, we loop through all downloaded HTML files and analyze each fi
 
 ### Downloading Archived Snapshots of Banner Ad Images
 
-We will use the `download_archived_snapshot` function to download archived banner ad image files and at the same time evaluate their temporal coherence. 
+We will use the `download_archived_snapshot` function to download archived banner ad image files and evaluate their temporal coherence. 
 
 First, we define a function for evaluating temporal coherence. The function compares the image capture date (in `memento-datetime` header), the image `Last-Modified` date, and the web page snapshot's timestamp to evaluate whether an image is temporally coherent with the web page snapshot. In the lesson, we will implement a simplified heuristic based on the Ainsworth et al. paper[^4]: 
 
@@ -730,7 +742,7 @@ We were able to download archived snapshots of ad images for 32 out of all 42 de
 
 Some archived web pages we scraped included features that prevented us from scraping banner ads. For instance, the [snapshot of nikkeibp.co.jp](https://web.archive.org/web/20000528235554/nikkeibp.co.jp) from `20000528235554` uses a [meta refresh](https://en.wikipedia.org/wiki/Meta_refresh) to redirect users to another web page, while the [snapshot of msn.co.jp](https://web.archive.org/web/20000520075751/msn.co.jp) from `20000520075751` relies on client-side JavaScript for redirection - both redirection mechanisms cannot be detected by our scraper. Similarly, the [snapshot of tcup.com](https://web.archive.org/web/20000511234036/http://www.tcup.com/) from `20000511234036` is a web page built using `<frame>` elements, which was a [controversial web design technique](https://en.wikipedia.org/wiki/Frame_(World_Wide_Web)) popular in that era. To detect ads appearing on this web page, we would need to scrape each `<frame>` through the URL in its `src` attribute.
 
-To better handle such cases, consider using a browser automation framework like [Selenium](https://www.selenium.dev/). However, note that tools like Selenium generally require more system resources and technical knowledge, and you should check whether following redirects or executing on-page redirects may introduce temporal inconsistencies. 
+To better handle such cases, consider using a browser automation framework like [Selenium](https://www.selenium.dev/). However, these tools generally require more system resources and technical knowledge, and you should check whether following redirects or executing on-page redirects may introduce temporal inconsistencies. 
 
 #### Detecting and Scraping Non-Image Media Formats from the Late 1990s and Early 2000s
 
@@ -761,9 +773,9 @@ Larger-scale scraping projects may also benefit from using a database like SQLit
 
 ## Concluding Remarks
 
-You now should have a basic understanding of how the Wayback Machine works behind the scenes, which is crucial for developing a web archive scraping workflow that takes temporal coherence and other technical caveats into consideration. We also saw in the case study how knowledge about past web authoring practices can guide us in scraping web resources, and the importance of adapting our web scraping techniques according to localized web authoring conventions and contexts. 
+You should now have a basic understanding of how the Wayback Machine works behind the scenes, which is crucial for developing a web archive scraping workflow that takes temporal coherence and other technical caveats into consideration. We also saw in the case study how knowledge about past web authoring practices can guide us in scraping web resources, and the importance of adapting our web scraping techniques according to localized web authoring conventions and contexts. 
 
-Scraping archived web content from the past is usually a process full of exceptions, surprises, and edge cases. As you develop your own workflows, it is important to balance efficiency with care: decide which trade-offs are acceptable for your research goals, design your scraping in ways that minimize unnecessary strain on the archive’s servers, and remain mindful of the ethical and legal implications of reusing and publishing archived materials.  
+Scraping archived web content is usually a process full of exceptions, surprises, and edge cases. As you develop your own workflows, it is important to balance efficiency with care: decide which trade-offs are acceptable for your research goals, design your scraping in ways that minimize unnecessary strain on the archive’s servers, and remain mindful of the ethical and legal implications of reusing and publishing archived materials.  
 
 ## Useful Resources
 

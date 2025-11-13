@@ -142,7 +142,7 @@ Node.js is a free JavaScript tool and is easy to install (Windows, macOS, and Li
 node -v
 ```
 
-and confirming that you get a version number and not an error message. This code has been tested with version v18.14.1. If you have problems installing Node.js, try using a search engine with the error message for help or watch one of the many tutorials available on the web.
+and confirming that you get a version number and not an error message. This code has been tested with version v18.14.1. If you have problems installing Node.js, try using a search engine with the error message for help or watch one of the many tutorials available on the web. 
 
 - A GitHub page (recommended if deploying). 
 
@@ -317,7 +317,11 @@ In the terminal type
 npx serve
 ```
 
-This will serve your site, normally to port 3000, but check the message to see what local address is being used. Open a web browser and go to that address (ie http://localhost:3000), and if all is working you will see a black page with 'three.js The Jars of Papua'. 
+This will serve your site, normally to port 3000, but check the message to see what local address is being used. Open a web browser and go to that address (ie http://localhost:3000), and if all is working you will see a black page with 'three.js The Jars of Papua'. If you are using Windows and have problems you may need to type the following into the terminal.
+
+```
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-12.png" alt="Black page with small title (three.js The Jars of Papua), top centre." caption="Figure 12. Webpage with black background and small title (three.js The Jars of Papua)." %}
 
@@ -325,9 +329,9 @@ You do not normally need to stop the server when you change the code, but you ma
 
 ### Creating the Basic webpage
 
-Every three.js website has a camera and a 'scene' to which lights and objects need to be added. The script will call two functions (blocks of code): init() and animate(). Most of the code will be in init(), which will set up the scene and tell the page if it should ‘listen’ to any input from sources, such as the mouse, and what it should do in response to that (ie we will add EventListeners). To start with, we will add the standard EventListener for responding to window size changes. The animate function will continuously call the render function. Rendering is when the camera we add creates the 2D image that will be shown on the screen at that millisecond. 
+Every three.js website has a camera and a 'scene' to which lights and objects need to be added. The script will call two functions (blocks of code): init() and animate(). Most of the code will be in init(), which will set up the scene and tell the page if it should ‘listen’ to any input from sources, such as the mouse, and what it should do in response to that (ie we will add EventListeners). To start with, we will add the standard EventListener for responding to window size changes. The animate function will continuously call the render function. The conversion of a 3D scene into a 2D image (to be displayed on the screen at that millisecond) is called 'rendering'. The 2D image is 'drawn' from the point of view of the camera and according to the camera settings.
 
-First create a camera and a scene with a background colour. The position of the camera is important, sometimes you can not see your models because the camera is looking away from them or they are outside its field of view. We will use a perspective camera with parameters that define the field of view, including boundaries for culling objects that are too close or too far from the camera. The units for three.js are metres, and this camera will not render to the screen anything nearer to 0.1m and further than 10m. When we introduce moving the camera later, you will see objects disappear if they get too close. 
+First a camera and a scene with a background colour will be created in the init function. The position of the camera is important, sometimes you can not see your models because the camera is looking away from them or they are outside the boundaries of what it can see (i.e. its field of view). We will use a perspective camera and give it parameters that define its field of view. These field of view arguments are: [the vertical field of view in angles](https://en.wikipedia.org/wiki/Field_of_view); the horizontal to vertical aspect; and the boundaries for culling objects that are too close or too far from the camera. The aspect of the view can be taken from the browser window's dimensions and we will add a function so that it is updated if the browser window is resized. The units for three.js are metres, so this camera will not render to the screen anything nearer to 0.1m and further than 10m. When we introduce moving the camera later, you will see objects disappear if they get too close.
 
 The camera and other positions are set in x, y and z order. As mentioned previously, x is left (-) and right (+), y is down (-) and up (+) and z is far/'into the screen' (-) and near/'coming out from the screen' (+). The camera is set at a height of 1.6m, and later the model will be at 0.8m. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
 

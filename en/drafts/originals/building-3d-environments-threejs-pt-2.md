@@ -116,10 +116,10 @@ Add:
 		ringTopColor: '#19ffE7', // light blue
 		coilBeatenColor: '#e8e337', // yellow
 		nabColor: '#209F00',  // green
-		paddleColor: '#1e2f97', // dark blue
-		amphColor: '#fc9483', // pink
+		wangelaColor: '#BEBEBE',  // light grey
+		paddleColor: '#1e2f97', // dark blue		
 		paddleAddColor: '#a61ef4', // purple
-		wangelaColor: '#BEBEBE'  // light grey
+		amphColor: '#fc9483' // pink
 	}
 	//spheres for key
 	const sphere = new THREE.SphereGeometry( 0.04, 15, 5); //radius in metres, width segments, height segments. Will be reused.

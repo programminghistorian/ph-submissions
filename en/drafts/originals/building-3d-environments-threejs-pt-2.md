@@ -56,11 +56,11 @@ ie remove
 
 ## Planning
 
-Before constructing a scene or game it is helpful to draft out (by hand or using PowerPoint etc) mock ups in all three views (Figure 3). In the mock-ups include the positive and negative directions of the axes and rough measurements of distances between objects and their proportions. Three.js uses metres as the measurement unit, although this is really only important if you plan to have your site viewable in virtual reality (VR). Include a rough camera and light (for those that have them) position. The scene will have 4 planes (a map, and 3 gallery panels), 9 spheres (as part of the colour key used for identifying the vessels), 6 jars (not really shown on the sketch, although their positions are indicated by the sites in the birds-eye view). The game will feature 6 tori for the sites, and the jars will appear in an area above the map. You can also use the [three.js editor](https://threejs.org/editor/) to help visualise and refine placements.
+Before constructing a scene or game it is helpful to draft out (by hand or using PowerPoint etc) mock ups in all three views (i.e. "front-view", "side-on" and "birds-eye") (Figure 3). In the mock-ups include the positive and negative directions of the axes and rough measurements of distances between objects and their proportions. Three.js uses metres as the measurement unit, although this is really only important if you plan to have your site viewable in virtual reality (VR). Include a rough camera and light (for those that have them) position. The scene will have 4 planes (a map, and 3 gallery panels), 9 spheres (as part of the colour key used for identifying the vessels), 6 jars (not really shown on the sketch, although their positions are indicated by the sites in the birds-eye view). The game will feature 6 tori for the sites, and the jars will appear in an area above the map. You can also use the [three.js editor](https://threejs.org/editor/) to help visualise and refine placements.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-03.png" alt="Scene mock-ups in z, x and y views." caption="Figure 3. Affinity Designer versions of the hand-drawn sketches for planning the game. Mock-ups of all 3 views are done, with rough coordinates and spacing for the scene assets (here the camera, light, the map, information panels and a key panel featuring 9 spheres, the jar/site positions, and the area in which the jars will randomly start in the game). Coordinates are x, y, z. Note that the light is off the scale in the y axis." %}
 
-Planning also helps identify where you will be using the same value repeatedly, such as the x and z positions of the key spheres, and we can use variables for these values, so that if we want to alter them it is easier. It also identifies where measurements are dependent on other measurements. As you can see in the first mock-up of Figure 3, the height of the galleries is dependent on the height of the map, because we want them to be above the map, so we can have a variable 'desk' for the map height and a variable 'gheight' for the gallery height that is dependent on the desk variable (ie equal to desk + 0.55). The placement of the map at this y value was because the site was designed to be able to be viewed in VR. 
+Planning also helps identify where you will be using the same value repeatedly, such as the x and z positions of the key spheres, and we can use variables for these values, so that if we want to alter them it is easier. It also identifies where measurements are dependent on other measurements. As you can see in the first mock-up of Figure 3, the height of the galleries is dependent on the height of the map, because we want them to be above the map, so we can have a variable 'desk' for the map height and a variable 'gheight' for the gallery height that is dependent on the desk variable (ie equal to desk + 0.55). The placement of the map at this y value was because the site was designed to be able to be viewed in VR and 0.8m is a comfortable height for a standing person to look down onto a map and be able to place objects onto it.
 
 ## Adding the Spheres for a Colour Key
 
@@ -70,7 +70,7 @@ npx serve
 ```
 and you should be back to an empty scene with a peach background.
 
-You might have noticed that the pots in the model of part 1 were different colours. These colours relate solely to how the pots were made and we will construct a key to communicate this to the viewer.
+You might have noticed that the pots in the model of part 1 were different colours. These colours relate solely to what techniques were used to make the pot and we will construct a key to communicate this to the viewer.
 
 To do this we will add some coloured objects. Three.js has several basic 2D geometries, including plane, circle, ring and shape, and more 3D geometries that include spheres, boxes, tori (donuts), cylinders and tetrahedrons (Figure 4). The parameters for these generally include lengths (in metres) and numbers of segments (for height, width etc) but they can also be given parameters to create partial shapes. There are also some more complicated geometries, including lathes, that will not be used here, that are made from a series of user provided 2D points, that are then rotated in the third dimension.
 
@@ -111,36 +111,36 @@ Add:
 
 	// add key for jar colours using spheres and a plane
 	const parameters = { // colours for the key spheres and the jars
-		materialColor: '#9c5315', 
-		ringTopColor: '#19ffE7',
-		coilColor: '#ff0000',
-		paddleColor: '#1e2f97', 
-		coilBeatenColor: '#e8e337',
-		paddleAddColor: '#a61ef4',
-		wangelaColor: '#BEBEBE', 
-		amphColor: '#fc9483',
-		nabColor: '#209F00' 
+		materialColor: '#9c5315', // brown
+		coilColor: '#ff0000', // red
+		ringTopColor: '#19ffE7', // light blue
+		coilBeatenColor: '#e8e337', // yellow
+		nabColor: '#209F00',  // green
+		paddleColor: '#1e2f97', // dark blue
+		amphColor: '#fc9483', // pink
+		paddleAddColor: '#a61ef4', // purple
+		wangelaColor: '#BEBEBE'  // light grey
 	}
 	//spheres for key
 	const sphere = new THREE.SphereGeometry( 0.04, 15, 5); //radius in metres, width segments, height segments. Will be reused.
 	const sphere1 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.materialColor })); 
-	sphere1.position.set( sphereposx, gheight + 0.30, sphereposz); 
+	sphere1.position.set( sphereposx, gheight + 0.30, sphereposz);
 	const sphere2 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilColor })); 
-	sphere2.position.set( sphereposx, gheight + 0.21, sphereposz); 
-	const sphere3 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.wangelaColor })); 
-	sphere3.position.set( sphereposx, gheight - 0.15, sphereposz); 
-	const sphere4 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.nabColor })); 
-	sphere4.position.set( sphereposx, gheight - 0.06, sphereposz); 
-	const sphere5 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleAddColor})); 
-	sphere5.position.set( sphereposx, gheight - 0.35, sphereposz); 
+	sphere2.position.set( sphereposx, gheight + 0.21, sphereposz);
+	const sphere9 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.ringTopColor})); 
+	sphere9.position.set( sphereposx, gheight + 0.12, sphereposz);
 	const sphere6 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilBeatenColor})); 
 	sphere6.position.set( sphereposx, gheight + 0.03, sphereposz); 
-	const sphere7 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.amphColor })); 
-	sphere7.position.set( sphereposx, gheight - 0.44, sphereposz); 
+	const sphere4 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.nabColor })); 
+	sphere4.position.set( sphereposx, gheight - 0.06, sphereposz); 
+	const sphere3 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.wangelaColor })); 
+	sphere3.position.set( sphereposx, gheight - 0.15, sphereposz); 
 	const sphere8 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleColor})); 
 	sphere8.position.set( sphereposx, gheight - 0.25, sphereposz); 
-	const sphere9 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.ringTopColor})); 
-	sphere9.position.set( sphereposx, gheight + 0.12, sphereposz); 
+	const sphere5 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleAddColor})); 
+	sphere5.position.set( sphereposx, gheight - 0.35, sphereposz); 
+	const sphere7 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.amphColor })); 
+	sphere7.position.set( sphereposx, gheight - 0.44, sphereposz); 
 	scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
 	
 

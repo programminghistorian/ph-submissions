@@ -392,7 +392,7 @@ add:
 
 Note that functions are defined within ```{}``` be careful of where these are when pasting code.
 
-**Within** the init function definition, after:
+**Within** the init function definition after:
 ```
 	document.body.appendChild( container );
 ```
@@ -440,7 +440,7 @@ Reload the page after saving the index.html file, and check that you have change
 
 We will add the standard EventListener for responding to window size changes. If you try and make your browser window bigger now you will see that it is not changing the container size. Three.js uses window event listeners to detect user interactions with their browser. Here we will only listen for window resizing (```resize```), but in part 2 we will listen for mouse clicks (```click```) and drags (```dragstart``` and ```dragend```). Other possible input events include mouse movement (```mousemove```) and keys being pressed on the keyboard (```keyup``` and ```keydown```). The window event listeners have 2 arguments. The first identifies the input event (ie ```resize``` for resizing), and the second the function that will be called (run) if the event occurs. The standard window resize function code gets the new browser dimensions from the global object 'window' and updates the camera aspect and the dimensions of the picture the renderer is drawing. As 'window' is a global object, it is better to never call any of your variables 'window'.
 
-**Within** the init function, after:
+**Within** the init function after:
 ```
 		container.appendChild( renderer.domElement );
 ```

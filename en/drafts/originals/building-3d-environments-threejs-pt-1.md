@@ -329,15 +329,7 @@ You do not normally need to stop the server when you change the code, but you ma
 
 ### Creating the Basic webpage
 
-Every three.js website has a camera and a 'scene' to which lights and objects need to be added. The script will call two functions (blocks of code): init() and animate(). Most of the code will be in init(), which will set up the scene and tell the page if it should ‘listen’ to any input from sources, such as the mouse, and what it should do in response to that (ie we will add EventListeners). To start with, we will add the standard EventListener for responding to window size changes. The animate function will continuously call the render function. The conversion of a 3D scene into a 2D image (to be displayed on the screen at that millisecond) is called 'rendering'. The 2D image is 'drawn' from the point of view of the camera and according to the camera settings. When we create the new renderer in the init function we need to give it the pixel ratio, width and height details of the browser window. We can also tell it to use 'anti-aliasing' and it will try and smooth object edges by averaging edge pixel colours. 
-
-To render, the renderer needs a scene and a camera, so first (within the init function) a scene with a background colour, and then a camera, will be created. The position of the camera is important, sometimes you can not see your models because the camera is looking away from them or they are outside the boundaries of what it can see (i.e. its field of view). We will use a perspective camera and give it parameters that define its field of view. These field of view arguments are: [the vertical field of view in angles](https://en.wikipedia.org/wiki/Field_of_view); the horizontal to vertical aspect; and the boundaries for culling objects that are too close or too far from the camera. The aspect of the view can be taken from the browser window's dimensions and we will add a function so that it is updated if the browser window is resized. The units for three.js are metres, so this camera will not render to the screen anything nearer to 0.1m and further than 10m. When we introduce moving the camera later, you will see objects disappear if they get too close.
-
-The camera and other positions are set in x, y and z order. As mentioned previously, x is left (-) and right (+), y is down (-) and up (+) and z is far/'into the screen' (-) and near/'coming out from the screen' (+). The camera is set at a height of 1.6m, and later the model will be at 0.8m. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
-
-We will make the page background peach (0xf7d382). To specify colours you can use the colour [hex code](https://www.color-hex.com) after '0x'.
-
-In the index.html file, **after** the import, declare the variables (with **let**), call and define the init() and other necessary functions. Variables are generally declared outside function definitions, but sometimes will be declared within a function definition if the variable is only referred to within the function definition. 
+The script will call two functions (blocks of code): init() and animate(). Most of the code will be in init(), which will set up the scene and tell the page if it should ‘listen’ to any input from sources, such as the mouse, and what it should do in response to that (ie we will add EventListeners). We will first set up a container for our scene, which is actually a <div> HTML element which gets added to our HTML document. The container first needs to be 'declared', and then it gets created in the init function.
 
 After:
 
@@ -349,12 +341,10 @@ add:
 
 ```
 	// Variable declaration and setting
-	let container, camera, scene, renderer;
+	let container;
 
 	// Function calls
 	init(); // initialise scene
-	animate(); // updates scene by constant rendering
-
 
 	// Function definitions
 
@@ -363,6 +353,52 @@ add:
 		// make html div element and add to html document
 		container = document.createElement( 'div' );
 		document.body.appendChild( container );
+	}
+
+```
+Nothing will change in your browser yet.
+
+The animate function will continuously call the render function. The conversion of a 3D scene into a 2D image (to be displayed on the screen at that millisecond) is called 'rendering'. The 2D image is 'drawn' from the point of view of the camera and according to the camera settings. When we create the new renderer in the init function we then need to give it the pixel ratio, width and height details of the browser window, and then add it to our container. We can also tell it to use 'anti-aliasing' and it will try and smooth object edges by averaging edge pixel colours. 
+
+To render, the renderer needs a scene and a camera, so first (within the init function) a scene with a background colour, and then a camera, will be created. The position of the camera is important, sometimes you can not see your models because the camera is looking away from them or they are outside the boundaries of what it can see (i.e. its field of view). We will use a perspective camera and give it parameters that define its field of view. These field of view arguments are: [the vertical field of view in angles](https://en.wikipedia.org/wiki/Field_of_view); the horizontal to vertical aspect; and the boundaries for culling objects that are too close or too far from the camera. The aspect of the view can be taken from the browser window's dimensions and we will later add a function so that it is updated if the browser window is resized. The units for three.js are metres, so this camera will not render to the screen anything nearer to 0.1m and further than 10m. When we introduce moving the camera later, you will see objects disappear if they get too close.
+
+The camera and other positions are set in x, y and z order. As mentioned previously, x is left (-) and right (+), y is down (-) and up (+) and z is far/'into the screen' (-) and near/'coming out from the screen' (+). The camera is set at a height of 1.6m, and later the model will be at 0.8m. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
+
+We will make the page background peach (0xf7d382). To specify colours you can use the colour [hex code](https://www.color-hex.com) after '0x'.
+
+In the index.html file, **after** the import, declare the variables (with **let**), call and define the init() and other necessary functions. Variables are generally declared outside function definitions, but sometimes will be declared within a function definition if the variable is only referred to within the function definition. 
+
+Change:
+
+```
+    let container;
+```
+
+to:
+
+```
+	let container, camera, scene, renderer;
+```
+
+After:
+```
+	init(); // initialise scene
+```
+
+add:
+```
+	animate(); // updates scene by constant rendering
+```
+
+Note that functions are defined within ```{}``` be careful of where these are when pasting code.
+
+**Within** the init function definition, after:
+```
+	document.body.appendChild( container );
+```
+
+add:
+```
 		// make scene and set background colour
 		scene = new THREE.Scene();
 		scene.background = new THREE.Color( 0xf7d382 ); // use the hexcode of any colour you want.
@@ -376,19 +412,17 @@ add:
 		renderer.setSize( window.innerWidth, window.innerHeight ); // Don't change this code.
 		container.appendChild( renderer.domElement );
 
-		// add listeners. These check for user interaction with the window and mouse clicks and call the given function.
-		// listen for user browser window resizing and call the onWindowResize function that is defined below.
-		window.addEventListener( 'resize', onWindowResize );
-	}
+```
 
-	// function definitions
-	// called on resizing of window. Gets new browser window values and updates camera and renderer settings. Don't experiment with.
-	function onWindowResize() {
-		        camera.aspect = window.innerWidth / window.innerHeight; 
-		        camera.updateProjectionMatrix();
-		        renderer.setSize( window.innerWidth, window.innerHeight );
-	}
+We need to add the animate and render function definitions. 
 
+**After** the init function definition:
+```
+	container.appendChild( renderer.domElement );
+}
+```
+add:
+```
 	// Constant loop of rendering.
 	function animate() {
 		renderer.setAnimationLoop( render );
@@ -397,19 +431,47 @@ add:
 	function render() {
 		renderer.render( scene, camera );
 	}
+
 ```
 
 Reload the page after saving the index.html file, and check that you have changed the background colour (Figure 13).
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-13.png" alt="Basic webpage with peach background." caption="Figure 13. Webpage with peach background." %}
 
-Three.js uses window event listeners to detect user interactions with their browser. Here we will only listen for window resizing (```resize```), but in part 2 we will listen for mouse clicks (```click```) and drags (```dragstart``` and ```dragend```). Other possible input events include mouse movement (```mousemove```) and keys being pressed on the keyboard (```keyup``` and ```keydown```). The window event listeners have 2 arguments. The first identifies the input event (ie ```resize``` for resizing), and the second the function that will be called (run) if the event occurs. The standard window resize function code gets the new browser dimensions from the global object 'window' and updates the camera aspect and the dimensions of the picture the renderer is drawing. As 'window' is a global object, it is better to never call any of your variables 'window'.
+We will add the standard EventListener for responding to window size changes. If you try and make your browser window bigger now you will see that it is not changing the container size. Three.js uses window event listeners to detect user interactions with their browser. Here we will only listen for window resizing (```resize```), but in part 2 we will listen for mouse clicks (```click```) and drags (```dragstart``` and ```dragend```). Other possible input events include mouse movement (```mousemove```) and keys being pressed on the keyboard (```keyup``` and ```keydown```). The window event listeners have 2 arguments. The first identifies the input event (ie ```resize``` for resizing), and the second the function that will be called (run) if the event occurs. The standard window resize function code gets the new browser dimensions from the global object 'window' and updates the camera aspect and the dimensions of the picture the renderer is drawing. As 'window' is a global object, it is better to never call any of your variables 'window'.
+
+**Within** the init function, after:
+```
+		container.appendChild( renderer.domElement );
+```
+add:
+```
+		// add listeners. These check for user interaction with the window and mouse clicks and call the given function.
+		// listen for user browser window resizing and call the onWindowResize function that is defined below.
+		window.addEventListener( 'resize', onWindowResize );
+```
+**After** the init function definition:
+```
+	window.addEventListener( 'resize', onWindowResize );
+}
+```
+add:
+```	
+	// called on resizing of window. Gets new browser window values and updates camera and renderer settings. Don't experiment with.
+	function onWindowResize() {
+		        camera.aspect = window.innerWidth / window.innerHeight; 
+		        camera.updateProjectionMatrix();
+		        renderer.setSize( window.innerWidth, window.innerHeight );
+	}
+
+```
+If you save the file and reload the browser, a browser window resize should now work.
 
 Next we need to add lights.
 
 There are several different types of lights. We will add a [hemisphere light](https://threejs.org/docs/index.html#api/en/lights/HemisphereLight) and a [directional light](https://threejs.org/docs/index.html#api/en/lights/DirectionalLight). The hemisphere light has 2 colours and an intensity (from 0 to 1), while the directional light has one colour and a position. Use the values supplied first. If everything is working, you can experiment with different values later. You can add lights directly, like we do with the hemisphere light, or declare them, modify their parameters and then add them, like we do with the directional light.
 
-In the function init() and after:
+In the function init() after:
 
 ```
 	camera.position.set( 0, 1.6, 3 ); //x, y, z

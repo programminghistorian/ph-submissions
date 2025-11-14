@@ -317,7 +317,7 @@ In the terminal type
 npx serve
 ```
 
-This will serve your site, normally to port 3000, but check the message to see what local address is being used. Open a web browser and go to that address (ie http://localhost:3000), and if all is working you will see a black page with 'three.js The Jars of Papua'. If you are using Windows and have problems you may need to type the following into the terminal.
+This will serve your site, normally to port 3000, but check the message to see what local address is being used. Open a web browser and go to that address (i.e. http://localhost:3000), and if all is working you will see a black page with 'three.js The Jars of Papua'. If you are using Windows and have problems you may need to type the following into the terminal.
 
 ```
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
@@ -329,7 +329,7 @@ You do not normally need to stop the server when you change the code, but you ma
 
 ### Creating the Basic webpage
 
-The script will call two functions (blocks of code): init() and animate(). Most of the code will be in init(), which will set up the scene and tell the page if it should ‘listen’ to any input from sources, such as the mouse, and what it should do in response to that (ie we will add EventListeners). We will first set up a container for our scene, which is actually a <div> HTML element which gets added to our HTML document. The container first needs to be 'declared', and then it gets created in the init function.
+The script will call two functions (blocks of code): init() and animate(). Most of the code will be in init(), which will set up the scene and tell the page if it should ‘listen’ to any input from sources, such as the mouse, and what it should do in response to that (i.e. we will add EventListeners). We will first set up a container for our scene, which is actually a <div> HTML element which gets added to our HTML document. The container first needs to be 'declared', and then it gets created in the init function.
 
 After:
 
@@ -438,7 +438,7 @@ Reload the page after saving the index.html file, and check that you have change
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-13.png" alt="Basic webpage with peach background." caption="Figure 13. Webpage with peach background." %}
 
-We will add the standard EventListener for responding to window size changes. If you try and make your browser window bigger now you will see that it is not changing the container size. Three.js uses window event listeners to detect user interactions with their browser. Here we will only listen for window resizing (```resize```), but in part 2 we will listen for mouse clicks (```click```) and drags (```dragstart``` and ```dragend```). Other possible input events include mouse movement (```mousemove```) and keys being pressed on the keyboard (```keyup``` and ```keydown```). The window event listeners have 2 arguments. The first identifies the input event (ie ```resize``` for resizing), and the second the function that will be called (run) if the event occurs. The standard window resize function code gets the new browser dimensions from the global object 'window' and updates the camera aspect and the dimensions of the picture the renderer is drawing. As 'window' is a global object, it is better to never call any of your variables 'window'.
+We will add the standard EventListener for responding to window size changes. If you try and make your browser window bigger now you will see that it is not changing the container size. Three.js uses window event listeners to detect user interactions with their browser. Here we will only listen for window resizing (```resize```), but in part 2 we will listen for mouse clicks (```click```) and drags (```dragstart``` and ```dragend```). Other possible input events include mouse movement (```mousemove```) and keys being pressed on the keyboard (```keyup``` and ```keydown```). The window event listeners have 2 arguments. The first identifies the input event (i.e. ```resize``` for resizing), and the second the function that will be called (run) if the event occurs. The standard window resize function code gets the new browser dimensions from the global object 'window' and updates the camera aspect and the dimensions of the picture the renderer is drawing. As 'window' is a global object, it is better to never call any of your variables 'window'.
 
 **Within** the init function after:
 ```
@@ -600,7 +600,7 @@ add:
 
 ```
 
-If you save and reload, you should be able to move around and zoom in and out. Note that the model is not being rotated, moved or resized, but it is the camera that is being moved.  If you want the camera to continuously rotate, you can uncomment out the ```controls.autoRotate``` but you must also add the call to update the controls in the render function, ie
+If you save and reload, you should be able to move around and zoom in and out. Note that the model is not being rotated, moved or resized, but it is the camera that is being moved.  If you want the camera to continuously rotate, you can uncomment out the ```controls.autoRotate``` but you must also add the call to update the controls in the render function, i.e.
 
 Change:
 ```

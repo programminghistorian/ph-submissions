@@ -37,8 +37,8 @@ Put (or replace) the downloaded models and textures folders in the myscene folde
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-02.png" alt="Screenshot of the VSC editor showing a list of jpg files in the expanded textures folder." caption="Figure 2. File structure for part 2 as shown in VSC, with the textures folder expanded. The texture file Abelam.jpg is shown in the main panel." %}
 
-If you made autoRotate true, comment out that line (ie add // to the beginning of the line) and also comment out the controls.update in the render function (make sure not to touch the one in the init function). In the index.html file from part 1, remove the code that loads the glTF model used in part 1: 
-ie remove
+If you made autoRotate true, comment out that line (i.e. add // to the beginning of the line) and also comment out the controls.update in the render function (make sure not to touch the one in the init function). In the index.html file from part 1, remove the code that loads the glTF model used in part 1: 
+i.e. remove
 
 ```
                 // load model
@@ -60,7 +60,7 @@ Before constructing a scene or game it is helpful to draft out (by hand or using
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-03.png" alt="Scene mock-ups in z, x and y views." caption="Figure 3. Affinity Designer versions of the hand-drawn sketches for planning the game. Mock-ups of all 3 views are done, with rough coordinates and spacing for the scene assets (here the camera, light, the map, information panels and a key panel featuring 9 spheres, the jar/site positions, and the area in which the jars will randomly start in the game). Coordinates are x, y, z. Note that the light is off the scale in the y axis." %}
 
-Planning also helps identify where you will be using the same value repeatedly, such as the x and z positions of the key spheres, and we can use variables for these values, so that if we want to alter them it is easier. It also identifies where measurements are dependent on other measurements. As you can see in the first mock-up of Figure 3, the height of the galleries is dependent on the height of the map, because we want them to be above the map, so we can have a variable 'desk' for the map height and a variable 'gheight' for the gallery height that is dependent on the desk variable (ie equal to desk + 0.55). The placement of the map at this y value was because the site was designed to be able to be viewed in VR and 0.8m is a comfortable height for a standing person to look down onto a map and be able to place objects onto it.
+Planning also helps identify where you will be using the same value repeatedly, such as the x and z positions of the key spheres, and we can use variables for these values, so that if we want to alter them it is easier. It also identifies where measurements are dependent on other measurements. As you can see in the first mock-up of Figure 3, the height of the galleries is dependent on the height of the map, because we want them to be above the map, so we can have a variable 'desk' for the map height and a variable 'gheight' for the gallery height that is dependent on the desk variable (i.e. equal to desk + 0.55). The placement of the map at this y value was because the site was designed to be able to be viewed in VR and 0.8m is a comfortable height for a standing person to look down onto a map and be able to place objects onto it.
 
 ## Adding the Spheres for a Colour Key
 
@@ -154,7 +154,7 @@ Save and reload in the browser and you should see a webpage with nine differentl
 
 Now we will add some planes. We want the information panels to face the camera, and the default planes do this. In addition, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 
 
-'Math' is a JavaScript object, which has properties, including Math.PI (ie π, 3.141), and methods, including Math.random() (used later in the lesson). See the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for more properties and methods. Three.js uses radians for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when you are 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geograpical map must be -Math.PI/2 around the x axis to have the 'front' of the panel facing upwards.
+'Math' is a JavaScript object, which has properties, including Math.PI (i.e. π, 3.141), and methods, including Math.random() (used later in the lesson). See the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for more properties and methods. Three.js uses radians for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when you are 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geograpical map must be -Math.PI/2 around the x axis to have the 'front' of the panel facing upwards.
 
 We will give the planes image ‘textures’ that contain text describing the individual artefacts. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. By default only one side (the 'front') of a panel is textured. Here the dimensions of the panels match the image texture dimensions, in situations where they do not, different options, including image tiling can be used. The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. There are [alternatives](https://threejs.org/docs/index.html#manual/en/introduction/Creating-text). 
 
@@ -835,7 +835,7 @@ save and check the new instructions appear.
 
 ## Adding Additional Jars
 
-Pots were made in many different forms by different communities in Papua New Guinea and West Papua. There are models and information panels for 29 communities in the folders provided. If you want to experiment with adding them (Figure 17), the following table provides the model name, matching panel, location and colour parameter name to use. Each needs a model name, panel name and a site/torus (game only). These can be called anything (avoid special characters), but remember to declare them.
+Pots were made in many different forms by different communities in Papua New Guinea, West Papua and Maluku. There are models and information panels for 29 communities in the folders provided. If you want to experiment with adding them (Figure 17), the following table provides the model name, matching panel texture, location and colour parameter name to use. Each needs variables for the jar, panel and a site/torus (game only). These can be called anything (avoid special characters), but remember to declare them.
 
 | Model | Texture | Position | Colour |
 | --- | --- | --- | ---|
@@ -843,16 +843,16 @@ Pots were made in many different forms by different communities in Papua New Gui
 | aloalo.glb | Aloalo.jpg | 0.9* ratio, desk + 0.01, 0.49* ratio | ringTopColor |
 | bau.glb | Bau.jpg | 0.535* ratio, desk + 0.01, 0.04* ratio | coilColor |
 | meno.glb | Meno.jpg |  0.28* ratio, desk + 0.01, -0.01* ratio | coilColor |
-| binadean.glb | Biawaria.jpg | 0.76 * ratio, desk + 0.01, 0.34 * ratio | coilBeatenColor |
-| boiken.glb | Boikin.jpg | 0.37* ratio, desk + 0.01, -0.08* ratio | coilColor |
+| binadean.glb | Binadean.jpg | 0.76 * ratio, desk + 0.01, 0.34 * ratio | coilBeatenColor |
+| boiken.glb | Boiken.jpg | 0.37* ratio, desk + 0.01, -0.08* ratio | coilColor |
 | collingwood.glb | Collingwood.jpg | 0.85* ratio, desk + 0.01, 0.4* ratio | wangelaColor |
 | demta.glb | Demta.jpg | 0.13* ratio, desk + 0.01, -0.16* ratio | materialColor |
-| guhu.glb | guhu.jpg | 0.65* ratio, desk + 0.01, 0.23* ratio | coilColor |
+| guhu.glb | Guhu.jpg | 0.65* ratio, desk + 0.01, 0.23* ratio | coilColor |
 | huon.glb | Huon.jpg | 0.71* ratio, desk + 0.01, 0.13* ratio | paddleColor |
-| ilesales.glb | IleSales.jpg |  -0.34* ratio, desk + 0.01, 0.11* ratio | paddleColor |
+| ilesales.glb | Ilesales.jpg |  -0.34* ratio, desk + 0.01, 0.11* ratio | paddleColor |
 | kaiep.glb | Kaiep.jpg | 0.41* ratio, desk + 0.01, -0.07* ratio | paddleColor |
 | kombio.glb | Kombio.jpg | 0.29* ratio, desk + 0.01, -0.05* ratio | coilColor |
-| kwimbu.glb | Abelam.jpg | 0.33* ratio, desk + 0.01, -0.06* ratio | coilColor |
+| abelam.glb | Abelam.jpg | 0.33* ratio, desk + 0.01, -0.06* ratio | coilColor |
 | lumi.glb | Lumi.jpg | 0.25* ratio, desk + 0.01, -0.08* ratio | coilColor |
 | maluku.glb | Maluku.jpg | -0.86* ratio, desk + 0.01, -0.08* ratio | paddleAddColor |
 | manus.glb | Manus.jpg | 0.66* ratio, desk + 0.01, -0.2* ratio | paddleColor |
@@ -861,7 +861,7 @@ Pots were made in many different forms by different communities in Papua New Gui
 | pubineri.glb | Pubineri.jpg |  0.53* ratio, desk + 0.01, 0.09* ratio |  coilColor |
 | triobriand.glb | Triobriand.jpg | 1.01* ratio, desk + 0.01, 0.33* ratio | amphColor |
 | tumleo.glb | Tumleo.jpg | 0.27* ratio, desk + 0.01, -0.12* ratio | paddleColor |
-| waiGeo.glb | Waigeo.jpg |  -0.65* ratio, desk + 0.01, -0.35* ratio | paddleAddColor |
+| waigeo.glb | Waigeo.jpg |  -0.65* ratio, desk + 0.01, -0.35* ratio | paddleAddColor |
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-17.png" alt="Many jars on a map of Papua." caption="Figure 17. Additional jars can be addded to the scene and puzzle." %}
 

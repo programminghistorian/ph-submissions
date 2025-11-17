@@ -152,7 +152,9 @@ Save and reload in the browser and you should see a webpage with nine differentl
 
 ### Adding the Information Panels and Map
 
-Now we will add some planes. We want the information panels to face the camera, and the default planes do this. In addition, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 
+Now we will add some planes. To help keep track of the information panel (gallery), jar model and community site for each jar, we will call these 'xG, 'xM' and 'xSite', respectively, where 'x' is a name such as 'yabob' or 'aibom', the village (or area) where the jar used for the model was made. Variable names can not have spaces in them.
+
+We want the information panels to face the camera, and the default planes do this. In addition, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 
 
 'Math' is a JavaScript object, which has properties, including Math.PI (i.e. π, 3.141), and methods, including Math.random() (used later in the lesson). See the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for more properties and methods. Three.js uses radians for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when you are 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geograpical map must be -Math.PI/2 around the x axis to have the 'front' of the panel facing upwards.
 

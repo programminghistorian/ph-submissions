@@ -38,7 +38,7 @@ Put (or replace) the downloaded models and textures folders in the myscene folde
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-02.png" alt="Screenshot of the VSC editor showing a list of jpg files in the expanded textures folder." caption="Figure 2. File structure for part 2 as shown in VSC, with the textures folder expanded. The texture file Abelam.jpg is shown in the main panel." %}
 
 If you made autoRotate true, comment out that line (i.e. add // to the beginning of the line) and also comment out the controls.update in the render function (make sure not to touch the one in the init function). In the index.html file from part 1, remove the code that loads the glTF model used in part 1: 
-i.e. remove
+i.e. ***remove***
 
 ```
                 // load model
@@ -82,13 +82,13 @@ The colours are set in the parameters list (more correctly called an 'array' in 
 
 For each sphere we also set its position in x, y, z order. We use the variables 'sphereposx' and 'sphereposz' for the x and z positions and vary the y position, so the spheres end up in a vertical line. We declare variables for the panel vertical placement (relative to the panel centre), the panel size and the sphere x and z positions. We can use ```let``` or ```const``` to declare variables, the difference is that variables declared with ```const``` can not be changed later in the code, and must have a value when declared. Many of these variables could be declared within the init function but having them all together at the start of the code makes them easier to find and change.
 
-First we declare the variables, after:
+First we declare the variables, ***after:***
 
 ```
     let desk = 0.8;
 ```
 
-Add:
+***Add:***
 
 ```
 	let gheight = desk + 0.55; //panel height
@@ -111,7 +111,9 @@ Add:
 
 ```
 
-Then we need to create the sphere geometry, specifying its radius and number of width and height segments. For each of the 9 spheres we make a mesh from the created geometry and a standard material with a colour from the parameter list. We then add all the spheres to the scene. Within the init function, after:
+Then we need to create the sphere geometry, specifying its radius and number of width and height segments. For each of the 9 spheres we make a mesh from the created geometry and a standard material with a colour from the parameter list. We then add all the spheres to the scene. 
+
+Within the init function, after:
 
 ```
 scene.add( light );

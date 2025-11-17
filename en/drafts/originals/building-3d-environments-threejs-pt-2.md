@@ -152,7 +152,7 @@ Save and reload in the browser and you should see a webpage with nine differentl
 
 ### Adding the Information Panels and Map
 
-Now we will add some planes. To help keep track of the information panel (gallery), jar model and community site for each jar, we will call these 'xG, 'xM' and 'xSite', respectively, where 'x' is a name such as 'yabob' or 'aibom', the village (or area) where the jar used for the model was made. Variable names can not have spaces in them.
+Now we will add some planes. To help keep track of the information panel (gallery), jar model, loading function and community site for each jar, we will call these 'xG, 'xM', 'onLoadX' and 'xSite', respectively, where 'x' is a name such as 'yabob' or 'aibom', the village (or area) where the jar the model is based on was made. Variable and function names can not have spaces in them.
 
 We want the information panels to face the camera, and the default planes do this. In addition, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 
 

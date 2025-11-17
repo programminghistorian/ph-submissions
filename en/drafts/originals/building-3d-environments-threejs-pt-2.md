@@ -88,7 +88,7 @@ First we declare the variables, ***after:***
     let desk = 0.8;
 ```
 
-***Add:***
+***add:***
 
 ```
 	let gheight = desk + 0.55; //panel height
@@ -119,7 +119,7 @@ Within the init function, after:
 scene.add( light );
 ```
 
-Add: 
+add: 
 
 ```
 	// add models
@@ -171,7 +171,7 @@ First we declare the variables, after:
     // Variable declaration and setting
 ```
 
-Add:
+add:
 
 ```
 	let gallery, adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG; // information panels for the different jars

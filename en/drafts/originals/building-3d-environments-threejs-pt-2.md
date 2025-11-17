@@ -80,7 +80,7 @@ We will use 9 spheres and a plane to make a vessel colour key for how the jars w
 
 The colours are set in the parameters list. We want to colour the jars by how they were made. Some communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres we are creating now will form part of the key that lets the viewer know how the pots were made. By having them in a parameter list, we can just change the respective hex code and the key and pots will all change. Start with the proposed values and alter them later if you want.
 
-For each sphere we also set its position in x, y, z order. We use the variables 'sphereposx' and 'sphereposz' for the x and z positions and vary the y position, so the spheres end up in a vertical line. 
+For each sphere we also set its position in x, y, z order. We use the variables 'sphereposx' and 'sphereposz' for the x and z positions and vary the y position, so the spheres end up in a vertical line. First we declare variables for the panel vertical placement (relative to the panel centre), the panel size and the sphere x and z positions. We will also declare the colours for the different techniques using an array. They could also be declared separately. We can use ```let``` or ```const``` to declare variables, the difference is that variables declared with ```const``` can not be changed and must have a value when declared. Many of these variables could be declared within the init function but having them all together at the start of the code makes them easier to find and change.
 
 After:
 
@@ -91,10 +91,23 @@ After:
 Add:
 
 ```
-    	let gheight = desk + 0.55; //panel height
+	let gheight = desk + 0.55; //panel height
 	let psize = 1.0; // panel dimensions
 	let sphereposx = 0.84 // key sphere x position
 	let sphereposz = -0.75 // key sphere z position
+
+	// colours for the key spheres and the jars
+	const parameters = { 
+		materialColor: '#9c5315', // brown
+		coilColor: '#ff0000', // red
+		ringTopColor: '#19ffE7', // light blue
+		coilBeatenColor: '#e8e337', // yellow
+		nabColor: '#209F00',  // green
+		wangelaColor: '#BEBEBE',  // light grey
+		paddleColor: '#1e2f97', // dark blue		
+		paddleAddColor: '#a61ef4', // purple
+		amphColor: '#fc9483' // pink
+	}
 
 ```
 
@@ -110,17 +123,6 @@ Add:
 	// add models
 
 	// add key for jar colours using spheres and a plane
-	const parameters = { // colours for the key spheres and the jars
-		materialColor: '#9c5315', // brown
-		coilColor: '#ff0000', // red
-		ringTopColor: '#19ffE7', // light blue
-		coilBeatenColor: '#e8e337', // yellow
-		nabColor: '#209F00',  // green
-		wangelaColor: '#BEBEBE',  // light grey
-		paddleColor: '#1e2f97', // dark blue		
-		paddleAddColor: '#a61ef4', // purple
-		amphColor: '#fc9483' // pink
-	}
 	//spheres for key
 	const sphere = new THREE.SphereGeometry( 0.04, 15, 5); //radius in metres, width segments, height segments. Will be reused.
 	const sphere1 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.materialColor })); 

@@ -78,11 +78,11 @@ We will use 9 spheres and a plane to make a vessel colour key for how the jars w
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-04.png" alt="Six different geometries: sphere, box, cylinder, torus and lathe are shown in wireframe." caption="Figure 4. The 3D geometries that three.js can add include spheres, boxes, tori, cylinders, tetrahedrons and lathes. Parameters for the geometries often include length and segment number measurements. Lathe geometries are generated from a series of points (that are then rotated) and the most simple lathe is shown." %}
 
-The colours are set in the parameters list. We want to colour the jars by how they were made. Some communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres we are creating now will form part of the key that lets the viewer know how the pots were made. By having them in a parameter list, we can just change the respective hex code and the key and pots will all change. Start with the proposed values and alter them later if you want.
+The colours are set in the parameters list (more correctly called an 'array' in JavaScript). We want to colour the jars by how they were made. Some communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres we are creating now will form part of the key that lets the viewer know how the pots were made. By having them in a parameter list/array, we can just change the respective hex code and the key and pots will all change. Start with the proposed values and alter them later if you want.
 
-For each sphere we also set its position in x, y, z order. We use the variables 'sphereposx' and 'sphereposz' for the x and z positions and vary the y position, so the spheres end up in a vertical line. First we declare variables for the panel vertical placement (relative to the panel centre), the panel size and the sphere x and z positions. We can use ```let``` or ```const``` to declare variables, the difference is that variables declared with ```const``` can not be changed later in the code, and must have a value when declared. Many of these variables could be declared within the init function but having them all together at the start of the code makes them easier to find and change.
+For each sphere we also set its position in x, y, z order. We use the variables 'sphereposx' and 'sphereposz' for the x and z positions and vary the y position, so the spheres end up in a vertical line. We declare variables for the panel vertical placement (relative to the panel centre), the panel size and the sphere x and z positions. We can use ```let``` or ```const``` to declare variables, the difference is that variables declared with ```const``` can not be changed later in the code, and must have a value when declared. Many of these variables could be declared within the init function but having them all together at the start of the code makes them easier to find and change.
 
-After:
+First we declare the variables, after:
 
 ```
     let desk = 0.8;
@@ -111,7 +111,7 @@ Add:
 
 ```
 
-and within the init function, after:
+Then we need to create the sphere geometry, specifying its radius and number of width and height segments. For each of the 9 spheres we make a mesh from the created geometry and a standard material with a colour from the parameter list. We then add all the spheres to the scene. Within the init function, after:
 
 ```
 scene.add( light );

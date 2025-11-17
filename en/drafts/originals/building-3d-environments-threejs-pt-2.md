@@ -127,20 +127,20 @@ Add:
 	sphere1.position.set( sphereposx, gheight + 0.30, sphereposz);
 	const sphere2 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilColor })); 
 	sphere2.position.set( sphereposx, gheight + 0.21, sphereposz);
-	const sphere9 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.ringTopColor})); 
-	sphere9.position.set( sphereposx, gheight + 0.12, sphereposz);
-	const sphere6 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilBeatenColor})); 
-	sphere6.position.set( sphereposx, gheight + 0.03, sphereposz); 
-	const sphere4 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.nabColor })); 
-	sphere4.position.set( sphereposx, gheight - 0.06, sphereposz); 
-	const sphere3 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.wangelaColor })); 
-	sphere3.position.set( sphereposx, gheight - 0.15, sphereposz); 
-	const sphere8 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleColor})); 
-	sphere8.position.set( sphereposx, gheight - 0.25, sphereposz); 
-	const sphere5 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleAddColor})); 
-	sphere5.position.set( sphereposx, gheight - 0.35, sphereposz); 
-	const sphere7 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.amphColor })); 
-	sphere7.position.set( sphereposx, gheight - 0.44, sphereposz); 
+	const sphere3 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.ringTopColor})); 
+	sphere3.position.set( sphereposx, gheight + 0.12, sphereposz);
+	const sphere4 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilBeatenColor})); 
+	sphere4.position.set( sphereposx, gheight + 0.03, sphereposz); 
+	const sphere5 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.nabColor })); 
+	sphere5.position.set( sphereposx, gheight - 0.06, sphereposz); 
+	const sphere6 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.wangelaColor })); 
+	sphere6.position.set( sphereposx, gheight - 0.15, sphereposz); 
+	const sphere7 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleColor})); 
+	sphere7.position.set( sphereposx, gheight - 0.25, sphereposz); 
+	const sphere8 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleAddColor})); 
+	sphere8.position.set( sphereposx, gheight - 0.35, sphereposz); 
+	const sphere9 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.amphColor })); 
+	sphere9.position.set( sphereposx, gheight - 0.44, sphereposz); 
 	scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
 	
 
@@ -502,13 +502,13 @@ The next sections are optional. You can turn the website into a puzzle game or a
 
 When designing a game or puzzle, consider if the puzzle is based on memory or logic. The main aim of games featuring material culture is generally to help users appreciate the variety in artefact properties such as form and decoration, and not for them to remember the details. Often images of material culture are incorporated into the traditional memory game of finding matching images on overturned cards. See the 2D [Ho'omaka Hou Research Initiative Fishhook Memory Game](https://data.bishopmuseum.org/archaeology/game.html). This approach does introduce users to the variety of forms or decorations in material culture (including fishhooks) that they may not otherwise appreciate. In contrast, jigsaw puzzles (which also commonly feature material culture) rely more on logic. 3D jigsaw puzzles can be made of material cultural artefacts and sites, but it can be quite difficult for users to manipulate pieces on a computer screen. 3D jigsaw puzzles are more usable in VR: one example is [Artsalad](https://artsalad.net) by Mariotto F., an opensource VR 3D puzzle game that was written with three.js.
 
-If this scene featured realistic models of jars that the user needed to place at their correct site it would probably need to provide a way to ensure that the user can first view the correct placements. Alternatively, clues could be given which would get the user to study the models, resulting in less reliance on memory. Here, we will rely on the models being coloured by how they are made (build technique). This information is provided in the site information panel, to help the user match vessels to sites. The decoration style information may also help with matches. The approach of having models matched to information panels could have been done without the use of a map of New Guinea, but including the map helps reinforce the idea that the people of Papua New Guinea (and West Papua) made pots (and in many cases still do) and that there is a large variety in the material culture between the different communities. If you are planning to design a game consider consulting guides such as Schell (2015).
+If the 'Jars of Papua' featured realistic models of jars that the user needed to place at their correct site it would probably need to provide a way to ensure that the user can first view the correct placements. Alternatively, clues could be given which would get the user to study the models, resulting in less reliance on memory. Here, we will rely on the models being coloured by how they are made (build technique). This information is provided in the site information panel, to help the user match vessels to sites. The decoration style information may also help with matches. The approach of having models matched to information panels could have been done without the use of a map of New Guinea, but including the map helps reinforce the idea that the people of Papua New Guinea (and West Papua) made pots (and in many cases still do) and that there is a large variety in the material culture between the different communities. If you are planning to design a game consider consulting guides such as Schell (2015).
 
 To transform the scene into a puzzle the information panel used needs to be altered, as it is the main source of user information and we will do this as the last step. The goal for the user of this game is to start with the jars off the map and the Papuan communities marked by selectable tokens. When the communities are selected (mouse click) the information panel will provide the information on the pots made by that community. Information on the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured by the technique and a key is provided. The decoration technique may also serve as a guide. The user can move the jars (mouse). If they place the matching jar on the community marker then the jar becomes unmoveable and the background colour changes. 
 
 ### Adding Tori
 
-Green tori will be used to mark the communities. They can be harder to aim for than discs, but most Papua New Guinea communities use tori made of leaves to hold the vessels as they are being made. The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified. However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI /2). Each tori centre will be positioned slightly (1 cm) above the map (which is at 'desk' height) at y = desk + 0.01.
+Green tori will be used to mark the communities. They can be harder to aim for than discs, but most Papua New Guinea communities use tori made of leaves to hold the vessels as they are being made. The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified (Figure 4). However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI /2). Each tori centre will be positioned slightly (1 cm) above the map (which is at 'desk' height) at y = desk + 0.01.
 
 Because each torus is connected to a different information panel, they still need to be created separately and added to a tori group. The mouse click event listener has to be altered so that it targets the tori group instead of the jars group. 
 

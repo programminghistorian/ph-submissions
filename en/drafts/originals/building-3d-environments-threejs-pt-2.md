@@ -162,9 +162,9 @@ We will give the planes image ‘textures’ that contain text describing the in
 
 Here we will create all the information panels for all the jars but hide them (by making .visible = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
 
-Textures need to be loaded by a 'TextureLoader'. After loading each texture we will generate a set of lower-resolution images (a 'mipmap') for it. The renderer will automatically use one of the lower-resolution images for when the texture appears small or far away. Using lower-resolution images for areas covering less pixels is not only more efficient, it can prevent image 'shimmering'. Mipmap creation is one of the reasons for using images of 2<sup>n</sup> by 2<sup>n</sup> dimensions but the creation of the down-sampled image sets takes processing time.
+Textures need to be loaded by a 'TextureLoader'. After loading each texture we will generate a set of lower-resolution images (a 'mipmap') for it. The renderer will automatically use one of the lower-resolution images for when the texture appears small or far away. Using lower-resolution images for areas covering less pixels is not only more efficient, it can prevent image 'shimmering'. Mipmap creation is one of the reasons for using images of 2<sup>n</sup> by 2<sup>n</sup> dimensions but the creation of the down-sampled image sets takes processing time. 
 
-After:
+First we declare the variables, after:
 
 ```
     // Variable declaration and setting
@@ -179,8 +179,7 @@ Add:
 	let piecescale = ratio; 
 			
 ```
-
-and within the init function, after:
+Then we will add the galleries and map, so within the init function, after:
 
 ```
 // add models
@@ -189,7 +188,7 @@ and within the init function, after:
 add:
 
 ```
-	// add information panels, key panel and reference panel by loading textures then adding planes .
+	// add introduction, key and reference panels by loading textures then adding planes .
 	// load textures and generate Mipmaps
 	const textureLoader = new THREE.TextureLoader();
 	const introTexture = textureLoader.load( 'textures/Intro.jpg' );
@@ -198,19 +197,7 @@ add:
 	refTexture.generateMipmaps = true;			
 	const keyTexture = textureLoader.load( 'textures/key.jpg' );
 	keyTexture.generateMipmaps = true;
-	const adzeraTexture = textureLoader.load( 'textures/Adzera.jpg' );
-	adzeraTexture.generateMipmaps = true;
-	const aibomTexture = textureLoader.load( 'textures/Aibom.jpg' );
-	aibomTexture.generateMipmaps = true;
-	const mailuTexture = textureLoader.load( 'textures/Mailu.jpg' );
-	mailuTexture.generateMipmaps = true;
-	const dimiriTexture = textureLoader.load( 'textures/Dimiri.jpg' );
-	dimiriTexture.generateMipmaps = true;
-	const louisadeTexture = textureLoader.load( 'textures/Louisade.jpg' );
-	louisadeTexture.generateMipmaps = true;
-	const yabobTexture = textureLoader.load( 'textures/Yabob.jpg' );
-	yabobTexture.generateMipmaps = true;
-
+	
 	// add introduction information panel and set the selected panel to it
 	gallery = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: introTexture }));
 	gallery.position.set( 0, gheight, sphereposz); 
@@ -223,32 +210,6 @@ add:
 	gallery3.position.set( -1.25, gheight, sphereposz); 
 
 	scene.add( gallery, gallery2, gallery3);
-	// add the jar information panels then make them not visible
-	adzeraG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: adzeraTexture }));
-	adzeraG.position.set( 0, gheight, sphereposz); 
-
-	aibomG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: aibomTexture }));
-	aibomG.position.set( 0, gheight, sphereposz); 
-
-	mailuG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: mailuTexture }));
-	mailuG.position.set( 0, gheight, sphereposz); 
-
-	dimiriG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: dimiriTexture }));
-	dimiriG.position.set( 0, gheight, sphereposz); 
-
-	louisadeG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: louisadeTexture }));
-	louisadeG.position.set( 0, gheight, sphereposz); 
-
-	yabobG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: yabobTexture }));
-	yabobG.position.set( 0, gheight, sphereposz); 
-
-	scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
-	adzeraG.visible = false;
-	aibomG.visible = false;
-	mailuG.visible = false;
-	dimiriG.visible = false;
-	louisadeG.visible = false;
-	yabobG.visible = false;
 
 	// add the map of New Guinea
 	const mapGeometry = new THREE.PlaneGeometry( 3 * ratio, 1.5 * ratio );
@@ -260,6 +221,39 @@ add:
 	scene.add( theMap);
 
 ```
+
+You may have noticed that we declared theMap, gallery2 and gallery3 (with ```const```) **within** the init function, but we declared gallery **outside** the init function ('globally'). This is because we want to be able change gallery by hiding it if the user clicks on a jar, so it needs to be declared outside the init function. 
+
+If you look a the code you will see quite a bit of repetition. Furthermore, the jar information panels will all be at the same position and not made visible until their model is selected. Thus, for the jar information panels we will create a function that: receives the filename of the image texture; loads the texture; creates the mipmap; creates a plane mesh with that texture; sets the mesh position and makes it invisible. Our function (we will call it 'createGallery'), will ```return``` a textured plane mesh and assign it to the named variable (i.e. adzeraG), that we included in the global declarations with 'gallery'. 
+
+
+After:
+```
+	scene.add( gallery, gallery2, gallery3);
+```
+add:
+```
+	// add the jar information panels then make them not visible
+	function createGallery(filename){
+		const aTexture = textureLoader.load( filename );
+		aTexture.generateMipmaps = true;
+		const model = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: aTexture }));
+		model.position.set( 0, gheight, sphereposz); 
+		model.visible = false;
+		return model;
+		}
+
+	// 'call' the createGallery function for the information panels/galleries.
+		adzeraG = createGallery('textures/Adzera.jpg');
+		aibomG = createGallery('textures/Aibom.jpg');
+		mailuG = createGallery('textures/Mailu.jpg');
+		dimiriG = createGallery('textures/Dimiri.jpg');
+		louisadeG= createGallery('textures/Louisade.jpg');
+		yabobG = createGallery( 'textures/Yabob.jpg' );
+		scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
+```
+
+
 
 Save and reload. If the panels are black, the images are probably in the wrong directory. 
 

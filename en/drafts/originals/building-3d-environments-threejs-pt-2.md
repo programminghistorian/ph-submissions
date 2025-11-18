@@ -457,7 +457,7 @@ Then, we tell the window to 'listen' for any clicks, and what send the click inf
 
 Within the init function definition, after:
 ```
-	 window.addEventListener( 'resize', onWindowResize );
+	window.addEventListener( 'resize', onWindowResize );
 ```
 
 add:
@@ -467,17 +467,17 @@ add:
 
 Then we have to tell the listener what do do if there is a click in the window. To start with we will just make the newly selected jar glow red. We want to: 
 
-make sure it does not use the orbit controls (we will use event.preventDefault());
+* make sure it does not use the orbit controls (we will use event.preventDefault());
 
-take the click position (we will use the code from a three.js example, it calculates pointer.x and pointer.y from the event.clientX and event.clientY information and the window dimensions);
+* take the click position (we will use the code from a three.js example, it calculates pointer.x and pointer.y from the event.clientX and event.clientY information and the window dimensions);
 
-cast a ray from the camera to the click position (we use the setFromCamera method of the Raycaster) and
+* cast a ray from the camera to the click position (we use the setFromCamera method of the Raycaster) and
 
-see if any jars are there (we use the intersectObjects method of the Raycaster and tell it to only look for objects in the jars group and give them to a group called 'intersects').
+* see if any jars are there (we use the intersectObjects method of the Raycaster and tell it to only look for objects in the jars group and give them to a group called 'intersects').
 
-If it finds any jars (if the length of intersects is greater than 0),
+* If it finds any jars (if the length of intersects is greater than 0),
 
-It will then highlight (by making red emissive) the chosen jar, (creates 'found' and makes it the closest (first) intersected object, change 'selectedObj' to 'found', set found material.emissive.r to on (i.e. '=1')).
+* It will then highlight (by making red emissive) the chosen jar, (creates 'found' and makes it the closest (first) intersected object, change 'selectedObj' to 'found', set found material.emissive.r to on (i.e. '=1')).
 
 After the resize listener:
 

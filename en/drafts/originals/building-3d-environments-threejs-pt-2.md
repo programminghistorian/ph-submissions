@@ -276,11 +276,11 @@ We will later change the emissive property of the material to show if a jar is s
 
 The jars will be added to a group (called 'jars') and the group will be added to the scene. This will allow us to specify later that objects belonging to the jars group can be selected. 
 
-Each jar will get a userdata property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
+Each jar will get a userData property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
 
-Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM, in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that takes the .glb file and loads it when called by the loader.load() method. The script will continue on and run the next line of the code after loader.load() even if the model is still loading. This means that if the next lines of the code refer to the model, there could be an error. Therefore the parameters such as position are altered, and the model is added to the group, within the loading function.
+Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM, in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that runs after the .glb file is loaded by the 'loader.load' method. As mentioned in part 1, we need to put the positioning and scaling of the model in this function so that they only occur after the model has finished loading. As in part 1, we will leave the function that runs while the model is loading 'undefined' and have an anonomous (unnamed) function that is run if there is an error with the loading.
 
-Replace:
+We replace the declaration of the model with declarations of the jars and their group. Replace:
 
 ```
 	let themodel;
@@ -294,6 +294,8 @@ with:
 	let adzeraM, aibomM, mailuM, louisadeM, dimiriM, yabobM;
 
 ```
+
+Then we make the empty group and add it to the scene. We create the onLoadAibom function that will run after loading and call the loader.load method.
 
 Within the init function after:
 
@@ -322,9 +324,9 @@ add:
 ```
 Save and reload and you should see a model.
 
-To avoid repetitive code we will define a function createModel(), and have the loader run this function when it loads the model. The function will take 4 arguments: the x position, the z position, the model colour and the matching gallery as these vary with the different models.  
+To avoid repetitive code we will define a function createModel(), and have the onLoadAibom() function run this function when it loads the model. The function will take 5 arguments: the model filename, the x position, the z position, the model colour and the matching gallery as these vary with the different models. It may seem confusing to have to have two different functions and it is not essential to understand the following, but it may help if you are trying to write your own code. The loader.load method does not expect the function (i.e. onLoadAibom) called after loading to return anything. You will note there is no ```return(x)``` in the onLoadAibom function. So we have to pass our loaded model to a pre-declared variable (i.e. aibomM). However, we want to have 6 different models, and use different colours, planes and positions for them and giving callback functions like 'onLoadAibom' arguments is a bit tricky. So one solution is the use of two different functions, with one function 'createModel' able to take arguments and return a model and the other function is 'onLoadAibom'.
 
-Replace 
+Replace: 
 
 ```
 	// loading function for Aibom jar model
@@ -333,7 +335,7 @@ Replace
 	}
 	loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
 ```
-with
+with:
 ```
 	//a function to make the model with the parameter specified
 	function createModel(gltf, x, z, col, gallery){
@@ -355,9 +357,9 @@ with
 
 ```
 Save and check the model still appears.
-The code can be condensed further by using 'anonymous' functions, i.e. the function called is not named. It does not matter which method you use if you are writing your own code.
+However, with this approach we would still need 6 different 'onLoadX' functions, 1 for each model. The code can be condensed further by using 'anonymous' functions, i.e. the function called is not named. 
 
-Replace 
+We keep the createModel function but replace: 
 ```
 	//calls the createModel function but still in a separately defined function
 	function onLoadAibom( gltf ) {							
@@ -365,7 +367,7 @@ Replace
 	}
 	loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
 ```
-with
+with:
 ```
 	// directly has the onLoad function as an anonymous function in the loader.load
 	// load a jar (filename, load function, function while loading, error function)
@@ -403,6 +405,8 @@ with
 Save and reload and you should see 5 models (Figure 10). You will have to move around to see the sixth.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-10.png" alt="Five jar models sit on a map of Papua." caption="Figure 10. Webpage with six jars from Papua, but one is out of camera range." %}
+
+It does not matter which of the 3 methods you use if you are writing your own code.
 
 Note that if you change 'let piecescale = ratio;' to 'let piecescale = ratio*2;' the vessels become bigger, but some will overlap.
 

@@ -276,9 +276,11 @@ We will later change the emissive property of the material to show if a jar is s
 
 The jars will be added to a group (called 'jars') and the group will be added to the scene. This will allow us to specify later that objects belonging to the jars group can be selected. 
 
-Each jar will get a userData property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
+Each jar will get a userData property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. We will create `aibomM.userData.planes`, but we could also create additional ones such as 'aibomM.userData.somethingelse' and 'aibomM.userData.anotherthing'.
 
-Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM, in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that runs after the .glb file is loaded by the 'loader.load' method. As mentioned in part 1, we need to put the positioning and scaling of the model in this function so that they only occur after the model has finished loading. As in part 1, we will leave the function that runs while the model is loading 'undefined' and have an anonomous (unnamed) function that is run if there is an error with the loading.
+Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
+
+Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM, in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that runs after the .glb file is loaded by the 'loader.load' method. As mentioned in part 1, we need to put the positioning and scaling of the model in this function so that they only occur after the model has finished loading. As in part 1, we will leave the function that runs while the model is loading 'undefined' and have an anonymous (unnamed) function that is run if there is an error with the loading.
 
 We replace the declaration of the model with declarations of the jars and their group. Replace:
 
@@ -314,7 +316,7 @@ add:
 	function onLoadAibom( gltf ) {				
 		aibomM = gltf.scene.children[0];
 		aibomM.material = new THREE.MeshStandardMaterial();
-		aibomM.position.set( 0.36* ratio, desk + 0.01,-0.01* ratio);
+		aibomM.position.set( 0.36* ratio, desk + 0.01, -0.01* ratio);
 		aibomM.scale.set( piecescale, piecescale, piecescale);
 		aibomM.material.color.set(parameters.materialColor);
 		aibomM.userData.planes = aibomG;
@@ -322,7 +324,7 @@ add:
 	}
 	loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
 ```
-Save and reload and you should see a model.
+Save and reload and you should see a model. You will notice that we did not have to add aibomM to the scene and this is because we added it to the jars group, which has already been added to the scene.
 
 To avoid repetitive code we will define a function createModel(), and have the onLoadAibom() function run this function when it loads the model. The function will take 5 arguments: the model filename, the x position, the z position, the model colour and the matching gallery as these vary with the different models. It may seem confusing to have to have two different functions and it is not essential to understand the following, but it may help if you are trying to write your own code. The loader.load method does not expect the function (i.e. onLoadAibom) called after loading to return anything. You will note there is no ```return(x)``` in the onLoadAibom function. So we have to pass our loaded model to a pre-declared variable (i.e. aibomM). However, we want to have 6 different models, and use different colours, planes and positions for them and giving callback functions like 'onLoadAibom' arguments is a bit tricky. So one solution is the use of two different functions, with one function 'createModel' able to take arguments and return a model and the other function is 'onLoadAibom'.
 
@@ -421,7 +423,7 @@ To determine what jar in 3D space is being targeted by the user's mouse in 2D sp
 You may also notice that three.js stores coordinates in a 'vector'. A THREE.Vector2 is used for 2D coordinates (referred to as x and y) such as the pointer position, and a THREE.Vector3 is used for 3D coordinates (x, y and z). 
 
 
-After:
+We need to declare variables for the raycaster, the mouse pointer and the object selected at the time. After:
 
 ```
 	// Variable declaration and setting
@@ -432,6 +434,8 @@ add:
 ```
 	let raycasterM, pointer, selectedObj; // for mouse controls
 ```
+
+We need to create a raycaster, and make the pointer a (x,y) vector (empty to start). Often problems arise if objects are not defined before use, especially if we are going to do something to them, like make them unemissive after something else is selected. One solution to this is to initially make a variable like 'selectedObj' something and here we will just create a torus. As we do not add it to the scene it does not appear.
 
 Within the init function definition, after:
 
@@ -449,7 +453,9 @@ add:
 
 ```
 
-after:
+Then, we tell the window to 'listen' for any clicks, and what send the click information to the onClick function that we will define next.
+
+Within the init function definition, after:
 ```
 	 window.addEventListener( 'resize', onWindowResize );
 ```
@@ -459,7 +465,25 @@ add:
 	window.addEventListener( 'click', onClick );
 ```
 
-Then we have to tell the listener what do do if there is a click in the window. We want to: make sure it does not use the orbit controls; take the click position and cast a ray to the click position (from the camera) and see if any jars are there. If it finds any jars, it will unhighlight the last jar selected and hide the respective panel. It will then highlight (by making red emissive) the chosen jar, and make visible the panel that is linked to it in the userData.
+Then we have to tell the listener what do do if there is a click in the window. We want to: 
+
+make sure it does not use the orbit controls (we will use event.preventDefault());
+
+take the click position (we will use the code from a three.js example, it calculates pointer.x and pointer.y from the event.clientX and event.clientY information and the window dimensions);
+
+cast a ray from the camera to the click position (we use the setFromCamera method of the Raycaster) and
+
+see if any jars are there (we use the intersectObjects method of the Raycaster and tell it to only look for objects in the jars group and give them to a group called 'intersects').
+
+If it finds any jars (if the length of intersects is greater than 0),
+
+it will unhighlight the last jar selected (set material.emissive.r of the 'selectedObj' to off (i.e. '=0')) and
+
+hide the respective panel (set .visible to false for the 'selectedPlane'). 
+
+It will then highlight (by making red emissive) the chosen jar, (creates 'found' and makes it the closest (first) intersected object, change 'selectedObj' to 'found', set found material.emissive.r to on (i.e. '=1')) and 
+
+change the 'selectedPlane' to the new jars linked userData panel and make that panel visible (change 'selectedPlane' and set its .visible to true).
 
 After the resize listener:
 
@@ -484,10 +508,10 @@ add:
 		// if there is a jar being clicked		
 		if(intersects.length > 0){
 			selectedObj.material.emissive.r = 0; // turn the current selected obj back to not emissive. 0 is off
+			selectedPlane.visible = false; // hide the current information panel
 			const found = intersects[ 0 ].object; // get the selected jar, index 0 is the first
 			selectedObj = found;
 			found.material.emissive.r = 1; // turn the selected jar red emissive. 1 is on.
-			selectedPlane.visible = false; // hide the current information panel
 			selectedPlane = found.userData.planes; // get the new matching information panel for the selected jar
 			selectedPlane.visible = true; // make the new panel visible
 		}

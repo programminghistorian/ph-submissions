@@ -38,7 +38,7 @@ Put (or replace) the downloaded models and textures folders in the myscene folde
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-02.png" alt="Screenshot of the VSC editor showing a list of jpg files in the expanded textures folder." caption="Figure 2. File structure for part 2 as shown in VSC, with the textures folder expanded. The texture file Abelam.jpg is shown in the main panel." %}
 
 If you made autoRotate true, comment out that line (i.e. add // to the beginning of the line) and also comment out the controls.update in the render function (make sure not to touch the one in the init function). In the index.html file from part 1, remove the code that loads the glTF model used in part 1: 
-i.e. ***remove***
+i.e. **remove**
 
 ```
                 // load model
@@ -82,13 +82,13 @@ The colours are set in the parameters list (more correctly called an 'array' in 
 
 For each sphere we also set its position in x, y, z order. We use the variables 'sphereposx' and 'sphereposz' for the x and z positions and vary the y position, so the spheres end up in a vertical line. We declare variables for the panel vertical placement (relative to the panel centre), the panel size and the sphere x and z positions. We can use ```let``` or ```const``` to declare variables, the difference is that variables declared with ```const``` can not be changed later in the code, and must have a value when declared. Many of these variables could be declared within the init function but having them all together at the start of the code makes them easier to find and change.
 
-First we declare the variables, ***after:***
+First we declare the variables, **after:**
 
 ```
     let desk = 0.8;
 ```
 
-***add:***
+**add:**
 
 ```
 	let gheight = desk + 0.55; //panel height
@@ -465,7 +465,7 @@ add:
 	window.addEventListener( 'click', onClick );
 ```
 
-Then we have to tell the listener what do do if there is a click in the window. We want to: 
+Then we have to tell the listener what do do if there is a click in the window. To start with we will just make the newly selected jar glow red. We want to: 
 
 make sure it does not use the orbit controls (we will use event.preventDefault());
 
@@ -477,13 +477,7 @@ see if any jars are there (we use the intersectObjects method of the Raycaster a
 
 If it finds any jars (if the length of intersects is greater than 0),
 
-it will unhighlight the last jar selected (set material.emissive.r of the 'selectedObj' to off (i.e. '=0')) and
-
-hide the respective panel (set .visible to false for the 'selectedPlane'). 
-
-It will then highlight (by making red emissive) the chosen jar, (creates 'found' and makes it the closest (first) intersected object, change 'selectedObj' to 'found', set found material.emissive.r to on (i.e. '=1')) and 
-
-change the 'selectedPlane' to the new jars linked userData panel and make that panel visible (change 'selectedPlane' and set its .visible to true).
+It will then highlight (by making red emissive) the chosen jar, (creates 'found' and makes it the closest (first) intersected object, change 'selectedObj' to 'found', set found material.emissive.r to on (i.e. '=1')).
 
 After the resize listener:
 
@@ -507,17 +501,54 @@ add:
 		const intersects = raycasterM.intersectObjects( jars.children); // an array, nearest to camera will be first
 		// if there is a jar being clicked		
 		if(intersects.length > 0){
-			selectedObj.material.emissive.r = 0; // turn the current selected obj back to not emissive. 0 is off
-			selectedPlane.visible = false; // hide the current information panel
 			const found = intersects[ 0 ].object; // get the selected jar, index 0 is the first
 			selectedObj = found;
 			found.material.emissive.r = 1; // turn the selected jar red emissive. 1 is on.
-			selectedPlane = found.userData.planes; // get the new matching information panel for the selected jar
-			selectedPlane.visible = true; // make the new panel visible
 		}
 	}	
 ```
-Now you should be able to select a jar and the middle information panel should change to give information about that jar. You can try '.emissive.g' or '.emissive.b' to make the selected jar green or blue emissive, if you want.
+You can save the file and reload the browser and check that clicking on the jars makes them red. However we want the jars to go back to their original colour after a new jar is selected. Toggling 'material.emissive.r' off and on to indicate selection means we do not have to store what colour the jar was originally as we can just turn the emissiveness off.
+
+We want to change the onClick functions sot that it will unhighlight the last jar selected (set material.emissive.r of the 'selectedObj' to off (i.e. '=0')). Importantly we want to do this **after** we click on a new object but **before** we update the selectedObj to the new object.
+
+Within the onClick function after:
+```
+	if(intersects.length > 0){
+```
+add:
+```	
+		selectedObj.material.emissive.r = 0; // turn the current selected obj back to not emissive. 0 is off
+```
+Now if you save and reload, there should only be one highlighted jar at a time.
+
+We also need the onClick function to:
+
+hide the current panel (set .visible to false for the 'selectedPlane'),
+
+change the 'selectedPlane' to the new jars linked userData panel
+
+and make that panel visible (change 'selectedPlane' and set its .visible to true).
+
+Within the onClick function after:
+```
+		selectedObj.material.emissive.r = 0; // turn the current selected obj back to not emissive. 0 is off
+```
+add:
+```
+		selectedPlane.visible = false; // hide the current information panel
+```
+then after:
+```
+		found.material.emissive.r = 1; // turn the selected jar red emissive. 1 is on.
+```
+add:
+
+```
+		selectedPlane = found.userData.planes; // get the new matching information panel for the selected jar
+		selectedPlane.visible = true; // make the new panel visible
+```
+
+Now (after reloading) you should be able to select a jar and the middle information panel should change to give information about that jar. You can try '.emissive.g' or '.emissive.b' to make the selected jar green or blue emissive, if you want.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-11.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 11. Webpage showing the Aibom jar selected with its red emission set to true, and the Aibom information panel." %}
 

@@ -80,7 +80,7 @@ We will use 9 spheres and a plane to make a vessel colour key for how the jars w
 
 The colours are set in the parameters list (more correctly called an 'array' in JavaScript). We want to colour the jars by how they were made. Some communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres we are creating now will form part of the key that lets the viewer know how the pots were made. By having them in a parameter list/array, we can just change the respective hex code and the key and pots will all change. Start with the proposed values and alter them later if you want.
 
-For each sphere we also set its position in x, y, z order. We use the variables 'sphereposx' and 'sphereposz' for the x and z positions and vary the y position, so the spheres end up in a vertical line. We declare variables for the panel vertical placement (relative to the panel centre), the panel size and the sphere x and z positions. We can use ```let``` or ```const``` to declare variables, the difference is that variables declared with ```const``` can not be changed later in the code, and must have a value when declared. Many of these variables could be declared within the init function but having them all together at the start of the code makes them easier to find and change.
+For each sphere we also set its position in x, y, z order. We use the variables 'sphereposx' and 'sphereposz' for the x and z positions and vary the y position, so the spheres end up in a vertical line. We declare variables for the panel vertical placement (relative to the panel centre), and the sphere x and z positions. We can use ```let``` or ```const``` to declare variables, the difference is that variables declared with ```const``` can not be changed later in the code, and must have a value when declared. Many of these variables could be declared within the init function but having them all together at the start of the code makes them easier to find and change.
 
 First we declare the variables, **after:**
 
@@ -92,7 +92,6 @@ First we declare the variables, **after:**
 
 ```
 	let gheight = desk + 0.55; //panel height
-	let psize = 1.0; // panel dimensions
 	let sphereposx = 0.84 // key sphere x position
 	let sphereposz = -0.75 // key sphere z position
 
@@ -155,13 +154,9 @@ Save and reload in the browser and you should see a webpage with nine differentl
 
 ### Adding the Information Panels and Map
 
-Now we will add some planes. To help keep track of the information panel (gallery), jar model, loading function and community site for each jar, we will call these 'xG, 'xM', 'onLoadX' and 'xSite', respectively, where 'x' is a name such as 'yabob' or 'aibom', the village (or area) where the jar the model is based on was made. Variable and function names can not have spaces in them.
+We will now add the 3 information panels that the viewer will see at the start: the references (gallery3, on the left), the instructions (gallery, middle) and the key to the techniques (gallery2, on the right). The panels will be simple 2D planes that we will add textures to. The left and right panels will not change. However the central instruction panel will disappear when the user clicks a jar and the information panel for that community will appear. We will do this by toggling the visibility of different panels off and on instead of changing the texture on the plane (which would also be implementable).
 
-We want the information panels to face the camera, and the default planes do this. In addition, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 'Math' is a JavaScript object, which has properties, including Math.PI (i.e. π, 3.141), and methods, including Math.random() (used later in the lesson). See the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for more properties and methods. Three.js uses radians for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when you are 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geograpical map must be -Math.PI/2 around the x axis to have the 'front' of the panel facing upwards.
-
-We will give the planes image ‘textures’ that contain text describing the individual artefacts. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. The larger the image files, the longer they take to load, and very large images may not load at all. By default only one side (the 'front') of a panel is textured. Here the dimensions of the panels match the image texture dimensions, in situations where they do not, different options, including image tiling can be used. The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. There are [alternatives](https://threejs.org/docs/index.html#manual/en/introduction/Creating-text). 
-
-Here we will create all the information panels for all the jars but hide them (by making .visible = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
+We want the information panels to face the camera, and the default planes do this. We will give the planes image ‘textures’ that contain text describing the individual artefacts. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. The larger the image files, the longer they take to load, and very large images may not load at all. By default only one side (the 'front') of a panel is textured. Here the dimensions of the panels match the image texture dimensions, in situations where they do not, different options, including image tiling can be used. The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. There are [alternatives](https://threejs.org/docs/index.html#manual/en/introduction/Creating-text). 
 
 Textures need to be loaded by a 'TextureLoader'. After loading each texture we will generate a set of lower-resolution images (a 'mipmap') for it. The renderer will automatically use one of the lower-resolution images for when the texture appears small or far away. Using lower-resolution images for areas covering less pixels is not only more efficient, it can prevent image 'shimmering'. Mipmap creation is one of the reasons for using images of 2<sup>n</sup> by 2<sup>n</sup> dimensions but the creation of the down-sampled image sets takes processing time. 
 
@@ -174,10 +169,70 @@ First we declare the variables, after:
 add:
 
 ```
-	let gallery, adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG; // information panels for the different jars
-	let selectedPlane;	// which information panel will be visible
+	let psize = 1.0; // panel dimensions
+	let gallery, gallery2, gallery3;			
+```
+
+Then we will make a textureLoader and load the 3 textures. Then for each of the 3 panels we make a mesh with one of the textures and move the panel to the correct place.
+So within the init function, after:
+
+```
+// add models
+```
+
+add:
+
+```
+	// add introduction, key and reference panels by loading textures then adding planes .
+	// load textures and generate Mipmaps
+	const textureLoader = new THREE.TextureLoader();
+	const introTexture = textureLoader.load( 'textures/Intro.jpg' );
+	introTexture.generateMipmaps = true;
+	const refTexture = textureLoader.load( 'textures/sources.jpg' );
+	refTexture.generateMipmaps = true;			
+	const keyTexture = textureLoader.load( 'textures/key.jpg' );
+	keyTexture.generateMipmaps = true;
+	
+	// add introduction information panel
+	gallery = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: introTexture }));
+	gallery.position.set( 0, gheight, sphereposz); 
+	// add the panel for the key
+	const gallery2 = new THREE.Mesh(new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: keyTexture }));
+	gallery2.position.set( 1.25, gheight, sphereposz); 
+	// add the panel for the references
+	const gallery3 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize  ), new THREE.MeshBasicMaterial({ map: refTexture }));
+	gallery3.position.set( -1.25, gheight, sphereposz); 
+
+	scene.add( gallery, gallery2, gallery3);
+
+```
+
+
+To help keep track of the information panel (gallery), jar model, loading function and community site for each jar, we will call these 'xG, 'xM', 'onLoadX' and 'xSite', respectively, where 'x' is a name such as 'yabob' or 'aibom', the village (or area) where the jar the model is based on was made. Variable and function names can not have spaces in them.
+
+
+
+In addition, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 'Math' is a JavaScript object, which has properties, including Math.PI (i.e. π, 3.141), and methods, including Math.random() (used later in the lesson). See the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for more properties and methods. Three.js uses radians for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when you are 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geograpical map must be -Math.PI/2 around the x axis to have the 'front' of the panel facing upwards.
+
+
+Here we will create all the information panels for all the jars but hide them (by making .visible = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
+
+
+First we declare the variables, after:
+
+```
+    // Variable declaration and setting
+```
+
+add:
+
+```
+	let theMap;
 	let ratio = 2; 
 	let piecescale = ratio; 
+
+	let adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG; // information panels for the different jars
+	let selectedPlane;	// which information panel will be visible
 			
 ```
 Then we will add the galleries and map, so within the init function, after:
@@ -212,18 +267,18 @@ add:
 
 	scene.add( gallery, gallery2, gallery3);
 
+
+selectedPlane = gallery;
 	// add the map of New Guinea
 	const mapGeometry = new THREE.PlaneGeometry( 3 * ratio, 1.5 * ratio );
 	const mapTexture = textureLoader.load('textures/png.png'); // from google maps
 	mapTexture.generateMipmaps = true; // saves gpu if false
-	const theMap = new THREE.Mesh( mapGeometry, new THREE.MeshBasicMaterial({ map: mapTexture }));
+	theMap = new THREE.Mesh( mapGeometry, new THREE.MeshBasicMaterial({ map: mapTexture }));
 	theMap.rotation.x = - Math.PI / 2; // Equal to 90 degrees
 	theMap.position.set( 0, desk, 0); // desk height
 	scene.add( theMap);
 
 ```
-
-You may have noticed that we declared theMap, gallery2 and gallery3 (with ```const```) **within** the init function, but we declared gallery **outside** the init function ('globally'). This is because we want to be able change gallery by hiding it if the user clicks on a jar, so it needs to be declared outside the init function. 
 
 If you look a the code you will see quite a bit of repetition. Furthermore, the jar information panels will all be at the same position and not made visible until their model is selected. Thus, for the jar information panels we will create a function that: receives the filename of the image texture; loads the texture; creates the mipmap; creates a plane mesh with that texture; sets the mesh position and makes it invisible. Our function (we will call it 'createGallery'), will ```return``` a textured plane mesh and assign it to the named variable (i.e. adzeraG), that we included in the global declarations with 'gallery'. 
 
@@ -469,15 +524,15 @@ Then we have to tell the listener what do do if there is a click in the window. 
 
 * make sure it does not use the orbit controls (we will use event.preventDefault());
 
-* take the click position (we will use the code from a three.js example, it calculates pointer.x and pointer.y from the event.clientX and event.clientY information and the window dimensions);
+* get a pointer position from the click position (we will use the code from a three.js example, it calculates pointer.x and pointer.y from the event.clientX and event.clientY information and the window dimensions);
 
-* cast a ray from the camera to the click position (we use the setFromCamera method of the Raycaster) and
+* cast a ray from the camera to the pointer (we use the setFromCamera method of the Raycaster) and
 
-* see if any jars are there (we use the intersectObjects method of the Raycaster and tell it to only look for objects in the jars group and give them to a group called 'intersects').
+* see if any jars are there (we use the intersectObjects method of the Raycaster and tell it to only look for objects in the jars group, and give any objects found to a group called 'intersects').
 
 * If it finds any jars (if the length of intersects is greater than 0),
 
-* It will then highlight (by making red emissive) the chosen jar, (creates 'found' and makes it the closest (first) intersected object, change 'selectedObj' to 'found', set found material.emissive.r to on (i.e. '=1')).
+* it will then highlight (by making red emissive) the chosen jar, (creates 'found' and makes it the closest (first) intersected object, change 'selectedObj' to 'found', set found material.emissive.r to on (i.e. '=1')).
 
 After the resize listener:
 

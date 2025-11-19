@@ -310,7 +310,7 @@ We will later change the emissive property of the material to show if a jar is s
 
 The jars will be added to a group (called 'jars') and the group will be added to the scene. This will allow us to specify later that objects belonging to the jars group can be selected. 
 
-Each jar will get a userData property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. We will create `aibomM.userData.planes`, but we could also create additional ones such as 'aibomM.userData.somethingelse' and 'aibomM.userData.anotherthing'.
+Each jar will get a userData property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. We will create 'aibomM.userData.planes', but we could also create additional ones such as 'aibomM.userData.somethingelse' and 'aibomM.userData.anotherthing'.
 
 Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
 
@@ -500,18 +500,13 @@ add:
 ```
 
 Then we have to tell the listener what do do if there is a click in the window. To start with we will just make the newly selected jar glow red. We want to: 
-
 * make sure it does not use the orbit controls (we will use event.preventDefault());
-
 * get a pointer position from the click position (we will use the code from a three.js example, it calculates pointer.x and pointer.y from the event.clientX and event.clientY information and the window dimensions);
-
 * cast a ray from the camera to the pointer (we use the setFromCamera method of the Raycaster) and
-
 * see if any jars are there (we use the intersectObjects method of the Raycaster and tell it to only look for objects in the jars group, and give any objects found to a group called 'intersects').
-
 * If it finds any jars (if the length of intersects is greater than 0),
-
-* it will then highlight (by making red emissive) the chosen jar, (creates 'found' and makes it the closest (first) intersected object, change 'selectedObj' to 'found', set found material.emissive.r to on (i.e. '=1')).
+* get the closest jar (create 'found' and makes it the closest (first) intersected object, change 'selectedObj' to 'found'),
+* and highlight it (set found's material.emissive.r to 'on' (i.e. '=1')).
 
 After the resize listener:
 
@@ -557,11 +552,9 @@ Now if you save and reload, there should only be one highlighted jar at a time.
 
 We also need the onClick function to:
 
-hide the current panel (set .visible to false for the 'selectedPlane'),
-
-change the 'selectedPlane' to the new jars linked userData panel
-
-and make that panel visible (change 'selectedPlane' and set its .visible to true).
+* hide the current panel (set .visible to false for the 'selectedPlane'),
+* change the 'selectedPlane' to the new jars linked userData panel
+* and make that panel visible (change 'selectedPlane' and set its .visible to true).
 
 Within the onClick function after:
 ```

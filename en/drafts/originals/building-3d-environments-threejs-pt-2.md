@@ -754,7 +754,7 @@ with:
 	model.userData.site = site;
 ```
 
-Then we need to change all 6 of the createModel calls, so replace:
+Then we need to change all 6 of the createModel calls that are within the 6 different loader.load calls, so replace:
 ```
 	aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
 ```
@@ -810,22 +810,19 @@ Save and reload; you should see the jars starting above the map and if you reloa
 
 ### Check for Successful Matches
 
-At the end of each jar movement, you want to check if the jar was moved to the correct spot. One way to do this is to determine the distance between the jar and the matching site (torus). You need to set an allowed distance difference that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby. Here we will use 5 cm (2.5cm * ratio).
+At the end of each jar movement, you want to check if the jar was moved to the correct spot. One way to do this is to determine the distance between the jar and the matching site (torus). You need to set an allowed distance difference that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby. Here we will use 5 cm (2.5cm * ratio). If the test is successful, there has to be a signal to the user. Here we will change the background colour to a random colour, and make the jar unmoveable (and rotate it to be upright). No signal will be given for an incorrect match. We will create an additional group called 'unmoveable' and attach any jars that are placed close enough to their torus to that group. Objects can only be attached to one group, so when a model is moved to 'unmoveable' it will no longer be in 'jars' and so the mouse will not detect it.
 
-The event object for drag events contains the identity of the object being dragged ('event.object'), so we can use that in the handler function. We can get the matching site from its userData, and then use the getWorldPosition method to find out the coordinates of the matching site. The getWorldPosition method puts the coordinates into a vector (x, y, z) that is given as an argument, in this case 'testposition'. This vector can not be null to begin with so it is set as (0,0,0). Then we use another vector 'aposition' to get the position of the selected object. We call the distanceTo method on the aposition vector to determine the distance between the two vectors and test if it is smaller than our allowed distance.
+We need extra variables for the new 'unmoveable' group, 'selectedObject' which is the selected jar and the 'truesite' which is the site that the selected jar should match. As no jar is selected at the start we will make truesite and selectedObject 'null' to start with.
 
-If the test is successful, there has to be a signal to the user. Here we will change the background colour to a random colour, and make the jar unmoveable (and rotate it to be upright). No signal will be given for an incorrect match. We will create an additional group called 'unmoveable' and attach any jars that are placed close enough to their torus to that group. Objects can only be attached to one group, so when a model is moved to 'unmoveable' it will no longer be in 'jars' and so the mouse will not detect it.
-
-Change
+Replace:
 ```
 let jars, tori;
 ```
-
-to
+with:
 ```
 let jars, tori, unmoveable;
-let truesite = null;
 let selectedObject = null;
+let truesite = null;
 ```
 within the init function, after:
 ```
@@ -837,29 +834,69 @@ add
 	unmoveable = new THREE.Group();
 	scene.add(unmoveable);  
 ```
-For the mouse controls, change
+
+The event object for drag events contains the identity of the object being dragged ('event.object'), so we can use that in the handler function and we can get the site it should match from its userData.
+
+**Within** the dragend handler function, after: 
 ```
 dragControls.addEventListener('dragend', function (event) {
-        	...
-})	
+	controls.enabled = true // orbit controls back on
 ```
-to
+add:
 ```
-dragControls.addEventListener('dragend', function (event) {
-	controls.enabled = true; // turn the orbiting controls back on when dragging done
 	selectedObject = event.object;
 	truesite = selectedObject.userData.site;
+```
+
+We can use the getWorldPosition method to find out the coordinates of the truesite. You may wonder why we did not just put the coordinates in the userData and we could have as the sites do not move in this version of the game. However having this extra step means that if we want to make the map (with sites) movable in a different version it is easier to do. The getWorldPosition method puts the coordinates into a vector (x, y, z) that is given as an argument, in this case 'testposition'. This vector can not be null to begin with so it is set as (0,0,0). To get the position of the jar being dragged we can put its position property into a vector (we will call 'aposition').
+
+After:
+```
+	truesite = selectedObject.userData.site;
+```
+add:
+```
 	let testposition = new THREE.Vector3(0,0,0); //needs to be something first
 	truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z)
-	let aposition = selectedObject.position; //way 1 test object position
-					
+	let aposition = selectedObject.position; //get jar position
+```
+
+We call the distanceTo method on the aposition vector to determine the distance between the two vectors and test if it is smaller than our allowed distance (0.25 * ratio).
+
+After:
+```
+	let aposition = selectedObject.position; //get jar position
+```
+
+add:
+```
 	if ( aposition.distanceTo( testposition ) < .025 * ratio) {
+		// they are a match!
+	}	
+
+```
+You can save and reload and check for errors (broken code blocks can occur), but we have not told the script what to do if the test is successful yet, so nothing will occur if you do get a correct match. If the match is correct we want the background colour to change and we can do this by making scene.background equal to a new THREE.Color generated by 'Math.random() * 0xffffff'. This works because the hex colour codes are actually being converted to hexadecimal numbers and multiplying white (0xffffff or 16777215) by a random (0-1) value gives another number 0- 16777215, which can be interpreted as a colour by three.js.
+
+Replace:
+```
+		// they are a match!
+```
+with:
+```
 		scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
+```
+If the test is successful we also want to set the position of the jar to the exact spot, partly because the slight jump helps signal that it was a success. We will also make sure it is upright (really just necessary for VR). Importantly we want to make it unmoveable by putting it in the unmoveable group. The unmoveable group is unmoveable because the drag listener is only acting on the jars group.
+
+Keeping within the if code block, after:
+```
+		scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
+```
+add:
+```
 		selectedObject.position.set(testposition.x, testposition.y, testposition.z);
 		selectedObject.rotation.set(0, 0, 0); // makes sure the jar is upright, necessary for VR.
 		unmoveable.attach( selectedObject); // adding to the unmoveable group will remove from the jar group.
-	}	
-})
+
 ```
 You can save and try to test this, but moving in 3D can be difficult and we will make it (somewhat) easier in the next step. Moving is best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place it in the right spot, or vice versa (Figures 14-16).
 
@@ -869,7 +906,7 @@ You can save and try to test this, but moving in 3D can be difficult and we will
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-16.png" alt="Normal view of the jars and map, with the Aibom jar in its correct position." caption="Figure 16. The Aibom jar in its correct position." %}
 
-This way of placing the jars on the sites can be frustrating for users and the onClick function is actually called at the end of a drag event, thus you can also alter the onClick function to register a correct match if the drag ends with the mouse on the correct site. This alternative means that the match is tested in 2D space instead of in 3D space (as in the first approach), and thus matches are easier, especially for players not experienced with digital 3D environments. If you develop your own games you might want to test different approaches to see what works best. 
+This way of placing the jars on the sites can be frustrating for users and the onClick function is actually called at the end of a drag event, thus you can also alter the onClick function to register a correct match if the drag ends with the mouse on the correct site. This alternative means that the match is tested in 2D space instead of in 3D space (as in the first approach), and thus matches are easier, especially for players not experienced with digital 3D environments. If you develop your own games you might want to test different approaches to see what works best. All game or website design guides will advise you that several cycles of user testing and code refinement are important.
 
 Replace 
 ```

@@ -310,11 +310,11 @@ We will later change the emissive property of the material to show if a jar is s
 
 The jars will be added to a group (called 'jars') and the group will be added to the scene. This will allow us to specify later that objects belonging to the jars group can be selected. 
 
-Each jar will get a userData property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. We will create 'aibomM.userData.planes', but we could also create additional ones such as 'aibomM.userData.somethingelse' and 'aibomM.userData.anotherthing'.
+Each jar will get a userData property that will point to the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. We will create 'aibomM.userData.planes', but we could also create additional ones such as 'aibomM.userData.somethingelse' and 'aibomM.userData.anotherthing'.
 
 Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
 
-Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM, in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that runs after the .glb file is loaded by the 'loader.load' method. As mentioned in part 1, we need to put the positioning and scaling of the model in this function so that they only occur after the model has finished loading. As in part 1, we will leave the function that runs while the model is loading 'undefined' and have an anonymous (unnamed) function that is run if there is an error with the loading.
+Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM, in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that runs after the .glb file is loaded by the loader's load method. As mentioned in part 1, we need to put the positioning and scaling of the model in this function so that they only occur after the model has finished loading. Remember that the load method has 5 arguments: the model filename; the function run after the model is loaded; a function run while the model is loading; and a function run if there is an error.  As in part 1, we will leave the function that runs while the model is loading 'undefined' and have an anonymous (unnamed) function that is run if there is an error with the loading.
 
 We replace the declaration of the model with declarations of the jars and their group. Replace:
 
@@ -331,7 +331,7 @@ with:
 
 ```
 
-Then we make the empty group and add it to the scene. We create the onLoadAibom function that will run after loading and call the loader.load method.
+Then we make the empty group and add it to the scene. We will create the onLoadAibom function that will run after loading and then we will call the loader.load method.
 
 Within the init function after:
 
@@ -350,9 +350,9 @@ add:
 	function onLoadAibom( gltf ) {				
 		aibomM = gltf.scene.children[0];
 		aibomM.material = new THREE.MeshStandardMaterial();
-		aibomM.position.set( 0.36* ratio, desk + 0.01, -0.01* ratio);
-		aibomM.scale.set( piecescale, piecescale, piecescale);
 		aibomM.material.color.set(parameters.materialColor);
+		aibomM.scale.set( piecescale, piecescale, piecescale);
+		aibomM.position.set( 0.36* ratio, desk + 0.01, -0.01* ratio);
 		aibomM.userData.planes = aibomG;
 		jars.add( aibomM);
 	}
@@ -377,9 +377,9 @@ with:
 	function createModel(gltf, x, z, col, gallery){
 		const model = gltf.scene.children[0];	
 		model.material = new THREE.MeshStandardMaterial();
-		model.position.set( x * ratio, desk + 0.01, z * ratio);	
-		model.scale.set( piecescale, piecescale, piecescale);				
 		model.material.color.set(col);
+		model.scale.set( piecescale, piecescale, piecescale);				
+		model.position.set( x * ratio, desk + 0.01, z * ratio);	
 		model.userData.planes = gallery;
 		return model;
 	}
@@ -597,7 +597,7 @@ Because each torus is connected to a different information panel, they still nee
 
 While each site COULD be added with code such as:
 ```
-	const aibomSite = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
+	aibomSite = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
 	aibomSite.position.set(0.36* ratio, desk + 0.01, -0.01* ratio);
 	aibomSite.scale.set( piecescale, piecescale, piecescale);
 	aibomSite.rotation.x = -Math.PI * 1/2;
@@ -606,20 +606,21 @@ While each site COULD be added with code such as:
 it is also possible to make a function that takes position (x and z) co-ordinates and the relevant gallery. The function is then called for each site.
 
 
-In the index.html file REPLACE
+In the index.html file REPLACE:
 ```
 let jars;
 ```
 
-with 
+with: 
 ```
 let jars, tori;
+let aibomSite, dimiriSite, louisadeSite, mailuSite, adzeraSite, yabobSite;
 ```
-In the init function after
+In the init function after:
 ```
 	scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
 ```
-add
+add:
 ```
 	// Add sites as tori, in a group
 	tori = new THREE.Group();
@@ -635,12 +636,12 @@ add
 		return model;
 		}
 
-	const aibomSite = createSite(0.36, -0.01, aibomG);
-	const dimiriSite = createSite(0.43, 0, dimiriG);
-	const louisadeSite = createSite(0.99, 0.59, louisadeG);
-	const mailuSite = createSite(0.84, 0.48, mailuG);
-	const adzeraSite = createSite(0.61, 0.15, adzeraG);
-	const yabobSite = createSite(0.572, 0.0396, yabobG);
+	aibomSite = createSite(0.36, -0.01, aibomG);
+	dimiriSite = createSite(0.43, 0, dimiriG);
+	louisadeSite = createSite(0.99, 0.59, louisadeG);
+	mailuSite = createSite(0.84, 0.48, mailuG);
+	adzeraSite = createSite(0.61, 0.15, adzeraG);
+	yabobSite = createSite(0.572, 0.0396, yabobG);
 	tori.add(aibomSite, mailuSite, dimiriSite, louisadeSite, adzeraSite, yabobSite);
 
 ```
@@ -731,65 +732,76 @@ To make the jars start in a random position above the map we will use the [Math.
 
 We will store the matching site in a userData variable. Before you do this you may want to note, or take a screenshot of where at least one of the jars should go.
 
-Replace:
+When creating the jars we now need the matching site but not the gallery and we do not need its correct position so replace:
 
 ```
 	function createModel(gltf, x, z, col, gallery){
-		...
-	}
-			...
-
-	loader.load( 'models/yabob.glb', function( gltf ) {
-		...
-	}, undefined, function ( error ) {console.error( error );} );
-
 ```
-
 with:
 
 ```
-	//a function to make the model with the parameter specified, model, colour, matching site
 	function createModel(gltf, col, site){
-		const model = gltf.scene.children[0];	
-		model.material = new THREE.MeshStandardMaterial();
-		model.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
-		model.scale.set( piecescale, piecescale, piecescale);
-		model.material.color.set(col);
-		model.userData.site = site;
-		return model;
-	}
-	// directly has the onLoad function as an anonymous function in the loader.load
-	loader.load( 'models/aibom.glb', function( gltf ) {							
-		aibomM = createModel(gltf, parameters.materialColor, aibomSite);			
-		jars.add( aibomM);
-	}, undefined, function ( error ) {console.error( error );} );
+```
+and within the createModel function replace:
+```
+	model.position.set( x * ratio, desk + 0.01, z * ratio);
+	model.userData.planes = gallery;
 
-	loader.load( 'models/mailu.glb', function( gltf) {							
-		mailuM = createModel(gltf, parameters.nabColor, mailuSite);			
-		jars.add( mailuM);
-	}, undefined, function ( error ) { console.error( error );} );
+```
+with:
+```
+	model.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
+	model.userData.site = site;
+```
 
-	loader.load( 'models/louisade.glb', function( gltf ) {
-		louisadeM = createModel(gltf, parameters.ringTopColor, louisadeSite);			
-		jars.add(louisadeM);
-	}, undefined, function ( error ) {console.error( error );} );
+Then we need to change all 6 of the createModel calls, so replace:
+```
+	aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
+```
+with:
+```
+	aibomM = createModel(gltf, parameters.materialColor, aibomSite);
+```
+replace:
+```
+	mailuM = createModel(gltf, 0.84, 0.48, parameters.nabColor, mailuG);
+```
+with:
+```
+	mailuM = createModel(gltf, parameters.nabColor, mailuSite);	
+```
+replace:
+```
+	louisadeM = createModel(gltf, 0.99, 0.59, parameters.ringTopColor, louisadeG);		
+```
+with:
+```
+	louisadeM = createModel(gltf, parameters.ringTopColor, louisadeSite);
+```
+replace:
+```
+	adzeraM = createModel(gltf, 0.61, 0.15, parameters.coilBeatenColor, adzeraG);	
+```
+with:
+```
+	adzeraM = createModel(gltf, parameters.coilBeatenColor, adzeraSite);
+```
 
-	loader.load( 'models/adzera.glb', function( gltf ) {
-		adzeraM = createModel(gltf, parameters.coilBeatenColor, adzeraSite);			
-		jars.add( adzeraM);
-	}, undefined, function ( error ) {console.error( error );} );
-
-	loader.load( 'models/dimiri.glb', function( gltf ) {
-		dimiriM = createModel(gltf, parameters.coilColor, dimiriSite);			
-		jars.add( dimiriM);
-	}, undefined, function ( error ) {console.error( error );} );
-
-	loader.load( 'models/yabob.glb', function( gltf ) {
-		yabobM = createModel(gltf, parameters.paddleColor, yabobSite);			
-		jars.add( yabobM);
-	}, undefined, function ( error ) {console.error( error );} );
-
-
+replace:
+```
+	dimiriM = createModel(gltf, 0.43, 0, parameters.coilColor, dimiriG);
+```
+with:
+```
+	dimiriM = createModel(gltf, parameters.coilColor, dimiriSite);	
+```
+replace:
+```
+	yabobM = createModel(gltf, 0.572, 0.0396, parameters.paddleColor, yabobG);
+```
+with:
+```
+	yabobM = createModel(gltf, parameters.paddleColor, yabobSite);			
 ```
 
 Save and reload; you should see the jars starting above the map and if you reload, they will be in different random positions.

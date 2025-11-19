@@ -206,17 +206,9 @@ add:
 	scene.add( gallery, gallery2, gallery3);
 
 ```
+If you save the file and reload the browser you should see the three panels and the spheres should be on the panel on the right. If the panels are black, the images are probably in the wrong directory. It should look like Figure 6 but without the map.
 
-
-To help keep track of the information panel (gallery), jar model, loading function and community site for each jar, we will call these 'xG, 'xM', 'onLoadX' and 'xSite', respectively, where 'x' is a name such as 'yabob' or 'aibom', the village (or area) where the jar the model is based on was made. Variable and function names can not have spaces in them.
-
-
-
-In addition, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 'Math' is a JavaScript object, which has properties, including Math.PI (i.e. π, 3.141), and methods, including Math.random() (used later in the lesson). See the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for more properties and methods. Three.js uses radians for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when you are 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geograpical map must be -Math.PI/2 around the x axis to have the 'front' of the panel facing upwards.
-
-
-Here we will create all the information panels for all the jars but hide them (by making .visible = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
-
+Next we will create all the information panels for all the jars but hide them (by making .visible = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. To help keep track of the information panel (gallery), jar model, loading function and community site for each jar, we will call these 'xG, 'xM', 'onLoadX' and 'xSite', respectively, where 'x' is a name such as 'yabob' or 'aibom', the village (or area) where the jar the model is based on was made. Variable and function names can not have spaces in them.
 
 First we declare the variables, after:
 
@@ -227,68 +219,21 @@ First we declare the variables, after:
 add:
 
 ```
-	let theMap;
-	let ratio = 2; 
-	let piecescale = ratio; 
-
 	let adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG; // information panels for the different jars
-	let selectedPlane;	// which information panel will be visible
-			
-```
-Then we will add the galleries and map, so within the init function, after:
-
-```
-// add models
+	let selectedPlane;	// which information panel will be visible			
 ```
 
-add:
-
-```
-	// add introduction, key and reference panels by loading textures then adding planes .
-	// load textures and generate Mipmaps
-	const textureLoader = new THREE.TextureLoader();
-	const introTexture = textureLoader.load( 'textures/Intro.jpg' );
-	introTexture.generateMipmaps = true;
-	const refTexture = textureLoader.load( 'textures/sources.jpg' );
-	refTexture.generateMipmaps = true;			
-	const keyTexture = textureLoader.load( 'textures/key.jpg' );
-	keyTexture.generateMipmaps = true;
-	
-	// add introduction information panel and set the selected panel to it
-	gallery = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: introTexture }));
-	gallery.position.set( 0, gheight, sphereposz); 
-	selectedPlane = gallery;
-	// add the panel for the key
-	const gallery2 = new THREE.Mesh(new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: keyTexture }));
-	gallery2.position.set( 1.25, gheight, sphereposz); 
-	// add the panel for the references
-	const gallery3 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize  ), new THREE.MeshBasicMaterial({ map: refTexture }));
-	gallery3.position.set( -1.25, gheight, sphereposz); 
-
-	scene.add( gallery, gallery2, gallery3);
+If you look at the gallery code you will see quite a bit of repetition. Furthermore, the jar information panels will all be at the same position and not made visible until their model is selected. Thus, for the jar information panels we will create a function that: receives the filename of the image texture; loads the texture; creates the mipmap; creates a plane mesh with that texture; sets the mesh position and makes it invisible. Our function (we will call it 'createGallery'), will ```return``` a textured plane mesh and assign it to the named variable (i.e. adzeraG). 
 
 
-selectedPlane = gallery;
-	// add the map of New Guinea
-	const mapGeometry = new THREE.PlaneGeometry( 3 * ratio, 1.5 * ratio );
-	const mapTexture = textureLoader.load('textures/png.png'); // from google maps
-	mapTexture.generateMipmaps = true; // saves gpu if false
-	theMap = new THREE.Mesh( mapGeometry, new THREE.MeshBasicMaterial({ map: mapTexture }));
-	theMap.rotation.x = - Math.PI / 2; // Equal to 90 degrees
-	theMap.position.set( 0, desk, 0); // desk height
-	scene.add( theMap);
-
-```
-
-If you look a the code you will see quite a bit of repetition. Furthermore, the jar information panels will all be at the same position and not made visible until their model is selected. Thus, for the jar information panels we will create a function that: receives the filename of the image texture; loads the texture; creates the mipmap; creates a plane mesh with that texture; sets the mesh position and makes it invisible. Our function (we will call it 'createGallery'), will ```return``` a textured plane mesh and assign it to the named variable (i.e. adzeraG), that we included in the global declarations with 'gallery'. 
-
-
-After:
+Within the init function after:
 ```
 	scene.add( gallery, gallery2, gallery3);
 ```
 add:
 ```
+	selectedPlane = gallery; // we start with the instructions.
+
 	// add the jar information panels then make them not visible
 	function createGallery(filename){
 		const aTexture = textureLoader.load( filename );
@@ -300,18 +245,52 @@ add:
 		}
 
 	// 'call' the createGallery function for the information panels/galleries.
-		adzeraG = createGallery('textures/Adzera.jpg');
-		aibomG = createGallery('textures/Aibom.jpg');
-		mailuG = createGallery('textures/Mailu.jpg');
-		dimiriG = createGallery('textures/Dimiri.jpg');
-		louisadeG= createGallery('textures/Louisade.jpg');
-		yabobG = createGallery( 'textures/Yabob.jpg' );
-		scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
+	adzeraG = createGallery('textures/Adzera.jpg');
+	aibomG = createGallery('textures/Aibom.jpg');
+	mailuG = createGallery('textures/Mailu.jpg');
+	dimiriG = createGallery('textures/Dimiri.jpg');
+	louisadeG= createGallery('textures/Louisade.jpg');
+	yabobG = createGallery( 'textures/Yabob.jpg' );
+	scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
 ```
 
+We want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 'Math' is a JavaScript object, which has properties, including Math.PI (i.e. π, 3.141), and methods, including Math.random() (used later in the lesson). See the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for more properties and methods. Three.js uses radians for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when you are 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geograpical map must be -Math.PI/2 around the x axis to have the 'front' of the panel facing upwards.
 
+Add the map to the variables. We will also add a ratio that allows experimentation with the map size. After:
 
-Save and reload. If the panels are black, the images are probably in the wrong directory. 
+```
+    // Variable declaration and setting
+```
+
+add:
+
+```
+	let theMap;
+	let ratio = 2; 
+	let piecescale = ratio; 
+			
+```
+ Within the init function, after:
+
+```
+	scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
+```
+
+add:
+
+```
+	// add the map of New Guinea
+	const mapGeometry = new THREE.PlaneGeometry( 3 * ratio, 1.5 * ratio );
+	const mapTexture = textureLoader.load('textures/png.png'); // from google maps
+	mapTexture.generateMipmaps = true; 
+	theMap = new THREE.Mesh( mapGeometry, new THREE.MeshBasicMaterial({ map: mapTexture }));
+	theMap.rotation.x = - Math.PI / 2; // Equal to 90 degrees
+	theMap.position.set( 0, desk, 0); // desk height
+	scene.add( theMap);
+
+```
+
+Save and reload and the map should appear with the panels (Figure 6).
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-06.png" alt="Webpage with 3 square panels of text and a horizontal map of Papua." caption="Figure 6. Webpage with three vertical information panels and a horizontal map." %}
 

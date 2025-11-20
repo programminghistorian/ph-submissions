@@ -528,11 +528,11 @@ add:
 		// detects what the user is trying to select in 3D space from viewpoint and 2D pointer
 		raycasterM.setFromCamera( pointer, camera );
 		const intersects = raycasterM.intersectObjects( jars.children); // an array, nearest to camera will be first
-		// if there is a jar being clicked		
+		// if there is something being clicked		
 		if(intersects.length > 0){
-			const found = intersects[ 0 ].object; // get the selected jar, index 0 is the first
+			const found = intersects[ 0 ].object; // get the selected object, index 0 is the first
 			selectedObj = found;
-			found.material.emissive.r = 1; // turn the selected jar red emissive. 1 is on.
+			found.material.emissive.r = 1; // turn the selected object red emissive. 1 is on.
 		}
 	}	
 ```
@@ -566,12 +566,12 @@ add:
 ```
 then after:
 ```
-		found.material.emissive.r = 1; // turn the selected jar red emissive. 1 is on.
+		found.material.emissive.r = 1; // turn the selected object red emissive. 1 is on.
 ```
 add:
 
 ```
-		selectedPlane = found.userData.planes; // get the new matching information panel for the selected jar
+		selectedPlane = found.userData.planes; // get the new matching information panel for the selected object
 		selectedPlane.visible = true; // make the new panel visible
 ```
 
@@ -653,7 +653,7 @@ save and check the tori appear on site reload.
 You will see that nothing happens when you click on them, as the raycaster is only checking the jars for intersections. So in the onClick(event) function change:
 
 ```
-const intersects = raycasterM.intersectObjects( jars.children);	
+const intersects = raycasterM.intersectObjects( jars.children);	// an array, nearest to camera will be first
 ```
 
 to:
@@ -810,7 +810,7 @@ Save and reload; you should see the jars starting above the map and if you reloa
 
 ### Check for Successful Matches
 
-At the end of each jar movement, you want to check if the jar was moved to the correct spot. One way to do this is to determine the distance between the jar and the matching site (torus). You need to set an allowed distance difference that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby. Here we will use 5 cm (2.5cm * ratio). If the test is successful, there has to be a signal to the user. Here we will change the background colour to a random colour, and make the jar unmoveable (and rotate it to be upright). No signal will be given for an incorrect match. We will create an additional group called 'unmoveable' and attach any jars that are placed close enough to their torus to that group. Objects can only be attached to one group, so when a model is moved to 'unmoveable' it will no longer be in 'jars' and so the mouse will not detect it.
+At the end of each jar movement, you want to check if the jar was moved to the correct spot. One way to do this is to determine the distance between the jar and the matching site (torus). You need to set an allowed distance difference that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby. Here we will use 5 cm (2.5cm * ratio). If the test is successful, there has to be a signal to the user. Here we will change the background colour to a random colour, and make the jar unmoveable. No signal will be given for an incorrect match. We will create an additional group called 'unmoveable' and attach any jars that are placed close enough to their torus to that group. Objects can only be attached to one group, so when a model is moved to 'unmoveable' it will no longer be in 'jars' and so the mouse will not detect it.
 
 We need extra variables for the new 'unmoveable' group, 'selectedObject' which is the selected jar and the 'truesite' which is the site that the selected jar should match. As no jar is selected at the start we will make truesite and selectedObject 'null' to start with.
 
@@ -885,7 +885,7 @@ with:
 ```
 		scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
 ```
-If the test is successful we also want to set the position of the jar to the exact spot, partly because the slight jump helps signal that it was a success. We will also make sure it is upright (really just necessary for VR). Importantly we want to make it unmoveable by putting it in the unmoveable group. The unmoveable group is unmoveable because the drag listener is only acting on the jars group.
+If the test is successful we also want to set the position of the jar to the exact spot, partly because the slight jump helps signal that it was a success. Importantly we want to make it unmoveable by putting it in the unmoveable group. The unmoveable group is unmoveable because the drag listener is only acting on the jars group.
 
 Keeping within the if code block, after:
 ```
@@ -894,7 +894,6 @@ Keeping within the if code block, after:
 add:
 ```
 		selectedObject.position.set(testposition.x, testposition.y, testposition.z);
-		selectedObject.rotation.set(0, 0, 0); // makes sure the jar is upright, necessary for VR.
 		unmoveable.attach( selectedObject); // adding to the unmoveable group will remove from the jar group.
 
 ```
@@ -908,27 +907,12 @@ You can save and try to test this, but moving in 3D can be difficult and we will
 
 This way of placing the jars on the sites can be frustrating for users and the onClick function is actually called at the end of a drag event, thus you can also alter the onClick function to register a correct match if the drag ends with the mouse on the correct site. This alternative means that the match is tested in 2D space instead of in 3D space (as in the first approach), and thus matches are easier, especially for players not experienced with digital 3D environments. If you develop your own games you might want to test different approaches to see what works best. All game or website design guides will advise you that several cycles of user testing and code refinement are important.
 
-Replace 
+Within the onClick function, after: 
 ```
-function onClick( event ) {
-			...
-		}
+	const found = intersects[ 0 ].object; // get the selected object, index 0 is the first
 ```
-with
-```
-// will also test if the jar is in right spot as onClick called at the end of drag event
-function onClick( event ) {
-	event.preventDefault(); //stops the orbiting
-	// gets 2D click position
-	pointer.x = event.clientX / window.innerWidth * 2 - 1 
-	pointer.y = - (event.clientY / window.innerHeight) * 2 + 1
-	// detects what the user is trying to select in 3D space from viewpoint and 2D pointer
-	raycasterM.setFromCamera( pointer, camera );
-	const intersects = raycasterM.intersectObjects( tori.children);
-	// if tori being clicked		
-	if(intersects.length > 0){
-		selectedObj.material.emissive.r = 0; // turn the current selected obj back to not emissive
-		const found = intersects[ 0 ].object; // get the selected site
+add:
+```	
 		if(found == truesite){ // tests if site mouse is over is the same as the true jar site
 			// if match change colour of background
 			scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
@@ -936,19 +920,21 @@ function onClick( event ) {
 			let testposition = new THREE.Vector3(0,0,0); //needs to be something first
 			truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z) this is the position of the site
 			selectedObject.position.set(testposition.x, testposition.y, testposition.z);
-			// makes sure jar is upright (in VR it tilts)
-			selectedObject.rotation.set(0, 0, 0); 
 			unmoveable.attach( selectedObject );
 		}
-		selectedObj = found;
-		found.material.emissive.r = 1; // turn the selected jar red emissive
-		selectedPlane.visible = false; // hide the current information panel
-		selectedPlane = found.userData.planes; // get the new matching information panel for the selected jar
-		selectedPlane.visible = true; // make the new panel visible
-	}
-	truesite = null;
-}	
 ```
+If we use this code we have to make sure that the truesite variable is reset to null at the end. Otherwise if you move a jar to somewhere and the drag ends with the mouse not being over a site, then click on that jars site it will trigger a match.
+
+So within the onClick function, after:
+```
+			selectedPlane.visible = true; // make the new panel visible
+		}
+```
+add:
+```
+	truesite = null;	
+```
+You have to be careful with brackets/braces here. The onClick function now has two 'nested' ```if``` blocks. The ```truesite = null;``` statement should be outside these if blocks but inside the onClickfunction. Now it should be easier to move jars to their sites, you just need the mouse to be directly over the torus when you stop dragging the jar.
 
 ### Update the Instructions
 

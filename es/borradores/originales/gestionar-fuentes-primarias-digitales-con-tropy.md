@@ -50,13 +50,13 @@ A modo de ejemplo, este tutorial hace uso de una colección de expedientes judic
 
 ### Instalación
 
-Tropy es una aplicación de escritorio. Para instalarla, basta entrar a [la página web principal](http://tropy.org)l y hacer clic en el botón _Download Tropy for_ [nombre de sistema auto-detectado]. Después, busca el instalador en tu disco duro y sigue las instrucciones según tu sistema operador (Mac, Windows, o Linux). Además, siempre se encontrará la versión más actualizada junto con versiones previas y beta en [el repositorio de Github](https://github.com/tropy/tropy/releases) (busca la etiqueta **Latest**)
+Tropy es una aplicación de escritorio. Para instalarla, basta entrar a [la página web principal](http://tropy.org)l y hacer clic en el botón _Download Tropy for_ [nombre de sistema auto-detectado]. Después, busca el instalador en tu disco duro y sigue las instrucciones según tu sistema operador (Mac, Windows, o Linux). Además, siempre se encontrará la versión más actualizada junto con versiones previas y beta en [el repositorio de Github](https://github.com/tropy/tropy/releases) (busca la etiqueta **Latest**).
 
 ### Tipo de Proyecto 
 
 Un proyecto en Tropy es el archivo donde se guardan las fotos de archivo con sus datos y [metadatos](https://es.wikipedia.org/wiki/Metadatos) acompañantes.
 
-Al abrir Tropy por primera vez, deberás dar un nombre al proyecto y escoger qué tipo de proyecto prefieres. Se recomienda concebir a los proyectos de la forma más amplia: a nivel de un manuscrito de libro, o tesis de doctorado, o un tema general que puede abarcar múltiples posibilidades. Por ejemplo, para este proyecto, en lugar de nombrarlo por el archivo o repositorio, podrías escoger un nombre que refleja un tema general, como 'Afro-venezolanos' (Es posible cambiar el nombre dentro del proyecto más adelante).
+Al abrir Tropy por primera vez, deberás dar un nombre al proyecto y escoger qué tipo de proyecto prefieres. Se recomienda concebir a los proyectos de la forma más amplia: a nivel de un manuscrito de libro, o tesis de doctorado, o un tema general que puede abarcar múltiples posibilidades. Por ejemplo, para este proyecto, en lugar de nombrarlo por el archivo o repositorio, podrías escoger un nombre que refleja un tema general, como _Afro-venezolanos_ (Es posible cambiar el nombre dentro del proyecto más adelante).
 
 También deberás escoger entre un proyecto convencional (.tpy) o avanzado (.tropy). La diferencia queda en la forma en la que Tropy vincula las fotos con el archivo de proyecto. Al importar una foto, Tropy establece una ruta entre el proyecto y la foto, visualizando la imágen dentro de la interfaz del proyecto  En un proyecto convencional, Tropy hace copias de las imágenes importadas, y las guarda en el directorio del archivo, estableciendo la ruta por esa ubicación. En un proyecto avanzado, Tropy establece una ruta entre el proyecto y la foto en su ubicación original, sin hacer una copia.
 
@@ -94,7 +94,7 @@ Es posible también importar una carpeta de imágenes a través del menú **Arch
 
 Si descargas tomos de la _Sección Civil-Esclavos_, puedes guardarlos en tu disco preferido y luego importarlos mediante cualquiera de los métodos mencionados. En el menú **Tropy > Preferencias (Edit > Preferencias en Windows) > Proyecto**, es posible designar una Carpeta monitoreada: cada vez que un formato compatible sea agregado a la carpeta designada, este se importará al proyecto de Tropy. Usa el botón _Navegar_ (Figura 2) para vincular una carpeta. <div class="alert alert-warning"> OJO: en el caso de descargar archivos de gran tamaño para importar a un proyecto convencional, debes considerar borrar las imágenes de la carpeta monitoreada, ya que Tropy hará una copia dentro del archivo del proyecto.</div>
 
-{% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-02.png" alt="Sección de la ventana de Preferencias, mostrando los parámetros del proyecto" caption="Figura 2. En la seccion Proyecto dentro de Preferencias, es posible designar una carpeta monitoreada para facilitar la importación" %}
+{% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-02.png" alt="Sección de la ventana de Preferencias, mostrando los parámetros del proyecto" caption="Figura 2. En la sección **Proyecto** dentro de **Preferencias**, es posible designar una carpeta monitoreada para facilitar la importación" %}
 
 ## Acciones masivas
 
@@ -102,7 +102,7 @@ Siempre después de importar un conjunto de imágenes, es recomendable procesarl
 
 ### Orientación
 
-Como en muchas aplicaciones de fotos, es posible cambiar la orientación de las imágenes. Haz clic derecho (_Control+clic izquierdo_ en Mac) en una imagen, y después selecciona **Rotar a la derecha** o **Rotar a la izquierda** del menú contextual. Al seleccionar varias imágenes usando **Seleccionar todo** (_Ctrl+A_ en Windows, _Command+A_ en Mac), es posible rotar múltiples imágenes simultáneamente, facilitando la lectura y análisis de las fuentes.
+Como en muchas aplicaciones de fotos, es posible cambiar la orientación de las imágenes. Haz _clic derecho_ (_Control+clic izquierdo_ en Mac) en una imagen, y después selecciona **Rotar a la derecha** o **Rotar a la izquierda** del menú contextual. Al seleccionar varias imágenes usando **Seleccionar todo** (_Ctrl+A_ en Windows, _Command+A_ en Mac), es posible rotar múltiples imágenes simultáneamente, facilitando la lectura y análisis de las fuentes.
 
 ### Editar múltiples campos de metadatos
 

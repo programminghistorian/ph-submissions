@@ -128,7 +128,7 @@ Una de las funciones más importantes de Tropy es describir las fuentes a travé
 
 Al hacer _doble clic_ en un objeto (una imagen individual o imágenes fusionadas), el proyecto pasará a la **vista de objeto** (haz clic en la flecha en la parte superior izquierda para volver a la vista de galería), donde, además de continuar ingresando metadatos, puedes editar ligeramente la foto o las fotos de un objeto y agregar notas o anotaciones. En la **vista de objeto**, la plantilla de metadatos aparece en el lado izquierdo de la interfaz. En esta vista, es más fácil analizar la imagen para agregar metadatos individuales. Siempre es recomendable ingresar los metadatos de manera consistente. Por ejemplo, si ingresas el nombre del creador (autor) de un expediente por apellidos seguidos por primeros nombres, deberías seguir con este formato. De la misma manera, se recomienda usar el formato de [_fecha ISO_](https://es.wikipedia.org/wiki/Organizaci%C3%B3n_Internacional_de_Normalizaci%C3%B3n) (AAAA-MM-DD, es decir, año con cuatro numerales, mes y día con dos numerales) para los valores en el campo para **Fecha**. (1730-02-01 se convertirá en 1 feb. 1730). Tropy reproducirá la fecha legible para organizar en columnas de forma cronológica. 
 
-Personalizando metadatos
+## Personalizando metadatos
 
 Tropy cuenta con un editor de plantillas para facilitar la creación de plantillas de metadatos personalizadas. En **Preferencias**, navega a **Plantillas**, donde puedes revisar cualquier plantilla incluida en la instalación.
 
@@ -142,11 +142,11 @@ Cuando agregas una propiedad, puedes modificarla para indicar qué tipo de dato 
 
 Para los expedientes de la ANHV, puedes crear una plantilla para los metadatos provenientes de la página web, por ejemplo **Descripción** (dc:description) **Alcance** (dcterms:extent), y **Lugar creado** (Iptc4xmpExt:Location created). Otras propiedades dependerán de lo que consideres importante para describir las fuentes del proyecto.
 
-Es posible tambien crear una plantilla personalizada basada en otra existente. Elige una plantilla en el menú desplegable y haz clic en las dos rectángulos del lado derecho. El editor creará una copia de la plantilla, que puedes guardar después de confirmar los metadatos de la plantilla (por ejemplo, cambiar el nombre). La nueva plantilla contendrá las mismas propiedades de la primera, y puedes agregar y suprimirlas a gusto.
+Es posible también crear una plantilla personalizada basada en otra existente. Elige una plantilla en el **menú desplegable** y haz clic en los dos rectángulos del lado derecho. El editor creará una copia de la plantilla, que puedes guardar después de confirmar los metadatos de la plantilla (por ejemplo, cambiar el nombre). La nueva plantilla contendrá las mismas propiedades de la primera, y puedes agregarlas y suprimirlas a gusto.
 
 ### Campos obligatorios y campos de solo lectura 
 
-En las plantillas preconfiguradas, siempre puedes observar una bandera al lado del campo de **Derechos**. Este ícono sirve como recordatorio para llenar el campo. Esta preferencia aparece en el editor de plantillas. Puedes definir un campo de una plantilla personalizada como obligatorio o de solo lectura. Después de ingresar un valor en un campo obligatorio, se borrará la bandera recordatoria. Por otro lado, si ingresas un valor predefinido para el nombre del Repositorio (dc:collection), solo será posible modificarlo en el **editor**, y un candado aparecerá al lado del campo correspondiente en el **panel de plantilla**.
+En las plantillas preconfiguradas, siempre puedes observar una bandera al lado del campo de **Derechos**. Este ícono sirve como recordatorio para llenar el campo. Esta preferencia aparece en el **editor de plantillas**. Puedes definir un campo de una plantilla personalizada como obligatorio o de solo lectura. Después de ingresar un valor en un campo obligatorio, se borrará la bandera recordatoria. Por otro lado, si ingresas un valor predefinido para el nombre del **Repositorio** (dc:collection), solo será posible modificarlo en el **editor**, y un candado aparecerá al lado del campo correspondiente en el **panel de plantilla**.
 
 Todos estos parámetros, conjuntamente con los consejos, pueden ayudar en estandarización de los metadatos: recordando cuáles son más importantes y cómo ingresarlos para mantener la consistencia. También pueden ayudar a otros usuarios, si deciden importar una plantilla para sus propios proyectos.
 
@@ -168,7 +168,7 @@ Una de las herramientas más importantes es la de seleccionar. Haz click en el c
 
 ### Notas
 
-En el **campo de notas** (Figura 5), puedes hacer cualquier anotación con texto enriquecido. Este texto también es buscable desde la barra de búsqueda en la **vista de proyecto**. Después de agregar una anotación al **campo de notas**, vuelve a la **vista de proyecto** e ingresa una palabra o frase que fue escrita en el **campo de notas** (por ejemplo, de la Figura 5: "Dios"). Todos los objetos que llevan esta palabra o frase (mejor dicho, este 'valor') <i>o en el campo de notas o en la plantilla de metadatos</i> aparecerán en la **vista de proyecto**. Para regresar a la vista con todos los objetos, borra el valor ingresado de la barra de búsqueda. Usando esta función, es posible descubrir y agrupar múltiples objetos desde la vista principal, facilitando conexiones entre documentos que mencionan los mismos términos. Además, es una forma de ubicar rápidamente un documento individual a partir de la transcripción del documento o anotaciónes que has hecho.
+En el **campo de notas** (Figura 5), puedes hacer cualquier anotación con texto enriquecido. Este texto también se puede buscar desde la barra de búsqueda en la **vista de proyecto**. Después de agregar una anotación al **campo de notas**, vuelve a la **vista de proyecto** e ingresa una palabra o frase que fue escrita en el **campo de notas** (por ejemplo, de la Figura 5: "Dios"). Todos los objetos que llevan esta palabra o frase (mejor dicho, este 'valor') <i>o en el campo de notas o en la plantilla de metadatos</i> aparecerán en la **vista de proyecto**. Para regresar a la vista con todos los objetos, borra el valor ingresado de la barra de búsqueda. Usando esta función, es posible descubrir y agrupar múltiples objetos desde la vista principal, facilitando conexiones entre documentos que mencionan los mismos términos. Además, es una forma de ubicar rápidamente un documento individual a partir de la transcripción del documento o anotaciónes que has hecho.
 
 Según tu preferencia, puedes cambiar el modo de visualización del campo de notas de horizontal a lado a lado. También es posible colocar links en el campo de notas. Puedes hacer anotaciones tanto en selecciones como en fotos. Para comenzar, simplemente escribe en el campo de notas: se guardará automáticamente en la base de datos del proyecto.
 
@@ -178,101 +178,101 @@ Según tu preferencia, puedes cambiar el modo de visualización del campo de not
 
 Además de la plantilla de metadatos, puedes describir tus fuentes en Tropy a través de metadatos "no estructurados," es decir, metadatos que no pertenecen a ningún esquema o vocabulario formal. Ejemplos de este tipo de metadato pueden ser descripciones temáticas referentes al documento ('enfermedad', 'niño', 'forro de libertad'), cronológicas ('Siglo XIX') o relacionadas con tu flujo de trabajo ('Falta transcripción', 'Metadatos completos'). Es posible agregar estos temas usando la **barra de etiquetas** que aparece en el lado izquierdo de la **vista de proyecto** (Figura 6).
 
-Las listas ejercen una función parecida: pueden ser utilizadas para la organización de fuentes en grupos y subgrupos. Estas agrupaciones pueden ser por tópico, o pueden reflejar la organización de una publicación proyectada (Figura 6). En el caso de documentos del periodo colonial en Hispanoamérica, muchos documentos se encuentran en diversos acervos, a veces lejos del sitio donde fueron creados. Las agrupaciones flexibles como listas y sublistas ayudan a reconstituir documentos separados a través del tiempo, evitando que el investigador trabaje a contracorriente del archivo formal. En resumen, estas funciones te ayudan para crear una lógica de organización para tu proyecto, ya sea a través de una serie de listas que reflejen una organización por capítulos y secciones, o a través de etiquetas que subrayen vínculos entre objetos que no están reflejados en los metadatos formales.
+Las listas ejercen una función parecida: pueden ser utilizadas para la organización de fuentes en grupos y subgrupos. Estas agrupaciones pueden ser por tópico, o pueden reflejar la organización de una publicación proyectada (Figura 6). En el caso de documentos del período colonial en Hispanoamérica, muchos documentos se encuentran en diversos acervos, a veces lejos del sitio donde fueron creados. Las agrupaciones flexibles como listas y sublistas ayudan a reconstituir documentos separados a través del tiempo, evitando que el investigador trabaje en sentido contrario al archivo formal. En resumen, estas funciones te ayudan para crear una lógica de organización para tu proyecto, ya sea a través de una serie de listas que reflejen una organización por capítulos y secciones, o a través de etiquetas que subrayen vínculos entre objetos que no están reflejados en los metadatos formales.
 
 {% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-06.png" alt="Sección de la interfaz de Tropy mostrando la barra de listas y barra de etiquetas de varios nombres y colores" caption="Figura 6. Las listas y las etiquetas son flexibles y pueden ser utilizadas para dar otros niveles de organización más allá de los metadatos de la plantilla" %}
 
 ### Listas
 
-Para crear una lista, haz clic derecho (Ctrl+clic en Mac) en la barra en la barra de etiquetas. Selecciona "Nueva Lista" del menú contextual y da un nombre a la carpeta que aparece (por ejemplo: 'Capítulo 2'). Después, presiona Intro o haz clic izquierdo. Ahora, puedes arrastrar tus fuentes desde la vista de proyecto hacia la nueva lista. Es posible agregar una fuente a múltiples listas, incluyendo sublistas de la lista matriz. Para quitar un objeto de una lista, puedes seleccionar esta opción del menú contextual. Si seleccionas "Suprimir objeto" el objeto será colocado en "Objetos suprimidos." Para crear una sublista dentro de una lista, haz clic derecho (Ctrl+clic en Mac) en la lista y selecciona "Nueva lista." Puedes cambiar el orden de una lista simplemente arrastrándola a otra ubicación entre las listas (por otro lado, las etiquetas aparecen en orden alfabético).
+Para crear una lista, haz clic derecho (Ctrl+clic en Mac) en la **barra de etiquetas**. Selecciona **Nueva Lista** del menú contextual y da un nombre a la carpeta que aparece (por ejemplo: 'Capítulo 2'). Después, presiona _Intro_ o haz clic izquierdo. Ahora, puedes arrastrar tus fuentes desde la **vista de proyecto** hacia la nueva lista. Es posible agregar una fuente a múltiples listas, incluyendo sublistas de la lista matriz. Para quitar un objeto de una lista, puedes seleccionar esta opción del **menú contextual**. Si seleccionas **Suprimir objeto** el objeto será colocado en **Objetos suprimidos**. Para crear una sublista dentro de una lista, haz clic derecho (Ctrl+clic en Mac) en la lista y selecciona **Nueva lista**. Puedes cambiar el orden de una lista simplemente arrastrándola a otra ubicación entre las listas; por otro lado, las etiquetas aparecen en orden alfabético.
 
 ### Etiquetas
 
-Para crear una nueva etiqueta, hay múltiples opciones. Selecciona un objeto u objetos en la vista del proyecto. A la mano derecha de la vista de proyecto, haz clic en el botón "Etiquetas" para entrar en el editor de etiquetas. Haz clic en "Añadir etiqueta a X objeto" [X es el número de objetos seleccionados] y escribe un nombre para la etiqueta. Un punto aparecerá en la barra de etiquetas y también al lado del título (o en el previsto en la vista de galería). Usando el menú contextual, puedes cambiar o configurar el color de la etiqueta.
+Para crear una **nueva etiqueta**, hay múltiples opciones. Selecciona un objeto u objetos en la **vista del proyecto**. En el lado derecho de la **vista de proyecto**, haz clic en el botón _Etiquetas_ para entrar en el editor de etiquetas. Haz clic en _Añadir etiqueta a X objeto_ [X es el número de objetos seleccionados] y escribe un nombre para la etiqueta. Un punto aparecerá en la **barra de etiquetas** y también al lado del título (o en el previsto en la **vista de galería**). Usando el **menú contextual**, puedes cambiar o configurar el color de la etiqueta.
 
 ## Exportación de fotos
 
-Es posible exportar imágenes individuales, objetos, (con o sin metadatos y anotaciones) y selecciones de imágenes en diferentes formatos. Haz clic derecho en un objeto en la vista de proyecto y selecciona "Exportar objeto" del menú contextual. En el submenú, podrás seleccionar [JSON-LD](https://es.wikipedia.org/wiki/JSON-LD) o PDF (y dentro de PDF, puedes seleccionar orientación vertical o horizontal.)  Si exportas en formato .json, sólo exportarás los metadatos y notas asociados con la(s) imágen(es) seleccionadas—la imagen no está incluída. Para exportar la imágen con los metadatos y notas, habrá que seleccionar PDF.
+Es posible exportar imágenes individuales, objetos (con o sin metadatos y anotaciones) y selecciones de imágenes en diferentes formatos. Haz clic derecho en un objeto en la **vista de proyecto** y selecciona **Exportar objeto** del **menú contextual**. En el submenú, podrás seleccionar [JSON-LD](https://es.wikipedia.org/wiki/JSON-LD) o PDF (y dentro de PDF, puedes elegir orientación vertical o horizontal). Si exportas en formato .json, solo exportarás los metadatos y notas asociados con la(s) imagen(es) seleccionada(s);la imagen no está incluída. Para exportar la imagen con los metadatos y notas, habrá que seleccionar PDF.
 
-Exportar por esta ruta es parecida a "Imprimir" (Archivo>Imprimir) en formato PDF. Los parámetros para imágenes exportadas en PDF se encuentran en Preferencias. Puedes elegir incluir o no fotos, metadatos, y notas, además de consideraciones de formato: optimizar tamaño y calidad de foto, incluir únicamente fotos con notas, y permitir el contenido de utilizar más de una página (Figura 7).
+Exportar por esta ruta es parecido a **Imprimir** (**Archivo>Imprimir**) en formato PDF. Los parámetros para imágenes exportadas en PDF se encuentran en **Preferencias**. Puedes elegir incluir o no fotos, metadatos, y notas, además de consideraciones de formato: optimizar tamaño y calidad de foto, incluir únicamente fotos con notas, y permitir el contenido de utilizar más de una página (Figura 7).
 
 {% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-07.png" alt="Las opciones de imprimir en preferencias" caption="Figura 7. Las opciones de imprimir en preferencias" %}
 
-Para exportar una selección, busca el nombre de la selección en el panel de fotos debajo de la plantilla de metadatos. Haz clic derecho (Control+clic en Mac) en su nombre en la lista y elige "Exportar selección" del menú contextual. Se exportará la selección en formato .jpg, sin metadatos. 
+Para exportar una selección, busca el nombre de la selección en el **panel de fotos** debajo de la **plantilla de metadatos**. Haz clic derecho (Control+clic en Mac) en su nombre en la lista y elige **Exportar selección** del menú contextual. Se exportará la selección en formato .jpg, sin metadatos. 
 
 ## Instalación de programas adicionales (plugins)
 
-Plugins o programas adicionales son extensiones que puedes instalar para facilitar la importación y exportación de imágenes y metadatos. Los plugins oficiales residen en el [repositorio de Github](https://github.com/tropy) de Tropy. También, es posible encontrarlos a través de la página web de Tropy, al fondo de la página principal. Para instalar uno, navega al repositorio y descarga el plugin deseado. Después, en la ventana de Preferencias de tu instalación de Tropy, debes activar el plugin (véanse los pasos abajo). Existen plugins para integración con una instalación de Omeka S, exportación de objetos para Zotero (CSL), y exportación en formato .zip y .csv. Adicionalmente es posible importar archivos .csv y manifestos IIIF.
+Plugins o programas adicionales son extensiones que puedes instalar para facilitar la importación y exportación de imágenes y metadatos. Los plugins oficiales residen en el [repositorio de GitHub](https://github.com/tropy) de Tropy. También es posible encontrarlos a través de la página web de Tropy, al pie de la página principal. Para instalar uno, navega al repositorio y descarga el plugin deseado. Después, en la ventana de Preferencias de tu instalación de Tropy, debes activar el plugin (véanse los pasos abajo). Existen plugins para integración con una instalación de Omeka S, exportación de objetos para Zotero (CSL) y exportación en formato .zip y .csv. Adicionalmente, es posible importar archivos .csv y manifestos IIIF.
 
 ## Caso de uso: Integración con Zotero
 
-En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una referencia en Zotero. Este puede ayudar en el proceso de organizar las fuentes y conectarlos con el proceso de escribir sobre ellas. OJO: Esto se considera un uso avanzado de Tropy, solo aplicable para ciertos usuarios. Antes de comenzar, vale la pena preguntar si se necesita importar de Tropy a [Zotero](https://www.zotero.org/). Si tu proyecto cuenta con documentos o manuscritos de archivo con una estructura de metadatos similar a un elemento de Zotero, o si tu proyecto contiene una serie de objetos con nombre similares que citas seguidamente (boletines, periódicos, etc), importar desde Tropy a Zotero puede ser útil. Los expedientes de Sección Civil-Esclavos podrían ser convertidos, pues consisten en varias páginas y podrán ser citadas continuamente dentro de un manuscrito. Transfiriendo los metadatos de Tropy a un elemento de Zotero puede ahorrar tiempo en este caso. En otros casos, podría ser más fácil trabajar directamente con la fuente en Zotero (si es un objeto en PDF, puedes utilizar el lector de PDF de Zotero) o crear una referencia manualmente en Zotero para citar en trabajos. A continuación, se detalla cómo importar los metadatos elaborados en Tropy de un expediente de la Sección Civil-Esclavos de la ANHV a Zotero.
+En algunos casos, podría ser útil convertir metadatos grabados en Tropy a una referencia en Zotero. Esto puede ayudar en el proceso de organizar las fuentes y conectarlas con el proceso de escribir sobre ellas. OJO: Esto se considera un uso avanzado de Tropy, solo aplicable para ciertos usuarios. Antes de comenzar, vale la pena preguntar si se necesita importar de Tropy a [Zotero](https://www.zotero.org/). Si tu proyecto cuenta con documentos o manuscritos de archivo con una estructura de metadatos similar a un elemento de Zotero, o si tu proyecto contiene una serie de objetos con nombres similares que citas consecutivamente (boletines, periódicos, etc), importar desde Tropy a Zotero puede ser útil. Los expedientes de _Sección Civil-Esclavos_ podrían ser convertidos, pues consisten en varias páginas y podrán ser citadas continuamente dentro de un manuscrito. Transfeir los metadatos de Tropy a un elemento de Zotero puede ahorrar tiempo en este caso. En otros casos, podría ser más fácil trabajar directamente con la fuente en Zotero (si es un objeto en PDF, puedes utilizar el lector de PDF de Zotero) o crear una referencia manualmente en Zotero para citar en trabajos. A continuación, se detalla cómo importar los metadatos elaborados en Tropy de un expediente de la _Sección Civil-Esclavos_ de la ANHV a Zotero.
 
 ### Instalar el plugin CSL
 
-1. Descarga el último lanzamiento del plugin [repositorio de Github](https://github.com/tropy/tropy-plugin-csl), a la derecha bajo 'Releases' [Lanzamientos] ('tropy-plugin-csl-vx.x.x.zip').
+1. Descarga el último lanzamiento del plugin [repositorio de GitHub](https://github.com/tropy/tropy-plugin-csl), a la derecha bajo **Releases** [Lanzamientos] ('tropy-plugin-csl-vx.x.x.zip').
 
-2. En tu instalación de Tropy, accede a la ventana de Preferencias (Tropy en Mac o Editar en Windows>Preferencias) y accede a la sección de Plugins. Selecciona "Instalar Plugin."
+2. En tu instalación de Tropy, accede a la ventana de **Preferencias** (Tropy en Mac o **Editar** en Windows**>Preferencias**) y accede a la sección de **Plugins**. Selecciona _Instalar Plugin_.
 
-3. Selecciona el archivo .zip descargado del repositorio y después selecciona "Activar" en la ventana de Preferencias cuando aparezca. 
+3. Selecciona el archivo .zip descargado del repositorio y después selecciona _Activar_ en la ventana de **Preferencias** cuando aparezca. 
 
 ### ¿Qué tipo de elemento quieres importar en Zotero?
 
-1.  Abre tu instalación de Zotero, y crea un elemento de muestra que refleja el objeto que quieres importar de Tropy. Por ejemplo, puedes hacer lo siguiente: Archivo>Nuevo elemento>'Libro' o 'Caso' con el fin de crear un elemento parecido a un tomo de expedientes de "Sección Civil-Esclavos" de la ANHV.
+1.  Abre tu instalación de Zotero, y crea un elemento de muestra que refleja el objeto que quieres importar de Tropy. Por ejemplo, puedes hacer lo siguiente: **Archivo > Nuevo elemento > Libro** o **Caso** con el fin de crear un elemento parecido a un tomo de expedientes de _Sección Civil-Esclavos_ de la ANHV.
 
-2.  En el elemento de muestra que has creado, rellena cualquier valor (por ejemplo, 'x') para las propiedades que quieres importar desde tus fuentes en Tropy. Estas propiedades deberían ser los que serán más importante para la construcción de tus referencias. (Título, Fecha, Volumen, etc.)
+2.  En el elemento de muestra que has creado, rellena cualquier valor (por ejemplo, x) para las propiedades que quieres importar desde tus fuentes en Tropy. Estas propiedades deberían ser las más importante para la construcción de tus referencias. (Título, Fecha, Volumen, etc.)
 
-3.  Haz clic derecho en el elemento de muestra y selecciona 'Exportar elemento...' del menú contextual y exportarlo en formato .json  [CSL JSON].
+3.  Haz clic derecho en el elemento de muestra y selecciona **Exportar elemento...** del menú contextual y exportarlo en formato .json  [CSL JSON].
 
-4.  Abre el archivo .json exportado [se abrirá en el navegador web u otro aplicación por defecto] y toma nota de [los términos CSL usados](https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types) [en ingles] para cada campo que fue rellenado anteriormente...utilizarás estos términos en el paso 4 en la siguiente sección. Sólo las propiedades con valores en sus campos respectivos aparecerán en el archivo .json.
+4.  Abre el archivo .json exportado [se abrirá en el navegador web u otra aplicación por defecto] y toma nota de [los términos CSL usados](https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types) [en ingles] para cada campo que fue rellenado anteriormente. Utilizarás estos términos en el paso 4 en la siguiente sección. Solo las propiedades con valores en sus campos respectivos aparecerán en el archivo .json.
 
 ### Crear una plantilla personalizada en Tropy para importar objetos a Zotero
 
-1.  En tu instalación de Tropy, accede a la ventana de Preferencias (Tropy en Mac o Editar en Windows>Preferencias) y seleccionar Plantillas. Selecciona la plantilla usada para los objetos que se importarán a Zotero. 
+1.  En tu instalación de Tropy, accede a la ventana de **Preferencias** (Tropy en Mac o Editar en **Windows > Preferencias**) y seleccionar **Plantillas**. Selecciona la plantilla usada para los objetos que se importarán a Zotero. 
 
 2.  Crea una copia de esta plantilla de metadatos.
 
-3.  Renombra la copia que creaste para distinguirla en el menú desplegable de plantillas. (Por ejemplo: agrega 'Zotero' al nombre original de la plantilla.)
+3.  Renombra la copia que creaste para distinguirla en el menú desplegable de **Plantillas**. (Por ejemplo: agrega 'Zotero' al nombre original de la plantilla.)
 
 4.  Re-etiqueta los rótulos de cada propiedad en la nueva plantilla usando los términos de CSL que aparecieron en el archivo .json del elemento de muestra copiado en el paso 4 de la última sección, en letra minúscula con atención a los guiones (Figura 8).
-	* Para importar a Zotero con éxito, tu plantilla debe incluir una propiedad de metadatos etiquetada 'type' con un elemento válido de Zotero como 'book', report', or 'article-journal' en el campo de metadatos (véase: [CSL types](https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types)). Puedes rellenar este campo para cada objeto que pretendes importar o ponerle como "Valor por defecto" para esta propiedad en el editor de plantillas.
+	* Para importar a Zotero con éxito, tu plantilla debe incluir una propiedad de metadatos etiquetada 'type' con un elemento válido de Zotero como 'book', report', or 'article-journal' en el campo de metadatos (véase: [CSL types](https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types)). Puedes rellenar este campo para cada objeto que pretendes importar o asignarlo como Valor preconfigurado en el editor de plantillas.
 	* No se importarán todos los metadatos de Tropy a Zotero en el mismo formato: por ejemplo, valores de fechas o separación de apellidos y nombres. Para importar una fecha, se recomienda usar el término CSL 'issued.'
-	* Si cambias la lengua local en Tropy, necesitarás re-etiquetar tu plantilla para importación a Zotero de las etiquetas por defecto a las etiquetas CSL [en inglés]
-	* OJO: Hasta el momento, no hay ninguna forma de transferir el texto del campo de notas de Tropy a Zotero. Una solución temporal sería agregar una propiedad de metadatos a la plantilla de exportación y etiquetarla con el término CSL 'note', y entonces copiar y pegar las notas en ese campo. Las notas aparecerán en Zotero en el campo 'Extra' incluído en todos los elementos.
+	* Si cambias la lengua local en Tropy, necesitarás re-etiquetar tu plantilla de importación a Zotero, reemplazando las etiquetas preconfiguradas por las etiquetas CSL [en inglés]
+	* OJO: Hasta el momento, no hay ninguna forma de transferir el texto del campo de **Notas** de Tropy a Zotero. Una solución temporal sería agregar una propiedad de metadatos a la plantilla de exportación y etiquetarla con el término CSL 'note', y entonces copiar y pegar manualmente las notas en ese campo. Las notas aparecerán en Zotero en el campo **Extra** incluído en todos los elementos.
 
 {% include figure.html filename="es-or-gestionar-fuentes-primarias-digitales-con-tropy-08.png" alt="Dos ventanas: uno de Firefox mostrando los componentes de un archivo CSL JSON exportado de Zotero, y el otro del editor de plantilla de Tropy, mostrando los parámetros de diferentes propiedades de metadatos" caption="Figura 8. Usan los términos encontrados en el archivo de CSL JSON para construir una plantilla para exportar a Zotero" %}
 
 5.  Aplica la nueva plantilla a los objetos que deseas importar a Zotero
-	* Poco debería cambiar en términos de los valores porque efectivamente estás mapeando nuevas etiquetas encima de las propiedades de metadatos pre-existentes.
+	* Poco debería cambiar en términos de los valores porque, en efecto, estás mapeando nuevas etiquetas sobre las propiedades de metadatos preexistentes.
 
 ### Exportar objeto(s) de Tropy como archivo CSL JSON (para luego importar a Zotero)
 
-1.  En Archivo>Preferencias bajo Plugins, selecciona CSL y luego selecciona Parámetros.
+1.  En **Archivo > Preferencias** bajo **Plugins**, selecciona **CSL** y luego **Parámetros**.
 
-2.  Agrega una nueva instancia del plugin y ponerle un nombre para distinguirla dentro del menú de contexto.
+2.  Agrega una nueva instancia del plugin y así podrás ponerle un nombre para distinguirla dentro del menú contextual.
 
 3.  Selecciona la plantilla que acabas de crear.
-	* Toma en cuenta que puedes crear múltiples plantillas y opciones de exportar para diferentes elementos de Zotero
+	* Ten en cuenta que puedes crear múltiples plantillas y opciones de exportación para diferentes elementos de Zotero
 
-4.  Regresa a la vista de proyecto y haz clic derecho en el objeto (u objetos) que quieres exportar como archivo .json.
+4.  Regresa a la **vista de proyecto** y haz clic derecho en el objeto —o en varios objetos— que quieras exportar como archivo .json.
 
-5.  Selecciona 'Exportar objeto>[nombre de la instancia del plugin]
+5.  Selecciona **Exportar objeto>[nombre de la instancia del plugin]**
 
-6.  Ponerle nombre al archivo .json y guárdalo. Si piensas en crear una nueva colección dentro de Zotero, puedes darle el nombre de la nueva colección, y al importar, se creará una nueva colección con el nombre del archivo.
+6.  Ponle nombre al archivo .json y guárdalo. Si piensas en crear una nueva colección en Zotero, puedes darle ese nombre; al importar, Zotero generará una nueva colección con el nombre del archivo.
 
 ### Importar a Zotero
 
-1.  En tu instalación de Zotero, selecciona Archivo>Importar... y escoge 'Un archivo'.
+1.  En tu instalación de Zotero, selecciona **Archivo > Importar**... y elige **Un archivo**.
 
-2.  Selecciona el archivo .json exportado, y después haz clic en Continuar en el cuadro de diálogo de importación (y escoge si quieres crear una nueva colección.)
+2.  Selecciona el archivo .json exportado, y después haz clic en _Continuar_ en el cuadro de diálogo de importación ( puedes decidir si quieres crear una nueva colección.)
 
-3.  Haz clic en 'Done' cuando la importación termine, y revisa para asegurar que los nuevos elementos importados llevan los campos de metadatos deseados. (Si no, repasa de nuevo el paso 4 en la sección anterior.)
+3.  Haz clic en _Done_ cuando la importación termine, y revisa que los nuevos elementos importados incluyan los campos de metadatos deseados. (Si no, vuelve al paso 4 de la sección anterior.)
 
-4.  Ahora puedes manejar y citar estas referencias a través de tu instalación de Zotero.
+4.  A partir de aquí, puedes gestionar y citar estas referencias a través de tu instalación de Zotero.
 
 ## Conclusión
 
-Tropy es una herramienta flexible e intuitiva para organizar y describir las fuentes archivisticas y digitalizadas, y este tutorial ha intendado demostrar algunos de los usos más típicos, además de un caso de uso más especializado para integrar con Zotero. Además, mientras existen usos y integraciones avanzados con la aplicación de plugins, es posible utilizar sus funciones básicas durante cualquier fase de investigación: antes de comenzar un nuevo proyecto, o en medio de otro cuando ya se ha adquirido muchos fotos que requieren alguna organización. Tropy cuenta con algunos [videos tutoriales en inglés y español](https://www.youtube.com/@tropy), además de un foro activo donde usuarios principiantes y avanzandos pueden hacer preguntas y ofrecer sugerencias y observaciones al equipo del proyecto y a la comunidad más amplio de usuarios. Los usuarios avanzados también pueden [seguir el proyecto por Github](https://github.com/tropy). En conclusión, Tropy es una herramienta que no sólo ayuda con la organización; también es una manera para repensar la lógica de los archivos y buscar nuevas formas para hacer conexiones entre diversos materiales de diferentes coleciones. De tal manera, el caos ya no será el modo por defecto después de comenzar a usar Tropy.
+Tropy es una herramienta flexible e intuitiva para organizar y describir fuentes archivísticas y digitalizadas, y este tutorial ha intentado demostrar algunos de los usos más típicos, además de presentar un caso de uso más especializado para integrar con Zotero. Aunque existan usos e integraciones avanzados mediante plugins, también es posible utilizar sus funciones básicas en cualquier fase de investigación: antes de comenzar un nuevo proyecto, o en medio de otro cuando ya se han reunido muchas fotos que requieran organización. Tropy cuenta con algunos [videos tutoriales en inglés y español](https://www.youtube.com/@tropy), además de un foro activo donde usuarios principiantes y avanzados pueden formular consultas, aportar sugerencias u observaciones al equipo del proyecto así como a la comunidad más amplia de usuarios. Los usuarios avanzados también pueden [seguir el proyecto por GitHub](https://github.com/tropy). En conclusión, Tropy es una herramienta que no solo ayuda con la organización; también permite repensar la lógica de los archivos y explorar nuevas formas de establecer conexiones entre materiales diversos de distintas colecciones. De tal manera, el caos deja de ser la configuracion habitual cuando se empieza a trabajar con Tropy.
 
 ## Agradecimientos
-Al autor le gustaría agradecer a Dras. Anita Lucchesi y Sofia Papastamkou por su papel en la conceptualización inicial de esta lección y a los miembros del equipo de Tropy pasados y presentes por su labor en desarrollar esta herramienta.
+Al autor le gustaría agradecer a Dras. Anita Lucchesi y Sofia Papastamkou por su papel en la conceptualización inicial de esta lección y a los miembros del equipo de Tropy —pasados y presentes— por su labor en el desarrollo de esta herramienta.

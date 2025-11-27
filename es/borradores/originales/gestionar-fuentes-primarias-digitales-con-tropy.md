@@ -160,7 +160,7 @@ En la **vista de objeto**, existen diferentes herramientas para cambiar el aspec
 
 ### Ediciones para Legibilidad
 
-En la parte superior de la **vista de objeto**, hay una serie de herramientas para ajustar y rotar la imagen actual. En la parte superior derecha, hay un botón _modificar foto_, donde a través de controles deslizantes, puedes ajustar el brillo, contraste, tono, saturación, y nitidez--todos para restaurar la legibilidad a documentos borrosos, ya sea por su condición o por la calidad de la foto sacada en el archivo. Existe la opción de _invertir colores_, una opción para facilitar la lectura de microfilmes, o para ver el negativo de una fuente visual.
+En la parte superior de la **vista de objeto**, hay una serie de herramientas para ajustar y rotar la imagen actual. En la parte superior derecha, se encuentra el botón _modificar foto_, donde a través de controles deslizantes, puedes ajustar el brillo, contraste, tono, saturación, y nitidez--todos para restaurar la legibilidad a documentos borrosos, ya sea por su condición o por la calidad de la foto sacada en el archivo. Existe la opción de _invertir colores_, una opción para facilitar la lectura de microfilmes, o para ver el negativo de una fuente visual.
 
 ### Selecciones
 

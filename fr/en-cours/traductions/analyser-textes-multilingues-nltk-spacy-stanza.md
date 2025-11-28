@@ -1,6 +1,7 @@
 ---
 title: "Analyser des textes multilingues en français et russe en utilisant NLTK, spaCy, et Stanza"
 slug: analyser-textes-multilingues-nltk-spacy-stanza
+original: analyzing-multilingual-text-nltk-spacy-stanza
 layout: lesson
 collection: lessons
 date: 2024-11-13

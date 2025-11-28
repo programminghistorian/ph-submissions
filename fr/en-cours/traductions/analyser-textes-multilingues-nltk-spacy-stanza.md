@@ -753,7 +753,7 @@ Nous ferons maintenant de même pour notre phrase en français, en utilisant la 
 
 
 ``` python
-# charger la pipeline et l'appliquer à notre phrase en spécifiant la langue comme étant le français ('fr)
+# charger la pipeline et l'appliquer à notre phrase en spécifiant la langue comme étant le français ('fr')
 nlp = stanza.Pipeline(lang='fr', processors='tokenize,mwt,pos')
 doc = nlp(stanza_fre_sent)
 
@@ -786,7 +786,7 @@ from stanza.models.common.doc import Document
 from stanza.pipeline.core import Pipeline
 from stanza.pipeline.multilingual import MultilingualPipeline
 
-=# lancer la pipeline multilingue sur les phrases françaises, russes, et multilingue en même temps
+# lancer la pipeline multilingue sur les phrases françaises, russes, et multilingue en même temps
 nlp = MultilingualPipeline(processors='tokenize,pos')
 docs = [stanza_rus_sent, stanza_fre_sent, stanza_multi_sent]
 nlp(docs)

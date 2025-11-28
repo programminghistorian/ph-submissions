@@ -653,7 +653,7 @@ latin_only_list = ' '.join(latin_words)
 cyr_no_extra_space = regex.sub(r'\s([?.!,"](?:\s|$))', r'\1', cyrillic_only_list)
 lat_no_extra_space = regex.sub(r'\s([?.!,"](?:\s|$))', r'\1', latin_only_list)
 
-# vérifier les re2sultates de l'expression régulière
+# vérifier les résultates de l'expression régulière
 print(cyr_no_extra_space)
 print(lat_no_extra_space)
 ```

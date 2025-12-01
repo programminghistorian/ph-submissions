@@ -87,7 +87,7 @@ A partir do navegador de internet preferido navegue até [Map Warper](https://ma
 
 ### Upload do mapa antigo
 
-Na página inicial clique no botão verde **Upload Map** (Carregar Mapa), lado esquerdo do ecrã, para importar a imagem para o Map Warper diretamente do ficheiro ou a partir de um link de um repositório digital através de um URL. Já nesta etapa pode adicionar metadados ao documento.
+Na página inicial clique no botão verde _Upload Map_ (Carregar Mapa), lado esquerdo do ecrã, para importar a imagem para o Map Warper diretamente do ficheiro ou a partir de um link de um repositório digital através de um URL. Já nesta etapa pode adicionar metadados ao documento.
 
 Para importar o mapa de Villasboas selecione a opção **Select File** (Selecionar ficheiro), no centro da página, e navege no **Explorador de Ficheiros** até o Ambiente de Trabalho na Pasta `Map Warper_Introdução` e selecione o ficheiro `Mp_EDM_Villasboas_1795_SOBRENOME.jpg`.
 
@@ -124,7 +124,7 @@ Na página inicial os mapas importados estarão em **Favoritos** (Favourites) no
 
 ### Como retificar
 
-Neste subponto irá compreender como georreferenciar o mapa importado. Clique na aba **Rectify** (Retificar), onde existirão duas janelas, uma à esquerda com o mapa importado e outra à direita com um mapa base (OpenstreetMap). Será a partir deste mapa à direita que irá estabelecer pontos de controle, após selecionar pontos correspondentes em cada janela e clicar no botão **Add Control Point** (Adicionar Ponto de Controle). Abaixo destas janelas encontrará o **Control Planel** (Painel de Controle), que permite ajustar os pontos de controle e avaliar o seu nível de exatidão.
+Neste subponto irá compreender como georreferenciar o mapa importado. Clique na aba **Rectify** (Retificar), onde existirão duas janelas, uma à esquerda com o mapa importado e outra à direita com um mapa base (OpenstreetMap). Será a partir deste mapa à direita que irá estabelecer pontos de controle, após selecionar pontos correspondentes em cada janela e clicar no botão _Add Control Point_ (Adicionar Ponto de Controle). Abaixo destas janelas encontrará o **Control Planel** (Painel de Controle), que permite ajustar os pontos de controle e avaliar o seu nível de exatidão.
 
 ![Layer](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon1.png): O icóne **Layer** (Camada), na janela da direita, permite a seleção dos elementos presentes no mapa base do OpenstreetMap ou Mapbox Satellite.
 
@@ -162,9 +162,9 @@ Esta tabela incluí uma secção que define o [erro da geometria](https://perma.
 
 É possível exportar os pontos como um ficheiro CSV (valores separados por vírgula) ao selecionar esta opção na parte inferior do Painel de Controle. Este ficheiro pode ser importado para outros softwares ou ser um meio para a preservação do processo de georreferenciamento da imagem.
 
-Ao clicar em **Add Control Point Manually** (Adicionar Ponto de Controle Manualmente) pode-se adicionar um Ponto de Controle com valores de coordenadas. Se existe a informação sobre as coordenadas geográficas sobre pontos do mapa antigo será possível uma retificação com maior exatidão.
+Ao clicar em _Add Control Point Manually_ (Adicionar Ponto de Controle Manualmente) pode-se adicionar um Ponto de Controle com valores de coordenadas. Se existe a informação sobre as coordenadas geográficas sobre pontos do mapa antigo será possível uma retificação com maior exatidão.
 
-Similarmente, A**dd Control Point from CSV** (Adicionar Ponto de Controle por CSV) permite o upload de um ficheiro .csv automatizando o processo de georreferenciamento. Neste ficheiro a primeira linha deve conter os elementos da tabela de Pontos de Controle. As linhas subsequentes devem exprimir os valores das coordenadas da imagem a retificar (x, y) e do mapa de base (lon, lat), separado por vírgulas.
+Similarmente, _Add Control Point from CSV_ (Adicionar Ponto de Controle por CSV) permite o upload de um ficheiro `.csv` automatizando o processo de georreferenciamento. Neste ficheiro a primeira linha deve conter os elementos da tabela de Pontos de Controle. As linhas subsequentes devem exprimir os valores das coordenadas da imagem a retificar (x, y) e do mapa de base (lon, lat), separado por vírgulas.
 
 O seguinte exemplo ilustra as quatro colunas **x**, **y**, **lon** e **lat** e contém os 5 primeiros pontos de controle do mapa de Villasboas estabelecidos no próximo subponto:
 
@@ -175,7 +175,7 @@ x,y,lon,lat
 ```
 
 ### Prática
-Neste subponto irá, de facto, georreferenciar o mapa importado. Clique e aceda à **Rectify** (Retificar). Ao clicar em _m_ poderá mover-se pelos mapas, aproveitando esta oportunidade para se orientar, dando zoom até estar confortável com o que se vê nas janelas.
+Neste subponto irá, de facto, georreferenciar o mapa importado. Clique e aceda à _Rectify_ (Retificar). Ao clicar em _m_ poderá mover-se pelos mapas, aproveitando esta oportunidade para se orientar, dando zoom até estar confortável com o que se vê nas janelas.
 
 É necessário estabelecer um conjunto de critérios e selecionar quais pontos serão georreferenciados. Como o mapa de Villasboas contém um conjunto vasto de informações existem algumas estratégias possíveis. Porém, não devemos selecionar demasiados pontos, somente os necessários para termos uma versão georreferenciada do mapa antigo.
 
@@ -206,7 +206,7 @@ A partir deste conjunto de 32 pontos de controle temos:
 Nota: Verá que há um valor de erro para cada ponto de controle. O Map Warper usa um cálculo de variação baseado em Root-Mean-Square (RMS, em português, Erro Quadrático Médio) para avaliar os diferentes pontos de controle. O RMS fornece um guia de quão consistentes os pontos de controle são entre si e avalia o quão distorcido o mapa ficará. Valores altos de erro RMS indicam que seus pontos de controle são menos inteligíveis entre si, enquanto um valor baixo de erro RMS indica maior consistência. Geralmente, é recomendado manter os valores baixos e substituir ou remover pontos de controle com valores altos. O RMS é somente um indicador, logo sempre deve reavaliar o quão bem o mapa digitalizado corresponde ao mapa de base.
 </div>
 
-Quando obtiver pontos suficientes e considerar que eles estão bem distribuídos em seu mapa antigo, clique em **Warp Image!** (Distorcer a Imagem!) na parte inferior da página. 
+Quando obtiver pontos suficientes e considerar que eles estão bem distribuídos em seu mapa antigo, clique em _Warp Image!_ (Distorcer a Imagem!) na parte inferior da página. 
 
 {% include figure.html filename="pt-tr-introducao-map-warper-04.png" alt="Realce do botão 'Warp Image!' no Map Warper." caption="Figura 4. Clique em 'Warp Image!' para retificar o mapa." %}
 
@@ -224,14 +224,14 @@ A aba **Crop** (Recortar) permite que corte uma seção do mapa carregado. Isso 
 -   ![DrawNewPolygon](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon10.gif):  **Draw new Polygon to Mask** (em português,Desenhar Novo Polígono para Máscara)
 -   ![DeletePolygon](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon11.gif):  **Delete a Polygon** (Eliminar Polígono)
 
-Desenhe ao redor da área que deseja manter. Então, para aplicar a Máscara ao mapa, clique em **Mask Map!** (Mascarar o Mapa!). Após este passo deve retornar a aba **Rectify** (Retificar) e no fundo da página ativar a opção **True** (Verdadeiro) e de novo selecionar a opção **Warp Image!** (Distorcer a Imagem!).
+Desenhe ao redor da área que deseja manter. Então, para aplicar a Máscara ao mapa, clique em _Mask Map!_ (Mascarar o Mapa!). Após este passo deve retornar a aba **Rectify** (Retificar) e no fundo da página ativar a opção **True** (Verdadeiro) e de novo selecionar a opção _Warp Image!_ (Distorcer a Imagem!).
 
 {% include figure.html filename="pt-tr-introducao-map-warper-06.png" alt="Realce do mapa de Villasboas que será retificado." caption="Figura 6. 'Mask Map' aplicado ao mapa de Villasboas." %}
 
 
 ### Alinhar
 
-A aba **Align** (Alinhar) permite ordenar um conjunto de mapas a partir de um mosaico. Uma ferramenta adequada para conectar mapas fragmentados, ortofotos e outros documentos. Contudo, não esqueça de clicar em **Align Map** (Alinhar Mapa) para que o Map Warper faça um mosaico.
+A aba **Align** (Alinhar) permite ordenar um conjunto de mapas a partir de um mosaico. Uma ferramenta adequada para conectar mapas fragmentados, ortofotos e outros documentos. Contudo, não esqueça de clicar em _Align Map_ (Alinhar Mapa) para que o Map Warper faça um mosaico.
 
 {% include figure.html filename="pt-tr-introducao-map-warper-07.gif" alt="Gif demonstrando como alinhar mapas em mosaicos." caption="Figura 7. Visualização de como adicionar um mapa ao mosaico." %}
 
@@ -256,7 +256,7 @@ Na aba **Activity** (Atividade) é possível monitorar as intervenções realiza
 
 ### Comentário
 
-A aba **Commentary** (Comentário) permite que os usuários agreguem comentários sobre o mapa. Este é um espaço aberto que permite que outros comuniquem com o usuário que compartilhou o material cartográfico. Também é um lugar útil para enriquecer a descrição e catalogação do documento importado. Certifique-se de clicar em **Adicionar Comentário** (Add Comment) para salvar.
+A aba **Commentary** (Comentário) permite que os usuários agreguem comentários sobre o mapa. Este é um espaço aberto que permite que outros comuniquem com o usuário que compartilhou o material cartográfico. Também é um lugar útil para enriquecer a descrição e catalogação do documento importado. Certifique-se de clicar em _Adicionar Comentário_ (Add Comment) para salvar.
 
 ## Considerações finais
 

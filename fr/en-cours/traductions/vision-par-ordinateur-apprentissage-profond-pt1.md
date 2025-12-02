@@ -103,7 +103,7 @@ L'entraînement de modèles d'apprentissage supervisé est une tâche gourmande 
 
 ### Google Colab
 
-[Google Colab](https://colab.research.google.com/) est un service de Google qui permet d'héberger et de faire tourner des carnets Jupyter. Il est possible d'accès à des GPU et donc de tester l'entraînement de modèles.
+[Google Colab](https://colab.research.google.com/) est un service de Google qui permet d'héberger et de faire tourner des carnets Jupyter. Il est possible d'accéder à des GPU et donc de tester l'entraînement de modèles.
 
 Pour exécuter le code de la leçon sur Colab, vous devrez :
 
@@ -438,7 +438,7 @@ La puissance des CNN et de l'apprentissage profond provient de la capacité de c
 
 ### Utiliser un modèle existant ?
 
-Lorsque nous réfléchissons à la manière de créer notre modèle, plusieurs options s'offrent à nous. L'une d'entre elles consiste à utiliser un modèle préexistant qui aurait déjà été entraîné à une tâche particulière. Vous pouvez par exemple utiliser le modèle [YOLO](https://perma.cc/4BPF-LLQT). Ce modèle a été entraîné à prédire les [boîtes englobantes](https://perma.cc/JT6Y-F2EF) (*bounding boxes*) pour un certain nombre de types d'objets différents dans une image. Bien qu'il puisse s'agir d'un point de départ valable, cette approche présente un certain nombre de limites lorsqu'il s'agit de travailler avec des contenus historiques ou, plus généralement, avec des questions relatives aux sciences humaines. Tout d'abord, les données sur lesquelles ces modèles ont été entraînés peuvent être très différentes de celles que vous utilisez. Cela peut avoir un impact sur les performances de votre modèle sur vos données et conduire à des biais en faveur des images de vos données qui sont similaires aux données d'apprentissage. Un autre problème est que si vous utilisez un modèle existant sans aucune modification, vous êtes limité à utiliser les seules étiquettes sur lesquelles le modèle original a été entraîné.
+Lorsque nous réfléchissons à la manière de créer notre modèle, plusieurs options s'offrent à nous. L'une d'entre elles consiste à utiliser un modèle préexistant qui aurait déjà été entraîné à une tâche particulière. Vous pouvez par exemple utiliser le modèle [YOLO](https://perma.cc/4BPF-LLQT). Ce modèle a été entraîné à prédire les [boîtes englobantes](https://perma.cc/JT6Y-F2EF) (*bounding boxes*) pour un certain nombre de types d'objets différents dans une image. Bien qu'il puisse s'agir d'un point de départ valable, cette approche présente un certain nombre de limites lorsqu'il s'agit de travailler avec des contenus historiques ou, plus généralement, avec des questions relatives aux sciences humaines. Tout d'abord, les données sur lesquelles ces modèles ont été entraînés peuvent être très différentes de celles que vous utilisez. Cela peut avoir un impact sur les performances de votre modèle et conduire à des biais en faveur des images de vos données qui sont similaires aux données d'apprentissage. Un autre problème est que si vous utilisez un modèle existant sans aucune modification, vous êtes limité à utiliser les seules étiquettes sur lesquelles le modèle original a été entraîné.
 
 Bien qu'il soit possible de définir directement un modèle CNN en choisissant les couches que vous souhaitez inclure dans l'architecture de votre modèle, ce n'est généralement pas par là qu'il faut commencer. Il est souvent préférable de commencer par une architecture de modèle existante. Le développement de nouvelles architectures de modèles est un domaine de recherche actif, certains modèles s'avérant bien adaptés à une série de tâches et de données. Souvent, ces modèles sont ensuite mis en œuvre par des frameworks d'apprentissage machine. Par exemple, la bibliothèque [Transformers library](https://perma.cc/QJ4P-8PHQ) de [Hugging Face](https://perma.cc/D39N-DBK4) met en œuvre un grand nombre des architectures de modèles les plus populaires. 
 
@@ -449,7 +449,7 @@ Souvent, nous souhaitons trouver un équilibre entre partir de zéro et exploite
 
 Une fois le modèle créé et les données préparées, le processus d'entraînement peut commencer. Examinons les étapes d'une boucle d'entraînement :
 
-1. Un modèle reçoit des données et des étiquettes, un lot à la fois. Chaque fois qu'un ensemble de données complet est passé à travers un modèle, on parle d'un *epoch*. Le nombre d'epochs pour entraîner un modèle est l'une des variables que vous devrez contrôler.
+1. Un modèle reçoit des données et des étiquettes, un lot à la fois. Chaque fois qu'un ensemble de données complet est passé à travers un modèle, on parle d'une *epoch*. Le nombre d'epochs pour entraîner un modèle est l'une des variables que vous devrez contrôler.
 
 2. Le modèle fait des prédictions pour ces étiquettes sur la base des données fournies, en utilisant un ensemble de paramètres internes. Dans ce modèle de réseau CNN, les paramètres sont contenus dans les couches du réseau.
 
@@ -474,7 +474,7 @@ Une division supplémentaire des données est effectuée afin de produire les m�
 
 ## Apprentissage par transfert
 
-Dans notre premier classifieur, nous avons utilisé la méthode `fine_tune()` sur notre `learner` pour l'apprentissage. Que faisait cette méthode ? Vous aurez vu que la barre de progression se divise en deux parties. Le première epoch n'entraînait que les couches finales du modèle, après quoi les couches inférieures du modèle étaient également entraînées. C'est l'une des méthodes d'apprentissage par transfert dans Fastai. L'importance de l'apprentissage par transfert a déjà été abordée dans les sections précédentes. Pour rappel, l'apprentissage par transfert utilise les «&#xA0;paramètres&#xA0;» qu'un modèle a précédemment appris sur une autre tâche pour une nouvelle tâche. Dans le cas de la classification d'images, cela signifie généralement qu'un modèle a été entraîné sur un ensemble de données beaucoup plus important. Souvent, cet ensemble de données d'entraînement est ImageNet.
+Dans notre premier classifieur, nous avons utilisé la méthode `fine_tune()` sur notre `learner` pour l'apprentissage. Que faisait cette méthode ? Vous aurez vu que la barre de progression se divise en deux parties. La première epoch n'entraînait que les couches finales du modèle, après quoi les couches inférieures du modèle étaient également entraînées. C'est l'une des méthodes d'apprentissage par transfert dans Fastai. L'importance de l'apprentissage par transfert a déjà été abordée dans les sections précédentes. Pour rappel, l'apprentissage par transfert utilise les «&#xA0;paramètres&#xA0;» qu'un modèle a précédemment appris sur une autre tâche pour une nouvelle tâche. Dans le cas de la classification d'images, cela signifie généralement qu'un modèle a été entraîné sur un ensemble de données beaucoup plus important. Souvent, cet ensemble de données d'entraînement est ImageNet.
 
 ImageNet est une vaste base de données d'images très utilisée dans la recherche en vision par ordinateur. ImageNet contient actuellement [14&#xA0;197&#xA0;122 images](https://perma.cc/U48T-WA6E) avec plus de 20 000 étiquettes différentes. Cet ensemble de données est souvent utilisé comme [référence](https://perma.cc/KM95-DXTR) par les chercheurs en vision par ordinateur pour comparer leurs approches. Les questions éthiques liées aux étiquettes et à la production d'ImageNet sont explorées dans _[The Politics of Images in Machine Learning Training Sets](https://perma.cc/NE8D-P6AW)_ par Crawford et Paglen.[^4]
 
@@ -492,9 +492,9 @@ Lorsqu'un modèle est créé dans la bibliothèque fastai à l'aide de la métho
 
 Il est important de savoir ce qui se passe lorsque vous modifiez le processus d'entraînement. Nous vous suggérons de faire une copie du notebook et de voir ce qui se passe si vous apportez des changements. Voici quelques suggestions :
 
-- Changez la taille des images en entrée définies dans la transformation `Resize` dans `ImageDataLoaders`.
+- Changer la taille des images en entrée définies dans la transformation `Resize` dans `ImageDataLoaders`.
 - Changer le modèle utilisé dans `cnn_learner` de `resnet18` à `resnet34`.
-- Changez les métriques définies dans `cnn_learner`. Certaines métriques incluses dans fastai peuvent être trouvées dans la [documentation](https://perma.cc/K4BE-BF3W).
+- Changer les métriques définies dans `cnn_learner`. Certaines métriques incluses dans fastai peuvent être trouvées dans la [documentation](https://perma.cc/K4BE-BF3W).
 - Modifier le nombre d'epochs utilisés dans la méthode `fine_tune`.
 
 Si quelque chose «&#xA0;casse&#xA0;», ne vous inquiétez pas ! Vous pouvez retourner au notebook d'origine pour revenir à une version fonctionnelle du code. Dans la prochaine partie de la leçon, les composants d'un pipeline d'apprentissage profond seront abordés plus en détail. L'étude de ce qui se passe lorsque vous apportez des modifications constituera une part importante du savoir-faire nécessaire à l'entraînement d'un modèle de vision par ordinateur.
@@ -510,7 +510,7 @@ Dans cette leçon, nous avons :
 - présenté une vue d'ensemble des étapes d'un pipeline d'apprentissage profond et identifié les étapes de ce pipeline où les chercheurs en sciences humaines devraient porter une attention particulière,
 - réalisé une expérience rudimentaire pour essayer de vérifier si l'apprentissage par transfert est utile pour notre classifieur.
 
-Dans la prochaine partie de cette leçon, nous nous appuierons sur ces fondamentaux et entrerons dans plus de détails.
+Dans la prochaine partie de cette leçon, nous nous appuierons sur ces fondamentaux et entrerons plus dans les détails.
 
 
 
@@ -524,7 +524,7 @@ L'utilisation de l'apprentissage profond dans le contexte d'un travail avec des 
 learn_random_start = cnn_learner(ad_data, resnet18, metrics=accuracy, pretrained=False)
 ```
 
-Maintenant que nous avons créé un nouvel learner, nous allons utiliser la même méthode `fine_tune` que précédemment et entraîner pour le même nombre d'`epochs` que la dernière fois.
+Maintenant que nous avons créé un nouveau `learner`, nous allons utiliser la même méthode `fine_tune` que précédemment et entraîner pour le même nombre d'`epochs` que la dernière fois.
 
 
 ```python
@@ -627,7 +627,7 @@ Nous constatons qu'il existe une assez grande différence entre les performances
 
 [^5]: Jo, Eun Seo, and Timnit Gebru. ‘Lessons from Archives: Strategies for Collecting Sociocultural Data in Machine Learning’. In Proceedings of the 2020 Conference on Fairness, Accountability, and Transparency, 306–316. FAT\* ’20. New York, NY, USA: Association for Computing Machinery, 2020. [https://doi.org/10.1145/3351095.3372829](https://doi.org/10.1145/3351095.3372829).
 
-[^6]: Ces annotations comprennent une "boîte englobantes" autour des images, ainsi que des informations sur le type d'image contenu dans cette boîte. Ce modèle de détection d'objets a été entraîné sur ces données et a ensuite été utilisé pour faire des prédictions sur l'ensemble de la collection Chronicling America. Le modèle extrait les images de la page et les classe dans une parmi sept catégories. Lee, Benjamin Charles Germain, Jaime Mears, Eileen Jakeway, Meghan Ferriter, Chris Adams, Nathan Yarasavage, Deborah Thomas, Kate Zwaard, and Daniel S. Weld. ‘The Newspaper Navigator Dataset: Extracting And Analyzing Visual Content from 16 Million Historic Newspaper Pages in Chronicling America’. ArXiv:2005.01583 [Cs], 4 May 2020. [https://doi.org/10.48550/arXiv.2005.01583](https://doi.org/10.48550/arXiv.2005.01583).
+[^6]: Ces annotations comprennent une "boîte englobante" autour des images, ainsi que des informations sur le type d'image contenu dans cette boîte. Ce modèle de détection d'objets a été entraîné sur ces données et a ensuite été utilisé pour faire des prédictions sur l'ensemble de la collection Chronicling America. Le modèle extrait les images de la page et les classe dans une parmi sept catégories. Lee, Benjamin Charles Germain, Jaime Mears, Eileen Jakeway, Meghan Ferriter, Chris Adams, Nathan Yarasavage, Deborah Thomas, Kate Zwaard, and Daniel S. Weld. ‘The Newspaper Navigator Dataset: Extracting And Analyzing Visual Content from 16 Million Historic Newspaper Pages in Chronicling America’. ArXiv:2005.01583 [Cs], 4 May 2020. [https://doi.org/10.48550/arXiv.2005.01583](https://doi.org/10.48550/arXiv.2005.01583).
 
 [^7]: Arizona republican. [volume] (Phoenix, Ariz.) 1890-1930, March 29, 1895, Page 7, Image 7. Image provided by Arizona State Library, Archives and Public Records; Phoenix, AZ. [https://chroniclingamerica.loc.gov/lccn/sn84020558/1895-03-29/ed-1/seq-7/](https://perma.cc/M5G5-CRDK).
 

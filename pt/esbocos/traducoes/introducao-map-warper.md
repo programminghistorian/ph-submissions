@@ -126,7 +126,7 @@ Na página inicial os mapas importados estarão em **Favoritos** (Favourites) no
 
 Neste subponto irá compreender como georreferenciar o mapa importado. Clique na aba **Rectify** (Retificar), onde existirão duas janelas, uma à esquerda com o mapa importado e outra à direita com um mapa base (OpenstreetMap). Será a partir deste mapa à direita que irá estabelecer pontos de controle, após selecionar pontos correspondentes em cada janela e clicar no botão _Add Control Point_ (Adicionar Ponto de Controle). Abaixo destas janelas encontrará o **Control Planel** (Painel de Controle), que permite ajustar os pontos de controle e avaliar o seu nível de exatidão.
 
-![Layer](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon1.png): O icóne **Layer** (Camada), na janela da direita, permite a seleção dos elementos presentes no mapa base do OpenstreetMap ou Mapbox Satellite.
+![Layer](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon1.png): O ícone **Layer** (Camada), na janela da direita, permite a seleção dos elementos presentes no mapa base do OpenstreetMap ou Mapbox Satellite.
 
 ![Custombasemap](http://programminghistorian.github.io/ph-submissions/images/introduccion-map-warper/es-or-introduccion-map-warper-icon2.png) O ícone **Add Custom Basemap** (Adicionar Mapa de Base Personalizado), na janela da direita, permite que se adicione uma camada XYZ Tiles format (como Google Maps, Bing, CARTO, ESRI, Stamen, and other layers).
 

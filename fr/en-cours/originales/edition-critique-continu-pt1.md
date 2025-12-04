@@ -218,7 +218,7 @@ Voici un extrait d’une lettre de Filippo Cavriana encodée en TEI, tirée du c
 </TEI>
 ```
 
-Dans cet exemple, le `<teiHeader>` contient des métadonnées telles que l'identification du manuscrit conservé à Mantoue et la description de la correspondance (expéditeur, destinataire, lieu, date). Le corps du texte utilise plusieurs éléments structurels&#x202F;: `<opener>` et `<closer>` décrivent les formules d'ouverture et de clôture de la lettre, tandis que `<p>` signale les paragraphes. Comme la plupart des balises XML, ces éléments comportent une balise ouvrante et une balise fermante (ex&#x202F;: <opener>...<opener/>). Certaines, toutefois, comme `<lb/>`, sont dites « vides »&#x202F;: elles ne contiennent aucun contenu textuel ni sous-élément, et se ferment donc immédiatement.
+Dans cet exemple, le `<teiHeader>` contient des métadonnées telles que l'identification du manuscrit conservé à Mantoue et la description de la correspondance (expéditeur, destinataire, lieu, date). Le corps du texte utilise plusieurs éléments structurels&#x202F;: `<opener>` et `<closer>` décrivent les formules d'ouverture et de clôture de la lettre, tandis que `<p>` signale les paragraphes. Comme la plupart des balises XML, ces éléments comportent une balise ouvrante et une balise fermante (ex&#x202F;: <opener>...<opener/>). Certaines, toutefois, comme <code><lb/></code>, sont dites « vides »&#x202F;: elles ne contiennent aucun contenu textuel ni sous-élément, et se ferment donc immédiatement.
 
 Les balises `<lb/>` signalent des sauts de ligne diplomatiques. Lorsqu'un saut de ligne coupe un mot en deux, l'attribut `break="no"` nous permet de préciser qu'il s'agit d'une contrainte de mise en forme et non d'une coupure du contenu. Cela est utile lors de la phase de transformation, car la machine saura alors quand recomposer le mot sans espace ni saut de ligne, se libérant ainsi de la mise en page originale.
 
@@ -676,5 +676,6 @@ Dans le flux d'édition continue, cette transformation s'exécutera automatiquem
 
 Ce tutoriel a posé le socle local de l’édition continue&#x202F;: personnalisation de la TEI via un ODD, génération d’un schéma RELAX NG, validation (RELAX NG et Schematron) et transformations XSLT vers Markdown et HTML. Ces pratiques assurent cohérence, interopérabilité et portabilité du corpus. Elles permettent déjà de produire localement une édition de qualité professionnelle. 
 En intégrant ces pratiques dans des chaînes d'automatisation (Git, CI/CD), la publication instantanée et l'archivage pérenne est rendu possible. Dans la seconde partie, nous brancherons ce socle sur une chaîne d’intégration et de déploiement continus&#x202F;: gestion de versions avec Git, automatisation (GitHub Actions/GitLab CI/CD), assignation d’un DOI à des instantanés sur Zenodo. L’objectif est que la moindre modification d’un fichier TEI déclenche automatiquement contrôle, transformation et mise en ligne, réalisant ainsi la promesse de l’édition continue.
+
 
 

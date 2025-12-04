@@ -242,7 +242,7 @@ To enter a date as a time interval, we can use the **Sub-Object** tab. There, we
  
 {% include figure.html filename="en-tr-designing-database-nodegoat-11.jpg" alt="The Sub-Object tab with Name 'Founding date' and the 'Chronology' option selected under the 'Date' sub-tab" caption="Figure 11. Creating a ‘Chronology’ sub-object for the ‘Publishing House’ type." %}
 
-From now on, the **Publishing house** object type has a different attribute from **Author** and **Work**, which allows us to introduce temporal information as time intervals. Before we continue, we will need to remove the **Founding date** attribute from the **Objects** tab, as we have just replaced it with the **Chronology** sub-object.
+From now on, the **Publishing house** object type has a different attribute from **Author** and **Work**, which allows us to introduce temporal information as time intervals. Before we continue, we will need to remove the **Founding date** attribute from the **Objects** tab by deleting it from the descriptions field and saving the Object Type, since we have just replaced it with the **Chronology** sub-object.
 
 #### Exploring and using the database
 
@@ -250,7 +250,7 @@ Our model, its object types, and their relationships are now defined. If we go b
  
 {% include figure.html filename="en-tr-designing-database-nodegoat-12.jpg" alt="A data model connecting four tables each corresponding to Authors, Publishing houses, Works and Cities" caption="Figure 12. Visualization of our data model with nodegoat." %}
 
-We can now manually populate our database with the information we collect over the course of our research. To do this, go to the **Data** tab and click the *Add Object Type* option which appears below the tab for each object type.
+We can now manually populate our database with the information we collect over the course of our research. To do this, go to the **Data** tab and click on the button *Add [object type name]* which appears below each object type as you click on it.
 
 Note that the attribute **Founding date** of the **Publishing house** object type is not displayed with the other attributes, but as an element of the **Sub-Objects**, and whose date is defined as **Chronology**. The software allows us to fill in the details of the chronology with a choice between three options accessible from the drop-down menu that pops up when we press the green “create” button below “Chronology”: 1) “Point” to indicate an exact date; 2) “Statement” to indicate a period after or before a certain date (year, month or day); 3) “Between Statements” to indicate a period between two dates (as in our example, between 1970 and 1979).
  
@@ -264,9 +264,9 @@ Once we have recorded all the works, authors, and publishing houses, the databas
 
 {% include figure.html filename="en-tr-designing-database-nodegoat-16.jpg" alt="A table giving an overview of the authors in our database with relevant information distributed in six columns, namely the name of the author, the first name, the last name, the nationality, the place of birth, and the date of birth" caption="Figure 16. Overview of the authors in our database." %}
 
-We can also import our entire dataset as CSV files after we have finished analyzing our sources, rather than manually registering each record one at a time.
+Alternatively, we can import our entire dataset as CSV files after we have finished analyzing our sources, rather than manually registering each record one at a time.
 
-Regardless of the option that is chosen, once our database is built and populated, we can use the visualization tools offered by the software to further explore our objects and their relationships. Here, for example, is a map provided by nodegoat for visualizing the birthplaces of the authors as blue dots. 
+Regardless of the option that is chosen, once our database is built and populated, we can use the visualization tools offered by the software to further explore our objects and their relationships. These tools appear in a menu on the top right of the **Data** tab and include geographical and chronological parameteres, and social relationships. Here, for example, is a map provided by nodegoat for visualizing the birthplaces of the authors represented as blue dots. To create the map, select the **Author** Object in the **Data** tab and click on the icon for geographical visualisation. 
  
 {% include figure.html filename="en-tr-designing-database-nodegoat-17.jpg" alt="A geographical map of Europe with blue dots marking the places of birth of our dissident authors from Eastern Europe" caption="Figure 17. A geographical visualization in nodegoat of the birthplaces of the authors in our dataset." %}
  

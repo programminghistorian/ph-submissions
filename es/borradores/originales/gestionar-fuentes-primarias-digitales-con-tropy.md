@@ -82,7 +82,6 @@ Tropy puede importar fotos estáticas desde internet. Arrastra la imagen escogid
 
 En el caso de los expedientes _Sección Civil-Esclavos_, los documentos están en formato PDF y entonces es necesario descargarlos antes de importar en este mismo formato. Por otro lado, [esta imagen ](https://www.loc.gov/item/90682931/)(parte de la colección cartográfica de la Biblioteca del Congreso de los Estados Unidos) es estática y puede ser importada desde la web. Cualquier imagen estática incrustada en una página web que cuenta con su propia URL puede ser importada. Antes de importar, es importante verificar que la imagen a importar tenga una resolución adecuada, ya que la imagen importada conservará la resolución original.
 
->verifica que esta clarificación sea suficiente sobre la calidad de imagenes importadas de la web
 
 ### Fotos
 

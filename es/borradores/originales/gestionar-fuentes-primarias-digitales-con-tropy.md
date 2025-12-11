@@ -6,19 +6,18 @@ collection: lessons
 date: YYYY-MM-DD
 authors:
 - Douglas McRae
-- Anita Lucchesi
-- Sofia Papastamkou
 reviewers:
-- 
+- Alex Wingate
+- Alejo Reclusa
 editors:
-- 
+- Jennifer Isasi
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/598
 difficulty: 1
 activity: analyzing
 topics: [data-manipulation, data-management]
-abstract: "El propósito de este tutorial es mostrar a los investigadores cómo iniciar un proyecto de Tropy con el fin de gestionar las imágenes digitales de sus fuentes primarias." 
-avatar_alt: 
-doi: 
+abstract: El propósito de este tutorial es mostrar a los investigadores cómo iniciar un proyecto de Tropy con el fin de gestionar las imágenes digitales de sus fuentes primarias. 
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}

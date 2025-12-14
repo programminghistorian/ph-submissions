@@ -248,7 +248,7 @@ python -m spacy download xx_sent_ud_sm
 
 # charger la tokénisateur multilingue dans notre code
 nlp = spacy.load("xx_sent_ud_sm")
-# applying the spaCy model to our text variable
+# déployer le modèle spaCy sur la variable de texte
 doc = nlp(cleaned_war_and_peace)
 
 # mettre les phrases tokénisées dans une liste pour y acceéder plus facilement par la suite
@@ -613,17 +613,17 @@ Ci-dessous, nous divisons notre phrase en mots russe et français comme nous l�
 cyrillic_words_punct = []
 latin_words_punct = []
 
-# créer une chaîne de caracetère vide pour savoir quelle est la dernière liste à laquelle des données ont été ajoutées
+# créer une chaîne de caracetères vide pour savoir quelle est la dernière liste à laquelle des données ont été ajoutées
 last_appended_list = ''
 
-# itérer sur chaque mots et les rajouter aux listes en fonction de si un caractère cyrillique a été détecté
+# itérer sur chaque mots et les rajouter aux listes en fonction de si un caractère cyrillique est détecté
 for word in tokenized_sent:
   if regex.search(r'\p{IsCyrillic}', word):
     cyrillic_words_punct.append(word)
-    # updating our string to track the list we appended a word to
+    # mettre la variable à jour pour tenir compte de la dernière liste à laquelle des données ont été ajoutées
     last_appended_list = 'cyr'
   else:
-    # handling punctuation by appending it to our most recently used list
+    # joindre les symboles de ponctuation à la dernière liste à laquelle un mot a été rajoutée
     if word in punctuation:
         if last_appended_list == 'cyr':
             cyrillic_words_punct.append(word)
@@ -646,7 +646,7 @@ Résultats:
 Nous pouvons ensuite combiner ces listes en chaînes de caractère, ce qui nous permettra d’appliquer l’algorithme de détection de langue. Nous utilisons une expression régulière pour enlever l’espace devant chaque point de ponctuation (cette espace a été créé lorsque nous avons tokénisé la phrase en mots). Ceci préserve la ponctuation telle qu’elle était présente dans la phrase d’origine.
 
 ``` python
-# rejoindre les listes en chaînes de caractères
+# joindre les listes en chaînes de caractères
 cyrillic_only_list = ' '.join(cyrillic_words)
 latin_only_list = ' '.join(latin_words)
 
@@ -787,13 +787,13 @@ from stanza.models.common.doc import Document
 from stanza.pipeline.core import Pipeline
 from stanza.pipeline.multilingual import MultilingualPipeline
 
-# lancer la pipeline multilingue sur les phrases françaises, russes, et multilingue en même temps
+# lancer la pipeline multilingue sur les phrases françaises, russes, et multilingue en même temps 
 nlp = MultilingualPipeline(processors='tokenize,pos')
 docs = [stanza_rus_sent, stanza_fre_sent, stanza_multi_sent]
 nlp(docs)
 
 # imprimer les résultats
-print(*[f'word: {word.text}\tupos: {word.upos}' for sent in doc.sentences for word in sent.words], sep='\n')
+print(*[f'word: {word.text}\tupos: {word.upos}' for sent in docs.sentences for word in sent.words], sep='\n')
 ```
 Résultats:
 

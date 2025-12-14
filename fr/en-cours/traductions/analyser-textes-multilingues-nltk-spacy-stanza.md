@@ -43,7 +43,7 @@ Afin d’accomplir ces trois tâches de prétraitement essentielles, cette leço
 
 Cette leçon est destinée à celles et ceux qui ne sont pas familier avec les méthodes de traitement de texte, en particulier celles·eux souhaitant appliquer ces méthodes sur des corpus multilingues ou des textes écrit en langues autre que l’anglais. Bien qu’une connaissance de Python n’est pas nécessaire, il sera utile de comprendre la structure du code. Avoir une connaissance de base de la syntaxe de Python ainsi que de ses fonctionnalités est recommandé. Il serait par exemple utile pour les lectrices·eurs de s’être familiariser avec l’importation de bibliothèques, la construction de fonctions, et la manipulation de chaînes de caractères (appelées strings en anglais).
 
-Le code pour ce tutoriel est écrit en Python 3.10 et utilise les bibliothèques NLTK (v.3.8.1), spaCy (v3.7.4), et Stanza (v1.8.2) pour performer du traitement de texte. Si vous n’avez jamais utilisé Python auparavant, il vous sera utile de consulter cette autre leçon du _[Programming Historian]_(https://programminghistorian.org/en/lessons/introduction-and-installation) avant de compléter notre leçon.
+Le code pour ce tutoriel est écrit en Python 3.10 et utilise les bibliothèques NLTK (v.3.8.1), spaCy (v3.7.4), et Stanza (v1.8.2) pour effectuer du traitement de texte. Si vous n’avez jamais utilisé Python auparavant, il vous sera utile de consulter cette autre leçon du _[Programming Historian]_(https://programminghistorian.org/en/lessons/introduction-and-installation) avant de compléter notre leçon.
 
 ## Installation et mise en place
 
@@ -126,7 +126,7 @@ En résumé, chaque package peut s’avérer être un outil très efficace pour 
 
 ## Développer du code Python pour l’analyse de texte multilingue
 
-Pour la partie programmation de cette leçon, vous prendrez un extrait du texte originaire du roman Guerre et Paix (1869) de Léon Tolstoï en russe et qui contient une grande partie de texte francophone. Nous verrons comment diviser le texte en phrases, comment détecter la langue dans laquelle chacune de ces phrases est écrite, et comment performer certaines analyses sur le texte. Le fichier de texte que nous utiliserons contient un extrait du premier livre du roman et a été obtenu via Wikipédia. Ceci est le seul texte dont vous aurez besoin pour finir la leçon et il peut être téléchargé depuis le [dépôt du _Programming Historian_](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analyser-textes-multilingues-nltk-spacy-stanza/guerre-et-paix-extrait.txt). Si vous souhaitez suivre la leçon depuis un Jupyter notebook, nous en avons préparé un qui contient tout le code de cette leçon et qui peut être [accédé ici](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analyser-textes-multilingues-nltk-spacy-stanza/analyser-textes-multilingues-nltk-spacy-stanza.ipynb).
+Pour la partie programmation de cette leçon, vous prendrez un extrait du texte originaire du roman Guerre et Paix (1869) de Léon Tolstoï en russe et qui contient une grande partie de texte francophone. Nous verrons comment diviser le texte en phrases, comment détecter la langue dans laquelle chacune de ces phrases est écrite, et comment effectuer certaines analyses sur le texte. Le fichier de texte que nous utiliserons contient un extrait du premier livre du roman et a été obtenu via Wikipédia. Ceci est le seul texte dont vous aurez besoin pour finir la leçon et il peut être téléchargé depuis le [dépôt du _Programming Historian_](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analyser-textes-multilingues-nltk-spacy-stanza/guerre-et-paix-extrait.txt). Si vous souhaitez suivre la leçon depuis un Jupyter notebook, nous en avons préparé un qui contient tout le code de cette leçon et qui peut être [accédé ici](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analyser-textes-multilingues-nltk-spacy-stanza/analyser-textes-multilingues-nltk-spacy-stanza.ipynb).
 
 Si vous souhaitez poursuivre la leçon sans télécharger le fichier texte, vous pouvez utiliser le texte qui suit comme chaîne de charactères à la place.
 
@@ -285,7 +285,7 @@ Comme vous pouvez l’observer, les deux algorithmes ont tokénisés les phrases
 
 #### Tokéniser avec Stanza
 
-Nous allons maintenant répéter cette opération avec Stanza en utilisant sa pipeline multilingue. Stanza utilise des pipelines pour pré-télécharger et enchaîner une série de processeurs qui performent chacun une tâche de traitement de texte spécifique (la tokénisation, l’analyse syntaxique, ou encore la reconnaissance d’entités nommées). Pour plus d’information sur les pipelines de Stanza, veuillez consulter [leur documentation](https://perma.cc/R3DS-UE2E).
+Nous allons maintenant répéter cette opération avec Stanza en utilisant sa pipeline multilingue. Stanza utilise des pipelines pour pré-télécharger et enchaîner une série de processeurs qui effectuent chacun une tâche de traitement de texte spécifique (la tokénisation, l’analyse syntaxique, ou encore la reconnaissance d’entités nommées). Pour plus d’information sur les pipelines de Stanza, veuillez consulter [leur documentation](https://perma.cc/R3DS-UE2E).
 
 ``` python
 from stanza.pipeline.multilingual import MultilingualPipeline

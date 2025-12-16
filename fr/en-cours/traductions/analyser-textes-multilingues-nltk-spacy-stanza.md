@@ -77,7 +77,7 @@ Dans cette leçon, nous commencerons par tokéniser notre texte. Ceci nous perme
 
 L’étiquetage morpho-syntaxique est un procédé par lequel chaque mot dans un texte est étiqueté avec sa valeur morpho-syntaxique (tel que « nom propre », « verbe », « adjectif », etc). L’étiquetage morpho-syntaxique peut suivre des algorithmes à base de règles prédéfinies, utilisant des définitions fixes pour estimer le label à correctement attacher à un mot, ou bien suivre une approche [stochastique](https://perma.cc/XU5R-KWMD) (probabilistique), grâce à laquelle l’étiqueteur calcule la probabilité qu’une combinaison d’étiquettes se produise. La phrase utilisée comme exemple de tokénisation plus haut pourrait ainsi ressembler à ceci une fois étiqueté par le NLTK : (‘And’, ‘CC’), (‘now’, ‘RB’), (‘for’, ‘IN’), (‘something’, ‘NN’), (‘completely’, ‘RB’), (‘different’, ‘JJ’) (à noter que ces étiquettes représentent des étiquettes anglophones). La phrase est divisée en liste de mots, et chaque mot est mis dans un [tuple](https://perma.cc/N8UU-UZUM) avec son étiquette morpho-syntaxique.
 
-{% include figure.html filename="en-or-analyzing-multilingual-text-nltk-spacy-stanza-01.png" alt="Figure 1: capture d'écran de l'étiquetage morpho-syntaxique, chapitre 5 du NLTK Book." caption="Figure 1: capture d'écran de l'étiquetage morpho-syntaxique, chapitre 5 du NLTK Book.%}
+{% include figure.html filename="en-or-analyzing-multilingual-text-nltk-spacy-stanza-01.png" alt="Figure 1: capture d'écran de l'étiquetage morpho-syntaxique, chapitre 5 du NLTK Book." caption="Figure 1: capture d'écran de l'étiquetage morpho-syntaxique, chapitre 5 du NLTK Book." %}
 
 
 **La lemmatisation**

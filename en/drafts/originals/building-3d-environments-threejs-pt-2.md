@@ -310,11 +310,11 @@ We will later change the emissive property of the material to show if a jar is s
 
 The jars will be added to a group (called 'jars') and the group will be added to the scene. This will allow us to specify later that objects belonging to the jars group can be selected. 
 
-Each jar will get a userData property that will point to the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. We will create 'aibomM.userData.planes', but we could also create additional ones such as 'aibomM.userData.somethingelse' and 'aibomM.userData.anotherthing'.
+Each jar will get a [https://threejs.org/docs/#Object3D.userData](userData) property that will point to the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. We will create 'aibomM.userData.planes', but we could also create additional ones such as 'aibomM.userData.somethingelse' and 'aibomM.userData.anotherthing'.
 
 Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
 
-Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM, in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that runs after the .glb file is loaded by the loader's load method. As mentioned in part 1, we need to put the positioning and scaling of the model in this function so that they only occur after the model has finished loading. Remember that the load method has 5 arguments: the model filename; the function run after the model is loaded; a function run while the model is loading; and a function run if there is an error.  As in part 1, we will leave the function that runs while the model is loading 'undefined' and have an anonymous (unnamed) function that is run if there is an error with the loading.
+Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM, in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that runs after the .glb file is loaded by the loader's load method. As mentioned in part 1, we need to put the positioning and scaling of the model in this function so that they only occur after the model has finished loading. Remember that the load method has 5 arguments: the model filename; a function run after the model is loaded; a function run while the model is loading; and a function run if there is an error.  As in part 1, we will leave the function that runs while the model is loading 'undefined' and have an anonymous (unnamed) function that is run if there is an error with the loading.
 
 We replace the declaration of the model with declarations of the jars and their group. Replace:
 
@@ -487,7 +487,7 @@ add:
 
 ```
 
-Then, we tell the window to 'listen' for any clicks, and what send the click information to the onClick function that we will define next.
+Then, we tell the window to 'listen' for any clicks, to send the click information to the onClick function that we will define next.
 
 Within the init function definition, after:
 ```

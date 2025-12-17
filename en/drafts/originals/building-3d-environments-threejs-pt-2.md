@@ -538,7 +538,7 @@ add:
 ```
 You can save the file and reload the browser and check that clicking on the jars makes them red. However we want the jars to go back to their original colour after a new jar is selected. Toggling 'material.emissive.r' off and on to indicate selection means we do not have to store what colour the jar was originally as we can just turn the emissiveness off.
 
-We want to change the onClick functions sot that it will unhighlight the last jar selected (set material.emissive.r of the 'selectedObj' to off (i.e. '=0')). Importantly we want to do this **after** we click on a new object but **before** we update the selectedObj to the new object.
+We want to change the onClick functions so that it will unhighlight the last jar selected (set material.emissive.r of the 'selectedObj' to off (i.e. '=0')). Importantly we want to do this **after** we click on a new object but **before** we update the selectedObj to the new object.
 
 Within the onClick function after:
 ```
@@ -986,7 +986,7 @@ Pots were made in many different forms by different communities in Papua New Gui
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-17.png" alt="Many jars on a map of Papua." caption="Figure 17. Additional jars can be addded to the scene and puzzle." %}
 
 ## Conclusion and Next Steps
-This has been an introduction to using three.js and the basic concepts in creating 3D scenes. The official [three.js](https://threejs.org) website shows how much more complex pages can be created, with additions such as animations and sound. The [three.js](https://threejs.org) site also contains example code that could be used for extending the puzzle created here, for example adding sound effects for correct matches. Many sites, especially those with large models, feature loading bars, that give feedback to the user while the models load. Another possible extension is to enable the scene to be viewed and manipulated in VR. The three.js site also contains links to places to ask the community for help, and links guides including [three.js Fundamentals](https://threejs.org/manual/#en/fundamentals). 
+This has been an introduction to using three.js and the basic concepts in creating 3D scenes. The official [three.js](https://threejs.org) website shows how much more complex pages can be created, with additions such as animations and sound. The [three.js](https://threejs.org/examples/) site also contains example code that could be used for extending the puzzle created here, for example adding sound effects for correct matches. Many sites, especially those with large models, feature loading bars, that give feedback to the user while the models load. Another possible extension is to enable the scene to be viewed and manipulated in VR. The three.js site also contains links to places to ask the community for help, and links guides including [three.js Fundamentals](https://threejs.org/manual/#en/fundamentals). 
 
 There are many ways cultural heritage models can be used interactively: broken vessels can be put back together (Hardy, 2023), site contexts could be toggled on and off, or objects could be virtually analysed, with images or measurements from scientific techniques revealed when the object is clicked on. Providing research data in such a format has challenges, but also has the possibility for making findings more accessible and interesting to non-academic audiences.
 

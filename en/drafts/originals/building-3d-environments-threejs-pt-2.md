@@ -310,7 +310,7 @@ We will later change the emissive property of the material to show if a jar is s
 
 The jars will be added to a group (called 'jars') and the group will be added to the scene. This will allow us to specify later that objects belonging to the jars group can be selected. 
 
-Each jar will get a [userData](https://threejs.org/docs/?q=userdata#Object3D.userData) property that will point to the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. We will create 'aibomM.userData.planes', but we could also create additional ones such as 'aibomM.userData.somethingelse' and 'aibomM.userData.anotherthing'.
+Each jar will get a [userData](https://threejs.org/docs/?q=userdata#Object3D) property that will point to the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. We will create 'aibomM.userData.planes', but we could also create additional ones such as 'aibomM.userData.somethingelse' and 'aibomM.userData.anotherthing'.
 
 Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
 

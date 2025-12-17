@@ -92,7 +92,7 @@ También es posible importar una carpeta de imágenes a través del menú **Arch
 
 Si descargas tomos de la _Sección Civil-Esclavos_, puedes guardarlos en tu disco preferido y luego importarlos mediante cualquiera de los métodos mencionados. En el menú **Tropy > Preferencias (Edit > Preferencias** en Windows) > **Proyecto**, es posible designar una carpeta monitoreada: cada vez que un formato compatible sea agregado a la carpeta designada, este se importará al proyecto de Tropy. Usa el botón _Navegar_ (Figura 2) para vincular una carpeta. 
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 OJO: en el caso de descargar archivos de gran tamaño para importar a un proyecto convencional, debes considerar borrar las imágenes de la carpeta monitoreada, ya que Tropy hará una copia dentro del archivo del proyecto.
 </div>
 

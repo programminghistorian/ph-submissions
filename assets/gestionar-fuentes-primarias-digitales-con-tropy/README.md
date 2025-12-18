@@ -1,1 +1,0 @@
-Please upload the assets to this folder.

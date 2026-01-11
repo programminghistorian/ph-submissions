@@ -43,7 +43,7 @@ Afin d’accomplir ces trois tâches de prétraitement essentielles, cette leço
 
 Cette leçon est destinée à celles et ceux qui ne sont pas familier avec les méthodes de traitement de texte, en particulier celles·eux souhaitant appliquer ces méthodes sur des corpus multilingues ou des textes écrit en langues autre que l’anglais. Bien qu’une connaissance de Python n’est pas nécessaire, il sera utile de comprendre la structure du code. Avoir une connaissance de base de la syntaxe de Python ainsi que de ses fonctionnalités est recommandé. Il serait par exemple utile pour les lectrices·eurs de s’être familiarisé avec l’importation de bibliothèques, la construction de fonctions, et la manipulation de chaînes de caractères.
 
-Le code pour cette leçon est écrit en Python 3.10 et utilise les bibliothèques NLTK (v.3.8.1), spaCy (v3.7.4), et Stanza (v1.8.2) pour effectuer du traitement de texte. Si vous n’avez jamais utilisé Python auparavant, il vous sera utile de consulter cette autre leçon du [_Programming Historian_](https://programminghistorian.org/en/lessons/introduction-and-installation) avant de commencer la leçon (à noter que les leçons complémentaires du _Programming Historian_ qui seront indiquées ici ne sont pas encore disponibles en traduction française).
+Le code pour cette leçon est écrit en Python 3.10 et utilise les bibliothèques NLTK (v3.8.1), spaCy (v3.7.4), et Stanza (v1.8.2) pour effectuer du traitement de texte. La majeure partie du code fonctionne également en Python 3.12 ainsi qu'avec les dernières versions des bibliothèques NLTK (v3.9.2) et Stanza (v1.11.0). Cependant, la version à jour de spaCy (v3.8.11) se comporte de manière légèrement différente. Ceci sera indiqué en commentaires de code là où ceci entrave le bon fonctionnement du code. Il est recommandé à celles et ceux qui veulent utiliser toutes les fonctions décrites dans cette leçon avec spaCy de s'en tenir à la version 3.7.4 de cette bibliothèque. Si vous n’avez jamais utilisé Python auparavant, il vous sera utile de consulter cette autre leçon du [_Programming Historian_](https://programminghistorian.org/en/lessons/introduction-and-installation) avant de commencer la leçon (à noter que les leçons complémentaires du _Programming Historian_ qui seront indiquées ici ne sont pas encore disponibles en traduction francophone).
 
 ## Installation et mise en place
 
@@ -260,17 +260,21 @@ print(spacy_sentences)
 
 Nous pouvons désormais sauvegarder nos phrases dans des variables, tel que nous l’avons fait avec le NLTK. spaCy ne retourne pas les phrases comme chaîne de caractères mais en tant que tokens spaCy. Afin de les imprimer comme nous l’avons fait avec le NLTK, il faudra d’abord les convertir en chaîne de caractères (pour plus d’informations sur les types de données supportés par Python, tels que les chaînes de caractères et les nombres entiers, veuillez consulter [cette documentation](https://perma.cc/PJ99-H9DP). Ceci nous permettra d’attacher un préfixe qui identifie la langue des phrases, car Python ne permet pas de combiner une chaîne de caractères avec un autre type de donnée. Étant donné la petite taille de nos données, il est facile de spécifier les phrases qui nous intéressent en utilisant leur indexation dans notre liste. Pour examiner l’entièreté d’une liste de phrases, comme on pourrait le faire avec une base de données plus large, on utiliserait une méthode différente pour examiner les chaînes de caractères, comme par exemple en itérant à travers chaque objet de la liste (il nous faudra faire ceci avec nos tokens Stanza ci-dessous).
 
+<div class="alert alert-warning">
+Attention: la tokénisation de phrases opère de façon différente dans la version 3.8.11 de spaCy. Les valeurs de phrases indiquées ici ne sont donc pas les mêmes que celles dans le code de la leçon originelle. 
+</div>
+
 ``` python
 # combiner la phrase russe et son label de langage
-spacy_rus_sent = str(spacy_sentences[5])
+spacy_rus_sent = str(spacy_sentences[6])
 print('Russian: ' + spacy_rus_sent)
 
 # combiner la phrase française et son label de langage
-spacy_fre_sent = str(spacy_sentences[13])
+spacy_fre_sent = str(spacy_sentences[14])
 print('French: ' + spacy_fre_sent)
 
 # combiner la phrase russe et française et son label de langage
-spacy_multi_sent = str(spacy_sentences[4])
+spacy_multi_sent = str(spacy_sentences[5])
 print('Multilang: ' + spacy_multi_sent)
 ```
 
@@ -368,6 +372,10 @@ Comme vous pouvez le voir, TextCat a correctement identifié les phrases écrite
 Nous examinerons d’autres manières de détecter les langues dans des phrases multilingues une fois que nous aurons classifié nos phrases en utilisant spaCy et Stanza.
 
 Commençons par spaCy. Il faut d'abord installer le package `spacy_langdetect` depuis le Pyhton Package Index.
+
+<div class="alert alert-warning">
+Attention: le pipeline LanguageDetector de ce package ne fonctionne plus avec le modèle multilingue xx_sent_ud_sm dans la version 3.8.11 de spaCy. Il est recommandé aux lectrices·eurs de s'en tenir à la version de spaCy utilisée dans la version originelle de la leçon (v3.7.4).
+</div>
 
 ``` python
 pip install spacy_langdetect

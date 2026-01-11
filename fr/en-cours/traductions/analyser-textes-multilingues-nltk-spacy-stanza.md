@@ -96,7 +96,7 @@ Dans cette leçon, nous comparerons les bibliothèques NLTK, spaCy, et Stanza qu
 
 ## Packages Python Essentiels
 
-Les bibliothèques Python utilisés dans cette leçon (NLTK, spaCy, et Stanza) ont été choisies pour leur capacité à traiter des textes multilingues, leurs communautés d’utilisatrices·eurs régulières·ers, ainsi que leur statut open source. Bien que les trois packages soient couramment utilisés et fiables, ils possèdent chacun différents point forts et caractéristiques : ils couvrent différentes langues, utilisent différentes syntaxes et structurations de données, et chacun se concentre sur des usages légèrement différents. En examinant leurs différentes caractéristiques et en comparant leur utilisation, vous serez capable de développer une familiarité de base avec chacun de ces packages, ce qui vous aidera à choisir celui qui sera le mieux adapté à vos projets.
+Les bibliothèques Python utilisés dans cette leçon (NLTK, spaCy, et Stanza) ont été choisies pour leur capacité à traiter des textes multilingues, leurs communautés d’utilisatrices·eurs régulières·ers, ainsi que leur statut de code ouvert. Bien que les trois packages soient couramment utilisés et fiables, ils possèdent chacun différents point forts et caractéristiques : ils couvrent différentes langues, utilisent différentes syntaxes et structurations de données, et chacun se concentre sur des usages légèrement différents. En examinant leurs différentes caractéristiques et en comparant leur utilisation, vous serez capable de développer une familiarité de base avec chacun de ces packages, ce qui vous aidera à choisir celui qui sera le mieux adapté à vos projets.
 
 ### Le Natural Language Toolkit (NLTK)
 
@@ -116,7 +116,7 @@ La documentation de spaCy et uniquement disponible en anglais, mais le package c
 
 ### Stanza
 
-Stanza a été spécifiquement conçu pour le multilinguisme, ce qui rend le traitement de texte en différentes langues très intuitif et naturel avec la syntaxe de cette bibliothèque. Lancer une pipeline sur du texte vous permet d’accéder à ses différents composants tels que par exemple l’étiquetage morpho syntaxique et les lemma avec très peu de code.
+Stanza a été spécifiquement conçu pour le multilinguisme, ce qui rend le traitement de texte en différentes langues très intuitif et naturel avec la syntaxe de cette bibliothèque. Lancer un pipeline sur du texte vous permet d’accéder à ses différents composants tels que par exemple l’étiquetage morpho syntaxique et les lemma avec très peu de code.
 
 Bien que souvent plus lent que le NLTK et spaCy, [Stanza](https://perma.cc/PGU6-EZ27) contient des modèles de langage qui ne sont pas disponibles à travers les autres bibliothèques. Ce package contient des modèles neuraux pré-entraînés pour plus de [70 langues](https://stanfordnlp.github.io/stanza/models.html#human-languages-supported-by-stanza). Une liste exhaustive de ses modèles est disponible sur le [GitHub de StanfordNLP](https://perma.cc/RZ38-AACK), et plus d’informations quant à ses pipeline sont disponibles [ici](https://stanfordnlp.github.io/stanza/neural_pipeline.html). Les pipelines de Stanza sont construites avec des composants de réseaux de neurones artificiels entraînés sur des corpus plurilingues, ce qui signifie qu’elles utilisent des algorithmes d’apprentissage de machine entraînées sur du texte annoté plutôt que des approches de traitement de texte à base de paramètres (comme comparer les mots d’un texte à un dictionnaire défini au préalable). Par exemple, si l’on entreprend de l’étiquetage morpho-syntaxique sur un texte, les algorithmes de Stanza générerons leurs propres étiquettes basées sur des prédictions entraînées sur un large corpus de texte étiqueté et prenant en compte le contexte de chaque mot (c’est-à-dire sa position relative aux autres mots de la phrase). En revanche, un algorithme à base de paramètres chercherait chaque terme dans un dictionnaire prédéfini et identifierait son étiquette en fonction des résultats sans prendre en compte le contexte dans lequel chaque mot apparaît.
 
@@ -285,7 +285,7 @@ Comme vous pouvez l’observer, les deux algorithmes ont tokénisés les phrases
 
 #### Tokéniser avec Stanza
 
-Nous allons maintenant répéter cette opération avec Stanza en utilisant sa pipeline multilingue. Stanza utilise des pipelines pour pré-télécharger et enchaîner une série de processeurs qui effectuent chacun une tâche de traitement de texte spécifique (la tokénisation, l’analyse syntaxique, ou encore la reconnaissance d’entités nommées). Pour plus d’information sur les pipelines de Stanza, veuillez consulter [leur documentation](https://perma.cc/R3DS-UE2E).
+Nous allons maintenant répéter cette opération avec Stanza en utilisant son pipeline multilingue. Stanza a recours à des pipelines pour pré-télécharger et enchaîner une série de processeurs qui effectuent chacun une tâche de traitement de texte spécifique (la tokénisation, l’analyse syntaxique, ou encore la reconnaissance d’entités nommées). Pour plus d’information sur les pipelines de Stanza, veuillez consulter [leur documentation](https://perma.cc/R3DS-UE2E).
 
 ``` python
 from stanza.pipeline.multilingual import MultilingualPipeline
@@ -293,7 +293,7 @@ from stanza.pipeline.multilingual import MultilingualPipeline
 # définir notre pipeline pour tokéniser
 nlp = MultilingualPipeline(processors='tokenize')
 
-# appliquer cette pipeline à notre texte
+# appliquer ce pipeline à notre texte
 doc = nlp(cleaned_war_and_peace)
 
 # imprimer toutes les phrases pour voir comment elles ont été tokénisées
@@ -308,7 +308,7 @@ Nous allons d’abord mettre les tokens de phrases dans une liste pour les conve
 # créer une liste vide pour y rajouter nos phrases
 stanza_sentences = []
 
-# itérer à travers chaque token de phrase créé par la pipeline de tokénisation et la rajouter à notre liste
+# itérer à travers chaque token de phrase créé par le pipeline de tokénisation et la rajouter à notre liste
 for sentence in doc.sentences:
   stanza_sentences.append(sentence.text)
 
@@ -703,10 +703,10 @@ peur NOUN
 
 #### L’étiquetage morpho-syntaxique avec Stanza
 
-Faisons maintenant de même avec Stanza. Commençons par le russe : il faut charger la pipeline russe, l’appliquer à notre phrase, et imprimer les étiquettes morpho-syntaxique détectées par Stanza.
+Faisons maintenant de même avec Stanza. Commençons par le russe : il faut charger le pipeline russe, l’appliquer à notre phrase, et imprimer les étiquettes morpho-syntaxique détectées par Stanza.
 
 ``` python
-# charger la pipeline et l'appliquer à notre phrase en spécifiant la langue comme étant le russe ('ru')
+# charger le pipeline et l'appliquer à notre phrase en spécifiant la langue comme étant le russe ('ru')
 nlp = stanza.Pipeline(lang='ru', processors='tokenize,pos')
 doc = nlp(stanza_rus_sent)
 
@@ -754,7 +754,7 @@ Nous ferons maintenant de même pour notre phrase en français, en utilisant la 
 
 
 ``` python
-# charger la pipeline et l'appliquer à notre phrase en spécifiant la langue comme étant le français ('fr')
+# charger le pipeline et l'appliquer à notre phrase en spécifiant la langue comme étant le français ('fr')
 nlp = stanza.Pipeline(lang='fr', processors='tokenize,mwt,pos')
 doc = nlp(stanza_fre_sent)
 
@@ -779,7 +779,7 @@ word: amie	upos: NOUN
 word: ?	upos: PUNCT
 ```
 
-Pour l’analyse multilingue, la pipeline multilingue de Stanza nous permet d’appliquer une approche plus simple qu’avec spaCy, étant donné qu’elle peut produire les étiquettes morpho-syntaxique en utilisant la même syntaxe que les exemples précédents. Il nous faut importer la pipeline multilingue, l’appliquer à notre texte, et ensuite imprimer les résultats.
+Pour l’analyse multilingue, le pipeline multilingue de Stanza nous permet d’appliquer une approche plus simple qu’avec spaCy, étant donné qu’elle peut produire les étiquettes morpho-syntaxique en utilisant la même syntaxe que les exemples précédents. Il nous faut importer le pipeline multilingue, l’appliquer à notre texte, et ensuite imprimer les résultats.
 
 ``` python
 # imports requis pour utiliser la MultilingualPipeline de Stanza
@@ -787,7 +787,7 @@ from stanza.models.common.doc import Document
 from stanza.pipeline.core import Pipeline
 from stanza.pipeline.multilingual import MultilingualPipeline
 
-# lancer la pipeline multilingue sur les phrases françaises, russes, et multilingue en même temps 
+# lancer le pipeline multilingue sur les phrases françaises, russes, et multilingue en même temps 
 nlp = MultilingualPipeline(processors='tokenize,pos')
 docs = [stanza_rus_sent, stanza_fre_sent, stanza_multi_sent]
 nlp(docs)
@@ -888,15 +888,15 @@ peur peur
 
 #### Lemmatiser avec Stanza
 
-Pour finir, procédons maintenant à la lemmatisation des phrases russes, françaises, et multilingue avec Stanza. La syntaxe est très similaire à celle utilisée pour l’étiquetage morpho-syntaxique avec la pipeline multilingue.
+Pour finir, procédons maintenant à la lemmatisation des phrases russes, françaises, et multilingue avec Stanza. La syntaxe est très similaire à celle utilisée pour l’étiquetage morpho-syntaxique avec le pipeline multilingue.
 
 ``` python
-# imports requis pour la pipeline multilingue
+# imports requis pour le pipeline multilingue
 from stanza.models.common.doc import Document
 from stanza.pipeline.core import Pipeline
 from stanza.pipeline.multilingual import MultilingualPipeline
 
-# rajouter le processeur de lemmes à la pipeline et l'appliquer à nos phrases
+# rajouter le processeur de lemmes au pipeline et l'appliquer à nos phrases
 nlp = MultilingualPipeline(processors='tokenize,lemma')
 docs = [stanza_rus_sent, stanza_fre_sent, stanza_multi_sent]
 nlped_docs = nlp(docs)

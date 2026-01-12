@@ -1,12 +1,11 @@
 ---
-title: "Named Entity Annotation, Linking, Augmentation and Network Visualization Using Open-Source Tools"
+title: "Named Entity Annotation, Linking, Enrichment and Network Visualization Using Open-Source Tools"
 slug: named-entity-annotation-linking-augmentation-visualisation
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD
 authors:
 - Silvia Stoyanova
-- Emmanuel Landau
 reviewers:
 - Forename Surname
 - Forename Surname

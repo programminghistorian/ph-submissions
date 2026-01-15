@@ -28,19 +28,20 @@ doi: XX.XXXXX/phen0000
 
 This lesson provides an introduction to the technical skills required for the analysis of digital artifacts. These artifacts are more than just their visible content; they exist within interwoven layers that shape their function and meaning. Technically, they are embedded in systems of file formats, applications, operating systems, and hardware, but they are also influenced by environmental factors such as infrastructure, data centers, and socio-economic conditions.
 
-The aim of this lesson is to introduce the use of hex editors, which serve as an essential tool for the initial analysis in reverse engineering and digital archaeology. The lesson begins with an overview of reverse engineering and software archaeology. Following this fundamental introduction to the research field, we dive into analysis using hex editors through two case studies. The first demonstrates how an image format can simultaneously function as an archive, highlighting the necessity of looking beyond what is presented to us on the screen. The second case is an investigation of a "cracked" Commodore 64 video game from 1984, in which we link reverse engineering to the study of the history of digital technologies.
+The aim of this lesson is to introduce the use of hex viewer, which serve as an essential tool for the initial analysis in reverse engineering and digital archaeology. The lesson begins with an overview of reverse engineering and software archaeology. Following this fundamental introduction to the research field, we dive into analysis using hex editors through two case studies. The first demonstrates how an image format can simultaneously function as an archive, highlighting the necessity of looking beyond what is presented to us on the screen. The second case is an investigation of a "cracked" Commodore 64 video game from 1984, in which we link reverse engineering to the study of the history of digital technologies.
 
-By introducing the analysis of file signatures, metadata, and structural anomalies, this lesson provides a fundamental understanding of how digital artifacts are constructed. Readers will be empowered to use hex editors to interpret complex objects and to confidently engage with the digital sources that shape contemporary research—from proprietary formats to historical databases.
+By introducing the analysis of file signatures, metadata, and structural anomalies, this lesson provides a fundamental understanding of how digital artifacts are constructed. Readers will be empowered to use hex viewer to interpret complex objects and to confidently engage with the digital sources that shape contemporary research—from proprietary formats to historical databases.
 
 At the end of this lesson you will be able to:
 
 1. Understand the concept of reverse engineering and its relevance for analyzing born-digital artifacts in historical research.
 2. Identify and critique the limitations of “screen essentialism”, recognizing the multiple layers (code, metadata, structure) that comprise digital objects.
-3. Use hex editors to view the raw data of digital files, and perform comparative hex dump analysis to detect and interpret changes or anomalies between versions of digital files.
+3. Use hex viewer to view the raw data of digital files, and perform comparative hex dump analysis to detect and interpret changes or anomalies between versions of digital files.
 4. Apply digital archaeology techniques to investigate modified or cracked software, uncovering evidence of historical, cultural, or technical interventions.
 5. Evaluate the limitations and challenges of reverse engineering, especially in the absence of original documentation or open-source code.
 
 ### Prerequisites and technical requirements
+All necessary files and digital artifacts required for this lesson are provided. You do not need to source your own materials to follow the exercises; however, the skills learned here are designed to be applied to your own future research objects.
 There are two fundamental technical requirements for this lesson that form the foundation of our digital archaeology approach.
 
 1. The first requirement centres on having appropriate tools to transform digital artifacts into a more accessible and analysable state. While numerous tools and methodologies exist for this purpose, we begin with a straightforward yet powerful hex viewer, which allows us to examine the raw binary data of digital files. A hex viewer displays the hexadecimal representation of binary data, making it possible to see patterns, headers, and structures that are otherwise hidden from conventional file viewers. We recommend using the command line tool `hexyl` or the browser-based [HexEd.it](https://hexed.it/) for reliable options that provide the necessary functionality for beginners while maintaining the depth required for more advanced analysis. For the examples in this lesson, we will exclusively use `hexyl`.
@@ -100,17 +101,18 @@ On [hexyl's release page](https://github.com/sharkdp/hexyl/releases) you will al
 
 ### The bit code of an image
 
-To illustrate this, we begin with the basic structure of a JPEG file, as shown in the diagram below. The JPEG format follows a clearly defined structure, starting with a file signature or “magic number” that identifies it as a JPEG, followed by metadata, image data, and an end-of-file marker. This predictable format allows hex editors to recognize and parse the file correctly. The image below is an example of the bit code of an image. It is not necessary to fully understand this image at this point, but it shows some of the concepts that will be discussed in the lesson.
+To illustrate the fundamentals of file analysis, we begin with the basic structure of a JPEG file. The JPEG format follows a clearly defined architecture, starting with a file signature or “magic number” that identifies it, followed by metadata, image data, and an end-of-file marker. This predictable format allows hex editors to recognize and parse the file correctly.
+
+The image below provides a visual breakdown of this "bit code." It is not necessary to fully understand every byte at this point, but it introduces the markers that allow us to navigate a digital artifact.
 
 {% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-02.png" alt="The illustration shows a color-coded hex dump on the left side. Some of the output is highlighted and connected with a dashed line to detailed explenations on the right side, indicating where the start of the image is, or where one could find more information about the files format." caption="Figure 2. Infographic annotating a JPEG's file header in hexadecimal notation. (Ange Albertini 2022 – CC-BY 4.0 )" %}
 
-When we open a sample JPEG of a cat in a hex editor, the hex view immediately exposes this structure. The file signature (FF D8 FF E0) at the beginning confirms that it is a JPEG file. We can also see metadata fields describing the image’s dimensions, colour depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values. 
+#### The Standard Pattern
+When we open a sample JPEG in a hex viewer, the hex view immediately exposes this structure. The file signature (FF D8 FF E0) at the beginning confirms its identity. Beyond the header, we find metadata describing dimensions and color depth, followed by the bulk of the file: compressed image data, which appears as a seemingly random string of hexadecimal values. 
 
-*Make sure to be in the appropriate directory before entering the following command into your terminal. If you have downloaded the provided files, and unzipped them in your personal "Downloads" folder, you can usually navigate there by `cd Downloads/reverse-engineering-born-digital-artefacts` after opening the terminal. The `-n` option tells hexyl to only display the first 256 bytes. In the spirit of a cooking show, we already prepared some of this lesson's files, which is why you find several images in the `jpg_zip` folder. You can ignore the others for now. The $ (dollar) sign in front of a line indicates a command to be copied into the terminal. The $ sign should not be coppied.*
-
-
+Navigate to your jpg_zip folder in the terminal. The -n option tells hexyl to only display the first 256 bytes. The $ sign indicates a command to be copied into the terminal (do not copy the $ itself).
 ```shell
-$ hexyl jpg_zip/cat.jpg -n 256
+$ hexyl cat-hybrid.jpg -n 256
 ```
 
 Executing this command will give us the following output. The leftmost column is the address of the line of data we see. The second and third columns show our data in hexadecimal notation, which we can investigate when we know what to look for. The two last columns is our data shown as ASCII interpretation. This simply means that hexyl tries to display the data in normal readable form. It's those two columns which are of interest to our investigation if we're interested in text that was meant for humans to read.
@@ -141,156 +143,58 @@ The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG fil
 
 {% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-03.jpeg" alt="The photo shows a rather silly cat on a couch. The cat looks upwards and has its tongue out, making it look like a defiant kid. It's an orange tabby cat with fluffy fur and the couch is upholstered in grey cotton fabric." caption="Figure 3. A cat sitting on a couch." %}
 
-Similarly, ZIP files have their own distinct file signature `50 4B 03 04` that identifies them as compressed archives. While these file types are typically seen as distinct, their binary structures can be combined in creative ways, exploiting differences in how file parsers read them. JPEG files are read from the beginning of the file, while ZIP files are parsed from the end—creating an opportunity to embed a ZIP archive inside a JPEG without breaking the integrity of either format.
+#### Challenging "Screen Essentialism": The Hybrid Artifact
+While the standard JPEG ends predictably, digital artifacts can have "dual identities" by exploiting how different software "reads" or parses data. This challenges "screen essentialism"—the idea that a file is only what the icon on our desktop says it is.
 
-### Creating the Image Zip File
+To demonstrate this, we will analyze cat-hybrid.jpg again. While it appears to be a standard image, a hex dump reveals a second structural paradigm. JPEGs are read from the top down and stop at an End of Image (EOI) marker. ZIP files, conversely, are typically parsed from the bottom up. By appending a ZIP archive to the end of a JPEG, a hybrid file is created that remains valid for both an image viewer and an archive utility.
 
-To demonstrate this, we can create a file that functions as both a valid JPEG and a ZIP archive. The goal of this small exercise is to show how we can hide text in an image file. The process involves first creating a standard JPEG image file and then appending a ZIP archive to the end of the file. Since JPEG parsers will stop reading once they reach the end-of-file marker for the image, the additional ZIP data will remain hidden from the image viewer. However, a ZIP parser will read the file from the end and identify the ZIP header, enabling the file to function as a valid archive. This dual-format trick exploits the differences in how file types are interpreted by different software, effectively creating a file with two identities.
-
-The following commandos create a text file, compress it into a ZIP file, then continues to create a copy of our cat image and finally appends the ZIP file to the copied image file. We will first navigate directly into the `jpg_zip` folder, for easier application of the terminal commands. *A # symbol in front of a line indicates a comment for you, the reader, and doesn't need to be coppied.*
-
-*With PowerShell (Windows):*
-
-```powershell
-# Let's move to the appropriate files folder
-$ cd jpg_zip
-
-# Create the text file
-$ "Hello World!" | Set-Content -Path hidden-content.txt -Encoding UTF8
-
-# Create the zip archive
-$ Compress-Archive -Path hidden-content.txt -DestinationPath hidden-content.zip
-
-# Copy the image file
-$ Copy-Item -Path jpg_zip/cat.jpg -Destination cat-with-hidden-content.jpg
-
-# Append the zip file bytes to the copied image
-$ $zipBytes = Get-Content -Path hidden-content.zip -Encoding Byte -Raw
-$ Add-Content -Path cat-with-hidden-content.jpg -Value $zipBytes -Encoding Byte
-```
-
-*Under macOS or Linux Terminal:*  
+Run the following command to look at the transition point at the end of this specific file:
 
 ```shell
-# Let's move to the appropriate files folder
-$ cd jpg_zip
-
-# Create the text file
-$ echo "Hello World" > hidden-content.txt
-
-# Create the zip archive
-$ zip hidden-content.zip hidden-content.txt
-
-# Copy the image file
-$ cp cat.jpg cat-with-hidden-content.jpg
-
-# Append the zip file bytes to the copied image
-$ cat hidden-content.zip >> cat-with-hidden-content.jpg
+$ hexyl cat-hybrid.jpg | tail -n 10
 ```
-
-Let's check how our files look like now, through a hex dump.
+In the output, look for the JPEG EOI marker: ff d9. Immediately following it, you will see the ZIP file signature: 50 4b 03 04.
 
 ```shell
-$ hexyl hidden-content.zip  
+# Transition from JPEG (ff d9) to ZIP (50 4b 03 04)
+│00031900│ ff d9 50 4b 03 04 0a 00 ┊ 00 00 00 00 51 3d b6 5a │××PK••_0┊0000Q=×Z│
 ```
+#### The Analytical Takeaway
+This exercise teaches a fundamental reverse engineering skill: signature hunting. When analyzing born-digital artifacts—especially those that may have been tampered with—we cannot trust the file extension. Instead, we use computational searches to "fingerprint" the data structure.
+
+### From Binary to XML: Comparing .doc and .docx
+Beyond the playful "hybrid" scenario of JPEGs and ZIPs, these same analytical skills allow historians to track the evolution of the digital record itself. As noted in our introduction, born-digital artifacts are often "black boxes" of proprietary code. A prime example of this is the massive shift in how Microsoft Word stored data in the mid-2000s. By comparing a legacy .doc file with a modern .docx file, we can see a literal move from the opaque, binary structures of the past toward the open-standard containers of the present.
+
+#### The Binary Legacy (.doc)
+The older .doc format (predominant until 2007) is a complex binary format. If you open a .doc file in a hex viewer, the actual text is often buried within layers of proprietary logic.
 
 ```shell
-# Hexdump of our zipped text file, its content decoded and visible on the right.
+tbd
+```
+
+When you inspect a legacy document, you will likely see the signature D0 CF 11 E0. This identifies an OLE2 (Object Linking and Embedding) container. As we discussed in the section on Reverse Engineering, such files are non-human-readable without specialized tools. For the historian, this format represents the height of "screen essentialism": we see a formatted page on the screen, but the underlying code is a proprietary maze that is difficult to preserve or read against the grain.
+
+#### The Modern Container (.docx)
+The transition to .docx changed the nature of the artifact. Under the hood, a modern .docx is actually a ZIP archive in disguise, containing a collection of XML files that describe the document’s text and structure.
+
+To verify this, run hexyl on the provided modern-document.docx:
+
+```shell
+$ hexyl modern-document.docx -n 32
+Shell
 ┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
-│00000000│ 50 4b 03 04 0a 00 00 00 ┊ 00 00 51 3d b6 5a dd dd │PK••_000┊00Q=×Z××│
-│00000010│ 14 7d 0d 00 00 00 0d 00 ┊ 00 00 12 00 1c 00 68 69 │•}_000_0┊00•0•0hi│
-│00000020│ 64 64 65 6e 2d 63 6f 6e ┊ 74 65 6e 74 2e 74 78 74 │dden-con┊tent.txt│
-│00000030│ 55 54 09 00 03 4a b9 2e ┊ 68 4a b9 2e 68 75 78 0b │UT_0•J×.┊hJ×.hux•│
-│00000040│ 00 01 04 e8 03 00 00 04 ┊ e8 03 00 00 48 65 6c 6c │0••×•00•┊×•00Hell│
-│00000050│ 6f 20 57 6f 72 6c 64 21 ┊ 0a 50 4b 01 02 1e 03 0a │o World!┊_PK••••_│
-│00000060│ 00 00 00 00 00 51 3d b6 ┊ 5a dd dd 14 7d 0d 00 00 │00000Q=×┊Z××•}_00│
-│00000070│ 00 0d 00 00 00 12 00 18 ┊ 00 00 00 00 00 01 00 00 │0_000•0•┊00000•00│
-│00000080│ 00 a4 81 00 00 00 00 68 ┊ 69 64 64 65 6e 2d 63 6f │0××0000h┊idden-co│
-│00000090│ 6e 74 65 6e 74 2e 74 78 ┊ 74 55 54 05 00 03 4a b9 │ntent.tx┊tUT•0•J×│
-│000000a0│ 2e 68 75 78 0b 00 01 04 ┊ e8 03 00 00 04 e8 03 00 │.hux•0••┊×•00•×•0│
-│000000b0│ 00 50 4b 05 06 00 00 00 ┊ 00 01 00 01 00 58 00 00 │0PK••000┊0•0•0X00│
-│000000c0│ 00 59 00 00 00 00 00    ┊                         │0Y00000 ┊        │
+│00000000│ 50 4b 03 04 14 00 06 00 ┊ 08 00 00 00 21 00 4b 22 │PK••••••┊••••!.K"│
 └────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
 ```
 
-```shell
-$ hexyl cat.jpg | tail -n 16; hexyl cat-with-hidden-content.jpg | tail -n 16
-```
-*The `| tail -n` part will return only the last 16 rows of output*
+Notice the signature: 50 4B 03 04. This is the exact same ZIP signature we identified in our "hybrid" cat image!
 
-```shell
-# Last lines of the hexdump of cat.jpg
-│00031820│ 52 ce 7e 61 c5 45 1c e4 ┊ b9 08 06 cf 52 2b 4d 2d │R×~a×E•×┊×••×R+M-│
-│00031830│ 2d 63 1f 34 65 8f d6 9a ┊ 62 88 b1 0a 81 57 da 81 │-c•4e×××┊b××_×W××│
-│00031840│ 14 9d da 32 63 c7 0f de ┊ ac 26 88 6e d7 2b 70 17 │•××2c×•×┊×&×n×+p•│
-│00031850│ 03 a5 68 5b 5b 5b 18 f2 ┊ c8 c4 8f 7a 8b ed 50 c5 │•×h[[[•×┊×××z××P×│
-│00031860│ 21 d8 8c 30 71 d6 81 94 ┊ 22 b3 30 3f 95 29 e7 d4 │!××0q×××┊"×0?×)××│
-│00031870│ 56 b5 a0 89 2d a5 81 fe ┊ 74 6c f2 6a 39 ae 60 dc │V×××-×××┊tl×j9×`×│
-│00031880│ 1f ca 25 b1 eb 4f 8a 48 ┊ e5 88 b2 a1 5a 00 e7 2f │•×%××O×H┊××××Z0×/│
-│00031890│ d1 77 88 c4 6c 14 1e 18 ┊ 0a 9c 49 bb 4f 3c 64 a5 │×w××l•••┊_×I×O<d×│
-│000318a0│ 6d 5c 5b 45 35 99 3b 70 ┊ c3 bd 60 43 27 92 b3 26 │m\[E5×;p┊××`C'××&│
-│000318b0│ 33 90 68 10 43 2c bb 77 ┊ 20 e4 8e be 95 37 98 e1 │3×h•C,×w┊ ××××7××│
-│000318c0│ 40 24 11 de a8 42 ce 17 ┊ ef 71 ed 52 ee fb c8 7d │@$•××B×•┊×q×R×××}│
-│000318d0│ 3a d3 02 c4 4c 16 e7 00 ┊ fc ad 4c bc 8d a1 90 b2 │:×•×L•×0┊××L×××××│
-│000318e0│ 8c 81 ce 6a ac 32 12 36 ┊ 9e ab de a6 98 b3 a8 05 │×××j×2•6┊×××××××•│
-│000318f0│ 8e 18 e0 d0 00 2e d7 03 ┊ 9a 29 be 42 7a 51 40 1f │×•××0.×•┊×)×BzQ@•│
-│00031900│ ff d9                   ┊                         │××      ┊        │
-└────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
+This discovery is a perfect example of why "signature hunting" is a foundational skill for digital archaeology. Recognizing this pattern allows a historian to bypass the word processor entirely; you can simply rename the extension to .zip and "unzip" the file to access the raw XML text. This transparency is a significant departure from the OLE2 "black box" of the .doc era.
 
-# Last lines of the hexdump of our altered cat-with-hidden-content.jpg
-│000318e0│ 8c 81 ce 6a ac 32 12 36 ┊ 9e ab de a6 98 b3 a8 05 │×××j×2•6┊×××××××•│
-│000318f0│ 8e 18 e0 d0 00 2e d7 03 ┊ 9a 29 be 42 7a 51 40 1f │×•××0.×•┊×)×BzQ@•│
-│00031900│ ff d9 50 4b 03 04 0a 00 ┊ 00 00 00 00 51 3d b6 5a │××PK••_0┊0000Q=×Z│
-│00031910│ dd dd 14 7d 0d 00 00 00 ┊ 0d 00 00 00 12 00 1c 00 │××•}_000┊_000•0•0│
-│00031920│ 68 69 64 64 65 6e 2d 63 ┊ 6f 6e 74 65 6e 74 2e 74 │hidden-c┊ontent.t│
-│00031930│ 78 74 55 54 09 00 03 4a ┊ b9 2e 68 4a b9 2e 68 75 │xtUT_0•J┊×.hJ×.hu│
-│00031940│ 78 0b 00 01 04 e8 03 00 ┊ 00 04 e8 03 00 00 48 65 │x•0••×•0┊0•×•00He│
-│00031950│ 6c 6c 6f 20 57 6f 72 6c ┊ 64 21 0a 50 4b 01 02 1e │llo Worl┊d!_PK•••│
-│00031960│ 03 0a 00 00 00 00 00 51 ┊ 3d b6 5a dd dd 14 7d 0d │•_00000Q┊=×Z××•}_│
-│00031970│ 00 00 00 0d 00 00 00 12 ┊ 00 18 00 00 00 00 00 01 │000_000•┊0•00000•│
-│00031980│ 00 00 00 a4 81 00 00 00 ┊ 00 68 69 64 64 65 6e 2d │000××000┊0hidden-│
-│00031990│ 63 6f 6e 74 65 6e 74 2e ┊ 74 78 74 55 54 05 00 03 │content.┊txtUT•0•│
-│000319a0│ 4a b9 2e 68 75 78 0b 00 ┊ 01 04 e8 03 00 00 04 e8 │J×.hux•0┊••×•00•×│
-│000319b0│ 03 00 00 50 4b 05 06 00 ┊ 00 00 00 01 00 01 00 58 │•00PK••0┊000•0•0X│
-│000319c0│ 00 00 00 59 00 00 00 00 ┊ 00                      │000Y0000┊0       │
-└────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
-```
+Identifying these structural signatures is our first step in "writing the missing manual" for a file. However, reverse engineering often requires us to look for more than just signatures; we must also look for change.
 
-We are mainly interested in the last few lines of output, in the last two columns. The output of our `hidden-content.zip` file let's us discern some human-readable information, the name of the `hidden-content.txt` file as well as this textfile's contents. Whereas the imagefile `cat.jpg` doesn't contain any such indications, the output of `cat-with-hidden-content.jpg` does have similar output as the ZIP file. We can open both image file and they behave and look the same, but our altered version now secretly hosts a zipped text file.
+In the next section, we will take these skills—checking for signatures and analyzing file sizes—and apply them to a much more complex historical artifact: a Commodore 64 game disk. There, we won't just look at how one format changed into another, but how a specific group of people (crackers) manually modified a file's binary code to leave their own cultural mark.
 
-### Analysing the Image Zip File
-
-When we open this hybrid file in a hex editor, the dual nature of the file becomes evident. The hex editor will display the initial JPEG file signature (`FF D8 FF E0`) at the beginning of the file, confirming its validity as an image. Scanning through the hex code, we can observe the image metadata and the compressed image data. However, at the end of the file, the ZIP file signature (`50 4B 03 04`) appears, indicating the presence of a valid ZIP archive. A hex editor allows us to parse the file structure manually, identifying the point where the image data ends and the ZIP archive begins. This example illustrates how hex editing can reveal hidden structures and dual functionalities within a single file, underscoring the value of reverse engineering in uncovering the hidden dimensions of digital artifacts.
-
-To prove that our newly created JPG-ZIP file is still valid, we can open and look at it, but also rename and decompress it to retrieve the original text file.
-
-```shell
-# Copy our altered jpg file and rename the file ending to zip
-$ cp cat-with-hidden-content.jpg cat-with-hidden-content.zip 
-
-# Remove the original text file
-$ rm hidden-content.txt
-
-# Uncompress the copied jpg, and treat it as if it would be a zip file
-$ unzip cat-with-hidden-content.zip
-
-# Peeking into the unzipped content of the altered jpg
-$ cat hidden-context.txt
-```
-
-The last command should return "Hello World!", the content of your original text file. The latter we compressed into a zip file, attached it to a JPEG, which we then renamed to a zip file, uncompressed, and retrieved the original text file again. Since we know the file signature of a ZIP file (`50 4B 03 04`), this allows us to search for this string within a JPG file. The following command will return a result, indicating that there is a ZIP file within our JPG file, expanding our close reading of these files through a computational approach.
-
-```shell
-$ hexyl --color never cat-with-hidden-content.jpg | grep '50 4b 03 04'
-```
-*hexyl by default adds colour information to the hex dump, which interferes with our search. We can disable this behaviour with the option `--color never`. You should recieve the following output. If no zip file would have been present in our jpg, we wouldn't have received any output at all. The fact that we got something returned proves that our little trick worked.*
-
-```shell
-# Output of our search for zip file header information in a jpg file.
-│00031900│ ff d9 50 4b 03 04 0a 00 ┊ 00 00 00 00 51 3d b6 5a │××PK••_0┊0000Q=×Z│
-```
-
-This example illustrates how reverse engineering through hex analysis can uncover the layered nature of digital artifacts. What appears to be a simple image file may, in fact, be a container for additional data or hidden functionality. The ability to uncover and interpret these hidden structures is essential for understanding how digital objects are constructed and how their functionality can be manipulated or repurposed.
 
 ## Reverse Engineering a cracked Commodore 64 Game
 

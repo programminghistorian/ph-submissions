@@ -16,7 +16,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/607
 difficulty: 1
 activity: presentation
 topics: web development, 3d modeling
-abstract: Short abstract of this lesson
+abstract: This lesson overviews how to build interactive environments for 3d models with the Javascript web development software, three.js.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---

@@ -5,17 +5,17 @@ layout: lesson
 collection: lessons
 date: YYYY-MM-DD
 authors:
-- Adrian Demleitner
-- Daniel Gammenthaler
+  - Adrian Demleitner
+  - Daniel Gammenthaler
 reviewers:
-- Thorston Ries
-- Laurisa Sastoque Pabón
+  - Laurisa Sastoque Pabón
+  - Thorston Ries
 editors:
-- Nabeel Siddiqui
+  - Nabeel Siddiqui
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/664
-difficulty: 
-activity: 
-topics: 
+difficulty:
+activity:
+topics:
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
@@ -23,81 +23,67 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-
 ## Introduction
 
-This lesson provides an introduction to the technical skills required for the analysis of digital artifacts. These artifacts are more than just their visible content; they exist within interwoven layers that shape their function and meaning. Technically, they are embedded in systems of file formats, applications, operating systems, and hardware, but they are also influenced by environmental factors such as infrastructure, data centers, and socio-economic conditions.
+This lesson provides a gentle introduction to the technical skills required for the analysis of digital artifacts. These are more than just their visible content; they exist within interwoven layers that shape their function and meaning. Technically, they are embedded in systems of file formats, applications, operating systems, and hardware, but they are also influenced by environmental factors such as infrastructure, data centers, and socio-economic conditions.
 
 The aim of this lesson is to enable readers to take their first steps in reverse engineering using hex viewers, which serve as an indispensable tool for initial analysis in reverse engineering and digital archaeology. The lesson begins with an overview of reverse engineering and software archaeology. Following this fundamental introduction to the research field, we dive into analysis using hex editors through two case studies. The first case involves two examples of how digital formats can be recognized in modern computer architecture and illustrates the need to look beyond what is presented to us on the screen. The second case is an investigation of a “cracked” Commodore 64 video game from 1984, in which we combine reverse engineering with research into the history of digital technologies.
 
-By introducing the analysis of file signatures, metadata, and structural anomalies, this lesson provides a fundamental understanding of how digital artifacts are constructed. Readers will be empowered to use hex viewer to interpret complex objects and to confidently engage with the digital sources that shape contemporary research—from proprietary formats to historical databases.
+By introducing the analysis of file signatures, metadata, and structural anomalies, this lesson provides a introductionary understanding of how digital artifacts are constructed. Readers will be empowered to use hex viewer to interpret complex objects and to begin engaging with the digital sources in their own research, from proprietary formats to historical databases.
 
-At the end of this lesson you will be able to:
+At the end of this lesson you will be able to
 
-1. Understand the concept of reverse engineering and its relevance for analyzing born-digital artifacts in historical research.
-2. Identify and critique the limitations of “screen essentialism”, recognizing the multiple layers (code, metadata, structure) that comprise digital objects.
-3. Use hex viewer to view the raw data of digital files, and perform comparative hex dump analysis to detect and interpret changes or anomalies between versions of digital files.
-4. Apply digital archaeology techniques to investigate modified or cracked software, uncovering evidence of historical, cultural, or technical interventions.
-5. Evaluate the limitations and challenges of reverse engineering, especially in the absence of original documentation or open-source code.
+- understand the concept of reverse engineering and its relevance for analyzing born-digital artifacts in historical research.
+- identify and critique the limitations of “screen essentialism”, recognizing the multiple layers (code, metadata, structure) that comprise digital objects.
+- use hex viewer to view the raw data of digital files, and perform comparative hex dump analysis to detect and interpret changes or anomalies between versions of digital files.
+
+You will also have made your first steps regarding
+
+- applying digital archaeology techniques to investigate modified or cracked software, uncovering evidence of historical, cultural, or technical interventions.
+- evaluating the limitations and challenges of reverse engineering, especially in the absence of original documentation or open-source code.
+
+It is important to highlight that reverse engineering and working with born-digital artifacts can be a daunting endeavor, given all the different configurations of hard- and software and all the knowledge and skills that can be involved in this research domain. No matter what the research object is, it all begins with the simple realization, that there is always more to a digital artifact then is visible at first glance. This lesson will help with this realization and should be regarded as a first step in developing your own research strategies.
 
 ### Prerequisites and technical requirements
+
 All necessary files and digital artifacts required for this lesson are provided. You do not need to source your own materials to follow the exercises; however, the skills learned here are designed to be applied to your own future research objects.
-There are two fundamental technical requirements for this lesson that form the foundation of our digital archaeology approach.
+There are three fundamental technical requirements for this lesson that form the foundation of our digital archaeology approach.
 
 1. The first requirement centres on having appropriate tools to transform digital artifacts into a more accessible and analysable state. While numerous tools and methodologies exist for this purpose, we begin with a straightforward yet powerful hex viewer, which allows us to examine the raw binary data of digital files. A hex viewer displays the hexadecimal representation of binary data, making it possible to see patterns, headers, and structures that are otherwise hidden from conventional file viewers. We recommend using the command line tool `hexyl` or the browser-based [HexEd.it](https://hexed.it/) for reliable options that provide the necessary functionality for beginners while maintaining the depth required for more advanced analysis. For the examples in this lesson, we will exclusively use `hexyl`.
-2. The second essential requirement involves acquiring suitable born-digital objects for analysis, which varies significantly depending on your specific research question and can encompass digital images, databases, software applications, and various other digital artifacts. While we provide curated digital artifacts for the two case studies presented in this lesson, the broader challenge lies in identifying and accessing appropriate materials for independent research, which we can't cover in this lesson. 
+2. Given our focus on a command line tool (`hexyl`), we expect you to be comfortable with this environment. We give examples throughout the lesson that can be copy/pasted, but some basic understanding of the Linux, macOS, or Windows shells will improve your digestion of this lesson. If you want to learn more about working in shell environments, Programming Historian has lessons on [Bash](https://programminghistorian.org/en/lessons/intro-to-bash) for Linux (and to some extent macOS), and [PowerShell](https://programminghistorian.org/en/lessons/intro-to-powershell) for Windows.
+3. The third and last requirement involves acquiring suitable born-digital objects for analysis, which varies significantly depending on your specific research question and can encompass digital images, databases, software applications, and various other digital artifacts. While we provide curated digital artifacts for the two case studies presented in this lesson, the broader challenge lies in identifying and accessing appropriate materials for independent research, which we can't cover in this lesson.
 
 ## Reverse Engineering born-digital Media artifacts
 
-In the study of born-digital artifacts, historians are increasingly confronted with the limitations of interpreting digital materials solely through their visual appearance. This issue, often described as *screen essentialism*[^1], refers to the tendency to understand digital objects only as they appear on screens rather than as complex, encoded structures with multiple layers of meaning. For the historian working with digital sources, this presents a significant methodological challenge: how can we analyse digital artifacts not just as static images or text, but as dynamic objects shaped by code, metadata, file formats, and usage contexts?
+In the study of born-digital artifacts, historians are increasingly confronted with the limitations of interpreting digital materials solely through their surface appearance — as they might appear in standard applications such as an operating system's media viewer. This issue, often described as _screen essentialism_[^1], refers to the tendency to understand digital objects only as they appear on screens rather than as complex, encoded structures with multiple layers of meaning. For the historian working with digital sources, this presents a significant methodological challenge: how can we analyse digital artifacts not just as static images or text, but as dynamic objects shaped by code, metadata, file formats, and usage contexts?
 
-Born-digital artifacts, such as software, websites, digital photographs and videos, PDFs, databases, and other natively digital materials require us to rethink conventional source analysis. Unlike digitized analogue objects, which carry with them an assumed physical origin, born-digital materials are native to code. Their meaning is not only derived from their on-screen appearance, but also from how they are stored, processed, and rendered. Overlooking these dimensions can lead to shallow readings and a failure to grasp how digital media shape, constrain, and enable different forms of historical expression and evidence.
+Born-digital artifacts, such as software, websites, digital photographs and videos, PDFs, databases, and other digital materials require us to rethink conventional source analysis. Unlike digitized analogue objects, which carry with them an assumed physical origin, born-digital materials are native to code. Their meaning is not only derived from their on-screen appearance, but also from how they are stored, processed, and rendered. Overlooking these dimensions can lead to shallow readings and a failure to grasp how digital media shape, constrain, and enable different forms of historical expression and evidence.
 
-This is where the practice of reverse engineering (RE) offers a compelling methodological pathway. Reverse engineering, broadly construed, involves deconstructing digital objects to understand how they work, what they are made of, and how their structures shape their meanings. It can include investigating a file’s metadata, altering or corrupting digital files to observe their behaviour, or reading against the grain of the interface to recover invisible labour, intentions, or constraints embedded in the technology. For historians, reverse engineering is not just a technical tool but a critical mode of inquiry that allows us to interrogate the digital record, challenge surface-level readings, and engage with digital artifacts on their own terms.
+This is where the practice of reverse engineering offers a compelling methodological pathway. Reverse engineering, broadly construed, involves opening and deconstructing digital objects to understand how they work, what they are made of, and how their structures shape their meanings. It can include investigating a file’s metadata, altering or corrupting digital files to observe their behaviour, or reading against the grain of the interface to recover invisible labour, intentions, or constraints embedded in the technology. For historians, reverse engineering is not just a technical tool but a critical mode of inquiry that allows us to interrogate the digital record, challenge surface-level readings, and engage with digital artifacts on their own terms.
 
-While preservation remains an important backdrop to this work, particularly in considering what aspects of digital artifacts are retained or lost over time[^2], this lesson focuses on reverse engineering as a form of historical analysis. By examining digital objects beyond the screen, we aim to demonstrate how this approach opens new avenues for interpretation, revealing the layered and often contradictory nature of digital evidence.
-
-This lesson argues that reverse engineering offers historians a critical methodological approach that counters screen-essentialism, enabling more profound insights into the sociocultural and technological contexts of digital artifacts.
+While preservation remains an important backdrop to this work, particularly in considering what aspects of digital artifacts are retained or lost over time[^2], this lesson focuses on reverse engineering as a form of historical analysis. By examining digital objects beyond the screen, we aim to demonstrate how this approach opens new avenues for interpretation, revealing the layered and often contradictory nature of digital evidence. This lesson highlights how reverse engineering offers historians a critical methodological approach that counters screen-essentialism, enabling more profound insights into the sociocultural and technological contexts of digital artifacts.
 
 ### Why use reverse engineering?
 
-Digital historians, much like archaeologists meticulously uncovering hidden layers of the past, employ reverse engineering to reveal the intricate architectures underlying software and digital file formats. Most contemporary digital technologies are effectively closed-source, leaving historians unable to see beyond their outward behavior. Proprietary systems are “black box[es] that cannot be opened”[^3], and without source code or documentation, their inner mechanisms remain invisible, which “hamper[s] (or mak[es] impossible) new discoveries”[^5]. Even preserved digital artifacts risk becoming unreadable without the original software or hardware, as data can remain “perfectly secure and complete, but still be unreadable” in the future[^5]. Reverse engineering—“writing the missing manual” for “lost, secret, or otherwise obscured technologies”[^6]—offers historians one of the few ways to study these opaque systems[^7][^8][^9]. By transcending screen essentialism, reverse engineering reveals the deeper structural, functional, and contextual layers of digital artifacts. This aligns closely with digital source criticism, recognizing digital objects as part of broader technological and socio-economic frameworks.
+Digital historians, much like archaeologists meticulously uncovering hidden layers of the past, employ reverse engineering to reveal the intricate architectures underlying software and digital file formats. Most contemporary digital technologies are effectively closed-source, leaving historians unable to see beyond their outward behavior. Proprietary systems are “black box[es] that cannot be opened”[^3], and without source code or documentation, their inner mechanisms remain invisible, which “hamper[s] (or mak[es] impossible) new discoveries”[^5]. Even preserved digital artifacts risk becoming unreadable without the original software or hardware, as data can remain “perfectly secure and complete, but still be unreadable” in the future[^5]. Reverse engineering—“writing the missing manual” for “lost, secret, or otherwise obscured technologies”[^6]—offers historians one of the few ways to study these opaque systems[^7] [^8] [^9]. By transcending screen essentialism, reverse engineering reveals the deeper structural, functional, and contextual layers of digital artifacts. This aligns closely with digital source criticism, recognizing digital objects as part of broader technological and socio-economic frameworks.
 
 Digital artifacts, whether video games, databases, images, or malware, contain layers of information inaccessible through standard interfaces. Reverse engineering serves as a key methodology to uncover these hidden layers. By exploring a file’s internal construction, behavior under manipulation, and embedded metadata, historians can retrieve undocumented data, chart software evolution, and reconstruct historical contexts. This method is particularly crucial when studying closed-source systems, providing historians with a practical means to "write the missing manual" and document digital heritage even in the absence of original source code or documentation.
 
-File structures and formats are especially interesting from a historical malware research perspective. One of the first computer viruses discovered in the wild, the Elk Cloner virus spread by attaching itself to a disk’s boot sector and activated whenever the infected disk was inserted into an Apple II computer.[^10] Around the same time, in early hacking culture, steganography — the art of hiding code or messages in images — also became a popular topic on message boards.[^11] If you want to dive deeper into file structures and formats, check out the work of Ange Albertini, a well-known security researcher who explores unusual file formats. His presentation, "Funky File Formats," at the chaos communication congress explores the concept of polyglot files—single files that are valid under multiple formats simultaneously. This exploration reveals how such files can function differently depending on the application interpreting them, offering unique insights into file format manipulation. Building upon this, Albertini developed Mitra, a tool designed to assist in crafting files that conform to multiple format specifications, streamlining the process of creating complex polyglots. Additionally, his Corkami project offers a comprehensive collection of hex patterns that illustrate various file format structures and anomalies, serving as a valuable reference for understanding the binary composition of different file types. For us digital Historians, it is essential to understand digital media artifacts as a structured or sometimes seemingly unstructured pile of binary data. One of the first jobs we do is to try to understand the underlying structure of those files. Engaging with resources like the Corkami project can deepen your understanding of file formats and uncover the hidden complexities within digital files, enhancing your skills in reverse engineering and digital archaeology.​ 
+File structures and formats are especially interesting from a historical malware research perspective. One of the first computer viruses discovered in the wild, the Elk Cloner virus spread by attaching itself to a disk’s boot sector and activated whenever the infected disk was inserted into an Apple II computer.[^10] Around the same time, in early hacking culture, steganography — the art of hiding code or messages in images — also became a popular topic on message boards.[^11] If you want to dive deeper into file structures and formats, check out the work of Ange Albertini, a well-known security researcher who explores unusual file formats. His presentation, "Funky File Formats," at the chaos communication congress explores the concept of polyglot files—single files that are valid under multiple formats simultaneously. This exploration reveals how such files can function differently depending on the application interpreting them, offering unique insights into file format manipulation. Building upon this, Albertini developed Mitra, a tool designed to assist in crafting files that conform to multiple format specifications, streamlining the process of creating complex polyglots. Additionally, his Corkami project offers a comprehensive collection of hex patterns that illustrate various file format structures and anomalies, serving as a valuable reference for understanding the binary composition of different file types. For us digital Historians, it is essential to understand digital media artifacts as a structured or sometimes seemingly unstructured pile of binary data. One of the first jobs we do is to try to understand the underlying structure of those files. Engaging with resources like the Corkami project can deepen your understanding of file formats and uncover the hidden complexities within digital files, enhancing your skills in reverse engineering and digital archaeology.​
 
 Reverse engineering, at its core, involves deconstructing a finished product to understand how it was made—a process that essentially takes the original engineering process and runs it in reverse, enabling the discovery of the design principles, coding techniques, and creative decisions embedded in its creation. But why invest time in reverse engineering old games, software of viruses? There are several motivations behind this practice. Historical preservation plays a significant role. Just as historians study traditional art and literature to understand human culture, examining Media artifacts like video games offers a window into the creative and technical history of modern digital culture. The act of reversing becomes a game in itself, where the challenge lies in unravelling the original developer's work.
 
-{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-01.png" alt="The illustration shows a stack of rectangles, on top of each other, each containing a label and standing for a layer. Some rectangles are also overlapping or divided into smaller units. On the left side are the labels software and hardware to illustrate which layers belong to which category. The software category on top contains layers such as applications and operating system. Among the the bottom hardware category are layers such as processor, memory, transistor and others." caption="Figure 1. Schematic visualization of a computer's hardware and software layers." %} 
+{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-01.png" alt="The illustration shows a stack of rectangles, on top of each other, each containing a label and standing for a layer. Some rectangles are also overlapping or divided into smaller units. On the left side are the labels software and hardware to illustrate which layers belong to which category. The software category on top contains layers such as applications and operating system. Among the the bottom hardware category are layers such as processor, memory, transistor and others." caption="Figure 1. Schematic visualization of a computer's hardware and software layers." %}
 
 A computer operates through a layered architecture, where hardware and software components work together to process and execute instructions. At the lowest level, transistors form the building blocks of digital circuits, which combine to create processors, memory, and input/output (I/O) systems. These hardware components are managed through the instruction set architecture (ISA), which defines how the processor interprets and executes machine code. Firmware and assemblers translate low-level machine code into instructions the hardware can execute, while higher-level software like compilers and interpreters convert human-readable code into machine instructions. The operating system serves as a bridge between hardware and software, managing system resources and enabling applications to run smoothly.
 
 Understanding this architecture is crucial for reverse engineering because it allows engineers to trace how high-level software instructions translate into low-level machine code and hardware operations. This knowledge helps in uncovering hidden functionalities, debugging errors, analysing malware behaviour, and modifying or improving existing software. Reverse engineering often involves working at the boundary between software and hardware, requiring an in-depth understanding of how compilers, assemblers, and the instruction set architecture interact to produce executable code.
 
-## The inner life of born-digital Media artifacts 
+## The inner life of born-digital Media artifacts
 
-Before beginning this hands-on analysis, you'll need to gather the necessary materials and tools to effectively examine digital image formats. First, select a JPEG file with either a .jpg or .jpeg file extension that you'd like to analyse—this can be any digital photograph or image from your personal collection, or alternatively, you can work with the sample files we provide for this exercise. [You can download the necessary files through this link.](https://github.com/programminghistorian/ph-submissions/raw/refs/heads/gh-pages/assets/reverse-engineering-born-digital-artefacts/reverse-engineering-born-digital-artefacts.zip). The choice of image isn't critical for learning the fundamental concepts, though selecting something familiar to you may make the analysis more engaging and meaningful. We also note that all following instructions are provided for our provided files. Next, you'll need to install a hex editor that will serve as your primary tool for examining the binary structure of the JPEG file. While numerous options exist, including both desktop applications and browser-based alternatives, we recommend using `hexyl`.
+Before beginning this hands-on analysis, you'll need to gather the necessary materials and tools to effectively examine digital image formats. First, select a JPEG file with either a .jpg or .jpeg file extension that you'd like to analyse—this can be any digital photograph or image from your personal collection, or alternatively, you can work with the sample files we provide for this exercise. [You can download the necessary files through this link](https://github.com/programminghistorian/ph-submissions/raw/refs/heads/gh-pages/assets/reverse-engineering-born-digital-artefacts/reverse-engineering-born-digital-artefacts.zip). The choice of image isn't critical for learning the fundamental concepts, though selecting something familiar to you may make the analysis more engaging and meaningful. We also note that all following instructions are provided for our provided files. Next, you'll need to install a hex editor that will serve as your primary tool for examining the binary structure of the JPEG file, a hex viewer that can create hex dumps.
 
-A hex dump is a textual representation of computer data in hexadecimal format, achieved by converting bytes into a two-digit hexadecimal number. This makes raw binary data more human-readable and easier to interpret for reverse engineering, or forensic analysis. There are several tools available for viewing hex data from a file. Here, we have listed some of the most commonly used ones.
-
-| Name         | Platforms             | GUI | Notes                                                                | Link                                       |
-| :----------- | :-------------------- | :-- | :------------------------------------------------------------------- | :----------------------------------------- |
-| **ImHex**    | Windows, macOS, Linux | ✅   | Advanced, pattern-matching, modern UI, great for reverse engineering | [GitHub](https://github.com/WerWolv/ImHex) |
-| **hexyl**    | Windows, macOS, Linux | ❌   | CLI hex viewer with colours, fast and clean                           | [GitHub](https://github.com/sharkdp/hexyl) |
-| **HexEd.it** | Web-based             | ✅   | Full-featured online hex editor, great for quick edits               | [HexEd.it](https://hexed.it/)              |
-
-For the following example, we will use hexyl. We chose it primarily because we appreciate its functionality and aesthetics, but you can use any hex viewer you want. Installation packages are provided for most Linux distributions. You can install hexyl on maxOS either through the [Homebrew](https://brew.sh) or [MacPorts](https://www.macports.org/) package managers.
-
-```shell
-# Install hexyl on macOS with Homebrew
-brew install hexyl
-
-# Install hexyl on macOS with MacPorts
-sudo port install hexyl
-```
-
-On [hexyl's release page](https://github.com/sharkdp/hexyl/releases) you will also find installation packages for the Windows operating system.
+A hex dump is a textual representation of computer data in hexadecimal format, achieved by converting bytes into a two-digit hexadecimal number. This makes raw binary data more human-readable and easier to interpret for reverse engineering, or forensic analysis. There are several tools available for viewing hex data from a file. Here, we have listed some of the most commonly used ones. For our lesson, we will use `hexyl` as mentioned. We chose it primarily because we appreciate its functionality and simplicity. Installation packages are provided for most Linux distributions, for [macOS](https://github.com/sharkdp/hexyl?tab=readme-ov-file#on-macos) and [Windows](https://github.com/sharkdp/hexyl?tab=readme-ov-file#on-windows), and [instructions are provided on the tool's website](https://github.com/sharkdp/hexyl?tab=readme-ov-file#installation).
 
 ### The bit code of an image
 
@@ -112,15 +98,16 @@ The infographic below provides a visual breakdown of this "bit code." You do not
 {% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-02.png" alt="The illustration shows a color-coded hex dump on the left side. Some of the output is highlighted and connected with a dashed line to detailed explenations on the right side, indicating where the start of the image is, or where one could find more information about the files format." caption="Figure 2. Infographic annotating a JPEG's file header in hexadecimal notation. (Ange Albertini 2022 – CC-BY 4.0 )" %}
 
 #### The Standard Pattern
+
 When we open the provided sample JPEG cat-with-hidden-content.jpg within the jpg_zip folder with an hex viewer, the hex view immediately exposes this structure. The file signature (FF D8 FF E0) at the beginning confirms its identity. Beyond the header, we find metadata describing dimensions and color depth, followed by the bulk of the file: compressed image data, which appears as a seemingly random string of hexadecimal values. 
 
 Download the sample JPEG cat-with-hidden-content.jpg and navigate to the picture in the terminal. The following command is using hexly to shows the hex code of the file. The -n option tells hexyl to only display the first 256 bytes. The $ sign indicates a command to be copied into the terminal (do not copy the $ itself).
+
 ```shell
 $ hexyl cat-with-hidden-content.jpg -n 256
 ```
 
 Executing this command will give us the following output. The leftmost column is the address of the line of data we see. The second and third columns show our data in hexadecimal notation, which we can investigate when we know what to look for. The two last columns is our data shown as ASCII interpretation. This simply means that hexyl tries to display the data in normal readable form. It's those two columns which are of interest to our investigation if we're interested in text that was meant for humans to read.
-
 
 ```shell
 ┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
@@ -146,6 +133,7 @@ Executing this command will give us the following output. The leftmost column is
 The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG file. A PNG file, as another example, would start with `89 50 4E 47 0D 0A 1A 0A` [^12]. We can also see metadata fields describing the image’s dimensions, colour depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values.
 
 #### Challenging "Screen Essentialism": The Hybrid Artifact
+
 While the standard JPEG ends predictably, digital artifacts can have "dual identities" by exploiting how different software "reads" or parses data. This challenges "screen essentialism"—the idea that a file is only what the icon on our desktop says it is.
 
 To demonstrate this, we will analyze cat-with-hidden-content.jpg again. While it appears to be a standard image, a hex dump reveals a second structural paradigm. JPEGs are read from the top down and stop at an End of Image (EOI) marker. ZIP files, conversely, are typically parsed from the bottom up. By appending a ZIP archive to the end of a JPEG, a hybrid file is created that remains valid for both an image viewer and an archive utility.
@@ -155,6 +143,7 @@ The following command uses hexyl again and adds a "pipe" (|) to pass the full he
 ```shell
 $ hexyl cat-with-hidden-content.jpg | tail -n 15
 ```
+
 In the output, look for the JPEG EOI marker: ff d9. Immediately following it, you will see the ZIP file signature: 50 4b 03 04.
 
 ```shell
@@ -182,12 +171,15 @@ A JPEG is a linear format; a image viewer starts at the top and stops as soon as
 The EOCD acts like a book's index, telling the computer exactly where each file starts within the archive. Because the ZIP utility looks at the footer (the end) rather than the header (the beginning), it doesn't care that there is a cat photo sitting on top of its data.
 
 #### The Analytical Takeaway
+
 Identifying file signatures is a fundamental skill for reverse engineering born-digital records. Because file extensions can be misleading or intentionally changed, we must learn to look past the desktop icon to the data's underlying structure. Instead, we use computational searches with an hex viewer to "fingerprint" the data structure.
 
 ### From Binary to XML: Comparing .doc and .docx
+
 Beyond the playful "hybrid" scenario of JPEGs and ZIPs, these same analytical skills allow historians to track the evolution of the digital record itself. As noted in our introduction, born-digital artifacts are often "black boxes" of proprietary code. A prime example of this is the massive shift in how Microsoft Word stored data in the mid-2000s. By comparing a legacy .doc file with a modern .docx file, we can see a literal move from the opaque, binary structures of the past toward the open-standard containers of the present.
 
 #### The Binary Legacy (.doc)
+
 The older .doc format (predominant until 2007) is a complex binary format. If you open a .doc file in a hex viewer, the actual text is often buried within layers of proprietary logic.
 
 ```shell
@@ -207,6 +199,7 @@ hexyl old-word-document.doc -n 256
 When you inspect a legacy document, you will likely see the signature D0 CF 11 E0. This identifies an OLE2 (Object Linking and Embedding) container. As we discussed in the section on Reverse Engineering, such files are non-human-readable without specialized tools. For the historian, this format represents the height of "screen essentialism": we see a formatted page on the screen, but the underlying code is a proprietary maze that is difficult to preserve or read against the grain.
 
 #### The Modern Container (.docx)
+
 The transition to .docx changed the nature of the artifact. Under the hood, a modern .docx is actually a ZIP archive in disguise, containing a collection of XML files that describe the document’s text and structure.
 
 To verify this, run hexyl on the provided modern-document.docx:
@@ -233,12 +226,11 @@ Identifying these structural signatures is our first step in "writing the missin
 
 In the next section, we will take these skills—checking for signatures and analyzing file sizes—and apply them to a much more complex historical artifact: a Commodore 64 game disk. There, we won't just look at how one format changed into another, but how a specific group of people (crackers) manually modified a file's binary code to leave their own cultural mark.
 
-
 ## Reverse Engineering a cracked Commodore 64 Game
 
 The second case study examines a cracked Commodore 64 game. The hex dump technique presented in the first case serves as the starting point for larger and more elaborate examinations of born-digital objects. Since media archaeology can become a complex endeavour, it is important to know where to start with reverse engineering digital artifacts. This second case expands our hex dump peeking approach through further investigating file types and basic comparison techniques.
 
-Game cracking evolved beyond mere piracy into a sophisticated technical pursuit, demonstrating programming skill and ingenuity. Crackers not only removed copy protection but also enhanced games with custom intro screens, gameplay modifications, language translations, performance optimizations, and new functionality. These specialized reverse engineers needed specialised knowledge of assembly language and hardware, and the understanding of how to  deconstruct and rebuild programs to suit their purposes.
+Game cracking evolved beyond mere piracy into a sophisticated technical pursuit, demonstrating programming skill and ingenuity. Crackers not only removed copy protection but also enhanced games with custom intro screens, gameplay modifications, language translations, performance optimizations, and new functionality. These specialized reverse engineers needed specialised knowledge of assembly language and hardware, and the understanding of how to deconstruct and rebuild programs to suit their purposes.
 
 ### SCA’s Summer Games
 
@@ -250,13 +242,11 @@ We've selected this SCA crack as our case study due to its research value for di
 
 ### Getting Started
 
-For this part of the lesson, we will work with files that we extracted from a disk image. The installation and operation of the VICE tools can't be covered here, and [you will find the necessary files to continue in the provided downloadable archive](https://github.com/programminghistorian/ph-submissions/raw/refs/heads/gh-pages/assets/reverse-engineering-born-digital-artefacts/reverse-engineering-born-digital-artefacts.zip).
+For this part of the lesson, we will work with files that we extracted from a disk image, and [you will find the necessary material to continue under this link on archive.org](#tbd). For this example, we acquired the cracked[^13] and a supposedly clean[^14] version of the Commodore 64 game “Summer Games”. At this point we need to highlight that the game was published in 1984 and is the intellectual property of Epyx Computer Software, which means that it is under copyright protection. Downloading the game for research can be argued to fall under fair use, but such an evaluation is not guaranteed. Fair use in research is often favoring criticism, scholarship, or preservation, and highly depends on national doctrines of copyright law. In Switzerland, for example, downloading the _Summer Games_ for research purposes is generally legal under the Federal Act on Copyright and Related Rights (CopA), even from unauthorized sources. This highlights another important aspects. Accessing and researching born-digital artifacts is not only depending on technical skills or the right kind of methodological setup, but also on legal applications that can change in time and geographical delineations.
 
-For this example, we acquired the cracked[^13] and a supposedly clean[^14] version of the Commodore 64 game “Summer Games”. A first glance tells us that those games come as `.d64` files, which is a disk image—a virtual representation of a physical disk’s content. Since we are interested in investigating the cracked version, we need to contextualize our digital artefact towards that.
+Back to the game, a first glance tells us that those games come as `.d64` files, which is a disk image—a virtual representation of a physical disk’s content. Since we are interested in investigating the cracked version, we need to contextualize our digital artefact towards that. A standard Commodore 64 `.d64` disk image file does not preserve most hardware-based copy protections, which was common. The `.d64` format captures only the standard sector data of a disk and does not record the low-level, non-standard disk structures (such as sync marks, deliberate errors, or unusual track layouts) that many C64 copy protection schemes rely on. As a result, games or software with sophisticated disk-based copy protection often cannot be run or properly emulated from a `.d64` image. For preserving original disks with copy protection intact, the `.g64` format is preferred, as it stores the low-level information needed for these protections to function.
 
-A standard Commodore 64 `.d64` disk image file does not preserve most hardware-based copy protections, which was common. The `.d64` format captures only the standard sector data of a disk and does not record the low-level, non-standard disk structures (such as sync marks, deliberate errors, or unusual track layouts) that many C64 copy protection schemes rely on. As a result, games or software with sophisticated disk-based copy protection often cannot be run or properly emulated from a `.d64` image. For preserving original disks with copy protection intact, the `.g64` format is preferred, as it stores the low-level information needed for these protections to function.
-
-Finally, most `.d64` images available today have had their copy protection removed or bypassed to work in emulators. This would indicate that our virtual image of the cracked game might not contain everything we need to fully investigate this case. Let us have a closer look and compare our two versions. Since `.d64` is a container format, we need to unpack and reveal the container’s content first. There are many tools offering such a service, such as [C64-Tools](https://www.c64-tools.com/basic-2-extractor) or [DirMaster](https://style64.org/dirmaster). We prepared this step by using the Floppy Disk Emulator that comes with VICE, an emulator for the Commodore 64, and moved the dumped files to the respective folders 'summer_games/dump_clean' and 'summer_games/dump_sca'. In these two folders, you will find files without a file extension, that contain binary data as well as source code.
+Finally, most `.d64` images available today have had their copy protection removed or bypassed to work in emulators. This would indicate that our virtual image of the cracked game might not contain everything we need to fully investigate this case. Let us have a closer look and compare our two versions. Since `.d64` is a container format, we need to unpack and reveal the container’s content first. There are many tools offering such a service, such as [C64-Tools](https://www.c64-tools.com/basic-2-extractor) or [DirMaster](https://style64.org/dirmaster). We prepared this step by using the Floppy Disk Emulator that comes with VICE, an emulator for the Commodore 64, and moved the dumped files to the respective folders 'summer_games/dumps/clean' and 'summer_games/dumps/sca'. In these two folders, you will find files without a file extension, that contain binary data as well as source code.
 
 ### Comparing the Game's different Versions
 
@@ -267,7 +257,7 @@ Unpacking both game versions leaves us with two folders and a bunch of arbitrary
 $ cd summer_games
 
 # Compare the files in the two dump folders by listing them.
-$ ls -l dump_clean && ls -l dump_sca
+$ ls -l dumps/clean && ls -l dumps/sca
 ```
 
 ```shell
@@ -309,26 +299,26 @@ Both disk images seem almost identical. The files a, d, e, f, h, i, k, m, and wr
 | File Name      | Clean Version     | SCA Cracked Version | Investigate? |
 | :------------- | ----------------- | ------------------- | :----------: |
 | a              | equal             |                     |              |
-| b              | file sizes differ |                     |      ✅       |
-| c              | not present       |                     |      ✅       |
+| b              | file sizes differ |                     |      ✅      |
+| c              | not present       |                     |      ✅      |
 | d              | equal             |                     |              |
-| default        |                   | not present         |      ✅       |
+| default        |                   | not present         |      ✅      |
 | e              | equal             |                     |              |
 | f              | equal             |                     |              |
 | h              | equal             |                     |              |
 | i              | equal             |                     |              |
 | k              | equal             |                     |              |
-| l              | file sizes differ |                     |      ✅       |
-| loader         |                   | not present         |      ✅       |
+| l              | file sizes differ |                     |      ✅      |
+| loader         |                   | not present         |      ✅      |
 | m              | equal             |                     |              |
-| ‘summer games’ | file sizes differ |                     |      ✅       |
+| ‘summer games’ | file sizes differ |                     |      ✅      |
 | wr             | equal             |                     |              |
 
-Before checking the marked files, it is important to note that this is not foolproof. A note that got published alongside the clean version on archive.org mentions that “\[t\]here is some high score save data in the WR file from previous players.” This indicates that some of the files are of variable content. If the file wr holds high scores, its abbreviation probably means “World Records”, given the context of the game. A hex dump of the two files quickly unveils their difference.
+Before checking the marked files, it is important to note that this is not foolproof. A note that got published alongside the clean version on archive.org mentions that “\[t\]here is some high score save data in the WR file from previous players.” This indicates that some of the files are of variable content. If the file `wr` holds high scores, its abbreviation indicates most likely “World Records”, given the context of the game. A hex dump of the two files quickly unveils their difference.
 
 ```shell
 # Hexdump of both versions wr file, for comparison
-$ hexyl dump_clean/wr && hexyl dump_sca/wr
+$ hexyl dumps/clean/wr && hexyl dumps/sca/wr
 ```
 
 ```shell
@@ -366,7 +356,7 @@ $ hexyl dump_clean/wr && hexyl dump_sca/wr
 Here we encounter another advantage of hex dumps. Usually, the content of the game is only available to the researcher when it is played. This can be a considerate investment regarding time and technical resources. A hex dump can make clear text contained in the game searchable. While a lot of the hex dumps output is obfuscated, ASCII characters can be converted and displayed in human-readable form. This becomes clear in our next comparison between the two ‘summer games’ files.
 
 ```shell
-$ hexyl "dump_clean/summer games" && hexyl "dump_sca/summer games"
+$ hexyl "dumps/clean/summer games" && hexyl "dumps/sca/summer games"
 ```
 
 ```shell
@@ -423,12 +413,21 @@ The file ‘summer games’ is the initial starting point when loading the game.
 65530 "        PRESENTS:
 65530 "   <  SUMMER  GAMES  >
 65530 " -----------------------
-65530 
+65530
 ```
 
 This is the final observation in this example. Both files contain Commodore 64 BASIC code. The clean version calls the ‘loader’ file first, and then proceeds to execute custom assembly code that has been loaded into the memory address `$C000` by the command `SYS 49152`. The cracked version instead directly executes codes at another address and has a comment displaying who cracked the game. This difference in the two initial files offers us important information on where to continue our investigation of the game's crack. From here on, we will need more specialised knowledge on how Commodore 64 games were programmed, protected, and cracked. We will also need specialised tools that can deal with machine code.
 
-This example illustrates how reverse engineering transcends surface-level interpretations, revealing hidden technological, cultural, or historical dimensions.
+This second examples illustrates how reverse engineering transcends surface-level interpretations, revealing hidden technological, cultural, or historical dimensions.
+
+## Bridging Examples and Practical Applications
+
+- going again into `(1) the disconnect between the two examples used in the article (the ZIP file and the Commodore 64 game)`
+    - repeating the central point of this lesson as a crash course, some first steps, into realizing that there is more bellow the surface of a born-digital artifact
+    - mention that there is more work to be done to become proficient in applying reverse engineering and highlighting some important keywords after which the readers can search and inform themselves, and start building their own research strategies
+- and `(4) the lack of a transparent bridge explaining how skills transfer between the two case studies`
+    - highlighting examples from our actual research
+    - games: searching for credits in a games outro to better contextualize: information that can be hard to come by through other means
 
 ## Summary
 
@@ -442,11 +441,11 @@ Having explored hex editing and comparative hex dump analysis as foundational me
 
 ## Further Resources
 
-Reverse engineering has emerged as an essential method in digital historical research, enabling historians to investigate born-digital artifacts beyond their surface-level representations. Several compelling studies highlight the potential of this approach, such as the analyses of the *Mystery House* game (Apple II, 1980)[^15] and John Aycock’s *Amnesia Remembered*.[^16]
+Reverse engineering has emerged as an essential method in digital historical research, enabling historians to investigate born-digital artifacts beyond their surface-level representations. Several compelling studies highlight the potential of this approach, such as the analyses of the _Mystery House_ game (Apple II, 1980)[^15] and John Aycock’s _Amnesia Remembered_.[^16]
 
-Aycock’s *Amnesia Remembered* offers a detailed exploration of software reuse by analysing disassembled binaries from 1980s Atari ST games. This work demonstrates how reverse engineering can uncover historical coding practices, highlighting previously unnoticed relationships between software developers and revealing insights into the evolution of software design and reuse practices within the early gaming industry.
+Aycock’s _Amnesia Remembered_ offers a detailed exploration of software reuse by analysing disassembled binaries from 1980s Atari ST games. This work demonstrates how reverse engineering can uncover historical coding practices, highlighting previously unnoticed relationships between software developers and revealing insights into the evolution of software design and reuse practices within the early gaming industry.
 
-Additional influential examples include the analysis of the Atari 2600 game *Entombed* (1982)[^17], which successfully reconstructed its maze-generation algorithm and uncovered hidden software issues, and Aycock's large-scale study, *The Sincerest Form of Flattery* (2022)[^18], examining nearly two thousand Atari game ROMs to identify widespread patterns of code reuse.
+Additional influential examples include the analysis of the Atari 2600 game _Entombed_ (1982)[^17], which successfully reconstructed its maze-generation algorithm and uncovered hidden software issues, and Aycock's large-scale study, _The Sincerest Form of Flattery_ (2022)[^18], examining nearly two thousand Atari game ROMs to identify widespread patterns of code reuse.
 
 To practically engage with reverse engineering, historians now have access to several approachable tools. One such tool is Radare2[^19], a powerful open-source reverse engineering framework widely used by cybersecurity professionals for binary analysis and software inspection. Although originally designed for low-level software diagnostics, exploit research, and malware analysis, Radare2 can also be leveraged by historians to explore the internal structure and behaviour of vintage software. Its command-line interface and modular toolkit support disassembly, debugging, and data visualization—making it possible to inspect software logic even in the absence of source code. While a detailed explanation of its functionality would exceed the scope of this paper, further information on Radare2's installation and operational specifics can be found in its official documentation.[^20] The following shell output shows the reverse-engineered code from the game crack example, as visualized using Radare2.
 
@@ -481,7 +480,7 @@ r2 -a 6502 -b 8 -m 0x0801 summer_games_clean.pr
             0x000008df      80c3           nop #0xc3
             0x000008e1      c2cd           nop #0xcd
             0x000008e3      38             sec
-[0x000008ba]> 
+[0x000008ba]>
 ```
 
 To make sense of this output, historians must become familiar with low-level machine instructions and how they operate within the architecture of the system they are studying—such as the 6502 processor in the Commodore 64.[^21] For example, the line `0x000008bc bee508 ldx 0x08e5,y` means “load the value from memory address 0x08e5 (offset by the Y register) into the X register.” Each line represents a discrete machine operation, and understanding these require learning a small set of core instructions (like `lda`, `sta`, `jsr`, `bne`) and how memory addresses and processor registers interact. While interpreting such code can be challenging at first, it opens up powerful avenues for understanding how software was constructed and modified in historical contexts.
@@ -495,46 +494,49 @@ Together, these resources significantly reduce barriers to entry, fostering an o
 ## Footnotes
 
 [^1]: Feichtinger, Moritz. 2024. “From Source-Criticism to System-Criticism, Born Digital Objects, Forensic Methods, and Digital Literacy for All.” September 13. [https://doi.org/10.5281/zenodo.13907816](https://doi.org/10.5281/zenodo.13907816).
+
 [^2]: Guay-Bélanger, Dany. 2022. “Assembling Auras: Towards a Methodology for the Preservation and Study of Video Games as Cultural Heritage Artefacts.” _Games and Culture_ 17 (5): 659–78. [https://doi.org/10.1177/15554120211020381](https://doi.org/10.1177/15554120211020381).
-[^3]: Victoria and Albert Museum. “Preserving and Sharing Born Digital and Hybrid Objects · V\&A.” Accessed April 22, 2025. [https://www.vam.ac.uk/research/projects/preserving-and-sharing-born-digital-and-hybrid-objects](https://www.vam.ac.uk/research/projects/preserving-and-sharing-born-digital-and-hybrid-objects). Stallman, Richard, and Richard M. Stallman. *Free Software, Free Society: Selected Essays*. Edited by Joshua Gay. 1st. ed. Boston, Mass: Free Software Foundation, 2002, S.50.
 
-[^4]:  Moore, Jennifer, and Hannah Scates Kettler. “Who Cares About 3D Preservation?” *IASSIST Quarterly* 42, no. 1 (2018): 15–15. [https://doi.org/10.29173/iq20](https://doi.org/10.29173/iq20).
+[^3]: Victoria and Albert Museum. “Preserving and Sharing Born Digital and Hybrid Objects · V\&A.” Accessed April 22, 2025. [https://www.vam.ac.uk/research/projects/preserving-and-sharing-born-digital-and-hybrid-objects](https://www.vam.ac.uk/research/projects/preserving-and-sharing-born-digital-and-hybrid-objects). Stallman, Richard, and Richard M. Stallman. _Free Software, Free Society: Selected Essays_. Edited by Joshua Gay. 1st. ed. Boston, Mass: Free Software Foundation, 2002, S.50.
 
-[^5]:  Shaw, Jonathan. “Digital Preservation: An Unsolved Problem | Harvard Magazine,” April 7, 2010. [https://www.harvardmagazine.com/2010/04/digital-preservation-an-unsolved-problem](https://www.harvardmagazine.com/2010/04/digital-preservation-an-unsolved-problem).
+[^4]: Moore, Jennifer, and Hannah Scates Kettler. “Who Cares About 3D Preservation?” _IASSIST Quarterly_ 42, no. 1 (2018): 15–15. [https://doi.org/10.29173/iq20](https://doi.org/10.29173/iq20).
 
-[^6]:  Jones, Steven. “Reverse Engineering the First Humanities Computing Center.” *Digital Humanities Quarterly* 12, no. 2 (2018). [https://www.digitalhumanities.org/dhq/vol/12/2/000380/000380.html](https://www.digitalhumanities.org/dhq/vol/12/2/000380/000380.html).
+[^5]: Shaw, Jonathan. “Digital Preservation: An Unsolved Problem | Harvard Magazine,” April 7, 2010. [https://www.harvardmagazine.com/2010/04/digital-preservation-an-unsolved-problem](https://www.harvardmagazine.com/2010/04/digital-preservation-an-unsolved-problem).
+
+[^6]: Jones, Steven. “Reverse Engineering the First Humanities Computing Center.” _Digital Humanities Quarterly_ 12, no. 2 (2018). [https://www.digitalhumanities.org/dhq/vol/12/2/000380/000380.html](https://www.digitalhumanities.org/dhq/vol/12/2/000380/000380.html).
 
 [^7]: Montfort, Nick, and Ian Bogost. 2009. _Racing the Beam: The Atari Video Computer System_. Platform Studies. Cambridge, Mass: MIT Press.
-[^8]:  Henry Jenkins. “A New ‘Platform’ for Games Research?: An Interview with Ian Bogost and Nick Montfort (Part One) — Pop Junctions,” April 27, 2009. [http://henryjenkins.org/blog/2009/04/an*interview*with*ian*bogost*a.html](http://henryjenkins.org/blog/2009/04/an_interview_with_ian_bogost_a.html).
 
-[^9]:  CLIR. “Digital Forensics and Born-Digital Content in Cultural Heritage Collections • CLIR.” Accessed April 22, 2025. [https://www.clir.org/pubs/reports/pub149/](https://www.clir.org/pubs/reports/pub149/).
+[^8]: Henry Jenkins. “A New ‘Platform’ for Games Research?: An Interview with Ian Bogost and Nick Montfort (Part One) — Pop Junctions,” April 27, 2009. [http://henryjenkins.org/blog/2009/04/an*interview*with*ian*bogost\*a.html](http://henryjenkins.org/blog/2009/04/an_interview_with_ian_bogost_a.html).
 
-[^10]:  Levy, Scott, and Jedidiah R. Crandall. “The Program with a Personality: Analysis of Elk Cloner, the First Personal Computer Virus.” arXiv, July 30, 2020. [https://doi.org/10.48550/arXiv.2007.15759](https://doi.org/10.48550/arXiv.2007.15759) and Giacalone, Anthony. “Agiacalone/Elk-Cloner-Malware.” Assembly, April 21, 2024. [https://github.com/agiacalone/elk-cloner-malware](https://github.com/agiacalone/elk-cloner-malware).
+[^9]: CLIR. “Digital Forensics and Born-Digital Content in Cultural Heritage Collections • CLIR.” Accessed April 22, 2025. [https://www.clir.org/pubs/reports/pub149/](https://www.clir.org/pubs/reports/pub149/).
 
-[^11]:  Textfiles, hideseek, http://www.textfiles.com/computers/DOCUMENTATION/hideseek.txt
+[^10]: Levy, Scott, and Jedidiah R. Crandall. “The Program with a Personality: Analysis of Elk Cloner, the First Personal Computer Virus.” arXiv, July 30, 2020. [https://doi.org/10.48550/arXiv.2007.15759](https://doi.org/10.48550/arXiv.2007.15759) and Giacalone, Anthony. “Agiacalone/Elk-Cloner-Malware.” Assembly, April 21, 2024. [https://github.com/agiacalone/elk-cloner-malware](https://github.com/agiacalone/elk-cloner-malware).
 
-[^12]:  Further file signatures are listed on [https://en.wikipedia.org/wiki/List*of*file*signatures](https://en.wikipedia.org/wiki/List_of_file_signatures) 
+[^11]: Textfiles, hideseek, http://www.textfiles.com/computers/DOCUMENTATION/hideseek.txt
 
-[^13]:  Graciously offered by SCA via [https://www.sca.ch/c64/software/sca-releases/SCA-Summer%20Games](https://www.sca.ch/c64/software/sca-releases/SCA-Summer%20Games) 
+[^12]: Further file signatures are listed on [https://en.wikipedia.org/wiki/List*of*file\*signatures](https://en.wikipedia.org/wiki/List_of_file_signatures)
 
-[^14]:  Hosted on [https://archive.org/details/summer*games](https://archive.org/details/summer_games)  
+[^13]: Graciously offered by SCA via [https://www.sca.ch/c64/software/sca-releases/SCA-Summer%20Games](https://www.sca.ch/c64/software/sca-releases/SCA-Summer%20Games)
 
-[^15]:  Biittner, Biittner, and John Aycock. “Inspecting the Foundation of Mystery House | Journal of Contemporary Archaeology.” Accessed May 21, 2025. [https://journal.equinoxpub.com/JCA/article/view/17513](https://journal.equinoxpub.com/JCA/article/view/17513).
+[^14]: Hosted on [https://archive.org/details/summer\*games](https://archive.org/details/summer_games)
 
-[^16]:  Aycock, John. “Amnesia Remembered: Reverse Engineering a Digital Artifact.” In *Amnesia Remembered*. Berghahn Books, 2023. [https://doi.org/10.1515/9781800738683](https://doi.org/10.1515/9781800738683).
+[^15]: Biittner, Biittner, and John Aycock. “Inspecting the Foundation of Mystery House | Journal of Contemporary Archaeology.” Accessed May 21, 2025. [https://journal.equinoxpub.com/JCA/article/view/17513](https://journal.equinoxpub.com/JCA/article/view/17513).
 
-[^17]:  Aycock, John, and Tara Copplestone. “Entombed: An Archaeological Examination of an Atari 2600 Game.” *The Art, Science, and Engineering of Programming* 3, no. 2 (November 5, 2018): 4. [https://doi.org/10.22152/programming-journal.org/2019/3/4](https://doi.org/10.22152/programming-journal.org/2019/3/4).
+[^16]: Aycock, John. “Amnesia Remembered: Reverse Engineering a Digital Artifact.” In _Amnesia Remembered_. Berghahn Books, 2023. [https://doi.org/10.1515/9781800738683](https://doi.org/10.1515/9781800738683).
 
-[^18]:  Aycock, John, Shankar Ganesh, Katie Biittner, Paul Allen Newell, and Carl Therrien. “The Sincerest Form of Flattery: Large-Scale Analysis of Code Re-Use in Atari 2600 Games.” In *Proceedings of the 17th International Conference on the Foundations of Digital Games*, 1–10. Athens Greece: ACM, 2022. [https://doi.org/10.1145/3555858.3555948](https://doi.org/10.1145/3555858.3555948).
+[^17]: Aycock, John, and Tara Copplestone. “Entombed: An Archaeological Examination of an Atari 2600 Game.” _The Art, Science, and Engineering of Programming_ 3, no. 2 (November 5, 2018): 4. [https://doi.org/10.22152/programming-journal.org/2019/3/4](https://doi.org/10.22152/programming-journal.org/2019/3/4).
 
-[^19]:  “Radareorg/Radare2.” C. 2012. Reprint, radare org, June 1, 2025. [https://github.com/radareorg/radare2](https://github.com/radareorg/radare2).
+[^18]: Aycock, John, Shankar Ganesh, Katie Biittner, Paul Allen Newell, and Carl Therrien. “The Sincerest Form of Flattery: Large-Scale Analysis of Code Re-Use in Atari 2600 Games.” In _Proceedings of the 17th International Conference on the Foundations of Digital Games_, 1–10. Athens Greece: ACM, 2022. [https://doi.org/10.1145/3555858.3555948](https://doi.org/10.1145/3555858.3555948).
+
+[^19]: “Radareorg/Radare2.” C. 2012. Reprint, radare org, June 1, 2025. [https://github.com/radareorg/radare2](https://github.com/radareorg/radare2).
 
 [^20]: "Installation," in The Official Radare2 Book, accessed July 7, 2025. [https://book.rada.re/install/intro.html](https://book.rada.re/install/intro.html).
 
-[^21]:  “Steil, Michael. “6502 | Ultimate Commodore 64 Reference.” Accessed July 7, 2025. [https://www.pagetable.com/c64ref/6502/#](https://www.pagetable.com/c64ref/6502/#).
+[^21]: “Steil, Michael. “6502 | Ultimate Commodore 64 Reference.” Accessed July 7, 2025. [https://www.pagetable.com/c64ref/6502/#](https://www.pagetable.com/c64ref/6502/#).
 
-[^22]:  slajerek. “Slajerek/RetroDebugger.” C, May 12, 2025. [https://github.com/slajerek/RetroDebugger](https://github.com/slajerek/RetroDebugger).
+[^22]: slajerek. “Slajerek/RetroDebugger.” C, May 12, 2025. [https://github.com/slajerek/RetroDebugger](https://github.com/slajerek/RetroDebugger).
 
-[^23]:  “Retro Reverse Engineering.” Accessed May 21, 2025. [https://www.retroreversing.com/](https://www.retroreversing.com/).
+[^23]: “Retro Reverse Engineering.” Accessed May 21, 2025. [https://www.retroreversing.com/](https://www.retroreversing.com/).
 
-[^24]:  “JS99’er.” Accessed May 21, 2025. [https://js99er.net/](https://js99er.net/#/).
+[^24]: “JS99’er.” Accessed May 21, 2025. [https://js99er.net/](https://js99er.net/#/).

@@ -101,16 +101,20 @@ On [hexyl's release page](https://github.com/sharkdp/hexyl/releases) you will al
 
 ### The bit code of an image
 
-To illustrate the fundamentals of file analysis, we begin with the basic structure of a JPEG file. The JPEG format follows a clearly defined architecture, starting with a file signature or “magic number” that identifies it, followed by metadata, image data, and an end-of-file marker. This predictable format allows hex editors to recognize and parse the file correctly.
+To illustrate the fundamentals of file analysis, we begin with the basic structure of a JPEG file. For this exercise, we have provided a file named cat-hybrid.jpg. When you open this file using your computer's standard image viewer, it appears as a simple, humorous photo of a cat.
 
-The image below provides a visual breakdown of this "bit code." It is not necessary to fully understand every byte at this point, but it introduces the markers that allow us to navigate a digital artifact.
+{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-03.jpeg" alt="The photo shows a rather silly cat on a couch. The cat looks upwards and has its tongue out, making it look like a defiant kid. It's an orange tabby cat with fluffy fur and the couch is upholstered in grey cotton fabric." caption="Figure 3. A cat sitting on a couch." %}
+
+While the image viewer displays a visual scene, the underlying JPEG format follows a clearly defined architecture. It begins with a file signature (or “magic number”) that identifies the file type, followed by metadata, the compressed image data, and finally, an end-of-file marker. This predictable structure is what allows software to recognize and "parse" (interpret) the data correctly.
+
+The infographic below provides a visual breakdown of this "bit code." You do not need to memorize every byte at this stage; rather, use this as an introduction to the structural markers that allow us to navigate a digital artifact.
 
 {% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-02.png" alt="The illustration shows a color-coded hex dump on the left side. Some of the output is highlighted and connected with a dashed line to detailed explenations on the right side, indicating where the start of the image is, or where one could find more information about the files format." caption="Figure 2. Infographic annotating a JPEG's file header in hexadecimal notation. (Ange Albertini 2022 – CC-BY 4.0 )" %}
 
 #### The Standard Pattern
-When we open a sample JPEG in a hex viewer, the hex view immediately exposes this structure. The file signature (FF D8 FF E0) at the beginning confirms its identity. Beyond the header, we find metadata describing dimensions and color depth, followed by the bulk of the file: compressed image data, which appears as a seemingly random string of hexadecimal values. 
+When we open the provided sample JPEG cat-hybrid.jpg in a hex viewer, the hex view immediately exposes this structure. The file signature (FF D8 FF E0) at the beginning confirms its identity. Beyond the header, we find metadata describing dimensions and color depth, followed by the bulk of the file: compressed image data, which appears as a seemingly random string of hexadecimal values. 
 
-Navigate to your jpg_zip folder in the terminal. The -n option tells hexyl to only display the first 256 bytes. The $ sign indicates a command to be copied into the terminal (do not copy the $ itself).
+Download the sample JPEG cat-hybrid.jpg and navigate to the picture in the terminal. The following command is using hexly to shows the hex code of the file. The -n option tells hexyl to only display the first 256 bytes. The $ sign indicates a command to be copied into the terminal (do not copy the $ itself).
 ```shell
 $ hexyl cat-hybrid.jpg -n 256
 ```
@@ -141,8 +145,6 @@ Executing this command will give us the following output. The leftmost column is
 
 The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG file. A PNG file, as another example, would start with `89 50 4E 47 0D 0A 1A 0A` [^12]. We can also see metadata fields describing the image’s dimensions, colour depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values.
 
-{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-03.jpeg" alt="The photo shows a rather silly cat on a couch. The cat looks upwards and has its tongue out, making it look like a defiant kid. It's an orange tabby cat with fluffy fur and the couch is upholstered in grey cotton fabric." caption="Figure 3. A cat sitting on a couch." %}
-
 #### Challenging "Screen Essentialism": The Hybrid Artifact
 While the standard JPEG ends predictably, digital artifacts can have "dual identities" by exploiting how different software "reads" or parses data. This challenges "screen essentialism"—the idea that a file is only what the icon on our desktop says it is.
 
@@ -159,8 +161,15 @@ In the output, look for the JPEG EOI marker: ff d9. Immediately following it, yo
 # Transition from JPEG (ff d9) to ZIP (50 4b 03 04)
 │00031900│ ff d9 50 4b 03 04 0a 00 ┊ 00 00 00 00 51 3d b6 5a │××PK••_0┊0000Q=×Z│
 ```
+
+You might wonder: if we simply "glue" two files together, why doesn't the computer get confused? The answer lies in the structural paradigms of different file formats.
+
+A JPEG is a linear format; a image viewer starts at the top and stops as soon as it hits the FF D9 (End of Image) marker. It simply ignores anything that follows. A ZIP file, however, operates on a linked or indexed paradigm. Most archive utilities do not read a ZIP from the beginning. Instead, they "seek" to the very end of the file to find the End of Central Directory (EOCD) record.
+
+The EOCD acts like a book's index, telling the computer exactly where each file starts within the archive. Because the ZIP utility looks at the footer (the end) rather than the header (the beginning), it doesn't care that there is a cat photo sitting on top of its data.
+
 #### The Analytical Takeaway
-This exercise teaches a fundamental reverse engineering skill: signature hunting. When analyzing born-digital artifacts—especially those that may have been tampered with—we cannot trust the file extension. Instead, we use computational searches to "fingerprint" the data structure.
+Identifying file signatures is a fundamental skill for reverse engineering born-digital records. Because file extensions can be misleading or intentionally changed, we must learn to look past the desktop icon to the data's underlying structure. Instead, we use computational searches with an hex viewer to "fingerprint" the data structure.
 
 ### From Binary to XML: Comparing .doc and .docx
 Beyond the playful "hybrid" scenario of JPEGs and ZIPs, these same analytical skills allow historians to track the evolution of the digital record itself. As noted in our introduction, born-digital artifacts are often "black boxes" of proprietary code. A prime example of this is the massive shift in how Microsoft Word stored data in the mid-2000s. By comparing a legacy .doc file with a modern .docx file, we can see a literal move from the opaque, binary structures of the past toward the open-standard containers of the present.

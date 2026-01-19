@@ -101,7 +101,7 @@ On [hexyl's release page](https://github.com/sharkdp/hexyl/releases) you will al
 
 ### The bit code of an image
 
-To illustrate the fundamentals of file analysis, we begin with the basic structure of a JPEG file. For this exercise, we have provided a file named cat-hybrid.jpg. When you open this file using your computer's standard image viewer, it appears as a simple, humorous photo of a cat.
+To illustrate the fundamentals of file analysis, we begin with the basic structure of a JPEG file. For this exercise, we have provided a file named cat-hybrid.jpg within the jpg_zip folder. When you open this file using your computer's standard image viewer, it appears as a simple, humorous photo of a cat.
 
 {% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-03.jpeg" alt="The photo shows a rather silly cat on a couch. The cat looks upwards and has its tongue out, making it look like a defiant kid. It's an orange tabby cat with fluffy fur and the couch is upholstered in grey cotton fabric." caption="Figure 3. A cat sitting on a couch." %}
 
@@ -112,7 +112,7 @@ The infographic below provides a visual breakdown of this "bit code." You do not
 {% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-02.png" alt="The illustration shows a color-coded hex dump on the left side. Some of the output is highlighted and connected with a dashed line to detailed explenations on the right side, indicating where the start of the image is, or where one could find more information about the files format." caption="Figure 2. Infographic annotating a JPEG's file header in hexadecimal notation. (Ange Albertini 2022 – CC-BY 4.0 )" %}
 
 #### The Standard Pattern
-When we open the provided sample JPEG cat-hybrid.jpg in a hex viewer, the hex view immediately exposes this structure. The file signature (FF D8 FF E0) at the beginning confirms its identity. Beyond the header, we find metadata describing dimensions and color depth, followed by the bulk of the file: compressed image data, which appears as a seemingly random string of hexadecimal values. 
+When we open the provided sample JPEG cat-hybrid.jpg within the jpg_zip folder with an hex viewer, the hex view immediately exposes this structure. The file signature (FF D8 FF E0) at the beginning confirms its identity. Beyond the header, we find metadata describing dimensions and color depth, followed by the bulk of the file: compressed image data, which appears as a seemingly random string of hexadecimal values. 
 
 Download the sample JPEG cat-hybrid.jpg and navigate to the picture in the terminal. The following command is using hexly to shows the hex code of the file. The -n option tells hexyl to only display the first 256 bytes. The $ sign indicates a command to be copied into the terminal (do not copy the $ itself).
 ```shell

@@ -101,7 +101,7 @@ On [hexyl's release page](https://github.com/sharkdp/hexyl/releases) you will al
 
 ### The bit code of an image
 
-To illustrate the fundamentals of file analysis, we begin with the basic structure of a JPEG file. For this exercise, we have provided a file named cat-hybrid.jpg within the jpg_zip folder. When you open this file using your computer's standard image viewer, it appears as a simple, humorous photo of a cat.
+To illustrate the fundamentals of file analysis, we begin with the basic structure of a JPEG file. For this exercise, we have provided a file named cat-with-hidden-content.jpg within the jpg_zip folder. When you open this file using your computer's standard image viewer, it appears as a simple, humorous photo of a cat.
 
 {% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-03.jpeg" alt="The photo shows a rather silly cat on a couch. The cat looks upwards and has its tongue out, making it look like a defiant kid. It's an orange tabby cat with fluffy fur and the couch is upholstered in grey cotton fabric." caption="Figure 3. A cat sitting on a couch." %}
 
@@ -112,11 +112,11 @@ The infographic below provides a visual breakdown of this "bit code." You do not
 {% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-02.png" alt="The illustration shows a color-coded hex dump on the left side. Some of the output is highlighted and connected with a dashed line to detailed explenations on the right side, indicating where the start of the image is, or where one could find more information about the files format." caption="Figure 2. Infographic annotating a JPEG's file header in hexadecimal notation. (Ange Albertini 2022 – CC-BY 4.0 )" %}
 
 #### The Standard Pattern
-When we open the provided sample JPEG cat-hybrid.jpg within the jpg_zip folder with an hex viewer, the hex view immediately exposes this structure. The file signature (FF D8 FF E0) at the beginning confirms its identity. Beyond the header, we find metadata describing dimensions and color depth, followed by the bulk of the file: compressed image data, which appears as a seemingly random string of hexadecimal values. 
+When we open the provided sample JPEG cat-with-hidden-content.jpg within the jpg_zip folder with an hex viewer, the hex view immediately exposes this structure. The file signature (FF D8 FF E0) at the beginning confirms its identity. Beyond the header, we find metadata describing dimensions and color depth, followed by the bulk of the file: compressed image data, which appears as a seemingly random string of hexadecimal values. 
 
-Download the sample JPEG cat-hybrid.jpg and navigate to the picture in the terminal. The following command is using hexly to shows the hex code of the file. The -n option tells hexyl to only display the first 256 bytes. The $ sign indicates a command to be copied into the terminal (do not copy the $ itself).
+Download the sample JPEG cat-with-hidden-content.jpg and navigate to the picture in the terminal. The following command is using hexly to shows the hex code of the file. The -n option tells hexyl to only display the first 256 bytes. The $ sign indicates a command to be copied into the terminal (do not copy the $ itself).
 ```shell
-$ hexyl cat-hybrid.jpg -n 256
+$ hexyl cat-with-hidden-content.jpg -n 256
 ```
 
 Executing this command will give us the following output. The leftmost column is the address of the line of data we see. The second and third columns show our data in hexadecimal notation, which we can investigate when we know what to look for. The two last columns is our data shown as ASCII interpretation. This simply means that hexyl tries to display the data in normal readable form. It's those two columns which are of interest to our investigation if we're interested in text that was meant for humans to read.
@@ -148,18 +148,31 @@ The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG fil
 #### Challenging "Screen Essentialism": The Hybrid Artifact
 While the standard JPEG ends predictably, digital artifacts can have "dual identities" by exploiting how different software "reads" or parses data. This challenges "screen essentialism"—the idea that a file is only what the icon on our desktop says it is.
 
-To demonstrate this, we will analyze cat-hybrid.jpg again. While it appears to be a standard image, a hex dump reveals a second structural paradigm. JPEGs are read from the top down and stop at an End of Image (EOI) marker. ZIP files, conversely, are typically parsed from the bottom up. By appending a ZIP archive to the end of a JPEG, a hybrid file is created that remains valid for both an image viewer and an archive utility.
+To demonstrate this, we will analyze cat-with-hidden-content.jpg again. While it appears to be a standard image, a hex dump reveals a second structural paradigm. JPEGs are read from the top down and stop at an End of Image (EOI) marker. ZIP files, conversely, are typically parsed from the bottom up. By appending a ZIP archive to the end of a JPEG, a hybrid file is created that remains valid for both an image viewer and an archive utility.
 
-Run the following command to look at the transition point at the end of this specific file:
+The following command uses hexyl again and adds a "pipe" (|) to pass the full hex dump from hexyl to the tail utility, which filters the output to show only the final 15 lines. By focusing on the end of the file, you can directly observe the "seam" where the JPEG image data stops and a hidden ZIP structure begins.
 
 ```shell
-$ hexyl cat-hybrid.jpg | tail -n 10
+$ hexyl cat-with-hidden-content.jpg | tail -n 15
 ```
 In the output, look for the JPEG EOI marker: ff d9. Immediately following it, you will see the ZIP file signature: 50 4b 03 04.
 
 ```shell
-# Transition from JPEG (ff d9) to ZIP (50 4b 03 04)
-│00031900│ ff d9 50 4b 03 04 0a 00 ┊ 00 00 00 00 51 3d b6 5a │××PK••_0┊0000Q=×Z│
+│000318f0│ 8e 18 e0 d0 00 2e d7 03 ┊ 9a 29 be 42 7a 51 40 1f │×•××⋄.×•┊×)×BzQ@•│
+│00031900│ ff d9 50 4b 03 04 0a 00 ┊ 00 00 00 00 51 3d b6 5a │××PK••_⋄┊⋄⋄⋄⋄Q=×Z│
+│00031910│ dd dd 14 7d 0d 00 00 00 ┊ 0d 00 00 00 12 00 1c 00 │××•}_⋄⋄⋄┊_⋄⋄⋄•⋄•⋄│
+│00031920│ 68 69 64 64 65 6e 2d 63 ┊ 6f 6e 74 65 6e 74 2e 74 │hidden-c┊ontent.t│
+│00031930│ 78 74 55 54 09 00 03 4a ┊ b9 2e 68 4a b9 2e 68 75 │xtUT_⋄•J┊×.hJ×.hu│
+│00031940│ 78 0b 00 01 04 e8 03 00 ┊ 00 04 e8 03 00 00 48 65 │x•⋄••×•⋄┊⋄•×•⋄⋄He│
+│00031950│ 6c 6c 6f 20 57 6f 72 6c ┊ 64 21 0a 50 4b 01 02 1e │llo Worl┊d!_PK•••│
+│00031960│ 03 0a 00 00 00 00 00 51 ┊ 3d b6 5a dd dd 14 7d 0d │•_⋄⋄⋄⋄⋄Q┊=×Z××•}_│
+│00031970│ 00 00 00 0d 00 00 00 12 ┊ 00 18 00 00 00 00 00 01 │⋄⋄⋄_⋄⋄⋄•┊⋄•⋄⋄⋄⋄⋄•│
+│00031980│ 00 00 00 a4 81 00 00 00 ┊ 00 68 69 64 64 65 6e 2d │⋄⋄⋄××⋄⋄⋄┊⋄hidden-│
+│00031990│ 63 6f 6e 74 65 6e 74 2e ┊ 74 78 74 55 54 05 00 03 │content.┊txtUT•⋄•│
+│000319a0│ 4a b9 2e 68 75 78 0b 00 ┊ 01 04 e8 03 00 00 04 e8 │J×.hux•⋄┊••×•⋄⋄•×│
+│000319b0│ 03 00 00 50 4b 05 06 00 ┊ 00 00 00 01 00 01 00 58 │•⋄⋄PK••⋄┊⋄⋄⋄•⋄•⋄X│
+│000319c0│ 00 00 00 59 00 00 00 00 ┊ 00                      │⋄⋄⋄Y⋄⋄⋄⋄┊⋄       │
+└────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
 ```
 
 You might wonder: if we simply "glue" two files together, why doesn't the computer get confused? The answer lies in the structural paradigms of different file formats.
@@ -178,7 +191,17 @@ Beyond the playful "hybrid" scenario of JPEGs and ZIPs, these same analytical sk
 The older .doc format (predominant until 2007) is a complex binary format. If you open a .doc file in a hex viewer, the actual text is often buried within layers of proprietary logic.
 
 ```shell
-tbd
+hexyl old-word-document.doc -n 256
+┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
+│00000000│ d0 cf 11 e0 a1 b1 1a e1 ┊ 00 00 00 00 00 00 00 00 │××•×××•×┊⋄⋄⋄⋄⋄⋄⋄⋄│
+│00000010│ 00 00 00 00 00 00 00 00 ┊ 3e 00 03 00 fe ff 09 00 │⋄⋄⋄⋄⋄⋄⋄⋄┊>⋄•⋄××_⋄│
+│00000020│ 06 00 00 00 00 00 00 00 ┊ 00 00 00 00 05 00 00 00 │•⋄⋄⋄⋄⋄⋄⋄┊⋄⋄⋄⋄•⋄⋄⋄│
+│00000030│ 0f 02 00 00 00 00 00 00 ┊ 00 10 00 00 11 02 00 00 │••⋄⋄⋄⋄⋄⋄┊⋄•⋄⋄••⋄⋄│
+│00000040│ 01 00 00 00 fe ff ff ff ┊ 00 00 00 00 0a 02 00 00 │•⋄⋄⋄××××┊⋄⋄⋄⋄_•⋄⋄│
+│00000050│ 0b 02 00 00 0c 02 00 00 ┊ 0d 02 00 00 0e 02 00 00 │••⋄⋄_•⋄⋄┊_•⋄⋄••⋄⋄│
+│00000060│ ff ff ff ff ff ff ff ff ┊ ff ff ff ff ff ff ff ff │××××××××┊××××××××│
+│*       │                         ┊                         │        ┊        │
+│00000100│                         ┊                         │        ┊        │
 ```
 
 When you inspect a legacy document, you will likely see the signature D0 CF 11 E0. This identifies an OLE2 (Object Linking and Embedding) container. As we discussed in the section on Reverse Engineering, such files are non-human-readable without specialized tools. For the historian, this format represents the height of "screen essentialism": we see a formatted page on the screen, but the underlying code is a proprietary maze that is difficult to preserve or read against the grain.
@@ -189,10 +212,16 @@ The transition to .docx changed the nature of the artifact. Under the hood, a mo
 To verify this, run hexyl on the provided modern-document.docx:
 
 ```shell
-$ hexyl modern-document.docx -n 32
+$ hexyl modern-document.docx -n 256
 Shell
 ┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
-│00000000│ 50 4b 03 04 14 00 06 00 ┊ 08 00 00 00 21 00 4b 22 │PK••••••┊••••!.K"│
+│00000000│ 50 4b 03 04 14 00 06 00 ┊ 08 00 00 00 21 00 1c 41 │PK•••⋄•⋄┊•⋄⋄⋄!⋄•A│
+│00000010│ a8 2e 66 01 00 00 54 05 ┊ 00 00 13 00 08 02 5b 43 │×.f•⋄⋄T•┊⋄⋄•⋄••[C│
+│00000020│ 6f 6e 74 65 6e 74 5f 54 ┊ 79 70 65 73 5d 2e 78 6d │ontent_T┊ypes].xm│
+│00000030│ 6c 20 a2 04 02 28 a0 00 ┊ 02 00 00 00 00 00 00 00 │l ×••(×⋄┊•⋄⋄⋄⋄⋄⋄⋄│
+│00000040│ 00 00 00 00 00 00 00 00 ┊ 00 00 00 00 00 00 00 00 │⋄⋄⋄⋄⋄⋄⋄⋄┊⋄⋄⋄⋄⋄⋄⋄⋄│
+│*       │                         ┊                         │        ┊        │
+│00000100│ 00 00 00 00 00 00 00 00 ┊ 00                      │⋄⋄⋄⋄⋄⋄⋄⋄┊⋄       │
 └────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
 ```
 

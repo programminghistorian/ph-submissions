@@ -32,10 +32,10 @@ doi: XX.XXXXX/phen0000
 {% include toc.html %}
                                   
 
-## From Sources to Data: the Challenges and Advantages of Thinking in Terms of Data
+## From Sources to Data: The Challenges and Advantages of Thinking in Terms of Data
 A crucial but often challenging first step for humanities researchers when developing data-driven projects is conceptualizing sources in terms of data and organizing them into a database — a structured format that is programmatically searchable and analyzable. This lesson will therefore begin by reviewing the conceptual challenges as well as advantages of thinking in terms of data. It will then guide readers through the process of transforming sources into data by first outlining core principles of data modeling and then demonstrating how these can be put into practice to build a database using nodegoat.
 
-### Thinking in Terms of Data – A Conceptual Challenge
+### Transforming Research Objects into Data
 When taking their first steps in the world of digital humanities, humanities researchers may confront a number of challenges. Often these are technical in nature: using digital tools is not always straightforward, and gaining proficiency in a method, a piece of software, or a programming language often requires extensive and sometimes painstaking practice. There is also, however, a challenge of a different kind that is just as complex as the technical ones: learning how to conceptualize your research in terms of 'data'.
  
 But what do we mean when we talk about 'data'? Generally speaking, we can define [data](https://perma.cc/UHV3-XDH9) as information that is structured into discrete units and lends itself well to automated processing. This way of structuring information ensures that when the same operations are applied, they consistently yield the same results. 
@@ -52,7 +52,7 @@ However, thinking about our research in terms of data does not necessarily need 
 
 For his part, the historian Manfred Thaller emphasizes that data can represent reality, but only when it arises from an act of interpretation. Thaller proposes a hierarchical schema that distinguishes between 'data', 'information' and 'knowledge'. Data consists of symbols that can be arranged in a system of representation. This system produces information when the data is interpreted within a defined context. Knowledge, in turn, emerges from information that leads to decision-making or action.[^4]
 
-### The Advantages of Transforming Sources into Data
+### The Affordances of Approaching Research Sources as Data
 Recognizing both the complexity and the structured nature of data allows us to see the advantages of conceptualizing our research in terms of data.
 
 First, transforming our sources into data allows for automated digital processing and quantitative analysis. This is particularly useful when our research involves large volumes of information or when we can derive datasets directly from our sources (for example, inventories, demographic data, etc.).
@@ -69,11 +69,9 @@ In this lesson, we will discuss the challenges that newcomers to digital researc
 In doing so, we hope to demonstrate the advantages of a research method whose logic may not be immediately evident to researchers trained in the humanities.
 
 ## From Data Entry to Data Modeling
-
 As mentioned earlier, the further we examine our sources, the more our research can generate substantial amounts of information. In such cases, it is often preferable to catalog this information in an organized and structured manner. For example, let’s imagine that we are conducting historical research on a set of books: a hypothetical project about the works produced by dissident writers from the communist regimes of Eastern Europe.
 
-### Simple Tabular Data Entry
-
+### Tabular Data Entry
 We could record information about these books in a simple format using the features of a [spreadsheet](https://perma.cc/M63X-2QYZ), such as this one:
 
 **Basic Table**
@@ -116,8 +114,7 @@ However, the more records we analyze and the more questions we ask, the more the
 
 When this happens, it is often more useful to start thinking about the 'relationships' that connect the different objects of our research and to build a table that represents them – [a data table](https://perma.cc/76MG-2GGH) – before gathering them into a [database](https://perma.cc/9494-G7MY).
 
-### From Spreadsheet to Database: The Principles of Modeling
-
+### From Spreadsheets to Databases
 What is a 'database'? Generally speaking, it functions as a container that organizes information according to a certain structure. More specifically, as Georges Gardarin writes, a database is “a dataset modeling the objects of a part of the real world and serving as a support for a computer application”.[^5]  The data in a database must be 'searchable': we must be able to find all the data that satisfies a certain criterion (such as, in our case, all the authors of Russian nationality, or all the works published in French). It is this searchability that makes the database a powerful tool for exploring and analyzing information.
 
 In this lesson, we will focus on a specific and fairly common type of database: [the relational database](https://perma.cc/YNE7-SP8N). A relational database (referred to hereafter simply as 'database') is structured as a set of tables linked in such a way that information can circulate between them. These tables within the database typically contain two key types of elements: objects and the relationships between them. Each object represents a complex reality defined by many characteristics (the 'attributes' in the columns) that are expressed in specific instances (the 'records' in the rows). 
@@ -178,10 +175,11 @@ This now corresponds to what is generally called a 'logical data model', which a
 
 We have now organized this information into three tables that represent our dataset. In order to be able to navigate between these tables and follow the relationships established in the data model diagram, we would need to connect them. To do so, we need to define both the possibilities and constraints of these relationships, what is termed [cardinality](https://perma.cc/7BUT-XXBH).[^6]   
 
-When building a relational database, we must carefully consider the types of relationships that can exist between tables: is each element in one table linked exclusively to a single element in another table, or does it have multiple and intersecting relationships (that is, can it be connected to multiple entries across tables)? Thus, in our example of the relationships between authors and works, does each work have only one author (cardinality 1,1)? Or can it have two or more, as is the case with *The Intellectuals on the Road to Class Power* (cardinality 1,N)? Conversely, could each author of a work written by multiple authors also be the author of multiple other works (cardinality N,N)? These are the kinds of questions that inevitably arise during the process of building a database.[^7]  The answers will depend on our specific dataset. In the next section, we will see how to put all of this into practice.
+When building a relational database, we must carefully consider the types of relationships that can exist between tables: is each element in one table linked exclusively to a single element in another table, or does it have multiple and intersecting relationships (that is, can it be connected to multiple entries across tables)? 
+
+In our example of the relationships between authors and works, does each work have only one author (cardinality 1,1)? Or can it have two or more, as is the case with *The Intellectuals on the Road to Class Power* (cardinality 1,N)? Conversely, could each author of a work written by multiple authors also be the author of multiple other works (cardinality N,N)? These are the kinds of questions that inevitably arise during the process of building a database.[^7]  The answers will depend on our specific dataset. In the next section, we will see how to put all of this into practice.
 
 ## Building a Database with nodegoat
-
 Relational databases can be built using specialized software known as [database management systems](https://perma.cc/9L9J-YCD6) (DBMS), which  allow users to query and manipulate data according to the principles of the [SQL](https://perma.cc/H6F9-RJZS) query language. There are many DBMS available, both open-source (e.g., Amazon Aurora DSQL, PostgreSQL, MariaDB) and proprietary (e.g., Microsoft Access, Oracle Database). 
 
 However, DBMS software can quickly become difficult to use. That is why we will make use of [nodegoat](https://nodegoat.net/): an online platform which is specifically designed to support humanities researchers in building and working with relational databases. 
@@ -189,7 +187,6 @@ However, DBMS software can quickly become difficult to use. That is why we will 
 As we will see, nodegoat allows us to design a data model in a flexible way, to manage and store data online, to incorporate historical information with some degree of uncertainty, to export and import this data in a simple way, and, lastly, to produce visualizations, such as maps or networks.[^7] 
 
 ### Getting Started with nodegoat
-
 nodegoat, created and maintained by LAB1100, is an online platform that enables users to model, build, and share their databases in a relatively intuitive way. This lesson was designed using version 7.3 of nodegoat, but it is confirmed to work just as well with version 8.2, which was current at the time of original publication.[^8] A basic knowledge of English is required to use nodegoat. 
 
 Before getting started, you will need to [request an account](https://nodegoat.net/requestaccount) to use nodegoat online by filling out a simple form with your name, email address, institutional affiliation, and a brief description of your project. Note that the account registration may take up to 48 hours before it is ready to use.
@@ -203,13 +200,11 @@ To be clear, the goal of this lesson is not to promote the exclusive use of node
 However, by combining all of these functionalities in a single environment, nodegoat significantly simplifies the process of modeling your research as data. nodegoat's main advantage for us, in this lesson, is that it makes it especially easy to define and implement the data model we described in abstract terms above.
 
 ### Setting Up Your Project in nodegoat 
-
 When you log in to nodegoat for the first time, you are shown your **Domain** (workspace) which is empty to start with and where you can see three tabs: **Data**, **Management**, and **Model**. In **Model**, you will build your data model following the rationale outlined in the previous section. In **Management**, you define the parameters for implementing this model. Finally, in **Data**, you categorize your data according to the structure defined by the model and examine it.
 
 {% include figure.html filename="en-tr-designing-database-nodegoat-03.jpg" alt="Empty background with the three tabs of the workspace" caption="Figure 3. The empty nodegoat workspace before creating our project." %} 
 
 #### Defining the Objects of the Database 
-
 First, you will create your project, then you will define the data model and build the database. You create the project from the **Management** tab by clicking on *Add Project* and typing its title, _Works from the East_, in the text box next to **Project Name**.
 
 You then go back to the top level and click on the **Model** tab to define your data model. To start, you add an object type by clicking on the *Add Object Type* tab. As outlined in the previous section, the conceptual model defined here includes three object types: the work, the author, and the publishing house.
@@ -247,7 +242,6 @@ For this project, you can select the **City** object type. In doing so, the soft
 After checking the box to select **nodegoat City**, click on the *Save Project* button at the bottom of the workspace. 
 
 #### Configuring the Database
-
 There is still one fundamental step left to complete: to establish the relationships between the objects. Thus far, you have only provided information attached to a single object type at a time. However, the fundamental feature that this relational database offers is actually being able to link objects to one another. In the previous step, you selected which object types you want to use in this project in the **Management** panel. Now, you can go to the **Model** tab and connect each object type to the others. You can do this using the attributes of the objects which will function as 'connectors', as specified in the data model.
 
 Start with the **Work** object type. With the *Edit* button you can access the **Object Types** tab and the object attributes (**Descriptions**). In this example, there are two object types of particular interest: **Author** and **Publishing house**. The **Author** attribute will link the **Work** object type to the **Author** object type; the **Publishing house** attribute will link the **Work** object type to the **Publishing house** object type. 
@@ -273,7 +267,6 @@ To enter a date as a time interval, you can use the **Sub-Object** tab. There, y
 From now on, the **Publishing house** object type differs from **Author** and **Work** in that it now includes a new attribute that allows temporal information to be recorded as a time interval. Before continuing, you will need to remove the **Founding date** attribute from the **Objects** tab by deleting it from the descriptions field and saving the Object Type, since we have just replaced it with the **Chronology Sub-Object**.
 
 #### Exploring and Using the Database
-
 At this stage, the model, its object types, and their relationships have now been defined. If you go to the **Management** tab and click on the project name, nodegoat creates a visualization of the model which, as you may notice, looks very similar to the original conceptual model:
  
 {% include figure.html filename="en-tr-designing-database-nodegoat-12.jpg" alt="A data model connecting four tables each corresponding to Authors, Publishing houses, Works and Cities" caption="Figure 12. Visualization of our data model with nodegoat." %}
@@ -305,7 +298,6 @@ After selecting an **Object Type** in the **Data** tab, a set of visualization i
 In sum, nodegoat allows you to define a data model and build a database in a relatively simple way. It offers multiple possibilities for recording geographical and temporal information, while taking into account the uncertainty that often comes with the type of information collected in the humanities. In addition, nodegoat's visualization tools allow you to consider the evolution of your research and identify certain tendencies. Finally, this research environment allows you to store and manage your data online, while also offering the possibility of saving or exporting it for analysis with other tools.
 
 ## Conclusion
-
 The aim of this lesson was to help researchers in the humanities conceptualize their research in terms of data by introducing them to the basics of modeling and building a database, as it is often a challenging task for novices. The lesson offered an entry point to using the online platform nodegoat, which is particularly well suited to the needs of newcomers to digital data management.
 
 Of course, nodegoat also has some limitations: free individual access is limited to the development of a single project hosted on the platform's servers. If you want to manage multiple projects, create multiple accounts, or host a project on a separate server, you will need to upgrade to a paid subscription. This often requires financial and/or technical support from a research or educational institution.
@@ -313,8 +305,7 @@ Of course, nodegoat also has some limitations: free individual access is limited
 To learn more about nodegoat's full potential in more depth, you are encouraged to explore the [Guides](https://perma.cc/6QEL-F7YZ) prepared by the LAB1100 team, which provide detailed explanations of the platform's features. On the nodegoat website, you can also explore [other examples of data models suggested by the creators](https://perma.cc/3LKU-ZPYK), as well as examples of historical research using databases.
 
 
-## Footnotes
-
+## References
 [^1]: Lemercier, Claire and Claire Zalc, *Quantitative Methods in the Humanities: An Introduction*. Translation by Arthur Goldhammer. Charlottesville: University of Virginia Press, 2019. 
 
 [^2]: Posner, Miriam, (2015), “Humanities Data: A Necessary Contradiction”, *Miriam Posner’s Blog* [https://miriamposner.com/blog/humanities-data-a-necessary-contradiction/](https://perma.cc/BBC5-MBEC). 

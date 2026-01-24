@@ -43,19 +43,15 @@ The primary goal of Part 2 is to teach how to use three.js to create a webpage f
 
 ## Software Requirements and Installation
 
--Text editor (Visual Studio Code (VSC) recommended). VSC contains a text editor and can be downloaded from [https://code.visualstudio.com](https://code.visualstudio.com), it is free and runs on Windows, macOS, and Linux. It also features a terminal. Install as per website instructions. Many extensions are available for VSC and the code colouring can help detect issues such as unclosed tags or quotes. [VSCodium](https://vscodium.com) is a user tracking/AI chat-free alternative. 
+This lesson should work for most current web browsers (i.e. Chrome , Safari, Edge etc). If your browser can display the [three.js site](https://threejs.org) and the various sample projects on the home page, it should work; some Safari versions have problems. Chrome generally has the better developer tools for code debugging. It is useful to know how to view the browser log console. In Chrome, this can be done through View > Developer > JavaScript Console. These console error messages can help identify why a site is not loading properly. You may have to use a search engine (such as Google) to understand the error message and you may have to reload a site while the console is open to see the error message. For more information on debugging code see the [three.js manual](https://threejs.org/manual/#en/debugging-javascript).
 
-- Terminal (ie Windows PowerShell, or the terminal in macOS or Linux), or the terminal in VSC. The terminal in VSC can be obtained from Terminal > New Terminal. 
+The first half of part 1 does not require coding but in the second half of part 1 you will create a webpage. Webpages generally utilise several computer languages (such as HTML, CSS and JavaScript). This lesson will not explain the HTML and CSS code. If you want to understand the basic components of a website, [w3schools](https://www.w3schools.com/howto/howto_make_a_website.asp) has a guide, as well as tutorials on HTML, CSS and JavaScript. You may choose to do the first half of the lesson and come back to this section to install the software necessary for creating the webpage.
+
+To write and run code you will need to use a text editor and a computer terminal (ie Windows PowerShell, the terminal in macOS or Linux, or the text editor's terminal). The Visual Studio Code (VSC) software has a text editor and can be downloaded from [https://code.visualstudio.com](https://code.visualstudio.com), it is free and runs on Windows, macOS, and Linux. It also features a terminal. Install as per website instructions. Many extensions are available for VSC and the code colouring can help detect issues such as unclosed tags or quotes. The terminal in VSC can be obtained from Terminal > New Terminal. [VSCodium](https://vscodium.com) is a user tracking/AI chat-free alternative. 
 
 Some simple command line typing will be required. Most importantly, you need to be able to move to the folder that your website file will be in. If you use the VSC terminal, this should be automatic.
 
-- Web browser. Chrome, Safari, Edge etc.
-
-Chrome generally has the better developer tools for code debugging. If your browser can display the [three.js site](https://threejs.org) and the various sample projects on the home page, it should work; some Safari versions have problems. It is useful to know how to view the browser log console. In Chrome, this can be done through View > Developer > JavaScript Console. These console error messages can help identify why a site is not loading properly. You may have to use a search engine (such as Google) to understand the error message and you may have to reload a site while the console is open to see the error message. For more information on debugging code see the [three.js manual](https://threejs.org/manual/#en/debugging-javascript).
-
-- [Node.js](https://nodejs.org) 
-
-Node.js is a free JavaScript tool and is easy to install (Windows, macOS, and Linux). This will allow you to ‘serve’ code internally to your browser (using an address in the browser such as http://localhost:3000), and see if the code is working, or how code changes affect your site. Node.js is probably the easiest way to serve code internally. Install as per website instructions, and check it is working in the terminal you plan to use by typing 
+[Node.js](https://nodejs.org) will allow you to ‘serve’ code internally to your browser (using an address in the browser such as http://localhost:3000), and see if the code is working, or how code changes affect your site. Node.js is probably the easiest way to serve code internally. It is a free JavaScript tool and is easy to install (Windows, macOS, and Linux). Install as per website instructions, and check it is working in the terminal you plan to use by typing 
 
 ```
 node -v
@@ -63,11 +59,7 @@ node -v
 
 and confirming that you get a version number and not an error message. This code has been tested with version v18.14.1. If you have problems installing Node.js, try using a search engine with the error message for help or watch one of the many tutorials available on the web. 
 
-If you want to understand the basic components of a website, [w3schools](https://www.w3schools.com/howto/howto_make_a_website.asp) has a guide, as well as tutorials on HTML, CSS and JavaScript.
-
-- A GitHub page (recommended if deploying). 
-
-To deploy your page so that everybody can access it, you can use [GitHub Pages](https://pages.github.com). You get one free page per GitHub account, ie my page at https://github.com/tosca-har/tosca-har.github.io results in a website at https://tosca-har.github.io/. Alternatively, you can deploy your site using a free service such as [Vercel](https://vercel.com/). To deploy code, follow the instructions on [GitHub Pages](https://pages.github.com) or [Vercel](https://vercel.com/).
+Node.js will let you see your webpage but if you want to deploy your page so that everybody can access it, you can use (the free services) [GitHub Pages](https://pages.github.com) or [Vercel](https://vercel.com/). There are GitHub [starter tutorials](https://docs.github.com/en/get-started/start-your-journey/hello-world) or if you use software such as [GitHub Desktop](https://docs.github.com/en/desktop) to manage your GitHub repositories read [this GitHub Desktop tutorial](https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop). You get one free GitHub page per GitHub account, i.e. my page at https://github.com/tosca-har/tosca-har.github.io results in a website at https://tosca-har.github.io/. To deploy code, follow the instructions on [GitHub Pages](https://pages.github.com) and/or [Vercel](https://vercel.com/). The Programming Historian lesson [Building Static Sites with Jekyll and GitHub pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) has more detailed guidance.
 
 
 ### Papua New Guinea Pottery

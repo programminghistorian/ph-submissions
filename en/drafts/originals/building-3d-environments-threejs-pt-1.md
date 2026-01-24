@@ -41,6 +41,35 @@ This two-part lesson is designed as a very brief introduction to the three.js Ja
 
 The primary goal of Part 2 is to teach how to use three.js to create a webpage featuring a 3D scene with selectable components. Scene creation will involve adding lights, cameras, primitive models (such as spheres and planes), complex models (the pot forms), and controls. The models will incorporate materials and/or image textures. Concepts such as model groups, scale and visibility, and 3D co-ordinates will be introduced. An additional goal of Part 2 is to change the webpage into a game by making the models moveable and initally positioned at random places, with the user then required to match the vessel to its maker community. A test in the code is run after each time a model is moved, to see if it has been placed in the correct position. Successful matches trigger a background colour change.
 
+## Software Requirements and Installation
+
+-Text editor (Visual Studio Code (VSC) recommended). VSC contains a text editor and can be downloaded from [https://code.visualstudio.com](https://code.visualstudio.com), it is free and runs on Windows, macOS, and Linux. It also features a terminal. Install as per website instructions. Many extensions are available for VSC and the code colouring can help detect issues such as unclosed tags or quotes. [VSCodium](https://vscodium.com) is a user tracking/AI chat-free alternative. 
+
+- Terminal (ie Windows PowerShell, or the terminal in macOS or Linux), or the terminal in VSC. The terminal in VSC can be obtained from Terminal > New Terminal. 
+
+Some simple command line typing will be required. Most importantly, you need to be able to move to the folder that your website file will be in. If you use the VSC terminal, this should be automatic.
+
+- Web browser. Chrome, Safari, Edge etc.
+
+Chrome generally has the better developer tools for code debugging. If your browser can display the [three.js site](https://threejs.org) and the various sample projects on the home page, it should work; some Safari versions have problems. It is useful to know how to view the browser log console. In Chrome, this can be done through View > Developer > JavaScript Console. These console error messages can help identify why a site is not loading properly. You may have to use a search engine (such as Google) to understand the error message and you may have to reload a site while the console is open to see the error message. For more information on debugging code see the [three.js manual](https://threejs.org/manual/#en/debugging-javascript).
+
+- [Node.js](https://nodejs.org) 
+
+Node.js is a free JavaScript tool and is easy to install (Windows, macOS, and Linux). This will allow you to ‘serve’ code internally to your browser (using an address in the browser such as http://localhost:3000), and see if the code is working, or how code changes affect your site. Node.js is probably the easiest way to serve code internally. Install as per website instructions, and check it is working in the terminal you plan to use by typing 
+
+```
+node -v
+```
+
+and confirming that you get a version number and not an error message. This code has been tested with version v18.14.1. If you have problems installing Node.js, try using a search engine with the error message for help or watch one of the many tutorials available on the web. 
+
+If you want to understand the basic components of a website, [w3schools](https://www.w3schools.com/howto/howto_make_a_website.asp) has a guide, as well as tutorials on HTML, CSS and JavaScript.
+
+- A GitHub page (recommended if deploying). 
+
+To deploy your page so that everybody can access it, you can use [GitHub Pages](https://pages.github.com). You get one free page per GitHub account, ie my page at https://github.com/tosca-har/tosca-har.github.io results in a website at https://tosca-har.github.io/. Alternatively, you can deploy your site using a free service such as [Vercel](https://vercel.com/). To deploy code, follow the instructions on [GitHub Pages](https://pages.github.com) or [Vercel](https://vercel.com/).
+
+
 ### Papua New Guinea Pottery
 
 While not ubiquitous throughout Papua New Guinea and West Papua, many communities have a history of making ceramic vessels for use in cooking, storage or ceremonial purposes. Pottery was first introduced to the Papua region over 3000 years ago (Gaffney et al. 2015) and the many different techniques, forms and decorations found are probably the result of a combination of local innovations and influences from different external sources. In trying to understand this cultural transmission, researchers compare factors such as decoration, form and building technique among the different communities. 
@@ -94,7 +123,7 @@ The models used in this project were created with CAD by the authors (who are no
 
 For this project, it was considered that symbolic models of non-ceremonial objects was more acceptable than the use of realistic (photogrammetry) models, whose use would require the permission of the different communities. Symbolic models were also used because they could convey the method of the original vessel construction with a corresponding colour and the use of a key. The method of construction is not only important for understanding the connections between the technologies, but for the puzzle, the colours also act as the primary clues for the website user to match vessels to their communities.
 
-The individual vessel models used in this project were originally created by us as part of an exercise to learn CAD for 3D printing (Shaw, 2023). The models were created using Blender and [Fusion 360](https://www.autodesk.com/au/products/fusion-360/) by tracing or estimating the vessel profile (from the various sources cited in one of the information panels added to the website 3D model), rotating the profile 360 degrees around the vertical axis, and then (if necessary) using the sculpting tools to add the decorations (right side Figure 2). As they were designed to be printed 5-10 cm tall, decoration was simplified, and was added in a way to be reflective of the different decoration types, such as comb incision, impression, exposed coil and applique, that are favoured by the different communities. Many communities produced more than one type of pot, and forms for the original printed collection were originally chosen to illustrate the variety of vessels in Papua.
+The individual vessel models used in this project were originally created by one of the authors (K. Hardy) as part of an exercise to learn CAD for 3D printing (Shaw, 2023). The models were created using Blender and [Fusion 360](https://www.autodesk.com/au/products/fusion-360/) by tracing or estimating the vessel profile (from the various sources cited in one of the information panels added to the website 3D model), rotating the profile 360 degrees around the vertical axis, and then (if necessary) using the sculpting tools to add the decorations (right side Figure 2). As they were designed to be printed 5-10 cm tall, decoration was simplified, and was added in a way to be reflective of the different decoration types, such as comb incision, impression, exposed coil and applique, that are favoured by the different communities. Many communities produced more than one type of pot, and forms for the original printed collection were originally chosen to illustrate the variety of vessels in Papua.
 
 For use with a website, Blender was used to reduce the model polygon count. The composite model (used in Part 1) was created in Blender, with the addition of the map (added via the [‘import image as planes’ extension](https://docs.blender.org/manual/en/3.3/addons/import_export/images_as_planes.html)). The individual vessel models (used in Part 2) were exported as DRACO compressed glTF files. 
 
@@ -144,35 +173,7 @@ If you select a jar and look in the OBJECT tab, you will see the x, y and z posi
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-10.png" alt="Web editor showing a round jar (manus001), with its x, y and z positions visible in the geometry window." caption="Figure 10. The position of the jar made by one of the communities on Manus Island." %}
 
-## Software Requirements and Installation
-
-- Text editor (Visual Studio Code (VSC) recommended).
-
-VSC contains a text editor and can be downloaded from [https://code.visualstudio.com](https://code.visualstudio.com), it is free and runs on Windows, macOS, and Linux. It also features a terminal. Install as per website instructions. Many extensions are available for VSC and the code colouring can help detect issues such as unclosed tags or quotes. [VSCodium](https://vscodium.com) is a user tracking/AI chat-free alternative. 
-
-- Terminal (ie Windows PowerShell, or the terminal in macOS or Linux), or the terminal in VSC. The terminal in VSC can be obtained from Terminal > New Terminal. 
-
-Some simple command line typing will be required. Most importantly, you need to be able to move to the folder that your website file will be in. If you use the VSC terminal, this should be automatic.
-
-- Web browser. Chrome, Safari, Edge etc.
-
-Chrome generally has the better developer tools for code debugging. If your browser can display the [three.js site](https://threejs.org) and the various sample projects on the home page, it should work; some Safari versions have problems. It is useful to know how to view the browser log console. In Chrome, this can be done through View > Developer > JavaScript Console. These console error messages can help identify why a site is not loading properly. You may have to use a search engine (such as Google) to understand the error message and you may have to reload a site while the console is open to see the error message. For more information on debugging code see the [three.js manual](https://threejs.org/manual/#en/debugging-javascript).
-
-- [Node.js](https://nodejs.org) 
-
-Node.js is a free JavaScript tool and is easy to install (Windows, macOS, and Linux). This will allow you to ‘serve’ code internally to your browser (using an address in the browser such as http://localhost:3000), and see if the code is working, or how code changes affect your site. Node.js is probably the easiest way to serve code internally. Install as per website instructions, and check it is working in the terminal you plan to use by typing 
-
-```
-node -v
-```
-
-and confirming that you get a version number and not an error message. This code has been tested with version v18.14.1. If you have problems installing Node.js, try using a search engine with the error message for help or watch one of the many tutorials available on the web. 
-
-- A GitHub page (recommended if deploying). 
-
-To deploy your page so that everybody can access it, you can use [GitHub Pages](https://pages.github.com). You get one free page per GitHub account, ie my page at https://github.com/tosca-har/tosca-har.github.io results in a website at https://tosca-har.github.io/. Alternatively, you can deploy your site using a free service such as [Vercel](https://vercel.com/). To deploy code, follow the instructions on [GitHub Pages](https://pages.github.com) or [Vercel](https://vercel.com/).
-
-- The three.js library.
+## Using the three.js JavaScript Library
 
 There are 2 ways to use the three.js JavaScript library. This tutorial will use the library via a content delivery network (CDN). Basically, code at the top of JavaScript script will fetch and import the library from a server. This removes the need for you to work with build tools like [Vite](https://vite.dev), which you would have to do if you download the actual three.js code. Downloading, working and building the code is more robust long term but for this lesson the CDN approach is fine. 
 
@@ -182,13 +183,13 @@ This code will use three.js version 0.160.0, although it has been tested and wor
 
 Now you need to set up the initial directories and files for the project.
 
-Make a new folder - call it myscene. Within the myscene folder create folders called models and textures (we will use the textures folder in Part 2). Put the png_sceneDRACO.glb file you downloaded previously in the models folder.
+Make a new folder - call it myscene. Within the myscene folder create folders called models and textures (you will use the textures folder in Part 2). Put the png_sceneDRACO.glb file you downloaded previously in the models folder.
 
 In VSC open the myscene folder.
 
 Create a file and call it *index.html*. Note that it **must** be called this as this is the html file that will be served by the browser by default when you go to the local host address.
 
-We are going to put all the code in this file. This is not the best practice but the point of the lesson is to learn about three.js. Generally you would have the JavaScript code in a separate (.js) file that would be imported by the index.html file. It is also good practice to have code properly indented and in some languages (such as Python), code indentation is important. However, in JavaScript you do not have to indent properly, so if the copy and pasting changes the indentation, you can choose to neaten it or not. Having it properly indented will help you copy and paste code into the correct spot.
+You are going to put all the code in this file. This is not the best practice but the point of the lesson is to learn about three.js. Generally you would have the JavaScript code in a separate (.js) file that would be imported by the index.html file. It is also good practice to have code properly indented and in some languages (such as Python), code indentation is important. However, in JavaScript you do not have to indent properly, so if the copy and pasting changes the indentation, you can choose to neaten it or not. Having it properly indented will help you copy and paste code into the correct spot.
 
 In the index.html file, copy and paste the following:
 
@@ -330,8 +331,6 @@ a, button, input, select {
 This file came from the [examples folder at three.js](https://github.com/mrdoob/three.js/tree/master/examples); it is a cascading style sheet file. Save the main.css file and then you can close it. 
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-11.png" alt="A screenshot of the VSC editor with the director structure of the myscene folder." caption="Figure 11. The directory structure can be seen in the left hand panel of the VSC editor. The index.html file contents are shown in the main panel. A VSC terminal is open and shown in the bottom panel." %}
-
-If you want to understand the basic components of a website, [w3schools](https://www.w3schools.com/howto/howto_make_a_website.asp) has a guide, as well as tutorials on HTML, CSS and JavaScript.
 
 In VSC, Terminal > New Terminal will give you a terminal. Make sure that the command line of your terminal/shell indicates that you are in the myscene folder (...myscene %). You can use the terminal command 
 

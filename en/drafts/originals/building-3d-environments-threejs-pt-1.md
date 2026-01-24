@@ -59,8 +59,6 @@ node -v
 
 and confirming that you get a version number and not an error message. This code has been tested with version v18.14.1. If you have problems installing Node.js, try using a search engine with the error message for help or watch one of the many tutorials available on the web. 
 
-Node.js will let you see your webpage but if you want to deploy your page so that everybody can access it, you can use (the free services) [GitHub Pages](https://pages.github.com) or [Vercel](https://vercel.com/). There are GitHub [starter tutorials](https://docs.github.com/en/get-started/start-your-journey/hello-world) or if you use software such as [GitHub Desktop](https://docs.github.com/en/desktop) to manage your GitHub repositories read [this GitHub Desktop tutorial](https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop). You get one free GitHub page per GitHub account, i.e. my page at https://github.com/tosca-har/tosca-har.github.io results in a website at https://tosca-har.github.io/. To deploy code, follow the instructions on [GitHub Pages]([https://pages.github.com](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)) and/or [Vercel](https://vercel.com/). The Programming Historian lesson [Building Static Sites with Jekyll and GitHub pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) has more detailed guidance.
-
 
 ### Papua New Guinea Pottery
 
@@ -657,7 +655,9 @@ to:
 
 ```
 
-You could deploy your site using the instructions on GitHub or Vercel. You can investigate the [three.js manual](https://threejs.org/manual/#en/how-to-create-vr-content) for making the site viewable in virtual reality (VR).
+Node.js will let you see your webpage but if you want to deploy your page so that everybody can access it, you can use (the free services) [GitHub Pages](https://pages.github.com) or [Vercel](https://vercel.com/). You could deploy your site using the instructions on GitHub or Vercel. There are GitHub [starter tutorials](https://docs.github.com/en/get-started/start-your-journey/hello-world) or if you use software such as [GitHub Desktop](https://docs.github.com/en/desktop) to manage your GitHub repositories read [this GitHub Desktop tutorial](https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop). You get one free GitHub page per GitHub account, i.e. my page at https://github.com/tosca-har/tosca-har.github.io results in a website at https://tosca-har.github.io/. To deploy code, follow the instructions on [GitHub Pages]([https://pages.github.com](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)) and/or [Vercel](https://vercel.com/). The Programming Historian lesson [Building Static Sites with Jekyll and GitHub pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) has more detailed guidance.
+
+You can investigate the [three.js manual](https://threejs.org/manual/#en/how-to-create-vr-content) for making the site viewable in virtual reality (VR).
 
 However, as noted previously, there are other simpler tools, such as SketchFab, for presenting models, and three.js is the most useful when you want to make the models interactive. To make the model interactive, try part 2 of the lesson.  
 

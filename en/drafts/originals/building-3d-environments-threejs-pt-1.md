@@ -39,7 +39,7 @@ This two-part lesson is designed as a very brief introduction to the three.js Ja
 
 The primary goal of Part 2 is to teach how to use three.js to create a webpage featuring a 3D scene with selectable components. Scene creation will involve adding lights, cameras, primitive models (such as spheres and planes), complex models (the pot forms), and controls. The models will incorporate materials and/or image textures. Concepts such as model groups, scale and visibility, and 3D co-ordinates will be introduced. An additional goal of Part 2 is to change the webpage into a game by making the models moveable and initally positioned at random places, with the user then required to match the vessel to its maker community. A test in the code is run after each time a model is moved, to see if it has been placed in the correct position. Successful matches trigger a background colour change.
 
-## Software Requirements and Installation
+### Software Requirements and Installation
 
 This lesson should work for most current web browsers (i.e. Chrome , Safari, Edge etc). If your browser can display the [three.js site](https://threejs.org) and the various sample projects on the home page, it should work; some Safari versions have problems. Chrome generally has the better developer tools for code debugging. It is useful to know how to view the browser log console. In Chrome, this can be done through View > Developer > JavaScript Console. These console error messages can help identify why a site is not loading properly. You may have to use a search engine (such as Google) to understand the error message and you may have to reload a site while the console is open to see the error message. For more information on debugging code see the [three.js manual](https://threejs.org/manual/#en/debugging-javascript).
 
@@ -60,7 +60,7 @@ and confirming that you get a version number and not an error message. This code
 
 ### Papua New Guinea Pottery
 
-While not ubiquitous throughout Papua New Guinea and West Papua, many communities have a history of making ceramic vessels for use in cooking, storage or ceremonial purposes. Pottery was first introduced to the Papua region over 3000 years ago (Gaffney et al. 2015) and the many different techniques, forms and decorations found are probably the result of a combination of local innovations and influences from different external sources. In trying to understand this cultural transmission, researchers compare factors such as decoration, form and building technique among the different communities. 
+While not ubiquitous throughout Papua New Guinea and West Papua, many communities have a history of making ceramic vessels for use in cooking, storage or ceremonial purposes. Pottery was first introduced to the Papua region over 3000 years ago (Gaffney et al. 2015) and the many different techniques, forms and decorations found are probably the result of a combination of local innovations and influences from different external sources. The technical and sometimes ceremonial or spiritual, knowledge required to construct and decorate pots is passed down generations or occasionally from community to community, in a process termed cultural transmission. In trying to understand this cultural transmission, researchers compare factors such as decoration, form and building technique among the different communities. 
 
 This lesson includes information and a pot model for 29 communities. In part 2, where the vessels are added separately, step-by-step instructions are given for 6 models (from Bilibil, Mailu, Misima-Paneati, Adzera, Dimiri and Iatmul speakers), with the assets and information for another 23 provided for users to practice with. The 29 models show examples of vessels made using different building and decorating techniques. 
 
@@ -127,7 +127,7 @@ For more complex websites, such as those with multiple models which the user can
 
 Three.js was chosen for this project due to the large number of three.js easily modifiable [tutorial examples](https://threejs.org/examples/) and ease of converting the site for viewing in [virtual reality](https://threejs.org/manual/#en/how-to-create-vr-content). Three.js, by itself, is not a physics engine, so it can not generally simulate object interactions, such as detecting object collisions. It can be used with physics engine libraries, such as [Ammo.js](https://github.com/kripken/ammo.js), [Cannon.js](https://github.com/schteppe/cannon.js) or [Rapier.js](https://rapier.rs), as shown in some of these [three.js physics examples](https://threejs.org/examples/?q=physics). The Babylon.js library has greater support for physical interactions and may be a better alternative for some digital exhibits.  
 
-## Exploring Models with the three.js Editor
+### Exploring Models with the three.js Editor
 
 Before starting to code, you can explore a model in the [three.js editor](https://threejs.org/editor/). 
 
@@ -159,7 +159,7 @@ If you select a jar and look in the OBJECT tab, you will see the x, y and z posi
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-10.png" alt="Web editor showing a round jar (manus001), with its x, y and z positions visible in the geometry window." caption="Figure 10. The position of the jar made by one of the communities on Manus Island." %}
 
-## Using the three.js JavaScript Library
+### Using the three.js JavaScript Library
 
 There are 2 ways to use the three.js JavaScript library. This tutorial will use the library via a content delivery network (CDN). Basically, code at the top of JavaScript script will fetch and import the library from a server. This removes the need for you to work with build tools like [Vite](https://vite.dev), which you would have to do if you download the actual three.js code. Downloading, working and building the code is more robust long term but for this lesson the CDN approach is fine. 
 

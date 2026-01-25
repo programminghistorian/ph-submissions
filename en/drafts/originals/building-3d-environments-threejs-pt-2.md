@@ -16,7 +16,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/607
 difficulty: 
 activity: 
 topics: 
-abstract: Short abstract of this lesson
+abstract: This lesson is the second part of an introduction to using the three.js JavaScript library to create interactive websites featuring 3D cultural heritage models. In this part, selection of the different models of ceramic vessels triggers the display of informative text, with the option of continuing on to make the website into a game.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---

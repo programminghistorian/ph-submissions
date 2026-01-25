@@ -381,7 +381,7 @@ The animate function will continuously call the `render` function. The conversio
 
 The renderer needs a scene and a camera. Within the init function, you will create a scene with a background colour, and then a camera. The position of the camera is important; sometimes you can not see your models because the camera is looking away from them or they are outside the boundaries of what it can see (i.e. its field of view). 
 
-You will use a perspective camera, and give it parameters that define its field of view. These field of view arguments are: [the vertical field of view in angles](https://en.wikipedia.org/wiki/Field_of_view); the horizontal to vertical aspect; and the boundaries for culling objects that are too close or too far from the camera. The aspect of the view can be taken from the browser window's dimensions and we will later add a function so that it is updated if the browser window is resized. The units for three.js are metres, so this camera will not render to the screen anything nearer to 0.1m and further than 10m. When moving the camera is introduced later, you will see objects disappear if they get too close.
+You will use a perspective camera, and give it parameters that define its field of view. These field of view arguments are: [the vertical field of view in angles](https://en.wikipedia.org/wiki/Field_of_view); the horizontal to vertical aspect; and the boundaries for culling objects that are too close or too far from the camera. The aspect of the view can be taken from the browser window's dimensions and you will later add a function so that it is updated if the browser window is resized. The units for three.js are metres, so this camera will not render to the screen anything nearer to 0.1m and further than 10m. When moving the camera is introduced later, you will see objects disappear if they get too close.
 
 The camera and other positions are set in x, y and z order. As mentioned previously, x is left (-) and right (+), y is down (-) and up (+) and z is far/'into the screen' (-) and near/'coming out from the screen' (+). The camera is set at a height of 1.6m, and later the model will be at 0.8m. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
 You will make the page background peach (0xf7d382). To specify colours you can use the colour [hex code](https://www.color-hex.com) after '0x'.
@@ -434,7 +434,7 @@ You need to **add** the following code.
 
 ```
 
-We need to add the animate and render function definitions. 
+You need to add the animate and render function definitions. 
 
 **After** the init function definition, i.e. after the following code.
 ```
@@ -458,7 +458,7 @@ Reload the page after saving the index.html file, and check that you have change
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-13.png" alt="Basic webpage with peach background." caption="Figure 13. Webpage with peach background." %}
 
-We will add the standard EventListener for responding to window size changes. If you try and make your browser window bigger now you will see that it is not changing the container size. Three.js uses window event listeners to detect user interactions with their browser. Here we will only listen for window resizing (```resize```), but in part 2 we will listen for mouse clicks (```click```) and drags (```dragstart``` and ```dragend```). Other possible input events include mouse movement (```mousemove```) and keys being pressed on the keyboard (```keyup``` and ```keydown```). The window event listeners have 2 arguments. The first identifies the input event (i.e. ```resize``` for resizing), and the second the function that will be called (run) if the event occurs. The standard window resize function code gets the new browser dimensions from the global object 'window' and updates the camera aspect and the dimensions of the picture the renderer is drawing. As 'window' is a global object, it is better to never call any of your variables 'window'.
+You will add the standard EventListener for responding to window size changes. If you try and make your browser window bigger now you will see that it is not changing the container size. Three.js uses window event listeners to detect user interactions with their browser. Here you will only listen for window resizing (```resize```), but in part 2 you will listen for mouse clicks (```click```) and drags (```dragstart``` and ```dragend```). Other possible input events include mouse movement (```mousemove```) and keys being pressed on the keyboard (```keyup``` and ```keydown```). The window event listeners have 2 arguments. The first identifies the input event (i.e. ```resize``` for resizing), and the second the function that will be called (run) if the event occurs. The standard window resize function code gets the new browser dimensions from the global object 'window' and updates the camera aspect and the dimensions of the picture the renderer is drawing. As 'window' is a global object, it is better to never call any of your variables 'window'.
 
 **Within** the init function after:
 ```
@@ -487,9 +487,9 @@ add:
 ```
 If you save the file and reload the browser, a browser window resize should now work.
 
-Next we need to add lights.
+Next you need to add lights.
 
-There are several different types of lights. We will add a [hemisphere light](https://threejs.org/docs/index.html#api/en/lights/HemisphereLight) and a [directional light](https://threejs.org/docs/index.html#api/en/lights/DirectionalLight). The hemisphere light has 2 colours and an intensity (from 0 to 1), while the directional light has one colour and a position. Use the values supplied first. If everything is working, you can experiment with different values later. You can add lights directly, like we do with the hemisphere light, or declare them, modify their parameters and then add them, like we do with the directional light.
+There are several different types of lights. You will add a [hemisphere light](https://threejs.org/docs/index.html#api/en/lights/HemisphereLight) and a [directional light](https://threejs.org/docs/index.html#api/en/lights/DirectionalLight). The hemisphere light has 2 colours and an intensity (from 0 to 1), while the directional light has one colour and a position. Use the values supplied first. If everything is working, you can experiment with different values later. You can add lights directly, as with the hemisphere light, or declare them, modify their parameters and then add them, as with the directional light.
 
 In the function init() after:
 
@@ -507,7 +507,7 @@ add:
     scene.add( light );
 ```
 
-Next we will import two model loaders and use them to add the model. Three.js can load several different file types. DRACO compressed glTF files require the importation of an additional loader (DRACOLoader) which uncompresses the model mesh. The created DRACOLoader needs to retrieve the code from a webserver and the path used must match the version of three.js that you are using. If you are not using version 160.0, you need to change the number in the path.
+Next you will import two model loaders and use them to add the model. Three.js can load several different file types. DRACO compressed glTF files require the importation of an additional loader (DRACOLoader) which uncompresses the model mesh. The created DRACOLoader needs to retrieve the code from a webserver and the path used must match the version of three.js that you are using. If you are not using version 160.0, you need to change the number in the path.
 
 After:
 
@@ -570,7 +570,7 @@ Save and reload and you should see a model, but you will not be able to move aro
 
 The model is loaded with the load method, which can take 4 arguments. The first argument is the file name, which must include its 'path', i.e. any folders it is in (e.g. 'models/png_sceneDRACO.glb'). It can also be a URL. The other three arguments are for "callback" functions (functions passed as arguments to other functions) that will be called in three different cases: after loading the model, while the model is loading, and if there is an error loading the model. 
 
-Here we have defined the onLoadMap function separately in the function definitions. We have left the on progress function 'undefined', but sometimes a function is used that creates a loading bar or similar indication to the user that something is happening, especially if the model is large and will take some time to load. The error function is defined here anonymously (without a name) and will print the error to the browser console. 
+Here you have defined the onLoadMap function separately in the function definitions. You have left the on progress function 'undefined', but sometimes a function is used that creates a loading bar or similar indication to the user that something is happening, especially if the model is large and will take some time to load. The error function is defined here anonymously (without a name) and will print the error to the browser console. 
 
 The onLoadMap function takes the filename and extracts the model using '.scene'. Using 'gltf.scene' instead of 'gltf.scene.children[0]' will also work for this model example due to how this glTF file is internally arranged. glTF files can have hierarchies of groups and meshes (as you saw in the scene tab of the three.js editor), and for some purposes it does not matter if the object being imported is a group or a mesh, but for others (like raycasting, which will be used in part 2) it does. Sometimes it is better to import the children of the scene and indexing starts with 0. 
 
@@ -580,9 +580,9 @@ By putting instructions, such as changing the model scale, in a function that is
 
 ### Adding Camera Controls to Move Around
 
-We can add mouse controls to allow us to move around the scene. Some controls, including [orbit](https://threejs.org/examples/?q=controls#misc_controls_orbit), [map](https://threejs.org/examples/?q=controls#misc_controls_map), [fly](https://threejs.org/examples/?q=controls#misc_controls_fly), [pointer lock](https://threejs.org/examples/?q=controls#misc_controls_pointerlock) and [trackball](https://threejs.org/examples/?q=controls#misc_controls_trackball), change the position of the camera. Others, such as [drag](https://threejs.org/examples/?q=controls#misc_controls_drag) and [transform](https://threejs.org/examples/?q=controls#misc_controls_transform), can alter the position of objects.  
+You can add mouse controls to allow us to move around the scene. Some controls, including [orbit](https://threejs.org/examples/?q=controls#misc_controls_orbit), [map](https://threejs.org/examples/?q=controls#misc_controls_map), [fly](https://threejs.org/examples/?q=controls#misc_controls_fly), [pointer lock](https://threejs.org/examples/?q=controls#misc_controls_pointerlock) and [trackball](https://threejs.org/examples/?q=controls#misc_controls_trackball), change the position of the camera. Others, such as [drag](https://threejs.org/examples/?q=controls#misc_controls_drag) and [transform](https://threejs.org/examples/?q=controls#misc_controls_transform), can alter the position of objects.  
 
-We will first use 'orbit' controls that allow the user to navigate the scene with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key, or using the right mouse button) or zooming (with mouse scrolling). We need to import any controls.
+You will first use 'orbit' controls that allow the user to navigate the scene with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key, or using the right mouse button) or zooming (with mouse scrolling). You need to import any controls.
 
 After
 

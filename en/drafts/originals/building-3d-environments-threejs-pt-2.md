@@ -25,7 +25,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-In part 1 of this lesson we used three.js to create a website featuring a camera and a scene with lights, camera navigation controls and a model. In part 2 we will make the model more interactive and as part of this we will make or import the various model components separately. The primary goal of this part is to use three.js to create a webpage featuring a 3D scene with selectable components. Scene creation will involve adding lights, cameras, primitive models (such as spheres and planes), complex models (the pot forms), and controls. The models will get materials and/or image textures. Concepts such as model groups, scale and visibility, and 3D co-ordinates will be introduced. An additional goal of part 2 is to change the webpage into a game by making the models moveable and initally positioned at random places. The user is then required to match the vessel to its maker community by moving it to the correct geographical position. A test in the code is run after each time a model is moved, to see if it has been placed in the correct position and successful matches trigger a background colour change.
+In part 1 of this lesson you used three.js to create a website featuring a camera and a scene with lights, camera navigation controls and a model. In part 2 you will make the model more interactive and as part of this you will make or import the various model components separately. The primary goal of this part is to use three.js to create a webpage featuring a 3D scene with selectable components. Scene creation will involve adding lights, cameras, primitive models (such as spheres and planes), complex models (the pot forms), and controls. The models will get materials and/or image textures. Concepts such as model groups, scale and visibility, and 3D co-ordinates will be introduced. An additional goal of part 2 is to change the webpage into a game by making the models moveable and initally positioned at random places. The user is then required to match the vessel to its maker community by moving it to the correct geographical position. A test in the code is run after each time a model is moved, to see if it has been placed in the correct position and successful matches trigger a background colour change.
 
 ## Setting Up
 
@@ -60,7 +60,7 @@ Before constructing a scene or game it is helpful to draft out (by hand or using
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-03.png" alt="Scene mock-ups in z, x and y views." caption="Figure 3. Affinity Designer versions of the hand-drawn sketches for planning the game. Mock-ups of all 3 views are done, with rough coordinates and spacing for the scene assets (here the camera, light, the map, information panels and a key panel featuring 9 spheres, the jar/site positions, and the area in which the jars will randomly start in the game). Coordinates are x, y, z. Note that the light is off the scale in the y axis." %}
 
-Planning also helps identify where you will be using the same value repeatedly, such as the x and z positions of the key spheres, and we can use variables for these values, so that if we want to alter them it is easier. It also identifies where measurements are dependent on other measurements. As you can see in the first mock-up of Figure 3, the height of the galleries is dependent on the height of the map, because we want them to be above the map, so we can have a variable 'desk' for the map height and a variable 'gheight' for the gallery height that is dependent on the desk variable (i.e. equal to desk + 0.55). The placement of the map at this y value was because the site was designed to be able to be viewed in VR and 0.8m is a comfortable height for a standing person to look down onto a map and be able to place objects onto it.
+Planning also helps identify where you will be using the same value repeatedly, such as the x and z positions of the key spheres, and you can use variables for these values, so that if you want to alter them it is easier. It also identifies where measurements are dependent on other measurements. As you can see in the first mock-up of Figure 3, the height of the galleries is dependent on the height of the map, because they need to be above the map, so there can be a variable 'desk' for the map height and a variable 'gheight' for the gallery height that is dependent on the desk variable (i.e. equal to desk + 0.55). The placement of the map at this y value was because the site was designed to be able to be viewed in VR and 0.8m is a comfortable height for a standing person to look down onto a map and be able to place objects onto it.
 
 ## Adding the Spheres for a Colour Key
 
@@ -70,19 +70,19 @@ npx serve
 ```
 and you should be back to an empty scene with a peach background.
 
-You might have noticed that the pots in the model of part 1 were different colours. These colours relate solely to what techniques were used to make the pot and we will construct a key to communicate this to the viewer.
+You might have noticed that the pots in the model of part 1 were different colours. These colours relate solely to what techniques were used to make the pot and you will construct a key to communicate this to the viewer.
 
-To do this we will add some coloured objects. Three.js has several basic 2D geometries, including plane, circle, ring and shape, and more 3D geometries that include spheres, boxes, tori (donuts), cylinders and tetrahedrons (Figure 4). The parameters for these generally include lengths (in metres) and numbers of segments (for height, width etc) but they can also be given parameters to create partial shapes. There are also some more complicated geometries, including lathes, that will not be used here, that are made from a series of user provided 2D points, that are then rotated in the third dimension.
+To do this you will add some coloured objects. Three.js has several basic 2D geometries, including plane, circle, ring and shape, and more 3D geometries that include spheres, boxes, tori (donuts), cylinders and tetrahedrons (Figure 4). The parameters for these generally include lengths (in metres) and numbers of segments (for height, width etc) but they can also be given parameters to create partial shapes. There are also some more complicated geometries, including lathes, that will not be used here, that are made from a series of user provided 2D points, that are then rotated in the third dimension.
 
-We will use 9 spheres and a plane to make a vessel colour key for how the jars were made. A sphere 'geometry' is made with a radius size (in this case 0.04 m), number of width and height segments (Figure 4). If you increase the number of width or height segments you will get rounder spheres. The geometry is reused for 9 different sphere meshes. Each sphere mesh gets a material with a colour. We are using the standard material. There are alternatives that can be used and it is important to note that some material types are more dependent on lights than others.
+You will use 9 spheres and a plane to make a vessel colour key for how the jars were made. A sphere 'geometry' is made with a radius size (in this case 0.04 m), number of width and height segments (Figure 4). If you increase the number of width or height segments you will get rounder spheres. The geometry is reused for 9 different sphere meshes. Each sphere mesh gets a material with a colour. This code uses the standard material. There are alternatives that can be used and it is important to note that some material types are more dependent on lights than others.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-04.png" alt="Six different geometries: sphere, box, cylinder, torus and lathe are shown in wireframe." caption="Figure 4. The 3D geometries that three.js can add include spheres, boxes, tori, cylinders, tetrahedrons and lathes. Parameters for the geometries often include length and segment number measurements. Lathe geometries are generated from a series of points (that are then rotated) and the most simple lathe is shown." %}
 
-The colours are set in the parameters list (more correctly called an 'array' in JavaScript). We want to colour the jars by how they were made. Some communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres we are creating now will form part of the key that lets the viewer know how the pots were made. By having them in a parameter list/array, we can just change the respective hex code and the key and pots will all change. Start with the proposed values and alter them later if you want.
+The colours are set in the parameters list (more correctly called an 'array' in JavaScript). The jars will be coloured by how they were made. Some communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres you are creating now will form part of the key that lets the viewer know how the pots were made. By having them in a parameter list/array, you can just change the respective hex code and the key and pots will all change. Start with the proposed values and alter them later if you want.
 
-For each sphere we also set its position in x, y, z order. We use the variables 'sphereposx' and 'sphereposz' for the x and z positions and vary the y position, so the spheres end up in a vertical line. We declare variables for the panel vertical placement (relative to the panel centre), and the sphere x and z positions. We can use ```let``` or ```const``` to declare variables, the difference is that variables declared with ```const``` can not be changed later in the code, and must have a value when declared. Many of these variables could be declared within the init function but having them all together at the start of the code makes them easier to find and change.
+For each sphere you also set its position in x, y, z order. You use the variables 'sphereposx' and 'sphereposz' for the x and z positions and vary the y position, so the spheres end up in a vertical line. You declare variables for the panel vertical placement (relative to the panel centre), and the sphere x and z positions. You can use ```let``` or ```const``` to declare variables, the difference is that variables declared with ```const``` can not be changed later in the code, and must have a value when declared. Many of these variables could be declared within the init function but having them all together at the start of the code makes them easier to find and change.
 
-First we declare the variables, **after:**
+First you declare the variables, **after:**
 
 ```
     let desk = 0.8;
@@ -110,7 +110,7 @@ First we declare the variables, **after:**
 
 ```
 
-Then we need to create the sphere geometry, specifying its radius and number of width and height segments. For each of the 9 spheres we make a mesh from the created geometry and a standard material with a colour from the parameter list. We then add all the spheres to the scene. 
+Then you need to create the sphere geometry, specifying its radius and number of width and height segments. For each of the 9 spheres you make a mesh from the created geometry and a standard material with a colour from the parameter list. You then add all the spheres to the scene. 
 
 Within the init function, after:
 
@@ -154,13 +154,13 @@ Save and reload in the browser and you should see a webpage with nine differentl
 
 ### Adding the Information Panels and Map
 
-We will now add the 3 information panels that the viewer will see at the start: the references (gallery3, on the left), the instructions (gallery, middle) and the key to the techniques (gallery2, on the right). The panels will be simple 2D planes that we will add textures to. The left and right panels will not change. However the central instruction panel will disappear when the user clicks a jar and the information panel for that community will appear. We will do this by toggling the visibility of different panels off and on instead of changing the texture on the plane (which would also be implementable).
+You will now add the 3 information panels that the viewer will see at the start: the references (gallery3, on the left), the instructions (gallery, middle) and the key to the techniques (gallery2, on the right). The panels will be simple 2D planes that we will add textures to. The left and right panels will not change. However the central instruction panel will disappear when the user clicks a jar and the information panel for that community will appear. You will do this by toggling the visibility of different panels off and on instead of changing the texture on the plane (which would also be implementable).
 
-We want the information panels to face the camera, and the default planes do this. We will give the planes image ‘textures’ that contain text describing the individual artefacts. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. The larger the image files, the longer they take to load, and very large images may not load at all. By default only one side (the 'front') of a panel is textured. Here the dimensions of the panels match the image texture dimensions, in situations where they do not, different options, including image tiling can be used. The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. There are [alternatives](https://threejs.org/manual/#en/creating-text). 
+You want the information panels to face the camera, and the default planes do this. You will give the planes image ‘textures’ that contain text describing the individual artefacts. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. The larger the image files, the longer they take to load, and very large images may not load at all. By default only one side (the 'front') of a panel is textured. Here the dimensions of the panels match the image texture dimensions, in situations where they do not, different options, including image tiling can be used. The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. There are [alternatives](https://threejs.org/manual/#en/creating-text). 
 
-Textures need to be loaded by a 'TextureLoader'. After loading each texture we will generate a set of lower-resolution images (a 'mipmap') for it. The renderer will automatically use one of the lower-resolution images for when the texture appears small or far away. Using lower-resolution images for areas covering less pixels is not only more efficient, it can prevent image 'shimmering'. Mipmap creation is one of the reasons for using images of 2<sup>n</sup> by 2<sup>n</sup> dimensions but the creation of the down-sampled image sets takes processing time. 
+Textures need to be loaded by a 'TextureLoader'. After loading each texture a set of lower-resolution images (a 'mipmap') gets generated for it. The renderer will automatically use one of the lower-resolution images for when the texture appears small or far away. Using lower-resolution images for areas covering less pixels is not only more efficient, it can prevent image 'shimmering'. Mipmap creation is one of the reasons for using images of 2<sup>n</sup> by 2<sup>n</sup> dimensions but the creation of the down-sampled image sets takes processing time. 
 
-First we declare the variables, after:
+First you declare the variables, after:
 
 ```
     // Variable declaration and setting
@@ -173,7 +173,7 @@ add:
 	let gallery, gallery2, gallery3;			
 ```
 
-Then we will make a textureLoader and load the 3 textures. Then for each of the 3 panels we make a mesh with one of the textures and move the panel to the correct place.
+Then you will make a textureLoader and load the 3 textures. Then for each of the 3 panels you make a mesh with one of the textures and move the panel to the correct place.
 So within the init function, after:
 
 ```
@@ -208,9 +208,9 @@ add:
 ```
 If you save the file and reload the browser you should see the three panels and the spheres should be on the panel on the right. If the panels are black, the images are probably in the wrong directory. It should look like Figure 6 but without the map.
 
-Next we will create all the information panels for all the jars but hide them (by making .visible = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. To help keep track of the information panel (gallery), jar model, loading function and community site for each jar, we will call these 'xG, 'xM', 'onLoadX' and 'xSite', respectively, where 'x' is a name such as 'yabob' or 'aibom', the village (or area) where the jar the model is based on was made. Variable and function names can not have spaces in them.
+Next you will create all the information panels for all the jars but hide them (by making .visible = false) until the relevant jar is selected by the user. You will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. To help keep track of the information panel (gallery), jar model, loading function and community site for each jar, you will call these 'xG, 'xM', 'onLoadX' and 'xSite', respectively, where 'x' is a name such as 'yabob' or 'aibom', the village (or area) where the jar the model is based on was made. Variable and function names can not have spaces in them.
 
-First we declare the variables, after:
+First you declare the variables, after:
 
 ```
     // Variable declaration and setting
@@ -223,7 +223,7 @@ add:
 	let selectedPlane;	// which information panel will be visible			
 ```
 
-If you look at the gallery code you will see quite a bit of repetition. Furthermore, the jar information panels will all be at the same position and not made visible until their model is selected. Thus, for the jar information panels we will create a function that: receives the filename of the image texture; loads the texture; creates the mipmap; creates a plane mesh with that texture; sets the mesh position and makes it invisible. Our function (we will call it 'createGallery'), will ```return``` a textured plane mesh and assign it to the named variable (i.e. adzeraG). 
+If you look at the gallery code you will see quite a bit of repetition. Furthermore, the jar information panels will all be at the same position and not made visible until their model is selected. Thus, for the jar information panels you will create a function that: receives the filename of the image texture; loads the texture; creates the mipmap; creates a plane mesh with that texture; sets the mesh position and makes it invisible. Our function (called 'createGallery'), will ```return``` a textured plane mesh and assign it to the named variable (i.e. adzeraG). 
 
 
 Within the init function after:
@@ -232,7 +232,7 @@ Within the init function after:
 ```
 add:
 ```
-	selectedPlane = gallery; // we start with the instructions.
+	selectedPlane = gallery; // start with the instructions.
 
 	// add the jar information panels then make them not visible
 	function createGallery(filename){
@@ -254,9 +254,9 @@ add:
 	scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
 ```
 
-We want a plane for the map for the jars to sit on. As planes are added 'upright' by default, this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 'Math' is a JavaScript object, which has properties, including Math.PI (i.e. π, 3.141), and methods, including Math.random() (used later in the lesson). See the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for more properties and methods. Three.js uses radians for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when you are 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geograpical map must be -Math.PI/2 around the x axis to have the 'front' of the panel facing upwards.
+You will need a plane for the map for the jars to sit on. As planes are added 'upright' by default, this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 'Math' is a JavaScript object, which has properties, including Math.PI (i.e. π, 3.141), and methods, including Math.random() (used later in the lesson). See the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for more properties and methods. Three.js uses radians for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when you are 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geograpical map must be -Math.PI/2 around the x axis to have the 'front' of the panel facing upwards.
 
-Add the map to the variables. We will also add a ratio that allows experimentation with the map size. After:
+Add the map to the variables.  Also add a ratio that allows experimentation with the map size. After:
 
 ```
     // Variable declaration and setting
@@ -304,19 +304,19 @@ As with the spheres, the jars will get a standard material with a colour that ma
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-08.png" alt="Jar with a sculptured face coloured brown." caption="Figure 8. The Aibom jar with a solid brown colour." %}
 
-We will later change the emissive property of the material to show if a jar is selected (Figure 9).
+You will later change the emissive property of the material to show if a jar is selected (Figure 9).
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-09.png" alt="Jar with a sculptured face brightly coloured red." caption="Figure 9. The Aibom jar with red emission." %}
 
 The jars will be added to a group (called 'jars') and the group will be added to the scene. This will allow us to specify later that objects belonging to the jars group can be selected. 
 
-Each jar will get a [userData](https://threejs.org/docs/?q=userdata#Object3D) property that will point to the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. We will create 'aibomM.userData.planes', but we could also create additional ones such as 'aibomM.userData.somethingelse' and 'aibomM.userData.anotherthing'.
+Each jar will get a [userData](https://threejs.org/docs/?q=userdata#Object3D) property that will point to the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. You will create 'aibomM.userData.planes', but you could also create additional ones such as 'aibomM.userData.somethingelse' and 'aibomM.userData.anotherthing'.
 
 Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
 
-Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM, in a similar way to how we added the composite model in part 1. A function is defined 'onLoadAibom' that runs after the .glb file is loaded by the loader's load method. As mentioned in part 1, we need to put the positioning and scaling of the model in this function so that they only occur after the model has finished loading. Remember that the load method has 5 arguments: the model filename; a function run after the model is loaded; a function run while the model is loading; and a function run if there is an error.  As in part 1, we will leave the function that runs while the model is loading 'undefined' and have an anonymous (unnamed) function that is run if there is an error with the loading.
+Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with you will add one model, aibomM, in a similar way to how you added the composite model in part 1. A function is defined 'onLoadAibom' that runs after the .glb file is loaded by the loader's load method. As mentioned in part 1, you need to put the positioning and scaling of the model in this function so that they only occur after the model has finished loading. Remember that the load method has 5 arguments: the model filename; a function run after the model is loaded; a function run while the model is loading; and a function run if there is an error.  As in part 1, you will leave the function that runs while the model is loading 'undefined' and have an anonymous (unnamed) function that is run if there is an error with the loading.
 
-We replace the declaration of the model with declarations of the jars and their group. Replace:
+You replace the declaration of the model with declarations of the jars and their group. Replace:
 
 ```
 	let themodel;
@@ -331,7 +331,7 @@ with:
 
 ```
 
-Then we make the empty group and add it to the scene. We will create the onLoadAibom function that will run after loading and then we will call the loader.load method.
+Then you make the empty group and add it to the scene. You will create the onLoadAibom function that will run after loading and then you will call the loader.load method.
 
 Within the init function after:
 
@@ -358,9 +358,9 @@ add:
 	}
 	loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
 ```
-Save and reload and you should see a model. You will notice that we did not have to add aibomM to the scene and this is because we added it to the jars group, which has already been added to the scene.
+Save and reload and you should see a model. You will notice that you did not have to add aibomM to the scene and this is because you added it to the jars group, which has already been added to the scene.
 
-To avoid repetitive code we will define a function createModel(), and have the onLoadAibom() function run this function when it loads the model. The function will take 5 arguments: the model filename, the x position, the z position, the model colour and the matching gallery as these vary with the different models. It may seem confusing to have to have two different functions and it is not essential to understand the following, but it may help if you are trying to write your own code. The loader.load method does not expect the function (i.e. onLoadAibom) called after loading to return anything. You will note there is no ```return(x)``` in the onLoadAibom function. So we have to pass our loaded model to a pre-declared variable (i.e. aibomM). However, we want to have 6 different models, and use different colours, planes and positions for them and giving callback functions like 'onLoadAibom' arguments is a bit tricky. So one solution is the use of two different functions, with one function 'createModel' able to take arguments and return a model and the other function is 'onLoadAibom'.
+To avoid repetitive code you will define a function createModel(), and have the onLoadAibom() function run this function when it loads the model. The function will take 5 arguments: the model filename, the x position, the z position, the model colour and the matching gallery as these vary with the different models. It may seem confusing to have to have two different functions and it is not essential to understand the following, but it may help if you are trying to write your own code. The loader.load method does not expect the function (i.e. onLoadAibom) called after loading to return anything. You will note there is no ```return(x)``` in the onLoadAibom function. So you have to pass our loaded model to a pre-declared variable (i.e. aibomM). However, you want to have 6 different models, and use different colours, planes and positions for them and giving callback functions like 'onLoadAibom' arguments is a bit tricky. So one solution is the use of two different functions, with one function 'createModel' able to take arguments and return a model and the other function is 'onLoadAibom'.
 
 Replace: 
 
@@ -393,9 +393,9 @@ with:
 
 ```
 Save and check the model still appears.
-However, with this approach we would still need 6 different 'onLoadX' functions, 1 for each model. The code can be condensed further by using 'anonymous' functions, i.e. the function called is not named. 
+However, with this approach you would still need 6 different 'onLoadX' functions, 1 for each model. The code can be condensed further by using 'anonymous' functions, i.e. the function called is not named. 
 
-We keep the createModel function but replace: 
+You keep the createModel function but replace: 
 ```
 	//calls the createModel function but still in a separately defined function
 	function onLoadAibom( gltf ) {							
@@ -450,14 +450,14 @@ You can calculate where to set the positions of the jars by taking into account 
 
 ### Adding Jar Selection
 
-Next we want to add an event listener, to be able to select a jar and change the information panel. As with the WindowResize event listener in part 1, this listener gets the event (in this case 'click'), and a function (known as an 'event handler') we will define. Input events pass event information to their handler, some of which is dependent on the type of event. The 'click' event passes an object (commonly called 'event') that contains the mouse cursor's coordinates relative to the viewport/window. 
+Next you want to add an event listener, to be able to select a jar and change the information panel. As with the WindowResize event listener in part 1, this listener gets the event (in this case 'click'), and a function (known as an 'event handler') you will define. Input events pass event information to their handler, some of which is dependent on the type of event. The 'click' event passes an object (commonly called 'event') that contains the mouse cursor's coordinates relative to the viewport/window. 
 
-To determine what jar in 3D space is being targeted by the user's mouse in 2D space, three.js uses raycasting. Whenever you click, the three.js raycaster 'sends' a 'ray' from the camera position to a pointer whose 2D position is calculated from the click event's information. The raycaster has an 'intersectObjects' method that returns an array of the 3D objects that the cast ray has hit. This array is ordered by distance to the camera so the first in the array (index 0) will be the nearest object. We also tell the 'intersectObjects' method what objects can be intersected and here we will specify children of the jars group. This is the primary reason we made the group.
+To determine what jar in 3D space is being targeted by the user's mouse in 2D space, three.js uses raycasting. Whenever you click, the three.js raycaster 'sends' a 'ray' from the camera position to a pointer whose 2D position is calculated from the click event's information. The raycaster has an 'intersectObjects' method that returns an array of the 3D objects that the cast ray has hit. This array is ordered by distance to the camera so the first in the array (index 0) will be the nearest object. You also tell the 'intersectObjects' method what objects can be intersected and here you will specify children of the jars group. This is the primary reason you made the group.
 
 You may also notice that three.js stores coordinates in a 'vector'. A THREE.Vector2 is used for 2D coordinates (referred to as x and y) such as the pointer position, and a THREE.Vector3 is used for 3D coordinates (x, y and z). 
 
 
-We need to declare variables for the raycaster, the mouse pointer and the object selected at the time. After:
+You need to declare variables for the raycaster, the mouse pointer and the object selected at the time. After:
 
 ```
 	// Variable declaration and setting
@@ -469,7 +469,7 @@ add:
 	let raycasterM, pointer, selectedObj; // for mouse controls
 ```
 
-We need to create a raycaster, and make the pointer a (x,y) vector (empty to start). Often problems arise if objects are not defined before use, especially if we are going to do something to them, like make them unemissive after something else is selected. One solution to this is to initially make a variable like 'selectedObj' something and here we will just create a torus. As we do not add it to the scene it does not appear.
+You need to create a raycaster, and make the pointer a (x,y) vector (empty to start). Often problems arise if objects are not defined before use, especially if you are going to do something to them, like make them unemissive after something else is selected. One solution to this is to initially make a variable like 'selectedObj' something and here you will just create a torus. As you do not add it to the scene it does not appear.
 
 Within the init function definition, after:
 
@@ -487,7 +487,7 @@ add:
 
 ```
 
-Then, we tell the window to 'listen' for any clicks, to send the click information to the onClick function that we will define next.
+Then, you tell the window to 'listen' for any clicks, to send the click information to the onClick function that you will define next.
 
 Within the init function definition, after:
 ```
@@ -499,11 +499,11 @@ add:
 	window.addEventListener( 'click', onClick );
 ```
 
-Then we have to tell the listener what do do if there is a click in the window. To start with we will just make the newly selected jar glow red. We want to: 
-* make sure it does not use the orbit controls (we will use event.preventDefault());
-* get a pointer position from the click position (we will use the code from a three.js example, it calculates pointer.x and pointer.y from the event.clientX and event.clientY information and the window dimensions);
-* cast a ray from the camera to the pointer (we use the setFromCamera method of the Raycaster) and
-* see if any jars are there (we use the intersectObjects method of the Raycaster and tell it to only look for objects in the jars group, and give any objects found to a group called 'intersects').
+Then you have to tell the listener what do do if there is a click in the window. To start with you will just make the newly selected jar glow red. You want to: 
+* make sure it does not use the orbit controls (you will use event.preventDefault());
+* get a pointer position from the click position (you will use the code from a three.js example, it calculates pointer.x and pointer.y from the event.clientX and event.clientY information and the window dimensions);
+* cast a ray from the camera to the pointer (you use the setFromCamera method of the Raycaster) and
+* see if any jars are there (you use the intersectObjects method of the Raycaster and tell it to only look for objects in the jars group, and give any objects found to a group called 'intersects').
 * If it finds any jars (if the length of intersects is greater than 0),
 * get the closest jar (create 'found' and makes it the closest (first) intersected object, change 'selectedObj' to 'found'),
 * and highlight it (set found's material.emissive.r to 'on' (i.e. '=1')).
@@ -536,9 +536,9 @@ add:
 		}
 	}	
 ```
-You can save the file and reload the browser and check that clicking on the jars makes them red. However we want the jars to go back to their original colour after a new jar is selected. Toggling 'material.emissive.r' off and on to indicate selection means we do not have to store what colour the jar was originally as we can just turn the emissiveness off.
+You can save the file and reload the browser and check that clicking on the jars makes them red. However you want the jars to go back to their original colour after a new jar is selected. Toggling 'material.emissive.r' off and on to indicate selection means you do not have to store what colour the jar was originally as you can just turn the emissiveness off.
 
-We want to change the onClick functions so that it will unhighlight the last jar selected (set material.emissive.r of the 'selectedObj' to off (i.e. '=0')). Importantly we want to do this **after** we click on a new object but **before** we update the selectedObj to the new object.
+You want to change the onClick functions so that it will unhighlight the last jar selected (set material.emissive.r of the 'selectedObj' to off (i.e. '=0')). Importantly you want to do this **after** you click on a new object but **before** you update the selectedObj to the new object.
 
 Within the onClick function after:
 ```
@@ -550,7 +550,7 @@ add:
 ```
 Now if you save and reload, there should only be one highlighted jar at a time.
 
-We also need the onClick function to:
+You also need the onClick function to:
 
 * hide the current panel (set .visible to false for the 'selectedPlane'),
 * change the 'selectedPlane' to the new jars linked userData panel
@@ -585,9 +585,9 @@ The next sections are optional. You can turn the website into a puzzle game or a
 
 When designing a game or puzzle, consider if the puzzle is based on memory or logic. The main aim of games featuring material culture is generally to help users appreciate the variety in artefact properties such as form and decoration, and not for them to remember the details. Often images of material culture are incorporated into the traditional memory game of finding matching images on overturned cards. See the 2D [Ho'omaka Hou Research Initiative Fishhook Memory Game](https://data.bishopmuseum.org/archaeology/game.html). This approach does introduce users to the variety of forms or decorations in material culture (including fishhooks) that they may not otherwise appreciate. In contrast, jigsaw puzzles (which also commonly feature material culture) rely more on logic. 3D jigsaw puzzles can be made of material cultural artefacts and sites, but it can be quite difficult for users to manipulate pieces on a computer screen. 3D jigsaw puzzles are more usable in VR: one example is [Artsalad](https://artsalad.net) by Mariotto F., an opensource VR 3D puzzle game that was written with three.js.
 
-If the 'Jars of Papua' featured realistic models of jars that the user needed to place at their correct site it would probably need to provide a way to ensure that the user can first view the correct placements. Alternatively, clues could be given which would get the user to study the models, resulting in less reliance on memory. Here, we will rely on the models being coloured by how they are made (build technique). This information is provided in the site information panel, to help the user match vessels to sites. The decoration style information may also help with matches. The approach of having models matched to information panels could have been done without the use of a map of New Guinea, but including the map helps reinforce the idea that the people of Papua New Guinea (and West Papua) made pots (and in many cases still do) and that there is a large variety in the material culture between the different communities. If you are planning to design a game consider consulting guides such as Schell (2015).
+If the 'Jars of Papua' featured realistic models of jars that the user needed to place at their correct site it would probably need to provide a way to ensure that the user can first view the correct placements. Alternatively, clues could be given which would get the user to study the models, resulting in less reliance on memory. Here, this game design relies on models being coloured by how they are made (build technique) to help the user match vessels to sites. This information is provided in the site information panel. The decoration style information may also help with matches. The approach of having models matched to information panels could have been done without the use of a map of New Guinea, but including the map helps reinforce the idea that the people of Papua New Guinea (and West Papua) made pots (and in many cases still do) and that there is a large variety in the material culture between the different communities. If you are planning to design a game consider consulting guides such as Schell (2015).
 
-To transform the scene into a puzzle the information panel used needs to be altered, as it is the main source of user information and we will do this as the last step. The goal for the user of this game is to start with the jars off the map and the Papuan communities marked by selectable tokens. When the communities are selected (mouse click) the information panel will provide the information on the pots made by that community. Information on the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured by the technique and a key is provided. The decoration technique may also serve as a guide. The user can move the jars (mouse). If they place the matching jar on the community marker then the jar becomes unmoveable and the background colour changes. 
+To transform the scene into a puzzle the information panel used needs to be altered, as it is the main source of user information and you will do this as the last step. The goal for the user of this game is to start with the jars off the map and the Papuan communities marked by selectable tokens. When the communities are selected (mouse click) the information panel will provide the information on the pots made by that community. Information on the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured by the technique and a key is provided. The decoration technique may also serve as a guide. The user can move the jars (mouse). If they place the matching jar on the community marker then the jar becomes unmoveable and the background colour changes. 
 
 ### Adding Tori
 
@@ -707,7 +707,7 @@ add:
 	dragControls = new DragControls( [ jars ], camera, renderer.domElement ); // first argument determines drag objects.	
 
 ```
-Then we add event listeners for the 'dragstart' and 'dragstop' events. Here we will make the handler functions anonymous. We need to turn the orbital controls off while jars are being dragged.
+Then you add event listeners for the 'dragstart' and 'dragstop' events. Here you will make the handler functions anonymous. You need to turn the orbital controls off while jars are being dragged.
 
 After:
 ```
@@ -728,11 +728,11 @@ However, you will see that it can be difficult to move jars in certain positions
 
 ### Start Jars at Random Positions
 
-To make the jars start in a random position above the map we will use the [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method which generates a number between 0 and 1. We will change the position.set to x = Math.random() - 1, y = 1.2, and z = Math.random() * 0.5 - 0.3. Thus, all jars will be at the same height (y = 1.2) but in a random spot within 1m wide (i.e. from x = -1 to 0, slightly to the left of the screen) and within a 0.5m depth (i.e. from z = -0.3 to 0.2). These positions were optimised for a user in VR to be able to easily reach the jars and read the instructions. If you review Figure 3 you can see where the jars should appear in relation to the camera and map. You can change the code so they appear elsewhere if you think that would be better.
+To make the jars start in a random position above the map you will use the [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method which generates a number between 0 and 1. You will change the position.set to x = Math.random() - 1, y = 1.2, and z = Math.random() * 0.5 - 0.3. Thus, all jars will be at the same height (y = 1.2) but in a random spot within 1m wide (i.e. from x = -1 to 0, slightly to the left of the screen) and within a 0.5m depth (i.e. from z = -0.3 to 0.2). These positions were optimised for a user in VR to be able to easily reach the jars and read the instructions. If you review Figure 3 you can see where the jars should appear in relation to the camera and map. You can change the code so they appear elsewhere if you think that would be better.
 
-We will store the matching site in a userData variable. Before you do this you may want to note, or take a screenshot of where at least one of the jars should go.
+You will store the matching site in a userData variable. Before you do this you may want to note, or take a screenshot of where at least one of the jars should go.
 
-When creating the jars we now need the matching site but not the gallery and we do not need its correct position so replace:
+When creating the jars you now need the matching site but not the gallery and you do not need its correct position so replace:
 
 ```
 	function createModel(gltf, x, z, col, gallery){
@@ -754,7 +754,7 @@ with:
 	model.userData.site = site;
 ```
 
-Then we need to change all 6 of the createModel calls that are within the 6 different loader.load calls, so replace:
+Then you need to change all 6 of the createModel calls that are within the 6 different loader.load calls, so replace:
 ```
 	aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
 ```
@@ -810,9 +810,9 @@ Save and reload; you should see the jars starting above the map and if you reloa
 
 ### Check for Successful Matches
 
-At the end of each jar movement, you want to check if the jar was moved to the correct spot. One way to do this is to determine the distance between the jar and the matching site (torus). You need to set an allowed distance difference that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby. Here we will use 5 cm (2.5cm * ratio). If the test is successful, there has to be a signal to the user. Here we will change the background colour to a random colour, and make the jar unmoveable. No signal will be given for an incorrect match. We will create an additional group called 'unmoveable' and attach any jars that are placed close enough to their torus to that group. Objects can only be attached to one group, so when a model is moved to 'unmoveable' it will no longer be in 'jars' and so the mouse will not detect it.
+At the end of each jar movement, you want to check if the jar was moved to the correct spot. One way to do this is to determine the distance between the jar and the matching site (torus). You need to set an allowed distance difference that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby. Here you will use 5 cm (2.5cm * ratio). If the test is successful, there has to be a signal to the user. Here you will change the background colour to a random colour, and make the jar unmoveable. No signal will be given for an incorrect match. You will create an additional group called 'unmoveable' and attach any jars that are placed close enough to their torus to that group. Objects can only be attached to one group, so when a model is moved to 'unmoveable' it will no longer be in 'jars' and so the mouse will not detect it.
 
-We need extra variables for the new 'unmoveable' group, 'selectedObject' which is the selected jar and the 'truesite' which is the site that the selected jar should match. As no jar is selected at the start we will make truesite and selectedObject 'null' to start with.
+You need extra variables for the new 'unmoveable' group, 'selectedObject' which is the selected jar and the 'truesite' which is the site that the selected jar should match. As no jar is selected at the start you will make truesite and selectedObject 'null' to start with.
 
 Replace:
 ```
@@ -835,7 +835,7 @@ add
 	scene.add(unmoveable);  
 ```
 
-The event object for drag events contains the identity of the object being dragged ('event.object'), so we can use that in the handler function and we can get the site it should match from its userData.
+The event object for drag events contains the identity of the object being dragged ('event.object'), so you can use that in the handler function and you can get the site it should match from its userData.
 
 **Within** the dragend handler function, after: 
 ```
@@ -848,7 +848,7 @@ add:
 	truesite = selectedObject.userData.site;
 ```
 
-We can use the getWorldPosition method to find out the coordinates of the truesite. You may wonder why we did not just put the coordinates in the userData and we could have as the sites do not move in this version of the game. However having this extra step means that if we want to make the map (with sites) movable in a different version it is easier to do. The getWorldPosition method puts the coordinates into a vector (x, y, z) that is given as an argument, in this case 'testposition'. This vector can not be null to begin with so it is set as (0,0,0). To get the position of the jar being dragged we can put its position property into a vector (we will call 'aposition').
+You can use the getWorldPosition method to find out the coordinates of the truesite. You may wonder why you did not just put the coordinates in the userData and you could have as the sites do not move in this version of the game. However having this extra step means that if you want to make the map (with sites) movable in a different version it is easier to do. The getWorldPosition method puts the coordinates into a vector (x, y, z) that is given as an argument, in this case 'testposition'. This vector can not be null to begin with so it is set as (0,0,0). To get the position of the jar being dragged you can put its position property into a vector (you will call 'aposition').
 
 After:
 ```
@@ -861,7 +861,7 @@ add:
 	let aposition = selectedObject.position; //get jar position
 ```
 
-We call the distanceTo method on the aposition vector to determine the distance between the two vectors and test if it is smaller than our allowed distance (0.25 * ratio).
+You call the distanceTo method on the aposition vector to determine the distance between the two vectors and test if it is smaller than our allowed distance (0.25 * ratio).
 
 After:
 ```
@@ -875,7 +875,7 @@ add:
 	}	
 
 ```
-You can save and reload and check for errors (broken code blocks can occur), but we have not told the script what to do if the test is successful yet, so nothing will occur if you do get a correct match. If the match is correct we want the background colour to change and we can do this by making scene.background equal to a new THREE.Color generated by 'Math.random() * 0xffffff'. This works because the hex colour codes are actually being converted to hexadecimal numbers and multiplying white (0xffffff or 16777215) by a random (0-1) value gives another number 0- 16777215, which can be interpreted as a colour by three.js.
+You can save and reload and check for errors (broken code blocks can occur), but you have not told the script what to do if the test is successful yet, so nothing will occur if you do get a correct match. If the match is correct you want the background colour to change and you can do this by making scene.background equal to a new THREE.Color generated by 'Math.random() * 0xffffff'. This works because the hex colour codes are actually being converted to hexadecimal numbers and multiplying white (0xffffff or 16777215) by a random (0-1) value gives another number 0- 16777215, which can be interpreted as a colour by three.js.
 
 Replace:
 ```
@@ -885,7 +885,7 @@ with:
 ```
 		scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
 ```
-If the test is successful we also want to set the position of the jar to the exact spot, partly because the slight jump helps signal that it was a success. Importantly we want to make it unmoveable by putting it in the unmoveable group. The unmoveable group is unmoveable because the drag listener is only acting on the jars group.
+If the test is successful you also want to set the position of the jar to the exact spot, partly because the slight jump helps signal that it was a success. Importantly you want to make it unmoveable by putting it in the unmoveable group. The unmoveable group is unmoveable because the drag listener is only acting on the jars group.
 
 Keeping within the if code block, after:
 ```
@@ -897,7 +897,7 @@ add:
 		unmoveable.attach( selectedObject); // adding to the unmoveable group will remove from the jar group.
 
 ```
-You can save and try to test this, but moving in 3D can be difficult and we will make it (somewhat) easier in the next step. Moving is best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place it in the right spot, or vice versa (Figures 14-16).
+You can save and try to test this, but moving in 3D can be difficult and you will make it (somewhat) easier in the next step. Moving is best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place it in the right spot, or vice versa (Figures 14-16).
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-14.png" alt="While 5 jars are randomly above the map, the Aibom jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Aibom jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
 
@@ -923,7 +923,7 @@ add:
 			unmoveable.attach( selectedObject );
 		}
 ```
-If we use this code we have to make sure that the truesite variable is reset to null at the end. Otherwise if you move a jar to somewhere and the drag ends with the mouse not being over a site, then click on that jars site it will trigger a match.
+If you use this code you have to make sure that the truesite variable is reset to null at the end. Otherwise if you move a jar to somewhere and the drag ends with the mouse not being over a site, then click on that jars site it will trigger a match.
 
 So within the onClick function, after:
 ```

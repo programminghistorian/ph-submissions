@@ -349,13 +349,13 @@ The script will call two functions (blocks of code): init() and animate(). Most 
 
 First, you will need to set up a container for the scene, which is actually a <div> HTML element which gets added to the HTML document. The container first needs to be 'declared', and then it gets created in the init function. 
 
-In the index.html file, after:
+In the index.html file, **after** the following line of code.
 
 ```
     import * as THREE from 'three';
 ```
 
-add:
+You need to **add** the following code.
 
 ```
     // Variable declaration and setting
@@ -379,46 +379,45 @@ Nothing will change in your browser yet.
 
 The animate function will continuously call the `render` function. The conversion of a 3D scene into a 2D image (to be displayed on the screen at that millisecond) is called 'rendering'. The 2D image is 'drawn' from the point of view of the camera and according to the camera settings. When you create the new renderer in the init function, you need to give it the pixel ratio, width and height details of the browser window, and then add it to the container. You can also tell it to use 'anti-aliasing' and it will try and smooth object edges by averaging edge pixel colours. 
 
-To render, the renderer needs a scene and a camera, so first (within the init function) a scene with a background colour, and then a camera, will be created. The position of the camera is important; sometimes you can not see your models because the camera is looking away from them or they are outside the boundaries of what it can see (i.e. its field of view). 
+The renderer needs a scene and a camera. Within the init function, you will create a scene with a background colour, and then a camera. The position of the camera is important; sometimes you can not see your models because the camera is looking away from them or they are outside the boundaries of what it can see (i.e. its field of view). 
 
-We will use a perspective camera, and give it parameters that define its field of view. These field of view arguments are: [the vertical field of view in angles](https://en.wikipedia.org/wiki/Field_of_view); the horizontal to vertical aspect; and the boundaries for culling objects that are too close or too far from the camera. The aspect of the view can be taken from the browser window's dimensions and we will later add a function so that it is updated if the browser window is resized. The units for three.js are metres, so this camera will not render to the screen anything nearer to 0.1m and further than 10m. When we introduce moving the camera later, you will see objects disappear if they get too close.
+You will use a perspective camera, and give it parameters that define its field of view. These field of view arguments are: [the vertical field of view in angles](https://en.wikipedia.org/wiki/Field_of_view); the horizontal to vertical aspect; and the boundaries for culling objects that are too close or too far from the camera. The aspect of the view can be taken from the browser window's dimensions and we will later add a function so that it is updated if the browser window is resized. The units for three.js are metres, so this camera will not render to the screen anything nearer to 0.1m and further than 10m. When moving the camera is introduced later, you will see objects disappear if they get too close.
 
 The camera and other positions are set in x, y and z order. As mentioned previously, x is left (-) and right (+), y is down (-) and up (+) and z is far/'into the screen' (-) and near/'coming out from the screen' (+). The camera is set at a height of 1.6m, and later the model will be at 0.8m. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
+You will make the page background peach (0xf7d382). To specify colours you can use the colour [hex code](https://www.color-hex.com) after '0x'.
 
-We will make the page background peach (0xf7d382). To specify colours you can use the colour [hex code](https://www.color-hex.com) after '0x'.
+In the index.html file, **after** the import, you will declare the variables (with **let**), call and define the init() and other necessary functions. Variables are generally declared outside function definitions, but sometimes will be declared within a function definition if the variable is only referred to within the function definition. 
 
-In the index.html file, **after** the import, declare the variables (with **let**), call and define the init() and other necessary functions. Variables are generally declared outside function definitions, but sometimes will be declared within a function definition if the variable is only referred to within the function definition. 
-
-Change:
+**Find** the following code.
 
 ```
     let container;
 ```
 
-to:
+The line of code above should be **changed** to the following.
 
 ```
     let container, camera, scene, renderer;
 ```
 
-After:
+**After** the following line of code.
 ```
     init(); // initialise scene
 ```
 
-add:
+You need to **add** the following code.
 ```
     animate(); // updates scene by constant rendering
 ```
 
 Note that functions are defined within ```{}```. Be careful of where these are when pasting code.
 
-**Within** the init function definition after:
+**Within** the init function definition **after** the following code.
 ```
     document.body.appendChild( container );
 ```
 
-add:
+You need to **add** the following code.
 ```
         // make scene and set background colour
         scene = new THREE.Scene();
@@ -437,12 +436,12 @@ add:
 
 We need to add the animate and render function definitions. 
 
-**After** the init function definition:
+**After** the init function definition, i.e. after the following code.
 ```
     container.appendChild( renderer.domElement );
 }
 ```
-add:
+You need to **add** the following code.
 ```
     // Constant loop of rendering.
     function animate() {

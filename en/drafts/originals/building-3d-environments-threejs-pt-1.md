@@ -460,22 +460,22 @@ Reload the page after saving the index.html file, and check that you have change
 
 You will add the standard EventListener for responding to window size changes. If you try and make your browser window bigger now you will see that it is not changing the container size. Three.js uses window event listeners to detect user interactions with their browser. Here you will only listen for window resizing (```resize```), but in part 2 you will listen for mouse clicks (```click```) and drags (```dragstart``` and ```dragend```). Other possible input events include mouse movement (```mousemove```) and keys being pressed on the keyboard (```keyup``` and ```keydown```). The window event listeners have 2 arguments. The first identifies the input event (i.e. ```resize``` for resizing), and the second the function that will be called (run) if the event occurs. The standard window resize function code gets the new browser dimensions from the global object 'window' and updates the camera aspect and the dimensions of the picture the renderer is drawing. As 'window' is a global object, it is better to never call any of your variables 'window'.
 
-**Within** the init function after:
+**Within** the init function definition **after** the following code.
 ```
         container.appendChild( renderer.domElement );
 ```
-add:
+You need to **add** the following code.
 ```
         // add listeners. These check for user interaction with the window and mouse clicks and call the given function.
         // listen for user browser window resizing and call the onWindowResize function that is defined below.
         window.addEventListener( 'resize', onWindowResize );
 ```
-**After** the init function definition:
+**After** the init function definition, i.e. after the following code.
 ```
     window.addEventListener( 'resize', onWindowResize );
 }
 ```
-add:
+You need to **add** the following code.
 ```	
     // called on resizing of window. Gets new browser window values and updates camera and renderer settings. Don't experiment with.
     function onWindowResize() {
@@ -491,13 +491,13 @@ Next you need to add lights.
 
 There are several different types of lights. You will add a [hemisphere light](https://threejs.org/docs/index.html#api/en/lights/HemisphereLight) and a [directional light](https://threejs.org/docs/index.html#api/en/lights/DirectionalLight). The hemisphere light has 2 colours and an intensity (from 0 to 1), while the directional light has one colour and a position. Use the values supplied first. If everything is working, you can experiment with different values later. You can add lights directly, as with the hemisphere light, or declare them, modify their parameters and then add them, as with the directional light.
 
-In the function init() after:
+**Within** the init function definition **after** the following code.
 
 ```
     camera.position.set( 0, 1.6, 3 ); //x, y, z
 ```
 
-add:
+You need to **add** the following code.
 
 ```
         // add a hemisphere light and a directional light
@@ -509,26 +509,26 @@ add:
 
 Next you will import two model loaders and use them to add the model. Three.js can load several different file types. DRACO compressed glTF files require the importation of an additional loader (DRACOLoader) which uncompresses the model mesh. The created DRACOLoader needs to retrieve the code from a webserver and the path used must match the version of three.js that you are using. If you are not using version 160.0, you need to change the number in the path.
 
-After:
+**After** the following line of code.
 
 ```
 import * as THREE from 'three';
 ```
 
-add:
+You need to **add** the following code.
 
 ```
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'; // needed if draco compression on gltf
 ```
 
-After:
+**After** the following line of code.
 
 ```
     let container, camera, scene, renderer;
 ```
 
-add:
+You need to **add** the following code.
 
 ```
     let themodel;
@@ -543,13 +543,13 @@ add:
 
 ```
 
-Within the init function after:
+**Within** the init function definition **after** the following code.
 
 ```
     scene.add( light );
 ```
 
-add:
+You need to **add** the following code.
 
 ```
     // load model
@@ -584,13 +584,13 @@ You can add mouse controls to allow us to move around the scene. Some controls, 
 
 You will first use 'orbit' controls that allow the user to navigate the scene with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key, or using the right mouse button) or zooming (with mouse scrolling). You need to import any controls.
 
-After
+**After** the following line of code.
 
 ```
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 ```
 
-add:
+You need to **add** the following code.
 
 ```
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -599,25 +599,27 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 Next you'll need to add the controls to the 'let' declaration. Inn the init function, you can create them and link them to the camera and renderer. The target.set method determines the centre that the camera will rotate around.
 
 
-Change:
+**Find** the following code.
 
 ```
     let container, camera, scene, renderer; 
 ```
 
-to:
+
+The line of code above should be **changed** to the following.
+
 
 ```
     let container, camera, scene, renderer, controls;
 ```
 
-In the init function, after:
+**Within** the init function definition **after** the following code.
 
 ```
     container.appendChild( renderer.domElement );
 ```
 
-Next, add:
+You need to **add** the following code.
 
 ```
         // create orbit controls
@@ -632,7 +634,7 @@ If you save and reload, you should be able to move around and zoom in and out. N
 
 If you want the camera to continuously rotate, you can uncomment out the ```controls.autoRotate``` but you must also add the call to update the controls in the render function, i.e.
 
-Change
+**Find** the following code.
 
 ```
         function render() {
@@ -640,7 +642,9 @@ Change
             }
 ```
 
-to: 
+
+The **lines** of code above should be **changed** to the following.
+ 
 
 ```
             function render() {

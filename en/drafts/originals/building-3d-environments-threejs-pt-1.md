@@ -83,9 +83,13 @@ When making games out of cultural heritage models, it is also important to refle
 
 ### 3D Modeling with three.js
 
-3D models are made from meshes of nodes (points) joined with edges (connecting lines) to compose faces (also called polygons) (Figures 1 and 2). These polygons are usually triangles (with 3 vertices) or quadrilaterals (with 4 vertices). Basic shapes such as spheres, cubes, planes and tori ('donuts') are known as 'primitive' models and can be created directly in three.js. 
+3D models are made from meshes of nodes (points) joined with edges (connecting lines) to compose faces (also called polygons) (Figure 1). These polygons are usually triangles (with 3 vertices) or quadrilaterals (with 4 vertices). Basic shapes such as spheres, cubes, planes and tori ('donuts') are known as 'primitive' models and can be created directly in three.js. 
 
-Some people like to build more complicated models by combining primitive models in three.js, but often these more complicated models are created with Computer Aided Design (CAD) software such as [Blender](https://www.blender.org) or with scanning processes such as photogrammetry, before they are imported into three.js as 'complex' models. 
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-01.png" alt="A mesh, the model and 4 maps for a white staffy dog on a red couch with 3 blankets. The 2 dimensional maps include colour, normal, occulusion and roughness." caption="Figure 1. The mesh and maps (textures) for a model of Diva dog. A section of a reduced polygon mesh of Diva dog is shown for comparison. Diva's tan head patch and collar can be located in the colour map. [See the model in SketchFab](https://skfb.ly/pzB7J). Model created from a quick [Polycam](https://poly.cam) scan." %}
+
+Some people like to build more complicated models by combining primitive models in three.js, but often these more complicated models are created with Computer Aided Design (CAD) software such as [Blender](https://www.blender.org) or with scanning processes such as photogrammetry, before they are imported into three.js as 'complex' models. In photogrammetry, models are computed from series of overlapping photographs of an object at various angles (Rahaman, 2021). Photogrammetric models, including those from phone apps such as [Polycam](https://poly.cam), will typically have image textures and be realistic (left side, Figure 2). Models made using Blender or other CAD software may be symbolic, or made more realistic with the addition of image textures or complex materials (right side, Figure 2). 
+
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-02.png" alt="Flow charts for photogrammetry and CAD model making. Photogrammetry requires multiple photographs, which are used to create a point cloud, then a mesh which is wrapped in a texture to make a model, such as a sherd. A jar CAD model can be made by tracing the vessel outline and rotating it." caption="Figure 2. Models can be created by methods that include photogrammetry and Computer Aided Design (CAD). [See the sherd model in SketchFab](https://skfb.ly/pzEEW)." %}
 
 Meshes can be decorated with ‘materials’ that have colour and other properties such as emission, roughness, metalness, opacity etc. They can also be decorated with images or other ‘textures’. Textures are two dimensional image files with u (horizontal) coordinates from 0 to 1, and v (vertical) coordinates from 0 to 1 (Figures 1 and 2). Each vertex in a model's mesh is also assigned U and V coordinates (in a process called 'unwrapping') that correspond to those in the texture. 
 
@@ -95,13 +99,7 @@ Textures with grayscale (from white to black) pixel intensities can also be used
 
 If you are interested in UV mapping, you can use the 'Model Inspector' in the bottom right corner of many models in [SketchFab](https://sketchfab.com/), including [Diva dog](https://skfb.ly/pzB7J) and the [Papua jars](https://skfb.ly/putNM).In the 3D + 2D view you can see where the U, V co-ordinates correspond on the model and the map (Figure 3).
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-01.png" alt="A mesh, the model and 4 maps for a white staffy dog on a red couch with 3 blankets. The 2 dimensional maps include colour, normal, occulusion and roughness." caption="Figure 1. The mesh and maps (textures) for a model of Diva dog. A section of a reduced polygon mesh of Diva dog is shown for comparison. Diva's tan head patch and collar can be located in the colour map. [See the model in SketchFab](https://skfb.ly/pzB7J). Model created from a quick [Polycam](https://poly.cam) scan." %}
-
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-02.png" alt="Flow charts for photogrammetry and CAD model making. Photogrammetry requires multiple photographs, which are used to create a point cloud, then a mesh which is wrapped in a texture to make a model, such as a sherd. A jar CAD model can be made by tracing the vessel outline and rotating it." caption="Figure 2. Models can be created by methods that include photogrammetry and Computer Aided Design (CAD). [See the sherd model in SketchFab](https://skfb.ly/pzEEW)." %}
-
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-03.png" alt="The dog and jars models in the model inspector in SketchFab." caption="Figure 3. The Model Inspector in SketchFab for the Diva dog and Papua Jars models." %}
-
-In photogrammetry, models are computed from series of overlapping photographs of an object at various angles (Rahaman, 2021). Photogrammetric models, including those from phone apps such as [Polycam](https://poly.cam), will typically have image textures and be realistic (left side, Figure 2). Models made using Blender or other CAD software may be symbolic, or made more realistic with the addition of image textures or complex materials (right side, Figure 2). 
 
 There are many different model formats, and some, such as [STL](https://en.wikipedia.org/wiki/STL_(file_format)), will only store the mesh. The [GL Transmission Format (glTF) or GL Transmission Format Binary (glb)](https://en.wikipedia.org/wiki/GlTF) file format is one of the formats that can store meshes, textures, materials, animations and other properties. glTF/glb files (or rather the meshes in them) can also be compressed further with [DRACO](https://google.github.io/draco/) compression; Blender will export DRACO compressed glTF/glb files. There are some Central Processing Unit (CPU) penalties in decompressing DRACO files, so they will not always load faster in a website than uncompressed files.
 
@@ -155,9 +153,9 @@ If you zoom out you can see the map. The jars are coloured because they have mat
 
 Click on a jar. While in the editor, it is useful to look at the red, green and blue arrows in the centre of the scene, which illustrate the co-ordinate system. In three.js, positions are set in x, y and z order. Different graphics programs and game engines use different co-ordinate systems. In three.js x is left (-) and right (+), y is down (-) and up (+) and z is far (-) and near (+) (Figure 9), i.e. it is a Y up, right-handed system. 
 
-If you select a jar and look in the OBJECT tab, you will see the x, y and z positions it was placed at (Figure 10), and you can change them and see the jar move. You can also change the scale or rotation of a jar and test what happens.
-
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-09.png" alt="Web editor with three arrows, coloured red, green and blue, showing the x, y and z axis." caption="Figure 9. The three.js co-ordinate system. Red arrow shows positive x direction, green arrow shows positive y direction, blue arrow shows positive z direction." %}
+
+If you select a jar and look in the OBJECT tab, you will see the x, y and z positions it was placed at (Figure 10), and you can change them and see the jar move. You can also change the scale or rotation of a jar and test what happens.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-10.png" alt="Web editor showing a round jar (manus001), with its x, y and z positions visible in the geometry window." caption="Figure 10. The position of the jar made by one of the communities on Manus Island." %}
 
@@ -316,7 +314,7 @@ a, button, input, select {
 }
 ```
 
-This file came from the [examples folder at three.js](https://github.com/mrdoob/three.js/tree/master/examples); it is a cascading style sheet file. Save the main.css file and then you can close it. 
+This file is a cascading style sheet file. It came from the [examples folder](https://github.com/mrdoob/three.js/tree/master/examples) at three.js' github, which contains all the source code for the [three.js example sites](https://threejs.org/examples/). Save the main.css file and then you can close it. 
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-11.png" alt="A screenshot of the VSC editor with the director structure of the myscene folder." caption="Figure 11. The directory structure can be seen in the left hand panel of the VSC editor. The index.html file contents are shown in the main panel. A VSC terminal is open and shown in the bottom panel." %}
 

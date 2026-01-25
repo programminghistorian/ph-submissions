@@ -16,7 +16,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/607
 difficulty: 1
 activity: presentation
 topics: web development, 3d modeling
-abstract: This lesson overviews how to build interactive environments for 3d models with the Javascript web development software, three.js.
+abstract: This two-part lesson shows how the three.js JavaScript library can be used to create websites featuring 3D models that can be interactively viewed, selected and even used in a game. In part 1, a website is created featuring a model illustrating the rich diversity of ceramics from the Papua New Guinea region.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---

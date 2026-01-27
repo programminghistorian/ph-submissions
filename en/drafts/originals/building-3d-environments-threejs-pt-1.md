@@ -214,9 +214,9 @@ In the index.html file, copy and paste the following:
 </html>
 ```
 
-Save the file. This html file is: creating a basic page with a link to the three.js site and a title, importing the three.js library and addons, and linking to a style sheet (which you will create next). The link with the anchor tags (i.e. ```<a> </a>```) is not needed for three.js to work and is there because this page was developed from the three.
+Save the file. This html file is: creating a basic page with a link to the three.js site and a title, importing the three.js library and addons, and linking to a style sheet (which you will create next). The link with the anchor tags (i.e. ```<a> </a>```) is not needed for three.js to work and is there because this page was developed from a three.js example page.
 
-For the js example pages, you could remove the or change them to link to any site you want. Anything written within the script tags (i.e. ```<script> </script>```) will be in the JavaScript language. In JavaScript code, comments are marked by ```//``` and anything on that line after that will be ignored.
+You could remove the or change them to link to any site you want. Anything written within the script tags (i.e. ```<script> </script>```) will be in the JavaScript language. In JavaScript code, comments are marked by ```//``` and anything on that line after that will be ignored.
 
 In the myscene directory create another new file called 'main.css' and paste in the following. 
 

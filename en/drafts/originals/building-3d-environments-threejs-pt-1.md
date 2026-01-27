@@ -349,29 +349,29 @@ The script will call two functions (blocks of code): init() and animate(). Most 
 
 First, you will need to set up a container for the scene, which is actually a <div> HTML element which gets added to the HTML document. The container first needs to be 'declared', and then it gets created in the init function. 
 
-In the index.html file, **after** the following line of code.
+In the index.html file, **after** the following line of code:
 
 ```
-    import * as THREE from 'three';
+import * as THREE from 'three';
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    // Variable declaration and setting
-    let container;
+// Variable declaration and setting
+let container;
 
-    // Function calls
-    init(); // initialise scene
+// Function calls
+init(); // initialise scene
 
-    // Function definitions
+// Function definitions
 
-    // Initialise scene: sets up container; scene; camera; renderer; lights; models; controls
-    function init() {
-        // make html div element and add to html document
-        container = document.createElement( 'div' );
-        document.body.appendChild( container );
-    }
+// Initialise scene: sets up container; scene; camera; renderer; lights; models; controls
+function init() {
+ // make html div element and add to html document
+ container = document.createElement( 'div' );
+ document.body.appendChild( container );
+}
 
 ```
 
@@ -388,69 +388,69 @@ You will make the page background peach (0xf7d382). To specify colours you can u
 
 In the index.html file, **after** the import, you will declare the variables (with **let**), call and define the init() and other necessary functions. Variables are generally declared outside function definitions, but sometimes will be declared within a function definition if the variable is only referred to within the function definition. 
 
-**Find** the following code.
+**Find** the following code:
 
 ```
-    let container;
+let container;
 ```
 
-The line of code above should be **changed** to the following.
+The line of code above should be **changed** to the following:
 
 ```
-    let container, camera, scene, renderer;
+let container, camera, scene, renderer;
 ```
 
-**After** the following line of code.
+**After** the following line of code:
 ```
-    init(); // initialise scene
+init(); // initialise scene
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 ```
-    animate(); // updates scene by constant rendering
+animate(); // updates scene by constant rendering
 ```
 
 Note that functions are defined within ```{}```. Be careful of where these are when pasting code.
 
-**Within** the init function definition **after** the following code.
+**Within** the init function definition **after** the following code:
 ```
-    document.body.appendChild( container );
+document.body.appendChild( container );
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 ```
-        // make scene and set background colour
-        scene = new THREE.Scene();
-        scene.background = new THREE.Color( 0xf7d382 ); // use the hexcode of any colour you want.
-        // make camera, set its start position	
-        camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 ); //arguments are: vertical field of view, aspect, near plane, far plane. Note the aspect depends on the users window size.
-        camera.position.set( 0, 1.6, 3 ); // arguments: x, y, z Values in metres. Approximates a persons eye level (designed for VR)
+// make scene and set background colour
+scene = new THREE.Scene();
+scene.background = new THREE.Color( 0xf7d382 ); // use the hexcode of any colour you want.
+// make camera, set its start position	
+camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 ); //arguments are: vertical field of view, aspect, near plane, far plane. Note the aspect depends on the users window size.
+camera.position.set( 0, 1.6, 3 ); // arguments: x, y, z Values in metres. Approximates a persons eye level (designed for VR)
 
-        // make renderer and use users browser window values to set pixel ratio and size
-        renderer = new THREE.WebGLRenderer( { antialias: true } );
-        renderer.setPixelRatio( window.devicePixelRatio ); // Don't change this code.
-        renderer.setSize( window.innerWidth, window.innerHeight ); // Don't change this code.
-        container.appendChild( renderer.domElement );
+// make renderer and use users browser window values to set pixel ratio and size
+renderer = new THREE.WebGLRenderer( { antialias: true } );
+renderer.setPixelRatio( window.devicePixelRatio ); // Don't change this code.
+renderer.setSize( window.innerWidth, window.innerHeight ); // Don't change this code.
+container.appendChild( renderer.domElement );
 
 ```
 
 You need to add the animate and render function definitions. 
 
-**After** the init function definition, i.e. after the following code.
+**After** the init function definition, i.e. after the following code:
 ```
-    container.appendChild( renderer.domElement );
+container.appendChild( renderer.domElement );
 }
 ```
-You need to **add** the following code.
+You need to **add** the following code:
 ```
-    // Constant loop of rendering.
-    function animate() {
-        renderer.setAnimationLoop( render );
-    }
-    // Called in loop by animate(), draws the scene in 2D as viewed by the camera at the camera's current position.
-    function render() {
-        renderer.render( scene, camera );
-    }
+// Constant loop of rendering.
+function animate() {
+ renderer.setAnimationLoop( render );
+}
+// Called in loop by animate(), draws the scene in 2D as viewed by the camera at the camera's current position.
+function render() {
+ renderer.render( scene, camera );
+}
 
 ```
 
@@ -460,29 +460,29 @@ Reload the page after saving the index.html file, and check that you have change
 
 You will add the standard EventListener for responding to window size changes. If you try and make your browser window bigger now you will see that it is not changing the container size. Three.js uses window event listeners to detect user interactions with their browser. Here you will only listen for window resizing (```resize```), but in part 2 you will listen for mouse clicks (```click```) and drags (```dragstart``` and ```dragend```). Other possible input events include mouse movement (```mousemove```) and keys being pressed on the keyboard (```keyup``` and ```keydown```). The window event listeners have 2 arguments. The first identifies the input event (i.e. ```resize``` for resizing), and the second the function that will be called (run) if the event occurs. The standard window resize function code gets the new browser dimensions from the global object 'window' and updates the camera aspect and the dimensions of the picture the renderer is drawing. As 'window' is a global object, it is better to never call any of your variables 'window'.
 
-**Within** the init function definition **after** the following code.
+**Within** the init function definition **after** the following code:
 ```
-        container.appendChild( renderer.domElement );
+container.appendChild( renderer.domElement );
 ```
-You need to **add** the following code.
+You need to **add** the following code:
 ```
-        // add listeners. These check for user interaction with the window and mouse clicks and call the given function.
-        // listen for user browser window resizing and call the onWindowResize function that is defined below.
-        window.addEventListener( 'resize', onWindowResize );
+// add listeners. These check for user interaction with the window and mouse clicks and call the given function.
+// listen for user browser window resizing and call the onWindowResize function that is defined below.
+window.addEventListener( 'resize', onWindowResize );
 ```
-**After** the init function definition, i.e. after the following code.
+**After** the init function definition, i.e. after the following code:
 ```
-    window.addEventListener( 'resize', onWindowResize );
+window.addEventListener( 'resize', onWindowResize );
 }
 ```
-You need to **add** the following code.
+You need to **add** the following code:
 ```	
-    // called on resizing of window. Gets new browser window values and updates camera and renderer settings. Don't experiment with.
-    function onWindowResize() {
-                camera.aspect = window.innerWidth / window.innerHeight; 
-                camera.updateProjectionMatrix();
-                renderer.setSize( window.innerWidth, window.innerHeight );
-    }
+// called on resizing of window. Gets new browser window values and updates camera and renderer settings. Don't experiment with.
+function onWindowResize() {
+ camera.aspect = window.innerWidth / window.innerHeight; 
+ camera.updateProjectionMatrix();
+ renderer.setSize( window.innerWidth, window.innerHeight );
+}
 
 ```
 If you save the file and reload the browser, a browser window resize should now work.
@@ -491,77 +491,77 @@ Next you need to add lights.
 
 There are several different types of lights. You will add a [hemisphere light](https://threejs.org/docs/index.html#api/en/lights/HemisphereLight) and a [directional light](https://threejs.org/docs/index.html#api/en/lights/DirectionalLight). The hemisphere light has 2 colours and an intensity (from 0 to 1), while the directional light has one colour and a position. Use the values supplied first. If everything is working, you can experiment with different values later. You can add lights directly, as with the hemisphere light, or declare them, modify their parameters and then add them, as with the directional light.
 
-**Within** the init function definition **after** the following code.
+**Within** the init function definition **after** the following code:
 
 ```
-    camera.position.set( 0, 1.6, 3 ); //x, y, z
+camera.position.set( 0, 1.6, 3 ); //x, y, z
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-        // add a hemisphere light and a directional light
-    scene.add( new THREE.HemisphereLight( 0xffffbb, 0x080820, .5) ); // arguments: sky colour, ground colour, intensity
-    const light = new THREE.DirectionalLight( 0xffffff ); // argument: colour
-    light.position.set( 1, 6, 2 ); // x, y, z 
-    scene.add( light );
+// add a hemisphere light and a directional light
+scene.add( new THREE.HemisphereLight( 0xffffbb, 0x080820, .5) ); // arguments: sky colour, ground colour, intensity
+const light = new THREE.DirectionalLight( 0xffffff ); // argument: colour
+light.position.set( 1, 6, 2 ); // x, y, z 
+scene.add( light );
 ```
 
 Next you will import two model loaders and use them to add the model. Three.js can load several different file types. DRACO compressed glTF files require the importation of an additional loader (DRACOLoader) which uncompresses the model mesh. The created DRACOLoader needs to retrieve the code from a webserver and the path used must match the version of three.js that you are using. If you are not using version 160.0, you need to change the number in the path.
 
-**After** the following line of code.
+**After** the following line of code:
 
 ```
 import * as THREE from 'three';
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'; // needed if draco compression on gltf
 ```
 
-**After** the following line of code.
+**After** the following line of code:
 
 ```
-    let container, camera, scene, renderer;
+let container, camera, scene, renderer;
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    let themodel;
-    let desk = 0.8; // the height of the model (metres), desk height in virtual reality
+let themodel;
+let desk = 0.8; // the height of the model (metres), desk height in virtual reality
 
-    // Loader set up 
-    // Different model formats use different loaders
-    const loader = new GLTFLoader();
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath( 'https://unpkg.com/three@0.160.0/examples/jsm/libs/draco/' );
-    loader.setDRACOLoader( dracoLoader );
-
-```
-
-**Within** the init function definition **after** the following code.
+// Loader set up 
+// Different model formats use different loaders
+const loader = new GLTFLoader();
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath( 'https://unpkg.com/three@0.160.0/examples/jsm/libs/draco/' );
+loader.setDRACOLoader( dracoLoader );
 
 ```
-    scene.add( light );
-```
 
-You need to **add** the following code.
+**Within** the init function definition **after** the following code:
 
 ```
-    // load model
-    // function used for loader
-    function onLoadMap( gltf ) {                
-        themodel = gltf.scene.children[0]; // can also use just gltf.scene
-        themodel.position.set( 0, desk, 0); // x, y, z
-        themodel.scale.set( 1, 1, 1); // x, y, z
-        scene.add( themodel);
-    }
-    // the loader is given the model file name (first argument) which is passed to the function (second argument), function to do while loading (3rd argument), function called if error (4th argument).
-    loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
+scene.add( light );
+```
+
+You need to **add** the following code:
+
+```
+// load model
+// function used for loader
+function onLoadMap( gltf ) {                
+ themodel = gltf.scene.children[0]; // can also use just gltf.scene
+ themodel.position.set( 0, desk, 0); // x, y, z
+ themodel.scale.set( 1, 1, 1); // x, y, z
+ scene.add( themodel);
+}
+// the loader is given the model file name (first argument) which is passed to the function (second argument), function to do while loading (3rd argument), function called if error (4th argument).
+loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
     
 ```
 Save and reload and you should see a model, but you will not be able to move around it yet (Figure 14).
@@ -584,13 +584,13 @@ You can add mouse controls to allow us to move around the scene. Some controls, 
 
 You will first use 'orbit' controls that allow the user to navigate the scene with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key, or using the right mouse button) or zooming (with mouse scrolling). You need to import any controls.
 
-**After** the following line of code.
+**After** the following line of code:
 
 ```
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -599,34 +599,34 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 Next you'll need to add the controls to the 'let' declaration. Inn the init function, you can create them and link them to the camera and renderer. The target.set method determines the centre that the camera will rotate around.
 
 
-**Find** the following code.
+**Find** the following code:
 
 ```
-    let container, camera, scene, renderer; 
+let container, camera, scene, renderer; 
 ```
 
 
-The line of code above should be **changed** to the following.
+The line of code above should be **changed** to the following:
 
 
 ```
-    let container, camera, scene, renderer, controls;
+let container, camera, scene, renderer, controls;
 ```
 
-**Within** the init function definition **after** the following code.
+**Within** the init function definition **after** the following code:
 
 ```
-    container.appendChild( renderer.domElement );
+container.appendChild( renderer.domElement );
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-        // create orbit controls
-        controls = new OrbitControls( camera, renderer.domElement);
-        controls.target.set( 0, 1.6, 0 ); // sets the scene rotational centre
-        controls.update(); // updates controls settings after creation
-        //controls.autoRotate = true; // set to true if camera is to rotate automatically BUT you must then call controls.update() in render function.
+// create orbit controls
+controls = new OrbitControls( camera, renderer.domElement);
+controls.target.set( 0, 1.6, 0 ); // sets the scene rotational centre
+controls.update(); // updates controls settings after creation
+//controls.autoRotate = true; // set to true if camera is to rotate automatically BUT you must then call controls.update() in render function.
 
 ```
 
@@ -634,23 +634,23 @@ If you save and reload, you should be able to move around and zoom in and out. N
 
 If you want the camera to continuously rotate, you can uncomment out the ```controls.autoRotate``` but you must also add the call to update the controls in the render function, i.e.
 
-**Find** the following code.
+**Find** the following code:
 
 ```
-        function render() {
-                renderer.render( scene, camera );
-            }
+function render() {
+ renderer.render( scene, camera );
+}
 ```
 
 
-The **lines** of code above should be **changed** to the following.
+The **lines** of code above should be **changed** to the following:
  
 
 ```
-            function render() {
-                controls.update(); // use if controls.autoRotate = true
-                renderer.render( scene, camera );
-            }
+function render() {
+ controls.update(); // use if controls.autoRotate = true
+ renderer.render( scene, camera );
+}
 
 ```
 

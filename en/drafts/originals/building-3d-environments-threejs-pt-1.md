@@ -347,7 +347,7 @@ You may need to reload the page in the browser to apply any code changes.
 
 The script will call two functions (blocks of code): init() and animate(). Most of the code will be in init(), which will set up the scene and tell the page if it should ‘listen’ to any input from sources, such as the mouse, and what it should do in response to mouse movement or clicks (i.e. you will add EventListeners). 
 
-First, you will need to set up a container for the scene, which is actually a <div> HTML element which gets added to the HTML document. The container first needs to be 'declared', and then it gets created in the init function. 
+First, you will need to set up a container for the scene, which is actually a ```<div>``` HTML element which gets added to the HTML document. The container first needs to be 'declared', and then it gets created in the init function. 
 
 In the index.html file, **after** the following line of code:
 

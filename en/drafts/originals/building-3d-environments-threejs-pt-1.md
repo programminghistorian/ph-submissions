@@ -216,7 +216,7 @@ In the index.html file, copy and paste the following:
 
 Save the file. This html file is: creating a basic page with a link to the three.js site and a title, importing the three.js library and addons, and linking to a style sheet (which you will create next). The link with the anchor tags (i.e. ```<a> </a>```) is not needed for three.js to work and is there because this page was developed from a three.js example page.
 
-You could remove the or change them to link to any site you want. Anything written within the script tags (i.e. ```<script> </script>```) will be in the JavaScript language. In JavaScript code, comments are marked by ```//``` and anything on that line after that will be ignored.
+You could remove the link or change it to link to any site you want. Anything written within the script tags (i.e. ```<script> </script>```) will be in the JavaScript language. In JavaScript code, comments are marked by ```//``` and anything on that line after that will be ignored.
 
 In the myscene directory create another new file called 'main.css' and paste in the following. 
 
@@ -345,7 +345,7 @@ You may need to reload the page in the browser to apply any code changes.
 
 ### Creating the Basic webpage
 
-The script will call two functions (blocks of code): init() and animate(). Most of the code will be in init(), which will set up the scene and tell the page if it should ‘listen’ to any input from sources, such as the mouse, and what it should do in response to mouse movement or clicks (i.e. you will add EventListeners). 
+The script will call two functions (blocks of code): ```init()``` and ```animate()```. Most of the code will be in init(), which will set up the scene and tell the page if it should ‘listen’ to any input from sources, such as the mouse, and what it should do in response to mouse movement or clicks (i.e. you will add EventListeners). 
 
 First, you will need to set up a container for the scene, which is actually a ```<div>``` HTML element which gets added to the HTML document. The container first needs to be 'declared', and then it gets created in the init function. 
 
@@ -377,7 +377,7 @@ function init() {
 
 Nothing will change in your browser yet.
 
-The animate function will continuously call the `render` function. The conversion of a 3D scene into a 2D image (to be displayed on the screen at that millisecond) is called 'rendering'. The 2D image is 'drawn' from the point of view of the camera and according to the camera settings. When you create the new renderer in the init function, you need to give it the pixel ratio, width and height details of the browser window, and then add it to the container. You can also tell it to use 'anti-aliasing' and it will try and smooth object edges by averaging edge pixel colours. 
+The animate function will continuously call the ```render``` function. The conversion of a 3D scene into a 2D image (to be displayed on the screen at that millisecond) is called 'rendering'. The 2D image is 'drawn' from the point of view of the camera and according to the camera settings. When you create the new renderer in the init function, you need to give it the pixel ratio, width and height details of the browser window, and then add it to the container. You can also tell it to use 'anti-aliasing' and it will try and smooth object edges by averaging edge pixel colours. 
 
 The renderer needs a scene and a camera. Within the init function, you will create a scene with a background colour, and then a camera. The position of the camera is important; sometimes you can not see your models because the camera is looking away from them or they are outside the boundaries of what it can see (i.e. its field of view). 
 
@@ -568,11 +568,11 @@ Save and reload and you should see a model, but you will not be able to move aro
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-14.png" alt="Several jar models sitting on a map of Papua." caption="Figure 14. The model of jars on a map of Papua." %}
 
-The model is loaded with the load method, which can take 4 arguments. The first argument is the file name, which must include its 'path', i.e. any folders it is in (e.g. 'models/png_sceneDRACO.glb'). It can also be a URL. The other three arguments are for "callback" functions (functions passed as arguments to other functions) that will be called in three different cases: after loading the model, while the model is loading, and if there is an error loading the model. 
+The model is loaded with the load method, which can take 4 arguments. The first argument is the file name, which must include its 'path', i.e. any folders it is in (e.g. ```models/png_sceneDRACO.glb```). It can also be a URL. The other three arguments are for "callback" functions (functions passed as arguments to other functions) that will be called in three different cases: after loading the model, while the model is loading, and if there is an error loading the model. 
 
-Here you have defined the onLoadMap function separately in the function definitions. You have left the on progress function 'undefined', but sometimes a function is used that creates a loading bar or similar indication to the user that something is happening, especially if the model is large and will take some time to load. The error function is defined here anonymously (without a name) and will print the error to the browser console. 
+Here you have defined the ```onLoadMap``` function separately in the function definitions. You have left the on progress function ```undefined```, but sometimes a function is used that creates a loading bar or similar indication to the user that something is happening, especially if the model is large and will take some time to load. The error function is defined here anonymously (without a name) and will print the error to the browser console. 
 
-The onLoadMap function takes the filename and extracts the model using '.scene'. Using 'gltf.scene' instead of 'gltf.scene.children[0]' will also work for this model example due to how this glTF file is internally arranged. glTF files can have hierarchies of groups and meshes (as you saw in the scene tab of the three.js editor), and for some purposes it does not matter if the object being imported is a group or a mesh, but for others (like raycasting, which will be used in part 2) it does. Sometimes it is better to import the children of the scene and indexing starts with 0. 
+The ```onLoadMap``` function takes the filename and extracts the model using ```.scene```. Using ```gltf.scene``` instead of ```gltf.scene.children[0]``` will also work for this model example due to how this glTF file is internally arranged. glTF files can have hierarchies of groups and meshes (as you saw in the scene tab of the three.js editor), and for some purposes it does not matter if the object being imported is a group or a mesh, but for others (like raycasting, which will be used in part 2) it does. Sometimes it is better to import the children of the scene and indexing starts with 0. 
 
 You can also position, scale or rotate the model in the onLoadMap function. You can experiment with changing the x, y or z values for position or scale and see the effects. When this JavaScript code is running it will not wait until the model has loaded before going on to the next bit of code in the init function. 
 
@@ -596,7 +596,7 @@ You need to **add** the following code:
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 ```
 
-Next you'll need to add the controls to the 'let' declaration. Inn the init function, you can create them and link them to the camera and renderer. The target.set method determines the centre that the camera will rotate around.
+Next you'll need to add the controls to the ```let``` declaration. In the init function, you can create them and link them to the camera and renderer. The ```target.set``` method determines the centre that the camera will rotate around.
 
 
 **Find** the following code:

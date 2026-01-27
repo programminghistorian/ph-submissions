@@ -46,17 +46,16 @@ If you made autoRotate true, comment out that line (i.e. add `//` to the beginni
 Next, in the index.html file from Part 1, remove the code that loads the glTF model that was used in Part 1. In other words, remove the following lines of code:
 
 ```
-                // load model
-                // function used for loader
-                function onLoadMap( gltf ) {                
-                        themodel = gltf.scene.children[0];
-                        themodel.position.set( 0, desk, 0); // x, y, z
-                        themodel.scale.set( 1, 1, 1); // x, y, z
-                        scene.add( themodel);
-                }
-                // the loader is given the model file name (first argument) which is passed to the function (second argument), function to do while loading (3rd argument), function called if error (4th argument).
-                loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
-
+// load model
+// function used for loader
+function onLoadMap( gltf ) {                
+  themodel = gltf.scene.children[0];
+  themodel.position.set( 0, desk, 0); // x, y, z
+  themodel.scale.set( 1, 1, 1); // x, y, z
+  scene.add( themodel);
+}
+// the loader is given the model file name (first argument) which is passed to the function (second argument), function to do while loading (3rd argument), function called if error (4th argument).
+loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
 ```
 
 In the next section of this lesson, we will explain how you should plan out and design your interactive scene before building it. 
@@ -101,69 +100,69 @@ For each sphere you also set its position in x, y, z order. You use the variable
 
 You can use ```let``` or ```const``` to declare variables, the difference is that variables declared with ```const``` can not be changed later in the code, and must have a value when declared. Many of these variables could be declared within the init function, but having them all together at the start of the code makes them easier to find and change.
 
-First you declare the variables, **after:** the following line of code.
+First you declare the variables, **after:** the following line of code:
 
 ```
-    let desk = 0.8;
+let desk = 0.8;
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    let gheight = desk + 0.55; //panel height
-    let sphereposx = 0.84 // key sphere x position
-    let sphereposz = -0.75 // key sphere z position
+let gheight = desk + 0.55; //panel height
+let sphereposx = 0.84 // key sphere x position
+let sphereposz = -0.75 // key sphere z position
 
-    // colours for the key spheres and the jars
-    const parameters = { 
-        materialColor: '#9c5315', // brown
-        coilColor: '#ff0000', // red
-        ringTopColor: '#19ffE7', // light blue
-        coilBeatenColor: '#e8e337', // yellow
-        nabColor: '#209F00',  // green
-        wangelaColor: '#BEBEBE',  // light grey
-        paddleColor: '#1e2f97', // dark blue		
-        paddleAddColor: '#a61ef4', // purple
-        amphColor: '#fc9483' // pink
-    }
+// colours for the key spheres and the jars
+const parameters = { 
+  materialColor: '#9c5315', // brown
+  coilColor: '#ff0000', // red
+  ringTopColor: '#19ffE7', // light blue
+  coilBeatenColor: '#e8e337', // yellow
+  nabColor: '#209F00',  // green
+  wangelaColor: '#BEBEBE',  // light grey
+  paddleColor: '#1e2f97', // dark blue		
+  paddleAddColor: '#a61ef4', // purple
+  amphColor: '#fc9483' // pink
+}
 
 ```
 
 Then you need to create the sphere geometry, specifying its radius and number of width and height segments. For each of the 9 spheres you make a mesh from the created geometry and a standard material with a colour from the parameter list. You then add all the spheres to the scene. 
 
-**Within** the init function definition **after** the following code.
+**Within** the init function definition **after** the following code:
 
 ```
 scene.add( light );
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    // add models
+// add models
 
-    // add key for jar colours using spheres and a plane
-    //spheres for key
-    const sphere = new THREE.SphereGeometry( 0.04, 15, 5); //radius in metres, width segments, height segments. Will be reused.
-    const sphere1 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.materialColor })); 
-    sphere1.position.set( sphereposx, gheight + 0.30, sphereposz);
-    const sphere2 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilColor })); 
-    sphere2.position.set( sphereposx, gheight + 0.21, sphereposz);
-    const sphere3 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.ringTopColor})); 
-    sphere3.position.set( sphereposx, gheight + 0.12, sphereposz);
-    const sphere4 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilBeatenColor})); 
-    sphere4.position.set( sphereposx, gheight + 0.03, sphereposz); 
-    const sphere5 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.nabColor })); 
-    sphere5.position.set( sphereposx, gheight - 0.06, sphereposz); 
-    const sphere6 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.wangelaColor })); 
-    sphere6.position.set( sphereposx, gheight - 0.15, sphereposz); 
-    const sphere7 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleColor})); 
-    sphere7.position.set( sphereposx, gheight - 0.25, sphereposz); 
-    const sphere8 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleAddColor})); 
-    sphere8.position.set( sphereposx, gheight - 0.35, sphereposz); 
-    const sphere9 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.amphColor })); 
-    sphere9.position.set( sphereposx, gheight - 0.44, sphereposz); 
-    scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
+// add key for jar colours using spheres and a plane
+//spheres for key
+const sphere = new THREE.SphereGeometry( 0.04, 15, 5); //radius in metres, width segments, height segments. Will be reused.
+const sphere1 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.materialColor })); 
+sphere1.position.set( sphereposx, gheight + 0.30, sphereposz);
+const sphere2 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilColor })); 
+sphere2.position.set( sphereposx, gheight + 0.21, sphereposz);
+const sphere3 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.ringTopColor})); 
+sphere3.position.set( sphereposx, gheight + 0.12, sphereposz);
+const sphere4 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.coilBeatenColor})); 
+sphere4.position.set( sphereposx, gheight + 0.03, sphereposz); 
+const sphere5 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.nabColor })); 
+sphere5.position.set( sphereposx, gheight - 0.06, sphereposz); 
+const sphere6 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.wangelaColor })); 
+sphere6.position.set( sphereposx, gheight - 0.15, sphereposz); 
+const sphere7 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleColor})); 
+sphere7.position.set( sphereposx, gheight - 0.25, sphereposz); 
+const sphere8 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.paddleAddColor})); 
+sphere8.position.set( sphereposx, gheight - 0.35, sphereposz); 
+const sphere9 = new THREE.Mesh( sphere,  new THREE.MeshStandardMaterial( {color: parameters.amphColor })); 
+sphere9.position.set( sphereposx, gheight - 0.44, sphereposz); 
+scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
     
 ```
 
@@ -180,51 +179,51 @@ The use of images with text (created and exported from any graphics program such
 
 Textures need to be loaded by a 'TextureLoader'. After loading each texture a set of lower-resolution images (a 'mipmap') gets generated for it. The renderer will automatically use one of the lower-resolution images for when the texture appears small or far away. Using lower-resolution images for areas covering less pixels is not only more efficient, it can prevent image 'shimmering'. Mipmap creation is one of the reasons for using images of 2<sup>n</sup> by 2<sup>n</sup> dimensions, but the creation of the down-sampled image sets takes processing time. 
 
-First you declare the variables, **after** the following code.
+First you declare the variables, **after** the following code:
 
 ```
-    // Variable declaration and setting
+// Variable declaration and setting
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    let psize = 1.0; // panel dimensions
-    let gallery, gallery2, gallery3;			
+let psize = 1.0; // panel dimensions
+let gallery, gallery2, gallery3;			
 ```
 
 Then you will make a textureLoader and load the 3 textures. For each of the 3 panels, you will make a mesh with one of the textures, and move the panel to the correct place.
 
-**Within** the init function definition **after** the following code.
+**Within** the init function definition **after** the following code:
 
 ```
 // add models
 ```
 
-You need to **add** the following lines.
+You need to **add** the following lines:
 
 ```
-    // add introduction, key and reference panels by loading textures then adding planes .
-    // load textures and generate Mipmaps
-    const textureLoader = new THREE.TextureLoader();
-    const introTexture = textureLoader.load( 'textures/Intro.jpg' );
-    introTexture.generateMipmaps = true;
-    const refTexture = textureLoader.load( 'textures/sources.jpg' );
-    refTexture.generateMipmaps = true;			
-    const keyTexture = textureLoader.load( 'textures/key.jpg' );
-    keyTexture.generateMipmaps = true;
+// add introduction, key and reference panels by loading textures then adding planes .
+// load textures and generate Mipmaps
+const textureLoader = new THREE.TextureLoader();
+const introTexture = textureLoader.load( 'textures/Intro.jpg' );
+introTexture.generateMipmaps = true;
+const refTexture = textureLoader.load( 'textures/sources.jpg' );
+refTexture.generateMipmaps = true;			
+const keyTexture = textureLoader.load( 'textures/key.jpg' );
+keyTexture.generateMipmaps = true;
     
-    // add introduction information panel
-    gallery = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: introTexture }));
-    gallery.position.set( 0, gheight, sphereposz); 
-    // add the panel for the key
-    const gallery2 = new THREE.Mesh(new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: keyTexture }));
-    gallery2.position.set( 1.25, gheight, sphereposz); 
-    // add the panel for the references
-    const gallery3 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize  ), new THREE.MeshBasicMaterial({ map: refTexture }));
-    gallery3.position.set( -1.25, gheight, sphereposz); 
+// add introduction information panel
+gallery = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: introTexture }));
+gallery.position.set( 0, gheight, sphereposz); 
+// add the panel for the key
+const gallery2 = new THREE.Mesh(new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: keyTexture }));
+gallery2.position.set( 1.25, gheight, sphereposz); 
+// add the panel for the references
+const gallery3 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize  ), new THREE.MeshBasicMaterial({ map: refTexture }));
+gallery3.position.set( -1.25, gheight, sphereposz); 
 
-    scene.add( gallery, gallery2, gallery3);
+scene.add( gallery, gallery2, gallery3);
 
 ```
 
@@ -234,89 +233,89 @@ Next you will create all the information panels for all the jars. You will desig
 
 To help keep track of the information panel (gallery), jar model, loading function and community site for each jar, you will call these 'xG, 'xM', 'onLoadX' and 'xSite', respectively, where 'x' is a name such as 'yabob' or 'aibom', the village (or area) where the jar the model is based on was made. Variable and function names can not have spaces in them.
 
-First you declare the variables, **after** the following code.
+First you declare the variables, **after** the following code:
 
 ```
-    // Variable declaration and setting
+// Variable declaration and setting
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    let adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG; // information panels for the different jars
-    let selectedPlane;	// which information panel will be visible			
+let adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG; // information panels for the different jars
+let selectedPlane;	// which information panel will be visible			
 ```
 
 If you look at the gallery code you will see quite a bit of repetition. Furthermore, the jar information panels will all be at the same position and not made visible until their model is selected. Thus, for the jar information panels you will create a function that receives the filename of the image texture, loads the texture, creates the mipmap, creates a plane mesh with that texture, sets the mesh position and makes it invisible. Our function (called 'createGallery'), will ```return``` a textured plane mesh and assign it to the named variable (i.e. adzeraG). 
 
-**Within** the init function definition **after** the following code.
+**Within** the init function definition **after** the following code:
 
 ```
-    scene.add( gallery, gallery2, gallery3);
+scene.add( gallery, gallery2, gallery3);
 
 ```
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    selectedPlane = gallery; // start with the instructions.
+selectedPlane = gallery; // start with the instructions.
 
-    // add the jar information panels then make them not visible
-    function createGallery(filename){
-        const aTexture = textureLoader.load( filename );
-        aTexture.generateMipmaps = true;
-        const model = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: aTexture }));
-        model.position.set( 0, gheight, sphereposz); 
-        model.visible = false;
-        return model;
-        }
+// add the jar information panels then make them not visible
+function createGallery(filename){
+  const aTexture = textureLoader.load( filename );
+  aTexture.generateMipmaps = true;
+  const model = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: aTexture }));
+  model.position.set( 0, gheight, sphereposz); 
+  model.visible = false;
+  return model;
+}
 
-    // 'call' the createGallery function for the information panels/galleries.
-    adzeraG = createGallery('textures/Adzera.jpg');
-    aibomG = createGallery('textures/Aibom.jpg');
-    mailuG = createGallery('textures/Mailu.jpg');
-    dimiriG = createGallery('textures/Dimiri.jpg');
-    louisadeG= createGallery('textures/Louisade.jpg');
-    yabobG = createGallery( 'textures/Yabob.jpg' );
-    scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
+// 'call' the createGallery function for the information panels/galleries.
+adzeraG = createGallery('textures/Adzera.jpg');
+aibomG = createGallery('textures/Aibom.jpg');
+mailuG = createGallery('textures/Mailu.jpg');
+dimiriG = createGallery('textures/Dimiri.jpg');
+louisadeG= createGallery('textures/Louisade.jpg');
+yabobG = createGallery( 'textures/Yabob.jpg');
+scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
 ```
 
 You will need a plane for the map for the jars to sit on. As planes are added 'upright' by default, this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 'Math' is a JavaScript object, which has properties, including Math.PI (i.e. π, 3.141), and methods, including Math.random() (used later in the lesson). See the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for more properties and methods. 
 
 Three.js uses radians for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when you are 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geograpical map must be -Math.PI/2 around the x axis to have the 'front' of the panel facing upwards.
 
-Add the map to the variables.  Also add a ratio that allows experimentation with the map size. 
+Add the map to the variables. Also add a ratio that allows experimentation with the map size. 
 
-**After** the following code.
-
-```
-    // Variable declaration and setting
-```
-
-You need to **add** the following code.
+**After** the following code:
 
 ```
-    let theMap;
-    let ratio = 2; 
-    let piecescale = ratio; 
+// Variable declaration and setting
+```
+
+You need to **add** the following code:
+
+```
+let theMap;
+let ratio = 2; 
+let piecescale = ratio; 
             
 ```
-**Within** the init function definition **after** the following code.
+**Within** the init function definition **after** the following code:
 
 ```
-    scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
+scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    // add the map of New Guinea
-    const mapGeometry = new THREE.PlaneGeometry( 3 * ratio, 1.5 * ratio );
-    const mapTexture = textureLoader.load('textures/png.png'); // from google maps
-    mapTexture.generateMipmaps = true; 
-    theMap = new THREE.Mesh( mapGeometry, new THREE.MeshBasicMaterial({ map: mapTexture }));
-    theMap.rotation.x = - Math.PI / 2; // Equal to 90 degrees
-    theMap.position.set( 0, desk, 0); // desk height
-    scene.add( theMap);
+// add the map of New Guinea
+const mapGeometry = new THREE.PlaneGeometry( 3 * ratio, 1.5 * ratio );
+const mapTexture = textureLoader.load('textures/png.png'); // from google maps
+mapTexture.generateMipmaps = true; 
+theMap = new THREE.Mesh( mapGeometry, new THREE.MeshBasicMaterial({ map: mapTexture }));
+theMap.rotation.x = - Math.PI / 2; // Equal to 90 degrees
+theMap.position.set( 0, desk, 0); // desk height
+scene.add( theMap);
 
 ```
 
@@ -351,134 +350,134 @@ As mentioned in Part 1, you need to put the positioning and scaling of the model
 
 As in Part 1, you will leave the function that runs while the model is loading 'undefined' and have an anonymous (unnamed) function that is run if there is an error with the loading.
 
-You replace the declaration of the model with declarations of the jars and their group. **Find** the following code.
+You replace the declaration of the model with declarations of the jars and their group. **Find** the following code:
 
 ```
-    let themodel;
+let themodel;
 
 ```
 
-The line of code above should be **changed** to the following.
+The line of code above should be **changed** to the following:
 
 ```	
-    let jars;
-    let adzeraM, aibomM, mailuM, louisadeM, dimiriM, yabobM;
+let jars;
+let adzeraM, aibomM, mailuM, louisadeM, dimiriM, yabobM;
 
 ```
 
 Then you make the empty group and add it to the scene. You will create the `onLoadAibom` function that will run after loading, and then you will call the `loader.load method`.
 
-**Within** the init function definition **after** the following code.
+**Within** the init function definition **after** the following code:
 
 ```
-    scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
+scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    // add jar models. Added in group so they can be selected.
-    jars = new THREE.Group();
-    scene.add( jars );
+// add jar models. Added in group so they can be selected.
+jars = new THREE.Group();
+scene.add( jars );
 
-    // loading function for Aibom jar model
-    function onLoadAibom( gltf ) {				
-        aibomM = gltf.scene.children[0];
-        aibomM.material = new THREE.MeshStandardMaterial();
-        aibomM.material.color.set(parameters.materialColor);
-        aibomM.scale.set( piecescale, piecescale, piecescale);
-        aibomM.position.set( 0.36* ratio, desk + 0.01, -0.01* ratio);
-        aibomM.userData.planes = aibomG;
-        jars.add( aibomM);
-    }
-    loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
+// loading function for Aibom jar model
+function onLoadAibom( gltf ) {				
+  aibomM = gltf.scene.children[0];
+  aibomM.material = new THREE.MeshStandardMaterial();
+  aibomM.material.color.set(parameters.materialColor);
+  aibomM.scale.set( piecescale, piecescale, piecescale);
+  aibomM.position.set( 0.36* ratio, desk + 0.01, -0.01* ratio);
+  aibomM.userData.planes = aibomG;
+  jars.add( aibomM);
+}
+loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
 ```
 Save and reload and you should see a model. You will notice that you did not have to add `aibomM` to the scene, since you added it to the jars group, which has already been added to the scene.
 
-To avoid repetitive code you will define a function `createModel()`, and assign the `onLoadAibom()` function run this `createModel()` function when it loads the model. The function will take 5 arguments: the model filename, the x position, the z position, the model colour and the matching gallery as these vary with the different models. 
+To avoid repetitive code you will define a function ```createModel()```, and assign the ```onLoadAibom()``` function run this ```createModel()``` function when it loads the model. The function will take 5 arguments: the model filename, the x position, the z position, the model colour and the matching gallery as these vary with the different models. 
 
-It may seem confusing to have to have two different functions and it is not essential to understand the following, but it may help if you are trying to write your own code. The `loader.load method` does not expect the function (i.e. `onLoadAibom`) called after loading to return anything. You will note there is no ```return(x)``` in the `onLoadAibom` function. So you have to pass our loaded model to a pre-declared variable (i.e. `aibomM`). 
+It may seem confusing to have to have two different functions and it is not essential to understand the following, but it may help if you are trying to write your own code. The `loader.load method` does not expect the function (i.e. ```onLoadAibom```) called after loading to return anything. You will note there is no ```return(x)``` in the ```onLoadAibom``` function. So you have to pass our loaded model to a pre-declared variable (i.e. ```aibomM```). 
 
-However, you want to have 6 different models, and use different colours, planes and positions for them, and giving callback functions like `onLoadAibom` arguments is a bit tricky. So one solution is the use of two different functions, with one function `createModel` able to take arguments and return a model, and the other function is `onLoadAibom`.
+However, you want to have 6 different models, and use different colours, planes and positions for them, and giving callback functions like ```onLoadAibom``` arguments is a bit tricky. So one solution is the use of two different functions, with one function `createModel` able to take arguments and return a model, and the other function is ```onLoadAibom```.
 
-**Find** the following code.
+**Find** the following code:
 
 ```
-    // loading function for Aibom jar model
-    function onLoadAibom( gltf ) {				
-    ...
-    }
-    loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
+// loading function for Aibom jar model
+function onLoadAibom( gltf ) {				
+  ...
+}
+loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
 ```
-The **lines** of code above should be **changed** to the following.
+The **lines** of code above should be **changed** to the following:
 ```
-    //a function to make the model with the parameter specified
-    function createModel(gltf, x, z, col, gallery){
-        const model = gltf.scene.children[0];	
-        model.material = new THREE.MeshStandardMaterial();
-        model.material.color.set(col);
-        model.scale.set( piecescale, piecescale, piecescale);				
-        model.position.set( x * ratio, desk + 0.01, z * ratio);	
-        model.userData.planes = gallery;
-        return model;
-    }
+//a function to make the model with the parameter specified
+function createModel(gltf, x, z, col, gallery){
+  const model = gltf.scene.children[0];	
+  model.material = new THREE.MeshStandardMaterial();
+  model.material.color.set(col);
+  model.scale.set( piecescale, piecescale, piecescale);				
+  model.position.set( x * ratio, desk + 0.01, z * ratio);	
+  model.userData.planes = gallery;
+  return model;
+}
 
-    //calls the createModel function but still in a separately defined function
-    function onLoadAibom( gltf ) {							
-        aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
-        jars.add( aibomM);
-    }
-    loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
+//calls the createModel function but still in a separately defined function
+function onLoadAibom( gltf ) {							
+  aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
+  jars.add( aibomM);
+}
+loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
 
 ```
 Save and check the model still appears.
 
 However, with this approach you would still need 6 different 'onLoadX' functions, 1 for each model. The code can be condensed further by using 'anonymous' functions, i.e. the function called is not named. 
 
-You keep the createModel function but **find** the following code.
+You keep the createModel function but **find** the following code:
 
 ```
-    //calls the createModel function but still in a separately defined function
-    function onLoadAibom( gltf ) {							
-    ...
-    }
-    loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
+//calls the createModel function but still in a separately defined function
+function onLoadAibom( gltf ) {							
+  ...
+}
+loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
 ```
 
-The **lines** of code above should be **changed** to the following.
+The **lines** of code above should be **changed** to the following:
 
 ```
-    // directly has the onLoad function as an anonymous function in the loader.load
-    // load a jar (filename, load function, function while loading, error function)
-    loader.load( 'models/aibom.glb', function( gltf ) {							
-        aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
-        jars.add( aibomM);
-    }, undefined, function ( error ) {console.error( error );} );
+// directly has the onLoad function as an anonymous function in the loader.load
+// load a jar (filename, load function, function while loading, error function)
+loader.load( 'models/aibom.glb', function( gltf ) {							
+  aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
+  jars.add( aibomM);
+}, undefined, function ( error ) {console.error( error );} );
 
-    loader.load( 'models/mailu.glb', function( gltf) {							
-        mailuM = createModel(gltf, 0.84, 0.48, parameters.nabColor, mailuG);			
-        jars.add( mailuM);
-    }, undefined, function ( error ) { console.error( error );} );
+loader.load( 'models/mailu.glb', function( gltf) {							
+  mailuM = createModel(gltf, 0.84, 0.48, parameters.nabColor, mailuG);			
+  jars.add( mailuM);
+}, undefined, function ( error ) { console.error( error );} );
 
-    loader.load( 'models/louisade.glb', function( gltf ) {
-        louisadeM = createModel(gltf, 0.99, 0.59, parameters.ringTopColor, louisadeG);			
-        jars.add(louisadeM);
-    }, undefined, function ( error ) {console.error( error );} );
+loader.load( 'models/louisade.glb', function( gltf ) {
+  louisadeM = createModel(gltf, 0.99, 0.59, parameters.ringTopColor, louisadeG);			
+  jars.add(louisadeM);
+}, undefined, function ( error ) {console.error( error );} );
 
-    loader.load( 'models/adzera.glb', function( gltf ) {
-        adzeraM = createModel(gltf, 0.61, 0.15, parameters.coilBeatenColor, adzeraG);			
-        jars.add( adzeraM);
-    }, undefined, function ( error ) {console.error( error );} );
+loader.load( 'models/adzera.glb', function( gltf ) {
+  adzeraM = createModel(gltf, 0.61, 0.15, parameters.coilBeatenColor, adzeraG);			
+  jars.add( adzeraM);
+}, undefined, function ( error ) {console.error( error );} );
 
-    loader.load( 'models/dimiri.glb', function( gltf ) {
-        dimiriM = createModel(gltf, 0.43, 0, parameters.coilColor, dimiriG);			
-        jars.add( dimiriM);
-    }, undefined, function ( error ) {console.error( error );} );
+loader.load( 'models/dimiri.glb', function( gltf ) {
+  dimiriM = createModel(gltf, 0.43, 0, parameters.coilColor, dimiriG);			
+  jars.add( dimiriM);
+}, undefined, function ( error ) {console.error( error );} );
 
-    loader.load( 'models/yabob.glb', function( gltf ) {
-        yabobM = createModel(gltf, 0.572, 0.0396, parameters.paddleColor, yabobG);			
-        jars.add( yabobM);
-    }, undefined, function ( error ) {console.error( error );} );
+loader.load( 'models/yabob.glb', function( gltf ) {
+  yabobM = createModel(gltf, 0.572, 0.0396, parameters.paddleColor, yabobG);			
+  jars.add( yabobM);
+}, undefined, function ( error ) {console.error( error );} );
 
 ```
 
@@ -488,142 +487,142 @@ Save and reload. You should see 5 models (Figure 10). You will have to move arou
 
 It does not matter which of the 3 methods you use if you are writing your own code.
 
-Note that if you change `let piecescale = ratio;` to `let piecescale = ratio*2;` the vessels become bigger, but some will overlap.
+Note that if you change ```let piecescale = ratio;``` to ```let piecescale = ratio*2;``` the vessels become bigger, but some will overlap.
 
 You can calculate where to set the positions of the jars by taking into account the map dimensions. This can be done on graph paper, although these positions were obtained via placement of the jars in Blender.
 
 ### Adding Jar Selection
 
-Next you want to add an event listener, to be able to select a jar and change the information panel. As with the WindowResize event listener in Part 1, this listener gets the event (in this case 'click'), and a function (known as an 'event handler') you will define. Input events pass event information to their handler, some of which is dependent on the type of event. The 'click' event passes an object (commonly called 'event') that contains the mouse cursor's coordinates relative to the viewport/window. 
+Next you want to add an event listener, to be able to select a jar and change the information panel. As with the WindowResize event listener in Part 1, this listener gets the event (in this case ```click```), and a function (known as an 'event handler') you will define. Input events pass event information to their handler, some of which is dependent on the type of event. The 'click' event passes an object (commonly called 'event') that contains the mouse cursor's coordinates relative to the viewport/window. 
 
 To determine what jar in 3D space is being targeted by the user's mouse in 2D space, three.js uses raycasting. Whenever you click, the three.js raycaster 'sends' a 'ray' from the camera position to a pointer whose 2D position is calculated from the click event's information. The raycaster has an 'intersectObjects' method that returns an array of the 3D objects that the cast ray has hit. This array is ordered by distance to the camera so the first in the array (index 0) will be the nearest object. You also tell the 'intersectObjects' method what objects can be intersected and here you will specify children of the jars group. This is the primary reason you made the group.
 
 You may also notice that three.js stores coordinates in a 'vector'. A THREE.Vector2 is used for 2D coordinates (referred to as x and y) such as the pointer position, and a THREE.Vector3 is used for 3D coordinates (x, y and z). 
 
-You need to declare variables for the raycaster, the mouse pointer and the object selected at the time. **After** the following code.
+You need to declare variables for the raycaster, the mouse pointer and the object selected at the time. **After** the following code:
 
 ```
-    // Variable declaration and setting
+// Variable declaration and setting
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    let raycasterM, pointer, selectedObj; // for mouse controls
+let raycasterM, pointer, selectedObj; // for mouse controls
 ```
 
 You need to create a raycaster, and make the pointer a (x,y) vector (empty to start). Often problems arise if objects are not defined before use, especially if you are going to do something to them, like make them unemissive after something else is selected. One solution to this is to initially make a variable like 'selectedObj' something and here you will just create a torus. As you do not add it to the scene it does not appear.
 
-**Within** the init function definition, **after** the following code.
+**Within** the init function definition, **after** the following code:
 
 ```
-    controls.update();
+controls.update();
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    // Mouse controls for jar selection
-    raycasterM = new THREE.Raycaster(); // ray to tell what is being pointed at
-    pointer = new THREE.Vector2(); // x, y co-ordinates for the ray to aim at, empty to start
-    selectedObj = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20  ), new THREE.MeshStandardMaterial({color: 0x006400})); // initialising the selected jar with something- here a torus, to prevent issues.
+// Mouse controls for jar selection
+raycasterM = new THREE.Raycaster(); // ray to tell what is being pointed at
+pointer = new THREE.Vector2(); // x, y co-ordinates for the ray to aim at, empty to start
+selectedObj = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20  ), new THREE.MeshStandardMaterial({color: 0x006400})); // initialising the selected jar with something- here a torus, to prevent issues.
 
 ```
 
 Then, you tell the window to 'listen' for any clicks, to send the click information to the onClick function that you will define next.
 
-**Within** the init function definition, **after** the following code.
+**Within** the init function definition, **after** the following code:
 ```
-    window.addEventListener( 'resize', onWindowResize );
+window.addEventListener( 'resize', onWindowResize );
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 ```
-    window.addEventListener( 'click', onClick );
+window.addEventListener( 'click', onClick );
 ```
 
 Then you have to tell the listener what do do if there is a click in the window. To start, you will just make the newly selected jar glow red. You want to: 
-* make sure it does not use the orbit controls (you will use `event.preventDefault()`);
-* get a pointer position from the click position (you will use the code from a three.js example, it calculates pointer.x and pointer.y from the `event.clientX` and `event.clientY` information and the window dimensions);
-* cast a ray from the camera to the pointer (you use the `setFromCamera` method of the Raycaster) and
-* see if any jars are there (you use the `intersectObjects` method of the Raycaster and tell it to only look for objects in the jars group, and give any objects found to a group called 'intersects').
+* make sure it does not use the orbit controls (you will use ```event.preventDefault()```);
+* get a pointer position from the click position (you will use the code from a three.js example, it calculates pointer.x and pointer.y from the ```event.clientX``` and ```event.clientY``` information and the window dimensions);
+* cast a ray from the camera to the pointer (you use the ```setFromCamera``` method of the Raycaster) and
+* see if any jars are there (you use the ```intersectObjects``` method of the Raycaster and tell it to only look for objects in the jars group, and give any objects found to a group called ```intersects```).
 * see if it finds any jars (if the length of intersects is greater than 0),
-* get the closest jar (create 'found' and makes it the closest (first) intersected object, change `selectedObj` to 'found'),
-* and highlight it (set found's `material.emissive.r` to 'on' (i.e. `=1`)).
+* get the closest jar (create ```found``` and makes it the closest (first) intersected object, change ```selectedObj``` to ```found```),
+* and highlight it (set found's ```material.emissive.r``` to 'on' (i.e. ```=1```)).
 
-After the resize listener, i.e. **after** the following code.
-
-```
-    function onWindowResize() {
-        ...
-    }
-```
-
-You need to **add** the following code.
+After the resize listener, i.e. **after** the following code:
 
 ```
-    // called on mouse click. Gets position of click, gets intersecting object, makes it emissive, gets the matching info plane
-    function onClick( event ) { // event is the input event information being passed from the event
-        event.preventDefault(); // stops the orbiting
-        // gets 2D click position
-        pointer.x = event.clientX / window.innerWidth * 2 - 1 // this formula comes from the three.js examples
-        pointer.y = - (event.clientY / window.innerHeight) * 2 + 1
-        // detects what the user is trying to select in 3D space from viewpoint and 2D pointer
-        raycasterM.setFromCamera( pointer, camera );
-        const intersects = raycasterM.intersectObjects( jars.children); // an array, nearest to camera will be first
-        // if there is something being clicked		
-        if(intersects.length > 0){
-            const found = intersects[ 0 ].object; // get the selected object, index 0 is the first
-            selectedObj = found;
-            found.material.emissive.r = 1; // turn the selected object red emissive. 1 is on.
-        }
-    }	
+function onWindowResize() {
+  ...
+}
+```
+
+You need to **add** the following code:
+
+```
+// called on mouse click. Gets position of click, gets intersecting object, makes it emissive, gets the matching info plane
+function onClick( event ) { // event is the input event information being passed from the event
+  event.preventDefault(); // stops the orbiting
+  // gets 2D click position
+  pointer.x = event.clientX / window.innerWidth * 2 - 1 // this formula comes from the three.js examples
+  pointer.y = - (event.clientY / window.innerHeight) * 2 + 1
+  // detects what the user is trying to select in 3D space from viewpoint and 2D pointer
+  raycasterM.setFromCamera( pointer, camera );
+  const intersects = raycasterM.intersectObjects( jars.children); // an array, nearest to camera will be first
+  // if there is something being clicked		
+  if(intersects.length > 0){
+    const found = intersects[ 0 ].object; // get the selected object, index 0 is the first
+    selectedObj = found;
+    found.material.emissive.r = 1; // turn the selected object red emissive. 1 is on.
+  }
+}	
 ```
 
 You can save the file and reload the browser, before clicking on the jars makes them red. However, our intended functionality is for the jars to go back to their original colour after a new jar is selected. Toggling 'material.emissive.r' off and on to indicate selection means you do not have to store what colour the jar was originally, as you can just turn the emissiveness off.
 
  
 
-**Within** the onClick function definition, **after** the following code.
+**Within** the onClick function definition, **after** the following code:
 ```
-    if(intersects.length > 0){
+if(intersects.length > 0){
 ```
-You need to **add** the following code.
+You need to **add** the following code:
 ```	
-        selectedObj.material.emissive.r = 0; // turn the current selected obj back to not emissive. 0 is off
+  selectedObj.material.emissive.r = 0; // turn the current selected obj back to not emissive. 0 is off
 ```
 Now if you save and reload, there should only be one highlighted jar at a time.
 
 You also need the onClick function to:
 
-* hide the current panel (set .visible to false for the 'selectedPlane'),
-* change the 'selectedPlane' to the new jars linked userData panel
-* and make that panel visible (change 'selectedPlane' and set its .visible to true).
+* hide the current panel (set ```.visible``` to false for the ```selectedPlane```),
+* change the ```selectedPlane``` to the new jars linked userData panel
+* and make that panel visible (change ```selectedPlane``` and set its ```.visible``` to true).
 
 
-**Within** the onClick function definition, **after** the following code.
-
-```
-        selectedObj.material.emissive.r = 0; // turn the current selected obj back to not emissive. 0 is off
-```
-
-You need to **add** the following code.
+**Within** the onClick function definition, **after** the following code:
 
 ```
-        selectedPlane.visible = false; // hide the current information panel
+selectedObj.material.emissive.r = 0; // turn the current selected obj back to not emissive. 0 is off
 ```
 
-Then, **after** the following code.
+You need to **add** the following code:
 
 ```
-        found.material.emissive.r = 1; // turn the selected object red emissive. 1 is on.
+selectedPlane.visible = false; // hide the current information panel
 ```
 
-You need to **add** the following code.
+Then, **after** the following code:
 
 ```
-        selectedPlane = found.userData.planes; // get the new matching information panel for the selected object
-        selectedPlane.visible = true; // make the new panel visible
+  found.material.emissive.r = 1; // turn the selected object red emissive. 1 is on.
+```
+
+You need to **add** the following code:
+
+```
+selectedPlane = found.userData.planes; // get the new matching information panel for the selected object
+selectedPlane.visible = true; // make the new panel visible
 ```
 
 Now (after reloading) you should be able to select a jar and the middle information panel should change to give information about that jar. You can try '.emissive.g' or '.emissive.b' to make the selected jar green or blue emissive, if you want.
@@ -655,58 +654,58 @@ Because each torus is connected to a different information panel, they still nee
 Each site could be added with such code as follows:
 
 ```
-    aibomSite = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
-    aibomSite.position.set(0.36* ratio, desk + 0.01, -0.01* ratio);
-    aibomSite.scale.set( piecescale, piecescale, piecescale);
-    aibomSite.rotation.x = -Math.PI * 1/2;
-    aibomSite.userData.planes = aibomG;
+aibomSite = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
+aibomSite.position.set(0.36* ratio, desk + 0.01, -0.01* ratio);
+aibomSite.scale.set( piecescale, piecescale, piecescale);
+aibomSite.rotation.x = -Math.PI * 1/2;
+aibomSite.userData.planes = aibomG;
 ```
 
 But it is also possible to make a function that takes position (x and z) co-ordinates and the relevant gallery. The function is then called for each site.
 
-In the index.html file **find** the following code.
+In the index.html file **find** the following code:
 
 ```
 let jars;
 ```
 
-The line of code above should be **changed** to the following.
+The line of code above should be **changed** to the following:
 
 ```
 let jars, tori;
 let aibomSite, dimiriSite, louisadeSite, mailuSite, adzeraSite, yabobSite;
 ```
 
-**Within** the init function definition, **after** the following code.
+**Within** the init function definition, **after** the following code:
 
 ```
-    scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
+scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    // Add sites as tori, in a group
-    tori = new THREE.Group();
-    scene.add( tori );
+// Add sites as tori, in a group
+tori = new THREE.Group();
+scene.add( tori );
 
-    // a function to create the site marker with the location and matching information panel
-    function createSite(x, z, gallery){
-        const model = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
-        model.position.set( x * ratio, desk + 0.01, z * ratio);	
-        model.scale.set( piecescale, piecescale, piecescale);
-        model.rotation.x = -Math.PI * 1/2;
-        model.userData.planes = gallery;
-        return model;
-        }
+// a function to create the site marker with the location and matching information panel
+function createSite(x, z, gallery){
+  const model = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
+  model.position.set( x * ratio, desk + 0.01, z * ratio);	
+  model.scale.set( piecescale, piecescale, piecescale);
+  model.rotation.x = -Math.PI * 1/2;
+  model.userData.planes = gallery;
+  return model;
+}
 
-    aibomSite = createSite(0.36, -0.01, aibomG);
-    dimiriSite = createSite(0.43, 0, dimiriG);
-    louisadeSite = createSite(0.99, 0.59, louisadeG);
-    mailuSite = createSite(0.84, 0.48, mailuG);
-    adzeraSite = createSite(0.61, 0.15, adzeraG);
-    yabobSite = createSite(0.572, 0.0396, yabobG);
-    tori.add(aibomSite, mailuSite, dimiriSite, louisadeSite, adzeraSite, yabobSite);
+aibomSite = createSite(0.36, -0.01, aibomG);
+dimiriSite = createSite(0.43, 0, dimiriG);
+louisadeSite = createSite(0.99, 0.59, louisadeG);
+mailuSite = createSite(0.84, 0.48, mailuG);
+adzeraSite = createSite(0.61, 0.15, adzeraG);
+yabobSite = createSite(0.572, 0.0396, yabobG);
+tori.add(aibomSite, mailuSite, dimiriSite, louisadeSite, adzeraSite, yabobSite);
 
 ```
 
@@ -720,7 +719,7 @@ You will see that nothing happens when you click on them, as the raycaster is on
 const intersects = raycasterM.intersectObjects( jars.children);	// an array, nearest to camera will be first
 ```
 
-The line of code above should be **changed** to the following.
+The line of code above should be **changed** to the following:
 
 ```
 const intersects = raycasterM.intersectObjects( tori.children);
@@ -733,42 +732,42 @@ Save and check that the mouse click and panel change now work on tori (as oppose
 
 To be able to move the jars using the mouse, `DragControls` have to be imported and created. The first argument when creating the `DragControls` determines what they can drag.
 
-**After** the following code.
+**After** the following code:
 
 ```
-    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    import { DragControls } from 'three/addons/controls/DragControls.js';
+import { DragControls } from 'three/addons/controls/DragControls.js';
 ```
 
-**Find** the following code.
+**Find** the following code:
 
 ```
-    let container, camera, scene, renderer, controls;
+let container, camera, scene, renderer, controls;
 ```
 
-The line of code above should be **changed** to the following.
+The line of code above should be **changed** to the following:
 
 ```
-    let container, camera, scene, renderer, controls, dragControls;
+let container, camera, scene, renderer, controls, dragControls;
 ```
 
-**Within** the init function definition, **after** the following code.
+**Within** the init function definition, **after** the following code:
 
 ```
-    pointer = new THREE.Vector2(); 
+pointer = new THREE.Vector2(); 
 
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    // Mouse controls for jar dragging
-    dragControls = new DragControls( [ jars ], camera, renderer.domElement ); // first argument determines drag objects.	
+// Mouse controls for jar dragging
+dragControls = new DragControls( [ jars ], camera, renderer.domElement ); // first argument determines drag objects.	
 
 ```
 Then you add event listeners for the `dragstart` and `dragstop` events. Here you will make the handler functions anonymous. You need to turn the orbital controls off while jars are being dragged.
@@ -776,18 +775,18 @@ Then you add event listeners for the `dragstart` and `dragstop` events. Here you
 **After** the following code:
 
 ```
-    window.addEventListener( 'click', onClick );
+window.addEventListener( 'click', onClick );
 ```
 
-You need to **add** the following code.
+You need to **add** the following code:
 
 ```
-    dragControls.addEventListener('dragstart', function (event) {
-        controls.enabled = false // orbit controls off
-    });
-    dragControls.addEventListener('dragend', function (event) {
-            controls.enabled = true // orbit controls back on
-    });
+dragControls.addEventListener('dragstart', function (event) {
+  controls.enabled = false // orbit controls off
+});
+dragControls.addEventListener('dragend', function (event) {
+  controls.enabled = true // orbit controls back on
+});
 ```
 
 Save and reload, and check that you can now move the jars around.
@@ -804,102 +803,102 @@ If you review Figure 3 you can see where the jars should appear in relation to t
 
 You will store the matching site in a userData variable. Before you do this you may want to note, or take a screenshot of where at least one of the jars should go.
 
-When creating the jars you now need the matching site but not the gallery and you do not need its correct position so **find** the following code.
+When creating the jars you now need the matching site but not the gallery and you do not need its correct position so **find** the following code:
 
 ```
-    function createModel(gltf, x, z, col, gallery){
+function createModel(gltf, x, z, col, gallery){
 ```
 
 The line of code above should be **changed** to the following:
 
 ```
-    function createModel(gltf, col, site){
+function createModel(gltf, col, site){
 ```
 
 Within the `createModel` function, **find** the following code:
 
 ```
-    model.position.set( x * ratio, desk + 0.01, z * ratio);
-    model.userData.planes = gallery;
+model.position.set( x * ratio, desk + 0.01, z * ratio);
+model.userData.planes = gallery;
 ```
 
 The **lines** of code above should be **changed** to the following:
 
 ```
-    model.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
-    model.userData.site = site;
+model.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
+model.userData.site = site;
 ```
 
 Then you need to change all 6 of the `createModel` calls that are within the 6 different `loader.load` calls, so **find** the following code:
 
 ```
-    aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
+aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
 ```
 
 The line of code above should be **changed** to the following:
 
 ```
-    aibomM = createModel(gltf, parameters.materialColor, aibomSite);
+aibomM = createModel(gltf, parameters.materialColor, aibomSite);
 ```
 
 **Find** the following code:
 
 ```
-    mailuM = createModel(gltf, 0.84, 0.48, parameters.nabColor, mailuG);
-```
-
-The line of code above should be **changed** to the following.
-
-```
-    mailuM = createModel(gltf, parameters.nabColor, mailuSite);	
-```
-
-**Find** the following code:
-
-```
-    louisadeM = createModel(gltf, 0.99, 0.59, parameters.ringTopColor, louisadeG);		
+mailuM = createModel(gltf, 0.84, 0.48, parameters.nabColor, mailuG);
 ```
 
 The line of code above should be **changed** to the following:
 
 ```
-    louisadeM = createModel(gltf, parameters.ringTopColor, louisadeSite);
+mailuM = createModel(gltf, parameters.nabColor, mailuSite);	
 ```
 
 **Find** the following code:
 
 ```
-    adzeraM = createModel(gltf, 0.61, 0.15, parameters.coilBeatenColor, adzeraG);	
+louisadeM = createModel(gltf, 0.99, 0.59, parameters.ringTopColor, louisadeG);		
 ```
 
 The line of code above should be **changed** to the following:
 
 ```
-    adzeraM = createModel(gltf, parameters.coilBeatenColor, adzeraSite);
+louisadeM = createModel(gltf, parameters.ringTopColor, louisadeSite);
 ```
 
 **Find** the following code:
 
 ```
-    dimiriM = createModel(gltf, 0.43, 0, parameters.coilColor, dimiriG);
+adzeraM = createModel(gltf, 0.61, 0.15, parameters.coilBeatenColor, adzeraG);	
 ```
 
 The line of code above should be **changed** to the following:
 
 ```
-    dimiriM = createModel(gltf, parameters.coilColor, dimiriSite);	
+adzeraM = createModel(gltf, parameters.coilBeatenColor, adzeraSite);
 ```
 
 **Find** the following code:
 
 ```
-    yabobM = createModel(gltf, 0.572, 0.0396, parameters.paddleColor, yabobG);
+dimiriM = createModel(gltf, 0.43, 0, parameters.coilColor, dimiriG);
 ```
 
 The line of code above should be **changed** to the following:
 
 ```
-    yabobM = createModel(gltf, parameters.paddleColor, yabobSite);			
+dimiriM = createModel(gltf, parameters.coilColor, dimiriSite);	
+```
+
+**Find** the following code:
+
+```
+yabobM = createModel(gltf, 0.572, 0.0396, parameters.paddleColor, yabobG);
+```
+
+The line of code above should be **changed** to the following:
+
+```
+yabobM = createModel(gltf, parameters.paddleColor, yabobSite);			
 ```
 
 Save and reload; you should see the jars starting above the map and if you reload, they will be in different random positions.
@@ -933,15 +932,15 @@ let truesite = null;
 **Within** the init function definition, **after** the following code:
 
 ```
-    scene.add( jars );
+scene.add( jars );
 ```
 
 You need to **add** the following code:
 
 ```
-    // add unmoveable group for jars that have been put in the correct spot
-    unmoveable = new THREE.Group();
-    scene.add(unmoveable);  
+// add unmoveable group for jars that have been put in the correct spot
+unmoveable = new THREE.Group();
+scene.add(unmoveable);  
 ```
 
 The event object for drag events contains the identity of the object being dragged (`event.object`), so you can use that in the handler function and you can get the site it should match from its userData.
@@ -956,26 +955,26 @@ dragControls.addEventListener('dragend', function (event) {
 You need to **add** the following code:
 
 ```
-    selectedObject = event.object;
-    truesite = selectedObject.userData.site;
+selectedObject = event.object;
+truesite = selectedObject.userData.site;
 ```
 
-You can use the `getWorldPosition` method to find out the coordinates of the `truesite`. You may wonder why you did not just put the coordinates in the userData and you could have as the sites do not move in this version of the game. However having this extra step means that if you want to make the map (with sites) movable in a different version it is easier to do. 
+You can use the ```getWorldPosition``` method to find out the coordinates of the ```truesite```. You may wonder why you did not just put the coordinates in the userData and you could have as the sites do not move in this version of the game. However having this extra step means that if you want to make the map (with sites) movable in a different version it is easier to do. 
 
-The `getWorldPosition` method puts the coordinates into a vector (x, y, z) that is given as an argument, in this case `testposition`. This vector can not be null to begin with so it is set as (0,0,0). To get the position of the jar being dragged you can put its position property into a vector (you will call `aposition`).
+The ```getWorldPosition``` method puts the coordinates into a vector (x, y, z) that is given as an argument, in this case `testposition`. This vector can not be null to begin with so it is set as (0,0,0). To get the position of the jar being dragged you can put its position property into a vector (you will call ```aposition```).
 
 **After** the following code:
 
 ```
-    truesite = selectedObject.userData.site;
+truesite = selectedObject.userData.site;
 ```
 
 You need to **add** the following code:
 
 ```
-    let testposition = new THREE.Vector3(0,0,0); //needs to be something first
-    truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z)
-    let aposition = selectedObject.position; //get jar position
+let testposition = new THREE.Vector3(0,0,0); //needs to be something first
+truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z)
+let aposition = selectedObject.position; //get jar position
 ```
 
 You call the `distanceTo` method on the aposition vector to determine the distance between the two vectors, and test if it is smaller than our allowed distance (0.25 * ratio).
@@ -983,15 +982,15 @@ You call the `distanceTo` method on the aposition vector to determine the distan
 **After** the following code:
 
 ```
-    let aposition = selectedObject.position; //get jar position
+let aposition = selectedObject.position; //get jar position
 ```
 
 You need to **add** the following code:
 
 ```
-    if ( aposition.distanceTo( testposition ) < .025 * ratio) {
-        // they are a match!
-    }	
+if ( aposition.distanceTo( testposition ) < .025 * ratio) {
+  // they are a match!
+}	
 
 ```
 
@@ -1002,13 +1001,13 @@ If the match is correct, you want the background colour to change, by making `sc
 **Find** the following code:
 
 ```
-        // they are a match!
+// they are a match!
 ```
 
 The line of code above should be **changed** to the following:
 
 ```
-        scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
+scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
 ```
 
 If the test is successful you also want to set the position of the jar to the exact spot, partly because the slight jump helps signal that it was a success. Importantly you want to make it unmoveable by putting it in the unmoveable group. The unmoveable group is unmoveable because the drag listener is only acting on the jars group.
@@ -1016,14 +1015,14 @@ If the test is successful you also want to set the position of the jar to the ex
 Keeping within the if code block, **after** the following code:
 
 ```
-        scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
+scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
 ```
 
 You need to **add** the following code:
 
 ```
-        selectedObject.position.set(testposition.x, testposition.y, testposition.z);
-        unmoveable.attach( selectedObject); // adding to the unmoveable group will remove from the jar group.
+selectedObject.position.set(testposition.x, testposition.y, testposition.z);
+unmoveable.attach( selectedObject); // adding to the unmoveable group will remove from the jar group.
 
 ```
 
@@ -1044,21 +1043,21 @@ This way of placing the jars on the sites can be frustrating for users and the o
 **Within** the onClick function, **after** the following code:
 
 ```
-    const found = intersects[ 0 ].object; // get the selected object, index 0 is the first
+const found = intersects[ 0 ].object; // get the selected object, index 0 is the first
 ```
 
 You need to **add** the following code:
 
 ```	
-        if(found == truesite){ // tests if site mouse is over is the same as the true jar site
-            // if match change colour of background
-            scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
-            // click to correct position in case slightly off
-            let testposition = new THREE.Vector3(0,0,0); //needs to be something first
-            truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z) this is the position of the site
-            selectedObject.position.set(testposition.x, testposition.y, testposition.z);
-            unmoveable.attach( selectedObject );
-        }
+if(found == truesite){ // tests if site mouse is over is the same as the true jar site
+  // if match change colour of background
+  scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
+  // click to correct position in case slightly off
+  let testposition = new THREE.Vector3(0,0,0); //needs to be something first
+  truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z) this is the position of the site
+  selectedObject.position.set(testposition.x, testposition.y, testposition.z);
+  unmoveable.attach( selectedObject );
+  }
 ```
 
 If you use this code, you have to make sure that the `truesite` variable is reset to `null` at the end. Otherwise if you move a jar to somewhere and the drag ends with the mouse not being over a site, then click on that jars site it will trigger a match.
@@ -1066,14 +1065,14 @@ If you use this code, you have to make sure that the `truesite` variable is rese
 **Within** the onClick function, **after** the following code:
 
 ```
-            selectedPlane.visible = true; // make the new panel visible
-        }
+  selectedPlane.visible = true; // make the new panel visible
+}
 ```
 
 You need to **add** the following code:
 
 ```
-    truesite = null;	
+truesite = null;	
 ```
 
 You have to be careful with brackets/braces here. The onClick function now has two nested `if` blocks. The `truesite = null;` statement should be outside these `if` blocks, but inside the `onClickfunction`. 
@@ -1086,13 +1085,13 @@ Lastly, to update the instructions in the first intro panel, change the texture 
 **Find** the following code:
 
 ```
-    const introTexture = textureLoader.load( 'textures/Intro.jpg' );
+const introTexture = textureLoader.load( 'textures/Intro.jpg' );
 ```
     
 The line of code above should be **changed** to the following:
 
 ```
-    const introTexture = textureLoader.load( 'textures/Intro2.jpg' );
+const introTexture = textureLoader.load( 'textures/Intro2.jpg' );
 ```
 
 Save and check that the new instructions appear.

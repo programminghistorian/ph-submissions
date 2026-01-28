@@ -49,7 +49,7 @@ It is important to highlight that reverse engineering and working with born-digi
 All necessary files and digital artifacts required for this lesson are provided. You do not need to source your own materials to follow the exercises; however, the skills learned here are designed to be applied to your own future research objects.
 There are three fundamental technical requirements for this lesson that form the foundation of our digital archaeology approach.
 
-1. The first requirement centres on having appropriate tools to transform digital artifacts into a more accessible and analysable state. While numerous tools and methodologies exist for this purpose, we begin with a straightforward yet powerful hex viewer, which allows us to examine the raw binary data of digital files. A hex viewer displays the hexadecimal representation of binary data, making it possible to see patterns, headers, and structures that are otherwise hidden from conventional file viewers. We recommend using the command line tool `hexyl` or the browser-based [HexEd.it](https://hexed.it/) for reliable options that provide the necessary functionality for beginners while maintaining the depth required for more advanced analysis. For the examples in this lesson, we will exclusively use `hexyl`.
+1. The first requirement centres on having appropriate tools to transform digital artifacts into a more accessible and analyzable state. While numerous tools and methodologies exist for this purpose, we begin with a straightforward yet powerful hex viewer, which allows us to examine the raw binary data of digital files. A hex viewer displays the hexadecimal representation of binary data, making it possible to see patterns, headers, and structures that are otherwise hidden from conventional file viewers. We recommend using the command line tool `hexyl` or the browser-based [HexEd.it](https://hexed.it/) for reliable options that provide the necessary functionality for beginners while maintaining the depth required for more advanced analysis. For the examples in this lesson, we will exclusively use `hexyl`.
 2. Given our focus on a command line tool (`hexyl`), we expect you to be comfortable with this environment. We give examples throughout the lesson that can be copy/pasted, but some basic understanding of the Linux, macOS, or Windows shells will improve your digestion of this lesson. If you want to learn more about working in shell environments, Programming Historian has lessons on [Bash](https://programminghistorian.org/en/lessons/intro-to-bash) for Linux (and to some extent macOS), and [PowerShell](https://programminghistorian.org/en/lessons/intro-to-powershell) for Windows.
 3. The third and last requirement involves acquiring suitable born-digital objects for analysis, which varies significantly depending on your specific research question and can encompass digital images, databases, software applications, and various other digital artifacts. While we provide curated digital artifacts for the two case studies presented in this lesson, the broader challenge lies in identifying and accessing appropriate materials for independent research, which we can't cover in this lesson.
 
@@ -61,7 +61,8 @@ Born-digital artifacts, such as software, websites, digital photographs and vide
 
 This is where the practice of reverse engineering offers a compelling methodological pathway. Reverse engineering, broadly construed, involves opening and deconstructing digital objects to understand how they work, what they are made of, and how their structures shape their meanings. It can include investigating a file’s metadata, altering or corrupting digital files to observe their behaviour, or reading against the grain of the interface to recover invisible labour, intentions, or constraints embedded in the technology. For historians, reverse engineering is not just a technical tool but a critical mode of inquiry that allows us to interrogate the digital record, challenge surface-level readings, and engage with digital artifacts on their own terms.
 
-While preservation remains an important backdrop to this work, particularly in considering what aspects of digital artifacts are retained or lost over time[^2], this lesson focuses on reverse engineering as a form of historical analysis. By examining digital objects beyond the screen, we aim to demonstrate how this approach opens new avenues for interpretation, revealing the layered and often contradictory nature of digital evidence. This lesson highlights how reverse engineering offers historians a critical methodological approach that counters screen-essentialism, enabling more profound insights into the sociocultural and technological contexts of digital artifacts.
+While preservation remains an important backdrop to this work, particularly in considering what aspects of digital artifacts are retained or lost over time[^2], this lesson focuses on reverse engineering as a form of historical analysis. By examining digital objects beyond the screen, we aim to demonstrate how this approach opens new avenues for interpretation, revealing the layered and often contradictory nature of digital evidence. This lesson introduces reverse engineering as a practical methodological approach that historians can use to investigate born-digital artifacts beyond their surface appearance.
+
 
 ### Why use reverse engineering?
 
@@ -77,7 +78,7 @@ Reverse engineering, at its core, involves deconstructing a finished product to 
 
 A computer operates through a layered architecture, where hardware and software components work together to process and execute instructions. At the lowest level, transistors form the building blocks of digital circuits, which combine to create processors, memory, and input/output (I/O) systems. These hardware components are managed through the instruction set architecture (ISA), which defines how the processor interprets and executes machine code. Firmware and assemblers translate low-level machine code into instructions the hardware can execute, while higher-level software like compilers and interpreters convert human-readable code into machine instructions. The operating system serves as a bridge between hardware and software, managing system resources and enabling applications to run smoothly.
 
-Understanding this architecture is crucial for reverse engineering because it allows engineers to trace how high-level software instructions translate into low-level machine code and hardware operations. This knowledge helps in uncovering hidden functionalities, debugging errors, analysing malware behaviour, and modifying or improving existing software. Reverse engineering often involves working at the boundary between software and hardware, requiring an in-depth understanding of how compilers, assemblers, and the instruction set architecture interact to produce executable code.
+Understanding this architecture is crucial for reverse engineering because it allows engineers to trace how high-level software instructions translate into low-level machine code and hardware operations. This knowledge helps in uncovering hidden functionalities, debugging errors, analyzing malware behaviour, and modifying or improving existing software. Reverse engineering often involves working at the boundary between software and hardware, requiring an in-depth understanding of how compilers, assemblers, and the instruction set architecture interact to produce executable code.
 
 ## The inner life of born-digital Media artifacts
 
@@ -89,7 +90,7 @@ A hex dump is a textual representation of computer data in hexadecimal format, a
 
 To illustrate the fundamentals of file analysis, we begin with the basic structure of a JPEG file. For this exercise, we have provided a file named cat-with-hidden-content.jpg within the jpg_zip folder. When you open this file using your computer's standard image viewer, it appears as a simple, humorous photo of a cat.
 
-{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-03.jpeg" alt="The photo shows a rather silly cat on a couch. The cat looks upwards and has its tongue out, making it look like a defiant kid. It's an orange tabby cat with fluffy fur and the couch is upholstered in grey cotton fabric." caption="Figure 3. A cat sitting on a couch." %}
+{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-03.jpeg" alt="The photo shows a rather silly cat on a couch. The cat looks upwards and has its tongue out, making it look like a defiant kid. It's an orange tabby cat with fluffy fur and the couch is upholstered in grey cotton fabric." caption="Figure 3. The file cat-with-hidden-content.jpg displayed in a standard image viewer." %}
 
 While the image viewer displays a visual scene, the underlying JPEG format follows a clearly defined architecture. It begins with a file signature (or “magic number”) that identifies the file type, followed by metadata, the compressed image data, and finally, an end-of-file marker. This predictable structure is what allows software to recognize and "parse" (interpret) the data correctly.
 
@@ -107,7 +108,7 @@ Download the sample JPEG cat-with-hidden-content.jpg and navigate to the picture
 $ hexyl cat-with-hidden-content.jpg -n 256
 ```
 
-Executing this command will give us the following output. The leftmost column is the address of the line of data we see. The second and third columns show our data in hexadecimal notation, which we can investigate when we know what to look for. The two last columns is our data shown as ASCII interpretation. This simply means that hexyl tries to display the data in normal readable form. It's those two columns which are of interest to our investigation if we're interested in text that was meant for humans to read.
+Executing this command will give us the following output. The leftmost column is the address of the line of data we see. The second and third columns show our data in hexadecimal notation, which we can investigate when we know what to look for. The two last columns is our data shown as ASCII interpretation. This simply means that hexyl renders the data as ASCII characters where possible, allowing human-readable text to appear alongside the hexadecimal values. It's those two columns which are of interest to our investigation if we're interested in text that was meant for humans to read. Limiting the output to the first 256 bytes allows us to focus on the file header and metadata without being overwhelmed by the full image data.
 
 ```shell
 ┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
@@ -130,7 +131,7 @@ Executing this command will give us the following output. The leftmost column is
 └────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
 ```
 
-The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG file. A PNG file, as another example, would start with `89 50 4E 47 0D 0A 1A 0A` [^12]. We can also see metadata fields describing the image’s dimensions, colour depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values.
+The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG file. A PNG file, as another example, would start with `89 50 4E 47 0D 0A 1A 0A` [^12]. We can also see metadata fields describing the image’s dimensions, color depth, and encoding settings. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values.
 
 #### Challenging "Screen Essentialism": The Hybrid Artifact
 
@@ -172,7 +173,7 @@ The EOCD acts like a book's index, telling the computer exactly where each file 
 
 #### The Analytical Takeaway
 
-Identifying file signatures is a fundamental skill for reverse engineering born-digital records. Because file extensions can be misleading or intentionally changed, we must learn to look past the desktop icon to the data's underlying structure. Instead, we use computational searches with an hex viewer to "fingerprint" the data structure.
+Identifying file signatures is a fundamental skill for reverse engineering born-digital records. Because file extensions can be misleading or intentionally changed, we must learn to look past the desktop icon to the data's underlying structure. Instead, we use computational searches with an hex viewer to "fingerprint" the data structure. This example is intentionally simplified to provide a controlled environment for practicing hex-dump analysis before moving to less structured historical artifacts.
 
 ### From Binary to XML: Comparing .doc and .docx
 
@@ -447,7 +448,7 @@ Having explored hex editing and comparative hex dump analysis as foundational me
 
 Reverse engineering has emerged as an essential method in digital historical research, enabling historians to investigate born-digital artifacts beyond their surface-level representations. Several compelling studies highlight the potential of this approach, such as the analyses of the _Mystery House_ game (Apple II, 1980)[^15] and John Aycock’s _Amnesia Remembered_.[^16]
 
-Aycock’s _Amnesia Remembered_ offers a detailed exploration of software reuse by analysing disassembled binaries from 1980s Atari ST games. This work demonstrates how reverse engineering can uncover historical coding practices, highlighting previously unnoticed relationships between software developers and revealing insights into the evolution of software design and reuse practices within the early gaming industry.
+Aycock’s _Amnesia Remembered_ offers a detailed exploration of software reuse by analyzing disassembled binaries from 1980s Atari ST games. This work demonstrates how reverse engineering can uncover historical coding practices, highlighting previously unnoticed relationships between software developers and revealing insights into the evolution of software design and reuse practices within the early gaming industry.
 
 Additional influential examples include the analysis of the Atari 2600 game _Entombed_ (1982)[^17], which successfully reconstructed its maze-generation algorithm and uncovered hidden software issues, and Aycock's large-scale study, _The Sincerest Form of Flattery_ (2022)[^18], examining nearly two thousand Atari game ROMs to identify widespread patterns of code reuse.
 

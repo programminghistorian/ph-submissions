@@ -31,11 +31,11 @@ The aim of this lesson is to enable readers to take their first steps in reverse
 
 By introducing the analysis of file signatures, metadata, and structural anomalies, this lesson provides a introductionary understanding of how digital artifacts are constructed. Readers will be empowered to use hex viewer to interpret complex objects and to begin engaging with the digital sources in their own research, from proprietary formats to historical databases.
 
-At the end of this lesson you will be able to
+Rather than advancing a theoretical argument, this lesson is structured as a hands-on tutorial that teaches a small set of transferable analytical practices for working with born-digital artifacts. At the end of this lesson you will be able to
 
-- understand the concept of reverse engineering and its relevance for analyzing born-digital artifacts in historical research.
-- identify and critique the limitations of “screen essentialism”, recognizing the multiple layers (code, metadata, structure) that comprise digital objects.
-- use hex viewer to view the raw data of digital files, and perform comparative hex dump analysis to detect and interpret changes or anomalies between versions of digital files.
+- explain what reverse engineering is and why it is useful for analyzing born-digital artifacts in historical research.
+- identify instances of “screen essentialism” and explain their limitations for historical analysis.
+- use a hex viewer to inspect the raw data of digital files and perform comparative hex dump analysis to detect and interpret anomalies.
 
 You will also have made your first steps regarding
 
@@ -85,6 +85,9 @@ Understanding this architecture is crucial for reverse engineering because it al
 Before beginning this hands-on analysis, you'll need to gather the necessary materials and tools to effectively examine digital image formats. First, select a JPEG file with either a .jpg or .jpeg file extension that you'd like to analyse—this can be any digital photograph or image from your personal collection, or alternatively, you can work with the sample files we provide for this exercise. [You can download the necessary files through this link](https://github.com/programminghistorian/ph-submissions/raw/refs/heads/gh-pages/assets/reverse-engineering-born-digital-artefacts/reverse-engineering-born-digital-artefacts.zip). The choice of image isn't critical for learning the fundamental concepts, though selecting something familiar to you may make the analysis more engaging and meaningful. We also note that all following instructions are provided for our provided files. Next, you'll need to install a hex editor that will serve as your primary tool for examining the binary structure of the JPEG file, a hex viewer that can create hex dumps.
 
 A hex dump is a textual representation of computer data in hexadecimal format, achieved by converting bytes into a two-digit hexadecimal number. This makes raw binary data more human-readable and easier to interpret for reverse engineering, or forensic analysis. There are several tools available for viewing hex data from a file. Here, we have listed some of the most commonly used ones. For our lesson, we will use `hexyl` as mentioned. We chose it primarily because we appreciate its functionality and simplicity. Installation packages are provided for most Linux distributions, for [macOS](https://github.com/sharkdp/hexyl?tab=readme-ov-file#on-macos) and [Windows](https://github.com/sharkdp/hexyl?tab=readme-ov-file#on-windows), and [instructions are provided on the tool's website](https://github.com/sharkdp/hexyl?tab=readme-ov-file#installation).
+
+The first case study focuses on practicing two core skills introduced in the learning objectives: identifying file signatures in a hex dump and reasoning about file structure independently of file extensions or graphical interfaces.
+
 
 ### The bit code of an image
 
@@ -226,6 +229,8 @@ This discovery is a perfect example of why “signature hunting” is a foundati
 The JPEG end-of-file marker and the ZIP central directory demonstrate a broader class of techniques for examining born-digital files whose internal structures are explicitly documented and self-describing. In both cases, the analytical task involved identifying recognizable signatures, comparing files that differ in controlled ways, and reasoning about file structure through hexadecimal inspection rather than relying on application-level tools. Identifying such structural signatures is the first step in what might be described as “writing the missing manual” for a file. However, reverse engineering often requires more than locating signatures alone; it also requires attention to change. The value of these examples lies not in the novelty of file concatenation, but in practicing how to reason about file structure through direct inspection, comparison, and documented format constraints.
 
 These same low-level analytical skills—hex-dump inspection, signature recognition, comparative analysis, and attention to file size—are reused in the following case study, even though the object of analysis is fundamentally different. Commodore 64 disk images lack standardized file headers, explicit end-of-file markers, or central indexes comparable to those found in JPEG or ZIP formats. Instead, meaning must be inferred from patterns in raw byte sequences, repetition across multiple disk images, and anomalies that cannot be explained by normal execution. The purpose of the C64 example is therefore not to apply file-format knowledge directly, but to demonstrate how these methods remain useful even when formal structural documentation is absent, and how they can be used to identify deliberate human intervention in binary code by a specific historical community: game crackers.
+
+This second case study applies the same analytical practices to a materially different artifact. Rather than relying on documented file formats, readers will practice comparative analysis across multiple binary files to identify anomalies that signal human intervention. The goal is not to master Commodore 64 internals, but to reuse the skills introduced earlier—hex inspection, comparison, and pattern recognition—under more historically realistic conditions.
 
 ## Reverse Engineering a cracked Commodore 64 Game
 
@@ -443,6 +448,9 @@ The first investigation, examining a JPEG file containing an embedded ZIP archiv
 However, this lesson also highlights significant challenges and technical hurdles inherent in reverse engineering digital artifacts. Historians frequently encounter gaps in essential knowledge about proprietary file structures, software behaviours, and hardware constraints. This reality underscores an ongoing methodological dilemma: researchers often remain unaware of critical information that is missing, a situation exacerbated by the closed-source nature of many digital technologies. These technical barriers continually risk pushing researchers back toward screen essentialism, prompting surface-level interpretations due to insufficient technical literacy or documentation. Ultimately, this introductory exploration emphasizes that reverse engineering remains an evolving field with much still to discover, underscoring the importance of continuously expanding digital literacy and refining specialized historical methods to navigate the complexities of born-digital cultural artifacts.
 
 Having explored hex editing and comparative hex dump analysis as foundational methods, historians may wish to pursue more advanced techniques in digital archaeology. The final section of this lesson highlights possibilities for deeper exploration with reverse-engineering frameworks and binary analysis tools, outlining how such resources can be integrated into a historian’s workflow. Rather than providing a detailed walkthrough, this discussion points to the capabilities of tools like radare2 alongside other open-source options, encouraging experimentation and methodological expansion. Supplementary resources and recommendations are included to help readers build the skills needed to critically engage with complex born-digital artifacts.
+
+By the end of this lesson, readers should be able to approach unfamiliar born-digital artifacts with a concrete analytical workflow: inspecting binary data directly, comparing versions, identifying structural anomalies, and articulating historically meaningful interpretations based on those observations.
+
 
 ## Further Resources
 

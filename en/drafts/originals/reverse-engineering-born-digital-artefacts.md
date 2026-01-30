@@ -210,11 +210,7 @@ $ hexyl modern-word-document.docx -n 256
 └────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
 ```
 
-Notice the signature: `50 4B 03 04`. This is the exact same ZIP signature we identified in our cat image with the hidden ZIP file embedded. This discovery is a perfect example of why “signature hunting” is a foundational skill for digital archaeology. Recognizing this pattern allows a historian to bypass the word processor entirely; the file extension can simply be changed to `.zip` and the contents decompressed to reveal the raw XML text. This transparency represents a significant departure from the OLE2 “black box” of the `.doc` era. The JPEG end-of-file marker and the ZIP central directory demonstrate a broader class of techniques for examining born-digital files whose internal structures are explicitly documented and self-describing. In both cases, the analytical task involved:
-
-- identifying recognizable signatures
-- comparing files that differ in controlled ways
-- reasoning about file structure through hexadecimal inspection rather than relying on application-level tools
+Notice the signature: `50 4B 03 04`. This is the exact same ZIP signature we identified in our cat image with the hidden ZIP file embedded. This discovery is a perfect example of why “signature hunting” is a foundational skill for digital archaeology. Recognizing this pattern allows a historian to bypass the word processor entirely; the file extension can simply be changed to `.zip` and the contents decompressed to reveal the raw XML text. This transparency represents a significant departure from the OLE2 “black box” of the `.doc` era. The JPEG end-of-file marker and the ZIP central directory demonstrate a broader class of techniques for examining born-digital files whose internal structures are explicitly documented and self-describing. In both cases, the analytical task involved identifying recognizable signatures, comparing files that differ in controlled ways, and reasoning about file structure through hexadecimal inspection rather than relying on application-level tools.
 
 Identifying such structural signatures is the first step in what might be described as “writing the missing manual” for a file. However, reverse engineering often requires more than locating signatures alone; it also requires attention to change. The value of these examples lies not in the novelty of file concatenation, but in practicing how to reason about file structure through direct inspection, comparison, and documented format constraints.
 
@@ -232,35 +228,32 @@ Game cracking evolved beyond mere piracy into a sophisticated technical pursuit 
 
 ### SCA’s Summer Games
 
-The Swiss Crackers Association modified "Summer Games" by adding Switzerland's flag and anthem as a selectable country, demonstrating how reverse engineering served as cultural expression beyond mere copy protection removal. This modification required both technical skill to analyse the game's data structures and artistic sensitivity to maintain coherence with the original design, effectively claiming digital representation for Swiss identity.
+"Summer Games" is a sport competition game for the Commodore 64 published in 1984, in which different nations can compete in different sport fields. The Swiss Crackers Association (SCA) modified the game by adding the missing Swiss flag and anthem, demonstrating how reverse engineering served as cultural expression beyond mere copy protection removal. This modification required both technical skill to analyse the game's data structures and artistic sensitivity to maintain coherence with the original design, effectively claiming digital representation for Swiss identity.
 
 SCA emerged in the mid-1980s as a notable multilingual collective that bridged European cracking scenes while developing elegant reverse engineering techniques. Their historical significance extends beyond cracking to creating one of the first Commodore 64 viruses and eventually transitioning to the demo scene—an evolution from circumvention to creative coding. Unlike many contemporaries, SCA maintained comprehensive documentation of their techniques, providing invaluable records for digital historians studying early cracking culture.
 
-We've selected this SCA crack as our case study due to its research value for digital history, allowing us to reconstruct technical practices by examining disassembled code while revealing motivations beyond technical prowess. The addition of Swiss representation to an international sports game points to questions of national identity in early digital culture, showing how software became a platform for cultural expression and representation for communities overlooked in commercial products. The crack's code serves as a primary historical source that complements oral histories and other artifacts, transforming reverse engineering into a form of digital archaeology that expands our historical toolkit. When combined with ethnographic interviews, cracking documentation analysis, and media studies approaches, this technical examination reveals how knowledge circulated through informal pre-internet networks and provides a multidimensional understanding of early digital culture impossible through conventional historical methods alone.
+We've selected this specific SCA crack as our case study due to its research value for digital history, allowing us to reconstruct technical practices by examining disassembled code while revealing motivations beyond technical prowess. The addition of Swiss representation to an international sports game points to questions of national identity in early digital culture, showing how software became a platform for cultural expression and representation for communities overlooked in commercial products. The crack's code serves as a primary historical source that complements oral histories and other artifacts, transforming reverse engineering into a form of digital archaeology that expands our historical toolkit. When combined with ethnographic interviews, cracking documentation analysis, and media studies approaches, this technical examination reveals how knowledge circulated through informal pre-internet networks and provides a multidimensional understanding of early digital culture impossible through conventional historical methods alone.
 
 ### Getting Started
 
-For this part of the lesson, we will work with files that we extracted from a disk image, and [you will find the necessary material to continue under this link on archive.org](#tbd). For this example, we acquired the cracked[^16] and a supposedly clean[^17] version of the Commodore 64 game “Summer Games”. At this point we need to highlight that the game was published in 1984 and is the intellectual property of Epyx Computer Software, which means that it is under copyright protection. Downloading the game for research can be argued to fall under fair use, but such an evaluation is not guaranteed. Fair use in research is often favoring criticism, scholarship, or preservation, and highly depends on national doctrines of copyright law. In Switzerland, for example, downloading the _Summer Games_ for research purposes is generally legal under the Federal Act on Copyright and Related Rights (CopA), even from unauthorized sources. This highlights another important aspects. Accessing and researching born-digital artifacts is not only depending on technical skills or the right kind of methodological setup, but also on legal applications that can change in time and geographical delineations.
+For this part of the lesson, we will work with files that we extracted from a disk image, and [you can download the necessary material via this archive.org link](https://archive.org/details/summer_games_clean-sca). In the archive you'll find a cracked[^16] and a supposedly clean[^17] version of the Commodore 64 game “Summer Games”. At this point we need to highlight that the original game from 1984 is the intellectual property of Epyx Computer Software, which means that it is under copyright protection. Downloading the game for research can be argued to fall under fair use, but such an evaluation is not guaranteed. Fair use in research is often favoring criticism, scholarship, or preservation, and highly depends on national doctrines of copyright law. In Switzerland, for example, downloading the _Summer Games_ for research purposes is generally legal under the Federal Act on Copyright and Related Rights (CopA), even from unauthorized sources. This highlights another important aspects. Accessing and researching born-digital artifacts is not only depending on technical skills or the right kind of methodological setup, but also on legal applications that can change in time and geographical delineations.
 
-Back to the game, a first glance tells us that those games come as `.d64` files, which is a disk image—a virtual representation of a physical disk’s content. Since we are interested in investigating the cracked version, we need to contextualize our digital artefact towards that. A standard Commodore 64 `.d64` disk image file does not preserve most hardware-based copy protections, which was common. The `.d64` format captures only the standard sector data of a disk and does not record the low-level, non-standard disk structures (such as sync marks, deliberate errors, or unusual track layouts) that many C64 copy protection schemes rely on. As a result, games or software with sophisticated disk-based copy protection often cannot be run or properly emulated from a `.d64` image. For preserving original disks with copy protection intact, the `.g64` format is preferred, as it stores the low-level information needed for these protections to function.
+A first glance at the archive tells us that those games come as `.d64` files, which is a disk image—a virtual representation of a physical disk’s content. Since we are interested in investigating the cracked version, we need to contextualize our digital artefact towards that. A standard Commodore 64 `.d64` disk image file does not preserve most hardware-based copy protections, which was common. The `.d64` format captures only the standard sector data of a disk and does not record the low-level, non-standard disk structures (such as sync marks, deliberate errors, or unusual track layouts) that many C64 copy protection schemes rely on[^18]. As a result, games or software with sophisticated disk-based copy protection often cannot be run or properly emulated from a `.d64` image. For preserving original disks with copy protection intact, the `.g64` format is preferred, as it stores the low-level information needed for these protections to function.
 
-Finally, most `.d64` images available today have had their copy protection removed or bypassed to work in emulators. This would indicate that our virtual image of the cracked game might not contain everything we need to fully investigate this case. Let us have a closer look and compare our two versions. Since `.d64` is a container format, we need to unpack and reveal the container’s content first. There are many tools offering such a service, such as [C64-Tools](https://www.c64-tools.com/basic-2-extractor) or [DirMaster](https://style64.org/dirmaster). We prepared this step by using the Floppy Disk Emulator that comes with VICE, an emulator for the Commodore 64, and moved the dumped files to the respective folders 'summer_games/dumps/clean' and 'summer_games/dumps/sca'. In these two folders, you will find files without a file extension, that contain binary data as well as source code.
+Finally, most `.d64` images available today have had their copy protection removed or bypassed to work in emulators. This would indicate that our virtual image of the cracked game might not contain everything we need to fully investigate this case. Let us have a closer look and compare our two versions. Since `.d64` is a container format, we need to unpack and reveal the container’s content first. There are many tools offering such a service, such as [C64-Tools](https://www.c64-tools.com/basic-2-extractor) or [DirMaster](https://style64.org/dirmaster). We prepared this step by using the Floppy Disk Emulator that comes with VICE, an emulator for the Commodore 64, and moved the dumped files to the respective folders `summer_games/content/clean` and `summer_games/content/sca`. In these two folders, you will find files without a file extension, that contain binary data as well as source code.
 
 ### Comparing the Game's different Versions
 
-Unpacking both game versions leaves us with two folders and a bunch of arbitrary labelled files, which we first check for content and file size.
+It is generally a good approach to go from an overview of the material at hand and start to concentrate on specific aspects that might seem interesting afterwards [^19]. To get a better understanding of what we are dealing with in this specific case, we first check for content and file size. We can do so with `ls`, which is a shell tool that lists folders and files and lets us know about some of their details, like size or when they have been changed the last time.
 
 ```shell
-# Let's move to the appropriate files folder
-$ cd summer_games
-
-# Compare the files in the two dump folders by listing them.
-$ ls -l dumps/clean && ls -l dumps/sca
+$ ls -l content/clean && ls -l content/sca
 ```
 
+This results in a comparison of the two folders' files, first the clean version, followed by the cracked version. The following is an abreviated output. The first column shows the filesize in bits, and the second the file name. Depending on your shell environment, you will get more information from this command, which are not relevant for our analysis right now.
+
 ```shell
-# Listing of the clean Summer Games. The first column shows
-# the filesize in bits, and the second the file name.
+# Listing of the clean version
 10140  a
 10641  b
 19833  d
@@ -276,7 +269,7 @@ $ ls -l dumps/clean && ls -l dumps/sca
    73 'summer games'
   162  wr
 
-# Listing of SCA's Summer Games
+# Listing of SCA's cracked version
 10140  a
 10894  b
   893  c
@@ -292,7 +285,7 @@ $ ls -l dumps/clean && ls -l dumps/sca
   162  wr
 ```
 
-Both disk images seem almost identical. The files a, d, e, f, h, i, k, m, and wr are present on both disks, with identical file sizes. File c is not present in the clean version, whereas files default and loader are not present on the cracked one. Files b, l and ‘summer games’ are present on both images, but differ in file size. This gives us a first indication of where to start, by figuring out where the two versions differ.
+Both disk images seem almost identical. The files `a`, `d`, `e`, `f`, `h`, `i`, `k`, `m`, and `wr` are present on both disks, with identical file sizes. File `c` is not present in the clean version, whereas files `default` and `loader` are not present on the cracked one. Files `b`, `l` and `summer games` are present on both images, but differ in file size. This gives us a first indication of where to start, by figuring out where the two versions differ.
 
 | File Name      | Clean Version     | SCA Cracked Version | Investigate? |
 | :------------- | ----------------- | ------------------- | :----------: |
@@ -312,28 +305,15 @@ Both disk images seem almost identical. The files a, d, e, f, h, i, k, m, and wr
 | ‘summer games’ | file sizes differ |                     |      ✅      |
 | wr             | equal             |                     |              |
 
-Before checking the marked files, it is important to note that this is not foolproof. A note that got published alongside the clean version on archive.org mentions that “\[t\]here is some high score save data in the WR file from previous players.” This indicates that some of the files are of variable content. If the file `wr` holds high scores, its abbreviation indicates most likely “World Records”, given the context of the game. A hex dump of the two files quickly unveils their difference.
+Before checking the marked files, it is important to note that this is not foolproof. A note that got published alongside the clean version on archive.org mentions that “\[t\]here is some high score save data in the `WR` file from previous players.” This indicates that some of the files are of variable content. If the file `wr` holds high scores, its abbreviation indicates most likely “World Records”, given the context of the game. A hex dump of the two files quickly unveils their difference.
 
 ```shell
-# Hexdump of both versions wr file, for comparison
-$ hexyl dumps/clean/wr && hexyl dumps/sca/wr
+$ hexyl content/clean/wr && hexyl content/sca/wr
 ```
 
 ```shell
 # Hexdump of the clean versions wr file
-┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
-│00000000│ 00 0b 53 50 49 4b 45 20 ┊ 20 20 20 20 20 20 36 2e │0•SPIKE ┊      6.│
-│00000010│ 30 30 b8 0c 00 00 53 50 ┊ 49 4b 45 20 20 20 20 20 │00×_00SP┊IKE     │
-│00000020│ 20 36 39 38 2e 37 35 75 ┊ 88 06 53 50 49 4b 45 20 │ 698.75u┊×•SPIKE │
-│00000030│ 20 20 20 20 20 32 3a 32 ┊ 37 2e 34 bf d8 fd 53 50 │     2:2┊7.4×××SP│
-│00000040│ 49 4b 45 20 20 20 20 20 ┊ 20 20 30 39 2e 35 31 ae │IKE     ┊  09.51×│
-│00000050│ f6 ff 53 50 49 4b 45 20 ┊ 20 20 20 20 20 31 30 2e │××SPIKE ┊     10.│
-│00000060│ 30 20 20 c8 c8 c8 53 50 ┊ 49 4b 45 20 20 20 20 20 │0  ×××SP┊IKE     │
-│00000070│ 20 31 3a 34 30 2e 38 7f ┊ bf fe 53 50 49 4b 45 20 │ 1:40.8•┊××SPIKE │
-│00000080│ 20 20 20 20 20 30 3a 32 ┊ 34 2e 33 cf db ff 53 50 │     0:2┊4.3×××SP│
-│00000090│ 49 4b 45 20 20 20 20 20 ┊ 20 20 20 20 20 32 35 25 │IKE     ┊     25%│
-│000000a0│ 00 00                   ┊                         │00      ┊        │
-└────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
+hexyl content/clean/wr && hexyl content/sca/wr
 
 # Hexdump of SCA's versions wr file
 ┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
@@ -351,10 +331,10 @@ $ hexyl dumps/clean/wr && hexyl dumps/sca/wr
 └────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
 ```
 
-Here we encounter another advantage of hex dumps. Usually, the content of the game is only available to the researcher when it is played. This can be a considerate investment regarding time and technical resources. A hex dump can make clear text contained in the game searchable. While a lot of the hex dumps output is obfuscated, ASCII characters can be converted and displayed in human-readable form. This becomes clear in our next comparison between the two ‘summer games’ files.
+Here we encounter another advantage of hex dumps. Usually, the content of the game is only available to the researcher when it is played. This can result in a considerate investment regarding time and technical resources. A hex dump can make clear text contained in the game searchable. While a lot of the hex dumps output is obfuscated, ASCII characters can be converted and displayed in human-readable form. This becomes clear in our next comparison between the two ‘summer games’ files.
 
 ```shell
-$ hexyl "dumps/clean/summer games" && hexyl "dumps/sca/summer games"
+$ hexyl "content/clean/summer games" && hexyl "content/sca/summer games"
 ```
 
 ```shell
@@ -392,7 +372,7 @@ $ hexyl "dumps/clean/summer games" && hexyl "dumps/sca/summer games"
 └────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
 ```
 
-The file ‘summer games’ is the initial starting point when loading the game. After inserting the disk into a real Commodore 64 or one of the various emulators, and typing in the standard loading command, it’s this file that starts the process. Despite some gibberish, there are some discernible differences. The clean version’s ‘summer games’ file mentions “loader” which is a file that is not present in the cracked version. The cracked ‘summer games’ file, on the other hand, shows a tag by the games’ cracker “Saturnus the Invincible”, as well as being longer. The Commodore 64 used special characters that can’t be decoded on modern systems. Luckily, [C64-Tools](https://www.c64-tools.com/basic-2-extractor) and [SCA’s own platform](https://www.sca.ch/c64/software/sca-releases/SCA-Summer%20Games/SUMMER%20GAMES/view-source) allow us to display the file’s content with the correct characters.
+The file ‘summer games’ is the initial starting point when loading the game. After inserting the disk into a real Commodore 64 or an emulator, and typing in the standard loading command, it’s this file that starts the process. Despite some gibberish, there are some discernible differences. The clean version’s ‘summer games’ file mentions `loader` which is a file that is not present in the cracked version. The cracked `summer games` file, on the other hand, shows a tag by the games’ cracker “Saturnus the Invincible”, as well as being longer. The Commodore 64 used special characters that can’t be decoded on modern systems. Luckily, [C64-Tools](https://www.c64-tools.com/basic-2-extractor) and [SCA’s own platform](https://www.sca.ch/c64/software/sca-releases/SCA-Summer%20Games/SUMMER%20GAMES/view-source) allow us to display the file’s content with the correct characters.
 
 {% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-04.png" alt="The excerpt of a screenshot shows three lines of code, each line alternating between white and grey background. The font is always black." caption="Figure 4. Clean version’s 'summer games' file content, produced with C64-Tools." %}
 
@@ -414,9 +394,7 @@ The file ‘summer games’ is the initial starting point when loading the game.
 65530
 ```
 
-This is the final observation in this example. Both files contain Commodore 64 BASIC code. The clean version calls the ‘loader’ file first, and then proceeds to execute custom assembly code that has been loaded into the memory address `$C000` by the command `SYS 49152`. The cracked version instead directly executes codes at another address and has a comment displaying who cracked the game. This difference in the two initial files offers us important information on where to continue our investigation of the game's crack. From here on, we will need more specialised knowledge on how Commodore 64 games were programmed, protected, and cracked. We will also need specialised tools that can deal with machine code.
-
-This second examples illustrates how reverse engineering transcends surface-level interpretations, revealing hidden technological, cultural, or historical dimensions.
+This is the final observation in this example. Both files contain Commodore 64 BASIC code. The clean version calls the `loader` file first, and then proceeds to execute custom code that has been loaded into the memory address `$C000` by the command `SYS 49152`. The cracked version instead directly executes codes at another address and has a comment displaying who cracked the game. This difference in the two initial files offers us important information on where to continue our investigation of the game's crack. From here on, we will need more specialised knowledge on how Commodore 64 games were programmed, protected, and cracked. We will also need specialised tools that can deal with machine code.
 
 ## Bridging File-Format Analysis and Disk-Based Software Artifacts
 
@@ -424,9 +402,9 @@ At first glance, the two case studies presented in this lesson appear only loose
 
 The purpose of the first case study is therefore not to teach the internal structure of JPEG or ZIP files as reusable templates. Knowledge of specific elements such as JPEG metadata segments, ZIP central directory records, or checksum validation does not apply directly to `.d64` disk images. These format-specific details are intentionally confined to their example and are not meant to be generalized.
 
-What *does* transfer between these examples is a set of analytical practices rather than a shared file structure. These practices include working below the graphical interface; using hex dumps to inspect raw binary data; identifying meaningful patterns within otherwise opaque byte sequences; comparing multiple versions of the same artifact to isolate anomalies; and reasoning about file behavior based on how software parses data rather than how files are named, packaged, or displayed to users.
+What *does* transfer between these examples is a set of analytical practices rather than a shared file structure. These practices include working below the graphical interface, using hex dumps to inspect raw binary data, identifying meaningful patterns within otherwise opaque byte sequences, comparing multiple versions of the same artifact to isolate anomalies, and reasoning about file behavior based on how software parses data rather than how files are named, packaged, or displayed to users.
 
-The JPEG/ZIP/Docx example provides a controlled environment in which readers can practice these techniques with immediate visual feedback and well-documented constraints. The Commodore 64 case study deliberately removes many of these affordances. Disk images of historical software rarely preserve original copy protection, lack standardized internal organization, and often survive only in modified or incomplete forms. In such cases, meaning must be inferred through comparison, repetition, and inconsistency rather than through reference to formal specifications.
+The JPEG, ZIP, and `.docx` example provides a controlled environment in which readers can practice these techniques with immediate visual feedback and well-documented constraints. The Commodore 64 case study deliberately removes many of these affordances. Disk images of historical software rarely preserve original copy protection, lack standardized internal organization, and often survive only in modified or incomplete forms. In such cases, meaning must be inferred through comparison, repetition, and inconsistency rather than through reference to formal specifications.
 
 For historians, this shift reflects real research conditions. Born-digital artifacts are seldom encountered as transparent, self-describing objects. More often, researchers must work with undocumented binaries, altered software, or partial disk images whose structure must be reconstructed through analysis rather than read from documentation. The purpose of the second case study is therefore not technical mastery of Commodore 64 internals, but to demonstrate how reverse engineering can function as a historical method for identifying deliberate human intervention, cultural authorship, and technical modification within opaque digital sources.
 
@@ -434,24 +412,19 @@ For historians, this shift reflects real research conditions. Born-digital artif
 
 This lesson explores reverse engineering as a critical methodology for historical analysis of born-digital artifacts, emphasizing its role in overcoming "screen essentialism"—the tendency to interpret digital objects solely through their visual representations. By examining deeper into digital files using techniques such as hex editing and comparative hex dump analysis, historians can uncover hidden structures, metadata, and functionalities that remain invisible when analysed superficially.
 
-The first investigation, examining a JPEG file containing an embedded ZIP archive, demonstrated how reverse engineering reveals dual-format file structures. These results serve as a basis for more complex digital archaeological explorations, as illustrated by the second case study involving a cracked Commodore 64 game. Through comparative analysis of cracked and clean versions of the game, reverse engineering techniques such as hex dumps enabled the identification of specific alterations, signatures, and embedded historical information.
-
-However, this lesson also highlights significant challenges and technical hurdles inherent in reverse engineering digital artifacts. Historians frequently encounter gaps in essential knowledge about proprietary file structures, software behaviours, and hardware constraints. This reality underscores an ongoing methodological dilemma: researchers often remain unaware of critical information that is missing, a situation exacerbated by the closed-source nature of many digital technologies. These technical barriers continually risk pushing researchers back toward screen essentialism, prompting surface-level interpretations due to insufficient technical literacy or documentation. Ultimately, this introductory exploration emphasizes that reverse engineering remains an evolving field with much still to discover, underscoring the importance of continuously expanding digital literacy and refining specialized historical methods to navigate the complexities of born-digital cultural artifacts.
-
-Having explored hex editing and comparative hex dump analysis as foundational methods, historians may wish to pursue more advanced techniques in digital archaeology. The final section of this lesson highlights possibilities for deeper exploration with reverse-engineering frameworks and binary analysis tools, outlining how such resources can be integrated into a historian’s workflow. Rather than providing a detailed walkthrough, this discussion points to the capabilities of tools like radare2 alongside other open-source options, encouraging experimentation and methodological expansion. Supplementary resources and recommendations are included to help readers build the skills needed to critically engage with complex born-digital artifacts.
-
-By the end of this lesson, readers should be able to approach unfamiliar born-digital artifacts with a concrete analytical workflow: inspecting binary data directly, comparing versions, identifying structural anomalies, and articulating historically meaningful interpretations based on those observations.
-
+This lesson also highlights significant challenges and technical hurdles inherent in reverse engineering digital artifacts. Historians frequently encounter gaps in essential knowledge about proprietary file structures, software behaviours, and hardware constraints. This reality underscores an ongoing methodological dilemma: researchers often remain unaware of critical information that is missing, a situation exacerbated by the closed-source nature of many digital technologies. These technical barriers continually risk pushing researchers back toward screen essentialism, prompting surface-level interpretations due to insufficient technical literacy or documentation. Ultimately, this introductory exploration emphasizes that reverse engineering remains an evolving field with much still to discover, underscoring the importance of continuously expanding digital literacy and refining specialized historical methods to navigate the complexities of born-digital cultural artifacts.
 
 ## Further Resources
 
-Reverse engineering has emerged as an essential method in digital historical research, enabling historians to investigate born-digital artifacts beyond their surface-level representations. Several compelling studies highlight the potential of this approach, such as the analyses of the _Mystery House_ game (Apple II, 1980)[^18] and John Aycock’s _Amnesia Remembered_.[^19]
+Having explored hex editing and comparative hex dump analysis as foundational methods, historians may wish to pursue more advanced techniques in digital archaeology. This final optional section of this lesson highlights possibilities for deeper exploration with reverse-engineering frameworks and analysis tools, outlining how such resources can be integrated into a historian’s workflow. Rather than providing a detailed walkthrough, this discussion points to the capabilities of tools like Radare2[^24] alongside other open-source options, encouraging experimentation and methodological expansion. Supplementary resources and recommendations are included to help readers build the skills needed to critically engage with complex born-digital artifacts.
 
-Aycock’s _Amnesia Remembered_ offers a detailed exploration of software reuse by analyzing disassembled binaries from 1980s Atari ST games. This work demonstrates how reverse engineering can uncover historical coding practices, highlighting previously unnoticed relationships between software developers and revealing insights into the evolution of software design and reuse practices within the early gaming industry.
+---
 
-Additional influential examples include the analysis of the Atari 2600 game _Entombed_ (1982)[^20], which successfully reconstructed its maze-generation algorithm and uncovered hidden software issues, and Aycock's large-scale study, _The Sincerest Form of Flattery_ (2022)[^21], examining nearly two thousand Atari game ROMs to identify widespread patterns of code reuse.
+Reverse engineering has emerged as an essential method in digital historical research, enabling historians to investigate born-digital artifacts beyond their surface-level representations. Several compelling studies highlight the potential of this approach, such as the analyses of the _Mystery House_ game (Apple II, 1980)[^20] and John Aycock’s _Amnesia Remembered_.[^21] Aycock’s _Amnesia Remembered_ offers a detailed exploration of software reuse by analyzing disassembled binaries from 1980s Atari ST games. This work demonstrates how reverse engineering can uncover historical coding practices, highlighting previously unnoticed relationships between software developers and revealing insights into the evolution of software design and reuse practices within the early gaming industry.
 
-To practically engage with reverse engineering, historians now have access to several approachable tools. One such tool is Radare2[^22], a powerful open-source reverse engineering framework widely used by cybersecurity professionals for binary analysis and software inspection. Although originally designed for low-level software diagnostics, exploit research, and malware analysis, Radare2 can also be leveraged by historians to explore the internal structure and behaviour of vintage software. Its command-line interface and modular toolkit support disassembly, debugging, and data visualization—making it possible to inspect software logic even in the absence of source code. While a detailed explanation of its functionality would exceed the scope of this paper, further information on Radare2's installation and operational specifics can be found in its official documentation.[^23] The following shell output shows the reverse-engineered code from the game crack example, as visualized using Radare2.
+Additional influential examples include the analysis of the Atari 2600 game _Entombed_ (1982)[^22], which successfully reconstructed its maze-generation algorithm and uncovered hidden software issues, and Aycock's large-scale study, _The Sincerest Form of Flattery_ (2022)[^23], examining nearly two thousand Atari game ROMs to identify widespread patterns of code reuse.
+
+[#todo: tbd] To practically engage with reverse engineering, historians now have access to several approachable tools. One such tool is Radare2, a powerful open-source reverse engineering framework widely used by cybersecurity professionals for binary analysis and software inspection. Although originally designed for low-level software diagnostics, exploit research, and malware analysis, Radare2 can also be leveraged by historians to explore the internal structure and behaviour of vintage software. Its command-line interface and modular toolkit support disassembly, debugging, and data visualization—making it possible to inspect software logic even in the absence of source code. While a detailed explanation of its functionality would exceed the scope of this paper, further information on Radare2's installation and operational specifics can be found in its official documentation.[^25] The following shell output shows the reverse-engineered code from the game crack example, as visualized using Radare2.
 
 ```shell
 # Open a dump of the summer games sca crack with radare2
@@ -487,13 +460,11 @@ r2 -a 6502 -b 8 -m 0x0801 summer_games_clean.pr
 [0x000008ba]>
 ```
 
-To make sense of this output, historians must become familiar with low-level machine instructions and how they operate within the architecture of the system they are studying—such as the 6502 processor in the Commodore 64.[^24] For example, the line `0x000008bc bee508 ldx 0x08e5,y` means “load the value from memory address 0x08e5 (offset by the Y register) into the X register.” Each line represents a discrete machine operation, and understanding these require learning a small set of core instructions (like `lda`, `sta`, `jsr`, `bne`) and how memory addresses and processor registers interact. While interpreting such code can be challenging at first, it opens up powerful avenues for understanding how software was constructed and modified in historical contexts.
+[#todo: ditto] To make sense of this output, historians must become familiar with low-level machine instructions and how they operate within the architecture of the system they are studying—such as the 6502 processor in the Commodore 64.[^26] For example, the line `0x000008bc bee508 ldx 0x08e5,y` means “load the value from memory address 0x08e5 (offset by the Y register) into the X register.” Each line represents a discrete machine operation, and understanding these require learning a small set of core instructions (like `lda`, `sta`, `jsr`, `bne`) and how memory addresses and processor registers interact. While interpreting such code can be challenging at first, it opens up powerful avenues for understanding how software was constructed and modified in historical contexts.
 
-Similarly valuable is **RetroDebugger[^25]**, a visual debugger integrated with emulators for classic systems (such as the Commodore 64 and Atari 8-bit computers), enabling step-by-step exploration of vintage software execution and memory states. Platforms such as **RetroReversing.com[^26]** offer detailed tutorials, practical documentation, and a community environment designed to guide beginners smoothly into reverse engineering.
+Similarly valuable is **RetroDebugger[^27]**, a visual debugger integrated with emulators for classic systems (such as the Commodore 64 and Atari 8-bit computers), enabling step-by-step exploration of vintage software execution and memory states. Platforms such as **RetroReversing.com[^28]** offer detailed tutorials, practical documentation, and a community environment designed to guide beginners smoothly into reverse engineering.
 
-For visualizing and interpreting binary file structures, the **ImHex Patterns Repository** provides structured templates that simplify complex file format analysis, supporting a clearer, guided understanding of digital files. Furthermore, web-based emulators like **JS99er[^27]**—a TI-99/4A emulator accessible directly from any browser—allow historians immediate, authentic interaction with historical software.
-
-Together, these resources significantly reduce barriers to entry, fostering an open, collaborative community around reverse engineering. This introductory exploration serves as a foundation, underscoring that much remains to be discovered through reverse engineering. With tools and case studies like those presented here, historians are well-positioned to expand their digital literacy, enrich their interpretations, and actively contribute to preserving and understanding our digital past.
+Finally, for visualizing and interpreting binary file structures, the **ImHex Patterns Repository** provides structured templates that simplify complex file format analysis, supporting a clearer, guided understanding of digital files. Furthermore, web-based emulators like **JS99er[^29]**—a TI-99/4A emulator accessible directly from any browser—allow historians immediate, authentic interaction with historical software.
 
 ## Footnotes
 
@@ -528,22 +499,26 @@ Together, these resources significantly reduce barriers to entry, fostering an o
 
 [^17]: Hosted on [https://archive.org/details/summer\*games](https://archive.org/details/summer_games)
 
-[^18]: Biittner, Biittner, and John Aycock. “Inspecting the Foundation of Mystery House | Journal of Contemporary Archaeology.” Accessed May 21, 2025. [https://journal.equinoxpub.com/JCA/article/view/17513](https://journal.equinoxpub.com/JCA/article/view/17513).
+[^18]: #todo, a nice source would be lovely here
 
-[^19]: Aycock, John. “Amnesia Remembered: Reverse Engineering a Digital Artifact.” In _Amnesia Remembered_. Berghahn Books, 2023. [https://doi.org/10.1515/9781800738683](https://doi.org/10.1515/9781800738683).
+[^19]: Heilmann, Till A. "Wie liest man 100’000 Zeilen Code?" In _Quellcodekritik: zur Philologie von Algorithmen_, Erste Auflage, edited by Hannes Bajohr and Markus Krajewski. August Akademie. August Verlag, 2024.
 
-[^20]: Aycock, John, and Tara Copplestone. “Entombed: An Archaeological Examination of an Atari 2600 Game.” _The Art, Science, and Engineering of Programming_ 3, no. 2 (November 5, 2018): 4. [https://doi.org/10.22152/programming-journal.org/2019/3/4](https://doi.org/10.22152/programming-journal.org/2019/3/4).
+[^20]: Biittner, Biittner, and John Aycock. “Inspecting the Foundation of Mystery House | Journal of Contemporary Archaeology.” Accessed May 21, 2025. [https://journal.equinoxpub.com/JCA/article/view/17513](https://journal.equinoxpub.com/JCA/article/view/17513).
 
-[^21]: Aycock, John, Shankar Ganesh, Katie Biittner, Paul Allen Newell, and Carl Therrien. “The Sincerest Form of Flattery: Large-Scale Analysis of Code Re-Use in Atari 2600 Games.” In _Proceedings of the 17th International Conference on the Foundations of Digital Games_, 1–10. Athens Greece: ACM, 2022. [https://doi.org/10.1145/3555858.3555948](https://doi.org/10.1145/3555858.3555948).
+[^21]: Aycock, John. “Amnesia Remembered: Reverse Engineering a Digital Artifact.” In _Amnesia Remembered_. Berghahn Books, 2023. [https://doi.org/10.1515/9781800738683](https://doi.org/10.1515/9781800738683).
 
-[^22]: “Radareorg/Radare2.” C. 2012. Reprint, radare org, June 1, 2025. [https://github.com/radareorg/radare2](https://github.com/radareorg/radare2).
+[^22]: Aycock, John, and Tara Copplestone. “Entombed: An Archaeological Examination of an Atari 2600 Game.” _The Art, Science, and Engineering of Programming_ 3, no. 2 (November 5, 2018): 4. [https://doi.org/10.22152/programming-journal.org/2019/3/4](https://doi.org/10.22152/programming-journal.org/2019/3/4).
 
-[^23]: "Installation," in The Official Radare2 Book, accessed July 7, 2025. [https://book.rada.re/install/intro.html](https://book.rada.re/install/intro.html).
+[^23]: Aycock, John, Shankar Ganesh, Katie Biittner, Paul Allen Newell, and Carl Therrien. “The Sincerest Form of Flattery: Large-Scale Analysis of Code Re-Use in Atari 2600 Games.” In _Proceedings of the 17th International Conference on the Foundations of Digital Games_, 1–10. Athens Greece: ACM, 2022. [https://doi.org/10.1145/3555858.3555948](https://doi.org/10.1145/3555858.3555948).
 
-[^24]: “Steil, Michael. “6502 | Ultimate Commodore 64 Reference.” Accessed July 7, 2025. [https://www.pagetable.com/c64ref/6502/#](https://www.pagetable.com/c64ref/6502/#).
+[^24]: “Radareorg/Radare2.” C. 2012. Reprint, radare org, June 1, 2025. [https://github.com/radareorg/radare2](https://github.com/radareorg/radare2).
 
-[^25]: slajerek. “Slajerek/RetroDebugger.” C, May 12, 2025. [https://github.com/slajerek/RetroDebugger](https://github.com/slajerek/RetroDebugger).
+[^25]: "Installation," in The Official Radare2 Book, accessed July 7, 2025. [https://book.rada.re/install/intro.html](https://book.rada.re/install/intro.html).
 
-[^26]: “Retro Reverse Engineering.” Accessed May 21, 2025. [https://www.retroreversing.com/](https://www.retroreversing.com/).
+[^26]: “Steil, Michael. “6502 | Ultimate Commodore 64 Reference.” Accessed July 7, 2025. [https://www.pagetable.com/c64ref/6502/#](https://www.pagetable.com/c64ref/6502/#).
 
-[^27]: “JS99’er.” Accessed May 21, 2025. [https://js99er.net/](https://js99er.net/#/).
+[^27]: slajerek. “Slajerek/RetroDebugger.” C, May 12, 2025. [https://github.com/slajerek/RetroDebugger](https://github.com/slajerek/RetroDebugger).
+
+[^28]: “Retro Reverse Engineering.” Accessed May 21, 2025. [https://www.retroreversing.com/](https://www.retroreversing.com/).
+
+[^29]: “JS99’er.” Accessed May 21, 2025. [https://js99er.net/](https://js99er.net/#/).

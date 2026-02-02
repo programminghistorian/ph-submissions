@@ -9,7 +9,7 @@ authors:
   - Daniel Gammenthaler
 reviewers:
   - Laurisa Sastoque Pabón
-  - Thorston Ries
+  - Thorsten Ries
 editors:
   - Nabeel Siddiqui
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/664
@@ -238,7 +238,7 @@ We've selected this specific SCA crack as our case study due to its research val
 
 For this part of the lesson, we will work with files that we extracted from a disk image, and [you can download the necessary material via this archive.org link](https://archive.org/details/summer_games_clean-sca). In the archive you'll find a cracked[^16] and a supposedly clean[^17] version of the Commodore 64 game “Summer Games”. At this point we need to highlight that the original game from 1984 is the intellectual property of Epyx Computer Software, which means that it is under copyright protection. Downloading the game for research can be argued to fall under fair use, but such an evaluation is not guaranteed. Fair use in research is often favoring criticism, scholarship, or preservation, and highly depends on national doctrines of copyright law. In Switzerland, for example, downloading the _Summer Games_ for research purposes is generally legal under the Federal Act on Copyright and Related Rights (CopA), even from unauthorized sources. This highlights another important aspects. Accessing and researching born-digital artifacts is not only depending on technical skills or the right kind of methodological setup, but also on legal applications that can change in time and geographical delineations.
 
-A first glance at the archive tells us that those games come as `.d64` files, which is a disk image—a virtual representation of a physical disk’s content. Since we are interested in investigating the cracked version, we need to contextualize our digital artefact towards that. A standard Commodore 64 `.d64` disk image file does not preserve most hardware-based copy protections, which was common. The `.d64` format captures only the standard sector data of a disk and does not record the low-level, non-standard disk structures (such as sync marks, deliberate errors, or unusual track layouts) that many C64 copy protection schemes rely on[^18]. As a result, games or software with sophisticated disk-based copy protection often cannot be run or properly emulated from a `.d64` image. For preserving original disks with copy protection intact, the `.g64` format is preferred, as it stores the low-level information needed for these protections to function.
+A first glance at the archive tells us that those games come as `.d64` files, which is a disk image—a virtual representation of a physical disk’s content. Since we are interested in investigating the cracked version, we need to contextualize our digital artefact towards that. A standard Commodore 64 `.d64` disk image file does not preserve most hardware-based copy protections, which was common. The `.d64` format is a logical sector image that captures only the decoded data payload. Consequently, it lacks the GCR (Group Coded Recording) level information (such as sync marks, deliberate block errors, or custom inter-sector gaps) required to bypass the hardware-level copy protection schemes prevalent in the C64 era.[^18]. As a result, games or software with sophisticated disk-based copy protection often cannot be run or properly emulated from a `.d64` image. For preserving original disks with copy protection intact, the `.g64` format is preferred, as it stores the low-level GCR data required for these mechanisms to function.
 
 Finally, most `.d64` images available today have had their copy protection removed or bypassed to work in emulators. This would indicate that our virtual image of the cracked game might not contain everything we need to fully investigate this case. Let us have a closer look and compare our two versions. Since `.d64` is a container format, we need to unpack and reveal the container’s content first. There are many tools offering such a service, such as [C64-Tools](https://www.c64-tools.com/basic-2-extractor) or [DirMaster](https://style64.org/dirmaster). We prepared this step by using the Floppy Disk Emulator that comes with VICE, an emulator for the Commodore 64, and moved the dumped files to the respective folders `summer_games/content/clean` and `summer_games/content/sca`. In these two folders, you will find files without a file extension, that contain binary data as well as source code.
 
@@ -469,6 +469,7 @@ Finally, for visualizing and interpreting binary file structures, the **ImHex Pa
 ## Footnotes
 
 [^1]: For a well explained primer on the different notations please enjoy the presentation by Kay Lack on [binary, hex, and other ways of information encoding](https://www.0de5.net/stimuli/binary-code).
+
 [^2]: Feichtinger, Moritz. 2024. “From Source-Criticism to System-Criticism, Born Digital Objects, Forensic Methods, and Digital Literacy for All.” September 13. [https://doi.org/10.5281/zenodo.13907816](https://doi.org/10.5281/zenodo.13907816).
 
 [^3]: Guay-Bélanger, Dany. 2022. “Assembling Auras: Towards a Methodology for the Preservation and Study of Video Games as Cultural Heritage Artefacts.” _Games and Culture_ 17 (5): 659–78. [https://doi.org/10.1177/15554120211020381](https://doi.org/10.1177/15554120211020381).
@@ -491,15 +492,17 @@ Finally, for visualizing and interpreting binary file structures, the **ImHex Pa
 
 [^12]: Textfiles, hideseek, http://www.textfiles.com/computers/DOCUMENTATION/hideseek.txt
 
-[^13]: #todo, reference to presentation
+[^13]: Albertini, Ange. "Fearsome File Formats." Chaos Communication Congress. Hamburg, Dec 2024. 45min. [https://media.ccc.de/v/38c3-fearsome-file-formats](https://media.ccc.de/v/38c3-fearsome-file-formats) and Albertini, Ange. "Funky File Formats, Advanced Binary Tricks." Chaos Communication Congress. Hamburg, Dec 2014. 51min. [https://media.ccc.de/v/31c3_-_5930_-_en_-_saal_6_-_201412291400_-_funky_file_formats_-_ange_albertini](https://media.ccc.de/v/31c3_-_5930_-_en_-_saal_6_-_201412291400_-_funky_file_formats_-_ange_albertini).
+
 [^14]: Further file signatures are listed on [https://en.wikipedia.org/wiki/List*of*file\*signatures](https://en.wikipedia.org/wiki/List_of_file_signatures)
 
 [^15]: `grep` is installed on most Linux distributions as well as macOS, but not Windows.
+
 [^16]: Graciously offered by SCA via [https://www.sca.ch/c64/software/sca-releases/SCA-Summer%20Games](https://www.sca.ch/c64/software/sca-releases/SCA-Summer%20Games)
 
 [^17]: Hosted on [https://archive.org/details/summer\*games](https://archive.org/details/summer_games)
 
-[^18]: #todo, a nice source would be lovely here
+[^18]: Peter Schepers. “Introduction to the Various Emulator File Formats.” August 24, 1996. [https://ist.uwaterloo.ca/~schepers/formats/INTRO.TXT](https://ist.uwaterloo.ca/~schepers/formats/INTRO.TXT) and Peter Schepers, Ettore Perazzoli. “The G64 GCR-Encoded Disk Image Format.” VICE Manual - 11 The Emulator File Formats, June 1991. [https://www.cs.cmu.edu/~dsladic/vice/doc/html/vice_11.html](https://www.cs.cmu.edu/~dsladic/vice/doc/html/vice_11.html).
 
 [^19]: Heilmann, Till A. "Wie liest man 100’000 Zeilen Code?" In _Quellcodekritik: zur Philologie von Algorithmen_, Erste Auflage, edited by Hannes Bajohr and Markus Krajewski. August Akademie. August Verlag, 2024.
 

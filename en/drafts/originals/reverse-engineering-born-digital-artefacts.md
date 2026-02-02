@@ -156,12 +156,12 @@ $ hexyl cat-with-hidden-content.jpg | grep -i -A 5 -B 5 'ff d9'
 │000318d0│ 3a d3 02 c4 4c 16 e7 00 ┊ fc ad 4c bc 8d a1 90 b2 │:×•×L•×⋄┊××L×××××│
 │000318e0│ 8c 81 ce 6a ac 32 12 36 ┊ 9e ab de a6 98 b3 a8 05 │×××j×2•6┊×××××××•│
 │000318f0│ 8e 18 e0 d0 00 2e d7 03 ┊ 9a 29 be 42 7a 51 40 1f │×•××⋄.×•┊×)×BzQ@•│
-│00031900│ ff d9 50 4b 03 04 14 00 ┊ 08 00 08 00 f9 5c 3e 5c │××PK•••⋄┊•⋄•⋄×\>\│
-│00031910│ 00 00 00 00 00 00 00 00 ┊ 00 00 00 00 12 00 20 00 │⋄⋄⋄⋄⋄⋄⋄⋄┊⋄⋄⋄⋄•⋄ ⋄│
+│00031900│ ff d9 50 4b 03 04 0a 00 ┊ 00 00 00 00 51 3d b6 5a │××PK••_⋄┊⋄⋄⋄⋄Q=×Z│
+│00031910│ dd dd 14 7d 0d 00 00 00 ┊ 0d 00 00 00 12 00 1c 00 │××•}_⋄⋄⋄┊_⋄⋄⋄•⋄•⋄│
 │00031920│ 68 69 64 64 65 6e 2d 63 ┊ 6f 6e 74 65 6e 74 2e 74 │hidden-c┊ontent.t│
-│00031930│ 78 74 75 78 0b 00 01 04 ┊ e8 03 00 00 04 e8 03 00 │xtux•⋄••┊×•⋄⋄•×•⋄│
-│00031940│ 00 55 54 0d 00 07 76 8a ┊ 7c 69 76 8a 7c 69 76 8a │⋄UT_⋄•v×┊|iv×|iv×│
-│00031950│ 7c 69 7b d4 30 27 32 bf ┊ 54 21 3b 2f bf 5c a1 24 │|i{×0'2×┊T!;/×\×$│
+│00031930│ 78 74 55 54 09 00 03 4a ┊ b9 2e 68 4a b9 2e 68 75 │xtUT_⋄•J┊×.hJ×.hu│
+│00031940│ 78 0b 00 01 04 e8 03 00 ┊ 00 04 e8 03 00 00 48 65 │x•⋄••×•⋄┊⋄•×•⋄⋄He│
+│00031950│ 6c 6c 6f 20 57 6f 72 6c ┊ 64 21 0a 50 4b 01 02 1e │llo Worl┊d!_PK•••│
 ```
 
 You might wonder: if we simply "glue" two files together, why doesn't the computer get confused? The answer lies in the structural paradigms of different file formats. A JPEG is a linear format; a image viewer starts at the top and stops as soon as it hits the `ff d9` (End of Image) marker. It simply ignores anything that follows. A ZIP file, however, operates on a linked or indexed paradigm. Most archive utilities do not read a ZIP from the beginning. Instead, they "seek" to the very end of the file to find the "End of Central Directory" (EOCD) record. The EOCD acts like a book's index, telling the computer exactly where each file starts within the archive. Because the ZIP utility looks at the footer (the end) rather than the header (the beginning), it doesn't care that there is a cat photo sitting on top of its data.

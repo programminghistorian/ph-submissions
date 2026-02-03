@@ -1,5 +1,5 @@
 ---
-title: "Building a Digital Exhibition with CollectionBuilder"
+title: "Building a Digital Exhibition with CollectionBuilder and Internet Archive"
 slug: digital-exhibition-collectionbuilder
 original: exhibicion-con-collection-builder
 layout: lesson
@@ -35,7 +35,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction to the lesson
 
-This lesson will teach you how to use **CollectionBuilder** (CB) to create and customize a digital exhibition featuring digital objects hosted on another platform, such as the Internet Archive. You can follow along on the demo site at [https://github.com/sarahseverson/ph-demo-playbills](https://github.com/sarahseverson/ph-demo-playbills). This tutorial should take about 3 to 5 hours to complete if you have metadata ready. 
+This lesson will teach you how to use **CollectionBuilder** (CB) to create and customize a digital exhibition featuring digital objects hosted on another platform, such as the Internet Archive. You can follow along on [our demo site](https://github.com/sarahseverson/ph-demo-playbills). This tutorial should take about 3 to 5 hours to complete if you have metadata ready. 
 
 ### Prerequisites
 
@@ -45,16 +45,41 @@ To do this lesson, you will need the following:
 
 - Knowledge of how to manage a basic GitHub account repository ([An Introduction to Version Control Using GitHub Desktop](https://programminghistorian.org/en/lessons/retired/getting-started-with-github-desktop) by Daniel van Strien)
 
-- Any curated set of online objects and their corresponding metadata in a CSV file.
+- Knowledge of and experience with metadata in a CSV format
 
-## Background: What is CollectionBuilder & why would you choose it?
+### Glossary of terms
+
+**Canonical Version**
+The authoritative instance of a digital object in its original location or repository. Rather than creating duplicate copies, linking to canonical versions means pointing to the officially maintained file.
+**CSV (Comma-Separated Values)** 
+A plain text file format used to store tabular data, where each row represents a record and commas separate the individual fields or values.
+**Digital Collection**
+An online, organized set of digitized or digital materials, described with metadata to enable browsing and searching.
+**Digital Exhibition**
+An online presentation of curated materials, often from a digital collection, organized around a particular topic or theme. Often used to give visitors context or interpretive information about the materials.
+**GitHub**
+A web-based platform for storing, sharing, and collaborating on code and digital projects using version control.
+**GitHub Repository** 
+A storage location on GitHub that contains all the files, folders, and version history for a particular project.
+**Internet Archive** 
+A non-profit digital repository that provides free access to collections of digital materials, including websites, books, videos, images, and software.
+**Markdown**
+A lightweight markup language that uses plain text formatting syntax to create formatted documents.
+**Metadata**
+Structured information that describes digital objects, such as title, creator, date, description, and other details that help organize and identify items in a collection.
+**Schema** 
+A structured framework that defines how data should be organized, including the fields, data types, and relationships between different elements in a database or metadata system.
 
 
-[CollectionBuilder](https://collectionbuilder.github.io/) is an open-source framework for publishing metadata-based digital exhibits based on static web page technology. Its main objective is to provide a simple model for disseminating collections in a practical and sustainable manner. It does not require advanced computer skills or infrastructure, but it allows for interactive elements, such as timelines and maps. CollectionBuilder is a project of the University of Idaho Library's [Digital Initiatives](https://www.lib.uidaho.edu/digital/) and the [Center for Digital Inquiry and Learning](https://cdil.lib.uidaho.edu/) (CDIL), following the [Lib-Static](https://lib-static.github.io/) methodology.
+  
+### Background: What is CollectionBuilder?
+[CollectionBuilder](https://collectionbuilder.github.io/) is an open-source framework for publishing metadata-driven digital exhibitions using static web technologies. Its main objective is to provide a model for disseminating collections in a practical and sustainable manner. It does not require knowledge of specific programming languages or technical infrastructure, but it allows for interactive elements, such as interpretive pages, timelines and maps. CollectionBuilder is a project of the University of Idaho Library's [Digital Initiatives](https://www.lib.uidaho.edu/digital/) and the [Center for Digital Inquiry and Learning](https://cdil.lib.uidaho.edu/) (CDIL), following the [Lib-Static](https://lib-static.github.io/) methodology.
 
-The CollectionBuilder framework is a viable alternative to digital exhibit publishing platforms, such as [Omeka](https://translate.google.com/website?sl=auto&tl=en&hl=en&client=webapp&u=https://es.wikipedia.org/wiki/Omeka) and the more complex [Wax](https://translate.google.com/website?sl=auto&tl=en&hl=en&client=webapp&u=https://minicomp.github.io/wax/) system. It is ideal for those who lack advanced computing resources or the time to learn how to use more complex systems. While our lesson focuses on using digital objects hosted on another platform, uploading small collections of items directly to GitHub is also possible and outlined in the CollectionBuilder documentation. 
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-00.png" alt="Screenshot of the front page of a CollectionBuilder-GH demo site.” caption="Figure 0. Screenshot of [CollectionBuilder-GH demo site]https://collectionbuilder.github.io/collectionbuilder-gh/." %}
 
-CollectionBuilder is also an excellent pedagogical tool because it provides a hands-on entry point for students to learn interoperable digital humanities skills, such as metadata management, GitHub file management, Markdown, and basic web development. It also enhances general technical literacy by explaining how web publishing works, while prioritizing the values of openness, transparency, and sustainability outlined in the [Lib-Static](https://lib-static.github.io/) methodology.
+The CollectionBuilder framework is an alternative to digital exhibition publishing platforms, such as [Omeka](https://omeka.org/), which is also available as a [Programming Historian lesson](https://doi.org/10.46430/phen0049), [Wax](https://minicomp.github.io/wax/), and [Spotlight](https://github.com/projectblacklight/spotlight). 
+
+CollectionBuilder is also used as a pedagogical tool because it provides a hands-on entry point for students to learn interoperable digital humanities skills, such as metadata management, GitHub file management, Markdown, and basic web development. It also enhances general technical literacy by explaining how web publishing works, while prioritizing the values of openness, transparency, and sustainability outlined in the [Lib-Static](https://lib-static.github.io/) methodology.
 
 CollectionBuilder offers three [different templates](https://collectionbuilder.github.io/templates.html):
 
@@ -62,60 +87,75 @@ CollectionBuilder offers three [different templates](https://collectionbuilder.g
 2. **CB-GH** requires that you upload your metadata spreadsheet to your repository and allows for more customizations, making it suitable for teaching and learning GitHub, Git, and other web workflows  
 3. **CB-CVS** allows for the most customization, but you must [download software](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/csv-walkthrough/#2-download-and-install-software-on-your-computer-git-github-desktop-visual-studio-code-ruby-jekyll-imagemagic-and-ghostscript-video-version) to your computer. More advanced display templates will enable you to incorporate 360-degree panorama images, compound objects (such as a scrapbook or an archival folder), and multiples (like a postcard with both front and back, or text and its transcript).
 
-This lesson will use the **CB-GH template**, which has fewer software dependencies and uses a collection of digital objects already online. In our example, we used items available in the Internet Archive, but you can link to items available elsewhere, including YouTube, Vimeo or any repository that gives you the digital object’s filename, including the file extension.  The CB-GH template can also be used for projects that have metadata-only records and no digital object. Projects can later be moved to the more advanced CollectionBuilder-CSV template for further customization by following [CollectionBuilder documentation](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/transfer-walkthrough/).
+This lesson will use the **CB-GH template**, which has fewer software dependencies and uses a collection of digital objects already online. In our example, we used items available in the Internet Archive, but you can link to items available elsewhere, including YouTube, Vimeo, or any repository that gives you the digital object’s filename, including the file extension. The CB-GH template can also be used for projects with metadata-only records and no digital objects. Projects can later be moved to the more advanced CollectionBuilder-CSV template for further customization by following [CollectionBuilder documentation](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/transfer-walkthrough/).
 
-While other CB tutorials have you upload digital files directly to GitHub, this tutorial links to digital objects already hosted online. We made this decision to ensure you can:
+While other CB tutorials have you upload digital files directly to GitHub, this tutorial links to digital objects already hosted online—working with canonical versions in their original context rather than creating copies. This approach allows you to:
 
-* Work with larger, existing digital collections without needing extra server space or hosting tools  
-* Practice metadata skills—linking, mapping, and referencing rather than uploading  
+* Engage with larger, existing digital collections without requiring additional infrastructure
+* Develop metadata literacy: the practice of referencing and relating rather than hosting
 * Understand how digital ecosystems like the Internet Archive can be integrated into custom web publishing  
-* Focus on curatorial interpretation and storytelling over technical file management
+* Prioritize curatorial interpretation over technical stewardship
 
-By using already-hosted objects, students can create meaningful exhibitions even if they don’t have digitized collections of their own, making this a more inclusive and scalable teaching option.
+By using already-hosted objects, students can create meaningful exhibitions without digitizing or uploading their own collections, making this option more inclusive and scalable.
 
 
-## 1. Design your online exhibitions: What story do you want to tell?
+## 1. Plan your exhibition
 
-Online exhibitions can enhance access to digital objects by allowing curators, like yourselves, to add narrative context, offer interactive experiences, and enhance metadata. Before you choose which digital objects to feature in your exhibition, define your exhibition's goals, target audience, and desired experience. This will give you a good starting point for curating your content, choosing what metadata to include and determining which CollectionBuilder visualization elements to include.
+### What story do you want to tell?
+
+Online exhibitions can expand access to digital objects by enabling curators, like yourselves, to add narrative context, offer interactive experiences, and enrich metadata. Before you choose which digital objects to feature in your exhibition, define your exhibition's goals, target audience, and desired experience. This will give you a good starting point for curating your content, choosing which metadata to include, and determining which CollectionBuilder visualization elements to use.
 
 Some questions to consider include: 
 
 * **Who is the primary audience of the digital exhibition?** Being specific will help you shape both your design and your choice of digital objects. Are you making the exhibition to celebrate aspects of a larger collection? Is the digital exhibition in relation to a physical exhibition? Each of those would have unique audiences you’d want to consider.   
+
 * **What do you want the audience to see and do when they come to the digital exhibition?**  Do you want your audience to read a series of essays in a set order, or do you want them to explore the collection on their own? If your collection has geographic or time-based metadata, do you want them to browse on a map or a timeline?  
-* **What kind of digital objects do you want to highlight?** Outlining what types of material you wish to include will help you think about what kind of metadata you need to include and how you want to configure your item page. Books or other multi-page items you would like people to flip through and read? Or do you want to feature a single-page opening of a book? Or if you have photographs and postcards, do you want to show both the front and the back? If you do, you will want to read up on Compound Objects and Multiple item types in CollectionBuilder’s documentation, which we do not cover in this tutorial.
+
+* **What kind of digital objects do you want to include?** Outlining what types of material you wish to include will help you think about what kind of metadata you need to include and how you want to configure your item page. Will you include books or other multi-page items you would like people to flip through and read? Or do you want to feature a single-page opening of a book? Or if you have photographs and postcards, do you want to show both sides? If you do, you will want to read up on Compound Objects and Multiple item types in CollectionBuilder’s documentation, which we do not cover in this tutorial.
 
 For further reading on this topic, the Art Libraries Society of North America's 2021 “[Best Practices for Library Exhibitions](https://www.arlisna.org/news/best-practices-for-library-exhibitions)” includes a section on Digital Exhibitions, and the Smithsonian's 2018 [Exhibits’ Guide to Exhibit Development](https://exhibits.si.edu/wp-content/uploads/2018/04/Guide-to-Exhibit-Development.pdf) can be applied to online experiences.
 
-## 2. Prepare your metadata for your exhibition.
 
-To prepare the exhibit, you first need a collection of objects described in a CSV that we can map to the CollectionBuilder metadata guide to ensure all exhibit components function properly.
+## 2. Gather metadata for your exhibition's digital collection.
 
-### 2.1 Using Internet Archive Advanced Search to download metadata
+To prepare the exhibition, you first need a collection of objects described in a CSV that we can map to the CollectionBuilder metadata guide to ensure all exhibition components function properly. This approach prioritizes working with canonical versions already maintained in established repositories, allowing you to focus on curatorial interpretation rather than digital stewardship.
+
+
+### 2.1 Optional: Upload your own digital collection materials first
+While our lesson focuses on using digital objects already available on the Internet Archive, you also have the option of uploading your own collections of digital items. 
+
+The Internet Archive (archive.org) provides free, unlimited hosting for a variety of file types, including images, audio, video, and text. This includes automatically converting files into web-friendly derivatives and making text files searchable via optical character recognition (OCR).  Anyone with a [free account](https://archive.org/account/signup) can upload media [one file at a time](https://archive.org/upload/) or in bulk using their [command line tools](https://archive.org/developers/internetarchive/cli.html#bulk-uploading). For more information, the Internet Archive provides a [basic uploading guide](https://help.archive.org/help/uploading-a-basic-guide/). While the Internet Archive provides cost-effective hosting, once an item is uploaded and indexed, it is very difficult to remove. Be sure the items you upload are meant to be public. Generally, you should only upload material that you own, is in the public domain, or falls under Creative Commons licenses.
+
+The [CollectionBuilder documentation](https://collectionbuilder.github.io/cb-docs/docs/objects/gh-objects/) also has information on how you can locally host small collections directly in your GitHub repository. 
+
+### 2.2 Query and download collection metadata from the  Internet Archive 
 
 If you are like us and have a collection of described digital objects already in the Internet Archive (IA), you can use their [Advanced Search](https://archive.org/advancedsearch.php) page to craft specific queries and export the existing metadata to a CSV file.
 
-The first step is to use the Advanced search form to create a query that isolates the objects you want to download. You can also construct a query with keywords, Field-Specific searches and Boolean operators. Experiment with different queries until you get your desired results. Every time you do an advanced search with the form, IA converts your query into their desired query syntax, which you need in the second section, “**Advanced Search, returning JSON, XML, and more**”. 
+The first step is to use the advanced search form to create a query that isolates the objects you want to download. You can also construct a query with keywords, Field-Specific searches, and Boolean operators. Experiment with different queries until you get the results you want. Every time you run an advanced search using the form, IA converts your query to their preferred query syntax, which you need in the second section, “**Advanced Search, returning JSON, XML, and more**”. 
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-01.png" alt="Screenshot of the Internet Archive's advanced search interface showing relevant metadata highlighted and the CSV format chosen." caption="Figure 1. Screenshot of the Internet Archive's advanced search interface" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-01.png" alt="Screenshot of the Internet Archive's advanced search interface showing relevant metadata highlighted and the CSV format chosen." caption="Figure 1. Screenshot of the Internet Archive's advanced search interface." %}
 
-Now that you have a query, the second step is to download the desired metadata fields in a usable format. Select which metadata fields you want to include in your download from the list on the left-hand side. This list contains both the descriptive metadata as defined by the uploader and the administrative metadata from the IA platform. If you are not sure which fields you want, you can select all and then go through them later. For more information on what each metadata field contains, you can look at the [IA metadata schema](https://archive.org/developers/metadata-schema/index.html%20), but not all metadata in IA will follow this schema, so be cautious! 
+Now that you have a query, the second step is to download the desired metadata fields in a usable format. Select which metadata fields you want to include in your download from the list on the left-hand side. This list contains both the descriptive metadata as defined by the uploader and the administrative metadata from the IA platform. If you are not sure which fields you want, you can select all and review them later. For more information on what each metadata field contains, you can look at the [IA metadata schema](https://archive.org/developers/metadata-schema/index.html%20), but not all metadata in IA will follow this schema, so be cautious! 
 
 Choose the number of results you want and CSV format. Once your file has been downloaded, ensure that the name of the file only contains lowercase letters, no spaces, and no special characters (e.g. ph-demo-playbills.csv). You may need to rename the file if this is not the case.
 
-In our example exhibition, we are using a collection of [English playbills](https://archive.org/details/bpsc_playbills) from the Bruce Peel Special Collections at the University of Alberta Library, which was digitized in 2019 and is available on the Internet Archive. Because we want to use the entire collection of objects, we can get the playbills by utilizing the collection identifier **bpsc_playbills**, which is found in the URL.  When we do our test search, IA converts our search into their desired query syntax **collection:(bpsc_playbills).** For another example, if we only wanted to download the Hamlet playbills in this collection, we would use the query **title:(hamlet) AND collection:(bpsc_playbills).**
+In our example exhibition, we are using a collection of [English playbills](https://archive.org/details/bpsc_playbills) from Bruce Peel Special Collections at the University of Alberta Library, which was digitized in 2019 and is available on the Internet Archive. Because we want to use the entire collection of objects, we can get the playbills by utilizing the collection identifier **bpsc_playbills**, which is found in the URL.  When we do our test search, IA converts our search into their desired query syntax **collection:(bpsc_playbills).** For another example, if we only wanted to download the Hamlet playbills in this collection, we would use the query **title:(hamlet) AND collection:(bpsc_playbills).**
 
-Once you’ve downloaded your metadata, you will want to clean it up to include only the necessary information for your exhibition. Some helpful tips on metadata can be found at the following links:
+Once you have downloaded your metadata, you will want to clean it up to include only the necessary information for your exhibition. Some helpful tips on metadata can be found at the following links:
 
 * Tips on formatting your metadata [https://collectionbuilder.github.io/cb-docs/docs/metadata/formatting/](https://collectionbuilder.github.io/cb-docs/docs/metadata/formatting/)  
 * UTF-8 encoding error [https://collectionbuilder.github.io/cb-docs/docs/metadata/uploading/](https://collectionbuilder.github.io/cb-docs/docs/metadata/uploading/)
 
-### 2.2 Mapping your metadata to the CollectionBuilder fields
 
-To make sure your exhibition works properly, your metadata needs to follow the structure expected by CollectionBuilder. This means your CSV file must contain specific fields with correct formatting so the template can display items, maps, timelines, and other features.
+### 3. Prepare the metadata for your CollectionBuilder exhibition
+To ensure your exhibition works properly, your metadata must follow the structure expected by CollectionBuilder. This means your CSV file must contain specific fields with correct formatting so the template can display items, maps, timelines, and other features.
 
 Below, we explain only the fields required for this example project. You can explore the complete metadata guide anytime at: [CB-GH Metadata Template](https://collectionbuilder.github.io/cb-docs/docs/metadata/gh_metadata/).
 
-#### CollectionBuilder Required-fields
+
+
+#### 3.1 CollectionBuilder Required-fields
 
 * **objectid:** The objectid field is how CollectionBuilder identifies each item in your collection and connects it to its metadata. Requirements for **objectid**:  
     
@@ -123,14 +163,14 @@ Below, we explain only the fields required for this example project. You can exp
   * No spaces or special characters (hyphens - and underscores _ are allowed)  
   * Should be unique for each item
 
+In our example, the Internet Archive identifier is already a suitable **objectid**. You simply need to rename the corresponding column header in your CSV file to objectid.
 
-  In our example, the Internet Archive identifier is already a suitable **objectid**. You simply need to rename the corresponding column header in your CSV file to objectid.
 
-
-* **filename**: This field contains the direct URL to your digital object, such as a PDF, image, or audio file. For objects hosted on the Internet Archive, you can choose the display option that works best for your exhibition, which could be a specific page opening or full-screen theatre view.  In our example, we want visitors to see the full-screen flipbook version of each item, so we use URLs like [https://archive.org/details/BP_CCTT_0002/mode/thumb?view=theater](https://archive.org/details/BP_CCTT_0002/mode/thumb?view=theater). TIP: Every Internet Archive URL uses the identifier, so it’s easy to construct whichever one you want to feature.   
+* **filename**: This field contains the direct URL to your digital object, such as a PDF, image, or audio file. For objects hosted on the Internet Archive, you can choose the display option that works best for your exhibition, which could be a specific page opening or full-screen theatre view.  In our example, we want visitors to see the full-screen flipbook version of each item, so we use URLs like [https://archive.org/details/BP_CCTT_0002/mode/thumb?view=theater](https://archive.org/details/BP_CCTT_0002/mode/thumb?view=theater). TIP: Every Internet Archive URL uses the identifier, so it is easy to construct whichever one you want to feature.   
+  
     
-* **title**: This should correspond to a title that the original object carries. It is recommended that it be short and descriptive. In our example, some playbills have more than one play, so we have separated the play titles with a semicolon. Ex: Othello; The Deserter  
-    
+* **title**: This should correspond to a title that the original object carries. It is recommended that it be short and descriptive. In our example, some playbills have more than one play, so we have separated the play titles with a semicolon. Ex: Othello; The Deserter
+  
 * **format**: This field indicates the item’s media type. Since CollectionBuilder uses logic based on format to display objects, this is a key field for ensuring the interactive visualizations and item pages function correctly. If there are errors or anomalies, some pages will not work. For normal items, the value of this field should match the standard [MIME type](https://www.iana.org/assignments/media-types/media-types.xhtml) corresponding to your item’s file, consisting of a type and a subtype concatenated with a slash (/) between them. This can generally be inferred by looking at the file extension (e.g. “.jpg”, “.pdf”, etc). The common MIME type “format” values supported by CB-GH are:  
     
   * Image: image/jpeg, image/png  
@@ -138,32 +178,36 @@ Below, we explain only the fields required for this example project. You can exp
   * Audio: audio/mp3  
   * Video: video/mp4
 
-#### Metadata Fields used for Visualizations
 
-CollectionBuilder features automatic creation of views or entry points to the collection, using the information provided in the metadata file. These will generate interactive views to explore the collection on different pages. Each “extra” page needs a different type of information, which is explained below:
+#### 3.2 Metadata Fields used for visualizations
+
+CollectionBuilder automatically creates views or entry points to the collection using the information provided in the metadata file. These will generate interactive views to explore the collection on different pages. Each “extra” page needs a different type of information, which is explained below:
 
 * **date**: This field typically refers to the date of creation or publication of an object and is used for sorting and displaying on the timeline. The format to follow is YYYY-MM-DD, with the four digits of the year being the minimum value needed to form the timeline. If you have date information that does not fit into this ISO format, like [?-02-24] or [date unknown] or 1900s, you can add a new metadata field under a different name so that this information is displayed with the items, but not included in the timeline visualization.   
 * **map**: To create a map, you need the metadata fields in the columns latitude (north-south information) and longitude (east-west information), that is, the coordinate data of a location corresponding to the object you present in the exhibition. Our playbills collection does not have geographical metadata like latitudes and longitudes, so we have done some research into *possible* locations of the listed theatres and added them to our demo to give you an idea of how the map works.   
 * **subjects**: Create a word cloud with the topics that each object deals with in the subject column. You can put multiple topics in each box (for each object) and separate them with a semicolon ( ;). In our example, each playbill has been given genres like comic drama; comedy; extravaganza, which follow the order of appearance on the playbill.
 
-#### Optional fields
+
+#### 3.3 Optional fields
 
 CollectionBuilder templates can support as many descriptive metadata fields as you want, following the interests of the digital collection's creators and audience.
 
 Some common additions include:
 
-* **creator**: Name of the person who created the original object that has been digitized, or in our case, the name of the playwright  
-* **description**: A brief note about the object  
-* **source**: Designates the source of the object, such as its location in the physical collection   
+* **creator**: Name of the person who created the original object that has been digitized, or in our case, the name of the playwright.  
+* **description**: A brief note about the object.  
+* **source**: Designates the source of the object, such as its location in the physical collection.   
 * **language**: You can indicate the language associated with the object. CollectionBuilder recommended best practice is to use a controlled vocabulary such as [http://www.loc.gov/standards/iso639-2/php/code_list.php](http://www.loc.gov/standards/iso639-2/php/code_list.php).  
-* **rights**: A free text statement containing information about the audience's rights over digital objects. Complements the standardized right statement.   
-* **rights statement:** Link to a standardized interoperable rights statement from [https://rightsstatements.org/en/](https://rightsstatements.org/en/)
+* **rights**: A free text statement containing information about the audience's rights over digital objects. Complements the standardized rights statement.   
+* **rights statement:** Link to a standardized interoperable rights statement from [https://rightsstatements.org/en/](https://rightsstatements.org/en/).
 
-## 3. Setting up CollectionBuilder
 
-Before you can set up your digital exhibition, you'll need a [GitHub account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) for your archive, library, museum, or personal use. These accounts are free and can be used for various purposes. Once you have an account and are logged in, you can proceed with the lesson. [More information on working with](https://collectionbuilder.github.io/cb-docs/docs/repository/gitworkflow/) GitHub.
+## 4. Setting up CollectionBuilder
 
-### 3.1 Clone the repository
+Before you can set up your digital exhibition, you willneed a [GitHub account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) for your archive, library, museum, or personal use. These accounts are free and can be used for various purposes. Once you have an account and are logged in, you can proceed with the lesson. [More information on working with](https://collectionbuilder.github.io/cb-docs/docs/repository/gitworkflow/) GitHub.
+
+
+### 4.1 Clone the repository
 
 To set up CollectionBuilder for your exhibition, you first need to copy the template you want to use, which in our case is [collectionbuilder-gh](https://github.com/CollectionBuilder/collectionbuilder-gh). 
 
@@ -181,21 +225,24 @@ In the "Create a new repository" screen, you must name your new repository. The 
 
 #### Repository contents
 
+
 Now that you have cloned the template for your exhibition, let’s take a closer look at each folder and its role in your site.
 
-* **_data**: Contains three types of files that help form the “skeleton” of the display. The demo and template comma-separated values (CSV) files are examples for various digital object types and can be left alone as references. We will later be adding your metadata file to this folder. Several configuration files let you edit the vocabulary for browsing objects (config-browse.csv), viewing the map (config-map.csv), metadata (config-metadata.csv), general navigation or menu (config-nav.csv), search (config-search.csv), and a table (config-table.csv). Lastly, there is the YML type file (human-readable data serialization format) for configuring the page theme, which you do not have to worry about.  
-* **_includes and _layouts**: These folders contain the HTML files that make up many of the features of the CollectionBuilder tool. In this lesson, we will be doing all of our customization without touching these files.  
-* **_sass and assets**: This is where you'll find the SCSS (Syntactically Awesome Style Sheets) files that provide the visual side of the web page (colours, font sizes, etc.) and the JSON (JavaScript Object Notation) files that make everything work. Editing the CSS or JSON is only necessary for very advanced customization, so you will not generally need to edit these files.
+* **_data**: Contains three types of files that help form the “skeleton” of the display. The demo and template comma-separated values (CSV) files are examples for various digital object types and can be left alone as references. We will later be adding your metadata file to this folder. Several configuration files let you edit the vocabulary for browsing objects (config-browse.csv), viewing the map (config-map.csv), metadata (config-metadata.csv), general navigation or menu (config-nav.csv), search (config-search.csv), and a table (config-table.csv). Lastly, there is a YML type file (a human-readable data serialization format) for configuring the page theme, which you do not need to worry about.  
+* **_includes and _layouts**: These folders contain the HTML files that make up many of the features of the CollectionBuilder tool. In this lesson, we will complete all customization without touching these files.  
+* **_sass and assets**: This is where you will find the SASS (Syntactically Awesome Style Sheets) files that provide the visual side of the web page (colours, font sizes, etc.) and the JSON (JavaScript Object Notation) files that make everything work. Editing the CSS or JSON is only necessary for very advanced customization, so you will not generally need to edit these files.
 
-### 3.2 Upload your metadata
 
-From the homepage of your repository on GitHub, click on the **_data** folder. This is where you will upload your metadata file. You will also notice several demo and template files in the framework for reference. While not necessary for your exhibit, we recommend not deleting them so you can reference them in the future.
+### 4.2 Upload your metadata
 
-To add your metadata file, click the **Add File button** at the top right corner and follow the prompts to upload your CSV file.
+From the homepage of your repository on GitHub, click on the **_data** folder. This is where you will upload your metadata file. You will also notice several demo and template files in the framework for reference. While not necessary for your exhibition, we recommend leaving them as is so you can reference them later.
 
-After you click the "Commit changes' button, your file is in the repository.
+To add your metadata file, click the **”Add File” button** at the top right corner and follow the prompts to upload your CSV file.
 
-### 3.3 Configuration
+After you click the "Commit changes” button, your file is in the repository.
+
+
+### 4.3 Configuration
 
 Since your **_data** folder contains several metadata files, the next step is to tell the CollectionBuilder template which one to use for your exhibition.
 

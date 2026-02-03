@@ -232,7 +232,6 @@ Now that you have cloned the template for your exhibition, let’s take a closer
 * **_includes and _layouts**: These folders contain the HTML files that make up many of the features of the CollectionBuilder tool. In this lesson, we will complete all customization without touching these files.  
 * **_sass and assets**: This is where you will find the SASS (Syntactically Awesome Style Sheets) files that provide the visual side of the web page (colours, font sizes, etc.) and the JSON (JavaScript Object Notation) files that make everything work. Editing the CSS or JSON is only necessary for very advanced customization, so you will not generally need to edit these files.
 
-
 ### 4.2 Upload your metadata
 
 From the homepage of your repository on GitHub, click on the **_data** folder. This is where you will upload your metadata file. You will also notice several demo and template files in the framework for reference. While not necessary for your exhibition, we recommend leaving them as is so you can reference them later.
@@ -241,32 +240,31 @@ To add your metadata file, click the **”Add File” button** at the top right 
 
 After you click the "Commit changes” button, your file is in the repository.
 
-
 ### 4.3 Configuration
 
 Since your **_data** folder contains several metadata files, the next step is to tell the CollectionBuilder template which one to use for your exhibition.
 
 To do this, we will edit the **_config.yml** file:
 
-Under the heading # COLLECTION SETTINGS change line 37 **metadata: demo-metadata** to the name of your metadata file you just uploaded. In our example, we changed it to **metadata: playbills-demo**
+Under the heading # COLLECTION SETTINGS change line 37 **metadata: demo-metadata** to the name of your metadata file you just uploaded. In our example, we changed it to **metadata: playbills-demo**.
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-03.png" alt="Screenshot of the relevant section of the config.yml file showing where to point CollectionBuilder to your metadata file." caption="Figure 3. Screenshot of the relevant section of the `config.yml` file showing where to point CollectionBuilder to your metadata file." %}
 
-### 3.4 Publish your site
+### 4.4 Publish your site
 
-While you could skip to the section to completely customize your exhibition before you publish your site live on the web, it can be helpful to publish at this stage so you can see the changes you’ve already made and make sure the metadata and objects are working as expected.
+While you could skip to the section to fully customize your exhibition before publishing your site live on the web, it can be helpful to publish at this stage so you can see the changes you have already made and ensure the metadata and objects are working as expected.
 
-To publish your site using GitHub Pages, you just need to edit a few settings. From your repository home page, click on the settings option at the top right.
+To publish your site using GitHub Pages, you just need to edit a few settings. From your repository home page, click on the “Settings” option at the top right.
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-04.png" alt="Screenshot of GitHub demo repository page with a yellow circle around the Settings button." caption="Figure 4. Screenshot of GitHub demo repository page with a yellow circle around the Settings button." %}
 
-Select **Pages** from the left side menu:
+Select **”Pages”** from the left side menu:
 
 * Under Source, leave the “Source” dropdown option as “Deploy from a branch”.  
 * Use the “Branch” dropdown to change from “none” to “main” (leave the folder option as “/root”).   
-* Click the **Save** button.
+* Click the **”Save”** button.
 
-It will now take GitHub a few minutes to build your site using the contents of your repository for the first time.
+It will now take GitHub a few minutes to build your site for the first time using the contents of your repository.
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-05.png" alt="Screenshot of the GitHub message you will get while GitHub is building your site." caption="Figure 5. Screenshot of the GitHub message you will get while GitHub is building your site." %}
 
@@ -277,27 +275,27 @@ When your site is ready, refresh the page, and you will see the URL to your live
 Click on the link, and **VOILA**, your digital exhibition, using *the defaults* from the CollectionBuilder template, and your metadata are live.
 
 
+
 #### Troubleshooting
 
-Did you follow all the above steps, and don’t see what you expect?
+Did you follow all the steps above and still not see what you expect?
 
 * [A common issue](https://collectionbuilder.github.io/cb-docs/docs/metadata/uploading/) is that your spreadsheet contains some UTF-8 Errors, which prevent the metadata from being displayed.  
 * Check your metadata sheet to see if your field names match exactly the ones in the metadata template. For example, objectID is not the same as objectid  
-* Have all of your commits or changes been processed? You can click on the clock with the number of commits and check if they have a green check mark next to them.
-
+* Have all of your commits or changes been processed? You can click the clock icon with the number of commits and check whether it has a green check mark next to it.
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-07.png" alt="Screenshot of GitHub demo repository page with a yellow circle around the Commits link, which you can use to check the status of your commits." caption="Figure 7. Screenshot of GitHub demo repository page with a yellow circle around the Commits link, which you can use to check the status of your commits." %}
 
 
-## 4. Customizing your digital exhibition
+## 5. Customizing your digital exhibition
 
 Now that your digital exhibition is available online, let's customize it.
 
-### 4.1 Home page
+### 5.1 Home page
 
 The first thing someone sees when they visit your site is the home page, and there are several ways you can customize it to encourage readers to explore your exhibition.
 
-The first change we will make is to add our logo, banner image, and update the text in the description box.
+The first change we will make is to add our logo and banner image, and update the text in the description box.
 
 Open the **_config.yml** file again. Under **#SITE SETTINGS**, update your site's title, tagline, and description.
 
@@ -305,75 +303,79 @@ Open the **_config.yml** file again. Under **#SITE SETTINGS**, update your site'
 
 Under **Site/Organization Branding** section, you can add as much organizational information as you want. In this screenshot, you can see our library name and URL: 
 
-
  {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-09.png" alt="Screenshot of the relevant text in the config.yml file for updating your organizational information." caption="Figure 9. Screenshot of the relevant text in the `config.yml` file for updating your organizational information." %}
  
 Next, add a banner or a featured image to the home page by editing the **theme.yml** in the **_data** folder. If your exhibition includes images, you can add the **objectID** of any image to feature it. This has the added advantage of automatically including a link to the featured image in your collection, as seen in the [https://www.lib.uidaho.edu/digital/psychiana/](https://www.lib.uidaho.edu/digital/psychiana/) example.
 
 Since our collection consists solely of PDF objects, we created a collage of some covers for the banner. To use this file in your header, you need to first upload it to the **/assets/img** folder and then add that path to the **theme.yml** file in the **_data** folder.
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-10.png" alt="Screenshot of the relevant text in the theme.yml file for configuring the display of the banner image if you are not using an object from your collection." caption="Figure 10. Screenshot of the relevant text in the theme.yml file for configuring the display of the banner image if you are not using an object from your collection." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-10.png" alt="Screenshot of the relevant text in the theme.yml file for configuring the display of the banner image if you are not using an object from your collection." caption="Figure 10. Screenshot of the relevant text in the `theme.yml` file for configuring the display of the banner image if you are not using an object from your collection." %}
 
 You can also use an external URL if you want to host your banner somewhere outside the project.
+
 
 #### Front page content boxes
 
 Next, we can change the number and arrangement of content boxes that appear on the home page by editing the **home-infographic.html** file in the **_layouts** folder. 
 
-In our example, we’ve used the location metadata field to indicate the physical location of the playbill, which helps library staff retrieve the items if requested. However, you do not necessarily need to be able to browse that on the front page.
+In our example, we have used the location metadata field to indicate the playbill's physical location, which helps library staff retrieve the item if requested. However, you do not necessarily need to be able to browse that on the front page.
 
-To delete that box, first, locate the line of code between the `and` that uses `field="location"` and delete the entire line of code on line 19. We also want to delete the “objects” box line of code on line 21 since everything in our example exhibition is a PDF, so it didn’t give the viewer any useful information to browse.
+To delete that box, first, locate the line of code between the `and` that uses `field="location"` and delete the entire line of code on line 19. We also want to delete the “objects” box line of code on line 21 since everything in our example exhibition is a PDF, so it did not give the viewer any useful information to browse.
 
 The next thing you can do is change the order of the boxes. In our example, we moved the subject box to the top and pushed the timeline down. We also changed the title of the Subject box to **Top Genre** to better reflect the metadata.
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-11.png" alt="Screenshot of home-infographic.html code showing the changes to the box order and the title of the subject box." caption="Figure 11. Screenshot of home-infographic.html code showing the changes to the box order and the title of the subject box." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-11.png" alt="Screenshot of home-infographic.html code showing the changes to the box order and the title of the subject box." caption="Figure 11. Screenshot of `home-infographic.html` code showing the changes to the box order and the title of the subject box." %}
 
-### 4.2 Item page
+### 5.2 Item page
 
 Next, let’s examine the default item page where your viewer will see your digital object and the corresponding metadata. There are a number of changes that can be made to the default page including which metadata fields are shown, in what order, what the labels are, and whether we want them to inter-link to other items on your site or include external links.
 
 To make changes, go to the **_data** folder and open the **config-metadata.csv** file. The top line (1) is the table header, which tells us what each column means. Field references the metadata field name in your metadata CSV file, and display_name is what is shown on your item page.  The browse_link and external_link columns are where you can turn on hyperlinking of fields or make a field link to an external website after each row below matches up to a metadata field that is displayed on your item page.  
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-12.png" alt="Screenshot of the config-metadata.csv file with the updates specified in the lesson" caption="Figure 12. Screenshot of the `config-metadata.csv` file with the updates specified in the lesson" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-12.png" alt="Screenshot of the config-metadata.csv file with the updates specified in the lesson." caption="Figure 12. Screenshot of the `config-metadata.csv` file with the updates specified in the lesson." %}
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-13.png" alt="Screenshot of the metadata section of the demo exhibit." caption="Figure 13. Screenshot of the metadata section of the demo exhibit to show the same changes from the `config-metadata.csv` file" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-13.png" alt="Screenshot of the metadata section of the demo exhibition." caption="Figure 13. Screenshot of the metadata section of the demo exhibition to show the same changes from the `config-metadata.csv` file." %}
 
-For the playbills example, you can add some new metadata terms to the item page that were specific to these materials, like Playwright and Theatre Name and change the display_name of the title field to the more descriptive, Play Title. 
+For the playbills example, you can add some new metadata terms to the item page that were specific to these materials, like Playwright and Theatre Name, and change the display_name of the title field to the more descriptive, Play Title. 
 
-To make those new fields browsable/clickable to encourage people to explore more playbills, for example, a specific Playwright or plays that are shown in one particular theatre. To do this, add the value **true**. 
+You can make those new fields browsable/clickable to encourage people to explore more playbills by a specific playwright or shown in a particular theatre, for example. To do this, add the value **true**. 
 
 TIP: In our example, some playbills advertise multiple plays with multiple playwrights. To ensure that those show up as separate values your visitor can browse, make sure they are separated in your metadata CSV with a semicolon. Then CollectionBuilder will automatically show that they are separate links.
 
-Lastly, we added the full URL of the item for easier access. Add a new line near the bottom (line 11) and add the value **true** under external_link. This makes the ENTIRE field a hyperlink, so if you include text and a URL, it won’t work. The metadata field can either have text or an external link, not both. 
+Lastly, we added the full URL of the item for easier access. Add a new line near the bottom (line 11) and add the value **true** under external_link. This makes the ENTIRE field a hyperlink, so if you include text and a URL, it won’t work. The metadata field can contain text or an external link, but not both. 
 
-### 4.3 Configure search and browse experience
-Related to metadata configuration is the search and browse configuration. If you add a new metadata field to your item page, you will also need to add it to the config-search.csv file in the _data folder to make it searchable. The second step to make the browse_link work will be to add the two fields to the config-browse.csv in the same _data folder.  
+Bonus - If you are using PDFs (like in our example) and would like to add thumbnails on your item page we have created instructions on [our extra content page](https://nnunn.github.io/CollectionBuilder-tutorial-extras/). 
 
-Depending on your site goals and audience, you might want to add further customization. To learn about what more you can do, visit the CollectionBuilder documentation at [https://collectionbuilder.github.io/cb-docs/docs/customization/](https://collectionbuilder.github.io/cb-docs/docs/customization/) and play around 
 
-### 4.3 Information or Interpretive pages
+### 5.3 Configure search and browse experience
+Related to metadata configuration is the search and browse configuration. If you add a new metadata field to your item page, you will also need to add it to the **config-search.csv** file in the _data folder to make it searchable. The second step to make the browse_link work will be to add the two fields to the **config-browse.csv** in the same _data folder.  
 
-One of the great things about building your online exhibition is that you can add as many information or interpretive pages as you like to tell the narrative of your collection. These pages are written in Markdown and can include various liquid formatting blocks and images.
+Depending on your site goals and audience, you might want to add further customization. To learn about what more you can do, visit the CollectionBuilder documentation at [https://collectionbuilder.github.io/cb-docs/docs/customization/](https://collectionbuilder.github.io/cb-docs/docs/customization/) and play around. 
+
+### 5.3 Information or Interpretive pages
+
+One of the great things about building your online exhibition is that you can add as many information or interpretive pages as you like to tell the narrative of your collection. These pages are written in Markdown and can include various [liquid](https://liquidjs.com/tutorials/intro-to-liquid.html) formatting blocks and images.
 
 Included in the template is an **About page**, which is an excellent place to include more information about your exhibition and collection of objects, like:
 
 * A brief description of why the exhibition exists.  
 * Who is responsible for curating the objects presented in the digital collection?  
 * A list of credits for the people who worked on the exhibition  
-* What/Who is responsible for creating and maintaining the site?  
+* What or who is responsible for creating and maintaining the site?  
 * Who is funding the project?
 
 #### Editing the About page
 
-All informational pages are written in a Markdown script format with a simple Jekyll formatting system, configuring their display. To process them, all of these pages follow the YAML starter format that begins with three dashes ( ---) at the beginning and three at the end. The three elements needed to process the page are between these dashes: title, layout and permalink. This information will not be visible on the final page of your digital exhibition.
+All informational pages are written in Markdown and use a simple Jekyll formatting system to configure their display. To process them, all of these pages follow the YAML starter format that begins with three dashes ( ---) at the beginning and three at the end. The three elements needed to process the page are between these dashes: title, layout and permalink. This information will not be visible on the final page of your digital exhibition.
 
 To edit the About page, navigate to the **pages** folder and find the **about.md** file. When you click on the pencil icon to edit, you will see that the file includes the YAML block explained above.
 
 If you want to add a new page, you can follow the instructions in the CollectionBuilder documentation:
 
-* [https://collectionbuilder.github.io/cb-docs/docs/pages/add_page/](https://collectionbuilder.github.io/cb-docs/docs/pages/add_page/)  
-* [https://collectionbuilder.github.io/cb-docs/docs/pages/interpretive/](https://collectionbuilder.github.io/cb-docs/docs/pages/interpretive/)
-### 4.4 Navigation
+* [Add a Page to Your Site](https://collectionbuilder.github.io/cb-docs/docs/pages/add_page/)  
+* [Interpretive Pages](https://collectionbuilder.github.io/cb-docs/docs/pages/interpretive/)
+
+### 5.4 Navigation
 
 The last thing we will edit is the navigation bar. Similar in format to the item page fields, this is managed in the **config-nav.csv** file found in the **_data** folder. 
 
@@ -381,67 +383,12 @@ In our example, you could edit the **display_name** in our navigation bar from S
 
 With those final edits, you have a fully customized exhibition site that is ready for the world to see. Congratulations!
 
-## Bonus Customization: Adding Thumbnails when you have PDF files
-
-If you are comfortable experimenting with code and HTML, here’s an example of an advanced customization option that goes beyond the prerequisites for this tutorial.  
-
-If you are using PDF files, as we did in our example, by default, you will not have thumbnails when browsing. To add a thumbnail, the first step is to add the URL to the image to your metadata CSV, [see our example](https://github.com/sarahseverson/ph-demo-playbills/blob/main/_data/ph-demo-playbills.csv), in your **_data folder** in a new column named **image_thumb**. 
-
-The second step is to configure some layout files to instruct the page: if a custom thumbnail image is available, use it instead of the default icon.
-
-1. Find the following file: **_includes/js/browse-js.html.**  
-2. Find the section that starts with:
-
-*var items = [*
-
-Inside the curly braces { \... } for each item, add this line somewhere near the top:
-
-```
-*\"image_thumb\": {{ i.image_thumb \| jsonify }},*
-```
-
-For example, the block might look like this:
-
-```
-*{ \"title\":{{ i.title \| strip \| jsonify }},\
-\"format\":{{ i.format \| jsonify }},\
-\"image_thumb\": {{ i.image_thumb \| jsonify }},\
-\...\
-```
-
-This adds the thumbnail value from your metadata into the JavaScript object so it can be used later.
-
-3\. Update the makeCard() function to show the thumbnail:
-
-In the same file, find the makeCard(obj) function. In that function, find this section:
-
-*// thumb for non-photo items\
-```
-if(thumbSrc){\
-card += \'\<p\>\<a href=\"\' + itemHref + \'\"\>\<img class=\"lazyload
-w-50\" data-src=\"\' + thumbSrc + \'\" alt=\"Image of \' + obj.title +
-\'\"\>\</a\>\</p\>\';\
-}*
-```
-
-Replace that whole part with this:
-
-```
-*// show thumbnail if available\
-if(obj.image_thumb) {\
-card += \'\<p\>\<a href=\"\' + itemHref + \'\"\>\<img class=\"lazyload
-w-50\" data-src=\"\' + obj.image_thumb + \'\" alt=\"Thumbnail of \' +
-obj.title + \'\"\>\</a\>\</p\>\';\
-} else if(thumbSrc){\
-card += \'\<p\>\<a href=\"\' + itemHref + \'\"\>\<img class=\"lazyload
-w-50\" data-src=\"\' + thumbSrc + \'\" alt=\"Icon of \' + obj.title +
-\'\"\>\</a\>\</p\>\';\
-}*
-```
-
 # Conclusion 
 Congratulations! You have built a digital exhibition using CollectionBuilder-GH. 
 
-Whether your project is a one-time exhibition or part of a broader digital collection strategy, CollectionBuilder offers a flexible, open-source, minimal computing platform that scales with your needs and skills. And because it's built with static web technologies and uses interoperable standards, your exhibition is built to last.
+Whether your project is a one-time exhibition or part of a broader digital collection strategy, CollectionBuilder offers a flexible, open-source, minimal computing platform that scales with your needs and skills. Because it is built with static web technologies and uses interoperable standards, your exhibition is designed to last.
 
-This is just the beginning. You can continue to refine your site, experiment with new features, or even [migrate your project from the GH template to the more advanced CSV template](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/transfer-walkthrough/). The CollectionBuilder documentation is always there to guide you, and the community is very helpful—don’t hesitate to reach out, share your project, or fork someone else's for inspiration.
+Beyond the technical skills you have developed, this tutorial models a sustainable approach to digital scholarship: one that leverages existing infrastructure, maintains connections to authoritative sources, and prioritizes interpretation over infrastructure. By linking to canonical versions rather than duplicating materials, your exhibition participates in a broader digital ecosystem.
+
+This is just the beginning. You can continue to refine your site, experiment with new features, or even [migrate your project from the GH template to the more advanced CSV template](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/transfer-walkthrough/). The CollectionBuilder documentation is always there to guide you, and the community is very helpful—do not hesitate to reach out, share your project, or fork someone else's for inspiration.
+

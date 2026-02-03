@@ -51,22 +51,31 @@ To do this lesson, you will need the following:
 
 **Canonical Version**
 The authoritative instance of a digital object in its original location or repository. Rather than creating duplicate copies, linking to canonical versions means pointing to the officially maintained file.
+
 **CSV (Comma-Separated Values)** 
 A plain text file format used to store tabular data, where each row represents a record and commas separate the individual fields or values.
+
 **Digital Collection**
 An online, organized set of digitized or digital materials, described with metadata to enable browsing and searching.
+
 **Digital Exhibition**
 An online presentation of curated materials, often from a digital collection, organized around a particular topic or theme. Often used to give visitors context or interpretive information about the materials.
+
 **GitHub**
 A web-based platform for storing, sharing, and collaborating on code and digital projects using version control.
+
 **GitHub Repository** 
 A storage location on GitHub that contains all the files, folders, and version history for a particular project.
+
 **Internet Archive** 
 A non-profit digital repository that provides free access to collections of digital materials, including websites, books, videos, images, and software.
+
 **Markdown**
 A lightweight markup language that uses plain text formatting syntax to create formatted documents.
+
 **Metadata**
 Structured information that describes digital objects, such as title, creator, date, description, and other details that help organize and identify items in a collection.
+
 **Schema** 
 A structured framework that defines how data should be organized, including the fields, data types, and relationships between different elements in a database or metadata system.
 

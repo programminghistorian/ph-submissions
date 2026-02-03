@@ -314,7 +314,7 @@ a, button, input, select {
 }
 ```
 
-This file is a cascading style sheet file. It came from the [examples folder](https://github.com/mrdoob/three.js/tree/master/examples) at three.js' github, which contains all the source code for the [three.js example sites](https://threejs.org/examples/). Save the main.css file and then you can close it. 
+This file is a cascading style sheet file. It came from the [examples folder](https://github.com/mrdoob/three.js/tree/master/examples) at three.js' github, which contains all the source code for the [three.js example sites](https://threejs.org/examples/). Save the main.css file and then you can close it. You should have a directory structure as seen in Figure 11.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-11.png" alt="A screenshot of the VSC editor with the director structure of the myscene folder." caption="Figure 11. The directory structure can be seen in the left hand panel of the VSC editor. The index.html file contents are shown in the main panel. A VSC terminal is open and shown in the bottom panel." %}
 
@@ -331,13 +331,15 @@ In the terminal type
 npx serve
 ```
 
-This will serve your site, normally to port 3000, but check the message to see what local address is being used. Open a web browser and go to that address (i.e. http://localhost:3000). If all is working you will see a black page with 'three.js The Jars of Papua'. If you encounter problems when using Windows, you may need to type the following into the terminal.
+This will serve your site, normally to port 3000, but check the message to see what local address is being used. Open a web browser and go to that address (i.e. http://localhost:3000). If all is working you will see a black page with 'three.js The Jars of Papua' (Figure 12). 
+
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-12.png" alt="Black page with small title (three.js The Jars of Papua), top centre." caption="Figure 12. Webpage with black background and small title (three.js The Jars of Papua)." %}
+
+If you encounter problems when using Windows, you may need to type the following into the terminal.
 
 ```
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ```
-
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-12.png" alt="Black page with small title (three.js The Jars of Papua), top centre." caption="Figure 12. Webpage with black background and small title (three.js The Jars of Papua)." %}
 
 You do not normally need to stop the server when you change the code, but you may need to stop if a mistake causes issues, or if you want to take a break. **To stop the server use Ctrl + C in the terminal. You can restart with 'npx serve', or use the keyboard up arrow to find previous terminal commands.** 
 
@@ -381,7 +383,7 @@ The animate function will continuously call the ```render``` function. The conve
 
 The renderer needs a scene and a camera. Within the init function, you will create a scene with a background colour, and then a camera. The position of the camera is important; sometimes you can not see your models because the camera is looking away from them or they are outside the boundaries of what it can see (i.e. its field of view). 
 
-You will use a perspective camera, and give it parameters that define its field of view. These field of view arguments are: [the vertical field of view in angles](https://en.wikipedia.org/wiki/Field_of_view); the horizontal to vertical aspect; and the boundaries for culling objects that are too close or too far from the camera. The aspect of the view can be taken from the browser window's dimensions and you will later add a function so that it is updated if the browser window is resized. The units for three.js are metres, so this camera will not render to the screen anything nearer to 0.1m and further than 10m. When moving the camera is introduced later, you will see objects disappear if they get too close.
+You will use a perspective camera, and give it parameters that define its field of view. These field of view arguments are: [the vertical field of view in angles](https://en.wikipedia.org/wiki/Field_of_view); the horizontal to vertical aspect; and the boundaries for culling objects that are too close or too far from the camera. The aspect of the view can be taken from the browser window's dimensions and you will later add a function so that it is updated if the browser window is resized. The units for three.js are metres, so this camera will not render to the screen anything nearer than 0.1m and further than 10m. When moving the camera is introduced later, you will see objects disappear if they get too close.
 
 The camera and other positions are set in x, y and z order. As mentioned previously, x is left (-) and right (+), y is down (-) and up (+) and z is far/'into the screen' (-) and near/'coming out from the screen' (+). The camera is set at a height of 1.6m, and later the model will be at 0.8m. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
 You will make the page background peach (0xf7d382). To specify colours you can use the colour [hex code](https://www.color-hex.com) after '0x'.
@@ -582,7 +584,7 @@ By putting instructions, such as changing the model scale, in a function that is
 
 You can add mouse controls to allow us to move around the scene. Some controls, including [orbit](https://threejs.org/examples/?q=controls#misc_controls_orbit), [map](https://threejs.org/examples/?q=controls#misc_controls_map), [fly](https://threejs.org/examples/?q=controls#misc_controls_fly), [pointer lock](https://threejs.org/examples/?q=controls#misc_controls_pointerlock) and [trackball](https://threejs.org/examples/?q=controls#misc_controls_trackball), change the position of the camera. Others, such as [drag](https://threejs.org/examples/?q=controls#misc_controls_drag) and [transform](https://threejs.org/examples/?q=controls#misc_controls_transform), can alter the position of objects.  
 
-You will first use 'orbit' controls that allow the user to navigate the scene with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key, or using the right mouse button) or zooming (with mouse scrolling). You need to import any controls.
+You will first use orbit controls that allow the user to navigate the scene with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key, or using the right mouse button) or zooming (with mouse scrolling). You need to import any controls.
 
 **After** the following line of code:
 

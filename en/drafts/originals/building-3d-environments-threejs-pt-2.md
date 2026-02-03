@@ -61,21 +61,24 @@ loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error
 In the next section of this lesson, we will explain how you should plan out and design your interactive scene before building it. 
 
 ## Planning
-Before constructing a scene or game it is helpful to draft out (by hand or using PowerPoint etc) mock ups in all three views (i.e. "front-view", "side-on" and "birds-eye") (Figure 3). In the mock-ups, include the positive and negative directions of the axes and rough measurements of distances between objects and their proportions. Three.js uses metres as the measurement unit, although this is only important if you plan to have your site viewable in virtual reality (VR).
 
-Make sure to include a rough camera and light position (where applicable). 
-
-The scene will have 4 planes (a map, and 3 gallery panels), 9 spheres (as part of the colour key used for identifying the vessels), 6 jars (not really shown on the sketch, although their positions are indicated by the sites in the birds-eye view). 
-
-The game will feature 6 tori for the sites, and the jars will appear in an area above the map. You can also use the [three.js editor](https://threejs.org/editor/) to help visualise and refine placements.
+You will remember from part 1 that scenes have a camera, light(s) and models and that you specify where these are placed in 3D space. If you do not remember the 3 (x, y and z) axes (the red, green and blue arrows) in the [three.js editor](https://threejs.org/editor/), you may want to reopen it, or examine Figures 5-10 in part 1. When you have multiple models it is useful to draft out where everything (camera, lights and models) will be placed. You can do this with pen and paper or with whatever graphics software (such as Powerpoint or Affinity Designer) you usually use to create figures. You should draw the three different 2D views, the "front-view", "side-on view" and "birds-eye view" which represent the different axes combinations (x versus y, y versus z and x versus z). Figure 3 shows mock-up views for the game version of the scene that will be created in the second part of this lesson. Note that the non-game mock-ups would be similar but lack the random jar placement area as to start with you will place the jars where they were made.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-03.png" alt="Scene mock-ups in z, x and y views." caption="Figure 3. Affinity Designer versions of the hand-drawn sketches for planning the game. Mock-ups of all 3 views are done, with rough coordinates and spacing for the scene assets (here the camera, light, the map, information panels and a key panel featuring 9 spheres, the jar/site positions, and the area in which the jars will randomly start in the game). Coordinates are x, y, z. Note that the light is off the scale in the y axis." %}
 
-Planning your scene will also help you identify where you will be using the same value repeatedly, such as the x and z positions of the key spheres. You can use variables for these values, so that it is easier to alter all instances together. 
+In the mock-ups, include the positive and negative directions of the axes and rough measurements of distances between objects and their proportions. 
+
+Mock-ups are good for identifying what assets (models and textures) you will need. The non-game scene will have 4 planes (a map, and 3 gallery panels), 9 spheres (as part of the colour key used for identifying the vessels), 6 jars (not really shown on the sketch, although their positions are indicated by the sites in the birds-eye view). However the middle gallery panel will change depending on what jar is selected so there will actually be another 6 panels created but not visible.
+
+The game will feature 6 tori for the sites, and the jars will appear in an area above the map. 
+
+You can also use the [three.js editor](https://threejs.org/editor/) to help visualise and refine placements.
+
+Planning your scene will help you identify where you will be using the same value repeatedly, such as the x and z positions of the key spheres. You can use variables for these values, so that it is easier to alter all instances together. 
 
 Planning out your scene will also help ensure you identify where measurements are dependent on other measurements. As you can see in the first mock-up of Figure 3, the height of the galleries is dependent on the height of the map, because they need to be above the map.
 
-You can set a variable 'desk' for the map height and a variable 'gheight' for the gallery height that is dependent on the desk variable (i.e. equal to desk + 0.55). The placement of the map at this y value was because the site was designed to be able to be viewed in VR. 0.8m is a comfortable height for a standing person to look down onto a map and be able to place objects onto it.
+You can set a variable 'desk' for the map height and a variable 'gheight' for the gallery height that is dependent on the desk variable (i.e. equal to desk + 0.55). The placement of the map at this y value was because the site was designed to be able to be viewed in VR. 0.8m is a comfortable height for a standing person to look down onto a map and be able to place objects onto it. Three.js uses metres as the measurement unit, although this is only important if you plan to have your site viewable in virtual reality (VR).
 
 ## Adding the Spheres for a Colour Key
 If you do not have the local server running, save the file and start the server with the following command:

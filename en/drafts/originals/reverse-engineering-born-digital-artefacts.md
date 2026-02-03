@@ -151,17 +151,21 @@ $ hexyl cat-with-hidden-content.jpg | grep -i -A 5 -B 5 'ff d9'
 `ff d9` is the JPEG's EOI marker. Immediately following it, the trained eye will see the ZIP file signature: `50 4b 03 04`. You'll find these on the sixth line of our provided output bellow. By focusing on this specific location of the file, which is towards the end, you can directly observe the "seam" where the JPEG image data stops and a hidden ZIP structure begins.
 
 ```shell
-│000318b0│ 33 90 68 10 43 2c bb 77 ┊ 20 e4 8e be 95 37 98 e1 │3×h•C,×w┊ ××××7××│
-│000318c0│ 40 24 11 de a8 42 ce 17 ┊ ef 71 ed 52 ee fb c8 7d │@$•××B×•┊×q×R×××}│
-│000318d0│ 3a d3 02 c4 4c 16 e7 00 ┊ fc ad 4c bc 8d a1 90 b2 │:×•×L•×⋄┊××L×××××│
-│000318e0│ 8c 81 ce 6a ac 32 12 36 ┊ 9e ab de a6 98 b3 a8 05 │×××j×2•6┊×××××××•│
-│000318f0│ 8e 18 e0 d0 00 2e d7 03 ┊ 9a 29 be 42 7a 51 40 1f │×•××⋄.×•┊×)×BzQ@•│
-│00031900│ ff d9 50 4b 03 04 0a 00 ┊ 00 00 00 00 51 3d b6 5a │××PK••_⋄┊⋄⋄⋄⋄Q=×Z│
-│00031910│ dd dd 14 7d 0d 00 00 00 ┊ 0d 00 00 00 12 00 1c 00 │××•}_⋄⋄⋄┊_⋄⋄⋄•⋄•⋄│
+┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
+│00031900│ ff d9 50 4b 03 04 0a 00 ┊ 00 00 00 00 51 3d b6 5a │××PK••_0┊0000Q=×Z│
+│00031910│ dd dd 14 7d 0d 00 00 00 ┊ 0d 00 00 00 12 00 1c 00 │××•}_000┊_000•0•0│
 │00031920│ 68 69 64 64 65 6e 2d 63 ┊ 6f 6e 74 65 6e 74 2e 74 │hidden-c┊ontent.t│
-│00031930│ 78 74 55 54 09 00 03 4a ┊ b9 2e 68 4a b9 2e 68 75 │xtUT_⋄•J┊×.hJ×.hu│
-│00031940│ 78 0b 00 01 04 e8 03 00 ┊ 00 04 e8 03 00 00 48 65 │x•⋄••×•⋄┊⋄•×•⋄⋄He│
+│00031930│ 78 74 55 54 09 00 03 4a ┊ b9 2e 68 4a b9 2e 68 75 │xtUT_0•J┊×.hJ×.hu│
+│00031940│ 78 0b 00 01 04 e8 03 00 ┊ 00 04 e8 03 00 00 48 65 │x•0••×•0┊0•×•00He│
 │00031950│ 6c 6c 6f 20 57 6f 72 6c ┊ 64 21 0a 50 4b 01 02 1e │llo Worl┊d!_PK•••│
+│00031960│ 03 0a 00 00 00 00 00 51 ┊ 3d b6 5a dd dd 14 7d 0d │•_00000Q┊=×Z××•}_│
+│00031970│ 00 00 00 0d 00 00 00 12 ┊ 00 18 00 00 00 00 00 01 │000_000•┊0•00000•│
+│00031980│ 00 00 00 a4 81 00 00 00 ┊ 00 68 69 64 64 65 6e 2d │000××000┊0hidden-│
+│00031990│ 63 6f 6e 74 65 6e 74 2e ┊ 74 78 74 55 54 05 00 03 │content.┊txtUT•0•│
+│000319a0│ 4a b9 2e 68 75 78 0b 00 ┊ 01 04 e8 03 00 00 04 e8 │J×.hux•0┊••×•00•×│
+│000319b0│ 03 00 00 50 4b 05 06 00 ┊ 00 00 00 01 00 01 00 58 │•00PK••0┊000•0•0X│
+│000319c0│ 00 00 00 59 00 00 00 00 ┊ 00                      │000Y0000┊0       │
+└────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
 ```
 
 You might wonder: if we simply "glue" two files together, why doesn't the computer get confused? The answer lies in the structural paradigms of different file formats. A JPEG is a linear format; a image viewer starts at the top and stops as soon as it hits the `ff d9` (End of Image) marker. It simply ignores anything that follows. A ZIP file, however, operates on a linked or indexed paradigm. Most archive utilities do not read a ZIP from the beginning. Instead, they "seek" to the very end of the file to find the "End of Central Directory" (EOCD) record. The EOCD acts like a book's index, telling the computer exactly where each file starts within the archive. Because the ZIP utility looks at the footer (the end) rather than the header (the beginning), it doesn't care that there is a cat photo sitting on top of its data.
@@ -180,12 +184,12 @@ The older `.doc` format (predominant until 2007) is a complex binary format. If 
 $ hexyl old-word-document.doc -n 256
 
 ┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
-│00000000│ d0 cf 11 e0 a1 b1 1a e1 ┊ 00 00 00 00 00 00 00 00 │××•×××•×┊⋄⋄⋄⋄⋄⋄⋄⋄│
-│00000010│ 00 00 00 00 00 00 00 00 ┊ 3e 00 03 00 fe ff 09 00 │⋄⋄⋄⋄⋄⋄⋄⋄┊>⋄•⋄××_⋄│
-│00000020│ 06 00 00 00 00 00 00 00 ┊ 00 00 00 00 05 00 00 00 │•⋄⋄⋄⋄⋄⋄⋄┊⋄⋄⋄⋄•⋄⋄⋄│
-│00000030│ 0f 02 00 00 00 00 00 00 ┊ 00 10 00 00 11 02 00 00 │••⋄⋄⋄⋄⋄⋄┊⋄•⋄⋄••⋄⋄│
-│00000040│ 01 00 00 00 fe ff ff ff ┊ 00 00 00 00 0a 02 00 00 │•⋄⋄⋄××××┊⋄⋄⋄⋄_•⋄⋄│
-│00000050│ 0b 02 00 00 0c 02 00 00 ┊ 0d 02 00 00 0e 02 00 00 │••⋄⋄_•⋄⋄┊_•⋄⋄••⋄⋄│
+│00000000│ d0 cf 11 e0 a1 b1 1a e1 ┊ 00 00 00 00 00 00 00 00 │××•×××•×┊00000000│
+│00000010│ 00 00 00 00 00 00 00 00 ┊ 3e 00 03 00 fe ff 09 00 │00000000┊>0•0××_0│
+│00000020│ 06 00 00 00 00 00 00 00 ┊ 00 00 00 00 05 00 00 00 │•0000000┊0000•000│
+│00000030│ 0f 02 00 00 00 00 00 00 ┊ 00 10 00 00 11 02 00 00 │••000000┊0•00••00│
+│00000040│ 01 00 00 00 fe ff ff ff ┊ 00 00 00 00 0a 02 00 00 │•000××××┊0000_•00│
+│00000050│ 0b 02 00 00 0c 02 00 00 ┊ 0d 02 00 00 0e 02 00 00 │••00_•00┊_•00••00│
 │00000060│ ff ff ff ff ff ff ff ff ┊ ff ff ff ff ff ff ff ff │××××××××┊××××××××│
 │*       │                         ┊                         │        ┊        │
 │00000100│                         ┊                         │        ┊        │
@@ -200,11 +204,11 @@ To verify this, run hexyl on the provided modern-document.docx:
 $ hexyl modern-word-document.docx -n 256
 
 ┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
-│00000000│ 50 4b 03 04 14 00 06 00 ┊ 08 00 00 00 21 00 1c 41 │PK•••⋄•⋄┊•⋄⋄⋄!⋄•A│
-│00000010│ a8 2e 66 01 00 00 54 05 ┊ 00 00 13 00 08 02 5b 43 │×.f•⋄⋄T•┊⋄⋄•⋄••[C│
+│00000000│ 50 4b 03 04 14 00 06 00 ┊ 08 00 00 00 21 00 1c 41 │PK•••0•0┊•000!0•A│
+│00000010│ a8 2e 66 01 00 00 54 05 ┊ 00 00 13 00 08 02 5b 43 │×.f•00T•┊00•0••[C│
 │00000020│ 6f 6e 74 65 6e 74 5f 54 ┊ 79 70 65 73 5d 2e 78 6d │ontent_T┊ypes].xm│
-│00000030│ 6c 20 a2 04 02 28 a0 00 ┊ 02 00 00 00 00 00 00 00 │l ×••(×⋄┊•⋄⋄⋄⋄⋄⋄⋄│
-│00000040│ 00 00 00 00 00 00 00 00 ┊ 00 00 00 00 00 00 00 00 │⋄⋄⋄⋄⋄⋄⋄⋄┊⋄⋄⋄⋄⋄⋄⋄⋄│
+│00000030│ 6c 20 a2 04 02 28 a0 00 ┊ 02 00 00 00 00 00 00 00 │l ×••(×0┊•0000000│
+│00000040│ 00 00 00 00 00 00 00 00 ┊ 00 00 00 00 00 00 00 00 │00000000┊00000000│
 │*       │                         ┊                         │        ┊        │
 │00000100│                         ┊                         │        ┊        │
 └────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘

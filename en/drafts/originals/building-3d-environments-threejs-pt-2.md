@@ -914,7 +914,7 @@ At the end of each jar movement, you want to check if the jar was moved to the c
 
 If the test is successful, there has to be a signal to the user. Here you will change the background colour to a random colour, and make the jar unmoveable. No signal will be given for an incorrect match. 
 
-You will create an additional group called `unmoveable` and attach any jars to that group that are placed close enough to their torus. Objects can only be attached to one group, so when a model is moved to ```unmoveable``` it will no longer be in ```jars``` and so the mouse will not detect it.
+You will create an additional group called ```unmoveable``` and attach any jars to that group that are placed close enough to their torus. Objects can only be attached to one group, so when a model is moved to ```unmoveable``` it will no longer be in ```jars``` and so the mouse will not detect it.
 
 You need extra variables for the new ```unmoveable``` group, ```selectedObject``` which is the selected jar and the ```truesite```, which is the site that the selected jar should match. As no jar is selected at the start you will make ```truesite``` and ```selectedObject``` ```null``` to start with.
 
@@ -980,7 +980,7 @@ truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z)
 let aposition = selectedObject.position; //get jar position
 ```
 
-You call the `distanceTo` method on the aposition vector to determine the distance between the two vectors, and test if it is smaller than our allowed distance (0.25 * ratio).
+You call the ```distanceTo``` method on the aposition vector to determine the distance between the two vectors, and test if it is smaller than our allowed distance (0.25 * ratio).
 
 **After** the following code:
 
@@ -1039,7 +1039,7 @@ You can save and try to test, but moving in 3D can be difficult. You will make i
 
 This way of placing the jars on the sites can be frustrating for users and the ```onClick``` function is actually called at the end of a drag event, thus you can also alter the ```onClick``` function to register a correct match if the drag ends with the mouse on the correct site.
 
- This alternative means that the match is tested in 2D space instead of in 3D space (as in the first approach). Thus matches are easier, especially for players not experienced with digital 3D environments. 
+This alternative means that the match is tested in 2D space instead of in 3D space (as in the first approach). Thus matches are easier, especially for players not experienced with digital 3D environments. 
  
 If you develop your own games you might want to test different approaches to see what works best. All game and website design guides will advise you that several cycles of user testing and code refinement are important.
 
@@ -1063,7 +1063,7 @@ if(found == truesite){ // tests if site mouse is over is the same as the true ja
   }
 ```
 
-If you use this code, you have to make sure that the `truesite` variable is reset to ```null``` at the end. Otherwise if you move a jar to somewhere and the drag ends with the mouse not being over a site, then click on that jars site it will trigger a match.
+Furthermore, the ```truesite``` variable needs to be reset to ```null``` after testing.
 
 **Within** the onClick function, **after** the following code:
 
@@ -1078,7 +1078,7 @@ You need to **add** the following code:
 truesite = null;	
 ```
 
-You have to be careful with brackets/braces here. The ```onClick``` function now has two nested ```if``` blocks. The `truesite = null;` statement should be outside these ```if``` blocks, but inside the ```onClickfunction```. 
+You have to be careful with brackets/braces here. The ```onClick``` function now has two nested ```if``` blocks. The ```truesite = null;``` statement should be outside these ```if``` blocks, but inside the ```onClickfunction```. 
 
 Now it should be easier to move jars to their sites: you just need the mouse to be directly over the torus when you stop dragging the jar.
 

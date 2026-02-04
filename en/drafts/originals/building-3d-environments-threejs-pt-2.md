@@ -335,13 +335,13 @@ As with the spheres, the jars will get a standard material with a colour that ma
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-08.png" alt="Jar with a sculptured face coloured brown." caption="Figure 8. The Aibom jar with a solid brown colour." %}
 
-You will later change the emissive property of the material to show if a jar is selected (Figure 9).
+Materials such as the standard material (that is being used) have emissive properies that can be turned on, making them appear to have a coloured glow. You will later change the red emissive property of the material to show if a jar is selected (Figure 9).
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-09.png" alt="Jar with a sculptured face brightly coloured red." caption="Figure 9. The Aibom jar with red emission." %}
 
-The jars will be added to a group (called 'jars') and the group will be added to the scene. This will allow us to specify later that objects belonging to the jars group can be selected. 
+The jars will be added to a group (called ```jars```) and the group will be added to the scene. This will allow us to specify later that objects belonging to the jars group can be selected. 
 
-Each jar will get a [userData](https://threejs.org/docs/?q=userdata#Object3D) property that will point to the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. At this stage, you will create 'aibomM.userData.planes', but you could also create additional ones such as 'aibomM.userData.somethingelse' and 'aibomM.userData.anotherthing'.
+Each jar will get a [userData](https://threejs.org/docs/?q=userdata#Object3D) property that will point to the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. At this stage, you will create ```aibomM.userData.planes```, but you could also create additional ones such as ```aibomM.userData.somethingelse``` and ```aibomM.userData.anotherthing```.
 
 Note that the introduction of the 'piecescale' variable is not strictly necessary, as it is set to the same as the ratio, but it can be changed later to alter the relative size of the jars in relation to the map.
 
@@ -435,7 +435,7 @@ loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {con
 ```
 Save and check the model still appears.
 
-However, with this approach you would still need 6 different 'onLoadX' functions, 1 for each model. The code can be condensed further by using 'anonymous' functions, i.e. the function called is not named. 
+However, with this approach you would still need 6 different ```onLoadX``` functions, 1 for each model. The code can be condensed further by using 'anonymous' functions, i.e. the function called is not named. 
 
 You keep the createModel function but **find** the following code:
 
@@ -496,9 +496,9 @@ You can calculate where to set the positions of the jars by taking into account 
 
 ### Adding Jar Selection
 
-Next you want to add an event listener, to be able to select a jar and change the information panel. As with the WindowResize event listener in Part 1, this listener gets the event (in this case ```click```), and a function (known as an 'event handler') you will define. Input events pass event information to their handler, some of which is dependent on the type of event. The 'click' event passes an object (commonly called 'event') that contains the mouse cursor's coordinates relative to the viewport/window. 
+Next you want to add an event listener, to be able to select a jar and change the information panel. As with the WindowResize event listener in Part 1, this listener gets the event (in this case ```click```), and a function (known as an event handler) you will define. Input events pass event information to their handler, some of which is dependent on the type of event. The click event passes an object (commonly called ```event```) that contains the mouse cursor's coordinates relative to the viewport/window. 
 
-To determine what jar in 3D space is being targeted by the user's mouse in 2D space, three.js uses raycasting. Whenever you click, the three.js raycaster 'sends' a 'ray' from the camera position to a pointer whose 2D position is calculated from the click event's information. The raycaster has an 'intersectObjects' method that returns an array of the 3D objects that the cast ray has hit. This array is ordered by distance to the camera so the first in the array (index 0) will be the nearest object. You also tell the 'intersectObjects' method what objects can be intersected and here you will specify children of the jars group. This is the primary reason you made the group.
+To determine what jar in 3D space is being targeted by the user's mouse in 2D space, three.js uses raycasting. Whenever you click, the three.js raycaster 'sends' a 'ray' from the camera position to a pointer whose 2D position is calculated from the click event's information. The raycaster has an ```intersectObjects``` method that returns an array of the 3D objects that the cast ray has hit. This array is ordered by distance to the camera so the first in the array (index 0) will be the nearest object. You also tell the ```intersectObjects``` method what objects can be intersected and here you will specify children of the jars group. This is the primary reason you made the group.
 
 You may also notice that three.js stores coordinates in a 'vector'. A THREE.Vector2 is used for 2D coordinates (referred to as x and y) such as the pointer position, and a THREE.Vector3 is used for 3D coordinates (x, y and z). 
 
@@ -582,7 +582,7 @@ function onClick( event ) { // event is the input event information being passed
 }	
 ```
 
-You can save the file and reload the browser, before clicking on the jars makes them red. However, our intended functionality is for the jars to go back to their original colour after a new jar is selected. Toggling 'material.emissive.r' off and on to indicate selection means you do not have to store what colour the jar was originally, as you can just turn the emissiveness off.
+You can save the file and reload the browser, before clicking on the jars makes them red. However, our intended functionality is for the jars to go back to their original colour after a new jar is selected. Toggling ```material.emissive.r``` off and on to indicate selection means you do not have to store what colour the jar was originally, as you can just turn the emissiveness off.
 
  
 
@@ -628,7 +628,7 @@ selectedPlane = found.userData.planes; // get the new matching information panel
 selectedPlane.visible = true; // make the new panel visible
 ```
 
-Now (after reloading) you should be able to select a jar and the middle information panel should change to give information about that jar. You can try '.emissive.g' or '.emissive.b' to make the selected jar green or blue emissive, if you want.
+Now (after reloading) you should be able to select a jar and the middle information panel should change to give information about that jar. You can try ```.emissive.g``` or ```.emissive.b``` to make the selected jar green or blue emissive, if you want.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-11.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 11. Webpage showing the Aibom jar selected with its red emission set to true, and the Aibom information panel." %}
 
@@ -716,7 +716,7 @@ Save and check the tori appear on site reload.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-12.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 12. Webpage with the jars sitting on tori." %}
 
-You will see that nothing happens when you click on them, as the raycaster is only checking the jars for intersections. So in the `onClick(event)` function, **find** the following code.
+You will see that nothing happens when you click on them, as the raycaster is only checking the jars for intersections. So in the ```onClick(event)``` function, **find** the following code.
 
 ```
 const intersects = raycasterM.intersectObjects( jars.children);	// an array, nearest to camera will be first
@@ -733,7 +733,7 @@ Save and check that the mouse click and panel change now work on tori (as oppose
 
 ### Enabling Jar Movement
 
-To be able to move the jars using the mouse, `DragControls` have to be imported and created. The first argument when creating the `DragControls` determines what they can drag.
+To be able to move the jars using the mouse, ```DragControls``` have to be imported and created. The first argument when creating the ```DragControls``` determines what they can drag.
 
 **After** the following code:
 
@@ -773,7 +773,7 @@ You need to **add** the following code:
 dragControls = new DragControls( [ jars ], camera, renderer.domElement ); // first argument determines drag objects.	
 
 ```
-Then you add event listeners for the `dragstart` and `dragstop` events. Here you will make the handler functions anonymous. You need to turn the orbital controls off while jars are being dragged.
+Then you add event listeners for the ```dragstart``` and ```dragstop``` events. Here you will make the handler functions anonymous. You need to turn the orbital controls off while jars are being dragged.
 
 **After** the following code:
 
@@ -832,7 +832,7 @@ model.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
 model.userData.site = site;
 ```
 
-Then you need to change all 6 of the `createModel` calls that are within the 6 different `loader.load` calls, so **find** the following code:
+Then you need to change all 6 of the ```createModel``` calls that are within the 6 different ```loader.load``` calls, so **find** the following code:
 
 ```
 aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
@@ -914,9 +914,9 @@ At the end of each jar movement, you want to check if the jar was moved to the c
 
 If the test is successful, there has to be a signal to the user. Here you will change the background colour to a random colour, and make the jar unmoveable. No signal will be given for an incorrect match. 
 
-You will create an additional group called `unmoveable` and attach any jars to that group that are placed close enough to their torus. Objects can only be attached to one group, so when a model is moved to `unmoveable` it will no longer be in 'jars' and so the mouse will not detect it.
+You will create an additional group called `unmoveable` and attach any jars to that group that are placed close enough to their torus. Objects can only be attached to one group, so when a model is moved to ```unmoveable``` it will no longer be in ```jars``` and so the mouse will not detect it.
 
-You need extra variables for the new `unmoveable` group, `selectedObject` which is the selected jar and the `truesite`, which is the site that the selected jar should match. As no jar is selected at the start you will make `truesite` and `selectedObject` 'null' to start with.
+You need extra variables for the new ```unmoveable``` group, ```selectedObject``` which is the selected jar and the ```truesite```, which is the site that the selected jar should match. As no jar is selected at the start you will make ```truesite``` and ```selectedObject``` ```null``` to start with.
 
 **Find** the following code:
 
@@ -946,7 +946,7 @@ unmoveable = new THREE.Group();
 scene.add(unmoveable);  
 ```
 
-The event object for drag events contains the identity of the object being dragged (`event.object`), so you can use that in the handler function and you can get the site it should match from its userData.
+The event object for drag events contains the identity of the object being dragged (```event.object```), so you can use that in the handler function and you can get the site it should match from its userData.
 
 **Within** the dragend handler function, **after** the following code:
 
@@ -964,7 +964,7 @@ truesite = selectedObject.userData.site;
 
 You can use the ```getWorldPosition``` method to find out the coordinates of the ```truesite```. You may wonder why you did not just put the coordinates in the userData and you could have as the sites do not move in this version of the game. However having this extra step means that if you want to make the map (with sites) movable in a different version it is easier to do. 
 
-The ```getWorldPosition``` method puts the coordinates into a vector (x, y, z) that is given as an argument, in this case `testposition`. This vector can not be null to begin with so it is set as (0,0,0). To get the position of the jar being dragged you can put its position property into a vector (you will call ```aposition```).
+The ```getWorldPosition``` method puts the coordinates into a vector (x, y, z) that is given as an argument, in this case ```testposition```. This vector can not be null to begin with so it is set as (0,0,0). To get the position of the jar being dragged you can put its position property into a vector (you will call ```aposition```).
 
 **After** the following code:
 
@@ -999,7 +999,7 @@ if ( aposition.distanceTo( testposition ) < .025 * ratio) {
 
 You can save and reload to check for errors (broken code blocks can occur). But you have not told the script what to do if the test is successful yet, so nothing will occur if you do get a correct match. 
 
-If the match is correct, you want the background colour to change, by making `scene.background` equal to a new `THREE.Color` generated by `Math.random() * 0xffffff`. This works because the hex colour codes are actually being converted to hexadecimal numbers and multiplying white (0xffffff or 16777215) by a random (0-1) value gives another number 0- 16777215, which can be interpreted as a colour by three.js.
+If the match is correct, you want the background colour to change, by making ```scene.background``` equal to a new ```THREE.Color``` generated by ```Math.random() * 0xffffff```. This works because the hex colour codes are actually being converted to hexadecimal numbers and multiplying white (0xffffff or 16777215) by a random (0-1) value gives another number 0- 16777215, which can be interpreted as a colour by three.js.
 
 **Find** the following code:
 
@@ -1037,11 +1037,11 @@ You can save and try to test, but moving in 3D can be difficult. You will make i
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-16.png" alt="Normal view of the jars and map, with the Aibom jar in its correct position." caption="Figure 16. The Aibom jar in its correct position." %}
 
-This way of placing the jars on the sites can be frustrating for users and the onClick function is actually called at the end of a drag event, thus you can also alter the onClick function to register a correct match if the drag ends with the mouse on the correct site.
+This way of placing the jars on the sites can be frustrating for users and the ```onClick``` function is actually called at the end of a drag event, thus you can also alter the ```onClick``` function to register a correct match if the drag ends with the mouse on the correct site.
 
  This alternative means that the match is tested in 2D space instead of in 3D space (as in the first approach). Thus matches are easier, especially for players not experienced with digital 3D environments. 
  
- If you develop your own games you might want to test different approaches to see what works best. All game and website design guides will advise you that several cycles of user testing and code refinement are important.
+If you develop your own games you might want to test different approaches to see what works best. All game and website design guides will advise you that several cycles of user testing and code refinement are important.
 
 **Within** the onClick function, **after** the following code:
 
@@ -1063,7 +1063,7 @@ if(found == truesite){ // tests if site mouse is over is the same as the true ja
   }
 ```
 
-If you use this code, you have to make sure that the `truesite` variable is reset to `null` at the end. Otherwise if you move a jar to somewhere and the drag ends with the mouse not being over a site, then click on that jars site it will trigger a match.
+If you use this code, you have to make sure that the `truesite` variable is reset to ```null``` at the end. Otherwise if you move a jar to somewhere and the drag ends with the mouse not being over a site, then click on that jars site it will trigger a match.
 
 **Within** the onClick function, **after** the following code:
 
@@ -1078,7 +1078,7 @@ You need to **add** the following code:
 truesite = null;	
 ```
 
-You have to be careful with brackets/braces here. The onClick function now has two nested `if` blocks. The `truesite = null;` statement should be outside these `if` blocks, but inside the `onClickfunction`. 
+You have to be careful with brackets/braces here. The ```onClick``` function now has two nested ```if``` blocks. The `truesite = null;` statement should be outside these ```if``` blocks, but inside the ```onClickfunction```. 
 
 Now it should be easier to move jars to their sites: you just need the mouse to be directly over the torus when you stop dragging the jar.
 

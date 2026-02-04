@@ -180,7 +180,7 @@ You want the information panels to face the camera, and the default planes do th
 
 The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. There are [alternatives](https://threejs.org/manual/#en/creating-text). 
 
-Textures need to be loaded by a 'TextureLoader'. After loading each texture a set of lower-resolution images (a 'mipmap') gets generated for it. The renderer will automatically use one of the lower-resolution images for when the texture appears small or far away. Using lower-resolution images for areas covering less pixels is not only more efficient, it can prevent image 'shimmering'. Mipmap creation is one of the reasons for using images of 2<sup>n</sup> by 2<sup>n</sup> dimensions, but the creation of the down-sampled image sets takes processing time. 
+Textures need to be loaded by a 'TextureLoader'. After loading each texture a set of lower-resolution images (a [mipmap](https://en.wikipedia.org/wiki/Mipmap)) gets generated for it. The renderer will automatically use one of the lower-resolution images for when the texture appears small or far away. Using lower-resolution images for areas covering less pixels is not only more efficient, it can prevent image 'shimmering'. Mipmap creation is one of the reasons for using images of 2<sup>n</sup> by 2<sup>n</sup> dimensions, but the creation of the down-sampled image sets takes processing time. 
 
 First you declare the variables, **after** the following code:
 
@@ -284,7 +284,7 @@ scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
 
 You will need a plane for the map for the jars to sit on. As planes are added 'upright' by default, this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 'Math' is a JavaScript object, which has properties, including Math.PI (i.e. π, 3.141), and methods, including Math.random() (used later in the lesson). See the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for more properties and methods. 
 
-Three.js uses radians for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when you are 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geograpical map must be -Math.PI/2 around the x axis to have the 'front' of the panel facing upwards.
+Three.js uses [radians](https://en.wikipedia.org/wiki/Radian) for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when you are 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geograpical map must be -Math.PI/2 around the x axis to have the 'front' of the panel facing upwards.
 
 Add the map to the variables. Also add a ratio that allows experimentation with the map size. 
 
@@ -347,11 +347,11 @@ Note that the introduction of the 'piecescale' variable is not strictly necessar
 
 Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. 
 
-To begin, you will add one model, aibomM, in a similar way to how you added the composite model in Part 1. A function is defined 'onLoadAibom' that runs after the .glb file is loaded by the loader's load method. 
+To begin, you will add one model, aibomM, in a similar way to how you added the composite model in Part 1. A function is defined ```onLoadAibom``` that runs after the .glb file is loaded by the loader's load method. 
 
 As mentioned in Part 1, you need to put the positioning and scaling of the model in this function so that they only occur after the model has finished loading. Remember that the load method has 5 arguments: the model filename; a function run after the model is loaded; a function run while the model is loading; and a function run if there is an error.  
 
-As in Part 1, you will leave the function that runs while the model is loading 'undefined' and have an anonymous (unnamed) function that is run if there is an error with the loading.
+As in Part 1, you will leave the function that runs while the model is loading ```undefined``` and have an anonymous (unnamed) function that is run if there is an error with the loading.
 
 You replace the declaration of the model with declarations of the jars and their group. **Find** the following code:
 
@@ -368,7 +368,7 @@ let adzeraM, aibomM, mailuM, louisadeM, dimiriM, yabobM;
 
 ```
 
-Then you make the empty group and add it to the scene. You will create the `onLoadAibom` function that will run after loading, and then you will call the `loader.load method`.
+Then you make the empty group and add it to the scene. You will create the ```onLoadAibom``` function that will run after loading, and then you will call the ```loader.load method```.
 
 **Within** the init function definition **after** the following code:
 
@@ -395,7 +395,7 @@ function onLoadAibom( gltf ) {
 }
 loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
 ```
-Save and reload and you should see a model. You will notice that you did not have to add `aibomM` to the scene, since you added it to the jars group, which has already been added to the scene.
+Save and reload and you should see a model. You will notice that you did not have to add ```aibomM``` to the scene, since you added it to the jars group, which has already been added to the scene.
 
 To avoid repetitive code you will define a function ```createModel()```, and assign the ```onLoadAibom()``` function run this ```createModel()``` function when it loads the model. The function will take 5 arguments: the model filename, the x position, the z position, the model colour and the matching gallery as these vary with the different models. 
 
@@ -496,7 +496,7 @@ You can calculate where to set the positions of the jars by taking into account 
 
 ### Adding Jar Selection
 
-Next you want to add an event listener, to be able to select a jar and change the information panel. As with the WindowResize event listener in Part 1, this listener gets the event (in this case ```click```), and a function (known as an event handler) you will define. Input events pass event information to their handler, some of which is dependent on the type of event. The click event passes an object (commonly called ```event```) that contains the mouse cursor's coordinates relative to the viewport/window. 
+Next you want to add an event listener, to be able to select a jar and change the information panel. As with the ```WindowResize``` event listener in Part 1, this listener gets the event (in this case ```click```), and a function (known as an event handler) you will define. Input events pass event information to their handler, some of which is dependent on the type of event. The click event passes an object (commonly called ```event```) that contains the mouse cursor's coordinates relative to the viewport/window. 
 
 To determine what jar in 3D space is being targeted by the user's mouse in 2D space, three.js uses raycasting. Whenever you click, the three.js raycaster 'sends' a 'ray' from the camera position to a pointer whose 2D position is calculated from the click event's information. The raycaster has an ```intersectObjects``` method that returns an array of the 3D objects that the cast ray has hit. This array is ordered by distance to the camera so the first in the array (index 0) will be the nearest object. You also tell the ```intersectObjects``` method what objects can be intersected and here you will specify children of the jars group. This is the primary reason you made the group.
 
@@ -532,7 +532,7 @@ selectedObj = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20  ), 
 
 ```
 
-Then, you tell the window to 'listen' for any clicks, to send the click information to the onClick function that you will define next.
+Then, you tell the window to 'listen' for any clicks, to send the click information to the ```onClick``` function that you will define next.
 
 **Within** the init function definition, **after** the following code:
 ```

@@ -90,12 +90,12 @@ Crear gráficos es un asunto complicado, ya que nos obliga a considerar varios a
 En el lenguaje de los gráficos, toda la composición de las representaciones gráficas se basa en siete capas interconectadas:
 
 1. Datos: el material a analizar en la visualización.
-2. [Estética (disponible en inglés)](https://perma.cc/DTP2-8JFS): las formas en que las propiedades visuales se mapean sobre los supuestos 'geoms' (ver Objetos geométricos a continuación). En la mayoría de los casos, esto determina cómo deseas mostrar tus datos (posición, color, forma, relleno, tamaño).
+2. [Estética](https://epirhandbook.com/es/new_pages/ggplot_basics.es.html#estética-del-gráfico): las formas en que las propiedades visuales se mapean sobre los supuestos 'geoms' (ver Objetos geométricos a continuación). En la mayoría de los casos, esto determina cómo deseas mostrar tus datos (posición, color, forma, relleno, tamaño).
 3. [Escala (disponible en inglés)](https://perma.cc/KVN7-M2LQ): el mapeo y la normalización de los datos para la visualización.
-4. [Objetos geométricos (disponible en inglés)](https://perma.cc/U24P-LYHG) (o 'geoms' en el lenguaje de ggplot2): cómo quieres representar tus datos. En la mayoría de los casos, esto determina el tipo de gráfico que usas, como un gráfico de barras, un gráfico de línea o un histograma.
+4. [Objetos geométricos](https://epirhandbook.com/es/new_pages/ggplot_basics.es.html#geoms) (o 'geoms' en el lenguaje de ggplot2): cómo quieres representar tus datos. En la mayoría de los casos, esto determina el tipo de gráfico que usas, como un gráfico de barras, un gráfico de línea o un histograma.
 5. [Estadística (disponible en inglés)](https://perma.cc/J4HW-MXLK): las cálculos que puedes realizar sobre tus datos antes de visualizarlos.
-6. [Facetas (disponible en inglés)](https://perma.cc/K8M5-7NKV): la capacidad de categorizar y dividir los datos en múltiples subgráficos.
-7. [Sistemas de coordenadas (disponible en inglés)](https://perma.cc/H335-PJMH): cómo ggplot2 coloca diferentes geoms (geometrías) en el gráfico. La coordenada más común es el [sistema de coordenadas cartesianas (disponible en inglés)](https://perma.cc/5HNS-XBMJ), pero ggplot2 también puede representar [coordenadas polares (disponible en inglés)](https://perma.cc/XBN8-QJ9Q) y [proyecciones estereográficas (disponible en inglés)](https://perma.cc/T3LU-4NVA).
+6. [Facetas](https://epirhandbook.com/es/new_pages/ggplot_basics.es.html#ggplot_basics_facet): la capacidad de categorizar y dividir los datos en múltiples subgráficos.
+7. [Sistemas de coordenadas (disponible en inglés)](https://perma.cc/H335-PJMH): cómo ggplot2 coloca diferentes geoms (geometrías) en el gráfico. La coordenada más común es el [sistema de coordenadas cartesianas](https://es.wikipedia.org/wiki/Coordenadas_cartesianas), pero ggplot2 también puede representar [coordenadas polares](https://es.wikipedia.org/wiki/Coordenadas_polares) y [proyecciones estereográficas](https://es.wikipedia.org/wiki/Proyección_estereográfica).
 
 Para comenzar a utilizar ggplot2, es necesario instalar y cargarlo. Recomendamos instalar [tidyverse (disponible en inglés)](https://www.tidyverse.org), una colección de paquetes R, entre ellos ggplot2, que trabajan juntos para proporcionar un flujo de trabajo coherente y eficiente a la hora de manipular, explorar y visualizar datos. En el corazón de la filosofía de tidyverse se encuentra el concepto de ['datos ordenados' (disponible en inglés)](https://perma.cc/XGM5-7SYY), un enfoque estándar que estructura  los datos para facilitar el trabajo con ellos. En este tipo de datos, cada variable es una columna, cada observación es una fila y cada tipo de unidad de observación es una tabla. Esta estructura permite un enfoque coherente y predecible al trabajar con datos a lo largo de diferentes paquetes y funciones dentro de la colección tidyverse. Para obtener más detalles, consulta el libro [_R para Ciencia de Datos_](https://es.r4ds.hadley.nz) escrito por Hadley Wickham et al. [^2]
 
@@ -501,16 +501,11 @@ A través del análisis de las relaciones de hermanamiento de las ciudades de la
 
 Sin embargo, esto es solo la punta del iceberg de las posibilidades de ggplot2. Con un extenso ecosistema de extensiones y paquetes, ggplot2 ofrece oportunidades infinitas para la personalización y la adaptación a necesidades específicas a la hora de visualizar datos. Si trabajas con datos de series temporales, con gráficos de redes o con información geoespacial, es probable que una extensión de ggplot2 pueda ayudarte a crear visualizaciones atractivas e informativas. Al seguir explorando y trabajando con ggplot2, recuerda que la visualización efectiva de los datos es un proceso iterativo que requiere experimentación, refinamiento y una comprensión aguda de tu audiencia y objetivos de comunicación. Si dominas bien los principios y técnicas que cubre esta lección, estarás bien equipado para crear visualizaciones impactantes que iluminen las historias ocultas en tus datos.
 
-## Notas
-
-[^1]: Para una referencia en español, puedes consultar el libro _Gramática de las gráficas. Pistas para mejorar las representaciones de datos_ de Joaquín Sevilla Moróder (2005) [https://files01.core.ac.uk/download/pdf/33747372.pdf](https://files01.core.ac.uk/download/pdf/33747372.pdf)
-[^2]: Esta traducción es "un proyecto colaborativo de la comunidad de R de Latinoamérica, que tiene por objetivo hacer R más accesible en la región" [https://es.r4ds.hadley.nz/#sobre-la-traducción](https://es.r4ds.hadley.nz/#sobre-la-traducción). Su versión original tiene una segunda edición que puedes consultar también online y en abierto en [_R for Data Science (2e)_](https://perma.cc/W8CR-JW2L)
-
 ## Recursos adicionales
 
 Para obtener una comprensión más profunda de ggplot2, se recomienda explorar las siguientes fuentes:
 
-* El [sitio oficial de ggplot2 (disponible en inglés)](https://ggplot2.tidyverse.org/).
+* El [sitio oficial de ggplot2 (disponible en inglés)](https://ggplot2.tidyverse.org/). Sin embargo, puedes consultar este recurso en español: ["30  Conceptos básicos de ggplot"](https://epirhandbook.com/es/new_pages/ggplot_basics.es.html) en _EpiRhandbook en español_
 
 * Los libros de Hadley Wickham [`ggplot2`: _Gráficos elegantes para el análisis de datos_](https://ggplot2-book.org/) y [_R para el análisis de datos_](http://r4ds.hadley.nz/), disponibles ambos en inglés. 
 
@@ -535,3 +530,9 @@ Para obtener una comprensión más profunda de ggplot2, se recomienda explorar l
 * La [chuleta oficial de R](https://posit.co/resources/cheatsheets/?type=translations/#translation-12) (traducciones al español disponible). 
 
 * La página de [escalas de graduado](https://perma.cc/8BWE-MVLV) (disponible en inglés).
+
+
+## Notas
+
+[^1]: Para una referencia en español, puedes consultar el libro _Gramática de las gráficas. Pistas para mejorar las representaciones de datos_ de Joaquín Sevilla Moróder (2005) [https://files01.core.ac.uk/download/pdf/33747372.pdf](https://files01.core.ac.uk/download/pdf/33747372.pdf)
+[^2]: Esta traducción es "un proyecto colaborativo de la comunidad de R de Latinoamérica, que tiene por objetivo hacer R más accesible en la región" [https://es.r4ds.hadley.nz/#sobre-la-traducción](https://es.r4ds.hadley.nz/#sobre-la-traducción). Su versión original tiene una segunda edición que puedes consultar también online y en abierto en [_R for Data Science (2e)_](https://perma.cc/W8CR-JW2L)

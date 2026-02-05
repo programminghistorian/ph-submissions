@@ -124,7 +124,34 @@ eudata
 
 Empezaremos explorando los datos para las ciudades en seis países de la Unión Europea: Alemania, Francia, Portugal, Polonia, Hungría y Bulgaria (tres países europeos occidentales y tres europeos orientales). La tabla que viste anteriormente, llamada `eudata`, contiene esta información en 14 variables y 13081 filas. Con la función `glimpse()` podemos echarle un vistazo a la estructura de nuestro tibble: 
 
-{% include figure.html filename="es-tr-datos-urbanos-demograficos-r-ggplot2-glimpse.png" alt="Estructura del tibble eudata con las variables y sus tipos." caption="Estructura del tibble eudata con las variables y sus tipos." %}
+```
+glimpse(eudata)
+Rows: 13,081
+Columns: 14
+```
+
+**Estructura del tibble eudata con las variables y sus tipos:**
+
+<div class="table-wrapper" markdown="block">
+   
+| Columna | Tipo de datos | Valores de muestra |
+|--------|-----------|---------------|
+| origenciudadEtiq | `<chr>` | "Veliko Tarnovo", "Pernik", "Obzor", "Balch"... |
+| origenpais | `<chr>` | "Bulgaria" |
+| origenlat | `<dbl>` | 43.08222, 42.60972, 42.82300, 43.40778... |
+| origenlong | `<dbl>` | 25.63167, 23.03083, 27.87870, 28.16222... |
+| origenpoblacion | `<dbl>` | 71150, 75191, 2125, 12913, 9831, 22022... |
+| ciudadhermanaEtiq | `<chr>` | "Asti", "Graz", "Toledo", "18th district of Budapest"... |
+| destinolat | `<dbl>` | 44.90000, 47.06667, 39.86667, 47.43333... |
+| destinolong | `<dbl>` | 8.206944, 15.433333, -4.033333, 19.166667... |
+| destinopoblacion | `<dbl>` | 76173, 282479, 83459, 101613, 36119, NA... |
+| destinopaisEtiq | `<chr>` | "Italia", "Austria", "España", "Hungría", "Polonia"... |
+| dist | `<dbl>` | 1406, 777, 2484, 853, 854, 1012, 1390... |
+| eu | `<chr>` | "EU" |
+| igualpais | `<chr>` | "diferente" |
+| tipopais | `<chr>` | "EU" |
+
+</div>
 
 El tibble contiene información completa que combina datos urbanos y demográficos sobre relaciones de ciudades hermanadas. Los datos urbanos incluyen el nombre de las ciudades de origen y destino (**origenciudad**, **destinociudad**), sus respectivos países (**origenpais**, **destinopais**) y sus coordenadas geográficas (**origenlat**, **origenlong**, **destinolat**, **destinolong**). También contiene información sobre la distancia entre las ciudades vinculadas (**dist**) y el estatus de relación administrativa de cada ciudad (**eu**). Para el análisis demográfico, tenemos la tamaño de población de ambas ciudades de origen y destino (**origenpoblacion**, **destinopoblacion**). Esta combinación de tipos de datos debe permitir explorar cómo las características de las ciudades y los patrones de población influyen en las relaciones entre ellas.
 

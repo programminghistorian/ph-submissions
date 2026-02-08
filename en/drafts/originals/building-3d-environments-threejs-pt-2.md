@@ -41,7 +41,7 @@ Put (or replace) the downloaded models and textures folders in the myscene folde
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-02.png" alt="Screenshot of the VSC editor showing a list of jpg files in the expanded textures folder." caption="Figure 2. File structure for Part 2 as shown in VSC, with the textures folder expanded. The texture file Abelam.jpg is shown in the main panel." %}
 
-If you made autoRotate true, comment out that line (i.e. add `//` to the beginning of the line). In addition, comment out the `controls.update` in the `render` function (make sure not to touch the one in the init function). 
+If you made ```autoRotate``` true, comment out that line (i.e. add ```//``` to the beginning of the line). In addition, comment out the ```controls.update``` in the render function (make sure not to touch the one in the init function). 
 
 Next, in the index.html file from Part 1, remove the code that loads the glTF model that was used in Part 1. In other words, remove the following lines of code:
 
@@ -58,27 +58,21 @@ function onLoadMap( gltf ) {
 loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
 ```
 
-In the next section of this lesson, we will explain how you should plan out and design your interactive scene before building it. 
+In the next section of this lesson, we will explain how you should plan out and design your interactive scene before building it. You do not have to attempt to draw the plan for this scene or game but viewing the scene mock-ups can help you understand what the different components in this lesson and provides an example of what you should do when you are designing your own scenes or games.
 
 ## Planning
 
-You will remember from Part 1 that scenes have a camera, light(s) and models and that you specify where these are placed in 3D space. If you do not remember the 3 (x, y and z) axes (the red, green and blue arrows) in the [three.js editor](https://threejs.org/editor/), you may want to reopen it, or examine Figures 5-10 in Part 1. When you have multiple models it is useful to draft out where everything (camera, lights and models) will be placed. You can do this with pen and paper and using grid or dotted paper can be useful. Additionally, you can mock-up views using whatever vector graphics software you are familar with to create figures (such as Inkscape, Affinity Designer, Adobe Illustrator, Canva, or Powerpoint). You should draw the three different 2D views, the "front-view", "side-on view" and "birds-eye view". Figure 3 shows mock-up views for the game version of the scene that will be created in the second part of this lesson.
+You will remember from Part 1 that scenes have a camera, light(s) and models and that you specify where these are placed in 3D space. If you do not remember the 3 (x, y and z) axes (the red, green and blue arrows) in the [three.js editor](https://threejs.org/editor/), you may want to reopen it, or examine Figures 5-10 in Part 1. In Part 1 you worked with one model that When you have multiple models it is useful to draft out where components such as the camera, lights and models will be placed. You can do this with pen and paper and using grid or dotted paper can be useful. Additionally, you can mock-up views using whatever vector graphics software you are familar with to create figures (Inkscape, Affinity Designer, Adobe Illustrator, Canva, or Powerpoint). When designing your own interactive scenes or games, you should draw the three different 2D views, the "front-view", "side-on view" and "birds-eye view". Figure 3 shows mock-up views for the game version of the scene that will be created in the second part of this lesson. You will see in the mock-ups that the scene x, y and z axes are clearly identified with their positive and negative directions indicated.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-03.png" alt="Scene mock-ups in z, x and y views." caption="Figure 3. Affinity Designer versions of the hand-drawn sketches for planning the game. Mock-ups of all 3 views are done, with rough coordinates and spacing for the scene assets (here the camera, light, the map, information panels and a key panel featuring 9 spheres, the jar/site positions, and the area in which the jars will randomly start in the game). Coordinates are x, y, z. Note that the light is off the scale in the y axis." %}
 
-In the mock-ups, include the positive and negative directions of the axes and rough measurements of distances between objects and their proportions. 
+Mock-ups are good for identifying what assets (models and textures) you will need. In Part 1 you used 1 model which featured a geographical map and 29 jars, but in this lesson you will import the components of that model separately. For simplicity you will only work with 6 jar models but can add the other 23 at the end if you wish. You will also have 3 panels that show instructions, references and information on the jars. You will add 9 spheres to the panel on the right to form part of the colour key used for identifying how the jars were made by the potters. The middle gallery panel will provide instructions or information on the selected jar, so it will change depending on what jar is selected. Thus, there will actually be another 6 panels created but not initially visible. In the scene the jars will be placed where on the map at the location in Papua New Guinea where they were made (this is indicated by the 'sites' in Figure 3). In the game the jars will start in an area above the map and the sites of construction will be indicated on the map by 6 tori (donuts). Tori can be harder for game users to select than discs, but most Papua New Guinea communities use tori made of leaves to hold the vessels as they are being made.
 
-Mock-ups are good for identifying what assets (models and textures) you will need. The non-game scene will have 4 planes (a map, and 3 gallery panels), 9 spheres (as part of the colour key used for identifying the vessels), 6 jars (not really shown on the sketch, although their positions are indicated by the sites in the birds-eye view). However the middle gallery panel will change depending on what jar is selected so there will actually be another 6 panels created but not visible.
+In the mock-ups, the x, y and z co-ordinates are given for the different components and rough measurements of distances between objects and their proportions. Planning your scene will help you identify where you will be using the same value repeatedly, such as the x and z positions of the key spheres. You can use variables for these values, so that it is easier to alter all instances together. 
 
-The game will feature 6 tori (donuts) for the sites, and the jars will appear in an area above the map. 
+Planning out your scene will also help ensure you identify where measurements are dependent on other measurements. As you can see in the first mock-up of Figure 3, the height of the galleries is dependent on the height of the map, because they need to be above the map. You can set a variable 'desk' for the map height and a variable 'gheight' for the gallery height that is dependent on the desk variable (i.e. equal to desk + 0.55). 
 
-You can also use the [three.js editor](https://threejs.org/editor/) to help visualise and refine placements.
-
-Planning your scene will help you identify where you will be using the same value repeatedly, such as the x and z positions of the key spheres. You can use variables for these values, so that it is easier to alter all instances together. 
-
-Planning out your scene will also help ensure you identify where measurements are dependent on other measurements. As you can see in the first mock-up of Figure 3, the height of the galleries is dependent on the height of the map, because they need to be above the map.
-
-You can set a variable 'desk' for the map height and a variable 'gheight' for the gallery height that is dependent on the desk variable (i.e. equal to desk + 0.55). The placement of the map at this y value was because the site was designed to be able to be viewed in VR. 0.8m is a comfortable height for a standing person to look down onto a map and be able to place objects onto it. Three.js uses metres as the measurement unit, although this is only important if you plan to have your site viewable in virtual reality (VR).
+The placement of the map at this y value was because the site was designed to be able to be viewed in VR. 0.8m is a comfortable height for a standing person to look down onto a map and be able to place objects onto it. Three.js uses metres as the measurement unit, although this is only important if you plan to have your site viewable in virtual reality (VR).
 
 ## Adding the Spheres for a Colour Key
 If you do not have the local server running, save the index.html file and start the server in the terminal with the following command:
@@ -650,7 +644,7 @@ To transform the scene into a puzzle the information panel used needs to be alte
 
 ### Adding Tori
 
-Green tori will be used to mark the communities. They can be harder to aim for than discs, but most Papua New Guinea communities use tori made of leaves to hold the vessels as they are being made. The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified (Figure 4). However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI /2). Each tori centre will be positioned slightly (1 cm) above the map (which is at 'desk' height) at y = desk + 0.01.
+Green tori will be used to mark the communities.  The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified (Figure 4). However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI /2). Each tori centre will be positioned slightly (1 cm) above the map (which is at 'desk' height) at y = desk + 0.01.
 
 Because each torus is connected to a different information panel, they still need to be created separately and added to a tori group. The mouse click event listener has to be altered so that it targets the tori group instead of the jars group. 
 

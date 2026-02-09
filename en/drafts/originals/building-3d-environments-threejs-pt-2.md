@@ -172,18 +172,18 @@ scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere
     
 ```
 
-Save and reload in the browser and you should see a webpage with nine differently coloured spheres (Figure 5). 
+Save the index.html file and reload in the browser and you should see a webpage with nine differently coloured spheres (Figure 5). 
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-05.png" alt="Webpage with 9 spheres of different colours in a vertical line." caption="Figure 5. Webpage with nine differently coloured spheres." %}
 
-### Adding the Information Panels and Map
-You will now add the 3 information panels that the viewer will see at the start: the references (gallery3, on the left), the instructions (gallery, middle) and the key to the techniques (gallery2, on the right). The panels will be simple 2D planes that we will add textures to. The left and right panels will not change. However the central instruction panel will disappear when the user clicks a jar and the information panel for that community will appear. You will do this by toggling the visibility of different panels off and on instead of changing the texture on the plane (which would also be implementable).
+### Texturing Planes: Adding the Information Panels and Map
+You will now add the panel for the key (gallery2, on the right) and the other 2 information panels that the viewer will see at the start: the references (gallery3, on the left) and the instructions (gallery, middle). The panels will be simple 2D planes that you will add textures to. The left and right panels will not change. However the central instruction panel will disappear when the user clicks a jar and the information panel for that community will appear. You will do this by toggling the visibility of different panels off and on instead of changing the texture on the plane (which would also be implementable).
 
 You want the information panels to face the camera, and the default planes do this. You will give the planes image ‘textures’ that contain text describing the individual artefacts. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. The larger the image files, the longer they take to load, and very large images may not load at all. By default only one side (the 'front') of a panel is textured. Here the dimensions of the panels match the image texture dimensions. In situations where they do not match, different options, including image tiling can be used. 
 
 The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. There are [alternatives](https://threejs.org/manual/#en/creating-text). 
 
-Textures need to be loaded by a 'TextureLoader'. After loading each texture a set of lower-resolution images (a [mipmap](https://en.wikipedia.org/wiki/Mipmap)) gets generated for it. The renderer will automatically use one of the lower-resolution images for when the texture appears small or far away. Using lower-resolution images for areas covering less pixels is not only more efficient, it can prevent image 'shimmering'. Mipmap creation is one of the reasons for using images of 2<sup>n</sup> by 2<sup>n</sup> dimensions, but the creation of the down-sampled image sets takes processing time. 
+Textures need to be loaded by a ```TextureLoader```. After loading each texture a set of lower-resolution images (a [mipmap](https://en.wikipedia.org/wiki/Mipmap)) gets generated for it. The renderer will automatically use one of the lower-resolution images for when the texture appears small or far away. Using lower-resolution images for areas covering less pixels is not only more efficient, it can prevent image 'shimmering'. Mipmap creation is one of the reasons for using images of 2<sup>n</sup> by 2<sup>n</sup> dimensions, but the creation of the down-sampled image sets takes processing time. 
 
 First you declare the variables, **after** the following code:
 
@@ -233,9 +233,11 @@ scene.add( gallery, gallery2, gallery3);
 
 ```
 
-If you save the file and reload the browser you should see the three panels, and the spheres should be on the panel on the right. If the panels are black, the images are probably in the wrong directory. It should look like Figure 6, but without the map.
+If you save the index.html file and reload the browser you should see the three panels, and the spheres should be on the panel on the right. If the panels are black, the images are probably in the wrong directory. It should look like Figure 6, but without the map.
 
-Next you will create all the information panels for all the jars. You will design the webpage so the panels will be hidden (by making .visible = false) until the relevant jar is selected by the user. You will set a variable, 'selectedPlane', to track which panel is showing; at the start an instruction panel will be selected. 
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-06.png" alt="Webpage with 3 square panels of text and a horizontal map of Papua." caption="Figure 6. Webpage with three vertical information panels and a horizontal map." %}
+
+Next you will create all the information panels for all the jars. You will design the webpage so the panels will be hidden (by making ```.visible = false```) until the relevant jar is selected by the user. You will set a variable, ```selectedPlane```, to track which panel is showing; at the start an instruction panel will be selected. 
 
 To help keep track of the information panel (gallery), jar model, loading function and community site for each jar, you will call these 'xG, 'xM', 'onLoadX' and 'xSite', respectively, where 'x' is a name such as 'yabob' or 'aibom', the village (or area) where the jar the model is based on was made. Variable and function names can not have spaces in them.
 
@@ -252,7 +254,7 @@ let adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG; // information panels f
 let selectedPlane;	// which information panel will be visible			
 ```
 
-If you look at the gallery code you will see quite a bit of repetition. Furthermore, the jar information panels will all be at the same position and not made visible until their model is selected. Thus, for the jar information panels you will create a function that receives the filename of the image texture, loads the texture, creates the mipmap, creates a plane mesh with that texture, sets the mesh position and makes it invisible. Our function (called 'createGallery'), will ```return``` a textured plane mesh and assign it to the named variable (i.e. adzeraG). 
+If you look at the gallery code you will see some repetition and for the 6 jar information panels the code would be more similar as they are in the same position. Thus, for the jar information panels you will create a function that receives the filename of the image texture, loads the texture, creates the mipmap, creates a plane mesh with that texture, sets the mesh position and makes it invisible. Your function (called ```createGallery```), will ```return``` a textured plane mesh and assign it to the named variable (i.e. ```adzeraG```). 
 
 **Within** the init function definition **after** the following code:
 
@@ -325,9 +327,9 @@ scene.add( theMap);
 
 ```
 
-Save and reload. The map should appear with the panels (Figure 6).
+Save the index.html file and reload the web browser. The map should appear with the panels (Figure 6).
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-06.png" alt="Webpage with 3 square panels of text and a horizontal map of Papua." caption="Figure 6. Webpage with three vertical information panels and a horizontal map." %}
+
 
 ### Adding the Jar Models
 As you saw in Part 1 of this lesson, the jar models are made of meshes (Figure 7).
@@ -398,7 +400,7 @@ function onLoadAibom( gltf ) {
 }
 loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
 ```
-Save and reload and you should see a model. You will notice that you did not have to add ```aibomM``` to the scene, since you added it to the jars group, which has already been added to the scene.
+Save the index.html file and reload the web browser and you should see a model. You will notice that you did not have to add ```aibomM``` to the scene, since you added it to the jars group, which has already been added to the scene.
 
 To avoid repetitive code you will define a function ```createModel()```, and assign the ```onLoadAibom()``` function run this ```createModel()``` function when it loads the model. The function will take 5 arguments: the model filename, the x position, the z position, the model colour and the matching gallery as these vary with the different models. 
 
@@ -487,7 +489,7 @@ loader.load( 'models/yabob.glb', function( gltf ) {
 
 ```
 
-Save and reload. You should see 5 models (Figure 10). You will have to move around to see the sixth.
+Save the index.html file and reload the web browser. You should see 5 models (Figure 10). You will have to move around to see the sixth.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-10.png" alt="Five jar models sit on a map of Papua." caption="Figure 10. Webpage with six jars from Papua, but one is out of camera range." %}
 
@@ -585,10 +587,9 @@ function onClick( event ) { // event is the input event information being passed
 }	
 ```
 
-You can save the file and reload the browser, before clicking on the jars makes them red. However, our intended functionality is for the jars to go back to their original colour after a new jar is selected. Toggling ```material.emissive.r``` off and on to indicate selection means you do not have to store what colour the jar was originally, as you can just turn the emissiveness off.
+You can save the index.html file and reload the browser, and see that clicking on the jars makes them red. However, our intended functionality is for the jars to go back to their original colour after a new jar is selected. Toggling ```material.emissive.r``` off and on to indicate selection means you do not have to store what colour the jar was originally, as you can just turn the emissiveness off.
 
  
-
 **Within** the onClick function definition, **after** the following code:
 ```
 if(intersects.length > 0){
@@ -715,7 +716,7 @@ tori.add(aibomSite, mailuSite, dimiriSite, louisadeSite, adzeraSite, yabobSite);
 
 ```
 
-Save and check the tori appear on site reload. 
+Save the index.html file, reload the browser and check the tori appear on site reload. 
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-12.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 12. Webpage with the jars sitting on tori." %}
 
@@ -795,7 +796,7 @@ dragControls.addEventListener('dragend', function (event) {
 });
 ```
 
-Save and reload, and check that you can now move the jars around.
+Save the index.html file, reload the browser, and check that you can now move the jars around.
 
 However, you will see that it can be difficult to move jars in certain positions in 3D. It is easier to achieve if you view the scene directly from the top, or directly from the side.
 
@@ -821,7 +822,7 @@ The line of code above should be **changed** to the following:
 function createModel(gltf, col, site){
 ```
 
-Within the `createModel` function, **find** the following code:
+Within the ```createModel``` function, **find** the following code:
 
 ```
 model.position.set( x * ratio, desk + 0.01, z * ratio);
@@ -907,7 +908,7 @@ The line of code above should be **changed** to the following:
 yabobM = createModel(gltf, parameters.paddleColor, yabobSite);			
 ```
 
-Save and reload; you should see the jars starting above the map and if you reload, they will be in different random positions.
+Save the index.html file, reload the browser and you should see the jars starting above the map. If you reload the browser they will be in different random positions.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-13.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 13. Webpage with the jars at random start positions above the map." %}
 
@@ -1002,7 +1003,7 @@ if ( aposition.distanceTo( testposition ) < .025 * ratio) {
 
 ```
 
-You can save and reload to check for errors (broken code blocks can occur). But you have not told the script what to do if the test is successful yet, so nothing will occur if you do get a correct match. 
+You can save the index.html file and reload the browser to check for errors (broken code blocks can occur). But you have not told the script what to do if the test is successful yet, so nothing will occur if you do get a correct match. 
 
 #### Changing the Background Colour if the Match is Correct
 
@@ -1036,9 +1037,9 @@ unmoveable.attach( selectedObject); // adding to the unmoveable group will remov
 
 ```
 
-You can save and try to test, but moving in 3D can be difficult. When viewing 3D scenes on 2D surfaces (such as a computer screen) objects that are distant from each other can appear to be close. You will make it (somewhat) easier to move in the 3D environment in the next step. If you want to test the moving at this stage, it is best done in multiple steps, viewing from the side to lower the jar to the map, and then from the top (birds eye view) to place it in the right spot, or vice versa (Figures 14-16).
+You can save the index.html file and try to test, but moving in 3D can be difficult. When viewing 3D scenes on 2D surfaces (such as a computer screen) objects that are distant from each other can appear to be close. You will make it (somewhat) easier to move in the 3D environment in the next step. **If** you want to test the moving at this stage, it is best done in multiple steps, viewing from the side to lower the jar to the map, and then from the top (birds eye view) to place it in the right spot, or vice versa (Figures 14-16).
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-14.png" alt="While 5 jars are randomly above the map, the Aibom jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Aibom jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-14.png" alt="While 5 jars are randomly above the map, the Aibom jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Aibom jar, close to their torus is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-15.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Aibom jar has been correctly positioned." caption="Figure 15. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
 
@@ -1106,7 +1107,7 @@ The line of code above should be **changed** to the following:
 const introTexture = textureLoader.load( 'textures/Intro2.jpg' );
 ```
 
-Save and check that the new instructions appear.
+Save the index.html file, reload the browser and check that the new instructions appear.
 
 ## Adding Additional Jars
 Pots were made in many different forms by different communities in Papua New Guinea, West Papua and Maluku. There are models and information panels for 29 communities in the folders provided. 

@@ -60,7 +60,7 @@ loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error
 
 In the next section of this lesson, we will explain how you should plan out and design your interactive scene before building it. You do not have to attempt to draw the plan for this scene or game but viewing the scene mock-ups can help you understand what the different components in this lesson and provides an example of what you should do when you are designing your own scenes or games.
 
-## Planning a Scene or Game
+## Using Mock-ups to Plan a Scene or Game
 
 You will remember from Part 1 that scenes have a camera, light(s) and models and that you specify where these are placed in 3D space. If you do not remember the 3 (x, y and z) axes (the red, green and blue arrows) in the [three.js editor](https://threejs.org/editor/), you may want to reopen it, or examine Figures 5-10 in Part 1. In Part 1 you worked with one model that When you have multiple models it is useful to draft out where components such as the camera, lights and models will be placed. You can do this with pen and paper and using grid or dotted paper can be useful. Additionally, you can mock-up views using whatever vector graphics software you are familar with to create figures (Inkscape, Affinity Designer, Adobe Illustrator, Canva, or Powerpoint). When designing your own interactive scenes or games, you should draw the three different 2D views, the "front-view", "side-on view" and "birds-eye view". Figure 3 shows mock-up views for the game version of the scene that will be created in the second part of this lesson. You will see in the mock-ups that the scene x, y and z axes are clearly identified with their positive and negative directions indicated.
 
@@ -87,19 +87,19 @@ If you re-examine the [SketchFab version](https://skfb.ly/putNM) of the model us
 
 To communicate these techniques to the website viewer, you will construct a key featuring a plane and coloured spheres. The plane will have an image texture that will list the construction techniques and the image does actually have coloured circles to indicate the model colour. However by putting coloured spheres where the coloured circles are the colours of the jars can be easily modified without the need to make a new image texture. The addition of spheres is also an introduction to the use the three.js basic geometries.
 
-Meshes have geometries and three.js has several basic 2D geometry types, including [plane](https://threejs.org/docs/#PlaneGeometry), [circle](https://threejs.org/docs/#CircleGeometry), [ring](https://threejs.org/docs/#RingGeometry) and [shape](https://threejs.org/docs/#ShapeGeometry), and more 3D geometry types that include [spheres](https://threejs.org/docs/#SphereGeometry), [boxes](https://threejs.org/docs/#BoxGeometry), [tori (donuts)](https://threejs.org/docs/#TorusGeometry), [cylinders](https://threejs.org/docs/#CylinderGeometry) and [tetrahedrons](https://threejs.org/docs/#TetrahedronGeometry) (Figure 4). The parameters for these generally include lengths (in metres) and numbers of segments (for height, width, etc), but they can also be given parameters to create partial shapes. There are also some more complicated geometries, including [lathes](https://threejs.org/docs/#LatheGeometry), that will not be used here, that are made from a series of user provided 2D points, that are then rotated around the y axis to make a 3D shape.
+Meshes have geometries and three.js has several basic 2D geometry types, including [plane](https://threejs.org/docs/#PlaneGeometry), [circle](https://threejs.org/docs/#CircleGeometry), [ring](https://threejs.org/docs/#RingGeometry) and [shape](https://threejs.org/docs/#ShapeGeometry), and more 3D geometry types that include [spheres](https://threejs.org/docs/#SphereGeometry), [boxes](https://threejs.org/docs/#BoxGeometry), [tori (donuts)](https://threejs.org/docs/#TorusGeometry), [cylinders](https://threejs.org/docs/#CylinderGeometry) and [tetrahedrons](https://threejs.org/docs/#TetrahedronGeometry) (Figure 4). The parameters for these generally include lengths (in metres) and numbers of segments (for height, width, etc), but they can also be given parameters to create partial shapes. There are also some more complicated geometries, including [lathes](https://threejs.org/docs/#LatheGeometry), that will not be used here, that are made from a series of user provided 2D points, that are rotated around the y axis to make a 3D shape.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-04.png" alt="Six different geometry types: sphere, box, cylinder, torus and lathe are shown in wireframe." caption="Figure 4. The 3D geometries that three.js can add include spheres, boxes, tori, cylinders, tetrahedrons and lathes. Parameters for the geometries often include length and segment number measurements. Lathe geometries are generated from a series of points (that are then rotated) and the most simple lathe is shown." %}
 
-You will use 9 spheres and a plane to make a vessel colour key for how the jars were made. You will create an instance of a sphere 'geometry' with a radius size (in this case 0.04 m), 15 width segments and 5 height segments. If you increase the number of width or height segments, you will get rounder spheres. Geometries can be reused, so you can create an instance of the SphereGeometry and call it ```sphere``` and use it to create 9 different meshes. Each sphere mesh gets assigned a [material](https://threejs.org/docs/#Material) with a colour. This code uses the [standard material](https://threejs.org/docs/#MeshStandardMaterial). There are alternatives that can be used, and it is important to note that some material types are more dependent on lights than others.
+You will use a plane and 9 spheres (in a vertical line) to make a vessel colour key for how the jars were made. 
 
-The colours are set in the parameters list (more correctly called an 'array' in JavaScript). The s will be coloured by how they were made. Some Papua New Guinea communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres you are creating now will form part of the key that lets the viewer know how the pots were made. By having them in a parameter list, by changing the respective hex code, the key and pots will all change. Start with the proposed values and alter them later if you want.
+The colours are set in the parameters list (more correctly called an 'array' in JavaScript). By having them in a parameter list, by changing the respective hex code, the key and jars will all change. Start with the proposed values and alter them later if you want.
 
 For each sphere you also set its position in x, y, z order. You use the variables ```sphereposx``` and ```sphereposz``` for the x and z positions, and vary the y position, so the spheres end up in a vertical line. You declare variables for the panel vertical placement (relative to the panel centre), and the sphere x and z positions. 
 
 You can use ```let``` or ```const``` to declare variables, the difference is that variables declared with ```const``` can not be changed later in the code, and must have a value when declared. Many of these variables could be declared within the init function, but having them all together at the start of the code makes them easier to find and change.
 
-First you declare the variables, **after:** the following line of code:
+To declare the variables, **after:** the following line of code:
 
 ```
 let desk = 0.8;
@@ -127,7 +127,14 @@ const parameters = {
 
 ```
 
-Then you need to create the sphere geometry, specifying its radius and number of width and height segments. For each of the 9 spheres you make a mesh from the created geometry and a standard material with a colour from the parameter list. You then add all the spheres to the scene. 
+Then you need to create the 9 sphere meshes. To create a sphere mesh from a basic three.js geometry you first need to create an instance of a sphere 'geometry'. This geometry is given values (called arguments) that specify the radius size (you will use 0.04 m) and the number of width and height segments (use 15 and 5 respectively). You can see how the geometries have segments in Figure 4 and if you increase the number of width or height segments, you will get rounder spheres.
+
+Geometries can be reused, so you will create an instance of the SphereGeometry and call it ```sphere``` and use it to create 9 different sphere meshes. Each sphere mesh gets assigned a [material](https://threejs.org/docs/#Material) with a colour. This code uses the [standard material](https://threejs.org/docs/#MeshStandardMaterial). There are alternatives that can be used, and it is important to note that some material types are more dependent on lights than others.
+
+In summary the following code will:
+* create the sphere geometry, specifying its radius and number of width and height segments; 
+* for each of the 9 spheres, make a mesh from the created geometry and a standard material (with a colour from the parameter list); 
+* add all the spheres to the scene. 
 
 **Within** the init function definition **after** the following code:
 

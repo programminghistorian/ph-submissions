@@ -20,11 +20,12 @@ editors:
 - Alex Wermer-Colan
 translators:
 - Jean-Philippe Moreux
+- Matthias Gille Levenson
 translation-editor:
-- Forename Surname
+- Melvin Hersent
 translation-reviewers:
-- Forename Surname
-- Forename Surname
+- Solenn Tual
+- Émile Blettery
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/531
 difficulty: 3
 activity: analyzing

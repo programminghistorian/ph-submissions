@@ -216,6 +216,20 @@ We begin by listing all entity–essay mention relationships (keeping duplicates
 | b1_01  | Q316059      | undirected |
 | b1_01  | Q11922151    | undirected |
 | b1_01  | Q11922151    | undirected |
+| b1_01  | Q41523       | undirected |
+| b1_01  | Q41523       | undirected |
+| b1_01  | Q41523       | undirected |
+| b1_01  | Q125414      | undirected |
+| b1_01  | Q5959        | undirected |
+| b1_01  | Q160614      | undirected |
+| b1_01  | Q483783      | undirected |
+| b1_01  | Q68012       | undirected |
+| b1_02  | Q182483      | undirected |
+| b1_02  | Q182483      | undirected |
+| b1_02  | Q163079      | undirected |
+| b1_02  | Q712264      | undirected |
+| b1_02  | Q1541        | undirected |
+| b1_02  | Q171241      | undirected |
 | ...    | ...          | ...        |
 
 </div>

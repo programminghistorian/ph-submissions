@@ -195,13 +195,68 @@ To set up the tables of nodes and edges from the CSV files exported from OpenRef
 
 We begin by listing all entity–essay mention relationships (keeping duplicates to preserve frequency) along with their labels, QIDs, and entity type. From this comprehensive table we will derive an edges table and a list of unique nodes (entities and essays). The first column is titled “source” in which you will enter each essay's id; the second is titled “target” in which you will copy the QIDs of the persons and places mentioned in that essay; the third is titled "label", in which you will copy the normalized names of these entities; the fourth is titled "type" (defining entity type) in which you will assign the values "person" or "place". The order in which you add essays is irrelevant, provided that each set of person and place identifiers ("target") is consistently aligned with its corresponding essay identifier ("source"). Multiple mentions are retained as a measure of frequency: for example, if Plato is mentioned five times in Essay b1_01, the table will have five identical rows. After adding all the data, make a copy of the file to use for creating the nodes table. For the edges table, you will delete both the label and entity-type columns and instead add another column called "type", which in this table specifies the edge type with the value "undirected" for all rows. 
 
-{% include figure.html filename="en-or-named-entity-annotation-linking-augmentation-visualisation-18.png" alt="Spreadsheet excerpt showing an edges table with repeated essay identifiers in the 'source' column and Wikidata QIDs for person entities in the 'target' column, including duplicate rows representing multiple mentions." caption="Figure 18. Excerpt from the edges table showing people targets from the first two essays of Book 1" %}
+**Table 1: Excerpt from the edges table showing people targets from the first two essays of Book 1.**
+
+<div class="table-wrapper" markdown="block">
+ 
+| Source | Target       | Type       |
+|--------|--------------|------------|
+| b1_01  | Q8409        | undirected |
+| b1_01  | Q8409        | undirected |
+| b1_01  | Q459163      | undirected |
+| b1_01  | Q459163      | undirected |
+| b1_01  | Q157133      | undirected |
+| b1_01  | Q171241      | undirected |
+| b1_01  | Q332750      | undirected |
+| b1_01  | Q332750      | undirected |
+| b1_01  | Q184854      | undirected |
+| b1_01  | Q190436      | undirected |
+| b1_01  | personb10101 | undirected |
+| b1_01  | personb10102 | undirected |
+| b1_01  | Q316059      | undirected |
+| b1_01  | Q11922151    | undirected |
+| b1_01  | Q11922151    | undirected |
+| ...    | ...          | ...        |
+
+</div>
 
 #### Create the nodes table
 
 For the nodes table, starting from the copied table of entity–essay mention relationships, you will create four columns: the first one titled “id” contains the Wikidata identifiers for persons and places, to which we will add the project identifiers for essays. In the second column, we retain the “label” column with its values for person and place names and add essay labels in an abridged form to ensure their legibility in the graph. In the third column, we keep the title “type” with its values ("person" and "place") and add a third value—"essay". In the fourth column, we add the attribute "book" for the essays and enter the corresponding book number for each essay. If you decide to use additional attributes, such as occupation for the people, each one becomes a separate column with a value matching each node. Lastly, we remove the duplicate rows, so that each node appears only once. While Gephi can detect and merge duplicate nodes during import, preparing a list with unique nodes simplifies the data input. 
 
-{% include figure.html filename="en-or-named-entity-annotation-linking-augmentation-visualisation-19.png" alt="Spreadsheet excerpt showing a nodes table with four columns, 'id', 'label', 'type', 'book', including essay nodes identified by project-specific ids and person and place nodes identified by Wikidata ids." caption="Figure 19. Nodes table showing the labels of the fifteen essay nodes and several person nodes, with their corresponding id and entity type." %}
+**Table 2: Excerpt from the nodes table showing the labels of the fifteen essay nodes and several person nodes, with their corresponding id and entity type.**
+
+<div class="table-wrapper" markdown="block">
+ 
+| id        | Label                               | Type   | Book |
+|-----------|-------------------------------------|--------|------|
+| b1_01     | various ways lead to the same end   | essay  | 1    |
+| b1_02     | on sorrow                           | essay  | 1    |
+| b1_03     | our affections outlive us           | essay  | 1    |
+| b1_04     | emotions bestowed on false objects  | essay  | 1    |
+| b1_05     | commander of a besieged place       | essay  | 1    |
+| b2_01     | inconstancy of our actions          | essay  | 2    |
+| b2_02     | drunkeness                          | essay  | 2    |
+| b2_03     | custom of the Cea island            | essay  | 2    |
+| b2_04     | tomorrow is a new day               | essay  | 2    |
+| b2_05     | conscience                          | essay  | 2    |
+| b3_01     | profit and honesty                  | essay  | 3    |
+| b3_02     | repentance                          | essay  | 3    |
+| b3_03     | three commerces                     | essay  | 3    |
+| b3_04     | diversion                           | essay  | 3    |
+| b3_05     | verses by Virgil                    | essay  | 3    |
+| Q4531268  | Aelia Junilla                       | person |      |
+| Q43423    | Aesop                               | person |      |
+| Q204397   | Afonso de Albuquerque               | person |      |
+| Q271850   | Agesilaus II                        | person |      |
+| Q299479   | Agis IV                             | person |      |
+| Q187982   | Alcibiades                          | person |      |
+| Q29556094 | Alessandro Trivulzio                | person |      |
+| Q8409     | Alexander the Great                 | person |      |
+| Q11850760 | Alexander Wilhelm Boisman           | person |      |
+| ...       | ...                                 | ...    | ...  |
+
+</div>
 
 #### Importing the dataset into Gephi and visualizing the network graph
 After downloading [Gephi](https://gephi.org/) (version 0.10 was used in this tutorial), go to *New Project* and select *File* followed by *import spreadsheet* to import first the nodes table and then the edges table. As you are importing the edges file, you need to select the option *Append to existing workspace*. If you prefer to create individual sets of nodes and edges for each essay, this is where you would append each individual spreadsheet as you import it. You can proceed with examining the data in the *Data Laboratory* tab to ensure it was imported correctly and to make any modifications. 
@@ -231,6 +286,3 @@ This lesson has followed a workflow for transforming close reading into structur
 [^11]:  [Voyant Tools](https://voyant-tools.org/) integrates multiple NER options for English texts in its [Reader tool](https://voyant-tools.org/?corpus=5cd40577eeb0d215a3bd92996e6a086d) and identifies a broader range of entity types than Recogito; however, its NER results cannot be exported for reuse in linked data workflows. 
 [^12]: See _[Wikidata Across the Humanities: Datasets, Methodologies, Reuse](https://openhumanitiesdata.metajnl.com/collections/wikidata_across_the_humanities)_, a Special Collection of the _Journal of Open Humanities Data_ (2025), which highlights Wikidata’s central role in the semantic web and encourages research that actively uses and contributes to Wikidata in Digital Humanities contexts.
 [^13]: See Runyon, Randolph Paul. Order in Disorder: Intratextual Symmetry in Montaigne's 'Essais'. The Ohio University Press, 2013. https://muse.jhu.edu/book/27568
-
-
-

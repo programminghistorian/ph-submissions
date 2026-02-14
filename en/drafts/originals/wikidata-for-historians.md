@@ -29,11 +29,23 @@ In this lesson you will learn:
 - how Wikidata structures that information, and
 - how to explore its data in order to contextualize questions in your historical research.
 
-While this stand-alone lesson focuses on Wikidata, it can also serve to extend your understanding of Linked Open Data. Wikidata is the most user-friendly implementation of this data structure, and it's under constant development. It's a great place to begin to learn about key graph data features, such as schemas and the SPARQL query language, which can be applied in other contexts. After completing this lesson, readers might wish to consult Jonathan Blaney's [Introduction to the Principles of Linked Open Data](https://programminghistorian.org/en/lessons/intro-to-linked-data), which covers some of the same ground in more abstract and general terms. (When Blaney wrote his lesson, Wikidata did not yet exist.) Historians will also benefit from an [introductory Wikidata lesson](https://programminghistorian.github.io/ph-submissions/en/drafts/translations/linked-open-data-wikidata) <!-- LINK TO BE UPDATED --> aimed at librarians, archivists, and other information professionals which covers some of the same ground using different examples.
+While this stand-alone lesson focuses on Wikidata, it can also serve to extend your understanding of Linked Open Data. Wikidata is the most user-friendly implementation of this data structure, and it's under constant development. It's a great place to begin to learn about key graph data features, such as schemas and the SPARQL query language, which can be applied in other contexts. 
+
+**Related lessons**: After completing this lesson, readers might wish to consult Jonathan Blaney's [Introduction to the Principles of Linked Open Data](https://programminghistorian.org/en/lessons/intro-to-linked-data), which covers some of the same ground in more abstract and general terms. (When Blaney wrote his lesson, Wikidata did not yet exist.) Historians will also benefit from an [introductory Wikidata lesson](https://programminghistorian.github.io/ph-submissions/en/drafts/translations/linked-open-data-wikidata) <!-- LINK TO BE UPDATED --> aimed at librarians, archivists, and other information professionals which covers some of the same ground using different examples.
+
+**Prerequisites**: There are no prerequisites for this lesson, but most users will want to log in to Wikidata in order to personalize language settings. If you already have a Wikipedia user id, it will work in Wikidata.
 
 Wikidata is a dynamic knowledge base edited thousands of times each day. I have tried to choose durable examples for this lesson, but some of those edits might affect some of the examples. 
 
-There are no prerequisites for this lesson, but most users will want to log in to Wikidata in order to personalize language settings. If you already have a Wikipedia user id, it will work in Wikidata.
+## What is Wikidata?
+
+[Wikidata](https://www.wikidata.org/wiki/Wikidata:Introduction) is the world's largest open data set–or, to use its self-identification, "knowledge base." Like any database, it operates according to rigid rules about how information must be structured. Unlike most databases, however, Wikidata's structure prioritizes open contribution and collaboration protocols, interoperability, and linking between data sets. For historians, this data structure offers something especially attractive: in cases of uncertainty, it can accommodate more than one answer.
+
+Wikidata is a sibling of Wikipedia, and shares its [politics of knowledge production and dissemination](https://en.wikipedia.org/wiki/Wikipedia:Five_pillars), as well as the [values of the Wikimedia Foundation](https://wikimediafoundation.org/about/values/#a1-we-are-in-this-mission-together). Among these values is commitment to underrepresented knowledge communities. Wikidata's interface is seamlessly multilingual and, unlike Wikipedia, users can see information in any and all languages they choose through the same interface. This functionality is particularly useful for historians working in multilingual and cross-cultural contexts.
+
+The debate over Wikipedia's merits and faults is rich; many historians will agree that it's a convenient place to look up facts, refreshingly broad and democratic in its coverage, but it can be unreliable in its synthesis. Wikidata's content, in contrast to Wikipedia, is all facts and no synthesis. Wikidata is particularly useful for automated enrichment of existing datasets. For instance, named entities (e.g., people and places) in a corpus of historical newspapers, once linked to Wikidata items, can easily be mapped or placed in chronological series.[^1] The [impresso project](https://www.impresso-project.ch/) uses Wikidata to cluster newspaper references to the same person using different iterations of their names.[^2] This application is beyond the scope of this lesson, but readers interested in extending its suggestions will want to know that Wikidata scales very well.
+
+The cluster of technologies on which Wikidata is built, called [semantic web](https://en.wikipedia.org/wiki/Semantic_Web)/[graph data](https://en.wikipedia.org/wiki/Graph_database)/[linked data](https://en.wikipedia.org/wiki/Linked_data#Linked_open_data)/[resource description framework](https://en.wikipedia.org/wiki/Resource_Description_Framework), has been an object of fascination for years due to its potential to solve the problem of aggregating extemely diverse data sets. Outside of some specialist cases, that potential went unrealized until the late 2010s, with the advent and popularization of Wikidata. Now, for the first time, historians interested in these technologies have a substantial, well-supported foundation to which they can contribute.[^3]
 
 ## A case study about heads of state
 
@@ -41,19 +53,7 @@ This lesson compares mid-twentieth century Egyptian president Gamal Abdel Nasser
 
 The Gamal Abdel Nasser comparison is useful for another reason: data on heads of state is fairly complete in Wikidata. Readers will perhaps find more gaps when investigating their own fields of interest. Also, readers will almost certainly find some ambiguities and inconsistencies in how data is presented in Wikidata when they look at information they know well. I believe that, as compared to more categorical, "objective" datasets and database structures, Wikidata's gaps and ambiguities offer research value for historians. Near the end of this lesson, for example, we will explore the strange findings Wikipedia offers about the ideology of Abdel Nasser and other heads of state. This case study from "great man" history is a simplistic example meant to guide readers towards more interesting investigations of their own design.
 
-Popular "AI" bots are willing to answer all of the questions that this case study poses. They get their answers, in part, from Wikidata. I encourage readers to compare Wikidata's answers to the answers offered by bots. Typically, bot answers will be partial and will not disclose limits or edge cases. Limits and edge cases are often what interest us as historians, and Wikidata's thorough and precise answers are often useful for research purposes.
-
-## What is Wikidata?
-
-The cluster of technologies called [semantic web](https://en.wikipedia.org/wiki/Semantic_Web)/[graph data](https://en.wikipedia.org/wiki/Graph_database)/[linked data](https://en.wikipedia.org/wiki/Linked_data#Linked_open_data)/[resource description framework](https://en.wikipedia.org/wiki/Resource_Description_Framework) has been an object of fascination for years, due to its potential to solve the problem of aggregating extemely diverse data sets. Outside of some specialist cases, that potential went unrealized until the late 2010s, with the advent and popularization of Wikidata. Now, for the first time, historians interested in these technologies have a substantial, well-supported foundation for their work.[^1] 
-
-[Wikidata](https://www.wikidata.org/wiki/Wikidata:Introduction) is the world's largest open data set–or, to use its self-identification, "knowledge base." Like any database, it operates according to rigid rules about how information must be structured. Unlike most databases, however, Wikidata's structure prioritizes open contribution and collaboration protocols, interoperability, and linking between data sets. For historians, this data structure offers something especially attractive: in cases of uncertainty, it can accommodate more than one answer.
-
-Wikidata is a sibling of Wikipedia, and shares its [politics of knowledge production and dissemination](https://en.wikipedia.org/wiki/Wikipedia:Five_pillars), as well as the [values of the Wikimedia Foundation](https://wikimediafoundation.org/about/values/#a1-we-are-in-this-mission-together). Among these values is commitment to underrepresented knowledge communities. Wikidata's interface is seamlessly multilingual and, unlike Wikipedia, users can see information in any and all languages they choose through the same interface. This functionality is particularly useful for historians working in multilingual and cross-cultural contexts.
-
-The debate over Wikipedia's merits and faults is rich; many historians will agree that it's a convenient place to look up facts, refreshingly broad and democratic in its coverage, but it can be unreliable in its synthesis.[^2] Wikidata's content, in contrast to Wikipedia, is all facts and no synthesis. Wikidata is particularly useful for automated enrichment of existing datasets. For instance, named entities (e.g., people and places) in a corpus of historical newspapers, once linked to Wikidata items, can easily be mapped or placed in chronological series.[^3] The [impresso project](https://www.impresso-project.ch/) uses Wikidata to cluster newspaper references to the same person using different iterations of their names.[^4] This application is beyond the scope of this lesson, but readers interested in extending its suggestions will want to know that Wikidata scales very well.
-
-### An example of an item page
+## How to read an item page
 
 To get an idea of Wikidata's nature, and without worrying too much about the format, spend a bit of time scrolling through what Wikidata has to tell us about former Egyptian president [Gamal Abdel Nasser](https://www.wikidata.org/wiki/Q39524). 
 
@@ -71,7 +71,9 @@ Even further down, you'll find another section with the heading **Identifiers**.
 
 **Unique identifiers** are one key to understanding Wikidata. Wikidata's own identifier for Abdel Nasser can be found in the URL of his page, which is `https://www.wikidata.org/wiki/Q39524.` Abdel Nasser and all of the other objects that Wikidata describes are called **items**. The Q-number, which is the unique identifier that you find at the end of the URL at the top of every item's page (`Q39524` for Abdel Nasser), is the essence of any item. Everything else you see on the page is semantics: optional labels and signfiers and statements about this identifier.
 
-Most historians–particularly those with some background in postcolonial theory–might readily identify the value in distinguishing between the signifier and the signified. The sources we use are signifiers containing subjective accounts of a multivocal past, rather than singular objective facts. The semantic data model on which Wikidata is based is founded on this same distinction: the human words it contains (such as labels and aliases) are provisional, contingent, and changeable, while the things they describe are encoded in machine-readable numbers (such as `Q39524`). In other words, the signfied are only ever numbers; everything else is a signifier. This distinction means that the knowledge base does not depend on arbitrary human semantic choices to organize the relationship between the people, places, events, concepts, and things that it describes. Wikidata can use multiple terms for the same idea, and those terms can change, without breaking the database.
+Let's take a moment to reflect a bit more deeply about the significance of these identifiers. Wikidata's use of Q-numbers seems to fit an insight developed by decidedly non-computational theorists in the humanities: there is value in distinguishing between the signifier and the signified. Semiotic analysis suggests that the historical sources we use are signifiers containing subjective accounts of a multivocal past, rather than singular objective facts. Notoriously difficult-to-read post-structuralists, such as Derrida and Lacan, informed postmodern and postcolonial readings that are skeptical of fixed, objective meanings for texts.
+
+The semantic data model on which Wikidata is based is founded on this same distinction: the human words that Wikidata contains (especially its labels and aliases) are provisional, contingent, and changeable, while the things they describe are encoded in unique identifiers numbers (such as `Q39524`) that are insignificant to humans. In other words, the signfied are only ever numbers; everything else is a signifier. This distinction means that the knowledge base does not depend on arbitrary human semantic choices to organize the relationship between the people, places, events, concepts, and things that it describes. Simply put, Wikidata can use multiple terms for the same idea, and those terms can change, without breaking the database.
 
 For example, the Egyptian president's given name is pronounced "Jamal" in standard Arabic and "Gamal" in Egyptian Arabic. Similarly, his surname is rendered differently by writers in different genres. Politicians and journalists refered to him as Nasser, others as Abdel Nasser, while Arabophone scholars of the Middle East sometimes transliterate his name "ʻAbd al-Nāṣir." Aliases--alternate labels--mean that searchs for each of these terms will arrive at the same `Q39524` item.
 
@@ -91,19 +93,32 @@ To get more of a taste for Wikidata, find the Wikidata item associated with Wiki
 
 You are probably thinking that on the face of things, there's nothing especially enticing about these lists of details. This is correct: you could simply look up most of this trivia in any decent reference book. But Wikidata's value does not consist in its isolated factoids. Instead, Wikidata's power derives from the way that it combines these data points with all of the other data it contains. It does this with a powerful search protocol called [SPARQL](https://en.wikipedia.org/wiki/SPARQL). 
 
-### Combining factoids
+> ***Insight***: This section introduced seven key Wikidata terms. These are common words, but they have a narrower sense in Wikidata. It may be useful to review this short list: 
+- item
+- property
+- label
+- alias
+- identifier
+- statement
+- value
 
-Queries combine factoids into patterns that can illuminate historical context. We'll learn more about constructing Wikidata queries later, but let's start looking at the results of a few pre-constructed queries. Let's say that you are interested in the role that youth may have played in Abdel Nasser's rise to power, and you want to consider the age at which other mid-twentieth-century leaders took power. Here's [a query that returns that information](https://w.wiki/E$jz) via the Wikidata query service. (Don't get hung up on the details of the query; if you are curious, the grey lines explain what each step accomplishes.) To execute the query, press the blue "play" button at the bottom left.
+## Combining factoids
+
+Wikidata offers tools and data to combine information we have at hand with other background factoids. These combinations can help us to understand context. For example, you might wonder how age figures in revolutionary careers. By combining factoids on Abdel Nasser's item page with other items, you might recognize a meaningful pattern. We'll learn more about constructing Wikidata queries later, but let's start looking at the results of a few pre-constructed queries. 
+
+Let's say that you are interested in the role that youth may have played in Abdel Nasser's rise to power, and you want to consider the age at which other mid-twentieth-century leaders took power. Here's [a query that returns that information](https://w.wiki/E$jz) via the Wikidata query service. (Don't get hung up on the details of the query; if you are curious, the grey lines explain what each step accomplishes.) To execute the query, press the blue "play" button at the bottom left.
 
 Scrolling down the table of results, which are sorted by age, you will find that Abdel Nasser became president when he was 38 (in 1954). Comparing him to the hundreds of other heads of state listed, we can see that some first took power at an older age, and some at a younger age. The simple Tableau bar graph below shows that Nasser was relatively young in this distribution. If you happen to be interested in leaders, life cycle, and generations, this list is a good starting point for further data exploration and hypothesis testing.
 
 {% include figure.html filename="en-or-wikidata-for-historians-04.png" alt="Column graph with count on y-axis and age at which head of state came to power on x-axis, with the bar for 38 years old highlighted." caption="Figure 4: Count of ages at which heads of state came to power, 1950-1980." %}
 
-Wikidata supports data-informed contextualization of this kind. Once you get the hang of SPARQL, it's easy, with an additional query statement, to enrich your data: [add a continent column](https://w.wiki/E$k7), [add a gender column and count of spouses and children](https://w.wiki/FmqN), or [add a column giving each leader's name in her or his native language](https://w.wiki/E$kB).
+Of course, popular "AI" bots are willing to answer broad contextual questions like this. They get their answers, in part, from Wikidata. I encourage readers to compare Wikidata's answers to the answers offered by bots, here and in what follows. Typically, bot answers will be partial and will not disclose limits or edge cases. In the age example, the bots seem to neglect less well-known heads of state. But limits and edge cases are often what interest us as historians, and Wikidata's thorough and precise answers are often useful for research purposes.
 
-All such results can be downloaded in the usual data formats and as code snippets in various programming languages. Wikidata even includes a rudimentary visualization package with its query service, which can help in quick data exploration. Here's a [map of the birthplace of everyone with the first name "Gamal"](https://w.wiki/E$kF) (move your cursor to the right margin of the map to access the SPARQL query itself).
+Wikidata supports data-informed contextualization, and (unlike bots) it gives only straight answers. Once you get the hang of SPARQL, it's possible, with an additional query statement, to enrich your data in various ways you might find meaningful. For example (again using prepared queries), you can [add a continent column](https://w.wiki/E$k7), [add a gender column and count of spouses and children](https://w.wiki/FmqN), or [add a column giving each leader's name in her or his native language](https://w.wiki/E$kB).
 
-Obviously, this is only a tiny fraction of the world's Gamals. It is essential to recognize what Wikidata does not do–and should not be expected to do. The knowledge base is vast, but it will always be incomplete. While many or even most of the data in these lists of results are more or less correct, we find some individual answers that don't make sense, and others that are missing.
+These results can be downloaded in the usual data formats and as code snippets in various programming languages. Wikidata even includes a rudimentary visualization package with its query service, which can help in quick data exploration. Here's a [map of the birthplace of everyone with the first name "Gamal"](https://w.wiki/E$kF) (move your cursor to the right margin of the map to access the SPARQL query itself).
+
+The queries function, but what about the data they reveal? Obviously, this map shows only a tiny fraction of the world's Gamals. It is essential to recognize what Wikidata does not do–and should not be expected to do. The knowledge base is vast, but it will always be incomplete. While many or even most of the data in these lists of results are more or less correct, we find some individual answers that don't make sense, and others that are missing.
 
 This incompleteness is a function of two features of the knowledge base. First, there is no guarantee that the data it contains are accurate, and no rigid requirement that it be source referenced. At the time of writing, eight references attested Abdel Nasser's date of birth:
 
@@ -113,16 +128,7 @@ However, we only have one reference for the date when he assumed the President's
 
 A second (and more interesting) reason for incomplete Wikidata query results concerns the structure of knowledge that Wikidata produces. Briefly put, Wikidata must be queried using its own (often idiosyncratic) terms and categories. You must understand its taxonomies in order to use it effectively, and this issue warrants a section of its own. 
 
-### Key vocabulary:
-- item
-- property
-- label
-- alias
-- identifier
-- statement
-- value
-
-## Wikidata's taxonomies
+## Wikidata's taxonomies: a productive puzzle for historians
 
 Our Abdel Nasser case study compares him to other state leaders--but what is a leader, really? Does this position mean the same thing in every state? Categories and semantics are juicy problems for any historian. This is true in analog scholarly debate, and it is also true when we consider Wikidata and other semantic data structures.
 
@@ -162,7 +168,7 @@ Historians tend to be sceptical of taxonomic schemes, with good reason. But expl
 
 A big part of our expertise as historians is contextualizing details. For many of us, that's the fun and fascinating work. And that skill is precisely what a researcher needs to interact with the galaxy of isolated factoids in Wikidata. The rest of this lesson shows a few of the main ways to do that.
 
-### Vocabulary
+> ***Insight***: This section introduced two more Wikidata terms: 
 - class
 - subclass
 
@@ -359,10 +365,9 @@ On the second count, you may feel daunted by how much important historical data 
 
 ## Endnotes
 
-[^1]: Take, for example, this line from Blaney's 2017 lesson: "Unfortunately I can’t find anything that describes the relationship between a teacher and a pupil in the Music Ontology. But the ontology is published openly, so I can use it to describe other features of music and then create my own extension." With Wikidata, it is no longer necessary to create such extensions, because its ontology is already quite thoroughly realized. To take Blaney's example, [the item page for Moriz Rosenthal](https://www.wikidata.org/wiki/Q213772) shows that he was a "student of"[P1066](https://www.wikidata.org/wiki/Property:P1066) Franz Liszt, and that Charles Rosen was his "student"[P802](https://www.wikidata.org/wiki/Property:P802).
-[^2]: Roy Rosenzweig, "Can History Be Open Source? Wikipedia and the Future of the Past." *Journal of American History* 93, no. 1 (2006): 117–46. [https://doi.org/10.2307/4486062](https://doi.org/10.2307/4486062).
-[^3]: For a survey of such use, up to 2021 and across the humanities more broadly, see Fudie Zhao, "A Systematic Review of Wikidata in Digital Humanities Projects," *Digital Scholarship in the Humanities* 38, no. 2 (2023): 852–74, [https://doi.org/10.1093/llc/fqac083](https://doi.org/10.1093/llc/fqac083).
-[^4]: This approach is described in Marten Düring et al., "Transparent Generosity. Introducing the Impresso Interface for the Exploration of Semantically Enriched Historical Newspapers," *Historical Methods: A Journal of Quantitative and Interdisciplinary History*, 57, no. 1 (2024): 31. [https://doi.org/10.1080/01615440.2024.2344004](https://doi.org/10.1080/01615440.2024.2344004).
+[^1]: For a survey of such use, up to 2021 and across the humanities more broadly, see Fudie Zhao, "A Systematic Review of Wikidata in Digital Humanities Projects," *Digital Scholarship in the Humanities* 38, no. 2 (2023): 852–74, [https://doi.org/10.1093/llc/fqac083](https://doi.org/10.1093/llc/fqac083).
+[^2]: This approach is described in Marten Düring et al., "Transparent Generosity. Introducing the Impresso Interface for the Exploration of Semantically Enriched Historical Newspapers," *Historical Methods: A Journal of Quantitative and Interdisciplinary History*, 57, no. 1 (2024): 31. [https://doi.org/10.1080/01615440.2024.2344004](https://doi.org/10.1080/01615440.2024.2344004).
+[^3]: Take, for example, this line from Blaney's 2017 lesson: "Unfortunately I can’t find anything that describes the relationship between a teacher and a pupil in the Music Ontology. But the ontology is published openly, so I can use it to describe other features of music and then create my own extension." With Wikidata, it is no longer necessary to create such extensions, because its ontology is already quite thoroughly realized. To take Blaney's example, [the item page for Moriz Rosenthal](https://www.wikidata.org/wiki/Q213772) shows that he was a "student of"[P1066](https://www.wikidata.org/wiki/Property:P1066) Franz Liszt, and that Charles Rosen was his "student"[P802](https://www.wikidata.org/wiki/Property:P802).
 [^5]: As mentioned earlier, Wikidata is one of the world's great disambiguation resources. We can easily distinguish [Q16889133](https://www.wikidata.org/wiki/Q16889133) from [Q187588](https://www.wikidata.org/wiki/Q187588), or [Q37517](https://www.wikidata.org/wiki/Q37517) or [Q18204](https://www.wikidata.org/wiki/Q18204) or [Q217594](https://www.wikidata.org/wiki/Q217594).
 [^6]: The reason for this quirk is straightforward: at the time of writing, "President of the United States" ([Q11696](https://www.wikidata.org/wiki/Q11696)) is defined as "instance of"([P31](https://www.wikidata.org/wiki/Property:P31)) rather than "subclass of"([P279](https://www.wikidata.org/wiki/Property:P279)) "head of state"([Q48352](https://www.wikidata.org/wiki/Q48352)) and "head of government"([Q2285706](https://www.wikidata.org/wiki/Q2285706)). These statements differ from the way most heads of state are described in Wikidata--and may have been changed by the time you read this.
 [^7]: SPARQL is [introduced in another (currently retired) Programming Historian lesson](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL). 

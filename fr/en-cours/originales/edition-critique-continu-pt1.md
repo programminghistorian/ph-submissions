@@ -1,5 +1,5 @@
 ---
-title: "L’édition critique en continu&nbsp;: publier au rythme de l’encodage (Partie 1)"
+title: "L'édition critique en continu&nbsp;: publier au rythme de l'encodage (Partie 1)"
 slug: edition-critique-continu-pt1
 layout: lesson
 collection: lessons
@@ -16,7 +16,7 @@ difficulty: 3
 activity: transforming
 topics: [metadata, website, data-management]
 abstract: |
- Cette leçon montre comment mettre en place une édition critique &laquo;&nbsp;en continu&nbsp;&raquo; d’un corpus TEI&nbsp;: définir un ODD, générer un schéma RELAX NG, compléter la validation avec Schematron et produire des sorties (texte/HTML/Markdown) via XSLT 2.0. L’exemple s’appuie sur la correspondance de Filippo Cavriana.
+ Cette leçon montre comment mettre en place une édition critique &laquo;&nbsp;en continu&nbsp;&raquo; d'un corpus TEI&nbsp;: définir un ODD, générer un schéma RELAX NG, compléter la validation avec Schematron et produire des sorties (texte/HTML/Markdown) via XSLT 2.0. L'exemple s'appuie sur la correspondance de Filippo Cavriana.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
@@ -25,19 +25,38 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-L’édition critique traditionnelle suit un modèle de publication en bloc. L'intégralité du texte est préparée puis publié lorsque le travail est jugé «&nbsp;achevé&nbsp;». Héritée de l’imprimé, cette logique persiste à l’ère numérique, alors même que celui-ci permettrait d’autres rythmes et modalités de publication. Parce que les opérations techniques (conversion, validation, mise en ligne) sont souvent confiées à des spécialistes en fin de chaîne, la flexibilité du numérique demeure sous-exploitée.
+L'édition critique traditionnelle suit un modèle de publication en bloc. L'intégralité du texte est préparée puis publiée lorsque le travail est jugé «&nbsp;achevé&nbsp;». Héritée de l'imprimé, cette logique persiste à l'ère numérique, alors même que celui-ci permettrait d'autres rythmes et modalités de publication. Parce que les opérations techniques (conversion, validation, mise en ligne) sont souvent confiées à des spécialistes en fin de chaîne, la flexibilité du numérique demeure sous-exploitée.
 
-Ce modèle s’adapte mal à l’édition critique de sources primaires. Sa rigidité impose une tolérance à l’erreur quasi nulle, ce qui retarde la diffusion de résultats déjà exploitables par la communauté scientifique. Il dissuade aussi nombre de chercheurs de l’intégrer à leur stratégie de publication, car ce travail de longue haleine, bien qu’essentiel à la recherche, reste peu reconnu. Son rapport coût-bénéfice défavorable en fait souvent une variable d’ajustement.
+Ce modèle s'adapte mal à l'édition critique de sources primaires. Sa rigidité impose une tolérance à l'erreur quasi nulle, ce qui retarde la diffusion de résultats déjà exploitables par la communauté scientifique. Il dissuade aussi nombre de chercheurs de l'intégrer à leur stratégie de publication, car ce travail de longue haleine, bien qu'essentiel à la recherche, reste peu reconnu. Son rapport coût-bénéfice défavorable en fait souvent une variable d'ajustement.
 
-Face à ces limites, l’édition continue offre une alternative intéressante. Par «&nbsp;édition continue&nbsp;», on entend une publication par incréments. Plutôt que d’attendre la finalisation d’un projet éditorial, on diffuse progressivement les documents au fur et à mesure de leur encodage et de leur révision, tout en facilitant les mises à jour régulières du corpus à mesure que de nouvelles sources apparaissent.
+Face à ces limites, l'édition continue offre une alternative intéressante. Par «&nbsp;édition continue&nbsp;», on entend une publication par incréments. Plutôt que d'attendre la finalisation d'un projet éditorial, on diffuse progressivement les documents au fur et à mesure de leur encodage et de leur révision, tout en facilitant les mises à jour régulières du corpus à mesure que de nouvelles sources apparaissent.
 
-Cette approche repose sur des outils simples mais puissants de gestion de versions, tels que Git, qui permettent de suivre précisément chaque modification tout en favorisant une collaboration transparente. Des plateformes comme GitHub ou GitLab offrent en outre des solutions d’automatisation capables de transformer instantanément les fichiers encodés selon les standards de la *Text Encoding Initiative* ([TEI](https://fr.wikipedia.org/wiki/Text_Encoding_Initiative)) en ressources publiables sur le web et lisibles par des publics différents.
+Cette approche repose sur des outils simples mais puissants de gestion de versions, tels que Git, qui permettent de suivre précisément chaque modification tout en favorisant une collaboration transparente. Des plateformes comme GitHub ou GitLab offrent en outre des solutions d'automatisation capables de transformer instantanément les fichiers encodés selon les standards de la *Text Encoding Initiative* ([TEI](https://fr.wikipedia.org/wiki/Text_Encoding_Initiative)) en ressources publiables sur le web et lisibles par des publics différents.
 
-La clé de cette approche tient à une association entre travail éditorial et développement logiciel&#x202F;: représenter le texte encodé comme une donnée structurée et gérer son cycle de vie avec l'outillage de l'ingénierie logicielle. L’encodage TEI, fondé sur XML ([*eXtensible Markup Language*](https://fr.wikipedia.org/wiki/Extensible_Markup_Language)), est après tout un code déclaratif&#x202F;: il se versionne, se valide et se transforme. Nous adaptons donc des pratiques éprouvées en programmation, notamment l’intégration et la livraison continues ([*Continuous Integration*, *Continuous Delivery*](https://fr.wikipedia.org/wiki/CI/CD)). Ces démarches automatisent le processus de préparation à la mise en ligne du texte. À chaque modification du corpus, la chaîne d’intégration exécute les contrôles de conformité. Puis, une chaîne de livraison prend le relais pour transformer le code en formats immédiatement exploitables. Ainsi, l'ODD ([*One Document Does it all*](https://tei-c.org/guidelines/customization/getting-started-with-p5-odds/)) joue le rôle de spécification, RELAX NG ([*Regular Language for XML, Next Generation*](https://fr.wikipedia.org/wiki/Relax_NG)) formalise les contraintes structurelles, [Schematron](https://fr.wikipedia.org/wiki/Schematron) les complète par des contraintes éditoriales spécifiques, tandis que les feuilles XSLT ([*eXtensible Stylesheet Language Transformations*](https://fr.wikipedia.org/wiki/Extensible_Stylesheet_Language_Transformations)) assurent la transformation du code en formats de sortie désirés ([HTML](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language), [Markdown](https://fr.wikipedia.org/wiki/Markdown), etc.). Les plateformes telles que GitHub et GitLab permettent d'ajouter au dépôt de données une chaîne d’intégration et de déploiement continus ([CI/CD](https://fr.wikipedia.org/wiki/Int%C3%A9gration_continue) - *Continuous Integration/Continuous Deployment*). Ainsi, chaque mise à jour du dépôt déclenche un contrôle de conformité et une transformation. Couplées à [Zenodo](https://zenodo.org), ces mêmes plateformes permettent aussi l’archivage à long terme de versions que l'on peut citer avec un identifiant numérique de type DOI ([*Digital Object Identifier*](https://fr.wikipedia.org/wiki/Digital_Object_Identifier)).
+La clé de cette approche tient à une association entre travail éditorial et développement logiciel&#x202F;: représenter le texte encodé comme une donnée structurée et gérer son cycle de vie avec l'outillage de l'ingénierie logicielle. L'encodage TEI, fondé sur XML ([*eXtensible Markup Language*](https://fr.wikipedia.org/wiki/Extensible_Markup_Language)), est après tout un code déclaratif&#x202F;: il se versionne, se valide et se transforme. Nous adaptons donc des pratiques éprouvées en programmation, notamment l'intégration et la livraison continues ([*Continuous Integration*, *Continuous Delivery*](https://fr.wikipedia.org/wiki/CI/CD)). Ces démarches automatisent le processus de préparation à la mise en ligne du texte. À chaque modification du corpus, la chaîne d'intégration exécute les contrôles de conformité. Puis, une chaîne de livraison prend le relais pour transformer le code en formats immédiatement exploitables. Ainsi, l'ODD ([*One Document Does it all*](https://tei-c.org/guidelines/customization/getting-started-with-p5-odds/)) joue le rôle de spécification, RELAX NG ([*Regular Language for XML, Next Generation*](https://fr.wikipedia.org/wiki/Relax_NG)) formalise les contraintes structurelles, [Schematron](https://fr.wikipedia.org/wiki/Schematron) les complète par des contraintes éditoriales spécifiques, tandis que les feuilles XSLT ([*eXtensible Stylesheet Language Transformations*](https://fr.wikipedia.org/wiki/Extensible_Stylesheet_Language_Transformations)) assurent la transformation du code en formats de sortie désirés ([HTML](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language), [Markdown](https://fr.wikipedia.org/wiki/Markdown), etc.). Les plateformes telles que GitHub et GitLab permettent d'ajouter au dépôt de données une chaîne d'intégration et de déploiement continus ([CI/CD](https://fr.wikipedia.org/wiki/Int%C3%A9gration_continue) - *Continuous Integration/Continuous Deployment*). Ainsi, chaque mise à jour du dépôt déclenche un contrôle de conformité et une transformation. Couplées à [Zenodo](https://zenodo.org), ces mêmes plateformes permettent aussi l'archivage à long terme de versions que l'on peut citer avec un identifiant numérique de type DOI ([*Digital Object Identifier*](https://fr.wikipedia.org/wiki/Digital_Object_Identifier)).
 
-Cette leçon vous montre comment mettre en place une telle édition continue à partir d'un cas précis&#x202F;: la correspondance de Filippo Cavriana (1536-1606), médecin et espion italien à la cour de France et commentateur avisé des guerres de Religion. Tous les outils mobilisés sont gratuits et compatibles avec tous les systèmes d’exploitation. La mise au point peut nécessiter une phase de débogage, mais cet effort en vaut la peine, car il accroît l’autonomie éditoriale, évite la dépendance à des solutions propriétaires et accélère la diffusion des résultats. 
+Le schéma ci-dessous résume les étapes de la chaîne de traitement complète, de l'encodage à la publication&#x202F;:
 
-La première partie couvre toutes les composantes de ce flux de travail éditorial. Vous y apprendrez les bases de la TEI, à définir un schéma adapté pour votre projet, à valider le code, et à le transformer localement. Connaître ces fondamentaux vous permettra d'éviter de nombreuses erreurs par la suite. La seconde partie se concentre sur l’infrastructure&#x202F;: gestion collaborative de versions, automatisations en intégration continue, publication sur site web statique et archivage de versions pérennes.
+```text
+ODD (spécification du projet)
+├──▶ Schéma RELAX NG
+├──▶ Règles Schematron
+└──▶ Documentation d'encodage
+
+Encodage TEI ──▶ Dépôt Git
+                    │
+                    ▼
+            Chaîne CI/CD (déclenchée à chaque mise à jour)
+            ├──▶ Validation RELAX NG (structure)
+            ├──▶ Validation Schematron (logique éditoriale)
+            ├──▶ Transformation XSLT (HTML, Markdown…)
+            ├──▶ Publication (site web statique)
+            └──▶ Archivage pérenne + DOI (Zenodo)
+```
+
+Cette leçon vous montre comment mettre en place une telle édition continue à partir d'un cas précis&#x202F;: la correspondance de Filippo Cavriana (1536-1606), médecin et espion italien à la cour de France et commentateur avisé des guerres de Religion. Tous les outils mobilisés sont gratuits et compatibles avec tous les systèmes d'exploitation. La mise au point peut nécessiter une phase de débogage, mais cet effort en vaut la peine, car il accroît l'autonomie éditoriale, évite la dépendance à des solutions propriétaires et accélère la diffusion des résultats. 
+
+La première partie couvre toutes les composantes de ce flux de travail éditorial. Vous y apprendrez les bases de la TEI, à définir un schéma adapté pour votre projet, à valider le code, et à le transformer localement. Connaître ces fondamentaux vous permettra d'éviter de nombreuses erreurs par la suite. La seconde partie se concentre sur l'infrastructure&#x202F;: gestion collaborative de versions, automatisations en intégration continue, publication sur site web statique et archivage de versions pérennes.
 
 ### Prérequis
 
@@ -48,7 +67,7 @@ La première partie couvre toutes les composantes de ce flux de travail éditori
 
 ### Organisation du projet
 
-Avant de commencer, organisons notre espace de travail. Un projet d'édition TEI doit suivre une structure claire pour séparer les différents types de fichiers. À la racine du projet, créez trois répertoires principaux :
+Avant de commencer, organisons notre espace de travail. Un projet d'édition TEI doit suivre une structure claire pour séparer les différents types de fichiers. À la racine du projet, créez trois répertoires principaux&#x202F;:
 - `letters/` contiendra les fichiers TEI-XML de la correspondance (une lettre par fichier)
 - `templates/` regroupera vos fichiers de configuration personnalisés (ODD, schémas, XSLT) 
 - `output/` recevra les résultats des transformations
@@ -56,7 +75,7 @@ Avant de commencer, organisons notre espace de travail. Un projet d'édition TEI
 Pour les créer, une simple ligne de commande suffira:
 
 ```bash
-mkdir -p letters templates output
+mkdir -p letters templates common output
 ``` 
 
 Pour les outils de transformation, vous avez deux options&#x202F;: soit installer `jing`, `saxon` et leurs dépendances via des gestionnaires de paquets, soit les installer manuellement. La première option est recommandée, surtout si vous êtes novice.
@@ -75,32 +94,40 @@ brew install saxon
 brew install jing-trang
 ```
 
+Sur macOS, `wget` n'est pas disponible par défaut. Afin de pouvoir utiliser les mêmes commandes que sous Linux, nous recommandons de l'installer&#x202F;:
+```bash
+brew install wget
+```
+
 Sur Ubuntu/WSL, APT est déjà installé mais requiert sudo&#x202F;:
 
 ```bash
 sudo apt install libsaxonhe-java jing
 ```
 
-Sur macOS, les commandes `saxon` et `jing` sont automatiquement disponibles sur le terminal après installation. Sur Linux (et donc Ubuntu/WSL), il est parfois nécessaire de créer des alias. Pour cela, il faut trouver où `saxon` est installé&#x202F;:
+Sur macOS, les commandes `saxon` et `jing` sont automatiquement disponibles sur le terminal après installation. Sur Linux (et donc Ubuntu/WSL), il est parfois nécessaire de créer des alias. Pour cela, il faut d'abord trouver où `saxon` est installé&#x202F;:
 
 ```bash
+# Linux/WSL uniquement
 ls /usr/share/java/*saxon*.jar
 ```
 
 Une fois que vous avez l'adresse exacte, remplacez [nom-exact.jar] dans la commande ci-dessous et exécutez-la&#x202F;:
+
+> Les commandes ci-dessous utilisent `~/.bashrc` (shell par défaut sous Linux/Ubuntu/WSL). Sous macOS, où `zsh` est le shell par défaut depuis 2019, remplacez `~/.bashrc` par `~/.zshrc`. Après toute modification de ce fichier, exécutez `source ~/.bashrc` (ou `source ~/.zshrc`) ou relancez votre terminal pour que les changements prennent effet.
 
 ```bash
 echo 'export SAXON_JAR="/chemin/vers/[nom-exact.jar]"' >> ~/.bashrc
 echo 'alias saxon="java -jar $SAXON_JAR"' >> ~/.bashrc
 ```
 
-Pour `jing`, vérifiez s'il fonctionne directement&#x202F;:
+Pour `jing`, vérifiez qu'il est accessible (la commande affiche sa version et son usage, puis se termine avec un code d'erreur, ce qui est normal)&#x202F;:
 
 ```bash
-jing --version
+jing
 ```
 
-Si cette commande n'aboutit pas, créez également un alias&#x202F;:
+Si cette commande n'est pas trouvée, créez également un alias&#x202F;:
 
 ```bash
 echo 'export JING_JAR="$HOME/tools/jing.jar"' >> ~/.bashrc
@@ -113,50 +140,65 @@ Activez les alias avec&#x202F;:
 source ~/.bashrc
 ``` 
 
-Ces deux programmes s'exécutent sur la machine virtuelle Java. Il faut donc installer un JRE avant de les utiliser. Nous recommandons OpenJDK 17 (LTS) ou plus récent&#x202F;: sous Linux, installez‑le avec `sudo apt install openjdk-17-jre`&#x202F;; sous **macOS** (Homebrew), utilisez `brew install openjdk`. Vérifiez ensuite l’installation avec `java -version`. Si la commande n’est pas trouvée, relancez votre terminal ou ajoutez le chemin d’OpenJDK à votre `PATH`.
+Ces deux programmes s'exécutent sur la machine virtuelle Java. Il faut donc installer un JRE avant de les utiliser. Nous recommandons OpenJDK 17 (LTS) ou plus récent&#x202F;: sous Linux, installez‑le avec `sudo apt install openjdk-17-jre`&#x202F;; sous **macOS** (Homebrew), utilisez `brew install openjdk`. Vérifiez ensuite l'installation avec `java -version`. Si la commande n'est pas trouvée, relancez votre terminal ou ajoutez le chemin d'OpenJDK à votre `PATH`.
 
 Si vous préférez télécharger les paquets manuellement, créez un répertoire tools/ et téléchargez les fichiers [JAR](https://fr.wikipedia.org/wiki/JAR_(format_de_fichier)) (*Java ARchive*) depuis [Saxonica](https://github.com/Saxonica/Saxon-HE/releases) et [Jing-Trang](https://github.com/relaxng/jing-trang/releases). Télécharger les dépendances s'il le faut.
 
 Créez ensuite des alias&#x202F;:
 ```bash
-echo 'alias saxon="java -jar $(pwd)/tools/saxon.jar"' >> ~/.bashrc
-echo 'alias jing="java -jar $(pwd)/tools/jing.jar"' >> ~/.bashrc
+echo 'alias saxon="java -jar $HOME/tools/saxon.jar"' >> ~/.bashrc
+echo 'alias jing="java -jar $HOME/tools/jing.jar"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Après cette configuration, vous pourrez utiliser saxon de manière identique sur macOS, Linux (et donc Ubuntu/WSL).
+Après cette configuration, vous pourrez utiliser saxon indifféremment sur macOS et sur Linux (et donc Ubuntu/WSL).
 
 Vous pouvez aussi télécharger localement les feuilles de style TEI, ODD, et Schematron, ce qui vous permet de travailler sans vous soucier de votre connexion internet&#x202F;: 
 
 ```bash
+mkdir -p templates common
 cd templates
+
+# TEI ODD + dépendances nécessaires
 wget https://www.tei-c.org/release/xml/tei/stylesheet/odds/odd2relax.xsl
 wget https://www.tei-c.org/release/xml/tei/stylesheet/odds/odd2html.xsl
+wget https://www.tei-c.org/release/xml/tei/stylesheet/odds/teiodds.xsl
+wget https://www.tei-c.org/release/xml/tei/stylesheet/odds/classatts.xsl
+wget https://www.tei-c.org/release/xml/tei/stylesheet/odds/RngToRnc.xsl
+
+# Schematron
 wget https://raw.githubusercontent.com/Schematron/stf/master/iso-schematron-xslt2/iso_svrl_for_xslt2.xsl
 wget https://raw.githubusercontent.com/Schematron/stf/master/iso-schematron-xslt2/iso_dsdl_include.xsl
 wget https://raw.githubusercontent.com/Schematron/stf/master/iso-schematron-xslt2/iso_abstract_expand.xsl
+wget https://raw.githubusercontent.com/Schematron/stf/master/iso-schematron-xslt2/iso_schematron_skeleton_for_saxon.xsl
+
+# Dépendances communes TEI (référencées par odd2relax/teiodds)
+wget -P ../common https://www.tei-c.org/release/xml/tei/stylesheet/common/functions.xsl
+wget -P ../common https://www.tei-c.org/release/xml/tei/stylesheet/common/i18n.xsl
+wget -P ../common https://www.tei-c.org/release/xml/tei/stylesheet/common/common_param.xsl
+
 cd ..
 ```
 
-## Qu’est‑ce que la TEI ?
+## Qu'est‑ce que la TEI ?
 
-La Text Encoding Initiative (TEI) constitue le standard international pour l’encodage de textes en humanités numériques. Née au milieu des années 1980 avec l’objectif d’un balisage commun en SGML ([*Standard Generalized Markup Language*](https://fr.wikipedia.org/wiki/Standard_Generalized_Markup_Language)), la TEI évolue à partir des années 2000 et adopte le format XML, plus léger et accessible. Cette réforme en a facilité grandement l’adoption.
+La Text Encoding Initiative (TEI) constitue le standard international pour l'encodage de textes en humanités numériques. Née au milieu des années 1980 avec l'objectif d'un balisage commun en SGML ([*Standard Generalized Markup Language*](https://fr.wikipedia.org/wiki/Standard_Generalized_Markup_Language)), la TEI évolue à partir des années 2000 et adopte le format XML, plus léger et accessible. Cette réforme en a facilité grandement l'adoption.
 
-Aujourd’hui, la TEI propose un langage de balisage riche et modulaire pour décrire la structure et le contenu de documents de toute nature, des manuscrits médiévaux aux correspondances, pièces de théâtre, poèmes, inscriptions épigraphiques, corpus linguistiques, entretiens oraux ou documents multimédias. Le consortium TEI, qui réunit institutions et spécialistes du monde entier, maintient et développe continûment ce standard pour répondre aux besoins de la recherche et de la conservation.
+Aujourd'hui, la TEI propose un langage de balisage riche et modulaire pour décrire la structure et le contenu de documents de toute nature, des manuscrits médiévaux aux correspondances, pièces de théâtre, poèmes, inscriptions épigraphiques, corpus linguistiques, entretiens oraux ou documents multimédias. Le consortium TEI, qui réunit institutions et spécialistes du monde entier, maintient et développe continûment ce standard pour répondre aux besoins de la recherche et de la conservation.
 
-Contrairement à un traitement de texte centré sur l’apparence visuelle, la TEI se concentre sur la structuration et la sémantique du texte. Autrement dit, là où Word applique l'italique, la TEI distingue si cette italique signale le titre d’une œuvre `<title>`, un terme en langue étrangère `<foreign>` ou une emphase `<emph>`. Cette structuration sémantique permet à la machine de comprendre le texte et ses composantes.
+Contrairement à un traitement de texte centré sur l'apparence visuelle, la TEI se concentre sur la structuration et la sémantique du texte. Autrement dit, là où Word applique l'italique, la TEI distingue si cette italique signale le titre d'une œuvre `<title>`, un terme en langue étrangère `<foreign>` ou une emphase `<emph>`. Cette structuration sémantique permet à la machine de comprendre le texte et ses composantes.
 
-Un avantage fondamental de la TEI est sa transparence et sa neutralité technique. Les balises TEI s’insèrent directement dans le texte, sans nécessiter de logiciel propriétaire. N’importe quel éditeur de texte convient&#x202F;: Notepad, Vim, VS Code, voire même la commande `echo` dans un terminal.
+Un avantage fondamental de la TEI est sa transparence et sa neutralité technique. Les balises TEI s'insèrent directement dans le texte, sans nécessiter de logiciel propriétaire. N'importe quel éditeur de texte convient&#x202F;: Notepad, Vim, VS Code, voire même la commande `echo` dans un terminal.
 
-L’adoption de la TEI garantit deux avantages cruciaux&#x202F;: la pérennité et la portabilité. La pérennité assure que le travail restera accessible et exploitable, indépendamment des évolutions techniques. Contrairement aux formats propriétaires, le TEI-XML est un standard très répandu, lisible par l’homme comme par la machine, qu’elle soit récente ou qu’elle ait trente ans d’âge. La portabilité du TEI découle de sa structuration sémantique&#x202F;: la machine comprend la structure du texte, ce qui permet des transformations automatiques vers d’autres formats, y compris ceux qui n’existent pas encore.
+L'adoption de la TEI garantit deux avantages cruciaux&#x202F;: la pérennité et la portabilité. La pérennité assure que le travail restera accessible et exploitable, indépendamment des évolutions techniques. Contrairement aux formats propriétaires, le TEI-XML est un standard très répandu, lisible par l'homme comme par la machine, qu'elle soit récente ou qu'elle ait trente ans d'âge. La portabilité du TEI découle de sa structuration sémantique&#x202F;: la machine comprend la structure du texte, ce qui permet des transformations automatiques vers d'autres formats, y compris ceux qui n'existent pas encore.
 
-Pour la correspondance de Filippo Cavriana, la TEI permet d’encoder non seulement le texte des lettres, mais aussi leurs métadonnées (expéditeur, destinataire, date, lieu, etc), leurs particularités matérielles (ratures, ajouts marginaux, etc) et leurs références (personnes mentionnées, lieux évoqués, etc). Chaque phénomène textuel reçoit un balisage spécifique qui en facilite le traitement automatique ainsi que l'analyse statistique.
+Pour la correspondance de Filippo Cavriana, la TEI permet d'encoder non seulement le texte des lettres, mais aussi leurs métadonnées (expéditeur, destinataire, date, lieu, etc), leurs particularités matérielles (ratures, ajouts marginaux, etc) et leurs références (personnes mentionnées, lieux évoqués, etc). Chaque phénomène textuel reçoit un balisage spécifique qui en facilite le traitement automatique ainsi que l'analyse statistique.
 
-Tout fichier TEI commence par des éléments récurrents. Concrètement, l’en‑tête d’un fichier XML déclare la version et l’encodage des caractères&#x202F;: `<?xml version="1.0" encoding="UTF-8"?>`. La racine `<TEI>` déclare l’espace de noms par défaut de la TEI&#x202F;: `xmlns="http://www.tei-c.org/ns/1.0"`. Ces deux lignes, qui établissent le cadre syntaxique et le vocabulaire TEI à employer, varient rarement.
+Tout fichier TEI commence par des éléments récurrents. Concrètement, l'en‑tête d'un fichier XML déclare la version et l'encodage des caractères&#x202F;: `<?xml version="1.0" encoding="UTF-8"?>`. La racine `<TEI>` déclare l'espace de noms par défaut de la TEI&#x202F;: `xmlns="http://www.tei-c.org/ns/1.0"`. Ces deux lignes, qui établissent le cadre syntaxique et le vocabulaire TEI à employer, varient rarement.
 
-Les lignes directrices de la TEI précisent que tous les documents se divisent en deux parties&#x202F;: l’en‑tête (`<teiHeader>`) et le corps (`<text>`). Le minimum requis par TEI P5 pour un en‑tête valide est un élément `<fileDesc>` comportant au moins un `<titleStmt>` avec un `<title>`, un `<publicationStmt>` qui décrit le mode de diffusion (même de manière succincte, par exemple dans un paragraphe `<p>`), et un `<sourceDesc>` qui décrit la ou les sources. Des sections complémentaires comme `<encodingDesc>`, `<profileDesc>` ou `<revisionDesc>` sont vivement recommandées, sans être obligatoires.
+Les lignes directrices de la TEI précisent que tous les documents se divisent en deux parties&#x202F;: l'en‑tête (`<teiHeader>`) et le corps (`<text>`). Le minimum requis par TEI P5 pour un en‑tête valide est un élément `<fileDesc>` comportant au moins un `<titleStmt>` avec un `<title>`, un `<publicationStmt>` qui décrit le mode de diffusion (même de manière succincte, par exemple dans un paragraphe `<p>`), et un `<sourceDesc>` qui décrit la ou les sources. Des sections complémentaires comme `<encodingDesc>`, `<profileDesc>` ou `<revisionDesc>` sont vivement recommandées, sans être obligatoires.
 
-Voici un extrait d’une lettre de Filippo Cavriana encodée en TEI, tirée du corpus&#x202F;:
+Voici un extrait d'une lettre de Filippo Cavriana encodée en TEI, tirée du corpus. Enregistrez-le sous `letters/1568-07-03.xml`&#x202F;:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -218,13 +260,13 @@ Voici un extrait d’une lettre de Filippo Cavriana encodée en TEI, tirée du c
 </TEI>
 ```
 
-Dans cet exemple, le `<teiHeader>` contient des métadonnées telles que l'identification du manuscrit conservé à Mantoue et la description de la correspondance (expéditeur, destinataire, lieu, date). Le corps du texte utilise plusieurs éléments structurels&#x202F;: `<opener>` et `<closer>` décrivent les formules d'ouverture et de clôture de la lettre, tandis que `<p>` signale les paragraphes. Comme la plupart des balises XML, ces éléments comportent une balise ouvrante et une balise fermante (ex&#x202F;: <opener>...<opener/>). Certaines, toutefois, comme <code><lb/></code>, sont dites « vides »&#x202F;: elles ne contiennent aucun contenu textuel ni sous-élément, et se ferment donc immédiatement.
+Dans cet exemple, le `<teiHeader>` contient des métadonnées telles que l'identification du manuscrit conservé à Mantoue et la description de la correspondance (expéditeur, destinataire, lieu, date). Le corps du texte utilise plusieurs éléments structurels&#x202F;: `<opener>` et `<closer>` décrivent les formules d'ouverture et de clôture de la lettre, tandis que `<p>` signale les paragraphes. Comme la plupart des balises XML, ces éléments comportent une balise ouvrante et une balise fermante (ex&#x202F;: <opener>...</opener>). Certaines, toutefois, comme <code><lb/></code>, sont dites « vides »&#x202F;: elles ne contiennent aucun contenu textuel ni sous-élément, et se ferment donc immédiatement.
 
-Les balises `<lb/>` signalent des sauts de ligne diplomatiques. Lorsqu'un saut de ligne coupe un mot en deux, l'attribut `break="no"` nous permet de préciser qu'il s'agit d'une contrainte de mise en forme et non d'une coupure du contenu. Cela est utile lors de la phase de transformation, car la machine saura alors quand recomposer le mot sans espace ni saut de ligne, se libérant ainsi de la mise en page originale.
+Les balises `<lb/>` signalent des sauts de ligne diplomatiques. Lorsqu'un saut de ligne coupe un mot en deux, l'attribut `break="no"` nous permet de préciser qu'il s'agit d'une contrainte de mise en forme et non d'une coupure du contenu. Cela est utile lors de la phase de transformation, car la machine saura alors quand recomposer le mot sans espace ni saut de ligne, se libérant si besoin de la mise en page originale.
 
 Pour ce projet particulier, le choix éditorial est d'offrir au lecteur la forme développée des abréviations pour améliorer la lisibilité du texte. L'encodage TEI permet d'enregistrer simultanément les deux formes grâce à l'élément `<choice>` qui regroupe `<abbr>` (l'abréviation telle qu'elle apparaît dans le manuscrit original) et `<expan>` (sa forme développée). Cette double représentation présente un avantage majeur&#x202F;: elle maintient la fidélité à la source tout en offrant une flexibilité éditoriale. Lors de la transformation pour publication, on peut choisir d'afficher uniquement la version étendue pour faciliter la lecture, tout en préservant dans le fichier TEI une transcription diplomatique fidèle du texte original. Cette approche garantit que l'information paléographique reste accessible pour les chercheurs qui souhaiteraient étudier les pratiques d'écriture et d'abréviation du scripteur, sans pour autant imposer cette complexité au lecteur général.
 
-Le code TEI comprend aussi les éléments sémantiques `<persName>` et `<placeName>`, qui décrivent des entités nommées. Ils portent des attributs `@ref` renvoyant à un index de personnes et de lieux. Dans un corpus de correspondance, il est recommandé de centraliser ces informations dans des fichiers d’autorité séparés pour garantir la cohérence de l’ensemble ; selon les besoins du projet, elles peuvent aussi être intégrées dans l’en-tête du document.
+Le code TEI comprend aussi les éléments sémantiques `<persName>` et `<placeName>`, qui décrivent des entités nommées. Ils portent des attributs `@ref` renvoyant à un index de personnes et de lieux. Dans un corpus de correspondance, il est recommandé de centraliser ces informations dans des fichiers d'autorité séparés pour garantir la cohérence de l'ensemble ; selon les besoins du projet, elles peuvent aussi être intégrées dans l'en-tête du document.
 
 En voici un exemple&#x202F;:
 
@@ -270,7 +312,7 @@ Cet aperçu de la TEI est minimal. Pour découvrir les centaines d'éléments et
 
 ## Prévention des erreurs, conformité syntaxique et validité
 
-Le XML est strict&#x202F;: un guillemet manquant, un caractère mal placé ou un espace de trop peut rendre le document illisible pour la machine. Pour limiter les problèmes, il faut d’abord encoder les fichiers en Unicode ([UTF-8](https://fr.wikipedia.org/wiki/UTF-8)), c’est-à-dire choisir un système de représentation numérique des caractères permettant à toute machine d’interpréter correctement le texte. L’étape suivante consiste à normaliser ces caractères, afin d’assurer leur cohérence interne&#x202F;: en Unicode, un même signe accentué peut être représenté de plusieurs manières — sous une forme précomposée (par exemple&#x202F;: «&nbsp;é&nbsp;» = U+00E9) ou décomposée (U+0065 + U+0301, soit la lettre «&nbsp;e&nbsp;» suivie d’un accent combinant). Visuellement identiques, ces deux formes diffèrent sur le plan binaire. La normalisation NFC ([*Normalization Form C*](https://fr.wikipedia.org/wiki/Équivalence_Unicode)) privilégie la forme précomposée lorsqu’elle existe, garantissant la stabilité des recherches, des comparaisons et des transformations XSLT. Dans ce contexte, la normalisation désigne donc un traitement technique des caractères, à ne pas confondre avec la normalisation éditoriale qui consiste à développer ou régulariser des formes linguistiques pour la lisibilité. Comme le [rappelle](https://programminghistorian.org/fr/lecons/transcription-automatisee-graphies-non-latines) Chahan Vidal-Gorène, le choix d’une forme de normalisation Unicode (NFC, NFD, etc.) influe directement sur la reconnaissance automatique de l’écriture et sur la cohérence des corpus multilingues.
+Le XML est strict&#x202F;: un guillemet manquant, un caractère mal placé ou un espace de trop peut rendre le document illisible pour la machine. Pour limiter les problèmes, il faut d'abord encoder les fichiers en Unicode ([UTF-8](https://fr.wikipedia.org/wiki/UTF-8)), c'est-à-dire choisir un système de représentation numérique des caractères permettant à toute machine d'interpréter correctement le texte. L'étape suivante consiste à normaliser ces caractères, afin d'assurer leur cohérence interne&#x202F;: en Unicode, un même signe accentué peut être représenté de plusieurs manières — sous une forme précomposée (par exemple&#x202F;: «&nbsp;é&nbsp;» = U+00E9) ou décomposée (U+0065 + U+0301, soit la lettre «&nbsp;e&nbsp;» suivie d'un accent combinant). Visuellement identiques, ces deux formes diffèrent sur le plan binaire. La normalisation NFC ([*Normalization Form C*](https://fr.wikipedia.org/wiki/Équivalence_Unicode)) privilégie la forme précomposée lorsqu'elle existe, garantissant la stabilité des recherches, des comparaisons et des transformations XSLT. Dans ce contexte, la normalisation désigne donc un traitement technique des caractères, à ne pas confondre avec la normalisation éditoriale qui consiste à développer ou régulariser des formes linguistiques pour la lisibilité. Comme le [rappelle](https://programminghistorian.org/fr/lecons/transcription-automatisee-graphies-non-latines) Chahan Vidal-Gorène, le choix d'une forme de normalisation Unicode (NFC, NFD, etc.) influe directement sur la reconnaissance automatique de l'écriture et sur la cohérence des corpus multilingues.
 
 Certaines applications peuvent normaliser le texte en Unicode NFC pour vous. Dans Linux (et donc Ubuntu/WSL)&nbsp;:
 
@@ -279,25 +321,27 @@ sudo apt install icu-devtools
 uconv -x any-nfc -o normalise.xml entree.xml
 ```
 
-Dans macOS &nbsp;:
+Dans macOS&#x202F;:
 ```bash
 brew install icu4c
-/opt/homebrew/opt/icu4c/bin/uconv -x any-nfc -o normalise.xml entree.xml
+$(brew --prefix icu4c)/bin/uconv -x any-nfc -o normalise.xml entree.xml
 ```
 
-En XML (et donc en TEI), on distingue deux niveaux de conformité. Un document «&nbsp;bien formé&nbsp;» respecte les règles syntaxiques de base&#x202F;: les balises sont correctement imbriquées, les attributs sont entre guillemets, etc. Par exemple, `<p>Ceci est un paragraphe</p>` est «&nbsp;bien formé&nbsp;», alors que `<p>Ceci est un paragraphe<p>` ne l’est pas. Un document «&nbsp;valide&nbsp;» va plus loin&#x202F;: non seulement il est «&nbsp;bien formé&nbsp;», mais il respecte un schéma qui définit quels éléments sont autorisés, dans quel ordre, avec quels attributs et quelles contraintes. En TEI, un fichier peut être «&nbsp;bien formé&nbsp;» mais «&nbsp;pas valide&nbsp;» s’il emploie un élément qui n’existe pas dans la TEI (par exemple `<paragraph>`), s’il place un élément à un endroit non autorisé (par exemple une `<note>` directement sous `<teiHeader>`) ou s’il omet un attribut exigé par le schéma que nous avons défini au préalable (par exemple un `@ref` obligatoire sur `<persName>`).
+En XML (et donc en TEI), on distingue deux niveaux de conformité. Un document «&nbsp;bien formé&nbsp;» respecte les règles syntaxiques de base&#x202F;: les balises sont correctement imbriquées, les attributs sont entre guillemets, etc. Par exemple, `<p>Ceci est un paragraphe</p>` est «&nbsp;bien formé&nbsp;», alors que `<p>Ceci est un paragraphe<p>` ne l'est pas. Un document «&nbsp;valide&nbsp;» va plus loin&#x202F;: non seulement il est «&nbsp;bien formé&nbsp;», mais il respecte un schéma qui définit quels éléments sont autorisés, dans quel ordre, avec quels attributs et quelles contraintes. En TEI, un fichier peut être «&nbsp;bien formé&nbsp;» mais «&nbsp;pas valide&nbsp;» s'il emploie un élément qui n'existe pas dans la TEI (par exemple `<paragraph>`), s'il place un élément à un endroit non autorisé (par exemple une `<note>` directement sous `<teiHeader>`) ou s'il omet un attribut exigé par le schéma que nous avons défini au préalable (par exemple un `@ref` obligatoire sur `<persName>`).
 
-Valider régulièrement le code garantit la cohérence des choix éditoriaux. Par exemple, imposer `@place="margin"` sur `<add>` (où @place indique l’emplacement matériel de l’ajout et margin signifie “écrit en marge, hors de la ligne”) aligne tous les contributeurs sur la même convention, ce qui facilite la collaboration, l’interopérabilité avec d’autres corpus et la fiabilité des transformations XSLT.
+Valider régulièrement le code garantit la cohérence des choix éditoriaux. Par exemple, imposer `@place="margin"` sur `<add>` (où @place indique l'emplacement matériel de l'ajout et margin signifie "écrit en marge, hors de la ligne") aligne tous les contributeurs sur la même convention, ce qui facilite la collaboration, l'interopérabilité avec d'autres corpus et la fiabilité des transformations XSLT.
 
 ## Créer un schéma de validation
 
-Pour qu’un projet d’édition soit solide et cohérent, il est essentiel de définir un schéma de validation. Ce document énumère les éléments et attributs autorisés, décrit leur structure et précise les valeurs acceptées. Il agit comme un contrat entre éditeurs et encodeurs&#x202F;: chaque fichier TEI est comparé à ce schéma pour que toute non-conformité soit signalée. Un tel mécanisme garantit que tous les textes encodés du projet respectent les mêmes conventions. Il prévient l’introduction d’éléments ou d’attributs imprévus, réduisant les incohérences d’encodage. En d'autres termes, le schéma de validation encadre la liberté laissée aux encodeurs&#x202F;: il impose une rigueur technique tout en formalisant les choix éditoriaux du projet.
+Pour qu'un projet d'édition soit solide et cohérent, il est essentiel de définir un schéma de validation. Ce document énumère les éléments et attributs autorisés, décrit leur structure et précise les valeurs acceptées. Il agit comme un contrat entre éditeurs et encodeurs&#x202F;: chaque fichier TEI est comparé à ce schéma pour que toute non-conformité soit signalée. Un tel mécanisme garantit que tous les textes encodés du projet respectent les mêmes conventions. Il prévient l'introduction d'éléments ou d'attributs imprévus, réduisant les incohérences d'encodage. En d'autres termes, le schéma de validation encadre la liberté laissée aux encodeurs&#x202F;: il impose une rigueur technique tout en formalisant les choix éditoriaux du projet.
 
-Trois familles de schémas coexistent. La [DTD](https://fr.wikipedia.org/wiki/Document_Type_Definition) (Document Type Definition), héritée du SGML, reste supportée mais n'est pratiquement plus utilisée. [XML Schema (XSD)](https://fr.wikipedia.org/wiki/XML_Schema) permet un typage fin et une validation détaillée, au prix d'une complexité importante. Cependant, la TEI préconise RELAX NG ([*REgular LAnguage for XML, Next Generation*](https://fr.wikipedia.org/wiki/Relax_NG)), car sa flexibilité et concision en fait le meilleur choix pour la plupart des éditions. C’est le format que nous utiliserons ici.
+Trois familles de schémas coexistent. La [DTD](https://fr.wikipedia.org/wiki/Document_Type_Definition) (Document Type Definition), héritée du SGML, reste supportée mais n'est pratiquement plus utilisée. [XML Schema (XSD)](https://fr.wikipedia.org/wiki/XML_Schema) permet un typage fin et une validation détaillée, au prix d'une complexité importante. Cependant, la TEI préconise RELAX NG ([*REgular LAnguage for XML, Next Generation*](https://fr.wikipedia.org/wiki/Relax_NG)), car sa flexibilité et concision en fait le meilleur choix pour la plupart des éditions. C'est le format que nous utiliserons ici.
 
-Un schéma RELAX NG pour la TEI définit précisément quels modules sont utilisés et comment ils sont personnalisés. Pour une correspondance comme celle de Cavriana, par exemple, on inclura les modules essentiels (`tei`, `core`, `header`, `textstructure`, `namesdates`, `transcr`, et `msdescription`) et l'on précisera des contraintes adaptées au projet. Ainsi, nous ne voulons pas de <persName> et <placeName> sans attribut `@ref`, car nous voulons nous assurer que ces éléments renvoient les entités nommées à leurs fiches correspondantes. De même, les balises <correspAction> seront toujours accompagnées d'un élément <date> portant l'attribut `@when`, de sorte que la machine puisse lire la date dans tous les documents du projet. Toujours dans <correspAction>, nous éviterons toute ambiguïté en restreignant l'attribut `@type` aux seules valeurs `sent` ou `received`. Pour chaque changement de page <pb>, l'attribut `@n` sera requis afin d'assurer la numérotation. Nous pouvons aussi limiter l'élément <choice> à la paire <abbr>/<expan> et préciser dans la documentation d'encodage qu’un <msIdentifier> complet (`settlement`, `repository`, `collection`, `idno`) est attendu dans <msDesc>. Un tel resserrement aligne le schéma sur notre pratique d'encodage et fiabilise les recherches ou transformations XSLT ultérieures.
+Un schéma RELAX NG pour la TEI définit précisément quels modules sont utilisés et comment ils sont personnalisés. Pour une correspondance comme celle de Cavriana, par exemple, on inclura les modules essentiels (`tei`, `core`, `header`, `textstructure`, `namesdates`, `transcr`, et `msdescription`) et l'on précisera des contraintes adaptées au projet. Ainsi, nous ne voulons pas de <persName> et <placeName> sans attribut `@ref`, car nous voulons nous assurer que ces éléments renvoient les entités nommées à leurs fiches correspondantes. De même, les balises <correspAction> seront toujours accompagnées d'un élément <date> portant l'attribut `@when`, de sorte que la machine puisse lire la date dans tous les documents du projet. Toujours dans <correspAction>, nous éviterons toute ambiguïté en restreignant l'attribut `@type` aux seules valeurs `sent` ou `received`. Pour chaque changement de page <pb>, l'attribut `@n` sera requis afin d'assurer la numérotation. Nous pouvons aussi limiter l'élément <choice> à la paire <abbr>/<expan> et préciser dans la documentation d'encodage qu'un <msIdentifier> complet (`settlement`, `repository`, `collection`, `idno`) est attendu dans <msDesc>. Un tel resserrement aligne le schéma sur notre pratique d'encodage et fiabilise les recherches ou transformations XSLT ultérieures.
 
-Dans l’écosystème TEI, la manière la plus robuste de définir ce schéma consiste à écrire un ODD ([*One Document Does it all*](https://tei-c.org/guidelines/customization/getting-started-with-p5-odds/)), puis à en dériver automatiquement un schéma RELAX NG pour la validation et une documentation lisible pour les encodeurs. L’ODD joue ainsi à la fois le rôle de manuel d’encodage et de spécification technique. Autrement dit, il ne s’agit pas seulement d’un document de référence destiné aux éditeurs, mais du point central à partir duquel la validation peut être automatisée. Le ODD étant codé en XML, on peut l'écrire à l'aide de n'importe quel éditeur. Cependant, certains préfèrent utiliser l'application web gratuite [Roma](https://roma.tei-c.org), qui offre une interface visuelle plus intuitive. 
+Dans l'écosystème TEI, la manière la plus robuste de définir ce schéma consiste à écrire un ODD ([*One Document Does it all*](https://tei-c.org/guidelines/customization/getting-started-with-p5-odds/)), puis à en dériver automatiquement un schéma RELAX NG pour la validation et une documentation lisible pour les encodeurs. L'ODD joue ainsi à la fois le rôle de manuel d'encodage et de spécification technique. Autrement dit, il ne s'agit pas seulement d'un document de référence destiné aux éditeurs, mais du point central à partir duquel la validation peut être automatisée. Le ODD étant codé en XML, on peut l'écrire à l'aide de n'importe quel éditeur. Cependant, certains préfèrent utiliser l'application web gratuite [Roma](https://roma.tei-c.org), qui offre une interface visuelle plus intuitive. Pour une réflexion approfondie sur la notion de conformité TEI et le rôle central de l'ODD dans sa formalisation, on se reportera avec profit à l'article de Lou Burnard, «&#x202F;What Is TEI Conformance, and Why Should You Care?&#x202F;», *Journal of the Text Encoding Initiative*, 12 (2019), [http://journals.openedition.org/jtei/1777](http://journals.openedition.org/jtei/1777).
+
+L'extrait ci-dessous illustre les personnalisations essentielles de notre ODD. Il ne constitue pas un fichier directement exécutable&#x202F;: un ODD complet nécessiterait notamment l'inclusion de toutes les classes d'attributs et de modèles référencées par les modules sélectionnés. L'extrait se concentre sur la logique de personnalisation, afin d'en expliquer les principes. Pour obtenir un ODD complet et fonctionnel, le plus simple est de configurer les modules et contraintes souhaités dans [Roma](https://roma.tei-c.org), puis d'exporter le fichier généré dans `templates/cavriana.odd`.
 
 ```xml
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
@@ -324,6 +368,9 @@ Dans l’écosystème TEI, la manière la plus robuste de définir ce schéma co
    <moduleRef key="namesdates"/>
    <moduleRef key="transcr"/>
    <moduleRef key="msdescription"/>
+   <!-- Dépendances requises par le module transcr -->
+   <moduleRef key="analysis"/>
+   <moduleRef key="linking"/>
 
    <!-- ==========================
       2) Resserrement RELAX NG
@@ -374,15 +421,15 @@ Une fois l'ODD défini, nous pouvons le transformer en RELAX NG pour qu'il soit 
 L'exemple suivant montre comment effectuer cette conversion avec Saxon-HE (Home Edition), un processeur XSLT gratuit et open source développé par Saxonica. À la racine du projet, on exécute&#x202F;: 
 
 ```bash
-saxon -s:templates/cavriana.odd -xsl:templates/odd2relax.xsl -o:templates/schema-cavriana.rng
+saxon -s:templates/cavriana.odd -xsl:templates/odd2relax.xsl -o:templates/schema-cavriana.rng schemaBaseURL=https://www.tei-c.org/release/xml/tei/schema/relaxng/
 ```
 
-Ici, `saxon` lance Saxon-HE, `-s` indique le fichier ODD source, `-xsl` précise la feuille XSLT permettant la conversion en RELAX NG que nous avons téléchargée précédemment, et `-o` définit le nom du fichier produit, ici `schema-cavriana.rng`. Cette transformation est à effectuer lors de la mise en place initiale du projet puis à chaque modification de l'ODD, pour que le schéma de validation reflète toujours les règles éditoriales les plus récentes.
+Ici, `saxon` lance Saxon-HE, `-s` indique le fichier ODD source, `-xsl` précise la feuille XSLT permettant la conversion en RELAX NG que nous avons téléchargée précédemment, `-o` définit le nom du fichier produit, ici `schema-cavriana.rng`, et le paramètre `schemaBaseURL` indique l'adresse de base des schémas TEI, afin que les références incluses dans le fichier RELAX NG généré pointent vers les ressources en ligne du consortium TEI plutôt que vers des chemins locaux invalides. Cette transformation est à effectuer lors de la mise en place initiale du projet puis à chaque modification de l'ODD, pour que le schéma de validation reflète toujours les règles éditoriales les plus récentes.
 
 
 ### Valider les documents localement
 
-Dès lors que nous disposons de notre schéma de validation, nous pouvons vérifier les fichiers TEI localement avec un validateur RELAX NG comme Jing. Cette étape permet de détecter toute erreur structurelle introduite lors de l'encodage, avant tout envoi vers le dépôt ou tout déclenchement d'une chaîne d'intégration continue. La validation locale joue ainsi le rôle de premier garde-fou&#x202F;: elle garantit que les fichiers respectent les contraintes définies dans l'ODD, compilées en schéma RELAX NG. Des garde-fous, il en faut beaucoup, car l'expérience montre que de nombreuses coquilles peuvent s'introduire subrepticement à chaque étape de manipulation.
+Dès lors que nous disposons de notre schéma de validation, nous pouvons vérifier les fichiers TEI localement avec un validateur RELAX NG comme Jing. Cette étape permet de détecter toute erreur de syntaxe introduite lors de l'encodage, avant tout envoi vers le dépôt ou tout déclenchement d'une chaîne d'intégration continue. La validation locale joue ainsi le rôle de premier garde-fou&#x202F;: elle garantit que les fichiers respectent les contraintes définies dans l'ODD, compilées en schéma RELAX NG. Des garde-fous, il en faut beaucoup, car l'expérience montre que de nombreuses coquilles peuvent s'introduire subrepticement à chaque étape de manipulation.
 
 Pour valider un fichier unique à partir du schéma RELAX NG généré précédemment, il suffit de lancer cette commande&#x202F;:
 
@@ -390,10 +437,10 @@ Pour valider un fichier unique à partir du schéma RELAX NG généré précéde
 jing templates/schema-cavriana.rng letters/1568-07-03.xml
 ```
 
-Si le document est conforme au schéma, Jing ne produit aucune sortie. En cas d’erreur, il affiche un message de la forme&#x202F;:
+Si le document est conforme au schéma, Jing ne produit aucune sortie. En cas d'erreur, il affiche un message de la forme&#x202F;:
 
 ```
-fichier:ligne:colonne: error: description de l’erreur
+fichier:ligne:colonne: error: description de l'erreur
 ```
 
 Par exemple&#x202F;:
@@ -403,7 +450,7 @@ letters/1574-10-15.xml:45:12: error: element "persName" not closed
 letters/1574-10-15.xml:32:8: error: attribute "type" not allowed here
 ```
 
-Ces messages lapidaires intimident souvent les débutants. Parfois cryptiques, ils ne signifient pas l’échec&#x202F;: ils en indiquent l’origine et ouvrent des pistes de correction. À l'instar du mot d’ordre «&#x202F;lis tes ratures&#x202F;», l’encodeur doit apprendre à lire ses erreurs.
+Ces messages lapidaires intimident souvent les débutants. Parfois cryptiques, ils ne signifient pourtant pas l'échec. Ils indiquent au contraire l'origine du problème et ouvrent des pistes de correction. À l'instar du mot d'ordre «&#x202F;lis tes ratures&#x202F;», l'encodeur doit apprendre à lire ses erreurs.
 
 Pour valider un ensemble de fichiers sous macOS ou Linux, on utilisera&#x202F;:
 
@@ -411,9 +458,9 @@ Pour valider un ensemble de fichiers sous macOS ou Linux, on utilisera&#x202F;:
 jing templates/schema-cavriana.rng letters/*.xml
 ```
 
-Dans un flux de travail efficace, la validation locale est effectuée après chaque session d’encodage et avant tout envoi au dépôt, en complément des validations automatisées exécutées par la chaîne CI/CD que nous verrons dans la seconde partie de ce tutoriel.
+Dans un flux de travail efficace, la validation locale est effectuée après chaque session d'encodage et avant tout envoi au dépôt, en complément des validations automatisées exécutées par la chaîne CI/CD que nous verrons dans la seconde partie de ce tutoriel.
 
-Si la validation manuelle devient fastidieuse à mesure que le corpus s'étoffe, on peut automatiser cette étape à l’aide d’un script. Celui-ci parcourt les fichiers d’un répertoire, exécute la validation pour chacun, affiche un résumé clair des résultats et renvoie un code de sortie en cas d'erreurs. En voici un exemple avec Bash&#x202F;:
+Si la validation manuelle devient fastidieuse à mesure que le corpus s'étoffe, on peut automatiser cette étape à l'aide d'un script. Celui-ci parcourt les fichiers d'un répertoire, exécute la validation pour chacun, affiche un résumé clair des résultats et renvoie un code de sortie en cas d'erreurs. En voici un exemple avec Bash&#x202F;:
 
 ```bash
 #!/bin/bash
@@ -443,13 +490,16 @@ La validation RELAX NG vérifie que le document respecte à la fois la syntaxe X
 
 Comme vu précédemment, RELAX NG valide la forme. Pour exprimer des contraintes de logique éditoriale plus complexes, on ajoute Schematron. Par souci de clarté pédagogique, nous commençons ici par un schéma Schematron séparé (.sch). En production, ces règles sont souvent intégrées directement dans l'ODD, afin de conserver une source de vérité unique. 
 
-Par exemple, dans une correspondance, on peut exiger la présence conjointe d'une action d’envoi et d'une action de réception, et imposer qu’au moins une date lisible par machine accompagne l’action `sent`&#x202F;:
+Il est important de comprendre comment Schematron fonctionne. Contrairement à RELAX NG, qui est interprété directement par un validateur dédié comme Jing, Schematron passe par une étape intermédiaire&#x202F;: les règles `.sch` sont d'abord *compilées* en une feuille XSLT par Saxon, puis cette feuille compilée est *appliquée* au document TEI, toujours par Saxon, pour produire un rapport de validation (SVRL). Autrement dit, Saxon et le langage XSLT servent ici d'outil de *validation*, alors que nous les utiliserons plus loin comme outil de *transformation* (TEI vers HTML, Markdown, etc.). Cette double fonction du processeur XSLT — contrôle d'un côté, production de l'autre — peut surprendre, mais elle découle de la nature même de XSLT&#x202F;: un langage généraliste de transformation de documents XML, applicable aussi bien à la vérification de contraintes qu'à la génération de formats de sortie.
+
+Par exemple, dans une correspondance, on peut exiger la présence conjointe d'une action d'envoi et d'une action de réception, et imposer qu'au moins une date lisible par machine accompagne l'action `sent`. Enregistrez ce schéma sous `templates/cavriana.sch`&#x202F;:
 
 ```xml
 <schema xmlns="http://purl.oclc.org/dsdl/schematron"
     xmlns:tei="http://www.tei-c.org/ns/1.0">
+ <ns prefix="tei" uri="http://www.tei-c.org/ns/1.0"/>
  
- <!-- 1) correspDesc : sent + received + date machine‑lisible -->
+ <!-- Règle 1 : correspDesc doit contenir sent + received + date machine‑lisible -->
  <pattern id="correspondance">
   <rule context="tei:teiHeader/tei:profileDesc/tei:correspDesc">
    <assert test="tei:correspAction[@type='sent'] and tei:correspAction[@type='received']">
@@ -461,7 +511,7 @@ Par exemple, dans une correspondance, on peut exiger la présence conjointe d'un
   </rule>
  </pattern>
 
- <!-- 2) Structure du texte : premier div typé 'letter' -->
+ <!-- Règle 2 : le premier div du corps doit être typé 'letter' -->
  <pattern id="structure-lettre">
   <rule context="tei:text/tei:body/tei:div[1]">
    <assert test="@type='letter'">
@@ -470,7 +520,7 @@ Par exemple, dans une correspondance, on peut exiger la présence conjointe d'un
   </rule>
  </pattern>
  
- <!-- 3) Identifiant matériel : msIdentifier complet -->
+ <!-- Règle 3 : msIdentifier doit être complet (settlement, repository, collection, idno) -->
  <pattern id="ms-identifier">
   <rule context="tei:msDesc/tei:msIdentifier">
    <assert test="tei:settlement and tei:repository and tei:collection and tei:idno">
@@ -482,20 +532,62 @@ Par exemple, dans une correspondance, on peut exiger la présence conjointe d'un
 </schema>
 ```
 
-On compile ensuite le schéma en XSLT&#x202F;:
+On compile ensuite le schéma en XSLT en trois étapes successives&#x202F;: inclusion des modules externes, expansion des motifs abstraits, puis génération de la feuille XSLT de validation&#x202F;:
 
 ```bash
-saxon -s:templates/cavriana.sch -xsl:templates/iso_svrl_for_xslt2.xsl -o:templates/cavriana-schematron.xsl
+# Étape 1 : résoudre les inclusions
+saxon -s:templates/cavriana.sch -xsl:templates/iso_dsdl_include.xsl -o:templates/cavriana-step1.sch
 
+# Étape 2 : expanser les motifs abstraits
+saxon -s:templates/cavriana-step1.sch -xsl:templates/iso_abstract_expand.xsl -o:templates/cavriana-step2.sch
+
+# Étape 3 : générer la feuille XSLT de validation
+saxon -s:templates/cavriana-step2.sch -xsl:templates/iso_svrl_for_xslt2.xsl -o:templates/cavriana-schematron.xsl
 ```
 
-puis on l’applique aux documents&#x202F;:
+puis on l'applique aux documents&#x202F;:
 
 ```bash
 saxon -s:letters/1568-07-03.xml -xsl:templates/cavriana-schematron.xsl -o:output/rapport-schematron.svrl
 ```
 
-Le rapport SVRL est un fichier XML listant les règles non respectées, chacune accompagnée du message défini dans le schéma. En parcourant ce rapport, on identifie rapidement les divergences par rapport aux conventions éditoriales. Ce contrôle complémentaire est particulièrement utile dans un projet collaboratif&#x202F;: il aide à repérer et corriger immédiatement les incohérences introduites par différents contributeurs, avant qu’elles ne s’accumulent dans le corpus.
+Le rapport SVRL (*Schematron Validation Report Language*) est un fichier XML listant les règles non respectées, chacune accompagnée du message défini dans le schéma. Voici un exemple de rapport SVRL généré à partir d'un fichier contenant des erreurs&#x202F;:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+            title="" schemaVersion="">
+
+ <!-- Règle déclenchée sur correspDesc -->
+ <svrl:active-pattern id="correspondance"/>
+ <svrl:fired-rule context="tei:teiHeader/tei:profileDesc/tei:correspDesc"/>
+ 
+ <!-- Assertion satisfaite : sent + received présents (pas de message) -->
+
+ <!-- Assertion échouée : date machine-lisible manquante -->
+ <svrl:failed-assert test="tei:correspAction[@type='sent']/tei:date[@when or @from or @to or @notBefore or @notAfter]"
+           location="/TEI/teiHeader/profileDesc/correspDesc">
+  <svrl:text>L'action 'sent' doit comporter une date lisible par machine 
+  (@when|@from|@to|@notBefore|@notAfter).</svrl:text>
+ </svrl:failed-assert>
+
+ <!-- Règle déclenchée sur le premier div -->
+ <svrl:active-pattern id="structure-lettre"/>
+ <svrl:fired-rule context="tei:text/tei:body/tei:div[1]"/>
+ <svrl:failed-assert test="@type='letter'"
+           location="/TEI/text/body/div[1]">
+  <svrl:text>Le premier &lt;div&gt; du corps doit avoir @type='letter'.</svrl:text>
+ </svrl:failed-assert>
+
+ <!-- Règle déclenchée sur msIdentifier -->
+ <svrl:active-pattern id="ms-identifier"/>
+ <svrl:fired-rule context="tei:msDesc/tei:msIdentifier"/>
+ <!-- Assertion satisfaite : msIdentifier complet (pas de message) -->
+
+</svrl:schematron-output>
+```
+
+Comme on le voit, le rapport ne mentionne que les assertions échouées (`<svrl:failed-assert>`), chacune accompagnée de l'expression XPath testée (`@test`), de la localisation du nœud fautif dans le document (`@location`) et du message d'erreur défini dans le schéma (`<svrl:text>`). Les règles satisfaites sont silencieuses. En parcourant ce rapport, on identifie rapidement les divergences par rapport aux conventions éditoriales. Ce contrôle complémentaire est particulièrement utile dans un projet collaboratif&#x202F;: il aide à repérer et corriger immédiatement les incohérences introduites par différents contributeurs, avant qu'elles ne s'accumulent dans le corpus.
 
 Pour intégrer les règles Schematron dans le même ODD que la grammaire RELAX&#x202F;NG&#x202F;, il suffit d'ajouter à la déclaration des espaces de nom le vocabulaire schematron. 
 
@@ -504,9 +596,55 @@ Pour intégrer les règles Schematron dans le même ODD que la grammaire RELAX&#
    xmlns:sch="http://purl.oclc.org/dsdl/schematron">
 ``` 
 
-Puis ajouter, à l’intérieur du même ODD, un bloc `constraintSpec` déclarant les règles Schematron. Le plus simple est de le placer à la fin de <schemaSpec>, de façon à conserver une source de vérité unique (grammaire RELAX&#x202F;NG et logique éditoriale).
+Puis, à l'intérieur de l'ODD, on ajoute les règles Schematron au moyen de blocs `<constraintSpec>`. Conformément aux recommandations TEI, chaque `<constraintSpec>` est placé à l'intérieur de l'`<elementSpec>` auquel il se rapporte, de sorte que la contrainte reste associée à l'élément qu'elle concerne. Cette organisation par élément garantit la lisibilité de l'ODD et facilite sa maintenance&#x202F;: quand on modifie les règles d'un élément donné, on trouve au même endroit sa grammaire RELAX NG et sa logique Schematron.
 
-On dérive ensuite deux artefacts à partir de cette source unique: le schéma RELAX&#x202F;NG pour `jing` et le Schematron compilé en XSLT pour produire le rapport SVRL.
+Voici comment intégrer les contraintes Schematron dans l'ODD présenté plus haut&#x202F;:
+
+```xml
+  <!-- correspDesc : sent + received + date machine-lisible -->
+  <elementSpec ident="correspDesc" mode="change">
+   <constraintSpec ident="correspDesc-sent-received" scheme="schematron">
+    <constraint>
+     <sch:rule context="tei:correspDesc">
+      <sch:assert test="tei:correspAction[@type='sent'] and tei:correspAction[@type='received']">
+       correspDesc doit contenir correspAction[@type='sent'] et correspAction[@type='received'].
+      </sch:assert>
+      <sch:assert test="tei:correspAction[@type='sent']/tei:date[@when or @from or @to or @notBefore or @notAfter]">
+       L'action 'sent' doit comporter une date lisible par machine (@when|@from|@to|@notBefore|@notAfter).
+      </sch:assert>
+     </sch:rule>
+    </constraint>
+   </constraintSpec>
+  </elementSpec>
+
+  <!-- div : le premier div du body doit être typé 'letter' -->
+  <elementSpec ident="div" mode="change">
+   <constraintSpec ident="div-type-letter" scheme="schematron">
+    <constraint>
+     <sch:rule context="tei:text/tei:body/tei:div[1]">
+      <sch:assert test="@type='letter'">
+       Le premier &lt;div&gt; du corps doit avoir @type='letter'.
+      </sch:assert>
+     </sch:rule>
+    </constraint>
+   </constraintSpec>
+  </elementSpec>
+
+  <!-- msIdentifier : settlement, repository, collection et idno requis -->
+  <elementSpec ident="msIdentifier" mode="change">
+   <constraintSpec ident="msIdentifier-complet" scheme="schematron">
+    <constraint>
+     <sch:rule context="tei:msDesc/tei:msIdentifier">
+      <sch:assert test="tei:settlement and tei:repository and tei:collection and tei:idno">
+       msIdentifier doit contenir settlement, repository, collection et idno.
+      </sch:assert>
+     </sch:rule>
+    </constraint>
+   </constraintSpec>
+  </elementSpec>
+```
+
+On dérive ensuite deux artefacts à partir de cette source unique&#x202F;: le schéma RELAX&#x202F;NG pour `jing` et le Schematron compilé en XSLT pour produire le rapport SVRL.
 
 Avec la validation terminée et le corpus conforme aux règles définies, on peut passer à une étape essentielle du flux éditorial continu&#x202F;: la transformation XSLT des fichiers TEI vers des formats exploitables aussi bien par les lecteurs que par les systèmes de publication (HTML, Markdown, etc.).
 
@@ -573,7 +711,7 @@ Si on veut extraire une date précise, on peut naviguer vers l'élément `date` 
 
 Ces requêtes XPath permettent à XSLT de cibler précisément les éléments à transformer. Sans XPath, XSLT serait aveugle, car XSLT est un langage déclaratif&#x202F;: on définit des règles indiquant comment transformer chaque partie du document identifiée par une expression XPath.
 
-Commençons par extraire simplement le texte d'une lettre&#x202F;:
+Commençons par extraire simplement le texte d'une lettre. Enregistrez cette feuille sous `templates/tei-to-text.xsl`&#x202F;:
 
 ```xml
 <xsl:stylesheet version="2.0"
@@ -582,6 +720,7 @@ Commençons par extraire simplement le texte d'une lettre&#x202F;:
  exclude-result-prefixes="tei">
  <xsl:output method="text" encoding="UTF-8"/>
 
+ <!-- Règle racine : extraire les métadonnées puis le corps de la lettre -->
  <xsl:template match="/">
   <xsl:text>De : </xsl:text>
   <xsl:value-of select="//tei:correspAction[@type='sent']/tei:persName"/>
@@ -593,16 +732,19 @@ Commençons par extraire simplement le texte d'une lettre&#x202F;:
   <xsl:apply-templates select="//tei:body"/>
  </xsl:template>
 
+ <!-- Paragraphes : restituer le texte suivi d'un saut de ligne double -->
  <xsl:template match="tei:p">
   <xsl:apply-templates/>
   <xsl:text>&#xA;&#xA;</xsl:text>
  </xsl:template>
 
+ <!-- Entités nommées avec @ref : mettre en gras et afficher l'identifiant -->
  <xsl:template match="tei:persName[@ref]">
   <xsl:text>**</xsl:text><xsl:apply-templates/><xsl:text>** [</xsl:text>
   <xsl:value-of select="substring-after(@ref,'#')"/><xsl:text>]</xsl:text>
  </xsl:template>
 
+ <!-- Entités nommées sans @ref : mettre en gras uniquement -->
  <xsl:template match="tei:persName[not(@ref)]">
     <xsl:text>**</xsl:text><xsl:apply-templates/><xsl:text>**</xsl:text>
 </xsl:template>
@@ -618,7 +760,7 @@ Pour l'exécuter&#x202F;:
 saxon -s:letters/1568-07-03.xml -xsl:templates/tei-to-text.xsl -o:output/1568-07-03.txt
 ```
 
-Enrichissons la transformation en naviguant plus précisément dans l'arbre&#x202F;:
+Enrichissons la transformation en naviguant plus précisément dans l'arbre. Enregistrez cette feuille sous `templates/tei-to-markdown.xsl`&#x202F;:
 
 ```xml
 <xsl:stylesheet version="2.0"
@@ -628,6 +770,7 @@ Enrichissons la transformation en naviguant plus précisément dans l'arbre&#x20
 
  <xsl:output method="text" encoding="UTF-8"/>
 
+ <!-- Règle racine : normaliser les métadonnées et lancer le parcours du corps -->
  <xsl:template match="/">
   <xsl:text>De : </xsl:text>
   <xsl:value-of select="normalize-space(//tei:correspAction[@type='sent']/tei:persName)"/>
@@ -639,11 +782,13 @@ Enrichissons la transformation en naviguant plus précisément dans l'arbre&#x20
   <xsl:apply-templates select="//tei:body"/>
  </xsl:template>
 
+ <!-- Paragraphes : restituer le texte suivi d'un saut de ligne double -->
  <xsl:template match="tei:p">
   <xsl:apply-templates/>
   <xsl:text>&#x0A;&#x0A;</xsl:text>
  </xsl:template>
 
+ <!-- Abréviations : afficher la forme développée si disponible -->
  <xsl:template match="tei:choice">
   <xsl:choose>
    <xsl:when test="tei:expan"><xsl:apply-templates select="tei:expan"/></xsl:when>
@@ -651,15 +796,19 @@ Enrichissons la transformation en naviguant plus précisément dans l'arbre&#x20
   </xsl:choose>
  </xsl:template>
 
+ <!-- Sauts de ligne normaux : restituer le saut -->
  <xsl:template match="tei:lb[not(@break) or @break='yes']">
   <xsl:text>&#x0A;</xsl:text>
  </xsl:template>
+ <!-- Sauts de ligne au milieu d'un mot : supprimer pour recomposer le mot -->
  <xsl:template match="tei:lb[@break='no']"/>
 
+ <!-- Entités nommées avec @ref : mettre en gras et afficher l'identifiant -->
  <xsl:template match="tei:persName[@ref]">
   <xsl:text>**</xsl:text><xsl:apply-templates/><xsl:text>** [</xsl:text>
   <xsl:value-of select="substring-after(@ref,'#')"/><xsl:text>]</xsl:text>
  </xsl:template>
+ <!-- Entités nommées sans @ref : mettre en gras uniquement -->
  <xsl:template match="tei:persName[not(@ref)]">
   <xsl:text>**</xsl:text><xsl:apply-templates/><xsl:text>**</xsl:text>
  </xsl:template>
@@ -668,14 +817,17 @@ Enrichissons la transformation en naviguant plus précisément dans l'arbre&#x20
 
 ```
 
+Pour l'exécuter&#x202F;:
+
+```bash
+saxon -s:letters/1568-07-03.xml -xsl:templates/tei-to-markdown.xsl -o:output/1568-07-03.md
+```
+
 Cette feuille extrait les métadonnées depuis le `teiHeader`, parcourt le `body` pour le contenu, et distingue les éléments selon leurs attributs. Le prédicat `[@ref]` cible les éléments dotés de cet attribut, tandis que `[not(@ref)]` sélectionne les autres. La fonction `substring-after(@ref, '#')` récupère l'identifiant interne.
 
 Dans le flux d'édition continue, cette transformation s'exécutera automatiquement après chaque validation réussie, convertissant instantanément les nouvelles lettres encodées en format publiable.
 
 ## Conclusion
 
-Ce tutoriel a posé le socle local de l’édition continue&#x202F;: personnalisation de la TEI via un ODD, génération d’un schéma RELAX NG, validation (RELAX NG et Schematron) et transformations XSLT vers Markdown et HTML. Ces pratiques assurent cohérence, interopérabilité et portabilité du corpus. Elles permettent déjà de produire localement une édition de qualité professionnelle. 
-En intégrant ces pratiques dans des chaînes d'automatisation (Git, CI/CD), la publication instantanée et l'archivage pérenne est rendu possible. Dans la seconde partie, nous brancherons ce socle sur une chaîne d’intégration et de déploiement continus&#x202F;: gestion de versions avec Git, automatisation (GitHub Actions/GitLab CI/CD), assignation d’un DOI à des instantanés sur Zenodo. L’objectif est que la moindre modification d’un fichier TEI déclenche automatiquement contrôle, transformation et mise en ligne, réalisant ainsi la promesse de l’édition continue.
-
-
-
+Ce tutoriel a posé le socle local de l'édition continue&#x202F;: personnalisation de la TEI via un ODD, génération d'un schéma RELAX NG, validation (RELAX NG et Schematron) et transformations XSLT vers Markdown et HTML. Ces pratiques assurent cohérence, interopérabilité et portabilité du corpus. Elles permettent déjà de produire localement une édition de qualité professionnelle.
+En intégrant ces pratiques dans des chaînes d'automatisation (Git, CI/CD), la publication instantanée et l'archivage pérenne sont rendus possibles. Dans la seconde partie, nous brancherons ce socle sur une chaîne d'intégration et de déploiement continus&#x202F;: gestion de versions avec Git, automatisation (GitHub Actions/GitLab CI/CD), assignation d'un DOI à des instantanés sur Zenodo. L'objectif est que la moindre modification d'un fichier TEI déclenche automatiquement contrôle, transformation et mise en ligne, réalisant ainsi la promesse de l'édition continue.

@@ -47,6 +47,8 @@ The debate over Wikipedia's merits and faults is rich; many historians will agre
 
 The cluster of technologies on which Wikidata is built, called [semantic web](https://en.wikipedia.org/wiki/Semantic_Web)/[graph data](https://en.wikipedia.org/wiki/Graph_database)/[linked data](https://en.wikipedia.org/wiki/Linked_data#Linked_open_data)/[resource description framework](https://en.wikipedia.org/wiki/Resource_Description_Framework), has been an object of fascination for years due to its potential to solve the problem of aggregating extemely diverse data sets. Outside of some specialist cases, that potential went unrealized until the late 2010s, with the advent and popularization of Wikidata. Now, for the first time, historians interested in these technologies have a substantial, well-supported foundation to which they can contribute.[^3]
 
+Thus far, Wikidata has been more important for popular consumers of history than it has for academic researchers. Heather Ford has shown how Wikipedia editors can shape historical narratives.[^4] As computational methods become more indispensible for historians, we can use Wikidata to enrich our own research datasets as well as use our datasets to improve Wikidata. As this lesson will show, this exercise is not merely one of data entry, but touches on the deepest questions of interpretation.
+
 ## A case study about heads of state
 
 This lesson compares mid-twentieth century Egyptian president Gamal Abdel Nasser to other heads of state from his era. The information revealed in this example of high political history will be legible to most readers, but it may strike some as conventional and of meagre analytical value. Fair enough...but Wikidata is best learned by imitating examples that are simple and clear. I encourage readers, at every step of this lesson, to repeat the example exercises using persons, places, or things drawn from their own fields of interest.
@@ -206,15 +208,15 @@ What's going on? What is a property? The definition in the infobox is (to my min
 
 Maybe this makes sense to you?
 
-To me, what makes sense is to think of the property as the verb that connects subject to object in a three-part subject-verb-object statement. But it is more accurate to call this a subject-property-value statement. In this query, the statement would be 
+To me, what makes sense is to think of the property as the verb that connects subject to object in a three-part subject-verb-object statement. But it is more accurate to call this a item-property-value statement. In this query, the statement would be 
 
-| Subject | Property (Verb) | Value (Object) |
+| Item (Subject) | Property (Verb) | Value (Object) |
 | --------- | --------- | --------- |
 | Some state | has as its head of state | some person. |
 
 The results we recieved is a list of all of the "some states," but that's not what we want at all. What we want is
 
-| Subject | Property | Value |
+| Item | Property | Value |
 | --------- | --------- | --------- |
 | Some person | holds the position of | head of state. |
 
@@ -228,13 +230,13 @@ If you click on some of the results, you will discover that many of these indivi
 
 This query returns a very short list indeed. The explanation is a bit puzzling, but grasping it is essential to using Wikidata effectively. Wikidata editors could make the statement
 
-| Subject | Property | Value |
+| Item | Property | Value |
 | --------- | --------- | --------- |
 | Gamal Abdel Nasser | holds the position of | head of state. |
 
 But it is far more meaningful (and efficient) to make two related statements that imply this fact while conveying more information:
 
-| Subject | Property | Value |
+| Item | Property | Value |
 | --------- | --------- | --------- |
 | Gamal Abdel Nasser | holds the position of | President of Egypt. |
 | President of Egypt | is a subclass of | head of state. |
@@ -403,6 +405,7 @@ On the second count, you may feel daunted by how much important historical data 
 [^1]: For a survey of such use, up to 2021 and across the humanities more broadly, see Fudie Zhao, "A Systematic Review of Wikidata in Digital Humanities Projects," *Digital Scholarship in the Humanities* 38, no. 2 (2023): 852–74, [https://doi.org/10.1093/llc/fqac083](https://doi.org/10.1093/llc/fqac083).
 [^2]: This approach is described in Marten Düring et al., "Transparent Generosity. Introducing the Impresso Interface for the Exploration of Semantically Enriched Historical Newspapers," *Historical Methods: A Journal of Quantitative and Interdisciplinary History*, 57, no. 1 (2024): 31. [https://doi.org/10.1080/01615440.2024.2344004](https://doi.org/10.1080/01615440.2024.2344004).
 [^3]: Take, for example, this line from Blaney's 2017 lesson: "Unfortunately I can’t find anything that describes the relationship between a teacher and a pupil in the Music Ontology. But the ontology is published openly, so I can use it to describe other features of music and then create my own extension." With Wikidata, it is no longer necessary to create such extensions, because its ontology is already quite thoroughly realized. To take Blaney's example, [the item page for Moriz Rosenthal](https://www.wikidata.org/wiki/Q213772) shows that he was a "student of"[P1066](https://www.wikidata.org/wiki/Property:P1066) Franz Liszt, and that Charles Rosen was his "student"[P802](https://www.wikidata.org/wiki/Property:P802).
+[^4]: Heather Ford, *[Writing the Revolution: Wikipedia and the Survival of Facts in the Digital Age](https://doi.org/10.7551/mitpress/11386.001.0001)* The MIT Press, 2022.
 [^5]: As mentioned earlier, Wikidata is one of the world's great disambiguation resources. We can easily distinguish [Q16889133](https://www.wikidata.org/wiki/Q16889133) from [Q187588](https://www.wikidata.org/wiki/Q187588), or [Q37517](https://www.wikidata.org/wiki/Q37517) or [Q18204](https://www.wikidata.org/wiki/Q18204) or [Q217594](https://www.wikidata.org/wiki/Q217594).
 [^6]: The reason for this quirk is straightforward: at the time of writing, "President of the United States" ([Q11696](https://www.wikidata.org/wiki/Q11696)) is defined as "instance of"([P31](https://www.wikidata.org/wiki/Property:P31)) rather than "subclass of"([P279](https://www.wikidata.org/wiki/Property:P279)) "head of state"([Q48352](https://www.wikidata.org/wiki/Q48352)) and "head of government"([Q2285706](https://www.wikidata.org/wiki/Q2285706)). These statements differ from the way most heads of state are described in Wikidata--and may have been changed by the time you read this.
 [^7]: SPARQL is [introduced in another (currently retired) Programming Historian lesson](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL). 

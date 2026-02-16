@@ -198,7 +198,7 @@ The Query Builder form presents you with two blank fields. It requires you to en
 
 The people we're trying to find are heads of state. How should we describe them here? Put your cursor in the "property" field, and try typing some terms. "Head of state" works. Let's leave value undefined by selecting "regardless of value."
 
-{% include figure.html filename="en-or-wikidata-for-historians-06.png" alt="Screenshot of Wikidata Query Builder form, searching property "head of state" regardless of value." caption="Figure 6: Wikidata Query Builder search for heads of state." %}
+{% include figure.html filename="en-or-wikidata-for-historians-06.png" alt="Screenshot of Wikidata Query Builder form, searching property head of state regardless of value." caption="Figure 6: Wikidata Query Builder search for heads of state." %}
 
 Hit the blue "Run query" box, and a list of results will appear below it. (For efficiency, the service defaults to giving you only the first one hundred results; you can change this.) You will see a real mixed bag, including few persons.
 
@@ -222,7 +222,7 @@ The results we recieved is a list of all of the "some states," but that's not wh
 
 So, try "position held" in the property box, and "head of state" in the value box. And, to get the dates more or less right, let's click "Add condition," and choose only those born after 1900. 
 
-{% include figure.html filename="en-or-wikidata-for-historians-07.png" alt="Screenshot of Wikidata Query Builder form, searching property "holds the position of" with value "head of state," and the additional condition property "date of birth" after value "1900"." caption="Figure 7: Wikidata Query Builder search for heads of state born after 1900." %}
+{% include figure.html filename="en-or-wikidata-for-historians-07.png" alt="Screenshot of Wikidata Query Builder form, searching property holds the position of with value head of state, and the additional condition property date of birth after value 1900." caption="Figure 7: Wikidata Query Builder search for heads of state born after 1900." %}
 
 Click "Run Query," and you find a list of heads of state...or is it? 
 

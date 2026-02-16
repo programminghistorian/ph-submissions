@@ -212,13 +212,13 @@ To me, what makes sense is to think of the property as the verb that connects su
 
 | Item (Subject) | Property (Verb) | Value (Object) |
 | --------- | --------- | --------- |
-| Some state | [has as its head of state](https://www.wikidata.org/wiki/Property:P35) | some person. |
+| Some state | has as its head of state ([P35]](https://www.wikidata.org/wiki/Property:P35)) | some person. |
 
 The results we recieved is a list of all of the "some states," but that's not what we want at all. What we want is
 
 | Item | Property | Value |
 | --------- | --------- | --------- |
-| Some person | [holds the position of](https://www.wikidata.org/wiki/Property:P39) | [head of state](https://www.wikidata.org/wiki/Q48352). |
+| Some person | holds the position of ([P39]](https://www.wikidata.org/wiki/Property:P39)) | head of state ([Q48352]](https://www.wikidata.org/wiki/Q48352)). |
 
 So, try "position held" in the property box, and "head of state" in the value box. And, to get the dates more or less right, let's click "Add condition," and choose only those born after 1900. 
 
@@ -232,14 +232,14 @@ This query returns a very short list indeed. The explanation is a bit puzzling, 
 
 | Item | Property | Value |
 | --------- | --------- | --------- |
-| [Gamal Abdel Nasser](https://www.wikidata.org/wiki/Q39524) | [holds the position of](https://www.wikidata.org/wiki/Property:P39) | [head of state](https://www.wikidata.org/wiki/Q48352). |
+| Gamal Abdel Nasser ([Q39524](https://www.wikidata.org/wiki/Q39524)) | holds the position of ([P39]](https://www.wikidata.org/wiki/Property:P39)) | head of state ([Q48352]](https://www.wikidata.org/wiki/Q48352)). |
 
 But it is far more meaningful (and efficient) to make two related statements that imply this fact while conveying more information:
 
 | Item | Property | Value |
 | --------- | --------- | --------- |
-| [Gamal Abdel Nasser](https://www.wikidata.org/wiki/Q39524) | [holds the position of](https://www.wikidata.org/wiki/Property:P39) | [President of Egypt](https://www.wikidata.org/wiki/Q15618993). |
-| [President of Egypt](https://www.wikidata.org/wiki/Q15618993) | [is a subclass of](https://www.wikidata.org/wiki/Property:P279) | [head of state](https://www.wikidata.org/wiki/Q48352). |
+| Gamal Abdel Nasser ([Q39524](https://www.wikidata.org/wiki/Q39524)) | holds the position of ([P39]](https://www.wikidata.org/wiki/Property:P39)) | President of Egypt ([Q15618993](https://www.wikidata.org/wiki/Q15618993)). |
+| President of Egypt ([Q15618993](https://www.wikidata.org/wiki/Q15618993)) | is a subclass of ([P279](https://www.wikidata.org/wiki/Property:P279)) | head of state ([Q48352]](https://www.wikidata.org/wiki/Q48352)). |
 
 Unfortunately, the Wikidata Query Builder cannot (currently) handle a query of this type, because it can only add conditions concerning the same subject. What this means is that the Query Builder is useful for quick general exploration, but is unlikely to give satisfying answers to precise queries.
 

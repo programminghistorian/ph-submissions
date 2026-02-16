@@ -112,7 +112,7 @@ Scrolling down the table of results, which are sorted by age, you will find that
 
 {% include figure.html filename="en-or-wikidata-for-historians-04.png" alt="Column graph with count on y-axis and age at which head of state came to power on x-axis, with the bar for 38 years old highlighted." caption="Figure 4: Count of ages at which heads of state came to power, 1950-1980." %}
 
-> ***Optional side quest***: Popular "AI" bots are more than willing to answer broad contextual questions like this one. They get their answers, in part, from Wikidata. I encourage readers to compare Wikidata's answers to the answers offered by bots, here and in what follows. Typically, bot answers will be partial and will not disclose limits or edge cases. In the age example, the bots seem to neglect less well-known heads of state. But limits and edge cases are often what interest us as historians, and Wikidata's thorough and precise answers are often useful for research purposes.
+> ***Optional side quest***: Popular "AI" bots are more than willing to answer broad contextual questions like this one. They get their answers, in part, from Wikidata. I encourage readers to compare Wikidata's answers to the answers offered by bots, here and in what follows. Typically, bot answers will be partial and will not disclose limits or edge cases. In the age example, the bots seem to neglect less well-known heads of state. But limits and edge cases are often what interest us as historians, which makes Wikidata's thorough and precise answers especially useful for research purposes.
 
 Wikidata supports data-informed contextualization, and (unlike bots) it gives only straight answers. Once you get the hang of SPARQL, it's possible, with an additional query statement, to enrich your data in various ways you might find meaningful. For example (again using prepared queries), you can [add a continent column](https://w.wiki/E$k7), [add a gender column and count of spouses and children](https://w.wiki/FmqN), or [add a column giving each leader's name in her or his native language](https://w.wiki/E$kB).
 
@@ -188,23 +188,58 @@ As an even more friendly introductory path for new users, I want to walk you thr
 
 ### Query shortcut I: Wikidata Query Builder 
 
-Before you even dig into SPARQL, you should know that Wikidata offers a [graphic query builder interface](https://query.wikidata.org/querybuilder/). This can't do all of things that SPARQL can do, but it can set up a basic structure for your queries. 
+Before you even dig into SPARQL, you should know that Wikidata offers a [graphic query builder interface](https://query.wikidata.org/querybuilder/). This interface can't do all of things that SPARQL can do, but it can set up a basic structure for your queries. 
 
-Let's try it out, using a variant of the head of state college query we tried earlier. (Don't forget that you can switch the interface to your prefered language, using the language selector button at the top right.)
+Let's try it to find our heads of state who came to power between 1950 and 1980. (Don't forget that you can switch the interface to your prefered language, using the language selector button at the top right.)
 
-The Query Builder form presents you with two blank fields. It requires you to enter one property and one value in order to perform a query. At this point, you are probably still a bit unclear on what "property" and "value" mean in the context of Wikidata. This is a good chance to learn more through practice.
+The Query Builder form presents you with two blank fields. It requires you to enter one property, and it offers you the option to enter one value. At this point, you are probably still a bit unclear on what "property" and "value" mean in the context of Wikidata. This is a good chance to learn more through practice.
 
-The people we're trying to find are heads of state. How should we describe them here? Put your cursor in the "property" field, and try typing some terms. "Head of state" doesn't work.
+The people we're trying to find are heads of state. How should we describe them here? Put your cursor in the "property" field, and try typing some terms. "Head of state" works. Let's leave value undefined by selecting "regardless of value."
+
+{% include figure.html filename="en-or-wikidata-for-historians-06.png" alt="Screenshot of Wikidata Query Builder form, searching property "head of state" regardless of value." caption="Figure 6: Wikidata Query Builder search for heads of state." %}
+
+Hit the blue "Run query" box, and a list of results will appear below it. (For efficiency, the service defaults to giving you only the first one hundred results; you can change this.) You will see a real mixed bag, including few persons.
 
 What's going on? What is a property? The definition in the infobox is (to my mind) not much help:
 
 > The *property* field in a condition, is the category or descriptor for the *value*. For example, "color" would be a *property* you'd likely use for the *value* "blue".
 
-Maybe this makes sense to you. To me, what makes sense is to think of the property as the verb that connects subject to object in a three-part subject-verb-object statement. In this case, the statement is "Some person (subject) holds the position of (verb) head of state (object)." Type "position held" into the property box, and "head of state" in the value box. Click "Run Query," and you should see a list of heads of state.
+Maybe this makes sense to you?
 
-But we are trying to find out something different: which colleges these heads of state attended. So, let's click the "Add Condition" button on the query form. This opens another pair of property/value fields. What property to use? "Educated at" seems about right. What value to use? This step is confusing, because we are trying to find out *where* these heads of state were educated. We could enter a particular school, which would return a list of all heads of state educated there. But there is no way, using this form, to produce a list of the schools themselves, or a count of schools of the sort that we saw above. 
+To me, what makes sense is to think of the property as the verb that connects subject to object in a three-part subject-verb-object statement. But it is more accurate to call this a subject-property-value statement. In this query, the statement would be 
 
-If Wikidata had an inverse property named something like "gave an education to," which took schools as its subject and people as its object, we could use this form to find an answer to our question. (We would put "head of state" in the value field.) There is no such property in Wikidata, however; as a consequence, the query builder will not work for us in this case.[^8]
+| Subject | Property (Verb) | Value (Object) |
+| --------- | --------- | --------- |
+| Some state | has as its head of state | some person. |
+
+The results we recieved is a list of all of the "some states," but that's not what we want at all. What we want is
+
+| Subject | Property | Value |
+| --------- | --------- | --------- |
+| Some person | holds the position of | head of state. |
+
+So, try "position held" in the property box, and "head of state" in the value box. And, to get the dates more or less right, let's click "Add condition," and choose only those born after 1900. 
+
+{% include figure.html filename="en-or-wikidata-for-historians-07.png" alt="Screenshot of Wikidata Query Builder form, searching property "holds the position of" with value "head of state," and the additional condition property "date of birth" after value "1900"." caption="Figure 7: Wikidata Query Builder search for heads of state born after 1900." %}
+
+Click "Run Query," and you find a list of heads of state...or is it? 
+
+If you click on some of the results, you will discover that many of these individuals are heads of organizations that are not states. This is because we have "included related values in the search." Unclick the blue box beneath the "head of state" value and try again.
+
+This query returns a very short list indeed. The explanation is a bit puzzling, but grasping it is essential to using Wikidata effectively. Wikidata editors could make the statement
+
+| Subject | Property | Value |
+| --------- | --------- | --------- |
+| Gamal Abdel Nasser | holds the position of | head of state. |
+
+But it is far more meaningful (and efficient) to make two related statements that imply this fact while conveying more information:
+
+| Subject | Property | Value |
+| --------- | --------- | --------- |
+| Gamal Abdel Nasser | holds the position of | President of Egypt. |
+| President of Egypt | is a subclass of | head of state. |
+
+Unfortunately, the Wikidata Query Builder cannot (currently) handle a query of this form, because it can only add conditions concerning the same subject. What this means is that the Query Builder is useful for quick general exploration, but is unlikely to give satisfying answers to precise queries.
 
 > ***Insight***: Wikidata is a relatively flexible database, but its rules and vocabulary are rigid. In order to use it effectively, you cannot go rogue–you have to rely on the properties and values that previous users have used when building out the data. Sometimes the existing vocabulary will be well-tailored to your purposes. More frequently, you will have to find a workaround. Fortunately, SPARQL is flexible enough to pose almost any question you can imagine. Unfortunately, figuring out how to use SPARQL is a fair bit more involved than the simple Query Builder form. 
 
@@ -214,13 +249,13 @@ Fortunately, Wikidata offers a [long list of example queries](https://www.wikida
 
 Let's give this a try. Open the [query service](https://query.wikidata.org/), then click on "Examples," then load an example.
 
-{% include figure.html filename="en-or-wikidata-for-historians-06.png" alt="Screenshot of Wikidata Query Service hyperlink for Cats example query" caption="Figure 6: Cats example query." %}
+{% include figure.html filename="en-or-wikidata-for-historians-08.png" alt="Screenshot of Wikidata Query Service hyperlink for Cats example query" caption="Figure 8: Cats example query." %}
 
 #### Example A: Cats
 
 Let's start with the first example query listed: Cats. When you click on the example, the query form loads with the necessary text.
 
-{% include figure.html filename="en-or-wikidata-for-historians-07.png" alt="Screenshot of Wikidata Query Service SPARQL text of Cats example query" caption="Figure 7: Cats query." %}
+{% include figure.html filename="en-or-wikidata-for-historians-09.png" alt="Screenshot of Wikidata Query Service SPARQL text of Cats example query" caption="Figure 9: Cats query." %}
 
 Our aim here is not to learn about cats. (What you do on your own time is up to you!) Our aim is to see how we can adapt example queries for our own research purposes. We do this by finding a query that asks the kind of question we want to ask, then substituting our own items of interest into the query.
 
@@ -273,11 +308,11 @@ Up till now, all of the queries we have seen have been ready-made examples. SPAR
 
 To do so, let's explore political ideology classification schemes that Wikidata users have applied to the heads of state we've been considering. The "Gamal Abdel Nasser" item page contains a set of statements about the "movements" of which he was a part.
 
-{% include figure.html filename="en-or-wikidata-for-historians-08.png" alt="Screenshot of the portion of Wikidata item page for Gamal Abdel Nasser containing five statements about movements associated with him: Nasserism, Arab nationalism, Arab socialism, progressivism, Egyptian nationalism" caption="Figure 8: Abdel Nasser movement statements." %}
+{% include figure.html filename="en-or-wikidata-for-historians-10.png" alt="Screenshot of the portion of Wikidata item page for Gamal Abdel Nasser containing five statements about movements associated with him: Nasserism, Arab nationalism, Arab socialism, progressivism, Egyptian nationalism" caption="Figure 10: Abdel Nasser movement statements." %}
 
 As a historian of Egypt, I'm convinced that this list is mere hypothesis. But I'm interested to know how these ideas are described on Wikidata. Who have users classified as Nasserist, for example? If I click on Nasserism, I am taken to that item page. Then, by clicking on the "What links here" hyperlink, I find a list of items--mostly persons and political parties--that are linked to Nasserism. This gives me a rough sense of the (relatively small) footprint of this idea on Wikidata.
 
-{% include figure.html filename="en-or-wikidata-for-historians-09.png" alt="Screenshot of the top portion of Wikidata item page for Nasserism, with a red circle indicating the What links here hyperlink in the left hand menu" caption="Figure 9: What links to Nasserism item." %}
+{% include figure.html filename="en-or-wikidata-for-historians-11.png" alt="Screenshot of the top portion of Wikidata item page for Nasserism, with a red circle indicating the What links here hyperlink in the left hand menu" caption="Figure 11: What links to Nasserism item." %}
 
 As I mentioned earlier, the knowledge base handles concrete factoids more convincingly than abstractions. But abstraction and ambiguity can be fascinating for historians. I am intrigued by Wikidata's claim that Abdel Nasser was associated with progressivism. 
 
@@ -371,4 +406,3 @@ On the second count, you may feel daunted by how much important historical data 
 [^5]: As mentioned earlier, Wikidata is one of the world's great disambiguation resources. We can easily distinguish [Q16889133](https://www.wikidata.org/wiki/Q16889133) from [Q187588](https://www.wikidata.org/wiki/Q187588), or [Q37517](https://www.wikidata.org/wiki/Q37517) or [Q18204](https://www.wikidata.org/wiki/Q18204) or [Q217594](https://www.wikidata.org/wiki/Q217594).
 [^6]: The reason for this quirk is straightforward: at the time of writing, "President of the United States" ([Q11696](https://www.wikidata.org/wiki/Q11696)) is defined as "instance of"([P31](https://www.wikidata.org/wiki/Property:P31)) rather than "subclass of"([P279](https://www.wikidata.org/wiki/Property:P279)) "head of state"([Q48352](https://www.wikidata.org/wiki/Q48352)) and "head of government"([Q2285706](https://www.wikidata.org/wiki/Q2285706)). These statements differ from the way most heads of state are described in Wikidata--and may have been changed by the time you read this.
 [^7]: SPARQL is [introduced in another (currently retired) Programming Historian lesson](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL). 
-[^8]: Unlike new items, new properties cannot be created at whim. In fact, Wikidata contains only about 10,000 properties, as compared to 110,000,000 items.

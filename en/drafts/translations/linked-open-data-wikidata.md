@@ -35,11 +35,11 @@ doi: XX.XXXXX/phen0000
 
 You have probably already heard about metadata, open data, and linked open data. However, before starting this lesson, it's important to clarify and deepen our understanding of these concepts and briefly explore their interconnections.
 
-The prefix meta is derived from the Greek language, in which it means "after" or "beyond." It is used to indicate that a concept applies to itself. 'Metadata', therefore, refers to 'data about the data,' in the sense that it describes, identifies, locates, or facilitates the understanding of the data. In the interdisciplinary field of information science, in particular, metadata provides context and structure, allowing efficient management, search, and organization of information, as well as facilitating interoperability between systems, different platforms, and the long-term preservation of digital resources. With the internet, metadata became particularly useful due to the enormous amount of information available online, as it is essential to facilitate web pages classification, optimize search engines, and improve user navigation.[^1] [^2] [^3]
+The prefix meta is derived from the Greek language, in which it means "after" or "beyond." It is used to indicate that a concept applies to itself. 'Metadata', therefore, refers to 'data about the data,' in the sense that it describes, identifies, locates, or facilitates the understanding of the data. In the interdisciplinary field of information science, in particular, metadata provides context and structure, allowing for the efficient management, search, and organization of information. It also facilitates system interoperability[^1], different platforms, and the long-term preservation of digital resources. With the internet, metadata became particularly useful due to the enormous amount of information available online, as it is essential to facilitate web pages classification, optimize search engines, and improve user navigation.[^2] [^3] [^4]
 
-In an increasingly digital and interconnected world, interest in open data has grown significantly, as a response to the need of promoting transparency and data reuse across various disciplines. Metadata availability has been growing, while taking into consideration the necessary technical and legal frameworks to make it free, reusable and accessible for anyone, at any time and in any place.[^4] The adoption of open standards for metadata not only facilitates the understanding and exchange of data but also drives innovation by promoting more effective communication. In this context, open data has become an essential component for building sustainable and accessible data infrastructures, promoting a collaborative approach to information management in the digital era.
+In an increasingly digital and interconnected world, interest in open data has grown significantly, as a response to the need of promoting transparency and data reuse across various disciplines. Metadata availability has been growing, while taking into consideration the necessary technical and legal frameworks to make it free, reusable and accessible for anyone, at any time and in any place.[^5] The adoption of open standards for metadata not only facilitates the understanding and exchange of data but also drives innovation by promoting more effective communication. In this context, open data has become an essential component for building sustainable and accessible data infrastructures, promoting a collaborative approach to information management in the digital era.
 
-In the context of open data philosophy, Linked Open Data (LOD) has emerged as a concept for presenting and publishing data on the web, aiming at facilitating data use and reuse through automated processes.LOD is based on the principle of establishing meaningful linking between data with similar attributes, from various sources of the web. It implies the creation of an environment with global interoperability.[^5] Therefore, this term refers to a set of best practices for publishing and connecting structured data on the web. As a novel and different approach from others, information in Wikidata is stored in semantic triples [^6] following the Resource Description Framework (RDF), which are conventionally known as subject, predicate, and object. If you still have doubts or want to deepen your knowledge on this topic, you can consult more details in [Jonathan Blaney's lesson](https://programminghistorian.org/en/lessons/intro-to-linked-data), which offers a brief and concise introduction to linked open data.
+In the context of open data philosophy, Linked Open Data (LOD) has emerged as a concept for presenting and publishing data on the web, aiming at facilitating data use and reuse through automated processes.LOD is based on the principle of establishing meaningful linking between data with similar attributes, from various sources of the web. It implies the creation of an environment with global interoperability.[^6] Therefore, this term refers to a set of best practices for publishing and connecting structured data on the web. Information in Wikidata is stored in semantic triples [^7] following the Resource Description Framework (RDF), which are conventionally known as subject, predicate, and object. If you still have doubts or want to deepen your knowledge on this topic, you can consult more details in [Jonathan Blaney's lesson](https://programminghistorian.org/en/lessons/intro-to-linked-data), which offers a brief and concise introduction to linked open data.
 
 This lesson shows you how to create, edit, and publish LOD in a simple and free way using Wikidata. You will learn about the structure of Wikidata and the procedures for creating, editing, and publishing LOD related to entities in academia such as scientific journals and researchers. The lesson is primarily aimed at librarians, archivists, and other information professionals working in the academic context who wish to increase the visibility of the knowledge produced at their institution.
 
@@ -79,11 +79,11 @@ According to its own [website](https://www.wikidata.org/wiki/Wikidata:Introducti
 In 2019, Wikidata had approximately 55 million created items. Four years later, it had surpassed 100 million items (Figure 2), covering a wide range of topics such as objects, people, places, reports, art, buildings of cultural interest, animals, and much more.
 
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-02.png" alt="Line graph showing the increase in the creation of Wikidata elements, from 0 in 2013 to around 130 million in 2025." caption="Figure 2. Item creation over time in Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-02.png" alt="Line graph showing the increase in the creation of Wikidata itemss, from 0 in 2013 to around 130 million in 2025." caption="Figure 2. Item creation over time in Wikidata." %}
 
-Wikidata offers a wide variety of tools to edit, query, and visualize its data. This [semantic web](https://en.wikipedia.org/wiki/Semantic_Web) model helps advance social justice, as it enables small communities that are often outside the mainstream of science to access, apply, and generate open knowledge and consequently have a broader impact. Obregón Sierra[^7], for example, used Wikidata to include information about libraries in Spain so that they could be accessed by anyone, anywhere in the world. Initially, Wikidata contained only 303 Spanish library entries. After importing the Spanish government's library dataset, the author created 7,861 new entries and enhanced 206 existing ones. This addition elevated Spain from 13th place (2,424 GLAM items) to second place in global GLAM rankings.[^7]
+Wikidata offers a wide variety of tools to edit, query, and visualize its data. This [semantic web](https://en.wikipedia.org/wiki/Semantic_Web) model helps advance social justice, as it enables small communities that are often outside the mainstream of science to access, apply, and generate open knowledge and consequently have a broader impact. Obregón Sierra[^8], for example, used Wikidata to include information about libraries in Spain so that they could be accessed by anyone, anywhere in the world. Initially, Wikidata contained only 303 Spanish library entries. After importing the Spanish government's library dataset, the author created 7,861 new entries and enhanced 206 existing ones. This addition elevated Spain from 13th place (2,424 GLAM items) to second place in global GLAM rankings.[^8]
 
-Since Wikidata can connect local metadata with global data, many institutions with digital collections have begun working with it to increase their global reach. One institutional development worth highlighting is the widespread use of Wikidata in library cataloging.[^8] Wikidata identifiers have enabled libraries to enrich their own records. The [Library of Congress’s Program for Cooperative Cataloging pilot project](https://www.wikidata.org/wiki/Wikidata:WikiProject_PCC_Wikidata_Pilot) demonstrates the significant potential of integrating Wikidata into library workflows.
+Since Wikidata can connect local metadata with global data, many institutions with digital collections have begun working with it to increase their global reach. Wikidata identifiers have enabled libraries to enrich their own records. The [Library of Congress’s Program for Cooperative Cataloging pilot project](https://www.wikidata.org/wiki/Wikidata:WikiProject_PCC_Wikidata_Pilot) demonstrates the significant potential of integrating Wikidata into library workflows.
 
 ## Wikidata structure
 
@@ -93,7 +93,7 @@ In this section, we will explore the organization of Wikidata, examining its com
 
 Each Wikidata item consists of a label, which is a short descriptive name used to identify the concept, followed by a unique identifier formatted as the letter Q followed by a number. For example, the journal Programming Historian has the identifier Q50817399 (Figure 3). This unique designation allows for easy referencing and access to a specific item, regardless of the language in which it is described. It is not necessary to memorize each item’s Q-number.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-03.png" alt="Element for the journal ‘Programming Historian’ with its label and Q identifier." caption="Figure 3. Example of a Wikidata identifier: the Q number for the journal ‘Programming Historian’." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-03.png" alt="Item for the journal ‘Programming Historian’ with its label and Q identifier." caption="Figure 3. Example of a Wikidata identifier: the Q number for the journal ‘Programming Historian’." %}
 
 Labels in Wikidata can be ambiguous. For instance, “San Martín,” which could refer to a person, a city, an island, or a region in Peru. Identifiers, however, are universally applicable and eliminate the need for language-specific identifiers. This feature enhances machine readability and enables bots to efficiently edit Wikidata.
 
@@ -101,15 +101,15 @@ Following the label and identifier, each item includes a short description, whic
 
 Items may also include aliases, which are alternative names or nicknames. These help make items easier to find and recognizable by different communities (Figure 4).
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-04.png" alt="Element for Charles III, King of the United Kingdom, with its various descriptions highlighted." caption="Figure 4. Example of a label, identifier, description, and name variants (aliases) in Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-04.png" alt="Item for Charles III, King of the United Kingdom, with its various descriptions highlighted." caption="Figure 4. Example of a label, identifier, description, and name variants (aliases) in Wikidata." %}
 
-After this initial section (which includes the label, Q-identifier, description, and aliases). Figure 5 shows the example of the item “rain” in Wikidata, along with its translations in Spanish and Chinese. This multilingual section makes information more accessible and useful to a global audience by enabling understanding across languages.
+After this initial section (which includes the label, Q-identifier, description, and aliases), we find the languages section, which increases the accessibility and usefulness of the information by providing translations of the elements into several languages. Figure 5 shows the example of the item “rain” in Wikidata, along with its translations in Spanish and Chinese. This multilingual section makes information more accessible and useful to a global audience by enabling understanding across languages.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-05.png" alt="Element for ‘rain’ with translations in Spanish and Chinese" caption="Figure 5. Example of multilingualism in Wikidata: the case of the item ‘rain’." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-05.png" alt="Item for ‘rain’ with translations in Spanish and Chinese" caption="Figure 5. Example of multilingualism in Wikidata: the case of the item ‘rain’." %}
 
 Wikidata describes items through statements, structured assertions that capture specific information about entities in the database. Each statement consists of a property (an attribute or characteristic) paired with a corresponding value, creating connections between different items (Figure 6). This system of interconnected statements forms the foundation of Wikidata's hierarchical and modular architecture, establishing the relationships that define how knowledge is organized within the platform.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-06.png" alt="Element for the journal ‘Programming Historian’ showing five of its statements." caption="Figure 6. Statements in Wikidata: examples of properties and values." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-06.png" alt="Item for the journal ‘Programming Historian’ showing five of its statements." caption="Figure 6. Statements in Wikidata: examples of properties and values." %}
 
 Each property has a unique identifier in Wikidata, formatted as the letter P followed by a number. Properties in Wikidata are designed to be reusable across different contexts. This means a property can be applied to multiple item types and is not limited to a single use. Each property has its own documentation page in Wikidata, providing detailed information about its purpose, proper use, and examples.
 
@@ -117,7 +117,7 @@ Values, on the other hand, represent the specific information associated with pr
 
 Furthermore, values in Wikidata are open to being edited by any user on the platform. This enables open, community-driven collaboration to maintain and improve the quality of information in the database.
 
-## Create an account and an element in Wikidata: Step-by-step
+## Create an account and an item in Wikidata: Step-by-step
 
 Although having a user account isn't strictly necessary to edit Wikidata, creating one is recommended because it will enhance your editing experience and allow you to engage more effectively with the Wikidata community. If you already have an account from any other Wikimedia project, you can use it here as well. With an account, you can track your contributions by viewing your edit history. It also enables communication with other users, allows you to leave messages on other editors' discussion pages, and lets you receive notifications about changes to items you're following. Additionally, the community tends to place more trust in edits made by registered users. The figure highlights the button that provides the specific link to start this process.
 
@@ -145,7 +145,7 @@ From there, you can begin filling out the fields by entering the required inform
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-09.png" alt="Template for creating a new item in Wikidata with ‘language’, ‘label’, ‘description’ and ‘alias’ fields." caption="Figure 9. Filling out information for a new item on Wikidata." %}
 
-Next, it’s time to start adding statements to enrich the item’s information.
+Next, it’s time to start adding statements to enrich the item’s information. Select 'add statement' to start editing.
 
 In Wikidata, the first statement commonly added is the “instance of” property (P31), which indicates the type of entity the item represents. This statement helps classify and organize information within Wikidata. Due to the wide range of items in Wikidata, there are many possibilities for the “instance of” statement. Depending on what you’re creating, you’ll choose the entity type that best fits the nature of your object or concept.
 
@@ -215,15 +215,17 @@ Figure 12 shows an example of how the property [“indexed in bibliographic data
 
 ## Describing people's data in Wikidata
 
-Creating linked open data about individuals is an important step in describing entities within academia and research, as it enables the authorship of an article to be connected to the journal in which the work is published. In this way, Wikidata can help increase the visibility of an institution’s scholarly output.
+Creating linked open data about individuals is an important step in describing entities within libraries, academia and research, as it enables authorship to be linked to the work (paper, book, etc.).[^9] In this way, Wikidata can help increase the visibility of an institution’s scholarly output.
 
-Using Wikidata to create person records also supports identity management in libraries, archives, and museums. Identity management depends on the use and linking of unique identifiers from different sources. Including multiple identifiers for the same person in Wikidata facilitates exploration, discovery, and access to information beyond traditional metadata silos, such as library catalogs.[^9]
+Using Wikidata to create person records also supports identity management in libraries, archives, and museums. Identity management depends on the use and linking of unique identifiers from different sources. Including multiple identifiers for the same person in Wikidata facilitates exploration, discovery, and access to information beyond traditional metadata silos, such as library catalogs.
+
+A common use of Wikidata persons identifiers is entity linking for disambiguation. Named entity recognition (NER) is combined with Named entity linking (NEL) in libraries and archives platforms such as the [Impresso Web App](https://impresso-project.ch/app/). The platform enables access to a collection of digitised newspapers. By linking persons names to Wikidata, it allows users find mentions to a person despite the various ways their names might be spelled, using the above covered list of aliases. Moreover, it helps, for example, disambiguating persons by linking a mention to 'Kennedy' in a newspaper to J. F. Kennedy (Q9696) former president of the United States instead of George Kennedy (Q298818), the actor.
 
 When creating data about people, especially living individuals, it is important to consider ethical issues related to dignity, safety, and privacy. The Wikidata page [Wikidata:Living people](https://www.wikidata.org/wiki/Wikidata:Living_people) states that only verifiable information should be included, and that this information must not violate reasonable expectations of privacy. Statements about a person must be backed by reliable sources. Remember that social media is not considered an acceptable source on Wikidata.
 
 The first step in creating a person record in Wikidata is to make sure a record does not already exist. If none exists, you may create a new item. In the label field, enter the name by which the person is most commonly known. Then, write a brief description of the person, and optionally include other name variants. After completing the label and description, you can begin adding statements. The first statement should be [“instance of” (P31)](https://www.wikidata.org/wiki/Property:P31) with the value [“human” (Q5)](https://www.wikidata.org/wiki/Q5). Figure 13 shows how this was done for Puerto Rican philosopher Francisco José Ramos [(Q105725041)](https://www.wikidata.org/wiki/Q105725041).
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-13.png" alt="Element for Francisco José Ramos showing the first statement as 'instance of: human'." caption="Figure 13. Label, description, and name variants in Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-13.png" alt="Item for Francisco José Ramos showing the first statement as 'instance of: human'." caption="Figure 13. Label, description, and name variants in Wikidata." %}
 
 The next statements relate to names. You can add [“given name” (P735)](https://www.wikidata.org/wiki/Property:P735), [“family name” (P734)](https://www.wikidata.org/wiki/Property:P734), and [“second family name” (P1950)](https://www.wikidata.org/wiki/Property:P1950). For compound given names, enter each name as a separate value under the “given name” property, and use the qualifier [“series ordinal” (P1545)](https://www.wikidata.org/wiki/Property:P1545) to indicate first and second name. Figure 14 illustrates this process for entering the compound given name “Francisco José.”
 
@@ -259,7 +261,7 @@ These are just some of the properties available for creating linked open data ab
 
 - [“sex or gender” (P21)](https://www.wikidata.org/wiki/Property:P21): To indicate the sex or gender with which the person identifies. This property can be sensitive and potentially privacy-violating, so it should be used with care.
 
-## Tools suggested for element description in Wikidata
+## Tools suggested for item description in Wikidata
 
 Wikidata offers a variety of tools or gadgets to make your work easier. These tools are available in the Preferences menu, under the Gadgets section (Figure 17). The Preferences menu becomes visible once you are logged into your user account. Click on the dropdown menu on the top right of the page to see the Preferences menu.
 
@@ -281,21 +283,21 @@ If you’re interested in learning more about linked open data and Wikidata, we 
 
 ## References
 
-[^1]: Daudinot Founier, Isabel. (2006). Organización y recuperación de información en Internet: teoría de los metadatos. ACIMED, 14(5) Recuperado el 27 de febrero de 2024, de <http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352006000500006&lng=es&tlng=es>.
+[^1]: Hyvönen, E. (2020, October). "Sampo'' Model and Semantic Portals for Digital Humanities on the Semantic Web. In Digital Humanities in the Nordic Countries (pp. 373-378). CEUR.
 
-[^2]: Torres Pombert, Ania. (2006). ¿Catalogación en el entorno digital?: una breve aproximación a los metadatos. ACIMED, 14(5) Recuperado el 27 de febrero de 2024, de <http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352006000500009&lng=es&tlng=es>.
+[^2]: Daudinot Founier, Isabel. (2006). Organización y recuperación de información en Internet: teoría de los metadatos. ACIMED, 14(5) Recuperado el 27 de febrero de 2024, de <http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352006000500006&lng=es&tlng=es>.
 
-[^3]: Cuba Rodríguez, Yariannis, & Olivera Batista, Dianelis. (2018). Los metadatos, la búsqueda y recuperación de información desde las Ciencias de la Información. E-Ciencias de la Información, 8(2), 146-158. <https://dx.doi.org/10.15517/eci.v8i2.30085>.
+[^3]: Torres Pombert, Ania. (2006). ¿Catalogación en el entorno digital?: una breve aproximación a los metadatos. ACIMED, 14(5) Recuperado el 27 de febrero de 2024, de <http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352006000500009&lng=es&tlng=es>.
 
-[^4]: Cadena López, Aydé, Ramos Luna, Lorena Litai, & Rivera González, Gibrán. (2022). Los datos abiertos en los estudios organizacionales: Reflexiones e implicaciones. Trace (México, DF), (82), 41-65. Epub 02 de diciembre de 2022. <https://doi.org/10.22134/trace.82.2022.819>.
+[^4]: Cuba Rodríguez, Yariannis, & Olivera Batista, Dianelis. (2018). Los metadatos, la búsqueda y recuperación de información desde las Ciencias de la Información. E-Ciencias de la Información, 8(2), 146-158. <https://dx.doi.org/10.15517/eci.v8i2.30085>.
 
-[^5]: Ávila-Barrientos, Eder. (2022). Recuperación de información con Linked Open Data. Investigación bibliotecológica, 36(91), 125-146. Epub 15 de noviembre de 2022. <https://doi.org/10.22201/iibi.24488321xe.2022.91.58567>.
+[^5]: Cadena López, Aydé, Ramos Luna, Lorena Litai, & Rivera González, Gibrán. (2022). Los datos abiertos en los estudios organizacionales: Reflexiones e implicaciones. Trace (México, DF), (82), 41-65. Epub 02 de diciembre de 2022. <https://doi.org/10.22134/trace.82.2022.819>.
 
-[^6]: Semantic triple <https://en.wikipedia.org/wiki/Semantic_triple>.
+[^6]: Ávila-Barrientos, Eder. (2022). Recuperación de información con Linked Open Data. Investigación bibliotecológica, 36(91), 125-146. Epub 15 de noviembre de 2022. <https://doi.org/10.22201/iibi.24488321xe.2022.91.58567>.
 
-[^7]: Obregón Sierra, Ángel. (2022). Inserción de metadatos de las bibliotecas españolas en Wikidata: un modelo de datos abiertos enlazados. Revista Española De Documentación Científica, 45(3), a330. <https://doi.org/10.3989/redc.2022.3.1870>.
+[^7]: Semantic triple <https://en.wikipedia.org/wiki/Semantic_triple>.
 
-[^8]: Gutiérrez, Silvia & Fontenelle, Giovanna. (2023). #LD42023. Parte I: El futuro de Wikidata + Bibliotecas (Un taller). Diff: Wikimedia Community Blog. Recuperado el 31 de julio de 2024, de <https://perma.cc/H4FR-L3DY>.
+[^8]: Obregón Sierra, Ángel. (2022). Inserción de metadatos de las bibliotecas españolas en Wikidata: un modelo de datos abiertos enlazados. Revista Española De Documentación Científica, 45(3), a330. <https://doi.org/10.3989/redc.2022.3.1870>.
 
-[^9]: Werf, Titia van der. (2022). Gestión de la identidad del autor en la cadena del libro. Traducción de Francesc García Grimau. Hanging Together: the OCLC Research Blog. Recuperado el 15 de mayo de 2024, de <https://perma.cc/GS92-4HFQ>.
+[^9]: van der Werf, Titia. (2022). Author identity management in the book chain. Hanging Together: the OCLC Research Blog. Retrieved May 15, 2024, from <https://hangingtogether.org/author-identity-management-in-the-book-chain/>.
 

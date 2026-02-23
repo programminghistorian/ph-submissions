@@ -21,7 +21,7 @@ translation-editor:
 translation-reviewer:
 - Lucence Ing
 - Andrés Echavarria
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/672
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/666
 difficulty: 2
 activity: transforming
 topics:

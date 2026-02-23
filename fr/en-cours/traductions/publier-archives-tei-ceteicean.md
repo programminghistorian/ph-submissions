@@ -33,11 +33,6 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-
-
-
-
-
 **Note :** Pour suivre ce tutoriel, vous devez savoir ce qu'est le langage de balisage XML-TEI développé par la [Text Encoding Initiative ou TEI](https://tei-c.org/) et quelle est sa fonction en tant que langage standard dans l'édition numérique savante de textes en sciences humaines et sociales. Vous pouvez trouver des ressources et des tutoriels en français sur l'encodage de textes en TEI sur [La TEI Lite](https://www.tei-c.org/release/doc/tei-p5-exemplars/html/tei_lite_fr.doc.html). Nous vous recommandons également les parties 1 et 2 de la leçon [Introduction à l'encodage de textes en TEI par Nicolás Vaughan](/changer-pour-la-version-en-français) et l'[Initiation XML-TEI par Lauranne Bertrand](http://weburfist.univ-bordeaux.fr/wp-content/uploads/2016/12/20161209_BERTRAND-URFIST-TEI-1.pdf). Durant ce tutoriel, d'autres langages informatiques seront utilisés (comme le [JavaScript](https://www.javascript.com/) et le [CSS](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade)), mais il n'est pas nécessaire d'avoir des connaissances préalables sur leur fonctionnement pour utiliser [CETEIcean](https://github.com/TEIC/CETEIcean).
 
 ## Introduction et logiciels que nous utiliserons

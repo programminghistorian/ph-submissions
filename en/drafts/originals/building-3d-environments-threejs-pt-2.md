@@ -66,7 +66,7 @@ You will remember from Part 1 that scenes have a camera, light(s) and models and
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-03.png" alt="Scene mock-ups in z, x and y views." caption="Figure 3. Affinity Designer versions of the hand-drawn sketches for planning the game. Mock-ups of all 3 views are done, with rough coordinates and spacing for the scene assets (here the camera, light, the map, information panels and a key panel featuring 9 spheres, the jar/site positions, and the area in which the jars will randomly start in the game). Coordinates are x, y, z. Note that the light is off the scale in the y axis." %}
 
-Mock-ups are good for identifying what assets (models and textures) you will need. In Part 1 you used 1 model which featured a geographical map and 29 jars, but in this lesson you will import the components of that model separately. For simplicity you will only work with 6 jar models but can add the other 23 at the end if you wish. You will also have 3 panels that show instructions, references and information on the jars. You will add 9 spheres to the panel on the right to form part of the colour key used for identifying how the jars were made by the potters. The middle gallery panel will provide instructions or information on the selected jar, so it will change depending on what jar is selected. Thus, there will actually be another 6 panels created but not initially visible. In the scene the jars will be placed where on the map at the location in Papua New Guinea where they were made (this is indicated by the 'sites' in Figure 3). In the game the jars will start in an area above the map and the sites of construction will be indicated on the map by 6 tori (donuts). Tori can be harder for game users to select than discs, but many Papua New Guinea communities use tori made of leaves to hold the vessels as they are being made. You can see the Agarabi speaking potter Uneri Ankimpa using a torus-shaped kawe'aron [here](https://ars.els-cdn.com/content/image/1-s2.0-S0278416522000873-gr4_lrg.jpg) (image from Hardy et al 2023).
+Mock-ups are good for identifying what assets (models and textures) you will need. In Part 1 you used 1 model which featured a geographical map and 29 jars, but in this lesson you will import the components of that model separately. For simplicity you will only work with 6 jar models but can add the other 23 at the end if you wish. You will also have 3 panels that show instructions, references and information on the jars. You will add 9 spheres to the panel on the right to form part of the colour key used for identifying how the jars were made by the potters. The middle gallery panel will provide instructions or information on the selected jar, so it will change depending on what jar is selected. Thus, there will actually be another 6 panels created but not initially visible. In the scene the jars will be placed on the map at the location in Papua New Guinea where they were made (this is indicated by the 'sites' in Figure 3). In the game the jars will start in an area above the map and the sites of construction will be indicated on the map by 6 tori (donuts). Tori can be harder for game users to select than discs, but many Papua New Guinea communities use tori made of leaves to hold the vessels as they are being made. You can see the Agarabi speaking potter Uneri Ankimpa using a torus-shaped kawe'aron [here](https://ars.els-cdn.com/content/image/1-s2.0-S0278416522000873-gr4_lrg.jpg) (image from Hardy et al 2023).
 
 In the mock-ups, the x, y and z co-ordinates are given for the different components and rough measurements of distances between objects and their proportions. Planning your scene will help you identify where you will be using the same value repeatedly, such as the x and z positions of the key spheres. You can use variables for these values, so that it is easier to alter all instances together. 
 
@@ -348,7 +348,7 @@ The jars will be added to a group (called ```jars```) and the group will be adde
 
 Each jar will get a [userData](https://threejs.org/docs/?q=userdata#Object3D) property that will point to the information panel that is associated with it, so that when it is selected that panel can be shown. Three.js 'userData' properties do not have to be declared, they are default empty objects and you can create more than one. At this stage, you will create ```aibomM.userData.planes```, but you could also create additional ones such as ```aibomM.userData.somethingelse``` and ```aibomM.userData.anotherthing```.
 
-Note that the introduction of the 'piecescale' variable is not strictly necessary, as it is set to the same as the ratio, but it can be changed later to alter the relative size of the jars in relation to the map.
+Note that the introduction of the ```piecescale``` variable is not strictly necessary, as it is set to the same as the ratio, but it can be changed later to alter the relative size of the jars in relation to the map.
 
 Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. 
 
@@ -369,6 +369,7 @@ The line of code above should be **changed** to the following:
 
 ```	
 let jars;
+let aibomSite, dimiriSite, louisadeSite, mailuSite, adzeraSite, yabobSite;
 let adzeraM, aibomM, mailuM, louisadeM, dimiriM, yabobM;
 
 ```
@@ -680,7 +681,6 @@ The line of code above should be **changed** to the following:
 
 ```
 let jars, tori;
-let aibomSite, dimiriSite, louisadeSite, mailuSite, adzeraSite, yabobSite;
 ```
 
 **Within** the init function definition, **after** the following code:
@@ -802,6 +802,9 @@ However, you will see that it can be difficult to move jars in certain positions
 
 ### Start Jars at Random Positions
 
+
+
+
 To make the jars start in a random position above the map you will use the [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method which generates a number between 0 and 1. You will change the position.set to x = Math.random() - 1, y = 1.2, and z = Math.random() * 0.5 - 0.3. 
 
 Thus, all jars will be at the same height (y = 1.2) but in a random spot within 1m wide (i.e. from x = -1 to 0, slightly to the left of the screen) and within a 0.5m depth (i.e. from z = -0.3 to 0.2). These positions were optimised for a user in VR to be able to easily reach the jars and read the instructions. 
@@ -836,7 +839,10 @@ model.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
 model.userData.site = site;
 ```
 
-Then you need to change all 6 of the ```createModel``` calls that are within the 6 different ```loader.load``` calls, so **find** the following code:
+Then you need to change all 6 of the ```createModel``` calls that are within the 6 different ```loader.load``` calls.
+
+
+**Find** the following code:
 
 ```
 aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			

@@ -389,13 +389,21 @@ You need to **add** the following code:
 jars = new THREE.Group();
 scene.add( jars );
 
+// jar/site positions
+aibomSite = { x: 0.36, z : -0.01 }
+mailuSite = { x: 0.84, z : 0.48 }
+louisadeSite = { x: 0.99, z : 0.59 }
+adzeraSite = { x: 0.61, z : 0.15 }
+dimiriSite = { x: 0.43, z : 0 }
+yabobSite = { x: 0.572, z :  0.0396 }
+
 // loading function for Aibom jar model
 function onLoadAibom( gltf ) {				
   aibomM = gltf.scene.children[0];
   aibomM.material = new THREE.MeshStandardMaterial();
   aibomM.material.color.set(parameters.materialColor);
   aibomM.scale.set( piecescale, piecescale, piecescale);
-  aibomM.position.set( 0.36* ratio, desk + 0.01, -0.01* ratio);
+  aibomM.position.set( aibomSite.x* ratio, desk + 0.01, aibomSite.z* ratio);
   aibomM.userData.planes = aibomG;
   jars.add( aibomM);
 }
@@ -403,7 +411,7 @@ loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {con
 ```
 Save the index.html file and reload the web browser and you should see a model. You will notice that you did not have to add ```aibomM``` to the scene, since you added it to the jars group, which has already been added to the scene.
 
-To avoid repetitive code you will define a function ```createModel()```, and assign the ```onLoadAibom()``` function run this ```createModel()``` function when it loads the model. The function will take 5 arguments: the model filename, the x position, the z position, the model colour and the matching gallery as these vary with the different models. 
+To avoid repetitive code you will define a function ```createModel()```, and assign the ```onLoadAibom()``` function run this ```createModel()``` function when it loads the model. The function will take 4 arguments: the model filename, position, the model colour and the matching gallery as these vary with the different models. 
 
 It may seem confusing to have to have two different functions and it is not essential to understand the following, but it may help if you are trying to write your own code. The `loader.load method` does not expect the function (i.e. ```onLoadAibom```) called after loading to return anything. You will note there is no ```return(x)``` in the ```onLoadAibom``` function. So you have to pass our loaded model to a pre-declared variable (i.e. ```aibomM```). 
 
@@ -421,19 +429,19 @@ loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {con
 The **lines** of code above should be **changed** to the following:
 ```
 //a function to make the model with the parameter specified
-function createModel(gltf, x, z, col, gallery){
+function createModel(gltf, site, col, gallery){
   const model = gltf.scene.children[0];	
   model.material = new THREE.MeshStandardMaterial();
   model.material.color.set(col);
   model.scale.set( piecescale, piecescale, piecescale);				
-  model.position.set( x * ratio, desk + 0.01, z * ratio);	
+  model.position.set( site.x * ratio, desk + 0.01, site.z * ratio);	
   model.userData.planes = gallery;
   return model;
 }
 
 //calls the createModel function but still in a separately defined function
 function onLoadAibom( gltf ) {							
-  aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
+  aibomM = createModel(gltf, aibomSite, parameters.materialColor, aibomG);			
   jars.add( aibomM);
 }
 loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
@@ -459,32 +467,32 @@ The **lines** of code above should be **changed** to the following:
 // directly has the onLoad function as an anonymous function in the loader.load
 // load a jar (filename, load function, function while loading, error function)
 loader.load( 'models/aibom.glb', function( gltf ) {							
-  aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
+  aibomM = createModel(gltf, aibomSite, parameters.materialColor, aibomG);			
   jars.add( aibomM);
 }, undefined, function ( error ) {console.error( error );} );
 
 loader.load( 'models/mailu.glb', function( gltf) {							
-  mailuM = createModel(gltf, 0.84, 0.48, parameters.nabColor, mailuG);			
+  mailuM = createModel(gltf, mailuSite, parameters.nabColor, mailuG);			
   jars.add( mailuM);
 }, undefined, function ( error ) { console.error( error );} );
 
 loader.load( 'models/louisade.glb', function( gltf ) {
-  louisadeM = createModel(gltf, 0.99, 0.59, parameters.ringTopColor, louisadeG);			
+  louisadeM = createModel(gltf, louisadeSite, parameters.ringTopColor, louisadeG);			
   jars.add(louisadeM);
 }, undefined, function ( error ) {console.error( error );} );
 
 loader.load( 'models/adzera.glb', function( gltf ) {
-  adzeraM = createModel(gltf, 0.61, 0.15, parameters.coilBeatenColor, adzeraG);			
+  adzeraM = createModel(gltf, adzeraSite, parameters.coilBeatenColor, adzeraG);			
   jars.add( adzeraM);
 }, undefined, function ( error ) {console.error( error );} );
 
 loader.load( 'models/dimiri.glb', function( gltf ) {
-  dimiriM = createModel(gltf, 0.43, 0, parameters.coilColor, dimiriG);			
+  dimiriM = createModel(gltf, dimiriSite, parameters.coilColor, dimiriG);			
   jars.add( dimiriM);
 }, undefined, function ( error ) {console.error( error );} );
 
 loader.load( 'models/yabob.glb', function( gltf ) {
-  yabobM = createModel(gltf, 0.572, 0.0396, parameters.paddleColor, yabobG);			
+  yabobM = createModel(gltf, yabobSite, parameters.paddleColor, yabobG);			
   jars.add( yabobM);
 }, undefined, function ( error ) {console.error( error );} );
 

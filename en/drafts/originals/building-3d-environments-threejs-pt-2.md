@@ -691,13 +691,18 @@ The line of code above should be **changed** to the following:
 let jars, tori;
 ```
 
-**Within** the init function definition, **after** the following code:
+**Within** the init function definition, **find** the following code:
 
 ```
-scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
+aibomSite = { x: 0.36, z : -0.01 }
+mailuSite = { x: 0.84, z : 0.48 }
+louisadeSite = { x: 0.99, z : 0.59 }
+adzeraSite = { x: 0.61, z : 0.15 }
+dimiriSite = { x: 0.43, z : 0 }
+yabobSite = { x: 0.572, z :  0.0396 }
 ```
 
-You need to **add** the following code:
+The lines of code above should be **changed** to the following:
 
 ```
 // Add sites as tori, in a group
@@ -811,8 +816,6 @@ However, you will see that it can be difficult to move jars in certain positions
 ### Start Jars at Random Positions
 
 
-
-
 To make the jars start in a random position above the map you will use the [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method which generates a number between 0 and 1. You will change the position.set to x = Math.random() - 1, y = 1.2, and z = Math.random() * 0.5 - 0.3. 
 
 Thus, all jars will be at the same height (y = 1.2) but in a random spot within 1m wide (i.e. from x = -1 to 0, slightly to the left of the screen) and within a 0.5m depth (i.e. from z = -0.3 to 0.2). These positions were optimised for a user in VR to be able to easily reach the jars and read the instructions. 
@@ -823,20 +826,10 @@ You will store the matching site in a userData variable. Before you do this you 
 
 When creating the jars you now need the matching site but not the gallery and you do not need its correct position so **find** the following code:
 
-```
-function createModel(gltf, x, z, col, gallery){
-```
-
-The line of code above should be **changed** to the following:
-
-```
-function createModel(gltf, col, site){
-```
-
 Within the ```createModel``` function, **find** the following code:
 
 ```
-model.position.set( x * ratio, desk + 0.01, z * ratio);
+model.position.set( site.x * ratio, desk + 0.01, site.z * ratio);
 model.userData.planes = gallery;
 ```
 
@@ -847,80 +840,7 @@ model.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
 model.userData.site = site;
 ```
 
-Then you need to change all 6 of the ```createModel``` calls that are within the 6 different ```loader.load``` calls.
-
-
-**Find** the following code:
-
-```
-aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
-```
-
-The line of code above should be **changed** to the following:
-
-```
-aibomM = createModel(gltf, parameters.materialColor, aibomSite);
-```
-
-**Find** the following code:
-
-```
-mailuM = createModel(gltf, 0.84, 0.48, parameters.nabColor, mailuG);
-```
-
-The line of code above should be **changed** to the following:
-
-```
-mailuM = createModel(gltf, parameters.nabColor, mailuSite);	
-```
-
-**Find** the following code:
-
-```
-louisadeM = createModel(gltf, 0.99, 0.59, parameters.ringTopColor, louisadeG);		
-```
-
-The line of code above should be **changed** to the following:
-
-```
-louisadeM = createModel(gltf, parameters.ringTopColor, louisadeSite);
-```
-
-**Find** the following code:
-
-```
-adzeraM = createModel(gltf, 0.61, 0.15, parameters.coilBeatenColor, adzeraG);	
-```
-
-The line of code above should be **changed** to the following:
-
-```
-adzeraM = createModel(gltf, parameters.coilBeatenColor, adzeraSite);
-```
-
-**Find** the following code:
-
-```
-dimiriM = createModel(gltf, 0.43, 0, parameters.coilColor, dimiriG);
-```
-
-The line of code above should be **changed** to the following:
-
-```
-dimiriM = createModel(gltf, parameters.coilColor, dimiriSite);	
-```
-
-**Find** the following code:
-
-```
-yabobM = createModel(gltf, 0.572, 0.0396, parameters.paddleColor, yabobG);
-```
-
-The line of code above should be **changed** to the following:
-
-```
-yabobM = createModel(gltf, parameters.paddleColor, yabobSite);			
-```
+Because of the way this lesson has been designed, the altered ```createModel``` function still has 4 arguments (the model filename, site, colour and gallery) and you do not have to change the 6 different ```loader.load``` calls. If you were making such a change when writing your own code you may have to change the ```loader.load``` calls.
 
 Save the index.html file, reload the browser and you should see the jars starting above the map. If you reload the browser they will be in different random positions.
 

@@ -729,11 +729,44 @@ tori.add(aibomSite, mailuSite, dimiriSite, louisadeSite, adzeraSite, yabobSite);
 
 ```
 
-Save the index.html file, reload the browser and check the tori appear on site reload. 
+Save the index.html file, reload the browser and check the tori appear on site reload. However this change has broken the importation of the jar models so you will not see them.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-12.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 12. Webpage with the jars sitting on tori." %}
 
-You will see that nothing happens when you click on them, as the raycaster is only checking the jars for intersections. So in the ```onClick(event)``` function, **find** the following code.
+### Start Jars at Random Positions
+
+To make the jars start in a random position above the map you will use the [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method which generates a number between 0 and 1. You will change the position.set to x = Math.random() - 1, y = 1.2, and z = Math.random() * 0.5 - 0.3. 
+
+Thus, all jars will be at the same height (y = 1.2) but in a random spot within 1m wide (i.e. from x = -1 to 0, slightly to the left of the screen) and within a 0.5m depth (i.e. from z = -0.3 to 0.2). These positions were optimised for a user in VR to be able to easily reach the jars and read the instructions. 
+
+If you review Figure 3 you can see where the jars should appear in relation to the camera and map. You can change the code so they appear elsewhere if you think that would be better.
+
+You will store the matching site in a userData variable. Before you do this you may want to note, or take a screenshot of where at least one of the jars should go.
+
+When creating the jars you now need the matching site but not the gallery and you do not need its correct position so **find** the following code:
+
+Within the ```createModel``` function, **find** the following code:
+
+```
+model.position.set( site.x * ratio, desk + 0.01, site.z * ratio);
+```
+
+The **line** of code above should be **changed** to the following:
+
+```
+model.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
+model.userData.site = site;
+```
+
+Save the index.html file, reload the browser and you should see the jars starting above the map. If you reload the browser they will be in different random positions.
+
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-13.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 13. Webpage with the jars at random start positions above the map." %}
+
+### Changing What the Mouse Click Detects
+
+For this game having the displayed information panel linked to the selected jar will not help most users place the jar in the correct location (unless they know their Papua New Guinea languages). Other game designs might have 'clues' linked to a geographical location, i.e. 'This jar was used to cook fish', which would allow the user to match the jar to a coastal location. In this latter case you would leave the panel change to be responsive to selection of a jar, but for this design you want the panel to change when a site is selected.
+
+You will see that nothing happens when you click on the tori, as the raycaster is checking the jars for intersections and not the tori. So in the ```onClick(event)``` function, **find** the following code.
 
 ```
 const intersects = raycasterM.intersectObjects( jars.children);	// an array, nearest to camera will be first
@@ -813,38 +846,6 @@ Save the index.html file, reload the browser, and check that you can now move th
 
 However, you will see that it can be difficult to move jars in certain positions in 3D. It is easier to achieve if you view the scene directly from the top, or directly from the side.
 
-### Start Jars at Random Positions
-
-
-To make the jars start in a random position above the map you will use the [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method which generates a number between 0 and 1. You will change the position.set to x = Math.random() - 1, y = 1.2, and z = Math.random() * 0.5 - 0.3. 
-
-Thus, all jars will be at the same height (y = 1.2) but in a random spot within 1m wide (i.e. from x = -1 to 0, slightly to the left of the screen) and within a 0.5m depth (i.e. from z = -0.3 to 0.2). These positions were optimised for a user in VR to be able to easily reach the jars and read the instructions. 
-
-If you review Figure 3 you can see where the jars should appear in relation to the camera and map. You can change the code so they appear elsewhere if you think that would be better.
-
-You will store the matching site in a userData variable. Before you do this you may want to note, or take a screenshot of where at least one of the jars should go.
-
-When creating the jars you now need the matching site but not the gallery and you do not need its correct position so **find** the following code:
-
-Within the ```createModel``` function, **find** the following code:
-
-```
-model.position.set( site.x * ratio, desk + 0.01, site.z * ratio);
-model.userData.planes = gallery;
-```
-
-The **lines** of code above should be **changed** to the following:
-
-```
-model.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
-model.userData.site = site;
-```
-
-Because of the way this lesson has been designed, the altered ```createModel``` function still has 4 arguments (the model filename, site, colour and gallery) and you do not have to change the 6 different ```loader.load``` calls. If you were making such a change when writing your own code you may have to change the ```loader.load``` calls.
-
-Save the index.html file, reload the browser and you should see the jars starting above the map. If you reload the browser they will be in different random positions.
-
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-13.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 13. Webpage with the jars at random start positions above the map." %}
 
 ### Check for Successful Matches
 

@@ -35,11 +35,11 @@ doi: XX.XXXXX/phen0000
 
 You have probably already heard about metadata, open data, and linked open data. However, before starting this lesson, it's important to clarify and deepen our understanding of these concepts and briefly explore their interconnections.
 
-The prefix meta is derived from the Greek language, in which it means "after" or "beyond." It is used to indicate that a concept applies to itself. 'Metadata', therefore, refers to 'data about the data,' in the sense that it describes, identifies, locates, or facilitates the understanding of the data. In the interdisciplinary field of information science, in particular, metadata provides context and structure, allowing for the efficient management, search, and organization of information. It also facilitates system interoperability[^1], different platforms, and the long-term preservation of digital resources. With the internet, metadata became particularly useful due to the enormous amount of information available online, as it is essential to facilitate web pages classification, optimize search engines, and improve user navigation.[^2] [^3] [^4]
+The prefix 'meta' is derived from the Greek language, in which it means 'after' or 'beyond.' It is used to indicate that a concept applies to itself. 'Metadata', therefore, refers to 'data about the data,' in the sense that it describes, identifies, locates, or facilitates the understanding of the data. In the interdisciplinary field of information science, in particular, metadata provides context and structure, allowing for the efficient management, search, and organization of information. It also facilitates system interoperability[^1], different platforms, and the long-term preservation of digital resources. With the internet, metadata became particularly useful due to the enormous amount of information available online, as it is essential to facilitate web pages classification, optimize search engines, and improve user navigation.[^2] [^3] [^4]
 
 In an increasingly digital and interconnected world, interest in open data has grown significantly, as a response to the need of promoting transparency and data reuse across various disciplines. Metadata availability has been growing, while taking into consideration the necessary technical and legal frameworks to make it free, reusable and accessible for anyone, at any time and in any place.[^5] The adoption of open standards for metadata not only facilitates the understanding and exchange of data but also drives innovation by promoting more effective communication. In this context, open data has become an essential component for building sustainable and accessible data infrastructures, promoting a collaborative approach to information management in the digital era.
 
-In the context of open data philosophy, Linked Open Data (LOD) has emerged as a concept for presenting and publishing data on the web, aiming at facilitating data use and reuse through automated processes.LOD is based on the principle of establishing meaningful linking between data with similar attributes, from various sources of the web. It implies the creation of an environment with global interoperability.[^6] Therefore, this term refers to a set of best practices for publishing and connecting structured data on the web. Information in Wikidata is stored in semantic triples [^7] following the Resource Description Framework (RDF), which are conventionally known as subject, predicate, and object. If you still have doubts or want to deepen your knowledge on this topic, you can consult more details in [Jonathan Blaney's lesson](https://programminghistorian.org/en/lessons/intro-to-linked-data), which offers a brief and concise introduction to linked open data.
+In the context of open data philosophy, Linked Open Data (LOD) has emerged as a concept for presenting and publishing data on the web, aiming at facilitating data use and reuse through automated processes. LOD is based on the principle of establishing meaningful linking between data with similar attributes, from various sources of the web. It implies the creation of an environment with global interoperability.[^6] Therefore, this term refers to a set of best practices for publishing and connecting structured data on the web. Information in Wikidata is stored in semantic triples [^7] following the Resource Description Framework (RDF), which are conventionally known as subject, predicate, and object. If you still have doubts or want to deepen your knowledge on this topic, you can consult more details in [Jonathan Blaney's lesson](https://programminghistorian.org/en/lessons/intro-to-linked-data), which offers a brief and concise introduction to linked open data.
 
 This lesson shows you how to create, edit, and publish LOD in a simple and free way using Wikidata. You will learn about the structure of Wikidata and the procedures for creating, editing, and publishing LOD related to entities in academia such as scientific journals and researchers. The lesson is primarily aimed at librarians, archivists, and other information professionals working in the academic context who wish to increase the visibility of the knowledge produced at their institution.
 
@@ -62,7 +62,7 @@ Projects under the Wikimedia Foundation umbrella are organized into four categor
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-01.png" alt="Projects under the Wikimedia Foundation umbrella organized into four categories: content projects, multilingual content projects, outreach and administration projects, and technical and development projects." caption="Figure 1. An overview of the Wikimedia Foundation’s projects." %}
 
-According to its own [website](https://www.wikidata.org/wiki/Wikidata:Introduction), both the content and structure of Wikidata are in the public domain. This allows users to freely copy, modify, distribute, and present the data for any purpose, including commercial use, without seeking permission. Wikidata also has these key features:
+According to its own [website](https://www.wikidata.org/wiki/Wikidata:Introduction), both the content and structure of Wikidata are in the public domain. This allows users to freely copy, modify, distribute, and present the data for any purpose, including commercial use, without seeking permission. Wikidata is also:
 
 - Accessible to other projects: The data stored in Wikidata is available for use by other Wikimedia projects, such as Wikipedia. This creates a centralized source of information that can be leveraged by various applications and websites.
 
@@ -70,11 +70,11 @@ According to its own [website](https://www.wikidata.org/wiki/Wikidata:Introducti
 
 - Continuously updated: The community actively contributes to the improvement and expansion of the database. This helps ensure that the information is current, reflecting recent changes and discoveries.
 
-- Version history: Wikidata keeps a revision history for each item and statement, allowing changes to be tracked over time. This ensures transparency and the ability to revert edits if necessary.
+- Version-history compliant: Wikidata keeps a revision history for each item and statement, allowing changes to be tracked over time. This ensures transparency and the ability to revert edits if necessary.
 
 - Multilingual: It supports the representation of items and their descriptions in over 300 languages.
 
-- Structured data: All information is organized into specific fields and categories (following a model with a set of rules and constraints). This improves consistency and makes it easier for both humans and machines to search for, access, retrieve, update, and reuse the data.
+- Stored as structured data: All information is organized into specific fields and categories (following a model with a set of rules and constraints). This improves consistency and makes it easier for both humans and machines to search for, access, retrieve, update, and reuse the data.
 
 In 2019, Wikidata had approximately 55 million created items. Four years later, it had surpassed 100 million items (Figure 2), covering a wide range of topics such as objects, people, places, reports, art, buildings of cultural interest, animals, and much more.
 
@@ -141,7 +141,7 @@ From there, you can begin filling out the fields by entering the required inform
 
 - No ending punctuation: Descriptions should not end with a period, as they are more like informative tags than full sentences.
 
-- Local language: Descriptions should be written in the local language of the Wikidata project. For example, if you’re contributing to the Enlgish version of Wikidata, the descriptions should be in English.
+- Local language: Descriptions should be written in the local language of the Wikidata project. For example, if you’re contributing to the English version of Wikidata, the descriptions should be in English.
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-09.png" alt="Template for creating a new item in Wikidata with ‘language’, ‘label’, ‘description’ and ‘alias’ fields." caption="Figure 9. Filling out information for a new item on Wikidata." %}
 

@@ -330,7 +330,6 @@ scene.add( theMap);
 Save the index.html file and reload the web browser. The map should appear with the panels (Figure 6).
 
 
-
 ### Adding the Jar Models
 As you saw in Part 1 of this lesson, the jar models are made of meshes (Figure 7).
 
@@ -415,7 +414,7 @@ To avoid repetitive code you will define a function ```createModel()```, and ass
 
 It may seem confusing to have to have two different functions and it is not essential to understand the following, but it may help if you are trying to write your own code. The `loader.load method` does not expect the function (i.e. ```onLoadAibom```) called after loading to return anything. You will note there is no ```return(x)``` in the ```onLoadAibom``` function. So you have to pass our loaded model to a pre-declared variable (i.e. ```aibomM```). 
 
-However, you want to have 6 different models, and use different colours, planes and positions for them, and giving callback functions like ```onLoadAibom``` arguments is a bit tricky. So one solution is the use of two different functions, with one function `createModel` able to take arguments and return a model, and the other function is ```onLoadAibom```.
+Giving callback functions like ```onLoadAibom``` arguments in addition to the model file name is difficult so you have to find another way to specify the colour, position and gallery panel of the jar model. One solution is the use of two different functions, where one function `createModel` able to take arguments and return a model, and the other function is ```onLoadAibom```.
 
 **Find** the following code:
 
@@ -447,9 +446,9 @@ function onLoadAibom( gltf ) {
 loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
 
 ```
-Save and check the model still appears.
+Save the index.html file, reload the browser and check the jar model still appears.
 
-However, with this approach you would still need 6 different ```onLoadX``` functions, 1 for each model. The code can be condensed further by using 'anonymous' functions, i.e. the function called is not named. 
+You have imported 1 jar and could write 5 other function (i.e. onLoadMailu, onLoadLouisade etc) to import the other 5 jars but the code can be condensed further by using 'anonymous' functions, i.e. the function called is not named. 
 
 You keep the createModel function but **find** the following code:
 

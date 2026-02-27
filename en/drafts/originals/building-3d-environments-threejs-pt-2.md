@@ -32,6 +32,18 @@ The primary goal of Part 2 of this lesson is to teach how to use three.js to cre
 
 An additional (optional) goal of Part 2 is to change the webpage into a game by making the models moveable. The interactive game makes the initial position of the jars randomly determined and requires the user to match the vessel to its maker community by moving it to the correct geographical position. You will learn how to set up a simple test in the code so that each time a model is moved, the application will verify if the model has been placed in the correct position associated with its provenance. Successful matches will be set to trigger a background colour change denoting the proper placement.
 
+## Interactive Scenes for Cultural Heritage
+
+The interactive element of the ‘Jars of Papua’ Scene is the user’s ability to toggle between different information panels by clicking on a jar. The scene was designed to communicate the diversity of vessel forms, decorations, construction techniques and uses of Papua New Guinean pottery. It is also a way to visualise how ceramic technological knowledge may have spread and changed through Papua (and the wider region). 
+
+Historically Papua society consisted of smaller communities who are thought to have deliberately promoted distinct language and material culture traditions to develop and maintain group identities (Fraenkel and Filer 2022). Papua New Guinea is the most linguistic diverse country in the world, with over 800 languages. Part of this stems from people arriving on the New Guinea Island over 40,000 years ago (Fraenkel and Filer 2022). There is no evidence that pottery was present in New Guinea until contact 3000-4000 years ago with [Austronesian](https://en.wikipedia.org/wiki/Austronesian_peoples) peoples originating from Taiwan. Austronesian populations continued expanding further and reached as far east as Hawai’I and Rapa Nui. The timing and nature of the interactions of the Austronesian and older (‘Papuan’/’Non-Austronesian’) peoples is of [great interest](https://www.mpg.de/24825928/0603-evan-papua-new-guinea-s-genetic-past-through-ancient-dna-analysis-150495-x). Some, mainly island and coastal Papua New Guinea communities speak ‘Austronesian’ languages and carry the ‘Austronesian’ gene-signature (Nägele et al. 2025). The predominance of pottery making nearer the coastal regions of Papua New Guinea shows this adoption from ‘sea-people’. 
+
+This scene could be redesigned so that a mouse click (or keyboard choice) could change the map to show the different linguistic regions, or to indicate the proposed Austronesian migration route. Alternatively ,when a jar is selected the map image could show where that community traded jars to. The Adzera-made jars were traded east into the highlands and west into New Britain. Using JavaScript libraries allows you to determine how you want to make a scene interactive.
+This scene focuses on geographic differences, but you could design a scene using a timeline to reflect changes in vessel form and decoration over time. You could also utilise the 3D space to have the vessels arranged on virtual shelves or museum cases, or the map could be a 3D model showing the landscape terrain.
+In Part 1 you learnt how to import complex models. In this lesson you will learn how to: add simple 2D and 3D shapes (such as planes and spheres); change model properties (such as colour, size, and visibility); add image textures to planes; create object groups; let users select objects with ray casting; and trigger changes to the scene when an object is selected. While a simple interactive scene will be created here, these techniques could be used to create many different interactive scenes. For example, a scene could have options to allow users to toggle the visibility, size or colour of groups of vessels with different properties, such as potter gender or language. 
+
+The ability to alter the size of a selected vessel could also be a way by which more jar models could be incorporated in the scene, with models starting small enough so that they all fit and expanding for better inspection if selected. Designing your own scenes with three.js gives you more flexibility in scene creation.
+
 ## Setting Up
 In addition to the technical requirements in Part 1, for Part 2 of this lesson, you will need to download the [`/models` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/models) containing the individual jar models, and the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/textures) with information about them, from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2). 
 
@@ -1086,10 +1098,16 @@ There are many ways cultural heritage models can be used interactively: broken v
 
 ## References
 
+Fraenkel, J. and Filer, C. 2022. Prisoners of a distant past? Linguistic diversity and the time-depth of human settlement in Papua New Guinea. World Development 157: 105921.
+
 Gaffney, D. 2017. Maintenance and mutability amongst specialist potters on the Northeast Coast of New Guinea. Cambridge Archaeological Journal 28:1-24
 
 Hardy, K., Ballard, C. and Leclerc, M. 2023. Agarabi pottery production in the Eastern Highlands of Papua New Guinea. Journal of Anthropological Archaeology 69:101479
 
 Hardy, K. 2023. The creation of 'Uvira's Pot', a virtual reality puzzle to promote engagement with archaeological research. Conference: Digital Humanities 2023. Collaboration as Opportunity (DH2023) At: Graz, Austria.
+
+Nägele, K., Kinaston, R., Gaffney, D., Walworth, M., Rohrlach, A.B., Carlhoff, S., Huang, Y., Ringbauer, H., Bertolini, E., Tromp, M., Radzeviciute, R., Petchey, F., Anson, D., Petchey, P., Stirling, C., Reid, M., Barr, D., Shaw, B., Summerhayes, G., Buckley, H., Posth, C.,Powell A., and Krause, J. 2025. 
+The impact of human dispersals and local interactions on the genetic diversity of coastal Papua New Guinea over the past 2,500 years.
+Nature Ecology & Evolution. DOI: 10.1038/s41559-025-02710-x
 
 Schell, J. 2015. The Art of Game Design: A Book of Lenses. CRC Press. FL.

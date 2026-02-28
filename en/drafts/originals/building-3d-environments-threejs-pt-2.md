@@ -42,7 +42,7 @@ This scene could be redesigned so that a mouse click (or keyboard choice) could 
 This scene focuses on geographic differences, but you could design a scene using a timeline to reflect changes in vessel form and decoration over time. You could also utilise the 3D space to have the vessels arranged on virtual shelves or museum cases, or the map could be a 3D model showing the landscape terrain.
 In Part 1 you learnt how to import complex models. In this lesson you will learn how to: add simple 2D and 3D shapes (such as planes and spheres); change model properties (such as colour, size, and visibility); add image textures to planes; create object groups; let users select objects with ray casting; and trigger changes to the scene when an object is selected. While a simple interactive scene will be created here, these techniques could be used to create many different interactive scenes. For example, a scene could have options to allow users to toggle the visibility, size or colour of groups of vessels with different properties, such as potter gender or language. 
 
-The ability to alter the size of a selected vessel could also be a way by which more jar models could be incorporated in the scene, with models starting small enough so that they all fit and expanding for better inspection if selected. Designing your own scenes with three.js gives you more flexibility in scene creation.
+The ability to alter the size of a selected vessel could also be a way by which more jar models could be incorporated in the scene, with models starting small enough so that they all fit and expanding for better inspection if selected. Designing your own scenes with three.js gives you more flexibility in scene creation. In this lesson you will learn how to create a basic intereactive scene, but three.js has the ability to create intricate galleries with professional appearances such as [Artexpress](https://www.artexpress.vr.artsunit.nsw.edu.au/2025/), which displays Australian High School exam artwork.
 
 ## Setting Up
 In addition to the technical requirements in Part 1, for Part 2 of this lesson, you will need to download the [`/models` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/models) containing the individual jar models, and the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/textures) with information about them, from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2). 
@@ -342,7 +342,7 @@ scene.add( theMap);
 Save the index.html file and reload the web browser. The map should appear with the panels (Figure 6).
 
 
-### Adding the Jar Models
+### Adding Complex Models: the Jar Models
 As you saw in Part 1 of this lesson, the jar models are made of meshes (Figure 7).
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-07.png" alt="Framework of a jar with a sculptured face." caption="Figure 7. Mesh of the Aibom jar." %}
@@ -519,7 +519,7 @@ Note that if you change ```let piecescale = ratio;``` to ```let piecescale = rat
 
 You can calculate where to set the positions of the jars by taking into account the map dimensions. This can be done on graph paper, although these positions were obtained via placement of the jars in Blender.
 
-### Adding Jar Selection
+### Using Raycasters: Adding Jar Selection
 
 Next you want to add an event listener, to be able to select a jar and change the information panel. As with the ```WindowResize``` event listener in Part 1, this listener gets the event (in this case ```click```), and a function (known as an event handler) you will define. Input events pass event information to their handler, some of which is dependent on the type of event. The click event passes an object (commonly called ```event```) that contains the mouse cursor's coordinates relative to the viewport/window. 
 
@@ -672,7 +672,7 @@ For this lesson, you will rely on the models being coloured by how they are made
 
 To transform the scene into a puzzle the information panel used needs to be altered, as it is the main source of user information. The goal for the user of this game is to start with the jars placed off the map, with the Papuan communities demarcated by selectable tokens. When the communities are selected by the user's mouse click, the information panel will provide the information on the pots made by that community. Information on the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured by the technique and a key is provided. The decoration technique may also serve as a guide. The user can move the jars with their mouse. If they place the matching jar on the community marker, then the jar becomes unmoveable and the background colour changes. 
 
-### Adding Tori
+### Adding Simple Models: Tori
 
 Green tori will be used to mark the communities.  The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified (Figure 4). However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI /2). Each tori centre will be positioned slightly (1 cm) above the map (which is at 'desk' height) at y = desk + 0.01.
 
@@ -773,7 +773,7 @@ Save the index.html file, reload the browser and you should see the jars startin
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-13.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 13. Webpage with the jars at random start positions above the map." %}
 
-### Changing What the Mouse Click Detects
+### Raycasting: Changing What the Mouse Click Detects
 
 For this game having the displayed information panel linked to the selected jar will not help most users place the jar in the correct location (unless they know their Papua New Guinea languages). Other game designs might have 'clues' linked to a geographical location, i.e. 'This jar was used to cook fish', which would allow the user to match the jar to a coastal location. In this latter case you would leave the panel change to be responsive to selection of a jar, but for this design you want the panel to change when a site is selected.
 
@@ -792,7 +792,7 @@ const intersects = raycasterM.intersectObjects( tori.children);
 Save and check that the mouse click and panel change now work on tori (as opposed to the jars).
 
 
-### Enabling Jar Movement
+### Drag Controls: Enabling Jar Movement
 
 To be able to move the jars using the mouse, ```DragControls``` have to be imported and created. The first argument when creating the ```DragControls``` determines what they can drag.
 
@@ -858,7 +858,7 @@ Save the index.html file, reload the browser, and check that you can now move th
 However, you will see that it can be difficult to move jars in certain positions in 3D. It is easier to achieve if you view the scene directly from the top, or directly from the side.
 
 
-### Check for Successful Matches
+### Conditional Statements: Check for Successful Matches
 
 At the end of each jar movement, you want to check if the jar was moved to the correct spot. One way to do this is to determine the distance between the jar and the matching site (torus). You need to set an allowed distance difference that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby. Here you will use 5 cm (2.5cm * ratio). 
 
@@ -895,7 +895,7 @@ You need to **add** the following code:
 unmoveable = new THREE.Group();
 scene.add(unmoveable);  
 ```
-#### Obtaining the Positions of the Selected Jar and its Correct Site
+#### Getting Model Locations: Obtaining the Positions of the Selected Jar and its Correct Site
 
 The event object for drag events contains the identity of the object being dragged (```event.object```), so you can use that in the handler function and you can get the site it should match from its userData.
 
@@ -930,7 +930,7 @@ let testposition = new THREE.Vector3(0,0,0); //needs to be something first
 truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z)
 let aposition = selectedObject.position; //get jar position
 ```
-#### Testing if the Jar has been Place 'on' its Site
+#### Determining Distances Between Models: Testing if the Jar has been Place 'on' its Site
 
 In coding, [conditional statements](https://en.wikipedia.org/wiki/Conditional_(computer_programming)) such as the 'if' statement are commonly used to specify that lines of code will only run if a particular criteria is fulfilled. You used an if statement previously when testing if anything is actually being selected by the mouse. Now you will use an if statement to test if the distance between the jar and its matching site is within the set allowed distance. You call the ```distanceTo``` method on the ```aposition``` vector to determine the distance between the two vectors, and test if it is smaller than our allowed distance (0.25 * ratio). 
 

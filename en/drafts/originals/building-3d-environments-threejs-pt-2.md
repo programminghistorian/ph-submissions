@@ -672,9 +672,11 @@ For this lesson, you will rely on the models being coloured by how they are made
 
 To transform the scene into a puzzle the information panel used needs to be altered, as it is the main source of user information. The goal for the user of this game is to start with the jars placed off the map, with the Papuan communities demarcated by selectable tokens. When the communities are selected by the user's mouse click, the information panel will provide the information on the pots made by that community. Information on the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured by the technique and a key is provided. The decoration technique may also serve as a guide. The user can move the jars with their mouse. If they place the matching jar on the community marker, then the jar becomes unmoveable and the background colour changes. 
 
-### Adding Simple Models: Tori
+### Adding Simple Models: Tori (Donuts)
 
-Green tori will be used to mark the communities.  The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified (Figure 4). However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI /2). Each tori centre will be positioned slightly (1 cm) above the map (which is at 'desk' height) at y = desk + 0.01.
+In this game the clues to matching the jar and community location will be given by clicking on the community location. If presented with a map of New Guinea with the jars randomly placed some distance above it most users would not know where on the map to click to get the clues. So green tori (donut shapes) will be used to mark the communities to let the user know where to start clicking. The information panel will be changed in the last step to instruct the user to click on a torus (donut). 
+
+The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified (Figure 4). However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI /2). Each tori centre will be positioned slightly (1 cm) above the map (which is at 'desk' height) at y = desk + 0.01.
 
 Because each torus is connected to a different information panel, they still need to be created separately and added to a tori group. The mouse click event listener has to be altered so that it targets the tori group instead of the jars group. 
 

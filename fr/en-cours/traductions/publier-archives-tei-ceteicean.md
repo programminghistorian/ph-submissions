@@ -185,7 +185,6 @@ tei-p {
 }
 ```
 
-
 Remarquez que les noms des éléments dans nos sélecteurs CSS ont le préfixe `tei-`. Ceci est nécessaire pour que CETEIcean puisse convertir les éléments TEI en éléments HTML personnalisés ([Custom Elements](https://fr.javascript.info/custom-elements)). Ces règles établissent que les éléments `<div>` sont visualisés comme des blocs (ils commencent sur une nouvelle ligne et se terminent par un saut de ligne) ; il en va de même pour les paragraphes, qui ont également des marges supérieures et inférieures.
 
 Décider quels styles appliquer aux éléments qui n'en ont pas encore n'est pas une tâche aisée, mais nous pouvons commencer à en établir pour les cas les plus simples. Par exemple, dans notre document source, les entêtes des différentes sections sont signalés par l'élément `<head>`. Dans la visualisation HTML, nous souhaiterions probablement que ces entêtes se distinguent du corps du texte. Nous pouvons donc modifier la feuille de style CSS afin de leur donner un style particulier. Maintenant, vous devez ouvrir le fichier `tei.css` (que vous trouverez dans le dossier `css`) dans VS Code et à la fin du document, ajoutez les lignes suivantes :
@@ -278,7 +277,6 @@ Pour suivre ce tutoriel, il n'est pas nécessaire de comprendre le fonctionnemen
 {% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-07.png" alt="Capture d'écran qui montre le fichier HTML sur le côté gauche et la prévisualisation de notre fichier TEI avec les numéros des notes sous forme de lien hypertexte sur le côté droit." caption="Figure 7. Prévisualisation de notre fichier TEI avec style pour les appels de notes." %}
 
 ## Étape 4 : Pour continuer à travailler avec CETEIcean
-
 CETEIcean possède un certain nombre de comportements intégrés que vous pouvez remplacer ou désactiver en leur assignant des valeurs. Si, par exemple, vous souhaitez afficher le contenu du `<teiHeader>` (qui est caché par défaut), vous pouvez ajouter la ligne suivante à notre `<script>` en dessous de `"tei": {`:
 
 ```js

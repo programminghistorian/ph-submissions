@@ -55,7 +55,7 @@ Nous utiliserons en tant que texte d'exemple *La Dernière Incarnation de Vautri
 Nous commencerons avec un fichier simple (bien qu'un peu long) au format TEI P5, que nous voulons rendre visible dans un navigateur web : [`balzac-42-splendeurs-miseres-courtisanes-presse-derniere-incarnation-vautrin.xml`](https://api.nakala.fr/data/10.34847/nkl.4fb47i30/a29cf71aeb3f98543df574d5efddf11c8b34d7ef). Pour télécharger le fichier, faites un clic droit sur le lien de téléchargement et sélectionnez l'option *Enregistrer le lien sous...*.
 
 ## Étape 1 : Créer une structure pour nos fichiers
-La structuration des dossiers et fichiers prendra l'aspect suivant, avec un  dossier racine `tutoriel_fr` qui contiendra tous les sous-dossiers et fichiers que nous vous indiquerons ci-dessous. Vous pouvez télécharger le répertoire complet du dépôt [CETEIcean sur GitHub](https://github.com/TEIC/CETEIcean) et travailler dans le dossier `tutoriel_fr`, ou vous pouvez télécharger les fichiers individuellement, à condition qu'ils conservent la même structure que sur le dépôt git du projet, qui est la suivante :
+La structuration des dossiers et fichiers prendra l'aspect suivant, avec un dossier racine `tutoriel_fr` qui contiendra tous les sous-dossiers et fichiers que nous vous indiquerons ci-dessous. Vous pouvez télécharger le répertoire complet du dépôt [CETEIcean sur GitHub](https://github.com/TEIC/CETEIcean) et travailler dans le dossier `tutoriel_fr`, ou vous pouvez télécharger les fichiers individuellement, à condition qu'ils conservent la même structure que sur le dépôt git du projet, qui est la suivante :
 
 ```
   tutoriel_fr/

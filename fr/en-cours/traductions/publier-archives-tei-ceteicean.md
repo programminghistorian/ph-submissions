@@ -95,7 +95,6 @@ Ensuite, vous devez enregistrer ce fichier dans le répertoire racine (dans notr
   <link rel="stylesheet" href="css/tei.css">
 ```
 
-
 Cela connectera notre fichier CSS à notre page HTML, lui donnant accès aux directives de style qu'il contient (il n'y en a que quelques-unes, mais nous en ajouterons d'autres). Ensuite, nous inclurons la bibliothèque CETEIcean, en ajoutant la ligne suivante après le lien vers la feuille de style :
 
 ```html
@@ -231,7 +230,6 @@ Si à ce stade, nous prévisualisons notre HTML dans VS Code, nous obtiendrons l
 
 Avec cette prévisualisation, nous avons considérablement amélioré la présentation de notre document, mais les notes de l'édition rendent toujours la lecture du texte difficile. Pour résoudre ce problème, nous ajouterons un comportement supplémentaire à notre script. Cependant, pour atteindre cet objectif, nous devrons utiliser une séquence de commandes un peu plus longue et complexe que la précédente. Copiez et collez le texte suivant entre les lignes `"tei": {` et `"head": function(e) {` qui se trouvent dans le deuxième élément `<script>` de notre document `index.html`:
 
-
 ```js
     "note": function(e){
     if (!this.noteIndex){
@@ -269,7 +267,6 @@ Avec cette prévisualisation, nous avons considérablement amélioré la présen
     return contenu;
   },
     /* Enfin, le quatrième bloc crée une liste avec les notes et les lie avec les références dans le corps du texte */
-
 ```
 
 Pour suivre ce tutoriel, il n'est pas nécessaire de comprendre le fonctionnement de chaque ligne de ce comportement. Cependant, si vous observez le résultat de la prévisualisation, vous remarquerez qu'en l'incluant, les notes apparaissent à la fin du texte, liées par hyperlien avec leurs références respectives :

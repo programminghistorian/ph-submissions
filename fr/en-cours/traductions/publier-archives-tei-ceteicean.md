@@ -288,17 +288,17 @@ Dans ce tutoriel, nous n'avons pas épuisé toutes les possibilités pour la pr�
 
 ## Références bibliographiques
 
-Honoré de Balzac, « La Dernière Incarnation de Vautrin », dans *Splendeurs et misères des courtisanes*, La Presse (1847), édité par Tania Duclos, Maxime Perret, et Amélie Canu (ANR Phoebus e-Balzac, 2017). https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse.
+Balzac, Honoré. « La Dernière Incarnation de Vautrin », dans *Splendeurs et misères des courtisanes*, La Presse (1847), édité par Tania Duclos, Maxime Perret, et Amélie Canu (ANR Phoebus e-Balzac, 2017). https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse.
 
-Honoré de Balzac, « La Dernière Incarnation de Vautrin ». Édition critique. Avec ANR Phoebus e-Balzac. (eBalzac, 2017). https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse.
+Balzac, Honoré. « La Dernière Incarnation de Vautrin ». Édition critique. Avec ANR Phoebus e-Balzac. (eBalzac, 2017). https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse.
 
-Honoré de Balzac, « La Dernière Incarnation de Vautrin, paru en feuilleton dans La Presse du 13 avril au 17 mai 1847 », fichier XML 10.34847/nkl.4fb47i30. Avec Tania Duclos, Maxime Perret, et Amélie Canu (Nakala, 8 septembre 2021). XML. https://doi.org/10.34847/NKL.4FB47I30.
+Balzac, Honoré. « La Dernière Incarnation de Vautrin, paru en feuilleton dans La Presse du 13 avril au 17 mai 1847 », fichier XML 10.34847/nkl.4fb47i30. Avec Tania Duclos, Maxime Perret, et Amélie Canu (Nakala, 8 septembre 2021). XML. https://doi.org/10.34847/NKL.4FB47I30.
 
-Lauranne Bertrand, « Initiation XML-TEI », (URFIST, BORDEAUX, 12 juillet 2016). http://weburfist.univ-bordeaux.fr/wp-content/uploads/2016/12/20161209_BERTRAND-URFIST-TEI-1.pdf.
+Lauranne Bertrand. « Initiation XML-TEI », (URFIST, BORDEAUX, 12 juillet 2016). http://weburfist.univ-bordeaux.fr/wp-content/uploads/2016/12/20161209_BERTRAND-URFIST-TEI-1.pdf.
 
-C. M. Sperberg-McQueen et Lou Burnard, « La TEI Lite : Encoder Pour Échanger : Une Introduction à La TEI », traduit par Sophie David (consulté le 12 août 2025). https://www.tei-c.org/release/doc/tei-p5-exemplars/html/tei_lite_fr.doc.html.
+Sperberg-McQueen, C. M., et Lou Burnard. « La TEI Lite : Encoder Pour Échanger : Une Introduction à La TEI », traduit par Sophie David. Consulté le 12 août 2025. https://www.tei-c.org/release/doc/tei-p5-exemplars/html/tei_lite_fr.doc.html.
 
-Nicolás Vaughan, « Introduction au codage de textes en TEI (partie 1) », *Programming Historian en español* 5 (2021). https://doi.org/10.46430/phes0053.
+Vaughan, Nicolás. « Introduction au codage de textes en TEI (partie 1) », *Programming Historian en español* 5 (2021). https://doi.org/10.46430/phes0053.
 
 ## Outils techniques
 

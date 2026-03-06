@@ -122,7 +122,7 @@ Cela connectera notre fichier CSS à notre page HTML, lui donnant accès aux dir
 ```
 
 ## Étape 2 : Charger et prévisualiser le fichier TEI
-Nous sommes maintenant prêts à charger le fichier TEI. Pour cela, nous devons ajouter une séquence de commandes informatiques communément appelée par son nom anglais [« script »](https://fr.wikipedia.org/wiki/Langage_de_script), qui nous permettra de récupérer le document TEI de *La Dernière Incarnation de Vautrin* dans notre fichier HTML (celui que nous éditons en ce moment). Copiez et collez les lignes de code suivantes après le dernier élément que nous avons ajouté (`<script src="js/CETEI.js"></script>`) :
+Nous sommes maintenant prêts à charger le fichier TEI. Pour cela, nous devons ajouter une séquence de commandes informatiques communément appelée par son nom anglais [« script »](https://fr.wikipedia.org/wiki/Langage_de_script), qui nous permettra de récupérer le document TEI de *La Dernière Incarnation de Vautrin* dans notre fichier HTML (celui que nous sommes en train d'éditer). Copiez et collez les lignes de code suivantes après le dernier élément que nous avons ajouté (`<script src="js/CETEI.js"></script>`) :
 
 ```html
 <script>
@@ -144,7 +144,7 @@ Vous n'avez pas besoin d'être un expert en JavaScript pour utiliser CETEIcean, 
 
 {% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-02.png"  alt="Capture d'écran qui montre l'option à choisir dans le menu déroulant qui s'ouvre en faisant un clic droit sur le fichier HTML." caption="Figure 2. Menu des options pour prévisualiser les fichiers en HTML dans VS Code." %}
 
-{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-03.png"  alt="Capture d'écran qui montre comment trouver l'option pour changer les paramètres de sécurité de l'extension `HTML Preview` en cliquant sur le bouton de 'Plus d'actions...' situé à droite." caption="Figure 3. Bouton pour changer les paramètres de sécurité de l'extension `HTML Preview` pour permettre l'exécution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
+{% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-03.png"  alt="Capture d'écran qui montre comment trouver l'option pour changer les paramètres de sécurité de l'extension `HTML Preview` en cliquant sur le bouton 'Plus d'actions...' situé à droite." caption="Figure 3. Bouton pour changer les paramètres de sécurité de l'extension `HTML Preview` pour permettre l'exécution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
 
 {% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-04.png"  alt="Capture d'écran qui indique qu'il faut choisir l'option 'Disable' pour pouvoir prévisualiser les fichiers TEI avec CETEIcean." caption="Figure 4. Option à choisir pour activer l'exécution des scripts pour la prévisualisation des fichiers TEI avec CETEIcean" %}
 
@@ -222,9 +222,9 @@ En HTML, la convention est de représenter les différents niveaux d'entête ave
 
 Cela créera un objet Javascript et lui assignera la variable `comportements`, que nous lierons ensuite à l'objet `CETEI` que nous avons créé auparavant, en utilisant la méthode `addBehaviors` (qui est déjà incluse dans CETEIcean). À l'intérieur de cet objet, nous avons une section étiquetée comme « tei » (qui est le préfixe pour tous nos éléments personnalisés), et à l'intérieur de celle-ci, les comportements pour les éléments sont définis. Lorsque CETEIcean trouve une correspondance pour le nom d'un élément, comme « head » (notez que le nom de TEI est utilisé sans le préfixe), il applique les comportements correspondants.
 
-Ce nouveau comportement prend une fonction de JavaScript, de sorte que l'élément soit traité comme un paramètre (le `e`). Cela crée la variable `niveau`, qui contient le niveau d'imbrication de la `<tei-div>` parent du `<tei-head>`, crée ensuite un élément `<h[niveau]>` avec le niveau correspondant, et copie enfin le contenu de l'élément original dans le nouvel élément d'entête. CETEIcean affichera le contenu du nouvel élément d'entête, par exemple `<h2>`, au lieu de l'élément original `<tei-head>`. Notez que ce code inclut un bloc de conditions pour produire un élément d'entête `<h6>` si le niveau d'imbrication est supérieur à 6 afin d'éviter de produire un élément d'entête supérieur à la limite admise par HTML (par exemple, un élément `<h7>`). Notre document source n'a pas plus de deux niveaux d'imbrication, mais il serait utile pour l'utiliser sur d'autres sources.
+Ce nouveau comportement prend une fonction de JavaScript, de sorte que l'élément soit traité comme un paramètre (le `e`). Cela crée la variable `niveau`, qui contient le niveau d'imbrication de la `<tei-div>` parent du `<tei-head>`, crée ensuite un élément `<h[niveau]>` avec le niveau correspondant, et copie enfin le contenu de l'élément original dans le nouvel élément d'entête. CETEIcean affichera le contenu du nouvel élément d'entête, par exemple `<h2>`, au lieu de l'élément original `<tei-head>`. Notez que ce code inclut un bloc de conditions pour produire un élément d'entête `<h6>` si le niveau d'imbrication est supérieur à 6 afin d'éviter de produire un élément d'entête supérieur à la limite admise par HTML (par exemple, un élément `<h7>`). Notre document source n'a pas plus de deux niveaux d'imbrication, mais ce code peut être utile pour d'autres sources.
 
-Si à ce stade, nous prévisualisons notre HTML dans VS Code, nous obtiendrons le résultat suivant :
+Si à ce stade, nous prévisualisons notre HTML dans VS Code, nous obtenons le résultat suivant :
 
 {% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-06.png" alt="Capture d'écran qui montre le fichier HTML sur le côté gauche et la prévisualisation de notre fichier TEI où on peut voir les titres en gras et en plus grande taille selon le niveau du titre sur le côté droit." caption="Figure 6. Prévisualisation de notre fichier TEI avec style pour les titres." %}
 
@@ -294,7 +294,7 @@ Balzac, Honoré. « La Dernière Incarnation de Vautrin ». Édition critique.
 
 Balzac, Honoré. « La Dernière Incarnation de Vautrin, paru en feuilleton dans La Presse du 13 avril au 17 mai 1847 », fichier XML 10.34847/nkl.4fb47i30. Avec Tania Duclos, Maxime Perret, et Amélie Canu (Nakala, 8 septembre 2021). XML. https://doi.org/10.34847/NKL.4FB47I30.
 
-Lauranne Bertrand. « Initiation XML-TEI », (URFIST, BORDEAUX, 12 juillet 2016). http://weburfist.univ-bordeaux.fr/wp-content/uploads/2016/12/20161209_BERTRAND-URFIST-TEI-1.pdf.
+Bertrand, Lauranne. « Initiation XML-TEI », (URFIST, BORDEAUX, 12 juillet 2016). http://weburfist.univ-bordeaux.fr/wp-content/uploads/2016/12/20161209_BERTRAND-URFIST-TEI-1.pdf.
 
 Sperberg-McQueen, C. M., et Lou Burnard. « La TEI Lite : Encoder Pour Échanger : Une Introduction à La TEI », traduit par Sophie David. Consulté le 12 août 2025. https://www.tei-c.org/release/doc/tei-p5-exemplars/html/tei_lite_fr.doc.html.
 

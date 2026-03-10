@@ -290,8 +290,6 @@ Dans ce tutoriel, nous n'avons pas épuisé toutes les possibilités pour la pr�
 
 Balzac, Honoré. &laquo;&nbsp;La Dernière Incarnation de Vautrin&nbsp;&raquo;, dans *Splendeurs et misères des courtisanes*, La Presse (1847), édité par Tania Duclos, Maxime Perret, et Amélie Canu (ANR Phoebus e-Balzac, 2017). https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse.
 
-Balzac, Honoré. &laquo;&nbsp;La Dernière Incarnation de Vautrin&nbsp;&raquo;. Édition critique. Avec ANR Phoebus e-Balzac. (eBalzac, 2017). https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse.
-
 Balzac, Honoré. &laquo;&nbsp;La Dernière Incarnation de Vautrin, paru en feuilleton dans La Presse du 13 avril au 17 mai 1847&nbsp;&raquo;, fichier XML 10.34847/nkl.4fb47i30. Avec Tania Duclos, Maxime Perret, et Amélie Canu (Nakala, 8 septembre 2021). XML. https://doi.org/10.34847/NKL.4FB47I30.
 
 Bertrand, Lauranne. &laquo;&nbsp;Initiation XML-TEI&nbsp;&raquo;, (URFIST, BORDEAUX, 12 juillet 2016). http://weburfist.univ-bordeaux.fr/wp-content/uploads/2016/12/20161209_BERTRAND-URFIST-TEI-1.pdf.

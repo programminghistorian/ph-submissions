@@ -50,7 +50,7 @@ Vous devrez donc télécharger et installer [Visual Studio Code](https://code.vi
 
 {% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-01.png" alt="Capture d'écran de l'application VS Code qui dirige les lecteurs vers le marketplace d'extensions (le cinquième bouton du menu à gauche) et qui montre comment après une recherche pour 'HTML Preview' les lecteurs peuvent installer l'extension." caption="Figure 1. Processus d'installation de l'extension HTML Preview pour prévisualiser les fichiers en HTML." %}
 
-Nous utiliserons en tant que texte d'exemple *La Dernière Incarnation de Vautrin*, quatrième partie du roman *Splendeurs et misères des courtisanes*, par l'écrivain et essayiste français [Honoré de Balzac](https://fr.wikipedia.org/wiki/Honor%C3%A9_de_Balzac). Ce texte du XIXe siècle a paru en feuilleton dans *La Presse* du 13 avril au 17 mai 1847. Il s'agit de la conclusion du roman, qui explore les aspects souterrains, tels que le crime et la prostitution, de la société française du XIXe siècle. Vous pouvez trouver une édition numérique complète du texte réalisée par le projet *ANR Phœbus (« Projet d’hypertexte de l’œuvre de Balzac par l’utilisation de similarités »)* sur&nbsp;: [https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse](https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse).
+Nous utiliserons en tant que texte d'exemple *La Dernière Incarnation de Vautrin*, quatrième partie du roman *Splendeurs et misères des courtisanes*, par l'écrivain et essayiste français [Honoré de Balzac](https://fr.wikipedia.org/wiki/Honor%C3%A9_de_Balzac). Ce texte du XIXe siècle a paru en feuilleton dans *La Presse* du 13 avril au 17 mai 1847. Il s'agit de la conclusion du roman, qui explore les aspects souterrains, tels que le crime et la prostitution, de la société française du XIXe siècle. Vous pouvez trouver une édition numérique complète du texte réalisée par le projet *ANR Phœbus (&laquo;&nbsp;Projet d’hypertexte de l’œuvre de Balzac par l’utilisation de similarités&nbsp;&raquo;)* sur&nbsp;: [https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse](https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse).
 
 Nous commencerons avec un fichier simple (bien qu'un peu long) au format TEI P5, que nous voulons rendre visible dans un navigateur web&nbsp;: [`balzac-42-splendeurs-miseres-courtisanes-presse-derniere-incarnation-vautrin.xml`](https://api.nakala.fr/data/10.34847/nkl.4fb47i30/a29cf71aeb3f98543df574d5efddf11c8b34d7ef). Pour télécharger le fichier, faites un clic droit sur le lien de téléchargement et sélectionnez l'option *Enregistrer le lien sous...*.
 
@@ -122,7 +122,7 @@ Cela connectera notre fichier CSS à notre page HTML, lui donnant accès aux dir
 ```
 
 ## Étape 2&nbsp;: Charger et prévisualiser le fichier TEI
-Nous sommes maintenant prêts à charger le fichier TEI. Pour cela, nous devons ajouter une séquence de commandes informatiques communément appelée par son nom anglais [« script »](https://fr.wikipedia.org/wiki/Langage_de_script), qui nous permettra de récupérer le document TEI de *La Dernière Incarnation de Vautrin* dans notre fichier HTML (celui que nous sommes en train d'éditer). Copiez et collez les lignes de code suivantes après le dernier élément que nous avons ajouté (`<script src="js/CETEI.js"></script>`)&nbsp;:
+Nous sommes maintenant prêts à charger le fichier TEI. Pour cela, nous devons ajouter une séquence de commandes informatiques communément appelée par son nom anglais [&laquo;&nbsp;script&nbsp;&raquo;](https://fr.wikipedia.org/wiki/Langage_de_script), qui nous permettra de récupérer le document TEI de *La Dernière Incarnation de Vautrin* dans notre fichier HTML (celui que nous sommes en train d'éditer). Copiez et collez les lignes de code suivantes après le dernier élément que nous avons ajouté (`<script src="js/CETEI.js"></script>`)&nbsp;:
 
 ```html
 <script>
@@ -140,7 +140,7 @@ Vous n'avez pas besoin d'être un expert en JavaScript pour utiliser CETEIcean, 
 - Troisièmement, dans la quatrième ligne du code, la fonction `getElementsByTagName('body')` recherche tous les éléments `<body>` et les renvoie sous la forme d'une liste ordonnée (une liste dans laquelle on peut accéder aux membres qui la composent à travers leur numéro d'index)
 - Enfin, dans notre exemple, il n'y a qu'un seul élément `<body>`, nous obtiendrons donc une seule entrée dans notre liste, d'où le bout de code `('body')[0]`. Cet élément, qui est un élément HTML, reçoit comme enfant le contenu de notre document TEI fraichement converti
 
-À ce stade, vous devriez pouvoir obtenir une prévisualisation du fichier HTML. Nous allons le prévisualiser avec l'extension que nous avons installée au début de ce tutoriel. Pour cela, faites un clic droit sur le fichier HTML et choisissez dans le menu déroulant l'option « *Open Preview* »&nbsp;:
+À ce stade, vous devriez pouvoir obtenir une prévisualisation du fichier HTML. Nous allons le prévisualiser avec l'extension que nous avons installée au début de ce tutoriel. Pour cela, faites un clic droit sur le fichier HTML et choisissez dans le menu déroulant l'option &laquo;&nbsp;*Open Preview*&nbsp;&raquo;&nbsp;:
 
 {% include figure.html filename="fr-tr-publier-archives-tei-ceteicean-02.png"  alt="Capture d'écran qui montre l'option à choisir dans le menu déroulant qui s'ouvre en faisant un clic droit sur le fichier HTML." caption="Figure 2. Menu des options pour prévisualiser les fichiers en HTML dans VS Code." %}
 
@@ -220,7 +220,7 @@ En HTML, la convention est de représenter les différents niveaux d'entête ave
   c.addBehaviors(comportements);
 ```
 
-Cela créera un objet Javascript et lui assignera la variable `comportements`, que nous lierons ensuite à l'objet `CETEI` que nous avons créé auparavant, en utilisant la méthode `addBehaviors` (qui est déjà incluse dans CETEIcean). À l'intérieur de cet objet, nous avons une section étiquetée comme « tei » (qui est le préfixe pour tous nos éléments personnalisés), et à l'intérieur de celle-ci, les comportements pour les éléments sont définis. Lorsque CETEIcean trouve une correspondance pour le nom d'un élément, comme « head » (notez que le nom de TEI est utilisé sans le préfixe), il applique les comportements correspondants.
+Cela créera un objet Javascript et lui assignera la variable `comportements`, que nous lierons ensuite à l'objet `CETEI` que nous avons créé auparavant, en utilisant la méthode `addBehaviors` (qui est déjà incluse dans CETEIcean). À l'intérieur de cet objet, nous avons une section étiquetée comme &laquo;&nbsp;tei&nbsp;&raquo; (qui est le préfixe pour tous nos éléments personnalisés), et à l'intérieur de celle-ci, les comportements pour les éléments sont définis. Lorsque CETEIcean trouve une correspondance pour le nom d'un élément, comme &laquo;&nbsp;head&nbsp;&raquo; (notez que le nom de TEI est utilisé sans le préfixe), il applique les comportements correspondants.
 
 Ce nouveau comportement prend une fonction de JavaScript, de sorte que l'élément soit traité comme un paramètre (le `e`). Cela crée la variable `niveau`, qui contient le niveau d'imbrication de la `<tei-div>` parent du `<tei-head>`, crée ensuite un élément `<h[niveau]>` avec le niveau correspondant, et copie enfin le contenu de l'élément original dans le nouvel élément d'entête. CETEIcean affichera le contenu du nouvel élément d'entête, par exemple `<h2>`, au lieu de l'élément original `<tei-head>`. Notez que ce code inclut un bloc de conditions pour produire un élément d'entête `<h6>` si le niveau d'imbrication est supérieur à 6 afin d'éviter de produire un élément d'entête supérieur à la limite admise par HTML (par exemple, un élément `<h7>`). Notre document source n'a pas plus de deux niveaux d'imbrication, mais ce code peut être utile pour d'autres sources.
 
@@ -288,17 +288,17 @@ Dans ce tutoriel, nous n'avons pas épuisé toutes les possibilités pour la pr�
 
 ## Références bibliographiques
 
-Balzac, Honoré. « La Dernière Incarnation de Vautrin », dans *Splendeurs et misères des courtisanes*, La Presse (1847), édité par Tania Duclos, Maxime Perret, et Amélie Canu (ANR Phoebus e-Balzac, 2017). https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse.
+Balzac, Honoré. &laquo;&nbsp;La Dernière Incarnation de Vautrin&nbsp;&raquo;, dans *Splendeurs et misères des courtisanes*, La Presse (1847), édité par Tania Duclos, Maxime Perret, et Amélie Canu (ANR Phoebus e-Balzac, 2017). https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse.
 
-Balzac, Honoré. « La Dernière Incarnation de Vautrin ». Édition critique. Avec ANR Phoebus e-Balzac. (eBalzac, 2017). https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse.
+Balzac, Honoré. &laquo;&nbsp;La Dernière Incarnation de Vautrin&nbsp;&raquo;. Édition critique. Avec ANR Phoebus e-Balzac. (eBalzac, 2017). https://www.ebalzac.com/edition/42-splendeurs-miseres-courtisanes/presse.
 
-Balzac, Honoré. « La Dernière Incarnation de Vautrin, paru en feuilleton dans La Presse du 13 avril au 17 mai 1847 », fichier XML 10.34847/nkl.4fb47i30. Avec Tania Duclos, Maxime Perret, et Amélie Canu (Nakala, 8 septembre 2021). XML. https://doi.org/10.34847/NKL.4FB47I30.
+Balzac, Honoré. &laquo;&nbsp;La Dernière Incarnation de Vautrin, paru en feuilleton dans La Presse du 13 avril au 17 mai 1847&nbsp;&raquo;, fichier XML 10.34847/nkl.4fb47i30. Avec Tania Duclos, Maxime Perret, et Amélie Canu (Nakala, 8 septembre 2021). XML. https://doi.org/10.34847/NKL.4FB47I30.
 
-Bertrand, Lauranne. « Initiation XML-TEI », (URFIST, BORDEAUX, 12 juillet 2016). http://weburfist.univ-bordeaux.fr/wp-content/uploads/2016/12/20161209_BERTRAND-URFIST-TEI-1.pdf.
+Bertrand, Lauranne. &laquo;&nbsp;Initiation XML-TEI&nbsp;&raquo;, (URFIST, BORDEAUX, 12 juillet 2016). http://weburfist.univ-bordeaux.fr/wp-content/uploads/2016/12/20161209_BERTRAND-URFIST-TEI-1.pdf.
 
-Sperberg-McQueen, C. M., et Lou Burnard. « La TEI Lite&nbsp;: Encoder Pour Échanger&nbsp;: Une Introduction à La TEI », traduit par Sophie David. Consulté le 12 août 2025. https://www.tei-c.org/release/doc/tei-p5-exemplars/html/tei_lite_fr.doc.html.
+Sperberg-McQueen, C. M., et Lou Burnard. &laquo;&nbsp;La TEI Lite&nbsp;: Encoder Pour Échanger&nbsp;: Une Introduction à La TEI&nbsp;&raquo;, traduit par Sophie David. Consulté le 12 août 2025. https://www.tei-c.org/release/doc/tei-p5-exemplars/html/tei_lite_fr.doc.html.
 
-Vaughan, Nicolás. « Introduction au codage de textes en TEI (partie 1) », *Programming Historian en español* 5 (2021). https://doi.org/10.46430/phes0053.
+Vaughan, Nicolás. &laquo;&nbsp;Introduction au codage de textes en TEI (partie 1)&nbsp;&raquo;, *Programming Historian en español* 5 (2021). https://doi.org/10.46430/phes0053.
 
 ## Outils techniques
 

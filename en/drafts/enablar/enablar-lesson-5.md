@@ -5,7 +5,7 @@ layout: lesson
 collection: lessons
 date: YYYY-MM-DD
 authors:
-- Forename Surname
+- Péter Király
 - Forename Surname
 reviewers:
 - Forename Surname

@@ -1,24 +1,50 @@
 ---
+---
 title: "Terms and Conditions: Interpreting AI Tool Licences in Research Contexts through Natural Language Processing (spaCy)"
 
 slug: enablar-lesson-4
 layout: lesson
 collection: lessons
 date: 2026-03-11
+
 authors:
-- Alex Fenlon
-- Natalia Estrada
-- Joseph Nockels
+  - Alex Fenlon
+  - Natalia Estrada
+  - Joseph Nockels
+
 reviewers:
-- Forename Surname
-- Forename Surname
+  - Forename Surname
+  - Forename Surname
+
 editors:
-- Forename Surname
+  - Forename Surname
+
 review-ticket:
-difficulty: intermediate 
+
+difficulty: intermediate
 activity:
-topics: copyright and licensing, AI guidance, terms and conditions, Natural Language Processing (NLP)
-abstract: With advances in AI capability, researchers are increasingly exploring how such tools might be leveraged for their own work. This has positioned Higher Educational libraries, specifically Copyright and Licensing Teams, as key advice givers, suggesting responsible, appropriate, ethical and transparent tools for staff and students to use, and making clear the implication of AI on their research activities. This ENABLAR lesson, therefore, takes such advice - from local experts - to inform a Natural Language Processing workflow to locate ‘red flag’ clauses in AI tool licence agreements. This is not meant as an alternative to seeking library expertise, however it aims to build confidence in interpreting complex legalistic documentation and appropriately using AI methods for research.
+
+topics:
+  - copyright and licensing
+  - AI guidance
+  - terms and conditions
+  - Natural Language Processing (NLP)
+
+abstract: >
+  With advances in AI capability, researchers are increasingly exploring how such
+  tools might be leveraged in their work. This has positioned Higher Education
+  libraries—specifically Copyright and Licensing Teams—as key advisers. They
+  provide guidance on responsible, appropriate, ethical, and transparent tools
+  for staff and students, while clarifying the implications of AI for research
+  activities.
+
+  This ENABLAR lesson therefore draws on such advice from local experts to
+  inform a Natural Language Processing workflow that identifies potential
+  “red flag” clauses in AI tool licence agreements. It is not intended as a
+  substitute for consulting library expertise; rather, it aims to build
+  confidence in interpreting complex legal documentation and applying AI
+  methods appropriately in research contexts.
+
 avatar_alt:
 doi: XX.XXXXX/phen0000
 ---

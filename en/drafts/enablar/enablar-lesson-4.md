@@ -93,11 +93,11 @@ Provided that the spaCy NLP library has been installed within Python, you can co
 
 Although our lesson makes use of spaCy’s main English language pipeline (en_core_web), the NLP library supports 75+ languages and has equivalent pipelines for 25 languages (https://spacy.io/usage/facts-figures). These NLP pipelines range from Greek to Korean, Norwegian Bokmål to Catalan.
 
-###### Costs
+##### Costs
 
 This lesson has no associated cost, or tiered / time-limited access. Therefore, we do not require you to supply any personal information to make use of this lesson. 
 
-###### System requirements
+##### System requirements
 
 Our NLP workflow, using pre-built models, was constructed and tested using a personal Mac device with 8MB RAM. As such, any device should be able to enact this lesson’s code, although slight syntax adaptations may be needed depending on your Operating System. 
 
@@ -109,7 +109,7 @@ Apart from spaCy and Jupyter Notebooks (although this lesson can be adapted to w
 
 We also evaluate, clean and structure our exported ‘red flag’ list within Microsoft Excel.
 
-###### Knowledge and applied experience
+##### Knowledge and applied experience
 
 No familiarity with spaCy is needed, as the NLP library will be deployed within Python as any other package. A knowledge of basic Python functions, for example importing libraries and establishing functions, is helpful, however we offer interpretable commenting throughout. As suggested, expertise on spaCy can also be gained through Programming Historian and Kane’s (2023) lesson on corpus linguistic annotation and interpretation. spaCy also includes an intuitive installation and deployment walk-through. For a general introduction to the method, see - Khan (2022).
 

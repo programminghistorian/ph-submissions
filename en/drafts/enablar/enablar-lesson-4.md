@@ -1,5 +1,4 @@
 ---
----
 title: "Terms and Conditions: Interpreting AI Tool Licences in Research Contexts through Natural Language Processing (spaCy)"
 
 slug: enablar-lesson-4

@@ -5,7 +5,7 @@ layout: lesson
 collection: lessons
 date: YYYY-MM-DD
 authors:
-- Forename Surname
+- Kirsty Edginton
 - Forename Surname
 reviewers:
 - Forename Surname
@@ -24,11 +24,11 @@ doi: XX.XXXXX/phen0000
 {% include toc.html %}
 
 ## Preliminaries
-#### Method or tool
-#### Technical context
-#### Social context
-#### Prerequisites
-#### Difficulty
+### Method or tool
+### Technical context
+### Social context
+### Prerequisites
+### Difficulty
 
 ## Use Case
 ### Dataset

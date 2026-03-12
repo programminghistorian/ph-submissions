@@ -926,7 +926,7 @@ let testposition = new THREE.Vector3(0,0,0); //needs to be something first
 truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z)
 let aposition = selectedObject.position; //get jar position
 ```
-#### Determining Distances Between Models: Testing if the Jar has been Place 'on' its Site
+#### Determining Distances Between Models: Testing if the Jar has Been Placed 'on' its Correct Site
 
 In coding, [conditional statements](https://en.wikipedia.org/wiki/Conditional_(computer_programming)) such as the 'if' statement are commonly used to specify that lines of code will only run if a particular criteria is fulfilled. An if statement was used previously when testing if anything is actually being selected by the mouse. Now use an if statement to test if the distance between the jar and its matching site is within the set allowed distance. Call the ```distanceTo``` method on the ```aposition``` vector to determine the distance between the two vectors, and test if it is smaller than our allowed distance (0.25 * ratio). 
 

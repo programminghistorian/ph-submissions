@@ -5,8 +5,8 @@ layout: lesson
 collection: lessons
 date: YYYY-MM-DD
 authors:
+- Doreen Cheen
 - Péter Király
-- Forename Surname
 reviewers:
 - Forename Surname
 - Forename Surname
@@ -43,6 +43,25 @@ doi: XX.XXXXX/phen0000
 ### Aims
 ### Inventory
 ### Workflow
+#### Data acquisition
+#### Preprocessing
+File formats, data structures, conversion, and data loss control.
+
+#### Data harmonisation
+Normalization and data enrichment. The reproducible conversion into a data set suitable for quantitative humanities analysis.
+
+#### Data analysis and visualization
+
+##### Place and personal names
+##### Dates
+##### Subjects
+
+##### How to work across two datasets computationally
+
+#### Dissemination of results
+
+Publication of software and research data for reuse.
+
 ### Summary
 
 

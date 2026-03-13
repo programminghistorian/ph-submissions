@@ -39,7 +39,7 @@ The prefix 'meta' is derived from the Greek language, in which it means 'after' 
 
 In an increasingly digital and interconnected world, interest in open data has grown significantly, as a response to the need of promoting transparency and data reuse across various disciplines. Metadata availability has been growing, while taking into consideration the necessary technical and legal frameworks to make it free, reusable and accessible for anyone, at any time and in any place.[^5] The adoption of open standards for metadata not only facilitates the understanding and exchange of data but also drives innovation by promoting more effective communication. In this context, open data has become an essential component for building sustainable and accessible data infrastructures, promoting a collaborative approach to information management in the digital era.
 
-In the context of open data philosophy, Linked Open Data (LOD) has emerged as a concept for presenting and publishing data on the web, aiming at facilitating data use and reuse through automated processes. LOD is based on the principle of establishing meaningful linking between data with similar attributes, from various sources of the web. It implies the creation of an environment with global interoperability.[^6] Therefore, this term refers to a set of best practices for publishing and connecting structured data on the web. Information in Wikidata is stored in semantic triples [^7] following the Resource Description Framework (RDF), which are conventionally known as subject, predicate, and object. If you still have doubts or want to deepen your knowledge on this topic, you can consult more details in [Jonathan Blaney's lesson](https://programminghistorian.org/en/lessons/intro-to-linked-data), which offers a brief and concise introduction to linked open data.
+In the context of open data philosophy, Linked Open Data (LOD) has emerged as a concept for presenting and publishing data on the web, aiming at facilitating data use and reuse through automated processes. LOD is based on the principle of establishing meaningful linking between data with similar attributes, from various sources of the web. It implies the creation of an environment with global interoperability.[^6] Therefore, this term refers to a set of best practices for publishing and connecting structured data on the web. Information in Wikidata is stored in semantic triples[^7] following the Resource Description Framework (RDF), which are conventionally known as subject, predicate, and object. If you still have doubts or want to deepen your knowledge on this topic, you can consult more details in [Jonathan Blaney's lesson](https://programminghistorian.org/en/lessons/intro-to-linked-data), which offers a brief and concise introduction to linked open data.
 
 This lesson shows you how to create, edit, and publish LOD in a simple and free way using Wikidata. You will learn about the structure of Wikidata and the procedures for creating, editing, and publishing LOD related to entities in academia such as scientific journals and researchers. The lesson is primarily aimed at librarians, archivists, and other information professionals working in the academic context who wish to increase the visibility of the knowledge produced at their institution.
 
@@ -81,7 +81,7 @@ In 2019, Wikidata had approximately 55 million created items. Four years later, 
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-02.png" alt="Line graph showing the increase in the creation of Wikidata itemss, from 0 in 2013 to around 130 million in 2025." caption="Figure 2. Item creation over time in Wikidata." %}
 
-Wikidata offers a wide variety of tools to edit, query, and visualize its data. This [semantic web](https://en.wikipedia.org/wiki/Semantic_Web) model helps advance social justice, as it enables small communities that are often outside the mainstream of science to access, apply, and generate open knowledge and consequently have a broader impact. Obregón Sierra[^8], for example, used Wikidata to include information about libraries in Spain so that they could be accessed by anyone, anywhere in the world. Initially, Wikidata contained only 303 Spanish library entries. After importing the Spanish government's library dataset, the author created 7,861 new entries and enhanced 206 existing ones. This addition elevated Spain from 13th place (2,424 GLAM items) to second place in global GLAM rankings.[^8]
+Wikidata offers a wide variety of tools to edit, query, and visualize its data. This [semantic web](https://en.wikipedia.org/wiki/Semantic_Web) model helps advance social justice, as it enables small communities that are often outside the mainstream of science to access, apply, and generate open knowledge and consequently have a broader impact. Obregón Sierra, for example, used Wikidata to include information about libraries in Spain so that they could be accessed by anyone, anywhere in the world. Initially, Wikidata contained only 303 Spanish library entries. After importing the Spanish government's library dataset, the author created 7,861 new entries and enhanced 206 existing ones. This addition elevated Spain from 13th place (2,424 GLAM items) in 2020[^8], to second place in global GLAM rankings in 2023.[^9][^10]
 
 Since Wikidata can connect local metadata with global data, many institutions with digital collections have begun working with it to increase their global reach. Wikidata identifiers have enabled libraries to enrich their own records. The [Library of Congress’s Program for Cooperative Cataloging pilot project](https://www.wikidata.org/wiki/Wikidata:WikiProject_PCC_Wikidata_Pilot) demonstrates the significant potential of integrating Wikidata into library workflows.
 
@@ -215,7 +215,7 @@ Figure 12 shows an example of how the property [“indexed in bibliographic data
 
 ## Describing people's data in Wikidata
 
-Creating linked open data about individuals is an important step in describing entities within libraries, academia and research, as it enables authorship to be linked to the work (paper, book, etc.).[^9] In this way, Wikidata can help increase the visibility of an institution’s scholarly output.
+Creating linked open data about individuals is an important step in describing entities within libraries, academia and research, as it enables authorship to be linked to the work (paper, book, etc.).[^11] In this way, Wikidata can help increase the visibility of an institution’s scholarly output.
 
 Using Wikidata to create person records also supports identity management in libraries, archives, and museums. Identity management depends on the use and linking of unique identifiers from different sources. Including multiple identifiers for the same person in Wikidata facilitates exploration, discovery, and access to information beyond traditional metadata silos, such as library catalogs.
 
@@ -281,7 +281,7 @@ In this lesson, we have learned the fundamentals of metadata and linked open dat
 
 If you’re interested in learning more about linked open data and Wikidata, we recommend the [Programming Historian lesson by Gustavo Candela et al. (2021)](https://programminghistorian.org/es/lecciones/reutilizando-colecciones-digitales-glam-labs), which demonstrates how to reuse digital collections published by cultural heritage institutions.
 
-## References
+## Endnotes
 
 [^1]: Hyvönen, E. (2020, October). "Sampo'' Model and Semantic Portals for Digital Humanities on the Semantic Web. In Digital Humanities in the Nordic Countries (pp. 373-378). CEUR.
 
@@ -297,7 +297,10 @@ If you’re interested in learning more about linked open data and Wikidata, we 
 
 [^7]: Semantic triple <https://en.wikipedia.org/wiki/Semantic_triple>.
 
-[^8]: Obregón Sierra, Ángel. (2022). Inserción de metadatos de las bibliotecas españolas en Wikidata: un modelo de datos abiertos enlazados. Revista Española De Documentación Científica, 45(3), a330. <https://doi.org/10.3989/redc.2022.3.1870>.
+[^8]: Data from Wikimedia page [FindingGLAMs/GLAM statistics](https://meta.wikimedia.org/w/index.php?title=FindingGLAMs/GLAM_statistics&oldid=19801601), archived in February 2020.
 
-[^9]: van der Werf, Titia. (2022). Author identity management in the book chain. Hanging Together: the OCLC Research Blog. Retrieved May 15, 2024, from <https://hangingtogether.org/author-identity-management-in-the-book-chain/>.
+[^9]: Data from Wikimedia page [FindingGLAMs/GLAM statistics](https://meta.wikimedia.org/w/index.php?title=FindingGLAMs/GLAM_statistics&direction=next&oldid=19801601), archived in February 2023. Current rankings can be found on https://meta.wikimedia.org/wiki/FindingGLAMs/GLAM_statistics.
 
+[^10]: Obregón Sierra, Ángel. (2022). Inserción de metadatos de las bibliotecas españolas en Wikidata: un modelo de datos abiertos enlazados. Revista Española De Documentación Científica, 45(3), a330. <https://doi.org/10.3989/redc.2022.3.1870>.
+
+[^11]: van der Werf, Titia. (2022). Author identity management in the book chain. Hanging Together: the OCLC Research Blog. Retrieved May 15, 2024, from <https://hangingtogether.org/author-identity-management-in-the-book-chain/>.

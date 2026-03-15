@@ -35,7 +35,7 @@ doi: XX.XXXXX/phen0000
 
 Une grande partie des ressources destinée à l’apprentissage de méthodes informatiques d’analyse de texte se concentre sur des textes et corpus de langue anglaise et omettent souvent d’inclure les explications nécessaires pour travailler avec des sources non anglophones. Pour remédier à ce problème, cette leçon propose une introduction à l’analyse de texte non anglophone et multilingue (c'est-à-dire écrit en plus d’une langue) via Python. En ayant recours à un texte multilingue composé en russe et en français, cette leçon montrera comment utiliser des méthodes informatiques pour accomplir trois tâches de prétraitement fondamentales : la tokénisation, l’étiquetage morpho-syntaxique, et la lemmatisation. Ensuite, la leçon vous apprendra à automatiquement détecter les langues présentes dans un texte prétraité.
 
-Afin d’accomplir ces trois tâches de prétraitement essentielles, cette leçon utilisera trois packages Python régulièrement utilisés pour le traitement automatique de langage naturel, aussi dit TALN (en anglais, Natural Language Processing ou NLP); le Natural Language Toolkit (NLTK), spaCy, et Stanza. Nous commencerons par introduire ces packages avant de passer en revue et comparer leurs fonctionnalités afin que vous puissiez comprendre comment ils fonctionnent et discerner quel outil est le bon pour vos usages et styles de programmation personnels.
+Afin d’accomplir ces trois tâches de prétraitement essentielles, cette leçon utilisera trois packages Python régulièrement utilisés pour le traitement automatique de langage naturel, aussi dit TALN (en anglais, Natural Language Processing ou NLP); Natural Language Toolkit (NLTK), spaCy, et Stanza. Nous commencerons par introduire ces packages avant de passer en revue et comparer leurs fonctionnalités afin que vous puissiez comprendre comment ils fonctionnent et discerner quel outil est le bon pour vos usages et styles de programmation personnels.
 
 ## Préparation
 
@@ -75,7 +75,7 @@ Dans cette leçon, nous commencerons par tokéniser notre texte. Ceci nous perme
 
 **L’étiquetage morpho-syntaxique**
 
-L’étiquetage morpho-syntaxique est un procédé par lequel chaque mot dans un texte est étiqueté avec sa valeur morpho-syntaxique (tel que « nom propre », « verbe », « adjectif », et cetera). L’étiquetage morpho-syntaxique peut suivre des algorithmes à base de règles prédéfinies, utilisant des définitions fixes pour estimer le label à correctement attacher à un mot, ou bien suivre une approche [stochastique](https://perma.cc/XU5R-KWMD) (probabiliste), grâce à laquelle l’étiqueteur calcule la probabilité qu’une combinaison d’étiquettes se produise. La phrase utilisée comme exemple de tokénisation plus haut pourrait ainsi ressembler à ceci une fois étiqueté par le package NLTK : (‘And’, ‘CC’), (‘now’, ‘RB’), (‘for’, ‘IN’), (‘something’, ‘NN’), (‘completely’, ‘RB’), (‘different’, ‘JJ’) (à noter que ces étiquettes représentent des étiquettes anglophones). La phrase est divisée en liste de mots, et chaque mot est mis dans un [tuple](https://perma.cc/N8UU-UZUM) avec son étiquette morpho-syntaxique.
+L’étiquetage morpho-syntaxique est un procédé par lequel chaque mot dans un texte est étiqueté avec sa valeur morpho-syntaxique (tel que « nom propre », « verbe », « adjectif », et cetera). L’étiquetage morpho-syntaxique peut suivre des algorithmes à base de règles prédéfinies, utilisant des définitions fixes pour estimer le label à correctement attacher à un mot, ou bien suivre une approche [stochastique](https://perma.cc/XU5R-KWMD) (probabiliste), grâce à laquelle l’étiqueteur calcule la probabilité qu’une combinaison d’étiquettes se produise. La phrase utilisée comme exemple de tokénisation plus haut pourrait ainsi ressembler à ceci une fois étiqueté par NLTK : (‘And’, ‘CC’), (‘now’, ‘RB’), (‘for’, ‘IN’), (‘something’, ‘NN’), (‘completely’, ‘RB’), (‘different’, ‘JJ’) (à noter que ces étiquettes représentent des étiquettes anglophones). La phrase est divisée en liste de mots, et chaque mot est mis dans un [tuple](https://perma.cc/N8UU-UZUM) avec son étiquette morpho-syntaxique.
 
 {% include figure.html filename="en-or-analyzing-multilingual-text-nltk-spacy-stanza-01.png" alt="Figure 1: capture d'écran de l'étiquetage morpho-syntaxique, chapitre 5 du NLTK Book." caption="Figure 1: capture d'écran de l'étiquetage morpho-syntaxique, chapitre 5 du NLTK Book." %}
 
@@ -100,17 +100,17 @@ Les bibliothèques Python utilisés dans cette leçon (NLTK, spaCy, et Stanza) o
 
 ### Le Natural Language Toolkit (NLTK)
 
-Le [NLTK](https://www.nltk.org/index.html) est une suite de bibliothèques pour construire des scripts Python pour travailler avec des données linguistiques. Ayant été rendu public en 2001, le NLTK possède une excellente documentation et une communauté d’utilisatrices·eurs actifs·ves et engagé·es, ce qui en fait un outil excellent pour les débutant·es du traitement automatique de langage naturel. Les utilisatrices·eurs plus avancé·es trouverons également sa grande variété de bibliothèques et corpus utile, et sa structure rend le NLTK facile à intégrer dans des pipelines et tâches de travail.
+[NLTK](https://www.nltk.org/index.html) est une suite de bibliothèques pour construire des scripts Python pour travailler avec des données linguistiques. Ayant été rendu public en 2001, NLTK possède une excellente documentation et une communauté d’utilisatrices·eurs actifs·ves et engagé·es, ce qui en fait un outil excellent pour les débutant·es du traitement automatique de langage naturel. Les utilisatrices·eurs plus avancé·es trouverons également sa grande variété de bibliothèques et corpus utile, et sa structure rend NLTK facile à intégrer dans des pipelines et tâches de travail.
 
-Le NLTK supporte un nombre variable de langues et tâches : il contient des listes de mots vides pour 23 langues mais ne permet la tokénisation de mots qu'en 18 langues. Les « mots vides » sont des mots qui sont retirés du texte avant de le traiter, généralement parce qu’ils sont considérés comme sans importance pour une tâche particulière (par exemple le mot "le" peut être retiré pour se concentrer sur le restant du vocabulaire présent dans le texte).
+NLTK supporte un nombre variable de langues et tâches : il contient des listes de mots vides pour 23 langues mais ne permet la tokénisation de mots qu'en 18 langues. Les « mots vides » sont des mots qui sont retirés du texte avant de le traiter, généralement parce qu’ils sont considérés comme sans importance pour une tâche particulière (par exemple le mot "le" peut être retiré pour se concentrer sur le restant du vocabulaire présent dans le texte).
 
 Pour plus d’informations, le [NLTK Book](https://www.nltk.org/book/) est une excellente référence, tout comme la documentation officielle du package indiquée plus haut. Malheureusement, ce livre ainsi que la documentation ne sont disponibles qu’en anglais.
 
 ### spaCy
 
-[spaCy](https://perma.cc/HXY2-6R3Z) soutient une plus grande variété de langues que le NLTK grâce à des modèles plus ou moins complexes entraînés au préalable. En règle générale, spaCy est un outil plus autonome que le NLTK. Alors que le NLTK doit par exemple se contenter de bibliothèques de visualisation séparées telle que [matplotlib](https://matplotlib.org/), spaCy dispose de ses propres outils de visualisation qui peuvent être utilisés en même temps que ses outils d’analyse pour visualiser vos résultats, tels que [displaCy](https://demos.explosion.ai/displacy).
+[spaCy](https://perma.cc/HXY2-6R3Z) soutient une plus grande variété de langues que NLTK grâce à des modèles plus ou moins complexes entraînés au préalable. En règle générale, spaCy est un outil plus autonome que NLTK. Alors que NLTK doit par exemple se contenter de bibliothèques de visualisation séparées telle que [matplotlib](https://matplotlib.org/), spaCy dispose de ses propres outils de visualisation qui peuvent être utilisés en même temps que ses outils d’analyse pour visualiser vos résultats, tels que [displaCy](https://demos.explosion.ai/displacy).
 
-spaCy est connu pour sa vitesse et son efficacité, et est souvent plus rapide que le NLTK et Stanza. En outre, si vous voulez gagner du temps sur la vitesse de traitement, vous pouvez utiliser des modèles plus petits et moins précis pour accomplir des tâches comme l’étiquetage morpho-syntaxique sur du texte simple plutôt que d’utiliser un modèle plus complexe qui pourrait produire des résultats plus précis mais serait plus long à télécharger et à déployer.
+spaCy est connu pour sa vitesse et son efficacité, et est souvent plus rapide que NLTK et Stanza. En outre, si vous voulez gagner du temps sur la vitesse de traitement, vous pouvez utiliser des modèles plus petits et moins précis pour accomplir des tâches comme l’étiquetage morpho-syntaxique sur du texte simple plutôt que d’utiliser un modèle plus complexe qui pourrait produire des résultats plus précis mais serait plus long à télécharger et à déployer.
 
 La documentation de spaCy et uniquement disponible en anglais, mais le package contient des pipelines pour 25 langues différentes. Plus d’une vingtaine d’autre langues sont aussi prises en charge, mais ne disposent pas encore de pipelines (ce qui signifie que seulement une partie des fonctionnalités, tels que les listes de mots vides, sont disponibles pour ces langues). Pour plus d’informations quant aux langues prises en charge, veuillez consulter [leur documentation](https://perma.cc/A239-R44S).
 
@@ -118,7 +118,7 @@ La documentation de spaCy et uniquement disponible en anglais, mais le package c
 
 Stanza a été spécifiquement conçu pour le multilinguisme, ce qui rend le traitement automatique de langage naturel en différentes langues très intuitif et naturel avec la syntaxe de cette bibliothèque. Lancer un pipeline sur du texte vous permet d’accéder à ses différents composants tels que par exemple l’étiquetage morpho syntaxique et les lemmes avec très peu de code.
 
-Bien que souvent plus lent que le NLTK et spaCy, [Stanza](https://perma.cc/PGU6-EZ27) contient des modèles de langage qui ne sont pas disponibles à travers les autres bibliothèques. Ce package contient des modèles neuraux pré-entraînés pour plus de [70 langues](https://stanfordTALN.github.io/stanza/models.html#human-languages-supported-by-stanza). Une liste exhaustive de ses modèles est disponible sur le [GitHub de StanfordTALN](https://perma.cc/RZ38-AACK), et plus d’informations quant à ses pipeline sont disponibles [ici](https://stanfordTALN.github.io/stanza/neural_pipeline.html). Les pipelines de Stanza sont construites avec des composants de réseaux de neurones artificiels entraînés sur des corpus plurilingues, ce qui signifie qu’elles utilisent des algorithmes d emachine-learning entraînées sur du texte annoté plutôt que des approches de traitement automatique de langage naturel à base de paramètres (comme comparer les mots d’un texte à un dictionnaire défini au préalable). Par exemple, si l’on entreprend de l’étiquetage morpho-syntaxique sur un texte, les algorithmes de Stanza générerons leurs propres étiquettes basées sur des prédictions entraînées sur un large corpus de texte étiqueté et prenant en compte le contexte de chaque mot (c’est-à-dire sa position relative aux autres mots de la phrase). En revanche, un algorithme à base de paramètres chercherait chaque terme dans un dictionnaire prédéfini et identifierait son étiquette en fonction des résultats sans prendre en compte le contexte dans lequel chaque mot apparaît.
+Bien que souvent plus lent que NLTK et spaCy, [Stanza](https://perma.cc/PGU6-EZ27) contient des modèles de langage qui ne sont pas disponibles à travers les autres bibliothèques. Ce package contient des modèles neuraux pré-entraînés pour plus de [70 langues](https://stanfordTALN.github.io/stanza/models.html#human-languages-supported-by-stanza). Une liste exhaustive de ses modèles est disponible sur le [GitHub de StanfordTALN](https://perma.cc/RZ38-AACK), et plus d’informations quant à ses pipeline sont disponibles [ici](https://stanfordTALN.github.io/stanza/neural_pipeline.html). Les pipelines de Stanza sont construites avec des composants de réseaux de neurones artificiels entraînés sur des corpus plurilingues, ce qui signifie qu’elles utilisent des algorithmes d emachine-learning entraînées sur du texte annoté plutôt que des approches de traitement automatique de langage naturel à base de paramètres (comme comparer les mots d’un texte à un dictionnaire défini au préalable). Par exemple, si l’on entreprend de l’étiquetage morpho-syntaxique sur un texte, les algorithmes de Stanza générerons leurs propres étiquettes basées sur des prédictions entraînées sur un large corpus de texte étiqueté et prenant en compte le contexte de chaque mot (c’est-à-dire sa position relative aux autres mots de la phrase). En revanche, un algorithme à base de paramètres chercherait chaque terme dans un dictionnaire prédéfini et identifierait son étiquette en fonction des résultats sans prendre en compte le contexte dans lequel chaque mot apparaît.
 
 La documentation pour Stanza est uniquement disponible en anglais. Pour plus d’informations, veuillez consulter cet article sur [Stanza](https://perma.cc/B4G2-ND2S).
 
@@ -186,13 +186,13 @@ import stanza
 
 ### La Tokénisation
 
-Maintenant que ces bibliothèques ont été importées, nous pouvons commencer à tokéniser le texte en phrases. [La tokénisation](https://perma.cc/GZM4-C5S4) se réfère tout simplement au fait de diviser le texte en plus petites unités, telles que des phrases ou des mots, ce qui vous permet de rendre le texte plus propice à l’analyse. Si nous travaillons avec une phrase en tant que [chaîne de caractères](https://perma.cc/V7QC-LXMH) (appelée "string" en anglais), par exemple, notre code ne sera pas capable de la diviser en ses parties composées, telles que des mots ou des lettres. Il nous faudra alors tokéniser la phrase pour pouvoir travailler chacun des mots qui la constituent comme une donnée séparée. Pour cette partie de la leçon, nous commencerons par tokéniser en utilisant le NLTK avant de détecter la langue utilisée dans chaque phrase.
+Maintenant que ces bibliothèques ont été importées, nous pouvons commencer à tokéniser le texte en phrases. [La tokénisation](https://perma.cc/GZM4-C5S4) se réfère tout simplement au fait de diviser le texte en plus petites unités, telles que des phrases ou des mots, ce qui vous permet de rendre le texte plus propice à l’analyse. Si nous travaillons avec une phrase en tant que [chaîne de caractères](https://perma.cc/V7QC-LXMH) (appelée "string" en anglais), par exemple, notre code ne sera pas capable de la diviser en ses parties composées, telles que des mots ou des lettres. Il nous faudra alors tokéniser la phrase pour pouvoir travailler chacun des mots qui la constituent comme une donnée séparée. Pour cette partie de la leçon, nous commencerons par tokéniser en utilisant NLTK avant de détecter la langue utilisée dans chaque phrase.
 
-Il existe plusieurs tokéniseurs de phrases dans le NLTK. Le package recommande d’utiliser le `PunktSentenceTokenizer` pour une langue spécifiée par l’utilisatrice·eur (veuillez consulter [ce lien](https://www.nltk.org/api/nltk.tokenize.html) pour plus d’information), mais si vous travaillez avec plusieurs langues dans un même texte, ceci n’est peut-être pas la meilleure approche. Si vous avez à votre disposition un extrait de texte qui contient plusieurs langues, utiliser un modèle de tokénisation qui a été entraîné pour fonctionner sur une seule langue produira des résultats moins précis (si par exemple, nous sélectionnons le français, les méthodes utilisées par le modèle pour tokéniser du texte français seraient également appliquées au russe qui se trouve dans notre texte et pour lequel le modèle risque d’être moins efficace). Ces modèles spécifiques à certains langages prennent en considération des cas particulier qui ne s’applique qu’à ces langues – tel que des caractéristiques de délimitation de mots ou phrases propres à ces langues – plutôt que de simplement séparer les phrases par voie de ponctuation.
+Il existe plusieurs tokéniseurs de phrases dans le package NLTK. Le package recommande d’utiliser le `PunktSentenceTokenizer` pour une langue spécifiée par l’utilisatrice·eur (veuillez consulter [ce lien](https://www.nltk.org/api/nltk.tokenize.html) pour plus d’information), mais si vous travaillez avec plusieurs langues dans un même texte, ceci n’est peut-être pas la meilleure approche. Si vous avez à votre disposition un extrait de texte qui contient plusieurs langues, utiliser un modèle de tokénisation qui a été entraîné pour fonctionner sur une seule langue produira des résultats moins précis (si par exemple, nous sélectionnons le français, les méthodes utilisées par le modèle pour tokéniser du texte français seraient également appliquées au russe qui se trouve dans notre texte et pour lequel le modèle risque d’être moins efficace). Ces modèles spécifiques à certains langages prennent en considération des cas particulier qui ne s’applique qu’à ces langues – tel que des caractéristiques de délimitation de mots ou phrases propres à ces langues – plutôt que de simplement séparer les phrases par voie de ponctuation.
 
-#### Tokéniser avec le NLTK
+#### Tokéniser avec NLTK
 
-Dans cette partie de la leçon, nous utiliserons la méthode `sent_tokenize` du NLTK sans préciser de langue, ce qui nous permettra d’utiliser un algorithme de tokénisation rudimentaire qui fonctionnera avec les phrases russe et françaises de notre exemple. À des fins plus avancées, où la précision sur un large corpus de texte est importante, il est préférable d’utiliser des modèles de langage plus spécialisés. Pour consulter des exemples où l’on spécifie une langue avec le tokéniseur NLTK, veuillez consulter [ce commentaire Stack Overflow](https://perma.cc/2TKK-SDDK) qui montre les langues contenues dans le NLTK.
+Dans cette partie de la leçon, nous utiliserons la méthode `sent_tokenize` du package NLTK sans préciser de langue, ce qui nous permettra d’utiliser un algorithme de tokénisation rudimentaire qui fonctionnera avec les phrases russe et françaises de notre exemple. À des fins plus avancées, où la précision sur un large corpus de texte est importante, il est préférable d’utiliser des modèles de langage plus spécialisés. Pour consulter des exemples où l’on spécifie une langue avec le tokéniseur NLTK, veuillez consulter [ce commentaire Stack Overflow](https://perma.cc/2TKK-SDDK) qui montre les langues contenues dans NLTK.
 
 Pour commencer, téléchargeons l’algorithme `punkt` pour utiliser le tokéniseur.
 
@@ -240,16 +240,16 @@ Multilang: Je vois que je vous fais peur, садитесь и рассказыв
 ```
 #### Tokéniser avec spaCy
 
-Nous allons maintenant répéter cette tokénisation de phrases avec spaCy et réutiliser les trois phrases qui nous ont servies d’exemples ci-dessus. Comme vous pouvez le voir, la syntaxe de spaCy est assez différente : la bibliothèque dispose notamment par défaut d’un tokéniseur de phrases multilingues. Pour accéder à la liste de phrases tokénisées par l’algorithme de spaCy, il vous faudra d’abord appliquer cet algorithme au texte en utilisant la méthode `TALN` avant d’assigner les tokens `doc.sents` à une liste.
+Nous allons maintenant répéter cette tokénisation de phrases avec spaCy et réutiliser les trois phrases qui nous ont servies d’exemples ci-dessus. Comme vous pouvez le voir, la syntaxe de spaCy est assez différente : la bibliothèque dispose notamment par défaut d’un tokéniseur de phrases multilingues. Pour accéder à la liste de phrases tokénisées par l’algorithme de spaCy, il vous faudra d’abord appliquer cet algorithme au texte en utilisant la méthode `nlp` avant d’assigner les tokens `doc.sents` à une liste.
 
 ``` python
 # télécharger le tokéniseur de phrases multilingue
 python -m spacy download xx_sent_ud_sm
 
 # charger le tokéniseur multilingue dans notre code
-TALN = spacy.load("xx_sent_ud_sm")
+nlp = spacy.load("xx_sent_ud_sm")
 # déployer le modèle spaCy sur la variable de texte
-doc = TALN(cleaned_war_and_peace)
+doc = nlp(cleaned_war_and_peace)
 
 # mettre les phrases tokénisées dans une liste pour y accéder plus facilement par la suite
 spacy_sentences = list(doc.sents)
@@ -258,7 +258,7 @@ spacy_sentences = list(doc.sents)
 print(spacy_sentences)
 ```
 
-Nous pouvons désormais sauvegarder nos phrases dans des variables, tel que nous l’avons fait avec le NLTK. spaCy ne retourne pas les phrases comme chaîne de caractères mais en tant que tokens spaCy. Afin de les imprimer comme nous l’avons fait avec le NLTK, il faudra d’abord les convertir en chaîne de caractères (pour plus d’informations sur les types de données supportés par Python, tels que les chaînes de caractères et les nombres entiers, veuillez consulter [cette documentation](https://perma.cc/PJ99-H9DP)). Ceci nous permettra d’attacher un préfixe qui identifie la langue des phrases, car Python ne permet pas de combiner une chaîne de caractères avec un autre type de donnée. Étant donné la petite taille de nos données, il est facile de spécifier les phrases qui nous intéressent en utilisant leur indexation dans notre liste. Pour examiner l’entièreté d’une liste de phrases, comme on pourrait le faire avec une base de données plus large, on utiliserait une méthode différente pour examiner les chaînes de caractères, comme par exemple en itérant à travers chaque objet de la liste (il nous faudra faire ceci avec nos tokens Stanza ci-dessous).
+Nous pouvons désormais sauvegarder nos phrases dans des variables, tel que nous l’avons fait avec NLTK. spaCy ne retourne pas les phrases comme chaîne de caractères mais en tant que tokens spaCy. Afin de les imprimer comme nous l’avons fait avec NLTK, il faudra d’abord les convertir en chaîne de caractères (pour plus d’informations sur les types de données supportés par Python, tels que les chaînes de caractères et les nombres entiers, veuillez consulter [cette documentation](https://perma.cc/PJ99-H9DP)). Ceci nous permettra d’attacher un préfixe qui identifie la langue des phrases, car Python ne permet pas de combiner une chaîne de caractères avec un autre type de donnée. Étant donné la petite taille de nos données, il est facile de spécifier les phrases qui nous intéressent en utilisant leur indexation dans notre liste. Pour examiner l’entièreté d’une liste de phrases, comme on pourrait le faire avec une base de données plus large, on utiliserait une méthode différente pour examiner les chaînes de caractères, comme par exemple en itérant à travers chaque objet de la liste (il nous faudra faire ceci avec nos tokens Stanza ci-dessous).
 
 <div class="alert alert-warning">
 Attention: la tokénisation de phrases opère de façon différente dans la version 3.8.11 de spaCy. Les valeurs de phrases indiquées ici ne sont donc pas les mêmes que celles dans le code de la leçon originelle. 
@@ -285,7 +285,7 @@ French: — Avant tout dites moi, comment vous allez, chère amie?
 Multilang: Je vois que je vous fais peur, садитесь и рассказывайте.
 ```
 
-Comme vous pouvez l’observer, les deux algorithmes ont tokénisés les phrases de la même manière car les index des listes de phrases créés par le NLTK et spaCy sont identiques (les phrases qui nous intéressent se trouvent en position 6, 14, et 5).
+Comme vous pouvez l’observer, les deux algorithmes ont tokénisés les phrases de la même manière car les index des listes de phrases créés par NLTK et spaCy sont identiques (les phrases qui nous intéressent se trouvent en position 6, 14, et 5).
 
 #### Tokéniser avec Stanza
 
@@ -295,16 +295,16 @@ Nous allons maintenant répéter cette opération avec Stanza en utilisant son p
 from stanza.pipeline.multilingual import MultilingualPipeline
 
 # définir notre pipeline pour tokéniser
-TALN = MultilingualPipeline(processors='tokenize')
+nlp = MultilingualPipeline(processors='tokenize')
 
 # appliquer ce pipeline à notre texte
-doc = TALN(cleaned_war_and_peace)
+doc = nlp(cleaned_war_and_peace)
 
 # imprimer toutes les phrases pour voir comment elles ont été tokénisées
 print([sentence.text for sentence in doc.sentences])
 ```
 
-Essayons maintenant de retrouver les trois phrases que nous avons utilisées avec le NLTK et spaCy ci-dessus. Tout comme spaCy, Stanza convertit le texte traité en tokens qui ne se comportent pas comme des chaînes de caractères.
+Essayons maintenant de retrouver les trois phrases que nous avons utilisées avec NLTK et spaCy ci-dessus. Tout comme spaCy, Stanza convertit le texte traité en tokens qui ne se comportent pas comme des chaînes de caractères.
 
 Nous allons d’abord mettre les tokens de phrases dans une liste pour les convertir en chaîne de caractères. Ceci nous permettra de trouver les phrases spécifiques plus facilement via leur index. Stanza tokénise les phrases dans le texte différemment. Il faut donc changer notre indexation de la phrase en français de la treizième à la douzième position pour s’assurer que les phrases stockées dans les variables restent les mêmes.
 
@@ -341,10 +341,10 @@ Multilang: Je vois que je vous fais peur, садитесь и рассказыв
 
 Maintenant que les trois phrases qui nous serviront d’exemples sont prêtes, nous pouvons commencer à les analyser. D’abord, nous allons détecter les langues utilisées dans chaque phrase en commençant par les exemples monolingues.
 
-Le NLTK contient un module qui s’appelle `TextCat` capable d’identifier des langues en utilisant l’algorithme du même nom. Pour plus d’informations, veuillez consulter la documentation de ce module [ici](https://perma.cc/7EJZ-J5AR). Cet algorithme examine les fréquences de [n-grammes](https://perma.cc/9FJ9-SKC5) (les n-grammes sont des séquences de symboles côte à côte, tels que des lettres ou des syllabes, qui suivent un ordre précis) pour analyser la langue et texte sur lequel nous travaillons. Ensuite, il compare les deux en utilisant une mesure de distance pour estimer la langue du texte. Il faut noter que `TextCat` ne permet pas d’imprimer ses calculs de probabilité pour estimer quelle langue est représentée. Essayons d’utiliser ce module sur les phrases que nous avons précédemment mises dans nos variables.
+NLTK contient un module qui s’appelle `TextCat` capable d’identifier des langues en utilisant l’algorithme du même nom. Pour plus d’informations, veuillez consulter la documentation de ce module [ici](https://perma.cc/7EJZ-J5AR). Cet algorithme examine les fréquences de [n-grammes](https://perma.cc/9FJ9-SKC5) (les n-grammes sont des séquences de symboles côte à côte, tels que des lettres ou des syllabes, qui suivent un ordre précis) pour analyser la langue et texte sur lequel nous travaillons. Ensuite, il compare les deux en utilisant une mesure de distance pour estimer la langue du texte. Il faut noter que `TextCat` ne permet pas d’imprimer ses calculs de probabilité pour estimer quelle langue est représentée. Essayons d’utiliser ce module sur les phrases que nous avons précédemment mises dans nos variables.
 
 ``` python
-# télécharger un lecteur de corpus du NLTK requis par le module TextCat
+# télécharger un lecteur de corpus NLTK requis par le module TextCat
 nltk.download('crubadan')
 
 # charger le module TextCat et l'appliquer à chacune de nos phrases
@@ -367,7 +367,7 @@ French estimate: fra
 Multilingual estimate: rus
 ```
 
-Comme vous pouvez le voir, TextCat a correctement identifié les phrases écrites en russe et en français. L’algorithme n’est cependant pas capable d'identifier plus d’une langue par phrase, et a donc estimé que notre phrase multilingue est écrite en russe.
+Comme vous pouvez le voir, `TextCat` a correctement identifié les phrases écrites en russe et en français. L’algorithme n’est cependant pas capable d'identifier plus d’une langue par phrase, et a donc estimé que notre phrase multilingue est écrite en russe.
 
 Nous examinerons d’autres manières de détecter les langues dans des phrases multilingues une fois que nous aurons classifié nos phrases en utilisant spaCy et Stanza.
 
@@ -389,16 +389,16 @@ from spacy_langdetect import LanguageDetector
 
 # établir notre pipeline
 Language.factory("language_detector")
-TALN.add_pipe('language_detector', last=True)
+nlp.add_pipe('language_detector', last=True)
 
 # lancer la détection de langue sur chaque phrase et imprimer les résultats
-rus_doc = TALN(spacy_rus_sent)
+rus_doc = nlp(spacy_rus_sent)
 print(rus_doc._.language)
 
-fre_doc = TALN(spacy_fre_sent)
+fre_doc = nlp(spacy_fre_sent)
 print(fre_doc._.language)
 
-multi_doc = TALN(spacy_multi_sent)
+multi_doc = nlp(spacy_multi_sent)
 print(multi_doc._.language)
 ```
 
@@ -420,12 +420,12 @@ from stanza.models.common.doc import Document
 from stanza.pipeline.core import Pipeline
 
 # établir notre pipeline
-TALN = Pipeline(lang="multilingual", processors="langid")
+nlp = Pipeline(lang="multilingual", processors="langid")
 
 # indiquer les phrases à traiter et ensuite lancer le code de détection de langue
 docs = [stanza_rus_sent, stanza_fre_sent, stanza_multi_sent]
 docs = [Document([], text=text) for text in docs]
-TALN(docs)
+nlp(docs)
 
 # imprimer le texte de chaque phrase à côté de l'estimation de langue
 print("\n".join(f"{doc.text}\t{doc.lang}" for doc in docs))
@@ -518,7 +518,7 @@ Il est évident que cette méthode ne peut pas fonctionner sur chaque texte, ét
 
 Nous allons désormais procéder à l’étiquetage morpho-syntaxique de nos phrases en utilisant spaCy et Stanza.
 
-Le NLTK ne permet pas d'effectuer l’étiquetage morpho-syntaxique de langues autre que l’anglais, mais il est possible d’entraîner votre propre modèle en utilisant un corpus étiqueté dans la langue de votre choix. La documentation concernant l’étiqueteur et comment en développer un vous-même est disponible [ici](https://perma.cc/XZ9M-7UR4).
+Le package NLTK ne permet pas d'effectuer l’étiquetage morpho-syntaxique de langues autre que l’anglais, mais il est possible d’entraîner votre propre modèle en utilisant un corpus étiqueté dans la langue de votre choix. La documentation concernant l’étiqueteur et comment en développer un vous-même est disponible [ici](https://perma.cc/XZ9M-7UR4).
 
 #### L’étiquetage morpho-syntaxique avec spaCy
 
@@ -530,10 +530,10 @@ python -m spacy download ru_core_news_sm
 
 
 # charger le modèle
-TALN = spacy.load("ru_core_news_sm")
+nlp = spacy.load("ru_core_news_sm")
 
 # appliquer le modèle
-doc = TALN(spacy_rus_sent)
+doc = nlp(spacy_rus_sent)
 
 # imprimer chaque mot et son étiquette
 for token in doc:
@@ -584,10 +584,10 @@ python -m spacy download fr_core_news_sm
 
 
 # charger le corpus
-TALN = spacy.load("fr_core_news_sm")
+nlp = spacy.load("fr_core_news_sm")
 
 # appliquer le modèle
-doc = TALN(spacy_fre_sent)
+doc = nlp(spacy_fre_sent)
 
 # imprimer chaque mot et son étiquette
 for token in doc:
@@ -678,16 +678,16 @@ Enfin, nous pouvons étiqueter chaque liste de mots en utilisant le modèle de l
 
 ``` python
 # charger et appliquer le modèle
-TALN = spacy.load("ru_core_news_sm")
-doc = TALN(cyr_no_extra_space)
+nlp = spacy.load("ru_core_news_sm")
+doc = nlp(cyr_no_extra_space)
 
 # imprimer chaque mot et son étiquette
 for token in doc:
     print(token.text, token.pos_)
 
 # et faire de même pour la phrase en français
-TALN = spacy.load("fr_core_news_sm")
-doc = TALN(lat_no_extra_space)
+nlp = spacy.load("fr_core_news_sm")
+doc = nlp(lat_no_extra_space)
 for token in doc:
     print(token.text, token.pos_)
 ```
@@ -715,8 +715,8 @@ Faisons maintenant de même avec Stanza. Commençons par le russe : il faut char
 
 ``` python
 # charger le pipeline et l'appliquer à notre phrase en spécifiant la langue comme étant le russe ('ru')
-TALN = stanza.Pipeline(lang='ru', processors='tokenize,pos')
-doc = TALN(stanza_rus_sent)
+nlp = stanza.Pipeline(lang='ru', processors='tokenize,pos')
+doc = nlp(stanza_rus_sent)
 
 # imprimer les mots et leurs étiquettes
 print(*[f'word: {word.text}\tupos: {word.upos}' for sent in doc.sentences for word in sent.words], sep='\n')
@@ -763,8 +763,8 @@ Nous ferons maintenant de même pour notre phrase en français, en utilisant la 
 
 ``` python
 # charger le pipeline et l'appliquer à notre phrase en spécifiant la langue comme étant le français ('fr')
-TALN = stanza.Pipeline(lang='fr', processors='tokenize,mwt,pos')
-doc = TALN(stanza_fre_sent)
+nlp = stanza.Pipeline(lang='fr', processors='tokenize,mwt,pos')
+doc = nlp(stanza_fre_sent)
 
 # imprimer les mots et leurs étiquettes
 print(*[f'word: {word.text}\tupos: {word.upos}' for sent in doc.sentences for word in sent.words], sep='\n'
@@ -796,9 +796,9 @@ from stanza.pipeline.core import Pipeline
 from stanza.pipeline.multilingual import MultilingualPipeline
 
 # lancer le pipeline multilingue sur les phrases françaises, russes, et multilingue en même temps 
-TALN = MultilingualPipeline(processors='tokenize,pos')
+nlp = MultilingualPipeline(processors='tokenize,pos')
 docs = [stanza_rus_sent, stanza_fre_sent, stanza_multi_sent]
-TALN(docs)
+nlp(docs)
 
 # imprimer les résultats
 print(*[f'word: {word.text}\tupos: {word.upos}' for sent in docs.sentences for word in sent.words], sep='\n')
@@ -841,7 +841,7 @@ word: .	upos: PUNCT
 
 ### La lemmatisation
 
-Pour finir, nous allons lemmatiser nos phrases en utilisant spaCy et Stanza (le NLTK ne dispose pas d’algorithme de lemmatisation intégré pour des langues autres que l’anglais). La lemmatisation est le procédé par lequel on remplace toutes les formes [infléchies](https://perma.cc/VXG6-4SG5) d’un mot (vois, vue) par un seul objet que l’on appelle le lemme, qui représente la forme la plus basique du mot (dans ce cas, voir). Par exemple, la phrase, « j’ai écrit une lettre » serait « je avoir écrire une lettre ».
+Pour finir, nous allons lemmatiser nos phrases en utilisant spaCy et Stanza (NLTK ne dispose pas d’algorithme de lemmatisation intégré pour des langues autres que l’anglais). La lemmatisation est le procédé par lequel on remplace toutes les formes [infléchies](https://perma.cc/VXG6-4SG5) d’un mot (vois, vue) par un seul objet que l’on appelle le lemme, qui représente la forme la plus basique du mot (dans ce cas, voir). Par exemple, la phrase, « j’ai écrit une lettre » serait « je avoir écrire une lettre ».
 
 #### Lemmatiser avec spaCy
 
@@ -851,8 +851,8 @@ Il faut d'abord charger nos modèles avant de les appliquer à nos textes et imp
 
 ``` python
 # charger et appliquer le modèle
-TALN = spacy.load("ru_core_news_sm")
-doc = TALN(cyr_no_extra_space)
+nlp = spacy.load("ru_core_news_sm")
+doc = nlp(cyr_no_extra_space)
 
 # imprimer les mots et leurs lemmes
 for token in doc:
@@ -873,8 +873,8 @@ Et maintenant le texte français :
 ``` python
 # charger et appliquer le modèle
 
-TALN = spacy.load("fr_core_news_sm")
-doc = TALN(lat_no_extra_space)
+nlp = spacy.load("fr_core_news_sm")
+doc = nlp(lat_no_extra_space)
 
 # imprimer les mots et leurs lemmes
 for token in doc:
@@ -905,12 +905,12 @@ from stanza.pipeline.core import Pipeline
 from stanza.pipeline.multilingual import MultilingualPipeline
 
 # rajouter le processeur de lemmes au pipeline et l'appliquer à nos phrases
-TALN = MultilingualPipeline(processors='tokenize,lemma')
+nlp = MultilingualPipeline(processors='tokenize,lemma')
 docs = [stanza_rus_sent, stanza_fre_sent, stanza_multi_sent]
-TALNed_docs = TALN(docs)
+nlped_docs = nlp(docs)
 
 # itérer à travers chaque mot de chaque phrase et imprimer les lemmes
-for doc in TALNed_docs:
+for doc in nlped_docs:
   lemmas = [word.lemma for t in doc.iter_tokens() for word in t.words]
   print(lemmas)
 ```

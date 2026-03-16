@@ -171,6 +171,7 @@ Maintenant que nous avons lu le fichier et préparé notre texte, nous pouvons c
 Afin d’installer ces bibliothèques, lancez cette commande dans votre terminal :
 
 ``` python
+#note: si vous travaillez depuis un Jupyter notebook, rajout "!" au début de chaque ligne d'installation
 pip install nltk
 pip install spacy
 pip install stanza
@@ -244,6 +245,7 @@ Nous allons maintenant répéter cette tokénisation de phrases avec spaCy et r�
 
 ``` python
 # télécharger le tokéniseur de phrases multilingue
+#note: si vous travaillez depuis un Jupyter notebook, rajout "!" au début de la ligne d'installation
 python -m spacy download xx_sent_ud_sm
 
 # charger le tokéniseur multilingue dans notre code
@@ -526,6 +528,7 @@ Le package NLTK ne permet pas d'effectuer l’étiquetage morpho-syntaxique de l
 
 ``` python
 # télécharger le modèle de langage russe depuis spaCy
+#note: si vous travaillez depuis un Jupyter notebook, rajout "!" au début de la ligne d'installation
 python -m spacy download ru_core_news_sm
 
 
@@ -580,6 +583,7 @@ Faisons maintenant de même avec notre phrase en français.
 
 ``` python
 #télécharger le modèle de langage français depuis spaCy
+#note: si vous travaillez depuis un Jupyter notebook, rajout "!" au début de la ligne d'installation
 python -m spacy download fr_core_news_sm
 
 

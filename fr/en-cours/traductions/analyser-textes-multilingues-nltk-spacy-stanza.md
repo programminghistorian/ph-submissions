@@ -199,7 +199,6 @@ Dans cette partie de la leçon, nous utiliserons la méthode `sent_tokenize` du 
 Pour commencer, téléchargeons l’algorithme `punkt` pour utiliser le tokéniseur.
 
 ``` python
-import nltk
 nltk.download('punkt')
 ```
 
@@ -248,7 +247,8 @@ Nous allons maintenant répéter cette tokénisation de phrases avec spaCy et r�
 # télécharger le tokéniseur de phrases multilingue
 #note: si vous travaillez depuis un Jupyter notebook, rajout "!" au début de la ligne d'installation
 python -m spacy download xx_sent_ud_sm
-
+```
+``` python
 # charger le tokéniseur multilingue dans notre code
 nlp = spacy.load("xx_sent_ud_sm")
 # déployer le modèle spaCy sur la variable de texte
@@ -393,7 +393,8 @@ from spacy_langdetect import LanguageDetector
 # établir notre pipeline
 Language.factory("language_detector")
 nlp.add_pipe('language_detector', last=True)
-
+```
+``` python
 # lancer la détection de langue sur chaque phrase et imprimer les résultats
 rus_doc = nlp(spacy_rus_sent)
 print(rus_doc._.language)
@@ -404,6 +405,7 @@ print(fre_doc._.language)
 multi_doc = nlp(spacy_multi_sent)
 print(multi_doc._.language)
 ```
+
 
 Résultats:
 
@@ -531,8 +533,8 @@ Le package NLTK ne permet pas d'effectuer l’étiquetage morpho-syntaxique de l
 # télécharger le modèle de langage russe depuis spaCy
 #note: si vous travaillez depuis un Jupyter notebook, rajout "!" au début de la ligne d'installation
 python -m spacy download ru_core_news_sm
-
-
+```
+``` python
 # charger le modèle
 nlp = spacy.load("ru_core_news_sm")
 
@@ -583,11 +585,6 @@ Résultats:
 Faisons maintenant de même avec notre phrase en français.
 
 ``` python
-#télécharger le modèle de langage français depuis spaCy
-#note: si vous travaillez depuis un Jupyter notebook, rajout "!" au début de la ligne d'installation
-python -m spacy download fr_core_news_sm
-
-
 # charger le corpus
 nlp = spacy.load("fr_core_news_sm")
 
@@ -598,7 +595,17 @@ doc = nlp(spacy_fre_sent)
 for token in doc:
     print(token.text, token.pos_)
 ```
+``` python
+# charger le corpus
+nlp = spacy.load("fr_core_news_sm")
 
+# appliquer le modèle
+doc = nlp(spacy_fre_sent)
+
+# imprimer chaque mot et son étiquette
+for token in doc:
+    print(token.text, token.pos_)
+```
 Résultats:
 
 ```

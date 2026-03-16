@@ -151,6 +151,7 @@ war_and_peace = """
 Il nous faut tout d’abord charger notre fichier texte afin de l’utiliser avec différents packages de traitement automatique de langage naturel. Pour commencer, ouvrons le fichier et attribuons-lui la variable que l’on nommera `war_and_peace`. Ensuite, imprimons les contenus de ce fichier pour être certain qu’il a été lu correctement. Pour cette leçon, nous n’utiliserons qu’un court extrait du roman.
 
 ``` python
+#il n'est pas nécessaire d'exécuter la cellule important le fichier war_and_peace_excerpt.txt si la cellule précédente, plaçant directement le contenu du texte dans la variable war_and_peace sans télécharger le fichier, a déjà été exécutée
 with open("war_and_peace_excerpt.txt") as file:
     war_and_peace = file.read()
     print(war_and_peace)

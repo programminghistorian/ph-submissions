@@ -27,9 +27,7 @@ doi: XX.XXXXX/phen0000
 
 This lesson provides a gentle introduction to the technical skills required for the analysis of digital artifacts. Digital artifacts are more than just their visible content; they exist within interwoven layers that shape their function and meaning. Technically, they are embedded in systems of file formats, applications, operating systems, and hardware, but they are also influenced by environmental factors such as infrastructure, data centers, and socio-economic conditions.
 
-The aim of this lesson is to enable readers to take their first steps in reverse engineering using **hex viewers**, an indispensable tool for initial analysis in digital archaeology. Following an overview of reverse engineering and software archaeology, this lesson explains how to use hex editors to explore the components of an image file for historical research.
-
-This case study shows how digital formats can be recognized in modern computer architecture and illustrates the need to look beyond what is presented on the screen.
+The aim of this lesson is to enable readers to take their first steps in reverse engineering using **hex viewers**, an indispensable tool for initial analysis in digital archaeology. Following an overview of reverse engineering and software archaeology, this lesson explains how to use hex editors to explore the components of an image file and compare the evolution of file formats for historical research. These examples show how digital formats can be recognized in modern computer architecture and illustrate the need to look beyond what is presented on the screen.
 
 By introducing the analysis of file signatures, metadata, and structural anomalies, this lesson provides an introductory understanding of how digital artifacts are constructed. Readers will be empowered to use hex viewer to interpret complex objects and to begin engaging with digital sources in their own research, from proprietary formats to historical databases.
 
@@ -38,11 +36,6 @@ Rather than advancing a theoretical argument, this lesson is structured as a han
 - explain what reverse engineering is and why it is useful for analyzing born-digital artifacts in historical research.
 - identify instances of “screen essentialism” and explain their limitations for historical analysis.
 - use a hex viewer to inspect the raw data of digital files and perform comparative hex dump analysis to detect and interpret anomalies.
-
-You will also learn to take the preliminary steps to
-
-- apply digital archaeology techniques to investigate modified or cracked software, uncovering evidence of historical, cultural, or technical interventions.
-- evaluate the limitations and challenges of reverse engineering, especially in the absence of original documentation or open-source code.
 
 It is important to highlight that reverse engineering and working with born-digital artifacts can be a daunting endeavor, given all the different configurations of hard- and software and all the knowledge and skills that can be involved in this research domain. No matter what the research object is, it all begins with the simple realization, that there is always more to a digital artifact then is visible at first glance. This lesson will help with this realization and should be regarded as a first step in developing your own research strategies.
 
@@ -185,7 +178,7 @@ You might wonder: if we simply "glue" two files together, why doesn't the comput
 
 If you are curious to see what we packed in the hidden ZIP file, rename `cat-with-hidden-content.jpg` to `cat-with-hidden-content.zip` and unzip it with the archive tool of your operating system. 
 
-Identifying file signatures is a fundamental skill for reverse engineering born-digital records. Because file extensions can be misleading or intentionally changed, we must learn to look past the desktop icon to the data's underlying structure. Instead, we use computational searches with an hex viewer to "fingerprint" the data structure. This example is intentionally simplified to provide a controlled environment for practicing hex-dump analysis before moving to less structured historical artifacts.
+Identifying file signatures is a fundamental skill for reverse engineering born-digital records. Because file extensions can be misleading or intentionally changed, we must learn to look past the desktop icon to the data's underlying structure. Instead, we use computational searches with an hex viewer to "fingerprint" the data structure. This example is intentionally simplified to provide a controlled environment for practicing hex-dump analysis before applying these techniques to real-world document formats.
 
 ### From Binary to XML: Comparing .doc and .docx
 
@@ -235,7 +228,7 @@ The JPEG end-of-file marker and the ZIP central directory demonstrate a broader 
 
 Identifying such structural signatures is the first step in what might be described as “writing the missing manual” for a file. However, reverse engineering often requires more than locating signatures alone; it also requires attention to change. The value of these examples lies not in the novelty of file concatenation, but in practicing how to reason about file structure through direct inspection, comparison, and documented format constraints.
 
-These same low-level analytical skills—hex-dump inspection, signature recognition, comparative analysis, and attention to file size—form the foundation for more advanced reverse engineering work. Born-digital artifacts encountered in historical research usually lack standardized file headers, explicit end-of-file markers, or central indexes comparable to those found in JPEG or ZIP formats. 
+These same low-level analytical skills—hex-dump inspection, signature recognition, and comparative analysis—form the foundation for more advanced reverse engineering work. Born-digital artifacts encountered in historical research usually lack standardized file headers, explicit end-of-file markers, or central indexes comparable to those found in JPEG or ZIP formats. 
 
 Researchers often face undocumented binaries and altered software whose structure must be reconstructed through analysis. In such cases, meaning can be inferred from patterns in raw byte sequences, repetition across multiple disk images, and anomalies that cannot be explained by normal execution. The techniques practiced in this lesson provide an essential starting point for the kind of investigative work that can reveal hidden histories of human intervention into binary code, be it for the purposes of spreading computer viruses, or to mod videogames.
 

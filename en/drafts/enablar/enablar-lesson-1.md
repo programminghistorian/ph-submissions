@@ -74,7 +74,35 @@ e. Figures and sample data assets can be added later in the drafting process. Fo
 [Figure 1]
 -->
 
+<!-- NOTE TO ENABLAR AUTHORS
+Note 4. Endnotes
 
+Use endnotes to provide additional context or citations.
+
+- Insert an endnote marker in the text using:
+  [^1]
+
+- At the end of the document, add a corresponding entry:
+  [^1]: Your endnote text here.
+
+- List all endnotes under a dedicated section at the end of the file:
+
+## Endnotes
+[^1]: First note  
+[^2]: Second note  
+-->
+
+<!-- NOTE TO ENABLAR AUTHORS
+Note 5. References
+
+Format all references using the Chicago Manual of Style.
+
+- Follow this guide:
+  https://www.chicagomanualofstyle.org/tools_citationguide/citation-guide-1.html
+
+- Additional help:
+  https://subjectguides.york.ac.uk/referencing-style-guides/chicago
+-->
 
 ## Preliminaries
 ### Method or tool

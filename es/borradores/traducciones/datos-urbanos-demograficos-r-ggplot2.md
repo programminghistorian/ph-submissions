@@ -552,7 +552,7 @@ Para obtener una comprensión más profunda de ggplot2, se recomienda explorar l
 
 * La [documentación general de ggplot2](https://perma.cc/T8LR-L8D7) (disponible en inglés).
 
-* El [libro _Cookbook for R_](http://www.cookbook-r.com/Graphs/) (basado en la obra de Winston Chang [_R Graphics Cookbook: Practical Recipes for Visualizing Data_](https://perma.cc/3UJW-Y2AG), disponible solo en inglés).
+* El [libro _Cookbook for R_](https://perma.cc/5WXV-T8W2) (basado en la obra de Winston Chang [_R Graphics Cookbook: Practical Recipes for Visualizing Data_](https://perma.cc/3UJW-Y2AG), disponible solo en inglés).
 
 * La [chuleta oficial de R](https://perma.cc/W6CX-WAUQ) (traducciones al español disponibles). 
 

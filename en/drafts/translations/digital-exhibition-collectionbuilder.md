@@ -47,7 +47,7 @@ To follow the steps in this lesson, you will need the following:
 
 - Knowledge of how to manage a basic GitHub repository (see [Getting started with GitHub Desktop](https://docs.github.com/en/desktop/overview/getting-started-with-github-desktop))
 
-- Experience with managing metadata in the .CSV format
+- Experience with managing metadata (structured descriptive information like title, creator, and date) in the .CSV format (comma-separated values, a plain text format for tabular data)
 
 ### Background: What is CollectionBuilder?
 [CollectionBuilder](https://collectionbuilder.github.io/) is an open-source framework for publishing metadata-driven digital exhibitions using static web technologies. The software's main objective is to provide a means for disseminating collections in a practical and sustainable manner. 
@@ -72,11 +72,11 @@ More advanced display templates will enable you to incorporate 360-degree panora
 
 ### The CB-GH template
 
-This lesson will use the **CB-GH template**, which has fewer software dependencies and uses a collection of digital objects already online. In our example, we used items available in the Internet Archive, but you can link to items available elsewhere, including YouTube, Vimeo, or any repository that gives you the digital object’s filename (including the file extension). 
+This lesson will use the **CB-GH template**, which has fewer software dependencies and uses a collection of digital objects already online. In our example, we used items available in the Internet Archive (a non-profit digital repository providing free public access to digital materials), but you can link to items available elsewhere, including YouTube, Vimeo, or any repository that gives you the digital object’s filename (including the file extension). 
 
 The CB-GH template can also be used for projects with metadata-only records and zero digital objects. Projects can later be moved to the more advanced CollectionBuilder-CSV template for further customization by following the [CollectionBuilder documentation](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/transfer-walkthrough/).
 
-While other CB tutorials ask you to upload digital files directly to GitHub, this tutorial links to digital objects already hosted online. You will learn how to work with canonical versions of images in their original context, rather than by creating copies to host elsewhere. This approach to building digital exhibits allows you to:
+While other CB tutorials ask you to upload digital files directly to GitHub, this tutorial links to digital objects already hosted online. You will learn how to work with canonical versions of images (the authoritative instance of the object in their original repositories), rather than by creating copies to host elsewhere. This approach to building digital exhibits allows you to:
 
 * Engage with larger, existing digital collections without requiring additional infrastructure
 * Develop metadata literacy through the practice of referencing and relating, rather than hosting

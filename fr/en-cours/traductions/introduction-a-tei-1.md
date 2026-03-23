@@ -38,7 +38,7 @@ doi: XX.XXXXX/phen0000
     <em>Quichotte</em> de Miguel de Cervantes, ainsi que les quatre premiers vers 
     du sonnet "Amor constante más allá de la muerte" ("Amour constant au-delà de la mort") 
     de Francisco de Quevedo. Afin de mieux adapter la traduction à un lectorat francophone, 
-    lui proposant des textes originalement écrits en langue française, j’ai choisi de remplacer :
+    lui proposant des textes originellement écrits en langue française, j’ai choisi de remplacer :
   </p>
 
   <ol>
@@ -60,10 +60,10 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-Dans les humanités numériques, l'un des problèmes centraux consiste à travailler avec et sur les textes : leur capture (numérisation), reconnaissance, transcription, encodage, traitement, transformation et analyse. Dans cette leçon, nous nous concentrerons exclusivement sur l'encodage du texte, c'est-à-dire, sur leur structuration sématique ou formelle au moyen de balises (*tags*).
+Dans les humanités numériques, l'un des problèmes centraux consiste à travailler avec et sur les textes : leur capture (numérisation), reconnaissance, transcription, encodage, traitement, transformation et analyse. Dans cette leçon, nous nous concentrerons exclusivement sur l'encodage du texte, c'est-à-dire, sur sa structuration sémantique ou formelle au moyen de balises (*tags*).
 
 Un exemple peut éclairer cette idée. Supposons que nous avons un document imprimé que nous avons préalablement numérisé.
-Nous avons les images numérisées des pages et, à l'aide d'un logiciel de reconnaissance optique de caractères ([OCR](https://fr.wikipedia.org/wiki/Reconnaissance_optique_de_caractères), en anglais), nous extrayions le texte contenu dans ces images. Ce texte est ce que l'on appelle habituellement du [texte brut](https://fr.wikipedia.org/wiki/Texte_brut) (ou texte numérisé), c'est-à-dire, le texte sans aucun format (sans italiques, gras, etc.) ni aucune autre structuration sémantique.
+Nous avons les images numérisées des pages et, à l'aide d'un logiciel de reconnaissance optique de caractères ([OCR](https://fr.wikipedia.org/wiki/Reconnaissance_optique_de_caractères), en anglais), nous extrayions le texte contenu dans ces images. Ce texte est ce que l'on appelle habituellement [*texte brut*](https://fr.wikipedia.org/wiki/Texte_brut) (ou texte numérisé), c'est-à-dire, le texte sans aucun format (sans italiques, gras, etc.) ni aucune autre structuration sémantique.
 
 Même si cela peut paraître étrange, le texte brut est complètement dépourvu de contenu. Pour un ordinateur, ce n'est qu'une longue chaîne de caractères (y compris la ponctuation, les espaces, les sauts de ligne, etc.) dans un [encodage](https://fr.wikipedia.org/wiki/Codage_des_caractères) (par exemple [UTF-8](https://fr.wikipedia.org/wiki/UTF-8) ou [ASCII](https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange)) d'un alphabet (latin, grec ou cyrillique, par exemple). C'est nous qui, lorsque nous le lisons, identifions des mots (dans une ou plusieurs langues), des lignes, des paragraphes, etc. C'est nous qui identifions aussi les noms de personnes et de lieux, les titres de livres et d'articles, les dates, les citations, les épigraphes, les références croisées (internes et externes), les notes en bas de page et les notes à la fin du texte. Mais, de nouveau, l'ordinateur est complètement "ignorant" à l'égard desdites structures textuelles dans un texte brut sans traitement ou encodage.
 
@@ -155,7 +155,7 @@ Comprendre la différence entre le marquage de visualisation (Markdown) et le ma
 
 Clarifions cela en revenant à notre exemple initial. Supposons que, dans le texte numérisé de départ, les noms propres apparaissent toujours imprimés en [petites capitales](https://fr.wikipedia.org/wiki/Petite_capitale), comme dans le fragment qui suit :
 
-{% include figure.html filename="fr-tr-introduction-a-tei-1-11.png" alt="Court extrait de texte numérisé tiré des Misérables, figure obtenue par la capture d'écran d'une page Word. Quatre lignes de texte dont la source est Victor Hugo, _Les Misérables_. Cinquième partie : Jean Valjean I, Paris : Pagnerre, 1862, p. 28. Nous ajoutons les petites capitales pour servir les propos de la leçon."  caption="Figure 11. Court extrait de texte numérisé tiré des _Misérables_." %}
+{% include figure.html filename="fr-tr-introduction-a-tei-1-11.png" alt="Court extrait de texte numérisé tiré des _Misérables_, figure obtenue par la capture d'écran d'une page Word. Quatre lignes de texte dont la source est Victor Hugo, _Les Misérables_. Cinquième partie : Jean Valjean I, Paris : Pagnerre, 1862, p. 28. Nous ajoutons les petites capitales pour servir les propos de la leçon."  caption="Figure 11. Court extrait de texte numérisé tiré des _Misérables_." %}
 
 Comme nous le verrons, la TEI nous permet d'encoder, par le moyen d'une série de balises, le texte que nous voulons structurer sémantiquement. Par exemple, nous pouvons utiliser une balise comme [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html) pour démarquer les noms propres contenus dans le texte, ainsi :
 
@@ -219,7 +219,7 @@ Nous pouvons proposer l'encodage en TEI qui suit :
 
 Dans le cas présent, nous avons fait appel à l'attribut `@rhyme` de l'élément `<lg>`, pour faire encoder le type de rime du passage ; à l'attribut `@met` pour indiquer le type de métrique du premier vers – décasyllabe – ; et finalement à l'attribut `@n` pour indiquer le numéro du vers à l'intérieur de chaque groupe.
 
-La comparaison entre le texte brut du fragment du sonnet et son encodage nous permet de commencer à voir les avantages de la TEI en tant que langage de description de texte. Dans l'exemple précédent, il n'est pas seulement indiqué explicitement que les lignes deux à cinq sont des vers d'un poème, mais qu'elles ont un type de rime et de métrique. Une fois le poème ou tous les poèmes d'un recueil encodés, nous pouvons, par exemple, utiliser un programme pour réaliser des requêtes structurées, permettant d'identifier tous les poèmes qui possèdent une certaine métrique. Nous pouvons également utiliser (ou créer) une application pour déterminer combien de vers des sonnets de Louise Labé – s'il y en a – ont une métrique imparfaite. Ou alors, nous pouvons comparer les différentes versions (les "témoins" manuscrits et imprimés) des sonnets, pour réaliser leur édition critique.
+La comparaison entre le texte brut du fragment du sonnet et son encodage nous permet de commencer à voir les avantages de la TEI en tant que langage de description de texte. Dans l'exemple précédent, il n'est pas seulement indiqué explicitement que les lignes deux à cinq sont des vers d'un poème, mais qu'elles ont un type de rime et de métrique. Une fois le poème ou tous les poèmes d'un recueil encodés, nous pouvons utiliser un programme pour réaliser des requêtes structurées, permettant, par exemple, d'identifier tous les poèmes qui possèdent une certaine métrique. Nous pouvons également utiliser (ou créer) une application pour déterminer combien de vers des sonnets de Louise Labé – s'il y en a – ont une métrique imparfaite. Ou alors, nous pouvons comparer les différentes versions (les "témoins" manuscrits et imprimés) des sonnets, pour réaliser leur édition critique.
 
 Par ailleurs, un autre type de structuration aurait permis les études suggérées dans le paragraphe antérieur. La TEI vient faciliter cette description en offrant un cadre conceptuel et formel adapté à un grand nombre de situations textuelles. Si nous avions seulement le texte brut des sonnets, il serait techniquement impossible de profiter des outils informatiques conçus pour les éditer, transformer, visualiser, analyser ou publier.
 

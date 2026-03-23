@@ -310,9 +310,9 @@ The next thing you can do is change the order of the boxes. In our example, we m
 
 ### 5.2 Item page
 
-Next, let’s examine the default item page where your viewer will see your digital object and the corresponding metadata. There are a number of changes that can be made to the default page, including which metadata fields are shown, in what order, what the labels are, and whether we want them to inter-link to other items on your site or include external links.
+Next, let’s examine the default item page where your viewer will display your digital object and the corresponding metadata. There are a number of changes that can be made to the default page, including which metadata fields are shown, in what order, what the labels are, and whether we want them to inter-link to other items on your site or include external links.
 
-To make changes, go to the **_data** folder and open the **config-metadata.csv** file. The top line (1) is the table header, which tells us what each column means. Field references the metadata field name in your metadata CSV file, and `display_name` is what is shown on your item page.  The `browse_link` and `external_link` columns are where you can turn on hyperlinking of fields or make a field link to an external website after each row below matches up to a metadata field that is displayed on your item page.  
+To make changes, go to the **_data** folder and open the **config-metadata.csv** file. The top row (1) is the table header row, which tells us what each column means. The first column `Field` references the field name in your metadata CSV file, and `display_name` is what is shown on your item page.  The `browse_link` and `external_link` columns are where you can turn on hyperlinking of fields or make a field link to an external website after each row below matches up to a metadata field that is displayed on your item page.  
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-12.png" alt="Screenshot of the config-metadata.csv file with the updates specified in the lesson." caption="Figure 12. Screenshot of the `config-metadata.csv` file with the updates specified in the lesson." %}
 

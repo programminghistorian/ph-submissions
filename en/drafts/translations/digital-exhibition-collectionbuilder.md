@@ -45,7 +45,7 @@ To follow the steps in this lesson, you will need the following:
 
 - Knowledge of how to write in Markdown (see [Getting Started with Markdown](https://programminghistorian.org/en/lessons/getting-started-with-markdown) by Sarah Simpkin).
 
-- Knowledge of how to manage a basic GitHub repository (see [An Introduction to Version Control Using GitHub Desktop](https://programminghistorian.org/en/lessons/retired/getting-started-with-github-desktop) by Daniel van Strien)
+- Knowledge of how to manage a basic GitHub repository (see [Getting started with GitHub Desktop](https://docs.github.com/en/desktop/overview/getting-started-with-github-desktop))
 
 - Experience with managing metadata in the .CSV format
 

@@ -230,7 +230,7 @@ After you add a message and click the "Commit changes” button, your file is in
 
 Since your **_data** folder contains several metadata files, the next step is to tell the CollectionBuilder template which one to use for your exhibition.
 
-To do this, we will edit the **_config.yml** file. Under the heading # COLLECTION SETTINGS change line 37 `metadata: demo-metadata` to the name of your metadata file you just uploaded. In our example, we changed it to `metadata: playbills-demo`.
+To do this, we will edit the **_config.yml** file. Under the heading # COLLECTION SETTINGS change line 37 `metadata: demo-metadata` to the name of your metadata file you just uploaded. In our example, we changed it to `metadata: ph-demo-playbills`.
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-03.png" alt="Screenshot of the relevant section of the config.yml file showing where to point CollectionBuilder to your metadata file." caption="Figure 3. Screenshot of the relevant section of the `config.yml` file showing where to point CollectionBuilder to your metadata file." %}
 

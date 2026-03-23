@@ -43,7 +43,7 @@ This tutorial should take about 3 to 5 hours to complete if you have your metada
 
 To follow the steps in this lesson, you will need the following:
 
-- Knowledge of how to write in Markdown (see [Getting Started with Markdown](https://programminghistorian.org/en/lessons/getting-started-with-markdown) by Sarah Simpkin).
+- Knowledge of how to write in Markdown (see [Getting Started with Markdown](https://programminghistorian.org/en/lessons/getting-started-with-markdown) by Sarah Simpkin)
 
 - Knowledge of how to manage a basic GitHub repository (see [Getting started with GitHub Desktop](https://docs.github.com/en/desktop/overview/getting-started-with-github-desktop))
 
@@ -84,6 +84,8 @@ While other CB tutorials ask you to upload digital files directly to GitHub, thi
 * Prioritize curatorial interpretation and presentation over technical stewardship
 
 By using already-hosted objects, students can create meaningful exhibitions without digitizing or uploading their own collections, making this option more inclusive and scalable.
+
+While linking to externally-hosted objects offers real advantages, it comes with some trade-offs that are worth acknowledging. External links are vulnerable to link rot, meaing that URLs can break if a host reorganizes, discontinues a service, or goes offline. Dependence on a specific platform, including the Internet Archive, introduces a single point of failure: if that service experiences downtime or removes content, your exhibit will become inaccessible.
 
 ## 1. Plan your exhibition
 

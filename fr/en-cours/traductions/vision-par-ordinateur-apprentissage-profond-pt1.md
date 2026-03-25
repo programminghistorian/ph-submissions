@@ -632,7 +632,7 @@ Nous constatons qu'il existe une assez grande différence entre les performances
 
 [^10]: Utiliser les imports étoile ('star imports') est généralement déconseillé en Python. Cependant, fastai utilise [`__all__`](https://perma.cc/3GHR-V8RN) pour fournir une liste de packages qui devraient être importés lors de l'utilisation de l'import étoile. Cette approche est utile pour les travaux exploratoires, mais il se peut que vous souhaitiez modifier vos importations pour qu'elles soient plus explicites.
 
-[^11]: En simplifiant énormément, on peut représenter chaque neurone comme une fonction affine `y = ax + b`. Parler de *paramètres* du modèle, c'est se réfèrer à l'ensemble des constantes `a` (le poids, *weight*) et `b` (le biais, *bias*) propres à chaque neurone qui sont mises à jour au cours de l'entrainement.
+[^11]: En simplifiant énormément, on peut représenter chaque neurone comme une fonction affine `y = ax + b`. Parler de *paramètres* du modèle, c'est se référer à l'ensemble des constantes `a` (le poids, *weight*) et `b` (le biais, *bias*) propres à chaque neurone qui sont mises à jour au cours de l'entrainement.
 
 [^12]: Les réseaux neuronaux sont théoriquement capables d'approximer n'importe quelle fonction. La preuve mathématique de cette capacité existe sous plusieurs formes, sous le nom de ["théorème d'approximation universelle"](https://perma.cc/2J3Q-PDTC). Ces preuves ne font pas partie des éléments que vous aurez besoin de connaitre pour utiliser l'apprentissage profond dans la pratique. Toutefois, si vous êtes intéressé, vous trouverez un bon aperçu de l'idée dans cette [vidéo YouTube](https://youtu.be/Ijqkc7OLenI).
 

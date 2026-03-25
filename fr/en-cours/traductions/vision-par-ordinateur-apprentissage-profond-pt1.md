@@ -284,8 +284,6 @@ learn = cnn_learner(
 
 Bien que nous ayons créé un modèle `cnn_learner`, nous n'avons pas encore entrainé le modèle. Ceci est fait en utilisant la méthode `fit`. L'entrainement est le processus qui permet au modèle de vision par ordinateur d'apprendre à prédire les étiquettes correctes pour les données. Il existe différentes façons d'entrainer (ajuster) ce modèle. Pour commencer, nous allons utiliser la méthode `fine_tune`. Dans cet exemple, la seule chose que nous allons passer à la méthode est le nombre d'époques (*epoch*) pour s'entrainer. Chaque passage à travers le jeu de données complet est une epoch. Le temps d'entrainement du modèle dépendra du contexte d'exécution de ce code et des ressources disponibles. Nous traiterons en détail de ces éléments ci-après.
 
-
-
 ```python
 learn.fine_tune(5)
 ```
@@ -365,7 +363,6 @@ Lorsque vous exécutez cette méthode, vous verrez une barre de progression indi
 
 ## Résultats
 
-
 Alors que les techniques d'apprentissage profond sont généralement perçues comme nécessitant de grandes quantités de données et une puissance de calcul importante, notre exemple montre que pour de nombreuses applications, des ensembles de données plus petits suffisent. Dans cet exemple, nous aurions pu utiliser d'autres approches ; l'objectif n'était pas de montrer la meilleure solution avec cet ensemble de données particulier, mais de donner une idée de ce qui est possible de faire avec un nombre limité d'exemples étiquetés.
 
 # Guide approfondi de la vision par ordinateur à l'aide de l'apprentissage profond
@@ -390,10 +387,10 @@ En zoomant sur la partie du flux de travail relative à l'apprentissage profond,
 
 {% include figure.html filename="fr-tr-vision-par-ordinateur-apprentissage-profond-pt1-06.png" alt="Un diagramme montrant un flux de travail pour entrainer un modèle d'apprentissage profond. Le pipeline contient deux cases, 'préparer le lot d'entrainement' et 'entrainement du modèle'. Une flèche traverse ces deux boites jusqu'à une boite  contenant le texte 'métriques'. Dans la case 'préparer le lot d'entrainement' se trouve un flux de travail montrant une image et une étiquette passant par une transformation, puis placées dans un lot. Ensuite, sous le titre 'entrainement du modèle', le flux de travail passe par un modèle, des prédictions et une valeur de perte. Ce flux comporte une flèche indiquant qu'il est répété. Il s'écoule également vers la boite 'métriques'." caption="Figure 6. La boucle d'entrainement du deep learning" %}
 
-Un résumé abstrait de la boucle  d'entrainement pour l'apprentissage supervisé serait donc : 
-- pré-traiter les images et les étiquettes (effectuer une préparation pour rendre l'entrée adaptée à un modèle d'apprentissage profond),
+Un résumé abstrait de la boucle d'entrainement pour l'apprentissage supervisé serait donc : 
+- pré-traiter les images et les étiquettes (effectuer une préparation pour rendre l'entrée adaptée à un modèle d'apprentissage profond)
 - faire des prédictions sur chacune des données (passer les données à travers le modèle)
-- calculer à quel point les prédictions sont erronées en les comparant aux étiquettes `vraies`, 
+- calculer à quel point les prédictions sont erronées en les comparant aux étiquettes `vraies` 
 - mettre à jour le modèle dans le but de générer de meilleures prédictions la prochaine fois. 
 
 En général, on envoie les données par lot (*batch*) au modèle, afin de favoriser la généralisation: la mise à jour du modèle s'effectue à partir de la moyenne des erreurs sur l'ensemble du lot envoyé. La *batch size* est l'hyperparamètre qui indique la quantité d'exemples envoyés à la fois.

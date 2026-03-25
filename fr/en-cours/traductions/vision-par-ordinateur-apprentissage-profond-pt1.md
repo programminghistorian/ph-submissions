@@ -123,8 +123,6 @@ Pour exécuter le code de la leçon sur Colab, vous devrez :
 Colab dispose d'une [documentation sur l'utilisation de ses carnets](ttps://colab.research.google.com/notebooks/welcome.ipynb) ainsi qu'une [Foire aux Questions](https://perma.cc/8EFW-AA2U) très utile.
 
 
-
-
 ### Travailler en local 
 
 Si vous ne souhaitez pas utiliser une configuration dans le cloud, vous pouvez suivre les [instructions de configuration locale de cette leçon](https://perma.cc/7WC9-VAC2).
@@ -184,7 +182,7 @@ Notre classifieur sera entrainé à prédire à quelle catégorie appartient une
 
 ## Introduction à la bibliothèque fastai
 
-[fastai](https://perma.cc/EG22-5FGB) est une bibliothèque Python pour l'apprentissage profond «&#xA0;qui fournit aux praticiens des composants de haut niveau pouvant rapidement et facilement fournir des résultats de pointe dans des domaines d'apprentissage profond standard, et fournit aux chercheurs des composants de bas niveau qui peuvent être assemblés et assortis pour construire de nouvelles approches&#xA0;»[^9]. La bibliothèque est développée par [fast.ai](https://perma.cc/FY9M-LJMG), un organisme de recherche qui vise à rendre l'apprentissage profond plus accessible. Outre la bibliothèque fastai, fast.ai organise également des cours gratuits et mène des recherches.
+[fastai](https://perma.cc/EG22-5FGB) est une bibliothèque Python pour l'apprentissage profond «&#xA0;qui fournit aux praticien(ne)s des composants de haut niveau pouvant rapidement et facilement fournir des résultats de pointe dans des domaines d'apprentissage profond standard, et fournit aux chercheur(e)s des composants de bas niveau qui peuvent être assemblés et assortis pour construire de nouvelles approches&#xA0;»[^9]. La bibliothèque est développée par [fast.ai](https://perma.cc/FY9M-LJMG), un organisme de recherche qui vise à rendre l'apprentissage profond plus accessible. Outre la bibliothèque fastai, fast.ai organise également des cours gratuits et mène des recherches.
 
 La bibliothèque fastai a été choisie pour ce tutoriel pour plusieurs raisons :
 
@@ -284,7 +282,7 @@ learn = cnn_learner(
 
 ### Entrainer le modèle
 
-Bien que nous ayons créé un modèle `cnn_learner`, nous n'avons pas encore entrainé le modèle. Ceci est fait en utilisant la méthode `fit`. L'entrainement est le processus qui permet au modèle de vision par ordinateur d'apprendre à prédire les étiquettes correctes pour les données. Il existe différentes façons d'entrainer (ajuster) ce modèle. Pour commencer, nous allons utiliser la méthode `fine_tune`. Dans cet exemple, la seule chose que nous allons passer à la méthode est le nombre d'époques (*epoch*) pour s'entrainer. Chaque passage à travers le jeu de données complet est une epoch. Le temps d'entrainement du modèle dépendra du contexte d'exécution de ce code et des ressources disponibles.  Nous traiterons en détail de  ces éléments ci-après.
+Bien que nous ayons créé un modèle `cnn_learner`, nous n'avons pas encore entrainé le modèle. Ceci est fait en utilisant la méthode `fit`. L'entrainement est le processus qui permet au modèle de vision par ordinateur d'apprendre à prédire les étiquettes correctes pour les données. Il existe différentes façons d'entrainer (ajuster) ce modèle. Pour commencer, nous allons utiliser la méthode `fine_tune`. Dans cet exemple, la seule chose que nous allons passer à la méthode est le nombre d'époques (*epoch*) pour s'entrainer. Chaque passage à travers le jeu de données complet est une epoch. Le temps d'entrainement du modèle dépendra du contexte d'exécution de ce code et des ressources disponibles. Nous traiterons en détail de ces éléments ci-après.
 
 
 

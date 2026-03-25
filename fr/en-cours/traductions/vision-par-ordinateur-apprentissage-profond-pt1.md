@@ -464,8 +464,7 @@ Par conséquent, nous utilisons toujours un jeu de données de «&#xA0;validatio
 
 On parle de «&#xA0;surapprentissage&#xA0;» (*overfitting*) lorsqu'un modèle réussit à faire des prédictions sur les données d'apprentissage, mais que ces prédictions ne se généralisent pas au-delà des données d'apprentissage. En effet, le modèle se «&#xA0;souvient&#xA0;» des données d'apprentissage au lieu d'apprendre des caractéristiques plus générales pour faire des prédictions correctes sur de nouvelles données: il a appris «&#xA0;par coeur&#xA0;» les données d'apprentissage et ne sait pas généraliser. Le jeu de données de validation permet d'éviter ce problème en vous permettant de vérifier que le modèle fonctionne bien sur des données qu'il n'a pas «&#xA0;vues&#xA0;» et utilisées lors de son entrainement. Il est en général utilisé à la fin de chaque epoch: une pratique courante est de sauvegarder un modèle par epoch, et de conserver le meilleur modèle uniquement à la fin de l'entrainement.
 
-Une division supplémentaire des données est effectuée afin de produire les métriques d'évaluation finales. Ce jeu de données est souvent appelé «&#xA0;jeu de test&#xA0;». Un jeu de test commun sera par exemple imposé pour valider les performances d'un modèle dans le cadre de concours de science des données, tels que ceux organisés sur Kaggle. Cela permet de s'assurer qu'un modèle est robuste dans les situations où les données de validation ont été délibérément ou accidentellement utilisées pour «&#xA0;jouer&#xA0;» avec les performances d'un modèle. Le jeu de test sera utilisé uniquement une fois, à la fin de l'entrainement et après la sélection du meilleur modèle (qui sera réalisée à l'aide des métriques produites sur le jeu de validation). 
-
+Une division supplémentaire des données est effectuée afin de produire les métriques d'évaluation finales. Ce jeu de données est souvent appelé «&#xA0;jeu de test&#xA0;». Un jeu de test commun sera par exemple imposé pour valider les performances d'un modèle dans le cadre de concours de science des données, tels que ceux organisés sur Kaggle. Cela permet de s'assurer qu'un modèle est robuste dans les situations où les données de validation ont été délibérément ou accidentellement utilisées pour «&#xA0;jouer&#xA0;» avec les performances d'un modèle. Le jeu de test sera utilisé uniquement une fois, à la fin de l'entrainement et après la sélection du meilleur modèle (qui sera réalisée à l'aide des métriques produites sur le jeu de validation).
 
 
 ## Apprentissage par transfert
@@ -503,7 +502,7 @@ Dans cette leçon, nous avons :
 
 - donné un aperçu général de la distinction entre les approches basées sur les règles et les approches basées sur l'apprentissage machine pour aborder un problème,
 - montré un exemple de base sur la façon d'utiliser fastai pour créer un classifieur d'images avec relativement peu de temps et de données d'apprentissage,
-- présenté une vue d'ensemble des étapes d'un pipeline d'apprentissage profond et identifié les étapes de ce pipeline où les chercheurs en sciences humaines devraient porter une attention particulière,
+- présenté une vue d'ensemble des étapes d'un pipeline d'apprentissage profond et identifié les étapes de ce pipeline auxquelles les chercheur(e)s en sciences humaines devraient porter une attention particulière,
 - réalisé une expérience rudimentaire pour essayer de vérifier si l'apprentissage par transfert est utile pour notre classifieur.
 
 Dans la prochaine partie de cette leçon, nous nous appuierons sur ces fondamentaux et entrerons plus dans les détails.
@@ -613,15 +612,15 @@ Nous constatons qu'il existe une assez grande différence entre les performances
 
 # Notes
 
-[^1]: Romein, C. Annemieke, Max Kemman, Julie M. Birkholz, James Baker, Michel De Gruijter, Albert Meroño‐Peñuela, Thorsten Ries, Ruben Ros, and Stefania Scagliola. ‘State of the Field: Digital History’. History 105, no. 365 (2020): 291–312. [https://doi.org/10.1111/1468-229X.12969](https://doi.org/10.1111/1468-229X.12969).
+[^1]: Romein, C. Annemieke, Max Kemman, Julie M. Birkholz, James Baker, Michel De Gruijter, Albert Meroño‐Peñuela, Thorsten Ries, Ruben Ros, et Stefania Scagliola. ‘State of the Field: Digital History’. History 105, no. 365 (2020): 291–312. [https://doi.org/10.1111/1468-229X.12969](https://doi.org/10.1111/1468-229X.12969).
 
 [^2]: Moretti, Franco. Distant Reading. Illustrated Edition. London ; New York: Verso Books, 2013.
 
-[^3]: Wevers, Melvin, and Thomas Smits. ‘The Visual Digital Turn: Using Neural Networks to Study Historical Images’. Digital Scholarship in the Humanities 35, no. 1 (1 April 2020): 194–207. [https://doi.org/10.1093/llc/fqy085](https://doi.org/10.1093/llc/fqy085).
+[^3]: Wevers, Melvin, et Thomas Smits. ‘The Visual Digital Turn: Using Neural Networks to Study Historical Images’. Digital Scholarship in the Humanities 35, no. 1 (1 April 2020): 194–207. [https://doi.org/10.1093/llc/fqy085](https://doi.org/10.1093/llc/fqy085).
 
-[^4]: Crawford, K., Paglen, T., 2019. Excavating AI: The Politics of Training Sets for Machine Learning. [https://www.excavating.ai](https://perma.cc/NE8D-P6AW) (accessed 2.17.20).
+[^4]: Crawford, K., et Paglen, T., 2019. Excavating AI: The Politics of Training Sets for Machine Learning. [https://www.excavating.ai](https://perma.cc/NE8D-P6AW) (accessed 2.17.20).
 
-[^5]: Jo, Eun Seo, and Timnit Gebru. ‘Lessons from Archives: Strategies for Collecting Sociocultural Data in Machine Learning’. In Proceedings of the 2020 Conference on Fairness, Accountability, and Transparency, 306–316. FAT\* ’20. New York, NY, USA: Association for Computing Machinery, 2020. [https://doi.org/10.1145/3351095.3372829](https://doi.org/10.1145/3351095.3372829).
+[^5]: Jo, Eun Seo, et Timnit Gebru. ‘Lessons from Archives: Strategies for Collecting Sociocultural Data in Machine Learning’. In Proceedings of the 2020 Conference on Fairness, Accountability, and Transparency, 306–316. FAT\* ’20. New York, NY, USA: Association for Computing Machinery, 2020. [https://doi.org/10.1145/3351095.3372829](https://doi.org/10.1145/3351095.3372829).
 
 [^6]: Ces annotations comprennent une "boite englobante" autour des images, ainsi que des informations sur le type d'image contenu dans cette boite. Ce modèle de détection d'objets a été entrainé sur ces données et a ensuite été utilisé pour faire des prédictions sur l'ensemble de la collection Chronicling America. Le modèle extrait les images de la page et les classe dans une parmi sept catégories. Lee, Benjamin Charles Germain, Jaime Mears, Eileen Jakeway, Meghan Ferriter, Chris Adams, Nathan Yarasavage, Deborah Thomas, Kate Zwaard, and Daniel S. Weld. ‘The Newspaper Navigator Dataset: Extracting And Analyzing Visual Content from 16 Million Historic Newspaper Pages in Chronicling America’. ArXiv:2005.01583 [Cs], 4 May 2020. [https://doi.org/10.48550/arXiv.2005.01583](https://doi.org/10.48550/arXiv.2005.01583).
 
@@ -629,7 +628,7 @@ Nous constatons qu'il existe une assez grande différence entre les performances
 
 [^8]: The Indianapolis journal. [volume] (Indianapolis [Ind.]) 1867-1904, February 06, 1890, Page 8, Image 8. Image provided by Indiana State Library. [https://chroniclingamerica.loc.gov/lccn/sn82015679/1890-02-06/ed-1/seq-8/](https://perma.cc/W2HA-YCSZ).
 
-[^9]: Howard, Jeremy, and Sylvain Gugger. ‘Fastai: A Layered API for Deep Learning’. Information 11, no. 2 (16 February 2020): 108. [https://doi.org/10.3390/info11020108](https://doi.org/10.3390/info11020108).
+[^9]: Howard, Jeremy, et Sylvain Gugger. ‘Fastai: A Layered API for Deep Learning’. Information 11, no. 2 (16 February 2020): 108. [https://doi.org/10.3390/info11020108](https://doi.org/10.3390/info11020108).
 
 [^10]: Utiliser les imports étoile ('star imports') est généralement déconseillé en Python. Cependant, fastai utilise [`__all__`](https://perma.cc/3GHR-V8RN) pour fournir une liste de packages qui devraient être importés lors de l'utilisation de l'import étoile. Cette approche est utile pour les travaux exploratoires, mais il se peut que vous souhaitiez modifier vos importations pour qu'elles soient plus explicites.
 

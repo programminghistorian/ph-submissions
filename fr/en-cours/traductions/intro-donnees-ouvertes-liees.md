@@ -378,99 +378,112 @@ Pour terminer, nous allons interroger des données ouvertes liées et explorer c
 
 Comme je l’ai mentionné d’emblée, *Programming Historian* propose une [leçon entièrement dédiée](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL) (en anglais) à SPARQL par Matthew Lincoln. Ma section finale n’est qu’un survol des fondements conceptuels de SPARQL. Si cela pique votre curiosité, vous pourrez solidifier vos bases avec la leçon de Lincoln.
 
-Nous exécuterons nos requêtes SPARQL avec [DBpedia](https://fr.wikipedia.org/wiki/DBpedia), qui est un très grand jeu de données dérivé de *Wikipédia*. En plus de contenir une foule d’informations difficiles à trouver en utilisant l’interface normale de *Wikipédia*, il possède plusieurs [points d’accès](https://fr.wikipedia.org/wiki/API_Web#Points_d'accès) SPARQL ― des interfaces où vous pouvez envoyer des requêtes SPARQL et obtenir les triplets correspondants de l’entrepôt DBpedia.
+Nous exécuterons nos requêtes SPARQL sur les données [DBpedia](https://fr.wikipedia.org/wiki/DBpedia). Il s’agit d’un très grand jeu de données dérivé de *Wikipédia*. En plus de contenir une foule d’informations difficiles à trouver en utilisant l’interface normale de *Wikipédia*, il possède plusieurs [points d’accès](https://fr.wikipedia.org/wiki/API_Web#Points_d'accès) SPARQL ― des interfaces où vous pouvez envoyer des requêtes SPARQL et obtenir les triplets correspondants de l’entrepôt DBpedia.
 
-Le point d’accès SPARQL que j’utilise se nomme [snorql](http://dbpedia.org/snorql/). À l’occasion, il pourrait arriver qu’il soit inaccessible. Si cela devait survenir, essayez de chercher *dbpedia sparql* et vous devriez trouver une solution de remplacement.
+Le point d’accès SPARQL que nous utiliserons nous permettra d’atteindre les données [publiées et hébergées sur la plateforme TriplyDB](https://triplydb.com/DBpedia-association/dbpedia/sparql) par DBpedia. Cette plateforme offre l’avantage de fournir une [interface conviviale basée sur YASGUI](https://docs.triply.cc/triply-db-getting-started/viewing-data/#sparql-ide), un éditeur de requêtes SPARQL publié en tant que logiciel libre.
 
 <div class="alert alert-info">
-N.B. Ce point d’accès fonctionne avec la version anglophone de Wikipédia.
+Les données du point d’accès de la plateforme TriplyDB ne font pas l’objet d’une mise à jour régulière, mais offrent l’avantage d’une plus grande stabilité, utile aux fins de la présente démonstration. Il serait également tout à fait possible d’exécuter les requêtes suivantes directement sur le [point d’accès de DBpedia](https://dbpedia.org/sparql), bien que les données qui s’y trouvent sont plus dynamiques, et son interface de requête moins conviviale.
 </div>
 
-Si vous accédez à l’URL de l’interface snorql (ci-dessus), vous remarquerez d’abord qu’un certain nombre de préfixes ont été préalablement déclarés pour nous, ce qui est pratique. Vous devriez également reconnaître certains d’entre eux.
+Si vous accédez à l’URL de l’[interface de requête sur TriplyDB](https://triplydb.com/DBpedia-association/dbpedia/sparql), vous remarquerez d’abord que l’éditeur propose une requête par défaut&nbsp;:
 
-{% include figure.html filename="fr-tr-intro-aux-donnees-liees-03.png" alt="Interface de requête snorql permettant d’effectuer des requêtes SPARQL sur le point d’accès de DBpedia, constituée d’une liste de préfixes déclarés par défaut, sous laquelle se trouve un champ de saisie pour la rédaction des requêtes." caption="Figure&nbsp;3. Interface de requête snorql par défaut, avec quelques préfixes préalablement déclarés" %}
+{% include figure.html filename="fr-tr-intro-aux-donnees-liees-03.png" alt="Interface de requête sur la plateforme TriplyDB, permettant d’effectuer des requêtes SPARQL sur le jeu de données de DBpedia hébergé sur cette plateforme. L’interface présente par défaut une requête SPARQL générique." caption="Figure&nbsp;3. Interface de requête sur la plateforme TriplyDB, avec une requête par défaut." %}
 
 Dans l’éditeur de requête, sous les déclarations de préfixes, vous devriez voir&nbsp;:
 
 ```sparql
-SELECT * WHERE {
-...
-}
+select * where {
+  ?s ?p ?o.
+} limit 10
 ```
 
-Si vous avez déjà écrit une requête de base de données avec le langage de requête structuré (*Structured Query Language*, en anglais, mieux connu comme [SQL](https://fr.wikipedia.org/wiki/SQL)), cela devrait vous sembler assez familier et pourra vous aider à apprendre SPARQL. Dans le cas contraire, ne vous inquiétez pas. Les mots-clés utilisés, `SELECT` et `WHERE`, ne sont pas [sensibles à la casse des caractères](https://fr.wikipedia.org/wiki/Sensibilit%C3%A9_%C3%A0_la_casse), mais certaines parties de la requête SPARQL peuvent l’être (comme indiqué plus bas). Je vous recommande donc de vous en tenir à la casse proposée à travers les exemples de cette leçon.
+Si vous avez déjà écrit une requête avec le langage de requête structuré (*Structured Query Language*, en anglais, mieux connu comme [SQL](https://fr.wikipedia.org/wiki/SQL)), cela devrait vous sembler assez familier et pourra vous aider à apprendre SPARQL. Dans le cas contraire, ne vous inquiétez pas.
 
-`SELECT` signifie *affiche quelque chose* et `*` signifie *donne-moi tout* (autrement dit&nbsp;: affiche tout). `WHERE` présente une condition et c’est là où nous détaillerons le genre de choses que nous voulons obtenir de notre requête.
+Les mots-clés utilisés, `select` et `where`, ne sont pas [sensibles à la casse des caractères](https://fr.wikipedia.org/wiki/Sensibilit%C3%A9_%C3%A0_la_casse), mais certaines parties de la requête SPARQL peuvent l’être (comme indiqué plus bas). Je vous recommande donc de vous en tenir à la casse proposée dans les exemples de cette leçon.
 
-Commençons par un exemple simple afin de voir comment cela fonctionne. Copiez (ou mieux, saisissez) ceci dans l’éditeur de requête&nbsp;:
+`select` signifie *affiche quelque chose* et `*` signifie *montre-moi tout* (autrement dit&nbsp;: affiche tout). `where` présente une condition et c’est là que nous détaillerons le genre de choses que nous voulons obtenir de notre requête.
+
+Commençons par un exemple simple afin de voir comment cela fonctionne. Saisissez ceci dans l’éditeur de requête (idéalement sans effectuer de copier-coller)&nbsp;:
 
 ```sparql
-SELECT * WHERE {
-  :Lyndal_Roper ?b ?c
+select * where {
+  dbr:Lyndal_Roper ?b ?c
 }
 ```
 
-Appuyez sur _Go!_[^5]
+Notez qu’aussitôt saisi le préfixe `dbr:`, l’interface ajoutera automatiquement la déclaration du préfixe à la première ligne de la requête, ce qui est très pratique. La requête complète est donc celle-ci :
 
-Si vous avez laissé la sélection du menu déroulant sur **Browse**, vous devriez obtenir deux colonnes avec les en-têtes **b** et **c**.
-Notez bien ici que la casse des caractères fait une différence&nbsp;: `lyndal_roper` ne renverra rien.
+```sparql
+prefix dbr: <http://dbpedia.org/resource/>
+select * where {
+  dbr:Lyndal_Roper ?b ?c
+}
+```
+
+Pour exécuter la requête, appuyez sur le bouton « Execute query », situé en haut à droite de l’éditeur, ou effectuez <kbd>Ctrl</kbd> + <kbd>Entrée</kbd>[^5].
+
+Vous devriez obtenir deux colonnes avec les en-têtes **b** et **c**.
+Notez bien ici que la casse des caractères fait une différence&nbsp;: `dbr:lyndal_roper` ne renverra rien.
 
 {% include figure.html filename="fr-tr-intro-aux-donnees-liees-04.png" alt="Extrait d’un tableau des résultats d’une requête SPARQL dont chaque ligne renvoie une correspondance avec le modèle de triplet exprimé dans la requête, en affichant deux colonnes correspondant respectivement aux variables «&nbsp;b&nbsp;» et «&nbsp;c&nbsp;» dans la requête." caption="Figure&nbsp;4. Extrait des résultats d’une requête qui vise à lister tous les triplets ayant «&nbsp;Lyndal_Roper&nbsp;» comme sujet." %}
 
 Que s’est-il donc passé&nbsp;? Et comment savoir ce qu’il faut saisir&nbsp;?
 
-À vrai dire, je ne le savais pas vraiment, ce qui est un problème avec les points d’accès SPARQL. Lorsque vous apprenez à connaître un jeu de données, vous devez essayer de trouver quels sont les termes utilisés. Puisque ces données proviennent de *Wikipédia* et que je souhaitais obtenir de l’information sur des historiennes, j’ai consulté l’article de *Wikipédia* sur [Lyndal Roper](https://fr.wikipedia.org/wiki/Lyndal_Roper).
+À vrai dire, je ne le savais pas vraiment : c’est une difficulté des points d’accès SPARQL. Lorsque vous apprenez à connaître un jeu de données, vous devez essayer de trouver quels sont les termes utilisés par le modèle. Puisque ces données proviennent de *Wikipédia* et que je souhaitais obtenir de l’information sur des historiennes, j’ai consulté l’article de *Wikipédia* sur Lyndal Roper, accessible à cette adresse : [https://fr.wikipedia.org/wiki/Lyndal_Roper](https://fr.wikipedia.org/wiki/Lyndal_Roper).
 
 La partie finale de l’URL est `Lyndal_Roper` et j’ai conclu que cette chaîne de caractères était probablement la façon dont DBpedia se réfère à l’article. Parce que je n’en sais pas plus sur ce qui pourrait se trouver dans les triplets qui mentionnent Roper, j’utilise `?b` et `?c`&nbsp;:
 ce ne sont que des éléments de substitution. J’aurais tout aussi bien pu saisir `?peu_importe` et `?comme_vous_voulez` pour que les en-têtes de colonnes aient ces valeurs. Lorsque vous aurez besoin de plus de précision pour vos résultats, il sera important de nommer vos colonnes adéquatement.
 
-Essayez maintenant votre propre requête SPARQL&nbsp;: choisissez un article de *Wikipédia* (en anglais) et copiez la partie finale de l’URL, celle qui se trouve après la dernière barre oblique, puis collez-la à la place de`Lyndal_Roper` dans l’éditeur de requête snorql. Appuyez sur _Go!_
+Essayez maintenant votre propre requête SPARQL&nbsp;: choisissez un article de *Wikipédia* et copiez la partie finale de l’URL, celle qui se trouve après la dernière barre oblique, puis collez-la à la place de`Lyndal_Roper` dans l’éditeur, puis exécutez la requête.
 
-À partir des informations disponibles dans ces résultats, il est possible de préparer des requêtes plus précises. Il faut procéder par essais et erreurs, du moins pour moi, alors ne vous inquiétez pas si certaines ne fonctionnent pas.
+À partir des informations disponibles dans ces résultats, il est possible de préparer des requêtes plus précises. Il faut procéder par essais et erreurs, alors ne vous inquiétez pas si certaines ne fonctionnent pas.
 
 Revenons aux résultats de la requête que j’ai exécutée plus tôt&nbsp;:
 
 ```sparql
-SELECT * WHERE {
-  :Lyndal_Roper ?b ?c
+select * where {
+  dbr:Lyndal_Roper ?b ?c
 }
 ```
 
-Je peux voir une longue liste de valeurs dans la colonne **c**. Ce sont tous des attributs de Roper dans *DBpedia* et ils nous aideront à trouver d’autres personnes avec ces attributs. Par exemple, j’y trouve l’URI `http://dbpedia.org/class/yago/Historian110177150`. Pourrais-je l’utiliser pour obtenir une liste de spécialistes en histoire&nbsp;? Je vais l’insérer dans ma requête, mais à la troisième position, puisque c’est là où je l’ai trouvé dans mes résultats sur Lyndal Roper. 
+Je peux voir une longue liste de valeurs dans la colonne **c**. Ce sont tous des attributs de Roper dans *DBpedia* et ils nous aideront à trouver d’autres personnes avec ces attributs. Par exemple, j’y trouve l’URI préfixé `dbr:Historian`. Pourrais-je l’utiliser pour obtenir une liste de spécialistes en histoire&nbsp;? Je vais l’insérer dans ma requête, mais à la troisième position, puisque c’est là où je l’ai trouvé dans mes résultats sur Lyndal Roper. 
 
 Voici donc l’allure de ma requête&nbsp;:
 
 ```sparql
-SELECT * WHERE {
-  ?historian_name ?predicate <http://dbpedia.org/class/yago/Historian110177150>
+prefix dbr: <http://dbpedia.org/resource/>
+select * where {
+  ?historian ?predicate dbr:Historian
 }
 ```
 
-J’ai fait ici un petit changement. Si seulement cette requête fonctionne, je m’attends à ce que mes spécialistes en histoire soient dans la première colonne, parce que _historian_ ne semble pas être un prédicat&nbsp;: il ne fonctionne pas comme un verbe dans une phrase&nbsp;; donc j’appellerai ma première colonne **historian_name** et ma seconde, sur laquelle je ne sais pas grand-chose, **predicate**.
+J’ai fait ici un petit changement. Si seulement cette requête fonctionne, je m’attends à ce que mes spécialistes en histoire soient dans la première colonne, parce que _historian_ ne semble pas être un prédicat&nbsp;: il ne fonctionne pas comme un verbe dans une phrase&nbsp;; donc j’appellerai ma première colonne **historian** et ma seconde, sur laquelle je ne sais pas grand-chose, **predicate**.
 
 Exécutez la requête. Cela fonctionne-t-il pour vous&nbsp;? J’obtiens une longue liste de spécialistes en histoire.
 
-{% include figure.html filename="fr-tr-intro-aux-donnees-liees-05.png" alt="Extrait d’un tableau des résultats d’une requête SPARQL dont chaque ligne renvoie une correspondance avec le modèle de triplet exprimé dans la requête, en affichant deux colonnes correspondant respectivement aux variables «&nbsp;historian_name&nbsp;» et «&nbsp;predicate&nbsp;» du modèle." caption="Figure&nbsp;5. Spécialistes en histoire selon DBpedia" %}
+{% include figure.html filename="fr-tr-intro-aux-donnees-liees-05.png" alt="Extrait d’un tableau des résultats d’une requête SPARQL dont chaque ligne renvoie une correspondance avec le modèle de triplet exprimé dans la requête, en affichant deux colonnes correspondant respectivement aux variables «&nbsp;historian&nbsp;» et «&nbsp;predicate&nbsp;»." caption="Figure&nbsp;5. Spécialistes en histoire selon DBpedia" %}
 
-Ainsi, cela fonctionne pour créer des listes, ce qui est utile, mais il serait beaucoup plus efficient de combiner des listes afin de créer des intersections entre des ensembles. J’ai trouvé quelques éléments supplémentaires qu’il pourrait être intéressant de chercher dans les attributs de Lyndal Roper sur DBpedia&nbsp;: <http://dbpedia.org/class/yago/WikicatBritishHistorians> and <http://dbpedia.org/class/yago/WikicatWomenHistorians>. Il est très facile de combiner ces attributs en demandant qu’une variable soit renvoyée (dans notre cas`?nom`), puis de l’utiliser dans de multiples lignes d’une requête. Notez également l’espace et le point final de la première ligne commençant avec `?name`&nbsp;:
+Ainsi, cela fonctionne pour créer des listes, ce qui est utile, mais il serait beaucoup plus intéressant de combiner des listes afin de créer des intersections entre différents ensembles. J’ai trouvé quelques éléments supplémentaires dans les attributs de Lyndal Roper qu’il pourrait être intéressant de chercher sur DBpedia&nbsp;: `dbr:Category:Australian_historians` and `dbr:Category:Australian_women_historians`. Il est très facile de combiner ces attributs en demandant l’affichage d’une variable (dans notre cas`?historienne`), puis de l’utiliser dans de multiples lignes d’une requête. Notez également l’espace suivie du point final de la première ligne commençant avec `?historienne`&nbsp;:
 
 ```sparql
-SELECT ?name WHERE {
-  ?name ?b <http://dbpedia.org/class/yago/WikicatBritishHistorians> .
-  ?name ?b <http://dbpedia.org/class/yago/WikicatWomenHistorians>
+prefix dbr: <http://dbpedia.org/resource/>
+select ?historienne where {
+  ?historienne ?b dbr:Category:Australian_historians .
+  ?historienne ?b dbr:Category:Australian_women_historians
 }
 ```
 
-Ça fonctionne&nbsp;! J’obtiens cinq entrées. Au moment d’écrire cette leçon, il y a cinq historiennes britanniques dans *DBpedia*...
+Ça fonctionne&nbsp;! J’obtiens six entrées. Au moment d’écrire cette leçon, il y a six historiennes australiennes, répertoriées au sein de ce jeu de données, qui sont catégorisées à la fois comme spécialiste en histoire d’origine australienne et comme femme australienne spécialiste en histoire.
 
-{% include figure.html filename="fr-tr-intro-aux-donnees-liees-06.png" alt="Liste des historiennes britanniques présentes dans les données de DBpedia en anglais, apparaîssant sous le champ de saisie dans lequel on peut y lire la requête correspondant aux résultats de la liste." caption="Figure&nbsp;6. Historiennes britanniques selon DBpedia" %}
+{% include figure.html filename="fr-tr-intro-aux-donnees-liees-06.png" alt="Liste des historiennes australiennes présentes dans les données de DBpedia sur TriplyDB, apparaîssant sous le champ de saisie dans lequel on peut y lire la requête correspondant aux résultats de la liste." caption="Figure&nbsp;6. Liste des historiennes australiennes répertoriées dans le jeu de données." %}
 
-Seulement cinq historiennes&nbsp;? Bien sûr, en réalité, il y en a bien davantage, comme nous pourrions facilement le constater en remplaçant le nom par Alison Weir, disons, dans notre première requête sur Lyndal Roper. Voilà qui nous mène au problème que j’ai mentionné plus tôt avec *Dbpedia*&nbsp;: cet entrepôt n’est pas vraiment constant quant à l’information structurelle sur les types de personnes qu’il utilise. Nos requêtes permettent de lister quelques historiennes britanniques, mais tout indique qu’il est impossible de générer une liste significative de personnes dans cette catégorie. Tout ce que nous avons trouvé, ce sont les personnes qui ont une entrée sur *Wikipédia* en anglais et qui ont été catégorisées comme &laquo;&nbsp;historienne britannique&nbsp;&raquo;.
+Seulement six historiennes&nbsp;? Bien sûr, en réalité, il y en a bien davantage, comme nous pourrions facilement le constater en remplaçant le nom de Lyndal Roper par Cassandra Pybus dans notre première requête. Voilà qui nous mène au problème que j’ai mentionné plus tôt avec *Dbpedia*&nbsp;: cet entrepôt n’est pas vraiment constant quant à l’information structurelle sur les types de personnes qu’il utilise. Nos requêtes permettent de lister quelques historiennes britanniques, mais tout indique qu’il est impossible de générer une liste significative de personnes dans cette catégorie. Tout ce que nous avons trouvé, ce sont les personnes qui ont une entrée sur *Wikipédia* en anglais et qui ont été catégorisées comme &laquo;&nbsp;historienne australienne&nbsp;&raquo;. Cela exclut par exemple les femmes australiennes spécialistes en histoire qui ne sont pas également catégorisées comme spécialiste en histoire d’origine australienne, puisque notre dernière requête renvoie l’intersection des deux ensembles.
 
-En utilisant SPARQL sur *DBpedia*, vous devez faire preuve de prudence quant aux incohérences des contenus alimentés par les communautés. Vous pourriez utiliser SPARQL exactement de la même manière sur un jeu de données construit à l’aide de méthodes de curation plus rigoureuses.
+En utilisant SPARQL sur *DBpedia*, vous devez faire preuve de prudence quant à certaines incohérences, car ces contenus sont alimentés par des communautés. Cela dit, vous pourriez utiliser SPARQL exactement de la même manière sur un jeu de données construit à l’aide de méthodes de curation plus rigoureuses.
 Par exemple, en utilisant la bibliothèque numérique Persée ([https://data.persee.fr/explorer/sparql-endpoint/](https://data.persee.fr/explorer/sparql-endpoint/)), vous pouvez vous attendre à obtenir des résultats plus robustes (voici de la documentation sur cet entrepôt&nbsp;: [https://data.persee.fr/ressources/le-triplestore-de-persee/](https://data.persee.fr/ressources/le-triplestore-de-persee/), avec son schéma de données&nbsp;: [https://data.persee.fr/explorer/schemas-de-donnees/](https://data.persee.fr/explorer/schemas-de-donnees/)).
 
-Quoi qu’il en soit, malgré son manque de constance, *DBpedia* demeure un excellent choix pour apprendre SPARQL. Cette leçon ne fut qu’une brève introduction, mais il y bien plus à faire avec la leçon de Lincoln, [*Using SPARQL to access Linked Open Data*](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL).
+Quoi qu’il en soit, malgré son manque de constance, *DBpedia* demeure un excellent choix pour apprendre SPARQL. Cette leçon ne fut qu’une brève introduction en la matière, mais il y bien plus à faire avec la leçon de Lincoln, [*Using SPARQL to access Linked Open Data*](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL).
 
 ## Ressources et lectures complémentaires
 

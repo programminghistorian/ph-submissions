@@ -388,10 +388,10 @@ En zoomant sur la partie du flux de travail relative à l'apprentissage profond,
 {% include figure.html filename="fr-tr-vision-par-ordinateur-apprentissage-profond-pt1-06.png" alt="Un diagramme montrant un flux de travail pour entrainer un modèle d'apprentissage profond. Le pipeline contient deux cases, 'préparer le lot d'entrainement' et 'entrainement du modèle'. Une flèche traverse ces deux boites jusqu'à une boite  contenant le texte 'métriques'. Dans la case 'préparer le lot d'entrainement' se trouve un flux de travail montrant une image et une étiquette passant par une transformation, puis placées dans un lot. Ensuite, sous le titre 'entrainement du modèle', le flux de travail passe par un modèle, des prédictions et une valeur de perte. Ce flux comporte une flèche indiquant qu'il est répété. Il s'écoule également vers la boite 'métriques'." caption="Figure 6. La boucle d'entrainement du deep learning" %}
 
 Un résumé abstrait de la boucle d'entrainement pour l'apprentissage supervisé serait donc : 
-- pré-traiter les images et les étiquettes (effectuer une préparation pour rendre l'entrée adaptée à un modèle d'apprentissage profond)
-- faire des prédictions sur chacune des données (passer les données à travers le modèle)
-- calculer à quel point les prédictions sont erronées en les comparant aux étiquettes `vraies` 
-- mettre à jour le modèle dans le but de générer de meilleures prédictions la prochaine fois. 
+- Pré-traiter les images et les étiquettes (effectuer une préparation pour rendre l'entrée adaptée à un modèle d'apprentissage profond).
+- Faire des prédictions sur chacune des données (passer les données à travers le modèle).
+- Calculer à quel point les prédictions sont erronées en les comparant aux étiquettes `vraies`.
+- Mettre à jour le modèle dans le but de générer de meilleures prédictions la prochaine fois. 
 
 En général, on envoie les données par lot (*batch*) au modèle, afin de favoriser la généralisation: la mise à jour du modèle s'effectue à partir de la moyenne des erreurs sur l'ensemble du lot envoyé. La *batch size* est l'hyperparamètre qui indique la quantité d'exemples envoyés à la fois.
 L'ensemble du corpus est donc divisé en lots, envoyés successivement au modèle. Le passage de l'ensemble du corpus s'appelle, nous le rappelons, une époque (ou communément *epoch*). Plusieurs époques sont nécessaires pour entrainer correctement un modèle. Au cours de cette boucle d'apprentissage, des mesures sont communiquées pour permettre à l'utilisateur du modèle d'évaluer l'efficacité de ce dernier.

@@ -6,7 +6,7 @@ collection: lessons
 date: YYYY-MM-DD
 authors:
 - Kirsty Edginton
-- Forename Surname
+- Felix Vanden Borre
 reviewers:
 - Forename Surname
 - Forename Surname
@@ -112,6 +112,7 @@ Format all references using the Chicago Manual of Style.
 ### Difficulty
 
 ## Use Case
+A library or archive has a collection of digital documents that have been OCR'd (see lesson on how to OCR) or are born digital. They want to enhance the metadata for named entities, specifically people and organisations. Documents such as newsletters often refer to the same person or organisation in multiple ways making it difficult to search records consistently. Named Entity Recognition (NER) picks out the individual entities and linked data maps them to an authority file, which creates a consistency when referring to the entity in the metadata. This increases the discoverability of the collection and helps researchers track the activities of named entities across it. Enriching the metadata with linked data also opens up opportunities for data visualisations and knowledge maps, as well as interoperability with external systems such as Wikidata and the Library of Congress.
 ### Dataset
 ### Software/tool
 

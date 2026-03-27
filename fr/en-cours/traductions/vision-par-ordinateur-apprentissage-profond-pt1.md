@@ -65,7 +65,7 @@ Cette leçon en deux parties a pour but de&nbsp;:
 Cette leçon n'a pas pour but de&nbsp;:
 
 - Reproduire d'autres introductions plus générales à l'apprentissage profond, bien qu'elle en partage _une partie_ des objectifs pédagogiques.
-- Couvrir tous les détails de l'apprentissage profond et de la vision par ordinateur ; il s'agit de vastes sujets, qu'il n'est pas possible de traiter en profondeur ici.
+- Couvrir tous les détails de l'apprentissage profond et de la vision par ordinateur &nbsp;; il s'agit de vastes sujets, qu'il n'est pas possible de traiter en profondeur ici.
 
 
 
@@ -158,7 +158,7 @@ Dans cette leçon, nous allons travailler avec un jeu de données dérivés du p
 
 Les données du projet Newspaper Navigator ont été créées à l'aide d'un modèle d'apprentissage profond pour la [détection d'objets](https://fr.wikipedia.org/wiki/D%C3%A9tection_d%27objet). Ce modèle a été entrainé sur des pages annotées de Chronicling America datant de la Première Guerre mondiale, dont des annotations faites par les volontaires du projet de crowdsourcing [Beyond Words](https://perma.cc/ZBP2-US4H).[^6] Il a permis de classer ces images dans sept catégories, dont photographie et publicité.
 
-Si vous souhaitez en savoir plus sur la façon dont cet ensemble de données a été créé, reportez-vous à l'[article](https://doi.org/10.48550/arXiv.2005.01583) qui décrit ce travail, ou consultez le [dépôt GitHub](https://perma.cc/CFT7-RUJR) qui contient le code et les données d'entrainement. Nous ne reproduirons pas ce modèle. Nous allons plutôt utiliser la sortie de ce modèle comme point de départ pour créer les données que nous utilisons dans ce tutoriel. Puisque les données du Newspaper Navigator sont prédites par un modèle d'apprentissage automatique, elles contiennent des erreurs ; pour l'instant, nous accepterons que les données avec lesquelles nous travaillons soient imparfaites. Un certain degré d'imperfection et d'erreur est souvent le prix à payer si nous voulons travailler avec des collections «&#xA0;à l'échelle&#xA0;» en utilisant des méthodes informatiques.
+Si vous souhaitez en savoir plus sur la façon dont cet ensemble de données a été créé, reportez-vous à l'[article](https://doi.org/10.48550/arXiv.2005.01583) qui décrit ce travail, ou consultez le [dépôt GitHub](https://perma.cc/CFT7-RUJR) qui contient le code et les données d'entrainement. Nous ne reproduirons pas ce modèle. Nous allons plutôt utiliser la sortie de ce modèle comme point de départ pour créer les données que nous utilisons dans ce tutoriel. Puisque les données du Newspaper Navigator sont prédites par un modèle d'apprentissage automatique, elles contiennent des erreurs &nbsp;; pour l'instant, nous accepterons que les données avec lesquelles nous travaillons soient imparfaites. Un certain degré d'imperfection et d'erreur est souvent le prix à payer si nous voulons travailler avec des collections «&#xA0;à l'échelle&#xA0;» en utilisant des méthodes informatiques.
 
 
 ### Classer des publicités
@@ -202,7 +202,7 @@ La section suivante décrit les étapes de la création et de l'apprentissage d'
 2. Créer un modèle
 3. Entrainer le modèle
 
-Ces étapes seront abordées assez rapidement ; ne vous inquiétez pas si vous avez l'impression de ne pas tout suivre dans cette section, la leçon reviendra sur ce qui se passe de manière plus détaillée lorsque nous arriverons à la section [le flux de travail d'un problème de vision par ordinateur](#the-workflow-of-a-supervised-computer-vision-problem).
+Ces étapes seront abordées assez rapidement &nbsp;; ne vous inquiétez pas si vous avez l'impression de ne pas tout suivre dans cette section, la leçon reviendra sur ce qui se passe de manière plus détaillée lorsque nous arriverons à la section [le flux de travail d'un problème de vision par ordinateur](#the-workflow-of-a-supervised-computer-vision-problem).
 
 La première chose que nous allons faire est d'importer les modules nécessaires de la bibliothèque fastai. Dans ce cas, nous importons `vision.all` puisque nous travaillons sur une tâche de vision par ordinateur.[^10]
 
@@ -363,7 +363,7 @@ Lorsque vous exécutez cette méthode, vous verrez une barre de progression indi
 
 ## Résultats
 
-Alors que les techniques d'apprentissage profond sont généralement perçues comme nécessitant de grandes quantités de données et une puissance de calcul importante, notre exemple montre que pour de nombreuses applications, des ensembles de données plus petits suffisent. Dans cet exemple, nous aurions pu utiliser d'autres approches ; l'objectif n'était pas de montrer la meilleure solution avec cet ensemble de données particulier, mais de donner une idée de ce qui est possible de faire avec un nombre limité d'exemples étiquetés.
+Alors que les techniques d'apprentissage profond sont généralement perçues comme nécessitant de grandes quantités de données et une puissance de calcul importante, notre exemple montre que pour de nombreuses applications, des ensembles de données plus petits suffisent. Dans cet exemple, nous aurions pu utiliser d'autres approches &nbsp;; l'objectif n'était pas de montrer la meilleure solution avec cet ensemble de données particulier, mais de donner une idée de ce qui est possible de faire avec un nombre limité d'exemples étiquetés.
 
 # Guide approfondi de la vision par ordinateur à l'aide de l'apprentissage profond
 
@@ -614,7 +614,7 @@ Nous constatons qu'il existe une assez grande différence entre les performances
 
 [^1]: C. Annemieke Romein, Max Kemman, Julie M. Birkholz, James Baker, Michel De Gruijter, Albert Meroño‐Peñuela, Thorsten Ries, Ruben Ros, et Stefania Scagliola. ‘State of the Field: Digital History’. History 105, no. 365 (2020): 291–312. [https://doi.org/10.1111/1468-229X.12969](https://doi.org/10.1111/1468-229X.12969).
 
-[^2]: Franco Moretti, Distant Reading. Illustrated Edition. London ; New York: Verso Books, 2013.
+[^2]: Franco Moretti, Distant Reading. Illustrated Edition. London &nbsp;; New York: Verso Books, 2013.
 
 [^3]: Melvin Wevers et Thomas Smits, ‘The Visual Digital Turn: Using Neural Networks to Study Historical Images’. Digital Scholarship in the Humanities 35, no. 1 (1 April 2020): 194–207. [https://doi.org/10.1093/llc/fqy085](https://doi.org/10.1093/llc/fqy085).
 
@@ -624,7 +624,7 @@ Nous constatons qu'il existe une assez grande différence entre les performances
 
 [^6]: Ces annotations comprennent une "boite englobante" autour des images, ainsi que des informations sur le type d'image contenu dans cette boite. Ce modèle de détection d'objets a été entrainé sur ces données et a ensuite été utilisé pour faire des prédictions sur l'ensemble de la collection Chronicling America. Le modèle extrait les images de la page et les classe dans une parmi sept catégories. Lee, Benjamin Charles Germain, Jaime Mears, Eileen Jakeway, Meghan Ferriter, Chris Adams, Nathan Yarasavage, Deborah Thomas, Kate Zwaard, and Daniel S. Weld. ‘The Newspaper Navigator Dataset: Extracting And Analyzing Visual Content from 16 Million Historic Newspaper Pages in Chronicling America’. ArXiv:2005.01583 [Cs], 4 May 2020. [https://doi.org/10.48550/arXiv.2005.01583](https://doi.org/10.48550/arXiv.2005.01583).
 
-[^7]: Arizona republican. [volume] (Phoenix, Ariz.) 1890-1930, March 29, 1895, Page 7, Image 7. Image provided by Arizona State Library, Archives and Public Records; Phoenix, AZ. [https://chroniclingamerica.loc.gov/lccn/sn84020558/1895-03-29/ed-1/seq-7/](https://perma.cc/M5G5-CRDK).
+[^7]: Arizona republican. [volume] (Phoenix, Ariz.) 1890-1930, March 29, 1895, Page 7, Image 7. Image provided by Arizona State Library, Archives and Public Records&nbsp;; Phoenix, AZ. [https://chroniclingamerica.loc.gov/lccn/sn84020558/1895-03-29/ed-1/seq-7/](https://perma.cc/M5G5-CRDK).
 
 [^8]: The Indianapolis journal. [volume] (Indianapolis [Ind.]) 1867-1904, February 06, 1890, Page 8, Image 8. Image provided by Indiana State Library. [https://chroniclingamerica.loc.gov/lccn/sn82015679/1890-02-06/ed-1/seq-8/](https://perma.cc/W2HA-YCSZ).
 

@@ -297,11 +297,11 @@ You can also use an external URL if you want to host your banner somewhere outsi
 
 #### Front page content boxes
 
-Next, we can change the number and arrangement of content boxes that appear on the home page by editing the **home-infographic.html** file in the **_layouts** folder. 
+Next, we can change the number and arrangement of content boxes on the template home page by editing the **home-infographic.html** file in the **_layouts** folder. 
 
 In our example, we have used the location metadata field to indicate the playbill's physical location, which helps library staff retrieve the item if requested. However, you do not necessarily need to be able to browse that on the front page.
 
-To delete that box, first, locate the line of code between the `and` that uses `field="location"` and delete the entire line of code on line 19. You also should delete the “objects” box line of code on line 21 since everything in our example exhibition is a PDF, so it did not give the viewer any useful information to browse.
+To delete that box, first locate line 19 of the code that includes **field="location"**, then delete the entire line. In our demo, we also removed the “objects” box line of code on line 21, since everything in our example exhibition is a PDF and it did not provide the viewer with any useful information to browse. In another exhibit, if you have various media like PDFs, images and audio, this would be more helpful to your user. 
 
 The next thing you can do is change the order of the boxes. In our example, we moved the subject box to the top and pushed the timeline down. We also changed the title of the Subject box to **Top Genre** to better reflect the metadata.
 
@@ -309,23 +309,21 @@ The next thing you can do is change the order of the boxes. In our example, we m
 
 ### 5.2 Item page
 
-Next, let’s examine the default item page where your viewer will display your digital object and the corresponding metadata. There are a number of changes that can be made to the default page, including which metadata fields are shown, in what order, what the labels are, and whether we want them to inter-link to other items on your site or include external links.
+Next, let’s examine the default item page, which displays your digital object and its corresponding metadata. There are a number of changes that can be made to the default page, including which metadata fields are shown, in what order, what the labels are, and whether we want them to interlink to other items on your site or include external links.
 
-To make changes, go to the **_data** folder and open the **config-metadata.csv** file. The top row (1) is the table header row, which tells us what each column means. The first column `Field` references the field name in your metadata CSV file, and `display_name` is what is shown on your item page.  The `browse_link` and `external_link` columns are where you can turn on hyperlinking of fields or make a field link to an external website after each row below matches up to a metadata field that is displayed on your item page.  
+To make changes, go to the **_data** folder and open the **config-metadata.csv** file. The top row (1) is the table header row, which tells us what each column means. The first column `field` references the column name in your corresponding metadata CSV file, and `display_name` is the label on your item page. The `browse_link` and `external_link` columns are where you can turn on hyperlinking of fields or make a field link to an external website after each row below matches up to a metadata field that is displayed on your item page.  
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-12.png" alt="Screenshot of the config-metadata.csv file with the updates specified in the lesson." caption="Figure 12. Screenshot of the `config-metadata.csv` file with the updates specified in the lesson." %}
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-13.png" alt="Screenshot of the metadata section of the demo exhibition." caption="Figure 13. Screenshot of the metadata section of the demo exhibition to show the same changes from the `config-metadata.csv` file." %}
 
-For the playbills example, you can add some new metadata terms to the item page that were specific to these materials, like Playwright and Theatre Name, and change the `display_name` of the title field to the more descriptive, Play Title. 
-
-You can make those new fields browsable and clickable to encourage people to explore more playbills by a specific playwright or shown in a particular theatre. To make this change, add the value `true`.
+For the playbills example, we added new metadata terms specific to these materials to the item page, such as Playwright and Theatre Name, and changed the `display_name` of the title field to the more descriptive Play Title. We also wanted to encourage people to explore more playbills by a specific playwright or shown in a particular theatre, by making those fields browseable by editing the 'browse_link' value to true.
 
 In our example, some playbills advertise multiple plays with multiple playwrights. To ensure that those show up as separate values your visitor can browse, make sure they are separated in your metadata CSV with a semicolon. Then CollectionBuilder will automatically show that they are separate links.
 
-Lastly, we added the full URL of the item for easier access. Add a new line near the bottom (line 11) and add the value `true` under `external_link`. This makes the ENTIRE field a hyperlink, so if you include text and a URL, it won’t work. The metadata field can contain text or an external link, but not both. 
+Lastly, we added the item's full URL for easier access. Add a new line near the bottom (line 11) and add the value `true` under `external_link`. This makes the ENTIRE field a hyperlink, so if you include text and a URL, it won’t work. The metadata field can contain text or an external link, but not both. 
 
-If you are using PDFs (like in our example) and would like to add thumbnails on your item page, we have created instructions on [our extra content page](https://nnunn.github.io/CollectionBuilder-tutorial-extras/). 
+If you are using PDFs (as in our example) and would like to add thumbnails to your item page, we have instructions on [our extra content page](https://nnunn.github.io/CollectionBuilder-tutorial-extras/). 
 
 
 ### 5.3 Configure search and browse experience

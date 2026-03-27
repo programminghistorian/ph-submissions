@@ -128,7 +128,7 @@ Now that you have a query, the second step is to download the desired metadata f
 
 Choose the number of results you want and CSV format. Once your file has been downloaded, ensure that the name of the file only contains lowercase letters, no spaces, and no special characters (e.g. ph-demo-playbills.csv). You may need to rename the file if this is not the case.
 
-In our example exhibition, we are using a collection of [English playbills](https://archive.org/details/bpsc_playbills) from Bruce Peel Special Collections at the University of Alberta Library, which was digitized in 2019 and is available on the Internet Archive. Because we want to use the entire collection of objects, we can get the playbills by utilizing the collection identifier **bpsc_playbills**, which is found in the URL.  When we do our test search, IA converts our search into their desired query syntax **collection:(bpsc_playbills).** For another example, if we only wanted to download the Hamlet playbills in this collection, we would use the query **title:(hamlet) AND collection:(bpsc_playbills).**
+In our example exhibition, we are using a collection of [English playbills](https://archive.org/details/bpsc_playbills) from Bruce Peel Special Collections at the University of Alberta Library, which was digitized in 2019 and is available on the Internet Archive. Because we want to use the entire collection of objects, we can retrieve the playbills using the collection identifier **bpsc_playbills**, which appears in the URL.  When we do our test search, IA converts our search into their desired query syntax **collection:(bpsc_playbills).** For another example, if we only wanted to download the Hamlet playbills in this collection, we would use the query **title:(hamlet) AND collection:(bpsc_playbills).**
 
 Once you have downloaded your metadata, you will want to clean it up to include only the necessary information for your exhibition. Some helpful tips on metadata can be found at the following links:
 
@@ -140,7 +140,7 @@ To ensure your exhibition works properly, your metadata must follow the structur
 
 Below, we explain only the fields required for this example project. You can explore the complete metadata guide anytime by checking out the [CB-GH Metadata Template](https://collectionbuilder.github.io/cb-docs/docs/metadata/gh_metadata/).
 
-### 3.1 CollectionBuilder Required-fields
+### 3.1 CollectionBuilder Required Fields
 
 The following fields are required in CollectionBuilder:
 
@@ -152,7 +152,7 @@ The following fields are required in CollectionBuilder:
 
 In our example, the Internet Archive identifier is already a suitable **objectid**. You simply need to rename the corresponding column header in your CSV file to objectid.
 
-* **filename**: This field contains the direct URL to your digital object, such as a PDF, image, or audio file. For objects hosted on the Internet Archive, you can choose the display option that works best for your exhibition, which could be a link to a specific page or a full-screen theatre view of the item.  In our example, we want visitors to see the full-screen flipbook version of each item, so we use URLs like [https://archive.org/details/BP_CCTT_0002/mode/thumb?view=theater](https://archive.org/details/BP_CCTT_0002/mode/thumb?view=theater). Note that every Internet Archive URL uses the identifier, so it is easy to construct whichever one you want to feature. 
+* **filename**: This field contains the direct URL to your digital object, such as a PDF, image, or audio file. For objects hosted on the Internet Archive, you can choose the display option that works best for your exhibition. In the Internet Archive, a variety of display options, such as the digital object record (https://archive.org/details/BP_CCTT_0002), a one-page view (https://archive.org/details/BP_CCTT_0002/mode/1up), a two-page spread (https://archive.org/details/BP_CCTT_0002/mode/2up), a thumbnail view (https://archive.org/details/BP_CCTT_0002/mode/thumb) and then you can apply theatre view to any of these display options if you want to focus on the digital object and not the metadata. In our example, we want visitors to see the full-screen flipbook version of each item, so we use URLs like [≈](https://archive.org/details/BP_CCTT_0002/mode/thumb?view=theater). Note that every Internet Archive URL uses the IA identifier (now your **objectid**), so you can use this construct these URLs fairly quickly using formulas like concatenate in Excel or Google Sheets. 
   
 * **title**: This should correspond to a title of the original object. It is recommended that it be short and descriptive. In our example, some playbills have more than one play, so we have separated the play titles with a semicolon. Ex: Othello; The Deserter
   

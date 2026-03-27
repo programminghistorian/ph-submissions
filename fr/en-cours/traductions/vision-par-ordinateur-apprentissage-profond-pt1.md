@@ -1,5 +1,5 @@
 ---
-title: "La vision par ordinateur pour les sciences humaines : introduction à la classification d'images par apprentissage profond (Partie 1)"
+title: "La vision par ordinateur pour les sciences humaines&nbsp;: introduction à la classification d'images par apprentissage profond (Partie 1)"
 slug: vision-par-ordinateur-apprentissage-profond-pt1 
 original: computer-vision-deep-learning-pt1
 layout: lesson
@@ -42,27 +42,27 @@ doi: XX.XXXXX/phen0000
 
 # Introduction
 
-Si la plupart des historien(ne)s s'accordent à dire que la **représentation** (moderne) est façonnée par les médias multimodaux &mdash; c'est-à-dire les médias tels que la presse, la télévision ou l'internet, qui combinent plusieurs modes &mdash; les domaines des humanités numériques et de l'histoire numérique restent dominés par les médias textuels et la grande variété de méthodes disponibles pour leur analyse[^1]. Les historien(ne)s modernes ont souvent été accusé(e)s de négliger les formes de représentation non textuelles, et les humanistes numériques, en particulier, se sont consacrés à l'exploration des sources textuelles. Beaucoup ont utilisé l'OCR ([Optical Character Recognition](https://fr.wikipedia.org/wiki/Reconnaissance_optique_de_caract%C3%A8res)), une technologie qui rend les textes numérisés lisibles par machine, ainsi que des techniques issues du domaine du [traitement automatique des langues](https://fr.wikipedia.org/wiki/Traitement_automatique_des_langues) (TAL), pour analyser le contenu et le contexte du langage dans des documents de grande taille. La combinaison de ces deux éléments a donné naissance à l'innovation méthodologique centrale du domaine de l'histoire numérique : la capacité de «&#xA0;lire à distance&#xA0;» de grands corpus et de découvrir des modèles à grande échelle[^2].
+Si la plupart des historien(ne)s s'accordent à dire que la **représentation** (moderne) est façonnée par les médias multimodaux &mdash; c'est-à-dire les médias tels que la presse, la télévision ou l'internet, qui combinent plusieurs modes &mdash; les domaines des humanités numériques et de l'histoire numérique restent dominés par les médias textuels et la grande variété de méthodes disponibles pour leur analyse[^1]. Les historien(ne)s modernes ont souvent été accusé(e)s de négliger les formes de représentation non textuelles, et les humanistes numériques, en particulier, se sont consacrés à l'exploration des sources textuelles. Beaucoup ont utilisé l'OCR ([Optical Character Recognition](https://fr.wikipedia.org/wiki/Reconnaissance_optique_de_caract%C3%A8res)), une technologie qui rend les textes numérisés lisibles par machine, ainsi que des techniques issues du domaine du [traitement automatique des langues](https://fr.wikipedia.org/wiki/Traitement_automatique_des_langues) (TAL), pour analyser le contenu et le contexte du langage dans des documents de grande taille. La combinaison de ces deux éléments a donné naissance à l'innovation méthodologique centrale du domaine de l'histoire numérique&nbsp;: la capacité de «&#xA0;lire à distance&#xA0;» de grands corpus et de découvrir des modèles à grande échelle[^2].
 
-Au cours des dix dernières années, le domaine de la vision par ordinateur, qui cherche à obtenir une compréhension de haut niveau des images à l'aide de techniques informatiques, a connu une innovation rapide. Ainsi, les modèles de vision par ordinateur peuvent localiser et identifier des personnes, des animaux et des milliers d'objets inclus dans des images, ce avec une grande précision. Cette avancée technologique promet de faire pour la reconnaissance d'images ce que la combinaison des techniques OCR/NLP a fait pour les textes. En d'autres termes, la vision par ordinateur rend possible l'analyse à grande échelle d'une partie des archives numériques qui est restée pratiquement inexplorée : les millions d'images contenues dans les livres, journaux, périodiques et documents historiques numérisés. Par conséquent, les historien(ne)s seront désormais en mesure d'explorer le «&#xA0;côté visuel du tournant numérique dans la recherche historique&#xA0;» [^3].
+Au cours des dix dernières années, le domaine de la vision par ordinateur, qui cherche à obtenir une compréhension de haut niveau des images à l'aide de techniques informatiques, a connu une innovation rapide. Ainsi, les modèles de vision par ordinateur peuvent localiser et identifier des personnes, des animaux et des milliers d'objets inclus dans des images, ce avec une grande précision. Cette avancée technologique promet de faire pour la reconnaissance d'images ce que la combinaison des techniques OCR/NLP a fait pour les textes. En d'autres termes, la vision par ordinateur rend possible l'analyse à grande échelle d'une partie des archives numériques qui est restée pratiquement inexplorée&nbsp;: les millions d'images contenues dans les livres, journaux, périodiques et documents historiques numérisés. Par conséquent, les historien(ne)s seront désormais en mesure d'explorer le «&#xA0;côté visuel du tournant numérique dans la recherche historique&#xA0;» [^3].
 
 Cette leçon en deux parties propose des exemples d'application de techniques de vision par ordinateur pour analyser à grande échelle des documents historiques. Elle montre comment construire des modèles de vision par ordinateur personnalisés. Outre l'identification du contenu des images et leur classification par catégorie - deux tâches axées sur les caractéristiques visuelles - les techniques de vision par ordinateur peuvent également être utilisées pour déterminer les (dis)similitudes stylistiques entre les images.
 
-Il convient toutefois de noter que les techniques de vision par ordinateur posent aux historien(ne)s un ensemble de défis théoriques et méthodologiques. Premièrement, toute application des techniques de vision par ordinateur aux corpus historiques doit partir d'une question historique soigneusement formulée et, par conséquent, inclure une discussion sur **l'échelle** de l'analyse. En bref : pourquoi est-il important de répondre à cette question et pourquoi les techniques de vision par ordinateur sont-elles nécessaires pour y répondre ?
+Il convient toutefois de noter que les techniques de vision par ordinateur posent aux historien(ne)s un ensemble de défis théoriques et méthodologiques. Premièrement, toute application des techniques de vision par ordinateur aux corpus historiques doit partir d'une question historique soigneusement formulée et, par conséquent, inclure une discussion sur **l'échelle** de l'analyse. En bref&nbsp;: pourquoi est-il important de répondre à cette question et pourquoi les techniques de vision par ordinateur sont-elles nécessaires pour y répondre ?
 
 Deuxièmement, à la suite des discussions dans le domaine de l'éthique de l'apprentissage automatique[^4],[^5], qui cherchent à aborder la question des biais dans l'apprentissage automatique (ML, *machine learning*), les historien(ne)s doivent être conscient(e)s du fait que les techniques de vision par ordinateur éclairent certaines parties des corpus visuels, mais peuvent négliger, mal identifier, mal classer ou même laisser dans l'ombre d'autres parties. En tant qu'historien(ne)s, nous sommes depuis longtemps conscient(e)s que nous regardons le passé à partir de notre propre époque, et par conséquent, toute application des techniques de vision par ordinateur devrait inclure une discussion sur un éventuel «&#xA0;biais historique&#xA0;». Comme (la plupart) des modèles de vision par ordinateur sont entrainés sur des données contemporaines, nous courons le risque de projeter les biais temporels de ces données sur les archives historiques. Bien qu'il ne soit pas possible, dans le cadre de cette leçon en deux parties, d'explorer pleinement la question du biais, il convient de la garder à l'esprit.
 
 
 ## Objectifs de la leçon 
 
-Cette leçon en deux parties a pour but de :
+Cette leçon en deux parties a pour but de&nbsp;:
 
 - Fournir une introduction aux méthodes de vision par ordinateur basées sur l'[apprentissage profond](https://fr.wikipedia.org/wiki/Apprentissage_profond) pour la recherche en sciences humaines. L'apprentissage profond est une branche de l'apprentissage automatique (nous en parlerons plus en détail dans les leçons).
 - Donner un aperçu des étapes de l'entrainement d'un modèle d'apprentissage profond.
 - Discuter de certaines considérations spécifiques concernant l'utilisation de l'apprentissage profond/la vision par ordinateur pour la recherche en sciences humaines.
 - Vous aider à décider si l'apprentissage profond peut constituer un outil répondant à vos besoins.
 
-Cette leçon n'a pas pour but de :
+Cette leçon n'a pas pour but de&nbsp;:
 
 - Reproduire d'autres introductions plus générales à l'apprentissage profond, bien qu'elle en partage _une partie_ des objectifs pédagogiques.
 - Couvrir tous les détails de l'apprentissage profond et de la vision par ordinateur ; il s'agit de vastes sujets, qu'il n'est pas possible de traiter en profondeur ici.
@@ -78,7 +78,7 @@ Cette leçon n'a pas pour but de :
 
 ## Configuration de la leçon
 
-Nous vous suggérons d'aborder cette leçon en deux parties en deux temps :
+Nous vous suggérons d'aborder cette leçon en deux parties en deux temps&nbsp;:
 
 - Tout d'abord, lisez les informations de cette page, pour vous familiariser avec les questions conceptuelles clés et le flux de travail global pour l'entrainement d'un modèle de vision par ordinateur.
 - Ensuite, exécutez le code proposé dans [le carnet Jupyter associé](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/vision-par-ordinateur-apprentissage-profond-pt1-2).
@@ -91,7 +91,7 @@ Cette leçon en deux parties est disponible sous forme d'un carnet (*notebook*) 
 
 ### Exécuter les carnets 
 
-Vous pouvez utiliser les carnets de différentes manières. Nous vous encourageons vivement à utiliser les instructions de configuration dans le cloud plutôt que de configurer un environnement local. Et ce, pour plusieurs raisons :
+Vous pouvez utiliser les carnets de différentes manières. Nous vous encourageons vivement à utiliser les instructions de configuration dans le cloud plutôt que de configurer un environnement local. Et ce, pour plusieurs raisons&nbsp;:
 
 - Le processus de configuration de l'apprentissage profond dans un environnement cloud peut être beaucoup plus simple que la configuration locale. De nombreux ordinateurs portables et personnels ne disposent pas de ce type de matériel et le processus d'installation des pilotes logiciels nécessaires peut prendre beaucoup de temps.
 - Le code de cette leçon s'exécutera beaucoup plus rapidement si un type spécifique de carte graphique ([GPU](https://fr.wikipedia.org/wiki/Processeur_graphique)) est disponible. Cela permettra une approche interactive du travail avec les modèles et leurs résultats.
@@ -106,7 +106,7 @@ L'entrainement de modèles d'apprentissage supervisé est une tâche gourmande e
 
 [Google Colab](https://colab.research.google.com/) est un service de Google qui permet d'héberger et de faire tourner des carnets Jupyter. Il est possible d'accéder à des GPU et donc de tester l'entrainement de modèles.
 
-Pour exécuter le code de la leçon sur Colab, vous devrez :
+Pour exécuter le code de la leçon sur Colab, vous devrez&nbsp;:
 
 - Créer un compte sur [Google](https://accounts.google.com/signup), nécessaire pour enregistrer et exécuter des carnets.
 - [Ouvrir le carnet](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/vision-par-ordinateur-apprentissage-profond-pt1-2/vision-par-ordinateur-apprentissage-profond-pt1-2.ipynb) et cliquer sur le bouton _Ouvrir dans Colab_.
@@ -130,7 +130,7 @@ Si vous ne souhaitez pas utiliser une configuration dans le cloud, vous pouvez s
 
 # Courte introduction à l'apprentissage machine
 
-Avant de passer au premier exemple pratique, il peut être utile de rappeler brièvement ce que l'on entend par «&#xA0;apprentissage automatique&#xA0;». [L'apprentissage automatique](https://fr.wikipedia.org/wiki/Apprentissage_automatique) vise à permettre aux ordinateurs d'«&#xA0;apprendre&#xA0;» à partir de données au lieu d'être explicitement programmés pour faire quelque chose. Par exemple, si nous voulons filtrer les [spams](https://fr.wikipedia.org/wiki/Spam), nous pouvons adopter plusieurs approches différentes. L'une d'elles consiste à lire des exemples de courriels «&#xA0;spam&#xA0;» et «&#xA0;non spam&#xA0;» pour voir si nous pouvons identifier des [signaux](https://perma.cc/NE75-DHCX) indiquant qu'un courriel est un spam. À cet effet, nous pourrions par exemple trouver des mots-clés qui, selon nous, sont susceptibles d'indiquer un spam. Nous pourrions ensuite écrire un programme qui ferait quelque chose comme ceci pour chaque courriel reçu :
+Avant de passer au premier exemple pratique, il peut être utile de rappeler brièvement ce que l'on entend par «&#xA0;apprentissage automatique&#xA0;». [L'apprentissage automatique](https://fr.wikipedia.org/wiki/Apprentissage_automatique) vise à permettre aux ordinateurs d'«&#xA0;apprendre&#xA0;» à partir de données au lieu d'être explicitement programmés pour faire quelque chose. Par exemple, si nous voulons filtrer les [spams](https://fr.wikipedia.org/wiki/Spam), nous pouvons adopter plusieurs approches différentes. L'une d'elles consiste à lire des exemples de courriels «&#xA0;spam&#xA0;» et «&#xA0;non spam&#xA0;» pour voir si nous pouvons identifier des [signaux](https://perma.cc/NE75-DHCX) indiquant qu'un courriel est un spam. À cet effet, nous pourrions par exemple trouver des mots-clés qui, selon nous, sont susceptibles d'indiquer un spam. Nous pourrions ensuite écrire un programme qui ferait quelque chose comme ceci pour chaque courriel reçu&nbsp;:
 
 ```
 count number spam_words in email:
@@ -151,7 +151,7 @@ L'apprentissage automatique présente des avantages et des inconvénients. Dans 
 
 Maintenant que nous avons une compréhension générale de l'apprentissage automatique, nous allons passer à notre premier exemple d'utilisation de l'apprentissage profond pour la vision par ordinateur. Dans cet exemple, nous allons construire un classifieur d'images qui affecte les images à l'une des deux catégories ciblées, en fonction de données d'entrainement étiquetées.
 
-### Les données : classer des images de presse ancienne 
+### Les données&nbsp;: classer des images de presse ancienne 
 
 Dans cette leçon, nous allons travailler avec un jeu de données dérivés du projet [Newspaper Navigator](https://perma.cc/8U7H-9NUS). Ce jeu de données est constitué du contenu visuel extrait de 16 358 041 pages de journaux historiques numérisés provenant de la [bibliothèque du Congrès](https://perma.cc/8YJ6-KKFS) [Chronicling America collection](https://perma.cc/P98H-P3WS).
 
@@ -170,7 +170,7 @@ Pour notre première application de l'apprentissage profond, nous allons nous co
 
 Si vous regardez les images des publicités, vous verrez que certaines d'entre elles ne contiennent que du texte, tandis que d'autres comportent une sorte d'illustration.
 
-Une publicité illustrée [^7] :
+Une publicité illustrée [^7]&nbsp;:
 
 {% include figure.html filename="en-or-computer-vision-deep-learning-pt1-02.jpg" alt="Une image en noir et blanc d'une publicité de journal. L'image contient une illustration d'une boite à café sur la gauche de l'annonce." caption="Figure 2. Un exemple de publicité illustrée" %}
 
@@ -184,7 +184,7 @@ Notre classifieur sera entrainé à prédire à quelle catégorie appartient une
 
 [fastai](https://perma.cc/EG22-5FGB) est une bibliothèque Python pour l'apprentissage profond «&#xA0;qui fournit aux praticien(ne)s des composants de haut niveau pouvant rapidement et facilement fournir des résultats de pointe dans des domaines d'apprentissage profond standard, et fournit aux chercheur(e)s des composants de bas niveau qui peuvent être assemblés et assortis pour construire de nouvelles approches&#xA0;»[^9]. La bibliothèque est développée par [fast.ai](https://perma.cc/FY9M-LJMG), un organisme de recherche qui vise à rendre l'apprentissage profond plus accessible. Outre la bibliothèque fastai, fast.ai organise également des cours gratuits et mène des recherches.
 
-La bibliothèque fastai a été choisie pour ce tutoriel pour plusieurs raisons :
+La bibliothèque fastai a été choisie pour ce tutoriel pour plusieurs raisons&nbsp;:
 
 - Elle s'attache à rendre l'apprentissage profond accessible, notamment par la conception de l'API de la bibliothèque. 
 - Elle facilite l'utilisation de techniques qui ne nécessitent pas une grande quantité de données ou de ressources de calcul.
@@ -196,7 +196,7 @@ Bien que ce tutoriel se concentre sur fastai, de nombreuses techniques présent�
 
 ### Créer un classifieur d'images avec fastai
 
-La section suivante décrit les étapes de la création et de l'apprentissage d'un modèle de classification permettant de prédire si une publicité est composée uniquement de texte ou contient également une illustration. Brièvement, les étapes seront les suivantes :
+La section suivante décrit les étapes de la création et de l'apprentissage d'un modèle de classification permettant de prédire si une publicité est composée uniquement de texte ou contient également une illustration. Brièvement, les étapes seront les suivantes&nbsp;:
 
 1. Charger les données
 2. Créer un modèle
@@ -220,7 +220,7 @@ plt.style.use('seaborn-v0_8')
 
 ## Charger les données 
 
-Les données peuvent être chargées de plusieurs façons à l'aide de la bibliothèque `fastai`. Les données des publicités consistent en un dossier qui contient les fichiers image, et un fichier CSV qui contient une colonne avec les chemins vers les images, ainsi que l'étiquette associée :
+Les données peuvent être chargées de plusieurs façons à l'aide de la bibliothèque `fastai`. Les données des publicités consistent en un dossier qui contient les fichiers image, et un fichier CSV qui contient une colonne avec les chemins vers les images, ainsi que l'étiquette associée&nbsp;:
 
 <div class="table-wrapper" markdown="block">
   
@@ -230,13 +230,13 @@ Les données peuvent être chargées de plusieurs façons à l'aide de la biblio
   
 </div>
 
-Il existe plusieurs façons de charger ce type de données en utilisant `fastai`. Dans cet exemple, nous allons utiliser `ImageDataLoaders.from_csv`. Comme son nom l'indique, la méthode `from_csv` de `ImagDataLoaders` charge les données depuis un fichier CSV. Nous devons préciser à fastai comment charger les données lorsque l'on utilise cette méthode :
+Il existe plusieurs façons de charger ce type de données en utilisant `fastai`. Dans cet exemple, nous allons utiliser `ImageDataLoaders.from_csv`. Comme son nom l'indique, la méthode `from_csv` de `ImagDataLoaders` charge les données depuis un fichier CSV. Nous devons préciser à fastai comment charger les données lorsque l'on utilise cette méthode&nbsp;:
 
 - Le chemin vers le dossier où les images et le fichier CSV sont stockés.
 - Les colonnes dans le fichier CSV qui contiennent les étiquettes.
 - Un 'item transform' `Resize()` pour redimensionner toutes les images à une taille standard.
 
-Nous allons créer une variable `ad_data` qui sera utilisée pour stocker les paramètres de chargement de ces données :
+Nous allons créer une variable `ad_data` qui sera utilisée pour stocker les paramètres de chargement de ces données&nbsp;:
 
 ```python
 ad_data = ImageDataLoaders.from_csv(
@@ -263,14 +263,14 @@ Il s'agit d'un moyen utile de vérifier que vos étiquettes et vos données ont 
 
 ## Créer le modèle
 
-Maintenant que fastai sait comment charger les données, l'étape suivante consiste à créer un modèle avec celles-ci. Pour créer un modèle adapté à la vision par ordinateur, nous allons utiliser la fonction `cnn_learner`. Cette fonction va créer un ['Convolutional Neural Network'](https://fr.wikipedia.org/wiki/R%C3%A9seau_neuronal_convolutif) (un 'réseau de neurones convolutifs'), un type de modèle d'apprentissage profond souvent utilisé pour les applications de vision par ordinateur. Pour utiliser cette fonction, vous devez passer (au minimum) :
+Maintenant que fastai sait comment charger les données, l'étape suivante consiste à créer un modèle avec celles-ci. Pour créer un modèle adapté à la vision par ordinateur, nous allons utiliser la fonction `cnn_learner`. Cette fonction va créer un ['Convolutional Neural Network'](https://fr.wikipedia.org/wiki/R%C3%A9seau_neuronal_convolutif) (un 'réseau de neurones convolutifs'), un type de modèle d'apprentissage profond souvent utilisé pour les applications de vision par ordinateur. Pour utiliser cette fonction, vous devez passer (au minimum)&nbsp;:
 
 - Les données que le modèle utilisera comme données d'entrainement
 - Le type de modèle que nous souhaitons utiliser
 
 C'est suffisant pour créer un modèle de vision par ordinateur avec fastai, mais vous pouvez aussi vouloir passer certaines métriques à suivre pendant l'entrainement. Cela vous permettra d'avoir une meilleure idée de la façon dont votre modèle effectue la tâche sur laquelle vous l'entrainez. Dans cet exemple, nous allons utiliser `accuracy` (l'exactitude) comme métrique: il s'agit de calculer le taux de prédictions exactes par rapport au nombre total d'exemples testés.
 
-Créons ce modèle et assignons-le à une nouvelle variable `learn` :
+Créons ce modèle et assignons-le à une nouvelle variable `learn`&nbsp;:
 
 ```python
 learn = cnn_learner(
@@ -371,9 +371,9 @@ Maintenant que nous avons une vue d'ensemble du processus, entrons dans les dét
 
 ## Le flux de travail d'un problème de vision par ordinateur supervisé
 
-Cette section commence par examiner certaines des étapes du processus de création d'un modèle de vision par ordinateur basé sur l'apprentissage profond. Ce processus implique une série d'étapes, dont certaines seulement concernent directement l'entrainement des modèles. Une illustration générale d'un pipeline d'apprentissage machine supervisé pourrait ressembler à ceci :
+Cette section commence par examiner certaines des étapes du processus de création d'un modèle de vision par ordinateur basé sur l'apprentissage profond. Ce processus implique une série d'étapes, dont certaines seulement concernent directement l'entrainement des modèles. Une illustration générale d'un pipeline d'apprentissage machine supervisé pourrait ressembler à ceci&nbsp;:
 
-{% include figure.html filename="fr-tr-vision-par-ordinateur-apprentissage-profond-pt1-05.png" alt="Diagramme illustrant le flux de travail d'un pipeline d'apprentissage machine. Le pipeline contient trois cases : 'préparation des données', 'apprentissage profond' et 'analyse'. Une flèche se déplace entre ces trois cases. La boite 'préparation des données' comprend trois boites, de gauche à droite : 'échantillonnage', 'étiquettes' et 'annotation'. Pour la case 'apprentissage profond', il y a trois cases plus petites avec des flèches qui se déplacent entre elles : 'données d'entrainement', 'modèle', 'prédictions'. La case 'analyse' contient trois cases plus petites : 'métriques' et 'interprétation'." caption="Figure 5. Une illustration générale d'un pipeline d'apprentissage machine supervisé" %}
+{% include figure.html filename="fr-tr-vision-par-ordinateur-apprentissage-profond-pt1-05.png" alt="Diagramme illustrant le flux de travail d'un pipeline d'apprentissage machine. Le pipeline contient trois cases&nbsp;: 'préparation des données', 'apprentissage profond' et 'analyse'. Une flèche se déplace entre ces trois cases. La boite 'préparation des données' comprend trois boites, de gauche à droite&nbsp;: 'échantillonnage', 'étiquettes' et 'annotation'. Pour la case 'apprentissage profond', il y a trois cases plus petites avec des flèches qui se déplacent entre elles&nbsp;: 'données d'entrainement', 'modèle', 'prédictions'. La case 'analyse' contient trois cases plus petites&nbsp;: 'métriques' et 'interprétation'." caption="Figure 5. Une illustration générale d'un pipeline d'apprentissage machine supervisé" %}
 
 Nous pouvons constater qu'il y a un certain nombre d'étapes avant et après la phase d'entrainement du modèle dans le flux. Avant d'entamer l'entrainement d'un modèle, nous avons besoin de données. Dans cette leçon, les données d'image ont déjà été préparées et vous n'avez donc pas à vous préoccuper de cette étape. Cependant, lorsque vous utiliserez la vision par ordinateur pour vos propres besoins, il est peu probable qu'il existe un ensemble de données correspondant à votre cas d'utilisation exact. Par conséquent, vous devrez créer ces données vous-même. Le processus d'accès aux données variera en fonction du type d'images avec lesquelles vous souhaitez travailler et de l'endroit où elles sont conservées. Certaines collections patrimoniales mettent à disposition des collections d'images facilement téléchargeables ou requêtables, tandis que d'autres ne rendent les images disponibles que par l'intermédiaire d'une «&#xA0;visionneuse&#xA0;». L'adoption croissante du [standard IIIF](https://perma.cc/27EM-N36U) simplifie également le processus de travail avec des images détenues par différentes institutions.
 
@@ -387,7 +387,7 @@ En zoomant sur la partie du flux de travail relative à l'apprentissage profond,
 
 {% include figure.html filename="fr-tr-vision-par-ordinateur-apprentissage-profond-pt1-06.png" alt="Un diagramme montrant un flux de travail pour entrainer un modèle d'apprentissage profond. Le pipeline contient deux cases, 'préparer le lot d'entrainement' et 'entrainement du modèle'. Une flèche traverse ces deux boites jusqu'à une boite  contenant le texte 'métriques'. Dans la case 'préparer le lot d'entrainement' se trouve un flux de travail montrant une image et une étiquette passant par une transformation, puis placées dans un lot. Ensuite, sous le titre 'entrainement du modèle', le flux de travail passe par un modèle, des prédictions et une valeur de perte. Ce flux comporte une flèche indiquant qu'il est répété. Il s'écoule également vers la boite 'métriques'." caption="Figure 6. La boucle d'entrainement du deep learning" %}
 
-Un résumé abstrait de la boucle d'entrainement pour l'apprentissage supervisé serait donc : 
+Un résumé abstrait de la boucle d'entrainement pour l'apprentissage supervisé serait donc&nbsp;: 
 - Pré-traiter les images et les étiquettes (effectuer une préparation pour rendre l'entrée adaptée à un modèle d'apprentissage profond).
 - Faire des prédictions sur chacune des données (passer les données à travers le modèle).
 - Calculer à quel point les prédictions sont erronées en les comparant aux étiquettes `vraies`.
@@ -443,7 +443,7 @@ Souvent, nous souhaitons trouver un équilibre entre partir de zéro et exploite
 
 ## Entrainement
 
-Une fois le modèle créé et les données préparées, le processus d'entrainement peut commencer. Examinons les étapes d'une boucle d'entrainement :
+Une fois le modèle créé et les données préparées, le processus d'entrainement peut commencer. Examinons les étapes d'une boucle d'entrainement&nbsp;:
 
 1. Un modèle reçoit des données et des étiquettes, un lot à la fois. Chaque fois qu'un ensemble de données complet est passé à travers un modèle, on parle d'une *epoch*. Le nombre d'epochs pour entrainer un modèle est l'une des variables que vous devrez contrôler.
 
@@ -485,7 +485,7 @@ Lorsqu'un modèle est créé dans la bibliothèque fastai à l'aide de la métho
 
 ## Suggestions d'expérimentation
 
-Il est important de savoir ce qui se passe lorsque vous modifiez le processus d'entrainement. Nous vous suggérons de faire une copie du notebook et de voir ce qui se passe si vous apportez des changements. Voici quelques suggestions :
+Il est important de savoir ce qui se passe lorsque vous modifiez le processus d'entrainement. Nous vous suggérons de faire une copie du notebook et de voir ce qui se passe si vous apportez des changements. Voici quelques suggestions&nbsp;:
 
 - Changer la taille des images en entrée définies dans la transformation `Resize` dans `ImageDataLoaders`.
 - Changer le modèle utilisé dans `cnn_learner` de `resnet18` à `resnet34`.
@@ -496,9 +496,9 @@ Si quelque chose «&#xA0;casse&#xA0;», ne vous inquiétez pas ! Vous pouvez ret
 
 
 
-# Partie I : Conclusion
+# Partie I&nbsp;: Conclusion
 
-Dans cette leçon, nous avons :
+Dans cette leçon, nous avons&nbsp;:
 
 - donné un aperçu général de la distinction entre les approches basées sur les règles et les approches basées sur l'apprentissage machine pour aborder un problème,
 - montré un exemple de base sur la façon d'utiliser fastai pour créer un classifieur d'images avec relativement peu de temps et de données d'apprentissage,
@@ -510,9 +510,9 @@ Dans la prochaine partie de cette leçon, nous nous appuierons sur ces fondament
 
 
 
-# Annexe : Une expérience non scientifique pour évaluer l'apprentissage par transfert
+# Annexe&nbsp;: Une expérience non scientifique pour évaluer l'apprentissage par transfert
 
-L'utilisation de l'apprentissage profond dans le contexte d'un travail avec des données patrimoniales n'a pas fait l'objet de recherches approfondies. Il est donc utile d'expérimenter et de valider l'efficacité d'une technique particulière. Par exemple, voyons si l'apprentissage par transfert s'avère utile pour entrainer un modèle permettant de classer les annonces de journaux du XIXe siècle en deux catégories : celles qui contiennent des images et celles qui n'en contiennent pas. Pour ce faire, nous allons créer un nouveau `learner` avec les mêmes paramètres que précédemment mais avec l'option `pretrained` fixée à `False`. Ce drapeau indique à fastai de ne pas utiliser l'apprentissage par transfert. Nous le stockons dans la variable `learn_random_start`.
+L'utilisation de l'apprentissage profond dans le contexte d'un travail avec des données patrimoniales n'a pas fait l'objet de recherches approfondies. Il est donc utile d'expérimenter et de valider l'efficacité d'une technique particulière. Par exemple, voyons si l'apprentissage par transfert s'avère utile pour entrainer un modèle permettant de classer les annonces de journaux du XIXe siècle en deux catégories&nbsp;: celles qui contiennent des images et celles qui n'en contiennent pas. Pour ce faire, nous allons créer un nouveau `learner` avec les mêmes paramètres que précédemment mais avec l'option `pretrained` fixée à `False`. Ce drapeau indique à fastai de ne pas utiliser l'apprentissage par transfert. Nous le stockons dans la variable `learn_random_start`.
 
 
 ```python
@@ -596,7 +596,7 @@ learn_random_start.fine_tune(5)
   </tbody>
 </table>
 
-Le meilleur score de précision que nous obtenons lorsque nous initialisons les paramètres de manière aléatoire est de ~90%. En comparaison, si nous retournons à notre modèle original, qui est stocké dans une variable `learn`, et utilisons la méthode `validate()`, nous obtenons les métriques (dans ce cas la précision) calculées sur l'ensemble de validation :
+Le meilleur score de précision que nous obtenons lorsque nous initialisons les paramètres de manière aléatoire est de ~90%. En comparaison, si nous retournons à notre modèle original, qui est stocké dans une variable `learn`, et utilisons la méthode `validate()`, nous obtenons les métriques (dans ce cas la précision) calculées sur l'ensemble de validation&nbsp;:
 
 ```python
 learn.validate()

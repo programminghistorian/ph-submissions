@@ -282,7 +282,7 @@ learn = cnn_learner(
 
 ### Entrainer le modèle
 
-Bien que nous ayons créé un modèle `cnn_learner`, nous n'avons pas encore entrainé le modèle. Ceci est fait en utilisant la méthode `fit`. L'entrainement est le processus qui permet au modèle de vision par ordinateur d'apprendre à prédire les étiquettes correctes pour les données. Il existe différentes façons d'entrainer (ajuster) ce modèle. Pour commencer, nous allons utiliser la méthode `fine_tune`. Dans cet exemple, la seule chose que nous allons passer à la méthode est le nombre d'époques (*epoch*) pour s'entrainer. Chaque passage à travers le jeu de données complet est une epoch. Le temps d'entrainement du modèle dépendra du contexte d'exécution de ce code et des ressources disponibles. Nous traiterons en détail de ces éléments ci-après.
+Bien que nous ayons créé un modèle `cnn_learner`, nous n'avons pas encore entrainé le modèle. Ceci est fait en utilisant la méthode `fit`. L'entrainement est le processus qui permet au modèle de vision par ordinateur d'apprendre à prédire les étiquettes correctes pour les données. Il existe différentes façons d'entrainer (ajuster) ce modèle. Pour commencer, nous allons utiliser la méthode `fine_tune`. Dans cet exemple, la seule chose que nous allons passer à la méthode est le nombre de passage à travers le jeu de données complet, c'est-à-dire ce que l'on appelle `epoch`, pour s'entrainer. Le temps d'entrainement du modèle dépendra du contexte d'exécution de ce code et des ressources disponibles. Nous traiterons en détail de ces éléments ci-après.
 
 ```python
 learn.fine_tune(5)
@@ -490,7 +490,7 @@ Il est important de savoir ce qui se passe lorsque vous modifiez le processus d'
 - Changer la taille des images en entrée définies dans la transformation `Resize` dans `ImageDataLoaders`.
 - Changer le modèle utilisé dans `cnn_learner` de `resnet18` à `resnet34`.
 - Changer les métriques définies dans `cnn_learner`. Certaines métriques incluses dans fastai peuvent être trouvées dans la [documentation](https://perma.cc/K4BE-BF3W).
-- Modifier le nombre d'&laquo;&nbsp;epochs&nbsp;&raquo;; utilisés dans la méthode `fine_tune`.
+- Modifier le nombre d'`epochs` utilisés dans la méthode `fine_tune`.
 
 Si quelque chose &laquo;&nbsp;casse&nbsp;&raquo;, ne vous inquiétez pas ! Vous pouvez retourner au notebook d'origine pour revenir à une version fonctionnelle du code. Dans la prochaine partie de la leçon, les composants d'un pipeline d'apprentissage profond seront abordés plus en détail. L'étude de ce qui se passe lorsque vous apportez des modifications constituera une part importante du savoir-faire nécessaire à l'entrainement d'un modèle de vision par ordinateur.
 

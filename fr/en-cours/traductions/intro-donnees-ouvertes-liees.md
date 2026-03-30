@@ -42,7 +42,7 @@ Cette leçon offre une brève et concise introduction aux [données ouvertes li�
 5. Explorer les données ouvertes liées avec [SPARQL](https://fr.wikipedia.org/wiki/SPARQL)
 6. Lectures et ressources complémentaires
 
-La leçon devrait vous prendre quelques heures à compléter. Il pourrait être utile d’en relire certaines parties pour solidifier votre compréhension. Les termes techniques ont été liés à leur page correspondante sur *Wikipédia* en français. Nous vous encourageons ainsi à prendre le temps de lire au sujet des termes qui vous posent problème. À la suite de votre initiation à certains principes fondamentaux des DOL, c’est la pratique qui demeure la meilleure façon d’améliorer et d’approfondir vos connaissances. Cette leçon propose une mise en pratique immédiate. À la fin de cette leçon, vous devriez comprendre les fondements des DOL, incluant les termes et les concepts clés.
+Cette leçon peut être complétée en quelques heures et il pourrait vous être utile de vous attarder ou de relire certaines parties pour solidifier votre compréhension. Les termes techniques ont été liés à leur page correspondante sur *Wikipédia* en français. Nous vous encourageons à prendre le temps de lire les pages consacrées aux termes qui vous posent problème. À la suite de votre initiation à certains principes fondamentaux des DOL, c’est la pratique qui demeure la meilleure façon d’améliorer et d’approfondir vos connaissances. Cette leçon propose une mise en pratique immédiate. À la fin de cette leçon, vous devriez comprendre les fondements des DOL, incluant les termes et les concepts clés.
 
 Si vous souhaitez apprendre à explorer les DOL en utilisant le langage de requête [SPARQL](https://fr.wikipedia.org/wiki/SPARQL), je recommande la leçon (en anglais) «&nbsp;[Using SPARQL to access Linked Open Data](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL)&nbsp;» de Matthew Lincoln, qui vous permettra d’effectuer un suivi pratique du survol conceptuel offert dans la présente leçon.
 
@@ -389,14 +389,6 @@ Les données du point d’accès de la plateforme TriplyDB ne font pas l’objet
 Si vous accédez à l’URL de l’[interface de requête sur TriplyDB](https://triplydb.com/DBpedia-association/dbpedia/sparql), vous remarquerez d’abord que l’éditeur propose une requête par défaut&nbsp;:
 
 {% include figure.html filename="fr-tr-intro-aux-donnees-liees-03.png" alt="Interface de requête sur la plateforme TriplyDB, permettant d’effectuer des requêtes SPARQL sur le jeu de données de DBpedia hébergé sur cette plateforme. L’interface présente par défaut une requête SPARQL générique." caption="Figure&nbsp;3. Interface de requête sur la plateforme TriplyDB, avec une requête par défaut." %}
-
-Dans l’éditeur de requête, sous les déclarations de préfixes, vous devriez voir&nbsp;:
-
-```sparql
-select * where {
-  ?s ?p ?o.
-} limit 10
-```
 
 Si vous avez déjà écrit une requête avec le langage de requête structuré (*Structured Query Language*, en anglais, mieux connu comme [SQL](https://fr.wikipedia.org/wiki/SQL)), cela devrait vous sembler assez familier et pourra vous aider à apprendre SPARQL. Dans le cas contraire, ne vous inquiétez pas.
 

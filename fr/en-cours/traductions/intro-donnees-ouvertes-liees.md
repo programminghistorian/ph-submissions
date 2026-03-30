@@ -383,7 +383,7 @@ Nous exécuterons nos requêtes SPARQL sur les données [DBpedia](https://fr.wik
 Le point d’accès SPARQL que nous utiliserons nous permettra d’atteindre les données [publiées et hébergées sur la plateforme TriplyDB](https://triplydb.com/DBpedia-association/dbpedia/sparql) par DBpedia. Cette plateforme offre l’avantage de fournir une [interface conviviale basée sur YASGUI](https://docs.triply.cc/triply-db-getting-started/viewing-data/#sparql-ide), un éditeur de requêtes SPARQL publié en tant que logiciel libre.
 
 <div class="alert alert-info">
-Les données du point d’accès de la plateforme TriplyDB ne font pas l’objet d’une mise à jour régulière, mais offrent l’avantage d’une plus grande stabilité, utile aux fins de la présente démonstration. Il serait également tout à fait possible d’exécuter les requêtes suivantes directement sur le [point d’accès de DBpedia](https://dbpedia.org/sparql), bien que les données qui s’y trouvent sont plus dynamiques, et son interface de requête moins conviviale.
+Les données du point d’accès de la plateforme TriplyDB ne font pas l’objet d’une mise à jour régulière, mais offrent l’avantage d’une plus grande stabilité, utile aux fins de la présente démonstration. Il serait également tout à fait possible d’exécuter les requêtes suivantes directement sur le <a href='https://dbpedia.org/sparql'>point d’accès de DBpedia</a>, bien que les données qui s’y trouvent sont plus dynamiques, et son interface de requête moins conviviale.
 </div>
 
 Si vous accédez à l’URL de l’[interface de requête sur TriplyDB](https://triplydb.com/DBpedia-association/dbpedia/sparql), vous remarquerez d’abord que l’éditeur propose une requête par défaut&nbsp;:

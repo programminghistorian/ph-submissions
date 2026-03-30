@@ -48,7 +48,7 @@ Au cours des dix dernières années, le domaine de la vision par ordinateur, qui
 
 Cette leçon en deux parties propose des exemples d'application de techniques de vision par ordinateur pour analyser à grande échelle des documents historiques. Elle montre comment construire des modèles de vision par ordinateur personnalisés. Outre l'identification du contenu des images et leur classification par catégorie - deux tâches axées sur les caractéristiques visuelles - les techniques de vision par ordinateur peuvent également être utilisées pour déterminer les (dis)similitudes stylistiques entre les images.
 
-Il convient toutefois de noter que les techniques de vision par ordinateur posent aux historien·nes un ensemble de défis théoriques et méthodologiques. Premièrement, toute application des techniques de vision par ordinateur aux corpus historiques doit partir d'une question historique soigneusement formulée et, par conséquent, inclure une discussion sur **l'échelle** de l'analyse. En bref&nbsp;: pourquoi est-il important de répondre à cette question et pourquoi les techniques de vision par ordinateur sont-elles nécessaires pour y répondre ?
+Il convient toutefois de noter que les techniques de vision par ordinateur posent aux historien·nes un ensemble de défis théoriques et méthodologiques. Premièrement, toute application des techniques de vision par ordinateur aux corpus historiques doit partir d'une question historique soigneusement formulée et, par conséquent, inclure une discussion sur l'échelle de l'analyse. En bref&nbsp;: pourquoi est-il important de répondre à cette question et pourquoi les techniques de vision par ordinateur sont-elles nécessaires pour y répondre ?
 
 Deuxièmement, à la suite des discussions dans le domaine de l'éthique de l'apprentissage automatique[^4],[^5], qui cherchent à aborder la question des biais dans l'apprentissage automatique (ML, *machine learning*), les historien·nes doivent être conscient·es du fait que les techniques de vision par ordinateur éclairent certaines parties des corpus visuels, mais peuvent négliger, mal identifier, mal classer ou même laisser dans l'ombre d'autres parties. En tant qu'historien·nes, nous sommes depuis longtemps conscient·es que nous regardons le passé à partir de notre propre époque, et par conséquent, toute application des techniques de vision par ordinateur devrait inclure une discussion sur un éventuel «&#xA0;biais historique&#xA0;». Comme (la plupart) des modèles de vision par ordinateur sont entrainés sur des données contemporaines, nous courons le risque de projeter les biais temporels de ces données sur les archives historiques. Bien qu'il ne soit pas possible, dans le cadre de cette leçon en deux parties, d'explorer pleinement la question du biais, il convient de la garder à l'esprit.
 
@@ -64,7 +64,7 @@ Cette leçon en deux parties a pour but de&nbsp;:
 
 Cette leçon n'a pas pour but de&nbsp;:
 
-- Reproduire d'autres introductions plus générales à l'apprentissage profond, bien qu'elle en partage _une partie_ des objectifs pédagogiques.
+- Reproduire d'autres introductions plus générales à l'apprentissage profond, bien qu'elle en partage une partie des objectifs pédagogiques.
 - Couvrir tous les détails de l'apprentissage profond et de la vision par ordinateur&nbsp;; il s'agit de vastes sujets, qu'il n'est pas possible de traiter en profondeur ici.
 
 
@@ -445,7 +445,7 @@ Souvent, nous souhaitons trouver un équilibre entre partir de zéro et exploite
 
 Une fois le modèle créé et les données préparées, le processus d'entrainement peut commencer. Examinons les étapes d'une boucle d'entrainement&nbsp;:
 
-1. Un modèle reçoit des données et des étiquettes, un lot à la fois. Chaque fois qu'un ensemble de données complet est passé à travers un modèle, on parle d'une *epoch*. Le nombre d'epochs pour entrainer un modèle est l'une des variables que vous devrez contrôler.
+1. Un modèle reçoit des données et des étiquettes, un lot à la fois. Chaque fois qu'un ensemble de données complet est passé à travers un modèle, on parle d'une *epoch*. Le nombre d'&laquo;&nbsp;epochs&nbsp;&raquo; pour entrainer un modèle est l'une des variables que vous devrez contrôler.
 
 2. Le modèle fait des prédictions pour ces étiquettes sur la base des données fournies, en utilisant un ensemble de paramètres internes. Dans ce modèle de réseau CNN, les paramètres sont contenus dans les couches du réseau.
 
@@ -490,7 +490,7 @@ Il est important de savoir ce qui se passe lorsque vous modifiez le processus d'
 - Changer la taille des images en entrée définies dans la transformation `Resize` dans `ImageDataLoaders`.
 - Changer le modèle utilisé dans `cnn_learner` de `resnet18` à `resnet34`.
 - Changer les métriques définies dans `cnn_learner`. Certaines métriques incluses dans fastai peuvent être trouvées dans la [documentation](https://perma.cc/K4BE-BF3W).
-- Modifier le nombre d'epochs utilisés dans la méthode `fine_tune`.
+- Modifier le nombre d'&laquo;&nbsp;epochs&nbsp;&raquo; utilisés dans la méthode `fine_tune`.
 
 Si quelque chose «&#xA0;casse&#xA0;», ne vous inquiétez pas ! Vous pouvez retourner au notebook d'origine pour revenir à une version fonctionnelle du code. Dans la prochaine partie de la leçon, les composants d'un pipeline d'apprentissage profond seront abordés plus en détail. L'étude de ce qui se passe lorsque vous apportez des modifications constituera une part importante du savoir-faire nécessaire à l'entrainement d'un modèle de vision par ordinateur.
 

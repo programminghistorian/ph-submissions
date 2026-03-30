@@ -630,7 +630,7 @@ Nous constatons qu'il existe une assez grande différence entre les performances
 
 [^9]: Jeremy Howard et Sylvain Gugger, &laquo;&nbsp;Fastai: A Layered API for Deep Learning&nbsp;&raquo;, *Information* 11, no. 2 (16 février 2020): 108, [https://doi.org/10.3390/info11020108](https://doi.org/10.3390/info11020108).
 
-[^10]: Utiliser les imports étoile ('star imports') est généralement déconseillé en Python. Cependant, fastai utilise [`__all__`](https://perma.cc/3GHR-V8RN) pour fournir une liste de packages qui devraient être importés lors de l'utilisation de l'import étoile. Cette approche est utile pour les travaux exploratoires, mais il se peut que vous souhaitiez modifier vos importations pour qu'elles soient plus explicites.
+[^10]: Utiliser les imports étoile (`import *`) est généralement déconseillé en Python. Cependant, fastai utilise [`__all__`](https://perma.cc/3GHR-V8RN) pour fournir une liste de packages qui devraient être importés lors de l'utilisation de l'import étoile. Cette approche est utile pour les travaux exploratoires, mais il se peut que vous souhaitiez modifier vos importations pour qu'elles soient plus explicites.
 
 [^11]: En simplifiant énormément, on peut représenter chaque neurone comme une fonction affine `y = ax + b`. Parler de `paramètres` du modèle, c'est se référer à l'ensemble des constantes `a` (le poids, *weight*) et `b` (le biais, *bias*) propres à chaque neurone qui sont mises à jour au cours de l'entrainement.
 

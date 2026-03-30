@@ -482,6 +482,7 @@ Vous pouvez bien évidemment ajouter autant de paragraphes et de niveaux hiérar
 
 L’un des avantages majeurs de cette démarche est de permettre une gestion native de la bibliographie avec l’implémentation par Stylo du format BibTeX et de Zotero. Le format BibTeX est un langage de description de références bibliographiques, qui est également fondé sur un principe de clé-valeur, par exemple :
 
+{% raw %}
 ```tex
 @article{
   title = {{Écrire les SHS en environnement numérique. L’éditeur de texte Stylo}},
@@ -493,6 +494,7 @@ L’un des avantages majeurs de cette démarche est de permettre une gestion nat
   langid = {french},
 }
 ```
+{% endraw %}
 
 Si vous utilisez Zotero pour organiser votre bibliographie, vous pouvez également connecter directement votre compte à Stylo afin d’ajouter un corpus bibliographique :
 

@@ -107,27 +107,9 @@ Format all references using the Chicago Manual of Style.
   https://subjectguides.york.ac.uk/referencing-style-guides/chicago
 -->
 
-## Contents 
-
-- [Introduction, Increasing Exposed to AI Risk](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#introduction-increasing-exposure-to-ai-risk)
-- [Using Natural Language Processing](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#using-natural-language-processing)
-- [Some Disclaimers ...](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#some-disclaimers)
-- [Preliminaries](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#preliminaries)
-- [Use Case: Locating Potential 🚩’s](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#use-case-locating-potential-s)
-- [Background to Dataset](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#dataset)
-- [Background to Technical Method](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#background-to-technical-method)
-- [Learning Keys](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#learning-keys)
-- [Learning Experiment](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#learning-experiment)
-- [Local Application and Continued Learning](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#local-application) 
-- [Conclusions](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#conclusions)
-- [Endnotes](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#endnotes)
-- [References](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#references)
-
 ## Introduction, Increasing Exposure to AI Risk and Red Flags
 
-![A woman plants a red flag against a documentation landscape, midjourney](enablar-lesson-4-intro-image.jpeg) 
-
-A woman plants a red flag against a documentation landscape, created in midjourney
+{% include figure.html filename="en-or-enablar-lesson-4-01.jpeg" alt="A woman plants a red flag against a documentation landscape." caption="Figure 1. A woman plants a red flag against a documentation landscape, created in Midjourney." %}
 
 The increasing pace of Artificial Intelligence (AI) development is particularly visible in Higher Education. University libraries now contend with newfound staff and student expectations as to how AI can support their scholarship, workplace efficiency and ideation strategies, automating previous manual work. Large Language Models (LLMs), trained on huge amounts of text, and the chat-based interfaces supporting them, have led many library users to anticipate querying resources based on natural language, opposed to keyword searching (Jaillant et al., 2026: 31). Alongside this shift in how users retrieve information, Agentic AI systems are coupling LLM models, like Gemini or Claude, to external software: ranging from calendar applications to email systems (Brown & Donnelly, 2026). Often, these tools are adopted to improve the quality of work, and reduce time, however they too change the rhythm and nature of research, pushing against established safeguards (Dickinson & Marshall, 2026).
 
@@ -787,6 +769,8 @@ We can now display the results, the below shows the first five results from our 
 
     df.head() # displays the first five results
 
+<div class="table-wrapper" markdown="block">
+
 | category | match_text   | sentence                                                      | method |
 |----------|--------------|---------------------------------------------------------------|--------|
 | SECURITY | Personal Data | Individuals who do not meet the Minimum Age …                | phrase |
@@ -795,6 +779,7 @@ We can now display the results, the below shows the first five results from our 
 | COST     | charge        | Transkribus eXpert is distributed ...                        | phrase |
 | COST     | Subscription  | To use Transkribus, an active Subscription is ...            | phrase |
 
+</div>
 
 For further refinement, you can also use spaCy for noun detection, alongside the patterns established in our dictionary. As we see in the Transkribus example, certain noun phrases, especially when attached to verb actions, can direct further - specialist - assessment. In this experiment, the noun *children* appears, which necessitates further review due to requiring a potentially different IP approach to GDPR. In this case, *children* appears in relation to *Trankribus Connect* and forbidding online posting that is 'illegal, obscene, abusive, threatening, defamatory, invasive of privacy, infringing on intellectual property rights, harmful to children, or otherwise objectionable', highlighting a level of robustness in platform precautions around data protetcion:
 

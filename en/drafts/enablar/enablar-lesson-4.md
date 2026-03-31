@@ -16,7 +16,7 @@ editors:
 review-ticket: 
 difficulty: 2
 activity: 
-topics: 
+topics: AI licences, terms and conditions, AI evaluation, library services
 abstract: 'With AI capability gaining strong media attention, university staff and students are exploring new ways of leveraging automation in their own research. Subsequently, Higher Educational libraries, specifically copyright and licensing teams, are now positioned as key advice givers, especially on Intellectual Property matters and data protection implications in using AI-based tools for research activities. Therefore, this ENABLAR lesson takes guidance from local experts, both within libraries and digital research, to inform a Natural Language Processing workflow for locating ‘red flag’ clauses in AI tool licence agreements. In doing so, we aim to build researcher and library practitioner confidence in interpreting complex legalistic documentation, while also informing critical and appropriate AI use in research.
 Nothing in the lesson is intended to constitute legal advice from a qualified lawyer, or intended to replace seeking library expertise.'
 avatar_alt: Red flag being planted in the ground
@@ -259,7 +259,7 @@ Nockels, before trialling spaCy, ran simple import tests to ensure the quality o
 
 #### Citation
 
-[Zenodo Link]
+<--! Zenodo Link --> 
 
 ## Background to Technical Method 
 
@@ -294,9 +294,115 @@ In both cases, legal professionals have identified issues in regulating current 
 We anticipate this lesson taking an hour, not including dictionary refinement and red flag review.
 
 ## Learning experiment
+
 ### Aims
+
+After completing this lesson, you will be able to deploy a spaCy powered Natural Language Processing (NLP) workflow for extracting problematic terms in AI licence documents. You will also be able to refine the provided NLP dictionary, to enable work on your own licences. This lesson also provides human translations of some key extracted clauses, to inform your qualitative review. 
+
 ### Inventory
+
+Datafiles - 
+  
+  Our compliant AI tool licence agreements [^1].
+  
+Software - 
+
+  Jupyter Notebook as a base coding environment
+  [PDFPlumber](https://github.com/jsvine/pdfplumber) (Python), for text extraction of born-digital licences
+  spaCy (Python), for NLP workflow
+  [pandas](https://pandas.pydata.org) (Python), for data frame construction of extracted results and .csv file export 
+  Microsoft Excel for manual red flag review 
+
 ### Workflow
+
+The following provides a step-by-step walkthrough of our established spaCy method for extracting red flag terms in AI licence agreements. 
+
+#### Step 1: spaCy installation 
+
+First of all, to ensure there is no conflict between any pre-installed Python libraries you may have, and the contents of this lesson, we advise setting up a dedicated environment through *conda*, which can be downloaded [here](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html). 
+
+In your computer terminal, call this something intuitive, like AI_licence_nlp, and include the latest python version:
+
+                  ```conda create -n AI_licence_nlp python=3.11```
+
+Once downloaded, click *y* to proceed -
+
+Then activate conda: 
+
+                ```conda activate AI_licence_nlp```
+
+You should see in the terminal that your directory has changed from (base) to (AI_licence_nlp), appearing before your device credentials.
+                   
+              ```(AI_licence_nlp) joenockels@Joes-Air ~ %```
+
+Conveniently, we can then download all the required Python libraries straight through the terminal and into your conda environment - 
+
+             ```pip install spacy
+                pip install pandas
+                pip install jupyter 
+                pip install ipykernel```
+
+Now, from your spacy library, you can now download the specific English language pipeline and model used in this lesson:
+
+            ```python -m spacy download en_core_web_sm```
+
+With your libraries and packages now downloaded through the terminal, we can now register the Python kernel in Jupyter Notebooks, which allows you to move from working in your terminal to using Jupyter’s more intuitive interface for the rest of the lesson. This interface still runs locally.
+
+            ```python -m ipykernel install --user --name licence_nlp --display-name "Python (AI Licence NLP)"```
+
+### Step 2: Running a Jupyter Notebook environment 
+
+Then, simply, type Jupyter Notebook after the *%* in your terminal, this will open up the interface. 
+
+Select *new* from Jupyter’s drop-down menu. You should see the display-name *AI Licence NLP*, click through and open up your notebook. This *kernel*, or Jupyter file, contains all the libraries and packages installed in Step 1. Name your notebook something intuitive like *spaCy_licence_experiments*. This will save an .ipynb file, which can be shared, as well as (re)uploaded to Jupyter, in case of working collaboratively. 
+
+Note: Keep your terminal open, which should now show a green bar and the message *Connecting to kernel …*. If so, the local host is running properly. You should receive a warning if you decide to close the terminal, but if not, exit Jupyter and go through the process again.
+
+Your screen should now look like Figure 1, with Jupyter showing a new notebook, and your terminal running in a smaller window. 
+
+[Fig 1] Apple Mac OS, with blank Jupyter Notebook (AI_Licence_NLP kernel), and base terminal running the local host. 
+
+## STEP 3: Dataset and spaCy deployment
+
+Begin by importing the set folder of AI tool licences, gathered by Estrada and replicating the current tools discussed at the University of Buffalo for institutional purchasing. This code then prints the first 1,000 characters and displays them within Jupyter, to verify that the machine-readable content is accurate for NLP.
+
+    ```with open("data/agreements/", encoding="utf-8") as f:
+       print(f.read()[:1000])```
+
+You can also, through our constructed folder, pick out an individual licence, if more relevant to your own research practice. In this case, we use Transkribus's current terms and conditions. Then set a convenient, and easily rememberable variable, for the read text, in this case *TK_document* -  
+
+    ```with open("data/transkribus_terms.txt", encoding="utf-8") as f:
+       print(f.read()[:1000])
+             TK_document = nlp(text)```
+
+Now you can import spaCy, as well as pandas (used for later data frame and .csv file exportation), as well as the required package - PhraseMatcher. Unlike some other NLP approaches, which label data, tokenise (break a text into discrete words), and pre-process, as an initial step (see Havens, 2022), we perform these actions as part of our dictionary set-up, to reduce processing steps: 
+
+    ```import spacy
+       from spacy.matcher import PhraseMatcher, Matcher
+       import pandas as pd
+
+       nlp = spacy.load("en_core_web_sm")```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Summary
 
 

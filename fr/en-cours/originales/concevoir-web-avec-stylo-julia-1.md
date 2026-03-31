@@ -125,7 +125,7 @@ winget install --name Julia --id 9NJNWW8PVKMN -e -s msstore
 ```
 
 <div class="alert alert-warning">
-À la fin de l’installation, veillez à accepter l’ajout de Julia dans votre <a href='https://fr.wikipedia.org/wiki/Variable_d%27environnement#%3CPATH%3E_pour_l'emplacement_des_ex%C3%A9cutables'>variable d’environnement</a> (PATH).
+À la fin de l’installation, veillez à accepter l’ajout de Julia dans votre <a href='https://perma.cc/HWL8-UMEC'>variable d’environnement</a> (PATH).
 </div>
 
 Il est également possible de télécharger directement les exécutables et/ou installeurs, selon votre système, depuis la page des [téléchargements manuels](https://julialang.org/downloads/manual-downloads/).

@@ -1,5 +1,5 @@
 ---
-title: "Terms and Conditions: Interpreting AI Tool Licences in Research Contexts through Natural Language Processing (spaCy)"
+title: "Terms and Conditions: Intrepreting AI Tool Licences in Research Contexts through Natural Language Processing (spaCy)"
 slug: enablar-lesson-4
 layout: lesson
 collection: lessons
@@ -123,7 +123,10 @@ Format all references using the Chicago Manual of Style.
 - [Endnotes](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#endnotes)
 - [References](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#references)
 
-## Introduction, Increasing Exposure to AI Risk
+## Introduction, Increasing Exposure to AI Risk and Red Flags
+
+![A woman planting a red flag against a landscape of documents](/Users/joenockels/Documents/ENABLAR-(2026)/intro-image.jpeg)
+
 
 The increasing pace of Artificial Intelligence (AI) development is particularly visible in Higher Education. University libraries now contend with newfound staff and student expectations as to how AI can support their scholarship, workplace efficiency and ideation strategies, automating previous manual work. Large Language Models (LLMs), trained on huge amounts of text, and the chat-based interfaces supporting them, have led many library users to anticipate querying resources based on natural language, opposed to keyword searching (Jaillant et al., 2026: 31). Alongside this shift in how users retrieve information, Agentic AI systems are coupling LLM models, like Gemini or Claude, to external software: ranging from calendar applications to email systems (Brown & Donnelly, 2026). Often, these tools are adopted to improve the quality of work, and reduce time, however they too change the rhythm and nature of research, pushing against established safeguards (Dickinson & Marshall, 2026).
 
@@ -236,7 +239,7 @@ In using accessible, pre-built and open-source tools (spaCy), there is ample tro
 
 The NLP processes underpinning this work are at the intermediate level, with the need for general data protection and IP knowledge.
 
-## Use Case: Locating Potential 🚩’s
+## Use Case: Locating Potential Red Flags
 
 This lesson aims to help those concerned with AI experimentation, such as Programming Historians, in evaluating AI tools based on their terms and conditions. As a secondary audience, we also hope to inform those with a remit to advise on AI compliance and institutional licence purchasing, especially within Higher Educational libraries. 
 

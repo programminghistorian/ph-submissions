@@ -841,7 +841,7 @@ This lesson has presented an NLP workflow using spaCy as an open, reproducible a
 
 ## Endnotes
 
-[^1] Zenodo link to Estrada's complied licence agreements. 
+[^1]: Zenodo link to Estrada's complied licence agreements. 
 
 ## References 
 

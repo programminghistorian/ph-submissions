@@ -125,7 +125,9 @@ Format all references using the Chicago Manual of Style.
 
 ## Introduction, Increasing Exposure to AI Risk and Red Flags
 
-![A woman planting a red flag against a landscape of documents, midjourney](enablar-lesson-4-intro-image.jpeg)
+![A woman plants a red flag against a documentation landscape, midjourney](enablar-lesson-4-intro-image.jpeg) 
+
+'A woman plants a red flag against a documentation landscape', midjourney
 
 
 The increasing pace of Artificial Intelligence (AI) development is particularly visible in Higher Education. University libraries now contend with newfound staff and student expectations as to how AI can support their scholarship, workplace efficiency and ideation strategies, automating previous manual work. Large Language Models (LLMs), trained on huge amounts of text, and the chat-based interfaces supporting them, have led many library users to anticipate querying resources based on natural language, opposed to keyword searching (Jaillant et al., 2026: 31). Alongside this shift in how users retrieve information, Agentic AI systems are coupling LLM models, like Gemini or Claude, to external software: ranging from calendar applications to email systems (Brown & Donnelly, 2026). Often, these tools are adopted to improve the quality of work, and reduce time, however they too change the rhythm and nature of research, pushing against established safeguards (Dickinson & Marshall, 2026).

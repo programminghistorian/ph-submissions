@@ -113,14 +113,15 @@ Format all references using the Chicago Manual of Style.
 - [Using Natural Language Processing](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#using-natural-language-processing)
 - [Some Disclaimers ...](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#some-disclaimers)
 - [Preliminaries](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#preliminaries)
-- Use Case: Locating Potential 🚩’s 
-- Background to Dataset
-- Background to Technical Method
-- Learning Keys
-- Learning Experiment
-- Local Application and Continued Learning 
-- Conclusions
-- References
+- [Use Case: Locating Potential 🚩’s](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#use-case-locating-potential-s)
+- [Background to Dataset](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#dataset)
+- [Background to Technical Method](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#background-to-technical-method)
+- [Learning Keys](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#learning-keys)
+- [Learning Experiment](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#learning-experiment)
+- [Local Application and Continued Learning](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#local-application) 
+- [Conclusions](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#conclusions)
+- [Endnotes](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#endnotes)
+- [References](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/en/drafts/enablar/enablar-lesson-4.md#references)
 
 ## Introduction, Increasing Exposure to AI Risk
 
@@ -323,32 +324,32 @@ First of all, to ensure there is no conflict between any pre-installed Python li
 
 In your computer terminal, call this something intuitive, like AI_licence_nlp, and include the latest python version:
 
-             conda create -n AI_licence_nlp python=3.11
+    conda create -n AI_licence_nlp python=3.11
 
 Once downloaded, click *y* to proceed -
 
 Then activate conda: 
 
-              conda activate AI_licence_nlp
+    conda activate AI_licence_nlp
 
 You should see in the terminal that your directory has changed from (base) to (AI_licence_nlp), appearing before your device credentials.
                    
-             (AI_licence_nlp) joenockels@Joes-Air ~ %
+    (AI_licence_nlp) joenockels@Joes-Air ~ %
 
 Conveniently, we can then download all the required Python libraries straight through the terminal and into your conda environment - 
 
-             pip install spacy
-             pip install pandas
-             pip install jupyter 
-             pip install ipykernel
+    pip install spacy
+    pip install pandas
+    pip install jupyter 
+    pip install ipykernel
 
 Now, from your spacy library, you can now download the specific English language pipeline and model used in this lesson:
 
-             python -m spacy download en_core_web_sm
+    python -m spacy download en_core_web_sm
 
 With your libraries and packages now downloaded through the terminal, we can now register the Python kernel in Jupyter Notebooks, which allows you to move from working in your terminal to using Jupyter’s more intuitive interface for the rest of the lesson. This interface still runs locally.
 
-             python -m ipykernel install --user --name licence_nlp --display-name "Python (AI Licence NLP)"
+    python -m ipykernel install --user --name licence_nlp --display-name "Python (AI Licence NLP)"
 
 ### Step 2: Running a Jupyter Notebook environment 
 
@@ -366,22 +367,22 @@ Your screen should now look like Figure 1, with Jupyter showing a new notebook, 
 
 Begin by importing the set folder of AI tool licences, gathered by Estrada and replicating the current tools discussed at the University of Buffalo for institutional purchasing. This code then prints the first 1,000 characters and displays them within Jupyter, to verify that the machine-readable content is accurate for NLP.
 
-       with open("data/agreements/", encoding="utf-8") as f:
-       print(f.read()[:1000])
+    with open("data/agreements/", encoding="utf-8") as f:
+    print(f.read()[:1000])
 
 You can also, through our constructed folder, pick out an individual licence, if more relevant to your own research practice. In this case, we use Transkribus's current terms and conditions. Then set a convenient, and easily rememberable variable, for the read text, in this case *TK_document* -  
 
-       with open("data/transkribus_terms.txt", encoding="utf-8") as f:
-       print(f.read()[:1000])
-       TK_document = nlp(text)
+    with open("data/transkribus_terms.txt", encoding="utf-8") as f:
+    print(f.read()[:1000])
+    TK_document = nlp(text)
 
 Now you can import spaCy, as well as pandas (used for later data frame and .csv file exportation), as well as the required package - PhraseMatcher. Unlike some other NLP approaches, which label data, tokenise (break a text into discrete words), and pre-process, as an initial step (see Havens, 2022), we perform these actions as part of our dictionary set-up, to reduce processing steps: 
 
-       import spacy
-       from spacy.matcher import PhraseMatcher, Matcher
-       import pandas as pd
+    import spacy
+    from spacy.matcher import PhraseMatcher, Matcher
+    import pandas as pd
 
-       nlp = spacy.load("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
 ### Step 4: Dictionary Set-Up
 
@@ -396,6 +397,332 @@ The following code displays our constructed dictionary, which begins with key te
     train the AI systems 
 
 For your own purposes, you can easily delete non-relevant dictionary entries, or add to the patterns, directly in the code. We provide this dictionary also as a Zenodo file [^1], for editing outside of Jupyter. 
+
+    red_flag_dict = {
+
+       "AI_TRAINING": {
+
+        "phrases": [
+        "train",
+        "improve",
+        "enhance the capabilities",
+        "develops",
+        "automated techniques"
+        "generate outputs"
+        "computational analysis"
+    ],
+
+    "patterns": [
+
+        [
+            {"LEMMA": "train"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["model","system","algorithm"]}}
+        ],
+
+        [
+            {"LEMMA": "improve"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LEMMA": {"IN": ["model","system","service"]}}
+        ], 
+     
+        [   {"LEMMA": "enhance"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LEMMA": {"IN": ["model","system","algorithm", "service"]}} 
+        ],
+        
+        [   {"LEMMA": "develop"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LEMMA": {"IN": ["model","system","algorithm", "service"]}} 
+        ],
+        [   {"LEMMA": "automate"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LEMMA": {"IN": ["system","technique","performance", "service"]}} 
+        ],
+        [   {"LEMMA": "generate"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LEMMA": {"IN": ["output","response","content", "information"]}} 
+        ],
+        [   {"LEMMA": "computation"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LEMMA": {"IN": ["analysis"]}} 
+        ]
+    ]
+    },
+
+    "COST": {
+
+    "phrases": [
+        "associated costs",
+        "monetary reward",
+        "profit",
+        "sale",
+        "resale",
+        "loan",
+        "transfer",
+        "hire",
+        "reimbursed",
+        "fee payable",
+        "subscription",
+        "charge"
+    ],
+
+    "patterns": [
+
+        [
+            {"LEMMA": "cost"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","service","subscription","usage"]}}
+        ],
+
+        [
+            {"LEMMA": "reward"}
+        ],
+
+        [
+            {"LEMMA": "profit"}
+        ],
+
+        [
+            {"LEMMA": "sell"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LEMMA": {"IN": ["data","service","product"]}}
+        ],
+
+        [
+            {"LEMMA": "loan"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LEMMA": "amount"}
+        ],
+
+        [
+            {"LEMMA": "transfer"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LEMMA": "service"}
+        ],
+
+        [
+            {"LEMMA": "hire"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LEMMA": "service"}
+        ],
+
+        [
+            {"LOWER": "fee"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["licence","license","payable","required","reimbursed"]}}
+        ],
+
+        [
+            {"LOWER": "subscription"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LEMMA": {"IN": ["model","system","plan"]}}
+        ]
+    ]
+    },
+
+    "DATA_RETENTION": {
+
+    "phrases": [
+        "store data",
+        "log data",
+        "retain data",
+        "data retention",
+        "storage of data"
+    ],
+
+    "patterns": [
+
+        [
+            {"LEMMA": "store"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","information","content","prompt","input"]}}
+        ],
+
+        [
+            {"LEMMA": "log"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","activity","usage","query"]}}
+        ],
+
+        [
+            {"LEMMA": "retain"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","information","content"]}}
+        ],
+
+        [
+            {"LEMMA": {"IN": ["restrict","restriction"]}},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["use","access","distribution"]}}
+        ],
+
+        [
+            {"LEMMA": "obligation"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["retain","store","protect"]}}
+        ]
+    ]
+    },
+
+    "DATA_OWNERSHIP": {
+
+    "phrases": [
+        "license to use submitted content",
+        "retain rights to user data",
+        "ownership of data"
+        "controller"
+    ],
+
+    "patterns": [
+
+        [
+            {"LEMMA": "license"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LEMMA": "use"}
+        ],
+
+        [
+            {"LEMMA": "retain"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["rights","ownership"]}}
+        ],
+
+        [
+            {"LEMMA": "own"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": "data"}
+        ],
+
+        [
+            {"LEMMA": "restriction"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["ownership","use"]}}
+        ],
+
+        [
+            {"LEMMA": "obligation"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["ownership","control"]}}
+        ],
+     
+        [
+            {"LEMMA": "controller"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["rights", "data", "information"]}}
+        ]
+    ]
+    },
+
+    "SECURITY": {
+
+    "phrases": [
+        "personal data",
+        "third party",
+        "data security"
+    ],
+
+    "patterns": [
+
+        [
+            {"LEMMA": "install"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["software","system"]}}
+        ],
+
+        [
+            {"LOWER": "personal"},
+            {"OP": "?"},
+            {"LOWER": "data"}
+        ],
+
+        [
+            {"LEMMA": "distribute"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","information","content"]}}
+        ],
+
+        [
+            {"LOWER": "third"},
+            {"OP": "?"},
+            {"LOWER": "party"}
+        ]
+    ]
+    },
+
+    "COPYRIGHT": {
+
+    "phrases": [
+        "data protection",
+        "reuse of data",
+        "resale of content",
+        "copyright ownership"
+    ],
+
+    "patterns": [
+
+        [
+            {"LEMMA": "own"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["copyright","data","content"]}}
+        ],
+
+        [
+            {"LOWER": "data"},
+            {"OP": "?"},
+            {"LOWER": "protection"}
+        ],
+
+        [
+            {"LEMMA": "reuse"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","content","material"]}}
+        ],
+
+        [
+            {"LEMMA": "resale"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","content","service"]}}
+        ],
+
+        [
+            {"LEMMA": "output"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","content"]}}
+        ]
+    ]
+    },
+
+    "ACCESSIBILITY": {
+
+    "phrases": [
+        "accessibility standard",
+        "accessibility compliance",
+        "prohibited act", 
+        "permitted use"
+    ],
+
 
 ### Step 4: PhraseMatcher
 
@@ -533,11 +860,11 @@ This lesson has presented an NLP workflow using spaCy as an open, reproducible a
 
 [Cox, Andrew. The impact of AI, machine learning, automation and robotics on the information profession. CILIP. 2026.](https://www.cilip.org.uk/page/researchreport)
 
-[Erdelyi, Olivia J., and Erdelyi, Gabor, 2020, “The AI Liability Puzzle and A Fund-Based Work-Around”] (https://doi.org/10.48550/arXiv.1911.08005)
+[Erdelyi, Olivia J., and Erdelyi, Gabor, 2020, “The AI Liability Puzzle and A Fund-Based Work-Around”](https://doi.org/10.48550/arXiv.1911.08005)
 
-[Goodale, Ian, 2024, “Analysing Multilingual French and Russian Text using NLTK, spaCy, and Stanza”, *Programming Historian*] https://programminghistorian.org/en/lessons/analyzing-multilingual-text-nltk-spacy-stanza
+[Goodale, Ian, 2024, “Analysing Multilingual French and Russian Text using NLTK, spaCy, and Stanza”, *Programming Historian*](https://programminghistorian.org/en/lessons/analyzing-multilingual-text-nltk-spacy-stanza)
 
-[Gribomont, Isabelle, 2023, “OCR with Google Vision API and Tesseract”, *Programming Historian*] https://programminghistorian.org/en/lessons/ocr-with-google-vision-and-tesseract
+[Gribomont, Isabelle, 2023, “OCR with Google Vision API and Tesseract”, *Programming Historian*](https://programminghistorian.org/en/lessons/ocr-with-google-vision-and-tesseract)
 
 Havens, Lucy, Terras, Terras, Bach, Benjamin, and Alex, Alex. 2022. Uncertainty and Inclusivity in Gender Bias Annotation: An Annotation Taxonomy and Annotated Datasets of British English Text. In *Proceedings of the 4th Workshop on Gender Bias in Natural Language Processing (GeBNLP), pages 30–57, Seattle, Washington. Association for Computational Linguistics*.
 
@@ -586,30 +913,3 @@ Robinson, David, 2022, *Voices in the Code: A Story about People, Their Values, 
 ### Conflicts 
 
 Joe Nockels is a personal READ-COOP member, the body who maintain and develop Transkribus, included within Estrada and Fenlon’s constructed dataset of AI Terms and Conditions.  The University of Birmingham are also members of the READ-COOP by the virtue of their institutional membership.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Summary
-
-
-## Local application
-### Apply this method
-### Other projects
-### Continued learning
-
-## Endnotes

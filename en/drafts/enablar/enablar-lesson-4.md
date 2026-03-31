@@ -109,7 +109,7 @@ Format all references using the Chicago Manual of Style.
 
 ## Contents 
 
-- Introduction, Increasing Exposed to AI Risk (/en/drafts/enablar/enablar-lesson-4#introduction-increasing-exposure-to-ai-risk) 
+- Introduction, Increasing Exposed to AI Risk (.../enablar-lesson-4.md#introduction-increasing-exposure-to-ai-risk) 
 - Using Natural Language Processing
 - Some Disclaimers ... 
                 - This is not legal advice

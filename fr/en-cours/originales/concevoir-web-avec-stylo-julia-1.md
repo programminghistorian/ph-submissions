@@ -92,7 +92,7 @@ Stylo est d’abord accessible via une interface web, mais il est aussi possible
 <div class="alert alert-warning">
 L’utilisation sécurisée de l’API de Stylo nécessite l'utilisation d’une clé qui autorise les applications tierces à récupérer/modifier des contenus. Cette clé est disponible sur la page de profil de Stylo (dans le menu supérieur, cliquer sur votre nom/pseudonyme), sous "Clé d'accès à l'API".
 
-**Attention** : cette clé doit rester secrète et ne doit pas être partagée avec quelqu’un d’autre ou sur un espace public en ligne.
+<b>Attention</b> : cette clé doit rester secrète et ne doit pas être partagée avec quelqu’un d’autre ou sur un espace public en ligne.
 </div>
 
 Dans la suite de cette leçon nous détaillons les procédures de création d’articles et l’association de ces articles à des espaces de travail et à des corpus dans le cas de l’utilisation de TowSty. Mais avant cela, il nous faut expliquer pourquoi TowSty est écrit en Julia.
@@ -125,7 +125,7 @@ winget install --name Julia --id 9NJNWW8PVKMN -e -s msstore
 ```
 
 <div class="alert alert-warning">
-À la fin de l’installation, veillez à accepter l’ajout de Julia dans votre [variable d’environnement](https://fr.wikipedia.org/wiki/Variable_d%27environnement#%3CPATH%3E_pour_l'emplacement_des_ex%C3%A9cutables) (PATH).
+À la fin de l’installation, veillez à accepter l’ajout de Julia dans votre <a href='https://fr.wikipedia.org/wiki/Variable_d%27environnement#%3CPATH%3E_pour_l'emplacement_des_ex%C3%A9cutables'>variable d’environnement</a> (PATH).
 </div>
 
 Il est également possible de télécharger directement les exécutables et/ou installeurs, selon votre système, depuis la page des [téléchargements manuels](https://julialang.org/downloads/manual-downloads/).
@@ -244,13 +244,13 @@ julia> α
 
 <div class="alert alert-warning">
 Attention toutefois, certains caractères cachent une fonction ou une constante :
-```julia
+<code>julia
 julia> √16 # \sqrt + tabulation
 4.0
 
 julia> π # \pi + tabulation
 π = 3.1415926535897...
-```
+</code>
 </div>
 
 ### Opérations courantes

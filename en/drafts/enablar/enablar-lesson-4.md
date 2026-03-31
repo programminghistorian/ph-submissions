@@ -323,32 +323,32 @@ First of all, to ensure there is no conflict between any pre-installed Python li
 
 In your computer terminal, call this something intuitive, like AI_licence_nlp, and include the latest python version:
 
-                  ```conda create -n AI_licence_nlp python=3.11```
+             conda create -n AI_licence_nlp python=3.11
 
 Once downloaded, click *y* to proceed -
 
 Then activate conda: 
 
-                ```conda activate AI_licence_nlp```
+              conda activate AI_licence_nlp
 
 You should see in the terminal that your directory has changed from (base) to (AI_licence_nlp), appearing before your device credentials.
                    
-              ```(AI_licence_nlp) joenockels@Joes-Air ~ %```
+             (AI_licence_nlp) joenockels@Joes-Air ~ %
 
 Conveniently, we can then download all the required Python libraries straight through the terminal and into your conda environment - 
 
-             ```pip install spacy
-                pip install pandas
-                pip install jupyter 
-                pip install ipykernel```
+             pip install spacy
+             pip install pandas
+             pip install jupyter 
+             pip install ipykernel
 
 Now, from your spacy library, you can now download the specific English language pipeline and model used in this lesson:
 
-            ```python -m spacy download en_core_web_sm```
+             python -m spacy download en_core_web_sm
 
 With your libraries and packages now downloaded through the terminal, we can now register the Python kernel in Jupyter Notebooks, which allows you to move from working in your terminal to using Jupyter’s more intuitive interface for the rest of the lesson. This interface still runs locally.
 
-            ```python -m ipykernel install --user --name licence_nlp --display-name "Python (AI Licence NLP)"```
+             python -m ipykernel install --user --name licence_nlp --display-name "Python (AI Licence NLP)"
 
 ### Step 2: Running a Jupyter Notebook environment 
 
@@ -362,29 +362,230 @@ Your screen should now look like Figure 1, with Jupyter showing a new notebook, 
 
 [Fig 1] Apple Mac OS, with blank Jupyter Notebook (AI_Licence_NLP kernel), and base terminal running the local host. 
 
-## STEP 3: Dataset and spaCy deployment
+### STEP 3: Dataset and spaCy deployment
 
 Begin by importing the set folder of AI tool licences, gathered by Estrada and replicating the current tools discussed at the University of Buffalo for institutional purchasing. This code then prints the first 1,000 characters and displays them within Jupyter, to verify that the machine-readable content is accurate for NLP.
 
-    ```with open("data/agreements/", encoding="utf-8") as f:
-       print(f.read()[:1000])```
+       with open("data/agreements/", encoding="utf-8") as f:
+       print(f.read()[:1000])
 
 You can also, through our constructed folder, pick out an individual licence, if more relevant to your own research practice. In this case, we use Transkribus's current terms and conditions. Then set a convenient, and easily rememberable variable, for the read text, in this case *TK_document* -  
 
-    ```with open("data/transkribus_terms.txt", encoding="utf-8") as f:
+       with open("data/transkribus_terms.txt", encoding="utf-8") as f:
        print(f.read()[:1000])
-             TK_document = nlp(text)```
+       TK_document = nlp(text)
 
 Now you can import spaCy, as well as pandas (used for later data frame and .csv file exportation), as well as the required package - PhraseMatcher. Unlike some other NLP approaches, which label data, tokenise (break a text into discrete words), and pre-process, as an initial step (see Havens, 2022), we perform these actions as part of our dictionary set-up, to reduce processing steps: 
 
-    ```import spacy
+       import spacy
        from spacy.matcher import PhraseMatcher, Matcher
        import pandas as pd
 
-       nlp = spacy.load("en_core_web_sm")```
+       nlp = spacy.load("en_core_web_sm")
+
+### Step 4: Dictionary Set-Up
+
+In order to extract meaningful words and patterns (phrases) from our AI licences, we need to remove noisy elements, in our case stopwords that are irrelevant to red flag terms and conditions. Although agreements may include more implicit undertones of risk, spaCy is tasked with term and phrase extraction, opposed to broader language understanding, which would require processing out-of-scope for this lesson. Nonetheless, our extraction approach works well, due to AI licence agreements being relatively formulaic, with repeating clauses and structures. 
+
+The following code displays our constructed dictionary, which begins with key terms and phrases found through a reading of the ESAC register, tool licence guidance, and in consultation with Fenlon. These terms and phrases are grouped into themes, alongside certain anticipated patterns. For instance, in *AI training* the term *train* is associated with *model*, *system*, *algorithm*, with *OP ?* adding a placeholder, whereby these terms will still be associated and stretched across a non-relevant word or set of words: picking up such phrases as *training **our** model*. These key terms, and those associated with them, are also made lowercase (to remove duplicates) and lemmatised (reducing words to their canonical root). Therefore, our first dictionary term and pattern would pick up, not including other variations: 
+
+    AI algorithmic training
+    training our AI algorithm
+    Training our AI algorithms
+    to train the AI system
+    train the AI systems 
+
+For your own purposes, you can easily delete non-relevant dictionary entries, or add to the patterns, directly in the code. We provide this dictionary also as a Zenodo file [^1], for editing outside of Jupyter. 
+
+### Step 4: PhraseMatcher
+
+A list of individual word tokens, however related to AI risk, would not be illuminating enough to assess red flags in licence agreements, therefore we use spaCy’s in-built PhraseMatcher, which enables our dictionary to be overlaid the dataset text and reassembled based on the pattern rules established. 
+
+First, you load the matchers, and re-emphasise the lowercasing of the agreement text - 
+
+phrase_matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
+token_matcher = Matcher(nlp.vocab)
+
+Then, run the matchers, which act both on individual word tokens and the rules established - 
+
+for category, rules in red_flag_dict.items():
+
+    # PhraseMatcher
+    phrase_patterns = [nlp(p) for p in rules["phrases"]]
+    phrase_matcher.add(category, phrase_patterns)
+
+    # Token Matcher
+    token_matcher.add(category, rules["patterns"])
+
+—--
+
+After loading the matchers, you can construct an empty list [] of *matches* or *red flag hits*, and direct spaCy to cover the entire length of your agreement licence based on word_count, while also categorising matches based on the groupings in our dictionary: such as *AI_Training*. This will result in a usable, and meaningfully structured, dataset of matches grouped to a respective theme and risk.
+
+    matches = []
+
+    # Phrase matches
+    for match_id, start, end in phrase_matcher(document):
+
+    span = TK_document[start:end]
+
+    matches.append({
+        "category": nlp.vocab.strings[match_id],
+        "match_text": span.text,
+        "sentence": span.sent.text,
+        "method": "phrase"
+    })
 
 
+    # Token / lemma matches
+    for match_id, start, end in token_matcher(doc):
 
+    span = TK_document[start:end]
+
+    matches.append({
+        "category": nlp.vocab.strings[match_id],
+        "match_text": span.text,
+        "sentence": span.sent.text,
+        "method": "lemma_pattern"
+    })
+
+### Step 6: Data Analysis
+
+We can now display the results, the below shows the first five results from our Transkribus example, grouped by the established category in our constructed dictionary. This data frame also indicates what triggered the red flag, whether spaCy used the phrase or word token matcher, and the related sentence for further, qualitative review. 
+
+    df = pd.DataFrame(matches)
+
+    df.head() # displays the first five results
+
+| category | match_text   | sentence                                                      | method |
+|----------|--------------|---------------------------------------------------------------|--------|
+| SECURITY | Personal Data | Individuals who do not meet the Minimum Age …                | phrase |
+| SECURITY | third party   | Creating an account on behalf of a third party ...           | phrase |
+| SECURITY | third party   | Creating an account on behalf of a third party...            | phrase |
+| COST     | charge        | Transkribus eXpert is distributed ...                        | phrase |
+| COST     | Subscription  | To use Transkribus, an active Subscription is ...            | phrase |
+
+
+For further refinement, you can also use spaCy for noun detection, alongside the patterns established in our dictionary. As we see in the Transkribus example, certain noun phrases, especially when attached to verb actions, can direct further - specialist - assessment. In this experiment, the noun *children* appears, which necessitates further review due to requiring a potentially different IP approach to GDPR. In this case, *children* appears in relation to *Trankribus Connect* and forbidding online posting that is 'illegal, obscene, abusive, threatening, defamatory, invasive of privacy, infringing on intellectual property rights, harmful to children, or otherwise objectionable', highlighting a level of robustness in platform precautions around data protetcion:
+
+    noun_phrases = set()
+
+    for chunk in doc.noun_chunks:
+        noun_phrases.add(chunk.text.lower())
+
+    for np in list(noun_phrases)[:20]:
+        print(np)
+
+    managed projects
+    the contracting parties
+    critical infrastructure
+    the severity level
+    the actual payment date
+    extent
+    their habitual residence
+    a right
+    children
+    demands
+    authorised personnel
+    the agreement
+    any responsibility
+    the extent
+    sufficiently high-quality existing pairs
+    your published collection users
+    electronic communications
+    code parts
+    our dedicated websites
+    directors
+
+### Step 7: Exportation 
+
+For further inspection, you can then export as a CSV for EXCEL post-correction - 
+
+    df.to_csv("red_flag_matches.csv", index=False, encoding="utf-8")
+    print("DataFrame exported to red_flag_matches.csv")
+
+### STEP 8: Review and Post Correction
+
+Our spaCy method aims to extract problematic AI tool clauses, and - in turn - ais institutional procurement workflows and researcher decision-making. Nonetheless, human-in-the-loop review is still essential for interpreting risk. As such, we include some human language translations from our own professional perspectives, which break down why certain extracted clauses are problematic, and indeed whether some actually constitute red flags. Alongside these translations, we provide a RAG (red, amber, green) rating, which - simultaneously - assesses the success of our spaCy method. This human review stage also enables a degree of self-reflection, from the Authors’ own orientation toward AI use. With our own understanding of licence agreements varying, due to our library and researcher backgrounds, this section also explores our own knowledge gaps in interpreting terms and conditions. 
+
+<--! Yet to Complete -->
+
+## Local Application
+
+This NLP method has been made purposely extensible, important considering the variability of natural language, even in regimented terms and conditions. Therefore you can easily apply this method in your own research context, where extracting red flags from licences is necessary to begin ascertaining the risk level in adopting, or purchasing, an AI tool. To ensure that your dictionary anticipates the content of your agreement sufficiently, you can simply edit the provided code, either straight within Jupyter Notebook, or before importing into a Python environment, with our dictionary list of terms available via Zenodo as plain .txt file, for easily uploading [^1].
+
+The nature of NLP, finding patterns in information through deconstructing text as discrete units of analysis, requires fine-tuning to be useful for particular texts. Although AI tool licenses are regimented and likely to include similar clauses, they differ in legal jurisdiction and phrasing, therefore a challenge of this method is its transferability. The researcher must also be confident in assessing the document’s purpose and context before deploying spaCy. Following this, our human translations of a sample of main red flags extracted is meant to encourage greater confidence in interpreting AI licences, both at the research and library-level. 
+
+For continued learning, see other *Programming Historian* applications of spaCy. Kane’s (2023) lesson applies a similar NLP workflow for corpus linguistic annotation and interpretation, while Goodale (2024) uses spaCy, using the same stopword approach, for interpreting Russian text. Away from historical linguistic data, spaCy has been used to review and analyse clinical notes to improve patient outcomes (Schmidt et al., 2026), as well as to consensually extract payment data within financial institutions, aimed at ensuring anti-money laundering compliance (Nayak, 2026).
+
+With this lesson extracting natural language clauses as an intuitive data frame, there is research scope for contrasting and comparing AI licences between legal jurisdictions, as well as the prominence of certain red flags. Our use of ESAC’s open registering of publishing licences also enables further work as to how closely traditional terms and conditions map onto newer AI tool licences.
+
+## Conclusions
+
+This lesson has presented an NLP workflow using spaCy as an open, reproducible and extensible method for extracting problematic AI tool licence clauses. In engaging with the ENABLAR cohort, this lesson is informed by our daily roles, and cross-disciplinary expertise, in digital research, copyright and licensing, and library support. Though short of legal advice, our situated workflow enables researchers, and library practitioners, to better contend with AI’s research implications, from an IP and data protection standing-point. In doing so, a certain confidence gap begins to be filled, while advocating for critical AI use, risk mitigation, and institutional-researcher dialogue.
+
+## Endnotes
+
+[^1] Zenodo link to Estrada's complied licence agreements. 
+
+## References 
+
+[Colavizza, Giovanni, and Lise Jaillant. AI Preparedness Guidelines for Archivists. February 2026. Archives & Records Association (UK & Ireland)](https://www.archives.org.uk/ai-preparedness-guidelines-for-archivists)
+
+[Cox, Andrew. The impact of AI, machine learning, automation and robotics on the information profession. CILIP. 2026.](https://www.cilip.org.uk/page/researchreport)
+
+[Erdelyi, Olivia J., and Erdelyi, Gabor, 2020, “The AI Liability Puzzle and A Fund-Based Work-Around”] (https://doi.org/10.48550/arXiv.1911.08005)
+
+[Goodale, Ian, 2024, “Analysing Multilingual French and Russian Text using NLTK, spaCy, and Stanza”, *Programming Historian*] https://programminghistorian.org/en/lessons/analyzing-multilingual-text-nltk-spacy-stanza
+
+[Gribomont, Isabelle, 2023, “OCR with Google Vision API and Tesseract”, *Programming Historian*] https://programminghistorian.org/en/lessons/ocr-with-google-vision-and-tesseract
+
+Havens, Lucy, Terras, Terras, Bach, Benjamin, and Alex, Alex. 2022. Uncertainty and Inclusivity in Gender Bias Annotation: An Annotation Taxonomy and Annotated Datasets of British English Text. In *Proceedings of the 4th Workshop on Gender Bias in Natural Language Processing (GeBNLP), pages 30–57, Seattle, Washington. Association for Computational Linguistics*.
+
+[Holt, Ilkay, and Kefalea, Revekka, 2025, “Risk Management Toolkit for Open GLAM”](https://zenodo.org/records/18928812)
+
+[Jaillant, Lise, Kidd, Matthew, and Zhao, Lingjia, Sifting the Digital Heap: A scoping study of AI for government archives – access, backlogs, and responsible practice. Loughborough University. Report. 2026.](https://hdl.handle.net/2134/31629595.v1)
+
+[JiSC, n.d., “Guide to the Model Licence (FAQs)”](https://subscriptionsmanager.jisc.ac.uk/about/guide-to-model-licence)
+
+[Kane, Megan S., 2023, “Corpus Analysis with spaCy”, *Programming Historian*](https://programminghistorian.org/en/lessons/corpus-analysis-with-spacy)
+
+[Khan, Fareed, 2022, “Beginner Guide of spaCy”, *Medium*](beginner-guide-of-spacy-8fb363330077)
+
+[Krantz, Tom, Jonker, Alexandra, and McGrath, Amanda, n.d., “What is shadow AI?”, *IBM*](https://www.ibm.com/think/topics/shadow-ai)
+
+[LexisNexus, 2026, “Indemnity definition”](https://www.lexisnexis.co.uk/legal/glossary/indemnity)
+
+[LexisNexus, 2026, “Warranty definition”](https://www.lexisnexis.co.uk/legal/glossary/warranty)
+
+[Lundborg, Einarsson, 2024, Dazzled by the Private Sector. MA diss, University of Boras](https://www.diva-portal.org/smash/get/diva2:1879530/FULLTEXT01.pdf)
+
+[Manchester, Eileen J., 2023, “Introducing the LC Labs Artificial Intelligence Planning Framework”, *Library of Congress Blog*](https://blogs.loc.gov/thesignal/2023/11/introducing-the-lc-labs-artificial-intelligence-planning-framework)
+
+[McGregor, Nora, 2025, “AI & Machine Learning in Libraries”, *LIBER Digital Scholarship & Data Science Topic Guides*](https://libereurope.github.io/ds-topic-guides/ai-ml.html)
+
+[Nandini, P., 2024, “NLP with spaCy: A Comprehensive Guide”, *Medium*](https://medium.com/@pnandhiniofficial/nlp-with-spacy-a-comprehensive-guide-5c3f1bccdb0g)
+
+[NasuhcaN, 2025, “Natural Language Processing (NLP): A Comprehensive Guide”, *Medium*](https://medium.com/@nasuhcanturker/natural-language-processing-nlp-a-comprehensive-guide-477984ebd873)
+
+[Nayak, Srikumar, 2026, “Named Entity Recognition for Payment Data Using NLP”](https://doi.org/10.48550/arXiv.2602.14009)
+
+[Nockels, Joe, Gooding, Paul, Terras, Melissa, 2024, “The implications of handwritten text recognition for accessing the past at scale”, *Journal of Documentation*, 80(7): 148–167.](https://doi.org/10.1108/JD-09-2023-0183)
+
+Robinson, David, 2022, *Voices in the Code: A Story about People, Their Values, and the Algorithm They Made*. New York: Russell Sage Foundation.
+
+[Rungkaew, Titirut, 2025, “Students’ perception of google classroom and microsoft teams using TAM-based constructs”, *AU E-Journal of Interdisciplinary Research*, 10(3): 209-217.](https://doi.org/10.14456/au-ejir.2025.54)
+
+[Schmidt, Linea, Ibing, Susanne, Borchert, Florian, et al., 2026, “Automating clinical phenotyping using natural language processing”, *Communications Medicine*, 6(77).](https://doi.org/10.1038/s43856-025-01337-0)
+
+[Stryker, Cole, Holdsworth, Jim, n.d., “What is NLP (natural language processing)?”, *IBM*](https://www.ibm.com/think/topics/natural-language-processing)
+
+[University of Birmingham, 2026, “AI tools licensing review guidance”](https://intranet.birmingham.ac.uk/student/libraries/copyright/researchers/ai-tools-licensing-review-guidance.aspx)
+
+[UK Government, 2021, “Guidance - Exceptions to copyright”](https://www.gov.uk/guidance/exceptions-to-copyright#fair-dealing)
+
+### Conflicts 
+
+Joe Nockels is a personal READ-COOP member, the body who maintain and develop Transkribus, included within Estrada and Fenlon’s constructed dataset of AI Terms and Conditions.  The University of Birmingham are also members of the READ-COOP by the virtue of their institutional membership.
 
 
 

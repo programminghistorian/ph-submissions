@@ -5,9 +5,9 @@ layout: lesson
 collection: lessons
 date: YYYY-MM-DD
 authors:
+  - Joseph Nockels
   - Alex Fenlon
   - Natalia Estrada
-  - Joseph Nockels
 reviewers:
 - Forename Surname
 - Forename Surname
@@ -17,7 +17,8 @@ review-ticket:
 difficulty: 2
 activity: 
 topics: 
-abstract: With advances in AI capability, researchers are increasingly exploring how such tools might be leveraged in their work. This has positioned Higher Education libraries—specifically Copyright and Licensing Teams—as key advisers. They provide guidance on responsible, appropriate, ethical, and transparent tools for staff and students, while clarifying the implications of AI for research activities. This ENABLAR lesson therefore draws on such advice from local experts to inform a Natural Language Processing workflow that identifies potential “red flag” clauses in AI tool licence agreements. It is not intended as a substitute for consulting library expertise; rather, it aims to build confidence in interpreting complex legal documentation and applying AI methods appropriately in research contexts.
+abstract: With AI capability gaining strong media attention, university staff and students are exploring new ways of leveraging automation in their own research. Subsequently, Higher Educational libraries, specifically copyright and licensing teams, are now positioned as key advice givers, especially on Intellectual Property matters and data protection implications in using AI-based tools for research activities. Therefore, this ENABLAR lesson takes guidance from local experts, both within libraries and digital research, to inform a Natural Language Processing workflow for locating ‘red flag’ clauses in AI tool licence agreements. In doing so, we aim to build researcher and library practitioner confidence in interpreting complex legalistic documentation, while also informing critical and appropriate AI use in research.
+Nothing in the lesson is intended to constitute legal advice from a qualified lawyer, or intended to replace seeking library expertise.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
@@ -106,25 +107,50 @@ Format all references using the Chicago Manual of Style.
   https://subjectguides.york.ac.uk/referencing-style-guides/chicago
 -->
 
-## Introduction 
+## Contents 
 
-Following recent advances in Large Language Models (LLMs), libraries and researchers are increasingly exploring how Artificial Intelligence (AI) might be leveraged to support internal processes, engagement strategies and digital scholarship. However, these newfound capabilities have simultaneously exposed institutions, and individuals, to legally problematic terms and conditions, especially in the case of free, freemium, or subscription based AI tools and models (University of Birmingham, 2026). This has clear implications for research activities, conducted with library support, as well as ensuing risk from activities undertaken against institutional protocols.
-In considering such factors, this ENABLAR lesson aims to increase understanding of the current risks to libraries, and researchers, in licensing AI tools without proper review. In doing so, we outline the practical considerations in adopting AI tools within libraries, specifically for those working in Higher Education, who hold a remit to advise students and staff on digital tool usage. As such, we see this lesson as particularly useful for: 
-Library collection managers;
+- Introduction, Increasing Exposed to AI Risk (/en/drafts/enablar/enablar-lesson-4#introduction-increasing-exposure-to-ai-risk) 
+- Using Natural Language Processing
+- Some Disclaimers ... 
+                - This is not legal advice
+                -  Legal jurisdictions, terms and transferability 
+- Pre-requisites
+- Use Case: Locating Potential 🚩’s 
+- Background to Dataset
+- Background to Technical Method
+- Learning Keys
+- Learning Experiment
+- Local Application and Continued Learning 
+- Conclusions
+- References
 
-    Digital Humanities researchers, and those working within broader digital scholarship circles; 
+## Introduction, Increasing Exposure to AI Risk
+
+The increasing pace of Artificial Intelligence (AI) development is particularly visible in Higher Education. University libraries now contend with newfound staff and student expectations as to how AI can support their scholarship, workplace efficiency and ideation strategies, automating previous manual work. Large Language Models (LLMs), trained on huge amounts of text, and the chat-based interfaces supporting them, have led many library users to anticipate querying resources based on natural language, opposed to keyword searching (Jaillant et al., 2026: 31). Alongside this shift in how users retrieve information, Agentic AI systems are coupling LLM models, like Gemini or Claude, to external software: ranging from calendar applications to email systems (Brown & Donnelly, 2026). Often, these tools are adopted to improve the quality of work, and reduce time, however they too change the rhythm and nature of research, pushing against established safeguards (Dickinson & Marshall, 2026).
+
+While offering potential benefits to research, AI simultaneously exposes institutions, and individuals, to a new landscape of Intellectual Property (IP) concerns. Students and staff using AI software are often unaware of legally problematic terms and conditions in tool licence agreements: especially in the case of free, freemium, or subscription-based models (University of Birmingham, 2026).  This knowledge gap has clear implications for research activities, ranging from data privacy issues, third-party dependencies, data retention, cost and inaccuracies, notably from AI’s confident-mistakes and ‘hallucinations’. Researchers are thereby accepting unknown levels of individual risk through engaging in ‘Shadow AI’ practice, the unauthorised use of GenAI tools, or Machine Learning models, without approval from an organisational IT department (Krantz et al., n.d.). In 2024, over one-third (38%) of employees surveyed by the National Cybersecurity Alliance acknowledged sharing sensitive work with an AI tool, without their employers’ permission. With chat-based AI only growing more intuitive, and marketable to researchers - at all levels, such fears from those tasked with data protection, safeguarding institutional reputations, and cyber security are unlikely to be allayed. 
+
+The same National Cybersecurity Alliance 2024 report also cited a lack of institutional training around appropriate AI usage, mirroring older reports of library users (Cox, 2021). These training issues are compounded through university libraries being restricted in trialling lesser-known AI systems, under controlled conditions, due to their deep integration with a certain technology provider, seen in being either a Google or Microsoft ‘Campus’ (Rungkaew, 2025). In considering such factors, this ENABLAR lesson aims to increase participants’ understanding of the current risks to Higher Educational libraries, and researchers, in licensing AI tools without proper review. 
+
+Through practical workflows and collaborative reflection, we bring together perspectives from across the research, library, and legal domains. Our understanding of AI terms and conditions are situated in our daily roles as: Open Research Services Roadmap Project Lead and Head of Copyright and Licensing at the University of Birmingham (Fenlon); Digital Scholarship Librarian at the University of Buffalo (Estrada); and Lecturer in Digital Humanities at the University of Glasgow (Nockels). This lesson, therefore, is based on our own positional views of AI, technical research, and servicing of library users. These views, while influenced by our professions, are our own and may not be fully representative of our respective institutions.
+
+As described, there is a current capability and knowledge gap in interpreting AI licences from a library and research standpoint. There is also a lack of coordinated resources to better inform those trialling AI for research, or advising such processes. 
+
+As such, we see this lesson as particularly useful for: 
+
+    Library collection managers;
+
+    University-level researchers, especially those concerned with AI - such as the Digital Humanities; 
+
+    Students interested in using AI for their own research practice; 
 
     Copyright and licensing teams within Higher Education; 
 
     Rights and reproduction managers within Higher Education; 
 
-    Students interested in using AI for their own research practice; 
-
     Libraries engaged in public-private partnerships surrounding using third-party AI tools
 
-By taking a situated understanding, this lesson presents an informed and reproducible workflow for interpreting AI tool license agreements. We do this through Natural Language Processing (NLP): the field of digital research involving interaction between computers and human language, encompassing tasks such as text analysis, translation, and parts-of-speech tagging, to extract key terms and clauses in AI tool licenses to Higher Educational libraries. This informs the construction of a dictionary of ‘red flags’ from terms of service and licence conditions, and provides a source to develop institutional AI preparedness, alongside extant guidance (see Archives & Records Association, 2026). Our lesson, therefore, focuses on terms associated with AI tool use, however also connects these features to broader contracts and licences negotiated by libraries.
 
-We also make use of the Authors’ intellectual property expertise, and provide human translations for our extracted spaCy clauses. This not only evaluates our NLP approach, considering whether extracted clauses are truly red flags, but offers a reflective review of the process and legalistic terms surrounding AI use within libraries, based on our own daily roles as: Open Research Services Roadmap Project Lead and Head of Copyright and Licensing at the University of Birmingham (Fenlon); Digital Scholarship Librarian at the University of Buffalo (Estrada); and Lecturer in Digital Humanities at the University of Glasgow (Nockels).
 
 ## Preliminaries
 

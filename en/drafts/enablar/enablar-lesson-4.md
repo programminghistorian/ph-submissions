@@ -14,7 +14,7 @@ reviewers:
 editors:
 - Forename Surname
 review-ticket: 
-difficulty: 2
+difficulty: 3
 activity: 
 topics: AI licences, terms and conditions, AI evaluation, library services
 abstract: 'With AI capability gaining strong media attention, university staff and students are exploring new ways of leveraging automation in their own research. Subsequently, Higher Educational libraries, specifically copyright and licensing teams, are now positioned as key advice givers, especially on Intellectual Property matters and data protection implications in using AI-based tools for research activities. Therefore, this ENABLAR lesson takes guidance from local experts, both within libraries and digital research, to inform a Natural Language Processing workflow for locating ‘red flag’ clauses in AI tool licence agreements. In doing so, we aim to build researcher and library practitioner confidence in interpreting complex legalistic documentation, while also informing critical and appropriate AI use in research.

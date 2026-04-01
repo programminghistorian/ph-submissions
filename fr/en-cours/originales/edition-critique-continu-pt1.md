@@ -7,8 +7,8 @@ date: YYYY-MM-DD
 authors:
 - Clément Godbarge
 reviewers:
-- Forename Surname
-- Forename Surname
+- Anne Garcia Fernandez
+- Jasmin Macarios
 editors:
 - Forename Surname
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/674

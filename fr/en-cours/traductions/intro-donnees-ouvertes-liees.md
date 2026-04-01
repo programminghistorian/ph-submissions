@@ -47,7 +47,7 @@ Cette leçon peut être complétée en quelques heures et il pourrait vous être
 Si vous souhaitez apprendre à explorer les DOL en utilisant le langage de requête [SPARQL](https://fr.wikipedia.org/wiki/SPARQL), je recommande la leçon (en anglais) «&nbsp;[Using SPARQL to access Linked Open Data](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL)&nbsp;» de Matthew Lincoln, qui vous permettra d’effectuer un suivi pratique du survol conceptuel offert dans la présente leçon.
 
 <div class="alert alert-info">
-N.B. La leçon de Matthew Lincoln n’est plus à jour et n’est plus entretenue par le <em>Programming Historian</em>. La méthodologie enseignée dans cette leçon demeure tout de même fort pertinente et pourrait être adaptée à d’autres contextes. Pour en savoir plus, vous pouvez consulter la note en ouverture de la leçon de Lincoln.
+N.B. La leçon de Matthew Lincoln est obsolète et n’est plus mise à jour par le <em>Programming Historian</em>. La méthodologie enseignée dans cette leçon demeure tout de même fort pertinente et pourrait être adaptée à d’autres contextes. Pour en savoir plus, vous pouvez consulter la note en ouverture de la leçon de Lincoln.
 </div>
 
 Afin de fournir une base solide pour la maîtrise de ces fondements, cette leçon ne présentera pas de manière exhaustive l’ensemble des concepts liés aux DOL. Les deux notions suivantes ne seront pas couvertes par cette leçon&nbsp;:
@@ -68,7 +68,7 @@ Afin qu’elles fonctionnent adéquatement, les DOL doivent être [structurées]
 2. **Référer à une entité de façon normalisée**. Si vous avez des données sur une même sujet (que ce soit un lieu, un endroit ou une personne) dans plusieurs emplacements, il faut s’assurer de s’y référer de la même façon dans toutes les instances.
 3. **Publier des données ouvertes**. L’ouverture des données signifie que tout le monde peut accéder et utiliser les données sans frais et dans un format qui ne soit pas dépendant d’un [logiciel propriétaire](https://fr.wikipedia.org/wiki/Logiciel_propriétaire).
 
-Commençons par un exemple de données qui décrivent une personne en utilisant une approche [attribut-valeur](https://en.wikipedia.org/wiki/Attribute–value_pair) (en anglais) typique en informatique&nbsp;:
+Commençons par un exemple de données qui décrivent une personne en utilisant une approche [attribut-valeur](https://en.wikipedia.org/wiki/Attribute–value_pair) (en anglais) typique en informatique[^7]&nbsp;:
 
 ```
 personne=nombre
@@ -114,7 +114,7 @@ Une fois que tous ces éléments sont dotés d’identifiants uniques, la procha
 
 ```
 personne:64183282
-rôle:aReprésentéAuParlementBritanique
+rôle:aReprésentéAuParlementBritannique
 circonscription:"blackburn1955-current" .
 ```
 
@@ -128,7 +128,7 @@ Typiquement, la représentation d’un triplet sous forme de diagramme se prése
 
 {% include figure.html filename="fr-tr-intro-aux-donnees-liees-01.png" alt="Graphe constitué de deux nœuds qui représentent respectivement le sujet et l’objet d’un triplet RDF, sous la forme de deux ovales liés entre eux par un arc directionnel, lui-même constitué d’une flèche qui représente le prédicat du triplet, allant du sujet vers l’objet." caption="Figure&nbsp;1. Représentation visuelle typique d’un triplet" %}
 
-Donc notre triplet sur Jack Straw, dans une forme plus significative, pourrait être représenté de cette façon&nbsp;:
+Donc notre triplet sur Jack Straw, dans une forme moins abstraite, pourrait être représenté de cette façon&nbsp;:
 
 {% include figure.html filename="fr-tr-intro-aux-donnees-liees-02.png" alt="Graphe constitué de deux nœuds qui représentent respectivement Jack Straw et la circonscription électorale de Blackburn, sous la forme de deux ovales liés entre eux par un arc directionnel, lui-même constitué d’une flèche allant de Jack Straw vers Blackburn pour représenter la relation de représentation politique qui existe entre les deux entités." caption="Figure&nbsp;2. Représentation visuelle d’un triplet montrant que Jack Straw est député de Blackburn." %}
 
@@ -231,7 +231,7 @@ Cela est rendu possible par l’utilisation du cadre de description RDF et des U
 
 ## Le cadre de description [RDF](https://fr.wikipedia.org/wiki/Resource_Description_Framework) et ses formats
 
-Les DOL utilisent un standard défini par le [*World Wide Web Consortium*](https://www.w3.org) (W3C) nommé *[Resource Description Framework](ttps://fr.wikipedia.org/wiki/Resource_Description_Framework)* (cadre de description RDF ou simplement RDF). Les standards sont utiles dans la mesure où ils sont largement adoptés ― pensez au système métrique ou aux tailles de vis standards ― même s’ils sont essentiellement arbitraires. RDF a été largement adopté comme standard pour les DOL.
+Les DOL utilisent un standard défini par le [*World Wide Web Consortium*](https://www.w3.org) (W3C) nommé *[Resource Description Framework](https://fr.wikipedia.org/wiki/Resource_Description_Framework)* (cadre de description RDF ou simplement RDF). Les standards sont utiles dans la mesure où ils sont largement adoptés ― pensez au système métrique ou aux tailles de vis standards ― même s’ils sont essentiellement arbitraires. RDF a été largement adopté comme standard pour les DOL.
 
 Souvent, les DOL sont simplement appelées RDF (ou données RDF). Nous avons reporté la discussion sur RDF jusqu’à maintenant, car il s’agit d’un enjeu plutôt abstrait. RDF est un [modèle de données](https://fr.wikipedia.org/wiki/Modèle_de_données) qui décrit sur un plan théorique comment structurer des données. L’insistance sur l’utilisation des triplets (au lieu de quatre parties, de deux ou de neuf) est une règle de RDF. Mais sur le plan pratique, certaines options s’offrent à vous pour l’élaboration des graphes de données. Ainsi, RDF vous indique ce que vous devez faire, mais pas exactement comment vous y prendre. Ces choix se divisent en deux champs&nbsp;: la manière dont vous écrivez les choses (la sérialisation) et les relations que décrivent vos triplets.
 
@@ -262,7 +262,7 @@ Nous ne voulons pas le saisir chaque fois que nous référons à cette personne 
 
 Ainsi, Jack est `toby:15601`, qui remplace la forme longue de l’URI et qui est plus agréable à l’œil. J’ai choisi `toby`, mais je pourrais tout aussi bien choisir n’importe quelle chaîne de lettres.
 
-Passons maintenant de Jack Straw à William Shakespeare et utilisons Turtle pour décrire certaines choses au sujet de ses œuvres. Nous devrons décider des fichiers d’autorité à utiliser, un processus qui, comme mentionné plus haut, se comprend mieux en examinant d’autres jeux de données ouvertes liées. Pour l’un de nos préfixes, nous utiliserons [Dublin Core](https://fr.wikipedia.org/wiki/Dublin_Core), un standard générique pour les [métadonnées](https://fr.wikipedia.org/wiki/Métadonnée) documentaires&nbsp;; le fichier d’autorité du [*Library of Congress Control Number*](https://fr.wikipedia.org/wiki/Numéro_de_contrôle_de_la_Bibliothèque_du_Congrès) pour un autre préfixe et un dernier (VIAF) qui devrait vous être familier. Ensemble, Dublin Core et ces deux fichiers d’autorités fournissent des identifiants uniques pour toutes les entités que je planifie d’utiliser dans cet exemple&nbsp;:
+Passons maintenant de Jack Straw à William Shakespeare et utilisons Turtle pour décrire certaines choses au sujet de ses œuvres. Nous devrons décider des fichiers d’autorité à utiliser, un processus qui, comme mentionné plus haut, se comprend mieux en examinant d’autres jeux de données ouvertes liées. Pour l’un de nos préfixes, nous utiliserons [Dublin Core](https://fr.wikipedia.org/wiki/Dublin_Core), un standard générique pour les [métadonnées](https://fr.wikipedia.org/wiki/Métadonnée) documentaires, le fichier d’autorité du [*Library of Congress Control Number*](https://fr.wikipedia.org/wiki/Numéro_de_contrôle_de_la_Bibliothèque_du_Congrès) pour un autre préfixe et un dernier (VIAF) qui devrait vous être familier. Ensemble, Dublin Core et ces deux fichiers d’autorités fournissent des identifiants uniques pour toutes les entités que je vais utiliser dans cet exemple&nbsp;:
 
 ```ttl
 @prefix lccn: <http://id.loc.gov/authorities/names/> .
@@ -368,7 +368,7 @@ Vous souvenez-vous de la façon dont les prédicats et les objets sont imbriqué
 </skosConcept>
 ```
 
-Si vous êtes familier avec XML, ce sera un jeu d’enfant pour vous. Autrement, vous pourriez préférer un format comme Turtle. Mais l’avantage d’utiliser RDF/XML repose sur l’écosystème des outils disponibles avec XML, comme les éditeurs spécialisés et les processeurs XML permettant, par exemple, de vérifier que votre document RDF/XML est bien formé. Si vous n’êtes pas du type XML, je vous recommande Turtle.
+Si vous êtes familier avec XML, ce sera un jeu d’enfant pour vous. Autrement, vous pourriez préférer un format comme Turtle. Mais l’avantage de RDF/XML, c’est que vous pouvez utiliser les outils de l’écosystème XML, comme les éditeurs spécialisés et les processeurs XML permettant, par exemple, de vérifier que votre document est bien formé. Si vous n’êtes pas du type XML, je vous recommande Turtle.
 
 Pour valider la syntaxe de Turtle, vous pourrez utiliser des outils en ligne ([Easy RDF Converter](http://www.easyrdf.org/converter) ou [IDLab Turtle Validator](http://ttl.summerofcode.be)) ou encore [TurtleValidator](https://github.com/IDLabResearch/TurtleValidator), un outil facile à utiliser en [ligne de commande](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande).
 
@@ -376,7 +376,7 @@ Pour valider la syntaxe de Turtle, vous pourrez utiliser des outils en ligne ([E
 
 Pour terminer, nous allons interroger des données ouvertes liées et explorer ce qu’on peut en tirer. Le langage de requête utilisé pour les DOL se nomme [SPARQL](https://fr.wikipedia.org/wiki/SPARQL). C’est l’un de ces acronymes récursifs chers au monde technologique&nbsp;: *SPARQL Protocol and RDF Query Language*.
 
-Comme je l’ai mentionné d’emblée, *Programming Historian* propose une [leçon entièrement dédiée](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL) (en anglais) à SPARQL par Matthew Lincoln. Ma section finale n’est qu’un survol des fondements conceptuels de SPARQL. Si cela pique votre curiosité, vous pourrez solidifier vos bases avec la leçon de Lincoln.
+Comme je l’ai mentionné d’emblée, *Programming Historian* propose une [leçon entièrement dédiée](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL) (en anglais) à SPARQL par Matthew Lincoln. Ma section finale n’est qu’un survol des fondements conceptuels de SPARQL. Si cela pique votre curiosité, vous pourrez solidifier vos bases avec la leçon de Lincoln[^8].
 
 Nous exécuterons nos requêtes SPARQL sur les données [DBpedia](https://fr.wikipedia.org/wiki/DBpedia). Il s’agit d’un très grand jeu de données dérivé de *Wikipédia*. En plus de contenir une foule d’informations difficiles à trouver en utilisant l’interface normale de *Wikipédia*, il possède plusieurs [points d’accès](https://fr.wikipedia.org/wiki/API_Web#Points_d'accès) SPARQL ― des interfaces où vous pouvez envoyer des requêtes SPARQL et obtenir les triplets correspondants de l’entrepôt DBpedia.
 
@@ -439,7 +439,7 @@ select * where {
 }
 ```
 
-Je peux voir une longue liste de valeurs dans la colonne **c**. Ce sont tous des attributs de Roper dans *DBpedia* et ils nous aideront à trouver d’autres personnes avec ces attributs. Par exemple, j’y trouve l’URI préfixé `dbr:Historian`. Pourrais-je l’utiliser pour obtenir une liste de spécialistes en histoire&nbsp;? Je vais l’insérer dans ma requête, mais à la troisième position, puisque c’est là où je l’ai trouvé dans mes résultats sur Lyndal Roper. 
+Je peux voir une longue liste de valeurs dans la colonne **c**. Ce sont tous des attributs de Roper dans *DBpedia* et ils nous aideront à trouver d’autres personnes avec ces attributs. Par exemple, j’y trouve l’URI préfixé `dbr:Historian`. Pourrais-je l’utiliser pour obtenir une liste constituée d’historiens et d’historiennes&nbsp;? Je vais l’insérer dans ma requête, mais à la troisième position, puisque c’est là où je l’ai trouvé dans mes résultats sur Lyndal Roper. 
 
 Voici donc l’allure de ma requête&nbsp;:
 
@@ -450,11 +450,11 @@ select * where {
 }
 ```
 
-J’ai fait ici un petit changement. Si seulement cette requête fonctionne, je m’attends à ce que mes spécialistes en histoire soient dans la première colonne, parce que _historian_ ne semble pas être un prédicat&nbsp;: il ne fonctionne pas comme un verbe dans une phrase&nbsp;; donc j’appellerai ma première colonne **historian** et ma seconde, sur laquelle je ne sais pas grand-chose, **predicate**.
+J’ai fait ici un petit changement. Si seulement cette requête fonctionne, je m’attends à ce que les historiennes et historiens soient dans la première colonne, parce que _historian_ ne semble pas être un prédicat&nbsp;: il ne fonctionne pas comme un verbe dans une phrase&nbsp;; donc j’appellerai ma première colonne **historian** et ma seconde, sur laquelle je ne sais pas grand-chose, **predicate**.
 
-Exécutez la requête. Cela fonctionne-t-il pour vous&nbsp;? J’obtiens une longue liste de spécialistes en histoire.
+Exécutez la requête. Cela fonctionne-t-il pour vous&nbsp;? J’obtiens une longue liste d’historiennes et d’historiens.
 
-{% include figure.html filename="fr-tr-intro-aux-donnees-liees-05.png" alt="Extrait d’un tableau des résultats d’une requête SPARQL dont chaque ligne renvoie une correspondance avec le modèle de triplet exprimé dans la requête, en affichant deux colonnes correspondant respectivement aux variables «&nbsp;historian&nbsp;» et «&nbsp;predicate&nbsp;»." caption="Figure&nbsp;5. Spécialistes en histoire selon DBpedia" %}
+{% include figure.html filename="fr-tr-intro-aux-donnees-liees-05.png" alt="Extrait d’un tableau des résultats d’une requête SPARQL dont chaque ligne renvoie une correspondance avec le modèle de triplet exprimé dans la requête, en affichant deux colonnes correspondant respectivement aux variables «&nbsp;historian&nbsp;» et «&nbsp;predicate&nbsp;»." caption="Figure&nbsp;5. Historiennes et historiens selon DBpedia" %}
 
 Ainsi, cela fonctionne pour créer des listes, ce qui est utile, mais il serait beaucoup plus intéressant de combiner des listes afin de créer des intersections entre différents ensembles. J’ai trouvé quelques éléments supplémentaires dans les attributs de Lyndal Roper qu’il pourrait être intéressant de chercher sur DBpedia&nbsp;: `dbr:Category:Australian_historians` and `dbr:Category:Australian_women_historians`. Il est très facile de combiner ces attributs en demandant l’affichage d’une variable (dans notre cas`?historienne`), puis de l’utiliser dans de multiples lignes d’une requête. Notez également l’espace suivie du point final de la première ligne commençant avec `?historienne`&nbsp;:
 
@@ -470,7 +470,7 @@ select ?historienne where {
 
 {% include figure.html filename="fr-tr-intro-aux-donnees-liees-06.png" alt="Liste des historiennes australiennes présentes dans les données de DBpedia sur TriplyDB, apparaîssant sous le champ de saisie dans lequel on peut y lire la requête correspondant aux résultats de la liste." caption="Figure&nbsp;6. Liste des historiennes australiennes répertoriées dans le jeu de données." %}
 
-Seulement six historiennes&nbsp;? Bien sûr, en réalité, il y en a bien davantage, comme nous pourrions facilement le constater en remplaçant le nom de Lyndal Roper par Cassandra Pybus dans notre première requête. Voilà qui nous mène au problème que j’ai mentionné plus tôt avec *Dbpedia*&nbsp;: cet entrepôt n’est pas vraiment constant quant à l’information structurelle sur les types de personnes qu’il utilise. Nos requêtes permettent de lister quelques historiennes britanniques, mais tout indique qu’il est impossible de générer une liste significative de personnes dans cette catégorie. Tout ce que nous avons trouvé, ce sont les personnes qui ont une entrée sur *Wikipédia* en anglais et qui ont été catégorisées comme &laquo;&nbsp;historienne australienne&nbsp;&raquo;. Cela exclut par exemple les femmes australiennes spécialistes en histoire qui ne sont pas également catégorisées comme spécialiste en histoire d’origine australienne, puisque notre dernière requête renvoie l’intersection des deux ensembles.
+Seulement six historiennes&nbsp;? Bien sûr, en réalité, il y en a bien davantage, comme nous pourrions facilement le constater en remplaçant le nom de Lyndal Roper par Cassandra Pybus dans notre première requête. Voilà qui nous mène au problème que j’ai mentionné plus tôt avec *Dbpedia*&nbsp;: cet entrepôt n’est pas vraiment constant quant à l’information structurelle sur les types de personnes qu’il utilise. Nos requêtes permettent de lister quelques historiennes britanniques, mais tout indique qu’il est impossible de générer une liste exhaustive de personnes dans cette catégorie. Tout ce que nous avons trouvé, ce sont les personnes qui ont une entrée sur *Wikipédia* en anglais et qui ont été catégorisées comme &laquo;&nbsp;historienne australienne&nbsp;&raquo;. Cela exclut par exemple les femmes australiennes spécialistes en histoire qui ne sont pas également catégorisées comme spécialiste en histoire d’origine australienne, puisque notre dernière requête renvoie l’intersection des deux ensembles.
 
 En utilisant SPARQL sur *DBpedia*, vous devez faire preuve de prudence quant à certaines incohérences, car ces contenus sont alimentés par des communautés. Cela dit, vous pourriez utiliser SPARQL exactement de la même manière sur un jeu de données construit à l’aide de méthodes de curation plus rigoureuses.
 Par exemple, en utilisant la bibliothèque numérique Persée ([https://data.persee.fr/explorer/sparql-endpoint/](https://data.persee.fr/explorer/sparql-endpoint/)), vous pouvez vous attendre à obtenir des résultats plus robustes (voici de la documentation sur cet entrepôt&nbsp;: [https://data.persee.fr/ressources/le-triplestore-de-persee/](https://data.persee.fr/ressources/le-triplestore-de-persee/), avec son schéma de données&nbsp;: [https://data.persee.fr/explorer/schemas-de-donnees/](https://data.persee.fr/explorer/schemas-de-donnees/)).
@@ -489,7 +489,7 @@ Quoi qu’il en soit, malgré son manque de constance, *DBpedia* demeure un exce
 ### Bibliographie sommaire
 
 - Allemang Dean, Hendler Jim, Gandon Fabien, _Semantic Web for the Working Ontologist: Effective Modeling for Linked Data, RDFS, and OWL_ (3<sup>e</sup> éd.), Association for Computing Machinery, ACM Books Series 33, 2020, [https://doi.org/10.1145/3382097](https://doi.org/10.1145/3382097)
-- Berners-Lee Tim, « Linked Data », _Design Issues_, 18 juin 2009, https://w3.org/DesignIssues/LinkedData.html
+- Berners-Lee Tim, « Linked Data », _Design Issues_, 18 juin 2009, [https://w3.org/DesignIssues/LinkedData.html](https://w3.org/DesignIssues/LinkedData.html)
 - DuCharme Bob, _Learning SPARQL: Querying and Updating with SPARQL 1.1_ (2<sup>e</sup> éd.), O’Reilly, 2013, [http://www.learningsparql.com](http://www.learningsparql.com)
 - Gartner Richard, _Metadata: Shaping knowledge from Antiquity to the semantic web_ (1<sup>re</sup> éd.), Springer, 2016, [https://doi.org/10.1007/978-3-319-40893-4](https://doi.org/10.1007/978-3-319-40893-4)
 - Nurmikko-Fuller Terhi, _Linked Data for Digital Humanities_ (1<sup>re</sup> éd.), Routledge, 2023, [https://doi.org/10.4324/9781003197898](https://doi.org/10.4324/9781003197898)
@@ -497,7 +497,7 @@ Quoi qu’il en soit, malgré son manque de constance, *DBpedia* demeure un exce
 - Van Hooland Seth, Verborgh Ruben, _Linked data for libraries, archives and museums: how to clean, link and publish your metadata_, Facet Publishing, 2015, [https://doi.org/10.29085/9781783300389](https://doi.org/10.29085/9781783300389)
 - Wood David, Zaidman Marsha , Ruth Luke, Hausenblas Michael, _Linked data: structured data on the Web_, Manning Publications, 2013, [https://www.manning.com/books/linked-data](https://www.manning.com/books/linked-data)
 
-## Crédits
+## Remerciements
 
 J’aimerais remercier Matthew Lincoln et Terhi Nurmikko-Fuller pour leurs relectures, ainsi que mon éditeur Adam Crymble, qui ont généreusement offert de leur temps pour m’aider à améliorer ce cours, grâce à de nombreuses suggestions, clarifications et corrections. Cette leçon est basée sur une autre leçon rédigée dans le cadre du [projet Tobias](https://gtr.ukri.org/projects?ref=AH%2FN003446%2F1#/) (*Thesaurus of British and Irish History as SKOS*, 2015-2016), qui fut financé par l’[AHRC](http://www.ahrc.ac.uk). Elle a été révisée pour *Programming Historian*.
 
@@ -514,3 +514,7 @@ J’aimerais remercier Matthew Lincoln et Terhi Nurmikko-Fuller pour leurs relec
 [^5]: Veuillez noter que l’exécution des requêtes peut mettre un certain temps à aboutir. Si le délai d’attente est dépassé (il s’agit typiquement d’un *timeout*), il suffit de réessayer quelques minutes plus tard.
 
 [^6]: Le modèle RDF 1.1 repose sur l’utilisation des [identifiants internationalisés de ressource](https://fr.wikipedia.org/wiki/Internationalized_Resource_Identifier) (*Internationalized Resource Identifier*, ou IRI en anglais) pour l’identification des entités. Dans cette leçon, il n’est question que d’URI et d’URL, car ce sont des formes d’IRI couramment utilisés pour l’échange d’information sur le web. Les IRI ont la particularité de permettre l’utilisation des caractères [Unicode](https://fr.wikipedia.org/wiki/Unicode), mais il est généralement déconseillé d’utiliser ces caractères directement dans les URI ou les URL pour des enjeux de compatibilité. Les exemples qui suivent utilisent des caractères accentués pour favoriser la lisibilité.
+
+[^7]: Dans les paragraphes qui suivent, les attributs utilisent des termes français pour exemplifier les propos de la leçon. Cependant, les noms d’attribut sont en pratique généralement formulés en anglais.
+
+[^8]: Rappel&nbsp;: la leçon de Matthew Lincoln n’est plus à jour et n’est plus entretenue par le Programming Historian.

@@ -76,7 +76,7 @@ A computer operates through a layered architecture, where hardware and software 
 
 Understanding this architecture is crucial for reverse engineering because it allows engineers to trace how high-level software instructions translate into low-level machine code and hardware operations. This knowledge helps in uncovering hidden functionalities, debugging errors, analyzing malware behaviour, and modifying or improving existing software. Reverse engineering often involves working at the boundary between software and hardware, requiring an in-depth understanding of how compilers, assemblers, and the instruction set architecture interact to produce executable code.
 
-## The Inner Life of Born-Digital Media Artifacts
+## First Case Study: Inspecting a JPEG Image with a Hex Editor
 
 Before beginning this hands-on analysis, you'll need to gather the necessary materials and tools to effectively examine digital image formats. First, get the sample files we provide for this exercise, [which you can download through this link](https://github.com/programminghistorian/ph-submissions/raw/refs/heads/gh-pages/assets/reverse-engineering-born-digital-artefacts/reverse-engineering-born-digital-artefacts.zip). Please note that all the following instructions are designed for these files provided with this lesson. 
 
@@ -91,7 +91,7 @@ For our lesson, we will use `hexyl` as mentioned. We chose it primarily because 
 Our first case study focuses on practicing two core skills introduced in the learning objectives: identifying file signatures in a hex dump and reasoning about file structure independently of file extensions or graphical interfaces.
 
 
-### The _bit_ code of an image
+### Reading File Signatures in Hex Data
 
 To illustrate the fundamentals of file analysis, we begin with the basic structure of a JPEG file. For this exercise, we have provided a file named `cat-with-hidden-content.jpg` within the `jpg_zip` folder. When you open this file using your computer's standard image viewer, it appears as a simple, humorous photo of a cat.
 
@@ -103,7 +103,7 @@ The infographic below provides a visual breakdown of this "bit code." You do not
 
 {% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-02.png" alt="The illustration shows a color-coded hex dump on the left side. Some of the output is highlighted and connected with a dashed line to detailed explenations on the right side, indicating where the start of the image is, or where one could find more information about the files format." caption="Figure 2. Infographic annotating a JPEG's file header in hexadecimal notation. (Ange Albertini 2022 – CC-BY 4.0 )" %}
 
-#### The Standard Pattern
+#### Finding File Signatures in Hex Data
 
 When we use the hex viewer to open the provided sample JPEG `cat-with-hidden-content.jpg` within the `jpg_zip` folder, the hex view immediately exposes the file's structure. The file signature (FF D8 FF E0) at the beginning confirms its identity. Beyond the header, we find metadata describing dimensions and color depth, followed by the bulk of the file: compressed image data, which appears as a seemingly random string of hexadecimal values. 
 
@@ -142,9 +142,9 @@ The two last columns is our data shown as ASCII interpretation. This simply mean
 
 The file signature `FF D8 FF E0` at the beginning confirms that it is a JPEG file. A PNG file, as another example, would start with `89 50 4E 47 0D 0A 1A 0A` [^14]. Following the file signature is information regarding metadata fields describing the image’s dimensions, color depth, and encoding settings, which is not of importance for our case here. The bulk of the file contains compressed image data, which appears as a seemingly random string of hex values.
 
-#### Challenging "Screen Essentialism": The Hybrid Artifact
+#### Discovering a Hidden Archive: The Hybrid Artifact
 
-While the standard JPEG ends predictably, digital artifacts can have "dual identities" by exploiting how different software "reads" or parses data. This challenges "screen essentialism"—the idea that a file is only what the icon on our desktop says it is.
+While the standard JPEG ends predictably, digital artifacts can harbour what Albertini calls "polyglot" structures: a single file that is valid under multiple format specifications simultaneously. This challenges screen essentialism, because the file is not only what the icon on our desktop says it is; its meaning depends on which software reads it, and according to which structural rules.
 
 To demonstrate these "dual identities," we will analyze `cat-with-hidden-content.jpg` again. While it appears to be a standard image, a hex dump reveals a second structural paradigm. JPEGs are read from the top down, and stop at an "End of Image" (EOI) marker. ZIP files, conversely, are typically parsed from the bottom up. This different standards allow the appending of a ZIP archive to the end of a JPEG, resulting in a hybrid file that remains valid for both an image viewer and an archive utility.
 
@@ -180,7 +180,7 @@ If you are curious to see what we packed in the hidden ZIP file, rename `cat-wit
 
 Identifying file signatures is a fundamental skill for reverse engineering born-digital records. Because file extensions can be misleading or intentionally changed, we must learn to look past the desktop icon to the data's underlying structure. Instead, we use computational searches with an hex viewer to "fingerprint" the data structure. This example is intentionally simplified to provide a controlled environment for practicing hex-dump analysis before applying these techniques to real-world document formats.
 
-### From Binary to XML: Comparing .doc and .docx
+### Second Case Study: Comparing .doc and .docx File Formats
 
 Beyond the playful scenario of JPEGs and ZIPs, these same analytical skills allow historians to track the evolution of the digital record itself. As noted in our introduction, born-digital artifacts are often "black boxes" of proprietary code. A prime example of this is the massive shift in how Microsoft Word stored data in the mid-2000s. By comparing a legacy `.doc` file with a modern `.docx` file, we can see a move from the opaque, binary structures of the past toward the open-standard containers of the present.
 
@@ -204,7 +204,7 @@ $ hexyl old-word-document.doc -n 256
 
 When you inspect a legacy `.doc` file, you will likely see the signature `D0 CF 11 E0`. This identifies an "OLE2" (Object Linking and Embedding) container. As we discussed in the section on [reverse engineering](#reverse-engineering-born-digital-media-artifacts), such files are not human-readable, at least without specialized tools. For the historian, this format represents the height of "screen essentialism": we see a formatted page on the screen, but the underlying code is a proprietary maze that is difficult to preserve or read against the grain. However, Microsoft Word's historical transition to the `.docx` default file format changed the nature of the artifact. Under the hood, a modern Word document is actually a ZIP archive in disguise, containing a collection of XML files that describe the document’s text and structure.
 
-To verify this XML structure, run `hexyl` on the provided modern-document.docx:
+To verify this XML structure, run `hexyl` on the provided modern-word-document.docx:
 
 ```shell
 $ hexyl modern-word-document.docx -n 256
@@ -232,7 +232,7 @@ These same low-level analytical skills—hex-dump inspection, signature recognit
 
 Researchers often face undocumented binaries and altered software whose structure must be reconstructed through analysis. In such cases, meaning can be inferred from patterns in raw byte sequences, repetition across multiple disk images, and anomalies that cannot be explained by normal execution. The techniques practiced in this lesson provide an essential starting point for the kind of investigative work that can reveal hidden histories of human intervention into binary code, be it for the purposes of spreading computer viruses, or to mod videogames.
 
-## Conclusion
+## Conclusion and Next Steps
 
 This lesson explores reverse engineering as a critical methodology for historical analysis of born-digital artifacts, emphasizing its role in overcoming "screen essentialism"—the tendency to interpret digital objects solely through their visual representations. By examining deeper into digital files using techniques such as hex editing and comparative hex dump analysis, historians can uncover hidden structures, metadata, and functionalities that remain invisible when analysed superficially.
 

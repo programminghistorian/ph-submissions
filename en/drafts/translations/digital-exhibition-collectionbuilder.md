@@ -34,57 +34,46 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction to the lesson
 
-This lesson will teach you how to use **CollectionBuilder** (CB) to create and customize a digital exhibition featuring digital objects hosted on another platform, such as the Internet Archive. You can follow along on [our  demo site](https://github.com/sarahseverson/ph-demo-playbills). 
+This lesson will teach you how to use CollectionBuilder (CB) to create and customize a digital exhibition featuring digital objects hosted on another platform, such as the Internet Archive.
 
-This tutorial should take about 3 to 5 hours to complete if you have your metadata ready. 
+[CollectionBuilder](https://collectionbuilder.github.io/) is an open-source framework for publishing metadata-driven digital exhibitions using static web technologies. The software's main objective is to provide a practical, sustainable means of disseminating collections of digital objects. The CollectionBuilder framework is an alternative to digital exhibition publishing platforms, such as [Omeka](https://omeka.org/) (for which there is also a [Programming Historian lesson](https://doi.org/10.46430/phen0049)), [Wax](https://minicomp.github.io/wax/), and [Spotlight](https://github.com/projectblacklight/spotlight). CollectionBuilder can also serve as a pedagogical tool, providing an entry point for students to learn interoperable digital humanities skills, such as metadata management, GitHub file management, Markdown, and basic web development. It also enhances general technical literacy by explaining how web publishing works, while prioritizing the values of openness, transparency, and sustainability outlined in the [Lib-Static](https://lib-static.github.io/) methodology.
+
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-00.png" alt="Screenshot of the front page of a CollectionBuilder-GH demo site." caption="Figure 0. Screenshot of [CollectionBuilder-GH demo site](https://collectionbuilder.github.io/collectionbuilder-gh/)." %}
+
+CollectionBuilder is a project of the University of Idaho Library's [Digital Initiatives](https://www.lib.uidaho.edu/digital/) and the [Center for Digital Inquiry and Learning](https://cdil.lib.uidaho.edu/) (CDIL) that follows the Lib-Static methodology. [Lib-Static](https://lib-static.github.io/) is a community which seeks to "rethink how we do digital infrastructure in libraries to recenter our technology choices around sustainable, pragmatic, and minimal approaches."
+
+CollectionBuilder offers three [different templates](https://collectionbuilder.github.io/templates.html) for building a digital exhibit:
+
+1.  CB-SHEETS allows you to update collections directly from a Google Sheet, making it ideal for prototyping, collaboration, and viewing changes in real-time.
+2.  CB-GH requires that you upload your metadata spreadsheet to your repository and allows for more customizations, making it suitable for teaching and learning GitHub, Git, and other web workflows
+3.  CB-CSV allows for the most customization, but you must [download software](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/csv-walkthrough/#2-download-and-install-software-on-your-computer-git-github-desktop-visual-studio-code-ruby-jekyll-imagemagic-and-ghostscript-video-version) to your computer. You will need this template if you want to work with advanced digital objects like 360-degree panorama images, compound objects (such as a scrapbook or an archival folder), and multiples (such as a postcard with both the front and back, or text and its transcript).
+
+You can browse [examples of CollectionBuilder sites](https://collectionbuilder.github.io/cb-examples/) to get a sense of what is possible and the difference between the templates.
+
+This lesson will use the CB-GH template, which has fewer software dependencies and relies on a collection of digital objects already available online. In our example, we used items available in the Internet Archive (a non-profit digital repository providing free public access to digital materials), but you can link to items available elsewhere, including YouTube, Vimeo, or any repository that gives you the digital object’s filename (including the file extension).
+
+While other CB tutorials ask you to upload digital files directly to GitHub, this tutorial links to digital objects already hosted online. You will learn how to work with canonical versions of objects (the authoritative instance of the object in their original repositories) rather than creating and hosting copies. This approach to building digital exhibits allows you to:
+
+*   Engage with larger, existing digital collections without requiring additional infrastructure
+*   Develop metadata literacy through the practice of referencing and relating, rather than hosting
+*   Understand how digital ecosystems like the Internet Archive can be integrated into custom web publishing
+*   Prioritize curatorial interpretation and presentation over technical stewardship
+
+By using already-hosted objects, students can create meaningful exhibitions without digitizing or uploading their own collections, making this option more inclusive and scalable.
+
+While linking to externally hosted objects offers real advantages, it comes with trade-offs worth acknowledging. External links are vulnerable to link rot, meaning that URLs can break if a host reorganizes, discontinues a service, or goes offline. Dependence on a specific platform, including the Internet Archive, introduces a single point of failure: if that service experiences downtime or removes content, your exhibit will become inaccessible.
+
+The CB-GH template can also be used for projects with metadata-only records and zero digital objects. Projects can later be moved to the more advanced CollectionBuilder-CSV template for further customization by following the [CollectionBuilder documentation](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/transfer-walkthrough/).
 
 ### Prerequisites
 
 To follow the steps in this lesson, you will need the following:
 
-- Knowledge of how to write in Markdown (see [Getting Started with Markdown](https://programminghistorian.org/en/lessons/getting-started-with-markdown) by Sarah Simpkin)
+*   Knowledge of how to write in Markdown (see [Getting Started with Markdown](https://programminghistorian.org/en/lessons/getting-started-with-markdown) by Sarah Simpkin)
+*   Knowledge of how to manage a basic GitHub repository (see [Getting started with GitHub Desktop](https://docs.github.com/en/desktop/overview/getting-started-with-github-desktop))
+*   Experience with managing metadata (structured descriptive information like title, creator, and date) in the .CSV format (comma-separated values, a plain text format for tabular data)
 
-- Knowledge of how to manage a basic GitHub repository (see [Getting started with GitHub Desktop](https://docs.github.com/en/desktop/overview/getting-started-with-github-desktop))
-
-- Experience with managing metadata (structured descriptive information like title, creator, and date) in the .CSV format (comma-separated values, a plain text format for tabular data)
-
-### Background: What is CollectionBuilder?
-[CollectionBuilder](https://collectionbuilder.github.io/) is an open-source framework for publishing metadata-driven digital exhibitions using static web technologies. The software's main objective is to provide a means for disseminating collections in a practical and sustainable manner. 
-
-CollectionBuilder does not require knowledge of specific programming languages or technical infrastructure, but it allows for creating interactive elements, such as interpretive pages, timelines and maps. CollectionBuilder is a project of the University of Idaho Library's [Digital Initiatives](https://www.lib.uidaho.edu/digital/) and the [Center for Digital Inquiry and Learning](https://cdil.lib.uidaho.edu/) (CDIL), following the Lib-Static methodology. [Lib-Static](https://lib-static.github.io/) is a community which seeks to "rethink how we do digital infrastructure in libraries to recenter our technology choices around sustainable, pragmatic, and minimal approaches." 
-
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-00.png" alt="Screenshot of the front page of a CollectionBuilder-GH demo site." caption="Figure 0. Screenshot of [CollectionBuilder-GH demo site](https://collectionbuilder.github.io/collectionbuilder-gh/)." %}
-
-You can browse [examples of CollectionBuilder sites](https://collectionbuilder.github.io/cb-examples/) to get a sense of what is possible.
-
-The CollectionBuilder framework is an alternative to digital exhibition publishing platforms, such as [Omeka](https://omeka.org/) (for which there is also a [Programming Historian lesson](https://doi.org/10.46430/phen0049)), [Wax](https://minicomp.github.io/wax/), and [Spotlight](https://github.com/projectblacklight/spotlight). 
-
-CollectionBuilder can also be used as a pedagogical tool, offering an entry point for students to learn interoperable digital humanities skills, such as metadata management, GitHub file management, Markdown, and basic web development. It also enhances general technical literacy by explaining how web publishing works, while prioritizing the values of openness, transparency, and sustainability outlined in the [Lib-Static](https://lib-static.github.io/) methodology.
-
-CollectionBuilder offers three [different templates](https://collectionbuilder.github.io/templates.html) for building a digital exhibit:
-
-1. **CB-SHEETS** allows you to update collections directly from a Google Sheet, making it ideal for prototyping, collaboration, and viewing changes in real-time.  
-2. **CB-GH** requires that you upload your metadata spreadsheet to your repository and allows for more customizations, making it suitable for teaching and learning GitHub, Git, and other web workflows  
-3. **CB-CSV** allows for the most customization, but you must [download software](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/csv-walkthrough/#2-download-and-install-software-on-your-computer-git-github-desktop-visual-studio-code-ruby-jekyll-imagemagic-and-ghostscript-video-version) to your computer. 
-
-More advanced display templates will enable you to incorporate 360-degree panorama images, compound objects (such as a scrapbook or an archival folder), and multiples (like a postcard with both front and back, or text and its transcript).
-
-### The CB-GH template
-
-This lesson will use the **CB-GH template**, which has fewer software dependencies and uses a collection of digital objects already online. In our example, we used items available in the Internet Archive (a non-profit digital repository providing free public access to digital materials), but you can link to items available elsewhere, including YouTube, Vimeo, or any repository that gives you the digital object’s filename (including the file extension). 
-
-The CB-GH template can also be used for projects with metadata-only records and zero digital objects. Projects can later be moved to the more advanced CollectionBuilder-CSV template for further customization by following the [CollectionBuilder documentation](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/transfer-walkthrough/).
-
-While other CB tutorials ask you to upload digital files directly to GitHub, this tutorial links to digital objects already hosted online. You will learn how to work with canonical versions of images (the authoritative instance of the object in their original repositories), rather than by creating copies to host elsewhere. This approach to building digital exhibits allows you to:
-
-* Engage with larger, existing digital collections without requiring additional infrastructure
-* Develop metadata literacy through the practice of referencing and relating, rather than hosting
-* Understand how digital ecosystems like the Internet Archive can be integrated into custom web publishing  
-* Prioritize curatorial interpretation and presentation over technical stewardship
-
-By using already-hosted objects, students can create meaningful exhibitions without digitizing or uploading their own collections, making this option more inclusive and scalable.
-
-While linking to externally-hosted objects offers real advantages, it comes with some trade-offs that are worth acknowledging. External links are vulnerable to link rot, meaing that URLs can break if a host reorganizes, discontinues a service, or goes offline. Dependence on a specific platform, including the Internet Archive, introduces a single point of failure: if that service experiences downtime or removes content, your exhibit will become inaccessible.
+This tutorial should take about 3 to 5 hours to complete if you have your metadata ready. Each example in this lesson is taken from [our demo site](https://github.com/sarahseverson/ph-demo-playbills), so you can see the relationship of each step to the final result and the GitHub repository.
 
 ## 1. Plan your exhibition
 

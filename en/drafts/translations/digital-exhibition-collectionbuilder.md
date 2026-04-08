@@ -75,7 +75,7 @@ To follow the steps in this lesson, you will need the following:
 
 This tutorial should take about 3 to 5 hours to complete if you have your metadata ready. Each example in this lesson is taken from [our demo site](https://github.com/sarahseverson/ph-demo-playbills), so you can see the relationship of each step to the final result and the GitHub repository.
 
-## 1. Plan your exhibition
+## Plan your exhibition
 
 ### What story do you want to tell?
 
@@ -92,11 +92,11 @@ Some questions to consider include:
 For further reading on this topic, the Art Libraries Society of North America's 2021 “[Best Practices for Library Exhibitions](https://www.arlisna.org/news/best-practices-for-library-exhibitions)” includes a section on Digital Exhibitions, and the Smithsonian's 2018 [Exhibits’ Guide to Exhibit Development](https://exhibits.si.edu/wp-content/uploads/2018/04/Guide-to-Exhibit-Development.pdf) can be applied to online exhibits.
 
 
-## 2. Gather metadata for your exhibition's digital collection.
+## Gather metadata for your exhibition's digital collection.
 
 To prepare the exhibition, you first need a collection of objects described in a CSV that we can map to the CollectionBuilder metadata guide to ensure all exhibition components function properly. This approach prioritizes working with canonical versions already maintained in established repositories, allowing you to focus on curatorial interpretation rather than digital stewardship.
 
-### 2.1 Optional: Upload your own digital collection materials first
+### Optional: Upload your own digital collection materials first
 While this lesson focuses on using digital objects already available on the Internet Archive, you also have the option of uploading your own collections of digital items. 
 
 The Internet Archive (archive.org) provides free, unlimited hosting for a variety of file types, including images, audio, video, and text. This includes automatically converting files into web-friendly derivatives and making text files searchable via optical character recognition (OCR).  Anyone with a [free account](https://archive.org/account/signup) at the Internet Archive can upload media [one file at a time](https://archive.org/upload/) or in bulk using their [command line tools](https://archive.org/developers/internetarchive/cli.html#bulk-uploading). For more information, the Internet Archive provides a [basic uploading guide](https://help.archive.org/help/uploading-a-basic-guide/). 
@@ -105,7 +105,7 @@ While the Internet Archive offers cost-effective hosting, once an item is upload
 
 The [CollectionBuilder documentation](https://collectionbuilder.github.io/cb-docs/docs/objects/gh-objects/) also has information on how you can locally host small collections directly in your GitHub repository. 
 
-### 2.2 Query and download collection metadata from the  Internet Archive 
+### Query and download collection metadata from the  Internet Archive 
 
 If you are like us and have a collection of described digital objects already in the Internet Archive (IA), you can use their [Advanced Search](https://archive.org/advancedsearch.php) page to craft specific queries and export the existing metadata to a CSV file.
 
@@ -124,12 +124,12 @@ Once you have downloaded your metadata, you will want to clean it up to include 
 * [Tips on formatting your metadata](https://collectionbuilder.github.io/cb-docs/docs/metadata/formatting/)
 * [UTF-8 encoding errors](https://collectionbuilder.github.io/cb-docs/docs/metadata/uploading/)
 
-## 3. Prepare the metadata for your CollectionBuilder exhibition
+## Prepare the metadata for your CollectionBuilder exhibition
 To ensure your exhibition works properly, your metadata must follow the structure expected by CollectionBuilder. This means your CSV file must contain specific fields with correct formatting so the template can display items, maps, timelines, and other features.
 
 Below, we explain only the fields required for this example project. You can explore the complete metadata guide anytime by checking out the [CB-GH Metadata Template](https://collectionbuilder.github.io/cb-docs/docs/metadata/gh_metadata/).
 
-### 3.1 CollectionBuilder Required Fields
+### CollectionBuilder Required Fields
 
 The following fields are required in CollectionBuilder:
 
@@ -152,7 +152,7 @@ In our example, the Internet Archive identifier is already a suitable **objectid
   * Audio: audio/mp3  
   * Video: video/mp4
 
-### 3.2 Metadata Fields used for visualizations
+### Metadata Fields used for visualizations
 
 CollectionBuilder automatically creates views or entry points to the collection using the information provided in the metadata file. These will generate interactive views to explore the collection on different pages. Each “extra” page needs a different type of information, which is explained below:
 
@@ -162,7 +162,7 @@ CollectionBuilder automatically creates views or entry points to the collection 
 
 * **subjects**: Create a word cloud with the topics that each object deals with in the subject column. You can put multiple topics in each box (for each object) and separate them with a semicolon ( ;). In our example, each playbill has been given genres like comic drama; comedy; extravaganza, which follow the order of appearance on the playbill.
 
-### 3.3 Optional fields
+### Optional fields
 
 CollectionBuilder templates can support as many descriptive metadata fields as you want, following the interests of the digital collection's creators and audience.
 
@@ -181,12 +181,12 @@ Some common additions include:
 * **rights statement:** Link to a standardized interoperable rights statement from [rightsstatements.org](https://rightsstatements.org/en/).
 
 
-## 4. Setting up CollectionBuilder
+## Setting up CollectionBuilder
 
 Before you can set up your digital exhibition, you will need a [GitHub account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) for your archive, library, museum, or personal use. These accounts are free and can be used for various purposes. Once you have an account and are logged in, you can proceed with the lesson. [More information on working with GitHub](https://collectionbuilder.github.io/cb-docs/docs/repository/gitworkflow/).
 
 
-### 4.1 Clone the repository
+### Clone the repository
 
 To set up CollectionBuilder for your exhibition, you first need to copy the template you want to use, which in our case is [collectionbuilder-gh](https://github.com/CollectionBuilder/collectionbuilder-gh). 
 
@@ -207,14 +207,14 @@ Now that you have cloned the template for your exhibition, let’s take a closer
 
 * **_sass and assets**: This is where you will find the SASS (Syntactically Awesome Style Sheets) files that provide the visual side of the web page (colours, font sizes, etc.) and the JSON (JavaScript Object Notation) files that make everything work. Editing the CSS or JSON is not covered in this lesson, though you may use the assets folder to add images such as a banner.
 
-### 4.2 Upload your metadata
+### Upload your metadata
 From the homepage of your repository on GitHub, click on the **_data** folder. This is where you will upload your metadata file. You will also notice several demo and template files in the website framework for reference. While not necessary for your exhibition, we recommend leaving them as is so you can reference them later.
 
 To add your metadata file, click the **”Add File” button** at the top right corner and follow the prompts to upload your CSV file.
 
 After you add a message and click the "Commit changes” button, your file is in the repository.
 
-### 4.3 Configuration
+### Configuration
 
 Since your **_data** folder contains several metadata files, the next step is to tell the CollectionBuilder template which one to use for your exhibition.
 
@@ -222,7 +222,7 @@ To do this, we will edit the **_config.yml** file. Under the heading # COLLECTIO
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-03.png" alt="Screenshot of the relevant section of the config.yml file showing where to point CollectionBuilder to your metadata file." caption="Figure 3. Screenshot of the relevant section of the `config.yml` file showing where to point CollectionBuilder to your metadata file." %}
 
-### 4.4 Publish your site
+### Publish your site
 At this point, while you could skip to the later sections of this lesson to fully customize your exhibition before publishing your site live on the web, it can be helpful to publish at this early stage so you can see the changes you have already made and ensure the metadata and objects are working as expected.
 
 To publish your site using GitHub Pages, you just need to edit a few settings. From your repository home page, click on the “Settings” option at the top right.
@@ -257,11 +257,11 @@ In addition, check if all of your commits or changes been processed? You can cli
 
 Once you've addressed any glitches, your website should be viewable online.
 
-## 5. Customizing your digital exhibition
+## Customizing your digital exhibition
 
 Now that your digital exhibition is available online, let's customize it.
 
-### 5.1 Home page
+### Home page
 
 The first thing someone sees when they visit your site is the homepage, and there are several ways you can customize it to encourage readers to explore your exhibition.
 
@@ -296,7 +296,7 @@ The next thing you can do is change the order of the boxes. In our example, we m
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-11.png" alt="Screenshot of home-infographic.html code showing the changes to the box order and the title of the subject box." caption="Figure 11. Screenshot of `home-infographic.html` code showing the changes to the box order and the title of the subject box." %}
 
-### 5.2 Item page
+### Item page
 
 Next, let’s examine the default item page, which displays your digital object and its corresponding metadata. There are a number of changes that can be made to the default page, including which metadata fields are shown, in what order, what the labels are, and whether we want them to interlink to other items on your site or include external links.
 
@@ -315,12 +315,12 @@ Lastly, we added the item's full URL for easier access. Add a new line near the 
 If you are using PDFs (as in our example) and would like to add thumbnails to your item page, we have instructions on [our extra content page](https://nnunn.github.io/CollectionBuilder-tutorial-extras/). 
 
 
-### 5.3 Configure search and browse experience
+### Configure search and browse experience
 Related to metadata configuration is the search and browse configuration. If you add a new metadata field to your item page, you will also need to add it to the **config-search.csv** file in the _data folder to make it searchable. The second step to make the browse_link work will be to add the two fields to the **config-browse.csv** in the same _data folder.  
 
 Depending on your site goals and audience, you might want to add further customization. To learn about what more you can do, visit the [CollectionBuilder customization documentation](https://collectionbuilder.github.io/cb-docs/docs/customization/). 
 
-### 5.4 Information or Interpretive pages
+### Information or Interpretive pages
 
 One of the great things about building your online exhibition is that you can add as much information or as many interpretive pages as you like to tell the narrative of your collection. These pages are written in Markdown and can include various [liquid](https://liquidjs.com/tutorials/intro-to-liquid.html) formatting blocks and images.
 
@@ -343,7 +343,7 @@ If you want to add a new page, you can follow the instructions in the Collection
 * [Add a Page to Your Site](https://collectionbuilder.github.io/cb-docs/docs/pages/add_page/)  
 * [Interpretive Pages](https://collectionbuilder.github.io/cb-docs/docs/pages/interpretive/)
 
-### 5.5 Navigation
+### Navigation
 
 The last thing you will edit for this lesson is the navigation bar. Similar in format to the item page fields, this component is managed in the **config-nav.csv** file found in the **_data** folder. 
 

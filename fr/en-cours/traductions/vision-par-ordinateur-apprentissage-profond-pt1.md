@@ -174,7 +174,7 @@ Une publicité illustrée [^7]&nbsp;:
 
 {% include figure.html filename="en-or-computer-vision-deep-learning-pt1-02.jpg" alt="Une image en noir et blanc d'une publicité de journal. L'image contient une illustration d'une boite à café sur la gauche de l'annonce." caption="Figure 2. Un exemple de publicité illustrée" %}
 
-Une annonce textuelle [^8]:
+Une annonce textuelle [^8]&nbsp;:
 
 {% include figure.html filename="en-or-computer-vision-deep-learning-pt1-03.jpg" alt="Une image en noir et blanc d'une publicité de journal. La publicité ne contient que du texte et concerne une assurance incendie, avec l'adresse de la compagnie d'assurance." caption="Figure 3. Un exemple de publicité sans illustration" %}
 
@@ -182,7 +182,7 @@ Notre classifieur sera entrainé à prédire à quelle catégorie appartient une
 
 ## Introduction à la bibliothèque fastai
 
-[fastai](https://perma.cc/EG22-5FGB) est une bibliothèque Python pour l'apprentissage profond &laquo;&nbsp;qui fournit aux praticien(ne)s des composants de haut niveau pouvant rapidement et facilement fournir des résultats de pointe dans des domaines d'apprentissage profond standard, et fournit aux chercheur·es des composants de bas niveau qui peuvent être assemblés et assortis pour construire de nouvelles approches&nbsp;&raquo;[^9]. La bibliothèque est développée par [fast.ai](https://perma.cc/FY9M-LJMG), un organisme de recherche qui vise à rendre l'apprentissage profond plus accessible. Outre la bibliothèque fastai, fast.ai organise également des cours gratuits et mène des recherches.
+[fastai](https://perma.cc/EG22-5FGB) est une bibliothèque Python pour l'apprentissage profond &laquo;&nbsp;qui fournit aux praticien·ne·s des composants de haut niveau pouvant rapidement et facilement fournir des résultats de pointe dans des domaines d'apprentissage profond standard, et fournit aux chercheur·es des composants de bas niveau qui peuvent être assemblés et assortis pour construire de nouvelles approches&nbsp;&raquo;[^9]. La bibliothèque est développée par [fast.ai](https://perma.cc/FY9M-LJMG), un organisme de recherche qui vise à rendre l'apprentissage profond plus accessible. Outre la bibliothèque fastai, fast.ai organise également des cours gratuits et mène des recherches.
 
 La bibliothèque fastai a été choisie pour ce tutoriel pour plusieurs raisons&nbsp;:
 
@@ -394,7 +394,7 @@ Un résumé abstrait de la boucle d'entrainement pour l'apprentissage supervisé
 - Mettre à jour le modèle dans le but de générer de meilleures prédictions la prochaine fois. 
 
 En général, on envoie les données par lot (*batch*) au modèle, afin de favoriser la généralisation: la mise à jour du modèle s'effectue à partir de la moyenne des erreurs sur l'ensemble du lot envoyé. La *batch size* est l'hyperparamètre qui indique la quantité d'exemples envoyés à la fois.
-L'ensemble du corpus est donc divisé en lots, envoyés successivement au modèle. Le passage de l'ensemble du corpus s'appelle, nous le rappelons, une époque (ou communément *epoch*). Plusieurs époques sont nécessaires pour entrainer correctement un modèle. Au cours de cette boucle d'apprentissage, des mesures sont communiquées pour permettre d'évaluer l'efficacité du modèle.
+L'ensemble du corpus est donc divisé en lots, envoyés successivement au modèle. Le passage de l'ensemble du corpus s'appelle, nous le rappelons, une époque (ou communément *epoch*). Plusieurs époques sont nécessaires pour entrainer correctement un modèle. Au cours de cette boucle d'apprentissage des mesures sont communiquées pour permettre d'évaluer l'efficacité du modèle.
 
 Il s'agit évidemment d'une vue synthétique. Examinons une à une les étapes de cette boucle. Bien que la section suivante présente ces étapes à l'aide de code, ne vous inquiétez pas si tout n'est pas clair au début.
 
@@ -502,7 +502,7 @@ Dans cette leçon, nous avons&nbsp;:
 
 - donné un aperçu général de la distinction entre les approches basées sur les règles et les approches basées sur l'apprentissage machine pour aborder un problème,
 - montré un exemple de base sur la façon d'utiliser fastai pour créer un classifieur d'images avec relativement peu de temps et de données d'apprentissage,
-- présenté une vue d'ensemble des étapes d'un pipeline d'apprentissage profond et identifié les étapes de ce pipeline auxquelles les chercheur·es en sciences humaines devraient porter une attention particulière,
+- présenté une vue d'ensemble des étapes d'un pipeline d'apprentissage profond et identifié les étapes de ce pipeline auxquelles les chercheur·euse·s en sciences humaines devraient porter une attention particulière,
 - réalisé une expérience rudimentaire pour essayer de vérifier si l'apprentissage par transfert est utile pour notre classifieur.
 
 Dans la prochaine partie de cette leçon, nous nous appuierons sur ces fondamentaux et entrerons plus dans les détails.

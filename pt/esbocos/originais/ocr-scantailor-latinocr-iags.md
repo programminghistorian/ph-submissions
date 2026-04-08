@@ -12,7 +12,7 @@ reviewers:
 - Forename Surname
 - Forename Surname
 editors:
-- Forename Surname
+- Jimmy Medeiros
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/688
 difficulty: 
 activity: 

@@ -71,8 +71,6 @@ The two case studies in this lesson demonstrate these principles through the int
 
 Before beginning this hands-on analysis, you'll need to gather the necessary materials and tools to effectively examine digital image formats. First, get the sample files we provide for this exercise, [which you can download through this link](https://github.com/programminghistorian/ph-submissions/raw/refs/heads/gh-pages/assets/reverse-engineering-born-digital-artefacts/reverse-engineering-born-digital-artefacts.zip). Please note that all the following instructions are designed for these files provided with this lesson. 
 
-If you feel confident enough to work with your own material, select a JPEG file with either a .jpg or .jpeg file extension that you'd like to analyse. This can be any digital photograph or image from your personal collection; the choice of image isn't critical for learning the fundamental concepts, though selecting something familiar to you may make the analysis more engaging and meaningful. 
-
 Next, you'll need to install a hex viewer that will serve as your primary tool for examining the binary structure of the JPEG file.
 
 A hex viewer can create hex dumps, which are textual representations of computer data in hexadecimal format, achieved by converting bytes into a two-digit hexadecimal number. This makes raw binary data more human-readable and easier to interpret for reverse engineering, or forensic analysis. There are several tools available for viewing hex data from a file. 

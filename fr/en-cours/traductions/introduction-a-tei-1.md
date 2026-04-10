@@ -99,7 +99,7 @@ Maintenant, nous allons installer une extension de VS Code pour travailler plus 
 
 Pour ce faire, cliquez sur le bouton "Extensions" dans la barre latérale sur le côté gauche de la fenêtre principale :
 
-{% include figure.html filename="fr-tr-introduction-a-tei-1-02.png" alt="Extensions de VS Code, figure obtenue par la capture d'écran d'une fenêtre de VS Code. Sur la barre latérale et entouré par un cercle rouge, l'icône des extensions, à côté duquel la liste d'extensions installées et recommandées se déploie à la verticale." caption="Figure 2. Extensions de VS Code." %}
+{% include figure.html filename="fr-tr-introduction-a-tei-1-02.png" alt="Extensions de VS Code, figure obtenue par la capture d'écran d'une fenêtre de VS Code. Sur la barre latérale et entourée par un cercle rouge, l'icône des extensions, à côté duquel la liste d'extensions installées et recommandées se déploie à la verticale." caption="Figure 2. Extensions de VS Code." %}
 
 Écrivez `Scholarly XML` sur la barre de recherche :
 

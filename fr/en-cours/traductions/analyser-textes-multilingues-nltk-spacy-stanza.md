@@ -779,7 +779,7 @@ nlp = stanza.Pipeline(lang='fr', processors='tokenize,mwt,pos')
 doc = nlp(stanza_fre_sent)
 
 # imprimer les mots et leurs étiquettes
-print(*[f'word: {word.text}\tupos: {word.upos}' for sent in doc.sentences for word in sent.words], sep='\n'
+print(*[f'word: {word.text}\tupos: {word.upos}' for sent in doc.sentences for word in sent.words], sep='\n')
 ```
 Résultats:
 

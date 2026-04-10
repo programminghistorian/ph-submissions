@@ -1,12 +1,12 @@
 ---
-title: "Data-Driven Storytelling with Cultural Heritage Data"
+title: "Data-Driven Storytelling with Cultural Heritage Data" or "From shelf to story: network visualisation for library catalogue metadata"
 slug: enablar-lesson-3
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD
 authors:
 - Halie Kerns
-- Forename Surname
+- Arnoud Wils
 reviewers:
 - Forename Surname
 - Forename Surname
@@ -16,7 +16,7 @@ review-ticket:
 difficulty:
 activity:
 topics:
-abstract: Short abstract of this lesson
+abstract: Library catalogues are rich repositories of metadata, capturing details such as publisher, subject headings, year and place of publication, and language. Books that share common metadata attributes are inherently related, and these relationships can surface compelling and often overlooked stories about a collection — whether tied to a shared theme, a geographical area, or a particular period in time.<br/>In most online catalogues, clicking on a metadata value returns a flat list of results: books that share that attribute. But there is a more powerful way to explore these connections. By visualising catalogue metadata as a network graph — where books and metadata values become nodes, and their relationships become edges — it becomes possible to navigate and interact with the collection in an entirely new way, revealing subsets and clusters that would otherwise remain hidden.<br/>This lesson uses iPySIGMA, a Python wrapper around sigma.js, a JavaScript library purpose-built for network visualisation, to build and explore these graphs directly from catalogue metadata.<br/>In the second part of the lesson, we extend this approach by using Llama Extract to derive structured metadata from catalogue fields that do not store it explicitly. This adds an additional layer of richness to the network, enabling us to surface connections and stories that existing metadata alone cannot tell.
 avatar_alt:
 doi: XX.XXXXX/phen0000
 ---
@@ -113,7 +113,16 @@ Format all references using the Chicago Manual of Style.
 
 ## Use Case
 ### Dataset
+
+- [Medieval Illuminated Manuscripts (data set)](https://www.kb.nl/en/research-find/datasets/middeleeuwse-verluchte-handschriften-dataset) OR
+- [Short-Title Catalogue Netherlands - The Dutch National Bibliography up to 1801](https://data.cerl.org/stcn/_search?query=&from=0) subset: 18th century books in the Royal Library of the Netherlands (KB) with subject heading 'exact sciences'.
+
 ### Software/tool
+
+- [sigma.js - a JavaScript library aimed at visualizing graphs of thousands of nodes and edges](https://www.sigmajs.org/)
+- [ipysigma — Easily visualize networks with thousands of nodes and edges in Python](https://medium.com/@msdatashift/ipysigma-easily-visualize-networks-with-thousands-of-nodes-and-edges-in-python-3ecdbe0321de)
+- [ipysigma (GitHub)](https://github.com/medialab/ipysigma)
+- [Llama Extract](https://www.llamaindex.ai/llamaextract)
 
 ## Learning keys
 ### Concepts

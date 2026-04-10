@@ -1,5 +1,5 @@
 ---
-title: "Data-Driven Storytelling with Cultural Heritage Data" or "From shelf to story: network visualisation for library catalogue metadata"
+title: "Data-Driven Storytelling with Cultural Heritage Data _or_ From shelf to story: network visualisation for library catalogue metadata"
 slug: enablar-lesson-3
 layout: lesson
 collection: lessons

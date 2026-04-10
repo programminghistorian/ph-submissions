@@ -248,7 +248,6 @@ Identifying such structural signatures is the first step in what might be descri
 
 These same low-level analytical skills (hex-dump inspection, signature recognition, and comparative analysis) form the foundation for more advanced reverse engineering work. Born-digital artifacts encountered in historical research usually lack the self-describing structures that made our two case studies possible: standardized file headers like the JPEG's `FF D8`, explicit end-of-file markers like `FF D9`, or central indexes like the ZIP End of Central Directory record that, as we saw in the first case study, is what allowed a hidden archive to coexist undetected inside a cat photograph.
 
-
 Researchers often face undocumented binaries and altered software whose structure must be reconstructed through analysis. In such cases, meaning can be inferred from patterns in raw byte sequences, repetition across multiple disk images, and anomalies that cannot be explained by normal execution. The techniques practiced in this lesson provide an essential starting point for the kind of investigative work that can reveal hidden histories of human intervention into binary code, be it for the purposes of spreading computer viruses, or to mod videogames.
 
 

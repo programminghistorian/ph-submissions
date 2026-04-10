@@ -155,8 +155,9 @@ To demonstrate these "dual identities," we will analyze `cat-with-hidden-content
 The following command uses `hexyl` again and adds a `|` "(pipe") to pass the full hex dump from `hexyl` to the `grep` utility, which searches the output by `ff d9` and simply prints the surrounding 10 lines. `[grep](https://man7.org/linux/man-pages/man1/grep.1.html)` is standard on macOS and Linux. Windows users can achieve similar results using [Select-String in PowerShell](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-string?view=powershell-7.6).
 
 ```shell
-$ hexyl cat-with-hidden-content.jpg | grep -i -A 5 -B 5 'ff d9'
+$ hexyl --color=never cat-with-hidden-content.jpg | grep -i -A 5 -B 5 'ff d9'
 ```
+(Note: We use the --color=never flag here because terminal color codes can sometimes interfere with how grep searches for text.)
 
 `ff d9` is the JPEG's EOI marker. Immediately following it, the trained eye will see the ZIP file signature: `50 4b 03 04`. You'll find these on the sixth line of our provided output bellow. By focusing on this specific location of the file, which is towards the end, you can directly observe the "seam" where the JPEG image data stops and a hidden ZIP structure begins.
 

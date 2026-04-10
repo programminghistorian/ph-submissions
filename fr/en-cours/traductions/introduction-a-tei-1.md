@@ -129,7 +129,7 @@ Cependant, pour réaliser le deuxième type de validation, il est nécessaire de
   schematypens="http://purl.oclc.org/dsdl/schematron"?>
 ```
 
-Vous pouvez télécharger un [modèle basique de document XML-TEI](https://raw.githubusercontent.com/programminghistorian/ph-submissions/refs/heads/gh-pages/assets/introduction-a-tei-1/modele-TEI.xml) depuis le dépôt _Programming Historian_, avec ces lignes déjà incluses : cliquez droit sur le lien, puis sélectionnez "Enregistrer la cible du lien sous" (ou "Enregistrer sous") pour le sauvegarder sur votre ordianateur.
+Vous pouvez télécharger un [modèle basique de document XML-TEI](https://raw.githubusercontent.com/programminghistorian/ph-submissions/refs/heads/gh-pages/assets/introduction-a-tei-1/modele-TEI.xml) depuis le dépôt _Programming Historian_, avec ces lignes déjà incluses : cliquez droit sur le lien, puis sélectionnez "Enregistrer la cible du lien sous" (ou "Enregistrer sous") pour le sauvegarder sur votre ordinateur.
 
 **Troisièmement**, l'extension offre également des outils d'autocomplétion du code XML à partir du schéma de validation RELAX NG. Par exemple, si nous introduisons dans le document un élément `<q>` : ["quoted"](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-q.html) (pour marquer un texte entre guillemets, par exemple une citation), nous pouvons appuyer sur la barre d'espace après le `q` de la balise d'ouverture et VS Code affichera une liste d'attributs possibles à sélectionner dans le menu :
 

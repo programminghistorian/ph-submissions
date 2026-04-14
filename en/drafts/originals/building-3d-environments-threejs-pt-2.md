@@ -36,7 +36,7 @@ An additional (optional) goal of Part 2 is to change the webpage into a game by 
 
 The interactive element of the ‘Jars of Papua’ Scene is the user’s ability to toggle between different information panels by clicking on a jar. The scene was designed to communicate the diversity of vessel forms, decorations, construction techniques and uses of Papua New Guinean pottery. It is also a way to visualise how ceramic technological knowledge may have spread and changed through Papua (and the wider region). 
 
-Historically Papua society consisted of smaller communities who are thought to have deliberately promoted distinct language and material culture traditions to develop and maintain group identities (Fraenkel and Filer 2022). Papua New Guinea is the most linguistic diverse country in the world, with over 800 languages. Part of this stems from people arriving on the New Guinea Island over 40,000 years ago (Fraenkel and Filer 2022). There is no evidence that pottery was present in New Guinea until contact 3000-4000 years ago with [Austronesian](https://en.wikipedia.org/wiki/Austronesian_peoples) peoples originating from Taiwan. Austronesian populations continued expanding further and reached as far east as Hawai’I and Rapa Nui. The timing and nature of the interactions of the Austronesian and older (‘Papuan’/’Non-Austronesian’) peoples is of [great interest](https://www.mpg.de/24825928/0603-evan-papua-new-guinea-s-genetic-past-through-ancient-dna-analysis-150495-x). Some, mainly island and coastal Papua New Guinea communities speak ‘Austronesian’ languages and carry the ‘Austronesian’ gene-signature (Nägele et al. 2025). The predominance of pottery making nearer the coastal regions of Papua New Guinea shows this adoption from ‘sea-people’. 
+Historically Papua society consisted of smaller communities who are thought to have deliberately promoted distinct language and material culture traditions to develop and maintain group identities (Fraenkel and Filer 2022). Papua New Guinea is the most linguistic diverse country in the world, with over 800 languages. Part of this stems from people arriving on the New Guinea Island over 40,000 years ago (Fraenkel and Filer 2022). There is no evidence that pottery was present in New Guinea until contact 3000-4000 years ago with [Austronesian](https://en.wikipedia.org/wiki/Austronesian_peoples) peoples originating from Taiwan. Austronesian populations continued expanding further and reached as far east as Hawai’i and Rapa Nui. The timing and nature of the interactions of the Austronesian and older (‘Papuan’/’Non-Austronesian’) peoples is of [great interest](https://www.mpg.de/24825928/0603-evan-papua-new-guinea-s-genetic-past-through-ancient-dna-analysis-150495-x). Some, mainly island and coastal Papua New Guinea communities speak ‘Austronesian’ languages and carry segments of the ‘Austronesian’ gene-signature (Nägele et al. 2025). The predominance of pottery making nearer the coastal regions of Papua New Guinea shows this adoption from ‘sea-people’. 
 
 Using JavaScript libraries allows you to determine how you want to make a scene interactive. For example, this scene could be redesigned so that a mouse click (or keyboard choice) could change the map to show the different linguistic regions, or to indicate the proposed Austronesian migration route. Alternatively, when a jar is selected the map image could show where that community traded jars to. The Adzera-made jars were traded east into the highlands and west into New Britain. While this scene focuses on geographic differences, you could design a scene using a timeline to reflect changes in vessel form and decoration over time. You could also utilise the 3D space to have the vessels arranged on virtual shelves or museum cases, or the map could be a 3D model showing the landscape terrain.
 
@@ -912,6 +912,7 @@ scene.add( jars );
 unmoveable = new THREE.Group();
 scene.add(unmoveable);  
 ```
+
 #### Getting Model Locations: Obtaining the Positions of the Selected Jar and its Correct Site
 
 The event object for drag events contains the identity of the object being dragged (```event.object```), so that can be used in the handler function and the site it should match can be obtained from its userData.
@@ -947,6 +948,7 @@ let testposition = new THREE.Vector3(0,0,0); //needs to be something first
 truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z)
 let aposition = selectedObject.position; //get jar position
 ```
+
 #### Determining Distances Between Models: Testing if the Jar has Been Placed 'on' its Correct Site
 
 In coding, [conditional statements](https://en.wikipedia.org/wiki/Conditional_(computer_programming)) such as the 'if' statement are commonly used to specify that lines of code will only run if a particular criteria is fulfilled. An if statement was used previously when testing if anything is actually being selected by the mouse. Now use an if statement to test if the distance between the jar and its matching site is within the set allowed distance. Call the ```distanceTo``` method on the ```aposition``` vector to determine the distance between the two vectors, and test if it is smaller than our allowed distance (0.25 * ratio). 
@@ -968,9 +970,10 @@ if ( aposition.distanceTo( testposition ) < .025 * ratio) {
 
 Save the index.html file and reload the browser to check for errors (broken code blocks can occur). But the script has not been told what to do if the test is successful yet, so nothing will occur if there is a correct match. 
 
+
 #### Changing the Background Colour if the Match is Correct
 
-If the match is correct, the background colour can change, by making ```scene.background``` equal to a new ```THREE.Color``` generated by ```Math.random() * 0xffffff```. This works because the hex colour codes are actually being converted to hexadecimal numbers and multiplying white (0xffffff or 16777215) by a random (0-1) value gives another number 0- 16777215, which can be interpreted as a colour by three.js.
+If the match is correct, the background colour can change, by making ```scene.background``` equal to a new ```THREE.Color``` generated by ```Math.random() * 0xffffff```. This works because the hex colour codes are actually being converted to hexadecimal numbers and multiplying white (0xffffff or 16777215) by a random (0-1) value gives another number 0-16777215, which can be interpreted as a colour by three.js.
 
 **Find** the following code:
 
@@ -1007,6 +1010,7 @@ Save the index.html file and try to test, but moving in 3D can be difficult. Whe
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-15.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Aibom jar has been correctly positioned." caption="Figure 15. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-16.png" alt="Normal view of the jars and map, with the Aibom jar in its correct position." caption="Figure 16. The Aibom jar in its correct position." %}
+
 
 #### Making Matching Easier by Detecting Matches in 2D Space
 

@@ -236,13 +236,13 @@ const keyTexture = textureLoader.load( 'textures/key.jpg' );
 keyTexture.generateMipmaps = true;
     
 // add introduction information panel
-gallery = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: introTexture }));
+gallery = new THREE.Mesh( new THREE.PlaneGeometry(psize, psize), new THREE.MeshBasicMaterial({ map: introTexture }));
 gallery.position.set( 0, gheight, sphereposz); 
 // add the panel for the key
-const gallery2 = new THREE.Mesh(new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: keyTexture }));
+const gallery2 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize), new THREE.MeshBasicMaterial({ map: keyTexture }));
 gallery2.position.set( 1.25, gheight, sphereposz); 
 // add the panel for the references
-const gallery3 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize  ), new THREE.MeshBasicMaterial({ map: refTexture }));
+const gallery3 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize), new THREE.MeshBasicMaterial({ map: refTexture }));
 gallery3.position.set( -1.25, gheight, sphereposz); 
 
 scene.add( gallery, gallery2, gallery3);
@@ -281,7 +281,7 @@ For the 6 jar information panels, the code will be very similar, so a function c
 **Within** the init function definition **after** the following code:
 
 ```
-scene.add( gallery, gallery2, gallery3);
+scene.add(gallery, gallery2, gallery3);
 
 ```
 **Add** the following code:
@@ -293,7 +293,7 @@ selectedPlane = gallery; // start with the instructions.
 function createGallery(filename){
   const aTexture = textureLoader.load( filename );
   aTexture.generateMipmaps = true;
-  const model = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: aTexture }));
+  const model = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: aTexture }));
   model.position.set( 0, gheight, sphereposz); 
   model.visible = false;
   return model;
@@ -305,11 +305,11 @@ aibomG = createGallery('textures/Aibom.jpg');
 mailuG = createGallery('textures/Mailu.jpg');
 dimiriG = createGallery('textures/Dimiri.jpg');
 louisadeG= createGallery('textures/Louisade.jpg');
-yabobG = createGallery( 'textures/Yabob.jpg');
-scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
+yabobG = createGallery('textures/Yabob.jpg');
+scene.add(adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
 ```
 
-Next a plane for the map is needed. As planes are added 'upright' by default, this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis. 'Math' is a JavaScript object, which has properties, including Math.PI (i.e. π, 3.141), and methods, including Math.random() (used later in the lesson). See the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for more properties and methods. 
+Next a plane for the map is needed. As planes are added 'upright' by default, this plane has to be rotated 90 degrees (- Math.PI/2) around the x axis. 'Math' is a JavaScript object, which has properties, including Math.PI (i.e. π, 3.141), and methods, including Math.random() (used later in the lesson). See the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for more properties and methods. 
 
 Three.js uses [radians](https://en.wikipedia.org/wiki/Radian) for its rotational units. As π (3.141) radians is 180 degrees, 90 degrees is Math.PI/2. Rotation occurs in the counter-clockwise direction (when 'looking' towards the negative axis values), so for the way this scene is set up, the rotation of the plane for the geographical map must be -Math.PI/2 around the x axis to have the 'front' of the panel facing upwards.
 
@@ -344,8 +344,8 @@ const mapTexture = textureLoader.load('textures/png.png'); // from google maps
 mapTexture.generateMipmaps = true; 
 theMap = new THREE.Mesh( mapGeometry, new THREE.MeshBasicMaterial({ map: mapTexture }));
 theMap.rotation.x = - Math.PI / 2; // Equal to 90 degrees
-theMap.position.set( 0, desk, 0); // desk height
-scene.add( theMap);
+theMap.position.set(0, desk, 0); // desk height
+scene.add(theMap);
 
 ```
 
@@ -419,10 +419,10 @@ function onLoadAibom( gltf ) {
   aibomM = gltf.scene.children[0];
   aibomM.material = new THREE.MeshStandardMaterial();
   aibomM.material.color.set(parameters.materialColor);
-  aibomM.scale.set( piecescale, piecescale, piecescale);
-  aibomM.position.set( aibomSite.x* ratio, desk + 0.01, aibomSite.z* ratio);
+  aibomM.scale.set(piecescale, piecescale, piecescale);
+  aibomM.position.set(aibomSite.x* ratio, desk + 0.01, aibomSite.z* ratio);
   aibomM.userData.planes = aibomG;
-  jars.add( aibomM);
+  jars.add(aibomM);
 }
 loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
 ```
@@ -450,8 +450,8 @@ function createModel(gltf, site, col, gallery){
   const model = gltf.scene.children[0];	
   model.material = new THREE.MeshStandardMaterial();
   model.material.color.set(col);
-  model.scale.set( piecescale, piecescale, piecescale);				
-  model.position.set( site.x * ratio, desk + 0.01, site.z * ratio);	
+  model.scale.set(piecescale, piecescale, piecescale);				
+  model.position.set(site.x * ratio, desk + 0.01, site.z * ratio);	
   model.userData.planes = gallery;
   return model;
 }
@@ -459,7 +459,7 @@ function createModel(gltf, site, col, gallery){
 //calls the createModel function but still in a separately defined function
 function onLoadAibom( gltf ) {							
   aibomM = createModel(gltf, aibomSite, parameters.materialColor, aibomG);			
-  jars.add( aibomM);
+  jars.add(aibomM);
 }
 loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
 
@@ -485,12 +485,12 @@ The **lines** of code above should be **changed** to the following:
 // load a jar (filename, load function, function while loading, error function)
 loader.load( 'models/aibom.glb', function( gltf ) {							
   aibomM = createModel(gltf, aibomSite, parameters.materialColor, aibomG);			
-  jars.add( aibomM);
+  jars.add(aibomM);
 }, undefined, function ( error ) {console.error( error );} );
 
 loader.load( 'models/mailu.glb', function( gltf) {							
   mailuM = createModel(gltf, mailuSite, parameters.nabColor, mailuG);			
-  jars.add( mailuM);
+  jars.add(mailuM);
 }, undefined, function ( error ) { console.error( error );} );
 
 loader.load( 'models/louisade.glb', function( gltf ) {
@@ -500,17 +500,17 @@ loader.load( 'models/louisade.glb', function( gltf ) {
 
 loader.load( 'models/adzera.glb', function( gltf ) {
   adzeraM = createModel(gltf, adzeraSite, parameters.coilBeatenColor, adzeraG);			
-  jars.add( adzeraM);
+  jars.add(adzeraM);
 }, undefined, function ( error ) {console.error( error );} );
 
 loader.load( 'models/dimiri.glb', function( gltf ) {
   dimiriM = createModel(gltf, dimiriSite, parameters.coilColor, dimiriG);			
-  jars.add( dimiriM);
+  jars.add(dimiriM);
 }, undefined, function ( error ) {console.error( error );} );
 
 loader.load( 'models/yabob.glb', function( gltf ) {
   yabobM = createModel(gltf, yabobSite, parameters.paddleColor, yabobG);			
-  jars.add( yabobM);
+  jars.add(yabobM);
 }, undefined, function ( error ) {console.error( error );} );
 
 ```
@@ -527,7 +527,7 @@ Where to set the positions of the jars can be calculated by taking into account 
 
 ### Using Raycasters: Adding Jar Selection
 
-The interactive scene depends on users being able to select a jar to change the information panel. To be able to select a jar an 'event listener' needs to be created. 'Event listeners' tell the scene what to do if the user interacts with the web site in any way, such as chaning the window size, clicking the mouse or using the keyboard. As with the ```WindowResize``` event listener in Part 1, this listener gets the event (in this case ```click```), and a function (known as an event handler) that will be defined. Input events pass event information to their handler, some of which is dependent on the type of event. The click event passes an object (commonly called ```event```) that contains the mouse cursor's coordinates relative to the viewport/window. 
+The interactive scene depends on users being able to select a jar to change the information panel. To be able to select a jar an 'event listener' needs to be created. 'Event listeners' tell the scene what to do if the user interacts with the website in any way, such as changing the window size, clicking the mouse or using the keyboard. As with the ```WindowResize``` event listener in Part 1, this listener gets the event (in this case ```click```), and a function (known as an event handler) that will be defined. Input events pass event information to their handler, some of which is dependent on the type of event. The click event passes an object (commonly called ```event```) that contains the mouse cursor's coordinates relative to the viewport/window. 
 
 To determine what jar in 3D space is being targeted by the user's mouse in 2D space, three.js uses raycasting. Whenever the user clicks on the scene, the three.js raycaster 'sends' a 'ray' from the camera position to a pointer whose 2D position is calculated from the click event's information. The raycaster has an ```intersectObjects``` method that returns an array of the 3D objects that the cast ray has hit. This array is ordered by distance to the camera so the first in the array (index 0) will be the nearest object. The ```intersectObjects``` method can also be told what objects can be intersected and here the children of the ```jars``` group will be specified. This is the primary reason you made the ```jars``` group.
 

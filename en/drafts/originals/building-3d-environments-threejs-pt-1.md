@@ -493,7 +493,7 @@ The **scene** represents the 3D space. Here, you also set its background colour 
 The **renderer** converts the 3D scene into a 2D image that is displayed in the browser. The conversion of a 3D scene into a 2D image (to be displayed on the screen at that millisecond) is called [rendering](https://en.wikipedia.org/wiki/Rendering_(computer_graphics)). It is configured to match the size and resolution (pixel ratio) of the user’s browser window. The ```antialias: true``` option uses [anti-aliasing](https://en.wikipedia.org/wiki/Spatial_anti-aliasing) to help smooth the edges of objects to reduce jagged lines by averaging edge pixel colours.
 
 The **camera** defines the point of view from which the scene is rendered. The position of the camera is important; sometimes you cannot see your models because the camera is looking away from them or they are outside the boundaries of what it can see, i.e. its [field of view](https://en.wikipedia.org/wiki/Field_of_view). Here, you are using a perspective camera, which mimics how we see in the real world (objects further away appear smaller). The camera is defined using four parameters: 
-- the vertical field of view (how wide the view is)
+- the vertical field of view (how tall the view is)
 - the aspect ratio (based on the browser window dimensions)
 - the near plane (how close objects can be before they are no longer visible)
 - the far plane (how far away objects can be before they are no longer visible)
@@ -576,7 +576,7 @@ function onWindowResize() {
 
 ```
 
-This adds an event listener that responds to changes in the browser window size. An event listener waits for a specific event (such as resizing the window) and then runs a function in response. It takes two arguments: the first identifies the input event (for example here, ```resize``` for resizing), and the second is the function that will be called when the event occurs (here ```onWindowResize````). 
+This adds an event listener that responds to changes in the browser window size. An event listener waits for a specific event (such as resizing the window) and then runs a function in response. It takes two arguments: the first identifies the input event (for example here, ```resize``` for resizing), and the second is the function that will be called when the event occurs (here ```onWindowResize```). 
 
 The standard window resize function code gets the new browser dimensions from the global object ```window``` and updates the camera aspect and the dimensions of the picture the renderer is drawing. Note that, as ```window``` is a global object, it is better not to call any of your variables ```window```.
 
@@ -770,7 +770,7 @@ Part 1 of this two-part series introduced 3D models and their components: meshes
 
 In this lesson, you also used three.js to create a website with a model featuring some of the different ceramic vessels of Papua New Guinea. Interacting with the model gives a sense of the diversity in decoration styles and forms used by different communities across the region. You may have noticed similarities between some of the vessels and considered whether these indicate shared histories or knowledge exchanges between communities. This kind of additional information can be incorporated through annotations. You can annotate models using platforms such as as SketchFab, which allow you to do this more quickly and easily. By contrast, using JavaScript libraries, such as three.js, gives you more flexibility and options for your website. 
 
-This will be covered in Part 2 of this lesson series. In Part 2 you will continue working with three.js and the Papua New Guinea ceramics model, but you will use a different approach to loading the models. You will import the jar models individually, control their colours and allow users to select them and trigger the display of relevant informaiton in a text panel. You will also learn how to turn the scene into an interactive game where the jar models start at random positions and can be moved to match them to the communities that created them. This demonstrates further how three.js can be used to create engaging and effective ways of communicating historical research and concepts through 3D models of material culture. 
+This will be covered in Part 2 of this lesson series. In Part 2 you will continue working with three.js and the Papua New Guinea ceramics model, but you will use a different approach to loading the models. You will import the jar models individually, control their colours and allow users to select them and trigger the display of relevant information in a text panel. You will also learn how to turn the scene into an interactive game where the jar models start at random positions and can be moved to match them to the communities that created them. This demonstrates further how three.js can be used to create engaging and effective ways of communicating historical research and concepts through 3D models of material culture. 
 
 ## References
 

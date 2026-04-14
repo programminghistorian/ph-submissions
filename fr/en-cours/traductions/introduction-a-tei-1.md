@@ -430,7 +430,7 @@ Dans cette première partie de la leçon, vous avez appris&nbsp;:
 1. Ce que signifie encoder un texte.
 2. Ce que sont les documents XML et XML-TEI.
 
-Dans [la deuxième partie](https://programminghistorian.org/es/lecciones/introduccion-a-tei-2) (qui n'existe actuellement qu'en espagnol) vous verrez en détail deux exemples d'encodages de textes.
+Dans [la deuxième partie](https://programminghistorian.org/es/lecciones/introduccion-a-tei-2) (qui n'existe actuellement qu'en espagnol) vous verrez en détail deux exemples d'encodages de textes. Une [autre leçon](/fr/lecons/publier-archives-tei-ceteicean), par Gabriel Calarco et Gimena del Rio Rande, est dédiée à l'utilisation de CETEIcean.
 
 ## Références recommandées
 

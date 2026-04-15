@@ -18,12 +18,13 @@ translator:
 translation-editor:
   - Alexandre Wauthier
 translation-reviewer:
-  -
+  - Matthias Gille Levenson
+  - Selma Bensidhoum
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/671
 difficulty: 2
 activity: transforming
 topics: [data-manipulation, website]
-abstract: "Cette leçon (à laquelle suivra une deuxième partie) vous enseigne les rudiments de la TEI-XML pour encoder des textes."
+abstract: Cette leçon (à laquelle suivra une deuxième partie) vous enseigne les rudiments de la TEI-XML pour encoder des textes.
 avatar_alt: Gravure d'une coupe transversale du sol avec ses étiquettes correspondantes.
 doi: XX.XXXXX/phen0000
 ---
@@ -82,7 +83,7 @@ Pour cette leçon, nous utiliserons l'éditeur [Visual Studio Code](https://code
 
 Téléchargez la version la plus récente de VS Code sur le lien [https://code.visualstudio.com/](https://code.visualstudio.com/) et installez-la sur votre ordinateur. Ouvrez-le et il affichera l'écran suivant&nbsp;:
 
-{% include figure.html filename="fr-tr-introduction-a-tei-1-01.png" alt="Vue initiale de VS Code, figure obtenue par capture d'écran de la page de bienvenue de VS Code. Celle-ci se divise en trois sections&nbsp;: 'Start', 'Recent' et 'Walkthroughs'. En haut de cette page se trouvent la barre de menu et, à gauche, la barre latérale." caption="Figure 1. Vue initiale de VS Code." %}
+{% include figure.html filename="fr-tr-introduction-a-tei-1-01.png" alt="Vue initiale de VS Code, figure obtenue par capture d'écran de la page de bienvenue de VS Code. Celle-ci se divise en trois sections: 'Start', 'Recent' et 'Walkthroughs'. En haut de cette page se trouvent la barre de menu et, à gauche, la barre latérale." caption="Figure 1. Vue initiale de VS Code." %}
 
 <div class="alert alert-warning">
   <p>
@@ -137,7 +138,7 @@ Vous pouvez télécharger un [modèle basique de document XML-TEI](https://raw.g
 
 Cependant, pour pouvoir utiliser cette extension ou d'autres dans VS Code, il est nécessaire que l'éditeur **ne** soit **pas** en mode restreint (*Restricted Mode*), comme ce qui s'affiche sur cette fenêtre&nbsp;:
 
-{% include figure.html filename="fr-tr-introduction-a-tei-1-09.png" alt="Avertissement du mode restreint sur VS Code, figure obtenue par la capture d'écran d'une fenêtre de VS Code. En haut, l'avertissement du mode restreint s'affiche en bleu, offrant les options cliquables&nbsp;: 'Manage' et 'Learn More'." caption="Figure9. Avertissement du mode restreint sur VS Code." %}
+{% include figure.html filename="fr-tr-introduction-a-tei-1-09.png" alt="Avertissement du mode restreint sur VS Code, figure obtenue par la capture d'écran d'une fenêtre de VS Code. En haut, l'avertissement du mode restreint s'affiche en bleu, offrant les options cliquables: 'Manage' et 'Learn More'." caption="Figure 9. Avertissement du mode restreint sur VS Code." %}
 
 Ce mode empêche les extensions ou le code du document d'exécuter des instructions qui pourraient endommager votre système ou vos fichiers. Étant donné que nous sommes en train de travailler avec nos documents et que l'extension recommandée est hautement fiable, nous pouvons désactiver le mode restreint en cliquant sur l'hyperlien situé en haut, qui indique *Manage* (&laquo;&nbsp;Administrer&nbsp;&raquo;) et puis cliquer sur le bouton *Trust* (&laquo;&nbsp;Faire confiance&nbsp;&raquo;), ainsi&nbsp;:
 
@@ -155,7 +156,7 @@ Comprendre la différence entre le marquage de visualisation (Markdown) et le ma
 
 Clarifions cela en revenant à notre exemple initial. Supposons que, dans le texte numérisé de départ, les noms propres apparaissent toujours imprimés en [petites capitales](https://fr.wikipedia.org/wiki/Petite_capitale), comme dans le fragment qui suit&nbsp;:
 
-{% include figure.html filename="fr-tr-introduction-a-tei-1-11.png" alt="Court extrait de texte numérisé tiré des _Misérables_, figure obtenue par la capture d'écran d'une page Word. Quatre lignes de texte dont la source est Victor Hugo, _Les Misérables_. Cinquième partie&nbsp;: Jean Valjean I, Paris&nbsp;: Pagnerre, 1862, p. 28. Nous ajoutons les petites capitales pour servir les propos de la leçon."  caption="Figure 11. Court extrait de texte numérisé tiré des _Misérables_." %}
+{% include figure.html filename="fr-tr-introduction-a-tei-1-11.png" alt="Court extrait de texte numérisé tiré des _Misérables_, figure obtenue par la capture d'écran d'une page Word. Quatre lignes de texte dont la source est Victor Hugo, 'Les Misérables'. Cinquième partie: Jean Valjean I, Paris: Pagnerre, 1862, p. 28. Nous ajoutons les petites capitales pour servir les propos de la leçon."  caption="Figure 11. Court extrait de texte numérisé tiré des _Misérables_." %}
 
 Comme nous le verrons, la TEI nous permet d'encoder, par le moyen d'une série de balises, le texte que nous voulons structurer sémantiquement. Par exemple, nous pouvons utiliser une balise comme [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html) pour démarquer les noms propres contenus dans le texte, ainsi&nbsp;:
 

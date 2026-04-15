@@ -64,9 +64,9 @@ doi: XX.XXXXX/phen0000
 Dans les humanités numériques, l'un des problèmes centraux consiste à travailler avec et sur les textes&nbsp;: leur capture (numérisation), reconnaissance, transcription, encodage, traitement, transformation et analyse. Dans cette leçon, nous nous concentrerons exclusivement sur l'encodage du texte, c'est-à-dire, sur sa structuration sémantique ou formelle au moyen de balises (*tags*).
 
 Un exemple peut éclairer cette idée. Supposons que nous avons un document imprimé que nous avons préalablement numérisé.
-Nous avons les images numérisées des pages et, à l'aide d'un logiciel de reconnaissance optique de caractères ([OCR](https://fr.wikipedia.org/wiki/Reconnaissance_optique_de_caractères), en anglais), nous extrayions le texte contenu dans ces images. Ce texte est ce que l'on appelle habituellement [*texte brut*](https://fr.wikipedia.org/wiki/Texte_brut) (ou texte numérisé), c'est-à-dire, le texte sans aucun format (sans italiques, gras, etc.) ni aucune autre structuration sémantique.
+Nous avons les images numérisées des pages et, à l'aide d'un logiciel de reconnaissance optique de caractères ([OCR](https://perma.cc/4SNT-5HHB), en anglais), nous extrayions le texte contenu dans ces images. Ce texte est ce que l'on appelle habituellement [*texte brut*](https://perma.cc/D5RA-HVTY) (ou texte numérisé), c'est-à-dire, le texte sans aucun format (sans italiques, gras, etc.) ni aucune autre structuration sémantique.
 
-Même si cela peut paraître étrange, le texte brut est complètement dépourvu de contenu. Pour un ordinateur, ce n'est qu'une longue chaîne de caractères (y compris la ponctuation, les espaces, les sauts de ligne, etc.) dans un [encodage](https://fr.wikipedia.org/wiki/Codage_des_caractères) (par exemple [UTF-8](https://fr.wikipedia.org/wiki/UTF-8) ou [ASCII](https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange)) d'un alphabet (latin, grec ou cyrillique, par exemple). C'est nous qui, lorsque nous le lisons, identifions des mots (dans une ou plusieurs langues), des lignes, des paragraphes, etc. C'est nous qui identifions aussi les noms de personnes et de lieux, les titres d'ouvrages et d'articles, les dates, les citations, les épigraphes, les références croisées (internes et externes), les notes en bas de page et les notes à la fin du texte. Mais, de nouveau, l'ordinateur est complètement &laquo;&nbsp;ignorant&nbsp;&raquo; à l'égard desdites structures textuelles dans un texte brut sans traitement ou encodage.
+Même si cela peut paraître étrange, le texte brut est complètement dépourvu de contenu. Pour un ordinateur, ce n'est qu'une longue chaîne de caractères (y compris la ponctuation, les espaces, les sauts de ligne, etc.) dans un [encodage](https://perma.cc/A79J-X63W) (par exemple [UTF-8](https://perma.cc/E3HF-XV6R) ou [ASCII](https://perma.cc/NJ8N-77RM)) d'un alphabet (latin, grec ou cyrillique, par exemple). C'est nous qui, lorsque nous le lisons, identifions des mots (dans une ou plusieurs langues), des lignes, des paragraphes, etc. C'est nous qui identifions aussi les noms de personnes et de lieux, les titres d'ouvrages et d'articles, les dates, les citations, les épigraphes, les références croisées (internes et externes), les notes en bas de page et les notes à la fin du texte. Mais, de nouveau, l'ordinateur est complètement &laquo;&nbsp;ignorant&nbsp;&raquo; à l'égard desdites structures textuelles dans un texte brut sans traitement ou encodage.
 
 Sans encodage [TEI](https://tei-c.org/) (Text Encoding Initiative) réalisé par un être humain, l'ordinateur ne peut identifier aucun contenu sémantique dans le texte brut. Cela veut dire, entre autres choses, que nous ne pouvons pas faire des recherches structurées sur ce texte (de noms de personnes, de lieux ou de dates, par exemple), et que nous ne pouvons ni extraire ni traiter systématiquement une information, sans avoir préalablement indiqué à l'ordinateur quelles chaînes de caractères correspondent à quelles structures sémantiques. Par exemple, cette chaîne de caractères correspond à un nom propre de personne, cet autre nom de personne fait référence à la même personne que le premier, cette chaîne de caractères est un nom de lieu, cette autre est une note en marge faite par une tierce personne, ce paragraphe appartient à cette section du texte.
 Encoder le texte, c'est indiquer (au moyen de balises) que certaines chaînes de caractères en texte brut ont une signification donnée. Il s'agit ici de la différence principale entre le texte brut et le texte sémantiquement structuré.
@@ -112,11 +112,11 @@ Enfin, cliquez sur *Install*&nbsp;:
 
 Cette extension nous permet de faire plusieurs choses avec le code&nbsp;:
 
-**Premièrement**, Scholarly XML permet de sélectionner n'importe quel texte dans un document XML, d'utiliser des raccourcis clavier et d'inclure automatiquement le texte sélectionné à l'intérieur d'un élément XML. Lorsque nous appuyons sur `Ctrl+E` (sur Windows ou Linux) ou `Cmd+E` (sur macOS), VS Code ouvre une petite fenêtre avec l'instruction `Enter Abbreviation (Press Enter to confirm or Escape to cancel)` — &laquo;&nbsp;Introduisez le raccourci (Appuyez sur 'Entrée' pour confirmer votre saisie, ou sur 'Échap' pour l'annuler)&nbsp;&raquo;. Ensuite, nous écrivons le nom de l'élément et appuyons sur la touche `Entrée`. Ainsi, l'éditeur intégrera le texte sélectionné entre une balise d'ouverture et une autre de fermeture avec le nom de l'élément. Lorsque nous travaillons avec XML, automatiser l'introduction de balises d'ouverture et de fermeture peut nous faire économiser beaucoup de temps, tout en diminuant la probabilité d'introduire des erreurs typographiques dans le code.
+Premièrement, Scholarly XML permet de sélectionner n'importe quel texte dans un document XML, d'utiliser des raccourcis clavier et d'inclure automatiquement le texte sélectionné à l'intérieur d'un élément XML. Lorsque nous appuyons sur `Ctrl+E` (sur Windows ou Linux) ou `Cmd+E` (sur macOS), VS Code ouvre une petite fenêtre avec l'instruction `Enter Abbreviation (Press Enter to confirm or Escape to cancel)` — &laquo;&nbsp;Introduisez le raccourci (Appuyez sur 'Entrée' pour confirmer votre saisie, ou sur 'Échap' pour l'annuler)&nbsp;&raquo;. Ensuite, nous écrivons le nom de l'élément et appuyons sur la touche `Entrée`. Ainsi, l'éditeur intégrera le texte sélectionné entre une balise d'ouverture et une autre de fermeture avec le nom de l'élément. Lorsque nous travaillons avec XML, automatiser l'introduction de balises d'ouverture et de fermeture peut nous faire économiser beaucoup de temps, tout en diminuant la probabilité d'introduire des erreurs typographiques dans le code.
 
 {% include figure.html filename="fr-tr-introduction-a-tei-1-05.png" alt="Introduire automatiquement un élément XML sur VS Code, figure obtenue par la capture d'écran d'une fenêtre de VS Code. En haut, dans la barre de recherche, le mot 'quote' est entouré en rouge. Dans le corps du document modele.xml et entouré en rouge, le mot 'publication' est entre deux balises quote, l'une d'ouverture et l'autre de fermeture." caption="Figure 5. Introduire automatiquement un élément XML sur VS Code." %}
 
-**Deuxièmement**, Scholarly XML permet de déterminer si un document est bien formé selon la syntaxe XML et, en outre, s'il est valide par rapport à un schéma de validation de type [RELAX NG](https://fr.wikipedia.org/wiki/Relax_NG), par exemple, le schéma `tei-all` de la TEI, qui contient la totalité des modules de marquage pour tous les types de documents prévus par le consortium de la TEI. (Nous expliquerons plus bas les concepts de conformité et validité, à la fois syntaxique et sémantique.) L'extension réalise automatiquement les deux choses.
+Deuxièmement, Scholarly XML permet de déterminer si un document est bien formé selon la syntaxe XML et, en outre, s'il est valide par rapport à un schéma de validation de type [RELAX NG](https://perma.cc/5HHM-KYRB), par exemple, le schéma `tei-all` de la TEI, qui contient la totalité des modules de marquage pour tous les types de documents prévus par le consortium de la TEI. (Nous expliquerons plus bas les concepts de conformité et validité, à la fois syntaxique et sémantique.) L'extension réalise automatiquement les deux choses.
 
 {% include figure.html filename="fr-tr-introduction-a-tei-1-06.png" alt="Détecter des erreurs XML sur VS Code, figure obtenue par la capture d'écran d'une fenêtre de VS Code. En raison d'une erreur dans le nom de la balise ouvrante 'publicationStmts', celle-ci et la balise fermante 'publicationStmt' sont soulignées en rouge." caption="Figure 6. Détecter des erreurs XML sur VS Code. En raison d'une erreur dans le nom de la balise ouvrante 'publicationStmts', celle-ci et la balise fermante 'publicationStmt' sont soulignées en rouge." %}
 
@@ -130,13 +130,13 @@ Cependant, pour réaliser le deuxième type de validation, il est nécessaire de
   schematypens="http://purl.oclc.org/dsdl/schematron"?>
 ```
 
-Vous pouvez télécharger un [modèle basique de document XML-TEI](https://raw.githubusercontent.com/programminghistorian/ph-submissions/refs/heads/gh-pages/assets/introduction-a-tei-1/modele-TEI.xml) depuis le dépôt _Programming Historian_, avec ces lignes déjà incluses&nbsp;: cliquez droit sur le lien, puis sélectionnez *Enregistrer la cible du lien sous* (ou *Enregistrer sous*) pour le sauvegarder sur votre ordinateur.
+Vous pouvez télécharger un [modèle basique de document XML-TEI](/assets/introduction-a-tei-1/modele-TEI.xml) depuis le dépôt _Programming Historian_, avec ces lignes déjà incluses&nbsp;: cliquez droit sur le lien, puis sélectionnez *Enregistrer la cible du lien sous* (ou *Enregistrer sous*) pour le sauvegarder sur votre ordinateur.
 
-**Troisièmement**, l'extension offre également des outils d'autocomplétion du code XML à partir du schéma de validation RELAX NG. Par exemple, si nous introduisons dans le document un élément `<q>`&nbsp;: [&laquo;&nbsp;quoted&nbsp;&raquo;](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-q.html) (pour marquer un texte entre guillemets, par exemple une citation), nous pouvons appuyer sur la barre d'espace après le `q` de la balise d'ouverture et VS Code affichera une liste d'attributs possibles à sélectionner dans le menu&nbsp;:
+Troisièmement, l'extension offre également des outils d'autocomplétion du code XML à partir du schéma de validation RELAX NG. Par exemple, si nous introduisons dans le document un élément `<q>`&nbsp;: [&laquo;&nbsp;quoted&nbsp;&raquo;](https://perma.cc/V5AQ-JMTK) (pour marquer un texte entre guillemets, par exemple une citation), nous pouvons appuyer sur la barre d'espace après le `q` de la balise d'ouverture et VS Code affichera une liste d'attributs possibles à sélectionner dans le menu&nbsp;:
 
 {% include figure.html filename="fr-tr-introduction-a-tei-1-08.png" alt="Menu d'autocomplétion de code XML sur VS Code, figure obtenue par capture d'écran de l'élément body d'un document XML sur VS Code. À l'intérieur de la balise ouvrante <q>, l'espace entre q et le chevron fermant déploie un menu avec la liste d'attributs." caption="Figure 8. Menu d'autocomplétion de code XML sur VS Code." %}
 
-Cependant, pour pouvoir utiliser cette extension ou d'autres dans VS Code, il est nécessaire que l'éditeur **ne** soit **pas** en mode restreint (*Restricted Mode*), comme ce qui s'affiche sur cette fenêtre&nbsp;:
+Cependant, pour pouvoir utiliser cette extension ou d'autres dans VS Code, il est nécessaire que l'éditeur ne soit pas en mode restreint (*Restricted Mode*), comme ce qui s'affiche sur cette fenêtre&nbsp;:
 
 {% include figure.html filename="fr-tr-introduction-a-tei-1-09.png" alt="Avertissement du mode restreint sur VS Code, figure obtenue par la capture d'écran d'une fenêtre de VS Code. En haut, l'avertissement du mode restreint s'affiche en bleu, offrant les options cliquables: 'Manage' et 'Learn More'." caption="Figure 9. Avertissement du mode restreint sur VS Code." %}
 
@@ -148,17 +148,17 @@ Maintenant que nous avons configuré notre éditeur, nous pouvons commencer à t
 
 ### Visualisation ou description sémantique
 
-Les personnes familiarisées avec le langage de marquage [Markdown](https://daringfireball.net/projects/markdown/syntax) – de nos jours habituel dans des forums techniques sur Internet, ainsi que dans [GitHub](https://github.com), [GitLab](https://gitlab.com) et d'autres répertoires de code – reconnaîtront certainement l'usage d'éléments tels que des astérisques (`*`), des tirets bas (`_`) et des dièses (`#`) pour faire en sorte que le texte apparaisse d'une certaine manière dans le navigateur. Par exemple, un texte placé entre deux astérisques simples sera montré en italique, tandis qu'un autre entre astérisques doubles le sera en gras. De fait, le texte de cette leçon est écrit en Markdown et suit ces conventions.
+Les personnes familiarisées avec le langage de marquage [Markdown](https://perma.cc/7AXK-UQ77) – de nos jours habituel dans des forums techniques sur Internet, ainsi que dans [GitHub](https://github.com), [GitLab](https://gitlab.com) et d'autres répertoires de code – reconnaîtront certainement l'usage d'éléments tels que des astérisques (`*`), des tirets bas (`_`) et des dièses (`#`) pour faire en sorte que le texte apparaisse d'une certaine manière dans le navigateur. Par exemple, un texte placé entre deux astérisques simples sera montré en italique, tandis qu'un autre entre astérisques doubles le sera en gras. De fait, le texte de cette leçon est écrit en Markdown et suit ces conventions.
 
 Cet usage du marquage a pour finalité principale la visualisation du texte, non pas sa structuration sémantique. Autrement dit, les balises de Markdown ne fournissent aucune indication sémantique sur le texte balisé (par exemple, s'il s'agit du nom d'une personne, d'un lieu ou d'une œuvre), mais indiquent seulement comment cet extrait doit être visualisé ou restitué dans un navigateur ou un autre médium.
 
 Comprendre la différence entre le marquage de visualisation (Markdown) et le marquage structurel et sémantique (TEI) est crucial. Contrairement au Markdown, la TEI permet d'encoder aussi bien le sens que la forme d'un texte. Le choix des éléments à encoder dépend des objectifs du projet&nbsp;: identification sémantique (noms de personnes, lieux, œuvres), structure matérielle (mise en page, organisation physique), ou les deux. La personne qui effectue l'encodage n'est donc pas tenue de reproduire la forme du texte source&nbsp;: elle choisit de l'encoder ou non selon la pertinence de cette information pour son projet.
 
-Clarifions cela en revenant à notre exemple initial. Supposons que, dans le texte numérisé de départ, les noms propres apparaissent toujours imprimés en [petites capitales](https://fr.wikipedia.org/wiki/Petite_capitale), comme dans le fragment qui suit&nbsp;:
+Clarifions cela en revenant à notre exemple initial. Supposons que, dans le texte numérisé de départ, les noms propres apparaissent toujours imprimés en [petites capitales](https://perma.cc/2549-9KR6), comme dans le fragment qui suit&nbsp;:
 
 {% include figure.html filename="fr-tr-introduction-a-tei-1-11.png" alt="Court extrait de texte numérisé tiré des _Misérables_, figure obtenue par la capture d'écran d'une page Word. Quatre lignes de texte dont la source est Victor Hugo, 'Les Misérables'. Cinquième partie: Jean Valjean I, Paris: Pagnerre, 1862, p. 28. Nous ajoutons les petites capitales pour servir les propos de la leçon."  caption="Figure 11. Court extrait de texte numérisé tiré des _Misérables_." %}
 
-Comme nous le verrons, la TEI nous permet d'encoder, par le moyen d'une série de balises, le texte que nous voulons structurer sémantiquement. Par exemple, nous pouvons utiliser une balise comme [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html) pour démarquer les noms propres contenus dans le texte, ainsi&nbsp;:
+Comme nous le verrons, la TEI nous permet d'encoder, par le moyen d'une série de balises, le texte que nous voulons structurer sémantiquement. Par exemple, nous pouvons utiliser une balise comme [`<name>`](https://perma.cc/VT83-R4CW) pour démarquer les noms propres contenus dans le texte, ainsi&nbsp;:
 
 ```
 Quand <name>Zoïle</name> insulte <name>Homère</name>, quand <name>Mævius</name> insulte <name>Virgile</name>, quand <name>Visé</name> insulte <name>Molière</name>, 
@@ -168,19 +168,19 @@ moins aboyés.
 ```
 Nous verrons en détail ce qu'est et comment fonctionne une balise (ou plus précisément un élément) en XML et TEI. Pour le moment, remarquons qu'une balise `<name>` ne signifie pas que le texte ait été représenté originellement en petites capitales (ni d'une autre manière). Cela signifie seulement que le texte qu'elle contient est un nom propre, indépendamment de la manière dont il est représenté. De fait, nous pouvons encoder exhaustivement un document avec des centaines ou des milliers de balises, sans que cet encodage ne se traduise visuellement dans une éventuelle représentation finale.
 
-## XML et TEI&nbsp;: vers un standard de l'encodage de textes
+## XML et TEI : vers un standard de l'encodage de textes
 
 Depuis les débuts des humanités numériques, dans les années 1960, de nombreuses méthodes d'encodage de textes ont été proposées. Presque chaque projet d'encodage contenait son propre standard, ce qui conduisait au fait que les projets étaient incompatibles et intraduisibles entre eux, entravant, voire rendant impossible, le travail collaboratif.
 
 Pour résoudre ce problème, une vingtaine d'années plus tard, on a établi un nouveau standard d'encodage de textes, rassemblant un grand nombre de chercheurs et chercheuses à travers le monde, particulièrement dans les universités anglosaxonnes&nbsp;: la [Text Encoding Initiative (TEI)](https://fr.m.wikipedia.org/wiki/Text_Encoding_Initiative).
 
-La TEI est également construite sur le langage de marquage [XML](https://fr.m.wikipedia.org/wiki/Extensible_Markup_Language), c'est pourquoi elle est parfois dénommée comme &laquo;&nbsp;XML-TEI&nbsp;&raquo; (ou encore &laquo;&nbsp;TEI-XML&nbsp;&raquo;). De son côté, le XML (le sigle d'&laquo;&nbsp;eXtensible Markup Language&nbsp;&raquo;) est un langage d'ordinateur dont le propos est de décrire, par le moyen d'une série de marques ou de balises (_tags_ en anglais), un objet-texte donné.
+La TEI est également construite sur le langage de marquage [XML](https://perma.cc/59JM-YDE8), c'est pourquoi elle est parfois dénommée comme &laquo;&nbsp;XML-TEI&nbsp;&raquo; (ou encore &laquo;&nbsp;TEI-XML&nbsp;&raquo;). De son côté, le XML (le sigle d'&laquo;&nbsp;eXtensible Markup Language&nbsp;&raquo;) est un langage d'ordinateur dont le propos est de décrire, par le moyen d'une série de marques ou de balises (_tags_ en anglais), un objet-texte donné.
 
 Le XML et la TEI sont des langages de marquage et c'est en cela qu'ils se différencient des langages de programmation comme C, Python ou Java, qui décrivent des objets, des fonctions ou des procédures qui doivent être exécutés par un ordinateur.
 
 ### XML
 
-Dans cette leçon, nous n'entrerons pas dans le détail de la syntaxe ni du fonctionnement de XML. Nous recommandons donc que le lecteur ou la lectrice jette un coup d'œil à [cette autre leçon](https://programminghistorian.org/en/lessons/transforming-xml-with-xsl) (en anglais) pour plus d'information sur le XML, ainsi qu'à la bibliographie et aux références suggérées à la fin de cette leçon.
+Dans cette leçon, nous n'entrerons pas dans le détail de la syntaxe ni du fonctionnement de XML. Nous recommandons donc que le lecteur ou la lectrice jette un coup d'œil à la leçon de M.H. Beal[&laquo;&nbsp;Transforming Data for Reuse and Re-publication with XML and XSL&nbsp;&raquo;](/en/lessons/transforming-xml-with-xsl) (en anglais) pour plus d'information sur le XML, ainsi qu'à la bibliographie et aux références suggérées à la fin de cette leçon.
 
 Pour le moment, nous devons seulement savoir que tout document XML doit respecter deux règles essentielles pour être valable&nbsp;:
 
@@ -189,14 +189,14 @@ Pour le moment, nous devons seulement savoir que tout document XML doit respecte
 
 Heureusement, les éditeurs de code XML comme VS Code (avec l'extension Scholarly XML) ou OxygenXML nous permettent de détecter facilement des erreurs de ce type.
 
-### Qu'est-ce que la TEI&nbsp;?
+### Qu'est-ce que la TEI ?
 
 Le XML est un langage si général et abstrait qu'il est indépendant vis-à-vis du contenu. Il peut être utilisé, par exemple, pour décrire des choses très différentes, allant d'un texte en grec classique du VIIIe siècle av. notre ère à un message qu'un thermostat intelligent envoie à une application de smartphone utilisée pour le contrôler.
 
 La TEI est une implémentation particulière de XML, c'est-à-dire une série de règles qui déterminent quels éléments et quels attributs sont permis dans un document en fonction de sa typologie. Cet encodage permet le traitement informatique de ces textes, qui peuvent alors être analysés, transformés, reproduits et stockés, selon les besoins des usagers et usagères. La TEI occupe une place centrale dans les humanités numériques, car elle permet de manipuler informatiquement les textes, objets d'analyse au cœur des humanités.
 Contrairement au XML, qui permet d'encoder tout type d'information, la TEI est spécifiquement conçue pour encoder des textes et leurs propriétés.
 
-Les types d'éléments et d'attributs autorisés en TEI, et les relations existantes entre eux, sont spécifiés par les [règles de la TEI](https://tei-c.org/release/doc/tei-p5-doc/fr/html/index.html). Par exemple, si nous voulons encoder un poème, nous pouvons utiliser l'élément [`<lg>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-lg.html) (de _line group_, &laquo;&nbsp;groupe de lignes&nbsp;&raquo;) de la TEI. Les règles de la TEI déterminent quels types d'attributs peut avoir cet élément et quels éléments peuvent, eux-mêmes, le contenir ou être contenus par lui. La TEI détermine que tout élément <`lg`> doit avoir au moins un élément [`<l>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-l.html) (de _verse line_, &laquo;&nbsp;vers&nbsp;&raquo;).
+Les types d'éléments et d'attributs autorisés en TEI, et les relations existantes entre eux, sont spécifiés par les [règles de la TEI](https://perma.cc/UAK2-HHS8). Par exemple, si nous voulons encoder un poème, nous pouvons utiliser l'élément [`<lg>`](https://perma.cc/7R4N-YDMX) (de _line group_, &laquo;&nbsp;groupe de lignes&nbsp;&raquo;) de la TEI. Les règles de la TEI déterminent quels types d'attributs peut avoir cet élément et quels éléments peuvent, eux-mêmes, le contenir ou être contenus par lui. La TEI détermine que tout élément <`lg`> doit avoir au moins un élément [`<l>`](https://perma.cc/AL66-263D) (de _verse line_, &laquo;&nbsp;vers&nbsp;&raquo;).
 
 Pour illustrer nos propos, examinons les quatre premiers vers du *Sonnet VIII* de Louise Labé (ci-dessous, en texte brut)&nbsp;:
 
@@ -258,8 +258,8 @@ La deuxième ligne contient l'élément principal ou &laquo;&nbsp;racine&nbsp;&r
 
 Ce qui nous intéresse arrive après, dans les lignes 3 et 16, qui contiennent respectivement les deux enfants immédiats de la racine&nbsp;:
 
-- [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-teiHeader.html)
-- [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-text.html)
+- [`<teiHeader>`](https://perma.cc/X337-L3YP)
+- [`<text>`](https://perma.cc/3VG8-MLUX)
 
 Voyons maintenant en quoi consistent ces deux éléments.
 
@@ -269,14 +269,14 @@ Toutes les métadonnées du document sont encodées dans l’élément `<teiHead
 
 Le `<teiHeader>` doit contenir au moins un élément nommé `<fileDesc>` (_file description_ ou description du fichier), qui contient trois éléments enfants en même temps&nbsp;:
 
-- [`<titleStmt>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-titleStmt.html) (_title statement_ ou énoncé de titre)&nbsp;: l'information sur le titre du document (à l'intérieur de l'élément [`<title>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-title.html)) ; optionnellement, il peut aussi inclure des données sur la ou les personnes à l'origine du document (à l'intérieur de l'élément [`<author>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-author.html)).
-- [`<publicationStmt>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-publicationStmt.html) (_publication statement_ ou énoncé de publication)&nbsp;: l'information sur comment le document est publié ou est rendu disponible (autrement dit, le document TEI lui-même, non pas sa source). En ce sens, il est analogue à l'information de l'éditeur/imprimerie dans l'&laquo;&nbsp;imprint&nbsp;&raquo; ou la page de mentions légales d'un livre. Il peut être un paragraphe descriptif (à l'intérieur d'un élément générique de paragraphe [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-p.html)) ou il peut être structuré dans un ou plusieurs champs à l'intérieur des éléments suivants&nbsp;:
-  - [`<address>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-address.html)&nbsp;: l'adresse postale de la personne qui édite ou encode ;
-  - [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-date.html)&nbsp;: la date de publication du document ;
-  - [`<pubPlace>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-pubPlace.html)&nbsp;: le lieu de publication du document ;
-  - [`<publisher>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-publisher.html)&nbsp;: la personne qui édite ou encode le document ;
-  - [`<ref>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-ref.html) (ou alors [`<ptr>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-ptr.html))&nbsp;: une référence externe (URL) où le document est disponible.
-- [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-sourceDesc.html) (_source description_ ou description de la source)&nbsp;: l'information sur la source dont on tire le texte qui est en train d'être encodé. Il peut être un paragraphe descriptif (à l'intérieur d'un élément générique de paragraphe, `<p>`). Il peut aussi être structuré de plusieurs façons. Par exemple, il peut avoir un élément [`<bibl>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-bibl.html), qui inclut une référence bibliographique non structurée (par exemple, `<bibl>Victor Hugo, "Les Misérables", Paris : Pagnerre, 1862`) ; ou il peut contenir une référence structurée à l'intérieur de l'élément [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-biblStruct.html) qui contient à son tour d'autres éléments remarquables.
+- [`<titleStmt>`](https://perma.cc/UVA3-JNR5) (_title statement_ ou énoncé de titre)&nbsp;: l'information sur le titre du document (à l'intérieur de l'élément [`<title>`](https://perma.cc/5J43-S54R)) ; optionnellement, il peut aussi inclure des données sur la ou les personnes à l'origine du document (à l'intérieur de l'élément [`<author>`](https://perma.cc/M5ZB-5ND4)).
+- [`<publicationStmt>`](https://perma.cc/5Y88-8RVG) (_publication statement_ ou énoncé de publication)&nbsp;: l'information sur comment le document est publié ou est rendu disponible (autrement dit, le document TEI lui-même, non pas sa source). En ce sens, il est analogue à l'information de l'éditeur/imprimerie dans l'&laquo;&nbsp;imprint&nbsp;&raquo; ou la page de mentions légales d'un livre. Il peut être un paragraphe descriptif (à l'intérieur d'un élément générique de paragraphe [`<p>`](https://perma.cc/H74U-BCE3)) ou il peut être structuré dans un ou plusieurs champs à l'intérieur des éléments suivants&nbsp;:
+  - [`<address>`](https://perma.cc/X4AK-DJLU)&nbsp;: l'adresse postale de la personne qui édite ou encode ;
+  - [`<date>`](https://perma.cc/XN43-6NLZ)&nbsp;: la date de publication du document ;
+  - [`<pubPlace>`](https://perma.cc/3HAV-YD3N)&nbsp;: le lieu de publication du document ;
+  - [`<publisher>`](https://perma.cc/R2VF-NTVN)&nbsp;: la personne qui édite ou encode le document ;
+  - [`<ref>`](https://perma.cc/69QU-5T8T) (ou alors [`<ptr>`](https://perma.cc/53B9-TAXL))&nbsp;: une référence externe (URL) où le document est disponible.
+- [`<sourceDesc>`](https://perma.cc/N33G-ZCKG) (_source description_ ou description de la source)&nbsp;: l'information sur la source dont on tire le texte qui est en train d'être encodé. Il peut être un paragraphe descriptif (à l'intérieur d'un élément générique de paragraphe, `<p>`). Il peut aussi être structuré de plusieurs façons. Par exemple, il peut avoir un élément [`<bibl>`](https://perma.cc/3E5C-CFQX), qui inclut une référence bibliographique non structurée (par exemple, `<bibl>Victor Hugo, "Les Misérables", Paris : Pagnerre, 1862`) ; ou il peut contenir une référence structurée à l'intérieur de l'élément [`<biblStruct>`](https://perma.cc/CP73-SKN8) qui contient à son tour d'autres éléments remarquables.
 
 Supposons que nous voulons encoder la cinquième partie des *Misérables* de Victor Hugo, à partir de [cette édition](https://gallica.bnf.fr/ark:/12148/bpt6k411301m/f4.item) disponible librement sur [Gallica](https://gallica.bnf.fr/accueil/fr/html/accueil-fr). Le `<teiHeader>` de notre document pourrait bien être le suivant&nbsp;:
 
@@ -352,17 +352,17 @@ En définitive, plus les métadonnées des textes sont encodées de manière com
 
 ### L'élément \<text\>
 
-Comme nous l'avons vu ci-dessus dans la structure minimale, `<text>` est le deuxième enfant de `<TEI>`. Il contient tout le texte du document, proprement dit. Selon la [documentation de la TEI](https://guidelines.tei-c.de/fr/html/index.html), `<text>` peut contenir une série d'éléments dans lesquels l'objet-texte doit être structuré&nbsp;:
+Comme nous l'avons vu ci-dessus dans la structure minimale, `<text>` est le deuxième enfant de `<TEI>`. Il contient tout le texte du document, proprement dit. Selon la [documentation de la TEI](https://perma.cc/2XHC-5MQ3), `<text>` peut contenir une série d'éléments dans lesquels l'objet-texte doit être structuré&nbsp;:
 
 {% include figure.html filename="fr-tr-introduction-a-tei-1-12.png" alt="Liste des éléments qui peuvent être contenus dans la balise <text>, organisés selon leur fonction." caption="Figure 12. Des éléments possibles de `<text>`." %}
 
-Le plus important parmi ces éléments est [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-body.html), qui contient le corps principal du texte. Néanmoins, d'autres éléments importants enfants de `<text>` sont [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-front.html), qui contient le _frontmatter_ (les pages préliminaires) d'un texte (introduction, prologue, etc.), et [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-back.html), qui contient le _backmatter_ (les pages finales, des annexes, des index, etc.).
+Le plus important parmi ces éléments est [`<body>`](https://perma.cc/YHX4-JUXF), qui contient le corps principal du texte. Néanmoins, d'autres éléments importants enfants de `<text>` sont [`<front>`](https://perma.cc/CQP4-3C4D), qui contient le _frontmatter_ (les pages préliminaires) d'un texte (introduction, prologue, etc.), et [`<back>`](https://perma.cc/DFX4-BUSA), qui contient le _backmatter_ (les pages finales, des annexes, des index, etc.).
 
 Pour sa part, l'élément `<body>` peut lui-même contenir beaucoup d'autres éléments&nbsp;:
 
 {% include figure.html filename="fr-tr-introduction-a-tei-1-13.png" alt="Liste des éléments qui peuvent être contenus dans la balise <body>, organisés selon leur fonction." caption="Figure 13. Des éléments possibles de `<body>`." %}
 
-Bien que toutes ces possibilités puissent nous accabler à première vue, nous devons nous rappeler que, d'habitude, un texte se divise naturellement en sections ou parties constitutives. Il est donc recommandable d'utiliser l'élément [`<div>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-div.html) pour chacune d'elles et d'utiliser des attributs tels que `@type` ou `@n` pour qualifier leurs différentes classes et positions dans le texte (par exemple, `<div n="3" type="sous-section">...</div>`).
+Bien que toutes ces possibilités puissent nous accabler à première vue, nous devons nous rappeler que, d'habitude, un texte se divise naturellement en sections ou parties constitutives. Il est donc recommandable d'utiliser l'élément [`<div>`](https://perma.cc/S7B3-4EW6) pour chacune d'elles et d'utiliser des attributs tels que `@type` ou `@n` pour qualifier leurs différentes classes et positions dans le texte (par exemple, `<div n="3" type="sous-section">...</div>`).
 
 Si notre texte est court ou simple, nous pourrions n'utiliser qu'un seul `<div>`. Par exemple&nbsp;:
 
@@ -394,7 +394,7 @@ Mais si notre texte est plus complexe, nous utiliserions plusieurs éléments `<
 
 En principe, la structure de notre document TEI doit être similaire à la structure de l'objet-texte, c'est-à-dire, du texte que nous voulons encoder. Ainsi, si notre objet-texte se divise en chapitres, et ceux-ci, en même temps, en paragraphes, alors nous recommandons de reproduire la même structure dans le document TEI.
 
-Pour les chapitres et les sections, nous pouvons utiliser l'élément `<div>` et pour les paragraphes l'élément [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-p.html).
+Pour les chapitres et les sections, nous pouvons utiliser l'élément `<div>` et pour les paragraphes l'élément [`<p>`](https://perma.cc/H74U-BCE3).
 Observons, par exemple, le schéma suivant&nbsp;:
 
 ```XML
@@ -420,7 +420,7 @@ Observons, par exemple, le schéma suivant&nbsp;:
 
 Bien que la TEI nous permette d'encoder exhaustivement beaucoup d'aspects et de propriétés d'un texte, nous ne souhaitons pas nécessairement tous les encoder. De plus, le processus d'encodage peut être inutilement chronophage si nous prenons le temps d'encoder des éléments dont nous n'avons pas besoin pour les transformations envisagées. Par exemple, si nous sommes en train d'encoder le texte d'une édition imprimée, il peut arriver que les divisions de ligne dans les paragraphes ne soient pas pertinentes pour notre encodage.
 
-Dans ce cas, nous pouvons les ignorer et garder seulement les divisions de paragraphe, sans descendre au-delà de celles-ci. Peut-être ressentons-nous aussi la tentation d'encoder systématiquement toutes les dates et les noms de lieux (avec les éléments [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-date.html) et [`<placeName>`](https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-placeName.html), respectivement) qui apparaissent dans notre objet-texte, même si nous n'en profiterons pas ultérieurement. Le faire n'est pas une erreur, mais nous risquons de perdre un temps précieux.
+Dans ce cas, nous pouvons les ignorer et garder seulement les divisions de paragraphe, sans descendre au-delà de celles-ci. Peut-être ressentons-nous aussi la tentation d'encoder systématiquement toutes les dates et les noms de lieux (avec les éléments [`<date>`](https://perma.cc/XN43-6NLZ) et [`<placeName>`](https://perma.cc/5NSD-L2UF), respectivement) qui apparaissent dans notre objet-texte, même si nous n'en profiterons pas ultérieurement. Le faire n'est pas une erreur, mais nous risquons de perdre un temps précieux.
 
 En somme, nous pourrions ainsi formuler la &laquo;&nbsp;règle d'or&nbsp;&raquo; de l'encodage&nbsp;: encodons tous les éléments qui ont pour nous une signification déterminée, et seulement ceux-là, tout en prenant en compte le fait que nous pourrons éventuellement en profiter de manière concrète.
 
@@ -431,24 +431,24 @@ Dans cette première partie de la leçon, vous avez appris&nbsp;:
 1. Ce que signifie encoder un texte.
 2. Ce que sont les documents XML et XML-TEI.
 
-Dans [la deuxième partie](https://programminghistorian.org/es/lecciones/introduccion-a-tei-2) (qui n'existe actuellement qu'en espagnol) vous verrez en détail deux exemples d'encodages de textes. Une [autre leçon](/fr/lecons/publier-archives-tei-ceteicean), par Gabriel Calarco et Gimena del Rio Rande, est dédiée à l'utilisation de CETEIcean.
+Dans [la deuxième partie](/es/lecciones/introduccion-a-tei-2) (qui n'existe actuellement qu'en espagnol) vous verrez en détail deux exemples d'encodages de textes. Une [autre leçon](/fr/lecons/publier-archives-tei-ceteicean), par Gabriel Calarco et Gimena del Rio Rande, est dédiée à l'utilisation de CETEIcean.
 
 ## Références recommandées
 
-- La documentation complète de la TEI (les *TEI Guidelines*) disponible sur [le site du consortium](https://tei-c.org/guidelines/). Bien qu'elle soit disponible en plusieurs langues, seule la version anglophone est complète.
+- La documentation complète de la TEI (les *TEI Guidelines*) disponible sur [le site du consortium](https://perma.cc/2JL4-LJCA). Bien qu'elle soit disponible en plusieurs langues, seule la version anglophone est complète.
 
 - L'ouvrage *Qu'est-ce que la Text Encoding Initiative&nbsp;?* de Lou Burnard (trad. Marjorie Burghart, OpenEdition Press, Marseille, 2015), [disponible gratuitement en ligne](https://doi.org/10.4000/books.oep.1237), est une bonne introduction à la TEI.
 
-- Un bon tutoriel pour XML est disponible en anglais sur&nbsp;: [https://www.w3schools.com/xml/](https://www.w3schools.com/xml/).
+- Un bon tutoriel pour XML est disponible en anglais sur&nbsp;: [https://www.w3schools.com/xml/](https://perma.cc/9FWL-ZPRV).
 
-- Le consortium de la TEI offre aussi [une bonne introduction à XML](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/SG.html) en anglais.
+- Le consortium de la TEI offre aussi [une bonne introduction à XML](https://perma.cc/A24M-HN3J) en anglais.
 
-- La documentation officielle de XML est disponible en anglais sur [le site du consortium W3C](https://www.w3.org/XML/). [La documentation pour toute la famille XSL](https://www.w3.org/Style/XSL/) (y compris XSLT) est aussi disponible en anglais.
+- La documentation officielle de XML est disponible en anglais sur [le site du consortium W3C](https://perma.cc/UKW8-5WCL). [La documentation pour toute la famille XSL](https://perma.cc/L2JG-UHUS) (y compris XSLT) est aussi disponible en anglais.
 
-- La Mozilla Foundation offre aussi un bon site sur XSLT et des technologies associées [en français](https://developer.mozilla.org/fr/docs/Web/XML/XSLT) et [en anglais](https://developer.mozilla.org/en-US/docs/Web/XSLT).
+- La Mozilla Foundation offre aussi un bon site sur XSLT et des technologies associées [en français](https://perma.cc/W2PR-GP3A) et [en anglais](https://perma.cc/UCE9-FVDC).
 
-- Le site [TTHUB](https://tthub.io) contient une excellente [*Introducción a la Text Encoding Initiative*](https://tthub.io/aprende/introduccion-a-tei/), en langue espagnole, par Susanna Allés Torrent (2019).
+- Le site [TTHUB](https://perma.cc/7UCJ-LARJ) contient une excellente [*Introducción a la Text Encoding Initiative*](https://perma.cc/QW4H-FY97), en langue espagnole, par Susanna Allés Torrent (2019).
 
-- Une leçon d'introduction de _Programming Historian_ à XML et aux transformations XSL est [*Transforming Data for Reuse and Re-publication with XML and XSL*](https://programminghistorian.org/en/lessons/transforming-xml-with-xsl), de M. H. Beals (ressource en anglais).
+- Une leçon d'introduction de _Programming Historian_ à XML et aux transformations XSL est [*Transforming Data for Reuse and Re-publication with XML and XSL*](/en/lessons/transforming-xml-with-xsl), de M. H. Beals (ressource en anglais).
 
-- Le MOOC de Marjorie Burghart et Elena Pierazzo&nbsp;: [*Digital Scholarly Editions: Manuscripts, Texts and TEI Encoding*](https://teach.dariah.eu/course/view.php?id=32), en anglais.
+- Le MOOC de Marjorie Burghart et Elena Pierazzo&nbsp;: [*Digital Scholarly Editions: Manuscripts, Texts and TEI Encoding*](https://perma.cc/G8LK-7YT9), en anglais.

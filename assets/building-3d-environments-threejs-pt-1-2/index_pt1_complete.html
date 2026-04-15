@@ -33,7 +33,7 @@
             import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
             // Variable declaration and setting
-	        let thescene;
+	        let themodel;
 	        let piecescale = 1; // this allows experimenting with scaling
 	        let desk = 0.8; // the height of the model (metres), desk height in VR.
 	        let container, camera, scene, renderer, controls;
@@ -70,10 +70,10 @@
                 // load model
                 // function used for loader
                 function onLoadMap( gltf ) {                
-                    thescene = gltf.scene.children[0];
-                    thescene.position.set( 0, desk, 0);
-                    thescene.scale.set( piecescale, piecescale, piecescale);
-                    scene.add( thescene);
+                    themodel = gltf.scene.children[0];
+                    themodel.position.set( 0, desk, 0);
+                    themodel.scale.set( piecescale, piecescale, piecescale);
+                    scene.add( themodel);
 	            }
                 // the loader is given the model file name (first argument) which is passed to the function (second argument), function to do while loading (3rd argument), function called if error (4th argument).
 	            loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
@@ -96,23 +96,21 @@
 		    }
 
             // function definitions
-            // called on resizing of window. Gets new browser window values and updates camera and renderer settings. Don't experiment with.
-	        function onWindowResize() {
-		        camera.aspect = window.innerWidth / window.innerHeight; 
-		        camera.updateProjectionMatrix();
-		        renderer.setSize( window.innerWidth, window.innerHeight );
-	        }
-
             // Constant loop of rendering.
 	        function animate() {           
-		        renderer.setAnimationLoop( render );
-                
+		        renderer.setAnimationLoop( render );           
 	        }
 
             // Called in loop by animate(), draws the scene in 2D as viewed by the camera at the camera's current position.
 	        function render() {
                 //controls.update(); // uncomment if controls.autoRotate = true
 		        renderer.render( scene, camera );
+	        }
+			 // called on resizing of window. Gets new browser window values and updates camera and renderer settings. Don't experiment with.
+	        function onWindowResize() {
+		        camera.aspect = window.innerWidth / window.innerHeight; 
+		        camera.updateProjectionMatrix();
+		        renderer.setSize( window.innerWidth, window.innerHeight );
 	        }
 		</script>
 	</body>

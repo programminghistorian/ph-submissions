@@ -180,7 +180,7 @@ Le XML et la TEI sont des langages de marquage et c'est en cela qu'ils se diffé
 
 ### XML
 
-Dans cette leçon, nous n'entrerons pas dans le détail de la syntaxe ni du fonctionnement de XML. Nous recommandons donc que le lecteur ou la lectrice jette un coup d'œil à la leçon de M.H. Beal[&laquo;&nbsp;Transforming Data for Reuse and Re-publication with XML and XSL&nbsp;&raquo;](/en/lessons/transforming-xml-with-xsl) (en anglais) pour plus d'information sur le XML, ainsi qu'à la bibliographie et aux références suggérées à la fin de cette leçon.
+Dans cette leçon, nous n'entrerons pas dans le détail de la syntaxe ni du fonctionnement de XML. Nous recommandons donc que le lecteur ou la lectrice jette un coup d'œil à la leçon de M. H. Beals [&laquo;&nbsp;Transforming Data for Reuse and Re-publication with XML and XSL&nbsp;&raquo;](/en/lessons/transforming-xml-with-xsl) (en anglais) pour plus d'information sur le XML, ainsi qu'à la bibliographie et aux références suggérées à la fin de cette leçon.
 
 Pour le moment, nous devons seulement savoir que tout document XML doit respecter deux règles essentielles pour être valable&nbsp;:
 

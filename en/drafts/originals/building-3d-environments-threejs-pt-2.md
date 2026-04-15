@@ -879,7 +879,7 @@ However, you will see that it can be difficult to move jars in certain positions
 
 At the end of each jar movement, there needs to be a check to see if the jar was moved to the correct spot. One way to do this is to determine the distance between the jar and the matching site (torus). An allowed distance difference needs to be set that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby. Here use 5 cm (2.5cm * ratio). 
 
-If the test is successful, there has to be a signal to the user. Here the background colour will be changed to a random colour, and make the jar made unmoveable. No signal will be given for an incorrect match. 
+If the test is successful, there has to be a signal to the user. Here the background colour will be changed to a random colour, and the jar made unmoveable. No signal will be given for an incorrect match. 
 
 An additional group called ```unmoveable``` will be created and any jars that are placed close enough to their torus will be added to that group. Objects can only be attached to one group, so when a model is moved to ```unmoveable``` it will no longer be in ```jars``` and so the mouse will not detect it.
 

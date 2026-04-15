@@ -223,7 +223,7 @@ In VSC open the myscene folder. Create a new file and call it *index.html*. This
 
 For the purposes of this lesson, you will write all the code directly in this file. This is not best practice: generally, JavaScript code is written in a separate (.js) file and then imported into the HTML (index.html) file. However, keeping everything in one file here makes it easier to see how the different parts work together.
 
-Also note that, whilst in some languages (such as Python) code indentation is required for the code to work correctly, in JavaScript indentation is not required. So if the copy and pasting changes the indentation, you do not need to correct it, although proper indentation might make the code easier to read and help you copy and paste code in the correct place.
+Also note that, whilst in some languages (such as Python) code indentation is required for the code to work correctly, in JavaScript indentation is not required. So if the copy and pasting changes the indentation, you do not need to correct it, although proper indentation might make the code easier to read and help you copy and paste code in the correct place. If you run into problems when editing the code that you cannot fix you can download and inspect the finished code index_pt1_complete.html from the /assets folder.
 
 In the index.html file, copy and paste the following, and save the file:
 

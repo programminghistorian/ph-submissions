@@ -105,10 +105,10 @@
 				gallery = new THREE.Mesh( new THREE.PlaneGeometry(psize, psize), new THREE.MeshBasicMaterial({ map: introTexture }));
 				gallery.position.set( 0, gheight, sphereposz); 
 				// add the panel for the key
-				const gallery2 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize), new THREE.MeshBasicMaterial({ map: keyTexture }));
+				gallery2 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize), new THREE.MeshBasicMaterial({ map: keyTexture }));
 				gallery2.position.set( 1.25, gheight, sphereposz); 
 				// add the panel for the references
-				const gallery3 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize), new THREE.MeshBasicMaterial({ map: refTexture }));
+				gallery3 = new THREE.Mesh(new THREE.PlaneGeometry(psize, psize), new THREE.MeshBasicMaterial({ map: refTexture }));
 				gallery3.position.set( -1.25, gheight, sphereposz); 
 
 				scene.add( gallery, gallery2, gallery3);

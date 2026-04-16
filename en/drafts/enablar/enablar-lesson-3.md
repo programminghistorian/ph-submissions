@@ -1,5 +1,5 @@
 ---
-title: "Data-Driven Storytelling with Cultural Heritage Data _or_ From shelf to story: network visualisation for library catalogue metadata"
+title:  "Visualising networks in library catalogue metadata using iPySIGMA and Llama Extract"
 slug: enablar-lesson-3
 layout: lesson
 collection: lessons
@@ -121,6 +121,7 @@ In the second part of the lesson, we extend this approach by using [Llama Extrac
 ### Difficulty
 
 ## Use Case
+This workflow could be used as a way of telling thematic stories through library collections by librarians and researchers alike. This includes both the surfacing, identifying, and creating special collections, as well as constructing data from missing metadata to expand the possibility of connections in collections. This is approach is a new way to visualize library collections to gain better insights and justify their importance for a wider audience. 
 ### Dataset
 
 - [Medieval Illuminated Manuscripts (data set)](https://www.kb.nl/en/research-find/datasets/middeleeuwse-verluchte-handschriften-dataset) OR

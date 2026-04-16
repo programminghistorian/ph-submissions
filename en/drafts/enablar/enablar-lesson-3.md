@@ -14,8 +14,8 @@ editors:
 - Forename Surname
 review-ticket:
 difficulty:
-activity:
-topics:
+activity: creating network visualisations using library metadata 
+topics: network analysis, library metadata, structured data, extraction, data visualisation 
 abstract: Short abstract of this lesson
 avatar_alt:
 doi: XX.XXXXX/phen0000
@@ -117,6 +117,7 @@ In the second part of the lesson, we extend this approach by using [Llama Extrac
 ### Method or tool
 ### Technical context
 ### Social context
+Library collections offer a wealth of information outside of normal utilisation, through the metadata they collect for items. Beyond using this metadata for search and retrival, this data can be used to understand what makes up a library collection and leverage that knowledge for many uses including special collection building, purchases, weeding, and other collection development activities. 
 ### Prerequisites
 ### Difficulty
 
@@ -149,6 +150,7 @@ This workflow could be used as a way of telling thematic stories through library
 
 
 ## Local application
+While this example uses metadata from publically available datasets, the same process could be applied to an institutional specific dataset made up of MARC records. Extracting those records and applying similar analysis through these steps could help better understand how your local collections connect and cluster. 
 ### Apply this method
 ### Other projects
 ### Continued learning

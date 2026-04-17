@@ -117,7 +117,10 @@ In the second part of the lesson, we extend this approach by using [Llama Extrac
 ### Method or tool
 ### Technical context
 ### Social context
-Library collections offer a wealth of information outside of normal utilisation, through the metadata they collect for items. Beyond using this metadata for search and retrival, this data can be used to understand what makes up a library collection and leverage that knowledge for many uses including special collection building, purchases, weeding, and other collection development activities. 
+Library collections offer a wealth of information outside of normal utilisation, through the metadata they collect for items. Beyond using this metadata for search and retrival, this data can be used to understand what makes up a library collection and leverage that knowledge for many uses including special collection building, purchases, weeding, and other collection development activities. Examples inculde:
+*Looking at a complete collection of subject headings for main collection to identify what sections are strongly represented and could be pulled out an highlighted
+*Visualizing secondary subject headings in a collection of a picture book collection to understand the social and cultural contexts included in the collection and identify gaps
+*Comparing topic clustering of two different special collections on vintage plant books and current gardening book to understand what overlap exists and how this topic has changed over time
 ### Prerequisites
 ### Difficulty
 

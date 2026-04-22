@@ -160,7 +160,7 @@ CollectionBuilder automatically creates views or entry points to the collection 
 
 * **map**: To create a map, you need the metadata fields in the columns latitude (north-south information) and longitude (east-west information), that is, the coordinate data of a location corresponding to the object you present in the exhibition. Our playbills collection does not have geographical metadata like latitudes and longitudes, so we have done some research into *possible* locations of the listed theatres and added them to our demo to give you an idea of how the map works.   
 
-* **subjects**: Create a word cloud with the topics that each object deals with in the subject column. You can put multiple topics in each box (for each object) and separate them with a semicolon ( ;). In our example, each playbill has been given genres like comic drama; comedy; extravaganza, which follow the order of appearance on the playbill.
+* **subjects**: Create a word cloud with the topics that each object deals with in the subject column. You can put multiple topics in each box (for each object) and separate them with a semicolon (;). In our example, each playbill has been given genres like comic drama; comedy; extravaganza, which follow the order of appearance on the playbill.
 
 ### Optional fields
 
@@ -251,7 +251,7 @@ Did you follow all the steps above and still not see what you expect? [A common 
 
 If this is the case, check your metadata sheet to see if your field names match exactly the ones in the metadata template. For example, `objectID` is not the same as `objectid`.  
 
-In addition, check if all of your commits or changes been processed? You can click the clock icon with the number of commits and check whether it has a green check mark next to it.
+In addition, check if all of your commits or changes have been processed. You can click the clock icon with the number of commits and check whether it has a green check mark next to it.
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-07.png" alt="Screenshot of GitHub demo repository page with a yellow circle around the Commits link, which you can use to check the status of your commits." caption="Figure 7. Screenshot of GitHub demo repository page with a yellow circle around the Commits link, which you can use to check the status of your commits." %}
 
@@ -334,7 +334,7 @@ Included in the template is an **About page**, which is an excellent place to in
 
 #### Editing the About page
 
-All informational pages are written in Markdown and use a simple [Jekyll](https://jekyllrb.com/) formatting system to configure their display. To process them, all of these pages follow the [YAML](https://en.wikipedia.org/wiki/YAML) starter format that begins with three dashes ( ---) at the beginning and three at the end. The three elements needed to process the page are between these dashes: title, layout and permalink. This information will not be visible on the final page of your digital exhibition.
+All informational pages are written in Markdown and use a simple [Jekyll](https://jekyllrb.com/) formatting system to configure their display. To process them, all of these pages follow the [YAML](https://en.wikipedia.org/wiki/YAML) starter format that has three dashes ( ---) at the beginning and three at the end. The three elements needed to process the page are between these dashes: title, layout and permalink. This information will not be visible on the final page of your digital exhibition.
 
 To edit the About page, navigate to the **pages** folder and find the **about.md** file. When you click on the pencil icon to edit, you will see that the file includes the YAML block explained above.
 
@@ -360,5 +360,5 @@ Beyond the technical skills you have developed, this tutorial models a sustainab
 
 This is just the beginning. You can continue to refine your site, experiment with new features, or even [migrate your project from the GH template to the more advanced CSV template](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/transfer-walkthrough/). 
 
-The CollectionBuilder documentation is always there to guide you, and the community is very helpful. Don't not hesitate to reach out, share your project, or fork someone else's project for inspiration.
+The CollectionBuilder documentation is always there to guide you, and the community is very helpful. Don't hesitate to reach out, share your project, or fork someone else's project for inspiration.
 

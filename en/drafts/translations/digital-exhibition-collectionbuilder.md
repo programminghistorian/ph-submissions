@@ -326,7 +326,7 @@ One of the great things about building your online exhibition is that you can ad
 
 Included in the template is an **About page**, which is an excellent place to include more information about your exhibition and collection of objects, such as:
 
-* A brief description of why the exhibition exists.  
+* A brief description of why the exhibition exists
 * Who is responsible for curating the objects presented in the digital collection?  
 * A list of credits for the people who worked on the exhibition  
 * What or who is responsible for creating and maintaining the site?  

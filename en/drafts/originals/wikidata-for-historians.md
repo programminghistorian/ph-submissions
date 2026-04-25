@@ -12,9 +12,9 @@ reviewers:
 editors:
 - Forename Surname
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/661
-difficulty:
-activity:
-topics:
+difficulty: 2
+activity: acquiring
+topics: [linked-open-data, api, data-management]
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
@@ -29,33 +29,33 @@ In this lesson you will learn:
 - how Wikidata structures that information, and
 - how to explore its data in order to contextualize questions in your research.
 
-While this stand-alone lesson focuses on Wikidata, it can also serve to extend your understanding of Linked Open Data. Wikidata is the most user-friendly implementation of this data structure, and it's under constant development. It's a great place to begin to learn about key graph data features, such as schemas and the SPARQL query language, which can be applied in other contexts. 
+While this stand-alone lesson focuses on Wikidata, it can also serve to extend your understanding of Linked Open Data. Wikidata is the most user-friendly implementation of this data structure, and it's under constant development. It's a great place to begin to learn about key graph data features, such as schemas and the SPARQL query language, which can be applied in other contexts.
 
 **Related lessons**: After completing this lesson, readers might wish to consult Jonathan Blaney's [Introduction to the Principles of Linked Open Data](https://programminghistorian.org/en/lessons/intro-to-linked-data), which covers some of the same ground in more abstract and general terms. (When Blaney wrote his lesson, Wikidata did not yet exist.) Historians will also benefit from an [introductory Wikidata lesson](https://programminghistorian.github.io/ph-submissions/en/drafts/translations/linked-open-data-wikidata) <!-- LINK TO BE UPDATED --> aimed at librarians, archivists, and other information professionals which covers some of the same ground using different examples.
 
 **Prerequisites**: There are no prerequisites for this lesson, but you might want to log in to Wikidata in order to personalize language settings. If you already have a Wikipedia user id, it will work in Wikidata.
 
-Wikidata is a dynamic knowledge base edited thousands of times each day. I have tried to choose durable examples for this lesson, but some of those edits might affect some of the examples. 
+Wikidata is a dynamic knowledge base edited thousands of times each day. I have tried to choose durable examples for this lesson, but some of those future edits might affect some of this lesson's examples.
 
 ## What is Wikidata?
 
-[Wikidata](https://www.wikidata.org/wiki/Wikidata:Introduction) is the world's largest open data set or, to use its self-identification, "knowledge base." Like any database, it operates according to rigid rules about how information must be structured. Unlike most databases, however, Wikidata's structure prioritizes open contribution and collaboration protocols, [interoperability](https://en.wikipedia.org/wiki/Interoperability), and linking between data sets. For historians, this data structure offers something especially attractive: in cases of uncertainty, it can accommodate more than one answer.
+[Wikidata](https://www.wikidata.org/wiki/Wikidata:Introduction) is the world's largest open data set or, to use its self-identification, "knowledge base". Like any database, it operates according to rigid rules about how information must be structured. Unlike most databases, however, Wikidata's structure prioritizes open contribution and collaboration protocols, [interoperability](https://en.wikipedia.org/wiki/Interoperability), and linking between data sets. For historians, this data structure offers something especially attractive: in cases of uncertainty, it can accommodate more than one answer.
 
 Wikidata is a sibling of Wikipedia, and shares its [politics of knowledge production and dissemination](https://en.wikipedia.org/wiki/Wikipedia:Five_pillars), as well as the [values of the Wikimedia Foundation](https://wikimediafoundation.org/about/values/#a1-we-are-in-this-mission-together). Among these values is commitment to underrepresented knowledge communities. Wikidata's interface is seamlessly multilingual and, unlike Wikipedia, users can access information in any and all languages they choose through the same interface. This functionality is particularly useful for researchers working in multilingual and cross-cultural contexts.
 
 The debate over Wikipedia's merits and faults is rich; many will agree that it's a convenient place to look up facts, refreshingly broad and democratic in its coverage, but it can be unreliable in its synthesis. Wikidata's content, in contrast to Wikipedia, is all facts and no synthesis: it contains no sentences, and all content is rendered as small units of data. Wikidata is particularly useful for automated enrichment of existing datasets. For instance, named entities (e.g., people and places) in a corpus of historical newspapers, once linked to Wikidata items, can easily be mapped or placed in chronological series.[^1] The [impresso project](https://www.impresso-project.ch/) uses Wikidata to cluster newspaper references to the same person using different iterations of their names.[^2] This application is beyond the scope of this lesson, but readers interested in extending its suggestions will want to know that Wikidata scales very well.
 
-The cluster of technologies on which Wikidata is built, is often associated with the [semantic web](https://en.wikipedia.org/wiki/Semantic_Web): a broader vision for connecting data across the web. This includes approaches such as [linked data](https://en.wikipedia.org/wiki/Linked_data#Linked_open_data), typically implemented using standards like the [Resource Description Framework (RDF)](https://en.wikipedia.org/wiki/Resource_Description_Framework), which represents information as [graph data](https://en.wikipedia.org/wiki/Graph_database). This cluster of technologies has been an object of fascination for years due to its potential to solve the problem of aggregating extremely diverse data sets. Outside of some specialist cases, that potential went unrealized until the late 2010s, with the advent and popularization of Wikidata. Now, for the first time, historians interested in these technologies have a substantial, well-supported foundation to which they can contribute.[^3]
+The cluster of technologies on which Wikidata is built is often associated with the [semantic web](https://en.wikipedia.org/wiki/Semantic_Web): a broader vision for connecting data across the web. This includes approaches such as [linked data](https://en.wikipedia.org/wiki/Linked_data#Linked_open_data), typically implemented using standards like the [Resource Description Framework (RDF)](https://en.wikipedia.org/wiki/Resource_Description_Framework), which represents information as [graph data](https://en.wikipedia.org/wiki/Graph_database). This cluster of technologies has been an object of fascination for years due to its potential to solve the problem of aggregating extremely diverse data sets. Outside of some specialist cases, that potential went unrealized until the late 2010s, with the advent and popularization of Wikidata. Now, for the first time, historians interested in these technologies have a substantial, well-supported foundation to which they can contribute.[^3]
 
-Thus far, Wikidata has been more important for popular consumers of history than it has for academic researchers. As computational methods become more indispensable for historians, we can use Wikidata to enrich our own research datasets while also using our datasets to enrich Wikidata. As this lesson will suggest, this exercise is not merely one of data entry, but touches on important questions of interpretation when choices are made about how knowledge is structured. [Heather Ford](https://hblog.org) and [Shira Klein](https://www.chapman.edu/our-faculty/shira-klein.aspx) have shown how Wikipedia editors can shape historical narratives.[^4] Scholars of technology and media studies such as Ford and [Andrew Iliadis](https://andrewiliadis.com) have pointed to the crucial role of ontological thinking in the production of "semantic infrastructure": building systems like Wikidata requires deciding how to define categories, entities, and relationships. It is therefore increasingly important for historians to bring their expertise to bear in the crucial public historical resource that Wikidata has become.[^5]
+Thus far, Wikidata has been more important for popular consumers of history than it has for academic researchers. As computational methods become more indispensable for historians, we can use Wikidata to enrich our own research datasets while also using our datasets to enrich Wikidata. The practices integral to this lesson are not merely matters of data entry, but touch on important questions of interpretation when choices are made about how knowledge is structured. [Heather Ford](https://hblog.org) and [Shira Klein](https://www.chapman.edu/our-faculty/shira-klein.aspx) have shown how Wikipedia editors can shape historical narratives.[^4] Scholars of technology and media studies such as Ford and [Andrew Iliadis](https://andrewiliadis.com) have pointed to the crucial role of ontological thinking in the production of "semantic infrastructure": building systems like Wikidata requires deciding how to define categories, entities, and relationships. It is therefore increasingly important for historians to bring their expertise to bear in the crucial public historical resource that Wikidata has become.[^5]
 
-## A case study about heads of state
+## A Case Study about Heads of State
 
 This lesson will use as an example case study a comparison between mid-twentieth century Egyptian president Gamal Abdel Nasser and other heads of state from his era. The goal is to provide a clear, easy-to-follow introductory example to working with Wikidata. As you move through the lesson, you are encouraged to repeat the example exercises using persons, places, or things drawn from your own fields of interest.
 
 The Gamal Abdel Nasser comparison is useful for another reason: data on heads of state is fairly complete in Wikidata. When you explore your own areas of interest, you will perhaps find more gaps. You will also almost certainly find some ambiguities and inconsistencies in how data is presented in Wikidata, especially when exploring information you know well. Rather than being a drawback, Wikidata’s gaps and ambiguities can also be valuable for historical research. Near the end of this lesson, for example, you will explore the strange findings Wikipedia offers about the ideology of Abdel Nasser and other heads of state. This case study, based on a well-documented area of political history, is meant as a simple starting point to guide you towards more complex and meaningful investigations of your own design.
 
-## How to read an item page
+## How to Read an Item Page
 
 To get an idea of Wikidata's nature, and without worrying too much about the format, spend a bit of time scrolling through the Wikidata entry on former Egyptian president [Gamal Abdel Nasser](https://www.wikidata.org/wiki/Q39524). 
 
@@ -67,33 +67,33 @@ Wikidata's multilingual functionality is extensive. Click on "all entered langua
 
 A bit further down, a section of **Statements** begins. Some of these statements are the sort of transparent information you'd see on a passport: "sex or gender" is "male", and you can find Abdel Nasser's "date of birth." Others statements (such as "instance of" "human") may be a bit less obvious. We'll say more about those later.
 
-Even further down, you'll find another section with the heading **Identifiers**. Here you'll find the unique identifiers that dozens of other databases–from the Library of Congress to the Internet Movie Database–use to identify Abdel Nasser in their systems. This avalanche of identifiers is characteristic of the linked data universe. (For further background on this point, read the [section on linked data authorities](https://programminghistorian.org/en/lessons/intro-to-linked-data#linked-open-data-what-is-it) in Blaney's lesson.) And at the very bottom, you will see a list of all of the Wikipedia pages about him. 
+Even further down, you'll find another section with the heading **Identifiers**. Here you'll find the unique identifiers that dozens of other databases–from the Library of Congress to the Internet Movie Database–use to identify Abdel Nasser in their systems. This avalanche of identifiers is characteristic of the linked data universe. (For further background on this point, read the [section on linked data authorities](https://programminghistorian.org/en/lessons/intro-to-linked-data#linked-open-data-what-is-it) in Blaney's lesson.) And at the very bottom, you will see a list of all of the Wikipedia pages about Abdel Nasser. 
 
-### Explaining Q-number identifiers
+### Explaining Q-number Identifiers
 
-**Unique identifiers** are one key to understanding Wikidata. Wikidata's own identifier for Abdel Nasser can be found in the URL of his page, which is `https://www.wikidata.org/wiki/Q39524.` Abdel Nasser and all of the other objects that Wikidata describes are called **items**. The Q-number, which is the unique identifier that you find at the end of the URL at the top of every item's page (`Q39524` for Abdel Nasser), is the essence of any item. Everything else you see on the page is semantics: labels and descriptions and statements associated with this identifier.
+**Unique identifiers** are one key to understanding Wikidata. Wikidata's own identifier for Abdel Nasser can be found in the URL of his page, which is `https://www.wikidata.org/wiki/Q39524`. Abdel Nasser and all of the other objects that Wikidata describes are called **items**. The Q-number, which is the unique identifier that you find at the end of the URL at the top of every item's page (`Q39524` for Abdel Nasser), is the essence of any item. Everything else you see on the page is semantics: labels and descriptions and statements associated with this identifier.
 
-> ***Sidebar for the theoretically-inclined***: Let's take a moment to reflect a bit more deeply about the significance of these identifiers. Wikidata's use of Q-numbers seems to echo an insight developed by theorists in the humanities: there is value in distinguishing between the signifier (the form a sign takes, such as a word or symbol) and the signified (what the sign represents or means). This distinction suggests that the relationship between a signifier and what it signifies is not fixed, but shaped by context and interpretation. In semiotic analysis, the historical sources we use can be understood as signifiers respresenting unstable subjective accounts of a multivocal past, rather than fixed, singular objective facts. Wikidata operates a similar distinction by separating identification (stable identifiers) from interpretation (the terms used to describe the identifiers). 
+> ***Sidebar for the theoretically-inclined***: Let's take a moment to reflect a bit more deeply about the significance of these identifiers. Wikidata's use of Q-numbers seems to echo an insight developed by theorists in the humanities: there is value in distinguishing between the signifier (the form a sign takes, such as a word or symbol) and the signified (what the sign represents or means). This distinction suggests that the relationship between a signifier and what it signifies is not fixed, but shaped by context and interpretation. In semiotic analysis, the historical sources we use can be understood as signifiers representing unstable subjective accounts of a multivocal past, rather than fixed, singular objective facts. Wikidata operates a similar distinction by separating identification (stable identifiers) from interpretation (the terms used to describe the identifiers). 
 
-The semantic data model on which Wikidata is based is founded on this same distinction: the words that Wikidata contains (especially its labels and aliases) are provisional, contingent, and changeable, while the things they describe are encoded in unique identifiers numbers (such as `Q39524`) that are merely agreed-upon conventions that don't carry meaning in themselves. In other words, the unique identifiers are standardized conventions (signifiers) used to represent an item, while the labels, descriptions, and statements associated with them remain open to variation and debate. This distinction means that the knowledge base can accomodate changes and variation in arbitrary human semantic choices while organizing the relationship between the people, places, events, concepts, and things that it describes. Simply put, Wikidata can use multiple terms for the same idea, and those terms can change, without breaking the database.
+The semantic data model on which Wikidata is based is founded on this same distinction: the words that Wikidata contains (especially its labels and aliases) are provisional, contingent, and changeable, while the things they describe are encoded in unique identifier numbers (such as `Q39524`) that are merely agreed-upon conventions that don't carry meaning in themselves. In other words, the unique identifiers are standardized conventions (signifiers) used to represent an item, while the labels, descriptions, and statements associated with them remain open to variation and debate. This distinction means that the knowledge base can accommodate changes and variation in arbitrary human semantic choices while organizing the relationship between the people, places, events, concepts, and things that it describes. Simply put, Wikidata can use multiple terms for the same idea, and those terms can change, without breaking the database.
 
-For example, the Egyptian president's given name is pronounced "Jamal" in standard Arabic and "Gamal" in Egyptian Arabic. Similarly, his surname is rendered differently by writers in different genres. Politicians and journalists refered to him as Nasser, others as Abdel Nasser, while Arabophone scholars of the Middle East sometimes transliterate his name "ʻAbd al-Nāṣir." Aliases—alternate labels—mean that searchs for each of these terms will arrive at the same `Q39524` item.
+For example, the Egyptian president's given name is pronounced "Jamal" in standard Arabic and "Gamal" in Egyptian Arabic. Similarly, his surname is rendered differently by writers in different genres. Politicians and journalists referred to him as Nasser, others as Abdel Nasser, while Arabophone scholars of the Middle East sometimes transliterate his name "ʻAbd al-Nāṣir." Aliases—alternate labels—mean that searches for each of these terms will arrive at the same `Q39524` item.
 
 But Wikidata's unique identifier does another useful thing by disambiguating items with the same labels. For example, the Egyptian actor [Gamal Abdel Nasser (`Q12205892`)](https://www.wikidata.org/wiki/Q12205892) has exactly the same name (i.e., label) as the president. In Wikidata, however, there is no confusing them, because their Q-numbers are different. 
 
-### Explaining statements
+### Explaining Statements
 
 Wikidata also uses P-numbers, which refer to **properties**. In the "Statements" section, you will notice two columns. The first column (with a grey field) contains properties. The second column (with a white field) contains values that answer these properties (sometimes these are called "objects" of properties). These values may be items, or dates, or strings, or other datatypes. This lesson is not the place to go into too much detail about the [complexities of data models](https://www.wikidata.org/wiki/Wikidata:Data_model). For now, as you begin to explore Wikidata, you can simply read those properties in a common-sense way, as ordinary language labels.
 
 {% include figure.html filename="en-or-wikidata-for-historians-02.png" alt="Screenshot of five Wikidata statements about Gamal Abdel Nasser. Five properties are circled in green: given name, family name, patronym, date of birth, place of birth. Objects of each property are circled, with item values in red, time datatype value in blue, and object qualifier in orange." caption="Figure 2: Properties and objects in statements." %}
 
-You can click on any item or property to go to its own page, which will give you a description, aliases, statements, and identifers related to that idea. And it is useful to know that every Wikipedia page has a counterpart item in Wikidata, accessible via a link the left hand tools menu:
+You can click on any item or property to go to its own page, which will give you a description, aliases, statements, and identifiers related to that idea. And it is useful to know that every Wikipedia page has a counterpart item in Wikidata, accessible via a link in the left-hand tools menu:
 
 {% include figure.html filename="en-or-wikidata-for-historians-03.png" alt="Screenshot of Wikipedia page for Gamal Abdel Nasser, with link to Wikidata item in lefthand menu circled in red." caption="Figure 3: Wikidata item on Wikipedia." %}
 
-To get more of a taste for Wikidata, find the Wikidata item associated with Wikipedia page on a subject of interest to you. Click on links on that page–some will make sense, probably; others will not. Focus on those that are most transparent, and orient yourself a bit in the web of data that makes up Wikidata.
+To get more of a taste for Wikidata, find the Wikidata item associated with the Wikipedia page on a subject of interest to you. Click on links on that page–some will make sense, probably; others will not. Focus on those that are most transparent, and orient yourself a bit in the web of data that makes up Wikidata.
 
-You are probably thinking that on the face of things, there's nothing especially enticing about these lists of details. This is correct: you could simply look up most of this trivia in any decent reference book. But Wikidata's value does not consist in its isolated factoids. Instead, Wikidata's power derives from the way that it combines these data points with all of the other data it contains. It does this with a powerful search protocol called [SPARQL](https://en.wikipedia.org/wiki/SPARQL). 
+You are probably thinking that on the face of things, there's nothing especially enticing about these lists of details. This is correct: you could simply look up most of this trivia in any decent reference book. But Wikidata's value does not consist in its isolated facts. Instead, Wikidata's power derives from the way that it combines these facts with all of the other data it contains, through a powerful search protocol called [SPARQL](https://en.wikipedia.org/wiki/SPARQL). 
 
 > ***Insight***: This section introduced seven key Wikidata terms. These are common words, but they have a narrower sense in Wikidata. It may be useful to review this short list in the [wikidata glossary](https://www.wikidata.org/wiki/Wikidata:Glossary): 
 - item
@@ -104,9 +104,9 @@ You are probably thinking that on the face of things, there's nothing especially
 - statement
 - value
 
-## Combining factoids
+## Combining Facts
 
-Wikidata offers tools and data that allow you to combine information with other background factoids. These combinations can help you understand context. For example, you might wonder how age figures in revolutionary careers. By combining factoids on Abdel Nasser's item page with other items, you might recognize a meaningful pattern. You'll learn more about constructing Wikidata queries later, but let's start by looking at the results of a few pre-constructed queries. 
+Wikidata offers tools and data that allow you to combine information with other background facts. These combinations can help you understand context. For example, you might wonder how age figures in revolutionary careers. By combining facts on Abdel Nasser's item page with other items, you might recognize a meaningful pattern. You'll learn more about constructing Wikidata queries later, but let's start by looking at the results of a few pre-constructed queries. 
 
 Let's say that you are interested in the role that youth may have played in Abdel Nasser's rise to power, and you want to consider the age at which other mid-twentieth-century leaders took power. Here's [a query that returns that information](https://w.wiki/E$jz) via the Wikidata query service. Don't worry too much about the details of the query at this point; if you are curious, the grey lines explain what each step accomplishes. To execute the query, press the blue "play" button at the bottom left.
 
@@ -114,9 +114,9 @@ Scrolling down the table of results, which are sorted by age, you will find that
 
 {% include figure.html filename="en-or-wikidata-for-historians-04.png" alt="Column graph with count on y-axis and age at which head of state came to power on x-axis, with the bar for 38 years old highlighted." caption="Figure 4: Count of ages at which heads of state came to power, 1950-1980." %}
 
-> ***Optional exercise***: Popular "AI" bots are more than willing to answer broad contextual questions like this one. They get their answers, in part, from Wikidata. I encourage you to compare Wikidata's answers to the answers offered by bots, here and in what follows. Typically, bot answers will be partial and will not disclose limits or edge cases. In the age example, the bots seem to neglect less well-known heads of state. But limits and edge cases are often what interest us as historians, which makes Wikidata's thorough and precise answers especially useful for research purposes.
+> ***Optional exercise***: Popular "AI" chatbots are more than willing to answer broad contextual questions like this one. They get their answers, in part, from Wikidata. I encourage you to compare Wikidata's answers to the answers offered by chatbots, here and in what follows. Typically, bot answers will be partial and will not disclose limits or edge cases. In the age example, the chatbots seem to neglect less well-known heads of state. But limits and edge cases are often what interest us as historians, which makes Wikidata's thorough and precise answers especially useful for research purposes.
 
-Wikidata supports data-informed contextualization, and (unlike bots) it gives only direct answers to structured queries. Once you get the hang of SPARQL, it's possible, with an additional query statement, to enrich your data in various ways you might find meaningful. For example (again using prepared queries), you can [add a continent column](https://w.wiki/E$k7), [add a gender column and count of spouses and children](https://w.wiki/FmqN), or [add a column giving each leader's name in her or his native language](https://w.wiki/E$kB).
+Wikidata supports data-informed contextualization, and (unlike chatbots) it gives only direct answers to structured queries. Once you get the hang of SPARQL, it's possible, with an additional query statement, to enrich your data in various ways you might find meaningful. For example (again using prepared queries), you can [add a continent column](https://w.wiki/E$k7), [add a gender column and count of spouses and children](https://w.wiki/FmqN), or [add a column giving each leader's name in her or his native language](https://w.wiki/E$kB).
 
 These results can be downloaded in the usual data formats and as code snippets in various programming languages. Wikidata even includes a rudimentary visualization package with its query service, which can help in quick data exploration. Here's a [map of the birthplace of everyone with the first name "Gamal"](https://w.wiki/E$kF) (move your cursor to the right margin of the map to access the SPARQL query itself).
 
@@ -124,13 +124,13 @@ The queries work, but what about the data they reveal? Obviously, this map shows
 
 This incompleteness is a result of two features of the knowledge base. First, there is no guarantee that the data it contains are accurate, and no rigid requirement that it be source referenced. At the time of writing, eight references attested Abdel Nasser's date of birth:
 
-{% include figure.html filename="en-or-wikidata-for-historians-05.png" alt="Screenshot of date of birth statement on Gamal Abdel Nasser Wikidata page, showing five different references for this statement. Each of these references consists of three or more property-object pairs, detailing the authority and location containing the reference." caption="Figure 5: Nasser birthdate references." %}
+{% include figure.html filename="en-or-wikidata-for-historians-05.png" alt="Screenshot of date of birth statement on Gamal Abdel Nasser Wikidata page, showing eight references for this statement. Each of these references consists of three or more property-object pairs, detailing the authority and location containing the reference." caption="Figure 5: Nasser birthdate references." %}
 
 However, there is only one reference for the date when he assumed the President's office. That reference is to an import from English Wikipedia: a source which could itself be scrutinized for accuracy and completeness. Generally speaking, at this point in its development, Wikidata's references are relatively poor in quality and quantity. However, in many cases, we can reasonably assume that factual information in Wikidata will typically be accurate for purposes of data exploration and hypothesis testing. Our historian's judgment will serve us well when we look at the evidence more closely.
 
 A second (and more interesting) reason for incomplete Wikidata query results concerns how knowledge is structured in Wikidata. Briefly put, Wikidata must be queried using its own (often idiosyncratic) terms and categories. You must understand its taxonomies in order to use it effectively, and this issue warrants a section of its own. 
 
-## Wikidata's taxonomies: a productive puzzle for historians
+## Wikidata's Taxonomies: A Productive Puzzle for Historians
 
 This Abdel Nasser case study compares him to other state leaders—but what is a leader, really? Does this position mean the same thing in every state? Categories and semantics are important problems for any historian. This is true in analog scholarly debate, and it is also true when we consider Wikidata and other semantic data structures.
 
@@ -138,7 +138,7 @@ While there is (probably) general consensus on the meaning of "date of birth," m
 
 Let's take a closer look at "head of state" and "head of government." Now is the time to introduce a new concept: **class**. This meaning of "class" is different from the "class" of "class struggle."[^6] In database ontology, [class](https://en.wikipedia.org/wiki/Class_(knowledge_representation)) is a logical term used to organize concepts in a data structure. 
 
-Looking again at item pages, you may notice that "head of state"([Q48352](https://www.wikidata.org/wiki/Q48352)) is an "instance of"([P31](https://www.wikidata.org/wiki/Property:P31)) (or kind or example of) "public office"([Q294414](https://www.wikidata.org/wiki/Q294414)), but a "subclass of"([P279](https://www.wikidata.org/wiki/Property:P279)) "statesperson"([Q372436](https://www.wikidata.org/wiki/Q372436)) and "leader"([Q1251441](https://www.wikidata.org/wiki/Q1251441)). This latter statement means that all heads of state are statespersons and leaders, but not all statesperson and leaders are heads of state.
+Looking again at item pages, you may notice that "head of state"([Q48352](https://www.wikidata.org/wiki/Q48352)) is an "instance of"([P31](https://www.wikidata.org/wiki/Property:P31)) (or kind or example of) "public office"([Q294414](https://www.wikidata.org/wiki/Q294414)), but a "subclass of"([P279](https://www.wikidata.org/wiki/Property:P279)) "statesperson"([Q372436](https://www.wikidata.org/wiki/Q372436)) and "leader"([Q1251441](https://www.wikidata.org/wiki/Q1251441)). This latter statement means that all heads of state are statespersons and leaders, but not all statespersons and leaders are heads of state.
 
 You may already detect the presence of a formal taxonomy here. If you look down a step to see all of the public offices that are [subclasses of "head of state"](https://w.wiki/E$kJ) (ordered by number of instances), you will notice that "head of state" includes many monarchs and US state governors, among thousands of other positions. In contrast, consider the list of the [subclasses of "head of government"](https://w.wiki/E$kL). "Head of government" is dominated by mayors and prime ministers. ("Captain Regent of San Marino" features high on both lists–probably as the result of a zealous contributor making sure these entries were complete.) 
 
@@ -161,14 +161,14 @@ You may already detect the presence of a formal taxonomy here. If you look down 
 
 Table 1: Top 10 subclasses of two similar classes (November 2025)
 
-Confronted with this mass of examples, you might feel somewhat confused, both by particular instances and by the overall picture. This empirically-generated account is a long way from the synthetic statements of Wikipedia. Such ambiguous bodies of results embody the virtue and value of Wikidata for historians. It is not an automatic answer box. It is an elaborate logical structure giving precise answers to abstract questions about which there is no real consensus. Any serious user must learn which taxonomies Wikidata already uses to describe their topics of interest. Users must also use their knowledge of context to mediate between the theoretical and the empirical. Fortunately, this is exactly what historians are trained to do.
+Confronted with this mass of examples, you might feel somewhat confused, both by particular instances and by the overall picture. This empirically-generated account is a long way from the synthetic statements of Wikipedia. Such ambiguous bodies of results embody the virtue and value of Wikidata for historians. It is not an automatic answer box. It is an elaborate logical structure giving precise answers to abstract questions about which there is no real consensus. You must learn which taxonomies Wikidata already uses to describe your topics of interest. You must also use your knowledge of context to mediate between the theoretical and the empirical. Fortunately, this is exactly what historians are trained to do.
 
-### Thinking with taxonomies
-Let's run the age-of-first-taking-office query used in the Abdel Nasser example above, [but use "head of government" instead of "head of state"](https://w.wiki/E$kN). This query returns Abdel Nasser's age when he became prime minister rather than president. But this query accurately captures other leaders who are not returned with the "head of state" query. For instance, it returns prime ministers in states where the president is largely ceremonial. But it also includes some mayors. And there are other oddities. For example, at the time of writing (autumn 2025), no US president appears in either list.[^7] In sum, different forms of a similar question yield valid but different, incomplete, and imperfect answers. 
+### Thinking with Taxonomies
+Let's run the age-of-first-taking-office query used in the Abdel Nasser example above, [but use "head of government" instead of "head of state"](https://w.wiki/E$kN). This query returns Abdel Nasser's age when he became prime minister rather than president. But this query accurately captures other leaders who are not returned with the "head of state" query. For instance, it returns prime ministers in states where the president is largely ceremonial. But it also includes some mayors. And there are other oddities. For example, at the time of writing (November 2025), no US president appears in either list.[^7] In sum, different forms of a similar question yield valid but different, incomplete, and imperfect answers. 
 
 Historians tend to be skeptical of taxonomic schemes, with good reason. But explicit taxonomies can be useful as a means to discover and explore information. No doubt you will find (what you consider to be) errors in this taxonomy. You can certainly "correct" those errors–Wikidata is open–but don't be too hasty. The taxonomies already existing in Wikidata are organic and collectively produced, and they are not exclusive. There are ways to work around the parts you don't agree with. Don't change the knowledge base itself until you have learned how to do this.
 
-A big part of our expertise as historians is contextualizing details. For many of us, that's the fun and fascinating work. And that skill is precisely what a researcher needs to interact with the galaxy of isolated factoids in Wikidata. The rest of this lesson shows a few of the main ways to do that.
+A big part of our expertise as historians is contextualizing details. For many of us, that's the fun and fascinating work. And that skill is precisely what a researcher needs to interact with the galaxy of isolated data points in Wikidata. The rest of this lesson shows a few of the main ways to do that.
 
 > ***Insight***: This section introduced two more Wikidata terms that you can check in the [wikidata glossary](https://www.wikidata.org/wiki/Wikidata:Glossary): 
 - class
@@ -178,17 +178,17 @@ A big part of our expertise as historians is contextualizing details. For many o
 
 As already discussed, Wikidata cannot be expected to provide definitive or comprehensive answers to any and all questions. It does better with some kinds of questions than others, and historians should approach the knowledge base with a spirit of exploration and experimentation. There are no bad questions in Wikidata, only unrealistic questions.
 
-It’s important to keep in mind the potential biases in the data and how they may affect results. Want a list of colleges and universities attended by these heads of state that we've been comparing with Abdel Nasser? [This query](https://w.wiki/FmqR) summarizes the information that Wikidata contains (don't forget to press play). This list is intriguing: four heads of state attended Cairo University, and the range of institutions is quite global.
+Keep in mind the potential biases in the data and how they may affect results. Want a list of colleges and universities attended by these heads of state that we've been comparing with Abdel Nasser? [This query](https://w.wiki/FmqR) summarizes the information that Wikidata contains (don't forget to press play). This list is intriguing: four heads of state attended Cairo University, and the range of institutions is quite global.
 
 Generally speaking, questions about specifics, like dates and locations and labels, yield the best answers from Wikidata. For example, here's a [list of the names of heads of state in Russian and Hebrew transliteration](https://w.wiki/Fmqn), showing Wikidata's superb multilingual functionality. Geolocation is also a strength: here's a [map of the birthplaces of heads of state from all time periods, color coded by half-century of birth](https://w.wiki/FmqU). Use the layers icon in the top right to select a single half-century layer, and compare the geographic ranges of birthplaces over time. Are the differences due to changes in the role of head of state, or record keeping, or Wikidata's incomplete coverage? That seems like a fruitful comparative historical question. 
 
-Our internet search engine habit of searching via keyword and string, however, does not play to Wikidata's strengths in aggregate search. Strings work well to find particular items; you can search by label and alias in the simple seach box at the top right of the [Wikidata main page](https://www.wikidata.org/wiki/Wikidata:Main_Page) and every item and property page. Supplying a comprehensive list of aliases will certainly improve the discoverability and disambiguation of items of interest to you. But the powerful query service, as already discussed, is not designed around string searches.
+Our habit, learned from online search engines, of looking for keywords and short phrases, however, does not play to Wikidata's strengths in aggregate search. Strings of text work well to find particular items; you can search by label and alias in the simple search box at the top right of the [Wikidata main page](https://www.wikidata.org/wiki/Wikidata:Main_Page), as well as on every item and property page. Supplying a comprehensive list of aliases will certainly improve the discoverability and disambiguation of items of interest to you. But the powerful query service, as already discussed, is not designed around natural language searches.
 
-It takes time to get used to the [Wikidata query service](https://query.wikidata.org/). The best way to query this service is by using the SPARQL query language, which is incredibly powerful but takes some learning—and is not forgiving of typos. It is relatively straightforward to use SPARQL Wikidata queries in Python and other programming languages. As a next step after this lesson, Wikidata's own [SPARQL tutorial](https://www.wikidata.org/wiki/Wikidata:SPARQL_tutorial) is very good.[^8] 
+It takes time to get used to the [Wikidata query service](https://query.wikidata.org/). The best way to query this service is by using the SPARQL query language, which is incredibly powerful, but takes some learning, and proves unforgiving of typos. Using SPARQL Wikidata queries in Python and other programming languages is relatively straightforward. As a next step after this lesson, Wikidata's own [SPARQL tutorial](https://www.wikidata.org/wiki/Wikidata:SPARQL_tutorial) is very helpful.[^8] 
 
-As an even more user-friendly starting point for new users, the following section introduces some shortcuts. The idea here is to find functioning SPARQL queries similar to the query you want, then adapt them for your purposes. In so doing, you will begin to decode SPARQL's syntax. Bots like Claude and ChatGPT can also help explain how SPARQL queries work, and you can use them for clarification if needed. Playing around with SPARQL examples is one of the easiest paths to learn about Wikidata and about linked data in general. 
+As an even more user-friendly starting point for new users, the following section introduces some shortcuts. The idea here is to find functioning SPARQL queries similar to the query you want, then adapt them for your purposes. In so doing, you will begin to decode SPARQL's syntax. Chatbots like Claude and ChatGPT can also help explain how SPARQL queries work, and you can use them for clarification if needed. Playing around with SPARQL examples is one of the easiest paths to learn about Wikidata and about linked data in general.
 
-### Query shortcut I: Wikidata Query Builder 
+### Query Shortcut I: Wikidata Query Builder 
 
 Before you even dig into SPARQL, you should know that Wikidata offers a [graphic query builder interface](https://query.wikidata.org/querybuilder/). This interface can't do all of things that SPARQL can do, but it can set up a basic structure for your queries. 
 
@@ -208,7 +208,7 @@ What's going on? What is a property? The definition in the infobox is (to my min
 
 Maybe this makes sense to you?
 
-Perhaps a useful way to approach this is to think of the property as the verb that connects subject to object in a three-part subject-verb-object statement. But it is more accurate to call this an item-property-value statement. In this query, the statement would be 
+Think of the property as the verb that connects subject to object in a three-part subject-verb-object statement. But it is more accurate to call this an item-property-value statement. In this query, the statement would be 
 
 | Item (Subject) | Property (Verb) | Value (Object) |
 | --------- | --------- | --------- |
@@ -241,23 +241,23 @@ But it is far more meaningful (and efficient), from a data-structure perspective
 | Gamal Abdel Nasser ([Q39524](https://www.wikidata.org/wiki/Q39524)) | holds the position of ([P39](https://www.wikidata.org/wiki/Property:P39)) | President of Egypt ([Q15618993](https://www.wikidata.org/wiki/Q15618993)). |
 | President of Egypt ([Q15618993](https://www.wikidata.org/wiki/Q15618993)) | is a subclass of ([P279](https://www.wikidata.org/wiki/Property:P279)) | head of state ([Q48352](https://www.wikidata.org/wiki/Q48352)). |
 
-Unfortunately, the Wikidata Query Builder cannot (currently) handle a query of this type, because it can only add conditions concerning the same subject. What this means is that the Query Builder is useful for quick general exploration, but is unlikely to give satisfying answers to precise queries.
+Unfortunately, the Wikidata Query Builder cannot (currently) handle a query of this type, because it can only add conditions concerning the same subject. The Query Builder is therefore useful for quick general exploration, but is unlikely to give satisfying answers to precise queries.
 
 > ***Insight***: Wikidata is a relatively flexible database, but its rules and vocabulary are rigid. In order to use it effectively, you have to rely on the properties and values that previous users have used when building out the data. Sometimes the existing vocabulary will be well-tailored to your purposes. More frequently, you will have to find a workaround. Fortunately, SPARQL is flexible enough to pose almost any question you can imagine. Unfortunately, figuring out how to use SPARQL is a fair bit more involved than the simple Query Builder form. 
 
-### Query shortcut II: Example SPARQL queries
+### Query Shortcut II: Example SPARQL Queries
 
 Fortunately, Wikidata offers a [long list of example queries](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/queries/examples#Most_popular_subjects_of_scientific_articles) that can serve as a guide to SPARQL. All of these queries can be adapted for your own interests, by substituting the item you seek for the item the example contains. 
 
 Let's give this a try. Open the [query service](https://query.wikidata.org/), then click on "Examples," then load an example.
 
-{% include figure.html filename="en-or-wikidata-for-historians-08.png" alt="Screenshot of Wikidata Query Service hyperlink for Cats example query" caption="Figure 8: Cats example query." %}
+{% include figure.html filename="en-or-wikidata-for-historians-08.png" alt="Screenshot of Wikidata Query Service hyperlink for Cats example query." caption="Figure 8: Cats example query." %}
 
 #### Example A: Cats
 
 Let's start with the first example query listed: Cats. When you click on the example, the query form loads with the necessary text.
 
-{% include figure.html filename="en-or-wikidata-for-historians-09.png" alt="Screenshot of Wikidata Query Service SPARQL text of Cats example query" caption="Figure 9: Cats query." %}
+{% include figure.html filename="en-or-wikidata-for-historians-09.png" alt="Screenshot of Wikidata Query Service SPARQL text of Cats example query." caption="Figure 9: Cats query." %}
 
 The aim here is to learn how to adapt example queries for your own research purposes. You can do this by finding a query that asks the kind of question you want to ask, then substituting your own items of interest into the query.
 
@@ -273,21 +273,21 @@ Again, if these technicalities feel confusing, don't be anxious. Keep relying on
 
 The cats example is the simplest form of SPARQL query: it returns every `?item` that is an "instance of" (`wdt:P31`) a "cat" (`wd:Q146`). By changing the last Q-number, you can search for all instances of something else. 
 
-For example, try changing `Q146` to `Q3024240`. Float your cursor over this new item to see what it is, then execute the query and skim the results.
+For example, try changing `Q146` to `Q3024240`. Float your cursor over this new item to see what it is, then execute the query and skim the historical periods visible in the results.
 
-> ***Insight***: the "instance of" property ([P31](https://www.wikidata.org/wiki/Property:P31)) does a huge amount of work in Wikidata and similar data structures. In simple English, line 5 of the query (`?item wdt:P31 wd:Q146`) could be read as "This item is a cat." You will see `P31` everywhere in Wikidata. But almost as often, you will see [P279](https://www.wikidata.org/wiki/Property:P279), the "subclass of" property. Try changing line 5 to `?item wdt:P279 wd:Q146`, which could be read as "This item is a *kind of* cat." The query yields different results. What's the takeaway? These two properties are the most common properties in Wikidata, and they matter a great deal as you navigate its taxonomies. Keep the distinction between instance and subclass in mind; for a maximalist search, combine them using `wdt:P31/P279*`.
+> ***Insight***: the "instance of" property ([P31](https://www.wikidata.org/wiki/Property:P31)) does a huge amount of work in Wikidata and similar data structures. In simple English, line 5 of the query (`?item wdt:P31 wd:Q146`) could be read as "This item is a cat." You will see `P31` everywhere in Wikidata. But almost as often, you will see [P279](https://www.wikidata.org/wiki/Property:P279), the "subclass of" property. Try changing line 5 to `?item wdt:P279 wd:Q146`, which could be read as "This item is a *kind of* cat." The query yields different results. What's the takeaway? These two properties are the most common properties in Wikidata, and they matter a great deal as you navigate its taxonomies. Keep the distinction between instance and subclass in mind; for a maximalist search, combine them using `wdt:P31/wdt:P279*`.
 
-#### Example B: Humans by death date
+#### Example B: Humans by Death Date
 
-Let's try adapting another example query. A few lines below "cats" in the list of simple queries examples is ["Humans who died on a specific date on the English Wikipedia, ordered by label."](https://w.wiki/BBov) Click on this one. It's preloaded with the date August 25, 2001, but you can change the date (in orange) from `"+2001-08-25"` to any other date. Try your birthdate. In the results, the `?sl` column on the right counts the pages that Wikipedia and its sister projects hold on each individual listed.
+Let's try adapting another example query. A few lines below "cats" in the list of simple queries examples is ["Humans who died on a specific date on the English Wikipedia, ordered by label."](https://w.wiki/BBov) Click on this one. It's preloaded with the date August 25, 2001, but you can change the date (in orange) from `"+2001-08-25"` to any other date. Try your birthdate. In the results, the `?sl` column on the right counts the pages that Wikipedia and its sister projects hold about each individual listed.
 
 > ***Insight***: Orange text in the Wikidata query service contains strings and literals, such as dates and languages, that you can modify for your own purposes.
 
-#### Example C: Popular names
+#### Example C: Popular Names
 
-Load the example query "[Popular names per birthplace](https://w.wiki/jRm)." It's set for a certain city: can you figure out which one (hint: float your cursor over the various Q-numbers)? You can set the query to a city of interest to you, by changing city the Q-number you found earlier. If you delete that number (but not the `wd:` prefix) and press `control + space` and begin to type the name of the city you choose, the query interface will autofill the Q-number.
+Load the example query "[Popular names per birthplace](https://w.wiki/jRm)." It's set for a certain city: can you figure out which one (hint: float your cursor over the various Q-numbers)? You can set the query to a city of interest to you, by changing the city's Q-number you found earlier. If you delete that number (but not the `wd:` prefix) and press `control + space` and begin to type the name of the city you choose, the query interface will autofill the Q-number.
 
-You might also be interested in popular names of the past. Adding a couple of lines to the query will filter this name list by date. On line 12, before the curly bracket, add these two lines, which use the birth dates of persons named to filter them by a date range:
+You might also be interested in popular names of the past. Adding a couple of lines to the query will filter this name list by date. In the WHERE clause, just before the closing curly bracket, add these two lines, which use the birth dates of persons named to filter them by a date range:
 
 ```sparql
   ?pid wdt:P569 ?date.
@@ -298,15 +298,15 @@ As in the previous example, you can change the orange-colored literals to any da
 
 > ***Insight***: We modified this query by adding a statement using the "date of birth" property ([P569](https://www.wikidata.org/wiki/Property:P569)), then filtering the results by date. Adding lines to a SPARQL query is quite a bit more complicated than swapping one Q-number or P-number for another, however. For the time being, the best shortcut is to browse the examples for a query that is already structured correctly for your needs and substituting the particular items and properties you want. 
 
-### Query shortcut III: Chatbot SPARQL
+### Query Shortcut III: Chatbot SPARQL
 
-We have already seen that chatbots can generate answers to the historical questions that we have posed in this lesson, and that those answers are of inconsistent value. Chatbots also generate Wikidata SPARQL queries. Here too the quality varies. Sometimes the queries are perfect. Sometimes they approach the question from an unexpected direction, which can be useful. Sometimes they are cumbersome. In Wikidata, cumbersome queries tend to time out, and chatbot SPARQL queries are rarely optimized. 
+As previously mentioned, chatbots can generate answers to the historical questions that we have posed in this lesson, and those answers are of inconsistent value. Chatbots also generate Wikidata SPARQL queries. Here too the quality varies. Sometimes the queries are perfect. Sometimes they approach the question from an unexpected direction, which can be useful. Sometimes they are cumbersome. In Wikidata, cumbersome queries tend to time out, and chatbot SPARQL queries are rarely optimized. 
 
-However, you may find the descriptions that the chatbots offer of the structure of their queries useful, especially in response to revised prompts. For instance, you could ask "How might I optimize this query?" The best path, though, is to learn to decode the SPARQL itself in order to adjust the example or chatbot queries so that they meet your needs.
+However, you may find the chatbots' descriptions of their query structures useful, especially in response to revised prompts. For instance, you could ask "How might I optimize this query?" The best path, though, is to learn to decode the SPARQL itself in order to adjust the example or chatbot queries to meet your needs.
 
-### Composing a Wikidata SPARQL query from scratch
+### Composing Your Own SPARQL Query
 
-Up till now, all of the queries have been ready-made examples. SPARQL can be tricky, and writing complex queries from scratch offers lots of opportunities for error. In this last section of the lesson, you will write a query more-or-less from scratch. The aim in this case is to dig a bit deeper into Wikidata's structure and logic.
+Up till now, all of the queries have been ready-made examples. SPARQL can be tricky, and writing complex queries offers lots of opportunities for error. In this last section of the lesson, you will write a query more-or-less from scratch. The aim in this case is to dig a bit deeper into Wikidata's structure and logic.
 
 To do so, let's explore political ideology classification schemes that Wikidata users have applied to the heads of state example. The "Gamal Abdel Nasser" item page contains a set of statements about the "movements" of which he was a part.
 
@@ -316,7 +316,7 @@ This list should be understood as provisional rather than authoritative, especia
 
 {% include figure.html filename="en-or-wikidata-for-historians-11.png" alt="Screenshot of the top portion of Wikidata item page for Nasserism, with a red circle indicating the What links here hyperlink in the left hand menu" caption="Figure 11: What links to Nasserism item." %}
 
-As mentioned earlier, the knowledge base handles concrete factoids more convincingly than abstractions. But abstraction and ambiguity can also be fascinating. For example, someone researching Egyptian political history may be intrigued by Wikidata's claim that Abdel Nasser was associated with progressivism. 
+As mentioned earlier, the knowledge base handles concrete facts more convincingly than abstractions. But abstraction and ambiguity can also be fascinating. For example, if you're researching Egyptian political history, you may be intrigued by Wikidata's claim that Abdel Nasser was associated with progressivism. 
 
 Let's see what a SPARQL query can tell us about how progressivism is described in Wikidata. Let's return to the simple "Cats" query example encountered above.
 
@@ -332,9 +332,9 @@ WHERE
 
 Let's consider this example query in a bit more detail. 
 
-SPARQL queries employ **triples**, the three-term statements at the heart of Wikidata's data structure. In this example, the key triple comes on the fifth line: `?item wdt:P31 wd:Q146.` The first term, `?item`, is a variable; words in green starting with a question mark stand in for the things we seek. The second term, `wdt:P31`, is a property, just like the properties we see in every statement. The third term, `wd:Q146`, is an item—its Q-number (the number for "cat") is easy to spot.
+SPARQL queries employ **triples**, the three-term statements at the heart of Wikidata's data structure. In this example, the key triple comes on the fifth line: `?item wdt:P31 wd:Q146.` The first term, `?item`, is a variable; words in green starting with a question mark stand in for what you seek. The second term, `wdt:P31`, is a property, just like the properties we see in every statement. The third term, `wd:Q146`, is an item—its Q-number (the number for "cat") is easy to spot.
 
-The three terms in a triple have a syntax that is sometimes described as "subject-verb-object" or "item-property-attribute". In natural language, `?item wdt:P31 wd:Q146` means "(Return any item) (that is) (a cat)." Any term in this triple can be swapped out. Here, the focus is on [progressivism (Q821102)](https://www.wikidata.org/wiki/Q821102), so `Q821102` replaces `Q146` (Cat).
+The three terms in a triple have a syntax that is sometimes described as "subject-verb-object" or "item-property-value". In natural language, `?item wdt:P31 wd:Q146` means "(Return any item) (that is) (a cat)." Any term in this triple can be swapped out. Here, the focus is on [progressivism (Q821102)](https://www.wikidata.org/wiki/Q821102), so `Q821102` replaces `Q146` (Cat).
 
 But this will not be enough to produce a useful query. The problem is the middle term in the triple: `wdt:P31` is the property "is an instance of." But the goal here is not to find instances of progressivism—instead, you're looking for people who belonged to the progressivism movement. So a different property P-number is needed. The Abdel Nasser page links the man to the progressivism using the property "[movement (P135)](https://www.wikidata.org/wiki/Property:P135)", so let's do the same in the query. Now the query (with the comments removed this time) looks like this:
 
@@ -347,7 +347,7 @@ WHERE
 }
 ```
 
-But the results are disappointing: this query returns only a couple of items. Yet we know that progressivism is bigger than this. There may be a problem with the middle term (the property) in the triple statement. In other words, it seems that progressivism is rarely considered a [movement (P135)](https://www.wikidata.org/wiki/Property:P135) in Wikidata. Users must be describing it using a different property.
+But the results are disappointing: this query returns only a couple of items. Yet you know that progressivism is bigger than this. There may be a problem with the middle term (the property) in the triple statement. In other words, it seems that progressivism is rarely considered a [movement (P135)](https://www.wikidata.org/wiki/Property:P135) in Wikidata. It must be described using a different property.
 
 But what property is that? Here's a [SPARQL query that counts the instances of every property that takes "progressivism" as its value](https://w.wiki/FsGk). This shows that [political ideology (P1142)](https://www.wikidata.org/wiki/Property:P1142) is used far more than [movement (P135)](https://www.wikidata.org/wiki/Property:P135). So, let's reconfigure our SPARQL query accordingly.
 
@@ -362,7 +362,7 @@ WHERE
 
 This query is more satisfying: it produces hundreds of results. There are lots of political parties, and lots of persons. 
 
-Let's say you want to filter these results. You can add a line specifying that you want only progressives who are persons. To do so, add a new triple to the list of conditions. Reuse the variable `?item` as the first term. For the second term, use the ubiquitous property "[instance of (P31)](https://www.wikidata.org/wiki/Property:P31)," which basically means "is." For the third term, use the almost-as-ubiquitious item "[human (Q5)](https://www.wikidata.org/wiki/Q5)." This query will return items that satisfy two conditions: they have the political ideology prgressivism, and they are humans.
+Let's say you want to filter these results. You can add a line specifying that you want only progressives who are persons. To do so, add a new triple to the list of conditions. Reuse the variable `?item` as the first term. For the second term, use the ubiquitous property "[instance of (P31)](https://www.wikidata.org/wiki/Property:P31)," which basically means "is." For the third term, use the almost-as-ubiquitous item "[human (Q5)](https://www.wikidata.org/wiki/Q5)." This query will return items that satisfy two conditions: they have the political ideology progressivism, and they are humans.
 
 ```sparql
 SELECT ?item ?itemLabel

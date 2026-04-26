@@ -7,10 +7,10 @@ date: YYYY-MM-DD
 authors:
 - Will Hanley
 reviewers:
-- Forename Surname
-- Forename Surname
+- Petros Apostolopoulos
+- Annie Cheng
 editors:
-- Forename Surname
+- Caio Mello
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/661
 difficulty: 2
 activity: acquiring

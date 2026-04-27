@@ -273,7 +273,7 @@ To summarise, this lesson introduced reverse engineering as a critical methodolo
 
 [^4]: Moore, Jennifer, and Hannah Scates Kettler. “Who Cares About 3D Preservation?” _IASSIST Quarterly_ 42, no. 1 (2018): 15–15. [https://doi.org/10.29173/iq20](https://doi.org/10.29173/iq20).
 
-[^5]: Shaw, Jonathan. “Digital Preservation: An Unsolved Problem | Harvard Magazine,” April 7, 2010. [https://www.harvardmagazine.com/2010/04/digital-preservation-an-unsolved-problem](https://www.harvardmagazine.com/2010/04/digital-preservation-an-unsolved-problem).
+[^5]: Shaw, Jonathan. “Digital Preservation: An Unsolved Problem. Harvard Magazine,” April 7, 2010. [https://www.harvardmagazine.com/2010/04/digital-preservation-an-unsolved-problem](https://www.harvardmagazine.com/2010/04/digital-preservation-an-unsolved-problem).
 
 [^6]: Jones, Steven. “Reverse Engineering the First Humanities Computing Center.” _Digital Humanities Quarterly_ 12, no. 2 (2018). [https://www.digitalhumanities.org/dhq/vol/12/2/000380/000380.html](https://www.digitalhumanities.org/dhq/vol/12/2/000380/000380.html).
 
@@ -285,7 +285,7 @@ To summarise, this lesson introduced reverse engineering as a critical methodolo
 
 [^10]: Albertini, Ange. "Fearsome File Formats." Chaos Communication Congress. Hamburg, Dec 2024. 45min. [https://media.ccc.de/v/38c3-fearsome-file-formats](https://media.ccc.de/v/38c3-fearsome-file-formats) and Albertini, Ange. "Funky File Formats, Advanced Binary Tricks." Chaos Communication Congress. Hamburg, Dec 2014. 51min. [https://media.ccc.de/v/31c3_-_5930_-_en_-_saal_6_-_201412291400_-_funky_file_formats_-_ange_albertini](https://media.ccc.de/v/31c3_-_5930_-_en_-_saal_6_-_201412291400_-_funky_file_formats_-_ange_albertini).
 
-[^11]: Biittner, Katie, and John Aycock. “Inspecting the Foundation of Mystery House | Journal of Contemporary Archaeology.” Accessed May 21, 2025. [https://journal.equinoxpub.com/JCA/article/view/17513](https://journal.equinoxpub.com/JCA/article/view/17513).
+[^11]: Biittner, Katie, and John Aycock. “Inspecting the Foundation of Mystery House. Journal of Contemporary Archaeology.” Accessed May 21, 2025. [https://journal.equinoxpub.com/JCA/article/view/17513](https://journal.equinoxpub.com/JCA/article/view/17513).
 
 [^12]: Aycock, John. “Amnesia Remembered: Reverse Engineering a Digital Artifact.” In _Amnesia Remembered_. Berghahn Books, 2023. [https://doi.org/10.1515/9781800738683](https://doi.org/10.1515/9781800738683).
 

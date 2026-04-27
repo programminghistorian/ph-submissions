@@ -92,7 +92,7 @@ personne=33059614
 
 Si toute personne qui crée des DOL utilise ces numéros pour faire référence respectivement aux deux Jack Straw, nous pouvons maintenant rechercher la personne identifiée par le numéro `64183282` dans un jeu de données ouvertes liées en étant confiant que nous obtiendrons la bonne personne ― dans ce cas, le ministre.
 
-Les paires attribut-valeur peuvent également contenir de l’information sur d’autres types d’entités&nbsp;: des lieux, par exemple. Jack Straw, le politicien contemporain, était membre du parlement britannique, représentant de la circonscription de Blackburn. Au Royaume-Uni, il y a plus qu’un seul lieu nommé Blackburn, sans mentionner les autres Blackburn à travers le monde. En utilisant les principes esquissés jusqu’ici, nous pouvons désambiguïser les différentes instances de Blackburn en attribuant un identifiant unique au lieu lié à la circonscription britannique&nbsp;: Blackburn située dans le Lancashire, en Angleterre.
+Les paires attribut-valeur peuvent également contenir de l’information sur d’autres types d’entités&nbsp;: des lieux, par exemple. Jack Straw, le politicien contemporain, était membre du parlement britannique, représentant de la circonscription de Blackburn. Au Royaume-Uni, il y a plusieurs lieux nommés Blackburn, sans mentionner les autres Blackburn à travers le monde. En utilisant les principes esquissés jusqu’ici, nous pouvons désambiguïser les différentes instances de Blackburn en attribuant un identifiant unique au lieu lié à la circonscription britannique&nbsp;: Blackburn située dans le Lancashire, en Angleterre.
 
 ```
 lieu=2655524

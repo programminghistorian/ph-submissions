@@ -404,7 +404,7 @@ select * where {
 }
 ```
 
-Notez qu’aussitôt saisi le préfixe `dbr:`, l’interface ajoutera automatiquement la déclaration du préfixe à la première ligne de la requête, ce qui est très pratique. La requête complète est donc celle-ci :
+Notez qu’aussitôt saisi le préfixe `dbr:`, l’interface ajoutera automatiquement la déclaration du préfixe à la première ligne de la requête, ce qui est très pratique. La requête complète est donc celle-ci&nbsp;:
 
 ```sparql
 prefix dbr: <http://dbpedia.org/resource/>
@@ -422,7 +422,7 @@ Notez bien ici que la casse des caractères fait une différence&nbsp;: `dbr:lyn
 
 Que s’est-il donc passé&nbsp;? Et comment savoir ce qu’il faut saisir&nbsp;?
 
-À vrai dire, je ne le savais pas vraiment : c’est une difficulté des points d’accès SPARQL. Lorsque vous apprenez à connaître un jeu de données, vous devez essayer de trouver quels sont les termes utilisés par le modèle. Puisque ces données proviennent de *Wikipédia* et que je souhaitais obtenir de l’information sur des historiennes, j’ai consulté l’article de *Wikipédia* sur Lyndal Roper, accessible à cette adresse : [https://fr.wikipedia.org/wiki/Lyndal_Roper](https://fr.wikipedia.org/wiki/Lyndal_Roper).
+À vrai dire, je ne le savais pas vraiment&nbsp;: c’est une difficulté des points d’accès SPARQL. Lorsque vous apprenez à connaître un jeu de données, vous devez essayer de trouver quels sont les termes utilisés par le modèle. Puisque ces données proviennent de *Wikipédia* et que je souhaitais obtenir de l’information sur des historiennes, j’ai consulté l’article de *Wikipédia* sur Lyndal Roper, accessible à cette adresse&nbsp;: [https://fr.wikipedia.org/wiki/Lyndal_Roper](https://fr.wikipedia.org/wiki/Lyndal_Roper).
 
 La partie finale de l’URL est `Lyndal_Roper` et j’ai conclu que cette chaîne de caractères était probablement la façon dont DBpedia se réfère à l’article. Parce que je n’en sais pas plus sur ce qui pourrait se trouver dans les triplets qui mentionnent Roper, j’utilise `?b` et `?c`&nbsp;:
 ce ne sont que des éléments de substitution. J’aurais tout aussi bien pu saisir `?peu_importe` et `?comme_vous_voulez` pour que les en-têtes de colonnes aient ces valeurs. Lorsque vous aurez besoin de plus de précision pour vos résultats, il sera important de nommer vos colonnes adéquatement.
@@ -488,13 +488,13 @@ Quoi qu’il en soit, malgré son manque de constance, *DBpedia* demeure un exce
 
 ### Bibliographie sommaire
 
-- Dean Allemang, Jim Hendler et Fabien Gandon, _Semantic Web for the Working Ontologist: Effective Modeling for Linked Data, RDFS, and OWL_, 3<sup>e</sup> éd. (New York : Association for Computing Machinery, ACM Books Series 33, 2020) [https://doi.org/10.1145/3382097](https://doi.org/10.1145/3382097)
-- Tim Berners-Lee, « Linked Data », _Design Issues_, 18 juin 2009, [https://w3.org/DesignIssues/LinkedData.html](https://w3.org/DesignIssues/LinkedData.html)
-- Bob DuCharme, _Learning SPARQL: Querying and Updating with SPARQL, 1.1_ 2<sup>e</sup> éd. (Sébastopol, CA : O’Reilly, 2013) [http://www.learningsparql.com](http://www.learningsparql.com)
-- Richard Gartner, _Metadata: Shaping knowledge from Antiquity to the semantic web_, 1<sup>re</sup> éd. (Cham : Springer, 2016) [https://doi.org/10.1007/978-3-319-40893-4](https://doi.org/10.1007/978-3-319-40893-4)
-- Terhi Nurmikko-Fuller, _Linked Data for Digital Humanities_, 1<sup>re</sup> éd. (London : Routledge, 2023), [https://doi.org/10.4324/9781003197898](https://doi.org/10.4324/9781003197898)
-- Dominic Oldman, Martin Doerr et Stefan Gradmann, « Zen and the Art of Linked Data », dans Susan Schreibman, Ray Siemens et John Unsworth, _A New Companion to Digital Humanities_, (Chichester : John Wiley & Sons, 2016) 251-273, [https://doi.org/10.1002/9781118680605.ch18](https://doi.org/10.1002/9781118680605.ch18)
-- Seth Van Hooland et Ruben Verborgh, _Linked Data for Libraries, Archives and Museums: How to Clean, Link and Publish your Metadata_ (London : Facet Publishing, 2015) [https://doi.org/10.29085/9781783300389](https://doi.org/10.29085/9781783300389)
+- Dean Allemang, Jim Hendler et Fabien Gandon, _Semantic Web for the Working Ontologist: Effective Modeling for Linked Data, RDFS, and OWL_, 3<sup>e</sup> éd. (New York&nbsp;: Association for Computing Machinery, ACM Books Series 33, 2020) [https://doi.org/10.1145/3382097](https://doi.org/10.1145/3382097)
+- Tim Berners-Lee, &laquo;&nbsp;Linked Data&nbsp;&raquo;, _Design Issues_, 18 juin 2009, [https://w3.org/DesignIssues/LinkedData.html](https://w3.org/DesignIssues/LinkedData.html)
+- Bob DuCharme, _Learning SPARQL: Querying and Updating with SPARQL, 1.1_ 2<sup>e</sup> éd. (Sébastopol, CA&nbsp;: O’Reilly, 2013) [http://www.learningsparql.com](http://www.learningsparql.com)
+- Richard Gartner, _Metadata: Shaping knowledge from Antiquity to the semantic web_, 1<sup>re</sup> éd. (Cham&nbsp;: Springer, 2016) [https://doi.org/10.1007/978-3-319-40893-4](https://doi.org/10.1007/978-3-319-40893-4)
+- Terhi Nurmikko-Fuller, _Linked Data for Digital Humanities_, 1<sup>re</sup> éd. (London&nbsp;: Routledge, 2023), [https://doi.org/10.4324/9781003197898](https://doi.org/10.4324/9781003197898)
+- Dominic Oldman, Martin Doerr et Stefan Gradmann, &laquo;&nbsp;Zen and the Art of Linked Data&nbsp;&raquo;, dans Susan Schreibman, Ray Siemens et John Unsworth, _A New Companion to Digital Humanities_, (Chichester&nbsp;: John Wiley & Sons, 2016) 251-273, [https://doi.org/10.1002/9781118680605.ch18](https://doi.org/10.1002/9781118680605.ch18)
+- Seth Van Hooland et Ruben Verborgh, _Linked Data for Libraries, Archives and Museums: How to Clean, Link and Publish your Metadata_ (London&nbsp;: Facet Publishing, 2015) [https://doi.org/10.29085/9781783300389](https://doi.org/10.29085/9781783300389)
 - David Wood, Marsha Zaidman, Luke Ruth et Michael Hausenblas, _Linked Data: Structured Data on the Web_, Manning Publications, 2013, [https://www.manning.com/books/linked-data](https://www.manning.com/books/linked-data)
 
 ## Remerciements
@@ -509,7 +509,7 @@ J’aimerais remercier Matthew Lincoln et Terhi Nurmikko-Fuller pour leurs relec
 
 [^2]: Les applications web présentent souvent les numéros de téléphone sous la forme d’un URI qui rencontre les critères de la spécification [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986), *Uniform Resource Identifier (URI): Generic Syntax*. Par exemple, l’URI tel:+1-816-555-1212 utilise un protocole (tel:) et un chemin (+1-816-555-1212) permettant d’exécuter une application téléphonique pour joindre l’entité identifiée, tout comme un URI utilisant le protocole HTTP permet d’accéder, s’il est déréférençable, à une description de la ressource identifiée dans un navigateur web.
 
-[^4]: De pair avec DBpedia, [Wikidata](https://www.wikidata.org) est également un incontournable des jeux de données ouvertes liées. En plus d’appliquer les principes du [wiki](https://fr.wikipedia.org/wiki/Wiki) aux données, il revêt aujourd’hui une importance particulière dans les écosystèmes d’information web : comme VIAF (dont les notices sont liées à Wikidata), il peut faire figure de fichier d’autorité.
+[^4]: De pair avec DBpedia, [Wikidata](https://www.wikidata.org) est également un incontournable des jeux de données ouvertes liées. En plus d’appliquer les principes du [wiki](https://fr.wikipedia.org/wiki/Wiki) aux données, il revêt aujourd’hui une importance particulière dans les écosystèmes d’information web&nbsp;: comme VIAF (dont les notices sont liées à Wikidata), il peut faire figure de fichier d’autorité.
 
 [^5]: Veuillez noter que l’exécution des requêtes peut mettre un certain temps à aboutir. Si le délai d’attente est dépassé (il s’agit typiquement d’un *timeout*), il suffit de réessayer quelques minutes plus tard.
 

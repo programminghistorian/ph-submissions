@@ -413,7 +413,7 @@ select * where {
 }
 ```
 
-Pour exécuter la requête, appuyez sur le bouton « Execute query », situé en haut à droite de l’éditeur, ou effectuez <kbd>Ctrl</kbd> + <kbd>Entrée</kbd>[^5].
+Pour exécuter la requête, appuyez sur le bouton _Execute query_, situé en haut à droite de l’éditeur, ou effectuez <kbd>Ctrl</kbd> + <kbd>Entrée</kbd>[^5].
 
 Vous devriez obtenir deux colonnes avec les en-têtes **b** et **c**.
 Notez bien ici que la casse des caractères fait une différence&nbsp;: `dbr:lyndal_roper` ne renverra rien.

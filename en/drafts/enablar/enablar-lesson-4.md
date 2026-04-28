@@ -249,7 +249,7 @@ Nockels, before trialling spaCy, ran simple import tests to ensure the quality o
 
 #### Citation
 
-Estrada, N., Nockels, J., Fenlon, A. (2026). [Popular Academic AI Tools Terms and Conditions](https://zenodo.org/records/19616877?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImE3MWExN2E5LTE0NjgtNGFiMi1hNWJjLTYyNTE0Y2MxYTJjNiIsImRhdGEiOnt9LCJyYW5kb20iOiI5ZjY5NWZlNGE3NDFlNzA5ZjNjN2EzNjMxMjYxYjJmMSJ9.HLiESWKo1CeA_MimFtUsW1tUxtreTsdjdEJo4xb5KO7FpYNfo1aev9T7GMH6xCwRuEpDU5l3fofI_98B6tjnsg)
+Estrada, N., Nockels, J., Fenlon, A. (2026). [Popular Academic AI Tools Terms and Conditions, Zenodo](https://zenodo.org/records/19616877?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImE3MWExN2E5LTE0NjgtNGFiMi1hNWJjLTYyNTE0Y2MxYTJjNiIsImRhdGEiOnt9LCJyYW5kb20iOiI5ZjY5NWZlNGE3NDFlNzA5ZjNjN2EzNjMxMjYxYjJmMSJ9.HLiESWKo1CeA_MimFtUsW1tUxtreTsdjdEJo4xb5KO7FpYNfo1aev9T7GMH6xCwRuEpDU5l3fofI_98B6tjnsg)
 
 ## Background to Technical Method 
 
@@ -387,7 +387,7 @@ Now you can import spaCy, as well as its required PhraseMatcher. Unlike some oth
     from spacy.matcher import PhraseMatcher, Matcher
     nlp = spacy.load("en_core_web_sm")
 
-### Step 4: Dictionary Set-Up
+### Step 4: Dictionary Setup
 
 In order to extract meaningful words and patterns (phrases) from our AI licences, we need to remove noisy elements, in our case stopwords that are irrelevant to red flag terms and conditions. Although agreements may include more implicit undertones of risk, spaCy is tasked with term and phrase extraction, opposed to broader language understanding, which would require processing out-of-scope for this lesson. Nonetheless, our extraction approach works well, due to AI licence agreements being relatively formulaic, with repeating clauses and structures. 
 
@@ -958,7 +958,7 @@ For further refinement, you can also use spaCy for noun detection, alongside the
 
 ### Step 7: Exportation 
 
-For further inspection, you can then export the.xlsx file for EXCEL inspection and post-correction - 
+For further inspection, you can then export the.xlsx file for Excel inspection and post-correction - 
 
      out_path = Path("red_flags_by_folder.xlsx")
      with pd.ExcelWriter(out_path, engine="openpyxl") as writer:
@@ -1056,4 +1056,4 @@ Robinson, David, 2022, *Voices in the Code: A Story about People, Their Values, 
 
 ### Conflicts 
 
-Joe Nockels is a personal READ-COOP member, the body who maintain and develop Transkribus, included within our constructed dataset of AI Terms and Conditions.  The University of Birmingham are also members of the READ-COOP by the virtue of their institutional membership.
+Joe Nockels is a personal READ-COOP member, the body who maintain and develop Transkribus, included within our constructed dataset of AI Terms and Conditions.  The University of Birmingham are also institutional members of the READ-COOP.

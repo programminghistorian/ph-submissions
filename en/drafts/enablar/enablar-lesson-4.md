@@ -1008,7 +1008,7 @@ Looking at our AI transcription tools, security again appears most prominent (42
 | DATA_RETENTION | 18 | 5.81% |
 | LIABILITY | 2 | 0.65% |
 | SECURITY | 131 | 42.26% |
-| **Grand Total** | **310** | **100.00%** |
+| **Grand Total** | **310** |
 
 </div>
 
@@ -1024,7 +1024,7 @@ However, our AI agent folder breaks with such percetages, with the risk of user 
 | DATA_RETENTION | 11 | 9.65% |
 | LIABILITY | 6 | 5.26% |
 | SECURITY | 24 | 21.05% |
-| **Grand Total** | **114** | **100.00%** |
+| **Grand Total** | **114** |
 
 </div>
 

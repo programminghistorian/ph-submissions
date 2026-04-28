@@ -972,7 +972,7 @@ For further inspection, you can then export the.xlsx file for Excel inspection a
           sub.to_excel(writer, sheet_name=sheet, index=False)
     out_path
 
-### Step 8: Data Analysis 
+### Step 8: High-Level Red Flag Review
 
 With our Excel export enabling flexible data analysis, we can begin to assess the percentage of certain flags across AI tool type. Of course, this should remain an initial guide, with some red flags being likely false positives, caused by AI providers offering reassurance around the risks categorised in our dictionary, although our rules-based approach should limit this to an extend. Therefore, this section complements our human-reveiw discussion of certain red flag texts exported.
 
@@ -1028,7 +1028,7 @@ However, our AI agent folder breaks with such percetages, with the risk of user 
 
 </div>
 
-### STEP 9: Review
+#### Human Translations of Extracted Red Flags
 
 Our spaCy method aims to extract problematic AI tool clauses to aid institutional procurement workflows and researcher decision-making. Nonetheless, human-in-the-loop review is still essential for interpreting risk. As such, we include some human language translations, informed by our own professional perspectives, which help establish why certain extracted clauses are problematic, and indeed whether some actually constitute red flags. This sits alongside the above high-level review of categorised dictionary themes. 
 

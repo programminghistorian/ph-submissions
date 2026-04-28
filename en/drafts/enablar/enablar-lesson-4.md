@@ -1028,7 +1028,7 @@ However, our AI agent folder breaks with such percetages, with the risk of user 
 
 </div>
 
-### STEP 8: Review and Post Correction
+### STEP 9: Review
 
 Our spaCy method aims to extract problematic AI tool clauses to aid institutional procurement workflows and researcher decision-making. Nonetheless, human-in-the-loop review is still essential for interpreting risk. As such, we include some human language translations, informed by our own professional perspectives, which help establish why certain extracted clauses are problematic, and indeed whether some actually constitute red flags. This sits alongside the above high-level review of categorised dictionary themes. 
 
@@ -1048,7 +1048,7 @@ For continued learning, see other *Programming Historian* applications of spaCy.
 
 With this lesson extracting natural language clauses as an intuitive data frame, there is research scope for contrasting and comparing AI licences between legal jurisdictions, as well as the prominence of certain red flags. Our use of ESAC’s open registering of publishing licences also enables further work as to how closely traditional terms and conditions map onto newer AI tool licences.
 
-## Conclusions
+## Conclusion
 
 This lesson has presented an NLP workflow using spaCy as an open, reproducible and extensible method for extracting problematic AI tool licence clauses. In engaging with the ENABLAR cohort, this lesson is informed by our daily roles, and cross-disciplinary expertise, in digital research, copyright and licensing, and library support. Though short of legal advice, our situated workflow enables researchers, and library practitioners, to better contend with AI’s research implications, from an IP and data protection standing-point. In doing so, a certain confidence gap begins to be filled, while advocating for critical AI use, risk mitigation, and institutional-researcher dialogue.
 

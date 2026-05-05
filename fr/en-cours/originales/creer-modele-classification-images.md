@@ -23,8 +23,6 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-# Créer un modèle de classification d’images
-
 Ce tutoriel présente une méthode simple et efficace pour identifier des cartes géographiques dans différents corpus d’images. L’objectif est d’enrichir les sources d’un projet comme par exemple le projet TOPAMA.
 
 Pour suivre ce tutoriel, il est recommandé de disposer d’une carte graphique (GPU) avec au moins 8 Go de VRAM.

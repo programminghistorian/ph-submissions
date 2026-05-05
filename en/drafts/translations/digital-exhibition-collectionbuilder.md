@@ -24,7 +24,7 @@ translation-editor:
 - Agustín Cosovschi
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/660
 difficulty: 1
-activity: presentation
+activity: presenting
 topics: 
 abstract: In this lesson, you will learn how to use CollectionBuilder to create and customize a digital exhibition featuring digital objects hosted on another platform, such as the Internet Archive.
 doi: XX.XXXXX/phen0000

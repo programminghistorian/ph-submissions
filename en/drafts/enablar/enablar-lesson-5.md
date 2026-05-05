@@ -173,7 +173,7 @@ The act of downloading is pretty simple, it saves the content of the URL into th
 urllib.request.urlretrieve(url, target_file)
 ```
 
-As we would like to work with XML file and not a compressed file (which would be also possible, but not discussed in this lesson), we should extract it. It needs some steps. With `gzip.open()` we open the archive file in binary read mode (it behaves similar than other file read operations in Python), and we specify a file handle (`f_in`). We should also specify the name of the uncompressed file with the help of another regular expression. `re.sub()` substitutes strings, here we are looking for the `.gz` extension in the file name, and replace it with an empty string - in other words, we remove it. Note: in regular expression `.` (dot character) has a special meaning: it fits any character. If we want to mean the real dot, we should escape this interpretation with the blackslashes. Then we open a binary file for writing and utilize the `shutil.copyfileobj()` method to copy the content. 
+As we would like to work with XML an file and not a compressed file (which would be also possible, but not discussed in this lesson), we should extract it. It needs some steps. With `gzip.open()` we open the archive file in binary read mode (it behaves similar to other file read operations in Python), and we specify a file handle (`f_in`). We should also specify the name of the uncompressed file with the help of another regular expression. `re.sub()` substitutes strings, here we are looking for the `.gz` extension in the file name, and replace it with an empty string - in other words, we remove it. Note: in regular expression `.` (dot character) has a special meaning: it fits any character. If we want to mean the real dot, we should escape this interpretation with the blackslashes. Then we open a binary file for writing and utilize the `shutil.copyfileobj()` method to copy the content. 
 
 ```Python
 with gzip.open(target_file, 'rb') as f_in:
@@ -188,7 +188,7 @@ Our final step is to remove the unwanted compressed file:
 os.remove(target_file)
 ```
 
-So far so guud, but this script downloads only a single file, it is not very fexible, we should modify it to download a different file. Let's solve these problem. The new version should accept the URL of the index page, that contains the links to all gzip files as a script parameter.
+So far so good, but this script downloads only a single file, it is not very flexible, we should modify it to download a different file. Let's solve these problems. The new version should accept the URL of the index page, that contains the links to all gzip files as a script parameter.
 
 ```Python
 import urllib.request
@@ -204,7 +204,7 @@ from argparse import ArgumentParser
 We will use some new libraries:
 
 * `sys` contains system-specific parameters and functions, https://docs.python.org/3/library/sys.html
-* `lxml` responsinble for handling XML and HTML, https://lxml.de/import lxml.html
+* `lxml` responsible for handling XML and HTML, https://lxml.de/import lxml.html
 * `argparse` is a parser for command-line options, arguments and subcommands, https://docs.python.org/3/library/argparse.html
 
 The last line's format (`from ... import ...`) is used to limit the import: we will use only a specific part of the library, here the `ArgumentParser` object.
@@ -218,7 +218,7 @@ configuration = {
 }
 ```
 
-Because we will download multiple files, it would be useful to separate the code into a function, that accepts a file name, and utilizes the configuration object. We start with the function's signature and documentation:
+Because we will download multiple files, it would be useful to separate the code into a function that accepts a file name, and utilizes the configuration object. We start with the function's signature and documentation:
 
 ```Python
 def download_file(file_name):
@@ -241,7 +241,7 @@ Next we set the variables based on the input parameter and the configuration. A 
     print(f'downloading {remote_file} to {uncompressed_file} ...')
 ```
 
-The bulk of the function repeats what we saw in the single file download, with a check (launch download if the neither the gzip nor the xml file are available) and a try-except block. This later catches network problems and informs the user. If we would not put the functionality inside that block an error would stop the script itself.
+The bulk of the function repeats what we saw in the single file download, with a check (launch download if neither the gzip nor the xml file are available) and a try-except block. This later catches network problems and informs the user. If we would not put the functionality inside that block an error would stop the script itself.
 
 ```Python
     if not os.path.exists(local_file) and not os.path.exists(uncompressed_file):
@@ -259,7 +259,7 @@ The bulk of the function repeats what we saw in the single file download, with a
         os.remove(local_file)
 ```
 
-It is a good practice to put the entry point of a Python script into a `main()` function. We start it with parsing the arguments. First we create a new `ArgumentParser` object, and define two arguments: index and target_dir. In the `add_argument` we provide the short and long argument name the user can specify in the command line. `dest` sets the name of the variable that hold the value, `help` sets the help text (which is displayed when we cann the script if `h` or `--help` arguments). The `parse_args()` method parses the user input, and stores it in the `args` object.
+It is a good practice to put the entry point of a Python script into a `main()` function. We start it with parsing the arguments. First we create a new `ArgumentParser` object, and define two arguments: index and target_dir. In the `add_argument` we provide the short and long argument name the user can specify in the command line. `dest` sets the name of the variable that holds the value, `help` sets the help text (which is displayed when we call the script if `h` or `--help` arguments). The `parse_args()` method parses the user input, and stores it in the `args` object.
 
 ```Python
 def main():
@@ -285,7 +285,7 @@ As in the single file setup we should create the target directory if it is not a
         os.makedirs(configuration['target_dir'])
 ```
 
-And finally we should fetch the index page, extract links to the .gz files, and call the `download_file()` function. This time we do not save the result of URL request, but save it into memory as a [HTTPResponse](https://docs.python.org/3/library/http.client.html#http.client.HTTPResponse) object. We read its content into a string, then the `lxml` library parses the HTML structure allowing us to run search with an XPath expression. `body/table/tr/td/a` finds all links inside the page tables. We iterate over them, extracting the `href` attribute of each links, and if they end with `.gz`, calling the download function.
+And finally we should fetch the index page, extract links to the .gz files, and call the `download_file()` function. This time we do not save the result of URL request, but save it into memory as a [HTTPResponse](https://docs.python.org/3/library/http.client.html#http.client.HTTPResponse) object. We read its content into a string, then the `lxml` library parses the HTML structure allowing us to run searches with an XPath expression. `body/table/tr/td/a` finds all links inside the page tables. We iterate over them, extracting the `href` attribute of each link, and if they end with `.gz`, calling the download function.
 
 ```Python
     with urllib.request.urlopen(configuration['index']) as response:

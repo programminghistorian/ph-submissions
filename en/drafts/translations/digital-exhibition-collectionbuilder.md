@@ -36,11 +36,11 @@ doi: XX.XXXXX/phen0000
 
 This lesson will teach you how to use CollectionBuilder (CB) to create and customize a digital exhibition featuring digital objects hosted on another platform, such as the Internet Archive.
 
-[CollectionBuilder](https://collectionbuilder.github.io/) is an open-source framework for publishing metadata-driven digital exhibitions using static web technologies. The software's main objective is to provide a practical, sustainable means of disseminating collections of digital objects. The CollectionBuilder framework is an alternative to digital exhibition publishing platforms, such as [Omeka](https://omeka.org/) (for which there is also a [Programming Historian lesson](https://doi.org/10.46430/phen0049)), [Wax](https://minicomp.github.io/wax/), and [Spotlight](https://github.com/projectblacklight/spotlight). CollectionBuilder can also serve as a pedagogical tool, providing an entry point for students to learn interoperable digital humanities skills, such as metadata management, GitHub file management, Markdown, and basic web development. It also enhances general technical literacy by explaining how web publishing works, while prioritizing the values of openness, transparency, and sustainability outlined in the [Lib-Static](https://lib-static.github.io/) methodology.
+[CollectionBuilder](https://collectionbuilder.github.io/) is an open-source framework for publishing metadata-driven digital exhibitions using static web technologies. The software's main objective is to provide a practical, sustainable means of disseminating collections of digital objects. The CollectionBuilder framework is an alternative to digital exhibition publishing platforms, such as [Omeka](https://omeka.org/) (for which there is also a [Programming Historian lesson](https://doi.org/10.46430/phen0049)), [Wax](https://minicomp.github.io/wax/), and [Spotlight](https://github.com/projectblacklight/spotlight). CollectionBuilder can also serve as a pedagogical tool, providing an entry point for students to learn interoperable digital humanities skills, such as metadata management, GitHub file management, Markdown and basic web development. It also enhances general technical literacy by explaining how web publishing works, while prioritizing the values of openness, transparency, and sustainability outlined in the [Lib-Static](https://lib-static.github.io/) methodology.
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-00.png" alt="Screenshot of the front page of a CollectionBuilder-GH demo site." caption="Figure 0. Screenshot of [CollectionBuilder-GH demo site](https://collectionbuilder.github.io/collectionbuilder-gh/)." %}
 
-CollectionBuilder is a project of the University of Idaho Library's [Digital Initiatives](https://www.lib.uidaho.edu/digital/) and the [Center for Digital Inquiry and Learning](https://cdil.lib.uidaho.edu/) (CDIL) that follows the Lib-Static methodology. [Lib-Static](https://lib-static.github.io/) is a community which seeks to "rethink how we do digital infrastructure in libraries to recenter our technology choices around sustainable, pragmatic, and minimal approaches."
+CollectionBuilder is a project of the University of Idaho Library's [Digital Initiatives](https://www.lib.uidaho.edu/digital/) and the [Center for Digital Inquiry and Learning](https://cdil.lib.uidaho.edu/) (CDIL) that follows the Lib-Static methodology. [Lib-Static](https://lib-static.github.io/) is a community which seeks to 'rethink how we do digital infrastructure in libraries to recenter our technology choices around sustainable, pragmatic, and minimal approaches.'
 
 CollectionBuilder offers three [different templates](https://collectionbuilder.github.io/templates.html) for building a digital exhibit:
 
@@ -87,25 +87,25 @@ Some questions to consider include:
 
 * **What do you want the audience to see and do when they come to the digital exhibition?**  Do you want your audience to read a series of essays in a set order, or do you want them to explore the collection on their own? If your collection has geographic or time-based metadata, do you want them to browse on a map or a timeline?  
 
-* **What kind of digital objects do you want to include?** Outlining what types of material you wish to appear in your collection will help you think about what kind of metadata you need to include and how you want to configure your item page. For example, are you featuring single images or will you include books or other multi-page items you would like people to flip through and read? Or do you want to feature just a single-page opening of a book? If you have photographs and postcards, do you want to show both sides of the material? If you are interested in including more complex multipage digital objects, we recommend reading up on [Compound Objects and Multiple item types](https://collectionbuilder.github.io/cb-docs/docs/metadata/compound-objects/) in CollectionBuilder’s documentation, which we do not cover in this tutorial.
+* **What kind of digital objects do you want to include?** Outlining what types of material you wish to appear in your collection will help you think about what kind of metadata you need to include and how you want to configure your item page. For example, are you featuring single images or will you include books or other multi-page items you would like people to flip through and read? Or do you want to feature just a single-page opening of a book? If you have photographs and postcards, do you want to show both sides of the material? If you are interested in including more complex multi-page digital objects, we recommend reading up on [Compound Objects and Multiple item types](https://collectionbuilder.github.io/cb-docs/docs/metadata/compound-objects/) in CollectionBuilder’s documentation, which we do not cover in this tutorial.
 
 For further reading on this topic, the Art Libraries Society of North America's 2021 “[Best Practices for Library Exhibitions](https://www.arlisna.org/news/best-practices-for-library-exhibitions)” includes a section on Digital Exhibitions, and the Smithsonian's 2018 [Exhibits’ Guide to Exhibit Development](https://exhibits.si.edu/wp-content/uploads/2018/04/Guide-to-Exhibit-Development.pdf) can be applied to online exhibits.
 
 
-## Gather metadata for your exhibition's digital collection.
+## Gather metadata for your exhibition's digital collection
 
 To prepare the exhibition, you first need a collection of objects described in a CSV that we can map to the CollectionBuilder metadata guide to ensure all exhibition components function properly. This approach prioritizes working with canonical versions already maintained in established repositories, allowing you to focus on curatorial interpretation rather than digital stewardship.
 
 ### Optional: Upload your own digital collection materials first
 While this lesson focuses on using digital objects already available on the Internet Archive, you also have the option of uploading your own collections of digital items. 
 
-The Internet Archive (archive.org) provides free, unlimited hosting for a variety of file types, including images, audio, video, and text. This includes automatically converting files into web-friendly derivatives and making text files searchable via optical character recognition (OCR).  Anyone with a [free account](https://archive.org/account/signup) at the Internet Archive can upload media [one file at a time](https://archive.org/upload/) or in bulk using their [command line tools](https://archive.org/developers/internetarchive/cli.html#bulk-uploading). For more information, the Internet Archive provides a [basic uploading guide](https://help.archive.org/help/uploading-a-basic-guide/). 
+The Internet Archive (archive.org) provides free, unlimited hosting for a variety of file types, including images, audio, video, and text. This includes automatically converting files into web-friendly derivatives and making text files searchable via optical character recognition (OCR). Anyone with a [free account](https://archive.org/account/signup) at the Internet Archive can upload media [one file at a time](https://archive.org/upload/) or in bulk using their [command line tools](https://archive.org/developers/internetarchive/cli.html#bulk-uploading). For more information, the Internet Archive provides a [basic uploading guide](https://help.archive.org/help/uploading-a-basic-guide/). 
 
 While the Internet Archive offers cost-effective hosting, once an item is uploaded and indexed, it is very difficult to remove. Be sure the items you upload are meant to be public. Generally, you should only upload material that you own, that is in the public domain, or that falls under Creative Commons licenses.
 
 The [CollectionBuilder documentation](https://collectionbuilder.github.io/cb-docs/docs/objects/gh-objects/) also has information on how you can locally host small collections directly in your GitHub repository. 
 
-### Query and download collection metadata from the  Internet Archive 
+### Query and download collection metadata from the Internet Archive 
 
 If you are like us and have a collection of described digital objects already in the Internet Archive (IA), you can use their [Advanced Search](https://archive.org/advancedsearch.php) page to craft specific queries and export the existing metadata to a CSV file.
 
@@ -160,7 +160,7 @@ CollectionBuilder automatically creates views or entry points to the collection 
 
 * **map**: To create a map, you need the metadata fields in the columns latitude (north-south information) and longitude (east-west information), that is, the coordinate data of a location corresponding to the object you present in the exhibition. Our playbills collection does not have geographical metadata like latitudes and longitudes, so we have done some research into *possible* locations of the listed theatres and added them to our demo to give you an idea of how the map works.   
 
-* **subjects**: Create a word cloud with the topics that each object deals with in the subject column. You can put multiple topics in each box (for each object) and separate them with a semicolon ( ;). In our example, each playbill has been given genres like comic drama; comedy; extravaganza, which follow the order of appearance on the playbill.
+* **subjects**: Create a word cloud with the topics that each object deals with in the subject column. You can put multiple topics in each box (for each object) and separate them with a semicolon (;). In our example, each playbill has been given genres like comic drama; comedy; extravaganza, which follow the order of appearance on the playbill.
 
 ### Optional fields
 
@@ -251,7 +251,7 @@ Did you follow all the steps above and still not see what you expect? [A common 
 
 If this is the case, check your metadata sheet to see if your field names match exactly the ones in the metadata template. For example, `objectID` is not the same as `objectid`.  
 
-In addition, check if all of your commits or changes been processed? You can click the clock icon with the number of commits and check whether it has a green check mark next to it.
+In addition, check if all of your commits or changes have been processed. You can click the clock icon with the number of commits and check whether it has a green check mark next to it.
 
 {% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-07.png" alt="Screenshot of GitHub demo repository page with a yellow circle around the Commits link, which you can use to check the status of your commits." caption="Figure 7. Screenshot of GitHub demo repository page with a yellow circle around the Commits link, which you can use to check the status of your commits." %}
 
@@ -326,7 +326,7 @@ One of the great things about building your online exhibition is that you can ad
 
 Included in the template is an **About page**, which is an excellent place to include more information about your exhibition and collection of objects, such as:
 
-* A brief description of why the exhibition exists.  
+* A brief description of why the exhibition exists
 * Who is responsible for curating the objects presented in the digital collection?  
 * A list of credits for the people who worked on the exhibition  
 * What or who is responsible for creating and maintaining the site?  
@@ -334,7 +334,7 @@ Included in the template is an **About page**, which is an excellent place to in
 
 #### Editing the About page
 
-All informational pages are written in Markdown and use a simple [Jekyll](https://jekyllrb.com/) formatting system to configure their display. To process them, all of these pages follow the [YAML](https://en.wikipedia.org/wiki/YAML) starter format that begins with three dashes ( ---) at the beginning and three at the end. The three elements needed to process the page are between these dashes: title, layout and permalink. This information will not be visible on the final page of your digital exhibition.
+All informational pages are written in Markdown and use a simple [Jekyll](https://jekyllrb.com/) formatting system to configure their display. To process them, all of these pages follow the [YAML](https://en.wikipedia.org/wiki/YAML) starter format that has three dashes ( ---) at the beginning and three at the end. The three elements needed to process the page are between these dashes: title, layout and permalink. This information will not be visible on the final page of your digital exhibition.
 
 To edit the About page, navigate to the **pages** folder and find the **about.md** file. When you click on the pencil icon to edit, you will see that the file includes the YAML block explained above.
 
@@ -360,5 +360,5 @@ Beyond the technical skills you have developed, this tutorial models a sustainab
 
 This is just the beginning. You can continue to refine your site, experiment with new features, or even [migrate your project from the GH template to the more advanced CSV template](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/transfer-walkthrough/). 
 
-The CollectionBuilder documentation is always there to guide you, and the community is very helpful. Don't not hesitate to reach out, share your project, or fork someone else's project for inspiration.
+The CollectionBuilder documentation is always there to guide you, and the community is very helpful. Don't hesitate to reach out, share your project, or fork someone else's project for inspiration.
 

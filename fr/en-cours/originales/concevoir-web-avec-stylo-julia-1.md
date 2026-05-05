@@ -637,57 +637,85 @@ Nous remercions sincèrement nos collègues Hélène Hôte et Élisa Barthélemy
 
 ## Bibliographie indicative
 
-Baker, James. « Preserving Your Research Data ». *Programming Historian*, 30 avril 2014. <https://programminghistorian.org/en/lessons/preserving-your-research-data>.
+**Baker, James**, « Preserving Your Research Data »,
+<https://programminghistorian.org/en/lessons/preserving-your-research-data>,
+consulté le 30 janvier 2026.
 
-Camden, Raymond, et Brian Rinaldi. *The Jamstack Book: Beyond Static Sites with JavaScript, APIs, and Markup*. Simon and Schuster, 2022. <https://books.google.com?id=nZVsEAAAQBAJ>.
+**Camden, Raymond**, *The Jamstack Book: Beyond Static Sites with JavaScript, APIs, and Markup*, Shelter Island, NY, Manning, 2022.
 
-———. *Working with Static Sites: Bringing the Power of Simplicity to Modern Sites*. "O’Reilly Media, Inc.", 2017. <https://books.google.com?id=3NFLDgAAQBAJ>.
+**Camden, Raymond** et **Rinaldi, Brian**, *The Jamstack book: beyond static sites with JavaScript, APIs, and Markup*, Shelter Island, NY,
+Manning, 2022.
 
-« CodeStitch, High Quality HTML and CSS Only Component Library, No Frameworks, No Configurations ». Consulté le 25 février 2026. <https://codestitch.app/>.
+──── , *Working with Static Sites: Bringing the Power of Simplicity to Modern Sites*,California, Sebastopol, O'Reilly Media., 2017.
 
-« Créer votre blog ». fr.hypotheses.org. Consulté le 25 février 2026. <https://fr.hypotheses.org/creer-et-gerer-votre-blog>.
+« Créer votre blog »,
+<https://fr.hypotheses.org/creer-et-gerer-votre-blog>, consulté le 25 février 2026.
 
-« Des Packages Npm Compromis Pour Diffuser Des Malwares - Le Monde Informatique ». Consulté le 20 janvier 2026. <https://www.lemondeinformatique.fr/actualites/lire-des-packages-npm-compromis-pour-diffuser-des-malwares-97524.html>.
+« Des packages npm compromis pour diffuser des malwares - Le Monde Informatique », <https://www.lemondeinformatique.fr/actualites/lire-des-packages-npm-compromis-pour-diffuser-des-malwares-97524.html>, consulté le 20 janvier 2026.
 
-Diaz, Chris. « Using Static Site Generators for Scholarly Publications and Open Educational Resources ». *The Code4Lib Journal*, nᵒ 42 (8 novembre 2018).<https://journal.code4lib.org/articles/13861?utm_campaign=the%20New%20Dynamic&utm_medium=email&utm_source=Revue%20newsletter>.
+**Diaz, Chris**, « Using Static Site Generators for Scholarly Publications and Open Educational Resources », *The Code4Lib Journal*, n^o^ 42, 2018.
 
-« HTML5 UP ». HTML5 UP. Consulté le 25 février 2026. <http://html5up.net/>.
+« HTML5 UP », <http://html5up.net/>, consulté le 25 février 2026.
 
-Lincoln, Matthew, Jennifer Isasi, Sarah Melton, et François Dominic Laramée. « Relocating Complexity: The Programming Historian and Multilingual Static Site Generation ». *Digital Humanities Quarterly* 16, nᵒ 2 (25 juin 2022).
+**Lincoln, Matthew et al.**, « Relocating Complexity: The Programming
+Historian and Multilingual Static Site Generation », *Digital Humanities
+Quarterly*, vol. 016, n^o^ 2, 2022.
 
-Nguyen, Dang-Khoa, Gia-Thang Ho, Quang-Minh Pham, Tuyet A. Dang-Thi, Minh-Khanh Vu, Thanh-Cong Nguyen, Phat T. Tran-Truong, et Duc-Ly Vu. « Taint-Based Code Slicing for LLMs-based Malicious NPM Package Detection », 10 janvier 2026. <https://doi.org/10.48550/arXiv.2512.12313>.
+**Nguyen, Dang-Khoa et al.**, « Taint-Based Code Slicing for LLMs-based
+Malicious NPM Package Detection », <http://arxiv.org/abs/2512.12313>,
+consulté le 20 janvier 2026.
 
-« Official Tailwind UI Components & Templates - Tailwind Plus ». Consulté le 25 février 2026. <https://tailwindcss.com>.
 
-Parviainen, Tero. « Overcoming JavaScript Framework Fatigue », 15 juillet 2015. <https://teropa.info/blog/2015/07/15/overcoming-javascript-framework-fatigue.html>.
+« Official Tailwind UI Components & Templates - Tailwind Plus »,
+[https://tailwindcss.com](https://tailwindcss.com/), consulté le 25
+février 2026.
 
-Rayarao, Surya Rao, et Naga Donikena. « The Shai-Hulud NPM Supply Chain Attack: A Comprehensive Analysis of Self-Replicating Malware in the JavaScript Ecosystem ». Consulté le 20 janvier 2026.
-<https://www.authorea.com/doi/full/10.22541/au.175830854.42750868?commit=9bc3206ca741614366ba5db6e82b14eba325b6d0>.
+**Parviainen, Tero**, « Overcoming JavaScript Framework Fatigue »,
+<https://teropa.info/blog/2015/07/15/overcoming-javascript-framework-fatigue.html>,
+15 juillet 2015, consulté le 19 janvier 2026.
 
-Risam, Roopika, et Lee Skallerup Bessette. « Introduction: Minimal Computing and EdTech ». *Learning, Media and Technology* 49, nᵒ 5 (6 décembre 2024) : 747‑54.  <https://doi.org/10.1080/17439884.2024.2435200>.
 
-Risam, Roopika, et Alex Gil. « Introduction: The Questions of Minimal Computing ». *Digital Humanities Quarterly* 16, nᵒ 2 (2022). <https://www.proquest.com/docview/2681375031/citation/6C9B1134396C475DPQ/1>.
+**Postel, Ryan**, « CodeStitch \| High quality HTML and CSS only
+component library \| No Frameworks, No Configurations »,
+<https://codestitch.app/>, consulté le 25 février 2026.
 
-Schäferhoff, Nick. « WordPress Market Share, Statistics, and More ». Consulté le 19 janvier 2026. <https://wordpress.com/blog/2025/04/17/wordpress-market-share/>.
 
-Simpkin, Sarah. « Getting Started with Markdown ». *Programming Historian*, 13 novembre 2015. <https://programminghistorian.org/en/lessons/getting-started-with-markdown>.
+**Risam, Roopika** et **Bessette, Lee Skallerup**, « Introduction:
+Minimal Computing and EdTech », *Learning, Media and Technology*,
+vol. 49, n^o^ 5, 2024, p. 747‑754.
 
-« Static Site Generators ». Consulté le 20 janvier 2026. <https://staticsitegenerators.net/>.
+**Schäferhoff, Nick**, « WordPress Market Share, Statistics, and More »,
+<https://wordpress.com/blog/2025/04/17/wordpress-market-share/>,
+consulté le 19 janvier 2026.
 
-« Static Site Generators - Top Open Source SSGs, Jamstack ». Jamstack.org. Consulté le 20 janvier 2026. <https://jamstack.org/generators/>.
+**Simpkin, Sarah**, « Getting Started with Markdown », <https://programminghistorian.org/en/lessons/getting-started-with-markdown>, consulté le 30 janvier 2026.
 
-Taylor, Conrad. « Mais qu’est ce qu’ont bien pu nous apporter les systèmes WYSIWYG ? » *Cahiers GUTenberg*, nᵒ 27 (1997) : 5‑33. <https://www.numdam.org/item/CG_1997___27_5_0/>.
+« Static Site Generators », <https://staticsitegenerators.net/>,
+consulté le 20 janvier 2026.
 
-Tenen, Dennis, et Grant Wythoff. « Sustainable Authorship in Plain Text Using Pandoc and Markdown ». *Programming Historian*, 19 mars 2014. <https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown>.
+« Static Site Generators - Top Open Source SSGs \| Jamstack »,
+<https://jamstack.org/generators/>, consulté le 20 janvier 2026.
 
-Visconti, Amanda. « Building a Static Website with Jekyll and GitHub Pages ». *Programming Historian*, 18 avril 2016. <https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages>.
+**Taylor, Conrad**, « Mais qu'est ce qu'ont bien pu nous apporter les
+systèmes WYSIWYG ? », *Cahiers GUTenberg*, n^o^ 27, 1997, p. 5‑33.
 
-Visconti, Amanda, Brandon Walsh, et Scholars’ Lab Community. « Running a Collaborative Research Website and Blog with Jekyll and GitHub ». *Programming Historian*, 23 novembre 2020.
-<https://programminghistorian.org/en/lessons/collaborative-blog-with-jekyll-github>.
+**Tenen, Dennis** et **Wythoff, Grant**, « Sustainable Authorship in
+Plain Text using Pandoc and Markdown », <https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown>, consulté le 25 février 2026.
 
-« Welcome to CodeIgniter ». Consulté le 25 février 2026. <https://codeigniter.com/>.
+**Visconti, Amanda**, « Building a static website with Jekyll and GitHub
+Pages », <https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages>, consulté le 11 février 2026.
 
-Wikle, Olivia M., et Evan Peter Williamson. « Exploring Static Web in the Digital Humanities Classroom: The Learn-Static Initiative ». *IDEAH* 4, nᵒ 2 (14 mars 2024). <https://doi.org/10.21428/f1f23564.f88a989c>.
+**Visconti, Amanda**, **Walsh, Brandon** et **Community, Scholars'
+Lab**, « Running a Collaborative Research Website and Blog with Jekyll
+and GitHub », <https://programminghistorian.org/en/lessons/collaborative-blog-with-jekyll-github>, consulté le 11 février 2026.
+
+« Welcome to CodeIgniter », <https://codeigniter.com/>, consulté le 25
+février 2026.
+
+**Wikle, Olivia M.** et **Williamson, Evan Peter**, « Exploring Static
+Web in the Digital Humanities Classroom: The Learn-Static Initiative »,
+*IDEAH*, vol. 4, n^o^ 2, 2024.
+
 
 ## Notes
 

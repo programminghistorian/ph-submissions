@@ -46,7 +46,7 @@ Ces deux premiers volumes retracent l’histoire de l’Angleterre, de l’invas
 
 Le [projet Gutenberg](https://www.gutenberg.org) est une bibliothèque virtuelle qui propose des milliers de livres électroniques, disponibles dans divers formats (EPUB, TXT, HTML). Ces ouvrages sont numérisées à partir de livres physiques, appartenant principalement au domaine public.
 
-###1.1 Le format EPUB : structure et intérêt
+### 1.1 Le format EPUB : structure et intérêt
 
 Un fichier EPUB est en réalité un fichier ZIP contenant :
 
@@ -100,25 +100,25 @@ Ultralytics YOLOv26 nécessite un environnement Python 3.8 ou supérieur, ainsi 
 
 Étapes pour configurer l’environnement :
 
-####1. Création d’un environnement virtuel Python (recommandé pour isoler les dépendances) :
+#### 1. Création d’un environnement virtuel Python (recommandé pour isoler les dépendances) :
 
 ```python
 python3 -m venv .
 ```
 
-####2. Activation de l’environnement :
+#### 2. Activation de l’environnement :
 
 ```python
 source bin/activate .
 ```
 
-####3. Installation de la librairie Ultralytics :
+#### 3. Installation de la librairie Ultralytics :
 
 ```python
 pip install ultralytics
 ```
 
-###2.2 Validation de l'installation et test du modèle par défaut
+### 2.2 Validation de l'installation et test du modèle par défaut
 
 Les modèles de classification sont entraînées sur le corpus [ImageNet](https://www.image-net.org/index.php)
 Il est possible de tester le modèle de classification disponible par défaut.
@@ -143,7 +143,7 @@ Ces scores indiquent la confiance du modèle dans sa prédiction. Plus le score 
 
 ---
 
-##3. Constitution des données d'apprentissage
+## 3. Constitution des données d'apprentissage
 
 Pour entraîner notre modèle de classification, la deuxième étape consiste à construire un corpus d’images représentatif et équilibré.
 Nous nous appuierons sur Wikimedia Commons pour plusieurs raisons :
@@ -152,7 +152,7 @@ Wikimedia Commons est une médiathèque mettant à disposition des images de qua
 Le contenu de Wikimedia Commons est très diversifié et son accès est gratuit.
 Wikimedia permet de télécharger aisément un échantillon significatif d'images pour chaque catégorie afin de construire un modèle simplifié.
 
-###3.1 Introduction à Wikidata
+### 3.1 Introduction à Wikidata
 
 Wikidata est une base de connaissances libre et collaborative qui permet d'interroger des données structurées
 grâce au langage SPARQL. A l'aide de différentes requêtes, nous allons utiliser WIkidata pour récupérer des listes d’images correspondant à nos quatre catégories.
@@ -174,7 +174,7 @@ Voici les étapes à suivre :
 3. Télécharger les résultat des requêtes au format CSV.
 
 
-####3.2.1 Constitution des données d'apprentissage pour la catégorie Tableau
+#### 3.2.1 Constitution des données d'apprentissage pour la catégorie Tableau
 
 Pour constituer cette catégorie, nous nous appuierons sur la [base de données Joconde](https://www.culture.gouv.fr/espace-documentation/bases-de-donnees/Fiches-bases-de-donnees/Joconde-catalogue-collectif-des-collections-des-musees-de-France), gérée par le ministère de la Culture français.
 Joconde est un catalogue collectif qui référence les collections des musées français, dont des peintures. Cependant, il introduit un biais dans le modèle, puisque les données proviennent majoritairement d'oeuvres françaises.
@@ -196,7 +196,7 @@ Exemple de la requête
 
 {% include figure.html filename="fr-or-creer-modele-classification-images-02.png" alt="Joconde" caption="Figure 2. Requête Wikidata sur la base de données Joconde" %}
 
-####3.2.2 Constitution des données d’apprentissage pour la catégorie Dessin
+#### 3.2.2 Constitution des données d’apprentissage pour la catégorie Dessin
 
 Pour constituer cette catégorie, nous avons choisi de réutiliser les numérisations des œuvres de quelques artistes. Cette contrainte limite l'apprentissage du modèle à ses seuls artistes.
 
@@ -238,7 +238,7 @@ LIMIT 1000
 ```
 
 
-####3.2.4 Constitution des données d’apprentissage pour la catégorie Carte géographique
+#### 3.2.4 Constitution des données d’apprentissage pour la catégorie Carte géographique
 
 La catégorie Carte géographique est plus difficile à constituer, car Wikidata référence relativement peu de cartes géographiques. Pour pallier ce manque, nous utiliserons l’ensemble des cartes géographiques référencées dans Wikidata, puis nous effectuerons une sélection manuelle afin de constituer un corpus divers et représentatif.
 
@@ -255,7 +255,7 @@ SELECT ?image WHERE {
 LIMIT 1000
 ```
 
-###3.3 Téléchargement des images depuis Wikimedia Commons
+### 3.3 Téléchargement des images depuis Wikimedia Commons
 
 À l’issue des différentes requêtes SPARQL, nous disposons de quatre fichiers CSV contenant les liens vers les images :
 
@@ -278,7 +278,7 @@ shuf -n 500 query_photo.csv > photo_final.csv
 ```
 Les cartes étant peu nombreuses, leur sélection doit être manuelle.
 
-####3.3.2 Téléchargement respectueux des règles de Wikimedia
+#### 3.3.2 Téléchargement respectueux des règles de Wikimedia
 
 Pour télécharger les images, nous devons respecter la politique d’utilisation des robots de Wikimedia (Robot Policy), qui impose :
 
@@ -322,7 +322,7 @@ Un exemple des cartes géographiques téléchargées
 {% include figure.html filename="fr-or-creer-modele-classification-images-06.png" alt="cartes" caption="Figure 6. Un exemple des cartes téléchargées" %}
 
 
-####3.3.3 Organisation des données
+#### 3.3.3 Organisation des données
 
 À la fin de cette étape, vous obtiendrez une structure de dossiers claire :
 
@@ -345,9 +345,9 @@ Dossier_principal/
 
 ---
 
-##4. Création de notre modèle à partir des images issues de Wikimedia Commons
+## 4. Création de notre modèle à partir des images issues de Wikimedia Commons
 
-###4.1. Préparation et organisation du dataset
+### 4.1. Préparation et organisation du dataset
 
 Pour entraîner efficacement notre modèle de classification, il est essentiel d’organiser les données selon une structure séparant les images destinées à l’entraînement de celles réservées à la validation
 ```
@@ -367,12 +367,12 @@ Yolo/
 Le dossier **train** et ses sous dossiers contiennent les images utilisées pour entraîner le modèle.
 Le dossier **val** et ses sous dossiers contiennent les images utilisées pour valider les performances du modèle après l’entraînement.
 
-#####4.1.1. Installation de la librairie Scikit-learn :
+##### 4.1.1. Installation de la librairie Scikit-learn :
 
 ```python
 pip install scikit-learn
 ```
-#####4.1.2. Construction du dataset :
+##### 4.1.2. Construction du dataset :
 
 Pour automatiser la répartition aléatoire des images entre les dossiers d'entraînement (train/) et de validation (val/), nous allons utiliser le script Python suivant :
 
@@ -470,7 +470,7 @@ if __name__ == "__main__":
 ```
 
 
-###4.2. Entraînement du modèle YOLOv26
+### 4.2. Entraînement du modèle YOLOv26
 
 Nous lançons en ligne de commande du fine tuning du modèle de classification yolo26n-cls.pt.
 
@@ -513,7 +513,7 @@ Le meilleur modèle est le /runs/classify/train6/weights/best.pt
 
 L'entraînement, effectué sur une carte vidéo (NVIDIA RTX 2060 SUPER, 8 Go de VRAM), a requis 121 epochs et 2,5 heures de calcul.
 
-###4.3. Test du modèle entraîné
+### 4.3. Test du modèle entraîné
 
 Une fois l’entraînement terminé, nous testons les performances du modèle sur une carte géographique représentative : une [carte du monde](https://magrit.cnrs.fr/example_map_europe_1.png).
 
@@ -536,9 +536,9 @@ Tableau 0.00, Photo 0.00, Dessin 0.00 : Aucune probabilité n’est attribuée a
 
 ---
 
-##5. Application du modèle aux Epubs téléchargés
+## 5. Application du modèle aux Epubs téléchargés
 
-###5.1 Le script Python pour le traitement
+### 5.1 Le script Python pour le traitement
 
 Le script final permet :
 
@@ -598,7 +598,7 @@ Le fichier JSON généré contient pour chaque image :
 
 ```
 
-###5.2 Les résultats
+### 5.2 Les résultats
 
 Voici les résultats avec un score de confiance de 1.0 pour la catégorie Tableau:
 
@@ -632,7 +632,7 @@ Ce choix introduit plusieurs biais :
 
 Le modèle apprend donc des éléments visuels propres aux sources utilisées, et non une définition abstraite et universelle des catégories. Un score de confiance élevé indique que l’image ressemble fortement aux exemples appris, mais ne garantit pas l’exactitude de la classification.
 
-##6. Conclusion:
+## 6. Conclusion:
 
 Pour améliorer les performances de notre modèle, il est nécessaire d’enrichir le jeu de données, :
 

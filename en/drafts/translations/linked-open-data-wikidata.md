@@ -116,9 +116,9 @@ Wikidata describes items through statements; structured assertions that capture 
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-06.png" alt="Item for the journal ‘Programming Historian’ showing five of its statements." caption="Figure 6. Statements in Wikidata: examples of properties and values." %}
 
-Each property has a unique identifier in Wikidata, formatted as the letter P followed by a number. Properties in Wikidata are designed to be reusable across different contexts. This means a property can be applied to multiple item types and is not limited to a single use. For instance the property 'author' (P50) will be present in items that represent books, articles, plays, or any other form of written work. Each property has its own documentation page in Wikidata, providing detailed information about its purpose, proper use, and examples. See the full [list of properties](https://www.wikidata.org/wiki/Wikidata:Database_reports/List_of_properties/all) for more examples.
+Each property has a unique identifier in Wikidata, formatted as the letter P followed by a number. Properties in Wikidata are designed to be reusable across different contexts. This means a property can be applied to multiple item types and is not limited to a single use. For instance the property **author** (P50) will be present in items that represent books, articles, plays, or any other form of written work. Each property has its own documentation page in Wikidata, providing detailed information about its purpose, proper use, and examples. See the full [list of properties](https://www.wikidata.org/wiki/Wikidata:Database_reports/List_of_properties/all) for more examples.
 
-Values, on the other hand, represent the specific information associated with properties used to describe items in the database. Values can take many forms, including text, numbers, dates, links to other Wikidata items, geographic coordinates, or media files, among others. Values must conform to the constraints defined by the data type of the property they’re associated with. For instance, if a property has a data type of 'date', then the value assigned to that property must be a valid date.
+Values, on the other hand, represent the specific information associated with properties used to describe items in the database. Values can take many forms, including text, numbers, dates, links to other Wikidata items, geographic coordinates, or media files, among others. Values must conform to the constraints defined by the data type of the property they’re associated with. For instance, if a property has a data type of **date**, then the value assigned to that property must be a valid date.
 
 Furthermore, values in Wikidata are open to being edited by any user on the platform. This enables open, community-driven collaboration to maintain and improve the quality of information in the database.
 
@@ -158,11 +158,11 @@ From there, you can begin filling out the fields by entering the required inform
 
 Next, it’s time to start adding statements to enrich the item’s information. Immediately after clicking _Create_, you'll see a new screen with a list of statements related to Wikimedia projects. In the top-right corner, you'll find an _Add statement_ button marked with a plus sign. Clicking it will open a window where you can add properties and values for the new item. 
 
-In Wikidata, the first statement commonly added is the 'instance of' property (P31), which indicates the type of entity the item represents. This statement helps classify and organize information within Wikidata. Due to the wide range of items in Wikidata, there are many possibilities for the 'instance of' statement. Depending on what you’re creating, you’ll choose the entity type that best fits the nature of your object or concept.
+In Wikidata, the first statement commonly added is the **instance of** property (P31), which indicates the type of entity the item represents. This statement helps classify and organize information within Wikidata. Due to the wide range of items in Wikidata, there are many possibilities for the **instance of** statement. Depending on what you’re creating, you’ll choose the entity type that best fits the nature of your object or concept.
 
-For example, if you’re creating an item for a well-known person, you might use: 'instance of: human', while if you’re describing Paris, the first statement could be: 'instance of: city'. This statement helps establish the basic nature of the item and connects it to similar entries in the database. 
+For example, if you’re creating an item for a well-known person, you might use: **instance of: human**, while if you’re describing Paris, the first statement could be: **instance of: city**. This statement helps establish the basic nature of the item and connects it to similar entries in the database. 
 
-Here are some additional examples of 'instance of' statements:
+Here are some additional examples of **instance of** statements:
 
 - Human: For an entity representing a specific person
 
@@ -184,13 +184,13 @@ After adding the 'instance of' statement, you can continue adding additional sta
 
 To understand how Wikidata can be used to describe entities related to academic research, let’s consider the case of the annual publication of the Sociedad de Bibliotecarios de Puerto Rico (Puerto Rican Society of Librarians), founded in 1998, titled Acceso: Revista Puertorriqueña de Bibliotecología y Documentación. Its unique identifier in Wikidata is [Q116681177](https://www.wikidata.org/wiki/Q116681177).
 
-Statements in Wikidata consist of (at least) one property–value pair. Figure 10 shows the values that have been added for the first statement ('instance of') for this item: academic journal, scientific journal, and open access publication.
+Statements in Wikidata consist of (at least) one property–value pair. Figure 10 shows the values that have been added for the first statement (**instance of**) for this item: academic journal, scientific journal, and open access publication.
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-10.png" alt="'Instance of' property with three associated values to represent an open access scholarly journal of librarianship" caption="Figure 10. Example of the ‘instance of’ statement for a journal." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-10.png" alt="'Instance of' property with three associated values to represent an open access scholarly journal of librarianship" caption="Figure 10. Example of the **instance of** statement for a journal." %}
 
-There is no limit on the number of properties and values you can add to an item in Wikidata. It depends on the amount of information you wish to include about the scientific journal. You can add as many as necessary to fully describe the item you are representing. For example, other values that could also be included are 'specialized journal' or 'society journal'. However, it’s important to consider the relevance and accuracy of the information you are contributing. The goal is not to add as much as possible, but rather to provide meaningful and useful data for users.
+There is no limit on the number of properties and values you can add to an item in Wikidata. It depends on the amount of information you wish to include about the scientific journal. You can add as many as necessary to fully describe the item you are representing. For example, other values that could also be included are **specialized journal** or **society journal**. However, it’s important to consider the relevance and accuracy of the information you are contributing. The goal is not to add as much as possible, but rather to provide meaningful and useful data for users.
 
-As shown in Figure 11, the next property added to this item is ['short name' (P1813)](https://www.wikidata.org/wiki/Property:P1813). In the case of journals, this is used to record abbreviated titles. Following the short name, the full official title has been added, along with its reference. 
+As shown in Figure 11, the next property added to this item is [**short name** (P1813)](https://www.wikidata.org/wiki/Property:P1813). In the case of journals, this is used to record abbreviated titles. Following the short name, the full official title has been added, along with its reference. 
 
 Whenever possible, it’s good practice to provide references to support the information you enter. This helps maintain the reliability and verifiability of Wikidata content. References can be links to trustworthy sources such as official websites, recognized databases, scholarly books and articles, or any other academic publication that supports the claim made in the statement.
 
@@ -198,23 +198,23 @@ Whenever possible, it’s good practice to provide references to support the inf
 
 References in Wikidata typically follow a standard format that includes information such as the source title, author (if available), publication date, and a URL or unique identifier, such as a Digital Object Identifier (DOI) or an International Standard Book Number (ISBN), that allows users to access the original source.
 
-The next property listed for this journal is ['field of work' (P101)](https://www.wikidata.org/wiki/Property:P101), which refers to the journal’s area of specialization, its academic field or discipline. For the Acceso journal, several terms were added related to the management, organization, and preservation of information in different contexts: information science, archival science, documentation science, and museology. Many of these concepts are also repeated under the property ['main subject' (P921)](https://www.wikidata.org/wiki/Property:P921).
+The next property listed for this journal is [**field of work** (P101)](https://www.wikidata.org/wiki/Property:P101), which refers to the journal’s area of specialization, its academic field or discipline. For the Acceso journal, several terms were added related to the management, organization, and preservation of information in different contexts: information science, archival science, documentation science, and museology. Many of these concepts are also repeated under the property ['main subject' (P921)](https://www.wikidata.org/wiki/Property:P921).
 
 Even when describing just the basic metadata for a journal, several additional properties may be relevant in Wikidata, such as:
 
-- ['country of origin' (P495)](https://www.wikidata.org/wiki/Property:P495): Indicates the country from which the journal is published.
+- [**country of origin** (P495)](https://www.wikidata.org/wiki/Property:P495): Indicates the country from which the journal is published.
 
-- ['place of publication' (P291)](https://www.wikidata.org/wiki/Property:P291): Indicates the city or country where the journal’s editorial office is based or where it is regularly published. This provides geographic context and helps users understand its reach and audience.
+- [**place of publication** (P291)](https://www.wikidata.org/wiki/Property:P291): Indicates the city or country where the journal’s editorial office is based or where it is regularly published. This provides geographic context and helps users understand its reach and audience.
 
-- ['language of work' (P407)](https://www.wikidata.org/wiki/Property:P407): Specifies the language in which the journal articles are published. This property helps users identify and filter works by language in Wikidata.
+- [**language of work** (P407)](https://www.wikidata.org/wiki/Property:P407): Specifies the language in which the journal articles are published. This property helps users identify and filter works by language in Wikidata.
 
-- ['official website' (P856)](https://www.wikidata.org/wiki/Property:P856): Records the URL for the journal’s official website. Providing this link gives users direct access to more information about the publication.
+- [**official website** (P856)](https://www.wikidata.org/wiki/Property:P856): Records the URL for the journal’s official website. Providing this link gives users direct access to more information about the publication.
 
-- ['online access status' (P6954)](https://www.wikidata.org/wiki/Property:P6954): Indicates whether the journal is freely available online, requires a subscription, or is not available online.
+- [**online access status** (P6954)](https://www.wikidata.org/wiki/Property:P6954): Indicates whether the journal is freely available online, requires a subscription, or is not available online.
 
-- ['publisher' (P123)](https://www.wikidata.org/wiki/Property:P123): Identifies the organization or individual responsible for editing and managing the publication. In the case of Acceso, the value used is 'Sociedad de Bibliotecarios de Puerto Rico'.
+- [**publisher** (P123)](https://www.wikidata.org/wiki/Property:P123): Identifies the organization or individual responsible for editing and managing the publication. In the case of Acceso, the value used is 'Sociedad de Bibliotecarios de Puerto Rico'.
 
-Figure 12 shows an example of how the property ['indexed in bibliographic review' (P8875)](https://www.wikidata.org/wiki/Property:P8875) is used in Wikidata. Through linked data, items can be connected to external databases and catalogs.
+Figure 12 shows an example of how the property [**indexed in bibliographic review** (P8875)](https://www.wikidata.org/wiki/Property:P8875) is used in Wikidata. Through linked data, items can be connected to external databases and catalogs.
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-12.png" alt="List of databases as values related to the property ‘indexed in bibliographic database’." caption="Figure 12. Example of using the 'indexed in bibliographic database' property in Wikidata." %}
 
@@ -228,19 +228,19 @@ A common use of Wikidata person identifiers is entity linking (EL) for disambigu
 
 When creating data about people, especially living individuals, it is important to consider ethical issues related to dignity, safety, and privacy. The Wikidata page [Wikidata:Living people](https://www.wikidata.org/wiki/Wikidata:Living_people) states that only verifiable information should be included, and that this information must not violate reasonable expectations of privacy. Statements about a person must be backed by reliable sources. 
 
-The first step in creating a person record in Wikidata is to make sure a record does not already exist. If none exists, you may create a new item. In the label field, enter the name by which the person is most commonly known. Then, write a brief description of the person, and optionally include other name variants. After completing the label and description, you can begin adding statements. The first statement should be ['instance of' (P31)](https://www.wikidata.org/wiki/Property:P31) with the value ['human' (Q5)](https://www.wikidata.org/wiki/Q5). Figure 13 shows how this was done for Puerto Rican philosopher Francisco José Ramos [(Q105725041)](https://www.wikidata.org/wiki/Q105725041).
+The first step in creating a person record in Wikidata is to make sure a record does not already exist. If none exists, you may create a new item. In the label field, enter the name by which the person is most commonly known. Then, write a brief description of the person, and optionally include other name variants. After completing the label and description, you can begin adding statements. The first statement should be [**instance of** (P31)](https://www.wikidata.org/wiki/Property:P31) with the value ['human' (Q5)](https://www.wikidata.org/wiki/Q5). Figure 13 shows how this was done for Puerto Rican philosopher Francisco José Ramos [(Q105725041)](https://www.wikidata.org/wiki/Q105725041).
 
-{% include figure.html filename="en-tr-linked-open-data-wikidata-13.png" alt="Item for Francisco José Ramos showing the first statement as 'instance of: human'." caption="Figure 13. Label, description, and name variants in Wikidata." %}
+{% include figure.html filename="en-tr-linked-open-data-wikidata-13.png" alt="Item for Francisco José Ramos showing the first statement as **instance of: human**." caption="Figure 13. Label, description, and name variants in Wikidata." %}
 
-The next statements relate to names. You can add ['given name' (P735)](https://www.wikidata.org/wiki/Property:P735), ['family name' (P734)](https://www.wikidata.org/wiki/Property:P734), and ['second family name' (P1950)](https://www.wikidata.org/wiki/Property:P1950). For compound given names, enter each name as a separate value under the 'given name' property, and use the qualifier ['series ordinal' (P1545)](https://www.wikidata.org/wiki/Property:P1545) to indicate first and second name. Figure 14 illustrates this process for entering the compound given name 'Francisco José'.
+The next statements relate to names. You can add [**given name** (P735)](https://www.wikidata.org/wiki/Property:P735), [**family name** (P734)](https://www.wikidata.org/wiki/Property:P734), and [**second family name** (P1950)](https://www.wikidata.org/wiki/Property:P1950). For compound given names, enter each name as a separate value under the **given name** property, and use the qualifier [**series ordinal** (P1545)](https://www.wikidata.org/wiki/Property:P1545) to indicate first and second name. Figure 14 illustrates this process for entering the compound given name 'Francisco José'.
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-14.png" alt="Two values associated with the property ‘given name’: 'Francisco' and 'José'." caption="Figure 14. Compound given name in Wikidata." %}
 
-For Hispanic surnames, two properties should be used. The ['family name' (P734)](https://www.wikidata.org/wiki/Property:P734) is used for the paternal surname, while ['second family name' (P1950)](https://www.wikidata.org/wiki/Property:P1950) is used for the maternal surname.
+For Hispanic surnames, two properties should be used. The [**family name** (P734)](https://www.wikidata.org/wiki/Property:P734) is used for the paternal surname, while [**second family name** (P1950)](https://www.wikidata.org/wiki/Property:P1950) is used for the maternal surname.
 
-Another common property when describing individuals is ['field of work' (P101)](https://www.wikidata.org/wiki/Property:P101). This property indicates a person’s area of expertise or discipline. You may add as many values as needed to accurately reflect the fields of knowledge or activity in which the person is recognized.
+Another common property when describing individuals is [**field of work** (P101)](https://www.wikidata.org/wiki/Property:P101). This property indicates a person’s area of expertise or discipline. You may add as many values as needed to accurately reflect the fields of knowledge or activity in which the person is recognized.
 
-You may also include the property ['occupation' (P106)](https://www.wikidata.org/wiki/Property:P106), which complements the field of work. This property allows multiple values and is useful for representing the different professional or artistic roles of a person. Keep in mind that all personal information should come from trustworthy and accessible sources. These sources should be cited as references for each value entered. Figure 15 shows the values for the occupation property, with references from a Wikipedia article.
+You may also include the property [**occupation** (P106)](https://www.wikidata.org/wiki/Property:P106), which complements the field of work. This property allows multiple values and is useful for representing the different professional or artistic roles of a person. Keep in mind that all personal information should come from trustworthy and accessible sources. These sources should be cited as references for each value entered. Figure 15 shows the values for the occupation property, with references from a Wikipedia article.
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-15.png" alt="Three values associated with the ‘occupation’ property: 'philosopher', 'poet', and 'university teacher'." caption="Figure 15. Values for the 'occupation' property in Wikidata." %}
 
@@ -250,27 +250,27 @@ Recording identifiers associated with a person is one of the most important aspe
 
 These are just some of the properties available for creating linked open data about individuals in Wikidata. Below are other relevant properties that can provide more detailed information. However, we must be cautious when entering data about living people and always consider ethical implications related to their dignity, safety, and privacy.
 
-- ['place of birth' (P19)](https://www.wikidata.org/wiki/Property:P19): To specify the person’s known birthplace.
+- [**place of birth** (P19)](https://www.wikidata.org/wiki/Property:P19): To specify the person’s known birthplace.
 
-- ['date of birth' (P569)](https://www.wikidata.org/wiki/Property:P569): To specify the person’s date of birth.
+- [**date of birth** (P569)](https://www.wikidata.org/wiki/Property:P569): To specify the person’s date of birth.
 
-- ['country of citizenship' (P27)](https://www.wikidata.org/wiki/Property:P27): To specify the person’s legal citizenship. Note that this is a legal term, not a cultural term, and does not necessarily reflect a person’s cultural or ethnic background.
+- [**country of citizenship** (P27)](https://www.wikidata.org/wiki/Property:P27): To specify the person’s legal citizenship. Note that this is a legal term, not a cultural term, and does not necessarily reflect a person’s cultural or ethnic background.
 
-- ['languages spoken, written, or signed' (P1412)](https://www.wikidata.org/wiki/Property:P1412): To specify the languages the person uses.
+- [**languages spoken, written, or signed** (P1412)](https://www.wikidata.org/wiki/Property:P1412): To specify the languages the person uses.
 
-- ['affiliation' (P1416)](https://www.wikidata.org/wiki/Property:P1416): To indicate the organization to which a person is affiliated.
+- [**affiliation** (P1416)](https://www.wikidata.org/wiki/Property:P1416): To indicate the organization to which a person is affiliated.
 
-- ['employer' (P108)](https://www.wikidata.org/wiki/Property:P108): A subproperty of affiliation, used to specify the institution or company for which a person works.
+- [**employer** (P108)](https://www.wikidata.org/wiki/Property:P108): A subproperty of affiliation, used to specify the institution or company for which a person works.
 
-- ['educated at' (P69)](https://www.wikidata.org/wiki/Property:P69): To indicate the academic institution(s) where the person studied.
+- [**educated at** (P69)](https://www.wikidata.org/wiki/Property:P69): To indicate the academic institution(s) where the person studied.
 
-- ['sex or gender' (P21)](https://www.wikidata.org/wiki/Property:P21): To indicate the sex or gender with which the person identifies. This property can be sensitive and potentially privacy-violating, so it should be used with care.
+- [**sex or gender** (P21)](https://www.wikidata.org/wiki/Property:P21): To indicate the sex or gender with which the person identifies. This property can be sensitive and potentially privacy-violating, so it should be used with care.
 
 ## Tools Suggested for Item Description in Wikidata
 
 Wikidata offers a variety of tools to make your work easier. These resources are available in the Preferences menu, under the Gadgets section (Figure 17). 
 
-Note the Preferences menu is only visible if you are logged into your user account. Click on the _dropdown menu_ on the top right of the page to see the Preferences menu.
+Note the Preferences menu is only visible if you are logged into your user account. Click on the dropdown menu on the top right of the page to see the _Preferences_ menu.
 
 {% include figure.html filename="en-tr-linked-open-data-wikidata-17.png" alt="Preferences menu for registered users showing the 'Gadgets' section to use accessories or tools." caption="Figure 17. Wikidata Preferences menu." %}
 

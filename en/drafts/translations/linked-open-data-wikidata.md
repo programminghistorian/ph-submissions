@@ -212,7 +212,7 @@ Even when describing just the basic metadata for a journal, several additional p
 
 - ['online access status' (P6954)](https://www.wikidata.org/wiki/Property:P6954): Indicates whether the journal is freely available online, requires a subscription, or is not available online.
 
-- ['publisher' (P123)](https://www.wikidata.org/wiki/Property:P123): Identifies the organization or individual responsible for editing and managing the publication. In the case of Acceso, the value used is Sociedad de Bibliotecarios de Puerto Rico.
+- ['publisher' (P123)](https://www.wikidata.org/wiki/Property:P123): Identifies the organization or individual responsible for editing and managing the publication. In the case of Acceso, the value used is 'Sociedad de Bibliotecarios de Puerto Rico'.
 
 Figure 12 shows an example of how the property ['indexed in bibliographic review' (P8875)](https://www.wikidata.org/wiki/Property:P8875) is used in Wikidata. Through linked data, items can be connected to external databases and catalogs.
 

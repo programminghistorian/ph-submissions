@@ -19,7 +19,7 @@ activity:
 topics: AI licences, terms and conditions, AI evaluation, library services
 abstract: 'With AI capability gaining strong media attention, university staff and students are exploring new ways of leveraging automation in their own research. Subsequently, Higher Educational libraries, specifically copyright and licensing teams, are now positioned as key advice givers, especially on Intellectual Property matters and data protection implications in using AI-based tools for research activities. Therefore, this ENABLAR lesson takes guidance from local experts, both within libraries and digital research, to inform a Natural Language Processing workflow for locating ‘red flag’ clauses in AI tool licence agreements. In doing so, we aim to build researcher and library practitioner confidence in interpreting complex legalistic documentation, while also informing critical and appropriate AI use in research.
 Nothing in the lesson is intended to constitute legal advice from a qualified lawyer, or intended to replace seeking library expertise.'
-avatar_alt: Red flag being planted in the ground
+avatar_alt: Red flag graffiti
 doi: XX.XXXXX/phen0000
 ---
 
@@ -1035,6 +1035,8 @@ Our spaCy method aims to extract problematic AI tool clauses to aid institutiona
 Alongside these translations, we provide a RAG (red, amber, green) rating, which - simultaneously - assesses the success of our spaCy method. Are flags genuine risks, or false positives? Are there any expected risks that have not been captured? 
 
 This human review stage also enables self-reflection in terms of the Authors’ own orientation toward AI use. With our own understanding of licence agreements varying, due to our library and researcher backgrounds, we explore our own knowledge gaps in interpreting terms and conditions. 
+
+
 
 <--! Yet to Complete -->
 

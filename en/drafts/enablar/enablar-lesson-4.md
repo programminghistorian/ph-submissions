@@ -260,7 +260,7 @@ In using NLP on legalistic documents, some expertise in basic copyright and inte
  
 In using accessible, pre-built and open-source tools, there is ample troubleshooting support, beyond this lesson. This discussion GitHub offers an extensive overview of [common spaCy bugs and issues](https://github.com/explosion/spaCy/discussions/8226). spaCy’s walk-through also offers guidance for further NLP training and deployment, for instance using ‘parts-of-speech’ tagging or sentiment analysis. There is also support through Jupyter Notebook’s [Read the Docs](https://jupyter-notebook.readthedocs.io/en/stable/troubleshooting.html). 
 
-##### Difficulty 
+#### Difficulty 
 
 The NLP processes underpinning this work are at the beginner level, as we pay close attention to providing a step-by-step workflow, with all code necessary. We also seek to breakdown key legal concepts related to general data protection and IP knowledge.
 

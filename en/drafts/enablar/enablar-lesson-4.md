@@ -17,11 +17,11 @@ review-ticket: ""
 difficulty: 2
 activity: ""
 topics:
-   - AI licences,
+   - AI licences
    - Natural language processing
    - Terms and conditions
    - AI risk and evaluation
-   - library services
+   - Library services
 abstract: >
   This enablar lesson aims to support researchers in their AI use,
   experimentation and implementation, through demonstrating a clear workflow

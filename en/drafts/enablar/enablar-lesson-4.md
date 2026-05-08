@@ -13,11 +13,11 @@ reviewers:
 - Forename Surname
 editors:
 - Forename Surname
-review-ticket: 
+review-ticket: ""
 difficulty: 2
-activity: 
+activity: ""
 topics: AI licences, natural language processing, terms and conditions, AI risk and evaluation, library services
-abstract: This enablar lesson aims to support researchers in their AI use, experimentation and implementation, through demonstrating a clear workflow for evaluating tools based on their terms and conditions. As a secondary audience, we hope to inform those advising students and staff on AI compliance and institutional licence purchasing, especially within Higher Educational libraries. 
+abstract: > This enablar lesson aims to support researchers in their AI use, experimentation and implementation, through demonstrating a clear workflow for evaluating tools based on their terms and conditions. As a secondary audience, we hope to inform those advising students and staff on AI compliance and institutional licence purchasing, especially within Higher Educational libraries. 
 In focusing on such local applications, we present a reproducible workflow for extracting potentially problematic 'red flags' in AI tool licences, using Natural Language Processing (NLP): the field of digital research involving interaction between computers and human language. Locating such variance and pitfalls in current AI licences, marketed to university libraries, is increasingly pertitent as AI capability gains stronger media attention, with university staff and students exploring new ways of leveraging automation in their own research. Within our own researcher and library roles, we have noticed a knowledge gap emerge, whereby scholars require greater confidence in understanding AI’s potential data protection risks. Subsequently, this lesson emerged from informal discussions around AI providers' variable guidance on server infrastructure, data sovereignty, and potential for copyright misuse. In useing NLP to locate red flags, we aim to build researcher and library practitioner confidence in interpreting complex legalistic documentation, while also informing appropriate AI use in research. Nothing in the lesson is intended to constitute legal advice from a qualified lawyer, or intended to replace seeking library expertise.
 avatar_alt: Red flag graffiti
 doi: XX.XXXXX/phen0000

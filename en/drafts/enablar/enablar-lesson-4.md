@@ -403,7 +403,7 @@ If you wish to use your own Jupter Notebook, instead of the above web scaffold, 
 
 Select *new* from Jupyter’s drop-down menu. You should see the display-name *AI Licence NLP*, click through and open up your notebook. This *kernel*, or Jupyter file, contains all the libraries and packages installed in Step 1. Name your notebook something intuitive like *spaCy_licence_experiments*. This will save an .ipynb file, which can be shared, as well as (re)uploaded to Jupyter, in case of working collaboratively. 
 
-Note: Keep your terminal open, which should now show a green bar and the message *Connecting to kernel …*. If so, the local host is running properly. You should receive a warning if you decide to close the terminal, but if not, exit Jupyter and go through the process again.
+Note: Keep your terminal open, which should now show a green bar and the message 'Connecting to kernel …'. If so, the local host is running properly. You should receive a warning if you decide to close the terminal, but if not, exit Jupyter and go through the process again.
 
 Your screen should now look like *Figure 1*, with Jupyter showing a new notebook, and your terminal running in a smaller window. 
 

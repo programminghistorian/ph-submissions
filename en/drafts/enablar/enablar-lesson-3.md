@@ -114,14 +114,21 @@ This lesson uses [iPySIGMA](https://github.com/medialab/ipysigma), a Python wrap
 
 In the second part of the lesson, we extend this approach by using [Llama Extract](https://www.llamaindex.ai/llamaextract) to derive structured metadata from catalogue fields that do not store it explicitly. This adds an additional layer of richness to the network, enabling us to surface connections and stories that existing metadata alone cannot tell.
 
+The hope for this lesson is not just to show creative ways library data can be displayed, but how a librarian or researcher could utlilise network analysis on their own collection data for practical collection development tasks in the daily work. 
+
 ### Method or tool
+The method for this data exploration is network analysis, the visualisation of relationships between data points. The network analysis visualisations created here are interactive and meant to be manipulated by the user. To achieve this, the tools the Javascript library sigma.js and the Python library ipysigma were used. In addition, Llama extract was used as a way to build connections across metadata that was hidden from the structured data elements. 
 ### Technical context
+Network analysis is a popular tool across disciplines. In libraries specifically, it is often utilised to understand scholarly publishing and bibliometrics. However, it offers even more potential by using it on library collection data.  
 ### Social context
 Library collections offer a wealth of information outside of normal utilisation, through the metadata they collect for items. Beyond using this metadata for search and retrival, this data can be used to understand what makes up a library collection and leverage that knowledge for many uses including special collection building, purchases, weeding, and other collection development activities. Examples inculde:
 * Looking at a complete collection of subject headings for main collection to understand what sections are strongly represented and could be pulled out an highlighted
 * Visualizing secondary subject headings in a collection of a picture book collection to understand the social and cultural contexts included in the collection and identify gaps
 * Comparing topic clustering of two different special collections on vintage plant books and current gardening book to research what overlap exists and how this topic has changed over time
 ### Prerequisites
+* Basic understanding of Python libraries 
+* Public or personal dataset of library materials organized in a structure scheme (MARC, Dublin Core, etc)
+* Github account 
 ### Difficulty
 
 ## Use Case
@@ -153,8 +160,9 @@ This workflow could be used as a way of telling thematic stories through library
 
 
 ## Local application
-While this example uses metadata from publically available datasets, the same process could be applied to an institutional specific dataset made up of MARC records. Extracting those records and applying similar analysis through these steps could help better understand how your local collections connect and cluster. 
+While this example uses metadata from publically available datasets, the same process could be applied to an institutional specific dataset made up of MARC records from that collection. Extracting those records and applying similar analysis through these steps could help better understand how your local collections connect and cluster. 
 ### Apply this method
+Download a file of data about your library collection. 
 ### Other projects
 ### Continued learning
 

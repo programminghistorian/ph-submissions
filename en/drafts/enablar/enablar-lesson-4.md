@@ -222,7 +222,7 @@ Throughout our lesson, we indicate how you can refine and add to our constructed
 
 ###### Scaling Down, for Individuals
 
-We are also concerned, alongside informing library policies around AI review, in supporting individual researchers and librarians, who may only be reviewing one licence at a time. As such, we scale down our code, provide syntax templates and indicate how to tailor our NLP approach. Our full dictionary, which forms a long block of code, and may not be needed for individual review, is instead included as a *Programming Historian* asset (link). 
+We are also concerned, alongside informing library policies around AI review, in supporting individual researchers and librarians, who may only be reviewing one licence at a time. As such, we scale down our code, provide syntax templates and indicate how to tailor our NLP approach. Our full dictionary, which forms a long block of code, and may not be needed for individual review, is instead included as a *Programming Historian* asset [full dictionary](assets/enablar-lesson-4/red-flag-dict). 
 
 #### Connectivity
 
@@ -290,7 +290,7 @@ Nockels, before trialling spaCy, ran simple import tests to ensure the quality o
 
 Estrada, N., Nockels, J., Fenlon, A. (2026). [Popular Academic AI Tools Terms and Conditions, Zenodo](https://zenodo.org/records/19616877?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImE3MWExN2E5LTE0NjgtNGFiMi1hNWJjLTYyNTE0Y2MxYTJjNiIsImRhdGEiOnt9LCJyYW5kb20iOiI5ZjY5NWZlNGE3NDFlNzA5ZjNjN2EzNjMxMjYxYjJmMSJ9.HLiESWKo1CeA_MimFtUsW1tUxtreTsdjdEJo4xb5KO7FpYNfo1aev9T7GMH6xCwRuEpDU5l3fofI_98B6tjnsg)
 
-For our full dictioanry code, see []
+For our full dictioanry code, see [full dictionary](assets/enablar-lesson-4/red-flag-dict)
 
 ## Background to Technical Method 
 
@@ -336,7 +336,7 @@ Datafiles -
   
   Our compliant AI tool licence agreements [^1].
 
-  Our full dictionary code, help as a *Programming Historian* asset [^2].
+  Our full dictionary code, held as a *Programming Historian* asset [^2]
   
 Software - 
 
@@ -498,7 +498,7 @@ To close the dictionary, include the following -
 
 As a guide, we populate the scaffold. First of all, we group terms and phrases under the theme *AI training*, whereby user data or prompting feeds into the broader efficiencies of a tool. Through a thorough reading of ESAC agreements and the wider literature mentioned, we draw out key phrases associated with this risk. 
 
-Our full dictionary is included as a *Programming Historian* asset (here), due to its considerable length. It serves as a useful guide, or even as a plugin dictionary, including themes of 'data retention', 'data ownership', 'security', 'copyright', 'accessibility', and 'liability', again included through practitioner consultation with Fenlon, and a review of wider AI copyright and licensing literature.
+Our full dictionary is included as a *Programming Historian* asset [here](assets/enablar-lesson-4/red-flag-dict), due to its considerable length. It serves as a useful guide, or even as a plugin dictionary, including themes of 'data retention', 'data ownership', 'security', 'copyright', 'accessibility', and 'liability', again included through practitioner consultation with Fenlon, and a review of wider AI copyright and licensing literature.
 
     red_flag_dict = {
 
@@ -916,6 +916,8 @@ This lesson has presented an NLP workflow using spaCy as an open, reproducible a
 ## Endnotes
 
 [^1]: Estrada, N., Nockels, J., Fenlon, A., 2026, [Popular Academic AI Tools Terms and Conditions](https://zenodo.org/records/19616877?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImE3MWExN2E5LTE0NjgtNGFiMi1hNWJjLTYyNTE0Y2MxYTJjNiIsImRhdGEiOnt9LCJyYW5kb20iOiI5ZjY5NWZlNGE3NDFlNzA5ZjNjN2EzNjMxMjYxYjJmMSJ9.HLiESWKo1CeA_MimFtUsW1tUxtreTsdjdEJo4xb5KO7FpYNfo1aev9T7GMH6xCwRuEpDU5l3fofI_98B6tjnsg)
+
+[^2]: [Full Red Flag Dictionary](assets/enablar-lesson-4/red-flag-dict)
 
 ## References 
 

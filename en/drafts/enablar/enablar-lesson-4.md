@@ -194,7 +194,7 @@ Another key variable, unable to be fully accounted for within this lesson, is th
 
 #### Data Type and Format
 
-We provide 29 born digital AI licence PDFs (103,396 words), collated primarily by Estrada with input from Fenlon, based on tools considered for institutional licensing at the University of Buffalo and University of Birmingham. However, we scale down our lesson to also work on individual licence agreements.
+We provide 31 born digital AI licence PDFs (103,396 words), collated primarily by Estrada with input from Fenlon, based on tools considered for institutional licensing at the University of Buffalo and University of Birmingham. However, we scale down our lesson to also work on individual licence agreements.
   
 #### What NLP Handles Well 
 
@@ -354,7 +354,7 @@ Software -
 
 The following provides a step-by-step walkthrough of our established spaCy method for extracting red flag terms in AI licence agreements. 
 
-#### Step 1: SpaCy Installation 
+### Step 1: SpaCy Installation 
 
 First of all, to ensure there is no conflict between any pre-installed Python libraries you may have, and the contents of this lesson, we advise setting up a dedicated environment through *conda*, which can be downloaded [here](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html). 
 
@@ -387,9 +387,6 @@ Now, from your spacy library, you can now download the specific English language
 With your libraries and packages now downloaded through the terminal, we can now register the Python kernel in Jupyter Notebooks, which allows you to move from working in your terminal to using Jupyter’s more intuitive interface for the rest of the lesson. This interface still runs locally.
 
     python -m ipykernel install --user --name licence_nlp --display-name "Python (AI Licence NLP)"
-
-
-#### 
 
 Alternatively, if you want to avoid downloading local packages, you can simply click the below link, which will take you to a web-based Jupyter scaffold, with the software packages pre-downloaded: 
 
@@ -453,19 +450,55 @@ Now you can import spaCy, as well as its required PhraseMatcher. Unlike some oth
     from spacy.matcher import PhraseMatcher, Matcher
     nlp = spacy.load("en_core_web_sm")
 
-### Step 4: Dictionary Setup
+#### Step 4: Dictionary Setup
 
 In order to extract meaningful words and patterns (phrases) from our AI licences, we need to remove noisy elements, in our case stopwords that are irrelevant to red flag terms and conditions. Although agreements may include more implicit undertones of risk, spaCy works through simple term and phrase matching, opposed to understanding broader language, which would require a processing out-of-scope for this lesson. Nonetheless, our extraction approach works well, due to AI licence agreements being relatively formulaic, with repeating clauses and structures. 
 
-The following code displays our constructed dictionary, which begins with key terms and phrases found through a reading of the ESAC register, tool licence guidance, and in consultation with Fenlon. These terms and phrases are grouped into themes, alongside certain anticipated patterns. For instance, in *AI training* the term *train* is associated with *model*, *system*, *algorithm*, with *OP ?* adding a placeholder, whereby these terms will still be associated and stretched across a non-relevant word or set of words: picking up such phrases as *training **our** model*. These key terms, and those associated with them, are also made lowercase (to remove duplicates) and lemmatised (reducing words to their canonical root). Therefore, our first dictionary term and pattern would pick up, not including other variations: 
+The following code establishes our dictionary of terms and phrases, based on those found through the ESAC register, tool licence guidance, and in consultation with Fenlon. 
 
-    AI algorithmic training
-    training our AI algorithm
-    Training our AI algorithms
-    to train the AI system
-    train the AI systems 
+For your own purposes, you can easily delete non-relevant dictionary entries, or add to any patterns, directly within this code, however keep in mind that the current dictionary is in keeping with NLP syntax - especially bracketing and the use of commas. Therefore, the below provides a blank syntax scaffold to follow: 
 
-For your own purposes, you can easily delete non-relevant dictionary entries, or add to any patterns, directly, however the current dictionary is in keeping with NLP syntax - especially bracketing.
+    name_of_dictionary = {
+
+In our case, the following terms and phrases are grouped into themes, which outline the main data protection issues surrounding AI licensing, which copyright librarians assess.
+
+    "risk or AI_theme": {
+
+    "associated phrases": [
+        "phrase", 
+        "phrase",
+        "phrase",
+        ],
+    
+    "patterns": [
+
+        [
+
+It is best practice to lemmatise your terms, when needed, reducing words to their canonical root, for instance 'train' for 'training', this will add flexibility to your dictionary by accounting for variations -
+
+            {"LEMMA": "term"}, # include lemma if necessary, for instance train from training
+
+Though optional, *OP ?* adds a placeholder, to ensure that these terms are still associated and 'flagged', despite being stretched across a non-relevant word or set of words: picking up such phrases as *training **our** model* -
+
+            {"OP": "?"},
+            {"OP": "?"},
+            
+The following line, again optional, makes the phrase or term lowercase, first as normalisation when exporting red flag hits, as well as factoring in sentence structure, with the term appearing lowercase if associated with the following terms - 
+
+            {"LOWER": {"IN": ["model","system","algorithm"]}} 
+
+Then end the dictionary rule with a ']' and comma, before beginning with another associated theme - 
+
+        ],
+
+To close the dictionary, include the following - 
+
+       }, 
+       }
+
+As a guide, we populate the scaffold. First of all, we group terms and phrases under the theme *AI training*, whereby user data or prompting feeds into the broader efficiencies of a tool. Through a thorough reading of ESAC agreements and the wider literature mentioned, we draw out key phrases associated with this risk. 
+
+Our full dictionary is included as a *Programming Historian* asset (here), due to its considerable length. It serves as a useful guide, or even as a plugin dictionary, including themes of 'data retention', 'data ownership', 'security', 'copyright', 'accessibility', and 'liability', again included through practitioner consultation with Fenlon, and a review of wider AI copyright and licensing literature.
 
     red_flag_dict = {
 
@@ -481,6 +514,9 @@ For your own purposes, you can easily delete non-relevant dictionary entries, or
         "computational analysis",
     ],
 
+
+Here, the root term *train* is associated and made lowercase, through our dictionary structure, when appearing alongside *model*, *system*, *algorithm*. We also include two placeholders, to stretch the matches over a sentence.
+
     "patterns": [
 
         [
@@ -494,37 +530,39 @@ For your own purposes, you can easily delete non-relevant dictionary entries, or
             {"LEMMA": "improve"},
             {"OP": "?"},
             {"OP": "?"},
-            {"LEMMA": {"IN": ["model","system","service"]}}
+            {"LOWER": {"IN": ["model","system","service"]}}
         ], 
      
         [   {"LEMMA": "enhance"},
             {"OP": "?"},
             {"OP": "?"},
-            {"LEMMA": {"IN": ["model","system","algorithm", "service"]}} 
+            {"LOWER": {"IN": ["model","system","algorithm", "service"]}} 
         ],
         
         [   {"LEMMA": "develop"},
             {"OP": "?"},
             {"OP": "?"},
-            {"LEMMA": {"IN": ["model","system","algorithm", "service"]}} 
+            {"LOWER": {"IN": ["model","system","algorithm", "service"]}} 
         ],
         [   {"LEMMA": "automate"},
             {"OP": "?"},
             {"OP": "?"},
-            {"LEMMA": {"IN": ["system","technique","performance", "service"]}} 
+            {"LOWER": {"IN": ["system","technique","performance", "service"]}} 
         ],
         [   {"LEMMA": "generate"},
             {"OP": "?"},
             {"OP": "?"},
-            {"LEMMA": {"IN": ["output","response","content", "information"]}} 
+            {"LOWER": {"IN": ["output","response","content", "information"]}} 
         ],
         [   {"LEMMA": "computation"},
             {"OP": "?"},
             {"OP": "?"},
-            {"LEMMA": {"IN": ["analysis"]}} 
+            {"LOWER": {"IN": ["analysis"]}} 
         ]
     ]
     },
+
+We do the same for associated financial risks, and hidden costs as a dictionary theme. These themes will act as an Excel file structure, once exported, to compare and contrast red flag hits - 
 
     "COST": {
 
@@ -563,28 +601,28 @@ For your own purposes, you can easily delete non-relevant dictionary entries, or
             {"LEMMA": "sell"},
             {"OP": "?"},
             {"OP": "?"},
-            {"LEMMA": {"IN": ["data","service","product"]}}
+            {"LOWER": {"IN": ["data","service","product"]}}
         ],
 
         [
             {"LEMMA": "loan"},
             {"OP": "?"},
             {"OP": "?"},
-            {"LEMMA": "amount"}
+            {"LOWER": "amount"}
         ],
 
         [
             {"LEMMA": "transfer"},
             {"OP": "?"},
             {"OP": "?"},
-            {"LEMMA": "service"}
+            {"LOWER": "service"}
         ],
 
         [
             {"LEMMA": "hire"},
             {"OP": "?"},
             {"OP": "?"},
-            {"LEMMA": "service"}
+            {"LOWER": "service"}
         ],
 
         [
@@ -598,290 +636,11 @@ For your own purposes, you can easily delete non-relevant dictionary entries, or
             {"LOWER": "subscription"},
             {"OP": "?"},
             {"OP": "?"},
-            {"LEMMA": {"IN": ["model","system","plan"]}}
+            {"LOWER": {"IN": ["model","system","plan"]}}
         ]
     ]
     },
 
-    "DATA_RETENTION": {
-
-    "phrases": [
-        "store data",
-        "log data",
-        "retain data",
-        "data retention",
-        "storage of data",
-    ],
-
-    "patterns": [
-
-        [
-            {"LEMMA": "store"},
-            {"OP": "?"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["data","information","content","prompt","input"]}}
-        ],
-
-        [
-            {"LEMMA": "log"},
-            {"OP": "?"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["data","activity","usage","query"]}}
-        ],
-
-        [
-            {"LEMMA": "retain"},
-            {"OP": "?"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["data","information","content"]}}
-        ],
-
-        [
-            {"LEMMA": {"IN": ["restrict","restriction"]}},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["use","access","distribution"]}}
-        ],
-
-        [
-            {"LEMMA": "obligation"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["retain","store","protect"]}}
-        ]
-    ]
-    },
-
-    "DATA_OWNERSHIP": {
-
-    "phrases": [
-        "license to use submitted content",
-        "retain rights to user data",
-        "ownership of data",
-        "controller",
-    ],
-
-    "patterns": [
-
-        [
-            {"LEMMA": "license"},
-            {"OP": "?"},
-            {"OP": "?"},
-            {"LEMMA": "use"}
-        ],
-
-        [
-            {"LEMMA": "retain"},
-            {"OP": "?"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["rights","ownership"]}}
-        ],
-
-        [
-            {"LEMMA": "own"},
-            {"OP": "?"},
-            {"OP": "?"},
-            {"LOWER": "data"}
-        ],
-
-        [
-            {"LEMMA": "restriction"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["ownership","use"]}}
-        ],
-
-        [
-            {"LEMMA": "obligation"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["ownership","control"]}}
-        ],
-     
-        [
-            {"LEMMA": "controller"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["rights", "data", "information"]}}
-        ]
-    ]
-    },
-
-    "SECURITY": {
-
-    "phrases": [
-        "personal data",
-        "third party",
-        "data security",
-    ],
-
-    "patterns": [
-
-        [
-            {"LEMMA": "install"},
-            {"OP": "?"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["software","system"]}}
-        ],
-
-        [
-            {"LOWER": "personal"},
-            {"OP": "?"},
-            {"LOWER": "data"}
-        ],
-
-        [
-            {"LEMMA": "distribute"},
-            {"OP": "?"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["data","information","content"]}}
-        ],
-
-        [
-            {"LOWER": "third"},
-            {"OP": "?"},
-            {"LOWER": "party"}
-        ]
-    ]
-    },
-
-    "COPYRIGHT": {
-
-    "phrases": [
-        "data protection",
-        "reuse of data",
-        "resale of content",
-        "copyright ownership",
-    ],
-
-    "patterns": [
-
-        [
-            {"LEMMA": "own"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["copyright","data","content"]}}
-        ],
-
-        [
-            {"LOWER": "data"},
-            {"OP": "?"},
-            {"LOWER": "protection"}
-        ],
-
-        [
-            {"LEMMA": "reuse"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["data","content","material"]}}
-        ],
-
-        [
-            {"LEMMA": "resale"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["data","content","service"]}}
-        ],
-
-        [
-            {"LEMMA": "output"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["data","content"]}}
-        ]
-    ]
-    },
-
-    "ACCESSIBILITY": {
-
-    "phrases": [
-        "accessibility standard",
-        "accessibility compliance",
-        "prohibited act", 
-        "permitted use",
-    ],
-
-    "patterns": [
-
-        [
-            {"LEMMA": "accessibility"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["standard","requirement","compliance"]}}
-        ], 
-        [
-            {"LEMMA": "prohibited"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["act","use"]}}
-        ]
-    ]
-    },
-
-    "LIABILITY": {
-
-    "phrases": [
-        "reasonable effort",
-        "force majeure event",
-        "limitation of liability",
-    ],
-
-    "patterns": ["patterns": [
-
-        [
-            {"LEMMA": "indemnify"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["party","provider","company"]}}
-        ],
-
-        [
-            {"LEMMA": "indemnity"}
-        ],
-
-        [
-            {"LEMMA": "protect"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["against","from"]}}
-        ],
-
-        [
-            {"LOWER": "reasonable"},
-            {"OP": "?"},
-            {"LOWER": "effort"}
-        ],
-
-        [
-            {"LEMMA": "enforce"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["agreement","terms","rights"]}}
-        ],
-
-        [
-            {"LEMMA": "terminate"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["service","agreement","access"]}}
-        ],
-
-        [
-            {"LEMMA": "recover"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["damage","loss","cost"]}}
-        ],
-
-        [
-            {"LEMMA": "control"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["data","system","service"]}}
-        ],
-
-        [
-            {"LEMMA": "breach"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["contract","agreement","terms"]}}
-        ],
-
-        [
-            {"LEMMA": "damage"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["loss","liability"]}}
-        ],
-
-        [
-            {"LOWER": "force"},
-            {"OP": "?"},
-            {"LOWER": {"IN": ["against","from"]}}
-        ],
-
-    ]
     },
 
     }
@@ -890,25 +649,28 @@ For your own purposes, you can easily delete non-relevant dictionary entries, or
 
 A list of individual word tokens, however related to AI risk, is not illuminating enough to assess red flags in licence agreements, therefore we use spaCy’s in-built PhraseMatcher, which enables our dictionary to be overlaid the dataset text and reassembled based on the pattern rules established. 
 
-First, you load the matchers, and re-emphasise the lowercasing of the agreement text - 
+First, load the matchers - 
 
-    phrase_matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
+    phrase_matcher = PhraseMatcher(nlp.vocab)
+    
+You could include attr = lower after nlp.vocab, though this would convert all results into lowercase, instead of a more fine account of sentence structure by including lowercasing in each dictionary section, where appropriate. 
+
     token_matcher = Matcher(nlp.vocab)
 
-Then, establish the word tokens and the categories of risk to ensure the dictionary is properly assigned - 
+Then, establish the word tokens and the categories of risk in your dictionary, to ensure that both matchers are properly assigned -
 
     for category, rules in red_flag_dict.items():
         phrase_matcher.add(category, [nlp.make_doc(p) for p in rules.get("phrases", [])])
         token_matcher.add(category, rules.get("patterns", []))
+
+To ensure your dictionary is properly plugged into the NLP pipeline, print the categories (these should match your dictionary themes, e.g. 'AI_training') - 
 
     print("Loaded categories:", list(red_flag_dict.keys()))
     
 
 —--
 
-After loading the matchers, you can construct an empty list [] of *matches* or *red flag hits*, and direct spaCy to cover the entire length of your agreement licence based on word_count, while also categorising matches based on our dictionary setup. This will result in a usable, and meaningfully structured, dataset of matches grouped to a respective theme, risk and AI tool based on the folder structure.
-
-Again, as verification, we print out the first ten matches to ensure the NLP process is working, as well as silence the pdfplumber warning, based on our initial tests that the package is capable of extracting pdf text.
+After loading the matchers, you can construct an empty list [] of *matches* or *red flag hits*, and direct spaCy to cover the entire length of your agreement licence based on word_count. This will read each pdf licence page, before appending them back together. The following code will work, regardless of how many licences you have. 
 
     def extract_pdf_text(pdf_path):
     parts = []
@@ -931,13 +693,19 @@ Again, as verification, we print out the first ten matches to ensure the NLP pro
         span = doc[start:end]
         matches.append((nlp.vocab.strings[match_id], span.text, span.sent.text, "pattern"))
 
+As verification, we print out the first ten matches to ensure the NLP process is working, and covering the full extent of each pdf licence - 
+
     print("Testing:", pdf_path)
     print("Matches:", len(matches))
     matches[:10]
 
+We can also silence the pdfplumber warning, based on our initial test that the package is capable of extracting pdf text, albeit with some minimal OCR errors.
+
     warnings.filterwarnings("ignore", message="Could not get FontBBox from font descriptor.*")
 
-Finally, we want to export an Excel file that retains the folder structure: AI Agent, Lit Review and Transcription, to enable further analysis of extracted red flags. We also drop any duplicated flags across the corpus as data cleaning.
+### Step 6: Red Flag Exportation 
+
+The following code establishes a clear .xlsx file structure, to manipulate red flag results within Excel. Not only does this offer greater visibility of results, with the following code providing a column of hits, as well as the associated sentence, in a sequential list, but, also retains our original folder structure for comparison: 'AI Agent', 'Lit Review' and 'Transcription'. Step 7 provides a use case for using Excel, through the simple conversion of listed red flags into pivot tables into global research findings across all our 29 licences.
 
     rows = []
         for pdf_path in pdfs:
@@ -967,11 +735,13 @@ Finally, we want to export an Excel file that retains the folder structure: AI A
             "method": "pattern",
         })
 
-    warnings.filterwarnings("ignore", message="Could not get FontBBox from font descriptor.*")
-    
-    df = df.drop_duplicates(subset=["file","rule","sentence","method"])
+Again, silence the spaCy text extraction warning, as we have verified its accuracy - 
 
-### Step 6: Data Analysis
+    warnings.filterwarnings("ignore", message="Could not get FontBBox from font descriptor.*")
+
+It is also best practice to rid the table of duplicates, although our dictionary structure avoids this through text normalisation - 
+
+    df = df.drop_duplicates(subset=["file","rule","sentence","method"])
 
 We can now display the results, the below shows the first five results from our Transkribus example, grouped by the established category in our constructed dictionary. This data frame also indicates what triggered the red flag, whether spaCy used the phrase or word token matcher, and the related sentence for further, qualitative review. 
 
@@ -1022,9 +792,18 @@ For further refinement, you can also use spaCy for noun detection, alongside the
     our dedicated websites
     directors
 
-### Step 7: Exportation 
+---
 
-For further inspection, you can then export the.xlsx file for Excel inspection and post-correction - 
+With our dataframe structure established, for both matchers, we can now use openpyxl, downloaded earlier (or pre-downloaded if using the Jupyter Notebook link) to export our .xlsx file. 
+
+If exporting only one license, simply set a path, with a intuitive name and deploy openpyxl - 
+
+     out_path = Path("red_flags_by_folder.xlsx")
+     with pd.ExcelWriter(out_path, engine="openpyxl") 
+     
+     out_path
+
+If using multiple licenses, as with our corpus of 29 agreements, ensure that the export retains the folder structure, through the following export - 
 
      out_path = Path("red_flags_by_folder.xlsx")
      with pd.ExcelWriter(out_path, engine="openpyxl") as writer:
@@ -1032,9 +811,11 @@ For further inspection, you can then export the.xlsx file for Excel inspection a
           sheet = folder[:31]
           sub = df[df["folder"] == folder].drop(columns=["folder"])
           sub.to_excel(writer, sheet_name=sheet, index=False)
-    out_path
+   
+     out_path
 
-### Step 8: High-Level Red Flag Review
+
+### Step 7: High-Level Red Flag Review
 
 With our Excel export enabling flexible data analysis, we can begin to assess the percentage of certain flags across AI tool type. Of course, this should remain an initial guide, with some red flags being likely false positives, caused by AI providers offering reassurance around the risks categorised in our dictionary, although our rules-based approach should limit this to an extend. Therefore, this section complements our human-reveiw discussion of certain red flag texts exported.
 
@@ -1090,17 +871,33 @@ However, our AI agent folder breaks with such percetages, with the risk of user 
 
 </div>
 
-#### Discussion: Human Translations of Extracted Red Flags
+## Discussion: Human Translations of Extracted Red Flags
 
-Our spaCy method aims to extract problematic AI tool clauses to aid institutional procurement workflows and researcher decision-making. Nonetheless, human-in-the-loop review is still essential for interpreting risk. As such, we include some human language translations, informed by our own professional perspectives, which help establish why certain extracted clauses are problematic, and indeed whether some actually constitute red flags. This sits alongside the above high-level review of categorised dictionary themes. 
+This spaCy lesson aims to extract problematic AI tool clauses to aid institutional procurement workflows, whether undertaken by a solo librarian on a single licence or as part of a wider initative over a corpus, alongside aiding digital researcher decision-making. Nonetheless, human-in-the-loop review is still essential for interpreting extracted red flags, and the risks they may contain. As such, we include some human language translations, informed by our own professional perspectives, which help establish why certain extracted clauses are problematic, and indeed whether some actually constitute red flags. 
 
-Alongside these translations, we provide a RAG (red, amber, green) rating, which - simultaneously - assesses the success of our spaCy method. Are flags genuine risks, or false positives? Are there any expected risks that have not been captured? 
+This sits alongside the above high-level review of categorised dictionary themes, in Step 7.
 
 This human review stage also enables self-reflection in terms of the Authors’ own orientation toward AI use. With our own understanding of licence agreements varying, due to our library and researcher backgrounds, we explore our own knowledge gaps in interpreting terms and conditions. 
 
+--- 
 
+There are clear limitations to our lesson:
 
-<--! Yet to Complete -->
+Our spaCy method could be improved upon through the bespoke use of OCR tools, to correct errors in PDF transcriptions pulled by PDFPlumber. However, these errors were minimal and did not impact the overall review of extracted red flags, with four notable error instances across the whole export. 
+
+With spaCy relying on exact dictionary matches, our method also proves overly sensitive, extracting more than 1,000 red flag hits - 115 for AI Agents (7 documents), 734 for Lit Review (19 documents), 310 for Transcription (5 documents). Of course, this means that a full review of each and every red flag, across a corpus of documents, remains time consuming, however the disaggregated breakdown of where hits appear enables librarians and researchers to more easily interpret licences, with the resulting Excel export acting as a viewfinder. Dividing the number of hits by documents, approx. 37 hits are seen, making the use of such NLP pipelines more reasonable in the case of solo librarians on individual licences.
+
+Of course, the extraction of token phrases can easily lose contextual meaning from complex licenses. This is seen with false positive hits, where AI providers instead attempt to mollify anxities around AI training, for instance. 
+
+--- 
+
+Nonetheless, our spaCy method has advantages:
+
+Although some clauses are surfaced multiple times, these are based for different rules, phrases and terms. This may add to the oversensitivity of our method, clauses can have multiple rules applying, due to their complex legalistic context. Nonetheless, we see this overlapping of hits as a feature, which ensures that AI risk is assessed from multiple vantages. 
+
+In other cases, this spaCy method signalled very real AI risks, with the structure of our Excel export enabling discrepencies between tools to be additionally flagged: 
+
+For instace, our 'Security' dictionary rule extracted instances of limited liability, where tool providers wave liability for any third party damages, including data loss or those caused by for profit behaviour, even if they have been advised of their possibilities ahead of time. Alongside this, our method uncovered variable protections based on legal jurisdiction, with certain AI companies processing data in other countries, as well as aggressively supporting direct marketing campaigns where legal. Elsewhere, the revealing of protected or sensitive consumer data was firmly placed at the discretion of the consumer. Variability between tool providers was also seen in the case of responding to privacy policy requests, with some AI companies charging a fee to provide access to personal data, as well as data processing - with some tools stating that no customer data is used in training Large Language Models, whereas others appear much vaguer, due to the complex 'nature of processing'. 
 
 ## Local Application
 
@@ -1154,8 +951,6 @@ Havens, Lucy, Terras, Melissa, Bach, Benjamin, and Alex, Beatrice, 2022, Uncerta
 
 [Lundborg, Einarsson, 2024, Dazzled by the Private Sector. MA diss, University of Boras](https://www.diva-portal.org/smash/get/diva2:1879530/FULLTEXT01.pdf)
 
-[Manchester, Eileen J., 2023, “Introducing the LC Labs Artificial Intelligence Planning Framework”, *Library of Congress Blog*](https://blogs.loc.gov/thesignal/2023/11/introducing-the-lc-labs-artificial-intelligence-planning-framework)
-
 [McGregor, Nora, 2025, “AI & Machine Learning in Libraries”, *LIBER Digital Scholarship & Data Science Topic Guides*](https://libereurope.github.io/ds-topic-guides/ai-ml.html)
 
 [Nandini, P., 2024, “NLP with spaCy: A Comprehensive Guide”, *Medium*](https://medium.com/@pnandhiniofficial/nlp-with-spacy-a-comprehensive-guide-5c3f1bccdb0g)
@@ -1167,6 +962,9 @@ Havens, Lucy, Terras, Melissa, Bach, Benjamin, and Alex, Beatrice, 2022, Uncerta
 [Nockels, Joe, Gooding, Paul, Terras, Melissa, 2024, “The implications of handwritten text recognition for accessing the past at scale”, *Journal of Documentation*, 80(7): 148–167.](https://doi.org/10.1108/JD-09-2023-0183)
 
 [O'Sullivan, James, 2025, "Generative AI in Higher Education Teaching and Learning"](https://www.teachingandlearning.ie/2025/03/24/generative-ai-in-higher-education-teaching-and-learning-james-osullivan/)
+
+
+[Potter, Abigail, 2023, “Introducing the LC Labs Artificial Intelligence Planning Framework”, *Library of Congress Blog*](https://blogs.loc.gov/thesignal/2023/11/introducing-the-lc-labs-artificial-intelligence-planning-framework)
 
 Robinson, David, 2022, *Voices in the Code: A Story about People, Their Values, and the Algorithm They Made*. New York: Russell Sage Foundation.
 

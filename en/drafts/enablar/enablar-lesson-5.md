@@ -320,7 +320,63 @@ python download-multiple-files.py \
 ```
 
 #### Preprocessing
-File formats, data structures, conversion, and data loss control.
+<!-- File formats, data structures, conversion, and data loss control. -->
+
+In this section we will describe how to transform three types of MARC files to Python's Pandas data frame, then save them to a CSV file. The three types are:
+
+- binary MARC file formatted according to [ISO 2709](https://en.wikipedia.org/wiki/ISO_2709) format
+- MARCXML file
+- large MARCXML file
+
+MARC21 records' logical structure does not fit to the tidy tabular format that (as defined by [Hadley Wickham](https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data)) has the following property:
+
+1. Each variable is a column; each column is a variable.
+2. Each observation is a row; each row is an observation.
+3. Each value is a cell; each cell is a single value.
+
+The problem is that in MARC21 there are repeatable fields, e.g. multiple subjects, so if you would like to create a table, where there are columns for identifier and subject, you should decide if you would like to put all subject headings into a single cell, or you would like to create multiple rows for each pair of identifier and subject. Both approaches have their own advantages and disadvantages - you should decide on choosing according to the objective of the analysis.
+
+Let's start with reading a binary MARC file with the [PyMarc](https://gitlab.com/pymarc/pymarc) package.
+
+```Python
+from pymarc import MARCReader
+
+with open('raw-data/pymarc/marc.dat', 'rb') as fh:
+    reader = MARCReader(fh)
+    for record in reader:
+        print(record.title)
+```
+
+The code is extracted from the package's README. It opens a binary (ISO 2709) file with the standard Python `open` function, and passes the file handler to the package's `MARCReader` class. It provides an iterator, so we can iterate all records in the file one by one. The MARC21 record is  represented as a `Record` object that provides a number of methods to access and modify data elements inside a record. Here we only print the title of the record -- i.e. field `245$a` (title) concatenated with `$b` (Remainder of title) if the latter exists (about the details of these subfields see [MARC21 documentation](https://www.loc.gov/marc/bibliographic/bd245.html)).
+
+For reading MARCXML we should select a strategy based on the size of the file and the memory we have. PyMarc provides two helper functions: 
+
+- `parse_xml_to_array` reads the whole file and creates a list of `Record` objects
+- `map_xml` reads records one by one and calls a user defined function on it. For this you have to define a function
+
+How does it look like in practice? 
+
+`parse_xml_to_array`:
+
+```Python
+from pymarc import parse_xml_to_array
+
+records = parse_xml_to_array('raw-data/yale/bib_20250706_full_000_00.xml')
+for record in records:
+    print(record.title)
+```
+
+`map_xml`
+
+```Python
+from pymarc import map_xml
+
+def process_record(record):
+    print(record.title)
+
+map_xml(process_record, 'raw-data/yale/bib_20250706_full_000_00.xml')
+```
+
 
 #### Data harmonisation
 Normalization and data enrichment. The reproducible conversion into a data set suitable for quantitative humanities analysis.

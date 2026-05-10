@@ -377,6 +377,44 @@ def process_record(record):
 map_xml(process_record, 'raw-data/yale/bib_20250706_full_000_00.xml')
 ```
 
+In these examples all what we did is just printing something, but how we can create Pandas from the records? Start with a simple case: collect record ID and title. In the last code snippet we already had a `process_record` section. We will modify it, but for the sake of unity we will replace the `print()` call in the other two code:
+
+```Python
+for record in reader:
+    process_record(record)
+```
+
+and
+
+```Python
+for record in records:
+    process_record(record)
+```
+
+so now we have a single `process_record` function, that can behave the same even we process  binary, xml or large xml files. We change this to extract particular data elements (identifier and title) from each MARC21 record, then to build a pandas data frame.
+
+```Python
+from pymarc import map_xml
+import pandas as pd
+
+ids = []
+titles = []
+
+def process_record(record):
+    ids.append(record.get('001').value())
+    titles.append(record.title)
+
+input_file_name = 'raw-data/yale/bib_20250706_full_000_00.xml'
+map_xml(process_record, input_file_name)
+
+df = pd.DataFrame({'id': ids, 'title': titles})
+print(df.head())
+```
+
+Here we import pandas package with an alias name `pd`, that is the usual way to use it. We initialize two lists, one for the identifiers, and one for the titles. In the `process_record` function we extract their values from the record object, and append the value to the appropriate lists. At the end we create a pandas data frame with a dictionary. The keys are the column names (id and title), the values are the two list. Here both MARC21 data element are quasi mandatory elements, they are available in every record. For other elements, we should be sure if the record has them, and if not, we should provide a default value, e.g. an emtpy string or `None` value. In the last line we simply make a check, print out the first five rows of the data frame to be sure that the process finished with the result we expected.
+
+There are be other approaches to fullfil this task, e.g. to create an empty data frame at the beginning of the process, and add new rows with pd.append or pd.loc, however these approaches have their disadvantages regarding to speed and memory usage, so they are discouraged.
+
 
 #### Data harmonisation
 Normalization and data enrichment. The reproducible conversion into a data set suitable for quantitative humanities analysis.

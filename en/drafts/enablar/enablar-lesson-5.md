@@ -415,6 +415,74 @@ Here we import pandas package with an alias name `pd`, that is the usual way to 
 
 There are other approaches to fulfill this task, e.g. to create an empty data frame at the beginning of the process, and add new rows with `pd.append` or `pd.loc`, however these approaches have their disadvantages regarding speed and memory usage, so they are discouraged.
 
+As mentioned above this strategy works well for non repeatable data elements. However in MARC21 there are data elements that could be used multiple times in the same records, for example a book might have multiple subjects. Here we have two options: either join them together with a separator character into the same cell, or save them to another dataframe. Again: it is up to your research question which fits better. If you want only to search if a given subject headings appear in a record, concatenated subject might be enough, if you would like to do statistics on the individual subjects or the correlation of them with other data elements (e.g. comparing them with the title words), the second approach looks better.
+
+The concatenation approach:
+
+```Python
+from pymarc import map_xml
+import pandas as pd
+
+data = {
+    'id': [],
+    'title': [],
+    'subject': []
+}
+
+def process_record(record):
+    id = record.get('001').value()
+    data['id'].append(id)
+    data['title'].append(record.title)
+    subjects = []
+    for subject in record.subjects:
+        if subject.get('a') is not None:
+            subjects.append(subject.get('a'))
+    subject_str = "|".join(subjects) if len(subjects) > 0 else ""
+    data['subject'].append(subject_str)
+
+input_file_name = 'raw-data/yale/bib_20250706_full_000_00.xml'
+map_xml(process_record, input_file_name)
+
+df = pd.DataFrame(data)
+print(df.head())
+```
+
+Here we create a dictionary where the keys match the column names, the values are empty lists. When we process a record we append these lists. The identifier and the title are the same as above. For subjects we create a new list. PyMarc provide a `subjects` property for the record object, and it collects the following MARC21 fields: 600, 610, 611, 630, 648, 650, 651, 653, 654, 655, 656, 657, 658, 662, 690, 691, 696, 697, 698, 699. The actual subject headings can be found in `$a` subfield, but we should be prepared that it is not always available, so we add only the real values (otherwise our list might contain `None` values for those fields that lack `$a`). After collecting all subjects into this list, we concatenate them separated by a '|' (pipeline) character, or if the record doesn't have any subject we provide an empty string. Finally we add this string to our subject list. As we have collected all values into a dictionary, we can use that directly in the data frame creation. 
+
+The other approach is to create a distinct data frame for the subjects (or other repeatable data elements, such as the list of contributors). 
+
+
+```Python
+from pymarc import map_xml
+import pandas as pd
+
+titles = {
+    'id': [],
+    'title': []
+}
+subjects = {
+    'id': [],
+    'subject': []
+}
+
+def process_record(record):
+    id = record.get('001').value()
+    titles['id'].append(id)
+    titles['title'].append(record.title)
+    for subject in record.subjects:
+        if subject.get('a') is not None:
+            subjects['id'].append(id)
+            subjects['subject'].append(subject.get('a'))
+
+input_file_name = 'raw-data/yale/bib_20250706_full_000_00.xml'
+map_xml(process_record, input_file_name)
+
+df_titles = pd.DataFrame(titles)
+df_subjects = pd.DataFrame(subjects)
+print(df_subjects['subject'].value_counts().head())
+```
+
+Here we create two dictionaries, one for the titles, and one for the subjects. We have to test if the subject field has `$a` subfield, but we do not have to do the trick with the record level subject list. At the end we create two data frames, and thus we can run statistical analysis, such as listing the top subject headings with `value_counts()`. Pandas one can imagine a data frame as a list of Series objects each representing an individual column. Series' `value_counts()` method counts the occurrences of individual values, and sorts it by descending number, so `head` shows the most frequent subject headings.
 
 #### Data harmonisation
 Normalization and data enrichment. The reproducible conversion into a data set suitable for quantitative humanities analysis.

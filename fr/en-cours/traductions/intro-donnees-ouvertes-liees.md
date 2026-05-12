@@ -92,7 +92,7 @@ personne=33059614
 
 Si toute personne qui crée des DOL utilise ces numéros pour faire référence respectivement aux deux Jack Straw, nous pouvons maintenant rechercher la personne identifiée par le numéro `64183282` dans un jeu de données ouvertes liées en étant confiant que nous obtiendrons la bonne personne ― dans ce cas, le ministre.
 
-Les paires attribut-valeur peuvent également contenir de l’information sur d’autres types d’entités&nbsp;: des lieux, par exemple. Jack Straw, le politicien contemporain, était membre du parlement britannique, représentant de la circonscription de Blackburn. Au Royaume-Uni, il y a plus qu’un seul lieu nommé Blackburn, sans mentionner les autres Blackburn à travers le monde. En utilisant les principes esquissés jusqu’ici, nous pouvons désambiguïser les différentes instances de Blackburn en attribuant un identifiant unique au lieu lié à la circonscription britannique&nbsp;: Blackburn située dans le Lancashire, en Angleterre.
+Les paires attribut-valeur peuvent également contenir de l’information sur d’autres types d’entités&nbsp;: des lieux, par exemple. Jack Straw, le politicien contemporain, était membre du parlement britannique, représentant de la circonscription de Blackburn. Au Royaume-Uni, il y a plusieurs lieux nommés Blackburn, sans mentionner les autres Blackburn à travers le monde. En utilisant les principes esquissés jusqu’ici, nous pouvons désambiguïser les différentes instances de Blackburn en attribuant un identifiant unique au lieu lié à la circonscription britannique&nbsp;: Blackburn située dans le Lancashire, en Angleterre.
 
 ```
 lieu=2655524
@@ -106,7 +106,7 @@ Mais essayons d’être plus précis quant à ce que nous voulons dire par Black
 blackburn1955-current
 ```
 
-VIAF étant un fichier d’autorité reconnu et maintenu dédié aux personnes notables, il était particulièrement pertinent d’avoir recours à ses identifiants pour décrire Jack Straw. Comme la circonscription représentée par Straw était parfaitement couverte par les fichiers d’autorité créés dans le projet Dilipad, il s’agissait également d’une ressource pertinente à mobiliser. Malheureusement, il n’est pas toujours aussi évident de savoir quelle liste publiée en ligne est le meilleur choix. Une liste pourrait être plus largement utilisée qu’une autre, mais cette dernière pourrait être plus pertinente dans certains contextes. Dans certains cas, GeoNames pourrait mieux fonctionner que les identifiants Dilipad. Dans d’autres cas, il vous sera impossible de trouver un jeu de données contenant l’information nécessaire. Par exemple, imaginez que vous voudriez créer les paires attribut-valeur vous décrivant avec vos relations familiales immédiates. Dans ce cas, vous auriez à créer vos propres identifiants.
+VIAF étant un fichier d’autorité reconnu et maintenu, dédié aux personnes notables, il était particulièrement pertinent d’avoir recours à ses identifiants pour décrire Jack Straw. Comme la circonscription représentée par Straw était parfaitement couverte par les fichiers d’autorité créés dans le projet Dilipad, il s’agissait également d’une ressource pertinente à mobiliser. Malheureusement, il n’est pas toujours aussi évident de savoir quelle liste publiée en ligne est le meilleur choix. Une liste pourrait être plus largement utilisée qu’une autre, mais cette dernière pourrait être plus pertinente dans certains contextes. Dans certains cas, GeoNames pourrait mieux fonctionner que les identifiants Dilipad. Dans d’autres cas, il vous sera impossible de trouver un jeu de données contenant l’information nécessaire. Par exemple, imaginez que vous voudriez créer les paires attribut-valeur vous décrivant avec vos relations familiales immédiates. Dans ce cas, vous auriez à créer vos propres identifiants.
 
 Le manque de régularité et de compatibilité des fichiers d’autorité est l’un des principaux défis auxquels les DOL sont confrontées à l’heure actuelle. [Tim Berners-Lee](https://fr.wikipedia.org/wiki/Tim_Berners-Lee), qui a proposé une méthode pour lier les documents entre eux à travers un réseau, ce qui a mené à la création du World Wide Web, a longtemps été un chef de file dans la promotion des DOL. Pour favoriser davantage les usages des DOL, il a également proposé le système d’évaluation cinq étoiles ([*five-star rating system*](https://w3.org/DesignIssues/LinkedData.html)) afin d’encourager tout le monde à tendre le plus possible vers les DOL. Essentiellement, il soutient non seulement la publication des données ouvertes, particulièrement si elles utilisent des formats ouverts et des standards accessibles, mais rappelle également qu'il est essentiel de lier ces données à celles des autres.
 
@@ -212,7 +212,7 @@ Donne-moi les noms de tous les pianistes qui ont appris de x
     où x a appris le piano de Liszt
 ```
 
-Cela renverrait toutes les personnes existantes dans le jeu de données qui étaient élèves des élèves de Liszt. Cela dit, ne nous emballons pas trop vite&nbsp;: cette requête ne renverra pas tous les élèves de chaque élève de Liszt qui n’ont jamais vécu, car toutes ces informations n’existent probablement pas ou ne sont tout simplement pas disponibles dans les ensembles existant de triplets. Le traitement des données dans le monde réel révèle toutes sortes d’omissions et d’incohérences, comme nous pourrons le constater dans la section finale, alors que nous explorerons l’un des plus grands jeu de DOL, [DBpedia](https://www.dbpedia.org) (en anglais)[^4].
+Cela renverrait toutes les personnes existantes dans le jeu de données qui étaient élèves des élèves de Liszt. Cela dit, ne nous emballons pas trop vite&nbsp;: cette requête ne renverra pas tous les élèves de chaque élève de Liszt qui n’ont jamais vécu, car toutes ces informations n’existent probablement pas ou ne sont tout simplement pas disponibles dans les ensembles existant de triplets. Le traitement des données dans le monde réel révèle toutes sortes d’omissions et d’incohérences, comme nous pourrons le constater dans la section finale, alors que nous explorerons l’un des plus grands jeux de DOL, [DBpedia](https://www.dbpedia.org) (en anglais)[^4].
 
 Si vous avez déjà utilisé des [bases de données relationnelles](https://fr.wikipedia.org/wiki/Base_de_données_relationnelle), vous pourriez penser qu’elles offrent le même genre de fonctionnalité. Dans le cas de Liszt, les informations sur les pianistes décrits plus haut pourraient s’organiser dans la base de données à l’aide d’une [table](https://fr.wikipedia.org/wiki/Table_(base_de_données)) nommée &laquo;&nbsp;Élèves&nbsp;&raquo;&nbsp;:
 
@@ -404,7 +404,7 @@ select * where {
 }
 ```
 
-Notez qu’aussitôt saisi le préfixe `dbr:`, l’interface ajoutera automatiquement la déclaration du préfixe à la première ligne de la requête, ce qui est très pratique. La requête complète est donc celle-ci :
+Notez qu’aussitôt saisi le préfixe `dbr:`, l’interface ajoutera automatiquement la déclaration du préfixe à la première ligne de la requête, ce qui est très pratique. La requête complète est donc celle-ci&nbsp;:
 
 ```sparql
 prefix dbr: <http://dbpedia.org/resource/>
@@ -413,7 +413,7 @@ select * where {
 }
 ```
 
-Pour exécuter la requête, appuyez sur le bouton « Execute query », situé en haut à droite de l’éditeur, ou effectuez <kbd>Ctrl</kbd> + <kbd>Entrée</kbd>[^5].
+Pour exécuter la requête, appuyez sur le bouton _Execute query_, situé en haut à droite de l’éditeur, ou effectuez _Ctrl_ + _Entrée_[^5].
 
 Vous devriez obtenir deux colonnes avec les en-têtes **b** et **c**.
 Notez bien ici que la casse des caractères fait une différence&nbsp;: `dbr:lyndal_roper` ne renverra rien.
@@ -422,7 +422,7 @@ Notez bien ici que la casse des caractères fait une différence&nbsp;: `dbr:lyn
 
 Que s’est-il donc passé&nbsp;? Et comment savoir ce qu’il faut saisir&nbsp;?
 
-À vrai dire, je ne le savais pas vraiment : c’est une difficulté des points d’accès SPARQL. Lorsque vous apprenez à connaître un jeu de données, vous devez essayer de trouver quels sont les termes utilisés par le modèle. Puisque ces données proviennent de *Wikipédia* et que je souhaitais obtenir de l’information sur des historiennes, j’ai consulté l’article de *Wikipédia* sur Lyndal Roper, accessible à cette adresse : [https://fr.wikipedia.org/wiki/Lyndal_Roper](https://fr.wikipedia.org/wiki/Lyndal_Roper).
+À vrai dire, je ne le savais pas vraiment&nbsp;: c’est une difficulté des points d’accès SPARQL. Lorsque vous apprenez à connaître un jeu de données, vous devez essayer de trouver quels sont les termes utilisés par le modèle. Puisque ces données proviennent de *Wikipédia* et que je souhaitais obtenir de l’information sur des historiennes, j’ai consulté l’article de *Wikipédia* sur Lyndal Roper, accessible à cette adresse&nbsp;: [https://fr.wikipedia.org/wiki/Lyndal_Roper](https://fr.wikipedia.org/wiki/Lyndal_Roper).
 
 La partie finale de l’URL est `Lyndal_Roper` et j’ai conclu que cette chaîne de caractères était probablement la façon dont DBpedia se réfère à l’article. Parce que je n’en sais pas plus sur ce qui pourrait se trouver dans les triplets qui mentionnent Roper, j’utilise `?b` et `?c`&nbsp;:
 ce ne sont que des éléments de substitution. J’aurais tout aussi bien pu saisir `?peu_importe` et `?comme_vous_voulez` pour que les en-têtes de colonnes aient ces valeurs. Lorsque vous aurez besoin de plus de précision pour vos résultats, il sera important de nommer vos colonnes adéquatement.
@@ -468,7 +468,7 @@ select ?historienne where {
 
 Ça fonctionne&nbsp;! J’obtiens six entrées. Au moment d’écrire cette leçon, il y a six historiennes australiennes, répertoriées au sein de ce jeu de données, qui sont catégorisées à la fois comme spécialiste en histoire d’origine australienne et comme femme australienne spécialiste en histoire.
 
-{% include figure.html filename="fr-tr-intro-aux-donnees-liees-06.png" alt="Liste des historiennes australiennes présentes dans les données de DBpedia sur TriplyDB, apparaîssant sous le champ de saisie dans lequel on peut y lire la requête correspondant aux résultats de la liste." caption="Figure&nbsp;6. Liste des historiennes australiennes répertoriées dans le jeu de données." %}
+{% include figure.html filename="fr-tr-intro-aux-donnees-liees-06.png" alt="Liste des historiennes australiennes présentes dans les données de DBpedia sur TriplyDB, apparaissant sous le champ de saisie dans lequel on peut y lire la requête correspondant aux résultats de la liste." caption="Figure&nbsp;6. Liste des historiennes australiennes répertoriées dans le jeu de données." %}
 
 Seulement six historiennes&nbsp;? Bien sûr, en réalité, il y en a bien davantage, comme nous pourrions facilement le constater en remplaçant le nom de Lyndal Roper par Cassandra Pybus dans notre première requête. Voilà qui nous mène au problème que j’ai mentionné plus tôt avec *Dbpedia*&nbsp;: cet entrepôt n’est pas vraiment constant quant à l’information structurelle sur les types de personnes qu’il utilise. Nos requêtes permettent de lister quelques historiennes britanniques, mais tout indique qu’il est impossible de générer une liste exhaustive de personnes dans cette catégorie. Tout ce que nous avons trouvé, ce sont les personnes qui ont une entrée sur *Wikipédia* en anglais et qui ont été catégorisées comme &laquo;&nbsp;historienne australienne&nbsp;&raquo;. Cela exclut par exemple les femmes australiennes spécialistes en histoire qui ne sont pas également catégorisées comme spécialiste en histoire d’origine australienne, puisque notre dernière requête renvoie l’intersection des deux ensembles.
 
@@ -481,21 +481,21 @@ Quoi qu’il en soit, malgré son manque de constance, *DBpedia* demeure un exce
 
 ### Ressources
 
-- DuCharme Bob, [bobdc](https://www.bobdc.com/blog/), blog qui vaut le détour
-- McCrae John Philip, [Linked Open Data Cloud](https://lod-cloud.net), état actuel et historique du _LOD Cloud_
-- Schmachtenberg Max, Bizer Christian, Paulheim Heiko, [State of the LOD Cloud 2014](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/), état du _LOD Cloud_ en 2014 avec quelques statistiques intéressantes
-- Lincoln Matthew, [Using SPARQL to access Linked Open Data](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL), leçon de *Programming Historian* dédiée à SPARQL (les outils utilisés par la leçon sont obsolètes mais la démarche d’exploration proposée par Lincoln est recommandée)
+- Bob DuCharme, [bobdc](https://www.bobdc.com/blog/), blog qui vaut le détour
+- John Philip McCrae, [Linked Open Data Cloud](https://lod-cloud.net), état actuel et historique du _LOD Cloud_
+- Max Schmachtenberg, Christian Bizer et Heiko Paulheim, [State of the LOD Cloud 2014](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/), état du _LOD Cloud_ en 2014 avec quelques statistiques intéressantes
+- Matthew Lincoln, [Using SPARQL to access Linked Open Data](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL), leçon de *Programming Historian* dédiée à SPARQL (les outils utilisés par la leçon sont obsolètes mais la démarche d’exploration proposée par Lincoln est recommandée)
 
 ### Bibliographie sommaire
 
-- Allemang Dean, Hendler Jim, Gandon Fabien, _Semantic Web for the Working Ontologist: Effective Modeling for Linked Data, RDFS, and OWL_ (3<sup>e</sup> éd.), Association for Computing Machinery, ACM Books Series 33, 2020, [https://doi.org/10.1145/3382097](https://doi.org/10.1145/3382097)
-- Berners-Lee Tim, « Linked Data », _Design Issues_, 18 juin 2009, [https://w3.org/DesignIssues/LinkedData.html](https://w3.org/DesignIssues/LinkedData.html)
-- DuCharme Bob, _Learning SPARQL: Querying and Updating with SPARQL 1.1_ (2<sup>e</sup> éd.), O’Reilly, 2013, [http://www.learningsparql.com](http://www.learningsparql.com)
-- Gartner Richard, _Metadata: Shaping knowledge from Antiquity to the semantic web_ (1<sup>re</sup> éd.), Springer, 2016, [https://doi.org/10.1007/978-3-319-40893-4](https://doi.org/10.1007/978-3-319-40893-4)
-- Nurmikko-Fuller Terhi, _Linked Data for Digital Humanities_ (1<sup>re</sup> éd.), Routledge, 2023, [https://doi.org/10.4324/9781003197898](https://doi.org/10.4324/9781003197898)
-- Oldman Dominic, Doerr Martin, Gradmann Stefan, « Zen and the Art of Linked Data », in Schreibman Susan, Siemens Ray, Unsworth John, _A New Companion to Digital Humanities_, John Wiley & Sons, 2016, 251-273, [https://doi.org/10.1002/9781118680605.ch18](https://doi.org/10.1002/9781118680605.ch18)
-- Van Hooland Seth, Verborgh Ruben, _Linked data for libraries, archives and museums: how to clean, link and publish your metadata_, Facet Publishing, 2015, [https://doi.org/10.29085/9781783300389](https://doi.org/10.29085/9781783300389)
-- Wood David, Zaidman Marsha , Ruth Luke, Hausenblas Michael, _Linked data: structured data on the Web_, Manning Publications, 2013, [https://www.manning.com/books/linked-data](https://www.manning.com/books/linked-data)
+- Dean Allemang, Jim Hendler et Fabien Gandon, _Semantic Web for the Working Ontologist: Effective Modeling for Linked Data, RDFS, and OWL_, 3<sup>e</sup> éd. (New York&nbsp;: Association for Computing Machinery, ACM Books Series 33, 2020) [https://doi.org/10.1145/3382097](https://doi.org/10.1145/3382097)
+- Tim Berners-Lee, &laquo;&nbsp;Linked Data&nbsp;&raquo;, _Design Issues_, 18 juin 2009, [https://w3.org/DesignIssues/LinkedData.html](https://w3.org/DesignIssues/LinkedData.html)
+- Bob DuCharme, _Learning SPARQL: Querying and Updating with SPARQL, 1.1_ 2<sup>e</sup> éd. (Sébastopol, CA&nbsp;: O’Reilly, 2013) [http://www.learningsparql.com](http://www.learningsparql.com)
+- Richard Gartner, _Metadata: Shaping knowledge from Antiquity to the semantic web_, 1<sup>re</sup> éd. (Cham&nbsp;: Springer, 2016) [https://doi.org/10.1007/978-3-319-40893-4](https://doi.org/10.1007/978-3-319-40893-4)
+- Terhi Nurmikko-Fuller, _Linked Data for Digital Humanities_, 1<sup>re</sup> éd. (London&nbsp;: Routledge, 2023), [https://doi.org/10.4324/9781003197898](https://doi.org/10.4324/9781003197898)
+- Dominic Oldman, Martin Doerr et Stefan Gradmann, &laquo;&nbsp;Zen and the Art of Linked Data&nbsp;&raquo;, dans Susan Schreibman, Ray Siemens et John Unsworth, _A New Companion to Digital Humanities_, (Chichester&nbsp;: John Wiley & Sons, 2016) 251-273, [https://doi.org/10.1002/9781118680605.ch18](https://doi.org/10.1002/9781118680605.ch18)
+- Seth Van Hooland et Ruben Verborgh, _Linked Data for Libraries, Archives and Museums: How to Clean, Link and Publish your Metadata_ (London&nbsp;: Facet Publishing, 2015) [https://doi.org/10.29085/9781783300389](https://doi.org/10.29085/9781783300389)
+- David Wood, Marsha Zaidman, Luke Ruth et Michael Hausenblas, _Linked Data: Structured Data on the Web_, Manning Publications, 2013, [https://www.manning.com/books/linked-data](https://www.manning.com/books/linked-data)
 
 ## Remerciements
 
@@ -509,7 +509,7 @@ J’aimerais remercier Matthew Lincoln et Terhi Nurmikko-Fuller pour leurs relec
 
 [^2]: Les applications web présentent souvent les numéros de téléphone sous la forme d’un URI qui rencontre les critères de la spécification [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986), *Uniform Resource Identifier (URI): Generic Syntax*. Par exemple, l’URI tel:+1-816-555-1212 utilise un protocole (tel:) et un chemin (+1-816-555-1212) permettant d’exécuter une application téléphonique pour joindre l’entité identifiée, tout comme un URI utilisant le protocole HTTP permet d’accéder, s’il est déréférençable, à une description de la ressource identifiée dans un navigateur web.
 
-[^4]: De pair avec DBpedia, [Wikidata](https://www.wikidata.org) est également un incontournable des jeux de données ouvertes liées. En plus d’appliquer les principes du [wiki](https://fr.wikipedia.org/wiki/Wiki) aux données, il revêt aujourd’hui une importance particulière dans les écosystèmes d’information web : comme VIAF (dont les notices sont liées à Wikidata), il peut faire figure de fichier d’autorité.
+[^4]: De pair avec DBpedia, [Wikidata](https://www.wikidata.org) est également un incontournable des jeux de données ouvertes liées. En plus d’appliquer les principes du [wiki](https://fr.wikipedia.org/wiki/Wiki) aux données, il revêt aujourd’hui une importance particulière dans les écosystèmes d’information web&nbsp;: comme VIAF (dont les notices sont liées à Wikidata), il peut faire figure de fichier d’autorité.
 
 [^5]: Veuillez noter que l’exécution des requêtes peut mettre un certain temps à aboutir. Si le délai d’attente est dépassé (il s’agit typiquement d’un *timeout*), il suffit de réessayer quelques minutes plus tard.
 

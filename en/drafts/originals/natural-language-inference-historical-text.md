@@ -122,11 +122,11 @@ from collections import Counter
 
 Download the lesson data files from the [_Programming Historian_ repository](https://github.com/programminghistorian/ph-submissions/assets/natural-language-inference-historical-text). Create a `data/` directory in your working folder and place all files there. The dataset includes:
 
-- `/core/metadata_cleaned.csv` -- a table listing the ten source documents with author, group, and type metadata
-- Thirteen `.txt` files in `/texts/` -- the OCR-transcribed historical texts (legal rulings, the 1884 Chinese Regulation Act, and Royal Commission reports)
-- `/core/stance_lexicon.csv` -- a domain-specific lexicon of approximately 120 terms in six stance categories
-- `/core/labelled_snippets.csv` -- 45 hand-labelled sentence excerpts used for ground truth validation
-- `/texts/quotations_removed/` -- versions of Crease's texts with direct quotations of the Act removed
+- `data/core/metadata_cleaned.csv` -- a table listing the ten source documents with author, group, and type metadata
+- Thirteen `.txt` files in `data/texts/` -- the OCR-transcribed historical texts (legal rulings, the 1884 Chinese Regulation Act, and Royal Commission reports)
+- `data/core/stance_lexicon.csv` -- a domain-specific lexicon of approximately 120 terms in six stance categories
+- `data/core/labelled_snippets.csv` -- 45 hand-labelled sentence excerpts used for ground truth validation
+- `data/texts/quotations_removed/` -- versions of Crease's texts with direct quotations of the Act removed
 
 ## Case Study: Chinese Immigration Law in British Columbia
 

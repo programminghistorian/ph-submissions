@@ -104,7 +104,7 @@ Zoom into the image to try it out:
 In practice, IIIF images are usually delivered through viewers like [Mirador](https://projectmirador.org) or [OpenSeadragon](https://openseadragon.github.io). Below, take a look at the AGSL's treasured [Leardo Mappamundi](https://collections.lib.uwm.edu/digital/collection/agdm/id/37085/), embedded in a Mirador Viewer. Clicking on the expand arrows allows us to view the map in full-resolution detail directly in the browser---no need to download image files.
 
 <iframe
-  src="assets/leardo-mirador.html"
+  src="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/leardo-mirador.html"
   title="Side-by-side Mirador comparison of the original and multispectral Leardo Mappamundi"
   width="100%"
   height="650"
@@ -1223,9 +1223,9 @@ In Leaflet-speak, these are called "layer controls," and you can [read more abou
 
 ### Final map
 
-<iframe src="assets/allmaps-leaflet-demo/index.html" title="Allmaps Leaflet demo map" width="100%" height="500px"></iframe>
+<iframe src="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/allmaps-leaflet-demo/index.html" title="Allmaps Leaflet demo map" width="100%" height="500px"></iframe>
 
-[View sample map in a new window](assets/allmaps-leaflet-demo/index.html){:target="_blank"}
+[View sample map in a new window](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/allmaps-leaflet-demo/index.html){:target="_blank"}
 
 Try adding different annotations (just note you'll have to update the `center` array, which is hard-coded to a latitude/longitude pair for Boston).
 

@@ -214,7 +214,7 @@ $$
 \text{IDF}(t, D) = \log \frac{|D|}{|\{d \in D : t \in d\}|}
 $$
 
-where $\vert D \vert$ is the total number of documents and the denominator counts how many documents contain $t$. A term appearing in every document gets an IDF near zero; a term appearing in only one document gets a high IDF. The combined score is:
+where $$\vert D \vert$$ is the total number of documents and the denominator counts how many documents contain $$t$$. A term appearing in every document gets an IDF near zero; a term appearing in only one document gets a high IDF. The combined score is:
 
 $$
 \text{TF-IDF}(t, d, D) = \text{TF}(t, d) \times \text{IDF}(t, D)

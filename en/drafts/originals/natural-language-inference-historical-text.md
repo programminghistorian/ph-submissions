@@ -47,7 +47,7 @@ The lesson uses nineteenth-century British Columbia court rulings on Chinese imm
 
 ## Prerequisites
 
-You will need intermediate Python experience: working with pandas, writing functions, and using pip. If you are newer to Python, start with the [_Programming Historian_'s Introduction to Python](https://programminghistorian.org/en/lessons/introduction-and-installation). For background knowledge in word embeddings, see [Programming Historian's Understanding and Creating Word Embeddings](https://programminghistorian.org/en/lessons/understanding-creating-word-embeddings).
+You will need intermediate Python experience: working with pandas, writing functions, and using pip. If you are newer to Python, start with the [_Programming Historian_'s Introduction to Python](https://programminghistorian.org/en/lessons/introduction-and-installation). For background knowledge in word embeddings, see [_Programming Historian_'s Understanding and Creating Word Embeddings](https://programminghistorian.org/en/lessons/understanding-creating-word-embeddings).
 
 Python 3.10 or later is required, along with at least 8GB of RAM. A GPU or iGPU is not required but will substantially speed up model inference.
 
@@ -120,7 +120,7 @@ from collections import Counter
 
 ### Downloading the Data
 
-Download the lesson data files from the [_Programming Historian_ repository](https://github.com/programminghistorian/ph-submissions/assets/natural-language-inference-historical-text). Create a `data/` directory in your working folder and place all files there. The dataset includes:
+Download the lesson data files from the [_Programming Historian_ repository](https://github.com/programminghistorian/ph-submissions/assets/natural-language-inference-historical-text/data.zip). Create a `data/` directory in your working folder and place all files there. The dataset includes:
 
 - `data/core/metadata_cleaned.csv` -- a table listing the ten source documents with author, group, and type metadata
 - Thirteen `.txt` files in `data/texts/` -- the OCR-transcribed historical texts (legal rulings, the 1884 Chinese Regulation Act, and Royal Commission reports)
@@ -214,7 +214,7 @@ $$
 \text{IDF}(t, D) = \log \frac{|D|}{|\{d \in D : t \in d\}|}
 $$
 
-where $|D|$ is the total number of documents and the denominator counts how many documents contain $t$. A term appearing in every document gets an IDF near zero; a term appearing in only one document gets a high IDF. The combined score is:
+where $\vert D \vert$ is the total number of documents and the denominator counts how many documents contain $t$. A term appearing in every document gets an IDF near zero; a term appearing in only one document gets a high IDF. The combined score is:
 
 $$
 \text{TF-IDF}(t, d, D) = \text{TF}(t, d) \times \text{IDF}(t, D)

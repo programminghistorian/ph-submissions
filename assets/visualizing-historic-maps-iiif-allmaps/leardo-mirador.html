@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leardo Mappamundi Mirador Comparison</title>
+    <style>
+      html,
+      body,
+      #mirador {
+        height: 100%;
+        margin: 0;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/mirador@3/dist/mirador.min.js"></script>
+  </head>
+  <body>
+    <div id="mirador"></div>
+    <script>
+      Mirador.viewer({
+        id: "mirador",
+        workspace: {
+          type: "mosaic"
+        },
+        windows: [
+          {
+            manifestId: "https://collections.lib.uwm.edu/iiif/info/agdm/538/manifest.json"
+          },
+          {
+            manifestId: "https://collections.lib.uwm.edu/iiif/info/agdm/37085/manifest.json"
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>

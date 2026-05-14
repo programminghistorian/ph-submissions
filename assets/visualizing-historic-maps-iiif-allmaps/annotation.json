@@ -1,0 +1,195 @@
+{
+  "id": "https://annotations.allmaps.org/manifests/6c9fd85ec4dfa7df",
+  "type": "AnnotationPage",
+  "@context": "http://www.w3.org/ns/anno.jsonld",
+  "items": [
+    {
+      "id": "https://annotations.allmaps.org/maps/2543dadd9c2fa8b1",
+      "type": "Annotation",
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "created": "2026-04-03T16:46:18.241Z",
+      "modified": "2026-04-03T16:46:18.241Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://cdm17272.contentdm.oclc.org/iiif/2/agdm:1550",
+          "type": "ImageService2",
+          "height": 6941,
+          "width": 10784,
+          "partOf": [
+            {
+              "id": "https://cdm17272.contentdm.oclc.org/iiif/agdm:1550/canvas/c0",
+              "type": "Canvas",
+              "label": {
+                "none": [
+                  "Plan routier de la ville de Paris, ou Guide des etrangers dans cette capitale... / chez Ch. Picquet"
+                ]
+              },
+              "partOf": [
+                {
+                  "id": "https://cdm17272.contentdm.oclc.org/iiif/agdm:1550/manifest.json",
+                  "type": "Manifest",
+                  "label": {
+                    "none": [
+                      "Plan routier de la ville de Paris, ou Guide des etrangers dans cette capitale... / chez Ch. Picquet"
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "provider": [
+            {
+              "type": "Organization",
+              "label": {
+                "none": [
+                  "University of Wisconsin-Milwaukee Libraries"
+                ]
+              },
+              "homepage": [
+                {
+                  "id": "https://collections.lib.uwm.edu/digital/collection/agdm/"
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"10784\" height=\"6941\"><polygon points=\"205,3836 893,3836 906,4288 1231,4307 1251,4475 1611,4475 1601,4628 1985,4628 1988,4762 2364,4770 2358,5527 3897,5534 3878,6789 6940,6800 6949,6195 7332,6205 7332,6030 7723,6032 7721,5803 9954,5808 9964,4813 9973,3494 9282,3487 9288,1916 8142,1911 8151,92 3177,106 223,109 217,1896\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "polynomial",
+          "options": {
+            "order": 1
+          }
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                5035,
+                3448
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                2.3409462189869146,
+                48.85713168617599
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                7283,
+                3951
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                2.3691598444749786,
+                48.85316790948076
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                2049,
+                3937
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                2.303684138644229,
+                48.85297561194929
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                7165,
+                1496
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                2.367576945486377,
+                48.873297547605205
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1393,
+                1370
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                2.2951998780677343,
+                48.87373968857051
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                9418,
+                5653
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                2.39579727478187,
+                48.83960820375191
+              ]
+            }
+          }
+        ],
+        "_allmaps": {
+          "id": "https://annotations.allmaps.org/maps/2543dadd9c2fa8b1",
+          "version": "https://annotations.allmaps.org/maps/2543dadd9c2fa8b1@59ac2de8fe310eed",
+          "image": {
+            "id": "https://annotations.allmaps.org/images/adeae8a56aaf59fb",
+            "version": "https://annotations.allmaps.org/images/adeae8a56aaf59fb@b268148f34282daf",
+            "canvases": [
+              {
+                "id": "https://annotations.allmaps.org/canvases/0f1cc1881232968d",
+                "manifests": [
+                  {
+                    "id": "https://annotations.allmaps.org/manifests/6c9fd85ec4dfa7df"
+                  }
+                ]
+              }
+            ]
+          },
+          "scale": 1.09655,
+          "area": 42328728.87
+        }
+      }
+    }
+  ]
+}

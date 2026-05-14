@@ -131,7 +131,7 @@ yolo classify predict model=yolo26n-cls.pt source='https://ultralytics.com/image
 
 Le modèle YOLO attribue des scores de probabilité pour chaque catégorie possible. Par exemple, pour l'image du [bus](https://ultralytics.com/images/bus.jpg), le modèle retourne les informations suivantes :
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-01.png" alt="Test" caption="Figure 1. Test de la librairie Yolo" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-01.png" alt="Sortie dans une console de la commande test proposée pour la librairie Yolo avec l'analyse d'une photo comprenant un bus." caption="Figure 1. Test de la librairie Yolo" %}
 
 0.57 pour la catégorie mini-bus
 
@@ -192,7 +192,7 @@ LIMIT 1000
 ```
 Exemple de la requête
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-02.png" alt="Joconde" caption="Figure 2. Requête Wikidata sur la base de données Joconde" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-02.png" alt="Requête en Sparql executée sur l'interface Web de Wikidata permettant d'interroger les données de la base Joconde présent sur Wikidata" caption="Figure 2. Requête Wikidata sur la base de données Joconde" %}
 
 #### 3.2.2 Constitution des données d’apprentissage pour la catégorie Dessin
 
@@ -304,20 +304,20 @@ Explications des options :
 
 Un exemple des tableaux téléchargés
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-03.png" alt="tableau" caption="Figure 3. Un exemple des tableaux téléchargés" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-03.png" alt="Une capture d'écran de quelques miniatures des tableaux téléchargés présent dans le dossier" caption="Figure 3. Un exemple des tableaux téléchargés" %}
 
 Un exemple des dessins téléchargés
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-04.png" alt="dessin" caption="Figure 4. Un exemple des dessins téléchargés" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-04.png" alt="Une capture d'écran de quelques miniatures des dessins téléchargés présent dans le dossier" caption="Figure 4. Un exemple des dessins téléchargés" %}
 
 
 Un exemple des photos téléchargés
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-05.png" alt="photos" caption="Figure 5. Un exemple des photos téléchargés" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-05.png" alt="Une capture d'écran de quelques miniatures des photos téléchargés présent dans le dossier" caption="Figure 5. Un exemple des photos téléchargés" %}
 
 Un exemple des cartes géographiques téléchargées
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-06.png" alt="cartes" caption="Figure 6. Un exemple des cartes téléchargées" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-06.png" alt="Une capture d'écran de quelques miniatures des cartes téléchargées présent dans le dossier" caption="Figure 6. Un exemple des cartes téléchargées" %}
 
 
 #### 3.3.3 Organisation des données
@@ -505,7 +505,7 @@ workers=8 : Nombre de processus parallèles utilisés pour charger les données,
 
 ---
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-07.png" alt="Visual description of figure image" caption="Figure 7. CAPTION" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-07.png" alt="Capture d'écran de la sortie console de la fin de l'entraînement du modèle" caption="Figure 7. Fin de l'entraînement du modèle" %}
 
 Le meilleur modèle est le /runs/classify/train6/weights/best.pt
 
@@ -522,7 +522,7 @@ yolo classify predict \
 ```
 Réponse:
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-08.png" alt="Visual description of figure image" caption="Figure 8. CAPTION" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-08.png" alt="Capture d'écran de la sortie console du test du modèle sur une carte" caption="Figure 8. Test du modèle" %}
 
 **Interprétation des résultats**
 
@@ -600,11 +600,11 @@ Le fichier JSON généré contient pour chaque image :
 
 Voici les résultats avec un score de confiance de 1.0 pour la catégorie Tableau:
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="résultat-tableau" caption="Figure 9. Les résultats pour la catégorie Tableau" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="Capture d'écran des miniatures de quelques images classées comment Tableau avec un score égale à 1" caption="Figure 9. Les résultats pour la catégorie Tableau" %}
 
 Voici les résultats avec un score de confiance de 1.0 pour la catégorie Carte Géographique:
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="résultat-Carte" caption="Figure 10. Les résultats pour la catégorie Carte" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="Capture d'écran des miniatures de quelques images classées comment Carte avec un score égale à 1" caption="Figure 10. Les résultats pour la catégorie Carte" %}
 
 On observe la présence de faux positifs dans les résultats du modèle. Certaines images sont donc mal classées malgré une forte confiance de prédiction.
 

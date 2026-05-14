@@ -111,7 +111,7 @@ In practice, IIIF images are usually delivered through viewers like [Mirador](ht
   allowfullscreen>
 </iframe>
 
-[Open the Leardo Mappamundi comparison in a new page](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/leardo-mirador.html)
+[Open the Leardo Mappamundi comparison in a new page](https://programminghistorian.github.io/ph-submissions/assets/visualizing-historic-maps-iiif-allmaps/allmaps-leaflet-demo/index.html)
 
 ### The IIIF manifest
 
@@ -368,12 +368,12 @@ The figure below shows a georeferenced map of New Zealand with the background re
 
 Allmaps Viewer has some useful keyboard shortcuts:
 
-- <kbd>Space</kbd> – Toggle transparency on/off
-- <kbd>B</kbd> – Toggle background removal
-- <kbd>M</kbd> – Toggle display of the mask line
-- <kbd>T</kbd> – Cycle transformation algorithm
-- <kbd>G</kbd> – Display a grid over the image
-- <kbd>D</kbd> – Cycle display of distortions: surface deformation, angle distortion, or none
+- _Space_ – Toggle transparency on/off
+- _B_ – Toggle background removal
+- _M_ – Toggle display of the mask line
+- _T_ – Cycle transformation algorithm
+- _G_ – Display a grid over the image
+- _D_ – Cycle display of distortions: surface deformation, angle distortion, or none
 
 ### View stitched atlas sheets
 
@@ -399,11 +399,11 @@ explore the whole atlas at once.
 This kind of stitching takes careful work: small differences in mask placement, GCPs,
 or transformation settings can create visible gaps or overlaps between sheets.
 
-Using <kbd>M</kbd> to display the mask lines shows how all the component maps fit together.
+Using _M_ to display the mask lines shows how all the component maps fit together.
 
 When working with multi-sheet objects:
 
-- <kbd>[</kbd> and <kbd>]</kbd> – Cycle through maps
+- _[_ and _]_ – Cycle through maps
 - Open the map context menu, for example by right-clicking – Change map layer order
 
 Once you have checked how the map behaves in the viewer, you can also use the same georeferenced map outside Allmaps.
@@ -1009,11 +1009,11 @@ gdalwarp \
 
 Save the script file:
 
-**VS Code**: File > Save or <kbd>Ctrl+S</kbd> to save.
+**VS Code**: File > Save or _Ctrl+S_ to save.
 
-**nano**: <kbd>Ctrl+O</kbd> to *write out* (save), <kbd>Enter</kbd> to confirm filename, <kbd>Ctrl+X</kbd> to exit nano
+**nano**: _Ctrl+O_ to *write out* (save), _Enter_ to confirm filename, _Ctrl+X_ to exit nano
 
-**vim**: <kbd>Esc</kbd>, then type `:wq` and <kbd>Enter</kbd> to save and quit
+**vim**: _Esc_, then type `:wq` and _Enter_ to save and quit
 
 <div class="alert alert-warning">
 There is [an issue](https://github.com/allmaps/allmaps/issues/261) related to the `-cutline_srs` flag on the Allmaps repository.
@@ -1225,7 +1225,7 @@ In Leaflet-speak, these are called "layer controls," and you can [read more abou
 
 <iframe src="https://programminghistorian.github.io/ph-submissions/assets/visualizing-historic-maps-iiif-allmaps/allmaps-leaflet-demo/index.html" title="Allmaps Leaflet demo map" width="100%" height="500px"></iframe>
 
-[View sample map in a new window](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/allmaps-leaflet-demo/index.html){:target="_blank"}
+[View sample map in a new window](https://programminghistorian.github.io/ph-submissions/assets/visualizing-historic-maps-iiif-allmaps/allmaps-leaflet-demo/index.html){:target="_blank"}
 
 Try adding different annotations (just note you'll have to update the `center` array, which is hard-coded to a latitude/longitude pair for Boston).
 

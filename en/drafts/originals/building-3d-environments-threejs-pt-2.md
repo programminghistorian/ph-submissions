@@ -13,7 +13,7 @@ reviewers:
 editors:
 - Massimiliano Carloni
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/607
-difficulty: 2
+difficulty: 3
 activity: presentation
 topics: web development, 3d modeling
 abstract: This lesson is the second part of a two-part lesson series on using the three.js JavaScript library to create interactive websites featuring 3D cultural heritage models. In this Part 2, you will learn how to enable user selection of the different models of ceramic vessels to trigger the display of informative text. You will also learn how to add interactive features that turn the website into a game.
@@ -24,7 +24,7 @@ doi: XX.XXXXX/phen0000
 {% include toc.html %}
 
 ## Introduction
-In Part 1 of this lesson, you used three.js to create a website featuring a camera and a scene with lights, camera navigation controls, and a model featuring multiple jars on a map of New Guinea. In Part 2, the 3D model will be made more interactive. To do so, will involve learning how to make and import the various model components separately.
+In Part 1 of this lesson, you used three.js to create a website featuring a camera and a scene with lights, camera navigation controls, and a model featuring multiple jars on a map of New Guinea. In Part 2, the 3D model will be made more interactive. This will involve learning how to make and import the various model components separately.
 
 The model in Part 1 ([seen here in SketchFab](https://skfb.ly/putNM)), featured a selection of the over 100 vessel types historically made in the New Guinea region. Digital scenes with models of cultural heritage can visually convey information, such as similarities and differences in pottery form across a geographical area. Annotating elements of the model using text (or media such as images), can increase the ability of digital models to convey information and ideas on the history and culture of a region or era.
 
@@ -40,14 +40,14 @@ Historically Papua society consisted of smaller communities who are thought to h
 
 Using JavaScript libraries allows you to determine how you want to make a scene interactive. For example, this scene could be redesigned so that a mouse click (or keyboard choice) could change the map to show the different linguistic regions, or to indicate the proposed Austronesian migration route. Alternatively, when a jar is selected the map image could show where that community traded jars to. The Adzera-made jars were traded east into the highlands and west into New Britain. While this scene focuses on geographic differences, you could design a scene using a timeline to reflect changes in vessel form and decoration over time. You could also utilise the 3D space to have the vessels arranged on virtual shelves or museum cases, or the map could be a 3D model showing the landscape terrain.
 
-In Part 1 you learnt how to import complex models. This lesson you will show how to: add simple 2D and 3D shapes (such as planes and spheres); change model properties (such as colour, size, and visibility); add image textures to planes; create object groups; let users select objects with ray casting; and trigger changes to the scene when an object is selected. While a simple interactive scene will be created here, these techniques could be used to create many different interactive scenes. For example, a scene could have options to allow users to toggle the visibility, size or colour of groups of vessels with different properties, such as potter gender or language. 
+In Part 1 you learnt how to import complex models. In this lesson you will learn how to: add simple 2D and 3D shapes (such as planes and spheres); change model properties (such as colour, size, and visibility); add image textures to planes; create object groups; let users select objects with ray casting; and trigger changes to the scene when an object is selected. While a simple interactive scene will be created here, these techniques could be used to create many different interactive scenes. For example, a scene could have options to allow users to toggle the visibility, size or colour of groups of vessels with different properties, such as potter gender or language. 
 
 The ability to alter the size of a selected vessel could also be a way by which more jar models could be incorporated in the scene, with models starting small enough so that they all fit and expanding for better inspection if selected. Designing your own scenes with three.js gives you more flexibility in scene creation. In this lesson you will learn how to create a basic interactive scene, but three.js has the ability to create intricate galleries with professional appearances such as [Artexpress](https://www.artexpress.vr.artsunit.nsw.edu.au/2025/), which displays Australian High School exam artwork.
 
 ## Setting Up
 In addition to the technical requirements in Part 1, for Part 2 of this lesson, you will need to download the [`/models` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/models) containing the individual jar models, and the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2/textures) with information about them, from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2). 
 
-Put (or replace) the downloaded models and textures folders in the myscene folder (Figures 1-2). Keep the index.html and main.css files that you created in Part 1. If you did not do Part 1, you need to the download index_pt1_complete.html and main.css files from the [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2), rename the index_pt1_complete.html file to index.html and place them in a folder called myscene. If you run into problems when editing the code that you cannot fix you can download and inspect the finished code index_pt2_scene.html or index_pt2_game.html from the [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2).
+Put (or replace) the downloaded models and textures folders in the myscene folder (Figures 1-2). Keep the index.html and main.css files that you created in Part 1. If you did not do Part 1, you need to download index_pt1_complete.html and main.css files from the [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2), rename the index_pt1_complete.html file to index.html and place them in a folder called myscene. If you run into problems when editing the code that you cannot fix you can download and inspect the finished code index_pt2_scene.html or index_pt2_game.html from the [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2).
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-01.png" alt="Screenshot of the VSC editor showing a list of glb files in the expanded models folder." caption="Figure 1. File structure for Part 2 as shown in VSC, with the models folder expanded. The index.html file is shown in the main panel." %}
 
@@ -70,13 +70,13 @@ function onLoadMap( gltf ) {
 loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error ) {console.error( error );} ); 
 ```
 
-The next section explains how to plan out and design an interactive scene before building it. You do not have to attempt to draw the plan for this scene or game but viewing the scene mock-ups can help you understand what the different components in this lesson and provides an example of what you should do when you are designing your own scenes or games.
+The next section explains how to plan out and design an interactive scene before building it. You do not have to attempt to draw the plan for this scene or game but viewing the scene mock-ups can help you understand what are the different components in this lesson and provides an example of what you should do when you are designing your own scenes or games.
 
 ## Using Mock-ups to Plan a Scene or Game
 
 In Part 1 it was explained that scenes have a camera, light(s) and models and that the positions of these in 3D space are specified in the code. If you do not remember the 3 (x, y and z) axes (the red, green and blue arrows) in the [three.js editor](https://threejs.org/editor/), you may want to reopen it, or examine Figures 5-10 in Part 1. Part 1 utilised one model. With multiple models it is useful to draft out where components such as the camera, lights and models will be placed. You can do this with pen and paper and using grid or dotted paper can be useful. Additionally, you can mock-up views using whatever vector graphics software you are familiar with to create figures (Inkscape, Affinity Designer, Adobe Illustrator, Canva, or Powerpoint). 
 
-When designing your own interactive scenes or games, draw the three different 2D views, the "front-view", "side-on view" and "birds-eye view". Figure 3 shows mock-up views for the game version of the scene that will be created in the second part of this lesson. Note that in the mock-ups that the scene x, y and z axes are clearly identified with their positive and negative directions indicated.
+When designing your own interactive scenes or games, draw the three different 2D views, the "front-view", "side-on view" and "birds-eye view". Figure 3 shows mock-up views for the game version of the scene that will be created in the second part of this lesson. Note that in the mock-ups the scene x, y and z axes are clearly identified with their positive and negative directions indicated.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-03.png" alt="Scene mock-ups in z, x and y views." caption="Figure 3. Affinity Designer versions of the hand-drawn sketches for planning the game. Mock-ups of all 3 views are done, with rough coordinates and spacing for the scene assets (here the camera, light, the map, information panels and a key panel featuring 9 spheres, the jar/site positions, and the area in which the jars will randomly start in the game). Coordinates are x, y, z. Note that the light is off the scale in the y axis." %}
 
@@ -684,7 +684,7 @@ To transform the scene into a puzzle the information panel used needs to be alte
 
 In this game the clues to matching the jar and community location will be given by clicking on the community location. If presented with a map of New Guinea with the jars randomly placed some distance above it most users would not know where on the map to click to get the clues. So green tori (donut shapes) will be used to mark the communities to let the user know where to start clicking. The information panel will be changed in the last step to instruct the user to click on a torus (donut). 
 
-The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified (Figure 4). However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI /2). Each tori centre will be positioned slightly (1 cm) above the map (which is at 'desk' height) at y = desk + 0.01.
+The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified (Figure 4). However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI /2). Each torus's centre will be positioned slightly (1 cm) above the map (which is at 'desk' height) at y = desk + 0.01.
 
 Because each torus is connected to a different information panel, they still need to be created separately and added to a tori group. The mouse click event listener has to be altered so that it targets the tori group instead of the jars group. 
 
@@ -851,7 +851,7 @@ pointer = new THREE.Vector2();
 dragControls = new DragControls( [ jars ], camera, renderer.domElement ); // first argument determines drag objects.	
 
 ```
-Then you add event listeners for the ```dragstart``` and ```dragstop``` events. Here the handler functions will be made anonymously. Turn the orbital controls off while jars are being dragged.
+Then you add event listeners for the ```dragstart``` and ```dragend``` events. Here the handler functions will be made anonymously. Turn the orbital controls off while jars are being dragged.
 
 **After** the following code:
 
@@ -1014,7 +1014,7 @@ Save the index.html file and try to test, but moving in 3D can be difficult. Whe
 
 #### Making Matching Easier by Detecting Matches in 2D Space
 
-This way of placing the jars on the sites can be frustrating for users and the ```onClick``` function is actually called at the end of a drag event, thus the```onClick``` function can be altered to register a correct match if the drag ends with the mouse on the correct site.
+This way of placing the jars on the sites can be frustrating for users and the ```onClick``` function is actually called at the end of a drag event, thus the `onClick` function can be altered to register a correct match if the drag ends with the mouse on the correct site.
 
 This alternative means that the match is tested in 2D space instead of in 3D space (as in the first approach). Thus matches are easier, especially for players not experienced with digital 3D environments. 
  
@@ -1055,7 +1055,7 @@ Furthermore, the ```truesite``` variable needs to be reset to ```null``` after t
 truesite = null;	
 ```
 
-Be careful with brackets/braces here. The ```onClick``` function now has two nested ```if``` blocks. The ```truesite = null;``` statement should be outside these ```if``` blocks, but inside the ```onClickfunction```. 
+Be careful with brackets/braces here. The ```onClick``` function now has two nested ```if``` blocks. The ```truesite = null;``` statement should be outside these ```if``` blocks, but inside the `onClick` function. 
 
 Now it should be easier to move jars to their sites: but the mouse needs to be directly over the torus when you stop dragging the jar.
 
@@ -1107,7 +1107,7 @@ If you want to experiment with adding them (Figure 17), the following table prov
 | tumleo.glb | Tumleo.jpg | 0.27* ratio, desk + 0.01, -0.12* ratio | paddleColor |
 | waigeo.glb | Waigeo.jpg |  -0.65* ratio, desk + 0.01, -0.35* ratio | paddleAddColor |
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-17.png" alt="Many jars on a map of Papua." caption="Figure 17. Additional jars can be addded to the scene and puzzle." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-17.png" alt="Many jars on a map of Papua." caption="Figure 17. Additional jars can be added to the scene and puzzle." %}
 
 ## Conclusion and Next Steps
 

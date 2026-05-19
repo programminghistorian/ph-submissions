@@ -128,7 +128,7 @@ Your image should now be available at "https\\:`YOUR GITHUB USERNAME`.github.io/
 ### Find the identifiers for your image
 For this method, the identifier for your image is the full URL to your image on the web: "https\\:`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE FILENAME`". No additional specifications, backslashes, etc. are required.
 
-At this stage, you can go to the [Creating manifests](creating-manifests) section to create manifest files manually or using a manifest editor.
+At this stage, you can go to the [Creating manifests](#creating-manifests) section to create manifest files manually or using a manifest editor.
 
 ## Method 2: IIIF Workbench in GitHub.com
 
@@ -180,7 +180,7 @@ Once you have logged in, you can access the [IIIF Workbench](https://workbench.g
 
 Once you have created your project, you can open an upload popup and upload your images one by one. IIIF Workbench does not allow batch uploads, so you will have to select each image file individually.
 
-You will be prompted to select an IIIF Image Version, either IIIF v2 (2.x) or v3 (3.x). See the [What is the difference between IIIF versions?](what-is-the-difference-between-IIIF-versions-%3F) section above for guidance.
+You will be prompted to select an IIIF Image Version, either IIIF v2 (2.x) or v3 (3.x). See the [What is the difference between IIIF versions?](#what-is-the-difference-between-iiif-versions) section above for guidance.
 
 Your image may take a while to process. IIIF Workbench must process the image file, generate [tiles](https://en.wikipedia.org/wiki/Tiled_rendering), upload to GitHub, and publish to the web. You can view which step the image is in at the bottom of the image box. While you wait, you can navigate to other pages, but do not close the Workbench tab.
 
@@ -190,9 +190,9 @@ When your image is done processing, you should see a small version of it appear 
 
 ### Find the identifiers for your image
 
-In IIIF Workbench, both of the [identifiers](what-is-a-IIIF manifest-%3F) are listed under the title of an image. To use the `info.json` URI, click on the `info.json` hyperlink under your image. Copy the URI in the search bar. This is your image's `info.json` URI. To get the image API URI, click on the full image hyperlink under your image. Copy the text in the search bar. This text is your image's image API URI.
+In IIIF Workbench, both of the [identifiers](#what-is-a-iiif-manifest) are listed under the title of an image. To use the `info.json` URI, click on the `info.json` hyperlink under your image. Copy the URI in the search bar. This is your image's `info.json` URI. To get the image API URI, click on the full image hyperlink under your image. Copy the text in the search bar. This text is your image's image API URI.
 
-At this stage, you can go to the [Creating manifests](creating-manifests) section to create manifest files manually or using a manifest editor.
+At this stage, you can go to the [Creating manifests](#creating-manifests) section to create manifest files manually or using a manifest editor.
 
 ## Method 3: libvips and GitHub.com
 
@@ -266,9 +266,9 @@ After all files have uploaded successfully to GitHub, open the `info.json` file 
 
 ### Find the identifiers for your image
 
-The identifiers for your image will be constructed from your newly edited `info.json` files and the public link to your image through GitHub Pages. See the [What is a IIIF manifest section?](what-is-a-IIIF-manifest-%3F) for details on the identifier structure.
+The identifiers for your image will be constructed from your newly edited `info.json` files and the public link to your image through GitHub Pages. See the [What is a IIIF manifest section?](#what-is-a-iiif-manifest) for details on the identifier structure.
 
-At this stage, you can go to the [Creating manifests](creating-manifests) section to create manifest files manually or using a manifest editor.
+At this stage, you can go to the [Creating manifests](#creating-manifests) section to create manifest files manually or using a manifest editor.
 
 ## Creating manifests
 Now that you have your images prepared and have their identifiers on hand, it is time to create your manifests.

@@ -229,7 +229,7 @@ The libvips pyramid constructor operates entirely in the command line using a se
 
 For this lesson, we will be using the deep zoom command and saving the tiled files in a IIIF-compatible layout within a folder.
 
-Open the command line on your local computer and change directories to your iiif-libvips directory. Run the following command: `vips dzsave YOUR-IMAGE-NAME --layout iiif YOUR-PREFERRED-FILENAME.zip`. `vips` is the libvips command. The `dzsave` argument specifies the desired format for the image as a Deep Zoom file. The `--layout iiif` argument specifies the arrangement of the tile files in the folder that make up the composite image, which will be IIIF-compliant. The `zip` extension specifies that we want the files to all be packaged together into one neat, compressed file package for easy access.
+Open the command line on your local computer and change directories to your iiif-libvips directory. Run the following command: `vips dzsave YOUR-IMAGE-NAME --layout iiif3 YOUR-PREFERRED-FILENAME.zip`. `vips` is the libvips command. The `dzsave` argument specifies the desired format for the image as a Deep Zoom file. The `--layout iiif3` argument specifies the arrangement of the tile files in the folder that make up the composite image, which will be IIIF v3-compliant. The `zip` extension specifies that we want the files to all be packaged together into one neat, compressed file package for easy access.
 
 Wait for the [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) file to appear in the iiif-libvips directory. When you open the ZIP file, you will find folders containing the the various tile files that make up the IIIF image and an `info.json` file for each image. Each of the individual image folders thus makes up a a Level-0 compliant IIIF image.
 
@@ -245,6 +245,9 @@ Now that you have all of these image tiles, what do you do with them? To store, 
 
 Create a new repository on GitHub. Create an `images` folder. While in the `images` folder, upload all of the individual image folders (e.g image-1, image-2, etc.) in the `iiif-libvips` directory on your local computer. You may have to do this in batches due to GitHub's upload limits. You can delete the `vips-properties.xml` folder.
 
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-04.png" alt="A split-screen view of a GitHub repository showing the 'Drop to upload your files' area on the left, and the computer's Finder visible on the right. Five IIIF tile folders are being dragged from the Finder into GitHub's 'Drop to upload your files' area." caption="Figure 4. Dragging image tile files from a local computer to upload to the images folder in a GitHub repository." %}
+
+
 Create a `manifests` folder in the same repository. We will use this folder later to store and host our manifests.
 
 In your repository, go to Settings > GitHub Pages. Set the Source to "Deploy from a branch" and the Branch to "main /(root)".
@@ -253,9 +256,9 @@ In your repository, go to Settings > GitHub Pages. Set the Source to "Deploy fro
 
 Because you are using your local computer, `libvips` will populate `info.json` files for your images with your local server address as the reference. For your images to be properly displayed, they need to reference the server they are actually located on. 
 
-After all files have uploaded successfully to GitHub, open the `info.json` file for each image and update the first `@id` field (v2) or `id` field (v3) to: “https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/”.
+After all files have uploaded successfully to GitHub, open the `info.json` file for each image and update the first `@id` field (v2) or `id` field (v3) to: “https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`”.
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-09.png" alt="Part of an info.json file for a IIIF image. Line 29 starting with '@id' is highlighted to show the edited image URI." caption="Figure 9. The updated image URI in an info.json file for an uploaded IIIF image processed using libvips." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-05.png" alt="Part of an info.json file for a IIIF image. Line 3 starting with 'id' is highlighted to show the edited image URI." caption="Figure 5. The updated image URI in an info.json file for an uploaded IIIF image processed using libvips." %}
 
 <div class="alert alert-warning">
  Make sure you hit the green "commit" button to save your changes as you go!
@@ -390,11 +393,11 @@ Feeling daunted by manual editing? There are plenty of web-based manifest editin
 
 To add your image to a manifest, open a manifest editor like the Digirati Manifest Editor and create a new project. Add your static image (Method 1) by selecting the Image from URL option, or add a IIIF Image API URI (Methods 2 and 3) using the IIIF Image service option. Add an image to the canvas metadata using the `info.json` URI or image API URI. The image should populate on the canvas.
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-04.png" alt="A dialog box in the Digirati Manifest Editor with the title 'Add content' and subtitle 'Link to image service'. A IIIF Image API URI is typed inside the text box." caption="Figure 4. The interface to add an image with the image URI or info.json URI to a manifest in Digirati's Manifest Editor." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-06.png" alt="A dialog box in the Digirati Manifest Editor with the title 'Add content' and subtitle 'Link to image service'. A IIIF Image API URI is typed inside the text box." caption="Figure 6. The interface to add an image with the image URI or info.json URI to a manifest in Digirati's Manifest Editor." %}
 
 Once you have added your image, it is best to add metadata to your canvas and manifest using the pre-populated fields. Metadata allows other viewers to understand what your image shows and what data it contains. Of particular importance is the `license` (v2) or `rights` (v3) field, which lets viewers know where you found the image, who owns it, or what license you are sharing it under, such as a [Creative Commons license](https://en.wikipedia.org/wiki/Creative_Commons) or a [RightsStatements.org](https://rightsstatements.org/en/) URI. This metadata can help other users determine if or how they can use the image for their own projects.
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-05.png" alt="The canvas editing sidebar in the Digirati Manifest Editor with the title 'rights' and subtitles 'Label' and 'Value'. The label field has 'rights' in it and the value field has a RightsStatement.org URI in it. Add the bottom is an 'Add metadata item' button." caption="Figure 5. The interface to add metadata fields, including rights metadata, to a manifest canvas in the Digirati Manifest Editor." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-07.png" alt="The canvas editing sidebar in the Digirati Manifest Editor with the title 'rights' and subtitles 'Label' and 'Value'. The label field has 'rights' in it and the value field has a RightsStatement.org URI in it. Add the bottom is an 'Add metadata item' button." caption="Figure 7. The interface to add metadata fields, including rights metadata, to a manifest canvas in the Digirati Manifest Editor." %}
 
 
 When you are finished, save your manifest, give the file a unique title, and download it to your local computer. Note that it is easiest to name your manifest file the same thing as the corresponding image file, so that you know at a glance which image the manifest displays. 
@@ -409,7 +412,7 @@ In IIIF Workbench, you can access manifest URIs by clicking on the IIIF logo nex
 
 If you need to upload your manifests manually for Methods 1 and 3, open the `manifests` folder in your GitHub repository and upload all of your downloaded manifests. Open each manifest file to correct the `@id`(v2) or `id` (v3) in line 3 so that it reads: “https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/manifests/`YOUR MANIFEST NAME`.json”.
 
-{% include figure.html filename="en-or-iiif-images-and-manifests-github-08.png" alt="Part of an info.json file for a IIIF manifest. Line 3 starting with '@id' is highlighted to show the edited manifest URI." caption="Figure 8. The updated manifest URI in an info.json file for an uploaded IIIF manifest processed using Bodleian's Manifest Editor." %}
+{% include figure.html filename="en-or-iiif-images-and-manifests-github-08.png" alt="Part of an info.json file for a IIIF manifest. Line 3 starting with 'id' is highlighted to show the edited manifest URI." caption="Figure 8. The updated manifest URI in an info.json file for an uploaded IIIF manifest processed using Digirati's Manifest Editor." %}
 
 <div class="alert alert-warning">
 Make sure you commit your changes as you go so that they save!

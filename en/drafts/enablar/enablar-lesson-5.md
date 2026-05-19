@@ -862,10 +862,6 @@ headings_b = headings_matching(df_b, 'Climate')
 result = compare_sets(headings_a, headings_b)
 ```
 
-**A caveat about exact matching.** Set comparison works when the values match exactly. "Immigrants, United States" and "Immigrants - United States" (different punctuation) are different set members, even though a human reader would treat them as the same. Cross-catalogue comparison in real research usually needs normalisation first, handling variant punctuation, capitalisation, and abbreviation. That's what the next section, harmonisation, addresses.
-
-##### How to work across two datasets computationally
-
 #### Dissemination of results
 
 Publication of software and research data for reuse.

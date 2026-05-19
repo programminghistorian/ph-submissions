@@ -555,50 +555,80 @@ After processing all records, we print out the number of successes and failures 
 This is work in progress. Subject to Change. It follows the Data Acquisition Section.
 
 # Preprocessing MARCXML with PyMARC and Pandas
-In the previous section we downloaded MARCXML files from Yale's catalogue and decompressed them into the `raw-data/yale/` directory. This section picks up from there: we'll turn those XML files into a Pandas DataFrame and use it to start asking questions about what the collection contains.
+
+In the previous section we downloaded MARCXML files from Yale's catalogue and decompressed them into the `raw-data/yale/` directory. This section picks up from there: we'll turn those XML files into a Pandas DataFrame and use it to ask questions about what the collection contains.
+
 ## What we're building
-By the end of this section you'll have a reusable pattern for getting MARC fields into a DataFrame, and you'll have seen one example of the kind of question that pattern enables. We'll work through:
+
+By the end of this section you'll have three small reusable functions that work together:
+1. **`extract_to_dataframe`** turns one or more MARCXML files into a DataFrame.
+2. **`headings_matching`** finds all subject headings in a DataFrame that mention a given keyword.
+3. **`compare_sets`** takes two sets and reports what's shared and what's only on one side.
+
+Each function does one thing. Together they let us ask comparative questions across catalogues without writing complicated code.
+
+We'll work through:
+
 1. Reading a MARCXML file one record at a time with PyMARC
-2. Extracting four fields : record ID, title, author, and subject headings
+2. Extracting four fields, record ID, title, author, and subject headings
 3. Handling subjects, which can repeat within a single record
-4. Wrapping the extraction in a reusable function so the same logic runs on any MARCXML file
-5. Using the DataFrame to characterise the collection : in our example, checking for records affected by recent Library of Congress Subject Heading revisions
+4. Wrapping extraction in a reusable function so the same logic runs on any MARCXML file
+5. Filtering for records that mention a topic, then comparing how two catalogues describe that topic
+
 ## Why this matters: the user story
-Imagine you're a metadata librarian. You want to start asking questions about what your catalogue contains, not just *is this record well-formed?* but *what does our collection actually describe?* That kind of question opens up real conversations: about collection development priorities, about cataloguing practice, about what gets fine-grained subject treatment and what gets lumped together.
-For this lesson we'll use Yale shards as toy data. It's enough to show the techniques; it's not enough to support real findings. By the end you'll be able to recognise the shape of questions this approach answers, and adapt the code to richer data of your own.
+
+Imagine you're a metadata librarian. You want to start asking questions about what your catalogue contains, not just *is this record well-formed?* but *what does our collection actually describe?* That kind of question opens up real conversations about collection development priorities, cataloguing practice, and what gets fine-grained subject treatment versus what gets lumped together.
+For this lesson we'll use Yale shards (the partitioned MARCXML files we downloaded) as toy data. It's enough to show the techniques; it's not enough to support real findings. By the end you'll be able to recognise the shape of questions this approach answers, and adapt the code to richer data of your own.
+
 ## What you need before you start
-- At least one MARCXML file in `raw-data/yale/` from the data acquisition section. We'll use `bib_20250706_full_000_00.xml` and `bib_20250706_full_000_01.xml`, but any will work — just change the file names below.
-- The `pymarc` and `pandas` packages installed. If you don't have them yet, install them with:
+- At least one MARCXML file in `raw-data/yale/` from the data acquisition section. We'll use `bib_20250706_full_000_00.xml` and `bib_20250706_full_000_01.xml`, but any two will work, just change the file names below.
+- The `pymarc` and `pandas` packages installed. If you don't have them yet:
+
 ```python
 %pip install pymarc pandas
 ```
+
 ## Reading a MARCXML file
+
 PyMARC offers two ways to read MARCXML:
+
 - `parse_xml_to_array` reads the whole file into memory at once and returns a list of `Record` objects. Simple, but memory-heavy for large files.
 - `map_xml` reads records one at a time and calls a function you provide on each one. Memory-friendly, and the right choice for catalogue-scale data.
-Yale's bibliographic shards contain tens of thousands of records each, so we'll use `map_xml` throughout. Here's the smallest possible example : print the title of every record:
+
+Yale's bibliographic shards contain tens of thousands of records each, so we'll use `map_xml` throughout. The pattern is: write a function that takes one record and does something with it, then hand that function to `map_xml` along with the file path. `map_xml` does the rest, calling your function once per record.
+
+Here's the smallest possible example, printing the title of every record:
+
 ```python
 from pymarc import map_xml
 
 input_file = 'raw-data/yale/bib_20250706_full_000_00.xml'
 
-# process_record is called once for every record in the file
+# This function will be called once for every record in the file
 def process_record(record):
     print(record.title)
 
 map_xml(process_record, input_file)
 ```
-**You should see** a long stream of titles scrolling past : one per record in the file. If you see nothing, check that `input_file` points to a file that actually exists on disk; if you see an error about `pymarc`, re-run the install line above.
+
+**You should see** a long stream of titles scrolling past, one per record. If you see nothing, check that `input_file` points to a file that actually exists on disk. If you see an error about `pymarc`, re-run the install line above.
+
 Next we'll capture data into lists instead of printing it, and turn those lists into a DataFrame.
+
 ## Extracting non-repeatable fields into a DataFrame
+
 The general pattern is:
+
 1. Create an empty list for each column you want.
 2. In `process_record`, append values from each record onto those lists.
 3. After `map_xml` finishes, hand the lists to Pandas to construct a DataFrame.
+
 We'll start with three fields that appear at most once per record:
-- **Record ID** — MARC field `001`, the control number. Quasi-mandatory.
-- **Title** — MARC field `245`. Also quasi-mandatory.
-- **Author** — MARC field `100$a`, the personal name main entry. *Not* mandatory: many records (anonymous works, corporate publications, edited volumes) have no `100`. We need a defensive pattern that records `None` when it's absent.
+
+- **Record ID**, MARC field `001`, the control number. Quasi-mandatory.
+- **Title**, MARC field `245`. Also quasi-mandatory.
+- **Author**, MARC field `100$a`, the personal name main entry. *Not* mandatory: many records (anonymous works, corporate publications, edited volumes) have no `100`. We need a defensive pattern that records `None` when it's absent.
+
 ```python
 from pymarc import map_xml
 import pandas as pd
@@ -628,68 +658,211 @@ df = pd.DataFrame({'id': ids, 'title': titles, 'author': authors})
 print(f'Extracted {len(df)} records')
 df.head()
 ```
-**You should see** a count of records (somewhere in the tens of thousands for a Yale shard) and a five-row preview. Some rows will have `None` (rendered as `NaN`) in the `author` column — these are records where field `100$a` was absent.
+
+**You should see** a count of records (somewhere in the tens of thousands for a Yale shard) and a preview of the first five rows. Some rows will have `None` (rendered as `NaN`) in the `author` column. These are records where field `100$a` was absent.
+
+This works, but it has a problem: `ids`, `titles`, and `authors` are loose variables that `process_record` reaches into. If we want to run the same extraction on a different file, we have to remember to reset the lists, and `process_record` only works in a context where those lists already exist. The fix is to wrap everything together into one function, which we'll do once we've added subjects.
+
 ## Repeatable fields: one record, many values
-MARC21 allows several fields to repeat within a single record. Subject headings are the clearest example — a book might have one subject, or ten. This breaks the [tidy data](https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data) assumption that each row is one observation and each cell holds one value.
-PyMARC's `record.subjects` property is a convenience that pulls all MARC fields commonly used for subject headings (6xx fields) into one list. The actual heading text lives in subfield `$a`, but `$a` is not guaranteed to be present, so we check before appending.
-Rather than just add subjects to the previous code block, we'll do something more useful: wrap the whole extraction in a function. Putting it in a function means the same logic can be applied to any MARCXML file you have, just by calling the function with a different path.
-## Wrapping the extraction in a reusable function
-Here's the same logic as before, plus subjects, packaged into a function. The function takes one or more file paths and returns a single DataFrame containing every record across all of them.
-One thing to notice: the lists (`ids`, `titles`, `authors`, `subjects`) and the `process_record` function are now declared *inside* `extract_to_dataframe`. This means each call to the function starts with fresh empty lists, so you can run the function multiple times on different files without their data mixing.
+
+MARC21 allows several fields to repeat within a single record. Subject headings are the clearest example: a book might have one subject, or ten. This breaks the [tidy data](https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data) assumption that each row is one observation and each cell holds one value.
+
+There are two reasonable ways to handle repeating values:
+
+- **Concatenate them into one cell**, separated by a delimiter character. Each record stays as one row.
+- **Build a separate DataFrame** with one row per subject heading, linked back to the record by ID.
+
+We'll use the first approach, joining a record's subject headings with the `|` (pipe) character. It keeps the DataFrame at one row per record, which makes everything else simpler.
+
+PyMARC's `record.subjects` property is a convenience that pulls all MARC fields commonly used for subject headings (the `6xx` fields) into one list. The actual heading text lives in subfield `$a`, but `$a` is not guaranteed to be present, so we check before appending.
+
+## Function 1: `extract_to_dataframe`
+
+This function takes one or more file paths and returns a DataFrame with one row per record. It packages everything we've built so far, plus subject extraction, into a single self-contained call.
+
 ```python
 from pymarc import map_xml
 import pandas as pd
 
 def extract_to_dataframe(*file_paths):
-    """Read one or more MARCXML files and return a DataFrame with one row per record.
-    Columns: id, title, author, subjects (pipe-separated)."""
-    ids, titles, authors, subjects = [], [], [], []
+    """Read one or more MARCXML files. Return a DataFrame with one row
+    per record and columns: id, title, author, subjects (pipe-separated)."""
+
+    ids = []
+    titles = []
+    authors = []
+    subjects = []
 
     def process_record(record):
         ids.append(record.get('001').value())
         titles.append(record.title)
+
         field_100 = record.get('100')
-        authors.append(field_100.get('a') if field_100 is not None and field_100.get('a') is not None else None)
+        if field_100 is not None and field_100.get('a') is not None:
+            authors.append(field_100.get('a'))
+        else:
+            authors.append(None)
+
         subject_values = [s.get('a') for s in record.subjects if s.get('a') is not None]
         subjects.append('|'.join(subject_values) if subject_values else '')
 
     for path in file_paths:
         map_xml(process_record, path)
 
-    return pd.DataFrame({'id': ids, 'title': titles, 'author': authors, 'subjects': subjects})
+    return pd.DataFrame({
+        'id': ids,
+        'title': titles,
+        'author': authors,
+        'subjects': subjects,
+    })
 ```
-Calling the function on two Yale shards:
+
+Two things worth noting:
+
+- The `*file_paths` parameter (with the asterisk) lets the function accept any number of file paths. Calling `extract_to_dataframe('a.xml')` works, and so does `extract_to_dataframe('a.xml', 'b.xml', 'c.xml')`. The function loops over all paths and combines their records into one DataFrame.
+- The lists (`ids`, `titles`, etc.) and `process_record` are now defined *inside* `extract_to_dataframe`. Each call starts with fresh empty lists, so you can call the function as many times as you want without leftover data from previous runs.
+
+Try it on one file:
+
 ```python
-df = extract_to_dataframe(
-    'raw-data/yale/bib_20250706_full_000_00.xml',
-    'raw-data/yale/bib_20250706_full_000_01.xml',
-)
+df = extract_to_dataframe('raw-data/yale/bib_20250706_full_000_00.xml')
 print(f'Extracted {len(df)} records')
 df.head()
 ```
-**You should see** a record count and a five-row preview. The DataFrame holds id, title, author, and subjects for every record across both files. Next we'll use it to start asking what the collection contains.
+
+**You should see** a record count and a preview with four columns: `id`, `title`, `author`, `subjects`. The `subjects` column holds pipe-separated strings (or an empty string if no subjects were assigned).
+
 ## Asking a question of the collection
-We now have everything in a DataFrame, which means we can start asking what the catalogue actually contains. There are many directions you could take this : examining publication date distribution, author concentration, language coverage, format breakdowns. We'll work through one example: looking at how many records use subject headings that the Library of Congress has recently revised.
+
+We now have a DataFrame, which means we can start asking what the catalogue contains. There are many directions you could take this: publication date distribution, author concentration, language coverage, format breakdowns. We'll work through one example: how many records use subject headings that the Library of Congress has recently revised.
+
 LCSH is a living vocabulary. Headings get added, retired, and renamed as cataloguing practice evolves. Recent examples include the change from "Aliens" to "Noncitizens", the replacement of "Slaves" with "Enslaved persons", and renamings of geographic features (such as "McKinley, Mount" becoming "Denali, Mount").
-The question our hypothetical librarian will ask is: *how many records in our DataFrame still carry these older or recently-revised headings?* This is a starting point for a much larger conversation about how catalogues age, how vocabulary change propagates through library data, and how cataloguing decisions encode their moment. The toy data and simple technique here won't answer those questions rigorously, but they'll show you the shape of how the question gets asked.
-Pandas' `.str.contains()` method lets us filter a string column by whether each value contains a given substring. Combined with `.sum()` on the resulting boolean Series, we get a quick count of records matching each pattern:
+
+The question: *how many records in our DataFrame still carry these older or recently-revised headings?* This is a starting point for a much larger conversation about how catalogues age, how vocabulary change propagates through library data, and how cataloguing decisions encode their moment. The toy data and simple technique here won't answer those questions rigorously, but they'll show you the shape of how the question gets asked.
+
+Pandas' `.str.contains()` method filters a string column by whether each value contains a given substring. Combined with `.sum()` on the resulting boolean Series, we get a count of records matching each pattern:
 
 ```python
-# Count records whose subjects column mentions each LCSH term that has been
-# revised or contested. .str.contains() returns a boolean Series (True/False
-# per row). .sum() on a boolean Series counts the True values. na=False treats
-# records with no subjects as no match.
 lc_changes = ['Gulf of', 'McKinley, Mount', 'Enslaved persons', 'Noncitizen']
 
 print('Records with subject headings referencing each LC change:\n')
 for change in lc_changes:
+    # str.contains returns True/False for each row;
+    # sum() counts the True values; na=False treats empty subjects as no match
     count = df['subjects'].str.contains(change, na=False).sum()
     print(f'  {change:20s} {count:6d} records')
 ```
 
-**You should see** a count per term. Some will be common, others rare or zero : depending on what kinds of materials this shard happens to contain and whether the new or old form has been adopted in the records here.
-What these numbers can and can't tell you is worth being careful about. A high count for an old heading doesn't mean the catalogue is "behind" — large catalogues often legitimately carry decades of records, and retroactive vocabulary updates are expensive. A low count for a new heading might mean the records pre-date the change, or it might mean the catalogue updated promptly. The technique here only counts substring matches; it doesn't distinguish "the heading is current" from "the heading was the only option at the time of cataloguing" from "the cataloguer chose not to apply the new form."
-What the technique *does* show is the shape of how you'd ask. `.str.contains()` filters a column by pattern; `.sum()` on the resulting boolean Series counts matches. The same two-move composition works for any pattern in any column — time periods, languages, formats, topical themes — which makes it one of the most reusable filtering patterns in Pandas.
+**You should see** a count per term. Some will be common, others rare or zero, depending on what kinds of materials this shard contains and whether the new or old form has been adopted in the records here.
+
+What these numbers can and can't tell you is worth being careful about. A high count for an old heading doesn't mean the catalogue is "behind", large catalogues legitimately carry decades of records, and retroactive vocabulary updates are expensive. A low count for a new heading might mean the records pre-date the change, or that the catalogue updated promptly. The technique only counts substring matches; it doesn't distinguish "the heading is current" from "the heading was the only option at the time of cataloguing" from "the cataloguer chose not to apply the new form."
+
+What the technique *does* show is the shape of how you'd ask. `.str.contains()` filters a column by pattern; `.sum()` on the resulting boolean Series counts matches. The same two-move composition works for any pattern in any column.
+
+## Comparing two datasets
+
+Looking at one dataset is useful. Comparing two is often more useful: *how does another catalogue describe the same kind of material?*
+
+A librarian benchmarking her catalogue against a national bibliography asks this to find cataloguing gaps. A researcher studying vocabulary change asks it to see how practice differs across institutions. The underlying computational move is the same: filter both datasets by a topic, then compare the subject headings each side uses.
+
+For this example we'll treat the two Yale shards as two different catalogues. Since `extract_to_dataframe` accepts any file path, we can build two DataFrames simply by calling it twice:
+
+```python
+df_a = extract_to_dataframe('raw-data/yale/bib_20250706_full_000_00.xml')
+df_b = extract_to_dataframe('raw-data/yale/bib_20250706_full_000_01.xml')
+
+print(f'Catalogue A: {len(df_a)} records')
+print(f'Catalogue B: {len(df_b)} records')
+```
+
+To compare them, we need two more small functions.
+
+## Function 2: `headings_matching`
+
+This function takes a DataFrame and a keyword, and returns the set of subject headings used on records that mention that keyword.
+
+```python
+def headings_matching(df, keyword):
+    """Return the set of subject headings used on records whose
+    subjects column contains the keyword."""
+
+    matching = df[df['subjects'].str.contains(keyword, na=False)]
+
+    headings = set()
+    for subjects_str in matching['subjects']:
+        if subjects_str:
+            headings.update(subjects_str.split('|'))
+
+    return headings
+```
+
+The function does three things in order: filter the DataFrame to rows matching the keyword, split each row's pipe-separated subjects string into individual headings, and collect them into a set. A set is the right data structure here because it removes duplicates automatically (the same heading appearing in many records counts once) and because we'll want to use set operations to compare two of them.
+
+Try it:
+
+```python
+headings_a = headings_matching(df_a, 'Immigra')
+headings_b = headings_matching(df_b, 'Immigra')
+
+print(f'Catalogue A uses {len(headings_a)} distinct headings on immigration records')
+print(f'Catalogue B uses {len(headings_b)} distinct headings on immigration records')
+```
+
+**You should see** two counts. These are the *vocabularies* each catalogue uses around immigration: every distinct subject heading that appears on a record mentioning "Immigra".
+
+## Function 3: `compare_sets`
+
+This function takes two sets and returns a dictionary describing how they overlap: what's in both, what's only in the first, what's only in the second.
+
+```python
+def compare_sets(set_x, set_y):
+    """Compare two sets. Return a dict with three keys:
+    shared (in both), only_in_x, and only_in_y."""
+
+    return {
+        'shared':    set_x & set_y,
+        'only_in_x': set_x - set_y,
+        'only_in_y': set_y - set_x,
+    }
+```
+
+The function is short because Python's set operators do the heavy lifting: `&` returns the intersection, and `-` returns the difference. The function just gives those operations clear names and bundles them together.
+
+Putting the pieces together:
+
+```python
+result = compare_sets(headings_a, headings_b)
+
+print(f'Shared headings:     {len(result["shared"])}')
+print(f'Only in catalogue A: {len(result["only_in_x"])}')
+print(f'Only in catalogue B: {len(result["only_in_y"])}')
+
+print('\nSample headings only in catalogue A:')
+for h in sorted(result['only_in_x'])[:5]:
+    print(f'  - {h}')
+```
+
+**You should see** counts followed by a few example headings unique to catalogue A. The asymmetric differences (the "only in" sets) are usually the interesting numbers, they tell you where the two catalogues diverge in vocabulary.
+
+## Why three small functions
+
+Each function does one thing, named honestly:
+
+- `extract_to_dataframe` reads MARCXML and returns a DataFrame.
+- `headings_matching` filters a DataFrame and returns a set of headings.
+- `compare_sets` compares two sets.
+
+Together they compose into the workflow we just walked through, but each piece is also useful on its own. `compare_sets` works on any two sets, not just sets of headings. `headings_matching` works on any DataFrame with a pipe-separated `subjects` column, not just Yale's. If you wanted to compare three catalogues instead of two, or compare authors instead of subjects, you'd reuse most of these pieces unchanged.
+
+To investigate a different topic, only the keyword changes:
+
+```python
+headings_a = headings_matching(df_a, 'Climate')
+headings_b = headings_matching(df_b, 'Climate')
+result = compare_sets(headings_a, headings_b)
+```
+
+**A caveat about exact matching.** Set comparison works when the values match exactly. "Immigrants, United States" and "Immigrants - United States" (different punctuation) are different set members, even though a human reader would treat them as the same. Cross-catalogue comparison in real research usually needs normalisation first, handling variant punctuation, capitalisation, and abbreviation. That's what the next section, harmonisation, addresses.
 
 ##### How to work across two datasets computationally
 

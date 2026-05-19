@@ -18,8 +18,8 @@ translator:
 translation-editor:
 - Daphné Mathelier
 translation-reviewer:
-- Forename Surname
-- Forename Surname
+- Aude Julien Da Cruz Lima
+- Mattia Bunel
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/643
 difficulty: 1
 activity: acquiring

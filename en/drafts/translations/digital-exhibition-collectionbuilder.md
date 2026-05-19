@@ -192,7 +192,7 @@ To set up CollectionBuilder for your exhibition, you first need to copy the temp
 
 In the top right-hand corner, you will see a “Use this template” button. If you don’t see this button, make sure you are signed into your GitHub account.
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-02.png" alt="Screenshot of the CollectionBuilder GitHub repository with the Use this Template button circled in yellow." caption="Figure 2. Screenshot of the CollectionBuilder GitHub repository with the Use this Template button highlighted" %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-02.png" alt="Screenshot of the CollectionBuilder GitHub repository with the Use this Template button circled." caption="Figure 2. Screenshot of the CollectionBuilder GitHub repository with the Use this Template button highlighted" %}
 
 When you click on the “Use this template” button, you will have two options. Choose “Create a new repository.” This will let you copy all of the template files, with all the framework repository defaults, to your GitHub account so you can start building your exhibition. 
 
@@ -227,7 +227,7 @@ At this point, while you could skip to the later sections of this lesson to full
 
 To publish your site using GitHub Pages, you just need to edit a few settings. From your repository home page, click on the “Settings” option at the top right.
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-04.png" alt="Screenshot of GitHub demo repository page with a yellow circle around the Settings button." caption="Figure 4. Screenshot of GitHub demo repository page with a yellow circle around the Settings button." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-04.png" alt="Screenshot of GitHub demo repository page with a circle around the Settings button." caption="Figure 4. Screenshot of GitHub demo repository page with a circle around the Settings button." %}
 
 Select **”Pages”** from the left side menu:
 
@@ -237,7 +237,7 @@ Select **”Pages”** from the left side menu:
 
 It will now take GitHub a few minutes to build your site for the first time using the contents of your repository.
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-05.png" alt="Screenshot of the GitHub message you will get while GitHub is building your site." caption="Figure 5. Screenshot of the GitHub message you will get while GitHub is building your site." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-05.png" alt="Screenshot of the GitHub message: your GitHub Pages site is currently being built." caption="Figure 5. Screenshot of the GitHub message you will get while GitHub is building your site." %}
 
 When your site is ready, refresh the page, and you will see the URL to your live site. The URL will follow the pattern: [https://username.github.io/repository-name](https://username.github.io/repository-name)
 
@@ -253,7 +253,7 @@ If this is the case, check your metadata sheet to see if your field names match 
 
 In addition, check if all of your commits or changes have been processed. You can click the clock icon with the number of commits and check whether it has a green check mark next to it.
 
-{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-07.png" alt="Screenshot of GitHub demo repository page with a yellow circle around the Commits link, which you can use to check the status of your commits." caption="Figure 7. Screenshot of GitHub demo repository page with a yellow circle around the Commits link, which you can use to check the status of your commits." %}
+{% include figure.html filename="en-tr-digital-exhibition-collectionbuilder-07.png" alt="Screenshot of GitHub demo repository page with a circle around the Commits link, which you can use to check the status of your commits." caption="Figure 7. Screenshot of GitHub demo repository page with a circle around the Commits link, which you can use to check the status of your commits." %}
 
 Once you've addressed any glitches, your website should be viewable online.
 

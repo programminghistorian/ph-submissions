@@ -57,7 +57,7 @@ While other CB tutorials ask you to upload digital files directly to GitHub, thi
 
 *   Engage with larger, existing digital collections without requiring additional infrastructure
 *   Develop metadata literacy through the practice of referencing and relating, rather than hosting
-*   Understand how digital ecosystems like the Internet Archive can be integrated into custom web publishing
+*   Understand how digital ecosystems such as the Internet Archive can be integrated into custom web publishing
 *   Prioritize curatorial interpretation and presentation over technical stewardship
 
 By using already-hosted objects, students can create meaningful exhibitions without digitizing or uploading their own collections, making this option more inclusive and scalable.
@@ -72,7 +72,7 @@ To follow the steps in this lesson, you will need the following:
 
 *   Knowledge of how to write in Markdown (see [Getting Started with Markdown](/en/lessons/getting-started-with-markdown) by Sarah Simpkin)
 *   Knowledge of how to manage a basic GitHub repository (see [Getting started with GitHub Desktop](https://perma.cc/24W2-87UU))
-*   Experience with managing metadata (structured descriptive information like title, creator, and date) in the .CSV format (comma-separated values, a plain text format for tabular data)
+*   Experience with managing metadata (structured descriptive information such as title, creator, and date) in the .CSV format (comma-separated values, a plain text format for tabular data)
 
 This tutorial should take about 3 to 5 hours to complete if you have your metadata ready. Each example in this lesson is taken from [our demo site](https://github.com/sarahseverson/ph-demo-playbills), so you can see the relationship of each step to the final result and the GitHub repository.
 
@@ -134,22 +134,22 @@ Below, we explain only the fields required for this example project. You can exp
 
 The following fields are required in CollectionBuilder:
 
-* **objectid:** The objectid field is how CollectionBuilder identifies each item in your collection and connects it to its metadata. Requirements for **objectid** :  
+* **objectid:** The objectid field is how CollectionBuilder identifies each item in your collection and connects it to its metadata. Requirements for **objectid**:  
     
   * Must be all lowercase  
-  * No spaces or special characters (hyphens - and underscores _ are allowed)  
+  * No spaces or special characters (hyphens `-` and underscores `_` are allowed)  
   * Should be unique for each item
 
 In our example, the Internet Archive identifier is already a suitable **objectid**. You simply need to rename the corresponding column header in your CSV file to **objectid**.
 
-* **filename**: This field contains the direct URL to your digital object, such as a PDF, image, or audio file. For objects hosted on the Internet Archive, you can choose the display option that works best for your exhibition. In the Internet Archive, a variety of display options, such as [the digital object record](https://archive.org/details/BP_CCTT_0002), a [one-page view](https://archive.org/details/BP_CCTT_0002/mode/1up), a [two-page spread](https://archive.org/details/BP_CCTT_0002/mode/2up), a [thumbnail view](https://archive.org/details/BP_CCTT_0002/mode/thumb) and then you can apply theatre view to any of these display options if you want to focus on the digital object and not the metadata. In our example, we want visitors to see the full-screen flipbook version of each item, so we use URLs like [≈](https://archive.org/details/BP_CCTT_0002/mode/thumb?view=theater). Note that every Internet Archive URL uses the IA identifier (now your **objectid**), so you can use this construct these URLs fairly quickly using formulas like concatenate in Excel or Google Sheets. 
+* **filename**: This field contains the direct URL to your digital object, such as a PDF, image, or audio file. For objects hosted on the Internet Archive, you can choose the display option that works best for your exhibition. In the Internet Archive, a variety of display options, such as [the digital object record](https://archive.org/details/BP_CCTT_0002), a [one-page view](https://archive.org/details/BP_CCTT_0002/mode/1up), a [two-page spread](https://archive.org/details/BP_CCTT_0002/mode/2up), a [thumbnail view](https://archive.org/details/BP_CCTT_0002/mode/thumb) and then you can apply theatre view to any of these display options if you want to focus on the digital object and not the metadata. In our example, we want visitors to see the full-screen flipbook version of each item, so we use URLs such as [≈](https://archive.org/details/BP_CCTT_0002/mode/thumb?view=theater). Note that every Internet Archive URL uses the IA identifier (now your **objectid**), so you can use this construct these URLs fairly quickly using formulas such as concatenate in Excel or Google Sheets. 
   
 * **title**: This should correspond to a title of the original object. It is recommended that it be short and descriptive. In our example, some playbills have more than one play, so we have separated the play titles with a semicolon. For example: Othello; The Deserter
   
 * **format**: This field indicates the item’s media type. Since CollectionBuilder uses logic based on format to display objects, this is a key field for ensuring the interactive visualizations and item pages function correctly. If there are errors or anomalies, some pages will not work. For normal items, the value of this field should match the standard [MIME type](https://perma.cc/2HCH-L9ZL) corresponding to your item’s file, consisting of a type and a subtype concatenated with a slash (`/`) between them. This can generally be inferred by looking at the file extension (`.jpg`, `.pdf`, etc). The common MIME type `format` values supported by CB-GH are:  
     
   * Image: `image/jpeg`, `image/png`  
-  * Document: `application/pdf` (like our example of the playbills)  
+  * Document: `application/pdf` (as in our example of the playbills)  
   * Audio: `audio/mp3`  
   * Video: `video/mp4`
 
@@ -157,11 +157,11 @@ In our example, the Internet Archive identifier is already a suitable **objectid
 
 CollectionBuilder automatically creates views or entry points to the collection using the information provided in the metadata file. These will generate interactive views to explore the collection on different pages. Each 'extra' page needs a different type of information, which is explained below:
 
-* **date**: This field typically refers to the date of creation or publication of an object and is used for sorting and displaying on the timeline. The format to follow is `YYYY-MM-DD`, with the four digits of the year being the minimum value needed to form the timeline. If you have date information that does not fit into this ISO format, like [?-02-24] or [date unknown] or 1900s, you can add a new metadata field under a different name so that this information is displayed with the items, but not included in the timeline visualization.  
+* **date**: This field typically refers to the date of creation or publication of an object and is used for sorting and displaying on the timeline. The format to follow is `YYYY-MM-DD`, with the four digits of the year being the minimum value needed to form the timeline. If you have date information that does not fit into this ISO format, such as `?-02-24` or `date unknown` or `1900s`, you can add a new metadata field under a different name so that this information is displayed with the items, but not included in the timeline visualization.  
 
-* **map**: To create a map, you need the metadata fields in the columns latitude (north-south information) and longitude (east-west information), that is, the coordinate data of a location corresponding to the object you present in the exhibition. Our playbills collection does not have geographical metadata like latitudes and longitudes, so we have done some research into *possible* locations of the listed theatres and added them to our demo to give you an idea of how the map works.   
+* **map**: To create a map, you need the metadata fields in the columns latitude (north-south information) and longitude (east-west information), that is, the coordinate data of a location corresponding to the object you present in the exhibition. Our playbills collection does not have geographical metadata such as latitudes and longitudes, so we have done some research into *possible* locations of the listed theatres and added them to our demo to give you an idea of how the map works.   
 
-* **subjects**: Create a word cloud with the topics that each object deals with in the subject column. You can put multiple topics in each box (for each object) and separate them with a semicolon (`;`). In our example, each playbill has been given genres like `comic drama; comedy; extravaganza`, which follow the order of appearance on the playbill.
+* **subjects**: Create a word cloud with the topics that each object deals with in the subject column. You can put multiple topics in each box (for each object) and separate them with a semicolon (`;`). In our example, each playbill has been given a genres such as `comic drama; comedy; extravaganza`, which follow the order of appearance on the playbill.
 
 ### Optional fields
 
@@ -291,7 +291,7 @@ Next, we can change the number and arrangement of content boxes on the template 
 
 In our example, we have used the location metadata field to indicate the playbill's physical location, which helps library staff retrieve the item if requested. However, you do not necessarily need to be able to browse that on the front page.
 
-To delete that box, first locate line 19 of the code that includes `field="location"`, then delete the entire line. In our demo, we also removed the `objects` box line of code on line 21, since everything in our example exhibition is a PDF and it did not provide the viewer with any useful information to browse. In another exhibit, if you have various media like PDFs, images and audio, this would be more helpful to your user. 
+To delete that box, first locate line 19 of the code that includes `field="location"`, then delete the entire line. In our demo, we also removed the `objects` box line of code on line 21, since everything in our example exhibition is a PDF and it did not provide the viewer with any useful information to browse. In another exhibit, if you have various media including PDFs, images and audio, this would be more helpful to your user. 
 
 The next thing you can do is change the order of the boxes. In our example, we moved the subject box to the top and pushed the timeline down. We also changed the title of the Subject box to **Top Genre** to better reflect the metadata.
 

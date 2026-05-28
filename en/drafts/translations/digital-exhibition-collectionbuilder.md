@@ -72,7 +72,7 @@ To follow the steps in this lesson, you will need the following:
 
 *   Knowledge of how to write in Markdown (see [Getting Started with Markdown](/en/lessons/getting-started-with-markdown) by Sarah Simpkin)
 *   Knowledge of how to manage a basic GitHub repository (see [Getting started with GitHub Desktop](https://perma.cc/24W2-87UU))
-*   Experience with managing metadata (structured descriptive information such as title, creator, and date) in the .CSV format (comma-separated values, a plain text format for tabular data)
+*   Experience with managing metadata (structured descriptive information such as title, creator, and date) in the `.CSV` format (comma-separated values, a plain text format for tabular data)
 
 This tutorial should take about 3 to 5 hours to complete if you have your metadata ready. Each example in this lesson is taken from [our demo site](https://github.com/sarahseverson/ph-demo-playbills), so you can see the relationship of each step to the final result and the GitHub repository.
 
@@ -161,7 +161,7 @@ CollectionBuilder automatically creates views or entry points to the collection 
 
 * **map**: To create a map, you need the metadata fields in the columns latitude (north-south information) and longitude (east-west information), that is, the coordinate data of a location corresponding to the object you present in the exhibition. Our playbills collection does not have geographical metadata such as latitudes and longitudes, so we have done some research into *possible* locations of the listed theatres and added them to our demo to give you an idea of how the map works.   
 
-* **subjects**: Create a word cloud with the topics that each object deals with in the subject column. You can put multiple topics in each box (for each object) and separate them with a semicolon (`;`). In our example, each playbill has been given a genres such as `comic drama; comedy; extravaganza`, which follow the order of appearance on the playbill.
+* **subjects**: Create a word cloud with the topics that each object deals with in the subject column. You can put multiple topics in each box (for each object) and separate them with a semicolon (`;`). In our example, each playbill has been given genres such as `comic drama; comedy; extravaganza`, which follow the order of appearance on the playbill.
 
 ### Optional fields
 

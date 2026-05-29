@@ -117,25 +117,32 @@ In the second part of the lesson, we extend this approach by using [Llama Extrac
 The hope for this lesson is not just to show creative ways library data can be displayed, but how a librarian or researcher could utlilise network analysis on their own collection data for practical collection development tasks in the daily work. 
 
 ### Method or tool
-The method for this data exploration is network analysis, the visualisation of relationships between data points. The network analysis visualisations created here are interactive and meant to be manipulated by the user. To achieve this, the tools the Javascript library sigma.js and the Python library ipysigma were used. In addition, Llama extract was used as a way to build connections across metadata that was hidden from the structured data elements. 
+The method for this data exploration is network analysis, the visualisation of relationships between data points. In a network, individual entities are represented as nodes, while the connections between them are represented as edges, allowing patterns of association and clustering to become visible. As a research skill, network analysis helps scholars move beyond isolated records to examine how individual data points are connected within a larger system.The network analysis visualisations created here are interactive and meant to be manipulated by the user to dive deeper into the data, which are library records. 
+
+The library records in this example draws from the Short-Title Catalogue Netherlands books held by the Royal Library of the Netherlands that are classified under the subject heading “exact sciences.” As a curated bibliographic subset, it provides structured metadata for learning more about what books compromised the collection at different times. In this example, we’ve chosen twenty five year increments over two hundred years to compare how the holdings connect over time. Any similar library data, such as MARC records, would have similar information and could be used for analysis. 
+
+To achieve the visualisations, the tools the Javascript library sigma.js and the Python library ipysigma were used. Catalogue metadata from the selected dataset was transformed into a network structure, with bibliographic records and metadata values represented as nodes and their relationships represented as edges. This structure was then visualised as an interactive graph, allowing users to explore patterns across the collection. 
 ### Technical context
-Network analysis is a popular tool across disciplines. In libraries specifically, it is often utilised to understand scholarly publishing and bibliometrics. However, it offers even more potential by using it on library collection data.  
+Network analysis is a popular tool across disciplines. In libraries specifically, it is often utilised to understand scholarly publishing and bibliometrics. However, it offers even more potential by using it on library collection data. When applied to catalogue metadata, network analysis can reveal relationships among items that are difficult to see in traditional search results. This makes it a useful method for collection exploration and development. 
 ### Social context
-Library collections offer a wealth of information outside of normal utilisation, through the metadata they collect for items. Beyond using this metadata for search and retrival, this data can be used to understand what makes up a library collection and leverage that knowledge for many uses including special collection building, purchases, weeding, and other collection development activities. Examples inculde:
-* Looking at a complete collection of subject headings for main collection to understand what sections are strongly represented and could be pulled out an highlighted
-* Visualizing secondary subject headings in a collection of a picture book collection to understand the social and cultural contexts included in the collection and identify gaps
-* Comparing topic clustering of two different special collections on vintage plant books and current gardening book to research what overlap exists and how this topic has changed over time
+Library collections offer a wealth of information outside of normal utilisation, through the metadata they collect for items. Beyond using this metadata for search and retrieval, this data can be used to understand what makes up a library collection and leverage that knowledge for many uses including special collection building, purchases, weeding, and other collection development activities. For those outside the library, these actions are often carried out while asking questions such as: What materials should the library get rid of? What collections could be expanded? What items would benefit from being promoted together? How have our materials changed over time? The latter question is the one that researchers here aim to answer with the Dutch Library dataset. 
 ### Prerequisites
 * Basic understanding of Python libraries 
 * Public or personal dataset of library materials organized in a structure scheme (MARC, Dublin Core, etc)
 * Github account 
 ### Difficulty
-
+* Medium
 ## Use Case
-This workflow could be used as a way of telling thematic stories through library collections by librarians and researchers alike. This includes both the surfacing, identifying, and creating special collections, as well as constructing data from missing metadata to expand the possibility of connections in collections. This is approach is a new way to visualize library collections to gain better insights and justify their importance for a wider audience. 
+This workflow could be used as a way of telling thematic stories through library collections by librarians and researchers alike. This approach is a new way to visualize library collections to gain better insights and justify their importance for a wider audience. Rather than presenting catalogue records as static entries this workflow treats the collection as a connected system of relationships that can be explored visually. This makes it especially useful for communicating the value of collections to audiences who may not otherwise engage with catalogue metadata directly.
+
+Other examples of of activities that could be done, just focusing on subject heading data in libraries include: 
+* Looking at a complete collection of subject headings for main collection to understand what sections are strongly represented and could be pulled out an highlighted
+* Visualizing secondary subject headings in a collection of a picture book collection to understand the social and cultural contexts included in the collection and identify gaps
+* Comparing topic clustering of two different special collections on vintage plant books and current gardening book to research what overlap exists and how this topic has changed over time
+
+Library data includes information beyond subject headings and there is universe of possibility when it comes to exploring metadata.
 ### Dataset
 
-- [Medieval Illuminated Manuscripts (data set)](https://www.kb.nl/en/research-find/datasets/middeleeuwse-verluchte-handschriften-dataset) OR
 - [Short-Title Catalogue Netherlands - The Dutch National Bibliography up to 1801](https://data.cerl.org/stcn/_search?query=&from=0) subset: 18th century books in the Royal Library of the Netherlands (KB) with subject heading 'exact sciences'.
 
 (I am currently in contact with KB.nl to obtain a more recent dataset from their catalogue.)
@@ -149,20 +156,44 @@ This workflow could be used as a way of telling thematic stories through library
 
 ## Learning keys
 ### Concepts
+* How catalogue metadata can be transformed into network data
+* How nodes and edges represent relationships within a collection through subject heads
+* How interactive visualisations can support collection analysis and development
+* How network analysis visualizations can be compared over time to gain insight about the past and future of a collection 
+* How all of these is built using Python ipysigma and Javascript sigma.js 
+
 ### Terms
+* Metadata - Structured information about a data point or, in this case, a library item. This information can include title, author, and related subjects 
+* Subject Heading - Is a structured classification of what subjects are contained within a library item
+* Node - An entity in a network 
+* Edge - The relationship between nodes that connects them 
+* Network Graph - A visual representation of how all nodes and edges connect 
+* Cluster - A group of nodes that are more closely connected to each other
+* Centrality - A way of measuring which nodes are especially important or highly connected within a network
+
 ### Time
 
 ## Learning experiment
 ### Aims
+The aim of this lesson is to demonstrate how librarians and researchers can use network analysis to explore library collections in new ways. It shows how catalogue metadata, specifically subject headings, can be transformed into visual evidence that can be used to explore a collection in new ways. The example uses open source library data from the Dutch National Library, but any library metadata dataset could be used. 
 ### Inventory
+This lesson has four main components: data and cleaning, reverting to network data, visualizing the data, analyzing the results.  
 ### Workflow
+1. data and cleaning 
+2. reverting to network data
+3. visualizing the data 
+4. Analyzing the Results
+
 ### Summary
 
 
 ## Local application
-While this example uses metadata from publically available datasets, the same process could be applied to an institutional specific dataset made up of MARC records from that collection. Extracting those records and applying similar analysis through these steps could help better understand how your local collections connect and cluster. 
+While this example uses metadata from publically available datasets, the same process could be applied to an institutional specific dataset made up of MARC records from that collection. Extracting those records and applying similar analysis through these steps could help better understand how your local collections connect and cluster.
 ### Apply this method
-Download a file of data about your library collection. 
+What questions do you have about your library, whether it be the one you work at or use? Formulating a question will help you get started on what you want to explore based off this example. 
+
+Once you have your questions, download a file of data about your library collection including the metadata categories that you want to explore such as the subject headings example here. Once the data is ready, you should be able to replicate the visualization process to meet your needs. 
+ 
 ### Other projects
 ### Continued learning
 

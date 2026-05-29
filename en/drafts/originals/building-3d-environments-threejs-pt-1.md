@@ -27,9 +27,9 @@ doi: XX.XXXXX/phen0000
 
 Advances in computing continue to increase our ability to display 3D models on websites, create virtual museums, and make heritage information more accessible. The use of interactive 3D models on websites enables examples of archaeological and historical material culture to be presented more effectively. 3D models are generally more engaging than 2D images, largely because the extra dimension encourages user interaction. The act of moving around a model and choosing which areas to examine and learn more about creates a more personalised experience and contributes to the user forming a relationship with the model. This relationship can be further strengthened if the model can be manipulated or incorporated into a game, especially a puzzle. Puzzles increase the amount of time users spend with a model and can encourage them to notice details they may otherwise overlook. The sense of achievement that comes from solving a puzzle can also strengthen a positive relationship with a model and its subject.
 
-This lesson is the first in a two-part series that introduces [three.js](https://threejs.org) (a JavaScript library) as a tool for creating engaging digital research outputs using 3D models. Together, the lessons show how to use [three.js](https://threejs.org) to create a website featuring interactive 3D models that illustrate the diversity of pottery technologies across communities in the Papua New Guinea area. In this lesson, Part 1, you will learn about the basic components of 3D models and how to use three.js to create a website featuring a 3D model of multiple ceramic vessels (such as pots or jars) displayed on a map of Papua New Guinea. Part 2 of the lesson series builds on this foundation. In that lesson, you will create a more complex interactive website in which selecting a vessel reveals information about the local community and their ceramics. Part 2 also shows how to create a matching puzzle where users match ceramics to the community that created them (if the vessel is dragged to the corresponding community, the background colour of the scene changes).
+This lesson is the first in a two-part series that introduces [three.js](https://threejs.org) (a JavaScript library) as a tool for creating engaging digital research outputs using 3D models. Together, the lessons show how to use [three.js](https://threejs.org) to create a website and (optionally) a game 'The Jars of Papua', featuring interactive 3D models that illustrate the diversity of pottery technologies across communities in the Papua New Guinea area. In this lesson, Part 1, you will learn about the basic components of 3D models and how to use three.js to create a website featuring a 3D model of multiple ceramic vessels (such as pots or jars) displayed on a map of Papua New Guinea. Part 2 of the lesson series builds on this foundation. In that lesson, you will create a more complex interactive website in which selecting a vessel reveals information about the local community and their ceramics. Part 2 also shows how to create a matching puzzle where users match ceramics to the community that created them (if the vessel is dragged to the corresponding community, the background colour of the scene changes).
 
-### Why use 3D Models for Cultural Heritage
+### Why Use 3D Models for Cultural Heritage
 
 Web models and digital games can help the dissemination of archaeological information. Rather than only writing texts about artefacts, providing communities with opportunities for more direct engagement with the archaeological past can be considered a goal of archaeologists (Holtorf, 2005). Virtual (or printed) cultural heritage models have the advantage that they can be inspected without the risk of damaging an archaeological artefact. They can also be inspected at different scales: houses, sites, or villages can be scaled down to reveal how different areas relate to one another, while small artefacts, such as coins, can be magnified so that small details can be more easily seen. In these two lessons, vessels are scaled down so that many can be compared and placed on a geographic map. This kind of visual and geographical placement can help communicate the links between artefacts and their creators more vividly than a simple label. Finally, the use of models can also ideally help reduce the removal, and facilitate the return, of original artefacts to the communities that created them and their descendants.
  
@@ -41,23 +41,23 @@ This two-part lesson series provides a brief introduction to creating websites w
 
 Part 1 starts by introducing fundamental concepts and components of 3D models along with some of the ethical considerations involved in generating and using 3D models when working with cultural heritage. You will then explore those concepts and components in practice using an example 3D model of ceramics from Papua New Guinea (provided by the authors) and the three.js web editor. The three.js editor is a browser-based tool that allows you to view and interact with 3D models without writing any code. Finally, you will use the three.js JavaScript library to create a webpage featuring the example 3D model of Papua New Guinea pottery displayed on a map. You will be provided with pre-written code snippets that you will copy-paste, add to, and modify step by step. In doing so, you will learn how to set up a scene (the 3D space that contains the model), define a camera (the viewpoint from which the users view the model), add lighting (to make the model objects visible and more realistic), and navigation controls (such as mouse controls) to allow users to move around the scene.
 
-In Part 2, you will build on this foundation to create a more interactive website using three.js. You will learn how to work with multiple models, allow users to select and interact with them, and display additional information in response to user actions. You will also explore how to turn the scene into an interactive game, where models are initially positioned randomly and can be moved and matched to their corresponding communities. You will do this by setting up a test in the code to run after each time a model is moved and check if it has been placed in the correct position. Successful matches trigger a background colour change.
+In Part 2, you will build on this foundation to create a more interactive website 'The Jars of Papua' using three.js. You will learn how to work with multiple models, allow users to select and interact with them, and display additional information in response to user actions. You will also explore how to turn the scene into an interactive game, where models are initially positioned randomly and can be moved and matched to their corresponding communities. You will do this by setting up a test in the code to run after each time a model is moved and check if it has been placed in the correct position. Successful matches trigger a background colour change.
 
 ### Software Requirements and Installation
 
 To complete this lesson, you will need a few basic tools and some familiarity with simple web and programming concepts. No prior experience with 3D modelling or three.js is required.
 
-**Web browser**
+**Web Browser**
 
 You will need a modern browser (such as Chrome, Safari, or Edge). Most current web browsers should work, although some versions of Safari can have problems. If your browser can display the [three.js site](https://threejs.org) and the various sample projects on the home page, it should work.
 
 When building a website, it is useful to be able to identify and fix any problems that may arise (a process known as debugging). Browsers include built-in developer tools that help with this. In particular, the console displays error messages that can help you understand why something is not working. In Chrome, you can open the console via: View > Developer > JavaScript Console. If your webpage is not loading as expected, checking the console is often the first step. You can then search online for explanations of any error messages you encounter. You may also need to reload the page while the console is open to see the error messages. For more information on debugging code see the [three.js manual](https://threejs.org/manual/#en/debugging-javascript).
 
-**Basics of webpages**
+**Basics of Webpages**
 
 In the first half of this lesson, you will explore models without writing code. In the second part of the lesson, you will use code to create a webpage. Webpages are typically built using three main computer languages: HTML (defines structure), CSS (defines appearance), and JavaScript (defines behaviour). This lesson focuses on JavaScript and does not explain HTML or CSS in detail. You do not need prior knowledge of these languages to complete the lesson, but some familiarity may help you follow the code more easily. If you want to learn more about the basic components of a website, [w3schools](https://www.w3schools.com/howto/howto_make_a_website.asp) provides a guide and tutorials on HTML, CSS, and JavaScript.
 
-**Text editor and terminal**
+**Text Editor and Terminal**
 
 To write and run code, you will need a text editor and a computer terminal (for example, Windows PowerShell, the terminal in macOS or Linux, or the text editor's terminal). In this lesson, you will use Visual Studio Code (VSC) which includes both a text editor and a terminal. It can be downloaded from [https://code.visualstudio.com](https://code.visualstudio.com). Follow the website instructions to install. It is free and available for Windows, macOS, and Linux. Many extensions are available for VSC, and syntax highlighting (code colouring) can help detect issues such as unclosed tags or quotes. 
 
@@ -65,7 +65,7 @@ You can open the terminal in VS Code via: Terminal > New Terminal. You will use 
 
 Note: [VSCodium](https://vscodium.com) is an alternative version of VS Code that removes some telemetry (usage tracking) and AI chat features. It can be used in the same way for this lesson.
 
-**Node.js (for running your webpage locally)**
+**Node.js (for Running Your Webpage Locally)**
 
 To view your webpage while you are building it (for example, to check that the code is working or how changes affect your site), you will use a tool called [Node.js](https://nodejs.org). 
 
@@ -81,7 +81,7 @@ If installed correctly, you will get a version number. If you have problems inst
 
 The code used in this lesson has been tested with version 18.14.1.
 
-**Data for this lesson**
+**Data for this Lesson**
 
 As an example case study, you will use a 3D model created by the authors. More information about the model as well as download instructions will be provided later in the lesson.
 
@@ -111,7 +111,7 @@ When making games out of cultural heritage models, it is also important to refle
 
 ## Introduction to 3D Modelling
 
-### Basic components of 3D models
+### Basic Components of 3D Models
 
 3D models are made from [meshes](https://en.wikipedia.org/wiki/Polygon_mesh): networks of nodes (points), also called vertices, connected by edges (lines) to compose faces, also called polygons (Figure 1). These polygons are usually triangles (with 3 vertices) or quadrilaterals (with 4 vertices), and they can be combined to form a mesh (the 3D object). Some meshes are basic, predefined shapes such as spheres, cubes, planes, and tori ('donuts'). These are known as 'primitive' models and can be created directly in three.js. 
 
@@ -129,13 +129,13 @@ Textures are two dimensional image files with U (horizontal) coordinates from 0 
 
 Textures with grayscale (from white to black) pixel intensities can also be used to convey other information, such as opacity ([alpha maps](https://en.wikipedia.org/wiki/Alpha_mapping)), roughness (roughness maps), and shadow effects ([occlusion maps](https://en.wikipedia.org/wiki/Ambient_occlusion)) (Figure 1). Many 3D modellers will create [normal maps](https://en.wikipedia.org/wiki/Normal_mapping) for their models to simulate fine shape details. Although a polygon is flat, normal maps can be used to change how light interacts across the surface of a polygon to make it appear to have more complex details. The pixels in normal maps change how light sources interpret the direction different points in a polygon are 'facing', so that a flat polygon can appear to have a non-flat surface. 
 
-Normal maps are colour ([RGB](https://en.wikipedia.org/wiki/RGB_color_model)) images with the three channels (red, blue and green) providing the information about surface direction. They are especially useful for (partly) retaining visual details when reducing the number of polygons in a model. Three.js can use normal maps, but in Part 2 you will only use colour map textures. You will also only add textures to 2D planes since it is easier to put a 2D image texture onto a 2D surface than onto a more complicated 3D model. 
+Normal maps are colour ([RGB](https://en.wikipedia.org/wiki/RGB_color_model)) images with the three channels (red, blue and green) providing the information about surface direction. They are especially useful for (partly) retaining visual details when reducing the number of polygons in a model. Three.js can use normal maps, but for 'The Jars of Papua' interactive website in Part 2 you will only use colour map textures.  
 
-If you are interested in UV mapping, you can use the 'Model Inspector' in the bottom right corner of many models in [SketchFab](https://sketchfab.com/), including [Diva dog](https://skfb.ly/pzB7J) and the [Papua jars](https://skfb.ly/putNM). In the 3D + 2D view, you can see where the U, V co-ordinates correspond between the model and the texture map (Figure 3).
+If you are interested in UV mapping, you can use the 'Model Inspector' in the bottom right corner of many models in [SketchFab](https://sketchfab.com/), including [Diva dog](https://skfb.ly/pzB7J) and the [Papua jars](https://skfb.ly/putNM). In the 3D + 2D view, you can see where the U, V co-ordinates correspond between the model and the texture map (Figure 3). The colour map texture (an image of a geographical map of Papua New Guinea) used in the lower model in Figure 3 is one of the textures that will be used in Part 2.
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-03.png" alt="The dog and jars models in the model inspector in SketchFab." caption="Figure 3. The Model Inspector in SketchFab for the Diva dog and Papua Jars models." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-03.png" alt="The dog and jars models in the model inspector in SketchFab." caption="Figure 3. The Model Inspector in SketchFab for the Diva dog and Papua Jars models. The Papua Jars is a composite model whose components include a plane textured with a geographical map of Papua New Guinea." %}
 
-### Model file formats
+### Model File Formats
 
 3D models can be stored in many different file formats. Some, such as [STL](https://en.wikipedia.org/wiki/STL_(file_format)), will only store the mesh. In this lesson, you will work with glTF (or .glb) files: the [GL Transmission Format (glTF) or GL Transmission Format Binary (glb)](https://en.wikipedia.org/wiki/GlTF) file format is one of the formats that can store meshes, textures, materials, animations and other properties. 
 
@@ -143,7 +143,7 @@ glTF/glb files (or rather the meshes in them) can be compressed to reduce their 
 
 glTF/glb can also store several models in a single file. If you are creating a scene with multiple models for a website, there are two main approaches. You can choose to import each of the different models into software such as Blender (or the [three.js editor](https://threejs.org/editor/)), where you position, scale, and colour/texture each of them, and then export the resulting composite model (the whole scene) as a single .glb file. This is the approach used here in Part 1 with the png_sceneDRACO.glb file. Alternatively, you can import the models individually and arrange and alter them via the website code, as you will do in Part 2. There is also the option of separating out individual models from a file of composite models using the website's code, but this will not be covered in this lesson.
 
-### About the models in this lesson
+### About the Models in this Lesson
 
 The models you will use in this lesson were created by the authors (who are not of Pacific Islander heritage) using CAD software. They are intended to be symbolic rather than realistic. While simplifying some of the designs in this way means that some of the artistry of the original potteries is not fully represented, it helps avoid reproducing culturally sensitive designs and respect the moral rights of the original communities. 
 
@@ -169,7 +169,7 @@ Another advantage of three.js is that it can be used for converting websites for
 
 ## Exploring Models with the three.js Editor
 
-In this section, you will start exploring the example pottery model using the [three.js editor](https://threejs.org/editor/). You will explore how concepts discussed earlier — such as meshes, model formats and sizes, materials, textures, lighting, and position (coordinates) — work together within a 3D scene.
+In Part 2 you will build up the 'Jars of Papua' website from multiple models of jars and planes but here, you will start exploring the example composite pottery model using the [three.js editor](https://threejs.org/editor/). You will explore how concepts discussed earlier — such as meshes, model formats and sizes, materials, textures, lighting, and position (coordinates) — work together within a 3D scene.
 
 Download the composite model png_sceneDRACO.glb from the [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2). Open the [three.js editor](https://threejs.org/editor/) in a new browser window (right click on the link) and import the model with File > Import (Figure 5). 
 
@@ -406,11 +406,11 @@ You do not normally need to stop the server when you change the code. However, i
 
 You may also need to refresh the page in your browser to apply any changes you make to the code. 
 
-### Building a 3D Scene in your Webpage
+### Building a 3D Scene in Your Webpage
 
 In the previous section, you set up the project by creating a webpage (index.html), loading the three.js library, and starting a local server (```npx serve```) so that you can view the webpage in your browser. In this section, you will start adding JavaScript code to that webpage in order to build a basic 3D scene. You will start by creating a container for the scene, and then you will add the other elements needed to display it in the browser.
 
-#### 1. Setting up the container
+#### 1. Setting Up the Container
 
 The first step is to create a container for the 3D scene (which defines where the 3D content will appear on the webpage) with ```container = document.createElement('div')```. 
 
@@ -452,7 +452,7 @@ At this stage, the init() function only creates the container with ```container 
 
 At this stage, nothing will change in your browser yet.
 
-#### 2. Setting up the scene, camera, and renderer
+#### 2. Setting Up the Scene, Camera, and Renderer
 
 Next, you will create the core components of the 3D scene:
 - the scene itself (the 3D space) with ```scene = new THREE.Scene()```
@@ -502,7 +502,7 @@ The aspect of the view can be taken from the browser window's dimensions and you
 
 The camera and other positions are set using x, y, and z coordinates. As mentioned previously, x is left (-) and right (+), y is down (-) and up (+) and z is depth or far away from the viewer/'into the screen' (-) and near the viewer/'coming out from the screen' (+). Here, the camera is set at a height of 1.6m (y = 1.6), slightly above ground level. The z co-ordinate for the camera is set at 3m, as if you are standing a short distance away from the scene.
 
-#### 3. Rendering the scene
+#### 3. Rendering the Scene
 
 To display the scene, you need to continuously render it using an animation loop. This is done by using the ```animate()``` function, which repeatedly calls the ```render()``` function.
 
@@ -541,7 +541,7 @@ Save the index.html file and reload the page in your browser. The background col
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-13.png" alt="Basic webpage with peach background." caption="Figure 13. Webpage with peach background." %}
 
-#### 4. Responding to window resizing
+#### 4. Responding to Window Resizing
 
 Next, you will add an ‘event listener’ to ensure that the scene updates correctly when the browser window is resized. Currently, the scene does not adjust if the window size changes.
 
@@ -580,11 +580,11 @@ This adds an event listener that responds to changes in the browser window size.
 
 The standard window resize function code gets the new browser dimensions from the global object ```window``` and updates the camera aspect and the dimensions of the picture the renderer is drawing. Note that, as ```window``` is a global object, it is better not to call any of your variables ```window```.
 
-Three.js uses event listeners to detect and respond to user interactions. In this piece of code, the event listener is only set up for window resizing (```resize```), however, it can also be used to respond to other kinds of inputs such as mouse movement (```mousemove```), mouse clicks (```click```), keys being pressed on the keyboard (```keyup``` and ```keydown```), and drags (```dragstart``` and ```dragend```). You will use some of these in Part 2.
+Three.js uses event listeners to detect and respond to user interactions. In this piece of code, the event listener is only set up for window resizing (```resize```), however, it can also be used to respond to other kinds of inputs such as mouse movement (```mousemove```), mouse clicks (```click```), keys being pressed on the keyboard (```keyup``` and ```keydown```), and drags (```dragstart``` and ```dragend```). You will use some of these in Part 2 to enable individual jars to be selected or moved around.
 
 If you save the file and reload the browser, a browser window resize should now work.
 
-#### 5. Setting up lighting
+#### 5. Setting up Lighting
 
 Next, you will add lights to the scene.
 

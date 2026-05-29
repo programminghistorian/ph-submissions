@@ -292,11 +292,11 @@ In this lesson, we have overviewed the fundamentals of metadata and linked open 
 
 Through this lesson, you learned how to structure and link this data to promote open access and contribute to the visibility and interoperability of resources in a digital environment. Even if you had never worked with Wikidata before, you now know how to get started. We encourage you to keep practicing and exploring further.
 
-If you’re interested in learning more about linked open data and Wikidata, we recommend the [Programming Historian lesson by Jonathan Blaney [Programming Historian lesson by Jonathan Blaney (2017)](https://programminghistorian.org/en/lessons/intro-to-linked-data), for an introduction to LOD. We also recommend the [guide Linked Open Data in Library Use Today by Gustavo Candela (2025)]([https://programminghistorian.org/es/lecciones/reutilizando-colecciones-digitales-glam-labs](https://libereurope.github.io/ds-topic-guides/lod.html)), which gives a practical, accessible overview of Linked Open Data and why it matters for libraries.
+If you’re interested in learning more about linked open data and Wikidata, we recommend '[Introduction to the Principles of Linked Open Data](/en/lessons/intro-to-linked-data)' by Jonathan Blaney (2017). We also recommend the guide '[Linked Open Data in Library Use Today](https://libereurope.github.io/ds-topic-guides/lod.html)' by Gustavo Candela (2025), which gives a practical, accessible overview of Linked Open Data and why it matters for libraries.
 
 ## Endnotes
 
-[^1]: Hyvönen, E. (2020, October). "Sampo'' Model and Semantic Portals for Digital Humanities on the Semantic Web. In Digital Humanities in the Nordic Countries (pp. 373-378). CEUR.
+[^1]: Hyvönen, E. (2020, October). Digital humanities on the Semantic Web: Sampo model and portal series. In Digital Humanities in the Nordic Countries (pp. 373-378). CEUR. <https://doi.org/10.3233/SW-22303>
 
 [^2]: Daudinot Founier, Isabel. (2006). Organización y recuperación de información en Internet: teoría de los metadatos. ACIMED, 14(5) Recuperado el 27 de febrero de 2024, de <http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352006000500006&lng=es&tlng=es>.
 

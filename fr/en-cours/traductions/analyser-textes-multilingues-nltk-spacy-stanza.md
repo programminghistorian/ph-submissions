@@ -31,6 +31,10 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
+<div class="alert alert-warning">
+Note de la traduction : cette version française de la leçon a été mise à jour par rapport à la version originale anglophone afin de tenir compte de l'évolution des bibliothèques utilisées. Le code a été adapté pour Python 3.12, spaCy 3.8.11 et Stanza 1.11.1 (la version originale reposait sur Python 3.10, spaCy 3.7.4 et Stanza 1.8.2). En particulier, la section sur la détection de langue avec <code>spacy_langdetect</code> a été réécrite pour suivre le nouveau pattern <code>@Language.factory</code> requis par les versions récentes de spaCy, et les index de phrases utilisés dans les exemples de tokénisation avec spaCy ont été ajustés.
+</div>
+
 ## But de la leçon
 
 Une grande partie des ressources destinée à l’apprentissage de méthodes informatiques d’analyse de texte se concentre sur des textes et corpus de langue anglaise et omettent souvent d’inclure les explications nécessaires pour travailler avec des sources non anglophones. Pour remédier à ce problème, cette leçon propose une introduction à l’analyse de texte non anglophone et multilingue (c'est-à-dire écrit en plus d’une langue) via Python. En ayant recours à un texte multilingue composé en russe et en français, cette leçon montrera comment utiliser des méthodes informatiques pour accomplir trois tâches de prétraitement fondamentales : la tokénisation, l’étiquetage morpho-syntaxique, et la lemmatisation. Ensuite, la leçon vous apprendra à automatiquement détecter les langues présentes dans un texte prétraité.
@@ -43,7 +47,7 @@ Afin d’accomplir ces trois tâches de prétraitement essentielles, cette leço
 
 Cette leçon est destinée à celles et ceux qui ne sont pas familier avec les méthodes de traitement automatique du langage naturel, en particulier celles·eux souhaitant appliquer ces méthodes sur des corpus multilingues ou des textes écrits en langues autres que l’anglais. Bien qu’une connaissance de Python ne soit pas nécessaire, il sera utile de comprendre la structure du code. Avoir une connaissance rudimentaire de la syntaxe de Python ainsi que de ses fonctionnalités est recommandé. Il serait par exemple utile pour les lectrices·eurs de s’être familiarisé avec l’importation de bibliothèques, la construction de fonctions, la manipulation de chaînes de caractères, et l'utilisation de boucles.
 
-Le code pour cette leçon est écrit en Python 3.10 et utilise les bibliothèques NLTK (v3.8.1), spaCy (v3.7.4), et Stanza (v1.8.2) pour effectuer du traitement automatique du langage naturel. La majeure partie du code fonctionne également en Python 3.12 ainsi qu'avec les dernières versions des bibliothèques NLTK (v3.9.2) et Stanza (v1.11.0). Cependant, la version à jour de spaCy (v3.8.11) se comporte de manière légèrement différente. Ceci sera indiqué en commentaires de code là où ceci entrave le bon fonctionnement du code. Il est recommandé à celles et ceux qui veulent utiliser toutes les fonctions décrites dans cette leçon avec spaCy de s'en tenir à la version 3.7.4 de cette bibliothèque. Si vous n’avez jamais utilisé Python auparavant, il vous sera utile de consulter cette autre leçon du [_Programming Historian_](https://programminghistorian.org/en/lessons/introduction-and-installation) avant de commencer la leçon (à noter que les leçons complémentaires du _Programming Historian_ qui seront indiquées ici ne sont pas encore disponibles en traduction francophone).
+Le code pour cette leçon est écrit en Python 3.12 et utilise les bibliothèques NLTK (v3.8.1), spaCy (v3.8.11), et Stanza (v1.11.1) pour effectuer du traitement automatique du langage naturel. Si vous n’avez jamais utilisé Python auparavant, il vous sera utile de consulter cette autre leçon du [_Programming Historian_](https://programminghistorian.org/en/lessons/introduction-and-installation) avant de commencer la leçon (à noter que les leçons complémentaires du _Programming Historian_ qui seront indiquées ici ne sont pas encore disponibles en traduction francophone).
 
 ## Installation et mise en place
 
@@ -151,8 +155,8 @@ war_and_peace = """
 Il nous faut tout d’abord charger notre fichier texte afin de l’utiliser avec différents packages de traitement automatique du langage naturel. Pour commencer, ouvrons le fichier et attribuons-lui la variable que l’on nommera `war_and_peace`. Ensuite, imprimons les contenus de ce fichier pour être certain qu’il a été lu correctement. Pour cette leçon, nous n’utiliserons qu’un court extrait du roman.
 
 ``` python
-#il n'est pas nécessaire d'exécuter la cellule important le fichier war_and_peace_excerpt.txt si la cellule précédente, plaçant directement le contenu du texte dans la variable war_and_peace sans télécharger le fichier, a déjà été exécutée
-with open("war_and_peace_excerpt.txt") as file:
+#il n'est pas nécessaire d'exécuter la cellule important le fichier guerre-et-paix-extrait.txt si la cellule précédente, plaçant directement le contenu du texte dans la variable war_and_peace sans télécharger le fichier, a déjà été exécutée
+with open("guerre-et-paix-extrait.txt") as file:
     war_and_peace = file.read()
     print(war_and_peace)
 ```
@@ -263,10 +267,6 @@ print(spacy_sentences)
 
 Nous pouvons désormais sauvegarder nos phrases dans des variables, tel que nous l’avons fait avec NLTK. spaCy ne retourne pas les phrases comme chaîne de caractères mais en tant que tokens spaCy. Afin de les imprimer comme nous l’avons fait avec NLTK, il faudra d’abord les convertir en chaîne de caractères (pour plus d’informations sur les types de données supportés par Python, tels que les chaînes de caractères et les nombres entiers, veuillez consulter [cette documentation](https://perma.cc/PJ99-H9DP)). Ceci nous permettra d’attacher un préfixe qui identifie la langue des phrases, car Python ne permet pas de combiner une chaîne de caractères avec un autre type de donnée. Étant donné la petite taille de nos données, il est facile de spécifier les phrases qui nous intéressent en utilisant leur indexation dans notre liste. Pour examiner l’entièreté d’une liste de phrases, comme on pourrait le faire avec une base de données plus large, on utiliserait une méthode différente pour examiner les chaînes de caractères, comme par exemple en itérant à travers chaque objet de la liste (il nous faudra faire ceci avec nos tokens Stanza ci-dessous).
 
-<div class="alert alert-warning">
-Attention: la tokénisation de phrases opère de façon différente dans la version 3.8.11 de spaCy. Les valeurs de phrases indiquées ici ne sont donc pas les mêmes que celles dans le code de la leçon originelle. 
-</div>
-
 ``` python
 # combiner la phrase russe et son label de langage
 spacy_rus_sent = str(spacy_sentences[6])
@@ -374,24 +374,24 @@ Comme vous pouvez le voir, `TextCat` a correctement identifié les phrases écri
 
 Nous examinerons d’autres manières de détecter les langues dans des phrases multilingues une fois que nous aurons classifié nos phrases en utilisant spaCy et Stanza.
 
-Commençons par spaCy. Il faut d'abord installer le package `spacy_langdetect` depuis le Python Package Index.
-
-<div class="alert alert-warning">
-Attention: le pipeline LanguageDetector de ce package ne fonctionne plus avec le modèle multilingue xx_sent_ud_sm dans la version 3.8.11 de spaCy. Il est recommandé aux lectrices·eurs de s'en tenir à la version de spaCy utilisée dans la version originelle de la leçon (v3.7.4).
-</div>
+Commençons par spaCy.
 
 ``` python
-pip install spacy_langdetect
-```
+# D’abord, il nous faut installer le package `spacy_langdetect` depuis le Python Package Index.
+!pip install spacy_langdetect
 
-Ensuite, nous pouvons l’importer afin de l’utiliser pour détecter les langues de nos textes.
-
-``` python
+# Ensuite, nous pouvons l’importer afin de l’utiliser pour détecter les langues de nos textes.
 from spacy.language import Language
 from spacy_langdetect import LanguageDetector
 
-# établir notre pipeline
-Language.factory("language_detector")
+nlp = spacy.load("xx_sent_ud_sm")
+
+# Création de la fonction de détection de langage
+@Language.factory("language_detector")
+def create_language_detector(nlp, name):
+    return LanguageDetector()
+
+# ajouter l'outil à notre pipeline
 nlp.add_pipe('language_detector', last=True)
 ```
 ``` python
@@ -430,7 +430,7 @@ nlp = Pipeline(lang="multilingual", processors="langid")
 # indiquer les phrases à traiter et ensuite lancer le code de détection de langue
 docs = [stanza_rus_sent, stanza_fre_sent, stanza_multi_sent]
 docs = [Document([], text=text) for text in docs]
-nlp(docs)
+docs = nlp(docs)
 
 # imprimer le texte de chaque phrase à côté de l'estimation de langue
 print("\n".join(f"{doc.text}\t{doc.lang}" for doc in docs))
@@ -584,17 +584,6 @@ Résultats:
 
 Faisons maintenant de même avec notre phrase en français.
 
-``` python
-# charger le corpus
-nlp = spacy.load("fr_core_news_sm")
-
-# appliquer le modèle
-doc = nlp(spacy_fre_sent)
-
-# imprimer chaque mot et son étiquette
-for token in doc:
-    print(token.text, token.pos_)
-```
 ``` python
 # charger le corpus
 nlp = spacy.load("fr_core_news_sm")
@@ -810,10 +799,10 @@ from stanza.pipeline.multilingual import MultilingualPipeline
 # lancer le pipeline multilingue sur les phrases françaises, russes, et multilingue en même temps 
 nlp = MultilingualPipeline(processors='tokenize,pos')
 docs = [stanza_rus_sent, stanza_fre_sent, stanza_multi_sent]
-nlp(docs)
+docs = nlp(docs)
 
 # imprimer les résultats
-print(*[f'word: {word.text}\tupos: {word.upos}' for sent in docs.sentences for word in sent.words], sep='\n')
+print(*[f'word: {word.text}\tupos: {word.upos}' for sent in doc.sentences for word in sent.words], sep='\n')
 ```
 Résultats:
 

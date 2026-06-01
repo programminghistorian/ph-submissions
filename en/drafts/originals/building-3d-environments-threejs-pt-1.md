@@ -53,7 +53,7 @@ You will need a modern browser (such as Chrome, Safari, or Edge). Most current w
 
 When building a website, it is useful to be able to identify and fix any problems that may arise (a process known as debugging). Browsers include built-in developer tools that help with this. In particular, the console displays error messages that can help you understand why something is not working. In Chrome, you can open the console via: View > Developer > JavaScript Console. If your webpage is not loading as expected, checking the console is often the first step. You can then search online for explanations of any error messages you encounter. You may also need to reload the page while the console is open to see the error messages. For more information on debugging code see the [three.js manual](https://threejs.org/manual/#en/debugging-javascript).
 
-**Basics of Webpages**
+**Web Development**
 
 In the first half of this lesson, you will explore models without writing code. In the second part of the lesson, you will use code to create a webpage. Webpages are typically built using three main computer languages: HTML (defines structure), CSS (defines appearance), and JavaScript (defines behaviour). This lesson focuses on JavaScript and does not explain HTML or CSS in detail. You do not need prior knowledge of these languages to complete the lesson, but some familiarity may help you follow the code more easily. If you want to learn more about the basic components of a website, [w3schools](https://www.w3schools.com/howto/howto_make_a_website.asp) provides a guide and tutorials on HTML, CSS, and JavaScript.
 

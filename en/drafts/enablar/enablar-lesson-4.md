@@ -25,29 +25,29 @@ topics:
 abstract: >
   This enablar lesson aims to support researchers in their AI use,
   experimentation and implementation, through demonstrating a clear workflow
-  for evaluating tools based on their terms and conditions. As a secondary
+  for evaluating tools based on their licence terms and conditions. As a secondary
   audience, we hope to inform those advising students and staff on AI
   compliance and institutional licence purchasing, especially within Higher
   Educational libraries.
 
-  In focusing on such local applications, we present a reproducible workflow
+  In focusing on these local applications, we present a reproducible workflow
   for extracting potentially problematic 'red flags' in AI tool licences,
   using Natural Language Processing (NLP): the field of digital research
-  involving interaction between computers and human language. Locating such
-  variance and pitfalls in current AI licences, marketed to university
-  libraries, is increasingly pertinent as AI capability gains stronger media
+  involving interaction between computers and human language. Locating potential
+  pitfalls in current AI licences, marketed to university
+  libraries, is pertinent as such tools gain stronger media
   attention, with university staff and students exploring new ways of
   leveraging automation in their own research.
 
-  Within our own researcher and library roles, we have noticed a knowledge
-  gap emerge, whereby scholars require greater confidence in understanding
-  AI’s potential data protection risks. Subsequently, this lesson emerged
-  from informal discussions around AI providers' variable guidance on server
-  infrastructure, data sovereignty, and potential for copyright misuse. In
-  using NLP to locate red flags, we aim to build researcher and library
-  practitioner confidence in interpreting complex legalistic documentation,
-  while also informing appropriate AI use in research. Nothing in the lesson
-  is intended to constitute legal advice from a qualified lawyer, or intended
+  Against this shift, we have noticed a knowledge gap emerge, informed
+  by our own researcher and library roles: whereby scholars require
+  greater awareness in understanding AI’s potential data protection risks.
+  Subsequently, this lesson emerged from informal discussions around AI providers'
+  variable guidance on server infrastructure, data sovereignty, and potential for
+  copyright misuse. In using NLP to locate red flags, we aim to build researcher
+  and library practitioner confidence in interpreting complex legalistic documentation,
+  while also informing appropriate AI use for digital research. Disclaimer: Nothing in this
+  lesson is intended to constitute legal advice from a qualified lawyer, or intended
   to replace seeking library expertise.
 avatar_alt: Red flag graffiti
 doi: XX.XXXXX/phen0000
@@ -141,22 +141,19 @@ Format all references using the Chicago Manual of Style.
 
 {% include figure.html filename="en-or-enablar-lesson-4-01.jpeg" alt="Graffiti of a red flag." caption="red flag, Markus Spiske, unsplash" %}
 
-The increasing deployment of Artificial Intelligence (AI) is particularly visible in Higher Education. University libraries now contend with newfound staff and student expectations as to how AI can support their scholarship, workplace efficiency and ideation strategies, automating previous manual work (O'Sullivan, 2025). Large Language Models (LLMs), trained on huge amounts of text, and the chat-based interfaces supporting them, have led many library users to anticipate querying resources based on natural language, opposed to keyword searching (Jaillant et al., 2026: 31). Alongside this shift in how users retrieve information, Agentic AI systems are coupling LLM models, like Gemini or Claude, to external software: ranging from calendar applications to email systems (Brown & Donnelly, 2026). Often, these tools are adopted to improve the quality of work, and reduce time, however they too change the rhythm and nature of research, pushing against established safeguards (Dickinson & Marshall, 2026).
-While offering potential benefits to research, AI therefore exposes institutions, and individuals, to a new landscape of Intellectual Property (IP) concerns. 
+The increasing deployment of Artificial Intelligence (AI) is particularly visible in Higher Education, from proof reading applications to literature review searching and website generation. As such, university libraries now contend with newfound staff and student expectations as to how AI can support their scholarship, workplace efficiency and ideation strategies, automating previous manual work (O'Sullivan, 2025). Large Language Models (LLMs), trained on huge amounts of text, and the chat-based interfaces supporting them, have led many library users to anticipate querying resources based on natural language, opposed to keyword searching (Jaillant et al., 2026: 31). Alongside this shift in how users retrieve information, Agentic AI systems are coupling LLM models, like Gemini or Claude, to external software: ranging from calendar applications to email systems (Brown & Donnelly, 2026). Often, these tools are adopted to improve the quality of work, and reduce time; however, they also change the rhythm and nature of research, pushing against established safeguards (Dickinson & Marshall, 2026). While offering potential benefits to research, AI therefore exposes institutions, and individuals, to a new landscape of Intellectual Property (IP) concerns, and potential risk. 
 
-Students and staff using AI software are often unaware of legally problematic terms and conditions in tool licence agreements: especially in the case of free, freemium, or subscription-based models (University of Birmingham, 2026).  This knowledge gap has clear implications for research activities, ranging from data privacy issues, third-party dependencies, data retention, cost and inaccuracies, notably from AI’s confident-mistakes, also termed ‘hallucinations’. Researchers are currently accepting unknown levels of individual risk through engaging in ‘Shadow AI’ practice, the unauthorised use of GenAI tools, without approval from an organisational IT department (Krantz et al., n.d.). In 2024, over one-third (38%) of employees surveyed by the [National Cybersecurity Alliance](https://www.infosecurity-magazine.com/news/third-employees-sharing-work-info/) acknowledged sharing sensitive work with an AI tool, without their employers’ permission. With chat-based AI only growing more intuitive, and marketable to researchers - at all levels, fears from those tasked with data protection, safeguarding institutional reputations, and cyber security are unlikely to be alleivated. 
+Researchers using AI software are often unaware of legally problematic terms and conditions in tool licence agreements: especially in the case of free, freemium, or subscription-based models (University of Birmingham, 2026).  This knowledge gap has clear implications for scholarship activities, ranging from: data privacy issues, third-party dependencies, data retention, cost and technical inaccuracies. Researchers are, therefore, accepting unknown levels of individual risk through, with many engaging in ‘Shadow AI’ practice, the unauthorised use of Generative AI (GenAI) tools, without approval from their IT department (Krantz et al., n.d.). In 2024, over one-third (38%) of employees surveyed by the [National Cybersecurity Alliance](https://www.infosecurity-magazine.com/news/third-employees-sharing-work-info/) acknowledged sharing sensitive work with an AI tool, without their employers’ permission. With chat-based AI only growing more intuitive, and marketable to researchers - at all levels, fears from those tasked with data protection, safeguarding institutional reputations, and cyber security are unlikely to be allayed. 
 
-The same [National Cybersecurity Alliance 2024 report](https://www.infosecurity-magazine.com/news/third-employees-sharing-work-info/) also cited a lack of institutional training around appropriate AI usage, mirroring older reports of library users (Cox, 2021). These training issues are compounded through university libraries being restricted in trialling lesser-known AI systems, under controlled conditions, due to their deep integration with certain technology providers, for instance being a Google or Microsoft ‘Campus’ (Rungkaew, 2025). 
+The same [National Cybersecurity Alliance 2024 report](https://www.infosecurity-magazine.com/news/third-employees-sharing-work-info/) also cites a lack of institutional training around appropriate AI usage, mirroring established reports on library staff and users needing greater AI awareness (Cox, 2021). However, satisfying such training issues is complex, and compounded by university libraries being restricted in trialling lesser-known AI systems, under controlled conditions, due to their deep integration with certain providers, seen in being a 'Google' or 'Microsoft Campus' (Rungkaew, 2025). 
 
-In considering both individual research behavior and institutional factors, this ENABLAR lesson aims to increase participants’ understanding of the current risks to Higher Educational libraries, and researchers, in licensing AI tools without proper review. Through a practical workflow informed by collaborative reflection, we bring together perspectives from across research, library, and legal domains. Our understanding of AI terms and conditions are situated in our daily roles as: Open Research Services Roadmap Project Lead and Head of Copyright and Licensing at the University of Birmingham (Fenlon); Digital Scholarship Librarian at the University of Buffalo (Estrada); and Lecturer in Digital Humanities at the University of Glasgow (Nockels). This lesson, therefore, is based on our own positional views of AI, technical research, and servicing of library users. These views, while influenced by our professions, are our own and may not be fully representative of our respective institutions.
+In considering both individual research behavior and institutional factors, this ENABLAR lesson seeks to increase participants’ understanding of the current risks to Higher Educational libraries, and researchers, in licensing AI tools without proper review. Through a practical workflow informed by collaborative reflection, we bring together perspectives from across research, library, and legal domains. This understanding of AI terms and conditions is situated in our daily roles as: Open Research Services Roadmap Project Lead and Head of Copyright and Licensing at the University of Birmingham (Fenlon); Digital Scholarship Librarian at the University of Buffalo (Estrada); and Lecturer in Digital Humanities at the University of Glasgow (Nockels). Therefore, our lesson is based on our own positional views of AI, technical research, and servicing of library users. These views, while influenced by our professions, are our own and may not be fully representative of our respective institutions.
 
-In responding to the current capability and knowledge gap in interpreting AI licences from a library and researcher standpoint, this lesson provides a coordinated resource to better inform those trialling AI for research, or advising others through such processes. 
-
-As such, we see this lesson as particularly useful for: 
+In responding to the current capability and knowledge gap in interpreting AI licences from a library and researcher standpoint, this lesson provides a coordinated resource to better inform those trialling AI for research, or advising others on such processes. As such, we see this lesson as particularly useful for: 
 
     Library collection managers;
 
-    University-level researchers, especially those concerned with AI - such as in Digital Humanities; 
+    University-level researchers, especially those concerned with AI - such as in the Digital Humanities; 
 
     Students interested in using AI for their own research practice; 
 
@@ -168,49 +165,51 @@ As such, we see this lesson as particularly useful for:
 
 ## Using Natural Language Processing 
 
-This lesson presents a reproducible workflow for interpreting AI tool licence agreements through Natural Language Processing (NLP): the field of digital research involving interaction between computers and human language (Stryker & Holdsworth, n.d.). NLP encompasses tasks such as text analysis, translation, and parts-of-speech tagging, used here to extract key terms and clauses in AI terms and conditions. This informs the construction of a dictionary of ‘red flags’ from licence conditions, and provides a walkthrough for you to develop your own institutional AI preparedness, alongside extant guidance (Colavizza & Jaillant, 2026). Our lesson focuses on terms associated with AI tool use, however connects these issues to broader contracts and licences negotiated by libraries, for instance database and data sharing agreements.
+This lesson presents a reproducible workflow for interpreting AI tool licence agreements through Natural Language Processing (NLP): the field of digital research involving interaction between computers and human language (Stryker & Holdsworth, n.d.). NLP encompasses tasks such as text analysis, translation, and parts-of-speech tagging, though used here to extract key terms and clauses in AI terms and conditions. This informs the construction of a dictionary of ‘red flags’ from licence conditions, and provides walkthrough for you to increase your own AI preparedness, alongside extant guidance (Colavizza & Jaillant, 2026). Our lesson focuses on terms associated with AI use, however connects these issues to broader licence issues negotiated by libraries, for instance data sharing agreements.
 
-The language used in our dictionary was informed by reading current guidance on approaching AI licences (JiSC, n.d.; Holt & Kefalea, 2025), as well as extracting common AI-related terms found in the [ESAC Initiative’s registry of open licence agreements](https://esac-initiative.org/about/transformative-agreements/agreement-registry/). Therefore, our dictionary, accessible as part of this lesson through Zenodo [^1], attempts to closely fit with current contractual language. Without this tailoring of NLP approaches, we risk extracting non-relevant language, instead of interpreting potentially problematic terms associated with extractive or risky AI use. However, though reiteratively refined and discussed, our dictionary is likely to extract some non-relevant clauses, and will not fully generalise to every AI licence. Therefore, we provide a corpus of AI tool licences, actively being considered by the University of Buffalo, through Estrada's project involvement, but also seek to scale down our lesson to work on individual licences, supporting solo librarians in interpreting AI terms and conditions, as well as whole copyright and licensing teams.
+The language used in our dictionary was informed by reading current guidance on approaching AI licences (JiSC, n.d.; Holt & Kefalea, 2025), and extracting common AI-related terms found in the [ESAC Initiative’s registry of open licence agreements](https://esac-initiative.org/about/transformative-agreements/agreement-registry/). Therefore, our dictionary is accessible through Programming Historian [full dictionary](assets/enablar-lesson-4/red-flag-dict), and attempts to closely fit with current AI contractual language. Without this NLP tailoring, we risk extracting non-relevant language, instead of interpreting potentially problematic terms associated with extractive or risky AI use. Though reiteratively refined and discussed, our dictionary is still likely to extract some non-relevant clauses, and may not fully generalise to every AI licence. Therefore, we provide a corpus of AI tool licences, actively being considered by the University of Buffalo, but also scale down our lesson for those working on individual licences. In this way, we hope to support solo librarians and researchers in interpreting AI terms and conditions, as well as broader copyright and licensing teams.
 
-Another limitation is that the ESAC agreements used to construct our NLP dictionary are from non-AI providers, due to open availability, and instead consist of publishing contracts from the [Association of Computing Machinery](https://www.acm.org), [University of Cambridge Press](https://www.cambridge.org), [Royal Society](https://royalsocietypublishing.org) and [emerald publishing](https://www.emerald.com). That said, ESAC’s registry of licence agreements ranges in geographical jurisdiction, thereby providing a way to generalise our dictionary construction beyond a purely Anglo-American context. 
+Another lesson qualification is that the ESAC agreements used to construct our NLP dictionary are largely from publishing contracts, not direct AI providers, due to their being limited public availability. Instead, they come from the [Association of Computing Machinery](https://www.acm.org), [University of Cambridge Press](https://www.cambridge.org), [Royal Society](https://royalsocietypublishing.org) and [emerald publishing](https://www.emerald.com). That said, ESAC’s registry ranges in geographical jurisdiction, thereby providing a way to generalise our dictionary construction beyond a purely Anglo-American context. 
 
-Lastly, this lesson ends with a discusson from the Authors’ own positionality as librarians and digital researchers, and provides a human review of our extracted red flags from the corpus constructed by Estrada. This not only evaluates our NLP approach, considering whether returned terms and conditions are truly red flags, but offers a reflective review of affordances and limitations of our process in supporting critical AI use within libraries.
+Lastly, this lesson ends with a discusson from the Authors’ own positionality as librarians and digital researchers, and provides a human review of our extracted red flags from the University of Buffalo corpus, constructed by Estrada. This not only evaluates our NLP approach, considering whether returned terms and conditions are truly red flags, but offers a reflective review of our process's affordances and limitations in supporting critical AI use within libraries.
 
 ## Some Disclaimers … 
 
 #### Not Legal Advice 
 
-We do not intend for this lesson to be seen as legal advice, but instead hope it informs critical engagement with AI, within humanities research and libraries, especially around outstanding risks from: institutional compliance, tool cost, warranties, indemnities and liability. Therefore, this lesson does, and should not, replace local expertise from copyright officers or IP managers, or anyone else working to advise staff, students and organisations on licences in a professional capacity. Instead, this lesson offers a compliant way of siphoning down complex legal documents into structured data for specialist human review. 
+We do not intend for this lesson to be legal advice, but instead hope it informs critical engagement with AI, within humanities research and libraries, especially around outstanding risks from: institutional compliance, tool cost, warranties, indemnities and liability. Therefore, this lesson does, and should not, replace local expertise from copyright officers or IP managers, or anyone else working to advise staff, students and organisations on licences in a professional capacity. Instead, this lesson provides a compliant way of siphoning down complex legal documents into structured data for specialist human review. 
 
 #### Legal Jurisdictions, Terms and Transferability
 
-In reviewing our own positionality, we also find certain legal concepts to be heavily Anglo-American centered, such as Fair Dealing as a copyright exception (UK Government, 2021). However, where possible, we seek to connect these understandings with other geographies. We also draw on AI tool licence agreements from tool providers outside of the UK and America as case examples, notably [Transkribus](https://www.transkribus.org), which is maintained and developed by the Austrian-based academic cooperative [Recognising and Enriching Archival Documents](https://www.transkribus.org/about). 
+In reviewing our own positionality, we find certain legal concepts to be heavily Anglo-American centered, such as Fair Dealing as a copyright exception (UK Government, 2021). Therefore, where possible, we seek to connect these understandings with other geographies. We also draw on AI tool licences from providers outside of the UK and America as case examples, though still Eurocentric: notably [Transkribus](https://www.transkribus.org), which is maintained and developed by the Austrian-based academic cooperative [Recognising and Enriching Archival Documents](https://www.transkribus.org/about). 
 
-The licences marketed to the University of Buffalo and Birmingham differ, due to their legal jurisdictions. This constructs a comparative dataset, important in light of increasing internationalism and collaboration, global library infrastructure and wider challenges from AI misuse, also contended with by multi-national organisations such as [AI4LAM](https://sites.google.com/view/ai4lam).
+The licences marketed to the University of Buffalo and Birmingham also differ, due to their legal jurisdictions. This constructs a comparative dataset, important in light of increasing internationalism and collaboration, global library infrastructure and wider challenges from AI misuse, also contended with by multi-national organisations such as [AI4LAM](https://sites.google.com/view/ai4lam).
 
-Another key variable, unable to be fully accounted for within this lesson, is the appetite for risk exercised by local institutions, both universities and their libraries, as well as individual researchers. As such, this lesson does not seek to guide readers to manage and respond to risk brought from unsanctioned AI usage, but instead presents a way to identify possible red flags to be aware of. 
+Another key variable, unable to be fully accounted for within this lesson, is the appetite for risk exercised by local institutions, as well as individual researchers. As such, this lesson does not seek to guide readers to manage and respond to risk brought from unsanctioned AI usage, but instead presents a way to identify possible red flags to be aware of. 
 
 ## Preliminaries
 
 #### Data Type and Format
 
-We provide 31 born digital AI licence PDFs (103,396 words), collated primarily by Estrada with input from Fenlon, based on tools considered for institutional licensing at the University of Buffalo and University of Birmingham. However, we scale down our lesson to also work on individual licence agreements.
+We provide 29 born digital AI licence PDFs (103,396 words), collated primarily by Estrada with input from Fenlon, based on tools considered for institutional licensing at the University of Buffalo and University of Birmingham. 
+
+However, we scale down our lesson to also work on individual licence agreements.
   
 #### What NLP Handles Well 
 
-Structured data, especially where textual content can be pre-determined or modelled closely. We realise the limitations in this method, and offer a robust dictionary for relevant AI tool licence flags, that we trust will have a degree of transferability to other agreements. However, following the code syntax allows for the dictionary to be edited as a fluid resource.
+NLP works well on structured data, especially when language can be pre-determined or modelled closely. We realise the limitations in this method, and offer a robust dictionary for relevant AI tool licence flags, that we trust will have a degree of transferability to other agreements. Following the code syntax also allows for the dictionary to be edited as a fluid resource.
 
-In order for our lesson to remain focused on NLP and AI red flags, we use born digital PDFs, pre-converted to computer-readable text. This avoids the process of (re)OCRing material with complex layouts, although, due to the formulaic nature of terms and condition licenses, OCR tools are likely to be effective in digitally transcribing such material. The quality of machine-readable text from these born digital agreements was manually checked, as well as tested through the following code, before NLP processing. Although we highlight occassional errors in our discussion review, these were minimal and did not warrant a full re-OCRing of the licence material.
+To keep our lesson focused on NLP and AI red flags, we use born digital PDFs, pre-converted to computer-readable text. This avoids the process of (re)OCRing material with complex layouts; although, due to the formulaic nature of terms and condition licenses, OCR tools are likely to be effective in digitally transcribing such material. The quality of machine-readable text from these born digital agreements was manually checked, as well as tested throughout our lesson's code. Although we highlight occassional errors in our discussion review, these were minimal and did not warrant a full re-OCRing of the licences used.
 
 #### Hardware Constraints
 
-This NLP workflow was constructed and tested using an Apple Mac Silicon I, with 8MB RAM. As such, similar devices should be able to enact this lesson’s code straight, although slight Python syntax adaptations may be needed depending on your Operating System, if you are using this code locally. 
+This NLP workflow was constructed and tested using an Apple Mac Silicon I, with 8MB RAM. As such, similar devices should be able to enact this lesson’s code outright, although this code was constructured to minimise syntax variations when using other Operating Systems. 
 
-Nonetheless, we also directly link to our [Jupyter Notebook](https://jupyter.org) scaffold and coding environment, through a web-based .ipynb file, which circumvents the local downloading of software packages.
+We also provide a direct link to our [Jupyter Notebook](https://jupyter.org) scaffold and coding environment, through a web-based .ipynb file. This circumvents the local downloading of software packages, or running of Jupyter.
 
 #### Admin Privileges? 
 
-Initially downloading Jupyter Notebooks may require administrative privileges, if using an institutional device. However, provided that spaCy is downloaded - the following code can also be deployed within your computer terminal, without Jupyter. [Real Python](https://realpython.com/run-python-scripts/) offers solid guidance on the range of code deployment options, if unable to use Jupyter. 
+Initially downloading Jupyter Notebooks may require administrative privileges, if using an institutional device. However, provided that spaCy is downloaded - the following code can also be deployed locally within your computer terminal, without Jupyter. [Real Python](https://realpython.com/run-python-scripts/) offers solid guidance on the range of code deployment options, if unable to use Jupyter. Our web-based notebook, with pre-downloaded code libraries, also avoids any administrative issues.
 
 #### Scalability
 
@@ -222,83 +221,87 @@ Throughout our lesson, we indicate how you can refine and add to our constructed
 
 ###### Scaling Down, for Individuals
 
-We are also concerned, alongside informing library policies around AI review, in supporting individual researchers and librarians, who may only be reviewing one licence at a time. As such, we scale down our code, provide syntax templates and indicate how to tailor our NLP approach. Our full dictionary, which forms a long block of code, and may not be needed for individual review, is instead included as a *Programming Historian* asset [full dictionary](assets/enablar-lesson-4/red-flag-dict). 
+We are also concerned, alongside informing library policies around AI review, in supporting individual researchers and librarians: who may only be reviewing one licence at a time. As such, we scale down our code, provide syntax templates to indicate how to tailor our NLP approach. Our full dictionary, which forms a long block of code, and may not be needed for individual review, is instead included as a *Programming Historian* asset [full dictionary](assets/enablar-lesson-4/red-flag-dict). 
 
 #### Connectivity
 
-Provided that the spaCy NLP library has been installed within Python, you can complete this lesson offline. We also make use of Jupyter Notebooks as an intuitive environment to construct and troubleshoot this lesson’s code, which - once downloaded - can be accessed offline through a locally hosted server. See - [Project Jupyter Install](https://jupyter.org/install), for advice on setting up the environment. The AI tool licences provided as a use case can also be stored locally, as simple PDFs, and are, therefore, accessible offline.
+Provided that the spaCy NLP library has been installed within Python, you can complete this lesson offline. We can also make use of Jupyter Notebooks as an intuitive environment to construct and troubleshoot this lesson’s code, which - once downloaded - can be accessed offline through a locally hosted server. See - [Project Jupyter Install](https://jupyter.org/install), for advice on setting up the environment. 
+
+The AI tool licences provided as a use case can also be stored locally, as simple PDFs, therefore being accessible offline.
 
 #### Language
 
-Although our lesson makes use of spaCy’s main English language pipeline (en_core_web), the NLP library supports [75+ languages and has equivalent pipelines for 25 languages](https://spacy.io/usage/facts-figures). These NLP pipelines available range from Greek to Korean, Norwegian Bokmål to Catalan.
+Although our lesson makes use of spaCy’s main English language pipeline (en_core_web), this NLP library supports [75+ languages and has equivalent pipelines for 25 languages](https://spacy.io/usage/facts-figures). SpaCy's openly available NLP pipelines range from Greek to Korean, Norwegian Bokmål to Catalan.
 
 #### Ethics
 
-The [Risk Management Toolkit for Open GLAM](https://oa2ch.gitbook.io/risk-management), produced by Holt and Kefalea (2025) provides a helpful overview for AI’s implications for ethical research. They suggest that legal risk areas emerge in using digital materials, through ‘potential misuse of open access materials and the risk of infringements due to incorrect licensing’, as well as the ‘adherence to third-party terms of service …’. Although speaking in the context of broader digital collections usage, we situate such concerns through our interpretation of AI licences. The Authors, therefore, see such legal strategies as underpinning broader risk mitigation areas around restrictive contracts and weak privacy safeguards, which include financial risk (from unexpected liabilities, when terms of service are breached); ethical (whereby AI tools and outputs cause harm, for instance the revealing of personal information or causing environmental damage); technical (through platform dependency and forced takedowns), and geopolitical concerns (whereby legal pressure can be applied and leveraged through technology terms of use). Therefore, this lesson advocates for greater transparency in AI tool licensing, and hopes to inform your regular review of AI terms of service, whether using tools for generating new material, data hosting, sharing or general dissemination. 
+Holt and Kefalea's (2025) [Risk Management Toolkit for Open GLAM](https://oa2ch.gitbook.io/risk-management) provides a helpful overview for AI’s implications for ethical research. They suggest that legal risk areas emerge in using digital materials through ‘potential misuse of open access materials and the risk of infringements due to incorrect licensing’, as well as the ‘adherence to third-party terms of service …’. Although speaking in the context of broader digital collections, we situate similar concerns through our interpretation of AI licences. Therefore, we see such legal strategies as underpinning broader risk mitigation areas around restrictive contracts and weak privacy safeguards, which include financial risk (from unexpected liabilities, when terms of service are breached); ethical (whereby AI tools and outputs cause harm, for instance the revealing of personal information or causing environmental damage); technical (through platform dependency and forced takedowns), and geopolitical concerns (whereby legal pressure can be applied and leveraged through technology terms of use). Subsequently, this lesson advocates for greater transparency in AI tool licensing, and hopes to inform your regular review of AI terms of service, whether using tools for generating new material, data hosting, sharing or general dissemination. 
 
-We appreciate that ensuring AI compliance institutionally relies on informed legal expertise, as well as contracting able staff to inform reviews of terms and services. Better interpretation of AI licence agreements must be considered against financial and resource limitations in libraries, which too often  hinder their ability to manage and advise on AI usage (Gooding et al., 2025). This has led to increases in public-private partnerships, whereby libraries attempt to minimise the upfront cost of intellectual property review, which require careful contractual design to avoid furthering copyright and licensing risk (Lundborg, 2024). As such, this lesson sits within an increasingly murky space, compounded by institutional resourcing factors, revenue generation, AI commercial marketing, and data access.
+We appreciate that ensuring AI compliance institutionally relies on informed legal expertise, as well as contracting able staff to inform reviews of terms and services. Nuanced interpretation of AI licences must be considered against financial and resource limitations to libraries, which too often hinder their ability to manage and advise on AI usage (Gooding et al., 2025). This has led to increases in public-private partnerships, whereby libraries attempt to minimise the upfront cost of intellectual property review, which requires careful contractual design to avoid worsening copyright and licensing risk (Lundborg, 2024). As such, this lesson sits within an increasingly murky space, compounded by institutional resourcing factors, revenue generation, AI commercialisation, and data access.
 
 #### Costs
 
-This lesson has no associated cost, or tiered / time-limited access. Therefore, we do not require you to supply any personal information to make use of this lesson, such as credit card details.
+This lesson has no associated cost, or tiered / time-limited access. 
 
 #### System Requirements
 
-The code written for the lesson was troubleshooted and deployed using a Mac Silicon (M1), with 8MB of RAM and using an Arm64 local CPU, opposed to 86x64 bit set-ups common for Intel processors. Arm64 builds are common for NLP pipelines, so opted for this lesson. Therefore, some minor environment changes may be needed to run this code locally on other Operating Systems. However, our linked Jupyter Notebooks includes pre-loaded libraries, to avoid such difficulties.
+The code written for the lesson was troubleshooted using a Mac Silicon (M1), with 8MB of RAM and using an Arm64 local CPU, opposed to 86x64 bit set-ups common for Intel processors. Arm64 is common for NLP pipelines, so opted for in this lesson. Therefore, some minor environment changes may be needed to run this code locally on other Operating Systems. However, our linked Jupyter Notebook includes pre-loaded libraries, to avoid such difficulties.
 
-This lesson uses the latest, at time of writing, [Python (v 3.14.3)](https://www.python.org/downloads/) and [spaCy version (3.8.0)](https://spacy.io/models/en). 
+This lesson uses the latest, at time of writing, [Python (v 3.14.3)](https://www.python.org/downloads/) and [spaCy (3.8.0)](https://spacy.io/models/en) versions.
 
-We also use the open-source PDFPlumber package for licence upload and the simple writing of files into the Jupyter environment, instead of performing full OCR. 
+We also use the open-source PDFPlumber package for licence uploading and writing into the Jupyter environment, instead of performing full OCR. 
 
-Our list of ‘red flags’ is exported as a .xlsx, to be easily manipulated within Microsoft Excel. This aids the human assessment and review of results, informing our discussion of AI tool license issues and the success of our NLP method.
+Our list of ‘red flags’ is exported as a .xlsx, to be easily manipulated within Microsoft Excel. This aids the human review of results, informing our discussion of AI tool licence issues and the success of our NLP method.
 
 #### Knowledge and Applied Experience
 
-No familiarity with spaCy, our NLP method, is needed. A knowledge of basic Python functions is helpful, for example importing libraries and establishing functions, however summarise this throughout. Experience in using spaCy can also be gained through Kane’s (2023) and Goodale’s (2024) *Programming Historian* lessons on corpus linguistic annotation and interpretation. spaCy also includes an intuitive [installation and deployment walkthrough](https://spacy.io/usage). For a more theoretical introduction to the NLP method, see Khan (2022).
+No familiarity with spaCy, our NLP method, is needed. A knowledge of basic Python functions is helpful, for example importing libraries and establishing functions, however we explain this closely throughout. Experience in using spaCy can be gained through Kane’s (2023) and Goodale’s (2024) *Programming Historian* lessons on corpus linguistic annotation and interpretation. spaCy also includes an intuitive [installation and deployment walkthrough](https://spacy.io/usage). For a more theoretical introduction to the NLP method, see Khan (2022).
 
-In using NLP on legalistic documents, some expertise in basic copyright and intellectual property is also useful, especially how to discern what is in and out of copyright, the importance of locating ownership over data and a general understanding of the [General Data Protection Regulation (GDPR)](https://gdpr-info.eu). [CopyrightUser](https://www.copyrightuser.org) and the [UK’s Intellectual Protection Office](https://www.gov.uk/government/organisations/intellectual-property-office) offer basic legal guidance. The Information Commissioner’s Office also has guidance on [AI’s impact on data protection](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/guidance-on-ai-and-data-protection/).
+In using NLP on legalistic documents, some expertise in basic copyright and intellectual property is also useful, especially in how to discern what is in and out of copyright, the importance of locating ownership over data and a general understanding of the [General Data Protection Regulation (GDPR)](https://gdpr-info.eu). [CopyrightUser](https://www.copyrightuser.org) and the [UK’s Intellectual Protection Office](https://www.gov.uk/government/organisations/intellectual-property-office) offer basic legal guidance. The Information Commissioner’s Office also has guidance on [AI’s impact on data protection](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/guidance-on-ai-and-data-protection/).
  
-In using accessible, pre-built and open-source tools, there is ample troubleshooting support, beyond this lesson. This discussion GitHub offers an extensive overview of [common spaCy bugs and issues](https://github.com/explosion/spaCy/discussions/8226). spaCy’s walk-through also offers guidance for further NLP training and deployment, for instance using ‘parts-of-speech’ tagging or sentiment analysis. There is also support through Jupyter Notebook’s [Read the Docs](https://jupyter-notebook.readthedocs.io/en/stable/troubleshooting.html). 
+In using accessible, pre-built and open-source tools, there is ample troubleshooting support - beyond this lesson. This discussion GitHub offers an extensive overview of [common spaCy bugs and issues](https://github.com/explosion/spaCy/discussions/8226). spaCy’s walk-through offers guidance for further NLP training and deployment, for instance using ‘parts-of-speech’ tagging or sentiment analysis. There is also available troubleshoot support for Jupyter Notebook, through their [Read the Docs](https://jupyter-notebook.readthedocs.io/en/stable/troubleshooting.html). 
 
 #### Difficulty 
 
-The NLP processes underpinning this work are at the beginner level, as we pay close attention to providing a step-by-step workflow, with all code necessary. We also seek to breakdown key legal concepts related to general data protection and IP knowledge.
+The NLP processes underpinning this work are at the beginner level, as we provide a step-by-step workflow, with all the code necessary. 
+
+We also seek to breakdown key legal concepts as grounding, related to general data protection and IP knowledge.
 
 ## Use Case: Locating Potential Red Flags
 
-This lesson aims to support those concerned with AI experimentation, such as Programming Historians, in evaluating AI tools based on their terms and conditions. As a secondary audience, we also hope to inform those with a remit to advise on AI compliance and institutional licence purchasing, especially within Higher Educational libraries. 
+This lesson aims to support those concerned with AI experimentation, such as *Programming Historians*, in evaluating AI tools based on their terms and conditions. As a secondary audience, we also hope to inform those with a remit to advise on AI compliance and institutional licence purchasing, especially within Higher Educational libraries. 
 
-Through our own roles, we have noticed a technical capability and knowledge gap emerge, whereby scholars require greater confidence in understanding AI’s potential data protection risks. This gap is also mirrored in general research activities, with benchmark surveys organisations, such as [Primary Research Group](https://www.primaryresearch.com), coordinating user gathering activities on AI licensing in Higher Education.  Subsequently, this lesson emerged from informal discussions between Fenlon and Nockels around resourcing automatic transcription tools within the University of Birmingham Libraries, pointing to variable guidance around server infrastructure, data sovereignty, and potential for copyright misuse. In engaging with this knowledge gap, this lesson forms an anticipatory approach to locating pitfalls in current AI licences, marketed to the Universities of Birmingham and Buffalo. 
+Through our own roles, we have noticed a technical capability and knowledge gap emerge, whereby scholars require greater confidence in understanding AI’s potential data protection risks. This gap is also mirrored in general research activities, with benchmark surveysm such as [Primary Research Group](https://www.primaryresearch.com), coordinating user gathering activities on AI licensing in Higher Education.  Subsequently, this lesson emerged from informal discussions between Fenlon and Nockels around resourcing automatic transcription tools within University of Birmingham Libraries, pointing to variable guidance around server infrastructure, data sovereignty, and potential for copyright misuse. In engaging with this knowledge gap, this lesson forms an anticipatory approach to locating pitfalls in current AI licences, marketed to the Universities of Birmingham and Buffalo. 
 
-Of course, when advising on AI tool usage, it is common IP practice to locate an appropriate need first. Both the University of Birmingham and Buffalo have manual AI licence checklists assessing such criteria. However, these rely on an expert know-how of warranties, legal liabilities, disputes, user and supplier obligations, associated costs and terms of AI service access. Without this expertise, university libraries can be left to negotiate terms and conditions without clear guidance, at a time of increasing AI marketing. This case emerges when approached by AI providers, many of which are better-resourced and more legally established than counterparts in Higher Education. 
+Of course, when advising on AI tool usage, it is common IP practice to locate an appropriate need first. Both the University of Birmingham and Buffalo have manual AI licence checklists assessing such criteria. However, these rely on expert know-how of warranties, legal liabilities, disputes, user and supplier obligations, associated costs and terms of AI service access. Without this expertise, university libraries can be left to negotiate terms and conditions without clear guidance, at a time of increasingly slick AI marketing.
 
-Therefore, our lesson provides a benchmark for reviewing guidance through NLP, alongside human-in-the-loop review. In turn, we also explicitly document the limitations and affordances of one AI-based NLP method (spaCy), following evaluative frameworks from the library and archive sector (see Potter, 2023).
+Therefore, our lesson provides a benchmark for reviewing guidance through NLP, alongside human-in-the-loop review. In turn, we explicitly document the limitations and affordances of one AI-based NLP method (spaCy), following evaluative frameworks from the library and archive sector (see Potter, 2023).
 
 ### Dataset
 
 #### Characteristics and Suitability
 
-Our dataset of AI tool licenses began with informal discussions around what software was familiar in our own research and advice-giving, as part of the ENABLAR’s cohort writing reflections. This led to discussions of Agentic AI systems, in particular Microsoft CoPilot licensed to Birmingham, as well as Transkribus, used heavily in Nockels’s research. With Estrada’s involvement, our dataset includes tool licences being actively considered by the University of Buffalo Library. This provides a rich comparative dataset across different legal jurisdictions, and offering a way to further evaluate the success of our NLP method. This dataset was kept born-digital to avoid OCR processing and additional pre-processing steps convoluting our workflow, especially with OCR *Programming Historian* lessons available such as Gribomont (2023). 
+Our dataset of AI tool licenses began with informal discussions around what software was familiar in our own research and advice-giving, as part of the ENABLAR’s cohort writing reflections. This led to discussions of Agentic AI systems, in particular Microsoft CoPilot licensed to Birmingham, and Transkribus, used heavily in Nockels’s research. With Estrada’s involvement, our dataset includes tool licences being actively considered by the University of Buffalo Library. This provides a rich comparative dataset across different legal jurisdictions, and offers a way to further evaluate the success of our NLP method. This dataset was kept born-digital to avoid OCR processing and additional pre-processing steps convoluting our workflow, especially with OCR *Programming Historian* lessons available (see Gribomont, 2023). 
 
 #### Pre-processing and Sampling
 
-Transkribus and Microsoft CoPilot acted as key starting points in our data construction, akin to purposive sampling during thematic literature reviews (Nockels et al., 2024). From this, Estrada constructed a structured folder of licences, anonymising any sensitive information, and ensuring they complied with any institutional non-disclosure agreements. These were reviewed as a team, to ensure an equal balance between types of AI tool. 
+Transkribus and Microsoft CoPilot acted as key starting points in our data construction, akin to purposive sampling in thematic literature reviews (Nockels et al., 2024). From this, Estrada constructed a structured folder of licences, anonymising any sensitive information, and ensuring they complied with institutional non-disclosure agreements. These were reviewed as a team to ensure an equal balance between types of AI tool. 
 
-Nockels, before trialling spaCy, ran simple import tests to ensure the quality of machine-readable text from these licences. Afterwhich, stopwords, punctuation and capitalisation were removed, included in our lesson walkthrough. This is common in NLP pre-processing to ensure irrelevant and noisy features in text are removed (NasuhcaN, 2025). For our case, this helps ensure that red flag ‘hits’ are meaningful and display certain (re)occurring patterns (issues) in licences.
+Nockels, before trialling spaCy, ran simple import tests to ensure the quality of machine-readable text from these licences. Afterwhich, stopwords, punctuation and targetted capitalisation were removed, included in our lesson walkthrough. This is common in NLP pre-processing to ensure irrelevant and noisy text features are removed (NasuhcaN, 2025). For our case, this helps ensure that red flag ‘hits’ are meaningful and display certain (re)occurring patterns (issues).
 
 #### Citation
 
 Estrada, N., Nockels, J., Fenlon, A. (2026). [Popular Academic AI Tools Terms and Conditions, Zenodo](https://zenodo.org/records/19616877?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImE3MWExN2E5LTE0NjgtNGFiMi1hNWJjLTYyNTE0Y2MxYTJjNiIsImRhdGEiOnt9LCJyYW5kb20iOiI5ZjY5NWZlNGE3NDFlNzA5ZjNjN2EzNjMxMjYxYjJmMSJ9.HLiESWKo1CeA_MimFtUsW1tUxtreTsdjdEJo4xb5KO7FpYNfo1aev9T7GMH6xCwRuEpDU5l3fofI_98B6tjnsg)
 
-For our full dictioanry code, see [full dictionary](assets/enablar-lesson-4/red-flag-dict)
+For our full dictionary code, see [full dictionary](assets/enablar-lesson-4/red-flag-dict)
 
 ## Background to Technical Method 
 
-In extracting red flags from AI licences, we make use of spaCy, an open-source library for NLP, that conveniently operates within Python. As Nandini (2024) suggests, spaCy can be an easy-to-use tool, designed for local performance, opposed to heavier workflows requiring greater processing. Considering this lesson coincides with human review of licence terms and conditions, we remain concerned with extracting information, and not necessarily the mapping of term frequencies or data visualisation. Therefore, spaCy suffices as a low-resource approach, opposed to more advanced NLP models like BERT-based vectorisation. 
+SpaCy is an open-source library for NLP that conveniently operates within Python. As Nandini (2024) suggests, spaCy can be an easy-to-use tool, designed for local performance, opposed to heavier workflows requiring greater processing. Considering this lesson coincides with human review of licence terms and conditions, we remain concerned with extracting information, and not necessarily the mapping of term frequencies or data visualisation. Therefore, spaCy suffices as a low-resource approach, opposed to more advanced NLP models like BERT-based vectorisation. 
 
 While NLP approaches break text into individual word elements (tokens), spaCy also includes a parser to better understand the structure of agreements. We use this parser to reassemble tokens and extract full clauses, helpful for further - specialist - review. 
 
-spaCy - like most NLP tools - handles structured information particularly well, especially if key terms or phrases can be modelled beforehand. As explained, we constructed a dictionary of terms relevant to AI license issues and based on our own understanding of such terms and conditions, particularly leveraging Fenlon’s background [^1]. The Authors remain conscious that using AI-based NLP on AI tool licences could be misconstructed as simple ‘AI on AI’ research. spaCy is adopted as a critical, tested, and trustworthy workflow, together with our tailored construction of a terms and conditions dataset, based on Birmingham and Buffalo input. This lesson also includes a human review of red flags as final decision-making. We also remain aware of limitations in fine-tuning models to specific vocabularies. 
+spaCy - like most NLP tools - handles structured information particularly well, especially if key terms or phrases can be modelled beforehand. As explained, we constructed a dictionary of terms relevant to AI license issues and based on our own understanding of such terms and conditions, particularly leveraging Fenlon’s background. The Authors remain conscious that using AI-based NLP on AI tool licences could be constructed as simple ‘AI on AI’ research. Instead, spaCy is adopted as a critical, tested, and trustworthy workflow. As part of this evaluation, our lesson includes a human review of red flags as final decision-making. We also remain aware of limitations in fine-tuning models to specific vocabularies. 
 
 spaCy, being an NLP library, does not retain data and remains fully open-source, essential for University of Birmingham and Buffalo collaboration. 
 
@@ -306,13 +309,13 @@ spaCy, being an NLP library, does not retain data and remains fully open-source,
 
 ### Concepts
 
-We take a purposefully broad definition of **Artificial Intelligence**, as our lesson extracts terms and conditions from a range of tool providers. Libraries have distinguished between established algorithms for predicting, classifying and categorising data, and more-recent Generative capabilities (McGregor, 2025). However, we adopt a concept of AI that encompasses both. This follows Robinson (2022: 8) in seeing broad definitions of AI as big tents and allowing non-developer input. Nevertheless, each AI-enabled technology has its own context and developmental history.
+We take a purposefully broad definition of **Artificial Intelligence**, as our lesson extracts terms and conditions from a range of providers. Libraries have distinguished between established algorithms for predicting, classifying and categorising data, and more-recent GeneAI capabilities (McGregor, 2025). However, we adopt a concept of AI that encompasses both. This follows Robinson (2022: 8) in seeing broad technical definitions as big tents and allowing non-developer input. Nevertheless, each AI-enabled technology has its own context and developmental history.
 
 ### Terms
 
 In terms of legal terms: 
 
-**Licences** are a formal permission to use something, in this case paid-for access and use of online content or tools. It is a document that contains all the terms and conditions of use associated with that content, detailing what can and can’t be done, by whom, for how long, and what happens if there are any problems (JiSC, n.d.).
+**Licences** are a formal permission to use something, in this case paid-for access and use of online content or tools. They are documents containing all the terms and conditions of use associated with that content, detailing what can and cannot be done, by whom, for how long, and what happens if problems arise (JiSC, n.d.).
 
 A **warranty** is a contractual promise regarding the existence of a set of conditions, for instance the maintenance of a certain software dependency. A breach of warranty enables the innocent party to claim damages, but may not allow them to exit a contract, presenting a risk for both libraries and researchers. Warranties, and their obligations, can differ immensely between industries and agreements (LexisNexus, 2026). 
 
@@ -328,7 +331,7 @@ We anticipate this lesson taking an hour, not including your own dictionary refi
 
 ### Aims
 
-After completing this lesson, you will be able to deploy a spaCy-powered NLP workflow for extracting problematic terms in AI licence documents. You will also be able to refine our provided NLP dictionary, to enable work on your own licences, whether as an individual file or corpus. This lesson also provides human review of some key extracted clauses, to inform your qualitative review. 
+After completing this lesson, you will be able to deploy a spaCy-powered NLP workflow for extracting problematic terms in AI licence documents. You will also be able to refine our provided NLP dictionary, to enable work on your own licences, whether as an individual file or corpus. This lesson also provides pointers for reviewing key extracted clauses, to inform your own qualitative review of AI risk.
 
 ### Inventory
 
@@ -342,11 +345,11 @@ Software -
 
  Jupyter Notebook as a base coding environment
  
- [PDFPlumber](https://github.com/jsvine/pdfplumber) (Python), for text extraction of born-digital        licences
+ [Pdfplumber](https://github.com/jsvine/pdfplumber) (Python), for text extraction of born-digital licences
   
  spaCy (Python), for NLP workflow
  
- [pandas and openpyxl](https://pandas.pydata.org) (Python), for data frame construction of extracted     results and .csv file export 
+ [pandas and openpyxl](https://pandas.pydata.org) (Python), for data frame construction of extracted results and file export 
   
  Microsoft Excel for manual red flag review 
 
@@ -372,7 +375,7 @@ You should see in the terminal that your directory has changed from (base) to (A
                    
     (AI_licence_nlp) joenockels@Joes-Air ~ %
 
-Conveniently, we can then download all the required Python libraries straight through the terminal and into your conda environment - 
+Conveniently, we can then download all the required Python libraries straight through your terminal and into your conda environment - 
 
     pip install pdfplumber
     pip install pandas
@@ -380,50 +383,50 @@ Conveniently, we can then download all the required Python libraries straight th
     pip install jupyter 
     pip install ipykernel
 
-Now, from your spacy library, you can now download the specific English language pipeline and model used in this lesson:
+Now, from your spaCy library, you can download the specific English language pipeline used in this lesson:
 
     python -m spacy download en_core_web_sm
 
-With your libraries and packages now downloaded through the terminal, we can now register the Python kernel in Jupyter Notebooks, which allows you to move from working in your terminal to using Jupyter’s more intuitive interface for the rest of the lesson. This interface still runs locally.
+With your libraries and packages now downloaded through the terminal, we can now register the Python kernel in Jupyter Notebooks (downloaded as part of your package list), which allows you to move from working in your terminal to using Jupyter’s intuitive interface.
 
     python -m ipykernel install --user --name licence_nlp --display-name "Python (AI Licence NLP)"
 
-Alternatively, if you want to avoid downloading local packages, you can simply click the below link, which will take you to a web-based Jupyter scaffold, with the software packages pre-downloaded: 
+Alternatively, if you want to avoid downloading local packages, you can simply click the below link, which will take you to a web-based Jupyter Notebook scaffold, with all the software packages pre-downloaded: 
 
 [Jupyter Notebook link]
 
-The code included is mirrored in the following steps, so it is recommended to toggle between the code window and explanations provided as part of this lesson here. 
+The code below is mirrored in this web version, however more detail is given here: so it is recommended to toggle between the code window and *Programming Historian* explanations provided. 
 
 ### Step 2: Running a Jupyter Notebook
 
 If you wish to use your own Jupter Notebook, instead of the above web scaffold, simply, type Jupyter Notebook after the *%* in your terminal, this will open up the interface. 
 
-Select *new* from Jupyter’s drop-down menu. You should see the display-name *AI Licence NLP*, click through and open up your notebook. This *kernel*, or Jupyter file, contains all the libraries and packages installed in Step 1. Name your notebook something intuitive like *spaCy_licence_experiments*. This will save an .ipynb file, which can be shared, as well as (re)uploaded to Jupyter, in case of working collaboratively. 
+Select *new* from Jupyter’s drop-down menu. You should see the display-name *AI Licence NLP*, click through and open up your notebook. This *kernel*, or Jupyter file, contains all the libraries and packages installed in Step 1. Name your notebook something intuitive like *spaCy_licence_experiments*. This will save an .ipynb file, which can be shared, as well as (re)uploaded to Jupyter, in case you are working collaboratively. 
 
-Note: Keep your terminal open, which should now show a green bar and the message 'Connecting to kernel …'. If so, the local host is running properly. You should receive a warning if you decide to close the terminal, but if not, exit Jupyter and go through the process again.
+Note: Keep your terminal open, which should now show a green bar and the message 'Connecting to kernel …'. If so, the local host is running properly. You should receive a warning if you decide to close the terminal, but if not, exit Jupyter and go through the process of starting it up again.
 
 Your screen should now look like *Figure 1*, with Jupyter showing a new notebook, and your terminal running in a smaller window. 
 
-[Fig 1] Apple Mac OS, with blank Jupyter Notebook (AI_Licence_NLP kernel), and base terminal running the local host. 
+[Fig 1] Blank Jupyter Notebook (AI_Licence_NLP kernel), and base terminal running the local host. 
 
 ### STEP 3: Dataset and spaCy Deployment
 
 Begin by importing pathlib, pandas and pdfplumber from your installed packages in Step 1, if using your own Jupyter environment. 
 
 
-    from pathlib import Path
-    import pandas as pd
-    import pdfplumber
+    from pathlib import Path # for uploading licences 
+    import pandas as pd # for simple data manipulation, tabulation
+    import pdfplumber # for writing the files into Jupyter Notebooks
 
-Depending on your use case, you can then import your licence file. The below code imports the entire 29 licences gathered by Estrada, within a set folder structure of 'AI Agent', 'Lit Review' and 'Transcription' agreements. This folder structre is important, and will dictate the structure of our Excel export, for further review and red flag comparisons between tool. 
+Depending on your use case, you can then import your licence file. The below code imports the entire 29 licences gathered by Estrada, within a set folder structure of 'AI Agent', 'Lit Review' and 'Transcription' agreements. This folder structure is important, and will dictate the nature of our Excel export, for further review and red flag comparisons between tool. 
 
     ROOT = Path("AI_Products_TOS")  # contains folders "AI Agent", "Lit Review", "Transcription"
 
-If using your own licence, simply point toward your local folder of file - 
+If using your own licence, simply point Jupyter toward your local folder of file - 
 
     ROOT = Path("your_folder_name" or "your_file_path") 
 
-To check that pathlib imported your pdf licences correctly, especially in the case of uploading a folder, use the following code. You can easily change this to other file formats, exchanging *.pdf for *.txt for instance, however the remainder of these lesson presumes to use of pdfs, for data extraction convenience - 
+To check that pathlib imported your pdf licences correctly, especially in the case of uploading a folder, use the following code. You can easily change this to other file formats, exchanging *.pdf for *.txt for instance, however the remainder of these lesson presumes pdf use, for data extraction convenience - 
 
     next(ROOT.rglob("*.pdf"))  # first PDF it finds
     print("Testing:", pdf_path)
@@ -437,30 +440,32 @@ Finally, you can print the first 1,500 characters from the initial licence found
     import warnings
     warnings.filterwarnings("ignore", message="Could not get FontBBox from font descriptor.*")
 
-To further verify that pathlib has found, and pdfpplumber has read, all the intended PDFs, you can print the number of agreements imported into Jupyter, as well as their file names.
+To further verify that pathlib has found, and pdfpplumber has read, all your intended PDFs, you can print the number of agreements imported into Jupyter, as well as their file names.
 
     pdfs = list(ROOT.rglob("*.pdf"))
     print("Found PDFs:", len(pdfs))
     for p in pdfs[:10]:
         print(p)
 
-Now you can import spaCy, as well as its required PhraseMatcher. Unlike some other NLP approaches, which label data, tokenise (break a text into discrete words), and pre-process (converting all text to lowercase for instance) (see Havens, 2022), we perform these actions as part of our dictionary set-up, to reduce processing steps. The last line loads spacy's standard English langauge model.  
+Now you can import spaCy, as well as its required PhraseMatcher. Unlike some other NLP approaches, which label data, tokenise (break a text into discrete words), and pre-process (converting all text to lowercase for instance) (see Havens, 2022), we perform these actions as part of our dictionary set-up, to hone our approach. The last line loads spaCy's standard English langauge model, already downloaded.  
 
     import spacy
     from spacy.matcher import PhraseMatcher, Matcher
     nlp = spacy.load("en_core_web_sm")
 
-#### Step 4: Dictionary Setup
+### Step 4: Dictionary Setup
 
-In order to extract meaningful words and patterns (phrases) from our AI licences, we need to remove noisy elements, in our case stopwords that are irrelevant to red flag terms and conditions. Although agreements may include more implicit undertones of risk, spaCy works through simple term and phrase matching, opposed to understanding broader language, which would require a processing out-of-scope for this lesson. Nonetheless, our extraction approach works well, due to AI licence agreements being relatively formulaic, with repeating clauses and structures. 
+In order to extract meaningful words and patterns (phrases) from our AI licences, we need to remove noisy elements, in our case stopwords that are irrelevant to red flag terms and conditions. Although agreements may include more implicit undertones of risk, spaCy works through simple term and phrase matching, opposed to understanding broader language, which would requireprocessing out-of-scope for this lesson. Nonetheless, our extraction approach works well, due to AI licence agreements being relatively formulaic, with repeating clauses and structures. 
 
 The following code establishes our dictionary of terms and phrases, based on those found through the ESAC register, tool licence guidance, and in consultation with Fenlon. 
 
-For your own purposes, you can easily delete non-relevant dictionary entries, or add to any patterns, directly within this code, however keep in mind that the current dictionary is in keeping with NLP syntax - especially bracketing and the use of commas. Therefore, the below provides a blank syntax scaffold to follow: 
+For your own purposes, you can easily delete non-relevant dictionary entries, or add to any patterns, directly within this code, however keep in mind that the current dictionary is in keeping with NLP syntax - especially bracketing and the use of commas. 
+
+Therefore, the below provides a blank syntax scaffold to follow: 
 
     name_of_dictionary = {
 
-In our case, the following terms and phrases are grouped into themes, which outline the main data protection issues surrounding AI licensing, which copyright librarians assess.
+In our case, the following terms and phrases are grouped into themes, which outline the main data protection issues surrounding AI licensing, which copyright librarians regularly assess.
 
     "risk or AI_theme": {
 
@@ -491,14 +496,14 @@ Then end the dictionary rule with a ']' and comma, before beginning with another
 
         ],
 
-To close the dictionary, include the following - 
+To close the full dictionary, include the following - 
 
        }, 
        }
 
-As a guide, we populate the scaffold. First of all, we group terms and phrases under the theme *AI training*, whereby user data or prompting feeds into the broader efficiencies of a tool. Through a thorough reading of ESAC agreements and the wider literature mentioned, we draw out key phrases associated with this risk. 
+As a guide, we populate the scaffold below. First of all, we group terms and phrases under the theme *AI training*, whereby user data or prompting feeds into the broader efficiencies of a tool. Through a thorough reading of ESAC agreements and the wider literature mentioned, we draw out key phrases associated with this risk. 
 
-Our full dictionary is included as a *Programming Historian* asset [here](assets/enablar-lesson-4/red-flag-dict), due to its considerable length. It serves as a useful guide, or even as a plugin dictionary, including themes of 'data retention', 'data ownership', 'security', 'copyright', 'accessibility', and 'liability', again included through practitioner consultation with Fenlon, and a review of wider AI copyright and licensing literature.
+Our full dictionary is included as a *Programming Historian* asset [here](assets/enablar-lesson-4/red-flag-dict), due to its considerable length. It serves as a useful guide, or even as a plugin dictionary, including themes of 'data retention', 'data ownership', 'security', 'copyright', 'accessibility', and 'liability', again constructed through practitioner consultation with Fenlon and Estrada.
 
     red_flag_dict = {
 
@@ -562,7 +567,7 @@ Here, the root term *train* is associated and made lowercase, through our dictio
     ]
     },
 
-We do the same for associated financial risks, and hidden costs as a dictionary theme. These themes will act as an Excel file structure, once exported, to compare and contrast red flag hits - 
+We do the same for associated financial risks, and hidden costs as a dictionary theme. These themes will be exported as an Excel column, to better compare and contrast red flag hits - 
 
     "COST": {
 
@@ -647,13 +652,13 @@ We do the same for associated financial risks, and hidden costs as a dictionary 
 
 ### Step 5: Running PhraseMatcher
 
-A list of individual word tokens, however related to AI risk, is not illuminating enough to assess red flags in licence agreements, therefore we use spaCy’s in-built PhraseMatcher, which enables our dictionary to be overlaid the dataset text and reassembled based on the pattern rules established. 
+A list of individual word tokens, however related to AI risk, is not illuminating enough to assess red flags in licence agreements. As such, we use spaCy’s in-built PhraseMatcher, which overlays our dictionary across the dataset text and reassembles word matches based on the patterns established. 
 
 First, load the matchers - 
 
     phrase_matcher = PhraseMatcher(nlp.vocab)
     
-You could include attr = lower after nlp.vocab, though this would convert all results into lowercase, instead of a more fine account of sentence structure by including lowercasing in each dictionary section, where appropriate. 
+You could include attr = lower after nlp.vocab, though this would convert all results into lowercase, instead of a more fine account of sentence structure by including lowercasing in each dictionary section. 
 
     token_matcher = Matcher(nlp.vocab)
 
@@ -670,7 +675,7 @@ To ensure your dictionary is properly plugged into the NLP pipeline, print the c
 
 —--
 
-After loading the matchers, you can construct an empty list [] of *matches* or *red flag hits*, and direct spaCy to cover the entire length of your agreement licence based on word_count. This will read each pdf licence page, before appending them back together. The following code will work, regardless of how many licences you have. 
+After loading the matchers, you can construct an empty list [] of *matches* or *red flag hits*, and direct spaCy to cover the entire length of your agreement licence(s) based on word_count. This will read each pdf licence page-by-page, before appending them back together. The following code should work regardless of how many licences you have. 
 
     def extract_pdf_text(pdf_path):
     parts = []
@@ -693,19 +698,19 @@ After loading the matchers, you can construct an empty list [] of *matches* or *
         span = doc[start:end]
         matches.append((nlp.vocab.strings[match_id], span.text, span.sent.text, "pattern"))
 
-As verification, we print out the first ten matches to ensure the NLP process is working, and covering the full extent of each pdf licence - 
+As verification, we print out the first ten matches to ensure the NLP process is working as intended, and covering the full extent of each pdf licence - 
 
     print("Testing:", pdf_path)
     print("Matches:", len(matches))
     matches[:10]
 
-We can also silence the pdfplumber warning, based on our initial test that the package is capable of extracting pdf text, albeit with some minimal OCR errors.
+We can also silence the pdfplumber warning, based on our initial test that the package is capable of extracting pdf text, albeit with some minimal OCR errors (see discussion).
 
     warnings.filterwarnings("ignore", message="Could not get FontBBox from font descriptor.*")
 
 ### Step 6: Red Flag Exportation 
 
-The following code establishes a clear .xlsx file structure, to manipulate red flag results within Excel. Not only does this offer greater visibility of results, with the following code providing a column of hits, as well as the associated sentence, in a sequential list, but, also retains our original folder structure for comparison: 'AI Agent', 'Lit Review' and 'Transcription'. Step 7 provides a use case for using Excel, through the simple conversion of listed red flags into pivot tables into global research findings across all our 29 licences.
+The following code establishes a clear .xlsx file structure, to manipulate red flag results within Excel. Not only does this offer greater visibility of results, with the following code providing a column of hits, as well as the associated sentence, in a sequential list, but also retains our original folder structure for comparison: 'AI Agent', 'Lit Review' and 'Transcription'. Step 7 provides a use case for using such Excel exports, through the simple conversion of listed red flags into pivot tables to reach findings across all our 29 licences.
 
     rows = []
         for pdf_path in pdfs:
@@ -735,7 +740,7 @@ The following code establishes a clear .xlsx file structure, to manipulate red f
             "method": "pattern",
         })
 
-Again, silence the spaCy text extraction warning, as we have verified its accuracy - 
+Again, silence the pdfplumber ext extraction warning, as we have verified its accuracy - 
 
     warnings.filterwarnings("ignore", message="Could not get FontBBox from font descriptor.*")
 
@@ -761,7 +766,7 @@ We can now display the results, the below shows the first five results from our 
 
 </div>
 
-For further refinement, you can also use spaCy for noun detection, alongside the patterns established in our dictionary. As we see in the Transkribus example, certain noun phrases, especially when attached to verb actions, can direct further - specialist - assessment. In this experiment, the noun *children* appears, which necessitates further review due to requiring a potentially different IP approach to GDPR. In this case, *children* appears in relation to *Trankribus Connect* and forbidding online posting that is 'illegal, obscene, abusive, threatening, defamatory, invasive of privacy, infringing on intellectual property rights, harmful to children, or otherwise objectionable', highlighting a level of robustness in platform precautions around data protetcion:
+For further refinement, you can also use spaCy for noun detection, alongside the patterns established in our dictionary. As we see in the Transkribus example, certain noun phrases, especially when attached to verb actions, can direct further - specialist - assessment. In this experiment, the noun *children* appears, which necessitates further review due to requiring a wholly different IP approach to GDPR. In this case, *children* appears in relation to *Trankribus Connect* and forbidding online posting that is 'illegal, obscene, abusive, threatening, defamatory, invasive of privacy, infringing on intellectual property rights, harmful to children, or otherwise objectionable', highlighting a level of robustness in platform precautions around data protection:
 
     noun_phrases = set()
 
@@ -794,7 +799,7 @@ For further refinement, you can also use spaCy for noun detection, alongside the
 
 ---
 
-With our dataframe structure established, for both matchers, we can now use openpyxl, downloaded earlier (or pre-downloaded if using the Jupyter Notebook link) to export our .xlsx file. 
+With this dataframe, we can now use openpyxl, downloaded earlier (or pre-downloaded if using the Jupyter Notebook link) to export our .xlsx file. 
 
 If exporting only one license, simply set a path, with a intuitive name and deploy openpyxl - 
 
@@ -817,9 +822,9 @@ If using multiple licenses, as with our corpus of 29 agreements, ensure that the
 
 ### Step 7: High-Level Red Flag Review
 
-With our Excel export enabling flexible data analysis, we can begin to assess the percentage of certain flags across AI tool type. Of course, this should remain an initial guide, with some red flags being likely false positives, caused by AI providers offering reassurance around the risks categorised in our dictionary, although our rules-based approach should limit this to an extend. Therefore, this section complements our human-reveiw discussion of certain red flag texts exported.
+With Excel enabling flexible data analysis, we can begin to assess the percentage of certain flags across AI tool type. Of course, this should remain an initial guide, with some red flags being likely false positives, caused by AI providers offering reassurance around the risks categorised in our dictionary, although our rules-based approach should limit this to an extend. Therefore, this section complements our human-reveiw discussion of red flag texts exported.
 
-The below table displays the total percentages of categorised risks, based on our dictionary construction, across the AI literature review folder. We can see that our dictionary and spaCy NLP was potentially over-sensitive, returning 734 flag responses for this tool folder, in need of human review. Although this NLP result still produces a manual inspection overhead, we anticipate lesson users will use these flag exports as a guide, moving in and out of licence texts as problematic terms and conditions arise. For lit review AI, therefore, it appears that security concerns are most common (58.74%), followed by cost (13.08%). 
+The below table displays the total percentages of categorised risks, based on our dictionary construction, across our AI literature review folder. We can see that our dictionary and spaCy NLP was potentially over-sensitive, returning 734 flag responses, in need of human review. Although this NLP result still produces a manual inspection overhead, we anticipate lesson users will use these flag exports as a guide, moving in and out of licence texts as problematic terms and conditions arise. For lit review AI, it appears that security concerns are most common (58.74%), followed by cost (13.08%). 
 
 <div class="table-wrapper" markdown="block">
 
@@ -855,7 +860,7 @@ Looking at our AI transcription tools, security again appears most prominent (42
 
 </div>
 
-However, our AI agent folder breaks with such percetages, with the risk of user inputs informing AI training the highest extracted flag category (49.12%), followed by security (21.05%). This is likely a result of AI agents requiring prompt engineering, with the need for more direct user interaction.
+However, our AI agent folder breaks with such percentages, with the risk of user inputs informing AI training the highest extracted flag category (49.12%), followed by security (21.05%). This is likely a result of AI agents requiring prompt engineering, with the need for direct user interaction.
 
 <div class="table-wrapper" markdown="block">
 
@@ -873,19 +878,15 @@ However, our AI agent folder breaks with such percetages, with the risk of user 
 
 ## Discussion: Human Translations of Extracted Red Flags
 
-This spaCy lesson aims to extract problematic AI tool clauses to aid institutional procurement workflows, whether undertaken by a solo librarian on a single licence or as part of a wider initative over a corpus, alongside aiding digital researcher decision-making. Nonetheless, human-in-the-loop review is still essential for interpreting extracted red flags, and the risks they may contain. As such, we include some human language translations, informed by our own professional perspectives, which help establish why certain extracted clauses are problematic, and indeed whether some actually constitute red flags. 
-
-This sits alongside the above high-level review of categorised dictionary themes, in Step 7.
-
-This human review stage also enables self-reflection in terms of the Authors’ own orientation toward AI use. With our own understanding of licence agreements varying, due to our library and researcher backgrounds, we explore our own knowledge gaps in interpreting terms and conditions. 
+This spaCy lesson aimed to extract problematic AI tool clauses to aid institutional procurement workflows, whether undertaken by a solo librarian over a single licence or as a wider library initative across a corpus, alongside aiding researcher decision-making. Nonetheless, human-in-the-loop review is still essential for interpreting extracted red flags, and the risks they may contain. As such, we include some human language translations, informed by our own professional perspectives, which help establish why certain extracted clauses are problematic, and indeed whether some actually constitute red flags. 
 
 --- 
 
-There are clear limitations to our lesson:
+There are limitations to our lesson:
 
-Our spaCy method could be improved upon through the bespoke use of OCR tools, to correct errors in PDF transcriptions pulled by PDFPlumber. However, these errors were minimal and did not impact the overall review of extracted red flags, with four notable error instances across the whole export. 
+Our spaCy method could be improved upon through the bespoke use of OCR tools, to correct errors in PDF transcriptions pulled by pdfpumber. However, these errors were minimal and did not impact the overall review of extracted red flags, with four notable error instances across the whole export. 
 
-With spaCy relying on exact dictionary matches, our method also proves overly sensitive, extracting more than 1,000 red flag hits - 115 for AI Agents (7 documents), 734 for Lit Review (19 documents), 310 for Transcription (5 documents). Of course, this means that a full review of each and every red flag, across a corpus of documents, remains time consuming, however the disaggregated breakdown of where hits appear enables librarians and researchers to more easily interpret licences, with the resulting Excel export acting as a viewfinder. Dividing the number of hits by documents, approx. 37 hits are seen, making the use of such NLP pipelines more reasonable in the case of solo librarians on individual licences.
+With spaCy relying on exact dictionary matches, our method also proves overly sensitive, extracting more than 1,000 red flag hits - 115 for AI Agents (7 documents), 734 for Lit Review (19 documents), 310 for Transcription (5 documents). Of course, this means that a full review of each and every red flag, across a corpus of documents, remains time consuming, however the disaggregated breakdown of where hits appear enables librarians and researchers to more easily interpret licences, with the resulting Excel export acting as a viewfinder. Dividing the number of hits by documents (n = 29), approx. 37 hits are recorded, making the use of such NLP pipelines more reasonable in the case of solo librarians on individual licences.
 
 Of course, the extraction of token phrases can easily lose contextual meaning from complex licenses. This is seen with false positive hits, where AI providers instead attempt to mollify anxities around AI training, for instance. 
 
@@ -893,19 +894,17 @@ Of course, the extraction of token phrases can easily lose contextual meaning fr
 
 Nonetheless, our spaCy method has advantages:
 
-Although some clauses are surfaced multiple times, these are based for different rules, phrases and terms. This may add to the oversensitivity of our method, clauses can have multiple rules applying, due to their complex legalistic context. Nonetheless, we see this overlapping of hits as a feature, which ensures that AI risk is assessed from multiple vantages. 
+Although some clauses are surfaced multiple times, these are based on different rules, phrases and/or terms. This may add to the oversensitivity of our method, however clauses can have multiple rules applying, due to their complex legalistic context. We, therefore, see this overlapping of hits as a feature, which ensures that AI risk is assessed from multiple vantages. 
 
 In other cases, this spaCy method signalled very real AI risks, with the structure of our Excel export enabling discrepencies between tools to be additionally flagged: 
 
-For instace, our 'Security' dictionary rule extracted instances of limited liability, where tool providers wave liability for any third party damages, including data loss or those caused by for profit behaviour, even if they have been advised of their possibilities ahead of time. Alongside this, our method uncovered variable protections based on legal jurisdiction, with certain AI companies processing data in other countries, as well as aggressively supporting direct marketing campaigns where legal. Elsewhere, the revealing of protected or sensitive consumer data was firmly placed at the discretion of the consumer. Variability between tool providers was also seen in the case of responding to privacy policy requests, with some AI companies charging a fee to provide access to personal data, as well as data processing - with some tools stating that no customer data is used in training Large Language Models, whereas others appear much vaguer, due to the complex 'nature of processing'. 
+For instace, our 'Security' rule extracted instances of limited liability, where tool providers wave liability for any third party damages, including data loss or those caused by for profit behaviour, even if they have been advised of their possibilities ahead of time. Alongside this, our method uncovered variable protections based on legal jurisdiction, with certain AI companies processing data in other countries, as well as aggressively supporting more direct marketing campaigns where legal. Elsewhere, the revealing of protected or sensitive consumer data was firmly placed at the discretion of the user user. Variability between tool providers was also seen in the case of responding to privacy policy requests, with some AI companies charging a fee to provide access to personal data, as well as data processing: some tools stated that no customer data is used in training Large Language Models, whereas others appear much vaguer, due to the complex 'nature of processing'. 
 
 ## Local Application
 
-This NLP method has been made purposely extensible, important considering the variability of natural language, even in regimented terms and conditions. Therefore you can easily apply this method in your own research context, where extracting red flags from licences is necessary to begin ascertaining the risk level in adopting, or purchasing, an AI tool. To ensure that your dictionary anticipates the content of your agreement sufficiently, you can simply edit the provided code, either straight within Jupyter Notebook, or before importing into a Python environment, with our dictionary list of terms available via Zenodo as plain .txt file, for easily uploading [^1].
+This NLP method is made purposely extensible, important considering the variability of natural language, even in regimented terms and conditions. Therefore, you can easily apply this method in your own research context, where extracting red flags from licences is necessary to begin ascertaining risk levels in adopting, or purchasing, an AI tool. To ensure that your dictionary anticipates the content of your agreement sufficiently, you can simply edit the provided code, either straight within Jupyter Notebook, or before importing into a Python environment.
 
-The nature of NLP, finding patterns in information through deconstructing text as discrete units of analysis, requires fine-tuning to be useful for particular texts. Although AI tool licenses are regimented and likely to include similar clauses, they differ in legal jurisdiction and phrasing, therefore a challenge of this method is its transferability. The researcher must also be confident in assessing the document’s purpose and context before deploying spaCy. Following this, our human translations of a sample of main red flags extracted is meant to encourage greater confidence in interpreting AI licences, both at the research and library-level. 
-
-For continued learning, see other *Programming Historian* applications of spaCy. Kane’s (2023) lesson applies a similar NLP workflow for corpus linguistic annotation and interpretation, while Goodale (2024) uses spaCy, using the same stopword approach, for interpreting Russian text. Away from historical linguistic data, spaCy has been used to review and analyse clinical notes to improve patient outcomes (Schmidt et al., 2026), as well as to consensually extract payment data within financial institutions, aimed at ensuring anti-money laundering compliance (Nayak, 2026).
+For continued learning, see other *Programming Historian* applications of spaCy. Kane’s (2023) lesson applies a similar NLP workflow for corpus linguistic annotation and interpretation, while Goodale (2024) uses spaCy and the same stopword approach for interpreting Russian text. Away from historical linguistic data, spaCy has been used to review and analyse clinical notes to improve patient outcomes (Schmidt et al., 2026), as well as to consensually extract payment data within financial institutions, aimed at ensuring anti-money laundering compliance (Nayak, 2026).
 
 With this lesson extracting natural language clauses as an intuitive data frame, there is research scope for contrasting and comparing AI licences between legal jurisdictions, as well as the prominence of certain red flags. Our use of ESAC’s open registering of publishing licences also enables further work as to how closely traditional terms and conditions map onto newer AI tool licences.
 

@@ -31,10 +31,6 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-<div class="alert alert-warning">
-Note de la traduction : cette version française de la leçon a été mise à jour par rapport à la version originale anglophone afin de tenir compte de l'évolution des bibliothèques utilisées. Le code a été adapté pour Python 3.12, spaCy 3.8.11 et Stanza 1.11.1 (la version originale reposait sur Python 3.10, spaCy 3.7.4 et Stanza 1.8.2). En particulier, la section sur la détection de langue avec <code>spacy_langdetect</code> a été réécrite pour suivre le nouveau pattern <code>@Language.factory</code> requis par les versions récentes de spaCy, et les index de phrases utilisés dans les exemples de tokénisation avec spaCy ont été ajustés.
-</div>
-
 ## But de la leçon
 
 Une grande partie des ressources destinée à l’apprentissage de méthodes informatiques d’analyse de texte se concentre sur des textes et corpus de langue anglaise et omettent souvent d’inclure les explications nécessaires pour travailler avec des sources non anglophones. Pour remédier à ce problème, cette leçon propose une introduction à l’analyse de texte non anglophone et multilingue (c'est-à-dire écrit en plus d’une langue) via Python. En ayant recours à un texte multilingue composé en russe et en français, cette leçon montrera comment utiliser des méthodes informatiques pour accomplir trois tâches de prétraitement fondamentales : la tokénisation, l’étiquetage morpho-syntaxique, et la lemmatisation. Ensuite, la leçon vous apprendra à automatiquement détecter les langues présentes dans un texte prétraité.

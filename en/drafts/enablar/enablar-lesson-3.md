@@ -184,6 +184,8 @@ This lesson has four main components: data and cleaning, reverting to network da
 3. visualizing the data 
 4. Analyzing the Results
 
+Looking at the eight graphs, we start to see patterns emerge. The most obvious factor being the size of the collection under this topic. Over the years, the network gets denser and denser. Doubling between both 1926-1950 and 1951-1975. What inspired this? Was there just being published? Curiously, after these two periods, in 1976-2000, the collection was halved. There are many possible reasons for this, did the subject headings change? Did the format of what the library was buying change and these items are left out? Did the budget or focus on the collection change? Where less books published in Dutch? There is much to explore and find out from posing these question just by the number of items themselves. 
+
 ### Summary
 
 

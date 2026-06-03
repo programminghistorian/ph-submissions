@@ -882,10 +882,10 @@ Finally, we would like to call attention to the importance of a special data sha
 
 ## Endnotes
 
-[^1]: For a full list with advantages and disadvantages of the persistent identifiers see Koster, Lukas. 2020. Persistent identifiers for heritage objects. _Code4Lib Journal_ 47. https://journal.code4lib.org/articles/14978.
+[^1]: For a full list with advantages and disadvantages of the persistent identifiers see Koster, Lukas. 2020. Persistent identifiers for heritage objects. _Code4Lib Journal_ 47. [https://journal.code4lib.org/articles/14978](https://journal.code4lib.org/articles/14978)
 
 [^2]: If you are interested in this process we recommend the following book: Nelson, Catherine. 2024. Software Engineering for Data Scientists: From Notebooks to Scalable Systems. O’Reilly. ISBN 978-1-0981-3620-8
 
-[^3]: Beyer, Florian, Vedder, Lucia, Singson, Lea Sophie, Sahwan, Wahib, & Schmidt, Marcus. 2025. Publishing research code FAIR - a roadmap (1.0). _Zenodo_. https://doi.org/10.5281/zenodo.14772749
+[^3]: Beyer, Florian, Vedder, Lucia, Singson, Lea Sophie, Sahwan, Wahib, & Schmidt, Marcus. 2025. Publishing research code FAIR - a roadmap (1.0). _Zenodo_. [https://doi.org/10.5281/zenodo.14772749](https://doi.org/10.5281/zenodo.14772749)
 
-[^4]: https://www.loc.gov/marc/up34bibliographic/bdapndxg.html
+[^4]: MARC 21 format for bibliographic data. Update No. 34, July 2022. [https://www.loc.gov/marc/up34bibliographic/bdapndxg.html](https://www.loc.gov/marc/up34bibliographic/bdapndxg.html)

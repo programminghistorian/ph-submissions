@@ -486,6 +486,13 @@ Here we create two dictionaries, one for the titles, and one for the subjects. W
 
 #### Data harmonisation
 
+##### Subjects
+This is work in progress. Subject to Change. It follows the Data Acquisition Section.
+##### Place and personal names
+
+##### Dates
+
+
 One of the most frequently utilised data elements in bibliographic data science is date of publication. It is usually a year (or range of years), and is the basis of any chronological analysis, answering questions such as how feature X changed through times, where X might be the subjects, language, format, authors and other features of the book. The value of the year of publication in MARC21 records however is not a normalised date, so we should apply some transformation to extract a numeric value. On the other hand the normalisation is relatively easier than that of personal or geographic names. In the code we do not provide a very sophisticated solution. For that we suggest you check and adapt the bibliographica  package's [polish_years](https://github.com/COMHIS/bibliographica/blob/master/R/polish_years.R) function written in R language by Leo Lahti, Hege Roivainen, Niko Ilomaki, and Mikko Tolonen.
 
 In this approach we will check some typical formats with regular expressions. Then we pass the extracted value to the [Undate package](https://undate-python.readthedocs.io/en/latest/index.html) written by Cole Crawford, Rebecca Sutton Koeser, Robert Casties, Julia Damerow, Malte Vogl, Taylor Arnold and Klaus Rettinghaus. This package could accept different date formats, but if the input is not recognisable it throws an exception -- helping us to filter out those dates that don't fit to any format, and using this as a feedback to improve our regular expressions.
@@ -549,16 +556,11 @@ After processing all records, we print out the number of successes and failures 
 
 #### Data analysis and visualization
 
-##### Place and personal names
-##### Dates
-##### Subjects
-This is work in progress. Subject to Change. It follows the Data Acquisition Section.
-
-# Preprocessing MARCXML with PyMARC and Pandas
+##### Preprocessing MARCXML with PyMARC and Pandas
 
 In the previous section we downloaded MARCXML files from Yale's catalogue and decompressed them into the `raw-data/yale/` directory. This section picks up from there: we'll turn those XML files into a Pandas DataFrame and use it to ask questions about what the collection contains.
 
-## What we're building
+##### What we're building
 
 By the end of this section you'll have three small reusable functions that work together:
 1. **`extract_to_dataframe`** turns one or more MARCXML files into a DataFrame.
@@ -575,12 +577,12 @@ We'll work through:
 4. Wrapping extraction in a reusable function so the same logic runs on any MARCXML file
 5. Filtering for records that mention a topic, then comparing how two catalogues describe that topic
 
-## Why this matters: the user story
+##### Why this matters: the user story
 
 Imagine you're a metadata librarian. You want to start asking questions about what your catalogue contains, not just *is this record well-formed?* but *what does our collection actually describe?* That kind of question opens up real conversations about collection development priorities, cataloguing practice, and what gets fine-grained subject treatment versus what gets lumped together.
 For this lesson we'll use Yale shards (the partitioned MARCXML files we downloaded) as toy data. It's enough to show the techniques; it's not enough to support real findings. By the end you'll be able to recognise the shape of questions this approach answers, and adapt the code to richer data of your own.
 
-## What you need before you start
+##### What you need before you start
 - At least one MARCXML file in `raw-data/yale/` from the data acquisition section. We'll use `bib_20250706_full_000_00.xml` and `bib_20250706_full_000_01.xml`, but any two will work, just change the file names below.
 - The `pymarc` and `pandas` packages installed. If you don't have them yet:
 
@@ -588,7 +590,7 @@ For this lesson we'll use Yale shards (the partitioned MARCXML files we download
 %pip install pymarc pandas
 ```
 
-## Reading a MARCXML file
+##### Reading a MARCXML file
 
 PyMARC offers two ways to read MARCXML:
 
@@ -615,7 +617,7 @@ map_xml(process_record, input_file)
 
 Next we'll capture data into lists instead of printing it, and turn those lists into a DataFrame.
 
-## Extracting non-repeatable fields into a DataFrame
+##### Extracting non-repeatable fields into a DataFrame
 
 The general pattern is:
 
@@ -663,7 +665,7 @@ df.head()
 
 This works, but it has a problem: `ids`, `titles`, and `authors` are loose variables that `process_record` reaches into. If we want to run the same extraction on a different file, we have to remember to reset the lists, and `process_record` only works in a context where those lists already exist. The fix is to wrap everything together into one function, which we'll do once we've added subjects.
 
-## Repeatable fields: one record, many values
+##### Repeatable fields: one record, many values
 
 MARC21 allows several fields to repeat within a single record. Subject headings are the clearest example: a book might have one subject, or ten. This breaks the [tidy data](https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data) assumption that each row is one observation and each cell holds one value.
 
@@ -676,7 +678,7 @@ We'll use the first approach, joining a record's subject headings with the `|` (
 
 PyMARC's `record.subjects` property is a convenience that pulls all MARC fields commonly used for subject headings (the `6xx` fields) into one list. The actual heading text lives in subfield `$a`, but `$a` is not guaranteed to be present, so we check before appending.
 
-## Function 1: `extract_to_dataframe`
+##### Function 1: `extract_to_dataframe`
 
 This function takes one or more file paths and returns a DataFrame with one row per record. It packages everything we've built so far, plus subject extraction, into a single self-contained call.
 
@@ -732,7 +734,7 @@ df.head()
 
 **You should see** a record count and a preview with four columns: `id`, `title`, `author`, `subjects`. The `subjects` column holds pipe-separated strings (or an empty string if no subjects were assigned).
 
-## Asking a question of the collection
+##### Asking a question of the collection
 
 We now have a DataFrame, which means we can start asking what the catalogue contains. There are many directions you could take this: publication date distribution, author concentration, language coverage, format breakdowns. We'll work through one example: how many records use subject headings that the Library of Congress has recently revised.
 
@@ -759,7 +761,7 @@ What these numbers can and can't tell you is worth being careful about. A high c
 
 What the technique *does* show is the shape of how you'd ask. `.str.contains()` filters a column by pattern; `.sum()` on the resulting boolean Series counts matches. The same two-move composition works for any pattern in any column.
 
-## Comparing two datasets
+##### Comparing two datasets
 
 Looking at one dataset is useful. Comparing two is often more useful: *how does another catalogue describe the same kind of material?*
 
@@ -777,7 +779,7 @@ print(f'Catalogue B: {len(df_b)} records')
 
 To compare them, we need two more small functions.
 
-## Function 2: `headings_matching`
+##### Function 2: `headings_matching`
 
 This function takes a DataFrame and a keyword, and returns the set of subject headings used on records that mention that keyword.
 
@@ -810,7 +812,7 @@ print(f'Catalogue B uses {len(headings_b)} distinct headings on immigration reco
 
 **You should see** two counts. These are the *vocabularies* each catalogue uses around immigration: every distinct subject heading that appears on a record mentioning "Immigra".
 
-## Function 3: `compare_sets`
+##### Function 3: `compare_sets`
 
 This function takes two sets and returns a dictionary describing how they overlap: what's in both, what's only in the first, what's only in the second.
 
@@ -844,7 +846,7 @@ for h in sorted(result['only_in_x'])[:5]:
 
 **You should see** counts followed by a few example headings unique to catalogue A. The asymmetric differences (the "only in" sets) are usually the interesting numbers, they tell you where the two catalogues diverge in vocabulary.
 
-## Why three small functions
+##### Why three small functions
 
 Each function does one thing, named honestly:
 
@@ -870,7 +872,7 @@ Let's start with the data. There are some dedicated 'research data repositories'
 
 To publish the software might be a two step process. The first step is to make it publicly available in a platform such as GitHub, GitLab, or other general or institutional software depository. However your can make it further and turn the scripts into real research software with proper documentation, tests, packaging, installation scripts etc.[^2] Research data repositories are also accept research related software, and some of them are working together with software repositories, so you can connect them together, and you will get a persistent identifier for your software as well. The Research Software Engineering community published some guidelines on how to publish software in FAIR way (FAIR is an acronym for Findable, Accessible, Interoperable and Reusable)[^3].
 
-Finally, we would like to call attention to the importance of a special data sharing called 'data roundtrip'.[^4] Imagine the following scenario: a researcher has worked hard to enrich a popular data source with high research potential that is maintained by a public collection. Later, another researcher would like to use the same database for their research. If she is not familiar with the previous researcher's work, she can start the data enrichment process from scratch. But even if the first researcher published his data enrichment, it is much more likely that the subsequent researchers will find and use the original database. To prevent this, researchers would need to return the modified data to the original data provider. Fortunately, MARC21, introduced in the 34th update in 2022[^5] a data provenance subfield to distinguish between data recorded by the library and data recorded by the researcher (and it is available in most fields), which could be a theoretical remedy for the library's legitimate demand to take responsibility for its own data. In the life sciences, researchers can use nanopublications to share data enrichment steps with libraries, which can then incorporate them into their catalogs without compromising their own responsibility and credibility. The second researcher can then work on the data-enriched version. In order to realize this vision, communication between the parties must be standardized, and the research community can play a coordinating role in this process.
+Finally, we would like to call attention to the importance of a special data sharing called 'data roundtrip'.[^4] Imagine the following scenario: a researcher has worked hard to enrich a popular data source with high research potential that is maintained by a public collection. Later, another researcher would like to use the same database for their research. If she is not familiar with the previous researcher's work, she can start the data enrichment process from scratch. But even if the first researcher published his data enrichment, it is much more likely that the subsequent researchers will find and use the original database. To prevent this, researchers would need to return the modified data to the original data provider. Fortunately, MARC21, introduced in the 34th update in 2022[^5] a data provenance subfield to distinguish between data recorded by the library and data recorded by the researcher (and it is available in most fields), which could be a theoretical remedy for the library's legitimate demand to take responsibility for its own data. In the life sciences, researchers can utilize a special, "atomic" data publication method called [nanopublications](https://nanopub.net/) to share data enrichment steps with each others. In our case these 'others' are libraries, which can then incorporate them into their catalogs without compromising their own responsibility and credibility. The second researcher can then work on the data-enriched version. In order to realize this vision, communication between the parties must be standardized, and the research community can play a coordinating role in this process.
 
 ### Summary
 

@@ -407,7 +407,8 @@ Note: Keep your terminal open, which should now show a green bar and the message
 
 Your screen should now look like *Figure 1*, with Jupyter showing a new notebook, and your terminal running in a smaller window. 
 
-[Fig 1] Blank Jupyter Notebook (AI_Licence_NLP kernel), and base terminal running the local host. 
+{% include figure.html filename="en-or-enablar-lesson-4-01.jpeg" alt="Visual description of figure image" caption="Figure 1. Blank Jupyter Notebook (AI_Licence_NLP kernel), and base terminal running the local host." %}
+ 
 
 ### STEP 3: Dataset and spaCy Deployment
 
@@ -916,7 +917,7 @@ This lesson has presented an NLP workflow using spaCy as an open, reproducible a
 
 [^1]: Estrada, N., Nockels, J., Fenlon, A., 2026, [Popular Academic AI Tools Terms and Conditions](https://zenodo.org/records/19616877?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImE3MWExN2E5LTE0NjgtNGFiMi1hNWJjLTYyNTE0Y2MxYTJjNiIsImRhdGEiOnt9LCJyYW5kb20iOiI5ZjY5NWZlNGE3NDFlNzA5ZjNjN2EzNjMxMjYxYjJmMSJ9.HLiESWKo1CeA_MimFtUsW1tUxtreTsdjdEJo4xb5KO7FpYNfo1aev9T7GMH6xCwRuEpDU5l3fofI_98B6tjnsg)
 
-[^2]: [Full Red Flag Dictionary](assets/enablar-lesson-4/red-flag-dict)
+[^2]: [Full Red Flag Dictionary](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/red-flag-dict)
 
 ## References 
 

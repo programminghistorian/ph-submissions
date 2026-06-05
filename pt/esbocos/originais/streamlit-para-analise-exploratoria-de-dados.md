@@ -27,39 +27,49 @@ doi: XX.XXXXX/phen0000
 Esta lição articula discussões já apresentadas no [*Programming Historian*](https://programminghistorian.org/pt/) sobre manipulação de dados com Python ([Manipular strings com Python](https://programminghistorian.org/pt/licoes/manipular-strings-python), [Reutilização de código e modularidade em Python](https://programminghistorian.org/pt/licoes/reutilizacao-codigo-modularidade-python)) com práticas de visualização de dados. Mais especificamente, abordaremos o processo geral de construção de aplicações *web* interativas com o *framework* Streamlit. Para acompanhar a presente lição, além de [manipulação de *strings*](https://programminghistorian.org/pt/licoes/manipular-strings-python) e [modularização](https://programminghistorian.org/pt/licoes/reutilizacao-codigo-modularidade-python), pressupõe-se conhecimento intermediário em Python, incluindo:
 
 - Manipulação de listas e dicionários
-- Experiência com *loops* `for` (aninhados ou não)
+- Experiência com *loops* `for`
 - Elaboração de funções (argumentos, tipagem e `return` condicional)
 - Manipulação de arquivos (`with open()` e `pathlib`)
 - Contato básico com `requests` (`.get()`), `pandas` (`pandas.DataFrame`) e `json` (`.loads()` e `.dumps()`)
 - Noções de desenvolvimento de *software* ou, mais especificamente, separação e integração entre *front-end* (interface do usuário) e *back-end* (lógica por trás da interface, como o processamento de dados)
 
-Fora os conhecimentos necessários de Python, é desejável experiência com algum terminal (*PowerShell*, *Git Bash*...), pois os comandos `cd` e `mkdir` serão úteis para reprodução da lição.
-
-Ao final da lição, seremos capazes de integrar manipulação, visualização e apresentação de dados em um fluxo de trabalho único, reprodutível e voltado à construção de aplicações interativas para pesquisa em Humanidades Digitais. Compreenderemos, portanto, como diferentes etapas de pesquisa nessa área podem ser articuladas em aplicações *web* desenvolvidas com Streamlit.
+Fora os conhecimentos necessários de Python, é desejável experiência com algum terminal (*PowerShell*, *Git Bash*...), pois os comandos `cd` e `mkdir` serão úteis para reprodução da lição. Ao final desta, seremos capazes de integrar manipulação, visualização e apresentação de dados em um fluxo de trabalho único, reprodutível e voltado à construção de aplicações interativas para pesquisa em Humanidades Digitais. Compreenderemos, portanto, como diferentes etapas de pesquisa nessa área podem ser articuladas em aplicações *web* desenvolvidas com Streamlit.
 
 ## Introdução
 
-É comum que visualizações de dados sejam realizadas em ferramentas prontas, como interfaces pré-configuradas ou plataformas *low-code*. Embora sejam alternativas úteis em muitos contextos, utilizar uma linguagem de programação para construir visualizações oferece vantagens importantes para pesquisas científicas, como maior controle (e conhecimento) sobre as etapas (da coleta à visualização dos dados), possibilidade de personalização da interface conforme demanda ou objetivos, e maior transparência e segurança na forma como os dados são manipulados, armazenados e apresentados.
+É comum que visualizações de dados sejam realizadas em ferramentas prontas, como interfaces pré-configuradas ou plataformas *low-code*. Embora sejam alternativas úteis em muitos contextos, utilizar uma linguagem de programação para construir visualizações oferece vantagens importantes para pesquisas científicas, como maior controle (e conhecimento) das etapas da pesquisa (da coleta à visualização), possibilidade de personalização da interface conforme demanda ou objetivos, maior transparência e segurança na forma como os dados são manipulados, armazenados e apresentados.
 
-É nesse contexto que *frameworks* [^1] se tornam relevantes. No caso do Streamlit, ele é um *framework* open-source que transforma *scripts* Python em aplicações *web* interativas (Basic concepts of Streamlit - Streamlit Docs, [S.d.]). Com ele, não precisamos configurar rotas de *Application Programming Interface* (API), desenvolver códigos JavaScript ou lidar com outros detalhes do *desenvolvimento web*, permitindo-nos focar apenas na lógica do *software*, no processamento de dados e na aplicação de componentes (*widgets*).
+É nesse contexto que *frameworks* [^1] se tornam relevantes. No caso do Streamlit, ele é um *framework* open-source que transforma *scripts* Python em aplicações *web* interativas (Basic concepts of Streamlit - Streamlit Docs, [S.d.]). Com ele, não precisamos configurar rotas de *Application Programming Interface* (API), desenvolver códigos JavaScript ou lidar com outros detalhes do desenvolvimento *web*, permitindo-nos focar apenas na lógica do *software*, no processamento de dados e na aplicação de componentes (*widgets*).
 
 ## Como reproduzir a lição
 
-Para entendermos o funcionamento do Streamlit e explorarmos parte das suas capacidades, a lição acompanha um exemplo de visualização baseada nas despesas de deputados brasileiros. Por isso, é imprescindível a reprodução da estrutura de pastas e *download* dos arquivos [^2]. Feito isso, teremos a seguinte configuração:
+Para compreendermos o funcionamento do Streamlit e explorarmos parte de suas capacidades, a lição acompanha um exemplo de visualização baseado nas despesas de deputados federais brasileiros. Para reproduzir o exemplo apresentado, é necessário replicar a estrutura de pastas do projeto e realizar o *download* dos seguintes arquivos:
+
+- [`app.py`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/streamlit-para-analise-exploratoria-de-dados/app.py) (*script* responsável pela interface);
+
+- [`extract.py`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/streamlit-para-analise-exploratoria-de-dados/extract.py) (funções de extração de dados via API);
+
+- [`transform.py`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/streamlit-para-analise-exploratoria-de-dados/transform.py) (funções de manipulação e preparação dos dados para uso no `app.py`);
+
+- [`requirements.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/streamlit-para-analise-exploratoria-de-dados/requirements.txt) (dependências dos demais *scripts*)
+
+- [`deputies.json`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/streamlit-para-analise-exploratoria-de-dados/deputies.json) (dados utilizados na lição)
+
+Com os arquivos em mãos, organize-os conforme o exemplo abaixo:
 
 ```bash
-seu_diretorio
+seu_diretorio/
 └───app.py
 └───extract.py
 └───transform.py
 └───requirements.txt
-└───data
+└───data/
     └───deputies.json
 ```
 
-Depois, precisamos preparar o ambiente de desenvolvimento e executar a aplicação localmente [^3]. O processo de execução é semelhante em diferentes sistemas operacionais, mas vale sempre observar as particularidades do terminal utilizado (*PowerShell*, *Git Bash*, terminal nativo do Linux e entre outros).
+Depois, precisamos preparar o ambiente de desenvolvimento e executar a aplicação localmente [^2]. O processo de execução é semelhante em diferentes sistemas operacionais, mas vale sempre observar as particularidades do terminal utilizado (*PowerShell*, *Git Bash*, terminal nativo do Linux e entre outros).
 
-Em geral, o maior problema se dá na diferença de caminhos de arquivos entre sistemas operacionais (Linux utiliza `diretorio/arquivo`, enquanto Windows `.\diretorio\arquivo`). Para lidar com isso, sugiro que use a tecla `Tab` para autocompletar diretórios e nomes de arquivos, reduzindo erros de digitação e ajustando caminhos automaticamente. Dito isso, o primeiro passo é abrir o terminal de sua preferência e navegar até o diretório desejado (como `C:\Users\Seu_Usuario\Documents\`) com o comando `cd`:
+Em geral, o maior problema se dá no caminho de arquivos entre sistemas operacionais ou terminais (Linux utiliza `diretorio/arquivo`, enquanto Windows `.\diretorio\arquivo`). Para lidar com isso, sugiro que use a tecla `Tab` para autocompletar diretórios e nomes de arquivos, reduzindo erros de digitação e ajustando caminhos automaticamente. Dito isso, o primeiro passo é abrir o terminal de sua preferência e navegar até o diretório no qual os arquivos da lição se encontram (como `C:\Users\Seu_Usuario\Documents\`) com o comando `cd`:
 
 ```bash
 cd ~/Documents/ # Linux
@@ -93,21 +103,19 @@ streamlit run app.py # Linux
 streamlit run .\app.py # Windows
 ```
 
-Dessa forma, o Streamlit iniciará um servidor local e a aplicação estará pronta para uso no navegador. Nas próximas etapas, exploraremos como cada parte da aplicação funciona e como elas se relacionam.
+Assim, o Streamlit iniciará um servidor local e a aplicação estará pronta para uso no navegador. Nas próximas etapas, exploraremos como cada parte da aplicação funciona e como elas se relacionam.
 
 ## Modularização
 
-De forma geral, uma aplicação de análise de dados (exploratória ou não) busca tornar inteligíveis os processos de extração, transformação e armazenamento (ETL, em inglês). A etapa de "extração", no entanto, nem sempre é simples: muitas vezes dependemos de dados secundários e nem sempre há APIs disponíveis, o que pode tornar esse processo mais trabalhoso. Para contornar essas dificuldades, esta lição utiliza dados abertos da Câmara dos Deputados do Brasil, que disponibiliza uma API pública [^4].
+De forma geral, uma aplicação de análise de dados (exploratória ou não) dá inteligibilidade aos processos de extração, transformação e armazenamento (ETL, em inglês). A etapa de "extração", no entanto, nem sempre é simples: muitas vezes dependemos de dados secundários e nem sempre há APIs disponíveis, o que pode tornar esse processo mais trabalhoso. Para contornar essas dificuldades, esta lição utiliza dados abertos da Câmara dos Deputados do Brasil, que disponibiliza uma API pública [^3].
 
-Além disso, é importante que a distinção conceitual entre as etapas do ETL se reflita na organização dos *scripts*. Em projetos maiores, isso costuma resultar em múltiplos diretórios e subdiretórios. Entretanto, trabalharemos apenas com três *scripts* principais: `app.py`, `extract.py` e `transform.py`.
-
-Essa divisão ajuda a organizar responsabilidades: `app.py` concentra tanto a integração com o "*back-end*" quanto a visualização; `extract.py` realiza as requisições à API, e `transform.py` organiza e prepara os dados no formato adequado para as visualizações no Streamlit. Essa separação também facilita a manutenção e a escalabilidade do projeto ao longo do tempo.
+Além disso, é importante que a distinção conceitual entre as etapas do ETL se reflita na organização dos *scripts*. Em projetos maiores, isso costuma resultar em múltiplos diretórios e subdiretórios. Entretanto, trabalharemos apenas com três *scripts* principais: `app.py`, `extract.py` e `transform.py`. Embora simples, essa divisão ajuda a organizar responsabilidades: `app.py` concentra tanto a integração com o "*back-end*" quanto a visualização; `extract.py` realiza as requisições à API da Câmara, e `transform.py` organiza e prepara os dados no formato adequado para as visualizações no Streamlit. Essa separação também facilita a manutenção e a escalabilidade do projeto ao longo do tempo.
 
 ## Por onde começar? *Front-end* ou *Back-end?*
 
 Essa é uma ótima pergunta. A construção de um programa tende a ser um processo cíclico — sobretudo em projetos de [Ciência de Dados](https://miro.medium.com/1*_fR-2Yg-xaWXssnj08Zqeg.jpeg). Por um lado, só conseguimos avaliar o que realmente faz sentido na interface à medida que construímos e utilizamos o sistema (algo que o planejamento prévio ajuda, mas não resolve completamente). Por outro, desenvolver a lógica do *back-end* e explorar os dados brutos também gera bons *insights* sobre parâmetros, organização da interface, otimização dos *scripts*, integração com o *front-end*, entre outros aspectos. O risco, nesse segundo caso, é cair em [*over-engineering*](https://en.wikipedia.org/wiki/Overengineering), ou seja, planejar e implementar recursos desnecessários.
 
-No fim das contas, não há uma resposta única [^5]. Em geral, busca-se algum nível de ["*future-proofing*"](https://en.wikipedia.org/wiki/Future-proof) (capacidade de resistir e adaptar-se a mudanças futuras). Por isso, aplicações maiores costumam se beneficiar de arquiteturas mais consolidadas, como *Layers* [^6]. De todo modo, os *scripts* desta lição não têm como foco aprofundar essas discussões de engenharia e desenvolvimento de *software*, mas *não se esqueça delas*.
+No fim das contas, não há uma resposta única [^4]. Em geral, busca-se algum nível de ["*future-proofing*"](https://en.wikipedia.org/wiki/Future-proof) (capacidade de resistir e adaptar-se a mudanças futuras). Por isso, aplicações maiores costumam se beneficiar de arquiteturas mais consolidadas, como *Layers* [^5]. De todo modo, os *scripts* desta lição não têm como foco aprofundar essas discussões de engenharia e desenvolvimento de *software* (*mas não se esqueça delas*).
 
 Como trabalhamos com dois tipos de *scripts* (*front-end* e *back-end*), a integração entre eles ocorre por meio de importações:
 
@@ -127,7 +135,7 @@ Para atingir os objetivos da lição, começaremos do que julgo mais simples ao 
 
 ## Coletando os dados
 
-Como o objetivo é construir uma aplicação para análise exploratória de dados sobre deputados brasileiros, podemos identificar duas categorias principais de interesse: informações gerais de todos os deputados e informações de sujeitos específicos. Isso se traduz em duas funções distintas em `extract.py`: `get_deputies()` e `get_deputies_informations`, responsáveis pela coleta de dados gerais e de dados específicos, respectivamente.
+Como o objetivo é construir uma aplicação para análise exploratória de dados sobre deputados brasileiros, podemos identificar duas categorias principais de interesse: informações gerais de todos os deputados e informações de sujeitos específicos. Isso se traduz em duas funções distintas em `extract.py`: `get_deputies()` e `get_deputies_informations()`, responsáveis pela coleta de dados gerais e de dados específicos, respectivamente.
 
 ```python
 # Import
@@ -176,13 +184,13 @@ A função `get_deputies()` é bastante direta: ela recebe como parâmetro a `ap
 
 Já `get_deputies_informations()` apresenta maior complexidade. Para obter informações específicas de cada deputado, a função recebe uma lista de nomes (`deputies_names`), um `DataFrame` com os dados a serem filtrados (`df`), a API (`api`) e os anos de interesse (`years`).
 
-A partir disso, precisamos iterar sobre cada nome na lista de deputados selecionados para montarmos a *URL* da requisição. Para isso: 1) criamos um dicionário vazio (`data`), responsável por armazenar as despesas de todos os deputados; 2) obtemos o *id* de cada deputado (primeiro laço `for`); 3) para cada ano (segundo laço `for`), constrói-se a *URL* e 4) realiza-se a chamada à API.
+A partir disso, iteramos sobre cada nome na lista de deputados selecionados para montarmos a *URL* da requisição. Para isso: 1) criamos um dicionário vazio (`data`), responsável por armazenar as despesas de todos os deputados; 2) obtemos o *id* de cada deputado (primeiro laço `for`); 3) para cada ano, constrói-se a *URL* (segundo laço `for`) e 4) realiza-se a chamada à API.
 
-Em resumo, os dados são organizados no dicionário `data`, em que cada chave corresponde ao nome do deputado e contém suas respectivas informações de despesas [^7]. Caso o modo `debug` esteja ativado, a função também retorna as *URLs* utilizadas nas requisições; caso contrário, retorna apenas os dados coletados.
+Em resumo, os dados são organizados no dicionário `data`, em que cada chave corresponde ao nome do deputado e contém suas respectivas informações de despesas [^6]. Caso o modo `debug` esteja ativado, a função também retorna as *URLs* utilizadas nas requisições; caso contrário, retorna apenas os dados coletados.
 
 ## Construção da interface
 
-Para mais informações sobre os componentes disponibilizados pelo Streamlit, vale recorrer à [documentação oficial](https://streamlit.io/). Além disso, os tutoriais oferecidos pela equipe do próprio *framework* ajudam a compreender a sintaxe de componentes básicos, como `st.button`. Mas, de modo geral, há três formas principais de uso: `st.funcao(argumento)`, `with st.funcao(argumento)` e `if st.funcao(argumento)`. Por exemplo:
+Para mais informações sobre os componentes disponibilizados pelo Streamlit, vale recorrer à [documentação oficial](https://streamlit.io/). Além disso, os tutoriais oferecidos pela equipe do próprio *framework* ajudam a compreender a sintaxe de componentes básicos, como `st.button()`. Mas, de modo geral, há três formas principais de uso: `st.funcao(argumento)`, `with st.funcao(argumento)` e `if st.funcao(argumento)`. Por exemplo:
 
 ```python
 # with st.funcao(argumento)
@@ -197,9 +205,10 @@ if st.button("Extract deputies", width="stretch"): # <-- Botão
     st.write("Deputies") # <-- Escreve um texto qualquer
 ```
 
-Obviamente, há muitos *widgets* e funções a serem exploradas, então reforço a consulta à documentação. Dando seguimento: a forma mais simples de estruturar uma interface *web* com *Streamlit* é configurando a página (`st.set_page_config`) e planejando suas duas regiões centrais: a *sidebar* (`st.sidebar`) e a área principal (tudo que estiver fora de `st.sidebar`).
+Obviamente, há muitos *widgets* e funções a serem exploradas, então reforço a consulta à documentação. Dando seguimento: a forma mais simples de estruturar uma interface *web* com Streamlit é configurando a página (`st.set_page_config`) e planejando suas duas regiões centrais: a *sidebar* (`st.sidebar`) e a área principal (tudo que estiver fora de `st.sidebar`).
 
 ```python
+# Configurando a página
 st.set_page_config(
     page_title="Streamlit for Exploratory Analysis",
     initial_sidebar_state="expanded",
@@ -230,10 +239,10 @@ st.set_page_config(
 
             ### Principais fornecedores
 
-            ### Tipos de gastos
+            ### Tipos de despesas
 ```
 
-A elaboração acima (em *Sidebar* e *Main*) se aproxima bastante da construção de um algoritmo — ou de um [*pseudocódigo*](https://pt.wikipedia.org/wiki/Pseudoc%C3%B3digo) — das funcionalidades principais [^8]. É importante destacar que essas funcionalidades e visualizações devem estar alinhadas ao objetivo geral do *software* e às possibilidades oferecidas pelos *endpoints* (informações disponibilizadas pela API) — ou pelas variáveis que podem ser construídas na etapa de transformação dos dados. Em outras palavras, avaliar a viabilidade de cada parte do algoritmo ou pseudocódigo ajuda a economizar tempo e esforço.
+A elaboração acima (em *Sidebar* e *Main*) se aproxima bastante da construção de um algoritmo das funcionalidades principais. É importante destacar que essas funcionalidades e visualizações devem estar alinhadas ao objetivo geral do *software* e às possibilidades oferecidas pelos *endpoints* (informações disponibilizadas pela API) — ou pelas variáveis que podem ser construídas na etapa de transformação dos dados. Em outras palavras, avaliar a viabilidade de cada parte do algoritmo (ou do [*pseudocódigo*](https://pt.wikipedia.org/wiki/Pseudoc%C3%B3digo) [^7]) ajuda a economizar tempo e esforço.
 
 Outra vantagem desse planejamento é a escolha dos *widgets* mais adequados, sempre com apoio da documentação do *framework*. Por exemplo: qual a melhor forma de selecionar um período de tempo? Um *slider* ou uma seleção manual dos anos? Como ambos os casos podem ser úteis, oferecemos as duas opções:
 
@@ -409,7 +418,7 @@ with st.sidebar:
             st.success("Deputies extracted!") # Notificação ao usuário
 ```
 
-Agora que vimos alguns dos componentes disponibilizados na *sidebar* e pontos de atenção, podemos explorar a área central da aplicação (separada em abas ou *tabs*, no Streamlit):
+Agora que vimos alguns dos componentes disponibilizados na *sidebar* e pontos de atenção, podemos explorar a área central da aplicação (separada em abas ou *tabs*, no Streamlit) e, especialmente, a aba `tab_all_deputies`:
 
 ```python
 # Main tabs
@@ -511,7 +520,7 @@ Nesse trecho, além de criarmos as abas (o que melhora a visualização da aplic
 
 Em seguida, a interface é dividida em duas colunas. Na primeira, o usuário seleciona qual coluna do `pandas.DataFrame` deseja analisar. Após essa escolha, calculamos a frequência de cada categoria (`.value_counts()`) e sua porcentagem em relação ao total. Os resultados podem ser exibidos como gráfico de barras (`st.bar_chart`) ou como tabela, incluindo valores absolutos e percentuais. Veja, então, que podemos oferecer *widgets* com abordagens generalistas ou não (poderíamos limitar as colunas oferecidas ao usuário pelo tipo dado ou prefixo, por exemplo).
 
-{% include figure.html filename="pt-or-streamlit-para-analise-exploratoria-de-dados-01.png" alt="Interface da aplicação com filtros para o período entre 2020 e 2026 e seleção dos deputados Nikolas Ferreira e Erika Hilton. A visualização principal apresenta dois gráficos sobre todos os deputados." caption="Figura 1. Caption text to display" %}
+{% include figure.html filename="pt-or-streamlit-para-analise-exploratoria-de-dados-01.png" alt="Interface da aplicação com filtros para o período entre 2020 e 2026 e seleção dos deputados Nikolas Ferreira e Erika Hilton. A visualização principal apresenta dois gráficos sobre todos os deputados em deputies.json." caption="Figura 1. Interface da aplicação com seleção de deputados e filtros temporais" %}
 
 Por fim, vejamos a aba `tab_selected_deputies`:
 
@@ -603,14 +612,11 @@ with tab_selected_deputies:
                             )
 ```
 
-Nesse trecho, há duas operações principais: a construção dinâmica do *layout* e a visualização dos dados. Após a verificação inicial, os deputados selecionados são organizados em pares para distribuição em duas colunas (`st.columns`). Os dados são convertidos em uma lista de pares (`deputies_items`), e o laço `for i in range(0, len(deputies_items), 2)` percorre essa lista de dois em dois, representando cada “linha” da interface. Em seguida, o laço interno (`for j in range(2)`) preenche as colunas. A condição `if i + j >= len(deputies_items)` evita erros quando há um número ímpar de deputados, deixando a última célula vazia quando necessário.
+Nesse trecho, há duas operações principais: a construção dinâmica do *layout* e a visualização dos dados. Após a verificação inicial, os deputados selecionados são organizados em pares para distribuição em duas colunas (`st.columns`). Os dados são convertidos em uma lista de pares (`deputies_items`), e o laço `for i in range(0, len(deputies_items), 2)` percorre essa lista de dois em dois, representando cada “linha” da interface. Em seguida, o laço interno (`for j in range(2)`) preenche as colunas. A condição `if i + j >= len(deputies_items)` evita erros quando há um número ímpar de deputados, deixando a última célula vazia quando necessário. Esse dinamismo na construção da interface — que controla tanto a quantidade de deputados por linha quanto o espaço disponível aos gráficos, visto nossos aninhamentos de *widgets* de *layout* — é bastante proveitoso [^8].
 
-Esse dinamismo na construção da interface — que controla tanto a quantidade de deputados por linha quanto o espaço disponível aos gráficos, visto nossos aninhamentos de *widgets* de *layout* — é bastante proveitoso. Em uma aplicação de agrupamento de imagens, por exemplo, é interessante que o número de imagens por linha (que afeta sua resolução) seja um parâmetro configurável.
-
-Enfim, depois disso são recuperadas informações como *id* e *url* da foto de cada deputado, compondo um “cartão” individual com imagem, nome e identificação. É a partir desse momento que entram as visualizações, sendo elas dependentes de dados previamente tratados. Mas, *como já sabemos*, esse tratamento não deve ocorrer em `app.py`, mas sim em `transform.py`:
+Depois disso são recuperadas informações como *id* e *url* da foto de cada deputado, compondo um “cartão” individual com imagem, nome e identificação. É a partir desse momento que entram as visualizações, sendo elas dependentes de dados previamente tratados. Mas, *como já sabemos*, esse tratamento não deve ocorrer em `app.py`, mas em `transform.py`:
 
 ```python
-# Functions
 def format_brl(value: float) -> str:
     return f'R$ {value:,.2f}'.replace(',', 'X').replace('.', ',').replace('X', '.')
 
@@ -698,17 +704,23 @@ with st.expander("Types of expenses", expanded=tsd_expansion):
     )
 ```
 
-{% include figure.html filename="pt-or-streamlit-para-analise-exploratoria-de-dados-02.png" alt="Interface da aplicação exibindo os deputados Nikolas Ferreira e Erika Hilton e visualizações expansíveis com gastos por mês, principais fornecedores e tipos de gastos." caption="Figura 2. Caption text to display" %}
+{% include figure.html filename="pt-or-streamlit-para-analise-exploratoria-de-dados-02.png" alt="Interface da aplicação exibindo os deputados Nikolas Ferreira e Erika Hilton e visualizações expansíveis com despesas por mês, principais fornecedores e tipos de despesas." caption="Figura 2. Exemplo das visualizações disponíveis após a seleção de deputados (não expandidas)" %}
 
-{% include figure.html filename="pt-or-streamlit-para-analise-exploratoria-de-dados-03.png" alt="Interface da aplicação com visualizações expandidas de gastos mensais e principais fornecedores dos deputados selecionados." caption="Figura 3. Caption text to display" %}
+{% include figure.html filename="pt-or-streamlit-para-analise-exploratoria-de-dados-03.png" alt="Interface da aplicação com visualizações expandidas de despesas mensais, principais fornecedores e tipos de despesas dos deputados selecionados." caption="Figura 3. Exemplo das visualizações disponíveis após a seleção de deputados (expandidas)" %}
 
-Dessa maneira, temos: um gráfico de linha com a evolução dos gastos ao longo do tempo (acompanhado do total gasto), um gráfico com os principais fornecedores e outro com os tipos de despesas, ambos em formato de barras. Ou seja, a aplicação resulta em um painel com múltiplas visualizações expansíveis e organizadas, onde cada deputado selecionado possui um conjunto padronizado de visualizações, permitindo explorar diferentes dimensões de seus gastos.
+Dessa maneira, temos: um gráfico de linha com a evolução das despesas ao longo do tempo (acompanhado do total no período), um gráfico com os principais fornecedores e outro com os tipos de despesas, ambos em formato de barras. Ou seja, a aplicação resulta em um painel com múltiplas visualizações expansíveis e organizadas, onde cada deputado selecionado possui um conjunto padronizado de visualizações, permitindo explorar diferentes dimensões de suas despesas.
 
 ## Considerações finais
 
-Uma das recomendações mais úteis para quem desenvolve software é simples: *use a própria aplicação*. Ao utilizá-la na prática, tornam-se mais evidentes ajustes necessários, detalhes de funcionamento que podem ser aprimorados e escolhas de *design* que talvez não sejam tão intuitivas quanto pareciam inicialmente. Esse processo também ajuda a identificar onde faz sentido incluir mensagens de suporte (argumento `help`) ou notificações mais claras ao usuário. Além disso, vale a pena testar recursos básicos de acessibilidade nas aplicações desenvolvidas.
+Esta lição buscou demonstrar que aplicações relativamente simples já são suficientes para evidenciar o potencial do Streamlit para pesquisas em Humanidades Digitais. A ferramenta permite tanto a exploração inicial dos dados — favorecendo a formulação de perguntas de pesquisa — quanto sua aplicação em investigações mais estruturadas, como estudos que utilizam métodos computacionais para análise de grandes volumes de dados ([Visual and Narrative Patterns of Online Misogyny: A Computer Vision Analysis of Telegram Chats](https://doi.org/10.31235/osf.io/wvn9e_v1)).
 
-Esta lição buscou demonstrar que aplicações relativamente simples já são suficientes para evidenciar o potencial do Streamlit em análises exploratórias. A ferramenta permite tanto a exploração inicial dos dados — favorecendo a formulação de perguntas de pesquisa — quanto sua aplicação em trabalhos mais estruturados, como em estudos que utilizam métodos computacionais para análise de dados ([Visual and Narrative Patterns of Online Misogyny: A Computer Vision Analysis of Telegram Chats](https://doi.org/10.31235/osf.io/wvn9e_v1)).
+A partir dos indicadores aqui utilizados — e, claro, com os complementos necessários —, diferentes perguntas de pesquisa poderiam ser formuladas, sobretudo questões de caráter comparativo ("como se configuram as redes econômicas mobilizadas por parlamentares com perfis distintos", "de que maneira diferentes composições de capitais se relacionam aos padrões de mobilização dos recursos econômicos", "como trajetórias e carreiras se associam às formas de uso das verbas parlamentares" e entre outras).
+
+Evidentemente, aplicações dessa natureza dependem da disponibilidade de dados. Logo, o pesquisador ou se investe na produção destes ou recorre a dados secundários. Neste último caso, o fundamental é adequar a pergunta e os objetivos de pesquisa às características do material disponível, além de se posicionar criticamente em relação às fontes utilizadas. No caso da aplicação apresentada, um exercício relevante consistiria, justamente, em investigar os aspectos sociais e políticos envolvidos na criação e manutenção dos Dados Abertos da Câmara dos Deputados.
+
+Outra limitação refere-se ao próprio *framework*, visto que o Streamlit foi concebido para o desenvolvimento ágil e relativamente simplificado de aplicações interativas. Em razão disso, sua adequação tende a diminuir à medida que aumentam as exigências técnicas do projeto: cenários que envolvem grande volume de acessos simultâneos, bancos de dados mais robustos — sejam eles relacionais, não relacionais ou inseridos em contextos de *Big Data* —, demandas elevadas de segurança, estruturas sofisticadas de paginação ou sistemas avançados de gerenciamento de estados tendem a tornar outras tecnologias mais adequadas.
+
+Por fim, deixo aqui uma das recomendações mais úteis (e simples) para quem desenvolve *software*: use sua própria aplicação. Dessa forma, tornam-se mais evidentes os ajustes necessários, como melhorias de lógica, reelaboração do *design* da interface, inclusão de mensagens de suporte (argumento `help`) ou notificações de *feedback* ao usuário [^9].
 
 ## Referências
 
@@ -722,16 +734,18 @@ REÚSO DE SOFTWARE. In: SOMMERVILLE, Ian. Engenharia de software. 9. ed. São Pa
 
 [^1]: Estruturas genéricas que agregam classes, objetos, componentes e funções (Reúso de Software, 2010).
 
-[^2]: [app.py](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/streamlit-para-analise-exploratoria-de-dados/app.py), [extract.py](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/streamlit-para-analise-exploratoria-de-dados/extract.py), [transform.py](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/streamlit-para-analise-exploratoria-de-dados/transform.py), [requirements.txt](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/streamlit-para-analise-exploratoria-de-dados/requirements.txt) e [deputies.json](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/streamlit-para-analise-exploratoria-de-dados/deputies.json).
+[^2]: Certifique-se de possuir o Python 3.14 ou superior instalado (a versão utilizada nesta lição foi a [3.14.4](https://www.python.org/downloads/release/python-3144/)).
 
-[^3]: Certifique-se de possuir o Python 3.14 ou superior instalado (a versão utilizada nesta lição foi a [3.14.4](https://www.python.org/downloads/release/python-3144/)).
+[^3]: [Documentação da API](https://dadosabertos.camara.leg.br/swagger/api.html).
 
-[^4]: [Documentação da API](https://dadosabertos.camara.leg.br/swagger/api.html).
+[^4]: Vale ressaltar que a boa delimitação do *software* é uma atividade importante e *anterior* a essas discussões (embora essa definição também possa evoluir conforme o desenvolvimento).
 
-[^5]: Vale ressaltar que a boa delimitação do *software* é uma atividade importante e *anterior* a essas discussões (embora essa definição também possa evoluir conforme o desenvolvimento).
+[^5]: Resumidamente, a arquitetura em camadas (*layers*) é uma organização cujas funcionalidades são divididas de forma que uma camada se relacione diretamente apenas às suas camadas antecedentes (Projeto de arquitetura, 2010). Isto é, se `camada A` vem antes de `camada B`, `B` "só depende dos recursos e serviços oferecidos pela camada imediatamente abaixo dela [`A`]" (Projeto de arquitetura, 2010, p. 109).
 
-[^6]: Resumidamente, a arquitetura em camadas (*layers*) é uma organização cujas funcionalidades são divididas de forma que uma camada se relacione diretamente apenas às suas camadas antecedentes (Projeto de arquitetura, 2010). Isto é, se `camada A` vem antes de `camada B`, `B` "só depende dos recursos e serviços oferecidos pela camada imediatamente abaixo dela [`A`]" (Projeto de arquitetura, 2010, p. 109).
+[^6]: Dentre as vantagens de armazenar as informações dos deputados em um dicionário, destaca-se a padronização e clareza "semântica" de acesso ao objeto (`data[nome_deputado][variável]`).
 
-[^7]: A vantagem de armazenar as informações dos deputados em um dicionário é a padronização de acesso ao objeto (`data[nome_deputado][variável]`) e escalabilidade.
+[^7]: O exemplo acima não é propriamente um pseudocódigo, pois não segue uma sintaxe formal ou próxima de uma linguagem de programação.
 
-[^8]: O exemplo acima não é propriamente um pseudocódigo, pois não segue uma sintaxe formal ou próxima de uma linguagem de programação.
+[^8]: Em uma aplicação de agrupamento de imagens, por exemplo, é interessante que o número de imagens por linha (que afeta a resolução) seja um parâmetro configurável.
+
+[^9]: Além disso, vale testar recursos básicos de acessibilidade nas aplicações desenvolvidas.

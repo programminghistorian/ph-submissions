@@ -48,7 +48,10 @@ The debate over Wikipedia's merits and faults is rich; many will agree that it's
 
 The cluster of technologies on which Wikidata is built is often associated with the [semantic web](https://en.wikipedia.org/wiki/Semantic_Web): a broader vision for connecting data across the web. This includes approaches such as [linked data](https://en.wikipedia.org/wiki/Linked_data#Linked_open_data), typically implemented using standards like the [Resource Description Framework (RDF)](https://en.wikipedia.org/wiki/Resource_Description_Framework), which represents information as [graph data](https://en.wikipedia.org/wiki/Graph_database). This cluster of technologies has been an object of fascination for years due to its potential to solve the problem of aggregating extremely diverse data sets. Outside of some specialist cases, that potential went unrealized until the late 2010s, with the advent and popularization of Wikidata. Now, for the first time, historians interested in these technologies have a substantial, well-supported foundation to which they can contribute.[^3]
 
-Thus far, Wikidata has been more important for popular consumers of history than for academic researchers. As computational methods become more indispensable for historians, we can use Wikidata to enrich our own research datasets while also using our datasets to enrich Wikidata. The practices integral to this lesson are not merely matters of data entry, but touch on important questions of interpretation when choices are made about how knowledge is structured. [Heather Ford](https://hblog.org) and [Shira Klein](https://www.chapman.edu/our-faculty/shira-klein.aspx) have shown how Wikipedia editors can shape historical narratives.[^4] Scholars of technology and media studies such as Ford and [Andrew Iliadis](https://andrewiliadis.com) have pointed to the crucial role of ontological thinking in the production of 'semantic infrastructure': building systems like Wikidata requires deciding how to define categories, entities, and relationships. It is therefore increasingly important for historians to bring their expertise to bear in the crucial public historical resource that Wikidata has become.[^5] [It is therefore increasingly important for historians to contribute their research and wider, contextual understanding  to the crucial public resource that Wikidata has become.] 
+Thus far, Wikidata has been more important for popular consumers of history than for academic researchers. As computational methods become more indispensable for historians, we can use Wikidata to enrich our own research datasets while also using our datasets to enrich Wikidata. The practices integral to this lesson are not merely matters of data entry, but touch on important questions of interpretation when choices are made about how knowledge is structured. [Heather Ford](https://hblog.org) and [Shira Klein](https://www.chapman.edu/our-faculty/shira-klein.aspx) have shown how Wikipedia editors can shape historical narratives.[^4] Scholars of technology and media studies such as Ford and [Andrew Iliadis](https://andrewiliadis.com) have pointed to the crucial role of ontological thinking in the production of 'semantic infrastructure': building systems like Wikidata requires deciding how to define categories, entities, and relationships. [It is therefore increasingly important for historians to bring their expertise to bear in the crucial public historical resource that Wikidata has become.[^5] ]
+
+To clarify sentence above: It is therefore increasingly important for historians to 'employ their expertise' 
+
 
 ## A Case Study about Heads of State
 
@@ -98,13 +101,13 @@ You are probably thinking that on the face of things, there's nothing especially
 
 > ***Insight***: This section introduced seven key Wikidata terms. These are common words, but they have a narrower sense in Wikidata. It may be useful to review this short list in the [Wikidata glossary](https://www.wikidata.org/wiki/Wikidata:Glossary):
 
-- item
-- property
-- label
-- alias
-- identifier
-- statement
-- value
+- Item
+- Property
+- Label
+- Alias
+- Identifier
+- Statement
+- Value
 
 ## Combining Factoids
 
@@ -175,8 +178,8 @@ A big part of our expertise as historians is contextualizing details. For many o
 
 > ***Insight***: This section introduced two more terms that you can check in the [Wikidata glossary](https://www.wikidata.org/wiki/Wikidata:Glossary):
 
-- class
-- subclass
+- Class
+- Subclass
 
 ## Querying Wikidata
 
@@ -268,11 +271,11 @@ The aim here is to learn how to adapt example queries for your own research purp
 Six colors of text indicate the syntax of the query:
 - **blue** for Wikidata items (Q-numbers) and properties (P-numbers). When you float your cursor over a blue-text item or property, a pop-up gives you its label and description. The prefixes (`wdt:`, `wd:` and so on) are significant but beyond the scope of this lesson.
 
-- **green** for variables, which are the items that you seek (all of which are arbitrarily-defined words starting with a ?)
-- **grey** for comments (these start with hashtags)
-- **red** for SPARQL functions
-- **black** for punctuation
-- **orange** for strings and other literals
+- **Green** for variables, which are the items that you seek (all of which are arbitrarily-defined words starting with a ?)
+- **Grey** for comments (these start with hashtags)
+- **Red** for SPARQL functions
+- **Black** for punctuation
+- **Orange** for strings and other literals
 
 Again, if these technicalities feel confusing, don't be anxious. Keep relying on shortcuts, and when (if) you need to learn more SPARQL, you can fill out your understanding. For now, emphasize practice over theory.
 

@@ -268,9 +268,9 @@ Let's start with the first example query listed: Cats. When you click on the exa
 
 The aim here is to learn how to adapt example queries for your own research purposes. You can do this by finding a query that asks the kind of question you want to ask, then substituting your own items of interest into the query.
 
-Six colors of text indicate the syntax of the query:
-- **blue** for Wikidata items (Q-numbers) and properties (P-numbers). When you float your cursor over a blue-text item or property, a pop-up gives you its label and description. The prefixes (`wdt:`, `wd:` and so on) are significant but beyond the scope of this lesson.
+Six colours of text indicate the syntax of the query:
 
+- **blue** for Wikidata items (Q-numbers) and properties (P-numbers). When you float your cursor over a blue-text item or property, a pop-up gives you its label and description. The prefixes (`wdt:`, `wd:` and so on) are significant but beyond the scope of this lesson
 - **Green** for variables, which are the items that you seek (all of which are arbitrarily-defined words starting with a ?)
 - **Grey** for comments (these start with hashtags)
 - **Red** for SPARQL functions

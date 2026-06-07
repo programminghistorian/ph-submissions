@@ -26,9 +26,9 @@ doi: XX.XXXXX/phen0000
 
 In this lesson you will learn:
 
-- what kinds of information Wikidata contains
-- how Wikidata structures that information
-- how to explore its data in order to contextualize questions in your research
+- What kinds of information Wikidata contains
+- How Wikidata structures that information
+- How to explore its data in order to contextualize questions in your research
 
 While this stand-alone lesson focuses on Wikidata, it can also serve to extend your understanding of Linked Open Data (LOD). Wikidata is the most user-friendly implementation of this data structure, and it's under constant development. It's a great place to begin to learn about key graph data features, such as schemas and the SPARQL query language, which can be applied in other contexts.
 

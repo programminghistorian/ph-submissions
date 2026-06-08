@@ -84,7 +84,7 @@ When you've downloaded the correct version, please unzip the file where you want
 ## Start Up
 With the bundle downloaded and the properties files moved to your home directory, you are ready to start the software. This is done through a terminal by issuing two commands. Please follow the section below according to your Operating System. The two commands start the two parts of the application. The first command starts the web server that is included in the application. The second command starts the search engine in the application.
 
-First, you need to navigate to the SolrWayback bundle that you downloaded in the previous step in your command line interface (CLI). On a Mac, locate solrwayback_package_5.4.2 in Finder, right-click the folder, and select New Terminal at Folder from the menu. On Windows 11, the same behaviour can be achieved by opening the `solrwayback_package_5.4.2` directory in File Explorer and then right clicking somewhere in the directory. Here, you should see an *Open in Terminal* option. The terminal is a useful tool. Further introduction to its capabilities can be learned from Ian Milligan and James Baker lesson: Introduction to the Bash Command Line.[^15] With a CLI opened and located in the correct location, you are now ready to start the application. The commands vary a little depending on your operating system. Please follow the part applicable to your system below. 
+First, you need to navigate to the SolrWayback bundle that you downloaded in the previous step in your command line interface (CLI). On a Mac, locate solrwayback_package_5.4.2 in Finder, right-click the folder, and select New Terminal at Folder from the menu. On Windows 11, the same behaviour can be achieved by opening the `solrwayback_package_5.4.2` directory in File Explorer and then right clicking somewhere in the directory. Here, you should see an *Open in Terminal* option. The terminal is a useful tool. Further introduction to its capabilities can be learned from Ian Milligan and James Baker's lesson: Introduction to the Bash Command Line.[^15] With a CLI opened and located in the correct location, you are now ready to start the application. The commands vary a little depending on your operating system. Please follow the part applicable to your system below. 
 
 #### Linux/Mac
 
@@ -113,8 +113,7 @@ SolrWayback uses a search engine named [Solr](https://en.wikipedia.org/wiki/Apac
 
 #### Linux/Mac
 
-To index your WARC files from the directory `solrwayback_package_5.4.2/indexing/warcs1` move them to the directory `indexing` and run the following command in your terminal: `THREADS=2 ./warc-indexer.sh warcs1/*`.
-
+To index your WARC files from the directory `solrwayback_package_5.4.2/indexing/warcs1` move to the directory `indexing` by running the following command in your terminal `cd ./indexing`. Afterwards run the command: `THREADS=2 ./warc-indexer.sh warcs1/*`. This will start the indexing process.
 #### Windows
 
 To index your WARC files from the directory `solrwayback_package_5.4.2/indexing/warcs1` move them to the directory `indexing` and run the following bat-file in your terminal: `batch_warcs1_folder.bat`
@@ -125,7 +124,7 @@ To index your WARC files from the directory `solrwayback_package_5.4.2/indexing/
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-02.png" alt="Terminal window on a Mac displaying scrolling output produced during WARC file indexing" caption="Figure 2: Terminal output when indexing on a mac" %}
 
-This indexes all documents in the `warcs1` folder. Your terminal will display output showing indexing progress — this is expected. When the indexing has finished, your terminal will return to an interactive state, represented by a `$` and now you should be able to see the indexed documents in the SolrWayback web interface. To validate that the documents have been indexed, you can go to the application at the URL: http://localhost:8080/solrwayback/ and type `*:*` in the search box. This is a wildcard query that fetches all documents available in the application. This should return 6,031 results.
+This indexes all documents in the `warcs1` folder. Your terminal will display output showing indexing progress — this is expected. Indexing is the heaviest part of setting up the application and can take up to 10 to 15 minutes on consumer hardware. When the indexing has finished, your terminal will return to an interactive state, represented by a `$` and now you should be able to see the indexed documents in the SolrWayback web interface. To validate that the documents have been indexed, you can go to the application at the URL: http://localhost:8080/solrwayback/ and type `*:*` in the search box. This is a wildcard query that fetches all documents available in the application. This should return 6,031 results.
 
 You have now indexed your WARC files into SolrWayback and can begin exploring their contents. To add more WARC files after finishing this lesson, place them in the `warcs1` or `warcs2` folder and re-run the indexing command.
 

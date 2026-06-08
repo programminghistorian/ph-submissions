@@ -52,7 +52,7 @@ The World Wide Web has existed for more than 30 years now and in this period it 
 
 When institutions such as the Internet Archive (IA), the Royal Danish Library (RDL) or the Bibliothèque nationale de France (BnF) archive the internet, they store the data in [WARC files](https://en.wikipedia.org/wiki/WARC_(file_format)). WARC files can be daunting to work with if you have not seen them before, as they are archival and technical by nature.[^1] Their primary objective is to ensure that the archived web can be saved for posterity and therefore prioritize effective long-term preservation above usability. This lesson teaches a method to unlock the potential of WARC files as a source for research. To do this, the lesson introduces the open-source software SolrWayback.
 
-SolrWayback is a search and discovery tool designed to make archived web content searchable and viewable in a single solution. Other tools for playback do exist, e.g., [pywb](https://github.com/webrecorder/pywb). However, no other tool currently provides the search and discovery possibilities that SolrWayback does. Through this software, you can search for individual words and phrases across your collection. It can also be used as a tool to narrow down which parts of a collection you are interested in as part of your research. Hence, the software provides multiple ways of exporting subsets of the data for further analysis.[^2]
+SolrWayback is a open-source search and discovery tool developed primarily by the Royal Danish Library designed to make archived web content searchable and viewable in a single solution.[^18] Other tools for playback do exist, e.g., [pywb](https://github.com/webrecorder/pywb). However, no other tool currently provides the search and discovery possibilities that SolrWayback does. Through this software, you can search for individual words and phrases across your collection. It can also be used as a tool to narrow down which parts of a collection you are interested in as part of your research. Hence, the software provides multiple ways of exporting subsets of the data for further analysis.[^2]
 
 ## Acquire WARC Files
 During this lesson, you will work with WARC files from the End of Term Web Archive (EOTWA). This web archive preserves U.S. Government websites when a presidential administration terminates. The EOTWA has done this systematically since 2008. The collections in their archive have grown exponentially between elections.
@@ -246,6 +246,8 @@ Brügger, Niels. ‘Historical Network Analysis of the Web’. Social Science Co
 
 Brügger, Niels. The Archived Web: Doing History in the Digital Age. The MIT Press, 2018.
 
+Egense, Thomas, Toke Eskildsen, Jesper Lauridsen, et al. SolrWayback. V. 5.4.1. Released 2026. https://doi.org/10.5281/zenodo.18314399.
+
 Gomes, Daniel, André L. Santos, and Mário J. Silva. ‘Managing Duplicates in a Web Archive’. Proceedings of the 2006 ACM Symposium on Applied Computing, 23 April 2006, 818–25. https://doi.org/10.1145/1141277.1141465.
 
 Hegarty, Kieran. ‘The Invention of the Archived Web: Tracing the Influence of Library Frameworks on Web Archiving Infrastructure’. Internet Histories 6, no. 4 (2022): 432–51. https://doi.org/10.1080/24701475.2022.2103988.
@@ -309,6 +311,7 @@ Winters, Jane. ‘Breaking in to the Mainstream: Demonstrating the Value of Inte
 
 [^17]: Jane Winters, ‘Breaking in to the Mainstream: Demonstrating the Value of Internet (and Web) Histories’, Internet Histories 1, (2017): 173–79, https://doi.org/10.1080/24701475.2017.1305713.
 
+[^18]: Thomas Egense et al., SolrWayback, v. 5.4.1, released 2026, https://doi.org/10.5281/zenodo.18314399.
 
 
 

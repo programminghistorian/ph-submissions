@@ -116,7 +116,7 @@ SolrWayback uses a search engine named [Solr](https://en.wikipedia.org/wiki/Apac
 To index your WARC files from the directory `solrwayback_package_5.4.2/indexing/warcs1` move to the directory `indexing` by running the following command in your terminal `cd ./indexing`. Afterwards run the command: `THREADS=2 ./warc-indexer.sh warcs1/*`. This will start the indexing process.
 #### Windows
 
-To index your WARC files from the directory `solrwayback_package_5.4.2/indexing/warcs1` move them to the directory `indexing` and run the following bat-file in your terminal: `batch_warcs1_folder.bat`
+To index your WARC files from the directory `solrwayback_package_5.4.2/indexing/warcs1` move to the directory `indexing` by running the following command in your terminal `cd ./indexing` and here run the following bat-file in your terminal: `batch_warcs1_folder.bat`
 
 <div class="alert alert-warning">
   On Windows it is very important that you follow the directions above explicitly and move into the directory before you run the <code>.bat</code>-file.

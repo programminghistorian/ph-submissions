@@ -866,7 +866,7 @@ result = compare_sets(headings_a, headings_b)
 
 #### Visualization
 
-A good data visualization, that summarises numbers helps someone to realise trends and important feature of a collection of data. We will see how we can create plots out of what we have calculated so far- 
+A good data visualization that summarises numbers helps someone to realise trends and important features of a collection of data. We will see how we can create plots out of what we have calculated so far- 
 
 First we check how the number of subject headings changed over time. Here we extend a bit the extraction of subjects and dates. First we import the necessary Python modules.
 
@@ -887,7 +887,7 @@ We have imported the following new libraries:
 * [matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html) is one of the popular plotting libraries. Its frequently used abbreviation is plt.
 * [glob](https://docs.python.org/3/library/glob.html) (part of code Python) provides Unix style pathname pattern expansion
 
-Then we define functions to process a MARC21 records. We would like extract two information: the publication year and the number of subjects. For these we define two functions: `extract_subjects` that returns the distinct subjects a record has, and `extract_date` that extracts the publication year.
+Then we define functions to process a single MARC21 record. We would like to extract two pieces of  information: the publication year and the number of subjects. For these we define two functions: `extract_subjects` that returns the distinct subjects a record has, and `extract_date` that extracts the publication year.
 
 ```Python
 def process_record(record):
@@ -895,7 +895,7 @@ def process_record(record):
     data['date'].append(extract_date(record))
 ```
 
-`len()` returns the number of elements of its argument. It can be used for any type of collections: arrays, lists, dictionaries, even Pandas. The subject extraction funtion is familiar: it is nothing else than a simplified version of what we already saw. To return only distinct subjects, we collected them into a set, and per definitionem stores only discinct values -- we do not have to check ourselves is the element is already there:
+`len()` returns the number of elements of its argument. It can be used for any type of collections: arrays, lists, dictionaries, even Pandas. The subject extraction function is familiar: it is nothing else than a simplified version of what we already saw. To return only distinct subjects, we collected them into a set, and _per definitionem_ stores only distinct values -- we do not have to check ourselves is the element is already there:
 
 ```Python
 def extract_subjects(record):
@@ -906,7 +906,7 @@ def extract_subjects(record):
     return subjects
 ```
 
-The bulk of the date extraction function might be also familiar, however this time we are not interested knowing the irregular date strings or its statistics. We check if the date cleaned with regular expressions fits to Undate, and return it after converting (or to say it Pythonic: casting) to integer. If such check fails or the record does not have publication year field at all it returns `None` -- this way we always return something, and securing that the two list of the data collector used in the record processing funtion have the same number of elements.
+The bulk of the date extraction function might be also familiar, however this time we are not interested in knowing the irregular date strings or its statistics. We check if the date cleaned with regular expressions fits to Undate, and return it after converting (or to say it Pythonic: casting) to integer. If such a check fails or the record does not have a publication year field at all it returns `None` -- this way we always return something, and ensure that the two lists of the data collector used in the record processing function have the same number of elements.
 
 ```Python
 def extract_date(record):
@@ -932,7 +932,7 @@ def extract_date(record):
     return date
 ```
 
-After defining to the functions, let's see the main part of the process. First we define our data collector: a dictionary with with two keys: `subject_count` and `date` -- we already saw how `process_record` fill these lists with values. The `output_file_name` contains the name of file into which we save the data. 
+After defining the functions, let's see the main part of the process. First we define our data collector: a dictionary with two keys: `subject_count` and `date` -- we already saw how `process_record` fill these lists with values. The `output_file_name` contains the name of the file into which we save the data. 
 
 ```Python
 data = {
@@ -943,7 +943,7 @@ data = {
 output_file_name = 'data_output/year-subject-count.csv'
 ```
 
-And here is a trick: since processing XML files take much longer time than visualizing the data we make a cache. If the cache file (`output_file_name`) does not exist we extract the data from each available XML files, create a Pandas data frame, and save the result into a CSV file. If we already have created the file, we do not process XMLs again, just read the CSV.
+And here is a trick: since processing XML files take much longer time than visualizing the data we make a cache. If the cache file (`output_file_name`) does not exist we extract the data from each available XML file, create a Pandas data frame, and save the result into a CSV file. If we already have created the file, we do not process XMLs again, just read the CSV.
 
 ```Python
 if not os.path.isfile(output_file_name):
@@ -964,10 +964,10 @@ else:
 There are some new things in this code snippet:
 * `glob.glob()` uses Unix style file and directory name patterns, so you can use the wildchars ?, . and * to find files. It returns a list, that we sort by name and process each file one by one.
 * after we create the dataframe we remove those rows that have NAs. Remember that we gave `None` when the publication year was missing or wrong, this line removes them. Then we convert the date to 16 bit long integer values.
-* `to_csv()` saves the content of a data frame into a CSV file. `index = False` prevents to write the row names (the data frame index) into the file. Unfortunately, the default value of this argument is True, which makes CSV a bit weird.
+* `to_csv()` saves the content of a data frame into a CSV file. `index = False` prevents writeing the row names (the data frame index) into the file. Unfortunately, the default value of this argument is True, which makes CSV a bit weird.
 * `read_csv()` is the opposite of `to_csv()`: it created a data frame from a CSV. With `dtype=np.int16` we ensure that each number in it is a 16 bit long integer.
 
-Now we have a data frame, however depending on how much XML files you downloaded and extracted the distribution might be highly unequal. As the first files contain more records about publications from the 20th century, we extract a subset:
+Now we have a data frame, however depending on how many XML files you downloaded and extracted the distribution might be highly unequal. As the first files contain more records about publications from the 20th century, we extract a subset:
 
 ```Python
 year_min = 1950
@@ -981,7 +981,7 @@ Finally we start the visualization! It is interesting how subjects are assigned 
 yearly_mean = df.groupby(['date']).agg('mean')
 ```
 
-`groupby` creates subgroups within the data frame. As here we use `date`, we will group the records by publication dates. `agg` runs an aggregation function -- a calculation -- on each groups. With it we calculate the everage number of subject headings per year. The result is another data frame of which the index is the publication year, and it will have one more column: its name remains `subject_count`, but its value became the yearly average of it.
+`groupby` creates subgroups within the data frame. As here we use `date`, we will group the records by publication dates. `agg` runs an aggregation function -- a calculation -- on each group. With it we calculate the average number of subject headings per year. The result is another data frame of which the index is the publication year, and it will have one more column: its name remains `subject_count`, but its value became the yearly average of it.
 
 This is the data frame we want to visualize as a line chart, with the publication year on the x (horizontal) axis and the yearly average on the y (vertical) axis. We use pltotlib's functions (using its usual abbreviation `plt`).
 
@@ -995,9 +995,9 @@ plt.savefig(os.path.join('fig_output', 'mean-subjects-per-year.png'), bbox_inche
 plt.close()
 ```
 
-`plt.plot()` takes a data frame and draw a line chart. It utilizes the dataframe index for the x values, and all other columns for y values. Each column will be represented as a distinct line with distinct color. It gives us the basic image, but we would like to add additional attributes. `title()` sets a title, `xlabel()` sets an explanation for the horizontal axis, `grid()` draws grid lines. With `axis()` we specify the 'viewport' of the chart. We gave a list of four values: the begining and the end of x values, and the beginning and end of y values. If we do not give anything, the library takes the minimum and maximum values and adds some margins on all sides. Our averages range around 1.4 and 2.0, but we thought that it is more realistic to the human eye if we set the viewport to zero (and add a small margin on the top as the 10% of the maximum value). `savefig()` saves the figure; its first argument is the file name, while the `bbox_inches` argument sets a minimal margin around the chart.
+`plt.plot()` takes a data frame and draws a line chart. It utilizes the dataframe index for the x values, and all other columns for y values. Each column will be represented as a distinct line with distinct color. It gives us the basic image, but we would like to add additional attributes. `title()` sets a title, `xlabel()` sets an explanation for the horizontal axis, `grid()` draws grid lines. With `axis()` we specify the 'viewport' of the chart. We gave a list of four values: the beginning and the end of x values, and the beginning and end of y values. If we do not give anything, the library takes the minimum and maximum values and adds some margins on all sides. Our averages range around 1.4 and 2.0, but we thought that it is more realistic to the human eye if we set the viewport to zero (and add a small margin on the top as the 10% of the maximum value). `savefig()` saves the figure; its first argument is the file name, while the `bbox_inches` argument sets a minimal margin around the chart. `close()` is an important step when you draw multiple images in one script: it covers a clearing process, removes references from the memory, so the new image will start from scratch, otherwise there is a chance that different graphical elements will survive in other images. 
 
-Sometimes however we would like to put two charts side by side, because we would like to compare them, or because they express different sides of the same phenomenon. Right now we know the evarage numbers, but how many records don't have at all any subject headings? As the number of records per year are not equal, we are interested in both the absolute numbers and the ratio. If we put multiple charts on the same image, we should take care of both the overarching image and the individual charts (they are called subplots os Axes).
+Sometimes however we would like to put two charts side by side, because we would like to compare them, or because they express different sides of the same phenomenon. Right now we know the average numbers, but how many records don't have at all any subject headings? As the number of records per year are not equal, we are interested in both the absolute numbers and the ratio. If we put multiple charts on the same image, we should take care of both the overarching image and the individual charts (they are called subplots or Axes).
 
 Start, as always, with calculation:
 
@@ -1009,9 +1009,10 @@ df_merged = (pd.merge(
     yearly_counts.rename(columns={'subject_count': 'total'}), 
     yearly_no_subject.rename(columns={'subject_count': 'missing'}), 
     on='date'))
+df_merged['percent'] = df_merged.missing * 100 / df_merged.total
 ```
 
-First, we calculate the number of records per each year. We group by date as in the previous example, but we apply a different calulation: `count()`, that returns the total number. Second, we subsetting the data frame by selecting only the rows where the subject count is zero, then calculate the yearly count as in the previous step. Third, with `pd.merge()` join the two tables together. The connection between them is the `date` column. However as both table have the subject count column, we rename it to 'total' in the first table and to 'missing' in the second.
+First, we calculate the number of records per each year. We group by date as in the previous example, but we apply a different calculation: `count()`, that returns the total number. Second, we subset the data frame by selecting only the rows where the subject count is zero, then calculate the yearly count as in the previous step. Third, with `pd.merge()` join the two tables together. The connection between them is the `date` column. However, as both tables have the subject count column, we rename it to 'total' in the first table and to 'missing' in the second. Forth, we calculate the percentage of missing values.
 
 The resulting data frame will be something like this:
 
@@ -1059,7 +1060,7 @@ axes2.axis((year_min, year_max, 0, max(df_merged['percent']) * 1.1))
 axes2.grid(True)
 ```
 
-Here we meet a thirds variation of `plot()`, we simply set only the y values, thus we ignore the two other columns in this chart. We also set a label for the horizontal axis with `set_ylabel()`.
+Here we meet a third variation of `plot()`, we simply set only the y values, thus we ignore the two other columns in this chart. We also set a label for the horizontal axis with `set_ylabel()`.
 
 As a final step, we set a minimalistic margin, save the image and clear it from the memory.
 

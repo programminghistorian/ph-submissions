@@ -55,7 +55,8 @@ When institutions such as the Internet Archive (IA), the Royal Danish Library (R
 SolrWayback is a open-source search and discovery tool developed primarily by the Royal Danish Library designed to make archived web content searchable and viewable in a single solution.[^18] Other tools for playback do exist, e.g., [pywb](https://github.com/webrecorder/pywb). However, no other tool currently provides the search and discovery possibilities that SolrWayback does. Through this software, you can search for individual words and phrases across your collection. It can also be used as a tool to narrow down which parts of a collection you are interested in as part of your research. Hence, the software provides multiple ways of exporting subsets of the data for further analysis.[^2]
 
 ## Acquire WARC Files
-During this lesson, you will work with WARC files from the End of Term Web Archive (EOTWA). This web archive preserves U.S. Government websites when a presidential administration terminates. The EOTWA has done this systematically since 2008. The collections in their archive have grown exponentially between elections.
+During this lesson, you will work with WARC files from the End of Term Web Archive (EOTWA). This web archive collection originates from a collaborative initiative between the Library of Congress, the Internet Archive, the University of North Texas, the California Digital Library, and the US Government Printing Office.
+The collection preserves U.S. Government websites when a presidential administration terminates.[^19] The EOTWA has done this systematically since 2008. The collections in their archive have grown exponentially between elections.
 
 | Dataset                | Compressed Size of all WARCs |
 | ---------------------- | ---------------------------- |
@@ -272,6 +273,8 @@ Putnam, Lara. ‘The Transnational and the Text-Searchable: Digitized Sources an
 
 Ruest, Nick, Samantha Fritz, and Ian Milligan. ‘Creating Order from the Mess: Web Archive Derivative Datasets and Notebooks’. Archives and Records 43, no. 3 (2022): 316–31. https://doi.org/10.1080/23257962.2022.2100336.
 
+Seneca, Tracey, Abbie Grotke, Cathy Nelson Hartman, and Kris Carpenter. “It Takes a Village to Save the Web.” DttP: Documents to the People 40, no. 1 (2012): 12–15.
+
 Winters, Jane. ‘Breaking in to the Mainstream: Demonstrating the Value of Internet (and Web) Histories’. Internet Histories 1, nos 1–2 (2017): 173–79. https://doi.org/10.1080/24701475.2017.1305713.
 
 
@@ -312,6 +315,8 @@ Winters, Jane. ‘Breaking in to the Mainstream: Demonstrating the Value of Inte
 [^17]: Jane Winters, ‘Breaking in to the Mainstream: Demonstrating the Value of Internet (and Web) Histories’, Internet Histories 1, (2017): 173–79, https://doi.org/10.1080/24701475.2017.1305713.
 
 [^18]: Thomas Egense et al., SolrWayback, v. 5.4.1, released 2026, https://doi.org/10.5281/zenodo.18314399.
+
+[^19]: Tracey Seneca et al., “It Takes a Village to Save the Web,” DttP: Documents to the People 40, no. 1 (2012): 12–15.
 
 
 

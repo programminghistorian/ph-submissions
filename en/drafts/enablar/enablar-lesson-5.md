@@ -1002,6 +1002,7 @@ plt.close()
 
 The image looks like this:
 
+<!-- mean-subjects-per-year.png -->
 [Figure 1]
 
 Sometimes we would like to put two charts side by side, because we would like to compare them, or because they express different sides of the same phenomenon. Right now we know the average numbers, but how many records don't have at all any subject headings? As the number of records per year are not equal, we are interested in both the absolute numbers and the ratio. If we put multiple charts on the same image, we should take care of both the overarching image and the individual charts (they are called subplots or Axes).
@@ -1079,6 +1080,7 @@ plt.close()
 
 The final image looks like this:
 
+<!-- records-per-year.png -->
 [Figure 2]
 
 #### Dissemination of results

@@ -36,11 +36,11 @@ To begin to analyze the output data from PolyGraphs, you will need to open a new
 
 Recall (from part 1) that you will need the PolyGraphs code base available for import within that notebook. To achieve this, we will use a version of Jupyter Lab that (in part 1) we installed within the PolyGraphs virtual environment on your machine.
 
-But first, we will need some (synthetic) data to analyze. Of course, if you have completed part 1 of this lesson, you will have the test data available (in your 'results' sub-directory of the 'polygraphs-cache' directory). And you may have generated further data by running simulations with other configuration files. Nevertheless, to show you some of what is possible in the way of PolyGraphs data analysis, we will analyze a (much richer) dataset that we ourselves have generated.
+But first, we will need some (synthetic) data to analyze. Of course, if you have completed part 1 of this lesson, you will have the test data available (in your `results` sub-directory of the `polygraphs-cache` directory). And you may have generated further data by running simulations with other configuration files. Nevertheless, to show you some of what is possible in the way of PolyGraphs data analysis, we will analyze a (much richer) dataset that we ourselves have generated.
 
 You can download the (2GB) dataset for our case study on mis- and disinformation [here][data\cleaned_data_v3_pt.tar.gz].
 
-Once you have a local copy on your machine, you may want to move it (using the command line, or your graphic user interface) to 'polygraphs-cache\results' (though you will be able to analyze it no matter where it is, provided you can specify the relevant folder path). You will then need to decompress it. Within the terminal, navigate to the folder containing the (compressed) dataset, and run:
+Once you have a local copy on your machine, you may want to move it (using the command line, or your graphic user interface) to `polygraphs-cache\results` (though you will be able to analyze it no matter where it is, provided you can specify the relevant folder path). You will then need to decompress it. Within the terminal, navigate to the folder containing the (compressed) dataset, and run:
 
 ```
 tar -xzf cleaned_data_v3_pt.tar.gz
@@ -76,7 +76,7 @@ This should open a tab in a web browser (though you do not need to be online). Y
 
 You are now ready to analyze PolyGraphs output data! 
 
-In your notebook, begin by importing the libraries you will use. You will need to make sure to include the Processor from polygraphs.analysis.
+In your notebook, begin by importing the libraries you will use. You will need to make sure to include the Processor from `polygraphs.analysis`.
 
 ```
 import numpy as np
@@ -88,7 +88,7 @@ from polygraphs.analysis import Processor
 ```
 We will use numpy and pandas for basic data analysis, networkx for network analysis, matplotlib and seaborn for data visualization, and the PolyGraphs Processor to load and manipulate the output data from our simulations.
 
-Next, choose a new variable name for an object of the Processor class. It does not matter much what you call this, as at this stage we are just making sure things work, and you are able to load your data – the real data analysis will be done later, with a different object, belonging to a class that inherits from Processor. You will need to specify a path to the folder containing the PolyGraphs output data you want to analyze – in your case, this might be the ‘polygraphs-cache/results’ folder in the directory where you have installed PolyGraphs (which is the Processor’s default location in any case).[^1] To avoid errors, you can set config_check=False (rather than =True, which is the default value). 
+Next, choose a new variable name for an object of the Processor class. It does not matter much what you call this, as at this stage we are just making sure things work, and you are able to load your data – the real data analysis will be done later, with a different object, belonging to a class that inherits from Processor. You will need to specify a path to the folder containing the PolyGraphs output data you want to analyze – in your case, this might be the ‘polygraphs-cache/results’ folder in the directory where you have installed PolyGraphs (which is the Processor’s default location in any case).[^1] To avoid errors, you can set `config_check=False` (rather than `=True`, which is the default value). 
 
 ```
 processor = Processor('the path to your directory', config_check=False)
@@ -142,7 +142,7 @@ processor.get().shape
 
 For much of our analysis, we will be working with the dataframe returned by the .get() method. But before diving into that analysis, we want to highlight two further key functionalities of our Processor: one of these allows us to access the graphs of the networks on which the sims are run; the other gives us access to the stored beliefs for the nodes.
 
-To begin, let’s pick a particular sim to look at (setting the value of a new variable, here called 'sim'). We can do this using .iloc:
+To begin, let’s pick a particular sim to look at (setting the value of a new variable, here called `sim`). We can do this using .iloc:
 
 ```
 sim = 22700
@@ -239,7 +239,7 @@ class DR_Processor(Processor):
                 rel_count_list.append(np.nan)
         self.dataframe['reliable_node_count'] = rel_count_list
 ```
-Now that we have defined this new class, we should put it to use. To begin with, we set the data_path variable to point at the 'unique_runs' sub-directory of the cleaered_data_v3_pt' folder (making sure to copy the full path specification):
+Now that we have defined this new class, we should put it to use. To begin with, we set the data_path variable to point at the `unique_runs` sub-directory of the `cleaned_data_v3_pt` folder (making sure to copy the full path specification):
 
 ```
 data_path = '~/cleaned_data_v3_pt/unique_runs'
@@ -267,7 +267,7 @@ Running this code, you should already see some interesting things. First, the re
 
 ### Descriptive Statistics
 
-What structural properties do the graphs of our communities exhibit? We know that the network size, and the probability of an edge forming between any two nodes, are the factors that can be specified in our configuration files which will affect network structure. If we do a .groupby() and .count() we can see, first, that all of our sims are run on size 64 networks, and second, that there are seven different probabilities specified.
+What structural properties do the graphs of our communities exhibit? We know that the network size, and the probability of an edge forming between any two nodes, are the factors that can be specified in our configuration files which will affect network structure. If we do a `.groupby()` and `.count()` we can see, first, that all of our sims are run on size 64 networks, and second, that there are seven different probabilities specified.
 
 ```
 er.get().groupby(['network_size','network_random_probability']).count()
@@ -291,7 +291,7 @@ plt.show()
 
 {% include figure.html filename="en-or-polygraphs-philosophical-simulations-2-03.png" alt="A visualization of Density (on the y axis) vs Random Probability (on the x axis). Density matches probability, plus or minus some noise." caption="Figure 3. A plot of density as a function of edge probability in random networks." %}
 
-Other specifiable configuration parameters that are relevant to epistemic outcomes include ‘reliability’ and ‘epsilon’. A .groupby() and .count() reveals that all of our sims have the same overall reliability of 0.75 and an epsilon value of 0.001. 
+Other specifiable configuration parameters that are relevant to epistemic outcomes include ‘reliability’ and ‘epsilon’. A `.groupby()` and `.count()` reveals that all of our sims have the same overall reliability of 0.75 and an epsilon value of 0.001. 
 
 ```
 er.get().groupby(['reliability', 'epsilon']).count()
@@ -384,7 +384,7 @@ dis3 = disinfo[(disinfo['network_random_probability'] > 0.28) & (disinfo['networ
 dis4 = disinfo[disinfo['network_random_probability'] > 0.42]
 ```
 
-Seaborn allows us to plot data concerning ‘gullible’ agents side by side with data concerning more sceptical agents whose level of trust is ‘aligned’ to the level of reliability in the network (by setting the column of the plot, or ‘col’ variable, equal to the ‘op’ in a catplot). In both cases, the more reliable nodes there are, the fewer steps are typically required to converge to the truth – but, as is apparent, the more sceptical information processing strategy requires more steps. The benefits of doubting bad information appear to be outweighed by the costs of doubting the good information!
+Seaborn allows us to plot data concerning ‘gullible’ agents side by side with data concerning more sceptical agents whose level of trust is ‘aligned’ to the level of reliability in the network (by setting the column of the plot, or `col` variable, equal to the `op` in a catplot). In both cases, the more reliable nodes there are, the fewer steps are typically required to converge to the truth – but, as is apparent, the more sceptical information processing strategy requires more steps. The benefits of doubting bad information appear to be outweighed by the costs of doubting the good information!
 
 ```
 sns.catplot(data = dis2, x = "reliable_node_count", y = "steps", col='op')
@@ -484,7 +484,7 @@ We suspect there are many more such findings to be uncovered in this dataset, an
 
 Up to this point, we have investigated the synthetic output data from PolyGraphs simulations, primarily from our case study of mis- and disinformation. In particular, we have: loaded the data, having refined the Processor to extract information about network structure, as well as the character of the informational environment; visualized the graphs on which simulations run, and the evolution of the agents' beliefs within a simulation over time (technically, iterations); obtained and plotted descriptive statistics; and more. These methods yield real insights; and yet, to be confident that our findings are robust, we may need to conduct statistical testing.
 
-If you are a quantitative social scientist, you will be aware that there are a great many different statistical methods, and that which ones are needed depends very much on the task at hand. In any case, we will not begin here to give you a systematic orientation to the variety of techniques that are available to you, both mathematically, and in Python; but we note that, when it comes to the efficiency of PolyGraphs simulations, one approach to satistical significance testing has been fully developed [here][1]. We hope this may be helpful in guiding your next steps, if this is a direction you wish to pursue.
+If you are a quantitative social scientist, you will be aware that there are a great many different statistical methods, and that which ones are needed depends very much on the task at hand. In any case, we will not begin here to give you a systematic orientation to the variety of techniques that are available to you, both mathematically, and in Python; but we note that, when it comes to the efficiency of PolyGraphs simulations, one approach to satistical significance testing has been fully developed [here](https://github.com/alexandroskoliousis/polygraphs/blob/main/examples/analysis/zollman-effect/mann-whitney-steps.ipynb). We hope this may be helpful in guiding your next steps, if this is a direction you wish to pursue.
 
 ## Conclusion
 
@@ -498,12 +498,8 @@ Most importantly of all, you should now know enough to be able to further explor
 
 ## Endnotes
 
-[^1]: You can find the name of the path to your directory by right clicking on it and choosing 'Copy as path' (Windows) or 'Copy as Pathname' (macOS). You may need to adjust the direction of the slashes (from '\' to '/') after pasting into your notebook.
-[^2]: A couple of comments are in order. First, if you load a different dataset - for example, the data from your PolyGraphs test run - the dataframe may have a different number of columns. (In particular, there should be a 'duration' column, giving the number of seconds it took to run the simulation, and a 'uid' column giving the folder containing the output data files.) Second, while one of the file path columns is called 'bin_file_path', in fact the file at that location is now (in the ptgraph branch of the repository to which we swithced using git, when setting up our virtual environment) a .pt file. Much previous PolyGraphs work - including that done for the pedagogical materials in this [Human and Network Sciences Jupyter book][2] - was carried out using the code in the main branch (which produces .bin files). But the new branch used here makes the installation process much simpler!
+[^1]: You can find the name of the path to your directory by right clicking on it and choosing 'Copy as path' (Windows) or 'Copy as Pathname' (macOS). You may need to adjust the direction of the slashes (from `\` to `/`) after pasting into your notebook.
+[^2]: A couple of comments are in order. First, if you load a different dataset - for example, the data from your PolyGraphs test run - the dataframe may have a different number of columns. (In particular, there should be a 'duration' column, giving the number of seconds it took to run the simulation, and a 'uid' column giving the folder containing the output data files.) Second, while one of the file path columns is called `bin_file_path`, in fact the file at that location is now (in the ptgraph branch of the repository to which we swithced using git, when setting up our virtual environment) a .pt file. Much previous PolyGraphs work - including that done for the pedagogical materials in this [Human and Network Sciences Jupyter book](https://brianandrewball.github.io/humannetworkscience/intro.html) - was carried out using the code in the main branch (which produces .bin files). But the new branch used here makes the installation process much simpler!
 [^3]: A tensor is a multidimensional array of numbers. Thus, a scalar is simply a number, a vector is a list of numbers, a matrix is a two-dimensional array of numbers (roughly, a list, or sequence, of vectors). A tensor is simply a further generalization in this same spirit.
 [^4]: Recall from part 1 that you can learn more about class inheritance from W3Schools at https://www.w3schools.com/Python/python_oop.asp.
-[^5]: You can see the names of the 'wattsstrogatz' parameters immediately following line 292 in the code available [here][3].
-
-[1]: https://github.com/alexandroskoliousis/polygraphs/blob/main/examples/analysis/zollman-effect/mann-whitney-steps.ipynb
-[2]: https://brianandrewball.github.io/humannetworkscience/intro.html
-[3]: https://github.com/alexandroskoliousis/polygraphs/blob/main/polygraphs/graphs.py
+[^5]: You can see the names of the `wattsstrogatz` parameters immediately following line 292 in the code available [here](https://github.com/alexandroskoliousis/polygraphs/blob/main/polygraphs/graphs.py).

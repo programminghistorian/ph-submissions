@@ -198,34 +198,52 @@ In part 2, we will turn to the question of how to analyze the synthetic data tha
 [^12]: William J. Turkel and Adam Crymble, "Python Introduction and Installation," Programming Historian 1 (2012), https://doi.org/10.46430/phen0009.
 [^13]: Python is an object-oriented language. Object and class are therefore central notions. Classes are, in effect, ‘blueprints’ for constructing objects. These ‘blueprints’ can themselves be copied and rendered more specific through a mechanism known as inheritance. There is a nice explanation of object-oriented programming in Python, including class inheritance, available at https://www.w3schools.com/Python/python_oop.asp. 
 [^14]: Apple ships a version of [Git with Xcode Command Line Tools][8] which you can install with:
+
 ```
-xcode-select --install
-Debian/Chromebooks
-sudo apt update
-sudo apt install git
+    xcode-select --install
 ```
-See the [installation instructions for Linux][9] on the git website for other distributions.
-If you are working in Windows, download and install [Git for Windows][10]. This includes Git Bash, which add a bash shell for Windows. When it asks whether you would like to use a credential manager, select none. Otherwise, everything else should be the default option.
+
+    Debian/Chromebooks
+
+```
+    sudo apt update
+
+    sudo apt install git
+```
+
+    See the [installation instructions for Linux][9] on the git website for other distributions.
+
+    If you are working in Windows, download and install [Git for Windows][10]. This includes Git Bash, which add a bash shell for Windows. When it asks whether you would like to use a credential manager, select none. Otherwise, everything else should be the default option.
+
 [^15]: That said, you can run PolyGraphs simulations in e.g. Google Colab if you wish - see below.
+
 [^16]: Note that, if you are able to access the internet, and have a gmail account, it is possible to install and run the PolyGraphs code in Google colab. To do this, go to https://colab.google.com and open a new notebook (.ipynb file). You then need to run the following commands in the opening cell(s):
+
 ```
-!git clone https://github.com/alexandroskoliousis/polygraphs.git
-%cd polygraphs
-!git switch ptgraph
-!pip install -e .
+    !git clone https://github.com/alexandroskoliousis/polygraphs.git
+    %cd polygraphs
+    !git switch ptgraph
+    !pip install -e .
 ```
-This should suffice to have the PolyGraphs source code available to you for use in Colab. If you have done this, you can skip ahead to Running the Test.
-[^17]: A high performance computing cluster is a collection (or network) of (interconnected) computers that facilitates the efficient performance of large-scale computations. Although we will not discuss how to exploit this feature of PolyGraphs, it is a virtue of the code package that it is amenable for use in such contexts. Indeed, the dataset that we will share for analysis in part 2 was generated on such a facility.
-[^18]: A virtual environment is simply an isolated directory, or folder, on your computer that contains a particular version of a programming language (in our case, Python), along with its various dependencies.
-[^19]: If you are operating in Colab, add an exclamation mark at the start of the line.
-[^20]: Of course, we are not yet operating within an interactive Python environment - we will explain how to do that in part 2; but once you are in such an environment, the following code shows proof of concept for how to build a graph dataset in .gml format that can be used within PolyGraphs:
+
+    This should suffice to have the PolyGraphs source code available to you for use in Colab. If you have done this, you can skip ahead to Running the Test.
+
+[^17]: A high performance computing cluster...
+
+[^20]: Of course, we are not yet operating within an interactive Python environment...
+
 ```
-import networkx as nx
-G = nx.Graph()
-edgelist = [(1, 2), (2, 3)]
-G.add_edges_from(edgelist)
-nx.write_gml(G, 'test.gml')
+    import networkx as nx
+
+    G = nx.Graph()
+
+    edgelist = [(1, 2), (2, 3)]
+
+    G.add_edges_from(edgelist)
+
+    nx.write_gml(G, 'test.gml')
 ```
+
 A fully developed example is also available on the PolyGraphs GitHub repository [here][11]. 
 
 [1]: https://polygraphs.sites.northeastern.edu

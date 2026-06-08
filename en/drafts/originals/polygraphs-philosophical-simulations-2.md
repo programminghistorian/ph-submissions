@@ -120,7 +120,7 @@ You can get a feel for what is in the dataframe with the pandas .head() method:
 processor.get().head()
 ```
 
-It can also be quite helpful to get a count of how many sims there are of each variety that one anticipates investigating. We can do that using .groupby() and .count():
+It can also be quite helpful to get a count of how many sims there are of each variety that one anticipates investigating. We can do that using `.groupby()` and `.count()`:
 
 ```
 processor.get().groupby(['network_kind', 'op']).count()
@@ -173,7 +173,7 @@ Turning to the beliefs, we can see that, for each simulation (corresponding to a
 processor.beliefs[sim]
 ```
 
-This can also be visualized (using built in functionality in pandas). Here we plot the mean of all the nodes’ credences (or beliefs) at each iteration – but you can equally well plot other statistical summaries, such as the maximum (.max()), or the standard  deviation (.std()). Go ahead – try it out! (Don't forget to adjust the title of the plot if you do.)
+This can also be visualized (using built in functionality in pandas). Here we plot the mean of all the nodes’ credences (or beliefs) at each iteration – but you can equally well plot other statistical summaries, such as the maximum (`.max()`), or the standard  deviation (`.std()`). Go ahead – try it out! (Don't forget to adjust the title of the plot if you do.)
 
 ```
 processor.beliefs[sim].groupby('iteration').mean().plot(title='Average Credence')
@@ -187,7 +187,7 @@ Notice that the average (i.e. mean) credence here increases over (simulation) �
 
 In our case study, we want to explore the effects on the community’s efficiency in getting to the truth, first, of certain structural features of the graph (i.e. of the channels of communication within the community), and second, of the quality of the informational environment (within that community). In particular, we will explore the effect of network density – the proportion of all the possible edges between nodes that actually exist in the graph; and the effect of the exact number of reliable nodes - i.e. of agents telling the truth about what they observe.
 
-Notice, however, that although this information can be worked out from data that we have, the Processor does not have a method for retrieving it. To remedy this, we can adapt the Processor, through class inheritance.[^4] To that end, we will define a new class, called DR_Processor (for ‘density’ and ‘reliability’), which inherits from the Processor class. And we make sure to initialize it in such a way that it inherits the abilities to include or exclude sims with various parameter values, and to run a config_check.
+Notice, however, that although this information can be worked out from data that we have, the Processor does not have a method for retrieving it. To remedy this, we can adapt the Processor, through class inheritance.[^4] To that end, we will define a new class, called `DR_Processor` (for ‘density’ and ‘reliability’), which inherits from the Processor class. And we make sure to initialize it in such a way that it inherits the abilities to include or exclude sims with various parameter values, and to run a config_check.
 
 ```
 class DR_Processor(Processor):
@@ -245,7 +245,7 @@ Now that we have defined this new class, we should put it to use. To begin with,
 data_path = '~/cleaned_data_v3_pt/unique_runs'
 ```
 
-In our data analysis, we want to look, in the first instance, at random networks only. And since we are interested in the quality of the informational environment, we can exclude any sims that use the BalaGoyalOp, which has no unreliable nodes at all. Since our new DR_Processor performs calculations on the data it loads, it is a good idea not to load data that we are not interested in! The code below should not take very long to execute – but bear in mind that if you want to work out the structural features of large graphs (in ways we will touch on below), it can!
+In our data analysis, we want to look, in the first instance, at random networks only. And since we are interested in the quality of the informational environment, we can exclude any sims that use the `BalaGoyalOp`, which has no unreliable nodes at all. Since our new DR_Processor performs calculations on the data it loads, it is a good idea not to load data that we are not interested in! The code below should not take very long to execute – but bear in mind that if you want to work out the structural features of large graphs (in ways we will touch on below), it can!
 
 ```
 er = DR_Processor(data_path, include={'network.kind': 'random'}, exclude={'op':'BalaGoyalOp'}, config_check=False)
@@ -339,7 +339,7 @@ plt.show()
 
 {% include figure.html filename="en-or-polygraphs-philosophical-simulations-2-05.png" alt="A scatterplot of simulation steps for sims involving disinformation plus trust, with four discernible clusters of dots along the x axis (density): just above 0.1; above 0.2; just below 0.4; and near 0.5. On the y axis, steps range from 0 to 100,000: the lower density clusters have more dots nearer the top of the range." caption="Figure 5. A scatterplot of simulation steps vs density in simulations on size 64 random networks, with unreliable agents sharing disinformation, and all agents trusting what they are told." %}
 
-We can also get more precise information about the relationship between, on the one hand, density – or the configuration parameter that most directly controls it, probability – and, on the other, steps, using .groupby() and .describe(). The mean number of steps clearly decreases with probability group – itself a proxy for density; and the percentage of sims reaching the limit of 100,000 steps likewise decreases as density/probability increases.
+We can also get more precise information about the relationship between, on the one hand, density – or the configuration parameter that most directly controls it, probability – and, on the other, steps, using `.groupby()` and `.describe()`. The mean number of steps clearly decreases with probability group – itself a proxy for density; and the percentage of sims reaching the limit of 100,000 steps likewise decreases as density/probability increases.
 
 ```
 disinfo_trust.groupby('network_random_probability').steps.describe()

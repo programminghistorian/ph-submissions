@@ -28,7 +28,7 @@ doi: XX.XXXXX/phen0000
 
 This (advanced) lesson in two parts sketches how to use the PolyGraphs Python package to run philosophical simulations (part 1) and analyze the synthetic data it generates (part 2), so as to better understand social processes of knowledge production.
 
-This first part introduces key concepts of network theory (e.g. ‘graph’, 'node', and 'edge'), as well as those of social epistemology. It shows users how to install PolyGraphs and run philosophical simulations, manipulating (.yml) configuration files, and importing your own (.gml) graph datasets.
+This first part introduces key concepts of network theory (e.g. `graph`, `node`, and `edge`), as well as those of social epistemology. It shows users how to install PolyGraphs and run philosophical simulations, manipulating (`.yml`) configuration files, and importing your own (.gml) graph datasets.
 
 
 ## Introduction
@@ -130,44 +130,44 @@ Let us begin by running a test, to establish that the code is working properly:[
 python run.py -f configs/test.yaml
 ```
 
-This tells your machine to interpret the file 'run.py' using python, and to supply the file 'test.yaml', stored in the sub-directory 'configs' as argument.
+This tells your machine to interpret the file `run.py` using python, and to supply the file `test.yaml`, stored in the sub-directory `configs` as argument.
 
 You should see the following printout:
 
 {% include figure.html filename="en-or-polygraphs-philosophical-simulations-1-02.png" alt="Image displaying text and numbers." caption="Figure 2. The printout from the PolyGraphs test run." %}
 
-We can see here that we have run five simulations ('Sim #0005') and then printed 'Bye'.
+We can see here that we have run five simulations (`Sim #0005`) and then printed `Bye`.
 
 We can also see, for each simulation: how many steps it ran for and how many seconds it took; that in each case action B was chosen in the end; that the result of the simulation was not undefined (the value here is 0, not 1); and that it converged, and was not polarized. 
 
 Finally, we can see that, as each simulation runs, we get a readout out, at the first and last steps, and at every 100 steps in between, of how many thousands simulations steps are being completed every second, as well as what fraction of the nodes believe in taking action A vs B.
 
-Having run this test, you should also be able to verify that a new directory called 'polygraphs-cache' has been created (outside of the 'polygraphs' folder), itself containing a 'results' sub-directory with a further sub-directory within it named for the current date. Inside that folder will be (further folders containing) all of the output data from simulations run on the date in question. In particular, (within the only such folder that exists at present) you should see:
+Having run this test, you should also be able to verify that a new directory called `polygraphs-cache` has been created (outside of the `polygraphs` folder), itself containing a `results` sub-directory with a further sub-directory within it named for the current date. Inside that folder will be (further folders containing) all of the output data from simulations run on the date in question. In particular, (within the only such folder that exists at present) you should see:
 * a .json file that records the settings of the various parameters used in these simulations
-* a .csv file telling us, for each simulation, the same information as we saw printed out previously about action, etc. (though if we open this in our favourite spreadsheet software, we will see that the 1s and 0s have been converted to TRUEs and FALSEs), plus the name ('uid') of the folder containing the output data pertaining to that sim
+* a .csv file telling us, for each simulation, the same information as we saw printed out previously about action, etc. (though if we open this in our favourite spreadsheet software, we will see that the 1s and 0s have been converted to TRUEs and FALSEs), plus the name (`uid`) of the folder containing the output data pertaining to that sim
 * five .pt and five .hd5 files, one each for each of the five simulations.
 
 It is this (synthetic) data that will get analyzed in part 2 of this lesson, and from which insights in social epistemology can be gleaned.
 
 #### Configuration Files
 
-We saw, when running the test, that the python script 'run.py' takes a .yaml (or .yml) file as argument. (Note that 'yaml' stands for 'yet another markup language', or alternatively 'YAML ain't markup language'. Be that as it may, it is simply a text file saved with the relevant extension name.) If you open the file 'test.yaml' in the 'configs' sub-directory of the 'polygraphs' directory (which you can do e.g. in notepad), you will see that it records the values of certain parameters determining what is being simulated. Here we comment on a select few.
+We saw, when running the test, that the python script `run.py` takes a .yaml (or .yml) file as argument. (Note that `yaml` stands for 'yet another markup language', or alternatively 'YAML ain't markup language'. Be that as it may, it is simply a text file saved with the relevant extension name.) If you open the file `test.yaml` in the `configs` sub-directory of the `polygraphs` directory (which you can do e.g. in notepad), you will see that it records the values of certain parameters determining what is being simulated. Here we comment on a select few.
 
 {% include figure.html filename="en-or-polygraphs-philosophical-simulations-1-03.png" alt="Text containing lines numbered 1 to 20. Some lines contain comments. Others specify parameter names and their values, separated by a colon." caption="Figure 3. The configuration file for the PolyGraphs test run." %}
 
 The value of the epsilon parameter in test.yaml is 0.01. This means that, where the chance that action A is successful is one half, or 0.5, the chance that B is successful is one half plus epsilon, or 0.51. This parameter makes a big difference to the outcomes of the simulations - feel free to manipulate this (by editing and saving the test configuration file), and observe the effects (e.g. by re-running the test with the new value recorded). 
 
-We can see that network.kind is set to "complete": this means that all the nodes in the network the simulation runs on will be connected to one another by an edge. You will also see that network.size is set to 16, meaning that the network has 16 nodes (not 10, as erroneously claimed in the comment). Again, these parameter values make a big difference to the way the simulations behave, and you should feel free to experiment. Changing network sizes should be self-explanatory (just edit the number of nodes specified). When it comes to network kinds, you can see the range of built in options available in the 'graphs.py' file, located within the 'polygraphs' sub-directory of the 'polygraphs' folder. You can choose any of 'wheel', 'cycle', 'star', 'line', or 'grid' and run simulations on networks of these kinds without further ado. Some other network kind choices will, by contrast, require you to specify values of certain further parameters - as we will see in due course.
+We can see that network.kind is set to "complete": this means that all the nodes in the network the simulation runs on will be connected to one another by an edge. You will also see that network.size is set to 16, meaning that the network has 16 nodes (not 10, as erroneously claimed in the comment). Again, these parameter values make a big difference to the way the simulations behave, and you should feel free to experiment. Changing network sizes should be self-explanatory (just edit the number of nodes specified). When it comes to network kinds, you can see the range of built in options available in the `graphs.py` file, located within the `polygraphs` sub-directory of the `polygraphs` folder. You can choose any of 'wheel', 'cycle', 'star', 'line', or 'grid' and run simulations on networks of these kinds without further ado. Some other network kind choices will, by contrast, require you to specify values of certain further parameters - as we will see in due course.
 
-Crucially, which operation, or 'op', the simulation runs is a parameter in PolyGraphs which specifies how the agents in the model behave. In test.yaml the value of this parameter is (the string) 'BalaGoyalOp'. This tells us that agents communicate their observations competently and honestly, so that their reports are true (even if they turn out, by chance, to be misleading). It also tells us agents trust the information they receive from (themselves and) their neighbours. In part 2 of this lesson, we will analyze data from simulations run using different operations (which, as with certain network kinds, will require us to specify values for additional parameters, depending on the model).
+Crucially, which operation, or `op`, the simulation runs is a parameter in PolyGraphs which specifies how the agents in the model behave. In `test.yaml` the value of this parameter is (the string) `BalaGoyalOp`. This tells us that agents communicate their observations competently and honestly, so that their reports are true (even if they turn out, by chance, to be misleading). It also tells us agents trust the information they receive from (themselves and) their neighbours. In part 2 of this lesson, we will analyze data from simulations run using different operations (which, as with certain network kinds, will require us to specify values for additional parameters, depending on the model).
 
-There are, of course, other parameters whose values are specified in 'test.yaml'. Some of these (like init.kind) tell us how things are to be within a given simulation (in this case, the value is 'uniform', meaning that the intial beliefs of the agents in the model are to be chosen with an equal probability of falling anywhere in the [0-1] interval); others (like simulation.repeats) tell us how the computational job PolyGraphs is to do will be governed (in this case telling us that 5 simulations will be run, as we saw in the printout above - and not 10 as specified in the comment text). You can learn about the effects of these various parameters by experimenting, and/or reading the academic literature that uses these models; and if all else fails, you can reach out to the authors and ask! 
+There are, of course, other parameters whose values are specified in `test.yaml`. Some of these (like init.kind) tell us how things are to be within a given simulation (in this case, the value is 'uniform', meaning that the intial beliefs of the agents in the model are to be chosen with an equal probability of falling anywhere in the [0-1] interval); others (like simulation.repeats) tell us how the computational job PolyGraphs is to do will be governed (in this case telling us that 5 simulations will be run, as we saw in the printout above - and not 10 as specified in the comment text). You can learn about the effects of these various parameters by experimenting, and/or reading the academic literature that uses these models; and if all else fails, you can reach out to the authors and ask! 
 
 #### Loading Graph Datasets
 
 One thing that is likely to be of interest to new users of PolyGraphs is the ability to load graph datasets specifying the structure of some target community of interest. 
 
-You can easily load a graph dataset, if you have a file containing it written in the graph markup language (.gml) format. To do this, in your configuration file you simply specify network.kind to be 'gml', and then add two further parameters (and their values): network.gml.name (a string giving the name of your graph); and network.gml.path (also a string, this time specifying the path to your .gml file).
+You can easily load a graph dataset, if you have a file containing it written in the graph markup language (.gml) format. To do this, in your configuration file you simply specify network.kind to be `gml`, and then add two further parameters (and their values): `network.gml.name` (a string giving the name of your graph); and `network.gml.path` (also a string, this time specifying the path to your `.gml` file).
 
 ```
 network.kind: 'gml'
@@ -175,7 +175,7 @@ network.gml.name: 'graph_name'
 network.gml.path: 'path_to_file.gml'
 ```
 
-Of course, you may not have a .gml file containing the graph of the community you wish to study. But you can create one, if you have what is known as an edge list, specifying which nodes are connected to which others. Make sure that you name your nodes as integers (i.e. whole numbers)! [^20]
+Of course, you may not have a `.gml` file containing the graph of the community you wish to study. But you can create one, if you have what is known as an edge list, specifying which nodes are connected to which others. Make sure that you name your nodes as integers (i.e. whole numbers)! [^20]
 
 ## Conclusion
 

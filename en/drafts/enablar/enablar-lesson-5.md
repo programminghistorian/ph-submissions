@@ -868,6 +868,8 @@ result = compare_sets(headings_a, headings_b)
 
 A good data visualization that summarises numbers helps someone to realise trends and important features of a collection of data. We will see how we can create plots out of what we have calculated so far- 
 
+##### Preparation
+
 First we check how the number of subject headings changed over time. Here we extend a bit the extraction of subjects and dates. First we import the necessary Python modules.
 
 ```Python
@@ -974,6 +976,7 @@ year_min = 1950
 year_max = 1995
 df = df[(df["date"] >= year_min) & (df["date"] <= year_max)]
 ```
+##### Creating line charts
 
 Finally we start the visualization! It is interesting how subjects are assigned to individual records, and how it changed over the time. We have to calculate it by:
 
@@ -995,9 +998,13 @@ plt.savefig(os.path.join('fig_output', 'mean-subjects-per-year.png'), bbox_inche
 plt.close()
 ```
 
-`plt.plot()` takes a data frame and draws a line chart. It utilizes the dataframe index for the x values, and all other columns for y values. Each column will be represented as a distinct line with distinct color. It gives us the basic image, but we would like to add additional attributes. `title()` sets a title, `xlabel()` sets an explanation for the horizontal axis, `grid()` draws grid lines. With `axis()` we specify the 'viewport' of the chart. We gave a list of four values: the beginning and the end of x values, and the beginning and end of y values. If we do not give anything, the library takes the minimum and maximum values and adds some margins on all sides. Our averages range around 1.4 and 2.0, but we thought that it is more realistic to the human eye if we set the viewport to zero (and add a small margin on the top as the 10% of the maximum value). `savefig()` saves the figure; its first argument is the file name, while the `bbox_inches` argument sets a minimal margin around the chart. `close()` is an important step when you draw multiple images in one script: it covers a clearing process, removes references from the memory, so the new image will start from scratch, otherwise there is a chance that different graphical elements will survive in other images. 
+`plt.plot()` takes a data frame and draws a line chart. It utilizes the dataframe index for the x values, and all other columns for y values. Each column will be represented as a distinct line with distinct color. It gives us the basic image, but we would like to add additional attributes. `title()` sets a title, `xlabel()` sets an explanation for the horizontal axis, `grid()` draws grid lines. With `axis()` we specify the 'viewport' of the chart. We gave a list of four values: the beginning and the end of x values, and the beginning and end of y values. If we do not give anything, the library takes the minimum and maximum values and adds some margins on all sides. Our averages range around 1.4 and 2.0, but we thought that it is more realistic to the human eye if we set the viewport to zero (and add a small margin on the top as the 10% of the maximum value). `savefig()` saves the figure; its first argument is the file name, while the `bbox_inches` argument sets a minimal margin around the chart. `close()` is an important step when you draw multiple images in one script: it covers a clearing process, removes references from the memory, so the new image will start from scratch, otherwise there is a chance that different graphical elements will survive in other images.
 
-Sometimes however we would like to put two charts side by side, because we would like to compare them, or because they express different sides of the same phenomenon. Right now we know the average numbers, but how many records don't have at all any subject headings? As the number of records per year are not equal, we are interested in both the absolute numbers and the ratio. If we put multiple charts on the same image, we should take care of both the overarching image and the individual charts (they are called subplots or Axes).
+The image looks like this:
+
+[Figure 1]
+
+Sometimes we would like to put two charts side by side, because we would like to compare them, or because they express different sides of the same phenomenon. Right now we know the average numbers, but how many records don't have at all any subject headings? As the number of records per year are not equal, we are interested in both the absolute numbers and the ratio. If we put multiple charts on the same image, we should take care of both the overarching image and the individual charts (they are called subplots or Axes).
 
 Start, as always, with calculation:
 
@@ -1069,6 +1076,10 @@ fig.tight_layout()
 plt.savefig('fig_output/records-per-year.png')
 plt.close()
 ```
+
+The final image looks like this:
+
+[Figure 2]
 
 #### Dissemination of results
 

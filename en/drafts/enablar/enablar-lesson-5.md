@@ -866,7 +866,7 @@ result = compare_sets(headings_a, headings_b)
 
 #### Visualization
 
-A good data visualization that summarises numbers helps someone to realise trends and important features of a collection of data. We will see how we can create plots out of what we have calculated so far- 
+A good data visualization that summarises numbers helps someone to realise trends and important features of a collection of data. We will see how we can create plots out of what we have calculated so far. First we see how to draw timelines, and then we see a Venn diagram as well. 
 
 ##### Preparation
 
@@ -998,7 +998,7 @@ plt.savefig(os.path.join('fig_output', 'mean-subjects-per-year.png'), bbox_inche
 plt.close()
 ```
 
-`plt.plot()` takes a data frame and draws a line chart. It utilizes the dataframe index for the x values, and all other columns for y values. Each column will be represented as a distinct line with distinct color. It gives us the basic image, but we would like to add additional attributes. `title()` sets a title, `xlabel()` sets an explanation for the horizontal axis, `grid()` draws grid lines. With `axis()` we specify the 'viewport' of the chart. We gave a list of four values: the beginning and the end of x values, and the beginning and end of y values. If we do not give anything, the library takes the minimum and maximum values and adds some margins on all sides. Our averages range around 1.4 and 2.0, but we thought that it is more realistic to the human eye if we set the viewport to zero (and add a small margin on the top as the 10% of the maximum value). `savefig()` saves the figure; its first argument is the file name, while the `bbox_inches` argument sets a minimal margin around the chart. `close()` is an important step when you draw multiple images in one script: it covers a clearing process, removes references from the memory, so the new image will start from scratch, otherwise there is a chance that different graphical elements will survive in other images.
+`plt.plot()` takes a data frame and draws a line chart. It utilizes the dataframe index for the x values, and all other columns for y values. Each column will be represented as a distinct line with distinct color. It gives us the basic image, but we would like to add additional attributes. `title()` sets a title, `xlabel()` sets an explanation for the horizontal axis, `grid()` draws grid lines. With `axis()` we specify the 'viewport' of the chart. We gave a list of four values: the beginning and the end of x values, and the beginning and end of y values. If we do not give anything, the library takes the minimum and maximum values and adds some margins on all sides. Our averages range around 1.4 and 2.0, but we thought that it is more realistic to the human eye if we set the viewport to zero (and add a small margin on the top as the 10% of the maximum value). `savefig()` saves the figure; its first argument is the file name, while the `bbox_inches` argument sets a minimal margin around the chart. `close()` is an important step when you draw multiple images in one script: it starts a clearing process, removes references from the memory, so the new image will start from scratch, otherwise -- as pyplot image creation is a statefull process, so it "remembers" previous steps -- there is a chance that different graphical elements will survive in other images.
 
 The image looks like this:
 
@@ -1083,15 +1083,110 @@ The final image looks like this:
 <!-- records-per-year.png -->
 [Figure 2]
 
+##### Creating a Venn diagram
+
+Previously we saw how to calculate the difference of two sets of subject headings. Based on previously defined functions our code was this:
+
+```Python
+headings_a = headings_matching(df_a, 'Immigra')
+headings_b = headings_matching(df_b, 'Immigra')
+
+result = compare_sets(headings_a, headings_b)
+```
+
+The `result` is a dictionary with three keys each containing a set. The keys are `shared`, `only_in_x` and `only_in_y`. We would like to display two circles that have an intersection if they share subjects, and are proportional to the number of subjects they contain. We also like to display the shared subject headings. Fortunately there is a library for this task, and it supports Venn diagrams for comparing two or three sets. It is called [matplotlib_venn](https://pypi.org/project/matplotlib-venn/) and it is a kind of extension of matplotlib, so we can use pyplot's toolbox. We will use only on function `venn2`, so import it:
+
+```Python
+from matplotlib_venn import venn2
+```
+
+To create the diagram is pretty simple:
+
+```Python
+venn2([headings_a, headings_b], ('Catalogue 1', 'Catalogue 2'))
+plt.savefig('fig_output/venn-diagram-v1.png')
+plt.close()
+```
+
+It gives the colorized Venn diagram. The circles and its intersection contain the number of subjects, but not the subjects themselves:
+
+<!-- venn-diagram-v1.png -->
+[Figure 3]
+
+However as the library is based on pyplot, we can add an annotation with `plt.annotate()`. We can create a text box somewhere around the circles, and list the subjects there. There is a problem though: we can transform the list of subjects into a text separated by new lines or by commas, but if they have several elements the annotation will be too high or wide. So we create a new function `format_lines` that mix the two separators, and create a list of maximum N character wide lines. 
+
+```Python
+def format_lines(items, max_width=60):
+    """
+    Arrange a list of strings into a set of lines separated by line breaks.
+
+    Parameters                              
+    ----------
+    items : list
+        a list of strings
+    max_width : int
+        the maximum width of a line in characters (default is 60)
+    """
+    lines = []
+    line = ''
+    for item in items:
+        item = re.sub(r'\.$', '', item)
+        if len(lines) != 0 or line != '':
+            line = line + ','
+        for word in item.split():
+            if len(line) + len(word) > max_width:
+                lines.append(line)
+                line = word
+            else:
+                if line == '':
+                    line = word
+                else:
+                    line = line + ' ' + word
+    if line != '':
+        lines.append(line)
+
+    return '\n'.join(lines)
+```
+With that we can create an annotated Venn diagram:
+
+```Python
+venn_diagram = venn2([headings_a, headings_b], ('Catalogue 1', 'Catalogue 2'))
+plt.annotate(
+    text=format_lines(result["shared"], 60),
+    xy=venn_diagram.get_label_by_id('11').get_position() - np.array([0, 0.05]),
+    xytext=(-150,-150),
+    ha='left',
+    textcoords='offset points',
+    bbox=dict(
+        boxstyle='round,pad=0.5',
+        fc='gray',
+        alpha=0.1),
+    arrowprops=dict(
+        arrowstyle='->',
+        connectionstyle='arc3,rad=0.5',
+        color='gray'
+    )
+)
+plt.savefig('fig_output/venn-diagram-v2.png', bbox_inches='tight')
+plt.close()
+```
+
+`venn2()` returns an object representing the diagram, and we can manipulate it by changing labels, colors, line width etc. Now we only want to read the position of the label of the intersection of the two circles. We can access it via `get_label_by_id` passing the identifier `11` that refers to the intersection (the first circle is represented by `10`, and by `01` the second). [plt.annotate](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.annotate.html#matplotlib.axes.Axes.annotate) provides a number of properties. `xy` is the point we want to annotate, `text` contains the annotation text, `xstext` provides a position of the annotation, `textcoords` specifies how this position should be interpreted (here `offset points` means that xytext is a relative position from the annotated point), and `ha` instructs the horizontal alignment. With `bbox` we set the style of the bounding box: it should have a gray foreground color, rounded corner, and a bit opacity. Similarly, `arrowprops` sets the style of the arrow from the annotation to the annotated point, this time is a one direction, grey, curved arrow. As during the previous plot creations we save the plot with a narrow margin and remove references.
+
+The final result will look like this:
+
+<!-- venn-diagram-v2.png -->
+[Figure 4]
+
 #### Dissemination of results
 
 The final step in the work process is the dissemination of results, which includes traditional publication methods (papers, books, conference presentations) as well as newer approaches, such as the publication of software used in the process, the generated data, and data and software studies focusing specifically on these, blogging and microblogging, sharing presentation slides and recordings, and participating in professional organizations.
 
-Let's start with the data. There are some dedicated 'research data repositories' that aims to help researchers to publish their data. Along the the data files you should add metadata such as title, authors, subject headings, description. From repository to repository it might be different what metadata schema you should follow and what are the mandatory and optional metadata. The repositories assign a persistent identifier to your _dataset_, such as DOI, Handle, or ark.[^1] We can mention [Zenodo](https://zenodo.org/), [Harvard Dataverse](https://dataverse.harvard.edu/), [figshare](https://figshare.com/), [Open Science Framework](https://osf.io/), [Dryad](https://datadryad.org/) as the largest general repositories, but there are a number of others with regional or domain specific focus (at time of writing we are not aware of any that provide extra functionalities for bibliographic data). You can check the [re3data](re3data.org), the registry of research data repositories, that provides with a rich categorisation to find the one that fits to your need. It is also worth to check if your institution has any recommendation of policy.
+Let's start with the data. There are some dedicated 'research data repositories' that aim to help researchers to publish their data. Along with the data files you should add metadata such as title, authors, subject headings, description. From repository to repository it might be different what metadata schema you should follow and what are the mandatory and optional metadata. The repositories assign a persistent identifier to your _dataset_, such as DOI, Handle, or ark.[^1] We can mention [Zenodo](https://zenodo.org/), [Harvard Dataverse](https://dataverse.harvard.edu/), [figshare](https://figshare.com/), [Open Science Framework](https://osf.io/), [Dryad](https://datadryad.org/) as the largest general repositories, but there are a number of others with regional or domain specific focus (at time of writing we are not aware of any that provide extra functionalities for bibliographic data). You can check the [re3data](re3data.org), the registry of research data repositories, that provides a rich categorisation to find the one that fits your needs. It is also worth it to check if your institution has any recommendation of policy.
 
-To publish the software might be a two step process. The first step is to make it publicly available in a platform such as GitHub, GitLab, or other general or institutional software depository. However your can make it further and turn the scripts into real research software with proper documentation, tests, packaging, installation scripts etc.[^2] Research data repositories are also accept research related software, and some of them are working together with software repositories, so you can connect them together, and you will get a persistent identifier for your software as well. The Research Software Engineering community published some guidelines on how to publish software in FAIR way (FAIR is an acronym for Findable, Accessible, Interoperable and Reusable)[^3].
+To publish the software might be a two step process. The first step is to make it publicly available in a platform such as GitHub, GitLab, or other general or institutional software depository. However you can make it further and turn the scripts into real research software with proper documentation, tests, packaging, installation scripts etc.[^2] Research data repositories are also accept research related software, and some of them are working together with software repositories, so you can connect them together, and you will get a persistent identifier for your software as well. The Research Software Engineering community published some guidelines on how to publish software in FAIR way (FAIR is an acronym for Findable, Accessible, Interoperable and Reusable)[^3].
 
-Finally, we would like to call attention to the importance of a special data sharing called 'data roundtrip'.[^4] Imagine the following scenario: a researcher has worked hard to enrich a popular data source with high research potential that is maintained by a public collection. Later, another researcher would like to use the same database for their research. If she is not familiar with the previous researcher's work, she can start the data enrichment process from scratch. But even if the first researcher published his data enrichment, it is much more likely that the subsequent researchers will find and use the original database. To prevent this, researchers would need to return the modified data to the original data provider. Fortunately, MARC21, introduced in the 34th update in 2022[^5] a data provenance subfield to distinguish between data recorded by the library and data recorded by the researcher (and it is available in most fields), which could be a theoretical remedy for the library's legitimate demand to take responsibility for its own data. In the life sciences, researchers can utilize a special, "atomic" data publication method called [nanopublications](https://nanopub.net/) to share data enrichment steps with each others. In our case these 'others' are libraries, which can then incorporate them into their catalogs without compromising their own responsibility and credibility. The second researcher can then work on the data-enriched version. In order to realize this vision, communication between the parties must be standardized, and the research community can play a coordinating role in this process.
+Finally, we would like to call attention to the importance of a special data sharing called 'data roundtrip'.[^4] Imagine the following scenario: a researcher has worked hard to enrich a popular data source with high research potential that is maintained by a public collection. Later, another researcher would like to use the same database for their research. If she is not familiar with the previous researcher's work, she can start the data enrichment process from scratch. But even if the first researcher published his data enrichment, it is much more likely that the subsequent researchers will find and use the original database. To prevent this, researchers would need to return the modified data to the original data provider. Fortunately, MARC21, introduced in the 34th update in 2022[^5] a data provenance subfield to distinguish between data recorded by the library and data recorded by the researcher (and it is available in most fields), which could be a theoretical remedy for the library's legitimate demand to take responsibility for its own data. In the life sciences, researchers can utilize a special, "atomic" data publication method called [nanopublications](https://nanopub.net/) to share data enrichment steps with each other. In our case these 'others' are libraries, which can then incorporate them into their catalogs without compromising their own responsibility and credibility. The second researcher can then work on the data-enriched version. In order to realize this vision, communication between the parties must be standardized, and the research community can play a coordinating role in this process.
 
 ### Summary
 

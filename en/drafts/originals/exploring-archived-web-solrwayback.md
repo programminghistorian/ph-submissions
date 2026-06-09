@@ -29,7 +29,7 @@ doi: XX.XXXXX/phen0000
   For Mac users it is recommended to install Java 17 through [homebrew](https://formulae.brew.sh/formula/openjdk@17) and for Windows users please follow the installation guide provided by [Oracle](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html). 
   The SolrWayback bundle used in this lesson does not run on Java versions older than 11 and newer than 17.
   JAVA_HOME must be set correctly as well.
-  Administrative access is required to run the startup commands on windows.
+  Administrative access is required to run the startup commands on Windows.
 </div>
 
 ## Lesson Aims

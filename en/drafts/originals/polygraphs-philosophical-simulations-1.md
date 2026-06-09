@@ -28,7 +28,7 @@ doi: XX.XXXXX/phen0000
 
 This (advanced) lesson in two parts sketches how to use the PolyGraphs Python package to run philosophical simulations (part 1) and analyze the synthetic data it generates (part 2), so as to better understand social processes of knowledge production.
 
-This first part introduces key concepts of network theory (e.g. ‘graph’, 'node', and 'edge'), as well as those of social epistemology. It shows users how to install PolyGraphs and run philosophical simulations, manipulating (.yml) configuration files, and importing your own (.gml) graph datasets.
+This first part introduces key concepts of network theory (e.g. `graph`, `node`, and `edge`), as well as those of social epistemology. It shows users how to install PolyGraphs and run philosophical simulations, manipulating (`.yml`) configuration files, and importing your own (`.gml`) graph datasets.
 
 
 ## Introduction
@@ -69,11 +69,11 @@ The second advantage is that simulation allows us to investigate what might happ
 
 ### Technical Prerequisites
 
-From a technical point of view, some familiarity with Python is assumed in what follows. If you do not already have such familiarity, you can begin with the Programming Historian’s introductory lesson.[^12] This said, it is anticipated that you may further your knowledge of Python through this lesson – and can deepen your understanding (e.g. of class inheritance, which we will use in part 2) with materials available elsewhere.[^13] Similar remarks apply to a range of further Python libraries. In particular, over the two parts of this lesson, we will import and use: [numpy][3]; [pandas][4]; [matplotlib][5]; [networkx][6]; and [seaborn][7]. 
+From a technical point of view, some familiarity with Python is assumed in what follows. If you do not already have such familiarity, you can begin with the Programming Historian’s introductory lesson.[^12] This said, it is anticipated that you may further your knowledge of Python through this lesson – and can deepen your understanding (e.g. of class inheritance, which we will use in part 2) with materials available elsewhere.[^13] Similar remarks apply to a range of further Python libraries. In particular, over the two parts of this lesson, we will import and use: [numpy](https://numpy.org/); [pandas](https://pandas.pydata.org/); [matplotlib](https://matplotlib.org/); [networkx](https://networkx.org/documentation/stable/index.html); and [seaborn](https://seaborn.pydata.org/). 
 
 At a more basic level, we assume you are able to use a terminal on your machine – this will be key in installing the PolyGraphs code, and is convenient (though, as we shall see, not strictly necessary) when running simulations. Note, crucially, that for installation to proceed in the manner described below, Git must be available on the terminal you use;[^14] and in part 2 we will make use of (the file archiver) tar to decompress some PolyGraphs output data for use in our case study. 
 
-Finally, we assume that you have some experience of using (interactive) iPython notebooks (.ipynb files). This said, (in part 2) we will walk you through the installation of Jupyter Lab - even if you already have it installed on your machine - so that you have the PolyGraphs code available for use in your notebooks, and are able to analyze the synthetic data it produces. 
+Finally, we assume that you have some experience of using (interactive) iPython notebooks (`.ipynb` files). This said, (in part 2) we will walk you through the installation of Jupyter Lab - even if you already have it installed on your machine - so that you have the PolyGraphs code available for use in your notebooks, and are able to analyze the synthetic data it produces. 
 
 Note that, after installation is complete, you will not need to connect to the internet to follow (either part of) this lesson (except to download the dataset at the start of part 2).[^15]
 
@@ -93,7 +93,7 @@ cd polygraphs
 python -m venv .venv
 ```
 
-This uses git to copy the PolyGraphs source code, then navigates to the polygraphs directory created by doing so, and finally begins to create your PolyGraphs virtual environment.
+This uses git to copy the PolyGraphs source code, then navigates to the `polygraphs` directory created by doing so, and finally begins to create your PolyGraphs virtual environment.
 
 The next step is to activate that environment. It differs, depending on your operating system. For Linux/macOS, the command is:
 
@@ -130,44 +130,44 @@ Let us begin by running a test, to establish that the code is working properly:[
 python run.py -f configs/test.yaml
 ```
 
-This tells your machine to interpret the file 'run.py' using python, and to supply the file 'test.yaml', stored in the sub-directory 'configs' as argument.
+This tells your machine to interpret the file `run.py` using python, and to supply the file `test.yaml`, stored in the sub-directory `configs` as argument.
 
 You should see the following printout:
 
 {% include figure.html filename="en-or-polygraphs-philosophical-simulations-1-02.png" alt="Image displaying text and numbers." caption="Figure 2. The printout from the PolyGraphs test run." %}
 
-We can see here that we have run five simulations ('Sim #0005') and then printed 'Bye'.
+We can see here that we have run five simulations (`Sim #0005`) and then printed `Bye`.
 
 We can also see, for each simulation: how many steps it ran for and how many seconds it took; that in each case action B was chosen in the end; that the result of the simulation was not undefined (the value here is 0, not 1); and that it converged, and was not polarized. 
 
 Finally, we can see that, as each simulation runs, we get a readout out, at the first and last steps, and at every 100 steps in between, of how many thousands simulations steps are being completed every second, as well as what fraction of the nodes believe in taking action A vs B.
 
-Having run this test, you should also be able to verify that a new directory called 'polygraphs-cache' has been created (outside of the 'polygraphs' folder), itself containing a 'results' sub-directory with a further sub-directory within it named for the current date. Inside that folder will be (further folders containing) all of the output data from simulations run on the date in question. In particular, (within the only such folder that exists at present) you should see:
-* a .json file that records the settings of the various parameters used in these simulations
-* a .csv file telling us, for each simulation, the same information as we saw printed out previously about action, etc. (though if we open this in our favourite spreadsheet software, we will see that the 1s and 0s have been converted to TRUEs and FALSEs), plus the name ('uid') of the folder containing the output data pertaining to that sim
-* five .pt and five .hd5 files, one each for each of the five simulations.
+Having run this test, you should also be able to verify that a new directory called `polygraphs-cache` has been created (outside of the `polygraphs` folder), itself containing a `results` sub-directory with a further sub-directory within it named for the current date. Inside that folder will be (further folders containing) all of the output data from simulations run on the date in question. In particular, (within the only such folder that exists at present) you should see:
+* a `.json` file that records the settings of the various parameters used in these simulations
+* a `.csv` file telling us, for each simulation, the same information as we saw printed out previously about action, etc. (though if we open this in our favourite spreadsheet software, we will see that the 1s and 0s have been converted to TRUEs and FALSEs), plus the name (`uid`) of the folder containing the output data pertaining to that sim
+* five `.pt` and five `.hd`5 files, one each for each of the five simulations.
 
 It is this (synthetic) data that will get analyzed in part 2 of this lesson, and from which insights in social epistemology can be gleaned.
 
 #### Configuration Files
 
-We saw, when running the test, that the python script 'run.py' takes a .yaml (or .yml) file as argument. (Note that 'yaml' stands for 'yet another markup language', or alternatively 'YAML ain't markup language'. Be that as it may, it is simply a text file saved with the relevant extension name.) If you open the file 'test.yaml' in the 'configs' sub-directory of the 'polygraphs' directory (which you can do e.g. in notepad), you will see that it records the values of certain parameters determining what is being simulated. Here we comment on a select few.
+We saw, when running the test, that the python script `run.py` takes a `.yaml` (or `.yml`) file as argument. (Note that `yaml` stands for 'yet another markup language', or alternatively 'YAML ain't markup language'. Be that as it may, it is simply a text file saved with the relevant extension name.) If you open the file `test.yaml` in the `configs` sub-directory of the `polygraphs` directory (which you can do e.g. in notepad), you will see that it records the values of certain parameters determining what is being simulated. Here we comment on a select few.
 
 {% include figure.html filename="en-or-polygraphs-philosophical-simulations-1-03.png" alt="Text containing lines numbered 1 to 20. Some lines contain comments. Others specify parameter names and their values, separated by a colon." caption="Figure 3. The configuration file for the PolyGraphs test run." %}
 
 The value of the epsilon parameter in test.yaml is 0.01. This means that, where the chance that action A is successful is one half, or 0.5, the chance that B is successful is one half plus epsilon, or 0.51. This parameter makes a big difference to the outcomes of the simulations - feel free to manipulate this (by editing and saving the test configuration file), and observe the effects (e.g. by re-running the test with the new value recorded). 
 
-We can see that network.kind is set to "complete": this means that all the nodes in the network the simulation runs on will be connected to one another by an edge. You will also see that network.size is set to 16, meaning that the network has 16 nodes (not 10, as erroneously claimed in the comment). Again, these parameter values make a big difference to the way the simulations behave, and you should feel free to experiment. Changing network sizes should be self-explanatory (just edit the number of nodes specified). When it comes to network kinds, you can see the range of built in options available in the 'graphs.py' file, located within the 'polygraphs' sub-directory of the 'polygraphs' folder. You can choose any of 'wheel', 'cycle', 'star', 'line', or 'grid' and run simulations on networks of these kinds without further ado. Some other network kind choices will, by contrast, require you to specify values of certain further parameters - as we will see in due course.
+We can see that network.kind is set to "complete": this means that all the nodes in the network the simulation runs on will be connected to one another by an edge. You will also see that network.size is set to 16, meaning that the network has 16 nodes (not 10, as erroneously claimed in the comment). Again, these parameter values make a big difference to the way the simulations behave, and you should feel free to experiment. Changing network sizes should be self-explanatory (just edit the number of nodes specified). When it comes to network kinds, you can see the range of built in options available in the `graphs.py` file, located within the `polygraphs` sub-directory of the `polygraphs` folder. You can choose any of 'wheel', 'cycle', 'star', 'line', or 'grid' and run simulations on networks of these kinds without further ado. Some other network kind choices will, by contrast, require you to specify values of certain further parameters - as we will see in due course.
 
-Crucially, which operation, or 'op', the simulation runs is a parameter in PolyGraphs which specifies how the agents in the model behave. In test.yaml the value of this parameter is (the string) 'BalaGoyalOp'. This tells us that agents communicate their observations competently and honestly, so that their reports are true (even if they turn out, by chance, to be misleading). It also tells us agents trust the information they receive from (themselves and) their neighbours. In part 2 of this lesson, we will analyze data from simulations run using different operations (which, as with certain network kinds, will require us to specify values for additional parameters, depending on the model).
+Crucially, which operation, or `op`, the simulation runs is a parameter in PolyGraphs which specifies how the agents in the model behave. In `test.yaml` the value of this parameter is (the string) `BalaGoyalOp`. This tells us that agents communicate their observations competently and honestly, so that their reports are true (even if they turn out, by chance, to be misleading). It also tells us agents trust the information they receive from (themselves and) their neighbours. In part 2 of this lesson, we will analyze data from simulations run using different operations (which, as with certain network kinds, will require us to specify values for additional parameters, depending on the model).
 
-There are, of course, other parameters whose values are specified in 'test.yaml'. Some of these (like init.kind) tell us how things are to be within a given simulation (in this case, the value is 'uniform', meaning that the intial beliefs of the agents in the model are to be chosen with an equal probability of falling anywhere in the [0-1] interval); others (like simulation.repeats) tell us how the computational job PolyGraphs is to do will be governed (in this case telling us that 5 simulations will be run, as we saw in the printout above - and not 10 as specified in the comment text). You can learn about the effects of these various parameters by experimenting, and/or reading the academic literature that uses these models; and if all else fails, you can reach out to the authors and ask! 
+There are, of course, other parameters whose values are specified in `test.yaml`. Some of these (like init.kind) tell us how things are to be within a given simulation (in this case, the value is 'uniform', meaning that the intial beliefs of the agents in the model are to be chosen with an equal probability of falling anywhere in the [0-1] interval); others (like simulation.repeats) tell us how the computational job PolyGraphs is to do will be governed (in this case telling us that 5 simulations will be run, as we saw in the printout above - and not 10 as specified in the comment text). You can learn about the effects of these various parameters by experimenting, and/or reading the academic literature that uses these models; and if all else fails, you can reach out to the authors and ask! 
 
 #### Loading Graph Datasets
 
 One thing that is likely to be of interest to new users of PolyGraphs is the ability to load graph datasets specifying the structure of some target community of interest. 
 
-You can easily load a graph dataset, if you have a file containing it written in the graph markup language (.gml) format. To do this, in your configuration file you simply specify network.kind to be 'gml', and then add two further parameters (and their values): network.gml.name (a string giving the name of your graph); and network.gml.path (also a string, this time specifying the path to your .gml file).
+You can easily load a graph dataset, if you have a file containing it written in the graph markup language (`.gml`) format. To do this, in your configuration file you simply specify network.kind to be `gml`, and then add two further parameters (and their values): `network.gml.name` (a string giving the name of your graph); and `network.gml.path` (also a string, this time specifying the path to your `.gml` file).
 
 ```
 network.kind: 'gml'
@@ -175,7 +175,7 @@ network.gml.name: 'graph_name'
 network.gml.path: 'path_to_file.gml'
 ```
 
-Of course, you may not have a .gml file containing the graph of the community you wish to study. But you can create one, if you have what is known as an edge list, specifying which nodes are connected to which others. Make sure that you name your nodes as integers (i.e. whole numbers)! [^20]
+Of course, you may not have a `.gml` file containing the graph of the community you wish to study. But you can create one, if you have what is known as an edge list, specifying which nodes are connected to which others. Make sure that you name your nodes as integers (i.e. whole numbers)! [^20]
 
 ## Conclusion
 
@@ -184,7 +184,7 @@ In part 1 of this lesson, we have seen how to run philosophical simulations usin
 In part 2, we will turn to the question of how to analyze the synthetic data that PolyGraphs generates, so as to understand how communities form opinions over time.
 
 ## Endnotes
-[^1]: See the PolyGraphs [project website][1], as well as the associated [GitHub repository][2] for further information.
+[^1]: See the PolyGraphs [project website](https://polygraphs.sites.northeastern.edu), as well as the associated [GitHub repository](https://github.com/alexandroskoliousis/polygraphs) for further information.
 [^2]: The term ‘philosophical simulations’ was coined in Ball, B., Koliousis, A., Mohanan, A., & Peacey, M. (2024). Computational philosophy: reflections on the PolyGraphs project. Humanities and Social Sciences Communications, 11(1), 1-9.  
 [^3]: Synthetic data is data that is not input manually, or recorded through sensors, but instead is the result of computations that generate it.
 [^4]: For an overview of social epistemology, see O’Connor, Cailin, Sanford Goldberg, and Alvin Goldman, "Social Epistemology", The Stanford Encyclopedia of Philosophy (Summer 2024 Edition), Edward N. Zalta & Uri Nodelman (eds.), URL = <https://plato.stanford.edu/archives/sum2024/entries/epistemology-social/>.
@@ -197,45 +197,52 @@ In part 2, we will turn to the question of how to analyze the synthetic data tha
 [^11]: We can also impose a limit on the number of steps for which a simulation will run: we have chosen 100,000 steps in the data analyzed in part 2.
 [^12]: William J. Turkel and Adam Crymble, "Python Introduction and Installation," Programming Historian 1 (2012), https://doi.org/10.46430/phen0009.
 [^13]: Python is an object-oriented language. Object and class are therefore central notions. Classes are, in effect, ‘blueprints’ for constructing objects. These ‘blueprints’ can themselves be copied and rendered more specific through a mechanism known as inheritance. There is a nice explanation of object-oriented programming in Python, including class inheritance, available at https://www.w3schools.com/Python/python_oop.asp. 
-[^14]: Apple ships a version of [Git with Xcode Command Line Tools][8] which you can install with:
-```
-xcode-select --install
-Debian/Chromebooks
-sudo apt update
-sudo apt install git
-```
-See the [installation instructions for Linux][9] on the git website for other distributions.
-If you are working in Windows, download and install [Git for Windows][10]. This includes Git Bash, which add a bash shell for Windows. When it asks whether you would like to use a credential manager, select none. Otherwise, everything else should be the default option.
-[^15]: That said, you can run PolyGraphs simulations in e.g. Google Colab if you wish - see below.
-[^16]: Note that, if you are able to access the internet, and have a gmail account, it is possible to install and run the PolyGraphs code in Google colab. To do this, go to https://colab.google.com and open a new notebook (.ipynb file). You then need to run the following commands in the opening cell(s):
-```
-!git clone https://github.com/alexandroskoliousis/polygraphs.git
-%cd polygraphs
-!git switch ptgraph
-!pip install -e .
-```
-This should suffice to have the PolyGraphs source code available to you for use in Colab. If you have done this, you can skip ahead to Running the Test.
-[^17]: A high performance computing cluster is a collection (or network) of (interconnected) computers that facilitates the efficient performance of large-scale computations. Although we will not discuss how to exploit this feature of PolyGraphs, it is a virtue of the code package that it is amenable for use in such contexts. Indeed, the dataset that we will share for analysis in part 2 was generated on such a facility.
-[^18]: A virtual environment is simply an isolated directory, or folder, on your computer that contains a particular version of a programming language (in our case, Python), along with its various dependencies.
-[^19]: If you are operating in Colab, add an exclamation mark at the start of the line.
-[^20]: Of course, we are not yet operating within an interactive Python environment - we will explain how to do that in part 2; but once you are in such an environment, the following code shows proof of concept for how to build a graph dataset in .gml format that can be used within PolyGraphs:
-```
-import networkx as nx
-G = nx.Graph()
-edgelist = [(1, 2), (2, 3)]
-G.add_edges_from(edgelist)
-nx.write_gml(G, 'test.gml')
-```
-A fully developed example is also available on the PolyGraphs GitHub repository [here][11]. 
+[^14]: Apple ships a version of [Git with Xcode Command Line Tools](https://developer.apple.com/documentation/xcode/installing-the-command-line-tools) which you can install with:
 
-[1]: https://polygraphs.sites.northeastern.edu
-[2]: https://github.com/alexandroskoliousis/polygraphs
-[3]: https://numpy.org/
-[4]: https://pandas.pydata.org/
-[5]: https://matplotlib.org/
-[6]: https://networkx.org/documentation/stable/index.html
-[7]: https://seaborn.pydata.org/
-[8]: https://developer.apple.com/documentation/xcode/installing-the-command-line-tools
-[9]: https://git-scm.com/install/linux
-[10]: https://gitforwindows.org/
-[11]: https://github.com/alexandroskoliousis/polygraphs/blob/main/scripts/sixdegreesoffrancisbacon.ipynb
+    ~~~
+    xcode-select --install
+    ~~~
+
+    Debian/Chromebooks
+
+    ~~~
+    sudo apt update
+    sudo apt install git
+    ~~~
+
+    See the [installation instructions for Linux](https://git-scm.com/install/linux) on the git website for other distributions. If you are working in Windows, download and install [Git for Windows](https://gitforwindows.org/). This includes Git Bash, which add a bash shell for Windows. When it asks whether you would like to use a credential manager, select none. Otherwise, everything else should be the default option.
+
+[^15]: That said, you can run PolyGraphs simulations in e.g. Google Colab if you wish - see below.
+
+[^16]: Note that, if you are able to access the internet, and have a gmail account, it is possible to install and run the PolyGraphs code in Google colab. To do this, go to https://colab.google.com and open a new notebook (.ipynb file). You then need to run the following commands in the opening cell(s):
+
+    ~~~
+    !git clone https://github.com/alexandroskoliousis/polygraphs.git
+    %cd polygraphs
+    !git switch ptgraph
+    !pip install -e .
+    ~~~
+
+    This should suffice to have the PolyGraphs source code available to you for use in Colab. If you have done this, you can skip ahead to Running the Test.
+    
+[^17]: A high performance computing cluster is a collection (or network) of (interconnected) computers that facilitates the efficient performance of large-scale computations. Although we will not discuss how to exploit this feature of PolyGraphs, it is a virtue of the code package that it is amenable for use in such contexts. Indeed, the dataset that we will share for analysis in part 2 was generated on such a facility.
+
+[^18]: A virtual environment is simply an isolated directory, or folder, on your computer that contains a particular version of a programming language (in our case, Python), along with its various dependencies.
+
+[^19]: If you are operating in Colab, add an exclamation mark at the start of the line.
+
+[^20]: Of course, we are not yet operating within an interactive Python environment - we will explain how to do that in part 2; but once you are in such an environment, the following code shows proof of concept for how to build a graph dataset in `.gml` format that can be used within PolyGraphs:
+
+    ~~~
+    import networkx as nx
+
+    G = nx.Graph()
+
+    edgelist = [(1, 2), (2, 3)]
+
+    G.add_edges_from(edgelist)
+
+    nx.write_gml(G, 'test.gml')
+    ~~~
+
+    A fully developed example is also available on the PolyGraphs GitHub repository [here](https://github.com/alexandroskoliousis/polygraphs/blob/main/scripts/sixdegreesoffrancisbacon.ipynb).

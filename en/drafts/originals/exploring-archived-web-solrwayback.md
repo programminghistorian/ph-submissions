@@ -25,7 +25,9 @@ doi: XX.XXXXX/phen0000
 
 <div class="alert alert-warning">
   This lesson requires at least 4GB of RAM and approximately 2GB of free disk space. 
-  The lesson also requires a valid Java installation of at least version 11. JAVA_HOME must be set correctly as well.
+  The lesson also requires a valid Java installation of at least version 11. Java 17 is preferred.
+  The SolrWayback bundle used in this lesson does not run on Java versions older than 11 and newer than 17.
+  JAVA_HOME must be set correctly as well.
   Administrative access is required to run the startup commands on windows.
 </div>
 

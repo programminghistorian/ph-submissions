@@ -897,65 +897,65 @@ This lesson has presented an NLP workflow using spaCy as an open, reproducible a
 
 [^1] [O'Sullivan, James. "Generative AI in Higher Education Teaching and Learning", *Higher Education Teaching and Learning*, accessed June 10, 2026.](https://www.teachingandlearning.ie/2025/03/24/generative-ai-in-higher-education-teaching-and-learning-james-osullivan/).
 
-[^2] [Jaillant, Lise, Kidd, Matthew, and Zhao, Lingjia. *Sifting the Digital Heap: A scoping study of AI for government archives – access, backlogs, and responsible practice*. Loughborough University Report, 2026, pp. 31.](https://hdl.handle.net/2134/31629595.v1).
+[^2] [Jaillant, Lise, Kidd, Matthew, and Zhao, Lingjia. *Sifting the Digital Heap: A scoping study of AI for government archives – access, backlogs, and responsible practice*. Loughborough University Report, 2026, pp. 31.](https://hdl.handle.net/2134/31629595.v1)
 
 [^3] Brown, Edwin, Donnelly, Shaun. "LLMs in the Wild: An introduction to Agentic Systems". *University of Sheffield Centre for Machine Intelligence, Town Hall Event*, March, 11, 2026.
 
-[^4] [Dickson, Jim, Marshall, Mack. "Trained to stop learning: How students are experiencing assessment and learning in an age of AI", Wonkhe, published March, 23, 2026,](https://wonkhe.com/blogs/trained-to-stop-learning-how-students-are-experiencing-assessment-and-learning-in-an-age-of-ai/)
+[^4] [Dickson, Jim, Marshall, Mack. "Trained to stop learning: How students are experiencing assessment and learning in an age of AI", Wonkhe, published March, 23, 2026,](https://wonkhe.com/blogs/trained-to-stop-learning-how-students-are-experiencing-assessment-and-learning-in-an-age-of-ai/)/
 
-[^5] [University of Birmingham. "AI tools licensing review guidance", accessed June 10, 2026](https://intranet.birmingham.ac.uk/student/libraries/copyright/researchers/ai-tools-licensing-review-guidance.aspx).
+[^5] [University of Birmingham. "AI tools licensing review guidance", accessed June 10, 2026.](https://intranet.birmingham.ac.uk/student/libraries/copyright/researchers/ai-tools-licensing-review-guidance.aspx)
 
-[^6] [Krantz, Tom, Jonker, Alexandra, and McGrath, Amanda. "What is shadow AI?", *IBM*, accessed June 1, 2026,](https://www.ibm.com/think/topics/shadow-ai).
+[^6] [Krantz, Tom, Jonker, Alexandra, and McGrath, Amanda. "What is shadow AI?", *IBM*, accessed June 1, 2026.](https://www.ibm.com/think/topics/shadow-ai)
 
-[^7] [Cox, Andrew. *The impact of AI, machine learning, automation and robotics on the information profession*. CILIP Report, 2026.](https://www.cilip.org.uk/page/researchreport).
+[^7] [Cox, Andrew. *The impact of AI, machine learning, automation and robotics on the information profession*. CILIP Report, 2026.](https://www.cilip.org.uk/page/researchreport)
 
-[^8] [Rungkaew, Titirut. "Students’ perception of google classroom and microsoft teams using TAM-based constructs." *AU E-Journal of Interdisciplinary Research* 10, no. 3 (2025): 209-217.](https://doi.org/10.14456/au-ejir.2025.54).
+[^8] [Rungkaew, Titirut. "Students’ perception of google classroom and microsoft teams using TAM-based constructs." *AU E-Journal of Interdisciplinary Research* 10, no. 3 (2025): 209-217.](https://doi.org/10.14456/au-ejir.2025.54)
 
-[^9] [Stryker, Cole, Holdsworth, Jim. "What is NLP (natural language processing)?", *IBM*, accessed June 1, 2026,](https://www.ibm.com/think/topics/natural-language-processing).
+[^9] [Stryker, Cole, Holdsworth, Jim. "What is NLP (natural language processing)?", *IBM*, accessed June 1, 2026.](https://www.ibm.com/think/topics/natural-language-processing)
 
-[^10] [Colavizza, Giovanni, and Lise Jaillant. "AI Preparedness Guidelines for Archivists", Archives and Records Association (UK & Ireland), February 2026,](https://www.archives.org.uk/ai-preparedness-guidelines-for-archivists).
+[^10] [Colavizza, Giovanni, and Lise Jaillant. "AI Preparedness Guidelines for Archivists", Archives and Records Association (UK & Ireland), February 2026.](https://www.archives.org.uk/ai-preparedness-guidelines-for-archivists)
 
-[^11] [JiSC. "Guide to the Model Licence (FAQs)", accessed May 22, 2026,](https://subscriptionsmanager.jisc.ac.uk/about/guide-to-model-licence).
+[^11] [JiSC. "Guide to the Model Licence (FAQs)", accessed May 22, 2026.](https://subscriptionsmanager.jisc.ac.uk/about/guide-to-model-licence)
 
-[^12] [Holt, Ilkay, and Kefalea, Revekka. “Risk Management Toolkit for Open GLAM”, published December 23, 2025,](https://zenodo.org/records/18928812).
+[^12] [Holt, Ilkay, and Kefalea, Revekka. “Risk Management Toolkit for Open GLAM”, published December 23, 2025.](https://zenodo.org/records/18928812)
 
-[^13] [UK Government. "Guidance - Exceptions to copyright", last updated January 4, 2021,](https://www.gov.uk/guidance/exceptions-to-copyright#fair-dealing).
+[^13] [UK Government. "Guidance - Exceptions to copyright", last updated January 4, 2021.](https://www.gov.uk/guidance/exceptions-to-copyright#fair-dealing)
 
-[^14] [Gooding, Paul, Nockels, Joe, and Terras, Melissa. "The adoption of handwritten text recognition at the National Library of Scotland". In *Navigating AI for Cultural Heritage Organisations*, edited by Lisa Jaillant, Claire Warwick, Paul Gooding, Katherine Aske, Glen Layne-Worthey, and J. Stephen Downie. UCL Press, 2025.](https://doi.org/10.14324/111.9781800088375).  
+[^14] [Gooding, Paul, Nockels, Joe, and Terras, Melissa. "The adoption of handwritten text recognition at the National Library of Scotland". In *Navigating AI for Cultural Heritage Organisations*, edited by Lisa Jaillant, Claire Warwick, Paul Gooding, Katherine Aske, Glen Layne-Worthey, and J. Stephen Downie. UCL Press, 2025.](https://doi.org/10.14324/111.9781800088375) 
 
-[^15] [Lundborg, Einarsson. "Dazzled by the Private Sector". MA diss, University of Boras, 2024.](https://www.diva-portal.org/smash/get/diva2:1879530/FULLTEXT01.pdf).
+[^15] [Lundborg, Einarsson. "Dazzled by the Private Sector". MA diss, University of Boras, 2024.](https://www.diva-portal.org/smash/get/diva2:1879530/FULLTEXT01.pdf)
 
-[^16] [Kane, Megan S. "Corpus Analysis with spaCy", *Programming Historian*, published November, 2, 2023,](https://programminghistorian.org/en/lessons/corpus-analysis-with-spacy).
+[^16] [Kane, Megan S. "Corpus Analysis with spaCy", *Programming Historian*, published November 2, 2023.](https://programminghistorian.org/en/lessons/corpus-analysis-with-spacy)
 
-[^17] [Goodale, Ian. "Analysing Multilingual French and Russian Text using NLTK, spaCy, and Stanza", *Programming Historian*, published November, 13, 2024,](https://programminghistorian.org/en/lessons/analyzing-multilingual-text-nltk-spacy-stanza).
+[^17] [Goodale, Ian. "Analysing Multilingual French and Russian Text using NLTK, spaCy, and Stanza", *Programming Historian*, published November 13, 2024.](https://programminghistorian.org/en/lessons/analyzing-multilingual-text-nltk-spacy-stanza)
 
-[^18] [Khan, Fareed. "Beginner Guide of spaCy", *Medium*, published September 12, 2022,](beginner-guide-of-spacy-8fb363330077).
+[^18] [Khan, Fareed. "Beginner Guide of spaCy", *Medium*, published September 12, 2022.](beginner-guide-of-spacy-8fb363330077)
 
-[^19] [Potter, Abigail. "Introducing the LC Labs Artificial Intelligence Planning Framework", *Library of Congress Blog*, published November 15, 2023,](https://blogs.loc.gov/thesignal/2023/11/introducing-the-lc-labs-artificial-intelligence-planning-framework).
+[^19] [Potter, Abigail. "Introducing the LC Labs Artificial Intelligence Planning Framework", *Library of Congress Blog*, published November 15, 2023.](https://blogs.loc.gov/thesignal/2023/11/introducing-the-lc-labs-artificial-intelligence-planning-framework)
 
-[^20] [Gribomont, Isabelle. "OCR with Google Vision API and Tesseract", *Programming Historian*, published March, 31, 2023,](https://programminghistorian.org/en/lessons/ocr-with-google-vision-and-tesseract).
+[^20] [Gribomont, Isabelle. "OCR with Google Vision API and Tesseract", *Programming Historian*, published March 31, 2023.](https://programminghistorian.org/en/lessons/ocr-with-google-vision-and-tesseract)
 
-[^21] [Nockels, Joe, Gooding, Paul, and Terras, Melissa. "The implications of handwritten text recognition for accessing the past at scale", *Journal of Documentation* 80, no. 7 (2024): 148–167.](https://doi.org/10.1108/JD-09-2023-0183).
+[^21] [Nockels, Joe, Gooding, Paul, and Terras, Melissa. "The implications of handwritten text recognition for accessing the past at scale", *Journal of Documentation* 80, no. 7 (2024): 148–167.](https://doi.org/10.1108/JD-09-2023-0183)
 
-[^22] [NasuhcaN. "Natural Language Processing (NLP): A Comprehensive Guide", *Medium*, published October, 23, 2025,](https://medium.com/@nasuhcanturker/natural-language-processing-nlp-a-comprehensive-guide-477984ebd873).
+[^22] [NasuhcaN. "Natural Language Processing (NLP): A Comprehensive Guide", *Medium*, published October 23, 2025.](https://medium.com/@nasuhcanturker/natural-language-processing-nlp-a-comprehensive-guide-477984ebd873)
 
-[^23] [Nandini P. "NLP with spaCy: A Comprehensive Guide", *Medium*, published July 20, 2024,](https://medium.com/@pnandhiniofficial/nlp-with-spacy-a-comprehensive-guide-5c3f1bccdb0a).
+[^23] [Nandini P. "NLP with spaCy: A Comprehensive Guide", *Medium*, published July 20, 2024.](https://medium.com/@pnandhiniofficial/nlp-with-spacy-a-comprehensive-guide-5c3f1bccdb0a)
 
-[^24] [McGregor, Nora. "AI & Machine Learning in Libraries", *LIBER Digital Scholarship & Data Science Topic Guides*, last modified May, 13, 2025,](https://libereurope.github.io/ds-topic-guides/ai-ml.html).
+[^24] [McGregor, Nora. "AI & Machine Learning in Libraries", *LIBER Digital Scholarship & Data Science Topic Guides*, last modified May 13, 2025.](https://libereurope.github.io/ds-topic-guides/ai-ml.html)
 
 [^25] Robinson, David. *Voices in the Code: A Story about People, Their Values, and the Algorithm They Made*. New York: 2022.
 
-[^26] [LexisNexus. “Indemnity definition”, published 2026,](https://www.lexisnexis.co.uk/legal/glossary/indemnity).
+[^26] [LexisNexus. “Indemnity definition”, published 2026.](https://www.lexisnexis.co.uk/legal/glossary/indemnity)
 
-[^27] [LexisNexus. “Warranty definition”, published 2026,](https://www.lexisnexis.co.uk/legal/glossary/warranty).
+[^27] [LexisNexus. “Warranty definition”, published 2026.](https://www.lexisnexis.co.uk/legal/glossary/warranty)
 
-[^28] [Erdelyi, Olivia J., and Erdelyi, Gabor. "The AI Liability Puzzle and A Fund-Based Work-Around". 2020.](https://doi.org/10.48550/arXiv.1911.08005).
+[^28] [Erdelyi, Olivia J., and Erdelyi, Gabor. "The AI Liability Puzzle and A Fund-Based Work-Around". 2020.](https://doi.org/10.48550/arXiv.1911.08005)
 
-[^29] [Havens, Lucy, Terras, Melissa, Bach, Benjamin, and Alex, Beatrice. "Uncertainty and Inclusivity in Gender Bias Annotation: An Annotation Taxonomy and Annotated Datasets of British English Text". In *Proceedings of the 4th Workshop on Gender Bias in Natural Language Processing (GeBNLP), Seattle, Washington. Association for Computational Linguistics*, 2022.](https://aclanthology.org/2022.gebnlp-1.4/).
+[^29] [Havens, Lucy, Terras, Melissa, Bach, Benjamin, and Alex, Beatrice. "Uncertainty and Inclusivity in Gender Bias Annotation: An Annotation Taxonomy and Annotated Datasets of British English Text". In *Proceedings of the 4th Workshop on Gender Bias in Natural Language Processing (GeBNLP), Seattle, Washington. Association for Computational Linguistics*, 2022.](https://aclanthology.org/2022.gebnlp-1.4/)
 
-[^30] [Schmidt, Linea, Ibing, Susanne, Borchert, Florian, et al. "Automating clinical phenotyping using natural language processing". *Communications Medicine* 6, no. 77 (2026).](https://doi.org/10.1038/s43856-025-01337-0).
+[^30] [Schmidt, Linea, Ibing, Susanne, Borchert, Florian, et al. "Automating clinical phenotyping using natural language processing". *Communications Medicine* 6, no. 77 (2026).](https://doi.org/10.1038/s43856-025-01337-0)
 
-[^31] [Nayak, Srikumar. "Named Entity Recognition for Payment Data Using NLP". 2026.](https://doi.org/10.48550/arXiv.2602.14009).
+[^31] [Nayak, Srikumar. "Named Entity Recognition for Payment Data Using NLP". 2026.](https://doi.org/10.48550/arXiv.2602.14009)
 
 ### Conflicts 
 

@@ -1002,8 +1002,7 @@ plt.close()
 
 The image looks like this:
 
-<!-- mean-subjects-per-year.png -->
-[Figure 1]
+{% include figure.html filename="en-or-enablar-lesson-5-01.png" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
 
 Sometimes we would like to put two charts side by side, because we would like to compare them, or because they express different sides of the same phenomenon. Right now we know the average numbers, but how many records don't have at all any subject headings? As the number of records per year are not equal, we are interested in both the absolute numbers and the ratio. If we put multiple charts on the same image, we should take care of both the overarching image and the individual charts (they are called subplots or Axes).
 
@@ -1080,8 +1079,7 @@ plt.close()
 
 The final image looks like this:
 
-<!-- records-per-year.png -->
-[Figure 2]
+{% include figure.html filename="en-or-enablar-lesson-5-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
 
 ##### Creating a Venn diagram
 
@@ -1110,8 +1108,7 @@ plt.close()
 
 It gives the colorized Venn diagram. The circles and its intersection contain the number of subjects, but not the subjects themselves:
 
-<!-- venn-diagram-v1.png -->
-[Figure 3]
+{% include figure.html filename="en-or-enablar-lesson-5-03.png" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
 
 However as the library is based on pyplot, we can add an annotation with `plt.annotate()`. We can create a text box somewhere around the circles, and list the subjects there. There is a problem though: we can transform the list of subjects into a text separated by new lines or by commas, but if they have several elements the annotation will be too high or wide. So we create a new function `format_lines` that mix the two separators, and create a list of maximum N character wide lines. 
 
@@ -1175,8 +1172,7 @@ plt.close()
 
 The final result will look like this:
 
-<!-- venn-diagram-v2.png -->
-[Figure 4]
+{% include figure.html filename="en-or-enablar-lesson-5-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
 
 #### Dissemination of results
 

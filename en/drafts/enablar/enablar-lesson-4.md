@@ -1,5 +1,5 @@
 ---
-title: "'Terms and Conditions Apply': Intrepreting AI Tool Licences in Research Contexts through Natural Language Processing"
+title: "'Terms and Conditions Apply': Intrepreting AI Licences in Research Contexts through Natural Language Processing"
 slug: enablar-lesson-4
 layout: lesson
 collection: lessons

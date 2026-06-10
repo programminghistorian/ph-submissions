@@ -23,9 +23,6 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-
-# Creating Literary Network Data and Visualisations in Gephi
-
 This beginner-friendly lesson introduces [network analysis](https://en.wikipedia.org/wiki/Network_science) for literary texts. Unlike the more commonly studied [social network analysis](https://en.wikipedia.org/wiki/Social_network_analysis), we focus on thematic network analysis, guiding you through the process of building structured data from any literary text. Our approach prioritises critical interpretation alongside technical visualisation.
 
 ## Lesson Objectives

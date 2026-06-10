@@ -1,0 +1,570 @@
+Id,Label,Type
+Acorn,Acorn,Sub-topic
+Adder,Adder,Sub-topic
+Alligator,Alligator,Sub-topic
+Ant,Ant,Sub-topic
+Ape,Ape,Sub-topic
+Apples,Apples,Sub-topic
+Apricots,Apricots,Sub-topic
+Asp,Asp,Sub-topic
+Aspen,Aspen,Sub-topic
+Ass,Ass,Sub-topic
+Baboon,Baboon,Sub-topic
+Balm,Balm,Sub-topic
+Barley,Barley,Sub-topic
+Barnacle,Barnacle,Sub-topic
+"Bat,Raremouse","Bat,Raremouse",Sub-topic
+Bear,Bear,Sub-topic
+Bee,Bee,Sub-topic
+Beetle,Beetle,Sub-topic
+Berries,Berries,Sub-topic
+Bilberry,Bilberry,Sub-topic
+Blackberry,Blackberry,Sub-topic
+Blind-Worm,Blind-Worm,Sub-topic
+Boar,Boar,Sub-topic
+Box,Box,Sub-topic
+Briers,Briers,Sub-topic
+Buck,Buck,Sub-topic
+Bull,Bull,Sub-topic
+Burs,Burs,Sub-topic
+Butterfly,Butterfly,Sub-topic
+Cabbage,Cabbage,Sub-topic
+Calf,Calf,Sub-topic
+Camel,Camel,Sub-topic
+Cameleon,Cameleon,Sub-topic
+Carnation,Carnation,Sub-topic
+Carp,Carp,Sub-topic
+Cat,Cat,Sub-topic
+"Caterpillar, Canker","Caterpillar, Canker",Sub-topic
+Cedar,Cedar,Sub-topic
+Cherries,Cherries,Sub-topic
+Chestnut,Chestnut,Sub-topic
+Chicken,Chicken,Sub-topic
+Chough,Chough,Sub-topic
+Clove,Clove,Sub-topic
+Clover,Clover,Sub-topic
+Cock,Cock,Sub-topic
+Cockle,Cockle,Sub-topic
+Cod,Cod,Sub-topic
+"Coloquintida, Locusts","Coloquintida, Locusts",Sub-topic
+Columbine,Columbine,Sub-topic
+Coney,Coney,Sub-topic
+Corn,Corn,Sub-topic
+Cow,Cow,Sub-topic
+Cowslip,Cowslip,Sub-topic
+Coystril,Coystril,Sub-topic
+Crab,Crab,Sub-topic
+Cricket,Cricket,Sub-topic
+Crocodile,Crocodile,Sub-topic
+Crow,Crow,Sub-topic
+Cuckoo,Cuckoo,Sub-topic
+Cuckoo Flowers,Cuckoo Flowers,Sub-topic
+Currants,Currants,Sub-topic
+Cypress,Cypress,Sub-topic
+Daffodil,Daffodil,Sub-topic
+Daisy,Daisy,Sub-topic
+Dates,Dates,Sub-topic
+Daw,Daw,Sub-topic
+Deer,Deer,Sub-topic
+Dewberry,Dewberry,Sub-topic
+Dock,Dock,Sub-topic
+Doe,Doe,Sub-topic
+Dog,Dog,Sub-topic
+Dove,Dove,Sub-topic
+Drone,Drone,Sub-topic
+Duck,Duck,Sub-topic
+Eagle,Eagle,Sub-topic
+Eel,Eel,Sub-topic
+Elder,Elder,Sub-topic
+Elephant,Elephant,Sub-topic
+Elm,Elm,Sub-topic
+Eyas,Eyas,Sub-topic
+Eyas-Musket,Eyas-Musket,Sub-topic
+Falcon,Falcon,Sub-topic
+Fawn,Fawn,Sub-topic
+Fennel,Fennel,Sub-topic
+Ferret,Ferret,Sub-topic
+Figs,Figs,Sub-topic
+Finch,Finch,Sub-topic
+Fish,Fish,Sub-topic
+Flax,Flax,Sub-topic
+Flea,Flea,Sub-topic
+Fly,Fly,Sub-topic
+Fowl,Fowl,Sub-topic
+Fox,Fox,Sub-topic
+Frog,Frog,Sub-topic
+Fumitory,Fumitory,Sub-topic
+Garlic,Garlic,Sub-topic
+Gillyvors,Gillyvors,Sub-topic
+Ginger,Ginger,Sub-topic
+Glow-Worm,Glow-Worm,Sub-topic
+Gnat,Gnat,Sub-topic
+Goat,Goat,Sub-topic
+Goose,Goose,Sub-topic
+Gosling,Gosling,Sub-topic
+Grapes,Grapes,Sub-topic
+Grasshopper,Grasshopper,Sub-topic
+Grub,Grub,Sub-topic
+Gudgeon,Gudgeon,Sub-topic
+Gull,Gull,Sub-topic
+Gum,Gum,Sub-topic
+Haggard,Haggard,Sub-topic
+Handsaw (Heron),Handsaw (Heron),Sub-topic
+Hare,Hare,Sub-topic
+Hare-Bell,Hare-Bell,Sub-topic
+Hart,Hart,Sub-topic
+Hawk,Hawk,Sub-topic
+Hawthorn,Hawthorn,Sub-topic
+Hazel,Hazel,Sub-topic
+Hazel-Nut,Hazel-Nut,Sub-topic
+Heath,Heath,Sub-topic
+Hebenon,Hebenon,Sub-topic
+Hedge Sparrow,Hedge Sparrow,Sub-topic
+Hedgehog,Hedgehog,Sub-topic
+Heifer,Heifer,Sub-topic
+"Hemlock, Harlock","Hemlock, Harlock",Sub-topic
+Hen,Hen,Sub-topic
+Herring,Herring,Sub-topic
+Hind,Hind,Sub-topic
+Hog,Hog,Sub-topic
+Holly,Holly,Sub-topic
+Holy Thistle,Holy Thistle,Sub-topic
+Honeysuckle,Honeysuckle,Sub-topic
+Horse,Horse,Sub-topic
+Humble Bee,Humble Bee,Sub-topic
+Hyena,Hyena,Sub-topic
+Hyssop And Thyme,Hyssop And Thyme,Sub-topic
+Ivy,Ivy,Sub-topic
+Jay,Jay,Sub-topic
+Kite,Kite,Sub-topic
+Lamb,Lamb,Sub-topic
+Lapwing,Lapwing,Sub-topic
+Lark,Lark,Sub-topic
+Laurel,Laurel,Sub-topic
+Lavender,Lavender,Sub-topic
+Leek,Leek,Sub-topic
+Lemon,Lemon,Sub-topic
+"Leopard, Libbard, Pard","Leopard, Libbard, Pard",Sub-topic
+Lettuce,Lettuce,Sub-topic
+Lily,Lily,Sub-topic
+Lion,Lion,Sub-topic
+Lioness,Lioness,Sub-topic
+Lizard,Lizard,Sub-topic
+Love-In-Idleness,Love-In-Idleness,Sub-topic
+Mace,Mace,Sub-topic
+Mallard,Mallard,Sub-topic
+Marigold,Marigold,Sub-topic
+Marjoram,Marjoram,Sub-topic
+Marmozet,Marmozet,Sub-topic
+Martlet,Martlet,Sub-topic
+Medlars,Medlars,Sub-topic
+Minnow,Minnow,Sub-topic
+Mint,Mint,Sub-topic
+Mistletoe,Mistletoe,Sub-topic
+Mole,Mole,Sub-topic
+Monkey,Monkey,Sub-topic
+Moth,Moth,Sub-topic
+Mouse,Mouse,Sub-topic
+Mulberry,Mulberry,Sub-topic
+Mule,Mule,Sub-topic
+Mushroom,Mushroom,Sub-topic
+Mussel,Mussel,Sub-topic
+Mustard,Mustard,Sub-topic
+Myrtle,Myrtle,Sub-topic
+Nettle,Nettle,Sub-topic
+Newt,Newt,Sub-topic
+Nightingale,Nightingale,Sub-topic
+Nutmeg,Nutmeg,Sub-topic
+Nuts,Nuts,Sub-topic
+Oak,Oak,Sub-topic
+Oats,Oats,Sub-topic
+Olive,Olive,Sub-topic
+Onion,Onion,Sub-topic
+Orange,Orange,Sub-topic
+Osiers,Osiers,Sub-topic
+Osprey,Osprey,Sub-topic
+Ostrich,Ostrich,Sub-topic
+Ousel-cock,Ousel-cock,Sub-topic
+Owl,Owl,Sub-topic
+Ox,Ox,Sub-topic
+Ox-Lip,Ox-Lip,Sub-topic
+Oyster,Oyster,Sub-topic
+Paddock,Paddock,Sub-topic
+Palm,Palm,Sub-topic
+Pansy,Pansy,Sub-topic
+Panther,Panther,Sub-topic
+Parrot,Parrot,Sub-topic
+Parsley,Parsley,Sub-topic
+Partridge,Partridge,Sub-topic
+Peacock,Peacock,Sub-topic
+Pears,Pears,Sub-topic
+Peas,Peas,Sub-topic
+Peascod,Peascod,Sub-topic
+Pelican,Pelican,Sub-topic
+Pepper,Pepper,Sub-topic
+Pheasant,Pheasant,Sub-topic
+Pig,Pig,Sub-topic
+Pigeon,Pigeon,Sub-topic
+Pilchard,Pilchard,Sub-topic
+Pine,Pine,Sub-topic
+Pink,Pink,Sub-topic
+Plantain,Plantain,Sub-topic
+"Polecat, Muskcat, Fitchew","Polecat, Muskcat, Fitchew",Sub-topic
+Pomegranate-tree,Pomegranate-tree,Sub-topic
+Poor John,Poor John,Sub-topic
+Poppy And Mandragora,Poppy And Mandragora,Sub-topic
+Porcupine,Porcupine,Sub-topic
+Porpus,Porpus,Sub-topic
+Potato,Potato,Sub-topic
+Primrose,Primrose,Sub-topic
+Prunes,Prunes,Sub-topic
+Puttock,Puttock,Sub-topic
+Quail,Quail,Sub-topic
+Quince,Quince,Sub-topic
+Rabbit,Rabbit,Sub-topic
+Raisins,Raisins,Sub-topic
+Ram,Ram,Sub-topic
+Rat,Rat,Sub-topic
+Raven,Raven,Sub-topic
+Rhinoceros,Rhinoceros,Sub-topic
+Rhubarb and Senna,Rhubarb and Senna,Sub-topic
+Rice,Rice,Sub-topic
+Robin,Robin,Sub-topic
+Roe,Roe,Sub-topic
+Rook,Rook,Sub-topic
+Rose,Rose,Sub-topic
+Rosemary,Rosemary,Sub-topic
+Rue,Rue,Sub-topic
+Rushes,Rushes,Sub-topic
+Rye,Rye,Sub-topic
+Saffron,Saffron,Sub-topic
+Samphire,Samphire,Sub-topic
+Savory,Savory,Sub-topic
+Scamel (Sea-mell),Scamel (Sea-mell),Sub-topic
+Scorpion,Scorpion,Sub-topic
+Serpent,Serpent,Sub-topic
+Shark,Shark,Sub-topic
+Sheep,Sheep,Sub-topic
+Shrimp,Shrimp,Sub-topic
+Slug,Slug,Sub-topic
+Snail,Snail,Sub-topic
+Snake,Snake,Sub-topic
+Sparrow,Sparrow,Sub-topic
+Spider,Spider,Sub-topic
+Squirrel,Squirrel,Sub-topic
+Stag,Stag,Sub-topic
+Strawberry,Strawberry,Sub-topic
+Swallow,Swallow,Sub-topic
+Swan,Swan,Sub-topic
+Sycamore,Sycamore,Sub-topic
+Thistle,Thistle,Sub-topic
+Thrush (Throstle),Thrush (Throstle),Sub-topic
+Tiger,Tiger,Sub-topic
+Toad,Toad,Sub-topic
+Tortoise,Tortoise,Sub-topic
+Trout,Trout,Sub-topic
+Turkey,Turkey,Sub-topic
+Turnips,Turnips,Sub-topic
+Unicorn,Unicorn,Sub-topic
+Vetches,Vetches,Sub-topic
+Vine,Vine,Sub-topic
+Violet,Violet,Sub-topic
+Viper,Viper,Sub-topic
+Vulture,Vulture,Sub-topic
+Walnut,Walnut,Sub-topic
+Wasp,Wasp,Sub-topic
+Weasel,Weasel,Sub-topic
+Whale,Whale,Sub-topic
+Wheat,Wheat,Sub-topic
+Wild Goose,Wild Goose,Sub-topic
+Wild-fowl,Wild-fowl,Sub-topic
+Willow,Willow,Sub-topic
+Wolf,Wolf,Sub-topic
+Woodbine And Eglantine,Woodbine And Eglantine,Sub-topic
+Woodcock,Woodcock,Sub-topic
+Worm,Worm,Sub-topic
+Wren,Wren,Sub-topic
+Yew,Yew,Sub-topic
+1st Fisher,1st Fisher,Character
+2nd Witch,2nd Witch,Character
+3rd Fisher,3rd Fisher,Character
+AC_Antony,AC_Antony,Character
+AC_Caesar,AC_Caesar,Character
+AC_Clown,AC_Clown,Character
+AMND_Demetrius,AMND_Demetrius,Character
+AWTEW_Clown,AWTEW_Clown,Character
+AWTEW_First Lord,AWTEW_First Lord,Character
+AYLI_Duke,AYLI_Duke,Character
+AYLI_First Lord,AYLI_First Lord,Character
+Aaron,Aaron,Character
+Achilles,Achilles,Character
+Adam,Adam,Character
+Adriana,Adriana,Character
+Agamemnon,Agamemnon,Character
+Ajax,Ajax,Character
+Albany,Albany,Character
+Alexander,Alexander,Character
+Alexas,Alexas,Character
+All Servants,All Servants,Character
+Amiens,Amiens,Character
+Anne,Anne,Character
+Ant. S.,Ant. S.,Character
+Antigonus,Antigonus,Character
+Antipholus E.,Antipholus E.,Character
+Apemantus,Apemantus,Character
+Ariel,Ariel,Character
+Armado,Armado,Character
+Arvigarus,Arvigarus,Character
+Arviragus,Arviragus,Character
+Aufidius,Aufidius,Character
+Autolycus,Autolycus,Character
+Banquo,Banquo,Character
+Bassanio,Bassanio,Character
+Beatrice,Beatrice,Character
+Belarius,Belarius,Character
+Benedick,Benedick,Character
+Benedick (aside),Benedick (aside),Character
+Benvolio,Benvolio,Character
+Bernardo,Bernardo,Character
+Biondello,Biondello,Character
+Biron,Biron,Character
+Bottom,Bottom,Character
+Boyet,Boyet,Character
+C_Brutus,C_Brutus,Character
+C_Queen,C_Queen,Character
+Caius,Caius,Character
+Caliban,Caliban,Character
+Calphurnia,Calphurnia,Character
+Casca,Casca,Character
+Cassius,Cassius,Character
+Celia,Celia,Character
+Ceres,Ceres,Character
+Claud,Claud,Character
+Cleon,Cleon,Character
+Cleopatra,Cleopatra,Character
+Cloten,Cloten,Character
+Clown,Clown,Character
+Clown (Feste),Clown (Feste),Character
+Cominius,Cominius,Character
+Conrade,Conrade,Character
+Cordelia,Cordelia,Character
+Coriolanus,Coriolanus,Character
+Cornelia,Cornelia,Character
+Cornelius,Cornelius,Character
+Countess,Countess,Character
+Cressida,Cressida,Character
+Decius,Decius,Character
+Desdemona,Desdemona,Character
+Dion,Dion,Character
+Dionyza,Dionyza,Character
+Dogberry,Dogberry,Character
+Don John,Don John,Character
+Don Pedro,Don Pedro,Character
+Dorcas,Dorcas,Character
+Dromio,Dromio,Character
+Dromio E.,Dromio E.,Character
+Dromio S.,Dromio S.,Character
+Dromio S. (within),Dromio S. (within),Character
+Dumain,Dumain,Character
+Duncan,Duncan,Character
+Edgar,Edgar,Character
+Edmund,Edmund,Character
+Emilia,Emilia,Character
+Enobarbus,Enobarbus,Character
+Eros,Eros,Character
+Euphronius,Euphronius,Character
+Evans,Evans,Character
+Fabian,Fabian,Character
+Fairy,Fairy,Character
+Falstaff,Falstaff,Character
+First Bandit,First Bandit,Character
+First Citizen,First Citizen,Character
+First Fairy,First Fairy,Character
+First Guard,First Guard,Character
+First Huntsman,First Huntsman,Character
+First Murderer,First Murderer,Character
+First Senator,First Senator,Character
+First Servant,First Servant,Character
+First Witch,First Witch,Character
+Flavius,Flavius,Character
+Florizel,Florizel,Character
+Fool,Fool,Character
+Ford,Ford,Character
+Francisco,Francisco,Character
+Friar,Friar,Character
+Gent,Gent,Character
+Ghost,Ghost,Character
+Gloster,Gloster,Character
+Gonzalo,Gonzalo,Character
+Gower,Gower,Character
+Gratiano,Gratiano,Character
+Gregory,Gregory,Character
+Gremio,Gremio,Character
+Grumio,Grumio,Character
+Guiderius,Guiderius,Character
+H_Queen,H_Queen,Character
+Haberdasher,Haberdasher,Character
+Hamlet,Hamlet,Character
+Hector,Hector,Character
+Helena,Helena,Character
+Hermia,Hermia,Character
+Hero,Hero,Character
+Hippolyta,Hippolyta,Character
+Holofernes,Holofernes,Character
+Horatio,Horatio,Character
+Hortensio,Hortensio,Character
+Iachimo,Iachimo,Character
+Iago,Iago,Character
+Imogen,Imogen,Character
+Iris,Iris,Character
+Isabel,Isabel,Character
+Isabella,Isabella,Character
+JC_Antony,JC_Antony,Character
+JC_Brutus,JC_Brutus,Character
+Jaques,Jaques,Character
+Jessica,Jessica,Character
+Julia,Julia,Character
+Juliet,Juliet,Character
+Katharine,Katharine,Character
+Kent,Kent,Character
+King,King,Character
+LLL_Costard,LLL_Costard,Character
+Lady M,Lady M,Character
+Lady Macbeth,Lady Macbeth,Character
+Lady Macduff,Lady Macduff,Character
+Laertes,Laertes,Character
+Lafeu,Lafeu,Character
+Launce,Launce,Character
+Launcelot,Launcelot,Character
+Lavinia,Lavinia,Character
+Lear,Lear,Character
+Leontes,Leontes,Character
+Lepidus,Lepidus,Character
+Lion (Character),Lion (Character),Character
+Lodovico,Lodovico,Character
+Longaville,Longaville,Character
+Lord,Lord,Character
+Lorenzo,Lorenzo,Character
+Luciana,Luciana,Character
+Lucio,Lucio,Character
+Lucius,Lucius,Character
+Lysander,Lysander,Character
+Lysimachus,Lysimachus,Character
+MAAN_Antonio,MAAN_Antonio,Character
+MAAN_Claudio,MAAN_Claudio,Character
+MFM_Claudio,MFM_Claudio,Character
+MFM_Duke,MFM_Duke,Character
+MV_Antonio,MV_Antonio,Character
+Macbeth,Macbeth,Character
+Macduff,Macduff,Character
+Maixus,Maixus,Character
+Malvolio,Malvolio,Character
+Mamilius,Mamilius,Character
+Marcellus,Marcellus,Character
+Marcius,Marcius,Character
+Marcius (Coriolanus),Marcius (Coriolanus),Character
+Marcus,Marcus,Character
+Margaret,Margaret,Character
+Maria,Maria,Character
+Marina,Marina,Character
+Menenius,Menenius,Character
+Mercutio,Mercutio,Character
+Messenger,Messenger,Character
+Moth (Character),Moth (Character),Character
+Mrs Page,Mrs Page,Character
+Mrs. Ford,Mrs. Ford,Character
+Musicians (Song),Musicians (Song),Character
+Mustard (Character),Mustard (Character),Character
+Nathaniel,Nathaniel,Character
+Nestor,Nestor,Character
+Nurse,Nurse,Character
+Oberon,Oberon,Character
+Officer,Officer,Character
+Old Gobbo,Old Gobbo,Character
+Old Man,Old Man,Character
+Oliver,Oliver,Character
+Ophelia,Ophelia,Character
+Orlando,Orlando,Character
+Orsino,Orsino,Character
+Othello,Othello,Character
+Page,Page,Character
+Pandarus,Pandarus,Character
+Paris,Paris,Character
+Parolles,Parolles,Character
+Patrodus,Patrodus,Character
+Paulina,Paulina,Character
+Perdita,Perdita,Character
+Pericles,Pericles,Character
+Petruchio,Petruchio,Character
+Pisanio,Pisanio,Character
+Pistol,Pistol,Character
+Poet,Poet,Character
+Polixenes,Polixenes,Character
+Polonius,Polonius,Character
+Pompey (Antony and Cleopatra),Pompey (Antony and Cleopatra),Character
+Pompey (Measure for Measure),Pompey (Measure for Measure),Character
+Porter,Porter,Character
+Portia,Portia,Character
+Posthumus,Posthumus,Character
+Prince of Morocco,Prince of Morocco,Character
+Princess,Princess,Character
+Prospero,Prospero,Character
+Proteus,Proteus,Character
+Puck,Puck,Character
+Quickly,Quickly,Character
+Quince (Character),Quince (Character),Character
+Romeo,Romeo,Character
+Rosalind,Rosalind,Character
+Rosencrantz,Rosencrantz,Character
+Rosse,Rosse,Character
+Salarino,Salarino,Character
+Saturninus,Saturninus,Character
+Scarus,Scarus,Character
+Sebastian,Sebastian,Character
+Second Captain,Second Captain,Character
+Second Guard,Second Guard,Character
+Second Lord (As You Like It),Second Lord (As You Like It),Character
+Second Lord (Timon of Athens),Second Lord (Timon of Athens),Character
+Second Servant,Second Servant,Character
+Second Witch,Second Witch,Character
+Senator,Senator,Character
+Shallow,Shallow,Character
+Shepherd,Shepherd,Character
+Shylock,Shylock,Character
+Simonides,Simonides,Character
+Sir Andrew,Sir Andrew,Character
+Sir Toby,Sir Toby,Character
+Slender,Slender,Character
+Soldier,Soldier,Character
+Son,Son,Character
+Soothsayer,Soothsayer,Character
+Speed,Speed,Character
+Stephano,Stephano,Character
+TA_Demetrius,TA_Demetrius,Character
+TN_Clown,TN_Clown,Character
+TN_Duke,TN_Duke,Character
+TT_Antonio,TT_Antonio,Character
+TWT_Clown,TWT_Clown,Character
+TWT_Costard,TWT_Costard,Character
+TWT_First Lord,TWT_First Lord,Character
+Tamora,Tamora,Character
+Thersitcs,Thersitcs,Character
+Thersites,Thersites,Character
+Theseus,Theseus,Character
+Third Servant,Third Servant,Character
+Third Witch,Third Witch,Character
+Thisbe,Thisbe,Character
+Timon,Timon,Character
+Titania,Titania,Character
+Titus,Titus,Character
+Touchstone,Touchstone,Character
+Trinculo,Trinculo,Character
+Troilus,Troilus,Character
+Tubal,Tubal,Character
+Tybalt,Tybalt,Character
+Ulysses,Ulysses,Character
+Ursula,Ursula,Character
+Valentine,Valentine,Character
+Valeria,Valeria,Character
+Viola,Viola,Character
+Volumnia,Volumnia,Character

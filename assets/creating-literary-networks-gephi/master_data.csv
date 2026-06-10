@@ -1,0 +1,1017 @@
+Main Topic,Sub-topic,Character,Play,Genre,Gender,Status
+Garden Flowers,Rose,Oberon,A Midsummer Night's Dream,Comedy,Male,Major
+Garden Flowers,Rose,Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Garden Flowers,Rose,Don John,Much Ado About Nothing,Comedy,Male,Major
+Garden Flowers,Rose,Orsino,Twelfth Night,Comedy,Male,Major
+Garden Flowers,Rose,Biron,Love's Labour's Lost,Comedy,Male,Minor
+Garden Flowers,Rose,Boyet,Love's Labour's Lost,Comedy,Male,Minor
+Garden Flowers,Rose,Boyet,Love's Labour's Lost,Comedy,Male,Minor
+Garden Flowers,Rose,Touchstone,As You Like It,Comedy,Male,Minor
+Garden Flowers,Rose,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Garden Flowers,Rose,AC_Antony,Antony and Cleopatra,Tragedy,Male,Major
+Garden Flowers,Rose,Othello,Othello,Tragedy,Male,Major
+Garden Flowers,Rose,Juliet,Romeo and Juliet,Tragedy,Female,Major
+Garden Flowers,Lily,Princess,Love's Labour's Lost,Comedy,Female,Major
+Garden Flowers,Lily,Perdita,The Winter's Tale,Comedy,Female,Major
+Garden Flowers,Lily,Troilus,Troilus and Cressida,Tragedy,Male,Major
+Garden Flowers,Lily,Guiderius,Cymbeline,Tragedy,Male,Major
+Garden Flowers,Lily,Titus,Titus Andronicus,Tragedy,Male,Major
+Garden Flowers,Carnation,Perdita,The Winter's Tale,Comedy,Female,Major
+Garden Flowers,Marigold,Perdita,The Winter's Tale,Comedy,Female,Major
+Garden Flowers,Marigold,Marina,Pericles,Comedy,Female,Major
+Garden Flowers,Columbine,Longaville,Love's Labour's Lost,Comedy,Male,Minor
+Garden Flowers,Columbine,Ophelia,Hamlet,Tragedy,Female,Major
+Garden Flowers,Pansy,Ophelia,Hamlet,Tragedy,Female,Major
+Garden Flowers,Lavender,Perdita,The Winter's Tale,Comedy,Female,Major
+Garden Flowers,Pink,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Garden Flowers,Pink,Romeo,Romeo and Juliet,Tragedy,Male,Major
+Garden Flowers,Gillyvors,Perdita,The Winter's Tale,Comedy,Female,Major
+Garden Flowers,Pink,Polixenes,The Winter's Tale,Comedy,Male,Minor
+Garden Flowers,Holy Thistle,Beatrice,Much Ado About Nothing,Comedy,Female,Major
+Garden Flowers,Holy Thistle,Margaret,Much Ado About Nothing,Comedy,Female,Minor
+Garden Flowers,Violet,Oberon,A Midsummer Night's Dream,Comedy,Male,Major
+Wild Flowers,Violet,Orsino,Twelfth Night,Comedy,Male,Major
+Wild Flowers,Violet,Perdita,The Winter's Tale,Comedy,Female,Major
+Wild Flowers,Violet,Laertes,Hamlet,Tragedy,Male,Major
+Wild Flowers,Violet,Laertes,Hamlet,Tragedy,Male,Major
+Wild Flowers,Violet,Belarius,Cymbeline,Tragedy,Male,Major
+Wild Flowers,Daffodil,Perdita,The Winter's Tale,Comedy,Female,Major
+Wild Flowers,Primrose,Perdita,The Winter's Tale,Comedy,Female,Major
+Wild Flowers,Primrose,Hermia,A Midsummer Night's Dream,Comedy,Female,Major
+Wild Flowers,Daffodil,Arviragus,Cymbeline,Tragedy,Male,Major
+Wild Flowers,Daffodil,Porter,Macbeth,Tragedy,Male,Minor
+Wild Flowers,Ox-Lip,Oberon,A Midsummer Night's Dream,Comedy,Male,Major
+Wild Flowers,Ox-Lip,Perdita,The Winter's Tale,Comedy,Female,Major
+Wild Flowers,Daisy,Ophelia,Hamlet,Tragedy,Female,Major
+Wild Flowers,Daisy,H_Queen,Hamlet,Tragedy,Female,Major
+Wild Flowers,Daisy,Lucius,Cymbeline,Tragedy,Male,Minor
+Wild Flowers,Woodbine And Eglantine,Oberon,A Midsummer Night's Dream,Comedy,Male,Major
+Wild Flowers,Woodbine And Eglantine,Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Wild Flowers,Woodbine And Eglantine,Ursula,Much Ado About Nothing,Comedy,Female,Minor
+Wild Flowers,Woodbine And Eglantine,Arviragus,Cymbeline,Tragedy,Male,Major
+Wild Flowers,Honeysuckle,Hero,Much Ado About Nothing,Comedy,Female,Major
+Wild Flowers,Cowslip,Ariel,The Tempest,Comedy,Supernatural,Major
+Wild Flowers,Cowslip,Fairy,A Midsummer Night's Dream,Comedy,Supernatural,Minor
+Wild Flowers,Cowslip,Thisbe,A Midsummer Night's Dream,Comedy,Male,Minor
+Wild Flowers,Cowslip,C_Queen,Cymbeline,Tragedy,Female,Major
+Wild Flowers,Cowslip,Iachimo,Cymbeline,Tragedy,Male,Minor
+Wild Flowers,Hare-Bell,Arviragus,Cymbeline,Tragedy,Male,Major
+Wild Flowers,Love-In-Idleness,Oberon,A Midsummer Night's Dream,Comedy,Male,Major
+Weeds,Nettle,Gonzalo,The Tempest,Comedy,Male,Major
+Weeds,Nettle,TT_Antonio,The Tempest,Comedy,Male,Major
+Weeds,Nettle,Sir Toby,Twelfth Night,Comedy,Male,Minor
+Weeds,Nettle,Cressida,Troilus and Cressida,Tragedy,Female,Major
+Weeds,Nettle,Iago,Othello,Tragedy,Male,Major
+Weeds,Nettle,Menenius,Coriolanus,Tragedy,Male,Major
+Weeds,Cockle,Biron,Love's Labour's Lost,Comedy,Male,Minor
+Weeds,Cockle,Coriolanus,Coriolanus,Tragedy,Male,Major
+Weeds,Fumitory,Cordelia,King Lear,Tragedy,Female,Major
+Weeds,"Hemlock, Harlock",Cordelia,King Lear,Tragedy,Female,Major
+Weeds,"Hemlock, Harlock",Third Witch,Macbeth,Tragedy,Supernatural,Minor
+Weeds,Dock,Gonzalo,The Tempest,Comedy,Male,Major
+Weeds,Dock,Sebastian,The Tempest,Comedy,Male,Minor
+Weeds,Thistle,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Weeds,Rushes,Dromio,The Comedy of Errors,Comedy,Male,Minor
+Weeds,Rushes,Rosalind,As You Like It,Comedy,Female,Major
+Weeds,Rushes,Katharine,The Taming of the Shrew,Comedy,Female,Minor
+Weeds,Rushes,Eros,Antony and Cleopatra,Tragedy,Male,Minor
+Weeds,Rushes,Marcius,Coriolanus,Tragedy,Male,Minor
+Weeds,Rushes,First Senator,Coriolanus,Tragedy,Male,Minor
+Weeds,Rushes,Romeo,Romeo and Juliet,Tragedy,Male,Major
+Weeds,Burs,Lucio,Measure for Measure,Comedy,Male,Minor
+Weeds,Burs,Lysander,A Midsummer Night's Dream,Comedy,Male,Minor
+Weeds,Burs,Rosalind,As You Like It,Comedy,Female,Major
+Weeds,Burs,Pandarus,Troilus and Cressida,Tragedy,Male,Major
+Weeds,Plantain,LLL_Costard,Love's Labour's Lost,Comedy,Male,Minor
+Weeds,Plantain,Romeo,Romeo and Juliet,Tragedy,Male,Major
+Weeds,Cuckoo Flowers,Cordelia,King Lear,Tragedy,Female,Major
+Weeds,Clover,Tamora,Titus Andronicus,Tragedy,Female,Major
+Trees,Oak,Prospero,The Tempest,Comedy,Male,Major
+Trees,Oak,Prospero,The Tempest,Comedy,Male,Major
+Trees,Oak,Mrs Page,The Merry Wives of Windsor,Comedy,Female,Major
+Trees,Oak,Benedick,Much Ado About Nothing,Comedy,Male,Major
+Trees,Oak,Oliver,As You Like It,Comedy,Male,Major
+Trees,Oak,Paulina,The Winter's Tale,Comedy,Female,Major
+Trees,Oak,Casca,Julius Caesar,Tragedy,Male,Minor
+Trees,Oak,Nestor,Troilus and Cressida,Tragedy,Male,Minor
+Trees,Oak,Iago,Othello,Tragedy,Male,Major
+Trees,Oak,Volumnia,Coriolanus,Tragedy,Female,Major
+Trees,Oak,Volumnia,Coriolanus,Tragedy,Female,Major
+Trees,Oak,Second Guard,Coriolanus,Tragedy,Male,Minor
+Trees,Oak,Volumnia,Coriolanus,Tragedy,Female,Major
+Trees,Oak,Timon,Timon of Athens,Tragedy,Male,Major
+Trees,Cedar,Prospero,The Tempest,Comedy,Male,Major
+Trees,Cedar,Dumain,Love's Labour's Lost,Comedy,Male,Major
+Trees,Cedar,Coriolanus,Coriolanus,Tragedy,Male,Major
+Trees,Cedar,Soothsayer,Cymbeline,Tragedy,Male,Minor
+Trees,Cedar,Soothsayer,Coriolanus,Tragedy,Male,Minor
+Trees,Elm,Adriana,The Comedy of Errors,Comedy,Female,Major
+Trees,Elm,Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Trees,Sycamore,Boyet,Love's Labour's Lost,Comedy,Male,Minor
+Trees,Sycamore,Desdemona,Othello,Tragedy,Female,Major
+Trees,Sycamore,Benvolio,Romeo and Juliet,Tragedy,Male,Minor
+Trees,Yew,Paris,Romeo and Juliet,Tragedy,Male,Minor
+Trees,Yew,TN_Clown,Twelfth Night,Comedy,Male,Major
+Trees,Yew,Tamora,Titus Andronicus,Tragedy,Female,Major
+Trees,Yew,Third Witch,Macbeth,Tragedy,Supernatural,Minor
+Trees,Cypress,TN_Clown,Twelfth Night,Comedy,Male,Major
+Trees,Cypress,Gremio,The Taming of the Shrew,Comedy,Male,Minor
+Trees,Cypress,Aufidius,Coriolanus,Tragedy,Male,Major
+Trees,Pine,Prospero,The Tempest,Comedy,Male,Major
+Trees,Pine,Prospero,The Tempest,Comedy,Male,Major
+Trees,Pine,TWT_First Lord,The Winter's Tale,Comedy,Male,Minor
+Trees,Pine,AC_Antony,Antony and Cleopatra,Tragedy,Male,Major
+Trees,Pine,Agamemnon,Troilus and Cressida,Tragedy,Male,Major
+Trees,Pine,Belarius,Cymbeline,Tragedy,Male,Major
+Trees,Aspen,Marcus,Titus Andronicus,Tragedy,Male,Minor
+Trees,Box,Maria,Twelfth Night,Comedy,Female,Minor
+Trees,Willow,Benedick,Much Ado About Nothing,Comedy,Male,Major
+Trees,Willow,Benedick,Much Ado About Nothing,Comedy,Male,Major
+Trees,Willow,Lorenzo,The Merchant of Venice,Comedy,Male,Minor
+Trees,Willow,Desdemona,Othello,Tragedy,Female,Major
+Trees,Willow,H_Queen,Hamlet,Tragedy,Female,Major
+Trees,Palm,Rosalind,As You Like It,Comedy,Female,Major
+Trees,Palm,Cassius,Julius Caesar,Tragedy,Male,Major
+Trees,Palm,Hamlet,Hamlet,Tragedy,Male,Major
+Trees,Olive,Rosalind,As You Like It,Comedy,Female,Major
+Trees,Olive,Oliver,As You Like It,Comedy,Male,Major
+Trees,Olive,AC_Caesar,Antony and Cleopatra,Tragedy,Male,Major
+Trees,Myrtle,Isabella,Measure for Measure,Comedy,Female,Major
+Trees,Myrtle,Euphronius,Antony and Cleopatra,Tragedy,Male,Minor
+Trees,Hazel,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Trees,Laurel,Ulysses,Troilus and Cressida,Tragedy,Male,Major
+Trees,Laurel,Titus,Troilus and Cressida,Tragedy,Male,Major
+Trees,Elder,Arviragus,Cymbeline,Tragedy,Male,Major
+Trees,Elder,Saturninus,Titus Andronicus,Tragedy,Male,Major
+Trees,Pomegranate-tree,Juliet,Romeo and Juliet,Tragedy,Female,Major
+Trees,Crab,Menenius,Coriolanus,Tragedy,Male,Major
+Trees,Holly,Amiens,As You Like It,Comedy,Male,Minor
+Trees,Mistletoe,Tamora,Titus Andronicus,Tragedy,Female,Major
+Trees,Vine,Ceres,The Tempest,Comedy,Supernatural,Minor
+Trees,Vine,Timon,Timon of Athens,Tragedy,Male,Major
+Trees,Vine,Lear,King Lear,Tragedy,Male,Major
+Trees,Ivy,Prospero,The Tempest,Comedy,Male,Major
+Trees,Ivy,Shepherd,The Winter's Tale,Comedy,Male,Minor
+Trees,Ivy,Adriana,The Comedy of Errors,Comedy,Female,Major
+Trees,Hawthorn,Helena,A Midsummer Night's Dream,Comedy,Female,Major
+Trees,Hawthorn,Rosalind,As You Like It,Comedy,Female,Major
+Trees,Hawthorn,Edgar,King Lear,Tragedy,Male,Minor
+Trees,Osiers,Nathaniel,Love's Labour's Lost,Comedy,Male,Minor
+Trees,Osiers,Celia,As You Like It,Comedy,Female,Major
+Trees,Briers,Ariel,The Tempest,Comedy,Supernatural,Major
+Trees,Briers,Rosalind,As You Like It,Comedy,Female,Major
+Trees,Briers,Helena,All's Well That Ends Well,Comedy,Female,Major
+Trees,Briers,Timon,Timon of Athens,Tragedy,Male,Major
+Trees,Heath,Gonzalo,The Tempest,Comedy,Male,Major
+Fruits,Strawberry,Iago,Othello,Tragedy,Male,Major
+Fruits,Apricots,Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Fruits,Grapes,Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Fruits,Grapes,Touchstone,As You Like It,Comedy,Male,Minor
+Fruits,Grapes,Lafeu,All's Well That Ends Well,Comedy,Male,Minor
+Fruits,Grapes,Iago,Othello,Tragedy,Male,Major
+Fruits,Grapes,Menenius,Coriolanus,Tragedy,Male,Major
+Fruits,Figs,First Guard,Antony and Cleopatra,Tragedy,Male,Minor
+Fruits,Pears,Falstaff,The Merry Wives of Windsor,Comedy,Male,Major
+Fruits,Pears,Parolles,All's Well That Ends Well,Comedy,Male,Major
+Fruits,Apples,Sebastian,The Tempest,Comedy,Male,Minor
+Fruits,Apples,TT_Antonio,The Tempest,Comedy,Male,Major
+Fruits,Apples,Evans,The Merry Wives of Windsor,Comedy,Male,Major
+Fruits,Apples,Malvolio,Twelfth Night,Comedy,Male,Major
+Fruits,Apples,MV_Antonio,The Merchant of Venice,Comedy,Male,Major
+Fruits,Apples,Biondello,The Taming of the Shrew,Comedy,Male,Minor
+Fruits,Apples,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Fruits,Apples,Fool,King Lear,Tragedy,Male,Minor
+Fruits,Quince,Nurse,Romeo and Juliet,Tragedy,Female,Major
+Fruits,Orange,Beatrice,Much Ado About Nothing,Comedy,Female,Major
+Fruits,Orange,MAAN_Claudio,Much Ado About Nothing,Comedy,Male,Major
+Fruits,Orange,Menenius,Coriolanus,Tragedy,Male,Major
+Fruits,Lemon,Biron,Love's Labour's Lost,Comedy,Male,Minor
+Fruits,Cherries,AMND_Demetrius,A Midsummer Night's Dream,Comedy,Male,Minor
+Fruits,Cherries,Helena,A Midsummer Night's Dream,Comedy,Female,Major
+Fruits,Cherries,Gower,Pericles,Comedy,Male,Minor
+Fruits,Mulberry,Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Fruits,Mulberry,Volumnia,Coriolanus,Tragedy,Female,Major
+Fruits,Medlars,Touchstone,As You Like It,Comedy,Male,Minor
+Fruits,Medlars,Rosalind,As You Like It,Comedy,Female,Major
+Fruits,Medlars,Timon,Timon of Athens,Tragedy,Male,Major
+Fruits,Medlars,Apemantus,Timon of Athens,Tragedy,Male,Major
+Fruits,Medlars,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Fruits,Blackberry,Thersites,Troilus and Cressida,Tragedy,Male,Minor
+Fruits,Crab,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Fruits,Crab,Katharine,The Taming of the Shrew,Comedy,Female,Minor
+Fruits,Crab,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Fruits,Crab,Fool,King Lear,Tragedy,Male,Minor
+Fruits,Bilberry,Pistol,The Merry Wives of Windsor,Comedy,Male,Minor
+Fruits,Dewberry,Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Fruits,Nuts,Thersites,Troilus and Cressida,Tragedy,Male,Minor
+Fruits,Nuts,Hamlet,Hamlet,Tragedy,Male,Major
+Fruits,Nuts,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Fruits,Walnut,Ford,The Merry Wives of Windsor,Comedy,Male,Major
+Fruits,Walnut,Haberdasher,The Taming of the Shrew,Comedy,Male,Minor
+Fruits,Walnut,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Fruits,Hazel-Nut,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Fruits,Chestnut,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Fruits,Chestnut,First Witch,Macbeth,Tragedy,Supernatural,Minor
+Fruits,Prunes,Slender,The Merry Wives of Windsor,Comedy,Male,Minor
+Fruits,Prunes,Pompey (Measure for Measure),Measure for Measure,Comedy,Male,Major
+Fruits,Prunes,TWT_Clown,The Winter's Tale,Comedy,Male,Minor
+Fruits,Dates,TWT_Clown,The Winter's Tale,Comedy,Male,Minor
+Fruits,Currants,TWT_Clown,The Winter's Tale,Comedy,Male,Minor
+Fruits,Raisins,TWT_Clown,The Winter's Tale,Comedy,Male,Minor
+Fruits,Acorn,Prospero,The Tempest,Comedy,Male,Major
+Fruits,Acorn,Puck,A Midsummer Night's Dream,Comedy,Supernatural,Major
+Fruits,Acorn,Celia,As You Like It,Comedy,Female,Major
+Fruits,Berries,Caliban,The Tempest,Comedy,Male,Minor
+Fruits,Berries,Caliban,The Tempest,Comedy,Male,Minor
+Fruits,Berries,First Bandit,Timon of Athens,Tragedy,Male,Minor
+Fruits,Berries,AC_Caesar,Antony and Cleopatra,Tragedy,Male,Major
+Vegetables,Potato,Falstaff,The Merry Wives of Windsor,Comedy,Male,Major
+Vegetables,Cabbage,Falstaff,The Merry Wives of Windsor,Comedy,Male,Major
+Vegetables,Turnips,Anne,The Merry Wives of Windsor,Comedy,Female,Major
+Vegetables,Parsley,Biondello,The Taming of the Shrew,Comedy,Male,Minor
+Vegetables,Peascod,Touchstone,As You Like It,Comedy,Male,Minor
+Vegetables,Peascod,Malvolio,Twelfth Night,Comedy,Male,Major
+Vegetables,Peascod,Fool,King Lear,Tragedy,Male,Minor
+Vegetables,Lettuce,Iago,Othello,Tragedy,Male,Major
+Vegetables,Mushroom,Prospero,The Tempest,Comedy,Male,Major
+Vegetables,Samphire,Edgar,King Lear,Tragedy,Male,Minor
+Vegetables,Onion,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Vegetables,Onion,Lord,The Taming of the Shrew,Comedy,Male,Minor
+Vegetables,Onion,Lafeu,All's Well That Ends Well,Comedy,Male,Minor
+Vegetables,Onion,Enobarbus,Antony and Cleopatra,Tragedy,Male,Major
+Vegetables,Onion,Enobarbus,Antony and Cleopatra,Tragedy,Male,Major
+Vegetables,Garlic,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Vegetables,Garlic,Dorcas,The Winter's Tale,Comedy,Male,Minor
+Vegetables,Garlic,Menenius,Coriolanus,Tragedy,Male,Major
+Vegetables,Leek,Thisbe,A Midsummer Night's Dream,Comedy,Male,Minor
+Herbs,Mint,Dumain,Love's Labour's Lost,Comedy,Male,Major
+Herbs,Mint,Perdita,The Winter's Tale,Comedy,Female,Major
+Herbs,Savory,Perdita,The Winter's Tale,Comedy,Female,Major
+Herbs,Marjoram,Perdita,The Winter's Tale,Comedy,Female,Major
+Herbs,Marjoram,Lafeu,All's Well That Ends Well,Comedy,Male,Minor
+Herbs,Marjoram,AWTEW_Clown,All's Well That Ends Well,Comedy,Male,Minor
+Herbs,Marjoram,Edgar,King Lear,Tragedy,Male,Minor
+Herbs,Rue,Perdita,The Winter's Tale,Comedy,Female,Major
+Herbs,Rue,Ophelia,Hamlet,Tragedy,Female,Major
+Herbs,Rosemary,Perdita,The Winter's Tale,Comedy,Female,Major
+Herbs,Rosemary,Ophelia,Hamlet,Tragedy,Female,Major
+Herbs,Rosemary,Nurse,Romeo and Juliet,Tragedy,Female,Major
+Herbs,Rosemary,Friar,Romeo and Juliet,Tragedy,Male,Major
+Herbs,Rosemary,Edgar,King Lear,Tragedy,Male,Minor
+Herbs,Fennel,Ophelia,Hamlet,Tragedy,Female,Major
+Herbs,Hyssop And Thyme,Iago,Othello,Tragedy,Male,Major
+Herbs,Hyssop And Thyme,Oberon,A Midsummer Night's Dream,Comedy,Male,Major
+Herbs,Balm,Anne,The Merry Wives of Windsor,Comedy,Female,Major
+Spices And Medicines,Nutmeg,Dumain,Love's Labour's Lost,Comedy,Male,Major
+Spices And Medicines,Nutmeg,TWT_Clown,The Winter's Tale,Comedy,Male,Minor
+Spices And Medicines,Clove,Longaville,Love's Labour's Lost,Comedy,Male,Minor
+Spices And Medicines,Ginger,TWT_Costard,The Winter's Tale,Comedy,Male,Major
+Spices And Medicines,Ginger,TWT_Clown,The Winter's Tale,Comedy,Male,Minor
+Spices And Medicines,Mace,TWT_Clown,The Winter's Tale,Comedy,Male,Minor
+Spices And Medicines,Saffron,TWT_Clown,The Winter's Tale,Comedy,Male,Minor
+Spices And Medicines,Pepper,Ford,The Merry Wives of Windsor,Comedy,Male,Major
+Spices And Medicines,Pepper,Sir Andrew,Twelfth Night,Comedy,Male,Major
+Spices And Medicines,Mustard,Mustard,A Midsummer Night's Dream,Comedy,Male,Minor
+Spices And Medicines,Mustard,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Spices And Medicines,Mustard,Touchstone,As You Like It,Comedy,Male,Minor
+Spices And Medicines,Mustard,Rosalind,As You Like It,Comedy,Female,Major
+Spices And Medicines,Mustard,Rosalind,A Midsummer Night's Dream,Comedy,Female,Major
+Spices And Medicines,Mustard,Touchstone,As You Like It,Comedy,Male,Minor
+Spices And Medicines,Rhubarb and Senna,Macbeth,Macbeth,Tragedy,Male,Major
+Spices And Medicines,Poppy And Mandragora,Iago,Othello,Tragedy,Male,Major
+Spices And Medicines,Poppy And Mandragora,Cleopatra,Antony and Cleopatra,Tragedy,Female,Major
+Spices And Medicines,Hebenon,Ghost,Hamlet,Tragedy,Supernatural,Minor
+Spices And Medicines,Gum,Othello,Othello,Tragedy,Male,Major
+Spices And Medicines,Gum,Poet,Timon of Athens,Tragedy,Male,Major
+Spices And Medicines,Gum,Hamlet,Hamlet,Tragedy,Male,Major
+Spices And Medicines,"Coloquintida, Locusts",Iago,Othello,Tragedy,Male,Major
+Grain,Corn,Gonzalo,The Tempest,Comedy,Male,Major
+Grain,Corn,MFM_Duke,Measure for Measure,Comedy,Male,Minor
+Grain,Corn,Menenius,Coriolanus,Tragedy,Male,Major
+Grain,Corn,Marcius,Coriolanus,Tragedy,Male,Minor
+Grain,Corn,First Citizen,Coriolanus,Tragedy,Male,Minor
+Grain,Corn,C_Brutus,Coriolanus,Tragedy,Male,Major
+Grain,Corn,Coriolanus,Coriolanus,Tragedy,Male,Major
+Grain,Corn,Pericles,Pericles,Comedy,Male,Major
+Grain,Corn,Macbeth,Macbeth,Tragedy,Male,Major
+Grain,Wheat,Iris,The Tempest,Comedy,Supernatural,Minor
+Grain,Wheat,Helena,A Midsummer Night's Dream,Comedy,Female,Major
+Grain,Wheat,Pompey (Antony and Cleopatra),Antony and Cleopatra,Tragedy,Male,Minor
+Grain,Wheat,Pandarus,Troilus and Cressida,Tragedy,Male,Major
+Grain,Wheat,Hamlet,Hamlet,Tragedy,Male,Major
+Grain,Wheat,Edgar,King Lear,Tragedy,Male,Minor
+Grain,Barley,Iris,The Tempest,Comedy,Supernatural,Minor
+Grain,Oats,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Grain,Oats,Grumio,The Taming of the Shrew,Comedy,Male,Minor
+Grain,Oats,Officer,King Lear,Tragedy,Male,Minor
+Grain,Rye,Iris,The Tempest,Comedy,Supernatural,Minor
+Grain,Vetches,Iris,The Tempest,Comedy,Supernatural,Minor
+Grain,Peas,Iris,The Tempest,Comedy,Supernatural,Minor
+Grain,Peas,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Grain,Peas,Biron,Love's Labour's Lost,Comedy,Male,Minor
+Grain,Flax,Sir Toby,Twelfth Night,Comedy,Male,Minor
+Grain,Flax,Third Servant,King Lear,Tragedy,Male,Minor
+Grain,Rice,Clown,The Winter's Tale,Comedy,Male,Minor
+Birds,Ostrich,Enobarbus,Antony and Cleopatra,Tragedy,Male,Major
+Birds,Peacock,Iris,The Tempest,Comedy,Supernatural,Minor
+Birds,Peacock,Dromio,The Comedy of Errors,Comedy,Male,Minor
+Birds,Peacock,Thersites,Troilus and Cressida,Tragedy,Male,Minor
+Birds,Parrot,Dromio,The Comedy of Errors,Comedy,Male,Minor
+Birds,Parrot,Benedick,Much Ado About Nothing,Comedy,Male,Major
+Birds,Parrot,Rosalind,As You Like It,Comedy,Female,Major
+Birds,Parrot,Salarino,The Merchant of Venice,Comedy,Male,Minor
+Birds,Parrot,Lorenzo,The Merchant of Venice,Comedy,Male,Minor
+Birds,Eagle,Cassius,Julius Caesar,Tragedy,Male,Major
+Birds,Eagle,Enobarbus,Antony and Cleopatra,Tragedy,Male,Major
+Birds,Eagle,Coriolanus,Coriolanus,Tragedy,Male,Major
+Birds,Eagle,Poet,Timon of Athens,Tragedy,Male,Major
+Birds,Eagle,Nurse,Romeo and Juliet,Tragedy,Female,Major
+Birds,Eagle,Cleon,Pericles,Comedy,Male,Minor
+Birds,Eagle,Soothsayer,Cymbeline,Tragedy,Male,Minor
+Birds,Vulture,Lear,King Lear,Tragedy,Male,Major
+Birds,Falcon,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Birds,Falcon,Isabella,Measure for Measure,Comedy,Female,Major
+Birds,Falcon,Pandarus,Troilus and Cressida,Tragedy,Male,Major
+Birds,Falcon,Old Man,Macbeth,Tragedy,Male,Minor
+Birds,Hawk,Page,The Merry Wives of Windsor,Comedy,Male,Minor
+Birds,Hawk,Lord,The Taming of the Shrew,Comedy,Male,Minor
+Birds,Haggard,Hero,Much Ado About Nothing,Comedy,Female,Major
+Birds,Haggard,Viola,Twelfth Night,Comedy,Female,Minor
+Birds,Haggard,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Birds,Haggard,Hortensio,The Taming of the Shrew,Comedy,Male,Minor
+Birds,Haggard,Othello,Othello,Tragedy,Male,Major
+Birds,Eyas,Rosencrantz,Hamlet,Tragedy,Male,Minor
+Birds,Eyas-Musket,Mrs Page,The Merry Wives of Windsor,Comedy,Female,Major
+Birds,Eyas-Musket,Mrs. Ford,The Merry Wives of Windsor,Comedy,Female,Minor
+Birds,Coystril,Sir Toby,Twelfth Night,Comedy,Male,Minor
+Birds,Puttock,Imogen,Cymbeline,Tragedy,Female,Major
+Birds,Owl,Ariel,The Tempest,Comedy,Supernatural,Major
+Birds,Owl,Ajax,Troilus and Cressida,Tragedy,Male,Minor
+Birds,Owl,Ophelia,Hamlet,Tragedy,Female,Major
+Birds,Owl,Arvigarus,Cymbeline,Tragedy,Male,Minor
+Birds,Owl,Lady Macbeth,Macbeth,Tragedy,Female,Major
+Birds,Chough,Puck,A Midsummer Night's Dream,Comedy,Supernatural,Major
+Birds,Chough,Edgar,King Lear,Tragedy,Male,Minor
+Birds,Crow,AMND_Demetrius,A Midsummer Night's Dream,Comedy,Male,Minor
+Birds,Crow,Paulina,The Winter's Tale,Comedy,Female,Major
+Birds,Crow,Troilus,Troilus and Cressida,Tragedy,Male,Major
+Birds,Crow,Second Captain,Cymbeline,Tragedy,Male,Minor
+Birds,Crow,Coriolanus,Coriolanus,Tragedy,Male,Major
+Birds,Crow,Macbeth,Macbeth,Tragedy,Male,Major
+Birds,Raven,Caliban,The Tempest,Comedy,Male,Minor
+Birds,Raven,Juliet,Romeo and Juliet,Tragedy,Female,Major
+Birds,Raven,Iachimo,Cymbeline,Tragedy,Male,Minor
+Birds,Raven,Othello,Othello,Tragedy,Male,Major
+Birds,Raven,Lady Macbeth,Macbeth,Tragedy,Female,Major
+Birds,Rook,Macbeth,Macbeth,Tragedy,Male,Major
+Birds,Kite,Antigonus,The Winter's Tale,Comedy,Male,Minor
+Birds,Kite,AC_Antony,Antony and Cleopatra,Tragedy,Male,Major
+Birds,Kite,Coriolanus,Coriolanus,Tragedy,Male,Major
+Birds,Kite,Macbeth,Macbeth,Tragedy,Male,Major
+Birds,Daw,Pandarus,Troilus and Cressida,Tragedy,Male,Major
+Birds,Daw,Iago,Othello,Tragedy,Male,Major
+Birds,Daw,Third Servant,Coriolanus,Tragedy,Male,Minor
+Birds,Jay,Caliban,The Tempest,Comedy,Male,Minor
+Birds,Jay,Mrs. Ford,The Merry Wives of Windsor,Comedy,Female,Minor
+Birds,Jay,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Birds,Pheasant,TWT_Clown,The Winter's Tale,Comedy,Male,Minor
+Birds,Pheasant,Shepherd,The Winter's Tale,Comedy,Male,Minor
+Birds,Partridge,Beatrice,Much Ado About Nothing,Comedy,Female,Major
+Birds,Quail,Thersites,Troilus and Cressida,Tragedy,Male,Minor
+Birds,Woodcock,MAAN_Claudio,Much Ado About Nothing,Comedy,Male,Major
+Birds,Woodcock,Fabian,Twelfth Night,Comedy,Male,Minor
+Birds,Woodcock,Clown (Feste),Twelfth Night,Comedy,Male,Minor
+Birds,Woodcock,Grumio,The Taming of the Shrew,Comedy,Male,Minor
+Birds,Woodcock,AWTEW_First Lord,All's Well That Ends Well,Comedy,Male,Minor
+Birds,Woodcock,Biron,Love's Labour's Lost,Comedy,Male,Minor
+Birds,Woodcock,Polonius,Hamlet,Tragedy,Male,Minor
+Birds,Woodcock,Laertes,Hamlet,Tragedy,Male,Major
+Birds,Pigeon,Celia,As You Like It,Comedy,Female,Major
+Birds,Pigeon,Salarino,The Merchant of Venice,Comedy,Male,Minor
+Birds,Dove,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Birds,Dove,Old Gobbo,The Merchant of Venice,Comedy,Male,Minor
+Birds,Dove,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Birds,Dove,Paris,Troilus and Cressida,Tragedy,Male,Minor
+Birds,Dove,Romeo,Romeo and Juliet,Tragedy,Male,Major
+Birds,Nightingale,Valentine,Two Gentlemen of Verona,Comedy,Male,Major
+Birds,Nightingale,Valentine,Two Gentlemen of Verona,Comedy,Male,Major
+Birds,Nightingale,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Birds,Nightingale,Portia,The Merchant of Venice,Comedy,Female,Major
+Birds,Nightingale,Lord,The Taming of the Shrew (Induction),Comedy,Male,Minor
+Birds,Nightingale,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Birds,Nightingale,Juliet,Romeo and Juliet,Tragedy,Female,Major
+Birds,Nightingale,Edgar,King Lear,Tragedy,Male,Minor
+Birds,Lark,Helena,A Midsummer Night's Dream,Comedy,Female,Major
+Birds,Lark,Portia,The Merchant of Venice,Comedy,Female,Major
+Birds,Lark,Autolycus,The Winter's Tale,Comedy,Male,Minor
+Birds,Lark,Romeo,Romeo and Juliet,Tragedy,Male,Major
+Birds,Lark,Juliet,Romeo and Juliet,Tragedy,Female,Major
+Birds,Lark,Edgar,King Lear,Tragedy,Male,Minor
+Birds,Lark,Musicians (Song),Cymbeline,Tragedy,Group,Minor
+Birds,Robin,Speed,Two Gentlemen of Verona,Comedy,Male,Minor
+Birds,Robin,Arviragus,Cymbeline,Tragedy,Male,Major
+Birds,Thrush (Throstle),Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Birds,Thrush (Throstle),Autolycus,The Winter's Tale,Comedy,Male,Minor
+Birds,Lark,Portia,The Merchant of Venice,Comedy,Female,Major
+Birds,Ousel-cock,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Birds,Cuckoo,Pistol,The Merry Wives of Windsor,Comedy,Male,Minor
+Birds,Cuckoo,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Birds,Cuckoo,Lorenzo,The Merchant of Venice,Comedy,Male,Minor
+Birds,Cuckoo,Portia,The Merchant of Venice,Comedy,Female,Major
+Birds,Cuckoo,Pompey (Antony and Cleopatra),Antony and Cleopatra,Tragedy,Male,Minor
+Birds,Lapwing,Adriana,The Comedy of Errors,Comedy,Female,Major
+Birds,Lapwing,Hero,Much Ado About Nothing,Comedy,Female,Major
+Birds,Lapwing,Horatio,Hamlet,Tragedy,Male,Major
+Birds,Finch,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Birds,Swallow,Perdita,The Winter's Tale,Comedy,Female,Major
+Birds,Swallow,Scarus,Antony and Cleopatra,Tragedy,Male,Minor
+Birds,Swallow,Second Lord (Timon of Athens),Timon of Athens,Tragedy,Male,Minor
+Birds,Swallow,Titus,Titus Andronicus,Tragedy,Male,Major
+Birds,Martlet,Banquo,Macbeth,Tragedy,Male,Major
+Birds,Hedge Sparrow,Fool,King Lear,Tragedy,Male,Minor
+Birds,Sparrow,Ceres,The Tempest,Comedy,Supernatural,Minor
+Birds,Sparrow,Iris,The Tempest,Comedy,Supernatural,Minor
+Birds,Sparrow,Lucio,Measure for Measure,Comedy,Male,Minor
+Birds,Sparrow,Adam,As You Like It,Comedy,Male,Minor
+Birds,Sparrow,Hamlet,Hamlet,Tragedy,Male,Major
+Birds,Sparrow,Thersites,Troilus and Cressida,Tragedy,Male,Minor
+Birds,Sparrow,Pandarus,Troilus and Cressida,Tragedy,Male,Major
+Birds,Sparrow,Duncan,Macbeth,Tragedy,Male,Major
+Birds,Wren,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Birds,Wren,Sir Toby,Twelfth Night,Comedy,Male,Minor
+Birds,Wren,Dionyza,Pericles,Comedy,Female,Minor
+Birds,Wren,Lady Macduff,Macbeth,Tragedy,Female,Minor
+Birds,Swan,Celia,As You Like It,Comedy,Female,Major
+Birds,Swan,Portia,The Merchant of Venice,Comedy,Female,Major
+Birds,Swan,AC_Antony,Antony and Cleopatra,Tragedy,Male,Major
+Birds,Swan,Emilia,Othello,Tragedy,Female,Major
+Birds,Swan,Benvolio,Romeo and Juliet,Tragedy,Male,Minor
+Birds,Swan,Imogen,Cymbeline,Tragedy,Female,Major
+Birds,Swan,Aaron,Titus Andronicus,Tragedy,Male,Minor
+Birds,Osprey,Aufidius,Coriolanus,Tragedy,Male,Major
+Birds,Handsaw (Heron),Hamlet,Hamlet,Tragedy,Male,Major
+Birds,Pelican,Laertes,Hamlet,Tragedy,Male,Major
+Birds,Gull,Senator,Timon of Athens,Tragedy,Male,Minor
+Birds,Scamel (Sea-mell),Caliban,The Tempest,Comedy,Male,Minor
+Birds,Mallard,Scarus,Antony and Cleopatra,Tragedy,Male,Minor
+Birds,Wild-fowl,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Birds,Wild-fowl,TN_Clown,Twelfth Night,Comedy,Male,Major
+Birds,Wild Goose,Puck,A Midsummer Night's Dream,Comedy,Supernatural,Major
+Birds,Wild Goose,Jaques,As You Like It,Comedy,Male,Major
+Birds,Goose,Launce,Two Gentlemen of Verona,Comedy,Male,Minor
+Birds,Goose,Slender,The Merry Wives of Windsor,Comedy,Male,Minor
+Birds,Goose,Biron,Love's Labour's Lost,Comedy,Male,Minor
+Birds,Goose,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Birds,Goose,Romeo,Romeo and Juliet,Tragedy,Male,Major
+Birds,Goose,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Birds,Goose,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Birds,Goose,Romeo,Romeo and Juliet,Tragedy,Male,Major
+Birds,Goose,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Birds,Goose,Romeo,Romeo and Juliet,Tragedy,Male,Major
+Birds,Gosling,Coriolanus,Coriolanus,Tragedy,Male,Major
+Birds,Duck,Stephano,The Tempest,Comedy,Male,Minor
+Birds,Duck,Trinculo,The Tempest,Comedy,Male,Minor
+Birds,Duck,Stephano,The Tempest,Comedy,Male,Minor
+Birds,Duck,Gower,Pericles,Comedy,Male,Minor
+Birds,Turkey,Fabian,Twelfth Night,Comedy,Male,Minor
+Birds,Cock,Ariel,The Tempest,Comedy,Supernatural,Major
+Birds,Cock,Speed,Two Gentlemen of Verona,Comedy,Male,Minor
+Birds,Cock,Oberon,A Midsummer Night's Dream,Comedy,Male,Major
+Birds,Cock,Jaques,As You Like It,Comedy,Male,Major
+Birds,Cock,Katharine,The Taming of the Shrew,Comedy,Female,Minor
+Birds,Cock,Katharine,The Taming of the Shrew,Comedy,Female,Minor
+Birds,Cock,Horatio,Hamlet,Tragedy,Male,Major
+Birds,Cock,Marcellus,Hamlet,Tragedy,Male,Minor
+Birds,Cock,Porter,Macbeth,Tragedy,Male,Minor
+Birds,Hen,Volumnia,Coriolanus,Tragedy,Female,Major
+Birds,Chicken,Prospero,The Tempest,Comedy,Male,Major
+Birds,Chicken,Pandarus,Troilus and Cressida,Tragedy,Male,Major
+Birds,Chicken,Cressida,Troilus and Cressida,Tragedy,Female,Major
+Birds,Chicken,All Servants,Timon of Athens,Tragedy,Group,Minor
+Birds,Chicken,Fool,Timon of Athens,Tragedy,Male,Minor
+Birds,Chicken,Posthumus,Cymbeline,Tragedy,Male,Major
+Birds,Chicken,Macduff,Macbeth,Tragedy,Male,Major
+Birds,Fowl,Dromio E.,The Comedy of Errors,Comedy,Male,Minor
+Birds,Fowl,Dromio S. (within),The Comedy of Errors,Comedy,Male,Minor
+Birds,Fowl,Antipholus E.,The Comedy of Errors,Comedy,Male,Major
+Birds,Fowl,Dromio E.,The Comedy of Errors,Comedy,Male,Minor
+Birds,Fowl,Isabella,Measure for Measure,Comedy,Female,Major
+Birds,Fowl,Iachimo,Cymbeline,Tragedy,Male,Minor
+Birds,Fowl,Marcus,Titus Andronicus,Tragedy,Male,Minor
+Animals,Horse,Puck,A Midsummer Night's Dream,Comedy,Supernatural,Major
+Animals,Horse,Benedick,Much Ado About Nothing,Comedy,Male,Major
+Animals,Horse,Orlando,As You Like It,Comedy,Male,Major
+Animals,Horse,Portia,The Merchant of Venice,Comedy,Female,Major
+Animals,Horse,Dion,The Winter's Tale,Comedy,Male,Minor
+Animals,Horse,Grumio,The Taming of the Shrew,Comedy,Male,Minor
+Animals,Horse,Calphurnia,Julius Caesar,Tragedy,Female,Minor
+Animals,Horse,AC_Antony,Antony and Cleopatra,Tragedy,Male,Major
+Animals,Horse,Thersites,Troilus and Cressida,Tragedy,Male,Minor
+Animals,Horse,Marcius (Coriolanus),Coriolanus,Tragedy,Male,Major
+Animals,Horse,Second Servant,Timon of Athens,Tragedy,Male,Minor
+Animals,Horse,Hamlet,Hamlet,Tragedy,Male,Major
+Animals,Horse,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Animals,Horse,Fool,King Lear,Tragedy,Male,Minor
+Animals,Horse,Lear,King Lear,Tragedy,Male,Major
+Animals,Horse,Lear,King Lear,Tragedy,Male,Major
+Animals,Horse,Macbeth,Macbeth,Tragedy,Male,Major
+Animals,Dog,Ariel,The Tempest,Comedy,Supernatural,Major
+Animals,Dog,Launce,Two Gentlemen of Verona,Comedy,Male,Minor
+Animals,Dog,Launce,Two Gentlemen of Verona,Comedy,Male,Minor
+Animals,Dog,Launce,Two Gentlemen of Verona,Comedy,Male,Minor
+Animals,Dog,Proteus,Two Gentlemen of Verona,Comedy,Male,Major
+Animals,Dog,Launce,Two Gentlemen of Verona,Comedy,Male,Minor
+Animals,Dog,Proteus,Two Gentlemen of Verona,Comedy,Male,Major
+Animals,Dog,Launce,Two Gentlemen of Verona,Comedy,Male,Minor
+Animals,Dog,Proteus,Two Gentlemen of Verona,Comedy,Male,Major
+Animals,Dog,Launce,Two Gentlemen of Verona,Comedy,Male,Minor
+Animals,Dog,Slender,The Merry Wives of Windsor,Comedy,Male,Minor
+Animals,Dog,Slender,The Merry Wives of Windsor,Comedy,Male,Minor
+Animals,Dog,Theseus,A Midsummer Night's Dream,Comedy,Male,Major
+Animals,Dog,Hippolyta,A Midsummer Night's Dream,Comedy,Female,Major
+Animals,Dog,Theseus,A Midsummer Night's Dream,Comedy,Male,Major
+Animals,Dog,Beatrice,Much Ado About Nothing,Comedy,Female,Major
+Animals,Dog,Benedick (aside),Much Ado About Nothing,Comedy,Male,Major
+Animals,Dog,Clown,Twelfth Night,Comedy,Male,Minor
+Animals,Dog,Fabian,Twelfth Night,Comedy,Male,Minor
+Animals,Dog,Celia,As You Like It,Comedy,Female,Major
+Animals,Dog,Rosalind,As You Like It,Comedy,Female,Major
+Animals,Dog,Gratiano,The Merchant of Venice,Comedy,Male,Major
+Animals,Dog,Lord,The Taming of the Shrew (Induction),Comedy,Male,Minor
+Animals,Dog,First Huntsman,The Taming of the Shrew (Induction),Comedy,Male,Minor
+Animals,Dog,Lord,The Taming of the Shrew (Induction),Comedy,Male,Minor
+Animals,Dog,JC_Brutus,Julius Caesar,Tragedy,Male,Major
+Animals,Dog,JC_Brutus,Julius Caesar,Tragedy,Male,Major
+Animals,Dog,Nestor,Troilus and Cressida,Tragedy,Male,Minor
+Animals,Dog,Thersites,Troilus and Cressida,Tragedy,Male,Minor
+Animals,Dog,Othello,Othello,Tragedy,Male,Major
+Animals,Dog,Marcius,Coriolanus,Tragedy,Male,Minor
+Animals,Dog,Third Servant,Coriolanus,Tragedy,Male,Minor
+Animals,Dog,Timon,Timon of Athens,Tragedy,Male,Major
+Animals,Dog,Fool,King Lear,Tragedy,Male,Minor
+Animals,Dog,Lear,King Lear,Tragedy,Male,Major
+Animals,Dog,Edgar,King Lear,Tragedy,Male,Minor
+Animals,Dog,Lear,King Lear,Tragedy,Male,Major
+Animals,Dog,Gloster,King Lear,Tragedy,Male,Major
+Animals,Dog,Lear,King Lear,Tragedy,Male,Major
+Animals,Dog,Cornelia,King Lear,Tragedy,Female,Minor
+Animals,Dog,Cornelius,Cymbeline,Tragedy,Male,Minor
+Animals,Dog,Cornelius,Cymbeline,Tragedy,Male,Minor
+Animals,Dog,First Murderer,Macbeth,Tragedy,Male,Minor
+Animals,Ass,Adriana,The Comedy of Errors,Comedy,Female,Major
+Animals,Ass,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Animals,Ass,Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Animals,Ass,Conrade,Much Ado About Nothing,Comedy,Male,Minor
+Animals,Ass,Dogberry,Much Ado About Nothing,Comedy,Male,Minor
+Animals,Ass,Katharine,The Taming of the Shrew,Comedy,Female,Minor
+Animals,Ass,JC_Antony,Julius Caesar,Tragedy,Male,Major
+Animals,Ass,Iago,Othello,Tragedy,Male,Major
+Animals,Ass,Menenius,Coriolanus,Tragedy,Male,Major
+Animals,Ass,Second Lord (Timon of Athens),Timon of Athens,Tragedy,Male,Minor
+Animals,Ass,Timon,Timon of Athens,Tragedy,Male,Major
+Animals,Ass,Polonius,Hamlet,Tragedy,Male,Minor
+Animals,Mule,Cloten,Cymbeline,Tragedy,Male,Minor
+Animals,Mule,Parolles,All's Well That Ends Well,Comedy,Male,Major
+Animals,Mule,Soldier,Antony and Cleopatra,Tragedy,Male,Minor
+Animals,Mule,C_Brutus,Coriolanus,Tragedy,Male,Major
+Animals,Bull,Sebastian,The Tempest,Comedy,Male,Minor
+Animals,Bull,Gonzalo,The Tempest,Comedy,Male,Major
+Animals,Bull,Don Pedro,Much Ado About Nothing,Comedy,Male,Minor
+Animals,Bull,Benedick,Much Ado About Nothing,Comedy,Male,Major
+Animals,Bull,MAAN_Claudio,Much Ado About Nothing,Comedy,Male,Major
+Animals,Ox,Ford,The Merry Wives of Windsor,Comedy,Male,Major
+Animals,Ox,Touchstone,As You Like It,Comedy,Male,Minor
+Animals,Ox,Thersites,Troilus and Cressida,Tragedy,Male,Minor
+Animals,Cow,Beatrice,Much Ado About Nothing,Comedy,Female,Major
+Animals,Cow,Touchstone,As You Like It,Comedy,Male,Minor
+Animals,Cow,Scarus,Antony and Cleopatra,Tragedy,Male,Minor
+Animals,Heifer,Leontes,The Winter's Tale,Comedy,Male,Major
+Animals,Calf,Holofernes,Love's Labour's Lost,Comedy,Male,Minor
+Animals,Calf,Hamlet,Hamlet,Tragedy,Male,Major
+Animals,Ram,Florizel,The Winter's Tale,Comedy,Male,Major
+Animals,Sheep,Iris,The Tempest,Comedy,Supernatural,Minor
+Animals,Sheep,Speed,Two Gentlemen of Verona,Comedy,Male,Minor
+Animals,Sheep,Proteus,Two Gentlemen of Verona,Comedy,Male,Major
+Animals,Sheep,Speed,Two Gentlemen of Verona,Comedy,Male,Minor
+Animals,Sheep,Proteus,Two Gentlemen of Verona,Comedy,Male,Major
+Animals,Sheep,Speed,Two Gentlemen of Verona,Comedy,Male,Minor
+Animals,Sheep,Benedick,Much Ado About Nothing,Comedy,Male,Major
+Animals,Sheep,Armado,Love's Labour's Lost,Comedy,Male,Minor
+Animals,Sheep,Moth,Love's Labour's Lost,Comedy,Male,Minor
+Animals,Sheep,Shepherd,The Winter's Tale,Comedy,Male,Minor
+Animals,Sheep,Thersites,Troilus and Cressida,Tragedy,Male,Minor
+Animals,Lamb,Julia,Two Gentlemen of Verona,Comedy,Female,Minor
+Animals,Lamb,Messenger,Much Ado About Nothing,Comedy,Male,Minor
+Animals,Lamb,TN_Duke,Twelfth Night,Comedy,Male,Minor
+Animals,Lamb,Gremio,The Taming of the Shrew,Comedy,Male,Minor
+Animals,Goat,Falstaff,The Merry Wives of Windsor,Comedy,Male,Major
+Animals,Goat,Touchstone,As You Like It,Comedy,Male,Minor
+Animals,Goat,Shylock,The Merchant of Venice,Comedy,Male,Major
+Animals,Goat,Arviragus,Cymbeline,Tragedy,Male,Major
+Animals,Goat,Aaron,Titus Andronicus,Tragedy,Male,Minor
+Animals,Pig,Dromio E.,The Comedy of Errors,Comedy,Male,Minor
+Animals,Pig,Shylock,The Merchant of Venice,Comedy,Male,Major
+Animals,Pig,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Animals,Pig,Aaron,Titus Andronicus,Tragedy,Male,Minor
+Animals,Hog,Launcelot,The Merchant of Venice,Comedy,Male,Minor
+Animals,Hog,Edgar,King Lear,Tragedy,Male,Minor
+Animals,Boar,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Animals,Stag,Falstaff,The Merry Wives of Windsor,Comedy,Male,Major
+Animals,Stag,AYLI_First Lord,As You Like It,Comedy,Male,Minor
+Animals,Stag,AC_Caesar,Antony and Cleopatra,Tragedy,Male,Major
+Animals,Stag,Lavinia,Titus Andronicus,Tragedy,Male,Minor
+Animals,Hind,Touchstone,As You Like It,Comedy,Male,Minor
+Animals,Deer,Mrs. Ford,The Merry Wives of Windsor,Comedy,Female,Minor
+Animals,Deer,Holofernes,Love's Labour's Lost,Comedy,Male,Minor
+Animals,Deer,AYLI_Duke,As You Like It,Comedy,Male,Minor
+Animals,Deer,Second Lord (As You Like It),As You Like It,Comedy,Male,Minor
+Animals,Deer,JC_Antony,Julius Caesar,Tragedy,Male,Major
+Animals,Deer,Cloten,Cymbeline,Tragedy,Male,Minor
+Animals,Deer,Rosse,Macbeth,Tragedy,Male,Minor
+Animals,Buck,Pandarus,Troilus and Cressida,Tragedy,Male,Major
+Animals,Doe,TA_Demetrius,Titus Andronicus,Tragedy,Male,Minor
+Animals,Fawn,Orlando,As You Like It,Comedy,Male,Major
+Animals,Hart,Posthumus,Cymbeline,Tragedy,Male,Major
+Animals,Roe,Princess,Love's Labour's Lost,Comedy,Female,Major
+Animals,Roe,First Servant,The Taming of the Shrew,Comedy,Male,Minor
+Animals,Fox,Ford,The Merry Wives of Windsor,Comedy,Male,Major
+Animals,Fox,Pompey (Measure for Measure),Measure for Measure,Comedy,Male,Major
+Animals,Fox,Lysander,A Midsummer Night's Dream,Comedy,Male,Minor
+Animals,Fox,AMND_Demetrius,A Midsummer Night's Dream,Comedy,Male,Minor
+Animals,Fox,Theseus,A Midsummer Night's Dream,Comedy,Male,Major
+Animals,Fox,Moth,Love's Labour's Lost,Comedy,Male,Minor
+Animals,Fox,Cressida,Troilus and Cressida,Tragedy,Female,Major
+Animals,Fox,Marcius,Coriolanus,Tragedy,Male,Minor
+Animals,Fox,Timon,Timon of Athens,Tragedy,Male,Major
+Animals,Fox,Fool,King Lear,Tragedy,Male,Minor
+Animals,Hare,Cressida,Troilus and Cressida,Tragedy,Female,Major
+Animals,Hare,Aufidius,Coriolanus,Tragedy,Male,Major
+Animals,Hare,Soldier,Macbeth,Tragedy,Male,Minor
+Animals,Rabbit,Moth,Love's Labour's Lost,Comedy,Male,Minor
+Animals,Rabbit,Biondello,The Taming of the Shrew,Comedy,Male,Minor
+Animals,Coney,Orlando,As You Like It,Comedy,Male,Major
+Animals,Coney,Rosalind,As You Like It,Comedy,Female,Major
+Animals,Coney,Third Servant,Coriolanus,Tragedy,Male,Minor
+Animals,Squirrel,Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Animals,Squirrel,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Animals,Mole,Caliban,The Tempest,Comedy,Male,Minor
+Animals,Mole,Autolycus,The Winter's Tale,Comedy,Male,Minor
+Animals,Mole,Hamlet,Hamlet,Tragedy,Male,Major
+Animals,Mole,Pericles,Pericles,Comedy,Male,Major
+Animals,Weasel,Jaques,As You Like It,Comedy,Male,Major
+Animals,Weasel,Hamlet,Hamlet,Tragedy,Male,Major
+Animals,Weasel,Polonius,Hamlet,Tragedy,Male,Minor
+Animals,Weasel,Pisanio,Cymbeline,Tragedy,Male,Minor
+Animals,Ferret,JC_Brutus,Julius Caesar,Tragedy,Male,Major
+Animals,Hedgehog,Caliban,The Tempest,Comedy,Male,Minor
+Animals,Hedgehog,First Fairy,A Midsummer Night's Dream,Comedy,Supernatural,Minor
+Animals,Hedgehog,Second Witch,Macbeth,Tragedy,Supernatural,Minor
+Animals,Cat,TT_Antonio,The Tempest,Comedy,Male,Major
+Animals,Cat,Claud,Much Ado About Nothing,Comedy,Male,Minor
+Animals,Cat,Touchstone,As You Like It,Comedy,Male,Minor
+Animals,Cat,Thersites,Troilus and Cressida,Tragedy,Male,Minor
+Animals,Cat,Iago,Othello,Tragedy,Male,Major
+Animals,Cat,Marcius,Coriolanus,Tragedy,Male,Minor
+Animals,Cat,Hamlet,Hamlet,Tragedy,Male,Major
+Animals,Cat,Benvolio,Romeo and Juliet,Tragedy,Male,Minor
+Animals,Cat,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Animals,Cat,Gower,Pericles,Comedy,Male,Minor
+Animals,Cat,Edgar,King Lear,Tragedy,Male,Minor
+Animals,Cat,Lady M,Macbeth,Tragedy,Female,Minor
+Animals,Cat,First Witch,Macbeth,Tragedy,Supernatural,Minor
+Animals,Cat,Shylock,The Merchant of Venice,Comedy,Male,Major
+Animals,Rat,Prospero,The Tempest,Comedy,Male,Major
+Animals,Rat,Shallow,The Merry Wives of Windsor,Comedy,Male,Minor
+Animals,Rat,MFM_Claudio,Measure for Measure,Comedy,Male,Major
+Animals,Rat,Rosalind,As You Like It,Comedy,Female,Major
+Animals,Rat,Shylock,The Merchant of Venice,Comedy,Male,Major
+Animals,Rat,Menenius,Coriolanus,Tragedy,Male,Major
+Animals,Rat,Marcius,Coriolanus,Tragedy,Male,Minor
+Animals,Rat,H_Queen,Hamlet,Tragedy,Female,Major
+Animals,Rat,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Animals,Rat,Tybalt,Romeo and Juliet,Tragedy,Male,Minor
+Animals,Rat,Kent,King Lear,Tragedy,Male,Minor
+Animals,Rat,Cornelius,Cymbeline,Tragedy,Male,Minor
+Animals,Rat,First Witch,Macbeth,Tragedy,Supernatural,Minor
+Animals,Mouse,Lucio,Measure for Measure,Comedy,Male,Minor
+Animals,Mouse,Lion,A Midsummer Night's Dream,Comedy,Male,Minor
+Animals,Mouse,Puck,A Midsummer Night's Dream,Comedy,Supernatural,Major
+Animals,Mouse,Francisco,Hamlet,Tragedy,Male,Minor
+Animals,Mouse,Bernardo,Hamlet,Tragedy,Male,Minor
+Animals,Mouse,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Animals,Mouse,Romeo,Romeo and Juliet,Tragedy,Male,Major
+Animals,Mouse,Edgar,King Lear,Tragedy,Male,Minor
+Animals,Mouse,Edgar,King Lear,Tragedy,Male,Minor
+Animals,Elephant,Decius,Julius Caesar,Tragedy,Male,Minor
+Animals,Elephant,Alexander,Troilus and Cressida,Tragedy,Male,Minor
+Animals,Elephant,Cressida,Troilus and Cressida,Tragedy,Female,Major
+Animals,Elephant,Alexander,Troilus and Cressida,Tragedy,Male,Minor
+Animals,Elephant,Ulysses,Troilus and Cressida,Tragedy,Male,Major
+Animals,Camel,Cressida,Troilus and Cressida,Tragedy,Female,Major
+Animals,Camel,C_Brutus,Coriolanus,Tragedy,Male,Major
+Animals,Camel,Hamlet,Hamlet,Tragedy,Male,Major
+Animals,Camel,Polonius,Hamlet,Tragedy,Male,Minor
+Animals,Lion,TT_Antonio,The Tempest,Comedy,Male,Major
+Animals,Lion,MFM_Duke,Measure for Measure,Comedy,Male,Minor
+Animals,Lion,Quince,A Midsummer Night's Dream,Comedy,Male,Minor
+Animals,Lion,Holofernes,Love's Labour's Lost,Comedy,Male,Minor
+Animals,Lion,Holofernes,Love's Labour's Lost,Comedy,Male,Minor
+Animals,Lion,Biron,Love's Labour's Lost,Comedy,Male,Minor
+Animals,Lion,Biron,Love's Labour's Lost,Comedy,Male,Minor
+Animals,Lion,Prince of Morocco,The Merchant of Venice,Comedy,Male,Minor
+Animals,Lion,Jessica,The Merchant of Venice,Comedy,Female,Major
+Animals,Lion,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Animals,Lion,Casca,Julius Caesar,Tragedy,Male,Minor
+Animals,Lion,Enobarbus,Antony and Cleopatra,Tragedy,Male,Major
+Animals,Lion,Patrodus,Troilus and Cressida,Tragedy,Male,Minor
+Animals,Lion,Hamlet,Hamlet,Tragedy,Male,Major
+Animals,Lion,Gent,King Lear,Tragedy,Male,Minor
+Animals,Lion,Posthumus,Cymbeline,Tragedy,Male,Major
+Animals,Lion,Lavinia,Titus Andronicus,Tragedy,Male,Minor
+Animals,Lioness,Oliver,As You Like It,Comedy,Male,Major
+Animals,Lioness,Calphurnia,Julius Caesar,Tragedy,Female,Minor
+Animals,Tiger,Proteus,Two Gentlemen of Verona,Comedy,Male,Major
+Animals,Tiger,Helena,A Midsummer Night's Dream,Comedy,Female,Major
+Animals,Tiger,Nestor,Troilus and Cressida,Tragedy,Male,Minor
+Animals,Tiger,Troilus,Troilus and Cressida,Tragedy,Male,Major
+Animals,Tiger,Menenius,Coriolanus,Tragedy,Male,Major
+Animals,Tiger,Timon,Timon of Athens,Tragedy,Male,Major
+Animals,Tiger,Romeo,Romeo and Juliet,Tragedy,Male,Major
+Animals,Tiger,Albany,King Lear,Tragedy,Male,Minor
+Animals,Tiger,Lavinia,Titus Andronicus,Tragedy,Male,Minor
+Animals,"Leopard, Libbard, Pard",Prospero,The Tempest,Comedy,Male,Major
+Animals,"Leopard, Libbard, Pard",Oberon,A Midsummer Night's Dream,Comedy,Male,Major
+Animals,"Leopard, Libbard, Pard",Boyet,Love's Labour's Lost,Comedy,Male,Minor
+Animals,"Leopard, Libbard, Pard",Timon,Timon of Athens,Tragedy,Male,Major
+Animals,Panther,Titus,Titus Andronicus,Tragedy,Male,Major
+Animals,Panther,Marcus,Titus Andronicus,Tragedy,Male,Minor
+Animals,Panther,Aaron,Titus Andronicus,Tragedy,Male,Minor
+Animals,Hyena,Rosalind,As You Like It,Comedy,Female,Major
+Animals,Rhinoceros,Macbeth,Macbeth,Tragedy,Male,Major
+Animals,Unicorn,Sebastian,The Tempest,Comedy,Male,Minor
+Animals,Unicorn,Decius,Julius Caesar,Tragedy,Male,Minor
+Animals,Unicorn,Timon,Timon of Athens,Tragedy,Male,Major
+Animals,Bear,Dromio S.,The Comedy of Errors,Comedy,Male,Major
+Animals,Bear,Slender,The Merry Wives of Windsor,Comedy,Male,Minor
+Animals,Bear,Slender,The Merry Wives of Windsor,Comedy,Male,Minor
+Animals,Bear,Oberon,A Midsummer Night's Dream,Comedy,Male,Major
+Animals,Bear,MAAN_Claudio,Much Ado About Nothing,Comedy,Male,Major
+Animals,Bear,Prince of Morocco,The Merchant of Venice,Comedy,Male,Minor
+Animals,Bear,TWT_Clown,The Winter's Tale,Comedy,Male,Minor
+Animals,Bear,TWT_Clown,The Winter's Tale,Comedy,Male,Minor
+Animals,Bear,AC_Antony,Antony and Cleopatra,Tragedy,Male,Major
+Animals,Bear,Alexander,Troilus and Cressida,Tragedy,Male,Minor
+Animals,Bear,Othello,Othello,Tragedy,Male,Major
+Animals,Bear,C_Brutus,Coriolanus,Tragedy,Male,Major
+Animals,Bear,Menenius,Coriolanus,Tragedy,Male,Major
+Animals,Bear,Timon,Timon of Athens,Tragedy,Male,Major
+Animals,Bear,Juliet,Romeo and Juliet,Tragedy,Female,Major
+Animals,Bear,Fool,King Lear,Tragedy,Male,Minor
+Animals,Wolf,Don Pedro,Much Ado About Nothing,Comedy,Male,Minor
+Animals,Wolf,Gratiano,The Merchant of Venice,Comedy,Male,Major
+Animals,Wolf,Antigonus,The Winter's Tale,Comedy,Male,Minor
+Animals,Wolf,Cassius,Julius Caesar,Tragedy,Male,Major
+Animals,Wolf,Ulysses,Troilus and Cressida,Tragedy,Male,Major
+Animals,Wolf,Menenius,Coriolanus,Tragedy,Male,Major
+Animals,Wolf,Lear,King Lear,Tragedy,Male,Major
+Animals,Wolf,Fool,King Lear,Tragedy,Male,Minor
+Animals,Wolf,Arviragus,Cymbeline,Tragedy,Male,Major
+Animals,Wolf,Macbeth,Macbeth,Tragedy,Male,Major
+Animals,Porcupine,Ajax,Troilus and Cressida,Tragedy,Male,Minor
+Animals,Porcupine,Ghost,Hamlet,Tragedy,Supernatural,Minor
+Animals,Monkey,Oberon,A Midsummer Night's Dream,Comedy,Male,Major
+Animals,Monkey,Rosalind,As You Like It,Comedy,Female,Major
+Animals,Monkey,Tubal,The Merchant of Venice,Comedy,Male,Minor
+Animals,Monkey,Shylock,The Merchant of Venice,Comedy,Male,Major
+Animals,Monkey,Fool,King Lear,Tragedy,Male,Minor
+Animals,Monkey,Iachimo,Cymbeline,Tragedy,Male,Minor
+Animals,Ape,Caliban,The Tempest,Comedy,Male,Minor
+Animals,Ape,Isabel,Measure for Measure,Comedy,Female,Minor
+Animals,Ape,Beatrice,Much Ado About Nothing,Comedy,Female,Major
+Animals,Ape,Claud,Much Ado About Nothing,Comedy,Male,Minor
+Animals,Ape,Claud,Much Ado About Nothing,Comedy,Male,Minor
+Animals,Ape,Jaques,As You Like It,Comedy,Male,Major
+Animals,Ape,Rosalind,As You Like It,Comedy,Female,Major
+Animals,Ape,JC_Antony,Julius Caesar,Tragedy,Male,Major
+Animals,Ape,Marcius,Coriolanus,Tragedy,Male,Minor
+Animals,Ape,Hamlet,Hamlet,Tragedy,Male,Major
+Animals,Ape,Hamlet,Hamlet,Tragedy,Male,Major
+Animals,Baboon,Falstaff,The Merry Wives of Windsor,Comedy,Male,Major
+Animals,Baboon,Iago,Othello,Tragedy,Male,Major
+Animals,Baboon,2nd Witch,Macbeth,Tragedy,Supernatural,Minor
+Animals,Marmozet,Caliban,The Tempest,Comedy,Male,Minor
+Animals,"Polecat, Muskcat, Fitchew",Quickly,The Merry Wives of Windsor,Comedy,Male,Minor
+Animals,"Polecat, Muskcat, Fitchew",AWTEW_Clown,All's Well That Ends Well,Comedy,Male,Minor
+Animals,"Polecat, Muskcat, Fitchew",Thersites,Troilus and Cressida,Tragedy,Male,Minor
+Fish,Fish,3rd Fisher,Pericles,Comedy,Male,Minor
+Fish,Trout,Maria,Twelfth Night,Comedy,Female,Minor
+Fish,Cod,Iago,Othello,Tragedy,Male,Major
+Fish,Herring,Caius,The Merry Wives of Windsor,Comedy,Male,Minor
+Fish,Herring,Sir Toby,Twelfth Night,Comedy,Male,Minor
+Fish,Herring,Thersitcs,Twelfth Night,Comedy,Male,Minor
+Fish,Herring,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Fish,Pilchard,TN_Clown,Twelfth Night,Comedy,Male,Major
+Fish,Poor John,Gregory,Romeo and Juliet,Tragedy,Male,Minor
+Fish,Poor John,Trinculo,The Tempest,Comedy,Male,Minor
+Fish,Eel,Moth,Love's Labour's Lost,Comedy,Male,Minor
+Fish,Eel,Armado,Love's Labour's Lost,Comedy,Male,Minor
+Fish,Eel,Moth,Love's Labour's Lost,Comedy,Male,Minor
+Fish,Eel,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Fish,Eel,Fool,King Lear,Tragedy,Male,Minor
+Fish,Gudgeon,Gratiano,The Merchant of Venice,Comedy,Male,Major
+Fish,Carp,AWTEW_Clown,All's Well That Ends Well,Comedy,Male,Minor
+Fish,Oyster,Pistol,The Merry Wives of Windsor,Comedy,Male,Minor
+Fish,Oyster,Benedick,Much Ado About Nothing,Comedy,Male,Major
+Fish,Oyster,Touchstone,As You Like It,Comedy,Male,Minor
+Fish,Oyster,Alexas,Antony and Cleopatra,Tragedy,Male,Minor
+Fish,Oyster,Fool,King Lear,Tragedy,Male,Minor
+Fish,Crab,Hamlet,Hamlet,Tragedy,Male,Major
+Fish,Shrimp,Holofernes,Love's Labour's Lost,Comedy,Male,Minor
+Fish,Mussel,Prospero,The Tempest,Comedy,Male,Major
+Fish,Mussel,Falstaff,The Merry Wives of Windsor,Comedy,Male,Major
+Fish,Cockle,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Fish,Cockle,Gower,Pericles,Comedy,Male,Minor
+Fish,Barnacle,Caliban,The Tempest,Comedy,Male,Minor
+Fish,Whale,Biron,Love's Labour's Lost,Comedy,Male,Minor
+Fish,Whale,Nestor,Troilus and Cressida,Tragedy,Male,Minor
+Fish,Whale,Hamlet,Hamlet,Tragedy,Male,Major
+Fish,Whale,Polonius,Hamlet,Tragedy,Male,Minor
+Fish,Whale,1st Fisher,Pericles,Comedy,Male,Minor
+Fish,Whale,Pericles,Pericles,Comedy,Male,Major
+Fish,Shark,Third Witch,Macbeth,Tragedy,Supernatural,Minor
+Fish,Porpus,3rd Fisher,Pericles,Comedy,Male,Minor
+Fish,Minnow,Coriolanus,Coriolanus,Tragedy,Male,Major
+Reptiles,Crocodile,Lepidus,Antony and Cleopatra,Tragedy,Male,Minor
+Reptiles,Crocodile,AC_Antony,Antony and Cleopatra,Tragedy,Male,Major
+Reptiles,Crocodile,Lepidus,Antony and Cleopatra,Tragedy,Male,Minor
+Reptiles,Crocodile,AC_Antony,Antony and Cleopatra,Tragedy,Male,Major
+Reptiles,Crocodile,Othello,Othello,Tragedy,Male,Major
+Reptiles,Crocodile,Hamlet,Hamlet,Tragedy,Male,Major
+Reptiles,Tortoise,Prospero,The Tempest,Comedy,Male,Major
+Reptiles,Tortoise,Romeo,Romeo and Juliet,Tragedy,Male,Major
+Reptiles,Alligator,Romeo,Romeo and Juliet,Tragedy,Male,Major
+Reptiles,Cameleon,Speed,Two Gentlemen of Verona,Comedy,Male,Minor
+Reptiles,Cameleon,Valentine,Two Gentlemen of Verona,Comedy,Male,Major
+Reptiles,Cameleon,Speed,Two Gentlemen of Verona,Comedy,Male,Minor
+Reptiles,Cameleon,Hamlet,Hamlet,Tragedy,Male,Major
+Reptiles,Cameleon,King,Hamlet,Tragedy,Male,Minor
+Reptiles,Lizard,Second Witch,Macbeth,Tragedy,Supernatural,Minor
+Reptiles,"Bat,Raremouse",Ariel,The Tempest,Comedy,Supernatural,Major
+Reptiles,"Bat,Raremouse",Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Reptiles,"Bat,Raremouse",Macbeth,Macbeth,Tragedy,Male,Major
+Reptiles,"Bat,Raremouse",Second Witch,Macbeth,Tragedy,Supernatural,Minor
+Reptiles,Toad,Caliban,The Tempest,Comedy,Male,Minor
+Reptiles,Toad,AYLI_Duke,As You Like It,Comedy,Male,Minor
+Reptiles,Toad,Othello,Othello,Tragedy,Male,Major
+Reptiles,Toad,Nurse,Othello,Tragedy,Female,Major
+Reptiles,Toad,Juliet,Romeo and Juliet,Tragedy,Female,Major
+Reptiles,Toad,Guiderius,Cymbeline,Tragedy,Male,Major
+Reptiles,Toad,First Witch,Macbeth,Tragedy,Supernatural,Minor
+Reptiles,Paddock,Hamlet,Hamlet,Tragedy,Male,Major
+Reptiles,Frog,Edgar,King Lear,Tragedy,Male,Minor
+Reptiles,Frog,Second Witch,Macbeth,Tragedy,Supernatural,Minor
+Reptiles,Serpent,Lysander,A Midsummer Night's Dream,Comedy,Male,Minor
+Reptiles,Serpent,MAAN_Antonio,Much Ado About Nothing,Comedy,Male,Minor
+Reptiles,Serpent,Countess,All's Well That Ends Well,Comedy,Male,Minor
+Reptiles,Serpent,JC_Brutus,Julius Caesar,Tragedy,Male,Major
+Reptiles,Serpent,Cleopatra,Antony and Cleopatra,Tragedy,Female,Major
+Reptiles,Serpent,Cleopatra,Antony and Cleopatra,Tragedy,Female,Major
+Reptiles,Serpent,Thersites,Troilus and Cressida,Tragedy,Male,Minor
+Reptiles,Serpent,Emilia,Othello,Tragedy,Female,Major
+Reptiles,Serpent,Aufidius,Coriolanus,Tragedy,Male,Major
+Reptiles,Serpent,Ghost,Hamlet,Tragedy,Supernatural,Minor
+Reptiles,Serpent,Lear,King Lear,Tragedy,Male,Major
+Reptiles,Serpent,Lady Macbeth,Macbeth,Tragedy,Female,Major
+Reptiles,Adder,Caliban,The Tempest,Comedy,Male,Minor
+Reptiles,Adder,Hermia,A Midsummer Night's Dream,Comedy,Female,Major
+Reptiles,Adder,JC_Brutus,Julius Caesar,Tragedy,Male,Major
+Reptiles,Adder,Hector,Julius Caesar,Tragedy,Male,Minor
+Reptiles,Adder,Hamlet,Hamlet,Tragedy,Male,Major
+Reptiles,Adder,Edmund,King Lear,Tragedy,Male,Minor
+Reptiles,Adder,Second Witch,Macbeth,Tragedy,Supernatural,Minor
+Reptiles,Snake,Oberon,A Midsummer Night's Dream,Comedy,Male,Major
+Reptiles,Snake,First Fairy,A Midsummer Night's Dream,Comedy,Supernatural,Minor
+Reptiles,Snake,Rosalind,As You Like It,Comedy,Female,Major
+Reptiles,Snake,Oliver,As You Like It,Comedy,Male,Major
+Reptiles,Snake,Cleopatra,Antony and Cleopatra,Tragedy,Female,Major
+Reptiles,Snake,Macbeth,Macbeth,Tragedy,Male,Major
+Reptiles,Snake,Second Witch,Macbeth,Tragedy,Supernatural,Minor
+Reptiles,Scorpion,Cornelius,Cymbeline,Tragedy,Male,Minor
+Reptiles,Scorpion,Macbeth,Macbeth,Tragedy,Male,Major
+Reptiles,Viper,Pandarus,Troilus and Cressida,Tragedy,Male,Major
+Reptiles,Viper,Lodovico,Othello,Tragedy,Male,Minor
+Reptiles,Newt,Timon,Timon of Athens,Tragedy,Male,Major
+Reptiles,Blind-Worm,First Fairy,A Midsummer Night's Dream,Comedy,Supernatural,Minor
+Reptiles,Worm,Rosalind,As You Like It,Comedy,Female,Major
+Reptiles,Worm,Katharine,The Taming of the Shrew,Comedy,Female,Minor
+Reptiles,Worm,Othello,Othello,Tragedy,Male,Major
+Reptiles,Worm,Hamlet,Hamlet,Tragedy,Male,Major
+Reptiles,Worm,King,Hamlet,Tragedy,Male,Minor
+Reptiles,Worm,Hamlet,Hamlet,Tragedy,Male,Major
+Reptiles,Worm,King,Hamlet,Tragedy,Male,Minor
+Reptiles,Worm,Hamlet,Hamlet,Tragedy,Male,Major
+Reptiles,Worm,Romeo,Romeo and Juliet,Tragedy,Male,Major
+Reptiles,Worm,Lear,King Lear,Tragedy,Male,Major
+Reptiles,Worm,Pisanio,Cymbeline,Tragedy,Male,Minor
+Reptiles,Worm,Macbeth,Macbeth,Tragedy,Male,Major
+Reptiles,Asp,Cleopatra,Antony and Cleopatra,Tragedy,Female,Major
+Reptiles,Asp,AC_Clown,Antony and Cleopatra,Tragedy,Male,Minor
+Reptiles,Asp,Cleopatra,Antony and Cleopatra,Tragedy,Female,Major
+Reptiles,Asp,First Guard,Antony and Cleopatra,Tragedy,Male,Minor
+Reptiles,Asp,Othello,Othello,Tragedy,Male,Major
+Reptiles,Snail,Luciana,The Comedy of Errors,Comedy,Female,Minor
+Reptiles,Snail,First Fairy,A Midsummer Night's Dream,Comedy,Supernatural,Minor
+Reptiles,Snail,Luciana,The Comedy of Errors,Comedy,Female,Minor
+Reptiles,Snail,First Fairy,A Midsummer Night's Dream,Comedy,Supernatural,Minor
+Reptiles,Snail,Biron,Love's Labour's Lost,Comedy,Male,Minor
+Reptiles,Snail,Jaques,As You Like It,Comedy,Male,Major
+Reptiles,Snail,Rosalind,As You Like It,Comedy,Female,Major
+Reptiles,Snail,Orlando,As You Like It,Comedy,Male,Major
+Reptiles,Snail,Rosalind,As You Like It,Comedy,Female,Major
+Reptiles,Snail,Orlando,As You Like It,Comedy,Male,Major
+Reptiles,Snail,Rosalind,As You Like It,Comedy,Female,Major
+Reptiles,Snail,Nestor,Troilus and Cressida,Tragedy,Male,Minor
+Reptiles,Snail,Fool,King Lear,Tragedy,Male,Minor
+Reptiles,Snail,Lear,King Lear,Tragedy,Male,Major
+Reptiles,Snail,Fool,King Lear,Tragedy,Male,Minor
+Reptiles,Slug,Luciana,The Comedy of Errors,Comedy,Female,Minor
+Reptiles,Slug,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Insects,Bee,Prospero,The Tempest,Comedy,Male,Major
+Insects,Bee,Ariel,The Tempest,Comedy,Supernatural,Major
+Insects,Bee,Cassius,Julius Caesar,Tragedy,Male,Major
+Insects,Bee,3rd Fisher,Pericles,Comedy,Male,Minor
+Insects,Bee,Imogen,Cymbeline,Tragedy,Female,Major
+Insects,Humble Bee,Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Insects,Humble Bee,Bottom,A Midsummer Night's Dream,Comedy,Male,Major
+Insects,Humble Bee,Armado,Love's Labour's Lost,Comedy,Male,Minor
+Insects,Humble Bee,Lafeu,All's Well That Ends Well,Comedy,Male,Minor
+Insects,Humble Bee,Pandarus,Troilus and Cressida,Tragedy,Male,Major
+Insects,Drone,Luciana,The Comedy of Errors,Comedy,Female,Minor
+Insects,Drone,Shylock,The Merchant of Venice,Comedy,Male,Major
+Insects,Drone,Gower,Pericles,Comedy,Male,Minor
+Insects,Wasp,Autolycus,The Winter's Tale,Comedy,Male,Minor
+Insects,Wasp,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Insects,Wasp,Katharine,The Taming of the Shrew,Comedy,Female,Minor
+Insects,Wasp,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Insects,Ant,Fool,King Lear,Tragedy,Male,Minor
+Insects,Butterfly,Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Insects,Butterfly,Achilles,Troilus and Cressida,Tragedy,Male,Major
+Insects,Butterfly,Valeria,Coriolanus,Tragedy,Male,Minor
+Insects,Butterfly,Cominius,Coriolanus,Tragedy,Male,Minor
+Insects,Butterfly,Menenius,Coriolanus,Tragedy,Male,Major
+Insects,Butterfly,Lear,King Lear,Tragedy,Male,Major
+Insects,Moth,Portia,The Merchant of Venice,Comedy,Female,Major
+Insects,Moth,Desdemona,Othello,Tragedy,Female,Major
+Insects,Moth,Valeria,Coriolanus,Tragedy,Male,Minor
+Insects,Grasshopper,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Insects,Glow-Worm,Evans,The Merry Wives of Windsor,Comedy,Male,Major
+Insects,Glow-Worm,Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Insects,Glow-Worm,Ghost,Hamlet,Tragedy,Supernatural,Minor
+Insects,Glow-Worm,Pericles,Pericles,Comedy,Male,Major
+Insects,Spider,MFM_Duke,Measure for Measure,Comedy,Male,Minor
+Insects,Spider,First Fairy,A Midsummer Night's Dream,Comedy,Supernatural,Minor
+Insects,Spider,Bassanio,The Merchant of Venice,Comedy,Male,Minor
+Insects,Spider,Leontes,The Winter's Tale,Comedy,Male,Major
+Insects,Spider,Thersites,Troilus and Cressida,Tragedy,Male,Minor
+Insects,Spider,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Insects,Gnat,Ant. S.,The Comedy of Errors,Comedy,Male,Minor
+Insects,Gnat,Biron,Love's Labour's Lost,Comedy,Male,Minor
+Insects,Gnat,Bassanio,The Merchant of Venice,Comedy,Male,Minor
+Insects,Gnat,Cleopatra,Antony and Cleopatra,Tragedy,Female,Major
+Insects,Gnat,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Insects,Gnat,Simonides,Pericles,Comedy,Male,Minor
+Insects,Gnat,Imogen,Cymbeline,Tragedy,Female,Major
+Insects,Cricket,Mamilius,The Winter's Tale,Comedy,Male,Minor
+Insects,Cricket,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Insects,Cricket,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Insects,Cricket,Gower,Pericles,Comedy,Male,Minor
+Insects,Cricket,Iachimo,Cymbeline,Tragedy,Male,Minor
+Insects,Cricket,Lady Macbeth,Macbeth,Tragedy,Female,Major
+Insects,Beetle,Isabel,Measure for Measure,Comedy,Female,Minor
+Insects,Beetle,First Fairy,A Midsummer Night's Dream,Comedy,Supernatural,Minor
+Insects,Beetle,Edgar,King Lear,Tragedy,Male,Minor
+Insects,Beetle,Belarius,Cymbeline,Tragedy,Male,Major
+Insects,Beetle,Macbeth,Macbeth,Tragedy,Male,Major
+Insects,Fly,Rosalind,As You Like It,Comedy,Female,Major
+Insects,Fly,Autolycus,The Winter's Tale,Comedy,Male,Minor
+Insects,Fly,Iago,Othello,Tragedy,Male,Major
+Insects,Fly,Cominius,Coriolanus,Tragedy,Male,Minor
+Insects,Fly,Marina,Pericles,Comedy,Female,Major
+Insects,Fly,Flavius,Timon of Athens,Tragedy,Male,Minor
+Insects,Fly,Arviragus,Cymbeline,Tragedy,Male,Major
+Insects,Fly,Titus,Titus Andronicus,Tragedy,Male,Major
+Insects,Fly,Marcius,Titus Andronicus,Tragedy,Male,Minor
+Insects,Fly,Titus,Titus Andronicus,Tragedy,Male,Major
+Insects,Fly,Maixus,Titus Andronicus,Tragedy,Male,Minor
+Insects,Fly,Titus,Titus Andronicus,Tragedy,Male,Major
+Insects,Fly,Lady Macduff,Macbeth,Tragedy,Female,Minor
+Insects,Fly,Son,Macbeth,Tragedy,Male,Minor
+Insects,Fly,Lady Macduff,Macbeth,Tragedy,Female,Minor
+Insects,Flea,Mrs. Ford,The Merry Wives of Windsor,Comedy,Female,Minor
+Insects,Flea,Petruchio,The Taming of the Shrew,Comedy,Male,Minor
+Insects,"Caterpillar, Canker",Mrs. Ford,Two Gentlemen of Verona,Comedy,Female,Minor
+Insects,"Caterpillar, Canker",Valentine,Two Gentlemen of Verona,Comedy,Male,Major
+Insects,"Caterpillar, Canker",Titania,A Midsummer Night's Dream,Comedy,Female,Major
+Insects,"Caterpillar, Canker",Lysimachus,Pericles,Comedy,Male,Minor
+Insects,Grub,Mercutio,Romeo and Juliet,Tragedy,Male,Minor
+Insects,Grub,Mercutio,Romeo and Juliet,Tragedy,Male,Minor

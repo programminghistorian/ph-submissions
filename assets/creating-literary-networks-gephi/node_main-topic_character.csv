@@ -1,0 +1,298 @@
+Id,Label,Type
+Animals,Animals,Main topic
+Birds,Birds,Main topic
+Fish,Fish,Main topic
+Fruits,Fruits,Main topic
+Garden Flowers,Garden Flowers,Main topic
+Grain,Grain,Main topic
+Herbs,Herbs,Main topic
+Insects,Insects,Main topic
+Reptiles,Reptiles,Main topic
+Spices And Medicines,Spices And Medicines,Main topic
+Trees,Trees,Main topic
+Vegetables,Vegetables,Main topic
+Weeds,Weeds,Main topic
+Wild Flowers,Wild Flowers,Main topic
+1st Fisher,1st Fisher,Character
+2nd Witch,2nd Witch,Character
+3rd Fisher,3rd Fisher,Character
+AC_Antony,AC_Antony,Character
+AC_Caesar,AC_Caesar,Character
+AC_Clown,AC_Clown,Character
+AMND_Demetrius,AMND_Demetrius,Character
+AWTEW_Clown,AWTEW_Clown,Character
+AWTEW_First Lord,AWTEW_First Lord,Character
+AYLI_Duke,AYLI_Duke,Character
+AYLI_First Lord,AYLI_First Lord,Character
+Aaron,Aaron,Character
+Achilles,Achilles,Character
+Adam,Adam,Character
+Adriana,Adriana,Character
+Agamemnon,Agamemnon,Character
+Ajax,Ajax,Character
+Albany,Albany,Character
+Alexander,Alexander,Character
+Alexas,Alexas,Character
+All Servants,All Servants,Character
+Amiens,Amiens,Character
+Anne,Anne,Character
+Ant. S.,Ant. S.,Character
+Antigonus,Antigonus,Character
+Antipholus E.,Antipholus E.,Character
+Apemantus,Apemantus,Character
+Ariel,Ariel,Character
+Armado,Armado,Character
+Arvigarus,Arvigarus,Character
+Arviragus,Arviragus,Character
+Aufidius,Aufidius,Character
+Autolycus,Autolycus,Character
+Banquo,Banquo,Character
+Bassanio,Bassanio,Character
+Beatrice,Beatrice,Character
+Belarius,Belarius,Character
+Benedick,Benedick,Character
+Benedick (aside),Benedick (aside),Character
+Benvolio,Benvolio,Character
+Bernardo,Bernardo,Character
+Biondello,Biondello,Character
+Biron,Biron,Character
+Bottom,Bottom,Character
+Boyet,Boyet,Character
+C_Brutus,C_Brutus,Character
+C_Queen,C_Queen,Character
+Caius,Caius,Character
+Caliban,Caliban,Character
+Calphurnia,Calphurnia,Character
+Casca,Casca,Character
+Cassius,Cassius,Character
+Celia,Celia,Character
+Ceres,Ceres,Character
+Claud,Claud,Character
+Cleon,Cleon,Character
+Cleopatra,Cleopatra,Character
+Cloten,Cloten,Character
+Clown,Clown,Character
+Clown (Feste),Clown (Feste),Character
+Cominius,Cominius,Character
+Conrade,Conrade,Character
+Cordelia,Cordelia,Character
+Coriolanus,Coriolanus,Character
+Cornelia,Cornelia,Character
+Cornelius,Cornelius,Character
+Countess,Countess,Character
+Cressida,Cressida,Character
+Decius,Decius,Character
+Desdemona,Desdemona,Character
+Dion,Dion,Character
+Dionyza,Dionyza,Character
+Dogberry,Dogberry,Character
+Don John,Don John,Character
+Don Pedro,Don Pedro,Character
+Dorcas,Dorcas,Character
+Dromio,Dromio,Character
+Dromio E.,Dromio E.,Character
+Dromio S.,Dromio S.,Character
+Dromio S. (within),Dromio S. (within),Character
+Dumain,Dumain,Character
+Duncan,Duncan,Character
+Edgar,Edgar,Character
+Edmund,Edmund,Character
+Emilia,Emilia,Character
+Enobarbus,Enobarbus,Character
+Eros,Eros,Character
+Euphronius,Euphronius,Character
+Evans,Evans,Character
+Fabian,Fabian,Character
+Fairy,Fairy,Character
+Falstaff,Falstaff,Character
+First Bandit,First Bandit,Character
+First Citizen,First Citizen,Character
+First Fairy,First Fairy,Character
+First Guard,First Guard,Character
+First Huntsman,First Huntsman,Character
+First Murderer,First Murderer,Character
+First Senator,First Senator,Character
+First Servant,First Servant,Character
+First Witch,First Witch,Character
+Flavius,Flavius,Character
+Florizel,Florizel,Character
+Fool,Fool,Character
+Ford,Ford,Character
+Francisco,Francisco,Character
+Friar,Friar,Character
+Gent,Gent,Character
+Ghost,Ghost,Character
+Gloster,Gloster,Character
+Gonzalo,Gonzalo,Character
+Gower,Gower,Character
+Gratiano,Gratiano,Character
+Gregory,Gregory,Character
+Gremio,Gremio,Character
+Grumio,Grumio,Character
+Guiderius,Guiderius,Character
+H_Queen,H_Queen,Character
+Haberdasher,Haberdasher,Character
+Hamlet,Hamlet,Character
+Hector,Hector,Character
+Helena,Helena,Character
+Hermia,Hermia,Character
+Hero,Hero,Character
+Hippolyta,Hippolyta,Character
+Holofernes,Holofernes,Character
+Horatio,Horatio,Character
+Hortensio,Hortensio,Character
+Iachimo,Iachimo,Character
+Iago,Iago,Character
+Imogen,Imogen,Character
+Iris,Iris,Character
+Isabel,Isabel,Character
+Isabella,Isabella,Character
+JC_Antony,JC_Antony,Character
+JC_Brutus,JC_Brutus,Character
+Jaques,Jaques,Character
+Jessica,Jessica,Character
+Julia,Julia,Character
+Juliet,Juliet,Character
+Katharine,Katharine,Character
+Kent,Kent,Character
+King,King,Character
+LLL_Costard,LLL_Costard,Character
+Lady M,Lady M,Character
+Lady Macbeth,Lady Macbeth,Character
+Lady Macduff,Lady Macduff,Character
+Laertes,Laertes,Character
+Lafeu,Lafeu,Character
+Launce,Launce,Character
+Launcelot,Launcelot,Character
+Lavinia,Lavinia,Character
+Lear,Lear,Character
+Leontes,Leontes,Character
+Lepidus,Lepidus,Character
+Lion,Lion,Character
+Lodovico,Lodovico,Character
+Longaville,Longaville,Character
+Lord,Lord,Character
+Lorenzo,Lorenzo,Character
+Luciana,Luciana,Character
+Lucio,Lucio,Character
+Lucius,Lucius,Character
+Lysander,Lysander,Character
+Lysimachus,Lysimachus,Character
+MAAN_Antonio,MAAN_Antonio,Character
+MAAN_Claudio,MAAN_Claudio,Character
+MFM_Claudio,MFM_Claudio,Character
+MFM_Duke,MFM_Duke,Character
+MV_Antonio,MV_Antonio,Character
+Macbeth,Macbeth,Character
+Macduff,Macduff,Character
+Maixus,Maixus,Character
+Malvolio,Malvolio,Character
+Mamilius,Mamilius,Character
+Marcellus,Marcellus,Character
+Marcius,Marcius,Character
+Marcius (Coriolanus),Marcius (Coriolanus),Character
+Marcus,Marcus,Character
+Margaret,Margaret,Character
+Maria,Maria,Character
+Marina,Marina,Character
+Menenius,Menenius,Character
+Mercutio,Mercutio,Character
+Messenger,Messenger,Character
+Moth,Moth,Character
+Mrs Page,Mrs Page,Character
+Mrs. Ford,Mrs. Ford,Character
+Musicians (Song),Musicians (Song),Character
+Mustard,Mustard,Character
+Nathaniel,Nathaniel,Character
+Nestor,Nestor,Character
+Nurse,Nurse,Character
+Oberon,Oberon,Character
+Officer,Officer,Character
+Old Gobbo,Old Gobbo,Character
+Old Man,Old Man,Character
+Oliver,Oliver,Character
+Ophelia,Ophelia,Character
+Orlando,Orlando,Character
+Orsino,Orsino,Character
+Othello,Othello,Character
+Page,Page,Character
+Pandarus,Pandarus,Character
+Paris,Paris,Character
+Parolles,Parolles,Character
+Patrodus,Patrodus,Character
+Paulina,Paulina,Character
+Perdita,Perdita,Character
+Pericles,Pericles,Character
+Petruchio,Petruchio,Character
+Pisanio,Pisanio,Character
+Pistol,Pistol,Character
+Poet,Poet,Character
+Polixenes,Polixenes,Character
+Polonius,Polonius,Character
+Pompey (Antony and Cleopatra),Pompey (Antony and Cleopatra),Character
+Pompey (Measure for Measure),Pompey (Measure for Measure),Character
+Porter,Porter,Character
+Portia,Portia,Character
+Posthumus,Posthumus,Character
+Prince of Morocco,Prince of Morocco,Character
+Princess,Princess,Character
+Prospero,Prospero,Character
+Proteus,Proteus,Character
+Puck,Puck,Character
+Quickly,Quickly,Character
+Quince,Quince,Character
+Romeo,Romeo,Character
+Rosalind,Rosalind,Character
+Rosencrantz,Rosencrantz,Character
+Rosse,Rosse,Character
+Salarino,Salarino,Character
+Saturninus,Saturninus,Character
+Scarus,Scarus,Character
+Sebastian,Sebastian,Character
+Second Captain,Second Captain,Character
+Second Guard,Second Guard,Character
+Second Lord (As You Like It),Second Lord (As You Like It),Character
+Second Lord (Timon of Athens),Second Lord (Timon of Athens),Character
+Second Servant,Second Servant,Character
+Second Witch,Second Witch,Character
+Senator,Senator,Character
+Shallow,Shallow,Character
+Shepherd,Shepherd,Character
+Shylock,Shylock,Character
+Simonides,Simonides,Character
+Sir Andrew,Sir Andrew,Character
+Sir Toby,Sir Toby,Character
+Slender,Slender,Character
+Soldier,Soldier,Character
+Son,Son,Character
+Soothsayer,Soothsayer,Character
+Speed,Speed,Character
+Stephano,Stephano,Character
+TA_Demetrius,TA_Demetrius,Character
+TN_Clown,TN_Clown,Character
+TN_Duke,TN_Duke,Character
+TT_Antonio,TT_Antonio,Character
+TWT_Clown,TWT_Clown,Character
+TWT_Costard,TWT_Costard,Character
+TWT_First Lord,TWT_First Lord,Character
+Tamora,Tamora,Character
+Thersitcs,Thersitcs,Character
+Thersites,Thersites,Character
+Theseus,Theseus,Character
+Third Servant,Third Servant,Character
+Third Witch,Third Witch,Character
+Thisbe,Thisbe,Character
+Timon,Timon,Character
+Titania,Titania,Character
+Titus,Titus,Character
+Touchstone,Touchstone,Character
+Trinculo,Trinculo,Character
+Troilus,Troilus,Character
+Tubal,Tubal,Character
+Tybalt,Tybalt,Character
+Ulysses,Ulysses,Character
+Ursula,Ursula,Character
+Valentine,Valentine,Character
+Valeria,Valeria,Character
+Viola,Viola,Character
+Volumnia,Volumnia,Character

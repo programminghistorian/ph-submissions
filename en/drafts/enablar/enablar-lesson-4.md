@@ -969,6 +969,4 @@ This lesson has provided you with an NLP workflow using spaCy as an open, reprod
 
 [^31]: [Nayak, Srikumar. "Named Entity Recognition for Payment Data Using NLP". 2026.](https://doi.org/10.48550/arXiv.2602.14009)
 
-### Conflicts 
-
 Joe Nockels is a personal READ-COOP member, the body who maintain and develop Transkribus - included within our constructed dataset of AI Terms and Conditions. The University of Birmingham, where Fenlon is based, is an institutional members of the READ-COOP.

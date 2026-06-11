@@ -212,7 +212,7 @@ The AI tool licences provided as a use case can also be stored locally, as simpl
 
 #### Language
 
-Although our lesson makes use of spaCy’s main English language pipeline (en_core_web), this NLP library supports [75+ languages and has equivalent pipelines for 25 languages](https://spacy.io/usage/facts-figures). SpaCy's openly available NLP pipelines range from Greek to Korean, Norwegian Bokmål to Catalan. As such, we provide a [blank dictionary](...), whereby you can follow the given code syntax but populate the terms, phrases and categories in your own language.
+Although our lesson makes use of spaCy’s main English language pipeline (en_core_web), this NLP library supports [75+ languages and has equivalent pipelines for 25 languages](https://spacy.io/usage/facts-figures). SpaCy's openly available NLP pipelines range from Greek to Korean, Norwegian Bokmål to Catalan. As such, we provide a [blank dictionary](assets/enablar-lesson-4/blank_dict), whereby you can follow the given code syntax but populate the terms, phrases and categories in your own language.
 
 #### Ethics
 
@@ -276,7 +276,7 @@ Estrada, N., Nockels, J., Fenlon, A. (2026). [Popular Academic AI Tools Terms an
 
 For our full dictionary code, see [full dictionary](assets/enablar-lesson-4/red-flag-dict)
 
-For our blank dictionary, see [blank dictionary]()
+For our blank dictionary, see [blank dictionary](assets/enablar-lesson-4/blank_dict)
 
 ## Background to Technical Method 
 
@@ -324,7 +324,7 @@ Datafiles -
 
   Our full dictionary code, held as a *Programming Historian* asset [full dictionary](assets/enablar-lesson-4/red-flag-dict).
 
-  Our blank dictionary code, held as a *Programming Historian* assest [blank dictionary]() 
+  Our blank dictionary code, held as a *Programming Historian* assest [blank dictionary](assets/enablar-lesson-4/blank_dict) 
   
 Software - 
 
@@ -489,7 +489,7 @@ To close the full dictionary, include the following curly brackets -
        }, 
        }
 
-We provide a full empty dictionary scaffold as a *Programming Historian* asset [here](). 
+We provide a full empty dictionary scaffold as a *Programming Historian* asset [here](assets/enablar-lesson-4/blank_dict). 
 
 As a guide for you, the below populates our empty dictionary scaffold. First of all, we group terms and phrases under the theme *AI training*, whereby user data feeds into the background processig of a tool. Through a thorough reading of ESAC agreements and the wider literature mentioned, we draw out key phrases associated with this AI risk. 
 

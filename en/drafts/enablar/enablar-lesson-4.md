@@ -150,7 +150,7 @@ In responding to the current capability and knowledge gap in interpreting AI lic
 
 This lesson provides a reproducible workflow for interpreting AI tool licence agreements through Natural Language Processing (NLP): the field of digital research involving interaction between computers and human language [^9]. NLP encompasses tasks such as text analysis, translation, and parts-of-speech tagging, though used here to extract key terms and clauses in AI terms and conditions. We have constructed a dictionary of 'red flags' from licence conditions for you to experiment with. This lesson also provides a walkthrough demonstrating how to adapt and use it to increase your organisation's AI preparedness, alongside existing guidance [^10]. Though our lesson focuses on AI agreements specifically, we connect these issues to broader tool purchasing issues negotiated by libraries, for instance data sharing agreements.
 
-The language used in our dictionary was informed by reading current guidance on approaching AI licences [^11, ^12], and extracting common AI-related terms found in the [ESAC Initiative’s registry of open licence agreements](https://esac-initiative.org/about/transformative-agreements/agreement-registry/). Therefore, our dictionary is accessible through *Programming Historian* [full dictionary](assets/enablar-lesson-4/red-flag-dict), and attempts to closely fit with current AI contractual language. Without this NLP tailoring, we risk extracting non-relevant language, instead of interpreting potentially problematic terms associated with extractive or risky AI use. It should be said that though we reiteratively refined this dictionary, as discussed it may still extract some non-relevant clauses. With legalistic language being complex, it may not fully generalise to your every AI licence. Therefore, we provide a corpus of AI tool licences, actively being considered by the University of Buffalo, but also scale down our lesson for those working on individual licences. We also provide you with a blank dictionary scaffold, keeping only the syntax, for you to edit freely based on your own research aims, content, and language, found [here](...). In this way, we hope to support solo librarians and researchers in interpreting AI terms and conditions, as well as broader copyright and licensing teams.
+The language used in our dictionary was informed by reading current guidance on approaching AI licences [^11, ^12], and extracting common AI-related terms found in the [ESAC Initiative’s registry of open licence agreements](https://esac-initiative.org/about/transformative-agreements/agreement-registry/). Therefore, our dictionary is accessible through *Programming Historian* [full dictionary](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/blank_dict), and attempts to closely fit with current AI contractual language. Without this NLP tailoring, we risk extracting non-relevant language, instead of interpreting potentially problematic terms associated with extractive or risky AI use. It should be said that though we reiteratively refined this dictionary, as discussed it may still extract some non-relevant clauses. With legalistic language being complex, it may not fully generalise to your every AI licence. Therefore, we provide a corpus of AI tool licences, actively being considered by the University of Buffalo, but also scale down our lesson for those working on individual licences. We also provide you with a blank dictionary scaffold, keeping only the syntax, for you to edit freely based on your own research aims, content, and language, found [here](...). In this way, we hope to support solo librarians and researchers in interpreting AI terms and conditions, as well as broader copyright and licensing teams.
 
 We should also qualify that the ESAC agreements used to construct our NLP dictionary are largely from publishing contracts, not direct AI providers, due to their being limited public availability. Instead, they come from the [Association of Computing Machinery](https://www.acm.org), [University of Cambridge Press](https://www.cambridge.org), [Royal Society](https://royalsocietypublishing.org) and [emerald publishing](https://www.emerald.com). That said, ESAC’s registry ranges in geographical jurisdiction, thereby providing you a transferable dictionary, constructed beyond a purely Anglo-American context. 
 
@@ -202,7 +202,7 @@ Throughout our lesson, we indicate how you can refine and add to our constructed
 
 ###### Scaling Down, for Individuals
 
-We are also concerned, alongside informing library policies around AI review, in supporting individual researchers and librarians: who may only be reviewing one licence at a time. As such, we scale down our code, provide syntax templates to indicate how to tailor our NLP approach. Our full dictionary, which forms a long block of code is instead included as a *Programming Historian* asset [full dictionary](assets/enablar-lesson-4/red-flag-dict). 
+We are also concerned, alongside informing library policies around AI review, in supporting individual researchers and librarians: who may only be reviewing one licence at a time. As such, we scale down our code, provide syntax templates to indicate how to tailor our NLP approach. Our full dictionary, which forms a long block of code is instead included as a *Programming Historian* asset [full dictionary](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/red-flag-dict). 
 
 #### Connectivity
 
@@ -212,7 +212,7 @@ The AI tool licences provided as a use case can also be stored locally, as simpl
 
 #### Language
 
-Although our lesson makes use of spaCy’s main English language pipeline (en_core_web), this NLP library supports [75+ languages and has equivalent pipelines for 25 languages](https://spacy.io/usage/facts-figures). SpaCy's openly available NLP pipelines range from Greek to Korean, Norwegian Bokmål to Catalan. As such, we provide a [blank dictionary](assets/enablar-lesson-4/blank_dict), whereby you can follow the given code syntax but populate the terms, phrases and categories in your own language.
+Although our lesson makes use of spaCy’s main English language pipeline (en_core_web), this NLP library supports [75+ languages and has equivalent pipelines for 25 languages](https://spacy.io/usage/facts-figures). SpaCy's openly available NLP pipelines range from Greek to Korean, Norwegian Bokmål to Catalan. As such, we provide a [blank dictionary](ahttps://github.com/programminghistorian/ph-submissions/blob/gh-pages/ssets/enablar-lesson-4/blank_dict), whereby you can follow the given code syntax but populate the terms, phrases and categories in your own language.
 
 #### Ethics
 
@@ -274,9 +274,9 @@ Nockels, before trialling spaCy, ran simple import tests to ensure the quality o
 
 Estrada, N., Nockels, J., Fenlon, A. (2026). [Popular Academic AI Tools Terms and Conditions, Zenodo](https://zenodo.org/records/19616877?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImE3MWExN2E5LTE0NjgtNGFiMi1hNWJjLTYyNTE0Y2MxYTJjNiIsImRhdGEiOnt9LCJyYW5kb20iOiI5ZjY5NWZlNGE3NDFlNzA5ZjNjN2EzNjMxMjYxYjJmMSJ9.HLiESWKo1CeA_MimFtUsW1tUxtreTsdjdEJo4xb5KO7FpYNfo1aev9T7GMH6xCwRuEpDU5l3fofI_98B6tjnsg)
 
-For our full dictionary code, see [full dictionary](assets/enablar-lesson-4/red-flag-dict)
+For our full dictionary code, see [full dictionary](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/red-flag-dict)
 
-For our blank dictionary, see [blank dictionary](assets/enablar-lesson-4/blank_dict)
+For our blank dictionary, see [blank dictionary](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/blank_dict)
 
 ## Background to Technical Method 
 
@@ -322,9 +322,9 @@ Datafiles -
   
   Our [list of AI tool licence agreements](https://zenodo.org/records/19616877?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImE3MWExN2E5LTE0NjgtNGFiMi1hNWJjLTYyNTE0Y2MxYTJjNiIsImRhdGEiOnt9LCJyYW5kb20iOiI5ZjY5NWZlNGE3NDFlNzA5ZjNjN2EzNjMxMjYxYjJmMSJ9.HLiESWKo1CeA_MimFtUsW1tUxtreTsdjdEJo4xb5KO7FpYNfo1aev9T7GMH6xCwRuEpDU5l3fofI_98B6tjnsg).
 
-  Our full dictionary code, held as a *Programming Historian* asset [full dictionary](assets/enablar-lesson-4/red-flag-dict).
+  Our full dictionary code, held as a *Programming Historian* asset [full dictionary](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/red-flag-dict).
 
-  Our blank dictionary code, held as a *Programming Historian* assest [blank dictionary](assets/enablar-lesson-4/blank_dict) 
+  Our blank dictionary code, held as a *Programming Historian* assest [blank dictionary](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/blank_dict) 
   
 Software - 
 
@@ -489,11 +489,11 @@ To close the full dictionary, include the following curly brackets -
        }, 
        }
 
-We provide a full empty dictionary scaffold as a *Programming Historian* asset [here](assets/enablar-lesson-4/blank_dict). 
+We provide a full empty dictionary scaffold as a *Programming Historian* asset [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/blank_dict). 
 
 As a guide for you, the below populates our empty dictionary scaffold. First of all, we group terms and phrases under the theme *AI training*, whereby user data feeds into the background processig of a tool. Through a thorough reading of ESAC agreements and the wider literature mentioned, we draw out key phrases associated with this AI risk. 
 
-Our full dictionary is included as a *Programming Historian* asset [here](assets/enablar-lesson-4/red-flag-dict), due to its considerable length. It serves as a useful guide, and can even be used as a simple plugin dictionary, including themes of 'data retention', 'data ownership', 'security', 'copyright', 'accessibility', and 'liability', again constructed through practitioner consultation with Fenlon and Estrada.
+Our full dictionary is included as a *Programming Historian* asset [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/red-flag-dict), due to its considerable length. It serves as a useful guide, and can even be used as a simple plugin dictionary, including themes of 'data retention', 'data ownership', 'security', 'copyright', 'accessibility', and 'liability', again constructed through practitioner consultation with Fenlon and Estrada.
 
     red_flag_dict = {
 

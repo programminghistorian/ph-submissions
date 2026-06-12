@@ -122,7 +122,7 @@ Format all references using the Chicago Manual of Style.
   https://subjectguides.york.ac.uk/referencing-style-guides/chicago
 -->
 
-## Introduction, Increasing Exposure to AI Risk and Red Flags
+## Introduction, Increasing Exposure to AI Risk
 
 The increasing deployment of Artificial Intelligence (AI) is particularly visible in Higher Education, from proof reading applications to literature review searching and website generation. University libraries now contend with newfound staff and student expectations as to how AI can support their scholarship, workplace efficiency and ideation strategies, automating previous manual work [^1]. Large Language Models (LLMs), trained on huge amounts of text, and the chat-based interfaces supporting them, have led many library users to anticipate querying resources based on natural language, opposed to keyword searching [^2]. Alongside this shift in how users retrieve information, Agentic AI systems couple LLM models, like Gemini or Claude, to external software: from calendar applications to email systems [^3]. Often, these tools are adopted to improve the quality of work, and reduce time; however, they also change the rhythm and nature of research, pushing against established safeguards [^4]. While offering potential benefits to research, AI therefore exposes institutions, and individuals, to a new landscape of Intellectual Property (IP) concerns and potential legal risk. 
 
@@ -194,13 +194,13 @@ Initially downloading Jupyter Notebooks may require administrative privileges, i
 
 #### Scalability
 
-###### Scaling Up, for Institutions
+###### Scaling Up for Institutions
 
 This method is easily scalable across your own institutions' licence agreements, although the corpus constructed by Estrada aims to be representative of current AI tools marketed to university libraries. It includes AI marketed for automated literature review ([Ai2](https://allenai.org), [elicit](https://elicit.com), [Perplexity](https://www.perplexity.ai/), [scite](https://scite.ai/assistant), [undermind](https://www.undermind.ai)) chat-based and Agentic AI systems ([Google Gemini](https://gemini.google.com/), [Microsoft 365 CoPilot](https://copilot.microsoft.com), [NotebookLM](https://notebooklm.google)), and those aimed at increasing researcher efficiency through automated transcription, ([FromThePage](https://www.fromthepage.com),[Transkribus](https://www.transkribus.org/)).
 
 Throughout our lesson, we indicate how you can refine and add to our constructed [spaCy](https://spacy.io) dictionary and corpus. The Python workflow is also extensible, with no functions determined by dataset size, provided your computational RAM and disk memory is high enough. We have developed this workflow to inform University of Birmingham and Buffalo business-as-usual activities in reviewing AI tool agreements, so chose spaCy with increased scalability in-mind.
 
-###### Scaling Down, for Individuals
+###### Scaling Down for Individuals
 
 We are also concerned, alongside informing library policies around AI review, in supporting individual researchers and librarians: who may only be reviewing one licence at a time. As such, we scale down our code, provide syntax templates to indicate how to tailor our NLP approach. Our full dictionary, which forms a long block of code is instead included as a *Programming Historian* asset [full dictionary](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/red-flag-dict). 
 
@@ -248,7 +248,7 @@ The NLP processes underpinning this work are at the beginner level, as we provid
 
 We also attempt to breakdown key legal concepts as firm contextual grounding, especially around general data protection and IP knowledge.
 
-## Use Case: Locating Potential Red Flags
+## Use Case: Locating Potential Red Flags in AI Licences
 
 This lesson aims to support those concerned with AI experimentation, such as *Programming Historians*, in evaluating AI tools based on their terms and conditions. As a secondary audience, we also hope to inform those with a remit to advise on AI compliance and institutional licence purchasing, especially within Higher Educational libraries. 
 
@@ -296,8 +296,6 @@ We take a purposefully broad definition of **Artificial Intelligence**, as our l
 
 ### Terms
 
-Legal terms: 
-
 **Licences** are a formal permission to use something, in this case paid-for access and use of online content or tools. They are documents containing all the terms and conditions of use associated with that content, detailing what can and cannot be done, by whom, for how long, and what happens if problems arise [^11].
 
 A **warranty** is a contractual promise regarding the existence of a set of conditions, for instance the maintenance of a certain software dependency. A breach of warranty enables the innocent party to claim damages, but may not allow them to exit a contract, presenting a risk for both libraries and researchers. Warranties, and their obligations, can differ immensely between industries and agreements [^26]. 
@@ -310,7 +308,7 @@ In both cases, legal professionals have identified issues in regulating current 
 
 We anticipate this lesson taking an hour, not including your own dictionary refinement and red flag review.
 
-## Learning experiment
+## Learning Experiment
 
 ### Aims
 
@@ -322,21 +320,21 @@ Datafiles -
   
   Our [list of AI tool licence agreements](https://zenodo.org/records/19616877?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImE3MWExN2E5LTE0NjgtNGFiMi1hNWJjLTYyNTE0Y2MxYTJjNiIsImRhdGEiOnt9LCJyYW5kb20iOiI5ZjY5NWZlNGE3NDFlNzA5ZjNjN2EzNjMxMjYxYjJmMSJ9.HLiESWKo1CeA_MimFtUsW1tUxtreTsdjdEJo4xb5KO7FpYNfo1aev9T7GMH6xCwRuEpDU5l3fofI_98B6tjnsg).
 
-  Our full dictionary code, held as a *Programming Historian* asset [full dictionary](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/red-flag-dict).
+  Our [full dictionary](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/red-flag-dict) dictionary code, held as a *Programming Historian* asset.
 
-  Our blank dictionary code, held as a *Programming Historian* assest [blank dictionary](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/blank_dict) 
+  Our [blank dictionary](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/blank_dict), held as a *Programming Historian* asset.
   
 Software - 
 
- Jupyter Notebook as a base coding environment, either through our web link or downloaded locally 
+ Jupyter Notebook as a base coding environment, either through our web link or downloaded locally. 
  
- [Pdfplumber](https://github.com/jsvine/pdfplumber) (Python), for text extraction of born-digital licences
+ [pdfplumber](https://github.com/jsvine/pdfplumber) (Python), for text extraction of born-digital licences
   
- spaCy (Python), for our NLP workflow
+ spaCy (Python), for our NLP workflow.
  
- [pandas and openpyxl](https://pandas.pydata.org) (Python), for data frame construction of extracted results and .xlsx file export 
+ [pandas and openpyxl](https://pandas.pydata.org) (Python), for data frame construction of extracted results and .xlsx file export.
   
- Microsoft Excel, for manual red flag review 
+ Microsoft Excel, for manual red flag review.
 
 ### Workflow
 
@@ -642,14 +640,14 @@ We do the same for associated financial risks and hidden costs as another AI ris
 
 ### Step 5: Running PhraseMatcher
 
-However related to AI risk, a list of individual word token  is not illuminating enough to assess red flags in licence agreements. As such, we use spaCy’s in-built PhraseMatcher, which overlays our dictionary rules across our licence corpus and reassembles word matches based on the patterns established. 
+However related to AI risk, a list of individual word tokens is not illuminating enough to assess red flags in licence agreements. As such, we use spaCy’s in-built PhraseMatcher, which overlays the outlined dictionary rules onto our licence corpus, before returning word and phrase matches based on the patterns established. 
 
 First, load the matchers - 
 
     phrase_matcher = PhraseMatcher(nlp.vocab)
     token_matcher = Matcher(nlp.vocab)
 
-You could include attr = lower after nlp.vocab, though this would convert all results into lowercase, instead of our more fine account of sentence structure by including lowercasing in each dictionary section -
+You can also include attr = lower after nlp.vocab, though this would convert all results into lowercase, although our current code more finely accounts for sentence structure by including lowercasing for specific dictionary sections.
 
 Then, return the word tokens and the categories of risk in your dictionary, to ensure that both matchers are properly assigned -
 
@@ -804,7 +802,7 @@ If using multiple licences, as with our corpus of 29 agreements, ensure that the
      out_path = Path("red_flags_by_folder.xlsx")
      with pd.ExcelWriter(out_path, engine="openpyxl") as writer:
      for folder in sorted({p.relative_to(ROOT).parts[0] for p in pdfs}):
-          sheet = folder[:31]
+          sheet = folder[:29]
           sub = df[df["folder"] == folder].drop(columns=["folder"])
           sub.to_excel(writer, sheet_name=sheet, index=False)
    
@@ -875,7 +873,7 @@ We have attempted to provide you with an NLP method for extracting problematic A
 
 --- 
 
-There are limitations to our lesson:
+There are limitations to our method:
 
 Our spaCy method could be improved upon through the bespoke use of OCR tools, to correct errors in PDF transcriptions pulled by pdfpumber. However, these errors were minimal and did not impact the overall review of extracted red flags, with four notable error instances across the whole export. 
 
@@ -969,4 +967,4 @@ This lesson has provided you with an NLP workflow using spaCy as an open, reprod
 
 [^31]: [Nayak, Srikumar. "Named Entity Recognition for Payment Data Using NLP". 2026.](https://doi.org/10.48550/arXiv.2602.14009)
 
-Joe Nockels is a personal READ-COOP member, the body who maintain and develop Transkribus - included within our constructed dataset of AI Terms and Conditions. The University of Birmingham, where Fenlon is based, is an institutional members of the READ-COOP.
+Joe Nockels is a personal READ-COOP member, the body who maintain and develop Transkribus - included within our constructed dataset of AI Terms and Conditions. The University of Birmingham, where Fenlon is based, is an institutional member of the READ-COOP.

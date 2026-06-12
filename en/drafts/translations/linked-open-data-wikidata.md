@@ -162,7 +162,7 @@ In Wikidata, the first statement commonly added is the **instance of** property 
 
 For example, if you’re creating an item for a well-known person, you might use: **instance of**: 'human', while if you’re describing Paris, the first statement could be: **instance of**: 'city'. This statement classifies the item and connects it to similar entries in the database. 
 
-Here are some examples of values common used with the **instance of** property:
+Here are some examples of values commonly used with the **instance of** property:
 
 - 'human': For an entity representing a specific person
 

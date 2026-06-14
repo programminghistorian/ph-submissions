@@ -122,7 +122,7 @@ Format all references using the Chicago Manual of Style.
   https://subjectguides.york.ac.uk/referencing-style-guides/chicago
 -->
 
-## Introduction, Increasing Exposure to AI Risk
+## Introduction, Dealing with Increasing Exposure to AI Risk
 
 The increasing deployment of Artificial Intelligence (AI) is particularly visible in Higher Education, from proof reading applications to literature review searching and website generation. University libraries now contend with newfound staff and student expectations as to how AI can support their scholarship, workplace efficiency and ideation strategies, automating previous manual work [^1]. Large Language Models (LLMs), trained on huge amounts of text, and the chat-based interfaces supporting them, have led many library users to anticipate querying resources based on natural language, opposed to keyword searching [^2]. Alongside this shift in how users retrieve information, Agentic AI systems couple LLM models, like Gemini or Claude, to external software: from calendar applications to email systems [^3]. Often, these tools are adopted to improve the quality of work, and reduce time; however, they also change the rhythm and nature of research, pushing against established safeguards [^4]. While offering potential benefits to research, AI therefore exposes institutions, and individuals, to a new landscape of Intellectual Property (IP) concerns and potential legal risk. 
 

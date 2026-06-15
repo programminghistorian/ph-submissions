@@ -125,7 +125,7 @@ Treating catalogues as data makes these patterns visible. A researcher can ask h
 ### Prerequisites
 
 This lesson assumes:
-- - **Working familiarity with MARC.** We work directly with MARC fields and subfields. The lesson teaches what to *do* with MARC records using Python; it does not teach the MARC format itself.
+- **Working familiarity with MARC.** We work directly with MARC fields and subfields. The lesson teaches what to *do* with MARC records using Python; it does not teach the MARC format itself.
 - **Basic Python**: variables, functions, lists, dictionaries, loops, and conditionals. If you are new to Python, we recommend an introductory lesson first, such as [Python Introduction and Installation](/en/lessons/introduction-and-installation).
 - **Comfort at the command line** to run a Python script, and familiarity with installing packages using `pip`.
 

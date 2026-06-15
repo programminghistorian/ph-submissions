@@ -106,22 +106,92 @@ Format all references using the Chicago Manual of Style.
 
 ## Preliminaries
 ### Method or tool
+This lesson teaches *bibliographic data science*: the practice of treating library catalogue records as structured data that can be acquired, reshaped, cleaned, analysed, and shared at scale. Instead of inspecting records one at a time through a catalogue interface, we work with thousands of them at once using Python.
+
+The two central tools are [PyMARC](https://gitlab.com/pymarc/pymarc), a Python package for reading MARC records, and [pandas](https://pandas.pydata.org/), the standard Python library for tabular data. Several supporting libraries handle downloading, date cleaning, and plotting. We introduce each tool as it becomes relevant in each stage. 
+
+The specific bibliographic dataset we use is incidental. Once you move bibliographic data through this pipeline, you can apply the same steps to any MARC-based dataset.
+
 ### Technical context
+MARC (MAchine-Readable Cataloging) is a metadata standard in library catalogues. Developed at the Library of Congress in the 1960s and now in its MARC21 form, it is the format in which many libraries store and exchange bibliographic records.
+
+MARC data comes in two common serializations: a binary format defined by [ISO 2709](https://en.wikipedia.org/wiki/ISO_2709), and MARCXML, an XML representation that is easier to process with modern tools. This lesson works primarily with MARCXML.
+
 ### Social context
+Catalogues are not neutral. The vocabularies libraries use to describe their holdings, especially subject headings, encode decisions about what matters, how things should be named, and whose perspective counts as the default.
+
+Treating catalogues as data makes these patterns visible. A researcher can ask how a collection's subject coverage is distributed, how cataloguing practice has changed over time, or how two institutions describe the same material differently. The techniques in this lesson are a starting point for that kind of inquiry. They do not, by themselves, answer questions about bias or representation, but they give you the means to begin asking them with evidence.
+
 ### Prerequisites
+
+This lesson assumes:
+- - **Working familiarity with MARC.** We work directly with MARC fields and subfields. The lesson teaches what to *do* with MARC records using Python; it does not teach the MARC format itself.
+- **Basic Python**: variables, functions, lists, dictionaries, loops, and conditionals. If you are new to Python, we recommend an introductory lesson first, such as [Python Introduction and Installation](/en/lessons/introduction-and-installation).
+- **Comfort at the command line** to run a Python script, and familiarity with installing packages using `pip`.
+
 ### Difficulty
 
+Intermediate. The individual techniques are approachable, but the lesson asks you to hold several tools in mind at once (PyMARC, pandas, regular expressions, plotting) and to follow a multi-stage workflow from raw files to finished, shareable results.
+
 ## Use Case
+
+This lesson is motivated by two situations a librarian or researcher might realistically face. Both lead to the same underlying method, which is why a single set of techniques can serve them both.
+**Benchmarking a catalogue against an external standard.** A metadata librarian at a mid-sized academic library has been asked to assess the quality of her catalogue. She has no clear sense of what "good" looks like in isolation, so she decides to benchmark against a larger, professionally maintained catalogue. By extracting the same fields from both and comparing how each describes its materials, she can move from a vague "our records could be better" to a specific account of where her catalogue differs from the comparison standard.
+**Assessing metadata across multiple sources.** A digital projects librarian is preparing a discovery portal that will search across several library collections at once. Before launch, she needs to know whether the metadata from each source is consistent enough to display and filter coherently. If one source assigns rich subject headings and another assigns none, or if dates are formatted differently across sources, the portal's facets and filters will not work as users expect. She needs to compare field usage across sources and find the gaps.
+
+Both librarians do the same computational work: acquire records, parse them, reshape them into a table, and compare. This lesson teaches that work using one library's openly licensed catalogue. Once you have the method, pointing it at your own catalogue, a national bibliography, or a set of partner collections is a matter of changing the input.
+
 ### Dataset
+
+We use the bibliographic catalogue of [Yale University Library](https://web.library.yale.edu/), which Yale releases through its [Open Metadata Service](https://guides.library.yale.edu/open-metadata-service). 
+
+The catalogue is published as MARCXML at <https://metadata.library.yale.edu/MARCXML/>. Because the full catalogue is large, it is distributed as a set of numbered, compressed files (which we refer to as *shards*), each containing many thousands of records. For most of this lesson we work with one or two shards.
+
+One note on licensing: most Yale-originated records are released under a public domain [CC0 license](https://creativecommons.org/publicdomain/zero/1.0/), while records derived from [OCLC WorldCat](https://www.worldcat.org/) carry an [ODC-BY](https://opendatacommons.org/licenses/by/1.0/) license requiring attribution to OCLC. Yale embeds the applicable license directly in each record. If you publish results derived from this data, check the relevant records and attribute accordingly.
+
 ### Software/tool
+
+The lesson uses the following Python packages, introduced in context but listed here for reference:
+- [PyMARC](https://gitlab.com/pymarc/pymarc) reads and parses MARC records, in both binary and MARCXML form.
+- [pandas](https://pandas.pydata.org/) provides the DataFrame, the tabular structure we reshape records into.
+- [lxml](https://lxml.de/) parses HTML, used during acquisition to find downloadable files on an index page.
+- [undate](https://undate-python.readthedocs.io/) parses and validates the irregular publication dates common in catalogue records.
+- [matplotlib](https://matplotlib.org/) and [matplotlib-venn](https://pypi.org/project/matplotlib-venn/) produce the timeline and Venn diagram visualisations.
+- Several standard-library modules (`urllib`, `os`, `gzip`, `shutil`, `re`, `glob`, `collections`) handle downloading, file management, and pattern matching.
 
 ## Learning keys
 ### Concepts
+By the end of this lesson you will understand:
+- How bibliographic records are structured in MARC21, and why that structure does not map directly onto a tidy table.
+- The difference between repeatable and non-repeatable fields, and two strategies for handling repeatable fields in tabular data.
+- How to read records one at a time versus all at once, and when each approach is appropriate.
+- Why real-world catalogue data needs harmonisation, and how an iterative cleaning process works.
+- How to compose small, single-purpose functions into a larger analysis.
+- How to compare bibliographic data across two sources, and how to present the comparison visually.
+
 ### Terms
+
+- **MARC / MARC21**: the machine-readable cataloguing standard used to store bibliographic records.
+- **MARCXML**: an XML serialisation of MARC records.
+- **Field and subfield**: the numbered (e.g. `245`) and lettered (e.g. `$a`) components of a MARC record.
+- **LCSH (Library of Congress Subject Headings)**: the controlled vocabulary used to assign subject headings.
+- **Shard**: one of the numbered files into which a large catalogue is split.
+
 ### Time
 
 ## Learning experiment
 ### Aims
+
+This lesson aims to give you a working command of a complete bibliographic data science pipeline, using a real catalogue, so that you can carry the method to your own data and questions. Concretely, after completing it you should be able to:
+
+- **Acquire** bibliographic records by downloading and decompressing them programmatically, and adapt the acquisition script to a different source.
+- **Parse and reshape** MARC records into a pandas DataFrame, handling both fields that appear once per record and fields that repeat.
+- **Harmonise** an irregular field (publication date) into a consistent form, and recognise harmonisation as an iterative process rather than a one-time fix.
+- **Analyse and compare** the data, including comparing how two catalogues describe the same kind of material, and **visualise** the results as timelines and set comparisons.
+- **Share** your data and code in a way that lets others reuse and build on them.
+
+The example questions we ask of the data are illustrative; the techniques are general. Where a topic opens onto larger research questions, we point outward to further reading rather than pursuing it in depth, so that the methodology stays in focus.
+
 ### Inventory
 ### Workflow
 #### Data acquisition

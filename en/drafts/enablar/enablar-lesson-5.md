@@ -136,7 +136,9 @@ Intermediate. The individual techniques are approachable, but the lesson asks yo
 ## Use Case
 
 This lesson is motivated by two situations a librarian or researcher might realistically face. Both lead to the same underlying method, which is why a single set of techniques can serve them both.
+
 **Benchmarking a catalogue against an external standard.** A metadata librarian at a mid-sized academic library has been asked to assess the quality of her catalogue. She has no clear sense of what "good" looks like in isolation, so she decides to benchmark against a larger, professionally maintained catalogue. By extracting the same fields from both and comparing how each describes its materials, she can move from a vague "our records could be better" to a specific account of where her catalogue differs from the comparison standard.
+
 **Assessing metadata across multiple sources.** A digital projects librarian is preparing a discovery portal that will search across several library collections at once. Before launch, she needs to know whether the metadata from each source is consistent enough to display and filter coherently. If one source assigns rich subject headings and another assigns none, or if dates are formatted differently across sources, the portal's facets and filters will not work as users expect. She needs to compare field usage across sources and find the gaps.
 
 Both librarians do the same computational work: acquire records, parse them, reshape them into a table, and compare. This lesson teaches that work using one library's openly licensed catalogue. Once you have the method, pointing it at your own catalogue, a national bibliography, or a set of partner collections is a matter of changing the input.
@@ -152,7 +154,7 @@ One note on licensing: most Yale-originated records are released under a public 
 ### Software/tool
 
 The lesson uses the following Python packages, introduced in context but listed here for reference:
-- [PyMARC](https://gitlab.com/pymarc/pymarc) reads and parses MARC records, in both binary and MARCXML form.
+- [PyMARC](https://gitlab.com/pymarc/pymarc) reads and parses MARC records. This lesson works mainly with the MARCXML form.
 - [pandas](https://pandas.pydata.org/) provides the DataFrame, the tabular structure we reshape records into.
 - [lxml](https://lxml.de/) parses HTML, used during acquisition to find downloadable files on an index page.
 - [undate](https://undate-python.readthedocs.io/) parses and validates the irregular publication dates common in catalogue records.
@@ -162,12 +164,12 @@ The lesson uses the following Python packages, introduced in context but listed 
 ## Learning keys
 ### Concepts
 By the end of this lesson you will understand:
-- How bibliographic records are structured in MARC21, and why that structure does not map directly onto a tidy table.
+- Why MARC's structure does not map directly onto a tidy table.
 - The difference between repeatable and non-repeatable fields, and two strategies for handling repeatable fields in tabular data.
 - How to read records one at a time versus all at once, and when each approach is appropriate.
 - Why real-world catalogue data needs harmonisation, and how an iterative cleaning process works.
 - How to compose small, single-purpose functions into a larger analysis.
-- How to compare bibliographic data across two sources, and how to present the comparison visually.
+- How to visualise patterns in catalogue data, both as trends over time and as comparisons between sources.
 
 ### Terms
 
@@ -193,6 +195,14 @@ This lesson aims to give you a working command of a complete bibliographic data 
 The example questions we ask of the data are illustrative; the techniques are general. Where a topic opens onto larger research questions, we point outward to further reading rather than pursuing it in depth, so that the methodology stays in focus.
 
 ### Inventory
+Before starting the workflow, make sure you have the following in place. The steps that follow assume this setup.
+**Python environment.** Python 3 with the packages listed under [Software/tool](#softwaretool). You can install the third-party packages in one step:
+```
+pip install pymarc pandas lxml undate matplotlib matplotlib-venn
+```
+**A working directory.** Create a folder for the project. The code in this lesson uses relative paths, so all commands assume you are working from this folder. Within it, the acquisition step will create a `raw-data/yale/` subfolder for the downloaded records, and the visualisation step writes images to a `fig_output/` subfolder.
+**The dataset.** You do not need to download anything by hand. The [Data acquisition](#data-acquisition) section walks through fetching the MARCXML files from Yale and decompressing them into `raw-data/yale/`. 
+
 ### Workflow
 #### Data acquisition
 

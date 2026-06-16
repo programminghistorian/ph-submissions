@@ -26,15 +26,15 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-Lorsque l’on souhaite aujourd’hui publier des textes en ligne, l’offre est importante. WordPress, par exemple, utilisé par plus de 40 % des sites web[^1], s’est imposé comme une solution auprès d’un public qui n’est pas composé que de spécialistes en informatique. Une partie de ce succès nous semble ainsi venir de l’interface d’écriture qu’il propose. Cette interface a subi de nombreuses évolutions, plus ou moins appréciées par la communauté d’ailleurs. Elle permet de structurer facilement du contenu pour le web sans avoir besoin de connaître au préalable le HTML ou le CSS, et cela dans une logique qui se révèle relativement proche de celle de l’interface d’un traitement de texte[^2]. Cette interface propose également un moyen simple pour prévisualiser et publier ce contenu structuré.
+Lorsque l’on souhaite aujourd’hui publier des textes en ligne, l’offre est importante. WordPress, par exemple, utilisé par plus de 40 % des sites web[^1], s’est imposé comme une solution auprès d’un public qui n’est pas composé que de spécialistes en informatique. Une partie de ce succès nous semble ainsi venir de l’interface d’écriture qu’il propose. Cette interface a subi de nombreuses évolutions, plus ou moins appréciées par la communauté. Elle permet de structurer facilement du contenu pour le web sans avoir besoin de connaître au préalable le HTML ou le CSS, et cela dans une logique qui se révèle relativement proche de celle de l’interface d’un traitement de texte[^2]. Cette interface propose également un moyen simple pour prévisualiser et publier ce contenu structuré.
 
-L’infrastructure du côté du serveur reste cependant assez lourde, avec notamment MySQL et PHP qui demandent un suivi constant et des mises à jour régulières. Si l’on prend en plus en compte les différents *plugins* produits par l’écosystème profitable de cette plateforme, la surface d’attaque se révèle alors importante. Déployer seul une instance de WordPress n’est pas toujours simple, et ce n’est certainement pas trivial à maintenir dans le temps.
+L’infrastructure du côté du serveur reste cependant assez lourde, avec notamment MySQL et PHP qui demandent un suivi constant et des mises à jour régulières. Si l’on prend en plus en compte les différents *plugins* produits par l’écosystème profitable de cette plateforme, la surface d’attaque se révèle alors importante. Déployer seul une instance de WordPress n’est pas toujours simple, et ce n’est certainement pas commode à maintenir dans le temps.
 
-Il reste toujours la possibilité de créer un site \_ex nihilo\_, ce qui induit de produire le HTML pour chaque page, une feuille de styles CSS, et de mettre tout cela en ligne avec SSH ou FTP. Cette approche, pourtant garante d’une certaine indépendance technique, d’une très faible maintenance et d’une grande légèreté pour le serveur, apparaît contraignante au quotidien. Il faut baliser -- préalablement à la publication -- chacun des paragraphes et des titres. Si de surcroit on prend en compte le style avec les différentes résolutions des écrans et tout ce qui permet un accès au contenu, par exemple les liens entre les articles ou un index, le développement complet d’un site web prend du temps. Au contraire de WordPress, qui permet de se concentrer sur le contenu[^3].
+Il reste toujours la possibilité de créer un site *ex nihilo*, ce qui induit de produire le HTML pour chaque page, une feuille de styles CSS, et de mettre tout cela en ligne avec SSH ou FTP. Cette approche, pourtant garante d’une certaine indépendance technique, d’une très faible maintenance et d’une grande légèreté pour le serveur, apparaît contraignante au quotidien. Il faut baliser -- préalablement à la publication -- chacun des paragraphes et des titres. Si de surcroit on prend en compte le style avec les différentes résolutions des écrans et tout ce qui permet un accès au contenu, par exemple les liens entre les articles ou un index, le développement complet d’un site web prend du temps. Au contraire de WordPress, qui permet de se concentrer sur le contenu[^3].
 
-Une autre hypothèse consiste à utiliser un générateur de site statique. L’utilité de cette approche permet de simplifier l’écriture de contenus grâce au langage Markdown[^4] et de permettre la structuration d’un site sans avoir besoin de gérer manuellement le HTML, le CSS ou même le SQL. En général, une commande permet de construire le site, c’est-à-dire de convertir le Markdown en HTML et d’en générer la structure, dont les index. Lorsque l’on est prêt à publier un texte et donc à le copier sur un serveur, ces générateurs de site doivent être exécutés localement et préalablement afin de produire la nouvelle page ainsi que toutes ses relations aux autres[^5].
+Une autre solution consiste à utiliser un [générateur de site statique](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_site_statique). L’utilité de cette approche permet de simplifier l’écriture de contenus grâce au langage Markdown[^4] et de permettre la structuration d’un site sans avoir besoin de gérer manuellement le HTML, le CSS ou même le SQL. En général, une commande permet de construire le site, c’est-à-dire de convertir le Markdown en HTML et d’en générer la structure, dont les index. Lorsque l’on est prêt à publier un texte et donc à le copier sur un serveur, ces générateurs de site doivent être exécutés localement et préalablement afin de produire la nouvelle page ainsi que toutes ses relations aux autres[^5].
 
-Toutes ces approches ont évidemment un intérêt, et de nombreux universitaires s’en sont emparés afin de produire un site _ad hoc_ pour leur recherche, que ce soit un simple carnet ou même des sites plus complexes[^6]. En ce qui concerne les carnets, le monde universitaire francophone connaît bien Hypothèses, c’est-à-dire WordPress. Le succès de cette approche n’est pas à démontrer. Mais la possibilité de créer ces carnets semble aujourd’hui difficile[^7]. Et cela représente toujours un système très complexe et coûteux pour afficher bien souvent des pages de texte simples[^8].
+Toutes ces approches ont évidemment un intérêt, et de nombreux universitaires s’en sont emparés afin de produire un site _ad hoc_ pour leur recherche, que ce soit un simple carnet ou même des sites plus complexes[^6]. En ce qui concerne les carnets, le monde universitaire francophone connaît bien Hypothèses, service proposé par l’infrastructure française Open Edition et fondée sur WordPress. Le succès de cette solution n’est pas à démontrer. Mais la possibilité de créer ces carnets semble aujourd’hui difficile[^7]. Et cela représente toujours un système très complexe et coûteux pour afficher bien souvent des pages de texte simples[^8].
 
 Ces solutions peuvent également induire une certaine dette technique pour les utilisateurs. Si leur grande diversité permet de trouver un système qui s’appuie sur des éléments de syntaxe d’un langage que l’on connaît déjà, par exemple Python, il devient parfois difficile de maîtriser tous les éléments de la chaîne éditoriale. [NPM](https://fr.wikipedia.org/wiki/Npm), par exemple, montre bien pédagogiquement toutes les dépendances obsolètes qui devraient être mises à jour, mais sans moyen pour l’utilisateur de résoudre ce problème facilement, et sans que soit exercé en amont un contrôle sur ces programmes qui peuvent contenir toutes sortes de surprises[^9]. L’installation sur son ordinateur de la structure à même de produire du contenu peut se révéler ainsi difficile à maintenir, mais aussi relativement complexe à évaluer en regard des conséquences pour son propre ordinateur.
 
@@ -56,7 +56,7 @@ Cette leçon présente donc comment générer un site web depuis Stylo avec TowS
 
 ### _Stylosophie_
 
-Stylo a été créé et développé par le Laboratoire de recherche sur les écritures numériques ([https://www.ecrituresnumeriques.ca/](https://www.ecrituresnumeriques.ca/fr)) -- anciennement Chaire de recherche du Canada sur les écritures numériques -- et soutenu par l’infrastructure de recherche française Huma-Num. Il s’agit d’un logiciel libre dont les sources sont disponibles sous licence libre GPL-3 ([https://github.com/EcrituresNumeriques/stylo/](https://github.com/EcrituresNumeriques/stylo/)). Huma-Num propose une instance en ligne, dont l’accès est ouvert à toute personne (la création d’un compte HumanID est recommandée) : [https://stylo.huma-num.fr](https://stylo.huma-num.fr).
+Stylo a été créé et développé par le Laboratoire de recherche sur les écritures numériques ([https://www.ecrituresnumeriques.ca/](https://www.ecrituresnumeriques.ca/fr)) -- anciennement Chaire de recherche du Canada sur les écritures numériques -- et soutenu par l’infrastructure de recherche française [Huma-Num](https://www.huma-num.fr). Il s’agit d’un logiciel libre dont les sources sont disponibles sous licence libre GPL-3 ([https://github.com/EcrituresNumeriques/stylo/](https://github.com/EcrituresNumeriques/stylo/)). Huma-Num propose une instance en ligne, dont l’accès est ouvert à toute personne (la création d’un compte HumanID est recommandée) : [https://stylo.huma-num.fr](https://stylo.huma-num.fr).
 
 <div class="alert alert-warning">
 Une connexion Internet est nécessaire pour utiliser cette application web. Néanmoins, les articles sont rédigés au format Markdown, et peuvent être facilement téléchargés pour une utilisation locale avec d'autres logiciels (notamment libres).
@@ -95,7 +95,7 @@ L’utilisation sécurisée de l’API de Stylo nécessite l'utilisation d’une
 <b>Attention</b> : cette clé doit rester secrète et ne doit pas être partagée avec quelqu’un d’autre ou sur un espace public en ligne.
 </div>
 
-Dans la suite de cette leçon nous détaillons les procédures de création d’articles et l’association de ces articles à des espaces de travail et à des corpus dans le cas de l’utilisation de TowSty. Mais avant cela, il nous faut expliquer pourquoi TowSty est écrit en Julia.
+Dans la suite de cette leçon nous détaillerons les procédures de création d’articles et l’association de ces articles à des espaces de travail et à des corpus dans le cas de l’utilisation de TowSty. Mais avant cela, il nous faut expliquer pourquoi TowSty est écrit en Julia.
 
 
 ## Pourquoi Julia ?
@@ -242,16 +242,15 @@ julia> \alpha # + tabulation donne…
 julia> α
 ```
 
-<div class="alert alert-warning">
+
 Attention toutefois, certains caractères cachent une fonction ou une constante :
-<code>julia
+```julia
 julia> √16 # \sqrt + tabulation
 4.0
 
 julia> π # \pi + tabulation
 π = 3.1415926535897...
-</code>
-</div>
+```
 
 ### Opérations courantes
 
@@ -457,7 +456,7 @@ Les articles Stylo sont rédigés en Markdown. Il s’agit d’un langage de bal
 À partir de signes typographiques non ambigus et relativement discrets, il est possible de rédiger un texte de façon sémantique : différents niveaux de titre, des paragraphes, des listes, des citations longues, de l’emphase, etc.
 Pour plus d’informations sur le Markdown, et notamment les règles de rédaction, voir la leçon « [Bien débuter avec Markdown](https://programminghistorian.org/fr/lecons/debuter-avec-markdown) ».
 
-Les articles peuvent disposer d’une entête YAML qui est placée au tout début du document. Elle contient les métadonnées. YAML est un langage de sérialisation de données qui fonctionnent selon un principe simple : une clef, une valeur.
+Les articles peuvent disposer d’une entête [YAML](https://fr.wikipedia.org/wiki/YAML) qui est placée au tout début du document. Elle contient les métadonnées. YAML est un langage de sérialisation de données qui fonctionnent selon un principe simple : une clef, une valeur.
 Ainsi, chaque métadonnée est représentée par un couple clef-valeur séparé par le signe `:`, par exemple :
 
 ```yaml
@@ -480,7 +479,7 @@ Vous pouvez bien évidemment ajouter autant de paragraphes et de niveaux hiérar
 
 {% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-11.png" alt="article avec des niveaux hiérarchiques" caption="Figure 11. Ajouter en Markdown autant de texte et de paragraphes que vous le souhaitez" %}
 
-L’un des avantages majeurs de cette démarche est de permettre une gestion native de la bibliographie avec l’implémentation par Stylo du format BibTeX et de Zotero. Le format BibTeX est un langage de description de références bibliographiques, qui est également fondé sur un principe de clé-valeur, par exemple :
+L’un des avantages majeurs de cette démarche est de permettre une gestion native de la bibliographie avec l’implémentation par Stylo du format [BibTeX](https://fr.wikipedia.org/wiki/BibTeX) et de [Zotero](https://fr.wikipedia.org/wiki/Zotero). Le format BibTeX est un langage de description de références bibliographiques, qui est également fondé sur un principe de clé-valeur, par exemple :
 
 {% raw %}
 ```tex
@@ -628,7 +627,7 @@ Vous obtenez ainsi l’ensemble des répertoires et des fichiers du site qui ne 
 julia> reload_data!()
 ```
 
-Les nouveaux articles ou même les nouveaux corpus sont alors prêts à être transférés. Vous pouvez entrevoir les possibilités de TowSty en consultant une brève démonstration réalisée en 1h [ici](https://towsty.unepage.org/).
+Les nouveaux articles ou même les nouveaux corpus sont alors prêts à être transférés. Vous pouvez entrevoir les possibilités de TowSty en consultant un modèle de site réalisé en 1h [ici](https://towsty.unepage.org/).
 
 ## Remerciements
 
@@ -637,9 +636,7 @@ Nous remercions sincèrement nos collègues Hélène Hôte et Élisa Barthélemy
 
 ## Bibliographie indicative
 
-**Baker, James**, « Preserving Your Research Data »,
-<https://programminghistorian.org/en/lessons/preserving-your-research-data>,
-consulté le 30 janvier 2026.
+**Baker, James**, « Préserver ses données de recherche », traduction par Anne-Sophie Bessero-Lagarde, <https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche>, consulté le 30 janvier 2026.
 
 **Camden, Raymond**, *The Jamstack Book: Beyond Static Sites with JavaScript, APIs, and Markup*, Shelter Island, NY, Manning, 2022.
 
@@ -653,7 +650,7 @@ Manning, 2022.
 
 « Des packages npm compromis pour diffuser des malwares - Le Monde Informatique », <https://www.lemondeinformatique.fr/actualites/lire-des-packages-npm-compromis-pour-diffuser-des-malwares-97524.html>, consulté le 20 janvier 2026.
 
-**Diaz, Chris**, « Using Static Site Generators for Scholarly Publications and Open Educational Resources », *The Code4Lib Journal*, n^o^ 42, 2018.
+**Diaz, Chris**, « Using Static Site Generators for Scholarly Publications and Open Educational Resources », *The Code4Lib Journal*, n<sup>o</sup> 42, 2018.
 
 « HTML5 UP », <http://html5up.net/>, consulté le 25 février 2026.
 
@@ -688,7 +685,7 @@ vol. 49, n^o^ 5, 2024, p. 747‑754.
 <https://wordpress.com/blog/2025/04/17/wordpress-market-share/>,
 consulté le 19 janvier 2026.
 
-**Simpkin, Sarah**, « Getting Started with Markdown », <https://programminghistorian.org/en/lessons/getting-started-with-markdown>, consulté le 30 janvier 2026.
+**Simpkin, Sarah**, « Débuter avec Markdown », traduction par Sofia Papastamkou, <https://programminghistorian.org/fr/lecons/debuter-avec-markdown>, consulté le 30 janvier 2026.
 
 « Static Site Generators », <https://staticsitegenerators.net/>,
 consulté le 20 janvier 2026.
@@ -699,8 +696,7 @@ consulté le 20 janvier 2026.
 **Taylor, Conrad**, « Mais qu'est ce qu'ont bien pu nous apporter les
 systèmes WYSIWYG ? », *Cahiers GUTenberg*, n^o^ 27, 1997, p. 5‑33.
 
-**Tenen, Dennis** et **Wythoff, Grant**, « Sustainable Authorship in
-Plain Text using Pandoc and Markdown », <https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown>, consulté le 25 février 2026.
+**Tenen, Dennis** et **Wythoff, Grant**, « Rédaction durable avec Pandoc et Markdown », traduction par Marie-Christine Boucher, <https://programminghistorian.org/fr/lecons/redaction-durable-avec-pandoc-et-markdown>, consulté le 25 février 2026.
 
 **Visconti, Amanda**, « Building a static website with Jekyll and GitHub
 Pages », <https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages>, consulté le 11 février 2026.
@@ -719,13 +715,13 @@ Web in the Digital Humanities Classroom: The Learn-Static Initiative »,
 
 ## Notes
 
-[^1]: Ce chiffre, dont nous livrons ici une approximation, ne semble pas baisser depuis plusieurs années (Nick Schäferhoff. « WordPress Market Share, Statistics, and More »consulté le 19 janvier 2026. <https://wordpress.com/blog/2025/04/17/wordpress-market-share/>).
+[^1]: Ce chiffre, dont nous livrons ici une approximation, ne semble pas baisser depuis plusieurs années (Nick Schäferhoff. « WordPress Market Share, Statistics, and More » consulté le 19 janvier 2026. <https://wordpress.com/blog/2025/04/17/wordpress-market-share/>).
 
-[^2]: (Conrad Taylor. « Mais qu’est ce qu’ont bien pu nous apporter les systèmes WYSIWYG ? », *Cahiers GUTenberg*, nᵒ 27 (1997) : 5‑33. <https://www.numdam.org/item/CG_1997___27_5_0/>).
+[^2]: Conrad Taylor. « Mais qu’est ce qu’ont bien pu nous apporter les systèmes WYSIWYG ? », *Cahiers GUTenberg*, nᵒ 27 (1997) : 5‑33. <https://www.numdam.org/item/CG_1997___27_5_0/>.
 
-[^3]: Nous plaçons dans cette catégorie le type de ressources que nous trouvons par exemple sur (« HTML5 UP » (HTML5 UP)consulté le 25 février 2026. <http://html5up.net/>) qui en présente une bonne liste. Mais aussi *CodeStitch* (« CodeStitch, High Quality HTML and CSS Only Component Library, No Frameworks, No Configurations »consulté le 25 février 2026.<https://codestitch.app/>), *Tailwind Plus* (« Official Tailwind UI Components & Templates - Tailwind Plus »consulté le 25 février 2026. <https://tailwindcss.com>) ou encore *CodeIgniter* (« Welcome to CodeIgniter »consulté le 25 février 2026. <https://codeigniter.com/>). Il s’agit toujours de modèles de pages produites selon un certain *template* fixe et local. 
+[^3]: Nous plaçons dans cette catégorie le type de ressources que nous trouvons par exemple sur « HTML5 UP » (HTML5 UP, consulté le 25 février 2026. <http://html5up.net/>) qui en présente une bonne liste. Mais aussi *CodeStitch* (« CodeStitch, High Quality HTML and CSS Only Component Library, No Frameworks, No Configurations » consulté le 25 février 2026.<https://codestitch.app/>), *Tailwind Plus* (« Official Tailwind UI Components & Templates - Tailwind Plus »consulté le 25 février 2026. <https://tailwindcss.com>) ou encore *CodeIgniter* (« Welcome to CodeIgniter »consulté le 25 février 2026. <https://codeigniter.com/>). Il s’agit toujours de modèles de pages produites selon un certain *template* fixe et local. 
 
-[^4]: (Sarah Simpkin. « Getting Started with Markdown », *Programming Historian*, 13 novembre 2015. <https://programminghistorian.org/en/lessons/getting-started-with-markdown>), (James Baker. « Preserving Your Research Data », *Programming Historian*, 30 avril 2014. <https://programminghistorian.org/en/lessons/preserving-your-research-data>)
+[^4]: Sarah Simpkin. « Débuter avec Markdown », traduction par Sofia Papastamkou, *Programming Historian en français 2*, <[https://programminghistorian.org/en/lessons/getting-started-with-markdown](https://programminghistorian.org/fr/lecons/debuter-avec-markdown)> ; James Baker. « Préserver ses données de recherche », traduction par Anne-Sophie Bessero-Lagarde, *Programming Historian en français 2* (2020), <[Préserver ses données de recherche](https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche)>.
 
 [^5]: Raymond Camden et Brian Rinaldi, *Working with Static Sites: Bringing the Power of Simplicity to Modern Sites* ("O’Reilly Media, Inc.", 2017). <https://books.google.com?id=3NFLDgAAQBAJ>. et (Raymond Camden et Brian Rinaldi, *The Jamstack Book: Beyond Static Sites with JavaScript, APIs, and Markup* (Simon and Schuster, 2022). <https://books.google.com?id=nZVsEAAAQBAJ>) notamment. Les exemples ne manquent pas cf. (« Static Site Generators »consulté le 20 janvier 2026. <https://staticsitegenerators.net/>), et (« Static Site Generators - Top Open Source SSGs, Jamstack » (Jamstack.org)consulté le 20 janvier 2026. <https://jamstack.org/generators/>)…
 

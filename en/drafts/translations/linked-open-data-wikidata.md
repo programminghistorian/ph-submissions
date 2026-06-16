@@ -19,7 +19,7 @@ translation-editor:
 - Caio Mello
 translation-reviewer:
 - Christina D. Nguyen
-- Paris
+- Paris O’Donnell
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/669
 difficulty: 1
 activity: acquiring

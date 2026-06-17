@@ -53,7 +53,7 @@ You can browse [examples of CollectionBuilder sites](https://collectionbuilder.g
 
 This lesson will use the CB-GH template, which has fewer software dependencies and relies on a collection of digital objects already available online. In our example, we used items available in the Internet Archive (a non-profit digital repository providing free public access to digital materials), but you can link to items available elsewhere, including YouTube, Vimeo, or any repository that gives you the digital object’s filename (including the file extension).
 
-While other CB tutorials ask you to upload digital files directly to GitHub, this tutorial links to digital objects already hosted online. You will learn how to work with canonical versions of objects (the authoritative instance of the object in their original repositories) rather than creating and hosting copies. This approach to building digital exhibits allows you to:
+While other CB tutorials ask you to upload digital files directly to GitHub, this lesson links to digital objects already hosted online. You will learn how to work with canonical versions of objects (the authoritative instance of the object in their original repositories) rather than creating and hosting copies. This approach to building digital exhibits allows you to:
 
 *   Engage with larger, existing digital collections without requiring additional infrastructure
 *   Develop metadata literacy through the practice of referencing and relating, rather than hosting
@@ -74,7 +74,7 @@ To follow the steps in this lesson, you will need the following:
 *   Knowledge of how to manage a basic GitHub repository (see [Getting started with GitHub Desktop](https://perma.cc/24W2-87UU))
 *   Experience with managing metadata (structured descriptive information such as title, creator, and date) in the `.CSV` format (comma-separated values, a plain text format for tabular data)
 
-This tutorial should take about 3 to 5 hours to complete if you have your metadata ready. Each example in this lesson is taken from [our demo site](https://github.com/sarahseverson/ph-demo-playbills), so you can see the relationship of each step to the final result and the GitHub repository.
+This lesson should take about 3 to 5 hours to complete if you have your metadata ready. Each example in this lesson is taken from [our demo site](https://github.com/sarahseverson/ph-demo-playbills), so you can see the relationship of each step to the final result and the GitHub repository.
 
 ## Plan your exhibition
 
@@ -88,7 +88,7 @@ Some questions to consider include:
 
 * **What do you want the audience to see and do when they come to the digital exhibition?**  Do you want your audience to read a series of essays in a set order, or do you want them to explore the collection on their own? If your collection has geographic or time-based metadata, do you want them to browse on a map or a timeline?  
 
-* **What kind of digital objects do you want to include?** Outlining what types of material you wish to appear in your collection will help you think about what kind of metadata you need to include and how you want to configure your item page. For example, are you featuring single images or will you include books or other multi-page items you would like people to flip through and read? Or do you want to feature just a single-page opening of a book? If you have photographs and postcards, do you want to show both sides of the material? If you are interested in including more complex multi-page digital objects, we recommend reading up on [Compound Objects and Multiple item types](https://perma.cc/7DC5-7GR6) in CollectionBuilder’s documentation, which we do not cover in this tutorial.
+* **What kind of digital objects do you want to include?** Outlining what types of material you wish to appear in your collection will help you think about what kind of metadata you need to include and how you want to configure your item page. For example, are you featuring single images or will you include books or other multi-page items you would like people to flip through and read? Or do you want to feature just a single-page opening of a book? If you have photographs and postcards, do you want to show both sides of the material? If you are interested in including more complex multi-page digital objects, we recommend reading up on [Compound Objects and Multiple item types](https://perma.cc/7DC5-7GR6) in CollectionBuilder’s documentation, which we do not cover in this lesson.
 
 For further reading on this topic, the Art Libraries Society of North America's 2021 '[Best Practices for Library Exhibitions](https://perma.cc/3WVA-DH42)' includes a section on Digital Exhibitions, and the Smithsonian's 2018 '[Exhibits’ Guide to Exhibit Development](https://perma.cc/P4EN-G8XZ)' can be applied to online exhibits.
 
@@ -357,7 +357,7 @@ Congratulations! You have built a digital exhibition using CollectionBuilder-GH.
 
 Whether your project is a one-time exhibition or part of a broader digital collection strategy, CollectionBuilder offers a flexible, open-source, minimal computing platform that scales with your needs and skills. Because it is built with static web technologies and uses interoperable standards, your exhibition is designed to last.
 
-Beyond the technical skills you have developed, this tutorial models a sustainable approach to digital scholarship: one that leverages existing infrastructure, maintains connections to authoritative sources, and prioritizes interpretation over infrastructure. By linking to canonical versions rather than duplicating materials, your exhibition participates in a broader digital ecosystem.
+Beyond the technical skills you have developed, this lesson models a sustainable approach to digital scholarship: one that leverages existing infrastructure, maintains connections to authoritative sources, and prioritizes interpretation over infrastructure. By linking to canonical versions rather than duplicating materials, your exhibition participates in a broader digital ecosystem.
 
 This is just the beginning. You can continue to refine your site, experiment with new features, or even [migrate your project from the GH template to the more advanced CSV template](https://perma.cc/38ND-HY9G). 
 

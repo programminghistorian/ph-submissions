@@ -114,7 +114,7 @@ This lesson uses [iPySIGMA](https://github.com/medialab/ipysigma), a Python wrap
 
 In the second part of the lesson, we extend this approach by using [Llama Extract](https://www.llamaindex.ai/llamaextract) to derive structured metadata from catalogue fields that do not store it explicitly. This adds an additional layer of richness to the network, enabling us to surface connections and stories that existing metadata alone cannot tell.
 
-The hope for this lesson is not just to show creative ways library data can be displayed, but how a librarian or researcher could utlilise network analysis on their own collection data for practical collection development tasks in the daily work. 
+The hope for this lesson is not just to show creative ways library data can be displayed, but how a librarian or researcher could utlilise network analysis on their own collection data for practical collection development tasks in the daily work. This lesson may be particularly helpful for librarians interested in demonstrating the value of their collections to audiences who might not typically interact with catalogue metadata.
 
 ### Method or tool
 The method for this data exploration is network analysis, the visualisation of relationships between data points. In a network, individual entities are represented as nodes, while the connections between them are represented as edges, allowing patterns of association and clustering to become visible. As a research skill, network analysis helps scholars move beyond isolated records to examine how individual data points are connected within a larger system.The network analysis visualisations created here are interactive and meant to be manipulated by the user to dive deeper into the data, which are library records. 
@@ -143,9 +143,9 @@ Other examples of of activities that could be done, just focusing on subject hea
 Library data includes information beyond subject headings and there is universe of possibility when it comes to exploring metadata.
 ### Dataset
 
-- [Short-Title Catalogue Netherlands - The Dutch National Bibliography up to 1801](https://data.cerl.org/stcn/_search?query=&from=0) subset: 18th century books in the Royal Library of the Netherlands (KB) with subject heading 'exact sciences'.
+The dataset used in the example is of books held by the Royal Library of the Netherlands (KB) from 1800-2000 tagged with the subject heading 'exact sciences'.  You can download this subset from the Short-Title Catalogue Netherlands, the Dutch national bibliography, as well as other collections featured in their open datasets. The dataset file is [SIZE]. The KB makes its metadata available in a variety of research-friendly formats and actively encourages reuse. Readers interested in experimenting with other collections may also wish to explore additional open datasets available through the KB catalogue.
 
-(I am currently in contact with KB.nl to obtain a more recent dataset from their catalogue.)
+- [Short-Title Catalogue Netherlands - The Dutch National Bibliography up to 1801](https://data.cerl.org/stcn/_search?query=&from=0) subset: 18th century books in the Royal Library of the Netherlands (KB) with subject heading 'exact sciences'. 
 
 ### Software/tool
 
@@ -156,20 +156,14 @@ Library data includes information beyond subject headings and there is universe 
 
 ## Learning keys
 ### Concepts
-* How catalogue metadata can be transformed into network data
-* How nodes and edges represent relationships within a collection through subject heads
-* How interactive visualisations can support collection analysis and development
-* How network analysis visualizations can be compared over time to gain insight about the past and future of a collection 
-* How all of these is built using Python ipysigma and Javascript sigma.js 
+This lesson explores how library catalogue metadata, or the structured information recorded about a library item, can be transformed into network data to better understand relationships within a collection. This metadata may include details such as title, author, publication information, and related subjects. Subject headings are especially useful for this process because they provide a structured way of describing what a library item is about and can therefore be used to identify meaningful connections between items.
+
+Using subject headings as the basis for connection, we will examine how catalogue records can be represented as a network graph. In this visual representation, nodes stand for entities within the network, such as subjects or items, while edges show the relationships that connect those nodes. Viewing catalogue metadata in this way allows us to see how different parts of a collection relate to one another and to identify clusters, or groups of nodes that are more closely connected to each other. We will also consider how [centrality](https://en.wikipedia.org/wiki/Centrality) can help measure which nodes are especially important or highly connected within the network.
+
+The lesson will then demonstrate how interactive visualisations can support collection analysis and development by making patterns, clusters, and relationships easier to explore. By comparing network visualisations created from catalogue data at different points in time, librarians can gain insight into how a collection has developed historically and how it may continue to evolve in the future. These concepts will be demonstrated through a workflow built with Python, ipysigma, and JavaScript sigma.js
 
 ### Terms
-* Metadata - Structured information about a data point or, in this case, a library item. This information can include title, author, and related subjects 
-* Subject Heading - Is a structured classification of what subjects are contained within a library item
-* Node - An entity in a network 
-* Edge - The relationship between nodes that connects them 
-* Network Graph - A visual representation of how all nodes and edges connect 
-* Cluster - A group of nodes that are more closely connected to each other
-* Centrality - A way of measuring which nodes are especially important or highly connected within a network
+see above
 
 ### Time
 

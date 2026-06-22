@@ -111,7 +111,7 @@ In practice, IIIF images are usually delivered through viewers like [Mirador](ht
   allowfullscreen>
 </iframe>
 
-[Open the Leardo Mappamundi comparison in a new page](https://programminghistorian.github.io/ph-submissions/assets/visualizing-historic-maps-iiif-allmaps/allmaps-leaflet-demo/index.html)
+[Open the Leardo Mappamundi comparison in a new page](https://programminghistorian.github.io/ph-submissions/assets/visualizing-historic-maps-iiif-allmaps/leardo-mirador.html)
 
 ### The IIIF manifest
 
@@ -625,6 +625,21 @@ If installation fails, the most likely missing pieces are Node.js, npm, GDAL, Ru
 After installing a new tool, you may need to restart your terminal before the command is available.
 </div>
 
+### Download the lesson files
+
+Before continuing, download the sample files supplied with this lesson and unzip them in
+the directory where you will work through the command-line examples. In the lesson
+preview, these files are available in the
+`visualizing-historic-maps-iiif-allmaps` assets directory.
+Once the lesson is published, use the lesson's download link to retrieve the zipped files.
+
+The examples below assume that you have placed the unzipped files in a local folder named
+`data`, alongside any files you create while following the lesson. For example, your
+working directory should contain files such as `data/annotation.json`,
+`data/voiries1300_2009_clean.json`, and
+`data/voiries1300_2009_clean.geometries.ndjson`. If you use a different folder name or
+arrange the files differently, adjust the paths in the commands accordingly.
+
 <!-- Begin Part 3.01 -->
 ## Draw GeoJSON on a IIIF image
 
@@ -655,8 +670,8 @@ For this walkthrough, the key values are:
 | Allmaps Image ID        | `adeae8a56aaf59fb` |
 | Image ID URL            | [https://cdm17272.contentdm.oclc.org/iiif/2/agdm:1550](https://cdm17272.contentdm.oclc.org/iiif/2/agdm:1550) |
 | Image Dimensions        | `10784 x 6941` |
-| Original source file | [`/voiries1300_2009.json`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/voiries1300_2009.json) |
-| Lesson-ready file | [`/voiries1300_2009_clean.json`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/voiries1300_2009_clean.json) |
+| Original source file | `data/voiries1300_2009.json` |
+| Lesson-ready file | `data/voiries1300_2009_clean.json` |
 
 </div>
 
@@ -666,19 +681,19 @@ The road network was originally published by ALPAGE as "Road network in 1300" by
 
 [Download original data](https://alpage.huma-num.fr/documents/ressources/shapes/52-voieries1300_2009.zip) (optional)
 
-The local file [`/voiries1300_2009.json`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/voiries1300_2009.json) is derived from that source. A cleaned teaching version is included, [`/voiries1300_2009_clean.json`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/voiries1300_2009_clean.json), where each `MultiLineString` has already been split into separate `LineString` features.
+The local file `data/voiries1300_2009.json` is derived from that source. A cleaned teaching version is included, `data/voiries1300_2009_clean.json`, where each `MultiLineString` has already been split into separate `LineString` features.
 
 ### Process overview
 
-The workflow starts with a historical map that has already been georeferenced in Allmaps.We use a frozen copy of the georeference annotation for that image, feed it to the Allmaps CLI, and use it to build the transformation between geographic coordinates and image pixels. Then we convert the GeoJSON from longitude/latitude into SVG coordinates measured in the original image space and display that transformed SVG as an overlay on the original, unwarped IIIF image.
+The workflow starts with a historical map that has already been georeferenced in Allmaps. We use a frozen copy of the georeference annotation for that image, feed it to the Allmaps CLI, and use it to build the transformation between geographic coordinates and image pixels. Then we convert the GeoJSON from longitude/latitude into SVG coordinates measured in the original image space and display that transformed SVG as an overlay on the original, unwarped IIIF image.
 
 Allmaps is not changing the GeoJSON into a new map projection for display in a web map. It is converting the GeoJSON into image-space coordinates so the shapes can be drawn directly on the scanned map image.
 
-For this example, we need three things: a historical image georeferenced in Allmaps, the georeference annotation for that image, and some geographic data to overlay. Here, those are the [1821 AGSL Paris map](https://collections.lib.uwm.edu/digital/collection/agdm/id/1550/), [`/annotation.json`](, and [`/voiries1300_2009_clean.json`](.
+For this example, we need three things: a historical image georeferenced in Allmaps, the georeference annotation for that image, and some geographic data to overlay. Here, those are the [1821 AGSL Paris map](https://collections.lib.uwm.edu/digital/collection/agdm/id/1550/), `data/annotation.json`, and `data/voiries1300_2009_clean.json`.
 
 #### Use the frozen `annotation.json`
 
-Because Allmaps georeferencing data can be edited, this lesson uses a frozen copy of the Paris georeference annotation included at [`/annotation.json`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/annotation.json).
+Because Allmaps georeferencing data can be edited, this lesson uses a frozen copy of the Paris georeference annotation included at `data/annotation.json`.
 
 That local copy was downloaded from the Allmaps annotations service using the Paris map's IIIF manifest URL:
 
@@ -688,12 +703,12 @@ For your own map, you can download the current annotation JSON from the annotati
 `curl`:
 
 ```bash
-curl -L "https://annotations.allmaps.org/?url=YOUR_IIIF_MANIFEST_URL" -o annotation.json
+curl -L "https://annotations.allmaps.org/?url=YOUR_IIIF_MANIFEST_URL" -o data/annotation.json
 ```
 
 #### Confirm that the map has georeference metadata
 
-The file `/annotation.json` contains:
+The file `data/annotation.json` contains:
 
 * the IIIF image identifier
 * the image dimensions
@@ -703,7 +718,7 @@ The file `/annotation.json` contains:
 You can inspect it with:
 
 ```bash
-allmaps annotation parse /annotation.json
+allmaps annotation parse data/annotation.json
 ```
 
 You should see output like this:
@@ -731,7 +746,8 @@ This is the moment where the CLI learns how the Paris image relates to real-worl
 #### Inspect the prepared GeoJSON
 
 Before transforming the GeoJSON, inspect the prepared file in two ways.
-First, open [https://geojson.io](https://geojson.io) in your browser and use the open/import function to load `/voiries1300_2009_clean.json`.
+First, open [https://geojson.io](https://geojson.io) in your browser and use the
+open/import function to load `data/voiries1300_2009_clean.json`.
 
 You should see the medieval road network drawn over the modern basemap.
 This confirms that the file is valid GeoJSON with geographic longitude/latitude coordinates.
@@ -739,7 +755,7 @@ This confirms that the file is valid GeoJSON with geographic longitude/latitude 
 Then use `jq` to check what kinds of geometry appear in the file:
 
 ```bash
-jq -r '[.features[].geometry.type] | unique[]' 'assets/voiries1300_2009_clean.json'
+jq -r '[.features[].geometry.type] | unique[]' 'data/voiries1300_2009_clean.json'
 ```
 
 For this dataset, the result is:
@@ -752,8 +768,8 @@ This matters because the next steps assume each feature can be transformed and d
 
 To keep this lesson focused, the GeoJSON cleanup has already been done. The lesson package includes both the cleaned `FeatureCollection` and a prepared geometry stream for the CLI:
 
-* [`/voiries1300_2009_clean.json`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/voiries1300_2009_clean.json)
-* [`/voiries1300_2009_clean.geometries.ndjson`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/voiries1300_2009_clean.geometries.ndjson)
+* `data/voiries1300_2009_clean.json`
+* `data/voiries1300_2009_clean.geometries.ndjson`
 
 The second file contains one geometry per line, ready to be piped into the local Allmaps CLI.
 `.ndjson` is a Newline Delimited JSON file.
@@ -764,8 +780,8 @@ Now we can run the actual Allmaps transformation:
 
 ```bash
 allmaps transform geojson \
-  -a assets/annotation.json \
-  < assets/voiries1300_2009_clean.geometries.ndjson \
+  -a data/annotation.json \
+  < data/voiries1300_2009_clean.geometries.ndjson \
   > voiries1300_2009.svg
 ```
 
@@ -774,8 +790,8 @@ If this runs without error, expect not to see anything output to your shell.
 This command is worth unpacking carefully:
 
 * `transform geojson` takes geographic geometry and converts it into resource coordinates
-* `-a assets/annotation.json` supplies the georeference annotation
-* `< assets/voiries1300_2009_clean.geometries.ndjson` sends the prepared geometries into the command through standard input
+* `-a data/annotation.json` supplies the georeference annotation
+* `< data/voiries1300_2009_clean.geometries.ndjson` sends the prepared geometries into the command through standard input
 * `> voiries1300_2009.svg` saves the transformed output as SVG
 * `\` is a line continuation character. It tells the shell to treat the next line as part of the same command.
 
@@ -791,7 +807,7 @@ Once `voiries1300_2009.svg` exists, the hard part is done. You now have:
 For a quick visual check, make a small web page.
 The page creates an SVG with the IIIF image first, then adds the transformed road lines on top.
 
-From `assets/annotation.json`, we know the original image dimensions:
+From `data/annotation.json`, we know the original image dimensions:
 
 ```json
     "resource": {
@@ -893,7 +909,7 @@ For an introduction to COGs and how they enable efficient, web-based access to r
 
 ### Confirm the georeference annotation
 
-If you are working through this section with the lesson's Paris example, use the frozen annotation at `/annotation.json`. If you are using a different map, use the annotation for that map instead.
+If you are working through this section with the lesson's Paris example, use the frozen annotation at `data/annotation.json`. If you are using a different map, use the annotation for that map instead.
 
 ### Download the IIIF image
 
@@ -936,7 +952,7 @@ mv full.jpg adeae8a56aaf59fb.jpg
 ### Generate the GeoTIFF script
 
 ```bash
-cat assets/annotation.json | allmaps script geotiff > paris_geotiff.sh
+cat data/annotation.json | allmaps script geotiff > paris_geotiff.sh
 ```
 
 This will generate a shell script file `paris_geotiff.sh` that you will run soon.
@@ -1063,13 +1079,19 @@ The Allmaps Leaflet plugin, described in greater detail in [this Observable Note
 
 ### Copy the template
 
-The [`/allmaps-leaflet-demo.zip`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/allmaps-leaflet-demo.zip) folder in this lesson package contains three files that provide a minimal working demo of the Allmaps Leaflet plugin in a simple Leaflet web map. Those files are:
+The `data/allmaps-leaflet-demo.zip` file in this lesson package contains three files
+that provide a minimal working demo of the Allmaps Leaflet plugin in a simple Leaflet web
+map. Those files are:
 
 - `index.html`: the web page structure for our simple web map
 - `script.js`: the necessary JavaScript for creating a Leaflet map with two layers, a base map and an Allmaps overlay
 - `style.css`: the CSS that gives the page and map container their size and layout
 
-Open the `/allmaps-leaflet-demo` folder in a text editor like VS Code. If need be, install the "Live Server" extension by Ritwick Dey, which allows you to view the web map as local files in a web browser. You can install the extension by searching "Live Server" in the "Extensions" tab (the little building blocks) of VS Code.
+Unzip `data/allmaps-leaflet-demo.zip`, then open the `data/allmaps-leaflet-demo` folder
+in a text editor like VS Code. If need be, install the "Live Server" extension by
+Ritwick Dey, which allows you to view the web map as local files in a web browser. You
+can install the extension by searching "Live Server" in the "Extensions" tab (the little
+building blocks) of VS Code.
 
 If you click "Go Live" in the bottom right-hand corner of VS Code, the Leaflet web map should open in your default web browser.
 

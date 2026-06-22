@@ -179,6 +179,7 @@ By the end of this lesson you will understand:
 - **LCSH (Library of Congress Subject Headings)**: the controlled vocabulary used to assign subject headings.
 - **Shard**: one of the numbered files into which a large catalogue is split.
 
+<!-- TODO: give a time estimation. e.g. 3 hours including downloading the files etc. -->
 ### Time
 
 ## Learning experiment
@@ -190,6 +191,7 @@ This lesson aims to give you a working command of a complete bibliographic data 
 - **Parse and reshape** MARC records into a pandas DataFrame, handling both fields that appear once per record and fields that repeat.
 - **Harmonise** an irregular field (publication date) into a consistent form, and recognise harmonisation as an iterative process rather than a one-time fix.
 - **Analyse and compare** the data, including comparing how two catalogues describe the same kind of material, and **visualise** the results as timelines and set comparisons.
+<!-- TODO: this last section might be removed, if that happen, remove this point as well -->
 - **Share** your data and code in a way that lets others reuse and build on them.
 
 The example questions we ask of the data are illustrative; the techniques are general. Where a topic opens onto larger research questions, we point outward to further reading rather than pursuing it in depth, so that the methodology stays in focus.
@@ -206,7 +208,7 @@ pip install pymarc pandas lxml undate matplotlib matplotlib-venn
 ### Workflow
 #### Data acquisition
 
-In this lesson we will show the least complicated data acquisition method: downloading one or more files. There are a number of library specific APIs that are available in many different libraries to access records (OAI-PMH, RSU, Z39.50), these will be described in other tutorials. Fortunately there are libraries that enable file downloads -- see a list in the appendix of this lesson. One of them is Yale, which published the catalogue under CC0 license at https://guides.library.yale.edu/c.php?g=923429. The actual downloadable files can be accessed at https://metadata.library.yale.edu/MARCXML/. This page contains a full catalogue, and increments. At time of writing the files belonging to the full catalogue are listed at https://metadata.library.yale.edu/MARCXML/bib_20250706_full/.
+In this lesson we will show the least complicated data acquisition method: downloading one or more files. There are a number of library specific APIs that are available in many different libraries to access records (OAI-PMH, RSU, Z39.50), these will be described in other tutorials. Fortunately there are libraries that enable file downloads -- see the list in the QA Catalogue [documentation](https://pkiraly.github.io/qa-catalogue/where-can-I-get-MARC-records.html). One of them is Yale, which published the catalogue under CC0 license at [https://guides.library.yale.edu/c.php?g=923429](https://guides.library.yale.edu/c.php?g=923429). The actual downloadable files can be accessed at [https://metadata.library.yale.edu/MARCXML/](https://metadata.library.yale.edu/MARCXML/). This page contains a full catalogue, and increments. At time of writing the files belonging to the full catalogue are listed at [https://metadata.library.yale.edu/MARCXML/bib_20250706_full/](https://metadata.library.yale.edu/MARCXML/bib_20250706_full/).
 
 In the first step we explain how to download a single file.
 
@@ -220,11 +222,11 @@ import shutil
 import re
 ```
 
-* `urllib.request` is a library for opening URLs, https://docs.python.org/3/library/urllib.request.html 
-* `os` contains miscellaneous operating system interfaces, https://docs.python.org/3/library/os.html
-* `gzip` supports operations on gzip files, https://docs.python.org/3/library/gzip.html
-* `shutil` provides high-level file operations, https://docs.python.org/3/library/shutil.html
-* `re` provides regular expression operations, https://docs.python.org/3/library/re.html
+* `urllib.request` is a library for opening URLs, [https://docs.python.org/3/library/urllib.request.html](https://docs.python.org/3/library/urllib.request.html) 
+* `os` contains miscellaneous operating system interfaces, [https://docs.python.org/3/library/os.html](https://docs.python.org/3/library/os.html)
+* `gzip` supports operations on gzip files, [https://docs.python.org/3/library/gzip.html](https://docs.python.org/3/library/gzip.html)
+* `shutil` provides high-level file operations, [https://docs.python.org/3/library/shutil.html](https://docs.python.org/3/library/shutil.html)
+* `re` provides regular expression operations, [https://docs.python.org/3/library/re.html](https://docs.python.org/3/library/re.html)
 
 We should specify the URL of the file we would like to download:
 
@@ -235,12 +237,12 @@ url = 'https://metadata.library.yale.edu/MARCXML/bib_20250706_full/bib_20250706_
 In our machine, it will be located in a specific directory (we call it `target_dir`), and if it is not yet existing, we should create it.
 
 ```Python
-target_dir = 'data/yale'
+target_dir = 'raw-data/yale'
 if not os.path.exists(target_dir):
     os.makedirs(target_dir)
 ```
 
-Then we should specify the file in our local machine. We extract it from the URL with a regular expression. `/([^/]+)$` means find a slash character (`/`) followed by one or more not slash characters (`[^/]+`) till the end of the string (`$`), and put these characters into a group `(...)`. With this we specify the file name. With `group(1)` we can extract the content of the first (and in this case the only) group. Finally, we concatenate the directory and file names with an f-string.
+Then we should specify the file in our local machine. We extract it from the URL with a regular expression. `/([^/]+)$` means find a slash character (`/`) followed by one or more not slash characters (`[^/]+`) till the end of the string (`$`), and put these characters into a group `(...)`. With this we specify the file name. With `group(1)` we can extract the content of the first (and in this case the only) group. Finally, we concatenate the directory and file names with an [f-string](https://realpython.com/python-f-strings/).
 
 ```Python
 file_name = re.search('/([^/]+)$', url).group(1)
@@ -253,11 +255,11 @@ The act of downloading is pretty simple, it saves the content of the URL into th
 urllib.request.urlretrieve(url, target_file)
 ```
 
-As we would like to work with XML an file and not a compressed file (which would be also possible, but not discussed in this lesson), we should extract it. It needs some steps. With `gzip.open()` we open the archive file in binary read mode (it behaves similar to other file read operations in Python), and we specify a file handle (`f_in`). We should also specify the name of the uncompressed file with the help of another regular expression. `re.sub()` substitutes strings, here we are looking for the `.gz` extension in the file name, and replace it with an empty string - in other words, we remove it. Note: in regular expression `.` (dot character) has a special meaning: it fits any character. If we want to mean the real dot, we should escape this interpretation with the blackslashes. Then we open a binary file for writing and utilize the `shutil.copyfileobj()` method to copy the content. 
+As we would like to work with an XML file and not a compressed file (which would be also possible, but not discussed in this lesson), we should extract it. It needs some steps. With `gzip.open()` we open the archive file in binary read mode (it behaves similar to other file read operations in Python), and we specify a file handle (`f_in`). We should also specify the name of the uncompressed file with the help of another regular expression. `re.sub()` substitutes strings. Here we are looking for the `.gz` extension in the file name, and replace it with an empty string - in other words, we remove it. Note: in regular expression `.` (dot character) has a special meaning: it fits any character. If we want to mean the real dot, we should escape this interpretation with the blackslashes. We put an `r` prefix before the search string. This refers to the so called _r-string_ or [raw string notation](https://mimo.org/glossary/python/raw-strings) that treats backslashes (`\`) as literal characters rather than escape sequences, otherwise we should add double backslashes, to behave as escape sequence in regular expressions. Finally, we open a binary file for writing and utilize the `shutil.copyfileobj()` method to copy the content. 
 
 ```Python
 with gzip.open(target_file, 'rb') as f_in:
-    uncompressed_file = re.sub(r'\\.gz$', '', target_file)
+    uncompressed_file = re.sub(r'\.gz$', '', target_file)
     with open(uncompressed_file, 'wb') as f_out:
         shutil.copyfileobj(f_in, f_out)
 ```
@@ -268,7 +270,7 @@ Our final step is to remove the unwanted compressed file:
 os.remove(target_file)
 ```
 
-So far so good, but this script downloads only a single file, it is not very flexible, we should modify it to download a different file. Let's solve these problems. The new version should accept the URL of the index page, that contains the links to all gzip files as a script parameter.
+So far so good, but this script downloads only a single file, more than that the file name is hard coded, so we should modify the script if we would like to download a different file. Let's solve these problems. The new version should accept the URL of the index page, that contains the links to all gzip files as a script parameter.
 
 ```Python
 import urllib.request
@@ -283,9 +285,9 @@ from argparse import ArgumentParser
 
 We will use some new libraries:
 
-* `sys` contains system-specific parameters and functions, https://docs.python.org/3/library/sys.html
-* `lxml` responsible for handling XML and HTML, https://lxml.de/import lxml.html
-* `argparse` is a parser for command-line options, arguments and subcommands, https://docs.python.org/3/library/argparse.html
+* `sys` contains system-specific parameters and functions, [https://docs.python.org/3/library/sys.html](https://docs.python.org/3/library/sys.html)
+* `lxml` responsible for handling XML and HTML, [https://lxml.de/import lxml.html](https://lxml.de/import lxml.html)
+* `argparse` is a parser for command-line options, arguments and subcommands, [https://docs.python.org/3/library/argparse.html](https://docs.python.org/3/library/argparse.html)
 
 The last line's format (`from ... import ...`) is used to limit the import: we will use only a specific part of the library, here the `ArgumentParser` object.
 
@@ -317,7 +319,7 @@ Next we set the variables based on the input parameter and the configuration. A 
 ```Python
     remote_file = configuration['index'] + '/' + file_name
     local_file = configuration['target_dir'] + '/' + file_name
-    uncompressed_file = re.sub(r'.gz', '', local_file)
+    uncompressed_file = re.sub(r'\.gz', '', local_file)
     print(f'downloading {remote_file} to {uncompressed_file} ...')
 ```
 
@@ -339,7 +341,7 @@ The bulk of the function repeats what we saw in the single file download, with a
         os.remove(local_file)
 ```
 
-It is a good practice to put the entry point of a Python script into a `main()` function. We start it with parsing the arguments. First we create a new `ArgumentParser` object, and define two arguments: index and target_dir. In the `add_argument` we provide the short and long argument name the user can specify in the command line. `dest` sets the name of the variable that holds the value, `help` sets the help text (which is displayed when we call the script if `h` or `--help` arguments). The `parse_args()` method parses the user input, and stores it in the `args` object.
+It is a good practice to put the entry point of a Python script into a `main()` function. We start it with parsing the arguments. First we create a new `ArgumentParser` object, and define two arguments: index and target_dir. In the `add_argument()` we provide the short (here `-i` and `-t`) and long (`--index`, `--target_dir`) argument names the user can specify in the command line. `dest` sets the name of the variable that holds the value, `help` sets the help text (which is displayed when we call the script if `h` or `--help` arguments). The `parse_args()` method parses the user input, and stores it in the `args` object.
 
 ```Python
 def main():
@@ -374,7 +376,7 @@ And finally we should fetch the index page, extract links to the .gz files, and 
         items = doc.findall('body/table/tr/td/a', {})
         for item in items:
             file_name = item.get('href')
-            if re.search('\\.gz$', file_name):
+            if re.search(r'\.gz$', file_name):
                 download_file(file_name)
 ```
 
@@ -414,7 +416,7 @@ MARC21 records' logical structure does not fit to the tidy tabular format that (
 2. Each observation is a row; each row is an observation.
 3. Each value is a cell; each cell is a single value.
 
-The problem is that in MARC21 there are repeatable fields, e.g. multiple subjects, so if you would like to create a table, where there are columns for identifier and subject, you should decide if you would like to put all subject headings into a single cell, or you would like to create multiple rows for each pair of identifier and subject. Both approaches have their own advantages and disadvantages - you should decide on choosing according to the objective of the analysis.
+The problem is that there are repeatable fields in MARC21, e.g. multiple subjects, so if you would like to create a table, where there are columns for identifier and subject, you should decide if you would like to put all subject headings into a single cell, or you would like to create multiple rows for each pair of identifier and subject. Both approaches have their own advantages and disadvantages - you should decide on choosing according to the objective of the analysis.
 
 Let's start with reading a binary MARC file with the [PyMarc](https://gitlab.com/pymarc/pymarc) package.
 
@@ -431,7 +433,7 @@ The code is extracted from the package's README. It opens a binary (ISO 2709) fi
 
 For reading MARCXML we should select a strategy based on the size of the file and the memory we have. PyMarc provides two helper functions: 
 
-- `parse_xml_to_array` reads the whole file and creates a list of `Record` objects
+- `parse_xml_to_array` reads the whole file and creates a list of [Record](https://pymarc.readthedocs.io/en/latest/#module-pymarc.record) objects
 - `map_xml` reads records one by one and calls a user defined function on it. For this you have to define a function
 
 How does it look like in practice? 
@@ -562,20 +564,24 @@ df_subjects = pd.DataFrame(subjects)
 print(df_subjects['subject'].value_counts().head())
 ```
 
-Here we create two dictionaries, one for the titles, and one for the subjects. We have to test if the subject field has `$a` subfield, but we do not have to do the trick with the record level subject list. At the end we create two data frames, and thus we can run statistical analysis, such as listing the top subject headings with `value_counts()`. Pandas one can imagine a data frame as a list of Series objects each representing an individual column. Series' `value_counts()` method counts the occurrences of individual values, and sorts it by descending number, so `head` shows the most frequent subject headings.
+Here we create two dictionaries, one for the titles, and one for the subjects. We have to test if the subject field has `$a` subfield, but we do not have to do the trick with the record level subject list. At the end we create two data frames, and thus we can run statistical analysis, such as listing the top subject headings with `value_counts()`. One can imagine a data frame as a list of Series objects each representing an individual column. Series' `value_counts()` method counts the occurrences of individual values, and sorts it by descending number, so `head` shows the most frequent subject headings.
 
 #### Data harmonisation
 
+<!-- TODO: remove these sections
 ##### Subjects
 This is work in progress. Subject to Change. It follows the Data Acquisition Section.
+
 ##### Place and personal names
+-->
 
 ##### Dates
 
 
-One of the most frequently utilised data elements in bibliographic data science is date of publication. It is usually a year (or range of years), and is the basis of any chronological analysis, answering questions such as how feature X changed through times, where X might be the subjects, language, format, authors and other features of the book. The value of the year of publication in MARC21 records however is not a normalised date, so we should apply some transformation to extract a numeric value. On the other hand the normalisation is relatively easier than that of personal or geographic names. In the code we do not provide a very sophisticated solution. For that we suggest you check and adapt the bibliographica  package's [polish_years](https://github.com/COMHIS/bibliographica/blob/master/R/polish_years.R) function written in R language by Leo Lahti, Hege Roivainen, Niko Ilomaki, and Mikko Tolonen.
+One of the most frequently utilised data elements in bibliographic data science is date of publication. It is usually a year (or range of years), and is the basis of any chronological analysis, answering questions such as how feature X changed through times, where X might be the subjects, language, format, authors or other features of the book. The value of the year of publication in MARC21 records however is not a normalised date, so we should apply some transformation to extract a numeric value. In the code we do not provide a very sophisticated solution. For that we suggest you check and adapt the bibliographica  package's [polish_years](https://github.com/COMHIS/bibliographica/blob/master/R/polish_years.R) function written in R language by Leo Lahti, Hege Roivainen, Niko Ilomaki, and Mikko Tolonen.
 
-In this approach we will check some typical formats with regular expressions. Then we pass the extracted value to the [Undate package](https://undate-python.readthedocs.io/en/latest/index.html) written by Cole Crawford, Rebecca Sutton Koeser, Robert Casties, Julia Damerow, Malte Vogl, Taylor Arnold and Klaus Rettinghaus. This package could accept different date formats, but if the input is not recognisable it throws an exception -- helping us to filter out those dates that don't fit to any format, and using this as a feedback to improve our regular expressions.
+We utilize the [Undate package](https://undate-python.readthedocs.io/en/latest/index.html) written by Cole Crawford, Rebecca Sutton Koeser, Robert Casties, Julia Damerow, Malte Vogl, Taylor Arnold and Klaus Rettinghaus. This package could accept different date formats, but if the input is not recognisable it throws an exception -- helping us to filter out those dates that don't fit to any format, and using this as a feedback to improve our regular expressions. We also use [Counter](https://docs.python.org/3/library/collections.html#collections.Counter) objects that is a special tool for counting elements. We will count the success and failure cases with the `success_counter` and the irregular date formats in the `date_counter`.
+
 
 ```Python
 from pymarc import map_xml
@@ -586,20 +592,30 @@ from undate import Undate
 
 success_counter = Counter()
 date_counter = Counter()
+```
 
+In this approach we will check some typical formats with regular expressions. We have two kings of patters: one for the most frequently occured string, and another set for extracting year-like string from irregular dates. In regex one can create referencable groups with the parentheses, e.g. `r'^c?(\d{4})[\.-]?$'` will match a string that starts with one or zero 'c' character, that is followed by four numbers, and finally ends with an optional dot or dash character. The four number is in parenthesis, so we can access it as the first group (`group(1)`). The order of the regular expression is important, here on the top of the list we have very specific expressions, while the last three match numbers anywhere in the string.
+
+```Python
 regexes = [
+    # these are the regex to mach the whole value of a subfield
     re.compile(r'^c?(\d{4})[\.-]?$'),
     re.compile(r'^\[c?(\d{4})\??\]$'),
     re.compile(r'^(\d{4}), c\d{4}\.$'),
     re.compile(r'^\[(\d{4}), c\d{4}\]$'),
     re.compile(r'^c?(\d{4})\??\]$'),
     re.compile(r'^(\d{4})-\d{4}\.$'),
-                                      # these are fallback regexes
+
+    # these are fallback regexes, finding a reasonable year-like string
     re.compile(r'^.*?(\d{4}).*$'),    # any four numbers
     re.compile(r'^.*?(\d{3}-).*?$'),  # three numbers and a dash
     re.compile(r'^.*?(\d{2}--).*?$'), # two numbers and two dashes
 ]
+```
 
+In the `process_record` function we concentrate on extracting publication years, and counting the success rate of the approach:
+
+```Python
 def process_record(record):
     id = record.get('001').value()
     date_original = record.pubyear
@@ -630,9 +646,9 @@ print(success_counter)
 print(date_counter.most_common(10))
 ```
 
-We have to import the constructure (`Undate`) from undate package, and create two counters: `success_counter` will could the number of recognised and unrecognised dates, and `date_counter` will count the number of occurrences of unhandled patterns. `record.pubyear` is a similar alias property as `record.subjects` that we saw earlier -- it returns [260$c](https://www.loc.gov/marc/bibliographic/bd260.html) or [264$c](https://www.loc.gov/marc/bibliographic/bd264.html). We remove leading and trailing white spaces with `trim()`, then iterate over the regular expression. The first one that matches will extract the first group of the match. In regex one can create referencable groups with the parentheses, e.g. `r'^c?(\d{4})[\.-]?$'` will match a string that starts with one or zero 'c' character, that is followed by four numbers, and finally ends with an optional dot or dash character. The four number is in parenthesis, so we can access it as the first group (`group(1)`). The order of the regular expression is important, here on the top of the list we have very specific expressions, while the last three match numbers anywhere in the string. In MARC21 when the date is not well known cataloguers uses dash character, so "198-" means that the book has been published in the 1980-es, "19--" means that the book has been published in the 20th century. Now we just simply replace dashes with zeros, so we set the earliest possible year. There might be different approaches for that, and with undate we can set the level of precision such as century, decade etc. When we cleaned the date, we run the test with undate: if it successful, we get a new object, and we can register that the transformation was successful, otherwise undate throws and exception that we catch, then increase the number of failures, and count the failed patterns. This later one is not a regular expression, but close to it: we just replace numbers with 'D' (referring to any digits).
+`record.pubyear` is a similar alias property as `record.subjects` that we saw earlier -- it returns [260$c](https://www.loc.gov/marc/bibliographic/bd260.html) or [264$c](https://www.loc.gov/marc/bibliographic/bd264.html). We remove leading and trailing white spaces with `trim()`, then iterate over the regular expression. The first one that matches will extract the first group of the match. In MARC21 when the date is not well known cataloguers uses dash character, so "198-" means that the book has been published in the 1980-es, "19--" means that the book has been published in the 20th century. Now we just simply replace dashes with zeros, so we set the earliest possible year. There might be different approaches for that, and with undate we can set the level of precision such as century, decade etc. When we cleaned the date, we run the test with undate: if it successful, we get a new object, and we can register that the transformation was successful, otherwise undate throws and exception that we catch, then increase the number of failures, and count the failed patterns. This later one is not a regular expression, but close to it: we just replace numbers with 'D' (referring to any digits).
 
-After processing all records, we print out the number of successes and failures and the top 10 most frequent patterns. Data harmonisation is almost always an iterative process, from based on the output we extend the list of regular expressions (either the specific or the generic ones) up to the point we feel it worth. There is a chance that there are lots of variations that occur very infrequently (or even only once). You can even add some examples or log record identifiers along with the collected patterns if the pattern itself does not help to understand the situation.
+After processing all records, we print out the number of successes and failures and the top 10 most frequent patterns. Data harmonisation is almost always an iterative process, based on its output we extend the list of regular expressions (either the specific or the generic ones) up to the point we feel it worth. There is a chance that there are lots of variations that occur very infrequently (or even only once). You can even add some examples or log record identifiers along with the collected patterns if the pattern itself does not help to understand the situation.
 
 #### Data analysis and visualization
 
@@ -670,6 +686,7 @@ For this lesson we'll use Yale shards (the partitioned MARCXML files we download
 %pip install pymarc pandas
 ```
 
+<!-- TODO: some parts of this section is parallel with the beginning of the lesson. We should merge the two texts, and remove duplication from here. -->
 ##### Reading a MARCXML file
 
 PyMARC offers two ways to read MARCXML:
@@ -762,6 +779,8 @@ PyMARC's `record.subjects` property is a convenience that pulls all MARC fields 
 
 This function takes one or more file paths and returns a DataFrame with one row per record. It packages everything we've built so far, plus subject extraction, into a single self-contained call.
 
+<!-- TODO: maybe we can mention 'list comprehension' here -->
+
 ```python
 from pymarc import map_xml
 import pandas as pd
@@ -818,12 +837,14 @@ df.head()
 
 We now have a DataFrame, which means we can start asking what the catalogue contains. There are many directions you could take this: publication date distribution, author concentration, language coverage, format breakdowns. We'll work through one example: how many records use subject headings that the Library of Congress has recently revised.
 
+<!-- TOODO: is there a list of changes somewhere? We can link it here. -->
 LCSH is a living vocabulary. Headings get added, retired, and renamed as cataloguing practice evolves. Recent examples include the change from "Aliens" to "Noncitizens", the replacement of "Slaves" with "Enslaved persons", and renamings of geographic features (such as "McKinley, Mount" becoming "Denali, Mount").
 
 The question: *how many records in our DataFrame still carry these older or recently-revised headings?* This is a starting point for a much larger conversation about how catalogues age, how vocabulary change propagates through library data, and how cataloguing decisions encode their moment. The toy data and simple technique here won't answer those questions rigorously, but they'll show you the shape of how the question gets asked.
 
 Pandas' `.str.contains()` method filters a string column by whether each value contains a given substring. Combined with `.sum()` on the resulting boolean Series, we get a count of records matching each pattern:
 
+<!-- TODO: contrary to the rest 'Gulf of' is not explained above. -->
 ```python
 lc_changes = ['Gulf of', 'McKinley, Mount', 'Enslaved persons', 'Noncitizen']
 
@@ -963,11 +984,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import glob
 ```
-We have imported the following new libraries:
+Besides the already familiar ones we have imported the following new libraries:
 
-* [numpy](https://numpy.org/) is used in scientific computing mainly for numerical operation. Here we use only one feature: it defines data types that Pandas can use. Its frequently used abbreviation is np.
-* [matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html) is one of the popular plotting libraries. Its frequently used abbreviation is plt.
-* [glob](https://docs.python.org/3/library/glob.html) (part of code Python) provides Unix style pathname pattern expansion
+* [numpy](https://numpy.org/) is used in scientific computing mainly for numerical operation. Here we use only one feature: it defines data types that Pandas can use. Its frequently used abbreviation is `np`.
+* [matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html) is one of the popular plotting libraries. Its frequently abbreviated as `plt`.
+* [glob](https://docs.python.org/3/library/glob.html) (part of core Python) provides Unix style pathname pattern expansion
 
 Then we define functions to process a single MARC21 record. We would like to extract two pieces of  information: the publication year and the number of subjects. For these we define two functions: `extract_subjects` that returns the distinct subjects a record has, and `extract_date` that extracts the publication year.
 
@@ -977,7 +998,7 @@ def process_record(record):
     data['date'].append(extract_date(record))
 ```
 
-`len()` returns the number of elements of its argument. It can be used for any type of collections: arrays, lists, dictionaries, even Pandas. The subject extraction function is familiar: it is nothing else than a simplified version of what we already saw. To return only distinct subjects, we collected them into a set, and _per definitionem_ stores only distinct values -- we do not have to check ourselves is the element is already there:
+`len()` returns the number of elements of its argument. It can be used for any type of collections: arrays, lists, dictionaries, even Pandas. The subject extraction function is familiar: it is nothing else than a simplified version of what we already saw. To return only distinct subjects, we collected them into a set, that _per definitionem_ stores only distinct values -- we do not have to check ourselves if the element is already there:
 
 ```Python
 def extract_subjects(record):
@@ -1046,7 +1067,7 @@ else:
 There are some new things in this code snippet:
 * `glob.glob()` uses Unix style file and directory name patterns, so you can use the wildchars ?, . and * to find files. It returns a list, that we sort by name and process each file one by one.
 * after we create the dataframe we remove those rows that have NAs. Remember that we gave `None` when the publication year was missing or wrong, this line removes them. Then we convert the date to 16 bit long integer values.
-* `to_csv()` saves the content of a data frame into a CSV file. `index = False` prevents writeing the row names (the data frame index) into the file. Unfortunately, the default value of this argument is True, which makes CSV a bit weird.
+* `to_csv()` saves the content of a data frame into a CSV file. `index = False` prevents writing the row names (the data frame index) into the file. Unfortunately, the default value of this argument is True, which makes CSV a bit weird.
 * `read_csv()` is the opposite of `to_csv()`: it created a data frame from a CSV. With `dtype=np.int16` we ensure that each number in it is a 16 bit long integer.
 
 Now we have a data frame, however depending on how many XML files you downloaded and extracted the distribution might be highly unequal. As the first files contain more records about publications from the 20th century, we extract a subset:
@@ -1066,7 +1087,7 @@ yearly_mean = df.groupby(['date']).agg('mean')
 
 `groupby` creates subgroups within the data frame. As here we use `date`, we will group the records by publication dates. `agg` runs an aggregation function -- a calculation -- on each group. With it we calculate the average number of subject headings per year. The result is another data frame of which the index is the publication year, and it will have one more column: its name remains `subject_count`, but its value became the yearly average of it.
 
-This is the data frame we want to visualize as a line chart, with the publication year on the x (horizontal) axis and the yearly average on the y (vertical) axis. We use pltotlib's functions (using its usual abbreviation `plt`).
+This is the data frame we want to visualize as a line chart, with the publication year on the x (horizontal) axis and the yearly average on the y (vertical) axis. We use pyplot's functions (using its usual abbreviation `plt`).
 
 ```Python
 plt.plot(yearly_mean)
@@ -1078,10 +1099,11 @@ plt.savefig(os.path.join('fig_output', 'mean-subjects-per-year.png'), bbox_inche
 plt.close()
 ```
 
-`plt.plot()` takes a data frame and draws a line chart. It utilizes the dataframe index for the x values, and all other columns for y values. Each column will be represented as a distinct line with distinct color. It gives us the basic image, but we would like to add additional attributes. `title()` sets a title, `xlabel()` sets an explanation for the horizontal axis, `grid()` draws grid lines. With `axis()` we specify the 'viewport' of the chart. We gave a list of four values: the beginning and the end of x values, and the beginning and end of y values. If we do not give anything, the library takes the minimum and maximum values and adds some margins on all sides. Our averages range around 1.4 and 2.0, but we thought that it is more realistic to the human eye if we set the viewport to zero (and add a small margin on the top as the 10% of the maximum value). `savefig()` saves the figure; its first argument is the file name, while the `bbox_inches` argument sets a minimal margin around the chart. `close()` is an important step when you draw multiple images in one script: it starts a clearing process, removes references from the memory, so the new image will start from scratch, otherwise -- as pyplot image creation is a statefull process, so it "remembers" previous steps -- there is a chance that different graphical elements will survive in other images.
+`plt.plot()` takes a data frame and draws a line chart. It utilizes the dataframe index for the x values, and all other columns for y values. Each column will be represented as a distinct line with distinct color. It gives us the basic image, but we would like to add additional attributes. `title()` sets a title, `xlabel()` sets an explanation for the horizontal axis, `grid()` draws grid lines. With `axis()` we specify the 'viewport' of the chart. We gave a list of four values: the beginning and the end of x values, and the beginning and end of y values. If we do not give anything, the library takes the minimum and maximum values and adds some margins on all sides. Our averages range between 1.4 and 2.0, but we thought that it is more realistic to the human eye if we set the viewport to zero (and add a small margin on the top as the 10% of the maximum value). `savefig()` saves the figure; its first argument is the file name, while the `bbox_inches` argument sets a minimal margin around the chart. `close()` is an important step when you draw multiple images in one script: it starts a clearing process, removes references from the memory, so the new image will start from scratch, otherwise -- as pyplot image creation is a statefull process, it "remembers" previous steps -- there is a chance that different graphical elements will survive in other images.
 
 The image looks like this:
 
+<!-- TODO: add caption -->
 {% include figure.html filename="en-or-enablar-lesson-5-01.png" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
 
 Sometimes we would like to put two charts side by side, because we would like to compare them, or because they express different sides of the same phenomenon. Right now we know the average numbers, but how many records don't have at all any subject headings? As the number of records per year are not equal, we are interested in both the absolute numbers and the ratio. If we put multiple charts on the same image, we should take care of both the overarching image and the individual charts (they are called subplots or Axes).
@@ -1113,7 +1135,7 @@ date
 1954   3658      487  13.313286
 ```
 
-After data preparation, we should prepare the mane image, and the subplots:
+After data preparation, we should prepare the main image, and the subplots:
 
 ```Python
 fig = plt.figure(figsize=(8.0, 6.0))
@@ -1121,7 +1143,7 @@ axes1 = fig.add_subplot(2, 1, 1)
 axes2 = fig.add_subplot(2, 1, 2)
 ```
 
-`figure()` creates the main image, `figsize`'s contains the width and height value in inch. We slice and dice this image with subplots, and we specify it with `add_subplot()`'s arguments: the number of rows, the number of columns and the index of the particular subplot. This time we created two rows and one column, thus `axes1` refers to the top 'cell', and `axes2` to the bottom one.
+`figure()` creates the main image, `figsize`'s contains width and height values in inch. We slice and dice this image with subplots, and we specify it with `add_subplot()`'s arguments: the number of rows, the number of columns and the index of the particular subplot. This time we created two rows and one column, thus `axes1` refers to the top 'cell', and `axes2` to the bottom one.
 
 Fill the first cell!
 
@@ -1130,11 +1152,11 @@ axes1.plot(df_merged.index, df_merged.total, df_merged.missing)
 axes1.legend(['all', 'without subject'])
 axes1.set_title('number of records')
 axes1.set_xlabel('publication year')
-axes1.axis((year_min, year_max, max(df_merged['total']) * -.1, max(df_merged['total']) * 1.1))
+axes1.axis((year_min, year_max, max(df_merged['total']) * -0.1, max(df_merged['total']) * 1.1))
 axes1.grid(True)
 ```
 
-We apply the plot not on `plt` that represents the library, but on 'axes1'. As we would like to draw multiple lines we call it differently (there are a number of ways to use the function, see [here](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html)): we set the values for the x axis, the y values for the first line, and the y values of the second line. As we have an additional column, if we simply would add the data frame, the result will be three lines instead of two. The lines will be drawn with different, automatically assigned colors. With `legend()` we add an annotation to the image to explain what colors mean. `set_title()` and `set_xlabel()` are the subplot variants of `title()` and `xlabel()`, and we already explained `axis()` and `grid()`. As in several years the number of missing values are (visually) close to zero, we set the viewport a bit lower, shifting with 10% of the maximum value. 
+We apply the plot function not on `plt` that represents the library, but on `axes1` object that represents the subplot. As we would like to draw multiple lines we call it differently (there are a number of ways to use the function, see [here](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html)): we set the values for the x axis, the y values for the first line, and the y values of the second line. As we have an additional column, if we simply would add the data frame, the result will be three lines instead of two. The lines will be drawn with different, automatically assigned colors. With `legend()` we add an annotation to the image to explain what colors mean. `set_title()` and `set_xlabel()` are the subplot variants of `title()` and `xlabel()`. As in several years the number of missing values are (visually) close to zero, we set the viewport a bit lower, shifting with 10% of the maximum value. 
 
 Now comes the second cell:
 
@@ -1159,11 +1181,13 @@ plt.close()
 
 The final image looks like this:
 
+<!-- TODO: add caption -->
 {% include figure.html filename="en-or-enablar-lesson-5-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
 
 ##### Creating a Venn diagram
 
-Previously we saw how to calculate the difference of two sets of subject headings. Based on previously defined functions our code was this:
+<!-- TODO: add link to 'above' -->
+Above we saw how to calculate the difference of two sets of subject headings. Based on previously defined functions our code was this:
 
 ```Python
 headings_a = headings_matching(df_a, 'Immigra')
@@ -1188,9 +1212,10 @@ plt.close()
 
 It gives the colorized Venn diagram. The circles and its intersection contain the number of subjects, but not the subjects themselves:
 
+<!-- TODO: add caption -->
 {% include figure.html filename="en-or-enablar-lesson-5-03.png" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
 
-However as the library is based on pyplot, we can add an annotation with `plt.annotate()`. We can create a text box somewhere around the circles, and list the subjects there. There is a problem though: we can transform the list of subjects into a text separated by new lines or by commas, but if they have several elements the annotation will be too high or wide. So we create a new function `format_lines` that mix the two separators, and create a list of maximum N character wide lines. 
+However as the library is based on pyplot, we can add an annotation with `plt.annotate()`. We can create a text box somewhere around the circles, and list the subjects there. There is a problem though: we can transform the list of subjects into a text separated by new lines or by commas, but if they have several elements the annotation will be too high or wide. So we are going to create a new function `format_lines` that mixes the two separators, and creates a list of maximum N character wide lines. 
 
 ```Python
 def format_lines(items, max_width=60):
@@ -1252,17 +1277,19 @@ plt.close()
 
 The final result will look like this:
 
+<!-- TODO: add caption -->
 {% include figure.html filename="en-or-enablar-lesson-5-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
 
+<!-- TODO: remove this section -->
 #### Dissemination of results
 
 The final step in the work process is the dissemination of results, which includes traditional publication methods (papers, books, conference presentations) as well as newer approaches, such as the publication of software used in the process, the generated data, and data and software studies focusing specifically on these, blogging and microblogging, sharing presentation slides and recordings, and participating in professional organizations.
 
-Let's start with the data. There are some dedicated 'research data repositories' that aim to help researchers to publish their data. Along with the data files you should add metadata such as title, authors, subject headings, description. From repository to repository it might be different what metadata schema you should follow and what are the mandatory and optional metadata. The repositories assign a persistent identifier to your _dataset_, such as DOI, Handle, or ark.[^1] We can mention [Zenodo](https://zenodo.org/), [Harvard Dataverse](https://dataverse.harvard.edu/), [figshare](https://figshare.com/), [Open Science Framework](https://osf.io/), [Dryad](https://datadryad.org/) as the largest general repositories, but there are a number of others with regional or domain specific focus (at time of writing we are not aware of any that provide extra functionalities for bibliographic data). You can check the [re3data](re3data.org), the registry of research data repositories, that provides a rich categorisation to find the one that fits your needs. It is also worth it to check if your institution has any recommendation of policy.
+Let's start with the data. There are some dedicated _research data repositories_ that aim to help researchers to publish their data. Along with the data files you should add metadata such as title, authors, subject headings, description. From repository to repository it might be different what metadata schema you should follow and what are the mandatory and optional metadata. The repositories assign a persistent identifier to your _dataset_, such as DOI, Handle, or ark.[^1] We can mention [Zenodo](https://zenodo.org/), [Harvard Dataverse](https://dataverse.harvard.edu/), [figshare](https://figshare.com/), [Open Science Framework](https://osf.io/), [Dryad](https://datadryad.org/) as the largest general repositories, but there are a number of others with regional or domain specific focus (at time of writing we are not aware of any that provide extra functionalities for bibliographic data). You can check [re3data](re3data.org), the registry of research data repositories, that provides a rich categorisation to find the one that fits your needs. It is also worth it to check if your institution has any researh data management recommendation or policy.
 
-To publish the software might be a two step process. The first step is to make it publicly available in a platform such as GitHub, GitLab, or other general or institutional software depository. However you can make it further and turn the scripts into real research software with proper documentation, tests, packaging, installation scripts etc.[^2] Research data repositories are also accept research related software, and some of them are working together with software repositories, so you can connect them together, and you will get a persistent identifier for your software as well. The Research Software Engineering community published some guidelines on how to publish software in FAIR way (FAIR is an acronym for Findable, Accessible, Interoperable and Reusable)[^3].
+Publishing the software might be a two step process. The first step is to make it publicly available in a platform such as GitHub, GitLab, or other general or institutional software depository with a proper license. However you can go further and turn the scripts into real research software with proper documentation, tests, packaging, installation scripts etc.[^2] Research data repositories also accept research related software, and some of them are working together with software repositories, so you can connect them together, and you will get a persistent identifier for your software as well. The Research Software Engineering community published some guidelines on how to publish software in FAIR way (FAIR is an acronym for Findable, Accessible, Interoperable and Reusable)[^3].
 
-Finally, we would like to call attention to the importance of a special data sharing called 'data roundtrip'.[^4] Imagine the following scenario: a researcher has worked hard to enrich a popular data source with high research potential that is maintained by a public collection. Later, another researcher would like to use the same database for their research. If she is not familiar with the previous researcher's work, she can start the data enrichment process from scratch. But even if the first researcher published his data enrichment, it is much more likely that the subsequent researchers will find and use the original database. To prevent this, researchers would need to return the modified data to the original data provider. Fortunately, MARC21, introduced in the 34th update in 2022[^5] a data provenance subfield to distinguish between data recorded by the library and data recorded by the researcher (and it is available in most fields), which could be a theoretical remedy for the library's legitimate demand to take responsibility for its own data. In the life sciences, researchers can utilize a special, "atomic" data publication method called [nanopublications](https://nanopub.net/) to share data enrichment steps with each other. In our case these 'others' are libraries, which can then incorporate them into their catalogs without compromising their own responsibility and credibility. The second researcher can then work on the data-enriched version. In order to realize this vision, communication between the parties must be standardized, and the research community can play a coordinating role in this process.
+Finally, we would like to call attention to the importance of a special data sharing called 'data roundtrip'.[^4] Imagine the following scenario: a researcher has worked hard to enrich a popular data source with high research potential that is maintained by a public collection. Later, another researcher would like to use the same database for their research. If she is not familiar with the previous researcher's work, she can start the data enrichment process from scratch. But even if the first researcher published his data enrichment, it is much more likely that the subsequent researchers will find and use the original database. To prevent this, researchers would need to return the modified data to the original data provider. Fortunately, in the 34th update in 2022[^5] MARC21 introduced  a data provenance subfield to distinguish between data recorded by the library and data recorded by the researcher (and it is available in most fields), which could be a theoretical remedy for the library's legitimate demand to take responsibility for its own data. In the life sciences, researchers can utilize a special, "atomic" data publication method called [nanopublications](https://nanopub.net/) to share data enrichment steps with each other. In our case these 'others' are libraries, which can then incorporate them into their catalogs without compromising their own responsibility and credibility. The second researcher can then work on the data-enriched version. In order to realize this vision, communication between the parties must be standardized, and the research community can play a coordinating role in this process.
 
 ### Summary
 

@@ -7,8 +7,8 @@ date: YYYY-MM-DD
 authors:
 - Victor Harbo Johnston
 reviewers:
-- Forename Surname
-- Forename Surname
+- Beatrice Cannelli
+- Cassia Takahashi Hosni
 editors:
 - Caio Mello
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/696

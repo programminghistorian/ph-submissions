@@ -1301,9 +1301,9 @@ Finally, we would like to call attention to the importance of a special data sha
 
 ## Endnotes
 
-[^1]: Leo Lahti, Hege Roivainen, Niko Ilomaki, and Mikko Tolonen. 2016. Bibliographica. Tools for bibliographic data analysis. R package. _Github_ [https://github.com/COMHIS/bibliographica](https://github.com/COMHIS/bibliographica)
+[^1]: Lahti, Leo, Hege Roivainen, Niko Ilomaki, and Mikko Tolonen. 2016. Bibliographica. Tools for bibliographic data analysis. R package. _Github_ [https://github.com/COMHIS/bibliographica](https://github.com/COMHIS/bibliographica)
 
-[^2]: Cole Crawford, Rebecca Sutton Koeser, Robert Casties, Julia Damerow, Malte Vogl, Taylor Arnold and Klaus Rettinghaus. 2025. Undate package. [https://undate-python.readthedocs.io/](https://undate-python.readthedocs.io/en/latest/index.html). About the origin and goals of the package see Rebecca Sutton Koeser, Julia Damerow, Robert Casties, and Cole Crawford. “Undate: Humanistic Dates for Computation.” _Computational Humanities Research_, August 5, 2025. DOI [10.1017/chr.2025.10006](https://doi.org/10.1017/chr.2025.10006)
+[^2]: Koeser, Rebecca Sutton, Cole Crawford, Julia Damerow, Malte Vogl, and Robert Casties. 2025. Undate Python Library. V. 0.5. Released June. DOI [10.5281/zenodo.11068868](https://doi.org/10.5281/zenodo.11068868). About the origin and goals of the package see Koeser, Rebecca Sutton, Julia Damerow, Robert Casties, and Cole Crawford. “Undate: Humanistic Dates for Computation.” _Computational Humanities Research_, August 5, 2025. DOI [10.1017/chr.2025.10006](https://doi.org/10.1017/chr.2025.10006)
 
 [^3]: For a full list with advantages and disadvantages of the persistent identifiers see Koster, Lukas. 2020. Persistent identifiers for heritage objects. _Code4Lib Journal_ 47. [https://journal.code4lib.org/articles/14978](https://journal.code4lib.org/articles/14978)
 

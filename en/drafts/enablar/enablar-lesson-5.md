@@ -686,7 +686,7 @@ After processing all records, we print out the number of successes and failures 
 
 ##### Preprocessing MARCXML with PyMARC and pandas
 
-In the previous section we downloaded MARCXML files from Yale's catalogue and decompressed them into the `raw-data/yale/` directory. This section picks up from there: we'll turn those XML files into a Pandas DataFrame and use it to ask questions about what the collection contains.
+In the previous section we downloaded MARCXML files from Yale's catalogue and decompressed them into the `raw-data/yale/` directory, finally created Pandas DataFrame from a single file. This section picks up from there: we'll turn multiple XML files into a Pandas DataFrame and use it to ask questions about what the collection contains.
 
 ##### What we're building
 

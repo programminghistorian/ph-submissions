@@ -1118,8 +1118,7 @@ The final image looks like this:
 
 ##### Creating a Venn diagram
 
-<!-- TODO: add link to 'above' -->
-Above we saw how to calculate the difference of two sets of subject headings. Based on previously defined functions our code was this:
+[Above](#function-3-compare_sets) we saw how to calculate the difference of two sets of subject headings. Based on previously defined functions our code was this:
 
 ```Python
 headings_a = headings_matching(df_a, 'Immigra')

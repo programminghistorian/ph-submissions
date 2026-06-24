@@ -1037,8 +1037,7 @@ plt.close()
 
 The image looks like this:
 
-<!-- TODO: add caption -->
-{% include figure.html filename="en-or-enablar-lesson-5-01.png" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
+{% include figure.html filename="en-or-enablar-lesson-5-01.png" alt="Visual description of figure image" caption="Figure 1. Average number of subjects per record" %}
 
 Sometimes we would like to put two charts side by side, because we would like to compare them, or because they express different sides of the same phenomenon. Right now we know the average numbers, but how many records don't have at all any subject headings? As the number of records per year are not equal, we are interested in both the absolute numbers and the ratio. If we put multiple charts on the same image, we should take care of both the overarching image and the individual charts (they are called subplots or Axes).
 
@@ -1115,8 +1114,7 @@ plt.close()
 
 The final image looks like this:
 
-<!-- TODO: add caption -->
-{% include figure.html filename="en-or-enablar-lesson-5-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
+{% include figure.html filename="en-or-enablar-lesson-5-02.png" alt="Visual description of figure image" caption="Figure 2. Records without subjects" %}
 
 ##### Creating a Venn diagram
 
@@ -1146,8 +1144,7 @@ plt.close()
 
 It gives the colorized Venn diagram. The circles and its intersection contain the number of subjects, but not the subjects themselves:
 
-<!-- TODO: add caption -->
-{% include figure.html filename="en-or-enablar-lesson-5-03.png" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
+{% include figure.html filename="en-or-enablar-lesson-5-03.png" alt="Visual description of figure image" caption="Figure 3. Venn diagram - initial version" %}
 
 However as the library is based on pyplot, we can add an annotation with `plt.annotate()`. We can create a text box somewhere around the circles, and list the subjects there. There is a problem though: we can transform the list of subjects into a text separated by new lines or by commas, but if they have several elements the annotation will be too high or wide. So we are going to create a new function `format_lines` that mixes the two separators, and creates a list of maximum N character wide lines. 
 
@@ -1211,19 +1208,8 @@ plt.close()
 
 The final result will look like this:
 
-<!-- TODO: add caption -->
-{% include figure.html filename="en-or-enablar-lesson-5-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
+{% include figure.html filename="en-or-enablar-lesson-5-04.png" alt="Visual description of figure image" caption="Figure 4. Venn diagram - improved version with annotation" %}
 
-<!-- TODO: remove this section -->
-#### Dissemination of results
-
-The final step in the work process is the dissemination of results, which includes traditional publication methods (papers, books, conference presentations) as well as newer approaches, such as the publication of software used in the process, the generated data, and data and software studies focusing specifically on these, blogging and microblogging, sharing presentation slides and recordings, and participating in professional organizations.
-
-Let's start with the data. There are some dedicated _research data repositories_ that aim to help researchers to publish their data. Along with the data files you should add metadata such as title, authors, subject headings, description. From repository to repository it might be different what metadata schema you should follow and what are the mandatory and optional metadata. The repositories assign a persistent identifier to your _dataset_, such as DOI, Handle, or ark.[^3] We can mention [Zenodo](https://zenodo.org/), [Harvard Dataverse](https://dataverse.harvard.edu/), [figshare](https://figshare.com/), [Open Science Framework](https://osf.io/), [Dryad](https://datadryad.org/) as the largest general repositories, but there are a number of others with regional or domain specific focus (at time of writing we are not aware of any that provide extra functionalities for bibliographic data). You can check [re3data](re3data.org), the registry of research data repositories, that provides a rich categorisation to find the one that fits your needs. It is also worth it to check if your institution has any researh data management recommendation or policy.
-
-Publishing the software might be a two step process. The first step is to make it publicly available in a platform such as GitHub, GitLab, or other general or institutional software depository with a proper license. However you can go further and turn the scripts into real research software with proper documentation, tests, packaging, installation scripts etc.[^4] Research data repositories also accept research related software, and some of them are working together with software repositories, so you can connect them together, and you will get a persistent identifier for your software as well. The Research Software Engineering community published some guidelines on how to publish software in FAIR way (FAIR is an acronym for Findable, Accessible, Interoperable and Reusable)[^5].
-
-Finally, we would like to call attention to the importance of a special data sharing called 'data roundtrip'.[^6] Imagine the following scenario: a researcher has worked hard to enrich a popular data source with high research potential that is maintained by a public collection. Later, another researcher would like to use the same database for their research. If she is not familiar with the previous researcher's work, she can start the data enrichment process from scratch. But even if the first researcher published his data enrichment, it is much more likely that the subsequent researchers will find and use the original database. To prevent this, researchers would need to return the modified data to the original data provider. Fortunately, in the 34th update in 2022[^7] MARC21 introduced  a data provenance subfield to distinguish between data recorded by the library and data recorded by the researcher (and it is available in most fields), which could be a theoretical remedy for the library's legitimate demand to take responsibility for its own data. In the life sciences, researchers can utilize a special, "atomic" data publication method called [nanopublications](https://nanopub.net/) to share data enrichment steps with each other. In our case these 'others' are libraries, which can then incorporate them into their catalogs without compromising their own responsibility and credibility. The second researcher can then work on the data-enriched version. In order to realize this vision, communication between the parties must be standardized, and the research community can play a coordinating role in this process.
 
 ### Summary
 
@@ -1238,13 +1224,3 @@ Finally, we would like to call attention to the importance of a special data sha
 [^1]: Lahti, Leo, Hege Roivainen, Niko Ilomaki, and Mikko Tolonen. 2016. _Bibliographica. Tools for bibliographic data analysis._ R package. Github [https://github.com/COMHIS/bibliographica](https://github.com/COMHIS/bibliographica)
 
 [^2]: Koeser, Rebecca Sutton, Cole Crawford, Julia Damerow, Malte Vogl, and Robert Casties. 2025. _Undate Python Library._ V. 0.5. Released June. DOI [10.5281/zenodo.11068868](https://doi.org/10.5281/zenodo.11068868). About the origin and goals of the package see Koeser, Rebecca Sutton, Julia Damerow, Robert Casties, and Cole Crawford. “Undate: Humanistic Dates for Computation.” _Computational Humanities Research_, August 5, 2025. DOI [10.1017/chr.2025.10006](https://doi.org/10.1017/chr.2025.10006)
-
-[^3]: For a full list with advantages and disadvantages of the persistent identifiers see Koster, Lukas. 2020. Persistent identifiers for heritage objects. _Code4Lib Journal_ 47. [https://journal.code4lib.org/articles/14978](https://journal.code4lib.org/articles/14978)
-
-[^4]: If you are interested in this process we recommend the following book: Nelson, Catherine. 2024. _Software Engineering for Data Scientists: From Notebooks to Scalable Systems._ O’Reilly. ISBN 978-1-0981-3620-8 [https://www.oreilly.com/library/view/software-engineering-for/9781098136192/](https://www.oreilly.com/library/view/software-engineering-for/9781098136192/)
-
-[^5]: Beyer, Florian, Vedder, Lucia, Singson, Lea Sophie, Sahwan, Wahib, & Schmidt, Marcus. 2025. Publishing research code FAIR - a roadmap (1.0). _Zenodo_. DOI [10.5281/zenodo.14772749](https://doi.org/10.5281/zenodo.14772749)
-
-[^6]: Sandra Fauconnier. 2019. _Data Roundtripping: a new frontier for GLAM-Wiki collaborations⁠._ [https://diff.wikimedia.org/2019/12/13/data-roundtripping-a-new-frontier-for-glam-wiki-collaborations/](https://diff.wikimedia.org/2019/12/13/data-roundtripping-a-new-frontier-for-glam-wiki-collaborations/); Wikimedia Deutschland e.V. 2019. _Wikidata Use in Cultural Institutions. Research Report._ [https://upload.wikimedia.org/wikipedia/commons/e/e1/Research_Report_%E2%80%93_Use_of_Wikidata_in_GLAM_institutions_%282019-11%29.pdf](https://upload.wikimedia.org/wikipedia/commons/e/e1/Research_Report_%E2%80%93_Use_of_Wikidata_in_GLAM_institutions_%282019-11%29.pdf)
-
-[^7]: _MARC 21 format for bibliographic data. Update No. 34, July 2022._ [https://www.loc.gov/marc/up34bibliographic/bdapndxg.html](https://www.loc.gov/marc/up34bibliographic/bdapndxg.html)

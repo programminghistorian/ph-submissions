@@ -246,7 +246,7 @@ if not os.path.exists(target_dir):
     os.makedirs(target_dir)
 ```
 
-Then we should specify the file in our local machine. We extract it from the URL with a regular expression. `/([^/]+)$` means find a slash character (`/`) followed by one or more not slash characters (`[^/]+`) till the end of the string (`$`), and put these characters into a group `(...)`. With this we specify the file name. With `group(1)` we can extract the content of the first (and in this case the only) group. Finally, we concatenate the directory and file names with an [f-string](https://realpython.com/python-f-strings/).
+Then we should specify the file in our local machine. We extract it from the URL with a regular expression. `/([^/]+)$` means find a slash character (`/`) followed by one or more non-slash characters (`[^/]+`) till the end of the string (`$`), and put these characters into a group `(...)`. With this we specify the file name. With `group(1)` we can extract the content of the first (and in this case the only) group. Finally, we concatenate the directory and file names with an [f-string](https://realpython.com/python-f-strings/).
 
 ```Python
 file_name = re.search('/([^/]+)$', url).group(1)
@@ -259,7 +259,7 @@ The act of downloading is pretty simple, it saves the content of the URL into th
 urllib.request.urlretrieve(url, target_file)
 ```
 
-As we would like to work with an XML file and not a compressed file (which would be also possible, but not discussed in this lesson), we should extract it. It needs some steps. With `gzip.open()` we open the archive file in binary read mode (it behaves similar to other file read operations in Python), and we specify a file handle (`f_in`). We should also specify the name of the uncompressed file with the help of another regular expression. `re.sub()` substitutes strings. Here we are looking for the `.gz` extension in the file name, and replace it with an empty string - in other words, we remove it. Note: in regular expression `.` (dot character) has a special meaning: it fits any character. If we want to mean the real dot, we should escape this interpretation with the backslashes. We put an `r` prefix before the search string. This refers to the so called _r-string_ or [raw string notation](https://mimo.org/glossary/python/raw-strings) that treats backslashes (`\`) as literal characters rather than escape sequences, otherwise we should add double backslashes, to behave as escape sequence in regular expressions. Finally, we open a binary file for writing and utilize the `shutil.copyfileobj()` method to copy the content. 
+As we would like to work with an XML file and not a compressed file (which would be also possible, but not discussed in this lesson), we should extract it. It needs some steps. With `gzip.open()` we open the archive file in binary read mode (it behaves similarly to other file read operations in Python), and we specify a file handle (`f_in`). We should also specify the name of the uncompressed file with the help of another regular expression. `re.sub()` substitutes strings. Here we are looking for the `.gz` extension in the file name, and replace it with an empty string - in other words, we remove it. Note: in regular expression `.` (dot character) has a special meaning: it fits any character. If we want to mean the real dot, we should escape this interpretation with the backslashes. We put an `r` prefix before the search string. This refers to the so-called _r-string_ or [raw string notation](https://mimo.org/glossary/python/raw-strings) that treats backslashes (`\`) as literal characters rather than escape sequences, otherwise we should add double backslashes, to behave as escape sequence in regular expressions. Finally, we open a binary file for writing and utilize the `shutil.copyfileobj()` method to copy the content. 
 
 ```Python
 with gzip.open(target_file, 'rb') as f_in:
@@ -469,7 +469,7 @@ In both cases **you should see** a long stream of titles scrolling past, one per
 
 Yale's bibliographic shards contain tens of thousands of records each, so we'll use `map_xml` throughout. The pattern is: write a function that takes one record and does something with it, then hand that function to `map_xml` along with the file path. `map_xml` does the rest, calling your function once per record.
 
-In these examples all what we did is just printing something, but how we can turn those lists into a DataFrame?
+In these examples all what we did is just printing something, but how can we turn those lists into a DataFrame?
 
 ##### Extracting non-repeatable fields into a DataFrame
 
@@ -605,82 +605,6 @@ print(df_subjects['subject'].value_counts().head())
 ```
 
 Here we create two dictionaries, one for the titles, and one for the subjects. We have to test if the subject field has `$a` subfield, but we do not have to do the trick with the record level subject list. At the end we create two data frames, and thus we can run statistical analysis, such as listing the top subject headings with `value_counts()`. One can imagine a data frame as a list of Series objects each representing an individual column. Series' `value_counts()` method counts the occurrences of individual values, and sorts it by descending number, so `head` shows the most frequent subject headings.
-
-#### Data harmonisation
-
-##### Dates
-
-One of the most frequently utilised data elements in bibliographic data science is date of publication. It is usually a year (or range of years), and is the basis of any chronological analysis, answering questions such as how feature X changed through times, where X might be the subjects, language, format, authors or other features of the book. The value of the year of publication in MARC21 records however is not a normalised date, so we should apply some transformation to extract a numeric value. In the code we do not provide a very sophisticated solution. For that we suggest you check and adapt the [polish_years](https://github.com/COMHIS/bibliographica/blob/master/R/polish_years.R) function of bibliographica package[^1] written in R language.
-
-We utilize the Undate package[^2]. This package could accept different date formats, but if the input is not recognisable it throws an exception -- helping us to filter out those dates that don't fit to any format, and using this as a feedback to improve our regular expressions. We also use [Counter](https://docs.python.org/3/library/collections.html#collections.Counter) objects that is a special tool for counting elements. We will count the success and failure cases with the `success_counter` and the irregular date formats in the `date_counter`.
-
-
-```Python
-from pymarc import map_xml
-import pandas as pd
-import re
-from collections import Counter
-from undate import Undate
-
-success_counter = Counter()
-date_counter = Counter()
-```
-
-In this approach we will check some typical formats with regular expressions. We have two kings of patters: one for the most frequently occured string, and another set for extracting year-like string from irregular dates. In regex one can create referencable groups with the parentheses, e.g. `r'^c?(\d{4})[\.-]?$'` will match a string that starts with one or zero 'c' character, that is followed by four numbers, and finally ends with an optional dot or dash character. The four number is in parenthesis, so we can access it as the first group (`group(1)`). The order of the regular expression is important, here on the top of the list we have very specific expressions, while the last three match numbers anywhere in the string.
-
-```Python
-regexes = [
-    # these are the regex to mach the whole value of a subfield
-    re.compile(r'^c?(\d{4})[\.-]?$'),
-    re.compile(r'^\[c?(\d{4})\??\]$'),
-    re.compile(r'^(\d{4}), c\d{4}\.$'),
-    re.compile(r'^\[(\d{4}), c\d{4}\]$'),
-    re.compile(r'^c?(\d{4})\??\]$'),
-    re.compile(r'^(\d{4})-\d{4}\.$'),
-
-    # these are fallback regexes, finding a reasonable year-like string
-    re.compile(r'^.*?(\d{4}).*$'),    # any four numbers
-    re.compile(r'^.*?(\d{3}-).*?$'),  # three numbers and a dash
-    re.compile(r'^.*?(\d{2}--).*?$'), # two numbers and two dashes
-]
-```
-
-In the `process_record` function we concentrate on extracting publication years, and counting the success rate of the approach:
-
-```Python
-def process_record(record):
-    id = record.get('001').value()
-    date_original = record.pubyear
-    if date_original is not None:
-        date_cleaned = date_original.strip()
-        reg_found = False
-        for reg in regexes:
-            if not reg_found:
-                m = reg.match(date_cleaned)
-                if m is not None:
-                    reg_found = True
-                    date_cleaned = m.group(1)
-                    break
-        if "-" in date_cleaned:
-            date_cleaned = re.sub("-", "0", date_cleaned)
-
-        try:
-            date_undate = Undate(date_cleaned)
-            success_counter.update([True])
-        except ValueError as e:
-            success_counter.update([False])
-            date_counter.update([re.sub("\\d", 'D', date_cleaned)])
-
-input_file_name = 'raw-data/yale/bib_20250706_full_000_00.xml'
-map_xml(process_record, input_file_name)
-
-print(success_counter)
-print(date_counter.most_common(10))
-```
-
-`record.pubyear` is a similar alias property as `record.subjects` that we saw earlier -- it returns [260$c](https://www.loc.gov/marc/bibliographic/bd260.html) or [264$c](https://www.loc.gov/marc/bibliographic/bd264.html). We remove leading and trailing white spaces with `trim()`, then iterate over the regular expression. The first one that matches will extract the first group of the match. In MARC21 when the date is not well known cataloguers uses dash character, so "198-" means that the book has been published in the 1980-es, "19--" means that the book has been published in the 20th century. Now we just simply replace dashes with zeros, so we set the earliest possible year. There might be different approaches for that, and with undate we can set the level of precision such as century, decade etc. When we cleaned the date, we run the test with undate: if it successful, we get a new object, and we can register that the transformation was successful, otherwise undate throws and exception that we catch, then increase the number of failures, and count the failed patterns. This later one is not a regular expression, but close to it: we just replace numbers with 'D' (referring to any digits).
-
-After processing all records, we print out the number of successes and failures and the top 10 most frequent patterns. Data harmonisation is almost always an iterative process, based on its output we extend the list of regular expressions (either the specific or the generic ones) up to the point we feel it worth. There is a chance that there are lots of variations that occur very infrequently (or even only once). You can even add some examples or log record identifiers along with the collected patterns if the pattern itself does not help to understand the situation.
 
 #### Data analysis and visualization
 
@@ -899,226 +823,9 @@ headings_b = headings_matching(df_b, 'Climate')
 result = compare_sets(headings_a, headings_b)
 ```
 
-#### Visualization
+#### Visualization: Creating a Venn diagram
 
-A good data visualization that summarises numbers helps someone to realise trends and important features of a collection of data. We will see how we can create plots out of what we have calculated so far. First we see how to draw timelines, and then we see a Venn diagram as well. 
-
-##### Preparation
-
-First we check how the number of subject headings changed over time. Here we extend a bit the extraction of subjects and dates. First we import the necessary Python modules.
-
-```Python
-from pymarc import map_xml
-import pandas as pd
-from undate import Undate
-import re
-from collections import Counter
-import os
-import numpy as np
-import matplotlib.pyplot as plt
-import glob
-```
-Besides the already familiar ones we have imported the following new libraries:
-
-* [numpy](https://numpy.org/) is used in scientific computing mainly for numerical operation. Here we use only one feature: it defines data types that Pandas can use. Its frequently used abbreviation is `np`.
-* [matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html) is one of the popular plotting libraries. Its frequently abbreviated as `plt`.
-* [glob](https://docs.python.org/3/library/glob.html) (part of core Python) provides Unix style pathname pattern expansion
-
-Then we define functions to process a single MARC21 record. We would like to extract two pieces of  information: the publication year and the number of subjects. For these we define two functions: `extract_subjects` that returns the distinct subjects a record has, and `extract_date` that extracts the publication year.
-
-```Python
-def process_record(record):
-    data['subject_count'].append(len(extract_subjects(record)))
-    data['date'].append(extract_date(record))
-```
-
-`len()` returns the number of elements of its argument. It can be used for any type of collections: arrays, lists, dictionaries, even Pandas. The subject extraction function is familiar: it is nothing else than a simplified version of what we already saw. To return only distinct subjects, we collected them into a set, that _per definitionem_ stores only distinct values -- we do not have to check ourselves if the element is already there:
-
-```Python
-def extract_subjects(record):
-    subjects = set()
-    for subject in record.subjects:
-        if subject.get('a') is not None:
-            subjects.add(subject.get('a'))
-    return subjects
-```
-
-The bulk of the date extraction function might be also familiar, however this time we are not interested in knowing the irregular date strings or its statistics. We check if the date cleaned with regular expressions fits to Undate, and return it after converting (or to say it Pythonic: casting) to integer. If such a check fails or the record does not have a publication year field at all it returns `None` -- this way we always return something, and ensure that the two lists of the data collector used in the record processing function have the same number of elements.
-
-```Python
-def extract_date(record):
-    date = None
-    if record.pubyear is not None:
-        date_cleaned = record.pubyear.strip()
-        reg_found = False
-        for reg in regs:
-            if not reg_found:
-                m = reg.match(date_cleaned)
-                if m is not None:
-                    reg_found = True
-                    date_cleaned = m.group(1)
-                    break
-        if "-" in date_cleaned:
-            date_cleaned = re.sub("-", "0", date_cleaned)
-        
-        try:
-            date_undate = Undate(date_cleaned)
-            date = int(date_cleaned)
-        except ValueError as e:
-            pass
-    return date
-```
-
-After defining the functions, let's see the main part of the process. First we define our data collector: a dictionary with two keys: `subject_count` and `date` -- we already saw how `process_record` fill these lists with values. The `output_file_name` contains the name of the file into which we save the data. 
-
-```Python
-data = {
-    'subject_count': [],
-    'date': []
-}
-
-output_file_name = 'data_output/year-subject-count.csv'
-```
-
-And here is a trick: since processing XML files take much longer time than visualizing the data we make a cache. If the cache file (`output_file_name`) does not exist we extract the data from each available XML file, create a Pandas data frame, and save the result into a CSV file. If we already have created the file, we do not process XMLs again, just read the CSV.
-
-```Python
-if not os.path.isfile(output_file_name):
-    hits = glob.glob(os.path.join('raw-data', 'yale', "bib_20250706_full_00?_0?.xml"))
-    for input_file_name in sorted(hits):
-        print(input_file_name)
-        map_xml(process_record, input_file_name)
-
-    df = pd.DataFrame(data)
-    df = df.dropna(how="any")
-    df['date'] = df['date'].astype('In16')
-
-    df.to_csv(output_file_name, index = False) # do not 
-else:
-    df = pd.read_csv(output_file_name, dtype=np.int16)
-```
-
-There are some new things in this code snippet:
-* `glob.glob()` uses Unix style file and directory name patterns, so you can use the wildchars ?, . and * to find files. It returns a list, that we sort by name and process each file one by one.
-* after we create the dataframe we remove those rows that have NAs. Remember that we gave `None` when the publication year was missing or wrong, this line removes them. Then we convert the date to 16 bit long integer values.
-* `to_csv()` saves the content of a data frame into a CSV file. `index = False` prevents writing the row names (the data frame index) into the file. Unfortunately, the default value of this argument is True, which makes CSV a bit weird.
-* `read_csv()` is the opposite of `to_csv()`: it created a data frame from a CSV. With `dtype=np.int16` we ensure that each number in it is a 16 bit long integer.
-
-Now we have a data frame, however depending on how many XML files you downloaded and extracted the distribution might be highly unequal. As the first files contain more records about publications from the 20th century, we extract a subset:
-
-```Python
-year_min = 1950
-year_max = 1995
-df = df[(df["date"] >= year_min) & (df["date"] <= year_max)]
-```
-##### Creating line charts
-
-Finally we start the visualization! It is interesting how subjects are assigned to individual records, and how it changed over the time. We have to calculate it by:
-
-```Python
-yearly_mean = df.groupby(['date']).agg('mean')
-```
-
-`groupby` creates subgroups within the data frame. As here we use `date`, we will group the records by publication dates. `agg` runs an aggregation function -- a calculation -- on each group. With it we calculate the average number of subject headings per year. The result is another data frame of which the index is the publication year, and it will have one more column: its name remains `subject_count`, but its value became the yearly average of it.
-
-This is the data frame we want to visualize as a line chart, with the publication year on the x (horizontal) axis and the yearly average on the y (vertical) axis. We use pyplot's functions (using its usual abbreviation `plt`).
-
-```Python
-plt.plot(yearly_mean)
-plt.title('average number of subjects per record')
-plt.xlabel('publication year')
-plt.grid(True)
-plt.axis((year_min, year_max, 0, max(yearly_mean['subject_count']) * 1.1))
-plt.savefig(os.path.join('fig_output', 'mean-subjects-per-year.png'), bbox_inches='tight')
-plt.close()
-```
-
-`plt.plot()` takes a data frame and draws a line chart. It utilizes the dataframe index for the x values, and all other columns for y values. Each column will be represented as a distinct line with distinct color. It gives us the basic image, but we would like to add additional attributes. `title()` sets a title, `xlabel()` sets an explanation for the horizontal axis, `grid()` draws grid lines. With `axis()` we specify the 'viewport' of the chart. We gave a list of four values: the beginning and the end of x values, and the beginning and end of y values. If we do not give anything, the library takes the minimum and maximum values and adds some margins on all sides. Our averages range between 1.4 and 2.0, but we thought that it is more realistic to the human eye if we set the viewport to zero (and add a small margin on the top as the 10% of the maximum value). `savefig()` saves the figure; its first argument is the file name, while the `bbox_inches` argument sets a minimal margin around the chart. `close()` is an important step when you draw multiple images in one script: it starts a clearing process, removes references from the memory, so the new image will start from scratch, otherwise -- as pyplot image creation is a statefull process, it "remembers" previous steps -- there is a chance that different graphical elements will survive in other images.
-
-The image looks like this:
-
-{% include figure.html filename="en-or-enablar-lesson-5-01.png" alt="Visual description of figure image" caption="Figure 1. Average number of subjects per record" %}
-
-Sometimes we would like to put two charts side by side, because we would like to compare them, or because they express different sides of the same phenomenon. Right now we know the average numbers, but how many records don't have at all any subject headings? As the number of records per year are not equal, we are interested in both the absolute numbers and the ratio. If we put multiple charts on the same image, we should take care of both the overarching image and the individual charts (they are called subplots or Axes).
-
-Start, as always, with calculation:
-
-```Python
-yearly_counts = df.groupby(['date']).count()
-yearly_no_subject = df[df['subject_count'] == 0].groupby(['date']).count()
-
-df_merged = (pd.merge(
-    yearly_counts.rename(columns={'subject_count': 'total'}), 
-    yearly_no_subject.rename(columns={'subject_count': 'missing'}), 
-    on='date'))
-df_merged['percent'] = df_merged.missing * 100 / df_merged.total
-```
-
-First, we calculate the number of records per each year. We group by date as in the previous example, but we apply a different calculation: `count()`, that returns the total number. Second, we subset the data frame by selecting only the rows where the subject count is zero, then calculate the yearly count as in the previous step. Third, with `pd.merge()` join the two tables together. The connection between them is the `date` column. However, as both tables have the subject count column, we rename it to 'total' in the first table and to 'missing' in the second. Forth, we calculate the percentage of missing values.
-
-The resulting data frame will be something like this:
-
-```
-      total  missing    percent
-date                           
-1950   4396      546  12.420382
-1951   3235      483  14.930448
-1952   3327      457  13.736099
-1953   3360      475  14.136905
-1954   3658      487  13.313286
-```
-
-After data preparation, we should prepare the main image, and the subplots:
-
-```Python
-fig = plt.figure(figsize=(8.0, 6.0))
-axes1 = fig.add_subplot(2, 1, 1)
-axes2 = fig.add_subplot(2, 1, 2)
-```
-
-`figure()` creates the main image, `figsize`'s contains width and height values in inch. We slice and dice this image with subplots, and we specify it with `add_subplot()`'s arguments: the number of rows, the number of columns and the index of the particular subplot. This time we created two rows and one column, thus `axes1` refers to the top 'cell', and `axes2` to the bottom one.
-
-Fill the first cell!
-
-```Python
-axes1.plot(df_merged.index, df_merged.total, df_merged.missing)
-axes1.legend(['all', 'without subject'])
-axes1.set_title('number of records')
-axes1.set_xlabel('publication year')
-axes1.axis((year_min, year_max, max(df_merged['total']) * -0.1, max(df_merged['total']) * 1.1))
-axes1.grid(True)
-```
-
-We apply the plot function not on `plt` that represents the library, but on `axes1` object that represents the subplot. As we would like to draw multiple lines we call it differently (there are a number of ways to use the function, see [here](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html)): we set the values for the x axis, the y values for the first line, and the y values of the second line. As we have an additional column, if we simply would add the data frame, the result will be three lines instead of two. The lines will be drawn with different, automatically assigned colors. With `legend()` we add an annotation to the image to explain what colors mean. `set_title()` and `set_xlabel()` are the subplot variants of `title()` and `xlabel()`. As in several years the number of missing values are (visually) close to zero, we set the viewport a bit lower, shifting with 10% of the maximum value. 
-
-Now comes the second cell:
-
-```Python
-axes2.plot(df_merged.percent)
-axes2.set_title('records without subjects')
-axes2.set_xlabel('publication year')
-axes2.set_ylabel('percent')
-axes2.axis((year_min, year_max, 0, max(df_merged['percent']) * 1.1))
-axes2.grid(True)
-```
-
-Here we meet a third variation of `plot()`, we simply set only the y values, thus we ignore the two other columns in this chart. We also set a label for the horizontal axis with `set_ylabel()`.
-
-As a final step, we set a minimalistic margin, save the image and clear it from the memory.
-
-```Python
-fig.tight_layout()
-plt.savefig('fig_output/records-per-year.png')
-plt.close()
-```
-
-The final image looks like this:
-
-{% include figure.html filename="en-or-enablar-lesson-5-02.png" alt="Visual description of figure image" caption="Figure 2. Records without subjects" %}
-
-##### Creating a Venn diagram
-
-[Above](#function-3-compare_sets) we saw how to calculate the difference of two sets of subject headings. Based on previously defined functions our code was this:
+A good data visualization that summarises numbers helps someone to realise trends and important features of a collection of data. [Above](#function-3-compare_sets) we saw how to calculate the difference of two sets of subject headings. Based on previously defined functions our code was this:
 
 ```Python
 headings_a = headings_matching(df_a, 'Immigra')
@@ -1143,7 +850,7 @@ plt.close()
 
 It gives the colorized Venn diagram. The circles and its intersection contain the number of subjects, but not the subjects themselves:
 
-{% include figure.html filename="en-or-enablar-lesson-5-03.png" alt="Visual description of figure image" caption="Figure 3. Venn diagram - initial version" %}
+{% include figure.html filename="en-or-enablar-lesson-5-03.png" alt="Visual description of figure image" caption="Figure 1. Venn diagram - initial version" %}
 
 However as the library is based on pyplot, we can add an annotation with `plt.annotate()`. We can create a text box somewhere around the circles, and list the subjects there. There is a problem though: we can transform the list of subjects into a text separated by new lines or by commas, but if they have several elements the annotation will be too high or wide. So we are going to create a new function `format_lines` that mixes the two separators, and creates a list of maximum N character wide lines. 
 
@@ -1207,8 +914,7 @@ plt.close()
 
 The final result will look like this:
 
-{% include figure.html filename="en-or-enablar-lesson-5-04.png" alt="Visual description of figure image" caption="Figure 4. Venn diagram - improved version with annotation" %}
-
+{% include figure.html filename="en-or-enablar-lesson-5-04.png" alt="Visual description of figure image" caption="Figure 2. Venn diagram - improved version with annotation" %}
 
 ### Summary
 
@@ -1218,8 +924,4 @@ The final result will look like this:
 ### Other projects
 ### Continued learning
 
-## Endnotes
 
-[^1]: Lahti, Leo, Hege Roivainen, Niko Ilomaki, and Mikko Tolonen. 2016. _Bibliographica. Tools for bibliographic data analysis._ R package. Github [https://github.com/COMHIS/bibliographica](https://github.com/COMHIS/bibliographica)
-
-[^2]: Koeser, Rebecca Sutton, Cole Crawford, Julia Damerow, Malte Vogl, and Robert Casties. 2025. _Undate Python Library._ V. 0.5. Released June. DOI [10.5281/zenodo.11068868](https://doi.org/10.5281/zenodo.11068868). About the origin and goals of the package see Koeser, Rebecca Sutton, Julia Damerow, Robert Casties, and Cole Crawford. “Undate: Humanistic Dates for Computation.” _Computational Humanities Research_, August 5, 2025. DOI [10.1017/chr.2025.10006](https://doi.org/10.1017/chr.2025.10006)

@@ -41,7 +41,7 @@ You can adjust as needed, but I'd like you to keep this recommended structure in
 
 <!-- NOTE TO ENABLAR AUTHORS
 Note 3: Please write the lesson in Markdown.
-
+:
 If you are new to Markdown, I often recommend Sarah Simpkin’s lesson *Getting Started with Markdown* <https://doi.org/10.46430/phen0046>. It is available in French, Spanish, and Portuguese as well as English. Although it does not exactly match the way we structure Markdown in _Programming Historian_ lessons (there are many valid Markdown styles), it provides a useful introduction.
 
 As you begin drafting your lesson, here are five basic Markdown conventions we use in _Programming Historian_ lessons.
@@ -183,7 +183,11 @@ By the end of this lesson you will understand:
 ### Time
 
 ## Learning experiment
-### Aims
+### Aims: the user story
+
+Imagine you're a metadata librarian. You want to start asking questions about what your catalogue contains, not just *is this record well-formed?* but *what does our collection actually describe?* That kind of question opens up real conversations about collection development priorities, cataloguing practice, and what gets fine-grained subject treatment versus what gets lumped together.
+
+For this lesson we'll use Yale shards (the partitioned MARCXML files we downloaded) as toy data. It's enough to show the techniques; it's not enough to support real findings. By the end you'll be able to recognise the shape of questions this approach answers, and adapt the code to richer data of your own.
 
 This lesson aims to give you a working command of a complete bibliographic data science pipeline, using a real catalogue, so that you can carry the method to your own data and questions. Concretely, after completing it you should be able to:
 
@@ -433,73 +437,110 @@ The code is extracted from the package's README. It opens a binary (ISO 2709) fi
 
 For reading MARCXML we should select a strategy based on the size of the file and the memory we have. PyMarc provides two helper functions: 
 
-- `parse_xml_to_array` reads the whole file and creates a list of [Record](https://pymarc.readthedocs.io/en/latest/#module-pymarc.record) objects
-- `map_xml` reads records one by one and calls a user defined function on it. For this you have to define a function
+- `parse_xml_to_array` reads the whole file and creates a list of [Record](https://pymarc.readthedocs.io/en/latest/#module-pymarc.record) objects. Simple, but memory-heavy for large files.
+- `map_xml` reads records one at a time and calls a function you provide on each one. Memory-friendly, and the right choice for catalogue-scale data.
 
 How does it look like in practice? 
 
-`parse_xml_to_array`:
+A `parse_xml_to_array` example:
 
 ```Python
 from pymarc import parse_xml_to_array
 
-records = parse_xml_to_array('raw-data/yale/bib_20250706_full_000_00.xml')
+input_file = 'raw-data/yale/bib_20250706_full_000_00.xml'
+records = parse_xml_to_array(input_file)
 for record in records:
     print(record.title)
 ```
 
-`map_xml`
+A `map_xml` example:
 
 ```Python
 from pymarc import map_xml
 
+input_file = 'raw-data/yale/bib_20250706_full_000_00.xml'
 def process_record(record):
     print(record.title)
 
-map_xml(process_record, 'raw-data/yale/bib_20250706_full_000_00.xml')
+map_xml(process_record, input_file)
 ```
 
-In these examples all what we did is just printing something, but how we can create Pandas from the records? Start with a simple case: collect record ID and title. In the last code snippet we already had a `process_record` section. We will modify it, but for the sake of unity we will replace the `print()` call in the other two code:
+In both cases **you should see** a long stream of titles scrolling past, one per record. If you see nothing, check that `input_file` points to a file that actually exists on disk. If you see an error about `pymarc`, re-run the install line above.
 
-```Python
-for record in reader:
-    process_record(record)
-```
+Yale's bibliographic shards contain tens of thousands of records each, so we'll use `map_xml` throughout. The pattern is: write a function that takes one record and does something with it, then hand that function to `map_xml` along with the file path. `map_xml` does the rest, calling your function once per record.
 
-and
+In these examples all what we did is just printing something, but how we can turn those lists into a DataFrame?
 
-```Python
-for record in records:
-    process_record(record)
-```
+##### Extracting non-repeatable fields into a DataFrame
 
-So now we have a single `process_record` function that can behave the same even when we process  binary, xml or large xml files. We change this to extract particular data elements (identifier and title) from each MARC21 record, then to build a pandas data frame.
+The general pattern is:
+
+1. Create an empty list for each column you want.
+2. In `process_record`, append values from each record onto those lists.
+3. After `map_xml` finishes, hand the lists to Pandas to construct a DataFrame.
+
+We'll start with three fields that appear at most once per record:
+
+- **Record ID**, MARC field `001`, the control number. Quasi-mandatory.
+- **Title**, MARC field `245`. Also quasi-mandatory.
+- **Author**, MARC field `100$a`, the personal name main entry. *Not* mandatory: many records (anonymous works, corporate publications, edited volumes) have no `100`. We need a defensive pattern that records `None` when it's absent.
+
+
+As pandas' data frame is one of the most convenient data structure used in data analysis, our next task is to to extract particular data elements (here: identifier and title) from each MARC21 record, then to build a pandas data frame.
 
 ```Python
 from pymarc import map_xml
 import pandas as pd
 
+# One list per column in the final DataFrame
 ids = []
 titles = []
+authors = []
 
 def process_record(record):
+    # 001 and title are quasi-mandatory, so we can append directly
     ids.append(record.get('001').value())
     titles.append(record.title)
+
+    # 100 may be absent. record.get('100') returns None when the field
+    # doesn't exist, so check before reaching into it.
+    field_100 = record.get('100')
+    if field_100 is not None and field_100.get('a') is not None:
+        authors.append(field_100.get('a'))
+    else:
+        authors.append(None)
 
 input_file_name = 'raw-data/yale/bib_20250706_full_000_00.xml'
 map_xml(process_record, input_file_name)
 
-df = pd.DataFrame({'id': ids, 'title': titles})
+df = pd.DataFrame({'id': ids, 'title': titles, 'author': authors})
+print(f'Extracted {len(df)} records')
 print(df.head())
 ```
 
 Here we import pandas package with an alias name `pd`, that is the usual way to use it. We initialize two lists, one for the identifiers, and one for the titles. In the `process_record` function we extract their values from the record object, and append the value to the appropriate lists. At the end we create a pandas data frame with a dictionary. The keys are the column names (id and title), the values are the two lists. Here both MARC21 data elements are quasi mandatory elements, they are available in every record. For other elements, we should be sure if the record has them, and if not, we should provide a default value, e.g. an empty string or `None` value. In the last line we simply make a check, print out the first five rows of the data frame to be sure that the process finished with the result we expected.
 
-There are other approaches to fulfill this task, e.g. to create an empty data frame at the beginning of the process, and add new rows with `pd.append` or `pd.loc`, however these approaches have their disadvantages regarding speed and memory usage, so they are discouraged.
+There are other approaches to add records to a data frame, e.g. to create an empty data frame at the beginning of the process, and add new rows with `pd.append` or `pd.loc`, however these approaches have their disadvantages regarding speed and memory usage, so they are discouraged.
 
-As mentioned above this strategy works well for non repeatable data elements. However in MARC21 there are data elements that could be used multiple times in the same records, for example a book might have multiple subjects. Here we have two options: either join them together with a separator character into the same cell, or save them to another dataframe. Again: it is up to your research question which fits better. If you want only to search if a given subject headings appear in a record, concatenated subject might be enough, if you would like to do statistics on the individual subjects or the correlation of them with other data elements (e.g. comparing them with the title words), the second approach looks better.
+As the result of running the script **you should see** a count of records (somewhere in the tens of thousands for a Yale shard) and a preview of the first five rows. Some rows will have `None` (rendered as `NaN`) in the `author` column. These are records where field `100$a` was absent.
 
-The concatenation approach:
+This works, but it has a problem: `ids`, `titles`, and `authors` are loose variables that `process_record` reaches into. If we want to run the same extraction on a different file, we have to remember to reset the lists, and `process_record` only works in a context where those lists already exist. The fix is to wrap everything together into one function, which we'll do once we've added subjects.
+
+##### Repeatable fields: one record, many values
+
+As mentioned above this strategy works well for non repeatable data elements. However in MARC21 there are data elements that could be used multiple times in the same records. Subject headings are the clearest example: a book might have one subject, or ten. This breaks the [tidy data](https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data) assumption that each row is one observation and each cell holds one value.
+
+There are two reasonable ways to handle repeating values:
+
+- **Concatenate them into one cell**, separated by a delimiter character. Each record stays as one row.
+- **Build a separate DataFrame** with one row per subject heading, linked back to the record by ID.
+
+Again: it is up to your research question which fits better. If you want only to search if a given subject headings appear in a record, concatenated subject might be enough, if you would like to do statistics on the individual subjects or the correlation of them with other data elements (e.g. comparing them with the title words), the second approach looks better. Later in this lesson we'll use the first approach, joining a record's subject headings with the `|` (pipe) character. It keeps the DataFrame at one row per record, which makes everything else simpler. In this section however we show both approaches.
+
+PyMARC's `record.subjects` property is a convenience that pulls all MARC fields commonly used for subject headings (the `6xx` fields) into one list. The actual heading text lives in subfield `$a`, but `$a` is not guaranteed to be present, so we check before appending.
+
+
+The _concatenation_ approach:
 
 ```Python
 from pymarc import map_xml
@@ -531,8 +572,7 @@ print(df.head())
 
 Here we create a dictionary where the keys match the column names, the values are empty lists. When we process a record we append these lists. The identifier and the title are the same as above. For subjects we create a new list. PyMarc provide a `subjects` property for the record object, and it collects the following MARC21 fields: 600, 610, 611, 630, 648, 650, 651, 653, 654, 655, 656, 657, 658, 662, 690, 691, 696, 697, 698, 699. The actual subject headings can be found in `$a` subfield, but we should be prepared that it is not always available, so we add only the real values (otherwise our list might contain `None` values for those fields that lack `$a`). After collecting all subjects into this list, we concatenate them separated by a `|` (pipeline) character, or if the record doesn't have any subject we provide an empty string. Finally we add this string to our subject list. As we have collected all values into a dictionary, we can use that directly in the data frame creation.
 
-The other approach is to create a distinct data frame for the subjects (or other repeatable data elements, such as the list of contributors). 
-
+The other approach is to _create a distinct data frame_ for the subjects (or other repeatable data elements, such as the list of contributors). 
 
 ```Python
 from pymarc import map_xml
@@ -568,15 +608,7 @@ Here we create two dictionaries, one for the titles, and one for the subjects. W
 
 #### Data harmonisation
 
-<!-- TODO: remove these sections
-##### Subjects
-This is work in progress. Subject to Change. It follows the Data Acquisition Section.
-
-##### Place and personal names
--->
-
 ##### Dates
-
 
 One of the most frequently utilised data elements in bibliographic data science is date of publication. It is usually a year (or range of years), and is the basis of any chronological analysis, answering questions such as how feature X changed through times, where X might be the subjects, language, format, authors or other features of the book. The value of the year of publication in MARC21 records however is not a normalised date, so we should apply some transformation to extract a numeric value. In the code we do not provide a very sophisticated solution. For that we suggest you check and adapt the [polish_years](https://github.com/COMHIS/bibliographica/blob/master/R/polish_years.R) function of bibliographica package[^1] written in R language.
 
@@ -652,7 +684,7 @@ After processing all records, we print out the number of successes and failures 
 
 #### Data analysis and visualization
 
-##### Preprocessing MARCXML with PyMARC and Pandas
+##### Preprocessing MARCXML with PyMARC and pandas
 
 In the previous section we downloaded MARCXML files from Yale's catalogue and decompressed them into the `raw-data/yale/` directory. This section picks up from there: we'll turn those XML files into a Pandas DataFrame and use it to ask questions about what the collection contains.
 
@@ -673,113 +705,14 @@ We'll work through:
 4. Wrapping extraction in a reusable function so the same logic runs on any MARCXML file
 5. Filtering for records that mention a topic, then comparing how two catalogues describe that topic
 
-##### Why this matters: the user story
-
-Imagine you're a metadata librarian. You want to start asking questions about what your catalogue contains, not just *is this record well-formed?* but *what does our collection actually describe?* That kind of question opens up real conversations about collection development priorities, cataloguing practice, and what gets fine-grained subject treatment versus what gets lumped together.
-For this lesson we'll use Yale shards (the partitioned MARCXML files we downloaded) as toy data. It's enough to show the techniques; it's not enough to support real findings. By the end you'll be able to recognise the shape of questions this approach answers, and adapt the code to richer data of your own.
-
 ##### What you need before you start
-- At least one MARCXML file in `raw-data/yale/` from the data acquisition section. We'll use `bib_20250706_full_000_00.xml` and `bib_20250706_full_000_01.xml`, but any two will work, just change the file names below.
-- The `pymarc` and `pandas` packages installed. If you don't have them yet:
-
-```python
-%pip install pymarc pandas
-```
-
-<!-- TODO: some parts of this section is parallel with the beginning of the lesson. We should merge the two texts, and remove duplication from here. -->
-##### Reading a MARCXML file
-
-PyMARC offers two ways to read MARCXML:
-
-- `parse_xml_to_array` reads the whole file into memory at once and returns a list of `Record` objects. Simple, but memory-heavy for large files.
-- `map_xml` reads records one at a time and calls a function you provide on each one. Memory-friendly, and the right choice for catalogue-scale data.
-
-Yale's bibliographic shards contain tens of thousands of records each, so we'll use `map_xml` throughout. The pattern is: write a function that takes one record and does something with it, then hand that function to `map_xml` along with the file path. `map_xml` does the rest, calling your function once per record.
-
-Here's the smallest possible example, printing the title of every record:
-
-```python
-from pymarc import map_xml
-
-input_file = 'raw-data/yale/bib_20250706_full_000_00.xml'
-
-# This function will be called once for every record in the file
-def process_record(record):
-    print(record.title)
-
-map_xml(process_record, input_file)
-```
-
-**You should see** a long stream of titles scrolling past, one per record. If you see nothing, check that `input_file` points to a file that actually exists on disk. If you see an error about `pymarc`, re-run the install line above.
-
-Next we'll capture data into lists instead of printing it, and turn those lists into a DataFrame.
-
-##### Extracting non-repeatable fields into a DataFrame
-
-The general pattern is:
-
-1. Create an empty list for each column you want.
-2. In `process_record`, append values from each record onto those lists.
-3. After `map_xml` finishes, hand the lists to Pandas to construct a DataFrame.
-
-We'll start with three fields that appear at most once per record:
-
-- **Record ID**, MARC field `001`, the control number. Quasi-mandatory.
-- **Title**, MARC field `245`. Also quasi-mandatory.
-- **Author**, MARC field `100$a`, the personal name main entry. *Not* mandatory: many records (anonymous works, corporate publications, edited volumes) have no `100`. We need a defensive pattern that records `None` when it's absent.
-
-```python
-from pymarc import map_xml
-import pandas as pd
-
-# One list per column in the final DataFrame
-ids = []
-titles = []
-authors = []
-
-def process_record(record):
-    # 001 and title are quasi-mandatory, so we can append directly
-    ids.append(record.get('001').value())
-    titles.append(record.title)
-
-    # 100 may be absent. record.get('100') returns None when the field
-    # doesn't exist, so check before reaching into it.
-    field_100 = record.get('100')
-    if field_100 is not None and field_100.get('a') is not None:
-        authors.append(field_100.get('a'))
-    else:
-        authors.append(None)
-
-input_file = 'raw-data/yale/bib_20250706_full_000_00.xml'
-map_xml(process_record, input_file)
-
-df = pd.DataFrame({'id': ids, 'title': titles, 'author': authors})
-print(f'Extracted {len(df)} records')
-df.head()
-```
-
-**You should see** a count of records (somewhere in the tens of thousands for a Yale shard) and a preview of the first five rows. Some rows will have `None` (rendered as `NaN`) in the `author` column. These are records where field `100$a` was absent.
-
-This works, but it has a problem: `ids`, `titles`, and `authors` are loose variables that `process_record` reaches into. If we want to run the same extraction on a different file, we have to remember to reset the lists, and `process_record` only works in a context where those lists already exist. The fix is to wrap everything together into one function, which we'll do once we've added subjects.
-
-##### Repeatable fields: one record, many values
-
-MARC21 allows several fields to repeat within a single record. Subject headings are the clearest example: a book might have one subject, or ten. This breaks the [tidy data](https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data) assumption that each row is one observation and each cell holds one value.
-
-There are two reasonable ways to handle repeating values:
-
-- **Concatenate them into one cell**, separated by a delimiter character. Each record stays as one row.
-- **Build a separate DataFrame** with one row per subject heading, linked back to the record by ID.
-
-We'll use the first approach, joining a record's subject headings with the `|` (pipe) character. It keeps the DataFrame at one row per record, which makes everything else simpler.
-
-PyMARC's `record.subjects` property is a convenience that pulls all MARC fields commonly used for subject headings (the `6xx` fields) into one list. The actual heading text lives in subfield `$a`, but `$a` is not guaranteed to be present, so we check before appending.
+- At least two MARCXML files in `raw-data/yale/` from the data acquisition section. We'll use `bib_20250706_full_000_00.xml` and `bib_20250706_full_000_01.xml`, but any two will work, just change the file names below.
 
 ##### Function 1: `extract_to_dataframe`
 
-This function takes one or more file paths and returns a DataFrame with one row per record. It packages everything we've built so far, plus subject extraction, into a single self-contained call.
+The previously described `map_xml(process_record, path)` approach works, but it has a problem: `ids`, `titles`, and `authors` are loose variables that `process_record` reaches into. If we want to run the same extraction on a different file, we have to remember to reset the lists, and `process_record` only works in a context where those lists already exist. The fix is to wrap everything together into one function, which we'll do once we've added subjects.
 
-<!-- TODO: maybe we can mention 'list comprehension' here -->
+This function takes one or more file paths and returns a DataFrame with one row per record. It packages everything we've built so far, plus subject extraction, into a single self-contained call.
 
 ```python
 from pymarc import map_xml
@@ -818,10 +751,11 @@ def extract_to_dataframe(*file_paths):
     })
 ```
 
-Two things worth noting:
+Some things worth noting:
 
 - The `*file_paths` parameter (with the asterisk) lets the function accept any number of file paths. Calling `extract_to_dataframe('a.xml')` works, and so does `extract_to_dataframe('a.xml', 'b.xml', 'c.xml')`. The function loops over all paths and combines their records into one DataFrame.
 - The lists (`ids`, `titles`, etc.) and `process_record` are now defined *inside* `extract_to_dataframe`. Each call starts with fresh empty lists, so you can call the function as many times as you want without leftover data from previous runs.
+- The construction `[s.get('a') for s in record.subjects if s.get('a') is not None]` is an example of a special Pythonic way of creating a list called "list comprehension". You can read about it [here](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions).
 
 Try it on one file:
 

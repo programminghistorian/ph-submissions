@@ -356,7 +356,7 @@ for z in range(3, 6):
 Una vez escrito el código, ejecútalo desde la terminal con `python3 tiles.py` (Linux) o `python tiles.py`. Este código recorrerá de forma automática los niveles de zoom del 3 al 5. En esta lección se han escogido estos niveles de zoom para tener una vista relativamente panorámica del mundo y no descargar enormes cantidades de datos. 
 
 <div class="alert alert-warning">
-**¡Precaución!** Debes tener en cuenta que, a mayor nivel de zoom, el número de imágenes a descargar crecerá de forma exponencial.
+<b>¡Precaución!</b> Debes tener en cuenta que, a mayor nivel de zoom, el número de imágenes a descargar crecerá de forma exponencial.
 </div>
 
 Por ejemplo, para los niveles que procesa el script propuesto, se descargan las siguientes imágenes:

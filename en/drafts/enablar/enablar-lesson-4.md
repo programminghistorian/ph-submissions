@@ -6,8 +6,8 @@ collection: lessons
 date: YYYY-MM-DD
 authors:
   - Joseph Nockels
-  - Alex Fenlon
   - Natalia Estrada
+  - Alex Fenlon
 reviewers:
 - Forename Surname
 - Forename Surname

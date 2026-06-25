@@ -494,9 +494,9 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 - «Notepad++». [https://notepad-plus-plus.org/](https://notepad-plus-plus.org/).  
 - Río Riande, Gimena del. «Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto». Publicaciones de la Asociación Argentina de Humanidades Digitales 3 (noviembre de 2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).  
 - Río Riande, Gimena del, Gabriel Calarco, Roy Youdale, y Patience Shell. «Minimal Computing 101». Sobre Minimal Computing, 8 de agosto de 2025. [https://hdlab.space/minimalbook/sobre\_minimalcomputing.html](https://hdlab.space/minimalbook/sobre_minimalcomputing.html).  
-- Steve Gray, Chris Mallett, AutoIt Team et al. «Hotkeys \- Definition & Usage | AutoHotkey v2». AutoHotkey v2 Documentation, 2014-. [https://www.autohotkey.com/docs/v2/Hotkeys.htm](https://www.autohotkey.com/docs/v2/Hotkeys.htm).  
+- Steve Gray, Chris Mallett, AutoIt Team et al. «Hotkeys \- Definition & Usage AutoHotkey v2». AutoHotkey v2 Documentation, 2014-. [https://www.autohotkey.com/docs/v2/Hotkeys.htm](https://www.autohotkey.com/docs/v2/Hotkeys.htm).  
 - The TEI Consortium. The TEI Guidelines. 2026. [https://guidelines.tei-c.de/en/html/index.html](https://guidelines.tei-c.de/en/html/index.html).  
-- tidbit. «Beginner Tutorial | AutoHotkey v2». AutoHotkey v2 Documentation, 2014-. [https://www.autohotkey.com/docs/v2/Tutorial.htm](https://www.autohotkey.com/docs/v2/Tutorial.htm).  
+- tidbit. «Beginner Tutorial AutoHotkey v2». AutoHotkey v2 Documentation, 2014. [https://www.autohotkey.com/docs/v2/Tutorial.htm](https://www.autohotkey.com/docs/v2/Tutorial.htm).  
 - «Visual Studio Code». [https://code.visualstudio.com/](https://code.visualstudio.com/).
 
 ## Notas

@@ -611,37 +611,17 @@ print(df_subjects['subject'].value_counts().head())
 
 Here we create two dictionaries, one for the titles, and one for the subjects. We have to test if the subject field has `$a` subfield, but we do not have to do the trick with the record level subject list. At the end we create two data frames, and thus we can run statistical analysis, such as listing the top subject headings with `value_counts()`. One can imagine a data frame as a list of Series objects each representing an individual column. Series' `value_counts()` method counts the occurrences of individual values, and sorts it by descending number, so `head` shows the most frequent subject headings.
 
-#### Data analysis and visualization
+#### Data analysis
 
-##### Preprocessing MARCXML with PyMARC and pandas
+So far we have extracted records from a single file and seen two ways to handle repeatable fields. Now we'll put that extraction on a reusable footing and use it to ask a comparative question: given two catalogues, how does each describe the same kind of material? To get there we'll build three small functions that work together, then apply them across two files:
 
-In the previous section we downloaded MARCXML files from Yale's catalogue and decompressed them into the `raw-data/yale/` directory, finally created Pandas DataFrame from a single file. This section picks up from there: we'll turn multiple XML files into a Pandas DataFrame and use it to ask questions about what the collection contains.
-
-##### What we're building
-
-By the end of this section you'll have three small reusable functions that work together:
 1. **`extract_to_dataframe`** turns one or more MARCXML files into a DataFrame.
 2. **`headings_matching`** finds all subject headings in a DataFrame that mention a given keyword.
 3. **`compare_sets`** takes two sets and reports what's shared and what's only on one side.
 
-Each function does one thing. Together they let us ask comparative questions across catalogues without writing complicated code.
-
-We'll work through:
-
-1. Reading a MARCXML file one record at a time with PyMARC
-2. Extracting four fields, record ID, title, author, and subject headings
-3. Handling subjects, which can repeat within a single record
-4. Wrapping extraction in a reusable function so the same logic runs on any MARCXML file
-5. Filtering for records that mention a topic, then comparing how two catalogues describe that topic
-
-##### What you need before you start
-- At least two MARCXML files in `raw-data/yale/` from the data acquisition section. We'll use `bib_20250706_full_000_00.xml` and `bib_20250706_full_000_01.xml`, but any two will work, just change the file names below.
-
 ##### Function 1: `extract_to_dataframe`
 
-The previously described `map_xml(process_record, path)` approach works, but it has a problem: `ids`, `titles`, and `authors` are loose variables that `process_record` reaches into. If we want to run the same extraction on a different file, we have to remember to reset the lists, and `process_record` only works in a context where those lists already exist. The fix is to wrap everything together into one function, which we'll do once we've added subjects.
-
-This function takes one or more file paths and returns a DataFrame with one row per record. It packages everything we've built so far, plus subject extraction, into a single self-contained call.
+Wrapping the whole extraction in a function lets us reuse it: each call takes a file path and returns a fresh DataFrame, so we can run it on as many files as we like. This function also adds subject extraction to the fields we pulled earlier.
 
 ```python
 from pymarc import map_xml
@@ -650,41 +630,31 @@ import pandas as pd
 def extract_to_dataframe(*file_paths):
     """Read one or more MARCXML files. Return a DataFrame with one row
     per record and columns: id, title, author, subjects (pipe-separated)."""
-
-    ids = []
-    titles = []
-    authors = []
-    subjects = []
+    rows = []
 
     def process_record(record):
-        ids.append(record.get('001').value())
-        titles.append(record.title)
-
         field_100 = record.get('100')
         if field_100 is not None and field_100.get('a') is not None:
-            authors.append(field_100.get('a'))
+            author = field_100.get('a')
         else:
-            authors.append(None)
+            author = None
 
         subject_values = [s.get('a') for s in record.subjects if s.get('a') is not None]
-        subjects.append('|'.join(subject_values) if subject_values else '')
+
+        rows.append({
+            'id': record.get('001').value(),
+            'title': record.title,
+            'author': author,
+            'subjects': '|'.join(subject_values),
+        })
 
     for path in file_paths:
         map_xml(process_record, path)
 
-    return pd.DataFrame({
-        'id': ids,
-        'title': titles,
-        'author': authors,
-        'subjects': subjects,
-    })
+    return pd.DataFrame(rows)
 ```
 
-Some things worth noting:
-
-- The `*file_paths` parameter (with the asterisk) lets the function accept any number of file paths. Calling `extract_to_dataframe('a.xml')` works, and so does `extract_to_dataframe('a.xml', 'b.xml', 'c.xml')`. The function loops over all paths and combines their records into one DataFrame.
-- The lists (`ids`, `titles`, etc.) and `process_record` are now defined *inside* `extract_to_dataframe`. Each call starts with fresh empty lists, so you can call the function as many times as you want without leftover data from previous runs.
-- The construction `[s.get('a') for s in record.subjects if s.get('a') is not None]` is an example of a special Pythonic way of creating a list called "list comprehension". You can read about it [here](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions).
+A note on the signature: the `*file_paths` parameter (with the asterisk) lets the function take any number of paths, so `extract_to_dataframe('a.xml')` and `extract_to_dataframe('a.xml', 'b.xml')` both work, combining all records into one DataFrame. The bracket expression that builds `subject_values` is a [list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions).
 
 Try it on one file:
 
@@ -694,35 +664,27 @@ print(f'Extracted {len(df)} records')
 df.head()
 ```
 
-**You should see** a record count and a preview with four columns: `id`, `title`, `author`, `subjects`. The `subjects` column holds pipe-separated strings (or an empty string if no subjects were assigned).
+**You should see** a record count and a four-column preview: `id`, `title`, `author`, `subjects`. The `subjects` column holds pipe-separated strings. With the records in a DataFrame, we can start asking questions of them.
 
 ##### Asking a question of the collection
 
-We now have a DataFrame, which means we can start asking what the catalogue contains. There are many directions you could take this: publication date distribution, author concentration, language coverage, format breakdowns. We'll work through one example: how many records use subject headings that the Library of Congress has recently revised.
+We now have a DataFrame, which means we can start asking what the catalogue contains: publication date distribution, author concentration, language coverage, and so on. We'll work through one example, counting records that use subject headings the Library of Congress has recently revised.
 
-<!-- TOODO: is there a list of changes somewhere? We can link it here. -->
-LCSH is a living vocabulary. Headings get added, retired, and renamed as cataloguing practice evolves. Recent examples include the change from "Aliens" to "Noncitizens", the replacement of "Slaves" with "Enslaved persons", and renamings of geographic features (such as "McKinley, Mount" becoming "Denali, Mount").
+LCSH is a living vocabulary. Headings get added, retired, and renamed as cataloguing practice evolves; the Library of Congress publishes the [approved changes](https://classweb.org/approved-subjects/) on a rolling basis. Notable examples: "Aliens" became "Noncitizens", "Slaves" became "Enslaved persons", and "McKinley, Mount" became "Denali, Mount". How many records in our data still carry the older or revised forms?
 
-The question: *how many records in our DataFrame still carry these older or recently-revised headings?* This is a starting point for a much larger conversation about how catalogues age, how vocabulary change propagates through library data, and how cataloguing decisions encode their moment. The toy data and simple technique here won't answer those questions rigorously, but they'll show you the shape of how the question gets asked.
-
-Pandas' `.str.contains()` method filters a string column by whether each value contains a given substring. Combined with `.sum()` on the resulting boolean Series, we get a count of records matching each pattern:
+Pandas' `.str.contains()` filters a string column by whether each value contains a substring; calling `.sum()` on the resulting True/False Series counts the matches:
 
 ```python
 lc_changes = ['McKinley, Mount', 'Enslaved persons', 'Noncitizen']
 
-print('Records with subject headings referencing each LC change:\n')
 for change in lc_changes:
-    # str.contains returns True/False for each row;
-    # sum() counts the True values; na=False treats empty subjects as no match
     count = df['subjects'].str.contains(change, na=False).sum()
-    print(f'  {change:20s} {count:6d} records')
+    print(f'{change}: {count} records')
 ```
 
-**You should see** a count per term. Some will be common, others rare or zero, depending on what kinds of materials this shard contains and whether the new or old form has been adopted in the records here.
+**You should see** a count per term, some common, others rare or zero depending on what this shard contains and which form its records use.
 
-What these numbers can and can't tell you is worth being careful about. A high count for an old heading doesn't mean the catalogue is "behind", large catalogues legitimately carry decades of records, and retroactive vocabulary updates are expensive. A low count for a new heading might mean the records pre-date the change, or that the catalogue updated promptly. The technique only counts substring matches; it doesn't distinguish "the heading is current" from "the heading was the only option at the time of cataloguing" from "the cataloguer chose not to apply the new form."
-
-What the technique *does* show is the shape of how you'd ask. `.str.contains()` filters a column by pattern; `.sum()` on the resulting boolean Series counts matches. The same two-move composition works for any pattern in any column.
+A caveat: this counts substring matches, so it tells you a term is present, not whether it is current or why a cataloguer chose it. The technique is general, though: `.str.contains()` plus `.sum()` counts matches for any pattern in any column.
 
 ##### Comparing two datasets
 
@@ -740,7 +702,7 @@ print(f'Catalogue A: {len(df_a)} records')
 print(f'Catalogue B: {len(df_b)} records')
 ```
 
-To compare them, we need two more small functions.
+To compare them, we need two more functions.
 
 ##### Function 2: `headings_matching`
 
@@ -755,8 +717,7 @@ def headings_matching(df, keyword):
 
     headings = set()
     for subjects_str in matching['subjects']:
-        if subjects_str:
-            headings.update(subjects_str.split('|'))
+        headings.update(subjects_str.split('|'))
 
     return headings
 ```
@@ -791,7 +752,7 @@ def compare_sets(set_x, set_y):
     }
 ```
 
-The function is short because Python's set operators do the heavy lifting: `&` returns the intersection, and `-` returns the difference. The function just gives those operations clear names and bundles them together.
+The function is short because Python's set operators do the heavy lifting: `&` returns the intersection, and `-` returns the difference.
 
 Putting the pieces together:
 
@@ -809,23 +770,9 @@ for h in sorted(result['only_in_x'])[:5]:
 
 **You should see** counts followed by a few example headings unique to catalogue A. The asymmetric differences (the "only in" sets) are usually the interesting numbers, they tell you where the two catalogues diverge in vocabulary.
 
-##### Why three small functions
+Each function is useful on its own. `compare_sets` works on any two sets, not just sets of headings. `headings_matching` works on any DataFrame with a pipe-separated `subjects` column, not just Yale's. If you wanted to compare three catalogues instead of two, or compare authors instead of subjects, you'd reuse most of these pieces unchanged.
 
-Each function does one thing, named honestly:
-
-- `extract_to_dataframe` reads MARCXML and returns a DataFrame.
-- `headings_matching` filters a DataFrame and returns a set of headings.
-- `compare_sets` compares two sets.
-
-Together they compose into the workflow we just walked through, but each piece is also useful on its own. `compare_sets` works on any two sets, not just sets of headings. `headings_matching` works on any DataFrame with a pipe-separated `subjects` column, not just Yale's. If you wanted to compare three catalogues instead of two, or compare authors instead of subjects, you'd reuse most of these pieces unchanged.
-
-To investigate a different topic, only the keyword changes:
-
-```python
-headings_a = headings_matching(df_a, 'Climate')
-headings_b = headings_matching(df_b, 'Climate')
-result = compare_sets(headings_a, headings_b)
-```
+We now have three numbers describing how two catalogues overlap: what they share, and what's unique to each side. Numbers like these are easier to grasp at a glance when they're drawn rather than printed, which is where visualisation comes in.
 
 #### Visualization: Creating a Venn diagram
 

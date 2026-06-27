@@ -201,12 +201,17 @@ This lesson aims to give you a working command of a complete bibliographic data 
 The example questions we ask of the data are illustrative; the techniques are general. Where a topic opens onto larger research questions, we point outward to further reading rather than pursuing it in depth, so that the methodology stays in focus.
 
 ### Inventory
+
 Before starting the workflow, make sure you have the following in place. The steps that follow assume this setup.
+
 **Python environment.** Python 3 with the packages listed under [Software/tool](#softwaretool). You can install the third-party packages in one step:
+
 ```
 pip install pymarc pandas lxml undate matplotlib matplotlib-venn
 ```
+
 **A working directory.** Create a folder for the project. The code in this lesson uses relative paths, so all commands assume you are working from this folder. Within it, the acquisition step will create a `raw-data/yale/` subfolder for the downloaded records, and the visualisation step writes images to a `fig_output/` subfolder.
+
 **The dataset.** You do not need to download anything by hand. The [Data acquisition](#data-acquisition) section walks through fetching the MARCXML files from Yale and decompressing them into `raw-data/yale/`. 
 
 ### Workflow
@@ -702,9 +707,8 @@ The question: *how many records in our DataFrame still carry these older or rece
 
 Pandas' `.str.contains()` method filters a string column by whether each value contains a given substring. Combined with `.sum()` on the resulting boolean Series, we get a count of records matching each pattern:
 
-<!-- TODO: contrary to the rest 'Gulf of' is not explained above. -->
 ```python
-lc_changes = ['Gulf of', 'McKinley, Mount', 'Enslaved persons', 'Noncitizen']
+lc_changes = ['McKinley, Mount', 'Enslaved persons', 'Noncitizen']
 
 print('Records with subject headings referencing each LC change:\n')
 for change in lc_changes:

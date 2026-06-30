@@ -182,9 +182,130 @@ Library data includes information beyond subject headings and there is universe 
 
 ### Dataset
 
-The dataset used in the example is of books held by the Royal Library of the Netherlands (KB) from 1800-2000 tagged with the subject heading 'exact sciences'.  You can download this subset from the Short-Title Catalogue Netherlands, the Dutch national bibliography, as well as other collections featured in their open datasets. The dataset file is [SIZE]. The KB makes its metadata available in a variety of research-friendly formats and actively encourages reuse. Readers interested in experimenting with other collections may also wish to explore additional open datasets available through the KB catalogue.
+To experiment with in this lesson, we provide eight data files containing bibliographic metadata for books in the [Nederlandse Bibliografie Online (Online Dutch Bibliography)](https://www.kb.nl/over-ons/diensten/de-nederlandse-bibliografie, the catalogue of the National Library of the Netherlands. Together, these files span the period from 1800 to 2000, with each file covering a twenty-five-year segment.
 
-- [Short-Title Catalogue Netherlands - The Dutch National Bibliography up to 1801](https://data.cerl.org/stcn/_search?query=&from=0) subset: 18th century books in the Royal Library of the Netherlands (KB) with subject heading 'exact sciences'. 
+The data files are provided in JSON format, a plain-text format well suited to representing structured data. For each book catalogued under the broader subject heading "wetenschap" (science), the JSON files contain at least the following metadata:
+
+- a uniform identifier
+- title
+- author
+- subject heading (preferred label, narrower label, and broader label)
+- genre
+- language
+- year of publication
+
+Given the focus of this lesson, we are particularly interested in how publications are attributed to subjects. For this reason, we queried not only the general subject heading assigned to each book, but also the corresponding higher-level (broader) heading and lower-level (narrower) subdivisions. This layered structure provides richer data for visualising the relationships between book titles and subject headings. The dataset includes all books for which at least one broader subject label contains the term _wetenschap_ ('science').
+
+A single JSON entry, describing one book, looks as follows:
+
+```json
+{
+    "uri": {
+      "type": "uri",
+      "value": "http://data.bibliotheken.nl/id/nbt/p096038845"
+    },
+    "name": {
+      "type": "literal",
+      "value": "Gewone logarithmen met zeven decimalen der getallen van 1 tot 108000 en der sinussen, cosinussen, tangenten en cotangenten van alle hoeken in het quadrant van 10 tot 10 seconden, benevens eene interpolatietafel ter berekening van de evenredige deelen"
+    },
+    "label": {
+      "type": "literal",
+      "value": "Gewone logarithmen met zeven decimalen der getallen van 1 tot 108000 en der sinussen, cosinussen, tangenten en cotangenten van alle hoeken in het quadrant van 10 tot 10 seconden, benevens eene interpolatietafel ter berekening van de evenredige deelen / Ludwig Schrön ; uit het Hoogduitsch door D. Bierens de Haan"
+    },
+    "authorname": {
+      "type": "literal",
+      "value": "Heinrich Ludwig Friedrich Schrön"
+    },
+    "about": {
+      "type": "uri",
+      "value": "http://data.bibliotheken.nl/id/thes/p397577818"
+    },
+    "preflabel": {
+      "type": "literal",
+      "value": "Wiskunde, algemeen"
+    },
+    "broader": {
+      "type": "uri",
+      "value": "http://data.bibliotheken.nl/id/thes/p397577443"
+    },
+    "broaderlabel": {
+      "type": "literal",
+      "value": "Wiskunde en natuurwetenschappen"
+    },
+    "narrower": {
+      "type": "uri",
+      "value": "http://data.bibliotheken.nl/id/thes/p397577826"
+    },
+    "narrowerlabel": {
+      "type": "literal",
+      "value": "Inleiding"
+    },
+    "language": {
+      "type": "literal",
+      "value": "nl"
+    },
+    "jaar": {
+      "type": "literal",
+      "value": "1862",
+      "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+    }
+}
+```
+
+### Retrieving the data
+
+The data were downloaded from the publicly accessible portal of the [National Library of the Netherlands](https://data.bibliotheken.nl/KB/-/queries/Titel-zoeken-in-de-NBT/), where records can be retrieved by submitting a SPARQL query. SPARQL is a query language designed for retrieving and working with Linked Open Data. No prior knowledge of SPARQL is required for this lesson, but readers interested in learning more are encouraged to consult the lesson [Introduction to the Principles of Linked Open Data](https://programminghistorian.org/en/lessons/intro-to-linked-data).
+
+For reference, the SPARQL query used to construct the datasets for this lesson is given below. You are encouraged to try it yourself on the [library portal of the National Library of the Netherlands](https://data.bibliotheken.nl/KB/-/queries/Titel-zoeken-in-de-NBT/), and to experiment with adapting the query to suit your own field of study.
+
+```sparql
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix schema: <http://schema.org/>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select distinct ?uri ?name ?label ?authorname ?about ?preflabel ?broader ?broaderlabel ?narrower ?narrowerlabel ?location ?genre ?genrelabel ?language ?jaar ?editie ?type
+where {
+  ?uri schema:name ?name .
+  ?uri rdf:type schema:Book .
+  optional {
+    ?uri schema:author/schema:name ?authorname.
+  }
+  optional {
+    ?uri schema:about ?about .
+    ?about skos:prefLabel ?preflabel .
+    ?about skos:broader ?broader .
+    ?broader skos:prefLabel ?broaderlabel .
+    ?about skos:narrower ?narrower .
+    ?narrower skos:prefLabel ?narrowerlabel .
+  }
+  filter contains(lcase(?broaderlabel), lcase("wetenschap"))
+  optional {
+    ?uri schema:location ?location.
+  }
+  optional {
+    ?uri schema:genre ?genre .
+    ?genre skos:prefLabel ?genrelabel .
+  }
+  optional {
+    ?uri schema:inLanguage ?language.
+  }
+  ?uri rdfs:label ?label .
+  ?uri schema:publication/schema:startDate ?jaar .
+  filter(?jaar > "1800"^^xsd:gYear && ?jaar <= "1825"^^xsd:gYear)
+  optional {
+    ?uri schema:bookFormat ?type.
+  }
+  optional {
+    ?uri schema:bookEdition ?editie .
+  }
+}
+order by ?jaar
+```
+
+Two elements of this query are worth highlighting. Line 21 contains the filter statement that restricts results to records classified under the broader label "wetenschap" (science), while the filter on line 34 restricts results to the relevant time frame, in this case 1800–1825.
+
+You don't need to run the queries yourself, as we have made the datasets available for this lesson [here](#).
 
 ### Software/tool
 

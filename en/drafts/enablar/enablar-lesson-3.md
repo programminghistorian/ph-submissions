@@ -309,10 +309,9 @@ You don't need to run the queries yourself, as we have made the datasets availab
 
 ### Software/tool
 
-- [sigma.js - a JavaScript library aimed at visualizing graphs of thousands of nodes and edges](https://www.sigmajs.org/)
-- [ipysigma — Easily visualize networks with thousands of nodes and edges in Python](https://medium.com/@msdatashift/ipysigma-easily-visualize-networks-with-thousands-of-nodes-and-edges-in-python-3ecdbe0321de)
-- [ipysigma (GitHub)](https://github.com/medialab/ipysigma)
-- [Llama Extract](https://www.llamaindex.ai/llamaextract)
+- [networkx](https://pypi.org/project/networkx/), a Python package for the creation and manipulation of networks
+- [Sigma.js](https://www.sigmajs.org/), a Javascript library for large-scale network visualisation
+- [iPySIGMA](https://github.com/medialab/ipysigma), a Python wrapper around sigma.js
 
 ## Learning keys
 ### Concepts

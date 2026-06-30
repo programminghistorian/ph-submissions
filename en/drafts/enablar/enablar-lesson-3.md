@@ -323,7 +323,20 @@ Using subject headings as the basis for connection, we will examine how catalogu
 The lesson will then demonstrate how interactive visualisations can support collection analysis and development by making patterns, clusters, and relationships easier to explore. By comparing network visualisations created from catalogue data at different points in time, librarians can gain insight into how a collection has developed historically and how it may continue to evolve in the future. These concepts will be demonstrated through a workflow built with Python, ipysigma, and JavaScript sigma.js
 
 ### Terms
-see above
+
+Before turning to the hands-on part of this lesson, it is useful to review a few basic concepts underlying network graphs and how they apply to our use case.
+
+#### Nodes and edges
+
+At its core, a network graph charts a set of relations between data points. These data points, the items being linked to one another, are called **nodes**. The relations between them, in essence a list of statements that point x is connected to point y, are called **edges**.
+
+In our use case, we are visualising the relations between book titles and subject headings, both of which are available in the bibliographic metadata described in the previous section. Book titles and subject headings will therefore form the nodes in our network visualisation, with edges representing the connections between them.
+
+#### Attributes
+
+Beyond the connections that link them, nodes can also carry additional characteristics, or fields, that are not used to establish relations but instead provide supplementary descriptive information about each node. In a network graph, it is often valuable to be able to view these **node attributes*** directly alongside the network structure itself.
+
+In our use case, while the network primarily visualises relations between book titles and subject headings, it is useful to also have immediate access to further attributes of each node. For book title nodes, this includes information such as the author, year of publication, genre and language. For subject heading nodes, it is similarly useful to be able to see, at a glance, related subject headings at a higher or lower level.
 
 ### Time
 

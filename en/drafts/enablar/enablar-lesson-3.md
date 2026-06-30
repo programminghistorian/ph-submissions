@@ -148,7 +148,30 @@ We will first walk you through the installation of [uv](https://docs.astral.sh/u
 * Medium
 
 ## Use Case
+
 This workflow could be used as a way of telling thematic stories through library collections by librarians and researchers alike. This approach is a new way to visualize library collections to gain better insights and justify their importance for a wider audience. Rather than presenting catalogue records as static entries this workflow treats the collection as a connected system of relationships that can be explored visually. This makes it especially useful for communicating the value of collections to audiences who may not otherwise engage with catalogue metadata directly.
+
+This lesson uses a subset of the catalogue of the National Library of the Netherlands (KB) as its working example. As the national library, the KB collects, preserves and describes all publications published in the Netherlands, about the Netherlands, or in Dutch. This legal deposit function results in a collection that is both exceptionally complete and consistently well described. The catalogue metadata are correspondingly rich, offering a wealth of detail about each item. In this lesson, we focus specifically on the subject heading attributions in the collection, which are applied extensively and with notable consistency.
+
+### A synchronic perspective
+
+The richness of this metadata is also its main challenge. With such volume and detail, it becomes difficult to analyse the data by traditional means alone, to detect patterns, or to identify anomalies and turning points in the history of the collection.
+
+This is where visualisation proves valuable. By visualising the metadata and allowing interactive selection of search criteria, even a brief exploration of the network graph can reveal which subjects and topics are most prominent within the collection, and how individual books relate to one another through shared subject headings.
+
+### A diachronic perspective
+
+Beyond its scale, the KB collection is distinctive for another reason: it offers complete and consistent metadata spanning a long historical period, a direct consequence of its role as the official deposit institution for Dutch publications. This means the catalogue does more than document the library's holdings. It also provides a window into the history of publishing in the Netherlands.
+
+For this lesson, we selected the subset of books catalogued under the subject heading _wetenschap_ ('science'), spanning the period from 1800 to 2000. This range includes the nineteenth century, a formative period during which many modern scientific disciplines took shape.
+
+This use case allows us to address the following research questions:
+
+- Which scientific subject headings are most predominant in the collection?
+- How did scientific subject headings change over time? What do these shifts reveal, both about the library's acquisition history and about the emergence and development of scientific disciplines in the Netherlands since 1800?
+- How can we discover books that are related through a shared subject heading at a higher level, revealing unexpected clusters that may not be apparent from their Universal Decimal Classification (UDC) number alone?
+
+Exploring the network graph of Dutch publications since 1800 through catalogue metadata visualisation may also be of value to historians of science, offering a fresh angle on the traditional narrative of how the sciences developed in the Netherlands. At the same time, researchers working within a specific discipline, such as mathematics or literary studies, may use this same network graph to discover related publications they had not previously considered.
 
 Other examples of of activities that could be done, just focusing on subject heading data in libraries include: 
 * Looking at a complete collection of subject headings for main collection to understand what sections are strongly represented and could be pulled out an highlighted

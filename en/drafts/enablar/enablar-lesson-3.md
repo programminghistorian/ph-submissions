@@ -355,7 +355,7 @@ In this lesson, nodes, edges and the visualisation itself are defined in Python,
 - [Sigma.js](https://www.sigmajs.org/): a JavaScript library for large-scale network visualisation
 - [iPySigma](https://github.com/medialab/ipysigma): a Python wrapper around Sigma.js that enables network visualisation within a Python environment
 
-### Data files
+#### Data files
 
 The sample data files used in this lesson are available [here](#). Each file covers a twenty-five-year period within the range 1800–2000:
 
@@ -368,7 +368,7 @@ The sample data files used in this lesson are available [here](#). Each file cov
 - `nbt_index_1951-1975.json`
 - `nbt_index_1976-2000.json`
 
-### Directory structure
+#### Directory structure
 
 To keep code and data well organised, we recommend the following directory structure:
 
@@ -380,8 +380,169 @@ src/
     └── out/             # Generated output files (HTML network graphs)
 ```
 
+### Workflow
 
+#### Setting up the environment
 
+To keep the working environment tidy and avoid conflicts with other software and packages installed on your machine, we recommend creating a virtual environment using [uv](https://docs.astral.sh/uv/), a widely used Python package manager.
+
+Begin by installing uv by following the [installation instructions](https://docs.astral.sh/uv/getting-started/installation/) for your operating system. Then navigate to the folder where you want to create the project, initialise the project directory, and move into it:
+
+```bash
+$ uv init src
+$ cd src
+```
+
+Next, create a virtual environment within the `src` folder and install the required Python version for this project:
+
+```bash
+$ uv sync --python 3.12
+```
+
+Then install the packages required for this lesson:
+
+```bash
+$ uv add matplotlib scipy networkx ipysigma
+```
+
+Once the environment is set up, launch VS Code (or your preferred code editor) within the virtual environment to ensure all installed packages are available:
+
+```bash
+$ uv run code .
+```
+
+#### Importing the required packages
+
+Open the `main.py` file that was generated automatically during project initialisation, and remove its pre-generated contents. Begin your script by importing the required packages:
+
+```python
+import json
+import networkx as nx
+from ipysigma import Sigma
+```
+
+#### Importing the data files
+
+We will now create a function that reads a time-range-specific JSON data file from the sample dataset (for example, `nbt_index_1800-1825.json`). Recall that each file has the following structure, where each entry in the `bindings` array represents one book in the catalogue:
+
+```json
+{
+  "head": { "..." },
+  "results": {
+    "bindings": [
+      {
+        "uri": {"..."},
+        "name": {"..."},
+        "about": {"..."},
+        "preflabel": {"..."},
+        "broader": {"..."},
+        "broaderlabel": {"..."},
+        "narrower": {"..."},
+        "narrowerlabel": {"..."},
+        "language": {"..."},
+        "jaar": {"..."},
+        "editie": {"..."}
+      }
+    ]
+  }
+}
+```
+
+The function will convert the contents of this file into a network format, that is, a list of nodes and edges. Begin by opening the file and extracting the catalogue entries:
+
+```python
+# Function to convert JSON data to a NetworkX graph
+def convert_json_to_nx(date_range: str):
+    # Open the JSON file containing the parsed data
+    file_path = f"data/nbt_index_{date_range}.json"
+    with open(file_path, "r") as f:
+        data = json.load(f)
+
+    # Extract the catalogue data from the JSON
+    catalogue_items = data["results"]["bindings"]
+    item_dict_list = []
+```
+
+Define placeholders for the nodes and edges:
+
+```python
+    edges = []
+    nodes = {}
+```
+
+Then iterate over the catalogue entries and convert each one into a [dictionary](https://www.w3schools.com/python/python_dictionaries.asp), building up a list in which each entry holds the metadata for one book:
+
+```python
+    for x in catalogue_items:
+        if x is not None:
+            itemdata = x
+            # Create a dictionary for each catalogue item
+            item = {
+                "uri": itemdata.get("uri").get("value"),
+                "title": itemdata.get("name").get("value"),
+                "language": itemdata.get("language").get("value"),
+                "date": itemdata.get("jaar").get("value"),
+                "pref_subject": itemdata.get("preflabel").get("value"),
+                "narrower_subject": itemdata.get("narrowerlabel").get("value"),
+                "broader_subject": itemdata.get("broaderlabel").get("value"),
+            }
+            item_dict_list.append(item)
+```
+
+#### Defining nodes and edges
+
+##### Edges
+
+With the catalogue data now structured as a list of dictionaries, we can define the **edges** of our network graph. For this lesson, we connect:
+
+- each book title to its preferred, narrower and broader subject headings
+- subject headings to one another, linking preferred labels to both their narrower and broader equivalents
+
+```python
+            edges.append((item["pref_subject"], item["title"]))
+            edges.append((item["pref_subject"], item["narrower_subject"]))
+            edges.append((item["pref_subject"], item["broader_subject"]))
+            edges.append((item["narrower_subject"], item["title"]))
+            edges.append((item["broader_subject"], item["title"]))
+```
+
+##### Nodes
+
+The nodes in our graph are book titles and subject headings. As discussed in the previous section, it is valuable to also display node attributes alongside the graph structure:
+
+- For **book title nodes**, we include additional metadata such as the preferred, narrower and broader subject headings, the date of publication, the language, and the unique identifier (URI).
+- For **subject heading nodes**, we include the related broader and narrower subject headings.
+
+```python
+            # Define nodes for the catalogue graph
+            keys_title_to_extract = ["title", "pref_subject", "narrower_subject",
+                                      "broader_subject", "date", "language", "uri"]
+            keys_subject_to_extract = ["pref_subject", "narrower_subject", "broader_subject"]
+
+            for node_attributes in item_dict_list:
+                node_title = node_attributes["title"]
+                node_pref_subject = node_attributes["pref_subject"]
+                node_narrower_subject = node_attributes["narrower_subject"]
+                node_broader_subject = node_attributes["broader_subject"]
+
+                sub_dict_title = {key: node_attributes[key] for key in keys_title_to_extract
+                                  if key in node_attributes}
+                sub_dict_title["type"] = "book"
+
+                sub_dict_subject = {key: node_attributes[key] for key in keys_subject_to_extract
+                                    if key in node_attributes}
+                sub_dict_subject["type"] = "subject"
+
+                nodes[node_title] = sub_dict_title
+                nodes[node_pref_subject] = sub_dict_subject
+                nodes[node_narrower_subject] = sub_dict_subject
+                nodes[node_broader_subject] = sub_dict_subject
+```
+
+Note that each node is assigned a `type` attribute, either `"book"` or `"subject"`, which will allow us to distinguish between the two kinds of node visually when we render the network graph in the next step.
+
+#### Visualise nodes and edges
+(to be continued)
 
 ### Summary
 Looking at the eight graphs, we start to see patterns emerge. The most obvious factor being the size of the collection under this topic. Over the years, the network gets denser and denser. Doubling between both 1926-1950 and 1951-1975. What inspired this? Was there just being published? Curiously, after these two periods, in 1976-2000, the collection was halved. There are many possible reasons for this, did the subject headings change? Did the format of what the library was buying change and these items are left out? Did the budget or focus on the collection change? Where less books published in Dutch? There is much to explore and find out from posing these question just by the number of items themselves.

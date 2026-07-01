@@ -340,20 +340,51 @@ In our use case, while the network primarily visualises relations between book t
 ### Time
 
 ## Learning experiment
-### Aims
-The aim of this lesson is to demonstrate how librarians and researchers can use network analysis to explore library collections in new ways. It shows how catalogue metadata, specifically subject headings, can be transformed into visual evidence that can be used to explore a collection in new ways. The example uses open source library data from the Dutch National Library, but any library metadata dataset could be used. 
-### Inventory
-This lesson has four main components: data and cleaning, reverting to network data, visualizing the data, analyzing the results.  
-### Workflow
-1. data and cleaning 
-2. reverting to network data
-3. visualizing the data 
-4. Analyzing the Results
 
-Looking at the eight graphs, we start to see patterns emerge. The most obvious factor being the size of the collection under this topic. Over the years, the network gets denser and denser. Doubling between both 1926-1950 and 1951-1975. What inspired this? Was there just being published? Curiously, after these two periods, in 1976-2000, the collection was halved. There are many possible reasons for this, did the subject headings change? Did the format of what the library was buying change and these items are left out? Did the budget or focus on the collection change? Where less books published in Dutch? There is much to explore and find out from posing these question just by the number of items themselves. 
+### Aims
+
+The objective of this lesson is to visualise library catalogue data in an interactive, navigable display. By the time you have completed it, you will be able to transform the example dataset from the National Library of the Netherlands (KB) into a network graph that allows you to interactively explore the relations between book titles and subject headings in the domain of *wetenschap* (science) over the period 1800–2000.
+
+Beyond this specific example, you will also have acquired the skills to visualise any library catalogue dataset of your choosing, and to define for yourself which nodes and connections you wish to explore. Possible combinations are not limited to book titles and subject headings: authors, genres, languages, publication dates, and other metadata fields can all serve as nodes in their own right.
+
+### Inventory
+
+In this lesson, nodes, edges and the visualisation itself are defined in Python, using the following tools and packages:
+
+- [NetworkX](https://pypi.org/project/networkx/): a Python package for creating and manipulating networks
+- [Sigma.js](https://www.sigmajs.org/): a JavaScript library for large-scale network visualisation
+- [iPySigma](https://github.com/medialab/ipysigma): a Python wrapper around Sigma.js that enables network visualisation within a Python environment
+
+### Data files
+
+The sample data files used in this lesson are available [here](#). Each file covers a twenty-five-year period within the range 1800–2000:
+
+- `nbt_index_1800-1825.json`
+- `nbt_index_1826-1850.json`
+- `nbt_index_1851-1875.json`
+- `nbt_index_1876-1900.json`
+- `nbt_index_1901-1925.json`
+- `nbt_index_1926-1950.json`
+- `nbt_index_1951-1975.json`
+- `nbt_index_1976-2000.json`
+
+### Directory structure
+
+To keep code and data well organised, we recommend the following directory structure:
+
+```
+src/
+├── main.py              # Python script
+└── data/
+    ├── in/              # Source data files (JSON)
+    └── out/             # Generated output files (HTML network graphs)
+```
+
+
+
 
 ### Summary
-
+Looking at the eight graphs, we start to see patterns emerge. The most obvious factor being the size of the collection under this topic. Over the years, the network gets denser and denser. Doubling between both 1926-1950 and 1951-1975. What inspired this? Was there just being published? Curiously, after these two periods, in 1976-2000, the collection was halved. There are many possible reasons for this, did the subject headings change? Did the format of what the library was buying change and these items are left out? Did the budget or focus on the collection change? Where less books published in Dutch? There is much to explore and find out from posing these question just by the number of items themselves.
 
 ## Local application
 While this example uses metadata from publically available datasets, the same process could be applied to an institutional specific dataset made up of MARC records from that collection. Extracting those records and applying similar analysis through these steps could help better understand how your local collections connect and cluster.

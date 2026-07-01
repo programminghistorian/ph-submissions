@@ -182,7 +182,7 @@ Library data includes information beyond subject headings and there is universe 
 
 ### Dataset
 
-To experiment with in this lesson, we provide eight data files containing bibliographic metadata for books in the [Nederlandse Bibliografie Online (Online Dutch Bibliography)](https://www.kb.nl/over-ons/diensten/de-nederlandse-bibliografie, the catalogue of the National Library of the Netherlands. Together, these files span the period from 1800 to 2000, with each file covering a twenty-five-year segment.
+To experiment with in this lesson, we provide eight data files containing bibliographic metadata for books in the [Nederlandse Bibliografie Online (Online Dutch Bibliography)](https://www.kb.nl/over-ons/diensten/de-nederlandse-bibliografie), the catalogue of the National Library of the Netherlands. Together, these files span the period from 1800 to 2000, with each file covering a twenty-five-year segment.
 
 The data files are provided in JSON format, a plain-text format well suited to representing structured data. For each book catalogued under the broader subject heading "wetenschap" (science), the JSON files contain at least the following metadata:
 

@@ -212,7 +212,7 @@ In the first step we explain how to download a single file.
 
 As usual in Python we should start with importing the Python libraries we would like to utilize in the script:
 
-```Python
+```python
 import urllib.request
 import os
 import gzip
@@ -228,13 +228,13 @@ import re
 
 We should specify the URL of the file we would like to download:
 
-```Python
+```python
 url = 'https://metadata.library.yale.edu/MARCXML/bib_20250706_full/bib_20250706_full_000_00.xml.gz'
 ```
 
 In our machine, it will be located in a specific directory (we call it `target_dir`), and if it is not yet existing, we should create it.
 
-```Python
+```python
 target_dir = 'raw-data/yale'
 if not os.path.exists(target_dir):
     os.makedirs(target_dir)
@@ -242,20 +242,20 @@ if not os.path.exists(target_dir):
 
 Then we should specify the file in our local machine. We extract it from the URL with a regular expression. `/([^/]+)$` means find a slash character (`/`) followed by one or more non-slash characters (`[^/]+`) till the end of the string (`$`), and put these characters into a group `(...)`. With this we specify the file name. With `group(1)` we can extract the content of the first (and in this case the only) group. Finally, we concatenate the directory and file names with an [f-string](https://realpython.com/python-f-strings/).
 
-```Python
+```python
 file_name = re.search('/([^/]+)$', url).group(1)
 target_file = f'{target_dir}/{file_name}'
 ```
 
 The act of downloading is pretty simple, it saves the content of the URL into the specified file:
 
-```Python
+```python
 urllib.request.urlretrieve(url, target_file)
 ```
 
 As we would like to work with an XML file and not a compressed file (which would be also possible, but not discussed in this lesson), we should extract it. It needs some steps. With `gzip.open()` we open the archive file in binary read mode (it behaves similarly to other file read operations in Python), and we specify a file handle (`f_in`). We should also specify the name of the uncompressed file with the help of another regular expression. `re.sub()` substitutes strings. Here we are looking for the `.gz` extension in the file name, and replace it with an empty string - in other words, we remove it. Note: in regular expression `.` (dot character) has a special meaning: it fits any character. If we want to mean the real dot, we should escape this interpretation with the backslashes. We put an `r` prefix before the search string. This refers to the so-called _r-string_ or [raw string notation](https://mimo.org/glossary/python/raw-strings) that treats backslashes (`\`) as literal characters rather than escape sequences, otherwise we should add double backslashes, to behave as escape sequence in regular expressions. Finally, we open a binary file for writing and utilize the `shutil.copyfileobj()` method to copy the content. 
 
-```Python
+```python
 with gzip.open(target_file, 'rb') as f_in:
     uncompressed_file = re.sub(r'\.gz$', '', target_file)
     with open(uncompressed_file, 'wb') as f_out:
@@ -264,13 +264,13 @@ with gzip.open(target_file, 'rb') as f_in:
 
 Our final step is to remove the unwanted compressed file:
 
-```Python
+```python
 os.remove(target_file)
 ```
 
 So far so good, but this script downloads only a single file, more than that the file name is hard coded, so we should modify the script if we would like to download a different file. Let's solve these problems. The new version should accept the URL of the index page, that contains the links to all gzip files as a script parameter.
 
-```Python
+```python
 import urllib.request
 import os
 import gzip
@@ -291,7 +291,7 @@ The last line's format (`from ... import ...`) is used to limit the import: we w
 
 Then we create a configuration with default values:
 
-```Python
+```python
 configuration = {
   'index': 'https://metadata.library.yale.edu/MARCXML/bib_20250706_full',
   'target_dir': 'raw-data/yale'
@@ -300,7 +300,7 @@ configuration = {
 
 Because we will download multiple files, it would be useful to separate the code into a function that accepts a file name, and utilizes the configuration object. We start with the function's signature and documentation:
 
-```Python
+```python
 def download_file(file_name):
     """
     Downloads a file, saves it into a directory, uncompresses it and deletes the compressed version.
@@ -314,7 +314,7 @@ def download_file(file_name):
 
 Next we set the variables based on the input parameter and the configuration. A log entry will inform the user about the process:
 
-```Python
+```python
     remote_file = configuration['index'] + '/' + file_name
     local_file = configuration['target_dir'] + '/' + file_name
     uncompressed_file = re.sub(r'\.gz', '', local_file)
@@ -323,7 +323,7 @@ Next we set the variables based on the input parameter and the configuration. A 
 
 The bulk of the function repeats what we saw in the single file download, with a check (launch download if neither the gzip nor the xml file are available) and a try-except block. This later catches network problems and informs the user. If we would not put the functionality inside that block an error would stop the script itself.
 
-```Python
+```python
     if not os.path.exists(local_file) and not os.path.exists(uncompressed_file):
         try:
             urllib.request.urlretrieve(remote_file, local_file)
@@ -341,7 +341,7 @@ The bulk of the function repeats what we saw in the single file download, with a
 
 It is a good practice to put the entry point of a Python script into a `main()` function. We start it with parsing the arguments. First we create a new `ArgumentParser` object, and define two arguments: index and target_dir. In the `add_argument()` we provide the short (here `-i` and `-t`) and long (`--index`, `--target_dir`) argument names the user can specify in the command line. `dest` sets the name of the variable that holds the value, `help` sets the help text (which is displayed when we call the script if `h` or `--help` arguments). The `parse_args()` method parses the user input, and stores it in the `args` object.
 
-```Python
+```python
 def main():
     parser = ArgumentParser()
     parser.add_argument("-i", "--index", dest="index", help="the index page that contains list of files")
@@ -351,7 +351,7 @@ def main():
 
 If the user sets these arguments we should save them into the `configuration` object overwriting its default values:
 
-```Python
+```python
     if args.index is not None:
         configuration['index'] = args.index
     if args.target is not None:
@@ -360,14 +360,14 @@ If the user sets these arguments we should save them into the `configuration` ob
 
 As in the single file setup we should create the target directory if it is not already existing:
 
-```Python
+```python
     if not os.path.exists(configuration['target_dir']):
         os.makedirs(configuration['target_dir'])
 ```
 
 And finally we should fetch the index page, extract links to the .gz files, and call the `download_file()` function. This time we do not save the result of URL request, but save it into memory as a [HTTPResponse](https://docs.python.org/3/library/http.client.html#http.client.HTTPResponse) object. We read its content into a string, then the `lxml` library parses the HTML structure allowing us to run searches with an XPath expression. `body/table/tr/td/a` finds all links inside the page tables. We iterate over them, extracting the `href` attribute of each link, and if they end with `.gz`, calling the download function.
 
-```Python
+```python
     with urllib.request.urlopen(configuration['index']) as response:
         content = response.read()
         doc = lxml.html.fromstring(content)
@@ -380,20 +380,20 @@ And finally we should fetch the index page, extract links to the .gz files, and 
 
 The last lines of the script ensure that the `main()` function is called:
 
-```Python
+```python
 if __name__ == '__main__':
     sys.exit(main())
 ```
 
 We can use the script the following way
 
-```Python
+```python
 download-multiple-files.py [-i INDEX] [-t TARGET_DIR]
 ```
 
 such as
 
-```Python
+```python
 python download-multiple-files.py \
     --index https://metadata.library.yale.edu/MARCXML/bib_20250706_full \
     --target raw-data/yale
@@ -418,7 +418,7 @@ The problem is that there are repeatable fields in MARC21, e.g. multiple subject
 
 Let's start with reading a binary MARC file with the [PyMarc](https://gitlab.com/pymarc/pymarc) package.
 
-```Python
+```python
 from pymarc import MARCReader
 
 with open('raw-data/pymarc/marc.dat', 'rb') as fh:
@@ -438,7 +438,7 @@ How does it look like in practice?
 
 A `parse_xml_to_array` example:
 
-```Python
+```python
 from pymarc import parse_xml_to_array
 
 input_file = 'raw-data/yale/bib_20250706_full_000_00.xml'
@@ -449,7 +449,7 @@ for record in records:
 
 A `map_xml` example:
 
-```Python
+```python
 from pymarc import map_xml
 
 input_file = 'raw-data/yale/bib_20250706_full_000_00.xml'
@@ -482,7 +482,7 @@ We'll start with three fields that appear at most once per record:
 
 As pandas' data frame is one of the most convenient data structure used in data analysis, our next task is to to extract particular data elements (here: identifier and title) from each MARC21 record, then to build a pandas data frame.
 
-```Python
+```python
 from pymarc import map_xml
 import pandas as pd
 
@@ -536,7 +536,7 @@ PyMARC's `record.subjects` property is a convenience that pulls all MARC fields 
 
 The _concatenation_ approach:
 
-```Python
+```python
 from pymarc import map_xml
 import pandas as pd
 
@@ -568,7 +568,7 @@ Here we create a dictionary where the keys match the column names, the values ar
 
 The other approach is to _create a distinct data frame_ for the subjects (or other repeatable data elements, such as the list of contributors). 
 
-```Python
+```python
 from pymarc import map_xml
 import pandas as pd
 
@@ -767,7 +767,7 @@ We now have three numbers describing how two catalogues overlap: what they share
 
 A good data visualization that summarises numbers helps someone to realise trends and important features of a collection of data. [Above](#function-3-compare_sets) we saw how to calculate the difference of two sets of subject headings. Based on previously defined functions our code was this:
 
-```Python
+```python
 headings_a = headings_matching(df_a, 'Immigra')
 headings_b = headings_matching(df_b, 'Immigra')
 
@@ -776,13 +776,13 @@ result = compare_sets(headings_a, headings_b)
 
 The `result` is a dictionary with three keys each containing a set. The keys are `shared`, `only_in_x` and `only_in_y`. We would like to display two circles that have an intersection if they share subjects, and are proportional to the number of subjects they contain. We also like to display the shared subject headings. Fortunately there is a library for this task, and it supports Venn diagrams for comparing two or three sets. It is called [matplotlib_venn](https://pypi.org/project/matplotlib-venn/) and it is a kind of extension of matplotlib, so we can use pyplot's toolbox. We will use only on function `venn2`, so import it:
 
-```Python
+```python
 from matplotlib_venn import venn2
 ```
 
 To create the diagram is pretty simple:
 
-```Python
+```python
 venn2([headings_a, headings_b], ('Catalogue 1', 'Catalogue 2'))
 plt.savefig('fig_output/venn-diagram-v1.png')
 plt.close()
@@ -794,7 +794,7 @@ It gives the colorized Venn diagram. The circles and its intersection contain th
 
 However as the library is based on pyplot, we can add an annotation with `plt.annotate()`. We can create a text box somewhere around the circles, and list the subjects there. There is a problem though: we can transform the list of subjects into a text separated by new lines or by commas, but if they have several elements the annotation will be too high or wide. So we are going to create a new function `format_lines` that mixes the two separators, and creates a list of maximum N character wide lines. 
 
-```Python
+```python
 def format_lines(items, max_width=60):
     """
     Arrange a list of strings into a set of lines separated by line breaks.
@@ -828,7 +828,7 @@ def format_lines(items, max_width=60):
 ```
 With that we can create an annotated Venn diagram:
 
-```Python
+```python
 venn_diagram = venn2([headings_a, headings_b], ('Catalogue 1', 'Catalogue 2'))
 plt.annotate(
     text=format_lines(result["shared"], 60),

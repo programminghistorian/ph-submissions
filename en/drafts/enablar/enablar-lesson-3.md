@@ -1,5 +1,5 @@
 ---
-title:  "Visualising networks in library catalogue metadata using iPySIGMA and Llama Extract"
+title:  "Mapping Connections in Library Collections: Visualising Catalogue Metadata as Networks"
 slug: enablar-lesson-3
 layout: lesson
 collection: lessons
@@ -16,7 +16,7 @@ review-ticket:
 difficulty:
 activity: creating network visualisations using library metadata 
 topics: network analysis, library metadata, structured data, extraction, data visualisation 
-abstract: Short abstract of this lesson
+abstract: Library catalogues usually present records as lists, making it difficult to see broader patterns across a collection. This workshop introduces network visualisation as a way of exploring relationships between books, subjects, and other catalogue metadata, helping participants identify clusters, connections, and areas for further investigation. Using prepared examples, we'll discuss how this approach can support collection development, research, and discovery.
 avatar_alt:
 doi: XX.XXXXX/phen0000
 ---
@@ -111,8 +111,6 @@ Library catalogues are rich repositories of metadata, capturing details such as 
 In most online catalogues, clicking on a metadata value returns a flat list of results: books that share that attribute. But there is a more powerful way to explore these connections. By visualising catalogue metadata as a network graph — where books and metadata values become nodes, and their relationships become edges — it becomes possible to navigate and interact with the collection in an entirely new way, revealing subsets and clusters that would otherwise remain hidden.
 
 This lesson uses [iPySIGMA](https://github.com/medialab/ipysigma), a Python wrapper around sigma.js, a JavaScript library purpose-built for network visualisation, to build and explore these graphs directly from catalogue metadata.
-
-In the second part of the lesson, we extend this approach by using [Llama Extract](https://www.llamaindex.ai/llamaextract) to derive structured metadata from catalogue fields that do not store it explicitly. This adds an additional layer of richness to the network, enabling us to surface connections and stories that existing metadata alone cannot tell.
 
 The hope for this lesson is not just to show creative ways library data can be displayed, but how a librarian or researcher could utlilise network analysis on their own collection data for practical collection development tasks in the daily work. This lesson may be particularly helpful for librarians interested in demonstrating the value of their collections to audiences who might not typically interact with catalogue metadata.
 
@@ -560,7 +558,21 @@ Another option for exploration of the graph, is to click on a node from the list
 The network graph visualisation that is a result of this activity is meant to be an exploratory tool for collections that takes traditional catalog records out of a list-based search interface. Instead, the graph allows a user to explore how records are connected to one another, making it possible to identify themes and gaps that might not be visible through search results alone. These findings can then support collection development in new and creative ways by helping librarians identify areas for future acquisition, create new collections from existing clusters, compare changes in a collection over time, and reveal unexpected relationships among materials. 
 
 ### Summary
-Looking at the eight graphs, we start to see patterns emerge. The most obvious factor being the size of the collection under this topic. Over the years, the network gets denser and denser. Doubling between both 1926-1950 and 1951-1975. What inspired this? Was there just being published? Curiously, after these two periods, in 1976-2000, the collection was halved. There are many possible reasons for this, did the subject headings change? Did the format of what the library was buying change and these items are left out? Did the budget or focus on the collection change? Where less books published in Dutch? There is much to explore and find out from posing these question just by the number of items themselves.
+Looking at the eight graphs, we start to see patterns emerge and how the collection changes over time. A good starting point is looking at the size and density of the collection under this topic. In this example, over the years, the network gets denser and denser which makes sense with basic knowledge about scientific advancement over the nineteenth and twentieth century. Density may reflect more items in the dataset, more detailed subject cataloguing, or both. 
+
+More granularly, the number of items cataloged under science doubled between 1926-1950 and 1951-1975. What inspired this? Was it just the number of published works? Expansion of the field? Curiously, after these two periods, in 1976-2000, the collection was halved. There are many possible reasons for this, did the subject headings change? Did the format of what the library was buying change and these items are left out? Did the budget or focus on the collection change? Were fewer books published in Dutch? There is much to explore and find out from posing these questions just by the size and density of the works. 
+
+Then, we can zoom out again and start to look at the themes and complexities of networks changing over time. In the early networks, the collection was small but thematically broad. It connects major topics to our flagship wetenschap (science) like history, biography, religion, and literature. Our modern sensibilities may not make the same connections, but it reflects the intellectual overlap of its time. 
+
+Subsequent graphs in the nineteenth century show how cataloging and institutional understanding shift these connections over time.The complexity increases alongside the number of nodes and edges. This suggests that more books are being represented in this subject area and that those books are connected through a growing range of more specific subject headings that have less overlap with topics outside of science. More questions arise. Is this a change in publishing? Cataloging? Or the subjects themselves? 
+
+The visualization cannot explain the cause on its own, but it helps identify where further research should begin. A sudden increase in density, for example, may prompt questions about whether the library acquired more scientific works, whether more works were published in Dutch, whether cataloguers began applying more detailed subject metadata, or whether the meaning of science shifted over time. Smaller or more isolated clusters may also be meaningful, since they can point to specialized collecting areas or unusual cataloguing relationships that sit at the margins of the larger collection. 
+
+As we move into the twentieth century, the networks form tightly connected clusters and larger hubs. This not only indicates growth, but also a move to internal connections within science from broad thematic overlapping understanding of the earlier graphs. For collection analysis, this is useful because it helps reveal which subject areas are especially prominent and which topics sit at the center of the collection’s structure. Large subject nodes can be read as thematic anchors, while smaller clusters may point to specialized areas of collecting or emerging fields. 
+
+Many more hours could be spent looking at each graph’s minute details and comparing them. Depending on the collection you want to work with, this could be a much simpler or more complex task than the example. However, across our graphs and yours, the value of this method is that it makes catalogue metadata visible as a system of relationships. Traditional cataloging metrics do not as easily surface insights about items and subjects relationally connect and cluster. 
+
+For the National Library of the Netherlands, this analysis suggests that the wetenschap subject is not a narrow or static science collection. Instead, it appears as a changing intellectual field shaped by categories of scientific expertise and cataloging practices shifting over the nineteenth and twentieth century. For librarians, this kind of visualization can support collection development in all sorts of ways. It could be a “changes over time” approach as explored here or it could be a comparison of different subjects or collections. One could look at publishing trends based on subject headings or emerging fields. The opportunities are endless. In addition, for researchers, it offers a way to ask historical questions about the organization of knowledge within a national library collection and what external forces affect that process. No matter who you are, this exploratory approach cannot explain the why of the cataloging, but it helps identify where further research and collection development should begin.
 
 ## Local application
 While this example uses metadata from publically available datasets, the same process could be applied to an institutional specific dataset made up of MARC records from that collection. Extracting those records and applying similar analysis through these steps could help better understand how your local collections connect and cluster.

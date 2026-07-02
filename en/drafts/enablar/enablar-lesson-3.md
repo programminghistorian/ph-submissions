@@ -541,6 +541,198 @@ Note that each node is assigned a `type` attribute, either `"book"` or `"subject
 
 #### Visualise nodes and edges
 
+### Building the network graph
+
+With the nodes and edges defined, we can now construct the network graph using NetworkX and prepare it for visualisation.
+
+#### A preliminary look with NetworkX
+
+Before introducing the interactive visualisation, it is instructive to first render the graph using NetworkX's built-in drawing functionality. Create an empty directed graph, populate it with the nodes and edges defined in the previous step, and save a static image:
+
+```python
+    G = nx.DiGraph()
+    for edge in edges:
+        G.add_edge(edge[0], edge[1])
+    nx.set_node_attributes(G, nodes)
+    nx.draw(G, with_labels=True)
+    plt.savefig("catalogue_graph.png")
+```
+
+To run the script against a single data file — in this case covering the period 1800–1825 — add the following block at the very end of your script and execute it:
+
+```python
+if __name__ == "__main__":
+    convert_json_to_nx("1800-1825")
+```
+
+Open the resulting `catalogue_graph.png` file. The image will likely appear as a dense, near-black tangle of overlapping nodes, edges and labels. This is an inevitable consequence of the sheer volume of data: a static rendering cannot meaningfully represent a graph of this complexity.
+
+This is precisely where iPySigma proves its value. Rather than attempting to display all nodes, edges and labels at once, it renders the graph as an interactive visualisation that the user can navigate freely, revealing detail progressively as they explore.
+
+#### Creating the interactive visualisation
+
+Remove the test call added in the previous step:
+
+```python
+convert_json_to_nx("1800-1825")
+```
+
+Then append the following block to the `convert_json_to_nx` function. This uses iPySigma to wrap the NetworkX graph in an interactive Sigma.js visualisation and write it to an HTML file:
+
+```python
+    # Create a Sigma visualisation
+    Sigma(
+        G,
+        node_color="pref_subject",
+        node_label_size=G.degree,
+        node_size=G.degree
+    )
+    Sigma.write_html(
+        G,
+        f"data/nbt_index_{date_range}.html",
+        fullscreen=True,
+        node_metrics=["louvain"],
+        node_color="pref_subject",
+        node_size_range=(3, 30),
+        node_shape="type",
+        node_shape_mapping={
+            "book": "book_2",
+            "subject": "label"
+        },
+        max_categorical_colors=50,
+        default_edge_type="curve",
+        default_node_label_size=14,
+        node_size=G.degree
+    )
+```
+
+A few parameters are worth highlighting:
+
+- `node_color="pref_subject"`: each preferred subject label is mapped to a distinct colour, making it easy to visually distinguish subject clusters and the book titles associated with them.
+- `node_shape_mapping`: custom icons from the [Google Fonts icon library](https://fonts.google.com/icons) are used to make node types immediately recognisable. In this lesson, book title nodes are represented by a book icon (`book_2`) and subject heading nodes by a label icon (`label`).
+- `node_metrics=["louvain"]`: the Louvain algorithm is applied to detect communities within the graph, which can reveal clusters of closely related books and subject headings that might not be apparent from classification numbers alone.
+
+#### Generating output files for all time periods
+
+To process all eight data files and generate a separate interactive HTML file for each twenty-five-year period, replace the entry point block at the end of your script with the following:
+
+```python
+if __name__ == "__main__":
+    date_ranges = [
+        "1800-1825",
+        "1826-1850",
+        "1851-1875",
+        "1876-1900",
+        "1901-1925",
+        "1926-1950",
+        "1951-1975",
+        "1976-2000"
+    ]
+    for dr in date_ranges:
+        convert_json_to_nx(dr)
+```
+
+Running this script will produce eight HTML files in your `data/out` folder, one for each time segment. Each file is a self-contained, interactive network graph that can be opened in any modern web browser. Wouldn't it be great to be able to visualise how the graph changes over time using a time slider?
+
+Here is a rewritten version of this section:
+
+---
+
+#### Building the network graph
+
+With the nodes and edges defined, we can now construct the network graph using NetworkX and prepare it for visualisation.
+
+#### A preliminary look with NetworkX
+
+Before introducing the interactive visualisation, it is instructive to first render the graph using NetworkX's built-in drawing functionality. Create an empty directed graph, populate it with the nodes and edges defined in the previous step, and save a static image:
+
+```python
+    G = nx.DiGraph()
+    for edge in edges:
+        G.add_edge(edge[0], edge[1])
+    nx.set_node_attributes(G, nodes)
+    nx.draw(G, with_labels=True)
+    plt.savefig("catalogue_graph.png")
+```
+
+To run the script against a single data file — in this case covering the period 1800–1825 — add the following block at the very end of your script and execute it:
+
+```python
+if __name__ == "__main__":
+    convert_json_to_nx("1800-1825")
+```
+
+Open the resulting `catalogue_graph.png` file. The image will likely appear as a dense, near-black tangle of overlapping nodes, edges and labels. This is an inevitable consequence of the sheer volume of data: a static rendering cannot meaningfully represent a graph of this complexity.
+
+This is precisely where iPySigma proves its value. Rather than attempting to display all nodes, edges and labels at once, it renders the graph as an interactive visualisation that the user can navigate freely, revealing detail progressively as they explore.
+
+#### Creating the interactive visualisation
+
+Remove the test call added in the previous step:
+
+```python
+convert_json_to_nx("1800-1825")
+```
+
+Then append the following block to the `convert_json_to_nx` function. This uses iPySigma to wrap the NetworkX graph in an interactive Sigma.js visualisation and write it to an HTML file:
+
+```python
+    # Create a Sigma visualisation
+    Sigma(
+        G,
+        node_color="pref_subject",
+        node_label_size=G.degree,
+        node_size=G.degree
+    )
+    Sigma.write_html(
+        G,
+        f"data/nbt_index_{date_range}.html",
+        fullscreen=True,
+        node_metrics=["louvain"],
+        node_color="pref_subject",
+        node_size_range=(3, 30),
+        node_shape="type",
+        node_shape_mapping={
+            "book": "book_2",
+            "subject": "label"
+        },
+        max_categorical_colors=50,
+        default_edge_type="curve",
+        default_node_label_size=14,
+        node_size=G.degree
+    )
+```
+
+A few parameters are worth highlighting:
+
+- `node_color="pref_subject"`: each preferred subject label is mapped to a distinct colour, making it easy to visually distinguish subject clusters and the book titles associated with them.
+- `node_shape_mapping`: custom icons from the [Google Fonts icon library](https://fonts.google.com/icons) are used to make node types immediately recognisable. In this lesson, book title nodes are represented by a book icon (`book_2`) and subject heading nodes by a label icon (`label`).
+- `node_metrics=["louvain"]`: the Louvain algorithm is applied to detect communities within the graph, which can reveal clusters of closely related books and subject headings that might not be apparent from classification numbers alone.
+
+#### Generating output files for all time periods
+
+To process all eight data files and generate a separate interactive HTML file for each twenty-five-year period, replace the entry point block at the end of your script with the following:
+
+```python
+if __name__ == "__main__":
+    date_ranges = [
+        "1800-1825",
+        "1826-1850",
+        "1851-1875",
+        "1876-1900",
+        "1901-1925",
+        "1926-1950",
+        "1951-1975",
+        "1976-2000"
+    ]
+    for dr in date_ranges:
+        convert_json_to_nx(dr)
+```
+
+Running this script will produce eight HTML files in your `data/out` folder, one for each time segment. Each file is a self-contained, interactive network graph that can be opened in any modern web browser. But wouldn't it be great to be able to visualise how the graph changes over time using a time slider?
+
+#### Navigating through the network graph
+
 Now that the nodes and edges have been defined, we can begin to move around the visualization with the iPySIGMA features. Before us is an interactive web-based network graph that shows the relationships between the books and the subject headings. Each graph has a natural state that often looks like a cloud of chaos, this the graph before it is laid out. It is recommended that before you interact with the graph that you click the play button to run the layout animation. This allows the graph to settle into a more readable arrangement, where closely related nodes cluster together and less connected groups move farther apart. In network visualization, this is known as a force-directed layout. Moving the nodes through the layout animation also helps to see the physical distance between different topics. The closer together or more tightly clustered they are, the more they are related or prominently connected. 
 
 (Screen shot comparison of the two?)

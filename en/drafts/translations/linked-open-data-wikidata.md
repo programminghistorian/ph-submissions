@@ -158,7 +158,7 @@ From there, you can begin filling out the fields by entering the required inform
 
 Next, it’s time to start adding statements to enrich the item’s information. Immediately after clicking _Create_, you'll see a new screen with a list of statements related to Wikimedia projects. In the top-right corner, you'll find an _Add statement_ button marked with a plus sign. Clicking it will open a window where you can add properties and values for the new item. 
 
-In Wikidata, the first statement commonly added is the **instance of** property (P31), which indicates the type of entity the item represents. This statement helps classify and organize information within Wikidata. Due to the wide range of items in Wikidata, there are many possibile values for the **instance of** property. Depending on what you’re creating, you’ll choose the entity type that best fits the nature of your object or concept.
+In Wikidata, the first statement commonly added is the **instance of** property (P31), which indicates the type of entity the item represents. This statement helps classify and organize information within Wikidata. Due to the wide range of items in Wikidata, there are many possible values for the **instance of** property. Depending on what you’re creating, you’ll choose the entity type that best fits the nature of your object or concept.
 
 For example, if you’re creating an item for a well-known person, you might use: **instance of**: 'human', while if you’re describing Paris, the first statement could be: **instance of**: 'city'. This statement classifies the item and connects it to similar entries in the database. 
 

@@ -158,6 +158,7 @@ The lesson uses the following Python packages, introduced in context but listed 
 - [pandas](https://pandas.pydata.org/) provides the DataFrame, the tabular structure we reshape records into.
 - [lxml](https://lxml.de/) parses HTML, used during acquisition to find downloadable files on an index page.
 - [matplotlib](https://matplotlib.org/) and [matplotlib-venn](https://pypi.org/project/matplotlib-venn/) produce the Venn diagram visualisation.
+- [numpy](https://numpy.org/) is used in scientific computing mainly for numerical operation. Here we use only one feature: it defines data types that pandas and visualisation can use. It is frequently abbreviatied as `np`.
 - Several standard-library modules (`urllib`, `os`, `gzip`, `shutil`, `re`) handle downloading, file management, and pattern matching.
 
 ## Learning keys
@@ -402,7 +403,7 @@ python download-multiple-files.py \
 #### Preprocessing
 <!-- File formats, data structures, conversion, and data loss control. -->
 
-In this section we will describe how to transform three types of MARC files to Python's Pandas data frame, then save them to a CSV file. The three types are:
+In this section we will describe how to transform three types of MARC files to Python's pandas data frame, then save them to a CSV file. The three types are:
 
 - binary MARC file formatted according to [ISO 2709](https://en.wikipedia.org/wiki/ISO_2709) format
 - MARCXML file
@@ -471,7 +472,7 @@ The general pattern is:
 
 1. Create an empty list for each column you want.
 2. In `process_record`, append values from each record onto those lists.
-3. After `map_xml` finishes, hand the lists to Pandas to construct a DataFrame.
+3. After `map_xml` finishes, hand the lists to pandas to construct a DataFrame.
 
 We'll start with three fields that appear at most once per record:
 
@@ -777,6 +778,7 @@ result = compare_sets(headings_a, headings_b)
 The `result` is a dictionary with three keys each containing a set. The keys are `shared`, `only_in_x` and `only_in_y`. We would like to display two circles that have an intersection if they share subjects, and are proportional to the number of subjects they contain. We also like to display the shared subject headings. Fortunately there is a library for this task, and it supports Venn diagrams for comparing two or three sets. It is called [matplotlib_venn](https://pypi.org/project/matplotlib-venn/) and it is a kind of extension of matplotlib, so we can use pyplot's toolbox. We will use only on function `venn2`, so import it:
 
 ```python
+import matplotlib.pyplot as plt
 from matplotlib_venn import venn2
 ```
 
@@ -792,7 +794,7 @@ It gives the colorized Venn diagram. The circles and its intersection contain th
 
 {% include figure.html filename="en-or-enablar-lesson-5-03.png" alt="Visual description of figure image" caption="Figure 1. Venn diagram - initial version" %}
 
-However as the library is based on pyplot, we can add an annotation with `plt.annotate()`. We can create a text box somewhere around the circles, and list the subjects there. There is a problem though: we can transform the list of subjects into a text separated by new lines or by commas, but if they have several elements the annotation will be too high or wide. So we are going to create a new function `format_lines` that mixes the two separators, and creates a list of maximum N character wide lines. 
+However as the library is based on pyplot, we can add an annotation with `plt.annotate()`. We can create a text box somewhere around the circles, and list the subjects there. There is a problem though: we can transform the list of subjects into a text separated by new lines or by commas, but if they have several elements the annotation will be too high or wide. So we are going to create a new function `format_lines` that mixes the two separators, and creates a list of maximum N character wide lines.
 
 ```python
 def format_lines(items, max_width=60):

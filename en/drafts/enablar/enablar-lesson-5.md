@@ -775,11 +775,14 @@ headings_b = headings_matching(df_b, 'Immigra')
 result = compare_sets(headings_a, headings_b)
 ```
 
-The `result` is a dictionary with three keys each containing a set. The keys are `shared`, `only_in_x` and `only_in_y`. We would like to display two circles that have an intersection if they share subjects, and are proportional to the number of subjects they contain. We also like to display the shared subject headings. Fortunately there is a library for this task, and it supports Venn diagrams for comparing two or three sets. It is called [matplotlib_venn](https://pypi.org/project/matplotlib-venn/) and it is a kind of extension of matplotlib, so we can use pyplot's toolbox. We will use only on function `venn2`, so import it:
+The `result` is a dictionary with three keys each containing a set. The keys are `shared`, `only_in_x` and `only_in_y`.
+
+We would like to display two circles that have an intersection if they share subjects, and are proportional to the number of subjects they contain. We also like to display the shared subject headings. Fortunately there is a library for this task, and it supports Venn diagrams for comparing two or three sets. It is called [matplotlib_venn](https://pypi.org/project/matplotlib-venn/), an extension of matplotlib, so we can use pyplot's toolbox. We also need [textwrap](https://docs.python.org/3/library/textwrap.html), a standard library for text wrapping and filling. We will use it in image annotation. We need to import these libraries:
 
 ```python
 import matplotlib.pyplot as plt
 from matplotlib_venn import venn2
+import textwrap
 ```
 
 To create the diagram is pretty simple:
@@ -794,46 +797,14 @@ It gives the colorized Venn diagram. The circles and its intersection contain th
 
 {% include figure.html filename="en-or-enablar-lesson-5-03.png" alt="Visual description of figure image" caption="Figure 1. Venn diagram - initial version" %}
 
-However as the library is based on pyplot, we can add an annotation with `plt.annotate()`. We can create a text box somewhere around the circles, and list the subjects there. There is a problem though: we can transform the list of subjects into a text separated by new lines or by commas, but if they have several elements the annotation will be too high or wide. So we are going to create a new function `format_lines` that mixes the two separators, and creates a list of maximum N character wide lines.
+However as the library is based on pyplot, we can add an annotation with `plt.annotate()`. We can create a text box somewhere around the circles, and list the subjects there. There is a problem though: we can transform the list of subjects into a text separated by new lines or by commas, but if they have several elements the annotation will be too high or wide. So we are going to apply textwrap's [fill()](https://docs.python.org/3/library/textwrap.html#textwrap.fill) function that creates a text with maximum N character wide lines.
 
-```python
-def format_lines(items, max_width=60):
-    """
-    Arrange a list of strings into a set of lines separated by line breaks.
-
-    Parameters                              
-    ----------
-    items : list
-        a list of strings
-    max_width : int
-        the maximum width of a line in characters (default is 60)
-    """
-    lines = []
-    line = ''
-    for item in items:
-        item = re.sub(r'\.$', '', item)
-        if len(lines) != 0 or line != '':
-            line = line + ','
-        for word in item.split():
-            if len(line) + len(word) > max_width:
-                lines.append(line)
-                line = word
-            else:
-                if line == '':
-                    line = word
-                else:
-                    line = line + ' ' + word
-    if line != '':
-        lines.append(line)
-
-    return '\n'.join(lines)
-```
 With that we can create an annotated Venn diagram:
 
 ```python
 venn_diagram = venn2([headings_a, headings_b], ('Catalogue 1', 'Catalogue 2'))
 plt.annotate(
-    text=format_lines(result["shared"], 60),
+    text=textwrap.fill(', '.join(result["shared"]), width=90),
     xy=venn_diagram.get_label_by_id('11').get_position() - np.array([0, 0.05]),
     xytext=(-150,-150),
     ha='left',

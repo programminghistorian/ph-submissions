@@ -45,7 +45,7 @@ En esta lección usted creará archivos shape (que son un tipo de datos vectoria
 
 ## Comenzando
 
-Comenzaremos descargando el [*PEI_Holland Map*](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/vector-layers-qgis/PEI_HollandMap1798_compLZW.tif) a la carpeta del proyecto:
+Comenzaremos descargando el [*PEI_Holland Map*](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/capas-vectoriales-qgis/PEI_HollandMap1798_compLZW.tif) a la carpeta del proyecto:
 
 Abra el archivo que guardó al final de [Installing QGIS 2.0 and Adding Layers](https://programminghistorian.org/lessons/qgis-layers). Debería tener las siguientes capas en su Ventana de Capas:
 

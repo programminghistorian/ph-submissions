@@ -1,0 +1,1441 @@
+participant_id,group,l1,instruction,aoa,years_learning,item_id,tense,adverb_type,adverb_example,rating
+N01,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,6
+N01,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,5
+N01,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,7
+N01,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+N01,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,2
+N01,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,1
+N01,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,7
+N01,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,7
+N01,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N01,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,2
+N01,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,1
+N01,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,4
+N01,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+N01,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,6
+N01,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,6
+N01,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,1
+N01,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,1
+N01,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,2
+N02,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,6
+N02,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,7
+N02,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,7
+N02,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+N02,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+N02,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,1
+N02,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,6
+N02,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,5
+N02,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N02,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,4
+N02,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,4
+N02,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,4
+N02,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+N02,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,6
+N02,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+N02,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,3
+N02,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,2
+N02,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,1
+N03,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,7
+N03,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,6
+N03,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,5
+N03,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,1
+N03,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,5
+N03,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+N03,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,7
+N03,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,7
+N03,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N03,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,6
+N03,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,3
+N03,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,4
+N03,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+N03,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,7
+N03,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+N03,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,3
+N03,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,1
+N03,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,2
+N04,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,5
+N04,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,6
+N04,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,3
+N04,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,1
+N04,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+N04,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+N04,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,7
+N04,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,5
+N04,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N04,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,5
+N04,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,3
+N04,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,3
+N04,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+N04,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+N04,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,5
+N04,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,1
+N04,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,2
+N04,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,1
+N05,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,7
+N05,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,7
+N05,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,4
+N05,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,2
+N05,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+N05,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+N05,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,6
+N05,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,7
+N05,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N05,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,2
+N05,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,3
+N05,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,2
+N05,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+N05,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+N05,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,5
+N05,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,2
+N05,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,1
+N05,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,1
+N06,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,7
+N06,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,7
+N06,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,7
+N06,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+N06,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,1
+N06,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+N06,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,7
+N06,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,7
+N06,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N06,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,3
+N06,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,5
+N06,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,4
+N06,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+N06,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,7
+N06,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+N06,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,1
+N06,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,1
+N06,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,2
+N07,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,4
+N07,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,6
+N07,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,2
+N07,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,1
+N07,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,1
+N07,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+N07,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,7
+N07,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,5
+N07,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,4
+N07,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,1
+N07,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,2
+N07,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,1
+N07,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,3
+N07,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+N07,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,3
+N07,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,2
+N07,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,1
+N07,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,1
+N08,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,7
+N08,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,6
+N08,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,7
+N08,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+N08,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,2
+N08,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+N08,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,7
+N08,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,6
+N08,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,6
+N08,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,5
+N08,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,4
+N08,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,3
+N08,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+N08,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,7
+N08,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+N08,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,2
+N08,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,4
+N08,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,4
+N09,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,5
+N09,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,7
+N09,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,7
+N09,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+N09,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+N09,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,5
+N09,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,6
+N09,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,7
+N09,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N09,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,4
+N09,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,5
+N09,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,4
+N09,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+N09,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,7
+N09,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,6
+N09,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,2
+N09,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,2
+N09,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,2
+N10,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,7
+N10,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,5
+N10,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,4
+N10,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,2
+N10,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,1
+N10,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+N10,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,7
+N10,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,3
+N10,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N10,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,1
+N10,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,1
+N10,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,1
+N10,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+N10,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,6
+N10,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,1
+N10,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,1
+N10,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,1
+N10,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,1
+N11,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,7
+N11,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,4
+N11,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,4
+N11,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+N11,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+N11,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+N11,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,7
+N11,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,5
+N11,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,5
+N11,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,3
+N11,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,4
+N11,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,2
+N11,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+N11,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,6
+N11,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+N11,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,1
+N11,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,1
+N11,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,1
+N12,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,6
+N12,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,6
+N12,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,6
+N12,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,2
+N12,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,2
+N12,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+N12,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,6
+N12,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,6
+N12,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N12,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,4
+N12,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,6
+N12,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,4
+N12,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+N12,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,7
+N12,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+N12,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,1
+N12,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,1
+N12,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,3
+N13,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,4
+N13,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,6
+N13,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,6
+N13,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+N13,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,2
+N13,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,1
+N13,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,5
+N13,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,7
+N13,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,6
+N13,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,7
+N13,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,4
+N13,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,2
+N13,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+N13,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,6
+N13,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+N13,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,1
+N13,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,1
+N13,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,2
+N14,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,5
+N14,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,5
+N14,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,6
+N14,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+N14,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+N14,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+N14,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,5
+N14,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,7
+N14,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N14,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,3
+N14,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,1
+N14,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,4
+N14,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+N14,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,6
+N14,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+N14,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,1
+N14,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,3
+N14,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,2
+N15,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,6
+N15,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,4
+N15,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,7
+N15,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,1
+N15,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,2
+N15,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+N15,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,7
+N15,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,7
+N15,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N15,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,6
+N15,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,4
+N15,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,3
+N15,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+N15,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,7
+N15,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+N15,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,1
+N15,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,4
+N15,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,2
+N16,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,7
+N16,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,6
+N16,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,7
+N16,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+N16,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,1
+N16,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+N16,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,6
+N16,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,7
+N16,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,6
+N16,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,3
+N16,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,4
+N16,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,4
+N16,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+N16,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,7
+N16,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,6
+N16,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,4
+N16,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,2
+N16,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,3
+N17,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,7
+N17,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,5
+N17,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,5
+N17,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+N17,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+N17,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+N17,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,7
+N17,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,7
+N17,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N17,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,7
+N17,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,5
+N17,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,7
+N17,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+N17,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+N17,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+N17,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,1
+N17,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,1
+N17,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,3
+N18,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,5
+N18,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,7
+N18,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,6
+N18,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+N18,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,2
+N18,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+N18,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,2
+N18,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,7
+N18,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N18,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,3
+N18,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,3
+N18,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,1
+N18,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+N18,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,7
+N18,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+N18,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,3
+N18,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,3
+N18,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,1
+N19,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,5
+N19,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,6
+N19,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,6
+N19,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,2
+N19,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,1
+N19,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+N19,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,7
+N19,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,6
+N19,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N19,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,4
+N19,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,2
+N19,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,2
+N19,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+N19,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,4
+N19,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+N19,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,3
+N19,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,2
+N19,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,1
+N20,native,Spanish,,,,item_01,PPS,anterioridad_inmediata,hace un rato,6
+N20,native,Spanish,,,,item_02,PPS,anterioridad_inmediata,hace un rato,7
+N20,native,Spanish,,,,item_03,PPS,anterioridad_inmediata,hace un rato,5
+N20,native,Spanish,,,,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+N20,native,Spanish,,,,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+N20,native,Spanish,,,,item_06,PPS,momento_no_terminado,hoy / esta mañana,6
+N20,native,Spanish,,,,item_07,PPS,anterioridad_lejana,hace dos meses,7
+N20,native,Spanish,,,,item_08,PPS,anterioridad_lejana,hace dos meses,7
+N20,native,Spanish,,,,item_09,PPS,anterioridad_lejana,hace dos meses,7
+N20,native,Spanish,,,,item_10,PPC,anterioridad_inmediata,hace un rato,6
+N20,native,Spanish,,,,item_11,PPC,anterioridad_inmediata,hace un rato,5
+N20,native,Spanish,,,,item_12,PPC,anterioridad_inmediata,hace un rato,7
+N20,native,Spanish,,,,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+N20,native,Spanish,,,,item_14,PPC,momento_no_terminado,hoy / esta mañana,7
+N20,native,Spanish,,,,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+N20,native,Spanish,,,,item_16,PPC,anterioridad_lejana,hace dos meses,1
+N20,native,Spanish,,,,item_17,PPC,anterioridad_lejana,hace dos meses,2
+N20,native,Spanish,,,,item_18,PPC,anterioridad_lejana,hace dos meses,2
+L01,learner,Slovak,bilingual,17.0,12.0,item_01,PPS,anterioridad_inmediata,hace un rato,4
+L01,learner,Slovak,bilingual,17.0,12.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L01,learner,Slovak,bilingual,17.0,12.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L01,learner,Slovak,bilingual,17.0,12.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+L01,learner,Slovak,bilingual,17.0,12.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,6
+L01,learner,Slovak,bilingual,17.0,12.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+L01,learner,Slovak,bilingual,17.0,12.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L01,learner,Slovak,bilingual,17.0,12.0,item_08,PPS,anterioridad_lejana,hace dos meses,3
+L01,learner,Slovak,bilingual,17.0,12.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L01,learner,Slovak,bilingual,17.0,12.0,item_10,PPC,anterioridad_inmediata,hace un rato,5
+L01,learner,Slovak,bilingual,17.0,12.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L01,learner,Slovak,bilingual,17.0,12.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L01,learner,Slovak,bilingual,17.0,12.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+L01,learner,Slovak,bilingual,17.0,12.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L01,learner,Slovak,bilingual,17.0,12.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+L01,learner,Slovak,bilingual,17.0,12.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L01,learner,Slovak,bilingual,17.0,12.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L01,learner,Slovak,bilingual,17.0,12.0,item_18,PPC,anterioridad_lejana,hace dos meses,1
+L02,learner,Slovak,bilingual,14.0,13.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L02,learner,Slovak,bilingual,14.0,13.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L02,learner,Slovak,bilingual,14.0,13.0,item_03,PPS,anterioridad_inmediata,hace un rato,2
+L02,learner,Slovak,bilingual,14.0,13.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,2
+L02,learner,Slovak,bilingual,14.0,13.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L02,learner,Slovak,bilingual,14.0,13.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+L02,learner,Slovak,bilingual,14.0,13.0,item_07,PPS,anterioridad_lejana,hace dos meses,5
+L02,learner,Slovak,bilingual,14.0,13.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L02,learner,Slovak,bilingual,14.0,13.0,item_09,PPS,anterioridad_lejana,hace dos meses,4
+L02,learner,Slovak,bilingual,14.0,13.0,item_10,PPC,anterioridad_inmediata,hace un rato,5
+L02,learner,Slovak,bilingual,14.0,13.0,item_11,PPC,anterioridad_inmediata,hace un rato,4
+L02,learner,Slovak,bilingual,14.0,13.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L02,learner,Slovak,bilingual,14.0,13.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+L02,learner,Slovak,bilingual,14.0,13.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,7
+L02,learner,Slovak,bilingual,14.0,13.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+L02,learner,Slovak,bilingual,14.0,13.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L02,learner,Slovak,bilingual,14.0,13.0,item_17,PPC,anterioridad_lejana,hace dos meses,6
+L02,learner,Slovak,bilingual,14.0,13.0,item_18,PPC,anterioridad_lejana,hace dos meses,3
+L03,learner,Slovak,ELE,7.0,10.0,item_01,PPS,anterioridad_inmediata,hace un rato,6
+L03,learner,Slovak,ELE,7.0,10.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L03,learner,Slovak,ELE,7.0,10.0,item_03,PPS,anterioridad_inmediata,hace un rato,2
+L03,learner,Slovak,ELE,7.0,10.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+L03,learner,Slovak,ELE,7.0,10.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,2
+L03,learner,Slovak,ELE,7.0,10.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,6
+L03,learner,Slovak,ELE,7.0,10.0,item_07,PPS,anterioridad_lejana,hace dos meses,3
+L03,learner,Slovak,ELE,7.0,10.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L03,learner,Slovak,ELE,7.0,10.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L03,learner,Slovak,ELE,7.0,10.0,item_10,PPC,anterioridad_inmediata,hace un rato,4
+L03,learner,Slovak,ELE,7.0,10.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L03,learner,Slovak,ELE,7.0,10.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L03,learner,Slovak,ELE,7.0,10.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+L03,learner,Slovak,ELE,7.0,10.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,7
+L03,learner,Slovak,ELE,7.0,10.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,6
+L03,learner,Slovak,ELE,7.0,10.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L03,learner,Slovak,ELE,7.0,10.0,item_17,PPC,anterioridad_lejana,hace dos meses,5
+L03,learner,Slovak,ELE,7.0,10.0,item_18,PPC,anterioridad_lejana,hace dos meses,6
+L04,learner,Slovak,bilingual,10.0,5.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L04,learner,Slovak,bilingual,10.0,5.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L04,learner,Slovak,bilingual,10.0,5.0,item_03,PPS,anterioridad_inmediata,hace un rato,6
+L04,learner,Slovak,bilingual,10.0,5.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,2
+L04,learner,Slovak,bilingual,10.0,5.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L04,learner,Slovak,bilingual,10.0,5.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+L04,learner,Slovak,bilingual,10.0,5.0,item_07,PPS,anterioridad_lejana,hace dos meses,3
+L04,learner,Slovak,bilingual,10.0,5.0,item_08,PPS,anterioridad_lejana,hace dos meses,6
+L04,learner,Slovak,bilingual,10.0,5.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L04,learner,Slovak,bilingual,10.0,5.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L04,learner,Slovak,bilingual,10.0,5.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L04,learner,Slovak,bilingual,10.0,5.0,item_12,PPC,anterioridad_inmediata,hace un rato,7
+L04,learner,Slovak,bilingual,10.0,5.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+L04,learner,Slovak,bilingual,10.0,5.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L04,learner,Slovak,bilingual,10.0,5.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,3
+L04,learner,Slovak,bilingual,10.0,5.0,item_16,PPC,anterioridad_lejana,hace dos meses,6
+L04,learner,Slovak,bilingual,10.0,5.0,item_17,PPC,anterioridad_lejana,hace dos meses,5
+L04,learner,Slovak,bilingual,10.0,5.0,item_18,PPC,anterioridad_lejana,hace dos meses,4
+L05,learner,Slovak,ELE,11.0,10.0,item_01,PPS,anterioridad_inmediata,hace un rato,2
+L05,learner,Slovak,ELE,11.0,10.0,item_02,PPS,anterioridad_inmediata,hace un rato,4
+L05,learner,Slovak,ELE,11.0,10.0,item_03,PPS,anterioridad_inmediata,hace un rato,2
+L05,learner,Slovak,ELE,11.0,10.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L05,learner,Slovak,ELE,11.0,10.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L05,learner,Slovak,ELE,11.0,10.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+L05,learner,Slovak,ELE,11.0,10.0,item_07,PPS,anterioridad_lejana,hace dos meses,6
+L05,learner,Slovak,ELE,11.0,10.0,item_08,PPS,anterioridad_lejana,hace dos meses,5
+L05,learner,Slovak,ELE,11.0,10.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L05,learner,Slovak,ELE,11.0,10.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L05,learner,Slovak,ELE,11.0,10.0,item_11,PPC,anterioridad_inmediata,hace un rato,7
+L05,learner,Slovak,ELE,11.0,10.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L05,learner,Slovak,ELE,11.0,10.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+L05,learner,Slovak,ELE,11.0,10.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L05,learner,Slovak,ELE,11.0,10.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L05,learner,Slovak,ELE,11.0,10.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L05,learner,Slovak,ELE,11.0,10.0,item_17,PPC,anterioridad_lejana,hace dos meses,3
+L05,learner,Slovak,ELE,11.0,10.0,item_18,PPC,anterioridad_lejana,hace dos meses,5
+L06,learner,Slovak,bilingual,15.0,11.0,item_01,PPS,anterioridad_inmediata,hace un rato,2
+L06,learner,Slovak,bilingual,15.0,11.0,item_02,PPS,anterioridad_inmediata,hace un rato,5
+L06,learner,Slovak,bilingual,15.0,11.0,item_03,PPS,anterioridad_inmediata,hace un rato,1
+L06,learner,Slovak,bilingual,15.0,11.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+L06,learner,Slovak,bilingual,15.0,11.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L06,learner,Slovak,bilingual,15.0,11.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,5
+L06,learner,Slovak,bilingual,15.0,11.0,item_07,PPS,anterioridad_lejana,hace dos meses,6
+L06,learner,Slovak,bilingual,15.0,11.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L06,learner,Slovak,bilingual,15.0,11.0,item_09,PPS,anterioridad_lejana,hace dos meses,3
+L06,learner,Slovak,bilingual,15.0,11.0,item_10,PPC,anterioridad_inmediata,hace un rato,7
+L06,learner,Slovak,bilingual,15.0,11.0,item_11,PPC,anterioridad_inmediata,hace un rato,5
+L06,learner,Slovak,bilingual,15.0,11.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L06,learner,Slovak,bilingual,15.0,11.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+L06,learner,Slovak,bilingual,15.0,11.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L06,learner,Slovak,bilingual,15.0,11.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,6
+L06,learner,Slovak,bilingual,15.0,11.0,item_16,PPC,anterioridad_lejana,hace dos meses,5
+L06,learner,Slovak,bilingual,15.0,11.0,item_17,PPC,anterioridad_lejana,hace dos meses,6
+L06,learner,Slovak,bilingual,15.0,11.0,item_18,PPC,anterioridad_lejana,hace dos meses,5
+L07,learner,Slovak,ELE,9.0,10.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L07,learner,Slovak,ELE,9.0,10.0,item_02,PPS,anterioridad_inmediata,hace un rato,4
+L07,learner,Slovak,ELE,9.0,10.0,item_03,PPS,anterioridad_inmediata,hace un rato,2
+L07,learner,Slovak,ELE,9.0,10.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+L07,learner,Slovak,ELE,9.0,10.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L07,learner,Slovak,ELE,9.0,10.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+L07,learner,Slovak,ELE,9.0,10.0,item_07,PPS,anterioridad_lejana,hace dos meses,6
+L07,learner,Slovak,ELE,9.0,10.0,item_08,PPS,anterioridad_lejana,hace dos meses,6
+L07,learner,Slovak,ELE,9.0,10.0,item_09,PPS,anterioridad_lejana,hace dos meses,6
+L07,learner,Slovak,ELE,9.0,10.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L07,learner,Slovak,ELE,9.0,10.0,item_11,PPC,anterioridad_inmediata,hace un rato,5
+L07,learner,Slovak,ELE,9.0,10.0,item_12,PPC,anterioridad_inmediata,hace un rato,4
+L07,learner,Slovak,ELE,9.0,10.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,3
+L07,learner,Slovak,ELE,9.0,10.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,2
+L07,learner,Slovak,ELE,9.0,10.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,1
+L07,learner,Slovak,ELE,9.0,10.0,item_16,PPC,anterioridad_lejana,hace dos meses,5
+L07,learner,Slovak,ELE,9.0,10.0,item_17,PPC,anterioridad_lejana,hace dos meses,3
+L07,learner,Slovak,ELE,9.0,10.0,item_18,PPC,anterioridad_lejana,hace dos meses,1
+L08,learner,Slovak,bilingual,11.0,8.0,item_01,PPS,anterioridad_inmediata,hace un rato,1
+L08,learner,Slovak,bilingual,11.0,8.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L08,learner,Slovak,bilingual,11.0,8.0,item_03,PPS,anterioridad_inmediata,hace un rato,1
+L08,learner,Slovak,bilingual,11.0,8.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,2
+L08,learner,Slovak,bilingual,11.0,8.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L08,learner,Slovak,bilingual,11.0,8.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+L08,learner,Slovak,bilingual,11.0,8.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L08,learner,Slovak,bilingual,11.0,8.0,item_08,PPS,anterioridad_lejana,hace dos meses,6
+L08,learner,Slovak,bilingual,11.0,8.0,item_09,PPS,anterioridad_lejana,hace dos meses,6
+L08,learner,Slovak,bilingual,11.0,8.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L08,learner,Slovak,bilingual,11.0,8.0,item_11,PPC,anterioridad_inmediata,hace un rato,2
+L08,learner,Slovak,bilingual,11.0,8.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L08,learner,Slovak,bilingual,11.0,8.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,2
+L08,learner,Slovak,bilingual,11.0,8.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L08,learner,Slovak,bilingual,11.0,8.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,3
+L08,learner,Slovak,bilingual,11.0,8.0,item_16,PPC,anterioridad_lejana,hace dos meses,2
+L08,learner,Slovak,bilingual,11.0,8.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L08,learner,Slovak,bilingual,11.0,8.0,item_18,PPC,anterioridad_lejana,hace dos meses,3
+L09,learner,Slovak,bilingual,14.0,8.0,item_01,PPS,anterioridad_inmediata,hace un rato,5
+L09,learner,Slovak,bilingual,14.0,8.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L09,learner,Slovak,bilingual,14.0,8.0,item_03,PPS,anterioridad_inmediata,hace un rato,2
+L09,learner,Slovak,bilingual,14.0,8.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L09,learner,Slovak,bilingual,14.0,8.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L09,learner,Slovak,bilingual,14.0,8.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+L09,learner,Slovak,bilingual,14.0,8.0,item_07,PPS,anterioridad_lejana,hace dos meses,3
+L09,learner,Slovak,bilingual,14.0,8.0,item_08,PPS,anterioridad_lejana,hace dos meses,3
+L09,learner,Slovak,bilingual,14.0,8.0,item_09,PPS,anterioridad_lejana,hace dos meses,3
+L09,learner,Slovak,bilingual,14.0,8.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L09,learner,Slovak,bilingual,14.0,8.0,item_11,PPC,anterioridad_inmediata,hace un rato,7
+L09,learner,Slovak,bilingual,14.0,8.0,item_12,PPC,anterioridad_inmediata,hace un rato,3
+L09,learner,Slovak,bilingual,14.0,8.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+L09,learner,Slovak,bilingual,14.0,8.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L09,learner,Slovak,bilingual,14.0,8.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,3
+L09,learner,Slovak,bilingual,14.0,8.0,item_16,PPC,anterioridad_lejana,hace dos meses,1
+L09,learner,Slovak,bilingual,14.0,8.0,item_17,PPC,anterioridad_lejana,hace dos meses,1
+L09,learner,Slovak,bilingual,14.0,8.0,item_18,PPC,anterioridad_lejana,hace dos meses,4
+L10,learner,Slovak,bilingual,18.0,11.0,item_01,PPS,anterioridad_inmediata,hace un rato,2
+L10,learner,Slovak,bilingual,18.0,11.0,item_02,PPS,anterioridad_inmediata,hace un rato,4
+L10,learner,Slovak,bilingual,18.0,11.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L10,learner,Slovak,bilingual,18.0,11.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L10,learner,Slovak,bilingual,18.0,11.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,7
+L10,learner,Slovak,bilingual,18.0,11.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+L10,learner,Slovak,bilingual,18.0,11.0,item_07,PPS,anterioridad_lejana,hace dos meses,3
+L10,learner,Slovak,bilingual,18.0,11.0,item_08,PPS,anterioridad_lejana,hace dos meses,5
+L10,learner,Slovak,bilingual,18.0,11.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L10,learner,Slovak,bilingual,18.0,11.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L10,learner,Slovak,bilingual,18.0,11.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L10,learner,Slovak,bilingual,18.0,11.0,item_12,PPC,anterioridad_inmediata,hace un rato,4
+L10,learner,Slovak,bilingual,18.0,11.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+L10,learner,Slovak,bilingual,18.0,11.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,6
+L10,learner,Slovak,bilingual,18.0,11.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,3
+L10,learner,Slovak,bilingual,18.0,11.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L10,learner,Slovak,bilingual,18.0,11.0,item_17,PPC,anterioridad_lejana,hace dos meses,3
+L10,learner,Slovak,bilingual,18.0,11.0,item_18,PPC,anterioridad_lejana,hace dos meses,4
+L11,learner,Slovak,bilingual,14.0,11.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L11,learner,Slovak,bilingual,14.0,11.0,item_02,PPS,anterioridad_inmediata,hace un rato,1
+L11,learner,Slovak,bilingual,14.0,11.0,item_03,PPS,anterioridad_inmediata,hace un rato,5
+L11,learner,Slovak,bilingual,14.0,11.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,6
+L11,learner,Slovak,bilingual,14.0,11.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,6
+L11,learner,Slovak,bilingual,14.0,11.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,1
+L11,learner,Slovak,bilingual,14.0,11.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L11,learner,Slovak,bilingual,14.0,11.0,item_08,PPS,anterioridad_lejana,hace dos meses,6
+L11,learner,Slovak,bilingual,14.0,11.0,item_09,PPS,anterioridad_lejana,hace dos meses,6
+L11,learner,Slovak,bilingual,14.0,11.0,item_10,PPC,anterioridad_inmediata,hace un rato,7
+L11,learner,Slovak,bilingual,14.0,11.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L11,learner,Slovak,bilingual,14.0,11.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L11,learner,Slovak,bilingual,14.0,11.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+L11,learner,Slovak,bilingual,14.0,11.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L11,learner,Slovak,bilingual,14.0,11.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L11,learner,Slovak,bilingual,14.0,11.0,item_16,PPC,anterioridad_lejana,hace dos meses,3
+L11,learner,Slovak,bilingual,14.0,11.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L11,learner,Slovak,bilingual,14.0,11.0,item_18,PPC,anterioridad_lejana,hace dos meses,4
+L12,learner,Slovak,bilingual,8.0,9.0,item_01,PPS,anterioridad_inmediata,hace un rato,4
+L12,learner,Slovak,bilingual,8.0,9.0,item_02,PPS,anterioridad_inmediata,hace un rato,4
+L12,learner,Slovak,bilingual,8.0,9.0,item_03,PPS,anterioridad_inmediata,hace un rato,4
+L12,learner,Slovak,bilingual,8.0,9.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+L12,learner,Slovak,bilingual,8.0,9.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,6
+L12,learner,Slovak,bilingual,8.0,9.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+L12,learner,Slovak,bilingual,8.0,9.0,item_07,PPS,anterioridad_lejana,hace dos meses,5
+L12,learner,Slovak,bilingual,8.0,9.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L12,learner,Slovak,bilingual,8.0,9.0,item_09,PPS,anterioridad_lejana,hace dos meses,4
+L12,learner,Slovak,bilingual,8.0,9.0,item_10,PPC,anterioridad_inmediata,hace un rato,7
+L12,learner,Slovak,bilingual,8.0,9.0,item_11,PPC,anterioridad_inmediata,hace un rato,7
+L12,learner,Slovak,bilingual,8.0,9.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L12,learner,Slovak,bilingual,8.0,9.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,2
+L12,learner,Slovak,bilingual,8.0,9.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L12,learner,Slovak,bilingual,8.0,9.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+L12,learner,Slovak,bilingual,8.0,9.0,item_16,PPC,anterioridad_lejana,hace dos meses,6
+L12,learner,Slovak,bilingual,8.0,9.0,item_17,PPC,anterioridad_lejana,hace dos meses,7
+L12,learner,Slovak,bilingual,8.0,9.0,item_18,PPC,anterioridad_lejana,hace dos meses,6
+L13,learner,Slovak,bilingual,7.0,10.0,item_01,PPS,anterioridad_inmediata,hace un rato,2
+L13,learner,Slovak,bilingual,7.0,10.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L13,learner,Slovak,bilingual,7.0,10.0,item_03,PPS,anterioridad_inmediata,hace un rato,1
+L13,learner,Slovak,bilingual,7.0,10.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,6
+L13,learner,Slovak,bilingual,7.0,10.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L13,learner,Slovak,bilingual,7.0,10.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+L13,learner,Slovak,bilingual,7.0,10.0,item_07,PPS,anterioridad_lejana,hace dos meses,6
+L13,learner,Slovak,bilingual,7.0,10.0,item_08,PPS,anterioridad_lejana,hace dos meses,7
+L13,learner,Slovak,bilingual,7.0,10.0,item_09,PPS,anterioridad_lejana,hace dos meses,7
+L13,learner,Slovak,bilingual,7.0,10.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L13,learner,Slovak,bilingual,7.0,10.0,item_11,PPC,anterioridad_inmediata,hace un rato,5
+L13,learner,Slovak,bilingual,7.0,10.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L13,learner,Slovak,bilingual,7.0,10.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+L13,learner,Slovak,bilingual,7.0,10.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L13,learner,Slovak,bilingual,7.0,10.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+L13,learner,Slovak,bilingual,7.0,10.0,item_16,PPC,anterioridad_lejana,hace dos meses,2
+L13,learner,Slovak,bilingual,7.0,10.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L13,learner,Slovak,bilingual,7.0,10.0,item_18,PPC,anterioridad_lejana,hace dos meses,4
+L14,learner,Slovak,ELE,17.0,8.0,item_01,PPS,anterioridad_inmediata,hace un rato,5
+L14,learner,Slovak,ELE,17.0,8.0,item_02,PPS,anterioridad_inmediata,hace un rato,4
+L14,learner,Slovak,ELE,17.0,8.0,item_03,PPS,anterioridad_inmediata,hace un rato,4
+L14,learner,Slovak,ELE,17.0,8.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,2
+L14,learner,Slovak,ELE,17.0,8.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,2
+L14,learner,Slovak,ELE,17.0,8.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+L14,learner,Slovak,ELE,17.0,8.0,item_07,PPS,anterioridad_lejana,hace dos meses,6
+L14,learner,Slovak,ELE,17.0,8.0,item_08,PPS,anterioridad_lejana,hace dos meses,3
+L14,learner,Slovak,ELE,17.0,8.0,item_09,PPS,anterioridad_lejana,hace dos meses,2
+L14,learner,Slovak,ELE,17.0,8.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L14,learner,Slovak,ELE,17.0,8.0,item_11,PPC,anterioridad_inmediata,hace un rato,5
+L14,learner,Slovak,ELE,17.0,8.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L14,learner,Slovak,ELE,17.0,8.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+L14,learner,Slovak,ELE,17.0,8.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L14,learner,Slovak,ELE,17.0,8.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,3
+L14,learner,Slovak,ELE,17.0,8.0,item_16,PPC,anterioridad_lejana,hace dos meses,5
+L14,learner,Slovak,ELE,17.0,8.0,item_17,PPC,anterioridad_lejana,hace dos meses,1
+L14,learner,Slovak,ELE,17.0,8.0,item_18,PPC,anterioridad_lejana,hace dos meses,2
+L15,learner,Slovak,bilingual,16.0,6.0,item_01,PPS,anterioridad_inmediata,hace un rato,2
+L15,learner,Slovak,bilingual,16.0,6.0,item_02,PPS,anterioridad_inmediata,hace un rato,5
+L15,learner,Slovak,bilingual,16.0,6.0,item_03,PPS,anterioridad_inmediata,hace un rato,4
+L15,learner,Slovak,bilingual,16.0,6.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,6
+L15,learner,Slovak,bilingual,16.0,6.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,7
+L15,learner,Slovak,bilingual,16.0,6.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,7
+L15,learner,Slovak,bilingual,16.0,6.0,item_07,PPS,anterioridad_lejana,hace dos meses,7
+L15,learner,Slovak,bilingual,16.0,6.0,item_08,PPS,anterioridad_lejana,hace dos meses,5
+L15,learner,Slovak,bilingual,16.0,6.0,item_09,PPS,anterioridad_lejana,hace dos meses,6
+L15,learner,Slovak,bilingual,16.0,6.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L15,learner,Slovak,bilingual,16.0,6.0,item_11,PPC,anterioridad_inmediata,hace un rato,5
+L15,learner,Slovak,bilingual,16.0,6.0,item_12,PPC,anterioridad_inmediata,hace un rato,7
+L15,learner,Slovak,bilingual,16.0,6.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+L15,learner,Slovak,bilingual,16.0,6.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,7
+L15,learner,Slovak,bilingual,16.0,6.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+L15,learner,Slovak,bilingual,16.0,6.0,item_16,PPC,anterioridad_lejana,hace dos meses,5
+L15,learner,Slovak,bilingual,16.0,6.0,item_17,PPC,anterioridad_lejana,hace dos meses,2
+L15,learner,Slovak,bilingual,16.0,6.0,item_18,PPC,anterioridad_lejana,hace dos meses,2
+L16,learner,Slovak,ELE,10.0,14.0,item_01,PPS,anterioridad_inmediata,hace un rato,4
+L16,learner,Slovak,ELE,10.0,14.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L16,learner,Slovak,ELE,10.0,14.0,item_03,PPS,anterioridad_inmediata,hace un rato,4
+L16,learner,Slovak,ELE,10.0,14.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+L16,learner,Slovak,ELE,10.0,14.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L16,learner,Slovak,ELE,10.0,14.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+L16,learner,Slovak,ELE,10.0,14.0,item_07,PPS,anterioridad_lejana,hace dos meses,5
+L16,learner,Slovak,ELE,10.0,14.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L16,learner,Slovak,ELE,10.0,14.0,item_09,PPS,anterioridad_lejana,hace dos meses,4
+L16,learner,Slovak,ELE,10.0,14.0,item_10,PPC,anterioridad_inmediata,hace un rato,5
+L16,learner,Slovak,ELE,10.0,14.0,item_11,PPC,anterioridad_inmediata,hace un rato,5
+L16,learner,Slovak,ELE,10.0,14.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L16,learner,Slovak,ELE,10.0,14.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L16,learner,Slovak,ELE,10.0,14.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,4
+L16,learner,Slovak,ELE,10.0,14.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L16,learner,Slovak,ELE,10.0,14.0,item_16,PPC,anterioridad_lejana,hace dos meses,3
+L16,learner,Slovak,ELE,10.0,14.0,item_17,PPC,anterioridad_lejana,hace dos meses,5
+L16,learner,Slovak,ELE,10.0,14.0,item_18,PPC,anterioridad_lejana,hace dos meses,3
+L17,learner,Slovak,ELE,18.0,6.0,item_01,PPS,anterioridad_inmediata,hace un rato,6
+L17,learner,Slovak,ELE,18.0,6.0,item_02,PPS,anterioridad_inmediata,hace un rato,6
+L17,learner,Slovak,ELE,18.0,6.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L17,learner,Slovak,ELE,18.0,6.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L17,learner,Slovak,ELE,18.0,6.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,6
+L17,learner,Slovak,ELE,18.0,6.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,5
+L17,learner,Slovak,ELE,18.0,6.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L17,learner,Slovak,ELE,18.0,6.0,item_08,PPS,anterioridad_lejana,hace dos meses,7
+L17,learner,Slovak,ELE,18.0,6.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L17,learner,Slovak,ELE,18.0,6.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L17,learner,Slovak,ELE,18.0,6.0,item_11,PPC,anterioridad_inmediata,hace un rato,5
+L17,learner,Slovak,ELE,18.0,6.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L17,learner,Slovak,ELE,18.0,6.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,3
+L17,learner,Slovak,ELE,18.0,6.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,2
+L17,learner,Slovak,ELE,18.0,6.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L17,learner,Slovak,ELE,18.0,6.0,item_16,PPC,anterioridad_lejana,hace dos meses,2
+L17,learner,Slovak,ELE,18.0,6.0,item_17,PPC,anterioridad_lejana,hace dos meses,5
+L17,learner,Slovak,ELE,18.0,6.0,item_18,PPC,anterioridad_lejana,hace dos meses,3
+L18,learner,Slovak,ELE,9.0,12.0,item_01,PPS,anterioridad_inmediata,hace un rato,2
+L18,learner,Slovak,ELE,9.0,12.0,item_02,PPS,anterioridad_inmediata,hace un rato,4
+L18,learner,Slovak,ELE,9.0,12.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L18,learner,Slovak,ELE,9.0,12.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L18,learner,Slovak,ELE,9.0,12.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,1
+L18,learner,Slovak,ELE,9.0,12.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,7
+L18,learner,Slovak,ELE,9.0,12.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L18,learner,Slovak,ELE,9.0,12.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L18,learner,Slovak,ELE,9.0,12.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L18,learner,Slovak,ELE,9.0,12.0,item_10,PPC,anterioridad_inmediata,hace un rato,5
+L18,learner,Slovak,ELE,9.0,12.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L18,learner,Slovak,ELE,9.0,12.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L18,learner,Slovak,ELE,9.0,12.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L18,learner,Slovak,ELE,9.0,12.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,7
+L18,learner,Slovak,ELE,9.0,12.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L18,learner,Slovak,ELE,9.0,12.0,item_16,PPC,anterioridad_lejana,hace dos meses,2
+L18,learner,Slovak,ELE,9.0,12.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L18,learner,Slovak,ELE,9.0,12.0,item_18,PPC,anterioridad_lejana,hace dos meses,6
+L19,learner,Slovak,ELE,11.0,9.0,item_01,PPS,anterioridad_inmediata,hace un rato,5
+L19,learner,Slovak,ELE,11.0,9.0,item_02,PPS,anterioridad_inmediata,hace un rato,5
+L19,learner,Slovak,ELE,11.0,9.0,item_03,PPS,anterioridad_inmediata,hace un rato,1
+L19,learner,Slovak,ELE,11.0,9.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+L19,learner,Slovak,ELE,11.0,9.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L19,learner,Slovak,ELE,11.0,9.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,5
+L19,learner,Slovak,ELE,11.0,9.0,item_07,PPS,anterioridad_lejana,hace dos meses,5
+L19,learner,Slovak,ELE,11.0,9.0,item_08,PPS,anterioridad_lejana,hace dos meses,6
+L19,learner,Slovak,ELE,11.0,9.0,item_09,PPS,anterioridad_lejana,hace dos meses,6
+L19,learner,Slovak,ELE,11.0,9.0,item_10,PPC,anterioridad_inmediata,hace un rato,7
+L19,learner,Slovak,ELE,11.0,9.0,item_11,PPC,anterioridad_inmediata,hace un rato,4
+L19,learner,Slovak,ELE,11.0,9.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L19,learner,Slovak,ELE,11.0,9.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+L19,learner,Slovak,ELE,11.0,9.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,6
+L19,learner,Slovak,ELE,11.0,9.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,5
+L19,learner,Slovak,ELE,11.0,9.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L19,learner,Slovak,ELE,11.0,9.0,item_17,PPC,anterioridad_lejana,hace dos meses,5
+L19,learner,Slovak,ELE,11.0,9.0,item_18,PPC,anterioridad_lejana,hace dos meses,3
+L20,learner,Slovak,ELE,15.0,6.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L20,learner,Slovak,ELE,15.0,6.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L20,learner,Slovak,ELE,15.0,6.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L20,learner,Slovak,ELE,15.0,6.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,7
+L20,learner,Slovak,ELE,15.0,6.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L20,learner,Slovak,ELE,15.0,6.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,7
+L20,learner,Slovak,ELE,15.0,6.0,item_07,PPS,anterioridad_lejana,hace dos meses,6
+L20,learner,Slovak,ELE,15.0,6.0,item_08,PPS,anterioridad_lejana,hace dos meses,6
+L20,learner,Slovak,ELE,15.0,6.0,item_09,PPS,anterioridad_lejana,hace dos meses,4
+L20,learner,Slovak,ELE,15.0,6.0,item_10,PPC,anterioridad_inmediata,hace un rato,4
+L20,learner,Slovak,ELE,15.0,6.0,item_11,PPC,anterioridad_inmediata,hace un rato,7
+L20,learner,Slovak,ELE,15.0,6.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L20,learner,Slovak,ELE,15.0,6.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+L20,learner,Slovak,ELE,15.0,6.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L20,learner,Slovak,ELE,15.0,6.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L20,learner,Slovak,ELE,15.0,6.0,item_16,PPC,anterioridad_lejana,hace dos meses,2
+L20,learner,Slovak,ELE,15.0,6.0,item_17,PPC,anterioridad_lejana,hace dos meses,5
+L20,learner,Slovak,ELE,15.0,6.0,item_18,PPC,anterioridad_lejana,hace dos meses,3
+L21,learner,Slovak,bilingual,7.0,9.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L21,learner,Slovak,bilingual,7.0,9.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L21,learner,Slovak,bilingual,7.0,9.0,item_03,PPS,anterioridad_inmediata,hace un rato,5
+L21,learner,Slovak,bilingual,7.0,9.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,2
+L21,learner,Slovak,bilingual,7.0,9.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L21,learner,Slovak,bilingual,7.0,9.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+L21,learner,Slovak,bilingual,7.0,9.0,item_07,PPS,anterioridad_lejana,hace dos meses,6
+L21,learner,Slovak,bilingual,7.0,9.0,item_08,PPS,anterioridad_lejana,hace dos meses,2
+L21,learner,Slovak,bilingual,7.0,9.0,item_09,PPS,anterioridad_lejana,hace dos meses,1
+L21,learner,Slovak,bilingual,7.0,9.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L21,learner,Slovak,bilingual,7.0,9.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L21,learner,Slovak,bilingual,7.0,9.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L21,learner,Slovak,bilingual,7.0,9.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,1
+L21,learner,Slovak,bilingual,7.0,9.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,1
+L21,learner,Slovak,bilingual,7.0,9.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L21,learner,Slovak,bilingual,7.0,9.0,item_16,PPC,anterioridad_lejana,hace dos meses,1
+L21,learner,Slovak,bilingual,7.0,9.0,item_17,PPC,anterioridad_lejana,hace dos meses,2
+L21,learner,Slovak,bilingual,7.0,9.0,item_18,PPC,anterioridad_lejana,hace dos meses,3
+L22,learner,Slovak,ELE,15.0,3.0,item_01,PPS,anterioridad_inmediata,hace un rato,4
+L22,learner,Slovak,ELE,15.0,3.0,item_02,PPS,anterioridad_inmediata,hace un rato,5
+L22,learner,Slovak,ELE,15.0,3.0,item_03,PPS,anterioridad_inmediata,hace un rato,5
+L22,learner,Slovak,ELE,15.0,3.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,6
+L22,learner,Slovak,ELE,15.0,3.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L22,learner,Slovak,ELE,15.0,3.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,6
+L22,learner,Slovak,ELE,15.0,3.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L22,learner,Slovak,ELE,15.0,3.0,item_08,PPS,anterioridad_lejana,hace dos meses,6
+L22,learner,Slovak,ELE,15.0,3.0,item_09,PPS,anterioridad_lejana,hace dos meses,3
+L22,learner,Slovak,ELE,15.0,3.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L22,learner,Slovak,ELE,15.0,3.0,item_11,PPC,anterioridad_inmediata,hace un rato,5
+L22,learner,Slovak,ELE,15.0,3.0,item_12,PPC,anterioridad_inmediata,hace un rato,7
+L22,learner,Slovak,ELE,15.0,3.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L22,learner,Slovak,ELE,15.0,3.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L22,learner,Slovak,ELE,15.0,3.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,5
+L22,learner,Slovak,ELE,15.0,3.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L22,learner,Slovak,ELE,15.0,3.0,item_17,PPC,anterioridad_lejana,hace dos meses,5
+L22,learner,Slovak,ELE,15.0,3.0,item_18,PPC,anterioridad_lejana,hace dos meses,4
+L23,learner,Slovak,bilingual,13.0,8.0,item_01,PPS,anterioridad_inmediata,hace un rato,2
+L23,learner,Slovak,bilingual,13.0,8.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L23,learner,Slovak,bilingual,13.0,8.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L23,learner,Slovak,bilingual,13.0,8.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,1
+L23,learner,Slovak,bilingual,13.0,8.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,6
+L23,learner,Slovak,bilingual,13.0,8.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,1
+L23,learner,Slovak,bilingual,13.0,8.0,item_07,PPS,anterioridad_lejana,hace dos meses,5
+L23,learner,Slovak,bilingual,13.0,8.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L23,learner,Slovak,bilingual,13.0,8.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L23,learner,Slovak,bilingual,13.0,8.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L23,learner,Slovak,bilingual,13.0,8.0,item_11,PPC,anterioridad_inmediata,hace un rato,7
+L23,learner,Slovak,bilingual,13.0,8.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L23,learner,Slovak,bilingual,13.0,8.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+L23,learner,Slovak,bilingual,13.0,8.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,2
+L23,learner,Slovak,bilingual,13.0,8.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,3
+L23,learner,Slovak,bilingual,13.0,8.0,item_16,PPC,anterioridad_lejana,hace dos meses,5
+L23,learner,Slovak,bilingual,13.0,8.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L23,learner,Slovak,bilingual,13.0,8.0,item_18,PPC,anterioridad_lejana,hace dos meses,2
+L24,learner,Slovak,bilingual,8.0,14.0,item_01,PPS,anterioridad_inmediata,hace un rato,2
+L24,learner,Slovak,bilingual,8.0,14.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L24,learner,Slovak,bilingual,8.0,14.0,item_03,PPS,anterioridad_inmediata,hace un rato,2
+L24,learner,Slovak,bilingual,8.0,14.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+L24,learner,Slovak,bilingual,8.0,14.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L24,learner,Slovak,bilingual,8.0,14.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+L24,learner,Slovak,bilingual,8.0,14.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L24,learner,Slovak,bilingual,8.0,14.0,item_08,PPS,anterioridad_lejana,hace dos meses,1
+L24,learner,Slovak,bilingual,8.0,14.0,item_09,PPS,anterioridad_lejana,hace dos meses,3
+L24,learner,Slovak,bilingual,8.0,14.0,item_10,PPC,anterioridad_inmediata,hace un rato,4
+L24,learner,Slovak,bilingual,8.0,14.0,item_11,PPC,anterioridad_inmediata,hace un rato,4
+L24,learner,Slovak,bilingual,8.0,14.0,item_12,PPC,anterioridad_inmediata,hace un rato,2
+L24,learner,Slovak,bilingual,8.0,14.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,3
+L24,learner,Slovak,bilingual,8.0,14.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,1
+L24,learner,Slovak,bilingual,8.0,14.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,1
+L24,learner,Slovak,bilingual,8.0,14.0,item_16,PPC,anterioridad_lejana,hace dos meses,5
+L24,learner,Slovak,bilingual,8.0,14.0,item_17,PPC,anterioridad_lejana,hace dos meses,1
+L24,learner,Slovak,bilingual,8.0,14.0,item_18,PPC,anterioridad_lejana,hace dos meses,3
+L25,learner,Slovak,ELE,10.0,10.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L25,learner,Slovak,ELE,10.0,10.0,item_02,PPS,anterioridad_inmediata,hace un rato,4
+L25,learner,Slovak,ELE,10.0,10.0,item_03,PPS,anterioridad_inmediata,hace un rato,5
+L25,learner,Slovak,ELE,10.0,10.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+L25,learner,Slovak,ELE,10.0,10.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,1
+L25,learner,Slovak,ELE,10.0,10.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,5
+L25,learner,Slovak,ELE,10.0,10.0,item_07,PPS,anterioridad_lejana,hace dos meses,3
+L25,learner,Slovak,ELE,10.0,10.0,item_08,PPS,anterioridad_lejana,hace dos meses,5
+L25,learner,Slovak,ELE,10.0,10.0,item_09,PPS,anterioridad_lejana,hace dos meses,2
+L25,learner,Slovak,ELE,10.0,10.0,item_10,PPC,anterioridad_inmediata,hace un rato,7
+L25,learner,Slovak,ELE,10.0,10.0,item_11,PPC,anterioridad_inmediata,hace un rato,7
+L25,learner,Slovak,ELE,10.0,10.0,item_12,PPC,anterioridad_inmediata,hace un rato,2
+L25,learner,Slovak,ELE,10.0,10.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L25,learner,Slovak,ELE,10.0,10.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L25,learner,Slovak,ELE,10.0,10.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,6
+L25,learner,Slovak,ELE,10.0,10.0,item_16,PPC,anterioridad_lejana,hace dos meses,7
+L25,learner,Slovak,ELE,10.0,10.0,item_17,PPC,anterioridad_lejana,hace dos meses,7
+L25,learner,Slovak,ELE,10.0,10.0,item_18,PPC,anterioridad_lejana,hace dos meses,2
+L26,learner,Slovak,bilingual,8.0,14.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L26,learner,Slovak,bilingual,8.0,14.0,item_02,PPS,anterioridad_inmediata,hace un rato,1
+L26,learner,Slovak,bilingual,8.0,14.0,item_03,PPS,anterioridad_inmediata,hace un rato,2
+L26,learner,Slovak,bilingual,8.0,14.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+L26,learner,Slovak,bilingual,8.0,14.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,2
+L26,learner,Slovak,bilingual,8.0,14.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+L26,learner,Slovak,bilingual,8.0,14.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L26,learner,Slovak,bilingual,8.0,14.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L26,learner,Slovak,bilingual,8.0,14.0,item_09,PPS,anterioridad_lejana,hace dos meses,4
+L26,learner,Slovak,bilingual,8.0,14.0,item_10,PPC,anterioridad_inmediata,hace un rato,3
+L26,learner,Slovak,bilingual,8.0,14.0,item_11,PPC,anterioridad_inmediata,hace un rato,5
+L26,learner,Slovak,bilingual,8.0,14.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L26,learner,Slovak,bilingual,8.0,14.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L26,learner,Slovak,bilingual,8.0,14.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,2
+L26,learner,Slovak,bilingual,8.0,14.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+L26,learner,Slovak,bilingual,8.0,14.0,item_16,PPC,anterioridad_lejana,hace dos meses,2
+L26,learner,Slovak,bilingual,8.0,14.0,item_17,PPC,anterioridad_lejana,hace dos meses,3
+L26,learner,Slovak,bilingual,8.0,14.0,item_18,PPC,anterioridad_lejana,hace dos meses,4
+L27,learner,Slovak,bilingual,14.0,9.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L27,learner,Slovak,bilingual,14.0,9.0,item_02,PPS,anterioridad_inmediata,hace un rato,4
+L27,learner,Slovak,bilingual,14.0,9.0,item_03,PPS,anterioridad_inmediata,hace un rato,4
+L27,learner,Slovak,bilingual,14.0,9.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,1
+L27,learner,Slovak,bilingual,14.0,9.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L27,learner,Slovak,bilingual,14.0,9.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+L27,learner,Slovak,bilingual,14.0,9.0,item_07,PPS,anterioridad_lejana,hace dos meses,1
+L27,learner,Slovak,bilingual,14.0,9.0,item_08,PPS,anterioridad_lejana,hace dos meses,5
+L27,learner,Slovak,bilingual,14.0,9.0,item_09,PPS,anterioridad_lejana,hace dos meses,6
+L27,learner,Slovak,bilingual,14.0,9.0,item_10,PPC,anterioridad_inmediata,hace un rato,4
+L27,learner,Slovak,bilingual,14.0,9.0,item_11,PPC,anterioridad_inmediata,hace un rato,7
+L27,learner,Slovak,bilingual,14.0,9.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L27,learner,Slovak,bilingual,14.0,9.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+L27,learner,Slovak,bilingual,14.0,9.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,1
+L27,learner,Slovak,bilingual,14.0,9.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L27,learner,Slovak,bilingual,14.0,9.0,item_16,PPC,anterioridad_lejana,hace dos meses,3
+L27,learner,Slovak,bilingual,14.0,9.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L27,learner,Slovak,bilingual,14.0,9.0,item_18,PPC,anterioridad_lejana,hace dos meses,6
+L28,learner,Slovak,ELE,8.0,9.0,item_01,PPS,anterioridad_inmediata,hace un rato,6
+L28,learner,Slovak,ELE,8.0,9.0,item_02,PPS,anterioridad_inmediata,hace un rato,4
+L28,learner,Slovak,ELE,8.0,9.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L28,learner,Slovak,ELE,8.0,9.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,6
+L28,learner,Slovak,ELE,8.0,9.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,5
+L28,learner,Slovak,ELE,8.0,9.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,5
+L28,learner,Slovak,ELE,8.0,9.0,item_07,PPS,anterioridad_lejana,hace dos meses,6
+L28,learner,Slovak,ELE,8.0,9.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L28,learner,Slovak,ELE,8.0,9.0,item_09,PPS,anterioridad_lejana,hace dos meses,7
+L28,learner,Slovak,ELE,8.0,9.0,item_10,PPC,anterioridad_inmediata,hace un rato,5
+L28,learner,Slovak,ELE,8.0,9.0,item_11,PPC,anterioridad_inmediata,hace un rato,5
+L28,learner,Slovak,ELE,8.0,9.0,item_12,PPC,anterioridad_inmediata,hace un rato,7
+L28,learner,Slovak,ELE,8.0,9.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,3
+L28,learner,Slovak,ELE,8.0,9.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,4
+L28,learner,Slovak,ELE,8.0,9.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+L28,learner,Slovak,ELE,8.0,9.0,item_16,PPC,anterioridad_lejana,hace dos meses,5
+L28,learner,Slovak,ELE,8.0,9.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L28,learner,Slovak,ELE,8.0,9.0,item_18,PPC,anterioridad_lejana,hace dos meses,5
+L29,learner,Slovak,ELE,17.0,13.0,item_01,PPS,anterioridad_inmediata,hace un rato,4
+L29,learner,Slovak,ELE,17.0,13.0,item_02,PPS,anterioridad_inmediata,hace un rato,5
+L29,learner,Slovak,ELE,17.0,13.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L29,learner,Slovak,ELE,17.0,13.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+L29,learner,Slovak,ELE,17.0,13.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,6
+L29,learner,Slovak,ELE,17.0,13.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,6
+L29,learner,Slovak,ELE,17.0,13.0,item_07,PPS,anterioridad_lejana,hace dos meses,5
+L29,learner,Slovak,ELE,17.0,13.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L29,learner,Slovak,ELE,17.0,13.0,item_09,PPS,anterioridad_lejana,hace dos meses,2
+L29,learner,Slovak,ELE,17.0,13.0,item_10,PPC,anterioridad_inmediata,hace un rato,5
+L29,learner,Slovak,ELE,17.0,13.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L29,learner,Slovak,ELE,17.0,13.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L29,learner,Slovak,ELE,17.0,13.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L29,learner,Slovak,ELE,17.0,13.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L29,learner,Slovak,ELE,17.0,13.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L29,learner,Slovak,ELE,17.0,13.0,item_16,PPC,anterioridad_lejana,hace dos meses,1
+L29,learner,Slovak,ELE,17.0,13.0,item_17,PPC,anterioridad_lejana,hace dos meses,5
+L29,learner,Slovak,ELE,17.0,13.0,item_18,PPC,anterioridad_lejana,hace dos meses,6
+L30,learner,Slovak,bilingual,9.0,13.0,item_01,PPS,anterioridad_inmediata,hace un rato,5
+L30,learner,Slovak,bilingual,9.0,13.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L30,learner,Slovak,bilingual,9.0,13.0,item_03,PPS,anterioridad_inmediata,hace un rato,5
+L30,learner,Slovak,bilingual,9.0,13.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L30,learner,Slovak,bilingual,9.0,13.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L30,learner,Slovak,bilingual,9.0,13.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+L30,learner,Slovak,bilingual,9.0,13.0,item_07,PPS,anterioridad_lejana,hace dos meses,5
+L30,learner,Slovak,bilingual,9.0,13.0,item_08,PPS,anterioridad_lejana,hace dos meses,2
+L30,learner,Slovak,bilingual,9.0,13.0,item_09,PPS,anterioridad_lejana,hace dos meses,4
+L30,learner,Slovak,bilingual,9.0,13.0,item_10,PPC,anterioridad_inmediata,hace un rato,7
+L30,learner,Slovak,bilingual,9.0,13.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L30,learner,Slovak,bilingual,9.0,13.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L30,learner,Slovak,bilingual,9.0,13.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+L30,learner,Slovak,bilingual,9.0,13.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,4
+L30,learner,Slovak,bilingual,9.0,13.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,6
+L30,learner,Slovak,bilingual,9.0,13.0,item_16,PPC,anterioridad_lejana,hace dos meses,3
+L30,learner,Slovak,bilingual,9.0,13.0,item_17,PPC,anterioridad_lejana,hace dos meses,3
+L30,learner,Slovak,bilingual,9.0,13.0,item_18,PPC,anterioridad_lejana,hace dos meses,3
+L31,learner,Slovak,ELE,14.0,5.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L31,learner,Slovak,ELE,14.0,5.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L31,learner,Slovak,ELE,14.0,5.0,item_03,PPS,anterioridad_inmediata,hace un rato,1
+L31,learner,Slovak,ELE,14.0,5.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L31,learner,Slovak,ELE,14.0,5.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L31,learner,Slovak,ELE,14.0,5.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,1
+L31,learner,Slovak,ELE,14.0,5.0,item_07,PPS,anterioridad_lejana,hace dos meses,3
+L31,learner,Slovak,ELE,14.0,5.0,item_08,PPS,anterioridad_lejana,hace dos meses,2
+L31,learner,Slovak,ELE,14.0,5.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L31,learner,Slovak,ELE,14.0,5.0,item_10,PPC,anterioridad_inmediata,hace un rato,7
+L31,learner,Slovak,ELE,14.0,5.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L31,learner,Slovak,ELE,14.0,5.0,item_12,PPC,anterioridad_inmediata,hace un rato,7
+L31,learner,Slovak,ELE,14.0,5.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,2
+L31,learner,Slovak,ELE,14.0,5.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L31,learner,Slovak,ELE,14.0,5.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,1
+L31,learner,Slovak,ELE,14.0,5.0,item_16,PPC,anterioridad_lejana,hace dos meses,1
+L31,learner,Slovak,ELE,14.0,5.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L31,learner,Slovak,ELE,14.0,5.0,item_18,PPC,anterioridad_lejana,hace dos meses,2
+L32,learner,Slovak,bilingual,18.0,10.0,item_01,PPS,anterioridad_inmediata,hace un rato,4
+L32,learner,Slovak,bilingual,18.0,10.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L32,learner,Slovak,bilingual,18.0,10.0,item_03,PPS,anterioridad_inmediata,hace un rato,4
+L32,learner,Slovak,bilingual,18.0,10.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L32,learner,Slovak,bilingual,18.0,10.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,5
+L32,learner,Slovak,bilingual,18.0,10.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,6
+L32,learner,Slovak,bilingual,18.0,10.0,item_07,PPS,anterioridad_lejana,hace dos meses,2
+L32,learner,Slovak,bilingual,18.0,10.0,item_08,PPS,anterioridad_lejana,hace dos meses,3
+L32,learner,Slovak,bilingual,18.0,10.0,item_09,PPS,anterioridad_lejana,hace dos meses,3
+L32,learner,Slovak,bilingual,18.0,10.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L32,learner,Slovak,bilingual,18.0,10.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L32,learner,Slovak,bilingual,18.0,10.0,item_12,PPC,anterioridad_inmediata,hace un rato,7
+L32,learner,Slovak,bilingual,18.0,10.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+L32,learner,Slovak,bilingual,18.0,10.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,4
+L32,learner,Slovak,bilingual,18.0,10.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,6
+L32,learner,Slovak,bilingual,18.0,10.0,item_16,PPC,anterioridad_lejana,hace dos meses,3
+L32,learner,Slovak,bilingual,18.0,10.0,item_17,PPC,anterioridad_lejana,hace dos meses,7
+L32,learner,Slovak,bilingual,18.0,10.0,item_18,PPC,anterioridad_lejana,hace dos meses,2
+L33,learner,Slovak,bilingual,11.0,3.0,item_01,PPS,anterioridad_inmediata,hace un rato,5
+L33,learner,Slovak,bilingual,11.0,3.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L33,learner,Slovak,bilingual,11.0,3.0,item_03,PPS,anterioridad_inmediata,hace un rato,4
+L33,learner,Slovak,bilingual,11.0,3.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L33,learner,Slovak,bilingual,11.0,3.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,1
+L33,learner,Slovak,bilingual,11.0,3.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+L33,learner,Slovak,bilingual,11.0,3.0,item_07,PPS,anterioridad_lejana,hace dos meses,3
+L33,learner,Slovak,bilingual,11.0,3.0,item_08,PPS,anterioridad_lejana,hace dos meses,6
+L33,learner,Slovak,bilingual,11.0,3.0,item_09,PPS,anterioridad_lejana,hace dos meses,4
+L33,learner,Slovak,bilingual,11.0,3.0,item_10,PPC,anterioridad_inmediata,hace un rato,3
+L33,learner,Slovak,bilingual,11.0,3.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L33,learner,Slovak,bilingual,11.0,3.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L33,learner,Slovak,bilingual,11.0,3.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+L33,learner,Slovak,bilingual,11.0,3.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L33,learner,Slovak,bilingual,11.0,3.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,2
+L33,learner,Slovak,bilingual,11.0,3.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L33,learner,Slovak,bilingual,11.0,3.0,item_17,PPC,anterioridad_lejana,hace dos meses,3
+L33,learner,Slovak,bilingual,11.0,3.0,item_18,PPC,anterioridad_lejana,hace dos meses,4
+L34,learner,Slovak,bilingual,15.0,5.0,item_01,PPS,anterioridad_inmediata,hace un rato,2
+L34,learner,Slovak,bilingual,15.0,5.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L34,learner,Slovak,bilingual,15.0,5.0,item_03,PPS,anterioridad_inmediata,hace un rato,1
+L34,learner,Slovak,bilingual,15.0,5.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,2
+L34,learner,Slovak,bilingual,15.0,5.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L34,learner,Slovak,bilingual,15.0,5.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,1
+L34,learner,Slovak,bilingual,15.0,5.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L34,learner,Slovak,bilingual,15.0,5.0,item_08,PPS,anterioridad_lejana,hace dos meses,3
+L34,learner,Slovak,bilingual,15.0,5.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L34,learner,Slovak,bilingual,15.0,5.0,item_10,PPC,anterioridad_inmediata,hace un rato,4
+L34,learner,Slovak,bilingual,15.0,5.0,item_11,PPC,anterioridad_inmediata,hace un rato,7
+L34,learner,Slovak,bilingual,15.0,5.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L34,learner,Slovak,bilingual,15.0,5.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L34,learner,Slovak,bilingual,15.0,5.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,6
+L34,learner,Slovak,bilingual,15.0,5.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,5
+L34,learner,Slovak,bilingual,15.0,5.0,item_16,PPC,anterioridad_lejana,hace dos meses,5
+L34,learner,Slovak,bilingual,15.0,5.0,item_17,PPC,anterioridad_lejana,hace dos meses,1
+L34,learner,Slovak,bilingual,15.0,5.0,item_18,PPC,anterioridad_lejana,hace dos meses,1
+L35,learner,Slovak,bilingual,18.0,11.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L35,learner,Slovak,bilingual,18.0,11.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L35,learner,Slovak,bilingual,18.0,11.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L35,learner,Slovak,bilingual,18.0,11.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,6
+L35,learner,Slovak,bilingual,18.0,11.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L35,learner,Slovak,bilingual,18.0,11.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,5
+L35,learner,Slovak,bilingual,18.0,11.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L35,learner,Slovak,bilingual,18.0,11.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L35,learner,Slovak,bilingual,18.0,11.0,item_09,PPS,anterioridad_lejana,hace dos meses,6
+L35,learner,Slovak,bilingual,18.0,11.0,item_10,PPC,anterioridad_inmediata,hace un rato,3
+L35,learner,Slovak,bilingual,18.0,11.0,item_11,PPC,anterioridad_inmediata,hace un rato,7
+L35,learner,Slovak,bilingual,18.0,11.0,item_12,PPC,anterioridad_inmediata,hace un rato,7
+L35,learner,Slovak,bilingual,18.0,11.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L35,learner,Slovak,bilingual,18.0,11.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,6
+L35,learner,Slovak,bilingual,18.0,11.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,3
+L35,learner,Slovak,bilingual,18.0,11.0,item_16,PPC,anterioridad_lejana,hace dos meses,5
+L35,learner,Slovak,bilingual,18.0,11.0,item_17,PPC,anterioridad_lejana,hace dos meses,3
+L35,learner,Slovak,bilingual,18.0,11.0,item_18,PPC,anterioridad_lejana,hace dos meses,4
+L36,learner,Slovak,ELE,11.0,12.0,item_01,PPS,anterioridad_inmediata,hace un rato,6
+L36,learner,Slovak,ELE,11.0,12.0,item_02,PPS,anterioridad_inmediata,hace un rato,7
+L36,learner,Slovak,ELE,11.0,12.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L36,learner,Slovak,ELE,11.0,12.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,6
+L36,learner,Slovak,ELE,11.0,12.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L36,learner,Slovak,ELE,11.0,12.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+L36,learner,Slovak,ELE,11.0,12.0,item_07,PPS,anterioridad_lejana,hace dos meses,3
+L36,learner,Slovak,ELE,11.0,12.0,item_08,PPS,anterioridad_lejana,hace dos meses,5
+L36,learner,Slovak,ELE,11.0,12.0,item_09,PPS,anterioridad_lejana,hace dos meses,6
+L36,learner,Slovak,ELE,11.0,12.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L36,learner,Slovak,ELE,11.0,12.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L36,learner,Slovak,ELE,11.0,12.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L36,learner,Slovak,ELE,11.0,12.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,3
+L36,learner,Slovak,ELE,11.0,12.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L36,learner,Slovak,ELE,11.0,12.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,5
+L36,learner,Slovak,ELE,11.0,12.0,item_16,PPC,anterioridad_lejana,hace dos meses,2
+L36,learner,Slovak,ELE,11.0,12.0,item_17,PPC,anterioridad_lejana,hace dos meses,6
+L36,learner,Slovak,ELE,11.0,12.0,item_18,PPC,anterioridad_lejana,hace dos meses,3
+L37,learner,Slovak,ELE,13.0,8.0,item_01,PPS,anterioridad_inmediata,hace un rato,6
+L37,learner,Slovak,ELE,13.0,8.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L37,learner,Slovak,ELE,13.0,8.0,item_03,PPS,anterioridad_inmediata,hace un rato,5
+L37,learner,Slovak,ELE,13.0,8.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+L37,learner,Slovak,ELE,13.0,8.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,5
+L37,learner,Slovak,ELE,13.0,8.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,5
+L37,learner,Slovak,ELE,13.0,8.0,item_07,PPS,anterioridad_lejana,hace dos meses,5
+L37,learner,Slovak,ELE,13.0,8.0,item_08,PPS,anterioridad_lejana,hace dos meses,5
+L37,learner,Slovak,ELE,13.0,8.0,item_09,PPS,anterioridad_lejana,hace dos meses,6
+L37,learner,Slovak,ELE,13.0,8.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L37,learner,Slovak,ELE,13.0,8.0,item_11,PPC,anterioridad_inmediata,hace un rato,5
+L37,learner,Slovak,ELE,13.0,8.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L37,learner,Slovak,ELE,13.0,8.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+L37,learner,Slovak,ELE,13.0,8.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L37,learner,Slovak,ELE,13.0,8.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+L37,learner,Slovak,ELE,13.0,8.0,item_16,PPC,anterioridad_lejana,hace dos meses,7
+L37,learner,Slovak,ELE,13.0,8.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L37,learner,Slovak,ELE,13.0,8.0,item_18,PPC,anterioridad_lejana,hace dos meses,4
+L38,learner,Slovak,ELE,14.0,4.0,item_01,PPS,anterioridad_inmediata,hace un rato,1
+L38,learner,Slovak,ELE,14.0,4.0,item_02,PPS,anterioridad_inmediata,hace un rato,5
+L38,learner,Slovak,ELE,14.0,4.0,item_03,PPS,anterioridad_inmediata,hace un rato,2
+L38,learner,Slovak,ELE,14.0,4.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L38,learner,Slovak,ELE,14.0,4.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L38,learner,Slovak,ELE,14.0,4.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,5
+L38,learner,Slovak,ELE,14.0,4.0,item_07,PPS,anterioridad_lejana,hace dos meses,7
+L38,learner,Slovak,ELE,14.0,4.0,item_08,PPS,anterioridad_lejana,hace dos meses,5
+L38,learner,Slovak,ELE,14.0,4.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L38,learner,Slovak,ELE,14.0,4.0,item_10,PPC,anterioridad_inmediata,hace un rato,5
+L38,learner,Slovak,ELE,14.0,4.0,item_11,PPC,anterioridad_inmediata,hace un rato,4
+L38,learner,Slovak,ELE,14.0,4.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L38,learner,Slovak,ELE,14.0,4.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,2
+L38,learner,Slovak,ELE,14.0,4.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L38,learner,Slovak,ELE,14.0,4.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,2
+L38,learner,Slovak,ELE,14.0,4.0,item_16,PPC,anterioridad_lejana,hace dos meses,6
+L38,learner,Slovak,ELE,14.0,4.0,item_17,PPC,anterioridad_lejana,hace dos meses,6
+L38,learner,Slovak,ELE,14.0,4.0,item_18,PPC,anterioridad_lejana,hace dos meses,5
+L39,learner,Slovak,ELE,14.0,10.0,item_01,PPS,anterioridad_inmediata,hace un rato,6
+L39,learner,Slovak,ELE,14.0,10.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L39,learner,Slovak,ELE,14.0,10.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L39,learner,Slovak,ELE,14.0,10.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,1
+L39,learner,Slovak,ELE,14.0,10.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L39,learner,Slovak,ELE,14.0,10.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+L39,learner,Slovak,ELE,14.0,10.0,item_07,PPS,anterioridad_lejana,hace dos meses,5
+L39,learner,Slovak,ELE,14.0,10.0,item_08,PPS,anterioridad_lejana,hace dos meses,3
+L39,learner,Slovak,ELE,14.0,10.0,item_09,PPS,anterioridad_lejana,hace dos meses,2
+L39,learner,Slovak,ELE,14.0,10.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L39,learner,Slovak,ELE,14.0,10.0,item_11,PPC,anterioridad_inmediata,hace un rato,3
+L39,learner,Slovak,ELE,14.0,10.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L39,learner,Slovak,ELE,14.0,10.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L39,learner,Slovak,ELE,14.0,10.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L39,learner,Slovak,ELE,14.0,10.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,5
+L39,learner,Slovak,ELE,14.0,10.0,item_16,PPC,anterioridad_lejana,hace dos meses,1
+L39,learner,Slovak,ELE,14.0,10.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L39,learner,Slovak,ELE,14.0,10.0,item_18,PPC,anterioridad_lejana,hace dos meses,4
+L40,learner,Slovak,ELE,10.0,4.0,item_01,PPS,anterioridad_inmediata,hace un rato,6
+L40,learner,Slovak,ELE,10.0,4.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L40,learner,Slovak,ELE,10.0,4.0,item_03,PPS,anterioridad_inmediata,hace un rato,5
+L40,learner,Slovak,ELE,10.0,4.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+L40,learner,Slovak,ELE,10.0,4.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L40,learner,Slovak,ELE,10.0,4.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,5
+L40,learner,Slovak,ELE,10.0,4.0,item_07,PPS,anterioridad_lejana,hace dos meses,5
+L40,learner,Slovak,ELE,10.0,4.0,item_08,PPS,anterioridad_lejana,hace dos meses,7
+L40,learner,Slovak,ELE,10.0,4.0,item_09,PPS,anterioridad_lejana,hace dos meses,7
+L40,learner,Slovak,ELE,10.0,4.0,item_10,PPC,anterioridad_inmediata,hace un rato,5
+L40,learner,Slovak,ELE,10.0,4.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L40,learner,Slovak,ELE,10.0,4.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L40,learner,Slovak,ELE,10.0,4.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+L40,learner,Slovak,ELE,10.0,4.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L40,learner,Slovak,ELE,10.0,4.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L40,learner,Slovak,ELE,10.0,4.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L40,learner,Slovak,ELE,10.0,4.0,item_17,PPC,anterioridad_lejana,hace dos meses,6
+L40,learner,Slovak,ELE,10.0,4.0,item_18,PPC,anterioridad_lejana,hace dos meses,6
+L41,learner,Slovak,ELE,14.0,11.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L41,learner,Slovak,ELE,14.0,11.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L41,learner,Slovak,ELE,14.0,11.0,item_03,PPS,anterioridad_inmediata,hace un rato,2
+L41,learner,Slovak,ELE,14.0,11.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+L41,learner,Slovak,ELE,14.0,11.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L41,learner,Slovak,ELE,14.0,11.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+L41,learner,Slovak,ELE,14.0,11.0,item_07,PPS,anterioridad_lejana,hace dos meses,6
+L41,learner,Slovak,ELE,14.0,11.0,item_08,PPS,anterioridad_lejana,hace dos meses,6
+L41,learner,Slovak,ELE,14.0,11.0,item_09,PPS,anterioridad_lejana,hace dos meses,6
+L41,learner,Slovak,ELE,14.0,11.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L41,learner,Slovak,ELE,14.0,11.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L41,learner,Slovak,ELE,14.0,11.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L41,learner,Slovak,ELE,14.0,11.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+L41,learner,Slovak,ELE,14.0,11.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L41,learner,Slovak,ELE,14.0,11.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L41,learner,Slovak,ELE,14.0,11.0,item_16,PPC,anterioridad_lejana,hace dos meses,2
+L41,learner,Slovak,ELE,14.0,11.0,item_17,PPC,anterioridad_lejana,hace dos meses,3
+L41,learner,Slovak,ELE,14.0,11.0,item_18,PPC,anterioridad_lejana,hace dos meses,2
+L42,learner,Slovak,ELE,15.0,10.0,item_01,PPS,anterioridad_inmediata,hace un rato,5
+L42,learner,Slovak,ELE,15.0,10.0,item_02,PPS,anterioridad_inmediata,hace un rato,5
+L42,learner,Slovak,ELE,15.0,10.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L42,learner,Slovak,ELE,15.0,10.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+L42,learner,Slovak,ELE,15.0,10.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,5
+L42,learner,Slovak,ELE,15.0,10.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,5
+L42,learner,Slovak,ELE,15.0,10.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L42,learner,Slovak,ELE,15.0,10.0,item_08,PPS,anterioridad_lejana,hace dos meses,5
+L42,learner,Slovak,ELE,15.0,10.0,item_09,PPS,anterioridad_lejana,hace dos meses,4
+L42,learner,Slovak,ELE,15.0,10.0,item_10,PPC,anterioridad_inmediata,hace un rato,7
+L42,learner,Slovak,ELE,15.0,10.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L42,learner,Slovak,ELE,15.0,10.0,item_12,PPC,anterioridad_inmediata,hace un rato,7
+L42,learner,Slovak,ELE,15.0,10.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+L42,learner,Slovak,ELE,15.0,10.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,6
+L42,learner,Slovak,ELE,15.0,10.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,7
+L42,learner,Slovak,ELE,15.0,10.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L42,learner,Slovak,ELE,15.0,10.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L42,learner,Slovak,ELE,15.0,10.0,item_18,PPC,anterioridad_lejana,hace dos meses,6
+L43,learner,Slovak,ELE,9.0,3.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L43,learner,Slovak,ELE,9.0,3.0,item_02,PPS,anterioridad_inmediata,hace un rato,5
+L43,learner,Slovak,ELE,9.0,3.0,item_03,PPS,anterioridad_inmediata,hace un rato,2
+L43,learner,Slovak,ELE,9.0,3.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,7
+L43,learner,Slovak,ELE,9.0,3.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,5
+L43,learner,Slovak,ELE,9.0,3.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,6
+L43,learner,Slovak,ELE,9.0,3.0,item_07,PPS,anterioridad_lejana,hace dos meses,7
+L43,learner,Slovak,ELE,9.0,3.0,item_08,PPS,anterioridad_lejana,hace dos meses,5
+L43,learner,Slovak,ELE,9.0,3.0,item_09,PPS,anterioridad_lejana,hace dos meses,6
+L43,learner,Slovak,ELE,9.0,3.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L43,learner,Slovak,ELE,9.0,3.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L43,learner,Slovak,ELE,9.0,3.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L43,learner,Slovak,ELE,9.0,3.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L43,learner,Slovak,ELE,9.0,3.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,4
+L43,learner,Slovak,ELE,9.0,3.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,5
+L43,learner,Slovak,ELE,9.0,3.0,item_16,PPC,anterioridad_lejana,hace dos meses,3
+L43,learner,Slovak,ELE,9.0,3.0,item_17,PPC,anterioridad_lejana,hace dos meses,1
+L43,learner,Slovak,ELE,9.0,3.0,item_18,PPC,anterioridad_lejana,hace dos meses,6
+L44,learner,Slovak,ELE,13.0,14.0,item_01,PPS,anterioridad_inmediata,hace un rato,4
+L44,learner,Slovak,ELE,13.0,14.0,item_02,PPS,anterioridad_inmediata,hace un rato,5
+L44,learner,Slovak,ELE,13.0,14.0,item_03,PPS,anterioridad_inmediata,hace un rato,1
+L44,learner,Slovak,ELE,13.0,14.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L44,learner,Slovak,ELE,13.0,14.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,2
+L44,learner,Slovak,ELE,13.0,14.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+L44,learner,Slovak,ELE,13.0,14.0,item_07,PPS,anterioridad_lejana,hace dos meses,6
+L44,learner,Slovak,ELE,13.0,14.0,item_08,PPS,anterioridad_lejana,hace dos meses,6
+L44,learner,Slovak,ELE,13.0,14.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L44,learner,Slovak,ELE,13.0,14.0,item_10,PPC,anterioridad_inmediata,hace un rato,5
+L44,learner,Slovak,ELE,13.0,14.0,item_11,PPC,anterioridad_inmediata,hace un rato,7
+L44,learner,Slovak,ELE,13.0,14.0,item_12,PPC,anterioridad_inmediata,hace un rato,7
+L44,learner,Slovak,ELE,13.0,14.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L44,learner,Slovak,ELE,13.0,14.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L44,learner,Slovak,ELE,13.0,14.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,5
+L44,learner,Slovak,ELE,13.0,14.0,item_16,PPC,anterioridad_lejana,hace dos meses,5
+L44,learner,Slovak,ELE,13.0,14.0,item_17,PPC,anterioridad_lejana,hace dos meses,5
+L44,learner,Slovak,ELE,13.0,14.0,item_18,PPC,anterioridad_lejana,hace dos meses,5
+L45,learner,Slovak,ELE,10.0,5.0,item_01,PPS,anterioridad_inmediata,hace un rato,1
+L45,learner,Slovak,ELE,10.0,5.0,item_02,PPS,anterioridad_inmediata,hace un rato,1
+L45,learner,Slovak,ELE,10.0,5.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L45,learner,Slovak,ELE,10.0,5.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,2
+L45,learner,Slovak,ELE,10.0,5.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L45,learner,Slovak,ELE,10.0,5.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+L45,learner,Slovak,ELE,10.0,5.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L45,learner,Slovak,ELE,10.0,5.0,item_08,PPS,anterioridad_lejana,hace dos meses,6
+L45,learner,Slovak,ELE,10.0,5.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L45,learner,Slovak,ELE,10.0,5.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L45,learner,Slovak,ELE,10.0,5.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L45,learner,Slovak,ELE,10.0,5.0,item_12,PPC,anterioridad_inmediata,hace un rato,7
+L45,learner,Slovak,ELE,10.0,5.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,7
+L45,learner,Slovak,ELE,10.0,5.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L45,learner,Slovak,ELE,10.0,5.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L45,learner,Slovak,ELE,10.0,5.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L45,learner,Slovak,ELE,10.0,5.0,item_17,PPC,anterioridad_lejana,hace dos meses,3
+L45,learner,Slovak,ELE,10.0,5.0,item_18,PPC,anterioridad_lejana,hace dos meses,2
+L46,learner,Slovak,ELE,16.0,9.0,item_01,PPS,anterioridad_inmediata,hace un rato,4
+L46,learner,Slovak,ELE,16.0,9.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L46,learner,Slovak,ELE,16.0,9.0,item_03,PPS,anterioridad_inmediata,hace un rato,4
+L46,learner,Slovak,ELE,16.0,9.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L46,learner,Slovak,ELE,16.0,9.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L46,learner,Slovak,ELE,16.0,9.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,5
+L46,learner,Slovak,ELE,16.0,9.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L46,learner,Slovak,ELE,16.0,9.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L46,learner,Slovak,ELE,16.0,9.0,item_09,PPS,anterioridad_lejana,hace dos meses,4
+L46,learner,Slovak,ELE,16.0,9.0,item_10,PPC,anterioridad_inmediata,hace un rato,2
+L46,learner,Slovak,ELE,16.0,9.0,item_11,PPC,anterioridad_inmediata,hace un rato,4
+L46,learner,Slovak,ELE,16.0,9.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L46,learner,Slovak,ELE,16.0,9.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L46,learner,Slovak,ELE,16.0,9.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,6
+L46,learner,Slovak,ELE,16.0,9.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,5
+L46,learner,Slovak,ELE,16.0,9.0,item_16,PPC,anterioridad_lejana,hace dos meses,1
+L46,learner,Slovak,ELE,16.0,9.0,item_17,PPC,anterioridad_lejana,hace dos meses,1
+L46,learner,Slovak,ELE,16.0,9.0,item_18,PPC,anterioridad_lejana,hace dos meses,2
+L47,learner,Slovak,bilingual,15.0,13.0,item_01,PPS,anterioridad_inmediata,hace un rato,2
+L47,learner,Slovak,bilingual,15.0,13.0,item_02,PPS,anterioridad_inmediata,hace un rato,5
+L47,learner,Slovak,bilingual,15.0,13.0,item_03,PPS,anterioridad_inmediata,hace un rato,7
+L47,learner,Slovak,bilingual,15.0,13.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L47,learner,Slovak,bilingual,15.0,13.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L47,learner,Slovak,bilingual,15.0,13.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+L47,learner,Slovak,bilingual,15.0,13.0,item_07,PPS,anterioridad_lejana,hace dos meses,5
+L47,learner,Slovak,bilingual,15.0,13.0,item_08,PPS,anterioridad_lejana,hace dos meses,3
+L47,learner,Slovak,bilingual,15.0,13.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L47,learner,Slovak,bilingual,15.0,13.0,item_10,PPC,anterioridad_inmediata,hace un rato,7
+L47,learner,Slovak,bilingual,15.0,13.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L47,learner,Slovak,bilingual,15.0,13.0,item_12,PPC,anterioridad_inmediata,hace un rato,2
+L47,learner,Slovak,bilingual,15.0,13.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,2
+L47,learner,Slovak,bilingual,15.0,13.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L47,learner,Slovak,bilingual,15.0,13.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,3
+L47,learner,Slovak,bilingual,15.0,13.0,item_16,PPC,anterioridad_lejana,hace dos meses,5
+L47,learner,Slovak,bilingual,15.0,13.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L47,learner,Slovak,bilingual,15.0,13.0,item_18,PPC,anterioridad_lejana,hace dos meses,5
+L48,learner,Slovak,bilingual,18.0,5.0,item_01,PPS,anterioridad_inmediata,hace un rato,4
+L48,learner,Slovak,bilingual,18.0,5.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L48,learner,Slovak,bilingual,18.0,5.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L48,learner,Slovak,bilingual,18.0,5.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+L48,learner,Slovak,bilingual,18.0,5.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L48,learner,Slovak,bilingual,18.0,5.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,7
+L48,learner,Slovak,bilingual,18.0,5.0,item_07,PPS,anterioridad_lejana,hace dos meses,7
+L48,learner,Slovak,bilingual,18.0,5.0,item_08,PPS,anterioridad_lejana,hace dos meses,3
+L48,learner,Slovak,bilingual,18.0,5.0,item_09,PPS,anterioridad_lejana,hace dos meses,3
+L48,learner,Slovak,bilingual,18.0,5.0,item_10,PPC,anterioridad_inmediata,hace un rato,7
+L48,learner,Slovak,bilingual,18.0,5.0,item_11,PPC,anterioridad_inmediata,hace un rato,4
+L48,learner,Slovak,bilingual,18.0,5.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L48,learner,Slovak,bilingual,18.0,5.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+L48,learner,Slovak,bilingual,18.0,5.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,4
+L48,learner,Slovak,bilingual,18.0,5.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L48,learner,Slovak,bilingual,18.0,5.0,item_16,PPC,anterioridad_lejana,hace dos meses,3
+L48,learner,Slovak,bilingual,18.0,5.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L48,learner,Slovak,bilingual,18.0,5.0,item_18,PPC,anterioridad_lejana,hace dos meses,4
+L49,learner,Slovak,ELE,9.0,4.0,item_01,PPS,anterioridad_inmediata,hace un rato,1
+L49,learner,Slovak,ELE,9.0,4.0,item_02,PPS,anterioridad_inmediata,hace un rato,1
+L49,learner,Slovak,ELE,9.0,4.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L49,learner,Slovak,ELE,9.0,4.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+L49,learner,Slovak,ELE,9.0,4.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,2
+L49,learner,Slovak,ELE,9.0,4.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,2
+L49,learner,Slovak,ELE,9.0,4.0,item_07,PPS,anterioridad_lejana,hace dos meses,3
+L49,learner,Slovak,ELE,9.0,4.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L49,learner,Slovak,ELE,9.0,4.0,item_09,PPS,anterioridad_lejana,hace dos meses,4
+L49,learner,Slovak,ELE,9.0,4.0,item_10,PPC,anterioridad_inmediata,hace un rato,3
+L49,learner,Slovak,ELE,9.0,4.0,item_11,PPC,anterioridad_inmediata,hace un rato,5
+L49,learner,Slovak,ELE,9.0,4.0,item_12,PPC,anterioridad_inmediata,hace un rato,3
+L49,learner,Slovak,ELE,9.0,4.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+L49,learner,Slovak,ELE,9.0,4.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L49,learner,Slovak,ELE,9.0,4.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,2
+L49,learner,Slovak,ELE,9.0,4.0,item_16,PPC,anterioridad_lejana,hace dos meses,3
+L49,learner,Slovak,ELE,9.0,4.0,item_17,PPC,anterioridad_lejana,hace dos meses,4
+L49,learner,Slovak,ELE,9.0,4.0,item_18,PPC,anterioridad_lejana,hace dos meses,3
+L50,learner,Slovak,bilingual,8.0,10.0,item_01,PPS,anterioridad_inmediata,hace un rato,5
+L50,learner,Slovak,bilingual,8.0,10.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L50,learner,Slovak,bilingual,8.0,10.0,item_03,PPS,anterioridad_inmediata,hace un rato,6
+L50,learner,Slovak,bilingual,8.0,10.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+L50,learner,Slovak,bilingual,8.0,10.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L50,learner,Slovak,bilingual,8.0,10.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+L50,learner,Slovak,bilingual,8.0,10.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L50,learner,Slovak,bilingual,8.0,10.0,item_08,PPS,anterioridad_lejana,hace dos meses,2
+L50,learner,Slovak,bilingual,8.0,10.0,item_09,PPS,anterioridad_lejana,hace dos meses,3
+L50,learner,Slovak,bilingual,8.0,10.0,item_10,PPC,anterioridad_inmediata,hace un rato,7
+L50,learner,Slovak,bilingual,8.0,10.0,item_11,PPC,anterioridad_inmediata,hace un rato,7
+L50,learner,Slovak,bilingual,8.0,10.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L50,learner,Slovak,bilingual,8.0,10.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L50,learner,Slovak,bilingual,8.0,10.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L50,learner,Slovak,bilingual,8.0,10.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,3
+L50,learner,Slovak,bilingual,8.0,10.0,item_16,PPC,anterioridad_lejana,hace dos meses,3
+L50,learner,Slovak,bilingual,8.0,10.0,item_17,PPC,anterioridad_lejana,hace dos meses,1
+L50,learner,Slovak,bilingual,8.0,10.0,item_18,PPC,anterioridad_lejana,hace dos meses,2
+L51,learner,Slovak,ELE,11.0,7.0,item_01,PPS,anterioridad_inmediata,hace un rato,5
+L51,learner,Slovak,ELE,11.0,7.0,item_02,PPS,anterioridad_inmediata,hace un rato,4
+L51,learner,Slovak,ELE,11.0,7.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L51,learner,Slovak,ELE,11.0,7.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L51,learner,Slovak,ELE,11.0,7.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,7
+L51,learner,Slovak,ELE,11.0,7.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,5
+L51,learner,Slovak,ELE,11.0,7.0,item_07,PPS,anterioridad_lejana,hace dos meses,3
+L51,learner,Slovak,ELE,11.0,7.0,item_08,PPS,anterioridad_lejana,hace dos meses,5
+L51,learner,Slovak,ELE,11.0,7.0,item_09,PPS,anterioridad_lejana,hace dos meses,3
+L51,learner,Slovak,ELE,11.0,7.0,item_10,PPC,anterioridad_inmediata,hace un rato,3
+L51,learner,Slovak,ELE,11.0,7.0,item_11,PPC,anterioridad_inmediata,hace un rato,4
+L51,learner,Slovak,ELE,11.0,7.0,item_12,PPC,anterioridad_inmediata,hace un rato,7
+L51,learner,Slovak,ELE,11.0,7.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,3
+L51,learner,Slovak,ELE,11.0,7.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,6
+L51,learner,Slovak,ELE,11.0,7.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,6
+L51,learner,Slovak,ELE,11.0,7.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L51,learner,Slovak,ELE,11.0,7.0,item_17,PPC,anterioridad_lejana,hace dos meses,3
+L51,learner,Slovak,ELE,11.0,7.0,item_18,PPC,anterioridad_lejana,hace dos meses,2
+L52,learner,Slovak,ELE,13.0,8.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L52,learner,Slovak,ELE,13.0,8.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L52,learner,Slovak,ELE,13.0,8.0,item_03,PPS,anterioridad_inmediata,hace un rato,2
+L52,learner,Slovak,ELE,13.0,8.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L52,learner,Slovak,ELE,13.0,8.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L52,learner,Slovak,ELE,13.0,8.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+L52,learner,Slovak,ELE,13.0,8.0,item_07,PPS,anterioridad_lejana,hace dos meses,2
+L52,learner,Slovak,ELE,13.0,8.0,item_08,PPS,anterioridad_lejana,hace dos meses,6
+L52,learner,Slovak,ELE,13.0,8.0,item_09,PPS,anterioridad_lejana,hace dos meses,6
+L52,learner,Slovak,ELE,13.0,8.0,item_10,PPC,anterioridad_inmediata,hace un rato,5
+L52,learner,Slovak,ELE,13.0,8.0,item_11,PPC,anterioridad_inmediata,hace un rato,4
+L52,learner,Slovak,ELE,13.0,8.0,item_12,PPC,anterioridad_inmediata,hace un rato,4
+L52,learner,Slovak,ELE,13.0,8.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,1
+L52,learner,Slovak,ELE,13.0,8.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L52,learner,Slovak,ELE,13.0,8.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,2
+L52,learner,Slovak,ELE,13.0,8.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L52,learner,Slovak,ELE,13.0,8.0,item_17,PPC,anterioridad_lejana,hace dos meses,3
+L52,learner,Slovak,ELE,13.0,8.0,item_18,PPC,anterioridad_lejana,hace dos meses,2
+L53,learner,Slovak,bilingual,12.0,12.0,item_01,PPS,anterioridad_inmediata,hace un rato,5
+L53,learner,Slovak,bilingual,12.0,12.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L53,learner,Slovak,bilingual,12.0,12.0,item_03,PPS,anterioridad_inmediata,hace un rato,5
+L53,learner,Slovak,bilingual,12.0,12.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+L53,learner,Slovak,bilingual,12.0,12.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,7
+L53,learner,Slovak,bilingual,12.0,12.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,6
+L53,learner,Slovak,bilingual,12.0,12.0,item_07,PPS,anterioridad_lejana,hace dos meses,7
+L53,learner,Slovak,bilingual,12.0,12.0,item_08,PPS,anterioridad_lejana,hace dos meses,7
+L53,learner,Slovak,bilingual,12.0,12.0,item_09,PPS,anterioridad_lejana,hace dos meses,3
+L53,learner,Slovak,bilingual,12.0,12.0,item_10,PPC,anterioridad_inmediata,hace un rato,5
+L53,learner,Slovak,bilingual,12.0,12.0,item_11,PPC,anterioridad_inmediata,hace un rato,4
+L53,learner,Slovak,bilingual,12.0,12.0,item_12,PPC,anterioridad_inmediata,hace un rato,7
+L53,learner,Slovak,bilingual,12.0,12.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+L53,learner,Slovak,bilingual,12.0,12.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L53,learner,Slovak,bilingual,12.0,12.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,4
+L53,learner,Slovak,bilingual,12.0,12.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L53,learner,Slovak,bilingual,12.0,12.0,item_17,PPC,anterioridad_lejana,hace dos meses,1
+L53,learner,Slovak,bilingual,12.0,12.0,item_18,PPC,anterioridad_lejana,hace dos meses,5
+L54,learner,Slovak,ELE,15.0,14.0,item_01,PPS,anterioridad_inmediata,hace un rato,2
+L54,learner,Slovak,ELE,15.0,14.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L54,learner,Slovak,ELE,15.0,14.0,item_03,PPS,anterioridad_inmediata,hace un rato,5
+L54,learner,Slovak,ELE,15.0,14.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,6
+L54,learner,Slovak,ELE,15.0,14.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,6
+L54,learner,Slovak,ELE,15.0,14.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,1
+L54,learner,Slovak,ELE,15.0,14.0,item_07,PPS,anterioridad_lejana,hace dos meses,4
+L54,learner,Slovak,ELE,15.0,14.0,item_08,PPS,anterioridad_lejana,hace dos meses,2
+L54,learner,Slovak,ELE,15.0,14.0,item_09,PPS,anterioridad_lejana,hace dos meses,4
+L54,learner,Slovak,ELE,15.0,14.0,item_10,PPC,anterioridad_inmediata,hace un rato,4
+L54,learner,Slovak,ELE,15.0,14.0,item_11,PPC,anterioridad_inmediata,hace un rato,5
+L54,learner,Slovak,ELE,15.0,14.0,item_12,PPC,anterioridad_inmediata,hace un rato,3
+L54,learner,Slovak,ELE,15.0,14.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+L54,learner,Slovak,ELE,15.0,14.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L54,learner,Slovak,ELE,15.0,14.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,6
+L54,learner,Slovak,ELE,15.0,14.0,item_16,PPC,anterioridad_lejana,hace dos meses,2
+L54,learner,Slovak,ELE,15.0,14.0,item_17,PPC,anterioridad_lejana,hace dos meses,2
+L54,learner,Slovak,ELE,15.0,14.0,item_18,PPC,anterioridad_lejana,hace dos meses,3
+L55,learner,Slovak,ELE,11.0,9.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L55,learner,Slovak,ELE,11.0,9.0,item_02,PPS,anterioridad_inmediata,hace un rato,4
+L55,learner,Slovak,ELE,11.0,9.0,item_03,PPS,anterioridad_inmediata,hace un rato,2
+L55,learner,Slovak,ELE,11.0,9.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L55,learner,Slovak,ELE,11.0,9.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L55,learner,Slovak,ELE,11.0,9.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,3
+L55,learner,Slovak,ELE,11.0,9.0,item_07,PPS,anterioridad_lejana,hace dos meses,2
+L55,learner,Slovak,ELE,11.0,9.0,item_08,PPS,anterioridad_lejana,hace dos meses,5
+L55,learner,Slovak,ELE,11.0,9.0,item_09,PPS,anterioridad_lejana,hace dos meses,4
+L55,learner,Slovak,ELE,11.0,9.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L55,learner,Slovak,ELE,11.0,9.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L55,learner,Slovak,ELE,11.0,9.0,item_12,PPC,anterioridad_inmediata,hace un rato,7
+L55,learner,Slovak,ELE,11.0,9.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,3
+L55,learner,Slovak,ELE,11.0,9.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L55,learner,Slovak,ELE,11.0,9.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,2
+L55,learner,Slovak,ELE,11.0,9.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L55,learner,Slovak,ELE,11.0,9.0,item_17,PPC,anterioridad_lejana,hace dos meses,2
+L55,learner,Slovak,ELE,11.0,9.0,item_18,PPC,anterioridad_lejana,hace dos meses,1
+L56,learner,Slovak,ELE,7.0,13.0,item_01,PPS,anterioridad_inmediata,hace un rato,4
+L56,learner,Slovak,ELE,7.0,13.0,item_02,PPS,anterioridad_inmediata,hace un rato,2
+L56,learner,Slovak,ELE,7.0,13.0,item_03,PPS,anterioridad_inmediata,hace un rato,5
+L56,learner,Slovak,ELE,7.0,13.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,3
+L56,learner,Slovak,ELE,7.0,13.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L56,learner,Slovak,ELE,7.0,13.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+L56,learner,Slovak,ELE,7.0,13.0,item_07,PPS,anterioridad_lejana,hace dos meses,3
+L56,learner,Slovak,ELE,7.0,13.0,item_08,PPS,anterioridad_lejana,hace dos meses,2
+L56,learner,Slovak,ELE,7.0,13.0,item_09,PPS,anterioridad_lejana,hace dos meses,4
+L56,learner,Slovak,ELE,7.0,13.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L56,learner,Slovak,ELE,7.0,13.0,item_11,PPC,anterioridad_inmediata,hace un rato,3
+L56,learner,Slovak,ELE,7.0,13.0,item_12,PPC,anterioridad_inmediata,hace un rato,2
+L56,learner,Slovak,ELE,7.0,13.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,6
+L56,learner,Slovak,ELE,7.0,13.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,4
+L56,learner,Slovak,ELE,7.0,13.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,3
+L56,learner,Slovak,ELE,7.0,13.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L56,learner,Slovak,ELE,7.0,13.0,item_17,PPC,anterioridad_lejana,hace dos meses,3
+L56,learner,Slovak,ELE,7.0,13.0,item_18,PPC,anterioridad_lejana,hace dos meses,3
+L57,learner,Slovak,ELE,11.0,4.0,item_01,PPS,anterioridad_inmediata,hace un rato,2
+L57,learner,Slovak,ELE,11.0,4.0,item_02,PPS,anterioridad_inmediata,hace un rato,3
+L57,learner,Slovak,ELE,11.0,4.0,item_03,PPS,anterioridad_inmediata,hace un rato,5
+L57,learner,Slovak,ELE,11.0,4.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L57,learner,Slovak,ELE,11.0,4.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,4
+L57,learner,Slovak,ELE,11.0,4.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+L57,learner,Slovak,ELE,11.0,4.0,item_07,PPS,anterioridad_lejana,hace dos meses,6
+L57,learner,Slovak,ELE,11.0,4.0,item_08,PPS,anterioridad_lejana,hace dos meses,2
+L57,learner,Slovak,ELE,11.0,4.0,item_09,PPS,anterioridad_lejana,hace dos meses,2
+L57,learner,Slovak,ELE,11.0,4.0,item_10,PPC,anterioridad_inmediata,hace un rato,6
+L57,learner,Slovak,ELE,11.0,4.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L57,learner,Slovak,ELE,11.0,4.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L57,learner,Slovak,ELE,11.0,4.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,5
+L57,learner,Slovak,ELE,11.0,4.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L57,learner,Slovak,ELE,11.0,4.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,6
+L57,learner,Slovak,ELE,11.0,4.0,item_16,PPC,anterioridad_lejana,hace dos meses,5
+L57,learner,Slovak,ELE,11.0,4.0,item_17,PPC,anterioridad_lejana,hace dos meses,3
+L57,learner,Slovak,ELE,11.0,4.0,item_18,PPC,anterioridad_lejana,hace dos meses,6
+L58,learner,Slovak,ELE,18.0,8.0,item_01,PPS,anterioridad_inmediata,hace un rato,4
+L58,learner,Slovak,ELE,18.0,8.0,item_02,PPS,anterioridad_inmediata,hace un rato,5
+L58,learner,Slovak,ELE,18.0,8.0,item_03,PPS,anterioridad_inmediata,hace un rato,3
+L58,learner,Slovak,ELE,18.0,8.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,7
+L58,learner,Slovak,ELE,18.0,8.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,6
+L58,learner,Slovak,ELE,18.0,8.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+L58,learner,Slovak,ELE,18.0,8.0,item_07,PPS,anterioridad_lejana,hace dos meses,5
+L58,learner,Slovak,ELE,18.0,8.0,item_08,PPS,anterioridad_lejana,hace dos meses,2
+L58,learner,Slovak,ELE,18.0,8.0,item_09,PPS,anterioridad_lejana,hace dos meses,6
+L58,learner,Slovak,ELE,18.0,8.0,item_10,PPC,anterioridad_inmediata,hace un rato,7
+L58,learner,Slovak,ELE,18.0,8.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L58,learner,Slovak,ELE,18.0,8.0,item_12,PPC,anterioridad_inmediata,hace un rato,4
+L58,learner,Slovak,ELE,18.0,8.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,2
+L58,learner,Slovak,ELE,18.0,8.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,4
+L58,learner,Slovak,ELE,18.0,8.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,6
+L58,learner,Slovak,ELE,18.0,8.0,item_16,PPC,anterioridad_lejana,hace dos meses,2
+L58,learner,Slovak,ELE,18.0,8.0,item_17,PPC,anterioridad_lejana,hace dos meses,2
+L58,learner,Slovak,ELE,18.0,8.0,item_18,PPC,anterioridad_lejana,hace dos meses,1
+L59,learner,Slovak,bilingual,11.0,13.0,item_01,PPS,anterioridad_inmediata,hace un rato,5
+L59,learner,Slovak,bilingual,11.0,13.0,item_02,PPS,anterioridad_inmediata,hace un rato,4
+L59,learner,Slovak,bilingual,11.0,13.0,item_03,PPS,anterioridad_inmediata,hace un rato,2
+L59,learner,Slovak,bilingual,11.0,13.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,4
+L59,learner,Slovak,bilingual,11.0,13.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,5
+L59,learner,Slovak,bilingual,11.0,13.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,6
+L59,learner,Slovak,bilingual,11.0,13.0,item_07,PPS,anterioridad_lejana,hace dos meses,5
+L59,learner,Slovak,bilingual,11.0,13.0,item_08,PPS,anterioridad_lejana,hace dos meses,4
+L59,learner,Slovak,bilingual,11.0,13.0,item_09,PPS,anterioridad_lejana,hace dos meses,5
+L59,learner,Slovak,bilingual,11.0,13.0,item_10,PPC,anterioridad_inmediata,hace un rato,7
+L59,learner,Slovak,bilingual,11.0,13.0,item_11,PPC,anterioridad_inmediata,hace un rato,7
+L59,learner,Slovak,bilingual,11.0,13.0,item_12,PPC,anterioridad_inmediata,hace un rato,6
+L59,learner,Slovak,bilingual,11.0,13.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L59,learner,Slovak,bilingual,11.0,13.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,5
+L59,learner,Slovak,bilingual,11.0,13.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,5
+L59,learner,Slovak,bilingual,11.0,13.0,item_16,PPC,anterioridad_lejana,hace dos meses,1
+L59,learner,Slovak,bilingual,11.0,13.0,item_17,PPC,anterioridad_lejana,hace dos meses,5
+L59,learner,Slovak,bilingual,11.0,13.0,item_18,PPC,anterioridad_lejana,hace dos meses,5
+L60,learner,Slovak,bilingual,16.0,11.0,item_01,PPS,anterioridad_inmediata,hace un rato,3
+L60,learner,Slovak,bilingual,16.0,11.0,item_02,PPS,anterioridad_inmediata,hace un rato,4
+L60,learner,Slovak,bilingual,16.0,11.0,item_03,PPS,anterioridad_inmediata,hace un rato,5
+L60,learner,Slovak,bilingual,16.0,11.0,item_04,PPS,momento_no_terminado,hoy / esta mañana,5
+L60,learner,Slovak,bilingual,16.0,11.0,item_05,PPS,momento_no_terminado,hoy / esta mañana,3
+L60,learner,Slovak,bilingual,16.0,11.0,item_06,PPS,momento_no_terminado,hoy / esta mañana,4
+L60,learner,Slovak,bilingual,16.0,11.0,item_07,PPS,anterioridad_lejana,hace dos meses,7
+L60,learner,Slovak,bilingual,16.0,11.0,item_08,PPS,anterioridad_lejana,hace dos meses,5
+L60,learner,Slovak,bilingual,16.0,11.0,item_09,PPS,anterioridad_lejana,hace dos meses,7
+L60,learner,Slovak,bilingual,16.0,11.0,item_10,PPC,anterioridad_inmediata,hace un rato,3
+L60,learner,Slovak,bilingual,16.0,11.0,item_11,PPC,anterioridad_inmediata,hace un rato,6
+L60,learner,Slovak,bilingual,16.0,11.0,item_12,PPC,anterioridad_inmediata,hace un rato,5
+L60,learner,Slovak,bilingual,16.0,11.0,item_13,PPC,momento_no_terminado,hoy / esta mañana,4
+L60,learner,Slovak,bilingual,16.0,11.0,item_14,PPC,momento_no_terminado,hoy / esta mañana,3
+L60,learner,Slovak,bilingual,16.0,11.0,item_15,PPC,momento_no_terminado,hoy / esta mañana,6
+L60,learner,Slovak,bilingual,16.0,11.0,item_16,PPC,anterioridad_lejana,hace dos meses,4
+L60,learner,Slovak,bilingual,16.0,11.0,item_17,PPC,anterioridad_lejana,hace dos meses,1
+L60,learner,Slovak,bilingual,16.0,11.0,item_18,PPC,anterioridad_lejana,hace dos meses,5

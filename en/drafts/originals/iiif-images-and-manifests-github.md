@@ -27,7 +27,8 @@ doi: XX.XXXXX/phen0000
 
 ### Lesson Goals
 
-This lesson demonstrates how to make high-quality, zoomable, shareable, interoperable images through the [International Image Interoperability Framework (IIIF)](https://en.wikipedia.org/wiki/International_Image_Interoperability_Framework). It provides three methods for creating basic IIIF-compliant images and creating and hosting IIIF manifests of images downloaded to your local device. In particular, you will learn:
+This lesson demonstrates how to make high-quality, zoomable, shareable, interoperable images through the [International Image Interoperability Framework (IIIF)](https://en.wikipedia.org/wiki/International_Image_Interoperability_Framework). It provides three methods for creating basic IIIF-compliant images, and creating and hosting IIIF manifests of images downloaded to your local device. In particular, you will learn:
+
 - How to create Level-0 (basic) compliant IIIF images
 - How to create a IIIF manifest to present Level-0 compliant IIIF images
 - How to host IIIF manifests on GitHub
@@ -35,6 +36,7 @@ This lesson demonstrates how to make high-quality, zoomable, shareable, interope
 ### Prerequisites
 
 There are no fees for processing and hosting through any of these methods and all of the tools and applications used in these methods are open-source. However, in order to follow this lesson, you must have:
+
 - An active [GitHub](https://github.com/) account
 - At least one image downloaded to your local computer, not copyrighted by someone else. You can use [Openverse](https://openverse.org/), the successor to Creative Commons' CC Search, to find suitable images.
 - A strong Internet connection
@@ -47,7 +49,7 @@ All of these methods rely on tools and workflows created by IIIF Technical Coord
 
 ### What is IIIF?
 
-The [International Image Interoperability Framework](https://iiif.io/) describes itself as “a set of open standards for delivering high-quality, attributed digital objects online at scale.” In plain terms, IIIF is a standardized format for delivering digital objects, like images, videos, and even 3D models, from one place on the web to another. The framework allows cultural heritage institutions, project teams, and individuals to share high-resolution digital objects across the web quickly, easily, and in a way that speaks between and across different systems. 
+The [International Image Interoperability Framework](https://iiif.io/) describes itself as 'a set of open standards for delivering high-quality, attributed digital objects online at scale.' In plain terms, IIIF is a standardized format for delivering digital objects, like images, videos, and even 3D models, from one place on the web to another. The framework allows cultural heritage institutions, project teams, and individuals to share high-resolution digital objects across the web quickly, easily, and in a way that speaks between and across different systems. 
 
 Effectively, IIIF standardizes the way images are delivered by servers to platforms, tools, and environments on the web using a series of [Application Programming Interfaces (APIs)](https://en.wikipedia.org/wiki/API) that allow two different computers or pieces of software to communicate with one another. IIIF has both an [Image API](https://iiif.io/api/image/3.0/) and a [Presentation API](https://iiif.io/api/presentation/3.0/): the Image API tells an [image server](https://en.wikipedia.org/wiki/Image_server) how, what size, and what part of an image to serve, while the Presentation API tells the image viewer how, in what order, with what description, etc. to display the image. Because IIIF’s Image API specifies exactly how an image’s pixels will be served to a viewer or user, it’s easy to specify exactly how much and in what way you want the image to be displayed. For more on how IIIF works, see [IIIF’s How It Works](https://iiif.io/get-started/how-iiif-works/#:~:text=IIIF%20is%20a%20way%20to,but%20cannot%20do%20much%20else.) guide.
 
@@ -57,7 +59,7 @@ Image servers can be compliant at different levels, with varying parameters need
 
 #### What is a IIIF Manifest?
 
-An [International Image Interoperability Framework manifest](https://iiif.io/guides/using_iiif_resources/) is a file that contains all of the information about an image or group of images served using IIIF, including the [metadata](https://en.wikipedia.org/wiki/Metadata), order of presentation, size specifications, etc. Creating manifests for your images means that you can specify metadata about that image that will display when the manifest is viewed in a IIIF-compatible viewer. There are also tools, digital exhibition platforms, and viewers that only accept manifests, not images, so knowing how to create compliant images *and* manifests is important for effectively leveraging IIIF.
+An [International Image Interoperability Framework manifest](https://iiif.io/guides/using_iiif_resources/) is a file that contains all of the information about an image or group of images served using IIIF, including the [metadata](https://en.wikipedia.org/wiki/Metadata), order of presentation, size specifications, etc. Creating manifests for your images means that you can specify metadata about that image that will display when the manifest is viewed in an IIIF-compatible viewer. There are also tools, digital exhibition platforms, and viewers that only accept manifests, not images, so knowing how to create compliant images *and* manifests is important for effectively leveraging IIIF.
 
 IIIF manifests rely on [Uniform Resource Identifiers (URIs)](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) to identify and access IIIF-compliant images on the web and display them using the IIIF Presentation API. There are two uniform identifiers that can be used to create manifests: the **info.json URI** and the **image URI**.
 
@@ -70,7 +72,7 @@ This lesson can be applied to both version 2 and version 3 of the IIIF APIs. Kno
 
 In terms of structure, IIIF v3 manifests are formatted according to the [W3C Web Annotation Data Model](https://www.w3.org/TR/annotation-model/), an [extensible](https://en.wikipedia.org/wiki/Extensible_programming) specification to ensure annotations are interoperable across platforms and systems. Annotations, or pieces of media associated with a web resource, are grouped together and ordered using Annotation Pages; each v3 manifest will include an object with the `AnnotationPage` type with other objects with the `Annotation` type nested inside.
 
-Using v3 is necessary for users who want to create manifests with rich audio/video content, like clips, sound recordings, and non-2D media. v3 is also optimized for compatibility with different web resources, given the adoption of the W3C Web Annotation model. Ultimately, using v2 is only needed if you intend to use a technology, software, or viewer that only accepts v2 manifests. Otherwise, using v3 is recommended. You can see all of the changes made in Version 3.0 in the [IIIF Presentation API Version 3.0 Change Log](https://iiif.io/api/presentation/3.0/change-log/#14-classes-changes).
+Using v3 is necessary for users who want to create manifests with rich audio/video content, like clips, sound recordings, and non-2D media. v3 is also optimized for compatibility with different web resources, given the adoption of the W3C Web Annotation model. Ultimately, v2 is only needed if you intend to use a technology, software, or viewer that only accepts v2 manifests. Otherwise, v3 is recommended. You can see all of the changes made in Version 3.0 in the [IIIF Presentation API Version 3.0 Change Log](https://iiif.io/api/presentation/3.0/change-log/#14-classes-changes).
 
 
 #### What are Manifest Editors?
@@ -88,16 +90,17 @@ GitHub Pages also automatically serves files to the web with permissive [Cross-O
 ### Which Method Should I Choose?
 
 Deciding which of these methods to use is dependent on:
+
 1. Your comfort and skill level with navigating the command line and using [Command Line Interface (CLI)](https://en.wikipedia.org/wiki/Command-line_interface) tools
 2. Your comfort and skill level with editing JSON files
-3. The amount of images you have to process
+3. The volume of images you have to process
 4. Whether you have particular specifications for how the images process and display
 
 Method 1 may be best for those with limited/no coding knowledge, limited/no command-line knowledge, and/or those looking for a quick, simple IIIF-compliant solution. Method 1 does not allow for deep zooming or image manipulation (such as rotation and displaying fragments), and is not suited for displaying large, high-quality image files.
 
 Method 2 may be best for those with limited experience using the command line interface or manipulating JSON files, since the tool it uses has a visual editor that allows you to upload, process, and retrieve images and manifests without any programming skills. Method 2 may also be good for those who do not have particular specifications in terms of quality or the number of image tiles produced, as the tool it uses does not allow for these specifications. Method 2 is also good for those who would like basic deep-zooming for their images.
 
-Method 3 may be best for those with moderate knowledge of the command line and who have experience editing JSON files. Method 3 may also be good for those who have particular specifications in mind for their images to meet, as the CLI tool used in this method allows for a series of arguments that can enable highly-controlled resulting images. Method 3 may also be good for those looking to batch edit many images at once. If you have never used the command line before, take a look at Ian Milligan and James Baker's [Introduction to the Bash Command Line lesson](https://programminghistorian.org/en/lessons/intro-to-bash) before you begin. 
+Method 3 may be best for those with moderate knowledge of the command line and who have experience editing JSON files. Method 3 may also be good for those who have particular specifications for their images, as the CLI tool used in this method allows for a series of arguments that can enable highly-controlled resulting images. Method 3 may also be good for batch editing many images at once. If you have never used the command line before, take a look at Ian Milligan and James Baker's [Introduction to the Bash Command Line lesson](https://programminghistorian.org/en/lessons/intro-to-bash) before you begin. 
 
 Note that time is not included as a factor for consideration, as all of these methods entail significant processing time. 
 
@@ -114,20 +117,21 @@ The following table illustrates the basic pros and cons of each method, with the
 
 Method 1 employs GitHub Pages to host the simplest possible Level-0 manifest, without the need for an image server/use of the Image API. This method requires only the image file and a barebones `info.json` file, and does not require any programming knowledge or installations.
 
-The caveat is that this method does not support deep zooming. The image will be displayed as-is, without any modifications whatsoever.
+The caveat is that this method does not support deep zooming. The image will be displayed as is, without any modifications whatsoever.
 
 ### Uploading Your Images to the Web
 
-The first step is to upload your image to a web server. For the sake of this lesson, you will upload an image to a repository on GitHub.com and serve it through GitHub Pages, where you will also host the manifests later.
+The first step is to upload your image to a web server. For the sake of this lesson, upload an image to a repository on GitHub.com and serve it through GitHub Pages, where you will also host the manifests later.
 
-Create a new repository on GitHub. Create a new folder for `images` and another for `manifests`. In the new repository, click "uploading an existing file." Upload your image files.
+Create a new repository on GitHub. Create a new folder for `images` and another for `manifests`. In the new repository, click 'uploading an existing file.' Upload your image files.
 
-To serve the images to the web, go to the repository home and click Settings > GitHub Pages. Set the Source to "Deploy from a branch" and the Branch to "main /(root)".
+To serve the images to the web, go to the repository home and click Settings > GitHub Pages. Set the Source to 'Deploy from a branch' and the Branch to 'main /(root)'.
 
-Your image should now be available at "https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE FILENAME`".
+Your image should now be available at 'https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE FILENAME`'.
 
 ### Find the Identifiers for Your Image
-For this method, the identifier for your image is the full URL to your image on the web: "https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE FILENAME`". No additional specifications, backslashes, etc. are required.
+
+For this method, the identifier for your image is the full URL to your image on the web: 'https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE FILENAME`'. No additional specifications, backslashes, etc. are required.
 
 At this stage, you can go to the [Creating Manifests](#creating-manifests) section to create manifest files manually or using a manifest editor.
 
@@ -138,9 +142,10 @@ At this stage, you can go to the [Creating Manifests](#creating-manifests) secti
 Method 2 employs the use of IIIF Workbench, a tool created by IIIF Technical Coordinator [Glen Robson](https://github.com/glenrobson) that allows you to upload an image from your local computer that will then be converted to IIIF tiles and stored in your own version of the IIIF Workbench GitHub repository. 
 
 There are, however, caveats with this method that are worth mentioning before you get started.
+
 1. IIIF Workbench is slow at breaking down images with the tiler, so it can take a while for images to upload. 
-2. IIIF Workbench sometimes never generates tiles for an image—it just loads on "Generating tiles" forever. This is typically because an image has been resized incorrectly, is too big, or is not in an accepted file format.
-3. IIIF Workbench does not work with organizational GitHub accounts because you can't log into organizational accounts.
+2. IIIF Workbench sometimes never generates tiles for an image — it just loads on 'Generating tiles' forever. This is typically because an image has been resized incorrectly, is too big, or is not in an accepted file format.
+3. IIIF Workbench does not work with organizational GitHub accounts because you cannot log into organizational accounts.
 4. Uploaded files must be under 100 MB. This excludes high-quality [TIFFs](https://en.wikipedia.org/wiki/TIFF), unless you resize the TIFFs significantly.
 
 IIIF Workbench is overall a great tool, that prioritizes ease of use and features a clear and simple [Graphical User Interface (GUI)](https://en.wikipedia.org/wiki/Graphical_user_interface) to make uploading images easier, especially for those with limited knowledge of programming.
@@ -149,7 +154,7 @@ IIIF Workbench is overall a great tool, that prioritizes ease of use and feature
 
 #### Download Your Image(s)
 
-The first step is to download your image to your local computer from any source. Often online repositories like Google Images will not offer you an option for what file format you want to download the image in, but some repositories, like online museum collections, will. If you have the option, download your image using the optimal file format available. For creating high-quality IIIF-compliant images, [Tagged Image File Format (TIFF)](https://en.wikipedia.org/wiki/TIFF) is best, [Joint Photographic Experts Group (JPEG)](https://en.wikipedia.org/wiki/JPEG) is second best, and [Portable Network Graphics (PNG)](https://en.wikipedia.org/wiki/PNG) are third best.  
+The first step is to download your image to your local computer from any source. Often online repositories like Google Images will not offer you an option for what file format you want to download an image in, but some repositories, like online museum collections, will. If you have the option, download your image using the optimal file format available. For creating high-quality IIIF-compliant images, [Tagged Image File Format (TIFF)](https://en.wikipedia.org/wiki/TIFF) is best, [Joint Photographic Experts Group (JPEG)](https://en.wikipedia.org/wiki/JPEG) is second best, and [Portable Network Graphics (PNG)](https://en.wikipedia.org/wiki/PNG) are third best.  
 
 If you have multiple images to download, it is best to place them all in the same folder on your computer so that you can easily keep track of which images you are working with.
 
@@ -157,7 +162,7 @@ If you have multiple images to download, it is best to place them all in the sam
 
 Either during the download process or after you have downloaded your image to your local computer, you will want to check the size of the image file.
 
-In Finder, go to your image file. Right-click (mouse) or two-finger click (trackpad) on the image. Click Get Info to open an info popup. In the popup, you should see the file size in bytes and KB or MB under General > File Size.
+In Finder, go to your image file. Right-click (mouse) or two-finger click (trackpad) on the image. Click 'Get Info' to open an info pop-up. In the pop-up, you should see the file size in bytes and KB or MB under 'General > File Size'.
 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-01.png" alt="A photo of a cat resting on a blanket. In a popup box, technical details about the image file under the heading 'General Information'." caption="Figure 1. General Information about an image file's technical specifications in macOS Finder." %}
 

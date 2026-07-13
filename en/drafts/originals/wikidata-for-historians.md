@@ -63,7 +63,7 @@ To get an idea of Wikidata's nature, and without worrying too much about the for
 
 The page consists of three sections: **labels**, **statements**, and **identifiers**. At the top of this page, you will see many variant versions and spellings of Abdel Nasser's name in various languages. The main spelling is called a **label**, and each variant is an **alias**.
 
-Wikidata's multilingual functionality is extensive. Click on '**all entered languages**' to see how many languages are represented. If you wish to interact with the whole knowledge base in a language other than English, log in and click '**English**' at the top of the page. You can then choose another language (and you can [do more with language on Wikidata](https://www.wikidata.org/wiki/Help:Navigating_Wikidata/User_Options#Language_settings)). 
+Wikidata's multilingual functionality is extensive. Click on **all entered languages** to see how many languages are represented. If you wish to interact with the whole knowledge base in a language other than English, log in and click **English** at the top of the page. You can then choose another language (and you can [do more with language on Wikidata](https://www.wikidata.org/wiki/Help:Navigating_Wikidata/User_Options#Language_settings)). 
 
 {% include figure.html filename="en-or-wikidata-for-historians-01.png" alt="Screenshot of top lines of Wikidata item page for Gamal Abdel Nasser, showing label, description, and aliases in English, French, Chinese, and Cantonese. Links to change page language and to show all entered languages are circled in red." caption="Figure 1: Abdel Nasser labels and languages." %}
 

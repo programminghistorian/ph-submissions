@@ -131,7 +131,7 @@ resumen <- datos |>
 ### Filosofía de tidyplots
 
 Aunque ggplot2 es la opción estándar para la visualización de datos, el paquete tidyplots, desarrollado por Jan Broder Engler (2025), representa una excelente opción para visualizar los datos en ASL debido a su facilidad de uso y su estilo limpio y orientado a publicaciones científicas. Tidyplots es especialmente apropiado tanto para los estudiantes como para los investigadores en ASL debido a su código más conciso, su gramática simplificada y su curva de aprendizaje más baja en comparación con ggplot2. 
-En [la página oficial de tidyplots](https://jbengler.github.io/tidyplots/articles/Visualizing-data.html) se encuentran tres artículos que resumen la guía completa para crear y personalizar gráficos con este paquete: [Visualizing data](https://perma.cc/3KYT-4GAC), [Advanced plotting](https://perma.cc/4Q7B-EDXR) y [Color schemes](https://perma.cc/9FTX-XXLP).  
+En [la página oficial de tidyplots](https://jbengler.github.io/tidyplots/articles/Visualizing-data.html) se encuentran tres artículos que resumen la guía completa para crear y personalizar gráficos con este paquete: [Visualizing data](https://perma.cc/3KYT-4GAC), [Advanced plotting](https://perma.cc/4Q7B-EDXR) y [Color schemes](https://perma.cc/9FTX-XXLP).[^1]  
 
 La estructura básica de Tidyplots es:
 

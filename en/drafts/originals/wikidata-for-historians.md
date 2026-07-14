@@ -53,7 +53,7 @@ Thus far, Wikidata has been more important for popular consumers of history than
 
 ## A Case Study about Heads of State
 
-This lesson uses a comparison between mid-twentieth-century Egyptian president Gamal Abdel Nasser and other heads of state from his era as an example case study. The goal is to provide a clear, easy-to-follow introduction to working with Wikidata. As you move through the lesson, you are encouraged to repeat the example exercises using people, places, or things drawn from your own fields of interest.
+This lesson uses a comparison between mid-twentieth-century Egyptian president Gamal Abdel Nasser and other heads of state from his era as an example case study. The goal is to provide a clear, easy-to-follow introduction to working with Wikidata. As you move through the lesson, you are encouraged to repeat the example exercises using persons, places, or things drawn from your own fields of interest.
 
 The Gamal Abdel Nasser comparison is useful for another reason: data on heads of state is fairly complete in Wikidata. When you explore your own areas of interest, you may find more gaps. You will also almost certainly find some ambiguities and inconsistencies in how data is presented in Wikidata, especially when exploring information you know well. Rather than being drawbacks, Wikidata’s gaps and ambiguities can also be valuable for historical research. Near the end of this lesson, for example, you will explore the unexpected findings Wikipedia offers about the ideology of Abdel Nasser and other heads of state. This case study, based on a well-documented area of political history, is intended as a simple starting point to guide you toward more complex and meaningful investigations of your own design.
 

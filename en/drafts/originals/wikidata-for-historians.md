@@ -109,7 +109,7 @@ You are probably thinking that, on the face of things, there's nothing especiall
 
 ## Combining Factoids
 
-Wikidata offers tools and data that allow you to combine information with other background facts. These combinations can help you understand context. For example, you might wonder how age figures in revolutionary careers. By combining facts on Abdel Nasser's item page with other items, you might recognize a meaningful pattern. You'll learn more about constructing Wikidata queries later, but let's start by looking at the results of a few preconstructed queries. 
+Wikidata offers tools and data that allow you to combine information with other background factoids. These combinations can help you understand context. For example, you might wonder how age figures in revolutionary careers. By combining factoids on Abdel Nasser's item page with other items, you might recognize a meaningful pattern. You'll learn more about constructing Wikidata queries later, but let's start by looking at the results of a few preconstructed queries. 
 
 Let's say you are interested in the role that youth may have played in Abdel Nasser's rise to power, and you want to consider the age at which other mid-twentieth-century leaders took power. Here's [a query that returns that information](https://w.wiki/E$jz) via the Wikidata query service. Don't worry too much about the details of the query at this point; if you are curious, the grey lines explain what each step accomplishes. To execute the query, press the blue **play** button at the bottom left.
 
@@ -324,7 +324,7 @@ This list should be understood as provisional rather than authoritative, especia
 
 {% include figure.html filename="en-or-wikidata-for-historians-11.png" alt="Screenshot of the top portion of Wikidata item page for Nasserism, with a red circle indicating the What links here hyperlink in the left hand menu" caption="Figure 11: What links to Nasserism item." %}
 
-As mentioned earlier, the knowledge base handles concrete facts more convincingly than abstractions. But abstraction and ambiguity can also be fascinating. For example, if you're researching Egyptian political history, you may be intrigued by Wikidata's claim that Abdel Nasser was associated with progressivism. 
+As mentioned earlier, the knowledge base handles concrete factoids more convincingly than abstractions. But abstraction and ambiguity can also be fascinating. For example, if you're researching Egyptian political history, you may be intrigued by Wikidata's claim that Abdel Nasser was associated with progressivism. 
 
 Let's see what a SPARQL query can tell us about how progressivism is described in Wikidata. Let's return to the simple 'Cats' query example encountered above.
 

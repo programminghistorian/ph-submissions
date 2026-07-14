@@ -90,7 +90,7 @@ A continuación, carga los paquetes:
 ```r
 library(tidyverse)
 library(tidyplots)
-
+```
 Para poder seguir esta lección, descarga el archivo [datos_aceptabilidad.csv](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizacion-juicios-aceptabilidad-tidyplots-ggplot2/datos_aceptabilidad.csv)), y guárdalos en tu ordenador. Después, establece el directorio de trabajo (indicándole a R e qué carpeta del ordenador está guardado el archivo) y guárdalo con el nombre datos:   
 
 ```r
@@ -155,7 +155,7 @@ violinchart00 <- datos |>
     adjust_x_axis_title("L1") |>
     adjust_y_axis(limits = c(1, 7), breaks = 1:7)
 violinchart00 
-    
+```    
 Puedes guardar el gráfico con la función `ggsave("violinchart00.png", plot = violinchart00)`. Los gráficos se guardan en tu directorio de trabajo. 
     
 El resultado es el gráfico en la Figura 1 que revela una tendencia interesante con respecto a la interacción entre la L1 y el tiempo verbal. Los hablantes nativos muestran una preferencia más clara por el PPS sobre el PPC (media ≈  5.5 para el PPS, media ≈ 4 para el PPC), mientras que los juicios del PPC y el PPS por los aprendientes muestran una distribución diferente (media ≈  4 para el PPS, media ≈  5 para el PPC).
@@ -175,8 +175,7 @@ violinchart01 <- datos |>
   adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
   adjust_colors(c("#1B7837", "#762A83")) |>
   adjust_title("Los juicios según el tiempo verbal y el modificador adverbial: Hablantes nativos vs. aprendientes de español")   
-violinchart01
-  
+violinchart01  
 ```
 La función `add_violin()` dibuja el violín; `add_mean_dot()` superpone el punto de la media`, y `split_plot()` divide el gráfico en dos paneles separados. Con `adjust_colors()` asignamos colores a los dos grupos, uno por cada grupo de participantes. [^2]
 
@@ -199,7 +198,7 @@ violinchart02 <-datos |>
   adjust_colors(c("#1B7837", "#762A83")) |>
   adjust_title("Los juicios según el tiempo verbal y el modificador adverbial: Instrucción bilingüe vs. ELE")
 violinchart02
-
+```
 {% include figure.html filename="violin_chart.02.png", alt=“La Figura 3 es un gráfico de violín con dos paneles (bilingüe y ELE) que muestra la distribución completa de los juicios de aceptabilidad (escala 1-7) según el tiempo verbal (PPC, PPS) y el tipo de modificador adverbial (anterioridad inmediata, anterioridad lejana, momento no terminado), con un punto marcando la media de cada distribución. Los dos paneles muestran patrones muy similares entre sí: en ambos grupos, anterioridad inmediata tiene la media más alta en PPC (~5.4-5.6) y baja notablemente en PPS (~3.2-3.5), mientras que anterioridad lejana y momento no terminado se mantienen en valores intermedios en ambos tiempos verbales, con distribuciones amplias y bastante solapadas entre los tres tipos de modificador." caption = "Figura 3. Gráfico de violín que muestra la distribución de los juicios de aceptabilidad según el tiempo verbal (PPC vs. PPS) y el tipo de modificador adverbial (anterioridad inmediata, anterioridad lejana, momento no terminado), comparando aprendices con instrucción bilingüe y con instrucción ELE. Los puntos indican la media de cada distribución." %} 
 
 Este gráfico responde directamente a una pregunta de investigación interesante: ¿difieren los juicios de los aprendientes con instrucción bilingüe y los que recibieron clases de ELE? Como se puede observar en el gráfico, parece que los juicios de ambos grupos son comparables y no cambian mucho con el tipo de instrucción. El gráfico indica que ambos grupos prefieren los adverbios de anterioridad inmediata con el PPC (media grupo bilingüe ≈  5.6, media grupo ELE ≈ 5.4) y los adverbios de anterioridad lejana con el PPS (media grupo bilingüe ≈ 4.4, media grupo ELE ≈ 4.6) y momento no terminado con el PPC (media grupo bilingüe ≈ 4.3, media grupo ELE ≈  4.4). Las similitudes en los juicios por los dos grupos se podrían atribuir al contexto geográfico (aunque uno de los grupos recibe clases de ELE y el otro tiene algunas de sus asignaturas impartidas en español, ambos grupos estudian español en su país de origen).
@@ -313,8 +312,7 @@ scatterplot02 <- scatterplot01 |>
   add(ggplot2::geom_smooth(method = "lm", se = FALSE))  |> 
   add(ggplot2::geom_hline(yintercept = mean(resumen$media),
   linetype = "dotted", color = "black")) 
-scatterplot02
-  
+scatterplot02  
 ```
 El resultado de esta modificación muestra dos líneas de regresión para cada grupo y una línea de la media global de los juicios de todos los aprendientes, lo que permite no solo ver si los participantes con **aoa** más alta tienden a estar por debajo de esa media, sino también comparar la tendencia de cada grupo (**bilingual** vs. **ELE**) con respecto al rendimiento medio general:
 
@@ -368,7 +366,7 @@ matrix <- datos |>
   theme(axis.text.x = element_text(angle = 55, hjust = 1),
         strip.background = element_rect(fill = "grey90"))
  matrix
-        
+ ```       
 
 {% include figure.html filename="violin_charts_matrix.png" alt=“La Figura 10 es una matriz de gráficos de violín con diagramas de caja que muestra los juicios de aceptabilidad (1–7) según el tipo de instrucción (Bilingüe vs. ELE), el tiempo verbal (PPC vs. PPS) y el tipo de modificador adverbial. El PPC con anterioridad inmediata muestra puntuaciones más altas en ambos grupos que anterioridad lejana y momento no terminado, mientras que el PPS obtiene las puntuaciones más altas con anterioridad lejana, seguida por el momento no terminado y anterioridad inmediata." caption = "Figura 10. Matriz de diagramas de violín que muestra la distribución de los juicios de aceptabilidad por tipo de instrucción (Bilingüe vs. ELE), tiempo verbal (pretérito perfecto compuesto vs. pretérito perfecto simple) y tipo de modificador adverbial. Cada violín muestra la densidad de las respuestas y el diagrama de caja integrado indica la mediana y el rango intercuartílico. Los puntos representan valores atípicos." %} 
 
@@ -398,7 +396,6 @@ legend("right",
        pch    = c(1, 4),
        title  = "Instruction",
        cex    = 0.4,  xpd    = NA)     
-
 ```
 {% include figure.html filename="scatterplot_matrix.png" alt=“La Figura 11 es una matriz de diagramas de dispersión de 3x3 paneles que muestra las relaciones entre tres variables (juicio medio de aceptabilidad, edad de adquisición del español y años de aprendizaje) para los aprendices, diferenciando el tipo de instrucción mediante símbolo y color (círculos rojos para bilingüe y cruces verdes para ELE). La relación entre el juicio medio de aceptabilidad y las otras dos variables no muestra una tendencia clara, con puntos dispersos en todo el rango sin importar el tipo de instrucción. La relación entre la edad de adquisición y años de aprendizaje muestra una tendencia negativa.” caption = ”Figura 11. Matriz de gráficos de dispersión entre tres variables: juicio medio de aceptabilidad de los aprendientes, edad de adquisición del español y años de aprendizaje, diferenciando el tipo de instrucción (bilingüe: círculos rojos; ELE: cruces verdes)." %} 
 

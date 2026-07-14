@@ -203,7 +203,7 @@ violinchart02
 
 Este gráfico responde directamente a una pregunta de investigación interesante: ¿difieren los juicios de los aprendientes con instrucción bilingüe y los que recibieron clases de ELE? Como se puede observar en el gráfico, parece que los juicios de ambos grupos son comparables y no cambian mucho con el tipo de instrucción. El gráfico indica que ambos grupos prefieren los adverbios de anterioridad inmediata con el PPC (media grupo bilingüe ≈  5.6, media grupo ELE ≈ 5.4) y los adverbios de anterioridad lejana con el PPS (media grupo bilingüe ≈ 4.4, media grupo ELE ≈ 4.6) y momento no terminado con el PPC (media grupo bilingüe ≈ 4.3, media grupo ELE ≈  4.4). Las similitudes en los juicios por los dos grupos se podrían atribuir al contexto geográfico (aunque uno de los grupos recibe clases de ELE y el otro tiene algunas de sus asignaturas impartidas en español, ambos grupos estudian español en su país de origen).
  
-### Diagramas de caja y de línea con tidyplots
+### Diagramas de caja y de líneas con tidyplots
 
 Un tipo de gráfico que se puede utilizar para comparar las medias de los juicios entre condiciones e identificar valores extremos es el diagrama de caja con barras de error que representan el error estándar de la media.
 

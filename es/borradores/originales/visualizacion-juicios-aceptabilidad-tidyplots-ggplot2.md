@@ -91,7 +91,7 @@ A continuación, carga los paquetes:
 library(tidyverse)
 library(tidyplots)
 ```
-Para poder seguir esta lección, descarga el archivo [datos_aceptabilidad.csv](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizacion-juicios-aceptabilidad-tidyplots-ggplot2/datos_aceptabilidad.csv)), y guárdalos en tu ordenador. Después, establece el directorio de trabajo (indicándole a R e qué carpeta del ordenador está guardado el archivo) y guárdalo con el nombre datos:   
+Para poder seguir esta lección, descarga el archivo [datos_aceptabilidad.csv](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizacion-juicios-aceptabilidad-tidyplots-ggplot2/datos_aceptabilidad.csv), y guárdalos en tu ordenador. Después, establece el directorio de trabajo (indicándole a R e qué carpeta del ordenador está guardado el archivo) y guárdalo con el nombre datos:   
 
 ```r
 setwd("/Users/zuzana/Documents") 

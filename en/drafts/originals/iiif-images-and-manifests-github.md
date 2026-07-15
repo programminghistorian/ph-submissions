@@ -423,7 +423,7 @@ If you need to upload your manifests manually for Methods 1 and 3, open the `man
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-08.png" alt="Part of a manifest JSON file. Line 3 starting with 'id' is highlighted to show the edited manifest URI." caption="Figure 8. The updated manifest URI in a manifest JSON file processed using Digirati's Manifest Editor." %}
 
 <div class="alert alert-warning">
-Make sure you commit your changes as you go so that they save!
+Make sure you commit your changes as you go!
 </div>
 
 ## Using Your Manifests
@@ -439,6 +439,7 @@ Some options for IIIF viewers include: [Theseus](https://theseusviewer.org/), [R
 ## Conclusion
 
 IIIF is a great framework for publishing, displaying, using, and sharing images with rich, deep zooming and high quality presentation. In this lesson, you learned how to take a downloaded image file and turn it into a highly usable and reusable IIIF manifest, including:
+
 - What IIIF, IIIF manifests, and Level-0 IIIF compliance are
 - How to choose a method for creating Level-0 compliant IIIF images and manifests that aligns with your skills and priorities
 - How to process images downloaded on your computer into IIIF-compliant, web-hosted images using the IIIF Workbench tool

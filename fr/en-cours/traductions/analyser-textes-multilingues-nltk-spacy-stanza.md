@@ -18,8 +18,8 @@ translator:
 translation-editor:
 - Émilien Schultz
 translation-reviewer:
-- Forename Surname
-- Forename Surname
+- Chloé Choquet
+- Alioscha Massein
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/677
 difficulty: 2
 activity: analyzing

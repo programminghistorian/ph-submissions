@@ -63,8 +63,8 @@ An [International Image Interoperability Framework manifest](https://iiif.io/gui
 
 IIIF manifests rely on [Uniform Resource Identifiers (URIs)](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) to identify and access IIIF-compliant images on the web and display them using the IIIF Presentation API. There are two uniform identifiers that can be used to create manifests: the **info.json URI** and the **image URI**.
 
-1. The **`info.json` URI** requests information about the image service, i.e. how the image is being served to the web. The `info.json` URI will include the path to the `info.json` file for that image in your GitHub repository: 'https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/`info.json`'. 
-2. The **image API URI** requests information about the image itself (dimensions, rotation, etc.) as processed by the IIIF Image API. The image API URI will include the path to the folder with the full resolution tiles of your image in your GitHub repository: 'https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/full/full/0/default.`IMAGE FILE EXTENSION`'.
+1. The **`info.json` URI** requests information about the image service, i.e. how the image is being served to the web. The `info.json` URI will include the path to the `info.json` file for that image in your GitHub repository: `https://YOUR GITHUB USERNAME.github.io/YOUR REPO NAME/images/YOUR IMAGE FILENAME\info.json`'. 
+3. The **image API URI** requests information about the image itself (dimensions, rotation, etc.) as processed by the IIIF Image API. The image API URI will include the path to the folder with the full resolution tiles of your image in your GitHub repository: `https://YOUR GITHUB USERNAME.github.io/YOUR REPO NAME/images/YOUR IMAGE FILENAME/full/full/0/default.`IMAGE FILE EXTENSION`'.
 
 #### What is the Difference Between IIIF Versions?
 
@@ -122,11 +122,11 @@ The caveat is that this method does not support deep zooming. The image will be 
 
 The first step is to upload your image to a web server. For the sake of this lesson, upload an image to a repository on GitHub.com and serve it through GitHub Pages, where you will also host the manifests later.
 
-Create a new repository on GitHub. Create a new folder for `images` and another for `manifests`. In the new repository, click 'uploading an existing file.' Upload your image files.
+Create a new repository on GitHub. Create a new folder for `images` and another for `manifests`. In the new repository, click **Add file > Upload files**. Upload your image files.
 
 To serve the images to the web, go to the repository home and click Settings > GitHub Pages. Set the Source to 'Deploy from a branch' and the Branch to 'main /(root)'.
 
-Your image should now be available at 'https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE FILENAME`'.
+Your image should now be available at `https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO-NAME/images/YOUR-IMAGE-FILENAME`.
 
 ### Find the Identifiers for Your Image
 
@@ -161,7 +161,7 @@ If you have multiple images to download, it is best to place them all in the sam
 
 Either during the download process or after you have downloaded your image to your local computer, you will want to check the size of the image file.
 
-In Finder, go to your image file. Right-click (mouse) or two-finger click (trackpad) on the image. Click 'Get Info' to open an info pop-up. In the pop-up, you should see the file size in bytes and KB or MB under 'General > File Size'.
+In Finder, go to your image file. Right-click (mouse) or two-finger click (trackpad) on the image. Click **Get Info** to open an info pop-up. In the pop-up, you should see the file size in bytes and KB or MB under **General > File Size**.
 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-01.png" alt="A photo of a cat resting on a blanket. In a popup box, technical details about the image file under the heading 'General Information'." caption="Figure 1. General Information about an image file's technical specifications in macOS Finder." %}
 
@@ -169,7 +169,7 @@ In Finder, go to your image file. Right-click (mouse) or two-finger click (track
 
 If your image file size is over 100 MB, you will have to resize it to upload it to IIIF Workbench. If not, you can skip this step.
 
-Open the image in Preview. In the Mac menu bar at the top of the screen, click File > Export. Select PNG, TIFF, or JPEG. Move the scroller so that the file size displayed is under 100 MB, but as close to lossless as possible.
+Open the image in Preview. In the Mac menu bar at the top of the screen, click **File > Export**. Select PNG, TIFF, or JPEG. Move the scroller so that the file size displayed is under 100 MB, but as close to lossless as possible.
 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-02.png" alt="A dialog box with file export options over a blurred photo of a cat resting on a blanket. Export options include filename, tags, download location, file format, quality, and file size." caption="Figure 2. The editor for resizing images in macOS Preview." %}
 
@@ -238,7 +238,7 @@ For this lesson, you will use the deep zoom command, saving the tiled files in a
 
 Open the command line on your local computer and change directories to your iiif-libvips directory. Run the following command: `vips dzsave YOUR-IMAGE-NAME --layout iiif3 YOUR-PREFERRED-FILENAME.zip`. `vips` is the libvips command. The `dzsave` argument specifies the desired format for the image as a Deep Zoom file. The `--layout iiif3` argument specifies the arrangement of the tile files in the folder that make up the composite image, which will be IIIF v3-compliant. The `zip` extension specifies that the files should all be packaged together into one neat, compressed file package for easy access.
 
-Wait for the [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) file to appear in the iiif-libvips directory. When you open the ZIP file, you will find folders containing the various tile files that make up the IIIF image and an `info.json` file for each image. Each of the individual image folders make up a Level-0 compliant IIIF image.
+Wait for the [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) file to appear in the `iiif-libvips` directory. When you open the ZIP file, you will find folders containing the various tile files that make up the IIIF image and an `info.json` file for each image. Each of the individual image folders make up a Level-0 compliant IIIF image.
 
 Before continuing, be sure to open the ZIP file for each image so you can access the contents.
 

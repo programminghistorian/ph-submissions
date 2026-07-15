@@ -408,9 +408,9 @@ More broadly, take this lesson as an invitation to learn ever more about how bes
 
 ## Endnotes
 
-[^1]: Fudie Zhao, “A Systematic Review of Wikidata in Digital Humanities Projects,” _Digital Scholarship in the Humanities_ 38, no. 2 (2023): 852–74, [https://doi.org/10.1093/llc/fqac083](https://doi.org/10.1093/llc/fqac083).
+[^1]: For a survey of such use, up to 2021 and across the humanities more broadly, see Fudie Zhao, “A Systematic Review of Wikidata in Digital Humanities Projects,” _Digital Scholarship in the Humanities_ 38, no. 2 (2023): 852–74, [https://doi.org/10.1093/llc/fqac083](https://doi.org/10.1093/llc/fqac083).
 
-[^2]: Marten Düring et al., “Transparent Generosity: Introducing the Impresso Interface for the Exploration of Semantically Enriched Historical Newspapers,” _Historical Methods: A Journal of Quantitative and Interdisciplinary History_ 57, no. 1 (2024): 31, [https://doi.org/10.1080/01615440.2024.2344004](https://doi.org/10.1080/01615440.2024.2344004).
+[^2]: This approach is described in Marten Düring et al., “Transparent Generosity: Introducing the Impresso Interface for the Exploration of Semantically Enriched Historical Newspapers,” _Historical Methods: A Journal of Quantitative and Interdisciplinary History_ 57, no. 1 (2024): 31, [https://doi.org/10.1080/01615440.2024.2344004](https://doi.org/10.1080/01615440.2024.2344004).
 
 [^3]: This was not the case when Blaney wrote his [lesson](/en/lessons/intro-to-linked-data) in 2017. At that time, those seeking to use linked data had to do relatively complex work with ontologies. Take, for example, this line: “Unfortunately I can’t find anything that describes the relationship between a teacher and a pupil in the Music Ontology. But the ontology is published openly, so I can use it to describe other features of music and then create my own extension.” With Wikidata, it is no longer necessary to create such extensions because its ontology is already quite thoroughly realized. To take Blaney’s example, [the item page for Moriz Rosenthal](https://perma.cc/FR8T-NWKE) shows that he was a 'student of' ([P1066](https://perma.cc/6UTB-C2UD)) Franz Liszt, and that Charles Rosen was his 'student' ([P802](https://perma.cc/JUY8-PJDV)).
 

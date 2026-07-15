@@ -90,7 +90,7 @@ Georeferencing makes it possible to:
 - Join sheets from an atlas or map set into a larger composite
 - Derive geospatial data for further analysis
 
-{% include figure.html filename="en-or-visualizing-historic-maps-iiif-allmaps-02.png" alt="Historic map image aligned over a modern GIS basemap." caption="Figure 2. The georeferencing process places a digital image into a GIS." %}
+{% include figure.html filename="en-or-visualizing-historic-maps-iiif-allmaps-02.png" alt="Historic map image aligned over a modern GIS basemap." caption="Figure 2. The georeferencing process places a digital image into a GIS. Source: Silvana E. Piovan, “Historical Maps in GIS,” GIS&T Body of Knowledge." %}
 
 Traditional georeferencing solutions are built into geographic information systems (GIS) like QGIS
 or ArcGIS. Although GIS-based georeferencing tools can still be useful for some workflows, they do
@@ -333,12 +333,12 @@ These settings are written into the georeference annotation, so they become part
 
 Compare transformation and projection options as different interpretations of the same control points, and pay attention to places where the map stretches, bends, or preserves local detail.
 
-The animation below shows just how much changing the transformation algorithm can impact the overlay.
+The animation below was recorded in an earlier version of Allmaps Viewer,
+but it still shows how much changing the transformation algorithm can impactthe overlay.
 
 {% include figure.html filename="en-or-visualizing-historic-maps-iiif-allmaps-12.gif" alt="Animated comparison showing how different transformation algorithms warp the same georeferenced map in different ways." caption="Figure 12. Different transformation algorithms can produce different warping results." %}
 
-<!-- TODO: Need updated screenshot. -->
-{% include figure.html filename="en-or-visualizing-historic-maps-iiif-allmaps-13.png" alt="Screenshot of the Allmaps export drawer showing links to the viewer, annotation, code, and tile tools." caption="Figure 13. The share menu in Allmaps." %}
+{% include figure.html filename="en-or-visualizing-historic-maps-iiif-allmaps-13.png" alt="Screenshot of the Allmaps export drawer showing links to the viewer, annotation, code, and tile tools." caption="Figure 13. The Export menu in Allmaps Editor." %}
 
 Click the *View in Allmaps Viewer* link in the Export menu to continue.
 Next we will work with the map in Allmaps Viewer.
@@ -350,7 +350,9 @@ Next we will work with the map in Allmaps Viewer.
 Similar to the *Results* tab in Editor, you can see the warped map overlaid on a web map.
 
 Viewer also includes additional tools that let you customize the appearance and functionality of your map.
-Common tools (found at the bottom of the screen) include sliders that control layer transparency/opacity and background removal.
+Common tools at the bottom of the screen include a transparency button,
+which opens a slider for controlling layer opacity,
+and a background removal button.
 
 Background removal is especially useful with historical maps—it removes the blank paper and helps isolate printed geographic content from the scanned page, making overlays easier to interpret.
 
@@ -362,14 +364,10 @@ The figure below shows a georeferenced map of New Zealand with the background re
 
 {% include figure.html filename="en-or-visualizing-historic-maps-iiif-allmaps-14.png" alt="Comparison in Allmaps Viewer showing the same map with background removal off and on." caption="Figure 14. Background removal in Allmaps Viewer." %}
 
-Allmaps Viewer has some useful keyboard shortcuts:
-
-- _Space_ – Toggle transparency on/off
-- _B_ – Toggle background removal
-- _M_ – Toggle display of the mask line
-- _T_ – Cycle transformation algorithm
-- _G_ – Display a grid over the image
-- _D_ – Cycle display of distortions: surface deformation, angle distortion, or none
+Allmaps Viewer also includes a "Keyboard shortcuts..." option in the main menu.
+Use it to see the current shortcuts for zooming, switching between map and image
+views, opening the map list, hiding warped maps, removing background color,
+selecting maps, opening the map menu, and rotating maps.
 
 ### View stitched atlas sheets
 
@@ -413,10 +411,9 @@ In QGIS, use the Add XYZ Layer tool:
 
 {% include figure.html filename="en-or-visualizing-historic-maps-iiif-allmaps-15.png" alt="QGIS dialog for adding a new XYZ tile layer." caption="Figure 15. Opening the XYZ tile layer dialog in QGIS." %}
 
-Copy the XYZ Tile URL from the Allmaps Editor Share tools:
+Copy the XYZ Tile URL from the Allmaps Editor Export tools:
 
-<!-- TODO: Update this screenshot before submission. -->
-{% include figure.html filename="en-or-visualizing-historic-maps-iiif-allmaps-16.png" alt="Allmaps export menu showing where to copy the XYZ tile URL." caption="Figure 16. Finding the XYZ tile URL in Allmaps." %}
+{% include figure.html filename="en-or-visualizing-historic-maps-iiif-allmaps-16.png" alt="Allmaps export menu showing where to copy the XYZ tile URL." caption="Figure 16. Finding the XYZ tile URL in Allmaps Editor." %}
 
 Then create a new XYZ Connection in QGIS and paste in the URL. No other changes are usually needed.
 
@@ -1225,7 +1222,7 @@ old maps on the globe.
 
 [Ian Spangler](https://itspangler.com/) is Associate Curator of Digital & Participatory Geography at the Norman B. Leventhal Map & Education Center at the Boston Public Library and teaches a Geospatial Humanities course at Tufts University; Boston, Massachusetts, United States.
 
-##### Endnotes
+## Endnotes
 
 [^1]: C. D. Lippitt, "Georeferencing and Georectification," in *The Geographic Information Science & Technology Body of Knowledge*, 3rd Quarter 2020 ed., ed. John P. Wilson (UCGIS, 2020), https://gistbok-ltb.ucgis.org/page/current/concept/DC-01-030, doi:10.22224/gistbok/2020.3.3.
 

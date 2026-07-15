@@ -447,7 +447,7 @@ georeferencing a map in Allmaps Editor, and inspecting the result in Allmaps Vie
 The next sections introduce more advanced workflows at the command line so you can reuse Allmaps
 georeferencing data in your own files, GIS projects, and web maps.
 
-<div class="alert alert-warning">
+<div class="alert alert-warning" markdown="block">
 This portion assumes some familiarity with the command line in a Unix environment
 (Linux, macOS, or a Unix-like environment on a Windows PC), installing packages,
 and generating and running scripts from the command line.
@@ -614,7 +614,7 @@ jq --version
 dezoomify-rs --help
 ```
 
-<div class="alert alert-warning">
+<div class="alert alert-warning" markdown="block">
 If installation fails, the most likely missing pieces are Node.js, npm, GDAL, Rust/Cargo, or small command-line utilities such as `jq`.
 After installing a new tool, you may need to restart your terminal before the command is available.
 </div>
@@ -914,7 +914,7 @@ allmaps fetch full-image "https://cdm17272.contentdm.oclc.org/iiif/2/agdm:1550"
 ls -lh *.jpg
 ```
 
-<div class="alert alert-warning">
+<div class="alert alert-warning" markdown="block">
 For this Paris example, the generated script expects the downloaded image to be named with its
 Allmaps Image ID: `adeae8a56aaf59fb.jpg`.
 If your file has a different name, rename it before continuing:
@@ -1026,7 +1026,7 @@ Save the script file:
 
 **vim**: _Esc_, then type `:wq` and _Enter_ to save and quit
 
-<div class="alert alert-warning">
+<div class="alert alert-warning" markdown="block">
 There is [an issue](https://github.com/allmaps/allmaps/issues/261) related to the `-cutline_srs` flag on the Allmaps repository.
 </div>
 
@@ -1038,7 +1038,7 @@ bash paris_geotiff.sh
 
 If the script runs successfully, the output file is now georeferenced using the control points from the Allmaps annotation.
 
-<div class="alert alert-warning">
+<div class="alert alert-warning" markdown="block">
 Troubleshooting script failures and errors:
 
 * See above "Download the IIIF Image" step if your image size is wrong.
@@ -1178,6 +1178,7 @@ In Leaflet-speak, these are called "layer controls," and you can [read more abou
 
 ### Final map
 
+<!-- TODO: Adjust the Leaflet demo zoom levels so the background map appears without requiring the reader to zoom in. -->
 <iframe src="https://programminghistorian.github.io/ph-submissions/assets/visualizing-historic-maps-iiif-allmaps/allmaps-leaflet-demo/index.html" title="Allmaps Leaflet demo map" width="100%" height="500px"></iframe>
 
 [View sample map in a new window](https://programminghistorian.github.io/ph-submissions/assets/visualizing-historic-maps-iiif-allmaps/allmaps-leaflet-demo/index.html){:target="_blank"}
@@ -1218,6 +1219,12 @@ And if you want to have fun with georeferencing, check out
 postcards, or [Allmaps Arcade](https://arcade.allmaps.org), a game for placing
 old maps on the globe.
 
+## About the Authors
+
+[Stephen Appel](https://srappel.github.io) is the Geospatial Information Librarian at the American Geographical Society Library at the University of Wisconsin Milwaukee Libraries; Milwaukee, Wisconsin, United States.
+
+[Ian Spangler](https://itspangler.com/) is Associate Curator of Digital & Participatory Geography at the Norman B. Leventhal Map & Education Center at the Boston Public Library and teaches a Geospatial Humanities course at Tufts University; Boston, Massachusetts, United States.
+
 ##### Endnotes
 
 [^1]: C. D. Lippitt, "Georeferencing and Georectification," in *The Geographic Information Science & Technology Body of Knowledge*, 3rd Quarter 2020 ed., ed. John P. Wilson (UCGIS, 2020), https://gistbok-ltb.ucgis.org/page/current/concept/DC-01-030, doi:10.22224/gistbok/2020.3.3.
@@ -1229,9 +1236,3 @@ old maps on the globe.
 [^5]: Caroline Bourlet and Anne-Laure Bethe, "Road Network in 1300," ALPAGE, accessed May 11, 2026, https://alpage.huma-num.fr/ancient-urban-fabric/.
 
 [^6]: Cloud Optimized GeoTIFF, "Cloud Optimized GeoTIFF," accessed May 11, 2026, https://cogeo.org/.
-
-## About the Authors
-
-[Stephen Appel](https://srappel.github.io) is the Geospatial Information Librarian at the American Geographical Society Library at the University of Wisconsin Milwaukee Libraries; Milwaukee, Wisconsin, United States.
-
-[Ian Spangler](https://itspangler.com/) is Associate Curator of Digital & Participatory Geography at the Norman B. Leventhal Map & Education Center at the Boston Public Library and teaches a Geospatial Humanities course at Tufts University; Boston, Massachusetts, United States.

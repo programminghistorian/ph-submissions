@@ -59,12 +59,12 @@ Image servers can be compliant at different levels, with varying parameters need
 
 #### What is a IIIF Manifest?
 
-An [International Image Interoperability Framework manifest](https://iiif.io/guides/using_iiif_resources/) is a file that contains all of the information about an image or group of images served using IIIF, including the [metadata](https://en.wikipedia.org/wiki/Metadata), order of presentation, size specifications, etc. Creating manifests for your images means that you can specify metadata about that image that will display when the manifest is viewed in an IIIF-compatible viewer. There are also tools, digital exhibition platforms, and viewers that only accept manifests, not images, so knowing how to create compliant images *and* manifests is important for effectively leveraging IIIF.
+An [International Image Interoperability Framework manifest](https://iiif.io/guides/using_iiif_resources/) is a file that contains all of the information about an image or group of images served using IIIF, including the [metadata](https://en.wikipedia.org/wiki/Metadata), order of presentation, size specifications, etc. Creating manifests for your images means that you can specify metadata about that image that will display when the manifest is viewed in a IIIF-compatible viewer. There are also tools, digital exhibition platforms, and viewers that only accept manifests, not images, so knowing how to create compliant images *and* manifests is important for effectively leveraging IIIF.
 
 IIIF manifests rely on [Uniform Resource Identifiers (URIs)](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) to identify and access IIIF-compliant images on the web and display them using the IIIF Presentation API. There are two uniform identifiers that can be used to create manifests: the **info.json URI** and the **image URI**.
 
-1. The **`info.json` URI** requests information about the image service, i.e. how the image is being served to the web. The `info.json` URI will include the path to the `info.json` file for that image in your GitHub repository: "https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/`info.json`". 
-2. The **image API URI** requests information about the image itself (dimensions, rotation, etc.) as processed by the IIIF Image API. The image API URI will include the path to the folder with the full resolution tiles of your image in your GitHub repository: "https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/full/full/0/default.`IMAGE FILE EXTENSION`".
+1. The **`info.json` URI** requests information about the image service, i.e. how the image is being served to the web. The `info.json` URI will include the path to the `info.json` file for that image in your GitHub repository: 'https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/`info.json`'. 
+2. The **image API URI** requests information about the image itself (dimensions, rotation, etc.) as processed by the IIIF Image API. The image API URI will include the path to the folder with the full resolution tiles of your image in your GitHub repository: 'https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`/full/full/0/default.`IMAGE FILE EXTENSION`'.
 
 #### What is the Difference Between IIIF Versions?
 
@@ -73,7 +73,6 @@ This lesson can be applied to both version 2 and version 3 of the IIIF APIs. Kno
 In terms of structure, IIIF v3 manifests are formatted according to the [W3C Web Annotation Data Model](https://www.w3.org/TR/annotation-model/), an [extensible](https://en.wikipedia.org/wiki/Extensible_programming) specification to ensure annotations are interoperable across platforms and systems. Annotations, or pieces of media associated with a web resource, are grouped together and ordered using Annotation Pages; each v3 manifest will include an object with the `AnnotationPage` type with other objects with the `Annotation` type nested inside.
 
 Using v3 is necessary for users who want to create manifests with rich audio/video content, like clips, sound recordings, and non-2D media. v3 is also optimized for compatibility with different web resources, given the adoption of the W3C Web Annotation model. Ultimately, v2 is only needed if you intend to use a technology, software, or viewer that only accepts v2 manifests. Otherwise, v3 is recommended. You can see all of the changes made in Version 3.0 in the [IIIF Presentation API Version 3.0 Change Log](https://iiif.io/api/presentation/3.0/change-log/#14-classes-changes).
-
 
 #### What are Manifest Editors?
 
@@ -144,7 +143,7 @@ Method 2 employs the use of IIIF Workbench, a tool created by IIIF Technical Coo
 There are, however, caveats with this method that are worth mentioning before you get started.
 
 1. IIIF Workbench is slow at breaking down images with the tiler, so it can take a while for images to upload. 
-2. IIIF Workbench sometimes never generates tiles for an image — it just loads on 'Generating tiles' forever. This is typically because an image has been resized incorrectly, is too big, or is not in an accepted file format.
+2. IIIF Workbench sometimes never generates tiles for an image — it stalls on 'Generating tiles' forever. This is typically because an image has been resized incorrectly, is too big, or is not in an accepted file format.
 3. IIIF Workbench does not work with organizational GitHub accounts because you cannot log into organizational accounts.
 4. Uploaded files must be under 100 MB. This excludes high-quality [TIFFs](https://en.wikipedia.org/wiki/TIFF), unless you resize the TIFFs significantly.
 
@@ -170,7 +169,7 @@ In Finder, go to your image file. Right-click (mouse) or two-finger click (track
 
 If your image file size is over 100 MB, you will have to resize it to upload it to IIIF Workbench. If not, you can skip this step.
 
-Open the image in Preview. In the Mac menu bar at the top of the screen, click File>Export. Select PNG, TIFF, or JPEG. Move the scroller so that the file size displayed is under 100 MB, but as close to lossless as possible.
+Open the image in Preview. In the Mac menu bar at the top of the screen, click File > Export. Select PNG, TIFF, or JPEG. Move the scroller so that the file size displayed is under 100 MB, but as close to lossless as possible.
 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-02.png" alt="A dialog box with file export options over a blurred photo of a cat resting on a blanket. Export options include filename, tags, download location, file format, quality, and file size." caption="Figure 2. The editor for resizing images in macOS Preview." %}
 
@@ -257,18 +256,18 @@ First create a new repository on GitHub. Next, create an `images` folder. While 
 
 Create a `manifests` folder in the same repository. You will use this folder later to store and host your manifests.
 
-In your repository, go to Settings>GitHub Pages. Set the Source to 'Deploy from a branch' and the Branch to 'main /(root)'.
+In your repository, go to Settings > GitHub Pages. Set the Source to 'Deploy from a branch' and the Branch to 'main /(root)'.
 
 #### Clean Up Your Image Files
 
 Because you are using your local computer, `libvips` will populate `info.json` files for your images with your local server address as the reference. For your images to be properly displayed, they need to reference the server they are actually located on. 
 
-After all files have uploaded successfully to GitHub, open the `info.json` file for each image and update the first `@id` field (v2) or `id` field (v3) to: “https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`”.
+After all files have uploaded successfully to GitHub, open the `info.json` file for each image and update the first `@id` field (v2) or `id` field (v3) to: 'https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/images/`YOUR IMAGE NAME`'.
 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-05.png" alt="Part of an info.json file for a IIIF image. Line 3 starting with 'id' is highlighted to show the edited image URI." caption="Figure 5. The updated image URI in an info.json file for an uploaded IIIF image processed using libvips." %}
 
 <div class="alert alert-warning">
- Make sure you hit the green 'commit' button to save your changes as you go!
+ Make sure you hit the green 'commit' button to save changes as you go!
 </div>
 
 ### Find the Identifiers for Your Image
@@ -418,7 +417,7 @@ If using Method 2, IIIF Workbench automatically uses GitHub pages to serve your 
 
 In IIIF Workbench, you can access manifest URIs by clicking on the IIIF logo next to your manifest and copying the URI in the search bar. The manifest URI will always end in **.json.** You can also see and download your manifest files in the corresponding folder in your project GitHub repository. 
 
-If you need to upload your manifests manually for Methods 1 and 3, open the `manifests` folder in your GitHub repository and upload all of your downloaded manifests. Open each manifest file to correct the `@id`(v2) or `id` (v3) in line 3 so that it reads: “https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/manifests/`YOUR MANIFEST NAME`.json”.
+If you need to upload your manifests manually for Methods 1 and 3, open the `manifests` folder in your GitHub repository and upload all of your downloaded manifests. Open each manifest file to correct the `@id`(v2) or `id` (v3) in line 3 so that it reads: 'https://`YOUR GITHUB USERNAME`.github.io/`YOUR REPO NAME`/manifests/`YOUR MANIFEST NAME`.json'.
 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-08.png" alt="Part of a manifest JSON file. Line 3 starting with 'id' is highlighted to show the edited manifest URI." caption="Figure 8. The updated manifest URI in a manifest JSON file processed using Digirati's Manifest Editor." %}
 

@@ -19,7 +19,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/699
 activity: analyzing
 difficulty: 3
 topics: [python, distant-reading, machine-learning]
-abstract: This lesson demonstrates how to use text embeddings, zero-shot classification, and dimensionality reduction in Python to analyze historical legal texts, using nineteenth-century British Columbia court rulings on Chinese immigration as a case study.
+abstract: This lesson demonstrates how to use zero-shot Natural Language Inference (NLI) classification in Python to assess authorial stance in historical legal texts, using nineteenth-century British Columbia court rulings on Chinese immigration as a case study. It covers preparing a corpus (including removing quoted passages with fuzzy string matching), designing classification labels, running sentence and window-level classification, validating against a manually labelled evaluation sample, and applying robustness checks.
 mathjax: true
 avatar_alt: Visual description of lesson image.
 doi: XX.XXXXX/phen0000
@@ -27,64 +27,76 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-## Lesson Goals
+## Introduction
 
-This lesson teaches you how to apply [Natural Language Inference (NLI)](https://en.wikipedia.org/wiki/Textual_entailment) techniques to historical documents using Python. NLI allows a model to determine whether a given text entails, contradicts, or is neutral toward a specific historical claim. This framework circumvents the need to build and train custom classifiers for every unique historical debate. Instead of mapping a document to a fixed label, NLI leverages pre-trained semantic reasoning to dynamically assess stances, making it a highly adaptable and powerful tool for historical corpora where labeled training data is unavailable or manual labeling is expensive.
+This lesson teaches you how to apply [Natural Language Inference (NLI)](https://en.wikipedia.org/wiki/Textual_entailment) techniques to historical documents using Python. You can use NLI to, for example, determine the author's stance on a given topic or historical claim. This approach avoids training a new classifier for every historical debate. Instead of mapping a document to a fixed label, this approach compares passages with researcher-written hypotheses, which is useful when labelled training data is unavailable or expensive to create.
 
-By the end, you will be able to:
-
-- Use TF-IDF to identify key terms across document groups
-- Detect and remove direct quotations using fuzzy string matching
-- Generate contextual text embeddings with Sentence-BERT
-- Visualize high-dimensional embeddings using UMAP
-- Apply zero-shot NLI classification to assess stance without labeled data
-- Design effective classification labels for historical text analysis
-- Validate model outputs against a labeled ground truth set
-- Apply robustness checks (quote sensitivity, label sensitivity, bootstrap confidence intervals) to assess result stability
-- Critically evaluate NLP results against domain knowledge
+By stance we mean the position an author takes toward a specific claim. In this case study the claim is that Chinese immigrants deserve equal legal treament. The "stance" is whether the author supports this claim, opposes it, or expresses no clear position. You write each stance as a short hypothesis, for example "the author advocates for equal legal treatment of Chinese immigrants", and the model scores how well each passage supports it. How the labels and hypotheses are designed, and how zero-shot classification works in detail, are covered in the stance classification stage.
 
 The lesson uses nineteenth-century British Columbia court rulings on Chinese immigration as its case study. However, the workflow applies to any historical corpus where you want to computationally assess authorial stance.
 
+The lesson is organised into four stages:
+
+1. **Data preparation:** load the corpus, detect and remove directly quoted passages, and extract the passages that discuss Chinese immigration.
+2. **Stance classification:** design labels and run zero-shot NLI at both the sentence and window level.
+3. **Evaluation and robustness:** validate predictions against a manually labelled set and stress-test them with quote, label, and bootstrap checks.
+4. **Interpretation:** read the results critically and adapt the workflow to other corpora.
+
+### Lesson Goals
+
+By the end, you will be able to:
+
+- Detect and remove direct quotations using fuzzy string matching
+- Extract topically relevant passages from a corpus by keyword
+- Apply zero-shot NLI classification to assess stance without labelled data
+- Design effective classification labels for historical text analysis
+- Validate model outputs against a manually labelled evaluation sample
+- Apply robustness checks (quote sensitivity, label sensitivity, bootstrap confidence intervals) to assess result stability
+- Critically evaluate NLP results against domain knowledge
+
 ## Prerequisites
 
-You will need intermediate Python experience: working with pandas, writing functions, and using pip. If you are newer to Python, start with the [_Programming Historian_'s Introduction to Python](https://programminghistorian.org/en/lessons/introduction-and-installation). For background knowledge in word embeddings, see [_Programming Historian_'s Understanding and Creating Word Embeddings](https://programminghistorian.org/en/lessons/understanding-creating-word-embeddings).
+This lesson sits towards the advanced end, not because of the Python involved but because of the methods it uses. You will need intermediate Python experience: working with pandas, writing functions, and using pip. If you are newer to Python, start with the [_Programming Historian_'s Introduction to Python](https://programminghistorian.org/en/lessons/introduction-and-installation). You do not need prior experience with transformer models, NLI, or the validation and bootstrap steps used later; the lesson introduces each of these where it appears.
 
-Python 3.10 or later is required, along with at least 8GB of RAM. A GPU or iGPU is not required but will substantially speed up model inference.
+Python 3.10 or later is required, along with at least 8GB of RAM. A GPU or iGPU is not required, but it will speed up model inference.
 
 <div class="alert alert-warning">
-This lesson uses transformer models and needs at least 8GB of RAM. Running every zero-shot step from scratch can take 60 to 90 minutes on CPU. Pre-computed CSV and NumPy outputs are included so you can complete the lesson without full recomputation.
+This lesson uses transformer models and needs at least 8GB of RAM. Running every zero-shot step from scratch can take 60 to 90 minutes on CPU, so the lesson offers two paths: run the scoring cells yourself, or load the precomputed CSV outputs that are included. Each slow step shows both options.
 
-If you have NVIDIA CUDA, PyTorch can use it automatically. On some Windows systems with AMD or Intel integrated GPUs, <code>torch-directml</code> may help, but stability varies by model. The notebook is written to run safely on CPU first, then use acceleration where stable.
+If you have NVIDIA CUDA, PyTorch can use it automatically. On some Windows systems with AMD or Intel integrated GPUs, <code>torch-directml</code> may help, but stability varies by model. The code below runs on CPU by default and uses GPU acceleration only when PyTorch detects it.
 </div>
 
 ## Software and Setup
 
-Install all required Python packages:
+Install all required Python packages. `pandas` and `numpy` handle tables, `nltk` and `spacy` split texts into sentences, `transformers` and `torch` run the NLI model, and `matplotlib` and `seaborn` make the figures. Run this in your terminal, from your working folder:
 
 ```bash
-pip install pandas numpy umap-learn matplotlib \
-  seaborn nltk spacy scikit-learn scipy \
-  transformers torch tqdm sentence-transformers
+pip install pandas numpy matplotlib \
+  seaborn nltk spacy scipy \
+  transformers torch tqdm
 ```
 
-For AMD or Intel integrated GPU acceleration on Windows, also install:
+For AMD or Intel integrated GPU acceleration on Windows, also run this in your terminal:
 
 ```bash
 pip install torch-directml
 ```
 
-Download NLTK data and the spaCy language model:
+Download NLTK data inside Python:
 
 ```python
 import nltk
 nltk.download('punkt')
-nltk.download('stopwords')
 nltk.download('punkt_tab')
 ```
+
+Then download the English spaCy model from the terminal:
 
 ```bash
 python -m spacy download en_core_web_sm
 ```
+
+The spaCy model `en_core_web_sm` and the DeBERTa NLI model are both English only. If your corpus is in another language, see [Working with Other Languages](#working-with-other-languages) for what to swap in.
 
 ### Software Versions
 
@@ -93,8 +105,6 @@ This lesson was tested with:
 - Python 3.13
 - transformers 4.51
 - torch 2.6
-- sentence-transformers 4.1
-- Sentence-BERT: `sentence-transformers/all-mpnet-base-v2` (Hugging Face)
 - DeBERTa NLI: `MoritzLaurer/deberta-v3-large-zeroshot-v2.0` (Hugging Face)
 
 Load the required libraries:
@@ -102,31 +112,13 @@ Load the required libraries:
 ```python
 import pandas as pd
 import numpy as np
-import re
-import umap
 import difflib
-import matplotlib.pyplot as plt
 from nltk import sent_tokenize
-from nltk.corpus import stopwords
 import spacy
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer, pipeline
 import torch
 import warnings
-from collections import Counter
 ```
-
-### Downloading the Data
-
-Download the lesson data files from the [_Programming Historian_ repository](https://github.com/programminghistorian/ph-submissions/assets/natural-language-inference-historical-text/data.zip). Create a `data/` directory in your working folder and place all files there. The dataset includes:
-
-- `data/core/metadata_cleaned.csv` -- a table listing the ten source documents with author, group, and type metadata
-- Thirteen `.txt` files in `data/texts/` -- the OCR-transcribed historical texts (legal rulings, the 1884 Chinese Regulation Act, and Royal Commission reports)
-- `data/core/stance_lexicon.csv` -- a domain-specific lexicon of approximately 120 terms in six stance categories
-- `data/core/labelled_snippets.csv` -- 45 hand-labelled sentence excerpts used for ground truth validation
-- `data/texts/quotations_removed/` -- versions of Crease's texts with direct quotations of the Act removed
 
 ## Case Study: Chinese Immigration Law in British Columbia
 
@@ -136,13 +128,26 @@ While the techniques demonstrated in this lesson are general-purpose, you will g
 
 The *1884 Chinese Regulation Act*[^1] in British Columbia (a province on the Pacific coast of Canada) was provincial legislation targeting Chinese residents, part of a broader wave of anti-Chinese laws across western North America in the late nineteenth century. It was challenged and declared unconstitutional in the 1885 case of *R v. Wing Chong* by [Henry Pering Pellew Crease](https://www.biographi.ca/en/bio/crease_henry_pering_pellew_13E.html), a judge on the Supreme Court of British Columbia.[^2] Justice Crease struck down the legislation on economic grounds, finding that it infringed on federal authority over immigration, trade, commerce, and taxation. In Commonwealth legal naming convention, *R* (or *Regina*, Latin for 'the Queen') denotes a criminal or constitutional case brought by the Crown against a private party.
 
-However, Crease was not considered straightforwardly sympathetic to Chinese immigrants. Historian Tina Loo notes that he displayed mistrust toward Chinese residents, referred to them as "North American Chinamen," and feared they would "rule the country and job its offices."[^3] The apparent inconsistency between Crease’s rhetoric and his political position raises a question difficult to answer through selective quotation alone: how did he actually discuss Chinese immigrants across his broader body of writing? And what methods can we use to better understand whether his opposition to the Act was rooted in principled objections to discrimination, or in a belief that Chinese immigrant labor was necessary for economic development?
+However, Crease was not considered straightforwardly sympathetic to Chinese immigrants. Historian Tina Loo notes that he displayed mistrust towards Chinese residents, referred to them as "North American Chinamen", and feared they would "rule the country and job its offices".[^3] The apparent inconsistency between Crease's rhetoric and his political position raises a question difficult to answer through selective quotation alone: how did he discuss Chinese immigrants across his broader body of writing? And what methods can we use to better understand whether his opposition to the Act was rooted in principled objections to discrimination, or in a belief that Chinese immigrant labour was necessary for economic development?
 
 To explore this question computationally, you will compare the language of Crease's rulings with two reference points: the discriminatory Act itself, and Justice [Matthew Baillie Begbie](https://www.biographi.ca/en/bio/begbie_matthew_baillie_12E.html),[^4] the first Chief Justice of British Columbia. Unlike Crease, historical accounts describe Begbie as protective of marginalized peoples, including Chinese immigrants.[^5][^6] Begbie struck down discriminatory municipal by-laws in Victoria targeting Chinese-owned businesses in the 1888 case of *R v. Victoria*.[^7]
 
-The corpus consists of ten digitized texts: legal rulings (*R v. Wing Chong*,[^2] *Wong Hoy Woon v. Duncan*,[^8] *R v. Mee Wah*,[^9] *R v. Victoria*[^7]), the *1884 Chinese Regulation Act*, and reports from the 1884 Royal Commission on Chinese Immigration.[^10] The texts were converted from archival scans to machine-readable format using [Optical Character Recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition). Direct quotes of the Act within Crease's ruling were identified using fuzzy string matching and removed so they do not contaminate the analysis of his own language (this process is described in the next section).
+The corpus consists of ten digitized texts: legal rulings (*R v. Wing Chong*,[^2] *Wong Hoy Woon v. Duncan*,[^8] *R v. Mee Wah*,[^9] *R v. Victoria*[^7]), the *1884 Chinese Regulation Act*, and reports from the 1884 Royal Commission on Chinese Immigration.[^10] The texts were converted from archival scans to machine-readable format using [Optical Character Recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition). Direct quotes of the Act within Crease's ruling were identified using fuzzy string matching and removed so they do not contaminate the analysis of his own language (this process is described in the corpus preparation section).
+
+## Downloading the Data
+
+Download the lesson data files from the [_Programming Historian_ repository](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/natural-language-inference-historical-text/data.zip). Create a `data/` directory in your working folder and place all files there. The dataset includes:
+
+- `data/core/metadata_cleaned.csv` -- a table listing the ten source documents with author, group, and type metadata
+- Thirteen `.txt` files in `data/texts/` -- the OCR-transcribed historical texts (legal rulings, the 1884 Chinese Regulation Act, and Royal Commission reports)
+- `data/core/labelled_snippets.csv` -- 45 sentence excerpts hand-labelled for evaluation by one of the lesson co-authors
+- `data/texts/quotations_removed/` -- versions of Crease's texts with direct quotations of the Act removed
+
+These sources are nineteenth-century British Columbia legal and government documents in the public domain. Openly accessible copies are available without login through UBC Open Collections, Canadiana, the Internet Archive, and BC Laws. We produced the text files by running modern OCR on those scans and organising the results, and the OCR transcriptions and derived data files in this lesson are shared under a Creative Commons Attribution (CC BY 4.0) licence.
 
 ## Preparing the Corpus
+
+*You are in stage 1 of 4, data preparation: load the corpus, group the texts, remove quoted passages, and select the passages to analyze.*
 
 The OCR process produced a `.csv` file with the following structure:
 
@@ -165,11 +170,31 @@ df.loc[df["author"] == "Begbie", "group"] = "Begbie"
 df.loc[df["type"] == "act", "group"] = ACT_LABEL
 ```
 
-## Detecting and Removing Direct Quotations
+Grouping documents by author lets you compare the language of Crease, Begbie, and the Act directly. Check how many documents fall into each group before going further:
 
-Crease's ruling in *R v. Wing Chong* quotes passages from the 1884 Chinese Regulation Act verbatim. If these quoted passages remain in the corpus, the NLI model will classify them as language attributable to Crease, when in fact they are the Act's own words that Crease cited, maybe in order to critique them. To avoid this contamination, you need to detect and remove directly quoted sentences.
+```python
+df["group"].value_counts()
+```
 
-The approach uses fuzzy string matching via Python's [`difflib.SequenceMatcher`](https://docs.python.org/3/library/difflib.html), which computes a similarity ratio between two strings based on the longest contiguous matching subsequences. For each sentence in Crease's text, you compute its similarity to every sentence in the Act and retain the highest score:
+Expected output:
+
+```text
+Crease            3
+Begbie            3
+Other             3
+Regulation Act    1
+Name: group, dtype: int64
+```
+
+This check confirms that the comparison groups are present before any model scores are calculated.
+
+### Detecting and Removing Direct Quotations
+
+Crease's ruling in *R v. Wing Chong* quotes passages from the 1884 Chinese Regulation Act verbatim. If these quoted passages remain in the corpus, the NLI model will classify them as language attributable to Crease, when in fact they are the Act's own words that Crease cited.
+
+Quotation removal belongs in data preparation because stance classification asks "what does *this author* say?" A passage Crease quotes from the Act to strike it down would otherwise be scored as if Crease himself wrote it.
+
+The approach uses fuzzy string matching via Python's [`difflib.SequenceMatcher`](https://docs.python.org/3/library/difflib.html), which computes a similarity ratio between two strings based on the longest contiguous matching subsequences. Exact string matching would be too weak here: the texts were produced by OCR, so a sentence Crease quotes from the Act and the same sentence in the Act itself rarely match character-for-character. Small transcription differences (a misread letter, a dropped word, inconsistent punctuation) would defeat an exact-match filter while leaving the quotation in place. Fuzzy matching tolerates this noise by scoring *how similar* two sentences are rather than demanding they be identical. For each sentence in Crease's text, you compute its similarity to every sentence in the Act and retain the highest score:
 
 ```python
 nlp = spacy.load("en_core_web_sm")
@@ -198,204 +223,79 @@ def compute_quote_similarity(sent, reference_sents):
     return best
 ```
 
-A threshold of 0.6 catches near-exact quotes (accounting for OCR errors), while 0.4 catches looser paraphrases. The `act_quote_sentences_removed` column in the metadata records how many sentences were removed from each document at the 0.6 threshold. For your own analyses, you may try experimenting with different thresholds to see which one works best for your data.
-
-## Exploratory Analysis: TF-IDF
-
-Before applying complex models, it is useful to identify the most distinctive terms in each author's texts using a count-based method. The simplest approach is raw term frequency: for term $t$ in document $d$, count how many times $t$ appears:
-
-$$
-\text{TF}(t, d) = \frac{\text{count of } t \text{ in } d}{\text{total terms in } d}
-$$
-
-However, raw frequency alone over-weights common words. A term like "court" may appear frequently in every legal document, telling you nothing about what distinguishes one author from another. [Term Frequency-Inverse Document Frequency (TF-IDF)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) corrects for this by multiplying term frequency by a factor that penalizes terms appearing across many documents:
-
-$$
-\text{IDF}(t, D) = \log \frac{|D|}{|\{d \in D : t \in d\}|}
-$$
-
-where $$\vert D \vert$$ is the total number of documents and the denominator counts how many documents contain $$t$$. A term appearing in every document gets an IDF near zero; a term appearing in only one document gets a high IDF. The combined score is:
-
-$$
-\text{TF-IDF}(t, d, D) = \text{TF}(t, d) \times \text{IDF}(t, D)
-$$
-
-Intuitively, TF-IDF captures a form of semantic specificity: words that characterize a particular author's vocabulary (high TF, low document frequency) receive high scores, while words shared across all documents are down-weighted. This makes it a useful first pass for identifying distinctive themes before applying more computationally expensive embedding models. 
-
-However, TF-IDF remains a "bag-of-words" method (a representation that counts words without regard to their order or context): it treats each word as an isolated token and cannot capture word order, polysemy, or contextual nuance.
+Next, score Crease's sentences against the Act, inspect the highest-scoring matches, and remove sentences above the chosen threshold:
 
 ```python
-stop_words = set(stopwords.words('english'))
-
-stop_words.update(
-    {'would', 'may', 'act', 'mr',
-     'sir', 'also', 'upon', 'shall'}
-)
-
-def preprocess_text(text_string):
-
-    text = text_string.lower()
-    text = re.sub(r'[^a-z\s]', '', text)
-    tokens = text.split()
-    filtered = [
-        w for w in tokens
-        if w not in stop_words and len(w) > 4
-    ]
-
-    return " ".join(filtered)
-```
-
-```python
-df["processed_text"] = df["text"].apply(preprocess_text)
-
-vectorizer = TfidfVectorizer(max_features=1000, ngram_range=(1, 3))
-tfidf_matrix = vectorizer.fit_transform(df["processed_text"])
-
-tfidf_df = pd.DataFrame(
-    tfidf_matrix.toarray(),
-    columns=vectorizer.get_feature_names_out(),
-)
-
-tfidf_df["group"] = df["group"].values
-
-mean_tfidf = tfidf_df.groupby("group").mean()
-top_tfidf = {
-    group: mean_tfidf.loc[group].sort_values(ascending=False).head(10)
-    for group in ["Crease", "Begbie", ACT_LABEL, "Other"]
-}
-```
-
-The TF-IDF results reveal that "Chinese" (or "Chinaman") is prominent across all groups. Crease's writings emphasize "labor" and "taxation", Begbie's emphasize "license", and the Regulation Act focuses on "dollars." However, TF-IDF treats each word as an isolated token; it cannot distinguish between "labor" used to describe economic contribution and "labor" used in a regulatory context. To capture such semantic nuances, you often need contextual embeddings.
-
-## Lexicon-Based Baseline
-
-Before moving to embedding models, it is worth testing a simpler approach: a domain-specific lexicon that counts occurrences of curated word lists. This strategy follows the [Loughran-McDonald (LM) lexicon](https://sraf.nd.edu/loughranmcdonald-master-dictionary/) used in financial text analysis.[^11] Tim Loughran and Bill McDonald (2011) showed that general-purpose sentiment dictionaries misclassified nearly three-quarters of "negative" words in financial filings — words like *liability*, *tax*, and *cost* are neutral in a 10-K but flagged as negative by general lexicons. Their solution was to build a domain-specific lexicon directly from the corpus: extract candidate terms by frequency, have domain experts categorize each term in context, and publish the full list with metadata for reproducibility. The LM lexicon uses six categories tailored to financial disclosure (*Negative*, *Positive*, *Uncertainty*, *Litigious*, *Strong Modal*, *Weak Modal*), not generic sentiment polarity.
-
-The same principle applies here: a word like "alien" is neutral in modern usage but carries specific legal meaning in nineteenth-century statutes. No equivalent lexicon exists for historical legal discourse on immigration, so the lesson includes a purpose-built one (`stance_lexicon.csv`) containing approximately 120 terms organized into six stance and rhetorical categories:
-
-| Category | Description | Examples |
-|----------|-------------|---------|
-| EXCLUSIONARY | Language supporting restriction | pestilential, invasion, prohibit |
-| RIGHTS_AFFIRMING | Language supporting legal rights | treaty, unconstitutional, entitled |
-| DEHUMANIZING | Racialized or derogatory terms | Chinaman, coolie, heathen |
-| LEGAL_PROCEDURAL | Neutral legal terminology | statute, legislature, jurisdiction |
-| ECONOMIC | Economic framing | labor, wages, commerce, taxation |
-| SANITARY_MEDICAL | Health-threat framing | infected, quarantine, smallpox |
-
-These terms were extracted from the TF-IDF analysis above and manually categorized using domain knowledge of the period. The scoring function counts lexicon hits per 1,000 tokens in each document:
-
-```python
-lexicon = pd.read_csv("data/core/stance_lexicon.csv")
-
-lex_dict = {
-    row['term'].strip().lower():
-        row['category'].strip()
-    for _, row in lexicon.iterrows()
-}
-
-CATS = [
-    'EXCLUSIONARY', 'RIGHTS_AFFIRMING',
-    'DEHUMANIZING', 'LEGAL_PROCEDURAL',
-    'ECONOMIC', 'SANITARY_MEDICAL',
+crease_sents = [
+    s.text.strip()
+    for s in nlp(crease_orig).sents
+    if len(s.text.strip()) > 20
 ]
 
-def score_document(text, lex):
-    tokens = re.findall(r'\b[a-z]+\b', text.lower())
-    total = len(tokens)
-    if total == 0:
-        return {c: 0.0 for c in CATS}
-    counts = Counter()
-    for t in tokens:
-        if t in lex:
-            counts[lex[t]] += 1
-    return {
-        c: counts.get(c, 0) / total * 1000
-        for c in CATS
+quote_scores = pd.DataFrame(
+    {
+        "sentence": crease_sents,
+        "similarity": [
+            compute_quote_similarity(sent, regulation_act_sents)
+            for sent in crease_sents
+        ],
     }
-
-scores = df['text'].apply(lambda text: score_document(text, lex_dict))
-
-lex_df = pd.DataFrame(scores.tolist())
-lex_df['group'] = df['group'].values
-lexicon_summary = lex_df.groupby('group')[CATS].mean().round(2)
-```
-
-{% include figure.html filename="en-or-natural-language-inference-historical-text-01.png" alt="Grouped bar chart showing lexicon category hit rates per 1,000 tokens for each author group, with the Regulation Act showing the highest Exclusionary and Economic scores" caption="Figure 1. Lexicon category profiles by author group. The Regulation Act dominates the Exclusionary and Economic categories, while Begbie shows the highest Dehumanizing count (reflecting his frequent use of 'Chinaman' and 'Chinamen' in case rulings)." %}
-
-The lexicon correctly identifies the Act as having the highest EXCLUSIONARY score (10.4 per 1,000 tokens) and the highest ECONOMIC score (26.1). However, it has critical blind spots. The word "taxation" appears when Crease *critiques* unequal taxation and when the Act *imposes* it; the lexicon counts both as ECONOMIC. When Crease quotes the Act to condemn it, the lexicon scores those quoted words as if Crease endorses them. And the approximately 120 terms capture only a fraction of the vocabulary: many stance-bearing phrases such as "fills one with alarm" or "rule the country" use common words that no lexicon would flag.
-
-These limitations motivate the shift to contextual embedding models and zero-shot NLI, which capture meaning at the sentence level rather than word level. The lexicon remains useful as a transparent, interpretable baseline against which to compare the more opaque model-based results.
-
-## How Text Embeddings Work
-
-[Text embeddings](https://en.wikipedia.org/wiki/Word_embedding) represent words or passages as dense numerical vectors in a high-dimensional space (typically 768 dimensions for BERT-family models). Unlike TF-IDF, which naively counts word occurrences, embedding models like [BERT](https://en.wikipedia.org/wiki/BERT_(language_model)) produce vectors that encode contextual meaning: the same word receives different vectors depending on its surrounding text.
-
-The basic workflow for generating embeddings is:
-
-1. Tokenize text into subword units that the model recognizes
-2. Pass tokenized text through the model to extract hidden-layer representations
-3. Pool subword vectors to produce a single vector per sentence (the `sentence-transformers` library handles steps 1 through 3 in a single call)
-4. Use [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) to measure how close two vectors are in this space
-
-$$
-\text{cosine similarity}(a, b) = \frac{a \cdot b}{||a|| \cdot ||b||}
-$$
-
-Cosine similarity ranges from 0 (no similarity) to 1 (identical direction). It applies to word, sentence, or document embeddings as long as they share the same vector space.
-
-## Choosing Models for Historical Text
-
-Model selection is a critical decision in any NLP pipeline, especially for historical texts. Two checks matter most: whether the training data is close to your corpus, and whether the model was designed for your task.
-
-This lesson uses two models, each for a different purpose:
-
-- [Sentence-BERT (all-mpnet-base-v2)](https://huggingface.co/sentence-transformers/all-mpnet-base-v2) for embeddings. It produces 768-dimensional vectors optimized for semantic similarity and works well on mixed legal, political, and economic language.[^12]
-
-- [DeBERTa NLI (v2.0)](https://huggingface.co/MoritzLaurer/deberta-v3-large-zeroshot-v2.0) for zero-shot classification. It is tuned for entailment tasks and performs strongly when labels are expressed as explicit hypotheses.[^13]
-
-When choosing models for your own historical corpus, consider:
-
-- Does the model's training data overlap with your domain? A general-purpose model may lack specialized vocabulary, while a domain-specific model trained on modern legal text may not understand nineteenth-century usage of terms like "alien."[^14]
-- Is the model designed for your task? Use sentence embedding models for similarity comparisons and NLI-fine-tuned models for zero-shot classification.
-- Test with known examples. Pass excerpts where you already know the expected result and check whether the model's output aligns with your domain knowledge.
-
-### The Lexicon Mismatch Problem
-
-A central challenge is lexical drift: words in nineteenth-century legal writing can carry meanings that differ from modern usage. OCR noise adds another layer of uncertainty. There is no complete fix, but you can reduce risk by:
-
-- Verify that key terms in your corpus appear in the model's vocabulary
-- Compare model outputs against passages where the expected stance is clear
-- Treat all computational results as hypotheses that require human validation, not as conclusions
-
-### Digital Resources for Historical Semantics
-
-These resources help you check historical usage before final interpretation:
-
-- The [Historical Thesaurus of English](https://ht.ac.uk/) traces when words acquired or lost specific senses through dated attestations — for example, confirming that "alien" carried its legal sense throughout the nineteenth century.[^15]
-- [Google Books Ngram Viewer](https://books.google.com/ngrams) charts word frequencies across centuries of digitized books, revealing where historical and modern usage patterns diverge.[^16]
-- [EarlyPrint](https://earlyprint.org/) provides linguistically annotated early English print (1473 to the early 1700s) with tools for handling archaic spelling and OCR artifacts.[^17]
-- The [Corpus of Historical American English (COHA)](https://www.english-corpora.org/coha/) contains 475 million words from the 1820s to the 2010s, searchable by decade and genre.[^18]
-
-These tools cannot remove model bias, but they help you design better labels and spot likely failure points.
-
-## Generating Stance Embeddings
-
-With the models chosen, you can now generate embeddings that capture how each author discusses Chinese immigration. The strategy is to extract sentences containing immigration-related keywords, then embed each sentence using Sentence-BERT.
-
-```python
-embed_model = SentenceTransformer(
-    'sentence-transformers/all-mpnet-base-v2'
 )
+
+quote_scores.sort_values("similarity", ascending=False).head()
 ```
+
+Expected output:
+
+| similarity | sentence |
+| ---: | --- |
+| 0.99 | In case any employer of Chinese fails to deliver to the collector the list... |
+| 0.99 | Any collector or Government servant wilfully disobeying any of the provisions... |
+| 0.99 | Every employer of Chinese shall furnish to the collector when requested... |
+| 0.97 | Proof of the lawful possession of such receipt shall lie on the person... |
+| 0.93 | Every collector shall collect the tax from each Chinese... |
+
+Inspecting the highest-scoring rows helps you choose a threshold instead of treating it as a hidden parameter. A threshold of 0.6 catches near-exact quotes (accounting for OCR errors) while leaving Crease's own paraphrases intact; a looser threshold of 0.4 also catches loose paraphrases but risks discarding original sentences that merely share legal vocabulary with the Act. Set it too high and quoted material survives to contaminate the stance scores; set it too low and you erase the author's own language. We set ours to 0.6.
 
 ```python
-nlp = spacy.load("en_core_web_sm")
-warnings.filterwarnings("ignore")
+quote_threshold = 0.6
+cleaned_crease_sents = quote_scores[
+    quote_scores["similarity"] < quote_threshold
+]["sentence"].tolist()
+
+len(crease_sents), len(cleaned_crease_sents)
 ```
 
-The `SentenceTransformer` model handles tokenization, hidden-state extraction, and pooling in a single call, producing a 768-dimensional vector per input sentence. This is simpler and more robust than manually extracting and averaging hidden states from a base BERT model.
+For *R v. Wing Chong*, this threshold removes 12 sentences. The `act_quote_sentences_removed` column in the metadata records how many sentences were removed from each document, and the cleaned texts are saved under `data/texts/quotations_removed/`. The later NLI analysis uses these quotation-removed versions for Crease's texts. The same `compute_quote_similarity` function is reused later as a sensitivity check (see [Quote Sensitivity](#quote-sensitivity)), where you sweep across thresholds to confirm that residual quotations are not driving the results. For your own analyses, experiment with different thresholds to see which one best separates quotation from original language in your corpus.
 
-Now extract sentences mentioning Chinese immigration keywords and separate them by author:
+### Checking the Threshold
+
+For a small corpus, the best advanced check is still a human one: inspect sentences near the cutoff. These are the cases where the algorithm is least certain and where a small threshold change would alter the corpus.
+
+```python
+near_threshold = quote_scores[
+    quote_scores["similarity"].between(0.55, 0.65)
+].sort_values("similarity", ascending=False)
+
+near_threshold[["similarity", "sentence"]].head(10)
+```
+
+Expected output:
+
+| similarity | sentence |
+| ---: | --- |
+| 0.64 | Section 16 amends the License Ordinance of 1867... |
+| 0.64 | By Sec. 5 "Any Chinese who shall be found within the Province..." |
+
+Only two sentences fall in this band, and both refer to the Act rather than stating Crease's own argument.
+
+Read this table before accepting the threshold. If the rows just above 0.6 are quoted Act language and the rows just below 0.6 are Crease's own argument, the threshold is doing what you need. If both sides contain a mixture of quotations, paraphrases, and original legal language, report that uncertainty and consider a more conservative threshold.
+
+`SequenceMatcher` is useful here because it is part of the Python standard library and easy to explain. It also has limits. Short legal formulas can look similar even when they are not quotations, and OCR errors can reduce similarity for real quotations. For a larger or noisier corpus, you might compare this approach with token-based fuzzy matching, shared n-gram overlap, or embedding similarity. Those alternatives add dependencies and interpretation work, so they are better treated as extensions rather than the default path through this lesson.
+
+### Identifying Relevant Passages
+
+Zero-shot classification is computationally expensive, so rather than scoring every sentence in every document, you focus the analysis on the passages that actually discuss Chinese immigration. The strategy is to split each author's texts into sentences and keep those that mention immigration-related keywords. These keyword snippets become the unit of analysis for the sentence-level classifier, while the full documents are reused for window-level classification later.
 
 ```python
 crease_cases = df[
@@ -418,6 +318,8 @@ keywords = [
     "alien", "aliens", "immigration",
 ]
 
+warnings.filterwarnings("ignore")
+
 keyword_snippets = {}
 for author, texts in corpus_by_author.items():
     snippets = []
@@ -428,213 +330,21 @@ for author, texts in corpus_by_author.items():
             if any(keyword in sentence_lower for keyword in keywords):
                 snippets.append(sentence_text)
     keyword_snippets[author] = snippets
-
-def encode_snippets(snippets_by_author):
-    embeddings = {}
-    for author, snippets in snippets_by_author.items():
-        if not snippets:
-            embeddings[author] = np.array([])
-            continue
-        embeddings[author] = embed_model.encode(
-            snippets,
-            batch_size=32,
-            show_progress_bar=True,
-        )
-    return embeddings
 ```
 
-Embedding all snippets takes a few seconds with Sentence-BERT. The notebook demo loads pre-computed embeddings, but the lesson shows the full generation step directly:
+Keyword filtering is deliberately simple and high-recall: it casts a wide net so that few relevant passages are missed, and the NLI model does the discriminating work of judging stance later. The `corpus_by_author` dictionary is kept alongside the snippets because the window-level analysis needs the full document text, not just the extracted sentences.
 
-```python
-embeddings_path = "data/results/case_snippet_embeddings.npz"
-embeddings_dict = encode_snippets(keyword_snippets)
-np.savez(
-    embeddings_path,
-    **{key: np.array(value) for key, value in embeddings_dict.items()},
-)
-```
+## Stance Classification with Zero-Shot NLI
 
-### Measuring Stance Similarity
+*You are in stage 2 of 4, stance classification: design the labels and run zero-shot NLI on the passages selected in stage 1.*
 
-With embeddings in hand, you can compute the mean embedding for each author and measure cosine similarity between them. Higher similarity indicates that two authors discuss Chinese immigration in more semantically similar ways.
+Zero-shot classification is the core analytical technique of this lesson. It uses a [natural language inference](https://en.wikipedia.org/wiki/Textual_entailment) model to classify text into categories defined at inference time, requiring no labelled training data. This is particularly valuable for historical research, where labelled datasets rarely exist.
 
-```python
-mean_crease = np.mean(embeddings_dict["Crease"], axis=0, keepdims=True)
-mean_begbie = np.mean(embeddings_dict["Begbie"], axis=0, keepdims=True)
-mean_regulation_act = np.mean(
-    embeddings_dict[ACT_LABEL], axis=0, keepdims=True
-)
+### Why NLI?
 
-embedding_similarity = pd.DataFrame(
-    [
-        {
-            "comparison": "Crease vs Begbie",
-            "similarity": cosine_similarity(mean_crease, mean_begbie)[0, 0],
-        },
-        {
-            "comparison": f"Crease vs {ACT_LABEL}",
-            "similarity": cosine_similarity(
-                mean_crease, mean_regulation_act
-            )[0, 0],
-        },
-        {
-            "comparison": f"Begbie vs {ACT_LABEL}",
-            "similarity": cosine_similarity(
-                mean_begbie, mean_regulation_act
-            )[0, 0],
-        },
-    ]
-)
-```
+A natural first instinct is to measure stance by counting words: tally discriminatory or rights-affirming terms and compare authors. This is the logic behind domain-specific lexicons such as the Loughran-McDonald dictionary in financial text analysis, which counts curated word lists tailored to a domain rather than relying on general-purpose sentiment polarity.[^11] But keyword counting has a decisive blind spot for our question: it cannot tell the difference between a judge who *uses* a discriminatory word and one who *quotes it to condemn it*. The word "alien" counts the same whether the Act imposes it or Crease attacks it, and stance-bearing phrases such as "fills one with alarm" or "rule the country" use common words that no lexicon would flag. Stance depends on how words are combined and framed, which is the kind of comparison NLI is designed to make.
 
-### Visualizing Embeddings with UMAP
-
-[UMAP](https://en.wikipedia.org/wiki/Nonlinear_dimensionality_reduction#Uniform_manifold_approximation_and_projection) (Uniform Manifold Approximation and Projection) is a [dimensionality reduction](https://en.wikipedia.org/wiki/Dimensionality_reduction) technique that projects high-dimensional vectors into 2D while preserving local structure. This allows you to visually inspect whether different authors' texts cluster together or apart.
-
-```python
-all_vecs = np.vstack([
-    embeddings_dict["Crease"],
-    embeddings_dict["Begbie"],
-    embeddings_dict[ACT_LABEL],
-])
-
-labels = (
-    ["Crease"] * len(embeddings_dict["Crease"])
-    + ["Begbie"] * len(embeddings_dict["Begbie"])
-    + [ACT_LABEL]
-    * len(embeddings_dict[ACT_LABEL])
-)
-
-reducer = umap.UMAP(
-    n_neighbors=15,
-    min_dist=0.1,
-    random_state=42,
-)
-
-proj = reducer.fit_transform(all_vecs)
-
-color_map = {
-    "Crease": "#1f77b4",
-    "Begbie": "#d62728",
-    ACT_LABEL: "#2ca02c",
-}
-
-fig, ax = plt.subplots(figsize=(8, 5))
-for author, color in color_map.items():
-    mask = [lb == author for lb in labels]
-    ax.scatter(
-        proj[mask, 0], proj[mask, 1],
-        c=color, label=author,
-        s=15, alpha=0.8,
-    )
-
-ax.set_xlabel("UMAP 1")
-ax.set_ylabel("UMAP 2")
-ax.set_title(
-    "UMAP Projection of Stance Embeddings"
-)
-ax.legend()
-plt.tight_layout()
-plt.savefig(
-    "data/media/figures/natural-language-inference"
-    "-historical-text-01.png",
-    dpi=150,
-)
-
-plt.show()
-```
-
-{% include figure.html filename="en-or-natural-language-inference-historical-text-02.png" alt="Two-dimensional scatter plot titled 'UMAP Projection of Stance Embeddings', with the horizontal axis labelled UMAP 1 and the vertical axis labelled UMAP 2. Each point is a sentence embedding from Crease, Begbie, or the Regulation Act. Crease and Begbie points are interspersed and overlap across the plot, while the Regulation Act points form a separate, more compact cluster, showing that its language is the most distinct of the three." caption="Figure 2. UMAP projection of stance embeddings by author. Crease and Begbie snippets partially overlap, while the Regulation Act forms a more distinct cluster." %}
-
-### Investigating Key Sentences
-
-Embeddings provide a quantitative summary, but you should ground those numbers in the actual text. The function below retrieves the sentences most similar to a given author's mean embedding, letting you verify what the model considers representative.
-
-```python
-def top_similar_sentences(mean_emb, n=10):
-    rows = []
-    for auth, snippets in keyword_snippets.items():
-        for snippet, emb in zip(
-            snippets, embeddings_dict[auth]
-        ):
-            sim = cosine_similarity(
-                emb.reshape(1, -1), mean_emb
-            )[0][0]
-            rows.append([auth, snippet, sim])
-
-    return pd.DataFrame(
-        rows,
-        columns=["Author", "Text", "Similarity"],
-    ).sort_values("Similarity", ascending=False).head(n)
-```
-
-```python
-representative_crease = top_similar_sentences(mean_crease)
-```
-
-## Topic Alignment Analysis
-
-The TF-IDF analysis identified key themes: "labor", "legislation", "license", and "taxation." You can now measure how closely each author's sentences align with these topics by creating topic anchor vectors from descriptive phrases and computing cosine similarity against each snippet embedding.
-
-Rather than building anchors from individual word embeddings (which discard phrasal context), you define each topic with a short descriptive sentence and embed it directly with the same Sentence-BERT model used for the snippets. This produces anchors in the same vector space, making the similarity scores directly comparable.
-
-```python
-topic_descriptions = {
-    "labor": (
-        "Labor, employment, workers, workforce, economic contribution "
-        "of laborers"
-    ),
-    "legislation": (
-        "Legislation, laws, statutes, legal enactment, parliamentary "
-        "authority"
-    ),
-    "license": "License, permit, fee, registration, business regulation",
-    "taxation": (
-        "Taxation, tax, revenue, duty, tariff, fiscal policy"
-    ),
-}
-
-topic_anchors = {
-    topic: embed_model.encode(desc)
-    for topic, desc in topic_descriptions.items()
-}
-```
-
-```python
-similarity_scores = []
-
-for topic, anchor in topic_anchors.items():
-    for author in ["Crease", "Begbie", ACT_LABEL]:
-        emb_list = embeddings_dict.get(author, [])
-        texts = keyword_snippets.get(author, [])
-        if len(emb_list) == 0:
-            continue
-        sims = cosine_similarity(
-            anchor.reshape(1, -1),
-            np.vstack(emb_list),
-        ).flatten()
-        for idx, score in enumerate(sims):
-            similarity_scores.append(
-                {
-                    'Author': author,
-                    'Topic': topic,
-                    'Text': texts[idx],
-                    'Similarity Score': float(score),
-                }
-            )
-
-similarity_df = pd.DataFrame(similarity_scores)
-```
-
-{% include figure.html filename="en-or-natural-language-inference-historical-text-03.png" alt="Four box plots showing cosine similarity to topic anchors (labor, legislation, license, taxation) by author, with diamond markers for means" caption="Figure 3. Topic similarity distributions by author. Crease shows higher alignment with labor and taxation topics, while Begbie aligns more with license." %}
-
-## Zero-Shot Classification
-
-Zero-shot classification is the core analytical technique of this lesson. It uses a [natural language inference](https://en.wikipedia.org/wiki/Textual_entailment) model to classify text into categories defined at inference time, requiring no labeled training data. This is particularly valuable for historical research, where labeled datasets rarely exist.
-
-### Why Natural Language Inference?
-
-NLI is a practical middle ground for historical corpora. Supervised models need large labeled datasets that most historians do not have, and lexicon or topic methods often miss stance direction.[^19][^20] NLI instead scores whether a passage supports researcher-defined hypotheses, so you can run three-way stance classification without retraining.[^21]
+NLI is a practical middle ground for historical corpora. Supervised models need large labelled datasets that most historians do not have, and lexicon or topic methods often miss stance direction.[^12][^13] NLI instead scores whether a passage supports researcher-defined hypotheses, so you can run three-way stance classification without retraining.[^14]
 
 ### How Zero-Shot NLI Works
 
@@ -642,7 +352,29 @@ NLI models are trained to evaluate pairs of texts: a premise (the input text) an
 
 For example, given the premise "The treaties I have quoted between Great Britain and China, binding on the Dominion and on us in British Columbia, secure to the Chinese, just as the treaties between Great Britain and other foreign countries secure to other foreigners, the same rights in regard to the equality of taxation which I have described as being enjoyed by citizens of this country." and the hypothesis "In this text, the author advocates for equal legal treatment of Chinese immigrants", the model would likely assign a high entailment score, classifying the sentence as "Pro".
 
-The key advantage is flexibility: you can define any set of labels without retraining the model; the key risk is that results depend heavily on how you phrase those labels. 
+The key advantage is flexibility: you can define any set of labels without retraining the model; the key risk is that results depend heavily on how you phrase those labels.
+
+### Choosing a Model for Historical Text
+
+Model selection matters in any NLP pipeline, especially for historical texts. Two checks matter most: whether the training data is close to your corpus, and whether the model was designed for your task.
+
+This lesson uses [DeBERTa NLI (v2.0)](https://huggingface.co/MoritzLaurer/deberta-v3-large-zeroshot-v2.0) for zero-shot classification. It is tuned for entailment tasks and performs strongly when labels are expressed as explicit hypotheses.[^15]
+
+When choosing models for your own historical corpus, consider:
+
+- Does the model's training data overlap with your domain? A general-purpose model may lack specialised vocabulary, while a domain-specific model trained on modern legal text may not understand nineteenth-century usage of terms like "alien".[^16]
+- Is the model designed for your task? Use NLI-fine-tuned models for zero-shot classification rather than general-purpose language models.
+- Test with known examples. Pass excerpts where you already know the expected result and check whether the model's output aligns with your domain knowledge.
+
+For a publishable analysis, also record the exact model identifier, the date you ran it, and the main inference settings. Hugging Face models can change, and two models with similar names may behave differently. In production work you would usually pin a model revision; in this lesson, save enough information that another reader can tell which model produced the CSV files.
+
+### The Lexicon Mismatch Problem
+
+A central challenge is lexical drift: words in nineteenth-century legal writing can carry meanings that differ from modern usage. OCR noise adds another layer of uncertainty. There is no complete fix, but you can reduce risk by:
+
+- Verify that key terms in your corpus appear in the model's vocabulary
+- Compare model outputs against passages where the expected stance is clear
+- Treat all computational results as hypotheses that require human validation, not as conclusions
 
 ### Designing Effective Labels
 
@@ -656,20 +388,41 @@ For this case study, the following labels capture the three positions of interes
 
 Each label is phrased as a completion of the hypothesis template "In this snippet of a historical legal text, the author {}." This grounds the model in the specific domain and authorial framing of the texts.
 
-A major limitation is results depend heavily on label quality. Labels poorly aligned with the stance categories produce misleading classifications, especially for historical texts whose rhetorical conventions differ from modern usage.
+Results depend heavily on label quality. Labels poorly aligned with the stance categories produce misleading classifications, especially for historical texts whose rhetorical conventions differ from modern usage.
+
+### A Small Label-Design Check
+
+Before running the full corpus, test the labels on a few passages where you already have a strong reading. This is not a substitute for the evaluation sample later in the lesson. It is a quick design check to catch labels that are too vague, too broad, or unevenly phrased.
+
+Good label sets usually have three features. First, each label names the same object of judgement. Here, all three labels refer to the author's stance towards unequal legal treatment of Chinese immigrants. Second, the labels use similar levels of detail. If one label is a long moral claim and another is a short descriptive phrase, the model may respond to wording rather than stance. Third, the categories should match the task. In this lesson, `Pro`, `Neutral`, and `Cons` are mutually exclusive summary categories, so the pipeline asks the model to choose among them.
+
+For other projects, decide whether your labels are mutually exclusive before you run the model. A passage might be both "about taxation" and "about immigration", so a topic-classification task may need multi-label settings. A stance task like this one asks a different question: which stance is strongest in the passage? Keeping that distinction clear makes the output easier to interpret.
+
+The `Neutral` label also needs special care. In this workflow it means "not clearly Pro or Cons for this research question". It does not mean that the passage is historically neutral, politically neutral, or unimportant.
 
 ### Setting Up the Pipeline
 
-The lesson presents the pipeline in its simplest form. The notebook demo keeps the extra environment controls needed for repeatable execution.
+The lesson presents the pipeline in its simplest form. If you have limited computing time, you can load the precomputed CSV files shown below and still complete the interpretation and evaluation sections. If you want to reproduce the model outputs from scratch, run the scoring cells instead.
 
 ```python
 warnings.filterwarnings("ignore")
 model_name = "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
+run_notes = {
+    "model_name": model_name,
+    "hypothesis_template": (
+        "In this snippet of a historical legal text, "
+        "the author {}."
+    ),
+    "classification_mode": "single-label",
+}
 zero_shot = pipeline(
     "zero-shot-classification",
     model=model_name,
     tokenizer=model_name,
-    hypothesis_template="In this snippet of a historical legal text, the author {}.",
+    hypothesis_template=(
+        "In this snippet of a historical legal text, "
+        "the author {}."
+    ),
     device=0 if torch.cuda.is_available() else -1,
 )
 
@@ -720,37 +473,64 @@ def score_texts(texts_by_author, labels):
     return pd.DataFrame(rows)
 ```
 
-The notebook demo keeps the pre-computed load path for faster execution, but the lesson shows the direct calculation steps.
+The `run_notes` dictionary is not required by the model. It is there for auditability. If you change the model, labels, hypothesis template, or classification mode, save the new outputs under a new filename or add a short note explaining the change.
 
-### Validating Against Ground Truth
-
-Before interpreting zero-shot results on the full corpus, it is important to measure performance on a labeled sample that matches the task definition. The evaluation set used here contains 45 manually labeled snippets balanced across the three pipeline labels (Pro, Neutral, Cons), with representation from Act text, Crease, Begbie, and Commission material. This design evaluates the same three-way classification problem used in the analysis pipeline, rather than a separate single-hypothesis entailment task.
-
-The evaluation reports overall accuracy, per-class precision/recall/F1 (the harmonic mean of precision and recall, where 1.0 is perfect), and a majority-class baseline. Reporting the baseline is essential: if a trivial classifier can perform well by always predicting one class, apparent gains in accuracy may be misleading. The notebook also reports per-author breakdowns so you can see whether performance is concentrated in one source type or generalizes across legal voices.
-
-In this run, overall accuracy on the 45-sentence set is 0.667 (30/45), compared with a majority-class baseline of 0.333. Per-class F1 scores are 0.500 (Pro), 0.686 (Neutral), and 0.743 (Cons). Per-author accuracy is highest for Commission snippets (1.000), followed by Crease (0.733) and the Regulation Act (0.700), and lower for Begbie (0.467), which is consistent with the rhetorical complexity discussed below.
-
-For interpretive tasks, this level of performance is usable but not definitive. Treat these scores as decision support for close reading, not automated ground truth.[^22][^23][^24][^25]
+The next two sections show the direct calculation steps. To use the lower-resource path, replace the scoring cell with the `pd.read_csv()` line shown in each section.
 
 ### Sentence-Level Classification
 
 One limitation of transformer models is a fixed token limit (typically 512 tokens). For longer documents, you must split text into smaller units. The sentence approach classifies each sentence individually, capturing fine-grained variation in stance.
 
-Classification of all sentences takes approximately 20 to 40 minutes on CPU. The lesson shows the full scoring step directly, while the notebook demo loads the saved CSV.
+Classification of all sentences takes approximately 20 to 40 minutes on CPU.
 
 ```python
 sentence_scores_path = "data/results/zero_shot_sentence_scores.csv"
 df_scores = score_texts(keyword_snippets, labels=zs_labels)
 df_scores.to_csv(sentence_scores_path, index=False)
 
-sentence_summary = df_scores.groupby("Author")[SCORE_COLS].mean().round(4)
+sentence_summary = (
+    df_scores.groupby("Author")
+    .agg(
+        Sentences=("Text", "size"),
+        Pro=("Pro", "mean"),
+        Neutral=("Neutral", "mean"),
+        Cons=("Cons", "mean"),
+    )
+    .round(2)
+)
 ```
 
-{% include figure.html filename="en-or-natural-language-inference-historical-text-04.png" alt="Scatter plot of Pro versus Cons zero-shot classification scores colored by author, showing that Regulation Act points cluster toward higher Cons scores" caption="Figure 4. Pro versus Cons classification scores by author (sentence level). The Regulation Act clusters toward higher Cons scores, while Crease and Begbie sentences distribute more broadly." %}
+Lower-resource path:
+
+```python
+df_scores = pd.read_csv("data/results/zero_shot_sentence_scores.csv")
+sentence_summary = (
+    df_scores.groupby("Author")
+    .agg(
+        Sentences=("Text", "size"),
+        Pro=("Pro", "mean"),
+        Neutral=("Neutral", "mean"),
+        Cons=("Cons", "mean"),
+    )
+    .round(2)
+)
+```
+
+Expected summary:
+
+| Author | Sentences | Pro | Neutral | Cons |
+| --- | ---: | ---: | ---: | ---: |
+| Act 1884 | 24 | 0.02 | 0.38 | 0.60 |
+| Begbie | 18 | 0.27 | 0.14 | 0.59 |
+| Crease | 83 | 0.12 | 0.49 | 0.38 |
+
+The Act has the highest mean `Cons` score at the sentence level. Begbie also receives high sentence-level `Cons` scores, which is one reason the lesson later compares sentence results with wider context windows.
+
+{% include figure.html filename="en-or-natural-language-inference-historical-text-01.png" alt="Scatter plot of Pro versus Cons zero-shot classification scores coloured by author, showing that Regulation Act points cluster towards higher Cons scores" caption="Figure 1. Pro versus Cons classification scores by author (sentence level). The Regulation Act clusters towards higher Cons scores, while Crease and Begbie sentences distribute more broadly." %}
 
 ### Window-Level Classification
 
-The sentence approach captures variation but loses context. The window approach classifies larger overlapping chunks of text, providing a more holistic stance assessment at the cost of per-sentence nuance.
+The sentence approach captures variation but loses context. The window approach classifies larger overlapping chunks of text, giving the model more surrounding argument at the cost of per-sentence detail.
 
 The windowing function uses the NLI tokenizer to measure token lengths, ensuring each chunk fits within the model's 512-token limit:
 
@@ -777,7 +557,7 @@ def chunk_into_windows(text, max_tokens=512, stride=128):
     return windows
 ```
 
-The same pattern works for larger windows. The notebook demo loads the saved CSV, but the lesson shows the direct calculation:
+The same pattern works for larger windows:
 
 ```python
 window_scores_path = "data/results/zero_shot_windowed_scores.csv"
@@ -792,97 +572,94 @@ window_texts_by_author = {
 window_scores_df = score_texts(window_texts_by_author, labels=zs_labels)
 window_scores_df.to_csv(window_scores_path, index=False)
 
-window_summary = window_scores_df.groupby("Author")[SCORE_COLS].mean().round(4)
-```
-
-### Interpreting and Evaluating Results
-
-Both sentence and window approaches identify the Regulation Act as the most discriminatory source. However, interpretation requires careful human evaluation and explicit treatment of model uncertainty.
-
-Consider this example from Crease's ruling: "...every Chinese is guilty until proved innocent, a provision which fills one conversant with subjects with alarm..." The model may classify this as "Cons" because the sentence contains discriminatory language. In context, however, Crease is *condemning* the law. This pattern appears repeatedly in Begbie as well and forms a central interpretive issue in this workflow.
-
-Linguists and discourse analysts have documented what may be called *quotation-induced stance reversal*: when a speaker quotes another's words to criticize them, surface-level analysis attributes the quoted stance to the speaker.[^26] Sentence-level NLI is particularly vulnerable to this because the model reads the discriminatory words without the surrounding argumentative frame that signals condemnation. Rights-protective legal judgments can therefore receive high "Cons" scores at the sentence level when judges quote or describe discriminatory rules in order to reject them.
-
-To address this, window-level aggregates serve as the primary summary and sentence-level results serve as granular diagnostics. Confidence-aware summaries (filtering rows whose maximum label score falls below 0.5 and computing confidence-weighted means) further reduce the influence of ambiguous sentences.
-
-To evaluate zero-shot results responsibly:
-
-1. Examine high-confidence predictions and verify them against the source text
-2. Look for systematic misclassifications (e.g., all quotations from the Act within a critique being labeled "Cons")
-3. Compare sentence-level and window-level results; disagreements indicate context-sensitive passages
-4. Treat window-level and confidence-aware aggregates as more reliable than any single sentence score
-
-## Putting It All Together
-
-The final step combines topic alignment with stance scores. For sentences that appear in both the embedding analysis and the zero-shot classification, you can compute [Pearson correlation coefficients](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) between topic similarity and stance scores:
-
-$$
-r = \frac{\text{cov}(X, Y)}{\sigma_X \cdot \sigma_Y}
-$$
-
-```python
-def clean_text(text):
-    return re.sub(r'[^\w\s]', '', text.lower()).strip()
-
-similarity_wide = similarity_df.pivot_table(
-    index=['Author', 'Text'],
-    columns='Topic',
-    values='Similarity Score',
-    aggfunc='mean',
-).reset_index()
-similarity_wide['key'] = similarity_wide['Text'].apply(clean_text)
-
-df_scores['key'] = df_scores['Text'].apply(clean_text)
-
-merged_df = similarity_wide.merge(
-    df_scores[['key', 'Pro', 'Neutral', 'Cons']],
-    on='key',
-    how='inner',
-)
-merged_size = len(merged_df)
-```
-
-```python
-topics = ['labor', 'legislation', 'license', 'taxation']
-results = []
-for author in merged_df['Author'].unique():
-    sub = merged_df[
-        merged_df['Author'] == author
-    ]
-    for topic in topics:
-        for stance in ['Pro', 'Cons']:
-            corr = (
-                sub[[topic, stance]]
-                .corr().iloc[0, 1]
-            )
-            results.append({
-                'Author': author,
-                'Topic': topic,
-                'Stance': stance,
-                'Correlation': round(corr, 4),
-            })
-
-corr_df = pd.DataFrame(results)
-corr_wide = corr_df.pivot_table(
-    index='Author',
-    columns=['Topic', 'Stance'],
-    values='Correlation',
+window_summary = (
+    window_scores_df.groupby("Author")
+    .agg(
+        Windows=("Text", "size"),
+        Pro=("Pro", "mean"),
+        Neutral=("Neutral", "mean"),
+        Cons=("Cons", "mean"),
+    )
+    .round(2)
 )
 ```
 
-These correlations reveal whether emphasis on certain topics (e.g., labor, taxation) corresponds with more pro- or anti-discriminatory language. Combined with the qualitative evidence from the sentence-level analysis, this provides a multi-faceted view of each author's stance.
+Lower-resource path:
 
-### Comparing Lexicon and NLI Results
+```python
+window_scores_df = pd.read_csv(
+    "data/results/zero_shot_windowed_scores.csv"
+)
+window_summary = (
+    window_scores_df.groupby("Author")
+    .agg(
+        Windows=("Text", "size"),
+        Pro=("Pro", "mean"),
+        Neutral=("Neutral", "mean"),
+        Cons=("Cons", "mean"),
+    )
+    .round(2)
+)
+```
 
-Following the practice in computational finance of comparing dictionary-based and model-based classifiers, you can now score each sentence with both the lexicon and the NLI model. Where both methods agree, confidence is higher. Where they disagree, the passage likely involves rhetorical complexity, quotation for critique, legal description, or contextual reversal, that merits close reading.
+Expected summary:
 
-{% include figure.html filename="en-or-natural-language-inference-historical-text-05.png" alt="Two scatter plots comparing lexicon category scores against NLI classification scores per sentence, showing that many sentences with high NLI Cons scores have zero lexicon hits" caption="Figure 5. Lexicon scores versus NLI scores at the sentence level. The left panel shows that many sentences classified as discriminatory by NLI have zero Exclusionary lexicon hits, indicating the NLI model captures contextual meaning the lexicon misses. The right panel shows weak correlation between Rights-Affirming vocabulary and NLI Pro scores." %}
+| Author | Windows | Pro | Neutral | Cons |
+| --- | ---: | ---: | ---: | ---: |
+| Act 1884 | 8 | 0.04 | 0.29 | 0.67 |
+| Begbie | 19 | 0.38 | 0.30 | 0.33 |
+| Crease | 30 | 0.32 | 0.33 | 0.35 |
 
-The comparison reveals that the lexicon and NLI model capture different aspects of stance. Sentences with high NLI Cons scores but zero lexicon hits express discriminatory meaning through phrasing rather than keywords. Sentences where the lexicon flags Exclusionary vocabulary but NLI classifies as Neutral or Pro often involve quotation or description of discriminatory provisions. These disagreements are precisely the passages a historian should examine through close reading.
+The window-level results still mark the Act as the most discriminatory source, but Begbie's mean `Cons` score falls once more surrounding context is included.
 
-## Robustness Checks
+## Evaluation and Robustness
 
-Computational results from zero-shot NLI should be treated as hypotheses, not conclusions. Unlike supervised models evaluated on held-out test sets, zero-shot classifiers carry no built-in accuracy guarantee for a new domain. Without systematic validation, findings may reflect label phrasing artifacts or model biases rather than genuine textual patterns. Three robustness checks help assess how stable the findings are: quote sensitivity analysis, label sensitivity analysis, and bootstrap confidence intervals.
+*You are in stage 3 of 4, evaluation and robustness: check the model against a labelled sample and test how stable the results are.*
+
+Computational results from zero-shot NLI should be treated as hypotheses, not conclusions. Unlike supervised models evaluated on held-out test sets, zero-shot classifiers carry no built-in accuracy guarantee for a new domain. This section first measures performance against a manually labelled set, then applies three checks, quote sensitivity, label sensitivity, and bootstrap confidence intervals, to assess how stable the findings are.
+
+### Validating Against a Manually Labelled Evaluation Sample
+
+Before interpreting zero-shot results on the full corpus, measure performance on a manually labelled sample that matches the task definition. The evaluation set used here contains 45 snippets balanced across the three pipeline labels (Pro, Neutral, Cons), with representation from Act text, Crease, Begbie, and Commission material. These snippets were hand-labelled for evaluation by one of the lesson co-authors and then checked by a second co-author. This design evaluates the same three-way classification problem used in the analysis pipeline, rather than a separate single-hypothesis entailment task.
+
+The accompanying CSV records one expert label per snippet. It does not report separate annotator IDs, adjudication notes, or inter-annotator agreement. That is acceptable for a small tutorial evaluation set, but it affects how the numbers should be read: the labels are a co-author's reading of the stance categories, not an external benchmark or objective facts. In a larger study, you would also keep an annotation guide, record how ambiguous cases were handled, and you might ask a second reader to label at least a subset of the sample.
+
+The evaluation reports overall accuracy, per-class precision/recall/F1 (the harmonic mean of precision and recall, where 1.0 is perfect), and a majority-class baseline. Report the baseline because a trivial classifier can perform well by always predicting one class, making apparent gains in accuracy misleading. Per-author breakdowns show whether performance is concentrated in one source type or generalises across legal voices.
+
+In this run, overall accuracy on the 45-sentence set is 0.667 (30/45), compared with a majority-class baseline of 0.333. Per-class F1 scores are 0.500 (Pro), 0.686 (Neutral), and 0.743 (Cons). Per-author accuracy is highest for Commission snippets (1.000), followed by Crease (0.733) and the Regulation Act (0.700), and lower for Begbie (0.467), which is consistent with the rhetoric discussed below.
+
+| Metric | Value |
+| --- | ---: |
+| Overall accuracy | 0.667 |
+| Majority-class baseline | 0.333 |
+| F1, Pro | 0.500 |
+| F1, Neutral | 0.686 |
+| F1, Cons | 0.743 |
+
+For interpretive tasks, this level of performance is usable but not definitive. Treat these scores as decision support for close reading, not a substitute for it.[^17][^18][^19][^20]
+
+After the summary metrics, inspect the errors. Accuracy tells you how often the model matches the evaluation labels; it does not tell you what kinds of mistakes the model makes. For this lesson, the most important errors are false `Cons` predictions for passages that quote or describe discriminatory law to reject it, and false `Neutral` predictions for passages whose stance depends on legal context.
+
+```python
+eval_df = pd.read_csv("data/results/ground_truth_eval.csv")
+eval_df[eval_df["correct"] == False][
+    ["Author", "true", "pred", "sentence"]
+].head()
+```
+
+Expected output:
+
+| Author | true | pred | sentence |
+| --- | --- | --- | --- |
+| Act 1884 | Cons | Neutral | WHEREAS the incoming of Chinese to British Columbia largely exceeds that of any other class of immigrant. |
+| Act 1884 | Neutral | Cons | This Act shall be cited as the Chinese Regulation Act, 1884. |
+| Act 1884 | Neutral | Cons | The Lieutenant-Governor in Council shall appoint Chinese Collectors to collect and receive such payments. |
+| Crease | Pro | Neutral | Held, that the Chinese Regulation Act, 1884, is ultra vires of the Provincial Legislature. |
+| Crease | Pro | Cons | Every Chinese is guilty until proved innocent, a provision which fills one conversant with subjects with alarm. |
+
+Fifteen of the 45 predictions are wrong. The last row, where Crease is labelled Pro but predicted Cons, is the quotation-induced stance reversal discussed in the interpretation stage: the sentence carries discriminatory words that Crease is condemning.
+
+Read a few false positives and false negatives before interpreting author-level means. If most errors cluster in one author, document type, or rhetorical pattern, report that pattern alongside the accuracy score.
 
 ### Quote Sensitivity
 
@@ -912,11 +689,20 @@ for threshold in [0.3, 0.4, 0.5, 0.6]:
 quote_sensitivity = pd.DataFrame(quote_sensitivity)
 ```
 
-If the mean scores remain stable across thresholds, the results are not driven by residual Act quotations.
+Expected output:
+
+| Threshold | Removed | Pro | Neutral | Cons |
+| --- | ---: | ---: | ---: | ---: |
+| 0.3 | 62 | 0.13 | 0.43 | 0.45 |
+| 0.4 | 8 | 0.13 | 0.50 | 0.37 |
+| 0.5 | 0 | 0.12 | 0.49 | 0.38 |
+| 0.6 | 0 | 0.12 | 0.49 | 0.38 |
+
+If the mean scores remain stable across thresholds, the results are not driven by residual Act quotations. If scores shift sharply, inspect the removed sentences before interpreting the author-level means.
 
 ### Label Sensitivity
 
-Zero-shot classification results depend heavily on how candidate labels are phrased. Testing alternative label sets helps determine whether the ranking of authors is an artifact of specific wording or a robust finding. The notebook demo loads a saved summary, but the lesson shows the direct comparison step:
+Zero-shot classification results depend heavily on how candidate labels are phrased. Testing alternative label sets helps determine whether the ranking of authors is an artifact of specific wording or a stable finding. The code below compares the primary labels with two shorter alternatives:
 
 ```python
 alt_labels_1 = [
@@ -926,9 +712,18 @@ alt_labels_1 = [
 ]
 
 alt_labels_2 = [
-    "argues that Chinese immigrants deserve the same legal protections as other residents",
-    "discusses Chinese immigration without taking a clear legal position for or against",
-    "argues that restricting Chinese immigrants through law is justified or necessary",
+    (
+        "argues that Chinese immigrants deserve the same legal "
+        "protections as other residents"
+    ),
+    (
+        "discusses Chinese immigration without taking a clear legal "
+        "position for or against"
+    ),
+    (
+        "argues that restricting Chinese immigrants through law is "
+        "justified or necessary"
+    ),
 ]
 
 label_sets = {
@@ -959,7 +754,15 @@ label_sens_df = pd.concat(
 label_sens_df.to_csv("data/results/label_sensitivity_summary.csv", index=False)
 ```
 
-If the relative ordering of authors (e.g., Regulation Act > Begbie > Crease on "Cons") holds across all three label sets, the finding is more likely to reflect genuine textual patterns rather than label-dependent artifacts.
+Expected output:
+
+| Label set | Act Cons | Begbie Cons | Crease Cons |
+| --- | ---: | ---: | ---: |
+| Primary | 0.66 | 0.55 | 0.37 |
+| Alt-short | 0.37 | 0.22 | 0.13 |
+| Alt-legal | 0.60 | 0.28 | 0.31 |
+
+If the relative ordering of authors holds across label sets, the finding is less likely to be an artifact of one label wording. Here the Act remains highest on `Cons`, but Begbie and Crease move depending on label phrasing. That instability should be reported rather than smoothed over.
 
 ### Bootstrap Confidence Intervals
 
@@ -1002,28 +805,69 @@ for author in ['Crease', 'Begbie', ACT_LABEL]:
 bootstrap_summary = pd.DataFrame(bootstrap_rows)
 ```
 
-{% include figure.html filename="en-or-natural-language-inference-historical-text-06.png" alt="Dot-and-whisker plot showing bootstrap 95 percent confidence intervals for Pro, Neutral, and Cons mean scores by author" caption="Figure 6. Bootstrap 95% confidence intervals for mean stance scores. Begbie's wide intervals reflect the smaller sample size (18 snippets versus 83 for Crease)." %}
+{% include figure.html filename="en-or-natural-language-inference-historical-text-02.png" alt="Dot-and-whisker plot of mean Pro, Neutral, and Cons stance scores for Crease, Begbie, and the Regulation Act, each with a bootstrap 95 percent confidence interval. Begbie's intervals are the widest, reflecting its small sample of 18 snippets, so its estimates are the least certain, and where two authors' intervals overlap on a stance the difference between them is not statistically reliable." caption="Figure 2. Bootstrap 95% confidence intervals for mean stance scores. Begbie's wide intervals reflect the smaller sample size (18 snippets versus 83 for Crease)." %}
 
 Wide confidence intervals (especially for Begbie with only 18 snippets) indicate that the point estimates should be interpreted cautiously. Where intervals for different authors overlap on a given stance, the difference between them is not statistically reliable.
 
-## Discussion
+These bootstrap intervals summarise variation in the observed snippets, not every uncertainty in the workflow. They do not account for OCR errors, label ambiguity, model bias, quotation removal choices, or the fact that sentences from the same document are not fully independent. Treat them as a warning system for unstable averages, not as a final statistical test.
+
+## Interpreting Results and Adapting the Workflow
+
+*You are in stage 4 of 4, interpretation: read what the results can and cannot show, and adapt the workflow to your own corpus.*
+
+### What NLI Can and Cannot Do
+
+Both sentence and window approaches identify the Regulation Act as the most discriminatory source. However, interpretation requires careful human evaluation and explicit treatment of model uncertainty.
+
+Consider this example from Crease's ruling: "...every Chinese is guilty until proved innocent, a provision which fills one conversant with subjects with alarm..." The model may classify this as "Cons" because the sentence contains discriminatory language. In context, however, Crease is *condemning* the law. This pattern appears repeatedly in Begbie as well and forms a central interpretive issue in this workflow.
+
+Linguists and discourse analysts have documented what may be called *quotation-induced stance reversal*: when a speaker quotes another's words to criticise them, surface-level analysis attributes the quoted stance to the speaker.[^21] Sentence-level NLI is vulnerable to this because the model reads the discriminatory words without the surrounding argumentative frame that signals condemnation. Rights-protective legal judgments can therefore receive high "Cons" scores at the sentence level when judges quote or describe discriminatory rules to reject them.
+
+To address this, window-level aggregates serve as the primary summary and sentence-level results serve as granular diagnostics. Confidence-aware summaries (filtering rows whose maximum label score falls below 0.5 and computing confidence-weighted means) further reduce the influence of ambiguous sentences.
+
+To evaluate zero-shot results responsibly:
+
+1. Examine high-confidence predictions and verify them against the source text
+2. Look for systematic misclassifications (e.g., all quotations from the Act within a critique being labelled "Cons")
+3. Compare sentence-level and window-level results; disagreements indicate context-sensitive passages
+4. Treat window-level and confidence-aware aggregates as more reliable than any single sentence score
 
 Returning to the historiographical question, the results are mixed rather than binary. The Regulation Act is consistently most discriminatory, while Crease and Begbie show overlapping but internally varied profiles. This supports a cautious interpretation: legal argument, quotation, and rhetorical framing all shape the scores. The method is most useful for prioritizing passages for close reading, not for replacing interpretation.
 
-## Conclusion
+### Adapting to Your Own Corpus
 
-This lesson demonstrated a full, reproducible workflow: TF-IDF for exploratory signal, Sentence-BERT for semantic similarity, DeBERTa NLI for stance scoring, and robustness checks for uncertainty. The core finding is stable across methods: the Regulation Act is the clearest discriminatory source, while judicial texts are more ambiguous and context-dependent. Use these outputs as structured evidence for historical interpretation, not as final verdicts.
+The case study is specific, but the workflow is general. To adapt it to a new corpus, a researcher should make five decisions:
 
-To adapt this workflow to a new corpus, a researcher must make five decisions:
 1. Select and digitize the corpus
 2. Define a keyword list that identifies the thematic focus
 3. Design classification labels that name the specific stance dimensions of interest
 4. Choose a pre-trained model whose training domain approximates the target corpus
-5. Assemble a small labeled sample of even 30 to 50 sentences to measure and report classification accuracy
+5. Assemble a small labelled sample of even 30 to 50 sentences (or more) to measure and report classification accuracy
 
 Each of these decisions shapes what the pipeline can and cannot reveal, and each warrants explicit justification in any publication that uses these methods.
 
-Ultimately, deploying Natural Language Inference within historical research does not supplant traditional hermeneutics; rather, it significantly scales the historian's analytical capacity. While transformer-based models can efficiently parse vast archives to surface latent ideological alignments or textual contradictions, they remain inherently agnostic to the temporally bound, cultural nuances of historical discourse. Consequently, NLI should be treated as a sophisticated heuristic mechanism. It excels at directing researchers toward critical junctures of conflict or consensus within a corpus, but the final burden of interpretation, contextualization, and causal inference remains firmly with the human scholar.
+### Digital Resources for Historical Semantics
+
+These resources help you check historical usage before final interpretation:
+
+- The [Historical Thesaurus of English](https://ht.ac.uk/) traces when words acquired or lost specific senses through dated attestations. For example, it can help confirm that "alien" carried its legal sense throughout the nineteenth century.[^22]
+- [Google Books Ngram Viewer](https://books.google.com/ngrams) charts word frequencies across centuries of digitized books, revealing where historical and modern usage patterns diverge.[^23]
+- [EarlyPrint](https://earlyprint.org/) provides linguistically annotated early English print (1473 to the early 1700s) with tools for handling archaic spelling and OCR artifacts.[^24]
+- The [Corpus of Historical American English (COHA)](https://www.english-corpora.org/coha/) contains 475 million words from the 1820s to the 2010s, searchable by decade and genre.[^25]
+
+These tools cannot remove model bias, but they help you design better labels and spot likely failure points.
+
+### Working with Other Languages
+
+This case study uses English historical legal texts, an English spaCy model, and English NLI labels. For a corpus in another language, replace each language-dependent part of the workflow rather than only translating the keywords. Use a sentence segmenter that works for the target language, choose a multilingual or language-specific NLI model such as XLM-R or mDeBERTa, and write the candidate labels and hypothesis template in the same language as the corpus unless you have a clear reason to translate the texts. Then test the labels on known examples from your corpus before running the full classification.
+
+The historical-semantics check also needs to be language specific. English resources such as the Historical Thesaurus of English or COHA will not answer questions about older French, Chinese, Spanish, or other language corpora. Look for dictionaries, historical corpora, or domain-specific reference works in the language and period you are studying, and document any vocabulary choices that may affect model interpretation.
+
+## Conclusion
+
+This lesson showed how to prepare a corpus, remove quoted passages with fuzzy matching, score stance with zero-shot DeBERTa NLI, and test the results. In this case study, the Regulation Act receives the clearest discriminatory scores, while the judicial texts are more ambiguous and context-dependent. Use these outputs as structured evidence for historical interpretation, not as final verdicts.
+
+Used carefully, NLI lets historians scan more text than close reading alone, but it does not necessarily capture historical context in the way a researcher can. Its best use here is to surface passages and disagreements that deserve closer reading. The final interpretation still depends on source criticism, historical context, and transparent reporting of uncertainty.
 
 ## Further Reading
 
@@ -1045,18 +889,17 @@ Ultimately, deploying Natural Language Inference within historical research does
 [^9]: *Regina v. Mee Wah*, 3 B.C.R. 403 (1886).
 [^10]: Canada, Royal Commission on Chinese Immigration, *Report of the Royal Commission on Chinese Immigration: Report and Evidence* (Ottawa: Printed by order of the Commission, 1885).
 [^11]: Tim Loughran and Bill McDonald, "When Is a Liability Not a Liability? Textual Analysis, Dictionaries, and 10-Ks," *Journal of Finance* 66, no. 1 (2011): 35-65, https://doi.org/10.1111/j.1540-6261.2010.01625.x.
-[^12]: Nils Reimers and Iryna Gurevych, "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks," in *Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing* (Hong Kong: Association for Computational Linguistics, 2019), 3982-92, https://doi.org/10.18653/v1/D19-1410.
-[^13]: Moritz Laurer, Wouter van Atteveldt, Andreu Casas, and Kasper Welbers, "Less is More: Optimal Dataset Size for NLI Models," arXiv:2109.09703 (2023).
-[^14]: Fatemeh Ariai, Joel Mackenzie, and Guido De Martini, "Natural Language Processing for the Legal Domain: A Survey of Tasks, Datasets, Models and Challenges," arXiv:2410.21306 (2025).
-[^15]: Marc Alexander, ed., *Historical Thesaurus of English*, 2nd ed. (Glasgow: University of Glasgow, 2020), https://ht.ac.uk/.
-[^16]: Jean-Baptiste Michel et al., "Quantitative Analysis of Culture Using Millions of Digitized Books," *Science* 331, no. 6014 (2011): 176-82, https://doi.org/10.1126/science.1199644.
-[^17]: EarlyPrint Project, *EarlyPrint: Curating and Exploring Early Printed English* (Northwestern University and Washington University in St. Louis), https://earlyprint.org/.
-[^18]: Mark Davies, *Corpus of Historical American English (COHA): 475 Million Words, 1820s–2010s* (Provo, UT: Brigham Young University, 2010–), https://www.english-corpora.org/coha/.
-[^19]: Bing Liu, *Sentiment Analysis and Opinion Mining* (San Rafael, CA: Morgan & Claypool, 2012).
-[^20]: David M. Blei, Andrew Y. Ng, and Michael I. Jordan, "Latent Dirichlet Allocation," *Journal of Machine Learning Research* 3 (2003): 993-1022.
-[^21]: Wenpeng Yin, Jamaal Hay, and Dan Roth, "Benchmarking Zero-shot Text Classification: Datasets, Evaluation, and Entailment Approach," in *Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing* (Hong Kong: Association for Computational Linguistics, 2019), 3914-23.
-[^22]: Ron Artstein and Massimo Poesio, "Inter-Coder Agreement for Computational Linguistics," *Computational Linguistics* 34, no. 4 (2008): 555-96, https://doi.org/10.1162/coli.07-034-R2.
-[^23]: Klaus Krippendorff, *Content Analysis: An Introduction to Its Methodology*, 4th ed. (Los Angeles: Sage, 2018).
-[^24]: Rion Snow, Brendan O'Connor, Daniel Jurafsky, and Andrew Y. Ng, "Cheap and Fast — But Is It Good? Evaluating Non-Expert Annotations for Natural Language Tasks," in *Proceedings of the 2008 Conference on Empirical Methods in Natural Language Processing* (Honolulu: Association for Computational Linguistics, 2008), 254-63.
-[^25]: Fabrizio Gilardi, Meysam Alizadeh, and Maël Kubli, "ChatGPT Outperforms Crowd Workers for Text-Annotation Tasks," *Proceedings of the National Academy of Sciences* 120, no. 30 (2023): e2305016120, https://doi.org/10.1073/pnas.2305016120.
-[^26]: Douglas Biber and Edward Finegan, "Adverbial Stance Types in English," *Discourse Processes* 11, no. 1 (1988): 1-34, https://doi.org/10.1080/01638538809544689.
+[^12]: Bing Liu, *Sentiment Analysis and Opinion Mining* (San Rafael, CA: Morgan & Claypool, 2012).
+[^13]: David M. Blei, Andrew Y. Ng, and Michael I. Jordan, "Latent Dirichlet Allocation," *Journal of Machine Learning Research* 3 (2003): 993-1022.
+[^14]: Wenpeng Yin, Jamaal Hay, and Dan Roth, "Benchmarking Zero-shot Text Classification: Datasets, Evaluation, and Entailment Approach," in *Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing* (Hong Kong: Association for Computational Linguistics, 2019), 3914-23.
+[^15]: Moritz Laurer, Wouter van Atteveldt, Andreu Casas, and Kasper Welbers, "Less is More: Optimal Dataset Size for NLI Models," arXiv:2109.09703 (2023).
+[^16]: Fatemeh Ariai, Joel Mackenzie, and Guido De Martini, "Natural Language Processing for the Legal Domain: A Survey of Tasks, Datasets, Models and Challenges," arXiv:2410.21306 (2025).
+[^17]: Ron Artstein and Massimo Poesio, "Inter-Coder Agreement for Computational Linguistics," *Computational Linguistics* 34, no. 4 (2008): 555-96, https://doi.org/10.1162/coli.07-034-R2.
+[^18]: Klaus Krippendorff, *Content Analysis: An Introduction to Its Methodology*, 4th ed. (Los Angeles: Sage, 2018).
+[^19]: Rion Snow, Brendan O'Connor, Daniel Jurafsky, and Andrew Y. Ng, "Cheap and Fast — But Is It Good? Evaluating Non-Expert Annotations for Natural Language Tasks," in *Proceedings of the 2008 Conference on Empirical Methods in Natural Language Processing* (Honolulu: Association for Computational Linguistics, 2008), 254-63.
+[^20]: Fabrizio Gilardi, Meysam Alizadeh, and Maël Kubli, "ChatGPT Outperforms Crowd Workers for Text-Annotation Tasks," *Proceedings of the National Academy of Sciences* 120, no. 30 (2023): e2305016120, https://doi.org/10.1073/pnas.2305016120.
+[^21]: Douglas Biber and Edward Finegan, "Adverbial Stance Types in English," *Discourse Processes* 11, no. 1 (1988): 1-34, https://doi.org/10.1080/01638538809544689.
+[^22]: Marc Alexander, ed., *Historical Thesaurus of English*, 2nd ed. (Glasgow: University of Glasgow, 2020), https://ht.ac.uk/.
+[^23]: Jean-Baptiste Michel et al., "Quantitative Analysis of Culture Using Millions of Digitized Books," *Science* 331, no. 6014 (2011): 176-82, https://doi.org/10.1126/science.1199644.
+[^24]: EarlyPrint Project, *EarlyPrint: Curating and Exploring Early Printed English* (Northwestern University and Washington University in St. Louis), https://earlyprint.org/.
+[^25]: Mark Davies, *Corpus of Historical American English (COHA): 475 Million Words, 1820s–2010s* (Provo, UT: Brigham Young University, 2010–), https://www.english-corpora.org/coha/.

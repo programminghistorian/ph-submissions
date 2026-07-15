@@ -170,7 +170,7 @@ In Finder, go to your image file. Right-click (mouse) or two-finger click (track
 
 If your image file size is over 100 MB, you will have to resize it to upload it to IIIF Workbench. If not, you can skip this step.
 
-Open the image in Preview. In the Mac menu bar at the top of the screen, click File > Export. Select PNG, TIFF, or JPEG. Move the scroller so that the file size displayed is under 100 MB, but as close to lossless as possible.
+Open the image in Preview. In the Mac menu bar at the top of the screen, click File>Export. Select PNG, TIFF, or JPEG. Move the scroller so that the file size displayed is under 100 MB, but as close to lossless as possible.
 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-02.png" alt="A dialog box with file export options over a blurred photo of a cat resting on a blanket. Export options include filename, tags, download location, file format, quality, and file size." caption="Figure 2. The editor for resizing images in macOS Preview." %}
 
@@ -184,11 +184,11 @@ Once you have logged in, you can access the [IIIF Workbench](https://workbench.g
 
 #### Upload Your Images
 
-Once you have created your project, you can open an upload popup and upload your images one by one. IIIF Workbench does not allow batch uploads, so you will have to select each image file individually.
+Once you have created your project, open an upload pop-up and upload your images one by one. IIIF Workbench does not allow batch uploads, so you will have to select each image file individually.
 
 You will be prompted to select an IIIF Image Version, either IIIF v2 (2.x) or v3 (3.x). See the [What is the Difference Between IIIF Versions?](#what-is-the-difference-between-iiif-versions) section above for guidance.
 
-Your image may take a while to process. IIIF Workbench must process the image file, generate [tiles](https://en.wikipedia.org/wiki/Tiled_rendering), upload to GitHub, and publish to the web. You can view which step the image is in at the bottom of the image box. While you wait, you can navigate to other pages, but do not close the Workbench tab.
+Your image may take a while to process. IIIF Workbench must process the image file, generate [tiles](https://en.wikipedia.org/wiki/Tiled_rendering), upload to GitHub, and publish to the web. You can view which step the image is in at the bottom of the image box. While you wait, you can navigate to other pages but do not close the Workbench tab.
 
 When your image is done processing, you should see a small version of it appear in a box in IIIF Workbench. The image name will be under the photo, along with a link to an `info.json`. For all IIIF images and manifests, the `info.json` is a [JavaScript Object Notation (JSON)](https://en.wikipedia.org/wiki/JSON) file that contains the information that allows the IIIF APIs to process and serve the IIIF image to the web. The box for each image in IIIF Workbench will also display a hyperlink to the hosted image in your GitHub repository for the project. You can view all of your downloaded image files in your GitHub repository for the project as well.
 
@@ -209,13 +209,15 @@ Method 3 uses libvips, an image-processing library, instead of IIIF Tiler to cre
 libvips gives you a ton of control over the specifications for a single image, including tile overlap, tile size, depth, angle, and more. libvips creates [Deep Zoom (DZI)](https://en.wikipedia.org/wiki/Deep_Zoom) tile pyramids for your images, so that only the area of the image that is viewed in a particular zoom is loaded. For this reason, libvips tends to create more tiles for an image. The increased number of tiles can be difficult to upload, but the images tend to be of slightly better quality and more zoomable.
 
 ### Installations
+
 Method 3 requires the installation of some software packages:
+
 - [Homebrew](https://brew.sh/)
 - [Ghostscript](https://formulae.brew.sh/formula/ghostscript)
 - [ImageMagick](https://imagemagick.org/download/#gsc.tab=0)
 - [libvips](https://www.libvips.org/install.html)
 
-[Homebrew](https://en.wikipedia.org/wiki/Homebrew_(package_manager)) is a [package manager](https://en.wikipedia.org/wiki/Package_manager) that makes installing software easier and safer. Package managers are helpful because they identify, check for, and install dependencies, or softwares required for another piece of software to run, allow you to update software in a single command, and mean that the software you are downloading has been vetted. Keeping your software updated also avoids security vulnerabilities. Package managers download software into discrete locations on your system, avoiding conflicts with existing files and structures of your OS. They also allow you to upgrade or uninstall software in bulk in a single command.
+[Homebrew](https://en.wikipedia.org/wiki/Homebrew_(package_manager)) is a [package manager](https://en.wikipedia.org/wiki/Package_manager) that makes installing software easier and safer. Package managers are helpful because they identify, check for, and install dependencies or softwares required for another piece of software to run, allow you to update software in a single command, and mean that the software you are downloading has been vetted. Keeping your software updated also avoids security vulnerabilities. Package managers download software into discrete locations on your system, avoiding conflicts with existing files and structures of your OS. They also allow you to upgrade or uninstall software in bulk in a single command.
 
 When downloading software from the web, be sure to always click on official links from the developer only (such as the hyperlinks included above). Make sure to check any relevant installation instructions for your OS (Windows, Mac, or Linux), and to download the right file for your OS.
 
@@ -223,11 +225,11 @@ Every installation for this method can be done on macOS using Homebrew.
 
 ### Preparing Your Image Directory and Files
 
-Using the command line or your operating system's file management application (Finder, File Explorer, etc.), create a directory for your image file somewhere on your local computer. You can name your directory whatever you would like. This lesson will refer to the image file directory as `iiif-libvips`. 
+Using the command line or your operating system's file management application (Finder, File Explorer, etc.), create a directory for your image file somewhere on your local computer. Name your directory as you please. This lesson will refer to the image file directory as `iiif-libvips`. 
 
 Download your image to the `iiif-libvips` directory. As with the other methods, if you have the option, download your image using the optimal file format available. For creating high-quality IIIF-compliant images, TIFFs are best, JPGs/JPEGs are second best, and PNGs are third best.
 
-If you are downloading multiple image files, **make sure your image filenames are distinct.** You cannot have files with the same exact name and file extension in the same directory, and the tiler will not be able to distinguish between files without distinct titles. 
+If you are downloading multiple image files, **make sure your image filenames are distinct.** You cannot have files with the same exact name and file extension in the same directory, as the tiler will not be able to distinguish between files without distinct titles. 
 
 ### Using libvips to Tile an Image
 
@@ -237,7 +239,7 @@ For this lesson, you will use the deep zoom command, saving the tiled files in a
 
 Open the command line on your local computer and change directories to your iiif-libvips directory. Run the following command: `vips dzsave YOUR-IMAGE-NAME --layout iiif3 YOUR-PREFERRED-FILENAME.zip`. `vips` is the libvips command. The `dzsave` argument specifies the desired format for the image as a Deep Zoom file. The `--layout iiif3` argument specifies the arrangement of the tile files in the folder that make up the composite image, which will be IIIF v3-compliant. The `zip` extension specifies that the files should all be packaged together into one neat, compressed file package for easy access.
 
-Wait for the [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) file to appear in the iiif-libvips directory. When you open the ZIP file, you will find folders containing the various tile files that make up the IIIF image and an `info.json` file for each image. Each of the individual image folders thus makes up a Level-0 compliant IIIF image.
+Wait for the [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) file to appear in the iiif-libvips directory. When you open the ZIP file, you will find folders containing the various tile files that make up the IIIF image and an `info.json` file for each image. Each of the individual image folders make up a Level-0 compliant IIIF image.
 
 Before continuing, be sure to open the ZIP file for each image so you can access the contents.
 
@@ -249,14 +251,13 @@ If you want to use libvips to tile multiple image files, you will need to use sc
 
 Now that you have all of these image tiles, what do you do with them? To store, host, access, and share your images, you can create a basic GitHub repository.
 
-Create a new repository on GitHub. Create an `images` folder. While in the `images` folder, upload all of the individual image folders (e.g., image-1, image-2, etc.) in the `iiif-libvips` directory on your local computer. You may have to do this in batches due to GitHub's upload limits. You can delete the `vips-properties.xml` file.
+First create a new repository on GitHub. Next, create an `images` folder. While in the `images` folder, upload all of the individual image folders (e.g., image-1, image-2, etc.) in the `iiif-libvips` directory on your local computer. You may have to do this in batches due to GitHub's upload limits. You can delete the `vips-properties.xml` file.
 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-04.png" alt="A split-screen view of a GitHub repository showing the 'Drop to upload your files' area on the left, and the computer's Finder visible on the right. Five IIIF tile folders are being dragged from the Finder into GitHub's 'Drop to upload your files' area." caption="Figure 4. Dragging image tile files from a local computer to upload to the images folder in a GitHub repository." %}
 
-
 Create a `manifests` folder in the same repository. You will use this folder later to store and host your manifests.
 
-In your repository, go to Settings > GitHub Pages. Set the Source to "Deploy from a branch" and the Branch to "main /(root)".
+In your repository, go to Settings>GitHub Pages. Set the Source to 'Deploy from a branch' and the Branch to 'main /(root)'.
 
 #### Clean Up Your Image Files
 
@@ -267,7 +268,7 @@ After all files have uploaded successfully to GitHub, open the `info.json` file 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-05.png" alt="Part of an info.json file for a IIIF image. Line 3 starting with 'id' is highlighted to show the edited image URI." caption="Figure 5. The updated image URI in an info.json file for an uploaded IIIF image processed using libvips." %}
 
 <div class="alert alert-warning">
- Make sure you hit the green "commit" button to save your changes as you go!
+ Make sure you hit the green 'commit' button to save your changes as you go!
 </div>
 
 ### Find the Identifiers for Your Image
@@ -277,6 +278,7 @@ The identifiers for your image will be constructed from your newly edited `info.
 At this stage, you can go to the [Creating Manifests](#creating-manifests) section to create manifest files manually or using a manifest editor.
 
 ## Creating Manifests
+
 Now that you have your images prepared and have their identifiers on hand, it is time to create your manifests.
 
 To create a manifest from your image, you can either use a manifest editor or create the file manually. Using a manifest editor allows you to edit your manifest using a Graphical User Interface (GUI) which displays options as buttons instead of writing code from scratch. The former is easier for learners with no/limited programming knowledge, while the latter allows for more careful control of the manifest file.
@@ -286,10 +288,11 @@ Note that for Method 2, IIIF Workbench does not create individual manifests for 
 ### Using a Template
 
 To write the most basic manifest from scratch in IIIF version 3, the following components are required:
-* `@context`: the URL for the presentation API version you're using. For IIIF v3, it would be "http://iiif.io/api/presentation/3/context.json".
+
+* `@context`: the URL for the presentation API version you're using. For IIIF v3, it would be 'http://iiif.io/api/presentation/3/context.json'.
 * `id` for every object: the unique URL to the canvas, item, annotation page, annotation, etc.
 * `type` for every object: the type of resource that the object contains, like a canvas, item, annotation page, etc.
-* `label`: a unique label for each object, such as "canvas 1," "rights," "a picture of my mom," etc.
+* `label`: a unique label for each object, such as 'canvas 1', 'rights', 'a picture of my mom', etc.
 
 You will also need to include at least one canvas and one item each with the AnnotationPage and Annotation type.
 
@@ -404,7 +407,6 @@ To add your image to a manifest, open a manifest editor like the Digirati Manife
 Once you have added your image, it is best to add metadata to your canvas and manifest using the pre-populated fields. Metadata allows other viewers to understand what your image shows and what data it contains. Of particular importance is the `license` (v2) or `rights` (v3) field, which lets viewers know where you found the image, who owns it, or what license you are sharing it under, such as a [Creative Commons license](https://en.wikipedia.org/wiki/Creative_Commons) or a [RightsStatements.org](https://rightsstatements.org/en/) URI. This metadata can help other users determine if or how they can use the image for their own projects.
 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-07.png" alt="The canvas editing sidebar in the Digirati Manifest Editor with the title 'rights' and subtitles 'Label' and 'Value'. The label field has 'rights' in it and the value field has a RightsStatements.org URI in it. At the bottom is an 'Add metadata item' button." caption="Figure 7. The interface to add metadata fields, including rights metadata, to a manifest canvas in the Digirati Manifest Editor." %}
-
 
 When you are finished, save your manifest, give the file a unique title, and download it to your local computer. Note that it is easiest to name your manifest file the same thing as the corresponding image file, so that you know at a glance which image the manifest displays. 
 

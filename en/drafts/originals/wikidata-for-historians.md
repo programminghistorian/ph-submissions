@@ -16,7 +16,7 @@ difficulty: 2
 activity: acquiring
 topics: [linked-open-data, api, data-management]
 abstract: Wikidata is the world's most popular collaborative knowledge base. This lesson introduces its structure and describes a path into its content. The lesson shows several ways to query its data and points out some virtues of the ways it structures historical information.
-avatar_alt: Visual description of lesson image
+avatar_alt: Abstract geometric composition on a grid, with overlapping squares and rectangles in a pattern resembling a mosaic or chart.
 doi: XX.XXXXX/phen0000
 ---
 

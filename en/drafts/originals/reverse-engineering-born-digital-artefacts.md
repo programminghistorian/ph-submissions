@@ -84,7 +84,7 @@ The first case study focuses on practising two core skills: reading a hex dump a
 
 For this example, you will work with the JPEG file named `cat-with-hidden-content.jpg` within the `jpg_zip` folder. When you open this file using your computer's standard image viewer, it appears as a simple, humorous photo of a cat.
 
-{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-03.jpeg" alt="The photo shows a rather silly cat on a couch. The cat looks upwards and has its tongue out, making it look like a defiant kid. It's an orange tabby cat with fluffy fur and the couch is upholstered in grey cotton fabric." caption="Figure 3. The file cat-with-hidden-content.jpg displayed in a standard image viewer." %}
+{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-02.jpeg" alt="The photo shows a rather silly cat on a couch. The cat looks upwards and has its tongue out, making it look like a defiant kid. It's an orange tabby cat with fluffy fur and the couch is upholstered in grey cotton fabric." caption="Figure 2. The file cat-with-hidden-content.jpg displayed in a standard image viewer." %}
 
 But you can also inspect this file using a hex viewer. To do this, first navigate to the image file in a terminal of your choice. Then type the command below. This command is using `hexyl` to show the hex code of the file. The `-n` option tells `hexyl` to display only the first 256 bytes.
 
@@ -123,7 +123,7 @@ Following the file signature is metadata describing the image’s dimensions, co
 
 All JPEG files follow this general architecture, and this predictable structure is what allows software to recognise and 'parse' (interpret) the data correctly. The infographic below provides a visual breakdown of this structure in JPEG files. You do not need to memorise every byte; rather, you can use this as an introduction to the structural markers that allow you to inspect a digital artefact.
 
-{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-02.png" alt="The illustration shows a colour-coded hex dump on the left side. Some of the output is highlighted and connected with a dashed line to detailed explanations on the right side, indicating where the start of the image is, or where one could find more information about the files format." caption="Figure 2. Infographic annotating a JPEG's file header in hexadecimal notation. (Ange Albertini 2022 – CC-BY 4.0 )" %}
+{% include figure.html filename="en-or-reverse-engineering-born-digital-artefacts-03.png" alt="The illustration shows a colour-coded hex dump on the left side. Some of the output is highlighted and connected with a dashed line to detailed explanations on the right side, indicating where the start of the image is, or where one could find more information about the files format." caption="Figure 3. Infographic annotating a JPEG's file header in hexadecimal notation. (Ange Albertini 2022 – CC-BY 4.0 )" %}
 
 Finally, the last two columns in the hex dump show an ASCII interpretation of the data. This means that `hexyl` renders the hex data from the middle columns as ASCII characters where possible, allowing human-readable text to appear alongside the hexadecimal values. As you will see later on, this can also be a useful resource for identifying anomalies in file structures and finding text that was intended to be read by humans. 
 

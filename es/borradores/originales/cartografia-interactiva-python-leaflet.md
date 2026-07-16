@@ -243,9 +243,11 @@ body {
 
 Una vez insertado el código, debes guardar el archivo en `/static/css/` con el nombre que desees. Una sugerencia estándar es denominarlo `styles.css`. A continuación, debes llamar a la hoja de estilos que has creado en CSS desde `index.html`, agregando esta línea de código entre las etiquetas `<head>`:
 
+{% raw %}
 ```html
 <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 ```
+{% endraw %}
 
 #### Iniciación del mapa (JS)
 
@@ -268,9 +270,11 @@ Una vez escrito este código, deberás guardar el archivo en `/static/js/` con e
 
 Una vez escrito y guardado el archivo JS que dará inicio al motor de mapas, deberás llamarle desde tu HTML. Para ello, abre de nuevo `index.html` y escribe al final esta línea de código:
 
+{% raw %}
 ```html
 <script src="{{ url_for('static', filename='js/mapa.js') }}"></script>
 ```
+{% endraw %}
 
 Con este último paso, ya tienes todos los elementos mínimos necesarios para ejecutar el motor de mapas. Tu `index.html` debería ser similar a este:
 

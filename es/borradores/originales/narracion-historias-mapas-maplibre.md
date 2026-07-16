@@ -193,7 +193,7 @@ La parte nueva, y el concepto central de toda la lección, es el objeto `locatio
 Nuestro capítulo de apertura usa estos parámetros con intención retórica: `center: [0.0, 0.0]` (la intersección del ecuador con el meridiano de Greenwich), `zoom: 1.6` y `pitch: 0` producen una vista planetaria, abstracta y sin dirección privilegiada, exactamente el tono de la pregunta científica que abre el relato: ¿qué forma tiene la Tierra? Cuando quieras transmitir abstracción y escala global, esta combinación —zoom muy bajo, cámara cenital— es la fórmula.
 
 <div class="alert alert-info">
-Una gran ayuda para obtener todos estos parámetros es la web [Location Helper](https://labs.mapbox.com/location-helper/#3/40.78/-73.97) de Mapbox. Muestra un mapa web en el que se puede navegar y obtener los parámetros 'center', 'zoom', 'pitch' y 'bearing' que corresponden al contenido visible en la pantalla.
+Una gran ayuda para obtener todos estos parámetros es la web <a href='https://labs.mapbox.com/location-helper/#3/40.78/-73.97'>Location Helper</a> de Mapbox. Muestra un mapa web en el que se puede navegar y obtener los parámetros 'center', 'zoom', 'pitch' y 'bearing' que corresponden al contenido visible en la pantalla.
 </div>
 
 Por último, `mapAnimation: 'jumpTo'` indica que el mapa debe presentarse en esta posición sin transición animada. Es la opción natural para el primer capítulo, donde no hay un "antes" desde el cual volar.

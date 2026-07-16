@@ -74,7 +74,7 @@ This sets up the foundational project structure that _uv_ expects. Next, add the
 uv add ipykernel pydantic lmstudio
 ```
 
-Alternatively, if you would like to reproduce the exact environment I created when developing this lesson, you can install the packages using the provided `requirements.txt` file:
+Alternatively, if you would like to reproduce the exact environment I created when developing this lesson, you can install the packages using the provided `[requirements.txt](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/structured-data-vision-language-models/requirements.txt)` file:
 
 ```
 uv pip install -r requirements.txt

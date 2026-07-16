@@ -24,17 +24,17 @@ doi: XX.XXXXX/phen0000
 
 ## Introducción
 
-Esta lección[^1] pretende sumarse al conjunto de lecciones que emplean XML-TEI para la edición digital de textos. En ellas se abordan cuestiones como la estructura básica de un documento o las formas más adecuadas de organizarlo para obtener mejores resultados en su posterior consulta, tratamiento y publicación. Sin embargo, hay un aspecto importante que todavía no ha sido abordado con la profundidad que merece: el proceso mismo de transcripción de un texto.
+Esta lección[^1] pretende sumarse al conjunto de lecciones que emplean TEI-XML para la edición digital de textos. En ellas se abordan cuestiones como la estructura básica de un documento o las formas más adecuadas de organizarlo para obtener mejores resultados en su posterior consulta, tratamiento y publicación. Sin embargo, hay un aspecto importante que todavía no ha sido abordado con la profundidad que merece: el proceso mismo de transcripción de un texto.
 
-Aunque las herramientas de reconocimiento óptico de caracteres ([OCR](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres), por sus siglas en inglés) son cada vez más eficaces, y el desarrollo de sistemas de reconocimiento de texto manuscrito ([HTR](https://es.wikipedia.org/wiki/Reconocimiento_de_escritura), por sus siglas en inglés) permite transcribir semiautomáticamente buena parte de las escrituras históricas, quienes trabajamos con documentos escritos en letra cortesana o procesal todavía no podemos confiar plenamente en estos mecanismos[^2]. De ahí que, en muchos casos, el proceso de transcripción siga siendo total o parcialmente manual.
+Aunque las herramientas de reconocimiento óptico de caracteres ([OCR](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres), por sus siglas en inglés) son cada vez más eficaces, y el desarrollo de sistemas de reconocimiento de texto manuscrito ([HTR](https://es.wikipedia.org/wiki/Reconocimiento_de_escritura), por sus siglas en inglés) permite transcribir semiautomáticamente buena parte de las escrituras históricas, quienes trabajamos con documentos escritos en [letra cortesana o procesal](https://es.wikipedia.org/wiki/Escritura_espa%C3%B1ola_en_el_siglo_XV#Escritura_cortesana_del_siglo_XV)) todavía no podemos confiar plenamente en estos mecanismos[^2]. De ahí que, en muchos casos, el proceso de transcripción siga siendo total o parcialmente manual.
 
-Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de transcripción manual o etiquetar un texto procedente de OCR, HTR o, en general, de transcripciones realizadas previamente a las que todavía no hayas aplicado algún tipo de marcado TEI.
+Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de transcripción manual o etiquetar un texto procedente de OCR, HTR o, en general, de transcripciones realizadas previamente a las que todavía no hayas aplicado ningún marcado TEI.
 
 Ahora bien, ¿cómo puede un _script_ ayudarnos en nuestras tareas de Humanidades Digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de macros, gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
 
 ## ¿Qué debes saber?
 
-Al tratarse de una lección centrada en la edición de textos con XML-TEI, te recomendamos que antes hayas leído las dos lecciones de Nicolás Vaughan, tituladas [Introducción a la codificación de textos en TEI](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1), y la guía de Susanna Allés, titulada [Introducción a la Text Encoding Initiative](https://tthub.io/aprende/tutorial/introduccion-text-encoding-initiative). Si después quieres visualizar tus resultados en un entorno web, también puedes consultar la lección de Gabriel Calarco y Gimena del Río Riande sobre [CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean).
+Al tratarse de una lección centrada en la edición de textos con TEI, te recomendamos que antes hayas leído las dos lecciones de Nicolás Vaughan, tituladas [Introducción a la codificación de textos en TEI](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1), y la guía de Susanna Allés, titulada [Introducción a la Text Encoding Initiative](https://tthub.io/aprende/tutorial/introduccion-text-encoding-initiative). Si después quieres visualizar tus resultados en un entorno web, también puedes consultar la lección de Gabriel Calarco y Gimena del Río Riande sobre [CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean).
 
 En particular, para la sección dedicada a las funciones, conviene que tengas algunas nociones básicas de programación. No necesitas experiencia avanzada: los fragmentos de código estarán acompañados de una explicación paso a paso. Sin embargo, te resultará útil entender qué es una función y cómo operan estructuras condicionales como `if`, puesto que AHK comparte algunos principios con otros lenguajes de programación, como Python o R. Para reforzar estos conceptos, te recomendamos consultar las lecciones de William J. Turkel y Adam Crymble, [Reutilización de código y modularidad en Python](https://programminghistorian.org/es/lecciones/reutilizacion-de-codigo-y-modularidad) y [De HTML a lista de palabras](https://programminghistorian.org/es/lecciones/de-html-a-lista-de-palabras-2).
 
@@ -42,7 +42,7 @@ En particular, para la sección dedicada a las funciones, conviene que tengas al
 
 El primer requisito es disponer de un computador con Windows[^3]. También necesitarás instalar AHK y contar con un editor de texto plano (incluso podrías utilizar el Bloc de notas de Windows). No obstante, conviene trabajar con un editor que cuente con funcionalidades avanzadas, como [Notepad++](https://notepad-plus-plus.org/) o [Visual Studio Code](https://code.visualstudio.com/), ya que facilitará la lectura y edición del código de tu _script_.
 
-Por tanto, el primer paso es acceder a la página oficial de [AutoHotkey](https://www.autohotkey.com/) e instalar el programa en tu computador. Los archivos creados para AHK tendrán la extensión `.ahk`.
+El primer paso, entonces, es acceder a la página oficial de [AutoHotkey](https://www.autohotkey.com/) e instalar el programa en tu computador. Los archivos creados para AHK tendrán la extensión `.ahk`.
 
 En la interfaz de inicio verás varias opciones; sin embargo, por ahora solo nos interesa crear un nuevo _script_.
 
@@ -99,7 +99,7 @@ Recuerda que también puedes escribir la misma instrucción entre llaves, en for
 ```
 Guarda el archivo, haz doble clic sobre él, abre cualquier campo de texto y presiona `Ctrl + H`: ¡es tu primera _hotkey_ en funcionamiento! Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas.
 
-Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición XML-TEI: introduciremos las marcas `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 definen esta etiqueta así:
+Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición TEI: introduciremos las marcas `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 definen esta etiqueta así:
 
 > `<gap>` (gap) indicates a point where material has been omitted in a transcription, whether for editorial reasons described in the TEI header, as part of sampling practice, or because the material is illegible, invisible, or inaudible.[^5]
 
@@ -187,13 +187,13 @@ Combinando todo lo que hemos aprendido hasta ahora, podríamos crear algo simila
 ```
 De este modo, puedes abrir y cerrar automáticamente una etiqueta en cualquier campo de texto y colocar el cursor dentro de ella para seguir escribiendo.
 
-También podríamos aprovechar una _hotstring_ para almacenar una plantilla básica para documentos XML-TEI, como la propuesta por Nicolás Vaughan en [Introducción a la codificación de textos en TEI](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1), y crearla desde cero en pocos segundos. Para hacerlo correctamente, conviene que antes conozcas qué son y cómo trabajan las funciones en AHK.
+También podríamos aprovechar una _hotstring_ para almacenar una plantilla básica para documentos TEI, como la propuesta por Nicolás Vaughan en [Introducción a la codificación de textos en TEI](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1), y crearla desde cero en pocos segundos. Para hacerlo correctamente, conviene que antes conozcas qué son y cómo trabajan las funciones en AHK.
 
 ## Funciones
 
 Como en otros lenguajes de programación, en AHK podemos crear funciones reutilizables. Una función permite agrupar un conjunto de instrucciones bajo un nombre para ejecutarlas más de una vez sin tener que reescribir todo el código.
 
-En esta lección utilizaremos funciones para automatizar tareas frecuentes de transcripción y marcado: envolver un fragmento o término seleccionado con etiquetas XML-TEI, convertir texto a mayúsculas o minúsculas e insertar notas predefinidas. Empezaremos con un caso sencillo: envolver una selección con una etiqueta de apertura y otra de cierre.
+En esta lección utilizaremos funciones para automatizar tareas frecuentes de transcripción y marcado: envolver un fragmento o término seleccionado con etiquetas TEI, convertir texto a mayúsculas o minúsculas e insertar notas predefinidas. Empezaremos con un caso sencillo: envolver una selección con una etiqueta de apertura y otra de cierre.
 
 ### Etiquetar texto seleccionado
 
@@ -254,13 +254,13 @@ Como puedes ver, van a reemplazar los parámetros `openTag` y `closeTag`. Por ta
 ```xml
 <name>Miguel</name>
 ```
-Uno de los inconvenientes de trabajar con el portapapeles es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador, pero ¿cómo usar el etiquetador con normalidad y que no se vea perjudicado el portapapeles? Para eso tenemos la primera línea: `ClipSaved := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido que seleccionamos en nuestro portapapeles y, posteriormente, restaurar lo que estuviese copiado, de ese modo, no se pierde el flujo de trabajo aunque se haga uso del portapapeles para nuestro etiquetado.
+Uno de los inconvenientes de trabajar con el portapapeles es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la primera línea: `ClipSaved := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido que seleccionamos en nuestro portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
 
 `A_Clipboard := ""` deja el portapapeles vacío, asegurándonos así de que el contenido copiado coincide con el seleccionado y con `Send "^c"` simulamos la acción `Ctrl + C`, es decir, copiamos al portapapeles el texto que tenemos seleccionado.
 
 Posteriormente, incorporamos la condicional `if !ClipWait(0.3)` para asegurarnos de que el texto se haya copiado correctamente. En ella, el _script_ espera 0.3 segundos. Si no se ha copiado nada, restaura el portapapeles original, llama a la función `EnsureAltUp()` y detiene el _script_ con `return`.
 
-Antes de seguir, ¿para qué llamar a otra función? Tras probar varias combinaciones, un error se repetía frecuentemente: una de las teclas de la combinación, ya fuese `Alt` o `Ctrl`, se mantenía ficticiamente presionada, de manera que no se podía seguir trabajando a menos que se pulsara nuevamente. Con esta pequeña función nos aseguramos de que esto no ocurra o, al menos, reducimos drásticamente ese riesgo.
+Antes de seguir, ¿para qué llamar a otra función? Tras probar varias combinaciones, un error se repetía frecuentemente: una de las teclas de la combinación, ya fuese `Alt` o `Ctrl`, se mantenía falsamente presionada, de manera que no se podía seguir trabajando a menos que se pulsara nuevamente. Con esta pequeña función nos aseguramos de que esto no ocurra o, al menos, reducimos drásticamente ese riesgo.
 ```ahk
 EnsureAltUp() {
     ; Espera un momento a que Alt se suelte, y si sigue “pulsada”, la suelta a la fuerza
@@ -292,7 +292,7 @@ También en caso de copia exitosa nos aseguramos de que no quede la tecla activa
 
 ### Otras funciones de interés
 
-Otras dos funciones que consideramos que pueden ser de utilidad durante el proceso son las de conversión a mayúsculas o minúsculas que, si bien es cierto que están incluidas en los procesadores de texto tradicionales, puede resultar más cómodo seleccionar un texto y presionar una combinación de teclas.
+Otras dos funciones útiles durante el proceso son las de conversión a mayúsculas y minúsculas. Aunque los procesadores de texto ya las incluyen, a veces resulta más cómodo seleccionar el texto y pulsar una combinación de teclas.
 
 Para ello, usamos la función `ConvertSelection()` que sigue una lógica muy parecida a la empleada en el etiquetador `tagger()` explicado anteriormente, pero se fija en si recibe el valor `upper` o `lower`:
 ```ahk
@@ -377,7 +377,7 @@ Como podrás observar, se trata de una misma lógica empleada en múltiples ocas
 ```
 En este caso, usamos la _hotstring_ `tei.xml` y, para evitar que se pegue incorrectamente, la almacenamos en una variable `plantilla` porque, de otra forma, perdería el formato original. Además, hemos añadido una pausa de seguridad para asegurarnos de que el portapapeles reciba toda la plantilla, ya que es un fragmento relativamente largo.
 
-### Transformar marcado sencillo en etiquetas XML-TEI
+### Transformar marcado sencillo en etiquetas TEI
 
 Esta lógica de trabajo se puede aplicar a casi cualquier etiqueta. Pensemos, por ejemplo, en entidades como nombres de persona, lugares o títulos de obras. Retomando una propuesta sencilla de Nicolás Vaughan en su _Introducción a TEI_:
 
@@ -412,7 +412,7 @@ De forma resumida, las expresiones regulares recogidas en el código hacen lo si
 | `_([^_]+)_` | Texto entre guiones bajos: `_La divina comedia_` | `<title>La divina comedia</title>` |
 | `$1` | Recupera el texto capturado dentro de los signos | Conserva el contenido original dentro de la etiqueta |
 
-Estas líneas de código permiten que, al seleccionar esos fragmentos de texto, podamos convertirlos automáticamente a etiquetas XML-TEI.
+Estas líneas de código permiten que, al seleccionar esos fragmentos de texto, podamos convertirlos automáticamente a etiquetas TEI.
 
 ### Opcional: crea una interfaz
 
@@ -457,7 +457,7 @@ ToggleScripts() {
     }
 }
 ```
-En la primera línea se crea la ventana, para la que además hemos definido que la mantenga por encima de otras (`+AlwaysOnTop`), que pueda cambiar de tamaño (`+Resize`) y minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para el usuario.
+En la primera línea se crea la ventana, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que pueda cambiar de tamaño (`+Resize`) y minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para el usuario.
 
 Con `TestEdit` podemos añadir una caja de texto, que será donde podamos hacer las pruebas que convengamos necesarias antes de trabajar con el _script_ sobre nuestros documentos. En ella definimos el ancho (`w500`), el alto (`h180`) y permitimos el uso del tabulador (`WantTab`) en el campo de texto. Se añaden algunos ejemplos de uso, aunque puedes eliminarlos si así lo prefieres.
 
@@ -469,7 +469,7 @@ Te dejamos a continuación el _script_ completo para que puedas modificarlo como
 
 Ya hemos construido un _script_ que cubre buena parte del flujo de trabajo vinculado a la edición digital de textos. Sin embargo, si queremos utilizarlo en otros computadores o compartirlo con otras personas, sería conveniente convertirlo en un archivo ejecutable (`.exe`).
 
-AHK incorpora un compilador que permite convertir tus _scripts_ `.ahk` a `.exe`. De esta manera, podrás ejecutar tu _script_ sin necesidad de instalarlo en el equipo de destino, ya que se compila como un programa portable, lo que significa que puedes llevarlo en una memoria externa o en un disco duro portátil.
+AHK incorpora un compilador que permite convertir tus _scripts_ `.ahk` a `.exe`. De esta manera, podrás ejecutar tu _script_ sin necesidad de instalarlo en el equipo de destino, ya que se compila como un programa portable. Por tanto, puedes llevarlo en una memoria USB o en un disco duro portátil.
 
 Para hacerlo, abre AHK y selecciona la opción **Compile**, se te abrirá una nueva ventana con el programa **Ahk2Exe** (Fig. 1):
 
@@ -503,7 +503,7 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 
 [^1]: El texto de esta lección ha sido revisado con herramientas de inteligencia artificial generativa, en concreto, ChatGPT.  
 [^2]: El tipo de letra no es la única barrera a la que nos enfrentamos desde la investigación: las digitalizaciones de los manuscritos no siempre son lo suficientemente fieles para poder aplicar estas herramientas que, además, en algunos casos, son de pago (o limitados a un determinado número de tokens al mes). Las alternativas de código abierto y gratuitas, por su parte, requieren de ciertos conocimientos técnicos superiores a los necesarios para utilizar la herramienta aquí propuesta.  
-[^3]: La compatibilidad está garantizada en computadores con SO Windows 7 o superiores.  
+[^3]: La compatibilidad está garantizada en computadores con SO Windows 7 o superiores. Aunque no se aborda en esta lección, en Linux existe [AutoKey](https://github.com/autokey/autokey), una herramienta independiente de automatización de escritorio con funciones similares. Está diseñada para entornos X11 y presenta problemas de compatibilidad cuando se utiliza Wayland en lugar de Xorg. Algo similar ocurre con implementaciones como [AHK_X11](https://github.com/phil294/AHK_X11).
 [^4]: Puedes acceder al listado detallado de cambios aquí: [https://www.autohotkey.com/docs/v2/v2-changes.htm](https://www.autohotkey.com/docs/v2/v2-changes.htm). También encontrarás el enlace a un convertidor de _scripts_ versión 1 a 2.
 [^5]: TEI Consortium, _The TEI Guidelines_, 436.
 [^6]: TEI Consortium, _The TEI Guidelines_, 436.

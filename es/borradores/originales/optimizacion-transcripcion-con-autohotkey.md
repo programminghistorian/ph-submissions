@@ -471,7 +471,7 @@ Ya hemos construido un _script_ que cubre buena parte del flujo de trabajo vincu
 
 AHK incorpora un compilador que permite convertir tus _scripts_ `.ahk` a `.exe`. De esta manera, podrás ejecutar tu _script_ sin necesidad de instalarlo en el equipo de destino, ya que se compila como un programa portable. Por tanto, puedes llevarlo en una memoria USB o en un disco duro portátil.
 
-Para hacerlo, abre AHK y selecciona la opción **Compile**, se te abrirá una nueva ventana con el programa **Ahk2Exe** (Fig. 1):
+Para hacerlo, abre AHK y selecciona la opción **Compile**, se te abrirá una nueva ventana con el programa **Ahk2Exe** (Figura 1):
 
 {% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey.jpg" alt="Ventana del compilador Ahk2Exe con campos para seleccionar el archivo fuente, el archivo de destino, el icono personalizado y el botón de convertir a ejecutable" caption="Figura 1. Interfaz de usuario de Ahk2exe." %}
 

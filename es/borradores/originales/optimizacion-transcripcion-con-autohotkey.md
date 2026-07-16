@@ -88,13 +88,13 @@ Asimismo, debes conocer una parte esencial de la sintaxis de AHK: los dobles dos
 
 Dicho esto, creemos nuestra primera _hotkey_. Para ello, abre el archivo que acabas de crear y escribe la siguiente línea. Con `Ctrl + H`, imprimiremos en pantalla nuestro “Hola, mundo”:
 ```ahk
-^h::	Send "Hola, mundo"
+^h::SendText "Hola, mundo"
 ```
 Recuerda que también puedes escribir la misma instrucción entre llaves, en forma de bloque:
 ```ahk
 ^h::	  
 {  
-	Send "Hola, mundo"  
+	SendText "Hola, mundo"  
 }
 ```
 Guarda el archivo, haz doble clic sobre él, abre cualquier campo de texto y presiona `Ctrl + H`: ¡es tu primera _hotkey_ en funcionamiento! Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas.
@@ -105,7 +105,7 @@ Hagamos ahora algo más específico para un flujo de trabajo orientado a la edic
 
 Normalmente, esta etiqueta puede contener atributos como `reason` o `agent`. Para este ejemplo, asumiremos que en nuestra edición solo nos interesa marcar, dentro de `<gap>`, el motivo del vacío:
 ```ahk
-!g::	Send "<gap reason=`"`"></gap>"
+!g::	SendText '<gap reason=""></gap>'
 ```
 En este caso, `Alt + G` insertará lo siguiente:
 ```xml
@@ -125,7 +125,7 @@ Como ves, el procedimiento es sencillo, aunque sería mucho más cómodo que el 
 ```ahk
 !s::  
 {  
-	Send "<supplied reason=`"`"></supplied>"  
+	SendText '<supplied reason=""></supplied>'  
 	Send	"{Left 13}"
 }
 ```
@@ -181,9 +181,9 @@ Ahora, ¡haz la prueba en cualquier campo de texto! Como actividad, te propongo 
 
 Combinando todo lo que hemos aprendido hasta ahora, podríamos crear algo similar al autocompletado que usan los entornos de programación para preetiquetar entidades como nombres, lugares o títulos de obras:
 ```ahk
-::@n::<name></name>{Left 7}
-::@p::<place></place>{Left 8}  
-::@t::<title></title>{Left 8}
+:*:@n::<name></name>{Left 7}
+:*:@p::<place></place>{Left 8}
+:*:@t::<title></title>{Left 8}
 ```
 De este modo, puedes abrir y cerrar automáticamente una etiqueta en cualquier campo de texto y colocar el cursor dentro de ella para seguir escribiendo.
 
@@ -204,7 +204,6 @@ Vamos a seguir trabajando con el _script_ que creamos en la sección anterior, p
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 SetTitleMatchMode "RegEx"
-SetKeyDelay 0, 50
 SetWinDelay 0
 ```
 La primera línea indica que el archivo requiere AHK 2. La segunda previene que se abran varias copias del mismo _script_. Las restantes ajustan algunos aspectos del comportamiento del programa: reconocer ventanas de forma flexible (esto quiere decir que el _script_ seguirá reconociendo que trabajas en una determinada ventana aunque esta cambie de nombre, gracias al uso de expresiones regulares), la velocidad a la que se envían las pulsaciones simuladas y el tiempo de espera al interactuar con ventanas.

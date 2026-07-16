@@ -182,6 +182,7 @@ Para integrar el motor de mapas de forma local en el proyecto, deberás descarga
 
 A continuación deberás incluir en tu archivo `templates/index.html` la llamada a Leaflet. Puedes eliminar el texto de prueba que pusiste para probar el funcionamiento. El archivo final debería quedar de este modo:
 
+{% raw %}
 ```html
 <!DOCTYPE html>
 <html lang="es">
@@ -200,6 +201,7 @@ A continuación deberás incluir en tu archivo `templates/index.html` la llamada
 </body>
 </html>
 ```
+{% endraw %}
 
 En ese código habrás incluido la llamada a la hoja de estilos y al motor en Javascript de Leaflet. Además, habrás reservado en el cuerpo de la página una contenedor denominado "mi_mapa", donde insertaremos posteriormente la cartografía.
 
@@ -208,11 +210,13 @@ Aunque no es la opción recomendada, también es posible cargar Leaflet desde un
 
 Solo tienes que sustituir las líneas de código del HTML anterior que llaman al css y al js de Leaflet por estas:
 
+{% raw %}
 ```html
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 ```
+{% endraw %}
 
 <div class="alert alert-warning">
 <b>¡Atención!</b> El hash que ves tras <code>integrity=</code> cambiará con otras versiones de Leaflet. Deberás comprobar el modo de cargar desde un servidor externo cuando lo programes. Esta opción no es la recomendada.
@@ -270,6 +274,7 @@ Una vez escrito y guardado el archivo JS que dará inicio al motor de mapas, deb
 
 Con este último paso, ya tienes todos los elementos mínimos necesarios para ejecutar el motor de mapas. Tu `index.html` debería ser similar a este:
 
+{% raw %}
 ```html
 <!DOCTYPE html>
 <html lang="es">
@@ -291,6 +296,7 @@ Con este último paso, ya tienes todos los elementos mínimos necesarios para ej
 </body>
 </html>
 ```
+{% endraw %}
 
 Una vez realizados estos pasos, si ejecutas `app.py` (o actualizas la página si ya tenías el servidor corriendo) podrás ver el motor de mapas corriendo en tu página web a pantalla completa.
 
@@ -948,7 +954,7 @@ Promise.all([
 ### Integración de la capa interactiva en index.html
 Para que la nueva capa interactiva funcione, debes llamar en `index.html` a los nuevos archivos que has creado. Deberás incluir las líneas para llamar a `narrativa.js` y a `narrativa.css`. Abre el archivo con tu editor de código y añade las llamadas. El archivo final debería quedar de este modo:
 
-
+{% raw %}
 ```html
 <!DOCTYPE html>
 <html lang="es">
@@ -973,6 +979,7 @@ Para que la nueva capa interactiva funcione, debes llamar en `index.html` a los 
 </body>
 </html>
 ```
+{% endraw %}
 
 
 {% include figure.html filename="es-or-cartografia-interactiva-python-leaflet-05.png" alt="Visual description of figure image" caption="Figura 5. Vista del navegador con la aplicación interactiva en funcionamiento durante la parada en Cabo Verde de la ruta propuesta." %}

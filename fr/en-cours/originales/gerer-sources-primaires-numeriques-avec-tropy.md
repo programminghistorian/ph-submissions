@@ -67,11 +67,7 @@ Le jeu de données principal consiste en un corpus de 352 affiches nativement nu
 Un journal de tranchées daté de février 1915, [le numéro 3 de *L'écho des marmites*](https://argonnaute.parisnanterre.fr/ark:/14707/9tks6j4d0bvf), sert à démontrer [comment représenter comme une seule entité, dans Tropy, un document avec plusieurs pages, où chaque page égale à un fichier image distinct](#fusionner-des-fichiers-images-en-un-seul-objet).  Les journaux que nous avons téléchargés pour l'exercice font partie d'une riche collection de journaux de tranchées numérisés conservés à la bibliothèque [La Contemporaine](http://www.lacontemporaine.fr/). 
 
 [Lien pour accéder aux fichiers des journaux de tranchées numérisés](/assets/gerer-sources-primaires-numeriques-avec-tropy/journaux-tranchees-14-18). Merci de télécharger ces fichiers avant de commencer la section suivante. 
-
-
-### Les documents diplomatiques
-
-La partie qui guide dans la [création d'un formulaire de saisie de sources sur mesure](#personnaliser-le-modèle-de-saisie-des-métadonnées) utilise l'exemple des correspondances diplomatiques. Avant d'être un type de sources très apprivoisé par les historiens et historiennes, les documents diplomatiques correspondent surtout à l'une des principales sources utilisées dans les recherches de l'autrice de cette leçon. Par conséquent, l'exercice tient compte de besoins d'organisation, d'analyse et de citation de sources rencontrés dans le cadre d'une recherche. Il n'est pas nécessaire, pour cet exercice, de télécharger des fichiers.  
+  
 
 ## Démarrer avec Tropy 
 

@@ -84,7 +84,9 @@ De igual manera, como ocurre en otros lenguajes de programación, AHK cuenta con
 | `Send` | Envía pulsaciones de tecla o clics simulados a la ventana activa. |
 | `Run` | Ejecuta un programa externo o abre una URL en el navegador predeterminado. |
 
-_Más adelante verás que usaremos_ `SendText`_, que se puede considerar una variante de esta, utilizada para enviar texto literal, por lo que puede ser mejor opción que_ `Send` _en algunos contextos en los que lo utilizamos._
+<div class="alert alert-info">
+Más adelante usaremos `SendText`, una variante de `Send` destinada a enviar texto literal y, por ello, más adecuada en algunos de los contextos que veremos.
+</div>
 
 Asimismo, debes conocer una parte esencial de la sintaxis de AHK: los dobles dos puntos (`::`). En una _hotkey_, lo situado a la izquierda de los dobles dos puntos indica la combinación de teclas que debes pulsar. Lo situado a la derecha, o dentro del bloque delimitado por llaves (`{}`), indica la acción que se ejecutará.
 

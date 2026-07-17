@@ -17,7 +17,7 @@ difficulty: 2
 activity: transforming
 topics: data-management, metadata
 abstract: This lesson teaches reverse engineering to conduct historical analysis on digital artefacts.
-avatar_alt: Visual description of lesson image
+avatar_alt: Line drawing showing a circular segmented wheel at the center, surrounded by four angled mechanical parts with numbered labels.
 doi: XX.XXXXX/phen0000
 ---
 

@@ -154,7 +154,7 @@ Puisque nous disposons de nombreux plongements, nous pouvons tenter d'identifier
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-04.jpg" alt="Visual description of figure image" caption="Figure 4. Schéma de clustering, [scikit-learn](https://scikit-learn.org/stable/modules/clustering.html)." %}
 
-Dans le cas de l'analyse textuelle les groupes ne sont pas si saillants comme on peut le voir à la @fig-final-example. Ainsi la pipeline de BERTopic utilise l'algorithme de classification [**HDBSCAN**](https://hdbscan.readthedocs.io/en/latest/how_hdbscan_works.html) pour sa capacité à détecter des groupes de forme et densité différentes.
+Dans le cas de l'analyse textuelle les groupes ne sont pas si saillants comme on peut le voir à la Figure 2. Ainsi la pipeline de BERTopic utilise l'algorithme de classification [**HDBSCAN**](https://hdbscan.readthedocs.io/en/latest/how_hdbscan_works.html) pour sa capacité à détecter des groupes de forme et densité différentes.
 
 ### 3. Identifier les mots clefs qui représentent le mieux la spécificité de chaque topic.
 

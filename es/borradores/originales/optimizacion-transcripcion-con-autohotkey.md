@@ -58,7 +58,9 @@ Lo primero que haremos será crear una carpeta en Windows. Puedes elegir la ubic
 
 Nuestro _script_ se llamará `tph_script`.
 
-_Utilizamos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^4]._
+<div class="alert alert-warning">
+Utilizamos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^4].
+</div>
 
 Una vez indicado que el archivo debe ejecutarse con AHK 2, aprenderás dos conceptos básicos para empezar a trabajar con este lenguaje: las _hotkeys_ y las _hotstrings_.
 
@@ -139,7 +141,9 @@ Para abrir un programa, debes indicar el nombre del ejecutable (`.exe`). Por eje
 ```ahk
 !2::	Run "notepad.exe"
 ```
-_En el caso de programas de terceros, conviene comprobar el nombre exacto del ejecutable en la carpeta donde fue instalado._
+<div class="alert alert-warning">
+En el caso de programas de terceros, conviene comprobar el nombre exacto del ejecutable en la carpeta donde fue instalado.
+</div>
 
 Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la función `Run` aparece cuando necesitas abrir varios recursos que forman parte de tu flujo de trabajo. Por ejemplo, supongamos que necesitas abrir PARES para buscar documentación, el _Diccionario de abreviaturas novohispanas_ (DICABENOVO) y LibreOffice Writer para transcribir:
 ```ahk
@@ -150,7 +154,9 @@ Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la fun
 	Run "swriter.exe" ; LibreOffice Writer  
 }
 ```
-_Si quieres añadir un comentario, este deberá estar precedido de punto y coma, como puedes ver en el ejemplo anterior:_ `; LibreOffice Writer`.
+<div class="alert alert-info">
+Los comentarios deben ir precedidos de un punto y coma, como en el ejemplo anterior: `; LibreOffice Writer`.
+</div>
 
 Recuerda que siempre podrás pausar o cerrar tu _script_ desde la barra de tareas de Windows. Para ello, haz clic en la flecha hacia arriba, localiza el icono de AHK, haz clic derecho sobre él y selecciona la opción correspondiente.
 
@@ -243,7 +249,9 @@ tagger(openTag, closeTag) {
 	EnsureAltUp()                 ; nos aseguramos de que Alt no se quede presionada
 }
 ```
-_No te apresures a copiar y pegar el código: ¡todavía no te funcionará!_
+<div class="alert alert-warning">
+No te apresures a copiar y pegar el código: todavía no funcionará.
+</div>
 
 Con esta función podemos seleccionar cualquier texto y escribir alrededor de él las etiquetas que queramos, dependiendo de la combinación de teclas que usemos. En el ejemplo, si pulsamos `Alt + n` llamaremos a la función con estas etiquetas:
 ```ahk
@@ -270,7 +278,6 @@ EnsureAltUp() {
     }
 }
 ```
-_Aunque mencionamos también la tecla_ `Ctrl`_, esta función solo trabaja con_ `Alt`_. Por tanto, si quieres usar_ `Ctrl`_, deberás adaptarla._
 
 Esta función se compone de `KeyWait "Alt", "T0.2"`, que verifica si `Alt` sigue pulsada (espera dos décimas de segundo) y fuerza su liberación mediante `Send "{Alt up}"`. Esto subsana uno de los problemas que teníamos inicialmente: la tecla `Alt` se quedaba virtualmente presionada y esto generaba problemas.
 

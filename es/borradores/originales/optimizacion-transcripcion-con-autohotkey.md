@@ -24,13 +24,13 @@ doi: XX.XXXXX/phen0000
 
 ## Introducción
 
-Esta lección[^1] pretende sumarse al conjunto de lecciones que emplean TEI-XML para la edición digital de textos. En ellas se abordan cuestiones como la estructura básica de un documento o las formas más adecuadas de organizarlo para obtener mejores resultados en su posterior consulta, tratamiento y publicación. Sin embargo, hay un aspecto importante que todavía no ha sido abordado con la profundidad que merece: el proceso mismo de transcripción de un texto.
+Esta lección[^1] se integra en un conjunto de materiales dedicados al empleo de las recomendaciones de la Text Encoding Initiative (en adelante, TEI), basadas en XML, para la edición digital de textos. En ellas se abordan cuestiones como la estructura básica de un documento o las formas más adecuadas de organizarlo para obtener mejores resultados en su posterior consulta, tratamiento y publicación. Sin embargo, hay un aspecto importante que todavía no ha sido abordado con la profundidad que merece: el proceso mismo de transcripción de un texto.
 
 Aunque las herramientas de reconocimiento óptico de caracteres ([OCR](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres), por sus siglas en inglés) son cada vez más eficaces, y el desarrollo de sistemas de reconocimiento de texto manuscrito ([HTR](https://es.wikipedia.org/wiki/Reconocimiento_de_escritura), por sus siglas en inglés) permite transcribir semiautomáticamente buena parte de las escrituras históricas, quienes trabajamos con documentos escritos en [letra cortesana o procesal](https://es.wikipedia.org/wiki/Escritura_espa%C3%B1ola_en_el_siglo_XV#Escritura_cortesana_del_siglo_XV)) todavía no podemos confiar plenamente en estos mecanismos[^2]. De ahí que, en muchos casos, el proceso de transcripción siga siendo total o parcialmente manual.
 
 Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de transcripción manual o etiquetar un texto procedente de OCR, HTR o, en general, de transcripciones realizadas previamente a las que todavía no hayas aplicado ningún marcado TEI.
 
-Ahora bien, ¿cómo puede un _script_ ayudarnos en nuestras tareas de Humanidades Digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de macros, gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
+Ahora bien, ¿cómo puede un _script_ ayudarnos en nuestras tareas de humanidades digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de macros, gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
 
 ## ¿Qué debes saber?
 
@@ -147,7 +147,7 @@ Para abrir un programa, debes indicar el nombre del ejecutable (`.exe`). Por eje
 En el caso de programas de terceros, conviene comprobar el nombre exacto del ejecutable en la carpeta donde fue instalado.
 </div>
 
-Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la función `Run` aparece cuando necesitas abrir varios recursos que forman parte de tu flujo de trabajo. Por ejemplo, supongamos que necesitas abrir PARES para buscar documentación, el _Diccionario de abreviaturas novohispanas_ (DICABENOVO) y LibreOffice Writer para transcribir:
+Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la función `Run` aparece cuando necesitas abrir varios recursos que forman parte de tu flujo de trabajo. Por ejemplo, supongamos que necesitas abrir PARES (Portal de Archivos Españoles) para buscar documentación, el _Diccionario de abreviaturas novohispanas_ (DICABENOVO) y LibreOffice Writer para transcribir:
 ```ahk
 !1::  
 {  
@@ -267,7 +267,7 @@ Uno de los inconvenientes de trabajar con el portapapeles es que puede darse el 
 
 `A_Clipboard := ""` deja el portapapeles vacío, asegurándonos así de que el contenido copiado coincide con el seleccionado y con `Send "^c"` simulamos la acción `Ctrl + C`, es decir, copiamos al portapapeles el texto que tenemos seleccionado.
 
-Posteriormente, incorporamos la condicional `if !ClipWait(0.3)` para asegurarnos de que el texto se haya copiado correctamente. En ella, el _script_ espera 0.3 segundos. Si no se ha copiado nada, restaura el portapapeles original, llama a la función `EnsureAltUp()` y detiene el _script_ con `return`.
+Posteriormente, incorporamos la condicional `if !ClipWait(0.3)` para asegurarnos de que el texto se haya copiado correctamente. En ella, el _script_ espera 0,3 segundos. Si no se ha copiado nada, restaura el portapapeles original, llama a la función `EnsureAltUp()` y detiene el _script_ con `return`.
 
 Antes de seguir, ¿para qué llamar a otra función? Tras probar varias combinaciones, un error se repetía frecuentemente: una de las teclas de la combinación, ya fuese `Alt` o `Ctrl`, se mantenía falsamente presionada, de manera que no se podía seguir trabajando a menos que se pulsara nuevamente. Con esta pequeña función nos aseguramos de que esto no ocurra o, al menos, reducimos drásticamente ese riesgo.
 ```ahk
@@ -473,7 +473,7 @@ Configuramos un botón para activar y desactivar los atajos mediante la función
 
 Te dejamos a continuación el _script_ completo para que puedas modificarlo como quieras: [`tph_script.ahk`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.ahk).
 
-## Compilación a exe
+## Compilación a un ejecutable
 
 Ya hemos construido un _script_ que cubre buena parte del flujo de trabajo vinculado a la edición digital de textos. Sin embargo, si queremos utilizarlo en otros computadores o compartirlo con otras personas, sería conveniente convertirlo en un archivo ejecutable (`.exe`).
 
@@ -493,7 +493,7 @@ Por ello, creemos que puede ser un recurso sumamente útil para quienes quieran 
 
 Te recomendamos echar un vistazo a los repositorios de GitHub basados en AHK, ya que permite imaginar flujos de trabajo mucho más complejos, especialmente aquellos que conectan con APIs, herramientas de OCR o modelos de lenguaje de gran tamaño (LLMs).
 
-Nuestra recomendación final es que programes y pruebes de forma constante. De esa manera, podrás ampliar y mejorar tu _script_ a medida que trabajes con tus propios materiales. Como has visto, AHK ofrece múltiples posibilidades y esa flexibilidad es una gran ventaja para quienes trabajamos en Humanidades Digitales: nuestras necesidades son diversas, nuestros corpus presentan problemas distintos y puede que lo que funcione para ti no lo haga para otra persona.
+Nuestra recomendación final es que programes y pruebes de forma constante. De esa manera, podrás ampliar y mejorar tu _script_ a medida que trabajes con tus propios materiales. Como has visto, AHK ofrece múltiples posibilidades y esa flexibilidad es una gran ventaja para quienes trabajamos en humanidades digitales: nuestras necesidades son diversas, nuestros corpus presentan problemas distintos y puede que lo que funcione para ti no lo haga para otra persona.
 
 ## Referencias
 

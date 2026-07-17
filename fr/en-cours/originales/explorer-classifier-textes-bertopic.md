@@ -342,17 +342,11 @@ Dans la section précédente, nous avons utilisés les paramètres par défaut. 
 
 Le premier hyperparamètre est le choix du modèle. En effet, la qualité des plongements, et donc la capacité à mesurer la distance sémantique entre deux document aura un impact majeur sur la capacité du topic model à générer des groupes cohérents. 
 
-{% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-09.png" alt="Visual description of figure image" caption="Figure 9. Projection 2D des documents et des thèmes identifiés en utilisant le modèle de plongement Alibaba." %}
+{% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-09.png" alt="Visual description of figure image" caption="Figure 9. Alibaba Embedding: Projection 2D des documents et des thèmes identifiés en utilisant le modèle de plongement Alibaba." %}
 
-{% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-10.png" alt="Visual description of figure image" caption="Figure 10. Projection 2D des documents et des thèmes identifiés en utilisant le modèle de plongement Qwen." %}
+{% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-10.png" alt="Visual description of figure image" caption="Figure 10. Qwen Embedding: Projection 2D des documents et des thèmes identifiés en utilisant le modèle de plongement Qwen." %}
 
-
-| Alibaba Embedding | Qwen Embedding |
-|-------------------|----------------|
-| {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-09.png" alt="Visual description of figure image" %} | {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-10.png" alt="Visual description of figure image" %} |
-| Figure 9. Projection 2D des documents et des thèmes identifiés en utilisant le modèle de plongement Alibaba | Figure 10. Projection 2D des documents et des thèmes identifiés en utilisant le modèle de plongement Qwen |
-
-On peut visuellement voir que la Figure 10 et la Figure 11 sont très différentes. La Figure 11 est très éclatée, pouvant indiquer que le topic model a identifié des groupes très distincts. Cependant, en regardant de plus près, les groupes géométriques sont composés de documents provenant de nombreux groupes différents et ne proposent pas la continuité des thèmes observable dans la Figure 10.
+On peut visuellement voir que la Figure 9 et la Figure 10 sont très différentes. La Figure 10 est très éclatée, pouvant indiquer que le topic model a identifié des groupes très distincts. Cependant, en regardant de plus près, les groupes géométriques sont composés de documents provenant de nombreux groupes différents et ne proposent pas la continuité des thèmes observable dans la Figure 9.
 
 Une fois que l'on est assuré de la qualité des plongements, on peut modifier la granularité du topic model en modifiant les paramètres `n_neighbors` et `min_cluster_size`. Plus ces deux paramètres seront petits, plus le topic model sera spécifique, et donc, génerera des thèmes de quelques documents.
 

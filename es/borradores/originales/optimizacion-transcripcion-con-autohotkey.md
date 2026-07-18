@@ -30,7 +30,7 @@ Aunque las herramientas de reconocimiento óptico de caracteres ([OCR](https://e
 
 Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de transcripción manual o etiquetar un texto procedente de OCR, HTR o, en general, de transcripciones realizadas previamente a las que todavía no hayas aplicado ningún marcado TEI.
 
-Esta herramienta cuenta con antecedentes en el ámbito de la traducción [^3] y esta propuesta pretende ser una solución más de  _minimal computing_ [^4].
+Esta herramienta cuenta con antecedentes en el ámbito de la traducción[^3] y esta propuesta pretende ser una solución más de  _minimal computing_[^4].
 
 Ahora bien, ¿cómo puede un _script_ ayudarnos en nuestras tareas de humanidades digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de [macros](https://es.wikipedia.org/wiki/Macro), gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
 
@@ -42,7 +42,7 @@ En particular, para la sección dedicada a las funciones, conviene que tengas al
 
 ## ¿Qué necesitas? Requerimientos
 
-El primer requisito es disponer de un computador con Windows. Aunque AHK es gratuito y de código abierto, su dependencia de este sistema operativo limita el alcance de la lección y excluye a quienes trabajan exclusivamente en otros sistemas. Sin embargo, hemos elegido esta herramienta porque permite automatizar tareas mediante _scripts_ breves, sin necesidad de instalar entornos de programación complejos ni disponer de conocimientos avanzados. De este modo, ofrece a quienes trabajan en humanidades digitales una vía de entrada accesible a la automatización a una amplia audiencia, ya que Windows es el [sistema operativo para ordenadores de escritorio y portátiles más utilizado en el mundo](https://en.wikipedia.org/wiki/Usage_share_of_operating_systems#Desktop_and_laptop_computers)[^3].
+El primer requisito es disponer de un computador con Windows. Aunque AHK es gratuito y de código abierto, su dependencia de este sistema operativo limita el alcance de la lección y excluye a quienes trabajan exclusivamente en otros sistemas. Sin embargo, hemos elegido esta herramienta porque permite automatizar tareas mediante _scripts_ breves, sin necesidad de instalar entornos de programación complejos ni disponer de conocimientos avanzados. De este modo, ofrece a quienes trabajan en humanidades digitales una vía de entrada accesible a la automatización a una amplia audiencia, ya que Windows es el [sistema operativo para ordenadores de escritorio y portátiles más utilizado en el mundo](https://en.wikipedia.org/wiki/Usage_share_of_operating_systems#Desktop_and_laptop_computers)[^5].
 
 También necesitarás instalar AHK y contar con un editor de texto plano (incluso podrías utilizar el Bloc de notas de Windows). No obstante, conviene trabajar con un editor que cuente con funcionalidades avanzadas, como [Notepad++](https://notepad-plus-plus.org/) o [Visual Studio Code](https://code.visualstudio.com/), ya que facilitará la lectura y edición del código de tu _script_.
 
@@ -63,7 +63,7 @@ Lo primero que haremos será crear una carpeta en Windows. Puedes elegir la ubic
 Nuestro _script_ se llamará `tph_script`.
 
 <div class="alert alert-warning">
-Utilizamos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^4].
+Utilizamos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^6].
 </div>
 
 Una vez indicado que el archivo debe ejecutarse con AHK 2, aprenderás dos conceptos básicos para empezar a trabajar con este lenguaje: las _hotkeys_ y las _hotstrings_.
@@ -109,7 +109,7 @@ Guarda el archivo y ejecútalo, ahora abre cualquier campo de texto y presiona `
 
 Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición TEI: introduciremos las marcas `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 definen esta etiqueta así:
 
-> `<gap>` (gap) indicates a point where material has been omitted in a transcription, whether for editorial reasons described in the TEI header, as part of sampling practice, or because the material is illegible, invisible, or inaudible[^5].
+> `<gap>` (gap) indicates a point where material has been omitted in a transcription, whether for editorial reasons described in the TEI header, as part of sampling practice, or because the material is illegible, invisible, or inaudible[^7].
 
 Normalmente, esta etiqueta puede contener atributos como `reason` o `agent`. Para este ejemplo, asumiremos que en nuestra edición solo nos interesa marcar, dentro de `<gap>`, el motivo del vacío:
 ```ahk
@@ -121,7 +121,7 @@ En este caso, `Alt + G` insertará lo siguiente:
 ```
 Por otro lado, la etiqueta `<supplied>` se define como sigue:
 
-> `<supplied>` (supplied) signifies text supplied by the transcriber or editor for any reason; for example because the original cannot be read due to physical damage, or because of an obvious omission by the author or scribe[^6].
+> `<supplied>` (supplied) signifies text supplied by the transcriber or editor for any reason; for example because the original cannot be read due to physical damage, or because of an obvious omission by the author or scribe[^8].
 
 Nuevamente, incluiremos solo el atributo `reason`:
 ```ahk
@@ -174,7 +174,7 @@ Escribe ahora `tph` en cualquier campo de texto y pulsa una tecla de cierre, com
 
 Como habrás observado, puedes aplicar este procedimiento a cualquier abreviatura frecuente, histórica o no. En tareas como la transcripción manual, resulta especialmente conveniente para expandir abreviaturas tomadas de recursos como el DICABENOVO o para insertar formas ya adaptadas a las necesidades de tu corpus, incluido el marcado que quieras aplicar desde el primer momento.
 
-Según las directrices TEI P5, para indicar que el editor ha expandido una abreviatura, debe encerrarse en la etiqueta `<expan>` la expansión de dicha abreviatura[^7]. Veamos un ejemplo con la palabra ulteriormente y una de sus posibles abreviaturas, tomada del DICABENOVO.
+Según las directrices TEI P5, para indicar que el editor ha expandido una abreviatura, debe encerrarse en la etiqueta `<expan>` la expansión de dicha abreviatura[^9]. Veamos un ejemplo con la palabra ulteriormente y una de sus posibles abreviaturas, tomada del DICABENOVO.
 
 En un texto podemos encontrar la forma abreviada _ulteriormte_. Si queremos transcribirla con la abreviatura desarrollada y marcada en TEI, podemos representarla así: `ulteriorm<expan>en</expan>te`. Para automatizar este proceso, podríamos emplear la siguiente _hotstring_:
 ```ahk

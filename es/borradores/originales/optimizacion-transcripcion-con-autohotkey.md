@@ -467,11 +467,13 @@ toggleScript() {
     }
 }
 ```
-En la primera línea se crea la ventana, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que pueda cambiar de tamaño (`+Resize`) y minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para el usuario.
+En las dos primeras líneas se declaran las variables que usará la interfaz. `scriptActive` verifica si los atajos están activados, `mainGui`, `testEdit` y `toggleButton` afectan a, respectivamente, la ventana, la caja de texto y el botón. Más adelante, `createGui()` llama a la función encargada de construir la interfaz.
 
-Con `TestEdit` podemos añadir una caja de texto, que será donde podamos hacer las pruebas que convengamos necesarias antes de trabajar con el _script_ sobre nuestros documentos. En ella definimos el ancho (`w500`), el alto (`h180`) y permitimos el uso del tabulador (`WantTab`) en el campo de texto. Se añaden algunos ejemplos de uso, aunque puedes eliminarlos si así lo prefieres.
+Dentro de `createGui()` se crea la ventana con  `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que pueda cambiar de tamaño (`+Resize`) y minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para el usuario.
 
-Configuramos un botón para activar y desactivar los atajos mediante la función `ToggleScripts()`, que encontrarás definida en el _script_ completo. En último lugar, hemos configurado la ventana para que ajuste su tamaño al contenido (`AutoSize`) y que aparezca centrada en pantalla (`Center`).
+Con `testEdit` podemos añadir una caja de texto, que será donde podamos hacer las pruebas que convengamos necesarias antes de trabajar con el _script_ sobre nuestros documentos. En ella definimos el ancho (`w500`), el alto (`h180`) y permitimos el uso del tabulador (`WantTab`) en el campo de texto. Se añaden algunos ejemplos de uso, aunque puedes eliminarlos si así lo prefieres.
+
+Configuramos un botón para activar y desactivar los atajos con `toggleButton` que, al pulsarlo, ejecuta `toggleScript()`, el cual activa o suspende los atajos. En último lugar, hemos configurado la ventana para que ajuste su tamaño al contenido (`AutoSize`) y que aparezca centrada en pantalla (`Center`).
 
 Te dejamos a continuación el _script_ completo para que puedas modificarlo como quieras: [`tph_script.ahk`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.ahk).
 

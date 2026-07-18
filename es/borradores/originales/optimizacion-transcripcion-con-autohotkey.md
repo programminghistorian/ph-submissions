@@ -103,7 +103,7 @@ También puedes escribir la misma instrucción entre llaves, en forma de bloque:
 	SendText "Hola, mundo"  
 }
 ```
-Guarda el archivo, haz doble clic sobre él, abre cualquier campo de texto y presiona `Ctrl + H`: ¡es tu primera _hotkey_ en funcionamiento! Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas.
+Guarda el archivo y ejecútalo, ahora abre cualquier campo de texto y presiona `Ctrl + H`: ¡es tu primera _hotkey_ en funcionamiento! Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas.
 
 Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición TEI: introduciremos las marcas `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 definen esta etiqueta así:
 
@@ -133,10 +133,6 @@ Como ves, el procedimiento es sencillo, aunque sería mucho más cómodo que el 
 	Send	"{Left 13}"
 }
 ```
-<div class="alert alert-warning">
-El valor de `{Left N}` dependerá de la etiqueta de apertura; si cambias su nombre, deberás recalcular el número de desplazamientos a la izquierda que necesites.
-</div>
-
 En este caso es necesario usar llaves, ya que nuestro _script_ combina dos acciones.
 
 Ahora vamos a conocer la función `Run`. Como indicamos en la tabla, esta función permite abrir programas instalados en el computador, pero también puede utilizarse para abrir enlaces web. Por ejemplo, para abrir una página web con una combinación de teclas, puedes escribir:
@@ -197,6 +193,10 @@ Combinando todo lo que hemos aprendido hasta ahora, podríamos crear algo simila
 :*:@p::<place></place>{Left 8}
 :*:@t::<title></title>{Left 8}
 ```
+<div class="alert alert-warning">
+El valor de `{Left N}` dependerá de la etiqueta de apertura; si cambias su nombre, deberás recalcular el número de desplazamientos a la izquierda que necesites.
+</div>
+
 De este modo, puedes abrir y cerrar automáticamente una etiqueta en cualquier campo de texto y colocar el cursor dentro de ella para seguir escribiendo.
 
 También podríamos aprovechar una _hotstring_ para almacenar una plantilla básica para documentos TEI, como la propuesta por Nicolás Vaughan en [Introducción a la codificación de textos en TEI](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1), y crearla desde cero en pocos segundos. Para hacerlo correctamente, conviene que antes conozcas qué son y cómo trabajan las funciones en AHK.
@@ -350,9 +350,16 @@ Como podrás observar, se trata de una misma lógica empleada en múltiples ocas
     template := '
 (
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
-  schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model
+  href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"
+  type="application/xml"
+  schematypens="http://relaxng.org/ns/structure/1.0"
+?>
+<?xml-model
+  href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"
+  type="application/xml"
+  schematypens="http://purl.oclc.org/dsdl/schematron"
+?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
@@ -360,7 +367,9 @@ Como podrás observar, se trata de una misma lógica empleada en múltiples ocas
         <title>Título del documento</title>
       </titleStmt>
       <publicationStmt>
-        <p>Información sobre la publicación de este documento (no de su fuente).</p>
+        <p>
+		Información sobre la publicación de este documento (no de su fuente).
+		</p>
       </publicationStmt>
       <sourceDesc>
         <p>Información sobre la fuente de este documento.</p>
@@ -503,8 +512,8 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 
 - Campos Leza, Fernando. "Introducción a AutoHotkey para traductores". La Linterna del Traductor, 4 de abril de 2017. [https://lalinternadeltraductor.org/n14/autohotkey.html](https://lalinternadeltraductor.org/n14/autohotkey.html).  
 - Instituto de Investigaciones Filológicas de la Universidad Nacional Autónoma de México. "Diccionario de abreviaturas novohispanas». Abreviaturas castellanas, 2 de noviembre de 2024. [https://www.iifilologicas.unam.mx/dicabenovo/](https://www.iifilologicas.unam.mx/dicabenovo/).  
-- "Notepad++». [https://notepad-plus-plus.org/](https://notepad-plus-plus.org/).  
-- Río Riande, Gimena del. "Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto». Publicaciones de la Asociación Argentina de Humanidades Digitales 3 (noviembre de 2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).  
+- "Notepad++". [https://notepad-plus-plus.org/](https://notepad-plus-plus.org/).  
+- Río Riande, Gimena del. "Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto". Publicaciones de la Asociación Argentina de Humanidades Digitales 3 (noviembre de 2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).  
 - Río Riande, Gimena del, Gabriel Calarco, Roy Youdale, y Patience Shell. "Minimal Computing 101". Sobre Minimal Computing, 8 de agosto de 2025. [https://hdlab.space/minimalbook/sobre_minimalcomputing.html](https://hdlab.space/minimalbook/sobre_minimalcomputing.html).  
 - Steve Gray, Chris Mallett, AutoIt Team et al. "Hotkeys - Definition & Usage AutoHotkey v2". AutoHotkey v2 Documentation, 2014-. [https://www.autohotkey.com/docs/v2/Hotkeys.htm](https://www.autohotkey.com/docs/v2/Hotkeys.htm).  
 - The TEI Consortium. The TEI Guidelines. 2026. [https://guidelines.tei-c.de/en/html/index.html](https://guidelines.tei-c.de/en/html/index.html).  

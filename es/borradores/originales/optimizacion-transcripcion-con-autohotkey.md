@@ -30,7 +30,7 @@ Aunque las herramientas de reconocimiento óptico de caracteres ([OCR](https://e
 
 Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de transcripción manual o etiquetar un texto procedente de OCR, HTR o, en general, de transcripciones realizadas previamente a las que todavía no hayas aplicado ningún marcado TEI.
 
-Ahora bien, ¿cómo puede un _script_ ayudarnos en nuestras tareas de humanidades digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de macros, gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
+Ahora bien, ¿cómo puede un _script_ ayudarnos en nuestras tareas de humanidades digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de [macros](https://es.wikipedia.org/wiki/Macro), gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
 
 ## ¿Qué debes saber?
 
@@ -40,7 +40,9 @@ En particular, para la sección dedicada a las funciones, conviene que tengas al
 
 ## ¿Qué necesitas? Requerimientos
 
-El primer requisito es disponer de un computador con Windows[^3]. También necesitarás instalar AHK y contar con un editor de texto plano (incluso podrías utilizar el Bloc de notas de Windows). No obstante, conviene trabajar con un editor que cuente con funcionalidades avanzadas, como [Notepad++](https://notepad-plus-plus.org/) o [Visual Studio Code](https://code.visualstudio.com/), ya que facilitará la lectura y edición del código de tu _script_.
+El primer requisito es disponer de un computador con Windows. Aunque AHK es gratuito y de código abierto, su dependencia de este sistema operativo limita el alcance de la lección y excluye a quienes trabajan exclusivamente en otros sistemas. Sin embargo, hemos elegido esta herramienta porque permite automatizar tareas mediante _scripts_ breves, sin necesidad de instalar entornos de programación complejos ni disponer de conocimientos avanzados. De este modo, ofrece a quienes trabajan en humanidades digitales una vía de entrada accesible a la automatización a una amplia audiencia, ya que Windows es el [sistema operativo para ordenadores de escritorio y portátiles más utilizado en el mundo](https://en.wikipedia.org/wiki/Usage_share_of_operating_systems#Desktop_and_laptop_computers)[^3].
+
+También necesitarás instalar AHK y contar con un editor de texto plano (incluso podrías utilizar el Bloc de notas de Windows). No obstante, conviene trabajar con un editor que cuente con funcionalidades avanzadas, como [Notepad++](https://notepad-plus-plus.org/) o [Visual Studio Code](https://code.visualstudio.com/), ya que facilitará la lectura y edición del código de tu _script_.
 
 El primer paso, entonces, es acceder a la página oficial de [AutoHotkey](https://www.autohotkey.com/) e instalar el programa en tu computador. Los archivos creados para AHK tendrán la extensión `.ahk`.
 
@@ -105,7 +107,7 @@ Guarda el archivo, haz doble clic sobre él, abre cualquier campo de texto y pre
 
 Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición TEI: introduciremos las marcas `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 definen esta etiqueta así:
 
-> `<gap>` (gap) indicates a point where material has been omitted in a transcription, whether for editorial reasons described in the TEI header, as part of sampling practice, or because the material is illegible, invisible, or inaudible.[^5]
+> `<gap>` (gap) indicates a point where material has been omitted in a transcription, whether for editorial reasons described in the TEI header, as part of sampling practice, or because the material is illegible, invisible, or inaudible[^5].
 
 Normalmente, esta etiqueta puede contener atributos como `reason` o `agent`. Para este ejemplo, asumiremos que en nuestra edición solo nos interesa marcar, dentro de `<gap>`, el motivo del vacío:
 ```ahk
@@ -115,11 +117,9 @@ En este caso, `Alt + G` insertará lo siguiente:
 ```xml
 <gap reason=""></gap>
 ```
-Las tildes graves se añaden para evitar un error de sintaxis en el _script_.
-
 Por otro lado, la etiqueta `<supplied>` se define como sigue:
 
-> `<supplied>` (supplied) signifies text supplied by the transcriber or editor for any reason; for example because the original cannot be read due to physical damage, or because of an obvious omission by the author or scribe.[^6]
+> `<supplied>` (supplied) signifies text supplied by the transcriber or editor for any reason; for example because the original cannot be read due to physical damage, or because of an obvious omission by the author or scribe[^6].
 
 Nuevamente, incluiremos solo el atributo `reason`:
 ```ahk
@@ -207,14 +207,28 @@ En esta lección utilizaremos funciones para automatizar tareas frecuentes de tr
 
 Imagina la siguiente situación: tienes un texto parcialmente editado, pero todavía no has etiquetado sus entidades y no es posible hacerlo de forma automática. Podríamos crear una _hotkey_ para cada etiqueta, pero sería poco práctico: todas ellas seguirían la misma lógica y, además, aumentaría el riesgo de errores. Para evitar esta repetición, crearemos una función llamada `tagger()`.
 
-Vamos a seguir trabajando con el _script_ que creamos en la sección anterior, pero antes de definir la función revisaremos y añadiremos algunas líneas generales al inicio del _script_:
+Vamos a seguir trabajando con el _script_ que creamos en la sección anterior, pero antes de definir la función revisaremos y añadiremos algunas líneas generales al inicio del archivo:
 ```ahk
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 SetTitleMatchMode "RegEx"
 SetWinDelay 0
 ```
-La primera línea indica que el archivo requiere AHK 2. La segunda previene que se abran varias copias del mismo _script_. Las restantes ajustan algunos aspectos del comportamiento del programa: reconocer ventanas de forma flexible (esto quiere decir que el _script_ seguirá reconociendo que trabajas en una determinada ventana aunque esta cambie de nombre, gracias al uso de expresiones regulares), la velocidad a la que se envían las pulsaciones simuladas y el tiempo de espera al interactuar con ventanas.
+La primera línea indica que el archivo requiere AHK 2. La segunda previene que se abran varias copias del mismo _script_. Las restantes ajustan algunos aspectos del comportamiento del programa: `SetTitleMatchMode` identifica, a través de [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular), las ventanas en las que trabajaremos y `SetWinDelay` elimina el tiempo de espera automático después de las operaciones que actúan sobre ellas.
+
+Anteriormente indicamos que las _hotkeys_ podían utilizarse en cualquier campo de texto. Sin embargo, no siempre queremos que se ejecuten en todos los programas de nuestro computador. Para limitar su funcionamiento, hemos desarrollado una función que comprueba si la ventana activa corresponde a uno de los editores autorizados o a la interfaz de prueba, de manera que no interfiera allí donde no queramos usarlas:
+```ahk
+isEditorActive() {
+    return WinActive(
+        "ahk_exe (soffice\.bin|notepad\+\+\.exe|Code\.exe|notepad\.exe)"
+    ) || WinActive("^Prueba de script TPH AHK$")
+}
+
+#HotIf isEditorActive()
+```
+La función `isEditorActive` devuelve un resultado verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, Visual Studio Code, el Bloc de notas o la interfaz del script que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos más adelante solo cuando una de esas ventanas esté activa.
+
+Esta restricción, una vez abierta, se aplica hasta el punto en el código donde aparezca nuevamente `#HotIf` sin condición, como actividad exploratoria, te animamos a que busques dónde deja de aplicarse en el _script_ descargable de esta lección.
 
 Vamos a definir las _hotkeys_ de los etiquetadores de `<name>`, `<place>` y `<title>`:
 ```ahk
@@ -224,31 +238,38 @@ Vamos a definir las _hotkeys_ de los etiquetadores de `<name>`, `<place>` y `<ti
 ```
 Recuerda: lo que está a la izquierda de los dobles dos puntos (`::`) es nuestra combinación de teclas. A la derecha de estos, definimos la acción que deberá ejecutar AHK. En este caso, llamamos a la función `tagger()` con los valores `"<name>"` y `"</name>"`. El primero es la etiqueta de apertura y el segundo la de cierre.
 
-A diferencia de lo que hicimos en la sección anterior, aquí veremos la función en su totalidad y, posteriormente, la explicaremos en detalle:
+Antes de que veamos la función `tagger`, veamos otra función esencial para evitar un error con el que te puedes encontrar al utilizar un _script_ sin ella: las teclas `Crtl` o `Alt` se quedan "presionadas" después de utilizada la _hotkey_. Esto lo evitaremos con otra función, que llamaremos `releaseModifiers()`:
+```ahk
+releaseModifiers() {
+    ; Libera los modificadores antes de enviar otras combinaciones
+    Send "{Alt Up}{Ctrl Up}"
+}
+```
+Poniéndola delante de nuestras _hotkeys_, se envía una instrucción mediante la cual se liberan las teclas `Crtl` y `Alt` (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_) antes de simular otras combinaciones de teclas.
+
+Ahora sí, veamos `tagger`. A diferencia de lo que hicimos en la sección anterior, aquí veremos la función en su totalidad y, posteriormente, la explicaremos en detalle:
 ```ahk
 tagger(openTag, closeTag) {
-	ClipSaved := ClipboardAll()   ; guarda el portapapeles
-	A_Clipboard := ""             ; lo limpia
-	Send "^c"                     ; copia la selección
+    releaseModifiers()
 
-	if !ClipWait(0.3) {
-		A_Clipboard := ClipSaved
-		EnsureAltUp()
-		return
-	}
+    savedClipboard := ClipboardAll()   ; guarda el portapapeles
+    A_Clipboard := ""                  ; lo limpia
+    Send "^c"                          ; copia la selección
 
-	selectedText := A_Clipboard
-	A_Clipboard := ClipSaved      ; restaura el portapapeles original
+    if !ClipWait(0.3) {
+        A_Clipboard := savedClipboard
+        return
+    }
 
-	; si no hay texto, nada
-	if (selectedText = "") {
-		EnsureAltUp()
-		return
-	}
+    selectedText := A_Clipboard
+    A_Clipboard := savedClipboard      ; restaura el portapapeles original
 
-	; escribimos directamente las etiquetas y el texto seleccionado
-	SendText openTag . selectedText . closeTag
-	EnsureAltUp()                 ; nos aseguramos de que Alt no se quede presionada
+    ; Si no hay texto seleccionado, termina la función
+    if (selectedText = "")
+        return
+
+    ; Escribe las etiquetas y el texto seleccionado
+    SendText(openTag . selectedText . closeTag)
 }
 ```
 <div class="alert alert-warning">
@@ -268,20 +289,6 @@ Uno de los inconvenientes de trabajar con el portapapeles es que puede darse el 
 `A_Clipboard := ""` deja el portapapeles vacío, asegurándonos así de que el contenido copiado coincide con el seleccionado y con `Send "^c"` simulamos la acción `Ctrl + C`, es decir, copiamos al portapapeles el texto que tenemos seleccionado.
 
 Posteriormente, incorporamos la condicional `if !ClipWait(0.3)` para asegurarnos de que el texto se haya copiado correctamente. En ella, el _script_ espera 0,3 segundos. Si no se ha copiado nada, restaura el portapapeles original, llama a la función `EnsureAltUp()` y detiene el _script_ con `return`.
-
-Antes de seguir, ¿para qué llamar a otra función? Tras probar varias combinaciones, un error se repetía frecuentemente: una de las teclas de la combinación, ya fuese `Alt` o `Ctrl`, se mantenía falsamente presionada, de manera que no se podía seguir trabajando a menos que se pulsara nuevamente. Con esta pequeña función nos aseguramos de que esto no ocurra o, al menos, reducimos drásticamente ese riesgo.
-```ahk
-EnsureAltUp() {
-    ; Espera un momento a que Alt se suelte, y si sigue “pulsada”, la suelta a la fuerza
-
-    KeyWait "Alt", "T0.2"              ; espera hasta 0.2 s a que Alt se libere
-    if GetKeyState("Alt", "P") {       ; si físicamente sigue abajo...
-        Send "{Alt up}"                ; ...la forzamos a soltar
-    }
-}
-```
-
-Esta función se compone de `KeyWait "Alt", "T0.2"`, que verifica si `Alt` sigue pulsada (espera dos décimas de segundo) y fuerza su liberación mediante `Send "{Alt up}"`. Esto subsana uno de los problemas que teníamos inicialmente: la tecla `Alt` se quedaba virtualmente presionada y esto generaba problemas.
 
 Por otro lado, si la copia se ha realizado correctamente, el contenido se guarda en la variable `selectedText` y se restaura el portapapeles original con `A_Clipboard := ClipSaved`. A continuación, el _script_ comprueba nuevamente si el texto está vacío, de esta forma, si no hay texto seleccionado, la función se detiene, evitando crear así etiquetas fantasma:
 ```ahk
@@ -304,52 +311,49 @@ Otras dos funciones útiles durante el proceso son las de conversión a mayúscu
 
 Para ello, usamos la función `ConvertSelection()` que sigue una lógica muy parecida a la empleada en el etiquetador `tagger()` explicado anteriormente, pero se fija en si recibe el valor `upper` o `lower`:
 ```ahk
-ConvertSelection(mode) {
-    ClipSaved := ClipboardAll()
+convertSelection(mode) {
+    releaseModifiers()
+
+    savedClipboard := ClipboardAll()
     A_Clipboard := ""
     Send "^c"
+
     if !ClipWait(0.3) {
-        A_Clipboard := ClipSaved
-        EnsureAltUp()
+        A_Clipboard := savedClipboard
         return
     }
 
     selectedText := A_Clipboard
-    A_Clipboard := ClipSaved
+    A_Clipboard := savedClipboard
 
-    if (selectedText = "") {
-        EnsureAltUp()
+    if (selectedText = "")
         return
-    }
 
     if (mode = "upper")
-        newText := StrUpper(selectedText)
+        SendText(StrUpper(selectedText))
     else if (mode = "lower")
-        newText := StrLower(selectedText)
+        SendText(StrLower(selectedText))
     else
-        newText := selectedText
-
-    ; pegamos el texto transformado
-    A_Clipboard := newText
-    ClipWait 0.3
-    Send "^v"
-
-    EnsureAltUp()
+        SendText(selectedText)
 }
 ```
-En caso de recibir el primero, aplica `newText :=` `StrUpper(selectedText)`, pasándolo a mayúsculas, mientras que en el segundo, aplica `newText := StrLower(selectedText)` y lo convierte en minúsculas. Si no recibe ninguno de los anteriores, lo deja igual: `newText := selectedText`. Una vez transformado, lo envía al portapapeles y lo pega encima del texto anterior. Como siempre, nos aseguramos de que `Alt` no se quede presionada.
+En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasándolo a mayúsculas, mientras que en el segundo, aplica `SendText(StrLower(selectedText))` y lo convierte en minúsculas. Si no recibe ninguno de los anteriores, lo deja igual: `SendText(selectedText)`. Una vez transformado, lo envía al portapapeles y lo pega encima del texto anterior. Como siempre, al inicio nos aseguramos de que `Alt` o `Crtl` no se quede presionada.
 
-Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica, normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `InsertNote()`, que simplemente inserta un texto preparado y lo pega en la interfaz en la que estemos trabajando:
+Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `InsertNote()`, llamada mediante `Alt + C` que simplemente inserta un texto preparado en la interfaz en la que estemos trabajando:
 ```ahk
-InsertNote(noteText) {
-    SendText noteText
-    EnsureAltUp()
+insertNote(noteText) {
+    releaseModifiers()
+    SendText(noteText)
 }
 ```
 Como podrás observar, se trata de una misma lógica empleada en múltiples ocasiones y adaptada a diferentes necesidades. Entonces, ¿cómo plantear la creación de la plantilla propuesta por Nicolás Vaughan? A continuación, te dejamos nuestra propuesta:
 ```ahk
 ::tei.xml::
 {
+    releaseModifiers()
+
+    savedClipboard := ClipboardAll()
+
     template := '
 (
 <?xml version="1.0" encoding="UTF-8"?>
@@ -379,11 +383,13 @@ Como podrás observar, se trata de una misma lógica empleada en múltiples ocas
 )'
 
     A_Clipboard := template
-    ClipWait 1
+    ClipWait(1)
     Send "^v"
+    Sleep 100
+    A_Clipboard := savedClipboard
 }
 ```
-En este caso, usamos la _hotstring_ `tei.xml` y, para evitar que se pegue incorrectamente, la almacenamos en una variable `plantilla` porque, de otra forma, perdería el formato original. Además, hemos añadido una pausa de seguridad para asegurarnos de que el portapapeles reciba toda la plantilla, ya que es un fragmento relativamente largo.
+En este caso, usamos la _hotstring_ `tei.xml` y, para evitar que se pegue incorrectamente, la almacenamos en una variable `template` porque, de otra forma, perdería el formato original. Además, hemos añadido dos pausas de seguridad: una para asegurarnos de que el portapapeles reciba toda la plantilla `ClipWait(1)` y otra para asegurarnos de la pueda pegar completamente antes de restaurar el portapapeles `Sleep 100`, ya que es un fragmento relativamente largo.
 
 ### Transformar marcado sencillo en etiquetas TEI
 
@@ -391,24 +397,26 @@ Esta lógica de trabajo se puede aplicar a casi cualquier etiqueta. Pensemos, po
 
 > Hay muchas formas de codificar un texto. Por ejemplo, podemos encerrar entre asteriscos simples los nombres propios de personas: \*Simón Bolívar\*, \*Soledad Acosta\*, etc. Y entre asteriscos dobles los de lugares: \*\*Bogotá\*\*, \*\*Framingham\*\*, etc. Podemos también usar guiones bajos para indicar los nombres de obras y de libros: \_La divina comedia\_, \_Cien años de soledad\_, etc. Estos signos sirven para etiquetar o marcar el texto que encierran, para así identificar en el texto un determinado contenido. Como es fácil de imaginar, las posibilidades de codificación son casi infinitas.
 
-Partiendo de este marcado sencillo, podemos transformarlo automáticamente con AHK mediante [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular):
+Partiendo de este marcado sencillo, podemos transformarlo automáticamente con AHK mediante expresiones regulares:
 ```ahk
-^!x:: {
-    A_Clipboard := ""
+convertSimpleMarkup() {
+    releaseModifiers()
 
+    savedClipboard := ClipboardAll()
+    A_Clipboard := ""
     Send "^c"
-    if !ClipWait(1)
+
+    if !ClipWait(1) {
+        A_Clipboard := savedClipboard
         return
+    }
 
     text := A_Clipboard
+    A_Clipboard := savedClipboard
 
-    text := RegExReplace(text, "\*\*([^*]+)\*\*", "<place>$1</place>")
-    text := RegExReplace(text, "(?<!\*)\*([^*]+)\*(?!\*)", "<name>$1</name>")
-    text := RegExReplace(text, "_([^_]+)_", "<title>$1</title>")
-
-    A_Clipboard := text
-    Send "^v"
-	EnsureAltUp()
+    ...
+    
+    SendText(text)
 }
 ```
 De forma resumida, las expresiones regulares recogidas en el código hacen lo siguiente:

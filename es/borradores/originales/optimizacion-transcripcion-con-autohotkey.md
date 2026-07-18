@@ -123,7 +123,7 @@ Por otro lado, la etiqueta `<supplied>` se define como sigue:
 
 Nuevamente, incluiremos solo el atributo `reason`:
 ```ahk
-!s::	Send "<supplied reason=`"`"></supplied>"
+!s::	SendText '<supplied reason=""></supplied>'
 ```
 Como ves, el procedimiento es sencillo, aunque sería mucho más cómodo que el cursor se colocara directamente donde vamos a escribir. Para ello, podemos combinar dos instrucciones con `Send`: la primera inserta el texto literal, mientras que la segunda permite indicar que el cursor debe moverse tantas veces como queramos. En este caso, lo desplazamos hacia la izquierda, de manera que quede dentro del entrecomillado de `reason`:
 ```ahk
@@ -214,7 +214,7 @@ Vamos a seguir trabajando con el _script_ que creamos en la sección anterior, p
 SetTitleMatchMode "RegEx"
 SetWinDelay 0
 ```
-La primera línea indica que el archivo requiere AHK 2. La segunda previene que se abran varias copias del mismo _script_. Las restantes ajustan algunos aspectos del comportamiento del programa: `SetTitleMatchMode` identifica, a través de [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular), las ventanas en las que trabajaremos y `SetWinDelay` elimina el tiempo de espera automático después de las operaciones que actúan sobre ellas.
+La primera línea indica que el archivo requiere AHK 2. La segunda previene que se abran varias copias del mismo _script_. Las restantes ajustan algunos aspectos del comportamiento del programa: `SetTitleMatchMode` habilita el uso de [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular) para comprobar los títulos de las ventanas y `SetWinDelay` elimina el tiempo de espera automático después de las operaciones que actúan sobre ellas.
 
 Anteriormente indicamos que las _hotkeys_ podían utilizarse en cualquier campo de texto. Sin embargo, no siempre queremos que se ejecuten en todos los programas de nuestro computador. Para limitar su funcionamiento, hemos desarrollado una función que comprueba si la ventana activa corresponde a uno de los editores autorizados o a la interfaz de prueba, de manera que no interfiera allí donde no queramos usarlas:
 ```ahk
@@ -228,7 +228,7 @@ isEditorActive() {
 ```
 La función `isEditorActive` devuelve un resultado verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, Visual Studio Code, el Bloc de notas o la interfaz del _script_ que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos más adelante solo cuando una de esas ventanas esté activa.
 
-Esta restricción, una vez abierta, se aplica hasta el punto en el código donde aparezca nuevamente `#HotIf` sin condición, como actividad exploratoria, te animamos a que busques dónde deja de aplicarse en el _script_ descargable de esta lección.
+Esta restricción, una vez abierta, se aplica hasta el punto en el código donde aparezca nuevamente `#HotIf` sin condición. Como actividad exploratoria, te animamos a que busques dónde deja de aplicarse en el _script_ descargable de esta lección.
 
 Vamos a definir las _hotkeys_ de los etiquetadores de `<name>`, `<place>` y `<title>`:
 ```ahk
@@ -238,14 +238,14 @@ Vamos a definir las _hotkeys_ de los etiquetadores de `<name>`, `<place>` y `<ti
 ```
 Recuerda: lo que está a la izquierda de los dobles dos puntos (`::`) es nuestra combinación de teclas. A la derecha de estos, definimos la acción que deberá ejecutar AHK. En este caso, llamamos a la función `tagger()` con los valores `"<name>"` y `"</name>"`. El primero es la etiqueta de apertura y el segundo la de cierre.
 
-Antes de que veamos la función `tagger`, veamos otra función esencial para evitar un error con el que te puedes encontrar al utilizar un _script_ sin ella: las teclas `Crtl` o `Alt` se quedan "presionadas" después de utilizada la _hotkey_. Esto lo evitaremos con otra función, que llamaremos `releaseModifiers()`:
+Antes de que veamos la función `tagger`, veamos otra función esencial para evitar un error con el que te puedes encontrar al utilizar un _script_ sin ella: las teclas `Ctrl` o `Alt` se quedan "presionadas" después de utilizada la _hotkey_. Esto lo evitaremos con otra función, que llamaremos `releaseModifiers()`:
 ```ahk
 releaseModifiers() {
     ; Libera los modificadores antes de enviar otras combinaciones
     Send "{Alt Up}{Ctrl Up}"
 }
 ```
-Poniéndola delante de nuestras _hotkeys_, se envía una instrucción mediante la cual se liberan las teclas `Crtl` y `Alt` (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_) antes de simular otras combinaciones de teclas.
+Poniéndola delante de nuestras _hotkeys_, se envía una instrucción mediante la cual se liberan las teclas `Ctrl` y `Alt` (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_) antes de simular otras combinaciones de teclas.
 
 Ahora sí, veamos `tagger`. A diferencia de lo que hicimos en la sección anterior, aquí veremos la función en su totalidad y, posteriormente, la explicaremos en detalle:
 ```ahk
@@ -272,10 +272,6 @@ tagger(openTag, closeTag) {
     SendText(openTag . selectedText . closeTag)
 }
 ```
-<div class="alert alert-warning">
-No te apresures a copiar y pegar el código: todavía no funcionará.
-</div>
-
 Con esta función podemos seleccionar cualquier texto y escribir alrededor de él las etiquetas que queramos, dependiendo de la combinación de teclas que usemos. En el ejemplo, si pulsamos `Alt + n` llamaremos a la función con estas etiquetas:
 ```ahk
 tagger("<name>", "</name>")
@@ -284,15 +280,15 @@ Como puedes ver, van a reemplazar los parámetros `openTag` y `closeTag`. Por ta
 ```xml
 <name>Miguel</name>
 ```
-Uno de los inconvenientes de trabajar con el portapapeles es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la primera línea: `ClipSaved := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido que seleccionamos en nuestro portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
+Uno de los inconvenientes de trabajar con el portapapeles es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la primera línea: `savedClipboard := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido que seleccionamos en nuestro portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
 
 `A_Clipboard := ""` deja el portapapeles vacío, asegurándonos así de que el contenido copiado coincide con el seleccionado y con `Send "^c"` simulamos la acción `Ctrl + C`, es decir, copiamos al portapapeles el texto que tenemos seleccionado.
 
-Por otro lado, si la copia se ha realizado correctamente, el contenido se guarda en la variable `selectedText` y se restaura el portapapeles original con `A_Clipboard := ClipSaved`. A continuación, el _script_ comprueba nuevamente si el texto está vacío, de esta forma, si no hay texto seleccionado, la función se detiene, evitando crear así etiquetas fantasma.
+Por otro lado, si la copia se ha realizado correctamente, el contenido se guarda en la variable `selectedText` y se restaura el portapapeles original con `A_Clipboard := savedClipboard`. A continuación, el _script_ comprueba nuevamente si el texto está vacío, de esta forma, si no hay texto seleccionado, la función se detiene, evitando crear así etiquetas fantasma.
 
 Hechas todas estas comprobaciones, pasamos al etiquetado en sí, que se realiza en la operación final:
 ```ahk
-SendText openTag . selectedText . closeTag
+SendText(openTag . selectedText . closeTag)
 ```
 Con esta acción nos aseguramos de que AHK componga la siguiente estructura: etiqueta de apertura + texto seleccionado + etiqueta de cierre. Estas partes se concatenan mediante el operador `.` (punto).
 
@@ -302,7 +298,7 @@ Ahora, crea tus propias _hotkeys_ y añade las funciones `tagger()` y `releaseMo
 
 Otras dos funciones útiles durante el proceso son las de conversión a mayúsculas y minúsculas. Aunque los procesadores de texto ya las incluyen, a veces resulta más cómodo seleccionar el texto y pulsar una combinación de teclas.
 
-Para ello, usamos la función `ConvertSelection()` que sigue una lógica muy parecida a la empleada en el etiquetador `tagger()` explicado anteriormente, pero se fija en si recibe el valor `upper` o `lower`:
+Para ello, usamos la función `convertSelection()` que sigue una lógica muy parecida a la empleada en el etiquetador `tagger()` explicado anteriormente, pero se fija en si recibe el valor `upper` o `lower`:
 ```ahk
 convertSelection(mode) {
     releaseModifiers()
@@ -330,9 +326,9 @@ convertSelection(mode) {
         SendText(selectedText)
 }
 ```
-En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasándolo a mayúsculas, mientras que en el segundo, aplica `SendText(StrLower(selectedText))` y lo convierte en minúsculas. Si no recibe ninguno de los anteriores, lo deja igual: `SendText(selectedText)`. Una vez transformado, lo envía al portapapeles y lo pega encima del texto anterior. Como siempre, al inicio nos aseguramos de que `Alt` o `Crtl` no se quede presionada.
+En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasándolo a mayúsculas, mientras que en el segundo, aplica `SendText(StrLower(selectedText))` y lo convierte en minúsculas. Si no recibe ninguno de los anteriores, lo deja igual: `SendText(selectedText)`. Una vez transformado, restaura el portapapeles viejo y escribe el resultado con `SendText()`. Como siempre, al inicio nos aseguramos de que `Alt` o `Ctrl` no se quede presionada.
 
-Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `InsertNote()`, llamada mediante `Alt + C` que simplemente inserta un texto preparado en la interfaz en la que estemos trabajando:
+Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante `Alt + C` que simplemente inserta un texto preparado en la interfaz en la que estemos trabajando:
 ```ahk
 insertNote(noteText) {
     releaseModifiers()
@@ -382,7 +378,7 @@ Como podrás observar, se trata de una misma lógica empleada en múltiples ocas
     A_Clipboard := savedClipboard
 }
 ```
-En este caso, usamos la _hotstring_ `tei.xml` y, para evitar que se pegue incorrectamente, la almacenamos en una variable `template` porque, de otra forma, perdería el formato original. Además, hemos añadido dos pausas de seguridad: una para asegurarnos de que el portapapeles reciba toda la plantilla `ClipWait(1)` y otra para asegurarnos de la pueda pegar completamente antes de restaurar el portapapeles `Sleep 100`, ya que es un fragmento relativamente largo.
+En este caso, usamos la _hotstring_ `tei.xml` y, para evitar que se pegue incorrectamente, la almacenamos en una variable `template` porque, de otra forma, perdería el formato original. Además, hemos añadido dos pausas de seguridad: una para asegurarnos de que el portapapeles reciba toda la plantilla `ClipWait(1)` y otra para cerciorarnos de que la pueda pegar completamente antes de restaurar el portapapeles `Sleep 100`, ya que es un fragmento relativamente largo.
 
 ### Transformar marcado sencillo en etiquetas TEI
 
@@ -467,7 +463,7 @@ toggleScript() {
     }
 }
 ```
-En las dos primeras líneas se declaran las variables que usará la interfaz. `scriptActive` verifica si los atajos están activados, `mainGui`, `testEdit` y `toggleButton` afectan a, respectivamente, la ventana, la caja de texto y el botón. Más adelante, `createGui()` llama a la función encargada de construir la interfaz.
+En las dos primeras líneas se declaran las variables que usará la interfaz: `scriptActive` almacena el estado de los atajos. Por otro lado, `mainGui`, `testEdit` y `toggleButton` afectan a, respectivamente, la ventana, la caja de texto y el botón. Más adelante, `createGui()` llama a la función encargada de construir la interfaz.
 
 Dentro de `createGui()` se crea la ventana con  `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que pueda cambiar de tamaño (`+Resize`) y minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para el usuario.
 

@@ -30,6 +30,8 @@ Aunque las herramientas de reconocimiento óptico de caracteres ([OCR](https://e
 
 Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de transcripción manual o etiquetar un texto procedente de OCR, HTR o, en general, de transcripciones realizadas previamente a las que todavía no hayas aplicado ningún marcado TEI.
 
+Esta herramienta cuenta con antecedentes en el ámbito de la traducción [^3] y esta propuesta pretende ser una solución más de  _minimal computing_ [^4].
+
 Ahora bien, ¿cómo puede un _script_ ayudarnos en nuestras tareas de humanidades digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de [macros](https://es.wikipedia.org/wiki/Macro), gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
 
 ## ¿Qué debes saber?
@@ -147,7 +149,7 @@ Para abrir un programa, debes indicar el nombre del ejecutable (`.exe`). Por eje
 En el caso de programas de terceros, conviene comprobar el nombre exacto del ejecutable en la carpeta donde fue instalado.
 </div>
 
-Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la función `Run` aparece cuando necesitas abrir varios recursos que forman parte de tu flujo de trabajo. Por ejemplo, supongamos que necesitas abrir PARES (Portal de Archivos Españoles) para buscar documentación, el _Diccionario de abreviaturas novohispanas_ (DICABENOVO) y LibreOffice Writer para transcribir:
+Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la función `Run` aparece cuando necesitas abrir varios recursos que forman parte de tu flujo de trabajo. Por ejemplo, supongamos que necesitas abrir PARES (Portal de Archivos Españoles) para buscar documentación, el _ de abreviaturas novohispanas_ (DICABENOVO) y LibreOffice Writer para transcribir:
 ```ahk
 !1::  
 {  
@@ -510,22 +512,22 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 
 ## Referencias
 
-- Campos Leza, Fernando. "Introducción a AutoHotkey para traductores". La Linterna del Traductor, 4 de abril de 2017. [https://lalinternadeltraductor.org/n14/autohotkey.html](https://lalinternadeltraductor.org/n14/autohotkey.html).  
-- Instituto de Investigaciones Filológicas de la Universidad Nacional Autónoma de México. "Diccionario de abreviaturas novohispanas». Abreviaturas castellanas, 2 de noviembre de 2024. [https://www.iifilologicas.unam.mx/dicabenovo/](https://www.iifilologicas.unam.mx/dicabenovo/).  
-- "Notepad++". [https://notepad-plus-plus.org/](https://notepad-plus-plus.org/).  
-- Río Riande, Gimena del. "Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto". Publicaciones de la Asociación Argentina de Humanidades Digitales 3 (noviembre de 2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).  
-- Río Riande, Gimena del, Gabriel Calarco, Roy Youdale, y Patience Shell. "Minimal Computing 101". Sobre Minimal Computing, 8 de agosto de 2025. [https://hdlab.space/minimalbook/sobre_minimalcomputing.html](https://hdlab.space/minimalbook/sobre_minimalcomputing.html).  
-- Steve Gray, Chris Mallett, AutoIt Team et al. "Hotkeys - Definition & Usage AutoHotkey v2". AutoHotkey v2 Documentation, 2014-. [https://www.autohotkey.com/docs/v2/Hotkeys.htm](https://www.autohotkey.com/docs/v2/Hotkeys.htm).  
-- The TEI Consortium. The TEI Guidelines. 2026. [https://guidelines.tei-c.de/en/html/index.html](https://guidelines.tei-c.de/en/html/index.html).  
-- tidbit. "Beginner Tutorial AutoHotkey v2". AutoHotkey v2 Documentation, 2014. [https://www.autohotkey.com/docs/v2/Tutorial.htm](https://www.autohotkey.com/docs/v2/Tutorial.htm).  
-- "Visual Studio Code". [https://code.visualstudio.com/](https://code.visualstudio.com/).
+- Campos Leza, Fernando. "Introducción a AutoHotkey para traductores". _La Linterna del Traductor_, 4 de abril de 2017. [https://lalinternadeltraductor.org/n14/autohotkey.html](https://lalinternadeltraductor.org/n14/autohotkey.html).
+- Gray, Steve, Chris Mallett, AutoIt Team et al. "Hotkeys - Definition & Usage AutoHotkey v2". _AutoHotkey v2 Documentation_, 2014-. [https://www.autohotkey.com/docs/v2/Hotkeys.htm](https://www.autohotkey.com/docs/v2/Hotkeys.htm).
+- Instituto de Investigaciones Filológicas de la Universidad Nacional Autónoma de México. "Diccionario de abreviaturas novohispanas". _Abreviaturas castellanas_, 2 de noviembre de 2024. [https://www.iifilologicas.unam.mx/dicabenovo/](https://www.iifilologicas.unam.mx/dicabenovo/).
+- Río Riande, Gimena del. "Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto". _Publicaciones de la Asociación Argentina de Humanidades Digitales_ 3 (noviembre de 2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).
+- Río Riande, Gimena del, Gabriel Calarco, Roy Youdale, y Patience Shell. "Minimal Computing 101". _Sobre Minimal Computing_, 8 de agosto de 2025. [https://hdlab.space/minimalbook/sobre_minimalcomputing.html](https://hdlab.space/minimalbook/sobre_minimalcomputing.html).
+- The TEI Consortium. _The TEI Guidelines_. 2026. [https://guidelines.tei-c.de/en/html/index.html](https://guidelines.tei-c.de/en/html/index.html).
+- tidbit. "Beginner Tutorial AutoHotkey v2". _AutoHotkey v2 Documentation_, 2014. [https://www.autohotkey.com/docs/v2/Tutorial.htm](https://www.autohotkey.com/docs/v2/Tutorial.htm).
 
 ## Notas
 
 [^1]: El texto de esta lección ha sido revisado con herramientas de inteligencia artificial generativa, en concreto, ChatGPT.  
-[^2]: El tipo de letra no es la única barrera a la que nos enfrentamos desde la investigación: las digitalizaciones de los manuscritos no siempre son lo suficientemente fieles para poder aplicar estas herramientas que, además, en algunos casos, son de pago (o limitados a un determinado número de tokens al mes). Las alternativas de código abierto y gratuitas, por su parte, requieren de ciertos conocimientos técnicos superiores a los necesarios para utilizar la herramienta aquí propuesta.  
-[^3]: La compatibilidad está garantizada en computadores con SO Windows 7 o superiores. Aunque no se aborda en esta lección, en Linux existe [AutoKey](https://github.com/autokey/autokey), una herramienta independiente de automatización de escritorio con funciones similares. Está diseñada para entornos X11 y presenta problemas de compatibilidad cuando se utiliza Wayland en lugar de Xorg. Algo similar ocurre con implementaciones como [AHK_X11](https://github.com/phil294/AHK_X11).
-[^4]: Puedes acceder al listado detallado de cambios aquí: [https://www.autohotkey.com/docs/v2/v2-changes.htm](https://www.autohotkey.com/docs/v2/v2-changes.htm). También encontrarás el enlace a un convertidor de _scripts_ versión 1 a 2.
-[^5]: TEI Consortium, _The TEI Guidelines_, 436.
-[^6]: TEI Consortium, _The TEI Guidelines_, 436.
-[^7]: TEI Consortium, _The TEI Guidelines_, 115.
+[^2]: El tipo de letra no es la única barrera a la que nos enfrentamos desde la investigación: las digitalizaciones de los manuscritos no siempre son lo suficientemente fieles para poder aplicar estas herramientas que, además, en algunos casos, son de pago (o limitados a un determinado número de tokens al mes). Las alternativas de código abierto y gratuitas, por su parte, requieren de ciertos conocimientos técnicos superiores a los necesarios para utilizar la herramienta aquí propuesta.
+[^3]: Campos Leza, "Introducción a AutoHotkey".
+[^4]: Río Riande, "Humanidades Digitales"; Río Riande et al., "Minimal Computing 101".
+[^5]: La compatibilidad está garantizada en computadores con SO Windows 7 o superiores. Aunque no se aborda en esta lección, en Linux existe [AutoKey](https://github.com/autokey/autokey), una herramienta independiente de automatización de escritorio con funciones similares. Está diseñada para entornos X11 y presenta problemas de compatibilidad cuando se utiliza Wayland en lugar de Xorg. Algo similar ocurre con implementaciones como [AHK_X11](https://github.com/phil294/AHK_X11).
+[^6]: Puedes acceder al listado detallado de cambios aquí: [https://www.autohotkey.com/docs/v2/v2-changes.htm](https://www.autohotkey.com/docs/v2/v2-changes.htm). También encontrarás el enlace a un convertidor de _scripts_ versión 1 a 2.
+[^7]: TEI Consortium, _The TEI Guidelines_, 436.
+[^8]: TEI Consortium, _The TEI Guidelines_, 436.
+[^9]: TEI Consortium, _The TEI Guidelines_, 115.

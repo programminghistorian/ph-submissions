@@ -56,7 +56,7 @@ Lo primero que haremos será crear una carpeta en Windows. Puedes elegir la ubic
 
 1. Desde la interfaz de AHK: en este caso, deberás seleccionar la carpeta de destino, indicar un nombre para el archivo y marcar que incorpore la siguiente directiva: `#Requires AutoHotkey v2.0`. Si creas el archivo vacío, esta será la primera línea que deberás añadir.
 
-2. Desde la carpeta `ahk_scripts`: para ello, haz clic derecho en un espacio vacío, selecciona **Nuevo** y, después, **AutoHotkey script** o una opción similar. A continuación, asigna un nombre al archivo y añade al comienzo la línea `#Requires AutoHotkey v2.0`.
+2. Desde la carpeta `ahk_scripts`: para ello, busca la opción **Nuevo** y, después, **AutoHotkey script** o similar. A continuación, asigna un nombre al archivo y añade al comienzo la línea `#Requires AutoHotkey v2.0`.
 
 Nuestro _script_ se llamará `tph_script`.
 
@@ -96,7 +96,7 @@ Dicho esto, creemos nuestra primera _hotkey_. Para ello, abre el archivo que aca
 ```ahk
 ^h::SendText "Hola, mundo"
 ```
-Recuerda que también puedes escribir la misma instrucción entre llaves, en forma de bloque:
+También puedes escribir la misma instrucción entre llaves, en forma de bloque:
 ```ahk
 ^h::	  
 {  
@@ -133,6 +133,10 @@ Como ves, el procedimiento es sencillo, aunque sería mucho más cómodo que el 
 	Send	"{Left 13}"
 }
 ```
+<div class="alert alert-warning">
+El valor de `{Left N}` dependerá de la etiqueta de apertura; si cambias su nombre, deberás recalcular el número de desplazamientos a la izquierda que necesites.
+</div>
+
 En este caso es necesario usar llaves, ya que nuestro _script_ combina dos acciones.
 
 Ahora vamos a conocer la función `Run`. Como indicamos en la tabla, esta función permite abrir programas instalados en el computador, pero también puede utilizarse para abrir enlaces web. Por ejemplo, para abrir una página web con una combinación de teclas, puedes escribir:
@@ -160,7 +164,7 @@ Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la fun
 Los comentarios deben ir precedidos de un punto y coma, como en el ejemplo anterior: `; LibreOffice Writer`.
 </div>
 
-Recuerda que siempre podrás pausar o cerrar tu _script_ desde la barra de tareas de Windows. Para ello, haz clic en la flecha hacia arriba, localiza el icono de AHK, haz clic derecho sobre él y selecciona la opción correspondiente.
+Siempre podrás pausar o cerrar tu _script_ desde la barra de tareas de Windows.
 
 Pasemos ahora a las _hotstrings_. A diferencia de las _hotkeys_, no se activan mediante una combinación de teclas, sino al escribir una determinada secuencia de caracteres. Su uso es más localizado, pues básicamente se emplean para expandir abreviaturas, palabras o frases frecuentes mientras escribes.
 
@@ -245,7 +249,7 @@ releaseModifiers() {
     Send "{Alt Up}{Ctrl Up}"
 }
 ```
-Poniéndola delante de nuestras _hotkeys_, se envía una instrucción mediante la cual se liberan las teclas `Ctrl` y `Alt` (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_) antes de simular otras combinaciones de teclas.
+Llamándola al inicio de nuestras funciones, se envía una instrucción mediante la cual se liberan las teclas `Ctrl` y `Alt` (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_) antes de simular otras combinaciones.
 
 Ahora sí, veamos `tagger`. A diferencia de lo que hicimos en la sección anterior, aquí veremos la función en su totalidad y, posteriormente, la explicaremos en detalle:
 ```ahk
@@ -326,7 +330,7 @@ convertSelection(mode) {
         SendText(selectedText)
 }
 ```
-En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasándolo a mayúsculas, mientras que en el segundo, aplica `SendText(StrLower(selectedText))` y lo convierte en minúsculas. Si no recibe ninguno de los anteriores, lo deja igual: `SendText(selectedText)`. Una vez transformado, restaura el portapapeles viejo y escribe el resultado con `SendText()`. Como siempre, al inicio nos aseguramos de que `Alt` o `Ctrl` no se quede presionada.
+En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasándolo a mayúsculas, mientras que en el segundo, aplica `SendText(StrLower(selectedText))` y lo convierte en minúsculas. Si no recibe ninguno de los anteriores, lo deja igual: `SendText(selectedText)`. Una vez transformado, restaura el portapapeles viejo y escribe el resultado con `SendText()`. Al inicio, con `releaseModifiers(), nos aseguramos de liberar preventivamente las teclas `Alt` y `Ctrl`.
 
 Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante `Alt + C` que simplemente inserta un texto preparado en la interfaz en la que estemos trabajando:
 ```ahk
@@ -479,11 +483,11 @@ Ya hemos construido un _script_ que cubre buena parte del flujo de trabajo vincu
 
 AHK incorpora un compilador que permite convertir tus _scripts_ `.ahk` a `.exe`. De esta manera, podrás ejecutar tu _script_ sin necesidad de instalarlo en el equipo de destino, ya que se compila como un programa portable. Por tanto, puedes llevarlo en una memoria USB o en un disco duro portátil.
 
-Para hacerlo, abre AHK y selecciona la opción **Compile**, se te abrirá una nueva ventana con el programa **Ahk2Exe** (Figura 1):
+Para hacerlo, abre el compilador **Ahk2Exe** (Figura 1):
 
 {% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey.jpg" alt="Ventana del compilador Ahk2Exe con campos para seleccionar el archivo fuente, el archivo de destino, el icono personalizado y el botón de convertir a ejecutable" caption="Figura 1. Interfaz de usuario de Ahk2exe." %}
 
-Ya en el compilador, deberás seleccionar el _script_ que has creado en la carpeta (`tph_script`) y dejar el resto de opciones predeterminadas, ya que suelen funcionar en la mayoría de computadores Windows. Además, tienes la posibilidad de añadir un icono al `.exe`; recuerda que debe estar en formato `.ico`.
+Una vez allí, busca el _script_ que has creado en la carpeta (`tph_script`) y deja el resto de opciones predeterminadas, ya que suelen funcionar en la mayoría de computadores Windows. Además, tienes la posibilidad de añadir un icono al `.exe`; recuerda que debe estar en formato `.ico`.
 
 ## Conclusiones
 
@@ -497,15 +501,15 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 
 ## Referencias
 
-- Campos Leza, Fernando. «Introducción a AutoHotkey para traductores». La Linterna del Traductor, 4 de abril de 2017. [https://lalinternadeltraductor.org/n14/autohotkey.html](https://lalinternadeltraductor.org/n14/autohotkey.html).  
-- Instituto de Investigaciones Filológicas de la Universidad Nacional Autónoma de México. «Diccionario de abreviaturas novohispanas». Abreviaturas castellanas, 2 de noviembre de 2024. [https://www.iifilologicas.unam.mx/dicabenovo/](https://www.iifilologicas.unam.mx/dicabenovo/).  
-- «Notepad++». [https://notepad-plus-plus.org/](https://notepad-plus-plus.org/).  
-- Río Riande, Gimena del. «Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto». Publicaciones de la Asociación Argentina de Humanidades Digitales 3 (noviembre de 2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).  
-- Río Riande, Gimena del, Gabriel Calarco, Roy Youdale, y Patience Shell. «Minimal Computing 101». Sobre Minimal Computing, 8 de agosto de 2025. [https://hdlab.space/minimalbook/sobre_minimalcomputing.html](https://hdlab.space/minimalbook/sobre_minimalcomputing.html).  
-- Steve Gray, Chris Mallett, AutoIt Team et al. «Hotkeys - Definition & Usage AutoHotkey v2». AutoHotkey v2 Documentation, 2014-. [https://www.autohotkey.com/docs/v2/Hotkeys.htm](https://www.autohotkey.com/docs/v2/Hotkeys.htm).  
+- Campos Leza, Fernando. "Introducción a AutoHotkey para traductores". La Linterna del Traductor, 4 de abril de 2017. [https://lalinternadeltraductor.org/n14/autohotkey.html](https://lalinternadeltraductor.org/n14/autohotkey.html).  
+- Instituto de Investigaciones Filológicas de la Universidad Nacional Autónoma de México. "Diccionario de abreviaturas novohispanas». Abreviaturas castellanas, 2 de noviembre de 2024. [https://www.iifilologicas.unam.mx/dicabenovo/](https://www.iifilologicas.unam.mx/dicabenovo/).  
+- "Notepad++». [https://notepad-plus-plus.org/](https://notepad-plus-plus.org/).  
+- Río Riande, Gimena del. "Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto». Publicaciones de la Asociación Argentina de Humanidades Digitales 3 (noviembre de 2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).  
+- Río Riande, Gimena del, Gabriel Calarco, Roy Youdale, y Patience Shell. "Minimal Computing 101". Sobre Minimal Computing, 8 de agosto de 2025. [https://hdlab.space/minimalbook/sobre_minimalcomputing.html](https://hdlab.space/minimalbook/sobre_minimalcomputing.html).  
+- Steve Gray, Chris Mallett, AutoIt Team et al. "Hotkeys - Definition & Usage AutoHotkey v2". AutoHotkey v2 Documentation, 2014-. [https://www.autohotkey.com/docs/v2/Hotkeys.htm](https://www.autohotkey.com/docs/v2/Hotkeys.htm).  
 - The TEI Consortium. The TEI Guidelines. 2026. [https://guidelines.tei-c.de/en/html/index.html](https://guidelines.tei-c.de/en/html/index.html).  
-- tidbit. «Beginner Tutorial AutoHotkey v2». AutoHotkey v2 Documentation, 2014. [https://www.autohotkey.com/docs/v2/Tutorial.htm](https://www.autohotkey.com/docs/v2/Tutorial.htm).  
-- «Visual Studio Code». [https://code.visualstudio.com/](https://code.visualstudio.com/).
+- tidbit. "Beginner Tutorial AutoHotkey v2". AutoHotkey v2 Documentation, 2014. [https://www.autohotkey.com/docs/v2/Tutorial.htm](https://www.autohotkey.com/docs/v2/Tutorial.htm).  
+- "Visual Studio Code". [https://code.visualstudio.com/](https://code.visualstudio.com/).
 
 ## Notas
 

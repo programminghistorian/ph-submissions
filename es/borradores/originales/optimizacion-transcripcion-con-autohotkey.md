@@ -226,7 +226,7 @@ isEditorActive() {
 
 #HotIf isEditorActive()
 ```
-La función `isEditorActive` devuelve un resultado verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, Visual Studio Code, el Bloc de notas o la interfaz del script que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos más adelante solo cuando una de esas ventanas esté activa.
+La función `isEditorActive` devuelve un resultado verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, Visual Studio Code, el Bloc de notas o la interfaz del _script_ que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos más adelante solo cuando una de esas ventanas esté activa.
 
 Esta restricción, una vez abierta, se aplica hasta el punto en el código donde aparezca nuevamente `#HotIf` sin condición, como actividad exploratoria, te animamos a que busques dónde deja de aplicarse en el _script_ descargable de esta lección.
 
@@ -288,22 +288,15 @@ Uno de los inconvenientes de trabajar con el portapapeles es que puede darse el 
 
 `A_Clipboard := ""` deja el portapapeles vacío, asegurándonos así de que el contenido copiado coincide con el seleccionado y con `Send "^c"` simulamos la acción `Ctrl + C`, es decir, copiamos al portapapeles el texto que tenemos seleccionado.
 
-Posteriormente, incorporamos la condicional `if !ClipWait(0.3)` para asegurarnos de que el texto se haya copiado correctamente. En ella, el _script_ espera 0,3 segundos. Si no se ha copiado nada, restaura el portapapeles original, llama a la función `EnsureAltUp()` y detiene el _script_ con `return`.
+Por otro lado, si la copia se ha realizado correctamente, el contenido se guarda en la variable `selectedText` y se restaura el portapapeles original con `A_Clipboard := ClipSaved`. A continuación, el _script_ comprueba nuevamente si el texto está vacío, de esta forma, si no hay texto seleccionado, la función se detiene, evitando crear así etiquetas fantasma.
 
-Por otro lado, si la copia se ha realizado correctamente, el contenido se guarda en la variable `selectedText` y se restaura el portapapeles original con `A_Clipboard := ClipSaved`. A continuación, el _script_ comprueba nuevamente si el texto está vacío, de esta forma, si no hay texto seleccionado, la función se detiene, evitando crear así etiquetas fantasma:
-```ahk
-if (selectedText = "") {
-	EnsureAltUp()
-	return
-}
-```
 Hechas todas estas comprobaciones, pasamos al etiquetado en sí, que se realiza en la operación final:
 ```ahk
 SendText openTag . selectedText . closeTag
 ```
 Con esta acción nos aseguramos de que AHK componga la siguiente estructura: etiqueta de apertura + texto seleccionado + etiqueta de cierre. Estas partes se concatenan mediante el operador `.` (punto).
 
-También en caso de copia exitosa nos aseguramos de que no quede la tecla activa con la función `EnsureAltUp()`. Ahora, crea tus propias _hotkeys_ y añade las funciones `tagger()` y `EnsureAltUp()` a tu _script_.
+Ahora, crea tus propias _hotkeys_ y añade las funciones `tagger()` y `releaseModifiers()` a tu _script_.
 
 ### Otras funciones de interés
 
@@ -434,42 +427,43 @@ Estas líneas de código permiten que, al seleccionar esos fragmentos de texto, 
 
 Aunque AHK siempre se ejecuta en la barra de tareas y desde allí puedes controlar el _script_, puede ser de utilidad contar con una interfaz gráfica. Empezaremos por una que llamaremos mínima.
 ```ahk
-global ScriptActive := true
-global MainGui, TestEdit, BtnToggle
+global scriptActive := true
+global mainGui, testEdit, toggleButton
 
-CreateGUI()
+createGui()
 
-CreateGUI() {
-    global MainGui, TestEdit, BtnToggle
-
-    MainGui := Gui("+AlwaysOnTop +Resize +MinimizeBox", "Prueba de script TPH AHK")
-    MainGui.SetFont("s10", "Segoe UI")
-
-    MainGui.AddText("w500", "Escribe en la caja para probar los atajos y abreviaturas.")
-
-    TestEdit := MainGui.AddEdit(
+createGui() {
+    global mainGui, testEdit, toggleButton
+    mainGui := Gui(
+        "+AlwaysOnTop +Resize +MinimizeBox",
+        "Prueba de script TPH AHK"
+    )
+    mainGui.SetFont("s10", "Segoe UI")
+    mainGui.AddText(
+        "w500",
+        "Escribe en la caja para probar los atajos y abreviaturas."
+    )
+    testEdit := mainGui.AddEdit(
         "w500 h180 WantTab",
         "Prueba aquí:`r`n`r`ntph`r`nulte.`r`n@n`r`n@p`r`n@t"
     )
-
-    BtnToggle := MainGui.AddButton("w500 h35", "Desactivar atajos")
-    BtnToggle.OnEvent("Click", (*) => ToggleScripts())
-
-    MainGui.Show("AutoSize Center")
+    toggleButton := mainGui.AddButton(
+        "w500 h35",
+        "Desactivar atajos"
+    )
+    toggleButton.OnEvent("Click", (*) => toggleScript())
+    mainGui.Show("AutoSize Center")
 }
 
-ToggleScripts() {
-    global ScriptActive, BtnToggle
-
-    ScriptActive := !ScriptActive
-
-    if ScriptActive {
+toggleScript() {
+    global scriptActive, toggleButton
+    scriptActive := !scriptActive
+    if scriptActive {
         Suspend false
-        BtnToggle.Text := "Desactivar atajos"
+        toggleButton.Text := "Desactivar atajos"
     } else {
         Suspend true
-        BtnToggle.Text := "Activar atajos"
-        EnsureAltUp()
+        toggleButton.Text := "Activar atajos"
     }
 }
 ```

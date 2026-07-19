@@ -32,13 +32,13 @@ Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de tran
 
 Ahora bien, ¿cómo puede un _script_ ayudarnos en nuestras tareas de humanidades digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de [macros](https://es.wikipedia.org/wiki/Macro), gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
 
-Esta herramienta cuenta con antecedentes en el ámbito de la traducción[^3] y nuestra propuesta pretende ser una solución basada en la _minimal computing_[^4].
+Esta herramienta cuenta con antecedentes en el ámbito de la traducción[^3] y nuestra propuesta pretende ser una solución inspirada en los principios de la _minimal computing_[^4].
 
 ## ¿Qué debes saber?
 
-Al tratarse de una lección centrada en la edición de textos con TEI, te recomendamos que antes hayas leído las dos lecciones de Nicolás Vaughan, tituladas [Introducción a la codificación de textos en TEI](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1), y la guía de Susanna Allés, titulada [Introducción a la Text Encoding Initiative](https://tthub.io/aprende/tutorial/introduccion-text-encoding-initiative). Si después quieres visualizar tus resultados en un entorno web, también puedes consultar la lección de Gabriel Calarco y Gimena del Río Riande sobre [CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean).
+Al tratarse de una lección centrada en la edición de textos con TEI, te recomendamos que antes hayas leído las dos lecciones de Nicolás Vaughan, tituladas [Introducción a la codificación de textos en TEI](/es/lecciones/introduccion-a-tei-1), y la guía de Susanna Allés, titulada [Introducción a la Text Encoding Initiative](https://tthub.io/aprende/tutorial/introduccion-text-encoding-initiative). Si después quieres visualizar tus resultados en un entorno web, también puedes consultar la lección de Gabriel Calarco y Gimena del Río Riande sobre [CETEIcean](/es/lecciones/publicar-archivos-tei-ceteicean).
 
-En particular, para la sección dedicada a las funciones, conviene que tengas algunas nociones básicas de programación. No necesitas experiencia avanzada: los fragmentos de código estarán acompañados de una explicación paso a paso. Sin embargo, te resultará útil entender qué es una función y cómo operan estructuras condicionales como `if`, puesto que AHK comparte algunos principios con otros lenguajes de programación, como Python o R. Para reforzar estos conceptos, te recomendamos consultar las lecciones de William J. Turkel y Adam Crymble, [Reutilización de código y modularidad en Python](https://programminghistorian.org/es/lecciones/reutilizacion-de-codigo-y-modularidad) y [De HTML a lista de palabras](https://programminghistorian.org/es/lecciones/de-html-a-lista-de-palabras-2).
+En particular, para la sección dedicada a las funciones, conviene que tengas algunas nociones básicas de programación. No necesitas experiencia avanzada: los fragmentos de código estarán acompañados de una explicación paso a paso. Sin embargo, te resultará útil entender qué es una función y cómo operan estructuras condicionales como `if`, puesto que AHK comparte algunos principios con otros lenguajes de programación, como Python o R. Para reforzar estos conceptos, te recomendamos consultar las lecciones de William J. Turkel y Adam Crymble, [Reutilización de código y modularidad en Python](/es/lecciones/reutilizacion-de-codigo-y-modularidad) y [De HTML a lista de palabras](/es/lecciones/de-html-a-lista-de-palabras-2).
 
 ## ¿Qué necesitas? Requerimientos
 
@@ -60,7 +60,7 @@ Lo primero que haremos será crear una carpeta en Windows. Puedes elegir la ubic
 
 2. Desde la carpeta `ahk_scripts`: para ello, busca la opción **Nuevo** y, después, **AutoHotkey script** o similar. A continuación, asigna un nombre al archivo y añade al comienzo la línea `#Requires AutoHotkey v2.0`.
 
-Nuestro _script_ se llamará `tph_script`. Utilizamos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^6].
+Nuestro _script_ se llamará `tph_script.ahk`. Utilizamos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^6].
 
 Una vez indicado que el archivo debe ejecutarse con AHK 2, aprenderás dos conceptos básicos para empezar a trabajar con este lenguaje: las _hotkeys_ y las _hotstrings_.
 
@@ -158,7 +158,7 @@ Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la fun
 Los comentarios deben ir precedidos de un punto y coma, como en el ejemplo anterior: `; LibreOffice Writer`.
 </div>
 
-Siempre podrás pausar o cerrar tu _script_ desde la barra de tareas de Windows.
+Siempre podrás pausar o cerrar tu _script_ desde el área de notificación de Windows.
 
 Pasemos ahora a las _hotstrings_. A diferencia de las _hotkeys_, no se activan mediante una combinación de teclas, sino al escribir una determinada secuencia de caracteres. Su uso es más localizado, pues básicamente se emplean para expandir abreviaturas, palabras o frases frecuentes mientras escribes.
 
@@ -197,7 +197,7 @@ El valor de `{Left N}` dependerá de la etiqueta de apertura; si cambias su nomb
 
 De este modo, puedes abrir y cerrar automáticamente una etiqueta en cualquier campo de texto y colocar el cursor dentro de ella para seguir escribiendo.
 
-También podríamos aprovechar una _hotstring_ para almacenar una plantilla básica para documentos TEI, como la propuesta por Nicolás Vaughan en [Introducción a la codificación de textos en TEI](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1), y crearla desde cero en pocos segundos. Para hacerlo correctamente, conviene que antes conozcas qué son y cómo trabajan las funciones en AHK.
+También podríamos aprovechar una _hotstring_ para almacenar una plantilla básica para documentos TEI, como la propuesta por Nicolás Vaughan en [Introducción a la codificación de textos en TEI](/es/lecciones/introduccion-a-tei-1), y crearla desde cero en pocos segundos. Para hacerlo correctamente, conviene que antes conozcas qué son y cómo trabajan las funciones en AHK.
 
 ## Funciones
 
@@ -228,9 +228,9 @@ isEditorActive() {
 
 #HotIf isEditorActive()
 ```
-La función `isEditorActive` devuelve un resultado verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, Visual Studio Code, el Bloc de notas o la interfaz del _script_ que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos posteriormente solo cuando una de esas ventanas esté activa.
+La función `isEditorActive()` devuelve un resultado verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, Visual Studio Code, el Bloc de notas o la interfaz del _script_ que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos posteriormente solo cuando una de esas ventanas esté activa.
 
-Esta restricción, una vez abierta, se aplica hasta el punto en el código donde aparezca nuevamente `#HotIf` sin condición. En el _script_ descargable estará aplicada tal y como está arriba. Como actividad exploratoria, te animamos a que busques dónde deja de aplicarse en el _script_ descargable de esta lección.
+Esta restricción, una vez activada, se aplica hasta el punto en el código donde aparezca nuevamente `#HotIf` sin condición. En el _script_ descargable estará aplicada tal y como está arriba. Como actividad exploratoria, te animamos a que busques dónde deja de aplicarse en el _script_ descargable de esta lección.
 
 Vamos a definir las _hotkeys_ de los etiquetadores de `<name>`, `<place>` y `<title>`:
 ```ahk
@@ -240,7 +240,7 @@ Vamos a definir las _hotkeys_ de los etiquetadores de `<name>`, `<place>` y `<ti
 ```
 Recuerda: lo que está a la izquierda de los dobles dos puntos (`::`) es nuestra combinación de teclas. A la derecha de estos, definimos la acción que deberá ejecutar AHK. En este caso, llamamos a la función `tagger()` con los valores `"<name>"` y `"</name>"`. El primero es la etiqueta de apertura y el segundo la de cierre.
 
-Antes de definir `tagger`, conviene introducir una función esencial para evitar un problema frecuente en AHK: que las teclas `Ctrl` o `Alt` permanezcan "presionadas" después de ejecutar la _hotkey_. Esto lo evitaremos con `releaseModifiers()`:
+Antes de definir `tagger()`, conviene introducir una función esencial para evitar un problema frecuente en AHK: que las teclas `Ctrl` o `Alt` permanezcan "presionadas" después de ejecutar la _hotkey_. Esto lo evitaremos con `releaseModifiers()`:
 ```ahk
 releaseModifiers() {
     ; Libera los modificadores antes de enviar otras combinaciones
@@ -249,9 +249,9 @@ releaseModifiers() {
     Send "{Alt Up}{Ctrl Up}"
 }
 ```
-Llamándola al inicio de nuestras funciones, se envía una instrucción mediante la cual se liberan las teclas `Ctrl` y `Alt` (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_) antes de simular otras combinaciones.
+Llamándola al inicio de nuestras funciones, primero, se espera a que el usuario suelte físicamente las teclas con `KeyWait`, luego, se envía una instrucción mediante la cual se liberan las teclas `Ctrl` y `Alt` (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_) antes de simular otras combinaciones.
 
-Ahora sí, veamos `tagger`. A diferencia de lo que hicimos en la sección anterior, aquí veremos la función en su totalidad y, posteriormente, la explicaremos en detalle:
+Ahora sí, veamos `tagger()`. A diferencia de lo que hicimos en la sección anterior, aquí veremos la función en su totalidad y, posteriormente, la explicaremos en detalle:
 ```ahk
 tagger(openTag, closeTag) {
     releaseModifiers()
@@ -330,10 +330,12 @@ convertSelection(mode) {
         SendText(selectedText)
 }
 ```
-En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasándolo a mayúsculas, mientras que en el segundo, aplica `SendText(StrLower(selectedText))` y lo convierte en minúsculas. Si no recibe ninguno de los anteriores, lo deja igual: `SendText(selectedText)`. Una vez transformado, restaura el portapapeles original y escribe el resultado con `SendText()`. Al inicio, con `releaseModifiers()`, nos aseguramos de liberar preventivamente las teclas `Alt` y `Ctrl`. En el descargable podrás llamar a estas funciones con `Alt + U` (convertir a mayúsculas) y `Alt + L`(convertir a minúsculas).
+En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasándolo a mayúsculas, mientras que en el segundo, aplica `SendText(StrLower(selectedText))` y lo convierte en minúsculas. Si no recibe ninguno de los anteriores, lo deja igual: `SendText(selectedText)`. Una vez copiado el texto seleccionado, restaura el portapapeles original, convierte a mayúsculas o minúsculas y, finalmente, introduce el resultado con `SendText()`. Al inicio, con `releaseModifiers()`, nos aseguramos de liberar preventivamente las teclas `Alt` y `Ctrl`. En el descargable podrás llamar a estas funciones con `Alt + U` (convertir a mayúsculas) y `Alt + L`(convertir a minúsculas).
 
-Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante `Alt + C`, que simplemente inserta un texto preparado en la interfaz en la que estemos trabajando:
+Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante `Alt + C`, la cual inserta un texto definido previamente en la ventana en la que estemos trabajando:
 ```ahk
+!c::insertNote("<note>[Comentario]</note>")
+
 insertNote(noteText) {
     releaseModifiers()
     SendText(noteText)
@@ -343,10 +345,6 @@ Como podrás observar, se trata de una misma lógica empleada en múltiples ocas
 ```ahk
 ::tei.xml::
 {
-    releaseModifiers()
-
-    savedClipboard := ClipboardAll()
-
     template := '
 (
 <?xml version="1.0" encoding="UTF-8"?>
@@ -384,10 +382,14 @@ Como podrás observar, se trata de una misma lógica empleada en múltiples ocas
 </TEI>
 )'
 
+    savedClipboard := ClipboardAll()
     A_Clipboard := template
-    ClipWait(1)
-    Send "^v"
-    Sleep 100
+
+    if ClipWait(1) {
+        Send "^v"
+        Sleep 100
+    }
+
     A_Clipboard := savedClipboard
 }
 ```
@@ -399,7 +401,7 @@ Esta lógica de trabajo se puede aplicar a casi cualquier etiqueta. Pensemos, po
 
 > Hay muchas formas de codificar un texto. Por ejemplo, podemos encerrar entre asteriscos simples los nombres propios de personas: \*Simón Bolívar\*, \*Soledad Acosta\*, etc. Y entre asteriscos dobles los de lugares: \*\*Bogotá\*\*, \*\*Framingham\*\*, etc. Podemos también usar guiones bajos para indicar los nombres de obras y de libros: \_La divina comedia\_, \_Cien años de soledad\_, etc. Estos signos sirven para etiquetar o marcar el texto que encierran, para así identificar en el texto un determinado contenido. Como es fácil de imaginar, las posibilidades de codificación son casi infinitas.
 
-Partiendo de este marcado sencillo, podemos transformarlo automáticamente con AHK mediante expresiones regulares presionando `Crtl + Alt + X`:
+Partiendo de este marcado sencillo, podemos transformarlo automáticamente con AHK mediante expresiones regulares presionando `Ctrl + Alt + X`:
 ```ahk
 convertSimpleMarkup() {
     releaseModifiers()
@@ -510,7 +512,7 @@ Para hacerlo, abre el compilador **Ahk2Exe** (Figura 1):
 
 {% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey.jpg" alt="Ventana del compilador Ahk2Exe con campos para seleccionar el archivo fuente, el archivo de destino, el icono personalizado y el botón de convertir a ejecutable" caption="Figura 1. Interfaz de usuario de Ahk2exe." %}
 
-Una vez allí, busca el _script_ que has creado en la carpeta (`tph_script`) y deja el resto de opciones predeterminadas, ya que suelen funcionar en la mayoría de computadores Windows. Además, tienes la posibilidad de añadir un icono al `.exe`; recuerda que debe estar en formato `.ico`.
+Una vez allí, busca el _script_ que has creado en la carpeta (`tph_script.ahk`) y deja el resto de opciones predeterminadas, ya que suelen funcionar en la mayoría de computadores Windows. Además, tienes la posibilidad de añadir un icono al `.exe`; recuerda que debe estar en formato `.ico`.
 
 ## Conclusiones
 
@@ -525,7 +527,7 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 ## Referencias
 
 - Campos Leza, Fernando. "Introducción a AutoHotkey para traductores". _La Linterna del Traductor_, 4 de abril de 2017. [https://lalinternadeltraductor.org/n14/autohotkey.html](https://lalinternadeltraductor.org/n14/autohotkey.html).
-- Gray, Steve, Chris Mallett, AutoIt Team et al. "Hotkeys - Definition & Usage AutoHotkey v2". _AutoHotkey v2 Documentation_, 2014-. [https://www.autohotkey.com/docs/v2/Hotkeys.htm](https://www.autohotkey.com/docs/v2/Hotkeys.htm).
+- Gray, Steve, Chris Mallett, AutoIt Team et al. "Hotkeys - Definition & Usage AutoHotkey v2". _AutoHotkey v2 Documentation_, 2014–. [https://www.autohotkey.com/docs/v2/Hotkeys.htm](https://www.autohotkey.com/docs/v2/Hotkeys.htm).
 - Instituto de Investigaciones Filológicas de la Universidad Nacional Autónoma de México. "Diccionario de abreviaturas novohispanas". _Abreviaturas castellanas_, 2 de noviembre de 2024. [https://www.iifilologicas.unam.mx/dicabenovo/](https://www.iifilologicas.unam.mx/dicabenovo/).
 - Río Riande, Gimena del. "Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto". _Publicaciones de la Asociación Argentina de Humanidades Digitales_ 3 (noviembre de 2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).
 - Río Riande, Gimena del, Gabriel Calarco, Roy Youdale, y Patience Shell. "Minimal Computing 101". _Sobre Minimal Computing_, 8 de agosto de 2025. [https://hdlab.space/minimalbook/sobre_minimalcomputing.html](https://hdlab.space/minimalbook/sobre_minimalcomputing.html).

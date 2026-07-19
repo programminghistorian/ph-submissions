@@ -178,6 +178,8 @@ isEditorActive() {
 
 releaseModifiers() {
     ; Libera los modificadores antes de enviar otras combinaciones
+    KeyWait "Alt"
+    KeyWait "Ctrl"
     Send "{Alt Up}{Ctrl Up}"
 }
 

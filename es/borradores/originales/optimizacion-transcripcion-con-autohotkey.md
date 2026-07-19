@@ -228,7 +228,7 @@ isEditorActive() {
 
 #HotIf isEditorActive()
 ```
-La función `isEditorActive()` devuelve un resultado verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, Visual Studio Code, el Bloc de notas o la interfaz del _script_ que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos posteriormente solo cuando una de esas ventanas esté activa.
+La función `isEditorActive()` devuelve un resultado verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, Visual Studio Code, el Bloc de notas (si usas la versión moderna, desactiva el autocorrector, ya que puede entrar en conflicto con los _scripts_)  o la interfaz del _script_ que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos posteriormente solo cuando una de esas ventanas esté activa.
 
 Esta restricción, una vez activada, se aplica hasta el punto en el código donde aparezca nuevamente `#HotIf` sin condición. En el _script_ descargable estará aplicada tal y como está arriba. Como actividad exploratoria, te animamos a que busques dónde deja de aplicarse en el _script_ descargable de esta lección.
 
@@ -500,7 +500,7 @@ Con `testEdit` podemos añadir una caja de texto, que será donde podamos hacer 
 
 Configuramos un botón para activar y desactivar los atajos con `toggleButton` que, al pulsarlo, ejecuta `toggleScript()`, el cual activa o suspende los atajos. En último lugar, hemos configurado la ventana para que ajuste su tamaño al contenido (`AutoSize`) y que aparezca centrada en pantalla (`Center`).
 
-Te dejamos a continuación el _script_ completo para que puedas modificarlo como quieras: [`tph_script.ahk`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.ahk).
+Te dejamos a continuación el _script_ completo para que puedas modificarlo como quieras: [`tph_script.ahk`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.ahk). También tienes el ejecutable, en caso de que todavía no tengas instalado AHK: [`tph_script.exe`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.exe).
 
 ## Compilación a un ejecutable
 

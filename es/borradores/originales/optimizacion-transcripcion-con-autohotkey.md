@@ -221,14 +221,16 @@ La primera línea indica que el archivo requiere AHK 2. La segunda previene que 
 Anteriormente indicamos que las _hotkeys_ podían utilizarse en cualquier campo de texto. Sin embargo, no siempre queremos que se ejecuten en todos los programas de nuestro computador. Para limitar su funcionamiento, hemos desarrollado una función que comprueba si la ventana activa corresponde a uno de los editores autorizados o a la interfaz de prueba, de manera que no interfiera allí donde no queramos usarlas:
 ```ahk
 isEditorActive() {
-    return WinActive(
-        "ahk_exe (soffice\.bin|notepad\+\+\.exe|Code\.exe|notepad\.exe)"
-    ) || WinActive("^Prueba de script TPH AHK$")
+    return WinActive("ahk_exe soffice.bin")
+        || WinActive("ahk_exe notepad++.exe")
+        || WinActive("ahk_exe notepad.exe")
+        || WinActive("ahk_class Notepad")
+        || WinActive("^Prueba de script TPH AHK$")
 }
 
 #HotIf isEditorActive()
 ```
-La función `isEditorActive()` devuelve un resultado verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, Visual Studio Code, el Bloc de notas (si usas la versión moderna, desactiva el autocorrector, ya que puede entrar en conflicto con los _scripts_)  o la interfaz del _script_ que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos posteriormente solo cuando una de esas ventanas esté activa.
+La función `isEditorActive()` devuelve un resultado verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, el Bloc de notas (si usas la versión moderna, desactiva el autocorrector, ya que puede entrar en conflicto con los _scripts_)  o la interfaz del _script_ que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos posteriormente solo cuando una de esas ventanas esté activa.
 
 Esta restricción, una vez activada, se aplica hasta el punto en el código donde aparezca nuevamente `#HotIf` sin condición. En el _script_ descargable estará aplicada tal y como está arriba. Como actividad exploratoria, te animamos a que busques dónde deja de aplicarse en el _script_ descargable de esta lección.
 

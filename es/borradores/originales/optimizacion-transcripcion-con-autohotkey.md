@@ -230,7 +230,7 @@ isEditorActive() {
 
 #HotIf isEditorActive()
 ```
-La función `isEditorActive()` devuelve un resultado verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, el Bloc de notas (si usas la versión moderna, desactiva el autocorrector, ya que puede entrar en conflicto con los _scripts_)  o la interfaz del _script_ que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos posteriormente solo cuando una de esas ventanas esté activa.
+La función `isEditorActive()` devuelve un resultado verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, el Bloc de notas (si usas la versión moderna, desactiva el autocorrector, ya que puede entrar en conflicto con los _scripts_) o la interfaz del _script_ que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos posteriormente solo cuando una de esas ventanas esté activa.
 
 Esta restricción, una vez activada, se aplica hasta el punto en el código donde aparezca nuevamente `#HotIf` sin condición. En el _script_ descargable estará aplicada tal y como está arriba. Como actividad exploratoria, te animamos a que busques dónde deja de aplicarse en el _script_ descargable de esta lección.
 
@@ -278,7 +278,7 @@ tagger(openTag, closeTag) {
     SendText(openTag . selectedText . closeTag)
 }
 ```
-Con esta función podemos seleccionar cualquier texto y escribir alrededor de él las etiquetas que queramos, dependiendo de la combinación de teclas que usemos. En el ejemplo, si pulsamos `Alt + n` llamaremos a la función con estas etiquetas:
+Con esta función podemos seleccionar cualquier texto y escribir alrededor de él las etiquetas que queramos, dependiendo de la combinación de teclas que usemos. En el ejemplo, si pulsamos `Alt + N` llamaremos a la función con estas etiquetas:
 ```ahk
 tagger("<name>", "</name>")
 ```
@@ -336,8 +336,6 @@ En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasán
 
 Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante `Alt + C`, la cual inserta un texto definido previamente en la ventana en la que estemos trabajando:
 ```ahk
-!c::insertNote("<note>[Comentario]</note>")
-
 insertNote(noteText) {
     releaseModifiers()
     SendText(noteText)
@@ -502,7 +500,7 @@ Con `testEdit` podemos añadir una caja de texto, que será donde podamos hacer 
 
 Configuramos un botón para activar y desactivar los atajos con `toggleButton` que, al pulsarlo, ejecuta `toggleScript()`, el cual activa o suspende los atajos. En último lugar, hemos configurado la ventana para que ajuste su tamaño al contenido (`AutoSize`) y que aparezca centrada en pantalla (`Center`).
 
-Te dejamos a continuación el _script_ completo para que puedas modificarlo como quieras: [`tph_script.ahk`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.ahk). También tienes el ejecutable, en caso de que todavía no tengas instalado AHK: [`tph_script.exe`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.exe).
+Te dejamos a continuación el _script_ completo para que puedas modificarlo como quieras: [`tph_script.ahk`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.ahk).
 
 ## Compilación a un ejecutable
 
@@ -512,9 +510,11 @@ AHK incorpora un compilador que permite convertir tus _scripts_ `.ahk` a `.exe`.
 
 Para hacerlo, abre el compilador **Ahk2Exe** (Figura 1):
 
-{% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey.jpg" alt="Ventana del compilador Ahk2Exe con campos para seleccionar el archivo fuente, el archivo de destino, el icono personalizado y el botón de convertir a ejecutable" caption="Figura 1. Interfaz de usuario de Ahk2exe." %}
+{% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey.jpg" alt="Ventana del compilador Ahk2Exe con campos para seleccionar el archivo fuente, el archivo de destino, el icono personalizado y el botón de convertir a ejecutable" caption="Figura 1. Interfaz de usuario de Ahk2Exe." %}
 
 Una vez allí, busca el _script_ que has creado en la carpeta (`tph_script.ahk`) y deja el resto de opciones predeterminadas, ya que suelen funcionar en la mayoría de computadores Windows. Además, tienes la posibilidad de añadir un icono al `.exe`; recuerda que debe estar en formato `.ico`.
+
+También puedes descargar el ejecutable, en caso de que todavía no tengas instalado AHK: [`tph_script.exe`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.exe).
 
 ## Conclusiones
 

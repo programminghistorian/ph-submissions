@@ -60,11 +60,7 @@ Lo primero que haremos será crear una carpeta en Windows. Puedes elegir la ubic
 
 2. Desde la carpeta `ahk_scripts`: para ello, busca la opción **Nuevo** y, después, **AutoHotkey script** o similar. A continuación, asigna un nombre al archivo y añade al comienzo la línea `#Requires AutoHotkey v2.0`.
 
-Nuestro _script_ se llamará `tph_script`.
-
-<div class="alert alert-warning">
-Utilizamos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^6].
-</div>
+Nuestro _script_ se llamará `tph_script`. Utilizamos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^6].
 
 Una vez indicado que el archivo debe ejecutarse con AHK 2, aprenderás dos conceptos básicos para empezar a trabajar con este lenguaje: las _hotkeys_ y las _hotstrings_.
 

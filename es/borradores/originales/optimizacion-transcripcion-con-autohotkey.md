@@ -512,7 +512,7 @@ AHK incorpora un compilador que permite convertir tus _scripts_ `.ahk` a `.exe`.
 
 Para hacerlo, abre el compilador **Ahk2Exe** (Figura 1):
 
-{% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey.jpg" alt="Ventana del compilador Ahk2Exe con campos para seleccionar el archivo fuente, el archivo de destino, el icono personalizado y el botón de convertir a ejecutable" caption="Figura 1. Interfaz de usuario de Ahk2Exe." %}
+{% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey-01.jpg" alt="Ventana del compilador Ahk2Exe con campos para seleccionar el archivo fuente, el archivo de destino, el icono personalizado y el botón de convertir a ejecutable" caption="Figura 1. Interfaz de usuario de Ahk2Exe." %}
 
 Una vez allí, busca el _script_ que has creado en la carpeta (`tph_script.ahk`) y deja el resto de opciones predeterminadas, ya que suelen funcionar en la mayoría de computadores Windows. Además, tienes la posibilidad de añadir un icono al `.exe`; recuerda que debe estar en formato `.ico`.
 

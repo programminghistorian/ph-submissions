@@ -54,7 +54,7 @@ Dans le cadre de ce tutoriel, nous mettons à disposition plusieurs fichiers sur
 
 - Le jeux de données complet et nettoyé (700 Mo) : La procédure de nettoyage de données est renseignée [ici (written in English)](https://css-polytechnique.github.io/css-ipp-materials/pages/techy-notes.html#curations-of-the-original-dataset).
 - Un extrait stratitifié du jeu de données (30 Mo) : Nous avons tiré 500 lignes par années; en tout, ce jeu de données contient 6500 lignes.
-- Un ensemble de jeux de plongements : Nous proposons 9 jeux de plongements pour 3 modèles différents ([Alibaba-NLP/gte-multilingual-base](https://huggingface.co/Alibaba-NLP/gte-multilingual-base), [sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2), [Qwen/Qwen3-0.6B](https://huggingface.co/Qwen/Qwen3-0.6B)), deux langues (anglais et français) et deux techniques de génération différentes (pipeline HuggingFace ou SBERT). Ces jeux de plongements permettent d'étudier rapidement l'impact du changement de modèle sur les résultats du topic model.
+- Un ensemble de jeux de plongements : Nous proposons 9 jeux de plongements pour 3 modèles différents ([Alibaba-NLP/gte-multilingual-base](https://huggingface.co/Alibaba-NLP/gte-multilingual-base), [sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2), [Qwen/Qwen3-0.6B](https://huggingface.co/Qwen/Qwen3-0.6B)), deux langues (anglais et français) et deux techniques de génération différentes (pipeline HuggingFace ou SBERT). Ces jeux de plongements permettent d'étudier rapidement l'impact du changement de modèle sur les résultats du topic model. Pour savoir comment les utiliser, voir la section Sauvegarder les données. Vous pouvez télécharger tous les plongements (200Mo), ou un jeu à la fois (30Mo/fichier).
 
 <div class="alert alert-info">
 Ces données ont été rendues disponibles dans le cadre de la publication de ce tutoriel <a href='https://css-polytechnique.github.io/css-ipp-materials/pages/bertopic-tutorial.html'>The General Inquirer in the time of LLMs: a BERTopic tutorial</a> en anglais, dont le présent tutoriel est une adaptation.
@@ -102,7 +102,7 @@ Dans ce tutoriel nous présentons l'algorithme dans les grandes lignes, puis nou
 
 La pipeline de BERTopic est relativement simple. En entrée, on renseigne un certain nombre de documents et en sortie, on obtient un certains nombre de groupes (les _topics_) définis par des documents constitutifs du groupe, ainsi que des mots clefs spécifiques. 
 
-{% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-01.jpg" alt="Visual description of figure image" caption="Figure 1. Les entrées sorties de la pipeline BERTopic." %}
+{% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-01.png" alt="Visual description of figure image" caption="Figure 1. Les entrées sorties de la pipeline BERTopic." %}
 
 La Tableau 1 est un exemple de résultat sous forme de tableau récapitulatif; la Tableau 1 est la représentation visuelle de ces _topics_, leur taille et agencement les uns par rapport aux autres. Dans cet exemple nous avons donné au modèle des résumés de thèses défendues en France. Le résultat du topic model permet de repérer les grandes disciplines comme la Physique, la Biologie ou les Sciences Politiques. 
 
@@ -120,9 +120,13 @@ La Tableau 1 est un exemple de résultat sous forme de tableau récapitulatif; l
 
 </div>
 
-**Tableau 1**: Topic information of the French theses after tuning the topic model.
+**Tableau 1**: Informations des _topics_ retournés par BERTopic pour le corpus des thèses défendues en France.
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-02.jpg" alt="Visual description of figure image" caption="Figure 2. Représentation 2D d'un topic model." %}
+
+<div class="alert alert-info">
+Notons que toutes les sorties de BERTopic (graphes et tableaux) sont en anglais. La langue n'est pas paramètrable.
+</div>
 
 Dans cette section, nous nous attardons quelques temps pour comprendre comment sont produits les _topics_. 
 
@@ -201,7 +205,7 @@ L'étape de prétraitement des textes est cruciale pour obtenir de bons résulta
 
 ### Créer son premier topic model 
 
-Pour commencer, chargons notre jeu de données: 
+Pour commencer, nous devons télécharger les données du dépot [Zenodo](https://zenodo.org/records/21452752) (fichier de 30 Mo). Une fois téléchargé nous chargons le jeu de données: 
 
 ```python
 import pandas as pd
@@ -267,7 +271,7 @@ topic_model.get_topic_info()
 
 </div>
 
-**Tableau 2**: Topic information of the French theses after tuning the topic model 
+**Tableau 2**: Informations des _topics_ retournés par BERTopic pour le corpus des thèses défendues en France.
 
 Dans la Tableau 2, la colonne représentation renseigne les mots clefs identifiés pour chaque thème. On observe que les mots clefs du groupe bruit (groupe n°-1) ne donnent aucune information. Pour les autres sujets, on retrouve une suite de mots cohérents, par exemple: 
 
@@ -394,7 +398,7 @@ avec ces paramètres on obtient les résultats suivant:
 
 </div>
 
-**Tableau 3**: Topic information of the French theses after tuning the topic model.
+**Tableau 3**: Informations des _topics_ retournés par BERTopic pour le corpus des thèses défendues en France.
 
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-11.png" alt="Visual description of figure image" caption="Figure 11. Projection 2D des documents et des thèmes identifiés en utilisant `n_neighbors=70` et `min_cluster_size=70`." %}
@@ -434,7 +438,7 @@ Puis pour recharger le modèle il suffit d'utiliser la commande suivante :
 topic_model = BERTopic.load("./bertopic-default")
 ```
 
-Cette sauvegarde ne conserve pas pas les plongements, alors que c'est l'étape de calcul la plus lourde. Pour gagner en reproductibilité et en rapidité, vous pouvez générer vos plongements à en amont [(voir code)](https://css-polytechnique.github.io/css-ipp-materials/pages/bertopic-tutorial.html#precompute-your-embeddings) pour les utiliser dans le code. Les commandes deviennent:
+Cette sauvegarde ne conserve pas pas les plongements, ac'est l'étalors que pe de calcul la plus lourde. Pour gagner en reproductibilité et en rapidité, vous pouvez générer vos plongements à en amont [(voir code)](https://css-polytechnique.github.io/css-ipp-materials/pages/bertopic-tutorial.html#precompute-your-embeddings) pour les utiliser dans le code. Les commandes deviennent:
 
 ```python 
 docs = ....
@@ -447,6 +451,8 @@ topics, probabilities = topic_model.transform(documents=docs, embeddings=embeddi
 
 topic_model.visualize_documents(docs = docs,embeddings = embeddings)
 ```
+
+Vous pouvez faire des tests grâce à des jeux de données mis à disposition sur [Zenodo](https://zenodo.org/records/21452752). Chaque jeu de plongement pèse 60-80 Mo (~30 Mo compressé) tandis que l'ensemble des jeux de plongements pèse 500 Mo (230 Mo compressé).
 
 ## Conclusion
 

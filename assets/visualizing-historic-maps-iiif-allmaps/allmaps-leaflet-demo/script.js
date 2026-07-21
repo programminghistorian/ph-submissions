@@ -13,7 +13,7 @@ const map = L.map("map", {
 let tileLayerDetails = {
   tileSize: 512,
   zoomOffset: -1,
-  minZoom: 14,
+  minZoom: 7,
   maxZoom: 24,
   crossOrigin: true,
 };

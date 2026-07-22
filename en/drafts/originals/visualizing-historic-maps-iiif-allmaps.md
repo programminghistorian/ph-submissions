@@ -1267,11 +1267,6 @@ And if you want to have fun with georeferencing, check out
 postcards, or [Allmaps Arcade](https://arcade.allmaps.org), a game for placing
 old maps on the globe.
 
-## About the Authors
-
-[Stephen Appel](https://srappel.github.io) is the Geospatial Information Librarian at the American Geographical Society Library at the University of Wisconsin Milwaukee Libraries; Milwaukee, Wisconsin, United States.
-
-[Ian Spangler](https://itspangler.com/) is Associate Curator of Digital & Participatory Geography at the Norman B. Leventhal Map & Education Center at the Boston Public Library and teaches a Geospatial Humanities course at Tufts University; Boston, Massachusetts, United States.
 
 ## Endnotes
 

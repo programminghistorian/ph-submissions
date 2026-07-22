@@ -657,11 +657,21 @@ After installing a new tool, you may need to restart your terminal before the co
 
 ### Download the lesson files
 
-Before continuing, download the sample files supplied with this lesson and unzip them in
-the directory where you will work through the command-line examples. In the lesson
-preview, these files are available in the
-`visualizing-historic-maps-iiif-allmaps` assets directory.
-Once the lesson is published, use the lesson's download link to retrieve the zipped files.
+Before continuing, download the sample data package supplied with this lesson:
+[data.zip](/assets/visualizing-historic-maps-iiif-allmaps/data.zip).
+
+Unzip `data.zip` in the directory where you will work through the command-line examples.
+The package contains:
+
+* `data/annotation.json`, a frozen copy of the Allmaps georeference annotation for
+  the Paris map
+* `data/voiries1300_2009.json`, the original Paris streets GeoJSON derived from
+  the ALPAGE source
+* `data/voiries1300_2009_clean.json`, the cleaned Paris streets GeoJSON used in
+  the lesson walkthrough
+* `data/voiries1300_2009_clean.geometries.ndjson`, the prepared geometry stream
+  used by the Allmaps CLI
+* `data/allmaps-leaflet-demo/`, the Leaflet example files used later in the lesson
 
 The examples below assume that you have placed the unzipped files in a local folder named
 `data`, alongside any files you create while following the lesson. For example, your
@@ -677,6 +687,8 @@ folder under your WSL home directory before continuing:
 
 ```bash
 cp /mnt/c/Users/YOUR-WINDOWS-USERNAME/Downloads/data.zip ~/YOUR-WORKING-DIR
+cd ~/YOUR-WORKING-DIR
+unzip data.zip
 ```
 
 <!-- Begin Part 3.01 -->
@@ -1125,7 +1137,7 @@ The Allmaps Leaflet plugin, described in greater detail in [this Observable Note
 
 ### Copy the template
 
-The `data/allmaps-leaflet-demo.zip` file in this lesson package contains three files
+The `data/allmaps-leaflet-demo` folder in this lesson package contains three files
 that provide a minimal working demo of the Allmaps Leaflet plugin in a simple Leaflet web
 map. Those files are:
 
@@ -1133,11 +1145,11 @@ map. Those files are:
 - `script.js`: the necessary JavaScript for creating a Leaflet map with two layers, a base map and an Allmaps overlay
 - `style.css`: the CSS that gives the page and map container their size and layout
 
-Unzip `data/allmaps-leaflet-demo.zip`, then open the `data/allmaps-leaflet-demo` folder
-in a text editor like VS Code. If need be, install the "Live Server" extension by
-Ritwick Dey, which allows you to view the web map as local files in a web browser. You
-can install the extension by searching "Live Server" in the "Extensions" tab (the little
-building blocks) of VS Code.
+Open the `data/allmaps-leaflet-demo` folder in a text editor like VS Code.
+If need be, install the "Live Server" extension by Ritwick Dey, which allows you to view
+the web map as local files in a web browser.
+You can install the extension by searching "Live Server" in the "Extensions" tab (the
+little building blocks) of VS Code.
 
 If you click "Go Live" in the bottom right-hand corner of VS Code, the Leaflet web map should open in your default web browser.
 

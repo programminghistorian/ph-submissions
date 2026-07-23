@@ -519,7 +519,7 @@ Il est évident que cette méthode ne peut pas fonctionner sur chaque texte, ét
 
 Nous allons désormais procéder à l’étiquetage morpho-syntaxique de nos phrases en utilisant spaCy et Stanza.
 
-Le package NLTK ne permet pas d'effectuer l’étiquetage morpho-syntaxique de langues autre que l’anglais, mais il est possible d’entraîner votre propre modèle en utilisant un corpus étiqueté dans la langue de votre choix. La documentation concernant l’étiqueteur et comment en développer un vous-même est disponible [ici](https://perma.cc/XZ9M-7UR4).
+Le package NLTK ne permet pas d'effectuer l’étiquetage morpho-syntaxique de langues autres que l’anglais, mais il est possible d’entraîner votre propre modèle en utilisant un corpus étiqueté dans la langue de votre choix. La documentation concernant l’étiqueteur et comment en développer un vous-même est disponible [ici](https://perma.cc/XZ9M-7UR4).
 
 #### L’étiquetage morpho-syntaxique avec spaCy
 
@@ -527,7 +527,7 @@ Le package NLTK ne permet pas d'effectuer l’étiquetage morpho-syntaxique de l
 
 ``` python
 # télécharger le modèle de langage russe depuis spaCy
-#note: si vous travaillez depuis un Jupyter notebook, rajout "!" au début de la ligne d'installation
+#note: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de la ligne d'installation
 python -m spacy download ru_core_news_sm
 ```
 ``` python
@@ -609,7 +609,7 @@ amie NOUN
 ? PUNCT
 ```
 
-Pour le texte multilingue, nous pouvons utiliser les mots que nous avons généré au préalable pour étiqueter chaque langue séparément avant de recombiner les mots pour former une phrase complète.
+Pour le texte multilingue, nous pouvons utiliser les mots que nous avons générés au préalable pour étiqueter chaque langue séparément avant de recombiner les mots pour former une phrase complète.
 
 Ci-dessous, nous divisons notre phrase en mots russe et français comme nous l’avons fait auparavant, mais nous gardons cette fois-ci la ponctuation. Nous accomplissons ceci en rajoutant les signes de ponctuation à la dernière liste à laquelle nous avons rajouté un mot : ceci préserve le bon emplacement de chaque signe de ponctuation (la ponctuation sera ajoutée à la même liste que le mot qui l’a précédé). Ce procédé sera utile à quiconque souhaite pouvoir préserver la ponctuation originelle du texte dans leur analyse. Pour y parvenir, nous avons besoin de créer une nouvelle variable – `last_appended_list` – pour pouvoir vérifier quelle est la dernière liste à laquelle nous avons rajouté des données. Par exemple, si un point suit le mot bonjour, alors notre variable `last_appended_list` devrait montrer que la dernière liste à laquelle nous avons ajouté un mot est `latin_words`. Nous pouvons donc ajouter le point à la liste `latin_words` où il suivra correctement le mot qui l’a précédé.
 
@@ -621,7 +621,7 @@ latin_words_punct = []
 # créer une chaîne de caractères vide pour savoir quelle est la dernière liste à laquelle des données ont été ajoutées
 last_appended_list = ''
 
-# itérer sur chaque mot et les rajouter aux listes en fonction de si un caractère cyrillique est détecté
+# itérer sur chaque mot et les rajouter aux listes si un caractère cyrillique est détecté
 for word in tokenized_sent:
   if regex.search(r'\p{IsCyrillic}', word):
     cyrillic_words_punct.append(word)

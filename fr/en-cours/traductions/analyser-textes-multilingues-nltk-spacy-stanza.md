@@ -411,7 +411,7 @@ Résultats:
 {'language': 'ru', 'score': 0.7142842829707301}
 ```
 
-Comme attendu, nous obtenons des résultats similaires avec spaCy. Notez que le score de certitude (imprimé après l’abréviation signalant la langue) et bien plus bas pour notre phrase multilingue.
+Comme attendu, nous obtenons des résultats similaires avec spaCy. Notez que le score de certitude (imprimé après l’abréviation signalant la langue) est bien plus bas pour notre phrase multilingue.
 
 Nous allons maintenant répéter cette opération avec Stanza, qui dispose d’une fonction d'identification de langue intégrée.
 
@@ -451,7 +451,7 @@ from nltk.tokenize import wordpunct_tokenize
 tokenized_sent = wordpunct_tokenize(multi_sent)
 ```
 
-Ensuite, nous allons examiner chaque mot pour voir s’il contient des caractères [cyrilliques](https://perma.cc/7FQY-LMHK) et diviser les tokens de mots en deux chaînes de caractères : une contenant les mots écrits en cyrillique et une contenant ceux écrits avec l’alphabet latin. Pour nous simplifier la tâche, nous ne prendrons pas en compte les symboles de ponctuation dans cet exemple. Nous utilisons ensuite une expression régulière (une séquence de caractères qui indique les caractères à identifier dans un texte) pour détecter les caractères cyrilliques. (Pour en apprendre plus sur les expressions régulières, [cette leçon du _Programming Historian_](https://programminghistorian.org/en/lessons/understanding-regular-expressions) est une bonne ressource).
+Ensuite, nous allons examiner chaque mot pour voir s’il contient des caractères [cyrilliques](https://perma.cc/7FQY-LMHK) et diviser les tokens de mots en deux chaînes de caractères : une contenant les mots écrits en cyrillique et une contenant ceux écrits avec l’alphabet latin. Pour nous simplifier la tâche, nous ne prendrons pas en compte les symboles de ponctuation dans cet exemple. Nous utilisons ensuite une expression régulière (une séquence de caractères qui indique les caractères à identifier dans un texte) pour détecter les caractères cyrilliques. (Pour en apprendre plus sur les expressions régulières, [cette leçon de _Programming Historian_](https://programminghistorian.org/en/lessons/understanding-regular-expressions) est une bonne ressource).
 
 
 ``` python
@@ -465,7 +465,7 @@ cyrillic_words = []
 latin_words = []
 ```
 
-Nous allons ensuite itérer sur chaque mot de notre phrase avec RegEx pour détecter les caractères cyrilliques. Si des caractères cyrilliques sont identifiés, nous rajoutons le mot auquel ils appartiennent à notre liste `cyrillic_words` ; sinon, nous rajoutons le mot à la liste `latin_words`. Si un de nos mots tokénisés consiste uniquement de ponctuation, nous continuons sans le rajouter à aucune des deux listes. Nous pouvons ensuite imprimer les listes pour voir ce qui y a été ajouté.
+Nous allons ensuite itérer sur chaque mot de notre phrase avec RegEx pour détecter les caractères cyrilliques. Si des caractères cyrilliques sont identifiés, nous rajoutons le mot auquel ils appartiennent à notre liste `cyrillic_words` ; sinon, nous rajoutons le mot à la liste `latin_words`. Si un de nos mots tokénisés est composé uniquement de ponctuation, nous continuons sans le rajouter à aucune des deux listes. Nous pouvons ensuite imprimer les listes pour voir ce qui y a été ajouté.
 
 ``` python
 for word in tokenized_sent:
@@ -492,7 +492,7 @@ Résultats:
 Enfin, nous pouvons transformer nos listes en chaînes de caractères, ce qui nous permettra d’y appliquer l’algorithme `TextCat`.
 
 ``` python
-# rejoindre les listes en chaînes de caractères, où chaque mot est séparé par un espace (' ')
+# rejoindre les listes en chaînes de caractères, où chaque mot est séparé par une espace (' ')
 cyrillic_only_list = ' '.join(cyrillic_words)
 latin_only_list = ' '.join(latin_words)
 

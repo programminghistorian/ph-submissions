@@ -217,18 +217,18 @@ L’entièreté du texte contenu dans la variable `cleaned_war_and_peace` est d�
 for sent in nltk_sent_tokenized:
   print(sent)
 ```
-Le fait de tokéniser le texte en phrases nous permet d’analyser l’extrait avec plus grande précision. Nous allons imprimer trois phrases avec lesquelles nous travaillerons : une entièrement en russe, une entièrement en français, et une qui contient les deux langues. Les langues utilisées dans les phrases deviendront importantes lorsque nous y appliquerons différentes méthodes au fur et à mesure de la leçon.
+Le fait de tokéniser le texte en phrases nous permet d’analyser l’extrait avec une plus grande précision. Nous allons imprimer trois phrases avec lesquelles nous travaillerons : une entièrement en russe, une entièrement en français, et une qui contient les deux langues. Les langues utilisées dans les phrases deviendront importantes lorsque nous y appliquerons différentes méthodes au fur et à mesure de la leçon.
 
 ``` python
-# imprimer la phrase russe en 5ième position de l'index de notre liste
+# imprimer la phrase russe en 5e position de l'index de notre liste
 rus_sent = nltk_sent_tokenized[5]
 print('Russian: ' + rus_sent)
 
-# imprimer la phrase française en 13ième position
+# imprimer la phrase française en 13e position
 fre_sent = nltk_sent_tokenized[13]
 print('French: ' + fre_sent)
 
-# imprimer la phrase en français et russe en 4ième position
+# imprimer la phrase en français et russe en 4e position
 multi_sent = nltk_sent_tokenized[4]
 print('Multilang: ' + multi_sent)
 ```
@@ -245,7 +245,7 @@ Nous allons maintenant répéter cette tokénisation de phrases avec spaCy et r�
 
 ``` python
 # télécharger le tokéniseur de phrases multilingue
-#note: si vous travaillez depuis un Jupyter notebook, rajout "!" au début de la ligne d'installation
+#note: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de la ligne d'installation
 python -m spacy download xx_sent_ud_sm
 ```
 ``` python

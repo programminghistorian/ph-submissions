@@ -628,7 +628,7 @@ for word in tokenized_sent:
     # mettre la variable à jour pour tenir compte de la dernière liste à laquelle des données ont été ajoutées
     last_appended_list = 'cyr'
   else:
-    # joindre les symboles de ponctuation à la dernière liste à laquelle un mot a été rajoutée
+    # joindre les symboles de ponctuation à la dernière liste à laquelle un mot a été rajouté
     if word in punctuation:
         if last_appended_list == 'cyr':
             cyrillic_words_punct.append(word)
@@ -648,7 +648,7 @@ Résultats:
 ['Je', 'vois', 'que', 'je', 'vous', 'fais', 'peur', ',']
 ```
 
-Nous pouvons ensuite combiner ces listes en chaînes de caractères, ce qui nous permettra d’appliquer l’algorithme de détection de langue. Nous utilisons une expression régulière pour enlever l’espace devant chaque point de ponctuation (cette espace a été créé lorsque nous avons tokénisé la phrase en mots). Ceci préserve la ponctuation telle qu’elle était présente dans la phrase d’origine.
+Nous pouvons ensuite combiner ces listes en chaînes de caractères, ce qui nous permettra d’appliquer l’algorithme de détection de langue. Nous utilisons une expression régulière pour enlever l’espace devant chaque point de ponctuation (cette espace a été créée lorsque nous avons tokénisé la phrase en mots). Ceci préserve la ponctuation telle qu’elle était présente dans la phrase d’origine.
 
 ``` python
 # joindre les listes en chaînes de caractères
@@ -708,7 +708,7 @@ peur NOUN
 
 #### L’étiquetage morpho-syntaxique avec Stanza
 
-Faisons maintenant de même avec Stanza. Commençons par le russe : il faut charger le pipeline russe, l’appliquer à notre phrase, et imprimer les étiquettes morpho-syntaxique détectées par Stanza.
+Faisons maintenant de même avec Stanza. Commençons par le russe : il faut charger le pipeline russe, l’appliquer à notre phrase, et imprimer les étiquettes morpho-syntaxiques détectées par Stanza.
 
 ``` python
 # charger le pipeline et l'appliquer à notre phrase en spécifiant la langue comme étant le russe ('ru')
@@ -784,7 +784,7 @@ word: amie	upos: NOUN
 word: ?	upos: PUNCT
 ```
 
-Pour l’analyse multilingue, le pipeline multilingue de Stanza nous permet d’appliquer une approche plus simple qu’avec spaCy, étant donné qu’elle peut produire les étiquettes morpho-syntaxique en utilisant la même syntaxe que les exemples précédents. Il nous faut importer le pipeline multilingue, l’appliquer à notre texte, et ensuite imprimer les résultats.
+Pour l’analyse multilingue, le pipeline multilingue de Stanza nous permet d’appliquer une approche plus simple qu’avec spaCy, étant donné qu’elle peut produire les étiquettes morpho-syntaxiques en utilisant la même syntaxe que les exemples précédents. Il nous faut importer le pipeline multilingue, l’appliquer à notre texte, et ensuite imprimer les résultats.
 
 ``` python
 # imports requis pour utiliser la MultilingualPipeline de Stanza
@@ -838,11 +838,11 @@ word: .	upos: PUNCT
 
 ### La lemmatisation
 
-Pour finir, nous allons lemmatiser nos phrases en utilisant spaCy et Stanza (NLTK ne dispose pas d’algorithme de lemmatisation intégré pour des langues autres que l’anglais). La lemmatisation est le procédé par lequel on remplace toutes les formes [infléchies](https://perma.cc/VXG6-4SG5) d’un mot (vois, vue) par un seul objet que l’on appelle le lemme, qui représente la forme la plus basique du mot (dans ce cas, voir). Par exemple, la phrase, « j’ai écrit une lettre » serait « je avoir écrire une lettre ».
+Pour finir, nous allons lemmatiser nos phrases en utilisant spaCy et Stanza (NLTK ne dispose pas d’algorithme de lemmatisation intégré pour des langues autres que l’anglais). La lemmatisation est le procédé par lequel on remplace toutes les formes [infléchies](https://perma.cc/VXG6-4SG5) d’un mot (vois, vue) par un seul objet que l’on appelle le lemme, qui représente la forme la plus basique du mot (dans ce cas, voir). Par exemple, la phrase « j’ai écrit une lettre » serait « je avoir écrire une lettre ».
 
 #### Lemmatiser avec spaCy
 
-Pour couper au court, nous utilisons uniquement la phrase multilingue comme exemple pour montrer la lemmatisation avec spaCy. Cependant, spaCy ne contient pas de corpus de lemmatisation multilingue. Il faut donc d’abord diviser la phrase multilingue en une liste de mots qu’elle contient. Nous pouvons ensuite y appliquer les différents modèles de langue russe et français. Pour plus d’informations concernant la lemmatisation avec spaCy, y compris une liste de langues intégrées dans la bibliothèque, visiter la [documentation de lemmatisation](https://perma.cc/JE4M-CN7D) de spaCy.
+Pour faire court, nous utilisons uniquement la phrase multilingue comme exemple pour montrer la lemmatisation avec spaCy. Cependant, spaCy ne contient pas de corpus de lemmatisation multilingue. Il faut donc d’abord diviser la phrase multilingue en une liste de mots qu’elle contient. Nous pouvons ensuite y appliquer les différents modèles de langue russe et français. Pour plus d’informations concernant la lemmatisation avec spaCy, y compris une liste de langues intégrées dans la bibliothèque, visiter la [documentation de lemmatisation](https://perma.cc/JE4M-CN7D) de spaCy.
 
 Il faut d'abord charger nos modèles avant de les appliquer à nos textes et imprimer les lemmes produits par spaCy. Commençons avec le russe.
 
@@ -920,15 +920,15 @@ Nos résultats montrent les phrases russes, françaises, et multilingues lemmati
 ['moi', 'voir', 'que', 'moi', 'vous', 'faire', 'peur', ',', 'садитесь', 'и', 'рассказывайте', '.']
 ```
 
-Comme nous pouvons observer, la lemmatisation des phrases a remplacé nos mots avec leurs formes infléchies, telles que l’on les trouverait dans le dictionnaire. Le verbe **vois** dans la phrase française par exemple a été remplacé par son infinitif **voir**, et le russe **говорила** a été remplacé par son infinitif **говорить**.
+Comme nous pouvons observer, la lemmatisation des phrases a remplacé nos mots avec leurs formes infléchies, telles qu'on les trouverait dans le dictionnaire. Le verbe **vois** dans la phrase française par exemple a été remplacé par son infinitif **voir**, et le russe **говорила** a été remplacé par son infinitif **говорить**.
 
 Ce procédé est utile lorsque vous voulez identifier toutes les instances d’un mot particulier dans un texte : par exemple, si vous souhaitiez examiner plusieurs thèmes liés à la vue et la vision dans le texte, la lemmatisation vous permettrait d’identifier chaque apparition du lemme voir sans que ne deviez vous préoccuper de toutes ses potentielles déclinaisons. Pour cette même raison, la lemmatisation permet également de compter les fréquences avec lesquelles les mots apparaissent de manière bien plus précise et ce particulièrement pour des langues hautement flexionnelles.
 
 ## Conclusion
 
-Vous possédez désormais d’une connaissance de base des différents packages que vous pouvez utiliser pour l’analyse de texte multilingue et qui pourra, nous l’espérons, vous guider dans vos projets personnels. Vous avez également pu comprendre comment approcher du texte non anglais en utilisant des méthodes de TALN et avez découvert quelques stratégies pour travailler avec du texte multilingue qui vous aideront à développer des méthodologies adaptées à vos propres besoins.
+Vous possédez désormais une connaissance de base des différents packages que vous pouvez utiliser pour l’analyse de texte multilingue et qui pourra, nous l’espérons, vous guider dans vos projets personnels. Vous avez également pu comprendre comment approcher du texte non anglais en utilisant des méthodes de TALN et avez découvert quelques stratégies pour travailler avec du texte multilingue qui vous aideront à développer des méthodologies adaptées à vos propres besoins.
 
-Nous avons appris comment tokéniser du texte, reconnaître des langues de manière automatique, identifier les composants morpho-syntaxiques et lemmatiser un texte comprenant plusieurs langues. Ces étapes de prétraitement permettent de préparer le texte à des analyses plus approfondies telles que l’analyse des sentiments ou le topic modelling, ou pourrait également déjà vous permettre d’obtenir quelques résultats d’analyses qui seraient bénéfiques à vos travaux. Et surtout, vous avez désormais une base de connaissance et quelques exemples de code qui vous ouvrent de nouvelles opportunités pour comprendre et appliquer des outils informatiques à des textes multilingues et non anglais. Ceci va élargir les champs de recherche avec lesquels vous pouvez interagir et approfondir votre compréhension des humanités numériques telles qu’elles sont exercées sur du texte non anglais ou multilingue.
+Nous avons appris comment tokéniser du texte, reconnaître des langues de manière automatique, identifier les composants morpho-syntaxiques et lemmatiser un texte comprenant plusieurs langues. Ces étapes de prétraitement permettent de préparer le texte à des analyses plus approfondies telles que l’analyse des sentiments ou le topic modelling, ou d’obtenir déjà quelques résultats d’analyses qui seraient bénéfiques à vos travaux. Et surtout, vous avez désormais une base de connaissance et quelques exemples de code qui vous ouvrent de nouvelles opportunités pour comprendre et appliquer des outils informatiques à des textes multilingues et non anglais. Ceci va élargir les champs de recherche avec lesquels vous pouvez interagir et approfondir votre compréhension des humanités numériques telles qu’elles sont exercées sur du texte non anglais ou multilingue.
 
 ## Lecture suggérée
 

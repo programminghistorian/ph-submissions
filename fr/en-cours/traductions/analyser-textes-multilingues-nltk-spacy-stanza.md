@@ -126,7 +126,7 @@ En résumé, chaque package peut s’avérer être un outil très efficace pour 
 
 ## Développer du code Python pour l’analyse de texte multilingue
 
-Pour la partie programmation de cette leçon, vous prendrez un extrait du texte du roman _Guerre et Paix_ (1869) de Léon Tolstoï en russe et qui contient une grande partie de texte francophone. Nous verrons comment diviser le texte en phrases, comment détecter la langue dans laquelle chacune de ces phrases est écrite, et comment effectuer certaines analyses sur le texte. Le fichier de texte que nous utiliserons contient un extrait du premier livre du roman qui a été obtenu via Wikipédia. Ceci est le seul texte dont vous aurez besoin pour la leçon et il peut être téléchargé depuis le [dépôt de _Programming Historian_](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analyser-textes-multilingues-nltk-spacy-stanza/guerre-et-paix-extrait.txt). Si vous souhaitez suivre la leçon depuis un Jupyter notebook, nous en avons préparé un qui contient tout le code de cette leçon et qui est [accessible ici](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analyser-textes-multilingues-nltk-spacy-stanza/analyser-textes-multilingues-nltk-spacy-stanza.ipynb).
+Pour la partie programmation de cette leçon, vous prendrez un extrait du texte du roman _Guerre et Paix_ (1869) de Léon Tolstoï en russe et qui contient une grande partie de texte francophone. Nous verrons comment diviser le texte en phrases, comment détecter la langue dans laquelle chacune de ces phrases est écrite, et comment effectuer certaines analyses sur le texte. Le fichier de texte que nous utiliserons contient un extrait du premier livre du roman qui a été obtenu via Wikipédia. Ceci est le seul texte dont vous aurez besoin pour la leçon et il peut être téléchargé depuis le [dépôt de _Programming Historian_](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analyser-textes-multilingues-nltk-spacy-stanza/guerre-et-paix-extrait.txt). Si vous souhaitez suivre la leçon depuis un Jupyter book, nous en avons préparé un qui contient tout le code de cette leçon et qui est [accessible ici](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analyser-textes-multilingues-nltk-spacy-stanza/analyser-textes-multilingues-nltk-spacy-stanza.ipynb).
 
 Pour poursuivre la leçon sans télécharger le fichier texte, vous pouvez utiliser le texte qui suit comme chaîne de caractères à la place.
 
@@ -172,7 +172,7 @@ Maintenant que nous avons lu le fichier et préparé notre texte, nous pouvons c
 Afin d’installer ces bibliothèques, lancez cette commande dans votre terminal&nbsp;:
 
 ``` python
-#note&nbsp;: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de chaque ligne d'installation
+#note: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de chaque ligne d'installation
 pip install nltk
 pip install spacy
 pip install stanza
@@ -245,7 +245,7 @@ Nous allons maintenant répéter cette tokénisation de phrases avec spaCy et r�
 
 ``` python
 # télécharger le tokéniseur de phrases multilingue
-#note&nbsp;: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de la ligne d'installation
+#note: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de la ligne d'installation
 python -m spacy download xx_sent_ud_sm
 ```
 ``` python
@@ -527,7 +527,7 @@ Le package NLTK ne permet pas d'effectuer l’étiquetage morpho-syntaxique de l
 
 ``` python
 # télécharger le modèle de langage russe depuis spaCy
-#note&nbsp;: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de la ligne d'installation
+#note: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de la ligne d'installation
 python -m spacy download ru_core_news_sm
 ```
 ``` python

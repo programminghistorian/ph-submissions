@@ -26,7 +26,7 @@ activity: analyzing
 topics: [python, data-manipulation, distant-reading]
 abstract: Cette leçon introduit la tokénisation, l’étiquetage morpho-syntaxique, et la lemmatisation, ainsi que la détection automatique de langage pour des textes non anglais et multilingues. Vous apprendrez à utiliser les packages Python NLTK, spaCy, et Stanza pour analyser un texte multilingue russo-français.
 avatar_alt: Lettre manuscrite en forme de rébus (les symboles et les images représentent des syllabes).
-doi XX.XXXXX/phen0000
+doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}

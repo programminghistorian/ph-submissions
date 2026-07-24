@@ -33,7 +33,7 @@ doi: XX.XXXXX/phen0000
 
 ## But de la leçon
 
-Une grande partie des ressources destinées à l’apprentissage de méthodes informatiques d’analyse de texte se concentre sur des textes et corpus de langue anglaise et omettent souvent d’inclure les explications nécessaires pour travailler avec des sources non anglophones. Pour remédier à ce problème, cette leçon propose une introduction à l’analyse de texte non anglophone et multilingue (c'est-à-dire écrit en plus d’une langue) via Python. En ayant recours à un texte multilingue composé en russe et en français, cette leçon montrera comment utiliser des méthodes informatiques pour accomplir trois tâches de prétraitement fondamentales : la tokénisation, l’étiquetage morpho-syntaxique, et la lemmatisation. Ensuite, la leçon vous apprendra à automatiquement détecter les langues présentes dans un texte prétraité.
+Une grande partie des ressources destinées à l’apprentissage de méthodes informatiques d’analyse de texte se concentre sur des textes et corpus de langue anglaise et omettent souvent d’inclure les explications nécessaires pour travailler avec des sources non anglophones. Pour remédier à ce problème, cette leçon propose une introduction à l’analyse de texte non anglophone et multilingue (c'est-à-dire écrit en plus d’une langue) via Python. En ayant recours à un texte multilingue composé en russe et en français, cette leçon montrera comment utiliser des méthodes informatiques pour accomplir trois tâches de prétraitement fondamentales&nbsp;: la tokénisation, l’étiquetage morpho-syntaxique, et la lemmatisation. Ensuite, la leçon vous apprendra à automatiquement détecter les langues présentes dans un texte prétraité.
 
 Afin d’accomplir ces trois tâches de prétraitement essentielles, cette leçon utilisera trois packages Python régulièrement utilisés pour le traitement automatique du langage naturel, aussi dit TALN (en anglais, Natural Language Processing ou NLP); Natural Language Toolkit (NLTK), spaCy, et Stanza. Nous commencerons par introduire ces packages avant de passer en revue et comparer leurs fonctionnalités afin que vous puissiez comprendre comment ils fonctionnent et discerner quel outil est le bon pour vos usages et styles de programmation personnels.
 
@@ -65,17 +65,17 @@ Par exemple, il vous faudra peut-être commencer par rendre vos documents lisibl
 
 Une fois que vous disposez d’un texte propre qui est lisible par machine, il faudra encore effectuer des tâches de prétraitement afin de préparer ce texte à l’analyse. Cependant, ces tâches peuvent de nouveau impliquer certains défis à prendre en compte en fonction des types de langages et textes avec lesquels vous travaillez.
 
-Dans cette leçon, nous nous concentrerons sur trois tâches clés du prétraitement : la tokénisation, l’étiquetage morpho-syntaxique, ainsi que la lemmatisation. Nous montrerons comment ces tâches peuvent être appliquées au texte multilingue et non anglais.
+Dans cette leçon, nous nous concentrerons sur trois tâches clés du prétraitement&nbsp;: la tokénisation, l’étiquetage morpho-syntaxique, ainsi que la lemmatisation. Nous montrerons comment ces tâches peuvent être appliquées au texte multilingue et non anglais.
 
 **La tokénisation**
 
-La tokénisation est la segmentation d’un texte en ses parties composées ou « tokens ». Ces tokens peuvent varier en taille, mais un texte est généralement tokénisé soit en mots, soit en phrases. Une phrase pourrait par exemple être tokénisée en une liste de mots : [And, now, for, something, completely, different] (cet exemple est tiré du chapitre 5 du [NLTK Book](https://perma.cc/KU9D-H8FW)). Pour cette leçon, nous nous concentrons sur la tokénisation de textes en listes de mots telles que celle-ci. Dans d’autres contextes, comme pour la tokénisation de texte pour un Large Language Model (Grand Modèle de Langage), d’autres méthodes de tokénisation devraient être employées (il faut par exemple parfois donner une valeur numérique unique à chaque token individuel (lettres, symboles de ponctuation)).
+La tokénisation est la segmentation d’un texte en ses parties composées ou « tokens ». Ces tokens peuvent varier en taille, mais un texte est généralement tokénisé soit en mots, soit en phrases. Une phrase pourrait par exemple être tokénisée en une liste de mots&nbsp;: [And, now, for, something, completely, different] (cet exemple est tiré du chapitre 5 du [NLTK Book](https://perma.cc/KU9D-H8FW)). Pour cette leçon, nous nous concentrons sur la tokénisation de textes en listes de mots telles que celle-ci. Dans d’autres contextes, comme pour la tokénisation de texte pour un Large Language Model (Grand Modèle de Langage), d’autres méthodes de tokénisation devraient être employées (il faut par exemple parfois donner une valeur numérique unique à chaque token individuel (lettres, symboles de ponctuation)).
 
 Dans cette leçon, nous commencerons par tokéniser notre texte. Ceci nous permettra ensuite d’effectuer l’étiquetage morpho-syntaxique et la lemmatisation de nos données textuelles. Sans cette tokénisation préalable, il ne serait pas possible d’accéder au texte en tant que série de mots, ce qui est pourtant nécessaire pour effectuer l’étiquetage et la lemmatisation.
 
 **L’étiquetage morpho-syntaxique**
 
-L’étiquetage morpho-syntaxique est un procédé par lequel chaque mot dans un texte est étiqueté avec sa valeur morpho-syntaxique (tel que « nom propre », « verbe », « adjectif », et cetera). L’étiquetage morpho-syntaxique peut suivre des algorithmes à base de règles prédéfinies, utilisant des définitions fixes pour estimer le label à correctement attacher à un mot, ou bien suivre une approche [stochastique](https://perma.cc/XU5R-KWMD) (probabiliste), grâce à laquelle l’étiqueteur calcule la probabilité qu’une combinaison d’étiquettes se produise. La phrase utilisée comme exemple de tokénisation plus haut pourrait ainsi ressembler à ceci une fois étiqueté par NLTK : (‘And’, ‘CC’), (‘now’, ‘RB’), (‘for’, ‘IN’), (‘something’, ‘NN’), (‘completely’, ‘RB’), (‘different’, ‘JJ’) (à noter que ces étiquettes représentent des étiquettes anglophones). La phrase est divisée en liste de mots, et chaque mot est mis dans un [tuple](https://perma.cc/N8UU-UZUM) avec son étiquette morpho-syntaxique.
+L’étiquetage morpho-syntaxique est un procédé par lequel chaque mot dans un texte est étiqueté avec sa valeur morpho-syntaxique (tel que « nom propre », « verbe », « adjectif », et cetera). L’étiquetage morpho-syntaxique peut suivre des algorithmes à base de règles prédéfinies, utilisant des définitions fixes pour estimer le label à correctement attacher à un mot, ou bien suivre une approche [stochastique](https://perma.cc/XU5R-KWMD) (probabiliste), grâce à laquelle l’étiqueteur calcule la probabilité qu’une combinaison d’étiquettes se produise. La phrase utilisée comme exemple de tokénisation plus haut pourrait ainsi ressembler à ceci une fois étiqueté par NLTK&nbsp;: (‘And’, ‘CC’), (‘now’, ‘RB’), (‘for’, ‘IN’), (‘something’, ‘NN’), (‘completely’, ‘RB’), (‘different’, ‘JJ’) (à noter que ces étiquettes représentent des étiquettes anglophones). La phrase est divisée en liste de mots, et chaque mot est mis dans un [tuple](https://perma.cc/N8UU-UZUM) avec son étiquette morpho-syntaxique.
 
 {% include figure.html filename="en-or-analyzing-multilingual-text-nltk-spacy-stanza-01.png" alt="Figure 1: capture d'écran de l'étiquetage morpho-syntaxique, chapitre 5 du NLTK Book." caption="Figure 1: capture d'écran de l'étiquetage morpho-syntaxique, chapitre 5 du NLTK Book." %}
 
@@ -86,7 +86,7 @@ La lemmatisation réduit un mot à sa forme de base communément appelée le « 
 
 ## Problèmes posés par l’analyse de texte non anglais et multilingue
 
-La tokénisation, l’étiquetage morpho-syntaxique et la lemmatisation sont présentés dans cette leçon comme des exemples pratiques des différentes façons dont les packages NLTK, spaCy, et Stanza approchent ces tâches fondamentales de traitement automatique du langage naturel. En effet, la manière dont les packages d’analyse de texte implémentent certaines tâches peuvent varier selon un nombre de critères : le choix de l’algorithme, le choix des modèles de langage, les données sur lesquelles ceux-ci ont été entraînés, et cetera. La capacité des différents packages à analyser certaines langues dépend donc de la disponibilité et de la qualité de ces composants. Certains modèles peuvent reproduire des présupposés qui s’alignent avec les caractéristiques de la langue anglaise, mais qui ne sont pas forcément transférables à d’autres langues. Par exemple, certaines procédures essentielles de traitement automatique du langage naturel considèrent qu’un mot est représenté par une série de caractères séparée par une espace. Ceci fonctionne pour l’anglais et d'autres langues écrites avec un alphabet, telles que le français, mais des langues à base de symboles, comme le mandarin, utilisent d'autres méthodes qu'une espace pour indiquer les frontières entre les mots. Tokéniser un texte en mandarin peut donc nécessiter l’insertion artificielle d’espace entre chaque symbole, un procédé qui s’appelle la segmentation (veuillez consulter la leçon de Melanie Walsh [Text Pre-Processing for Chinese](https://perma.cc/62C3-9VNY) pour une introduction). De même, si l’on souhaite tokéniser un mot écrit en alphabet latin ou cyrillique au niveau de ses lettres composantes, les [signes diacritiques combinés](https://perma.cc/KU5K-U5G9) poseraient un problème, car ceux-ci sont représentés par des symboles Unicode qui sont rajoutés aux lettres en question.
+La tokénisation, l’étiquetage morpho-syntaxique et la lemmatisation sont présentés dans cette leçon comme des exemples pratiques des différentes façons dont les packages NLTK, spaCy, et Stanza approchent ces tâches fondamentales de traitement automatique du langage naturel. En effet, la manière dont les packages d’analyse de texte implémentent certaines tâches peuvent varier selon un nombre de critères&nbsp;: le choix de l’algorithme, le choix des modèles de langage, les données sur lesquelles ceux-ci ont été entraînés, et cetera. La capacité des différents packages à analyser certaines langues dépend donc de la disponibilité et de la qualité de ces composants. Certains modèles peuvent reproduire des présupposés qui s’alignent avec les caractéristiques de la langue anglaise, mais qui ne sont pas forcément transférables à d’autres langues. Par exemple, certaines procédures essentielles de traitement automatique du langage naturel considèrent qu’un mot est représenté par une série de caractères séparée par une espace. Ceci fonctionne pour l’anglais et d'autres langues écrites avec un alphabet, telles que le français, mais des langues à base de symboles, comme le mandarin, utilisent d'autres méthodes qu'une espace pour indiquer les frontières entre les mots. Tokéniser un texte en mandarin peut donc nécessiter l’insertion artificielle d’espace entre chaque symbole, un procédé qui s’appelle la segmentation (veuillez consulter la leçon de Melanie Walsh [Text Pre-Processing for Chinese](https://perma.cc/62C3-9VNY) pour une introduction). De même, si l’on souhaite tokéniser un mot écrit en alphabet latin ou cyrillique au niveau de ses lettres composantes, les [signes diacritiques combinés](https://perma.cc/KU5K-U5G9) poseraient un problème, car ceux-ci sont représentés par des symboles Unicode qui sont rajoutés aux lettres en question.
 
 Une grande partie des ressources disponibles pour l’apprentissage de méthodes informatiques d’analyse de texte privilégie l’utilisation de textes et corpus de langue anglaise. Ces ressources omettent souvent des informations essentielles pour travailler avec des sources non anglophones, et il peut être difficile de comprendre comment utiliser ou adapter certains de ces outils à d’autres langues. Cependant, de plus en plus de modèles de haute qualité et capables de traiter un grand nombre de langues sont rendus publics. Par exemple, grâce à l’introduction de nouveaux modèles par spaCy et Stanza, il est désormais possible d’utiliser ces bibliothèques pour l’étiquetage morpho-syntaxique du russe et du français. Malgré cela, la plupart des tutoriels et outils que vous rencontrerez seront par défaut axés vers l’anglais. Il faut également noter que les formes d’anglais représentées par ces outils et tutoriels ont tendance à être limitées à l’anglais standard, et que d’autres formes de la langue sont également sous-représentées.
 
@@ -96,13 +96,13 @@ Dans cette leçon, nous comparerons les bibliothèques NLTK, spaCy, et Stanza qu
 
 ## Packages Python Essentiels
 
-Les bibliothèques Python utilisées dans cette leçon (NLTK, spaCy, et Stanza) ont été choisies pour leur capacité à traiter des textes multilingues, leurs communautés d’utilisatrices·eurs régulières·ers, ainsi que leur statut de code ouvert. Bien que les trois packages soient couramment utilisés et fiables, ils possèdent chacun différents point forts et caractéristiques : ils couvrent différentes langues, utilisent différentes syntaxes et structurations de données, et chacun se concentre sur des usages légèrement différents. En examinant leurs différentes caractéristiques et en comparant leur utilisation, vous serez capable de développer une familiarité de base avec chacun de ces packages, ce qui vous aidera à choisir celui qui sera le mieux adapté à vos projets.
+Les bibliothèques Python utilisées dans cette leçon (NLTK, spaCy, et Stanza) ont été choisies pour leur capacité à traiter des textes multilingues, leurs communautés d’utilisatrices·eurs régulières·ers, ainsi que leur statut de code ouvert. Bien que les trois packages soient couramment utilisés et fiables, ils possèdent chacun différents point forts et caractéristiques&nbsp;: ils couvrent différentes langues, utilisent différentes syntaxes et structurations de données, et chacun se concentre sur des usages légèrement différents. En examinant leurs différentes caractéristiques et en comparant leur utilisation, vous serez capable de développer une familiarité de base avec chacun de ces packages, ce qui vous aidera à choisir celui qui sera le mieux adapté à vos projets.
 
 ### Le Natural Language Toolkit (NLTK)
 
 [NLTK](https://www.nltk.org/index.html) est une suite de modules pour construire des scripts Python pour travailler avec des données linguistiques. Ayant été rendu public en 2001, NLTK possède une excellente documentation et une communauté d’utilisatrices·eurs actifs·ves et engagé·es, ce qui en fait un outil excellent pour les débutant·es du traitement automatique du langage naturel. Les utilisatrices·eurs plus avancé·es trouveront également sa grande variété de bibliothèques et corpus utile, et sa structure le rend facile à intégrer dans des pipelines et tâches de travail.
 
-NLTK supporte un nombre variable de langues et tâches : il contient des listes de mots vides pour 23 langues mais ne permet la tokénisation de mots qu'en 18 langues. Les « mots vides » sont des mots qui sont retirés du texte avant de le traiter, généralement parce qu’ils sont considérés comme sans importance pour une tâche particulière (par exemple le mot "le" peut être retiré pour se concentrer sur le restant du vocabulaire présent dans le texte).
+NLTK supporte un nombre variable de langues et tâches&nbsp;: il contient des listes de mots vides pour 23 langues mais ne permet la tokénisation de mots qu'en 18 langues. Les « mots vides » sont des mots qui sont retirés du texte avant de le traiter, généralement parce qu’ils sont considérés comme sans importance pour une tâche particulière (par exemple le mot "le" peut être retiré pour se concentrer sur le restant du vocabulaire présent dans le texte).
 
 Pour plus d’informations, le [NLTK Book](https://www.nltk.org/book/) est une excellente référence, tout comme la documentation officielle du package indiquée plus haut. Malheureusement, ce livre ainsi que la documentation ne sont disponibles qu’en anglais.
 
@@ -169,7 +169,7 @@ Le résultat du code ci-dessus sera une copie du texte sans caractères de fin d
 
 Maintenant que nous avons lu le fichier et préparé notre texte, nous pouvons commencer à le traiter. Il faudra d’abord installer et importer les bibliothèques (NLTK, spaCy, Stanza).
 
-Afin d’installer ces bibliothèques, lancez cette commande dans votre terminal :
+Afin d’installer ces bibliothèques, lancez cette commande dans votre terminal&nbsp;:
 
 ``` python
 #note: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de chaque ligne d'installation
@@ -178,7 +178,7 @@ pip install spacy
 pip install stanza
 ```
 
-Ensuite, pour les importer après installation, écrivez ces lignes dans votre code Python :
+Ensuite, pour les importer après installation, écrivez ces lignes dans votre code Python&nbsp;:
 
 ``` python
 import nltk
@@ -217,7 +217,7 @@ L’entièreté du texte contenu dans la variable `cleaned_war_and_peace` est d�
 for sent in nltk_sent_tokenized:
   print(sent)
 ```
-Le fait de tokéniser le texte en phrases nous permet d’analyser l’extrait avec une plus grande précision. Nous allons imprimer trois phrases avec lesquelles nous travaillerons : une entièrement en russe, une entièrement en français, et une qui contient les deux langues. Les langues utilisées dans les phrases deviendront importantes lorsque nous y appliquerons différentes méthodes au fur et à mesure de la leçon.
+Le fait de tokéniser le texte en phrases nous permet d’analyser l’extrait avec une plus grande précision. Nous allons imprimer trois phrases avec lesquelles nous travaillerons&nbsp;: une entièrement en russe, une entièrement en français, et une qui contient les deux langues. Les langues utilisées dans les phrases deviendront importantes lorsque nous y appliquerons différentes méthodes au fur et à mesure de la leçon.
 
 ``` python
 # imprimer la phrase russe en 5e position de l'index de notre liste
@@ -241,7 +241,7 @@ Multilang: Je vois que je vous fais peur, садитесь и рассказыв
 ```
 #### Tokéniser avec spaCy
 
-Nous allons maintenant répéter cette tokénisation de phrases avec spaCy et réutiliser les trois phrases qui nous ont servies d’exemples ci-dessus. Comme vous pouvez le voir, la syntaxe de spaCy est assez différente : la bibliothèque dispose notamment par défaut d’un tokéniseur de phrases multilingues. Pour accéder à la liste de phrases tokénisées par l’algorithme de spaCy, il vous faudra d’abord appliquer cet algorithme au texte en utilisant la méthode `nlp` avant d’assigner les tokens `doc.sents` à une liste.
+Nous allons maintenant répéter cette tokénisation de phrases avec spaCy et réutiliser les trois phrases qui nous ont servies d’exemples ci-dessus. Comme vous pouvez le voir, la syntaxe de spaCy est assez différente&nbsp;: la bibliothèque dispose notamment par défaut d’un tokéniseur de phrases multilingues. Pour accéder à la liste de phrases tokénisées par l’algorithme de spaCy, il vous faudra d’abord appliquer cet algorithme au texte en utilisant la méthode `nlp` avant d’assigner les tokens `doc.sents` à une liste.
 
 ``` python
 # télécharger le tokéniseur de phrases multilingue
@@ -442,7 +442,7 @@ Je vois que je vous fais peur, садитесь и рассказывайте.	f
 
 Nous pouvons observer que Stanza, contrairement aux autres bibliothèques, a classifié la dernière phrase comme étant de langue française.
 
-Identifier plusieurs langues dans une seule et même phrase n’est pas un problème qui est facile à résoudre ; il requiert une analyse plus poussée qu’une simple approche par phrase. Une méthode potentielle serait de tokéniser la phrase afin de la diviser en ses mots composants, avant d’essayer de détecter la langue de chaque mot. Ensuite, nous pourrions regrouper les mots écrits dans la même langue dans de nouvelles chaînes de caractères, qui chacune contiendrait des mots issus d’une seule langue. Dans notre cas, on pourrait également diviser la chaîne de caractère dans les différentes langues qui la composent en détectant et séparant tous les écrits en alphabet non-romain dans une chaîne de caractères qui leur est propre. Voici à quoi ressemblerait l’implémentation de cette méthode.
+Identifier plusieurs langues dans une seule et même phrase n’est pas un problème qui est facile à résoudre&nbsp;; il requiert une analyse plus poussée qu’une simple approche par phrase. Une méthode potentielle serait de tokéniser la phrase afin de la diviser en ses mots composants, avant d’essayer de détecter la langue de chaque mot. Ensuite, nous pourrions regrouper les mots écrits dans la même langue dans de nouvelles chaînes de caractères, qui chacune contiendrait des mots issus d’une seule langue. Dans notre cas, on pourrait également diviser la chaîne de caractère dans les différentes langues qui la composent en détectant et séparant tous les écrits en alphabet non-romain dans une chaîne de caractères qui leur est propre. Voici à quoi ressemblerait l’implémentation de cette méthode.
 
 Nous commençons par tokéniser la phrase en mots en utilisant le module `wordpunct_tokenize`. Comme nous l’avons vu précédemment, le fait de tokéniser notre texte en phrases nous permet d’accomplir d’autres opérations par la suite.
 
@@ -451,7 +451,7 @@ from nltk.tokenize import wordpunct_tokenize
 tokenized_sent = wordpunct_tokenize(multi_sent)
 ```
 
-Ensuite, nous allons examiner chaque mot pour voir s’il contient des caractères [cyrilliques](https://perma.cc/7FQY-LMHK) et diviser les tokens de mots en deux chaînes de caractères : une contenant les mots écrits en cyrillique et une contenant ceux écrits avec l’alphabet latin. Pour nous simplifier la tâche, nous ne prendrons pas en compte les symboles de ponctuation dans cet exemple. Nous utilisons ensuite une expression régulière (une séquence de caractères qui indique les caractères à identifier dans un texte) pour détecter les caractères cyrilliques. (Pour en apprendre plus sur les expressions régulières, [cette leçon de _Programming Historian_](https://programminghistorian.org/en/lessons/understanding-regular-expressions) est une bonne ressource).
+Ensuite, nous allons examiner chaque mot pour voir s’il contient des caractères [cyrilliques](https://perma.cc/7FQY-LMHK) et diviser les tokens de mots en deux chaînes de caractères&nbsp;: une contenant les mots écrits en cyrillique et une contenant ceux écrits avec l’alphabet latin. Pour nous simplifier la tâche, nous ne prendrons pas en compte les symboles de ponctuation dans cet exemple. Nous utilisons ensuite une expression régulière (une séquence de caractères qui indique les caractères à identifier dans un texte) pour détecter les caractères cyrilliques. (Pour en apprendre plus sur les expressions régulières, [cette leçon de _Programming Historian_](https://programminghistorian.org/en/lessons/understanding-regular-expressions) est une bonne ressource).
 
 
 ``` python
@@ -465,7 +465,7 @@ cyrillic_words = []
 latin_words = []
 ```
 
-Nous allons ensuite itérer sur chaque mot de notre phrase avec RegEx pour détecter les caractères cyrilliques. Si des caractères cyrilliques sont identifiés, nous rajoutons le mot auquel ils appartiennent à notre liste `cyrillic_words` ; sinon, nous rajoutons le mot à la liste `latin_words`. Si un de nos mots tokénisés est composé uniquement de ponctuation, nous continuons sans le rajouter à aucune des deux listes. Nous pouvons ensuite imprimer les listes pour voir ce qui y a été ajouté.
+Nous allons ensuite itérer sur chaque mot de notre phrase avec RegEx pour détecter les caractères cyrilliques. Si des caractères cyrilliques sont identifiés, nous rajoutons le mot auquel ils appartiennent à notre liste `cyrillic_words`&nbsp;; sinon, nous rajoutons le mot à la liste `latin_words`. Si un de nos mots tokénisés est composé uniquement de ponctuation, nous continuons sans le rajouter à aucune des deux listes. Nous pouvons ensuite imprimer les listes pour voir ce qui y a été ajouté.
 
 ``` python
 for word in tokenized_sent:
@@ -611,7 +611,7 @@ amie NOUN
 
 Pour le texte multilingue, nous pouvons utiliser les mots que nous avons générés au préalable pour étiqueter chaque langue séparément avant de recombiner les mots pour former une phrase complète.
 
-Ci-dessous, nous divisons notre phrase en mots russe et français comme nous l’avons fait auparavant, mais nous gardons cette fois-ci la ponctuation. Nous accomplissons ceci en rajoutant les signes de ponctuation à la dernière liste à laquelle nous avons rajouté un mot : ceci préserve le bon emplacement de chaque signe de ponctuation (la ponctuation sera ajoutée à la même liste que le mot qui l’a précédé). Ce procédé sera utile à quiconque souhaite pouvoir préserver la ponctuation originelle du texte dans leur analyse. Pour y parvenir, nous avons besoin de créer une nouvelle variable – `last_appended_list` – pour pouvoir vérifier quelle est la dernière liste à laquelle nous avons rajouté des données. Par exemple, si un point suit le mot bonjour, alors notre variable `last_appended_list` devrait montrer que la dernière liste à laquelle nous avons ajouté un mot est `latin_words`. Nous pouvons donc ajouter le point à la liste `latin_words` où il suivra correctement le mot qui l’a précédé.
+Ci-dessous, nous divisons notre phrase en mots russe et français comme nous l’avons fait auparavant, mais nous gardons cette fois-ci la ponctuation. Nous accomplissons ceci en rajoutant les signes de ponctuation à la dernière liste à laquelle nous avons rajouté un mot&nbsp;: ceci préserve le bon emplacement de chaque signe de ponctuation (la ponctuation sera ajoutée à la même liste que le mot qui l’a précédé). Ce procédé sera utile à quiconque souhaite pouvoir préserver la ponctuation originelle du texte dans leur analyse. Pour y parvenir, nous avons besoin de créer une nouvelle variable – `last_appended_list` – pour pouvoir vérifier quelle est la dernière liste à laquelle nous avons rajouté des données. Par exemple, si un point suit le mot bonjour, alors notre variable `last_appended_list` devrait montrer que la dernière liste à laquelle nous avons ajouté un mot est `latin_words`. Nous pouvons donc ajouter le point à la liste `latin_words` où il suivra correctement le mot qui l’a précédé.
 
 ``` python
 # créer des listes vides pour y rajouter des données plus tard
@@ -708,7 +708,7 @@ peur NOUN
 
 #### L’étiquetage morpho-syntaxique avec Stanza
 
-Faisons maintenant de même avec Stanza. Commençons par le russe : il faut charger le pipeline russe, l’appliquer à notre phrase, et imprimer les étiquettes morpho-syntaxiques détectées par Stanza.
+Faisons maintenant de même avec Stanza. Commençons par le russe&nbsp;: il faut charger le pipeline russe, l’appliquer à notre phrase, et imprimer les étiquettes morpho-syntaxiques détectées par Stanza.
 
 ``` python
 # charger le pipeline et l'appliquer à notre phrase en spécifiant la langue comme étant le russe ('ru')
@@ -865,7 +865,7 @@ Résultats:
 . .
 ```
 
-Et maintenant le texte français :
+Et maintenant le texte français&nbsp;:
 
 ``` python
 # charger et appliquer le modèle
@@ -922,7 +922,7 @@ Nos résultats montrent les phrases russes, françaises, et multilingues lemmati
 
 Comme nous pouvons observer, la lemmatisation des phrases a remplacé nos mots avec leurs formes infléchies, telles qu'on les trouverait dans le dictionnaire. Le verbe **vois** dans la phrase française par exemple a été remplacé par son infinitif **voir**, et le russe **говорила** a été remplacé par son infinitif **говорить**.
 
-Ce procédé est utile lorsque vous voulez identifier toutes les instances d’un mot particulier dans un texte : par exemple, si vous souhaitiez examiner plusieurs thèmes liés à la vue et la vision dans le texte, la lemmatisation vous permettrait d’identifier chaque apparition du lemme voir sans que ne deviez vous préoccuper de toutes ses potentielles déclinaisons. Pour cette même raison, la lemmatisation permet également de compter les fréquences avec lesquelles les mots apparaissent de manière bien plus précise et ce particulièrement pour des langues hautement flexionnelles.
+Ce procédé est utile lorsque vous voulez identifier toutes les instances d’un mot particulier dans un texte&nbsp;: par exemple, si vous souhaitiez examiner plusieurs thèmes liés à la vue et la vision dans le texte, la lemmatisation vous permettrait d’identifier chaque apparition du lemme voir sans que ne deviez vous préoccuper de toutes ses potentielles déclinaisons. Pour cette même raison, la lemmatisation permet également de compter les fréquences avec lesquelles les mots apparaissent de manière bien plus précise et ce particulièrement pour des langues hautement flexionnelles.
 
 ## Conclusion
 

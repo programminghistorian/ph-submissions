@@ -792,7 +792,7 @@ from stanza.models.common.doc import Document
 from stanza.pipeline.core import Pipeline
 from stanza.pipeline.multilingual import MultilingualPipeline
 
-# lancer le pipeline multilingue sur les phrases françaises, russes, et multilingue en même temps 
+# lancer le pipeline multilingue sur les phrases françaises, russes, et multilingues en même temps 
 nlp = MultilingualPipeline(processors='tokenize,pos')
 docs = [stanza_rus_sent, stanza_fre_sent, stanza_multi_sent]
 docs = nlp(docs)

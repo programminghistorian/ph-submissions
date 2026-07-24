@@ -451,7 +451,7 @@ from nltk.tokenize import wordpunct_tokenize
 tokenized_sent = wordpunct_tokenize(multi_sent)
 ```
 
-Ensuite, nous allons examiner chaque mot pour voir s’il contient des caractères [cyrilliques](https://perma.cc/7FQY-LMHK) et diviser les tokens de mots en deux chaînes de caractères&nbsp;: une contenant les mots écrits en cyrillique et une contenant ceux écrits avec l’alphabet latin. Pour nous simplifier la tâche, nous ne prendrons pas en compte les symboles de ponctuation dans cet exemple. Nous utilisons ensuite une expression régulière (une séquence de caractères qui indique les caractères à identifier dans un texte) pour détecter les caractères cyrilliques. (Pour en apprendre plus sur les expressions régulières, [cette leçon de _Programming Historian_](https://programminghistorian.org/fr/lecons/comprendre-les-expressions-regulieres) est une bonne ressource).
+Ensuite, nous allons examiner chaque mot pour voir s’il contient des caractères [cyrilliques](https://perma.cc/7FQY-LMHK) et diviser les tokens de mots en deux chaînes de caractères&nbsp;: une contenant les mots écrits en cyrillique et une contenant ceux écrits avec l’alphabet latin. Pour nous simplifier la tâche, nous ne prendrons pas en compte les symboles de ponctuation dans cet exemple. Nous utilisons ensuite une expression régulière (une séquence de caractères qui indique les caractères à identifier dans un texte, aussi appelé RegEx) pour détecter les caractères cyrilliques. (Pour en apprendre plus sur les expressions régulières, [cette leçon de _Programming Historian_](https://programminghistorian.org/fr/lecons/comprendre-les-expressions-regulieres) est une bonne ressource).
 
 
 ``` python

@@ -432,7 +432,7 @@ docs = nlp(docs)
 print("\n".join(f"{doc.text}\t{doc.lang}" for doc in docs))
 ```
 
-Résultats
+Résultats&nbsp;:
 
 ```
 Так говорила в июле 1805 года известная Анна Павловна Шерер, фрейлина и приближенная императрицы Марии Феодоровны, встречая важного и чиновного князя Василия, первого приехавшего на ее вечер.	ru
@@ -766,7 +766,7 @@ doc = nlp(stanza_fre_sent)
 # imprimer les mots et leurs étiquettes
 print(*[f'word: {word.text}\tupos: {word.upos}' for sent in doc.sentences for word in sent.words], sep='\n')
 ```
-Résultats:
+Résultats&nbsp;:
 
 ```
 word: —	upos: PUNCT

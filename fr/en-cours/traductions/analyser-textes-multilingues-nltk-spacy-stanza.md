@@ -26,14 +26,14 @@ activity: analyzing
 topics: [python, data-manipulation, distant-reading]
 abstract: Cette leçon introduit la tokénisation, l’étiquetage morpho-syntaxique, et la lemmatisation, ainsi que la détection automatique de langage pour des textes non anglais et multilingues. Vous apprendrez à utiliser les packages Python NLTK, spaCy, et Stanza pour analyser un texte multilingue russo-français.
 avatar_alt: Lettre manuscrite en forme de rébus (les symboles et les images représentent des syllabes).
-doi: XX.XXXXX/phen0000
+doi XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}
 
 ## But de la leçon
 
-Une grande partie des ressources destinées à l’apprentissage de méthodes informatiques d’analyse de texte se concentre sur des textes et corpus de langue anglaise et omettent souvent d’inclure les explications nécessaires pour travailler avec des sources non anglophones. Pour remédier à ce problème, cette leçon propose une introduction à l’analyse de texte non anglophone et multilingue (c'est-à-dire écrit en plus d’une langue) via Python. En ayant recours à un texte multilingue composé en russe et en français, cette leçon montrera comment utiliser des méthodes informatiques pour accomplir trois tâches de prétraitement fondamentales&nbsp;: la tokénisation, l’étiquetage morpho-syntaxique, et la lemmatisation. Ensuite, la leçon vous apprendra à automatiquement détecter les langues présentes dans un texte prétraité.
+Une grande partie des ressources destinées à l’apprentissage de méthodes informatiques d’analyse de texte se concentre sur des textes et corpus de langue anglaise et omettent souvent d’inclure les explications nécessaires pour travailler avec des sources non anglophones. Pour remédier à ce problème, cette leçon propose une introduction à l’analyse de texte non anglophone et multilingue (c'est-à-dire écrit en plus d’une langue) via Python. En ayant recours à un texte multilingue composé en russe et en français, cette leçon montrera comment utiliser des méthodes informatiques pour accomplir trois tâches de prétraitement fondamentales&nbsp; la tokénisation, l’étiquetage morpho-syntaxique, et la lemmatisation. Ensuite, la leçon vous apprendra à automatiquement détecter les langues présentes dans un texte prétraité.
 
 Afin d’accomplir ces trois tâches de prétraitement essentielles, cette leçon utilisera trois packages Python régulièrement utilisés pour le traitement automatique du langage naturel, aussi dit TALN (en anglais, Natural Language Processing ou NLP); Natural Language Toolkit (NLTK), spaCy, et Stanza. Nous commencerons par introduire ces packages avant de passer en revue et comparer leurs fonctionnalités afin que vous puissiez comprendre comment ils fonctionnent et discerner quel outil est le bon pour vos usages et styles de programmation personnels.
 
@@ -43,23 +43,23 @@ Afin d’accomplir ces trois tâches de prétraitement essentielles, cette leço
 
 Cette leçon est destinée à celles et ceux qui ne sont pas familier·es avec les méthodes de traitement automatique du langage naturel, en particulier celles·eux souhaitant appliquer ces méthodes sur des corpus multilingues ou des textes écrits en langues autres que l’anglais. Bien qu’une connaissance de Python ne soit pas nécessaire, il sera utile de comprendre la structure du code. Avoir une connaissance rudimentaire de la syntaxe de Python ainsi que de ses fonctionnalités est recommandé. Il serait par exemple utile pour les lectrices·eurs de s’être familiarisé·es avec l’importation de bibliothèques, la construction de fonctions, la manipulation de chaînes de caractères, et l'utilisation de boucles.
 
-Le code pour cette leçon est écrit en Python 3.12 et utilise les bibliothèques NLTK (v3.8.1), spaCy (v3.8.11), et Stanza (v1.11.1) pour effectuer du traitement automatique du langage naturel. Si vous n’avez jamais utilisé Python auparavant, il vous sera utile de consulter cette autre leçon de [_Programming Historian_](https://programminghistorian.org/en/lessons/introduction-and-installation) avant de commencer la leçon (à noter que les leçons complémentaires de _Programming Historian_ qui seront indiquées ici ne sont pas encore disponibles en traduction francophone).
+Le code pour cette leçon est écrit en Python 3.12 et utilise les bibliothèques NLTK (v3.8.1), spaCy (v3.8.11), et Stanza (v1.11.1) pour effectuer du traitement automatique du langage naturel. Si vous n’avez jamais utilisé Python auparavant, il vous sera utile de consulter cette autre leçon de [_Programming Historian_](https//programminghistorian.org/en/lessons/introduction-and-installation) avant de commencer la leçon (à noter que les leçons complémentaires de _Programming Historian_ qui seront indiquées ici ne sont pas encore disponibles en traduction francophone).
 
 ## Installation et mise en place
 
-Pour commencer, il vous faudra installer Python3 ainsi que les bibliothèques NLTK, spaCy, et Stanza, qui sont toutes disponibles via le [Python Package Index (PyPI)](https://pypi.org/.). Pour plus d’informations sur l’installation de bibliothèque en utilisant PyPI, veuillez consulter leur [guide d’installation de packages](https://perma.cc/VQK8-K33R).
+Pour commencer, il vous faudra installer Python3 ainsi que les bibliothèques NLTK, spaCy, et Stanza, qui sont toutes disponibles via le [Python Package Index (PyPI)](https//pypi.org/.). Pour plus d’informations sur l’installation de bibliothèque en utilisant PyPI, veuillez consulter leur [guide d’installation de packages](https//perma.cc/VQK8-K33R).
 
 ## Les bases du traitement automatique du langage naturel et travailler avec du texte non anglais et multilingue
 
-L’analyse automatique de texte est un terme qui regroupe une grande variété d’approches, méthodologies, et bibliothèques Python qui servent à numériquement manipuler et analyser des textes à grande échelle. L’utilisation d'outils de TALN permet de rapidement compléter des tâches qui sont bien plus difficiles à accomplir autrement. Par exemple, l’étiquetage morpho-syntaxique décrit dans cette leçon peut être utilisé pour rapidement identifier tous les verbes ainsi que leurs sujets et objets associés à travers un corpus de textes. Ceci peut ensuite être utilisé pour développer des analyses d’agencement et de subjectivité dans le corpus (tel que dans l’article anglophone de Dennis Tenen [Distributed Agency in the Novel](https://doi.org/10.1353/nlh.2022.a898333)).
+L’analyse automatique de texte est un terme qui regroupe une grande variété d’approches, méthodologies, et bibliothèques Python qui servent à numériquement manipuler et analyser des textes à grande échelle. L’utilisation d'outils de TALN permet de rapidement compléter des tâches qui sont bien plus difficiles à accomplir autrement. Par exemple, l’étiquetage morpho-syntaxique décrit dans cette leçon peut être utilisé pour rapidement identifier tous les verbes ainsi que leurs sujets et objets associés à travers un corpus de textes. Ceci peut ensuite être utilisé pour développer des analyses d’agencement et de subjectivité dans le corpus (tel que dans l’article anglophone de Dennis Tenen [Distributed Agency in the Novel](https//doi.org/10.1353/nlh.2022.a898333)).
 
 Outre les méthodes présentées dans cette leçon, d’autres tâches de traitement automatique du langage naturel qui sont facilitées par une approche numérique sont l’analyse de sentiments (qui génère une évaluation quantitative du sentiment d’un texte, généralement sur une échelle numérique, et qui indique si ce sentiment est négatif ou positif) et la reconnaissance d’entités nommées (qui sert à reconnaître et classifier des entités dans un texte à travers diverses catégories, telles que lieux, personnes, et cetera).
 
-Pour plus de lecture concernant ces méthodes, veuillez consulter les leçons de _Programming Historian_ [Sentiment Analysis for Exploratory Data Analysis](https://programminghistorian.org/en/lessons/sentiment-analysis) et [Sentiment Analysis with ‘syuzhet’ using R](https://programminghistorian.org/en/lessons/sentiment-analysis-syuzhet) pour l’analyse de sentiments, et [Finding Places in Text with the World Historical Gazetteer](https://programminghistorian.org/en/lessons/finding-places-world-historical-gazetteer) ainsi que [Corpus Analysis with spaCy](https://programminghistorian.org/en/lessons/corpus-analysis-with-spacy) pour la reconnaissance d’entités nommées. La leçon [Introduction to Stylometry with Python](https://programminghistorian.org/en/lessons/introduction-to-stylometry-with-python) peut servir à celles·eux souhaitant explorer davantage de possibilités offertes par l’analyse numérique de textes.
+Pour plus de lecture concernant ces méthodes, veuillez consulter les leçons de _Programming Historian_ [Sentiment Analysis for Exploratory Data Analysis](https//programminghistorian.org/en/lessons/sentiment-analysis) et [Sentiment Analysis with ‘syuzhet’ using R](https//programminghistorian.org/en/lessons/sentiment-analysis-syuzhet) pour l’analyse de sentiments, et [Finding Places in Text with the World Historical Gazetteer](https//programminghistorian.org/en/lessons/finding-places-world-historical-gazetteer) ainsi que [Corpus Analysis with spaCy](https//programminghistorian.org/en/lessons/corpus-analysis-with-spacy) pour la reconnaissance d’entités nommées. La leçon [Introduction to Stylometry with Python](https//programminghistorian.org/en/lessons/introduction-to-stylometry-with-python) peut servir à celles·eux souhaitant explorer davantage de possibilités offertes par l’analyse numérique de textes.
 
 Afin de préparer le texte, il faut d’abord accomplir certaines tâches de &laquo;&nbsp;prétraitement&nbsp;&raquo;. Ces tâches peuvent être particulièrement importantes (et parfois particulièrement compliquées) en travaillant avec du texte multilingue.
 
-Par exemple, il vous faudra peut-être commencer par rendre vos documents lisibles par machine en utilisant des méthodes telles que [l’Optical Character Recognition](https://perma.cc/KK5H-PEVL) (OCR). L’océrisation fonctionne très bien sur de nombreux types de documents, mais peut s’avérer moins efficace quand elle est appliquée à des textes manuscrits ou à des documents dans lesquels le texte n’est pas clairement délimité (tels qu’un document avec peu de contraste entre le texte imprimé et le papier). En fonction des langues et textes avec lesquels vous travaillez (et de la qualité des méthodes d’océrisation), il vous faudra peut-être d’abord &laquo;&nbsp;nettoyer&nbsp;&raquo; votre texte – c’est-à-dire corriger les erreurs faites par l’océrisation – avant de pouvoir procéder à l’analyse. Pour une introduction à l’océrisation et le nettoyage de texte, veuillez consulter ces leçons de _Programming Historian_: [OCR with Google Vision API and Tesseract](https://programminghistorian.org/en/lessons/ocr-with-google-vision-and-tesseract) et [Cleaning OCR’d text with Regular Expressions](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions).
+Par exemple, il vous faudra peut-être commencer par rendre vos documents lisibles par machine en utilisant des méthodes telles que [l’Optical Character Recognition](https//perma.cc/KK5H-PEVL) (OCR). L’océrisation fonctionne très bien sur de nombreux types de documents, mais peut s’avérer moins efficace quand elle est appliquée à des textes manuscrits ou à des documents dans lesquels le texte n’est pas clairement délimité (tels qu’un document avec peu de contraste entre le texte imprimé et le papier). En fonction des langues et textes avec lesquels vous travaillez (et de la qualité des méthodes d’océrisation), il vous faudra peut-être d’abord &laquo;&nbsp;nettoyer&nbsp;&raquo; votre texte – c’est-à-dire corriger les erreurs faites par l’océrisation – avant de pouvoir procéder à l’analyse. Pour une introduction à l’océrisation et le nettoyage de texte, veuillez consulter ces leçons de _Programming Historian_ [OCR with Google Vision API and Tesseract](https://programminghistorian.org/en/lessons/ocr-with-google-vision-and-tesseract) et [Cleaning OCR’d text with Regular Expressions](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions).
 
 ### Étapes et concepts clés de l'analyse de textes
 
@@ -172,7 +172,7 @@ Maintenant que nous avons lu le fichier et préparé notre texte, nous pouvons c
 Afin d’installer ces bibliothèques, lancez cette commande dans votre terminal&nbsp;:
 
 ``` python
-#note: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de chaque ligne d'installation
+#note&nbsp;: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de chaque ligne d'installation
 pip install nltk
 pip install spacy
 pip install stanza
@@ -207,7 +207,7 @@ Ensuite, nous allons importer la méthode `sent_tokenize` et l’appliquer à no
 ``` python
 from nltk.tokenize import sent_tokenize
 nltk_sent_tokenized = sent_tokenize(cleaned_war_and_peace)
-# si vous comptiez spécifier une langue, la syntaxe à utiliser serait: nltk_sent_tokenized = sent_tokenize(war_and_peace, language="russian"
+# si vous comptiez spécifier une langue, la syntaxe à utiliser serait&nbsp;: nltk_sent_tokenized = sent_tokenize(war_and_peace, language="russian"
 ```
 
 L’entièreté du texte contenu dans la variable `cleaned_war_and_peace` est désormais accessible en tant que liste de phrases dans la variable `nltk_sent_tokenized`. Il est maintenant plus simple d’établir quelle phrase est écrite en quelle langue, car nous disposons dorénavant d’une plus petite sélection de textes à analyser. Lorsque l’on travaille avec des quantités de données textuelles plus élevées, trouver des phrases particulières peut nécessiter une analyse plus approfondie du texte. L’extrait de code ci-dessous va itérer à travers toutes nos phrases et les imprimer une par une sur une nouvelle ligne pour en faciliter l’analyse.
@@ -233,7 +233,7 @@ multi_sent = nltk_sent_tokenized[4]
 print('Multilang: ' + multi_sent)
 ```
 
-Résultats:
+Résultats&nbsp;:
 ``` python
 Russian: Так говорила в июле 1805 года известная Анна Павловна Шерер, фрейлина и приближенная императрицы Марии Феодоровны, встречая важного и чиновного князя Василия, первого приехавшего на ее вечер.
 French: — Avant tout dites moi, comment vous allez, chère amie?
@@ -245,7 +245,7 @@ Nous allons maintenant répéter cette tokénisation de phrases avec spaCy et r�
 
 ``` python
 # télécharger le tokéniseur de phrases multilingue
-#note: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de la ligne d'installation
+#note&nbsp;: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de la ligne d'installation
 python -m spacy download xx_sent_ud_sm
 ```
 ``` python
@@ -277,7 +277,7 @@ spacy_multi_sent = str(spacy_sentences[5])
 print('Multilang: ' + spacy_multi_sent)
 ```
 
-Résultats:
+Résultats&nbsp;:
 ``` python
 Russian: Так говорила в июле 1805 года известная Анна Павловна Шерер, фрейлина и приближенная императрицы Марии Феодоровны, встречая важного и чиновного князя Василия, первого приехавшего на ее вечер.
 French: — Avant tout dites moi, comment vous allez, chère amie?
@@ -328,7 +328,7 @@ stanza_multi_sent = str(stanza_sentences[4])
 print('Multilang: ' + stanza_multi_sent)
 ```
 
-Résultats:
+Résultats&nbsp;:
 
 ``` python
 Russian: Так говорила в июле 1805 года известная Анна Павловна Шерер, фрейлина и приближенная императрицы Марии Феодоровны, встречая важного и чиновного князя Василия, первого приехавшего на ее вечер.
@@ -358,7 +358,7 @@ print('French estimate: ' + fre_estimate)
 print('Multilingual estimate: ' + multi_estimate)
 ```
 
-Résultats:
+Résultats&nbsp;:
 
 ``` python
 Russian estimate: rus
@@ -403,7 +403,7 @@ print(multi_doc._.language)
 ```
 
 
-Résultats:
+Résultats&nbsp;:
 
 ```
 {'language': 'ru', 'score': 0.9999978739911013}
@@ -482,7 +482,7 @@ print(cyrillic_words)
 print(latin_words)
 ```
 
-Résultats:
+Résultats&nbsp;:
 
 ```
 ['садитесь', 'и', 'рассказывайте']
@@ -506,7 +506,7 @@ print('Cyrillic estimate: ' + multi_estimate_1)
 print('Latin estimate: ' + multi_estimate_2)
 ```
 
-Résultats:
+Résultats&nbsp;:
 
 ```
 Cyrillic estimate: rus
@@ -527,7 +527,7 @@ Le package NLTK ne permet pas d'effectuer l’étiquetage morpho-syntaxique de l
 
 ``` python
 # télécharger le modèle de langage russe depuis spaCy
-#note: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de la ligne d'installation
+#note&nbsp;: si vous travaillez depuis un Jupyter notebook, ajoutez "!" au début de la ligne d'installation
 python -m spacy download ru_core_news_sm
 ```
 ``` python
@@ -542,7 +542,7 @@ for token in doc:
     print(token.text, token.pos_)
 ```
 
-Résultats:
+Résultats&nbsp;:
 
 ```
 Так ADV
@@ -591,7 +591,7 @@ doc = nlp(spacy_fre_sent)
 for token in doc:
     print(token.text, token.pos_)
 ```
-Résultats:
+Résultats&nbsp;:
 
 ```
 — PUNCT
@@ -642,7 +642,7 @@ print(cyrillic_words)
 print(latin_words)
 ```
 
-Résultats:
+Résultats&nbsp;:
 ```
 ['садитесь', 'и', 'рассказывайте', '.']
 ['Je', 'vois', 'que', 'je', 'vous', 'fais', 'peur', ',']
@@ -664,7 +664,7 @@ print(cyr_no_extra_space)
 print(lat_no_extra_space)
 ```
 
-Résultats:
+Résultats&nbsp;:
 
 ```
 садитесь и рассказывайте.
@@ -689,7 +689,7 @@ for token in doc:
     print(token.text, token.pos_)
 ```
 
-Résultats:
+Résultats&nbsp;:
 
 ```
 садитесь VERB
@@ -719,7 +719,7 @@ doc = nlp(stanza_rus_sent)
 print(*[f'word: {word.text}\tupos: {word.upos}' for sent in doc.sentences for word in sent.words], sep='\n')
 ```
 
-Résultats:
+Résultats&nbsp;:
 
 ```
 word: Так	upos: ADV
@@ -800,7 +800,7 @@ docs = nlp(docs)
 # imprimer les résultats
 print(*[f'word: {word.text}\tupos: {word.upos}' for sent in doc.sentences for word in sent.words], sep='\n')
 ```
-Résultats:
+Résultats&nbsp;:
 
 ```
 word: Так	upos: ADV
@@ -856,7 +856,7 @@ for token in doc:
     print(token, token.lemma_)
 ```
 
-Résultats:
+Résultats&nbsp;:
 
 ```
 садитесь садитесь
@@ -878,7 +878,7 @@ for token in doc:
     print(token, token.lemma_)
 ```
 
-Résultats:
+Résultats&nbsp;:
 
 ```
 Je je
@@ -936,20 +936,20 @@ Nous avons appris comment tokéniser du texte, reconnaître des langues de mani�
 
 Les leçons qui suivent peuvent vous aider avec différents aspects du traitement automatique du langage naturel non anglais et multilingue.
 
-- [Corpus Analysis with spaCy](/en/lessons/corpus-analysis-with-spacy): Cette leçon est une explication approfondie de l'utilisation de spaCy pour analyser un corpus de texte, et explique les capacités et fonctionnement de spaCy avec plus de détails. C'est une lecture plus que recommandée si vous souhaitez utiliser spaCy pour vos travaux.
+- [Corpus Analysis with spaCy](/en/lessons/corpus-analysis-with-spacy)&nbsp;: Cette leçon est une explication approfondie de l'utilisation de spaCy pour analyser un corpus de texte, et explique les capacités et fonctionnement de spaCy avec plus de détails. C'est une lecture plus que recommandée si vous souhaitez utiliser spaCy pour vos travaux.
 
-- [Normalizing Textual Data with Python](/en/lessons/normalizing-data): Cette leçon explique les différentes méthodes de normalisation de texte avec Python et sera particulièrement utile à celles et ceux qui ont besoin d'aide pour préparer leurs données textuelles à l'analyse numérique.
+- [Normalizing Textual Data with Python](/en/lessons/normalizing-data)&nbsp;: Cette leçon explique les différentes méthodes de normalisation de texte avec Python et sera particulièrement utile à celles et ceux qui ont besoin d'aide pour préparer leurs données textuelles à l'analyse numérique.
 
 **Autres ressources en rapport au traitement automatique du langage naturel multilingue et aux humanités numériques**
 
-- [Multilingual Digital Humanities](https://doi.org/10.4324/9781003393696): Un livre publié récemment qui couvre plusieurs sujets et projets d'humanités numériques multilingues, rassemblant un vaste spectre d'autrices·eurs et tourné vers une audience internationale (spoiler: l'auteur a un chapitre dans ce livre).
+- [Multilingual Digital Humanities](https://doi.org/10.4324/9781003393696)&nbsp;: Un livre publié récemment qui couvre plusieurs sujets et projets d'humanités numériques multilingues, rassemblant un vaste spectre d'autrices·eurs et tourné vers une audience internationale (spoiler&nbsp;: l'auteur a un chapitre dans ce livre).
   
-- [multilingualdh.org](https://multilingualdh.org/en/): Le site web du groupe Multilingual DH, un "réseau souple de chercheurs et chercheuses qui appliquent les outils et les méthodes des humanités numériques à d’autres langues que l’anglais". Le [dépot Github du groupe](https://github.com/multilingual-dh) contient également des ressources utiles, y compris [cette bibliographie](https://github.com/multilingual-dh/multilingual-dh-bibliography) ainsi que [cette liste d'outils pour le traitement automatique du langage naturel multilingue](https://github.com/multilingual-dh/TALN-resources).
+- [multilingualdh.org](https://multilingualdh.org/en/)&nbsp;: Le site web du groupe Multilingual DH, un "réseau souple de chercheurs et chercheuses qui appliquent les outils et les méthodes des humanités numériques à d’autres langues que l’anglais". Le [dépot Github du groupe](https://github.com/multilingual-dh) contient également des ressources utiles, y compris [cette bibliographie](https://github.com/multilingual-dh/multilingual-dh-bibliography) ainsi que [cette liste d'outils pour le traitement automatique du langage naturel multilingue](https://github.com/multilingual-dh/TALN-resources).
 
-- Agarwal, Milind, Joshua Otten, et Antonios Anastasopoulos. “Script-agnostic Language Identification”. arXiv.org (2024). [https://doi.org/10.48550/arXiv.2406.17901](https://doi.org/10.48550/arXiv.2406.17901): Cet article démontre que la randomisation de mots et l'exposition à une langue écrite en plusieurs écritures est important pour une identification de langue qui soit indépendante de l'écriture utilisée, et sera d'intérêt pour celles et ceux qui explorent les écrits scientifiques sur la reconnaissance de langue par voie d'ordinateur.
+- Agarwal, Milind, Joshua Otten, et Antonios Anastasopoulos. “Script-agnostic Language Identification”. arXiv.org (2024). [https://doi.org/10.48550/arXiv.2406.17901](https://doi.org/10.48550/arXiv.2406.17901)&nbsp;: Cet article démontre que la randomisation de mots et l'exposition à une langue écrite en plusieurs écritures est important pour une identification de langue qui soit indépendante de l'écriture utilisée, et sera d'intérêt pour celles et ceux qui explorent les écrits scientifiques sur la reconnaissance de langue par voie d'ordinateur.
 
-- Dombrowski, Quinn. “Preparing Non-English Texts for Computational Analysis”. _Modern Languages Open_ 1 (2020). [https://doi.org/10.3828/mlo.v0i0.294](https://doi.org/10.3828/mlo.v0i0.294): Cette leçon couvre quelques défis majeurs au traitement automatique du langage naturel posés par la grammaire ou système d'écriture de plusieurs langues autres que l'anglais et démontre comment surmonter ces problématiques. Il sera utile pour celles et ceux qui cherchent à étendre leurs compétences quand il s'agit d'appliquer des méthodes de traitement automatique du langage naturel sur des langues autres que l'anglais.
+- Dombrowski, Quinn. “Preparing Non-English Texts for Computational Analysis”. _Modern Languages Open_ 1 (2020). [https://doi.org/10.3828/mlo.v0i0.294](https://doi.org/10.3828/mlo.v0i0.294)&nbsp;: Cette leçon couvre quelques défis majeurs au traitement automatique du langage naturel posés par la grammaire ou système d'écriture de plusieurs langues autres que l'anglais et démontre comment surmonter ces problématiques. Il sera utile pour celles et ceux qui cherchent à étendre leurs compétences quand il s'agit d'appliquer des méthodes de traitement automatique du langage naturel sur des langues autres que l'anglais.
 
-- Dombrowski, Quinn. What’s a "Word": Multilingual DH and the English Default, 15 octobre 2020. [https://quinndombrowski.com/blog/2020/10/15/whats-word-multilingual-dh-and-english-default/undefined.](https://perma.cc/A5YS-2DUU): Cette présentation donnée à l'édition de 2020 de la _McGill DH Spectrums of DH series_ contient une excellente introduction à l'importance de travailler avec des langues autres que l'anglais dans les humanités numériques.
+- Dombrowski, Quinn. What’s a "Word": Multilingual DH and the English Default, 15 octobre 2020. [https://quinndombrowski.com/blog/2020/10/15/whats-word-multilingual-dh-and-english-default/undefined.](https://perma.cc/A5YS-2DUU)&nbsp;: Cette présentation donnée à l'édition de 2020 de la _McGill DH Spectrums of DH series_ contient une excellente introduction à l'importance de travailler avec des langues autres que l'anglais dans les humanités numériques.
 
-- Velden, Mariken A. C. G. van der, Martijn Schoonvelde, et Christian Baden. “Introduction to the Special Issue on Multilingual Text Analysis”. _Computational Communication Research_ 5, no 2 (2023). [https://doi.org/10.5117/CCR2023.2.1.VAND](https://doi.org/10.5117/CCR2023.2.1.VAND): Cette édition sera particulièrement intéressante pour celles et ceux qui cherchent des cas de recherche scientifique de traitement automatique du langage naturel multilingue, ou qui s'intéressent à l'état de l'analyse de texte multilingue dans la littérature scientifique contemporaine.
+- Velden, Mariken A. C. G. van der, Martijn Schoonvelde, et Christian Baden. “Introduction to the Special Issue on Multilingual Text Analysis”. _Computational Communication Research_ 5, no 2 (2023). [https://doi.org/10.5117/CCR2023.2.1.VAND](https://doi.org/10.5117/CCR2023.2.1.VAND)&nbsp;: Cette édition sera particulièrement intéressante pour celles et ceux qui cherchent des cas de recherche scientifique de traitement automatique du langage naturel multilingue, ou qui s'intéressent à l'état de l'analyse de texte multilingue dans la littérature scientifique contemporaine.

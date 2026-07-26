@@ -32,7 +32,7 @@ Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de tran
 
 Ahora bien, ¿cómo puede un [_script_](https://es.wikipedia.org/wiki/Script) ayudarnos en nuestras tareas de humanidades digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de [macros](https://es.wikipedia.org/wiki/Macro), gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
 
-Esta herramienta cuenta con antecedentes en el ámbito de la traducción[^3] y nuestra propuesta pretende ser una solución inspirada en los principios de la los principios de la computación mínima (_minimal computing_)[^4].
+Esta herramienta cuenta con antecedentes en el ámbito de la traducción[^3] y nuestra propuesta pretende ser una solución inspirada en los principios de la computación mínima (_minimal computing_)[^4].
 
 ## ¿Qué debes saber?
 
@@ -607,7 +607,7 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 - Mallett, Chris, Steve Gray, y colaboradores. AutoHotkey, versión 2.0. 2024. GNU GPL v2. [https://github.com/AutoHotkey/AutoHotkey](https://github.com/AutoHotkey/AutoHotkey).
 - Río Riande, Gimena del. "Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto". _Publicaciones de la Asociación Argentina de Humanidades Digitales_ 3 (noviembre de 2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).
 - Río Riande, Gimena del, Gabriel Calarco, Roy Youdale, y Patience Shell. "Minimal Computing 101". _Sobre Minimal Computing_, 8 de agosto de 2025. [https://hdlab.space/minimalbook/sobre_minimalcomputing.html](https://hdlab.space/minimalbook/sobre_minimalcomputing.html).
-- The TEI Consortium. _The TEI Guidelines_. 2026, Version 4.11.0. [https://guidelines.tei-c.de/en/html/index.html](https://guidelines.tei-c.de/en/html/index.html).
+- TEI Consortium. _The TEI Guidelines_. 2026, Version 4.11.0. [https://guidelines.tei-c.de/en/html/index.html](https://guidelines.tei-c.de/en/html/index.html).
 - tidbit. "Beginner Tutorial AutoHotkey v2". _AutoHotkey v2 Documentation_, 2014. [https://www.autohotkey.com/docs/v2/Tutorial.htm](https://www.autohotkey.com/docs/v2/Tutorial.htm).
 
 ## Notas
@@ -618,6 +618,6 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 [^4]: Río Riande, "Humanidades Digitales"; Río Riande et al., "Minimal Computing 101".
 [^5]: La compatibilidad está garantizada en computadores con sistema operativo Windows 7 o superiores. Aunque no se aborda en esta lección, en Linux existe [AutoKey](https://github.com/autokey/autokey), una herramienta independiente de automatización de escritorio con funciones similares. Está diseñada para entornos X11 y presenta problemas de compatibilidad cuando se utiliza Wayland en lugar de Xorg. Algo similar ocurre con implementaciones como [AHK_X11](https://github.com/phil294/AHK_X11). Enlazamos a Wikipedia en inglés por la ausencia de una fuente equivalente en español.
 [^6]: Puedes acceder al listado detallado de cambios aquí: [https://www.autohotkey.com/docs/v2/v2-changes.htm](https://www.autohotkey.com/docs/v2/v2-changes.htm). También encontrarás el enlace a un convertidor de _scripts_ versión 1 a 2.
-[^7]: The TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html).
-[^8]: The TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html).
-[^9]: The TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-ex.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-ex.html). Véase un ejemplo de su uso en [https://tei-c.org/release/doc/tei-p5-doc/es/html/CO.html#COEDADD](https://tei-c.org/release/doc/tei-p5-doc/es/html/CO.html#COEDADD).
+[^7]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html).
+[^8]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html).
+[^9]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-ex.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-ex.html). Véase un ejemplo de su uso en [https://tei-c.org/release/doc/tei-p5-doc/es/html/CO.html#COEDADD](https://tei-c.org/release/doc/tei-p5-doc/es/html/CO.html#COEDADD).

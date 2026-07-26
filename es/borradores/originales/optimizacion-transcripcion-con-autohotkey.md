@@ -50,6 +50,17 @@ El primer paso, entonces, es acceder a la página oficial de [AutoHotkey](https:
 
 En la interfaz de inicio verás varias opciones; sin embargo, por ahora solo nos interesa crear un nuevo _script_.
 
+## Objetivos
+
+Una vez finalizada la lección, esperamos que puedas:
+
+- Instalar y configurar AHK en Windows para automatizar tus tareas de transcripción.
+- Definir _hotkeys_ personalizadas para etiquetar selecciones, transformar texto y abrir programas o recursos web.
+- Crear tus propias _hotstrings_ para desarrollar abreviaturas e insertar fragmentos de texto o estructuras basadas en TEI.
+- Limitar el funcionamiento de las automatizaciones a determinados programas con la condición `#HotIf`.
+- Adaptar y ampliar el _script_ que te proporcionamos según tus necesidades, creando tu propio flujo de trabajo y convirtiéndolo en un ejecutable para que lo puedas usar en más de un computador.
+- Opcionalmente, crear una interfaz gráfica sencilla.
+
 ## Tu primer script: hotkeys y hotstrings
 
 Buena parte de lo que encontrarás en esta sección se basa en la [explicación introductoria de tidbit](https://www.autohotkey.com/docs/v2/Tutorial.htm), aunque aquí ajustaremos sus indicaciones al objetivo de esta lección. Te recomendamos consultarla no solo para resolver dudas, sino también para ampliar tus conocimientos y aprovechar al máximo las posibilidades de AHK.
@@ -105,7 +116,7 @@ Guarda y ejecuta el archivo. Después, abre cualquier campo de texto y presiona 
 
 Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición TEI: introduciremos los elementos `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 los definen así:
 
-> `<gap>` (gap) indicates a point where material has been omitted in a transcription, whether for editorial reasons described in the TEI header, as part of sampling practice, or because the material is illegible, invisible, or inaudible[^7].
+> `<gap>` (gap) indicada un punto donde algún material ha sido omitido en una transcripción, bien por criterios de edición descritos en el cabezado TEI, bien como parte de una práctica habitual, o bien porqué el material es ilegible o incomprensible[^7].
 
 Normalmente, esta etiqueta puede contener atributos como `reason` o `agent`. Para este ejemplo, asumiremos que en nuestra edición solo nos interesa marcar, dentro de `<gap>`, el motivo del vacío:
 ```ahk
@@ -117,7 +128,7 @@ En este caso, `Alt + G` insertará lo siguiente:
 ```
 Por otro lado, la etiqueta `<supplied>` se define como sigue:
 
-> `<supplied>` (supplied) signifies text supplied by the transcriber or editor for any reason; for example because the original cannot be read due to physical damage, or because of an obvious omission by the author or scribe[^8].
+> `<supplied>` (supplied) indica fragmentos de texto añadidos por el transcriptor o por el revisor en el lugar donde el original es ilegible, porqué presenta daños físicos, lagunas o por otros motivos[^8].
 
 Nuevamente, incluiremos solo el atributo `reason`:
 ```ahk
@@ -579,6 +590,6 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 [^4]: Río Riande, "Humanidades Digitales"; Río Riande et al., "Minimal Computing 101".
 [^5]: La compatibilidad está garantizada en computadores con sistema operativo Windows 7 o superiores. Aunque no se aborda en esta lección, en Linux existe [AutoKey](https://github.com/autokey/autokey), una herramienta independiente de automatización de escritorio con funciones similares. Está diseñada para entornos X11 y presenta problemas de compatibilidad cuando se utiliza Wayland en lugar de Xorg. Algo similar ocurre con implementaciones como [AHK_X11](https://github.com/phil294/AHK_X11). Enlazamos a Wikipedia en inglés por la ausencia de una fuente equivalente en español.
 [^6]: Puedes acceder al listado detallado de cambios aquí: [https://www.autohotkey.com/docs/v2/v2-changes.htm](https://www.autohotkey.com/docs/v2/v2-changes.htm). También encontrarás el enlace a un convertidor de _scripts_ versión 1 a 2.
-[^7]: The TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-gap.html](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-gap.html).
-[^8]: The TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supplied.html](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supplied.html).
-[^9]: The TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ex.html](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ex.html). Véase su uso en [https://tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#COEDADD](https://tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#COEDADD).
+[^7]: The TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html).
+[^8]: The TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html).
+[^9]: The TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-ex.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-ex.html). Véase su uso en [https://tei-c.org/release/doc/tei-p5-doc/es/html/CO.html#COEDADD](https://tei-c.org/release/doc/tei-p5-doc/es/html/CO.html#COEDADD).

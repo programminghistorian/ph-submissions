@@ -29,19 +29,6 @@ isEditorActive() {
     Send "{Left 13}"
 }
 
-!1::
-{
-    Run "https://pares.cultura.gob.es/"
-    Run "https://www.iifilologicas.unam.mx/dicabenovo/"
-
-    try {
-        Run "swriter.exe" ; LibreOffice Writer
-    }
-    catch {
-        Run "soffice.exe --writer"
-    }
-}
-
 !n::tagger("<persName>", "</persName>")
 !p::tagger("<placeName>", "</placeName>")
 !t::tagger("<title>", "</title>")
@@ -180,6 +167,21 @@ isEditorActive() {
 ^!x::convertSimpleMarkup()
 
 #HotIf
+
+; |----------------------HOTKEY ESCAPADA---------------------------|
+
+!1::
+{
+    Run "https://pares.cultura.gob.es/"
+    Run "https://www.iifilologicas.unam.mx/dicabenovo/"
+
+    try {
+        Run "swriter.exe" ; LibreOffice Writer
+    }
+    catch {
+        Run "soffice.exe --writer"
+    }
+}
 
 ; |----------------------FUNCIONES---------------------------|
 

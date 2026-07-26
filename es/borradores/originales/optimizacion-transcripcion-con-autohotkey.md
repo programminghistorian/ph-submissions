@@ -32,11 +32,11 @@ Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de tran
 
 Ahora bien, ¿cómo puede un [_script_](https://es.wikipedia.org/wiki/Script) ayudarnos en nuestras tareas de humanidades digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de [macros](https://es.wikipedia.org/wiki/Macro), gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
 
-Esta herramienta cuenta con antecedentes en el ámbito de la traducción[^3] y nuestra propuesta pretende ser una solución inspirada en los principios de la _minimal computing_[^4].
+Esta herramienta cuenta con antecedentes en el ámbito de la traducción[^3] y nuestra propuesta pretende ser una solución inspirada en los principios de la los principios de la computación mínima (_minimal computing_)[^4].
 
 ## ¿Qué debes saber?
 
-Al tratarse de una lección centrada en la edición de textos con TEI, te recomendamos que antes hayas leído las dos lecciones de Nicolás Vaughan, tituladas [Introducción a la codificación de textos en TEI](/es/lecciones/introduccion-a-tei-1), y la guía de Susanna Allés, titulada [Introducción a la Text Encoding Initiative](https://tthub.io/aprende/tutorial/introduccion-text-encoding-initiative). Si después quieres visualizar tus resultados en un entorno web, también puedes consultar la lección de Gabriel Calarco y Gimena del Río Riande sobre [CETEIcean](/es/lecciones/publicar-archivos-tei-ceteicean).
+Al tratarse de una lección centrada en la edición de textos con TEI, te recomendamos que antes hayas leído las dos lecciones de Nicolás Vaughan, tituladas Introducción a la codificación de textos en TEI ([parte 1](/es/lecciones/introduccion-a-tei-1) y [parte 2](/es/lecciones/introduccion-a-tei-2)), y la guía de Susanna Allés, titulada [Introducción a la Text Encoding Initiative](https://tthub.io/aprende/tutorial/introduccion-text-encoding-initiative). Si después quieres visualizar tus resultados en un entorno web, también puedes consultar la lección de Gabriel Calarco y Gimena del Río Riande sobre [CETEIcean](/es/lecciones/publicar-archivos-tei-ceteicean).
 
 En particular, para la sección dedicada a las funciones, conviene que tengas algunas nociones básicas de programación. No necesitas experiencia avanzada: los fragmentos de código estarán acompañados de una explicación paso a paso. Sin embargo, te resultará útil entender qué es una función y cómo operan estructuras condicionales como `if`, puesto que AHK comparte algunos principios con otros lenguajes de programación, como Python o R. Para reforzar estos conceptos, te recomendamos consultar las lecciones de William J. Turkel y Adam Crymble, [Reutilización de código y modularidad en Python](/es/lecciones/reutilizacion-de-codigo-y-modularidad) y [De HTML a lista de palabras](/es/lecciones/de-html-a-lista-de-palabras-2).
 
@@ -103,7 +103,7 @@ También puedes escribir la misma instrucción entre llaves, en forma de bloque:
 ```
 Guarda y ejecuta el archivo. Después, abre cualquier campo de texto y presiona `Ctrl + H`: ¡es tu primera _hotkey_ en funcionamiento! Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas.
 
-Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición TEI: introduciremos las marcas `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 definen esta etiqueta así:
+Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición TEI: introduciremos los elementos `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 los definen así:
 
 > `<gap>` (gap) indicates a point where material has been omitted in a transcription, whether for editorial reasons described in the TEI header, as part of sampling practice, or because the material is illegible, invisible, or inaudible[^7].
 
@@ -147,11 +147,17 @@ En el caso de programas de terceros, conviene comprobar el nombre exacto del eje
 
 Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la función `Run` aparece cuando necesitas abrir varios recursos que forman parte de tu flujo de trabajo. Por ejemplo, supongamos que necesitas abrir Portal de Archivos Españoles (PARES) para buscar documentación, el _Diccionario de abreviaturas novohispanas_ (DICABENOVO) y LibreOffice Writer para transcribir:
 ```ahk
-!1::  
-{  
-	Run "https://pares.cultura.gob.es/"
-	Run "https://www.iifilologicas.unam.mx/dicabenovo/"  
-	Run "swriter.exe" ; LibreOffice Writer  
+!1::
+{
+    Run "https://pares.cultura.gob.es/"
+    Run "https://www.iifilologicas.unam.mx/dicabenovo/"
+
+    try {
+        Run "swriter.exe" ; LibreOffice Writer
+    }
+    catch {
+        Run "soffice.exe --writer"
+    }
 }
 ```
 <div class="alert alert-info" markdown="1">
@@ -191,7 +197,7 @@ En casos como este, conviene evitar secuencias de activación demasiado largas. 
 :*:ulto.::ult<ex>im</ex>o
 :*:ulta.::ult<ex>im</ex>a
 ```
-Ahora, ¡haz la prueba en cualquier campo de texto! Como actividad, te propongo trabajar con una letra del DICABENOVO, la que prefieras. El objetivo es que practiques la creación de _hotstrings_ y reflexiones sobre cómo puedes adaptarlas a las necesidades de tu corpus. En el _script_ de ejemplo que acompaña a esta lección encontrarás desarrollada la letra U.
+Ahora, ¡haz la prueba en cualquier campo de texto! Como actividad, te proponemos trabajar con una letra del DICABENOVO, la que prefieras. El objetivo es que practiques la creación de _hotstrings_ y reflexiones sobre cómo puedes adaptarlas a las necesidades de tu corpus. En el _script_ de ejemplo que acompaña a esta lección encontrarás desarrollada la letra U.
 
 Combinando todo lo que hemos aprendido hasta ahora, podríamos crear algo similar al autocompletado que usan los entornos de programación para preetiquetar entidades como nombres, lugares o títulos de obras:
 ```ahk
@@ -297,7 +303,7 @@ Como puedes ver, van a reemplazar los parámetros `openTag` y `closeTag`. Por ta
 ```xml
 <persName>Miguel</persName>
 ```
-Uno de los inconvenientes de trabajar con el [portapapeles](https://es.wikipedia.org/wiki/Cortar,_copiar_y_pegar#Portapapeles) es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la primera línea: `savedClipboard := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido que seleccionamos en nuestro portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
+Uno de los inconvenientes de trabajar con el [portapapeles](https://es.wikipedia.org/wiki/Cortar,_copiar_y_pegar#Portapapeles) es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la línea: `savedClipboard := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido que seleccionamos en nuestro portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
 
 `A_Clipboard := ""` deja el portapapeles vacío, asegurándonos así de que el contenido copiado coincide con el seleccionado y con `Send "^c"` simulamos la acción `Ctrl + C`, es decir, copiamos al portapapeles el texto que tenemos seleccionado.
 
@@ -350,7 +356,7 @@ convertSelection(mode) {
 ```
 En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasándolo a mayúsculas, mientras que en el segundo, aplica `SendText(StrLower(selectedText))` y lo convierte en minúsculas. Si no recibe ninguno de los anteriores, lo deja igual: `SendText(selectedText)`.
 
-Una vez copiado el texto seleccionado, restaura el portapapeles original, convierte a mayúsculas o minúsculas y, finalmente, introduce el resultado con `SendText()`. Al inicio, con `releaseModifiers()`, nos aseguramos de liberar preventivamente las teclas `Alt` y `Ctrl`. En el descargable podrás llamar a estas funciones con `Alt + U` (convertir a mayúsculas) y `Alt + L`(convertir a minúsculas).
+Una vez copiado el texto seleccionado, restaura el portapapeles original, convierte a mayúsculas o minúsculas y, finalmente, introduce el resultado con `SendText()`. Al inicio, con `releaseModifiers()`, nos aseguramos de liberar preventivamente las teclas `Alt` y `Ctrl`. En el descargable podrás llamar a estas funciones con `Alt + U` (convertir a mayúsculas) y `Alt + L` (convertir a minúsculas).
 
 Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante `Alt + C`, la cual inserta un texto definido previamente en la ventana en la que estemos trabajando:
 ```ahk
@@ -518,7 +524,7 @@ toggleScript() {
     }
 }
 ```
-En las dos primeras líneas se declaran las variables que usará la interfaz: `scriptActive` almacena el estado de los atajos. Por una parte, `mainGui`, `testEdit` y `toggleButton` hacen referencia, respectivamente, a la ventana, a la caja de texto y al botón. Por otra, `createGui()` ejecuta la función encargada de construir la interfaz.
+En las dos primeras líneas se declaran las variables que usará la interfaz: `scriptActive` almacena el estado de los atajos. Primero, declaramos las variables `mainGui`, `testEdit` y `toggleButton`, que usaremos para almacenar los componentes de la interfaz. Segundo, llamamos a `createGui()`, es decir, la función encargada de construirla.
 
 Dentro de `createGui()` se crea la ventana con  `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que pueda cambiar de tamaño (`+Resize`) y minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para quien lo utilice.
 
@@ -548,9 +554,9 @@ Los ejecutables generados con `Ahk2Exe` pueden ser identificados por algunos pro
 
 Como habrás observado hasta ahora, en esta lección solo hemos explorado una pequeña parte de lo que es posible hacer con AHK. Además, nos hemos centrado en algunas de sus funciones más sencillas, pero con este lenguaje podemos hacer mucho más. AHK no solo permite reducir o simplificar tareas repetitivas, sino también construir herramientas mínimas que se adapten a lo que requiere nuestro corpus, sin necesidad de desarrollar una aplicación compleja desde cero.
 
-Por ello, creemos que puede ser un recurso sumamente útil para quienes quieran mejorar su flujo de trabajo paleográfico o de edición sin necesidad de tener conocimientos avanzados de programación. De hecho, puedes ayudarte con IA generativa para desarrollar tu propio _script_, partiendo de lo aprendido en esta lección y de la documentación oficial.
+Por ello, creemos que puede ser un recurso sumamente útil para quienes quieran mejorar su flujo de trabajo paleográfico o de edición sin necesidad de tener conocimientos avanzados de programación. De hecho, puedes ayudarte con inteligencia artificial (IA) generativa para desarrollar tu propio _script_, partiendo de lo aprendido en esta lección y de la documentación oficial.
 
-Te recomendamos echar un vistazo a los repositorios de GitHub basados en AHK, ya que permite imaginar flujos de trabajo mucho más complejos, especialmente aquellos que conectan con interfaces de programación de aplicaciones (API), herramientas de OCR o modelos de lenguaje de gran tamaño (LLM).
+Te recomendamos explorar los repositorios de GitHub basados en AHK, ya que permiten imaginar flujos de trabajo mucho más complejos, especialmente aquellos que conectan con interfaces de programación de aplicaciones (API), herramientas de OCR o modelos de lenguaje de gran tamaño (LLM).
 
 Nuestra recomendación final es que programes y pruebes de forma constante. De esa manera, podrás ampliar y mejorar tu _script_ a medida que trabajes con tus propios materiales. Como has visto, AHK ofrece múltiples posibilidades y esa flexibilidad es una gran ventaja para quienes trabajamos en humanidades digitales: nuestras necesidades son diversas, nuestros corpus presentan problemas distintos y puede que lo que funcione para ti no lo haga para otra persona.
 
@@ -567,7 +573,7 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 
 ## Notas
 
-[^1]: El texto de esta lección ha sido revisado con herramientas de inteligencia artificial generativa, en concreto, ChatGPT.  
+[^1]: El texto de esta lección ha sido revisado con herramientas de inteligencia artificial (IA) generativa, en concreto, ChatGPT.
 [^2]: El tipo de letra no es la única barrera a la que nos enfrentamos desde la investigación: las digitalizaciones de los manuscritos no siempre son lo suficientemente fieles para poder aplicar estas herramientas que, además, en algunos casos, son de pago (o limitados a un determinado número de tokens al mes). Las alternativas de código abierto y gratuitas, por su parte, requieren de ciertos conocimientos técnicos superiores a los necesarios para utilizar la herramienta aquí propuesta.
 [^3]: Campos Leza, "Introducción a AutoHotkey".
 [^4]: Río Riande, "Humanidades Digitales"; Río Riande et al., "Minimal Computing 101".

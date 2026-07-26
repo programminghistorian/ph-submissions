@@ -1,14 +1,15 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 SetTitleMatchMode "RegEx"
-SetWinDelay 0
 
 ; |----------------------CONTEXTO---------------------------|
 
 isEditorActive() {
-    return WinActive(
-        "ahk_exe (soffice\.bin|notepad\+\+\.exe|Code\.exe|notepad\.exe)"
-    ) || WinActive("^Prueba de script TPH AHK$")
+    return WinActive("ahk_exe soffice\.(exe|bin)")
+        || WinActive("ahk_exe notepad\+\+\.exe")
+        || WinActive("ahk_exe notepad\.exe")
+        || WinActive("ahk_class Notepad")
+        || WinActive("^Prueba de script TPH AHK$")
 }
 
 #HotIf isEditorActive()
@@ -32,27 +33,33 @@ isEditorActive() {
 {
     Run "https://pares.cultura.gob.es/"
     Run "https://www.iifilologicas.unam.mx/dicabenovo/"
-    Run "swriter.exe" ; LibreOffice Writer
+
+    try {
+        Run "swriter.exe" ; LibreOffice Writer
+    }
+    catch {
+        Run "soffice.exe --writer"
+    }
 }
 
-!n::tagger("<name>", "</name>")
-!p::tagger("<place>", "</place>")
+!n::tagger("<persName>", "</persName>")
+!p::tagger("<placeName>", "</placeName>")
 !t::tagger("<title>", "</title>")
 
 !u::convertSelection("upper")
 !l::convertSelection("lower")
-!c::insertNote("<note>[Comentario]</note>")
+!c::insertNote("<note>[nota del editor]</note>")
 
 ; |----------------------HOTSTRINGS---------------------------|
 
-::tph::The Programming Historian
-:*:@n::<name></name>{Left 7}
-:*:@p::<place></place>{Left 8}
+:*:tph::The Programming Historian
+:*:@n::<persName></persName>{Left 11}
+:*:@p::<placeName></placeName>{Left 12}
 :*:@t::<title></title>{Left 8}
 
 ; |----------------------HOTSTRING PLANTILLA TEI-XML---------------------------|
 
-::tei.xml::
+:*:tei.xml::
 {
     template := '
 (
@@ -75,8 +82,8 @@ isEditorActive() {
       </titleStmt>
       <publicationStmt>
         <p>
-		Información sobre la publicación de este documento (no de su fuente).
-		</p>
+          Información sobre la publicación de este documento (no de su fuente).
+        </p>
       </publicationStmt>
       <sourceDesc>
         <p>Información sobre la fuente de este documento.</p>
@@ -148,15 +155,15 @@ isEditorActive() {
 
 ; |-----U-----|
 
-::ulte.::ulteriorm<expan>en</expan>te
-::ulti.::ultimam<expan>en</expan>te
-::ulto.::ult<expan>im</expan>o
-::ulta.::ult<expan>im</expan>a
-::unani.::unanimem<expan>en</expan>te
-::unani-::unani-mem<expan>en</expan>te
-::unicam.::unicam<expan>en</expan>te
-::uni.::uni<expan>versi</expan>dad
-::uti.::utilid<expan>a</expan>d
+:*:ulte.::ulteriorm<ex>en</ex>te
+:*:ulti.::ultimam<ex>en</ex>te
+:*:ulto.::ult<ex>im</ex>o
+:*:ulta.::ult<ex>im</ex>a
+:*:unani.::unanimem<ex>en</ex>te
+:*:unani-::unani-mem<ex>en</ex>te
+:*:unicam.::unicam<ex>en</ex>te
+:*:uni.::uni<ex>versi</ex>dad
+:*:uti.::utilid<ex>a</ex>d
 
 ; |-----V-----|
 
@@ -178,8 +185,8 @@ isEditorActive() {
 
 releaseModifiers() {
     ; Libera los modificadores antes de enviar otras combinaciones
-    KeyWait "Alt"
-    KeyWait "Ctrl"
+    KeyWait "Alt", "T1"
+    KeyWait "Ctrl", "T1"
     Send "{Alt Up}{Ctrl Up}"
 }
 
@@ -255,12 +262,12 @@ convertSimpleMarkup() {
     text := RegExReplace(
         text,
         "\*\*([^*]+)\*\*",
-        "<place>$1</place>"
+        "<placeName>$1</placeName>"
     )
     text := RegExReplace(
         text,
         "(?<!\*)\*([^*]+)\*(?!\*)",
-        "<name>$1</name>"
+        "<persName>$1</persName>"
     )
     text := RegExReplace(
         text,
@@ -285,6 +292,8 @@ createGui() {
         "+AlwaysOnTop +Resize +MinimizeBox",
         "Prueba de script TPH AHK"
     )
+
+    mainGui.OnEvent("Close", confirmExit)
     mainGui.SetFont("s10", "Segoe UI")
 
     mainGui.AddText(
@@ -297,7 +306,11 @@ createGui() {
         "Prueba aquí:`r`n`r`ntph`r`nulte.`r`n@n`r`n@p`r`n@t"
     )
 
-    toggleButton := mainGui.AddButton("w500 h35", "Desactivar atajos")
+    toggleButton := mainGui.AddButton(
+        "w500 h35",
+        "Desactivar atajos"
+    )
+
     toggleButton.OnEvent("Click", (*) => toggleScript())
 
     mainGui.Show("AutoSize Center")
@@ -315,4 +328,20 @@ toggleScript() {
         Suspend true
         toggleButton.Text := "Activar atajos"
     }
+}
+
+confirmExit(guiObj) {
+    options := "YesNo Icon? Default2 Owner" guiObj.Hwnd
+
+    response := MsgBox(
+        "¿Quieres cerrar la interfaz y salir del script?",
+        "Confirmar salida",
+        options
+    )
+
+    if response = "Yes"
+        ExitApp()
+
+    ; Impide que la ventana se cierre si se selecciona «No»
+    return true
 }

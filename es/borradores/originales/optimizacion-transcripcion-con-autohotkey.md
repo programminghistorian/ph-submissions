@@ -40,7 +40,7 @@ Al tratarse de una lección centrada en la edición de textos con TEI, te recome
 
 En particular, para la sección dedicada a las funciones, conviene que tengas algunas nociones básicas de programación. No necesitas experiencia avanzada: los fragmentos de código estarán acompañados de una explicación paso a paso. Sin embargo, te resultará útil entender qué es una función y cómo operan estructuras condicionales como `if`, puesto que AHK comparte algunos principios con otros lenguajes de programación, como Python o R. Para reforzar estos conceptos, te recomendamos consultar las lecciones de William J. Turkel y Adam Crymble, [Reutilización de código y modularidad en Python](/es/lecciones/reutilizacion-de-codigo-y-modularidad) y [De HTML a lista de palabras](/es/lecciones/de-html-a-lista-de-palabras-2).
 
-## ¿Qué necesitas? Requerimientos
+## ¿Qué necesitas?
 
 El primer requisito es disponer de un computador con Windows. Aunque AHK es gratuito y de código abierto, su dependencia de este sistema operativo limita el alcance de la lección y excluye a quienes trabajan exclusivamente en otros sistemas. Sin embargo, hemos elegido esta herramienta porque permite automatizar tareas mediante _scripts_ breves, sin necesidad de instalar entornos de programación complejos ni disponer de conocimientos avanzados. De este modo, ofrece a una amplia audiencia de humanidades digitales una vía accesible de entrada a la automatización, ya que Windows es el [sistema operativo para computadores de escritorio y portátiles más utilizado en el mundo](https://en.wikipedia.org/wiki/Usage_share_of_operating_systems#Desktop_and_laptop_computers)[^5].
 
@@ -50,7 +50,7 @@ El primer paso, entonces, es acceder a la página oficial de [AutoHotkey](https:
 
 En la interfaz de inicio verás varias opciones; sin embargo, por ahora solo nos interesa crear un nuevo _script_.
 
-## Tu primer _script_: _hotkeys_ y _hotstrings_
+## Tu primer script: hotkeys y hotstrings
 
 Buena parte de lo que encontrarás en esta sección se basa en la [explicación introductoria de tidbit](https://www.autohotkey.com/docs/v2/Tutorial.htm), aunque aquí ajustaremos sus indicaciones al objetivo de esta lección. Te recomendamos consultarla no solo para resolver dudas, sino también para ampliar tus conocimientos y aprovechar al máximo las posibilidades de AHK.
 
@@ -72,8 +72,8 @@ Veamos ahora cómo configurar una _hotkey_. Antes, sin embargo, conviene que con
 |---|---|
 | `Windows` | `#` (almohadilla o numeral) |
 | `Alt` | `!` (signo de exclamación de cierre) |
-| `Ctrl` | `^` (caret) |
-| `Shift` | `+` (signo suma) |
+| `Ctrl` | `^` (acento circunflejo) |
+| `Shift` | `+` (signo de suma) |
 
 Puedes consultar el resto de combinaciones posibles en la [documentación de AutoHotkey](https://www.autohotkey.com/docs/v2/Hotkeys.htm).
 
@@ -84,7 +84,7 @@ De igual manera, como ocurre en otros lenguajes de programación, AHK cuenta con
 | `Send` | Envía pulsaciones de tecla o clics simulados a la ventana activa. |
 | `Run` | Ejecuta un programa externo o abre una URL en el navegador predeterminado. |
 
-<div class="alert alert-info">
+<div class="alert alert-info" markdown="1">
 Más adelante usaremos `SendText`, una variante de `Send` destinada a enviar texto literal y, por ello, más adecuada en algunos de los contextos que veremos.
 </div>
 
@@ -154,7 +154,7 @@ Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la fun
 	Run "swriter.exe" ; LibreOffice Writer  
 }
 ```
-<div class="alert alert-info">
+<div class="alert alert-info" markdown="1">
 Los comentarios deben ir precedidos de un punto y coma, como en el ejemplo anterior: `; LibreOffice Writer`.
 </div>
 
@@ -170,28 +170,32 @@ Escribe ahora `tph` en cualquier campo de texto y pulsa una tecla de cierre, com
 
 Como habrás observado, puedes aplicar este procedimiento a cualquier abreviatura frecuente, histórica o no. En tareas como la transcripción manual, resulta especialmente conveniente para expandir abreviaturas tomadas de recursos como el DICABENOVO o para insertar formas ya adaptadas a las necesidades de tu corpus, incluido el marcado que quieras aplicar desde el primer momento.
 
-Según las directrices TEI P5, para indicar que el editor ha expandido una abreviatura, debe encerrarse en la etiqueta `<expan>` la expansión de dicha abreviatura[^9]. Veamos un ejemplo con la palabra ulteriormente y una de sus posibles abreviaturas, tomada del DICABENOVO.
+Según las directrices TEI P5, utilizamos el elemento `<ex>` para marcar las letras añadidas por el editor durante el desarrollo de una abreviatura[^9]. Veamos un ejemplo con la palabra ulteriormente y una de sus posibles abreviaturas, tomada del DICABENOVO.
 
-En un texto podemos encontrar la forma abreviada _ulteriormte_. Si queremos transcribirla con la abreviatura desarrollada y marcada en TEI, podemos representarla así: `ulteriorm<expan>en</expan>te`. Para automatizar este proceso, podríamos emplear la siguiente _hotstring_:
+<div class="alert alert-info" markdown="1">
+Recuerda que la edición en TEI admite múltiples soluciones. Por ejemplo, puedes representar conjuntamente la forma  original y su desarrollo mediante la estructura `<choice><abbr>…</abbr><expan>…</expan></choice>`. Sin embargo, en esta lección usamos `<ex>` porque nuestro objetivo es marcar únicamente las letras suplidas en el interior de la palabra.
+</div>
+
+En un texto podemos encontrar la forma abreviada _ulteriormte_. Si queremos transcribirla con la abreviatura desarrollada y marcada en TEI, podemos representarla así: `ulteriorm<ex>en</ex>te`. Para automatizar este proceso, podríamos emplear la siguiente _hotstring_:
 ```ahk
-::ulte.::ulteriorm<expan>en</expan>te
+:*:ulte.::ulteriorm<ex>en</ex>te
 ```
 En casos como este, conviene evitar secuencias de activación demasiado largas. Es preferible reducirlas al mínimo necesario y asegurarse de evitar que entren en conflicto con otras formas similares. En el DICABENOVO encontramos, por ejemplo, _ulteriormente_, _últimamente_ y _último_. Además, añadiremos _última_. No tienes por qué seguir exactamente esta propuesta, pero una posible solución sería la siguiente:
 ```ahk
-::ulte.::ulteriorm<expan>en</expan>te
-::ulti.::ultimam<expan>en</expan>te 
-::ulto.::ult<expan>im</expan>o  
-::ulta.::ult<expan>im</expan>a
+:*:ulte.::ulteriorm<ex>en</ex>te
+:*:ulti.::ultimam<ex>en</ex>te
+:*:ulto.::ult<ex>im</ex>o
+:*:ulta.::ult<ex>im</ex>a
 ```
 Ahora, ¡haz la prueba en cualquier campo de texto! Como actividad, te propongo trabajar con una letra del DICABENOVO, la que prefieras. El objetivo es que practiques la creación de _hotstrings_ y reflexiones sobre cómo puedes adaptarlas a las necesidades de tu corpus. En el _script_ de ejemplo que acompaña a esta lección encontrarás desarrollada la letra U.
 
 Combinando todo lo que hemos aprendido hasta ahora, podríamos crear algo similar al autocompletado que usan los entornos de programación para preetiquetar entidades como nombres, lugares o títulos de obras:
 ```ahk
-:*:@n::<name></name>{Left 7}
-:*:@p::<place></place>{Left 8}
+:*:@n::<persName></persName>{Left 11}
+:*:@p::<placeName></placeName>{Left 12}
 :*:@t::<title></title>{Left 8}
 ```
-<div class="alert alert-warning">
+<div class="alert alert-warning" markdown="1">
 El valor de `{Left N}` dependerá de la etiqueta de apertura; si cambias su nombre, deberás recalcular el número de desplazamientos a la izquierda que necesites.
 </div>
 
@@ -216,14 +220,14 @@ Vamos a seguir trabajando con el _script_ que creamos en la sección anterior, p
 SetTitleMatchMode "RegEx"
 SetWinDelay 0
 ```
-La primera línea indica que el archivo requiere AHK 2. La segunda previene que se abran varias copias del mismo _script_. Las restantes ajustan algunos aspectos del comportamiento del programa: `SetTitleMatchMode` habilita el uso de [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular) para comprobar los títulos de las ventanas y `SetWinDelay` elimina el tiempo de espera automático después de las operaciones que actúan sobre ellas.
+La primera línea indica que el archivo requiere AHK 2. La segunda previene que se abran varias copias del mismo _script_. Las restantes ajustan algunos aspectos del comportamiento del programa: `SetTitleMatchMode "RegEx"` habilita el uso de [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular) para comprobar los títulos de las ventanas y `SetWinDelay` elimina el tiempo de espera automático después de las operaciones que actúan sobre ellas.
 
 Anteriormente indicamos que las _hotkeys_ podían utilizarse en cualquier campo de texto. Sin embargo, no siempre queremos que se ejecuten en todos los programas de nuestro computador. Para limitar su funcionamiento, hemos desarrollado una función que comprueba si la ventana activa corresponde a uno de los editores autorizados o a la interfaz de prueba, de manera que no interfiera allí donde no queramos usarlas:
 ```ahk
 isEditorActive() {
-    return WinActive("ahk_exe soffice.bin")
-        || WinActive("ahk_exe notepad++.exe")
-        || WinActive("ahk_exe notepad.exe")
+    return WinActive("ahk_exe soffice\.(exe|bin)")
+        || WinActive("ahk_exe notepad\+\+\.exe")
+        || WinActive("ahk_exe notepad\.exe")
         || WinActive("ahk_class Notepad")
         || WinActive("^Prueba de script TPH AHK$")
 }
@@ -232,15 +236,17 @@ isEditorActive() {
 ```
 La función `isEditorActive()` devuelve un resultado verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, el Bloc de notas (si usas la versión moderna, desactiva el autocorrector, ya que puede entrar en conflicto con los _scripts_) o la interfaz del _script_ que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos posteriormente solo cuando una de esas ventanas esté activa.
 
+Como anteriormente hemos establecido `SetTitleMatchMode "RegEx"`, los nombres de los ejecutables también se interpretan como expresiones regulares. Por ello, hemos añadido una barra inversa antes de cada carácter especial, como los puntos o los signos de suma. Es importante que tengas esto en cuenta para evitar errores de sintaxis, ya que los caractertes especiales de las expresiones regulares deben escaparse cuando se pretende que se interpreten literalmente. De no hacerlo, puede que tu _script_ no se ejecute correctamente.
+
 Esta restricción, una vez activada, se aplica hasta el punto en el código donde aparezca nuevamente `#HotIf` sin condición. En el _script_ descargable estará aplicada tal y como está arriba. Como actividad exploratoria, te animamos a que busques dónde deja de aplicarse en el _script_ descargable de esta lección.
 
-Vamos a definir las _hotkeys_ de los etiquetadores de `<name>`, `<place>` y `<title>`:
+Vamos a definir las _hotkeys_ de los etiquetadores de `<persName>`, `<placeName>` y `<title>`:
 ```ahk
-!n::tagger("<name>", "</name>") 
-!p::tagger("<place>", "</place>")  
+!n::tagger("<persName>", "</persName>") 
+!p::tagger("<placeName>", "</placeName>")  
 !t::tagger("<title>", "</title>")
 ```
-Recuerda: lo que está a la izquierda de los dobles dos puntos (`::`) es nuestra combinación de teclas. A la derecha de estos, definimos la acción que deberá ejecutar AHK. En este caso, llamamos a la función `tagger()` con los valores `"<name>"` y `"</name>"`. El primero es la etiqueta de apertura y el segundo la de cierre.
+Recuerda: lo que está a la izquierda de los dobles dos puntos (`::`) es nuestra combinación de teclas. A la derecha de estos, definimos la acción que deberá ejecutar AHK. En este caso, llamamos a la función `tagger()` con los valores `"<persName>"` y `"</persName>"`. El primero es la etiqueta de apertura y el segundo la de cierre.
 
 Antes de definir `tagger()`, conviene introducir una función esencial para evitar un problema frecuente en AHK: que las teclas `Ctrl` o `Alt` permanezcan "presionadas" después de ejecutar la _hotkey_. Esto lo evitaremos con `releaseModifiers()`:
 ```ahk
@@ -280,11 +286,11 @@ tagger(openTag, closeTag) {
 ```
 Con esta función podemos seleccionar cualquier texto y escribir alrededor de él las etiquetas que queramos, dependiendo de la combinación de teclas que usemos. En el ejemplo, si pulsamos `Alt + N` llamaremos a la función con estas etiquetas:
 ```ahk
-tagger("<name>", "</name>")
+tagger("<persName>", "</persName>")
 ```
 Como puedes ver, van a reemplazar los parámetros `openTag` y `closeTag`. Por tanto, si seleccionamos un fragmento de texto, por ejemplo un nombre como Miguel, se convertiría en:
 ```xml
-<name>Miguel</name>
+<persName>Miguel</persName>
 ```
 Uno de los inconvenientes de trabajar con el portapapeles es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la primera línea: `savedClipboard := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido que seleccionamos en nuestro portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
 
@@ -423,12 +429,12 @@ convertSimpleMarkup() {
     text := RegExReplace(
         text,
         "\*\*([^*]+)\*\*",
-        "<place>$1</place>"
+        "<placeName>$1</placeName>"
     )
     text := RegExReplace(
         text,
         "(?<!\*)\*([^*]+)\*(?!\*)",
-        "<name>$1</name>"
+        "<persName>$1</persName>"
     )
     text := RegExReplace(
         text,
@@ -443,8 +449,8 @@ De forma resumida, las expresiones regulares recogidas en el código hacen lo si
 
 | Expresión regular | Qué busca | Resultado |
 |----|----|----|
-| `\*\*([^*]+)\*\*` | Texto entre dobles asteriscos: `**Bogotá**` | `<place>Bogotá</place>` |
-| `(?<!\*)\*([^*]+)\*(?!\*)` | Texto entre asteriscos simples: `*Simón Bolívar*` | `<name>Simón Bolívar</name>` |
+| `\*\*([^*]+)\*\*` | Texto entre dobles asteriscos: `**Bogotá**` | `<placeName>Bogotá</placeName>` |
+| `(?<!\*)\*([^*]+)\*(?!\*)` | Texto entre asteriscos simples: `*Simón Bolívar*` | `<persName>Simón Bolívar</persName>` |
 | `_([^_]+)_` | Texto entre guiones bajos: `_La divina comedia_` | `<title>La divina comedia</title>` |
 | `$1` | Recupera el texto capturado dentro de los signos | Conserva el contenido original dentro de la etiqueta |
 
@@ -548,4 +554,4 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 [^6]: Puedes acceder al listado detallado de cambios aquí: [https://www.autohotkey.com/docs/v2/v2-changes.htm](https://www.autohotkey.com/docs/v2/v2-changes.htm). También encontrarás el enlace a un convertidor de _scripts_ versión 1 a 2.
 [^7]: The TEI Consortium, _The TEI Guidelines_, 436.
 [^8]: The TEI Consortium, _The TEI Guidelines_, 436.
-[^9]: The TEI Consortium, _The TEI Guidelines_, 115.
+[^9]: The TEI Consortium, _The TEI Guidelines_, 98 y 422. Véase su uso en p. 101.

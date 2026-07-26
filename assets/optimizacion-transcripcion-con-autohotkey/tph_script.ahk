@@ -289,7 +289,7 @@ createGui() {
     global mainGui, testEdit, toggleButton
 
     mainGui := Gui(
-        "+AlwaysOnTop +Resize +MinimizeBox",
+        "+AlwaysOnTop -Resize +MinimizeBox",
         "Prueba de script TPH AHK"
     )
 

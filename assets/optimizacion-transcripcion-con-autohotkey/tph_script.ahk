@@ -35,7 +35,7 @@ isEditorActive() {
 
 !u::convertSelection("upper")
 !l::convertSelection("lower")
-!c::insertNote("<note>[nota del editor]</note>")
+!c::insertNote("<note>[nota de edición]</note>")
 
 ; |----------------------HOTSTRINGS---------------------------|
 

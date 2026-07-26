@@ -166,7 +166,11 @@ La sintaxis es sencilla: entre el primer y el segundo par de dos puntos escribim
 ```ahk
 ::tph::The Programming Historian
 ```
-Escribe ahora `tph` en cualquier campo de texto y pulsa una tecla de cierre, como espacio, punto o salto de línea. Verás que AHK sustituye automáticamente la abreviatura por _The Programming Historian_.
+Escribe ahora `tph` en cualquier campo de texto y pulsa una tecla de cierre, como espacio, punto o salto de línea. Verás que AHK sustituye automáticamente la abreviatura por _The Programming Historian_. Mira lo que pasa si añadimos un asterisco después de los primeros dos puntos:
+```ahk
+:*:tph::The Programming Historian
+```
+La opción `*` hace que la _hotstring_ se active inmediatamente al completar la secuencia, sin necesidad de pulsar después un punto, un espacio, la tecla `Enter` u otro carácter de cierre.
 
 Como habrás observado, puedes aplicar este procedimiento a cualquier abreviatura frecuente, histórica o no. En tareas como la transcripción manual, resulta especialmente conveniente para expandir abreviaturas tomadas de recursos como el DICABENOVO o para insertar formas ya adaptadas a las necesidades de tu corpus, incluido el marcado que quieras aplicar desde el primer momento.
 
@@ -218,9 +222,8 @@ Vamos a seguir trabajando con el _script_ que creamos en la sección anterior, p
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 SetTitleMatchMode "RegEx"
-SetWinDelay 0
 ```
-La primera línea indica que el archivo requiere AHK 2. La segunda previene que se abran varias copias del mismo _script_. Las restantes ajustan algunos aspectos del comportamiento del programa: `SetTitleMatchMode "RegEx"` habilita el uso de [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular) para comprobar los títulos de las ventanas y `SetWinDelay` elimina el tiempo de espera automático después de las operaciones que actúan sobre ellas.
+La primera línea indica que el archivo requiere AHK 2. La segunda previene que se abran varias copias del mismo _script_. La tercera habilita el uso de [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular) para comprobar los nombres y títulos de las ventanas.
 
 Anteriormente indicamos que las _hotkeys_ podían utilizarse en cualquier campo de texto. Sin embargo, no siempre queremos que se ejecuten en todos los programas de nuestro computador. Para limitar su funcionamiento, hemos desarrollado una función que comprueba si la ventana activa corresponde a uno de los editores autorizados o a la interfaz de prueba, de manera que no interfiera allí donde no queramos usarlas:
 ```ahk
@@ -238,7 +241,9 @@ La función `isEditorActive()` devuelve un valor verdadero cuando está activa u
 
 Como anteriormente hemos establecido `SetTitleMatchMode "RegEx"`, los nombres de los ejecutables también se interpretan como expresiones regulares. Por ello, hemos añadido una barra inversa antes de cada carácter especial, como los puntos o los signos de suma. Es importante que tengas esto en cuenta, ya que los caracteres especiales de las expresiones regulares deben escaparse cuando se pretende que se interpreten literalmente. De no hacerlo, puede que tu _script_ no se ejecute correctamente.
 
-Esta restricción, una vez activada, se aplica hasta el punto en el código donde aparezca nuevamente `#HotIf` sin condición. En el _script_ descargable estará aplicada tal y como está arriba. Como actividad exploratoria, te animamos a que busques dónde deja de aplicarse en el _script_ descargable de esta lección.
+`#HotIf` es una directiva dependiente de su posición en el _script_, lo que quiere decir que todas las _hotkeys_ y _hotstrings_ escritas después de `#HotIf isEditorActive()` estarán sometidas a esa condición. Para cerrar este bloque y recuperar el funcionamiento global, añadimos la directiva `#HotIf` sin ninguna condición.
+
+En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de esta línea para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo. Como actividad exploratoria, te animamos a que muevas el `#HotIf` para ver cómo se comportan las _hotkeys_ y _hotstrings_ dentro o fuera de la condición.
 
 Vamos a definir las _hotkeys_ de los etiquetadores de `<persName>`, `<placeName>` y `<title>`:
 ```ahk
@@ -252,12 +257,12 @@ Antes de definir `tagger()`, conviene introducir una función esencial para evit
 ```ahk
 releaseModifiers() {
     ; Libera los modificadores antes de enviar otras combinaciones
-    KeyWait "Alt"
-    KeyWait "Ctrl"
+    KeyWait "Alt", "T1"
+    KeyWait "Ctrl", "T1"
     Send "{Alt Up}{Ctrl Up}"
 }
 ```
-Llamándola al inicio de nuestras funciones, primero, se espera a que el usuario suelte físicamente las teclas con `KeyWait`, luego, se envía una instrucción mediante la cual se liberan las teclas `Ctrl` y `Alt` (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_) antes de simular otras combinaciones.
+Llamándola al inicio de nuestras funciones, primero se espera a que el usuario suelte físicamente las teclas `Ctrl` y `Alt` con `KeyWait`. En nuestro caso, hemos añadido la opción `"T1"` que fija un tiempo máximo de espera (en este particular, un segundo) para evitar que la función quede bloqueada si el sistema interpreta que alguna de ellas sigue pulsada. Luego, `Send "{Alt Up}{Ctrl Up}"` envía una instrucción mediante la cual se fuerza su liberación antes de simular otras combinaciones (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_).
 
 Ahora sí, veamos `tagger()`. A diferencia de lo que hicimos en la sección anterior, aquí veremos la función en su totalidad y, posteriormente, la explicaremos en detalle:
 ```ahk
@@ -308,8 +313,13 @@ Ahora, crea tus propias _hotkeys_ y añade las funciones `tagger()` y `releaseMo
 
 ### Otras funciones de interés
 
-Otras dos funciones útiles durante el proceso son las de conversión a mayúsculas y minúsculas. Aunque los procesadores de texto ya las incluyen, a veces resulta más cómodo seleccionar el texto y pulsar una combinación de teclas.
+Otras dos funciones útiles durante el proceso son las de conversión a mayúsculas y minúsculas. Aunque los procesadores de texto ya las incluyen, a veces resulta más cómodo seleccionar el texto y pulsar una combinación de teclas. Antes de definir estas funciones, asignaremos una combinación de teclas a cada una:
 
+```ahk
+!u::convertSelection("upper")
+!l::convertSelection("lower")
+!c::insertNote("[nota del editor]")
+```
 Para ello, usamos la función `convertSelection()` que sigue una lógica muy parecida a la empleada en el etiquetador `tagger()` explicado anteriormente, pero se fija en si recibe el valor `upper` o `lower`:
 ```ahk
 convertSelection(mode) {
@@ -351,7 +361,7 @@ insertNote(noteText) {
 ```
 Como podrás observar, se trata de una misma lógica empleada en múltiples ocasiones y adaptada a diferentes necesidades. Entonces, ¿cómo plantear la creación de la plantilla propuesta por Nicolás Vaughan? A continuación, te dejamos nuestra propuesta:
 ```ahk
-::tei.xml::
+:*:tei.xml::
 {
     template := '
 (
@@ -374,8 +384,8 @@ Como podrás observar, se trata de una misma lógica empleada en múltiples ocas
       </titleStmt>
       <publicationStmt>
         <p>
-		Información sobre la publicación de este documento (no de su fuente).
-		</p>
+          Información sobre la publicación de este documento (no de su fuente).
+        </p>
       </publicationStmt>
       <sourceDesc>
         <p>Información sobre la fuente de este documento.</p>
@@ -411,6 +421,8 @@ Esta lógica de trabajo se puede aplicar a casi cualquier etiqueta. Pensemos, po
 
 Partiendo de este marcado sencillo, podemos transformarlo automáticamente con AHK mediante expresiones regulares presionando `Ctrl + Alt + X`:
 ```ahk
+^!x::convertSimpleMarkup()
+
 convertSimpleMarkup() {
     releaseModifiers()
 
@@ -453,6 +465,12 @@ De forma resumida, las expresiones regulares recogidas en el código hacen lo si
 | `(?<!\*)\*([^*]+)\*(?!\*)` | Texto entre asteriscos simples: `*Simón Bolívar*` | `<persName>Simón Bolívar</persName>` |
 | `_([^_]+)_` | Texto entre guiones bajos: `_La divina comedia_` | `<title>La divina comedia</title>` |
 | `$1` | Recupera el texto capturado dentro de los signos | Conserva el contenido original dentro de la etiqueta |
+
+<div class="alert alert-warning" markdown="1">
+Esta función interpreta cualquier texto delimitado por guiones bajos como un título y lo convierte en `<title>`. Por ello, evita aplicarla sobre selecciones con nombres de archivo (por ejemplo, `datos_limpios_finales.txt`) o identificadores en `snake_case`, ya que también serían transformados.
+
+También ten en cuenta que `SendText()` inserta el resultado simulando la escritura carácter a carácter. Aunque es suficiente para fragmentos breves, con selecciones muy largas el proceso puede ralentizarse o verse interrumpido si se pulsa alguna tecla durante la inserción. Por ello, úsala solo sobre párrafos o fragmentos de tamaño moderado.
+</div>
 
 Estas líneas de código permiten que, al seleccionar esos fragmentos de texto, podamos convertirlos automáticamente a etiquetas TEI.
 
@@ -522,7 +540,9 @@ Para hacerlo, abre el compilador **Ahk2Exe** (Figura 1):
 
 Una vez allí, busca el _script_ que has creado en la carpeta (`tph_script.ahk`) y deja el resto de opciones predeterminadas, ya que suelen funcionar en la mayoría de computadores Windows. Además, tienes la posibilidad de añadir un icono al `.exe`; recuerda que debe estar en formato `.ico`.
 
-También puedes descargar el ejecutable, en caso de que todavía no tengas instalado AHK: [`tph_script.exe`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.exe).
+<div class="alert alert-warning" markdown="1">
+Los ejecutables generados con `Ahk2Exe` pueden ser identificados por algunos programas antivirus como posibles amenazas, puesto que el mismo compilador también es utilizado para empaquetar programas maliciosos, generando así falsos positivos. Por tanto, te recomendamos que compiles por tu cuenta el `.ahk` que te enlazamos más arriba.
+</div>
 
 ## Conclusiones
 

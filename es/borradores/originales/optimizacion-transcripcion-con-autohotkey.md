@@ -563,7 +563,7 @@ confirmExit(guiObj) {
 ```
 En las dos primeras líneas se declaran las variables que usará la interfaz: `scriptActive` almacena el estado de los atajos. Primero, declaramos las variables `mainGui`, `testEdit` y `toggleButton`, que usaremos para almacenar los componentes de la interfaz. Segundo, llamamos a `createGui()`, es decir, la función encargada de construirla.
 
-Dentro de `createGui()` se crea la ventana con  `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que pueda cambiar de tamaño (`+Resize`) y minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para quien lo utilice.
+Dentro de `createGui()` se crea la ventana con  `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que no pueda cambiar de tamaño (`-Resize`) y minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para quien lo utilice.
 
 Con `testEdit` podemos añadir una caja de texto, que será donde podamos hacer las pruebas que consideremos necesarias antes de trabajar con el _script_ sobre nuestros documentos. En ella definimos el ancho (`w500`), el alto (`h180`) y permitimos el uso del tabulador (`WantTab`) en el campo de texto. Se añaden algunos ejemplos de uso, aunque puedes eliminarlos si así lo prefieres.
 

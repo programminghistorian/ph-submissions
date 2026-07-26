@@ -502,30 +502,40 @@ createGui()
 
 createGui() {
     global mainGui, testEdit, toggleButton
+
     mainGui := Gui(
         "+AlwaysOnTop +Resize +MinimizeBox",
         "Prueba de script TPH AHK"
     )
+
+    mainGui.OnEvent("Close", confirmExit)
     mainGui.SetFont("s10", "Segoe UI")
+
     mainGui.AddText(
         "w500",
         "Escribe en la caja para probar los atajos y abreviaturas."
     )
+
     testEdit := mainGui.AddEdit(
         "w500 h180 WantTab",
         "Prueba aquí:`r`n`r`ntph`r`nulte.`r`n@n`r`n@p`r`n@t"
     )
+
     toggleButton := mainGui.AddButton(
         "w500 h35",
         "Desactivar atajos"
     )
+
     toggleButton.OnEvent("Click", (*) => toggleScript())
+
     mainGui.Show("AutoSize Center")
 }
 
 toggleScript() {
     global scriptActive, toggleButton
+
     scriptActive := !scriptActive
+
     if scriptActive {
         Suspend false
         toggleButton.Text := "Desactivar atajos"
@@ -534,6 +544,22 @@ toggleScript() {
         toggleButton.Text := "Activar atajos"
     }
 }
+
+confirmExit(guiObj) {
+    options := "YesNo Icon? Default2 Owner" guiObj.Hwnd
+
+    response := MsgBox(
+        "¿Quieres cerrar la interfaz y salir del script?",
+        "Confirmar salida",
+        options
+    )
+
+    if response = "Yes"
+        ExitApp()
+
+    ; Impide que la ventana se cierre si se selecciona «No»
+    return true
+}
 ```
 En las dos primeras líneas se declaran las variables que usará la interfaz: `scriptActive` almacena el estado de los atajos. Primero, declaramos las variables `mainGui`, `testEdit` y `toggleButton`, que usaremos para almacenar los componentes de la interfaz. Segundo, llamamos a `createGui()`, es decir, la función encargada de construirla.
 
@@ -541,7 +567,9 @@ Dentro de `createGui()` se crea la ventana con  `mainGui := Gui(...)`, para la q
 
 Con `testEdit` podemos añadir una caja de texto, que será donde podamos hacer las pruebas que consideremos necesarias antes de trabajar con el _script_ sobre nuestros documentos. En ella definimos el ancho (`w500`), el alto (`h180`) y permitimos el uso del tabulador (`WantTab`) en el campo de texto. Se añaden algunos ejemplos de uso, aunque puedes eliminarlos si así lo prefieres.
 
-Configuramos un botón para activar y desactivar los atajos con `toggleButton` que, al pulsarlo, ejecuta `toggleScript()`, el cual activa o suspende los atajos. En último lugar, hemos configurado la ventana para que ajuste su tamaño al contenido (`AutoSize`) y que aparezca centrada en pantalla (`Center`).
+Configuramos un botón para activar y desactivar los atajos con `toggleButton` que, al pulsarlo, ejecuta `toggleScript()`, el cual activa o suspende los atajos. Asimismo, hemos configurado la ventana para que ajuste su tamaño al contenido (`AutoSize`) y que aparezca centrada en pantalla (`Center`).
+
+En último lugar, hemos vinculado el evento de cierre de la ventana a la función `confirmExit()`, mediante la cual se abrirá un cuadro de diálogo asociado a la ventana principal en el que se preguntará si se quiere finalizar por completo el _script_ o mantenerlo activo. Así evitamos que la interfaz desaparezca mientras el _script_ continúa ejecutándose en el área de notificación.
 
 Te dejamos a continuación el _script_ completo para que puedas modificarlo como quieras: [`tph_script.ahk`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.ahk).
 

@@ -30,7 +30,7 @@ Aunque las herramientas de reconocimiento óptico de caracteres ([OCR](https://e
 
 Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de transcripción manual o etiquetar un texto procedente de OCR, HTR o, en general, de transcripciones realizadas previamente a las que todavía no hayas aplicado ningún marcado TEI.
 
-Ahora bien, ¿cómo puede un _script_ ayudarnos en nuestras tareas de humanidades digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de [macros](https://es.wikipedia.org/wiki/Macro), gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
+Ahora bien, ¿cómo puede un [_script_](https://es.wikipedia.org/wiki/Script) ayudarnos en nuestras tareas de humanidades digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de [macros](https://es.wikipedia.org/wiki/Macro), gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
 
 Esta herramienta cuenta con antecedentes en el ámbito de la traducción[^3] y nuestra propuesta pretende ser una solución inspirada en los principios de la _minimal computing_[^4].
 
@@ -145,7 +145,7 @@ Para abrir un programa, debes indicar el nombre del ejecutable (`.exe`). Por eje
 En el caso de programas de terceros, conviene comprobar el nombre exacto del ejecutable en la carpeta donde fue instalado.
 </div>
 
-Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la función `Run` aparece cuando necesitas abrir varios recursos que forman parte de tu flujo de trabajo. Por ejemplo, supongamos que necesitas abrir PARES (Portal de Archivos Españoles) para buscar documentación, el _Diccionario de abreviaturas novohispanas_ (DICABENOVO) y LibreOffice Writer para transcribir:
+Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la función `Run` aparece cuando necesitas abrir varios recursos que forman parte de tu flujo de trabajo. Por ejemplo, supongamos que necesitas abrir Portal de Archivos Españoles (PARES) para buscar documentación, el _Diccionario de abreviaturas novohispanas_ (DICABENOVO) y LibreOffice Writer para transcribir:
 ```ahk
 !1::  
 {  
@@ -174,7 +174,7 @@ La opción `*` hace que la _hotstring_ se active inmediatamente al completar la 
 
 Como habrás observado, puedes aplicar este procedimiento a cualquier abreviatura frecuente, histórica o no. En tareas como la transcripción manual, resulta especialmente conveniente para expandir abreviaturas tomadas de recursos como el DICABENOVO o para insertar formas ya adaptadas a las necesidades de tu corpus, incluido el marcado que quieras aplicar desde el primer momento.
 
-Según las directrices TEI P5, utilizamos el elemento `<ex>` para marcar las letras añadidas por el editor durante el desarrollo de una abreviatura[^9]. Veamos un ejemplo con la palabra ulteriormente y una de sus posibles abreviaturas, tomada del DICABENOVO.
+Según las directrices TEI P5, utilizamos el elemento `<ex>` para marcar las letras añadidas por quien edita durante el desarrollo de una abreviatura[^9]. Veamos un ejemplo con la palabra ulteriormente y una de sus posibles abreviaturas, tomada del DICABENOVO.
 
 <div class="alert alert-info" markdown="1">
 Recuerda que la edición en TEI admite múltiples soluciones. Por ejemplo, puedes representar conjuntamente la forma original y su desarrollo mediante la estructura `<choice><abbr>…</abbr><expan>…</expan></choice>`. Sin embargo, en esta lección usamos `<ex>` porque nuestro objetivo es marcar únicamente las letras suplidas en el interior de la palabra.
@@ -262,7 +262,7 @@ releaseModifiers() {
     Send "{Alt Up}{Ctrl Up}"
 }
 ```
-Llamándola al inicio de nuestras funciones, primero se espera a que el usuario suelte físicamente las teclas `Ctrl` y `Alt` con `KeyWait`. En nuestro caso, hemos añadido la opción `"T1"` que fija un tiempo máximo de espera (en este particular, un segundo) para evitar que la función quede bloqueada si el sistema interpreta que alguna de ellas sigue pulsada. Luego, `Send "{Alt Up}{Ctrl Up}"` envía una instrucción mediante la cual se fuerza su liberación antes de simular otras combinaciones (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_).
+Llamándola al inicio de nuestras funciones, primero se espera a que se suelten físicamente las teclas `Ctrl` y `Alt` con `KeyWait`. En nuestro caso, hemos añadido la opción `"T1"` que fija un tiempo máximo de espera (en este particular, un segundo) para evitar que la función quede bloqueada si el sistema interpreta que alguna de ellas sigue pulsada. Luego, `Send "{Alt Up}{Ctrl Up}"` envía una instrucción mediante la cual se fuerza su liberación antes de simular otras combinaciones (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_).
 
 Ahora sí, veamos `tagger()`. A diferencia de lo que hicimos en la sección anterior, aquí veremos la función en su totalidad y, posteriormente, la explicaremos en detalle:
 ```ahk
@@ -297,7 +297,7 @@ Como puedes ver, van a reemplazar los parámetros `openTag` y `closeTag`. Por ta
 ```xml
 <persName>Miguel</persName>
 ```
-Uno de los inconvenientes de trabajar con el portapapeles es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la primera línea: `savedClipboard := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido que seleccionamos en nuestro portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
+Uno de los inconvenientes de trabajar con el [portapapeles](https://es.wikipedia.org/wiki/Cortar,_copiar_y_pegar#Portapapeles) es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la primera línea: `savedClipboard := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido que seleccionamos en nuestro portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
 
 `A_Clipboard := ""` deja el portapapeles vacío, asegurándonos así de que el contenido copiado coincide con el seleccionado y con `Send "^c"` simulamos la acción `Ctrl + C`, es decir, copiamos al portapapeles el texto que tenemos seleccionado.
 
@@ -318,7 +318,7 @@ Otras dos funciones útiles durante el proceso son las de conversión a mayúscu
 ```ahk
 !u::convertSelection("upper")
 !l::convertSelection("lower")
-!c::insertNote("[nota del editor]")
+!c::insertNote("[nota de edición]")
 ```
 Para ello, usamos la función `convertSelection()` que sigue una lógica muy parecida a la empleada en el etiquetador `tagger()` explicado anteriormente, pero se fija en si recibe el valor `upper` o `lower`:
 ```ahk
@@ -520,7 +520,7 @@ toggleScript() {
 ```
 En las dos primeras líneas se declaran las variables que usará la interfaz: `scriptActive` almacena el estado de los atajos. Por una parte, `mainGui`, `testEdit` y `toggleButton` hacen referencia, respectivamente, a la ventana, a la caja de texto y al botón. Por otra, `createGui()` ejecuta la función encargada de construir la interfaz.
 
-Dentro de `createGui()` se crea la ventana con  `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que pueda cambiar de tamaño (`+Resize`) y minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para el usuario.
+Dentro de `createGui()` se crea la ventana con  `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que pueda cambiar de tamaño (`+Resize`) y minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para quien lo utilice.
 
 Con `testEdit` podemos añadir una caja de texto, que será donde podamos hacer las pruebas que consideremos necesarias antes de trabajar con el _script_ sobre nuestros documentos. En ella definimos el ancho (`w500`), el alto (`h180`) y permitimos el uso del tabulador (`WantTab`) en el campo de texto. Se añaden algunos ejemplos de uso, aunque puedes eliminarlos si así lo prefieres.
 
@@ -550,7 +550,7 @@ Como habrás observado hasta ahora, en esta lección solo hemos explorado una pe
 
 Por ello, creemos que puede ser un recurso sumamente útil para quienes quieran mejorar su flujo de trabajo paleográfico o de edición sin necesidad de tener conocimientos avanzados de programación. De hecho, puedes ayudarte con IA generativa para desarrollar tu propio _script_, partiendo de lo aprendido en esta lección y de la documentación oficial.
 
-Te recomendamos echar un vistazo a los repositorios de GitHub basados en AHK, ya que permite imaginar flujos de trabajo mucho más complejos, especialmente aquellos que conectan con APIs, herramientas de OCR o modelos de lenguaje de gran tamaño (LLMs).
+Te recomendamos echar un vistazo a los repositorios de GitHub basados en AHK, ya que permite imaginar flujos de trabajo mucho más complejos, especialmente aquellos que conectan con interfaces de programación de aplicaciones (API), herramientas de OCR o modelos de lenguaje de gran tamaño (LLM).
 
 Nuestra recomendación final es que programes y pruebes de forma constante. De esa manera, podrás ampliar y mejorar tu _script_ a medida que trabajes con tus propios materiales. Como has visto, AHK ofrece múltiples posibilidades y esa flexibilidad es una gran ventaja para quienes trabajamos en humanidades digitales: nuestras necesidades son diversas, nuestros corpus presentan problemas distintos y puede que lo que funcione para ti no lo haga para otra persona.
 
@@ -559,9 +559,10 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 - Campos Leza, Fernando. "Introducción a AutoHotkey para traductores". _La Linterna del Traductor_, 4 de abril de 2017. [https://lalinternadeltraductor.org/n14/autohotkey.html](https://lalinternadeltraductor.org/n14/autohotkey.html).
 - Gray, Steve, Chris Mallett, AutoIt Team et al. "Hotkeys - Definition & Usage AutoHotkey v2". _AutoHotkey v2 Documentation_, 2014–. [https://www.autohotkey.com/docs/v2/Hotkeys.htm](https://www.autohotkey.com/docs/v2/Hotkeys.htm).
 - Instituto de Investigaciones Filológicas de la Universidad Nacional Autónoma de México. "Diccionario de abreviaturas novohispanas". _Abreviaturas castellanas_, 2 de noviembre de 2024. [https://www.iifilologicas.unam.mx/dicabenovo/](https://www.iifilologicas.unam.mx/dicabenovo/).
+- Mallett, Chris, Steve Gray, y colaboradores. AutoHotkey, versión 2.0. 2024. GNU GPL v2. [https://github.com/AutoHotkey/AutoHotkey](https://github.com/AutoHotkey/AutoHotkey).
 - Río Riande, Gimena del. "Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto". _Publicaciones de la Asociación Argentina de Humanidades Digitales_ 3 (noviembre de 2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).
 - Río Riande, Gimena del, Gabriel Calarco, Roy Youdale, y Patience Shell. "Minimal Computing 101". _Sobre Minimal Computing_, 8 de agosto de 2025. [https://hdlab.space/minimalbook/sobre_minimalcomputing.html](https://hdlab.space/minimalbook/sobre_minimalcomputing.html).
-- The TEI Consortium. _The TEI Guidelines_. 2026. [https://guidelines.tei-c.de/en/html/index.html](https://guidelines.tei-c.de/en/html/index.html).
+- The TEI Consortium. _The TEI Guidelines_. 2026, Version 4.11.0. [https://guidelines.tei-c.de/en/html/index.html](https://guidelines.tei-c.de/en/html/index.html).
 - tidbit. "Beginner Tutorial AutoHotkey v2". _AutoHotkey v2 Documentation_, 2014. [https://www.autohotkey.com/docs/v2/Tutorial.htm](https://www.autohotkey.com/docs/v2/Tutorial.htm).
 
 ## Notas
@@ -570,8 +571,8 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 [^2]: El tipo de letra no es la única barrera a la que nos enfrentamos desde la investigación: las digitalizaciones de los manuscritos no siempre son lo suficientemente fieles para poder aplicar estas herramientas que, además, en algunos casos, son de pago (o limitados a un determinado número de tokens al mes). Las alternativas de código abierto y gratuitas, por su parte, requieren de ciertos conocimientos técnicos superiores a los necesarios para utilizar la herramienta aquí propuesta.
 [^3]: Campos Leza, "Introducción a AutoHotkey".
 [^4]: Río Riande, "Humanidades Digitales"; Río Riande et al., "Minimal Computing 101".
-[^5]: La compatibilidad está garantizada en computadores con SO Windows 7 o superiores. Aunque no se aborda en esta lección, en Linux existe [AutoKey](https://github.com/autokey/autokey), una herramienta independiente de automatización de escritorio con funciones similares. Está diseñada para entornos X11 y presenta problemas de compatibilidad cuando se utiliza Wayland en lugar de Xorg. Algo similar ocurre con implementaciones como [AHK_X11](https://github.com/phil294/AHK_X11).
+[^5]: La compatibilidad está garantizada en computadores con sistema operativo Windows 7 o superiores. Aunque no se aborda en esta lección, en Linux existe [AutoKey](https://github.com/autokey/autokey), una herramienta independiente de automatización de escritorio con funciones similares. Está diseñada para entornos X11 y presenta problemas de compatibilidad cuando se utiliza Wayland en lugar de Xorg. Algo similar ocurre con implementaciones como [AHK_X11](https://github.com/phil294/AHK_X11). Enlazamos a Wikipedia en inglés por la ausencia de una fuente equivalente en español.
 [^6]: Puedes acceder al listado detallado de cambios aquí: [https://www.autohotkey.com/docs/v2/v2-changes.htm](https://www.autohotkey.com/docs/v2/v2-changes.htm). También encontrarás el enlace a un convertidor de _scripts_ versión 1 a 2.
-[^7]: The TEI Consortium, _The TEI Guidelines_, 436.
-[^8]: The TEI Consortium, _The TEI Guidelines_, 436.
-[^9]: The TEI Consortium, _The TEI Guidelines_, 98 y 422. Véase su uso en p. 101.
+[^7]: The TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-gap.html](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-gap.html).
+[^8]: The TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supplied.html](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supplied.html).
+[^9]: The TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ex.html](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ex.html). Véase su uso en [https://tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#COEDADD](https://tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#COEDADD).

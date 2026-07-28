@@ -525,6 +525,8 @@ global mainGui, testEdit, toggleButton
 createGui()
 
 createGui() {
+    global mainGui, testEdit, toggleButton
+
     mainGui := Gui(
         "+AlwaysOnTop -Resize +MinimizeBox",
         "Prueba de script TPH AHK"
@@ -554,6 +556,8 @@ createGui() {
 }
 
 toggleScript() {
+    global scriptActive, toggleButton
+
     scriptActive := !scriptActive
 
     if scriptActive {
@@ -577,13 +581,13 @@ confirmExit(guiObj) {
     if response = "Yes"
         ExitApp()
 
-    ; Impide que la ventana se cierre si se selecciona "No"
+    ; Impide que la ventana se cierre si se selecciona «No»
     return true
 }
 ```
 Las dos primeras líneas declaran las variables que usará la interfaz: `scriptActive`, que almacena el estado de los atajos, y `mainGui`, `testEdit` y `toggleButton`, que guardarán sus componentes. La tercera llama a `createGui()`, la función encargada de construirla.
 
-Ten en cuenta que las variables se declaran con `global` en el nivel superior del _script_ porque en AHK esto las convierte en variables superglobales, lo que significa que también pueden utilizarse dentro de las funciones sin volver a declararlas allí.
+Ten en cuenta que en la interfaz que hemos construido, las variables se declaran como globales al inicio del _script_. Aunque la palabra `global` es redundante en ese nivel, se mantiene para hacer explícito su alcance. En cambio, las declaraciones incluidas en `createGui()` y `toggleScript()` son necesarias, pues estas funciones asignan nuevos valores a las variables y, en AHK v2, las funciones trabajan con variables locales de manera predeterminada.
 
 Dentro de `createGui()` se crea la ventana con  `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que no pueda cambiar de tamaño (`-Resize`) y minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para quien lo utilice.
 

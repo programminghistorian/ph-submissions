@@ -1,5 +1,5 @@
 ---
-title: Optimización del proceso de transcripción de documentos históricos con AutoHotkey: abreviaturas, preetiquetado y revisión asistida
+title: "Optimización del proceso de transcripción de documentos históricos con AutoHotkey: abreviaturas, preetiquetado y revisión asistida"
 slug: optimizacion-transcripcion-con-autohotkey
 layout: lesson
 collection: lessons

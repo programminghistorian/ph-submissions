@@ -1,5 +1,5 @@
 ---
-title: "Optimización del proceso de transcripción de documentos históricos con AutoHotkey: abreviaturas, preetiquetado y revisión asistida"
+title: Optimización del proceso de transcripción de documentos históricos con AutoHotkey: abreviaturas, preetiquetado y revisión asistida
 slug: optimizacion-transcripcion-con-autohotkey
 layout: lesson
 collection: lessons
@@ -10,12 +10,12 @@ reviewers:
 - Forename Surname
 - Forename Surname
 editors:
-- Forename Surname
+- Nicolás Vaughan
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/707
-difficulty: 
-activity: 
-topics: 
-abstract: Short abstract of this lesson
+difficulty: 2
+activity: analyzing
+topics: data-manipulation, get-ready, text-encoding
+abstract: En esta lección aprenderás a crear un script de AutoHotkey que agilice la transcripción y el marcado de documentos históricos: definirás hotkeys y hotstrings para insertar elementos TEI, desarrollar abreviaturas y abrir tus recursos de trabajo, y crearás funciones que etiqueten el texto seleccionado o conviertan un marcado sencillo en XML-TEI. Al terminar sabrás además limitar los atajos a determinados programas con #HotIf, construir una interfaz gráfica mínima para probarlos y compilar tu script como ejecutable portable.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---

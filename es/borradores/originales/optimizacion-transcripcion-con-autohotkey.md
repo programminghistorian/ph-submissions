@@ -260,7 +260,7 @@ Como anteriormente hemos establecido `SetTitleMatchMode "RegEx"`, los nombres de
 
 `#HotIf` es una directiva dependiente de su posición en el _script_, lo que quiere decir que todas las _hotkeys_ y _hotstrings_ escritas después de `#HotIf isEditorActive()` estarán sometidas a esa condición. Para cerrar este bloque y recuperar el funcionamiento global, añadimos la directiva `#HotIf` sin ninguna condición.
 
-En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de esta línea para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo:
+En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de la condición para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo:
 ```ahk
 ; |----------------------MARCADO SENCILLO A TEI-XML---------------------------|
 
@@ -287,8 +287,8 @@ Como actividad exploratoria, te animamos a que muevas el `#HotIf` para ver cómo
 
 Vamos a definir las _hotkeys_ de los etiquetadores de `<persName>`, `<placeName>` y `<title>`:
 ```ahk
-!n::tagger("<persName>", "</persName>") 
-!p::tagger("<placeName>", "</placeName>")  
+!n::tagger("<persName>", "</persName>")
+!p::tagger("<placeName>", "</placeName>")
 !t::tagger("<title>", "</title>")
 ```
 Recuerda: lo que está a la izquierda de los dobles dos puntos (`::`) es nuestra combinación de teclas. A la derecha de estos, definimos la acción que deberá ejecutar AHK. En este caso, llamamos a la función `tagger()` con los valores `"<persName>"` y `"</persName>"`. El primero es la etiqueta de apertura y el segundo la de cierre.
@@ -630,7 +630,7 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 - Campos Leza, Fernando. "Introducción a AutoHotkey para traductores". _La Linterna del Traductor_, 4 de abril de 2017. [https://lalinternadeltraductor.org/n14/autohotkey.html](https://lalinternadeltraductor.org/n14/autohotkey.html).
 - Gray, Steve, Chris Mallett, AutoIt Team et al. "Hotkeys - Definition & Usage AutoHotkey v2". _AutoHotkey v2 Documentation_, 2014–. [https://www.autohotkey.com/docs/v2/Hotkeys.htm](https://www.autohotkey.com/docs/v2/Hotkeys.htm).
 - Instituto de Investigaciones Filológicas de la Universidad Nacional Autónoma de México. "Diccionario de abreviaturas novohispanas". _Abreviaturas castellanas_, 2 de noviembre de 2024. [https://www.iifilologicas.unam.mx/dicabenovo/](https://www.iifilologicas.unam.mx/dicabenovo/).
-- Mallett, Chris, Steve Gray, y colaboradores. AutoHotkey, versión 2.0. 2024. GNU GPL v2. [https://github.com/AutoHotkey/AutoHotkey](https://github.com/AutoHotkey/AutoHotkey).
+- Mallett, Chris, Steve Gray et al. _AutoHotkey_, versión 2.0. 2024. GNU GPL v2. [https://github.com/AutoHotkey/AutoHotkey](https://github.com/AutoHotkey/AutoHotkey).
 - Río Riande, Gimena del. "Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto". _Publicaciones de la Asociación Argentina de Humanidades Digitales_ 3 (noviembre de 2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).
 - Río Riande, Gimena del, Gabriel Calarco, Roy Youdale, y Patience Shell. "Minimal Computing 101". _Sobre Minimal Computing_, 8 de agosto de 2025. [https://hdlab.space/minimalbook/sobre_minimalcomputing.html](https://hdlab.space/minimalbook/sobre_minimalcomputing.html).
 - TEI Consortium. _The TEI Guidelines_, versión 4.11.0. 2026. [https://tei-c.org/Vault/P5/4.11.0/doc/tei-p5-doc/es/html/index.html](https://tei-c.org/Vault/P5/4.11.0/doc/tei-p5-doc/es/html/index.html).

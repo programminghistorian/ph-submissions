@@ -107,58 +107,58 @@ Dicho esto, creemos nuestra primera _hotkey_. Para ello, abre el archivo que aca
 ```
 También puedes escribir la misma instrucción entre llaves, en forma de bloque:
 ```ahk
-^h::	  
-{  
-	SendText "Hola, mundo"  
+^h::
+{
+    SendText "Hola, mundo"
 }
 ```
 Guarda y ejecuta el archivo. Después, abre cualquier campo de texto y presiona `Ctrl + H`: ¡es tu primera _hotkey_ en funcionamiento! Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas.
 
-Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición TEI: introduciremos los elementos `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 los definen así:
+Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición TEI: introduciremos los elementos `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 definen la primera de ellas así:
 
-> `<gap>` (gap) indicada un punto donde algún material ha sido omitido en una transcripción, bien por criterios de edición descritos en el cabezado TEI, bien como parte de una práctica habitual, o bien porqué el material es ilegible o incomprensible[^7].
+> `<gap>` (gap) indica un punto donde algún material ha sido omitido en una transcripción, bien por criterios de edición descritos en el encabezado TEI, bien como parte de una práctica habitual, o bien porque el material es ilegible o incomprensible[^7].
 
-Normalmente, esta etiqueta puede contener atributos como `reason` o `agent`. Para este ejemplo, asumiremos que en nuestra edición solo nos interesa marcar, dentro de `<gap>`, el motivo del vacío:
+Normalmente, este elemento puede contener atributos como `reason` o `agent`. Para este ejemplo, asumiremos que en nuestra edición solo nos interesa marcar, dentro de `<gap>`, el motivo del vacío:
 ```ahk
-!g::	SendText '<gap reason=""></gap>'
+!g::SendText '<gap reason=""/>'
 ```
 En este caso, `Alt + G` insertará lo siguiente:
 ```xml
-<gap reason=""></gap>
+<gap reason=""/>
 ```
-Por otro lado, la etiqueta `<supplied>` se define como sigue:
+Por otro lado, el elemento `<supplied>` se define como sigue:
 
-> `<supplied>` (supplied) indica fragmentos de texto añadidos por el transcriptor o por el revisor en el lugar donde el original es ilegible, porqué presenta daños físicos, lagunas o por otros motivos[^8].
+> `<supplied>` (supplied) indica fragmentos de texto añadidos por el transcriptor o por el revisor en el lugar donde el original es ilegible porque presenta daños físicos, lagunas o por otros motivos[^8].
 
 Nuevamente, incluiremos solo el atributo `reason`:
 ```ahk
-!s::	SendText '<supplied reason=""></supplied>'
+!s::SendText '<supplied reason=""></supplied>'
 ```
 Como ves, el procedimiento es sencillo, aunque sería mucho más cómodo que el cursor se colocara directamente donde vamos a escribir. Para ello, podemos combinar dos instrucciones con `Send`: la primera inserta el texto literal, mientras que la segunda permite indicar que el cursor debe moverse tantas veces como queramos. En este caso, lo desplazamos hacia la izquierda, de manera que quede dentro del entrecomillado del atributo `reason`:
 ```ahk
-!s::  
-{  
-	SendText '<supplied reason=""></supplied>'  
-	Send	"{Left 13}"
+!s::
+{
+    SendText '<supplied reason=""></supplied>'
+    Send "{Left 13}"
 }
 ```
-En este caso es necesario usar llaves, ya que nuestro _script_ combina dos acciones.
+En este caso es necesario usar llaves, ya que nuestro _script_ combina dos acciones. No olvides que no puedes usar una misma _hotkey_ en dos ocasiones: modifica o elimina la anterior.
 
 Ahora vamos a conocer la función `Run`. Como indicamos en la tabla, esta función permite abrir programas instalados en el computador, pero también puede utilizarse para abrir enlaces web. Por ejemplo, para abrir una página web con una combinación de teclas, puedes escribir:
 ```ahk
-!1::	Run "https://www.google.com"
+!1::Run "https://www.google.com"
 ```
 Para abrir un programa, debes indicar el nombre del ejecutable (`.exe`). Por ejemplo, para abrir el Bloc de notas:
 ```ahk
-!2::	Run "notepad.exe"
+!2::Run "notepad.exe"
 ```
-<div class="alert alert-warning">
-En el caso de programas de terceros, conviene comprobar el nombre exacto del ejecutable en la carpeta donde fue instalado.
+<div class="alert alert-warning" markdown="1">
+En el caso de programas de terceros, conviene comprobar el nombre exacto del ejecutable en la carpeta donde fue instalado y, si es necesario, indicar la ruta completa.
 </div>
 
-Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la función `Run` aparece cuando necesitas abrir varios recursos que forman parte de tu flujo de trabajo. Por ejemplo, supongamos que necesitas abrir Portal de Archivos Españoles (PARES) para buscar documentación, el _Diccionario de abreviaturas novohispanas_ (DICABENOVO) y LibreOffice Writer para transcribir:
+Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la función `Run` aparece cuando necesitas abrir varios recursos que forman parte de tu flujo de trabajo. Por ejemplo, supongamos que necesitas abrir el Portal de Archivos Españoles (PARES) para buscar documentación, el _Diccionario de abreviaturas novohispanas_ (DICABENOVO) y LibreOffice Writer para transcribir:
 ```ahk
-!1::
+!3::
 {
     Run "https://pares.cultura.gob.es/"
     Run "https://www.iifilologicas.unam.mx/dicabenovo/"
@@ -187,11 +187,11 @@ Escribe ahora `tph` en cualquier campo de texto y pulsa una tecla de cierre, com
 ```ahk
 :*:tph::The Programming Historian
 ```
-La opción `*` hace que la _hotstring_ se active inmediatamente al completar la secuencia, sin necesidad de pulsar después un punto, un espacio, la tecla `Enter` u otro carácter de cierre.
+La opción `*` hace que la _hotstring_ se active inmediatamente al completar la secuencia, sin necesidad de pulsar después un punto, un espacio, la tecla `Enter` u otro carácter de cierre. Recuerda no dejar las dos versiones de la _hotstring_ en el _script_: no funcionará.
 
 Como habrás observado, puedes aplicar este procedimiento a cualquier abreviatura frecuente, histórica o no. En tareas como la transcripción manual, resulta especialmente conveniente para expandir abreviaturas tomadas de recursos como el DICABENOVO o para insertar formas ya adaptadas a las necesidades de tu corpus, incluido el marcado que quieras aplicar desde el primer momento.
 
-Según las directrices TEI P5, utilizamos el elemento `<ex>` para marcar las letras añadidas por quien edita durante el desarrollo de una abreviatura[^9]. Veamos un ejemplo con la palabra ulteriormente y una de sus posibles abreviaturas, tomada del DICABENOVO.
+Según las directrices TEI P5, utilizamos el elemento `<ex>` para marcar las letras añadidas por quien edita durante el desarrollo de una abreviatura[^9]. Veamos un ejemplo con la palabra _ulteriormente_ y una de sus posibles abreviaturas, tomada del DICABENOVO.
 
 <div class="alert alert-info" markdown="1">
 Recuerda que la edición en TEI admite múltiples soluciones. Por ejemplo, puedes representar conjuntamente la forma original y su desarrollo mediante la estructura `<choice><abbr>…</abbr><expan>…</expan></choice>`. Sin embargo, en esta lección usamos `<ex>` porque nuestro objetivo es marcar únicamente las letras suplidas en el interior de la palabra.
@@ -260,7 +260,30 @@ Como anteriormente hemos establecido `SetTitleMatchMode "RegEx"`, los nombres de
 
 `#HotIf` es una directiva dependiente de su posición en el _script_, lo que quiere decir que todas las _hotkeys_ y _hotstrings_ escritas después de `#HotIf isEditorActive()` estarán sometidas a esa condición. Para cerrar este bloque y recuperar el funcionamiento global, añadimos la directiva `#HotIf` sin ninguna condición.
 
-En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de esta línea para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo. Como actividad exploratoria, te animamos a que muevas el `#HotIf` para ver cómo se comportan las _hotkeys_ y _hotstrings_ dentro o fuera de la condición.
+En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de esta línea para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo:
+```ahk
+; |----------------------MARCADO SENCILLO A TEI-XML---------------------------|
+
+^!x::convertSimpleMarkup()
+
+#HotIf
+
+; |----------------------HOTKEY ESCAPADA---------------------------|
+
+!3::
+{
+    Run "https://pares.cultura.gob.es/"
+    Run "https://www.iifilologicas.unam.mx/dicabenovo/"
+
+    try {
+        Run "swriter.exe" ; LibreOffice Writer
+    }
+    catch {
+        Run "soffice.exe --writer"
+    }
+}
+```
+Como actividad exploratoria, te animamos a que muevas el `#HotIf` para ver cómo se comportan las _hotkeys_ y _hotstrings_ dentro o fuera de la condición.
 
 Vamos a definir las _hotkeys_ de los etiquetadores de `<persName>`, `<placeName>` y `<title>`:
 ```ahk
@@ -302,7 +325,7 @@ tagger(openTag, closeTag) {
     if (selectedText = "")
         return
 
-    ; Escribe las etiquetas y el texto seleccionado
+    ; Escribe los elementos y el texto seleccionado
     SendText(openTag . selectedText . closeTag)
 }
 ```
@@ -335,7 +358,6 @@ Otras dos funciones útiles durante el proceso son las de conversión a mayúscu
 ```ahk
 !u::convertSelection("upper")
 !l::convertSelection("lower")
-!c::insertNote("[nota de edición]")
 ```
 Para ello, usamos la función `convertSelection()` que sigue una lógica muy parecida a la empleada en el etiquetador `tagger()` explicado anteriormente, pero se fija en si recibe el valor `upper` o `lower`:
 ```ahk
@@ -371,6 +393,8 @@ Una vez copiado el texto seleccionado, restaura el portapapeles original, convie
 
 Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante `Alt + C`, la cual inserta un texto definido previamente en la ventana en la que estemos trabajando:
 ```ahk
+!c::insertNote("[nota de edición]")
+
 insertNote(noteText) {
     releaseModifiers()
     SendText(noteText)
@@ -501,8 +525,6 @@ global mainGui, testEdit, toggleButton
 createGui()
 
 createGui() {
-    global mainGui, testEdit, toggleButton
-
     mainGui := Gui(
         "+AlwaysOnTop -Resize +MinimizeBox",
         "Prueba de script TPH AHK"
@@ -532,8 +554,6 @@ createGui() {
 }
 
 toggleScript() {
-    global scriptActive, toggleButton
-
     scriptActive := !scriptActive
 
     if scriptActive {
@@ -557,11 +577,13 @@ confirmExit(guiObj) {
     if response = "Yes"
         ExitApp()
 
-    ; Impide que la ventana se cierre si se selecciona «No»
+    ; Impide que la ventana se cierre si se selecciona "No"
     return true
 }
 ```
-En las dos primeras líneas se declaran las variables que usará la interfaz: `scriptActive` almacena el estado de los atajos. Primero, declaramos las variables `mainGui`, `testEdit` y `toggleButton`, que usaremos para almacenar los componentes de la interfaz. Segundo, llamamos a `createGui()`, es decir, la función encargada de construirla.
+Las dos primeras líneas declaran las variables que usará la interfaz: `scriptActive`, que almacena el estado de los atajos, y `mainGui`, `testEdit` y `toggleButton`, que guardarán sus componentes. La tercera llama a `createGui()`, la función encargada de construirla.
+
+Ten en cuenta que las variables se declaran con `global` en el nivel superior del _script_ porque en AHK esto las convierte en variables superglobales, lo que significa que también pueden utilizarse dentro de las funciones sin volver a declararlas allí.
 
 Dentro de `createGui()` se crea la ventana con  `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que no pueda cambiar de tamaño (`-Resize`) y minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para quien lo utilice.
 
@@ -579,7 +601,7 @@ Ya hemos construido un _script_ que cubre buena parte del flujo de trabajo vincu
 
 AHK incorpora un compilador que permite convertir tus _scripts_ `.ahk` a `.exe`. De esta manera, podrás ejecutar tu _script_ sin necesidad de instalarlo en el equipo de destino, ya que se compila como un programa portable. Por tanto, puedes llevarlo en una memoria USB o en un disco duro portátil.
 
-Para hacerlo, abre el compilador **Ahk2Exe** (Figura 1):
+Para hacerlo, abre el compilador `Ahk2Exe` (Figura 1):
 
 {% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey-01.jpg" alt="Ventana del compilador Ahk2Exe con campos para seleccionar el archivo fuente, el archivo de destino, el icono personalizado y el botón de convertir a ejecutable" caption="Figura 1. Interfaz de usuario de Ahk2Exe." %}
 
@@ -607,17 +629,17 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 - Mallett, Chris, Steve Gray, y colaboradores. AutoHotkey, versión 2.0. 2024. GNU GPL v2. [https://github.com/AutoHotkey/AutoHotkey](https://github.com/AutoHotkey/AutoHotkey).
 - Río Riande, Gimena del. "Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto". _Publicaciones de la Asociación Argentina de Humanidades Digitales_ 3 (noviembre de 2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).
 - Río Riande, Gimena del, Gabriel Calarco, Roy Youdale, y Patience Shell. "Minimal Computing 101". _Sobre Minimal Computing_, 8 de agosto de 2025. [https://hdlab.space/minimalbook/sobre_minimalcomputing.html](https://hdlab.space/minimalbook/sobre_minimalcomputing.html).
-- TEI Consortium. _The TEI Guidelines_. 2026, Version 4.11.0. [https://guidelines.tei-c.de/en/html/index.html](https://guidelines.tei-c.de/en/html/index.html).
+- TEI Consortium. _The TEI Guidelines_, versión 4.11.0. 2026. [https://tei-c.org/Vault/P5/4.11.0/doc/tei-p5-doc/es/html/index.html](https://tei-c.org/Vault/P5/4.11.0/doc/tei-p5-doc/es/html/index.html).
 - tidbit. "Beginner Tutorial AutoHotkey v2". _AutoHotkey v2 Documentation_, 2014. [https://www.autohotkey.com/docs/v2/Tutorial.htm](https://www.autohotkey.com/docs/v2/Tutorial.htm).
 
 ## Notas
 
-[^1]: El texto de esta lección ha sido revisado con herramientas de inteligencia artificial (IA) generativa, en concreto, ChatGPT.
+[^1]: El texto de esta lección ha sido revisado con herramientas de IA generativa, en concreto, ChatGPT.
 [^2]: El tipo de letra no es la única barrera a la que nos enfrentamos desde la investigación: las digitalizaciones de los manuscritos no siempre son lo suficientemente fieles para poder aplicar estas herramientas que, además, en algunos casos, son de pago (o limitados a un determinado número de tokens al mes). Las alternativas de código abierto y gratuitas, por su parte, requieren de ciertos conocimientos técnicos superiores a los necesarios para utilizar la herramienta aquí propuesta.
 [^3]: Campos Leza, "Introducción a AutoHotkey".
 [^4]: Río Riande, "Humanidades Digitales"; Río Riande et al., "Minimal Computing 101".
-[^5]: La compatibilidad está garantizada en computadores con sistema operativo Windows 7 o superiores. Aunque no se aborda en esta lección, en Linux existe [AutoKey](https://github.com/autokey/autokey), una herramienta independiente de automatización de escritorio con funciones similares. Está diseñada para entornos X11 y presenta problemas de compatibilidad cuando se utiliza Wayland en lugar de Xorg. Algo similar ocurre con implementaciones como [AHK_X11](https://github.com/phil294/AHK_X11). Enlazamos a Wikipedia en inglés por la ausencia de una fuente equivalente en español.
+[^5]: La compatibilidad está garantizada en computadores con sistema operativo Windows 7 o superior. Aunque no se aborda en esta lección, en Linux existe [AutoKey](https://github.com/autokey/autokey), una herramienta independiente de automatización de escritorio con funciones similares. Está diseñada para entornos X11 y presenta problemas de compatibilidad cuando se utiliza Wayland en lugar de Xorg. Algo similar ocurre con implementaciones como [AHK_X11](https://github.com/phil294/AHK_X11). Enlazamos a Wikipedia en inglés por la ausencia de una fuente equivalente en español.
 [^6]: Puedes acceder al listado detallado de cambios aquí: [https://www.autohotkey.com/docs/v2/v2-changes.htm](https://www.autohotkey.com/docs/v2/v2-changes.htm). También encontrarás el enlace a un convertidor de _scripts_ versión 1 a 2.
-[^7]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html).
-[^8]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html).
+[^7]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html). Traducción basada en la original y regularizada por el autor.
+[^8]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html). Traducción basada en la original y regularizada por el autor.
 [^9]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-ex.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-ex.html). Véase un ejemplo de su uso en [https://tei-c.org/release/doc/tei-p5-doc/es/html/CO.html#COEDADD](https://tei-c.org/release/doc/tei-p5-doc/es/html/CO.html#COEDADD).

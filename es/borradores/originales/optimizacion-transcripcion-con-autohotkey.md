@@ -260,7 +260,7 @@ Como anteriormente hemos establecido `SetTitleMatchMode "RegEx"`, los nombres de
 
 `#HotIf` es una directiva dependiente de su posición en el _script_, lo que quiere decir que todas las _hotkeys_ y _hotstrings_ escritas después de `#HotIf isEditorActive()` estarán sometidas a esa condición. Para cerrar este bloque y recuperar el funcionamiento global, añadimos la directiva `#HotIf` sin ninguna condición.
 
-En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de la condición para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo:
+En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de la directiva `#HotIf`sin condición para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo:
 ```ahk
 ; |----------------------MARCADO SENCILLO A TEI-XML---------------------------|
 
@@ -581,7 +581,7 @@ confirmExit(guiObj) {
     if response = "Yes"
         ExitApp()
 
-    ; Impide que la ventana se cierre si se selecciona «No»
+    ; Impide que la ventana se cierre si se selecciona "No"
     return true
 }
 ```

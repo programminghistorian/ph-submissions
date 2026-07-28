@@ -170,7 +170,7 @@ isEditorActive() {
 
 ; |----------------------HOTKEY ESCAPADA---------------------------|
 
-!1::
+!3::
 {
     Run "https://pares.cultura.gob.es/"
     Run "https://www.iifilologicas.unam.mx/dicabenovo/"
@@ -282,8 +282,7 @@ convertSimpleMarkup() {
 
 ; |----------------------INTERFAZ---------------------------|
 
-global scriptActive := true
-global mainGui, testEdit, toggleButton
+scriptActive := true
 
 createGui()
 
@@ -344,6 +343,6 @@ confirmExit(guiObj) {
     if response = "Yes"
         ExitApp()
 
-    ; Impide que la ventana se cierre si se selecciona «No»
+    ; Impide que la ventana se cierre si se selecciona "No"
     return true
 }

@@ -19,7 +19,7 @@ isEditorActive() {
 !g::
 {
     releaseModifiers()
-    SendText '<gap reason=""></gap>'
+    SendText '<gap reason=""/>'
 }
 
 !s::
@@ -282,7 +282,8 @@ convertSimpleMarkup() {
 
 ; |----------------------INTERFAZ---------------------------|
 
-scriptActive := true
+global scriptActive := true
+global mainGui, testEdit, toggleButton
 
 createGui()
 

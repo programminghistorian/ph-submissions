@@ -638,7 +638,11 @@ Running the script will produce eight HTML files in your `data/out` folder, one 
 
 Now that the nodes and edges have been defined, we can begin to move around the visualization with the iPySIGMA features. Before us is an interactive web-based network graph that shows the relationships between the books and the subject headings. Each graph has a natural state that often looks like a cloud of chaos, this the graph before it is laid out. It is recommended that before you interact with the graph that you click the play button to run the layout animation. This allows the graph to settle into a more readable arrangement, where closely related nodes cluster together and less connected groups move farther apart. In network visualization, this is known as a force-directed layout. Moving the nodes through the layout animation also helps to see the physical distance between different topics. The closer together or more tightly clustered they are, the more they are related or prominently connected. 
 
-(Screen shot comparison of the two?)
+
+{% include figure.html filename="enablar-lesson-3-01.png" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
+
+{% include figure.html filename="enablar-lesson-3-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
+
 
 Each point is a node, whether it be an individual book title (with a book icon) or a controlled subject heading (with a label icon). If a book has a subject heading assigned, there is a line drawn between that subject and the book. These lines are edges, which illuminate the relationships. Subject headings are also connected by subject labels from the JSON file data in the form of a preferred subject label, a broader subject label, and a narrower subject label to help contextualize the more controlled vocabulary of the subject headings. 
 
@@ -657,7 +661,8 @@ The network graph visualisation that is a result of this activity is meant to be
 ### Summary
 Looking at the eight graphs, we start to see patterns emerge and how the collection changes over time. A good starting point is looking at the size and density of the collection under this topic. In this example, over the years, the network gets denser and denser which makes sense with basic knowledge about scientific advancement over the nineteenth and twentieth century. Density may reflect more items in the dataset, more detailed subject cataloguing, or both.
 
-(insert computermethoden image)
+{% include figure.html filename="enablar-lesson-3-03.png" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
+
 
 If you are comparing graphs chronologically, as we have done here, you can also follow a single subject heading or individual work across time. For example, searching for Computermethoden (Computer Methods) shows that this subject heading does not appear in the networks before 1950. Its later emergence may reflect the development of computing as a recognized field, changes in publishing, or the adoption of new subject terminology by cataloguers. By contrast, Algemene literatuurwetenschap (General Literary Studies) appears in some of the earlier graphs even though literary studies did not become established as a formal academic field until the late nineteenth century. This may indicate retrospective cataloguing, later authority control, or the reclassification of older books using more modern subject headings. The graph cannot determine which explanation is correct, but it makes these chronological inconsistencies visible and identifies records or cataloguing practices that may warrant closer investigation.
 
@@ -676,7 +681,7 @@ While this example uses metadata from publically available datasets, the same pr
 
 As a test case, the authors extracted MARC XML files from their library management system, Koha. This process was fairly simple, there exists a form in Koha where an administrator can fill out which records should be pulled. This will different depending on the library management system. In this example, the authors pulled records related to Criminal Justice using Library of Congress call numbers HV. These records were exported as XML and the initial code was simplified to rework the three layers of pref_subject, narrower_subject, and broader_subject since the subject headings were not organized this way directly from the catalog. From there the network was created. 
 
-(insert image of juvenileJustice_example)
+{% include figure.html filename="enablar-lesson-3-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
 
 The scope and size of a library’s material will differ. As seen in the example image, although the author’s library is not a research library, the criminal justice collections under the HV call number were still quite extensive. As such, the number of nodes and edges obfuscates some of the helpful visual analysis that the Exact Sciences collection had. To truly be helpful for collection development, the authors would iterate on the initial graph and add some limiters to their scope to make the visualization more helpful or perhaps make multiple graphs. 
 

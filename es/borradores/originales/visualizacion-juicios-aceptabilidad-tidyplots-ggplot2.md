@@ -484,7 +484,7 @@ anova(modelo1.1, modelo1.2)
 summary(modelo1.1)
 summary(modelo1.2)
 ```
-El modelo con el valor más bajo de AIC y BIC es preferible y si [el p-valor de la prueba de razón de verosimilitudes, Likelihood ratio tests, (LRT)](https://perma.cc/R3AT-Q5QR) obtenido mediante la función anova es significativo (p < .05), el modelo más complejo ajusta significativamente mejor los datos y debería preferirse. En nuestro caso, los valores de AIC y BIC son más bajos para el modelo 1.2 y la prueba de razón de verosimilitud no resultó ser estadísticamente significativa, lo que implica que el modelo más complejo (modelo1.1.) no ajusta los datos mejor. [^3]
+El modelo con el valor más bajo de AIC y BIC es preferible y si [el p-valor de la prueba de razón de verosimilitudes (Likelihood ratio tests, LRT)](https://perma.cc/R3AT-Q5QR) obtenido mediante la función anova es significativo (p < .05), el modelo más complejo ajusta significativamente mejor los datos y debería preferirse. En nuestro caso, los valores de AIC y BIC son más bajos para el modelo 1.2 y la prueba de razón de verosimilitud no resultó ser estadísticamente significativa, lo que implica que el modelo más complejo (modelo1.1.) no ajusta los datos mejor. [^3]
 Podemos reportar e interpretar el output del modelo1.1 de la siguiente manera: 
 
 | Term | β | SE | z | p |

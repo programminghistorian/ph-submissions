@@ -37,7 +37,7 @@ Los juicios de aceptabilidad presentan varias características que condicionan s
 - Naturaleza ordinal: las respuestas son categorías ordenadas (1, 2, 3, 4, 5, 6, 7), no distancias iguales entre valores continuos 
 - Variabilidad interindividual elevada: los aprendientes con el mismo nivel de competencia pueden diferir considerablemente en sus juicios 
 - Estructura de medidas repetidas: cada participante evalúa múltiples ítems, lo que crea dependencia en los datos 
-- Diferencias individuales relevantes: variables como la edad de adquisición (AoA), los años de aprendizaje o el tipo de instrucción recibida (clases de ELE vs. instrucción bilingüe) modulan los juicios.
+- Diferencias individuales relevantes: variables como la edad de adquisición (age of acquisition: aoa), los años de aprendizaje o el tipo de instrucción recibida (clases de ELE vs. instrucción bilingüe) modulan los juicios.
 
 ### Objetivos de la lección
 Esta lección tiene los siguientes objetivos:   
@@ -74,8 +74,8 @@ En todos estos contextos, la pregunta de investigación es la misma: ¿Cómo var
 
 Para ilustrar la visualización y el análisis de datos, utilizaremos un conjunto de datos del campo de la adquisición de segundas lenguas. Este conjunto de datos proviene de un estudio sobre la adquisición del aspecto verbal en español como L2. Los participantes son 60 aprendientes eslovacos de español de nivel avanzado y 20 hablantes nativos de español peninsular. Todos evaluaron en una escala Likert de 7 puntos la aceptabilidad de 18 pares de oraciones que combinaban dos tiempos verbales: el pretérito perfecto simple (canté) y el pretérito perfecto compuesto (he cantado) con tres tipos de modificadores temporales: los modificadores temporales que aluden a anterioridad inmediata (hace un rato), los modificadores temporales que aluden a anterioridad más lejana (hace dos meses) y los modificadores temporales que aluden al momento no terminado (hoy, esta mañana, esta semana).  Dentro del grupo de aprendientes, las diferencias individuales de interés son:
 - `instruction`: instrucción bilingüe vs. clases de ELE (variable categórica nominal)
-- `aoa`: edad de adquisición del español (variable continua)
-- `years_learning`: años de aprendizaje (variable continua)
+- `aoa`(age of acquisition): edad de adquisición del español (variable continua)
+- `years_learning`(años de aprendizaje): años de aprendizaje (variable continua)
 
 ### Preparación del entorno y carga de datos
 

@@ -404,7 +404,7 @@ Esta matriz de diagramas de dispersión muestra las asociaciones entre el juicio
 
 #### ¿Qué son los modelos mixtos y para qué sirven?
 
-Un modelo mixto (también llamado modelo de efectos mixtos o modelo multinivel) es un modelo estadístico que incluye dos tipos de efectos:
+[Un modelo mixto](https://perma.cc/A8BF-3TJH) (también llamado modelo de efectos mixtos o modelo multinivel) es un modelo estadístico que incluye dos tipos de efectos:
 
 - Efectos fijos: los predictores cuyo efecto queremos estimar y generalizar, en nuestro caso, el tiempo verbal, el tipo de modificador adverbial, y el grupo (nativo/aprendiente) y las diferencias individuales. Se llaman "fijos" porque asumimos que representan efectos constantes en la población de interés.
 - Efectos aleatorios: fuentes de variabilidad que no nos interesa estimar directamente, pero que debemos tener en cuenta para no distorsionar las estimaciones de los efectos fijos. En un diseño con medidas repetidas, los participantes y los ítems son efectos aleatorios típicos: cada participante tiene su propio "nivel de base" de aceptabilidad, y cada ítem tiene su propio nivel de dificultad, independientemente de la condición experimental.

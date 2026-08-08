@@ -170,12 +170,12 @@ violinchart01 <- datos |>
   tidyplot(x = tense, y = rating, color = adverb_type) |>
   add_violin() |>
   add_mean_dot() |>
-  split_plot(by = l1) |>
-  adjust_x_axis_title("Tiempo verbal") |> 
+  adjust_x_axis_title("Tiempo verbal") |>
   adjust_y_axis_title("Juicio de aceptabilidad (1–7)") |>
   adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
   adjust_colors(c("#1B7837", "#762A83", "#808080")) |>
-  adjust_title("Los juicios según el tiempo verbal y el modificador adverbial: Hablantes nativos vs. aprendientes de español")   
+  adjust_title("Los juicios según el tiempo verbal y el modificador adverbial: Hablantes nativos vs. aprendientes de español") |>
+  split_plot(by = l1)  
 violinchart01  
 ```
 La función `add_violin()` dibuja el violín; `add_mean_dot()` superpone el punto de la media, y `split_plot()` divide el gráfico en dos paneles separados. Con `adjust_colors()` asignamos colores a los tres tipos de adverbios: `#1B7837`, verde, para anterioridad inmediata, `#762A83`, morado, para anterioridad lejana, y `#808080`, gris, para momento no terminado. [^2]
@@ -187,17 +187,17 @@ Este gráfico revela patrones más detallados con respecto a la interacción ent
 `Tidyplots` nos permite dividir el gráfico por dos variables a la vez. Por ejemplo, para mostrar el efecto del tiempo verbal (la variable `tense`) y del tipo de instrucción bilingüe vs. ELE (la variable `instruction`), podemos crear otro gráfico de violín facetado, esta vez incorporando las funciones `filter(group == "learner")` y `split_plot(by = instruction)`. Con la primera función filtramos las filas del dataframe antes de pasarlas a `tidyplots` para que el gráfico solo incluya los datos donde la variable `group` tiene el valor `learner`, mientras que con la segunda dividimos el gráfico en dos paneles según el tipo de instrucción recibida.
 
 ```r
-violinchart02 <-datos |>
+violinchart02 <- datos |>
   filter(group == "learner") |>
   tidyplot(x = tense, y = rating, color = adverb_type) |>
   add_violin() |>
   add_mean_dot() |>
-  split_plot(by = instruction) |>
   adjust_x_axis_title("Tiempo verbal") |>
   adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
   adjust_y_axis_title("Juicio de aceptabilidad (1–7)") |>
   adjust_colors(c("#1B7837", "#762A83", "#808080")) |>
-  adjust_title("Los juicios según el tiempo verbal y el modificador adverbial: Instrucción bilingüe vs. ELE")
+  adjust_title("Los juicios según el tiempo verbal y el modificador adverbial: Instrucción bilingüe vs. ELE") |>
+  split_plot(by = instruction)
 violinchart02
 ```
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-03.png" alt="La Figura 3 es un gráfico de violín con dos paneles (bilingüe y ELE) que muestra la distribución completa de los juicios de aceptabilidad (escala 1-7) según el tiempo verbal (PPC, PPS) y el tipo de modificador adverbial (anterioridad inmediata, anterioridad lejana, momento no terminado), con un punto marcando la media de cada distribución. Los dos paneles muestran patrones muy similares entre sí: en ambos grupos, anterioridad inmediata tiene la media más alta en PPC (~5.4-5.6) y baja notablemente en PPS (~3.2-3.5), mientras que anterioridad lejana y momento no terminado se mantienen en valores intermedios en ambos tiempos verbales, con distribuciones amplias y bastante solapadas entre los tres tipos de modificador." caption="Figura 3. Gráfico de violín que muestra la distribución de los juicios de aceptabilidad según el tiempo verbal (PPC vs. PPS) y el tipo de modificador adverbial (anterioridad inmediata, anterioridad lejana, momento no terminado), comparando aprendices con instrucción bilingüe y con instrucción ELE. Los puntos indican la media de cada distribución." %}
@@ -210,15 +210,15 @@ Un tipo de gráfico que se puede utilizar para comparar las medias de los juicio
 
 ```r
 boxplot01 <- datos |>
-     tidyplot(x = adverb_type, y = rating, color = l1) |>
-     add_boxplot() |>
-     adjust_x_axis(rotate_labels = TRUE) |>
-     adjust_x_axis_title("Tipo de modificador adverbial") |>
-     adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
-     adjust_y_axis_title("Juicio de aceptabilidad (1–7)") |>
-     split_plot(by = tense)  |>
-     adjust_title("Juicios de aceptabilidad por grupo y modificador adverbial: PPC vs. PPS") |>
-     adjust_legend_title("L1")  
+  tidyplot(x = adverb_type, y = rating, color = l1) |>
+  add_boxplot() |>
+  adjust_x_axis(rotate_labels = TRUE) |>
+  adjust_x_axis_title("Tipo de modificador adverbial") |>
+  adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
+  adjust_y_axis_title("Juicio de aceptabilidad (1–7)") |>
+  adjust_title("Juicios de aceptabilidad por grupo y modificador adverbial: PPC vs. PPS") |>
+  adjust_legend_title("L1") |>
+  split_plot(by = tense)
 boxplot01
 ```
 Este gráfico confirma que los nativos tienden a mostrar una distinción más marcada entre el PPS y el PPC según el tipo de adverbio, lo que sugiere mayor sensibilidad gramatical. Los aprendientes de español muestran distribuciones más uniformes entre estas condiciones. En ambos grupos, podemos observar algunos valores atípicos, sobre todo con el PPC. 
@@ -230,15 +230,15 @@ Si sustituimos la función `add_boxplot() |>` con `add_line() |>`, podemos visua
 
 ```r
 linechart01 <- resumen |>
-     tidyplot(x = adverb_type, y = media, color = group) |>
-     add_line() |>
-     adjust_x_axis_title("Tipo de modificador adverbial") |>
-     adjust_y_axis_title("Juicio medio de aceptabilidad") |>
-     adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
-     adjust_legend_title("Grupo") |>
-     split_plot(by = tense) |>
-     adjust_colors(new_colors = c("#2C7BB6", "#D7191C")) |>
-     adjust_x_axis(rotate_labels = TRUE)
+  tidyplot(x = adverb_type, y = media, color = group) |>
+  add_line() |>
+  adjust_x_axis_title("Tipo de modificador adverbial") |>
+  adjust_x_axis(rotate_labels = TRUE) |>
+  adjust_y_axis_title("Juicio medio de aceptabilidad") |>
+  adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
+  adjust_legend_title("Grupo") |>
+  adjust_colors(new_colors = c("#2C7BB6", "#D7191C")) |>
+  split_plot(by = tense)
 linechart01
 ```
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-05.png" alt="La Figura 5 es un diagrama de líneas con dos paneles que comparan los juicios medios de aceptabilidad (escala 1-7) de dos grupos, los aprendientes y los nativos, frente a tres tipos de modificador adverbial (anterioridad inmediata, anterioridad lejana y momento no terminado). Cada panel corresponde a un tiempo verbal: PPC y PPS. En PPC, los nativos asignan juicios bajos a anterioridad lejana y juicios altos a momento no terminado, invirtiendo su relación con los aprendices; en PPS, los nativos puntúan alto la anterioridad lejana pero caen por debajo de los aprendices en momento no terminado." caption="Figura 5. Juicios medios de aceptabilidad por tipo de modificador adverbial y grupo, divididos por el tiempo verbal." %}
@@ -255,12 +255,12 @@ barchart01 <- datos |>
   add_mean_bar(alpha = 0.7) |>
   add_sem_errorbar() |>
   add_mean_value() |>
-  split_plot(by = group) |>
   adjust_x_axis_title("Tiempo verbal") |>
   adjust_y_axis_title("Juicio de aceptabilidad (1–7)") |>
   adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
-  adjust_legend_title("Tipo de modificador")  |>
-  adjust_title("Las medias de los juicios por grupo, tiempo verbal y modificador adverbial")
+  adjust_legend_title("Tipo de modificador") |>
+  adjust_title("Las medias de los juicios por grupo, tiempo verbal y modificador adverbial") |>
+  split_plot(by = group)
 barchart01
 ```
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-06.png" alt="La Figura 6 es un gráfico de barras con dos paneles que muestran las medias de juicios de aceptabilidad (1-7) y barras de error que indican el error estándar. El gráfico compara los juicios de los hablantes nativos y los aprendices de español, según tiempo verbal (PPC, PPS) y tipo de modificador adverbial (anterioridad inmediata, anterioridad lejana, momento no terminado). Cada panel corresponde a un grupo: aprendientes y nativos. Los nativos muestran un patrón claro de complementariedad: anterioridad inmediata y anterioridad lejana se prefieren con el PPS, momento no terminado con el PPC. Los aprendices muestran diferencias generalmente más moderadas entre condiciones." caption="Figura 6. Juicios medios de aceptabilidad (escala 1–7) para las combinaciones de tiempo verbal (PPC, PPS) y tipo de modificador adverbial en aprendientes de español y hablantes nativos. Las barras representan la media de cada condición y las líneas de error indican el error estándar." %}
@@ -308,11 +308,11 @@ En la siguiente sección vamos a ver algunos gráficos para ejemplificar cómo p
 
 ```r
 scatterplot02 <- scatterplot01 |>
-  adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
-  add(ggplot2::geom_smooth(method = "lm", se = FALSE))  |> 
+  add(ggplot2::geom_smooth(method = "lm", se = FALSE)) |>
   add(ggplot2::geom_hline(yintercept = mean(resumen$media),
-  linetype = "dotted", color = "black")) 
-scatterplot02  
+                           linetype = "dotted", color = "black")) |>
+  adjust_y_axis(limits = c(1, 7), breaks = 1:7)
+scatterplot02
 ```
 El resultado de esta modificación muestra dos líneas de regresión para cada grupo y una línea de la media global de los juicios de todos los aprendientes, lo que permite no solo ver si los participantes con `aoa` más alta están por debajo de esa media, sino también comparar la tendencia de cada grupo (`bilingual` vs. `ELE`) con respecto al rendimiento medio general:
 
@@ -324,18 +324,17 @@ Para resaltar visualmente las diferencias entre los dos grupos de participantes,
 
 ```r
 library(dplyr)
-
 datos_means <- datos |>
   filter(group == "learner") |> 
   group_by(participant_id, aoa, instruction) |>
   summarise(mean_rating = mean(rating, na.rm = TRUE), .groups = "drop")
-  
+
 scatterplot03 <- datos_means |>
-        tidyplot(x = aoa, y = mean_rating, color = instruction) |>
-        adjust_colors(new_colors = c("bilingual" = "#E69F00", "ELE" = "#0072B2")) |>
-        adjust_title("Juicios medios según el tipo de instrucción: Bilingüe vs. ELE") |>
-        adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
-        add(ggplot2::geom_point(aes(shape = instruction), size = 2)) 
+  tidyplot(x = aoa, y = mean_rating, color = instruction) |>
+  add(ggplot2::geom_point(aes(shape = instruction), size = 2)) |>
+  adjust_colors(new_colors = c("bilingual" = "#E69F00", "ELE" = "#0072B2")) |>
+  adjust_title("Juicios medios según el tipo de instrucción: Bilingüe vs. ELE") |>
+  adjust_y_axis(limits = c(1, 7), breaks = 1:7)
 
 scatterplot03
 ```

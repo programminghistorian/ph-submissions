@@ -72,7 +72,7 @@ En todos estos contextos, la pregunta de investigación es la misma: ¿Cómo var
 
 ## Estudio de caso integrador
 
-Para seguir esta lección, descarga el archivo [datos_aceptabilidad.csv](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizacion-juicios-aceptabilidad-tidyplots-ggplot2/datos_aceptabilidad.csv) del repositorio de la lección. Una vez descargado, colócalo en el directorio de trabajo de tu proyecto de R Studio. Este conjunto de datos proviene de un estudio sobre la adquisición del aspecto verbal en español como L2. Los participantes son 60 aprendientes eslovacos de español de nivel avanzado y 20 hablantes nativos de español peninsular. Todos evaluaron en una escala Likert de 7 puntos la aceptabilidad de 18 pares de oraciones que combinaban dos tiempos verbales: el pretérito perfecto simple (canté) y el pretérito perfecto compuesto (he cantado) con tres tipos de modificadores temporales: los modificadores temporales que aluden a anterioridad inmediata (hace un rato), los modificadores temporales que aluden a anterioridad más lejana (hace dos meses) y los modificadores temporales que aluden al momento no terminado (hoy, esta mañana, esta semana).  Dentro del grupo de aprendientes, las diferencias individuales de interés son:
+Para ilustrar la visualización y el análisis de datos, utilizaremos un conjunto de datos del campo de la adquisición de segundas lenguas. Este conjunto de datos proviene de un estudio sobre la adquisición del aspecto verbal en español como L2. Los participantes son 60 aprendientes eslovacos de español de nivel avanzado y 20 hablantes nativos de español peninsular. Todos evaluaron en una escala Likert de 7 puntos la aceptabilidad de 18 pares de oraciones que combinaban dos tiempos verbales: el pretérito perfecto simple (canté) y el pretérito perfecto compuesto (he cantado) con tres tipos de modificadores temporales: los modificadores temporales que aluden a anterioridad inmediata (hace un rato), los modificadores temporales que aluden a anterioridad más lejana (hace dos meses) y los modificadores temporales que aluden al momento no terminado (hoy, esta mañana, esta semana).  Dentro del grupo de aprendientes, las diferencias individuales de interés son:
 - `instruction`: instrucción bilingüe vs. clases de ELE (variable categórica nominal)
 - `aoa`: edad de adquisición del español (variable continua)
 - `years_learning`: años de aprendizaje (variable continua)
@@ -91,7 +91,7 @@ A continuación, carga los paquetes:
 library(tidyverse)
 library(tidyplots)
 ```
-Para poder seguir esta lección, descarga el archivo [datos_aceptabilidad.csv](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizacion-juicios-aceptabilidad-tidyplots-ggplot2/datos_aceptabilidad.csv), y guárdalos en tu ordenador. Después, establece el directorio de trabajo (indicándole a R e qué carpeta del ordenador está guardado el archivo) y guárdalo con el nombre datos:   
+Para poder seguir esta lección, descarga el archivo [datos_aceptabilidad.csv](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizacion-juicios-aceptabilidad-tidyplots-ggplot2/datos_aceptabilidad.csv), y guárdalo en tu ordenador. Después, establece el directorio de trabajo (indicándole a R e qué carpeta del ordenador está guardado el archivo) y guárdalo con el nombre datos:   
 
 ```r
 setwd("/Users/zuzana/Documents") 

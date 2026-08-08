@@ -113,7 +113,7 @@ datos <- datos |>
 
 ### Cálculo de puntuaciones medias por condición
 
-Para muchos gráficos es útil contar con un resumen por condición. Lo calculamos utilizando el paquete `dply` de R:
+Para muchos gráficos es útil contar con un resumen por condición. Lo calculamos utilizando el paquete `dplyr` de R:
 
 ```r
 resumen <- datos |>

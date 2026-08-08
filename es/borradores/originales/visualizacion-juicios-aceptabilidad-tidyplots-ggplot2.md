@@ -404,7 +404,7 @@ Esta matriz de diagramas de dispersión muestra las asociaciones entre el juicio
 
 #### ¿Qué son los modelos mixtos y para qué sirven?
 
-[Un modelo mixto](https://link.springer.com/article/10.3758/s13428-022-01814-7) (también llamado modelo de efectos mixtos o modelo multinivel) es un modelo estadístico que incluye dos tipos de efectos:
+[Un modelo mixto](https://perma.cc/LV3W-L6LF), también llamado modelo de efectos mixtos o modelo multinivel, es un modelo estadístico que incluye dos tipos de efectos:
 
 - Efectos fijos: los predictores cuyo efecto queremos estimar y generalizar, en nuestro caso, el tiempo verbal, el tipo de modificador adverbial, y el grupo (nativo/aprendiente) y las diferencias individuales. Se llaman "fijos" porque asumimos que representan efectos constantes en la población de interés.
 - Efectos aleatorios: fuentes de variabilidad que no nos interesa estimar directamente, pero que debemos tener en cuenta para no distorsionar las estimaciones de los efectos fijos. En un diseño con medidas repetidas, los participantes y los ítems son efectos aleatorios típicos: cada participante tiene su propio "nivel de base" de aceptabilidad, y cada ítem tiene su propio nivel de dificultad, independientemente de la condición experimental.
@@ -418,7 +418,7 @@ Los modelos mixtos son apropiados cuando se cumplen una o más de las siguientes
 - Se trabaja con muestras de participantes e ítems que son representativas de poblaciones más amplias y se quieren generalizar las conclusiones más allá de los participantes e ítems concretos del estudio.
 - La variabilidad entre unidades (participantes, ítems, grupos) es grande y podría enmascarar o inflar los efectos de interés.
 
-El artículo [Using Mixed Effects Models to Analyze Acceptability Ratings](https://perma.cc/62MF-7NPZ) ofrece un tutorial detallado en inglés sobre cómo utilizar los modelos de efectos mixtos para analizar juicios de aceptabilidad.
+El artículo [Using Mixed Effects Models to Analyze Acceptability Ratings](https://perma.cc/62MF-7NPZ) ofrece un tutorial detallado en inglés sobre cómo utilizar los modelos de efectos mixtos para analizar juicios de aceptabilidad, mientras que en el artículo [Rating norms should be calculated from cumulative link mixed effects models](https://perma.cc/4J46-C26J) se puede encontrar una explicación detallada de por qué los datos de escalas Likert deberían analizarse utilizando modelos mixtos lineales acumulativos (CLMM).
 
 #### Efectos aleatorios: interceptos y pendientes
 
@@ -484,7 +484,7 @@ anova(modelo1.1, modelo1.2)
 summary(modelo1.1)
 summary(modelo1.2)
 ```
-El modelo con el valor más bajo de AIC y BIC es preferible y si [el p-valor de la prueba de razón de verosimilitudes](https://perma.cc/R3AT-Q5QR) obtenido mediante la función anova es significativo (p < .05), el modelo más complejo ajusta significativamente mejor los datos y debería preferirse. En nuestro caso, los valores de AIC y BIC son más bajos para el modelo 1.2 y la prueba de razón de verosimilitud no resultó ser estadísticamente significativa, lo que implica que el modelo más complejo (modelo1.1.) no ajusta los datos mejor. [^3]
+El modelo con el valor más bajo de AIC y BIC es preferible y si [el p-valor de la prueba de razón de verosimilitudes, Likelihood ratio tests, (LRT)](https://perma.cc/R3AT-Q5QR) obtenido mediante la función anova es significativo (p < .05), el modelo más complejo ajusta significativamente mejor los datos y debería preferirse. En nuestro caso, los valores de AIC y BIC son más bajos para el modelo 1.2 y la prueba de razón de verosimilitud no resultó ser estadísticamente significativa, lo que implica que el modelo más complejo (modelo1.1.) no ajusta los datos mejor. [^3]
 Podemos reportar e interpretar el output del modelo1.1 de la siguiente manera: 
 
 | Term | β | SE | z | p |
@@ -584,14 +584,14 @@ Del mismo modo, los diagramas de dispersión con líneas de tendencia (Figura 8)
 
 - Barr, Dale J., Roger Levy, Christoph Scheepers, and Harry J. Tily. "Random effects structure for confirmatory hypothesis testing: Keep it maximal." Journal of memory and language 68, no. 3 (2013): 255-278.
 - Bross, Fabian. Acceptability ratings in linguistics: A practical guide to grammaticality judgments, data collection, and statistical analysis. Version 1.0. Mimeo, 2019.
-- Bürkner, Paul-Christian, and Matti Vuorre. "Ordinal regression models in psychology: A tutorial." Advances in Methods and Practices in Psychological Science 2, no. 1 (2019): 77-101.
 - Engler, Jan Broder. "Tidyplots empowers life scientists with easy code‐based data visualization." Imeta 4, no. 2 (2025): e70018.
+- Formoso, Jessica. "Modelos mixtos de enlace acumulativo(CLMM): un tutorial paso a paso en R". Zenodo, (2026, April 7). https://doi.org/10.5281/zenodo.19445681
 - Heisig, Jan Paul, and Merlin Schaeffer. "Why you should always include a random slope for the lower-level variable involved in a cross-level interaction." European Sociological Review 35, no. 2 (2019): 258-279.  
 - Langsford, Steven, Amy Perfors, Andrew T. Hendrickson, Lauren A. Kennedy, and Danielle J. Navarro. "Quantifying sentence acceptability measures: Reliability, bias, and variability." (2019): 37.
 - Matuschek, Hannes, Reinhold Kliegl, Shravan Vasishth, Harald Baayen, and Douglas Bates. "Balancing Type I error and power in linear mixed models." Journal of memory and language 94 (2017): 305-315.
 - Sprouse, Jon. "Acceptability judgments and grammaticality, prospects and challenges." Syntactic structures after 60 (2018): 195-224. 
 - Schütze, Carson T., and Jon Sprouse. 2018. “Judgment Data.” In Cambridge University Press eBooks, 27–50. https://doi.org/10.1017/cbo9781139013734.004.
-- Taylor, Jack E., Guillaume A. Rousselet, Christoph Scheepers, and Sara C. Sereno. "Rating norms should be calculated from cumulative link mixed effects models." Behavior research methods 55, no. 5 (2023): 2175-2196.
+- Taylor, Jack E., Guillaume A. Rousselet, Christoph Scheepers, and Sara C. Sereno. "Rating norms should be calculated from cumulative link mixed effects models." Behavior research methods 55, no. 5 (2023): 2175-2196. 
 
 
 ---

@@ -418,6 +418,8 @@ Los modelos mixtos son apropiados cuando se cumplen una o más de las siguientes
 - Se trabaja con muestras de participantes e ítems que son representativas de poblaciones más amplias y se quieren generalizar las conclusiones más allá de los participantes e ítems concretos del estudio.
 - La variabilidad entre unidades (participantes, ítems, grupos) es grande y podría enmascarar o inflar los efectos de interés.
 
+El artículo [Using Mixed Effects Models to Analyze Acceptability Ratings](https://perma.cc/62MF-7NPZ) ofrece un tutorial detallado en inglés sobre cómo utilizar los modelos de efectos mixtos para analizar juicios de aceptabilidad.
+
 #### Efectos aleatorios: interceptos y pendientes
 
 El tipo más sencillo de efecto aleatorio es el intercepto aleatorio: permite que cada participante (o ítem) tenga su propio punto de partida en la escala de respuesta. En notación de R con los paquetes `lme4` u `ordinal`, se especifica como `(1 | participant_id)`.
@@ -433,7 +435,6 @@ library(emmeans)
 ```
 
 #### Modelo 1: efecto del grupo y las variables lingüísticas
-
 
 Primero, preparamos las variables para todos nuestros modelos estadísticos: transformamos la variable dependiente en factor ordenado para su uso en el CLMM y convertimos las variables `group`, `instruction`, `tense`, y `adverb_type` en factores. Después estandardizamos las variables continuas (`aoa` y `years_learning`) mediante puntuaciones z (M = 0, DT = 1). También filtramos el dataframe `datos` para incluir solo los aprendientes (para luego utilizarlo en los modelos 2.1 y 2.2).  
 

@@ -98,7 +98,7 @@ setwd("/Users/zuzana/Documents")
 datos <- read_csv("datos_aceptabilidad.csv") 
 ```
 
-También puedes revisar la estructura del conjunto de datos con la función `glimpse` entes de continuar:
+También puedes revisar la estructura del conjunto de datos con la función `glimpse` antes de continuar:
 
 ```r
 glimpse(datos)

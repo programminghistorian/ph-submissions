@@ -37,22 +37,22 @@ Los juicios de aceptabilidad presentan varias características que condicionan s
 - Naturaleza ordinal: las respuestas son categorías ordenadas (1, 2, 3, 4, 5, 6, 7), no distancias iguales entre valores continuos 
 - Variabilidad interindividual elevada: los aprendientes con el mismo nivel de competencia pueden diferir considerablemente en sus juicios 
 - Estructura de medidas repetidas: cada participante evalúa múltiples ítems, lo que crea dependencia en los datos 
-- Diferencias individuales relevantes: variables como la edad de adquisición (la variable *aoa*, age of acquisition), los años de aprendizaje o el tipo de instrucción recibida: clases de ELE vs. instrucción bilingüe (la variable *instruction*) modulan los juicios.
+- Diferencias individuales relevantes: variables como la edad de adquisición, los años de aprendizaje o el tipo de instrucción recibida (por ejemplo, clases de ELE vs. instrucción bilingüe)  modulan los juicios.
 
 ### Objetivos de la lección
 Esta lección tiene los siguientes objetivos:   
-(1) demostrar cómo se pueden visualizar los datos lingüísticos (recogidos mediante una prueba de juicios de aceptabilidad) con el paquete tidyplots y en qué situaciones conviene complementar tidyplots con el paquete ggplot2  
-(2) ilustrar cómo se pueden crear diagramas de dispersión, gráficos de barras y gráficos de violín con el paquete tidyplots  
+(1) demostrar cómo se pueden visualizar los datos lingüísticos (recogidos mediante una prueba de juicios de aceptabilidad) con el paquete `tidyplots` y en qué situaciones conviene complementar `tidyplots` con el paquete `ggplot2`  
+(2) ilustrar cómo se pueden crear diagramas de dispersión, gráficos de barras y gráficos de violín con el paquete `tidyplots`  
 (3) mostrar cómo personalizar colores, etiquetas y temas de los gráficos y cómo crear gráficos facetados  
 (4) ejemplificar cómo analizar dichos datos mediante modelos lineales mixtos de enlace acumulativo  
 
-### Panorama de herramientas: tidyplots frente a ggplot2
+### Panorama de herramientas: `tidyplots` frente a `ggplot2` 
 
 Esta lección utiliza dos herramientas complementarias:
 
-tidyplots es un paquete de R construido sobre ggplot2 que proporciona una interfaz simplificada y encadenable mediante el operador `|>`. Está diseñado para generar rápidamente gráficos de alta calidad con poco código, lo que lo hace especialmente útil en la fase exploratoria del análisis. Sus funciones cubren los tipos de gráficos más habituales en ciencias sociales y lingüística experimental: gráficos de violín, gráficos de barras con barras de error, diagramas de caja y gráficos de dispersión.  
+`tidyplots` es un paquete de R construido sobre `ggplot2` que proporciona una interfaz simplificada y encadenable mediante el operador `|>`. Está diseñado para generar rápidamente gráficos de alta calidad con poco código, lo que lo hace especialmente útil en la fase exploratoria del análisis. Sus funciones cubren los tipos de gráficos más habituales en ciencias sociales y lingüística experimental: gráficos de violín, gráficos de barras con barras de error, diagramas de caja y gráficos de dispersión.  
 
-ggplot2 es el sistema de visualización de referencia en R, basado en la [gramática de gráficos](https://perma.cc/26U2-6WBQ). Ofrece un control total sobre cada elemento del gráfico, lo que lo hace indispensable para publicaciones, para tipos de gráficos no disponibles en tidyplots (como la matriz de dispersión) y para personalizaciones avanzadas. Si quieres aprender más sobre las ventajas de utilizar ggplot2, puedes consultar la sección [Ventajas de ggplot2](https://programminghistorian.org/es/lecciones/datos-urbanos-demograficos-r-ggplot2#ventajas-de-ggplot2) de la lección [Visualizando datos urbanos y demográficos en R con ggplot2](https://programminghistorian.org/es/lecciones/datos-urbanos-demograficos-r-ggplot2#ventajas-de-ggplot2) de *Programming Historian en español*. 
+`ggplot2` es el sistema de visualización de referencia en R, basado en la [gramática de gráficos](https://perma.cc/26U2-6WBQ). Ofrece un control total sobre cada elemento del gráfico, lo que lo hace indispensable para publicaciones, para tipos de gráficos no disponibles en `tidyplots` (como la matriz de dispersión) y para personalizaciones avanzadas. Si quieres aprender más sobre las ventajas de utilizar `ggplot2`, puedes consultar la sección [Ventajas de ggplot2](https://programminghistorian.org/es/lecciones/datos-urbanos-demograficos-r-ggplot2#ventajas-de-ggplot2) de la lección [Visualizando datos urbanos y demográficos en R con ggplot2](https://programminghistorian.org/es/lecciones/datos-urbanos-demograficos-r-ggplot2#ventajas-de-ggplot2) de *Programming Historian en español*. 
 
 ### Más allá del caso de estudio: otros contextos de aplicación
 
@@ -62,7 +62,7 @@ Aunque esta lección utiliza juicios de aceptabilidad gramatical como hilo condu
 
 2. Cuestionarios con escala Likert en educación y psicología. Cualquier instrumento que pida a los participantes valorar su acuerdo, satisfacción o frecuencia en una escala de varios puntos genera datos estructuralmente parecidos a los de esta lección. Por ejemplo: encuestas sobre motivación para el aprendizaje de lenguas (una escala del 1 al 5 sobre el grado de acuerdo con afirmaciones como "Estudio español porque me gusta su cultura"), cuestionarios de autoevaluación de competencia, o escalas de actitud lingüística hacia variedades del español. En todos estos casos, los gráficos de violín y los modelos de enlace acumulativo mixto son igualmente apropiados.
 
-3. Tareas de tiempo de reacción y lectura. En psicolingüística experimental, los tiempos de lectura palabra por palabra o los tiempos de reacción en tareas de decisión léxica son variables continuas con estructura de medidas repetidas (cada participante responde a múltiples estímulos). Aunque en ese caso los datos no son ordinales, por lo cual se usaría un modelo lineal mixto en lugar de un CLMM (Cumulative Link Mixed Model, en español: modelo mixto de enlace acumulativo), las estrategias de visualización con tidyplots y ggplot2 que se presentan en esta lección se aplican directamente: gráficos de violín por condición, dispersión entre variables individuales y tiempos medios, y facetas por grupo.
+3. Tareas de tiempo de reacción y lectura. En psicolingüística experimental, los tiempos de lectura palabra por palabra o los tiempos de reacción en tareas de decisión léxica son variables continuas con estructura de medidas repetidas (cada participante responde a múltiples estímulos). Aunque en ese caso los datos no son ordinales, por lo cual se usaría un modelo lineal mixto en lugar de un CLMM (Cumulative Link Mixed Model, en español: modelo mixto de enlace acumulativo), las estrategias de visualización con `tidyplots` y `ggplot2` que se presentan en esta lección se aplican directamente: gráficos de violín por condición, dispersión entre variables individuales y tiempos medios, y facetas por grupo.
 
 4. Estudios de producción y corpus. En análisis de corpus o estudios de producción oral o escrita, es habitual contar frecuencias de uso de una construcción gramatical por participante o por texto, o asignar puntuaciones de corrección a producciones de aprendientes. Estos datos que representan frecuencias por condición o puntuaciones por rasgo analizado pueden visualizarse y analizarse con los mismos modelos mixtos que se describen en la sección de análisis estadístico.
 
@@ -72,10 +72,10 @@ En todos estos contextos, la pregunta de investigación es la misma: ¿Cómo var
 
 ## Estudio de caso integrador
 
-Para ilustrar la visualización y el análisis de datos, utilizaremos un conjunto de datos del campo de la adquisición de segundas lenguas. Este conjunto de datos proviene de un estudio sobre la adquisición del aspecto verbal en español como L2. Los participantes son 60 aprendientes eslovacos de español de nivel avanzado y 20 hablantes nativos de español peninsular. Todos evaluaron en una escala Likert de 7 puntos la aceptabilidad de 18 pares de oraciones que combinaban dos tiempos verbales: el pretérito perfecto simple (canté) y el pretérito perfecto compuesto (he cantado) con tres tipos de modificadores temporales: los modificadores temporales que aluden a anterioridad inmediata (hace un rato), los modificadores temporales que aluden a anterioridad más lejana (hace dos meses) y los modificadores temporales que aluden al momento no terminado (hoy, esta mañana, esta semana).  Dentro del grupo de aprendientes, las diferencias individuales de interés son:
-- *instruction*: instrucción bilingüe vs. clases de ELE (variable categórica nominal)
-- *aoa* (age of acquisition): edad de adquisición del español (variable continua)
-- *years_learning* (años de aprendizaje): años de aprendizaje (variable continua)
+Para ilustrar la visualización y el análisis de datos, utilizaremos un conjunto de datos del campo de ASL. Este conjunto de datos proviene de un estudio sobre la adquisición del aspecto verbal en español como L2. Los participantes son 60 aprendientes eslovacos de español de nivel avanzado y 20 hablantes nativos de español peninsular. Todos evaluaron en una escala Likert de 7 puntos la aceptabilidad de 18 pares de oraciones que combinaban dos tiempos verbales: el pretérito perfecto simple (PPS): *canté*, y el pretérito perfecto compuesto (PPC): *he cantado* con tres tipos de modificadores temporales: los modificadores temporales que aluden a anterioridad inmediata (*hace un rato*), los modificadores temporales que aluden a anterioridad más lejana (*hace dos meses*) y los modificadores temporales que aluden al momento no terminado (*hoy*, *esta mañana*, *esta semana*).  Dentro del grupo de aprendientes, las diferencias individuales de interés son:
+- `instruction`: instrucción bilingüe vs. clases de ELE (variable categórica nominal)
+- `aoa` (age of acquisition): edad de adquisición del español (variable continua)
+- `years_learning` (años de aprendizaje): años de aprendizaje (variable continua)
 
 ### Preparación del entorno y carga de datos
 
@@ -91,20 +91,20 @@ A continuación, carga los paquetes:
 library(tidyverse)
 library(tidyplots)
 ```
-Para poder seguir esta lección, descarga el archivo [datos_aceptabilidad.csv](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizacion-juicios-aceptabilidad-tidyplots-ggplot2/datos_aceptabilidad.csv), y guárdalo en tu ordenador. Después, establece el directorio de trabajo (indicándole a R e qué carpeta del ordenador está guardado el archivo) y guárdalo con el nombre datos:   
+Para poder seguir esta lección, descarga el archivo [datos_aceptabilidad.csv](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizacion-juicios-aceptabilidad-tidyplots-ggplot2/datos_aceptabilidad.csv), y guárdalo en tu ordenador. Después, establece el directorio de trabajo (indicándole a R e qué carpeta del ordenador está guardado el archivo) y guárdalo con el nombre `datos`:   
 
 ```r
 setwd("/Users/zuzana/Documents") 
 datos <- read_csv("datos_aceptabilidad.csv") 
 ```
 
-También puedes revisar la estructura del conjunto de datos antes de continuar:
+También puedes revisar la estructura del conjunto de datos con la función `glimpse` entes de continuar:
 
 ```r
 glimpse(datos)
 ```
 
-Si las variables *group*, *instruction*, *tense* y *adverb_type* aparecen como tipo `character`, conviértelas a factor:
+Si las variables `group`, `instruction`, `tense` y `adverb_type` aparecen como tipo `character`, conviértelas a `factor`:
 
 ```r
 datos <- datos |>
@@ -113,7 +113,7 @@ datos <- datos |>
 
 ### Cálculo de puntuaciones medias por condición
 
-Para muchos gráficos es útil contar con un resumen por condición. Lo calculamos utilizando el `dplyr`de R:
+Para muchos gráficos es útil contar con un resumen por condición. Lo calculamos utilizando el paquete `dply` de R:
 
 ```r
 resumen <- datos |>
@@ -127,14 +127,14 @@ resumen <- datos |>
 ```
 Puedes encontrar más información sobre el paquete `dplyr` en la sección [¿Qué es dplyr?](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r#qu%C3%A9-es-dplyr) de la lección de *Programming Historian en español* titulada [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r).
 
-## Gráficos rápidos con tidyplots
+## Gráficos rápidos con `tidyplots` 
 
-### Filosofía de tidyplots
+### Filosofía de `tidyplots` 
 
-Aunque ggplot2 es la opción estándar para la visualización de datos, el paquete tidyplots, desarrollado por Jan Broder Engler (2025), representa una excelente opción para visualizar los datos en ASL debido a su facilidad de uso y su estilo limpio y orientado a publicaciones científicas. Tidyplots es especialmente apropiado tanto para los estudiantes como para los investigadores en ASL debido a su código más conciso, su gramática simplificada y su curva de aprendizaje más baja en comparación con ggplot2. 
+Aunque `ggplot2` es la opción estándar para la visualización de datos, el paquete `tidyplots`, desarrollado por Jan Broder Engler (2025), representa una excelente opción para visualizar los datos en ASL debido a su facilidad de uso y su estilo limpio y orientado a publicaciones científicas. `Tidyplots` es especialmente apropiado tanto para los estudiantes como para los investigadores en ASL debido a su código más conciso, su gramática simplificada y su curva de aprendizaje más baja en comparación con `ggplot2`. 
 En [la página oficial de tidyplots](https://jbengler.github.io/tidyplots/articles/Visualizing-data.html) se encuentran tres artículos que resumen la guía completa para crear y personalizar gráficos con este paquete: [Visualizing data](https://perma.cc/3KYT-4GAC), [Advanced plotting](https://perma.cc/4Q7B-EDXR) y [Color schemes](https://perma.cc/9FTX-XXLP).[^1]  
 
-La estructura básica de Tidyplots es:
+La estructura básica de `tidyplots` es:
 
 ```r
 datos |>
@@ -142,9 +142,9 @@ datos |>
   add_[tipo_de_gráfico]() +
   adjust_[aspecto]()
 ```
-Esta estructura sigue una lógica de capas encadenadas mediante el operador pipe (|>). Primero se pasa el conjunto de datos (`datos`) a la función `tidyplot()`, donde se especifican las variables que corresponden a cada eje y al color. A continuación, se añade el tipo de gráfico deseado con una función `add_*()`, por ejemplo, `add_violin()`, `add_boxplot()`, etc. Finalmente, se pueden modificar aspectos visuales o etiquetas mediante funciones `adjust_*()`, por ejemplo, `adjust_title()`, `adjust_x_axis_title()`, `adjust_legend_title()`, etc. Cada línea construye sobre la anterior, lo que hace que el código sea fácil de leer y modificar.
+Esta estructura sigue una lógica de capas encadenadas mediante el operador pipe `|>`. Primero se pasa el conjunto de datos (`datos`) a la función `tidyplot()`, donde se especifican las variables que corresponden a cada eje y al color. A continuación, se añade el tipo de gráfico deseado con una función `add_*()`, por ejemplo, `add_violin()`, `add_boxplot()`, etc. Finalmente, se pueden modificar aspectos visuales o etiquetas mediante funciones `adjust_*()`, por ejemplo, `adjust_title()`, `adjust_x_axis_title()`, `adjust_legend_title()`, etc. Cada línea construye sobre la anterior, lo que hace que el código sea fácil de leer y modificar.
 
-### Gráficos de violín con tidyplots
+### Gráficos de violín con `tidyplots` 
 
 Para aplicar esta estructura básica a nuestro estudio de caso, podemos empezar con un simple gráfico de violín para visualizar la distribución de juicios de los dos tiempos verbales entre los dos grupos de participantes según su lengua materna: 
 
@@ -178,13 +178,13 @@ violinchart01 <- datos |>
   adjust_title("Los juicios según el tiempo verbal y el modificador adverbial: Hablantes nativos vs. aprendientes de español")   
 violinchart01  
 ```
-La función *add_violin()* dibuja el violín; *add_mean_dot()* superpone el punto de la media, y *split_plot()* divide el gráfico en dos paneles separados. Con *adjust_colors()* asignamos colores a los tres tipos de adverbios. [^2]
+La función `add_violin()` dibuja el violín; `add_mean_dot()` superpone el punto de la media, y `split_plot()` divide el gráfico en dos paneles separados. Con `adjust_colors()` asignamos colores a los tres tipos de adverbios: `#1B7837`, verde, para anterioridad inmediata, `#762A83`, morado, para anterioridad lejana, y `#808080`, gris, para momento no terminado. [^2]
 
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-02.png" alt="La Figura 2 es un diagrama de violín con dos paneles que muestra la distribución completa de los juicios de aceptabilidad (escala 1-7) según el tiempo verbal (PPC, PPS) y el tipo de modificador adverbial (anterioridad inmediata, anterioridad lejana, momento no terminado), con un punto marcando la media de cada distribución. En el panel de los aprendices, las distribuciones son amplias y se superponen considerablemente entre los tres tipos de modificador, tanto en PPC como en PPS, indicando poca diferenciación clara entre condiciones. En el panel de los nativos, en cambio, las distribuciones son más estrechas y polarizadas: en PPC, anterioridad lejana se concentra en valores bajos (1-2) y momento no terminado en valores altos (5-7); en PPS, este patrón se invierte, con anterioridad inmediata y anterioridad lejana concentrados en valores altos (5-7) y momento no terminado más disperso hacia valores bajos y medios." caption="Figura 2. Gráfico de violín que muestra la distribución de los juicios de aceptabilidad según el tiempo verbal (PPC vs. PPS) y el tipo de modificador adverbial, comparando hablantes nativos (Spanish) y aprendices (Slovak). Los puntos indican la media de cada distribución." %}
 
 Este gráfico revela patrones más detallados con respecto a la interacción entre el tiempo verbal, el tipo de modificador adverbial y la L1: los hablantes nativos concentran sus juicios de los adverbios de momento no terminado en los valores altos con el PPC (media ≈ 6.1) y en los valores bajos con el PPS (media ≈ 2.6), mientras que sus juicios de los adverbios de anterioridad lejana son bajos con el PPC (media ≈ 1.8) y altos con el PPS (media ≈ 5.8). Los adverbios de anterioridad inmediata son aceptados por este grupo más con el PPS que con el PPC (media ≈ 5.8 vs. 3.6). Los aprendientes muestran más variabilidad en sus juicios (con ambos tiempos verbales, las medias de los tres adverbios están entre 3.4 y 5.5), posiblemente porque en su L1 no se conceptualiza esta distinción aspectual de la misma manera: los conceptos semánticos relacionados con el PPC y el PPS en español se expresan a través de un solo tiempo verbal en eslovaco (el tiempo pasado simple). 
 
-Tidyplots nos permite dividir el gráfico por dos variables a la vez. Por ejemplo, para mostrar el efecto del tiempo verbal y del tipo de instrucción (bilingüe vs. ELE), podemos crear otro gráfico de violín facetado, esta vez incorporando las funciones `filter(group == "learner")` y `split_plot(by = instruction)`. Con la primera función filtramos las filas del dataframe antes de pasarlas a tidyplots para que el gráfico solo incluya los datos donde la variable *group* tiene el valor *learner*, mientras que con la segunda dividimos el gráfico en dos paneles según el tipo de instrucción recibida.
+`Tidyplots` nos permite dividir el gráfico por dos variables a la vez. Por ejemplo, para mostrar el efecto del tiempo verbal (la variable `tense`) y del tipo de instrucción bilingüe vs. ELE (la variable `instruction`), podemos crear otro gráfico de violín facetado, esta vez incorporando las funciones `filter(group == "learner")` y `split_plot(by = instruction)`. Con la primera función filtramos las filas del dataframe antes de pasarlas a `tidyplots` para que el gráfico solo incluya los datos donde la variable `group` tiene el valor `learner`, mientras que con la segunda dividimos el gráfico en dos paneles según el tipo de instrucción recibida.
 
 ```r
 violinchart02 <-datos |>
@@ -202,9 +202,9 @@ violinchart02
 ```
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-03.png" alt="La Figura 3 es un gráfico de violín con dos paneles (bilingüe y ELE) que muestra la distribución completa de los juicios de aceptabilidad (escala 1-7) según el tiempo verbal (PPC, PPS) y el tipo de modificador adverbial (anterioridad inmediata, anterioridad lejana, momento no terminado), con un punto marcando la media de cada distribución. Los dos paneles muestran patrones muy similares entre sí: en ambos grupos, anterioridad inmediata tiene la media más alta en PPC (~5.4-5.6) y baja notablemente en PPS (~3.2-3.5), mientras que anterioridad lejana y momento no terminado se mantienen en valores intermedios en ambos tiempos verbales, con distribuciones amplias y bastante solapadas entre los tres tipos de modificador." caption="Figura 3. Gráfico de violín que muestra la distribución de los juicios de aceptabilidad según el tiempo verbal (PPC vs. PPS) y el tipo de modificador adverbial (anterioridad inmediata, anterioridad lejana, momento no terminado), comparando aprendices con instrucción bilingüe y con instrucción ELE. Los puntos indican la media de cada distribución." %}
 
-Este gráfico responde directamente a una pregunta de investigación interesante: ¿difieren los juicios de los aprendientes con instrucción bilingüe y los que recibieron clases de ELE? Como se puede observar en el gráfico, parece que los juicios de ambos grupos son comparables y no cambian mucho con el tipo de instrucción. El gráfico indica que ambos grupos prefieren los adverbios de anterioridad inmediata con el PPC (media grupo bilingüe ≈  5.6, media grupo ELE ≈ 5.4) y los adverbios de anterioridad lejana con el PPS (media grupo bilingüe ≈ 4.4, media grupo ELE ≈ 4.6) y momento no terminado con el PPC (media grupo bilingüe ≈ 4.3, media grupo ELE ≈  4.4). Las similitudes en los juicios por los dos grupos se podrían atribuir al contexto geográfico (aunque uno de los grupos recibe clases de ELE y el otro tiene algunas de sus asignaturas impartidas en español, ambos grupos estudian español en su país de origen).
+Este gráfico responde directamente a una pregunta de investigación interesante: ¿difieren los juicios de los aprendientes con instrucción bilingüe y los que recibieron clases de ELE? Como se puede observar en el gráfico, parece que los juicios de ambos grupos son comparables y no cambian mucho con el tipo de instrucción. El gráfico indica que ambos grupos prefieren los adverbios de anterioridad inmediata con el PPC (media grupo bilingüe ≈  5.6, media grupo ELE ≈ 5.4) y los adverbios de anterioridad lejana con el PPS (media grupo bilingüe ≈ 4.4, media grupo ELE ≈ 4.6) y momento no terminado con el PPC (media grupo bilingüe ≈ 4.3, media grupo ELE ≈  4.4). Las similitudes en los juicios por los dos grupos se podrían atribuir al contexto geográfico (aunque uno de los grupos recibe clases de ELE y el otro tiene algunas de sus asignaturas impartidas en español, ambos grupos estudian español en su país de origen con poca exposición al español fuera del aula).
  
-### Diagramas de caja y de líneas con tidyplots
+### Diagramas de caja y de líneas con `tidyplots`
 
 Un tipo de gráfico que se puede utilizar para comparar las medias de los juicios entre condiciones e identificar valores extremos es el diagrama de caja con barras de error que representan el error estándar de la media.
 
@@ -265,9 +265,9 @@ barchart01
 ```
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-06.png" alt="La Figura 6 es un gráfico de barras con dos paneles que muestran las medias de juicios de aceptabilidad (1-7) y barras de error que indican el error estándar. El gráfico compara los juicios de los hablantes nativos y los aprendices de español, según tiempo verbal (PPC, PPS) y tipo de modificador adverbial (anterioridad inmediata, anterioridad lejana, momento no terminado). Cada panel corresponde a un grupo: aprendientes y nativos. Los nativos muestran un patrón claro de complementariedad: anterioridad inmediata y anterioridad lejana se prefieren con el PPS, momento no terminado con el PPC. Los aprendices muestran diferencias generalmente más moderadas entre condiciones." caption="Figura 6. Juicios medios de aceptabilidad (escala 1–7) para las combinaciones de tiempo verbal (PPC, PPS) y tipo de modificador adverbial en aprendientes de español y hablantes nativos. Las barras representan la media de cada condición y las líneas de error indican el error estándar." %}
 
-El gráfico de barras también muestra que en el grupo de los aprendientes, las medias son similares entre los tres tipos de adverbios con cada tiempo verbal, mientras que los hablantes nativos prefieren el PPC con momento no terminado, seguido de anterioridad inmediata y anterioridad lejana y el PPS con anterioridad lejana, seguida de anterioridad inmediata y momento no terminado. Un dato interesante es la puntuación (media ≈ 2.6) de la combinación del PPS con el momento no terminado por los hablantes nativos, la cual se puede explicar por el tipo de modificadores adverbiales de momento no terminado utilizados en este estudio (hoy, esta mañana, esta semana, este mes, en vez de todavía, aún, etc.). Estos modificadores adverbiales refieren a un momento temporal que puede ser conceptualizado como aludiendo a un momento concluido dentro de un marco temporal más amplio (por ejemplo: esta mañana = un período de tiempo que ya terminó el día de hoy).
+El gráfico de barras también muestra que en el grupo de los aprendientes, las medias son similares entre los tres tipos de adverbios con cada tiempo verbal, mientras que los hablantes nativos prefieren el PPC con momento no terminado, seguido de anterioridad inmediata y anterioridad lejana y el PPS con anterioridad lejana, seguida de anterioridad inmediata y momento no terminado. Un dato interesante es la puntuación (media ≈ 2.6) de la combinación del PPS con el momento no terminado por los hablantes nativos (no la rechazan completamente), la cual se puede explicar por el tipo de modificadores adverbiales de momento no terminado utilizados en este estudio (*hoy*, *esta mañana*, *esta semana*, *este mes*, en vez de *todavía*, *aún*, etc.). Estos modificadores adverbiales refieren a un momento temporal que puede ser conceptualizado como aludiendo a un momento concluido dentro de un marco temporal más amplio (por ejemplo: *esta mañana* = un período de tiempo que ya terminó el día de hoy).
 
-Para visualizar las correlaciones entre la variable dependiente y las variables independientes, tidyplots nos permite crear gráficos de dispersión. Por ejemplo, si nos interesa explorar la relación entre la edad de adquisición del español *aoa* y los juicios medios de aceptabilidad para los dos grupos de aprendientes *bilingual* vs. *ELE*, filtramos los datos para seleccionar solo los aprendientes, los agrupamos por participante, edad de adquisición y tipo de instrucción, calculamos medias por participante y visualizamos la relación entre la edad de adquisición y los juicios de aceptabilidad, diferenciando entre aprendientes bilingües y aprendientes con ELE.
+Para visualizar las correlaciones entre la variable dependiente y las variables independientes, `tidyplots` nos permite crear gráficos de dispersión. Por ejemplo, si nos interesa explorar la relación entre la edad de adquisición del español `aoa` y los juicios medios de aceptabilidad para los dos grupos de aprendientes `bilingual` vs. `ELE`, filtramos los datos para seleccionar solo los aprendientes, los agrupamos por participante, edad de adquisición y tipo de instrucción, calculamos medias por participante y visualizamos la relación entre la edad de adquisición y los juicios de aceptabilidad, diferenciando entre aprendientes bilingües y aprendientes con ELE.
 
 ```r
 scatterplot01 <- datos |>
@@ -287,11 +287,11 @@ scatterplot01
 
 El gráfico de dispersión indica que ambos grupos tienen sus juicios concentrados cerca del punto medio de la escala y los puntos de los dos grupos están entremezclados entre sí, sin mostrar una correlación con la edad de adquisición. 
 
-### Tidyplots vs. ggplot2
+### `tidyplots` vs. `ggplot2` 
 
-ggplot2 se basa en la idea de que todo gráfico puede describirse como la combinación de: un conjunto de datos, un mapeo de variables a propiedades visuales (*aesthetics*: posición, color, forma, tamaño) y uno o más objetos geométricos (*geoms*: puntos, líneas, barras, violines). Esta estructura modular hace que ggplot2 sea más verboso que tidyplots, pero también mucho más flexible.
+`ggplot2` se basa en la idea de que todo gráfico puede describirse como la combinación de: un conjunto de datos, un mapeo de variables a propiedades visuales (`aesthetics`: posición, color, forma, tamaño) y uno o más objetos geométricos (`geoms`: puntos, líneas, barras, violines). Esta estructura modular hace que `ggplot2` sea más verboso que `tidyplots`, pero también mucho más flexible.
 
-La estructura básica de un gráfico con ggplot2 es:
+La estructura básica de un gráfico con `ggplot2` es:
 
 ```r
 ggplot(datos, aes(x = variable_x, y = variable_y, color = grupo)) +
@@ -299,12 +299,12 @@ ggplot(datos, aes(x = variable_x, y = variable_y, color = grupo)) +
   labs(x = "etiqueta x", y = "etiqueta y") +
   theme_classic()
 ```
-Para aprender a visualizar los gráficos que hemos visto en esta lección hasta ahora (gráficos de dispersión, diagramas de barras y diagramas de caja) con ggplot2, te recomendamos la lección de *Programming Historian* [Visualizing Urban and Demographic data in R with ggplot2](https://programminghistorian.org/en/lessons/urban-demographic-data-r-ggplot2). Si te gustaría aprender cómo organizar tus datos en el formato tidy y cómo utilizar el paquete dplyr para manipular tus datos, te recomendamos la lección [Data Wrangling and management in R] (https://programminghistorian.org/en/lessons/data-wrangling-and-management-in-r) de *Programming Historian*. 
+Para aprender a visualizar los gráficos que hemos visto en esta lección hasta ahora (gráficos de dispersión, diagramas de barras y diagramas de caja) con `ggplot2`, te recomendamos la lección de *Programming Historian* [Visualizing Urban and Demographic data in R with ggplot2](https://programminghistorian.org/en/lessons/urban-demographic-data-r-ggplot2). Si te gustaría aprender cómo organizar tus datos en el formato tidy y cómo utilizar el paquete dplyr para manipular tus datos, te recomendamos la lección [Data Wrangling and management in R] (https://programminghistorian.org/en/lessons/data-wrangling-and-management-in-r) de *Programming Historian*. 
 
-En la siguiente sección vamos a ver algunos gráficos para ejemplificar cómo podemos complementar tidyplots con ggplot2 o recurrir al ggplot2 para combinar múltiples tipos de geometrías o facetas en dos dimensiones (filas y columnas). 
+En la siguiente sección vamos a ver algunos gráficos para ejemplificar cómo podemos complementar `tidyplots` con `ggplot2` o recurrir al `ggplot2` para combinar múltiples tipos de geometrías o facetas en dos dimensiones (filas y columnas). 
  
-### Complementar tidyplots con ggplot2 mediante la función add()
-tidyplots se puede complementar con ggplot2 mediante la función `add()` dentro de una cadena de pipes de tidyplots con |> para añadir funciones `geom`, por ejemplo `geom_hline()`, `geom_point()` o `geom_text()`. En nuestro caso, podríamos modificar en ggplot2 al gráfico de dispersión en la Figura 6 añadiendo una línea de regresión sin intervalo de confianza y/o una línea horizontal punteada en el valor de la media global de todas las medias de aceptabilidad:
+### Complementar `tidyplots` con `ggplot2` mediante la función `add()`
+`tidyplots` se puede complementar con `ggplot2` mediante la función `add()` dentro de una cadena de pipes de tidyplots con `|>`  para añadir funciones `geom`, por ejemplo `geom_hline()`, `geom_point()` o `geom_text()`. En nuestro caso, podríamos modificar en `ggplot2` al gráfico de dispersión en la Figura 6 añadiendo una línea de regresión sin intervalo de confianza y/o una línea horizontal punteada en el valor de la media global de todas las medias de aceptabilidad:
 
 ```r
 scatterplot02 <- scatterplot01 |>
@@ -314,13 +314,13 @@ scatterplot02 <- scatterplot01 |>
   linetype = "dotted", color = "black")) 
 scatterplot02  
 ```
-El resultado de esta modificación muestra dos líneas de regresión para cada grupo y una línea de la media global de los juicios de todos los aprendientes, lo que permite no solo ver si los participantes con *aoa* más alta estar por debajo de esa media, sino también comparar la tendencia de cada grupo (*bilingual* vs. *ELE*) con respecto al rendimiento medio general:
+El resultado de esta modificación muestra dos líneas de regresión para cada grupo y una línea de la media global de los juicios de todos los aprendientes, lo que permite no solo ver si los participantes con `aoa` más alta están por debajo de esa media, sino también comparar la tendencia de cada grupo (`bilingual` vs. `ELE`) con respecto al rendimiento medio general:
 
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-08.png" alt="La Figura 8 es un diagrama de dispersión que muestra la relación entre la edad de adquisición del español (7-18 años, eje X) y los juicios medios de aceptabilidad (1-7, eje Y) para los aprendientes con instrucción bilingüe y ELE, con una línea de tendencia añadida para cada grupo. La línea del grupo bilingüe muestra una leve tendencia positiva, mientras que la del grupo ELE se mantiene prácticamente plana. Aun así, ambas líneas convergen alrededor de un valor similar (~4.2-4.5) en las edades más altas, por lo que la diferencia entre grupos sigue sin ser marcada." caption="Figura 8. Gráfico de dispersión que representa la relación entre la edad de adquisición del español y los juicios medios de aceptabilidad en el grupo de aprendientes por tipo de instrucción (bilingüe vs. ELE), con líneas de tendencia. Cada punto representa la media de juicios de un participante." %}
 
-La línea verde (instrucción bilingüe) indica que entre los participantes con la instrucción bilingüe, la edad más alta (18 años) se relaciona con juicios más altos (media ≈ 4.5) y la edad más temprana (7 años) con juicios más bajos (media ≈ 3.8), mientras que para los participantes con la instrucción ELE (línea morada), no se asocia con cambios en juicios medios (media ≈ 4.2 - 4.3 en todo el rango de edades). 
+La línea verde (instrucción bilingüe) indica que entre los participantes con la instrucción bilingüe, la edad más alta se relaciona con juicios más altos (media ≈ 4.5) y la edad más temprana con juicios más bajos (media ≈ 3.8), mientras que para los participantes con la instrucción ELE (línea morada), no se asocia con cambios en juicios medios (media ≈ 4.2 - 4.3 en todo el rango de edades). 
 
-Para resaltar visualmente las diferencias entre los dos grupos de participantes, podemos diferenciar los dos grupos mediante puntos de dos colores distintos y dos formas distintas mediante la función add `ggplot2::geom_point`. Primero, calculamos las medias por participante y después creamos un gráfico de dispersión con círculos naranjas (grupo: *bilingual*) y triángulos azules (grupo *ELE*).
+Para resaltar visualmente las diferencias entre los dos grupos de participantes, podemos diferenciar los dos grupos mediante puntos de dos colores distintos y dos formas distintas mediante la función add `ggplot2::geom_point`. Primero, calculamos las medias por participante y después creamos un gráfico de dispersión con círculos naranjas (grupo `bilingual`) y triángulos azules (grupo `ELE`).
 
 ```r
 library(dplyr)
@@ -343,9 +343,9 @@ El resultado de este código es el siguiente gráfico:
 
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-09.png" alt="La Figura 9 es un diagrama de dispersión que muestra la relación entre la edad de adquisición del español (eje X, 7-18 años) y el juicio medio de aceptabilidad (eje Y, escala 1-7), diferenciando el tipo de instrucción mediante forma y color: círculos naranjas para bilingüe y triángulos azules para ELE. Al igual que en el diagrama de dispersión anterior, no hay una diferencia clara y consistente entre los dos grupos, y los juicios se distribuyen de manera relativamente similar en todo el rango de edades." caption="Figura 9. Gráfico de dispersión que muestra la relación entre la edad de adquisición del español y los juicios medios de aceptabilidad por tipo de instrucción (bilingüe vs. ELE). Cada punto representa la media de juicios de un participante." %}
 
-### Faceting con facet_grid para comparar dos factores
+### Faceting con `facet_grid` para comparar dos factores
 
-En esta lección hemos visto que tidyplots nos permite incorporar facetas para dividir el gráfico en paneles, lo que facilita la comparación visual entre grupos. Sin embargo, si queremos crear un gráfico de violin parecido a la Figura 3, pero preferimos dividirlo en una cuadrícula de paneles según dos variables simultáneamente (una en filas y otra en columnas), necesitamos recurrir a la función`facet_grid()` de ggplot2 . Esto es muy útil cuando se quiere visualizar la interacción entre el tiempo verbal (filas) y el tipo de instrucción (columnas) para los aprendientes en un solo gráfico:
+En esta lección hemos visto que `tidyplots` nos permite incorporar facetas para dividir el gráfico en paneles, lo que facilita la comparación visual entre grupos. Sin embargo, si queremos crear un gráfico de violin parecido a la Figura 3, pero preferimos dividirlo en una cuadrícula de paneles según dos variables simultáneamente (una en filas y otra en columnas), necesitamos recurrir a la función `facet_grid()` de `ggplot2`. Esto es muy útil cuando se quiere visualizar la interacción entre el tiempo verbal (filas) y el tipo de instrucción (columnas) para los aprendientes en un solo gráfico:
 
 ```r
 matrix <- datos |>
@@ -370,12 +370,12 @@ matrix <- datos |>
 
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-10.png" alt="La Figura 10 es una matriz de gráficos de violín con diagramas de caja que muestra los juicios de aceptabilidad (1–7) según el tipo de instrucción (Bilingüe vs. ELE), el tiempo verbal (PPC vs. PPS) y el tipo de modificador adverbial. El PPC con anterioridad inmediata muestra puntuaciones más altas en ambos grupos que anterioridad lejana y momento no terminado, mientras que el PPS obtiene las puntuaciones más altas con anterioridad lejana, seguida por el momento no terminado y anterioridad inmediata." caption="Figura 10. Matriz de diagramas de violín que muestra la distribución de los juicios de aceptabilidad por tipo de instrucción (Bilingüe vs. ELE), tiempo verbal (pretérito perfecto compuesto vs. pretérito perfecto simple) y tipo de modificador adverbial. Cada violín muestra la densidad de las respuestas y el diagrama de caja integrado indica la mediana y el rango intercuartílico. Los puntos representan valores atípicos." %}
 
-La matriz de gráficos de violín con diagramas de caja indica una interacción entre tiempo verbal y tipo de adverbio: la anterioridad lejana y momento no terminado obtienen las puntuaciones más bajas con el PPC (ambos grupos: mediana ≈ 4), pero más altas con el PPS (grupo bilingüe: mediana ≈ 4, grupo ELE: mediana ≈ 5). La anterioridad inmediata se mantiene en valores altos en combinación con PPC (ambos grupos: mediana ≈ 6-7) y más bajos con el PPS (ambos grupos: mediana ≈ 3). Interesantemente, los dos grupos de aprendientes muestran patrones bastante parecidos en las dos filas, aunque el grupo ELE presenta una distribución más dispersa con el PPC y puntuaciones ligeramente más altas en la fila de PPS.
+La matriz de gráficos de violín con diagramas de caja indica una interacción entre tiempo verbal y tipo de adverbio: la anterioridad lejana y momento no terminado obtienen las puntuaciones más bajas con el PPC (ambos grupos: mediana ≈ 4), pero más altas con el PPS (grupo bilingüe: mediana ≈ 4, grupo ELE: mediana ≈ 5). La anterioridad inmediata se mantiene en valores altos en combinación con PPC (ambos grupos: mediana ≈ 6-7) y más bajos con el PPS (ambos grupos: mediana ≈ 3). Interesantemente, los dos grupos de aprendientes muestran patrones bastante parecidos en las dos filas, aunque el grupo ELE presenta una distribución más dispersa con el PPC y puntuaciones ligeramente más altas en la fila de PPS. 
 
 
 ### Matriz de gráficos de dispersión 
 
-Para explorar simultáneamente las relaciones entre todas las variables continuas de los aprendientes, la matriz de diagramas dispersión es una herramienta muy eficiente. Se genera con la función `pairs()` del paquete base R. 
+Para explorar simultáneamente las relaciones entre todas las variables continuas de los aprendientes, la matriz de diagramas dispersión es una herramienta muy eficiente. Se genera con la función `pairs()` del paquete `base R`. 
 
 ```r
 slovak <- datos[datos$l1 == "Slovak", ]
@@ -399,7 +399,7 @@ legend("right",
 ```
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-11.png" alt="La Figura 11 es una matriz de diagramas de dispersión de 3x3 paneles que muestra las relaciones entre tres variables (juicio medio de aceptabilidad, edad de adquisición del español y años de aprendizaje) para los aprendices, diferenciando el tipo de instrucción mediante símbolo y color (círculos rojos para bilingüe y cruces verdes para ELE). La relación entre el juicio medio de aceptabilidad y las otras dos variables no muestra una tendencia clara, con puntos dispersos en todo el rango sin importar el tipo de instrucción. La relación entre la edad de adquisición y años de aprendizaje muestra una tendencia negativa." caption="Figura 11. Matriz de gráficos de dispersión entre tres variables: juicio medio de aceptabilidad de los aprendientes, edad de adquisición del español y años de aprendizaje, diferenciando el tipo de instrucción (bilingüe: círculos rojos; ELE: cruces verdes)." %}
 
-Esta matriz de diagramas de dispersión muestra las asociaciones entre el juicio medio de aceptabilidad (*mean_rating*), la edad de adquisición (*aoa*) y los años de aprendizaje (*years_learning*) según el grupo (círculos rojos y cruces verdes). En general, no se observan correlaciones lineales fuertes entre las variables, aunque destaca una posible correlación negativa entre *aoa* y *years_learning*. Los dos grupos presentan una distribución solapada en la mayoría de los paneles, con diferencias leves en *mean_rating*. 
+Esta matriz de diagramas de dispersión muestra las asociaciones entre el juicio medio de aceptabilidad (`mean_rating`), la edad de adquisición (`aoa`) y los años de aprendizaje (`years_learning`) según el grupo (círculos rojos para el grupo bilingüe y cruces verdes para el grupo ELE). En general, no se observan correlaciones lineales fuertes entre las variables, aunque destaca una posible correlación negativa entre `aoa` y `years_learning`. Los dos grupos presentan una distribución solapada en la mayoría de los paneles, con diferencias leves en `mean_rating`. 
 
 ### Análisis estadístico: modelo de enlace acumulativo mixto
 
@@ -425,7 +425,7 @@ El tipo más sencillo de efecto aleatorio es el intercepto aleatorio: permite qu
 
 Un paso más es incluir también pendientes aleatorias: permiten que el efecto de una variable experimental, por ejemplo, el efecto del tiempo verbal, varíe entre participantes. Si algunos aprendientes son muy sensibles a la distinción PPS/PPC y otros no, una pendiente aleatoria para `tense` capturará esa heterogeneidad. En R: `(1 + tense | participant_id)`. Las pendientes aleatorias hacen el modelo más realista, pero también más exigente en términos de datos; con muestras pequeñas pueden generar problemas de convergencia. 
 
-#### Instalación y carga del paquete ordinal
+#### Instalación y carga del paquete `ordinal`
 
 ```r
 install.packages("ordinal")
@@ -436,7 +436,7 @@ library(emmeans)
 #### Modelo 1: efecto del grupo y las variables lingüísticas
 
 
-Primero, preparamos las variables para todos nuestros modelos estadísticos: transformamos la variable dependiente en factor ordenado para su uso en el CLMM y convertimos las variables *group*, *instruction*, *tense*, y *adverb_type* en factores. Después estandardizamos las variables continuas (*aoa* y *years_learning*) mediante puntuaciones z (M = 0, DT = 1). También filtramos el dataframe **datos** para incluir solo los aprendientes (para luego utilizarlo en los modelos 2.1 y 2.2).  
+Primero, preparamos las variables para todos nuestros modelos estadísticos: transformamos la variable dependiente en factor ordenado para su uso en el CLMM y convertimos las variables `group`, `instruction`, `tense`, y `adverb_type` en factores. Después estandardizamos las variables continuas (`aoa` y `years_learning`) mediante puntuaciones z (M = 0, DT = 1). También filtramos el dataframe `datos` para incluir solo los aprendientes (para luego utilizarlo en los modelos 2.1 y 2.2).  
 
 ```r
 datos <- datos |>
@@ -450,7 +450,7 @@ datos_aprendientes$years_learning_s <- as.numeric(scale(datos_aprendientes$years
 #### Ajuste y selección del modelo 1
 
 El primer modelo compara hablantes nativos y aprendientes, incluyendo como efectos fijos el grupo, y también el tiempo verbal y el tipo de modificador adverbial y su interacción. 
-Con respecto a la especificación de los efectos aleatorios, se recomienda seguir las recomendaciones de [Barr et al. (2013)](https://pmc.ncbi.nlm.nih.gov/articles/PMC3881361/) sobre estructuras de efectos aleatorios máximas (especificar la estructura máxima justificada teóricamente para el diseño experimental). En un experimento con nuestro diseño (cada participante evaluó ítems en ambos tiempos verbales en combinación con los tres tipos de modificadores adverbiales), esto significa que incluiremos un intercepto aleatorio y pendientes aleatorias para el tiempo verbal, el tipo de adverbio y su interacción, agrupados por el participante  `(1 + tense * adverb_type | participant_id) `. Para controlar la variabilidad asociada a los ítems lingüísticos, añadiremos un intercepto aleatorio por ítem  `(1 | item_id) `. La variable *group* no se incluyó como pendiente aleatoria porque cada participante pertenece a un único grupo, por lo cual su efecto no varía dentro de cada participante:  
+Con respecto a la especificación de los efectos aleatorios, se recomienda seguir las recomendaciones de [Barr et al. (2013)](https://pmc.ncbi.nlm.nih.gov/articles/PMC3881361/) sobre estructuras de efectos aleatorios máximas (especificar la estructura máxima justificada teóricamente para el diseño experimental). En un experimento con nuestro diseño (cada participante evaluó ítems en ambos tiempos verbales en combinación con los tres tipos de modificadores adverbiales), esto significa que incluiremos un intercepto aleatorio y pendientes aleatorias para el tiempo verbal, el tipo de adverbio y su interacción, agrupados por el participante  `(1 + tense * adverb_type | participant_id) `. Para controlar la variabilidad asociada a los ítems lingüísticos, añadiremos un intercepto aleatorio por ítem  `(1 | item_id) `. La variable `group` no se incluyó como pendiente aleatoria porque cada participante pertenece a un único grupo, por lo cual su efecto no varía dentro de cada participante:  
 
 ```r
 modelo1.1 <- clmm(
@@ -484,7 +484,7 @@ anova(modelo1.1, modelo1.2)
 summary(modelo1.1)
 summary(modelo1.2)
 ```
-El modelo con el valor más bajo de AIC y BIC es preferible y si [el p-valor de la prueba de razón de verosimilitudes](https://perma.cc/R3AT-Q5QR) obtenido mediante la función anova es significativo (p < .05), el modelo más complejo ajusta significativamente mejor los datos y debería preferirse. En nuestro caso, los valores de AIC y BIC son más bajos para el modelo 1.2 y la prueba de anova no resultó ser estadísticamente significativa, lo que implica que el modelo más complejo (modelo1.1.) no ajusta los datos mejor. [^3]
+El modelo con el valor más bajo de AIC y BIC es preferible y si [el p-valor de la prueba de razón de verosimilitudes](https://perma.cc/R3AT-Q5QR) obtenido mediante la función anova es significativo (p < .05), el modelo más complejo ajusta significativamente mejor los datos y debería preferirse. En nuestro caso, los valores de AIC y BIC son más bajos para el modelo 1.2 y la prueba de razón de verosimilitud no resultó ser estadísticamente significativa, lo que implica que el modelo más complejo (modelo1.1.) no ajusta los datos mejor. [^3]
 Podemos reportar e interpretar el output del modelo1.1 de la siguiente manera: 
 
 | Term | β | SE | z | p |
@@ -527,7 +527,7 @@ Los resultados muestran las diferencias entre los dos grupos de participantes en
 
 #### Modelo 2: Diferencias individuales en el grupo de los aprendientes
 
-El segundo modelo se ajusta únicamente con los datos de los aprendientes, por lo cual era necesario primero filtrar el dataframe **datos** para incluir solo los aprendientes e incluir como predictores adicionales las diferencias individuales. 
+El segundo modelo se ajusta únicamente con los datos de los aprendientes, por lo cual era necesario primero filtrar el dataframe `datos`  para incluir solo los aprendientes e incluir como predictores adicionales las diferencias individuales. 
 
 ```r
 modelo2.1 <- clmm(

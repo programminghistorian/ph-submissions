@@ -42,7 +42,7 @@ Los juicios de aceptabilidad presentan varias características que condicionan s
 ### Objetivos de la lección
 Esta lección tiene los siguientes objetivos:   
 (1) demostrar cómo se pueden visualizar los datos lingüísticos (recogidos mediante una prueba de juicios de aceptabilidad) con el paquete tidyplots y en qué situaciones conviene complementar tidyplots con el paquete ggplot2  
-(2) ilustrar cómo se pueden crear diagramas se dispersión, gráficos de barras y gráficos de violín con el paquete tidyplots  
+(2) ilustrar cómo se pueden crear diagramas de dispersión, gráficos de barras y gráficos de violín con el paquete tidyplots  
 (3) mostrar cómo personalizar colores, etiquetas y temas de los gráficos y cómo crear gráficos facetados  
 (4) ejemplificar cómo analizar dichos datos mediante modelos lineales mixtos de enlace acumulativo  
 

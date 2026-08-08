@@ -37,7 +37,7 @@ Los juicios de aceptabilidad presentan varias características que condicionan s
 - Naturaleza ordinal: las respuestas son categorías ordenadas (1, 2, 3, 4, 5, 6, 7), no distancias iguales entre valores continuos 
 - Variabilidad interindividual elevada: los aprendientes con el mismo nivel de competencia pueden diferir considerablemente en sus juicios 
 - Estructura de medidas repetidas: cada participante evalúa múltiples ítems, lo que crea dependencia en los datos 
-- Diferencias individuales relevantes: variables como la edad de adquisición (age of acquisition: aoa), los años de aprendizaje o el tipo de instrucción recibida (clases de ELE vs. instrucción bilingüe) modulan los juicios.
+- Diferencias individuales relevantes: variables como la edad de adquisición (la variable *aoa*, age of acquisition), los años de aprendizaje o el tipo de instrucción recibida: clases de ELE vs. instrucción bilingüe (la variable *instruction*) modulan los juicios.
 
 ### Objetivos de la lección
 Esta lección tiene los siguientes objetivos:   
@@ -73,9 +73,9 @@ En todos estos contextos, la pregunta de investigación es la misma: ¿Cómo var
 ## Estudio de caso integrador
 
 Para ilustrar la visualización y el análisis de datos, utilizaremos un conjunto de datos del campo de la adquisición de segundas lenguas. Este conjunto de datos proviene de un estudio sobre la adquisición del aspecto verbal en español como L2. Los participantes son 60 aprendientes eslovacos de español de nivel avanzado y 20 hablantes nativos de español peninsular. Todos evaluaron en una escala Likert de 7 puntos la aceptabilidad de 18 pares de oraciones que combinaban dos tiempos verbales: el pretérito perfecto simple (canté) y el pretérito perfecto compuesto (he cantado) con tres tipos de modificadores temporales: los modificadores temporales que aluden a anterioridad inmediata (hace un rato), los modificadores temporales que aluden a anterioridad más lejana (hace dos meses) y los modificadores temporales que aluden al momento no terminado (hoy, esta mañana, esta semana).  Dentro del grupo de aprendientes, las diferencias individuales de interés son:
-- `instruction`: instrucción bilingüe vs. clases de ELE (variable categórica nominal)
-- `aoa`(age of acquisition): edad de adquisición del español (variable continua)
-- `years_learning`(años de aprendizaje): años de aprendizaje (variable continua)
+- *instruction*: instrucción bilingüe vs. clases de ELE (variable categórica nominal)
+- *aoa* (age of acquisition): edad de adquisición del español (variable continua)
+- *years_learning* (años de aprendizaje): años de aprendizaje (variable continua)
 
 ### Preparación del entorno y carga de datos
 
@@ -104,7 +104,7 @@ También puedes revisar la estructura del conjunto de datos antes de continuar:
 glimpse(datos)
 ```
 
-Si las variables `group`, `instruction`, `tense` y `adverb_type` aparecen como tipo `character`, conviértelas a factor:
+Si las variables *group*, *instruction*, *tense* y *adverb_type* aparecen como tipo `character`, conviértelas a factor:
 
 ```r
 datos <- datos |>
@@ -184,7 +184,7 @@ La función `add_violin()` dibuja el violín; `add_mean_dot()` superpone el punt
 
 Este gráfico revela patrones más detallados con respecto a la interacción entre el tiempo verbal, el tipo de modificador adverbial y la L1: los hablantes nativos concentran sus juicios de los adverbios de momento no terminado en los valores altos con el PPC (media ≈ 6.1) y en los valores bajos con el PPS (media ≈ 2.6), mientras que sus juicios de los adverbios de anterioridad lejana son bajos con el PPC (media ≈ 1.8) y altos con el PPS (media ≈ 5.8). Los adverbios de anterioridad inmediata son aceptados por este grupo más con el PPS que con el PPC (media ≈ 5.8 vs. 3.6). Los aprendientes muestran más variabilidad en sus juicios (con ambos tiempos verbales, las medias de los tres adverbios están entre 3.4 y 5.5), posiblemente porque en su L1 no se conceptualiza esta distinción aspectual de la misma manera: los conceptos semánticos relacionados con el PPC y el PPS en español se expresan a través de un solo tiempo verbal en eslovaco (el tiempo pasado simple). 
 
-Tidyplots nos permite dividir el gráfico por dos variables a la vez. Por ejemplo, para mostrar el efecto del tiempo verbal y del tipo de instrucción (bilingüe vs. ELE), podemos crear otro gráfico de violín facetado, esta vez incorporando las funciones `filter(group == "learner")` y `split_plot(by = instruction)`. Con la primera función filtramos las filas del dataframe antes de pasarlas a tidyplots para que el gráfico solo incluya los datos donde la variable **group** tiene el valor **learner**, mientras que con la segunda dividimos el gráfico en dos paneles según el tipo de instrucción recibida.
+Tidyplots nos permite dividir el gráfico por dos variables a la vez. Por ejemplo, para mostrar el efecto del tiempo verbal y del tipo de instrucción (bilingüe vs. ELE), podemos crear otro gráfico de violín facetado, esta vez incorporando las funciones `filter(group == "learner")` y `split_plot(by = instruction)`. Con la primera función filtramos las filas del dataframe antes de pasarlas a tidyplots para que el gráfico solo incluya los datos donde la variable *group* tiene el valor *learner*, mientras que con la segunda dividimos el gráfico en dos paneles según el tipo de instrucción recibida.
 
 ```r
 violinchart02 <-datos |>
@@ -314,13 +314,13 @@ scatterplot02 <- scatterplot01 |>
   linetype = "dotted", color = "black")) 
 scatterplot02  
 ```
-El resultado de esta modificación muestra dos líneas de regresión para cada grupo y una línea de la media global de los juicios de todos los aprendientes, lo que permite no solo ver si los participantes con **aoa** más alta <img width="468" height="24" alt="image" src="https://github.com/user-attachments/assets/a8272ed9-86d4-478f-a0e3-e1bedc3b11e9" /> estar por debajo de esa media, sino también comparar la tendencia de cada grupo (**bilingual** vs. **ELE**) con respecto al rendimiento medio general:
+El resultado de esta modificación muestra dos líneas de regresión para cada grupo y una línea de la media global de los juicios de todos los aprendientes, lo que permite no solo ver si los participantes con *aoa* más alta <img width="468" height="24" alt="image" src="https://github.com/user-attachments/assets/a8272ed9-86d4-478f-a0e3-e1bedc3b11e9" /> estar por debajo de esa media, sino también comparar la tendencia de cada grupo (*bilingual* vs. *ELE*) con respecto al rendimiento medio general:
 
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-08.png" alt="La Figura 8 es un diagrama de dispersión que muestra la relación entre la edad de adquisición del español (7-18 años, eje X) y los juicios medios de aceptabilidad (1-7, eje Y) para los aprendientes con instrucción bilingüe y ELE, con una línea de tendencia añadida para cada grupo. La línea del grupo bilingüe muestra una leve tendencia positiva, mientras que la del grupo ELE se mantiene prácticamente plana. Aun así, ambas líneas convergen alrededor de un valor similar (~4.2-4.5) en las edades más altas, por lo que la diferencia entre grupos sigue sin ser marcada." caption="Figura 8. Gráfico de dispersión que representa la relación entre la edad de adquisición del español y los juicios medios de aceptabilidad en el grupo de aprendientes por tipo de instrucción (bilingüe vs. ELE), con líneas de tendencia. Cada punto representa la media de juicios de un participante." %}
 
 La línea verde (instrucción bilingüe) indica que entre los participantes con la instrucción bilingüe, la edad más alta (18 años) se relaciona con juicios más altos (media ≈ 4.5) y la edad más temprana (7 años) con juicios más bajos (media ≈ 3.8), mientras que para los participantes con la instrucción ELE (línea morada), no se asocia con cambios en juicios medios (media ≈ 4.2 - 4.3 en todo el rango de edades). 
 
-Para resaltar visualmente las diferencias entre los dos grupos de participantes, podemos diferenciar los dos grupos mediante puntos de dos colores distintos y dos formas distintas mediante la función add `ggplot2::geom_point`. Primero, calculamos las medias por participante y después creamos un gráfico de dispersión con círculos naranjas (grupo: **bilingual**) y triángulos azules (grupo **ELE**).
+Para resaltar visualmente las diferencias entre los dos grupos de participantes, podemos diferenciar los dos grupos mediante puntos de dos colores distintos y dos formas distintas mediante la función add `ggplot2::geom_point`. Primero, calculamos las medias por participante y después creamos un gráfico de dispersión con círculos naranjas (grupo: *bilingual*) y triángulos azules (grupo *ELE*).
 
 ```r
 library(dplyr)
@@ -399,7 +399,7 @@ legend("right",
 ```
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-11.png" alt="La Figura 11 es una matriz de diagramas de dispersión de 3x3 paneles que muestra las relaciones entre tres variables (juicio medio de aceptabilidad, edad de adquisición del español y años de aprendizaje) para los aprendices, diferenciando el tipo de instrucción mediante símbolo y color (círculos rojos para bilingüe y cruces verdes para ELE). La relación entre el juicio medio de aceptabilidad y las otras dos variables no muestra una tendencia clara, con puntos dispersos en todo el rango sin importar el tipo de instrucción. La relación entre la edad de adquisición y años de aprendizaje muestra una tendencia negativa." caption="Figura 11. Matriz de gráficos de dispersión entre tres variables: juicio medio de aceptabilidad de los aprendientes, edad de adquisición del español y años de aprendizaje, diferenciando el tipo de instrucción (bilingüe: círculos rojos; ELE: cruces verdes)." %}
 
-Esta matriz de diagramas de dispersión muestra las asociaciones entre el juicio medio de aceptabilidad (**mean_rating**), la edad de adquisición (**aoa**) y los años de aprendizaje (**years_learning**) según el grupo (círculos rojos y cruces verdes). En general, no se observan correlaciones lineales fuertes entre las variables, aunque destaca una posible correlación negativa entre **aoa** y **years_learning**. Los dos grupos presentan una distribución solapada en la mayoría de los paneles, con diferencias leves en **mean_rating**. 
+Esta matriz de diagramas de dispersión muestra las asociaciones entre el juicio medio de aceptabilidad (*mean_rating*), la edad de adquisición (*aoa*) y los años de aprendizaje (*years_learning*) según el grupo (círculos rojos y cruces verdes). En general, no se observan correlaciones lineales fuertes entre las variables, aunque destaca una posible correlación negativa entre *aoa* y *years_learning*. Los dos grupos presentan una distribución solapada en la mayoría de los paneles, con diferencias leves en *mean_rating*. 
 
 ### Análisis estadístico: modelo de enlace acumulativo mixto
 
@@ -436,7 +436,7 @@ library(emmeans)
 #### Modelo 1: efecto del grupo y las variables lingüísticas
 
 
-Primero, preparamos las variables para todos nuestros modelos estadísticos: transformamos la variable dependiente en factor ordenado para su uso en el CLMM y convertimos las variables **group**, **instruction**, **tense**, y **adverb_type** en factores. Después estandardizamos las variables continuas (**aoa** y **years_learning**) mediante puntuaciones z (M = 0, DT = 1). También filtramos el dataframe **datos** para incluir solo los aprendientes (para luego utilizarlo en los modelos 2.1 y 2.2).  
+Primero, preparamos las variables para todos nuestros modelos estadísticos: transformamos la variable dependiente en factor ordenado para su uso en el CLMM y convertimos las variables *group*, *instruction*, *tense*, y *adverb_type* en factores. Después estandardizamos las variables continuas (*aoa* y *years_learning*) mediante puntuaciones z (M = 0, DT = 1). También filtramos el dataframe **datos** para incluir solo los aprendientes (para luego utilizarlo en los modelos 2.1 y 2.2).  
 
 ```r
 datos <- datos |>
@@ -450,7 +450,7 @@ datos_aprendientes$years_learning_s <- as.numeric(scale(datos_aprendientes$years
 #### Ajuste y selección del modelo 1
 
 El primer modelo compara hablantes nativos y aprendientes, incluyendo como efectos fijos el grupo, y también el tiempo verbal y el tipo de modificador adverbial y su interacción. 
-Con respecto a la especificación de los efectos aleatorios, se recomienda seguir las recomendaciones de [Barr et al. (2013)](https://pmc.ncbi.nlm.nih.gov/articles/PMC3881361/) sobre estructuras de efectos aleatorios máximas (especificar la estructura máxima justificada teóricamente para el diseño experimental). En un experimento con nuestro diseño (cada participante evaluó ítems en ambos tiempos verbales en combinación con los tres tipos de modificadores adverbiales), esto significa que incluiremos un intercepto aleatorio y pendientes aleatorias para el tiempo verbal, el tipo de adverbio y su interacción, agrupados por el participante  `(1 + tense * adverb_type | participant_id) `. Para controlar la variabilidad asociada a los ítems lingüísticos, añadiremos un intercepto aleatorio por ítem  `(1 | item_id) `. La variable **group** no se incluyó como pendiente aleatoria porque cada participante pertenece a un único grupo, por lo cual su efecto no varía dentro de cada participante:  
+Con respecto a la especificación de los efectos aleatorios, se recomienda seguir las recomendaciones de [Barr et al. (2013)](https://pmc.ncbi.nlm.nih.gov/articles/PMC3881361/) sobre estructuras de efectos aleatorios máximas (especificar la estructura máxima justificada teóricamente para el diseño experimental). En un experimento con nuestro diseño (cada participante evaluó ítems en ambos tiempos verbales en combinación con los tres tipos de modificadores adverbiales), esto significa que incluiremos un intercepto aleatorio y pendientes aleatorias para el tiempo verbal, el tipo de adverbio y su interacción, agrupados por el participante  `(1 + tense * adverb_type | participant_id) `. Para controlar la variabilidad asociada a los ítems lingüísticos, añadiremos un intercepto aleatorio por ítem  `(1 | item_id) `. La variable *group* no se incluyó como pendiente aleatoria porque cada participante pertenece a un único grupo, por lo cual su efecto no varía dentro de cada participante:  
 
 ```r
 modelo1.1 <- clmm(

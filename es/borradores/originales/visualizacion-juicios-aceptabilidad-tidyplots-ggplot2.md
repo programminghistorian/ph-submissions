@@ -174,11 +174,11 @@ violinchart01 <- datos |>
   adjust_x_axis_title("Tiempo verbal") |> 
   adjust_y_axis_title("Juicio de aceptabilidad (1–7)") |>
   adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
-  adjust_colors(c("#1B7837", "#762A83")) |>
+  adjust_colors(c("#1B7837", "#762A83", "#808080")) |>
   adjust_title("Los juicios según el tiempo verbal y el modificador adverbial: Hablantes nativos vs. aprendientes de español")   
 violinchart01  
 ```
-La función `add_violin()` dibuja el violín; `add_mean_dot()` superpone el punto de la media`, y `split_plot()` divide el gráfico en dos paneles separados. Con `adjust_colors()` asignamos colores a los dos grupos, uno por cada grupo de participantes. [^2]
+La función `add_violin()` dibuja el violín; `add_mean_dot()` superpone el punto de la media`, y `split_plot()` divide el gráfico en dos paneles separados. Con `adjust_colors()` asignamos colores a los tres tipos de adverbios. [^2]
 
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-02.png" alt="La Figura 2 es un diagrama de violín con dos paneles que muestra la distribución completa de los juicios de aceptabilidad (escala 1-7) según el tiempo verbal (PPC, PPS) y el tipo de modificador adverbial (anterioridad inmediata, anterioridad lejana, momento no terminado), con un punto marcando la media de cada distribución. En el panel de los aprendices, las distribuciones son amplias y se superponen considerablemente entre los tres tipos de modificador, tanto en PPC como en PPS, indicando poca diferenciación clara entre condiciones. En el panel de los nativos, en cambio, las distribuciones son más estrechas y polarizadas: en PPC, anterioridad lejana se concentra en valores bajos (1-2) y momento no terminado en valores altos (5-7); en PPS, este patrón se invierte, con anterioridad inmediata y anterioridad lejana concentrados en valores altos (5-7) y momento no terminado más disperso hacia valores bajos y medios." caption="Figura 2. Gráfico de violín que muestra la distribución de los juicios de aceptabilidad según el tiempo verbal (PPC vs. PPS) y el tipo de modificador adverbial, comparando hablantes nativos (Spanish) y aprendices (Slovak). Los puntos indican la media de cada distribución." %}
 
@@ -196,7 +196,7 @@ violinchart02 <-datos |>
   adjust_x_axis_title("Tiempo verbal") |>
   adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
   adjust_y_axis_title("Juicio de aceptabilidad (1–7)") |>
-  adjust_colors(c("#1B7837", "#762A83")) |>
+  adjust_colors(c("#1B7837", "#762A83", "#808080")) |>
   adjust_title("Los juicios según el tiempo verbal y el modificador adverbial: Instrucción bilingüe vs. ELE")
 violinchart02
 ```

@@ -52,7 +52,7 @@ Esta lección utiliza dos herramientas complementarias:
 
 tidyplots es un paquete de R construido sobre ggplot2 que proporciona una interfaz simplificada y encadenable mediante el operador `|>`. Está diseñado para generar rápidamente gráficos de alta calidad con poco código, lo que lo hace especialmente útil en la fase exploratoria del análisis. Sus funciones cubren los tipos de gráficos más habituales en ciencias sociales y lingüística experimental: gráficos de violín, gráficos de barras con barras de error, diagramas de caja y gráficos de dispersión.  
 
-ggplot2 es el sistema de visualización de referencia en R, basado en la [gramática de gráficos](https://perma.cc/26U2-6WBQ). Ofrece un control total sobre cada elemento del gráfico, lo que lo hace indispensable para publicaciones, para tipos de gráficos no disponibles en tidyplots (como la matriz de dispersión) y para personalizaciones avanzadas. Si quieres aprender más sobre las ventajas de utilizar ggplot2, puedes consultar la sección [Ventajas de ggplot2](https://programminghistorian.org/es/lecciones/datos-urbanos-demograficos-r-ggplot2#ventajas-de-ggplot2) de la lección [Visualizando datos urbanos y demográficos en R con ggplot2](https://programminghistorian.org/es/lecciones/datos-urbanos-demograficos-r-ggplot2#ventajas-de-ggplot2) de Programming Historian.
+ggplot2 es el sistema de visualización de referencia en R, basado en la [gramática de gráficos](https://perma.cc/26U2-6WBQ). Ofrece un control total sobre cada elemento del gráfico, lo que lo hace indispensable para publicaciones, para tipos de gráficos no disponibles en tidyplots (como la matriz de dispersión) y para personalizaciones avanzadas. Si quieres aprender más sobre las ventajas de utilizar ggplot2, puedes consultar la sección [Ventajas de ggplot2](https://programminghistorian.org/es/lecciones/datos-urbanos-demograficos-r-ggplot2#ventajas-de-ggplot2) de la lección [Visualizando datos urbanos y demográficos en R con ggplot2](https://programminghistorian.org/es/lecciones/datos-urbanos-demograficos-r-ggplot2#ventajas-de-ggplot2) de *Programming Historian en español*. 
 
 ### Más allá del caso de estudio: otros contextos de aplicación
 
@@ -125,7 +125,7 @@ resumen <- datos |>
   )
   resumen
 ```
-Puedes encontrar más información sobre el paquete `dplyr` en la sección [¿Qué es dplyr?](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r#qu%C3%A9-es-dplyr) de la lección de Programming Historian titulada [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r).
+Puedes encontrar más información sobre el paquete `dplyr` en la sección [¿Qué es dplyr?](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r#qu%C3%A9-es-dplyr) de la lección de *Programming Historian en español* titulada [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r).
 
 ## Gráficos rápidos con tidyplots
 
@@ -299,7 +299,7 @@ ggplot(datos, aes(x = variable_x, y = variable_y, color = grupo)) +
   labs(x = "etiqueta x", y = "etiqueta y") +
   theme_classic()
 ```
-Para aprender a visualizar los gráficos que hemos visto en esta lección hasta ahora (gráficos de dispersión, diagramas de barras y diagramas de caja) con ggplot2, te recomendamos la lección de Programming Historian [Visualizing Urban and Demographic data in R with ggplot2](https://programminghistorian.org/en/lessons/urban-demographic-data-r-ggplot2). Si te gustaría aprender cómo organizar tus datos en el formato tidy y cómo utilizar el paquete dplyr para manipular tus datos, te recomendamos la lección [Data Wrangling and management in R](https://programminghistorian.org/en/lessons/data-wrangling-and-management-in-r). 
+Para aprender a visualizar los gráficos que hemos visto en esta lección hasta ahora (gráficos de dispersión, diagramas de barras y diagramas de caja) con ggplot2, te recomendamos la lección de *Programming Historian* [Visualizing Urban and Demographic data in R with ggplot2](https://programminghistorian.org/en/lessons/urban-demographic-data-r-ggplot2). Si te gustaría aprender cómo organizar tus datos en el formato tidy y cómo utilizar el paquete dplyr para manipular tus datos, te recomendamos la lección [Data Wrangling and management in R] (https://programminghistorian.org/en/lessons/data-wrangling-and-management-in-r) de *Programming Historian*. 
 
 En la siguiente sección vamos a ver algunos gráficos para ejemplificar cómo podemos complementar tidyplots con ggplot2 o recurrir al ggplot2 para combinar múltiples tipos de geometrías o facetas en dos dimensiones (filas y columnas). 
  
@@ -314,7 +314,7 @@ scatterplot02 <- scatterplot01 |>
   linetype = "dotted", color = "black")) 
 scatterplot02  
 ```
-El resultado de esta modificación muestra dos líneas de regresión para cada grupo y una línea de la media global de los juicios de todos los aprendientes, lo que permite no solo ver si los participantes con **aoa** más alta tienden a estar por debajo de esa media, sino también comparar la tendencia de cada grupo (**bilingual** vs. **ELE**) con respecto al rendimiento medio general:
+El resultado de esta modificación muestra dos líneas de regresión para cada grupo y una línea de la media global de los juicios de todos los aprendientes, lo que permite no solo ver si los participantes con **aoa** más alta <img width="468" height="24" alt="image" src="https://github.com/user-attachments/assets/a8272ed9-86d4-478f-a0e3-e1bedc3b11e9" /> estar por debajo de esa media, sino también comparar la tendencia de cada grupo (**bilingual** vs. **ELE**) con respecto al rendimiento medio general:
 
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-08.png" alt="La Figura 8 es un diagrama de dispersión que muestra la relación entre la edad de adquisición del español (7-18 años, eje X) y los juicios medios de aceptabilidad (1-7, eje Y) para los aprendientes con instrucción bilingüe y ELE, con una línea de tendencia añadida para cada grupo. La línea del grupo bilingüe muestra una leve tendencia positiva, mientras que la del grupo ELE se mantiene prácticamente plana. Aun así, ambas líneas convergen alrededor de un valor similar (~4.2-4.5) en las edades más altas, por lo que la diferencia entre grupos sigue sin ser marcada." caption="Figura 8. Gráfico de dispersión que representa la relación entre la edad de adquisición del español y los juicios medios de aceptabilidad en el grupo de aprendientes por tipo de instrucción (bilingüe vs. ELE), con líneas de tendencia. Cada punto representa la media de juicios de un participante." %}
 

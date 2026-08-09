@@ -91,7 +91,7 @@ El conjunto de datos contiene las siguientes variables:
 | `tense` | factor | `PPS` (pretérito perfecto simple) o `PPC` (pretérito perfecto compuesto) |
 | `adverb_type` | factor | Tipo de modificador adverbial: `momento_no_terminado`, `anterioridad_inmediata`, `anterioridad_lejana` |
 | `adverb_example` | carácter | Ejemplo del modificador (*hoy / esta mañana*; *hace un rato*; *hace dos meses*) |
-| `rating` | entero | Juicio de aceptabilidad (1–7) |
+| `rating` | numérica | Juicio de aceptabilidad (1–7) |
 
 ### Preparación del entorno y carga de datos
 

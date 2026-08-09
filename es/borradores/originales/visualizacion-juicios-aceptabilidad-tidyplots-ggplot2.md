@@ -600,6 +600,7 @@ Del mismo modo, los diagramas de dispersión con líneas de tendencia (Figura 8)
 
 - Barr, Dale J., Roger Levy, Christoph Scheepers, and Harry J. Tily. "Random effects structure for confirmatory hypothesis testing: Keep it maximal." Journal of memory and language 68, no. 3 (2013): 255-278.
 - Bross, Fabian. Acceptability ratings in linguistics: A practical guide to grammaticality judgments, data collection, and statistical analysis. Version 1.0. Mimeo, 2019.
+- Dominiccini, Eduardo. "Las intuiciones y la aceptabilidad en la interfaz semántica-pragmática." Saga. Revista de Letras 7 (2017).
 - Engler, Jan Broder. "Tidyplots empowers life scientists with easy code‐based data visualization." Imeta 4, no. 2 (2025): e70018.
 - Formoso, Jessica. "Modelos mixtos de enlace acumulativo(CLMM): un tutorial paso a paso en R". Zenodo, (2026, April 7). https://doi.org/10.5281/zenodo.19445681
 - Heisig, Jan Paul, and Merlin Schaeffer. "Why you should always include a random slope for the lower-level variable involved in a cross-level interaction." European Sociological Review 35, no. 2 (2019): 258-279.  

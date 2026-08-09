@@ -77,6 +77,22 @@ Para ilustrar la visualización y el análisis de datos, utilizaremos un conjunt
 - `aoa` (age of acquisition): edad de adquisición del español (variable continua)
 - `years_learning` (años de aprendizaje): años de aprendizaje (variable continua)
 
+El conjunto de datos contiene las siguientes variables:
+
+| Variable | Tipo | Descripción |
+|---|---|---|
+| `participant_id` | carácter | Identificador del participante (`N01`–`N20` nativos; `L01`–`L60` aprendientes) |
+| `group` | factor | `native` o `learner` |
+| `l1` | carácter | Lengua materna (`Spanish` o `Slovak`) |
+| `instruction` | factor | `bilingual` o `ELE` (vacío para nativos) |
+| `aoa` | numérica | Edad de adquisición del español en años (solo aprendientes; rango: 7–18) |
+| `years_learning` | numérica | Años de aprendizaje del español (solo aprendientes; rango: 3–14) |
+| `item_id` | carácter | Identificador del ítem (`item_01`–`item_18`) |
+| `tense` | factor | `PPS` (pretérito perfecto simple) o `PPC` (pretérito perfecto compuesto) |
+| `adverb_type` | factor | Tipo de modificador adverbial: `momento_no_terminado`, `anterioridad_inmediata`, `anterioridad_lejana` |
+| `adverb_example` | carácter | Ejemplo del modificador (*hoy / esta mañana*; *hace un rato*; *hace dos meses*) |
+| `rating` | entero | Juicio de aceptabilidad (1–7) |
+
 ### Preparación del entorno y carga de datos
 
 El primer paso es instalar y cargar los paquetes necesarios. Si es la primera vez que los usas, instálalos con `install.packages()`:

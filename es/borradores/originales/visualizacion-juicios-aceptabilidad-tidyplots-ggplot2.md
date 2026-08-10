@@ -443,6 +443,7 @@ El tipo más sencillo de efecto aleatorio es el intercepto aleatorio: permite qu
 Un paso más es incluir también pendientes aleatorias: permiten que el efecto de una variable experimental, por ejemplo, el efecto del tiempo verbal, varíe entre participantes. Si algunos aprendientes son muy sensibles a la distinción PPS/PPC y otros no, una pendiente aleatoria para `tense` capturará esa heterogeneidad. En R: `(1 + tense | participant_id)`. Las pendientes aleatorias hacen el modelo más realista, pero también más exigente en términos de datos; con muestras pequeñas pueden generar problemas de convergencia. 
 
 #### Instalación y carga del paquete `ordinal`
+Primero, instalamos y cargamos los paquetes `ordinal` y `emmeans`.  
 
 ```r
 install.packages("ordinal")
@@ -452,7 +453,7 @@ library(emmeans)
 
 #### Modelo 1: efecto del grupo y las variables lingüísticas
 
-Primero, preparamos las variables para todos nuestros modelos estadísticos: transformamos la variable dependiente en factor ordenado para su uso en el CLMM y convertimos las variables `group`, `instruction`, `tense`, y `adverb_type` en factores. Después estandardizamos las variables continuas (`aoa` y `years_learning`) mediante puntuaciones z (M = 0, DT = 1). También filtramos el dataframe `datos` para incluir solo los aprendientes (para luego utilizarlo en los modelos 2.1 y 2.2).  
+Después, preparamos las variables para todos nuestros modelos estadísticos: transformamos la variable dependiente en factor ordenado para su uso en el CLMM y convertimos las variables `group`, `instruction`, `tense`, y `adverb_type` en factores. Después estandardizamos las variables continuas (`aoa` y `years_learning`) mediante puntuaciones z (M = 0, DT = 1). También filtramos el dataframe `datos` para incluir solo los aprendientes (para luego utilizarlo en los modelos 2.1 y 2.2).  
 
 ```r
 datos <- datos |>

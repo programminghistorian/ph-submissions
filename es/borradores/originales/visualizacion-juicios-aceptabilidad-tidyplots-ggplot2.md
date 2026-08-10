@@ -501,7 +501,7 @@ summary(modelo1.1)
 summary(modelo1.2)
 ```
 El modelo con el valor más bajo de AIC y BIC es preferible y si [el p-valor de la prueba de razón de verosimilitudes (Likelihood ratio test, LRT)](https://perma.cc/R3AT-Q5QR) obtenido mediante la función anova es significativo (p < .05), el modelo más complejo ajusta significativamente mejor los datos y debería preferirse. En nuestro caso, los valores de AIC y BIC son más bajos para el modelo 1.2 y la prueba de razón de verosimilitud no resultó ser estadísticamente significativa, lo que implica que el modelo más complejo (modelo1.1.) no ajusta los datos mejor. [^3]
-Podemos reportar e interpretar el output del modelo1.1 de la siguiente manera: 
+Podemos reportar e interpretar el output del modelo1.2 de la siguiente manera: 
 
 | Term | β | SE | z | p |
 |---|---:|---:|---:|---:|
@@ -571,7 +571,7 @@ summary(modelo2.2)
 ```
 Igual que en el caso anterior, la comparación de los dos modelos indica que el modelo 2.2 es suficiente para explicar nuestros datos. 
 
-El output del modelo está resumido en la siguiente tabla:
+El output del modelo 2.2 está resumido en la siguiente tabla:
 
 | Term | β | SE | z | p |
 |---|---:|---:|---:|---:|
@@ -590,7 +590,7 @@ Interesantemente, ninguna de las variables individuales resultó ser estadístic
 
 ### ¿Qué revelan los gráficos que las tablas no muestran?
 
-La tabla de medias del modelo en el apartado anterior puede reportar, por ejemplo, que la diferencia entre los juicios del PPC con los adverbios de anterioridad inmediata entre los aprendientes y los hablantes nativos es de 2.51. Pero esa diferencia puede esconder distribuciones muy distintas, por ejemplo, en los puntos exactos de la escala en los que los aprendientes bilingües y los de ELE dispersan sus juicios. Los  gráficos de violín que hemos aprendido a hacer en esta lección (Figuras 2, 3 y 10) hace estas diferencias inmediatamente visibles.
+La tabla de medias del modelo en el apartado anterior puede reportar, por ejemplo, que la diferencia entre los juicios del PPC con los adverbios de anterioridad inmediata entre los aprendientes y los hablantes nativos es de 2.51. Pero esa diferencia puede esconder distribuciones muy distintas, por ejemplo, en los puntos exactos de la escala en los que los aprendientes bilingües y los de ELE dispersan sus juicios. Los  gráficos de violín que hemos aprendido a hacer en esta lección (Figuras 2, 3 y 10) hacen estas diferencias inmediatamente visibles.
 
 Del mismo modo, los diagramas de dispersión con líneas de tendencia (Figura 8) revelan si la relación entre los años de aprendizaje y los juicios es lineal o no, si hay valores atípicos que puedan estar influenciando el modelo, y si la relación difiere cualitativamente entre los dos grupos de instrucción. Nada de eso aparece en una tabla de coeficientes.
 

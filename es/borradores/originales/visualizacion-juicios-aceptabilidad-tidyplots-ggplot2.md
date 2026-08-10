@@ -84,7 +84,7 @@ El conjunto de datos contiene las siguientes variables:
 | `participant_id` | carácter | Identificador del participante (`N01`–`N20` nativos; `L01`–`L60` aprendientes) |
 | `group` | factor | `native` (nativo) o `learner` (aprendiente) |
 | `l1` | carácter | Lengua materna (`Spanish` o `Slovak`) |
-| `instruction` | factor | `bilingual` (bilingüe) o `ELE` (vacío para nativos) |
+| `instruction` | factor | `bilingual` (bilingüe) o `ELE` (español como lengua extranjera) (vacío para nativos) |
 | `aoa` | numérica | Edad de adquisición del español en años (solo aprendientes; rango: 7–18) |
 | `years_learning` | numérica | Años de aprendizaje del español (solo aprendientes; rango: 3–14) |
 | `item_id` | carácter | Identificador del ítem (`item_01`–`item_18`) |

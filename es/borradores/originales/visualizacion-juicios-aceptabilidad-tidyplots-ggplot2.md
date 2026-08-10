@@ -162,7 +162,7 @@ Esta estructura sigue una lógica de capas encadenadas mediante el operador pipe
 
 ### Gráficos de violín con `tidyplots` 
 
-Para aplicar esta estructura básica a nuestro estudio de caso, podemos empezar con un simple gráfico de violín para visualizar la distribución de juicios de los dos tiempos verbales entre los dos grupos de participantes según su lengua materna: 
+Para aplicar esta estructura básica a nuestro estudio de caso, podemos empezar con un simple [gráfico de violín](https://perma.cc/DSK6-V8DG ) para visualizar la distribución de juicios de los dos tiempos verbales entre los dos grupos de participantes según su lengua materna: 
 
 ```r
 violinchart00 <- datos |>
@@ -222,7 +222,7 @@ Este gráfico responde directamente a una pregunta de investigación interesante
  
 ### Diagramas de caja y de líneas con `tidyplots`
 
-Un tipo de gráfico que se puede utilizar para comparar las medias de los juicios entre condiciones e identificar valores extremos es el diagrama de caja con barras de error que representan el error estándar de la media.
+Un tipo de gráfico que se puede utilizar para comparar las medias de los juicios entre condiciones e identificar valores extremos es el [diagrama de caja](https://perma.cc/6T58-KTCR) con barras de error que representan el error estándar de la media.
 
 ```r
 boxplot01 <- datos |>
@@ -242,7 +242,7 @@ Para añadir una raya de la media o un punto de la media al diagrama de caja, pu
 
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-04.png" alt="La Figura 4 es un diagrama de cajas con dos paneles (PPC y PPS) que muestra la distribución de los juicios de aceptabilidad (escala 1-7) según el tipo de modificador adverbial (anterioridad inmediata, anterioridad lejana, momento no terminado) y la lengua materna (eslovaco, español), con la mediana marcada dentro de cada caja y los valores atípicos como puntos. En PPC, el grupo español tiene medianas más bajas que el eslovaco en anterioridad inmediata (3 vs. 6) y anterioridad lejana (2 vs. 4), pero una mediana más alta en momento no terminado (6-7 vs. 4). En PPS, este patrón se invierte: el grupo español tiene medianas más altas en anterioridad inmediata (6 vs. 3) y anterioridad lejana (6 vs. 5), pero más baja en momento no terminado (3 vs. 4). En general, el grupo español muestra cajas más compactas (menor dispersión) en las condiciones donde tiene medianas extremas, mientras que el grupo eslovaco mantiene rangos intercuartílicos más amplios en casi todas las condiciones." caption="Figura 4. Gráfico de cajas comparando juicios de aceptabilidad de los dos tiempos verbales (PPC vs. PPS) según el tipo de modificador adverbial (anterioridad inmediata, anterioridad lejana, momento no terminado) y la lengua materna (eslovaco vs. español). La línea dentro de cada caja indica la mediana, los puntos representan valores atípicos." %}
 
-Si sustituimos la función `add_boxplot() |>` con `add_line() |>`, podemos visualizar los juicios medios mediante un gráfico de líneas: 
+Si sustituimos la función `add_boxplot() |>` con `add_line() |>`, podemos visualizar los juicios medios mediante un [gráfico de líneas](https://perma.cc/93GW-DZ3G): 
 
 ```r
 linechart01 <- resumen |>
@@ -263,7 +263,7 @@ A diferencia del gráfico de violín en la Figura 4 que muestra los valores cent
 
 ### Más gráficos facetados para comparar grupos
 
-Como ya hemos visto en el apartado anterior, las facetas permiten dividir un gráfico en varios paneles según los niveles de una variable categórica, lo que facilita la comparación visual entre grupos. Por ejemplo, si queremos comparar los juicios medios de los dos grupos por separado, podemos combinar un gráfico de barras con la función `split_plot(by = group)` para generar un panel independiente para cada grupo.
+Como ya hemos visto en el apartado anterior, las facetas permiten dividir un gráfico en varios paneles según los niveles de una variable categórica, lo que facilita la comparación visual entre grupos. Por ejemplo, si queremos comparar los juicios medios de los dos grupos por separado, podemos combinar un [gráfico de barras](https://perma.cc/HV2T-E3HR) con la función `split_plot(by = group)` para generar un panel independiente para cada grupo.
 
 ```r
 barchart01 <- datos |>
@@ -283,7 +283,7 @@ barchart01
 
 El gráfico de barras también muestra que en el grupo de los aprendientes, las medias son similares entre los tres tipos de adverbios con cada tiempo verbal, mientras que los hablantes nativos prefieren el PPC con momento no terminado, seguido de anterioridad inmediata y anterioridad lejana y el PPS con anterioridad lejana, seguida de anterioridad inmediata y momento no terminado. Un dato interesante es la puntuación (media ≈ 2.6) de la combinación del PPS con el momento no terminado por los hablantes nativos (no la rechazan completamente), la cual se puede explicar por el tipo de modificadores adverbiales de momento no terminado utilizados en este estudio (*hoy*, *esta mañana*, *esta semana*, *este mes*, en vez de *todavía*, *aún*, etc.). Estos modificadores adverbiales refieren a un momento temporal que puede ser conceptualizado como aludiendo a un momento concluido dentro de un marco temporal más amplio (por ejemplo: *esta mañana* = un período de tiempo que ya terminó el día de hoy).
 
-Para visualizar las correlaciones entre la variable dependiente y las variables independientes, `tidyplots` nos permite crear gráficos de dispersión. Por ejemplo, si nos interesa explorar la relación entre la edad de adquisición del español `aoa` y los juicios medios de aceptabilidad para los dos grupos de aprendientes `bilingual` vs. `ELE`, filtramos los datos para seleccionar solo los aprendientes, los agrupamos por participante, edad de adquisición y tipo de instrucción, calculamos medias por participante y visualizamos la relación entre la edad de adquisición y los juicios de aceptabilidad, diferenciando entre aprendientes bilingües y aprendientes con ELE.
+Para visualizar las correlaciones entre la variable dependiente y las variables independientes, `tidyplots` nos permite crear [gráficos de dispersión](https://perma.cc/4PCR-AJCJ). Por ejemplo, si nos interesa explorar la relación entre la edad de adquisición del español `aoa` y los juicios medios de aceptabilidad para los dos grupos de aprendientes `bilingual` vs. `ELE`, filtramos los datos para seleccionar solo los aprendientes, los agrupamos por participante, edad de adquisición y tipo de instrucción, calculamos medias por participante y visualizamos la relación entre la edad de adquisición y los juicios de aceptabilidad, diferenciando entre aprendientes bilingües y aprendientes con ELE.
 
 ```r
 scatterplot01 <- datos |>

@@ -390,7 +390,7 @@ La matriz de gráficos de violín con diagramas de caja indica una interacción 
 
 ### Matriz de gráficos de dispersión 
 
-Para explorar simultáneamente las relaciones entre todas las variables continuas de los aprendientes, la [matriz de diagramas dispersión](https://perma.cc/4PCR-AJCJ) es una herramienta muy eficiente. Se genera con la función `pairs()` del paquete `base R`. 
+Para explorar simultáneamente las relaciones entre todas las variables continuas de los aprendientes, la [matriz de diagramas de dispersión](https://perma.cc/4PCR-AJCJ) es una herramienta muy eficiente. Se genera con la función `pairs()` del paquete `base R`. 
 
 ```r
 slovak <- datos[datos$l1 == "Slovak", ]

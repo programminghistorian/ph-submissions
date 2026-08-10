@@ -315,7 +315,7 @@ ggplot(datos, aes(x = variable_x, y = variable_y, color = grupo)) +
   labs(x = "etiqueta x", y = "etiqueta y") +
   theme_classic()
 ```
-Para aprender a visualizar los gráficos que hemos visto en esta lección hasta ahora (gráficos de dispersión, diagramas de barras y diagramas de caja) con `ggplot2`, te recomendamos la lección de *Programming Historian* [Visualizing Urban and Demographic data in R with ggplot2](https://programminghistorian.org/en/lessons/urban-demographic-data-r-ggplot2). Si te gustaría aprender cómo organizar tus datos en el formato tidy y cómo utilizar el paquete `dplyr` para manipular tus datos, te recomendamos la lección [Data Wrangling and management in R](https://programminghistorian.org/en/lessons/data-wrangling-and-management-in-r) de *Programming Historian*. 
+Para aprender a visualizar los gráficos que hemos visto en esta lección hasta ahora (gráficos de dispersión, diagramas de barras y diagramas de caja) con `ggplot2`, te recomendamos la lección de *Programming Historian* [Visualizing Urban and Demographic data in R with ggplot2](https://programminghistorian.org/en/lessons/urban-demographic-data-r-ggplot2). Si te gustaría aprender cómo organizar tus datos en el formato tidy y cómo utilizar el paquete `dplyr` para manipular tus datos, te recomendamos la lección [Data Wrangling and Management in R](https://programminghistorian.org/en/lessons/data-wrangling-and-management-in-r) de *Programming Historian*. 
 
 En la siguiente sección vamos a ver algunos gráficos para ejemplificar cómo podemos complementar `tidyplots` con `ggplot2` o recurrir al `ggplot2` para combinar múltiples tipos de geometrías o facetas en dos dimensiones (filas y columnas). 
  

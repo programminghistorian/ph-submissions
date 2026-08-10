@@ -420,10 +420,12 @@ Esta matriz de diagramas de dispersión muestra las asociaciones entre el juicio
 
 #### ¿Qué son los modelos mixtos y para qué sirven?
 
-[Un modelo mixto](https://perma.cc/LV3W-L6LF), también llamado modelo de efectos mixtos o modelo multinivel, es un modelo estadístico que incluye dos tipos de efectos:
+[Un modelo mixto](https://perma.cc/QD49-V3VQ), también llamado modelo de efectos mixtos o modelo multinivel, es un modelo estadístico que incluye dos tipos de efectos:
 
 - Efectos fijos: los predictores cuyo efecto queremos estimar y generalizar, en nuestro caso, el tiempo verbal, el tipo de modificador adverbial, y el grupo (nativo/aprendiente) y las diferencias individuales. Se llaman "fijos" porque asumimos que representan efectos constantes en la población de interés.
 - Efectos aleatorios: fuentes de variabilidad que no nos interesa estimar directamente, pero que debemos tener en cuenta para no distorsionar las estimaciones de los efectos fijos. En un diseño con medidas repetidas, los participantes y los ítems son efectos aleatorios típicos: cada participante tiene su propio "nivel de base" de aceptabilidad, y cada ítem tiene su propio nivel de dificultad, independientemente de la condición experimental.
+
+Si quieres leer más sobre los modelos mixtos, te recomendamos [el artículo Modelos mixtos de enlace acumulativo(CLMM): un tutorial paso a paso en R](https://perma.cc/LV3W-L6LF) en español. 
 
 #### ¿Cuándo conviene usar un modelo mixto? 
 
@@ -440,7 +442,7 @@ El artículo [Using Mixed Effects Models to Analyze Acceptability Ratings](https
 
 El tipo más sencillo de efecto aleatorio es el intercepto aleatorio: permite que cada participante (o ítem) tenga su propio punto de partida en la escala de respuesta. En notación de R con los paquetes `lme4` u `ordinal`, se especifica como `(1 | participant_id)`.
 
-Un paso más es incluir también pendientes aleatorias: permiten que el efecto de una variable experimental, por ejemplo, el efecto del tiempo verbal, varíe entre participantes. Si algunos aprendientes son muy sensibles a la distinción PPS/PPC y otros no, una pendiente aleatoria para `tense` capturará esa heterogeneidad. En R: `(1 + tense | participant_id)`. Las pendientes aleatorias hacen el modelo más realista, pero también más exigente en términos de datos; con muestras pequeñas pueden generar problemas de convergencia. 
+Un paso más es incluir también pendientes aleatorias: permiten que el efecto de una variable experimental, por ejemplo, el efecto del tiempo verbal, varíe entre participantes. Si algunos aprendientes son muy sensibles a la distinción PPS/PPC y otros no, una pendiente aleatoria para `tense` capturará esa heterogeneidad. En R: `(1 + tense | participant_id)`. Las pendientes aleatorias hacen el modelo más realista, pero también más exigente en términos de datos; con muestras pequeñas pueden generar problemas de convergencia. Una explicación visual de la diferencia entre los interceptos y los pendientes aleatorios se puede consultar en [este enlace](http://mfviz.com/hierarchical-models/).
 
 #### Instalación y carga del paquete `ordinal`
 Primero, instalamos y cargamos los paquetes `ordinal` y `emmeans`.  

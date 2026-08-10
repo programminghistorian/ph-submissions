@@ -259,7 +259,7 @@ linechart01
 ```
 {% include figure.html filename="es-or-visualizacion-juicios-aceptabilidad-tidyplots-ggplot2-05.png" alt="La Figura 5 es un diagrama de líneas con dos paneles que comparan los juicios medios de aceptabilidad (escala 1-7) de dos grupos, los aprendientes y los nativos, frente a tres tipos de modificador adverbial (anterioridad inmediata, anterioridad lejana y momento no terminado). Cada panel corresponde a un tiempo verbal: PPC y PPS. En PPC, los nativos asignan juicios bajos a anterioridad lejana y juicios altos a momento no terminado, invirtiendo su relación con los aprendices; en PPS, los nativos puntúan alto la anterioridad lejana pero caen por debajo de los aprendices en momento no terminado." caption="Figura 5. Juicios medios de aceptabilidad por tipo de modificador adverbial y grupo, divididos por el tiempo verbal." %}
 
-A diferencia del gráfico de violín en la Figura 4 que muestra los valores centrales y la dispersión, el gráfico de líneas muestra el patrón de interacción entre el tiempo verbal y el tipo de adverbio para los dos grupos (los hablantes nativos vs. los aprendientes).  
+A diferencia del gráfico de violín en la Figura 4 que muestra los valores centrales y la dispersión, el gráfico de líneas muestra el [patrón de interacción](https://perma.cc/5FZA-M7GX) entre el tiempo verbal y el tipo de adverbio para los dos grupos (los hablantes nativos vs. los aprendientes).  
 
 ### Más gráficos facetados para comparar grupos
 

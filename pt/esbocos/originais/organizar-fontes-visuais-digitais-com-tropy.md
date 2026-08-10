@@ -37,6 +37,8 @@ A lição dialoga com “Gestionar fuentes primarias digitales con Tropy”, de 
 
 O Tropy é um software livre, gratuito e de código aberto voltado à organização, descrição e gestão de fontes primárias digitalizadas. Desenvolvido inicialmente no Roy Rosenzweig Center for History and New Media, da George Mason University, e posteriormente apoiado por outras instituições dedicadas à pesquisa digital, o programa foi concebido para atender às necessidades de pesquisadores que trabalham com fotografias de documentos, imagens de objetos, materiais de arquivo e coleções digitais. Sua principal proposta é oferecer um ambiente de trabalho capaz de reunir procedimentos de organização documental, descrição, classificação, anotação e recuperação de informações em um único projeto.
 
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-01.png" alt="Visual description of figure image" caption="Figure 1. Imagem da tela inicial do Tropy" %}
+
 O software tem sido amplamente utilizado por pesquisadores das Humanidades, especialmente em investigações que envolvem grandes conjuntos de fontes visuais. Entre seus recursos estão a criação de metadados personalizados, o agrupamento de imagens, o registro de notas de pesquisa e a exportação estruturada dos dados produzidos. Além da aplicação, o projeto disponibiliza documentação técnica, materiais de formação, fórum de usuários e acesso público ao código-fonte. Mais informações podem ser encontradas no site oficial do Tropy (https://tropy.org/).
 
 ## Conjunto de dados
@@ -55,7 +57,7 @@ Um projeto no Tropy é o ficheiro onde os elementos de bancos de imagens são ar
 
 Ao abrir o Tropy pela primeira vez, você precisará nomear seu projeto e escolher o tipo. Recomenda-se abordar os projetos da maneira mais abrangente possível: como um manuscrito de livro, uma tese de doutorado ou um tema geral que possa englobar múltiplas possibilidades. Por exemplo, para este projeto, em vez de nomeá-lo com o nome do ficheiro ou repositório, você poderia escolher um nome que reflita um tema geral, como “Cartazes da Democracia”. Você poderá alterar o nome posteriormente dentro do projeto. (inserir figura 1)
 
-{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-01.jpg" alt="Visual description of figure image" caption="Figura 1: Tela inicial do projeto novo do Tropy." %}
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-02.jpg" alt="Visual description of figure image" caption="Figura 2. Tela inicial do projeto novo do Tropy." %}
 
 Você também precisará escolher entre um projeto padrão .tpy ou avançado .tropy.
 
@@ -97,7 +99,7 @@ Também é possível importar uma pasta de imagens por meio do menu Arquivo > Im
 
 Crie, em seu computador, uma pasta contendo as imagens originais do projeto. Dessa forma, será possível importá-las para o Tropy e, ao mesmo tempo, manter essa pasta como fonte dos ficheiros. Ao configurar uma pasta monitorada, qualquer ficheiro compatível adicionado a ela será automaticamente importado para o projeto. Para realizar essa configuração, utilize o botão “Buscar” (figura 2) e selecione a pasta desejada.
 
-{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-02.jpg" alt="Visual description of figure image" caption="Figura 2. Na seção Projeto, dentro de Preferências, é possível designar uma pasta monitorada para facilitar a importação." %}
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-03.jpg" alt="Visual description of figure image" caption="Figura 3. Na seção Projeto, dentro de Preferências, é possível designar uma pasta monitorada para facilitar a importação." %}
 
 ## Ações em massa
 
@@ -143,7 +145,7 @@ Essa visualização facilita a análise da imagem e a adição de metadados indi
 
 O Tropy inclui um editor para facilitar a criação de modelos de metadados personalizados. Em Editar > Preferências > Modelos (ou Ctrl+shift+S > Modelos), você pode revisar todos os modelos incluídos na instalação, bem como criar um modelo de metadados do zero. 
 
-{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-03.jpg" alt="Visual description of figure image" caption="Figura 3: Construindo metadados personalizados." %}
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-04.jpg" alt="Visual description of figure image" caption="Figura 4. Construindo metadados personalizados." %}
 
 Para criar um novo modelo do zero, certifique-se de que "Novo Modelo" apareça no menu suspenso e insira os metadados necessários para identificar o modelo: Nome, Tipo, Criador e Descrição (não é recomendável modificar o URI gerado pelo editor). Em seguida, clique em "Criar". Usando os botões ( + ) e ( - ), você pode adicionar ou remover propriedades do novo modelo. Essas propriedades podem fazer parte de qualquer vocabulário instalado no Tropy: elementos e termos do [Dublin Core](https://pt.wikipedia.org/wiki/Dublin_Core), [vocabulários RDF](https://pt.wikipedia.org/wiki/Resource_Description_Framework), [Modelo de Dados Europeu](https://pt.wikipedia.org/wiki/Europeana) e vocabulários relacionados. O Tropy oferece a flexibilidade de combinar diferentes vocabulários, bem como usar elementos exclusivos do Tropy.
 
@@ -157,7 +159,7 @@ Escolha um modelo no menu suspenso e clique nos dois retângulos que aparecem à
 
 Na pesquisa com os Cartazes da Democracia, o uso de metadados personalizados constituiu um dos pontos cruciais da metodologia. Na primeira fase do trabalho, realizei uma análise detalhada de cada cartaz, levando em conta aspectos materiais e documentais como dimensões, tipo e gramatura do papel, tipo de impressão, instituição responsável por sua produção — neste caso, em grande medida, movimentos sociais de luta popular — e, quando foi possível identificar, também o artista ou fotógrafo responsável pela imagem. Além disso, registrei marcas físicas relevantes, como fitas adesivas, furos, sinais de fixação, dobras e indícios de envio pelo correio. Esse nível de organização tornou possível extrair informações que ultrapassavam o conteúdo visual mais imediato dos cartazes. A observação sistemática desses elementos permitiu levantar hipóteses sobre as condições de produção e circulação dos cartazes, inclusive sobre condições materiais dos grupos e formas de financiamento, a partir da qualidade material empregada, e sobre seus usos concretos, distinguindo, por exemplo, cartazes efetivamente expostos daqueles que permaneceram guardados. Em alguns casos, a presença de carimbos dos Correios confirmou que o envio postal também integrava o universo de circulação dos cartazes políticos, ampliando a compreensão de suas formas de difusão. 
 
-{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-04.jpg" alt="Visual description of figure image" caption="Figura 4: Um exemplo de metadados personalizados." %}
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-05.jpg" alt="Visual description of figure image" caption="Figura 5. Um exemplo de metadados personalizados." %}
 
 ### Campos obrigatórios e campos somente leitura
 
@@ -178,7 +180,7 @@ Na parte superior da visualização do objeto, encontram-se diversas ferramentas
 
 Há também uma opção para inverter as cores, um recurso que facilita a leitura de microfilmes ou permite visualizar o negativo de uma fonte visual. 
 
-{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-05.jpg" alt="Visual description of figure image" caption="Figura 5: Opções de edição da imagem." %}
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-06.jpg" alt="Visual description of figure image" caption="Figura 6. Opções de edição da imagem." %}
 
 ### Seleções
 
@@ -198,7 +200,7 @@ Além do modelo de metadados, você pode descrever suas fontes no Tropy usando m
 
 As listas desempenham uma função semelhante: podem ser usadas para organizar as fontes em grupos e subgrupos. Trata-se de pastas que podem ser criadas com agrupamentos de imagens. Esses agrupamentos podem ser por tema ou refletir a organização de uma publicação planejada.
 
-{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-06.jpg" alt="Visual description of figure image" caption="Figura 6: Criando listas e etiquetas de organização." %}
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-07.jpg" alt="Visual description of figure image" caption="Figura 7. Criando listas e etiquetas de organização." %}
 
 Em resumo, essas funções ajudam a criar uma lógica organizacional para o seu projeto, seja por meio de uma série de listas que transmitem uma organização por capítulos e seções, seja por meio de etiquetas que destacam vínculos entre objetos que não estão representados nos metadados formais.
 
@@ -218,7 +220,7 @@ Você pode exportar imagens individuais, objetos (com ou sem metadados e anotaç
 
 A exportação por este método é semelhante à impressão (Arquivo > Imprimir) em formato PDF. Os parâmetros para imagens exportadas para PDF se encontram em Editar > Preferências > Definições. É possível escolher entre incluir ou não imagens, metadados e notas, bem como ajustar a formatação: otimizar o tamanho e a qualidade das imagens, incluir apenas imagens com notas e permitir que o conteúdo ocupe mais de uma página.
 
-{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-07.jpg" alt="Visual description of figure image" caption="Figura 7: Tela de preferências do Tropy." %}
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-08.jpg" alt="Visual description of figure image" caption="Figura 8. Tela de preferências do Tropy." %}
 
 Para exportar uma seleção, encontre o nome da seleção no painel "Fotos", abaixo do modelo de metadados. Clique com o botão direito do mouse (ou Control-clique no Mac) sobre o nome na lista e escolha Exportar Foto no menu de contexto. Você terá duas opções: exportar para um arquivo ou pra área de transferência. A seleção será exportada em formato .jpg, sem metadados.
 

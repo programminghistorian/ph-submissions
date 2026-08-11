@@ -441,7 +441,7 @@ El artículo [Using Mixed Effects Models to Analyze Acceptability Ratings](https
 
 El tipo más sencillo de efecto aleatorio es el intercepto aleatorio: permite que cada participante (o ítem) tenga su propio punto de partida en la escala de respuesta. En notación de R con los paquetes `lme4` u `ordinal`, se especifica como `(1 | participant_id)`.
 
-Un paso más es incluir también pendientes aleatorias: permiten que el efecto de una variable experimental, por ejemplo, el efecto del tiempo verbal, varíe entre participantes. Si algunos aprendientes son muy sensibles a la distinción PPS/PPC y otros no, una pendiente aleatoria para `tense` (`(1 + tense | participant_id)`) capturará esa heterogeneidad. Las pendientes aleatorias hacen el modelo más realista, pero también más exigente en términos de datos; con muestras pequeñas pueden generar problemas de convergencia. 
+Un paso más es incluir también pendientes aleatorias: permiten que el efecto de una variable experimental, por ejemplo, el efecto del tiempo verbal, varíe entre participantes. Si algunos aprendientes son muy sensibles a la distinción PPS/PPC y otros no, una pendiente aleatoria para `tense` `(1 + tense | participant_id)` capturará esa heterogeneidad. Las pendientes aleatorias hacen el modelo más realista, pero también más exigente en términos de datos; con muestras pequeñas pueden generar problemas de convergencia. 
 Una explicación visual de la diferencia entre los interceptos y los pendientes aleatorios se puede consultar en [este enlace](http://mfviz.com/hierarchical-models/).
 
 #### Instalación y carga del paquete `ordinal`

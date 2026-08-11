@@ -82,15 +82,15 @@ El conjunto de datos contiene las siguientes variables:
 | Variable | Tipo | Descripción |
 |---|---|---|
 | `participant_id` | carácter | Identificador del participante (`N01`–`N20` nativos; `L01`–`L60` aprendientes) |
-| `group` | factor | `native` (nativo) o `learner` (aprendiente) |
+| `group` | factor | Grupo: `native` (nativo) o `learner` (aprendiente) |
 | `l1` | carácter | Lengua materna (`Spanish` o `Slovak`) |
-| `instruction` | factor | `bilingual` (bilingüe) o `ELE` (español como lengua extranjera) (vacío para nativos) |
+| `instruction` | factor | Instrucción: `bilingual` (bilingüe) o `ELE` (español como lengua extranjera) (vacío para nativos) |
 | `aoa` | numérica | Edad de adquisición del español en años (solo aprendientes; rango: 7–18) |
 | `years_learning` | numérica | Años de aprendizaje del español (solo aprendientes; rango: 3–14) |
 | `item_id` | carácter | Identificador del ítem (`item_01`–`item_18`) |
-| `tense` | factor | `PPS` (pretérito perfecto simple) o `PPC` (pretérito perfecto compuesto) |
-| `adverb_type` | factor | Tipo de modificador adverbial: `momento_no_terminado`, `anterioridad_inmediata`, `anterioridad_lejana` |
-| `adverb_example` | carácter | Ejemplo del modificador (*hoy/esta mañana/esta semana*; *hace un rato/hace dos horas/hace unas horas*; *hace dos meses/hace unos meses/hace tres semanas*) |
+| `tense` | factor | Tiempo verbal: `PPS` (pretérito perfecto simple) o `PPC` (pretérito perfecto compuesto) |
+| `adverb_type` | factor | Tipo de modificador adverbial: `anterioridad_inmediata`; `momento_no_terminado`; `anterioridad_lejana` |
+| `adverb_example` | carácter | Ejemplo del modificador (*hace un rato/hace dos horas/hace unas horas*; *hoy/esta mañana/esta semana*; *hace dos meses/hace unos meses/hace tres semanas*) |
 | `rating` | numérica | Juicio de aceptabilidad (1–7) |
 
 ### Preparación del entorno y carga de datos

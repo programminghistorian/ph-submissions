@@ -361,7 +361,7 @@ El resultado de este código es el siguiente gráfico:
 
 ### Faceting con `facet_grid` para comparar dos factores
 
-En esta lección hemos visto que `tidyplots` nos permite incorporar facetas para dividir el gráfico en paneles mediante la [función `split_plot()`](https://perma.cc/ZV5M-K8RP), lo que facilita la comparación visual entre grupos. Sin embargo, si queremos crear un gráfico de violin parecido a la Figura 3, pero preferimos dividirlo en una cuadrícula de paneles según dos variables simultáneamente (una en filas y otra en columnas), necesitamos recurrir a la [función `facet_grid()` de `ggplot2`](https://perma.cc/ZV5M-K8RP). Esto es muy útil cuando se quiere visualizar la interacción entre el tiempo verbal (filas) y el tipo de instrucción (columnas) para los aprendientes en un solo gráfico:
+En esta lección hemos visto que `tidyplots` nos permite incorporar facetas para dividir el gráfico en paneles mediante la [función `split_plot()`](https://jbengler.github.io/tidyplots/articles/Advanced-plotting.html#multiplot-layouts), lo que facilita la comparación visual entre grupos. Sin embargo, si queremos crear un gráfico de violin parecido a la Figura 3, pero preferimos dividirlo en una cuadrícula de paneles según dos variables simultáneamente (una en filas y otra en columnas), necesitamos recurrir a la [función `facet_grid()` de `ggplot2`](https://perma.cc/ZV5M-K8RP). Esto es muy útil cuando se quiere visualizar la interacción entre el tiempo verbal (filas) y el tipo de instrucción (columnas) para los aprendientes en un solo gráfico:
 
 ```r
 matrix <- datos |>

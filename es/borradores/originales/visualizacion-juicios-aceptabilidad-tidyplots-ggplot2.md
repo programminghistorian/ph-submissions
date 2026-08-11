@@ -72,7 +72,7 @@ En todos estos contextos, la pregunta de investigación es la misma: ¿Cómo var
 
 ## Estudio de caso integrador
 
-Para ilustrar la visualización y el análisis de datos, utilizaremos un conjunto de datos del campo de ASL. Este conjunto de datos proviene de un estudio sobre la adquisición del aspecto verbal en español como L2. Los participantes son 60 aprendientes eslovacos de español de nivel avanzado y 20 hablantes nativos de español peninsular. Todos evaluaron en una escala Likert de 7 puntos la aceptabilidad de 18 pares de oraciones que combinaban dos tiempos verbales: el pretérito perfecto simple (PPS): *canté*, y el pretérito perfecto compuesto (PPC): *he cantado* con tres tipos de modificadores temporales: los modificadores temporales que aluden a anterioridad inmediata (por ejemplo, *hace un rato*), los modificadores temporales que aluden a anterioridad más lejana (por ejemplo, *hace dos meses*) y los modificadores temporales que aluden al momento no terminado (por ejemplo, *hoy*, *esta mañana*, *esta semana*).  Dentro del grupo de aprendientes, las diferencias individuales de interés son:
+Para ilustrar la visualización y el análisis de datos, utilizaremos un conjunto de datos del campo de ASL. Este conjunto de datos proviene de un estudio sobre la adquisición del aspecto verbal en español como L2. Los participantes son 60 aprendientes eslovacos de español de nivel avanzado y 20 hablantes nativos de español peninsular. Todos evaluaron en una escala Likert de 7 puntos la aceptabilidad de 18 pares de oraciones que combinaban dos tiempos verbales: el pretérito perfecto simple (PPS): *canté*, y el pretérito perfecto compuesto (PPC): *he cantado* con tres tipos de modificadores temporales: los modificadores temporales que aluden a anterioridad inmediata (por ejemplo, *hace un rato/hace dos horas/hace unas horas*), los modificadores temporales que aluden a anterioridad más lejana (por ejemplo, *hace dos meses/hace unos meses/hace tres semanas*) y los modificadores temporales que aluden al momento no terminado (por ejemplo, *hoy/esta mañana/esta semana*). Dentro del grupo de aprendientes, las diferencias individuales de interés son:
 - `instruction`: instrucción bilingüe vs. clases de ELE (variable categórica nominal)
 - `aoa` (age of acquisition): edad de adquisición del español (variable continua)
 - `years_learning`: años de aprendizaje de español (variable continua)
@@ -90,7 +90,7 @@ El conjunto de datos contiene las siguientes variables:
 | `item_id` | carácter | Identificador del ítem (`item_01`–`item_18`) |
 | `tense` | factor | `PPS` (pretérito perfecto simple) o `PPC` (pretérito perfecto compuesto) |
 | `adverb_type` | factor | Tipo de modificador adverbial: `momento_no_terminado`, `anterioridad_inmediata`, `anterioridad_lejana` |
-| `adverb_example` | carácter | Ejemplo del modificador (*hoy / esta mañana*; *hace un rato*; *hace dos meses*) |
+| `adverb_example` | carácter | Ejemplo del modificador (*hoy/esta mañana/esta semana*; *hace un rato/hace dos horas/hace unas horas*; *hace dos meses/hace unos meses/hace tres semanas*) |
 | `rating` | numérica | Juicio de aceptabilidad (1–7) |
 
 ### Preparación del entorno y carga de datos

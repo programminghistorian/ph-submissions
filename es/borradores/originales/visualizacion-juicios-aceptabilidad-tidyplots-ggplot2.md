@@ -448,7 +448,7 @@ Una explicación visual de la diferencia entre los interceptos y los pendientes 
 Primero, instalamos y cargamos los paquetes `ordinal` y `emmeans`.  
 
 ```r
-install.packages("ordinal")
+install.packages(c("ordinal", "emmeans"))
 library(ordinal)
 library(emmeans)
 ```

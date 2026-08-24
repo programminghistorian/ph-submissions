@@ -140,7 +140,7 @@ You have now indexed your WARC files into SolrWayback and can begin exploring th
 ## Querying, Navigating, and Visualising
 You are now ready to start exploring your collection and discover interesting sources that could be used to answer research questions related to politicians views on immigration from the End of Term collection from 2008.
 
-To analyse politicians views on immigration a starting point could be a simple query for the word `immigration`. In your small subset of the overall collection, this query provides you with 241 results. If you press the top result, coming from the URL [http://bilirakis.house.gov...](http://localhost:8080/solrwayback/services/web/20090514060646/http://bilirakis.house.gov/index.php?option=com_content&task=view&id=193&Itemid=132) you are presented with a replayed version of the archived webpage.
+To analyse politicians views on immigration a starting point could be a simple query for the word `immigration`. In your small subset of the overall collection, this query provides you with 233 results. If you press the top result, coming from the URL [http://bilirakis.house.gov...](http://localhost:8080/solrwayback/services/web/20090514060646/http://bilirakis.house.gov/index.php?option=com_content&task=view&id=193&Itemid=132) you are presented with a replayed version of the archived webpage.
 
 This webpage was harvested on 14 May 2009. When you first view the Bilirakis website from 2009, it appears visually incomplete. To understand why, consider how the web and by extension the archived web is structured. The web is born fragmented, meaning that when a website is shown to you as a user, you could in theory be looking at a website where the text is located on one server and an image is located somewhere completely different.[^3] This fragmentation of source material also means that you cannot expect sources to be shown in a complete state in the lesson collection that you are working with here, as parts of the resources that are used to construct the webpage simply aren't available in the few archival sources that you have in hand through this lesson. The replay would almost certainly be more complete with a larger portion of the EOTWA collection.  
 
@@ -154,11 +154,11 @@ The search field in SolrWayback supports a multitude of complex search functiona
 
 | Feature | Example Query | Result Count | Notes |
 |---------|---------------|--------------|-------|
-| Boolean **OR** | `immigration OR immigrant` | 349 | Uppercase operators required; broadens results compared to `immigration` (241). |
-| Boolean **AND** | `immigration AND mexican` | 6 | Narrows results; words must appear in the same document. |
+| Boolean **OR** | `immigration OR immigrant` | 341 | Uppercase operators required; broadens results compared to `immigration` (233). |
+| Boolean **AND** | `immigration AND mexican` | 4 | Narrows results; words must appear in the same document. |
 | Boolean grouping (AND/OR) | `immigration OR (mexican AND immigrant)` | N/A | Use parentheses to group terms. |
-| Wildcard `*` | `immigra*` | 357 | Matches any word beginning with *immigra* (e.g., immigrant, immigration). |
-| Wildcard `?` | `Analy?e` | 115 | Replaces a single character; captures American/British spellings (analyse/analyze). |
+| Wildcard `*` | `immigra*` | 349 | Matches any word beginning with *immigra* (e.g., immigrant, immigration). |
+| Wildcard `?` | `Analy?e` | 112 | Replaces a single character; captures American/British spellings (analyse/analyze). |
 | Phrase search (quotes) | `"mexican immigrant"` | N/A | Requires the words to appear adjacent; differs from `mexican AND immigrant` (which only requires co‑occurrence in a document). |
 
 

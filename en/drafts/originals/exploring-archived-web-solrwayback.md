@@ -113,6 +113,9 @@ Now you have SolrWayback running. To verify that it runs, you can access the app
 You have now started the application successfully and are ready to make the WARC files from the EOTWA searchable in the system.
 
 ## Indexing
+<div class="alert alert-warning">
+  Before you start the indexing process please make sure that you are on a correct java version. Java 17 is prefered, but versions 21 and 23 also works. This can be checked by executing the command `java -version` in your terminal.
+</div>
 SolrWayback uses a search engine named [Solr](https://en.wikipedia.org/wiki/Apache_Solr). To make your WARC files available for querying in SolrWayback, you need to index the files. This process is dependents on your operating system, just as the start-up above. The first thing you need to do is move the WARC files you downloaded earlier to their permanent location. For this lesson, please move them into the directory `indexing/warcs1` inside the `solrwayback_package_5.4.3`. Once indexed, WARC files cannot be moved. Doing so breaks playback until you rebuild the index. After you have moved the files, run the following commands in your CLI — for example, Terminal or PowerShell.
 
 #### Linux/Mac

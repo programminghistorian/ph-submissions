@@ -34,9 +34,9 @@ Il reste toujours la possibilité de créer un site *ex nihilo*, ce qui induit d
 
 Une autre solution consiste à utiliser un [générateur de site statique](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_site_statique). L’utilité de cette approche permet de simplifier l’écriture de contenus grâce au langage Markdown[^4] et de permettre la structuration d’un site sans avoir besoin de gérer manuellement le HTML, le CSS ou même le SQL. En général, une commande permet de construire le site, c’est-à-dire de convertir le Markdown en HTML et d’en générer la structure, dont les index. Lorsque l’on est prêt à publier un texte et donc à le copier sur un serveur, ces générateurs de site doivent être exécutés localement et préalablement afin de produire la nouvelle page ainsi que toutes ses relations aux autres[^5].
 
-Toutes ces approches ont évidemment un intérêt, et de nombreux universitaires s’en sont emparés afin de produire un site _ad hoc_ pour leur recherche, que ce soit un simple carnet ou même des sites plus complexes[^6]. En ce qui concerne les carnets, le monde universitaire francophone connaît bien Hypothèses, service proposé par l’infrastructure française Open Edition et fondée sur WordPress. Le succès de cette solution n’est pas à démontrer. Mais la possibilité de créer ces carnets semble aujourd’hui difficile[^7]. Et cela représente toujours un système très complexe et coûteux pour afficher bien souvent des pages de texte simples[^8].
+Toutes ces approches ont évidemment un intérêt, et de nombreux universitaires s’en sont emparés afin de produire un site _ad hoc_ pour leur recherche, que ce soit un simple carnet ou même des sites plus complexes[^6]. En ce qui concerne les carnets, le monde universitaire francophone connaît bien Hypothèses, service proposé par l’infrastructure française Open Edition et fondée sur WordPress. Le succès de cette solution n’est pas à démontrer. Mais la possibilité de créer de nouveaux carnets a été temporairement suspendue en 2025, ce qui pourrait rendre l’issue de cette démarche plus incertaine à l’avenir[^7]. Et cela représente toujours un système très complexe et coûteux pour afficher bien souvent des pages de texte simples[^8].
 
-Ces solutions peuvent également induire une certaine dette technique pour les utilisateurs. Si leur grande diversité permet de trouver un système qui s’appuie sur des éléments de syntaxe d’un langage que l’on connaît déjà, par exemple Python, il devient parfois difficile de maîtriser tous les éléments de la chaîne éditoriale. [NPM](https://fr.wikipedia.org/wiki/Npm), par exemple, montre bien pédagogiquement toutes les dépendances obsolètes qui devraient être mises à jour, mais sans moyen pour l’utilisateur de résoudre ce problème facilement, et sans que soit exercé en amont un contrôle sur ces programmes qui peuvent contenir toutes sortes de surprises[^9]. L’installation sur son ordinateur de la structure à même de produire du contenu peut se révéler ainsi difficile à maintenir, mais aussi relativement complexe à évaluer en regard des conséquences pour son propre ordinateur.
+Ces solutions peuvent également induire une certaine dette technique pour les utilisateurs. Si leur grande diversité permet de trouver un système qui s’appuie sur des éléments de syntaxe d’un langage que l’on connaît déjà, par exemple Python, il devient parfois difficile de maîtriser tous les éléments de la chaîne éditoriale. Par exemple, le gestionnaire de paquets de Node.js, [NPM](https://fr.wikipedia.org/wiki/Npm), permet d’installer et de gérer les dépendances d’un projet Javascript. Il montre bien pédagogiquement toutes les dépendances obsolètes qui devraient être mises à jour, mais sans moyen pour l’utilisateur de résoudre ce problème facilement, et sans que soit exercé en amont un contrôle sur ces programmes qui peuvent contenir toutes sortes de surprises[^9]. L’installation sur son ordinateur de la structure à même de produire du contenu peut se révéler ainsi difficile à maintenir, mais aussi relativement complexe à évaluer en regard des conséquences pour son propre ordinateur.
 
 De plus, ces générateurs de sites statiques se reposent sur l’éditeur de code du client qui ne propose pas, par défaut, la capacité d’écrire des articles à plusieurs, de versionner simplement, ni même de pouvoir éventuellement exporter le contenu de son document sous la forme de PDF. Et surtout, pour le monde universitaire, de gérer nativement la bibliographie. Cela contrairement à l’éditeur de texte [Stylo](https://stylo.huma-num.fr).
 
@@ -529,23 +529,15 @@ Un premier déploiement se déroule typiquement en quatre grandes étapes :
 3. la récupération des données de Stylo ;
 4. la génération du site.
 
-### Installation des paquets TowSty
+### Installation de TowSty
 
-TowSty a été conçu pour être adaptable, notamment en ce qui concerne la mise en page, mais aussi pour permettre le déploiement rapide d’un site. Il repose ainsi sur un système de modèles (*templates*) écrits en HTML et en CSS qui sont modifiables et accessibles facilement. Le cœur de TowSty est donc découplé de ces modèles afin d’en simplifier la personnalisation et le développement. Pour vous, ici, cela veut dire que vous devez installer deux paquets depuis le mode *package* (en appuyant sur la touche `]`) :
-
-1. les modèles (*templates* responsables du rendu du site) :
+TowSty a été conçu pour être adaptable, notamment en ce qui concerne la mise en page, mais aussi pour permettre le déploiement rapide d’un site. Il repose ainsi sur un système de modèles (*templates*) écrits en HTML et en CSS qui sont modifiables et accessibles facilement. Les *templates* (paquet TowStyTemplates), responsables du rendu du site, sont une dépendance de TowSty : il suffit donc d’installer TowSty et Julia se charge alors de gérer automatiquement les dépendances.
 
 ```julia
-pkg> add https://gitlab.huma-num.fr/ceen/towsty/towstytemplates.jl.git
+pkg> add TowSty
 ```
 
-2. le moteur de TowSty (c’est-à-dire le programme en lui-même) :
-
-```julia
-pkg> add https://gitlab.huma-num.fr/ceen/towsty/towsty.jl.git
-```
-
-Une fois que ces deux paquets sont installés, vous pouvez créer votre premier projet TowSty.
+Une fois que ce paquet installé, vous pouvez créer votre premier projet TowSty.
 
 ### Initialisation du projet
 
@@ -585,7 +577,7 @@ Vous êtes alors prêts à récupérer toutes les informations contenues dans le
 
 ### Récupération des informations depuis Stylo
 
-À cette fin, vous avez besoin de l’identifiant de l’espace de travail (*workspace*) mais aussi de la clé API de Stylo. Ces deux informations doivent être fournies comme paramètres de la fonction `getworkspace()`.
+À cette fin, vous avez besoin de l’identifiant de l’espace de travail (*workspace*) mais aussi de la clé API de Stylo.  Ces deux informations doivent être fournies comme paramètres de la fonction `getworkspace()`.
 
 ```julia
 julia> getworkspace("workspace_id", "clé_apistylo")
@@ -727,7 +719,7 @@ Web in the Digital Humanities Classroom: The Learn-Static Initiative »,
 
 [^6]: cf. (Chris Diaz. « Using Static Site Generators for Scholarly Publications and Open Educational Resources », *The Code4Lib Journal*, nᵒ 42 (8 novembre 2018). <https://journal.code4lib.org/articles/13861?utm_campaign=the%20New%20Dynamic&utm_medium=email&utm_source=Revue%20newsletter>), (Amanda Visconti. « Building a Static Website with Jekyll and GitHub Pages », *Programming Historian*, 18 avril 2016. <https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages>), (Amanda Visconti, Brandon Walsh, et Scholars’ Lab Community. « Running a Collaborative Research Website and Blog with Jekyll and GitHub », *Programming Historian*, 23 novembre 2020. <https://programminghistorian.org/en/lessons/collaborative-blog-with-jekyll-github>), (Olivia M. Wikle et Evan Peter Williamson. « Exploring Static Web in the Digital Humanities Classroom: The Learn-Static Initiative », *IDEAH* 4, nᵒ 2 (14 mars 2024). https://doi.org/[10.21428/f1f23564.f88a989c](https://doi.org/10.21428/f1f23564.f88a989c)).
 
-[^7]: « Créer votre blog » (fr.hypotheses.org)consulté le 25 février 2026. <https://fr.hypotheses.org/creer-et-gerer-votre-blog>.
+[^7]: « Créer votre blog » (fr.hypotheses.org) consulté le 25 février 2026. <https://fr.hypotheses.org/creer-et-gerer-votre-blog>.
 
 [^8]: (Roopika Risam et Alex Gil. « Introduction: The Questions of Minimal Computing », *Digital Humanities Quarterly* 16, nᵒ 2 (2022). <https://www.proquest.com/docview/2681375031/citation/6C9B1134396C475DPQ/1>), (Roopika Risam et Lee Skallerup Bessette. « Introduction: Minimal Computing and EdTech », *Learning, Media and Technology* 49, nᵒ 5 (6 décembre 2024) : 747‑54. https://doi.org/[10.1080/17439884.2024.2435200](https://doi.org/10.1080/17439884.2024.2435200)) et (Dennis Tenen et Grant Wythoff. « Sustainable Authorship in Plain Text Using Pandoc and Markdown », *Programming Historian*, 19 mars 2014. <https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown>).
 

@@ -632,8 +632,6 @@ Nous remercions sincèrement nos collègues Hélène Hôte et Élisa Barthélemy
 
 **Baker, James**, « Préserver ses données de recherche », traduction par Anne-Sophie Bessero-Lagarde, <https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche>, consulté le 30 janvier 2026.
 
-**Camden, Raymond**, *The Jamstack Book: Beyond Static Sites with JavaScript, APIs, and Markup*, Shelter Island, NY, Manning, 2022.
-
 **Camden, Raymond** et **Rinaldi, Brian**, *The Jamstack book: beyond static sites with JavaScript, APIs, and Markup*, Shelter Island, NY,
 Manning, 2022.
 
@@ -650,7 +648,7 @@ Manning, 2022.
 
 **Lincoln, Matthew et al.**, « Relocating Complexity: The Programming
 Historian and Multilingual Static Site Generation », *Digital Humanities
-Quarterly*, vol. 016, n^o^ 2, 2022.
+Quarterly*, vol. 016, n<sup>o</sup> 2, 2022.
 
 **Nguyen, Dang-Khoa et al.**, « Taint-Based Code Slicing for LLMs-based
 Malicious NPM Package Detection », <http://arxiv.org/abs/2512.12313>,
@@ -673,7 +671,7 @@ component library \| No Frameworks, No Configurations »,
 
 **Risam, Roopika** et **Bessette, Lee Skallerup**, « Introduction:
 Minimal Computing and EdTech », *Learning, Media and Technology*,
-vol. 49, n^o^ 5, 2024, p. 747‑754.
+vol. 49, n<sup>o</sup> 5, 2024, p. 747‑754.
 
 **Schäferhoff, Nick**, « WordPress Market Share, Statistics, and More »,
 <https://wordpress.com/blog/2025/04/17/wordpress-market-share/>,
@@ -688,7 +686,7 @@ consulté le 20 janvier 2026.
 <https://jamstack.org/generators/>, consulté le 20 janvier 2026.
 
 **Taylor, Conrad**, « Mais qu'est ce qu'ont bien pu nous apporter les
-systèmes WYSIWYG ? », *Cahiers GUTenberg*, n^o^ 27, 1997, p. 5‑33.
+systèmes WYSIWYG ? », *Cahiers GUTenberg*, n<sup>o</sup> 27, 1997, p. 5‑33.
 
 **Tenen, Dennis** et **Wythoff, Grant**, « Rédaction durable avec Pandoc et Markdown », traduction par Marie-Christine Boucher, <https://programminghistorian.org/fr/lecons/redaction-durable-avec-pandoc-et-markdown>, consulté le 25 février 2026.
 
@@ -704,7 +702,7 @@ février 2026.
 
 **Wikle, Olivia M.** et **Williamson, Evan Peter**, « Exploring Static
 Web in the Digital Humanities Classroom: The Learn-Static Initiative »,
-*IDEAH*, vol. 4, n^o^ 2, 2024.
+*IDEAH*, vol. 4, n<sup>o</sup> 2, 2024.
 
 
 ## Notes

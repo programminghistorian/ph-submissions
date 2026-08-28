@@ -98,6 +98,8 @@ To start the interface, type the following into your terminal: `./tomcat-9/bin/s
 
 To start the search engine in the application, type this command into your terminal: `./solr-9/bin/solr start -c`
 
+There are also commands for closing both parts of the system, they are `./tomcat-9/bin/shutdown.sh` and `./solr-9/bin/solr stop` respectively. If you restart your computer or run any of the shutdown commands, you will need to run the start up commands again.
+
 #### Windows
 
 To start the two parts of the application on Windows, you need to navigate into two different directories inside the current directory and run the following commands:
@@ -105,6 +107,8 @@ To start the two parts of the application on Windows, you need to navigate into 
 To start the interface navigate to `tomcat-9\bin\` by typing `cd .\tomcat-9\bin`. From here, you can start the first part of the application by typing `startup.bat` and pressing Enter. This might open another CLI. It is important that you let this window stay open.
 
 To start the search engine in the application, you need to navigate back to the outer level of the bundle directory. When you are inside the `tomcat-9\bin` directory, this can be achieved by typing `cd ../..`. This command moves you up two levels, and you can now move into the `solr-9\bin\` directory. This is done by typing `cd solr-9\bin\`. From here, you can type `solr.cmd start -c` to start the search engine of the application.
+
+There are also commands for closing both parts of the system, they are `shutdown.bat` and `solr stop` when you are located in their individual directories. If you restart your computer or run any of the shutdown commands, you will need to run the start up commands again.
 
 Now you have SolrWayback running. To verify that it runs, you can access the application in your web browser by entering the URL: http://localhost:8080/solrwayback/. Here you should see the front page of the application, which looks like this. When accessing the application by URL it is important to remember to type in the full address: 
 
@@ -114,9 +118,12 @@ You have now started the application successfully and are ready to make the WARC
 
 ## Indexing
 <div class="alert alert-warning">
-  Before you start the indexing process please make sure that you are on a correct java version. Java 17 is prefered, but versions 21 and 23 also works. This can be checked by executing the command `java -version` in your terminal.
+  Before you start the indexing process please make sure that you are on a correct java version. Java 17 is preferred, but versions 21 and 23 also works. This can be checked by executing the command `java -version` in your terminal.
 </div>
-SolrWayback uses a search engine named [Solr](https://en.wikipedia.org/wiki/Apache_Solr). To make your WARC files available for querying in SolrWayback, you need to index the files. This process is dependents on your operating system, just as the start-up above. The first thing you need to do is move the WARC files you downloaded earlier to their permanent location. For this lesson, please move them into the directory `indexing/warcs1` inside the `solrwayback_package_5.4.3`. Once indexed, WARC files cannot be moved. Doing so breaks playback until you rebuild the index. After you have moved the files, run the following commands in your CLI — for example, Terminal or PowerShell.
+
+SolrWayback uses a search engine named [Solr](https://en.wikipedia.org/wiki/Apache_Solr). To make your WARC files available for querying in SolrWayback, you need to index the files. This process is dependent on your operating system, just as the start-up above. The first thing you need to do is move the WARC files you downloaded earlier to their permanent location. For this lesson, please move them into the directory `indexing/warcs1` inside the `solrwayback_package_5.4.3`. Once indexed, WARC files cannot be moved. Doing so breaks playback until you rebuild the index. After you have moved the files, run the following commands in your CLI — for example, Terminal or PowerShell.
+
+If you encounter errors during indexing and want to run the process again, please delete or remove the log files from `solrwayback_package_5.4.3/indexing/status` before following the indexing guide for your operating system again. If your terminal is closed before the indexing process is completed there is a chance that you need to reindex the collection to see all the webpages in SolrWayback.
 
 #### Linux/Mac
 

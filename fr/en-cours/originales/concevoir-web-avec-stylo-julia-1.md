@@ -577,7 +577,7 @@ Vous êtes alors prêts à récupérer toutes les informations contenues dans le
 
 ### Récupération des informations depuis Stylo
 
-À cette fin, vous avez besoin de l’identifiant de l’espace de travail (*workspace*) mais aussi de la clé API de Stylo.  Ces deux informations doivent être fournies comme paramètres de la fonction `getworkspace()`.
+À cette fin, vous aurez besoin de l’identifiant de l’espace de travail, qui est visible dans l’URL du *workspace*, par exemple : `https://stylo.huma-num.fr/workspaces/IDENTIFIANT-DU-WORKSPACE/articles`, mais aussi de la clé API de Stylo, disponible sur la page de profil de Stylo — dans le menu supérieur, cliquez sur votre nom/pseudonyme —, sous « Clé d'accès à l'API ». Ces deux informations doivent être fournies comme paramètres de la fonction `getworkspace()`.
 
 ```julia
 julia> getworkspace("workspace_id", "clé_apistylo")

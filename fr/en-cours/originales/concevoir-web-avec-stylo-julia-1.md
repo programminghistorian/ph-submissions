@@ -585,6 +585,8 @@ julia> getworkspace("workspace_id", "clé_apistylo")
 
 Remplacez ces deux valeurs par les vôtres. TowSty va alors récupérer tous les articles et tous les corpus de cet espace de travail.
 
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-18.gif" alt="Récupération des données d’un espace de travail" caption="Figure 18. Récupération des données d’un espace de travail" %}
+
 ### Génération du site hybride
 
 Il ne vous reste alors qu’à saisir :

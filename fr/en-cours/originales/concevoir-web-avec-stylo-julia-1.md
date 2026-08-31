@@ -553,7 +553,7 @@ Grâce à Julia, vous bénéficiez de l’aide à la complétion du code et de l
 julia> newproject
 ```
 
-Le seul paramètre indispensable est le nom donné à votre site TowSty. Mais c’est également depuis cette fonction que l’on peut choisir parmi les *templates* possibles. Nous souhaitons proposer à terme une large bibliothèque de choix pour le rendu. Pour lister les modèles disponibles vous pouvez taper :
+Le seul paramètre indispensable est le nom donné à votre site TowSty. C’est également depuis cette fonction que l’on peut choisir parmi les *templates* possibles. Nous souhaitons proposer à terme une large bibliothèque de choix pour le rendu. Pour lister les modèles disponibles vous pouvez taper :
 
 ```julia
 julia> templates()
@@ -615,7 +615,7 @@ Il est également possible de générer un site statique. Dans ce cas, la seule 
 julia> bake()
 ```
 
-Vous obtenez ainsi l’ensemble des répertoires et des fichiers du site qui ne demandent qu’à être recopiés tel quel sur votre serveur web. Afin de mettre à jour les données du site, après avoir rentré la fonction `getworkspace("", "")` comme dans le cas d’un site hybride, vous devez exécuter la fonction :
+Vous obtenez ainsi l’ensemble des répertoires et des fichiers du site qui ne demandent qu’à être recopiés tels quels sur votre serveur web. Afin de mettre à jour les données du site, après avoir rentré la fonction `getworkspace("", "")` comme dans le cas d’un site hybride, vous devez exécuter la fonction :
 
 ```julia
 julia> reload_data!()
@@ -630,10 +630,9 @@ Nous remercions sincèrement nos collègues Hélène Hôte et Élisa Barthélemy
 
 ## Bibliographie indicative
 
-**Baker, James**, « Préserver ses données de recherche », traduction par Anne-Sophie Bessero-Lagarde, <https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche>, consulté le 30 janvier 2026.
+**Baker, James**, « Préserver ses données de recherche », traduction par Anne-Sophie Bessero-Lagarde, 2020 <https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche>, consulté le 30 janvier 2026.
 
-**Camden, Raymond** et **Rinaldi, Brian**, *The Jamstack book: beyond static sites with JavaScript, APIs, and Markup*, Shelter Island, NY,
-Manning, 2022.
+**Camden, Raymond** et **Rinaldi, Brian**, *The Jamstack book: beyond static sites with JavaScript, APIs, and Markup*, Shelter Island, NY, Manning, 2022.
 
 ──── , *Working with Static Sites: Bringing the Power of Simplicity to Modern Sites*,California, Sebastopol, O'Reilly Media., 2017.
 
@@ -707,22 +706,22 @@ Web in the Digital Humanities Classroom: The Learn-Static Initiative »,
 
 ## Notes
 
-[^1]: Ce chiffre, dont nous livrons ici une approximation, ne semble pas baisser depuis plusieurs années (Nick Schäferhoff. « WordPress Market Share, Statistics, and More » consulté le 19 janvier 2026. <https://wordpress.com/blog/2025/04/17/wordpress-market-share/>).
+[^1]: Ce chiffre, dont nous livrons ici une approximation, ne semble pas baisser depuis plusieurs années (Nick Schäferhoff, « WordPress Market Share, Statistics, and More », <https://wordpress.com/blog/2025/04/17/wordpress-market-share/>, consulté le 19 janvier 2026).
 
-[^2]: Conrad Taylor. 1997. « Mais qu’est ce qu’ont bien pu nous apporter les systèmes WYSIWYG ? », *Cahiers GUTenberg*, nᵒ 27, 1997 : 5‑33. <https://www.numdam.org/item/CG_1997___27_5_0/>.
+[^2]: Conrad Taylor, « Mais qu’est ce qu’ont bien pu nous apporter les systèmes WYSIWYG ? », Cahiers GUTenberg, 1997, doi:10.5802/CG.215. 
 
-[^3]: Nous plaçons dans cette catégorie le type de ressources que nous trouvons par exemple sur *HTML5 UP* (« HTML5 UP » consulté le 25 février 2026. <http://html5up.net/>) qui en présente une bonne liste. Mais aussi *CodeStitch* (« CodeStitch, High Quality HTML and CSS Only Component Library, No Frameworks, No Configurations » consulté le 25 février 2026. <https://codestitch.app/>), *Tailwind Plus* (« Official Tailwind UI Components & Templates - Tailwind Plus » consulté le 25 février 2026. <https://tailwindcss.com>) ou encore *CodeIgniter* (« Welcome to CodeIgniter » consulté le 25 février 2026. <https://codeigniter.com/>). Il s’agit toujours de modèles de pages produites selon un certain *template* fixe et local. 
+[^3]: Nous plaçons dans cette catégorie le type de ressources que nous trouvons par exemple sur *HTML5 UP* (« HTML5 UP », <http://html5up.net/>, consulté le 25 février 2026) qui en présente une bonne liste. Mais aussi *CodeStitch* (« CodeStitch, High Quality HTML and CSS Only Component Library, No Frameworks, No Configurations », <https://codestitch.app/>, consulté le 25 février 2026), *Tailwind Plus* (« Official Tailwind UI Components & Templates - Tailwind Plus », <https://tailwindcss.com>, consulté le 25 février 2026) ou encore *CodeIgniter* (« Welcome to CodeIgniter », <https://codeigniter.com/>, consulté le 25 février 2026). Il s’agit toujours de modèles de pages produites selon un certain *template* fixe et local. 
 
-[^4]: Sarah Simpkin. « Débuter avec Markdown », traduction par Sofia Papastamkou, *Programming Historian en français 2*, <https://programminghistorian.org/fr/lecons/debuter-avec-markdown> ; James Baker. « Préserver ses données de recherche », traduction par Anne-Sophie Bessero-Lagarde. 2020. *Programming Historian en français 2*. <[Préserver ses données de recherche](https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche)>.
+[^4]: Sarah Simpkin, « Débuter avec Markdown », traduction par Sofia Papastamkou, *Programming Historian en français 2*, <https://programminghistorian.org/fr/lecons/debuter-avec-markdown> ; James Baker, « Préserver ses données de recherche », traduction par Anne-Sophie Bessero-Lagarde, *Programming Historian en français 2*, <https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche>, consulté le 30 janvier 2026.
 
-[^5]: Raymond Camden et Brian Rinaldi. 2017. *Working with Static Sites: Bringing the Power of Simplicity to Modern Sites*. O’Reilly Media, Inc. <https://books.google.com?id=3NFLDgAAQBAJ> et Raymond Camden et Brian Rinaldi. 2022. *The Jamstack Book: Beyond Static Sites with JavaScript, APIs, and Markup*. Simon and Schuster. <https://books.google.com?id=nZVsEAAAQBAJ> notamment. Les exemples ne manquent pas cf. [Static Site Generators](https://staticsitegenerators.net) (consulté le 20 janvier 2026) et Jamstack.org, « Static Site Generators - Top Open Source SSGs, Jamstack » (consulté le 20 janvier 2026. <https://jamstack.org/generators/>).
+[^5]: Raymond Camden et Brian Rinaldi, *Working with Static Sites: Bringing the Power of Simplicity to Modern Sites*,California, Sebastopol, O'Reilly Media, 2017, <https://books.google.com?id=3NFLDgAAQBAJ> et Raymond Camden et Brian Rinaldi, *The Jamstack book: beyond static sites with JavaScript, APIs, and Markup*, Shelter Island, NY, Manning, 2022, <https://books.google.com?id=nZVsEAAAQBAJ> notamment. Les exemples ne manquent pas cf. [Static Site Generators](https://staticsitegenerators.net) (consulté le 20 janvier 2026) et Jamstack.org, « Static Site Generators - Top Open Source SSGs, Jamstack » (<https://jamstack.org/generators/>, consulté le 20 janvier 2026).
 
-[^6]: cf. Chris Diaz. 2018. « Using Static Site Generators for Scholarly Publications and Open Educational Resources », *The Code4Lib Journal*, nᵒ 42, 8 novembre 2018. <https://journal.code4lib.org/articles/13861?utm_campaign=the%20New%20Dynamic&utm_medium=email&utm_source=Revue%20newsletter> ; Amanda Visconti. 2016. « Building a Static Website with Jekyll and GitHub Pages », *Programming Historian*. <https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages> ; Amanda Visconti, Brandon Walsh, et Scholars’ Lab Community. 2020. « Running a Collaborative Research Website and Blog with Jekyll and GitHub », *Programming Historian*. <https://programminghistorian.org/en/lessons/collaborative-blog-with-jekyll-github> ; Olivia M. Wikle et Evan Peter Williamson. 2024. « Exploring Static Web in the Digital Humanities Classroom: The Learn-Static Initiative », *IDEAH* 4, nᵒ 2, 14 mars 2024. <https://doi.org/10.21428/f1f23564.f88a989c>.
+[^6]: cf. Chris Diaz, « Using Static Site Generators for Scholarly Publications and Open Educational Resources », *The Code4Lib Journal*, nᵒ 42, 8 novembre 2018, <https://journal.code4lib.org/articles/13861?utm_campaign=the%20New%20Dynamic&utm_medium=email&utm_source=Revue%20newsletter> ; Amanda Visconti, « Building a Static Website with Jekyll and GitHub Pages », *Programming Historian*, <https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages> ; Amanda Visconti, Brandon Walsh, et Scholars’ Lab Community, « Running a Collaborative Research Website and Blog with Jekyll and GitHub », *Programming Historian*, <https://programminghistorian.org/en/lessons/collaborative-blog-with-jekyll-github> ; Olivia M. Wikle et Evan Peter Williamson, « Exploring Static Web in the Digital Humanities Classroom: The Learn-Static Initiative », *IDEAH* 4, nᵒ 2, 14 mars 2024. <https://doi.org/10.21428/f1f23564.f88a989c>.
 
-[^7]: Hypothèses.org, « Créer votre blog » (consulté le 25 février 2026. <https://fr.hypotheses.org/creer-et-gerer-votre-blog>).
+[^7]: Hypothèses.org, « Créer votre blog » (<https://fr.hypotheses.org/creer-et-gerer-votre-blog>, consulté le 25 février 2026).
 
-[^8]: Roopika Risam et Alex Gil. 2022. « Introduction: The Questions of Minimal Computing », *Digital Humanities Quarterly* 16, nᵒ 2, 2022. <https://www.proquest.com/docview/2681375031/citation/6C9B1134396C475DPQ/1> ; Roopika Risam et Lee Skallerup Bessette. 2024. « Introduction: Minimal Computing and EdTech », *Learning, Media and Technology* 49, nᵒ 5, 6 décembre 2024 : 747‑54. <https://doi.org/10.1080/17439884.2024.2435200> et Dennis Tenen et Grant Wythoff. 2014 « Sustainable Authorship in Plain Text Using Pandoc and Markdown », *Programming Historian*. <https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown>.
+[^8]: Roopika Risam et Alex Gil, « Introduction: The Questions of Minimal Computing », *Digital Humanities Quarterly* 16, nᵒ 2, 2022, <https://www.proquest.com/docview/2681375031/citation/6C9B1134396C475DPQ/1> ; Roopika Risam et Lee Skallerup Bessette, « Introduction: Minimal Computing and EdTech », *Learning, Media and Technology* 49, nᵒ 5, 6 décembre 2024, <https://doi.org/10.1080/17439884.2024.2435200> et Dennis Tenen et Grant Wythoff, « Sustainable Authorship in Plain Text Using Pandoc and Markdown », *Programming Historian*, <https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown>.
 
-[^9]: John E. Dunn. 2026. « Des packages NPM compromis pour diffuser des *malwares* », Le Monde Informatique ». <https://www.lemondeinformatique.fr/actualites/lire-des-packages-npm-compromis-pour-diffuser-des-malwares-97524.html> (consulté le 20 janvier 2026) ; Dang-Khoa Nguyen et al. 2026. « Taint-Based Code Slicing for LLMs-based Malicious NPM Package Detection » consulté le 10 janvier 2026. <https://doi.org/10.48550/arXiv.2512.12313> ; Surya Rao Rayarao et Naga Donikena. « The Shai-Hulud NPM Supply Chain Attack: A Comprehensive Analysis of Self-Replicating Malware in the JavaScript Ecosystem » consulté le 20 janvier 2026. <https://www.authorea.com/doi/full/10.22541/au.175830854.42750868?commit=9bc3206ca741614366ba5db6e82b14eba325b6d0> ; mais aussi Tero Parviainen. 2025. « Overcoming JavaScript Framework Fatigue ». <https://teropa.info/blog/2015/07/15/overcoming-javascript-framework-fatigue.html>.
+[^9]: John E. Dunn, « Des packages NPM compromis pour diffuser des *malwares* », *Le Monde Informatique*, 2026, <https://www.lemondeinformatique.fr/actualites/lire-des-packages-npm-compromis-pour-diffuser-des-malwares-97524.html>, consulté le 20 janvier 2026 ; Dang-Khoa Nguyen et al, « Taint-Based Code Slicing for LLMs-based Malicious NPM Package Detection », <https://doi.org/10.48550/arXiv.2512.12313>, consulté le 10 janvier 2026 ; Surya Rao Rayarao et Naga Donikena, « The Shai-Hulud NPM Supply Chain Attack: A Comprehensive Analysis of Self-Replicating Malware in the JavaScript Ecosystem », <https://www.authorea.com/doi/full/10.22541/au.175830854.42750868?commit=9bc3206ca741614366ba5db6e82b14eba325b6d0>, consulté le 20 janvier 2026 ; mais aussi Tero Parviainen, « Overcoming JavaScript Framework Fatigue », <https://teropa.info/blog/2015/07/15/overcoming-javascript-framework-fatigue.html>.
 
 [^10]: Au sein de Stylo, l’unité documentaire est nommée *article*.

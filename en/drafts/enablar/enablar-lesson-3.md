@@ -133,6 +133,12 @@ Once you have downloaded the data and installed the required Python libraries, y
 ### Social context
 Library collections offer a wealth of information outside of normal utilisation, through the metadata they collect for items. Beyond using this metadata for search and retrieval, this data can be used to understand what makes up a library collection and leverage that knowledge for many uses including special collection building, purchases, weeding, and other collection development activities. For those outside the library, these actions are often carried out while asking questions such as: What materials should the library get rid of? What collections could be expanded? What items would benefit from being promoted together? How have our materials changed over time? The latter question is the one that researchers here aim to answer with the Dutch Library dataset.
 
+A further consideration is that catalogue metadata is itself a product of its time and reflects the perspective of the cataloguer. The catalogue examined in this lesson, de _Nederlandse Bibliografie Online_, has been built up since 1974, meaning that the subject heading terminology used to describe books from earlier centuries is shaped by a twentieth-century scholarly perspective. This terminology may therefore diverge from, or be less precise than, the terminology that was originally used to describe the scientific disciplines of those earlier periods.
+ 
+All catalogue data in this lesson is in Dutch. However, this should not be an obstacle, as you can use a browser translation plugin to display the catalogue data in your preferred language (see below), making it easy to follow along.
+
+The datasets used in this lesson are publicly available and can be downloaded via this lesson page (see below). No costs are involved in using the data or the software used in this lesson.
+
 ### Prerequisites
 * Basic understanding of Python libraries
 * Basic skills for working with a code editor such as [VS Code](https://code.visualstudio.com/)

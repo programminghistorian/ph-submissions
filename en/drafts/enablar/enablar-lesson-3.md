@@ -155,7 +155,7 @@ We will first walk you through the installation of [uv](https://docs.astral.sh/u
 
 This workflow could be used as a way of telling thematic stories through library collections by librarians and researchers alike. This approach is a new way to visualize library collections to gain better insights and justify their importance for a wider audience. Rather than presenting catalogue records as static entries this workflow treats the collection as a connected system of relationships that can be explored visually. This makes it especially useful for communicating the value of collections to audiences who may not otherwise engage with catalogue metadata directly.
 
-This lesson uses a subset of the [catalogue of the National Library of the Netherlands (KB)](https://www.kb.nl/over-ons/diensten/de-nederlandse-bibliografie) as its working example. As the national library, the KB collects, preserves and describes all publications published in the Netherlands, about the Netherlands, or in Dutch. This legal deposit function results in a collection that is both exceptionally complete and consistently well described. The catalogue metadata are correspondingly rich, offering a wealth of detail about each item. In this lesson, we focus specifically on the subject heading attributions in the collection, which are applied extensively and with notable consistency.
+This lesson uses a subset of the [catalogue of the National Library of the Netherlands (KB)](https://www.kb.nl/over-ons/diensten/de-nederlandse-bibliografie) as its working example. As the national library, the KB collects, preserves and describes all publications published in the Netherlands, about the Netherlands, or in Dutch. This legal deposit function results in a collection that is both exceptionally complete and consistently well described. The catalogue metadata are correspondingly rich, offering a wealth of detail about each item. In this lesson, we focus specifically on the subject heading attributions in the collection, which are applied extensively and with notable consistency. This is precisely why we selected this catalogue dataset from the National Library of the Netherlands.
 
 ### A synchronic perspective
 
@@ -177,16 +177,16 @@ This use case allows us to address the following research questions:
 
 Exploring the network graph of Dutch publications since 1800 through catalogue metadata visualisation may also be of value to historians of science, offering a fresh angle on the traditional narrative of how the sciences developed in the Netherlands. At the same time, researchers working within a specific discipline, such as mathematics or literary studies, may use this same network graph to discover related publications they had not previously considered.
 
-Other examples of of activities that could be done, just focusing on subject heading data in libraries include: 
-* Looking at a complete collection of subject headings for main collection to understand what sections are strongly represented and could be pulled out an highlighted
-* Visualizing secondary subject headings in a collection of a picture book collection to understand the social and cultural contexts included in the collection and identify gaps
-* Comparing topic clustering of two different special collections on vintage plant books and current gardening book to research what overlap exists and how this topic has changed over time
+Other activities that could be carried out, focusing on subject heading data in libraries, include:
+* Looking at a complete collection of subject headings for the main collection to understand which sections are strongly represented and could be highlighted.
+* Visualising secondary subject headings in a picture book collection to understand the social and cultural contexts included in the collection and identify gaps.
+* Comparing the topic clustering of two different special collections, one of vintage plant books and one of current gardening books, to research what overlap exists and how this topic has changed over time.
 
 Library data includes information beyond subject headings and there is universe of possibility when it comes to exploring metadata.
 
 ### Dataset
 
-To experiment with in this lesson, we provide eight data files containing bibliographic metadata for books in the [Nederlandse Bibliografie Online (Online Dutch Bibliography)](https://www.kb.nl/over-ons/diensten/de-nederlandse-bibliografie), the catalogue of the National Library of the Netherlands. Together, these files span the period from 1800 to 2000, with each file covering a twenty-five-year segment.
+To experiment with in this lesson, we provide eight data files containing bibliographic metadata for books in the [Nederlandse Bibliografie Online (Online Dutch Bibliography)](https://www.kb.nl/over-ons/diensten/de-nederlandse-bibliografie), the catalogue of the National Library of the Netherlands. Together, these files span the period from 1800 to 2000, with each file covering a twenty-five-year segment. The first segment (1800–1825) contains 2,119 nodes. The final segment, spanning 1975–2000, contains over 10,000 nodes.
 
 The data files are provided in JSON format, a plain-text format well suited to representing structured data. For each book catalogued under the broader subject heading "wetenschap" (science), the JSON files contain at least the following metadata:
 
@@ -198,7 +198,7 @@ The data files are provided in JSON format, a plain-text format well suited to r
 - language
 - year of publication
 
-Given the focus of this lesson, we are particularly interested in how publications are attributed to subjects. For this reason, we queried not only the general subject heading assigned to each book, but also the corresponding higher-level (broader) heading and lower-level (narrower) subdivisions. This layered structure provides richer data for visualising the relationships between book titles and subject headings. The dataset includes all books for which at least one broader subject label contains the term _wetenschap_ ('science').
+Given the focus of this lesson, we are particularly interested in how publications are attributed to subjects. For this reason, we queried not only the general subject heading assigned to each book, but also the corresponding higher-level (broader) heading and lower-level (narrower) subdivisions. All publications in this lesson's dataset have been assigned a subject heading drawn from the [Brinkman Thesaurus](https://www.begrippenxl.nl/brinkman/nl/index) keywords. This thesaurus is hierarchically structured, meaning that subject headings may have a broader, umbrella term and/or a more specific, narrower subject description. This layered structure provides richer data for visualising the relationships between book titles and subject headings. The dataset includes all books for which at least one broader subject label contains the term _wetenschap_ ('science').
 
 A single JSON entry, describing one book, looks as follows:
 

@@ -313,17 +313,20 @@ You don't need to run the queries yourself, as we have made the datasets availab
 
 ### Software/tool
 
+The software components for this lesson are as follows:
 - [networkx](https://pypi.org/project/networkx/), a Python package for the creation and manipulation of networks
 - [Sigma.js](https://www.sigmajs.org/), a Javascript library for large-scale network visualisation
 - [iPySIGMA](https://github.com/medialab/ipysigma), a Python wrapper around sigma.js
+
+_NetworkX_ is the leading Python package for defining and representing data as a network of nodes and edges. _Sigma.js_ not only displays the network interactively in a web browser (also allowing the graph to be embedded in a web page), but also excels at displaying large, data-rich networks in an insightful, user-friendly, and uncluttered way. To bridge our Python _NetworkX_ structure with a JavaScript-based webpage, we use _ipysigma_.
 
 ## Learning keys
 ### Concepts
 This lesson explores how library catalogue metadata, or the structured information recorded about a library item, can be transformed into network data to better understand relationships within a collection. This metadata may include details such as title, author, publication information, and related subjects. Subject headings are especially useful for this process because they provide a structured way of describing what a library item is about and can therefore be used to identify meaningful connections between items.
 
-Using subject headings as the basis for connection, we will examine how catalogue records can be represented as a network graph. In this visual representation, nodes stand for entities within the network, such as subjects or items, while edges show the relationships that connect those nodes. Viewing catalogue metadata in this way allows us to see how different parts of a collection relate to one another and to identify clusters, or groups of nodes that are more closely connected to each other. We will also consider how [centrality](https://en.wikipedia.org/wiki/Centrality) can help measure which nodes are especially important or highly connected within the network.
+Using subject headings as the basis for connection, we will examine how catalogue records can be represented as a network graph. In this visual representation, nodes stand for entities within the network, such as subject headings or book titles, while edges show the relationships that connect those nodes. Viewing catalogue metadata in this way allows us to see how different parts of a collection relate to one another and to identify clusters, or groups of nodes that are more closely connected to each other. We will also consider how [centrality](https://programminghistorian.org/en/lessons/exploring-and-analyzing-network-data-with-python#centrality) can help measure which nodes are especially important or highly connected within the network.
 
-The lesson will then demonstrate how interactive visualisations can support collection analysis and development by making patterns, clusters, and relationships easier to explore. By comparing network visualisations created from catalogue data at different points in time, librarians can gain insight into how a collection has developed historically and how it may continue to evolve in the future. These concepts will be demonstrated through a workflow built with Python, ipysigma, and JavaScript sigma.js
+The lesson will then demonstrate how interactive visualisations can support collection analysis and development by making patterns, clusters, and relationships easier to explore. By comparing network visualisations created from catalogue data at different points in time, librarians can gain insight into how a collection has developed historically and how it may continue to evolve in the future. These concepts will be demonstrated through a workflow built with Python, _ipysigma_, and _sigma.js_.
 
 ### Terms
 
@@ -616,7 +619,9 @@ A few parameters are worth highlighting:
 
 - `node_color="pref_subject"`: each preferred subject label is mapped to a distinct colour, making it easy to visually distinguish subject clusters and the book titles associated with them.
 - `node_shape_mapping`: custom icons from the [Google Fonts icon library](https://fonts.google.com/icons) are used to make node types immediately recognisable. In this lesson, book title nodes are represented by a book icon (`book_2`) and subject heading nodes by a label icon (`label`).
-- `node_metrics=["louvain"]`: the Louvain algorithm is applied to detect communities within the graph, which can reveal clusters of closely related books and subject headings that might not be apparent from classification numbers alone.
+- `node_metrics=["louvain"]`: The Louvain algorithm is a community detection method for networks that iteratively groups nodes into clusters by calculating how densely connected nodes are within a group compared to between groups. The algorithm is applied to detect communities within the graph, which can reveal clusters of closely related books and subject headings that might not be apparent from classification numbers alone.
+- `node_size=G.degree`: A node's degree is simply the sum of its edges (see the [lesson on network data](https://programminghistorian.org/en/lessons/exploring-and-analyzing-network-data-with-python#centrality)). Consider a subject heading node to which many publications are allocated. That node has a high degree and will consequently be represented at a larger size.
+- `default_edge_type="curve": By default, the edges are drawn using a curved line, but you can change the edge type to 'arrow' or 'line' if you prefer.
 
 #### Generating output files for all time periods
 
@@ -642,7 +647,11 @@ Running the script will produce eight HTML files in your `data/out` folder, one 
 
 #### Navigating through the network graph
 
-Now that the nodes and edges have been defined, we can begin to move around the visualization with the iPySIGMA features. Before us is an interactive web-based network graph that shows the relationships between the books and the subject headings. Each graph has a natural state that often looks like a cloud of chaos, this the graph before it is laid out. It is recommended that before you interact with the graph that you click the play button to run the layout animation. This allows the graph to settle into a more readable arrangement, where closely related nodes cluster together and less connected groups move farther apart. In network visualization, this is known as a force-directed layout. Moving the nodes through the layout animation also helps to see the physical distance between different topics. The closer together or more tightly clustered they are, the more they are related or prominently connected. 
+Now that the nodes and edges have been defined, we can begin to move around the visualization with the iPySIGMA features.
+
+##### Getting started
+
+Before us is an interactive web-based network graph that shows the relationships between the books and the subject headings. Each graph has a natural state that often looks like a cloud of chaos, this the graph before it is laid out. It is recommended that before you interact with the graph that you click the play button to run the layout animation. This allows the graph to settle into a more readable arrangement, where closely related nodes cluster together and less connected groups move farther apart. In network visualization, this is known as a force-directed layout. Moving the nodes through the layout animation also helps to see the physical distance between different topics. The closer together or more tightly clustered they are, the more they are related or prominently connected. 
 
 
 {% include figure.html filename="enablar-lesson-3-01.jpg" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}

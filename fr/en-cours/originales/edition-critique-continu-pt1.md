@@ -7,8 +7,8 @@ date: YYYY-MM-DD
 authors:
 - Clément Godbarge
 reviewers:
-- Anne Garcia Fernandez
 - Jasmin Macarios
+- Elsa Van Kote
 editors:
 - Forename Surname
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/674

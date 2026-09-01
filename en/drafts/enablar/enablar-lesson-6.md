@@ -484,6 +484,7 @@ We are specifically interested in occupation (whether one of our Named Entities 
 
 After using requests to perform our query, we will check the results to keep only those which are related to the field of architecture. If a match is identified, we will return the relevant data in a dictionary format. Else, we will simply return an empty (None) result. We will then return all results in a structured format.
 
+{% raw %}
 ```
 def get_architect_details(qid):
 #this function takes an individual QID as its argument
@@ -543,6 +544,7 @@ def get_architect_details(qid):
        "gnd": first_val("gnd"),
    }
 ```
+{% endraw %}
 
 To summarise, this function asks Wikidata detailed questions about a given entity using their QID, checks whether the entity looks like an architect based on its listed occupations, and combines the relevant identifiers into a single dictionary.
 

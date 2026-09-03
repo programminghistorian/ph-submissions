@@ -61,7 +61,7 @@ Stylo a été créé et développé par le Laboratoire de recherche sur les écr
 <div class="alert alert-warning">
 Une connexion Internet est nécessaire pour utiliser cette application web. Néanmoins, les articles sont rédigés au format Markdown, et peuvent être facilement téléchargés pour une utilisation locale avec d'autres logiciels (notamment libres).
 
-Depuis la page d’accueil de Stylo, vous avez deux options pour la création d’un compte : un compte en local sur Stylo, ou un compte via le service d’authentification d’Huma-num. Nous vous suggérons de créer un compte avec Huma-Num, vous aurez notamment la possibilité de récupérer votre mot de passe si vous l’oubliez, ce qui n’est pas possible avec un compte _en local_. En créant un compte, vous aurez accès à un espace personnel pour gérer vos articles, mais aussi les partager et travailler à plusieurs sur un document.
+Depuis la page d’accueil de Stylo, vous avez deux options pour la création d’un compte : un compte en local sur Stylo, ou un compte via le service d’authentification d’Huma-num. Nous vous suggérons de créer un compte avec Huma-Num, vous aurez notamment la possibilité de récupérer votre mot de passe si vous l’oubliez, ce qui n’est pas possible avec un compte <em>en local</em>. En créant un compte, vous aurez accès à un espace personnel pour gérer vos articles, mais aussi les partager et travailler à plusieurs sur un document.
 
 Les données stockées par Stylo (et donc par Huma-Num) font l’objet de sauvegardes via des opérations de redondance.
 </div>

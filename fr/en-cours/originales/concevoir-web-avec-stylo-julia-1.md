@@ -61,10 +61,14 @@ Stylo a été créé et développé par le Laboratoire de recherche sur les écr
 <div class="alert alert-warning">
 Une connexion Internet est nécessaire pour utiliser cette application web. Néanmoins, les articles sont rédigés au format Markdown, et peuvent être facilement téléchargés pour une utilisation locale avec d'autres logiciels (notamment libres).
 
+Depuis la page d’accueil de Stylo, vous avez deux options pour la création d’un compte : un compte en local sur Stylo, ou un compte via le service d’authentification d’Huma-num. Nous vous suggérons de créer un compte avec Huma-Num, vous aurez notamment la possibilité de récupérer votre mot de passe si vous l’oubliez, ce qui n’est pas possible avec un compte _en local_. En créant un compte, vous aurez accès à un espace personnel pour gérer vos articles, mais aussi les partager et travailler à plusieurs sur un document.
+
 Les données stockées par Stylo (et donc par Huma-Num) font l’objet de sauvegardes via des opérations de redondance.
 </div>
 
-Le principe central de Stylo est de permettre une écriture et une édition sémantiques via des formats sources structurés, avec des possibilités d’export divers dans des formats adaptés à des usages personnels et professionnels. Les formats sources sont : Markdown pour les contenus, YAML pour les métadonnées et BibTeX pour les références bibliographiques. Les contenus sont ainsi qualifiés (niveaux de titres, paragraphes, listes, citations longues, liens hypertextes, images, références bibliographiques, etc.) afin de pouvoir être convertis vers les formats PDF, XML, DOCX ou ICML.
+Le principe central de Stylo est de permettre une écriture et une édition sémantiques via des formats sources structurés, avec des possibilités d’export divers dans des formats adaptés à des usages personnels et professionnels. Les formats sources sont : Markdown pour les contenus, YAML pour les métadonnées et BibTeX pour les références bibliographiques. Les contenus sont ainsi qualifiés (niveaux de titres, paragraphes, listes, citations longues, liens hypertextes, images, références bibliographiques, etc.) afin de pouvoir être convertis vers les formats PDF, XML, DOCX ou ICML. La philosophie de Stylo repose ainsi sur plusieurs principes : l'écriture et l'édition structurées, l'utilisation de standards et de logiciels libres, l'interopérabilité pour l'interconnexion avec d'autres processus ou outils.
+
+La documentation de Stylo comporte une description des fonctionnalités (de la création de compte aux exports en passant par les options collaboratives), des tutoriels, des vidéos et une foire aux questions. Cette ressource est disponible en français, en anglais, et partiellement en espagnol : [https://stylo-doc.ecrituresnumeriques.ca](https://stylo-doc.ecrituresnumeriques.ca).
 
 
 ### Des opérations de conversions

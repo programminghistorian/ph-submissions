@@ -426,7 +426,7 @@ Enfin, utilisez le bouton *Print Deck* pour demander à nanDECK de générer vot
 
 ## Créer votre propre *Timeline*
 
-Afin de vous aider à démarrer avec nanDECK et Tabletop Simulator, j'ai mis à votre disposition un kit de fichiers de démarrage [à télécharger sur GitHub](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/designing-a-timeline-tabletop-simulator.zip). Il contient deux sous-dossiers : l'un nommé `nanDECK` et l'autre `Tabletop-Simulator`.
+Afin de vous aider à démarrer avec nanDECK et Tabletop Simulator, un kit (en anglais) de fichiers de démarrage [à télécharger sur GitHub](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/designing-a-timeline-tabletop-simulator.zip) est à votre disposition. Il contient deux sous-dossiers : l'un nommé `nanDECK` et l'autre `Tabletop-Simulator`.
 
 Le sous-dossier `nanDECK` contient :
 
@@ -489,7 +489,7 @@ Bien que Tabletop Simulator (TTS) ne soit pas la seule plateforme numérique per
 
 ## Créer des cartes virtuelles pour Tabletop Simulator
 
-Maintenant que vous savez comment importer vos cartes dans TTS, votre jeu se transforme en une sorte de jeu vidéo, sans besoin de coder les règles. Bien que TTS ne requiert pas de connaissances en programmation pour utiliser sa boîte à outils, il ne s'agit pas pour autant d'un environnement simple ni intuitif. Berserk Games, la société qui développe TTS, propose une série de sept [tutoriels vidéo sur YouTube](https://www.youtube.com/watch?v=6e8RFMtAVac&list=PLA16SF2eexlUtH2AM4V8VF9rDpekW2uYA)  pour apprendre aux personnes qui débutent à créer des jeux et à y jouer dans cet environnement.
+Il est également possible d’importer vos cartes dans TTS afin de transformer votre jeu en une sorte de jeu vidéo, sans avoir besoin de coder les règles. Bien que TTS ne requiert pas de connaissances en programmation pour utiliser sa boîte à outils, il ne s'agit pas pour autant d'un environnement simple ni intuitif. Berserk Games, la société qui développe TTS, propose une série de sept [tutoriels vidéo sur YouTube](https://www.youtube.com/watch?v=6e8RFMtAVac&list=PLA16SF2eexlUtH2AM4V8VF9rDpekW2uYA)  pour apprendre aux personnes qui débutent à créer des jeux et à y jouer dans cet environnement.
 
 La partie suivante explique comment la traductrice de l’article a converti son jeu  "Timeline Réunion" en format numérique pour TTS. Ensuite, des instructions générales vous montreront comment appliquer le même procédé avec les éléments du jeu que nous venons d'utiliser pour créer notre jeu de démarrage de six cartes.
 

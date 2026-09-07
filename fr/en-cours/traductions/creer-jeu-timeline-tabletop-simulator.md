@@ -75,13 +75,7 @@ Ces principes clés renforcent l'idée que les jeux devraient être utilisés en
 
 En ce qui concerne cet article, il n'est pas à être nécessaire d'être convaincu que les jeux doivent continuer à jouer un rôle important dans l’enseignement et l’apprentissage de l’histoire[^6]. Néanmoins, les personnes qui s'interrogent sur la place des jeux dans l'éducation sont invités à lire la partie « Why Games » de l'article « Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine »[^7].
 
-## Qu'est-ce qu'un jeu de table ?
-
-La catégorie des [« jeux de table »](https://perma.cc/NSE5-VA2F) englobe tous les jeux physiques qui se jouent sur ou autour d'une table. Alors que le grand public a tendance à séparer les jeux commerciaux en seulement deux catégories - les “jeux vidéo” et les “jeux de société” - de nombreuses personnes passionnées par le jeu ainsi que des personnes travaillant dans l'industrie du jeu préfèrent le terme de « jeux de table » à celui de « jeux de société », car il englobe non seulement les jeux de société, mais aussi les jeux de dés, de cartes, les jeux papier et crayon, ainsi que les jeux de rôle.
-
-Dans cette leçon, vous apprendrez à créer votre propre version d'un jeu de cartes appelé *Timeline*.
-
-### Présentation de *Timeline*
+## Présentation de *Timeline*
 
 *Timeline* est un jeu de cartes conçu par Frédéric Henry, édité pour la première fois en 2012 et toujours disponible à l'achat auprès de l'éditeur mondial de jeux [Asmodee](https://perma.cc/993M-GRFZ) et de sa filiale [Zygomatic](https://perma.cc/6D8J-PMMY). *Timeline* se joue de 2 à 8 personnes. Parce qu’il est facile à prendre en main et idéal pour jouer à plusieurs, *Timeline* est fréquemment présenté autant comme un jeu d’ambiance que comme un jeu éducatif. Le jeu est édité en plusieurs langues et décliné en différentes versions thématiques, notamment *Timeline : Inventions*, *Timeline : Musique et cinéma*, *Timeline : Histoire américaine*, et *Timeline Star Wars*.
 
@@ -91,7 +85,7 @@ Dans cette leçon, vous apprendrez à créer votre propre version d'un jeu de ca
 
 La mécanique de jeu consistant à ajouter des cartes à une série chronologique n'est pas exclusive à Timeline. En 2020, Tom James Watson a lancé [Wikitrivia](https://perma.cc/9RPB-U9VP), un jeu en ligne à jouer seul, dans lequel vous essayez de battre votre propre « série » de cartes correctement ajoutées à une frise chronologique d'événements historiques tirés de Wikidata et de Wikipedia. En août 2023, le New York Times a lancé une version bêta d'un quiz historique hebdomadaire appelé [Flashback](https://perma.cc/DDE5-9FFU), dans lequel les personnes participantes doivent classer huit événements historiques par ordre chronologique.[^9]
 
-Les variantes de jeux comme *Wikitrivia* et *Flashback*, inspirées de *Timeline*, sont autorisées par la législation américaine sur le droit d'auteur puisque les règles d’un jeu ne sont pas protégeables par un copyright. L'article 102(b) du Copyright Act indique : “En aucun cas la protection du droit d'auteur pour une œuvre originale de l’esprit ne s'étend à une idée, une procédure, un processus, un système, une méthode de fonctionnement, un concept, un principe ou une découverte, quelle que soit la forme sous laquelle cela a été décrit, expliqué, illustré ou incorporé dans ladite œuvre”.[^10]
+Les variantes de jeux comme *Wikitrivia* et *Flashback*, inspirées de *Timeline*, sont autorisées par la législation française sur le droit d'auteur puisque le Code de la Propriété Intellectuelle ne prévoit pas la protection des règles d’un jeu. Dans un arrêt du 29 novembre 2005, n° 04-12.721, la Cour de cassation a expressément affirmé : « La propriété littéraire et artistique ne protège pas les idées ou concepts, mais seulement la forme originale sous laquelle ils se sont exprimés. » [^10]
 
 ## Pourquoi jouer à *Timeline* en classe ?
 
@@ -612,7 +606,7 @@ Espérons que cette expérience incitera d'autres personnes à créer des varian
 [^7]: Kirilloff, G. “Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine”, Programming Historian 10, 2021. https://doi.org/10.46430/phen0095, 2021.
 [^8]: “Timeline.” BoardGameGeek. Accessed February 21, 2024. https://boardgamegeek.com/boardgame/128664/timeline.
 [^9]: Leonhardt, D. (2023, August 6). “A new Times quiz”. The New York Times. https://www.nytimes.com/2023/08/06/briefing/a-new-times-quiz.html
-[^10]: Boyden, Bruce E. Games and Other Uncopyrightable Systems. 1580079, 20 Apr. 2011, Social Science Research Network, https://ssrn.com/abstract=1580079.
+[^10]: Cass. 1re civ., 29 nov. 2005, n° 04-12.721, Légifrance
 [^11]: Timeline & Stag Hunt. Directed by Richard Malena-Webber, vol. 8, 2017. YouTube, https://www.youtube.com/watch?v=dZbkxMuBR_I.
 [^12]: Zygomatic, (n.d.), “Games—Dobble”, Retrieved January 26, 2024, from https://www.dobblegame.com/en/games/.
 [^13]: Jones, R. A. (n.d.). “LibGuides: Free Images from Libraries, Museums, and Archives”. Retrieved January 26, 2024, from https://libguides.lib.msu.edu/c.php?g=138076&p=7641602.

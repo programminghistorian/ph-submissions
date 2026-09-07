@@ -54,7 +54,7 @@ You can follow the lesson on any mainstream operating system. On Python, you wil
 
 The lesson was created and tested on Python 3.10, with Requests 2.32.5, BeautifulSoup 4.11.1, and Tenacity 8.2.3. 
 
-#### A note about Internet connection and code running time
+#### A note about Internet Connection and Code Running Time
 
 You will need a decent Internet connection for scraping. Depending on your Internet connection speed, the scraping process in this lesson may take at least 15-25 minutes to complete. 
 
@@ -66,11 +66,11 @@ If the Wayback Machine is accessible to you but you are still having trouble run
 
 Before we dive into the technical parts, it is important to consider ethical and legal issues in using web archives for research purposes. Much of the content archived on the Wayback Machine was created by users who could not have anticipated that it would be preserved and analyzed decades later. Some archived web content may have been created by children or other marginal groups, and may contain sensitive personal information. Scraping and reusing such content may cause unintentional harm to individuals whose data is being processed.[^1] In the case study, we will scrape banner ads appearing on the homepages of the most visited websites in Japan, which should entail minimal privacy risk since these ads and websites were designed for public display. 
 
-It is also worth keeping in mind that archived web content was produced within specific cultural and historical contexts that may be difficult to recover if individual elements of the page is taken out of context and placed in a database. When designing your own projects, you should remain mindful of the context in which historical content was created, and strive to minimize potential harms. 
+It is also worth keeping in mind that archived web content was produced within specific cultural and historical contexts that may be difficult to recover if individual elements of the page are taken out of context and placed in a database. When designing your own projects, you should remain mindful of the context in which historical content was created, and strive to minimize potential harms. 
 
 Copyright of archived web materials usually belongs to their original authors, but limited use of copyrighted materials is allowed for research and education purposes in many jurisdictions under Fair Use/Fair Dealing provisions in their copyright laws.[^2] You should always check local laws before reusing or publishing archived material. 
 
-Lastly, large-scale scraping can strain the technical infrastructure of web archives. In the lesson, we will demonstrate how to reduce the potential impact of our scraping by implementing delays and using a Session object in the Requests library. When designing your own scraping projects, you should always strive to minimize your traffic footprint on the archive’s servers.
+Lastly, large-scale scraping can strain the technical infrastructure of web archives. In the lesson, we will demonstrate how to reduce the potential impact of our scraping by implementing delays and using a Session object (whose role will be explained later) in the Requests library. When designing your own scraping projects, you should always strive to minimize your traffic footprint on the archive’s servers.
 
 ### Learning Outcomes
 
@@ -92,13 +92,13 @@ In the rest of the lesson, we will use the term **resource** to refer to any typ
 
 There are different ways to access the Wayback Machine programmatically. In this lesson, we will use the Wayback Machine's [CDX Server API](https://github.com/internetarchive/wayback/tree/master/wayback-cdx-server). CDX stands for Capture Index, the metadata format used by the Wayback Machine to index archived web resources.[^5] The CDX Server API provides the same information accessible through the Wayback Machine's web interface in a tabular, machine-readable format. The Wayback Machine can also be queried through the [Wayback Availability JSON API](https://archive.org/help/wayback_api.php) and the [Memento Protocol API](https://ws-dl.blogspot.com/2013/07/2013-07-15-wayback-machine-upgrades.html), though the CDX Server API offers more types of information and filtering capabilities than the other two APIs. 
 
-For large-scale projects involving hundreds or thousands of URLs, you should consider using Internet Archive’s [Archives Research Compute Hub](https://archive-it.org/arch/), which allows you to perform full-text search and data visualization tasks directly on large-scale web archive datasets hosted on the Internet Archive. However, researchers need to apply with the Internet Archive for access to this service. 
+For large-scale projects involving hundreds or thousands of URLs, you should consider using Internet Archive’s [Archives Research Compute Hub](https://archive-it.org/arch/), which allows you to perform full-text search and data visualization tasks directly on web archive datasets hosted on the Internet Archive. However, researchers need to apply with the Internet Archive for access to this service. 
 
 #### A Note about Web Scraping Libraries
 
 In this lesson, we are going to use the [Requests](https://requests.readthedocs.io/en/latest/) library to download archived web content from the Wayback Machine. 
 
-The Requests library is a simple and effective tool for making HTTP requests in Python, and it is apt for the pedagogical purposes in this lesson, but it has many limitations when it comes to processing complex web pages (we will see some of these limitations later on). Researchers interested in scraping complex web pages may want to consider using more powerful tools like [Playwright](https://playwright.dev/) and [Selenium](https://www.selenium.dev/), which can control a real web browser to render and scrape content from complex web pages. However, these tools are also more complicated to configure and use. 
+The Requests library is a simple and effective tool for making HTTP requests in Python, and it is suitable for the pedagogical purposes in this lesson, but it has many limitations when it comes to processing complex web pages (we will see some of these limitations later on). Researchers interested in scraping complex web pages may want to consider using more powerful tools like [Playwright](https://playwright.dev/) and [Selenium](https://www.selenium.dev/), which can control a real web browser to render and scrape content from complex web pages. Both tools can be used with Python. However, these tools may also require more advanced programming skills and technical knowledge to set up and use effectively.
 
 ### Recomposition of Archived Web Pages and Temporal Coherence
 
@@ -146,7 +146,7 @@ As the new URL indicates, the Google logo image was actually captured on April 7
 
 #### Evaluating Temporal Coherence Through Analyzing HTTP Response Headers
 
-Despite the difference in capture dates, this Google logo image captured on April 7, 2000 might have been the same logo that a user would have seen when accessing google.com on March 1, 2000. Is there a way to verify whether an archived media resource appearing on an archived web page snapshot captured at a given date really matches what users in the past would have seen on the page that day? 
+Despite the difference in capture dates, this Google logo image captured on April 7, 2000 might have been the same logo that a user would have seen when accessing google.com on March 1, 2000. Is there a way to verify whether an archived media resource appearing on an archived web page snapshot captured at a given date really matches what users in the past would have seen on the page that day?
 
 Web archive scholars Scott G. Ainsworth, Michael L. Nelson, and Herbert Van de Sompel proposed a method to determine whether an archived on-page resource is *temporally coherent* with the web page it appears on by observing the [`Last-Modified` HTTP response header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Last-Modified) of archived resources.[^7] 
 
@@ -154,13 +154,13 @@ An [HTTP response header](https://developer.mozilla.org/en-US/docs/Glossary/Resp
 
 The Wayback Machine logs the `Last-Modified` header it receives when capturing resources from the live web, and it [passes the original](https://ws-dl.blogspot.com/2015/08/2015-08-28-original-header-replay.html) `Last-Modified` header under the name `x-archive-orig-last-modified` in the HTTP response headers of archived snapshots. 
 
-While HTTP headers are normally not visible to users, we can use the command-line tool [curl](https://en.wikipedia.org/wiki/Curl) to get the value of the `x-archive-orig-last-modified` header of the redirected image snapshot. Linux and macOS users can run the following command in your terminal:  
+While HTTP headers are normally not visible to users, we can use the command-line tool [curl](https://en.wikipedia.org/wiki/Curl) to get the value of the `x-archive-orig-last-modified` header of the redirected image snapshot. Linux and macOS users can run the following command in their terminal:  
 
 ```shell
 curl -ksI "https://web.archive.org/web/20000407103739im_/http://google.com/images/Title_HomPg2.gif" | grep -i "x-archive-orig-last-modified"
 ```
 
-Windows users can run the following command in your PowerShell: 
+Windows users can run the following command in their PowerShell: 
 
 ```powershell
 curl.exe -ksI "https://web.archive.org/web/20000407103739im_/http://google.com/images/Title_HomPg2.gif" | Select-String -Pattern "x-archive-orig-last-modified"
@@ -264,7 +264,7 @@ https://web.archive.org/cdx/search/cdx?url=[original URL of a web resource]
 
 By default, the API returns all snapshots of the given URL along with their metadata, but you can use query parameters to format and filter the results. A full list of available parameters can be found on the API's [documentation page](https://github.com/internetarchive/wayback/tree/master/wayback-cdx-server) on the GitHub repository of the wayback project, which is the underlying software powering the Wayback Machine.
 
-Let us use the API to fetch a list of snapshots of google.com. The Wayback Machine currently has [more than 18 million snapshots](https://web.archive.org/web/20010101000000*/google.com) archived of google.com. We can add the parameters `from`, `to`, `filter`, and `limit` to make the API return only the last five snapshots captured between May 1 and May 31, 2000 with the HTTP response status code `200` (we will talk about the meanings of HTTP response status codes below):
+As an example, let us first use the API to fetch a list of snapshots of google.com. The Wayback Machine currently has [more than 18 million snapshots](https://web.archive.org/web/20010101000000*/google.com) archived of google.com. We can add the parameters `from`, `to`, `filter`, and `limit` to make the API return only the last five snapshots captured between May 1 and May 31, 2000 with the HTTP response status code `200` (we will talk about the meanings of HTTP response status codes below):
 
 ```
 https://web.archive.org/cdx/search/cdx?url=google.com&from=20000501000000&to=20000531235959&filter=statuscode:200&limit=-5
@@ -309,11 +309,11 @@ retry = tenacity.retry(
 )
 ```
 
-You can apply the decorator by adding `@retry` before any function. The decorator automatically reruns the decorated function after a failure, with exponentially increasing wait times between attempts (starting at 2 seconds and up to 64 seconds). It stops after twelve attempts, then raises an exception. This should help you identify potential issues in your code or network connection.[^15]
+You can apply the decorator by adding `@retry` before any function. The decorator automatically reruns the decorated function if the function raises an exception, with exponentially increasing wait times between attempts (starting at 2 seconds and up to 64 seconds). It stops after twelve attempts, then raises an exception itself. In the following sections, we will apply the decorator to functions that make requests to the Wayback Machine.[^15]
 
 #### Batch Querying the CDX Server API
 
-Now, we will loop through the URLs in our list to retrieve a list of available snapshots. First, we read the URLs from the CSV file into a list named `urls_data`: 
+We loop through the URLs in our list to retrieve a list of available snapshots. First, we load the URLs from the CSV file into a list named `urls_data`: 
 
 ```python
 import csv
@@ -328,13 +328,7 @@ with open(csv_file, mode='r', encoding='utf-8') as file:
     urls_data = list(reader)
 ```
 
-For the purposes of this lesson, we will only scrape the last snapshot of the home page of each website made between May 1, 2000 and May 31, 2000 with an HTTP status code `200` at capture, which indicates successful capture. We can build a simple function `download_cdx_data` to get information about available snapshots for a given `original_url`. 
-
-Since we will make multiple requests to the same host, we use a `requests.Session()` object, which improves efficiency by reusing the underlying TCP connection.[^16]
-
-In the function, we store the API parameters in `params`. A manual two-second delay is added to avoid triggering rate limits. 
-
-The `response.raise_for_status()` line ensures that any HTTP status codes indicating an unsuccessful request (`4XX` and `5XX`) raise exceptions, which can then be handled by the `@retry` decorator we defined earlier. Note that the API returns an empty response with a `200` status code if the Wayback Machine does not have any archived snapshots of the URL requested with the filtering parameters applied. The API will return a `403` status code if a URL is excluded from the Wayback Machine (usually at the site owner's request). While you should not encounter any such URLs in this lesson, we make the `download_cdx_data` function handle this case gracefully by also returning an empty response. 
+Now we will scrape the CDX Server API to retrieve information about available snapshots for each URL. For the purposes of this lesson, we will only scrape the last snapshot of the home page of each website made between May 1, 2000 and May 31, 2000 with an HTTP status code `200` in its CDX data, which indicates a technically successful capture. We can build a simple function `download_cdx_data` to get information about available snapshots for a given `original_url`: 
 
 ```python
 import time
@@ -359,6 +353,12 @@ def download_cdx_data(session, original_url):
     response.raise_for_status()
     return response.text
 ```
+
+Since we will make multiple requests to the same host, we use a `requests.Session()` object, which improves network efficiency by reusing the underlying TCP connection for subsequent requests.[^16] We store the API parameters in `params`. A manual two-second delay is added to avoid triggering rate limits. 
+
+The CDX Server API itself returns an empty response with a ` 200` status code if the Wayback Machine does not have any archived snapshots of the URL requested with the filtering parameters applied. The API will return a `403` status code if a URL is excluded from the Wayback Machine (usually at the site owner's request). While you should not encounter any such URLs in this lesson, we make the `download_cdx_data` function handle this case gracefully by returning an empty response for `403` status codes. The CDX Server API returns a `429` status code to rate-limit a client making excessive requests, and a `503` status code if the server is temporarily unavailable. In these cases, we want to raise an exception so that the `@retry` decorator can retry the request. 
+
+However, by default, the Requests library does not raise an exception if it encounters an `4XX` or `5XX` HTTP status code. To ensure that our function raises an exception for unsuccessful requests, in the function we use the `raise_for_status()` method on the response object, which makes Requests raise an exception for HTTP `4XX` and `5XX` status codes (`HTTP 403` is handled separately in the function). The exception can then be handled by the `@retry` decorator. 
 
 Using the function, we loop through all URLs in `urls_data` to query the CDX Server API, and save the results to `data/urls/[website URL]/cdx.csv`. By creating a separate directory for each URL, we can easily adjust the code to save additional snapshots for each URL in the future if needed. The code also checks for and skips any files already downloaded, so you do not have to restart from the beginning if the process is interrupted. This process should take about 10-15 minutes to finish, depending on your computer’s Internet connection. 
 
@@ -403,7 +403,7 @@ Since we will later download banner ad files, and since both images and web page
 In addition to downloading a snapshot, our function should also do the following:
  - Return HTTP response headers. As mentioned earlier, this would help us determine whether a banner ad image is temporally coherent with the web page snapshot containing it. Additionally, we will use the [HTTP header `Content-Type`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Type) to detect the file type of the downloaded content. 
  - Handle legacy character encoding. [Character encoding](https://en.wikipedia.org/wiki/Character_encoding) refers to how textual data is represented on computers. Early non-English web pages often used region-specific encodings that have since been superseded by [UTF-8](https://en.wikipedia.org/wiki/UTF-8), a universal encoding standard. When working with such pages, we often need to detect or specify the correct encoding to read text properly.
- - Handle download errors properly. We need to make sure that our function can throw an error if the download fails, to trigger a retry by the `@retry` decorator. This is a bit tricky, because unlike the CDX Server API, we cannot use HTTP status codes as the sole indicator for download success or failure when scraping archived snapshots from the Wayback Machine. The Wayback Machine currently returns [the same HTTP status code](https://github.com/edgi-govdata-archiving/wayback/issues/158) that its crawler encountered when capturing the original resource; at the same time, the Wayback Machine also returns a `404` status code for URLs with no archived snapshots available, a `403` status code for URLs excluded from the Wayback Machine, and a `429` status code for requests that are temporarily blocked by the Wayback Machine due to rate limits. We need to ensure that our `@retry` decorator only handles erroneous status codes like `429` and `503` (indicating server errors) emitted from the Wayback Machine, while erroneous status codes originating from the archived resource and `403`/`404` codes emitted due to lack of archived snapshots or URL exclusion on the Wayback Machine should be handled gracefully without triggering retry.
+ - Handle download errors properly. We need to make sure that our function can raise an exception if the download fails, to trigger a retry by the `@retry` decorator. This is a bit tricky, because unlike the CDX Server API, we cannot use HTTP status codes as the sole indicator for download success or failure when scraping archived snapshots from the Wayback Machine. The Wayback Machine currently returns [the same HTTP status code](https://github.com/edgi-govdata-archiving/wayback/issues/158) that its crawler encountered when capturing the original resource; at the same time, the Wayback Machine also returns a `404` status code for URLs with no archived snapshots available, a `403` status code for URLs excluded from the Wayback Machine, and a `429` status code for requests that are temporarily blocked by the Wayback Machine due to rate limits. We need to ensure that our `@retry` decorator only handles erroneous status codes like `429` and `503` (indicating Wayback Machine server errors or rate-limits) emitted from the Wayback Machine, while erroneous status codes originating from the archived resource and `403`/`404` codes emitted due to lack of archived snapshots or URL exclusion on the Wayback Machine should be handled gracefully without triggering retry.
 
 Below we define the function: 
 
@@ -449,15 +449,15 @@ def download_archived_snapshot(session, original_url, timestamp, rewrite_modifie
             response.raise_for_status()
 ```
 
-This function downloads an archived snapshot of the `original_url` at the specified `timestamp`. By default, the Requests library will follow redirects, which will allow the Wayback Machine to redirect us to the closest available snapshot of the `original_url` to a given `timestamp`. This replicates the URL redirection behavior on the Wayback Machine. Note that we set `stream=True` to avoid a bug that may be encountered when downloading a specific ad in our case study. This is not strictly necessary for downloading snaphots in general, and you can experiment with removing this parameter to see if it works for you.
+This function downloads an archived snapshot of the `original_url` at the specified `timestamp`. By default, the Requests library will follow redirects, which will allow the Wayback Machine to redirect us to the closest available snapshot of the `original_url` to a given `timestamp`. This replicates the URL redirection behavior on the Wayback Machine. Note that we set `stream=True` to avoid a bug that may be encountered when downloading a specific ad in our case study. This is not strictly necessary for downloading snapshots in general, and you can experiment with removing this parameter to see if the code still works for your own scraping project.
 
 The default rewrite modifier `id_` returns an archived HTML file as-is, without rewriting links. We also add a default one-second delay to avoid triggering the rate limits. 
 
-Upon receiving the response, the function first checks for the presence of the `memento-datetime` header to determine whether we have managed to download an archived snapshot of the resource from the Wayback Machine. 
+Upon receiving the response, the function first checks for the presence of the `memento-datetime` header to determine whether we have managed to download an archived snapshot of the URL from the Wayback Machine. 
 
-If the header is present, it means the download is _technically_ successful, and we can return the content and headers of the response. If the content is text-based (e.g. an HTML document), the function by default will attempt to [automatically detect its encoding](https://requests.readthedocs.io/en/latest/api/#requests.Response.apparent_encoding) using the Requests library's built-in property `apparent_encoding`. This usually solves encoding issues when processing non-English web pages, but the auto-detection result might not always be correct, and you may need to experiment with different encoding detection mechanisms in your own scraping project. 
+If the header is present, it means we have _technically_ downloaded an archived snapshot of a web resource from the Wayback Machine, and we can return the content and headers of the response. If the content is text-based (e.g. an HTML document), the function by default will attempt to [automatically detect its encoding](https://requests.readthedocs.io/en/latest/api/#requests.Response.apparent_encoding) using the Requests library's built-in property `apparent_encoding`. This usually solves encoding issues when processing non-English web pages, but the auto-detection result might not always be correct, and you may need to experiment with different encoding detection mechanisms in your own scraping project. 
 
-The status code in this case comes from the archived snapshot itself, and can be used to evaluate the downloaded content. For example, if we downloaded an image with a status code `404` and with `memento-datetime` header present, it means that the original server reported the file missing at capture time, and likely returned a placeholder image. 
+The status code in this case comes from the archived snapshot itself, and can be used to evaluate the downloaded content. For example, if we downloaded an image with a status code `404` and with `memento-datetime` header present, it means that the original server reported the file missing at capture time, and likely returned a placeholder image or an error page.
 
 If the `memento-datetime` header is not present, we check whether the URL is excluded from the Wayback Machine (in which case it will emit a `403` status code), or the Wayback Machine has no archived snapshot available of the URL (in which case it will emit a `404` status code). For these cases, we return the status code and the headers only. For other status codes (like `429`), we raise an exception to trigger retry.
 
@@ -472,6 +472,7 @@ import csv
 session = requests.Session()
 
 # find directories under data/urls not containing downloaded HTML files
+# if your project involves downloading multiple snapshots for each URL, you need to adjust the logic here to check for the presence of HTML files for each timestamp you want to download.
 url_dirs_to_download = [d for d in Path("data/urls").iterdir() if d.is_dir() and not any(f.suffix == ".html" for f in d.iterdir())]
 
 for url_dir in url_dirs_to_download:
@@ -510,7 +511,7 @@ In the code, we loop through each directory under `data/urls/` that does not yet
     - ...
 ```
 
-In total, you should have downloaded 41 HTML files. Three URLs (sakura.ne.jp, dti.ne.jp, and isize.com) had no snapshots from May 2000. 
+In total, you should have downloaded 41 HTML files. The Wayback Machine has no snapshots captured in May 2000 of three URLs (sakura.ne.jp, dti.ne.jp, and isize.com). 
 
 ### Detecting Banner Ads by Dimension
 
@@ -645,7 +646,7 @@ First, we define a function for evaluating temporal coherence. The function comp
 | -------------------------------------------------------------|-----------------------------|
 | Image `Last-Modified` <= Web page snapshot timestamp <= Image capture date | Prima facie coherent |  
 | Web page snapshot timestamp < Image `Last-Modified` < Image capture date | Prima facie violative |
-| Image `Last-Modified` < Image capture date < web page snapshot timestamp| Possibly coherent |  
+| Image `Last-Modified` < Image capture date < Web page snapshot timestamp| Possibly coherent |  
 | No `Last-Modified` header (usually happens for images served from ad networks, as the networks usually serve a new ad each time the web page loads) | Probably violative |
 
 Below we implement the heuristic:  
@@ -675,7 +676,7 @@ Now we can download the archived image file for each ad detected and calculate i
 
 The code below loops through each ad tag stored in `all_extracted_ad_tags` and tries to download the corresponding image snapshot and store its metadata. If the image tag has not been processed yet, the script calls the `download_archived_snapshot` function. The rewrite modifier `im_` tells the Wayback Machine to return the image exactly as it was archived. At the same time, the script sets up a dictionary called `image_data_output` to store useful metadata about the image. 
 
-When a download is successful - that is, the server returns a `200` status code and the `Content-Type` header shows the file is an image - the script determines the correct file extension (such as `.gif`, `.jpg`, or `.png`) from the header and saves the file in `data/images/[ad tag id]/image.[ad file extension]`. After saving the file, it calculates whether the image is temporally coherent with the web page snapshot using the `calculate_coherence` function. The results are then stored in `image_data_output`.
+When a download is successful — that is, the server returns a `200` status code and the `Content-Type` header shows the file is an image - the script determines the correct file extension (such as `.gif`, `.jpg`, or `.png`) from the header and saves the file in `data/images/[ad tag id]/image.[ad file extension]`. After saving the file, it calculates whether the image is temporally coherent with the web page snapshot using the `calculate_coherence` function. The results are then stored in `image_data_output`.
 
 If the download fails, the script still records the HTTP headers in `image_data_output` but does not save an image file. A failure might mean the Wayback Machine has not archived the ad, the ad is excluded from the Wayback Machine, or the server misleadingly reports success (HTTP 200 status code) while serving a non-image file such as an error page (sometimes called a “soft 404” [^20]). 
 
@@ -788,13 +789,13 @@ python3 -m http.server 8000
 
 Keep the terminal window open, and point your web browser to [http://localhost:8000/banner-ad-explorer.html](http://localhost:8000/banner-ad-explorer.html). The web page should display aggregated statistics about the scraped ads and the ad images themselves in a gallery format. 
 
-We found 42 `<img>` tags matching known banner ad dimensions across 41 downloaded web page snapshots. The most common formats are 88 x 31 (25 ads), 468 x 60 (7 ads) and 224 x 33 pixels (6 ads). The popularity of the 224 x 33 format - a format included in the JIAA recommendations but not in the IAB recommendations - demonstrates the importance of adapting web scraping techniques to particular cultural and linguistic contexts. 
+We found 42 `<img>` tags matching known banner ad dimensions across 41 downloaded web page snapshots. The most common formats are 88 x 31 (25 ads), 468 x 60 (7 ads) and 224 x 33 pixels (6 ads). The prevalence of the 224 x 33 format - a format included in the JIAA recommendations but not in the IAB recommendations - demonstrates the importance of adapting web scraping techniques to particular cultural and linguistic contexts. 
 
 Most websites displayed ads hosted on their own domains or those of affiliated companies (e.g. biglobe.ne.jp showed an ad hosted on cplaza.ne.jp; both websites were owned by the company NEC; geocities.co.jp showed an ad hosted on Yahoo, which owned GeoCities). Only one website (goo.ne.jp) displayed ads from an external ad network (ad.jp.doubleclick.net), partially corroborating Aoki’s observation that Japanese websites of this period tended to display in-house ads.[^12] 
 
 We were able to download archived snapshots of ad images for 32 out of all 42 detected image tags, but only 14 downloaded images are temporally coherent with the web page snapshots they appear on. The low temporal coherence rate demonstrates the need for researchers to take a more critical approach when interpreting recomposed archived web pages accessed via the Wayback Machine. Note that though we technically managed to download two out of the three ad images hosted on ad.jp.doubleclick.net, the two images were both 1 x 1 GIFs. Given the large difference between the images' capture date and the web page snapshots' capture date, the two images are likely placeholders served by the ad network for inactive ads. 
 
-If your downloaded ad count does not match the results shown above, you should check the output of your code cells for potential download errors caused by network issues. It may also be possible that a website owner has requested the Wayback Machine to exclude archives of their site from public access after the lesson is published, in which case you may not be able to download the same number of ads as we did when we developed and tested the code. The lesson will be updated periodically to reflect such changes. 
+There are several reasons why your download count may not match the results shown above. If you did not manage to detect and download all the ads, you should first check the output of your code cells for potential download errors caused by network issues. It may also be possible that a website owner has requested the Wayback Machine to exclude archives of their site from public access after the lesson is published, in which case you may not be able to download the same number of ads as we did when we developed and tested the code. A sample of `all_image_data.json` is included in the lesson files for your reference.
 
 ### Limitations and Potential Improvements to the Scraping Code
 
@@ -808,22 +809,26 @@ To better handle such cases, consider using a browser automation framework like 
 
 We scraped only image-based ads in our lesson. However, web users in the 1990s and early 2000s may remember that many ads from that era were made using [Flash](https://en.wikipedia.org/wiki/Adobe_Flash), a proprietary web media format. By modifying the BeautifulSoup scraping criteria, you can easily scrape a wide range of media formats on the Wayback Machine, including Flash. The same techniques for CDX Server API querying and evaluating temporal coherence remain generally applicable across different media formats. 
 
-In the late 1990s and early 2000s, two HTML tags were commonly used to embed non-image media: `<embed>` and `<object>`. These tags can be used to embed audio and video clips (e.g. MIDI, QuickTime, RealMedia, Windows Media), Flash/Shockwave content, Java applets, [VRML](https://en.wikipedia.org/wiki/VRML) worlds, PDF documents, and other plugin-based interactive media. 
+In the late 1990s and early 2000s, two HTML tags were commonly used to embed non-image media: `<embed>` and `<object>`. These tags can be used to embed audio and video clips (e.g. MIDI, QuickTime, RealMedia, Windows Media), Flash/Shockwave content, Java applets, [VRML](https://en.wikipedia.org/wiki/VRML) worlds, and other plugin-based interactive media. 
 
-During the [1990s browser wars](https://en.wikipedia.org/wiki/Browser_wars#First_browser_war_(1995%E2%80%932001)), `<embed>` was preferred by Netscape, while Microsoft and later W3C pushed the `<object>` tag as the standard container for web media. As a result, many web pages included both tags for cross-browser compatibility.[^21] The following is a [real-life example](https://web.archive.org/web/20010531235413id_/http://www.real.com/) illustrating how `<object>` and `<embed>` tags were often used together to load Flash content:
+During the [1990s browser wars](https://en.wikipedia.org/wiki/Browser_wars#First_browser_war_(1995%E2%80%932001)), `<embed>` was preferred by Netscape, while Microsoft and later W3C pushed the `<object>` tag as the standard container for web media. As a result, many web pages included both tags for cross-browser compatibility.[^21] The following is a real-life example illustrating how Flash content was usually embedded in web pages during that era:
 
 ```html
-<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="523" height="223">
-<param name="movie" value="http://images.real.com/pics/flash/star_big_us2985.swf">
-<param name="play" value="true">
-<param name="loop" value="false">
-<param name="quality" value="best">
-<embed src="http://images.real.com/pics/flash/star_big_us2985.swf" type="application/x-shockwave-flash" width="523" height="223" play="true" loop="false" quality="best" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" <="" embed=""></object>
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0" id="zoom" width="400" height="45">
+			<param name="movie" value="/flash/banner.swf"> 
+			<param name="quality" value="high"> 
+			<param name="bgcolor" value="#FFFFFF"> 
+			<embed src="/flash/banner.swf" quality="high" bgcolor="#FFFFFF" width="400" height="45" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+</object>
 ```
 
-In this example, the URL of the Flash movie appears in both the `<param name="movie">` tag under the parent `<object>` tag and the `src` attribute on the nested `<embed>` tag. During recomposition, the Wayback Machine will typically rewrite URLs of embedded media files with the `oe_` rewrite modifier, which you should also use when downloading these files. 
+The above example is taken from the [snapshot of www.mazdausa.com (with the `id_` rewrite modifier) captured on August 15, 2000](https://web.archive.org/web/20000815053327id_/http://www.mazdausa.com/). Here, the URL of the Flash movie appears in both the `value` attribute of the `<param name="movie">` tag under the parent `<object>` tag and the `src` attribute on the nested `<embed>` tag. 
 
-Keep in mind that many older media formats require emulation or specialized legacy software for playback on modern computers. The digital preservation activist organization ArchiveTeam maintains a [wiki of file formats](http://justsolve.archiveteam.org/wiki/Main_Page) that you may find useful for identifying obsolete or arcane file formats.
+Note that the Wayback Machine now employs [Ruffle](https://ruffle.rs/), a JavaScript-based Flash Player emulator that enables the playback of Flash content on archived web pages. If you [access the same snapshot without the `id_` modifier](https://web.archive.org/web/20000815053327/http://www.mazdausa.com/), you will see that the Flash movie is playable in the browser, and you can actually download the Flash movie by right-clicking on it and selecting "Download .swf". 
+
+If you want to download Flash content in your scraping script, you should add the `oe_` replay modifier to the URL to ensure that the Wayback Machine returns the [original Flash file](https://web.archive.org/web/20000815053327oe_/http://www.mazdausa.com/flash/banner.swf) instead of [an HTML page containing the movie being played in the Ruffle emulator](https://web.archive.org/web/20000815053327/http://www.mazdausa.com/flash/banner.swf). 
+
+While Flash is now supported via Ruffle on the Wayback Machine, the vast majority of older embedded media formats still require emulation of legacy software for proper playback on modern computers. The digital preservation activist organization ArchiveTeam maintains a [wiki of file formats](http://justsolve.archiveteam.org/wiki/Main_Page) that you may find useful for identifying obsolete or arcane file formats.
 
 #### Deduplicating with Image File Hash and Using a Database to Manage Scraping
 
@@ -853,7 +858,7 @@ HTML reference books published in the late 1990s and early 2000s are incredibly 
 
 [^3]: The term "Wayback Machine" originally referred to the Internet Archive’s browsing service for its web archives. Today, the term is largely synonymous with the Internet Archive's web archive service itself, which is also how we will use the term in this lesson. The Internet Archive is one of the many organizations archiving the web. For a history of web archiving, see Ian Milligan, Averting the Digital Dark Age: How Archivists, Librarians, and Technologists Built the Web a Memory, 1st ed. (Baltimore: Johns Hopkins University Press, 2024).
 
-[^4]: In this lesson, we follow the terminology on the Wayback Machine's interface to describe web archive concepts. The Wayback Machine sometimes uses the word "capture" as a noun, which is equivalent in meaning to "snapshot". For a more rigorous terminology of web archive concepts, see [RFC7089: HTTP Framework for Time-Based Access to Resource States -- Memento](https://www.rfc-editor.org/rfc/rfc7089.html).
+[^4]: In this lesson, we follow the terminology on the Wayback Machine's interface to describe web archive concepts. The Wayback Machine sometimes uses the word "capture" as a noun, which is equivalent in meaning to "snapshot". For a more rigorous vocabulary of web archive concepts, see [RFC7089: HTTP Framework for Time-Based Access to Resource States -- Memento](https://www.rfc-editor.org/rfc/rfc7089.html).
 
 [^5]: Sawood Alam and Mark Graham, “CDX Summary: Web Archival Collection Insights,” in Linking Theory and Practice of Digital Libraries: 26th International Conference on Theory and Practice of Digital Libraries (TPDL 2022), Padua, Italy, September 20–23, 2022, Proceedings (Cham: Springer-Verlag, 2022), 297–305, https://doi.org/10.1007/978-3-031-16802-4_25
 

@@ -236,7 +236,7 @@ La commande `PAGE` définit la taille et l'orientation du papier, ce qui s’av�
 2. PAGE=21,29.7,portrait,HV ;; ceci définit les dimensions de la page en centimètres
 ```
 
-La ligne ci-dessus définit la taille de la page dans l’équivalent métrique du format standard américain 8,5" x 11" (21 x 29,7 cm), en orientation portrait. nanDECK interprétera `HV` comme une instruction lui permettant d’effectuer les calculs nécessaires pour centrer les cartes à la fois horizontalement et verticalement.
+La ligne ci-dessus définit la taille de la page dans l’équivalent métrique du format standard américain 8,5" x 11" (21 x 29,7 cm), en orientation portrait. nanDECK interprète `HV` comme une instruction lui permettant d’effectuer les calculs nécessaires pour centrer les cartes à la fois horizontalement et verticalement.
 
 ### Ligne 3 : TAILLE DE LA CARTE
 L’instruction `CARDSIZE` permet de définir la largeur et la hauteur de chaque carte (en centimètres).
@@ -378,9 +378,9 @@ Dans cet exemple, la mise en forme du texte est restée simple, mais le placemen
 10. TEXT="1-{(EVENEMENT)}",\[EVENEMENT],4.5%,68.5%,91%,30%,CENTER,WORDWRAP
 ```
 
-La ligne 8 du script demande à nanDECK d'écrire l'année pour chaque carte à laquelle une année a été attribuée dans le champ "année" de la feuille de calcul. La ligne 10 demande à nanDECK d'écrire une description de l'événement pour chaque carte à laquelle un fait a été attribué dans le champ "évènement" de la feuille de calcul. Comment ce script produit-il les cartes dont nous avons besoin pour jouer à *Timeline* ?
+La ligne 8 du script demande à nanDECK d'écrire l'année pour chaque carte à laquelle une année a été attribuée dans le champ "année" de la feuille de calcul. La ligne 10 demande à nanDECK d'écrire une description de l'événement pour chaque carte à laquelle un fait a été attribué dans le champ "évènement" de la feuille de calcul. De quelle manière ce script produit-il les cartes dont nous avons besoin pour jouer à *Timeline* ?
 
-Plutôt que d'utiliser des scripts complexes pour s'assurer que l'année n'apparaisse que sur une seule face de chaque carte imprimée, nous donnons simplement des instructions pour imprimer tout ce qui a été explicitement indiqué dans la feuille de calcul Excel liée. Dans cette feuille de calcul (reproduite dans le tableau ci-dessous), les 59 premières lignes contiennent une image, une description et une année à imprimer sur la face de la carte. Les 59 lignes suivantes ne contiennent qu'une image et une description, le champ "année" ayant été laissé vide.
+Plutôt que d'utiliser des scripts complexes pour s'assurer que l'année n'apparaisse que sur une seule face de chaque carte imprimée, nous donnons simplement des instructions pour imprimer tout ce qui est explicitement indiqué dans la feuille de calcul Excel liée. Dans cette feuille de calcul (reproduite dans le tableau ci-dessous), les 59 premières lignes contiennent une image, une description et une année à imprimer sur la face de la carte. Les 59 lignes suivantes ne contiennent qu'une image et une description, le champ "année" ayant été laissé vide.
 
 
 |                    | A                   | B                   | C                   |
@@ -410,7 +410,7 @@ L'un des principaux atouts de nanDECK est sa capacité à générer des faces et
 DUPLEX = “plage de cartes face”, “plage de cartes dos”, numéro
 ```
 
-Afin d'aligner les faces et les dos des cartes, désignez la plage que vous souhaitez dupliquer. Dans le cas de mon jeu personnel, il y a 59 cartes uniques : les rectos seront générés à partir des cartes de la plage 1 à 59, et les versos à partir des cartes de la plage 60 à 118.
+Afin d'aligner les faces et les dos des cartes, désignez la plage que vous souhaitez dupliquer. Dans le cas de mon jeu personnel, il y a 59 cartes uniques : les rectos sont générés à partir des cartes de la plage 1 à 59, et les versos à partir des cartes de la plage 60 à 118.
 
 ```
 11. DUPLEX = 1-59,60-118

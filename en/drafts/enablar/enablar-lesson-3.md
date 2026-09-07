@@ -13,7 +13,7 @@ reviewers:
 editors:
 - Forename Surname
 review-ticket:
-difficulty:
+difficulty: 2
 activity: creating network visualisations using library metadata 
 topics: network analysis, library metadata, structured data, extraction, data visualisation 
 abstract: Library catalogues usually present records as lists, making it difficult to see broader patterns across a collection. This workshop introduces network visualisation as a way of exploring relationships between books, subjects, and other catalogue metadata, helping participants identify clusters, connections, and areas for further investigation. Using prepared examples, we'll discuss how this approach can support collection development, research, and discovery.
@@ -147,9 +147,6 @@ The datasets used in this lesson are publicly available and can be downloaded vi
 
 This lesson works well on both Windows and Mac OS machines.
 We will first walk you through the installation of [uv](https://docs.astral.sh/uv/), a Python package manager that creates a separate virtual environment for your project. This ensures that your project does not conflict with other packages that may already be installed on your computer. Next, we will guide you through installing all the required packages.
-
-### Difficulty
-* Medium
 
 ## Use Case
 

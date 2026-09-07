@@ -201,7 +201,7 @@ Pouvoir générer un jeu de cartes *Timeline* avec seulement douze lignes de scr
 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-02.png" alt="Capture d’écran de nanDECK montrant les douze lignes de script servant à créer un jeu de cartes Timeline."  caption="Figure 2. Capture d’écran de nanDECK montrant les douze lignes de script servant à créer un jeu de cartes Timeline." %}
 
-La partie suivante détaille, ligne par ligne, le script afin de montrer comment les différents éléments sont intégrés et assemblés pour former les cartes. Voici le script utilisé par la traductrice pour générer un jeu *Timeline* de 59 cartes représentant des événements historiques de l’île de La Réunion (France), où elle réside actuellement.
+La partie suivante détaille le script, ligne par ligne, afin de montrer comment les différents éléments sont intégrés et assemblés pour former les cartes. L'exemple utilisé est celui ayant servi à générer un jeu *Timeline* de 59 cartes représentant des événements historiques de l’île de La Réunion (France) :
 
 ### Ligne 1 : COMMENTAIRES
 Dans nanDECK, tout texte débutant par un point-virgule n’est pas pris en compte comme une commande, mais comme un « commentaire », c’est-à-dire une note explicative destinée à la personne qui utilise le programme.
@@ -247,13 +247,13 @@ L’instruction `CARDSIZE` permet de définir la largeur et la hauteur de chaque
 
 Si cette ligne est omise, nanDECK applique par défaut une taille de 6 cm x 9 cm. Toutefois, les cartes générées avec cette taille par défaut sont plus grandes que les cartes à jouer classiques, qui mesurent 2,5 x 3,5 pouces, soit environ 5,71 cm x 8,89 cm.
 
-Pour ce jeu, j’ai choisi de créer des cartes de plus petite taille, aux dimensions proches de celles des cartes *Timeline* publiées par Asmodee.
+Pour le jeu donné en exemple, les cartes sont conçues dans un format plus petit, aux dimensions proches de celles des cartes *Timeline* publiées par Asmodee.
 
 ### Ligne 4 : LIEN
-La commande `LINK` permet de connecter nanDECK à des données externes, soit sous forme de fichier texte avec des valeurs séparées par des virgules (format CSV), soit sous forme de tableur Excel (`.xls` ou `.xlsx`). Le tableur utilisé par la traductrice dans cet exemple s'intitule `Reunion-Timeline.xlsx`.
+La commande `LINK` permet de connecter nanDECK à des données externes, soit sous forme de fichier texte avec des valeurs séparées par des virgules (format CSV), soit sous forme de tableur Excel (`.xls` ou `.xlsx`). Le tableur utilisé dans cet exemple s'intitule `Reunion-Timeline.xlsx`.
 
 
-Vous pouvez également connecter nanDECK à un tableur Google Sheets en suivant les étapes supplémentaires décrites dans le manuel de nanDECK, dans la partie consacrée à la commande `LINK`.[^16] Elles sont reproduites ci-dessous :
+Il est également possible de connecter nanDECK à un tableur Google Sheets en suivant les étapes supplémentaires décrites dans le manuel de nanDECK, dans la partie consacrée à la commande `LINK`.[^16] Elles sont reproduites ci-dessous :
 
 
 >Vous pouvez également connecter un document Google Sheets en utilisant l'identifiant (ID) du fichier à la place du paramètre "filename” (nom de fichier), mais vous devez d’abord le partager en suivant ces étapes :
@@ -335,33 +335,33 @@ De nombreux paramètres et indicateurs sont associés à la directive `IMAGE`, c
 >IMAGE = plage, fichier image, position x, position y, largeur, hauteur, angle, option, alpha, largeur de texture, hauteur de texture, inclinaison x, inclinaison y, largeur de l’image, hauteur de l’image, position x, position y, copie x, copie y.
 
 
-Comprendre l’ordre des éléments dans la syntaxe peut aider à interpréter la directive IMAGE dans notre script :
+Comprendre l’ordre des éléments dans la syntaxe peut aider à interpréter la directive IMAGE du script :
 
 ```
 6. IMAGE="1-{(IMAGES)}",\[IMAGES],0%,0%,100%,60%,0,PTG
 ```
 
-nanDECK peut très utilement calculer le nombre d'éléments répertoriés dans un champ donné d'une feuille de calcul. Pour ce faire, il utilise une expression encadrée par des accolades. Dans ce cas, l'expression {(IMAGES)} indique à nanDECK de calculer le nombre d'éléments répertoriés dans le champ `IMAGE`. Ici, il y a 59 images, donc {(IMAGES)} renvoie `59`. Sachant cela, vous remarquerez qu'à la ligne 6 de la figure 4 ci-dessous, `IMAGE="1-{(IMAGES)}"` demande à nanDECK d'imprimer les images des lignes 1 à 59.
+nanDECK peut très utilement calculer le nombre d'éléments répertoriés dans un champ donné d'une feuille de calcul. Pour ce faire, il utilise une expression encadrée par des accolades. Dans ce cas, l'expression {(IMAGES)} indique à nanDECK de calculer le nombre d'éléments répertoriés dans le champ `IMAGE`. Ici, il y a 59 images, donc {(IMAGES)} renvoie `59`. Sachant cela, il apparaît qu'à la ligne 6 de la figure 4 ci-dessous, `IMAGE="1-{(IMAGES)}"` demande à nanDECK d'imprimer les images des lignes 1 à 59.
 
-Dans la fenêtre d'instruction, il peut parfois être difficile de déterminer précisément à quel paramètre correspondent les nombres ou les termes listés après chaque directive. Si vous souhaitez savoir quel paramètre représente une variable, vous pouvez passer la souris dessus et consulter le rappel de syntaxe ci-dessous : nanDECK affichera en surbrillance le nom du paramètre concerné.
+Dans la fenêtre d'instruction, il peut parfois être difficile de déterminer précisément à quel paramètre correspondent les nombres ou les termes listés après chaque directive. Pour identifier le paramètre représenté par une variable, il suffit de passer la souris dessus et de consulter le rappel de syntaxe ci-dessous : nanDECK affiche alors en surbrillance le nom du paramètre concerné.
 
 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-04.png" alt="Le texte en surbrillance correspond à la variable sur laquelle le curseur de la souris est actuellement positionné."  caption="Figure 4. Le texte en surbrillance correspond à la variable sur laquelle le curseur de la souris est actuellement positionné." %}
 
-Le script de la figure 4 demande à nanDECK d'insérer l'image indiquée dans le champ "Image" de la feuille de calcul, de la placer à la position 0,0, et de lui permettre de remplir 100 % de la largeur de la carte (si possible), mais seulement 60 % de la hauteur (si possible). La sélection de l’option {(P)} indique à nanDECK de conserver les proportions originales de l'image. J’ai également choisi de convertir toutes les images en niveaux de gris en utilisant l’option {(G)}, afin d’apporter une certaine uniformité aux cartes du jeu. Vous pouvez voir le résultat dans l'exemple ci-dessous, où nanDECK a inséré l'image située dans {(Images/revolte-des-esclaves.jpg)} :
+Le script de la figure 4 demande à nanDECK d'insérer l'image indiquée dans le champ "Image" de la feuille de calcul, de la placer à la position 0,0, et de lui permettre de remplir 100 % de la largeur de la carte (si possible), mais seulement 60 % de la hauteur (si possible). La sélection de l’option {(P)} indique à nanDECK de conserver les proportions originales de l'image. L’option {(G)} permet de convertir toutes les images en niveaux de gris, afin d’apporter une certaine uniformité aux cartes du jeu. Le résultat apparaît dans l'exemple ci-dessous, où nanDECK a inséré l'image située dans {(Images/revolte-des-esclaves.jpg)} :
 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-05.png" alt="Une carte générée avec nanDECK."  caption="Figure 5. Une carte générée avec nanDECK." %}
 
 ### Lignes 7 et 9 : POLICE
 
-nanDECK peut utiliser les polices de caractères que vous avez installées sur votre machine. Le code ci-dessous définit le formatage des polices :
+nanDECK peut utiliser les polices de caractères installées sur votre machine. Le code ci-dessous définit le formatage des polices :
 
 ```
 7. FONT=Arial,14,BT,#000000
 8. TEXT="1-{(ANNEE)}",\[ANNEE],25%,60%,52%,9%
 9. FONT=Arial,7.5,,#000000
 ```
-À la ligne 7, nanDECK est invité à définir la police à la taille 14, en gras, sur un fond transparent. La ligne 8 demande à nanDECK de générer le texte pour `ANNEE` avec cette police, et la ligne 9 réduit la taille de la police à 7,5 lorsqu'elle est appliquée au texte `EVENEMENT` (généré à la ligne 10). Notez les deux virgules consécutives à la ligne 9 : elles indiquent à nanDECK que le paramètre de `style` est vide, ce qui fait que la mise en forme du texte reste neutre.
+À la ligne 7, nanDECK est invité à définir la police à la taille 14, en gras, sur un fond transparent. La ligne 8 demande à nanDECK de générer le texte pour `ANNEE` avec cette police, et la ligne 9 réduit la taille de la police à 7,5 lorsqu'elle est appliquée au texte `EVENEMENT` (généré à la ligne 10). Les deux virgules consécutives à la ligne 9 indiquent à nanDECK que le paramètre de `style` est vide, ce qui fait que la mise en forme du texte reste neutre.
 
 ### Lignes 8 et 10 : TEXTE
 
@@ -371,16 +371,16 @@ nanDECK propose différentes options pour écrire du `TEXTE` sur les cartes :
 >TEXT = "plage", "texte", position x, position y, largeur, hauteur, alignement horizontal, alignement vertical, angle, alpha, épaisseur du contour, décalage circulaire, angle circulaire, facteur de largeur, facteur de hauteur.
 
 
-Dans cet exemple, la mise en forme du texte est restée simple, mais le placement du texte a posé quelques difficultés. La plupart des cartes à jouer ont deux faces : le recto et le verso. Dans de nombreux jeux, la majeure partie des informations pertinentes se trouve sur le recto de la carte, tandis que le verso est simplement décoratif ou indique le type de carte. Comme vous vous en souvenez peut-être, une carte d'un jeu de *Timeline* possède en réalité deux faces : l’une indiquant le nom ou la description d'un événement, et l’autre portant le nom et la date de l'événement.
+Dans cet exemple, la mise en forme du texte est restée simple, mais le placement du texte a posé quelques difficultés. La plupart des cartes à jouer ont deux faces : le recto et le verso. Dans de nombreux jeux, la majeure partie des informations pertinentes se trouve sur le recto de la carte, tandis que le verso est simplement décoratif ou indique le type de carte. Dans un jeu de *Timeline*, chaque carte possède ainsi deux faces : l’une indiquant le nom ou la description d'un événement, et l’autre portant le nom et la date de l'événement.
 
 ```
 8. TEXT="1-{(ANNEE)}",\[ANNEE],25%,60%,52%,9%
 10. TEXT="1-{(EVENEMENT)}",\[EVENEMENT],4.5%,68.5%,91%,30%,CENTER,WORDWRAP
 ```
 
-La ligne 8 du script demande à nanDECK d'écrire l'année pour chaque carte à laquelle une année a été attribuée dans le champ "année" de la feuille de calcul. La ligne 10 demande à nanDECK d'écrire une description de l'événement pour chaque carte à laquelle un fait a été attribué dans le champ "évènement" de la feuille de calcul. De quelle manière ce script produit-il les cartes dont nous avons besoin pour jouer à *Timeline* ?
+La ligne 8 du script demande à nanDECK d'écrire l'année pour chaque carte à laquelle une année a été attribuée dans le champ "année" de la feuille de calcul. La ligne 10 demande à nanDECK d'écrire une description de l'événement pour chaque carte à laquelle un fait a été attribué dans le champ "évènement" de la feuille de calcul. De quelle manière ce script produit-il les cartes nécessaires pour jouer à *Timeline* ?
 
-Plutôt que d'utiliser des scripts complexes pour s'assurer que l'année n'apparaisse que sur une seule face de chaque carte imprimée, nous donnons simplement des instructions pour imprimer tout ce qui est explicitement indiqué dans la feuille de calcul Excel liée. Dans cette feuille de calcul (reproduite dans le tableau ci-dessous), les 59 premières lignes contiennent une image, une description et une année à imprimer sur la face de la carte. Les 59 lignes suivantes ne contiennent qu'une image et une description, le champ "année" ayant été laissé vide.
+Plutôt que d'utiliser des scripts complexes pour s'assurer que l'année n'apparaisse que sur une seule face de chaque carte imprimée, il suffit de demander à nanDECK d'imprimer tout ce qui est explicitement indiqué dans la feuille de calcul Excel liée. Dans cette feuille de calcul (reproduite dans le tableau ci-dessous), les 59 premières lignes contiennent une image, une description et une année à imprimer sur la face de la carte. Les 59 lignes suivantes ne contiennent qu'une image et une description, le champ "année" ayant été laissé vide.
 
 
 |                    | A                   | B                   | C                   |
@@ -410,23 +410,22 @@ L'un des principaux atouts de nanDECK est sa capacité à générer des faces et
 DUPLEX = “plage de cartes face”, “plage de cartes dos”, numéro
 ```
 
-Afin d'aligner les faces et les dos des cartes, désignez la plage que vous souhaitez dupliquer. Dans le cas de mon jeu personnel, il y a 59 cartes uniques : les rectos sont générés à partir des cartes de la plage 1 à 59, et les versos à partir des cartes de la plage 60 à 118.
+Afin d'aligner les faces et les dos des cartes, désignez la plage que vous souhaitez dupliquer. Dans le cas présenté en exemple, il y a 59 cartes uniques : les rectos sont générés à partir des cartes de la plage 1 à 59, et les versos à partir des cartes de la plage 60 à 118.
 
 ```
 11. DUPLEX = 1-59,60-118
 12. PRINT = DUPLEX
 ```
 
-Avant de pouvoir imprimer votre jeu de cartes, vous devez d'abord sélectionner le bouton *Validate Deck* pour vérifier que la syntaxe de votre script est correcte. Vous pouvez ensuite cliquer sur le bouton *Build Deck* pour générer votre jeu de cartes : un aperçu des cartes générées s’affichera dans le panneau de droite. Dans cet aperçu, vous verrez peut-être un nombre surprenant de cartes vierges, mais ne vous inquiétez pas. Ces cartes vierges sont insérées dans votre jeu par nanDECK afin de produire un document PDF correctement aligné lors de l'impression.
+Avant de pouvoir imprimer le jeu de cartes, il faut d'abord sélectionner le bouton *Validate Deck* pour vérifier que la syntaxe de votre script est correcte. Il est ensuite possible de sélectionner le bouton *Build Deck* pour générer votre jeu de cartes : un aperçu des cartes générées s’affichera dans le panneau de droite. Dans cet aperçu, un nombre surprenant de cartes vierges peut apparaître, mais ces cartes ne doivent pas susciter d’inquiétude. Ces cartes vierges sont insérées dans votre jeu par nanDECK afin de produire un document PDF correctement aligné lors de l'impression.
 
-{% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-06.png" alt="Deux pages générées par nanDECK pour l'impression. Notez que les pages sont orientées de manière à pouvoir être pliées ensemble afin d’obtenir des cartes recto-verso parfaitement alignées."  caption="Figure 6 : Deux pages générées par nanDECK pour l'impression. Notez que les pages sont orientées de manière à pouvoir être pliées ensemble afin d’obtenir des cartes recto-verso parfaitement alignées." %}
+{% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-06.png" alt="Deux pages générées par nanDECK pour l'impression. Les pages sont orientées de manière à pouvoir être pliées ensemble afin d’obtenir des cartes recto-verso parfaitement alignées."  caption="Figure 6 : Deux pages générées par nanDECK pour l'impression. Les pages sont orientées de manière à pouvoir être pliées ensemble afin d’obtenir des cartes recto-verso parfaitement alignées." %}
 
-
-Enfin, utilisez le bouton *Print Deck* pour demander à nanDECK de générer votre jeu sous forme de fichier PDF, prêt à être imprimé. nanDECK peut imprimer votre jeu de multiples façons : chaque carte générée par le programme peut être enregistrée sous forme d’image séparée, ou bien toutes les cartes peuvent être regroupées dans un seul PDF, prêt à être imprimé, assemblé, découpé et collé. Étant donné que la conception de jeux passe généralement par plusieurs phases de test en situation réelle — chacune donnant lieu à des ajustements successifs —, la capacité de nanDECK à régénérer facilement différentes versions d'un jeu de cartes est extrêmement précieuse.[^15]
+Enfin, le bouton *Print Deck* permet de demander à nanDECK de générer le jeu sous forme de fichier PDF, prêt à être imprimé. nanDECK peut imprimer le jeu de multiples façons : chaque carte générée par le programme peut être enregistrée sous forme d’image séparée, ou bien toutes les cartes peuvent être regroupées dans un seul PDF, prêt à être imprimé, assemblé, découpé et collé. Étant donné que la conception de jeux passe généralement par plusieurs phases de test en situation réelle — chacune donnant lieu à des ajustements successifs —, la capacité de nanDECK à régénérer facilement différentes versions d'un jeu de cartes est extrêmement précieuse.[^15]
 
 ## Créer votre propre *Timeline*
 
-Afin de vous aider à démarrer avec nanDECK et Tabletop Simulator, un kit (en anglais) de fichiers de démarrage [à télécharger sur GitHub](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/designing-a-timeline-tabletop-simulator.zip) est à votre disposition. Il contient deux sous-dossiers : l'un nommé `nanDECK` et l'autre `Tabletop-Simulator`.
+Afin de faciliter la prise en main de nanDECK et de Tabletop Simulator, un kit (en anglais) de fichiers de démarrage [à télécharger sur GitHub](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/designing-a-timeline-tabletop-simulator.zip) est mis à disposition. Il contient deux sous-dossiers : l'un nommé `nanDECK` et l'autre `Tabletop-Simulator`.
 
 Le sous-dossier `nanDECK` contient :
 
@@ -471,43 +470,43 @@ La ligne 11 modifie la police, passant de 14 points à 7,5 points (Arial), en no
 
 Les lignes 13 et 14 indiquent que la page imprimée comportera les six premières faces des cartes d'un côté et leurs six dos de l'autre, de manière à ce qu'ils soient correctement alignés en cas d'impression recto-verso.
 
-Une fois que vous avez saisi le script dans la fenêtre d'édition, validé le script et utilisé le bouton *Build* pour créer le jeu de cartes, vos résultats doivent ressembler à cette [image **.pdf**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/Your-Timeline-Duplex-Printing-Result.pdf).
+Une fois le script saisi dans la fenêtre d'édition, validé et exécuté à l’aide du bouton *Build* pour créer le jeu de cartes, le résultat doit ressembler à celui présenté dans cette [image **.pdf**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/Your-Timeline-Duplex-Printing-Result.pdf).
 
 ## Impression professionnelle de cartes avec nanDECK  
 
-Vous avez également la possibilité de faire imprimer vos cartes par des professionnels : le créateur de nanDECK a établi un partenariat avec Game Crafter, une société américaine d'impression à la demande, spécialisée dans la production de cartes et d’autres composants pour jeux de société. Dans le panneau d'interface de nanDECK, vous trouverez un bouton permettant de téléverser vos fichiers directement sur le site de Game Crafter, en vue d’une impression à l’unité et en petite série.
+Il est également possible de faire imprimer les cartes par des professionnels : le créateur de nanDECK a établi un partenariat avec Game Crafter, une société américaine d'impression à la demande, spécialisée dans la production de cartes et d’autres composants pour jeux de société. Dans le panneau d'interface de nanDECK se trouve un bouton permettant de téléverser les fichiers directement sur le site de Game Crafter, en vue d’une impression à l’unité et en petite série.
 
-Les éditeurs commerciaux refusent généralement d’imprimer des images qu’ils estiment protégées par le droit d'auteur, même si le jeu est destiné à un usage personnel ou éducatif, et non commercial. Bien que ma version de *Timeline* s’appuie principalement sur des sources du domaine public ou sur des collections dont les licences autorisent explicitement la réutilisation, de nombreuses images que je souhaitais utiliser restaient soumises au droit d'auteur. Par conséquent, il y a de fortes chances qu'un éditeur commercial refuse d’imprimer ne serait-ce qu'un seul exemplaire de mon jeu.
+Les éditeurs commerciaux refusent généralement d’imprimer des images qu’ils estiment protégées par le droit d'auteur, même si le jeu est destiné à un usage personnel ou éducatif, et non commercial. Bien que la version de *Timeline* proposée en exemple s’appuie principalement sur des sources du domaine public ou sur des collections dont les licences autorisent explicitement la réutilisation, de nombreuses images restent soumises au droit d'auteur. Par conséquent, il y a de fortes chances qu'un éditeur commercial refuse d’imprimer ne serait-ce qu'un seul exemplaire de ce jeu.
 
-Cependant, il existe d'autres moyens de faire découvrir notre nouveau jeu au public !
+Cependant, il existe d'autres moyens de faire découvrir ce nouveau jeu au public !
 
-## Pourquoi importer votre jeu dans Tabletop Simulator ?
+## Pourquoi importer son jeu dans Tabletop Simulator ?
 
-nanDECK s’intègre parfaitement à une autre plateforme appelée Tabletop Simulator. [Tabletop Simulator](https://perma.cc/BKE8-DRRN) est un "bac à sable" physique, dans lequel jusqu'à dix joueurs peuvent manipuler et jouer avec des pièces de jeu numériques. Il est actuellement disponible sur [Steam](https://store.steampowered.com/app/286160/Tabletop_Simulator/) au prix de 19,50€.
+nanDECK s’intègre parfaitement à une autre plateforme appelée Tabletop Simulator. [Tabletop Simulator](https://perma.cc/BKE8-DRRN) est un "bac à sable" physique, dans lequel jusqu'à dix personnes peuvent manipuler et jouer avec des pièces de jeu numériques. Il est actuellement disponible sur [Steam](https://store.steampowered.com/app/286160/Tabletop_Simulator/) au prix de 19,50€.
 
 Bien que Tabletop Simulator (TTS) ne soit pas la seule plateforme numérique permettant à des personnes de jouer ensemble à des jeux de cartes ou de société, son nom est bien connu, et elle est utilisée par les personnes qui créent des jeux pour observer des personnes tester les premiers prototypes de leurs jeux. Il peut être difficile de réunir, dans son entourage immédiat, suffisamment de volontaires prêts à tester un jeu en cours de développement. TTS permet aux personnes qui conçoivent des jeux de faire tester leurs nouvelles créations à des joueurs et joueuses répartis dans le monde entier.[^17] TTS n'est pas seulement un espace de rencontre pour les personnes passionnées et partageant des centres d’intérêt de niche, c'est aussi une excellente solution pour celles et ceux qui ne peuvent pas jouer en personne, en raison de problèmes de santé, de contraintes de temps, de budget, ou lors de pandémies mondiales.[^18]
 
 ## Créer des cartes virtuelles pour Tabletop Simulator
 
-Il est également possible d’importer vos cartes dans TTS afin de transformer votre jeu en une sorte de jeu vidéo, sans avoir besoin de coder les règles. Bien que TTS ne requiert pas de connaissances en programmation pour utiliser sa boîte à outils, il ne s'agit pas pour autant d'un environnement simple ni intuitif. Berserk Games, la société qui développe TTS, propose une série de sept [tutoriels vidéo sur YouTube](https://www.youtube.com/watch?v=6e8RFMtAVac&list=PLA16SF2eexlUtH2AM4V8VF9rDpekW2uYA)  pour apprendre aux personnes qui débutent à créer des jeux et à y jouer dans cet environnement.
+Il est également possible d’importer les cartes dans TTS afin de transformer le jeu en une sorte de jeu vidéo, sans avoir besoin de coder les règles. Bien que TTS ne requiert pas de connaissances en programmation pour utiliser sa boîte à outils, il ne s'agit pas pour autant d'un environnement simple ni intuitif. Berserk Games, la société qui développe TTS, propose une série de sept [tutoriels vidéo sur YouTube](https://www.youtube.com/watch?v=6e8RFMtAVac&list=PLA16SF2eexlUtH2AM4V8VF9rDpekW2uYA)  pour apprendre aux personnes qui débutent à créer des jeux et à y jouer dans cet environnement.
 
-La partie suivante explique comment la traductrice de l’article a converti son jeu  "Timeline Réunion" en format numérique pour TTS. Ensuite, des instructions générales vous montreront comment appliquer le même procédé avec les éléments du jeu que nous venons d'utiliser pour créer notre jeu de démarrage de six cartes.
+La partie suivante explique comment convertir le jeu  "Timeline Réunion" en format numérique pour TTS. Des instructions générales expliquent comment appliquer le même procédé aux éléments utilisés précédemment pour créer le jeu de démarrage de six cartes.
 
 ### Créer séparément les faces et les dos des cartes pour “Timeline Réunion”
 
 Contrairement à nanDECK, qui génère chaque carte séparément, Tabletop Simulator exige le téléversement de deux fichiers image (un pour chaque côté du jeu de cartes) dans un format standardisé, afin de pouvoir les découper en plusieurs cartes. Un jeu de cartes classique comporte généralement une illustration au dos de la carte (par exemple un motif en mosaïque), tandis que les informations et les symboles apparaissent sur la face  (par exemple le 4 de Trèfle). En d'autres termes, TTS a besoin d'un fichier image représentant toutes les faces des cartes et d'un autre fichier représentant tous les dos.
 
-Avant de pouvoir importer notre jeu *Timeline* dans TTS, nous devons générer nos cartes au format requis. Pour cela, nous devons diviser notre feuille de calcul initiale en deux. La première feuille de calcul servira à générer les faces des cartes ; elle contiendra donc les informations nécessaires pour afficher les événements, les illustrations et les années. Cette feuille ne comportera plus les lignes sans données dans la colonne « année ». La deuxième feuille de calcul sera identique à la première, mais sans la colonne « année ».
+Avant de pouvoir importer le jeu *Timeline* dans TTS, il est nécessaire de générer les cartes au format requis. Pour cela, la feuille de calcul initiale doit être divisée en deux. La première feuille de calcul servira à générer les faces des cartes ; elle contiendra donc les informations nécessaires pour afficher les événements, les illustrations et les années. Cette feuille ne comportera plus les lignes sans données dans la colonne « année ». La deuxième feuille de calcul sera identique à la première, mais sans la colonne « année ».
 
-Maintenant que nous avons deux feuilles de calcul, nous devons apporter quelques modifications à notre précédent jeu d'instructions dans l'interface nanDECK avant d’exécuter le script.
+Une fois les deux feuilles de calcul créée, il est nécessaire d'apporter quelques modifications au jeu d'instructions dans l'interface nanDECK avant d’exécuter le script.
 
-Tout d'abord, modifions la commande `LINK` pour qu'elle pointe vers la feuille de calcul qui générera les faces des cartes, que la traductrice a appelée, dans cet exemple, `Reunion-Timeline_pour_Tabletop_Face.xlsx`.
+Tout d'abord, il faut modifier la commande `LINK` afin qu'elle pointe vers la feuille de calcul qui générera les faces des cartes appelée, dans cet exemple, `Reunion-Timeline_pour_Tabletop_Face.xlsx`.
 
 ```
 LINK = "Reunion-Timeline_pour_Tabletop_Face.xlsx"
 ```
 
-Comme nous ne générons plus aucun document à imprimer et à plier, nous pouvons supprimer les lignes suivantes de notre code :
+Puisqu’aucun document n’est désormais généré pour être imprimé et plié, il est possible de supprimer les lignes suivantes du code :
 
 ```
 DUPLEX = 1-59,60-118

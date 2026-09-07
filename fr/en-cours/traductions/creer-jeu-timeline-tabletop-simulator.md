@@ -587,7 +587,7 @@ Vous pouvez désormais jouer à votre version de Timeline en ligne avec jusqu'à
 
 ## Conclusion
 
-Je conclurai cette leçon par un autre principe tiré du "Manifesto for a Ludic Century” d'Eric Zimmerman :
+Pour conclure cette leçon, je m’appuierai sur un autre principe tiré du "Manifesto for a Ludic Century” d'Eric Zimmerman :
 
 
 >**La technologie numérique a donné une nouvelle pertinence aux jeux.**
@@ -597,7 +597,7 @@ Je conclurai cette leçon par un autre principe tiré du "Manifesto for a Ludic 
 
 Zimmerman n'est pas le seul à le penser. Les jeux de société ont déjà été décrits comme des "ordinateurs en papier", car ils sont conçus par des humains et " mettent en œuvre des systèmes de règles et de procédures".[^20]
 
-Cette leçon a pour but d’aider les étudiants en histoire et/ou les concepteurs de jeux débutants à créer et générer leurs propres variantes du jeu *Timeline*, en choisissant peut-être un thème ou un aspect spécifique de l'histoire, puis à partager leur travail avec d'autres. Ces jeux de cartes peuvent être combinés pour mêler, par exemple, l'histoire locale et l'histoire internationale. Grâce à ce processus, les joueurs découvriront des moments de simultanéité et de chevauchements historiques à la fois surprenants et fascinants (saviez-vous que l'université d'Oxford est plus ancienne que l'empire aztèque ?)
+Cette leçon a pour but d’aider les étudiants et étudiantes en histoire et/ou les personnes qui débutent dans la conception de jeux à créer et générer leurs propres variantes du jeu *Timeline*, en choisissant peut-être un thème ou un aspect spécifique de l'histoire, puis à partager leur travail avec d'autres. Ces jeux de cartes peuvent être combinés pour mêler, par exemple, l'histoire locale et l'histoire internationale. Grâce à ce processus, les joueurs et joueuses découvriront des moments de simultanéité et de chevauchements historiques à la fois surprenants et fascinants (saviez-vous que l'université d'Oxford est plus ancienne que l'empire aztèque ?)
 
 Espérons que cette expérience incitera d'autres personnes à créer des variantes de jeux existants. On pourrait imaginer créer et ajouter ses propres cartes à des jeux comme "Trivial Pursuit", "Magic : The Gathering" ou même "Uno". Peut-être cela conduira même à la création d’un tout nouveau jeu.
 

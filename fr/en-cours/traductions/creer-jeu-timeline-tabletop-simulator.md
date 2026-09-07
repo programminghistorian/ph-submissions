@@ -463,15 +463,15 @@ La ligne 7 décrit la bordure : rectangulaire, noire, d'une épaisseur de 0,25 c
 
 La ligne 8 indique que, dans la mesure du possible, les images doivent être placées sur les cartes à la position 0,0, occuper 100 % de la largeur et 60 % de la hauteur de la carte, tout en conservant les proportions de l'image, et être imprimées en niveaux de gris.
 
-La ligne 9 indique à nanDECK la police dans laquelle le texte suivant doit être imprimé : ici, Arial 14 point en gras et noir, sur un fond transparent.
+La ligne 9 indique à nanDECK la police dans laquelle le texte suivant doit être imprimé : ici, Arial 14 points en gras et noir, sur un fond transparent.
 
 La ligne 10 indique à nanDECK d'imprimer l'année (`YEAR`) pour chaque ligne de la feuille Google Sheets dont le champ "année" est renseigné, en la positionnant horizontalement au centre, mais un peu en dessous de la moitié de la hauteur de la carte.
 
 La ligne 11 modifie la police, passant de 14 points à 7,5 points (Arial), en noir mais sans gras. Elle définit ainsi le style utilisé à la ligne 12, qui imprime, pour les cartes concernées, l’évènement (`FACT`), centré, sous l’année (`YEAR`). La ligne 12 indique également à nanDECK d'ajuster le texte s'il dépasse les dimensions de la carte.
 
-Les lignes 13 et 14 indiquent que la page imprimée comportera les six premières faces des cartes d'un côté et leurs six dos de l'autre, de manière à ce qu'ils soient correctement alignées en cas d'impression recto-verso.
+Les lignes 13 et 14 indiquent que la page imprimée comportera les six premières faces des cartes d'un côté et leurs six dos de l'autre, de manière à ce qu'ils soient correctement alignés en cas d'impression recto-verso.
 
-Une fois que vous avez saisi le script dans la fenêtre d'édition, validé le script et utilisé le bouton *Build* pour créer le jeu de cartes, vos résultats devraient ressembler à cette [image **.pdf**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/Your-Timeline-Duplex-Printing-Result.pdf).
+Une fois que vous avez saisi le script dans la fenêtre d'édition, validé le script et utilisé le bouton *Build* pour créer le jeu de cartes, vos résultats doivent ressembler à cette [image **.pdf**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/Your-Timeline-Duplex-Printing-Result.pdf).
 
 ## Impression professionnelle de cartes avec nanDECK  
 
@@ -485,7 +485,7 @@ Cependant, il existe d'autres moyens de faire découvrir notre nouveau jeu au pu
 
 nanDECK s’intègre parfaitement à une autre plateforme appelée Tabletop Simulator. [Tabletop Simulator](https://perma.cc/BKE8-DRRN) est un "bac à sable" physique, dans lequel jusqu'à dix joueurs peuvent manipuler et jouer avec des pièces de jeu numériques. Il est actuellement disponible sur [Steam](https://store.steampowered.com/app/286160/Tabletop_Simulator/) au prix de 19,50€.
 
-Bien que Tabletop Simulator (TTS) ne soit pas la seule plateforme numérique permettant à des personnes de jouer ensemble à des jeux de cartes ou de société, son nom est bien connu, et elle est utilisée par les personnes qui créent des jeux pour observer des personnes tester les premiers prototypes d’un jeu. Il peut être difficile de réunir, dans son entourage immédiat, suffisamment de volontaires prêts à tester un jeu en cours de développement. TTS permet aux personnes qui conçoivent des jeux de faire tester leurs nouvelles créations à des joueurs et joueuses répartis dans le monde entier.[^17] TTS n'est pas seulement un espace de rencontre pour les personnes passionnées et partageant des centres d’intérêt de niche, c'est aussi une excellente solution pour celles et ceux qui ne peuvent pas jouer en personne, en raison de problèmes de santé, de contraintes de temps, de budget, ou lors de pandémies mondiales.[^18]
+Bien que Tabletop Simulator (TTS) ne soit pas la seule plateforme numérique permettant à des personnes de jouer ensemble à des jeux de cartes ou de société, son nom est bien connu, et elle est utilisée par les personnes qui créent des jeux pour observer des personnes tester les premiers prototypes de leurs jeux. Il peut être difficile de réunir, dans son entourage immédiat, suffisamment de volontaires prêts à tester un jeu en cours de développement. TTS permet aux personnes qui conçoivent des jeux de faire tester leurs nouvelles créations à des joueurs et joueuses répartis dans le monde entier.[^17] TTS n'est pas seulement un espace de rencontre pour les personnes passionnées et partageant des centres d’intérêt de niche, c'est aussi une excellente solution pour celles et ceux qui ne peuvent pas jouer en personne, en raison de problèmes de santé, de contraintes de temps, de budget, ou lors de pandémies mondiales.[^18]
 
 ## Créer des cartes virtuelles pour Tabletop Simulator
 
@@ -568,11 +568,11 @@ Vous êtes désormais prêt à utiliser Tabletop Simulator !
 
 ## Créez votre propre *Timeline* dans Tabletop Simulator
 
-Lorsque vous ouvrez Tabletop Simulator pour la première fois, il vous demande si vous souhaitez rejoindre une partie existante ou en créer une nouvelle : choisissez `Create` (créer). Vous serez ensuite invité à charger un jeu classique, un jeu sous licence numérique, un jeu du workshop Steam, ou à `Save and Load` (sauvegarder et charger) votre propre contenu local. Choisissez `Save and Load`, puis quittez cet écran.
+Lorsque vous ouvrez Tabletop Simulator pour la première fois, il vous demande si vous souhaitez rejoindre une partie existante ou en créer une nouvelle : choisissez `Create` (créer). Vous êtes ensuite invité à charger un jeu classique, un jeu sous licence numérique, un jeu du workshop Steam, ou à `Save and Load` (sauvegarder et charger) votre propre contenu local. Choisissez `Save and Load`, puis quittez cet écran.
 
-Vous devriez maintenant vous retrouver face à une table vide. Dans le menu supérieur, sélectionnez **Objects** (objets), puis **Components** (éléments), puis **Cards** (cartes). Parmi les options proposées, choisissez **Custom Deck** (jeu de cartes personnalisé). Cela ajoutera un jeu de cartes vierge à votre table virtuelle, et vous aurez alors la possibilité d'importer vos fichiers à partir de nanDECK pour créer votre propre jeu de cartes personnalisé (si cette option n’apparaît pas, faites un clic droit sur le jeu de cartes vierge).
+Vous vous retrouvez maintenant face à une table vide. Dans le menu supérieur, sélectionnez **Objects** (objets), puis **Components** (éléments), puis **Cards** (cartes). Parmi les options proposées, choisissez **Custom Deck** (jeu de cartes personnalisé). Cela ajoutera un jeu de cartes vierge à votre table virtuelle, et vous aurez alors la possibilité d'importer vos fichiers à partir de nanDECK pour créer votre propre jeu de cartes personnalisé (si cette option n’apparaît pas, faites un clic droit sur le jeu de cartes vierge).
 
-Dans ce menu, vous pourrez sélectionner la face du jeu depuis votre disque local. Veillez à cocher la case située à côté de l'option **Unique backs** (dos uniques). Laissez la largeur sur 10 et la hauteur sur 7, mais ajustez le curseur pour qu’il reflète le nombre exact de cartes dans votre jeu. Une fois ces étapes terminées, cliquez sur le bouton *Import* et votre jeu sera prêt pour une partie virtuelle.
+Dans ce menu, vous pouvez sélectionner la face du jeu depuis votre disque local. Veillez à cocher la case située à côté de l'option **Unique backs** (dos uniques). Laissez la largeur sur 10 et la hauteur sur 7, mais ajustez le curseur pour qu’il reflète le nombre exact de cartes dans votre jeu. Une fois ces étapes terminées, cliquez sur le bouton *Import* et votre jeu sera prêt pour une partie virtuelle.
 
 Vous pouvez désormais jouer à votre version de Timeline en ligne avec jusqu'à neuf autres personnes. De plus, si vous décidez de téléverser et de partager vos éléments de jeu via le [workshop de Tabletop Simulator sur Steam](https://perma.cc/X5SQ-C87S), vous pourrez ajouter votre jeu à une collection de plus de 25 000 jeux de cartes accessibles à une communauté de plus de 2 millions de personnes utilisant TTS.[^19]
 
@@ -581,7 +581,7 @@ Vous pouvez désormais jouer à votre version de Timeline en ligne avec jusqu'à
 
 ## Conclusion
 
-Pour conclure cette leçon, je m’appuierai sur un autre principe tiré du "Manifesto for a Ludic Century” d'Eric Zimmerman :
+Nous pouvons conclure cette leçon avec un autre principe tiré du "Manifesto for a Ludic Century” d'Eric Zimmerman :
 
 
 >**La technologie numérique a donné une nouvelle pertinence aux jeux.**
@@ -593,7 +593,7 @@ Zimmerman n'est pas le seul à le penser. Les jeux de société ont déjà été
 
 Cette leçon a pour but d’aider les étudiants et étudiantes en histoire et/ou les personnes qui débutent dans la conception de jeux à créer et générer leurs propres variantes du jeu *Timeline*, en choisissant peut-être un thème ou un aspect spécifique de l'histoire, puis à partager leur travail avec d'autres. Ces jeux de cartes peuvent être combinés pour mêler, par exemple, l'histoire locale et l'histoire internationale. Grâce à ce processus, les joueurs et joueuses découvriront des moments de simultanéité et de chevauchements historiques à la fois surprenants et fascinants (saviez-vous que l'université d'Oxford est plus ancienne que l'empire aztèque ?)
 
-Espérons que cette expérience incitera d'autres personnes à créer des variantes de jeux existants. On pourrait imaginer créer et ajouter ses propres cartes à des jeux comme "Trivial Pursuit", "Magic : The Gathering" ou même "Uno". Peut-être cela conduira même à la création d’un tout nouveau jeu.
+Nous espérons que cette expérience incitera d'autres personnes à créer des variantes de jeux existants. On pourrait imaginer créer et ajouter ses propres cartes à des jeux comme "Trivial Pursuit", "Magic : The Gathering" ou même "Uno". Peut-être cela conduira même à la création d’un tout nouveau jeu.
 
 ## Notes de fin
 

@@ -109,7 +109,7 @@ Un modèle numérique (template) peut également être partagé au sein d’un g
 >Pouvait-on boire du champagne lorsque Darwin posa les bases de la théorie de l'évolution ? Le fer à repasser a-t-il été inventé avant ou après le premier voyage de l'homme dans l'espace ? Combinez votre intuition et vos connaissances historiques avec le jeu *Timeline*.[^12]
 
 
-S'il est utilisé en classe, ce tutoriel pourrait être complété par les conseils (ou des recommandations générales) d’un bibliothécaire pour trouver des images historiques pertinentes sur Internet.[^13] Nous pourrions également profiter de cette occasion pour apprendre aux élèves à reconnaître et comprendre les mentions de droits d’auteur liées aux licences Creative Commons, afin de déterminer si les images trouvées peuvent être utilisées en dehors des « dispositions relatives à l'utilisation raisonnable dans un cadre éducatif » aux États-Unis, ou de « l’usage raisonnable dans le cadre de l'exception éducative » prévue par la loi canadienne sur le droit d’auteur.[^14]
+S'il est utilisé en classe, ce tutoriel pourrait être complété par les conseils (ou des recommandations générales) d’un bibliothécaire pour trouver des images historiques pertinentes sur Internet.[^13] Nous pourrions également profiter de cette occasion pour apprendre aux élèves à reconnaître et comprendre les mentions de droits d’auteur liées aux licences Creative Commons, afin de déterminer si les images trouvées peuvent être utilisées en dehors des « exceptions pédagogiques » prévue par le droit français.[^14]
 
 ## Comment créer votre propre version de *Timeline* à l'aide d'outils numériques ?
 A l’heure où nous publions cet article, Microsoft met gratuitement à disposition les versions web de Word et d'Excel pour toute personne disposant d’une adresse e-mail et s’inscrivant sur sa plateforme. Il est possible de générer et d'imprimer des cartes à jouer en utilisant la fonctionnalité de publipostage de Word, qui permet d'importer du texte et des images hébergées localement à partir d'un fichier Excel dans des "étiquettes" (cartes) personnalisées dans Word. Pour la conception de cartes basiques, cette solution, à la fois largement accessible et fonctionnelle, peut pleinement répondre aux besoins.
@@ -610,7 +610,7 @@ Espérons que cette expérience incitera d'autres personnes à créer des varian
 [^11]: Timeline & Stag Hunt. Directed by Richard Malena-Webber, vol. 8, 2017. YouTube, https://www.youtube.com/watch?v=dZbkxMuBR_I.
 [^12]: Zygomatic, (n.d.), “Games—Dobble”, Retrieved January 26, 2024, from https://www.dobblegame.com/en/games/.
 [^13]: Jones, R. A. (n.d.). “LibGuides: Free Images from Libraries, Museums, and Archives”. Retrieved January 26, 2024, from https://libguides.lib.msu.edu/c.php?g=138076&p=7641602.
-[^14]: Canada Copyright Act, RSC 1985, c C-42, s 29.
+[^14]: C. propr. intell., art. L. 122-5.
 [^15]: Ludology. Ludology: Ludology Episode 203 - Winging It. 203, https://ludology.libsyn.com/ludology-episode-203-winging-it. Accessed 8 Oct. 2022.
 [^16]: Nini, Andrea “Nand.” NanDECK Manual Program Version 1.27 – 2022-07-27. Andrea “Nand” Nini, 2022, https://www.nandeck.com/download/204/.
 [^17]: Hall, C. “Tabletop gaming in 2021 will be defined by these last 12 months of chaos”, 8 Jan. 2021, Polygon. https://www.polygon.com/2021/1/8/22178462/board-games-rpgs-2021-magic-dungeons-dragons-pandemic-black-lives-matter. Accessed 25 Jan. 2024.

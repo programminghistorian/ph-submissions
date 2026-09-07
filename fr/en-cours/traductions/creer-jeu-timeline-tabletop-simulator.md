@@ -56,24 +56,24 @@ En 2013, le concepteur de jeux Eric Zimmerman a publié un « Manifesto for a Lu
 >
 >Quand l’information devient ludique, les expériences qui s’inspirent du jeu remplacent les média linéaires. L’expression médiatique et la culture, dans le Siècle ludique, sont de plus en plus systémiques, modulaires, modifiables et participatives. Les jeux sont une incarnation très directe de toutes ces caractéristiques.
 >
->De plus en plus, les gens vont consacrer leur temps de loisir, consommer de l’art, du design, du divertissement sous forme de jeux – ou au moins sous forme d’expériences qui ressembleront beaucoup à des jeux.
+>De plus en plus, la population va consacrer temps de loisir, consommer de l’art, du design, du divertissement sous forme de jeux – ou au moins sous forme d’expériences qui ressembleront beaucoup à des jeux.
 >
 >**Les jeux sont comme un langage à acquérir.**
 >
->Les systèmes, le jeu, le design : ce ne sont pas seulement des aspects du Siècle ludique, ce sont aussi des éléments de l’alphabétisation ludique. Être alphabétisé, c’est être capable de créer et de comprendre du sens, c’est ce qui permet aux gens d’écrire (créer) et de lire (comprendre).
+>Les systèmes, le jeu, le design : ce ne sont pas seulement des aspects du Siècle ludique, ce sont aussi des éléments de l’alphabétisation ludique. Être alphabétisé, c’est être capable de créer et de comprendre du sens, c’est ce qui permet aux personnes d’écrire (créer) et de lire (comprendre).
 >
 >Dans les dernières décennies, nous avons identifié de nouveaux types d’alphabétisation : visuelle, technologique… Mais dans le Siècle ludique, être vraiment alphabétisé, c’est aussi maîtriser le langage des jeux. La place prise par les jeux dans notre culture est à la fois la cause et la conséquence de l’alphabétisation aux jeux dans le Siècle ludique.
 >
 >**Dans le Siècle ludique, tout le monde sera concepteur de jeu.**
 >
->Les jeux modifient la nature de la consommation culturelle. La musique est jouée par les musiciens, mais la plupart des gens ne sont pas des musiciens – ils écoutent la musique que quelqu’un d’autre a faite. A l’opposé, les jeux requièrent une participation active.
+>Les jeux modifient la nature de la consommation culturelle. La musique est jouée par des artistes, mais la plupart des gens ne sont pas des artistes musicaux – ils écoutent la musique que d'autres personnes ont faite. A l’opposé, les jeux requièrent une participation active.
 >
->Le game design implique de maîtriser la logique des systèmes, la psychologie sociale, et d’être un bidouilleur de culture. Quand on joue a un jeu en profondeur, on est naturellement amené à penser comme un game designer – à le remanier, à tenter de comprendre comment il a été conçu, à le modifier pour trouver de nouvelles façons d’y jouer. Dans le Siècle ludique, au fur et à mesure que de plus en plus de personnes joueront en profondeur, la ligne de séparation entre joueurs et game designers sera de plus en plus ténue.
+>Le game design implique de maîtriser la logique des systèmes, la psychologie sociale, et d’être une personne qui bidouille. Quand on joue a un jeu en profondeur, on est naturellement amené à penser comme une personne qui conçoit des jeux – à le remanier, à tenter de comprendre comment il a été conçu, à le modifier pour trouver de nouvelles façons d’y jouer. Dans le Siècle ludique, au fur et à mesure que de plus en plus de personnes joueront en profondeur, la ligne de séparation entre les personnes qui jouent et celles qui conçoivent des jeux sera de plus en plus ténue.
 
 
 Ces principes clés renforcent l'idée que les jeux devraient être utilisés en classe afin de faciliter l'apprentissage, et que les élèves tireraient profit d'une introduction à la conception de jeux, leur fournissant les moyens de les modifier et d’en créer de nouveaux.
 
-En ce qui concerne cet article, le lecteur n’a pas à être nécessairement convaincu que les jeux doivent continuer à jouer un rôle important dans l’enseignement et l’apprentissage de l’histoire[^6]. Néanmoins, les lecteurs hésitants quant à la place des jeux dans l'éducation sont invités à lire la partie « Why Games » de l'article « Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine »[^7].
+En ce qui concerne cet article, il n'est pas à être nécessaire d'être convaincu que les jeux doivent continuer à jouer un rôle important dans l’enseignement et l’apprentissage de l’histoire[^6]. Néanmoins, les personnes qui s'interrogent sur la place des jeux dans l'éducation sont invités à lire la partie « Why Games » de l'article « Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine »[^7].
 
 ## Qu'est-ce qu'un jeu de table ?
 

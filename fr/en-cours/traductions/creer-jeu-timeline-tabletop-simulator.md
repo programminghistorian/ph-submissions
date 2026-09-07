@@ -119,7 +119,7 @@ Cela étant, il se peut que vous soyez intéressé, pour la création de prototy
 ## Présentation de nanDECK et mode d’emploi
 Un aspect fondamental de la conception d’un jeu réside dans l’ajustement progressif des cartes du jeu, à travers un processus itératif de tests et d’observation des effets des modifications apportées au design. nanDECK est un logiciel développé pour Windows et conçu pour aider les personnes qui créent des jeux dans le processus de conception et d'impression de jeux de cartes destinés au prototypage et aux phases de test.
 
-L'outil a été créé et mis à disposition gratuitement par Andrea 'Nand' Nini. Le logiciel est en cours de développement depuis sa version 1.0 sortie en avril 2006. La version la plus récente (au moment de la rédaction de cet article) est NanDECK 1.28.3, publiée en août 2025.
+L'outil a été créé et mis à disposition gratuitement par Andrea 'Nand' Nini. Le logiciel est en cours de développement depuis sa version 1.0 sortie en avril 2006. La version la plus récente (au moment de la rédaction de cet article) est NanDECK 1.28.2 ou ultérieure, publiée en avril 2025.
 
 Bien qu’initialement conçu pour créer des cartes à jouer, nanDECK peut également être utilisé pour générer des graphismes destinés à d’autres éléments de jeu, tels que les jetons ou les tuiles.
 

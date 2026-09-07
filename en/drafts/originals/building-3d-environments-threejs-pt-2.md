@@ -386,7 +386,7 @@ Model loading will be written in three different ways. All three approaches are 
 
 To begin, one model will be added, aibomM, in a similar way to how you added the composite model in Part 1. A function is defined ```onLoadAibom``` that runs after the `.glb` file is loaded by the loader's load method. As mentioned in Part 1, you need to put the positioning and scaling of the model in this function so that they only occur after the model has finished loading. 
 
-The load method has four arguments: the model filename, a function run after the model is loaded, a function run while the model is loading, and a function run if there is an error. As in Part 1, the function that runs while the model is loading will be left as ```undefined``` and an anonymous (unnamed) function will be used that is run if there is an error with the loading.
+The load method has four arguments: the model filename, a function run after the model is loaded, a function run while the model is loading, and a function run if there is an error. As in Part 1, the function that runs while the model is loading will be left as ```undefined``` and an anonymous (unnamed) function will be used if an error occurs while the model is loading.
 
 Replace the declaration of the model with declarations of the jars and their group. 
 
@@ -447,7 +447,7 @@ Note also that the introduction of the ```piecescale``` variable is not strictly
 
 To avoid repetitive code, a function ```createModel()``` will be created, and the ```onLoadAibom()``` function will run this ```createModel()``` function when it loads the model. The ```createModel()``` function will take four arguments: the model filename (gltf), its position, the model colour, and the matching gallery (information panel) as these vary with the different models. 
 
-It may seem confusing to use two different functions and it is not essential to fully understand this at this stage, but it may be useful if you later write your own code. The `loader.load` method does not expect the function called after loading (i.e. ```onLoadAibom```) to return anything. In practice, this means you do not use a `return` statement inside the onLoadAibom function. So the loaded model has to be assigned to a pre-declared variable (i.e. ```aibomM```). Passing additional parameters (such as colour or position) directly into callback functions like onLoadAibom is difficult, so you have to find another way to specify the colour, position, and gallery panel of the jar model. One solution is to use a second function to handle these values. One function (createModel) takes arguments (such as position, colour, and gallery panel) and returns a model; the other function (onLoadAibom) loads the model.
+Using two different functions may seem confusing, and it is not essential to fully understand this at this stage. However, it may be useful when you later write your own code. The `loader.load` method does not expect the function called after loading (i.e. ```onLoadAibom```) to return anything. In practice, this means you do not use a `return` statement inside the onLoadAibom function. So the loaded model has to be assigned to a pre-declared variable (i.e. ```aibomM```). Passing additional parameters (such as colour or position) directly into callback functions like onLoadAibom is difficult, so you have to find another way to specify the colour, position, and gallery panel of the jar model. One solution is to use a second function to handle these values. One function (createModel) takes arguments (such as position, colour, and gallery panel) and returns a model; the other function (onLoadAibom) loads the model.
 
 **Find** the following code:
 
@@ -481,7 +481,7 @@ loader.load( 'models/aibom.glb', onLoadAibom, undefined, function ( error ) {con
 ```
 Save the `index.html` file, reload the browser and check the jar model still appears.
 
-One jar has now been imported, and the code could have five other functions (i.e. onLoadMailu, onLoadLouisade etc) to import the other five jars. However the code can be condensed further by using 'anonymous' functions, i.e. the function called is not named. 
+One jar has now been imported, and the code could include five additional functions (i.e. onLoadMailu, onLoadLouisade, etc.) to import the other five jars. However, the code can be condensed further by using 'anonymous' functions, meaning that the functions being called are not named.
 
 Keep the createModel function but **find** the following code:
 
@@ -542,9 +542,9 @@ Where to set the positions of the jars can be calculated by taking into account 
 
 ### Using Raycasters: Adding Jar Selection
 
-The interactive scene depends on users being able to select a jar to change the information panel. To be able to select a jar an 'event listener' needs to be created. 'Event listeners' tell the scene what to do if the user interacts with the website in any way, such as changing the window size, clicking the mouse or using the keyboard. As with the ```WindowResize``` event listener in Part 1, this listener gets the event (in this case ```click```), and a function (known as an event handler) that will be defined. Input events pass event information to their handler, some of which is dependent on the type of event. The click event passes an object (commonly called ```event```) that contains the mouse cursor's coordinates relative to the viewport/window. 
+The interactive scene depends on users being able to select a jar to change the information panel. To enable this, an 'event listener' needs to be created. 'Event listeners' tell the scene what to do when the user interacts with the website, such as by resizing the window, clicking the mouse, or using the keyboard. As with the ```WindowResize``` event listener in Part 1, this listener gets the event (in this case ```click```), and a function (known as an event handler) that will be defined. Input events pass event information to their handler, some of which is dependent on the type of event. The click event passes an object (commonly called ```event```) that contains the mouse cursor's coordinates relative to the viewport/window. 
 
-To determine what jar in 3D space is being targeted by the user's mouse in 2D space, three.js uses raycasting. Whenever the user clicks on the scene, the three.js raycaster 'sends' a 'ray' from the camera position to a pointer whose 2D position is calculated from the click event's information. The raycaster has an ```intersectObjects``` method that returns an array of the 3D objects that the cast ray has hit. This array is ordered by distance to the camera so the first in the array (index 0) will be the nearest object. The ```intersectObjects``` method can also be told what objects can be intersected and here, the children of the ```jars``` group will be specified. This is the primary reason you made the ```jars``` group.
+To determine which jar in 3D space is being targeted by the user's mouse position in 2D space, three.js uses raycasting. Whenever the user clicks on the scene, the three.js raycaster 'sends' a 'ray' from the camera position to a pointer whose 2D position is calculated from the click event's information. The raycaster has an ```intersectObjects``` method, which returns an array of the 3D objects that the cast ray has hit. This array is ordered by distance to the camera so the first in the array (index 0) will be the nearest object. The ```intersectObjects``` method can also be told what objects can be intersected and here, the children of the ```jars``` group will be specified. This is the primary reason you made the ```jars``` group.
 
 Notice that three.js stores coordinates in a 'vector'. A THREE.Vector2 is used for 2D coordinates (referred to as x and y) such as the pointer position, and a THREE.Vector3 is used for 3D coordinates (x, y and z). 
 
@@ -562,7 +562,7 @@ Here you will declare the variables for the raycaster, the mouse pointer and the
 let raycasterM, pointer, selectedObj; // for mouse controls
 ```
 
-A raycaster and pointer (an x,y vector) need to be created. Errors can occur if declared objects are empty, so make ```selectedObj``` a torus initially. 
+A raycaster and pointer (an x, y vector) need to be created. Errors can occur if declared objects are empty, so make ```selectedObj``` a torus initially. 
 
 **Within** the init function definition, **after** the following code:
 
@@ -580,7 +580,7 @@ selectedObj = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20  ), 
 
 ```
 
-Then, tell the window to 'listen' for any clicks, to send the click information to the ```onClick``` function that will be defined next.
+Then, tell the window to 'listen' for any clicks and send the click information to the ```onClick``` function that will be defined next.
 
 **Within** the init function definition, **after** the following code:
 ```
@@ -592,7 +592,7 @@ window.addEventListener( 'resize', onWindowResize );
 window.addEventListener( 'click', onClick );
 ```
 
-Then, tell the listener what do do if there is a click in the window. To start, just make the newly selected jar glow red (i.e. make it red emissive). When the mouse is clicked the scene needs to: 
+Next, tell the listener what to do when the user clicks in the window. To begin with, the newly selected jar will simply glow red (i.e. become red emissive). When the mouse is clicked, the scene needs to:
 
 - turn the orbit controls off (use ```event.preventDefault()```)
 - get a pointer position from the click position (here the code from a three.js example is used, it calculates pointer.x and pointer.y from the ```event.clientX``` and ```event.clientY``` information and the window dimensions)
@@ -676,7 +676,7 @@ selectedPlane = found.userData.planes; // get the new matching information panel
 selectedPlane.visible = true; // make the new panel visible
 ```
 
-After reloading, you should be able to select a jar and have the middle information panel change to give information about that jar. You can try ```.emissive.g``` or ```.emissive.b``` to make the selected jar green or blue emissive, if you want.
+After reloading, you should be able to select a jar and see the middle information panel change to display information about that jar. You can try ```.emissive.g``` or ```.emissive.b``` to make the selected jar green or blue emissive, if you wish.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-11.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 11. Webpage showing the Aibom jar selected with its red emission set to true, and the Aibom information panel." %}
 
@@ -684,23 +684,23 @@ The next sections are optional. In these sections, you can learn to turn the web
 
 ## Designing a Game
 
-When designing a game or puzzle, consider if the puzzle is based on memory or logic. The main aim of games featuring material culture is generally to help users appreciate the variety in artefact properties, such as form and decoration, rather than for users to remember every detail of each object encountered during the game.
+When designing a game or puzzle, consider whether it is based on memory or logic. The main aim of games featuring material culture is generally to help users appreciate variation in artefact properties, such as form and decoration, rather than to make them remember every detail of each object encountered during the game.
 
 Often images of material culture are incorporated into the traditional memory game of finding matching images on overturned cards. See the 2D [Ho'omaka Hou Research Initiative Fishhook Memory Game](https://data.bishopmuseum.org/archaeology/game.html), which introduces users to the variety of forms and decoration in material culture (including fishhooks) they may not otherwise appreciate. 
 
 In contrast, jigsaw puzzles (which also commonly feature material culture) rely more on logic. 3D jigsaw puzzles can be made of material cultural artefacts and sites, but it can be quite difficult for users to manipulate pieces on a computer screen. 3D jigsaw puzzles are more usable in VR. One example is [Artsalad](https://artsalad.net) by Mariotto F., an opensource VR 3D puzzle game written with three.js.
 
-If the 'The Jars of Papua' featured realistic models of jars that the user needed to place at their correct site, it would benefit from providing a way to ensure that the user can first view the correct placements. Alternatively, clues could be given to encourage the user to study the models, resulting in less reliance on memory. 
+If 'The Jars of Papua' featured realistic jar models that users needed to place at the correct sites, it would be useful to provide a way for them to view the correct placements first. Alternatively, clues could encourage users to study the models more closely, reducing their reliance on memory.
 
-For this lesson, you will rely on the models being coloured according to their method of construction (building technique) to help users match vessels to sites. This information is provided in the site information panel. The decoration style information may also help with making matches. While it would be possible to match models to information panels without using a map of New Guinea, including the map helps reinforce the connection between the vessels and the communities that made them, and highlights the diversity of material culture across Papua New Guinea (and West Papua).
+For this lesson, you will rely on the models being coloured according to their method of construction (building technique) to help users match vessels to sites. This is explained in the site information panel, which also includes details about decoration styles that may help users make matches. While it would be possible to match the models to the information panels without using a map of New Guinea, including the map helps reinforce the connection between the vessels and the communities that made them. It also highlights the diversity of material culture across Papua New Guinea (and West Papua).
 
-If you are planning to design a game consider consulting guides such as Schell (2015), which discuss aspects in game design such as the roles of skill versus chance, rewards, punishments, and scoring. Schell (2015) distinguishes 'puzzles' as "head" (thinking) games rather than "hand" (co-ordination and reaction) games. They outline 10 "puzzle principles" which include: making the puzzle aim clear, making it easy for the player to know where to start, providing an indication of player progress, avoiding the game appearing unsolveable;, varying difficulty;, maximising the players choices in which order they do the different steps, having puzzles within puzzles, providing hints, providing the solution, and being careful of puzzles that have a trick or require the player to change the way they are interpreting the puzzle. 
+If you are planning to design a game, consider consulting guides such as Schell (2015), which discuss aspects of game design including the roles of skill versus chance, rewards, punishments, and scoring. Schell (2015) distinguishes 'puzzles' as "head" (thinking) games rather than "hand" (co-ordination and reaction) games. They outline 10 'puzzle principles': making the aim of the puzzle clear; making it easy for the player to know where to start; providing an indication of progress; avoiding making the puzzle appear unsolvable; varying the difficulty; maximising the player's choice over the order in which they complete different steps; including puzzles within puzzles; providing hints; providing the solution; and being careful with puzzles that rely on a trick or require the player to change how they interpret the problem.
 
-To transform the scene into a puzzle the information panel used needs to be altered, as it is the main source of user information. The goal for the user is to start with the jars off the map, with the Papuan communities demarcated by selectable tokens. When the communities are selected by the user's mouse click, the information panel will provide the information on the pots made by that community. Information on the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured according to the technique and a key is provided. The decoration technique may also serve as a guide. For instance when the user selects the site of the Iatmul community the information panel reveals that their jars are made using the 'ring building technique on a hemispherical base' and that they are decorated with 'sculptural elements' and the key shows that model of jars with that technique are coloured brown. Thus the user will look for a brown jar model with sculptural decorations. The user can move the jars with their mouse. If they place the matching jar on the community marker, then the jar becomes unmoveable and the background colour changes. 
+To transform the scene into a puzzle, the information panel needs to be altered, as it is the user's main source of information. The goal for the user is to start with the jars off the map, with the Papuan communities demarcated by selectable tokens. When the communities are selected by the user's mouse click, the information panel will provide the information on the pots made by that community. Information on the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured according to the technique and a key is provided. The decoration technique may also serve as a guide. For instance, when the user selects the site of the Iatmul community, the information panel reveals that their jars are made using the 'ring building technique on a hemispherical base' and are decorated with 'sculptural elements'. The key shows that models of jars made using this technique are coloured brown. Thus the user will look for a brown jar model with sculptural decorations. The user can move the jars with their mouse. If they place the matching jar on the community marker, then the jar becomes unmoveable and the background colour changes. 
 
 ### Adding Simple Models: Tori (Donuts)
 
-In this game the clues to matching the jar and community location will be given by clicking on the community location. If presented with a map of Papua New Guinea with the jars randomly placed some distance above it, most users would not know where on the map to click to get the clues. So green tori (donut shapes) will be used to mark the communities to let the user know where to start clicking. The information panel will be changed in the last step to instruct the user to click on a torus (donut). 
+In this game, users will receive clues for matching each jar to its community location by clicking on the community location. If presented with a map of Papua New Guinea and jars randomly positioned some distance above it, most users would not know where on the map to click to find the clues. Green tori (donut shapes) will therefore be used to mark the community locations and show the user where to start clicking. In the final step, the information panel will be changed to instruct the user to click on a torus.
 
 The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified (Figure 4). However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI /2). Each torus's centre will be positioned slightly (1 cm) above the map (which is at 'desk' height) at y = desk + 0.01.
 
@@ -776,20 +776,20 @@ Save the `index.html` file, reload the browser and check the tori appear on site
 
 To make the jars start in a random position above the map the [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method, which generates a number between 0 and 1, will be used. 
 
-You will change the position.set values to ```x = Math.random() - 1```, ```y = 1.2```, and ```z = Math.random() * 0.5 - 0.3```. 
+You will change the `position.set` values to ```x = Math.random() - 1```, ```y = 1.2```, and ```z = Math.random() * 0.5 - 0.3```. 
 
 This means that all jars will appear at the same height (y = 1.2) but in random positions within a defined area: 
 
 - along the x-axis, between -1 and 0 (slightly to the left of the scene)
 - along the z-axis, within a range of 0.5m (from -0.3 to 0.2)
 
-These values were chosen to make the jars easy to reach and the instructions easy to read for a user in a VR setting. 
+These values were chosen to make the jars easy to reach and the instructions easy to read in a VR setting. 
 
-If you review Figure 3, you can see where the jars should appear in relation to the camera and map. You can adjust the code so they appear elsewhere if that suits your purpose.
+If you review Figure 3, you can see where the jars should appear in relation to the camera and map. You can adjust the code to position them elsewhere if this better suits your purpose.
 
-The correct matching site will be stored in a userData variable. (Before making this change, you may find it helpful to note or take a screenshot of where at least one of the jars should be placed.)
+The correct matching site will be stored in a userData variable. (Before making this change, you may find it helpful to note where at least one of the jars should be placed or take a screenshot for reference.)
 
-When creating the jars, instead of placing them at their true (final) location, assign them a random starting position. The true site is still stored (in userData) so that it can be used later to check whether the jar has been moved to the correct position.
+When creating the jars, assign them a random starting position instead of placing them at their true (final) location. The true site will still be stored in userData, so it can later be used to check whether the jar has been moved to the correct position.
 
 Within the ```createModel``` function, **find** the following code:
 
@@ -810,7 +810,7 @@ Save the `index.html` file and reload the browser. The jars should now appear ab
 
 ### Raycasting: Changing What the Mouse Click Detects
 
-For this game, linking the information panel to the selected jar is not very helpful, as most users will not be able to identify the correct location from the jar alone (unless they know their Papua New Guinea languages). Other game designs might incorporate clues that hint at a location (for example, ‘This jar was used to cook seafood’) which would allow the user to match the jar to a coastal area. In this latter case you would leave the panel change to be responsive to selection of a jar, but for this game design you want the panel to change when a site is selected.
+For this game, linking the information panel to the selected jar is not very helpful, as most users will not be able to identify the correct location from the jar alone (unless they are familiar with Papua New Guinea languages). Other game designs might include clues that hint at a location, for example, ‘This jar was used to cook seafood’, allowing the user to match the jar to a coastal area. In that type of game, the information panel could still change when a jar is selected. In this game, however, the panel should change when a site is selected.
 
 You will see that nothing happens when you click on the tori, as the raycaster is checking the jars for intersections and not the tori. So in the ```onClick(event)``` function, **find** the following code.
 
@@ -824,8 +824,7 @@ The line of code should be **changed** to the following:
 const intersects = raycasterM.intersectObjects( tori.children);
 ```
 
-Once you have saved, check that the mouse click and panel change now work on tori (as opposed to the jars).
-
+Once you have saved, check that clicking the tori now changes the information panel, rather than clicking the jars.
 
 ### Drag Controls: Enabling Jar Movement
 
@@ -890,7 +889,7 @@ dragControls.addEventListener('dragend', function (event) {
 
 Save the `index.html` file, reload the browser, and check that you can now move the jars around.
 
-However, you will see that it can be difficult to move jars in certain positions in 3D. It is easier to achieve if you view the scene directly from the top, or directly from the side. You will modify this later on to make positioning easier.
+However, you may find it difficult to move jars accurately in certain positions in 3D space. This is easier when viewing the scene from directly above or from the side. You will modify this later to make positioning easier.
 
 
 ### Conditional Statements: Check for Successful Matches
@@ -969,7 +968,7 @@ let aposition = selectedObject.position; //get jar position
 
 #### Determining Distances Between Models: Testing if the Jar has Been Placed 'on' its Correct Site
 
-In coding, [conditional statements](https://en.wikipedia.org/wiki/Conditional_(computer_programming)) such as the 'if' statement are commonly used to specify that lines of code will only run if a particular criteria is fulfilled. An 'if' statement was used previously when testing if anything is actually being selected by the mouse. Now use an 'if' statement to test if the distance between the jar and its matching site is within the set allowed distance. Call the ```distanceTo``` method on the ```aposition``` vector to determine the distance between the two vectors, and test if it is smaller than our allowed distance (0.25 cm * ratio). 
+In coding, [conditional statements](https://en.wikipedia.org/wiki/Conditional_(computer_programming)) such as the 'if' statement are commonly used to specify that lines of code will only run if a particular criterion is fulfilled. An if statement was used previously when testing if anything is actually being selected by the mouse. Now use an if statement to test if the distance between the jar and its matching site is within the set allowed distance. Call the ```distanceTo``` method on the ```aposition``` vector to determine the distance between the two vectors, and test if it is smaller than our allowed distance (0.25 cm * ratio). 
 
 **After** the following code:
 
@@ -1075,7 +1074,7 @@ truesite = null;
 
 Be careful with brackets/braces here. The ```onClick``` function now has two nested ```if``` blocks. The ```truesite = null;``` statement should be outside these ```if``` blocks, but inside the `onClick` function. 
 
-Now it should be easier to move jars to their sites: but the mouse needs to be directly over the torus when you stop dragging the jar.
+Now it should be easier to move jars to their sites, but the mouse needs to be directly over the torus when you stop dragging the jar.
 
 ### Update the Instructions
 

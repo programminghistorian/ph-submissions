@@ -32,7 +32,7 @@ doi:
 
 ## Introduction
 
-Nous n'exigeons plus des élèves qu'ils mémorisent par cœur des tableaux d'événements historiques avec leurs dates, comme c'était le cas dans l'Amérique du milieu du dix-neuvième siècle[^1]. Sans entrer dans les divers débats[^2] sur l’intérêt d’enseigner ou non la chronologie en classe, cette leçon part du principe qu'il est utile « d'aider les élèves à développer de solides connaissances de base dans nos disciplines »[^3] et que les jeux constituent un excellent outil pour atteindre cet objectif.
+Les élèves ne sont plus systématiquement invités à mémoriser par cœur des tableaux d'événements historiques avec leurs dates, comme c'était le cas dans l'Amérique du milieu du dix-neuvième siècle[^1]. Sans entrer dans les divers débats[^2] sur l’intérêt d’enseigner ou non la chronologie en classe, cette leçon part du principe qu'il est utile « d'aider les élèves à développer de solides connaissances de base dans nos disciplines »[^3] et que les jeux constituent un excellent outil pour atteindre cet objectif.
 
 Inviter les élèves à créer leurs propres jeux - ou à proposer une modification d’un jeu existant (un “mod”) - peut être l'occasion de leur apprendre à manipuler et à transformer des objets numériques en objets concrets, lesquels peuvent ensuite être réutilisés pour offrir d’enrichissantes expériences pédagogiques. Ce tutoriel montrera comment les élèves peuvent créer leur propre jeu, en version papier ou numérique, en s'appuyant sur la mécanique de construction chronologique popularisée par le jeu commercial de Frédéric Henry : Timeline.
 

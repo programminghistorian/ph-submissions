@@ -697,7 +697,7 @@ To transform the scene into a puzzle the information panel used needs to be alte
 
 ### Adding Simple Models: Tori (Donuts)
 
-In this game the clues to matching the jar and community location will be given by clicking on the community location. If presented with a map of New Guinea with the jars randomly placed some distance above it most users would not know where on the map to click to get the clues. So green tori (donut shapes) will be used to mark the communities to let the user know where to start clicking. The information panel will be changed in the last step to instruct the user to click on a torus (donut). 
+In this game the clues to matching the jar and community location will be given by clicking on the community location. If presented with a map of Papua New Guinea with the jars randomly placed some distance above it, most users would not know where on the map to click to get the clues. So green tori (donut shapes) will be used to mark the communities to let the user know where to start clicking. The information panel will be changed in the last step to instruct the user to click on a torus (donut). 
 
 The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified (Figure 4). However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI /2). Each torus's centre will be positioned slightly (1 cm) above the map (which is at 'desk' height) at y = desk + 0.01.
 
@@ -715,13 +715,13 @@ aibomSite.userData.planes = aibomG;
 
 But it is also possible to make a function that takes position (x and z) co-ordinates and the relevant gallery. The function is then called for each site.
 
-In the index.html file **find** the following code:
+In the `index.html` file **find** the following code:
 
 ```
 let jars;
 ```
 
-The line of code above should be **changed** to the following:
+The line of code should be **changed** to the following:
 
 ```
 let jars, tori;
@@ -765,28 +765,28 @@ tori.add(aibomSite, mailuSite, dimiriSite, louisadeSite, adzeraSite, yabobSite);
 
 ```
 
-Save the index.html file, reload the browser and check the tori appear on site reload. However this change has broken the importation of the jar models so you will not see them.
+Save the `index.html` file, reload the browser and check the tori appear on site reload. However, this change has broken the importation of the jar models so you will not see them.
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-12.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 12. Webpage with the jars sitting on tori." %}
 
 ### Start Jars at Random Positions
 
-To make the jars start in a random position above the map the [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method which generates a number between 0 and 1 will be used. 
+To make the jars start in a random position above the map the [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method, which generates a number between 0 and 1, will be used. 
 
 You will change the position.set values to ```x = Math.random() - 1```, ```y = 1.2```, and ```z = Math.random() * 0.5 - 0.3```. 
 
 This means that all jars will appear at the same height (y = 1.2) but in random positions within a defined area: 
-- along the x-axis, between -1 and 0 (slightly to the left of the scene), and
-- along the z-axis, within a range of 0.5m (from -0.3 to 0.2).
+
+- along the x-axis, between -1 and 0 (slightly to the left of the scene)
+- along the z-axis, within a range of 0.5m (from -0.3 to 0.2)
 
 These values were chosen to make the jars easy to reach and the instructions easy to read for a user in a VR setting. 
 
-If you review Figure 3 you can see where the jars should appear in relation to the camera and map. You can adjust the code so they appear elsewhere if you think that would be better.
+If you review Figure 3, you can see where the jars should appear in relation to the camera and map. You can adjust the code so they appear elsewhere if that suits your purpose.
 
-The correct matching site will be stored in a userData variable. Before making this change, you may find it helpful to note or take a screenshot of where at least one of the jars should be placed.
+The correct matching site will be stored in a userData variable. (Before making this change, you may find it helpful to note or take a screenshot of where at least one of the jars should be placed.)
 
-When creating the jars, you will now assign them a random starting position instead of 
-placing them at their true (final) location. The true site is still stored (in userData) so that it can be used later to check whether the jar has been moved to the correct position.
+When creating the jars, instead of placing them at their true (final) location, assign them a random starting position. The true site is still stored (in userData) so that it can be used later to check whether the jar has been moved to the correct position.
 
 Within the ```createModel``` function, **find** the following code:
 
@@ -801,9 +801,9 @@ model.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
 model.userData.site = site;
 ```
 
-Save the index.html file and reload the browser. The jars should now appear above the map in random positions. Each time you reload the page, they will appear in different random locations.
+Save the `index.html` file and reload the browser. The jars should now appear above the map in random positions. Each time you reload the page, they will appear in different random locations.
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-13.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 13. Webpage with the jars at random start positions above the map." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-13.png" alt="Six jars float at random positions above a map of Papua New Guinea." caption="Figure 13. Webpage with the jars at random start positions above the map." %}
 
 ### Raycasting: Changing What the Mouse Click Detects
 
@@ -815,13 +815,13 @@ You will see that nothing happens when you click on the tori, as the raycaster i
 const intersects = raycasterM.intersectObjects( jars.children);	// an array, nearest to camera will be first
 ```
 
-The line of code above should be **changed** to the following:
+The line of code should be **changed** to the following:
 
 ```
 const intersects = raycasterM.intersectObjects( tori.children);
 ```
 
-Save and check that the mouse click and panel change now work on tori (as opposed to the jars).
+Once you have saved, check that the mouse click and panel change now work on tori (as opposed to the jars).
 
 
 ### Drag Controls: Enabling Jar Movement
@@ -846,7 +846,7 @@ import { DragControls } from 'three/addons/controls/DragControls.js';
 let container, camera, scene, renderer, controls;
 ```
 
-The line of code above should be **changed** to the following:
+The line of code should be **changed** to the following:
 
 ```
 let container, camera, scene, renderer, controls, dragControls;
@@ -866,7 +866,7 @@ pointer = new THREE.Vector2();
 dragControls = new DragControls( [ jars ], camera, renderer.domElement ); // first argument determines drag objects.	
 
 ```
-Then you add event listeners for the ```dragstart``` and ```dragend``` events. Here the handler functions will be made anonymously. Turn the orbital controls off while jars are being dragged.
+Then you add event listeners for the ```dragstart``` and ```dragend``` events. Here, the handler functions will be made anonymously. Turn the orbital controls off while jars are being dragged.
 
 **After** the following code:
 
@@ -885,18 +885,18 @@ dragControls.addEventListener('dragend', function (event) {
 });
 ```
 
-Save the index.html file, reload the browser, and check that you can now move the jars around.
+Save the `index.html` file, reload the browser, and check that you can now move the jars around.
 
 However, you will see that it can be difficult to move jars in certain positions in 3D. It is easier to achieve if you view the scene directly from the top, or directly from the side. You will modify this later on to make positioning easier.
 
 
 ### Conditional Statements: Check for Successful Matches
 
-At the end of each jar movement, there needs to be a check to see if the jar was moved to the correct spot. One way to do this is to determine the distance between the jar and the matching site (torus). An allowed distance difference needs to be set that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby. Here use 5 cm (2.5cm * ratio). 
+At the end of each jar movement, there needs to be a check to see if the jar was moved to the correct spot. One way to do this is to determine the distance between the jar and the matching site (torus). An allowed distance difference needs to be set that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby. Here use 5 cm (2.5 cm * ratio). 
 
 If the test is successful, there has to be a signal to the user. Here the background colour will be changed to a random colour, and the jar made unmoveable. No signal will be given for an incorrect match. 
 
-An additional group called ```unmoveable``` will be created and any jars that are placed close enough to their torus will be added to that group. Objects can only be attached to one group, so when a model is moved to ```unmoveable``` it will no longer be in ```jars``` and so the mouse will not detect it.
+An additional group called ```unmoveable``` will be created and any jars that are placed close enough to their torus will be added to that group. Objects can only be attached to one group, so when a model is moved to ```unmoveable``` it will no longer be in ```jars```, so the mouse will not detect it.
 
 Extra variables need to be declared for the new ```unmoveable``` group, ```selectedObject``` (which is the selected jar) and the ```truesite``` (which is the site that the selected jar should match). As no jar is selected at the start the ```truesite``` and ```selectedObject``` will be made ```null``` to start with.
 
@@ -946,9 +946,9 @@ selectedObject = event.object;
 truesite = selectedObject.userData.site;
 ```
 
-The ```getWorldPosition``` method  can be used to find out the coordinates of the ```truesite```. You may wonder why you did not just store the coordinates directly in the userData. This would work in this version of the game, since the sites do not move. However, using getWorldPosition makes the code more flexible and if you wanted to make the map (or sites) movable in a different version, their positions would still be calculated correctly.
+The ```getWorldPosition``` method can be used to find out the coordinates of the ```truesite```. You may wonder why you did not just store the coordinates directly in the userData. This would work in this version of the game, since the sites do not move. However, using getWorldPosition makes the code more flexible and if you wanted to make the map (or sites) movable in a different version, their positions would still be calculated correctly.
 
-The ```getWorldPosition``` method puts the coordinates into a vector (x, y, z) that is given as an argument, in this case ```testposition```. This vector can not be null to begin with so it is set as (0,0,0). To get the position of the jar being dragged its position property can be put into a vector (call it ```aposition```).
+The ```getWorldPosition``` method puts the coordinates into a vector (x, y, z) that is given as an argument, in this case ```testposition```. This vector can not be null to begin with so it is set as (0,0,0). To get the position of the jar being dragged, its position property can be put into a vector (call it ```aposition```).
 
 **After** the following code:
 
@@ -966,7 +966,7 @@ let aposition = selectedObject.position; //get jar position
 
 #### Determining Distances Between Models: Testing if the Jar has Been Placed 'on' its Correct Site
 
-In coding, [conditional statements](https://en.wikipedia.org/wiki/Conditional_(computer_programming)) such as the 'if' statement are commonly used to specify that lines of code will only run if a particular criteria is fulfilled. An if statement was used previously when testing if anything is actually being selected by the mouse. Now use an if statement to test if the distance between the jar and its matching site is within the set allowed distance. Call the ```distanceTo``` method on the ```aposition``` vector to determine the distance between the two vectors, and test if it is smaller than our allowed distance (0.25 * ratio). 
+In coding, [conditional statements](https://en.wikipedia.org/wiki/Conditional_(computer_programming)) such as the 'if' statement are commonly used to specify that lines of code will only run if a particular criteria is fulfilled. An 'if' statement was used previously when testing if anything is actually being selected by the mouse. Now use an 'if' statement to test if the distance between the jar and its matching site is within the set allowed distance. Call the ```distanceTo``` method on the ```aposition``` vector to determine the distance between the two vectors, and test if it is smaller than our allowed distance (0.25 cm * ratio). 
 
 **After** the following code:
 
@@ -983,7 +983,7 @@ if ( aposition.distanceTo( testposition ) < .025 * ratio) {
 
 ```
 
-Save the index.html file and reload the browser to check for errors (broken code blocks can occur). But the script has not been told what to do if the test is successful yet, so nothing will occur if there is a correct match. 
+Save the `index.html` file and reload the browser to check for errors (broken code blocks can occur). But the script has not been told what to do if the test is successful yet, so nothing will occur if there is a correct match. 
 
 
 #### Changing the Background Colour if the Match is Correct
@@ -1004,7 +1004,7 @@ scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
 
 If the test is successful the position of the jar should be set to the exact spot, partly because the slight jump helps signal that it was a success. Importantly the jar should also be made unmoveable by putting it in the ```unmoveable``` group. The ```unmoveable``` group is unmoveable because the drag listener is only acting on the ```jars``` group.
 
-Keeping within the if code block, **after** the following code:
+Keeping within the 'if' code block, **after** the following code:
 
 ```
 scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
@@ -1018,11 +1018,11 @@ unmoveable.attach( selectedObject); // adding to the unmoveable group will remov
 
 ```
 
-Save the index.html file and try to test, but moving in 3D can be difficult. When viewing 3D scenes on 2D surfaces (such as a computer screen) objects that are distant from each other can appear to be close. In the next step it will be made (somewhat) easier. **If** you want to test the moving at this stage, it is best done in multiple steps, viewing from the side to lower the jar to the map, and then from the top (birds eye view) to place it in the right spot, or vice versa (Figures 14-16).
+Save the `index.html` file and try to test, but moving in 3D can be difficult. When viewing 3D scenes on 2D surfaces (such as a computer screen) objects that are distant from each other can appear to be close. In the next step it will be made (somewhat) easier. **If** you want to test the moving at this stage, it is best done in multiple steps, viewing from the side to lower the jar to the map, and then from the top (bird's-eye view) to place it in the right spot, or vice versa (Figures 14-16).
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-14.png" alt="While 5 jars are randomly above the map, the Aibom jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Aibom jar, close to their torus is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-14.png" alt="While five jars are randomly above the map, the Aibom jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Aibom jar, close to their torus is best done in multiple steps and when viewing the scene directly from the front, side or above." %}
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-15.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Aibom jar has been correctly positioned." caption="Figure 15. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-15.png" alt="Bird's-eye view of jars and map, with the background changed to a pink colour to show that the Aibom jar has been correctly positioned." caption="Figure 15. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
 
 {% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-16.png" alt="Normal view of the jars and map, with the Aibom jar in its correct position." caption="Figure 16. The Aibom jar in its correct position." %}
 
@@ -1075,7 +1075,8 @@ Be careful with brackets/braces here. The ```onClick``` function now has two nes
 Now it should be easier to move jars to their sites: but the mouse needs to be directly over the torus when you stop dragging the jar.
 
 ### Update the Instructions
-Lastly, to update the instructions in the first intro panel, change the texture to the intro2.jpg.
+
+Lastly, to update the instructions in the first intro panel, change the texture to the `intro2.jpg`.
 
 **Find** the following code:
 
@@ -1089,9 +1090,10 @@ The line of code above should be **changed** to the following:
 const introTexture = textureLoader.load( 'textures/Intro2.jpg' );
 ```
 
-Save the index.html file, reload the browser and check that the new instructions appear.
+Save the `index.html` file, reload the browser and check that the new instructions appear.
 
 ## Adding Additional Jars
+
 Pots were made in many different forms by different communities in Papua New Guinea, West Papua and Maluku. There are models and information panels for 29 communities in the folders provided. 
 
 If you want to experiment with adding them (Figure 17), the following table provides the model name, matching panel texture, location and colour parameter name to use. Each needs variables for the jar, panel and a site/torus (game only). These can be called anything (avoid special characters), but remember to declare them.
@@ -1122,15 +1124,15 @@ If you want to experiment with adding them (Figure 17), the following table prov
 | tumleo.glb | Tumleo.jpg | 0.27* ratio, desk + 0.01, -0.12* ratio | paddleColor |
 | waigeo.glb | Waigeo.jpg |  -0.65* ratio, desk + 0.01, -0.35* ratio | paddleAddColor |
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-17.png" alt="Many jars on a map of Papua." caption="Figure 17. Additional jars can be added to the scene and puzzle." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-2-17.png" alt="Many jars on a map of Papua New Guinea." caption="Figure 17. Additional jars can be added to the scene and puzzle." %}
 
 ## Conclusion and Next Steps
 
-This has been an introduction to using three.js and the basic concepts in creating 3D scenes. It has shown how: creating simple 2D and 3D models; importing more complex models; altering model properties (such as colour, emissiveness, size and visibility); modifying model image textures; raycasting; adding controls (such as orbit and drag controls); using event listeners; and implementing conditional statements, can be combined to make 3D cultural models more informative and engaging. The official [three.js](https://threejs.org) website contains links to forums to ask the community for help, and further resources including [three.js Fundamentals](https://threejs.org/manual/#en/fundamentals). The website also shows how much more complex pages can be created, with additions such as animations and sound.
+This has been an introduction to using three.js and the basic concepts in creating 3D scenes. It has shown how creating simple 2D and 3D models; importing more complex models; altering model properties (such as colour, emissiveness, size and visibility); modifying model image textures; raycasting; adding controls (such as orbit and drag controls); using event listeners; and implementing conditional statements, can be combined to make 3D cultural models more informative and engaging. The official [three.js](https://threejs.org) website contains links to forums to ask the community for help, and further resources including [three.js Fundamentals](https://threejs.org/manual/#en/fundamentals). The website also shows how much more complex pages can be created, with additions such as animations and sound.
 
-Integrating 3D models into websites allows artefacts to be investigated at different scales, and for multiple objects to be compared across time and/or geographic distance to see how their creation and use varied. Similarities between objects show cultural contacts between communities and can with other evidence, support movement of communities. Differences between objects can reveal local innovation or suggest periods of social disruption. The relationships between the ceramics of Maluku, Papua New Guinea, New Caledonia, Vanuatu, Fiji and other Pacific Island communities are being actively researched and using 3D vessel models organised with respect to place and time can help with this. 
+Integrating 3D models into websites allows artefacts to be investigated at different scales, and for multiple objects to be compared across time and/or geographic distance to see how their creation and use varied. Similarities between objects show cultural contacts between communities and can with other evidence, support movement of communities. Differences between objects can reveal local innovation or suggest periods of social disruption. The relationships between the ceramics of Maluku, Papua New Guinea, New Caledonia, Vanuatu, Fiji and other Pacific Island communities are being actively researched, and using 3D vessel models organised with respect to place and time can help with this. 
 
-Web-based interactive scenes and games have an important role in communicating research and providing non-academic and academic audiences with new views of the past. Importantly, this includes conveying research findings in interesting ways to the communities where archaeological excavations have occurred and the descendants of the makers of ethnographically studied cultural material. There are many ways cultural heritage models can be used interactively: broken vessels can be put back together (Hardy, 2023), site contexts could be toggled on and off, or objects could be virtually analysed, with images or measurements from scientific techniques revealed when the object is clicked on. Scenes made with three.js can be easily made viewable and manipulatable in virtual reality and this can increase the engagement with the models for many viewers.
+Web-based interactive scenes and games have an important role in communicating research and providing non-academic and academic audiences with new views of the past. Importantly, this includes conveying research findings in interesting ways to the communities where archaeological excavations have occurred and the descendants of the makers of ethnographically studied cultural material. There are many ways cultural heritage models can be used interactively: broken vessels can be put back together (Hardy, 2023), site contexts could be toggled on and off, or objects could be virtually analysed, with images or measurements from scientific techniques revealed when the object is clicked on. Scenes made with three.js can be easily made viewable and manipulatable in VR and this can increase engagement with the models for many viewers.
 
 More broadly, projects such as this aim to support greater awareness of the diversity and significance of cultural practices represented through material artefacts. Scenes and games that include maps can indirectly help educate students and non-students on the locations of countries, or increase their understanding of the areas within a country. While users may not necessarily retain specific details, interactive experiences can contribute to a broader understanding of the richness and variation of cultural heritage, and encourage further exploration.
 

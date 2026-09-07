@@ -174,7 +174,7 @@ Chaque commande de script dans nanDECK se compose d’un mot-clé, d’un signe 
 	* S : barré
 
 
-Ces éléments en tête, examinons maintenant le code suivant :
+Ces éléments étant posés, le code suivant permet d’illustrer leur fonctionnement :
 
 ```
 FONT = Arial, 32, B, #0000FF

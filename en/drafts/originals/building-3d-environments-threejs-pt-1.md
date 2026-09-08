@@ -25,23 +25,23 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-Advances in computing continue to increase our ability to display 3D models on websites, create virtual museums, and make heritage information more accessible. The use of interactive 3D models on websites enables examples of archaeological and historical material culture to be presented more effectively. 3D models are generally more engaging than 2D images, largely because the extra dimension encourages user interaction. The act of moving around a model and choosing which areas to examine and learn more about creates a more personalised experience and contributes to the user forming a relationship with the model. This relationship can be further strengthened if the model can be manipulated or incorporated into a game, especially a puzzle. Puzzles increase the amount of time users spend with a model and can encourage them to notice details they may otherwise overlook. The sense of achievement that comes from solving a puzzle can also strengthen a positive relationship with a model and its subject.
+Advances in computing continue to increase our ability to display 3D models on websites, create virtual museums, and make heritage information more accessible. The use of interactive 3D models on websites enables examples of archaeological and historical material culture to be presented more effectively. 3D models are generally more engaging than 2D images, largely because the extra dimension encourages user interaction.The act of moving around a model and choosing which areas to examine and learn more about creates a more personalised experience, contributing to the user forming a relationship with the model. This relationship can be further strengthened if the model can be manipulated or incorporated into a game, especially a puzzle. Puzzles increase the amount of time users spend with a model and can encourage them to notice details they might otherwise overlook. The sense of achievement that comes from solving a puzzle can also help strengthen a positive relationship with a model and its subject.
 
-This lesson is the first in a two-part series that introduces [three.js](https://threejs.org) (a JavaScript library) as a tool for creating engaging digital research outputs using 3D models. Together, the lessons show how to use three.js to create a website and (optionally) a game, ‘The Jars of Papua’, featuring interactive 3D models that illustrate the diversity of pottery technologies across communities in the Papua New Guinea region. In this lesson, Part 1, you will learn about the basic components of 3D models and how to use three.js to create a website featuring a 3D model of multiple ceramic vessels (such as pots or jars) displayed on a map of Papua New Guinea. Part 2 of the lesson series builds on this foundation. In that lesson, you will create a more complex interactive website in which selecting a vessel reveals information about the local community and their ceramics. Part 2 also shows how to create a matching puzzle where users match ceramics to the community that created them (if the vessel is dragged to the corresponding community, the background colour of the scene changes).
+This lesson is the first in a two-part series that introduces [three.js](https://threejs.org) (a JavaScript library) as a tool for creating engaging digital research outputs using 3D models. Together, the lessons show how to use three.js to create a website and (optionally) a game, ‘The Jars of Papua’, featuring interactive 3D models that illustrate the diversity of pottery technologies across communities in the Papua New Guinea region. In this lesson, Part 1, you will learn about the basic components of 3D models and how to use three.js to create a website featuring a 3D model of multiple ceramic vessels (such as pots or jars) displayed on a map of Papua New Guinea. Part 2 of the lesson series builds on this foundation. In that lesson, you will create a more complex interactive website in which selecting a vessel reveals information about the local community and their ceramics. Part 2 also shows how to create a matching puzzle in which users match ceramics to the community that created them (if a vessel is dragged to the corresponding community, the background colour of the scene changes).
 
 ### Why Use 3D Models for Cultural Heritage
 
 Web models and digital games can help the dissemination of archaeological information. Rather than solely writing texts about artefacts, providing communities with opportunities for more direct engagement with the archaeological past can be considered a goal of archaeologists (Holtorf, 2005). Virtual (or printed) cultural heritage models have the advantage that they can be inspected without the risk of damaging an archaeological artefact. They can also be inspected at different scales: houses, sites, or villages can be scaled down to reveal how different areas relate to one another, while small artefacts, such as coins, can be magnified so that small details can be more easily seen. In these two lessons, vessels are scaled down so that many can be compared and placed on a geographic map. This kind of visual and geographical placement can help communicate the links between artefacts and their creators more vividly than a simple label. Finally, the use of models can also ideally help reduce the removal, and facilitate the return, of original artefacts to the communities that created them and their descendants.
 
-3D modelling is not only an engaging way of disseminating information; it can also be a valuable tool for revealing relationships and supporting new insights. For example, comparing aspects of material culture, such as pottery, across communities can help explore shared community histories. For pottery, these comparisons may be based on both appearance (form and decoration) and methods of production. However, the ways in which these styles and techniques spread may vary. Similarities do not necessarily reflect population movement alone (Dolbunova et al. 2023), especially in the case of material culture, as the spread of ideas and techniques can occur through one culture learning from another as well as through innovations within a community (O'Brien et al. 2008). Comparing different pottery styles can therefore help investigate shared heritages, community contacts, and local innovations. Visualising pottery forms and their geographic distribution through 3D modelling helps illustrate these relationships, especially when annotated with additional information such as the language family of the community (May and Tuckson 2000; Pétrequin and Pétrequin 2006).
+3D modelling is not only an engaging way of disseminating information; it can also be a valuable tool for revealing relationships and supporting new insights. For example, comparing aspects of material culture, such as pottery, across communities can help explore shared histories. For pottery, these comparisons may be based on appearance (form and decoration) and methods of production. However, the ways in which these forms and techniques spread may vary. Similarities do not necessarily reflect population movement alone (Dolbunova et al., 2023), especially in the case of material culture, as ideas and techniques can spread through one culture learning from another as well as through innovations within a community (O'Brien et al., 2008). Comparing different pottery styles can therefore help investigate shared heritages, community contacts, and local innovations. Visualising pottery forms and their geographic distribution through 3D modelling helps illustrate these relationships, especially when annotated with additional information such as the language family of the community (May and Tuckson, 2000; Pétrequin and Pétrequin, 2006).
 
 ### Lesson Goals
 
 This two-part lesson series provides a brief introduction to creating websites with 3D models using three.js.
 
-Part 1 starts by introducing fundamental concepts and components of 3D models along with some of the ethical considerations involved in generating and using 3D models when working with cultural heritage. You will then explore those concepts and components in practice, using an example 3D model of ceramics from Papua New Guinea (provided by the authors) and the three.js web editor. The three.js editor is a browser-based tool that allows you to view and interact with 3D models without writing any code. Finally, you will use the three.js JavaScript library to create a webpage featuring the example 3D model of Papua New Guinea pottery displayed on a map. You will be provided with pre-written code snippets that you will copy-paste, add to, and modify step by step. In doing so, you will learn how to set up a scene (the 3D space that contains the model), define a camera (the viewpoint from which users view the model), add lighting (to make the model objects visible and more realistic), and add navigation controls (such as mouse controls) to allow users to move around the scene.
+Part 1 starts by introducing fundamental concepts and components of 3D models along with some of the ethical considerations involved in generating and using 3D models when working with cultural heritage. You will then explore those concepts and components in practice, using an example 3D model of ceramics from Papua New Guinea (provided by the authors) and the three.js web editor. The three.js editor is a browser-based tool that allows you to view and interact with 3D models without writing any code. Finally, you will use the three.js JavaScript library to create a webpage featuring the example 3D model of Papua New Guinea pottery displayed on a map. You will be provided with pre-written code snippets that you will copy-paste, add to, and modify step by step. In doing so, you will learn how to set up a scene (the 3D space that contains the model), define a camera (the viewpoint from which users view the model), add lighting (to make the model objects visible and more realistic), and add navigation (such as mouse controls) to allow users to move around the scene.
 
-In Part 2, you will build on this foundation to create a more interactive website for ‘The Jars of Papua’ using three.js. You will learn how to work with multiple models, allow users to select and interact with them, and display additional information in response to user actions. You will also explore how to turn the scene into an interactive game, where models are initially positioned randomly, and can be moved and matched to their corresponding communities. You will do this by setting up a test in the code to run each time a model is moved, checking whether it has been placed in the correct position. Successful matches trigger a background colour change.
+In Part 2, you will build on this foundation to create a more interactive website for ‘The Jars of Papua’ using three.js. You will learn how to work with multiple models, allow users to select and interact with them, and display additional information in response to user actions. You will also explore how to turn the scene into an interactive game, where models are initially positioned randomly and can be moved and matched to their corresponding communities. You will do this by setting up a test in the code to run each time a model is moved, checking whether it has been placed in the correct position. Successful matches trigger a background colour change.
 
 ### Software Requirements and Installation
 
@@ -87,9 +87,9 @@ As an example case study, you will use a 3D model created by the authors. More i
 
 ### Papua New Guinea Pottery
 
-In this two-part lesson series, you will focus on modelling the diversity of pottery across the Papua New Guinea region as a case study. This example helps show how 3D modelling can be used not only to visualise different styles and types of material artefacts, but also to provide a sense of their relationships to the communities that made them. Although pottery is not ubiquitous throughout Papua New Guinea and West Papua, many communities have a history of making ceramic vessels for use in cooking, storage or ceremonial purposes. Pottery was first introduced to the Papua region over 3000 years ago (Gaffney et al. 2015) and the many different techniques, forms and decorations found are probably the result of a combination of local innovations and influences from different external sources. The technical and sometimes ceremonial or spiritual knowledge required to construct and decorate pots is passed down through generations or occasionally from community to community, in a process termed cultural transmission. In trying to understand this cultural transmission, researchers compare factors such as decoration, form and building technique among the different communities.
+In this two-part lesson series, you will focus on modelling the diversity of pottery across the Papua New Guinea region as a case study. This example helps show how 3D modelling can be used not only to visualise different styles and types of material artefacts, but also to provide a sense of their relationships to the communities that made them. Although pottery is not ubiquitous throughout Papua New Guinea and West Papua, many communities have a history of making ceramic vessels for use in cooking, storage or ceremonial purposes. Pottery was first introduced to the Papua region over 3000 years ago (Gaffney et al., 2015) and the many different techniques, forms and decorations found are probably the result of a combination of local innovations and influences from different external sources. The technical and sometimes ceremonial or spiritual knowledge required to construct and decorate pots is passed down through generations or occasionally from community to community, in a process termed cultural transmission. In trying to understand this cultural transmission, researchers compare factors such as decoration, form and production techniques among the different communities.
 
-3D modelling can be a useful approach to compare these dynamics of transmission and explore the diversity and intricacies of material artefacts in the context of the communities that make them. For example, in the southeast, women's pottery communities (including Mailu and Misima-Paneati speakers) employ a range of techniques, typically finishing vessels with rings made from clay coils and decorating them with predominantly geometric incised or appliqué decorations. In many inland communities, potters (including Adzera, Dimiri and Iatmul speakers) use spiral (or ring) construction, building vessels by stacking circular clay coils, with decorations often incorporating sculptural elements and carvings. In coastal communities (including the Bilibil), women make paddle-and-anvil-made vessels from a ball of clay that is beaten on the outside with a wooden paddle, while a stone (anvil) is held inside the pot; these are generally rounder, less decorated and often used for water storage. In these lessons, you will be working with 29 models of ceramics that show examples of vessels made using different building and decorating techniques. In Part 2, step-by-step instructions will be provided for individually adding six models (from Bilibil, Mailu, Misima-Paneati, Adzera, Dimiri and Iatmul speakers), with the assets and information for another 23 provided for you to practise with.
+3D modelling can be a useful approach for comparing these dynamics of transmission and explore the diversity and intricacies of material artefacts in the context of the communities that make them. For example, in the southeast, women's pottery communities (including Mailu and Misima-Paneati speakers) employ a range of techniques, typically finishing vessels with rings made from clay coils and decorating them with predominantly geometric incised or appliqué designs. In many inland communities, potters (including Adzera, Dimiri and Iatmul speakers) use spiral (or ring) construction, building vessels by stacking circular clay coils, with decorations often incorporating sculptural elements and carvings. In coastal communities (including the Bilibil), women make paddle-and-anvil-made vessels from a ball of clay that is beaten on the outside with a wooden paddle, while a stone (anvil) is held inside the pot; these are generally rounder, less decorated and often used for water storage. In these lessons, you will be working with 29 models of ceramics that show examples of vessels made using different building and decorating techniques. In Part 2, step-by-step instructions will be provided for individually adding six models (from Bilibil, Mailu, Misima-Paneati, Adzera, Dimiri and Iatmul speakers), with the assets and information for another 23 provided for you to practise with.
 
 
 ### Ethics of Modelling Cultural Heritage
@@ -100,13 +100,13 @@ If the website is intended to communicate academic research, then community invo
 
 Images of human remains can be offensive to some communities, so modelling them should be carefully considered and may require content warnings. ‘Utilitarian’ items are generally considered exempt from copyright, but some ceramics (or wooden/stone artefacts) have ceremonial purposes, and objects (particularly funerary artefacts) can also have different values and associations for different people and cultures, as highlighted by recent (2023) [Native American Graves Protection and Repatriation (NAGPRA) legislation](https://www.federalregister.gov/documents/2023/12/13/2023-27040/native-american-graves-protection-and-repatriation-act-systematic-processes-for-disposition-or) in the USA concerning the display of certain Native American objects (including burial pottery).
 
-One approach for connecting media, including models, to cultural information, such as ethical reuse or cultural restrictions on viewing, involves the inclusion of [Traditional Knowledge (TK) Labels](https://localcontexts.org/labels/traditional-knowledge-labels/) in media metadata. The use of symbolic, less realistic representations of material culture is a related approach for minimising the use of potentially culturally inappropriate digital reproductions. As discussed later, this approach can have other advantages for use in games.
+One approach for connecting media, including models, with cultural information, such as guidance on ethical reuse or cultural restrictions on viewing, involves the inclusion of [Traditional Knowledge (TK) Labels](https://localcontexts.org/labels/traditional-knowledge-labels/) in media metadata. The use of symbolic, less realistic representations of material culture is a related approach for minimising the use of potentially culturally inappropriate digital reproductions. As discussed later, this approach can have other advantages for use in games.
 
 The available guidelines and protocols are generally more targeted at institutions, but it is worth considering [Basic principle and tips for 3D digitisation of cultural heritage](https://digital-strategy.ec.europa.eu/en/library/basic-principles-and-tips-3d-digitisation-cultural-heritage) and [Protocols for using First Nations cultural and intellectual property in the arts](https://creative.gov.au/first-nations-arts/protocols-for-using-first-nations-cultural-and-intellectual-property-in-the-arts).
 
-It is also important to reference the sources of images and models used in a website. In this lesson, references will be provided through an information panel on the website. The degree to which models of cultural artefacts are covered by copyright, and who that copyright belongs to (the creators of the original artefacts, the current ‘owners’ or caretakers of the artefacts, or the creators of the model), depends on several factors, and is not always clear-cut (Oruç, 2020; D'Andrea et al. 2022; Marek, 2022). Many researchers aim to make their models and site code available for others to use to increase the dissemination of information and promote further research. Often, models and code are given [Creative Commons licences](https://creativecommons.org/share-your-work/cclicenses/) such as CC-BY-NC (Creative Commons Attribution-NonCommercial). However, it is always worth considering that your models may be used in virtual scenes you disagree with or find offensive, i.e. the pot models could be used in a potentially culturally derogatory manner (for example, illustrating cannibalism). While you can request users to only use your models and code for non-derogatory purposes, publicly available digital assets are increasingly being scraped by artificial intelligence (AI) ‘bots’, thus potentially contributing to models used in scenarios you did not foresee. The use of the `NoAI` HTML meta tag may help discourage such data harvesting.
+It is also important to reference the sources of images and models used in a website. In this lesson, references will be provided through an information panel on the website. The degree to which models of cultural artefacts are covered by copyright, and who that copyright belongs to (the creators of the original artefacts, the current ‘owners’ or caretakers of the artefacts, or the creators of the model), depends on several factors, and is not always clear-cut (Oruç, 2020; D'Andrea et al., 2022; Marek, 2022). Many researchers aim to make their models and site code available for others to use to increase the dissemination of information and promote further research. Often, models and code are given [Creative Commons licences](https://creativecommons.org/share-your-work/cclicenses/) such as CC-BY-NC (Creative Commons Attribution-NonCommercial). However, it is always worth considering that your models may be used in virtual scenes you disagree with or find offensive, for example the pot models could be used in a potentially culturally derogatory manner such as illustrating cannibalism). While you can request users to only use your models and code for non-derogatory purposes, publicly available digital assets are increasingly being scraped by artificial intelligence (AI) ‘bots’, thus potentially contributing to models used in scenarios you did not foresee. The use of the `NoAI` HTML meta tag may help discourage such data harvesting.
 
-When making games out of cultural heritage models, it is also important to reflect on whether scenes or puzzles are adopting a colonial approach. For example, in a video game, rather than letting the user steal or ‘collect’ artefacts, a better aim would be to gamify the return of artefacts to their place or community of origin. In the puzzle in Part 2 of this lesson, the pots are matched to their original community, as represented as a place on the map.
+When making games using cultural heritage models, it is also important to reflect on whether scenes or puzzles adopt a colonial approach. For example, rather than allowing the user to steal or ‘collect’ artefacts in a video game, a better aim might be to gamify the return of artefacts to their place or community of origin. In the puzzle in Part 2 of this lesson, the pots are matched to their original community, as represented as a place on the map.
 
 
 ## Introduction to 3D Modelling
@@ -115,7 +115,7 @@ When making games out of cultural heritage models, it is also important to refle
 
 3D models are made from [meshes](https://en.wikipedia.org/wiki/Polygon_mesh): networks of nodes (points), also called vertices, connected by edges (lines) to form faces, also called polygons (Figure 1). These polygons are usually triangles (with 3 vertices) or quadrilaterals (with 4 vertices), and they can be combined to form a mesh (the 3D object). Some meshes are basic, predefined shapes such as spheres, cubes, planes, and tori (‘donuts’). These are known as ‘primitive’ models and can be created directly in three.js.
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-01.png" alt="A mesh, the model and 4 maps for a white Staffy dog on a red couch with three blankets. The two-dimensional maps include colour, normal, occlusion and roughness." caption="Figure 1. The mesh and maps (textures) for a model of Diva dog. A section of a reduced polygon mesh of Diva dog is shown for comparison. Diva's tan head patch and collar can be located in the colour map. [See the model in SketchFab](https://skfb.ly/pzB7J). Model created from a quick [Polycam](https://poly.cam) scan." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-01.png" alt="A mesh, the model and four maps for a white Staffy dog on a red couch with three blankets. The two-dimensional maps include colour, normal, occlusion and roughness." caption="Figure 1. The mesh and maps (textures) for a model of Diva dog. A section of a reduced polygon mesh of Diva dog is shown for comparison. Diva's tan head patch and collar can be located in the colour map. [See the model in SketchFab](https://skfb.ly/pzB7J). Model created from a quick [Polycam](https://poly.cam) scan." %}
 
 Some people like to build more complicated models by combining primitive models in three.js, but often these more complicated models are created with [Computer Aided Design (CAD)](https://en.wikipedia.org/wiki/Computer-aided_design) software such as [Blender](https://www.blender.org) or with scanning processes such as [photogrammetry](https://en.wikipedia.org/wiki/Photogrammetry) before they are imported into three.js as ‘complex’ models.
 
@@ -125,7 +125,7 @@ In photogrammetry, models are computed from a series of overlapping photographs 
 
 Meshes can be decorated with ‘materials’ that have colour and other properties such as emission, roughness, metalness, opacity, etc. They can also be decorated with ‘textures’, which are images that are applied to the surface of a model to give it colour and detail. Generally speaking, a material refers to how a surface behaves and its properties (colour, shininess, how it reacts to light), and a texture is an image applied to a surface.
 
-Textures are two-dimensional image files with U (horizontal) coordinates from 0 to 1 and V (vertical) coordinates from 0 to 1 (Figures 1 and 2). Each vertex (node) in a model's mesh is also assigned U and V coordinates (in a process called [unwrapping](https://en.wikipedia.org/wiki/UV_mapping#UV_unwrapping)). In texture mapping, these coordinates are used to match parts of the image to different surfaces (polygons) of the model. Each polygon in the mesh gets the pixels of the texture image that match the polygon defined by the UV coordinates. This allows the image to be ‘wrapped’ onto the 3D model as a colour map. If you inspect the colour map, mesh, and model in Figure 1, you should be able to see where parts of the map, such as the tan head spot and the collar, are matched to the mesh.
+Textures are two-dimensional image files with U (horizontal) coordinates from 0 to 1 and V (vertical) coordinates from 0 to 1 (Figures 1 and 2). Each vertex (node) in a model's mesh is also assigned U and V coordinates (in a process called [unwrapping](https://en.wikipedia.org/wiki/UV_mapping#UV_unwrapping)). In texture mapping, these coordinates are used to match parts of the image to different surfaces (polygons) of the model. Each polygon in the mesh gets the pixels of the texture image that match the polygon defined by the UV coordinates. This allows the image to be ‘wrapped’ onto the 3D model as a colour map. If you inspect the colour map, mesh, and model in Figure 1, you should be able to see where parts of the map, such as the dog's tan head spot and the collar, are matched to the mesh.
 
 Textures with greyscale (from white to black) pixel intensities can also be used to convey other information, such as opacity ([alpha maps](https://en.wikipedia.org/wiki/Alpha_mapping)), roughness (roughness maps), and shadow effects ([occlusion maps](https://en.wikipedia.org/wiki/Ambient_occlusion)) (Figure 1). Many 3D modellers will create [normal maps](https://en.wikipedia.org/wiki/Normal_mapping) for their models to simulate fine shape details. Although a polygon is flat, normal maps can be used to change how light interacts across the surface of a polygon to make it appear to have more complex details. The pixels in normal maps change how light sources interpret the direction in which different points in a polygon are ‘facing’, so that a flat polygon can appear to have a non-flat surface.
 
@@ -169,7 +169,7 @@ Another advantage of three.js is that it can be used to make websites viewable i
 
 ## Exploring Models with the three.js Editor
 
-In Part 2, you will build up the ‘Jars of Papua’ website from multiple models of jars and planes, but here you will start exploring the example composite pottery model using the [three.js editor](https://threejs.org/editor/). You will explore how concepts discussed earlier — such as meshes, model formats and sizes, materials, textures, lighting, and position (coordinates) — work together within a 3D scene.
+In Part 2, you will build up ‘The Jars of Papua’ website from multiple models of jars and planes, but here you will start exploring the example composite pottery model using the [three.js editor](https://threejs.org/editor/). You will explore how concepts discussed earlier — such as meshes, model formats and sizes, materials, textures, lighting, and position (coordinates) — work together within a 3D scene.
 
 Download the composite model `png_sceneDRACO.glb` from the [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/building-3d-environments-threejs-pt-1-2). Open the [three.js editor](https://threejs.org/editor/) in a new browser window (right-click on the link) and import the model with **File** > **Import** (Figure 5).
 
@@ -265,9 +265,10 @@ In the `index.html` file, copy and paste the following, and save the file:
 This HTML file sets up a basic webpage and loads the three.js library so that you can begin writing 3D code.
 
 The file contains three main parts:
-- Basic webpage structure (`<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`), which defines the page and its content.
-- A link to a stylesheet (`main.css`), which you will create below. This defines how the page looks (for example, background colour and text styling).
-- JavaScript code, which is where you will use three.js to create and display a 3D scene.
+
+- Basic webpage structure (`<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`), which defines the page and its content
+- A link to a stylesheet (`main.css`), which you will create below. This defines how the page looks (for example, background colour and text styling)
+- JavaScript code, which is where you will use three.js to create and display a 3D scene
 
 The JavaScript code shows how the three.js library is loaded. This happens in two steps: first, the `<script type="importmap">` block tells the browser where to find the three.js library online. This is the Content Delivery Network (CDN) approach discussed earlier: instead of installing three.js locally, the browser fetches it directly from the internet.
 
@@ -277,7 +278,7 @@ The `<div id="info">` section adds a small piece of text and a link to the page.
 
 Anything written inside `<script>` tags is JavaScript code. In JavaScript code, comments are written using `//`, and anything after `//` on that line is ignored by the browser.
 
-In the `myscene` directory, create another new file called `main.css` and paste in the following.
+In the `myscene` directory, create another new file called `main.css` and paste in the following code:
 
 ```
 body {
@@ -377,16 +378,16 @@ This file is a Cascading Style Sheet (CSS). It defines the appearance of the web
 
 You should now have a directory structure as shown in Figure 11. This contains the main components of your project: `index.html` (your webpage); `main.css` (the styling); and the `models` folder (which contains the model file `png_sceneDRACO.glb`). The `textures` folder will be used in Part 2.
 
-{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-11.png" alt="A screenshot of the VSC editor with the directory structure of the myscene folder." caption="Figure 11. The directory structure can be seen in the left-hand panel of the VSC editor. The index.html file contents are shown in the main panel. A VSC terminal is open and shown in the bottom panel." %}
+{% include figure.html filename="en-or-building-3d-environments-threejs-pt-1-11.png" alt="A screenshot of the VSC editor with the directory structure of the myscene folder." caption="Figure 11. The directory structure can be seen in the left-hand panel of the VSC editor. The `index.html` file contents are shown in the main panel. A VSC terminal is open and shown in the bottom panel." %}
 
-Now you will use the terminal to run the webpage you have just created. In VSC, select **Terminal** > **New Terminal** to open a terminal. Make sure that the command line of your terminal/shell indicates that you are in the `myscene` folder (for example, it may end with `myscene %`). You can check which folder you are currently in by typing
+Now you will use the terminal to run the webpage you have just created. In VSC, select **Terminal** > **New Terminal**. Make sure that the command line of your terminal/shell indicates that you are in the `myscene` folder (for example, it may end with `myscene %`). You can check which folder you are currently in by typing:
 
 ```
 pwd
 ```
 which stands for ‘print working directory’.
 
-In the terminal, type
+In the terminal, type:
 
 ```
 npx serve
@@ -414,7 +415,7 @@ In the previous section, you set up the project by creating a webpage (`index.ht
 
 The first step is to create a container for the 3D scene (which defines where the 3D content will appear on the webpage) with `container = document.createElement('div')`.
 
-In the `index.html` file, after the following line of code:
+In the `index.html` file, **after** the following line of code:
 
 ```
 import * as THREE from 'three';
@@ -442,7 +443,7 @@ function init() {
 
 You will continue adding to this script in later steps to build the 3D scene.
 
-The `// Variable declaration and setting` part of the script is where variables used in the scene will be declared (using `let`). A variable is a named piece of information that your code can refer to later. At this stage, only `container` is declared, but more variables (such as scene, camera, renderer, lights, models, and controls) will be declared later.
+The `// Variable declaration and setting` part of the script is where variables used in the scene are declared (using `let`). A variable is a named piece of information that your code can refer to later. At this stage, only `container` is declared, but more variables (such as scene, camera, renderer, lights, models, and controls) will be declared later.
 
 The `//Function calls` part is where functions are run. Here, `init()` calls the `init` function, which means the code inside `function init() { ... }` (defined below in Function definitions) will run. Later you will also add an `animate()` function.
 
@@ -502,7 +503,7 @@ The `camera` defines the point of view from which the scene is rendered. The pos
 
 The aspect ratio can be taken from the browser window's dimensions, and you will later add a function so that it is updated if the browser window is resized. The units for three.js are metres, so this camera will not render anything on the screen that is nearer than 0.1 m or further than 10 m. When moving the camera is introduced later, you will see objects disappear if they get too close.
 
-The camera and other positions are set using x, y, and z coordinates. As mentioned previously, x is left (-) and right (+), y is down (-) and up (+) and z is depth or far away from the viewer/‘into the screen’ (-) and near the viewer/‘coming out from the screen’ (+). Here, the camera is set at a height of 1.6m (y = 1.6), slightly above ground level. The z coordinate for the camera is set at 3m, as if you are standing a short distance away from the scene.
+The camera and other positions are set using x, y, and z coordinates. As mentioned previously, x is left (-) and right (+), y is down (-) and up (+) and z is depth or far away from the viewer/‘into the screen’ (-) and near the viewer/‘coming out from the screen’ (+). Here, the camera is set at a height of 1.6m (y = 1.6), slightly above ground level. The z coordinate for the camera is set at 3 m, as if you are standing a short distance away from the scene.
 
 #### 3. Rendering the Scene
 
@@ -588,12 +589,12 @@ If you save the file and reload the browser, resizing the browser window should 
 
 #### 5. Setting up Lighting
 
-Next, you will add lights to the scene.
+Now, you will add lights to the scene.
 
 There are several different types of lights available in three.js. Here, you will add:
 
-- a [hemisphere light](https://threejs.org/docs/index.html#api/en/lights/HemisphereLight) (which simulates light coming from above and below), and
-- a [directional light](https://threejs.org/docs/index.html#api/en/lights/DirectionalLight) (which acts like a light shining from a specific direction, such as sunlight).
+- a [hemisphere light](https://threejs.org/docs/index.html#api/en/lights/HemisphereLight) (which simulates light coming from above and below)
+- a [directional light](https://threejs.org/docs/index.html#api/en/lights/DirectionalLight) (which acts like a light shining from a specific direction, such as sunlight)
 
 The hemisphere light uses two colours (for sky and ground) and an intensity (from 0 to 1), while the directional light uses one colour and a position. Use the values provided below first. If everything is working, you can experiment with different values later.
 
@@ -634,12 +635,15 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'; // needed if the glTF file uses DRACO compression
 ```
 
-Next, declare variables and set up the loaders. After:
+Next, declare variables and set up the loaders. 
+
+**After** this line of code:
 ```
 let container, camera, scene, renderer;
 ```
 
-add the following code:
+**add** the following code:
+
 ```
 let themodel;
 let desk = 0.8; // the height of the model (metres), corresponding to desk height in virtual reality
@@ -656,12 +660,15 @@ loader.setDRACOLoader( dracoLoader );
 The `DRACOLoader` retrieves decoding code from a web server and the version number in the [path](https://en.wikipedia.org/wiki/Path_(computing)) must match the version of three.js that you are using. If you are not using version 0.160.0, make sure to update the version number accordingly.
 
 
-Now, load the model. Inside the `init()` function, after:
+Load the model. 
+
+Inside the `init()` function, **after** this lie of code:
 ```
 scene.add( light );
 ```
 
-add the following code:
+**add** the following code:
+
 ```
 // load model
 // function used by loader
@@ -678,10 +685,10 @@ loader.load( 'models/png_sceneDRACO.glb', onLoadMap, undefined, function ( error
 
 The model is loaded using the `loader.load()` method, which can take up to four arguments:
 
-- the file path (e.g. `models/png_sceneDRACO.glb`). This can also be a URL.
+- the file path, e.g. `models/png_sceneDRACO.glb` (this can also be a URL)
 - a function to run after the model has loaded
 - a function to run while the model is loading (optional)
-- a function to run if an error occurs.
+- a function to run if an error occurs
 
 The last three functions are called ‘callback’ functions (functions passed into another function as arguments). In this example, the `onLoadMap` function is called once the model has loaded; the loading progress function is left `undefined` (though it could be used to create a loading bar or similar); the error function prints any errors to the browser console.
 
@@ -706,32 +713,38 @@ Here you will use `OrbitControls`, which allow users to navigate the scene by:
 - panning (when the mouse is clicked and dragged while pressing the *Shift* key, or using the *right mouse button*)
 - zooming (with mouse scrolling).
 
-First, you will import the controls. After the following line of code:
+First, you will import the controls. 
+
+**After** the following line of code:
 ```
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 ```
 
-add the following code:
+**add** the following code:
 ```
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 ```
 
-Next, add the controls to your variable declaration. Find the following code:
+Next, add the controls to your variable declaration. 
+
+**Find** the following code:
 ```
 let container, camera, scene, renderer;
 ```
 
-and update it to:
+and **update** it to:
 ```
 let container, camera, scene, renderer, controls;
 ```
 
-Next, you will create the controls and link them to the camera and renderer. Inside the `init()` function, after:
+Next, you will create the controls and link them to the camera and renderer. 
+
+Inside the `init()` function, **after** this line of code:
 ```
 container.appendChild( renderer.domElement );
 ```
 
-add the following code:
+**add** the following code:
 ```
 // create orbit controls
 controls = new OrbitControls( camera, renderer.domElement);
@@ -745,14 +758,16 @@ The `OrbitControls` link the camera to user input (mouse and scroll), allowing y
 
 Save the file and reload the page. You should now be able to move around the scene and zoom in and out. Note that it is the camera that is moving, not the model itself.
 
-If you want the camera to rotate automatically, you can uncomment `controls.autoRotate = true;`. This rotates the camera around the scene without user input. If you do this, you must also update the `render()` function. Find the following code:
+If you want the camera to rotate automatically, you can uncomment `controls.autoRotate = true;`. This rotates the camera around the scene without user input. If you do this, you must also update the `render()` function. 
+
+**Find** the following code:
 ```
 function render() {
  renderer.render( scene, camera );
 }
 ```
 
-and change it to:
+and **change it** to:
 ```
 function render() {
  controls.update(); // use if controls.autoRotate = true
@@ -775,7 +790,7 @@ Part 1 of this two-part series introduced 3D models and their components: meshes
 
 In this lesson, you also used three.js to create a website with a model featuring some of the different ceramic vessels of Papua New Guinea. Interacting with the model gives a sense of the diversity of decoration styles and forms used by different communities across the region. You may have noticed similarities between some of the vessels and considered whether these indicate shared histories or knowledge exchanges between communities. This kind of additional information can be incorporated through annotations. You can annotate models using platforms such as SketchFab, which allow you to do this more quickly and easily. By contrast, using JavaScript libraries, such as three.js, gives you more flexibility and options for your website.
 
-This will be covered in Part 2 of this lesson series. In Part 2, you will continue working with three.js and the Papua New Guinea ceramics model, but you will use a different approach to loading the models. You will import the jar models individually, control their colours and allow users to select them and trigger the display of relevant information in a text panel. You will also learn how to turn the scene into an interactive game where the jar models start in random positions and can be moved to the communities that created them. This demonstrates further how three.js can be used to create engaging and effective ways of communicating historical research and concepts through 3D models of material culture.
+This will be covered in Part 2 of the lesson series. You will continue working with three.js and the Papua New Guinea ceramics model, but use a different approach to loading the models. You will import the jar models individually, control their colours and allow users to select them and trigger the display of relevant information in a text panel. You will also learn how to turn the scene into an interactive game in which the jar models start in random positions and can be moved to the communities that created them. This further demonstrates how three.js can be used to create engaging and effective ways of communicating historical research and concepts through 3D models of material culture.
 
 ## References
 

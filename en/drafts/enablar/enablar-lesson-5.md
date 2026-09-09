@@ -213,7 +213,7 @@ In this lesson we acquire catalogue data by downloading files directly. Some ins
 
 In the first step we explain how to download a single file.
 
-As usual in Python we should start with importing the Python libraries we would like to utilize in the script:
+As usual in Python we should start with importing the Python libraries we would like to utilise in the script:
 
 ```python
 import urllib.request
@@ -256,7 +256,7 @@ The act of downloading is pretty simple, it saves the content of the URL into th
 urllib.request.urlretrieve(url, target_file)
 ```
 
-As we would like to work with an XML file and not a compressed file (which would be also possible, but not discussed in this lesson), we should extract it. It needs some steps. With `gzip.open()` we open the archive file in binary read mode (it behaves similarly to other file read operations in Python), and we specify a file handle (`f_in`). We should also specify the name of the uncompressed file with the help of another regular expression. `re.sub()` substitutes strings. Here we are looking for the `.gz` extension in the file name, and replace it with an empty string - in other words, we remove it. Note: in regular expression `.` (dot character) has a special meaning: it fits any character. If we want to mean the real dot, we should escape this interpretation with the backslashes. We put an `r` prefix before the search string. This refers to the so-called _r-string_ or [raw string notation](https://mimo.org/glossary/python/raw-strings) that treats backslashes (`\`) as literal characters rather than escape sequences, otherwise we should add double backslashes, to behave as escape sequence in regular expressions. Finally, we open a binary file for writing and utilize the `shutil.copyfileobj()` method to copy the content. 
+As we would like to work with an XML file and not a compressed file (which would be also possible, but not discussed in this lesson), we should extract it. It needs some steps. With `gzip.open()` we open the archive file in binary read mode (it behaves similarly to other file read operations in Python), and we specify a file handle (`f_in`). We should also specify the name of the uncompressed file with the help of another regular expression. `re.sub()` substitutes strings. Here we are looking for the `.gz` extension in the file name, and replace it with an empty string - in other words, we remove it. Note: in regular expression `.` (dot character) has a special meaning: it fits any character. If we want to mean the real dot, we should escape this interpretation with the backslashes. We put an `r` prefix before the search string. This refers to the so-called _r-string_ or [raw string notation](https://mimo.org/glossary/python/raw-strings) that treats backslashes (`\`) as literal characters rather than escape sequences, otherwise we should add double backslashes, to behave as escape sequence in regular expressions. Finally, we open a binary file for writing and utilise the `shutil.copyfileobj()` method to copy the content. 
 
 ```python
 with gzip.open(target_file, 'rb') as f_in:
@@ -301,7 +301,7 @@ configuration = {
 }
 ```
 
-Because we will download multiple files, it would be useful to separate the code into a function that accepts a file name, and utilizes the configuration object. We start with the function's signature and documentation:
+Because we will download multiple files, it would be useful to separate the code into a function that accepts a file name, and utilises the configuration object. We start with the function's signature and documentation:
 
 ```python
 def download_file(file_name):
@@ -766,9 +766,9 @@ Each function is useful on its own. `compare_sets` works on any two sets, not ju
 
 We now have three numbers describing how two catalogues overlap: what they share, and what's unique to each side. Numbers like these are easier to grasp at a glance when they're drawn rather than printed, which is where visualisation comes in.
 
-#### Visualization: Creating a Venn diagram
+#### Visualisation: Creating a Venn diagram
 
-A good data visualization that summarises numbers helps someone to realise trends and important features of a collection of data. [Above](#function-3-compare_sets) we saw how to calculate the difference of two sets of subject headings. Based on previously defined functions our code was this:
+A good data visualisation that summarises numbers helps someone to realise trends and important features of a collection of data. [Above](#function-3-compare_sets) we saw how to calculate the difference of two sets of subject headings. Based on previously defined functions our code was this:
 
 ```python
 headings_a = headings_matching(df_a, 'Immigra')
@@ -795,7 +795,7 @@ plt.savefig('fig_output/venn-diagram-v1.png')
 plt.close()
 ```
 
-It gives the colorized Venn diagram. The circles and its intersection contain the number of subjects, but not the subjects themselves:
+It gives the colourised Venn diagram. The circles and its intersection contain the number of subjects, but not the subjects themselves:
 
 {% include figure.html filename="en-or-enablar-lesson-5-03.png" alt="Visual description of figure image" caption="Figure 1. Venn diagram - initial version" %}
 
@@ -833,7 +833,7 @@ The final result will look like this:
 
 ## Summary
 
-In this lesson we gave a short introduction to analysis of MARC21 records. We learnt how to read MARC files, how to transform records into a tabular format, and we also saw some analysis and data visualization. You can do, however, much more than this. MARC21 has more than 3000 data elements, and even smaller libraries utilise several hundreds of them. We suggest you first know your data: make a simple statistics of the available data elements, then analyse those which might be interesting. The analysis could support some daily work (such as in this lesson), or you can answer some historical question (e.g. how the language distribution changed over time in your library).
+In this lesson we gave a short introduction to analysis of MARC21 records. We learnt how to read MARC files, how to transform records into a tabular format, and we also saw some analysis and data visualisation. You can do, however, much more than this. MARC21 has more than 3000 data elements, and even smaller libraries utilise several hundreds of them. We suggest you first know your data: make a simple statistics of the available data elements, then analyse those which might be interesting. The analysis could support some daily work (such as in this lesson), or you can answer some historical question (e.g. how the language distribution changed over time in your library).
 
 <!-- 
 ## Local application
@@ -843,5 +843,5 @@ In this lesson we gave a short introduction to analysis of MARC21 records. We le
 
 ## Continued learning
 
-We suggest you expand your knowledge in two paths: improve your Python, and your bibliographic knowledge. For the first path you can check other relevant [Programming Historian lessons](https://programminghistorian.org/en/lessons/?topic=python). For MARC21 the best source is the standard's [documentation](https://www.loc.gov/marc/bibliographic/). You can also learn by reading others' code, search for ["import pymarc"](https://github.com/search?q=%22import+pymarc%22&type=code) at Github or in another code repository, and check how it is utilized in different contexts.
+We suggest you expand your knowledge in two paths: improve your Python, and your bibliographic knowledge. For the first path you can check other relevant [Programming Historian lessons](https://programminghistorian.org/en/lessons/?topic=python). For MARC21 the best source is the standard's [documentation](https://www.loc.gov/marc/bibliographic/). You can also learn by reading others' code, search for ["import pymarc"](https://github.com/search?q=%22import+pymarc%22&type=code) at Github or in another code repository, and check how it is utilised in different contexts.
 

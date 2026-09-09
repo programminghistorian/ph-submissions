@@ -267,6 +267,7 @@ Il est également possible de connecter nanDECK à un tableur Google Sheets en s
 >LINK=ID!Nom_de_la_feuille
 >Exemple :
 >LINK=SAMPLE_ID!Beta
+>
 >Mais vous devez activer le partage sur le web en suivant ces étapes :
 >* Ouvrez la feuille de calcul dans un navigateur
 >* Dans le menu, sélectionnez Fichier → Partager → Publier sur le Web

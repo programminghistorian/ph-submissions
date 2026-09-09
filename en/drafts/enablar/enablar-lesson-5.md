@@ -154,14 +154,14 @@ One note on licensing: most Yale-originated records are released under a public 
 
 The lesson uses the following Python packages, introduced in context but listed here for reference:
 
-- [PyMARC](https://gitlab.com/pymarc/pymarc) reads and parses MARC records. This lesson works mainly with the MARCXML form. We used version 5.4.0.
-- [pandas](https://pandas.pydata.org/) provides the DataFrame, the tabular structure we reshape records into. We used version 3.0.3.
-- [lxml](https://lxml.de/) parses HTML, used during acquisition to find downloadable files on an index page. We used version 6.1.1.
-- [matplotlib](https://matplotlib.org/) and [matplotlib-venn](https://pypi.org/project/matplotlib-venn/) produce the Venn diagram visualisation. We used matplotlib version 3.11.0 and matplotlib-venn version1.1.2.
-- [numpy](https://numpy.org/) is used in scientific computing mainly for numerical operation. Here we use only one feature: it defines data types that pandas and visualisation can use. It is frequently abbreviatied as `np`. We used version 2.5.1.
+- [PyMARC](https://gitlab.com/pymarc/pymarc) (version 5.4.0) reads and parses MARC records. This lesson works mainly with the MARCXML form.
+- [pandas](https://pandas.pydata.org/) (version 3.0.3) provides the DataFrame, the tabular structure we reshape records into.
+- [lxml](https://lxml.de/) (version 6.1.1) parses HTML, used during acquisition to find downloadable files on an index page.
+- [matplotlib](https://matplotlib.org/) (version 3.11.0) and [matplotlib-venn](https://pypi.org/project/matplotlib-venn/) (version 1.1.2) produce the Venn diagram visualisation.
+- [numpy](https://numpy.org/) (version 2.5.1) is used in scientific computing mainly for numerical operation. Here we use only one feature: it defines data types that pandas and visualisation can use. It is frequently abbreviatied as `np`. 
 - Several standard-library modules (`urllib`, `os`, `gzip`, `shutil`, `re`) handle downloading, file management, and pattern matching.
 
-We used Python version 3.12.3.
+Python version: 3.12.3
 
 ## Learning keys
 

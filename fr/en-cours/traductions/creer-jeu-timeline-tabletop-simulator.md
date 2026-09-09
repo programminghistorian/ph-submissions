@@ -496,6 +496,8 @@ Bien que Tabletop Simulator (TTS) ne soit pas la seule plateforme numérique per
 
 ## Créer des cartes virtuelles pour Tabletop Simulator
 
+*À noter : Depuis la version 1.29, NanDeck propose une fonctionnalité intégrée permettant d’exporter directement les cartes vers Tabletop Simulator. Cette fonctionnalité peut simplifier la procédure présentée dans cette leçon et éviter certaines étapes décrites ci-dessous.*
+
 Il est également possible d’importer les cartes dans TTS afin de transformer le jeu en une sorte de jeu vidéo, sans avoir besoin de coder les règles. Bien que TTS ne requiert pas de connaissances en programmation pour utiliser sa boîte à outils, il ne s'agit pas pour autant d'un environnement simple ni intuitif. Berserk Games, la société qui développe TTS, propose une série de sept [tutoriels vidéo sur YouTube](https://www.youtube.com/watch?v=6e8RFMtAVac&list=PLA16SF2eexlUtH2AM4V8VF9rDpekW2uYA)  pour apprendre aux personnes qui débutent à créer des jeux et à y jouer dans cet environnement.
 
 La partie suivante explique comment convertir le jeu  "Timeline Réunion" en format numérique pour TTS. Des instructions générales expliquent comment appliquer le même procédé aux éléments utilisés précédemment pour créer le jeu de démarrage de six cartes.

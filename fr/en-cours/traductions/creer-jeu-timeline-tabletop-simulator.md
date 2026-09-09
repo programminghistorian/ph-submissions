@@ -59,7 +59,9 @@ La leçon présente ensuite *Timeline*, un jeu sur le thème de l'histoire, ains
 En 2013, le concepteur de jeux Eric Zimmerman publie « Manifesto for a Ludic Century »[^5] (Manifeste pour un Siècle ludique). Il y défend l’idée que les jeux prennent une place croissante dans notre culture et que cette évolution nous amène à développer de nouvelles compétences pour comprendre et créer des expériences ludiques. Trois idées de son manifeste sont particulièrement utiles pour cette leçon :
 
 **Les jeux sont de plus en plus présents dans notre manière de communiquer et de nous divertir**. Ils permettent de manipuler des informations, d’expérimenter et de participer activement, plutôt que de simplement recevoir un contenu.
+
 **Comprendre les jeux est une forme de littératie**. De la même manière que savoir lire et écrire permet de comprendre et de produire des textes, comprendre les règles et les mécanismes d’un jeu permet de mieux appréhender les systèmes ludiques et, progressivement, d’en créer soi-même.
+
 **Jouer peut aussi conduire à concevoir**. Lorsque l’on cherche à comprendre pourquoi un jeu fonctionne, à modifier ses règles ou à imaginer de nouvelles façons d’y jouer, on adopte déjà, en partie, le regard d’une personne qui conçoit des jeux. Cette dernière idée est particulièrement intéressante dans le cadre pédagogique : créer ou modifier un jeu ne consiste pas seulement à apprendre à jouer, mais aussi à réfléchir à ses règles, à ses mécanismes et aux choix qui façonnent l’expérience des joueurs et des joueuses. C’est dans cette perspective que cette leçon propose aux élèves de concevoir leur propre jeu.
 
 Ces principes clés soulignent l’intérêt d’utiliser les jeux en classe et d’impliquer les élèves dans leur conception, en leur donnant la possibilité de les modifier et d’en créer de nouveaux.

@@ -36,7 +36,7 @@ Cette leçon nécessite l’utilisation d’un logiciel dont la prise en main pe
 
 L’installation et l’utilisation du logiciel peuvent également être plus complexes sur les systèmes Linux et macOS, notamment parce qu’elles peuvent nécessiter le recours à une solution d’émulation. La procédure proposée dans cette leçon est principalement conçue pour Windows et peut ne pas être directement transposable à d’autres systèmes d’exploitation.
 
-Les solutions d’émulation et leurs alternatives étant susceptibles d’évoluer ou de ne plus être maintenues, leur présentation détaillée dépasse le cadre de cette leçon. Nous recommandons donc aux utilisateurs de vérifier au préalable la compatibilité de leur système d’exploitation et les prérequis nécessaires à l’installation du logiciel.
+Les solutions d’émulation et leurs alternatives étant susceptibles d’évoluer ou de ne plus être maintenues, leur présentation détaillée dépasse le cadre de cette leçon. Les utilisateurs et utilisatrices sont invités à vérifier au préalable la compatibilité de leur système d’exploitation et les prérequis nécessaires à l’installation du logiciel.
 
 ## Introduction
 

@@ -180,8 +180,9 @@ Python version: 3.12.3
 - **LCSH (Library of Congress Subject Headings)**: the controlled vocabulary used to assign subject headings.
 - **Shard**: one of the numbered files into which a large catalogue is split.
 
-### Time
-<!-- TODO (Doreen): add a time estimate after walking through the lesson, e.g. ~3 hours including downloads. -->
+### Time to complete the lesson:
+
+Approximately 2-3 hours, including time to download sample files. Download time will vary depending on your internet connection.
 
 ## Learning experiment
 

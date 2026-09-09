@@ -253,9 +253,8 @@ Il est également possible de connecter nanDECK à un tableur Google Sheets en s
 
 >Vous pouvez également connecter un document Google Sheets en utilisant l'identifiant (ID) du fichier à la place du paramètre "filename” (nom de fichier), mais vous devez d’abord le partager en suivant ces étapes :
 >
->* Sélectionnez le fichier dans la page web de Google Drive
+>* Ouvrez le fichier dans la page web de Google Drive
 >* Cliquez sur l'icône Partager (en haut à droite)
->* Dans la fenêtre, cliquez sur le menu déroulant sous « Accès général »
 >* Choisissez une option de partage par lien, par exemple « Tous les utilisateurs qui ont le lien »
 >
 >Google vous affichera alors un lien du type : `https://docs.google.com/spreadsheets/d/SAMPLE_ID/edit?usp=sharing`

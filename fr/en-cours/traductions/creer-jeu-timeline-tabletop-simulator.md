@@ -30,16 +30,23 @@ doi:
 
 {% include toc.html %}
 
+## Mise en garde — Prérequis techniques
+
+Cette leçon nécessite l’utilisation d’un logiciel dont la prise en main peut être techniquement exigeante, notamment pour les personnes qui ne sont pas familières avec les outils informatiques ou la programmation.
+
+L’installation et l’utilisation du logiciel peuvent également être plus complexes sur les systèmes Linux et macOS, notamment parce qu’elles peuvent nécessiter le recours à une solution d’émulation. La procédure proposée dans cette leçon est principalement conçue pour Windows et peut ne pas être directement transposable à d’autres systèmes d’exploitation.
+
+Les solutions d’émulation et leurs alternatives étant susceptibles d’évoluer ou de ne plus être maintenues, leur présentation détaillée dépasse le cadre de cette leçon. Les utilisateurs et utilisatrices sont invités à vérifier au préalable la compatibilité de leur système d’exploitation et les prérequis nécessaires à l’installation du logiciel.
+
 ## Introduction
 
-Les élèves ne sont plus systématiquement invités à mémoriser par cœur des tableaux d'événements historiques avec leurs dates, comme c’était le cas aux États-Unis au milieu du dix-neuvième siècle[^1]. Sans entrer dans les divers débats[^2] sur l’intérêt d’enseigner ou non la chronologie en classe, cette leçon part du principe qu'il est utile « d'aider les élèves à développer de solides connaissances de base dans nos disciplines »[^3] et que les jeux constituent un excellent outil pour atteindre cet objectif.
+Les élèves ne sont plus systématiquement invités à mémoriser par cœur des tableaux d'événements historiques et leurs dates, comme cela pouvait être le cas aux États-Unis au milieu du XIXe siècle[^1]. Sans entrer dans les débats[^2] sur l’intérêt d’enseigner la chronologie en classe, cette leçon part du principe qu'il est utile « d'aider les élèves à développer de solides connaissances de base dans nos disciplines »[^3] et que les jeux peuvent constituer un outil intéressant pour y parvenir.
 
-Inviter les élèves à créer leurs propres jeux - ou à proposer une modification d’un jeu existant (un “mod”) - peut être l'occasion de leur apprendre à manipuler et à transformer des objets numériques en objets physiques, lesquels peuvent ensuite être réutilisés pour offrir d’enrichissantes expériences pédagogiques. Ce tutoriel montre comment les élèves peuvent créer leur propre jeu, en version papier ou numérique, en s'appuyant sur la mécanique de construction chronologique popularisée par le jeu de Frédéric Henry : Timeline.
+Inviter les élèves à créer un jeu - ou à modifier un jeu existant (un “mod”) - peut également leur permettre d'apprendre à manipuler et à transformer des objets numériques en objets physiques, lesquels sont ensuite réutilisables dans d'autres expériences pédagogiques. Ce tutoriel mpropose ainsi de créer un jeu, en version papier ou numérique, en s’appuyant sur la mécanique de construction chronologique popularisée par *Timeline*, le jeu de Frédéric Henry.
 
-Tout comme les auteurs et autrices ou les maisons d'édition utilisent des traitements de texte pour créer des livres imprimés, les personnes qui conçoivent des jeux utilisent régulièrement des outils numériques pour réaliser des prototypes papier de leurs créations. Deux de ces outils numériques spécialisés sont présentés dans ce tutoriel : nanDECK d'Andrea Nini et Tabletop Simulator développé et édité par Berserk Games.
+Tout comme les auteurs et autrices utilisent des traitements de texte pour concevoir des livres imprimés, les concepteurs et conceptrices de jeux disposent eux aussi d’outils spécialisés pour préparer leurs créations. Deux de ces outils numériques spécialisés sont présentés dans ce tutoriel : nanDECK d'Andrea Nini et Tabletop Simulator développé et édité par Berserk Games.
 
-En tant qu'enseignant ou enseignante, il est possible d’attirer l’attention des élèves sur les différentes possibilités offertes par les versions papier et numériques d'un même objet informationnel, entendu ici comme un objet qui transmet ou donne accès à de l’information. Grâce à la possibilité de jouer au même jeu à la fois physiquement et de façon dématérialisée, les élèves peuvent réfléchir à la manière dont le support influence l'expérience de jeu. Grâce à leur nouvelle capacité à modifier les éléments ou les pièces d’un jeu familier, les élèves peuvent explorer ce qui se passe lorsque les règles d’un jeu bien connu sont modifiées[^4].
-
+Enfin, la possibilité de créer un même jeu sous forme physique et numérique offre l’occasion de comparer ces deux supports et d’interroger leur influence sur l’expérience de jeu. La modification des règles ou des éléments d’un jeu familier permet également d’explorer les effets de ces transformations et d’envisager le jeu comme un objet que les élèves peuvent eux-mêmes analyser, créer et transformer[^4].
 
 ## Aperçu de la leçon
 
@@ -49,31 +56,19 @@ La leçon présente ensuite *Timeline*, un jeu sur le thème de l'histoire, ains
 
 ## Jouer durant le “Siècle ludique”
 
-En 2013, le concepteur de jeux Eric Zimmerman a publié un « Manifesto for a Ludic Century »[^5] (Manifeste pour un Siècle ludique) dans lequel il expose les principes suivants :
+En 2013, le concepteur de jeux Eric Zimmerman publie « Manifesto for a Ludic Century »[^5] (Manifeste pour un Siècle ludique). Il y défend l’idée que les jeux prennent une place croissante dans notre culture et que cette évolution nous amène à développer de nouvelles compétences pour comprendre et créer des expériences ludiques. 
 
+Trois idées de son manifeste sont particulièrement utiles pour cette leçon :
 
->**Le Siècle ludique est l’ère des jeux.**
->
->Quand l’information devient ludique, les expériences qui s’inspirent du jeu remplacent les média linéaires. L’expression médiatique et la culture, dans le Siècle ludique, sont de plus en plus systémiques, modulaires, modifiables et participatives. Les jeux sont une incarnation très directe de toutes ces caractéristiques.
->
->De plus en plus, la population va consacrer temps de loisir, consommer de l’art, du design, du divertissement sous forme de jeux – ou au moins sous forme d’expériences qui ressembleront beaucoup à des jeux.
->
->**Les jeux sont comme un langage à acquérir.**
->
->Les systèmes, le jeu, le design : ce ne sont pas seulement des aspects du Siècle ludique, ce sont aussi des éléments de l’alphabétisation ludique. Être alphabétisé, c’est être capable de créer et de comprendre du sens, c’est ce qui permet aux personnes d’écrire (créer) et de lire (comprendre).
->
->Dans les dernières décennies, nous avons identifié de nouveaux types d’alphabétisation : visuelle, technologique… Mais dans le Siècle ludique, être vraiment alphabétisé, c’est aussi maîtriser le langage des jeux. La place prise par les jeux dans notre culture est à la fois la cause et la conséquence de l’alphabétisation aux jeux dans le Siècle ludique.
->
->**Dans le Siècle ludique, tout le monde sera concepteur de jeu.**
->
->Les jeux modifient la nature de la consommation culturelle. La musique est jouée par des artistes, mais la plupart des gens ne sont pas des artistes musicaux – ils écoutent la musique que d'autres personnes ont faite. A l’opposé, les jeux requièrent une participation active.
->
->Le game design implique de maîtriser la logique des systèmes, la psychologie sociale, et d’être une personne qui bidouille. Quand on joue a un jeu en profondeur, on est naturellement amené à penser comme une personne qui conçoit des jeux – à le remanier, à tenter de comprendre comment il a été conçu, à le modifier pour trouver de nouvelles façons d’y jouer. Dans le Siècle ludique, au fur et à mesure que de plus en plus de personnes joueront en profondeur, la ligne de séparation entre les personnes qui jouent et celles qui conçoivent des jeux sera de plus en plus ténue.
+**Les jeux sont de plus en plus présents dans notre manière de communiquer et de nous divertir**. Ils permettent de manipuler des informations, d’expérimenter et de participer activement, plutôt que de simplement recevoir un contenu.
 
+**Comprendre les jeux est une forme de littératie**. De la même manière que savoir lire et écrire permet de comprendre et de produire des textes, comprendre les règles et les mécanismes d’un jeu permet de mieux appréhender les systèmes ludiques et, progressivement, d’en créer soi-même.
 
-Ces principes clés renforcent l'idée que les jeux devraient être utilisés en classe afin de faciliter l'apprentissage, et que les élèves gagneraient à être à la conception de jeux, leur fournissant les moyens de les modifier et d’en créer de nouveaux.
+**Jouer peut aussi conduire à concevoir**. Lorsque l’on cherche à comprendre pourquoi un jeu fonctionne, à modifier ses règles ou à imaginer de nouvelles façons d’y jouer, on adopte déjà, en partie, le regard d’une personne qui conçoit des jeux. Cette dernière idée est particulièrement intéressante dans le cadre pédagogique : créer ou modifier un jeu ne consiste pas seulement à apprendre à jouer, mais aussi à réfléchir à ses règles, à ses mécanismes et aux choix qui façonnent l’expérience des joueurs et des joueuses. C’est dans cette perspective que cette leçon propose aux élèves de concevoir leur propre jeu.
 
-En ce qui concerne cet article, il n'est pas nécessaire d'être convaincu que les jeux doivent continuer à jouer un rôle important dans l’enseignement et l’apprentissage de l’histoire[^6]. Néanmoins, les personnes qui s'interrogent sur la place des jeux dans l'éducation sont invitées à lire la partie « Why Games » de l'article « Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine »[^7].
+Ces principes clés soulignent l’intérêt d’utiliser les jeux en classe et d’impliquer les élèves dans leur conception, en leur donnant la possibilité de les modifier et d’en créer de nouveaux.
+
+Il n'est pas nécessaire, pour suivre cette leçon, d'être convaincu que les jeux doivent continuer à jouer un rôle important dans l’enseignement et l’apprentissage de l’histoire[^6]. Néanmoins, les personnes qui s'interrogent sur la place des jeux dans l'éducation sont invitées à lire la partie « Why Games » de l'article « Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine »[^7].
 
 ## Présentation de *Timeline*
 
@@ -258,9 +253,8 @@ Il est également possible de connecter nanDECK à un tableur Google Sheets en s
 
 >Vous pouvez également connecter un document Google Sheets en utilisant l'identifiant (ID) du fichier à la place du paramètre "filename” (nom de fichier), mais vous devez d’abord le partager en suivant ces étapes :
 >
->* Sélectionnez le fichier dans la page web de Google Drive
+>* Ouvrez le fichier dans la page web de Google Drive
 >* Cliquez sur l'icône Partager (en haut à droite)
->* Dans la fenêtre, cliquez sur le menu déroulant sous « Accès général »
 >* Choisissez une option de partage par lien, par exemple « Tous les utilisateurs qui ont le lien »
 >
 >Google vous affichera alors un lien du type : `https://docs.google.com/spreadsheets/d/SAMPLE_ID/edit?usp=sharing`
@@ -272,6 +266,7 @@ Il est également possible de connecter nanDECK à un tableur Google Sheets en s
 >LINK=ID!Nom_de_la_feuille
 >Exemple :
 >LINK=SAMPLE_ID!Beta
+>
 >Mais vous devez activer le partage sur le web en suivant ces étapes :
 >* Ouvrez la feuille de calcul dans un navigateur
 >* Dans le menu, sélectionnez Fichier → Partager → Publier sur le Web
@@ -327,7 +322,7 @@ Dans cet exemple, nanDECK doit tracer une bordure noire et rectangulaire autour 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-03.png" alt="Exemple d’une page de cartes créée via nanDECK, avec les bordures noires souhaitées et les lignes de découpe en pointillés visibles."  caption="Figure 3. Exemple d’une page de cartes créée via nanDECK, avec les bordures noires souhaitées et les lignes de découpe en pointillés visibles." %}
 
 ### Ligne 6 : IMAGE
-nanDECK comprend un éditeur visuel de base qui permet de dessiner des formes ou d'importer des images sur les cartes. Dans ce jeu, nous souhaitons ajouter des images `.jpg` externes, collectées à partir de diverses collections numériques en histoire et stockées dans un répertoire local.
+nanDECK comprend un éditeur visuel de base qui permet de dessiner des formes ou d'importer des images sur les cartes. Dans ce jeu, des images `.jpg` externes sont ajoutées, collectées à partir de diverses collections numériques en histoire et stockées dans un répertoire local.
 
 De nombreux paramètres et indicateurs sont associés à la directive `IMAGE`, comme en témoigne sa syntaxe :
 
@@ -341,7 +336,7 @@ Comprendre l’ordre des éléments dans la syntaxe peut aider à interpréter l
 6. IMAGE="1-{(IMAGES)}",\[IMAGES],0%,0%,100%,60%,0,PTG
 ```
 
-nanDECK peut très utilement calculer le nombre d'éléments répertoriés dans un champ donné d'une feuille de calcul. Pour ce faire, il utilise une expression encadrée par des accolades. Dans ce cas, l'expression {(IMAGES)} indique à nanDECK de calculer le nombre d'éléments répertoriés dans le champ `IMAGE`. Ici, il y a 59 images, donc {(IMAGES)} renvoie `59`. Sachant cela, il apparaît qu'à la ligne 6 de la figure 4 ci-dessous, `IMAGE="1-{(IMAGES)}"` demande à nanDECK d'imprimer les images des lignes 1 à 59.
+nanDECK peut très utilement calculer le nombre d'éléments répertoriés dans un champ donné d'une feuille de calcul. Pour ce faire, il utilise une expression encadrée par des accolades. Dans ce cas, l'expression {(IMAGES)} indique à nanDECK de calculer le nombre d'éléments répertoriés dans le champ `IMAGE`. Ici, il y a 59 images, donc {(IMAGES)} renvoie `59`. Sachant cela, la ligne 6 de la figure 4 ci-dessous, `IMAGE="1-{(IMAGES)}"` demande à nanDECK d'imprimer les images des lignes 1 à 59.
 
 Dans la fenêtre d'instruction, il peut parfois être difficile de déterminer précisément à quel paramètre correspondent les nombres ou les termes listés après chaque directive. Pour identifier le paramètre représenté par une variable, il suffit de passer la souris dessus et de consulter le rappel de syntaxe ci-dessous : nanDECK affiche alors en surbrillance le nom du paramètre concerné.
 
@@ -431,7 +426,7 @@ Le sous-dossier `nanDECK` contient :
 
 - [**PH_nandeck_Your_Timeline.txt**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/PH_nandeck_Your_Timeline.txt) : le script à ouvrir dans nanDECK
 - [**Build-Your-Own-Timeline.xlsx**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/Build-Your-Own-Timeline.xlsx) : la feuille de calcul que le script utilise dans nanDECK pour localiser les éléments et construire le jeu de cartes
-- Six images au format `.png`
+- Six images au format `.png` provenant du Noun Project et utilisées sous licence Creative Commons BY ou sous licence Pro (leur réutilisation nécessite donc de respecter les conditions de la licence, notamment en matière d’attribution).
 
 Comme dans l'exemple précédent, [**PH_nandeck_Your_Timeline.txt**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/PH_nandeck_Your_Timeline.txt) commence par trois lignes de commentaires, suivies de onze lignes de directives. Contrairement à l'exemple précédent, ce script est relié à un tableur Google Sheets plutôt qu'à un fichier Excel.
 
@@ -476,7 +471,7 @@ Une fois le script saisi dans la fenêtre d'édition, validé et exécuté à l�
 
 Il est également possible de faire imprimer les cartes par des professionnels : le créateur de nanDECK a établi un partenariat avec Game Crafter, une société américaine d'impression à la demande, spécialisée dans la production de cartes et d’autres composants pour jeux de société. Dans le panneau d'interface de nanDECK se trouve un bouton permettant de téléverser les fichiers directement sur le site de Game Crafter, en vue d’une impression à l’unité et en petite série.
 
-Les éditeurs commerciaux refusent généralement d’imprimer des images qu’ils estiment protégées par le droit d'auteur, même si le jeu est destiné à un usage personnel ou éducatif, et non commercial. Bien que la version de *Timeline* proposée en exemple s’appuie principalement sur des sources du domaine public ou sur des collections dont les licences autorisent explicitement la réutilisation, de nombreuses images restent soumises au droit d'auteur. Par conséquent, il y a de fortes chances qu'un éditeur commercial refuse d’imprimer ne serait-ce qu'un seul exemplaire de ce jeu.
+Les éditeurs refusent généralement d’imprimer des images qu’ils estiment protégées par le droit d'auteur, même si le jeu est destiné à un usage personnel ou éducatif, et non commercial. Bien que la version de *Timeline* proposée en exemple s’appuie principalement sur des sources du domaine public ou sur des collections dont les licences autorisent explicitement la réutilisation, de nombreuses images restent soumises au droit d'auteur. Par conséquent, il y a de fortes chances qu'un éditeur commercial refuse d’imprimer ne serait-ce qu'un seul exemplaire de ce jeu.
 
 Cependant, il existe d'autres moyens de faire découvrir ce nouveau jeu au public !
 
@@ -487,6 +482,8 @@ nanDECK s’intègre parfaitement à une autre plateforme appelée Tabletop Simu
 Bien que Tabletop Simulator (TTS) ne soit pas la seule plateforme numérique permettant à des personnes de jouer ensemble à des jeux de cartes ou de société, son nom est bien connu, et elle est utilisée par les personnes qui créent des jeux pour observer des personnes tester les premiers prototypes de leurs jeux. Il peut être difficile de réunir, dans son entourage immédiat, suffisamment de volontaires prêts à tester un jeu en cours de développement. TTS permet aux personnes qui conçoivent des jeux de faire tester leurs nouvelles créations à des joueurs et joueuses répartis dans le monde entier.[^17] TTS n'est pas seulement un espace de rencontre pour les personnes passionnées et partageant des centres d’intérêt de niche, c'est aussi une excellente solution pour celles et ceux qui ne peuvent pas jouer en personne, en raison de problèmes de santé, de contraintes de temps, de budget, ou lors de pandémies mondiales.[^18]
 
 ## Créer des cartes virtuelles pour Tabletop Simulator
+
+*À noter : Depuis la version 1.29, NanDeck propose une fonctionnalité intégrée permettant d’exporter directement les cartes vers Tabletop Simulator. Cette fonctionnalité peut simplifier la procédure présentée dans cette leçon et éviter certaines étapes décrites ci-dessous. Pour connaître les autres nouveautés et modifications apportées par cette version, consultez la [liste complète des changements](https://nandeck.com/).*
 
 Il est également possible d’importer les cartes dans TTS afin de transformer le jeu en une sorte de jeu vidéo, sans avoir besoin de coder les règles. Bien que TTS ne requiert pas de connaissances en programmation pour utiliser sa boîte à outils, il ne s'agit pas pour autant d'un environnement simple ni intuitif. Berserk Games, la société qui développe TTS, propose une série de sept [tutoriels vidéo sur YouTube](https://www.youtube.com/watch?v=6e8RFMtAVac&list=PLA16SF2eexlUtH2AM4V8VF9rDpekW2uYA)  pour apprendre aux personnes qui débutent à créer des jeux et à y jouer dans cet environnement.
 
@@ -592,7 +589,7 @@ Zimmerman n'est pas le seul à le penser. Les jeux de société ont déjà été
 
 Cette leçon a pour but d’aider les étudiants et étudiantes en histoire et/ou les personnes qui débutent dans la conception de jeux à créer et générer leurs propres variantes du jeu *Timeline*, en choisissant peut-être un thème ou un aspect spécifique de l'histoire, puis à partager leur travail avec d'autres. Ces jeux de cartes peuvent être combinés pour mêler, par exemple, l'histoire locale et l'histoire internationale. Grâce à ce processus, les joueurs et joueuses découvriront des moments de simultanéité et de chevauchements historiques à la fois surprenants et fascinants (saviez-vous que l'université d'Oxford est plus ancienne que l'empire aztèque ?)
 
-Nous espérons que cette expérience incitera d'autres personnes à créer des variantes de jeux existants. On pourrait imaginer créer et ajouter ses propres cartes à des jeux comme "Trivial Pursuit", "Magic : The Gathering" ou même "Uno". Peut-être cela conduira même à la création d’un tout nouveau jeu.
+Cette expérience pourra encourager la création de variantes de jeux existants. Il serait ainsi possible de créer et d’ajouter ses propres cartes à des jeux comme "Trivial Pursuit", "Magic : The Gathering" ou même "Uno". Ce processus pourrait également mener à la création de jeux entièrement nouveaux.
 
 ## Notes de fin
 

@@ -357,7 +357,7 @@ If the user sets these arguments we should save them into the `configuration` ob
 ```python
     if args.index is not None:
         configuration['index'] = args.index
-    if args.target is not None:
+    if args.target_dir is not None:
         configuration['target_dir'] = args.target_dir
 ```
 

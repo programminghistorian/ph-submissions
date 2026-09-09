@@ -322,7 +322,7 @@ Dans cet exemple, nanDECK doit tracer une bordure noire et rectangulaire autour 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-03.png" alt="Exemple d’une page de cartes créée via nanDECK, avec les bordures noires souhaitées et les lignes de découpe en pointillés visibles."  caption="Figure 3. Exemple d’une page de cartes créée via nanDECK, avec les bordures noires souhaitées et les lignes de découpe en pointillés visibles." %}
 
 ### Ligne 6 : IMAGE
-nanDECK comprend un éditeur visuel de base qui permet de dessiner des formes ou d'importer des images sur les cartes. Dans ce jeu, nous souhaitons ajouter des images `.jpg` externes, collectées à partir de diverses collections numériques en histoire et stockées dans un répertoire local.
+nanDECK comprend un éditeur visuel de base qui permet de dessiner des formes ou d'importer des images sur les cartes. Dans ce jeu, des images `.jpg` externes sont ajoutées, collectées à partir de diverses collections numériques en histoire et stockées dans un répertoire local.
 
 De nombreux paramètres et indicateurs sont associés à la directive `IMAGE`, comme en témoigne sa syntaxe :
 
@@ -336,7 +336,7 @@ Comprendre l’ordre des éléments dans la syntaxe peut aider à interpréter l
 6. IMAGE="1-{(IMAGES)}",\[IMAGES],0%,0%,100%,60%,0,PTG
 ```
 
-nanDECK peut très utilement calculer le nombre d'éléments répertoriés dans un champ donné d'une feuille de calcul. Pour ce faire, il utilise une expression encadrée par des accolades. Dans ce cas, l'expression {(IMAGES)} indique à nanDECK de calculer le nombre d'éléments répertoriés dans le champ `IMAGE`. Ici, il y a 59 images, donc {(IMAGES)} renvoie `59`. Sachant cela, il apparaît qu'à la ligne 6 de la figure 4 ci-dessous, `IMAGE="1-{(IMAGES)}"` demande à nanDECK d'imprimer les images des lignes 1 à 59.
+nanDECK peut très utilement calculer le nombre d'éléments répertoriés dans un champ donné d'une feuille de calcul. Pour ce faire, il utilise une expression encadrée par des accolades. Dans ce cas, l'expression {(IMAGES)} indique à nanDECK de calculer le nombre d'éléments répertoriés dans le champ `IMAGE`. Ici, il y a 59 images, donc {(IMAGES)} renvoie `59`. Sachant cela, la ligne 6 de la figure 4 ci-dessous, `IMAGE="1-{(IMAGES)}"` demande à nanDECK d'imprimer les images des lignes 1 à 59.
 
 Dans la fenêtre d'instruction, il peut parfois être difficile de déterminer précisément à quel paramètre correspondent les nombres ou les termes listés après chaque directive. Pour identifier le paramètre représenté par une variable, il suffit de passer la souris dessus et de consulter le rappel de syntaxe ci-dessous : nanDECK affiche alors en surbrillance le nom du paramètre concerné.
 

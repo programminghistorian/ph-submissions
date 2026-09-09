@@ -30,6 +30,14 @@ doi:
 
 {% include toc.html %}
 
+## Mise en garde — Prérequis techniques
+
+Cette leçon nécessite l’utilisation d’un logiciel dont la prise en main peut être techniquement exigeante, notamment pour les personnes qui ne sont pas familières avec les outils informatiques ou la programmation.
+
+L’installation et l’utilisation du logiciel peuvent également être plus complexes sur les systèmes Linux et macOS, notamment parce qu’elles peuvent nécessiter le recours à une solution d’émulation. La procédure proposée dans cette leçon est principalement conçue pour Windows et peut ne pas être directement transposable à d’autres systèmes d’exploitation.
+
+Les solutions d’émulation et leurs alternatives étant susceptibles d’évoluer ou de ne plus être maintenues, leur présentation détaillée dépasse le cadre de cette leçon. Nous recommandons donc aux utilisateurs de vérifier au préalable la compatibilité de leur système d’exploitation et les prérequis nécessaires à l’installation du logiciel.
+
 ## Introduction
 
 Les élèves ne sont plus systématiquement invités à mémoriser par cœur des tableaux d'événements historiques avec leurs dates, comme c’était le cas aux États-Unis au milieu du dix-neuvième siècle[^1]. Sans entrer dans les divers débats[^2] sur l’intérêt d’enseigner ou non la chronologie en classe, cette leçon part du principe qu'il est utile « d'aider les élèves à développer de solides connaissances de base dans nos disciplines »[^3] et que les jeux constituent un excellent outil pour atteindre cet objectif.

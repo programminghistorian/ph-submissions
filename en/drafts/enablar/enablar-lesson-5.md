@@ -154,12 +154,14 @@ One note on licensing: most Yale-originated records are released under a public 
 
 The lesson uses the following Python packages, introduced in context but listed here for reference:
 
-- [PyMARC](https://gitlab.com/pymarc/pymarc) reads and parses MARC records. This lesson works mainly with the MARCXML form.
-- [pandas](https://pandas.pydata.org/) provides the DataFrame, the tabular structure we reshape records into.
-- [lxml](https://lxml.de/) parses HTML, used during acquisition to find downloadable files on an index page.
-- [matplotlib](https://matplotlib.org/) and [matplotlib-venn](https://pypi.org/project/matplotlib-venn/) produce the Venn diagram visualisation.
-- [numpy](https://numpy.org/) is used in scientific computing mainly for numerical operation. Here we use only one feature: it defines data types that pandas and visualisation can use. It is frequently abbreviatied as `np`.
+- [PyMARC](https://gitlab.com/pymarc/pymarc) reads and parses MARC records. This lesson works mainly with the MARCXML form. We used version 5.4.0.
+- [pandas](https://pandas.pydata.org/) provides the DataFrame, the tabular structure we reshape records into. We used version 3.0.3.
+- [lxml](https://lxml.de/) parses HTML, used during acquisition to find downloadable files on an index page. We used version 6.1.1.
+- [matplotlib](https://matplotlib.org/) and [matplotlib-venn](https://pypi.org/project/matplotlib-venn/) produce the Venn diagram visualisation. We used matplotlib version 3.11.0 and matplotlib-venn version1.1.2.
+- [numpy](https://numpy.org/) is used in scientific computing mainly for numerical operation. Here we use only one feature: it defines data types that pandas and visualisation can use. It is frequently abbreviatied as `np`. We used version 2.5.1.
 - Several standard-library modules (`urllib`, `os`, `gzip`, `shutil`, `re`) handle downloading, file management, and pattern matching.
+
+We used Python version 3.12.3.
 
 ## Learning keys
 
@@ -829,12 +831,17 @@ The final result will look like this:
 
 {% include figure.html filename="en-or-enablar-lesson-5-04.png" alt="Visual description of figure image" caption="Figure 2. Venn diagram - improved version with annotation" %}
 
-### Summary
+## Summary
 
+In this lesson we gave a short introduction to analysis of MARC21 records. We learnt how to read MARC files, how to transform records into a tabular format, and we also saw some analyes and data visualization. You can do however much more than this. MARC21 has more than 3000 data elements, and even smaller libraries utilizes several hundreds of them. We suggest you to first know your data: make a simple statistics of the available data elements, then analyse those which might be interesting. The analysis could support some daily work (such as in this lesson), or you can answer some historical question (e.g. how the language distribution changed over time in your library).
 
+<!-- 
 ## Local application
 ### Apply this method
 ### Other projects
-### Continued learning
+-->
 
+## Continued learning
+
+I suggest you to expand your knowledge in two paths: improve your Python, and your bibliographic knowledge. For the first path you can check other relevant [Programming Historian lessons](https://programminghistorian.org/en/lessons/?topic=python). For MARC21 the best source is the standard's [documentation](https://www.loc.gov/marc/bibliographic/). You can also learn by reading others' code, search for ["import pymarc"](https://github.com/search?q=%22import+pymarc%22&type=code) at Github or in another code repository, and check how it is utilized in different contexts.
 

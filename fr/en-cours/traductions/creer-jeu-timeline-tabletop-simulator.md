@@ -56,7 +56,9 @@ La leçon présente ensuite *Timeline*, un jeu sur le thème de l'histoire, ains
 
 ## Jouer durant le “Siècle ludique”
 
-En 2013, le concepteur de jeux Eric Zimmerman publie « Manifesto for a Ludic Century »[^5] (Manifeste pour un Siècle ludique). Il y défend l’idée que les jeux prennent une place croissante dans notre culture et que cette évolution nous amène à développer de nouvelles compétences pour comprendre et créer des expériences ludiques. Trois idées de son manifeste sont particulièrement utiles pour cette leçon :
+En 2013, le concepteur de jeux Eric Zimmerman publie « Manifesto for a Ludic Century »[^5] (Manifeste pour un Siècle ludique). Il y défend l’idée que les jeux prennent une place croissante dans notre culture et que cette évolution nous amène à développer de nouvelles compétences pour comprendre et créer des expériences ludiques. 
+
+Trois idées de son manifeste sont particulièrement utiles pour cette leçon :
 
 **Les jeux sont de plus en plus présents dans notre manière de communiquer et de nous divertir**. Ils permettent de manipuler des informations, d’expérimenter et de participer activement, plutôt que de simplement recevoir un contenu.
 

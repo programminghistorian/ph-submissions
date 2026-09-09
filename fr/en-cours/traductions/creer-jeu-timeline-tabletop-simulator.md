@@ -426,7 +426,7 @@ Le sous-dossier `nanDECK` contient :
 
 - [**PH_nandeck_Your_Timeline.txt**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/PH_nandeck_Your_Timeline.txt) : le script à ouvrir dans nanDECK
 - [**Build-Your-Own-Timeline.xlsx**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/Build-Your-Own-Timeline.xlsx) : la feuille de calcul que le script utilise dans nanDECK pour localiser les éléments et construire le jeu de cartes
-- Six images au format `.png`
+- Six images au format `.png` provenant du Noun Project et utilisées sous licence Creative Commons BY ou sous licence Pro (leur réutilisation nécessite donc de respecter les conditions de la licence, notamment en matière d’attribution).
 
 Comme dans l'exemple précédent, [**PH_nandeck_Your_Timeline.txt**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/PH_nandeck_Your_Timeline.txt) commence par trois lignes de commentaires, suivies de onze lignes de directives. Contrairement à l'exemple précédent, ce script est relié à un tableur Google Sheets plutôt qu'à un fichier Excel.
 

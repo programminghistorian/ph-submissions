@@ -833,7 +833,7 @@ The final result will look like this:
 
 ## Summary
 
-In this lesson we gave a short introduction to analysis of MARC21 records. We learnt how to read MARC files, how to transform records into a tabular format, and we also saw some analysis and data visualisation. You can do, however, much more than this. MARC21 has more than 3000 data elements, and even smaller libraries utilise several hundreds of them. We suggest you first know your data: make a simple statistics of the available data elements, then analyse those which might be interesting. The analysis could support some daily work (such as in this lesson), or you can answer some historical question (e.g. how the language distribution changed over time in your library).
+In this lesson we gave a short introduction to the analysis of MARC21 records. We learnt how to read MARC files, how to transform records into a tabular format, and we saw some analysis and data visualisation. You can do, however, much more than this. MARC21 has more than 3000 data elements, and even smaller libraries utilise several hundred of them. We suggest you first know your data: make a simple survey of the available data elements, then analyse those which might be relevant. The analysis could support daily work (such as metadata quality assessment), or you could answer a research question (e.g. how the language distribution has changed over time in your collection).
 
 <!-- 
 ## Local application
@@ -843,5 +843,5 @@ In this lesson we gave a short introduction to analysis of MARC21 records. We le
 
 ## Continued learning
 
-We suggest you expand your knowledge in two paths: improve your Python, and your bibliographic knowledge. For the first path you can check other relevant [Programming Historian lessons](https://programminghistorian.org/en/lessons/?topic=python). For MARC21 the best source is the standard's [documentation](https://www.loc.gov/marc/bibliographic/). You can also learn by reading others' code, search for ["import pymarc"](https://github.com/search?q=%22import+pymarc%22&type=code) at Github or in another code repository, and check how it is utilised in different contexts.
+We suggest you expand your knowledge in two directions: improving your Python skills and deepening your bibliographic knowledge. For Python, you can check other relevant [Programming Historian lessons](https://programminghistorian.org/en/lessons/?topic=python). For MARC21, the best source is the standard's [documentation](https://www.loc.gov/marc/bibliographic/). You can also learn by reading others' code: search for ["import pymarc"](https://github.com/search?q=%22import+pymarc%22&type=code) on GitHub or in another code repository to see how it is used in different contexts.
 

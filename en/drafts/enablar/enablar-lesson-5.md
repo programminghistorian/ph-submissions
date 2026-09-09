@@ -16,7 +16,7 @@ review-ticket:
 difficulty:
 activity:
 topics:
-abstract: Short abstract of this lesson
+abstract: This lesson demonstrates how to analyse library catalogue records at scale using Python. You will learn to download MARC records, parse them with PyMARC, and reshape them into tabular form with pandas. You will compare subject heading usage across two sources and visualise the overlap, techniques applicable to metadata quality assessment and cataloguing research.
 avatar_alt:
 doi: XX.XXXXX/phen0000
 ---

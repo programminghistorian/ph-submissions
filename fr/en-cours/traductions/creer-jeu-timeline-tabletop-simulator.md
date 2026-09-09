@@ -589,7 +589,7 @@ Zimmerman n'est pas le seul à le penser. Les jeux de société ont déjà été
 
 Cette leçon a pour but d’aider les étudiants et étudiantes en histoire et/ou les personnes qui débutent dans la conception de jeux à créer et générer leurs propres variantes du jeu *Timeline*, en choisissant peut-être un thème ou un aspect spécifique de l'histoire, puis à partager leur travail avec d'autres. Ces jeux de cartes peuvent être combinés pour mêler, par exemple, l'histoire locale et l'histoire internationale. Grâce à ce processus, les joueurs et joueuses découvriront des moments de simultanéité et de chevauchements historiques à la fois surprenants et fascinants (saviez-vous que l'université d'Oxford est plus ancienne que l'empire aztèque ?)
 
-Nous espérons que cette expérience incitera d'autres personnes à créer des variantes de jeux existants. On pourrait imaginer créer et ajouter ses propres cartes à des jeux comme "Trivial Pursuit", "Magic : The Gathering" ou même "Uno". Peut-être cela conduira même à la création d’un tout nouveau jeu.
+Cette expérience pourra encourager la création de variantes de jeux existants. Il serait ainsi possible de créer et d’ajouter ses propres cartes à des jeux comme "Trivial Pursuit", "Magic : The Gathering" ou même "Uno". Ce processus pourrait également mener à la création de jeux entièrement nouveaux.
 
 ## Notes de fin
 

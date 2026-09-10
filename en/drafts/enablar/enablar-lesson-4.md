@@ -27,11 +27,11 @@ abstract: >
   using Natural Language Processing (NLP) to extract potentially
   problematic 'red flags' in terms and conditions. In doing so,
   we hope to fill an identified confidence gap in interpreting legalistic
-  clauses, especially within Higher Educational librarians and amongst digital
+  clauses, especially within Higher Educational libraries and amongst digital
   scholars. In turn, this lesson advocates for critical AI use, risk mitigation,
   and institutional-researcher dialogue.
 
-  We do not intended this lesson to constitute legal advice from a
+  We do not intend for this lesson to constitute legal advice from a
   qualified lawyer, nor seek to replace library expertise.
   
 avatar_alt: Red flag graffiti

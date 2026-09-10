@@ -207,7 +207,7 @@ Un avantage fondamental de la TEI est sa transparence et son interopérabilité.
 
 L'adoption de la TEI garantit deux avantages cruciaux&#x202F;: la pérennité et la portabilité. La pérennité assure que le travail restera accessible et exploitable, indépendamment des évolutions techniques. Contrairement aux formats propriétaires, le TEI-XML est un standard très répandu, lisible par l'homme comme par la machine, qu'elle soit récente ou qu'elle ait trente ans d'âge. La portabilité du TEI découle de sa structuration sémantique&#x202F;: la machine comprend la structure du texte, ce qui permet des transformations automatiques vers d'autres formats, y compris ceux qui n'existent pas encore.
 
-Pour la correspondance de Filippo Cavriana, la TEI permet d'encoder non seulement le texte des lettres, mais aussi leurs métadonnées (expéditeur, destinataire, date, lieu, etc), leurs particularités matérielles (ratures, ajouts marginaux, etc) et leurs références (personnes mentionnées, lieux évoqués, etc). Chaque phénomène textuel reçoit un balisage spécifique qui en facilite le traitement automatique ainsi que l'analyse statistique.
+Pour la correspondance de Filippo Cavriana, la TEI permet d'encoder non seulement le texte des lettres, mais aussi leurs métadonnées (expéditeur, destinataire, date, lieu, etc.), leurs particularités matérielles (ratures, ajouts marginaux, etc.) et leurs références (personnes mentionnées, lieux évoqués, etc.). Chaque phénomène textuel reçoit un balisage spécifique qui en facilite le traitement automatique ainsi que l'analyse statistique.
 
 Tout fichier TEI commence par des éléments récurrents. Concrètement, l'en‑tête d'un fichier XML déclare la version et l'encodage des caractères&#x202F;: `<?xml version="1.0" encoding="UTF-8"?>`. La racine `<TEI>` déclare l'espace de noms par défaut de la TEI&#x202F;: `xmlns="http://www.tei-c.org/ns/1.0"`. Ces deux lignes, qui établissent le cadre syntaxique et le vocabulaire TEI à employer, varient rarement.
 
@@ -449,10 +449,11 @@ L'exemple suivant montre comment effectuer cette conversion avec Saxon-HE (Home 
 saxon -s:templates/cavriana.odd -xsl:templates/odd2odd.xsl \
   -o:templates/cavriana-compile.odd
 saxon -s:templates/cavriana-compile.odd -xsl:templates/odd2relax.xsl \
-  -o:templates/schema-cavriana.rng
+  -o:templates/schema-cavriana.rng \
+  schemaBaseURL=https://www.tei-c.org/release/xml/tei/schema/relaxng/
 ```
 
-Ici, `saxon` lance Saxon-HE, `-s` indique le fichier source, `-xsl` précise la feuille XSLT à appliquer et `-o` définit le fichier produit&#x202F;: d'abord `cavriana-compile.odd`, l'ODD fusionné, puis `schema-cavriana.rng`, le schéma de validation. Sauter la première étape produirait un schéma en apparence valide mais vidé de votre personnalisation, et la seconde transformation ne pourrait pas vous en avertir. Ces transformations sont à effectuer lors de la mise en place initiale du projet puis à chaque modification de l'ODD, pour que le schéma de validation reflète toujours les règles éditoriales les plus récentes.
+Ici, `saxon` lance Saxon-HE, `-s` indique le fichier source, `-xsl` précise la feuille XSLT à appliquer et `-o` définit le fichier produit&#x202F;: d'abord `cavriana-compile.odd`, l'ODD fusionné, puis `schema-cavriana.rng`, le schéma de validation. Le paramètre `schemaBaseURL` complète `-xsl`&#x202F;: il indique à la feuille l'adresse des fragments RELAX NG officiels de la TEI, que le schéma généré référence lorsqu'il n'en redéfinit pas le contenu lui-même. Sans lui, ces références pointent vers une adresse locale fictive (`http://localhost/schema/relaxng/`) que le validateur ne peut pas résoudre. Sauter la première étape produirait un schéma en apparence valide mais vidé de votre personnalisation, et la seconde transformation ne pourrait pas vous en avertir. Ces transformations sont à effectuer lors de la mise en place initiale du projet puis à chaque modification de l'ODD, pour que le schéma de validation reflète toujours les règles éditoriales les plus récentes.
 
 
 ### Valider les documents localement
@@ -693,7 +694,7 @@ Avec la validation terminée et le corpus conforme aux règles définies, on peu
 
 ### La transformation XSLT
 
-La validation garantit la qualité de l'encodage, mais les fichiers TEI, malgré leur lisibilité pour les experts, reste peu accessible au grand public. Dans une édition continue, chaque document validé doit être immédiatement publiable. C'est ici qu'intervient XSLT (*eXtensible Stylesheet Language Transformations*), le pont entre l'encodage savant et la diffusion publique.
+La validation garantit la qualité de l'encodage, mais les fichiers TEI, malgré leur lisibilité pour les experts, restent peu accessibles au grand public. Dans une édition continue, chaque document validé doit être immédiatement publiable. C'est ici qu'intervient XSLT (*eXtensible Stylesheet Language Transformations*), le pont entre l'encodage savant et la diffusion publique.
 
 XSLT transforme le XML-TEI vers n'importe quel format de sortie&#x202F;: HTML pour le web, Markdown pour les générateurs de sites statiques comme Docusaurus ou Jekyll, LaTeX pour l'impression, ou même CSV pour l'analyse de données. Cette polyvalence est cruciale pour l'édition continue&#x202F;: une seule source TEI alimente automatiquement plusieurs canaux de publication.
 
@@ -876,3 +877,20 @@ Dans le flux d'édition continue, cette transformation s'exécutera automatiquem
 
 Ce tutoriel a posé le socle local de l'édition continue&#x202F;: personnalisation de la TEI via un ODD, génération d'un schéma RELAX NG, validation (RELAX NG et Schematron) et transformations XSLT vers Markdown et HTML. Ces pratiques assurent cohérence, interopérabilité et portabilité du corpus. Elles permettent déjà de produire localement une édition de qualité professionnelle.
 En intégrant ces pratiques dans des chaînes d'automatisation (Git, CI/CD), la publication instantanée et l'archivage pérenne sont rendus possibles. Dans la seconde partie, nous brancherons ce socle sur une chaîne d'intégration et de déploiement continus&#x202F;: gestion de versions avec Git, automatisation (GitHub Actions/GitLab CI/CD), assignation d'un DOI à des instantanés sur Zenodo. L'objectif est que la moindre modification d'un fichier TEI déclenche automatiquement contrôle, transformation et mise en ligne, réalisant ainsi la promesse de l'édition continue.
+
+## Références
+
+- Burnard, Lou. «&#x202F;What Is TEI Conformance, and Why Should You Care?&#x202F;», *Journal of the Text Encoding Initiative*, 12, 2019. [http://journals.openedition.org/jtei/1777](http://journals.openedition.org/jtei/1777)
+- TEI Consortium. *TEI P5&#x202F;: Recommandations pour l'encodage et l'échange de textes électroniques*. [https://tei-c.org/release/doc/tei-p5-doc/fr/html/index.html](https://tei-c.org/release/doc/tei-p5-doc/fr/html/index.html)
+- TEI Consortium. «&#x202F;Getting Started with P5 ODDs&#x202F;». [https://tei-c.org/guidelines/customization/getting-started-with-p5-odds/](https://tei-c.org/guidelines/customization/getting-started-with-p5-odds/)
+- Vaughan, Nicolás. «&#x202F;Introduction à l'encodage de texte TEI (partie 1)&#x202F;», *Programming Historian en français*, 2024. [https://programminghistorian.org/fr/lecons/introduction-a-tei-1](https://programminghistorian.org/fr/lecons/introduction-a-tei-1)
+- Vidal-Gorène, Chahan. «&#x202F;La reconnaissance automatique d'écriture à l'épreuve des langues peu dotées&#x202F;», *Programming Historian en français*, 2023. [https://programminghistorian.org/fr/lecons/transcription-automatisee-graphies-non-latines](https://programminghistorian.org/fr/lecons/transcription-automatisee-graphies-non-latines)
+- Godbarge, Clément (éd.). *Filippo Cavriana&#x202F;: The Secret Correspondence*. Édition numérique en cours. [https://pantagrueliste.github.io/CavrianaCorr_FrontEnd/](https://pantagrueliste.github.io/CavrianaCorr_FrontEnd/)
+- Saxonica. *Saxon-HE* (Home Edition). [https://github.com/Saxonica/Saxon-HE/releases](https://github.com/Saxonica/Saxon-HE/releases)
+- Clark, James (dir.). *Jing and Trang* (validateur RELAX NG). [https://github.com/relaxng/jing-trang/releases](https://github.com/relaxng/jing-trang/releases)
+- Schematron stakeholders. *ISO Schematron XSLT2 implementation*. [https://github.com/Schematron/stf](https://github.com/Schematron/stf)
+- TEI Consortium. *Roma* (interface web de personnalisation ODD). [https://roma.tei-c.org](https://roma.tei-c.org)
+- Adoptium. *Eclipse Temurin* (environnements d'exécution Java). [https://adoptium.net/](https://adoptium.net/)
+- VIAF, *Virtual International Authority File*. [https://viaf.org/fr](https://viaf.org/fr)
+- Getty Research Institute. *Getty Thesaurus of Geographic Names (TGN)*. [https://www.getty.edu/research/tools/vocabularies/tgn/index.html](https://www.getty.edu/research/tools/vocabularies/tgn/index.html)
+- CERN et OpenAIRE. *Zenodo* (plateforme d'archivage et d'attribution de DOI). [https://zenodo.org](https://zenodo.org)

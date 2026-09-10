@@ -415,7 +415,6 @@ Avant de pouvoir imprimer le jeu de cartes, il faut d'abord sélectionner le bou
 Enfin, le bouton *Print Deck* permet de demander à nanDECK de générer le jeu sous forme de fichier PDF, prêt à être imprimé. nanDECK peut générer le jeu de différentes manières : chaque carte générée par le programme peut être enregistrée sous forme d’image séparée, ou bien toutes les cartes peuvent être regroupées dans un seul PDF, prêt à être imprimé, assemblé, découpé et collé. Étant donné que la conception de jeux passe généralement par plusieurs phases de test en situation réelle — chacune donnant lieu à des ajustements successifs —, la capacité de nanDECK a régénérer facilement différentes versions d’un jeu de cartes est extrêmement précieuse.[^15]
 
 ## Créer votre propre *Timeline*
-
 Afin de faciliter la prise en main de nanDECK et de Tabletop Simulator, un kit (en anglais) de fichiers de démarrage [à télécharger sur GitHub](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/designing-a-timeline-tabletop-simulator.zip) est mis à disposition. Il contient deux sous-dossiers : l'un nommé `nanDECK` et l'autre `Tabletop-Simulator`.
 
 Le sous-dossier `nanDECK` contient :
@@ -424,7 +423,7 @@ Le sous-dossier `nanDECK` contient :
 - [**Build-Your-Own-Timeline.xlsx**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/Build-Your-Own-Timeline.xlsx) : la feuille de calcul que le script utilise dans nanDECK pour localiser les éléments et construire le jeu de cartes
 - Six images au format `.png` provenant du Noun Project et utilisées sous licence Creative Commons BY ou sous licence Pro (leur réutilisation nécessite donc de respecter les conditions de la licence, notamment en matière d’attribution).
 
-Comme dans l'exemple précédent, [**PH_nandeck_Your_Timeline.txt**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/PH_nandeck_Your_Timeline.txt) commence par trois lignes de commentaires, suivies de onze lignes de directives. Contrairement à l'exemple précédent, ce script est relié à un tableur Google Sheets plutôt qu'à un fichier Excel.
+Comme dans l'exemple précédent, [**PH_nandeck_Your_Timeline.txt**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/PH_nandeck_Your_Timeline.txt) commence par trois lignes de commentaires, suivies de onze lignes de commandes. Contrairement à l'exemple précédent, ce script est relié à un tableur Google Sheets plutôt qu'à un fichier Excel.
 
 ```
 1   ; This is a template to create your own mod inspired by the game Timeline by Frederic Henry
@@ -443,17 +442,17 @@ Comme dans l'exemple précédent, [**PH_nandeck_Your_Timeline.txt**](https://pro
 14  PRINT = DUPLEX
 ```
 
-La ligne 4 indique à nanDECK que la taille de la page correspond à l'équivalent métrique d'un format 8½ x 11 pouces, qu'elle doit être orientée en mode portrait, et que les cartes doivent être centrées sur la page, à la fois horizontalement et verticalement. La ligne 5 définit la taille de chaque carte, en centimètres.
+La ligne 4 indique à nanDECK que la taille de la page correspond à l'équivalent métrique du format 8, x 11 pouces, qu'elle doit être orientée en mode portrait, et que les cartes doivent être centrées sur la page, à la fois horizontalement et verticalement. La ligne 5 définit la taille de chaque carte, en centimètres.
 
-La ligne 6 exploite les fonctionnalités de nanDECK, qui interprète automatiquement le `LIEN` comme une URL vers une feuille de calcul Google.  L’identifiant `1lP2mFRcxEsJeDniVy8byPMkwRe7JfkI78OR7NDe9zkU` est ainsi compris comme devant remplacer le paramètre `SAMPLE_ID`, dans ce format d'URL : `https://docs.google.com/spreadsheets/d/SAMPLE_ID/edit?usp=sharing`. nanDECK le traduira en https://docs.google.com/spreadsheets/d/1lP2mFRcxEsJeDniVy8byPMkwRe7JfkI78OR7NDe9zkU/edit?usp=sharing.
+La ligne 6 permet à nanDECK, d’interpréter automatiquement le `LIEN` comme une URL vers une feuille de calcul Google.  L’identifiant `1lP2mFRcxEsJeDniVy8byPMkwRe7JfkI78OR7NDe9zkU` est ainsi compris comme devant remplacer le paramètre `SAMPLE_ID`, dans ce format d'URL : `https://docs.google.com/spreadsheets/d/SAMPLE_ID/edit?usp=sharing`. nanDECK le traduira en https://docs.google.com/spreadsheets/d/1lP2mFRcxEsJeDniVy8byPMkwRe7JfkI78OR7NDe9zkU/edit?usp=sharing.
 
-La capacité de nanDECK à utiliser les ressources d’un dossier externe permet de développer une version personnalisée de *Timeline* (ou d'une autre variante d'un jeu de cartes) sans que cela soit nécessairement un travail individuel. Une classe entière d'élèves peut ainsi rassembler des images et des évènements dans un dossier et un tableur communs. L'inconvénient de cette approche étant que les "secrets" des cartes de chacun deviennent visibles, ce qui enlève l’effet de surprise lors des futures parties. C'est pourquoi cette leçon recommande que chaque élève crée son propre jeu, avant de les réunir, afin de découvrir par le jeu ce que les autres ont conçu.
+La capacité de nanDECK à utiliser des ressources provenant d’un dossier externe permet de développer une version personnalisée de *Timeline* (ou d'une autre variante d'un jeu de cartes) sans que chacun ait à y travailler individuellement. Une classe entière peut ainsi rassembler des images et des événements dans un même dossier et un même tableur. L’inconvénient est que les « secrets » des cartes de chaque personne deviennent visibles, ce qui enlève l’effet de surprise lors des futures parties. C'est pourquoi cette leçon recommande que chaque personne crée son propre jeu avant de les réunir, afin de découvrir par le jeu ce que les autres ont conçu.
 
 La ligne 7 décrit la bordure : rectangulaire, noire, d'une épaisseur de 0,25 cm, avec des pointillés pour faciliter la découpe.
 
 La ligne 8 indique que, dans la mesure du possible, les images doivent être placées sur les cartes à la position 0,0, occuper 100 % de la largeur et 60 % de la hauteur de la carte, tout en conservant les proportions de l'image, et être imprimées en niveaux de gris.
 
-La ligne 9 indique à nanDECK la police dans laquelle le texte suivant doit être imprimé : ici, Arial 14 points en gras et noir, sur un fond transparent.
+La ligne 9 indique à nanDECK quelle police utiliser pour le texte suivant : ici, Arial 14 points en gras et noir, sur un fond transparent.
 
 La ligne 10 indique à nanDECK d'imprimer l'année (`YEAR`) pour chaque ligne de la feuille Google Sheets dont le champ "année" est renseigné, en la positionnant horizontalement au centre, mais un peu en dessous de la moitié de la hauteur de la carte.
 
@@ -461,7 +460,7 @@ La ligne 11 modifie la police, passant de 14 points à 7,5 points (Arial), en no
 
 Les lignes 13 et 14 indiquent que la page imprimée comportera les six premières faces des cartes d'un côté et leurs six dos de l'autre, de manière à ce qu'ils soient correctement alignés en cas d'impression recto-verso.
 
-Une fois le script saisi dans la fenêtre d'édition, validé et exécuté à l’aide du bouton *Build* pour créer le jeu de cartes, le résultat doit ressembler à celui présenté dans cette [image **.pdf**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/Your-Timeline-Duplex-Printing-Result.pdf).
+Une fois le script saisi dans la fenêtre d'édition, validé et exécuté à l’aide du bouton *Build* pour créer le jeu de cartes, le résultat devrait ressembler à celui présenté dans cette [image **.pdf**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/nanDECK/Your-Timeline-Duplex-Printing-Result.pdf). 
 
 ## Impression professionnelle de cartes avec nanDECK  
 

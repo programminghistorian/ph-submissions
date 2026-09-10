@@ -201,7 +201,7 @@ La partie suivante détaille le script, ligne par ligne, afin de montrer comment
 Dans nanDECK, tout texte débutant par un point-virgule n’est pas pris en compte comme une commande, mais comme un « commentaire », c’est-à-dire une note explicative destinée à la personne utilisant le programme.
 
 ```
-1. ; Ceci est le Timeline_Reunion d’Emeline Dandeu, un mod inspiré du jeu _Timeline_ de Frederic Henry
+1. ; Ceci est le Timeline_Reunion d’Émeline Dandeu, un mod inspiré du jeu _Timeline_ de Frédéric Henry
 ```
 
 Il est également possible d’ajouter un commentaire en fin de ligne, après une instruction, en utilisant deux points-virgules :

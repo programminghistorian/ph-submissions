@@ -158,7 +158,7 @@ The lesson uses the following Python packages, introduced in context but listed 
 - [pandas](https://pandas.pydata.org/) (version 3.0.3) provides the DataFrame, the tabular structure we reshape records into.
 - [lxml](https://lxml.de/) (version 6.1.1) parses HTML, used during acquisition to find downloadable files on an index page.
 - [matplotlib](https://matplotlib.org/) (version 3.11.0) and [matplotlib-venn](https://pypi.org/project/matplotlib-venn/) (version 1.1.2) produce the Venn diagram visualisation.
-- [numpy](https://numpy.org/) (version 2.5.1) is used in scientific computing mainly for numerical operation. Here we use only one feature: it defines data types that pandas and visualisation can use. It is frequently abbreviatied as `np`. 
+- [numpy](https://numpy.org/) (version 2.5.1) is used in scientific computing mainly for numerical operation. Here we use only one feature: it defines data types that pandas and visualisation can use. It is frequently abbreviated as `np`. 
 - Several standard-library modules (`urllib`, `os`, `gzip`, `shutil`, `re`) handle downloading, file management, and pattern matching.
 
 Python version: 3.12.3
@@ -337,7 +337,7 @@ The bulk of the function repeats what we saw in the single file download, with a
                     shutil.copyfileobj(f_in, f_out)
 
         except urllib.error.HTTPError as e:
-            print("A network problem occured: ", e)
+            print("A network problem occurred: ", e)
     
     if os.path.exists(local_file):
         os.remove(local_file)
@@ -826,7 +826,7 @@ plt.savefig('fig_output/venn-diagram-v2.png', bbox_inches='tight')
 plt.close()
 ```
 
-`venn2()` returns an object representing the diagram, and we can manipulate it by changing labels, colors, line width etc. Now we only want to read the position of the label of the intersection of the two circles. We can access it via `get_label_by_id` passing the identifier `11` that refers to the intersection (the first circle is represented by `10`, and by `01` the second). [plt.annotate](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.annotate.html#matplotlib.axes.Axes.annotate) provides a number of properties. `xy` is the point we want to annotate, `text` contains the annotation text, `xstext` provides a position of the annotation, `textcoords` specifies how this position should be interpreted (here `offset points` means that xytext is a relative position from the annotated point), and `ha` instructs the horizontal alignment. With `bbox` we set the style of the bounding box: it should have a gray foreground color, rounded corner, and a bit opacity. Similarly, `arrowprops` sets the style of the arrow from the annotation to the annotated point, this time is a one direction, grey, curved arrow. As during the previous plot creations we save the plot with a narrow margin and remove references.
+`venn2()` returns an object representing the diagram, and we can manipulate it by changing labels, colors, line width etc. Now we only want to read the position of the label of the intersection of the two circles. We can access it via `get_label_by_id` passing the identifier `11` that refers to the intersection (the first circle is represented by `10`, and by `01` the second). [plt.annotate](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.annotate.html#matplotlib.axes.Axes.annotate) provides a number of properties. `xy` is the point we want to annotate, `text` contains the annotation text, `xytext` provides a position of the annotation, `textcoords` specifies how this position should be interpreted (here `offset points` means that xytext is a relative position from the annotated point), and `ha` instructs the horizontal alignment. With `bbox` we set the style of the bounding box: it should have a gray foreground color, rounded corner, and a bit opacity. Similarly, `arrowprops` sets the style of the arrow from the annotation to the annotated point, this time is a one direction, grey, curved arrow. As during the previous plot creations we save the plot with a narrow margin and remove references.
 
 The final result will look like this:
 

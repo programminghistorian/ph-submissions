@@ -288,7 +288,7 @@ from argparse import ArgumentParser
 We will use some new libraries:
 
 * `sys` contains system-specific parameters and functions, [https://docs.python.org/3/library/sys.html](https://docs.python.org/3/library/sys.html)
-* `lxml` responsible for handling XML and HTML, [https://lxml.de/import lxml.html](https://lxml.de/import lxml.html)
+* `lxml` responsible for handling XML and HTML, [https://lxml.de/](https://lxml.de/)
 * `argparse` is a parser for command-line options, arguments and subcommands, [https://docs.python.org/3/library/argparse.html](https://docs.python.org/3/library/argparse.html)
 
 The last line's format (`from ... import ...`) is used to limit the import: we will use only a specific part of the library, here the `ArgumentParser` object.
@@ -786,6 +786,7 @@ We would like to display two circles that have an intersection if they share sub
 import matplotlib.pyplot as plt
 from matplotlib_venn import venn2
 import textwrap
+import numpy as np
 ```
 
 To create the diagram is pretty simple:
@@ -826,7 +827,7 @@ plt.savefig('fig_output/venn-diagram-v2.png', bbox_inches='tight')
 plt.close()
 ```
 
-`venn2()` returns an object representing the diagram, and we can manipulate it by changing labels, colors, line width etc. Now we only want to read the position of the label of the intersection of the two circles. We can access it via `get_label_by_id` passing the identifier `11` that refers to the intersection (the first circle is represented by `10`, and by `01` the second). [plt.annotate](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.annotate.html#matplotlib.axes.Axes.annotate) provides a number of properties. `xy` is the point we want to annotate, `text` contains the annotation text, `xytext` provides a position of the annotation, `textcoords` specifies how this position should be interpreted (here `offset points` means that xytext is a relative position from the annotated point), and `ha` instructs the horizontal alignment. With `bbox` we set the style of the bounding box: it should have a gray foreground color, rounded corner, and a bit opacity. Similarly, `arrowprops` sets the style of the arrow from the annotation to the annotated point, this time is a one direction, grey, curved arrow. As during the previous plot creations we save the plot with a narrow margin and remove references.
+`venn2()` returns an object representing the diagram, and we can manipulate it by changing labels, colors, line width etc. Now we only want to read the position of the label of the intersection of the two circles. We can access it via `get_label_by_id` passing the identifier `11` that refers to the intersection (the first circle is represented by `10`, and by `01` the second). [plt.annotate](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.annotate.html#matplotlib.axes.Axes.annotate) provides a number of properties. `xy` is the point we want to annotate, `text` contains the annotation text, `xytext` provides a position of the annotation, `textcoords` specifies how this position should be interpreted (here `offset points` means that xytext is a relative position from the annotated point), and `ha` instructs the horizontal alignment. With `bbox` we set the style of the bounding box: it should have a gray foreground color, rounded corner, and some opacity. Similarly, `arrowprops` sets the style of the arrow from the annotation to the annotated point, this time is a one direction, grey, curved arrow. As during the previous plot creations we save the plot with a narrow margin and remove references.
 
 The final result will look like this:
 

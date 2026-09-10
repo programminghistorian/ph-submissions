@@ -131,22 +131,22 @@ nanDECK peut être téléchargé et exécuté sur macOS grâce à l'émulateur W
 Le manuel officiel de nanDECK[^16] propose une solution de contournement qui consiste à [installer Winebottler](https://winebottler.kronenberg.org/) et [XQuartz](https://www.xquartz.org/) afin de faire fonctionner la version Windows sur un ordinateur Mac. Winebottler n'étant plus activement maintenu depuis 2022, les personnes utilisant une version récente de macOS (Sequoia ou Tahoe) peuvent également utiliser [CrossOver](https://www.codeweavers.com/crossover?srsltid=AfmBOoouNU_wC3vvgShtcZh7CN1aqxy6eTOrqzTmExXJkI3ivJ6W0nol) (un logiciel commercial et propriétaire) ou [Whisky](https://getwhisky.app/fr/) (un logiciel gratuit, basé sur Wine 8/9, compatible Apple Silicon). Par ailleurs, il est possible d'installer et d'utiliser nanDECK dans un environnement Windows virtualisé, avec un logiciel tel que [Virtual Box](https://www.virtualbox.org/) ou de recourir à une application payante telle que [Parallels](https://www.parallels.com/products/desktop/).
 
 ### Problèmes d'installation
-En cas de problème d’installation, plusieurs forums en ligne permettent de trouver de l’aide auprès de personnes disposées à répondre aux questions. Le développeur de nanDECK, Andrea Nand, participe activement au [forum des utilisateurs de nanDECK sur BoardGameGeek](https://perma.cc/FJ9V-N4VA). Il existe également une communauté plus restreinte, mais toujours active, de [personnes utilisant nanDECK sur Reddit](https://www.reddit.com/r/nanDECK/).
+En cas de problème d’installation, plusieurs forums en ligne permettent de trouver de l’aide et d’échanger avec des personnes susceptibles de répondre aux questions. Le développeur de nanDECK, Andrea Nand, très actif sur le [forum des utilisateurs de nanDECK sur BoardGameGeek](https://perma.cc/FJ9V-N4VA). Il existe également une communauté plus restreinte, mais toujours active, de [personnes qui utilisent nanDECK sur Reddit](https://www.reddit.com/r/nanDECK/).
 
 ## Comment utiliser nanDECK pour créer des cartes
-Cette partie débute par une présentation de l'interface de nanDECK et de ses principaux éléments. Elle propose ensuite un script de 12 lignes, accompagné d’explications détaillées ligne par ligne, afin d’en clarifier les instructions et le fonctionnement. L'exemple présenté provient d’un projet réalisé par la traductrice de la version française de cet article, destiné à générer un jeu *Timeline* de 59 cartes portant sur l’histoire de l’île de La Réunion (France). Ce cas pratique repose sur un fichier Excel hébergé localement, contenant les libellés de chaque carte ainsi que les emplacements des fichiers image nécessaires à leur illustration. Des instructions spécifiques sont également fournies pour les personnes qui préfèrent utiliser Google Sheets à la place d’Excel. Enfin, cette partie propose des liens vers un ensemble de fichiers permettant aux lecteurs et lectrices de générer leur propre jeu de six cartes *Timeline*.
+Cette partie débute par une présentation de l'interface de nanDECK et de ses principaux éléments. Elle propose ensuite un script de 12 lignes, accompagné d’explications détaillées pour chaque ligne, afin d'expliquer les différentes instructions et leur fonctionnement. L'exemple présenté provient d’un projet réalisé par la traductrice de la version française de cet article, destiné à générer un jeu *Timeline* de 59 cartes portant sur l’histoire de l’île de La Réunion (France). Ce cas pratique repose sur un fichier Excel stocké localement, contenant les libellés de chaque carte ainsi que les chemins d'accès aux fichiers image utilisés pour les illustrer. Des instructions spécifiques sont également fournies pour les personnes qui préfèrent utiliser Google Sheets plutôt qu'Excel. Enfin, cette partie propose des liens vers un ensemble de fichiers nécessaires pour générer son propre jeu de six cartes *Timeline*.
 
-Cette leçon se limite à l’analyse d’un script permettant de générer un jeu de cartes de type Timeline ; elle ne fournit pas d'instructions générales sur l’utilisation de nanDECK. Pour une introduction vidéo très utile à nanDECK, la [série de cinq tutoriels de Ryan Langewisch sur YouTube](https://www.youtube.com/watch?v=I1IPl3nT1Og&list=PLdHW9On5G8NJm5m1mULabskVYsM84M_SL) constitue une ressource particulièrement utile. Le manuel de nanDECK, rédigé par Andrea Nini et disponible en ligne sous la forme d'un [document PDF de 198 pages](https://perma.cc/49KL-BJA6), est également très utile.
+Cette leçon se limite à l’analyse d’un script permettant de générer un jeu de cartes de type Timeline ; elle ne fournit pas d'instructions générales sur l’utilisation de nanDECK. Pour découvrir nanDECK en vidéo, la [série de cinq tutoriels de Ryan Langewisch sur YouTube](https://www.youtube.com/watch?v=I1IPl3nT1Og&list=PLdHW9On5G8NJm5m1mULabskVYsM84M_SL) constitue une ressource particulièrement utile. Le manuel de nanDECK, rédigé par Andrea Nini et disponible en ligne sous la forme d'un [document PDF de 198 pages](https://perma.cc/49KL-BJA6), est également une ressource précieuse.
 
 ### L'interface principale de nanDECK
-Le manuel de nanDECK commence par cette présentation :
+Le manuel de nanDECK présente l’outil de la manière suivante :
 
 
 >nanDECK est un programme capable de générer des éléments graphiques à partir de scripts : chaque ligne du script correspond à une commande permettant d’afficher du texte, des rectangles ou d’autres formes graphiques. Bien qu’il ait été conçu principalement pour la création de cartes, il peut également être utilisé pour générer une grande variété d’objets graphiques. Chaque carte est gérée comme une page indépendante sur laquelle vous pouvez dessiner différents éléments.  Pour commencer, il suffit de rédiger le script dans la grande zone d’édition située au centre de la fenêtre :
 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-01.png" alt="Capture d’écran de la fenêtre principale de l’interface de nanDECK version 1.28"  caption="Figure 1. Capture d’écran de la fenêtre principale de l’interface de nanDECK version 1.28" %}
 
-Chaque commande de script dans nanDECK se compose d’un mot-clé, d’un signe égal (`=`) et d’une série de paramètres. Il est indispensable de consulter le manuel de nanDECK pour connaître les paramètres disponibles pour chaque commande. Par exemple, pour la commande `FONT`, le manuel indique :
+Chaque commande d'un script dans nanDECK se compose d’un mot-clé, d’un signe égal (`=`) et d’une série de paramètres. Il est indispensable de consulter le manuel de nanDECK pour connaître les paramètres disponibles pour chaque commande. Par exemple, pour la commande `FONT`, le manuel indique :
 
 
 >FONT
@@ -161,22 +161,22 @@ Chaque commande de script dans nanDECK se compose d’un mot-clé, d’un signe 
 >
 >* “nom de la police" : nom de la police de caractères (chaîne)
 >* taille de la police : taille de la police de caractères, en points typographiques (1 point = 1/72 de pouce)
-> * style : style de la police et option de mise en forme (flag) utilisés ; les valeurs acceptées sont : 
+> * style : style de la police et options de mise en forme (flag) utilisés ; les valeurs acceptées sont : 
 	* B : gras
 	* I : italique
 	* U : souligné
 	* S : barré
 
 
-Ces éléments étant posés, le code suivant permet d’illustrer leur fonctionnement :
+Ces éléments étant définis, le code suivant permet d’illustrer leur fonctionnement :
 
 ```
 FONT = Arial, 32, B, #0000FF
 ```
 
-Il définit les paramètres suivants : police Arial, taille 32, style gras, et texte en couleur bleue (en hexadécimal).
+Il définit les paramètres suivants : police Arial, taille 32, style gras, et texte en couleur bleue (au format hexadécimal).
 
-La commande `FONT` fait partie des rares instructions dans nanDECK qui s’appliquent à l’ensemble des cartes du jeu. Pour la plupart des autres commandes nanDECK, le premier paramètre sert à indiquer la plage de cartes concernée par l’exécution de la commande. Par exemple, le premier paramètre de `FONT RANGE` est "`range`" (*plage*). Pour utiliser la police Arial, en bleu et en gras uniquement sur les 20 premières cartes, il faudrait utiliser ce code :
+La commande `FONT` fait partie des rares instructions de nanDECK qui s’appliquent à l’ensemble des cartes du jeu. Pour la plupart des autres commandes de nanDECK, le premier paramètre sert à indiquer la plage de cartes à laquelle la commande s’applique. Par exemple, le premier paramètre de `FONT RANGE` est "`range`" (*plage*). Pour utiliser la police Arial, en bleu et en gras pour les 20 premières cartes, il faudrait utiliser le code suivant :
 
 ```
 FONTRANGE = 1-20, Arial, 32, B, #0000FF
@@ -191,27 +191,27 @@ TEXT="1-{(EVENEMENT)}",\[EVENEMENT]
 ```
 
 ## Comprendre un script nanDECK destiné à créer un jeu de cartes
-Pouvoir générer un jeu de cartes *Timeline* avec seulement douze lignes de script illustre parfaitement la puissance de nanDECK.
+La possibilité de générer un jeu de cartes *Timeline* à partir de seulement douze lignes de script illustre bien la puissance de nanDECK.
 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-02.png" alt="Capture d’écran de nanDECK montrant les douze lignes de script servant à créer un jeu de cartes Timeline."  caption="Figure 2. Capture d’écran de nanDECK montrant les douze lignes de script servant à créer un jeu de cartes Timeline." %}
 
-La partie suivante détaille le script, ligne par ligne, afin de montrer comment les différents éléments sont intégrés et assemblés pour former les cartes. L'exemple utilisé est celui ayant servi à générer un jeu *Timeline* de 59 cartes représentant des événements historiques de l’île de La Réunion (France) :
+La partie suivante détaille le script, ligne par ligne, afin de montrer comment les différents éléments sont combinés pour former les cartes. L'exemple utilisé est celui qui a servi à générer un jeu *Timeline* de 59 cartes représentant des événements historiques de l’île de La Réunion (France) :
 
 ### Ligne 1 : COMMENTAIRES
-Dans nanDECK, tout texte débutant par un point-virgule n’est pas pris en compte comme une commande, mais comme un « commentaire », c’est-à-dire une note explicative destinée à la personne qui utilise le programme.
+Dans nanDECK, tout texte débutant par un point-virgule n’est pas pris en compte comme une commande, mais comme un « commentaire », c’est-à-dire une note explicative destinée à la personne utilisant le programme.
 
 ```
 1. ; Ceci est le Timeline_Reunion d’Emeline Dandeu, un mod inspiré du jeu _Timeline_ de Frederic Henry
 ```
 
-Il est également possible d’ajouter un commentaire en fin de ligne, après une instruction, en doublant le caractère point-virgule :
+Il est également possible d’ajouter un commentaire en fin de ligne, après une instruction, en utilisant deux points-virgules :
 
 ```
 2. PAGE=21,29.7,portrait,HV ;; ceci définit les dimensions de la page en centimètres
 ```
 
 ### Ligne 2 : PAGE
-La commande `PAGE` définit la taille et l'orientation du papier, ce qui s’avère utile pour la création et l’impression du PDF.
+La commande `PAGE` définit les dimensions et l’orientation de la page, ce qui s’avère utile pour la création et l’impression du PDF.
 
 
 >Paramètres :
@@ -239,26 +239,25 @@ L’instruction `CARDSIZE` permet de définir la largeur et la hauteur de chaque
 3. CARDSIZE=4,6.5
 ```
 
-Si cette ligne est omise, nanDECK applique par défaut une taille de 6 cm x 9 cm. Toutefois, les cartes générées avec cette taille par défaut sont plus grandes que les cartes à jouer classiques, qui mesurent 2,5 x 3,5 pouces, soit environ 5,71 cm x 8,89 cm.
+Si cette ligne est omise, nanDECK applique par défaut une taille de 6 x 9 cm. Toutefois, les cartes générées avec cette taille par défaut sont plus grandes que les cartes à jouer classiques, qui mesurent 2,5 x 3,5 pouces, soit environ 5,71 x 8,89 cm.
 
-Pour le jeu donné en exemple, les cartes sont conçues dans un format plus petit, aux dimensions proches de celles des cartes *Timeline* publiées par Asmodee.
+Pour le jeu donné en exemple, les cartes sont conçues dans des dimensions plus petites, proches de celles des cartes *Timeline* publiées par Asmodee.
 
 ### Ligne 4 : LIEN
-La commande `LINK` permet de connecter nanDECK à des données externes, soit sous forme de fichier texte avec des valeurs séparées par des virgules (format CSV), soit sous forme de tableur Excel (`.xls` ou `.xlsx`). Le tableur utilisé dans cet exemple s'intitule `Reunion-Timeline.xlsx`.
+La commande `LINK` permet de connecter nanDECK à des données externes, soit à partir d'un fichier texte contenant des valeurs séparées par des virgules (format CSV), soit à partir d'un tableur Excel (`.xls` ou `.xlsx`). Le tableur utilisé dans cet exemple s'intitule `Reunion-Timeline.xlsx`.
+
+Il est également possible de connecter nanDECK à un tableur Google Sheets en suivant les étapes supplémentaires décrites dans le manuel de nanDECK, dans la partie consacrée à la commande `LINK`.[^16] Ces étapes sont reproduites ci-dessous :
 
 
-Il est également possible de connecter nanDECK à un tableur Google Sheets en suivant les étapes supplémentaires décrites dans le manuel de nanDECK, dans la partie consacrée à la commande `LINK`.[^16] Elles sont reproduites ci-dessous :
+>Vous pouvez également connecter un document Google Sheets en utilisant l'identifiant (ID) du fichier à la place du paramètre "filename” (nom de fichier), mais vous devez d’abord le partager en suivant les étapes suivantes :
 
-
->Vous pouvez également connecter un document Google Sheets en utilisant l'identifiant (ID) du fichier à la place du paramètre "filename” (nom de fichier), mais vous devez d’abord le partager en suivant ces étapes :
->
->* Ouvrez le fichier dans la page web de Google Drive
+>* Ouvrez le fichier dans Google Drive, depuis un navigateur web
 >* Cliquez sur l'icône Partager (en haut à droite)
 >* Choisissez une option de partage par lien, par exemple « Tous les utilisateurs qui ont le lien »
 >
 >Google vous affichera alors un lien du type : `https://docs.google.com/spreadsheets/d/SAMPLE_ID/edit?usp=sharing`
 >
->Copiez et collez l'identifiant du lien dans une ligne nanDECK comme ceci : 
+>Copiez et collez l’identifiant figurant dans ce lien dans une ligne nanDECK, comme ceci : 
 >LINK=SAMPLE_ID
 >
 >Vous pouvez aussi sélectionner une feuille spécifique avec la syntaxe suivante :
@@ -266,25 +265,25 @@ Il est également possible de connecter nanDECK à un tableur Google Sheets en s
 >Exemple :
 >LINK=SAMPLE_ID!Beta
 >
->Mais vous devez activer le partage sur le web en suivant ces étapes :
+>Mais vous devez également activer la publication sur le Web en suivant ces étapes :
 >* Ouvrez la feuille de calcul dans un navigateur
 >* Dans le menu, sélectionnez Fichier → Partager → Publier sur le Web
 >* Cliquez sur le bouton "Publier”
 
 
-À noter : nanDECK part du principe que la première ligne du fichier lié contient les noms des champs importés.
+À noter : nanDECK part du principe que la première ligne du fichier lié contient les noms des champs à importer.
 
 ```
 LINK = “Reunion-Timeline.xlsx”, “Année”, “Evénement”, “Images”
 ```
 
-Si les noms des champs sont omis, ils seront attribués à partir de ceux contenus dans la première ligne du fichier. C’est le cas dans notre exemple.
+Si les noms des champs sont omis, ils sont automatiquement repris de la première ligne du fichier. C’est le cas dans notre exemple.
 
 ```
 4. LINK = "Reunion-Timeline.xlsx"
 ```
 
-Le tableau ci-dessous reproduit une version tronquée de la feuille de calcul, affichant à la fois la première et la dernière ligne.
+Le tableau ci-dessous présente une version tronquée de la feuille de calcul, avec à la fois sa première et sa dernière ligne.
 
 |                    | A                   | B                   | C                   |
 | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
@@ -308,74 +307,72 @@ Les paramètres de la commande `BORDER` (bordures) sont les suivants :
 >	* RECTANGLE : dessine un rectangle (valeur par défaut)
 >	* ROUNDED : dessine un rectangle aux coins arrondis
 >	* MARK : dessine des traits de coupe
->* **couleur html** : noir si non spécifié
->* **épaisseur** : en cm. L’épaisseur de la bordure est mesurée entre deux cartes. Par exemple, une épaisseur de 1 cm correspond à une bordure de 0,5 cm sur chaque carte. Les **repères** permettent de dessiner des traits au-delà des bords des cartes pour aider à la découpe.
+>* **couleur html** : noir si aucune couleur n’est spécifiée
+>* **épaisseur** : en cm. L’épaisseur de la bordure est mesurée entre deux cartes. Par exemple, une épaisseur de 1 cm correspond à une bordure de 0,5 cm sur chaque carte. Les **repères** permettent de dessiner des traits qui dépassent des bords des cartes et facilitent leur découpe.
 
 
 ```
 5. BORDER = RECTANGLE, #000000, 0.25, MARKDOT
 ```
 
-Dans cet exemple, nanDECK doit tracer une bordure noire et rectangulaire autour de chaque carte, avec des marques de découpe en pointillés.
+Dans cet exemple, nanDECK doit tracer une bordure noire et rectangulaire autour de chaque carte, ainsi que des repères de coupe en pointillés.
 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-03.png" alt="Exemple d’une page de cartes créée via nanDECK, avec les bordures noires souhaitées et les lignes de découpe en pointillés visibles."  caption="Figure 3. Exemple d’une page de cartes créée via nanDECK, avec les bordures noires souhaitées et les lignes de découpe en pointillés visibles." %}
 
 ### Ligne 6 : IMAGE
-nanDECK comprend un éditeur visuel de base qui permet de dessiner des formes ou d'importer des images sur les cartes. Dans ce jeu, des images `.jpg` externes sont ajoutées, collectées à partir de diverses collections numériques en histoire et stockées dans un répertoire local.
+nanDECK comprend un éditeur visuel de base qui permet de dessiner des formes ou d'importer des images sur les cartes. Dans ce jeu, des images `.jpg` externes sont ajoutées, issues de diverses collections numériques consacrées à l’histoire et stockées dans un répertoire local.
 
-De nombreux paramètres et indicateurs sont associés à la directive `IMAGE`, comme en témoigne sa syntaxe :
+De nombreux paramètres et indicateurs sont associés à la commande `IMAGE`, comme en témoigne sa syntaxe :
 
 
 >IMAGE = plage, fichier image, position x, position y, largeur, hauteur, angle, option, alpha, largeur de texture, hauteur de texture, inclinaison x, inclinaison y, largeur de l’image, hauteur de l’image, position x, position y, copie x, copie y.
 
 
-Comprendre l’ordre des éléments dans la syntaxe peut aider à interpréter la directive IMAGE du script :
+Comprendre l’ordre des éléments dans la syntaxe peut aider à interpréter la commande IMAGE dans le script :
 
 ```
 6. IMAGE="1-{(IMAGES)}",\[IMAGES],0%,0%,100%,60%,0,PTG
 ```
 
-nanDECK peut très utilement calculer le nombre d'éléments répertoriés dans un champ donné d'une feuille de calcul. Pour ce faire, il utilise une expression encadrée par des accolades. Dans ce cas, l'expression {(IMAGES)} indique à nanDECK de calculer le nombre d'éléments répertoriés dans le champ `IMAGE`. Ici, il y a 59 images, donc {(IMAGES)} renvoie `59`. Sachant cela, la ligne 6 de la figure 4 ci-dessous, `IMAGE="1-{(IMAGES)}"` demande à nanDECK d'imprimer les images des lignes 1 à 59.
+nanDECK peut calculer automatiquement le nombre d'éléments répertoriés dans un champ donné d'une feuille de calcul. Pour ce faire, il utilise une expression encadrée par des accolades. Dans ce cas, l'expression {(IMAGES)} indique à nanDECK de calculer le nombre d'éléments répertoriés dans le champ `IMAGE`. Ici, il y a 59 images, donc {(IMAGES)} renvoie `59`. La ligne 6 de la figure 4 ci-dessous, `IMAGE="1-{(IMAGES)}"` demande ainsi à nanDECK d'imprimer les images correspondant aux lignes 1 à 59.
 
-Dans la fenêtre d'instruction, il peut parfois être difficile de déterminer précisément à quel paramètre correspondent les nombres ou les termes listés après chaque directive. Pour identifier le paramètre représenté par une variable, il suffit de passer la souris dessus et de consulter le rappel de syntaxe ci-dessous : nanDECK affiche alors en surbrillance le nom du paramètre concerné.
-
+Dans la fenêtre d'instruction, il peut parfois être difficile de déterminer précisément à quel paramètre correspondent les nombres ou les termes listés après chaque commande. Pour identifier le paramètre représenté par une variable, il suffit de passer le curseur de la souris dessus et de consulter le rappel de syntaxe : nanDECK affiche alors en surbrillance le nom du paramètre concerné.
 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-04.png" alt="Le texte en surbrillance correspond à la variable sur laquelle le curseur de la souris est actuellement positionné."  caption="Figure 4. Le texte en surbrillance correspond à la variable sur laquelle le curseur de la souris est actuellement positionné." %}
 
-Le script de la figure 4 demande à nanDECK d'insérer l'image indiquée dans le champ "Image" de la feuille de calcul, de la placer à la position 0,0, et de lui permettre de remplir 100 % de la largeur de la carte (si possible), mais seulement 60 % de la hauteur (si possible). La sélection de l’option {(P)} indique à nanDECK de conserver les proportions originales de l'image. L’option {(G)} permet de convertir toutes les images en niveaux de gris, afin d’apporter une certaine uniformité aux cartes du jeu. Le résultat apparaît dans l'exemple ci-dessous, où nanDECK a inséré l'image située dans {(Images/revolte-des-esclaves.jpg)} :
+Le script de la figure 4 demande à nanDECK d'insérer l'image indiquée dans le champ "Image" de la feuille de calcul, de la placer à la position 0,0, et de lui permettre de remplir 100 % de la largeur de la carte, si possible, mais seulement 60 % de sa hauteur, si possible. La sélection de l’option {(P)} indique à nanDECK de conserver les proportions originales de l'image. L’option {(G)} permet de convertir toutes les images en niveaux de gris, afin d’uniformiser l’apparence des cartes du jeu. Le résultat apparaît dans l'exemple ci-dessous, où nanDECK a inséré l'image correspondant au fichier {(Images/revolte-des-esclaves.jpg)} :
 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-05.png" alt="Une carte générée avec nanDECK."  caption="Figure 5. Une carte générée avec nanDECK." %}
 
 ### Lignes 7 et 9 : POLICE
 
-nanDECK peut utiliser les polices de caractères installées sur votre machine. Le code ci-dessous définit le formatage des polices :
+nanDECK peut utiliser les polices de caractères installées sur votre machine. Le code ci-dessous définit la mise en forme de la police : :
 
 ```
 7. FONT=Arial,14,BT,#000000
 8. TEXT="1-{(ANNEE)}",\[ANNEE],25%,60%,52%,9%
 9. FONT=Arial,7.5,,#000000
 ```
-À la ligne 7, nanDECK est invité à définir la police à la taille 14, en gras, sur un fond transparent. La ligne 8 demande à nanDECK de générer le texte pour `ANNEE` avec cette police, et la ligne 9 réduit la taille de la police à 7,5 lorsqu'elle est appliquée au texte `EVENEMENT` (généré à la ligne 10). Les deux virgules consécutives à la ligne 9 indiquent à nanDECK que le paramètre de `style` est vide, ce qui fait que la mise en forme du texte reste neutre.
+À la ligne 7, nanDECK est configuré pour utiliser la police à la taille 14, en gras, sur un fond transparent. La ligne 8 demande à nanDECK de générer le texte du champ `ANNEE` avec cette police, et la ligne 9 réduit la taille de la police à 7,5 lorsqu'elle est appliquée au champ `EVENEMENT` (généré à la ligne 10). Les deux virgules consécutives de la ligne 9 indiquent à nanDECK que le paramètre de `style` est vide, ce qui laisse le texte sans mise en forme particulière.
 
 ### Lignes 8 et 10 : TEXTE
 
-nanDECK propose différentes options pour écrire du `TEXTE` sur les cartes :
+nanDECK propose différentes options pour ajouter du `TEXTE` sur les cartes :
 
 
 >TEXT = "plage", "texte", position x, position y, largeur, hauteur, alignement horizontal, alignement vertical, angle, alpha, épaisseur du contour, décalage circulaire, angle circulaire, facteur de largeur, facteur de hauteur.
 
 
-Dans cet exemple, la mise en forme du texte est restée simple, mais le placement du texte a posé quelques difficultés. La plupart des cartes à jouer ont deux faces : le recto et le verso. Dans de nombreux jeux, la majeure partie des informations pertinentes se trouve sur le recto de la carte, tandis que le verso est simplement décoratif ou indique le type de carte. Dans un jeu de *Timeline*, chaque carte possède ainsi deux faces : l’une indiquant le nom ou la description d'un événement, et l’autre portant le nom et la date de l'événement.
+Dans cet exemple, la mise en forme du texte est restée simple, mais son positionnement a posé quelques difficultés. La plupart des cartes à jouer ont deux faces : le recto et le verso. Dans de nombreux jeux, la majeure partie des informations pertinentes se trouve sur le recto de la carte, tandis que le verso est simplement décoratif ou indique le type de carte. Dans un jeu de *Timeline*, chaque carte possède ainsi deux faces : l’une indiquant le nom ou la description de l'événement, et l’autre portant le nom et la date de l'événement.
 
 ```
 8. TEXT="1-{(ANNEE)}",\[ANNEE],25%,60%,52%,9%
 10. TEXT="1-{(EVENEMENT)}",\[EVENEMENT],4.5%,68.5%,91%,30%,CENTER,WORDWRAP
 ```
 
-La ligne 8 du script demande à nanDECK d'écrire l'année pour chaque carte à laquelle une année a été attribuée dans le champ "année" de la feuille de calcul. La ligne 10 demande à nanDECK d'écrire une description de l'événement pour chaque carte à laquelle un fait a été attribué dans le champ "évènement" de la feuille de calcul. De quelle manière ce script produit-il les cartes nécessaires pour jouer à *Timeline* ?
+La ligne 8 du script demande à nanDECK d'écrire l'année pour chaque carte dont le champ `ANNEE` de la feuille de calcul contient une valeur. La ligne 10 demande à nanDECK d'écrire une description de l'événement pour chaque carte dont le champ `EVENEMENT` de la feuille de calcul contient une valeur. Comment ce script permet-il alors de produire les cartes nécessaires pour jouer à *Timeline* ?
 
-Plutôt que d'utiliser des scripts complexes pour s'assurer que l'année n'apparaisse que sur une seule face de chaque carte imprimée, il suffit de demander à nanDECK d'imprimer tout ce qui est explicitement indiqué dans la feuille de calcul Excel liée. Dans cette feuille de calcul (reproduite dans le tableau ci-dessous), les 59 premières lignes contiennent une image, une description et une année à imprimer sur la face de la carte. Les 59 lignes suivantes ne contiennent qu'une image et une description, le champ "année" ayant été laissé vide.
-
+Plutôt que d'utiliser des scripts complexes pour s'assurer que l'année n'apparaisse que sur une seule face de chaque carte imprimée, il suffit de demander à nanDECK d'imprimer uniquement les informations renseignées dans la feuille de calcul Excel liée. Dans cette feuille de calcul (reproduite dans le tableau ci-dessous), les 59 premières lignes contiennent une image, une description et une année à imprimer sur la face de la carte. Les 59 lignes suivantes ne contiennent qu'une image et une description, le champ "année" étant laissé vide.
 
 |                    | A                   | B                   | C                   |
 | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
@@ -389,33 +386,33 @@ Plutôt que d'utiliser des scripts complexes pour s'assurer que l'année n'appar
 | 62 |  | Nicole Robinet de la Serve crée l'association des Francs-Créoles | robinet-de-la-serve.jpg |
 | 63 |  | Création du muséum d'histoire naturelle de La Réunion | Le_Muséum_dhistoire_naturelle_de_Saint-Denis_de_la_Réunion_(4128766888).jpg |
 
-Cette méthode n'est certes pas la plus efficace, car les informations nécessaires à la génération de nouvelles cartes doivent être saisies deux fois dans la feuille de calcul (une entrée avec l'année et une autre sans), mais elle permet d'obtenir le résultat souhaité.
+Cette méthode n'est certes pas la plus efficace, car les informations nécessaires à la génération de nouvelles cartes doivent être saisies deux fois dans la feuille de calcul (une entrée avec l'année et une autre sans), mais elle permet néanmoins d'obtenir le résultat souhaité.
 
 ### Ligne 11 et 12 : RECTO/VERSO et IMPRESSION
 
-L'un des principaux atouts de nanDECK est sa capacité à générer des faces et des dos de cartes parfaitement synchronisés. Il y parvient grâce aux directives `DUPLEX` (recto/verso) et `PRINT` (impression).
+L'un des principaux atouts de nanDECK est sa capacité à générer des faces et des dos de cartes parfaitement synchronisés. Il y parvient grâce aux commandes `DUPLEX` (recto/verso) et `PRINT` (impression).
 
 
 >DUPLEX
->Cette directive permet de copier une carte (ou une plage de cartes) vers une autre position (ou plage de positions) calculée automatiquement par le logiciel. Elle est utile pour gérer les doublons ou synchroniser la face et le dos des cartes en vue d’une impression recto-verso.
+>Cette commande permet de copier une carte (ou une plage de cartes) vers une autre position (ou plage de positions) calculée automatiquement par le logiciel. Elle est utile pour gérer les doublons ou synchroniser la face et le dos des cartes en vue d’une impression recto-verso.
 
 
 ```
 DUPLEX = “plage de cartes face”, “plage de cartes dos”, numéro
 ```
 
-Afin d'aligner les faces et les dos des cartes, désignez la plage que vous souhaitez dupliquer. Dans le cas présenté en exemple, il y a 59 cartes uniques : les rectos sont générés à partir des cartes de la plage 1 à 59, et les versos à partir des cartes de la plage 60 à 118.
+Afin d'aligner les faces et les dos des cartes, il faut désigner la plage que vous souhaitez dupliquer. Dans le cas présenté en exemple, il y a 59 cartes uniques : les rectos sont générés à partir des cartes des plages 1 à 59, et les versos à partir des cartes des plages 60 à 118.
 
 ```
 11. DUPLEX = 1-59,60-118
 12. PRINT = DUPLEX
 ```
 
-Avant de pouvoir imprimer le jeu de cartes, il faut d'abord sélectionner le bouton *Validate Deck* pour vérifier que la syntaxe de votre script est correcte. Il est ensuite possible de sélectionner le bouton *Build Deck* pour générer votre jeu de cartes : un aperçu des cartes générées s’affichera dans le panneau de droite. Dans cet aperçu, un nombre surprenant de cartes vierges peut apparaître, mais ces cartes ne doivent pas susciter d’inquiétude. Ces cartes vierges sont insérées dans votre jeu par nanDECK afin de produire un document PDF correctement aligné lors de l'impression.
+Avant de pouvoir imprimer le jeu de cartes, il faut d'abord sélectionner le bouton *Validate Deck* pour vérifier que la syntaxe de votre script est correcte. Il est ensuite possible de sélectionner le bouton *Build Deck* pour générer votre jeu de cartes : un aperçu des cartes générées s’affiche dans le panneau de droite. Dans cet aperçu, un nombre surprenant de cartes vierges peut apparaître, mais il ne faut pas s’en inquiéter. nanDECK insère ces cartes vierges dans le jeu afin de produire un document PDF correctement aligné lors de l'impression.
 
 {% include figure.html filename="fr-tr-creer-jeu-timeline-tabletop-simulator-06.png" alt="Deux pages générées par nanDECK pour l'impression. Les pages sont orientées de manière à pouvoir être pliées ensemble afin d’obtenir des cartes recto-verso parfaitement alignées."  caption="Figure 6 : Deux pages générées par nanDECK pour l'impression. Les pages sont orientées de manière à pouvoir être pliées ensemble afin d’obtenir des cartes recto-verso parfaitement alignées." %}
 
-Enfin, le bouton *Print Deck* permet de demander à nanDECK de générer le jeu sous forme de fichier PDF, prêt à être imprimé. nanDECK peut imprimer le jeu de multiples façons : chaque carte générée par le programme peut être enregistrée sous forme d’image séparée, ou bien toutes les cartes peuvent être regroupées dans un seul PDF, prêt à être imprimé, assemblé, découpé et collé. Étant donné que la conception de jeux passe généralement par plusieurs phases de test en situation réelle — chacune donnant lieu à des ajustements successifs —, la capacité de nanDECK à régénérer facilement différentes versions d'un jeu de cartes est extrêmement précieuse.[^15]
+Enfin, le bouton *Print Deck* permet de demander à nanDECK de générer le jeu sous forme de fichier PDF, prêt à être imprimé. nanDECK peut générer le jeu de différentes manières : chaque carte générée par le programme peut être enregistrée sous forme d’image séparée, ou bien toutes les cartes peuvent être regroupées dans un seul PDF, prêt à être imprimé, assemblé, découpé et collé. Étant donné que la conception de jeux passe généralement par plusieurs phases de test en situation réelle — chacune donnant lieu à des ajustements successifs —, la capacité de nanDECK a régénérer facilement différentes versions d’un jeu de cartes est extrêmement précieuse.[^15]
 
 ## Créer votre propre *Timeline*
 

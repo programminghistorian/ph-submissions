@@ -464,33 +464,33 @@ Une fois le script saisi dans la fenêtre d'édition, validé et exécuté à l�
 
 ## Impression professionnelle de cartes avec nanDECK  
 
-Il est également possible de faire imprimer les cartes par des professionnels : le créateur de nanDECK a établi un partenariat avec Game Crafter, une société américaine d'impression à la demande, spécialisée dans la production de cartes et d’autres composants pour jeux de société. Dans le panneau d'interface de nanDECK se trouve un bouton permettant de téléverser les fichiers directement sur le site de Game Crafter, en vue d’une impression à l’unité et en petite série.
+Il est également possible de faire imprimer les cartes par des professionnels : le créateur de nanDECK a établi un partenariat avec Game Crafter, une société américaine d'impression à la demande, spécialisée dans la production de cartes et d’autres composants pour jeux de société. Dans l'interface de nanDECK se trouve un bouton permettant de téléverser les fichiers directement sur le site de Game Crafter, pour une impression à l’unité ou en petite série.
 
-Les éditeurs refusent généralement d’imprimer des images qu’ils estiment protégées par le droit d'auteur, même si le jeu est destiné à un usage personnel ou éducatif, et non commercial. Bien que la version de *Timeline* proposée en exemple s’appuie principalement sur des sources du domaine public ou sur des collections dont les licences autorisent explicitement la réutilisation, de nombreuses images restent soumises au droit d'auteur. Par conséquent, il y a de fortes chances qu'un éditeur commercial refuse d’imprimer ne serait-ce qu'un seul exemplaire de ce jeu.
+Les éditeurs refusent généralement d’imprimer des images qu’ils estiment protégées par le droit d'auteur, même si le jeu est destiné à un usage personnel ou éducatif plutôt que commercial. Bien que la version de *Timeline* proposée en exemple s’appuie principalement sur des sources du domaine public ou sur des collections dont les licences autorisent explicitement la réutilisation, de nombreuses images restent soumises au droit d'auteur. Il est donc fort probable qu’un éditeur commercial refuse d’imprimer ne serait-ce qu’un seul exemplaire de ce jeu.
 
-Cependant, il existe d'autres moyens de faire découvrir ce nouveau jeu au public !
+Il existe cependant d’autres moyens de faire découvrir ce nouveau jeu au public !
 
 ## Pourquoi importer son jeu dans Tabletop Simulator ?
 
-nanDECK s’intègre parfaitement à une autre plateforme appelée Tabletop Simulator. [Tabletop Simulator](https://perma.cc/BKE8-DRRN) est un "bac à sable" physique, dans lequel jusqu'à dix personnes peuvent manipuler et jouer avec des pièces de jeu numériques. Il est actuellement disponible sur [Steam](https://store.steampowered.com/app/286160/Tabletop_Simulator/) au prix de 19,50€.
+nanDECK s’intègre parfaitement à une autre plateforme appelée Tabletop Simulator. [Tabletop Simulator](https://perma.cc/BKE8-DRRN) est un "bac à sable" virtuel, dans lequel jusqu'à dix personnes peuvent manipuler et jouer avec des pièces de jeu numériques. Il est actuellement disponible sur [Steam](https://store.steampowered.com/app/286160/Tabletop_Simulator/) au prix de 19,50€.
 
-Bien que Tabletop Simulator (TTS) ne soit pas la seule plateforme numérique permettant à des personnes de jouer ensemble à des jeux de cartes ou de société, son nom est bien connu, et elle est utilisée par les personnes qui créent des jeux pour observer des personnes tester les premiers prototypes de leurs jeux. Il peut être difficile de réunir, dans son entourage immédiat, suffisamment de volontaires prêts à tester un jeu en cours de développement. TTS permet aux personnes qui conçoivent des jeux de faire tester leurs nouvelles créations à des joueurs et joueuses répartis dans le monde entier.[^17] TTS n'est pas seulement un espace de rencontre pour les personnes passionnées et partageant des centres d’intérêt de niche, c'est aussi une excellente solution pour celles et ceux qui ne peuvent pas jouer en personne, en raison de problèmes de santé, de contraintes de temps, de budget, ou lors de pandémies mondiales.[^18]
+Bien que Tabletop Simulator (TTS) ne soit pas la seule plateforme numérique permettant à des personnes de jouer ensemble à des jeux de cartes ou de société, elle est bien connue et largement utilisée par les personnes qui conçoivent des jeux pour faire tester les premiers prototypes de leurs créations. Il peut être difficile de réunir, dans son entourage immédiat, suffisamment de volontaires pour tester un jeu en cours de développement. TTS permet ainsi aux personnes qui conçoivent des jeux de faire tester leurs nouvelles créations à des joueurs et joueuses répartis dans le monde entier.[^17] TTS n'est pas seulement un lieu de rencontre pour des personnes partageant des centres d’intérêt parfois très spécifiques : c'est aussi une excellente solution pour celles et ceux qui ne peuvent pas jouer en personne en raison de problèmes de santé, de contraintes de temps ou de budget, ou encore pendant une pandémie.[^18]
 
 ## Créer des cartes virtuelles pour Tabletop Simulator
 
 *À noter : Depuis la version 1.29, NanDeck propose une fonctionnalité intégrée permettant d’exporter directement les cartes vers Tabletop Simulator. Cette fonctionnalité peut simplifier la procédure présentée dans cette leçon et éviter certaines étapes décrites ci-dessous. Pour connaître les autres nouveautés et modifications apportées par cette version, consultez la [liste complète des changements](https://nandeck.com/).*
 
-Il est également possible d’importer les cartes dans TTS afin de transformer le jeu en une sorte de jeu vidéo, sans avoir besoin de coder les règles. Bien que TTS ne requiert pas de connaissances en programmation pour utiliser sa boîte à outils, il ne s'agit pas pour autant d'un environnement simple ni intuitif. Berserk Games, la société qui développe TTS, propose une série de sept [tutoriels vidéo sur YouTube](https://www.youtube.com/watch?v=6e8RFMtAVac&list=PLA16SF2eexlUtH2AM4V8VF9rDpekW2uYA)  pour apprendre aux personnes qui débutent à créer des jeux et à y jouer dans cet environnement.
+Il est également possible d’importer les cartes dans TTS afin de transformer le jeu en une sorte de jeu vidéo, sans avoir à coder ses règles. Bien que TTS ne requiert pas de connaissances en programmation pour utiliser sa boîte à outils, son environnement n’est pas pour autant simple ou intuitif. Berserk Games, la société qui développe TTS, propose une série de sept [tutoriels vidéo sur YouTube](https://www.youtube.com/watch?v=6e8RFMtAVac&list=PLA16SF2eexlUtH2AM4V8VF9rDpekW2uYA) pour permettre aux personnes débutantes d’apprendre à créer des jeux et à y jouer dans cet environnement.
 
-La partie suivante explique comment convertir le jeu  "Timeline Réunion" en format numérique pour TTS. Des instructions générales expliquent comment appliquer le même procédé aux éléments utilisés précédemment pour créer le jeu de démarrage de six cartes.
+La partie suivante explique comment convertir le jeu  "Timeline Réunion" en format numérique pour TTS. Des instructions générales indiquent comment appliquer le même procédé aux éléments utilisés précédemment pour créer le jeu de démarrage de six cartes.
 
 ### Créer séparément les faces et les dos des cartes pour “Timeline Réunion”
 
-Contrairement à nanDECK, qui génère chaque carte séparément, Tabletop Simulator exige le téléversement de deux fichiers image (un pour chaque côté du jeu de cartes) dans un format standardisé, afin de pouvoir les découper en plusieurs cartes. Un jeu de cartes classique comporte généralement une illustration au dos de la carte (par exemple un motif en mosaïque), tandis que les informations et les symboles apparaissent sur la face  (par exemple le 4 de Trèfle). En d'autres termes, TTS a besoin d'un fichier image représentant toutes les faces des cartes et d'un autre fichier représentant tous les dos.
+Contrairement à nanDECK, qui génère chaque carte séparément, Tabletop Simulator exige le téléversement de deux fichiers image (un pour chaque côté des cartes) dans un format standardisé, afin de pouvoir les diviser en plusieurs cartes. Un jeu de cartes classique comporte généralement une illustration au dos de la carte (par exemple un motif en mosaïque), tandis que les informations et les symboles apparaissent sur la face  (par exemple le 4 de Trèfle). En d'autres termes, TTS a besoin d'un fichier image représentant l’ensemble des faces des cartes et d'un autre représentant l’ensemble de leurs dos.
 
-Avant de pouvoir importer le jeu *Timeline* dans TTS, il est nécessaire de générer les cartes au format requis. Pour cela, la feuille de calcul initiale doit être divisée en deux. La première feuille de calcul servira à générer les faces des cartes ; elle contiendra donc les informations nécessaires pour afficher les événements, les illustrations et les années. Cette feuille ne comportera plus les lignes sans données dans la colonne « année ». La deuxième feuille de calcul sera identique à la première, mais sans la colonne « année ».
+Avant de pouvoir importer le jeu *Timeline* dans TTS, il est nécessaire de générer les cartes au format requis. Pour cela, la feuille de calcul initiale doit être divisée en deux. La première feuille de calcul servira à générer les faces des cartes ; elle contiendra donc les informations nécessaires pour afficher les événements, les illustrations et les années. Elle ne contiendra plus les lignes pour lesquelles la colonne « année » est vide. La deuxième feuille de calcul sera identique à la première, mais sans la colonne « année ».
 
-Une fois les deux feuilles de calcul créée, il est nécessaire d'apporter quelques modifications au jeu d'instructions dans l'interface nanDECK avant d’exécuter le script.
+Une fois les deux feuilles de calcul créées, il est nécessaire d'apporter quelques modifications au script dans l’interface de nanDECK avant d’exécuter les commandes.
 
 Tout d'abord, il faut modifier la commande `LINK` afin qu'elle pointe vers la feuille de calcul qui générera les faces des cartes appelée, dans cet exemple, `Reunion-Timeline_pour_Tabletop_Face.xlsx`.
 
@@ -498,14 +498,14 @@ Tout d'abord, il faut modifier la commande `LINK` afin qu'elle pointe vers la fe
 LINK = "Reunion-Timeline_pour_Tabletop_Face.xlsx"
 ```
 
-Puisqu’aucun document n’est désormais généré pour être imprimé et plié, il est possible de supprimer les lignes suivantes du code :
+Puisqu’aucun document n’est désormais généré pour être imprimé puis plié, il est possible de supprimer les lignes suivantes du code :
 
 ```
 DUPLEX = 1-59,60-118
 PRINT = DUPLEX
 ```
 
-TTS exige que les fichiers images pour chaque face du jeu de cartes soient fournis dans un certain format standardisé : une page contenant dix cartes horizontalement et sept verticalement. Cette standardisation est nécessaire pour que le programme puisse isoler chaque carte en tant qu’image individuelle. (Si votre jeu comporte plus de 70 cartes, vous devrez répéter cette opération plusieurs fois, en générant à chaque fois des lots de 70 cartes ou moins. Par exemple, si vous souhaitez générer les faces de 200 cartes, vous devrez créer et traiter trois feuilles de calcul : deux feuilles de 70 lignes chacune, et une feuille de 60 lignes).
+TTS exige que les fichiers images correspondant à chaque face du jeu de cartes soient fournis dans un format standardisé : une page contenant dix cartes à l’horizontale et sept à la verticale. Cette standardisation est nécessaire pour que le programme puisse isoler chaque carte sous forme d'image individuelle. (Si votre jeu comporte plus de 70 cartes, vous devrez répéter cette opération plusieurs fois, en générant à chaque fois des lots de 70 cartes ou moins. Par exemple, si vous souhaitez générer les faces de 200 cartes, vous devrez créer et traiter trois feuilles de calcul : deux feuilles de 70 lignes chacune, et une feuille de 60 lignes).
 
 Voici le script qui génère ce format standardisé :
 
@@ -513,15 +513,14 @@ Voici le script qui génère ce format standardisé :
 RECTANGLE=70,0,0,100%,100%,#000000
 ```
 
-nanDECK crée ensuite une image individuelle à l'aide de sa commande `DISPLAY`, une fois le jeu de cartes généré.
-
+nanDECK crée ensuite une image individuelle à l'aide de sa commande `DISPLAY`, après avoir généré le jeu de cartes.
 ```
 DISPLAY="Reunion_Timeline_TTS_Recto.png"
 ```
 
-Après avoir cliqué sur *Validate* puis *Build Deck*, nanDECK devrait générer l'image `Reunion_Timeline_TTS_Recto.png` (nommée ainsi pour cet exemple) dans le répertoire courant.
+Après avoir cliqué sur *Validate* puis *Build Deck*, nanDECK devrait générer l'image `Reunion_Timeline_TTS_Recto.png`, nommée ainsi dans cet exemple, dans le répertoire courant.
 
-Vous devrez ensuite répéter ce processus pour générer les dos des cartes. Les seules modifications à apporter sont de remplacer le lien `LINK` par `Reunion-Timeline_for_Tabletop_Verso.xlsx` et la commande `DISPLAY` par `Reunion_Timeline_TTS_Verso.png`.
+Vous devrez ensuite répéter ce processus pour générer les dos des cartes. Les seules modifications à apporter consistent à remplacer le lien `LINK` par `Reunion-Timeline_for_Tabletop_Verso.xlsx` et la commande `DISPLAY` par `Reunion_Timeline_TTS_Verso.png`.
 
 ### Créer séparément les faces et les dos des cartes pour votre jeu de démarrage
 
@@ -535,7 +534,7 @@ Dans le [kit de fichiers de démarrage](https://programminghistorian.org/assets/
 - [**Your_Timeline_TTS_Face.png**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/Tabletop-Simulator/Your_Timeline_TTS_Face.png) : l’image des faces des cartes produite par nanDECK à partir des éléments ci-dessus, à importer dans TTS
 - [**Your_Timeline_TTS_Back.png**)](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/Tabletop-Simulator/Your_Timeline_TTS_Back.png) : l’image des dos des cartes produite par nanDECK à partir des éléments ci-dessus, à importer dans TTS
 
-Si l'on examine le script [**PH_nandeck_Your_Timeline_TTS_Face.txt**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/Tabletop-Simulator/PH_nandeck_Your_Timeline_TTS_Face.txt), on constate qu'il ne demande plus à nanDECK de générer un document recto-verso destiné à l'impression. À  la place, il génère un unique fichier `.png` nommé [**Your_Timeline_TTS_Face.png**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/Tabletop-Simulator/Your_Timeline_TTS_Face.png).
+Si l'on examine le script [**PH_nandeck_Your_Timeline_TTS_Face.txt**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/Tabletop-Simulator/PH_nandeck_Your_Timeline_TTS_Face.txt), on constate qu'il ne demande plus à nanDECK de générer un document recto-verso destiné à l'impression. À  la place, il génère un fichier `.png` unique, nommé [**Your_Timeline_TTS_Face.png**](https://programminghistorian.org/assets/designing-a-timeline-tabletop-simulator/Tabletop-Simulator/Your_Timeline_TTS_Face.png).
 
 ```
 1   ; This is a template to create your own mod inspired by the game Timeline by Frederic Henry
@@ -561,13 +560,13 @@ Vous êtes désormais prêt à utiliser Tabletop Simulator !
 
 Lorsque vous ouvrez Tabletop Simulator pour la première fois, il vous demande si vous souhaitez rejoindre une partie existante ou en créer une nouvelle : choisissez `Create` (créer). Vous êtes ensuite invité à charger un jeu classique, un jeu sous licence numérique, un jeu du workshop Steam, ou à `Save and Load` (sauvegarder et charger) votre propre contenu local. Choisissez `Save and Load`, puis quittez cet écran.
 
-Vous vous retrouvez maintenant face à une table vide. Dans le menu supérieur, sélectionnez **Objects** (objets), puis **Components** (éléments), puis **Cards** (cartes). Parmi les options proposées, choisissez **Custom Deck** (jeu de cartes personnalisé). Cela ajoutera un jeu de cartes vierge à votre table virtuelle, et vous aurez alors la possibilité d'importer vos fichiers à partir de nanDECK pour créer votre propre jeu de cartes personnalisé (si cette option n’apparaît pas, faites un clic droit sur le jeu de cartes vierge).
+Vous vous retrouvez maintenant face à une table vide. Dans le menu supérieur, sélectionnez **Objects** (objets), puis **Components** (éléments), puis **Cards** (cartes). Parmi les options proposées, choisissez **Custom Deck** (jeu de cartes personnalisé). Cela ajoutera un jeu de cartes vierge à votre table virtuelle, et vous aurez alors la possibilité d'importer vos fichiers générés avec nanDECK pour créer votre propre jeu de cartes personnalisé (si cette option n’apparaît pas, faites un clic droit sur le jeu de cartes vierge).
 
-Dans ce menu, vous pouvez sélectionner la face du jeu depuis votre disque local. Veillez à cocher la case située à côté de l'option **Unique backs** (dos uniques). Laissez la largeur sur 10 et la hauteur sur 7, mais ajustez le curseur pour qu’il reflète le nombre exact de cartes dans votre jeu. Une fois ces étapes terminées, cliquez sur le bouton *Import* et votre jeu sera prêt pour une partie virtuelle.
+Dans ce menu, vous pouvez sélectionner le fichier correspondant aux faces du jeu depuis votre disque local. Veillez à cocher la case située à côté de l'option **Unique backs** (dos uniques). Laissez la largeur sur 10 et la hauteur sur 7, mais ajustez le curseur pour indiquer le nombre exact de cartes dans votre jeu. Une fois ces étapes terminées, cliquez sur le bouton *Import* et votre jeu sera prêt à être utilisé dans une partie virtuelle.
 
 Vous pouvez désormais jouer à votre version de Timeline en ligne avec jusqu'à neuf autres personnes. De plus, si vous décidez de téléverser et de partager vos éléments de jeu via le [workshop de Tabletop Simulator sur Steam](https://perma.cc/X5SQ-C87S), vous pourrez ajouter votre jeu à une collection de plus de 25 000 jeux de cartes accessibles à une communauté de plus de 2 millions de personnes utilisant TTS.[^19]
 
-{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-07.png" alt="Capture d’écran de l’interface du simulateur de jeu de table montrant la distribution des cartes. Les cartes du jeu semblent flotter au dessus d’une table hexagonale."  caption="Figure 7. Distribution des cartes avec Tabletop Simulator. Bien que l’une des fonctionnalités les plus amusantes de Tabletop Simulator soit de préparer la table, distribuer les cartes est également très plaisant. Le jeu de cartes en anglais présenté ici [a été créé par Mita Williams](https://programminghistorian.org/en/lessons/designing-a-timeline-tabletop-simulator)." %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-07.png" alt="Capture d’écran de l’interface du simulateur de jeu de table montrant la distribution des cartes. Les cartes du jeu semblent flotter au-dessus d’une table hexagonale."  caption="Figure 7. Distribution des cartes avec Tabletop Simulator. Bien que l’une des fonctionnalités les plus amusantes de Tabletop Simulator soit de préparer la table, distribuer les cartes est également très plaisant. Le jeu de cartes en anglais présenté ici [a été créé par Mita Williams](https://programminghistorian.org/en/lessons/designing-a-timeline-tabletop-simulator)." %}
 
 
 ## Conclusion
@@ -582,7 +581,7 @@ Nous pouvons conclure cette leçon avec un autre principe tiré du "Manifesto fo
 
 Zimmerman n'est pas le seul à le penser. Les jeux de société ont déjà été décrits comme des "ordinateurs en papier", car ils sont conçus par des humains et " mettent en œuvre des systèmes de règles et de procédures".[^20]
 
-Cette leçon a pour but d’aider les étudiants et étudiantes en histoire et/ou les personnes qui débutent dans la conception de jeux à créer et générer leurs propres variantes du jeu *Timeline*, en choisissant peut-être un thème ou un aspect spécifique de l'histoire, puis à partager leur travail avec d'autres. Ces jeux de cartes peuvent être combinés pour mêler, par exemple, l'histoire locale et l'histoire internationale. Grâce à ce processus, les joueurs et joueuses découvriront des moments de simultanéité et de chevauchements historiques à la fois surprenants et fascinants (saviez-vous que l'université d'Oxford est plus ancienne que l'empire aztèque ?)
+Cette leçon a pour but d’aider les étudiants et étudiantes en histoire ainsi que les personnes qui débutent dans la conception de jeux à créer leurs propres variantes du jeu *Timeline*, en choisissant peut-être un thème ou un aspect spécifique de l'histoire, puis à partager leur travail avec d'autres personnes. Ces jeux de cartes peuvent être combinés pour mêler, par exemple, l'histoire locale et l'histoire internationale. Grâce à ce processus, les joueurs et joueuses découvriront des moments de simultanéité et de chevauchements entre différents événements historiques, à la fois surprenants et fascinants (saviez-vous que l'université d'Oxford est plus ancienne que l'empire aztèque ?)
 
 Cette expérience pourra encourager la création de variantes de jeux existants. Il serait ainsi possible de créer et d’ajouter ses propres cartes à des jeux comme "Trivial Pursuit", "Magic : The Gathering" ou même "Uno". Ce processus pourrait également mener à la création de jeux entièrement nouveaux.
 

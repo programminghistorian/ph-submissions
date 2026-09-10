@@ -16,7 +16,7 @@ review-ticket:
 difficulty:
 activity:
 topics:
-abstract: This lesson demonstrates how to analyse library catalogue records at scale using Python. You will learn to download MARC records, parse them with PyMARC, and reshape them into tabular form with pandas. You will compare subject heading usage across two sources and visualise the overlap, techniques applicable to metadata quality assessment and cataloguing research.
+abstract: This lesson demonstrates how to analyse library catalogue records at scale using Python. You will learn to download MARC records, parse them with pymarc, and reshape them into tabular form with pandas. You will compare subject heading usage across two sources and visualise the overlap, techniques applicable to metadata quality assessment and cataloguing research.
 avatar_alt:
 doi: XX.XXXXX/phen0000
 ---
@@ -108,7 +108,7 @@ Format all references using the Chicago Manual of Style.
 ### Method or tool
 This lesson teaches *bibliographic data science*: the practice of treating library catalogue records as structured data that can be acquired, reshaped, analysed, and shared at scale. Instead of inspecting records one at a time through a catalogue interface, we work with thousands of them at once using Python.
 
-The two central tools are [PyMARC](https://gitlab.com/pymarc/pymarc), a Python package for reading MARC records, and [pandas](https://pandas.pydata.org/), the standard Python library for tabular data. Several supporting libraries handle downloading and plotting. We introduce each tool as it becomes relevant in each stage.
+The two central tools are [pymarc](https://gitlab.com/pymarc/pymarc), a Python package for reading MARC records, and [pandas](https://pandas.pydata.org/), the standard Python library for tabular data. Several supporting libraries handle downloading and plotting. We introduce each tool as it becomes relevant in each stage.
 
 ### Technical context
 MARC (MAchine-Readable Cataloging) is a metadata standard in library catalogues. Developed at the Library of Congress in the 1960s and now in its MARC21 form, it is the format in which many libraries store and exchange bibliographic records.
@@ -130,7 +130,7 @@ This lesson assumes:
 
 ### Difficulty
 
-Intermediate. The lesson asks the reader to hold several tools in mind at once (PyMARC, pandas, regular expressions, plotting) and to follow a multi-stage workflow from raw files to finished results.
+Intermediate. The lesson asks the reader to hold several tools in mind at once (pymarc, pandas, regular expressions, plotting) and to follow a multi-stage workflow from raw files to finished results.
 
 ## Use Case
 
@@ -154,7 +154,7 @@ One note on licensing: most Yale-originated records are released under a public 
 
 The lesson uses the following Python packages, introduced in context but listed here for reference:
 
-- [PyMARC](https://gitlab.com/pymarc/pymarc) (version 5.4.0) reads and parses MARC records. This lesson works mainly with the MARCXML form.
+- [pymarc](https://gitlab.com/pymarc/pymarc) (version 5.4.0) reads and parses MARC records. This lesson works mainly with the MARCXML form.
 - [pandas](https://pandas.pydata.org/) (version 3.0.3) provides the DataFrame, the tabular structure we reshape records into.
 - [lxml](https://lxml.de/) (version 6.1.1) parses HTML, used during acquisition to find downloadable files on an index page.
 - [matplotlib](https://matplotlib.org/) (version 3.11.0) and [matplotlib-venn](https://pypi.org/project/matplotlib-venn/) (version 1.1.2) produce the Venn diagram visualisation.
@@ -288,7 +288,7 @@ from argparse import ArgumentParser
 We will use some new libraries:
 
 * `sys` contains system-specific parameters and functions, [https://docs.python.org/3/library/sys.html](https://docs.python.org/3/library/sys.html)
-* `lxml` responsible for handling XML and HTML, [https://lxml.de/](https://lxml.de/)
+* `lxml` is responsible for handling XML and HTML, [https://lxml.de/](https://lxml.de/)
 * `argparse` is a parser for command-line options, arguments and subcommands, [https://docs.python.org/3/library/argparse.html](https://docs.python.org/3/library/argparse.html)
 
 The last line's format (`from ... import ...`) is used to limit the import: we will use only a specific part of the library, here the `ArgumentParser` object.
@@ -420,7 +420,7 @@ MARC21 records' logical structure does not fit to the tidy tabular format that (
 
 The problem is that there are repeatable fields in MARC21, e.g. multiple subjects, so if you would like to create a table, where there are columns for identifier and subject, you should decide if you would like to put all subject headings into a single cell, or you would like to create multiple rows for each pair of identifier and subject. Both approaches have their own advantages and disadvantages - you should decide on choosing according to the objective of the analysis.
 
-Let's start with reading a binary MARC file with the [PyMarc](https://gitlab.com/pymarc/pymarc) package.
+Let's start with reading a binary MARC file with the [pymarc](https://gitlab.com/pymarc/pymarc) package.
 
 ```python
 from pymarc import MARCReader
@@ -433,7 +433,7 @@ with open('raw-data/pymarc/marc.dat', 'rb') as fh:
 
 The code is extracted from the package's README. It opens a binary (ISO 2709) file with the standard Python `open` function, and passes the file handler to the package's `MARCReader` class. It provides an iterator, so we can iterate all records in the file one by one. The MARC21 record is  represented as a `Record` object that provides a number of methods to access and modify data elements inside a record. Here we only print the title of the record -- i.e. field `245$a` (title) concatenated with `$b` (Remainder of title) if the latter exists (about the details of these subfields see [MARC21 documentation](https://www.loc.gov/marc/bibliographic/bd245.html)).
 
-For reading MARCXML we should select a strategy based on the size of the file and the memory we have. PyMarc provides two helper functions: 
+For reading MARCXML we should select a strategy based on the size of the file and the memory we have. The pymarc library provides two helper functions: 
 
 - `parse_xml_to_array` reads the whole file and creates a list of [Record](https://pymarc.readthedocs.io/en/latest/#module-pymarc.record) objects. Simple, but memory-heavy for large files.
 - `map_xml` reads records one at a time and calls a function you provide on each one. Memory-friendly, and the right choice for catalogue-scale data.
@@ -535,7 +535,7 @@ There are two reasonable ways to handle repeating values:
 
 Again: it is up to your research question which fits better. If you want only to search if a given subject headings appear in a record, concatenated subject might be enough, if you would like to do statistics on the individual subjects or the correlation of them with other data elements (e.g. comparing them with the title words), the second approach looks better. Later in this lesson we'll use the first approach, joining a record's subject headings with the `|` (pipe) character. It keeps the DataFrame at one row per record, which makes everything else simpler. In this section however we show both approaches.
 
-PyMARC's `record.subjects` property is a convenience that pulls all MARC fields commonly used for subject headings (the `6xx` fields) into one list. The actual heading text lives in subfield `$a`, but `$a` is not guaranteed to be present, so we check before appending.
+The pymarc library's `record.subjects` property is a convenience that pulls all MARC fields commonly used for subject headings (the `6xx` fields) into one list. The actual heading text lives in subfield `$a`, but `$a` is not guaranteed to be present, so we check before appending.
 
 
 The _concatenation_ approach:
@@ -568,7 +568,7 @@ df = pd.DataFrame(data)
 print(df.head())
 ```
 
-Here we create a dictionary where the keys match the column names, the values are empty lists. When we process a record we append these lists. The identifier and the title are the same as above. For subjects we create a new list. PyMarc provide a `subjects` property for the record object, and it collects the following MARC21 fields: 600, 610, 611, 630, 648, 650, 651, 653, 654, 655, 656, 657, 658, 662, 690, 691, 696, 697, 698, 699. The actual subject headings can be found in `$a` subfield, but we should be prepared that it is not always available, so we add only the real values (otherwise our list might contain `None` values for those fields that lack `$a`). After collecting all subjects into this list, we concatenate them separated by a `|` (pipeline) character, or if the record doesn't have any subject we provide an empty string. Finally we add this string to our subject list. As we have collected all values into a dictionary, we can use that directly in the data frame creation.
+Here we create a dictionary where the keys match the column names, the values are empty lists. When we process a record we append these lists. The identifier and the title are the same as above. For subjects we create a new list. The pymarc library provides a `subjects` property for the record object, which returns all 6XX fields (the subject access fields in MARC21).The actual subject headings can be found in `$a` subfield, but we should be prepared that it is not always available, so we add only the real values (otherwise our list might contain `None` values for those fields that lack `$a`). After collecting all subjects into this list, we concatenate them separated by a `|` (pipeline) character, or if the record doesn't have any subject we provide an empty string. Finally we add this string to our subject list. As we have collected all values into a dictionary, we can use that directly in the data frame creation.
 
 The other approach is to _create a distinct data frame_ for the subjects (or other repeatable data elements, such as the list of contributors). 
 

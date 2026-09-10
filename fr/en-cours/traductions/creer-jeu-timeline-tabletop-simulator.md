@@ -521,7 +521,7 @@ RECTANGLE=70,0,0,100%,100%,#000000
 nanDECK crée ensuite une image individuelle à l'aide de sa commande `DISPLAY`, une fois le jeu de cartes généré.
 
 ```
-DISPLAY="Reunion_Timeline_TTS_Face.png"
+DISPLAY="Reunion_Timeline_TTS_Recto.png"
 ```
 
 Après avoir cliqué sur *Validate* puis *Build Deck*, nanDECK devrait générer l'image `Reunion_Timeline_TTS_Recto.png` (nommée ainsi pour cet exemple) dans le répertoire courant.

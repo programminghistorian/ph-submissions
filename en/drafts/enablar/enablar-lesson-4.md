@@ -318,7 +318,7 @@ After completing this lesson, you will be able to deploy a spaCy-powered NLP wor
 
 Datafiles - 
   
-  Our [list of AI tool licence agreements](https://zenodo.org/records/19616877?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImE3MWExN2E5LTE0NjgtNGFiMi1hNWJjLTYyNTE0Y2MxYTJjNiIsImRhdGEiOnt9LCJyYW5kb20iOiI5ZjY5NWZlNGE3NDFlNzA5ZjNjN2EzNjMxMjYxYjJmMSJ9.HLiESWKo1CeA_MimFtUsW1tUxtreTsdjdEJo4xb5KO7FpYNfo1aev9T7GMH6xCwRuEpDU5l3fofI_98B6tjnsg).
+  Our [collection of AI tool licence agreements](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/AI_Products_TOS.zip.).
 
   Our [full dictionary](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/red-flag-dict) dictionary code, held as a *Programming Historian* asset.
 
@@ -346,9 +346,7 @@ First of all, to ensure there is no conflict between any pre-installed Python li
 
 --- 
 
-Alternatively, if you want to avoid downloading local packages, you can click the below link. This will take you to a web-based Jupyter Notebook scaffold, held within Google Colab: 
-
-[Jupyter Notebook link]
+Alternatively, if you want to avoid downloading local packages, you can use [the Python notebook we've prepared](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-4/enablar-lesson-4.ipynb). The notebook can be opened in Google Colab or another web-based or local development environment of your choice. The code you'll find in the notebook is mirrored by the code we provide and narrate below, so we advise that you toggle between the notebook and this text.
 
 This web-based code mirrors our lesson. However, we provide you with more direction and context here; so advise that you toggle between the online code window and this *Programming Historian* text. That said, you may want to use Google Colab's environment for processing your own licences after this lesson. Google Colab operates like the rest of the Google suite, enabling you to store a code file within your personal drive - as with a Google Doc or Google Form. You can then drag your licence files, or our constructed zip file, into the left-hand-side pane. This will also retain any folder structure you may have, for instance if your licences are grouped by AI tool (as in our example). 
 

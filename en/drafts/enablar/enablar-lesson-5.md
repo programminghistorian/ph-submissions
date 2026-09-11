@@ -111,7 +111,7 @@ This lesson teaches *bibliographic data science*: the practice of treating libra
 The two central tools are [pymarc](https://gitlab.com/pymarc/pymarc), a Python package for reading MARC records, and [pandas](https://pandas.pydata.org/), the standard Python library for tabular data. Several supporting libraries handle downloading and plotting. We introduce each tool as it becomes relevant in each stage.
 
 ### Technical context
-MARC (MAchine-Readable Cataloging) is a metadata standard in library catalogues. Developed at the Library of Congress in the 1960s and now in its MARC21 form, it is the format in which many libraries store and exchange bibliographic records.
+MARC (MAchine-Readable Cataloging) is a metadata standard in library catalogues. Developed at the Library of Congress in the 1960s and now in its MARC21 form, it is the metadata schema in which many libraries store and exchange bibliographic records.
 
 MARC data comes in two common serializations: a binary format defined by [ISO 2709](https://en.wikipedia.org/wiki/ISO_2709), and MARCXML, an XML representation that is easier to process with modern tools. This lesson works primarily with MARCXML.
 
@@ -148,7 +148,7 @@ We use the bibliographic catalogue of [Yale University Library](https://web.libr
 
 The catalogue is published as MARCXML at <https://metadata.library.yale.edu/MARCXML/>. Because the full catalogue is large, it is distributed as a set of numbered, compressed files (which we refer to as *shards*), each containing many thousands of records. For most of this lesson we work with one or two shards.
 
-One note on licensing: most Yale-originated records are released under a public domain [CC0 license](https://creativecommons.org/publicdomain/zero/1.0/), while records derived from [OCLC WorldCat](https://www.worldcat.org/) carry an [ODC-BY](https://opendatacommons.org/licenses/by/1.0/) license requiring attribution to OCLC. Yale embeds the applicable license directly in each record. If you publish results derived from this data, check the relevant records and attribute accordingly.
+One note on licensing: most Yale-originated records are released under a public domain [CC0 license](https://creativecommons.org/publicdomain/zero/1.0/), while records derived from [OCLC WorldCat](https://www.worldcat.org/) carry an [ODC-BY](https://opendatacommons.org/licenses/by/1.0/) license requiring attribution to OCLC. Yale embeds the applicable license directly in each record (in subfield [500$a](https://www.loc.gov/marc/bibliographic/bd500.html)). If you publish results derived from this data, check the relevant records and attribute accordingly.
 
 ### Software/tool
 
@@ -210,7 +210,7 @@ pip install pymarc pandas lxml matplotlib matplotlib-venn
 ### Workflow
 #### Data acquisition
 
-In this lesson we acquire catalogue data by downloading files directly. Some institutions provide access to catalogue records through APIs (such as OAI-PMH, SRU, or Z39.50), but many also publish their data as downloadable files. See the list in the QA Catalogue [documentation](https://pkiraly.github.io/qa-catalogue/where-can-I-get-MARC-records.html) for example. One of them is Yale, which published the catalogue under CC0 license at [https://guides.library.yale.edu/c.php?g=923429](https://guides.library.yale.edu/c.php?g=923429). The actual downloadable files can be accessed at [https://metadata.library.yale.edu/MARCXML/](https://metadata.library.yale.edu/MARCXML/). This page contains a full catalogue, and increments. At time of writing the files belonging to the full catalogue are listed at [https://metadata.library.yale.edu/MARCXML/bib_20250706_full/](https://metadata.library.yale.edu/MARCXML/bib_20250706_full/).
+In this lesson we acquire catalogue data by downloading files directly. Some institutions provide access to catalogue records through APIs (such as OAI-PMH, SRU, or Z39.50), but many also publish their data as downloadable files -- see, for example, the list in the QA Catalogue's [documentation](https://pkiraly.github.io/qa-catalogue/where-can-I-get-MARC-records.html). One of them is Yale, which published the catalogue under CC0 license at [https://guides.library.yale.edu/c.php?g=923429](https://guides.library.yale.edu/c.php?g=923429). The actual downloadable files can be accessed at [https://metadata.library.yale.edu/MARCXML/](https://metadata.library.yale.edu/MARCXML/). This page contains a full catalogue, and increments. At time of writing the files belonging to the full catalogue are listed at [https://metadata.library.yale.edu/MARCXML/bib_20250706_full/](https://metadata.library.yale.edu/MARCXML/bib_20250706_full/).
 
 In the first step we explain how to download a single file.
 
@@ -228,7 +228,7 @@ import re
 * `os` contains miscellaneous operating system interfaces, [https://docs.python.org/3/library/os.html](https://docs.python.org/3/library/os.html)
 * `gzip` supports operations on gzip files, [https://docs.python.org/3/library/gzip.html](https://docs.python.org/3/library/gzip.html)
 * `shutil` provides high-level file operations, [https://docs.python.org/3/library/shutil.html](https://docs.python.org/3/library/shutil.html)
-* `re` provides regular expression operations, [https://docs.python.org/3/library/re.html](https://docs.python.org/3/library/re.html)
+* `re` provides [regular expression](https://en.wikipedia.org/wiki/Regular_expression) operations, [https://docs.python.org/3/library/re.html](https://docs.python.org/3/library/re.html)
 
 We should specify the URL of the file we would like to download:
 
@@ -325,7 +325,7 @@ Next we set the variables based on the input parameter and the configuration. A 
     print(f'downloading {remote_file} to {uncompressed_file} ...')
 ```
 
-The bulk of the function repeats what we saw in the single file download, with a check (launch download if neither the gzip nor the xml file are available) and a try-except block. This later catches network problems and informs the user. If we would not put the functionality inside that block an error would stop the script itself.
+The bulk of the function repeats what we saw in the single file download, with a check (launch download if neither the gzip nor the xml file are available) and a [try-except block](https://docs.python.org/3/tutorial/errors.html#handling-exceptions). This later catches network problems and informs the user. If we would not put the functionality inside that block an error would stop the script itself.
 
 ```python
     if not os.path.exists(local_file) and not os.path.exists(uncompressed_file):
@@ -343,7 +343,7 @@ The bulk of the function repeats what we saw in the single file download, with a
         os.remove(local_file)
 ```
 
-It is a good practice to put the entry point of a Python script into a `main()` function. We start it with parsing the arguments. First we create a new `ArgumentParser` object, and define two arguments: index and target_dir. In the `add_argument()` we provide the short (here `-i` and `-t`) and long (`--index`, `--target_dir`) argument names the user can specify in the command line. `dest` sets the name of the variable that holds the value, `help` sets the help text (which is displayed when we call the script if `h` or `--help` arguments). The `parse_args()` method parses the user input, and stores it in the `args` object.
+It is a good practice to put the entry point of a Python script into a `main()` function. We start it with parsing the arguments. First we create a new `ArgumentParser` object, and define two arguments: index and target_dir. In the `add_argument()` we provide the short (here `-i` and `-t`) and long (`--index`, `--target_dir`) argument names the user can specify in the command line. `dest` sets the name of the variable that holds the value, `help` sets the help text (which is displayed when we call the script with `-h` or `--help` arguments). The `parse_args()` method parses the user input, and stores it in the `args` object.
 
 ```python
 def main():
@@ -403,6 +403,8 @@ python download-multiple-files.py \
     --target raw-data/yale
 ```
 
+(In Unix-based systems `\` in the command line means that the command continues in the next line.)
+
 #### Preprocessing
 <!-- File formats, data structures, conversion, and data loss control. -->
 
@@ -418,7 +420,7 @@ MARC21 records' logical structure does not fit to the tidy tabular format that (
 2. Each observation is a row; each row is an observation.
 3. Each value is a cell; each cell is a single value.
 
-The problem is that there are repeatable fields in MARC21, e.g. multiple subjects, so if you would like to create a table, where there are columns for identifier and subject, you should decide if you would like to put all subject headings into a single cell, or you would like to create multiple rows for each pair of identifier and subject. Both approaches have their own advantages and disadvantages - you should decide on choosing according to the objective of the analysis.
+The problem is that there are repeatable fields in MARC21, e.g. multiple subjects, so if you would like to create a table, where there are columns for identifier and subject, you should decide if you would like to put all subject headings into a single cell, or you would like to create multiple rows for each pair of identifier and subject. Both approaches have their own advantages and disadvantages -- you should decide on choosing according to the objective of the analysis.
 
 Let's start with reading a binary MARC file with the [pymarc](https://gitlab.com/pymarc/pymarc) package.
 
@@ -479,12 +481,12 @@ The general pattern is:
 
 We'll start with three fields that appear at most once per record:
 
-- **Record ID**, MARC field `001`, the control number. Quasi-mandatory.
-- **Title**, MARC field `245`. Also quasi-mandatory.
-- **Author**, MARC field `100$a`, the personal name main entry. *Not* mandatory: many records (anonymous works, corporate publications, edited volumes) have no `100`. We need a defensive pattern that records `None` when it's absent.
+- **Record ID**, MARC field `[001](https://www.loc.gov/marc/bibliographic/bd001.html)`, the control number. Quasi-mandatory.
+- **Title**, MARC field `[245](https://www.loc.gov/marc/bibliographic/bd245.html)`. Also quasi-mandatory.
+- **Author**, MARC field `[100$a](https://www.loc.gov/marc/bibliographic/bd100.html)`, the personal name main entry. *Not* mandatory: many records (anonymous works, corporate publications, edited volumes) have no `100`. We need a defensive pattern that records `None` when it's absent.
 
 
-As pandas' data frame is one of the most convenient data structure used in data analysis, our next task is to to extract particular data elements (here: identifier and title) from each MARC21 record, then to build a pandas data frame.
+As pandas' data frame is one of the most convenient data structure used in data analysis, our next task is to extract particular data elements (here: identifier and title) from each MARC21 record, then to build a pandas data frame.
 
 ```python
 from pymarc import map_xml

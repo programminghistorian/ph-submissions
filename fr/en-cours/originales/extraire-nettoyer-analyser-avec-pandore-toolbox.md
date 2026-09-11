@@ -97,13 +97,14 @@ Cette méthode de nommage de dossier ou fichier est utilisée pour toutes les t�
 
 Le contenu du dossier, comme montré dans l'image ci-dessus, se compose des images de l'ouvrage, ainsi qu'un fichier `download_report.txt` qui contient le texte suivant, indiquant que le téléchargement a été fait avec succès :
 
-`1 ARK(s) traité(s) avec succès.  
+```
+1 ARK(s) traité(s) avec succès.  
 https://gallica.bnf.fr/iiif/ark:/12148/bpt6k96461k/f43/full/full/0/default.jpg  
 https://gallica.bnf.fr/iiif/ark:/12148/bpt6k96461k/f44/full/full/0/default.jpg  
 https://gallica.bnf.fr/iiif/ark:/12148/bpt6k96461k/f45/full/full/0/default.jpg  
 https://gallica.bnf.fr/iiif/ark:/12148/bpt6k96461k/f46/full/full/0/default.jpg  
 https://gallica.bnf.fr/iiif/ark:/12148/bpt6k96461k/f47/full/full/0/default.jpg  
-`
+```
 
 Afin de pouvoir procéder correctement à l'étape suivante, les images devront être extraites du fichier zip. Le fichier texte, lui, peut être supprimé sans risque.
 
@@ -189,7 +190,7 @@ Vous obtiendrez deux types d'informations avec cette sortie.
 
 Tout d'abord, vous obtenez les informations suivantes, qui vous permettent de disséquer la composition grammaticale de votre texte :
 
-``
+```
 Token: la --> POS: DET  
 Token: promesse --> POS: NOUN  
 Token: qu' --> POS: PRON  
@@ -200,11 +201,11 @@ Token: à --> POS: ADP
 Token: la --> POS: DET  
 Token: princesse --> POS: NOUN  
 Token: Droubetzkoï --> POS: PROPN  
-``
+```
 
 Ensuite, afin d'évaluer la répartition de la composition grammaticale de votre texte, un comptage est proposé :
 
-`
+```
 --- Comptage des POS ---
 NOUN: 457  
 PUNCT: 382  
@@ -221,7 +222,7 @@ SPACE: 51
 SCONJ: 43  
 NUM: 16  
 X: 11  
-`
+```
 
 ### Reconnaissance d'entités nommées
 La reconnaissance d'entités nommées, plus connu également sous son appellation anglaise de *named entity recognition* se définit, selon [Wikipédia](https://fr.wikipedia.org/wiki/Reconnaissance_d%27entit%C3%A9s_nomm%C3%A9es) comme le fait de "rechercher des objets textuels (c'est-à-dire un mot, ou un groupe de mots) catégorisables dans des classes telles que noms de personnes, noms d'organisations ou d'entreprises, noms de lieux, quantités, distances, valeurs, dates, etc.".
@@ -250,7 +251,7 @@ La sortie Bert ne fournira pas un fichier texte mais un fichier CSV. Vous pouvez
 
 Avec les trois sorties que vous avez générées, vous pouvez observer les différences dans ce qui a été reconnu comme une entitée ou non, et le changement de classification possible dans certains cas, comme ci-dessous. Cela vous permettra de choisir plus aisément celui qui semble le plus approprié pour votre texte, si vous décidez d'agrandir votre corpus par exemple.
 
-` Spacy
+```Spacy
 T4    PER 138 150    Mlle Schérer  
 T5    PER 186 196    l'Empereur  
 T6    ORG 299 318    régiment Séménovsky  
@@ -258,9 +259,9 @@ T7    PER 375 380    Boris
 T8    LOC 414 423    Koutouzow  
 T9    LOC 482 488    Moscou  
 T10    LOC 500 506    Rostow  
-`
+```
 
-` Bert
+```Bert
 Droubetzkoï, PER, 84, 96, 0.99831575  
 Mlle Schérer, PER, 111, 124, 0.8961335  
 l, PER, 159, 161, 0.9366914  
@@ -268,9 +269,9 @@ Empereur, PER, 162, 170, 0.988947
 Séménovsky, MISC, 281, 292, 0.889915  
 Boris, PER, 348, 354, 0.97729295  
 Koutouzow, PER, 387, 397, 0.814427  
-`
+```
 
-` Flair
+```Flair
 T4    PER 138 150    Mlle Schérer  
 T5    PER 308 318    Séménovsky  
 T6    PER 375 380    Boris  
@@ -278,7 +279,7 @@ T7    PER 414 423    Koutouzow
 T8    LOC 482 488    Moscou  
 T9    PER 500 506    Rostow  
 T10    MISC 593 598    Boris  
-`
+```
 
 ### Analyse linguistique
 Après avoir récupéré l'étiquetage morphosyntaxique et les entités nommées, il est possible de passer à une étude un peu plus approfondie, avec l'analyse linguistique, qui consiste à s'intéresser aux spécificités de langage contenues dans le texte étudié.
@@ -291,9 +292,9 @@ Une fois l'option cochée, importez votre texte de sortie OCR `guerre_et_paix.tx
 
 Cela générera un dossier `linguistics_XXXXX` qui contiendra un fichier texte avec `_hapax` ajouté au nom de fichier et contenant la liste des mots uniques du fichier texte, tels que les éléments présentés ci-dessous :
 
-`
+```
 mieux, recevoir, soutenir, jeunes-gens, souciaïent, prendre, part, réception, tenaient, chambres, intérieures, conite, ahait, rencontre, arrivants, reconduisant, énigägeait, obligé, disait-il, indifféremment, inférieurs, qu'aux, supérieurs, merci, celle, dont, célébrons, viendrez, faute, est-ce, autrement, m'offenseriez, supplie, venir,
-`
+```
 
 ### Analyse statistique
 Après avoir étudié les spécificités du langage du texte étudié, il est également possible de récupérer des informations statistiques sur certains éléments du texte, comme cela a pu déjà être obtenu, par exemple, avec le nombre de catégories grammaticales, lors de l'étiquetage morphosyntaxique.

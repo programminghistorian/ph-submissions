@@ -191,7 +191,7 @@ Working through this lesson will take about 30 minutes.
 
 ### Inventory
 
-dataset: seventeen newsletters from the Architectural Association, either in PDF format or .txt files.
+dataset: seventeen newsletters from the Architectural Association in PDF format.
 python libraries: spaCy (and large english model), requests, pdfplumber, pandas.
 
 ### Difficulty
@@ -250,7 +250,7 @@ def get_pdfs(dir): #dir refers to directory
        files.append(path)
    return files
 ```
-We can save all the relevant file names with this function. Let’s do so under the “aa_files” variable. 
+We can save all the relevant file names from the "AA_Weekly_data" directory that accompanies the lesson using this function. Let’s do so under the “aa_files” variable. 
 
 ``` python3
 #get all files from our data directory
@@ -431,6 +431,7 @@ To return to our analogy, Wikidata is the kitchen, our spreadsheet of names is a
 First, we need to load the requests library as well as the time library, which will allow us to space our API calls over some  time to [not overload the Wikidata servers](https://www.mediawiki.org/wiki/API:Etiquette).
 
 ``` python3
+#import relevant libraries
 import requests
 import time
 ```
@@ -438,6 +439,7 @@ import time
 Then, we need to define the URL we will be querying (Wikidata’s API) and the [SPARQL](https://en.wikipedia.org/wiki/SPARQL) endpoint. SPARQL is a query language for retrieving data structured in a graph format. Since [Wikidata](https://en.wikipedia.org/wiki/Wikidata) is a knowledge graph, we need to use SPARQL to access its data as non SPARQL queries cannot navigate this graph structure. Finally, we need to define a User-Agent header (which is [mandatory](https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_User-Agent_Policy) in order to use Wikidata’s API).
 
 ``` python3
+#define constants 
 WIKIDATA_API = "https://www.wikidata.org/w/api.php"
 SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
 HEADERS = {"User-Agent": "ArchitectNER/1.0 (programminghistorian)"}  # required by Wikimedia; insert name of your own project here if you like
@@ -455,6 +457,7 @@ As we outlined earlier, there is a risk of perpetuating archival silences by ign
 Since our requests are complex, it is best to break it down into different functions. Let’s start with a function to search for and return names across Wikidata, which will naturally take a name as its argument.
 
 ``` python3
+#function to search and return names from Wikidata
 def search_wikidata_label(name):
    params = {#specify the parameters of the search
        "action": "wbsearchentities",
@@ -491,6 +494,7 @@ After using requests to perform our query, we will check the results to keep onl
 
 {% raw %}
 ``` python3
+#function to get more information about the Wikidata matches
 def get_architect_details(qid):
 #this function takes an individual QID as its argument
 #the following is an f-string, a type of string which allows us to insert variables between {}
@@ -558,7 +562,8 @@ We now have a function to scan Wikidata for a QID given a name, and a function t
 This will split our entities into three potential results: no match in Wikidata, a match to an architect, a match but not to an architect. 
 
 ``` python3
-  def match_entity_to_wikidata(name):
+#function to pass entities through Wikidata and look for architects
+def match_entity_to_wikidata(name):
 #apply the wikidata search to the name
    candidates = search_wikidata_label(name)
 #if there are no matches, return “no_match”
@@ -606,6 +611,7 @@ Now we need to run it, for which we will write a final function to take the data
 This final function takes the argument “people”, which will be the DataFrame column with our named entities. We will first create an empty list called “results” before iterating over each name (row) in people. For every name, we will apply our function match_entity_to_wikidata() and append the output to “results”. Then, we use the time library to interrupt the for loop for one second in between each name in order not to overload the WikiData servers with our API calls. Finally, we return the list “results” as a DataFrame.
 
 ``` python3
+#function to process the NER results through Wikidata
 def match_entities(people):
    results = []
   
@@ -619,6 +625,7 @@ def match_entities(people):
 ```
 All there is left to do is to run the function on the “entities” column of our aa_data_deduped DataFrame and save the new DataFrame under a new variable, in this case “aa_matched”..
 ``` python3
+#run the match_entities function 
 aa_matched = match_entities(aa_data_deduped["entities"])
 ```
 

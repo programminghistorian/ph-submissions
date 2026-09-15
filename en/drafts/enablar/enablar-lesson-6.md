@@ -231,7 +231,7 @@ You will need to download the following python libraries if you do not already h
 **Path**
 > Path is used to create a file location that can be read and verified by Python. Replaces the need for the location to be represented as a string of text which can be unstable.
 
-You can install the libraries by either using ```pip install {insert library name}``` in your terminal or ```!pip install {insert library name}``` if working in a Jupyter Notebook.
+You can install the libraries by either using `pip install {insert library name}`{:.pyhton3} in your terminal or ```!pip install {insert library name}``` if working in a Jupyter Notebook.
  
 Then you will need to load them running the following command.
 

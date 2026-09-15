@@ -231,7 +231,7 @@ You will need to download the following python libraries if you do not already h
 **Path**
 > Path is used to create a file location that can be read and verified by Python. Replaces the need for the location to be represented as a string of text which can be unstable.
 
-You can install the libraries by either using `pip install {insert library name}`{:.pyhton3} in your terminal or ```!pip install {insert library name}``` if working in a Jupyter Notebook.
+You can install the libraries by either using ```pip install {insert library name}``` in your terminal or ```!pip install {insert library name}``` if working in a Jupyter Notebook.
  
 Then you will need to load them running the following command.
 
@@ -242,7 +242,7 @@ from pathlib import Path
 ```
 Let’s start by loading the names of all the files in our data folder. To do so, we will create a function that allows us to grab all files that end in “.pdf” thanks to the “Path” method of the “pathlib” library. We create an empty list called “files” to which we append the pathname of all relevant files by  using the “.glob()” method to extract all files than end in “.pdf” (the * sign is a wild card).
 
-```
+``` python3
 #function to get all pdf files in a directory
 def get_pdfs(dir): #dir refers to directory
    files = [] 
@@ -252,7 +252,7 @@ def get_pdfs(dir): #dir refers to directory
 ```
 We can save all the relevant file names with this function. Let’s do so under the “aa_files” variable. 
 
-```
+``` python3
 aa_files = get_pdfs("AA_Weekly_data")
 ```
 
@@ -260,7 +260,7 @@ We have loaded the names of each file but  need an additional function to be abl
 
 Let’s break this down, starting with mining the PDFs. As mentioned earlier, pdfplumber treats each page of a PDF as a separate object. We therefore need to combine all these separate text strings into one.
 
-```
+``` python3
 with pdfplumber.open(doc) as pdf:
            full_text = []
            for page in pdf.pages:
@@ -278,7 +278,7 @@ This demonstrates how we can extract text from a single PDF file with pdfplumber
 
 For this reason, we will iterate over each PDF file and output their respective textual data into an empty “rows” list, which we then turn into a DataFrame using pandas. Let’s do this in a function, expanding on the example pdfplumber script above. Here, “file_name” and “text” correspond to the two columns of the DataFrame we are creating. 
 
-```
+``` python3
 # function to extract text from pdf
 def pdf_to_df(files):
    rows = []
@@ -299,7 +299,7 @@ def pdf_to_df(files):
 
 Now let’s simply apply this function to the “aa_files” variable. We can print the contents of the “text” column to verify it has worked. 
 
-```
+``` python3
 aa_files_data = pdf_to_df(aa_files)
 print(aa_files_data[“text”])
 ```
@@ -310,22 +310,22 @@ We now have text we can process with NER (if you skipped the pdfplumber step, yo
 
 If this is your first time using spaCy, you need to pip install the library as well as download the model you want to use. In this lesson, we will be using their large English-language model. You can install both the library and the model in terminal with the following commands, or directly in your notebook by adding an exclamation mark “!” before the commands.
 
-```
+``` python3
 pip install -U spacy
 python -m spacy download en_core_web_lg
 ```
 Once installed, let’s  load both the library and the model into our script. 
-```
+``` python3
 import spacy
 ```
-```
+``` python3
 #load spacy moodel
 nlp = spacy.load("en_core_web_lg")
 ```
 
 This “nlp” variable will allow us to call the model on our data. spaCy processes texts and outputs a “doc” object which contains various kinds of metadata such as the entities it picked up, the labels of those entities (whether they are people, places, and so forth) and where these entities are located in text. We can access this information through the doc.ents object. People working with NER are often interested in knowing what kinds of entities each string of text represents, and where these entities are located. They therefore usually adopt the following syntax.
 
-```
+``` python3
 entities = []
 
 
@@ -339,7 +339,7 @@ for ent in doc.ents:
 ```
 
 For our purpose however, all we need is to have the names of people, who appear within the text. Let’s define a new function to apply the large english model to text and return a list of all PERSON entities found within said text by iterating over each entity in doc.ents.
-```
+``` python3
 #ner function
 def run_ner(text, nlp): #arguments are text and the nlp model
    entities = []
@@ -358,14 +358,14 @@ def run_ner(text, nlp): #arguments are text and the nlp model
 
 Now, let’s create a new row in our DataFrane named “entities” which we will populate with the entities that appear in the text that we mined for each file. Using the .apply() function and lambda, we can apply our run_ner function on every row in the “text” column of our dataframe. 
 
-```
+``` python3
 #entities code
 aa_files_data["entities"] = aa_files_data["text"].apply(lambda x: run_ner_df(x, nlp))
 
 ```
 Try printing out the entities extracted from the first row to verify that it has worked. 
 
-```
+``` python3
 print[aa_files_data][“entities’][0]
 ```
 
@@ -379,11 +379,11 @@ Currently, all person entities identified by the NER model for a given PDF are s
 
 Here we have created a new DataFrame called aa_data_explode, which will transform the DataFrame aa_files_data to give each entity its own row. 
 
-```
+``` python3
 aa_data_exploded = aa_files_data.explode("entities")
 ```
 We can then group this new dataframe by the values contained in the “entities” column. This grouping gets rid of duplicate entities. 
-```
+``` python3
 #group ner column
 aa_data_deduped = (
    aa_data_exploded.groupby("entities", as_index=False)
@@ -400,7 +400,7 @@ We also see that several entities have been identified as people, when they seem
 
 We can clean these very easily with the following bit of code.
 
-```
+``` python3
 #keep only rows with multiple token names (no space = one word)
 aa_data_deduped = aa_data_deduped[aa_data_deduped["entities"].str.contains(" ")]
 
@@ -425,14 +425,14 @@ To return to our analogy, Wikidata is the kitchen, our spreadsheet of names is a
 
 First, we need to load the requests library as well as the time library, which will allow us to space our API calls over some  time to [not overload the Wikidata servers](https://www.mediawiki.org/wiki/API:Etiquette).
 
-```
+``` python3
 import requests
 import time
 ```
 
 Then, we need to define the URL we will be querying (Wikidata’s API) and the [SPARQL](https://en.wikipedia.org/wiki/SPARQL) endpoint. SPARQL is a query language for retrieving data structured in a graph format. Since [Wikidata](https://en.wikipedia.org/wiki/Wikidata) is a knowledge graph, we need to use SPARQL to access its data as non SPARQL queries cannot navigate this graph structure. Finally, we need to define a User-Agent header (which is [mandatory](https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_User-Agent_Policy) in order to use Wikidata’s API).
 
-```
+``` python3
 WIKIDATA_API = "https://www.wikidata.org/w/api.php"
 SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
 HEADERS = {"User-Agent": "ArchitectNER/1.0 (programminghistorian)"}  # required by Wikimedia; insert name of your own project here if you like
@@ -449,7 +449,7 @@ As we outlined earlier, there is a risk of perpetuating archival silences by ign
 
 Since our requests are complex, it is best to break it down into different functions. Let’s start with a function to search for and return names across Wikidata, which will naturally take a name as its argument.
 
-```
+``` python3
 def search_wikidata_label(name):
    params = {#specify the parameters of the search
        "action": "wbsearchentities",
@@ -485,7 +485,7 @@ We are specifically interested in occupation (whether one of our Named Entities 
 After using requests to perform our query, we will check the results to keep only those which are related to the field of architecture. If a match is identified, we will return the relevant data in a dictionary format. Else, we will simply return an empty (None) result. We will then return all results in a structured format.
 
 {% raw %}
-```
+``` python3
 def get_architect_details(qid):
 #this function takes an individual QID as its argument
 #the following is an f-string, a type of string which allows us to insert variables between {}
@@ -552,7 +552,7 @@ We now have a function to scan Wikidata for a QID given a name, and a function t
 
 This will split our entities into three potential results: no match in Wikidata, a match to an architect, a match but not to an architect. 
 
-```
+``` python3
   def match_entity_to_wikidata(name):
 #apply the wikidata search to the name
    candidates = search_wikidata_label(name)
@@ -600,7 +600,7 @@ Now we need to run it, for which we will write a final function to take the data
 
 This final function takes the argument “people”, which will be the DataFrame column with our named entities. We will first create an empty list called “results” before iterating over each name (row) in people. For every name, we will apply our function match_entity_to_wikidata() and append the output to “results”. Then, we use the time library to interrupt the for loop for one second in between each name in order not to overload the WikiData servers with our API calls. Finally, we return the list “results” as a DataFrame.
 
-```
+``` python3
 def match_entities(people):
    results = []
   
@@ -613,7 +613,7 @@ def match_entities(people):
    return pd.DataFrame(results)
 ```
 All there is left to do is to run the function on the “entities” column of our aa_data_deduped DataFrame and save the new DataFrame under a new variable, in this case “aa_matched”..
-```
+``` python3
 aa_matched = match_entities(aa_data_deduped["entities"])
 ```
 

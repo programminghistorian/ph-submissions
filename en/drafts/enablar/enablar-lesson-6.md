@@ -235,7 +235,7 @@ You can install the libraries by either using ```pip install {insert library nam
  
 Then you will need to load them running the following command.
 
-```
+``` python3
 import pdfplumber
 import pandas as pd
 from pathlib import Path

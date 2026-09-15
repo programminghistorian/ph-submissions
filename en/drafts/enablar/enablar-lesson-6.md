@@ -191,7 +191,7 @@ Working through this lesson will take about 30 minutes.
 
 ### Inventory
 
-dataset: seventeen newsletters from the Architectural Association in PDF format.
+dataset: seventeen newsletters from the Architectural Association in PDF or CSV format. 
 python libraries: spaCy (and large english model), requests, pdfplumber, pandas.
 
 ### Difficulty
@@ -216,7 +216,7 @@ You can also run the code in your own Python environment if you prefer.
 
 ### Step 1: pdfplumber
 
-_This first step is optional. Feel free to skip it and directly refer to the next step if you already have text files or are using the text files uploaded with this lesson._
+_This first step is optional. Feel free to skip it and directly refer to the next step if you already have text files or are using the CSV file uploaded with this lesson._
 
 When working with PDF’s, we need to obtain text data before we can process it using NER. PDFs are ubiquitous in today’s publishing landscape, thankfully this means there are plenty of ways to extract their text with a bit of code. 
  
@@ -306,6 +306,7 @@ Now let’s simply apply this function to the “aa_files” variable. We can pr
 aa_files_data = pdf_to_df(aa_files)
 print(aa_files_data[“text”])
 ```
+_NB: if you have decided to skip the pdfplumber section of this lesson and download the CSV file instead, you can load it into a DataFrame and continue the lesson as normal here._
 
 #### Step 2: NER 
 

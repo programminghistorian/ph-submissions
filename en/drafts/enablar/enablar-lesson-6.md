@@ -253,6 +253,7 @@ def get_pdfs(dir): #dir refers to directory
 We can save all the relevant file names with this function. Let’s do so under the “aa_files” variable. 
 
 ``` python3
+#get all files from our data directory
 aa_files = get_pdfs("AA_Weekly_data")
 ```
 
@@ -261,6 +262,7 @@ We have loaded the names of each file but  need an additional function to be abl
 Let’s break this down, starting with mining the PDFs. As mentioned earlier, pdfplumber treats each page of a PDF as a separate object. We therefore need to combine all these separate text strings into one.
 
 ``` python3
+#example syntax for pdfplumber
 with pdfplumber.open(doc) as pdf:
            full_text = []
            for page in pdf.pages:
@@ -300,6 +302,7 @@ def pdf_to_df(files):
 Now let’s simply apply this function to the “aa_files” variable. We can print the contents of the “text” column to verify it has worked. 
 
 ``` python3
+#apply the function and check it worked by printing the text column
 aa_files_data = pdf_to_df(aa_files)
 print(aa_files_data[“text”])
 ```
@@ -326,8 +329,8 @@ nlp = spacy.load("en_core_web_lg")
 This “nlp” variable will allow us to call the model on our data. spaCy processes texts and outputs a “doc” object which contains various kinds of metadata such as the entities it picked up, the labels of those entities (whether they are people, places, and so forth) and where these entities are located in text. We can access this information through the doc.ents object. People working with NER are often interested in knowing what kinds of entities each string of text represents, and where these entities are located. They therefore usually adopt the following syntax.
 
 ``` python3
+#example syntax for spaCy
 entities = []
-
 
 for ent in doc.ents:
    entities.append({
@@ -344,8 +347,8 @@ For our purpose however, all we need is to have the names of people, who appear 
 def run_ner(text, nlp): #arguments are text and the nlp model
    entities = []
 
-
-   doc = nlp(text)#creating a doc object
+   #creating a doc object
+   doc = nlp(text)
    for ent in doc.ents: 
        if ent.label_ == "PERSON": #keeping only PERSON entities and appending it to our entities list
            entities.append(
@@ -359,7 +362,7 @@ def run_ner(text, nlp): #arguments are text and the nlp model
 Now, let’s create a new row in our DataFrane named “entities” which we will populate with the entities that appear in the text that we mined for each file. Using the .apply() function and lambda, we can apply our run_ner function on every row in the “text” column of our dataframe. 
 
 ``` python3
-#entities code
+#apply NER; make sure to specify the nlp model (in our case, nlp)
 aa_files_data["entities"] = aa_files_data["text"].apply(lambda x: run_ner_df(x, nlp))
 
 ```
@@ -380,11 +383,13 @@ Currently, all person entities identified by the NER model for a given PDF are s
 Here we have created a new DataFrame called aa_data_explode, which will transform the DataFrame aa_files_data to give each entity its own row. 
 
 ``` python3
+#explode the dataframe
 aa_data_exploded = aa_files_data.explode("entities")
 ```
 We can then group this new dataframe by the values contained in the “entities” column. This grouping gets rid of duplicate entities. 
 ``` python3
-#group ner column
+#group by ner column; the starting and ending parentheses are just a way for Python to treat this as one
+#continous line of code despite the line breaks
 aa_data_deduped = (
    aa_data_exploded.groupby("entities", as_index=False)
    .agg(source_files=("file_name", lambda x: "; ".join(sorted(x.unique()))))

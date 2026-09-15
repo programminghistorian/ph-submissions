@@ -50,7 +50,7 @@ Enfin, la possibilité de créer un même jeu sous forme physique et numérique 
 
 ## Aperçu de la leçon
 
-Cette leçon débute par une brève réflexion sur les jeux, envisagés comme un moyen d’expression et de communication permettant aux élèves de comprendre, d’interpréter et de créer des expériences interactives, tout en insistant sur l’importance d’enseigner la conception de jeux au plus grand nombre. Elle reconnaît également que les jeux de société et les jeux vidéo sont déjà largement utilisés dans l’enseignement de l’histoire depuis au moins cinquante ans.
+Cette leçon débute par une brève réflexion sur les jeux, envisagés comme un moyen d’expression et de communication permettant aux élèves de comprendre, d’interpréter et de créer des expériences interactives, tout en insistant sur l’importance d’enseigner la conception de jeux au plus grand nombre. 
 
 La leçon présente ensuite *Timeline*, un jeu éducatif sur le thème de l'histoire, ainsi que certaines de ses variantes. Les mécaniques de jeu n'étant pas protégées par le droit d'auteur, vous pouvez utiliser celles de *Timeline* pour créer votre propre jeu, que ce soit pour jouer ou pour explorer l'histoire. Après avoir posé ce cadre, deux outils numériques couramment utilisés par les personnes qui conçoivent des jeux, qu’elles soient amatrices ou professionnelles, sont présentés : nanDECK et Tabletop Simulator. Les différentes étapes permettant de créer un jeu de cartes inspiré de *Timeline* sont ensuite décrites : d'abord à l'aide du modèle de jeu fourni, consacré à l’histoire de l’île de La Réunion (France), puis à partir des éléments d’un prototype de six cartes que les lecteurs et lectrices peuvent télécharger et imprimer eux-mêmes.
 

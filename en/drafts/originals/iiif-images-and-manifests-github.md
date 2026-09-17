@@ -11,12 +11,13 @@ reviewers:
 - John P.T. Moore
 editors:
 - Giulia Osti
+- Alex Wermer-Colan
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/659
 difficulty: 2
 activity: presenting
 topics: [api, data-management, website]
-abstract: Short abstract of this lesson
-avatar_alt: Visual description of lesson image
+abstract: This lesson shows you how to create and host level-0 International Image Interoperability Framework (IIIF) manifests using GitHub Pages, to display and share image files. This lesson includes three methods for creating simple IIIF-compliant images, each increasing in complexity and difficulty.
+avatar_alt: Three stylised eye-like spiral motifs, each with a fan of vertical ridges above a curved, swirling base, arranged in a triangular pattern on a light background.
 doi: XX.XXXXX/phen0000
 ---
 
@@ -27,7 +28,7 @@ doi: XX.XXXXX/phen0000
 
 ### Lesson Goals
 
-This lesson demonstrates how to make high-quality, zoomable, shareable, interoperable images through the [International Image Interoperability Framework (IIIF)](https://en.wikipedia.org/wiki/International_Image_Interoperability_Framework). It provides three methods for creating basic IIIF-compliant images, and creating and hosting IIIF manifests of images downloaded to your local device. In particular, you will learn:
+This lesson demonstrates how to make high-quality, zoomable, shareable, interoperable images through the [International Image Interoperability Framework (IIIF)](https://perma.cc/GS4V-8XPP). It provides three methods for creating basic IIIF-compliant images, and creating and hosting IIIF manifests of images downloaded to your local device. In particular, you will learn:
 
 - **Method 1**: How to create Level-0 (basic) compliant IIIF images
 - **Method 2**: How to create a IIIF manifest to present Level-0 compliant IIIF images
@@ -42,25 +43,25 @@ There are no fees for processing or hosting through any of these methods, and al
 - A strong Internet connection.
 - Method 3 (hosting IIIF manifests on GitHub) requires additional installations as directed.
 
-Note that this lesson is designed for users on [macOS](https://en.wikipedia.org/wiki/MacOS). Users on Windows or Linux devices can follow documentation for using comparable built-in file management systems (such as [File Explorer](https://support.microsoft.com/en-us/windows/file-explorer-in-windows-ef370130-1cca-9dc5-e0df-2f7416fe1cb1) on Windows and device-dependent on Linux). Alternatively, you can use command-line interfaces (such as [PowerShell](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands) on Windows or [Bash](https://programminghistorian.org/en/lessons/intro-to-bash) on Linux) to adapt the methods, but options for adaptation will not be covered in detail.
+Note that this lesson is designed for users on [macOS](https://perma.cc/3AMN-TYCJ). Users on Windows or Linux devices can follow documentation for using comparable built-in file management systems (such as [File Explorer](https://perma.cc/YP9A-SG62) on Windows and device-dependent on Linux). Alternatively, you can use command-line interfaces (such as [PowerShell](https://web.archive.org/web/20260910213717/https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands) on Windows or [Bash](/en/lessons/intro-to-bash) on Linux) to adapt the methods, but options for adaptation will not be covered in detail.
 
-Each of these methods make use of the tools and workflows created by IIIF Technical Coordinator [Glen Robson](https://github.com/glenrobson). Methods become progressively harder and more intensive as you go through this lesson.
+Each of these methods make use of the tools and workflows created by IIIF Technical Coordinator [Glen Robson](https://perma.cc/3EHN-LUYM). Methods become progressively harder and more intensive as you go through this lesson.
 
 ### What is IIIF?
 
 The International Image Interoperability Framework (IIIF) describes itself as 'a set of open standards for delivering high-quality, attributed digital objects online at scale'[^1]. In plain terms, IIIF is a standardized format for delivering digital objects, such as images, videos, and even 3D models, from one place on the web to another. The framework allows cultural heritage institutions, project teams, and individuals to share high-resolution digital objects across the web quickly, easily, and in a way that speaks between and across different systems. 
 
-Effectively, IIIF standardizes the way images are delivered by servers to platforms, tools, and environments on the web using a series of [Application Programming Interfaces (APIs)](https://en.wikipedia.org/wiki/API) that allow two different computers or pieces of software to communicate with one another. IIIF has both an [Image API](https://iiif.io/api/image/3.0/) and a [Presentation API](https://iiif.io/api/presentation/3.0/): the Image API tells an [image server](https://en.wikipedia.org/wiki/Image_server) how, what size, and what part of an image to serve, while the Presentation API tells the image viewer how, in what order, with what description, etc. to display the image. Because IIIF’s Image API specifies exactly how an image’s pixels will be served to a viewer or user, it’s easy to specify exactly how much, and in what way, you want the image to be displayed. To learn more on how IIIF works, you can explore [IIIF’s How It Works](https://iiif.io/get-started/how-iiif-works/) guide.
+Effectively, IIIF standardizes the way images are delivered by servers to platforms, tools, and environments on the web using a series of [Application Programming Interfaces (APIs)](https://perma.cc/UWB2-4HX3) that allow two different computers or pieces of software to communicate with one another. IIIF has both an [Image API](https://perma.cc/6JFH-MNCB) and a [Presentation API](https://perma.cc/R8ED-N3D8): the Image API tells an [image server](https://perma.cc/L97L-F99K) how, what size, and what part of an image to serve, while the Presentation API tells the image viewer how, in what order, with what description, etc. to display the image. Because IIIF’s Image API specifies exactly how an image’s pixels will be served to a viewer or user, it’s easy to specify exactly how much, and in what way, you want the image to be displayed. To learn more on how IIIF works, you can explore [IIIF’s How It Works](https://perma.cc/NX64-7BU9) guide.
 
 #### What is Level-0 Compliance?
 
-Image servers can be compliant at different levels, with varying parameters needed to make them work with the IIIF Image API. In this lesson, all of the images you produce will be Level-0 compliant, meaning that they will not require a specialized image server at all. Level-0 compliance allows you to use pre-built files, instead of processing, modifying, and rendering image files on the spot through an image server. Instead, all of the images in this lesson will be static, served through a standard [web server](https://en.wikipedia.org/wiki/Web_server) via [GitHub Pages](https://docs.github.com/en/pages). Images at Level-0 compliance can be tiled or untiled: tiled images are made up of lots of files, each containing a portion of the image, while untiled images are one single image file. For more on compliance, refer to the [IIIF’s Image API Compliance, Version 3.0.0 documentation](https://iiif.io/api/image/3.0/compliance/). 
+Image servers can be compliant at different levels, with varying parameters needed to make them work with the IIIF Image API. In this lesson, all of the images you produce will be Level-0 compliant, meaning that they will not require a specialized image server at all. Level-0 compliance allows you to use pre-built files, instead of processing, modifying, and rendering image files on the spot through an image server. Instead, all of the images in this lesson will be static, served through a standard [web server](https://perma.cc/6DRP-M975) via [GitHub Pages](https://perma.cc/Q3L4-SNPB). Images at Level-0 compliance can be tiled or untiled: tiled images are made up of lots of files, each containing a portion of the image, while untiled images are one single image file. For more on compliance, refer to the [IIIF’s Image API Compliance, Version 3.0.0 documentation](https://perma.cc/42X5-VYT8). 
 
 #### What is a IIIF Manifest?
 
-An [International Image Interoperability Framework manifest](https://iiif.io/guides/using_iiif_resources/) is a file that contains all the information about an image or group of images served using IIIF, including the [metadata](https://en.wikipedia.org/wiki/Metadata), order of presentation, and size specifications. Creating manifests for your images means that you can specify metadata that will display when viewed in a IIIF-compatible viewer. There are also tools, digital exhibition platforms, and viewers that only accept manifests, not images, so knowing how to create compliant images *and* manifests is important for effectively leveraging IIIF.
+An [International Image Interoperability Framework manifest](https://perma.cc/64GV-9575) is a file that contains all the information about an image or group of images served using IIIF, including the [metadata](https://perma.cc/2VJH-5V2M), order of presentation, and size specifications. Creating manifests for your images means that you can specify metadata that will display when viewed in a IIIF-compatible viewer. There are also tools, digital exhibition platforms, and viewers that only accept manifests, not images, so knowing how to create compliant images *and* manifests is important for effectively leveraging IIIF.
 
-IIIF manifests rely on [Uniform Resource Identifiers (URIs)](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) to identify and access IIIF-compliant images on the web and display them using the IIIF Presentation API. There are two uniform identifiers that can be used to create manifests: the **info.json URI** and the **image URI**.
+IIIF manifests rely on [Uniform Resource Identifiers (URIs)](https://perma.cc/YZB4-C5FR) to identify and access IIIF-compliant images on the web and display them using the IIIF Presentation API. There are two uniform identifiers that can be used to create manifests: the **info.json URI** and the **image URI**.
 
 1. The **`info.json` URI** requests information about the image service, that is, how the image is being served to the web. The `info.json` URI will include the path to the `info.json` file for that image in your GitHub repository: `https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO-NAME/images/YOUR-IMAGE-FILENAME\info.json`.
  
@@ -70,9 +71,9 @@ IIIF manifests rely on [Uniform Resource Identifiers (URIs)](https://en.wikipedi
 
 The methods demonstrated in this lesson can be applied to both version two (v2) and version three (v3) of the IIIF APIs. Knowing which version you would like to use is important because the two differ in structure, meaning that manifest files for each are read and rendered by servers differently. Version two and three differ both semantically and structurally: each version's manifests use different labels for properties, such as `@id` (v2) vs. `id` (v3), `description` (v2) vs. `summary` (v3), and `license` (v2) vs. `rights` (v3).
 
-In terms of structure, IIIF v3 manifests are formatted according to the [W3C Web Annotation Data Model](https://www.w3.org/TR/annotation-model/), an [extensible](https://en.wikipedia.org/wiki/Extensible_programming) specification that ensures annotations are interoperable across platforms and systems. Annotations, or pieces of media associated with a web resource, are grouped together and ordered using [Annotation Pages](https://iiif.io/api/presentation/3.0/#55-annotation-page); each v3 manifest will include an object with the `AnnotationPage` type with other objects with the `Annotation` type nested inside.
+In terms of structure, IIIF v3 manifests are formatted according to the [W3C Web Annotation Data Model](https://perma.cc/JRQ2-K8YN), an [extensible](https://perma.cc/9W6M-KYFZ) specification that ensures annotations are interoperable across platforms and systems. Annotations, or pieces of media associated with a web resource, are grouped together and ordered using [Annotation Pages](https://perma.cc/TQC3-KEHF); each v3 manifest will include an object with the `AnnotationPage` type with other objects with the `Annotation` type nested inside.
 
-Using v3 is necessary for users who want to create manifests with rich audio/video content, such as clips, sound recordings, and non-2D media. v3 is also optimized for compatibility with different web resources, given the adoption of the W3C Web Annotation model. Ultimately, v2 is only needed if you intend to use a technology, software, or viewer that only accepts v2 manifests. Otherwise, v3 is recommended. You can see all of the changes made in Version 3.0 in the [IIIF Presentation API Version 3.0 Change Log](https://iiif.io/api/presentation/3.0/change-log/#14-classes-changes).
+Using v3 is necessary for users who want to create manifests with rich audio/video content, such as clips, sound recordings, and non-2D media. v3 is also optimized for compatibility with different web resources, given the adoption of the W3C Web Annotation model. Ultimately, v2 is only needed if you intend to use a technology, software, or viewer that only accepts v2 manifests. Otherwise, v3 is recommended. You can see all of the changes made in Version 3.0 in the [IIIF Presentation API Version 3.0 Change Log](https://perma.cc/VX6S-YW47).
 
 #### What are Manifest Editors?
 
@@ -82,15 +83,15 @@ Manifest editors provide an easy way to visually put a manifest together, direct
 
 [GitHub](https://github.com/) is a web-based code storage, sharing, and version control platform built on the version control system Git. GitHub also offers free web-hosting through GitHub Pages, which allows you to create a GitHub-hosted webpage from your code. Using GitHub and GitHub Pages, you can conveniently store, host, and access your IIIF images and manifests in one place on the web.
 
-Using GitHub also allows you to easily switch between methods if your chosen method has been deprecated or the software is no longer supported. For example, the [Internet Archive](https://archive.org/); a popular tool for creating IIIF manifests, have a partnership with IIIF so images uploaded using their public upload feature are automatically IIIF compliant. In September 2024, however, the Internet Archive suspended its services for several months [due to cyberattacks](https://www.forbes.com/sites/larsdaniel/2024/10/20/internet-archive-breached-again-third-cyber-attack-in-october-2024/). During that time, it became necessary to find an alternate cost-free method of rendering and serving IIIF manifests from personal photos or images found on the web, and most of these [open-source](https://en.wikipedia.org/wiki/Open_source) solutions are already on GitHub.
+Using GitHub also allows you to easily switch between methods if your chosen method has been deprecated or the software is no longer supported. For example, the [Internet Archive](https://archive.org/); a popular tool for creating IIIF manifests, have a partnership with IIIF so images uploaded using their public upload feature are automatically IIIF compliant. In September 2024, however, the Internet Archive suspended its services for several months [due to cyberattacks](https://web.archive.org/web/20260721160516/https://www.forbes.com/sites/larsdaniel/2024/10/20/internet-archive-breached-again-third-cyber-attack-in-october-2024/). During that time, it became necessary to find an alternate cost-free method of rendering and serving IIIF manifests from personal photos or images found on the web, and most of these [open-source](https://perma.cc/93ZJ-TBP6) solutions are already on GitHub.
 
-GitHub Pages also automatically serves files to the web with permissive [Cross-Origin Resource Sharing (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) headers, which tell a browser that a web application at one domain is allowed to access resources from another. Without the CORS headers, IIIF images cannot be shared across domains and displayed in third-party IIIF viewers, since the server will not allow access to the files.
+GitHub Pages also automatically serves files to the web with permissive [Cross-Origin Resource Sharing (CORS)](https://perma.cc/Z8UC-F75H) headers, which tell a browser that a web application at one domain is allowed to access resources from another. Without the CORS headers, IIIF images cannot be shared across domains and displayed in third-party IIIF viewers, since the server will not allow access to the files.
 
 ### Which Method Should I Choose?
 
 Deciding which of these methods to use is dependent on:
 
-1. Your comfort and skill level with navigating the command line and using [Command Line Interface (CLI)](https://en.wikipedia.org/wiki/Command-line_interface) tools.
+1. Your comfort and skill level with navigating the command line and using [Command Line Interface (CLI)](https://perma.cc/XB47-V6Z5) tools.
 2. Your comfort and skill level with editing JSON files.
 3. The volume of images you have to process.
 4. Whether you have particular specifications for how the images process and display.
@@ -99,7 +100,7 @@ Deciding which of these methods to use is dependent on:
 
 **Method 2** may be best for those with limited experience using the command line interface or manipulating JSON files, since the tool it uses has a visual editor that allows you to upload, process, and retrieve images and manifests without any programming skills. Method 2 may also be good for those who do not have particular specifications in terms of quality or the number of image tiles produced, as the tool it uses does not allow for these specifications. Method 2 is also good for those who would like to provide basic deep zooming for their images.
 
-**Method 3** may be best for those with moderate knowledge of the command line and who have experience editing JSON files. Method 3 may also be good for those who have particular specifications for their images, as the CLI tool used in this method allows for a series of arguments that can enable highly-controlled resulting images. Method 3 may also be good for batch editing images. If you have never used the command line before, I recommend reading Ian Milligan and James Baker's [Introduction to the Bash Command Line lesson](https://programminghistorian.org/en/lessons/intro-to-bash) before you begin. 
+**Method 3** may be best for those with moderate knowledge of the command line and who have experience editing JSON files. Method 3 may also be good for those who have particular specifications for their images, as the CLI tool used in this method allows for a series of arguments that can enable highly-controlled resulting images. Method 3 may also be good for batch editing images. If you have never used the command line before, I recommend reading Ian Milligan and James Baker's [Introduction to the Bash Command Line lesson](/en/lessons/intro-to-bash) before you begin. 
 
 Note that time is not included as a factor for consideration, as all of these methods entail significant processing time. 
 
@@ -143,22 +144,22 @@ At this stage, you can go to the [Creating Manifests](#creating-manifests) secti
 
 ### Overview
 
-Method 2 employs the use of IIIF Workbench, a tool created by IIIF Technical Coordinator [Glen Robson](https://github.com/glenrobson) that allows you to upload an image from your local computer that will then be converted to IIIF tiles and stored in your own version of the IIIF Workbench GitHub repository. 
+Method 2 employs the use of IIIF Workbench, a tool created by IIIF Technical Coordinator [Glen Robson](https://perma.cc/3EHN-LUYM) that allows you to upload an image from your local computer that will then be converted to IIIF tiles and stored in your own version of the IIIF Workbench GitHub repository. 
 
 There are, however, caveats with this method that are worth mentioning before you get started:
 
 1. IIIF Workbench is slow at breaking down images with the tiler, so it can take a while for images to upload. 
 2. IIIF Workbench sometimes fails to generate tiles for an image — it stalls on 'Generating tiles' forever. This is typically because an image has been resized incorrectly, is too big, or is not in an accepted file format.
 3. IIIF Workbench does not work with organizational GitHub accounts.
-4. Uploaded files must be under 100 MB. This excludes high-quality [TIFFs](https://en.wikipedia.org/wiki/TIFF), unless you resize the TIFFs significantly.
+4. Uploaded files must be under 100 MB. This excludes high-quality [TIFFs](https://perma.cc/2QEV-J3HJ), unless you resize the TIFFs significantly.
 
-Overall, IIIF Workbench is a great tool that prioritizes ease-of-use and features a clear and simple [Graphical User Interface (GUI)](https://en.wikipedia.org/wiki/Graphical_user_interface) to make uploading images accessible, even for those with limited knowledge of programming.
+Overall, IIIF Workbench is a great tool that prioritizes ease-of-use and features a clear and simple [Graphical User Interface (GUI)](https://perma.cc/8VWM-SD88) to make uploading images accessible, even for those with limited knowledge of programming.
 
 ### Preparing Your Image Files
 
 #### Download Your Image(s)
 
-The first step is to download your image to your local computer from any source. Often, online repositories such as Google Images do not offer options for the file format in which you can download an image, but some repositories, such as online museum collections, do. If you have the option, download your image using the optimal file format available. For creating high-quality IIIF-compliant images, [Tagged Image File Format (TIFF)](https://en.wikipedia.org/wiki/TIFF) is best, [Joint Photographic Experts Group (JPEG)](https://en.wikipedia.org/wiki/JPEG) is second best, and [Portable Network Graphics (PNG)](https://en.wikipedia.org/wiki/PNG) is third best.  
+The first step is to download your image to your local computer from any source. Often, online repositories such as Google Images do not offer options for the file format in which you can download an image, but some repositories, such as online museum collections, do. If you have the option, download your image using the optimal file format available. For creating high-quality IIIF-compliant images, [Tagged Image File Format (TIFF)](https://perma.cc/2QEV-J3HJ) is best, [Joint Photographic Experts Group (JPEG)](https://perma.cc/3HB3-ENF3) is second best, and [Portable Network Graphics (PNG)](https://perma.cc/WHH9-UWP5) is third best.  
 
 If you have multiple images to download, it is best to place them all in the same folder on your computer so that you can easily keep track of which images you are working with.
 
@@ -184,7 +185,7 @@ Open the image in Preview. In the Mac menu bar at the top of the screen, choose 
 
 To access IIIF Workbench, login to your [GitHub](https://github.com/) account in a web browser. You will need to give the IIIF Workbench access to your account's public repositories in order to create a new repository with your processed image files.
 
-Once you have logged in, you can access the [IIIF Workbench](https://workbench.gdmrdigital.com/login.xhtml) in a web browser at [https://workbench.gdmrdigital.com/](https://workbench.gdmrdigital.com/). You will want to either select an existing project or create a new one. Each project is a separate repository in your GitHub account. The title you give a project in IIIF Workbench, will be the title of that image file repository in your GitHub account.
+Once you have logged in, you can access the [IIIF Workbench](https://workbench.gdmrdigital.com/login.xhtml) in a web browser. You will want to either select an existing project or create a new one. Each project is a separate repository in your GitHub account. The title you give a project in IIIF Workbench, will be the title of that image file repository in your GitHub account.
 
 #### Upload Your Images
 
@@ -192,9 +193,9 @@ Once you have created your project, upload your images one by one. IIIF Workbenc
 
 You will be prompted to select an IIIF Image Version, either IIIF v2 (2.x) or v3 (3.x). See the [What is the Difference Between IIIF Versions?](#what-is-the-difference-between-iiif-versions) section above for guidance.
 
-Your image may take a while to process. IIIF Workbench must process the image file, generate [tiles](https://en.wikipedia.org/wiki/Tiled_rendering), upload to GitHub, and publish to the web. You can view the progress at the bottom of the image box. While you wait, you may navigate to other pages but do not close the Workbench tab.
+Your image may take a while to process. IIIF Workbench must process the image file, generate [tiles](https://perma.cc/JT3T-UM3A), upload to GitHub, and publish to the web. You can view the progress at the bottom of the image box. While you wait, you may navigate to other pages but do not close the Workbench tab.
 
-When image processing is complete, you should see a thumbnail version appear in a box in IIIF Workbench. The image filename will appear underneath, along with a link to an `info.json` manifest file. For all IIIF images and manifests, the `info.json` is a [JavaScript Object Notation (JSON)](https://en.wikipedia.org/wiki/JSON) file that contains the information needed for the IIIF APIs to process and serve the IIIF image to the web. The box for each image in IIIF Workbench will also display a hyperlink to the hosted image in your GitHub repository. You can view all downloaded image files in your project GitHub repository as well.
+When image processing is complete, you should see a thumbnail version appear in a box in IIIF Workbench. The image filename will appear underneath, along with a link to an `info.json` manifest file. For all IIIF images and manifests, the `info.json` is a [JavaScript Object Notation (JSON)](https://perma.cc/QE24-666K) file that contains the information needed for the IIIF APIs to process and serve the IIIF image to the web. The box for each image in IIIF Workbench will also display a hyperlink to the hosted image in your GitHub repository. You can view all downloaded image files in your project GitHub repository as well.
 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-03.png" alt="The Images dashboard of the IIIF Workbench web interface. In a small box, processed image of a cat resting on a blanket, with the caption 'camilla,' and links to 'info.json' and 'Full image' below." caption="Figure 3. The resulting processed image in the IIIF Workbench. The info.json link is the info.json URI and the Full image link is the image URI." %}
 
@@ -210,7 +211,7 @@ At this stage, you can go to the [Creating Manifests](#creating-manifests) secti
 
 Method 3 uses `libvips`, an image-processing library, instead of IIIF Tiler to create Level-0 IIIF-compliant image tiles. It then uses GitHub to host those images and present them using the IIIF Presentation API through GitHub Pages.
 
-`libvips` gives you significant control over the specifications for a single image, including tile overlap, tile size, depth, angle, and more. `libvips` creates [Deep Zoom (DZI)](https://en.wikipedia.org/wiki/Deep_Zoom) tile pyramids for your images, so that only the area of the image that is viewed in a particular zoom is loaded. For this reason, `libvips` tends to create more tiles for an image than IIIF Tiler. The increased number of tiles can be difficult to upload, but the images tend to be of slightly higher quality and more zoomable.
+`libvips` gives you significant control over the specifications for a single image, including tile overlap, tile size, depth, angle, and more. `libvips` creates [Deep Zoom (DZI)](https://perma.cc/P62R-MKWJ) tile pyramids for your images, so that only the area of the image that is viewed in a particular zoom is loaded. For this reason, `libvips` tends to create more tiles for an image than IIIF Tiler. The increased number of tiles can be difficult to upload, but the images tend to be of slightly higher quality and more zoomable.
 
 ### Installations
 
@@ -218,10 +219,10 @@ Method 3 requires installation of the following software packages:
 
 - [Homebrew](https://brew.sh/)
 - [Ghostscript](https://formulae.brew.sh/formula/ghostscript)
-- [ImageMagick](https://imagemagick.org/download/#gsc.tab=0)
+- [ImageMagick](https://imagemagick.org/download/)
 - [libvips](https://www.libvips.org/install.html)
 
-[Homebrew](https://en.wikipedia.org/wiki/Homebrew_(package_manager)) is a [package manager](https://en.wikipedia.org/wiki/Package_manager) that makes installing software easier and safer. Package managers are helpful because they identify, check for, and install dependencies or softwares required for another piece of software to run, allow you to update software in a single command, and ensure that the software you are downloading has been vetted. Keeping your software updated also avoids security vulnerabilities. Package managers download software into discrete locations on your system, avoiding conflicts with existing files and structures of your operating system. They also allow you to upgrade or uninstall software in bulk using a single command.
+[Homebrew](https://en.wikipedia.org/wiki/Homebrew_(package_manager)) is a [package manager](https://perma.cc/M9NW-MBWU) that makes installing software easier and safer. Package managers are helpful because they identify, check for, and install dependencies or softwares required for another piece of software to run, allow you to update software in a single command, and ensure that the software you are downloading has been vetted. Keeping your software updated also avoids security vulnerabilities. Package managers download software into discrete locations on your system, avoiding conflicts with existing files and structures of your operating system. They also allow you to upgrade or uninstall software in bulk using a single command.
 
 When downloading software from the web, be sure to only click on official links from the developer (such as the hyperlinks included above). Make sure to check any relevant installation instructions for your operating system (Windows, Mac, or Linux), and to download the appropriate file.
 
@@ -239,7 +240,7 @@ If you are downloading multiple image files, make sure your image filenames are 
 
 ### Using libvips to Tile an Image
 
-The `libvips` pyramid constructor operates entirely in the command line using a set of arguments that specify filename, format, properties, and more. A full set of arguments available for the deep zoom pyramids command, are listed in the [`libvips` documentation](https://www.libvips.org/API/current/Making-image-pyramids.html).
+The `libvips` pyramid constructor operates entirely in the command line using a set of arguments that specify filename, format, properties, and more. A full set of arguments available for the deep zoom pyramids command, are listed in the [`libvips` documentation](https://perma.cc/N8WN-NRVC).
 
 For this lesson, you will use the deep zoom command, saving the tiled files in a IIIF-compatible layout within a folder.
 
@@ -251,7 +252,7 @@ Before continuing, be sure to open the ZIP file for each image so you can access
 
 #### Batch Tiling Images
 
-If you want to use `libvips` to tile multiple image files, you will need to use scripting language in the command line to identify all the files in a directory, batch them by name or file extension, and run the same command on all of them. In the bash command line, for example, you could run: `for filename in *.jpg; do vips dzsave "$filename" "$(basename "$filename" .jpg)-pyr" --layout iiif3; done`. Since this process is different on each operating system and can vary depending on scripting language, this lesson will not include step-by-step details for batch tiling with `libvips`. For Windows, see Steve Jansen's [Guide to Windows Batch Scripting](https://steve-jansen.github.io/guides/windows-batch-scripting/). For Mac and Linux, see [John Cupitt's bash solution on the libvips GitHub Issues](https://github.com/libvips/libvips/issues/1744).
+If you want to use `libvips` to tile multiple image files, you will need to use scripting language in the command line to identify all the files in a directory, batch them by name or file extension, and run the same command on all of them. In the bash command line, for example, you could run: `for filename in *.jpg; do vips dzsave "$filename" "$(basename "$filename" .jpg)-pyr" --layout iiif3; done`. Since this process is different on each operating system and can vary depending on scripting language, this lesson will not include step-by-step details for batch tiling with `libvips`. For Windows, see Steve Jansen's [Guide to Windows Batch Scripting](https://perma.cc/BAT8-2UNT). For Mac and Linux, see [John Cupitt's bash solution on the libvips GitHub Issues](https://perma.cc/XD8L-766Q).
 
 ### Create Your Image and Manifest Repository
 
@@ -406,13 +407,13 @@ Here is a completed example for a manifest with an image of my cat:
 
 ### Using a Manifest Editor
 
-Feeling daunted by manual editing? There are plenty of web-based manifest editing tools you could use instead. Each manifest editor has its own instructions, so make sure to read the relevant documentation. For the [Bodleian Manifest Editor](https://github.com/bodleian/iiif-manifest-editor), the documentation on their GitHub repository includes a demo, while the [Digirati Manifest Editor documentation](https://manifest-editor-docs.netlify.app/docs/getting-started) includes a full user guide.
+Feeling daunted by manual editing? There are plenty of web-based manifest editing tools you could use instead. Each manifest editor has its own instructions, so make sure to read the relevant documentation. For the [Bodleian Manifest Editor](https://perma.cc/KN5X-MJ7W), the documentation on their GitHub repository includes a demo, while the [Digirati Manifest Editor documentation](https://perma.cc/VJ9E-Q9PZ) includes a full user guide.
 
 To add your image to a manifest, open a manifest editor such as the Digirati Manifest Editor and create a new project. Add your static image (Method 1) by selecting the Image from URL option, or add a IIIF Image API URI (Methods 2 and 3) using the IIIF Image service option. Add an image to the canvas metadata using the `info.json` URI or image API URI. The image should populate on the canvas.
 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-06.png" alt="A dialog box in the Digirati Manifest Editor with the title 'Add content' and subtitle 'Link to image service'. A IIIF Image API URI is typed inside the text box." caption="Figure 6. The interface to add an image with the image URI or `info.json` URI to a manifest in Digirati's Manifest Editor." %}
 
-Once you have added your image, it is best to add metadata to your canvas and manifest using the pre-populated fields. Metadata allows other viewers to understand what your image shows and what data it contains. Of particular importance is the `license` (v2) or `rights` (v3) field, which lets viewers know where you found the image, who owns it, and the licence under which it is shared, such as a [Creative Commons license](https://en.wikipedia.org/wiki/Creative_Commons) or a [RightsStatements.org](https://rightsstatements.org/en/) URI. This metadata can help other users to determine whether they can use the image in their own projects, and if so, under what conditions.
+Once you have added your image, it is best to add metadata to your canvas and manifest using the pre-populated fields. Metadata allows other viewers to understand what your image shows and what data it contains. Of particular importance is the `license` (v2) or `rights` (v3) field, which lets viewers know where you found the image, who owns it, and the licence under which it is shared, such as a [Creative Commons license](https://perma.cc/UU72-L9N5) or a [RightsStatements.org](https://perma.cc/5R6B-BDWP) URI. This metadata can help other users to determine whether they can use the image in their own projects, and if so, under what conditions.
 
 {% include figure.html filename="en-or-iiif-images-and-manifests-github-07.png" alt="The canvas editing sidebar in the Digirati Manifest Editor with the title 'rights' and subtitles 'Label' and 'Value'. The label field has 'rights' in it and the value field has a RightsStatements.org URI in it. At the bottom is an 'Add metadata item' button." caption="Figure 7. The interface to add metadata fields, including rights metadata, to a manifest canvas in the Digirati Manifest Editor." %}
 
@@ -438,7 +439,7 @@ Make sure you commit your changes as you go!
 
 Congratulations! You now have some fresh manifests which you can use to serve some cool images with IIIF. Now let's take them for a spin.
 
-In order to make sure your manifests are displaying as expected, try testing them out in various viewers. IIIF maintains a list of [compatible viewers for each version](https://iiif.io/get-started/iiif-viewers/). To test your manifest, you will need the manifest URI.
+In order to make sure your manifests are displaying as expected, try testing them out in various viewers. IIIF maintains a list of [compatible viewers for each version](https://perma.cc/LRA6-8E4B). To test your manifest, you will need the manifest URI.
 
 The manifest URI is the unique identifier for a manifest. You can find the manifest URI by opening your manifest JSON file and copying the content in the `@id` (v2) or `id` (v3) field. This is the manifest URI.
 
@@ -457,10 +458,10 @@ IIIF is a great framework for publishing, displaying, sharing, and reusing image
 - Hosting and accessing IIIF images and manifests with GitHub Pages.
 - Loading, viewing, sharing, and zooming in on IIIF images with manifest editors and IIIF viewers. 
 
-Now that you've reached the end of this lesson, you should have at least one IIIF image URI and one IIIF manifest URI that you can plug into different projects and viewers and share with others as a high-quality, zoomable presentation version of your original downloaded image. Need inspiration for using your new manifest? Try creating an exhibit or digital narrative using [Exhibit.so](https://www.exhibit.so/) or [Storiiies](https://storiiies-editor.cogapp.com/).
+Now that you've reached the end of this lesson, you should have at least one IIIF image URI and one IIIF manifest URI that you can plug into different projects and viewers and share with others as a high-quality, zoomable presentation version of your original downloaded image. Need inspiration for using your new manifest? Try creating an exhibit or digital narrative using [Exhibit.so](https://perma.cc/F4HQ-HAVH) or [Storiiies](https://perma.cc/9A6D-PLGE).
 
-Itching for some more IIIF action? For more tools and resources, see the community-built [Awesome IIIF GitHub repository](https://github.com/IIIF/awesome-iiif?tab=readme-ov-file#image-servers).
+Itching for some more IIIF action? For more tools and resources, see the community-built [Awesome IIIF GitHub repository](https://perma.cc/49BC-SANF).
 
 ## Endnotes
 
-[^1]: International Image Interoperability Framework, _Home_, accessed August 5, 2026, [https://iiif.io/]https://iiif.io/).
+[^1]: International Image Interoperability Framework, _Home_, accessed August 5, 2026, [https://iiif.io/](https://perma.cc/6YAU-27EN).

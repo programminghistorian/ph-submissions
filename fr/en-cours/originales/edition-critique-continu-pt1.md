@@ -197,7 +197,7 @@ curl -O "$TEI/i18n.xml"
 
 ## Qu'est‑ce que la TEI ?
 
-La Text Encoding Initiative (TEI) constitue le standard international pour l'encodage de textes en humanités numériques. Née au milieu des années 1980 avec l'objectif d'un balisage commun en SGML ([*Standard Generalized Markup Language*](https://fr.wikipedia.org/wiki/Standard_Generalized_Markup_Language)), la TEI évolue à partir des années 2000 et adopte le format XML, plus léger et accessible. Cette réforme en a facilité grandement l'adoption.
+La Text Encoding Initiative (TEI) constitue le standard international pour l'encodage de textes en humanités numériques. Née au milieu des années 1980 avec l'objectif d'un balisage commun en SGML ([*Standard Generalized Markup Language*](https://fr.wikipedia.org/wiki/Standard_Generalized_Markup_Language)), la TEI évolue à partir des années 2000 et adopte le format XML, plus léger et accessible. Cette réforme en a grandement facilité l'adoption.
 
 Aujourd'hui, la TEI propose un langage de balisage riche et modulaire pour décrire la structure et le contenu de documents de toute nature, des manuscrits médiévaux aux correspondances, pièces de théâtre, poèmes, inscriptions épigraphiques, corpus linguistiques, entretiens oraux ou documents multimédias. Le consortium TEI, qui réunit institutions et spécialistes du monde entier, maintient et développe continûment ce standard pour répondre aux besoins de la recherche et de la conservation.
 

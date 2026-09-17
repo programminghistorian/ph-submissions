@@ -63,7 +63,7 @@ La première partie couvre toutes les composantes de ce flux de travail éditori
 - Connaissance basique du terminal/ligne de commande
 - Notions de XML (balises, attributs)
 - Un ordinateur sous Windows, macOS ou Linux
-- Un terminal de type Unix&#x202F;: celui de macOS ou de Linux, ou, sous Windows, celui que fournit WSL (voir ci-dessous)
+- Un terminal de type Unix&#x202F;: celui de macOS ou de Linux ou, sous Windows, celui que fournit WSL (voir ci-dessous)
 - Droits d'administration pour l'installation par gestionnaire de paquets ou, à défaut, l'installation manuelle décrite plus bas
 - Environnement d'Exécution Java ([JRE](https://fr.wikipedia.org/wiki/Environnement_d%27exécution_Java)) installé
 - Éditeur de texte (VS Code, Notepad++, Vim, Sublime Text, etc.)

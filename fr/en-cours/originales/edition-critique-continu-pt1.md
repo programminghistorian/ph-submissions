@@ -690,11 +690,11 @@ Ajoutez les blocs suivants à l'intérieur de l'élément `<schemaSpec>` de `tem
 
 On dérive ensuite deux artefacts à partir de cette source unique&#x202F;: le schéma RELAX&#x202F;NG pour `jing` et le Schematron compilé en XSLT pour produire le rapport SVRL.
 
-Avec la validation terminée et le corpus conforme aux règles définies, on peut passer à une étape essentielle du flux éditorial continu&#x202F;: la transformation XSLT des fichiers TEI vers des formats exploitables aussi bien par les lecteurs que par les systèmes de publication (HTML, Markdown, etc.).
+Avec la validation terminée et le corpus conforme aux règles définies, on peut passer à une étape essentielle du flux éditorial continu&#x202F;: la transformation XSLT des fichiers TEI vers des formats exploitables aussi bien par les lecteur&middot;rices que par les systèmes de publication (HTML, Markdown, etc.).
 
 ### La transformation XSLT
 
-La validation garantit la qualité de l'encodage, mais les fichiers TEI, malgré leur lisibilité pour les experts, restent peu accessibles au grand public. Dans une édition continue, chaque document validé doit être immédiatement publiable. C'est ici qu'intervient XSLT (*eXtensible Stylesheet Language Transformations*), le pont entre l'encodage savant et la diffusion publique.
+La validation garantit la qualité de l'encodage, mais les fichiers TEI, malgré leur lisibilité pour les expert&middot;es, restent peu accessibles au grand public. Dans une édition continue, chaque document validé doit être immédiatement publiable. C'est ici qu'intervient XSLT (*eXtensible Stylesheet Language Transformations*), le pont entre l'encodage savant et la diffusion publique.
 
 XSLT transforme le XML-TEI vers n'importe quel format de sortie&#x202F;: HTML pour le web, Markdown pour les générateurs de sites statiques comme Docusaurus ou Jekyll, LaTeX pour l'impression, ou même CSV pour l'analyse de données. Cette polyvalence est cruciale pour l'édition continue&#x202F;: une seule source TEI alimente automatiquement plusieurs canaux de publication.
 

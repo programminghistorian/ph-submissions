@@ -1,5 +1,5 @@
 ---
-title:  "Mapping Connections in Library Collections: Visualising Catalogue Metadata as Networks"
+title:  "Using _ipysigma_ to visualise the story of your library catalogue as an interactive network"
 slug: enablar-lesson-3
 layout: lesson
 collection: lessons
@@ -110,7 +110,7 @@ Library catalogues are rich repositories of metadata, capturing details such as 
 
 In most online catalogues, clicking on a metadata value returns a flat list of results: books that share that attribute. But there is a more powerful way to explore these connections. By visualising catalogue metadata as a network graph — where books and metadata values become nodes, and their relationships become edges — it becomes possible to navigate and interact with the collection in an entirely new way, revealing subsets and clusters that would otherwise remain hidden.
 
-This lesson uses [iPySIGMA](https://github.com/medialab/ipysigma), a Python wrapper around sigma.js, a JavaScript library purpose-built for network visualisation, to build and explore these graphs directly from catalogue metadata.
+This lesson uses [ipysigma](https://github.com/medialab/ipysigma), a Python wrapper around sigma.js, a JavaScript library purpose-built for network visualisation, to build and explore these graphs directly from catalogue metadata.
 
 The hope for this lesson is not just to show creative ways library data can be displayed, but how a librarian or researcher could utlilise network analysis on their own collection data for practical collection development tasks in the daily work. This lesson may be particularly helpful for librarians interested in demonstrating the value of their collections to audiences who might not typically interact with catalogue metadata.
 
@@ -125,7 +125,7 @@ Using the [networkx](https://pypi.org/project/networkx/) Python library, catalog
 ### Technical context
 Network analysis is a popular tool across disciplines. In libraries specifically, it is often utilised to understand scholarly publishing and bibliometrics. However, it offers even more potential by using it on library collection data. When applied to catalogue metadata, network analysis can reveal relationships among items that are difficult to see in traditional search results. This makes it a useful method for collection exploration and development.
 
-That being said, today's technical stack — Python, NetworkX and iPySigma — can handle all kinds of structured data very well, such as XML (like MARC 21), JSON or CSV, provided that relevant connections between data points can be observed in the data collection, making network visualisation useful. Many library management systems will directly export bibliographic data in MARC XML files. 
+That being said, today's technical stack — Python, NetworkX and ipysigma — can handle all kinds of structured data very well, such as XML (like MARC 21), JSON or CSV, provided that relevant connections between data points can be observed in the data collection, making network visualisation useful. Many library management systems will directly export bibliographic data in MARC XML files. 
 
 The bibliographic datasets that we use can be downloaded for free from the linked data [publishing portal of the Royal Library](https://data.bibliotheken.nl/). We make them available for use in this lesson.
 Once you have downloaded the data and installed the required Python libraries, you can complete this lesson offline without requiring live internet access.
@@ -313,7 +313,7 @@ You don't need to run the queries yourself, as we have made the datasets availab
 The software components for this lesson are as follows:
 - [networkx](https://pypi.org/project/networkx/), a Python package for the creation and manipulation of networks
 - [Sigma.js](https://www.sigmajs.org/), a Javascript library for large-scale network visualisation
-- [iPySIGMA](https://github.com/medialab/ipysigma), a Python wrapper around sigma.js
+- [ipysigma](https://github.com/medialab/ipysigma), a Python wrapper around sigma.js
 
 _NetworkX_ is the leading Python package for defining and representing data as a network of nodes and edges. _Sigma.js_ not only displays the network interactively in a web browser (also allowing the graph to be embedded in a web page), but also excels at displaying large, data-rich networks in an insightful, user-friendly, and uncluttered way. To bridge our Python _NetworkX_ structure with a JavaScript-based webpage, we use _ipysigma_.
 
@@ -359,7 +359,7 @@ In this lesson, nodes, edges and the visualisation itself are defined in Python,
 
 - [NetworkX](https://pypi.org/project/networkx/): a Python package for creating and manipulating networks
 - [Sigma.js](https://www.sigmajs.org/): a JavaScript library for large-scale network visualisation
-- [iPySigma](https://github.com/medialab/ipysigma): a Python wrapper around Sigma.js that enables network visualisation within a Python environment
+- [ipysigma](https://github.com/medialab/ipysigma): a Python wrapper around Sigma.js that enables network visualisation within a Python environment
 
 #### Data files
 
@@ -573,7 +573,7 @@ if __name__ == "__main__":
 
 Open the resulting `catalogue_graph.png` file. The image will likely appear as a dense, near-black tangle of overlapping nodes, edges and labels. This is an inevitable consequence of the sheer volume of data: a static rendering cannot meaningfully represent a graph of this complexity.
 
-This is precisely where iPySigma proves its value. Rather than attempting to display all nodes, edges and labels at once, it renders the graph as an interactive visualisation that the user can navigate freely, revealing detail progressively as they explore.
+This is precisely where _ipysigma_ proves its value. Rather than attempting to display all nodes, edges and labels at once, it renders the graph as an interactive visualisation that the user can navigate freely, revealing detail progressively as they explore.
 
 #### Creating the interactive visualisation
 
@@ -583,7 +583,7 @@ Remove the test call added in the previous step:
 convert_json_to_nx("1800-1825")
 ```
 
-Then append the following block to the `convert_json_to_nx` function. This uses iPySigma to wrap the NetworkX graph in an interactive Sigma.js visualisation and write it to an HTML file:
+Then append the following block to the `convert_json_to_nx` function. This uses _ipysigma_ to wrap the NetworkX graph in an interactive Sigma.js visualisation and write it to an HTML file:
 
 ```python
     # Create a Sigma visualisation
@@ -644,7 +644,7 @@ Running the script will produce eight HTML files in your `data/out` folder, one 
 
 #### Navigating through the network graph
 
-Now that the nodes and edges have been defined, we can begin to move around the visualization with the iPySIGMA features. Open the first HTML file (nbt_index_1800-1825.html) that was generated. Your web browser will now display a network graph that shows the relationships between the books and the subject headings. In the uppermost righthand corner, Box A in the image, is information about the graph you are looking at including the number of nodes and edges. 
+Now that the nodes and edges have been defined, we can begin to move around the visualization with the _ipysigma_ features. Open the first HTML file (nbt_index_1800-1825.html) that was generated. Your web browser will now display a network graph that shows the relationships between the books and the subject headings. In the uppermost righthand corner, Box A in the image, is information about the graph you are looking at including the number of nodes and edges. 
 
 Each graph has a natural state where all the nodes and edges are layered on top of each other. Before trying to analyze the graph in this state, run the layout animation by clicking the play button. In the image above, it is located in upper right hand corner in the box labelled B. It is recommended that before you interact with the graph that you click the play button to run the layout animation. This allows the graph to settle into a more readable arrangement, where closely related nodes cluster together and less connected groups move farther apart. In network visualization, this is known as a force-directed layout. Moving the nodes through the layout animation also helps to see the physical distance between different topics. The closer together or more tightly clustered they are, the more they are related or prominently connected. Because some of the book titles and subject labels may appear in another language, Google Chrome’s translation feature can help translate the text while you navigate the network.
 
@@ -653,7 +653,7 @@ Each graph has a natural state where all the nodes and edges are layered on top 
 
 Each point is a node, whether it be an individual book title (with a book icon) or a controlled subject heading (with a label icon). If a book has a subject heading assigned, there is a line drawn between that subject and the book. These lines are edges, which illuminate the relationships. Subject headings are also connected by subject labels from the JSON file data in the form of a preferred subject label, a broader subject label, and a narrower subject label to help contextualize the more controlled vocabulary of the subject headings.
 
-The size of the node describes its level of connectivity within the graph, or how many edges (connections) it has. The larger the subject node, the more connections it has. That means the larger nodes are highly connected and act as thematic hubs of the visualization. Our eyes are drawn to them and they surface quickly, the prominent subjects available in a collection. Smaller nodes are not as obvious, often representing those single book titles or less used subject headings. However, the iPySIGMA shell still makes them easy to find if you are looking for them and they are revealed as we move through the graph.
+The size of the node describes its level of connectivity within the graph, or how many edges (connections) it has. The larger the subject node, the more connections it has. That means the larger nodes are highly connected and act as thematic hubs of the visualization. Our eyes are drawn to them and they surface quickly, the prominent subjects available in a collection. Smaller nodes are not as obvious, often representing those single book titles or less used subject headings. However, the _ipysigma_ shell still makes them easy to find if you are looking for them and they are revealed as we move through the graph.
 
 For example, looking at the 1800-1825 network, we can see that one of the largest labels is Geschiedenis (History). If you click on it within the graph, all the edges are highlighted and in the right panel, information about that specific node appears in the box to the right of the graph. In the labelled image, this is box C on the upper right side of the screen. It explains the size of the node (how many edges it has), the node attributes from the JSON file, and the metrics in degrees (number of edges again), indegree (how many edges point towards this node), and outdegree (how many edges point out from this node). Not all network graphs are directed, but this one is. The direction of each edge is directionally identified within the data. Since this is a subject heading node, a high outdegree means that this subject heading connects outward to many book titles and/or related broader and narrower subject labels. Which makes sense since history is a major subject in the collection during that time.
 
@@ -661,7 +661,7 @@ Now, if we click on one of the book icons connected to history, Geschiedenis der
 
 Another option for exploration of the graph, is to click on a subject heading from the list in the legend box on the right and temporarily isolate its immediate connections. They are organized by colour, based on the subject headings. However, since there are so many subject headings, the color as a differentiator is not as helpful in this example as it would in a sample with ten or less subject headings. Users can also search directly for a subject heading or book title, making it easier to locate the same concept or work in each chronological graph without relying on its visual prominence. Once selected, the graph will zoom in on that node, no matter how small it is. The search function is helpful for exploring collections and items that you wish to target.
 
-Other tools within the iPySIGMA interface can make the graph easier to navigate and document. You can use the zoom controls to move closer to dense clusters or pull back to view the overall network structure. The center button returns the graph to the middle of the screen if you move too far away from it, while the reset button restores the original view and selections. Once the layout animation has settled the nodes into a readable arrangement, you can pause it to keep the graph stationary as you explore. All of these tools are located in the upper right hand corner of the screen in the box labelled B. You can also export a static image of the graph to use in presentations, reports, or comparisons between time periods. The buttons to export to different file formats are in the lower right hand corner of the screen in the box labelled D. 
+Other tools within the _ipysigma_ interface can make the graph easier to navigate and document. You can use the zoom controls to move closer to dense clusters or pull back to view the overall network structure. The center button returns the graph to the middle of the screen if you move too far away from it, while the reset button restores the original view and selections. Once the layout animation has settled the nodes into a readable arrangement, you can pause it to keep the graph stationary as you explore. All of these tools are located in the upper right hand corner of the screen in the box labelled B. You can also export a static image of the graph to use in presentations, reports, or comparisons between time periods. The buttons to export to different file formats are in the lower right hand corner of the screen in the box labelled D. 
 
 The network graph visualisation that is a result of this activity is meant to be an exploratory tool for collections that takes traditional catalog records out of a list-based search interface. Instead, the graph allows a user to explore how records are connected to one another, making it possible to identify themes and gaps that might not be visible through search results alone. These findings can then support collection development in new and creative ways by helping librarians identify areas for future acquisition, create new collections from existing clusters, compare changes in a collection over time, and reveal unexpected relationships among materials.
 
@@ -692,7 +692,7 @@ As a test case, the authors extracted MARC XML files from their library manageme
 
 The scope and size of a library’s material will differ. As seen in the example image, although the author’s library is not a research library, the criminal justice collections under the HV call number were still quite extensive. As such, the number of nodes and edges obfuscates some of the helpful visual analysis that the Exact Sciences collection had. To truly be helpful for collection development, the authors would iterate on the initial graph and add some limiters to their scope to make the visualization more helpful or perhaps make multiple graphs. 
 
-This local test demonstrates that the method is transferable, but also that meaningful network analysis depends on carefully defining the scope of the dataset. A graph that includes too many items and relationships may accurately represent the collection while still being difficult to interpret visually. However, seeing the collection in this way and because of the interactive functionality of iPySigma, to move around and select nodes in the graph, there are still insights and analysis to be drawn, no matter what size of the dataset. 
+This local test demonstrates that the method is transferable, but also that meaningful network analysis depends on carefully defining the scope of the dataset. A graph that includes too many items and relationships may accurately represent the collection while still being difficult to interpret visually. However, seeing the collection in this way and because of the interactive functionality of _ipysigma_, to move around and select nodes in the graph, there are still insights and analysis to be drawn, no matter what size of the dataset. 
 
 ### Apply this method
 Begin by identifying a question you have about a library collection, whether it belongs to the library where you work or one that you regularly use. Formulating a focused question will help determine which records should be included in the network. You might ask which subjects are most prominent within a collection, how two subject areas overlap, or whether a field has grown over time. You could also investigate potential collection gaps, changes in cataloguing terminology, or the relationships among books within a particular call-number range.. The question does not need to be complex, but it should be specific enough to guide the scope of the dataset and prevent the resulting graph from becoming unnecessarily large or difficult to interpret.

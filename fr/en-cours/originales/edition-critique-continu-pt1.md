@@ -479,7 +479,7 @@ letters/1574-10-15.xml:45:12: error: element "persName" not closed
 letters/1574-10-15.xml:32:8: error: attribute "type" not allowed here
 ```
 
-Ces messages lapidaires intimident souvent les débutants. Parfois cryptiques, ils ne signifient pourtant pas l'échec. Ils indiquent au contraire l'origine du problème et ouvrent des pistes de correction. À l'instar du mot d'ordre «&#x202F;lis tes ratures&#x202F;», l'encodeur doit apprendre à lire ses erreurs.
+Ces messages lapidaires intimident souvent les débutant&middot;es. Parfois cryptiques, ils ne signifient pourtant pas l'échec. Ils indiquent au contraire l'origine du problème et ouvrent des pistes de correction. À l'instar du mot d'ordre «&#x202F;lis tes ratures&#x202F;», l'encodeur&middot;euse doit apprendre à lire ses erreurs.
 
 Pour valider un ensemble de fichiers sous macOS ou Linux, on utilisera&#x202F;:
 
@@ -588,7 +588,7 @@ saxon -s:letters/1568-07-03.xml -xsl:templates/cavriana-schematron.xsl \
   -o:output/rapport-schematron.svrl
 ```
 
-Le rapport SVRL (*Schematron Validation Report Language*) consigne les règles déclenchées (`<svrl:active-pattern>`, `<svrl:fired-rule>`), puis, pour chacune, les assertions échouées (`<svrl:failed-assert>`). Notre lettre respecte les trois règles&#x202F;: son rapport ne contient aucun `failed-assert`, et ce silence est le signe que tout va bien. Voici la sortie réelle, allégée des espaces de noms et du chemin absolu de l'attribut `document`, propre à votre machine&#x202F;:
+Le rapport SVRL (*Schematron Validation Report Language*) consigne les règles déclenchées (`<svrl:active-pattern>`, `<svrl:fired-rule>`), puis, pour chacune, les assertions échouées (`<svrl:failed-assert>`). Notre lettre respecte les trois règles&#x202F;: son rapport ne contient aucun `failed-assert` et ce silence est le signe que tout va bien. Voici la sortie réelle, allégée des espaces de noms et du chemin absolu de l'attribut `document`, propre à votre machine&#x202F;:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>

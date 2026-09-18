@@ -312,12 +312,7 @@ You don't need to run the queries yourself, as we have made the datasets availab
 
 ### Software/tool
 
-The software components for this lesson are as follows:
-- [networkx](https://pypi.org/project/networkx/), a Python package for the creation and manipulation of networks
-- [Sigma.js](https://www.sigmajs.org/), a Javascript library for large-scale network visualisation
-- [ipysigma](https://github.com/medialab/ipysigma), a Python wrapper around sigma.js
-
-_NetworkX_ is the leading Python package for defining and representing data as a network of nodes and edges. _Sigma.js_ not only displays the network interactively in a web browser (also allowing the graph to be embedded in a web page), but also excels at displaying large, data-rich networks in an insightful, user-friendly, and uncluttered way. To bridge our Python _NetworkX_ structure with a JavaScript-based webpage, we use _ipysigma_.
+[_NetworkX_](https://pypi.org/project/networkx/) is the leading Python package for defining and representing data as a network of nodes and edges. However, the default NetworX visualisation can be overcrowded and difficult to interpret or navigate when handling large datasets. [_Sigma.js_](https://www.sigmajs.org/), a Javascript library for large-scale network visualisation, not only displays the network interactively in a web browser (also allowing the graph to be embedded in a web page), but also excels at displaying large, data-rich networks in an insightful, user-friendly, and uncluttered way. To bridge our Python _NetworkX_ structure with a JavaScript-based webpage, we use [_ipysigma_](https://github.com/medialab/ipysigma), a Python wrapper around sigma.js.
 
 ## Learning keys
 ### Concepts

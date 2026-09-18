@@ -631,7 +631,7 @@ Pour voir un rapport en échec, introduisez trois fautes dans une copie de la le
 </svrl:failed-assert>
 ```
 
-Chaque `failed-assert` porte le test évalué (`@test`), la localisation du nœud fautif (`@location`, sous la forme `/*[local-name()='TEI']…`, propre au SVRL) et le message défini dans le schéma (`<svrl:text>`). Les règles satisfaites restent silencieuses. Ce contrôle complémentaire est particulièrement utile dans un projet collaboratif&#x202F;: il aide à repérer et corriger immédiatement les incohérences introduites par différents contributeurs, avant qu'elles ne s'accumulent dans le corpus.
+Chaque `failed-assert` porte le test évalué (`@test`), la localisation du nœud fautif (`@location`, sous la forme `/*[local-name()='TEI']…`, propre au SVRL) et le message défini dans le schéma (`<svrl:text>`). Les règles satisfaites restent silencieuses. Ce contrôle complémentaire est particulièrement utile dans un projet collaboratif&#x202F;: il aide à repérer et corriger immédiatement les incohérences introduites par différentes contributions, avant qu'elles ne s'accumulent dans le corpus.
 
 Les règles Schematron s'écrivent dans le fichier `templates/cavriana.odd`, aux côtés de la grammaire RELAX&#x202F;NG. C'est la raison pour laquelle sa racine déclare deux espaces de noms, celui de la TEI et celui du Schematron&#x202F;: si vous êtes parti d'un ODD exporté depuis Roma, vérifiez que la deuxième déclaration est bien présente, faute de quoi la transformation échouera sur un message du type `The prefix "sch" for element "sch:rule" is not bound`.
 

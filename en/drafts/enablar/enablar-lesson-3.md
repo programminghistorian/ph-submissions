@@ -360,7 +360,7 @@ In this lesson, nodes, edges and the visualisation itself are defined in Python,
 
 #### Data files
 
-This lesson uses sample data files, [which are available to download as a zip file](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-3/nbt-in-json.zip). Each file covers a twenty-five-year period within the range 1800–2000:
+This lesson uses sample data files, [which are available to download as a zip file](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-3/nbt_in_json.zip). Each file covers a twenty-five-year period within the range 1800–2000:
 
 - `nbt_index_1800-1825.json`
 - `nbt_index_1826-1850.json`

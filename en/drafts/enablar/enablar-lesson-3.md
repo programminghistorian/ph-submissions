@@ -106,7 +106,9 @@ Format all references using the Chicago Manual of Style.
 
 ## Preliminaries
 
-Library catalogues are rich repositories of metadata, capturing details such as publisher, subject headings, year and place of publication, and language. Books that share common metadata attributes are inherently related, and these relationships can surface compelling and often overlooked stories about a collection — whether tied to a shared theme, a geographical area, or a particular period in time.
+Library catalogues are rich repositories of metadata, capturing details such as publisher, subject headings, year and place of publication, and language. Books that share common metadata attributes are inherently related, and these relationships can surface compelling and often overlooked stories about a collection, whether tied to a shared theme, a geographical area, or a particular period in time.
+
+The potential of bibliographical metadata for DH research is now generally acknowledged, from [visualising the growing of the collection over time, or the proportion of subject classifications in the collection](https://www.research.ed.ac.uk/en/publications/the-library-catalogue-as-dataset-exploring-data-science-approache/), to the potential of [linking well-structured bibliographical metadata to related works, such as film adaptations, stage productions, musical adaptations or works of art that share metadata](https://www.klassik-stiftung.de/herzogin-anna-amalia-bibliothek/werktitel-als-wissensraum/).
 
 In most online catalogues, clicking on a metadata value returns a flat list of results: books that share that attribute. But there is a more powerful way to explore these connections. By visualising catalogue metadata as a network graph — where books and metadata values become nodes, and their relationships become edges — it becomes possible to navigate and interact with the collection in an entirely new way, revealing subsets and clusters that would otherwise remain hidden.
 

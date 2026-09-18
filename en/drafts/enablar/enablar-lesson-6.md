@@ -133,7 +133,7 @@ For the purposes of this lesson we are looking at people as named entities, but 
 
 Within a category of linked data you may also find varying classes, for example when looking at people your collection might refer mainly to academic researchers who often have a record in the ORCID authority file. If your collection contains mainly book authors and historical figures the Library of Congress Name Authority file might be appropriate. 
 
-### Are you aiming to improve consistency within your own collection, or do you want interoperability with other systems and datasets?
+### Are you aiming to improve consistency within your own collection, or do you want interoperability with other systems and datasets?
 
 For the purposes of linked data and interoperability your  authority file will need to support persistent identifiers with URI’s, however if you are solely looking to create consistency across your collection you could use traditional cataloging standards such as Library of Congress Subject Headings terms in a MARC format, or create your own local authority records. 
 
@@ -147,7 +147,7 @@ Once you have identified potential authority files, it is useful to take a sampl
 
 ### Social context - Archival Silences
 
-Archival silences are often described as gaps, omissions and distortions in the historical record. Methods used in this lesson have the potential to perpetuate these archival silences. NER is not a completely accurate task. Even the best Natural Language Processing models struggle at surpassing 95% accuracy when it comes to recognising named entities. (cite) This percentage significantly decreases when working with underrepresented languages. (cite) 
+Archival silences are often described as gaps, omissions and distortions in the historical record. Methods used in this lesson have the potential to perpetuate these archival silences. NER is not a completely accurate task. [Studies show](https://aclanthology.org/2024.lrec-main.330.pdf) that even the best Natural Language Processing models struggle to provide accurate NER across a whole document. This is even more apparent when working with [underrepresented languages](https://doi.org/10.1162/tacl_a_00416).
 
 Consequently, when parsing a body of text with NER, there is a high probability some names will be missed by the model, and that the names which are not identified are more likely to belong to groups which are underrepresented in the data models are trained on. Employing this method without review can therefore amplify archival silences by omitting people from the metadata.
 
@@ -634,17 +634,19 @@ aa_matched = match_entities(aa_data_deduped["entities"])
 
 Finally, you will perform manual checks on the data. For this lesson we checked the dates the WikiData name authority was active, if that information was available, and whether that matched the dates of the activities listed in AA weekly. If you choose not to narrow your results by profession, for example Architect, because your collection spans multiple subjects, you can examine the context in which a person is mentioned in your dataset to determine whether a corresponding subject affiliation exists in the authority. 
 
+### Summary 
+
+Having completed this lesson, you now have an understanding of how to extract text from PDFs, run said text through NER, and match the results against Wikidata’s API. 
 
 ## Local application
 ### Apply this method
 
-Once you have extracted the named entities and identified the corresponding linked data you can then use this to enhance your metadata. This can be done in Library Management Systems or Digital Asset Management platforms. [Alma allows you to do this](https://knowledge.exlibrisgroup.com/Alma/Product_Documentation/010Alma_Online_Help_(English)/Metadata_Management/210Metadata_Management_Configuration/Linked_Data_Enrichment_Configuration) …, OCLC also has guidance on adding linked data tags. Smaller institutions may want to use open source platforms such as OmekaS which contains specific fields for linked data (expand). 
+Once you have extracted the named entities and identified the corresponding linked data you can then use this to enhance your metadata. This can be done in Library Management Systems or Digital Asset Management platforms. [Alma by Exlibris](https://knowledge.exlibrisgroup.com/Alma/Product_Documentation/010Alma_Online_Help_(English)/Metadata_Management/210Metadata_Management_Configuration/Linked_Data_Enrichment_Configuration) has tools that allow you to do this, [OCLC by WorldCat](https://www.oclc.org/en/meridian.html?_gl=1*5et72g*_up*MQ..*_ga*NjA1NTY2NjQ3LjE3ODczMDk4Nzg.*_ga_SEJS8BW3MJ*czE3ODczMDk4NzgkbzEkZzAkdDE3ODczMDk4NzgkajYwJGwwJGgw#productpg_ctablock) also has a service which supports linked data. Smaller institutions may want to use open source platforms such as OmekaS which have downloadable modules to help you structure the linked data. 
+
+You can also add authority URI’s to [MARC](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.loc.gov/marc/authority/&ved=2ahUKEwiq9cSLyrGWAxUN0gIHHfCCL6YQFnoECCUQAQ&usg=AOvVaw2uoPck6tqJao7kjonNfuyI) and [Dublin Core](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/) fields. In MARC this is [subfield 0](https://www.itsmarc.com/crs/mergedProjects/helptop1/helptop1/appendices/appendix_a_0_authority_record_control_number.htm) for the control number and [subfield 2](https://www.itsmarc.com/crs/mergedProjects/helptop1/helptop1/variable_data_fields/idh_100_bib.htm) for the source.
 
 ### Other projects
 
-Several libraries have explored using linked data to enhance their digital collections and archival collections. University College London used name entity recognition on their Pi Periodicals, linking the data to wikidata to encourage the use of the collection as a source for wikipedia articles. 
+Several libraries have explored using linked data to enhance their digital collections and archival collections. [University College London](https://www.ucl.ac.uk/arts-humanities/community-knowledge-spaces-transforming-ucl-special-collections-utilising-wikidata) used name entity recognition on their Pi Periodicals. They additionally linked the periodical to WikiData so that it could be used as a source for Wikipedia articles.  
 
-
-### Continued learning
-
-## Endnotes
+[Sudoc](https://repository.ifla.org/items/65edd46c-f668-4a73-b829-e488ff99b8a9) identified named entities from a specific area of their data; the statements of responsibility. They then mapped them to www.idref.fr, the french higher education authority file. [Emblematica Online](https://journals.ala.org/index.php/lrts/article/view/7485/10629) mapped their entities to VIAF and LC. Other studies have looked at the [challenges of using NER on historical documents](https://dl.acm.org/doi/pdf/10.1145/3604931) and [how to improve the process](https://ineris.hal.science/INSA-CVL/hal-04662000v1).

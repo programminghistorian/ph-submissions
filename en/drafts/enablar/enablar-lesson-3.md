@@ -421,7 +421,7 @@ $ uv sync --python 3.12
 Then install the packages required for this lesson:
 
 ```bash
-$ uv add matplotlib scipy networkx ipysigma
+$ uv add matplotlib scipy networkx ipysigma ipywidgets pathlib
 ```
 
 Once the environment is set up, launch VS Code (or your preferred code editor) within the virtual environment to ensure all installed packages are available:
@@ -436,6 +436,10 @@ Open the `main.py` file that was generated automatically during project initiali
 
 ```python
 import json
+
+import time
+from pathlib import Path
+
 import networkx as nx
 from ipysigma import Sigma
 ```
@@ -470,14 +474,14 @@ We will now create a function that reads a time-range-specific JSON data file fr
 The function will convert the contents of this file into a network format, that is, a list of nodes and edges. Begin by opening the file and extracting the catalogue entries:
 
 ```python
-# Function to convert JSON data to a NetworkX graph
+# Function to convert bibliographic JSON input data to a NetworkX graph
 def convert_json_to_nx(date_range: str):
     # Open the JSON file containing the parsed data
-    file_path = f"data/nbt_index_{date_range}.json"
-    with open(file_path, "r") as f:
+    file_path = Path("data") / "in" / f"nbt_index_{date_range}.json"
+    with file_path.open("r") as f:
         data = json.load(f)
-
-    # Extract the catalogue data from the JSON
+        
+    # Extract the bibliographic catalogue data from the JSON
     catalogue_items = data["results"]["bindings"]
     item_dict_list = []
 ```
@@ -492,7 +496,9 @@ Define placeholders for the nodes and edges:
 Then iterate over the catalogue entries and convert each one into a [dictionary](https://www.w3schools.com/python/python_dictionaries.asp), building up a list in which each entry holds the metadata for one book:
 
 ```python
+    # Iterate through each bibliographic record and extract the relevant information.
     for x in catalogue_items:
+
         if x is not None:
             itemdata = x
             # Create a dictionary for each catalogue item
@@ -501,9 +507,9 @@ Then iterate over the catalogue entries and convert each one into a [dictionary]
                 "title": itemdata.get("name").get("value"),
                 "language": itemdata.get("language").get("value"),
                 "date": itemdata.get("jaar").get("value"),
-                "pref_subject": itemdata.get("preflabel").get("value"),
-                "narrower_subject": itemdata.get("narrowerlabel").get("value"),
-                "broader_subject": itemdata.get("broaderlabel").get("value"),
+                "pref_subject": itemdata.get("preflabel").get("value").lower() if itemdata.get("preflabel") is not None else None,
+                "narrower_subject": itemdata.get("narrowerlabel").get("value").lower() if itemdata.get("narrowerlabel") is not None else None,
+                "broader_subject": itemdata.get("broaderlabel").get("value").lower() if itemdata.get("broaderlabel") is not None else None,
             }
             item_dict_list.append(item)
 ```
@@ -518,11 +524,17 @@ With the catalogue data now structured as a list of dictionaries, we can define 
 - subject headings to one another, linking preferred labels to both their narrower and broader equivalents
 
 ```python
-            edges.append((item["pref_subject"], item["title"]))
-            edges.append((item["pref_subject"], item["narrower_subject"]))
-            edges.append((item["pref_subject"], item["broader_subject"]))
-            edges.append((item["narrower_subject"], item["title"]))
-            edges.append((item["broader_subject"], item["title"]))
+            # Define edges for the catalogue graph
+            # Add edges based on the relationships between titles and subjects
+            # and between subjects themselves (broader and narrower)
+            if item["title"] is not None and item["pref_subject"] is not None:
+                edges.append((item["pref_subject"], item["title"]))
+                if item["narrower_subject"] is not None:
+                    edges.append((item["pref_subject"], item["narrower_subject"]))
+                    edges.append((item["narrower_subject"], item["title"]))
+                if item["broader_subject"] is not None:
+                    edges.append((item["pref_subject"], item["broader_subject"]))
+                    edges.append((item["broader_subject"], item["title"]))
 ```
 
 ##### Nodes
@@ -534,28 +546,28 @@ The nodes in our graph are book titles and subject headings. As discussed in the
 
 ```python
             # Define nodes for the catalogue graph
-            keys_title_to_extract = ["title", "pref_subject", "narrower_subject",
-                                      "broader_subject", "date", "language", "uri"]
+            keys_title_to_extract = ["title", "pref_subject", "narrower_subject", "broader_subject", "date", "language", "uri"]
             keys_subject_to_extract = ["pref_subject", "narrower_subject", "broader_subject"]
-
             for node_attributes in item_dict_list:
                 node_title = node_attributes["title"]
                 node_pref_subject = node_attributes["pref_subject"]
                 node_narrower_subject = node_attributes["narrower_subject"]
                 node_broader_subject = node_attributes["broader_subject"]
 
-                sub_dict_title = {key: node_attributes[key] for key in keys_title_to_extract
-                                  if key in node_attributes}
+                # Create sub-dictionaries for title and subject nodes with relevant attributes
+                sub_dict_title = {key: node_attributes[key] for key in keys_title_to_extract if key in node_attributes and node_attributes[key] is not None}
                 sub_dict_title["type"] = "book"
-
-                sub_dict_subject = {key: node_attributes[key] for key in keys_subject_to_extract
-                                    if key in node_attributes}
+                sub_dict_subject = {key: node_attributes[key] for key in keys_subject_to_extract if key in node_attributes and node_attributes[key] is not None}
                 sub_dict_subject["type"] = "subject"
-
-                nodes[node_title] = sub_dict_title
-                nodes[node_pref_subject] = sub_dict_subject
-                nodes[node_narrower_subject] = sub_dict_subject
-                nodes[node_broader_subject] = sub_dict_subject
+                
+                if node_title is not None:
+                    nodes[node_title] = sub_dict_title
+                if node_pref_subject is not None:
+                    nodes[node_pref_subject] = sub_dict_subject
+                if node_narrower_subject is not None:
+                    nodes[node_narrower_subject] = sub_dict_subject
+                if node_broader_subject is not None:
+                    nodes[node_broader_subject] = sub_dict_subject
 ```
 
 Note that each node is assigned a `type` attribute, either `"book"` or `"subject"`, which will allow us to distinguish between the two kinds of node visually when we render the network graph in the next step.

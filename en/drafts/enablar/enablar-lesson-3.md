@@ -373,7 +373,7 @@ All materials related to this lesson are available to download from [this _Progr
    - `nbt_index_1951-1975.json`
    - `nbt_index_1976-2000.json`
  
-- As an alternative, there is one MARCXML file containing one bibliographic record to illustrate the process if you are starting from a MARCXML dump of your library catalogue data rather than JSON files (see the section _Local application_ below).
+- As an alternative, there is one MARCXML file (`salinger_example.marcxml`) containing one bibliographic record to illustrate the process if you are starting from a MARCXML dump of your library catalogue data rather than JSON files (see the section _Local application_ below).
 
 ### Notebooks
 
@@ -392,7 +392,8 @@ To keep code and data well organised, we recommend the following directory struc
 
 ```
 src/
-├── main.py              # Python script
+├── nbt.py               # Python script
+├── nbt.ipynb            # Jupyter notebook
 └── data/
     ├── in/              # Source data files (JSON)
     └── out/             # Generated output files (HTML network graphs)
@@ -697,6 +698,8 @@ Many more hours could be spent looking at each graphs minute details and compari
 
 ## Local application
 While this example uses metadata from publically available datasets, the same process could be applied to an institutional specific dataset made up of MARC records from that collection. Extracting those records and applying similar analysis through these steps could help better understand how your local collections connect and cluster.
+
+As an added bonus, a `nbt-from-marcxml.ipynb` notebook is provided that contains some boilerplate code for use with input files in MARCXML format. The notebook uses the sample MARCXML file as input (`salinger_example.marcxml`), creates the network data, and generates an interactive graph using _ipysigma_, in a manner similar to that of the main code of this lesson.
 
 As a test case, the authors extracted MARC XML files from their library management system, Koha. This process was fairly simple, there exists a form in Koha where an administrator can fill out which records should be pulled. This will different depending on the library management system. In this example, the authors pulled records related to Criminal Justice using Library of Congress call numbers HV. These records were exported as XML and the initial code was simplified to rework the three layers of pref_subject, narrower_subject, and broader_subject since the subject headings were not organized this way directly from the catalog. From there the network was created. 
 

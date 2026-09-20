@@ -653,7 +653,7 @@ if __name__ == "__main__":
         convert_json_to_nx(dr)
 ```
 
-Running the script will produce eight HTML files in your `data/out` folder, one for each time segment. Each file is a self-contained, interactive network graph that can be opened in any modern web browser. But wouldn't it be great to be able to visualise how the graph changes over time using a time slider? <span style="background-color: yellow">(Would this be a useful addition?)</span>
+Running the script will produce eight HTML files in your `data/out` folder, one for each time segment. Each file is a self-contained, interactive network graph that can be opened in any modern web browser. But wouldn't it be great to be able to visualise how the graph changes over time using a time slider? The final section of the `nbt.ipynb` notebook adds a time slider to the graphs, allowing you to cycle through all eight graphs interactively.
 
 #### Navigating through the network graph
 

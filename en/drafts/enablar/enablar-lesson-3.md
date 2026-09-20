@@ -655,6 +655,8 @@ if __name__ == "__main__":
 
 Running the script will produce eight HTML files in your `data/out` folder, one for each time segment. Each file is a self-contained, interactive network graph that can be opened in any modern web browser. But wouldn't it be great to be able to visualise how the graph changes over time using a time slider? The final section of the `nbt.ipynb` notebook adds a time slider to the graphs, allowing you to cycle through all eight graphs interactively.
 
+{% include figure.html filename="enablar-lesson-3-05.jpg" alt="Network graph with time slider" caption="Figure 5. Network graph with time slider" %}
+
 #### Navigating through the network graph
 
 Now that the nodes and edges have been defined, we can begin to move around the visualization with the _ipysigma_ features. Open the first HTML file (nbt_index_1800-1825.html) that was generated. Your web browser will now display a network graph that shows the relationships between the books and the subject headings. In the uppermost righthand corner, Box A in the image, is information about the graph you are looking at including the number of nodes and edges. 

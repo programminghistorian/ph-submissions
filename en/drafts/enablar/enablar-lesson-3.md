@@ -380,7 +380,7 @@ All materials related to this lesson are available to download from [this _Progr
 2 Jupyter notebooks to help you follow the lesson code step by step:
 
 - `nbt.ipynb`
-- `nbt-marcxml.ipynb`: an alternative notebook that uses the sample MARC XML file as input.
+- `nbt-from-marcxml.ipynb`: an alternative notebook that uses the sample MARC XML file as input.
 
 ### Script
 

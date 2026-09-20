@@ -358,18 +358,33 @@ In this lesson, nodes, edges and the visualisation itself are defined in Python,
 - [Sigma.js](https://www.sigmajs.org/): a JavaScript library for large-scale network visualisation
 - [ipysigma](https://github.com/medialab/ipysigma): a Python wrapper around Sigma.js that enables network visualisation within a Python environment
 
+All materials related to this lesson are available to download from [this _Programming Historian_ asset folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/enablar-lesson-3):
+
 #### Data files
 
-This lesson uses sample data files, [which are available to download as a zip file](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/enablar-lesson-3/nbt_in_json.zip). Each file covers a twenty-five-year period within the range 1800–2000:
+- 8 JSON data files that follow the Linked Open Data standards and hold the library catalogue data from the _Nederlandse Bibliografie Online_ (_Online Dutch Bibliography_) (NBT). Each file covers a twenty-five-year period within the range 1800–2000:
 
-- `nbt_index_1800-1825.json`
-- `nbt_index_1826-1850.json`
-- `nbt_index_1851-1875.json`
-- `nbt_index_1876-1900.json`
-- `nbt_index_1901-1925.json`
-- `nbt_index_1926-1950.json`
-- `nbt_index_1951-1975.json`
-- `nbt_index_1976-2000.json`
+   - `nbt_index_1800-1825.json`
+   - `nbt_index_1826-1850.json`
+   - `nbt_index_1851-1875.json`
+   - `nbt_index_1876-1900.json`
+   - `nbt_index_1901-1925.json`
+   - `nbt_index_1926-1950.json`
+   - `nbt_index_1951-1975.json`
+   - `nbt_index_1976-2000.json`
+ 
+- As an alternative, there is one MARCXML file containing one bibliographic record to illustrate the process if you are starting from a MARCXML dump of your library catalogue data rather than JSON files (see the section _Local application_ below).
+
+### Notebooks
+
+2 Jupyter notebooks to help you follow the lesson code step by step:
+
+- `nbt.ipynb`
+- `nbt-marcxml.ipynb`: an alternative notebook that uses the sample MARC XML file as input.
+
+### Script
+
+An executable Python script (`nbt.py`) is also provided. It runs the full process, taking the eight JSON files as input and generating the corresponding visualisations as standalone HTML files, one for each data file.
 
 #### Directory structure
 

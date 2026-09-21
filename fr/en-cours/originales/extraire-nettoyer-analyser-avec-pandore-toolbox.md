@@ -51,7 +51,7 @@ La boîte à outils a fait l'objet de présentations lors de diverses conférenc
 
 ### Composition de l'outil
 
-{% include figure.html filename="fr-or-extraire-nettoyer-analyser-avec-pandore-toolbox-01.png" alt="Page d'accueil de la Pandore Toolbox" caption="Figure 1. Page d'accueil de la Pandore Toolbox." %}
+{% include figure.html filename="fr-or-extraire-nettoyer-analyser-avec-pandore-toolbox-01.png" alt="Page d'accueil de la Pandore Toolbox, avec un encadré pour chaque type de tâches proposées, comme la reconnaissance automatique de texte ou l'extraction d'information." caption="Figure 1. Page d'accueil de la Pandore Toolbox." %}
 
 L'instance Pandore Toolbox présente un certain nombre de tâches, contenant elles-mêmes divers outils. Cela va de la collecte de corpus à la conversion de formats, de l'annotation automatique à l'extraction d'informations, du prétraitement à l'analyse de texte.
 
@@ -93,7 +93,7 @@ Après un temps de chargement plus ou moins long, le contenu récupéré sera di
 Cette méthode de nommage de dossier ou fichier est utilisée pour toutes les tâches de l'interface Pandore. Vous trouverez donc cela pour chacun des exercices pratiques qui seront présentés sous la forme `tache_XXXXX`
 </div>
 
-{% include figure.html filename="fr-or-extraire-nettoyer-analyser-avec-pandore-toolbox-02.png" alt="Contenu du dossier ZIP avec cinq images et un rapport de téléchargement" caption="Figure 2. La sortie Gallica fournit les images, au format JPG, avec leur numéro et un rapport de téléchargement." %}
+{% include figure.html filename="fr-or-extraire-nettoyer-analyser-avec-pandore-toolbox-02.png" alt="Contenu du dossier ZIP avec cinq images au format jpg, nommées selon l'ark Gallica et leur numéro de page, suivi d'un rapport de téléchargement, nommé download_report." caption="Figure 2. La sortie Gallica fournit les images, au format JPG, avec leur numéro et un rapport de téléchargement." %}
 
 Le contenu du dossier, comme montré dans l'image ci-dessus, se compose des images de l'ouvrage, ainsi qu'un fichier `download_report.txt` qui contient le texte suivant, indiquant que le téléchargement a été fait avec succès :
 
@@ -143,7 +143,7 @@ Une fois que le traitement est fini, un fichier texte `ocr_XXXXX` est produit, q
 
 Ouvrez le fichier dans un éditeur de texte, qui devra contenir notamment le bout de texte ci-dessous.
 
-{% include figure.html filename="fr-or-extraire-nettoyer-analyser-avec-pandore-toolbox-03.png" alt="Version transcrite du téléchargement Gallica" caption="Figure 3. Sortie diplomatique, avec sauts de ligne et coupure de mots, de la transcription des images." %}
+{% include figure.html filename="fr-or-extraire-nettoyer-analyser-avec-pandore-toolbox-03.png" alt="Transcription texte des images de l'ouvrage Guerre et Paix, avec le respect de la structure du texte se trouvant dans les images." caption="Figure 3. Sortie diplomatique, avec sauts de ligne et coupure de mots, de la transcription des images." %}
 
 ## Nettoyage du corpus
 L'exercice suivant se fait à partir de la tâche "Prétraitement" et se nomme "Nettoyage de texte". Cet outil propose plusieurs fonctionnalités en fonction du type de nettoyage que vous souhaitez faire avec votre document. Il est ainsi possible de modifier, de manière importante, le texte en enlevant la ponctuation (option 2), en mettant tout en minuscule (option 1) ou même en supprimant des mots, et plus particulièrement les mots-vides (option 3). Cela a généralement vocation à être fait pour préparer son texte en vue d'analyse précise, et donc d'enlever tout ce qui pourrait représenter du bruit pour l'analyse. 
@@ -158,7 +158,7 @@ Cela générera un dossier `removing_XXXXX` qui contiendra votre fichier texte t
 
 Ouvrez le fichier dans un éditeur de texte. Vous devriez observer, comme montré dans l'image ci-dessous, que le texte est beaucoup plus compact qu'auparavant.
 
-{% include figure.html filename="fr-or-extraire-nettoyer-analyser-avec-pandore-toolbox-04.png" alt="Version nettoyée de la transcription" caption="Figure 4. Sortie de lecture, avec la suppression des sauts de ligne et coupure de mots." %}
+{% include figure.html filename="fr-or-extraire-nettoyer-analyser-avec-pandore-toolbox-04.png" alt="Version nettoyée de la Figure 3, supprimant ainsi la structure diplomatique pour proposer une version de lecture plus dense." caption="Figure 4. Sortie de lecture, avec la suppression des sauts de ligne et coupure de mots." %}
 
 
 ## Analyse du corpus
@@ -251,6 +251,7 @@ La sortie Bert ne fournira pas un fichier texte mais un fichier CSV. Vous pouvez
 
 Avec les trois sorties que vous avez générées, vous pouvez observer les différences dans ce qui a été reconnu comme une entitée ou non, et le changement de classification possible dans certains cas, comme ci-dessous. Cela vous permettra de choisir plus aisément celui qui semble le plus approprié pour votre texte, si vous décidez d'agrandir votre corpus par exemple.
 
+Sortie 1 : Export de spaCy
 ```Spacy
 T4    PER 138 150    Mlle Schérer  
 T5    PER 186 196    l'Empereur  
@@ -261,6 +262,7 @@ T9    LOC 482 488    Moscou
 T10    LOC 500 506    Rostow  
 ```
 
+Sortie 2 : Export de Bert
 ```Bert
 Droubetzkoï, PER, 84, 96, 0.99831575  
 Mlle Schérer, PER, 111, 124, 0.8961335  
@@ -271,6 +273,7 @@ Boris, PER, 348, 354, 0.97729295
 Koutouzow, PER, 387, 397, 0.814427  
 ```
 
+Sortie 3 : Export de Flair
 ```Flair
 T4    PER 138 150    Mlle Schérer  
 T5    PER 308 318    Séménovsky  
@@ -315,7 +318,7 @@ Cela générera un dossier `statistics_XXXXX` qui contiendra cinq fichiers, dont
 
 L'une des images, qui doit s'appeler `guerre_et_paix_sentences_lengths.png` et ressembler à l'image ci-dessous, présente un diagramme exposant la composition des phrases dans le texte soumis, avec notamment la production des totaux de mots et phrases, ainsi que la moyenne du premier sur le second.
 
-{% include figure.html filename="fr-or-extraire-nettoyer-analyser-avec-pandore-toolbox-05.png" alt="Diagramme exporté par la tâche de calcul de longueur de phrases" caption="Figure 5. Diagramme du nombre de mots par phrase, avec nombre total de phrases et moyenne de mots." %}
+{% include figure.html filename="fr-or-extraire-nettoyer-analyser-avec-pandore-toolbox-05.png" alt="Diagramme en barres du nombre de mots par phrase, démontrant la grande diversité des tailles de phrases sur les 94 présentes, avec certaines phrases allant jusqu'à 100 mots, pour une moyenne de 25 mots par phrase." caption="Figure 5. Diagramme exporté par la tâche de calcul de longueur de phrases." %}
 
 Ensuite, il y a deux couples de documents, le second étant la représentation par un nuage de mots de l'information donnée dans le premier : 
 
@@ -331,7 +334,7 @@ Comparer les sorties des deux versions permet par exemple d'observer la quantit�
 
 Enfin, les nuages de mots vous permettent d'observer de manière explicite la liste de fréquence relative fournie dans les documents texte. Vous pouvez observer ci-dessous une comparaison entre la version avec les mots-vides (en haut) et sans (en bas).
 
-{% include figure.html filename="fr-or-extraire-nettoyer-analyser-avec-pandore-toolbox-06.png" alt="Deux nuages de mots en comparaison" caption="Figure 6. Nuages de mots avec (haut) et sans (bas) les mots vides." %}
+{% include figure.html filename="fr-or-extraire-nettoyer-analyser-avec-pandore-toolbox-06.png" alt="Deux nuages de mots en comparaison, montrant la fréquence de mots dans le corpus transcrit. Celui du haut conserve les mots-vides et présente une grande fréquence de termes comme 'de', 'le', ou 'et', alors que celui du bas, qui les a éliminé, présente des termes plus significatifs comme 'comtesse', 'fille' ou 'bien'." caption="Figure 6. Répartition de la fréquence de mots dans le corpus 'Guerre et Paix', avec les mots-vides conservés, en haut et sans, en bas." %}
 
 
 ## Conclusion

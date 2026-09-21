@@ -200,7 +200,7 @@ This level of difficulty for this lesson is low, although beginners might find i
 
 ## Use Case
 
-This Lesson will look at a case study of the Architectural Association School of Architecture’s weekly newsletter, or AA Weekly for short. The newsletter has been published weekly during term time since 1973, roughly 32 newsletters a year. Between 1973 and 2017 they were published as physical pamphlets. Since 2017 they have been delivered by email. 
+This Lesson will look at a case study of the Architectural Association School of Architecture’s weekly newsletter, or AA Weekly for short. The newsletter has been published weekly during term time since 1973, roughly 32 newsletters a year. Between 1973 and 2017 they were published as physical pamphlets called 'Events List'. Since 2017 they have been delivered by email. 
 
 The newsletters detail the weekly programme of events at the school, including talks and workshops given by tutors, students and guest speakers. The collection is used by researchers to track the speakers, themes and topics discussed at the school and how these talks and collaborations have influenced or reflect wider trends in the sector.
 

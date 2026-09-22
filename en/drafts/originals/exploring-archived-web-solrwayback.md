@@ -24,11 +24,13 @@ doi: XX.XXXXX/phen0000
 {% include toc.html %}
 
 
-## Lesson Aims
+## Lesson Overview
 By the end of this lesson, you will be able to:
 * Set up SolrWayback on your local computer
 * Load sources from the archived web into your SolrWayback instance
 * Query, explore, and visualise archived web material using SolrWayback’s search and visualisation tools
+
+Sources from web archives are important to understand the 1990s and following decades. These sources are however hard to access. This lesson introduces you to the software SolrWayback which makes discovery in a web archive collection easier and more manageable. Imagine that you are researching a specific topic and want to incorporate sources from a web archive. SolrWayback provides you with search capabilities that you do not find in any other web archiving software. Searching a collection is the first step towards finding relevant sources.
 
 ## Technical Prerequisites
 

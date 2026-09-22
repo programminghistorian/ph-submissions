@@ -658,7 +658,7 @@ After installing a new tool, you may need to restart your terminal before the co
 ### Download the lesson files
 
 Before continuing, download the sample data package supplied with this lesson:
-[data.zip](/assets/visualizing-historic-maps-iiif-allmaps/data.zip).
+[data.zip](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizing-historic-maps-iiif-allmaps/data.zip).
 
 Unzip `data.zip` in the directory where you will work through the command-line examples.
 The package contains:

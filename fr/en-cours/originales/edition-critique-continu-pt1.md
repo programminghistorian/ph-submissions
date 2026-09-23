@@ -605,7 +605,7 @@ Le rapport SVRL (*Schematron Validation Report Language*) consigne les règles d
 </svrl:schematron-output>
 ```
 
-Pour voir un rapport en échec, introduisez trois fautes dans une copie de la lettre&nbsp;: supprimez l’attribut `@when` de la date d’envoi, changez le `@type` du premier `div`, retirez l’élément `<collection>`. Relancez la même commande&nbsp;: le rapport contient exactement trois `failed-assert`, un par règle&nbsp;:
+Pour voir un rapport d’échec, introduisez trois fautes dans une copie de la lettre&nbsp;: supprimez l’attribut `@when` de la date d’envoi, changez le `@type` du premier `div`, retirez l’élément `<collection>`. Relancez la même commande&nbsp;: le rapport contient exactement trois `failed-assert`, un par règle&nbsp;:
 
 ```xml
 <!-- Règle 1 : la date machine-lisible manque -->

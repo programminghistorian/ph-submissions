@@ -78,7 +78,7 @@ Abra QGIS. Lo primero que debe hacer es configurar correctamente el “Sistema d
 
  - Windows: “Nuevo Proyecto” > “Configuración” > “Opciones”.
 
-{% include figure.html filename="es-tr-qgis-capas02.png" alt="Visual description of figure image" caption="Figura 2. Caption text to display" %}
+{% include figure.html filename="es-tr-qgis-capas-02.png" alt="Visual description of figure image" caption="Figura 2. Caption text to display" %}
 
 
  - En el panel izquierdo, seleccione “Manejo de SRC”.

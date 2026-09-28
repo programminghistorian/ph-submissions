@@ -34,6 +34,16 @@ Ahora bien, ¿cómo puede un [_script_](https://es.wikipedia.org/wiki/Script) ay
 
 Esta herramienta cuenta con antecedentes en el ámbito de la traducción[^3] y nuestra propuesta pretende ser una solución inspirada en los principios de la computación mínima (_minimal computing_)[^4].
 
+## Objetivos
+
+Una vez finalizada la lección, esperamos que puedas:
+
+- Instalar y configurar AHK en Windows para automatizar tus tareas de transcripción.
+- Definir _hotkeys_ personalizadas para etiquetar selecciones, transformar texto y abrir programas o recursos web.
+- Crear tus propias _hotstrings_ para desarrollar abreviaturas e insertar fragmentos de texto o estructuras basadas en TEI.
+- Adaptar y ampliar el _script_ que te proporcionamos según tus necesidades, creando tu propio flujo de trabajo y convirtiéndolo en un ejecutable para que lo puedas usar en más de un computador.
+- Opcionalmente, crear una interfaz gráfica sencilla.
+
 ## ¿Qué debes saber?
 
 Al tratarse de una lección centrada en la edición de textos con TEI, te recomendamos que antes hayas leído las dos lecciones de Nicolás Vaughan, tituladas Introducción a la codificación de textos en TEI ([parte 1](/es/lecciones/introduccion-a-tei-1) y [parte 2](/es/lecciones/introduccion-a-tei-2)), y la guía de Susanna Allés, titulada [Introducción a la Text Encoding Initiative](https://tthub.io/aprende/tutorial/introduccion-text-encoding-initiative). Si después quieres visualizar tus resultados en un entorno web, también puedes consultar la lección de Gabriel Calarco y Gimena del Río Riande sobre [CETEIcean](/es/lecciones/publicar-archivos-tei-ceteicean).
@@ -49,17 +59,6 @@ También necesitarás instalar AHK y contar con un editor de texto plano (inclus
 El primer paso, entonces, es acceder a la página oficial de [AutoHotkey](https://www.autohotkey.com/) e instalar el programa en tu computador. Los archivos creados para AHK tendrán la extensión `.ahk`.
 
 En la interfaz de inicio verás varias opciones; sin embargo, por ahora solo nos interesa crear un nuevo _script_.
-
-## Objetivos
-
-Una vez finalizada la lección, esperamos que puedas:
-
-- Instalar y configurar AHK en Windows para automatizar tus tareas de transcripción.
-- Definir _hotkeys_ personalizadas para etiquetar selecciones, transformar texto y abrir programas o recursos web.
-- Crear tus propias _hotstrings_ para desarrollar abreviaturas e insertar fragmentos de texto o estructuras basadas en TEI.
-- Limitar el funcionamiento de las automatizaciones a determinados programas con la condición `#HotIf`.
-- Adaptar y ampliar el _script_ que te proporcionamos según tus necesidades, creando tu propio flujo de trabajo y convirtiéndolo en un ejecutable para que lo puedas usar en más de un computador.
-- Opcionalmente, crear una interfaz gráfica sencilla.
 
 ## Tu primer script: hotkeys y hotstrings
 

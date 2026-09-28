@@ -882,11 +882,11 @@ En intégrant ces pratiques dans des chaînes d’automatisation (Git, CI/CD), l
 - Adoptium. _Eclipse Temurin_ (environnements d’exécution Java). [https://adoptium.net/](https://perma.cc/T6SQ-XYZE).
 - Burnard, Lou. &laquo;&nbsp;What Is TEI Conformance, and Why Should You Care?&nbsp;&raquo; _Journal of the Text Encoding Initiative_ 12 (2019). [https://doi.org/10.4000/jtei.1777](https://doi.org/10.4000/jtei.1777).
 - CERN and OpenAIRE. _Zenodo_ (plateforme d’archivage et d’attribution de DOI). [https://zenodo.org](https://perma.cc/Q2L3-NJXA).
-- Clark, James, dir. _Jing and Trang_ (validateur RELAX NG). [https://github.com/relaxng/jing-trang/releases](https://github.com/relaxng/jing-trang/releases).
+- Clark, James, dir. _Jing and Trang_ (validateur RELAX NG). [https://github.com/relaxng/jing-trang/releases](https://perma.cc/2Y3Z-ZZRR).
 - Getty Research Institute. _Getty Thesaurus of Geographic Names (TGN)_. [https://www.getty.edu/research/tools/vocabularies/tgn/index.html](https://perma.cc/C2VV-ZWQL).
 - Godbarge, Clément, éd. _Filippo Cavriana: The Secret Correspondence_. Édition numérique en cours. [https://pantagrueliste.github.io/CavrianaCorr_FrontEnd/](https://pantagrueliste.github.io/CavrianaCorr_FrontEnd/).
-- Saxonica. _Saxon-HE_ (Home Edition). [https://github.com/Saxonica/Saxon-HE/releases](https://github.com/Saxonica/Saxon-HE/releases).
-- Schematron stakeholders. _ISO Schematron XSLT2 implementation_. [https://github.com/Schematron/stf](https://github.com/Schematron/stf).
+- Saxonica. _Saxon-HE_ (Home Edition). [https://github.com/Saxonica/Saxon-HE/releases](https://perma.cc/29UA-6GD8).
+- Schematron stakeholders. _ISO Schematron XSLT2 implementation_. [https://github.com/Schematron/stf](https://perma.cc/6PQN-4XEB).
 - TEI Consortium. _Getting Started with P5 ODDs_. [https://tei-c.org/guidelines/customization/getting-started-with-p5-odds/](https://perma.cc/JT6L-87S8).
 - TEI Consortium. _RomaJS_. Version 1.3.3. n.d. GPL-3.0. [https://github.com/TEIC/romajs](https://perma.cc/JE26-2PHQ).
 - TEI Consortium. _TEI P5&nbsp;: Recommandations pour l’encodage et l’échange de textes électroniques_. [https://tei-c.org/release/doc/tei-p5-doc/fr/html/index.html](https://perma.cc/WRF8-ZEFJ).

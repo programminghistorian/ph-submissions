@@ -152,6 +152,13 @@ isEditorActive() {
 :*:uni.::uni<ex>versi</ex>dad
 :*:uti.::utilid<ex>a</ex>d
 
+; |-----U (OTRA FORMA)-----|
+
+:*:;ulte;::ulteriorm<ex>en</ex>te
+:*:;ulti;::ultimam<ex>en</ex>te
+:*:;ulto;::ult<ex>im</ex>o
+:*:;ulta;::ult<ex>im</ex>a
+
 ; |-----V-----|
 
 ; |-----W-----|

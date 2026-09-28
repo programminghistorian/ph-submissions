@@ -418,6 +418,10 @@ insertNote(noteText) {
     SendText(noteText)
 }
 ```
+De este modo, al pulsar la combinación `Alt + C` obtendremos:
+```xml
+<note>[nota de edición]</note>
+```
 Como podrás observar, se trata de una misma lógica empleada en múltiples ocasiones y adaptada a diferentes necesidades. Entonces, ¿cómo plantear la creación de la plantilla propuesta por Nicolás Vaughan? A continuación, te dejamos nuestra propuesta:
 ```ahk
 :*:tei.xml::

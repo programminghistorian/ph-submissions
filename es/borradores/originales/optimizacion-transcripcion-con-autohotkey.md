@@ -24,11 +24,11 @@ doi: XX.XXXXX/phen0000
 
 ## Introducción
 
-Esta lección[^1] se integra en un conjunto de materiales dedicados al empleo de las recomendaciones de la Text Encoding Initiative (en adelante, TEI), basadas en XML, para la edición digital de textos. En estos se abordan cuestiones como la estructura básica de un documento o las formas más adecuadas de organizarlo para obtener mejores resultados en su posterior consulta, tratamiento y publicación. Sin embargo, hay un aspecto importante que todavía no ha sido abordado con la profundidad que merece: el proceso mismo de transcripción de un texto.
+Esta lección[^1] se integra en una serie de recursos didácticos dedicados al empleo de las recomendaciones de la Text Encoding Initiative (en adelante, TEI), basadas en XML, para la edición digital de textos. En estos se abordan cuestiones como la estructura básica de un documento o las formas más adecuadas de organizarlo para obtener mejores resultados en su posterior consulta, tratamiento y publicación. Sin embargo, hay un aspecto importante que todavía no ha sido abordado con la profundidad que merece: el proceso mismo de transcripción de un texto.
 
 Aunque las herramientas de reconocimiento óptico de caracteres ([OCR](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres), por sus siglas en inglés) son cada vez más eficaces, y el desarrollo de sistemas de reconocimiento de texto manuscrito ([HTR](https://es.wikipedia.org/wiki/Reconocimiento_de_escritura), por sus siglas en inglés) permite transcribir semiautomáticamente buena parte de las escrituras históricas, quienes trabajamos con documentos escritos en [letra cortesana o procesal](https://es.wikipedia.org/wiki/Escritura_espa%C3%B1ola_en_el_siglo_XV#Escritura_cortesana_del_siglo_XV) todavía no podemos confiar plenamente en estos mecanismos[^2]. De ahí que, en muchos casos, el proceso de transcripción siga siendo total o parcialmente manual.
 
-Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de transcripción manual o etiquetar un texto procedente de OCR, HTR o, en general, de transcripciones realizadas previamente a las que todavía no hayas aplicado ningún marcado TEI.
+Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de transcripción manual o etiquetar un texto procedente de OCR, HTR o, en general, de una transcripción previa a la que todavía no hayas aplicado ningún marcado TEI.
 
 Ahora bien, ¿cómo puede un [_script_](https://es.wikipedia.org/wiki/Script) ayudarnos en nuestras tareas de humanidades digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de [macros](https://es.wikipedia.org/wiki/Macro), gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
 
@@ -46,9 +46,9 @@ Una vez finalizada la lección, esperamos que puedas:
 
 ## ¿Qué debes saber?
 
-Al tratarse de una lección centrada en la edición de textos con TEI, te recomendamos que antes hayas leído las dos lecciones de Nicolás Vaughan, tituladas Introducción a la codificación de textos en TEI ([parte 1](/es/lecciones/introduccion-a-tei-1) y [parte 2](/es/lecciones/introduccion-a-tei-2)), y la guía de Susanna Allés, titulada [Introducción a la Text Encoding Initiative](https://tthub.io/aprende/tutorial/introduccion-text-encoding-initiative). Si después quieres visualizar tus resultados en un entorno web, también puedes consultar la lección de Gabriel Calarco y Gimena del Río Riande sobre [CETEIcean](/es/lecciones/publicar-archivos-tei-ceteicean).
+Al tratarse de una lección centrada en la edición de textos con TEI, te recomendamos que antes hayas leído las dos lecciones de Nicolás Vaughan, tituladas Introducción a la codificación de textos en TEI ([parte 1](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1) y [parte 2](https://programminghistorian.org/es/lecciones/introduccion-a-tei-2)), y la guía de Susanna Allés, titulada [Introducción a la Text Encoding Initiative](https://tthub.io/aprende/tutorial/introduccion-text-encoding-initiative). Si después quieres visualizar tus resultados en un entorno web, también puedes consultar la lección de Gabriel Calarco y Gimena del Río Riande sobre [CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean).
 
-En particular, para la sección dedicada a las funciones, conviene que tengas algunas nociones básicas de programación. No necesitas experiencia avanzada: los fragmentos de código estarán acompañados de una explicación paso a paso. Sin embargo, te resultará útil entender qué es una función y cómo operan estructuras condicionales como `if`, puesto que AHK comparte algunos principios con otros lenguajes de programación, como Python o R. Para reforzar estos conceptos, te recomendamos consultar las lecciones de William J. Turkel y Adam Crymble, [Reutilización de código y modularidad en Python](/es/lecciones/reutilizacion-de-codigo-y-modularidad) y [De HTML a lista de palabras](/es/lecciones/de-html-a-lista-de-palabras-2).
+En particular, para la sección dedicada a las funciones, conviene que tengas algunas nociones básicas de programación. No necesitas experiencia avanzada: los fragmentos de código estarán acompañados de una explicación paso a paso. Sin embargo, te resultará útil entender qué es una función y cómo operan estructuras condicionales como `if`, puesto que AHK comparte algunos principios con otros lenguajes de programación como Python o R. Para reforzar estos conceptos, te recomendamos consultar las lecciones de William J. Turkel y Adam Crymble, [Reutilización de código y modularidad en Python](https://programminghistorian.org/es/lecciones/reutilizacion-de-codigo-y-modularidad) y [De HTML a lista de palabras](https://programminghistorian.org/es/lecciones/de-html-a-lista-de-palabras-2).
 
 ## ¿Qué necesitas?
 
@@ -104,7 +104,7 @@ Más adelante usaremos `SendText`, una variante de `Send` destinada a enviar tex
 
 Asimismo, debes conocer una parte esencial de la sintaxis de AHK: los dobles dos puntos (`::`). En una _hotkey_, lo situado a la izquierda de los dobles dos puntos indica la combinación de teclas que debes pulsar. Lo situado a la derecha, o dentro del bloque delimitado por llaves (`{}`), indica la acción que se ejecutará.
 
-Dicho esto, creemos nuestra primera _hotkey_. Para ello, abre el archivo que acabas de crear y escribe la siguiente línea. Con `Ctrl + H`, escribiremos en la ventana activa nuestro “Hola, mundo”:
+Dicho esto, creemos nuestra primera _hotkey_. Para ello, abre el archivo que acabas de crear y escribe la siguiente línea. Con `Ctrl + M`, escribiremos en la ventana activa nuestro “Hola, mundo”:
 ```ahk
 ^m::SendText "Hola, mundo"
 ```
@@ -115,7 +115,7 @@ También puedes escribir la misma instrucción entre llaves, en forma de bloque:
     SendText "Hola, mundo"
 }
 ```
-Guarda y ejecútalo como lo harías con cualquier otro archivo asociado a un programa en Windows. En caso de que la extensión `.ahk` no estuviese asociada automáticamente con AHK, deberás seleccionarlo del listado de opciones que te ofrecerá Windows para abrir el archivo. Después, abre cualquier campo de texto y presiona `Ctrl + H`: ¡es tu primera _hotkey_ en funcionamiento! Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas.
+Guarda y ejecútalo como lo harías con cualquier otro archivo asociado a un programa en Windows. En caso de que la extensión `.ahk` no estuviese asociada automáticamente con AHK, deberás seleccionarlo del listado de opciones que te ofrecerá Windows para abrir el archivo. Después, abre cualquier campo de texto y presiona `Ctrl + M`: ¡es tu primera _hotkey_ en funcionamiento! Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas.
 
 A partir de este punto, utilizaremos como ejemplo guía un fragmento de texto propuesto por Nicolás Vaughan en la parte 1 de su lección _Introducción a TEI_:
 
@@ -238,7 +238,7 @@ El valor de `{Left N}` dependerá de la etiqueta de apertura; si cambias su nomb
 
 De este modo, puedes abrir y cerrar automáticamente una etiqueta en cualquier campo de texto y colocar el cursor dentro de ella para seguir escribiendo.
 
-También podríamos aprovechar una _hotstring_ para almacenar una plantilla básica para documentos TEI, como la propuesta por Nicolás Vaughan en [Introducción a la codificación de textos en TEI](/es/lecciones/introduccion-a-tei-1), y crearla desde cero en pocos segundos. Para hacerlo correctamente, conviene que antes conozcas qué son y cómo trabajan las funciones en AHK.
+También podríamos aprovechar una _hotstring_ para almacenar una plantilla básica para documentos TEI, como la propuesta por Nicolás Vaughan en [Introducción a la codificación de textos en TEI](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1), y crearla desde cero en pocos segundos. Para hacerlo correctamente, conviene que antes conozcas qué son y cómo trabajan las funciones en AHK.
 
 ## Funciones
 
@@ -248,7 +248,7 @@ En esta lección utilizaremos funciones para automatizar tareas frecuentes de tr
 
 ### Etiquetar texto seleccionado
 
-Imagina la siguiente situación: tienes un texto parcialmente editado, pero todavía no has etiquetado sus entidades y no es posible hacerlo de forma automática. Podríamos crear una _hotkey_ para cada etiqueta, pero sería poco práctico: todas ellas seguirían la misma lógica y, además, aumentaría el riesgo de errores. Para evitar esta repetición, crearemos nuestra propia función, llamada `tagger()`.
+Imagina la siguiente situación: tienes un texto parcialmente editado con TEI, pero todavía no has etiquetado sus entidades y no es posible hacerlo de forma automática. Podríamos crear una _hotkey_ para cada etiqueta, pero sería poco práctico: todas ellas seguirían la misma lógica y, además, aumentaría el riesgo de errores. Para evitar esta repetición, crearemos nuestra propia función, llamada `tagger()`.
 
 Vamos a seguir trabajando con el _script_ que creamos en la sección anterior. Mantendremos `#Requires AutoHotkey v2.0` como primera línea del archivo y añadiremos algunas líneas generales al inicio del archivo:
 ```ahk
@@ -369,7 +369,7 @@ Con esta acción nos aseguramos de que AHK componga la siguiente estructura: eti
 
 Ahora, crea tus propias _hotkeys_ y añade las funciones `tagger()` y `releaseModifiers()` a tu _script_.
 
-### Otras funciones de interés
+### Convertir texto a mayúsculas y minúsculas
 
 Otras dos funciones útiles durante el proceso son las de conversión a mayúsculas y minúsculas. Aunque los procesadores de texto ya las incluyen, a veces resulta más cómodo seleccionar el texto y pulsar una combinación de teclas. Antes de definir estas funciones, asignaremos una combinación de teclas a cada una:
 
@@ -409,9 +409,11 @@ En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasán
 
 Una vez copiado el texto seleccionado, restaura el portapapeles original, convierte a mayúsculas o minúsculas y, finalmente, introduce el resultado con `SendText()`. Al inicio, con `releaseModifiers()`, nos aseguramos de liberar preventivamente las teclas `Alt` y `Ctrl`. En el descargable podrás llamar a estas funciones con `Alt + U` (convertir a mayúsculas) y `Alt + L` (convertir a minúsculas).
 
+### Insertar contenido predefinido
+
 Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante `Alt + C`, la cual inserta un texto definido previamente en la ventana en la que estemos trabajando:
 ```ahk
-!c::insertNote("[nota de edición]")
+!c::insertNote("<note>[nota de edición]</note>")
 
 insertNote(noteText) {
     releaseModifiers()

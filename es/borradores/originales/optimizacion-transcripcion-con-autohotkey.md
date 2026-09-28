@@ -70,7 +70,7 @@ Lo primero que haremos será crear una carpeta en Windows, que llamaremos `ahk_s
 
 2. Desde la carpeta `ahk_scripts`: para ello, busca la opción **Nuevo** y, después, **AutoHotkey script** o similar. A continuación, asigna un nombre al archivo y añade al comienzo la línea `#Requires AutoHotkey v2.0`.
 
-Nuestro _script_ se llamará `tph_script.ahk`.
+Nuestro _script_ se llamará `tph_script.ahk`. A lo largo de la lección, incorporaremos los ejemplos a este mismo archivo, salvo aquellos que puedan generar conflicto, lo cual indicaremos cuando corresponda.
 
 Una vez indicado que el archivo debe ejecutarse con AHK 2, aprenderás dos conceptos básicos para empezar a trabajar con este lenguaje: las _hotkeys_ y las _hotstrings_.
 
@@ -206,7 +206,7 @@ En un texto podemos encontrar la forma abreviada _ulteriormte_. Si queremos tran
 ```ahk
 :*:ulte.::ulteriorm<ex>en</ex>te
 ```
-En casos como este, conviene evitar secuencias de activación demasiado largas. Es preferible reducirlas al mínimo necesario y asegurarse de evitar que entren en conflicto con otras formas similares. En el DICABENOVO encontramos, por ejemplo, _ulteriormente_, _últimamente_ y _último_. Además, añadiremos _última_. No tienes por qué seguir exactamente esta propuesta, pero una posible solución sería la siguiente:
+En casos como este, conviene evitar secuencias de activación demasiado largas. Es preferible reducirlas al mínimo necesario y asegurarse de evitar que entren en conflicto con otras formas similares. En el DICABENOVO encontramos, por ejemplo, _ulteriormente_, _últimamente_ y _último_. Además, añadiremos _última_, con las que ampliaremos el ejemplo anterior (que no debes volver a añadir). No tienes por qué seguir exactamente esta propuesta, pero una posible solución sería la siguiente:
 ```ahk
 :*:ulte.::ulteriorm<ex>en</ex>te
 :*:ulti.::ultimam<ex>en</ex>te
@@ -239,7 +239,7 @@ En esta lección utilizaremos funciones para automatizar tareas frecuentes de tr
 
 Imagina la siguiente situación: tienes un texto parcialmente editado, pero todavía no has etiquetado sus entidades y no es posible hacerlo de forma automática. Podríamos crear una _hotkey_ para cada etiqueta, pero sería poco práctico: todas ellas seguirían la misma lógica y, además, aumentaría el riesgo de errores. Para evitar esta repetición, crearemos una función llamada `tagger()`.
 
-Vamos a seguir trabajando con el _script_ que creamos en la sección anterior, pero antes de definir la función revisaremos y añadiremos algunas líneas generales al inicio del archivo:
+Vamos a seguir trabajando con el _script_ que creamos en la sección anterior. Mantendremos `#Requires AutoHotkey v2.0` como primera línea del archivo y añadiremos algunas líneas generales al inicio del archivo:
 ```ahk
 #Requires AutoHotkey v2.0
 #SingleInstance Force
@@ -265,7 +265,7 @@ Como anteriormente hemos establecido `SetTitleMatchMode "RegEx"`, los nombres de
 
 `#HotIf` es una directiva dependiente de su posición en el _script_, lo que quiere decir que todas las _hotkeys_ y _hotstrings_ escritas después de `#HotIf isEditorActive()` estarán sometidas a esa condición. Para cerrar este bloque y recuperar el funcionamiento global, añadimos la directiva `#HotIf` sin ninguna condición.
 
-En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de la directiva `#HotIf` sin condición para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo:
+En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de la directiva `#HotIf` sin condición para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo. En el siguiente fragmento reproducimos nuevamente la Hotkey `!3` únicamente para mostrar su posición en el _script_:
 ```ahk
 ; |----------------------MARCADO SENCILLO A TEI-XML---------------------------|
 
@@ -598,7 +598,7 @@ Configuramos un botón para activar y desactivar los atajos con `toggleButton` q
 
 En último lugar, hemos vinculado el evento de cierre de la ventana a la función `confirmExit()`, mediante la cual se abrirá un cuadro de diálogo asociado a la ventana principal en el que se preguntará si se quiere finalizar por completo el _script_ o mantenerlo activo. Así evitamos que la interfaz desaparezca mientras el _script_ continúa ejecutándose en el área de notificación.
 
-Te dejamos a continuación el _script_ completo para que puedas modificarlo como quieras: [`tph_script.ahk`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.ahk).
+Te dejamos a continuación el _script_ resultante de la lección para que puedas modificarlo como quieras: [`tph_script.ahk`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.ahk).
 
 ## Compilación a un ejecutable
 

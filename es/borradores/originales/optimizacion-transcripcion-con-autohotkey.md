@@ -56,21 +56,21 @@ El primer requisito es disponer de un computador con Windows. Aunque AHK es grat
 
 También necesitarás instalar AHK y contar con un editor de texto plano (incluso podrías utilizar el Bloc de notas de Windows). No obstante, conviene trabajar con un editor que cuente con funcionalidades avanzadas, como [Notepad++](https://notepad-plus-plus.org/) o [Visual Studio Code](https://code.visualstudio.com/), ya que facilitará la lectura y edición del código de tu _script_.
 
-El primer paso, entonces, es acceder a la página oficial de [AutoHotkey](https://www.autohotkey.com/) e instalar el programa en tu computador. Los archivos creados para AHK tendrán la extensión `.ahk`.
+El primer paso, entonces, es acceder a la página oficial de [AutoHotkey](https://www.autohotkey.com/) e instalar el programa en tu computador. Los archivos creados para AHK tendrán la extensión `.ahk`. Utilizaremos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^6].
 
-En la interfaz de inicio verás varias opciones; sin embargo, por ahora solo nos interesa crear un nuevo _script_.
+Instalado AHK, puedes abrir AutoHotkey Dash, su interfaz de inicio. Allí verás varias opciones; sin embargo, por ahora solo nos interesa crear un nuevo _script_.
 
 ## Tu primer script: hotkeys y hotstrings
 
 Buena parte de lo que encontrarás en esta sección se basa en la [explicación introductoria de tidbit](https://www.autohotkey.com/docs/v2/Tutorial.htm), aunque aquí ajustaremos sus indicaciones al objetivo de esta lección. Te recomendamos consultarla no solo para resolver dudas, sino también para ampliar tus conocimientos y aprovechar al máximo las posibilidades de AHK.
 
-Lo primero que haremos será crear una carpeta en Windows. Puedes elegir la ubicación que prefieras; en este ejemplo, la crearemos en **Descargas** y la llamaremos `ahk_scripts`. Una vez hecho esto, puedes crear tu _script_ de dos formas:
+Lo primero que haremos será crear una carpeta en Windows, que llamaremos `ahk_scripts`. Puedes elegir la ubicación que prefieras. Una vez hecho esto, puedes crear tu _script_ de dos formas:
 
-1. Desde la interfaz de AHK: en este caso, deberás seleccionar la carpeta de destino, indicar un nombre para el archivo y marcar que incorpore la siguiente directiva: `#Requires AutoHotkey v2.0`. Si creas el archivo vacío, esta será la primera línea que deberás añadir.
+1. Desde AutoHotkey Dash: en este caso, deberás seleccionar la opción **New script**, indicar un nombre para el archivo, elegir la carpeta de destino y marcar la opción **Minimal for v2**, plantilla que introduce la instrucción `#Requires AutoHotkey v2.0`.
 
 2. Desde la carpeta `ahk_scripts`: para ello, busca la opción **Nuevo** y, después, **AutoHotkey script** o similar. A continuación, asigna un nombre al archivo y añade al comienzo la línea `#Requires AutoHotkey v2.0`.
 
-Nuestro _script_ se llamará `tph_script.ahk`. Utilizamos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^6].
+Nuestro _script_ se llamará `tph_script.ahk`.
 
 Una vez indicado que el archivo debe ejecutarse con AHK 2, aprenderás dos conceptos básicos para empezar a trabajar con este lenguaje: las _hotkeys_ y las _hotstrings_.
 
@@ -111,7 +111,7 @@ También puedes escribir la misma instrucción entre llaves, en forma de bloque:
     SendText "Hola, mundo"
 }
 ```
-Guarda y ejecuta el archivo. Después, abre cualquier campo de texto y presiona `Ctrl + H`: ¡es tu primera _hotkey_ en funcionamiento! Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas.
+Guarda y ejecútalo como lo harías con cualquier otro archivo asociado a un programa en Windows. En caso de que la extensión `.ahk` no estuviese asociada automáticamente con AHK, deberás seleccionarlo del listado de opciones que te ofrecerá Windows para abrir el archivo. Después, abre cualquier campo de texto y presiona `Ctrl + H`: ¡es tu primera _hotkey_ en funcionamiento! Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas.
 
 A partir de este punto, utilizaremos como ejemplo guía un fragmento de texto propuesto por Nicolás Vaughan en la parte 1 de su lección _Introducción a TEI_:
 

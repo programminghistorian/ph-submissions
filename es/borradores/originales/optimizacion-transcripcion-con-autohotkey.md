@@ -461,7 +461,7 @@ En este caso, usamos la _hotstring_ `tei.xml` y, para evitar que se pegue incorr
 
 ### Transformar marcado sencillo en etiquetas TEI
 
-Esta lógica de trabajo se puede aplicar a casi cualquier etiqueta. Pensemos, por ejemplo, en entidades como nombres de persona, lugares o títulos de obras. Retomando el ejemplo guía, cuenta con asteriscos simples, dobles y guiones bajos. Partiendo de este marcado sencillo, podemos transformarlo automáticamente con AHK mediante expresiones regulares presionando `Ctrl + Alt + X`:
+Esta lógica de trabajo se puede aplicar a casi cualquier etiqueta. Pensemos, por ejemplo, en entidades como nombres de persona, lugares o títulos de obras. Retomando nuestro ejemplo guía, en el que se emplean asteriscos simples, dobles y guiones bajos. Partiendo de este marcado sencillo, podemos transformarlo automáticamente con AHK mediante expresiones regulares presionando `Ctrl + Alt + X`:
 ```ahk
 ^!x::convertSimpleMarkup()
 

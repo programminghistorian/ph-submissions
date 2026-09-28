@@ -24,7 +24,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introducción
 
-Esta lección[^1] se integra en una serie de recursos didácticos dedicados al empleo de las recomendaciones de la Text Encoding Initiative (en adelante, TEI), basadas en XML, para la edición digital de textos. En estos se abordan cuestiones como la estructura básica de un documento o las formas más adecuadas de organizarlo para obtener mejores resultados en su posterior consulta, tratamiento y publicación. Sin embargo, hay un aspecto importante que todavía no ha sido abordado con la profundidad que merece: el proceso mismo de transcripción de un texto.
+Esta lección[^1] se integra en una serie de recursos didácticos de _The Programming Historian_ dedicados al empleo de las recomendaciones de la Text Encoding Initiative (en adelante, TEI), basadas en XML, para la edición digital de textos. En estos se abordan cuestiones como la estructura básica de un documento o las formas más adecuadas de organizarlo para obtener mejores resultados en su posterior consulta, tratamiento y publicación. Sin embargo, hay un aspecto importante que todavía no ha sido abordado con la profundidad que merece: el proceso mismo de transcripción de un texto.
 
 Aunque las herramientas de reconocimiento óptico de caracteres ([OCR](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres), por sus siglas en inglés) son cada vez más eficaces, y el desarrollo de sistemas de reconocimiento de texto manuscrito ([HTR](https://es.wikipedia.org/wiki/Reconocimiento_de_escritura), por sus siglas en inglés) permite transcribir semiautomáticamente buena parte de las escrituras históricas, quienes trabajamos con documentos escritos en [letra cortesana o procesal](https://es.wikipedia.org/wiki/Escritura_espa%C3%B1ola_en_el_siglo_XV#Escritura_cortesana_del_siglo_XV) todavía no podemos confiar plenamente en estos mecanismos[^2]. De ahí que, en muchos casos, el proceso de transcripción siga siendo total o parcialmente manual.
 
@@ -219,7 +219,7 @@ En casos como este, conviene evitar secuencias de activación demasiado largas. 
 :*:ulto.::ult<ex>im</ex>o
 :*:ulta.::ult<ex>im</ex>a
 ```
-Otra posibilidad es usar como secuencia de activación la abreviatura original delimitada por caracteres especiales, como el punto y coma. Por ejemplo:
+Otra posibilidad es usar como secuencia de activación la abreviatura original delimitada por caracteres especiales, como el punto y coma (te hemos dejado en el _script_ descargable ambas opciones). Por ejemplo:
 ```ahk
 :*:;ulte;::ulteriorm<ex>en</ex>te
 :*:;ulti;::ultimam<ex>en</ex>te
@@ -414,7 +414,7 @@ En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasán
 
 Una vez copiado el texto seleccionado, restaura el portapapeles original, convierte a mayúsculas o minúsculas y, finalmente, introduce el resultado con `SendText()`. Al inicio, con `releaseModifiers()`, nos aseguramos de liberar preventivamente las teclas `Alt` y `Ctrl`. En el descargable podrás llamar a estas funciones con `Alt + U` (convertir a mayúsculas) y `Alt + L` (convertir a minúsculas).
 
-#### Insertar contenido predefinido
+#### Insertar notas
 
 Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante `Alt + C`, la cual inserta un texto definido previamente en la ventana en la que estemos trabajando:
 ```ahk
@@ -429,6 +429,8 @@ De este modo, al pulsar la combinación `Alt + C` obtendremos:
 ```xml
 <note>[nota de edición]</note>
 ```
+#### Plantilla TEI
+
 Como podrás observar, se trata de una misma lógica empleada en múltiples ocasiones y adaptada a diferentes necesidades. Entonces, ¿cómo plantear la creación de la plantilla propuesta por Nicolás Vaughan? A continuación, te dejamos nuestra propuesta:
 ```ahk
 :*:tei.xml::
@@ -544,7 +546,7 @@ Estas líneas de código permiten que, al seleccionar esos fragmentos de texto, 
 
 Aunque AHK siempre se ejecuta en la barra de tareas y desde allí puedes controlar el _script_, puede ser de utilidad contar con una interfaz gráfica. Empezaremos por una que llamaremos mínima, que funcionará como espacio de pruebas y control.
 
-El funcionamiento se basa en una lógica basada en eventos, es decir, las acciones que la persona usuaria realice sobre la interfaz desencadenará funciones asociadas a estos eventos:
+El funcionamiento se basa en una lógica basada en eventos, es decir, las acciones que la persona usuaria realice sobre la interfaz desencadenarán funciones asociadas a estos eventos:
 ```ahk
 global scriptActive := true
 global mainGui, testEdit, toggleButton
@@ -612,13 +614,13 @@ confirmExit(guiObj) {
     return true
 }
 ```
-{% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey-02.jpg" alt="Interfaz gráfica del _script_ de AutoHotkey con una caja de texto para probar atajos y un botón para desactivarlos" caption="Figura 2. Interfaz gráfica de prueba creada con el _script_." %}
+{% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey-02.jpg" alt="Interfaz gráfica del _script_ de AutoHotkey con una caja de texto para probar atajos y un botón para desactivarlos" caption="Figura 1. Interfaz gráfica de prueba creada con el _script_." %}
 
 Las dos primeras líneas declaran las variables que usará la interfaz: `scriptActive`, que almacena el estado de los atajos, y `mainGui`, `testEdit` y `toggleButton`, que guardarán sus componentes. La tercera llama a `createGui()`, la función encargada de construirla.
 
 Ten en cuenta que en la interfaz que hemos construido, las variables se declaran como globales al inicio del _script_. Aunque la palabra `global` es redundante en ese nivel, se mantiene para hacer explícito su alcance. En cambio, las declaraciones incluidas en `createGui()` y `toggleScript()` son necesarias, pues estas funciones asignan nuevos valores a las variables y, en AHK v2, las funciones trabajan con variables locales de manera predeterminada.
 
-Dentro de `createGui()` se crea la ventana con  `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que no pueda cambiar de tamaño (`-Resize`) y minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para quien lo utilice.
+Dentro de `createGui()` se crea la ventana con  `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que no pueda cambiar de tamaño (`-Resize`) y que pueda minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para quien lo utilice. Recuerda que para activar la interfaz de usuario solo tienes que ejecutar el _script_ como lo harías normalmente.
 
 Con `testEdit` podemos añadir una caja de texto, que será donde podamos hacer las pruebas que consideremos necesarias antes de trabajar con el _script_ sobre nuestros documentos. En ella definimos el ancho (`w500`), el alto (`h180`) y permitimos el uso del tabulador (`WantTab`) en el campo de texto. Se añaden algunos ejemplos de uso, aunque puedes eliminarlos si así lo prefieres.
 
@@ -634,11 +636,11 @@ Ya hemos construido un _script_ que cubre buena parte del flujo de trabajo vincu
 
 Los archivos en formato `.ahk` pueden compartirse con otras personas, pero es necesario que la persona destinataria tenga AHK instalado. Sin embargo, si queremos utilizarlo en otros computadores sin depender de una instalación, puede ser conveniente convertirlo en un archivo ejecutable (`.exe`).
 
-AHK cuenta con un compilador que permite convertir tus _scripts_ `.ahk` a `.exe` llamado `Ahk2Exe`. Si todavía no está instalado en tu equipo (normalmente viene incluido), descargalo desde su web oficial. De esta manera, podrás ejecutar tu _script_ sin necesidad de instalarlo en el equipo de destino, ya que se compila como un programa portable. Por tanto, puedes llevarlo en una memoria USB o en un disco duro portátil.
+AHK cuenta con un compilador que permite convertir tus _scripts_ `.ahk` a `.exe` llamado `Ahk2Exe`. Lo puedes instalar desde el propio AutoHotkey Dash entrando en la opción **Compile**. De esta manera, podrás ejecutar tu _script_ sin necesidad de instalarlo en el equipo de destino, ya que se compila como un programa portable. Por tanto, puedes llevarlo en una memoria USB o en un disco duro portátil.
 
 Para hacerlo, abre el compilador `Ahk2Exe` (Figura 1):
 
-{% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey-01.jpg" alt="Ventana del compilador Ahk2Exe con campos para seleccionar el archivo fuente, el archivo de destino, el icono personalizado y el botón de convertir a ejecutable" caption="Figura 1. Interfaz de usuario de Ahk2Exe." %}
+{% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey-01.jpg" alt="Ventana del compilador Ahk2Exe con campos para seleccionar el archivo fuente, el archivo de destino, el icono personalizado y el botón de convertir a ejecutable" caption="Figura 2. Interfaz de usuario de Ahk2Exe." %}
 
 Una vez allí, busca el _script_ que has creado en la carpeta (`tph_script.ahk`) y deja el resto de opciones predeterminadas, ya que suelen funcionar en la mayoría de computadores Windows. Además, tienes la posibilidad de añadir un icono al `.exe`; recuerda que debe estar en formato `.ico`.
 

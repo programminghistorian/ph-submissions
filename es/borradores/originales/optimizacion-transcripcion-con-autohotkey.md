@@ -184,7 +184,7 @@ Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la fun
 Los comentarios deben ir precedidos de un punto y coma, como en el ejemplo anterior: `; LibreOffice Writer`.
 </div>
 
-Siempre podrás pausar o cerrar tu _script_ desde el área de notificación de Windows.
+Siempre podrás pausar o cerrar tu _script_ desde el área de notificación de Windows. Asimismo, la opción de recarga te permite aplicar los cambios realizados en el contenido del _script_ sin necesidad de cerrarlo y abrirlo de nuevo. Por tanto, si añades una nueva _hotkey_, bastará con recargar para poder utilizarla.
 
 Pasemos ahora a las _hotstrings_. A diferencia de las _hotkeys_, no se activan mediante una combinación de teclas, sino al escribir una determinada secuencia de caracteres. Su uso es más localizado, pues básicamente se emplean para expandir abreviaturas, palabras o frases frecuentes mientras escribes.
 
@@ -217,6 +217,13 @@ En casos como este, conviene evitar secuencias de activación demasiado largas. 
 :*:ulto.::ult<ex>im</ex>o
 :*:ulta.::ult<ex>im</ex>a
 ```
+Otra posibilidad es usar como secuencia de activación la abreviatura original delimitada por caracteres especiales, como el punto y coma. Por ejemplo:
+```ahk
+:*:;ulte;::ulteriorm<ex>en</ex>te
+:*:;ulti;::ultimam<ex>en</ex>te
+:*:;ulto;::ult<ex>im</ex>o
+:*:;ulta;::ult<ex>im</ex>a
+```
 Ahora, ¡haz la prueba en cualquier campo de texto! Como actividad, te proponemos trabajar con una letra del DICABENOVO, la que prefieras. El objetivo es que practiques la creación de _hotstrings_ y reflexiones sobre cómo puedes adaptarlas a las necesidades de tu corpus. En el _script_ de ejemplo que acompaña a esta lección encontrarás desarrollada la letra U.
 
 Combinando todo lo que hemos aprendido hasta ahora, podríamos crear algo similar al autocompletado que usan los entornos de programación para preetiquetar entidades como nombres, lugares o títulos de obras:
@@ -241,7 +248,7 @@ En esta lección utilizaremos funciones para automatizar tareas frecuentes de tr
 
 ### Etiquetar texto seleccionado
 
-Imagina la siguiente situación: tienes un texto parcialmente editado, pero todavía no has etiquetado sus entidades y no es posible hacerlo de forma automática. Podríamos crear una _hotkey_ para cada etiqueta, pero sería poco práctico: todas ellas seguirían la misma lógica y, además, aumentaría el riesgo de errores. Para evitar esta repetición, crearemos una función llamada `tagger()`.
+Imagina la siguiente situación: tienes un texto parcialmente editado, pero todavía no has etiquetado sus entidades y no es posible hacerlo de forma automática. Podríamos crear una _hotkey_ para cada etiqueta, pero sería poco práctico: todas ellas seguirían la misma lógica y, además, aumentaría el riesgo de errores. Para evitar esta repetición, crearemos nuestra propia función, llamada `tagger()`.
 
 Vamos a seguir trabajando con el _script_ que creamos en la sección anterior. Mantendremos `#Requires AutoHotkey v2.0` como primera línea del archivo y añadiremos algunas líneas generales al inicio del archivo:
 ```ahk
@@ -249,7 +256,7 @@ Vamos a seguir trabajando con el _script_ que creamos en la sección anterior. M
 #SingleInstance Force
 SetTitleMatchMode "RegEx"
 ```
-La primera línea indica que el archivo requiere AHK 2. La segunda previene que se abran varias copias del mismo _script_. La tercera habilita el uso de [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular) para comprobar los nombres y títulos de las ventanas.
+La primera línea indica que el archivo requiere AHK 2. La segunda previene que se abran varias copias del mismo _script_. La tercera habilita el uso de [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular) para comprobar los nombres y títulos de las ventanas. A diferencia de las dos primeras, que son directivas, `SetTitleMatchMode` es una función, por ello no precisa almohadilla al inicio.
 
 Anteriormente indicamos que las _hotkeys_ podían utilizarse en cualquier campo de texto. Sin embargo, no siempre queremos que se ejecuten en todos los programas de nuestro computador. Para limitar su funcionamiento, hemos desarrollado una función que comprueba si la ventana activa corresponde a uno de los editores autorizados o a la interfaz de prueba, de manera que no interfiera allí donde no queramos usarlas:
 ```ahk
@@ -263,11 +270,13 @@ isEditorActive() {
 
 #HotIf isEditorActive()
 ```
-La función `isEditorActive()` devuelve un valor verdadero cuando está activa una ventana de LibreOffice Writer, Notepad++, el Bloc de notas (si usas la versión moderna, desactiva el autocorrector, pues hemos comprobado que puede entrar en conflicto con los _scripts_) o la interfaz del _script_ que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos posteriormente solo cuando una de esas ventanas esté activa.
+Al habilitar las expresiones regulares en nuestro código, hemos tenido que escapar algunos caracteres especiales de los nombres de los programas, motivo por el que el código parece más complejo de lo que es en realidad: se usa la función `WinActive` para comprobar si la ventana activa corresponde a alguno de los programas o ventanas que aparecen entre paréntesis.
+
+La función `isEditorActive()` devuelve internamente un valor verdadero (es decir, le indica que está abierto y usándose) cuando está activa una ventana de LibreOffice Writer, Notepad++, el Bloc de notas (si usas la versión moderna, desactiva el autocorrector, pues hemos comprobado que puede entrar en conflicto con los _scripts_) o la interfaz del _script_ que crearemos más adelante. `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos posteriormente solo cuando una de esas ventanas esté activa.
 
 Como anteriormente hemos establecido `SetTitleMatchMode "RegEx"`, los nombres de los ejecutables también se interpretan como expresiones regulares. Por ello, hemos añadido una barra inversa antes de cada carácter especial, como los puntos o los signos de suma. Es importante que tengas esto en cuenta, ya que los caracteres especiales de las expresiones regulares deben escaparse cuando se pretende que se interpreten literalmente. De no hacerlo, puede que tu _script_ no se ejecute correctamente.
 
-`#HotIf` es una directiva dependiente de su posición en el _script_, lo que quiere decir que todas las _hotkeys_ y _hotstrings_ escritas después de `#HotIf isEditorActive()` estarán sometidas a esa condición. Para cerrar este bloque y recuperar el funcionamiento global, añadimos la directiva `#HotIf` sin ninguna condición.
+`#HotIf` es una directiva dependiente de su posición en el _script_, lo que quiere decir que todas las _hotkeys_ y _hotstrings_ escritas después de `#HotIf isEditorActive()` estarán sometidas a esa condición. Para cerrar este bloque y recuperar el funcionamiento global, debes añadir la directiva `#HotIf` sin ninguna condición.
 
 En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de la directiva `#HotIf` sin condición para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo. En el siguiente fragmento reproducimos nuevamente la Hotkey `!3` únicamente para mostrar su posición en el _script_, así como anticipamos `^!x`, que explicaremos más adelante:
 ```ahk
@@ -522,7 +531,9 @@ Estas líneas de código permiten que, al seleccionar esos fragmentos de texto, 
 
 ### Opcional: crea una interfaz
 
-Aunque AHK siempre se ejecuta en la barra de tareas y desde allí puedes controlar el _script_, puede ser de utilidad contar con una interfaz gráfica. Empezaremos por una que llamaremos mínima.
+Aunque AHK siempre se ejecuta en la barra de tareas y desde allí puedes controlar el _script_, puede ser de utilidad contar con una interfaz gráfica. Empezaremos por una que llamaremos mínima, que funcionará como espacio de pruebas y control.
+
+El funcionamiento se basa en una lógica basada en eventos, es decir, las acciones que la persona usuaria realice sobre la interfaz desencadenará funciones asociadas a estos eventos:
 ```ahk
 global scriptActive := true
 global mainGui, testEdit, toggleButton
@@ -590,6 +601,8 @@ confirmExit(guiObj) {
     return true
 }
 ```
+{% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey-02.jpg" alt="Interfaz gráfica del _script_ de AutoHotkey con una caja de texto para probar atajos y un botón para desactivarlos" caption="Figura 2. Interfaz gráfica de prueba creada con el _script_." %}
+
 Las dos primeras líneas declaran las variables que usará la interfaz: `scriptActive`, que almacena el estado de los atajos, y `mainGui`, `testEdit` y `toggleButton`, que guardarán sus componentes. La tercera llama a `createGui()`, la función encargada de construirla.
 
 Ten en cuenta que en la interfaz que hemos construido, las variables se declaran como globales al inicio del _script_. Aunque la palabra `global` es redundante en ese nivel, se mantiene para hacer explícito su alcance. En cambio, las declaraciones incluidas en `createGui()` y `toggleScript()` son necesarias, pues estas funciones asignan nuevos valores a las variables y, en AHK v2, las funciones trabajan con variables locales de manera predeterminada.
@@ -608,7 +621,9 @@ Te dejamos a continuación el _script_ resultante de la lección para que puedas
 
 Ya hemos construido un _script_ que cubre buena parte del flujo de trabajo vinculado a la edición digital de textos. Sin embargo, si queremos utilizarlo en otros computadores o compartirlo con otras personas, sería conveniente convertirlo en un archivo ejecutable (`.exe`).
 
-AHK incorpora un compilador que permite convertir tus _scripts_ `.ahk` a `.exe`. De esta manera, podrás ejecutar tu _script_ sin necesidad de instalarlo en el equipo de destino, ya que se compila como un programa portable. Por tanto, puedes llevarlo en una memoria USB o en un disco duro portátil.
+Los archivos en formato `.ahk` pueden compartirse con otras personas, pero es necesario que la persona destinataria tenga AHK instalado. Sin embargo, si queremos utilizarlo en otros computadores sin depender de una instalación, puede ser conveniente convertirlo en un archivo ejecutable (`.exe`).
+
+AHK cuenta con un compilador que permite convertir tus _scripts_ `.ahk` a `.exe` llamado `Ahk2Exe`. Si todavía no está instalado en tu equipo (normalmente viene incluido), descargalo desde su web oficial. De esta manera, podrás ejecutar tu _script_ sin necesidad de instalarlo en el equipo de destino, ya que se compila como un programa portable. Por tanto, puedes llevarlo en una memoria USB o en un disco duro portátil.
 
 Para hacerlo, abre el compilador `Ahk2Exe` (Figura 1):
 

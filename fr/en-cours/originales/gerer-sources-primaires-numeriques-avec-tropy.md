@@ -1,5 +1,5 @@
 ---
-title: Du chaos à l'ordre ou comment gérer avec Tropy des fichiers images de sources primaires
+title: Gérer des fichiers image de sources primaires avec Tropy
 collection: lessons
 layout: lesson
 slug: gerer-sources-primaires-numeriques-avec-tropy
@@ -16,7 +16,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/712
 difficulty: 1
 activity: analyze
 topics: [data-manipulation, data-management]
-abstract: "Apprendre à organiser et annoter des images numériques de sources primaires à l'aide du logiciel Tropy en anticipant leur analyse à des fins de recherche scientifique."
+abstract: "Découvrir comment organiser et annoter des images numériques de sources primaires avec Tropy pour faciliter leur analyse scientifique."
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---

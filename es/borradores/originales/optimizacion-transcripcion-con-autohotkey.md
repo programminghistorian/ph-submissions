@@ -61,7 +61,7 @@ El primer paso, entonces, es acceder a la página oficial de [AutoHotkey](https:
 Instalado AHK, puedes abrir AutoHotkey Dash, su interfaz de inicio. Allí verás varias opciones; sin embargo, por ahora solo nos interesa crear un nuevo _script_.
 
 <div class="alert alert-info" markdown="1">
-Algunos antivirus pueden identificar AHK o los _scripts_ que hayas creado con esta herramienta como potencialmente peligrosos. Por ello, obtén siempre el programa desde la web oficial y comprueba el origen de cualquier script de terceros antes de ejecutarlo.
+Algunos antivirus pueden identificar AHK o los _scripts_ que hayas creado con esta herramienta como potencialmente peligrosos. Por ello, obtén siempre el programa desde la web oficial y comprueba el origen de cualquier _script_ de terceros antes de ejecutarlo.
 </div>
 
 ## Tu primer script
@@ -106,18 +106,18 @@ Más adelante usaremos `SendText`, una variante de `Send` destinada a enviar tex
 
 Asimismo, debes conocer una parte esencial de la sintaxis de AHK: los dobles dos puntos (`::`). En una _hotkey_, lo situado a la izquierda de los dobles dos puntos indica la combinación de teclas que debes pulsar. Lo situado a la derecha, o dentro del bloque delimitado por llaves (`{}`), indica la acción que se ejecutará.
 
-Dicho esto, creemos nuestra primera _hotkey_. Para ello, abre el archivo que acabas de crear y escribe la siguiente línea. Con `Ctrl + M`, escribiremos en la ventana activa nuestro “Hola, mundo”:
+Dicho esto, creemos nuestra primera _hotkey_. Para ello, abre el archivo que acabas de crear y escribe la siguiente línea. Con `Ctrl + Alt + H`, escribiremos en la ventana activa nuestro “Hola, mundo”:
 ```ahk
-^m::SendText "Hola, mundo"
+^!h::SendText "Hola, mundo"
 ```
 También puedes escribir la misma instrucción entre llaves, en forma de bloque:
 ```ahk
-^m::
+^!h::
 {
     SendText "Hola, mundo"
 }
 ```
-Guarda y ejecútalo como lo harías con cualquier otro archivo asociado a un programa en Windows. En caso de que la extensión `.ahk` no estuviese asociada automáticamente con AHK, deberás seleccionarlo del listado de opciones que te ofrecerá Windows para abrir el archivo. Después, abre cualquier campo de texto y presiona `Ctrl + M`: ¡es tu primera _hotkey_ en funcionamiento! Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas.
+Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas. Guárdalo y ejecútalo como lo harías con cualquier otro archivo asociado a un programa en Windows. En caso de que la extensión `.ahk` no estuviese asociada automáticamente con AHK, deberás seleccionarlo del listado de opciones que te ofrecerá Windows para abrir el archivo. Después, abre cualquier campo de texto y presiona `Ctrl + Alt + H`: ¡es tu primera _hotkey_ en funcionamiento!
 
 A partir de este punto, utilizaremos como ejemplo guía un fragmento de texto propuesto por Nicolás Vaughan en la parte 1 de su lección _Introducción a TEI_:
 
@@ -125,7 +125,7 @@ A partir de este punto, utilizaremos como ejemplo guía un fragmento de texto pr
 
 A medida que avancemos, tomaremos fragmentos de este texto para ver cómo AHK nos puede ayudar en el proceso de marcado y automatización.
 
-Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición TEI: introduciremos los elementos `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 definen la primera de ellas así:
+Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición TEI: introduciremos los elementos `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 definen el primero de ellos así:
 
 > `<gap>` (gap) indica un punto donde algún material ha sido omitido en una transcripción, bien por criterios de edición descritos en el encabezado TEI, bien como parte de una práctica habitual, o bien porque el material es ilegible o incomprensible[^7].
 
@@ -145,7 +145,7 @@ Nuevamente, incluiremos solo el atributo `reason`:
 ```ahk
 !s::SendText '<supplied reason=""></supplied>'
 ```
-Como ves, el procedimiento es sencillo, aunque sería mucho más cómodo que el cursor se colocara directamente donde vamos a escribir. Para ello, podemos combinar dos instrucciones con `Send`: la primera inserta el texto literal, mientras que la segunda permite indicar que el cursor debe moverse tantas veces como queramos. En este caso, lo desplazamos hacia la izquierda, de manera que quede dentro del entrecomillado del atributo `reason`:
+Como ves, el procedimiento es sencillo, aunque sería mucho más cómodo que el cursor se colocara directamente donde vamos a escribir. Para ello, podemos hacer dos instrucciones con `SendText` y `Send`: la primera inserta el texto literal, mientras que la segunda permite indicar que el cursor debe moverse tantas veces como queramos. En este caso, lo desplazamos hacia la izquierda, de manera que quede dentro del entrecomillado del atributo `reason`:
 ```ahk
 !s::
 {
@@ -278,7 +278,7 @@ Como anteriormente hemos establecido `SetTitleMatchMode "RegEx"`, los nombres de
 
 `#HotIf` es una directiva dependiente de su posición en el _script_, lo que quiere decir que todas las _hotkeys_ y _hotstrings_ escritas después de `#HotIf isEditorActive()` estarán sometidas a esa condición. Para cerrar este bloque y recuperar el funcionamiento global, debes añadir la directiva `#HotIf` sin ninguna condición.
 
-En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de la directiva `#HotIf` sin condición para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo. En el siguiente fragmento reproducimos nuevamente la Hotkey `!3` únicamente para mostrar su posición en el _script_, así como anticipamos `^!x`, que explicaremos más adelante:
+En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de la directiva `#HotIf` sin condición para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo. En el siguiente fragmento reproducimos nuevamente la _hotkey_ `!3` únicamente para mostrar su posición en el _script_, así como anticipamos `^!x`, que explicaremos más adelante:
 ```ahk
 ; |----------------------MARCADO SENCILLO A TEI-XML---------------------------|
 
@@ -334,7 +334,7 @@ tagger(openTag, closeTag) {
     SendText(openTag . selectedText . closeTag)
 }
 ```
-Con esta función podemos seleccionar cualquier texto y escribir alrededor de él las etiquetas que queramos, dependiendo de la combinación de teclas que usemos. Para ello,  `tagger()` recibe dos valores: el primero es la etiqueta de apertura y el segundo la de cierre.
+Con esta función podemos seleccionar cualquier texto y escribir alrededor de él las etiquetas que queramos, dependiendo de la combinación de teclas que usemos. Para ello, `tagger()` recibe dos valores: el primero es la etiqueta de apertura y el segundo la de cierre.
 
 Vamos a definir las _hotkeys_ de los etiquetadores de `<persName>`, `<placeName>` y `<title>`, de manera que podamos llamar a la función con una combinación de teclas:
 ```ahk
@@ -342,8 +342,7 @@ Vamos a definir las _hotkeys_ de los etiquetadores de `<persName>`, `<placeName>
 !p::tagger("<placeName>", "</placeName>")
 !t::tagger("<title>", "</title>")
 ```
-Recuerda: lo que está a la izquierda de los dobles dos puntos (`::`) es nuestra combinación de teclas. A la derecha de estos, definimos la acción que deberá ejecutar AHK. 
-Como puedes ver, los valores van a reemplazar los parámetros `openTag` (por `<persName>`) y `closeTag` (por `</persName>`). Por tanto, si seleccionamos un fragmento de texto, por ejemplo un nombre propio como Simón Bolívar, se convertirá en:
+Recuerda: lo que está a la izquierda de los dobles dos puntos (`::`) es nuestra combinación de teclas. A la derecha de estos, definimos la acción que deberá ejecutar AHK. Como puedes ver, los valores van a reemplazar los parámetros `openTag` (por `<persName>`) y `closeTag` (por `</persName>`). Por tanto, si seleccionamos un fragmento de texto, por ejemplo un nombre propio como Simón Bolívar, se convertirá en:
 ```xml
 <persName>Simón Bolívar</persName>
 ```
@@ -360,7 +359,7 @@ releaseModifiers() {
 ```
 Llamándola al inicio de nuestras funciones, primero se espera a que se suelten físicamente las teclas `Ctrl` y `Alt` con `KeyWait`. En nuestro caso, hemos añadido la opción `"T1"` que fija un tiempo máximo de espera (en este particular, un segundo) para evitar que la función quede bloqueada si el sistema interpreta que alguna de ellas sigue pulsada. Luego, `Send "{Alt Up}{Ctrl Up}"` envía una instrucción mediante la cual se fuerza su liberación antes de simular otras combinaciones (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_).
 
-Por otro lado, uno de los inconvenientes de trabajar con el [portapapeles](https://es.wikipedia.org/wiki/Cortar,_copiar_y_pegar#Portapapeles) es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la línea: `savedClipboard := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido que seleccionamos en nuestro portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
+Por otro lado, uno de los inconvenientes de trabajar con el [portapapeles](https://es.wikipedia.org/wiki/Cortar,_copiar_y_pegar#Portapapeles) es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la línea: `savedClipboard := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido actual del portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
 
 `A_Clipboard := ""` deja el portapapeles vacío, asegurándonos así de que el contenido copiado coincide con el seleccionado y con `Send "^c"` simulamos la acción `Ctrl + C`, es decir, copiamos al portapapeles el texto que tenemos seleccionado.
 
@@ -416,7 +415,7 @@ Una vez copiado el texto seleccionado, restaura el portapapeles original, convie
 
 #### Insertar notas
 
-Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante `Alt + C`, la cual inserta un texto definido previamente en la ventana en la que estemos trabajando:
+Otra función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante `Alt + C`, la cual inserta un texto definido previamente en la ventana en la que estemos trabajando:
 ```ahk
 !c::insertNote("<note>[nota de edición]</note>")
 
@@ -620,7 +619,7 @@ Las dos primeras líneas declaran las variables que usará la interfaz: `scriptA
 
 Ten en cuenta que en la interfaz que hemos construido, las variables se declaran como globales al inicio del _script_. Aunque la palabra `global` es redundante en ese nivel, se mantiene para hacer explícito su alcance. En cambio, las declaraciones incluidas en `createGui()` y `toggleScript()` son necesarias, pues estas funciones asignan nuevos valores a las variables y, en AHK v2, las funciones trabajan con variables locales de manera predeterminada.
 
-Dentro de `createGui()` se crea la ventana con  `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que no pueda cambiar de tamaño (`-Resize`) y que pueda minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para quien lo utilice. Recuerda que para activar la interfaz de usuario solo tienes que ejecutar el _script_ como lo harías normalmente.
+Dentro de `createGui()` se crea la ventana con `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que no pueda cambiar de tamaño (`-Resize`) y que pueda minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para quien lo utilice. Recuerda que para activar la interfaz de usuario solo tienes que ejecutar el _script_ como lo harías normalmente.
 
 Con `testEdit` podemos añadir una caja de texto, que será donde podamos hacer las pruebas que consideremos necesarias antes de trabajar con el _script_ sobre nuestros documentos. En ella definimos el ancho (`w500`), el alto (`h180`) y permitimos el uso del tabulador (`WantTab`) en el campo de texto. Se añaden algunos ejemplos de uso, aunque puedes eliminarlos si así lo prefieres.
 
@@ -632,9 +631,7 @@ Te dejamos a continuación el _script_ resultante de la lección para que puedas
 
 ## Compilación a un ejecutable
 
-Ya hemos construido un _script_ que cubre buena parte del flujo de trabajo vinculado a la edición digital de textos. Sin embargo, si queremos utilizarlo en otros computadores o compartirlo con otras personas, sería conveniente convertirlo en un archivo ejecutable (`.exe`).
-
-Los archivos en formato `.ahk` pueden compartirse con otras personas, pero es necesario que la persona destinataria tenga AHK instalado. Sin embargo, si queremos utilizarlo en otros computadores sin depender de una instalación, puede ser conveniente convertirlo en un archivo ejecutable (`.exe`).
+Ya hemos construido un _script_ que cubre buena parte del flujo de trabajo vinculado a la edición digital de textos. Los archivos en formato `.ahk` pueden compartirse con otras personas, pero es necesario que la persona destinataria tenga AHK instalado. Sin embargo, si queremos utilizarlo en otros computadores sin depender de una instalación, puede ser conveniente convertirlo en un archivo ejecutable (`.exe`).
 
 AHK cuenta con un compilador que permite convertir tus _scripts_ `.ahk` a `.exe` llamado `Ahk2Exe`. Lo puedes instalar desde el propio AutoHotkey Dash entrando en la opción **Compile**. De esta manera, podrás ejecutar tu _script_ sin necesidad de instalarlo en el equipo de destino, ya que se compila como un programa portable. Por tanto, puedes llevarlo en una memoria USB o en un disco duro portátil.
 
@@ -671,7 +668,7 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 
 ## Notas
 
-[^1]: El texto de esta lección ha sido revisado con herramientas de IA generativa, en concreto, ChatGPT.
+[^1]: El texto de esta lección ha sido revisado con herramientas de IA generativa, en concreto, ChatGPT. Quiero agradecer a las revisoras Inmaculada Asensio y Alexandra Wingate sus valiosas aportaciones, así como a Nicolás Vaughan por su exhaustivo trabajo de revisión y su ayuda en la preparación de la lección. Finalmente, agradezco al equipo editorial de _The Programming Historian en español_ por el acompañamiento en el proceso, en particular, a Anisa Hawes y a Jennifer Isasi.
 [^2]: El tipo de letra no es la única barrera a la que nos enfrentamos desde la investigación: las digitalizaciones de los manuscritos no siempre son lo suficientemente fieles para poder aplicar estas herramientas que, además, en algunos casos, son de pago (o limitados a un determinado número de tokens al mes). Las alternativas de código abierto y gratuitas, por su parte, requieren de ciertos conocimientos técnicos superiores a los necesarios para utilizar la herramienta aquí propuesta.
 [^3]: Campos Leza, "Introducción a AutoHotkey".
 [^4]: Río Riande, "Humanidades Digitales"; Río Riande et al., "Minimal Computing 101".

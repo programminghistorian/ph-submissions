@@ -309,7 +309,7 @@ Imagina la siguiente situación: tienes un texto parcialmente editado con TEI, p
 
 ##### Lo que hace `tagger()`
 
-A diferencia de lo que hicimos en la sección anterior, aquí veremos la función en su totalidad y, posteriormente, la explicaremos en detalle:
+Conozcamos primero la función en su totalidad y, posteriormente, la explicaremos en detalle:
 ```ahk
 tagger(openTag, closeTag) {
     releaseModifiers()
@@ -487,7 +487,7 @@ En este caso, usamos la _hotstring_ `tei.xml` y, para evitar que se pegue incorr
 
 #### Transformar marcado sencillo en etiquetas TEI
 
-Esta lógica de trabajo se puede aplicar a casi cualquier etiqueta. Pensemos, por ejemplo, en entidades como nombres de persona, lugares o títulos de obras. Retomando nuestro ejemplo guía, en el que se emplean asteriscos simples, dobles y guiones bajos. Partiendo de este marcado sencillo, podemos transformarlo automáticamente con AHK mediante expresiones regulares presionando `Ctrl + Alt + X`:
+Esta lógica de trabajo se puede aplicar a casi cualquier etiqueta. Pensemos, por ejemplo, en entidades como nombres de persona, lugares o títulos de obras. Retomemos nuestro ejemplo guía, en el que se emplean asteriscos simples, dobles y guiones bajos. Partiendo de este marcado sencillo, podemos transformarlo automáticamente con AHK mediante expresiones regulares presionando `Ctrl + Alt + X`:
 ```ahk
 ^!x::convertSimpleMarkup()
 
@@ -546,7 +546,7 @@ Estas líneas de código permiten que, al seleccionar esos fragmentos de texto, 
 
 Aunque AHK siempre se ejecuta en la barra de tareas y desde allí puedes controlar el _script_, puede ser de utilidad contar con una interfaz gráfica. Empezaremos por una que llamaremos mínima, que funcionará como espacio de pruebas y control.
 
-El funcionamiento se basa en una lógica basada en eventos, es decir, las acciones que la persona usuaria realice sobre la interfaz desencadenarán funciones asociadas a estos eventos:
+El funcionamiento sigue una lógica basada en eventos, es decir, las acciones que la persona usuaria realice sobre la interfaz desencadenarán funciones asociadas a estos eventos:
 ```ahk
 global scriptActive := true
 global mainGui, testEdit, toggleButton
@@ -638,7 +638,7 @@ Los archivos en formato `.ahk` pueden compartirse con otras personas, pero es ne
 
 AHK cuenta con un compilador que permite convertir tus _scripts_ `.ahk` a `.exe` llamado `Ahk2Exe`. Lo puedes instalar desde el propio AutoHotkey Dash entrando en la opción **Compile**. De esta manera, podrás ejecutar tu _script_ sin necesidad de instalarlo en el equipo de destino, ya que se compila como un programa portable. Por tanto, puedes llevarlo en una memoria USB o en un disco duro portátil.
 
-Para hacerlo, abre el compilador `Ahk2Exe` (Figura 1):
+Para hacerlo, abre el compilador `Ahk2Exe`:
 
 {% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey-01.jpg" alt="Ventana del compilador Ahk2Exe con campos para seleccionar el archivo fuente, el archivo de destino, el icono personalizado y el botón de convertir a ejecutable" caption="Figura 2. Interfaz de usuario de Ahk2Exe." %}
 

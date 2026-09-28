@@ -54,11 +54,15 @@ En particular, para la sección dedicada a las funciones, conviene que tengas al
 
 El primer requisito es disponer de un computador con Windows. Aunque AHK es gratuito y de código abierto, su dependencia de este sistema operativo limita el alcance de la lección y excluye a quienes trabajan exclusivamente en otros sistemas. Sin embargo, hemos elegido esta herramienta porque permite automatizar tareas mediante _scripts_ breves, sin necesidad de instalar entornos de programación complejos ni disponer de conocimientos avanzados. De este modo, ofrece a una amplia audiencia de humanidades digitales una vía accesible de entrada a la automatización, ya que Windows es el [sistema operativo para computadores de escritorio y portátiles más utilizado en el mundo](https://en.wikipedia.org/wiki/Usage_share_of_operating_systems#Desktop_and_laptop_computers)[^5].
 
-También necesitarás instalar AHK y contar con un editor de texto plano (incluso podrías utilizar el Bloc de notas de Windows). No obstante, conviene trabajar con un editor que cuente con funcionalidades avanzadas, como [Notepad++](https://notepad-plus-plus.org/) o [Visual Studio Code](https://code.visualstudio.com/), ya que facilitará la lectura y edición del código de tu _script_.
+Además de AHK, necesitarás contar con un editor de texto plano (incluso podrías utilizar el Bloc de notas de Windows). No obstante, conviene trabajar con un editor que cuente con funcionalidades avanzadas, como [Notepad++](https://notepad-plus-plus.org/) o [Visual Studio Code](https://code.visualstudio.com/), ya que facilitará la lectura y edición del código de tu _script_.
 
 El primer paso, entonces, es acceder a la página oficial de [AutoHotkey](https://www.autohotkey.com/) e instalar el programa en tu computador. Los archivos creados para AHK tendrán la extensión `.ahk`. Utilizaremos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^6].
 
 Instalado AHK, puedes abrir AutoHotkey Dash, su interfaz de inicio. Allí verás varias opciones; sin embargo, por ahora solo nos interesa crear un nuevo _script_.
+
+<div class="alert alert-info" markdown="1">
+Algunos antivirus pueden identificar AHK o los _scripts_ que hayas creado con esta herramienta como potencialmente peligrosos. Por ello, obtén siempre el programa desde la web oficial y comprueba el origen de cualquier script de terceros antes de ejecutarlo.
+</div>
 
 ## Tu primer script: hotkeys y hotstrings
 
@@ -95,18 +99,18 @@ De igual manera, como ocurre en otros lenguajes de programación, AHK cuenta con
 | `Run` | Ejecuta un programa externo o abre una URL en el navegador predeterminado. |
 
 <div class="alert alert-info" markdown="1">
-Más adelante usaremos `SendText`, una variante de `Send` destinada a enviar texto literal y, por ello, más adecuada en algunos de los contextos que veremos.
+Más adelante usaremos `SendText`, una variante de `Send` destinada a enviar texto literal y, por ello, más adecuada en buena parte de los contextos que veremos porque evita que determinados caracteres se interpreten como teclas o pulsaciones especiales.
 </div>
 
 Asimismo, debes conocer una parte esencial de la sintaxis de AHK: los dobles dos puntos (`::`). En una _hotkey_, lo situado a la izquierda de los dobles dos puntos indica la combinación de teclas que debes pulsar. Lo situado a la derecha, o dentro del bloque delimitado por llaves (`{}`), indica la acción que se ejecutará.
 
 Dicho esto, creemos nuestra primera _hotkey_. Para ello, abre el archivo que acabas de crear y escribe la siguiente línea. Con `Ctrl + H`, escribiremos en la ventana activa nuestro “Hola, mundo”:
 ```ahk
-^h::SendText "Hola, mundo"
+^m::SendText "Hola, mundo"
 ```
 También puedes escribir la misma instrucción entre llaves, en forma de bloque:
 ```ahk
-^h::
+^m::
 {
     SendText "Hola, mundo"
 }
@@ -265,7 +269,7 @@ Como anteriormente hemos establecido `SetTitleMatchMode "RegEx"`, los nombres de
 
 `#HotIf` es una directiva dependiente de su posición en el _script_, lo que quiere decir que todas las _hotkeys_ y _hotstrings_ escritas después de `#HotIf isEditorActive()` estarán sometidas a esa condición. Para cerrar este bloque y recuperar el funcionamiento global, añadimos la directiva `#HotIf` sin ninguna condición.
 
-En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de la directiva `#HotIf` sin condición para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo. En el siguiente fragmento reproducimos nuevamente la Hotkey `!3` únicamente para mostrar su posición en el _script_:
+En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de la directiva `#HotIf` sin condición para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo. En el siguiente fragmento reproducimos nuevamente la Hotkey `!3` únicamente para mostrar su posición en el _script_, así como anticipamos `^!x`, que explicaremos más adelante:
 ```ahk
 ; |----------------------MARCADO SENCILLO A TEI-XML---------------------------|
 
@@ -643,7 +647,7 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 [^2]: El tipo de letra no es la única barrera a la que nos enfrentamos desde la investigación: las digitalizaciones de los manuscritos no siempre son lo suficientemente fieles para poder aplicar estas herramientas que, además, en algunos casos, son de pago (o limitados a un determinado número de tokens al mes). Las alternativas de código abierto y gratuitas, por su parte, requieren de ciertos conocimientos técnicos superiores a los necesarios para utilizar la herramienta aquí propuesta.
 [^3]: Campos Leza, "Introducción a AutoHotkey".
 [^4]: Río Riande, "Humanidades Digitales"; Río Riande et al., "Minimal Computing 101".
-[^5]: La compatibilidad está garantizada en computadores con sistema operativo Windows 7 o superior. Aunque no se aborda en esta lección, en Linux existe [AutoKey](https://github.com/autokey/autokey), una herramienta independiente de automatización de escritorio con funciones similares. Está diseñada para entornos X11 y presenta problemas de compatibilidad cuando se utiliza Wayland en lugar de Xorg. Algo similar ocurre con implementaciones como [AHK_X11](https://github.com/phil294/AHK_X11). Enlazamos a Wikipedia en inglés por la ausencia de una fuente equivalente en español.
+[^5]: Enlazamos a Wikipedia en inglés por la ausencia de una fuente equivalente en español. La compatibilidad está garantizada en computadores con sistema operativo Windows 7 o superior. Aunque no se aborda en esta lección, en Linux existe [AutoKey](https://github.com/autokey/autokey), una herramienta independiente de automatización de escritorio con funciones similares. Está diseñada para entornos X11 y presenta problemas de compatibilidad cuando se utiliza Wayland en lugar de Xorg. Algo similar ocurre con implementaciones como [AHK_X11](https://github.com/phil294/AHK_X11). En macOS, una alternativa multiplataforma es [Espanso](https://espanso.org/), aunque su funcionamiento difiere del de AHK y no reproduce todas las funciones utilizadas en esta lección. Agradezco a Alexandra Wingate por esta valiosa aportación.
 [^6]: Puedes acceder al listado detallado de cambios aquí: [https://www.autohotkey.com/docs/v2/v2-changes.htm](https://www.autohotkey.com/docs/v2/v2-changes.htm). También encontrarás el enlace a un convertidor de _scripts_ versión 1 a 2.
 [^7]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html). Traducción basada en la original y regularizada por el autor.
 [^8]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html). Traducción basada en la original y regularizada por el autor.

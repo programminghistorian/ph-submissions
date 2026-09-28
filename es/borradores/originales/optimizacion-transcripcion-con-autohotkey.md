@@ -64,7 +64,7 @@ Instalado AHK, puedes abrir AutoHotkey Dash, su interfaz de inicio. Allí verás
 Algunos antivirus pueden identificar AHK o los _scripts_ que hayas creado con esta herramienta como potencialmente peligrosos. Por ello, obtén siempre el programa desde la web oficial y comprueba el origen de cualquier script de terceros antes de ejecutarlo.
 </div>
 
-## Tu primer script: hotkeys y hotstrings
+## Tu primer script
 
 Buena parte de lo que encontrarás en esta sección se basa en la [explicación introductoria de tidbit](https://www.autohotkey.com/docs/v2/Tutorial.htm), aunque aquí ajustaremos sus indicaciones al objetivo de esta lección. Te recomendamos consultarla no solo para resolver dudas, sino también para ampliar tus conocimientos y aprovechar al máximo las posibilidades de AHK.
 
@@ -75,6 +75,8 @@ Lo primero que haremos será crear una carpeta en Windows, que llamaremos `ahk_s
 2. Desde la carpeta `ahk_scripts`: para ello, busca la opción **Nuevo** y, después, **AutoHotkey script** o similar. A continuación, asigna un nombre al archivo y añade al comienzo la línea `#Requires AutoHotkey v2.0`.
 
 Nuestro _script_ se llamará `tph_script.ahk`. A lo largo de la lección, incorporaremos los ejemplos a este mismo archivo, salvo aquellos que puedan generar conflicto, lo cual indicaremos cuando corresponda.
+
+### ¿Qué son las hotkeys y hotstrings?
 
 Una vez indicado que el archivo debe ejecutarse con AHK 2, aprenderás dos conceptos básicos para empezar a trabajar con este lenguaje: las _hotkeys_ y las _hotstrings_.
 
@@ -240,15 +242,13 @@ De este modo, puedes abrir y cerrar automáticamente una etiqueta en cualquier c
 
 También podríamos aprovechar una _hotstring_ para almacenar una plantilla básica para documentos TEI, como la propuesta por Nicolás Vaughan en [Introducción a la codificación de textos en TEI](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1), y crearla desde cero en pocos segundos. Para hacerlo correctamente, conviene que antes conozcas qué son y cómo trabajan las funciones en AHK.
 
-## Funciones
+### Funciones
 
 Como en otros lenguajes de programación, en AHK podemos crear funciones reutilizables. Una función permite agrupar un conjunto de instrucciones bajo un nombre para ejecutarlas más de una vez sin tener que reescribir todo el código.
 
 En esta lección utilizaremos funciones para automatizar tareas frecuentes de transcripción y marcado: envolver un fragmento o término seleccionado con etiquetas TEI, convertir texto a mayúsculas o minúsculas e insertar notas predefinidas. Empezaremos con un caso sencillo: envolver una selección con una etiqueta de apertura y otra de cierre.
 
-### Etiquetar texto seleccionado
-
-Imagina la siguiente situación: tienes un texto parcialmente editado con TEI, pero todavía no has etiquetado sus entidades y no es posible hacerlo de forma automática. Podríamos crear una _hotkey_ para cada etiqueta, pero sería poco práctico: todas ellas seguirían la misma lógica y, además, aumentaría el riesgo de errores. Para evitar esta repetición, crearemos nuestra propia función, llamada `tagger()`.
+#### Limitar el funcionamiento de los atajos
 
 Vamos a seguir trabajando con el _script_ que creamos en la sección anterior. Mantendremos `#Requires AutoHotkey v2.0` como primera línea del archivo y añadiremos algunas líneas generales al inicio del archivo:
 ```ahk
@@ -303,26 +303,13 @@ En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web e
 ```
 Como actividad exploratoria, te animamos a que muevas el `#HotIf` para ver cómo se comportan las _hotkeys_ y _hotstrings_ dentro o fuera de la condición.
 
-Vamos a definir las _hotkeys_ de los etiquetadores de `<persName>`, `<placeName>` y `<title>`:
-```ahk
-!n::tagger("<persName>", "</persName>")
-!p::tagger("<placeName>", "</placeName>")
-!t::tagger("<title>", "</title>")
-```
-Recuerda: lo que está a la izquierda de los dobles dos puntos (`::`) es nuestra combinación de teclas. A la derecha de estos, definimos la acción que deberá ejecutar AHK. En este caso, llamamos a la función `tagger()` con los valores `"<persName>"` y `"</persName>"`. El primero es la etiqueta de apertura y el segundo la de cierre.
+#### Crear un etiquetador con `tagger()`
 
-Antes de definir `tagger()`, conviene introducir una función esencial para evitar un problema frecuente en AHK: que las teclas `Ctrl` o `Alt` permanezcan "presionadas" después de ejecutar la _hotkey_. Esto lo evitaremos con `releaseModifiers()`:
-```ahk
-releaseModifiers() {
-    ; Libera los modificadores antes de enviar otras combinaciones
-    KeyWait "Alt", "T1"
-    KeyWait "Ctrl", "T1"
-    Send "{Alt Up}{Ctrl Up}"
-}
-```
-Llamándola al inicio de nuestras funciones, primero se espera a que se suelten físicamente las teclas `Ctrl` y `Alt` con `KeyWait`. En nuestro caso, hemos añadido la opción `"T1"` que fija un tiempo máximo de espera (en este particular, un segundo) para evitar que la función quede bloqueada si el sistema interpreta que alguna de ellas sigue pulsada. Luego, `Send "{Alt Up}{Ctrl Up}"` envía una instrucción mediante la cual se fuerza su liberación antes de simular otras combinaciones (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_).
+Imagina la siguiente situación: tienes un texto parcialmente editado con TEI, pero todavía no has etiquetado sus entidades y no es posible hacerlo de forma automática. Podríamos crear una _hotkey_ para cada etiqueta, pero sería poco práctico: todas ellas seguirían la misma lógica y, además, aumentaría el riesgo de errores. Para evitar esta repetición, crearemos nuestra propia función, llamada `tagger()`.
 
-Ahora sí, veamos `tagger()`. A diferencia de lo que hicimos en la sección anterior, aquí veremos la función en su totalidad y, posteriormente, la explicaremos en detalle:
+##### Lo que hace `tagger()`
+
+A diferencia de lo que hicimos en la sección anterior, aquí veremos la función en su totalidad y, posteriormente, la explicaremos en detalle:
 ```ahk
 tagger(openTag, closeTag) {
     releaseModifiers()
@@ -347,15 +334,33 @@ tagger(openTag, closeTag) {
     SendText(openTag . selectedText . closeTag)
 }
 ```
-Con esta función podemos seleccionar cualquier texto y escribir alrededor de él las etiquetas que queramos, dependiendo de la combinación de teclas que usemos. En el ejemplo, si pulsamos `Alt + N` llamaremos a la función con estas etiquetas:
+Con esta función podemos seleccionar cualquier texto y escribir alrededor de él las etiquetas que queramos, dependiendo de la combinación de teclas que usemos. Para ello,  `tagger()` recibe dos valores: el primero es la etiqueta de apertura y el segundo la de cierre.
+
+Vamos a definir las _hotkeys_ de los etiquetadores de `<persName>`, `<placeName>` y `<title>`, de manera que podamos llamar a la función con una combinación de teclas:
 ```ahk
-tagger("<persName>", "</persName>")
+!n::tagger("<persName>", "</persName>")
+!p::tagger("<placeName>", "</placeName>")
+!t::tagger("<title>", "</title>")
 ```
-Como puedes ver, van a reemplazar los parámetros `openTag` y `closeTag`. Por tanto, si seleccionamos un fragmento de texto, por ejemplo un nombre propio como Simón Bolívar, se convertiría en:
+Recuerda: lo que está a la izquierda de los dobles dos puntos (`::`) es nuestra combinación de teclas. A la derecha de estos, definimos la acción que deberá ejecutar AHK. 
+Como puedes ver, los valores van a reemplazar los parámetros `openTag` (por `<persName>`) y `closeTag` (por `</persName>`). Por tanto, si seleccionamos un fragmento de texto, por ejemplo un nombre propio como Simón Bolívar, se convertirá en:
 ```xml
 <persName>Simón Bolívar</persName>
 ```
-Uno de los inconvenientes de trabajar con el [portapapeles](https://es.wikipedia.org/wiki/Cortar,_copiar_y_pegar#Portapapeles) es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la línea: `savedClipboard := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido que seleccionamos en nuestro portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
+##### Cómo funciona `tagger()`
+
+Ahora bien, ¿qué hace `releaseModifiers()` en nuestro código? Se trata de una función esencial para evitar un problema frecuente en AHK: que las teclas `Ctrl` o `Alt` permanezcan "presionadas" después de ejecutar la _hotkey_. Esto lo evitaremos con `releaseModifiers()`:
+```ahk
+releaseModifiers() {
+    ; Libera los modificadores antes de enviar otras combinaciones
+    KeyWait "Alt", "T1"
+    KeyWait "Ctrl", "T1"
+    Send "{Alt Up}{Ctrl Up}"
+}
+```
+Llamándola al inicio de nuestras funciones, primero se espera a que se suelten físicamente las teclas `Ctrl` y `Alt` con `KeyWait`. En nuestro caso, hemos añadido la opción `"T1"` que fija un tiempo máximo de espera (en este particular, un segundo) para evitar que la función quede bloqueada si el sistema interpreta que alguna de ellas sigue pulsada. Luego, `Send "{Alt Up}{Ctrl Up}"` envía una instrucción mediante la cual se fuerza su liberación antes de simular otras combinaciones (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_).
+
+Por otro lado, uno de los inconvenientes de trabajar con el [portapapeles](https://es.wikipedia.org/wiki/Cortar,_copiar_y_pegar#Portapapeles) es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la línea: `savedClipboard := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido que seleccionamos en nuestro portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
 
 `A_Clipboard := ""` deja el portapapeles vacío, asegurándonos así de que el contenido copiado coincide con el seleccionado y con `Send "^c"` simulamos la acción `Ctrl + C`, es decir, copiamos al portapapeles el texto que tenemos seleccionado.
 
@@ -369,7 +374,7 @@ Con esta acción nos aseguramos de que AHK componga la siguiente estructura: eti
 
 Ahora, crea tus propias _hotkeys_ y añade las funciones `tagger()` y `releaseModifiers()` a tu _script_.
 
-### Convertir texto a mayúsculas y minúsculas
+#### Convertir texto a mayúsculas y minúsculas
 
 Otras dos funciones útiles durante el proceso son las de conversión a mayúsculas y minúsculas. Aunque los procesadores de texto ya las incluyen, a veces resulta más cómodo seleccionar el texto y pulsar una combinación de teclas. Antes de definir estas funciones, asignaremos una combinación de teclas a cada una:
 
@@ -409,7 +414,7 @@ En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasán
 
 Una vez copiado el texto seleccionado, restaura el portapapeles original, convierte a mayúsculas o minúsculas y, finalmente, introduce el resultado con `SendText()`. Al inicio, con `releaseModifiers()`, nos aseguramos de liberar preventivamente las teclas `Alt` y `Ctrl`. En el descargable podrás llamar a estas funciones con `Alt + U` (convertir a mayúsculas) y `Alt + L` (convertir a minúsculas).
 
-### Insertar contenido predefinido
+#### Insertar contenido predefinido
 
 Una última función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante `Alt + C`, la cual inserta un texto definido previamente en la ventana en la que estemos trabajando:
 ```ahk
@@ -478,7 +483,7 @@ Como podrás observar, se trata de una misma lógica empleada en múltiples ocas
 ```
 En este caso, usamos la _hotstring_ `tei.xml` y, para evitar que se pegue incorrectamente, la almacenamos en una variable `template` porque, de otra forma, perdería el formato original. Además, hemos añadido dos pausas de seguridad: una para asegurarnos de que el portapapeles reciba toda la plantilla `ClipWait(1)` y otra para cerciorarnos de que la pueda pegar completamente antes de restaurar el portapapeles `Sleep 100`, ya que es un fragmento relativamente largo.
 
-### Transformar marcado sencillo en etiquetas TEI
+#### Transformar marcado sencillo en etiquetas TEI
 
 Esta lógica de trabajo se puede aplicar a casi cualquier etiqueta. Pensemos, por ejemplo, en entidades como nombres de persona, lugares o títulos de obras. Retomando nuestro ejemplo guía, en el que se emplean asteriscos simples, dobles y guiones bajos. Partiendo de este marcado sencillo, podemos transformarlo automáticamente con AHK mediante expresiones regulares presionando `Ctrl + Alt + X`:
 ```ahk
@@ -535,7 +540,7 @@ También ten en cuenta que `SendText()` inserta el resultado simulando la escrit
 
 Estas líneas de código permiten que, al seleccionar esos fragmentos de texto, podamos convertirlos automáticamente a etiquetas TEI.
 
-### Opcional: crea una interfaz
+#### Opcional: crea una interfaz
 
 Aunque AHK siempre se ejecuta en la barra de tareas y desde allí puedes controlar el _script_, puede ser de utilidad contar con una interfaz gráfica. Empezaremos por una que llamaremos mínima, que funcionará como espacio de pruebas y control.
 

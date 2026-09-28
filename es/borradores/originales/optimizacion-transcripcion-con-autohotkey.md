@@ -113,6 +113,12 @@ También puedes escribir la misma instrucción entre llaves, en forma de bloque:
 ```
 Guarda y ejecuta el archivo. Después, abre cualquier campo de texto y presiona `Ctrl + H`: ¡es tu primera _hotkey_ en funcionamiento! Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas.
 
+A partir de este punto, utilizaremos como ejemplo guía un fragmento de texto propuesto por Nicolás Vaughan en la parte 1 de su lección _Introducción a TEI_:
+
+> Hay muchas formas de codificar un texto. Por ejemplo, podemos encerrar entre asteriscos simples los nombres propios de personas: \*Simón Bolívar\*, \*Soledad Acosta\*, etc. Y entre asteriscos dobles los de lugares: \*\*Bogotá\*\*, \*\*Framingham\*\*, etc. Podemos también usar guiones bajos para indicar los nombres de obras y de libros: \_La divina comedia\_, \_Cien años de soledad\_, etc. Estos signos sirven para etiquetar o marcar el texto que encierran, para así identificar en el texto un determinado contenido. Como es fácil de imaginar, las posibilidades de codificación son casi infinitas.
+
+A medida que avancemos, tomaremos fragmentos de este texto para ver cómo AHK nos puede ayudar en el proceso de marcado y automatización.
+
 Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición TEI: introduciremos los elementos `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 definen la primera de ellas así:
 
 > `<gap>` (gap) indica un punto donde algún material ha sido omitido en una transcripción, bien por criterios de edición descritos en el encabezado TEI, bien como parte de una práctica habitual, o bien porque el material es ilegible o incomprensible[^7].
@@ -332,9 +338,9 @@ Con esta función podemos seleccionar cualquier texto y escribir alrededor de é
 ```ahk
 tagger("<persName>", "</persName>")
 ```
-Como puedes ver, van a reemplazar los parámetros `openTag` y `closeTag`. Por tanto, si seleccionamos un fragmento de texto, por ejemplo un nombre como Miguel, se convertiría en:
+Como puedes ver, van a reemplazar los parámetros `openTag` y `closeTag`. Por tanto, si seleccionamos un fragmento de texto, por ejemplo un nombre propio como Simón Bolívar, se convertiría en:
 ```xml
-<persName>Miguel</persName>
+<persName>Simón Bolívar</persName>
 ```
 Uno de los inconvenientes de trabajar con el [portapapeles](https://es.wikipedia.org/wiki/Cortar,_copiar_y_pegar#Portapapeles) es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la línea: `savedClipboard := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido que seleccionamos en nuestro portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
 

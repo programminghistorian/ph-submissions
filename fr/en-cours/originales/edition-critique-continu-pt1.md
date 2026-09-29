@@ -16,7 +16,7 @@ difficulty: 3
 activity: transforming
 topics: [metadata, website, data-management]
 abstract: Cette leçon montre comment mettre en place une édition critique &laquo;&nbsp;en continu&nbsp;&raquo; d’un corpus TEI&nbsp; définir un ODD, générer un schéma RELAX NG, compléter la validation avec Schematron et produire des sorties (texte/HTML/Markdown) via XSLT 2.0. L’exemple s’appuie sur la correspondance de Filippo Cavriana.
-avatar_alt: Visual description of lesson image
+avatar_alt: Illustration d'un motif textile tissé composé de bandes verticales foncées et de bandes horizontales plus claires.
 doi: XX.XXXXX/phen0000
 ---
 

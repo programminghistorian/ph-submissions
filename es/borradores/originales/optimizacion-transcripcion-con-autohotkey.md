@@ -543,7 +543,7 @@ Estas líneas de código permiten que, al seleccionar esos fragmentos de texto, 
 
 #### Opcional: crea una interfaz
 
-Aunque AHK siempre se ejecuta en la barra de tareas y desde allí puedes controlar el _script_, puede ser de utilidad contar con una interfaz gráfica. Empezaremos por una que llamaremos mínima, que funcionará como espacio de pruebas y control.
+Aunque los _scripts_ siempre muestran por defecto un icono en el área de notificación desde donde puedes controlarlos, puede ser de utilidad contar con una interfaz gráfica. Empezaremos por una que llamaremos mínima, que aprovecharemos como espacio de pruebas y control.
 
 El funcionamiento sigue una lógica basada en eventos, es decir, las acciones que la persona usuaria realice sobre la interfaz desencadenarán funciones asociadas a estos eventos:
 ```ahk
@@ -669,7 +669,7 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 ## Notas
 
 [^1]: El texto de esta lección ha sido revisado con herramientas de IA generativa, en concreto, ChatGPT. Quiero agradecer a las revisoras Inmaculada Asensio y Alexandra Wingate sus valiosas aportaciones, así como a Nicolás Vaughan por su exhaustivo trabajo de revisión y su ayuda en la preparación de la lección. Finalmente, agradezco al equipo editorial de _The Programming Historian en español_ por el acompañamiento en el proceso y, en particular, a Anisa Hawes y a Jennifer Isasi.
-[^2]: El tipo de letra no es la única barrera a la que nos enfrentamos desde la investigación: las digitalizaciones de los manuscritos no siempre son lo suficientemente fieles para poder aplicar estas herramientas que, además, en algunos casos, son de pago o están sujetas a limites de uso. Las alternativas de código abierto y gratuitas, por su parte, requieren de ciertos conocimientos técnicos superiores a los necesarios para utilizar la herramienta aquí propuesta.
+[^2]: El tipo de letra no es la única barrera a la que nos enfrentamos desde la investigación: las digitalizaciones de los manuscritos no siempre son lo suficientemente fieles para poder aplicar estas herramientas que, además, en algunos casos, son de pago o están sujetas a límites de uso. Las alternativas de código abierto y gratuitas, por su parte, requieren de ciertos conocimientos técnicos superiores a los necesarios para utilizar la herramienta aquí propuesta.
 [^3]: Campos Leza, "Introducción a AutoHotkey".
 [^4]: Río Riande, "Humanidades Digitales"; Río Riande et al., "Minimal Computing 101".
 [^5]: Enlazamos a Wikipedia en inglés por la ausencia de una fuente equivalente en español. La compatibilidad está garantizada en computadores con sistema operativo Windows 7 o superior. Aunque no se aborda en esta lección, en Linux existe [AutoKey](https://github.com/autokey/autokey), una herramienta independiente de automatización de escritorio con funciones similares. Está diseñada para entornos X11 y presenta problemas de compatibilidad cuando se utiliza Wayland en lugar de Xorg. Algo similar ocurre con implementaciones como [AHK_X11](https://github.com/phil294/AHK_X11). En macOS, una alternativa multiplataforma es [Espanso](https://espanso.org/), aunque su funcionamiento difiere del de AHK y no reproduce todas las funciones utilizadas en esta lección. Agradezco a Alexandra Wingate por esta valiosa aportación.

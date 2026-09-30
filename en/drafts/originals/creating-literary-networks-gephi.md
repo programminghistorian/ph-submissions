@@ -13,7 +13,7 @@ reviewers:
 editors:
 - Laura Alice Chapot
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/695
-difficulty: 
+difficulty: intermediate
 activity: 
 topics: 
 abstract: Short abstract of this lesson
@@ -23,9 +23,9 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-Centred on a case study of flora and fauna references in a selection of William Shakespeare's comedies and tragedies, this intermediate lesson aims to deliver a comprehensive workflow for constructing, analysing, and interpreting thematic networks using Gephi. Readers will learn to build two-mode (affiliation) networks connecting characters to plant and animal categories, process and measure these networks in Gephi, and evaluate the resulting visualisations as analytical evidence showing how natural imagery is distributed across characters and dramatic genres. While grounded in Shakespearean drama, the methodology, data preparation procedures, and analytical techniques outlined here provide an adaptable framework suitable for a wide range of literary corpora, textual genres, and research questions. This lesson is especially valuable if your research examines how a theme, motif, or reference category spreads across characters, texts, or genres rather than mapping direct interpersonal relationships between characters.
+This is an intermediate level lesson which introduces [network analysis](https://en.wikipedia.org/wiki/Network_science) for literary texts. Unlike the more commonly studied [social network analysis](https://en.wikipedia.org/wiki/Social_network_analysis), we focus on thematic network analysis, guiding you through the process of building structured data from any literary text.Centred on a case study of flora and fauna references in a selection of William Shakespeare's comedies and tragedies, this lesson aims to deliver a comprehensive workflow for constructing, analysing, and interpreting thematic networks using Gephi.Readers will learn to build [two-mode (affiliation) networks](#two-mode-networks-for-thematic-analysis) connecting characters to plant and animal categories, process and measure these networks in Gephi, and evaluate the resulting visualisations as analytical evidence showing how natural imagery is distributed across characters and dramatic genres.While grounded in Shakespearean drama, the methodology, data preparation procedures, and analytical techniques outlined here provide an adaptable framework suitable for a wide range of literary corpora, textual genres, and research questions. This lesson is especially valuable if your research examines how a theme, motif, or reference category spreads across characters, texts, or genres rather than mapping direct interpersonal relationships between characters.
 
-This lesson assumes basic familiarity with Gephi and with introductory network analysis concepts. Readers new to either will find suggested starting points under [Prerequisites](#prerequisites). The lesson concentrates on three methodological questions that arise when building a thematic network: how to define and extract references to a theme from literary sources, how to structure the data so that it represents two different kinds of node, and which network measures suit this kind of network, and why.
+This lesson assumes basic familiarity with Gephi and with introductory network analysis concepts. Readers new to either will find suggested starting points under [Prerequisites](#prerequisites). It also complements David Merino Recalde's two-part *Programming Historian en español* lesson on character networks, as explained [below](#relationship-to-other-programming-historian-lessons). This lesson focuses on three methodological questions that arise when building a thematic network: how to define and extract references to a theme from literary sources, how to structure the data so that it represents two different kinds of nodes, and which network metrics suit this kind of network, and why.
 
 ## Lesson Objectives
 

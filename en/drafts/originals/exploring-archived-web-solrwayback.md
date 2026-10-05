@@ -32,35 +32,33 @@ By the end of this lesson, you will be able to:
 
 Sources from web archives are important for understanding the 1990s and the following decades. These sources are, however, hard to access. This lesson introduces you to the software SolrWayback, which makes discovery in a web archive collection easier and more manageable. Imagine that you are researching a specific topic and want to incorporate sources from a web archive. SolrWayback provides you with search capabilities that you do not find in any other web archiving software. Searching a collection is the first step towards finding relevant sources.
 
-## Technical Prerequisites
+### Technical Prerequisites
 
-<div class="alert alert-warning">
-  This lesson requires at least 4GB of RAM and approximately 2GB of free disk space. 
-  The lesson also requires a valid Java installation of at least version 11. Java 17 is preferred. 
-  Mac users can install Java 17 using their preferred method; <a href='https://formulae.brew.sh/formula/openjdk@17'>Homebrew</a> is recommended, as it provides a simple way of installing Java on macOS. Windows users, please follow the installation guide provided by <a href='https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html'>Oracle</a>. 
-  The SolrWayback bundle used in this lesson does not run on Java versions older than 11.
+This lesson requires at least 4GB of RAM and approximately 2GB of free disk space.
 
-  The bundle also requires JAVA_HOME, an environment variable that tells applications where Java is installed, to be set correctly. On most Mac installations this happens automatically, while Windows users need to set it manually, which can be done by following this <a href='https://www.geeksforgeeks.org/java/setting-environment-java/'>guide</a>.
+The lesson also requires a valid Java installation of at least version 11. Java 17 is preferred. Mac users can install Java 17 using their preferred method; [Homebrew](https://formulae.brew.sh/formula/openjdk@17) is recommended, as it provides a simple way of installing Java on macOS. Windows users, please follow the installation guide provided by [Oracle](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html). The SolrWayback bundle used in this lesson does not run on Java versions older than 11.
 
-  Administrative access is required to run the startup commands on Windows.
-  Finally, while beginner-friendly guidance will be provided, a basic familiarity with the command line will be helpful to follow this lesson. You can refer to the Programming Historian lessons on the <a href="https://programminghistorian.org/en/lessons/intro-to-bash">Bash Command Line</a> for Mac and Linux users and <a href="https://programminghistorian.org/en/lessons/intro-to-powershell">PowerShell</a> for Windows users.
-</div>
+The bundle also requires JAVA_HOME, an environment variable that tells applications where Java is installed, to be set correctly. On most Mac installations this happens automatically, while Windows users need to set it manually, which can be done by following this [guide](https://www.geeksforgeeks.org/java/setting-environment-java/).
 
-## Lesson Structure
+Administrative access is required to run the startup commands on Windows.
+
+Finally, while beginner-friendly guidance will be provided, a basic familiarity with the command line will be helpful to follow this lesson. You can refer to the Programming Historian lessons on the [Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash) for Mac and Linux users and [PowerShell](https://programminghistorian.org/en/lessons/intro-to-powershell) for Windows users.
+
+### Lesson Structure
 
 The lesson is divided into six sections: 
-1. Introduction to web archives and SolrWayback
+1. Web archives and SolrWayback
 2. Downloading the software
 3. Starting up the software
 4. Acquiring WARC files
 5. Indexing
 6. Querying and Visualising
 
-The archived web presents enormous potential as a source of research data. But accessing and using these sources can be challenging. The introduction to this lesson presents some of the existing challenges of working with the archived web. It then suggests how a tool such as SolrWayback can aid historians and other scholars from the humanities when working with the archived web as part of their source material. 
+The archived web presents enormous potential as a source of research data. But accessing and using these sources can be challenging. The first section of this lesson presents some of the existing challenges of working with the archived web. It then suggests how a tool such as SolrWayback can aid historians and other scholars from the humanities when working with the archived web as part of their source material. 
 
 The next four sections cover installing the software, launching it, and loading data into it. Finally, the lesson explores how the archived web can be investigated using SolrWayback. The final section also explores the built-in visualisation tools of the software. The lesson uses archived websites from the End of Term Web Archive, which preserves U.S. Government websites at the end of presidential administrations. The lesson uses only a subset of the full collection as its main example dataset, because the complete collection contains more than 15 TB of data. Throughout this lesson, you will engage with this small section of the archive through research questions related to U.S. politicians’ views on immigration following the election in 2008.  
 
-## Introduction
+## Web Archives and SolrWayback
 
 The World Wide Web has existed for more than 30 years now, and during this period it has radically transformed how people communicate and interact with each other.
 
@@ -70,7 +68,7 @@ When institutions such as the Internet Archive (IA), the Royal Danish Library (R
 
 <a href='https://doi.org/10.5281/zenodo.18314399'>SolrWayback</a> is an open-source search and discovery tool developed primarily by the Royal Danish Library and designed to make archived web content searchable and viewable in a single solution. Other tools for playback do exist, e.g., [pywb](https://github.com/webrecorder/pywb). However, no other tool currently provides the search and discovery possibilities that SolrWayback does. Through this software, you can search for individual words and phrases across your collection. It can also be used as a tool to narrow down which parts of a collection you are interested in as part of your research. Hence, the software provides multiple ways of exporting subsets of the data for further analysis.[^2]
 
-## Download
+## Software Download
 To get started with SolrWayback, first download the software from the SolrWayback GitHub page. The software can be installed in multiple ways; however, in this lesson you will install it through the bundle release version, which is the most common way. To get started, navigate to the [release page](https://github.com/netarchivesuite/solrwayback/releases) of SolrWayback and download version 5.4.3 (this was the newest version when this lesson was written).
 
 Once you've downloaded the correct version, please unzip the file where you want it on your computer. The unzipped directory will have the name: `solrwayback_package_5.4.3`. Inside the directory, a folder named `properties` exists. Please copy the two files from inside this folder to your home directory. On a Mac this directory is `/Users/yourUsername`, on Linux it is `/home/yourUsername`, and on Windows it is located at `C:\Users\yourUsername\`. You are now ready to start SolrWayback. The next sections of this lesson are operating-system dependent, so they will contain separate sections for Linux/Mac and Windows, respectively.
@@ -273,9 +271,11 @@ The `/web/20090514061634` part of the URL would also be present if you had acces
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-07.png" alt="Archived webpage playback in SolrWayback with an arrow indicating the toolbar toggle icon in the top left corner" caption="Figure 7: Toolbar location" %}
 
+The toolbar provides a human-readable version of the harvest date and a quick overview of how much material is available on the given page. The time of collection can either be extracted directly from the URL or read in the toolbar.
+
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-08.png" alt="Expanded SolrWayback playback toolbar showing the human-readable harvest date and a summary count of available page resources" caption="Figure 8: Toolbar content" %}
 
-The toolbar provides a human-readable version of the harvest date and a quick overview of how much material is available on the given page. The time of collection can either be extracted directly from the URL or read in the toolbar. Remember that this timestamp changes when you click a link, because each source was collected individually. This resembles traditional library frameworks, just as the searching capabilities above did.[^8]
+Remember that this timestamp changes when you click a link, because each source was collected individually. This resembles traditional library frameworks, just as the searching capabilities above did.[^8]
 
 When working with vast amounts of sources, which is often the case when working with the archived web, it is important to document your methodology and how you found the sources in the first place. This is true for all types of research, but researchers often forget to describe this important methodological part of doing research with born digital or reborn digital sources.[^9] 
 

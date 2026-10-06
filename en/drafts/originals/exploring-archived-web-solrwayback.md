@@ -262,7 +262,7 @@ Imagine that you are interested in the website of Congressman Gus Bilirakis as h
 
 Let's use the Bilirakis website for an experiment of what would happen. Say you were interested in the congressman's view on education as you might have developed a theory of a connection between views on immigration and education for elected congressmen. You would then probably be interested in following the link to his webpage on education. 
 
-When you click this link you would be presented with a version of the webpage located at [his educational webpage](http://bilirakis.house.gov/index.php?option=com_content&task=view&id=187&Itemid=128). You might also have unknowingly shifted time periods. You started from a page archived on 14 May 2009, but the link you followed may point to a version from an entirely different year. Without knowing, you might have time travelled when you clicked the link. The link you clicked on might not have been collected on 14 May 2009. It might not have been collected in 2009 at all. 
+When you click this link you would be presented with a version of the webpage located at his educational webpage. You might also have unknowingly shifted time periods. You started from a page archived on 14 May 2009, but the link you followed may point to a version from an entirely different year. Without knowing, you might have time travelled when you clicked the link. The link you clicked on might not have been collected on 14 May 2009. It might not have been collected in 2009 at all. 
 
 If this is the case and the archive has a version of the requested page from 2008, 2010 or 2015, the playback engine in the software would show the version of the site that is closest in time. It would not tell you that your temporal context has shifted. 
 

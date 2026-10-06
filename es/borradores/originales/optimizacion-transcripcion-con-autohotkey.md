@@ -658,7 +658,7 @@ Nuestra recomendación final es que programes y pruebes de forma constante. De e
 ## Referencias
 
 - Campos Leza, Fernando. "Introducción a AutoHotkey para traductores." _La linterna del traductor_, 4 de abril de 2017. [https://lalinternadeltraductor.org/n14/autohotkey.html](https://lalinternadeltraductor.org/n14/autohotkey.html).
-- Gray, Steve, Chris Mallett, AutoIt Team, et al. _AutoHotkey_. Versión 2.0. 2024. GNU GPL v2. [https://github.com/AutoHotkey/AutoHotkey](https://github.com/AutoHotkey/AutoHotkey).
+- Gray, Steve, Chris Mallett, AutoIt Team, at al. AutoHotkey (versión 2.0.29). GNU General Public License. 2026. [https://github.com/AutoHotkey/AutoHotkey](https://github.com/AutoHotkey/AutoHotkey).
 - Gray, Steve, Chris Mallett, AutoIt Team, et al. "Hotkeys - Definition & Usage AutoHotkey v2." AutoHotkey v2 Documentation. Consultado el 6 de octubre de 2026. [https://www.autohotkey.com/docs/v2/Hotkeys.htm](https://www.autohotkey.com/docs/v2/Hotkeys.htm).
 - Instituto de Investigaciones Filológicas, Universidad Nacional Autónoma de México. "Diccionario de abreviaturas novohispanas Ak’ab Ts’ib." Última actualización el 2 de septiembre de 2024. [https://www.iifilologicas.unam.mx/dicabenovo/](https://www.iifilologicas.unam.mx/dicabenovo/).
 - Río Riande, Gimena del. "Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto." _Publicaciones de la Asociación Argentina de Humanidades Digitales_ 3 (2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).

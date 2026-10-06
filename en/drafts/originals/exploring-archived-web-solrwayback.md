@@ -115,11 +115,12 @@ The collection preserves U.S. Government websites at the end of presidential adm
 
 | Dataset                | Compressed Size of all WARCs |
 | ---------------------- | ---------------------------- |
+| EOT-2004               | 6.42 TB
 | EOT-2008               | 15.32 TB                     |
 | EOT-2012               | 41.42 TB                     |
-| EOT-2016               | 139.3 TB                     |
+| EOT-2016               | 284 TB                       |
 | EOT-2020               | 266.04 TB                    |
-| EOT-2024 (In progress) | 1492.8 TB                    |
+| EOT-2024               | 2.29 PB                      |
 
 Extracting WARC files from this archive is challenging — their documentation is inherently technical. In this lesson, you will download six WARC files from the EOT-2008 collection, and these files will act as your collection. 
 

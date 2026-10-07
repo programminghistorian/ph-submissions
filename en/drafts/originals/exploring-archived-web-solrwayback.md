@@ -102,7 +102,7 @@ To start the search engine in the application, you need to navigate back to the 
 
 There are also commands for closing both parts of the system: `shutdown.bat` and `solr.cmd stop` when you are located in their individual directories. If you restart your computer or run any of the shutdown commands, you will need to run the start up commands again.
 
-Now you have SolrWayback running. To verify that it runs, you can access the application in your web browser by entering the URL: http://localhost:8080/solrwayback/. When accessing the application by URL, it is important to remember to type in the full address. Here you should see the front page of the application, which looks like this:
+Now you have SolrWayback running. To verify that it runs, you can access the application in your web browser by entering the URL: `http://localhost:8080/solrwayback/`. When accessing the application by URL, it is important to remember to type in the full address. Here you should see the front page of the application, which looks like this:
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-01.png" alt="Screenshot of the SolrWayback front page showing the search bar, toggle buttons, and empty results area" caption="Figure 1: SolrWayback front page" %}
 
@@ -166,7 +166,7 @@ This indexes all documents in the `warcs1` folder. Your terminal will display ou
   Indexing is the heaviest part of setting up the application and can take up to 10 to 15 minutes on consumer hardware. When the indexing has finished, your terminal will return to an interactive state, represented by a prompt such as <code>$</code>, and now you should be able to see the indexed documents in the SolrWayback web interface.
 </div>
 
-To confirm that the documents have been indexed, you can go to the application at the URL: http://localhost:8080/solrwayback/ and type `*:*` in the search box. This is a wildcard query that fetches all documents available in the application. This should return 6,025 results.
+To confirm that the documents have been indexed, you can go to the application at the URL: `http://localhost:8080/solrwayback/` and type `*:*` in the search box. This is a wildcard query that fetches all documents available in the application. This should return 6,025 results.
 
 You have now indexed your WARC files into SolrWayback and can begin exploring their contents. To add more WARC files after finishing this lesson, place them in the `warcs1` or `warcs2` folder and re-run the indexing command.
 

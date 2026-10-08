@@ -25,12 +25,12 @@ doi: XX.XXXXX/phen0000
 
 
 ## Lesson Overview
+Sources from web archives are important for understanding the 1990s and the following decades. These sources are, however, hard to access. This lesson introduces you to the software SolrWayback, which makes discovery in a web archive collection easier and more manageable. Imagine that you are researching a specific topic and want to incorporate sources from a web archive. SolrWayback provides you with search capabilities that you do not find in any other web archiving software. Searching a collection is the first step towards finding relevant sources.
+
 By the end of this lesson, you will be able to:
 * Set up SolrWayback on your local computer
 * Load sources from the archived web into your SolrWayback instance
 * Query, explore, and visualise archived web material using SolrWayback’s search and visualisation tools
-
-Sources from web archives are important for understanding the 1990s and the following decades. These sources are, however, hard to access. This lesson introduces you to the software SolrWayback, which makes discovery in a web archive collection easier and more manageable. Imagine that you are researching a specific topic and want to incorporate sources from a web archive. SolrWayback provides you with search capabilities that you do not find in any other web archiving software. Searching a collection is the first step towards finding relevant sources.
 
 ### Technical Prerequisites
 
@@ -71,14 +71,14 @@ When institutions such as the Internet Archive (IA), the Royal Danish Library (R
 ## Software Download
 To get started with SolrWayback, first download the software from the SolrWayback GitHub page. The software can be installed in multiple ways; however, in this lesson you will install it through the bundle release version, which is the most common way. To get started, navigate to the [release page](https://github.com/netarchivesuite/solrwayback/releases) of SolrWayback and download version 5.5.0 (this was the newest version when this lesson was written).
 
-Once you've downloaded the correct version, please unzip the file where you want it on your computer. The unzipped directory will have the name: `solrwayback_package_5.4.3`. Inside the directory, a folder named `properties` exists. Please copy the two files from inside this folder to your home directory. On a Mac this directory is `/Users/yourUsername`, on Linux it is `/home/yourUsername`, and on Windows it is located at `C:\Users\yourUsername\`. You are now ready to start SolrWayback. The next sections of this lesson are operating-system dependent, so they will contain separate sections for Linux/Mac and Windows, respectively.
+Once you've downloaded the correct version, please unzip the file where you want it on your computer. The unzipped directory will have the name: `solrwayback_package_5.5.0`. Inside the directory, a folder named `properties` exists. Please copy the two files from inside this folder to your home directory. On a Mac this directory is `/Users/yourUsername`, on Linux it is `/home/yourUsername`, and on Windows it is located at `C:\Users\yourUsername\`. You are now ready to start SolrWayback. The next sections of this lesson are operating-system dependent, so they will contain separate sections for Linux/Mac and Windows, respectively.
 
 ## Start Up
 With the bundle downloaded and the properties files copied to your home directory, you are ready to start the software. This is done through a terminal by issuing two commands. Please follow the section below according to your operating system. 
 
 The two commands start the two parts of the application. The first command starts the web server that is included in the application. The second command starts the search engine in the application.
 
-First, you need to navigate to the SolrWayback bundle that you downloaded in the previous step in your command line interface (CLI). On a Mac, locate `solrwayback_package_5.4.3` in Finder, right-click the folder, and select *New Terminal at Folder* from the menu. On Windows 11, the same behaviour can be achieved by opening the `solrwayback_package_5.4.3` directory in File Explorer and then right clicking somewhere in the directory. Here, you should see an *Open in Terminal* option. 
+First, you need to navigate to the SolrWayback bundle that you downloaded in the previous step in your command line interface (CLI). On a Mac, locate `solrwayback_package_5.5.0` in Finder, right-click the folder, and select *New Terminal at Folder* from the menu. On Windows 11, the same behaviour can be achieved by opening the `solrwayback_package_5.5.0` directory in File Explorer and then right clicking somewhere in the directory. Here, you should see an *Open in Terminal* option. 
 
 With a CLI opened and located in the correct location, you are now ready to start the application. The commands vary a little depending on your operating system. Please follow the part applicable to your system below. 
 
@@ -109,7 +109,7 @@ Now you have SolrWayback running. To verify that it runs, you can access the app
 You have now started the application successfully and are ready to acquire the WARC files used in this lesson from the End of Term Web Archive and make them searchable in the system.
 
 ## Acquire WARC Files
-During this lesson, you will work with WARC files from the End of Term Web Archive (EOTWA). This web archive collection originates from a collaborative initiative between the Library of Congress, the Internet Archive, the University of North Texas, the California Digital Library, and the US Government Printing Office.
+During this lesson, you will work with WARC files from the End of Term Web Archive (EOTWA). This web archive collection originates from a collaborative initiative between the Library of Congress, the Internet Archive, the University of North Texas, the California Digital Library, and the U.S. Government Printing Office.
 
 The collection preserves U.S. Government websites at the end of presidential administrations.[^18] The EOTWA has done this systematically since 2008. The collections in their archive have grown exponentially between elections.
 
@@ -142,17 +142,17 @@ For now, save these files in their own directory or leave them in your Downloads
 
 SolrWayback uses a search engine named [Solr](https://en.wikipedia.org/wiki/Apache_Solr). To make your WARC files available for querying in SolrWayback, you need to index the files. This process is dependent on your operating system, just like the start-up above. 
 
-The first thing you need to do is move the WARC files you downloaded previously to their permanent location. For this lesson, please move them into the directory `indexing/warcs1` inside the `solrwayback_package_5.4.3` directory. Once indexed, WARC files cannot be moved. Doing so breaks playback until you rebuild the index. After you have moved the files, run the following commands in your CLI — for example, Terminal or PowerShell.
+The first thing you need to do is move the WARC files you downloaded previously to their permanent location. For this lesson, please move them into the directory `indexing/warcs1` inside the `solrwayback_package_5.5.0` directory. Once indexed, WARC files cannot be moved. Doing so breaks playback until you rebuild the index. After you have moved the files, run the following commands in your CLI — for example, Terminal or PowerShell.
 
-If you encounter errors during indexing and want to run the process again, please delete the log files from `solrwayback_package_5.4.3/indexing/status` before following the indexing guide for your operating system again. If your terminal is closed before the indexing process is completed, there is a chance that you need to reindex the collection to see all the webpages in SolrWayback.
+If you encounter errors during indexing and want to run the process again, please delete the log files from `solrwayback_package_5.5.0/indexing/status` before following the indexing guide for your operating system again. If your terminal is closed before the indexing process is completed, there is a chance that you need to reindex the collection to see all the webpages in SolrWayback.
 
 ### Linux/Mac
 
-To index your WARC files from the directory `solrwayback_package_5.4.3/indexing/warcs1` move to the directory `indexing` by running the following command in your terminal: `cd ./indexing`. Afterwards, run the command: `THREADS=2 ./warc-indexer.sh warcs1/*`. This will start the indexing process.
+To index your WARC files from the directory `solrwayback_package_5.5.0/indexing/warcs1` move to the directory `indexing` by running the following command in your terminal: `cd ./indexing`. Afterwards, run the command: `THREADS=2 ./warc-indexer.sh warcs1/*`. This will start the indexing process.
 
 ### Windows
 
-To index your WARC files from the directory `solrwayback_package_5.4.3/indexing/warcs1` move to the directory `indexing` by running the following command in your terminal: `cd ./indexing`, then run the following bat-file in your terminal: `batch_warcs1_folder.bat`. This will start the indexing process.
+To index your WARC files from the directory `solrwayback_package_5.5.0/indexing/warcs1` move to the directory `indexing` by running the following command in your terminal: `cd ./indexing`, then run the following bat-file in your terminal: `batch_warcs1_folder.bat`. This will start the indexing process.
 
 <div class="alert alert-warning">
   On Windows it is very important that you follow the directions above explicitly and move into the directory before you run the <code>.bat</code>-file.
@@ -181,7 +181,7 @@ This fragmentation of source material also means that you cannot expect sources 
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-03.png" alt="Archived playback of the Bilirakis congressional website from 2009 rendered with missing images and broken layout due to incomplete archiving" caption="Figure 3: Playback of Bilirakis website from 2009" %}
 
-To get an overview of how an individual site has been archived, SolrWayback provides a small but useful toolbar when an archived site is shown. By opening the toolbar in the top left corner and then pressing the button `View page resources`, you can get information on how the individual resources from the currently shown page have been archived. This explains why the replayed site shows mostly links and text. 
+To get an overview of how an individual site has been archived, SolrWayback provides a small but useful toolbar when an archived site is shown. By opening the toolbar in the top left corner and then clicking the button `View page resources`, you can get information on how the individual resources from the currently shown page have been archived. This explains why the replayed site shows mostly links and text. 
 
 The resource overview below clearly shows that sixteen different resources that were part of the webpage when it was live are not included in your archived version. If you had been working with the complete version of the EOTWA collection the replay would be better as the missing resources are most likely located in some of the many other WARC files available at the End of Term Web Archive.
 
@@ -212,11 +212,11 @@ Searchable fields can be inputted as a query following the syntax: `fieldname:va
 
 Luckily SolrWayback supports *range queries*. This is a type of query that specifies an interval or limit on the number in a field. A range query follows the syntax `fieldname:[value TO value]`. To query for web pages with a content length between 1,000 and 5,000, use: `content_length:[1000 TO 5000]`, which returns 620 results. The range query syntax can also be used to define either an upper or lower limit. To do so, an asterisk takes the place of the open end of the range query. To query for documents with a content length of less than 1,000, use `content_length:[* TO 1000]`; for documents with a content length above 5,000, use `content_length:[5000 TO *]`.
 
-The section above uses the field `content_length` as the primary example of how to query with a field. SolrWayback contains multiple such fields. The quickest way to view them is to run a wildcard query (`*:*`) and then press the `View data fields` button shown below:
+The section above uses the field `content_length` as the primary example of how to query with a field. SolrWayback contains multiple such fields. The quickest way to view them is to run a wildcard query (`*:*`) and then click the `View data fields` button shown below:
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-05.png" alt="Close-up of the View data fields button located below an entry in the SolrWayback search results list" caption="Figure 5: Where to find data fields" %}
 
-When you press this button, a list of available fields appears. Here you see fields such as `content`, `content_type`, `crawl_date`, `elements_used`, `links` and many more. Most of these fields can be used in queries just as the `content_length` above. These fields can be used in multiple ways to construct very niche searches. For now it is enough to know where to find them for future reference.
+When you click this button, a list of available fields appears. Here you see fields such as `content`, `content_type`, `crawl_date`, `elements_used`, `links` and many more. Most of these fields can be used in queries just as the `content_length` above. These fields can be used in multiple ways to construct very niche searches. For now it is enough to know where to find them for future reference.
 
 #### Grouped Search and URL Search
 
@@ -230,7 +230,7 @@ The `URL Search` button provides another useful function that is important for y
 
 For example, in this small collection you’re working with, you might want to find the webpage of Congresswoman Virginia Foxx and you know that her web page was archived from the following URL: http://foxx.house.gov/index.cfm?sectionid=102&sectiontree=&pageNum=51. 
 
-If you copy this URL directly into the search field and try to search for it, no results will appear. If however you tick the `URL Search` button and redo your search, you will find a result. Why is this so you may ask? URLs often contain special characters such as '&' and '#'. When you ticked the `URL Search` box, you instructed the software to handle these characters directly as part of the URL and therefore you get a valid result in this case. 
+If you copy this URL directly into the search field and try to search for it, no results will appear. If, however, you tick the `URL Search` button and rerun your search, you will find a result. Why is this so, you may ask? URLs often contain special characters such as '&' and '#'. When you ticked the `URL Search` box, you instructed the software to handle these characters directly as part of the URL and therefore you get a valid result in this case. 
 
 Keeping both of these buttons in mind will help you retrieve the results you are actually looking for as you work your way through a collection of material from the archived web.
 
@@ -290,7 +290,7 @@ Collections of archived web material are often extremely large. Access to web ar
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-10.png" alt="The toolbox icon button highlighted below the SolrWayback search bar" caption="Figure 10: Button for opening the toolbox" %}
 
-The following section provides a brief overview of how these tools can be used to explore your collection with the purpose of discovering sources that can be interpreted as part of the initial research question of this lesson. To make sure you can follow along, please run a query for everything: `*:*`. Then press the toolbox icon, and the following page will appear:
+The following section provides a brief overview of how these tools can be used to explore your collection with the purpose of discovering sources that can be interpreted as part of the initial research question of this lesson. To make sure you can follow along, please run a query for everything: `*:*`. Then click the toolbox icon, and the following page will appear:
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-11.png" alt="SolrWayback toolbox panel listing five tools: Wordcloud, Link Graph, Domain stats, Link graph Gephi export, and Ngram Netarchive, each with an input field" caption="Figure 11: View of the SolrWayback toolbox" %}
 
@@ -303,25 +303,25 @@ The toolbox currently contains five different tools:
 
 These visualisation tools allow you to explore material grouped by domain. A domain is the core identifying part of a web address. Many individual web pages can belong to the same domain; for example, `nasa.gov` is the domain for pages such as `https://www.nasa.gov/` and `https://www.nasa.gov/missions/`. All input boxes contain `kb.dk` as the default example domain. In the steps below, you will need to change this to a domain that is represented in your small collection, for example `house.gov`.
 
-The `wordcloud` tool generates domain-wide wordclouds. These wordclouds can provide an overview of which words are most frequently used across archived pages from a specific domain. To see an example of how this works and how this could help you gain an overview of websites associated with the U.S. Congress, enter `house.gov` in the field to the left and press `Create wordcloud`. 
+The `wordcloud` tool generates domain-wide wordclouds. These wordclouds can provide an overview of which words are most frequently used across archived pages from a specific domain. To see an example of how this works and how this could help you gain an overview of websites associated with the U.S. Congress, enter `house.gov` in the field to the left and click `Create wordcloud`. 
 
 This generates a wordcloud of the most frequently used terms across pages from the `house.gov` domain in your collection. You could use this, for example, to explore whether words such as `immigration` appear frequently across the `house.gov` domain.
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-12.png" alt="Word cloud visualisation showing the most frequently occurring terms across the house.gov domain, with larger words indicating higher frequency" caption="Figure 12: Example wordcloud of house.gov" %}
 
-The next tool, the `Link Graph` tool, is central if you want to understand or investigate the linked nature of the web. Network analysis can be used for exploring how parts of the collection refer to other parts. It is not, however, as accurate as link analysis of the live web.[^12] Please press the `Link Graph` tool at the top of the toolbox and then input `house.gov` into the input field. Make sure that link direction is set to outgoing before you press generate. 
+The next tool, the `Link Graph` tool, is central if you want to understand or investigate the linked nature of the web. Network analysis can be used for exploring how parts of the collection refer to other parts. It is not, however, as accurate as link analysis of the live web.[^12] Please click the `Link Graph` tool at the top of the toolbox and then input `house.gov` into the input field. Make sure that link direction is set to outgoing before you click generate. 
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-13.png" alt="Network graph showing outgoing links from house.gov to other domains, with nodes representing domains and edges representing hyperlinks" caption="Figure 13: Example linkgraph of house.gov" %}
 
-What you see here are the domains that are linked to from webpages on house.gov. You can also produce a graph of ingoing links, which is often a more complex task, but because SolrWayback already has this information available through its index the graph can be constructed easily. To produce such a graph you toggle the radio button to ingoing and press generate again. However, for house.gov in your collection, this produces a meaningless graph with no edges. 
+What you see here are the domains that are linked to from webpages on `house.gov`. You can also produce a graph of ingoing links, which is often a more complex task, but because SolrWayback already has this information available through its index the graph can be constructed easily. To produce such a graph you toggle the radio button to ingoing and click generate again. However, for `house.gov` in your collection, this produces a meaningless graph with no edges. 
 
-If you change the domain from house.gov to wikipedia.org you can get a feel of how a graph of ingoing links looks. This link graph tool provides an accessible entrypoint to getting started with link analysis of archived web material. 
+If you change the domain from `house.gov` to `wikipedia.org` you can get a feel of how a graph of ingoing links looks. This link graph tool provides an accessible entrypoint to getting started with link analysis of archived web material. 
 
 For more complex link analysis, the `Link graph Gephi export` tool can export data in a format that is ready to use with the network analysis software Gephi. For an introduction to network analysis in general see <a href='https://programminghistorian.org/en/lessons/exploring-and-analyzing-network-data-with-python'>the Programming Historian lesson by Ladd et al. 2017</a>.
 
-Next in line is the `Domain stats` tool. This tool visualises statistics about a single domain at different levels of granularity. To get an understanding of how this tool works enter house.gov in the input box. The X-axis defaults to the years 1998 to 2027. This can be changed in the two timeframe boxes. The scale of the X-axis can also be customised down to daily intervals. 
+Next in line is the `Domain stats` tool. This tool visualises statistics about a single domain at different levels of granularity. To get an understanding of how this tool works enter `house.gov` in the input box. The X-axis defaults to the years 1998 to 2027. This can be changed in the two timeframe boxes. The scale of the X-axis can also be customised down to daily intervals. 
 
-When you press the generate button a combined line chart appears. This combined chart visualises four distinct counts: Amount of pages, ingoing links, average page size in characters, and size in kilobytes. In this combined view it is possible to remove individual line charts by clicking their respective colours at the top of the visualisation. You can also render all four charts individually by pressing the `Show Individual Charts` button. 
+When you click the generate button a combined line chart appears. This combined chart visualises four distinct counts: Amount of pages, ingoing links, average page size in characters, and size in kilobytes. In this combined view it is possible to remove individual line charts by clicking their respective colours at the top of the visualisation. You can also render all four charts individually by clicking the `Show Individual Charts` button. 
 
 The domain statistics can be used to investigate temporal changes in the archived material. Your subset from the total collection was collected on the same day in 2009 and therefore there are not enough datapoints to create a meaningful visualisation. An example of how the graph could look with more data from a different collection is shown here.
 

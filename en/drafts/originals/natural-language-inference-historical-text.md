@@ -31,13 +31,29 @@ doi: XX.XXXXX/phen0000
 
 This lesson teaches you how to apply [Natural Language Inference (NLI)](https://en.wikipedia.org/wiki/Textual_entailment) techniques to historical documents using Python. You can use NLI to, for example, determine the author's stance on a given topic or historical claim. This approach avoids training a new classifier for every historical debate. Instead of mapping a document to a fixed label, this approach compares passages with researcher-written hypotheses, which is useful when labelled training data is unavailable or expensive to create.
 
-By stance we mean the position an author takes toward a specific claim. In this case study the claim is that Chinese immigrants deserve equal legal treament. The "stance" is whether the author supports this claim, opposes it, or expresses no clear position. You write each stance as a short hypothesis, for example "the author advocates for equal legal treatment of Chinese immigrants", and the model scores how well each passage supports it. How the labels and hypotheses are designed, and how zero-shot classification works in detail, are covered in the stance classification stage.
+NLI can be used to help assess an author’s stance towards a given topic, claim, or position. In this lesson, you will use it to assess an author’s stance towards Chinese immigration in nineteenth-century British Columbia legal texts. The lesson uses nineteenth-century British Columbia court rulings as its case study. However, the workflow can be adapted to other historical corpora where you want to computationally assess authorial stance.
 
-The lesson uses nineteenth-century British Columbia court rulings on Chinese immigration as its case study. However, the workflow applies to any historical corpus where you want to computationally assess authorial stance.
+By stance we mean the position an author takes toward a defined claim. In this case study the claim is that Chinese immigrants deserve equal legal treatment. The “stance” is whether the author supports this claim, opposes it, or expresses no clear position. To classify stance using NLI, you translate each possible stance into a short hypothesis. For example, the label “Pro” might be represented by the hypothesis: “In this text, the author advocates for equal legal treatment of Chinese immigrants.” The model then scores how strongly a passage supports that hypothesis.
+
+Zero-shot classification is the core analytical technique of this lesson. It uses a [natural language inference](https://en.wikipedia.org/wiki/Textual_entailment) model to classify text into categories defined at inference time, requiring no labelled training data. This is particularly valuable for historical research, where labelled datasets rarely exist.
+
+### Why NLI?
+
+A natural first instinct is to measure stance by counting words: tally discriminatory or rights-affirming terms and compare authors. This is the logic behind domain-specific lexicons such as the Loughran-McDonald dictionary in financial text analysis, which counts curated word lists tailored to a domain rather than relying on general-purpose sentiment polarity.[^11] But keyword counting has a decisive blind spot for our question: it cannot tell the difference between a judge who *uses* a discriminatory word and one who *quotes it to condemn it*. The word "alien" counts the same whether the Act imposes it or Crease attacks it, and stance-bearing phrases such as "fills one with alarm" or "rule the country" use common words that no lexicon would flag. Stance depends on how words are combined and framed, which is the kind of comparison NLI is designed to make.
+
+NLI is a practical middle ground for historical corpora. Supervised models need large labelled datasets that most historians do not have, and lexicon or topic methods often miss stance direction.[^12][^13] NLI instead scores whether a passage supports researcher-defined hypotheses, so you can run three-way stance classification without retraining.[^14]
+
+### How Zero-Shot NLI Works
+
+NLI models are trained to evaluate pairs of texts: a premise (the input text) and a hypothesis (a candidate label). The model predicts whether the premise *entails* the hypothesis (supports it), *contradicts* it, or is *neutral*. In zero-shot classification, each candidate label is converted into a hypothesis using a template, and the model scores how well the premise entails each hypothesis.
+
+For example, given the premise "The treaties I have quoted between Great Britain and China, binding on the Dominion and on us in British Columbia, secure to the Chinese, just as the treaties between Great Britain and other foreign countries secure to other foreigners, the same rights in regard to the equality of taxation which I have described as being enjoyed by citizens of this country." and the hypothesis "In this text, the author advocates for equal legal treatment of Chinese immigrants", the model would likely assign a high entailment score, classifying the sentence as "Pro".
+
+The key advantage is flexibility: you can define any set of labels without retraining the model; the key risk is that results depend heavily on how you phrase those labels.
 
 The lesson is organised into four stages:
 
-1. **Data preparation:** load the corpus, detect and remove directly quoted passages, and extract the passages that discuss Chinese immigration.
+1. **Data preparation:** load the corpus, detect and remove directly quoted passages that could distort the analysis, and extract passages relevant to the research question.
 2. **Stance classification:** design labels and run zero-shot NLI at both the sentence and window level.
 3. **Evaluation and robustness:** validate predictions against a manually labelled set and stress-test them with quote, label, and bootstrap checks.
 4. **Interpretation:** read the results critically and adapt the workflow to other corpora.
@@ -56,19 +72,19 @@ By the end, you will be able to:
 
 ## Prerequisites
 
-This lesson sits towards the advanced end, not because of the Python involved but because of the methods it uses. You will need intermediate Python experience: working with pandas, writing functions, and using pip. If you are newer to Python, start with the [_Programming Historian_'s Introduction to Python](https://programminghistorian.org/en/lessons/introduction-and-installation). You do not need prior experience with transformer models, NLI, or the validation and bootstrap steps used later; the lesson introduces each of these where it appears.
+To follow this lesson, you will need intermediate Python experience: working with pandas, reading and understanding functions, and installing packages. This lesson uses pip, but readers who work with other package managers, such as `conda`, can adapt the installation steps to their own setup. If you are newer to Python, start with the [_Programming Historian_'s Introduction to Python](https://programminghistorian.org/en/lessons/introduction-and-installation). You do not need prior experience with transformer models, NLI, or the validation and bootstrap steps used later; the lesson introduces each of these where it appears. Some familiarity with NLP methods such as word embeddings and similarity measures will be helpful. Readers who want more background can consult Programming Historian lessons on ["Understanding and Creating Word Embeddings"](https://programminghistorian.org/en/lessons/understanding-creating-word-embeddings) and ["Understanding and Using Common Similarity Measures for Text Analysis"](https://programminghistorian.org/en/lessons/common-similarity-measures).
 
-Python 3.10 or later is required, along with at least 8GB of RAM. A GPU or iGPU is not required, but it will speed up model inference.
 
-<div class="alert alert-warning">
-This lesson uses transformer models and needs at least 8GB of RAM. Running every zero-shot step from scratch can take 60 to 90 minutes on CPU, so the lesson offers two paths: run the scoring cells yourself, or load the precomputed CSV outputs that are included. Each slow step shows both options.
+The lesson was tested with Python 3.13, but it is expected to work with 3.10 or later. Because the lesson uses transformer models, you will need at least 8GB of RAM. A GPU or iGPU is not required, but it can speed up model inference. 
 
-If you have NVIDIA CUDA, PyTorch can use it automatically. On some Windows systems with AMD or Intel integrated GPUs, <code>torch-directml</code> may help, but stability varies by model. The code below runs on CPU by default and uses GPU acceleration only when PyTorch detects it.
-</div>
+Running every zero-shot classification step from scratch can take 60 to 90 minutes on CPU, so the lesson offers two paths: you can run the scoring code yourself, or you can load the precomputed CSV outputs that are included in the data files. For each of the most computationally intensive steps, the lesson will clearly indicate both paths.
+
+If you have NVIDIA CUDA, PyTorch can use it automatically for acceleration. On some Windows systems with AMD or Intel integrated GPUs, <code>torch-directml</code> may help, but stability varies by model. The lesson code runs on CPU by default and uses GPU acceleration only when PyTorch detects it.
+
 
 ## Software and Setup
 
-Install all required Python packages. `pandas` and `numpy` handle tables, `nltk` and `spacy` split texts into sentences, `transformers` and `torch` run the NLI model, and `matplotlib` and `seaborn` make the figures. Run this in your terminal, from your working folder:
+First, install all required Python packages. These packages support different parts of the workflow: `pandas` and `numpy` handle tables and numerical operations, `nltk` and `spacy` split texts into sentences, `transformers` and `torch` run the NLI model, and `matplotlib` and `seaborn` make the figures. Run this in your terminal:
 
 ```bash
 pip install pandas numpy matplotlib \
@@ -76,13 +92,7 @@ pip install pandas numpy matplotlib \
   transformers torch tqdm
 ```
 
-For AMD or Intel integrated GPU acceleration on Windows, also run this in your terminal:
-
-```bash
-pip install torch-directml
-```
-
-Download NLTK data inside Python:
+In the next two steps you will download language processing resources that will be used for sentence splitting later in the lesson. The NLTK tokenizer data will be used to split text into sentences when building larger window-level passages. Download the NLTK tokenizer data **inside Python**:
 
 ```python
 import nltk
@@ -90,13 +100,21 @@ nltk.download('punkt')
 nltk.download('punkt_tab')
 ```
 
-Then download the English spaCy model from the terminal:
+You will also use spaCy’s small English model to segment text into sentences during the quotation removal and keyword filtering stages. Then download the English spaCy model **from the terminal**:
 
 ```bash
 python -m spacy download en_core_web_sm
 ```
 
-The spaCy model `en_core_web_sm` and the DeBERTa NLI model are both English only. If your corpus is in another language, see [Working with Other Languages](#working-with-other-languages) for what to swap in.
+The spaCy model `en_core_web_sm` and the DeBERTa NLI model used in this lesson are both English language models. If your corpus is in another language, see [Working with Other Languages](#working-with-other-languages) for further guidance.
+
+**Optional: Windows GPU acceleration**
+
+For AMD or Intel integrated GPU acceleration on Windows, also run this in your terminal:
+
+```bash
+pip install torch-directml
+```
 
 ### Software Versions
 
@@ -107,7 +125,7 @@ This lesson was tested with:
 - torch 2.6
 - DeBERTa NLI: `MoritzLaurer/deberta-v3-large-zeroshot-v2.0` (Hugging Face)
 
-Load the required libraries:
+Now that you have installed the packages and language resources, load the libraries used throughout the lesson. `difflib` and `warnings` are already included in Python’s standard library so they do not need to be installed. `difflib` will be used in the data preparation section for fuzzy string matching. `warnings` will be used to suppress non-essential warning messages:
 
 ```python
 import pandas as pd
@@ -143,13 +161,16 @@ Download the lesson data files from the [_Programming Historian_ repository](htt
 - `data/core/labelled_snippets.csv` -- 45 sentence excerpts hand-labelled for evaluation by one of the lesson co-authors
 - `data/texts/quotations_removed/` -- versions of Crease's texts with direct quotations of the Act removed
 
-These sources are nineteenth-century British Columbia legal and government documents in the public domain. Openly accessible copies are available without login through UBC Open Collections, Canadiana, the Internet Archive, and BC Laws. We produced the text files by running modern OCR on those scans and organising the results, and the OCR transcriptions and derived data files in this lesson are shared under a Creative Commons Attribution (CC BY 4.0) licence.
+These sources are nineteenth-century British Columbia legal and government documents in the public domain. Openly accessible copies are available without login through UBC Open Collections, Canadiana, the Internet Archive, and BC Laws. We produced the text files by running modern OCR on those scans and organising the results. The OCR transcriptions and derived data files in this lesson are shared under a Creative Commons Attribution (CC BY 4.0) license.
 
 ## Preparing the Corpus
 
-*You are in stage 1 of 4, data preparation: load the corpus, group the texts, remove quoted passages, and select the passages to analyze.*
+In this section, you will prepare the corpus for analysis. You will:
+- load the pre-prepared corpus file and create comparison groups based on authorship and document type; 
+- identify and remove direct quotations that could distort the stance analysis; 
+- and select passages relevant to Chinese immigration.
 
-The OCR process produced a `.csv` file with the following structure:
+After OCRing the source documents, we created a CSV file, `metadata_cleaned.csv`, in which we organised the OCR-transcribed text alongside basic metadata relevant to the analysis. This file contains one row for each source document and records the information needed to analyse the corpus, namely:
 
 | Column Name                 | Description                                        |
 | --------------------------- | -------------------------------------------------- |
@@ -158,6 +179,10 @@ The OCR process produced a `.csv` file with the following structure:
 | type                        | Document type (e.g., "case", "report", "act")      |
 | text                        | Full text, which may include OCR errors             |
 | act_quote_sentences_removed | Number of quoted sentences removed from the text   |
+
+Next, you will create the comparison groups that you want to use in your analysis. Since this lesson compares the language of Crease, Begbie, and the Act, you will be grouping documents by author (for Crease and Begbie) and document type (for the Act). 
+
+First, load the metadata CSV into a `pandas` DataFrame. Then create a new `group` column and assign each document to one of the comparison groups: Crease, Begbie, or the Regulation Act. The code starts by labelling every document as `Other`, then replaces that label for documents by Crease, documents by Begbie, and the Act using author and type metadata.
 
 ```python
 df = pd.read_csv("data/core/metadata_cleaned.csv")
@@ -170,7 +195,7 @@ df.loc[df["author"] == "Begbie", "group"] = "Begbie"
 df.loc[df["type"] == "act", "group"] = ACT_LABEL
 ```
 
-Grouping documents by author lets you compare the language of Crease, Begbie, and the Act directly. Check how many documents fall into each group before going further:
+Check how many documents fall into each group before going further:
 
 ```python
 df["group"].value_counts()
@@ -186,15 +211,17 @@ Regulation Act    1
 Name: group, dtype: int64
 ```
 
-This check confirms that the comparison groups are present before any model scores are calculated.
+This check confirms that the comparison groups are present before any model scores are calculated. You can see there are three texts assigned to Crease, three to Begbie, and the 1884 Chinese Regulation Act. 
 
 ### Detecting and Removing Direct Quotations
 
 Crease's ruling in *R v. Wing Chong* quotes passages from the 1884 Chinese Regulation Act verbatim. If these quoted passages remain in the corpus, the NLI model will classify them as language attributable to Crease, when in fact they are the Act's own words that Crease cited.
 
-Quotation removal belongs in data preparation because stance classification asks "what does *this author* say?" A passage Crease quotes from the Act to strike it down would otherwise be scored as if Crease himself wrote it.
+Quotation removal is a necessary data preparation step because stance classification asks "what does *this author* say?" Even if Crease quotes a passage from the Act in order to strike it down, the NLI model may still treat those quoted words as part of Crease’s own language. Removing direct quotations helps prevent the model from attributing the Act’s language to Crease.
 
-The approach uses fuzzy string matching via Python's [`difflib.SequenceMatcher`](https://docs.python.org/3/library/difflib.html), which computes a similarity ratio between two strings based on the longest contiguous matching subsequences. Exact string matching would be too weak here: the texts were produced by OCR, so a sentence Crease quotes from the Act and the same sentence in the Act itself rarely match character-for-character. Small transcription differences (a misread letter, a dropped word, inconsistent punctuation) would defeat an exact-match filter while leaving the quotation in place. Fuzzy matching tolerates this noise by scoring *how similar* two sentences are rather than demanding they be identical. For each sentence in Crease's text, you compute its similarity to every sentence in the Act and retain the highest score:
+The approach uses fuzzy string matching via Python's [`difflib.SequenceMatcher`](https://docs.python.org/3/library/difflib.html), which computes a similarity ratio between two strings based on the longest contiguous matching subsequences. Exact string matching would be too weak here: the texts were produced by OCR, so a sentence Crease quotes from the Act and the same sentence in the Act itself rarely match character-for-character. Small transcription differences (a misread letter, a dropped word, inconsistent punctuation) would defeat an exact-match filter while leaving the quotation in place. Fuzzy matching tolerates this noise by scoring *how similar* two sentences are rather than demanding they be identical. For each sentence in Crease's text, you compute its similarity to every sentence in the Act and retain the highest score.
+
+The following code prepares the quotation-matching process. First, it loads spaCy’s English model and uses it to split the Regulation Act into sentences. These sentences will serve as the reference set. It then reads one of Crease’s original texts (`Regina_V_Wing_Chong`) and defines a function, `compute_quote_similarity()`, which compares one sentence against every sentence in the reference set and returns the highest similarity score:
 
 ```python
 nlp = spacy.load("en_core_web_sm")
@@ -223,7 +250,7 @@ def compute_quote_similarity(sent, reference_sents):
     return best
 ```
 
-Next, score Crease's sentences against the Act, inspect the highest-scoring matches, and remove sentences above the chosen threshold:
+Next, score Crease's sentences against the Act. The code below splits Crease’s text into sentences, scores each sentence against the Act sentences, stores the results in a table, and sorts the table so that the highest-scoring matches appear first:
 
 ```python
 crease_sents = [
@@ -245,7 +272,7 @@ quote_scores = pd.DataFrame(
 quote_scores.sort_values("similarity", ascending=False).head()
 ```
 
-Expected output:
+The resulting score ranges from 0 to 1. A score close to 1 means that the sentence is very similar to a sentence in the Act, and is therefore likely to be a direct quotation or near quotation. A lower score suggests that the sentence is less similar to the Act’s wording. Expected output:
 
 | similarity | sentence |
 | ---: | --- |
@@ -255,7 +282,11 @@ Expected output:
 | 0.97 | Proof of the lawful possession of such receipt shall lie on the person... |
 | 0.93 | Every collector shall collect the tax from each Chinese... |
 
-Inspecting the highest-scoring rows helps you choose a threshold instead of treating it as a hidden parameter. A threshold of 0.6 catches near-exact quotes (accounting for OCR errors) while leaving Crease's own paraphrases intact; a looser threshold of 0.4 also catches loose paraphrases but risks discarding original sentences that merely share legal vocabulary with the Act. Set it too high and quoted material survives to contaminate the stance scores; set it too low and you erase the author's own language. We set ours to 0.6.
+Inspecting the highest-scoring rows helps you choose a threshold instead of treating it as a hidden parameter. Set it too high and quoted material survives to contaminate the stance scores; set it too low and you erase the author's own language.
+
+In this case, we set the threshold to 0.6. A threshold of 0.6 catches near-exact quotes (accounting for OCR errors) while leaving Crease's own paraphrases intact. A lower threshold such as 0.4 also catches loose paraphrases but risks discarding original sentences that merely share legal vocabulary with the Act.
+
+This count lets you check how many sentences remain after quotation removal:
 
 ```python
 quote_threshold = 0.6
@@ -266,11 +297,15 @@ cleaned_crease_sents = quote_scores[
 len(crease_sents), len(cleaned_crease_sents)
 ```
 
-For *R v. Wing Chong*, this threshold removes 12 sentences. The `act_quote_sentences_removed` column in the metadata records how many sentences were removed from each document, and the cleaned texts are saved under `data/texts/quotations_removed/`. The later NLI analysis uses these quotation-removed versions for Crease's texts. The same `compute_quote_similarity` function is reused later as a sensitivity check (see [Quote Sensitivity](#quote-sensitivity)), where you sweep across thresholds to confirm that residual quotations are not driving the results. For your own analyses, experiment with different thresholds to see which one best separates quotation from original language in your corpus.
+In this example, the threshold removes 12 sentences from *R v. Wing Chong*. The `act_quote_sentences_removed` column in the metadata records how many sentences were removed from each document, and the cleaned texts are saved under `data/texts/quotations_removed/`. The later NLI analysis uses these quotation-removed versions for Crease's texts. The same `compute_quote_similarity` function is reused later as a sensitivity check (see [Quote Sensitivity](#quote-sensitivity)), where you sweep across thresholds to confirm that residual quotations are not driving the results.
 
-### Checking the Threshold
+#### Checking the Threshold
 
-For a small corpus, the best advanced check is still a human one: inspect sentences near the cutoff. These are the cases where the algorithm is least certain and where a small threshold change would alter the corpus.
+For your own analyses, experiment with different thresholds to see which one best separates quotation from original language in your corpus.
+
+For a small corpus, the most reliable check is still a human one: inspect sentences near the cutoff. These are the cases where the algorithm is least certain and where a small threshold change would alter which sentences remain in the corpus.
+
+The following code selects sentences with similarity scores between 0.55 and 0.65, just below and just above the threshold of 0.6. It then sorts them from highest to lowest similarity so that you can inspect the borderline cases:
 
 ```python
 near_threshold = quote_scores[
@@ -287,7 +322,7 @@ Expected output:
 | 0.64 | Section 16 amends the License Ordinance of 1867... |
 | 0.64 | By Sec. 5 "Any Chinese who shall be found within the Province..." |
 
-Only two sentences fall in this band, and both refer to the Act rather than stating Crease's own argument.
+Only two sentences fall in this band, and both refer to the Act rather than stating Crease's own argument. This suggests that the 0.6 threshold is reasonable for this text, because the borderline cases are still closer to quoted or cited Act language than to Crease’s own stance.
 
 Read this table before accepting the threshold. If the rows just above 0.6 are quoted Act language and the rows just below 0.6 are Crease's own argument, the threshold is doing what you need. If both sides contain a mixture of quotations, paraphrases, and original legal language, report that uncertainty and consider a more conservative threshold.
 
@@ -295,7 +330,9 @@ Read this table before accepting the threshold. If the rows just above 0.6 are q
 
 ### Identifying Relevant Passages
 
-Zero-shot classification is computationally expensive, so rather than scoring every sentence in every document, you focus the analysis on the passages that actually discuss Chinese immigration. The strategy is to split each author's texts into sentences and keep those that mention immigration-related keywords. These keyword snippets become the unit of analysis for the sentence-level classifier, while the full documents are reused for window-level classification later.
+Zero-shot classification is computationally expensive, so rather than scoring every sentence in every document, you focus the analysis on the passages that discuss Chinese immigration. The strategy is to split the texts into sentences and keep those that mention immigration-related keywords. These keyword snippets become the unit of analysis for the sentence-level classifier, while the full documents are reused for window-level classification later.
+
+The following code builds the set of passages that will be classified at the sentence level. First, it selects the case texts by Crease and Begbie and the text of the Regulation Act. It then stores these texts in a dictionary, `corpus_by_author`, so that each group can be processed in the same way. Next, it defines a list of immigration-related keywords. Finally, it loops through each text sentence by sentence and keeps any sentence that contains one of those keywords.
 
 ```python
 crease_cases = df[
@@ -332,27 +369,13 @@ for author, texts in corpus_by_author.items():
     keyword_snippets[author] = snippets
 ```
 
+`keyword_snippets` contains the extracted sentences for each comparison group. For example, `keyword_snippets['Crease']` contains the sentences from texts by Crease that include at least one of the keywords.
+
 Keyword filtering is deliberately simple and high-recall: it casts a wide net so that few relevant passages are missed, and the NLI model does the discriminating work of judging stance later. The `corpus_by_author` dictionary is kept alongside the snippets because the window-level analysis needs the full document text, not just the extracted sentences.
 
 ## Stance Classification with Zero-Shot NLI
 
-*You are in stage 2 of 4, stance classification: design the labels and run zero-shot NLI on the passages selected in stage 1.*
-
-Zero-shot classification is the core analytical technique of this lesson. It uses a [natural language inference](https://en.wikipedia.org/wiki/Textual_entailment) model to classify text into categories defined at inference time, requiring no labelled training data. This is particularly valuable for historical research, where labelled datasets rarely exist.
-
-### Why NLI?
-
-A natural first instinct is to measure stance by counting words: tally discriminatory or rights-affirming terms and compare authors. This is the logic behind domain-specific lexicons such as the Loughran-McDonald dictionary in financial text analysis, which counts curated word lists tailored to a domain rather than relying on general-purpose sentiment polarity.[^11] But keyword counting has a decisive blind spot for our question: it cannot tell the difference between a judge who *uses* a discriminatory word and one who *quotes it to condemn it*. The word "alien" counts the same whether the Act imposes it or Crease attacks it, and stance-bearing phrases such as "fills one with alarm" or "rule the country" use common words that no lexicon would flag. Stance depends on how words are combined and framed, which is the kind of comparison NLI is designed to make.
-
-NLI is a practical middle ground for historical corpora. Supervised models need large labelled datasets that most historians do not have, and lexicon or topic methods often miss stance direction.[^12][^13] NLI instead scores whether a passage supports researcher-defined hypotheses, so you can run three-way stance classification without retraining.[^14]
-
-### How Zero-Shot NLI Works
-
-NLI models are trained to evaluate pairs of texts: a premise (the input text) and a hypothesis (a candidate label). The model predicts whether the premise *entails* the hypothesis (supports it), *contradicts* it, or is *neutral*. In zero-shot classification, each candidate label is converted into a hypothesis using a template, and the model scores how well the premise entails each hypothesis.
-
-For example, given the premise "The treaties I have quoted between Great Britain and China, binding on the Dominion and on us in British Columbia, secure to the Chinese, just as the treaties between Great Britain and other foreign countries secure to other foreigners, the same rights in regard to the equality of taxation which I have described as being enjoyed by citizens of this country." and the hypothesis "In this text, the author advocates for equal legal treatment of Chinese immigrants", the model would likely assign a high entailment score, classifying the sentence as "Pro".
-
-The key advantage is flexibility: you can define any set of labels without retraining the model; the key risk is that results depend heavily on how you phrase those labels.
+Now that you have prepared the corpus for analysis, you will move on to zero-shot stance classification. This involves three main steps: choosing an NLI model, translating the research question into labels and hypotheses the model can evaluate, and applying the classifier at two scales: individual keyword-selected sentences and larger windows of surrounding text.
 
 ### Choosing a Model for Historical Text
 
@@ -368,7 +391,7 @@ When choosing models for your own historical corpus, consider:
 
 For a publishable analysis, also record the exact model identifier, the date you ran it, and the main inference settings. Hugging Face models can change, and two models with similar names may behave differently. In production work you would usually pin a model revision; in this lesson, save enough information that another reader can tell which model produced the CSV files.
 
-### The Lexicon Mismatch Problem
+#### The Lexicon Mismatch Problem
 
 A central challenge is lexical drift: words in nineteenth-century legal writing can carry meanings that differ from modern usage. OCR noise adds another layer of uncertainty. There is no complete fix, but you can reduce risk by:
 
@@ -390,7 +413,7 @@ Each label is phrased as a completion of the hypothesis template "In this snippe
 
 Results depend heavily on label quality. Labels poorly aligned with the stance categories produce misleading classifications, especially for historical texts whose rhetorical conventions differ from modern usage.
 
-### A Small Label-Design Check
+#### A Small Label-Design Check
 
 Before running the full corpus, test the labels on a few passages where you already have a strong reading. This is not a substitute for the evaluation sample later in the lesson. It is a quick design check to catch labels that are too vague, too broad, or unevenly phrased.
 

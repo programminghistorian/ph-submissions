@@ -37,7 +37,7 @@ A lição dialoga com “Gestionar fuentes primarias digitales con Tropy”, de 
 
 O Tropy é um software livre, gratuito e de código aberto voltado à organização, descrição e gestão de fontes primárias digitalizadas. Desenvolvido inicialmente no Roy Rosenzweig Center for History and New Media, da George Mason University, e posteriormente apoiado por outras instituições dedicadas à pesquisa digital, o programa foi concebido para atender às necessidades de pesquisadores que trabalham com fotografias de documentos, imagens de objetos, materiais de arquivo e coleções digitais. Sua principal proposta é oferecer um ambiente de trabalho capaz de reunir procedimentos de organização documental, descrição, classificação, anotação e recuperação de informações em um único projeto.
 
-{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-01.png" alt="Visual description of figure image" caption="Figure 1. Imagem da tela inicial do Tropy" %}
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-01.jpg" alt="Visual description of figure image" caption="Figure 1. Imagem da tela inicial do Tropy" %}
 
 O software tem sido amplamente utilizado por pesquisadores das Humanidades, especialmente em investigações que envolvem grandes conjuntos de fontes visuais. Entre seus recursos estão a criação de metadados personalizados, o agrupamento de imagens, o registro de notas de pesquisa e a exportação estruturada dos dados produzidos. Além da aplicação, o projeto disponibiliza documentação técnica, materiais de formação, fórum de usuários e acesso público ao código-fonte. Mais informações podem ser encontradas no site oficial do Tropy (https://tropy.org/).
 

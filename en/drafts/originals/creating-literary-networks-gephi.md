@@ -47,7 +47,7 @@ The lesson is built around the following research question: *Which characters in
 
 To answer it, we work with a corpus of 27 plays: 15 comedies and 12 tragedies. The history plays are excluded, and plays that sit at the boundaries between genres, such as *The Winter's Tale* and *Cymbeline*, have been assigned a genre as explained in the section [Step 2: Selecting the Corpus](#step-2-selecting-the-corpus). The references to flora and fauna are drawn from Bessie Mayou's *Natural History of Shakespeare* (1877), an anthology that gathers quotations from Shakespeare's plays and poems under 14 headings such as Garden Flowers, Trees, Birds, and Reptiles.[^1] Mayou's anthology provides two things: the quotations themselves, and a ready-made classification of the plants and animals they mention. From the quotations taken from the 27 plays in our corpus, we recorded every reference as a separate observation and added further information about the speaking character and the play. The process is explained step by step in [Stage 2](#stage-2-constructing-the-dataset).
 
-The following files accompany this lesson and can be downloaded now from the [lesson repository](https://github.com/Simran-DH/Eco-Computational-Shakespeare-Ecological-Network-Analysis):
+The following files accompany this lesson and are available to [download](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-literary-networks-gephi/data.zip) as a `.zip` file containing:
 
 - `master_data.csv`: the master table of observations, with one row per reference. This is the starting point for everything else in the lesson.
 - `node_main-topic_character.csv` and `edge_main-topic_character.csv`: the node and edge files for the network of nature categories (Main Topics) and characters.
@@ -55,7 +55,7 @@ The following files accompany this lesson and can be downloaded now from the [le
   - Main Topic and gender: `node_main-topic_gender.csv` and `edge_main-topic_gender.csv`
   - Main Topic and genre: `node_main-topic_genre.csv` and `edge_main-topic_genre.csv`
   - Sub-topic and character: `node_sub-topic_character.csv` and `edge_sub-topic_character.csv`
-- `Extraction prompts`: the two prompts used to extract the references from Mayou's anthology, discussed in Stage 2.
+- `extraction-prompts.txt`: the two prompts used to extract the references from Mayou's anthology, discussed in Stage 2.
 
 In Stage 2, you will build `node_main-topic_character.csv` and `edge_main-topic_character.csv` yourself from `master_data.csv`, and can then check your versions against the supplied files before importing them into Gephi. The Sub-topic and genre files let you reproduce the further networks discussed in Stage 4 without repeating the construction steps. The gender files are not discussed in the lesson, but are supplied so that you can build and interpret that network yourself, applying the same steps. All of these files can also serve as models for combinations of your own.
 
@@ -192,6 +192,8 @@ The most useful habit in building any network dataset is to keep one **master ta
 
 Our master table has seven columns:
 
+<div class="table-wrapper" markdown="block">
+
 | Column | Content | Source |
 |---|---|---|
 | Main Topic | One of Mayou's 14 categories | Mayou |
@@ -202,9 +204,13 @@ Our master table has seven columns:
 | Gender | Male, female, supernatural, or group | ChatGPT, checked and corrected by us |
 | Status | Whether the character has a major or minor role in the plot | Assigned by us |
 
+</div>
+
 The Gender column records characters who speak collectively, such as a group of servants or musicians, as "group". The Status column was assigned by us according to each character's role in the plot: characters central to the main action are recorded as major, and all others as minor. This is an interpretive judgement rather than a measurement. If you need a more consistent criterion for your own project, you could base status on a quantitative measure, such as the number of lines or scenes in which a character speaks, which corpora such as DraCor provide for many plays.
 
 Table 1 shows the first rows of the master table.
+
+<div class="table-wrapper" markdown="block">
 
 | Main Topic | Sub-topic | Character | Play | Genre | Gender | Status |
 |---|---|---|---|---|---|---|
@@ -227,9 +233,13 @@ Table 1 shows the first rows of the master table.
 | Garden Flowers | Lily | Titus | Titus Andronicus | Tragedy | Male | Major |
 | Garden Flowers | Carnation | Perdita | The Winter's Tale | Comedy | Female | Major |
 
-Table 1. The first few rows of the master table of observations.
+</div>
 
+**Table 1. The first few rows of the master table of observations.**
+
+<div class="alert alert-info">
 Note that Boyet appears twice with the same Sub-topic: he mentions roses twice, and each mention is a separate row. These repeated rows are what will later become edge weights. The full master table contains 1,016 rows, one for each reference.
+</div>
 
 ### Step 5: Creating the Edge File
 
@@ -242,6 +252,8 @@ With the master table complete, you can derive the files for any pair of columns
 5. Save the sheet as a CSV file with UTF-8 encoding, for example `edge_main-topic_character.csv`.
 
 Table 2 shows the first rows of the resulting edge file.
+
+<div class="table-wrapper" markdown="block">
 
 | Source | Target |
 |---|---|
@@ -258,7 +270,9 @@ Table 2 shows the first rows of the resulting edge file.
 | Garden Flowers | Othello |
 | Garden Flowers | Juliet |
 
-Table 2. The first rows of the edge file, created from the Main Topic and Character columns.
+</div>
+
+**Table 2. The first rows of the edge file, created from the Main Topic and Character columns.**
 
 ### Step 6: Creating the Node File
 
@@ -273,6 +287,8 @@ The node file lists every entity that appears in the edge file exactly once, and
 7. Save the sheet as a CSV file with UTF-8 encoding, for example `node_main-topic_character.csv`.
 
 Table 3 shows the first rows of the resulting node file.
+
+<div class="table-wrapper" markdown="block">
 
 | Id | Label | Type |
 |---|---|---|
@@ -296,13 +312,17 @@ Table 3 shows the first rows of the resulting node file.
 | Orsino | Orsino | Character |
 | Biron | Biron | Character |
 
-Table 3. The first rows of the node file, with the Id, Label, and Type columns.
+</div>
+
+**Table 3. The first rows of the node file, with the Id, Label, and Type columns.**
 
 If you wish, compare your two files with `node_main-topic_character.csv` and `edge_main-topic_character.csv` supplied with the lesson. They should contain the same rows, although not necessarily in the same order.
 
 ### Step 7: Building Other Combinations
 
 The procedure you have just followed works for any pair of columns in the master table. In summary: choose the two columns that express your question; copy them into a new sheet to form the edge file, keeping the duplicates; then list the unique values from both columns to form the node file, removing the duplicates, and add a Type column. Changing the pair of columns changes the question the network can answer:
+
+<div class="table-wrapper" markdown="block">
 
 | Column pair | Question it helps to answer | Supplied with the lesson |
 |---|---|---|
@@ -311,6 +331,8 @@ The procedure you have just followed works for any pair of columns in the master
 | Main Topic and Genre | How do comedy and tragedy differ in the kinds of nature they invoke? | Yes |
 | Main Topic and Gender | Do male, female, supernatural, and group characters invoke different kinds of nature? | Yes |
 | Main Topic and Play | Which plays draw on which kinds of nature? | No |
+
+</div>
 
 Note that in some of these networks one set of nodes is very small. The genre network, for example, has only two nodes of one type (Comedy and Tragedy) and 14 of the other. Such networks are best read mainly through their edge weights, as we will see in Stage 4.
 

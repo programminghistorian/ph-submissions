@@ -100,7 +100,7 @@ Dans ce tutoriel nous présentons l'algorithme dans les grandes lignes, puis nou
 ## Comprendre chaque étape de la pipeline 
 
 
-La pipeline de BERTopic est relativement simple. En entrée, on renseigne un certain nombre de documents et en sortie, on obtient un certains nombre de groupes (les _topics_) définis par des documents constitutifs du groupe, ainsi que des mots clefs spécifiques. 
+La pipeline de BERTopic est relativement simple. Comme illustré à la Figure 1, on renseigne un certain nombre de documents en entrée et en sortie, on obtient un certains nombre de groupes (les _topics_) définis par des documents constitutifs du groupe, ainsi que des mots clefs spécifiques. 
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-01.png" alt="Visual description of figure image" caption="Figure 1. Les entrées sorties de la pipeline BERTopic." %}
 
@@ -140,7 +140,7 @@ Revenons plus précisément sur chaque étape et identifions les concepts clefs 
 
 ### 1. Transformer les documents en vecteurs mathématiques 
 
-Pour que la machine puisse manipuler des documents textuels, nous avons besoin de transformer les textes en des vecteurs de plusieurs centaines de dimensions : des **plongements** (_embeddings_). Ces plongements sont obtenus grâce à un modèle de languages entraînés à reconnaître des motifs dans les textes observés et à distinguer des textes qui sont sémantiquements proches, de textes qui ne le sont pas. La force de ces modèles est d'encapsuler énormément d'informations présentes dans le texte dans un vecteur (représentation dense) 
+Pour que la machine puisse manipuler des documents textuels, nous avons besoin de transformer les textes en des vecteurs de plusieurs centaines de dimensions : des **plongements** (_embeddings_). Ces plongements sont obtenus grâce à un modèle de languages entraînés à reconnaître des motifs dans les textes observés et à distinguer des textes qui sont sémantiquements proches, de textes qui ne le sont pas. La force de ces modèles est d'encapsuler le contexte d'apparition d'un mot le texte dans un vecteur (représentation dense). La Figure 3 est un exemple fictionnel de plogements de mots: dans un premier cas, "souris" et "mulot" font référence à de petits rongeurs, leur score de similarité est élevé; dans l'autre cas, une souris d'ordinateur n'est plus un rongeur mais un accessoire pour ordinateur, le score de similarité avec "mulot" chute.
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-03.png" alt="Visual description of figure image" caption="Figure 3. Schéma explicatif des modèles de plongements." %}
 
@@ -314,7 +314,7 @@ topic_model.visualize_documents(
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-06.png" alt="Visual description of figure image" caption="Figure 6. Projection 2D des documents et des thèmes identifiés." %}
 
-Sur le graphe, on peut voir que le thème "3_écoulement_est_méthode" et "107_hépatocytes_foie_chc" sont proches tandis que "2_robot_images_pour" est à l'opposé. 
+À la figure 6, on peut voir que le thème "3_écoulement_est_méthode" et "107_hépatocytes_foie_chc" sont proches tandis que "2_robot_images_pour" est à l'opposé. 
 
 **Visualiser les mots clefs par thème**
 
@@ -326,7 +326,7 @@ topic_model.visualize_barchart(nwords=5)
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-07.png" alt="Visual description of figure image" caption="Figure 7. Visualisation des mots clefs par groupes." %}
 
-Par exemple, le thème n°7 identifie les mots clefs "poésie", "poétique", "écriture" ou encore "littéraire". On constate que ces mots clefs sont cohérents ensemble et on peut facilement imaginer que ce thème regroupe des thèses de littérature qui étudient des oeuvres de poésie.
+À la Figure 7, le thème n°7 identifie les mots clefs "poésie", "poétique", "écriture" ou encore "littéraire". On constate que ces mots clefs sont cohérents ensemble et on peut facilement imaginer que ce thème regroupe des thèses de littérature qui étudient des oeuvres de poésie.
 
 **Arbres hiérarchiques** 
 
@@ -338,7 +338,7 @@ topic_model.visualize_hierarchy()
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-08.png" alt="Visual description of figure image" caption="Figure 8. Graphe hiérarchique." %}
 
-Tout en haut de ce graphe en rouge, on peut notamment voir que des thèmes liés au droit, au droit constitutionnel et pénal sont placés très proches et que leurs branches se rejoignent très rapidement.
+Tout en haut de la Figure 8, en rouge, on peut notamment voir que des thèmes liés au droit, au droit constitutionnel et pénal sont placés très proches et que leurs branches se rejoignent très rapidement.
 
 ### Mieux choisir ses hyper-paramètres
 
@@ -387,7 +387,7 @@ topic_model = BERTopic(
 topics, probabilities = topic_model.fit_transform(documents=df["resumes.fr"])
 ```
 
-avec ces paramètres on obtient les résultats suivant: 
+avec ces paramètres on obtient les résultats affichés dans le Tableau 3 et la Figure 11.
 
 <div class="table-wrapper" markdown="block">
 

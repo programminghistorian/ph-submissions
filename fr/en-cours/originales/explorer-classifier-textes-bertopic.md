@@ -40,7 +40,7 @@ Ce tutoriel requiert d'avoir une certaine aisance avec Python. Par exemple, nous
 - Utiliser les syntaxes de base de Python (rédaction de fonctions, loupes "for" et conditions).
 - Réaliser les manipulations basiques avec les tableaux de données avec Pandas (ouvrir un fichier, création, supression de colonnes)
 
-Ce tutoriel aborde aussi des notions de Natural Language Processing (NLP) et de Machine Learning. Dans ce tutoriel, nous présentons certains concepts dans les grandes lignes mais nous ne rentrons pas dans les détails. Nous redirigeons cependant vers des ressources qui font ce travail. 
+Ce tutoriel aborde aussi des notions de Traitement Automatique du Langage (TAL; en anglais: Natural Language Processing, NLP) et de Machine Learning. Dans ce tutoriel, nous présentons certains concepts dans les grandes lignes mais nous ne rentrons pas dans les détails. Nous redirigeons cependant vers des ressources qui font ce travail. 
 
 Pour une remise à niveau, vous pouvez consulter les ressources suivantes: 
 
@@ -79,8 +79,8 @@ umap_learn==0.5.7
 
 Il est crucial d'avoir une compréhension générale du corpus de texte que nous étudions: Existe-t-il une manière de regrouper des documents ? Que représentent ces groupes ? Comment cette organisation en groupe structure t-elle mon corpus ? Ou encore, quelles sont les différences majeures entre deux groupes ? Pour répondre à ces questions, un.e chercheur.euse en sciences sociales peut utiliser des techniques de **topic modelling**.
 
-Le **topic modelling** est une famille d'algorithmes appartenant au domaine du NLP et visant à extraire les thèmes latents qui structurent un corpus de textes. <br/>
-Le **Natural Language Processing** est un domaine issu des sciences informatiques et qui vise à analyser des données textuelles. Parmis les nombreuses tâches de NLP, on peut mentionner la génération de texte, la classification de textes, ou bien le topic modelling. 
+Le **topic modelling** est une famille d'algorithmes appartenant au domaine du TAL et visant à extraire les thèmes latents qui structurent un corpus de textes. <br/>
+Le **Natural Language Processing** est un domaine issu des sciences informatiques et qui vise à analyser des données textuelles. Parmis les nombreuses tâches de TAL, on peut mentionner la génération de texte, la classification de textes, ou bien le topic modelling. 
 
 Le travail de Jockers & Mimno (2013) illustre très bien une tâche de topic modelling,l'équipe a cherché à extraire les thèmes centraux de la littérature anglaise du XIXè siècle, ou bien Bizel-Bizellot et al. (2024) qui ont analysé les conditions de transmission du COVID-19 grâce à des réponses ouvertes d'un sondage. Nous identifions trois phases pour lesquelles il est utile de recourir à ces outils : 
 
@@ -91,7 +91,7 @@ Le travail de Jockers & Mimno (2013) illustre très bien une tâche de topic mod
 Pendant longtemps, la LDA[^1] a été la technique la plus utilisée pour ce genre de tâche. Cette méthode cherche à représenter un document comme une imbrication de séquences relevant de thèmes différents.
 
 BERTopic se veut comme la mise à jour de ces techniques en mettant à profit les modèles de langue développés après 2017 et qui ont donné naissance à l'ensemble des IA génératives si répandues aujourd'hui.<br/>
-Le projet BERTopic regroupe un [preprint](https://arxiv.org/pdf/2203.05794) mais aussi un dépot [Github](https://github.com/MaartenGr/BERTopic), la librairie bertopic publiée sur [Pip](https://pypi.org/project/bertopic/); l'outil développé s'ancre à la fois dans la recherche et la communauté open-source; L'outil tire parti des derniers concepts de la recherche en NLP et Machine Learning et propose une syntaxe simple et modulaire pour garantir la facilité d'utilisation, la mise en place rapide et ce, de manière à s'adapter aisément aux besoins spécifiques. 
+Le projet BERTopic regroupe un [preprint](https://arxiv.org/pdf/2203.05794) mais aussi un dépot [Github](https://github.com/MaartenGr/BERTopic), la librairie bertopic publiée sur [Pip](https://pypi.org/project/bertopic/); l'outil développé s'ancre à la fois dans la recherche et la communauté open-source; L'outil tire parti des derniers concepts de la recherche en TAL et Machine Learning et propose une syntaxe simple et modulaire pour garantir la facilité d'utilisation, la mise en place rapide et ce, de manière à s'adapter aisément aux besoins spécifiques. 
 
 Le fort engouement autour de cet outil a donné naissance à une communauté d'utilisateur.ices qui utilisent et proposent des formations à cet outil, comme le présent tutoriel. 
 

@@ -82,7 +82,7 @@ Il est crucial d'avoir une compréhension générale du corpus de texte que nous
 Le **topic modelling** est une famille d'algorithmes appartenant au domaine du NLP et visant à extraire les thèmes latents qui structurent un corpus de textes. <br/>
 Le **Natural Language Processing** est un domaine issu des sciences informatiques et qui vise à analyser des données textuelles. Parmis les nombreuses tâches de NLP, on peut mentionner la génération de texte, la classification de textes, ou bien le topic modelling. 
 
-Pour illustrer les tâches de topic modelling, on peut mentionner le travail de Jockers & Mimno (2013) qui ont cherché à extraire les thèmes centraux de la littérature anglaise du XIXè siècle, ou bien Bizel-Bizellot et al. (2024) qui ont analysé les conditions de transmission du COVID-19 grâce à des réponses ouvertes d'un sondage. On identifie trois phases pour lesquelles on peut avoir recours à ces outils : 
+Le travail de Jockers & Mimno (2013) illustre très bien une tâche de topic modelling,l'équipe a cherché à extraire les thèmes centraux de la littérature anglaise du XIXè siècle, ou bien Bizel-Bizellot et al. (2024) qui ont analysé les conditions de transmission du COVID-19 grâce à des réponses ouvertes d'un sondage. Nous identifions trois phases pour lesquelles il est utile de recourir à ces outils : 
 
 - Exploratoire : Avoir une vision générale du corpus, identifier les outliers, anticiper le nettoyage et filtrage d'un corpus.
 - En cours d'analyse : Sélectionner une diversité de sources, identifier des grands axes pour assister une tâche d'annotation.
@@ -100,7 +100,7 @@ Dans ce tutoriel nous présentons l'algorithme dans les grandes lignes, puis nou
 ## Comprendre chaque étape de la pipeline 
 
 
-La pipeline de BERTopic est relativement simple. Comme illustré à la Figure 1, on renseigne un certain nombre de documents en entrée et en sortie, on obtient un certains nombre de groupes (les _topics_) définis par des documents constitutifs du groupe, ainsi que des mots clefs spécifiques. 
+La pipeline de BERTopic est relativement simple. Comme illustré à la Figure 1, nous renseignons un certain nombre de documents en entrée et en sortie, nous obtienons un certains nombre de groupes (les _topics_) définis par des documents constitutifs du groupe, ainsi que des mots clefs spécifiques. 
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-01.png" alt="Visual description of figure image" caption="Figure 1. Les entrées sorties de la pipeline BERTopic." %}
 
@@ -148,7 +148,7 @@ Pour obtenir ces plongements nous utilisons la bibliothèque [Sentence Transform
 
 Dans le cas du Topic modelling, nous utilisons ces modèles dans l'espoir que les plongements générés encapsule une forme de motif: celui du thème abordé. Un texte abordant les effets de crises économiques sur la population Française devrait être sémantiquement plus proche d'un texte abordant les stratégies de financement de la transition écologique que d'un texte étudiant un accélérateur de particule. 
 
-Cependant, du fait du [fléau de la dimension (_curse of dimensionality_)](https://fr.wikipedia.org/wiki/Fl%C3%A9au_de_la_dimension), il est très difficile et couteux de regrouper des objets dans un espace à 500 dimensions. Ainsi, la procédure inclus une étape de [**réduction de dimensionalité**](https://fr.wikipedia.org/wiki/R%C3%A9duction_de_la_dimensionnalit%C3%A9), qui projette les objets dans un espace de 2 à 10 dimensions en général. Pour ce faire, on utilise l'algorithme **UMAP** pour sa capacité à conserver les structures locales et globales (McInnes et al., 2018). Ainsi, malgré la réduction de dimensions, on conserve la structure générale de l'espace de plongement (deux documents radicalement différents resteront très éloignés) tout en conservant certains détails locaux.
+Cependant, du fait du [fléau de la dimension (_curse of dimensionality_)](https://fr.wikipedia.org/wiki/Fl%C3%A9au_de_la_dimension), il est très difficile et couteux de regrouper des objets dans un espace à 500 dimensions. Ainsi, la procédure inclus une étape de [**réduction de dimensionalité**](https://fr.wikipedia.org/wiki/R%C3%A9duction_de_la_dimensionnalit%C3%A9), qui projette les objets dans un espace de 2 à 10 dimensions en général. Pour ce faire, on utilise l'algorithme **UMAP** pour sa capacité à conserver les structures locales et globales (McInnes et al., 2018). Ainsi, malgré la réduction de dimensions, la structure générale de l'espace de plongement est concervée (deux documents radicalement différents resteront très éloignés) tout en conservant certains détails locaux.
 
 À la fin de cette étape nous disposons, pour chaque texte, d'un plongement compressé encapsulant la signification du texte.
 
@@ -158,11 +158,11 @@ Puisque nous disposons de nombreux plongements, nous pouvons tenter d'identifier
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-04.jpg" alt="Visual description of figure image" caption="Figure 4. Schéma de clustering, [scikit-learn](https://scikit-learn.org/stable/modules/clustering.html)." %}
 
-Dans le cas de l'analyse textuelle les groupes ne sont pas si saillants comme on peut le voir à la Figure 2. Ainsi la pipeline de BERTopic utilise l'algorithme de classification [**HDBSCAN**](https://hdbscan.readthedocs.io/en/latest/how_hdbscan_works.html) pour sa capacité à détecter des groupes de forme et densité différentes.
+Dans le cas de l'analyse textuelle les groupes ne sont pas si saillants comme nous pouvons le voir à la Figure 2. Ainsi la pipeline de BERTopic utilise l'algorithme de classification [**HDBSCAN**](https://hdbscan.readthedocs.io/en/latest/how_hdbscan_works.html) pour sa capacité à détecter des groupes de forme et densité différentes.
 
 ### 3. Identifier les mots clefs qui représentent le mieux la spécificité de chaque topic.
 
-Une fois que les groupes sont constitués, il nous reste à identifier les mots clefs qui représentent au mieux la spécificité de chaque _topic_. Pour ce faire, on utilise des techniques basées sur le comptage des mots en utilisant l'objet [`CountVectorizer`](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) de [`scikit-learn`](https://scikit-learn.org/stable/)[^2]. On obtient alors une matrice `terme x document` auquel on applique une transformation. Cette transformation, appelée [c-TF-IDF](https://maartengr.github.io/BERTopic/getting_started/ctfidf/ctfidf.html)[^3], a pour but de sélectionner les mots qui apparaissent le plus au sein du groupe, et n'apparaissent pas dans les autres.
+Une fois que les groupes sont constitués, il nous reste à identifier les mots clefs qui représentent au mieux la spécificité de chaque _topic_. Pour ce faire, on utilise des techniques basées sur le comptage des mots en utilisant l'objet [`CountVectorizer`](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) de [`scikit-learn`](https://scikit-learn.org/stable/)[^2]. Le résultat est alors une matrice `terme x document` auquel on applique une transformation. Cette transformation, appelée [c-TF-IDF](https://maartengr.github.io/BERTopic/getting_started/ctfidf/ctfidf.html)[^3], a pour but de sélectionner les mots qui apparaissent le plus au sein du groupe, et n'apparaissent pas dans les autres.
 
 ### Conclusion
 
@@ -273,7 +273,7 @@ topic_model.get_topic_info()
 
 **Tableau 2**: Informations des _topics_ retournés par BERTopic pour le corpus des thèses défendues en France.
 
-Dans la Tableau 2, la colonne représentation renseigne les mots clefs identifiés pour chaque thème. On observe que les mots clefs du groupe bruit (groupe n°-1) ne donnent aucune information. Pour les autres sujets, on retrouve une suite de mots cohérents, par exemple: 
+Dans la Tableau 2, la colonne représentation renseigne les mots clefs identifiés pour chaque thème. Nous observons que les mots clefs du groupe bruit (groupe n°-1) ne donnent aucune information. Pour les autres sujets, nous retrouvons une suite de mots cohérents, par exemple: 
 
 - 'cellules', 'cancer', 'patients' : ce groupe pourrait être représentatif d'un thème lié au à la recherche contre le cancer.
 - 'bâtiment', 'air', 'ventilation', 'chauffage': ce groupe pourrait représenter un thème lié à l'étude de la balance énergétique des bâtiments.
@@ -298,7 +298,7 @@ topics_reduced = topic_model.reduce_outliers(
 
 ### Afficher les résultats sous forme de graphe
 
-Dans cette section, on présente 3 graphes très pratiques pour explorer le topic model et commencer le travail d'évaluation. 
+Dans cette section, nous présentons 3 graphes très pratiques pour explorer le topic model et commencer le travail d'évaluation. 
 
 **2D plot**
 
@@ -314,11 +314,11 @@ topic_model.visualize_documents(
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-06.png" alt="Visual description of figure image" caption="Figure 6. Projection 2D des documents et des thèmes identifiés." %}
 
-À la figure 6, on peut voir que le thème "3_écoulement_est_méthode" et "107_hépatocytes_foie_chc" sont proches tandis que "2_robot_images_pour" est à l'opposé. 
+À la figure 6, nous voyons que le thème "3_écoulement_est_méthode" et "107_hépatocytes_foie_chc" sont proches tandis que "2_robot_images_pour" est à l'opposé. 
 
 **Visualiser les mots clefs par thème**
 
-Dans un deuxième temps, on peut représenter les $n$ mots représentant au mieux chaque thème. Cette représentation peut être utile pour analyser la cohérence interne de chaque thème.
+Dans un deuxième temps, nous représentons les $n$ mots représentant au mieux chaque thème. Cette représentation peut être utile pour analyser la cohérence interne de chaque thème.
 
 ```python 
 topic_model.visualize_barchart(nwords=5)
@@ -326,11 +326,11 @@ topic_model.visualize_barchart(nwords=5)
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-07.png" alt="Visual description of figure image" caption="Figure 7. Visualisation des mots clefs par groupes." %}
 
-À la Figure 7, le thème n°7 identifie les mots clefs "poésie", "poétique", "écriture" ou encore "littéraire". On constate que ces mots clefs sont cohérents ensemble et on peut facilement imaginer que ce thème regroupe des thèses de littérature qui étudient des oeuvres de poésie.
+À la Figure 7, le thème n°7 identifie les mots clefs "poésie", "poétique", "écriture" ou encore "littéraire". Nous constatons que ces mots clefs sont cohérents ensemble et nous imaginons facilement que ce thème regroupe des thèses de littérature qui étudient des oeuvres de poésie.
 
 **Arbres hiérarchiques** 
 
-Enfin, pour comprendre l'agencement des thèmes les uns par rapport aux autres, on peut afficher le topic model sous forme d'un dendogramme. On lit ce graphe de la gauche vers la droite, deux thèmes proches seront regroupés ensemble, et leurs branches se joindront à gauche.
+Enfin, pour comprendre l'agencement des thèmes les uns par rapport aux autres, nous affichons le topic model sous forme d'un dendogramme. Nous lisons ce graphe de la gauche vers la droite, deux thèmes proches seront regroupés ensemble, et leurs branches se joindront à gauche.
 
 ```python
 topic_model.visualize_hierarchy()
@@ -338,7 +338,7 @@ topic_model.visualize_hierarchy()
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-08.png" alt="Visual description of figure image" caption="Figure 8. Graphe hiérarchique." %}
 
-Tout en haut de la Figure 8, en rouge, on peut notamment voir que des thèmes liés au droit, au droit constitutionnel et pénal sont placés très proches et que leurs branches se rejoignent très rapidement.
+Tout en haut de la Figure 8, en rouge, nous voyons notamment que des thèmes liés au droit, au droit constitutionnel et pénal sont placés très proches et que leurs branches se rejoignent très rapidement.
 
 ### Mieux choisir ses hyper-paramètres
 
@@ -352,17 +352,17 @@ Le premier hyperparamètre est le choix du modèle. En effet, la qualité des pl
 
 On peut visuellement voir que la Figure 9 et la Figure 10 sont très différentes. La Figure 10 est très éclatée, pouvant indiquer que le topic model a identifié des groupes très distincts. Cependant, en regardant de plus près, les groupes géométriques sont composés de documents provenant de nombreux groupes différents et ne proposent pas la continuité des thèmes observable dans la Figure 9.
 
-Une fois que l'on est assuré de la qualité des plongements, on peut modifier la granularité du topic model en modifiant les paramètres `n_neighbors` et `min_cluster_size`. Plus ces deux paramètres seront petits, plus le topic model sera spécifique, et donc, génerera des thèmes de quelques documents.
+Une fois que l'on est assuré de la qualité des plongements, nous pouvons modifier la granularité du topic model en modifiant les paramètres `n_neighbors` et `min_cluster_size`. Plus ces deux paramètres seront petits, plus le topic model sera spécifique, et donc, génerera des thèmes de quelques documents.
 
 Il est important de noter que ces paramètres dépendent de la taille du corpus! En effet, pour un corpus de 5 000 éléments, `n_neighbor=300` est une valeur très grande, mais pour un corpus de 50 000, cette valeur peut être moyenne.
 
-Pour modifier ces valeurs, on utilise les lignes suivantes: 
+Pour modifier ces valeurs, nous écrivons les lignes suivantes: 
 
 ```python 
 from umap import UMAP
 from hdbscan import HDBSCAN
 
-# On créé un modèle HDBSCAN et UMAP indépendants
+# Création d'un modèle HDBSCAN et UMAP indépendants
 hdbscan_model = HDBSCAN(
     min_cluster_size=70, 
     # Default parameters 
@@ -378,7 +378,7 @@ umap_model = UMAP(
     random_state = 42 # Permet la complète réplicabilité de la pipeline
 )
 
-# Puis on les renseigne quand on créé le topic model
+# Puis nous les renseignons quand à la création du topic model
 topic_model = BERTopic(
     language = "french",
     umap_model= umap_model,
@@ -387,7 +387,7 @@ topic_model = BERTopic(
 topics, probabilities = topic_model.fit_transform(documents=df["resumes.fr"])
 ```
 
-avec ces paramètres on obtient les résultats affichés dans le Tableau 3 et la Figure 11.
+avec ces paramètres nous obtienons les résultats affichés dans le Tableau 3 et la Figure 11.
 
 <div class="table-wrapper" markdown="block">
 
@@ -418,11 +418,11 @@ Ou bien après coup :
 topic_model.reduce_topics(docs = docs, nr_topics=8)
 ```
 
-Attention, cette ligne de code écrase les résultats précédents. On vous conseille alors de sauvegarder régulièrement vos résultats.
+Attention, cette ligne de code écrase les résultats précédents. Nous vous conseillons alors de sauvegarder régulièrement vos résultats.
 
 ### Sauvegarder les données
 
-Pour sauvegarder les résultats on peut sauvegarder chaque graphe, mais on peut aussi sauvegarder l'objet `topic_model` de la manière suivante :
+Pour sauvegarder les résultats nous pouvons sauvegarder chaque graphe, mais nous pouvons aussi sauvegarder l'objet `topic_model` de la manière suivante :
 
 ```python
 topic_model.save(
@@ -456,7 +456,7 @@ Vous pouvez faire des tests grâce à des jeux de données mis à disposition su
 
 ## Conclusion
 
-Dans ce tutoriel on a présenté ce qu'était un topic model et comment ces modèles étaient utilisés dans les sciences sociales. Nous avons notamment mentionné son utilisation dans une phase exploratoire afin de mieux connaître son corpus ou en phase confirmatoire afin de confronter notre lecture avec un outil automatique. <br/>
+Dans ce tutoriel nous avons présenté ce qu'était un topic model et comment ces modèles étaient utilisés dans les sciences sociales. Nous avons notamment mentionné son utilisation dans une phase exploratoire afin de mieux connaître son corpus ou en phase confirmatoire afin de confronter notre lecture avec un outil automatique. <br/>
 Ensuite, nous avons présenté l'outil BERTopic et comment il permettait d'obtenir des thèmes à partir de plongements et un modèle de clustering. <br/>
 Enfin, nous avons illustrer un cas simple avec les commandes usuelles pour créer le topic model et créer des visualisation et sauvegarder les résultats.
 

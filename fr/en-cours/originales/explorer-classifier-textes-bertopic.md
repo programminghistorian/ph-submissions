@@ -40,7 +40,7 @@ Ce tutoriel requiert d'avoir une certaine aisance avec Python. Par exemple, nous
 - Utiliser les syntaxes de base de Python (rédaction de fonctions, loupes "for" et conditions).
 - Réaliser les manipulations basiques avec les tableaux de données avec Pandas (ouvrir un fichier, création, supression de colonnes)
 
-Ce tutoriel aborde aussi des notions de Traitement Automatique du Langage (TAL; en anglais: Natural Language Processing, NLP) et de Machine Learning. Dans ce tutoriel, nous présentons certains concepts dans les grandes lignes mais nous ne rentrons pas dans les détails. Nous redirigeons cependant vers des ressources qui font ce travail. 
+Ce tutoriel aborde aussi des notions de Traitement Automatique du Langage (TAL; en anglais: *Natural Language Processing*, NLP) et de l'Apprentissage Automatique (*Machine Learning* en anglais). Dans ce tutoriel, nous présentons certains concepts dans les grandes lignes mais nous ne rentrons pas dans les détails. Nous redirigeons cependant vers des ressources qui font ce travail. 
 
 Pour une remise à niveau, vous pouvez consulter les ressources suivantes: 
 
@@ -91,7 +91,7 @@ Le travail de Jockers & Mimno (2013) illustre très bien une tâche de topic mod
 Pendant longtemps, la LDA[^1] a été la technique la plus utilisée pour ce genre de tâche. Cette méthode cherche à représenter un document comme une imbrication de séquences relevant de thèmes différents.
 
 BERTopic se veut comme la mise à jour de ces techniques en mettant à profit les modèles de langue développés après 2017 et qui ont donné naissance à l'ensemble des IA génératives si répandues aujourd'hui.<br/>
-Le projet BERTopic regroupe un [preprint](https://arxiv.org/pdf/2203.05794) mais aussi un dépot [Github](https://github.com/MaartenGr/BERTopic), la librairie bertopic publiée sur [Pip](https://pypi.org/project/bertopic/); l'outil développé s'ancre à la fois dans la recherche et la communauté open-source; L'outil tire parti des derniers concepts de la recherche en TAL et Machine Learning et propose une syntaxe simple et modulaire pour garantir la facilité d'utilisation, la mise en place rapide et ce, de manière à s'adapter aisément aux besoins spécifiques. 
+Le projet BERTopic regroupe un [preprint](https://arxiv.org/pdf/2203.05794) mais aussi un dépot [Github](https://github.com/MaartenGr/BERTopic), la librairie bertopic publiée sur [Pip](https://pypi.org/project/bertopic/); l'outil développé s'ancre à la fois dans la recherche et la communauté open-source; L'outil tire parti des derniers concepts de la recherche en TAL et Apprentissage Automatique et propose une syntaxe simple et modulaire pour garantir la facilité d'utilisation, la mise en place rapide et ce, de manière à s'adapter aisément aux besoins spécifiques. 
 
 Le fort engouement autour de cet outil a donné naissance à une communauté d'utilisateur.ices qui utilisent et proposent des formations à cet outil, comme le présent tutoriel. 
 
@@ -237,7 +237,7 @@ Puis de _"fit"_ le modèle sur nos données :
 topic_model.fit(documents = df["resumes.fr"])
 ```
 
-_Nota: la syntaxe `.fit`, `transform` et `fit_transform` reprend la syntaxe définie par Scikit-learn, l'une des premières librairies de Machine Learning et l'une des plus complète! La méthode `.fit` adapte un modèle à nos données, tandis que `.transform` permet d'utiliser le modèle pour faire des prédictions._
+_Nota: la syntaxe `.fit`, `transform` et `fit_transform` reprend la syntaxe définie par Scikit-learn, l'une des premières librairies d'Apprentissage Automatique et l'une des plus complète! La méthode `.fit` adapte un modèle à nos données, tandis que `.transform` permet d'utiliser le modèle pour faire des prédictions._
 
 Nous pouvons extraire les thèmes de la manière suivante: 
 
@@ -481,7 +481,7 @@ Stammbach, D., Zouhar, V., Hoyle, A., Sachan, M., & Ash, E. (2023). Revisiting A
 
 [^1]: [Wikipedia](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation): La LDA est un modèle statistique génératif qui cherche à décrire une collection de textes avec une liste de "thème" non-connu _a priori_. [Voir une implémentation Python](https://radimrehurek.com/gensim/auto_examples/tutorials/run_lda.html).
 
-[^2]: [Scikit-Learn](https://scikit-learn.org/stable/) est une bibliothèque pionière en machine learning et qui a un large rayonnement sur le domaine.
+[^2]: [Scikit-Learn](https://scikit-learn.org/stable/) est une bibliothèque pionière en Apprentissage Automatique et qui a un large rayonnement sur le domaine.
 
 [^3]: Le nom c-TF-IDF vient de la transformation [TF-IDF](https://fr.wikipedia.org/wiki/TF-IDF) appliquée à chaque groupe, ou classe de documents.
 

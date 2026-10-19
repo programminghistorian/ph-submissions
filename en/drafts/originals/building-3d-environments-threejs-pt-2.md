@@ -17,7 +17,7 @@ difficulty: 3
 activity: presenting
 topics: [website, creative-coding]
 abstract: This lesson is the second part of a two-part lesson series on using the three.js JavaScript library to create interactive websites featuring 3D cultural heritage models. In this Part 2, you will learn how to enable user selection of the different models of ceramic vessels to trigger the display of informative text. You will also learn how to add interactive features that turn the website into a game.
-avatar_alt: Visual description of lesson image
+avatar_alt: An illustration of a shallow, round vessel with linear and geometric decorations, accompanied by two pottery fragments featuring triangular and wavy patterns.
 doi: XX.XXXXX/phen0000
 sequence: 2
 previous: building-3d-environments-threejs-pt-1

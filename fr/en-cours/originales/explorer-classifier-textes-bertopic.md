@@ -34,11 +34,11 @@ doi: XX.XXXXX/phen0000
 
 ### Prérequis 
 
-Ce tutoriel requiert d'avoir une certaine aisance avec Python. Par exemple, nous attendons des lecteur.ice.s se savoir: 
+Ce tutoriel requiert d'avoir une certaine aisance avec Python. Par exemple, nous attendons des lecteur.ice.s de savoir: 
 
 - Initialiser son environnement et installer des librairies.
-- Utiliser les syntaxes de base de Python (rédaction de fonctions, loupes "for" et conditions).
-- Réaliser les manipulations basiques avec les tableaux de données avec Pandas (ouvrir un fichier, création, supression de colonnes)
+- Utiliser les syntaxes de base de Python (rédaction de fonctions, boucles "for" et conditions).
+- Utiliser la librairie Pandas pour des manipulations basiques de tableaux de données (ouvrir un fichier, création, supression de colonnes)
 
 Ce tutoriel aborde aussi des notions de Traitement Automatique du Langage (TAL; en anglais: *Natural Language Processing*, NLP) et de l'Apprentissage Automatique (*Machine Learning* en anglais). Dans ce tutoriel, nous présentons certains concepts dans les grandes lignes mais nous ne rentrons pas dans les détails. Nous redirigeons cependant vers des ressources qui font ce travail. 
 
@@ -54,7 +54,7 @@ Dans le cadre de ce tutoriel, nous mettons à disposition plusieurs fichiers sur
 
 - Le jeux de données complet et nettoyé (700 Mo) : La procédure de nettoyage de données est renseignée [ici (written in English)](https://css-polytechnique.github.io/css-ipp-materials/pages/techy-notes.html#curations-of-the-original-dataset).
 - Un extrait stratitifié du jeu de données (30 Mo) : Nous avons tiré 500 lignes par années; en tout, ce jeu de données contient 6500 lignes.
-- Un ensemble de jeux de plongements : Nous proposons 9 jeux de plongements pour 3 modèles différents ([Alibaba-NLP/gte-multilingual-base](https://huggingface.co/Alibaba-NLP/gte-multilingual-base), [sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2), [Qwen/Qwen3-0.6B](https://huggingface.co/Qwen/Qwen3-0.6B)), deux langues (anglais et français) et deux techniques de génération différentes (pipeline[^pipeline] HuggingFace ou SBERT). Ces jeux de plongements permettent d'étudier rapidement l'impact du changement de modèle sur les résultats du topic model. Pour savoir comment les utiliser, voir la section Sauvegarder les données. Vous pouvez télécharger tous les plongements (200Mo), ou un jeu à la fois (30Mo/fichier).
+- Un ensemble de jeux de plongements[^jeux-plongements] : Nous proposons 9 jeux de plongements pour 3 modèles différents ([Alibaba-NLP/gte-multilingual-base](https://huggingface.co/Alibaba-NLP/gte-multilingual-base), [sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2), [Qwen/Qwen3-0.6B](https://huggingface.co/Qwen/Qwen3-0.6B)), deux langues (anglais et français) et deux techniques de génération différentes (pipeline[^pipeline] HuggingFace ou SBERT). Ces jeux de plongements permettent d'étudier rapidement l'impact du changement de modèle sur les résultats du topic model. Pour savoir comment les utiliser, voir la section Sauvegarder les données. Vous pouvez télécharger tous les plongements (200Mo), ou un jeu à la fois (30Mo/fichier).
 
 <div class="alert alert-info">
 Ces données ont été rendues disponibles dans le cadre de la publication de ce tutoriel <a href='https://css-polytechnique.github.io/css-ipp-materials/pages/bertopic-tutorial.html'>The General Inquirer in the time of LLMs: a BERTopic tutorial</a> en anglais, dont le présent tutoriel est une adaptation.
@@ -75,7 +75,9 @@ transformers==4.52.4
 umap_learn==0.5.7
 ```
 
-## Le topic modelling, une tâche répendue en sciences sociales
+Pour l'installer, copiez ces lignes ci-dessus dans un fichier `requirements.txt`, puis lancez la commande `pip install -r requirements.txt`.
+
+## Le topic modelling, une tâche répandue en sciences sociales
 
 Il est crucial d'avoir une compréhension générale du corpus de texte que nous étudions: Existe-t-il une manière de regrouper des documents ? Que représentent ces groupes ? Comment cette organisation en groupe structure t-elle mon corpus ? Ou encore, quelles sont les différences majeures entre deux groupes ? Pour répondre à ces questions, un.e chercheur.euse en sciences sociales peut utiliser des techniques de **topic modelling**.
 
@@ -91,7 +93,7 @@ Le travail de Jockers & Mimno (2013) illustre très bien une tâche de topic mod
 Pendant longtemps, la LDA[^1] a été la technique la plus utilisée pour ce genre de tâche. Cette méthode cherche à représenter un document comme une imbrication de séquences relevant de thèmes différents.
 
 BERTopic se veut comme la mise à jour de ces techniques en mettant à profit les modèles de langue développés après 2017 et qui ont donné naissance à l'ensemble des IA génératives si répandues aujourd'hui.<br/>
-Le projet BERTopic regroupe un [preprint](https://arxiv.org/pdf/2203.05794) mais aussi un dépot [Github](https://github.com/MaartenGr/BERTopic), la librairie bertopic publiée sur [Pip](https://pypi.org/project/bertopic/); l'outil développé s'ancre à la fois dans la recherche et la communauté open-source; L'outil tire parti des derniers concepts de la recherche en TAL et Apprentissage Automatique et propose une syntaxe simple et modulaire pour garantir la facilité d'utilisation, la mise en place rapide et ce, de manière à s'adapter aisément aux besoins spécifiques. 
+Le projet BERTopic regroupe un [preprint](https://arxiv.org/pdf/2203.05794) mais aussi un dépot [Github](https://github.com/MaartenGr/BERTopic) et une librairie bertopic publiée sur [Pip](https://pypi.org/project/bertopic/); cet outil est ancré à la fois dans la recherche et la communauté open-source. L'outil tire parti des derniers concepts de la recherche en TAL et Apprentissage Automatique et propose une syntaxe simple et modulaire. L'architecture est pensée pour garantir une facilité d'utilisation et une prise en main rapide, tout en proposant des alternatives afin de s'adapter aux besoins spécifiques. 
 
 Le fort engouement autour de cet outil a donné naissance à une communauté d'utilisateur.ices qui utilisent et proposent des formations à cet outil, comme le présent tutoriel. 
 
@@ -99,12 +101,11 @@ Dans ce tutoriel nous présentons l'algorithme dans les grandes lignes, puis nou
 
 ## Comprendre chaque étape de la pipeline 
 
-
 La pipeline de BERTopic est relativement simple. Comme illustré à la Figure 1, nous renseignons un certain nombre de documents en entrée et en sortie, nous obtienons un certains nombre de groupes (les _topics_) définis par des documents constitutifs du groupe, ainsi que des mots clefs spécifiques. 
 
 {% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-01.png" alt="Visual description of figure image" caption="Figure 1. Les entrées sorties de la pipeline BERTopic." %}
 
-La Tableau 1 est un exemple de résultat sous forme de tableau récapitulatif; la Tableau 1 est la représentation visuelle de ces _topics_, leur taille et agencement les uns par rapport aux autres. Dans cet exemple nous avons donné au modèle des résumés de thèses défendues en France. Le résultat du topic model permet de repérer les grandes disciplines comme la Physique, la Biologie ou les Sciences Politiques. 
+Pour illustrer le fonctionnement, nous avons donné au modèle des résumés de thèses défendues en France. Le résultat du topic model permet de repérer les grandes disciplines comme la Physique, la Biologie ou les Sciences Politiques. Le Tableau 1 présente ces résultats sous forme de tableau récapitulatif et la Figure 2 est la représentation visuelle de ces topics, leur taille et agencement les uns par rapport aux autres.
 
 <div class="table-wrapper" markdown="block">
 
@@ -170,16 +171,16 @@ Nous avons donc définit toutes les briques de la procédure illustrée à la Fi
 
 1. Génération de plongements qui encapsulent la sémantique des textes avec **SBERT**, puis réduction du nombre de dimensions avec **UMAP**.
 2. Création de groupes de textes sémantiquement proches avec **HDBSCAN**. 
-3. Identification de mots représentant au mieux un thème à partir d'une matrice `terme x document` et une transformation c-TF-IDF.
+3. Identification de mots représentant au mieux un thème à partir d'une matrice `terme x document` et une transformation **c-TF-IDF**.
 
 Ces étapes sont représentées sur le schéma mis en avant dans la documentation: 
 
-{% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-05.png" alt="Visual description of figure image" caption="Figure 5. Les 6 étapes clefs de BERTopic [source](https://maartengr.github.io/BERTopic/algorithm/algorithm.html#visual-overview)." %}
+{% include figure.html filename="fr-or-explorer-classifier-textes-bertopic-05.png" alt="Visual description of figure image" caption="Figure 5. Les étapes clefs de BERTopic [source](https://maartengr.github.io/BERTopic/algorithm/algorithm.html#visual-overview)." %}
 
-_Nous ne couvrons pas l'étape optionnelle n°7. Cette étape propose d'utiliser une IA générative pour décrire les thèmes trouvés._
+_Nous ne couvrons pas l'étape optionnelle n°6. Cette étape propose d'utiliser une IA générative pour décrire les thèmes trouvés._
 
 <div class="alert alert-warning">
-Il est important à ce moment de souligner que les groupes générés ne sont pas garantis d'être des <i>topics</i>. En effet, l'enchaînement de UMAP et HDBSCAN exploitent les saillances les plus fortes entre nos documents, mais ces saillances peuvent être sur le sujet abordé, comme le ton, la source ou bien du bruit. Nous le répétrons plus tard, mais ces techniques demandent une attention particulière au preprocessing et à l'évolution manuelle.
+Il est important à ce moment de souligner que les groupes générés ne sont pas garantis d'être des <i>topics</i>. En effet, l'enchaînement de UMAP et HDBSCAN exploitent les saillances les plus fortes entre nos documents, mais ces saillances peuvent être sur le sujet abordé, comme le ton, la source ou bien du bruit. Nous le répéterons plus tard, mais ces techniques demandent une attention particulière au preprocessing et à l'évolution qualitative des résultats.
 </div>
 
 Pour en apprendre plus sur les différentes étapes de la pipeline, nous vous proposons de consulter les liens suivants: 
@@ -197,15 +198,15 @@ Ce jeu de données a été nettoyés par nos soins[^4], le nouveau jeu de donné
 
 L'étape de prétraitement des textes est cruciale pour obtenir de bons résultats. Nous listons quelques pré-traitements : 
 
-- **Qualité des textes**: Il est important de connaître son jeu de données en le parcourant rapidement. Notamment, il peut contenir des artefacts qui peuvent bruiter les plongements (balises HTML, défauts d'encodage (i.e. accents mal repérés) ...). La définition du "bruit" dépend de votre question de recherche, par exemple vous pourriez décider de garder ou pas les emojis. Enfin, les modèles de plongements ne nécessitent pas de retirer les "stop words" comme ça pouvait être le cas avec d'autres méthodes; Nous souhaitons conserver les stop words ainsi que la ponctuation.
+- **Qualité des textes**: Il est important de connaître son jeu de données en le parcourant rapidement. Notamment, il peut contenir des artefacts qui peuvent bruiter les plongements (balises HTML, défauts d'encodage (i.e. accents mal repérés) ...). La définition du "bruit" dépend de votre question de recherche, par exemple vous pourriez décider de garder ou pas les emojis. Enfin, les modèles de plongements ne nécessitent pas de retirer les "mots vides"[^stop-words] (*stop words* en anglais) comme ça pouvait être le cas avec d'autres méthodes; Nous souhaitons conserver les mots vides ainsi que la ponctuation.
 - **Éviter les doublons**: Si votre jeu de données comporte de trop nombreux doublons, un document présent plusieurs fois peut devenir un thème à lui tout seul.
 - **Homogénéité du corpus**: Le topic modelling utilise les saillance les plus fortes pour distinguer les thèmes. Ainsi, des documents de plusieurs sources peuvent générer des thèmes différents si leurs formes divergent fortement (ton, longueur, densité d'information, etc...). Dépendemment de votre question de recherche, vous pouvez vouloir conserver ces différences, ou bien les exclure.
-- **Language des documents**: Dans la même veine que l'homogénéité discutée avant, la langue du document peut être une différente trop saillante. Une alternative est de traduire tous les textes dans une seule langue en amont.
+- **Language des documents**: Dans la même veine que l'homogénéité discutée avant, la langue du document peut être une différence trop saillante. Une alternative est de traduire tous les textes dans une seule langue en amont.
 - **Longueur des documents**: Les modèles de plongement présentent une limite de taille de texte (aussi appelée la limite de contexte). Il est donc nécessaire d'accorder le choix du modèle de plongement avec notre corpus.
 
 ### Créer son premier topic model 
 
-Pour commencer, nous devons télécharger les données du dépot [Zenodo](https://zenodo.org/records/21452752) (fichier de 30 Mo). Une fois téléchargé nous chargons le jeu de données: 
+Pour commencer, nous devons télécharger les données du dépot [Zenodo](https://zenodo.org/records/21452752) (fichier de 30 Mo). Une fois téléchargé nous chargeons le jeu de données: 
 
 ```python
 import pandas as pd
@@ -237,7 +238,7 @@ Puis de _"fit"_ le modèle sur nos données :
 topic_model.fit(documents = df["resumes.fr"])
 ```
 
-_Nota: la syntaxe `.fit`, `transform` et `fit_transform` reprend la syntaxe définie par Scikit-learn, l'une des premières librairies d'Apprentissage Automatique et l'une des plus complète! La méthode `.fit` adapte un modèle à nos données, tandis que `.transform` permet d'utiliser le modèle pour faire des prédictions._
+_Nota: la syntaxe `.fit`, `.transform` et `.fit_transform` reprend la syntaxe définie par Scikit-learn, l'une des premières librairies d'Apprentissage Automatique et l'une des plus complète! La méthode `.fit` adapte un modèle à nos données, tandis que `.transform` permet d'utiliser le modèle pour faire des prédictions._
 
 Nous pouvons extraire les thèmes de la manière suivante: 
 
@@ -275,7 +276,7 @@ topic_model.get_topic_info()
 
 Dans la Tableau 2, la colonne représentation renseigne les mots clefs identifiés pour chaque thème. Nous observons que les mots clefs du groupe bruit (groupe n°-1) ne donnent aucune information. Pour les autres sujets, nous retrouvons une suite de mots cohérents, par exemple: 
 
-- 'cellules', 'cancer', 'patients' : ce groupe pourrait être représentatif d'un thème lié au à la recherche contre le cancer.
+- 'cellules', 'cancer', 'patients' : ce groupe pourrait être représentatif d'un thème lié à la recherche contre le cancer.
 - 'bâtiment', 'air', 'ventilation', 'chauffage': ce groupe pourrait représenter un thème lié à l'étude de la balance énergétique des bâtiments.
 - 'écoulement', 'fluide', 'écoulements', 'méthode', 'numériques': ce groupe pourrait représenter un thème lié aux simulation de mécanique des fluides.
 
@@ -438,7 +439,7 @@ Puis pour recharger le modèle il suffit d'utiliser la commande suivante :
 topic_model = BERTopic.load("./bertopic-default")
 ```
 
-Cette sauvegarde ne conserve pas pas les plongements, ac'est l'étalors que pe de calcul la plus lourde. Pour gagner en reproductibilité et en rapidité, vous pouvez générer vos plongements à en amont [(voir code)](https://css-polytechnique.github.io/css-ipp-materials/pages/bertopic-tutorial.html#precompute-your-embeddings) pour les utiliser dans le code. Les commandes deviennent:
+Cette sauvegarde ne conserve pas les plongements, alors que c'est l'étape de calcul la plus lourde. Pour gagner en reproductibilité et en rapidité, vous pouvez générer vos plongements en amont [(voir code)](https://css-polytechnique.github.io/css-ipp-materials/pages/bertopic-tutorial.html#precompute-your-embeddings) pour les utiliser dans le code. Les commandes deviennent:
 
 ```python 
 docs = ....
@@ -458,9 +459,9 @@ Vous pouvez faire des tests grâce à des jeux de données mis à disposition su
 
 Dans ce tutoriel nous avons présenté ce qu'était un topic model et comment ces modèles étaient utilisés dans les sciences sociales. Nous avons notamment mentionné son utilisation dans une phase exploratoire afin de mieux connaître son corpus ou en phase confirmatoire afin de confronter notre lecture avec un outil automatique. <br/>
 Ensuite, nous avons présenté l'outil BERTopic et comment il permettait d'obtenir des thèmes à partir de plongements et un modèle de clustering. <br/>
-Enfin, nous avons illustrer un cas simple avec les commandes usuelles pour créer le topic model et créer des visualisation et sauvegarder les résultats.
+Enfin, nous avons illustré un cas simple avec les commandes usuelles pour créer le topic model, créer des visualisation et sauvegarder les résultats.
 
-Tout le long du tutoriel nous avons appuyé l'importance de vérifier les résultats, cependant, nous n'avons pas montré de métrique pour établir la qualité d'un topic model. La raison est qu'il n'en existe pas à ce jour. En effet, l'évaluation des topic models est un domaine actif de la recherche (Hoyle et al., 2022) et les métriques entrent en contradiction avec les avis d'experts (Stammbach et al., 2023). Ainsi, la seule vérification qui vaille est la vérification manuelle à travers la vérification de la cohérence des documents dans un groupe et les délimitations entre les clusters.
+Tout au long du tutoriel nous avons appuyé sur l'importance de vérifier les résultats, cependant, nous n'avons pas montré de métrique pour établir la qualité d'un topic model. La raison est qu'il n'en existe pas à ce jour. En effet, l'évaluation des topic models est un domaine actif de la recherche (Hoyle et al., 2022) et les métriques entrent en contradiction avec les avis d'experts (Stammbach et al., 2023). Ainsi, la seule vérification qui vaille est la vérification manuelle à travers la vérification de la cohérence des documents dans un groupe et les délimitations entre les clusters.
 
 Ceci conclut donc ce tutoriel, pour aller plus loin nous vous invitons à consulter la [version extensive de ce tutoriel (en anglais)](https://css-polytechnique.github.io/css-ipp-materials/pages/bertopic-tutorial.html).
 
@@ -479,12 +480,16 @@ Stammbach, D., Zouhar, V., Hoyle, A., Sachan, M., & Ash, E. (2023). Revisiting A
 
 ## Notes de fin
 
-[^1]: [Wikipedia](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation): La LDA est un modèle statistique génératif qui cherche à décrire une collection de textes avec une liste de "thème" non-connu _a priori_. [Voir une implémentation Python](https://radimrehurek.com/gensim/auto_examples/tutorials/run_lda.html).
+[^1]: [Wikipedia](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation): La LDA (Latent Dirichlet Allocation) est un modèle statistique génératif qui cherche à décrire une collection de textes avec une liste de "thème" non-connu _a priori_. [Voir une implémentation Python](https://radimrehurek.com/gensim/auto_examples/tutorials/run_lda.html).
 
-[^2]: [Scikit-Learn](https://scikit-learn.org/stable/) est une bibliothèque pionière en Apprentissage Automatique et qui a un large rayonnement sur le domaine.
+[^2]: [Scikit-Learn](https://scikit-learn.org/stable/) est une bibliothèque pionnière en Apprentissage Automatique et qui a un large rayonnement sur le domaine.
 
 [^3]: Le nom c-TF-IDF vient de la transformation [TF-IDF](https://fr.wikipedia.org/wiki/TF-IDF) appliquée à chaque groupe, ou classe de documents.
 
 [^4]: La procédure de nettoyage des données est renseignée [ici (written in English)](https://css-polytechnique.github.io/css-ipp-materials/pages/techy-notes.html#curations-of-the-original-dataset).
 
 [^pipeline]: "Pipeline" est un mot anglais très utilisé en science des données et signifie "chaîne de traîtement" ou bien "chaîne d'opérations". [Voir Wikitionnaire](https://fr.wiktionary.org/wiki/pipeline).
+
+[^jeux-plongements]: Voir section [1. Transformer les documents en vecteurs mathématiques](#1-transformer-les-documents-en-vecteurs-mathématiques) pour la définition de "plongement".
+
+[^stop-words]: Mots qui n'apportent pas d'information significative, par exemple: "à" ou "que".

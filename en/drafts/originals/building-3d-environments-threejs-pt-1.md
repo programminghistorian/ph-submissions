@@ -17,7 +17,7 @@ difficulty: 2
 activity: presenting
 topics: [website, creative-coding]
 abstract: This two-part lesson series shows how to use the three.js JavaScript library to create websites featuring 3D models that can be interactively viewed, selected, and even turned into a simple game. In Part 1, you will learn how to create a website featuring a 3D model that illustrates the rich diversity of ceramics across the Papua New Guinea region, while considering key aspects of working with cultural heritage materials.
-avatar_alt: Visual description of lesson image
+avatar_alt: An illustration of a round, textured ceramic pot with a wide opening, decorative geometric patterns, and three short, stubby feet.
 doi: XX.XXXXX/phen0000
 sequence: 1
 next: building-3d-environments-threejs-pt-2

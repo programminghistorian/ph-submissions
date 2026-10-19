@@ -25,9 +25,11 @@ doi: XX.XXXXX/phen0000
 
 
 ## Lesson Overview
-Sources from web archives are important for understanding the 1990s and the following decades. These sources are, however, hard to access. This lesson introduces you to the software SolrWayback, which makes discovery in a web archive collection easier and more manageable. Imagine that you are researching a specific topic and want to incorporate sources from a web archive. SolrWayback provides you with search capabilities that you do not find in any other web archiving software. Searching a collection is the first step towards finding relevant sources.
+
+Sources from web archives are important for understanding the 1990s and subsequent decades. These sources are, however, difficult to access. This lesson introduces you to the software SolrWayback, which makes discovering sources in a web archive collection easier and more manageable. Imagine that you are researching a specific topic and want to incorporate sources from a web archive. SolrWayback provides search capabilities not found in other web archiving software. Searching a collection is the first step towards finding relevant sources.
 
 By the end of this lesson, you will be able to:
+
 * Set up SolrWayback on your local computer
 * Load sources from the archived web into your SolrWayback instance
 * Query, explore, and visualise archived web material using SolrWayback’s search and visualisation tools
@@ -38,7 +40,7 @@ This lesson requires at least 4GB of RAM and approximately 2GB of free disk spac
 
 The lesson also requires a valid Java installation of at least version 11. Java 17 is preferred. Mac users can install Java 17 using their preferred method; [Homebrew](https://formulae.brew.sh/formula/openjdk@17) is recommended, as it provides a simple way of installing Java on macOS. Windows users, please follow the installation guide provided by [Oracle](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html). The SolrWayback bundle used in this lesson does not run on Java versions older than 11.
 
-The bundle also requires JAVA_HOME, an environment variable that tells applications where Java is installed, to be set correctly. On most Mac installations this happens automatically, while Windows users need to set it manually, which can be done by following this [guide](https://www.geeksforgeeks.org/java/setting-environment-java/).
+The bundle also requires `JAVA_HOME`, an environment variable that tells applications where Java is installed, to be set correctly. On most Mac installations this happens automatically, while Windows users need to set it manually, which can be done by following this [guide](https://www.geeksforgeeks.org/java/setting-environment-java/).
 
 Administrative access is required to run the startup commands on Windows.
 
@@ -47,6 +49,7 @@ Finally, while beginner-friendly guidance will be provided, a basic familiarity 
 ### Lesson Structure
 
 The lesson is divided into six sections: 
+
 1. Web archives and SolrWayback
 2. Downloading the software
 3. Starting up the software
@@ -54,27 +57,29 @@ The lesson is divided into six sections:
 5. Indexing
 6. Querying and Visualising
 
-The archived web presents enormous potential as a source of research data. But accessing and using these sources can be challenging. The first section of this lesson presents some of the existing challenges of working with the archived web. It then suggests how a tool such as SolrWayback can aid historians and other scholars from the humanities when working with the archived web as part of their source material. 
+The archived web offers enormous potential as a source of research data, but accessing and using these sources can be challenging. The first section of this lesson outlines some of the challenges of working with the archived web. It then explores how a tool such as SolrWayback can help historians and other humanities scholars use the archived web as source material.
 
-The next four sections cover installing the software, launching it, and loading data into it. Finally, the lesson explores how the archived web can be investigated using SolrWayback. The final section also explores the built-in visualisation tools of the software. The lesson uses archived websites from the End of Term Web Archive, which preserves U.S. Government websites at the end of presidential administrations. The lesson uses only a subset of the full collection as its main example dataset, because the complete collection contains more than 15 TB of data. Throughout this lesson, you will engage with this small section of the archive through research questions related to U.S. politicians’ views on immigration following the election in 2008.  
+The next four sections cover installing and launching the software, and loading data into it. The final section explores how the archived web can be investigated using SolrWayback, including its built-in visualisation tools. The lesson uses archived websites from the End of Term Web Archive, which preserves U.S. government websites at the end of presidential administrations. It uses a subset of the full collection as its main example dataset, as the complete collection contains more than 15 TB of data. Throughout the lesson, you will explore this subset of the archive through research questions relating to U.S. politicians’ views on immigration following the 2008 presidential election.
 
 ## Web Archives and SolrWayback
 
-The World Wide Web has existed for more than 30 years now, and during this period it has radically transformed how people communicate and interact with each other.
+The World Wide Web has existed for more than 30 years, and during this period it has radically transformed how people communicate and interact with each other.
 
-The live web, however, is ephemeral as web content is continually changed or removed, meaning that earlier versions are often no longer available. Much of the material that has appeared on the web is archived by web archiving institutions. The archived web is an exceptionally rich primary source for investigating the histories of the 1990s and 2000s, but historians have been reluctant to engage with this material.[^17] This lesson will introduce you to working with material from the archived web on your personal computer.
+The live web, however, is ephemeral, as web content is continually changed or removed, meaning that earlier versions are often no longer available. Much of the material that has appeared on the web is preserved by web archiving institutions. The archived web is an exceptionally rich primary source for investigating the history of the 1990s and 2000s, but historians have been reluctant to engage with this material.[^17] This lesson will introduce you to working with material from the archived web on your personal computer.
 
-When institutions such as the Internet Archive (IA), the Royal Danish Library (RDL) or the Bibliothèque nationale de France (BnF) archive the internet, they store the data in [WARC files](https://en.wikipedia.org/wiki/WARC_(file_format)). WARC files can be daunting to work with if you have not seen them before, as they are archival and technical by nature.[^1] Their primary objective is to ensure that the archived web can be saved for posterity and therefore prioritise effective long-term preservation above usability. This lesson teaches a method to unlock the potential of WARC files as a source for research. To do this, the lesson introduces the open-source software SolrWayback.
+When institutions such as the Internet Archive (IA), the Royal Danish Library (RDL) or the Bibliothèque nationale de France (BnF) archive the internet, they store the data in [WARC files](https://en.wikipedia.org/wiki/WARC_(file_format)). WARC files can be daunting to work with if you are unfamiliar with them, due to their technical nature and archival structure.[^1] Their primary objective is to ensure that the archived web can be saved for posterity and therefore prioritise effective long-term preservation above usability. This lesson teaches a method to unlock the potential of WARC files as a source for research. To do this, the lesson introduces the open-source software SolrWayback.
 
-<a href='https://doi.org/10.5281/zenodo.18314399'>SolrWayback</a> is an open-source search and discovery tool developed primarily by the Royal Danish Library and designed to make archived web content searchable and viewable in a single solution. Other tools for playback do exist, e.g., [pywb](https://github.com/webrecorder/pywb). However, no other tool currently provides the search and discovery possibilities that SolrWayback does. Through this software, you can search for individual words and phrases across your collection. It can also be used as a tool to narrow down which parts of a collection you are interested in as part of your research. Hence, the software provides multiple ways of exporting subsets of the data for further analysis.[^2]
+<a href='https://doi.org/10.5281/zenodo.18314399'>SolrWayback</a> is an open-source search and discovery tool developed primarily by the Royal Danish Library and designed to make archived web content searchable and viewable in a single solution. Other tools for playback do exist, such as [pywb](https://github.com/webrecorder/pywb). However, no other tool currently provides the search and discovery possibilities that SolrWayback does. Through this software, you can search for individual words and phrases across your collection. You can also use it to identify the parts of a collection most relevant to your research. The software provides multiple ways to export subsets of the data for further analysis.[^2]
 
 ## Software Download
-To get started with SolrWayback, first download the software from the SolrWayback GitHub page. The software can be installed in multiple ways; however, in this lesson you will install it through the bundle release version, which is the most common way. To get started, navigate to the [release page](https://github.com/netarchivesuite/solrwayback/releases) of SolrWayback and download version 5.5.0 (this was the newest version when this lesson was written).
 
-Once you've downloaded the correct version, please unzip the file where you want it on your computer. The unzipped directory will have the name: `solrwayback_package_5.5.0`. Inside the directory, a folder named `properties` exists. Please copy the two files from inside this folder to your home directory. On a Mac this directory is `/Users/yourUsername`, on Linux it is `/home/yourUsername`, and on Windows it is located at `C:\Users\yourUsername\`. You are now ready to start SolrWayback. The next sections of this lesson are operating-system dependent, so they will contain separate sections for Linux/Mac and Windows, respectively.
+To get started with SolrWayback, first download the software from the SolrWayback GitHub page. The software can be installed in several ways, but this lesson uses the bundle release, which is the most common installation method. To get started, navigate to the [release page](https://github.com/netarchivesuite/solrwayback/releases) of SolrWayback and download version 5.5.0 (this was the newest version when this lesson was written).
+
+Once you've downloaded the correct version, unzip the file where you want it on your computer. The unzipped directory will have the name: `solrwayback_package_5.5.0`. Inside the directory, a folder named `properties` exists. Please copy the two files from inside this folder to your home directory. On a Mac this directory is `/Users/yourUsername`; on Linux it is `/home/yourUsername`; and on Windows it is located at `C:\Users\yourUsername\`. You are now ready to start SolrWayback. The next sections of this lesson are operating-system dependent, so they will contain separate sections for Linux/Mac and Windows, respectively.
 
 ## Start Up
-With the bundle downloaded and the properties files copied to your home directory, you are ready to start the software. This is done through a terminal by issuing two commands. Please follow the section below according to your operating system. 
+
+With the bundle downloaded and the properties files copied to your home directory, you are ready to start the software. To do this, enter two commands in a terminal. Follow the instructions below for your operating system.
 
 The two commands start the two parts of the application. The first command starts the web server that is included in the application. The second command starts the search engine in the application.
 
@@ -109,9 +114,10 @@ Now you have SolrWayback running. To verify that it runs, you can access the app
 You have now started the application successfully and are ready to acquire the WARC files used in this lesson from the End of Term Web Archive and make them searchable in the system.
 
 ## Acquire WARC Files
+
 During this lesson, you will work with WARC files from the End of Term Web Archive (EOTWA). This web archive collection originates from a collaborative initiative between the Library of Congress, the Internet Archive, the University of North Texas, the California Digital Library, and the U.S. Government Printing Office.
 
-The collection preserves U.S. Government websites at the end of presidential administrations.[^18] The EOTWA has done this systematically since 2008. The collections in their archive have grown exponentially between elections.
+The collection preserves U.S. government websites at the end of presidential administrations.[^18] The EOTWA has done this systematically since 2008, with its collections growing exponentially between elections.
 
 | Dataset                | Compressed Size of all WARCs |
 | ---------------------- | ---------------------------- |
@@ -122,9 +128,9 @@ The collection preserves U.S. Government websites at the end of presidential adm
 | EOT-2020               | 266.04 TB                    |
 | EOT-2024               | 2.29 PB                      |
 
-Extracting WARC files from this archive is challenging — their documentation is inherently technical. In this lesson, you will download six WARC files from the EOT-2008 collection, and these files will act as your collection. 
+Extracting WARC files from this archive is challenging because the documentation is highly technical. In this lesson, you will download six WARC files from the EOT-2008 collection to use as your dataset.
 
-These six WARC files total less than 1 GB. This means that the collection you will be working with in this lesson is only a fraction of the total 2008 collection. The WARC files that you should download are available at the following links and are randomly chosen from the EOT-2008 collection:
+Together, these six WARC files total less than 1 GB, representing only a fraction of the full 2008 collection. The files have been randomly selected from the EOT-2008 collection and are available to download at the following links:
 
 - Sample WARC file 1: <https://eotarchive.s3.amazonaws.com/crawl-data/EOT-2008/segments/CDL-004/warc/CDL-20090514060129-00186-dp01.cdlib.org.warc.gz>
 - Sample WARC file 2: <https://eotarchive.s3.amazonaws.com/crawl-data/EOT-2008/segments/CDL-004/warc/CDL-20090514060157-00299-dp01.cdlib.org.warc.gz>
@@ -136,8 +142,9 @@ These six WARC files total less than 1 GB. This means that the collection you wi
 For now, save these files in their own directory or leave them in your Downloads folder. You need to be able to find them again in the following section, which covers indexing. It is possible to complete the lesson using fewer WARC files, but keep in mind that the lesson uses all six files. If you choose to use fewer files, the data available to you will not be the same as the examples in this lesson. This means that you might not get the same results when following the lesson.
 
 ## Indexing
+
 <div class="alert alert-warning">
-  Before you start the indexing process, please make sure that you are using a compatible Java version. Java 17 is preferred, but versions 21 and 23 also work. This can be checked by executing the command <code>java -version</code> in your terminal.
+Before you start the indexing process, please make sure that you are using a compatible Java version. Java 17 is preferred, but versions 21 and 23 also work. This can be checked by executing the command <code>java -version</code> in your terminal.
 </div>
 
 SolrWayback uses a search engine named [Solr](https://en.wikipedia.org/wiki/Apache_Solr). To make your WARC files available for querying in SolrWayback, you need to index the files. This process is dependent on your operating system, just like the start-up above. 

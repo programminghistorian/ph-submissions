@@ -331,7 +331,7 @@ For more complex link analysis, the `Link graph Gephi export` tool can export da
 
 Next in line is the `Domain stats` tool. This tool visualises statistics about a single domain at different levels of granularity. To get an understanding of how this tool works enter `house.gov` in the input box. The X-axis defaults to the years 1998 to 2027. This can be changed in the two timeframe boxes. The scale of the X-axis can also be customised down to daily intervals. 
 
-When you click *generate*, a combined line chart appears. This combined chart visualises four distinct counts: Amount of pages, ingoing links, average page size in characters, and size in kilobytes. In this combined view it is possible to remove individual line charts by clicking their respective colours at the top of the visualisation. You can also render all four charts individually by clicking the `Show Individual Charts` button. 
+When you click *generate*, a combined line chart appears. This combined chart visualises four distinct counts: number of pages, incoming links, average page size in characters, and size in kilobytes. You can hide individual lines by clicking their corresponding colours in the legend at the top of the visualisation. You can also render all four charts individually by clicking the `Show Individual Charts` button. 
 
 The domain statistics can be used to investigate temporal changes in the archived material. Your subset from the total collection was collected on the same day in 2009 and therefore there are not enough datapoints to create a meaningful visualisation. An example of how the graph could look with more data from a different collection is shown here.
 
@@ -341,9 +341,9 @@ The last tool in the toolbox is the `Ngram Netarchive` tool. You can use this to
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-15.png" alt="Ngram line chart showing the frequency of the search terms immigrant, immigration, and foreigner across the collection over time" caption="Figure 15: Example of an Ngram search for the words 'immigrant', 'immigration', and 'foreigner' across your collection" %}
 
-This type of visualisation investigates trends in usage of different words. Collections from web archives are very strictly bound to the collecting practices of holding institutions such as the Internet Archive or the Royal Danish Library. This means that spikes in these visualisations need to be treated with care as they could just as easily reflect changes in collecting practices rather than actual changes in the prevalence of the term.
+This type of visualisation investigates trends in usage of different words. Collections from web archives are very strictly bound to the collecting practices of holding institutions such as the Internet Archive or the Royal Danish Library. This means that spikes in these visualisations need to be treated with care, as they could just as easily reflect changes in collecting practices rather than actual changes in the prevalence of the term.
 
-The functionality of the toolbox can support you in initial distant readings of material in your collection. Overview tools such as the ones introduced above can be good entrypoints for getting to understand what is in a collection and explore which queries could be applied to find sources that are relevant for your research question. For further distant reading or quantitative approaches researchers often export data from SolrWayback.[^14] Data can be exported in many formats from the front page of the application.
+The functionality of the toolbox can support you in initial distant readings of material in your collection. Overview tools, such as the ones introduced above, can be good entrypoints for getting to understand what is in a collection and explore which queries could be applied to find sources that are relevant for your research question. For further distant reading or quantitative approaches researchers often export data from SolrWayback.[^14] Data can be exported in many formats from the front page of the application.
 
 ## Conclusion: A New World of Source Material Emerges
 
@@ -357,34 +357,33 @@ SolrWayback also includes tools for the initial distant reading of archived web 
 
 
 ## Endnotes
-[^1]: Emily Maemura, ‘All WARC and No Playback: The Materialities of Data-Centered Web Archives Research’, Big Data & Society 10, no. 1 (2023): 20539517231163172, https://doi.org/10.1177/20539517231163172; Nick Ruest et al., ‘Creating Order from the Mess: Web Archive Derivative Datasets and Notebooks’, Archives and Records 43, no. 3 (2022): 316–31, https://doi.org/10.1080/23257962.2022.2100336.
+[^1]: Emily Maemura, ‘All WARC and No Playback: The Materialities of Data-Centered Web Archives Research’, *Big Data & Society* 10, no. 1 (2023): 20539517231163172, https://doi.org/10.1177/20539517231163172; Nick Ruest et al., ‘Creating Order from the Mess: Web Archive Derivative Datasets and Notebooks’, *Archives and Records* 43, no. 3 (2022): 316–31, https://doi.org/10.1080/23257962.2022.2100336.
 
-[^2]: Michael Kurzmeier, ‘Contextualizing and Unlocking Political Web Defacements for Research’, Journal of Digital History, no. preprint (2025).
+[^2]: Michael Kurzmeier, ‘Contextualizing and Unlocking Political Web Defacements for Research’, *Journal of Digital History*, no. preprint (2025).
 
-[^3]: Niels Brügger, The Archived Web: Doing History in the Digital Age (The MIT Press, 2018).
+[^3]: Niels Brügger, *The Archived Web: Doing History in the Digital Age* (The MIT Press, 2018).
 
-[^5]: Brügger, The Archived Web: Doing History in the Digital Age, p. 22-23; Emily Maemura, ‘All WARC and No Playback: The Materialities of Data-Centered Web Archives Research’, p. 8.
+[^5]: Brügger, *The Archived Web: Doing History in the Digital Age*, 22–23; Emily Maemura, ‘All WARC and No Playback: The Materialities of Data-Centered Web Archives Research’, 8.
 
-[^6]: John Berlin et al., ‘To Re-Experience the Web: A Framework for the Transformation and Replay of Archived Web Pages’, ACM Trans. Web 17, no. 4 (2023): 28:1-28:49, https://doi.org/10.1145/3589206.
+[^6]: John Berlin et al., ‘To Re-Experience the Web: A Framework for the Transformation and Replay of Archived Web Pages’, *ACM Trans. Web* 17, no. 4 (2023): 28:1–28:49, https://doi.org/10.1145/3589206.
 
-[^7]: Niels Brügger, The Archived Web: Doing History in the Digital Age, p. 28-30.
+[^7]: Niels Brügger, *The Archived Web: Doing History in the Digital Age*, 28–30.
 
-[^8]: Kieran Hegarty, ‘The Invention of the Archived Web: Tracing the Influence of Library Frameworks on Web Archiving Infrastructure’, p. 447, Internet Histories 6, no. 4 (2022): 432–51, https://doi.org/10.1080/24701475.2022.2103988.
+[^8]: Kieran Hegarty, ‘The Invention of the Archived Web: Tracing the Influence of Library Frameworks on Web Archiving Infrastructure’, *Internet Histories* 6, no. 4 (2022): 432–51, https://doi.org/10.1080/24701475.2022.2103988, 447.
 
-[^9]: Lara Putnam, ‘The Transnational and the Text-Searchable: Digitized Sources and the Shadows They Cast’, The American Historical Review (Oxford) 121, no. 2 (2016): 377–402, https://doi.org/10.1093/ahr/121.2.377; Helle Strandgaard Jensen, ‘Digital Archival Literacy for (All) Historians’, in Media History, vol. 27, no. 2, 2021, https://doi.org/10.1080/13688804.2020.1779047.
+[^9]: Lara Putnam, ‘The Transnational and the Text-Searchable: Digitized Sources and the Shadows They Cast’, *The American Historical Review* (Oxford) 121, no. 2 (2016): 377–402, https://doi.org/10.1093/ahr/121.2.377; Helle Strandgaard Jensen, ‘Digital Archival Literacy for (All) Historians’, *Media History* 27, no. 2 (2021), https://doi.org/10.1080/13688804.2020.1779047.
 
-[^10]: Victor Harbo Johnston, ‘Introducing Reproducible Navigation of a Web Archive: SolrWayback Navigation Tracker’, Computational Humanities Research, 13 April 2026, 1–8, https://doi.org/10.1017/chr.2026.10030.
+[^10]: Victor Harbo Johnston, ‘Introducing Reproducible Navigation of a Web Archive: SolrWayback Navigation Tracker’, *Computational Humanities Research*, 13 April 2026, 1–8, https://doi.org/10.1017/chr.2026.10030.
 
-[^11]: Ruest et al., ‘Creating Order from the Mess’; Helen Hockx-Yu, ‘Access and Scholarly Use of Web Archives’, Alexandria: The Journal of National and International Library and Information Issues 25, no. 1–2 (2014): 113–27, https://doi.org/10.7227/ALX.0023; Mark Bell et al., ‘Chapter 2: Web Archives and the Problem of Access: Prototyping a Researcher Dashboard for the UK Government Web Archive’, in Archives, Access and Artificial Intelligence: Working with Born-Digital and Digitized Archival Collections, ed. Lise Jaillant (Bielefeld University Press, 2022), https://www.degruyterbrill.com/document/doi/10.1515/9783839455845-003/html.
+[^11]: Ruest et al., ‘Creating Order from the Mess’; Helen Hockx-Yu, ‘Access and Scholarly Use of Web Archives’, *Alexandria: The Journal of National and International Library and Information Issues* 25, no. 1–2 (2014): 113–27, https://doi.org/10.7227/ALX.0023; Mark Bell et al., ‘Chapter 2: Web Archives and the Problem of Access: Prototyping a Researcher Dashboard for the UK Government Web Archive’, in *Archives, Access and Artificial Intelligence: Working with Born-Digital and Digitized Archival Collections*, ed. Lise Jaillant (Bielefeld University Press, 2022), https://www.degruyterbrill.com/document/doi/10.1515/9783839455845-003/html.
 
-[^12]: Niels Brügger, ‘Historical Network Analysis of the Web’, Social Science Computer Review (Los Angeles, CA) 31, no. 3 (2013): 306–21, https://doi.org/10.1177/0894439312454267.
+[^12]: Niels Brügger, ‘Historical Network Analysis of the Web’, *Social Science Computer Review* (Los Angeles, CA) 31, no. 3 (2013): 306–21, https://doi.org/10.1177/0894439312454267.
 
 [^14]: Kurzmeier, ‘Contextualizing and Unlocking Political Web Defacements for Research’.
 
-[^17]: Jane Winters, ‘Breaking in to the Mainstream: Demonstrating the Value of Internet (and Web) Histories’, Internet Histories 1, (2017): 173–79, https://doi.org/10.1080/24701475.2017.1305713.
+[^17]: Jane Winters, ‘Breaking in to the Mainstream: Demonstrating the Value of Internet (and Web) Histories’, *Internet Histories* 1 (2017): 173–79, https://doi.org/10.1080/24701475.2017.1305713.
 
-[^18]: Tracey Seneca et al., “It Takes a Village to Save the Web,” DttP: Documents to the People 40, no. 1 (2012): 12–15.
-
+[^18]: Tracey Seneca et al., ‘It Takes a Village to Save the Web’, *DttP: Documents to the People* 40, no. 1 (2012): 12–15.
 
 
 

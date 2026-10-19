@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Carte postale de Frédéric Mistral à Camille Saint-Saëns</title>
+        <author>Frédéric Mistral</author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>Y. Nataly GARZON DIAZ</publisher>
+        <pubPlace>Mondeville, France</pubPlace>
+        <date>2026</date>
+        <availability>
+          <p>Œuvre en libre accès sous licence Creative Commons Attribution 4.0 International.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <biblStruct>
+          <monogr>
+            <author>Frédéric Mistral</author>
+            <title>Carte postale de Frédéric Mistral à Camille Saint-Saëns</title>
+            <imprint>
+              <pubPlace>Maillane, France</pubPlace>
+              <date>1907</date>
+            </imprint>
+          </monogr>
+          <ref target="https://gallica.bnf.fr/ark:/12148/btv1b531998565"/>
+        </biblStruct>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="date">
+        <p>
+          <lb n="1"/>4 juin 1907
+        </p>
+      </div>
+      <div type="message">
+        <p>
+          <lb n="1"/><choice>
+            <orig>mes</orig>
+            <reg>Mes</reg>
+          </choice> félicitations et mes
+          <lb n="2"/>très vifs remerciements
+          <lb n="3"/>pour le discours superbe
+          <lb n="4"/>et juste en l'honneur
+          <lb n="5"/>de <persName>Gounod</persName> !
+        </p>
+      </div>
+      <div type="signature">
+        <signed>
+          <persName>
+            <choice>
+              <abbr>F.</abbr>
+              <expan>Frédéric</expan>
+            </choice>
+            Mistral
+          </persName>
+        </signed>
+      </div>
+      <div type="lieu">
+        <p>
+          <lb n="1"/><placeName>Maillane (Provence)</placeName>
+        </p>
+      </div>
+      <div type="adresse">
+        <opener>
+          <address>
+            <addrLine>Monsieur <persName>Saint-Saëns</persName>,</addrLine>
+            <addrLine>Membre de l'Institut,</addrLine>
+            <addrLine><placeName>Paris</placeName></addrLine>
+            <addrLine>17, <hi rend="underline">Rue</hi> du Long<hi rend="underline">champ</hi></addrLine>
+          </address>
+        </opener>
+      </div>
+      <div type="timbres">
+        <ab>
+          <stamp>REPUBLIQUE FRANCAISE 10c POSTES</stamp>
+          <stamp>MAILLANE B.-DU-RHÔNE <gap/></stamp>
+          <stamp>MUSÉE DE DIEPPE</stamp>
+          <stamp>8/4</stamp>
+        </ab>
+      </div>
+    </body>
+  </text>
+</TEI>

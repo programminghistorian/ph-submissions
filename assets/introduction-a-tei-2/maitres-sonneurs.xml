@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+ <teiHeader>
+ <fileDesc>
+ <titleStmt>
+ <title>Les Maîtres sonneurs, 16e veillée, page 6 du manuscrit</title>
+ <author>George Sand</author>
+ </titleStmt>
+ <publicationStmt>
+ <publisher>Y. Nataly Garzón Díaz</publisher>
+ <pubPlace>Rouen, France</pubPlace>
+ <date>2026</date>
+ <availability>
+ <p>Œuvre en libre accès sous licence Creative Commons Attribution 4.0 International.</p>
+ </availability>
+ </publicationStmt>
+ <sourceDesc>
+ <biblStruct>
+ <monogr>
+ <author>George Sand</author>
+ <title>Les Maîtres sonneurs</title>
+ <imprint>
+ <pubPlace>Paris</pubPlace>
+ <date>1857</date>
+ </imprint>
+ </monogr>
+ <ref target="https://gallica.bnf.fr/ark:/12148/btv1b531998565"/>
+ </biblStruct>
+ </sourceDesc>
+ </fileDesc>
+ </teiHeader>
+ <text>
+ <body>
+ <div type="veillee" n="16">
+ <p>
+ <lb n="1"/>—non, répondit <persName>Huriel</persName>, avec une grande assurance
+ <lb n="2"/>à moins que Joseph ne soit <del><unclear>mort</unclear></del> si bien guéri
+ <lb n="3"/>de son amour et de sa maladie qu'il puisse
+ <lb n="4"/>renoncer à elle. J'aime Joseph autant que vous
+ <lb n="5"/>l'aimez, mes bons <choice><orig>enfans</orig><reg>enfants</reg></choice> ; et d'ailleurs, il m'a fait
+ <lb n="6"/>ses confidences, il m'a pris pour son conseil et
+ <lb n="7"/>son soutien, je ne le veux pas tromper, ni
+ <lb n="8"/><del><unclear>le</unclear></del> contrecarrer.
+ <lb n="9"/>—mais Brulette ne veut pas de lui pour amant
+ <lb n="10"/>et mari, et <choice><orig>peutêtre</orig><reg>peut-être</reg></choice> vaudrait-il mieux qu'il
+ <lb n="11"/>le <choice><orig>sut</orig><reg>sût</reg></choice> le plus <choice><orig>tot</orig><reg>tôt</reg></choice> possible. Je me chargerais
+ <lb n="12"/>bien de le raisonner, si <subst><del>personne</del><add place="au-dessus">les autres</add></subst> n'osai<add>nt</add>, et il
+ <lb n="13"/>y a chez vous une personne qui pourrait rendre
+ <lb n="14"/>Joseph heureux, tandis qu'il ne le sera point par
+ <lb n="15"/>Brulette. <unclear>Il</unclear> aura beau attendre, plus il se flattera,
+ <lb n="16"/>plus le coup lui paraîtra dur à porter : au lieu
+ <lb n="17"/>que, s'il ouvrait les yeux sur la véritable attache
+ <lb n="18"/>qu'il peut trouver ailleurs....
+ <lb n="19"/>—Laissons cela, répondit <persName>Huriel</persName> en fronçant un peu
+ <lb n="20"/>le sourcil, ce qui lui fit faire la grimace d'un homme
+ <lb n="21"/>qui souffre d'un grand trou à la tête, comme il
+ <lb n="22"/>l'avait justement tout frais sous son mouchoir
+ <lb n="23"/>rouge : <corr>« </corr><quote>toutes choses sont en la main de Dieu</quote><corr> »</corr> ;
+ <lb n="24"/>et, dans notre famille, personne n'est <del><gap reason="rature illisible"/></del>
+ <lb n="25"/><del><gap reason="rature illisible"/></del> pressé de faire son
+ <lb n="26"/>bonheur aux dépens de celui des autres. Il faut, quant
+ <lb n="27"/>à moi, que je parte, car je répondrais trop mal
+ <lb n="28"/>aux gens qui me demanderaient où a passé Malzac
+ </p>
+ </div>
+ </body>
+ </text>
+</TEI>

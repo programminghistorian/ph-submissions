@@ -144,14 +144,14 @@ For now, save these files in their own directory or leave them in your Downloads
 ## Indexing
 
 <div class="alert alert-warning">
-Before you start the indexing process, please make sure that you are using a compatible Java version. Java 17 is preferred, but versions 21 and 23 also work. This can be checked by executing the command <code>java -version</code> in your terminal.
+ Before you start the indexing process, please make sure that you are using a compatible Java version. Java 17 is preferred, but versions 21 and 23 also work. This can be checked by executing the command <code>java -version</code> in your terminal.
 </div>
 
 SolrWayback uses a search engine named [Solr](https://en.wikipedia.org/wiki/Apache_Solr). To make your WARC files available for querying in SolrWayback, you need to index the files. This process is dependent on your operating system, just like the start-up above. 
 
-The first thing you need to do is move the WARC files you downloaded previously to their permanent location. For this lesson, please move them into the directory `indexing/warcs1` inside the `solrwayback_package_5.5.0` directory. Once indexed, WARC files cannot be moved. Doing so breaks playback until you rebuild the index. After you have moved the files, run the following commands in your CLI — for example, Terminal or PowerShell.
+The first thing you need to do is move the WARC files you downloaded previously to their permanent location. For this lesson, please move them into the directory `indexing/warcs1` inside the `solrwayback_package_5.5.0` directory. Once indexed, WARC files cannot be moved without breaking playback. If you move them, you will need to rebuild the index. After moving the files to their intended location, run the following commands in your command-line interface (CLI), such as Terminal or PowerShell.
 
-If you encounter errors during indexing and want to run the process again, please delete the log files from `solrwayback_package_5.5.0/indexing/status` before following the indexing guide for your operating system again. If your terminal is closed before the indexing process is completed, there is a chance that you need to reindex the collection to see all the webpages in SolrWayback.
+If you encounter errors during indexing and want to run the process again, please delete the log files from `solrwayback_package_5.5.0/indexing/status` before following the indexing guide for your operating system again. If your terminal is closed before indexing is complete, you may need to reindex the collection to see all the webpages in SolrWayback.
 
 ### Linux/Mac
 
@@ -167,7 +167,7 @@ To index your WARC files from the directory `solrwayback_package_5.5.0/indexing/
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-02.png" alt="Terminal window on a Mac displaying scrolling output produced during WARC file indexing" caption="Figure 2: Terminal output when indexing on a Mac" %}
 
-This indexes all documents in the `warcs1` folder. Your terminal will display output showing indexing progress — this is expected.
+This indexes all documents in the `warcs1` folder. Your terminal will display output showing indexing progress. This is expected.
 
 <div class="alert alert-warning">
   Indexing is the heaviest part of setting up the application and can take up to 10 to 15 minutes on consumer hardware. When the indexing has finished, your terminal will return to an interactive state, represented by a prompt such as <code>$</code>, and now you should be able to see the indexed documents in the SolrWayback web interface.
@@ -178,11 +178,12 @@ To confirm that the documents have been indexed, you can go to the application a
 You have now indexed your WARC files into SolrWayback and can begin exploring their contents. To add more WARC files after finishing this lesson, place them in the `warcs1` or `warcs2` folder and re-run the indexing command.
 
 ## Querying, Navigating, and Visualising
-You are now ready to start exploring your collection and discover interesting sources that could be used to answer research questions related to politicians' views on immigration using the End of Term collection from 2008.
+
+You are now ready to start exploring your collection and discover sources that could be used to answer research questions related to politicians' views on immigration using the End of Term collection from 2008.
 
 To analyse politicians' views on immigration, a starting point could be a simple search query for the word `immigration`. In your small subset of the overall collection, this query provides you with 233 results. If you click the top result, coming from the URL [http://bilirakis.house.gov...](http://localhost:8080/solrwayback/services/web/20090514060646/http://bilirakis.house.gov/index.php?option=com_content&task=view&id=193&Itemid=132) you are presented with a replayed version of the archived webpage.
 
-This webpage was harvested on 14 May 2009. When you first view the Bilirakis website from 2009, it appears visually incomplete. To understand why, consider how the web, and by extension the archived web, is structured. The web is born fragmented, meaning that when a website is shown to you as a user, you could in theory be looking at a website where the text is located on one server and an image is located somewhere completely different.[^3] 
+This webpage was harvested on 14 May 2009. When you first view the Bilirakis website from 2009, it appears visually incomplete. To understand why, consider how the web, and by extension the archived web, is structured. The web is inherently fragmented, meaning that when you view a website, the text could be stored on one server and an image on another.[^3] 
 
 This fragmentation of source material also means that you cannot expect sources to be shown in a complete state in the lesson collection that you are working with here. Parts of the resources that are used to construct the webpage simply aren't available in the few archival sources that you have in hand through this lesson. The replay would almost certainly be more complete with a larger portion of the EOTWA collection.  
 
@@ -190,11 +191,12 @@ This fragmentation of source material also means that you cannot expect sources 
 
 To get an overview of how an individual site has been archived, SolrWayback provides a small but useful toolbar when an archived site is shown. By opening the toolbar in the top left corner and then clicking the button `View page resources`, you can get information on how the individual resources from the currently shown page have been archived. This explains why the replayed site shows mostly links and text. 
 
-The resource overview below clearly shows that sixteen different resources that were part of the webpage when it was live are not included in your archived version. If you had been working with the complete version of the EOTWA collection the replay would be better as the missing resources are most likely located in some of the many other WARC files available at the End of Term Web Archive.
+The resource overview below shows that sixteen resources that were part of the live webpage are missing from your archived version. If you were working with the complete EOTWA collection, the replay would likely be more complete, as the missing resources are most likely stored in other WARC files available from the End of Term Web Archive.
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-04.png" alt="SolrWayback page resource overview panel listing sixteen resources from the Bilirakis website that were not captured in the archive" caption="Figure 4: Missing resources from Bilirakis website" %}
 
 ### Querying
+
 The search field in SolrWayback supports a multitude of complex search functionalities. They can, however, be hard to navigate when using the software for the first time. The search box supports the standard query types found in any information retrieval system or library database. 
 
 This includes traditional use of [Boolean operators](https://en.wikipedia.org/wiki/Boolean_algebra) such as AND, OR, and NOT. They must be entered in uppercase or else the search technology understands them as search terms instead of Boolean operators. An overview of advanced search terms can be found in the table, drawing on examples relevant for the research question related to immigration in this lesson: 
@@ -223,17 +225,17 @@ The section above uses the field `content_length` as the primary example of how 
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-05.png" alt="Close-up of the View data fields button located below an entry in the SolrWayback search results list" caption="Figure 5: Where to find data fields" %}
 
-When you click this button, a list of available fields appears. Here you see fields such as `content`, `content_type`, `crawl_date`, `elements_used`, `links` and many more. Most of these fields can be used in queries just as the `content_length` above. These fields can be used in multiple ways to construct very niche searches. For now it is enough to know where to find them for future reference.
+When you click this button, a list of available fields appears. Here you see fields such as `content`, `content_type`, `crawl_date`, `elements_used`, `links` and many more. Most of these fields can be used in queries just as the `content_length` above. These fields can be used in multiple ways to construct very niche searches. For now, it is enough to know where to find them for future reference.
 
 #### Grouped Search and URL Search
 
 You have now learned the basics of how the search field functions. As you will see throughout the rest of this lesson, SolrWayback contains many ways to navigate the archived web as a source. Right below the search bar, two important toggle buttons are available. The two toggles presented here are `Grouped search` and `URL Search`. 
 
-Throughout this lesson you are working with a small subset of a bigger collection. Often, when working with the archived web you will be sifting through not only millions of documents, but also multiple copies of identical documents as archiving technologies archive all URLs even when an identical copy of the source already exists in the collection. 
+Throughout this lesson, you are working with a small subset of a larger collection. When working with the archived web, you will often sift through millions of documents, including multiple copies of identical documents, as archiving technologies capture URLs even when an identical copy of the source already exists in the collection. 
 
 The grouped search functionality in SolrWayback collapses results by URL into one when ticked. This can be very useful when exploring collections containing a larger number of sources. 
 
-The `URL Search` button provides another useful function that is important for you to know about. The use case for this button is the following, very common, situation: you have a collection of material and you want to find a particular web page at a specific URL. 
+The `URL Search` button provides another useful function. It is particularly helpful in a common situation: when you have a collection of material and want to find a specific webpage at a particular URL.
 
 For example, in this small collection you’re working with, you might want to find the webpage of Congresswoman Virginia Foxx and you know that her web page was archived from the following URL: http://foxx.house.gov/index.cfm?sectionid=102&sectiontree=&pageNum=51. 
 
@@ -259,21 +261,21 @@ Moving from search to reading and navigation of archived webpages can seem simpl
 
 When reading an archived webpage, keep the web's inherent media format in mind. Material from the archived web is sometimes referred to as reborn digital material to emphasise that the archived version may differ from the original live version (or born digital version) as a result of the processes of collection and preservation.[^5] 
 
-The archived web (and the live web) is fragmented by nature. This fragmentation plays an important part when you investigate an archived webpage. The page you are looking at is most likely constructed from multiple resources, e.g., text, images, files. The resources making up a replayed page may have been harvested at different times and stitched together to appear as a coherent source.[^6] This is not a caveat specific to SolrWayback, but a general feature of systems that reconstruct and replay archived web pages. 
+The archived web (and the live web) is inherently fragmented. This fragmentation is important when investigating an archived webpage, as the page you are viewing is likely constructed from multiple resources, such as text, images and files. The resources making up a replayed page may have been harvested at different times and stitched together to appear as a coherent source.[^6] This is not a limitation specific to SolrWayback, but a general feature of systems that reconstruct and replay archived web pages. 
 
 The archived website can be navigated in the same manner as a live website. Live and archived versions of web material are strongly dependent on hyperlinks for navigation.[^7] 
 
-Navigation on the live web is, however, simpler than navigation through archived links. In a web archive, clicking a link from an opened document can make the temporal situation shift. These shifts in temporality are rarely visualised for you as a user of the software and because browsing the live web is second nature, you likely click through multiple links per day without thinking about it. Clicking a link in the playback view of SolrWayback works in the same way but you need to remember that the temporal context might change behind your back. To make this behaviour more visible, a textual example follows: 
+Navigating the live web is, however, simpler than navigating archived links. In a web archive, clicking a link in an open document can shift the temporal context. These shifts are rarely made visible to users. Because browsing the live web is second nature, you likely click through multiple links each day without thinking about it. Clicking a link in SolrWayback’s playback view works in the same way, but you need to be aware that the temporal context may change without your knowledge. To illustrate this behaviour, consider the following example:
 
-Imagine that you are interested in the website of Congressman Gus Bilirakis as his website is explicit about his stance on immigration. This website has been archived on 14 May 2009. In a complete version of the archive multiple copies of this front page would probably exist. When researching the web page you would probably click on multiple links such as the 'Newsroom' or 'Issues' links. The playback software would then redirect you to a version of the linked website that has a harvest time closest to that of the current page. In your small subset of material from the EOTWA this is very hard to show as you do not have easy access to archived versions of linked pages. 
+Imagine that you are interested in Congressman Gus Bilirakis’s website because it explicitly states his position on immigration. The website was archived on 14 May 2009. In the complete archive, multiple copies of its homepage would probably exist. When researching the webpage, you might click on links such as ‘Newsroom’ or ‘Issues’. The playback software would then redirect you to an archived version of the linked page with a harvest time closest to that of the current page. This is difficult to demonstrate using your small subset of the EOTWA collection, as you have limited access to archived versions of linked pages.
 
-Let's use the Bilirakis website for an experiment of what would happen. Say you were interested in the congressman's view on education as you might have developed a theory of a connection between views on immigration and education for elected congressmen. You would then probably be interested in following the link to his webpage on education. 
+Let’s use the Bilirakis website to explore what would happen if you were interested in the congressman’s views on education. You might have developed a theory about a connection between elected members of Congress’s views on immigration and education. You would therefore be interested in following the link to his webpage on education.
 
-When you click this link you would be presented with a version of the webpage located at his educational webpage. You might also have unknowingly shifted time periods. You started from a page archived on 14 May 2009, but the link you followed may point to a version from an entirely different year. Without knowing, you might have time travelled when you clicked the link. The link you clicked on might not have been collected on 14 May 2009. It might not have been collected in 2009 at all. 
+When you click this link, you would be taken to an archived version of his webpage on education. However, you might also have unknowingly shifted between time periods. You started on a page archived on 14 May 2009, but the link you followed might lead to a version from an entirely different year. In effect, you could have travelled through time without realising it. The linked page might not have been archived on 14 May 2009, or even during 2009 at all.
 
 If this is the case and the archive has a version of the requested page from 2008, 2010 or 2015, the playback engine in the software would show the version of the site that is closest in time. It would not tell you that your temporal context has shifted. 
 
-In SolrWayback and other Wayback-based web archives such as the Internet Archive the harvest date can always be extracted from the archival URL. Return to the Bilirakis front page in your SolrWayback collection which should be available at the following [Bilirakis front page in your collection](http://localhost:8080/solrwayback/services/web/20090514061634/http://bilirakis.house.gov/index.php?option=com_search&searchword=index.php?option=com_search&searchword=The%20Congenital%20Heart%20Futures%20Act&submit=Search&searchphrase=any&ordering=newest). 
+In SolrWayback and other Wayback-based web archives, such as the Internet Archive, the harvest date can always be extracted from the archival URL. Return to the Bilirakis front page in your SolrWayback collection which should be available at the following [Bilirakis front page in your collection](http://localhost:8080/solrwayback/services/web/20090514061634/http://bilirakis.house.gov/index.php?option=com_search&searchword=index.php?option=com_search&searchword=The%20Congenital%20Heart%20Futures%20Act&submit=Search&searchphrase=any&ordering=newest). 
 
 The `/web/20090514061634` part of the URL would also be present if you had accessed the source in the Internet Archive or any other web archive. The 14-digit number is a timestamp in the format YYYYMMDDHHMMSS. When you click a link in SolrWayback this date changes to the version closest in time to the page you came from. In SolrWayback harvest date information can also be read in the toolbar accessible in the top left corner of the playback view. 
 
@@ -287,7 +289,7 @@ Remember that this timestamp changes when you click a link, because each source 
 
 When working with vast amounts of sources, which is often the case when working with the archived web, it is important to document your methodology and how you found the sources in the first place. This is true for all types of research, but researchers often forget to describe this important methodological part of doing research with born digital or reborn digital sources.[^9] 
 
-SolrWayback contains a navigation tracking feature, which keeps a record of all the things you do as a user of the software. This navigation history can then be downloaded and used as part of a methodological argument, for transparency of source discovery, or for personal bookkeeping of what sources you have already investigated.[^10] The Navigation History button is available below the search box on the front page of the application; clicking it downloads a JSON file with your history.  
+SolrWayback includes a navigation tracking feature that records your actions as you use the software. This navigation history can then be downloaded and used to support a methodological argument, provide transparency about source discovery, or keep a personal record of the sources you have already investigated.[^10] The Navigation History button is available below the search box on the front page of the application; clicking it downloads a JSON file with your history.  
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-09.png" alt="The Navigation History download button located below the search box on the SolrWayback front page" caption="Figure 9: Button for downloading navigation history" %}
 
@@ -302,6 +304,7 @@ The following section provides a brief overview of how these tools can be used t
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-11.png" alt="SolrWayback toolbox panel listing five tools: Wordcloud, Link Graph, Domain stats, Link graph Gephi export, and Ngram Netarchive, each with an input field" caption="Figure 11: View of the SolrWayback toolbox" %}
 
 The toolbox currently contains five different tools:
+
 - Wordcloud
 - Link Graph
 - Domain stats
@@ -320,15 +323,15 @@ The next tool, the `Link Graph` tool, is central if you want to understand or in
 
 {% include figure.html filename="en-or-exploring-archived-web-solrwayback-13.png" alt="Network graph showing outgoing links from house.gov to other domains, with nodes representing domains and edges representing hyperlinks" caption="Figure 13: Example linkgraph of house.gov" %}
 
-What you see here are the domains that are linked to from webpages on `house.gov`. You can also produce a graph of ingoing links, which is often a more complex task, but because SolrWayback already has this information available through its index the graph can be constructed easily. To produce such a graph you toggle the radio button to ingoing and click generate again. However, for `house.gov` in your collection, this produces a meaningless graph with no edges. 
+What you see here are the domains that are linked to from webpages on `house.gov`.You can also produce a graph of incoming links. This is often a more complex task, but SolrWayback makes it easier by using information already available in its index. To generate the graph, select the *ingoing* radio button and click *generate* again. However, for `house.gov` in your collection, this produces a meaningless graph with no edges. 
 
 If you change the domain from `house.gov` to `wikipedia.org` you can get a feel of how a graph of ingoing links looks. This link graph tool provides an accessible entrypoint to getting started with link analysis of archived web material. 
 
-For more complex link analysis, the `Link graph Gephi export` tool can export data in a format that is ready to use with the network analysis software Gephi. For an introduction to network analysis in general see <a href='https://programminghistorian.org/en/lessons/exploring-and-analyzing-network-data-with-python'>the Programming Historian lesson by Ladd et al. 2017</a>.
+For more complex link analysis, the `Link graph Gephi export` tool can export data in a format compatible with the network analysis software Gephi. For an introduction to network analysis, see <a href='https://programminghistorian.org/en/lessons/exploring-and-analyzing-network-data-with-python'>the Programming Historian lesson by Ladd et al. 2017</a>.
 
 Next in line is the `Domain stats` tool. This tool visualises statistics about a single domain at different levels of granularity. To get an understanding of how this tool works enter `house.gov` in the input box. The X-axis defaults to the years 1998 to 2027. This can be changed in the two timeframe boxes. The scale of the X-axis can also be customised down to daily intervals. 
 
-When you click the generate button a combined line chart appears. This combined chart visualises four distinct counts: Amount of pages, ingoing links, average page size in characters, and size in kilobytes. In this combined view it is possible to remove individual line charts by clicking their respective colours at the top of the visualisation. You can also render all four charts individually by clicking the `Show Individual Charts` button. 
+When you click *generate*, a combined line chart appears. This combined chart visualises four distinct counts: Amount of pages, ingoing links, average page size in characters, and size in kilobytes. In this combined view it is possible to remove individual line charts by clicking their respective colours at the top of the visualisation. You can also render all four charts individually by clicking the `Show Individual Charts` button. 
 
 The domain statistics can be used to investigate temporal changes in the archived material. Your subset from the total collection was collected on the same day in 2009 and therefore there are not enough datapoints to create a meaningful visualisation. An example of how the graph could look with more data from a different collection is shown here.
 

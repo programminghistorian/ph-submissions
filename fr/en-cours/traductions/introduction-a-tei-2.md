@@ -609,7 +609,7 @@ Pour ce deuxième exemple, nous étudierons un extrait du manuscrit de _Les Maî
 
 L'image de la première du manuscrit, où figure le titre de l'œuvre et de la veillée, est la suivante :
 
-{% include figure.html filename="maitres-sonneurs-titrepage1.png" alt="Visual description of figure image" caption="Figure 3. Page 1 du manuscrit des Maîtres sonneurs : titre, mention du second volume et de la 16e veillée." %}
+{% include figure.html filename="fr-tr-introduction-a-tei-2-03.png" alt="Visual description of figure image" caption="Figure 3. Page 1 du manuscrit des Maîtres sonneurs : titre, mention du second volume et de la 16e veillée." %}
 
 Nous travaillerons sur un extrait de la 16e veillée, correspondant à la page 6 du manuscrit. L'image de cette page est la suivante :
 

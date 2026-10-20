@@ -69,11 +69,13 @@ Many NLP research creates their own data schema or borrow the schema from an exi
 
 Whether to create a customized data schema depends on your research question, availability of existing research, and the discipline that you operate in. When creating your customized data schema, it might feel slightly uncomfortable at first, since the researcher might think that they are attempting to predict what words or terms they might find. There are two ways to mitigate this. The first is to have domain specialty. The second is to adopt an iterative process, where the researcher close reads parts of their corpus (if the full corpus is too large to close read fully), create a preliminary data schema, and revise the schema as the researcher close-reads more of the corpus and conduct more research on the topic via secondary or other primary sources. As an iterative process, it is very likely that, as you advance onto the following steps in this lesson, you might encounter information that would cause you to revisit this step to edit your data schema.
 
-If you work in a lively discipline, you might be able to find other researchers who have already created a customized data schema that you can borrow.
+If you work in a lively discipline, you might find other researchers who have already created a customized data schema that you can borrow. Reusing data schema not only provides convenience but also enhances interoperability in existing digital humanities programs.
 
-In the context of our sample research question, a question about spatial history, we will borrow the spatial NNE schema from Daniel Kababgi et al.’s research, which contains four categories: interior, urban, rural, and natural.[^7]
+In the context of our sample research question, a question about spatial history, we will borrow the spatial NNE schema from Daniel Kababgi et al.’s research, which contains four categories: **interior**, **urban**, **rural**, and **natural**.[^7]
 
-After determining the data schema, the researcher should create an operational definition for each category. This is because although some category names might be common terms (like “interior”), but when used in the context of your research, they carry specific meaning, connotation, or historical/cultural context that you have now provided for it. If you publish or share your work with others in the future, make sure to include your list of operational definitions with your work.
+After determining the data schema, the researcher should create an operational definition for each category. Although some category names might be common terms (like “interior”), when used in the context of your research, they carry specific meaning, connotation, or historical/cultural context that you have now provided it. If you publish or share your work with others in the future, make sure to include your list of operational definitions with your work.
+
+For instance, this sample research question uses the operational definition for **natural** as: non-artificial features that has the ability to be linked to specific locations or entities. Examples include _mountain_, _valley_, and _canyon_.
 
 ### Step 2: Creating Corpus
 
@@ -91,7 +93,7 @@ and after the line:
 
 `*** END OF THE PROJECT GUTENBERG…`
 
-Using coded programs to clean texts is only necessary if there are significant or numerous repetitive cleaning tasks. In cases where cleaning tasks are manageable, researchers can simply manually read the TXT file and make the relevant fixes ourselves.
+Using coded programs to clean texts is only necessary if there are significant or numerous repetitive cleaning tasks. In cases where cleaning tasks are manageable, researchers can simply manually read the TXT file and make the relevant fixes themselves.
 
 ### Step 3: Doccano Setup
 

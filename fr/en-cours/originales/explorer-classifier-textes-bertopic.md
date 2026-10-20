@@ -19,6 +19,7 @@ topics:
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
+mathjax: true
 ---
 
 {% include toc.html %}
@@ -319,7 +320,7 @@ topic_model.visualize_documents(
 
 **Visualiser les mots clefs par thème**
 
-Dans un deuxième temps, nous représentons les $n$ mots représentant au mieux chaque thème. Cette représentation peut être utile pour analyser la cohérence interne de chaque thème.
+Dans un deuxième temps, nous représentons les $$n$$ mots représentant au mieux chaque thème. Cette représentation peut être utile pour analyser la cohérence interne de chaque thème.
 
 ```python 
 topic_model.visualize_barchart(nwords=5)

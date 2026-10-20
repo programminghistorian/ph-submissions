@@ -37,7 +37,7 @@ Pour celles et ceux qui s’intéressent à l’audio, avoir des compétences fo
 
 Dans cette leçon, vous apprendrez à utiliser [*Audacity*](https://www.audacityteam.org/) pour charger, enregistrer, éditer, ==mixer== et exporter des fichiers audio. Les logiciels d’édition sonore sont souvent coûteux et proposent des fonctionnalités avancées qui peuvent intimider les débutants, mais *Audacity* est une alternative gratuite et open source, offrant des outils puissants avec une prise en main facile.
 
-Pour cette leçon, nous travaillerons avec deux fichiers audio : un enregistrement des [*Variations Goldberg* de Jean-Sébastien Bach](https://programminghistorian.org/assets/editing-audio-with-audacity/bach-goldberg-variations.mp3) et un enregistrement de votre propre voix, que vous réaliserez durant cette leçon.
+Pour cette leçon, nous travaillerons avec deux fichiers audio : un enregistrement des [*Variations Goldberg* de Jean-Sébastien Bach](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/editing-audio-with-audacity/bach-goldberg-variations.mp3) et un enregistrement de votre propre voix, que vous réaliserez durant cette leçon.
 
 Ce tutoriel utilise *Audacity* 3.7.9, sorti en septembre 2026. ==De manière concomitante, une [version 4.0](https://github.com/audacity/audacity/releases) a également vu le jour.==
 
@@ -45,7 +45,7 @@ Ce tutoriel utilise *Audacity* 3.7.9, sorti en septembre 2026. ==De manière con
 
 Commencez par télécharger les fichiers nécessaires.
 
-Vous aurez besoin du [fichier MP3 des Variations Goldberg de Bach](https://programminghistorian.org/assets/editing-audio-with-audacity/bach-goldberg-variations.mp3). Pour le télécharger, faites un clic droit [ici](https://programminghistorian.org/assets/editing-audio-with-audacity/bach-goldberg-variations.mp3) et sélectionnez « Enregistrer la cible du lien sous » pour télécharger le fichier MP3 sur votre ordinateur.
+Vous aurez besoin du [fichier MP3 des Variations Goldberg de Bach](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/editing-audio-with-audacity/bach-goldberg-variations.mp3). Pour le télécharger, faites un clic droit [ici](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/editing-audio-with-audacity/bach-goldberg-variations.mp3) et sélectionnez « Enregistrer la cible du lien sous » pour télécharger le fichier MP3 sur votre ordinateur.
 
 Ensuite, téléchargez et installez *Audacity*, disponible sur [le site du projet](http://audacityteam.org/) ==, ou bien sur le [dépôt GitHub](https://github.com/audacity/audacity/releases)==. Le logiciel est compatible avec Mac OSX, Windows et Linux.
 

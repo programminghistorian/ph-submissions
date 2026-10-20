@@ -46,17 +46,17 @@ The range of “domain” varies greatly from research to research. Existing DH 
 
 ### Prerequisites
 
-This lesson requires a basic Python technical understanding and access to a coding environment (either local- or cloud-based) to run the required Python code via Jupyter Notebook. Some options include [Google Colab](https://colab.research.google.com/) (for cloud) and VSCode (for local). Readers will also benefit from a fundamental understanding of textual analysis, [Named Entity Recognition](https://programminghistorian.org/en/lessons/finding-places-world-historical-gazetteer#65-named-entity-recognition), and Natural Language Processing. No prior machine learning knowledge is needed.
+This lesson requires a basic Python technical understanding and access to a coding environment (either local- or cloud-based) to run the required Python code via Jupyter Notebook. Some options include [Google Colab](https://colab.research.google.com/) (for cloud) and Visual Studio Code (for local). A fundamental understanding of textual analysis, [Named Entity Recognition](https://programminghistorian.org/en/lessons/finding-places-world-historical-gazetteer#65-named-entity-recognition), and Natural Language Processing will be helpful.
 
-Since this lesson focuses on building a domain-specific program, users should have domain knowledge in the domain that they apply this lesson to.
+Since this lesson focuses on building a domain-specific program, users should have domain knowledge in the field that they apply this lesson to.
 
-Graphic Processing Units (GPU) is not required but recommended.
+Graphic Processing Units (GPU) are not required but recommended.
 
 ### Sample Dataset and Sample Research Question
 
-To showcase the manual annotation and fine-tuning pipeline, this lesson will use a sample text with a sample research question. Readers should substitute the text with their own research corpus and their own research question. This lesson will indicate where readers should substitute their own research components into the pipeline.
+To showcase the manual annotation and fine-tuning pipeline, this lesson uses a sample text with a sample research question. Readers should substitute the text with their own research corpus and research question. This lesson will indicate where readers should substitute their own research components into the pipeline.
 
-This lesson uses “Bartleby, The Scrivener” (1853) by Herman Melville (accessed via Project Gutenberg) as the sample corpus and the sample question “How does Melville use non-named entities differently than named entities in conveying ‘space’ in his short stories?” This sample question defines “non-named entities” (NNE) as words or terms that are not proper nouns while “named entities” (NE) as proper nouns or titles.[^4]
+This lesson uses “Bartleby, The Scrivener” (1853) by Herman Melville (via [Project Gutenberg](https://www.gutenberg.org/ebooks/11231)) as the sample corpus and the sample question “How does Melville use non-named entities differently than named entities in conveying ‘space’ in his short stories?” This sample question defines “non-named entities” (NNE) as words or terms that are not proper nouns while “named entities” (NE) as proper nouns or titles.[^4]
 
 
 ## Steps in the Pipeline
@@ -65,9 +65,9 @@ This lesson uses “Bartleby, The Scrivener” (1853) by Herman Melville (access
 
 This step requires the researchers’ domain specialty the most. The lesson’s sample question designated that the domain for this research is spatial history and analysis.
 
-Many NLP research creates their own data schema or borrow the schema from an existing project related to their work.[^5] Data schema refers to how the researcher categorizes words and terms. One common NER schema is spaCy’s NER feature. Its English language `en_core_web_md` model contains the categories `CARDINAL`, `DATE`, `EVENT`, `FAC`,` GPE`, `LANGUAGE`, `LAW`, `LOC`, `MONEY`, `NORP`, `ORDINAL`, `ORG`, `PERCENT`, `PERSON`, `PRODUCT`, `QUANTITY`, `TIME`, and WO`RK_OF_ART.[^6] spaCy is a powerful yet general-use NER tool, not the most suitable for domain-specific tasks.
+Many NLP research creates their own data schema or borrow the schema from an existing project related to their work.[^5] Data schema refers to how the researcher categorizes words and terms. spaCy provides one common NER schema. Its English language `en_core_web_md` model contains the NER categories `CARDINAL`, `DATE`, `EVENT`, `FAC`,` GPE`, `LANGUAGE`, `LAW`, `LOC`, `MONEY`, `NORP`, `ORDINAL`, `ORG`, `PERCENT`, `PERSON`, `PRODUCT`, `QUANTITY`, `TIME`, and `WORK_OF_ART`.[^6] spaCy is a powerful yet general-use NER tool and, thus, not the most suitable for domain-specific tasks.
 
-Whether to create a customized data schema depends on your research question, availability of existing research, and the discipline that you operate in. When creating your own customized data schema, it might feel slightly uncomfortable at first, since the researcher might think that they are attempting to predict what words or terms they might find. Two ways to mitigate this is to have domain specialty and to adopt an iterative process, where the researcher performs close-reading on parts of their corpus (if the full corpus is too large to close read fully), create a preliminary data schema, and revise the schema as the researcher close-reads more of the corpus and conduct more research on the topic via secondary or other primary sources. As an iterative process, it is very likely that, as you advance onto the following steps in this lesson, you might encounter information that would cause you to revisit this step to edit your data schema.
+Whether to create a customized data schema depends on your research question, availability of existing research, and the discipline that you operate in. When creating your customized data schema, it might feel slightly uncomfortable at first, since the researcher might think that they are attempting to predict what words or terms they might find. There are two ways to mitigate this. The first is to have domain specialty. The second is to adopt an iterative process, where the researcher close reads parts of their corpus (if the full corpus is too large to close read fully), create a preliminary data schema, and revise the schema as the researcher close-reads more of the corpus and conduct more research on the topic via secondary or other primary sources. As an iterative process, it is very likely that, as you advance onto the following steps in this lesson, you might encounter information that would cause you to revisit this step to edit your data schema.
 
 If you work in a lively discipline, you might be able to find other researchers who have already created a customized data schema that you can borrow.
 

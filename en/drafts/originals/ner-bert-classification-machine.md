@@ -229,7 +229,7 @@ Each JSON object (which resembles a Python dictionary datatype) in the downloade
 | ------- | ------- | ------- |
 | `id` | int | counter of the number of this specific TXT file in your entire dataset |
 | `text` | str | the raw text of this TXT file that you uploaded |
-| `label` | list | contains the specific phrases that you annotated, their locations in your text, and the category. This is a list of lists, where each inner list represents one annotation. Each inner list contains three elements: start index position of the annotated text in the raw text (int), end index position of the annotated text in the raw text (int), and the data schema category that you assigned it (str). Example: [[startIndex, endIndex, “labelCategory”], [startIndex, endIndex, “labelCategory”], …] |
+| `label` | list | contains the specific phrases that you annotated, their locations in your text, and the category. This is a list of lists, where each inner list represents one annotation. Each inner list contains three elements: start index position of the annotated text in the raw text (int), end index position of the annotated text in the raw text (int), and the data schema category that you assigned it (str). Example: `[[3733, 3749, "urban"], [4861, 4889, "interior"], …]` |
 | `Comments` | list | comments that you provided during your annotation process. Blank if you did not provide any comments. This lesson does not use this Deccano feature |
 
 **File Check**

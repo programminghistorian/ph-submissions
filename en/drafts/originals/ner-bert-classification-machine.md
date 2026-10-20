@@ -97,13 +97,15 @@ Using coded programs to clean texts is only necessary if there are significant o
 
 ### Step 3: Doccano Setup
 
-Manual annotation is key to ensure data quality, which in return upholds the quality of a fine-tuned language model. This step might feel tedious, but there are invaluable benefits. One is that the annotator is the domain expert. Manual annotation is also another way to close-read the source text from a different perspective, as the annotator-cum-researcher can reflect on the customized data schema while annotating (thus serving the iterative process mentioned in Step 1).
+Manual annotation is key to ensure data quality, which in return upholds the quality of a fine-tuned language model. This step might feel tedious, but it provides invaluable benefits. One is that the annotator is the domain expert. Manual annotation also creates an opportunity to close-read the source text from a different perspective, as the researcher also serving the annotator's role can reflect on the customized data schema while annotating (thus creating the iterative process mentioned in Step 1).
 
-There are numerous text annotation tools. This lesson uses [Doccano](https://doccano.github.io/doccano/), an open-source data annotator that runs on your local server. There are three ways to run Doccano: pip, Docker, and Docker Compose. This lesson uses pip and Python 3.11. The newest Python version is 3.14, but 3.14 has some dependency issues with certain libraries that Doccano uses.
+There are numerous text annotation tools. This lesson uses [Doccano](https://doccano.github.io/doccano/), an open-source data annotator that runs on your local server. There are three ways to run Doccano: pip, Docker, and Docker Compose. This lesson uses pip and Python 3.11 (Doccano requires a minimum of Python 3.8). The newest Python version is 3.14, but 3.14 has some dependency issues with certain libraries that Doccano uses.
 
 Running Doccano in a Python virtual environment helps with dependency management. To create a Python virtual environment, open a terminal window and type:
 
 ```python3.11 -m venv doccano```
+
+Depending on your configuration, the `python3.11` command might be different, such as simply `python -m venv doccano`.
 
 `doccano` will be the name of this virtual environment that we will run Doccano in. You can name the virtual environment with another name by replacing `doccano` in the aforementioned command line.
 
@@ -118,6 +120,8 @@ You should see `(doccano)` before your command line prompt. This shows that we a
 To install Doccano in your virtual environment, type: 
 
 `pip install doccano`[^8]
+
+This lesson uses the doccano version 1.8.4.
 
 The required storage space during annotation depends on the size of your corpus, but you should prepare at least 600MB of storage to create a virtual environment and install Doccano.
 

@@ -119,9 +119,9 @@ You should see `(doccano)` before your command line prompt. This shows that we a
 
 To install Doccano in your virtual environment, type: 
 
-`pip install doccano`[^8]
+`pip install doccano "marshmallow<4" "numpy<2"`[^8]
 
-This lesson uses the doccano version 1.8.4.
+This lesson uses the doccano version 1.8.4. Marshmallow is a library that converts datatypes, and numpy is a library that conducts numerical computation in Python. Doccano requires both at versions below 4 and 2, respectively, to run.
 
 The required storage space during annotation depends on the size of your corpus, but you should prepare at least 600MB of storage to create a virtual environment and install Doccano.
 
@@ -158,11 +158,11 @@ At your localhost web address, you should see the Doccano home screen like this:
 
 Navigate to the top right corner of the screen and click on `LOGIN`, using the credentials in Step 3.
 
-After logging in, you should see a list of your Doccano projects (which should be none, if you haven not used Doccano before). Click on the blue “Create” button on the top left corner to create a new project.
+After logging in, you should see a list of your Doccano projects (which should be none, if you have not used Doccano before). Click on the blue “Create” button on the top left corner to create a new project.
 
 {% include figure.html filename="ner-bert-classification-machine-02.png" alt="Clicking on Create button" caption="Figure 2. Caption text to display." %}
 
-The screen should now prompt you to fill in the `Project Name` and `Description`. Use meaningful names and descriptions for your project so that you can easily identify your work in the future. Check the `Allow overlapping spans` checkbox.
+The screen should now prompt you to select a category of project before filling in the `Project Name` and `Description`. For project category, select `Sequence Labeling`. Use meaningful names and descriptions in `Project Name` and `Description` so that you can easily identify your work in the future. Check the `Allow overlapping spans` checkbox.
 
 {% include figure.html filename="ner-bert-classification-machine-03.png" alt="Filling in information to create a project" caption="Figure 3. Caption text to display." %}
 
@@ -195,7 +195,7 @@ We will now load our customized data schema into Doccano. Navigate to the `Label
 
 You can now enter the customized NER data schema one by one into the `Label name` field. To add multiple schema categories, click on `Save and add another` after adding one schema category.
 
-After entering all your schema categories, you can see and edit your categories at the `Labels` tab screen.
+After entering all your schema categories, you can see and edit your categories at the `Labels` tab screen. Our sample research question uses four labeling categories: interior, urban, rural, and natural.
 
 {% include figure.html filename="ner-bert-classification-machine-08.png" alt="View the created labels" caption="Figure 8. Caption text to display." %}
 
@@ -215,15 +215,15 @@ Note that, as mentioned in Step 1, as you annotate more texts, you might encount
 
 First, create a directory and give it a meaningful name. This folder will hold all files for the rest of the lesson so that you can store the dataset(s), code file(s), and fine-tuned models in one place.
 
-After annotating all your TXT files, you can export the data via a JSONL file by visiting the `Dataset` tab, clicking on `Actions`, and selecting `Export Dataset`. The screen will then present a sample overview of the data structure of the JSONL file that you will download. Clicking on `Export` will download a Zip file that contains your JSONL file. Depending on the security features on your machine or browser, the downloading processing might be interrupted because your machine or browser might think it is an insecure file. If this happens, you can navigate to your browser’s `Download`  icon and manually permit file download. For example, for Google Chrome browser, you ned to click on `Keep` for the downloading file:
+After annotating all your TXT files, you can export the data via a JSONL file by visiting the `Dataset` tab, clicking on `Actions`, and selecting `Export Dataset`. The screen will then present a sample overview of the data structure of the JSONL file that you will download. Clicking on `Export` will download a Zip file containing your JSONL file. JSONL stands for JSON Lines, a way to collect multiple JSON objects into one file. Each line in a JSONL file is one JSON object. For Doccano’s data export function, each line represents one TXT file being annotated and the annotations that you have created in Step 6.
+
+Depending on the security features on your machine or browser, the downloading process might be interrupted because your machine or browser might think it is an insecure file. If this happens, you can navigate to your browser’s `Download` icon and manually permit file download. For example, for Google Chrome browser, you need to click on `Keep` for the downloading file:
 
 {% include figure.html filename="ner-bert-classification-machine-10.png" alt="Allow download after machine or browser blocked its download" caption="Figure 10. Caption text to display." %}
 
-After downloading the Zip file, unzip it and store the JSONL file that it contains in the directory that you have just created. If you are coding in Google Colab, you can upload the JSONL file to your Colab work environment.
+After downloading the Zip file, unzip it and store the JSONL file in it in the directory that you have just created. If you are coding in Google Colab, you can upload the JSONL file to your Colab work environment.
 
-JSONL stands for JSON Lines, a way to collect multiple JSON objects into one file. Each line in a JSONL file is one JSON object. For Doccano’s data export function, each line represents one TXT file being annotated and the annotations that you have created in Step 6.
-
-Each JSON object (which resemble a Python dictionary data type) in the downloaded JSONL file has four keys: `id`, `text`, `label`, `Comments`.
+Each JSON object (which resembles a Python dictionary datatype) in the downloaded JSONL file has four keys: `id`, `text`, `label`, `Comments`.
 
 | key | data type | description |
 | ------- | ------- | ------- |

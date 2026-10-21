@@ -358,8 +358,30 @@ numberToBioLabelDict = {num: label for label, num in bioLabelToNumberDict.items(
 
 Substitute each B and I labels with your own labels.
 
-Then, we will reformat our existing dataset (stored in the variable mainAnnotationStorageList
-) into this format. We will use BERT’s tokenizer during this step. Since BERT has a 512-token limit, and that most short stories have more than 512 tokens, this lesson implements a sliding window during this process.
+Then, we will reformat our existing dataset (stored in the variable `mainAnnotationStorageList`) into this format using BERT's tokenizer. Since BERT has a 512-token limit, and that most short stories have more than 512 tokens, this lesson implements a sliding window during this process.
+
+We will use the function `turnLabeledDataIntoBioFormat` to do this. This function has four required parameters and two default parameters.
+| parameter | meaning |
+| --- | --- |
+| corpusTextStr | The corpus text stored as a string |
+| labelsList | The list of labels and their index positions in the corpus text, as provided by our annotation in Doccano |
+| tokenizer | The tokenizer we are using, and we use the one in `bert-base-cased` |
+| labelIDDict | The dictionary of annotation schema that we created earlier in `bioLabelToNumberDict` |
+| windowLength=512 | Default parameter: maximum window length allowed by BERT. Change this number based on the maximum allowed window length for the tokenizer you prefer, if you are not using BERT |
+| overlap=30 | Default parameter: overlap between two windows in a sequence |
+
+This function operates at the level of each text in the `mainAnnotationStorageList` list we created earlier. Meaning, if your corpus contains multiple texts (say multiple short stories), we will call this function for each of these texts.
+
+When using the BERT tokenizer in `turnLabeledDataIntoBioFormat`, it returns a container of tokenized texts and store it in the variable `encoding`. The variable acts like a dictionary with four pairs of information:
+| key | value |
+| --- | --- |
+| input_ids | an ID representing the token in BERT's model |
+| attention_mask |  |
+| token_type_ids |  |
+| offset_mapping | tuples that represent the start and end index position of an annotated entity in the corpus text |
+
+
+In the function, when using the tokenizer function, we set the parameter `return_offsets_mapping` to `True` so that the tokenizer will return the index position for each label in the original corpus text. This is important in entity recognition as words or terms could be split up during tokenization and distribution into windows of 512 tokens.
 
 ```
 import transformers
@@ -402,6 +424,7 @@ def turnLabeledDataIntoBioFormat(corpusTextStr, labelsList, tokenizer, labelIDDi
                 if startOneTokenInAnnotatedTextIndexInt == 0 and endOneTokenInAnnotatedTextIndexInt == 0:
                     continue # these are the special tokens
 
+                # this condition checks for whether a token is an annotated entity and labels it as such
                 if startOneTokenInAnnotatedTextIndexInt < endAnnotatedtextIndexInt and endOneTokenInAnnotatedTextIndexInt > startAnnotatedtextIndexInt:
                     if beginningTokenBool:
                         tokenNumericalLabelsList[tokenIndex] = labelIDDict[beginningLabelStr]

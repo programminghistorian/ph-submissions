@@ -262,10 +262,9 @@ You should print out a brief preview of each of your TXT files and the first fiv
 
 **Storing JSON Objects as Dictionary**
 
-For easier data access later on, we will store all JSON objects into one list via this code:
+For easier data access later on, we will store all JSON objects into one list, named `mainAnnotationStorageList` via this code and refer to this variable later in the lesson when accessing our raw text and annotation.
 
 ```
-# we will refer to this variable later in the lesson when accessing our raw text and annotation
 mainAnnotationStorageList = []
 
 with open("admin.jsonl") as annotationFile:
@@ -274,7 +273,7 @@ with open("admin.jsonl") as annotationFile:
         mainAnnotationStorageList.append(oneAnnotatedFileDict)
 
 # double checking that we did this correctly:
-print(f"Stored {len(mainAnnotationStorageList)} files.")
+print(f"Stored {len(mainAnnotationStorageList)} file(s).")
 # this should print out the same number as the number of files that you have annotated
 ```
 
@@ -291,11 +290,11 @@ This step might take a few minutes.
 
 Before model fine-tuning or training, it is always a good practice to understand your data at a larger scale, as this understanding will influence architectural decisions in the model fine-tuning process later in this lesson.
 
-For a word classification task like this lesson, it is helpful to understand our training data cumulatively.
+For a word classification task like this lesson, we should understand our training data cumulatively. We will calculate the number of annotations each category has, the corpus's word count, and the percentage of words that are annotated as non-named entities.
 
 ```
-mainTrainingDataLabelCounterDict = {} # count how many annotations each of your categories has 
-totalTrainingDataWordCounterInt = 0 # count how many words your corpus has
+mainTrainingDataLabelCounterDict = {}
+totalTrainingDataWordCounterInt = 0
 numOfLabeledWordsInt = 0
 
 for oneFileDict in mainAnnotationStorageList:
@@ -315,7 +314,7 @@ print(f"Corpus has {totalTrainingDataWordCounterInt} words in total")
 print(f"{numOfLabeledWordsInt} out of {totalTrainingDataWordCounterInt} words({(numOfLabeledWordsInt/totalTrainingDataWordCounterInt)*100:.2f}%) are non-named entities")
 ```
 
-This step will reveal whether there is an imbalance of data annotations (e.g., one NER label having much more data points than others. If such a situation exists, we can mitigate this by either annotating more texts or using data resampling (introduced later).
+This step will reveal whether there is an imbalance of data annotations (e.g., one NER label having much more data points than others). If such a situation exists, we can mitigate this by either annotating more texts or using data resampling (introduced later).
 
 Keep the printed information in mind going forward. A reminder that many choices going forward will be architectural choices that vary from research to research, so this lesson can only provide general guidance and choices made in the context of this lesson’s sample research question. The specific decisions for your situation depends on your familiarity of your domain, corpus, and what questions your research domain seeks to answer.
 
@@ -366,7 +365,7 @@ Then, we will reformat our existing dataset (stored in the variable mainAnnotati
 import transformers
 tokenizer = transformers.BertTokenizerFast.from_pretrained("bert-base-cased")
 
-def turnLabeledDataIntoBioFormat(corpusTextStr, labelsList, tokenzier, labelIDDict, windowLength=512, overlap=30):
+def turnLabeledDataIntoBioFormat(corpusTextStr, labelsList, tokenizer, labelIDDict, windowLength=512, overlap=30):
     encoding = tokenizer(corpusTextStr, return_offsets_mapping=True, truncation=True, max_length = windowLength, stride=overlap, return_overflowing_tokens=True, padding="max_length")
 
     # splitting each element in the tokenizer return value into their own variables. Each inner list is one window of 512 tokens

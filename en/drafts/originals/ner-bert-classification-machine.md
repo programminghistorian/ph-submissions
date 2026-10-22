@@ -33,7 +33,7 @@ Annotating corpora or datasets manually also allows researchers to perform a uni
 Readers will:
 - Create a customized textual data Named Entity Recognition annotation schema;
 - Use the schema to manually annotate a corpus that the researcher has domain-specialty in;
-- Train a BERT (Bidirectional Encoder Representations from Transformers) classification model in Python using the annotated corpus;
+- Train a [BERT](https://github.com/google-research/bert) (Bidirectional Encoder Representations from Transformers) classification model in Python using the annotated corpus;
 - Understand concepts like data resampling, hyperparameters, train/test sets, and other machine learning concepts. This lesson will introduce these concepts as they appear in the pipeline.
 
 To illustrate the full lifecycle of domain-specific textual analysis, this lesson uses the technique of Named Entity Recognition as an example. Users can substitute other textual analysis techniques beside NER when using this lesson.

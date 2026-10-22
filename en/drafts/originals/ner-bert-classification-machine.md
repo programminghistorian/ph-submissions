@@ -478,7 +478,7 @@ As mentioned in Step 8, there will be times where we have an imbalanced dataset.
 
 In entity recognition, the `O` category is often heavily overrepresented, and this is not a problem, since most words in literature are not named entities or even non-named entities. It is only a problem when there is an imbalance among annotation categories. You can review your data from Step 8 to see whether there is a data imbalance.
 
-To address potential imbalance, we will use data resampling, which is a technique that overrepresents minority data or underrepresents majority data so that the final training data is more balanced. Do not perform data resampling on the validation and testing datasets. Upsampling and downsampling are two common ways of data resampling. Another way to address data imbalance is class reweighing, which changes the model weights, thus penalizing each category differently during training. This lesson will cover upsampling and downsampling.
+To address potential imbalance, we will use data resampling, which is a technique that overrepresents minority data or underrepresents majority data so that the final training data is more balanced. Do not perform data resampling on the validation and testing datasets. Upsampling and downsampling are two common ways of data resampling. Another way to address data imbalance is class reweighting, which changes the model weights, thus penalizing each category differently during training. This lesson will cover upsampling and downsampling. For a discussion on the difference between resampling and reweighting, see [this paper](https://ieeexplore.ieee.org/document/4669722).
 
 Upsampling increases the number of occurrence of minority data according to a scale, and downsampling reduces the occurrence of majority data according to a scale. Determining the scale is an architectural choice that depends on your specific dataset.
 
@@ -502,7 +502,7 @@ For this lesson’s sample data, the data spread is:
 {'O': 60840, 'B-rural': 3, 'I-rural': 3, 'B-urban': 11, 'I-urban': 14, 'B-interior': 23, 'B-natural': 2, 'I-natural': 12, 'I-interior': 16}
 ```
 
-This means that we have a heavy `O` overrepresentation and `B-rural`, `I-rural`, and `B-natural` underrepresentation. Note that this step is also helpful to get an idea of what type of language usage is more or less often in your corpus.
+This means that we have a heavy `O` overrepresentation (which is expected and is very likely to happen to your dataset, too) and `B-rural`, `I-rural`, and `B-natural` underrepresentation. Note that this step is also helpful to get an idea of what type of language usage is more or less often in your corpus.
 
 To address this, we will perform downsampling on `O` and upsampling on “`B-rural`, `I-rural`, and `B-natural` so that they are at a similar representation as the rest of the non-`O` categories.
 ```
@@ -614,16 +614,18 @@ Nevertheless, despite hyperparameters’ huge influence, the most important aspe
 
 ### Step 12: Loading Dataset
 
-After creating our training dataset, we need to load our dataset into the HuggingFace Dataset object, which is compatible with BERT.
+After creating our training dataset, we need to load our dataset into the [HuggingFace Dataset](https://huggingface.co/docs/datasets/v2.1.0/en/access) object, which is compatible with BERT.
+
+We will first remain our existing dataset to become compatible with the BERT and HuggingFace naming conventions.
 ```
 def quickNameChange(trainingDatasetList):
-    # renaming this so that we are compatible with the BERT and HuggingFace naming conventions
     renamedData = {"input_ids": trainingDatasetList["inputIDs"], "attention_mask": trainingDatasetList["attentionMask"], "labels": trainingDatasetList["labels"]}
     return renamedData
 
 finalResampledTrainingDataList = [quickNameChange(oneDatapoint) for oneDatapoint in finalResampledTrainingDataList]
 validationDataList = [quickNameChange(oneDatapoint) for oneDatapoint in validationDataList]
 ```
+Then, we will cast our renamed datasets into the HuggingFace Dataset object and verify whether the final datatype for our reformatted training and validation datasets are of the type `<class 'datasets.arrow_dataset.Dataset'>` (shown through using `.type()` method) and have the features `['input_ids', 'attention_mask', 'labels']` (shown through printing both variable names directly.
 ```
 import datasets
 
@@ -631,20 +633,20 @@ reformattedFinalTrainingDataset = datasets.Dataset.from_list(finalResampledTrain
 reformattedValidationTrainingDataset = datasets.Dataset.from_list(validationDataList)
 
 # check if we got it right
-
-print(type(reformattedFinalTrainingDataset)) # this should give us a class "datasets.arrow_dataset.Dataset"
-print(reformattedFinalTrainingDataset) # this should give us: features: ['input_ids', 'attention_mask', ‘labels']
+print("Training data datatype: ", type(reformattedFinalTrainingDataset)) 
+print("Training data features: ", reformattedFinalTrainingDataset)
+print("Validation data datatype: ", type(reformattedValidationTrainingDataset))
+print("Validation data features: ", reformattedValidationTrainingDataset)
 ```
 
 We will now write a data collation function, which batches our data.
 
 ### Step 13: Loading Training Metrics and Model
 
-Now, we have our data ready for training. The next step is to write a collation function, which batches data during training.
+To batch our data, we will use this collate function:
 ```
 import torch
 def collateData(trainingDataset):
-    # this is to collate our data into batches
     inputIDs = torch.stack([torch.tensor(oneDatapoint["input_ids"]) for oneDatapoint in trainingDataset])
     attentionMask = torch.stack([torch.tensor(oneDatapoint["attention_mask"]) for oneDatapoint in trainingDataset])
     labels = torch.stack([torch.tensor(oneDatapoint["labels"]) for oneDatapoint in trainingDataset])
@@ -653,13 +655,13 @@ def collateData(trainingDataset):
     return returnDict
 ```
 
-Then, we will import our model:
+Then, we will import and load our model:
 ```
 import transformers
 
-# load the model
 bertTrainingModel = transformers.BertForTokenClassification.from_pretrained("bert-base-cased", num_labels=len(bioLabelToNumberDict))
 ```
+We are using the `bert-base-cased` model, a case-sensitive model, because NER often contain proper nouns (which are often capitalized). The counterpart, `bert-base-uncased` does not consider capitalization. Other potential models that one can use include `bert-large-cased`, which has more parameters than `bert-base` but would take more computation to run. There are also many community-developed BERT models beside the ones that Google (where BERT was originally developed) has released designed for domain-specific corpus, such as `emanjavacas/MacBERTh`, developed by Enrique Manjavacas and Lauren Fonteyn and mentioned earlier in the lesson. If you know existing domain-specific BERT models in your domain, using them could provide more domain-specific nuance for your research than the generic BERT model. You can find other BERT models on HuggingFace's model [search interface](https://huggingface.co/models?search=bert) (make sure to carefully read the documentation for a model before using it to ensure its fit for your project and overall reliability).
 
 And set the training hyperparameters. We will use the HuggingFace [Trainer](https://huggingface.co/docs/transformers/en/main_classes/trainer) API’s [TrainingArguments](https://huggingface.co/docs/transformers/v5.8.1/en/main_classes/trainer#transformers.TrainingArguments) method:
 ```
@@ -684,17 +686,15 @@ trainingHyperparameters = transformers.TrainingArguments(
 )
 ```
 
-Now, create the metrics computation function:[^12]
+Now, create the metrics computation function.[^12] This function converts label IDs (numerical numbers) to label names and calculates the [precision, recall, F1, and accuracy metrics](https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall). We use the `seqeval` evaluation framework because it considers tokens in chunks, which is suitable for entity recognition tasks, as one entity name might span multiple tokens, rather than a token-by-token evaluation approach.
 ```
 import evaluate
 import numpy
 
-metric = evaluate.load("seqeval") # seqeval is commonly used for NER evaluation
+metric = evaluate.load("seqeval")
 
-# Function to compute precision, recall, F1 and accuracy.
 def computeMetricsAndPredictions(rawPrediction):
     predictions, labels = rawPrediction
-
     predictions = numpy.argmax(predictions, axis=2) # find which label has the highest prediction score, and that will be the prediction that the model is making 
 
     truePredictions = [
@@ -714,7 +714,7 @@ def computeMetricsAndPredictions(rawPrediction):
 
 ### Step 14: Load Trainer
 
-Continuing using the Trainer API, we will initiate the trainer:
+Continuing using the Trainer API, we will initiate the trainer. The `.Trainer()` method brings together all the preparation that we have done so far.
 ```
 modelTrainer = transformers.Trainer(
     model=bertTrainingModel, # replace this with your model variable
@@ -739,21 +739,21 @@ modelTrainer.save_model("./NERBERTfine-tuneVer1")
 tokenizer.save_pretrained("./NERBERTfine-tuneVer1")
 ```
 
-The time to run the training process varies greatly, depending on the size of your data, access to GPU, and others. It could take up to an hour or more. Make sure to run the two `save_` methods so that you do not lose your progress after minutes or hours of training.
+The time needed to run the training process (via `.train()` method) varies greatly, depending on your data size, model choice, GPU availability, and others. It could take up to hours. Make sure to run the two `save_` methods right away so to not lose your progress after minutes or hours of training.
 
-### Aside #2: Training Hyperparameters
+### Aside #2: Using Hyperparameters
 
-This lesson specified a few default values for training hyperparameters in `.TrainingArguments()` method. You should experiment yourself based on your modern performance and change them accordingly.
+This lesson specified a few default values for training hyperparameters in `.TrainingArguments()` method. You should experiment yourself based on your model performance and change them accordingly.
 
 | Hyperparameter | Description |
 | - | - |
 | eval_strategy | determines when during training does the model use the validation set to evaluate its performance. Setting it to “epoch” means evaluating every epoch; “step” means every few training steps; “no” (default) means no evaluation |
-| save_strategy | when during training does the model save checkpoints. It has the same three options as eval_strategy. The value for save_strategy and eval_strategy should be the same. |
+| save_strategy | when during training does the model save checkpoints. It has the same three options as eval_strategy. Generally speaking, save_strategy and eval_strategy should have the same value, since this is required if we set load_best_model_at_end hyperparameter to True (see below). |
 | learning_rate | size of step that the model takes when changing weights during training. A value too big risks overshooting; too small risks underfitting or long training time. Some options: 1e-5, 2e-5, 3e-5 |
-| per_device_train_batch_size | how many batches are processed at once. Larger number requires more memory storage. If you receive an Out-of-Space error, try decreasing the batch size. Some options: 4, 8, 16 |
-| per_device_eval_batch_size | same as above, but for validation data and not training data. The value here should be the same value as per_device_train_batch_size |
-| num_train_epochs | how many epochs does the training process uses. One epoch equals the model “reading” the dataset once. Larger epoch number risks overfitting; lower epoch risks underfitting. Some options: 2, 4, 8, 10 |
-| weight_decay | attempt to standardize weights by decreasing large training weights. This is helpful for tasks like NER, where we often have imbalanced datasets. Higher decay risks not learning meaningful patterns; lower decay risks overfitting. Some options: 0.1, 0.01, 0.001 |
+| per_device_train_batch_size | how many batches are processed at once. Larger number requires more memory storage. If you receive an Out-of-Space error, try decreasing the batch size. Some common (but not all) options: 4, 8, 16 |
+| per_device_eval_batch_size | same as above, but for validation data and not training data. Generally speaking, per_device_train_batch_size and per_device_eval_batch_size should have the same value to have equal comparison, but this is not required |
+| num_train_epochs | how many epochs does the training process use. One epoch equals the model “reading” the dataset once. Larger epoch number risks overfitting; lower epoch risks underfitting. Some common (but not all) options: 2, 4, 8, 10 |
+| weight_decay | attempt to standardize weights by decreasing large training weights. This is helpful for tasks like NER, where we often have imbalanced datasets. Higher decay risks not learning meaningful patterns; lower decay risks overfitting. Some common (but not all) options: 0.1, 0.01, 0.001 |
 | load_best_model_at_end | which model training checkpoint will be the final outputted model. If True, then it will output the best. You should always set it to True |
 | metric_for_best_model | how the model determines which checkpoint is the best. The options “f1”, “accuracy”, and “precision” refer to which of these three values the model will use to determine this |
 
@@ -770,7 +770,7 @@ fineTunedModel.eval() # set to inference mode
 ```
 Replace “NERBERTfine-tuneVer1” with the folder path of your fine-tuned model.
 
-Then add this inference function that will take in unseen raw text as a string, split it into 512-token windows, and perform prediction. Set overlapInt to the window overlap value that you did in Step 10’s `turnLabeledDataIntoBioFormat` function.
+Then add this inference function that will take in unseen raw text as a string, split it into 512-token windows, and perform prediction. 
 
 ```
 def runNERInference(rawText, overlapInt):
@@ -838,8 +838,7 @@ def runNERInference(rawText, overlapInt):
 
     return cleanedOutputList
 ```
-
-Then, set your unseen text into one string and determine the number of overlap tokens.
+Then, set your unseen text into one string and determine the number of overlap tokens. Set `overlapInt` to the window overlap value that you did in Step 10’s `turnLabeledDataIntoBioFormat` function. 
 
 ```
 rawText = “” # set the text that you want to perform NER on 
@@ -880,8 +879,8 @@ This lesson benefitted from sources like Medium posts by [DamenC](https://medium
 
 [^9]: If the localhost address does not work, your terminal should have printed out a line that says “Listening at:” followed by a link. Copy and paste that link into your browser.
 
-[^10]: If you are a MacBook user accustomed to using the “Command” instead of “Control” key, you still need to use “Control” when working with the terminal. 
+[^10]: If you are a Mac user accustomed to using the “Command” instead of “Control” key, you still need to use “Control” when working with the terminal. 
 
-[^11]: Note that we are treating our manual annotation as gold standard (often because there does not exist another dataset that fits the needs of a specific research genre or question. This is why domain specialty and Step 1’s iterative process is important so that the annotator (us) can ensure data quality.
+[^11]: Note that we are treating our manual annotation as gold standard (often because there does not exist another dataset that fits the needs of a specific research genre or question). This is why domain specialty and Step 1’s iterative process is important so that the annotator (us) can ensure data quality.
 
 [^12]: This metrics computation function is borrowed from the BERT fine-tuning tutorial from Argilla, an open-source data curation platform. Argilla, “Fine-tunning a NER model with BERT for Beginners,” *Argilla*, https://docs.v1.argilla.io/en/latest/tutorials/notebooks/ner_fine_tune_bert_beginners.html. Accessed May 13, 2026.

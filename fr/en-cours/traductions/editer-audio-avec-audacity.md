@@ -77,7 +77,7 @@ Vous remarquerez que, dans *Audacity*, les incréments de temps s’ajustent ég
 
 Avant de continuer, il est utile d’observer les différentes palettes qu’*Audacity* propose pour ses fonctions les plus courantes. La palette de lecture affiche des symboles qui vous seront probablement familiers : des boutons pour mettre en pause, lire, arrêter, avancer rapidement au début ou à la fin d’un fichier audio, et enregistrer.
 
-{% include figure.html filename="fr-tr-editer-audio-avec-audacity-04.png" alt="Palette d’outils d’Audacity" caption="Figure 4. Vue zoomée de la forme d’onde de Bach" %}
+{% include figure.html filename="fr-tr-editer-audio-avec-audacity-04.png" alt="Audacity tool palette" caption="Figure 4. Palette d’outils d’Audacity" %}
 
 La palette d’outils est, quant à elle, probablement nouvelle pour vous. Nous n’aborderons pas toutes les fonctionnalités d’*Audacity*, certains boutons resteront donc inutilisés. Cependant, notez que nous utiliserons l'outil « Sélection » (en haut à gauche) dans cette leçon et le module intégré « Clip-handles » (« outil de manipulation d'échantillon »), héritier du « Déplacement temporel », ou « [Time Shift Tool](https://manual.audacityteam.org/man/time_shift_tool.html) » dans les précédentes versions du logiciel. À l'ouverture d'*Audacity*, l’outil « Sélection » est activé par défaut.
 

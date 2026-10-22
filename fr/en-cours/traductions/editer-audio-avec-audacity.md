@@ -73,7 +73,11 @@ Si vous effectuez un zoom à six ou sept reprises, vous commencerez à voir quel
 
 Vous remarquerez que, dans *Audacity*, les incréments de temps s’ajustent également lorsque vous zoomez. Les fréquences de hauteur (*pitch*) sont mesurées en ondes par seconde, et le programme doit compresser les données pour afficher l’intégralité de l'extrait dans une fenêtre exploitable. Le résultat est la forme d’onde que nous voyons lorsque nous revenons à la vue normale en sélectionnant « Zoom normal » dans le menu « Affichage » → « Zoom ». Chaque vue — micro et macro — a ses propres utilités. Nous y reviendrons.
 
+{% include figure.html filename="fr-tr-editer-audio-avec-audacity-03.png" alt="Audacity playback palette" caption="Figure 3. Barre d’outils de lecture d’Audacity" %}
+
 Avant de continuer, il est utile d’observer les différentes palettes qu’*Audacity* propose pour ses fonctions les plus courantes. La palette de lecture affiche des symboles qui vous seront probablement familiers : des boutons pour mettre en pause, lire, arrêter, avancer rapidement au début ou à la fin d’un fichier audio, et enregistrer.
+
+{% include figure.html filename="fr-tr-editer-audio-avec-audacity-04.png" alt="Palette d’outils d’Audacity" caption="Figure 4. Vue zoomée de la forme d’onde de Bach" %}
 
 La palette d’outils est, quant à elle, probablement nouvelle pour vous. Nous n’aborderons pas toutes les fonctionnalités d’*Audacity*, certains boutons resteront donc inutilisés. Cependant, notez que nous utiliserons l'outil « Sélection » (en haut à gauche) dans cette leçon et le module intégré « Clip-handles » (« outil de manipulation d'échantillon »), héritier du « Déplacement temporel », ou « [Time Shift Tool](https://manual.audacityteam.org/man/time_shift_tool.html) » dans les précédentes versions du logiciel. À l'ouverture d'*Audacity*, l’outil « Sélection » est activé par défaut.
 
@@ -89,7 +93,7 @@ Nous avons chargé la musique d’introduction de notre podcast. Continuons en e
 
 Vous obtiendrez ce type de résultat :
 
-{% include figure.html filename="fr-tr-editer-audio-avec-audacity-03.png" alt="Visual description of figure image" caption="Figure 3. Deux pistes chargées dans *Audacity*" %}
+{% include figure.html filename="fr-tr-editer-audio-avec-audacity-05.png" alt="Visual description of figure image" caption="Figure 5. Deux pistes chargées dans *Audacity*" %}
 
 L’enregistrement original de Bach reste en haut de l’interface, tandis que notre nouvel enregistrement est ajouté en dessous. Par défaut, *Audacity* n'écrase pas l’enregistrement précédent : il isole les deux pistes sonores, ce qui permet de manipuler chaque composante séparément avant de les mixer dans un enregistrement final. Vous pouvez modifier l’une sans affecter l’autre. Notez que, temporellement, la nouvelle piste commence par défaut au début du projet *Audacity*. Pour l’instant, la piste Bach et la piste de votre voix commencent en même temps. Votre enregistrement peut présenter d’autres imperfections, que nous corrigerons en partie.
 
@@ -105,8 +109,8 @@ Pour utiliser la piste enregistrée, nous devons d’abord la nettoyer, en isola
     
 - Faites un zoom sur le début de l'échantillon pour visualiser le silence. En cliquant et en faisant glisser la souris sur les sections de la forme d’onde, vous pouvez les supprimer en appuyant sur la touche « Supprimer » de votre clavier.
 
-{% include figure.html filename="fr-tr-editer-audio-avec-audacity-04.png" alt="Visual description of figure image" caption="Figure 4. Début de la piste vocale prêt à être supprimé" %}  
-{% include figure.html filename="fr-tr-editer-audio-avec-audacity-05.png" alt="Visual description of figure image" caption="Figure 5. Début de la piste après la suppression" %}
+{% include figure.html filename="fr-tr-editer-audio-avec-audacity-06.png" alt="Visual description of figure image" caption="Figure 6. Début de la piste vocale prêt à être supprimé" %}  
+{% include figure.html filename="fr-tr-editer-audio-avec-audacity-07.png" alt="Visual description of figure image" caption="Figure 7. Début de la piste après la suppression" %}
 
 Ces petites pauses peuvent sembler insignifiantes, mais elles constituent des éléments importants dans n'importe quelle piste audio. Nous voulons que le début et la fin de la nouvelle piste vocale ne contiennent aucune donnée superflue. Après suppression, vous devriez obtenir un extrait audio bien délimité, avec seulement une infime trace de silence à chaque extrémité.
 
@@ -116,9 +120,9 @@ Pour garantir des transitions fluides entre les pistes, nous devons introduire d
 
 Si vous n’avez sélectionné qu’une très petite portion, les changements causés par les fondus peuvent sembler invisibles. Ces captures d’écran ultra-zoomées vous aideront à visualiser l’effet :
 
-{% include figure.html filename="fr-tr-editer-audio-avec-audacity-06.png" alt="Visual description of figure image" caption="Figure 6. Piste avant fondu d’entrée" %}
+{% include figure.html filename="fr-tr-editer-audio-avec-audacity-08.png" alt="Visual description of figure image" caption="Figure 8. Piste avant fondu d’entrée" %}
 
-{% include figure.html filename="fr-tr-editer-audio-avec-audacity-07.png" alt="Visual description of figure image" caption="Figure 7. Piste après fondu d’entrée" %}
+{% include figure.html filename="fr-tr-editer-audio-avec-audacity-09.png" alt="Visual description of figure image" caption="Figure 9. Piste après fondu d’entrée" %}
 
 Le fondu d’entrée a considérablement réduit l’amplitude initiale et introduit des changements très progressifs sur la portion surlignée, lissant ainsi la transition et créant l’impression d’une augmentation progressive du volume.
     
@@ -130,11 +134,11 @@ La suppression des silences et des sons indésirables a permis de préparer l'é
 
 - Déplacez votre extrait vocal vers la droite, de sorte qu’il commence après que la musique d’introduction a joué pendant quelques secondes.
 
-{% include figure.html filename="fr-tr-editer-audio-avec-audacity-08.png" alt="Visual description of figure image" caption="Figure 8. Repositionnement de l'extrait audio dans le temps" %}
+{% include figure.html filename="fr-tr-editer-audio-avec-audacity-10.png" alt="Visual description of figure image" caption="Figure 10. Repositionnement de l'extrait audio dans le temps" %}
 
 Si le volume de votre voix par rapport à la musique d’introduction vous semble inégal, vous pouvez les ajuster pour un meilleur équilibre. Le volume global d’une piste peut être modifié à l’aide du curseur de volume situé à gauche de chaque panneau de piste. Il ressemble à une petite graduation -/+ :
 
-{% include figure.html filename="fr-tr-editer-audio-avec-audacity-09.png" alt="Visual description of figure image" caption="Figure 9. Curseur du volume de la piste" %}
+{% include figure.html filename="fr-tr-editer-audio-avec-audacity-11.png" alt="Visual description of figure image" caption="Figure 11. Curseur du volume de la piste" %}
 
 Cependant, nous voulons finalement faire une transition complète de la musique d’introduction vers votre enregistrement vocal, en mettant l’accent sur ce dernier. Un fondu enchaîné (*crossfade*) est facile à réaliser dans *Audacity*.
     
@@ -144,13 +148,13 @@ Cependant, nous voulons finalement faire une transition complète de la musique 
     
 - Utilisez ensuite l’outil de sélection pour cliquer et faire glisser afin de surligner la section de chevauchement, en commençant par la piste du haut et en terminant par celle du bas. Les deux pistes doivent être mises en évidence.
 
-{% include figure.html filename="fr-tr-editer-audio-avec-audacity-10.png" alt="Visual description of figure image" caption="Figure 10. Surlignage des pistes pour le fondu enchaîné" %}
+{% include figure.html filename="fr-tr-editer-audio-avec-audacity-12.png" alt="Visual description of figure image" caption="Figure 12. Surlignage des pistes pour le fondu enchaîné" %}
     
 - Sélectionnez « Fondu-enchaîné de pistes » dans le menu « Effets » → « Steve Daulton » pour indiquer à *Audacity* de faire un fondu de sortie sur la piste du haut tout en faisant un fondu d’entrée sur celle du bas. Dans notre cas, l’ordre des pistes est important .
 
 *Audacity* vous proposera des options pour le fondu enchaîné, mais pour l’instant, il est suffisant d'appliquer les paramètres par défaut « Gain constant ». Ce réglage garantit que les deux pistes s’estomperont de manière linéaire. Pour plus d’informations, consultez la [documentation d’*Audacity* sur les fondus enchaînés](http://manual.audacityteam.org/man/crossfade_tracks.html)  (en anglais).
 
-{% include figure.html filename="fr-tr-editer-audio-avec-audacity-11.png" alt="Visual description of figure image" caption="Figure 11. Résultat après fondu enchaîné" %}
+{% include figure.html filename="fr-tr-editer-audio-avec-audacity-13.png" alt="Visual description of figure image" caption="Figure 13. Résultat après fondu enchaîné" %}
 
 Une fois le mixage finalisé, le résultat correspondra à une transition fluide entre les deux éléments.
 

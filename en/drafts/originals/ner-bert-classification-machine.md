@@ -376,10 +376,9 @@ When using the BERT tokenizer in `turnLabeledDataIntoBioFormat`, it returns a co
 | key | value |
 | --- | --- |
 | input_ids | an ID representing the token in BERT's model |
-| attention_mask |  |
-| token_type_ids |  |
+| attention_mask | a 1 or 0 value showing which tokens are meaningful (assigned `1` and which are special tokens like `[CLS`]` or padding tokens (assigned `0`) |
+| token_type_ids | a 1 or 0 value indicating which sequence (such as a question or an answer) a sentence belongs to. In our case, all tokens are labeled `0` in entity recognition |
 | offset_mapping | tuples that represent the start and end index position of an annotated entity in the corpus text |
-
 
 In the function, when using the tokenizer function, we set the parameter `return_offsets_mapping` to `True` so that the tokenizer will return the index position for each label in the original corpus text. This is important in entity recognition as words or terms could be split up during tokenization and distribution into windows of 512 tokens.
 
@@ -562,14 +561,41 @@ We will determine our resampling ratios here.
 finalResampledTrainingDataList = resampleTrainingData(trainingDataList, bioLabelToNumberDict, upsampleRatio=5, downsampleRatio=0.3)
 ```
 
-The terminal printout should show the frequency of each data point before and after resampling. If you are not satisfied with the changes in numbers, you can revisit the ratios for upsampling and downsampling in the function and change those values. You might need a few trial-by-error to get this right.
+After resampling, we can see how our data has changed:
+
+```
+# step 11 cont.
+preResamplingLabelCounterDict = {}
+for oneDataPoint in trainingDataList:
+    for oneLabel in oneDataPoint["labels"]:
+        if oneLabel == -100:
+            continue
+        if numberToBioLabelDict[oneLabel] not in preResamplingLabelCounterDict:
+            preResamplingLabelCounterDict[numberToBioLabelDict[oneLabel]] = 0
+        preResamplingLabelCounterDict[numberToBioLabelDict[oneLabel]] += 1
+
+print("Before resampling: ", preResamplingLabelCounterDict)
+
+postResamplingLabelCounterDict = {}
+for oneDataPoint in finalResampledTrainingDataList:
+    for oneLabel in oneDataPoint["labels"]:
+        if oneLabel == -100:
+            continue
+        if numberToBioLabelDict[oneLabel] not in postResamplingLabelCounterDict:
+            postResamplingLabelCounterDict[numberToBioLabelDict[oneLabel]] = 0
+        postResamplingLabelCounterDict[numberToBioLabelDict[oneLabel]] += 1
+
+print("After resampling: ", postResamplingLabelCounterDict)
+```
+
+The terminal printout should show the frequency of each annotation category before and after resampling. If you are not satisfied with the changes, you can revisit the ratios for upsampling and downsampling and change those values. You might need a few trial-by-error to get this right.
 
 ### Aside #1: What is a Hyperparameter?
-So far in this lesson, we have manually decided on a few numbers: training/validation/testing data split ratio and data upsampling/downsampling ratio. These are numbers that only you, the domain expert, can decide, based on your familiarity with your corpora, domain, and research questions. Data split and resampling ratios are some examples of hyperparameters used in model fine-tuning and training. We will encounter more hyperparameters in future steps.
+So far in this lesson, we have manually decided a few values: training/validation/testing data split ratio and data upsampling/downsampling ratio. These are values that only you, the domain expert, can decide, based on your familiarity with your corpora, domain, and research questions. Hyperparameters are architecturally determined values used to determine how the model training process will take place. Data split and resampling ratios are some examples of hyperparameters used in model fine-tuning and training. We will encounter more hyperparameters in future steps.
 
 Hyperparameters can greatly impact the performance of your model. As seen in data resampling, changing just the upsample/downsample ratio number can completely alter your training data’s outlook. Thus, researchers should test different hyperparameter combinations throughout the training process.
 
-Nevertheless, despite hyperparameters’ huge influence, the most important aspect in ensuring your model’s quality is our manually labeled training data. This goes back to Step 1, the iterative nature behind building our data schemas and operational definitions. These schema and definitions are always subject to change as you gain new information and understanding about your corpora, domain, and research question, even at the last step of our lesson.
+Nevertheless, despite hyperparameters’ influence, the most important aspect in ensuring your model’s quality is our manually labeled training data. This goes back to Step 1, the iterative nature behind building our data schemas and operational definitions. These schema and definitions are always subject to change as you gain new information and understanding about your corpora, domain, and research question, even at the last step of our lesson.
 
 
 ### Step 12: Loading Dataset

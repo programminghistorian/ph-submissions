@@ -504,102 +504,62 @@ For this lesson’s sample data, the data spread is:
 
 This means that we have a heavy `O` overrepresentation (which is expected and is very likely to happen to your dataset, too) and `B-rural`, `I-rural`, and `B-natural` underrepresentation. Note that this step is also helpful to get an idea of what type of language usage is more or less often in your corpus.
 
-To address this, we will perform downsampling on `O` and upsampling on “`B-rural`, `I-rural`, and `B-natural` so that they are at a similar representation as the rest of the non-`O` categories.
+To address this, we will perform downsampling on `O` and upsampling on “`B-rural`, `I-rural`, and `B-natural` so that they are at a similar representation as the rest of the non-`O` categories. We will use the `resampleTrainingData` function to resample each category. You can ether use one resampling ratio for all minority categories or customize different ratios for each. Currently, the function supports resampling using the same ratio for all categories. Un-comment the relevant code lines indicated in the function to customize upsampling ratio. The function uses `1` as default parameter for both `upsampleRatio` and `downsampleRatio`, in case you do not need to perform one type of resampling operations.
 ```
-#step 11 cont. data resampling
+# step 11 cont. new version
+
 import random
 
-def resampleTrainingData(trainingDataList, labelIDDict):
+def resampleTrainingData(trainingDataList, labelIDDict, upsampleRatio=1, downsampleRatio=1):
     random.seed(20)
 
-    resampledFinalTrainingDataList = trainingDataList[:] # make a copy of the original training data list before upsampling 
-
-    # for upsampling
-    labelsToUpsampleSet = {labelIDDict["B-natural"], labelIDDict["I-natural"], labelIDDict["B-rural"], labelIDDict["I-rural"]} # replace each string with your own categories that are in the minorities. For example, if, in your data schema, you have a category called "spiritualWords" that is a minority category, you should have {labelIDDict["B-spiritualWords"], labelIDDict["I-spiritualWords"]} as "labelsToUpsampleSet". This set collects the label IDs in the "bioLabelToNumberDict" dictionary so we know which ones to upsample.
-
-    dataToUpsampleList = []
-    for oneDatapoint in trainingDataList:
-        for oneLabel in oneDatapoint["labels"]:
-            if oneLabel in labelsToUpsampleSet:
-                dataToUpsampleList.append(oneDatapoint)
-                break
-    
-    # if you want to upsample a few data points using a different ratio, you can uncomment the code block below. You will very likely need to do this step, since the code shown above assumes that we are upsampling all minority data categories according to the same ratio
-
-    '''
-    labelsToUpsampleSetTwo = {labelIDDict["B-rural"], labelIDDict["I-rural"]} # say that you want to upsample the "rural" label by a ratio different from what you passed in for "upsampleRatio" parameter, you can put the two "rural" categories here. If you do this, make sure that "rural" categories are not in the "resampledFinalTrainingDataList" set above
-
-        twoLabelToUpsampleList = []
-        for oneDatapoint in trainingDataList:
-            for oneLabel in oneDatapoint["labels"]:
-                if oneLabel in labelsToUpsampleSetTwo:
-                    twoLabelToUpsampleList.append(oneDatapoint)
-                    break
-    '''
-    # if you need more than 2 individualized upsampling, just copy and paste the above block. Make sure to rename the "labelsToUpsampleSetTwo" and "labelsToUpsampleSetTwo" to other names.
-
-    
-
-    resampledFinalTrainingDataList += dataToUpsampleList * 5 # this multiplies the number of minority data points by the value "upsampleRatio". Change this number according to the condition of your dataset. This number should be above 1
-
-    # if you chose to upsample a label by another ratio, make sure to add them to the final training data list:
-
-    '''
-    resampledFinalTrainingDataList += twoLabelToUpsampleList * twoeUpsampelRatio # replace "oneUpsampelRatio" with another ratio of your choosing. Add more of these lines as you add more upsampling code blocks. This number should be above 1. 
-    '''
-
-    # now for downsampling
+    labelsToUpsampleSetOne = {labelIDDict["B-natural"], labelIDDict["I-natural"], labelIDDict["B-rural"], labelIDDict["I-rural"]} # replace each string with your minority categories. For example, if you have a category called "spiritualWords" that is a minority category, you should have {labelIDDict["B-spiritualWords"], labelIDDict["I-spiritualWords"]} as "labelsToUpsampleSetOne". This set collects the label IDs in the "bioLabelToNumberDict" dictionary so we know which ones to upsample.
 
     labelsToDownsampleSet = {labelIDDict["O"]}  # replace each string with your own categories that are in the majoriies. In NER, usually the "Outside" category, or the category that is not labeled with any NER data category, is heavily in the majority
-    NERLabelIDsOnly = set(labelIDDict.values()) - {labelIDDict["O"]}
 
-    dataWithOnlyDownsampleIDs = []
-    for oneDatapoint in resampledFinalTrainingDataList:
-        dataCategoryIDSet = {labelID for labelID in oneDatapoint["labels"]} - {-100} # take all the label IDs in one data point so we know which ones only contain label 8, which, in this scenario, is the ID for label "O". This label number might differ in your case, depending on which value you assigned "O" to in your "bioLabelToNumberDict"
+    entityLabeledDataList = [] # containing all windows with at least one labeled entity
+    dataWithOnlyDownsampleIDs = [] # contains all windows that we will downsample
+    dataToUpsampleListOne = [] # contains minority annotation categories that we will upsample
+
+    # uncomment the line below and fill in "labelToUpsampleStepTwo" to upsample another minority category using another ratio
+    '''
+    labelsToUpsampleSetTwo = {}
+    dataToUpsampleListTwo = []
+    '''
+
+    for oneDatapoint in trainingDataList:
+        dataCategoryIDSet = set(oneDatapoint["labels"]) - {-100} # get all unique annotation labels and "O" labels
         if dataCategoryIDSet == labelsToDownsampleSet:
             dataWithOnlyDownsampleIDs.append(oneDatapoint)
-    
-    numberOfDownsampleIDsToKeep = int(len(dataWithOnlyDownsampleIDs) * 0.05) # how many datapoints with the downsample label to keep after downsampling. Replace 0.2 with a ratio that you want to downsample to. Putting 0.2 means that I want to keep only 20% of the original data points that contain the "O" label  
+        else:
+            entityLabeledDataList.append(oneDatapoint)
+            if dataCategoryIDSet & labelsToUpsampleSetOne:
+                dataToUpsampleListOne.append(oneDatapoint)
+            # un-comment the two lines below to upsample another minority category using another ratio
+            '''
+            elif dataCategoryIDSet & labelsToUpsampleSetTwo:
+                dataToUpsampleListTwo.append(oneDatapoint)
+            '''
+    upsampledDataList = dataToUpsampleListOne * (upsampleRatio - 1)
+    # un-comment the line below to upsample another minority category. Replace "2", a placeholder ratio with the upsample ratio you'd like for this data set
+    '''
+    upsampledDataList += dataToUpsampleListTwo * (2 - 1) 
+    '''
 
-    downsampleIDDatapoints = random.sample(dataWithOnlyDownsampleIDs, numberOfDownsampleIDsToKeep) # select the downsampled amount of "O" category data points
+    numberOfDownsampleIDsToKeep = int(len(dataWithOnlyDownsampleIDs) * downsampleRatio)
 
-    onlyNERLabeledDataList = [] # find data points after upsampling that contain non-"O" data labels
-    for oneDatapoint in resampledFinalTrainingDataList:
-        for oneLabel in oneDatapoint["labels"]:
-            if oneLabel in NERLabelIDsOnly:
-                onlyNERLabeledDataList.append(oneDatapoint)
-                break
+    downsampleIDDatapoints = random.sample(dataWithOnlyDownsampleIDs, numberOfDownsampleIDsToKeep)
 
-    resampledFinalTrainingDataList = onlyNERLabeledDataList + downsampleIDDatapoints # combine upsampled and downsampled together
+    return entityLabeledDataList + upsampledDataList + downsampleIDDatapoints # + upsampleDataList
+```
+We will determine our resampling ratios here.
 
-    return resampledFinalTrainingDataList
-
-finalResampledTrainingDataList = resampleTrainingData(trainingDataList, bioLabelToNumberDict)
-
-# visually see the changes in our data points:
-
-
-preResamplingLabelCounterDict = {}
-for oneDataPoint in trainingDataList:
-    for oneLabel in oneDataPoint["labels"]:
-        if oneLabel == -100:
-            continue
-        if numberToBioLabelDict[oneLabel] not in preResamplingLabelCounterDict:
-            preResamplingLabelCounterDict[numberToBioLabelDict[oneLabel]] = 0
-        preResamplingLabelCounterDict[numberToBioLabelDict[oneLabel]] += 1
-
-print("Before resampling: ", preResamplingLabelCounterDict)
-
-postResamplingLabelCounterDict = {}
-for oneDataPoint in finalResampledTrainingDataList:
-    for oneLabel in oneDataPoint["labels"]:
-        if oneLabel == -100:
-            continue
-        if numberToBioLabelDict[oneLabel] not in postResamplingLabelCounterDict:
-            postResamplingLabelCounterDict[numberToBioLabelDict[oneLabel]] = 0
-        postResamplingLabelCounterDict[numberToBioLabelDict[oneLabel]] += 1
-
-print("After resampling: ", postResamplingLabelCounterDict)
+| default parameter | limits|
+| --- | --- |
+| `upsampleRatio` | must be a whole number > 1. Cannot be 0, negative number, or a decimal. Default at 1 (no upsampling) |
+| `downsampleRatio` | must be a number between 0 and 1 (to represent a percentage of an over-represented category to keep. Can be a decimal. Cannot be negative number. Default at 1 (no downsampling) |
+```
+finalResampledTrainingDataList = resampleTrainingData(trainingDataList, bioLabelToNumberDict, upsampleRatio=5, downsampleRatio=0.3)
 ```
 
 The terminal printout should show the frequency of each data point before and after resampling. If you are not satisfied with the changes in numbers, you can revisit the ratios for upsampling and downsampling in the function and change those values. You might need a few trial-by-error to get this right.

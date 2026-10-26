@@ -578,26 +578,18 @@ finalResampledTrainingDataList = resampleTrainingData(trainingDataList, bioLabel
 After resampling, we can see how our data has changed:
 
 ```
-preResamplingLabelCounterDict = {}
-for oneDataPoint in trainingDataList:
-    for oneLabel in oneDataPoint["labels"]:
-        if oneLabel == -100:
-            continue
-        if numberToBioLabelDict[oneLabel] not in preResamplingLabelCounterDict:
-            preResamplingLabelCounterDict[numberToBioLabelDict[oneLabel]] = 0
-        preResamplingLabelCounterDict[numberToBioLabelDict[oneLabel]] += 1
+def countBioLabels(dataList):
+    labelCounterDict = {}
+    for oneDataPoint in dataList:
+        for oneLabel in oneDataPoint["labels"]:
+            if oneLabel == -100:
+                continue
+            labelCounterDict[numberToBioLabelDict[oneLabel]] = labelCounterDict.get(numberToBioLabelDict[oneLabel], 0) + 1
+    return labelCounterDict
 
+preResamplingLabelCounterDict = countBioLabels(trainingDataList)
+postResamplingLabelCounterDict = countBioLabels(finalResampledTrainingDataList)
 print("Before resampling: ", preResamplingLabelCounterDict)
-
-postResamplingLabelCounterDict = {}
-for oneDataPoint in finalResampledTrainingDataList:
-    for oneLabel in oneDataPoint["labels"]:
-        if oneLabel == -100:
-            continue
-        if numberToBioLabelDict[oneLabel] not in postResamplingLabelCounterDict:
-            postResamplingLabelCounterDict[numberToBioLabelDict[oneLabel]] = 0
-        postResamplingLabelCounterDict[numberToBioLabelDict[oneLabel]] += 1
-
 print("After resampling: ", postResamplingLabelCounterDict)
 ```
 
@@ -844,14 +836,17 @@ Then, set the unseen text into one string and determine the number of overlap to
 ```
 rawText = “” # set the text that you want to perform NER on 
 overlapInt = 30 # use your own overlap number from Step 10
+windowLength = 512 # this is BERT's window length. Change this to your own window length
 
-predictedNERs =runNERInference(rawText, overlapInt)
+predictedNERs = runNERInference(rawText, overlapInt, windowLength=windowLength))
 print(predictedNERs)
 ```
 
-### Step 16: Repeat
+### Step 16: Test and Repeat
 
-Manually review the prediction output from Step 15 and decide on whether you need to edit the hyperparameters. Most often, you need to run the training process at least two times to compare which hyperparameter combination is the most suitable for your model.
+Manually review the prediction output from Step 15 and decide whether you need to edit the hyperparameters. Most often, you need to run the training process at least two times to compare which hyperparameter combination is the most suitable for your model. One occasion that is very likely to happen is the fine-tuned model labeling many elements as `O`, since "Outside" is the most common category. To test whether your model is actually trying to categorize terms into your desired categories, you can run a quick test using the following code.
+
+
 
 Moreover, actively review whether your NER data schema and operational definitions are still sound. Fine-tuning BERT (or any other language models) for research is not a linear process but an iterative one where we will constantly revisit the very first step in this process. The model quality will increase as you increase the dataset more through using existing NER dataset or annotating more of your corpus.
 

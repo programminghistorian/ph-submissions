@@ -54,7 +54,12 @@ Graphic Processing Units (GPU) are not required but recommended.
 
 This lesson uses Python3.11.5
 
-Required package versions (downloadable via `pip install packageName==version`):
+Recommended system setup:
+- 16GB RAM (8GB minimum)
+- \>5GB disk storage space
+- Internet connection when installing the following packages
+
+Required package versions (downloadable via `pip install packageName==version` or `pip install packageName<version`):
 ```
 doccano==1.8.4
 numpy<2
@@ -136,11 +141,9 @@ To install Doccano in your virtual environment, type:
 
 `pip install doccano "marshmallow<4" "numpy<2"`[^8]
 
-This lesson uses the doccano version 1.8.4. Marshmallow is a library that converts datatypes, and numpy is a library that conducts numerical computation in Python. Doccano requires both at versions below 4 and 2, respectively, to run.
+This lesson uses `doccano1.8.4` version. Marshmallow is a library that converts datatypes, and numpy is a library that conducts numerical computation in Python. Doccano requires both at versions below four and two, respectively.
 
-The required storage space during annotation depends on the size of your corpus, but you should prepare at least 600MB of storage to create a virtual environment and install Doccano.
-
-After installing Doccano, you need to run these two commands in this order:
+After installing Doccano, run these two commands in this order:
 
 ```
 doccano init
@@ -159,7 +162,7 @@ To initiate Doccano’s local web server, use the command line:
 
 You can now open a web browser and visit the link: [http://localhost:8000/](http://localhost:8000/) to use your local Doccano web server.[^9] Doccano supports Google Chrome and Apple Safari browsers.
 
-In a separate terminal window (leave `doccano webserver` running in your current terminal window), enter your Doccano virtual environment and run the command:
+In a separate terminal window (leave `doccano webserver` running in the current terminal), enter your Doccano virtual environment and run the command:
 
 ```doccano task```
 
@@ -173,11 +176,11 @@ At your localhost web address, you should see the Doccano home screen like this:
 
 Navigate to the top right corner of the screen and click on `LOGIN`, using the credentials in Step 3.
 
-After logging in, you should see a list of your Doccano projects (which should be none, if you have not used Doccano before). Click on the blue “Create” button on the top left corner to create a new project.
+After logging in, you should see a list of your Doccano projects (should be none, if you have not used Doccano before). Click on the blue “Create” button on the top left corner to create a new project.
 
 {% include figure.html filename="ner-bert-classification-machine-02.png" alt="A red square indicates a blue button labeled 'Create'." caption="Figure 2. Creating a new Doccano project using the 'Create' button." %}
 
-The screen should now prompt you to select a category of project before filling in the `Project Name` and `Description`. For project category, select `Sequence Labeling`. Use meaningful names and descriptions in `Project Name` and `Description` so that you can easily identify your work in the future. Check the `Allow overlapping spans` checkbox.
+The screen should prompt you to select a category of project before filling in the `Project Name` and `Description`. For project category, select `Sequence Labeling`. Use meaningful names and descriptions in `Project Name` and `Description` so that you can easily identify your work in the future. Check the `Allow overlapping spans` checkbox.
 
 {% include figure.html filename="ner-bert-classification-machine-03.png" alt="Three text boxes labeled 'Project name', 'Description', and 'Tags' with a selected checkbox labeled 'Allow overlapping spans'." caption="Figure 3. Input the Project Name, Descriptions, and Tags for our new Doccano project. Select 'Allow overlapping spans'." %}
 
@@ -187,7 +190,7 @@ Click `Create`.
 
 **Import Data**
 
-After creating a Doccano project, the webpage will ask you to import data. The “Home” tab on the left of the screen provides video tutorials on the various Doccano functionalities.
+After creating a Doccano project, the webpage will ask you to import data. The “Home” tab on the left of the screen provides video tutorials on Doccano functionalities.
 
 {% include figure.html filename="ner-bert-classification-machine-04.png" alt="Multiple tabs are on the left of the screen, with 'Home' selected. A video is under the 'Import a dataset' section." caption="Figure 4. Front page of a new Doccano annotation project." %}
 
@@ -216,7 +219,7 @@ After entering all your schema categories, you can see and edit your categories 
 
 ### Step 6: Data Annotation
 
-After loading your customized data schema into Doccano, you can visit the `Dataset` tab to see your TXT file(s) and begin annotating by clicking on “Annotate” under the `Action` column. This will open the TXT file for you to examine. To annotate, highlight a word or term. This will show a dropdown list containing your existing data schema categories. Select a category that matches with the context, meaning, or usage of your highlighted phrase.
+After loading your customized data schema into Doccano, visit the `Dataset` tab to see your TXT file(s) and begin annotating by clicking on “Annotate” under the `Action` column. This will open the TXT file. To annotate, highlight a word(s) to trigger a dropdown list containing your data schema categories. Select a category that matches with the context, meaning, or usage of your highlighted phrase.
 
 Labels will appear beneath the annotated text.
 

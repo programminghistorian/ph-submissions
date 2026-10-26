@@ -81,7 +81,7 @@ This lesson uses three of Herman Melville's short stories as the sample corpus:
 - "The Piazza Tales"
 - "Benito Cereno"
 
-Collected in Melville's 1856 collection _The Piazza Tales_ [Project Gutenberg](https://www.gutenberg.org/ebooks/11231))](https://www.gutenberg.org/cache/epub/15859/pg15859.txt)
+Collected in Melville's 1856 collection _The Piazza Tales_ [Project Gutenberg](https://www.gutenberg.org/cache/epub/15859/pg15859.txt).
   
 We will try to answer the sample question “How does Melville use non-named entities differently than named entities in conveying ‘space’ in his short stories?” This sample question defines “non-named entities” as words or terms that are not proper nouns while “named entities” (NE) as proper nouns or titles.[^4]
 

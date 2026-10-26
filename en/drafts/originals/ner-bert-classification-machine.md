@@ -763,92 +763,39 @@ fineTunedModel.eval() # set to inference mode
 ```
 Replace “NERBERTfine-tuneVer1” with the folder path of your fine-tuned model.
 
-Then add this inference function that will take in unseen raw text as a string, split it into 512-token windows, and perform prediction. 
-
+Then add this inference function that will take in unseen raw text as a string, split it into 512-token windows, and perform prediction. We will use the default parameter `showProbabilitiesAtInference=` during testing in the following step. For now, leave this to False
 ```
-def runNERInference(rawText, overlapInt):
+rawText = "i went into a building" # text to perform entity recognition on 
+overlapInt = 30 # use your own overlap number from Step 10
+windowLength = 512 # this is BERT's window length. Change this to your own window length
 
-    tokenizedStory = fineTunedTokenizer(rawText, return_tensors="pt", truncation=False, add_special_tokens=False)
-    totalInputIDs = tokenizedStory["input_ids"][0]
-    totalAttentionMask = tokenizedStory["attention_mask"][0]
-
-    # since our training data was in the form of 512-token windows, our input value need to be that too
-    windowSizeInt = 512
-    windowStepSize = windowSizeInt - overlapInt
-    windowsList = []
-    startingPointInt = 0
-
-    while startingPointInt < len(totalInputIDs):
-        endPoint = min(startingPointInt + windowSizeInt, len(totalInputIDs))
-
-        windowsList.append({
-            "input_ids": totalInputIDs[startingPointInt:endPoint],
-            "attention_mask": totalAttentionMask[startingPointInt:endPoint],
-            "start": startingPointInt,
-            "end": endPoint
-        })
-
-        if endPoint == len(totalInputIDs):
-            break
-
-        startingPoint += windowStepSize
-
-    # perform entity classification on each window
-    allModelPreductionsList = [None] * len(totalInputIDs)
-
-    for window in windowsList:
-        inputs = {
-            "input_ids": window["input_ids"].unsqueeze(0),
-            "attention_mask": window["attention_mask"].unsqueeze(0)
-        }
-
-        with torch.no_grad():
-            outputs = fineTunedModel(**inputs)
-
-        predictions = torch.argmax(outputs.logits, dim=2)[0].tolist()
-
-        for i, predictedValue in enumerate(predictions):
-            tokenIndexInt = window["start"] + i
-            if tokenIndexInt < len(totalInputIDs):
-                if allModelPreductionsList[tokenIndexInt] is None:  # keep left window's prediction for overlaps
-                    allModelPreductionsList[tokenIndexInt] = predictedValue
-
-    # turn model predictions into labels specified in "bioLabelToNumberDict"
-    tokenList = fineTunedTokenizer.convert_ids_to_tokens(totalInputIDs)
-    results = []
-    for token, labelID in zip(tokenList, allModelPreductionsList):
-        results.append((token, numberToBioLabelDict[labelID]))
-
-    # get rid of special tokens and combine subword tokens
-    cleanedOutputList = []
-    for token, label in results:
-        if token == "[CLS]" or token == "[SEP]":
-            continue
-        if token.startswith("##"): # subword tokens always begin with "##"
-            cleanedOutputList[-1] = (cleanedOutputList[-1][0] + token[2:], cleanedOutputList[-1][1])
-        else:
-            cleanedOutputList.append((token, label))
-
-    return cleanedOutputList
+predictedNERs = runEntityInference(rawText, overlapInt, windowLength=windowLength, showProbabilitiesAtInference=False)
+print(predictedNERs)
 ```
 Then, set the unseen text into one string and determine the number of overlap tokens. Set `overlapInt` to the window overlap value that you did in Step 10’s `turnLabeledDataIntoBioFormat` function. 
 
 ```
-rawText = “” # set the text that you want to perform NER on 
+rawText = “” # text to perform entity recognition on 
 overlapInt = 30 # use your own overlap number from Step 10
-windowLength = 512 # this is BERT's window length. Change this to your own window length
+windowLength = 512 # BERT's window length. Change this to your own window length
 
-predictedNERs = runNERInference(rawText, overlapInt, windowLength=windowLength))
-print(predictedNERs)
+predictedNERs = runNERInference(rawText, overlapInt, windowLength=windowLength, showProbabilitiesAtInference=False)
 ```
 
 ### Step 16: Test and Repeat
 
-Manually review the prediction output from Step 15 and decide whether you need to edit the hyperparameters. Most often, you need to run the training process at least two times to compare which hyperparameter combination is the most suitable for your model. One occasion that is very likely to happen is the fine-tuned model labeling many elements as `O`, since "Outside" is the most common category. To test whether your model is actually trying to categorize terms into your desired categories, you can run a quick test using the following code.
+Manually review the prediction output from Step 15 and decide whether you need to edit the hyperparameters. Most often, you need to run the training process at least two times to compare which hyperparameter combination is the most suitable for your model. One occasion that is very likely to happen is the fine-tuned model labeling many elements as `O`, since "Outside" is the most common category. To test whether your model is actually trying to categorize terms into your desired categories, we can run a quick test using the following code.
 
+This code prints the probability that the model labels a term as Outside and the highest entity recognition category. The model will label a term as an entity if an entity's probability is the highest of all probabilities. Otherwise, it will label the term as Outside. Use a short text, maybe one or two sentences (less than your window length characters, whether that is 512 or another value), to test the model. 
+```
+shortRawText = "" # must be less than the window length. Try a sentence or two at once
 
+for word, label, outsideProbability, bestEntity, bestEntityProbability in runNERInference(rawText, overlapInt, windowLength=windowLength, showProbabilitiesBool=True):
+    print(f"{word}, label={label}, 'Outside' probability={outsideProbability}, best entity={bestEntity} ({bestEntityProbability})")
+```
+Look for situations where a term that should be a non-named entity has a high "best entity" probability, even if the model does not label the term as such. This can still mean that the model is learning in the right direction.
 
-Moreover, actively review whether your NER data schema and operational definitions are still sound. Fine-tuning BERT (or any other language models) for research is not a linear process but an iterative one where we will constantly revisit the very first step in this process. The model quality will increase as you increase the dataset more through using existing NER dataset or annotating more of your corpus.
+In addition, actively review whether your NER data schema and operational definitions are still sound. Fine-tuning BERT (or any other language models) for research is not a linear process but an iterative one where we will constantly revisit the very first step in this process. The model quality will increase as you increase the dataset more through using existing NER dataset or annotating more of your corpus.
 
 ### Technical Material Source Acknowledgement
 

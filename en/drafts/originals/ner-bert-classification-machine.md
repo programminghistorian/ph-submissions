@@ -154,17 +154,17 @@ After typing the `webserver` and `task` commands, your two terminal windows shou
 
 At your localhost web address, you should see the Doccano home screen like this:
 
-{% include figure.html filename="ner-bert-classification-machine-01.png" alt="Doccano homepage" caption="Figure 1. Caption text to display." %}
+{% include figure.html filename="ner-bert-classification-machine-01.png" alt="A blue banner with a seal icon are on Doccano's homepage. There is a 'login' button on the top right corner." caption="Figure 1. Doccano's homepage after local server launches." %}
 
 Navigate to the top right corner of the screen and click on `LOGIN`, using the credentials in Step 3.
 
 After logging in, you should see a list of your Doccano projects (which should be none, if you have not used Doccano before). Click on the blue “Create” button on the top left corner to create a new project.
 
-{% include figure.html filename="ner-bert-classification-machine-02.png" alt="Clicking on Create button" caption="Figure 2. Caption text to display." %}
+{% include figure.html filename="ner-bert-classification-machine-02.png" alt="A red square indicates a blue button labeled 'Create'." caption="Figure 2. Creating a new Doccano project using the 'Create' button." %}
 
 The screen should now prompt you to select a category of project before filling in the `Project Name` and `Description`. For project category, select `Sequence Labeling`. Use meaningful names and descriptions in `Project Name` and `Description` so that you can easily identify your work in the future. Check the `Allow overlapping spans` checkbox.
 
-{% include figure.html filename="ner-bert-classification-machine-03.png" alt="Filling in information to create a project" caption="Figure 3. Caption text to display." %}
+{% include figure.html filename="ner-bert-classification-machine-03.png" alt="Three text boxes labeled 'Project name', 'Description', and 'Tags' with a selected checkbox labeled 'Allow overlapping spans'." caption="Figure 3. Input the Project Name, Descriptions, and Tags for our new Doccano project. Select 'Allow overlapping spans'." %}
 
 Click `Create`.
 
@@ -174,16 +174,16 @@ Click `Create`.
 
 After creating a Doccano project, the webpage will ask you to import data. The “Home” tab on the left of the screen provides video tutorials on the various Doccano functionalities.
 
-{% include figure.html filename="ner-bert-classification-machine-04.png" alt="Showing the Home tab" caption="Figure 4. Caption text to display." %}
+{% include figure.html filename="ner-bert-classification-machine-04.png" alt="Multiple tabs are on the left of the screen, with 'Home' selected. A video is under the 'Import a dataset' section." caption="Figure 4. Front page of a new Doccano annotation project." %}
 
 Navigate to `Dataset` tab, click on `Actions`, and select `Import Dataset` from the dropdown list.
 
-{% include figure.html filename="ner-bert-classification-machine-05.png" alt="Selecting button to import dataset" caption="Figure 5. Caption text to display." %}
+{% include figure.html filename="ner-bert-classification-machine-05.png" alt="A red square indicates the location of 'Import Dataset' button under a blue 'Actions' dropdown menu on the 'Dataset' tab." caption="Figure 5. Select the 'Import Dataset' button." %}
 
 The webpage will then prompt you to select “File format” and “Encoding.” Select “TextFile” (for TXT) for file format. The default encoding is “utf-8,” which should fit most people’s needs.
 Then, drop your TXT file(s) to the grey box below and click “Import.”
 
-{% include figure.html filename="ner-bert-classification-machine-06.png" alt="Import TXT files" caption="Figure 6. Caption text to display." %}
+{% include figure.html filename="ner-bert-classification-machine-06.png" alt="There is a gray rectangle that allows users to drop files to upload. Above it, there are dropdown menus to select 'TextFile' and 'utf-8' encoding." caption="Figure 6. Drag and drop TXT files to upload them to the dataset." %}
 
 You should now see a preview of your uploaded TXT on your “Dataset” screen.
 
@@ -191,13 +191,13 @@ You should now see a preview of your uploaded TXT on your “Dataset” screen.
 
 We will now load our customized data schema into Doccano. Navigate to the `Labels` tab, click on `Actions`, and select `Create label` from the dropdown list.
 
-{% include figure.html filename="ner-bert-classification-machine-07.png" alt="Selecting the button to create new labels" caption="Figure 7. Caption text to display." %}
+{% include figure.html filename="ner-bert-classification-machine-07.png" alt="A red rectangle indicates the 'Create Label' button under a blue 'Actions' dropdown menu on the 'Labels' tab." caption="Figure 7. Select 'Create Label' to input our data schema." %}
 
 You can now enter the customized NER data schema one by one into the `Label name` field. To add multiple schema categories, click on `Save and add another` after adding one schema category.
 
 After entering all your schema categories, you can see and edit your categories at the `Labels` tab screen. Our sample research question uses four labeling categories: interior, urban, rural, and natural.
 
-{% include figure.html filename="ner-bert-classification-machine-08.png" alt="View the created labels" caption="Figure 8. Caption text to display." %}
+{% include figure.html filename="ner-bert-classification-machine-08.png" alt="There are four created annotation labels: interior, urban, rural, and natural on the 'Labels' tab." caption="Figure 8. Create the four data annotation labels." %}
 
 ### Step 6: Data Annotation
 
@@ -205,7 +205,7 @@ After loading your customized data schema into Doccano, you can visit the `Datas
 
 Labels will appear beneath the annotated text.
 
-{% include figure.html filename="ner-bert-classification-machine-09.png" alt="Annotated corpus text" caption="Figure 9. Caption text to display." %}
+{% include figure.html filename="ner-bert-classification-machine-09.png" alt="A piece of text with two annotations, urban, and interior." caption="Figure 9. Example of annotations during the annotation proces." %}
 
 Repeat this step if you have numerous TXT files to annotate.
 
@@ -219,7 +219,7 @@ After annotating all your TXT files, you can export the data via a JSONL file by
 
 Depending on the security features on your machine or browser, the downloading process might be interrupted because your machine or browser might think it is an insecure file. If this happens, you can navigate to your browser’s `Download` icon and manually permit file download. For example, for Google Chrome browser, you need to click on `Keep` for the downloading file:
 
-{% include figure.html filename="ner-bert-classification-machine-10.png" alt="Allow download after machine or browser blocked its download" caption="Figure 10. Caption text to display." %}
+{% include figure.html filename="ner-bert-classification-machine-10.png" alt="A red rectangle indicates a 'Keep' button on the Download icon of a browser for a file labeled 'Insecure download blocked." caption="Figure 10. Select 'Keep' on the download file if the browser initially blocks the downloa." %}
 
 After downloading the Zip file, unzip it and store the JSONL file in it in the directory that you have just created. If you are coding in Google Colab, you can upload the JSONL file to your Colab work environment.
 
@@ -238,27 +238,25 @@ We will now use one Jupyter Notebook file to contain the remaining code.
 
 Create a Jupyter Notebook file (.ipynb) in the same directory (either local or a cloud coding environment that you are using) as your JSONL data file. Quinn Dombrowski, Tassie Gniady, and David Kloster’s [lesson](https://programminghistorian.org/en/lessons/jupyter-notebooks) provides an introduction to Jupyter Notebook.
 
-To check whether your downloaded JSONL file contains the correct information, run this following code:
+To check whether your downloaded JSONL file contains the correct information, run this following code to iterate through each JSON object in the JSONL file.
 
 ```
 import json
 
 with open("admin.jsonl") as annotationFile:
-    # iterate through each JSON object (which is one file)
     for oneJSONObject in annotationFile:
-        # load each JSON object
         oneAnnotatedFileDict = json.loads(oneJSONObject)
 
         # preview the first 100 characters of each text file
         previewText = oneAnnotatedFileDict["text"][:100].replace("\n", " ") + "..."
 
         # print the file number, text preview, and the first 5 annotations that you made
-        print("FILE NO.:\n", oneAnnotatedFileDict["id"])
-        print("TEXT PREVIEW:\n", previewText)
-        print("ANNOTATION PREVIEW:\n", oneAnnotatedFileDict["label"][:5], "\n\n")
+        print("File no.:\n", oneAnnotatedFileDict["id"])
+        print("Text preview:\n", previewText)
+        print("Annotation preview:\n", oneAnnotatedFileDict["label"][:5], "\n\n")
 ```
 
-You should print out a brief preview of each of your TXT files and the first five of your annotations for each. If no error occurs and that the printout looks correct, your training data should be ready for fine-tuning.
+This prints a brief preview of each TXT files and the first five annotations for each. If no error occurs and that the printout looks correct, the training data should be ready for fine-tuning.
 
 **Storing JSON Objects as Dictionary**
 
@@ -274,8 +272,8 @@ with open("admin.jsonl") as annotationFile:
 
 # double checking that we did this correctly:
 print(f"Stored {len(mainAnnotationStorageList)} file(s).")
-# this should print out the same number as the number of files that you have annotated
 ```
+This should print out the number of files that we have annotated.
 
 **Installing Libraries**
 
@@ -288,9 +286,9 @@ This step might take a few minutes.
 
 ### Step 8: Understanding Our Training Data
 
-Before model fine-tuning or training, it is always a good practice to understand your data at a larger scale, as this understanding will influence architectural decisions in the model fine-tuning process later in this lesson.
+Before model fine-tuning or training, it is a good practice to understand the data at a larger scale, as this understanding will influence architectural decisions in the model fine-tuning process later in this lesson.
 
-For a word classification task like this lesson, we should understand our training data cumulatively. We will calculate the number of annotations each category has, the corpus's word count, and the percentage of words that are annotated as non-named entities.
+For word classification, we should understand our training data cumulatively. We will calculate the number of annotations each category has, the corpus's word count, and the percentage of words that are annotated as non-named entities.
 
 ```
 mainTrainingDataLabelCounterDict = {}
@@ -314,9 +312,9 @@ print(f"Corpus has {totalTrainingDataWordCounterInt} words in total")
 print(f"{numOfLabeledWordsInt} out of {totalTrainingDataWordCounterInt} words({(numOfLabeledWordsInt/totalTrainingDataWordCounterInt)*100:.2f}%) are non-named entities")
 ```
 
-This step will reveal whether there is an imbalance of data annotations (e.g., one NER label having much more data points than others). If such a situation exists, we can mitigate this by either annotating more texts or using data resampling (introduced later).
+This step will reveal whether there is an imbalance of data annotations (e.g., one NER label having much more data points than others). We can mitigate an imbalance by either annotating more texts or using data resampling (introduced later).
 
-Keep the printed information in mind going forward. A reminder that many choices going forward will be architectural choices that vary from research to research, so this lesson can only provide general guidance and choices made in the context of this lesson’s sample research question. The specific decisions for your situation depends on your familiarity of your domain, corpus, and what questions your research domain seeks to answer.
+Keep the printed information in mind going forward. Many decisions going forward will be architectural choices that vary from research to research, so this lesson can only provide general guidance and choices made in the context of this lesson’s sample research question. The specific decisions for your situation depends on your domain expertise, corpus, and research question.
 
 ### Step 9: BIO Format
 
@@ -335,9 +333,9 @@ Manual data labeling might categorize “A two-bedroom urban apartment” as an 
 | Apartment | I-Urban |
 | [SEP] | ignored |
 
-`O` refers to an unlabeled token, or the “Outside” in BIO. [CLS] and [SEP] are special tokens used in transformer models, where [CLS] represents the beginning of a classification task and [SEP] refers to the end of a segment.
+`O` is an unlabeled token, or the “Outside” in BIO. [CLS] and [SEP] are special tokens used in transformer models, where [CLS] represents the beginning of a classification task and [SEP] refers to the end of a segment.
 
-To rewrite our labeled data according to the BIO format, we will create a dictionary that maps each label to a numerical value. The number of new labels you should have is `2n + 1`, where `n` is the number of labels that you have customized for your research. Each existing label will now have a Beginning and an Inside version. For this lesson’s sample research, we will write this dictionary in our Jupyter Notebook:
+We will rewrite our labeled data according to the BIO format through dictionary mapping each label to a numerical value. The number of new labels we will have is `2n + 1`: `n` is the number of labels in our annotation schema (four, for this lesson). Each existing label will have a Beginning and an Inside version. For this lesson, we will write the following dictionary in our Jupyter Notebook:
 
 ```
 bioLabelToNumberDict = {
@@ -358,29 +356,29 @@ numberToBioLabelDict = {num: label for label, num in bioLabelToNumberDict.items(
 
 Substitute each B and I labels with your own labels.
 
-Then, we will reformat our existing dataset (stored in the variable `mainAnnotationStorageList`) into this format using BERT's tokenizer. Since BERT has a 512-token limit, and that most short stories have more than 512 tokens, this lesson implements a sliding window during this process.
+Then, reformat our existing dataset (in the variable `mainAnnotationStorageList`) into this format using BERT's tokenizer. Since BERT has a 512-token limit, and that most short stories have more than 512 tokens, this lesson implements a sliding window during this process.
 
 We will use the function `turnLabeledDataIntoBioFormat` to do this. This function has four required parameters and two default parameters.
 | parameter | meaning |
 | --- | --- |
-| corpusTextStr | The corpus text stored as a string |
-| labelsList | The list of labels and their index positions in the corpus text, as provided by our annotation in Doccano |
-| tokenizer | The tokenizer we are using, and we use the one in `bert-base-cased` |
-| labelIDDict | The dictionary of annotation schema that we created earlier in `bioLabelToNumberDict` |
-| windowLength=512 | Default parameter: maximum window length allowed by BERT. Change this number based on the maximum allowed window length for the tokenizer you prefer, if you are not using BERT |
-| overlap=30 | Default parameter: overlap between two windows in a sequence |
+| corpusTextStr | corpus text stored as a string |
+| labelsList | list of labels and their index positions in the corpus text, as provided by our annotation in Doccano |
+| tokenizer | the tokenizer we are using, and we use the one in `bert-base-cased` |
+| labelIDDict | dictionary of annotation schema that we created earlier in `bioLabelToNumberDict` |
+| windowLength=512 | default parameter: maximum window length allowed by BERT. Change this number based on the maximum allowed window length for the tokenizer you prefer, if you are not using BERT |
+| overlap=30 | default parameter: overlap between two windows in a sequence |
 
-This function operates at the level of each text in the `mainAnnotationStorageList` list we created earlier. Meaning, if your corpus contains multiple texts (say multiple short stories), we will call this function for each of these texts.
+This function operates at the level of each text in the `mainAnnotationStorageList` list created earlier. Meaning, if your corpus contains multiple texts (say, multiple short stories), we will call this function for each of these texts via a loop.
 
-When using the BERT tokenizer in `turnLabeledDataIntoBioFormat`, it returns a container of tokenized texts and store it in the variable `encoding`. The variable acts like a dictionary with four pairs of information:
+The BERT tokenizer in `turnLabeledDataIntoBioFormat` returns a container of tokenized texts and stores it in the variable `encoding`. The variable acts like a dictionary with four pairs of information:
 | key | value |
 | --- | --- |
 | input_ids | an ID representing the token in BERT's model |
-| attention_mask | a 1 or 0 value showing which tokens are meaningful (assigned `1` and which are special tokens like `[CLS`]` or padding tokens (assigned `0`) |
+| attention_mask | a 1 or 0 value showing which tokens are meaningful (assigned `1`) and which are special tokens like `[CLS`]` or padding tokens (assigned `0`) |
 | token_type_ids | a 1 or 0 value indicating which sequence (such as a question or an answer) a sentence belongs to. In our case, all tokens are labeled `0` in entity recognition |
-| offset_mapping | tuples that represent the start and end index position of an annotated entity in the corpus text |
+| offset_mapping | tuples representing the start and end index position of an annotated entity in the corpus |
 
-In the function, when using the tokenizer function, we set the parameter `return_offsets_mapping` to `True` so that the tokenizer will return the index position for each label in the original corpus text. This is important in entity recognition as words or terms could be split up during tokenization and distribution into windows of 512 tokens.
+When using the tokenizer method, we set the parameter `return_offsets_mapping` to `True` so that the tokenizer will return the index position for each label in the original corpus text. This is important in entity recognition as words or terms could be split up during tokenization and distribution into windows of 512 tokens.
 
 ```
 import transformers
@@ -395,23 +393,23 @@ def turnLabeledDataIntoBioFormat(corpusTextStr, labelsList, tokenizer, labelIDDi
     totalTokenTypeIDsList = encoding["token_type_ids"] # defaults to all zeros in our case. needed for BERT's format
     totalOffsetMappingList = encoding["offset_mapping"] # this contains the location for each token in the text in the format of a (startIndex, endIndex) tuple
 
-    windowsList = [] # our return list that we will append things to
+    windowsList = [] # our return list to collect data
 
-    # iterate through each window and assign the actual labels to them.
+    # iterate through each window
     for windowIndex in range(len(totalInputIDsList)):
         offsetMapList = totalOffsetMappingList[windowIndex]
         tokensAsWordsList = tokenizer.convert_ids_to_tokens(totalInputIDsList[windowIndex]) # for debugging checks
         numberOfTokensInt = len(tokensAsWordsList)
 
-        # first set everything to the "Outside" label in BIO as default
+        # first, set everything to the "Outside" label in BIO as default
         tokenNumericalLabelsList = [labelIDDict["O"]] * numberOfTokensInt
 
-        # usually, special tokens, like [CLS], are set to -100
+        # usually, special tokens, like [CLS], are -100
         for index, (startIndex, endIndex) in enumerate(offsetMapList):
             if startIndex == 0 and endIndex == 0:
                 tokenNumericalLabelsList[index] = -100
 
-        # assign BIO labels by iterating through our list of manual labels
+        # assign BIO labels by iterating through our data schema
         for startAnnotatedtextIndexInt, endAnnotatedtextIndexInt, labelStr in labelsList:
             beginningLabelStr = f"B-{labelStr}"
             innerLabelStr = f"I-{labelStr}"
@@ -423,7 +421,7 @@ def turnLabeledDataIntoBioFormat(corpusTextStr, labelsList, tokenizer, labelIDDi
                 if startOneTokenInAnnotatedTextIndexInt == 0 and endOneTokenInAnnotatedTextIndexInt == 0:
                     continue # these are the special tokens
 
-                # this condition checks for whether a token is an annotated entity and labels it as such
+                # checking for whether a token is an annotated entity and labels it as such
                 if startOneTokenInAnnotatedTextIndexInt < endAnnotatedtextIndexInt and endOneTokenInAnnotatedTextIndexInt > startAnnotatedtextIndexInt:
                     if beginningTokenBool:
                         tokenNumericalLabelsList[tokenIndex] = labelIDDict[beginningLabelStr]
@@ -435,7 +433,7 @@ def turnLabeledDataIntoBioFormat(corpusTextStr, labelsList, tokenizer, labelIDDi
     return windowsList
 ```
 
-We will now use this function to process all of our datasets in `mainAnnotationStorageList`. Note that we are not using `.append()` but using `.extend()` because the final dataset should be in one list, not separated into list of lists
+Now use this function to process all datasets in `mainAnnotationStorageList`. Note that we are not using `.append()` but using `.extend()` because the final dataset should be in one list, not separated into list of lists
 
 ```
 totalProcessedAnnotationDataList = []
@@ -446,25 +444,25 @@ for oneAnnotatedText in mainAnnotationStorageList:
 
 ### Step 10: Training/Validation/Testing Dataset Split
 
-A good model fine-tuning process contains testing and validation data along with training data. The three are created from the existing pool of data points we have manually annotated. After fine-tuning the NER model, we will run the tuned model against the testing data to evaluate our model’s performance.[^11] During training, we use a validation dataset to evaluate the behavior and hyperparameters of the model. Validation data does not influence the model’s learning or weights but is important to prevent model overfitting.
+A good model fine-tuning process contains testing and validation data along with training data. The three are created from the existing pool of manually annotated data points. After fine-tuning the NER model, we will run the tuned model against the testing data to evaluate our model’s performance.[^11] During training, we use a validation dataset to evaluate the behavior and hyperparameters of the model. Validation data does not influence the model’s learning or weights but is important to prevent model overfitting.
 
 | Type | Description|
 | --- | --- |
-| Training data | data the model uses to train and update its weights |
-| Validation data | data the model uses during the training process to evaluate its performance |
-| Testing data | data the model does not see during training and is used to calculate model performance |
+| Training data | to train and update a model's weights |
+| Validation data | to evaluate a model's performance during training |
+| Testing data | the data that the model does not see during training so to test its performance |
 
-However, splitting data into training, validation, and testing sets is most helpful on data that have a predictable length or size (e.g., labeling whether an email is spam or not: one Boolean response for one unit of text). For our context, non-named entity recognition (and text classification at large) are highly subjective and often does not have a universal “true” label, hence the need for domain-specific models and research (even among experts of the same domain, there still might be discrepancies in data labeling, given the subjective nature of this work). Meaning, two data labels might be slightly different in syntax but, depending on the research question, similar enough to count both as correct labels. For example, in non-named entity recognition, a sentence might include the phrase “a small private bedroom.” The test data might label this as `[“bedroom”: Interior]`. However, if the fine-tuned model labels `[“private bedroom”: Interior]`, it would be considered as an erroneous label, despite that it could still be considered as a good (or good enough) label. This is one drawback in using the traditional training/testing dataset split and can be mitigated through performing human manual testing, i.e., the human researcher evaluating the model's labeling after training is completed. Another drawback with training/testing dataset split for the context of this lesson is that the researcher needs a large enough dataset, which might be time-consuming to produce via manual data annotation. The benefit, of course, is that we have a quantitative evaluation of the model.
+However, splitting data into training, validation, and testing sets is most helpful on data that have a predictable length or size (e.g., labeling whether an email is spam or not: one Boolean response for one unit of text). For our context, non-named entity recognition (and text classification at large) is highly subjective and often does not have a universal “true” label, hence the need for domain-specific models and research (even among experts of the same domain, there still might be discrepancies in data labeling, given the subjective nature of this work). Meaning, two data labels might be slightly different in syntax but, depending on the research question, similar enough to count both as correct labels. For example, in non-named entity recognition, a sentence might include the phrase “a small private bedroom.” The test data might label this as `[“bedroom”: Interior]`. However, if the fine-tuned model labels `[“private bedroom”: Interior]`, it would be considered as an erroneous label, despite that it could still be considered as a good (or good enough) label. This is one drawback in using the traditional training/testing dataset split and can be mitigated through performing human manual testing, i.e., the human researcher evaluating the model's labeling after training is completed. Another drawback with training/testing dataset split for the context of this lesson is that the researcher needs a large enough dataset, which might be time-consuming to produce via manual data annotation. The benefit, of course, is that we have a quantitative evaluation of the model.
 
 If you believe your research domain has large variability (and maybe that you do not have enough labeled data to afford splitting some just for testing), we can use all labeled data as training and validation data, as mentioned before, and test our trained model by manually observing the performance of our model on unseen text. The benefit of this approach is that we can dedicate more data on training and that we as researchers can more flexibly evaluate the model using our domain speciality. The tradeoff is that our model evaluation will be qualitative (i.e., “eye-balling” the fine-tuned model's performance).
 
-If you believe that you do not have enough manually labeled data even to split between data and validation, you could theoretically use all data for training. Again, choosing this option requires the researcher to perform qualitative evaluation to ensure the model's quality.
+If you also believe that you do not have enough manually labeled data even to split between data and validation, you could use all data for training. Again, choosing this option requires you to qualitatively evaluate the model using your domain expertise to ensure quality.
 
-The choice between whether creating a validation datasets or creating both testing and validation datasets depends on your research context, question, and data availability. Because of the size of the sample data, this lesson will only create training and validation sets data and manually test the model after training. Scikit-Learn’s [train_test_split()](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) method is a helpful tool in creating such splits. Two common training/validation/testing data ratios are 70/15/15 and 60/30/10. There is no one universally applicable ratio and is an architectural choice.
+The choice between whether to create a validation datasets or create both testing and validation datasets depends on your research context, question, and data availability. Because of the size of the sample data, this lesson will only create training and validation sets data and manually test the model after training. Scikit-Learn’s [train_test_split()](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) method is a helpful tool in creating such splits. Two common training/validation/testing data ratios are 70/15/15 and 60/30/10. There is no one universally applicable ratio and is an architectural choice.
 
 If you do choose to use data for validation and/or testing, make sure to split the data based on corpus texts rather than annotations. In other worse, if your corpus contains ten essays and you are using an 80/20 training-validation split, reserve the annotations for two essays for validation instead of randomly selecting 20% of all annotations for validation. This is to avoid the model learning the connotation for a corpus text using the annotation from it that were grouped into training data to "cheat" in the validation process that contains other annotations from the same corpus. If your corpus only has one corpus text (e.g., you are annotating one entire novel), then you need to be more robust during manual testing to prevent overfitting.
 
-This lesson will use a 80/20 split between training and validation set using Scikit-Learn's `.train_test_split()` method. Although the function is named using the word `test`, we will use this function to create training and validation data. Thus, for the `test_size` default parameter, in this lesson's context, we will view it as the size of the validation data.
+This lesson uses a 80/20 split between training and validation set using Scikit-Learn's `.train_test_split()` method. Although the function is named using the word `test`, we will use this function to create training and validation data. Thus, for the `test_size` default parameter, in this lesson's context, we will view it as the size of the validation data.
 ```
 import sklearn
 
@@ -475,9 +473,9 @@ trainingDataList, validationDataList = sklearn.model_selection.train_test_split(
 
 As mentioned in Step 8, there will be times where we have an imbalanced dataset. For instance, we might have 400 data for one non-named entity category but only 20 for another. This would cause our fine-tuned model to behave more favorably toward the majority data categories and overlook the minority ones.
 
-In entity recognition, the `O` category is often heavily overrepresented, and this is not a problem, since most words in literature are not named entities or even non-named entities. It is only a problem when there is an imbalance among annotation categories. You can review your data from Step 8 to see whether there is a data imbalance.
+In entity recognition, the `O` category is often heavily overrepresented. This is not necessarily a problem, since most words in literature are neither named entities nor non-named entities. It is only a problem when there is an imbalance among annotation categories. You can review your data from Step 8 to see whether there is a data imbalance.
 
-To address potential imbalance, we will use data resampling, which is a technique that overrepresents minority data or underrepresents majority data so that the final training data is more balanced. Do not perform data resampling on the validation and testing datasets. Upsampling and downsampling are two common ways of data resampling. Another way to address data imbalance is class reweighting, which changes the model weights, thus penalizing each category differently during training. This lesson will cover upsampling and downsampling. For a discussion on the difference between resampling and reweighting, see [this paper](https://ieeexplore.ieee.org/document/4669722).
+To address potential imbalance, we will use data resampling, a technique that overrepresents minority data and/or underrepresents majority data to balance the final training data. Do not perform data resampling on the validation and testing datasets. Upsampling and downsampling are two common ways of data resampling. Another way to address data imbalance is class reweighting, which changes the model weights, thus penalizing each category differently during training. This lesson will cover upsampling and downsampling. For a discussion on the difference between resampling and reweighting, see [this paper](https://ieeexplore.ieee.org/document/4669722).
 
 Upsampling increases the number of occurrence of minority data according to a scale, and downsampling reduces the occurrence of majority data according to a scale. Determining the scale is an architectural choice that depends on your specific dataset.
 
@@ -505,8 +503,6 @@ This means that we have a heavy `O` overrepresentation (which is expected and is
 
 To address this, we will perform downsampling on `O` and upsampling on “`B-rural`, `I-rural`, and `B-natural` so that they are at a similar representation as the rest of the non-`O` categories. We will use the `resampleTrainingData` function to resample each category. You can ether use one resampling ratio for all minority categories or customize different ratios for each. Currently, the function supports resampling using the same ratio for all categories. Un-comment the relevant code lines indicated in the function to customize upsampling ratio. The function uses `1` as default parameter for both `upsampleRatio` and `downsampleRatio`, in case you do not need to perform one type of resampling operations.
 ```
-# step 11 cont. new version
-
 import random
 
 def resampleTrainingData(trainingDataList, labelIDDict, upsampleRatio=1, downsampleRatio=1):
@@ -564,7 +560,6 @@ finalResampledTrainingDataList = resampleTrainingData(trainingDataList, bioLabel
 After resampling, we can see how our data has changed:
 
 ```
-# step 11 cont.
 preResamplingLabelCounterDict = {}
 for oneDataPoint in trainingDataList:
     for oneLabel in oneDataPoint["labels"]:
@@ -591,18 +586,18 @@ print("After resampling: ", postResamplingLabelCounterDict)
 The terminal printout should show the frequency of each annotation category before and after resampling. If you are not satisfied with the changes, you can revisit the ratios for upsampling and downsampling and change those values. You might need a few trial-by-error to get this right.
 
 ### Aside #1: What is a Hyperparameter?
-So far in this lesson, we have manually decided a few values: training/validation/testing data split ratio and data upsampling/downsampling ratio. These are values that only you, the domain expert, can decide, based on your familiarity with your corpora, domain, and research questions. Hyperparameters are architecturally determined values used to determine how the model training process will take place. Data split and resampling ratios are some examples of hyperparameters used in model fine-tuning and training. We will encounter more hyperparameters in future steps.
+So far, we have manually decided a few values: training/validation/testing data split ratio and data upsampling/downsampling ratio. These are values that only you, the domain expert, can decide, based on your familiarity with your corpora, domain, and research questions. Hyperparameters are architecturally determined values used to control how the model training process will take place. Data split and resampling ratios are some examples of hyperparameters used in model fine-tuning and training. We will encounter more hyperparameters in future steps.
 
-Hyperparameters can greatly impact the performance of your model. As seen in data resampling, changing just the upsample/downsample ratio number can completely alter your training data’s outlook. Thus, researchers should test different hyperparameter combinations throughout the training process.
+Hyperparameters can greatly impact model performance. As seen in data resampling, changing just the upsample/downsample ratio number can completely alter your training data’s outlook. Thus, researchers should test different hyperparameter combinations throughout the training process.
 
 Nevertheless, despite hyperparameters’ influence, the most important aspect in ensuring your model’s quality is our manually labeled training data. This goes back to Step 1, the iterative nature behind building our data schemas and operational definitions. These schema and definitions are always subject to change as you gain new information and understanding about your corpora, domain, and research question, even at the last step of our lesson.
 
 
 ### Step 12: Loading Dataset
 
-After creating our training dataset, we need to load our dataset into the [HuggingFace Dataset](https://huggingface.co/docs/datasets/v2.1.0/en/access) object, which is compatible with BERT.
+After creating our training dataset, we need to load our dataset into the [HuggingFace Dataset](https://huggingface.co/docs/datasets/v2.1.0/en/access) object compatible with BERT.
 
-We will first remain our existing dataset to become compatible with the BERT and HuggingFace naming conventions.
+First, rename our existing dataset to become compatible with the BERT and HuggingFace naming conventions.
 ```
 def quickNameChange(trainingDatasetList):
     renamedData = {"input_ids": trainingDatasetList["inputIDs"], "attention_mask": trainingDatasetList["attentionMask"], "labels": trainingDatasetList["labels"]}
@@ -611,7 +606,7 @@ def quickNameChange(trainingDatasetList):
 finalResampledTrainingDataList = [quickNameChange(oneDatapoint) for oneDatapoint in finalResampledTrainingDataList]
 validationDataList = [quickNameChange(oneDatapoint) for oneDatapoint in validationDataList]
 ```
-Then, we will cast our renamed datasets into the HuggingFace Dataset object and verify whether the final datatype for our reformatted training and validation datasets are of the type `<class 'datasets.arrow_dataset.Dataset'>` (shown through using `.type()` method) and have the features `['input_ids', 'attention_mask', 'labels']` (shown through printing both variable names directly.
+Then, cast our renamed datasets into the HuggingFace Dataset object and verify whether the final datatype for our reformatted training and validation datasets are of the type `<class 'datasets.arrow_dataset.Dataset'>` (shown through using `.type()` method) and have the features `['input_ids', 'attention_mask', 'labels']` (shown through printing both variable names directly.
 ```
 import datasets
 
@@ -629,7 +624,7 @@ We will now write a data collation function, which batches our data.
 
 ### Step 13: Loading Training Metrics and Model
 
-To batch our data, we will use this collate function:
+To batch our data, we will use the `collateData` function:
 ```
 import torch
 def collateData(trainingDataset):
@@ -651,7 +646,7 @@ We are using the `bert-base-cased` model, a case-sensitive model, because NER of
 
 And set the training hyperparameters. We will use the HuggingFace [Trainer](https://huggingface.co/docs/transformers/en/main_classes/trainer) API’s [TrainingArguments](https://huggingface.co/docs/transformers/v5.8.1/en/main_classes/trainer#transformers.TrainingArguments) method:
 ```
-# this lesson lists the parameters line by line below, since there are quite a few of them, so it is easy to see
+# this lesson lists the parameters line by line below
 trainingHyperparameters = transformers.TrainingArguments(
     output_dir="./customizedNERBERTVer1",
 
@@ -718,14 +713,14 @@ Train it using the .train() method:
 modelTrainer.train()
 ```
 
-And save the fine-tuned model and tokenizer to a directory of your choosing. Save both the model and tokenizer to the same directory and give the directory a meaningful name:
+Save both the fine-tuned model and tokenizer to your preferred directory (make sure to give the directory a meaningful name).
 
 ```
 modelTrainer.save_model("./NERBERTfine-tuneVer1")
 tokenizer.save_pretrained("./NERBERTfine-tuneVer1")
 ```
 
-The time needed to run the training process (via `.train()` method) varies greatly, depending on your data size, model choice, GPU availability, and others. It could take up to hours. Make sure to run the two `save_` methods right away so to not lose your progress after minutes or hours of training.
+Training time (during `.train()`) varies greatly depending on data size, model, GPU availability, and others. It could take up to hours. Make sure to run the two `save_` methods right away so to not lose your progress after minutes or hours of training.
 
 ### Aside #2: Using Hyperparameters
 
@@ -745,7 +740,7 @@ This lesson specified a few default values for training hyperparameters in `.Tra
 
 ### Step 15: Evaluate Your Model
 
-After you have fine-tuned and saved your model, we will manually evaluate its performance, regardless of whether you used testing dataset or not. Because of the complex nature of human language and historical context, domain experts should always qualitatively review model performance.
+After fine-tuning and saving our model, we will manually evaluate its performance, regardless of whether we used testing dataset. Because of the complex nature of human language and historical context, domain experts should always qualitatively review model performance.
 
 To do so, first find where you have saved your model and load it:
 ```
@@ -786,7 +781,7 @@ def runNERInference(rawText, overlapInt):
 
         startingPoint += windowStepSize
 
-    # perform NER classification on each window
+    # perform entity classification on each window
     allModelPreductionsList = [None] * len(totalInputIDs)
 
     for window in windowsList:
@@ -806,7 +801,7 @@ def runNERInference(rawText, overlapInt):
                 if allModelPreductionsList[tokenIndexInt] is None:  # keep left window's prediction for overlaps
                     allModelPreductionsList[tokenIndexInt] = predictedValue
 
-    # turn model predictions into labels that we have specified in "bioLabelToNumberDict"
+    # turn model predictions into labels specified in "bioLabelToNumberDict"
     tokenList = fineTunedTokenizer.convert_ids_to_tokens(totalInputIDs)
     results = []
     for token, labelID in zip(tokenList, allModelPreductionsList):
@@ -824,7 +819,7 @@ def runNERInference(rawText, overlapInt):
 
     return cleanedOutputList
 ```
-Then, set your unseen text into one string and determine the number of overlap tokens. Set `overlapInt` to the window overlap value that you did in Step 10’s `turnLabeledDataIntoBioFormat` function. 
+Then, set the unseen text into one string and determine the number of overlap tokens. Set `overlapInt` to the window overlap value that you did in Step 10’s `turnLabeledDataIntoBioFormat` function. 
 
 ```
 rawText = “” # set the text that you want to perform NER on 

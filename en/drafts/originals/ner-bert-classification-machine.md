@@ -85,7 +85,7 @@ Collected in Melville's 1856 collection _The Piazza Tales_ [Project Gutenberg](h
   
 We will try to answer the sample question “How does Melville use non-named entities differently than named entities in conveying ‘space’ in his short stories?” This sample question defines “non-named entities” as words or terms that are not proper nouns while “named entities” (NE) as proper nouns or titles.[^4]
 
-You can download the sample dataset here.
+You can download the [sample dataset here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/ner-bert-classification-machine/admin.jsonl.zip).
 
 ## Steps in the Pipeline
 

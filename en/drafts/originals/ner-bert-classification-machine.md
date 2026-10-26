@@ -52,6 +52,21 @@ Since this lesson focuses on building a domain-specific program, users should ha
 
 Graphic Processing Units (GPU) are not required but recommended.
 
+This lesson uses Python3.11.5
+
+Required package versions (downloadable via `pip install packageName==version`):
+```
+doccano==1.8.4
+numpy<2
+marshmallow<4
+torch==2.9.1
+scikit-learn==1.8.0
+transformers==4.57.1
+datasets==4.8.5
+evaluate==0.4.6
+seqeval==1.2.2
+```
+
 ### Sample Dataset and Sample Research Question
 
 To showcase the manual annotation and fine-tuning pipeline, this lesson uses a sample text with a sample research question. Readers should substitute the text with their own research corpus and research question. This lesson will indicate where readers should substitute their own research components into the pipeline.
@@ -642,7 +657,9 @@ import transformers
 
 bertTrainingModel = transformers.BertForTokenClassification.from_pretrained("bert-base-cased", num_labels=len(bioLabelToNumberDict))
 ```
-We are using the `bert-base-cased` model, a case-sensitive model, because NER often contain proper nouns (which are often capitalized). The counterpart, `bert-base-uncased` does not consider capitalization. Other potential models that one can use include `bert-large-cased`, which has more parameters than `bert-base` but would take more computation to run. There are also many community-developed BERT models beside the ones that Google (where BERT was originally developed) has released designed for domain-specific corpus, such as `emanjavacas/MacBERTh`, developed by Enrique Manjavacas and Lauren Fonteyn and mentioned earlier in the lesson. If you know existing domain-specific BERT models in your domain, using them could provide more domain-specific nuance for your research than the generic BERT model. You can find other BERT models on HuggingFace's model [search interface](https://huggingface.co/models?search=bert) (make sure to carefully read the documentation for a model before using it to ensure its fit for your project and overall reliability).
+We are using the `bert-base-cased` model, a case-sensitive model, because NER often contain proper nouns (which are often capitalized). The counterpart, `bert-base-uncased` does not consider capitalization. Other potential models include `bert-large-cased` (more parameters than `bert-base` but requires more computation). There are also many community-developed BERT models beside the ones that Google (where BERT was originally developed) has released designed for domain-specific corpus, such as `emanjavacas/MacBERTh`, developed by Enrique Manjavacas and Lauren Fonteyn and mentioned earlier in the lesson. If you know existing domain-specific BERT models in your domain, using them could provide more domain-specific nuance for your research than the generic BERT model. You can find other BERT models on HuggingFace's model [search interface](https://huggingface.co/models?search=bert) (make sure to carefully read the documentation for a model before using it to ensure its fit for your project and overall reliability).
+
+We can also use non-English language models, if available. For instance, `bert-base-multilingual-cased` and `bert-base-multilingual-uncased` are two of the Google multilingual models. Examples of monolingual BERT models are `distilbert-base-german-cased` (a low-parameter BERT version for German), `dccuchile/bert-base-spanish-wwm-cased` (Spanish), `bert-base-chinese`, `camembert-base` (French), and others. 
 
 And set the training hyperparameters. We will use the HuggingFace [Trainer](https://huggingface.co/docs/transformers/en/main_classes/trainer) API’s [TrainingArguments](https://huggingface.co/docs/transformers/v5.8.1/en/main_classes/trainer#transformers.TrainingArguments) method:
 ```

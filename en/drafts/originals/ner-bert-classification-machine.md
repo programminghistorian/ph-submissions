@@ -603,15 +603,15 @@ def quickNameChange(trainingDatasetList):
     renamedData = {"input_ids": trainingDatasetList["inputIDs"], "attention_mask": trainingDatasetList["attentionMask"], "labels": trainingDatasetList["labels"]}
     return renamedData
 
-finalResampledTrainingDataList = [quickNameChange(oneDatapoint) for oneDatapoint in finalResampledTrainingDataList]
-validationDataList = [quickNameChange(oneDatapoint) for oneDatapoint in validationDataList]
+renamedFinalResampledTrainingDataList = [quickNameChange(oneDatapoint) for oneDatapoint in finalResampledTrainingDataList]
+renamedFinalValidationDataList = [quickNameChange(oneDatapoint) for oneDatapoint in validationDataList]
 ```
 Then, cast our renamed datasets into the HuggingFace Dataset object and verify whether the final datatype for our reformatted training and validation datasets are of the type `<class 'datasets.arrow_dataset.Dataset'>` (shown through using `.type()` method) and have the features `['input_ids', 'attention_mask', 'labels']` (shown through printing both variable names directly.
 ```
 import datasets
 
-reformattedFinalTrainingDataset = datasets.Dataset.from_list(finalResampledTrainingDataList)
-reformattedValidationTrainingDataset = datasets.Dataset.from_list(validationDataList)
+reformattedFinalTrainingDataset = datasets.Dataset.from_list(renamedFinalResampledTrainingDataList)
+reformattedValidationTrainingDataset = datasets.Dataset.from_list(renamedFinalValidationDataList)
 
 # check if we got it right
 print("Training data datatype: ", type(reformattedFinalTrainingDataset)) 

@@ -76,8 +76,15 @@ seqeval==1.2.2
 
 To showcase the manual annotation and fine-tuning pipeline, this lesson uses a sample text with a sample research question. Readers should substitute the text with their own research corpus and research question. This lesson will indicate where readers should substitute their own research components into the pipeline.
 
-This lesson uses “Bartleby, The Scrivener” (1853) by Herman Melville (via [Project Gutenberg](https://www.gutenberg.org/ebooks/11231)) as the sample corpus and the sample question “How does Melville use non-named entities differently than named entities in conveying ‘space’ in his short stories?” This sample question defines “non-named entities” (NNE) as words or terms that are not proper nouns while “named entities” (NE) as proper nouns or titles.[^4]
+This lesson uses three of Herman Melville's short stories as the sample corpus:
+- “Bartleby, The Scrivener” 
+- "The Piazza Tales"
+- "Benito Cereno"
+Collected in Melville's 1856 collection _The Piazza Tales_ [Project Gutenberg](https://www.gutenberg.org/ebooks/11231))](https://www.gutenberg.org/cache/epub/15859/pg15859.txt)
+  
+We will try to answer the sample question “How does Melville use non-named entities differently than named entities in conveying ‘space’ in his short stories?” This sample question defines “non-named entities” as words or terms that are not proper nouns while “named entities” (NE) as proper nouns or titles.[^4]
 
+You can download the sample dataset here.
 
 ## Steps in the Pipeline
 
@@ -105,7 +112,7 @@ This lesson uses TXT to store raw corpus content. Researchers should store all T
 
 The method of creating these TXT files varies greatly, depending on where your source text comes from. Researchers working on printed or handwritten materials might need an extra character recognition step, which [Isabelle Gribomont](https://programminghistorian.org/en/lessons/ocr-with-google-vision-and-tesseract)'s and [Jeff Blackadar](https://programminghistorian.org/en/lessons/transcribing-handwritten-text-with-python-and-azure)'s lessons cover. You might also need to clean your TXT files after creating them. The extent of your cleaning task varies greatly as well. Visit [Laura Turner O’Hara](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions)'s lesson or the [“Cleaning the Corpus”](https://programminghistorian.org/en/lessons/understanding-creating-word-embeddings#cleaning-the-corpus) section in Avery Blankenship, Sarah Connell, and Quinn Dombrowski’s lesson for text cleaning guides.
 
-This lesson uses the plain text TXT file from Project Gutenberg. Thus, our cleaning task is in removing the Project Gutenberg header and footer texts, which are before the line:
+This lesson uses the plain text TXT file from Project Gutenberg. Thus, our cleaning task is to find the stories in Melville's story collection and remove the Project Gutenberg header and footer texts, which are before the line:
 
 `*** START OF THE PROJECT GUTENBERG…`
 
@@ -113,7 +120,7 @@ and after the line:
 
 `*** END OF THE PROJECT GUTENBERG…`
 
-Using coded programs to clean texts is only necessary if there are significant or numerous repetitive cleaning tasks. In cases where cleaning tasks are manageable, researchers can simply manually read the TXT file and make the relevant fixes themselves.
+Using coded programs to clean texts is only necessary if there are significant or numerous repetitive cleaning tasks. When cleaning tasks are manageable, we can manually read the TXT file and make the relevant fixes ourselves.
 
 ### Step 3: Doccano Setup
 
@@ -353,7 +360,7 @@ Manual data labeling might categorize “A two-bedroom urban apartment” as an 
 
 `O` is an unlabeled token, or the “Outside” in BIO. [CLS] and [SEP] are special tokens used in transformer models, where [CLS] represents the beginning of a classification task and [SEP] refers to the end of a segment.
 
-We will rewrite our labeled data according to the BIO format through dictionary mapping each label to a numerical value. The number of new labels we will have is `2n + 1`: `n` is the number of labels in our annotation schema (four, for this lesson). Each existing label will have a Beginning and an Inside version. For this lesson, we will write the following dictionary in our Jupyter Notebook:
+We will rewrite our labeled data according to the BIO format through dictionary mapping each label to a numerical value. The number of new labels we will have is `2n + 1`: `n` is the number of labels in our annotation schema (four, for this lesson). Each existing label will have a Beginning and an Inside version. We will write the following dictionary in our Jupyter Notebook:
 
 ```
 bioLabelToNumberDict = {
@@ -478,7 +485,7 @@ If you also believe that you do not have enough manually labeled data even to sp
 
 The choice between whether to create a validation datasets or create both testing and validation datasets depends on your research context, question, and data availability. Because of the size of the sample data, this lesson will only create training and validation sets data and manually test the model after training. Scikit-Learn’s [train_test_split()](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) method is a helpful tool in creating such splits. Two common training/validation/testing data ratios are 70/15/15 and 60/30/10. There is no one universally applicable ratio and is an architectural choice.
 
-If you do choose to use data for validation and/or testing, make sure to split the data based on corpus texts rather than annotations. In other worse, if your corpus contains ten essays and you are using an 80/20 training-validation split, reserve the annotations for two essays for validation instead of randomly selecting 20% of all annotations for validation. This is to avoid the model learning the connotation for a corpus text using the annotation from it that were grouped into training data to "cheat" in the validation process that contains other annotations from the same corpus. If your corpus only has one corpus text (e.g., you are annotating one entire novel), then you need to be more robust during manual testing to prevent overfitting.
+If you do choose to use data for validation and/or testing, make sure to split the data based on corpus texts rather than annotations. In other worse, if your corpus contains ten essays and you are using an 80/20 training-validation split, reserve the annotations for two essays for validation instead of randomly selecting 20% of all annotations for validation. This is to avoid the model learning the connotation for a corpus text using the annotation from it that were grouped into training data to "cheat" in the validation process that contains other annotations from the same corpus. If your corpus only has one corpus text (e.g., you are annotating one entire novel), then you need to be more robust during manual testing to prevent overfitting. However, if your corpus has only a few texts (like in our sample situation, where we only have three), it is okay to still split by data and not corpus texts.
 
 This lesson uses a 80/20 split between training and validation set using Scikit-Learn's `.train_test_split()` method. Although the function is named using the word `test`, we will use this function to create training and validation data. Thus, for the `test_size` default parameter, in this lesson's context, we will view it as the size of the validation data.
 ```
@@ -514,7 +521,7 @@ print(labelCounterDict)
 For this lesson’s sample data, the data spread is:
 
 ```
-{'O': 60840, 'B-rural': 3, 'I-rural': 3, 'B-urban': 11, 'I-urban': 14, 'B-interior': 23, 'B-natural': 2, 'I-natural': 12, 'I-interior': 16}
+{'O': 16433, 'B-interior': 23, 'I-interior': 13, 'B-urban': 11, 'I-urban': 13}
 ```
 
 This means that we have a heavy `O` overrepresentation (which is expected and is very likely to happen to your dataset, too) and `B-rural`, `I-rural`, and `B-natural` underrepresentation. Note that this step is also helpful to get an idea of what type of language usage is more or less often in your corpus.
@@ -796,6 +803,8 @@ for word, label, outsideProbability, bestEntity, bestEntityProbability in runNER
 Look for situations where a term that should be a non-named entity has a high "best entity" probability, even if the model does not label the term as such. This can still mean that the model is learning in the right direction.
 
 In addition, actively review whether your NER data schema and operational definitions are still sound. Fine-tuning BERT (or any other language models) for research is not a linear process but an iterative one where we will constantly revisit the very first step in this process. The model quality will increase as you increase the dataset more through using existing NER dataset or annotating more of your corpus.
+
+The lesson's sample dataset should be treated as just an example. Your data annotation should, ideally, contain many more data points.
 
 ### Technical Material Source Acknowledgement
 

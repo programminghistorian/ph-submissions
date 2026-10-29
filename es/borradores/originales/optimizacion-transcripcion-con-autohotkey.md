@@ -46,7 +46,7 @@ Una vez finalizada la lección, esperamos que puedas:
 
 ## ¿Qué debes saber?
 
-Al tratarse de una lección centrada en la edición de textos con TEI, te recomendamos que antes hayas leído las dos lecciones de Nicolás Vaughan, tituladas Introducción a la codificación de textos en TEI ([parte 1](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1) y [parte 2](https://programminghistorian.org/es/lecciones/introduccion-a-tei-2)), y la guía de Susanna Allés, titulada [Introducción a la Text Encoding Initiative](https://tthub.io/aprende/tutorial/introduccion-text-encoding-initiative). Si después quieres visualizar tus resultados en un entorno web, también puedes consultar la lección de Gabriel Calarco y Gimena del Río Riande sobre [CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean).
+Al tratarse de una lección centrada en la edición de textos con TEI, te recomendamos que antes hayas leído las dos lecciones de Nicolás Vaughan, tituladas Introducción a la codificación de textos en TEI ([parte 1](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1) y [parte 2](https://programminghistorian.org/es/lecciones/introduccion-a-tei-2)), y la guía de Susanna Allés-Torrent, titulada [Introducción a la Text Encoding Initiative](https://tthub.io/aprende/tutorial/introduccion-text-encoding-initiative). Si después quieres visualizar tus resultados en un entorno web, también puedes consultar la lección de Gabriel Calarco y Gimena del Río Riande sobre [CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean).
 
 En particular, para la sección dedicada a las funciones, conviene que tengas algunas nociones básicas de programación. No necesitas experiencia avanzada: los fragmentos de código estarán acompañados de una explicación paso a paso. Sin embargo, te resultará útil entender qué es una función y cómo operan estructuras condicionales como `if`, puesto que AHK comparte algunos principios con otros lenguajes de programación como Python o R. Para reforzar estos conceptos, te recomendamos consultar las lecciones de William J. Turkel y Adam Crymble, [Reutilización de código y modularidad en Python](https://programminghistorian.org/es/lecciones/reutilizacion-de-codigo-y-modularidad) y [De HTML a lista de palabras (parte 2)](https://programminghistorian.org/es/lecciones/de-html-a-lista-de-palabras-2).
 
@@ -54,7 +54,7 @@ En particular, para la sección dedicada a las funciones, conviene que tengas al
 
 El primer requisito es disponer de un computador con Windows. Aunque AHK es gratuito y de código abierto, su dependencia de este sistema operativo limita el alcance de la lección y excluye a quienes trabajan exclusivamente en otros sistemas. Sin embargo, hemos elegido esta herramienta porque permite automatizar tareas mediante _scripts_ breves, sin necesidad de instalar entornos de programación complejos ni disponer de conocimientos avanzados. De este modo, ofrece a una amplia audiencia de humanidades digitales una vía accesible de entrada a la automatización, ya que Windows es el [sistema operativo para computadores de escritorio y portátiles más utilizado en el mundo](https://en.wikipedia.org/wiki/Usage_share_of_operating_systems#Desktop_and_laptop_computers)[^5].
 
-Además de AHK, necesitarás contar con un editor de texto plano (incluso podrías utilizar el Bloc de notas de Windows). No obstante, conviene trabajar con un editor que cuente con funcionalidades avanzadas, como [Notepad++](https://notepad-plus-plus.org/) o [Visual Studio Code](https://code.visualstudio.com/), ya que facilitará la lectura y edición del código de tu _script_.
+Además de AHK, necesitarás contar con un editor de texto plano. Aunque podrías utilizar el Bloc de notas de Windows, conviene trabajar con un editor que cuente con funcionalidades avanzadas, como [Notepad++](https://notepad-plus-plus.org/) o [Visual Studio Code](https://code.visualstudio.com/), ya que facilitará la lectura y edición del código de tu _script_.
 
 El primer paso, entonces, es acceder a la página oficial de [AutoHotkey](https://www.autohotkey.com/) e instalar el programa en tu computador. Los archivos creados para AHK tendrán la extensión `.ahk`. Utilizaremos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^6].
 
@@ -64,7 +64,7 @@ Instalado AHK, puedes abrir AutoHotkey Dash, su interfaz de inicio. Allí verás
 Algunos antivirus pueden identificar AHK o los _scripts_ que hayas creado con esta herramienta como potencialmente peligrosos. Por ello, obtén siempre el programa desde la web oficial y comprueba el origen de cualquier _script_ de terceros antes de ejecutarlo.
 </div>
 
-## Tu primer script
+## ¿Qué son las hotkeys y hotstrings? Aprende con tu primer script
 
 Buena parte de lo que encontrarás en esta sección se basa en la [explicación introductoria de tidbit](https://www.autohotkey.com/docs/v2/Tutorial.htm), aunque aquí ajustaremos sus indicaciones al objetivo de esta lección. Te recomendamos consultarla no solo para resolver dudas, sino también para ampliar tus conocimientos y aprovechar al máximo las posibilidades de AHK.
 
@@ -76,13 +76,13 @@ Lo primero que haremos será crear una carpeta en Windows, que llamaremos `ahk_s
 
 Nuestro _script_ se llamará `tph_script.ahk`. A lo largo de la lección, incorporaremos los ejemplos a este mismo archivo, salvo aquellos que puedan generar conflicto, lo cual indicaremos cuando corresponda.
 
-### ¿Qué son las hotkeys y hotstrings?
-
 Una vez indicado que el archivo debe ejecutarse con AHK 2, aprenderás dos conceptos básicos para empezar a trabajar con este lenguaje: las _hotkeys_ y las _hotstrings_.
+
+### Hotkey
 
 Las primeras seguramente te resultarán familiares, aunque no las hayas llamado así hasta ahora. Una _hotkey_ es una combinación de teclas que permite ejecutar una acción o comando, como ocurre con las combinaciones habituales para copiar con `Ctrl + C` o pegar con `Ctrl + V`. Como ves, ¡ya utilizabas _hotkeys_ sin saberlo!
 
-Veamos ahora cómo configurar una _hotkey_. Antes, sin embargo, conviene que conozcas cómo se representan en AHK algunas teclas especiales, como `Ctrl`, `Windows`, `Alt` o `Shift`. Para ello, utilizaremos una versión modificada de la tabla para principiantes de tidbit:
+Antes de ver cómo configurar una _hotkey_ conviene que conozcas cómo se representan en AHK algunas teclas especiales, como `Ctrl`, `Windows`, `Alt` o `Shift`. Para ello, utilizaremos una versión modificada de la tabla para principiantes de tidbit:
 
 | Tecla | Representación en AHK 2 |
 |---|---|
@@ -101,7 +101,7 @@ De igual manera, como ocurre en otros lenguajes de programación, AHK cuenta con
 | `Run` | Ejecuta un programa externo o abre una URL en el navegador predeterminado. |
 
 <div class="alert alert-info" markdown="1">
-Más adelante usaremos `SendText`, una variante de `Send` destinada a enviar texto literal y, por ello, más adecuada en buena parte de los contextos que veremos porque evita que determinados caracteres se interpreten como teclas o pulsaciones especiales.
+De aquí en adelante usaremos `SendText`, una variante de `Send` destinada a enviar texto literal y, por ello, más adecuada en buena parte de los contextos que veremos porque evita que determinados caracteres se interpreten como teclas o pulsaciones especiales.
 </div>
 
 Asimismo, debes conocer una parte esencial de la sintaxis de AHK: los dobles dos puntos (`::`). En una _hotkey_, lo situado a la izquierda de los dobles dos puntos indica la combinación de teclas que debes pulsar. Lo situado a la derecha, o dentro del bloque delimitado por llaves (`{}`), indica la acción que se ejecutará.
@@ -187,6 +187,8 @@ Los comentarios deben ir precedidos de un punto y coma, como en el ejemplo anter
 </div>
 
 Siempre podrás pausar o cerrar tu _script_ desde el área de notificación de Windows. Asimismo, la opción de recarga te permite aplicar los cambios realizados en el contenido del _script_ sin necesidad de cerrarlo y abrirlo de nuevo. Por tanto, si añades una nueva _hotkey_, bastará con recargar para poder utilizarla.
+
+### Hotstrings
 
 Pasemos ahora a las _hotstrings_. A diferencia de las _hotkeys_, no se activan mediante una combinación de teclas, sino al escribir una determinada secuencia de caracteres. Su uso es más localizado, pues básicamente se emplean para expandir abreviaturas, palabras o frases frecuentes mientras escribes.
 
@@ -378,8 +380,8 @@ Ahora, crea tus propias _hotkeys_ y añade las funciones `tagger()` y `releaseMo
 Otras dos funciones útiles durante el proceso son las de conversión a mayúsculas y minúsculas. Aunque los procesadores de texto ya las incluyen, a veces resulta más cómodo seleccionar el texto y pulsar una combinación de teclas. Antes de definir estas funciones, asignaremos una combinación de teclas a cada una:
 
 ```ahk
-!u::convertSelection("upper")
-!l::convertSelection("lower")
+!u::convertSelection("upper") ; mayúsculas
+!l::convertSelection("lower") ; minúsculas
 ```
 Para ello, usamos la función `convertSelection()` que sigue una lógica muy parecida a la empleada en el etiquetador `tagger()` explicado anteriormente, pero se fija en si recibe el valor `upper` o `lower`:
 ```ahk
@@ -653,7 +655,7 @@ Por ello, creemos que puede ser un recurso sumamente útil para quienes quieran 
 
 Te recomendamos explorar los repositorios de GitHub basados en AHK, ya que permiten imaginar flujos de trabajo mucho más complejos, especialmente aquellos que conectan con interfaces de programación de aplicaciones (API), herramientas de OCR o modelos de lenguaje de gran tamaño (LLM).
 
-Nuestra recomendación final es que programes y pruebes de forma constante. De esa manera, podrás ampliar y mejorar tu _script_ a medida que trabajes con tus propios materiales. Como has visto, AHK ofrece múltiples posibilidades y esa flexibilidad es una gran ventaja para quienes trabajamos en humanidades digitales: nuestras necesidades son diversas, nuestros corpus presentan problemas distintos y puede que lo que funcione para ti no lo haga para otra persona.
+Nuestra recomendación final es que programes y hagas pruebas de forma constante. De esa manera, podrás ampliar y mejorar tu _script_ a medida que trabajes con tus propios materiales. Como has visto, AHK ofrece múltiples posibilidades y esa flexibilidad es una gran ventaja para quienes trabajamos en humanidades digitales: nuestras necesidades son diversas, nuestros corpus presentan problemas distintos y puede que lo que funcione para ti no lo haga para otra persona.
 
 ## Referencias
 

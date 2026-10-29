@@ -153,6 +153,10 @@ Como ves, el procedimiento es sencillo, aunque sería mucho más cómodo que el 
     Send "{Left 13}"
 }
 ```
+<div class="alert alert-warning" markdown="1">
+El valor de `{Left N}` dependerá de la etiqueta de apertura; si cambias su nombre, deberás recalcular el número de desplazamientos a la izquierda que necesites.
+</div>
+
 En este caso es necesario usar llaves, ya que nuestro _script_ combina dos acciones. No olvides que no puedes usar una misma _hotkey_ en dos ocasiones: modifica o elimina la anterior.
 
 Ahora vamos a conocer la función `Run`. Como indicamos en la tabla, esta función permite abrir programas instalados en el computador, pero también puede utilizarse para abrir enlaces web. Por ejemplo, para abrir una página web con una combinación de teclas, puedes escribir:
@@ -236,9 +240,6 @@ Combinando todo lo que hemos aprendido hasta ahora, podríamos crear algo simila
 :*:@p::<placeName></placeName>{Left 12}
 :*:@t::<title></title>{Left 8}
 ```
-<div class="alert alert-warning" markdown="1">
-El valor de `{Left N}` dependerá de la etiqueta de apertura; si cambias su nombre, deberás recalcular el número de desplazamientos a la izquierda que necesites.
-</div>
 
 De este modo, puedes abrir y cerrar automáticamente una etiqueta en cualquier campo de texto y colocar el cursor dentro de ella para seguir escribiendo.
 
@@ -411,7 +412,7 @@ convertSelection(mode) {
         SendText(selectedText)
 }
 ```
-En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasándolo a mayúsculas, mientras que en el segundo, aplica `SendText(StrLower(selectedText))` y lo convierte en minúsculas. Si no recibe ninguno de los anteriores, lo deja igual: `SendText(selectedText)`.
+En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasándolo a mayúsculas, mientras que en el segundo, aplica `SendText(StrLower(selectedText))` y lo convierte en minúsculas. Si no recibe ninguno de los anteriores, lo deja igual: `SendText(selectedText)`[^10].
 
 Una vez copiado el texto seleccionado, restaura el portapapeles original, convierte a mayúsculas o minúsculas y, finalmente, introduce el resultado con `SendText()`. Al inicio, con `releaseModifiers()`, nos aseguramos de liberar preventivamente las teclas `Alt` y `Ctrl`. En el descargable podrás llamar a estas funciones con `Alt + U` (convertir a mayúsculas) y `Alt + L` (convertir a minúsculas).
 
@@ -670,7 +671,7 @@ Nuestra recomendación final es que programes y hagas pruebas de forma constante
 
 ## Notas
 
-[^1]: El texto de esta lección ha sido revisado con herramientas de IA generativa, en concreto, ChatGPT. Quiero agradecer a las revisoras Inmaculada Asensio y Alexandra Wingate sus valiosas aportaciones, así como a Nicolás Vaughan por su exhaustivo trabajo de revisión y su ayuda en la preparación de la lección. Finalmente, agradezco al equipo editorial de _The Programming Historian en español_ por el acompañamiento en el proceso y, en particular, a Anisa Hawes y a Jennifer Isasi.
+[^1]: El texto de esta lección ha sido revisado con herramientas de IA generativa, en concreto, ChatGPT (modelo 5.6 Sol). Quiero agradecer a las revisoras Inmaculada Asensio y Alexandra Wingate sus valiosas aportaciones, así como a Nicolás Vaughan por su exhaustivo trabajo de revisión y su ayuda en la preparación de la lección. Finalmente, agradezco al equipo editorial de _The Programming Historian en español_ por el acompañamiento en el proceso y, en particular, a Anisa Hawes y a Jennifer Isasi.
 [^2]: El tipo de letra no es la única barrera a la que nos enfrentamos desde la investigación: las digitalizaciones de los manuscritos no siempre son lo suficientemente fieles para poder aplicar estas herramientas que, además, en algunos casos, son de pago o están sujetas a límites de uso. Las alternativas de código abierto y gratuitas, por su parte, requieren ciertos conocimientos técnicos superiores a los necesarios para utilizar la herramienta aquí propuesta.
 [^3]: Fernando Campos Leza, "Introducción a AutoHotkey."
 [^4]: Gimena del Río Riande, "Humanidades Digitales"; Gimena del Río Riande et al., "Minimal Computing 101."
@@ -679,3 +680,4 @@ Nuestra recomendación final es que programes y hagas pruebas de forma constante
 [^7]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html). Traducción basada en la original y regularizada por el autor.
 [^8]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html). Traducción basada en la original y regularizada por el autor.
 [^9]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-ex.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-ex.html). Véase un ejemplo de su uso en [https://tei-c.org/release/doc/tei-p5-doc/es/html/CO.html#COEDADD](https://tei-c.org/release/doc/tei-p5-doc/es/html/CO.html#COEDADD).
+[^10]: Este fragmento corresponde a una estructura condicional (_if statement_, en inglés). La instrucción `if` permite comprobar si una condición se cumple; `else if` verifica una segunda condición cuando la primera no se cumple; `else`, por su parte, indica lo que debe ocurrir cuando no se cumple ninguna de las condiciones anteriores.

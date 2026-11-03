@@ -8,10 +8,10 @@ date: YYYY-MM-DD
 authors:
 - Pierre Brochard
 reviewers:
-- Forename Surname
-- Forename Surname
+- Félix Alié
+- Lola Pottier
 editors:
-- Forename Surname
+- Émilien Schultz
 difficulty:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/685
 activity:

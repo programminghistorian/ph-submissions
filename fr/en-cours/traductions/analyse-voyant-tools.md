@@ -24,8 +24,8 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/718
 difficulty: 1
 activity: analyzing
 topics: [distant-reading]
-abstract: En este tutorial se aprenderá cómo organizar y analizar un conjunto de textos con Voyant-Tools.
-avatar_alt: Gafas con diferentes graduaciones de oftanmología
+abstract: Dans ce tutoriel, on apprendra à organiser et à analyser un ensemble de texte avec Voyant-Tools.
+avatar_alt: Gafas con diferentes graduaciones de oftalmología
 mathjax: true
 doi: XX.XXXXX/phen0000
 ---
@@ -42,7 +42,7 @@ Ce tutoriel vous apprendra à organiser un ensemble de textes pour la recherche,
 
 L'analyse de corpus est un type [d'analyse de contenu](https://shs.cairn.info/l-analyse-de-contenu--9782130627906) qui permet de faire des comparaisons à grande échelle sur un ensemble de textes ou de corpus.
 
-Depuis le début de l'informatique, les linguistes informatiques et les spécialistes de [la récupération d'informations](https://guides.data.gouv.fr/guides/reutiliser-des-donnees/guide-traitement-et-analyse-de-donnees/recuperer-des-donnees) ont créé et utilisé des logiciels pour distinguer des modèles qu'on verrait mal dans une lecture traditionnelle ou pour corroborer les hypothèses dont ils avaient l'intuition lors de la lecture de certains textes, mais qui nécessitaient un travail laborieux, coûteux et répétitif. Par exemple, afin de mettre en lumière les tendances d'utilisation et de déclin de certains termes à un moment donné, il était nécessaire d'embaucher des personnes qui examinaient manuellement un texte et annotaient le nombre de fois où apparaissait le terme recherché. Très vite, en examinant les capacités de « comptage » des ordinateurs, ces spécialistes se sont mis à écrire des programmes qui faciliteraient la tâche de créer des listes de fréquences ou des tables de correspondance (c.-à-d. des tables avec les contextes gauche et droit d'un terme). Le programme que vous apprendrez à utiliser dans ce tutoriel s'inscrit dans ce contexte.
+Depuis le début de l'informatique, les linguistes informatiques et les spécialistes de [la récupération d'informations](https://guides.data.gouv.fr/guides/reutiliser-des-donnees/guide-traitement-et-analyse-de-donnees/recuperer-des-donnees) ont créé et utilisé des logiciels pour distinguer des modèles qu'on verrait mal à travers une lecture traditionnelle ou pour corroborer les hypothèses dont ils avaient l'intuition lors de la lecture de certains textes, mais qui nécessitaient un travail laborieux, coûteux et répétitif. Par exemple, afin de mettre en lumière les tendances d'utilisation et de déclin de certains termes à un moment donné, il était nécessaire d'embaucher des personnes qui examinaient manuellement un texte et annotaient le nombre de fois où apparaissait le terme recherché. Très vite, en examinant les capacités de « comptage » des ordinateurs, ces spécialistes se sont mis à écrire des programmes qui faciliteraient la tâche de créer des listes de fréquences ou des tables de correspondance (c.-à-d. des tables avec les contextes gauche et droit d'un terme). Le programme que vous apprendrez à utiliser dans ce tutoriel s'inscrit dans ce contexte.
 
 ## Ce que vous allez apprendre dans ce tutoriel
 
@@ -118,9 +118,9 @@ La troisième consiste **à intégrer** des **métadonnées contextuelles (par e
 
 ## Chargement du corpus
 
-Sur la page d'entrée de Voyant Tools, vous trouverez quatre options simples pour télécharger du texte[^2]. Les deux premières options se trouvent dans la zone blanche. Dans cette zone, vous pouvez coller directement un texte que vous avez copié de quelque part ; ou, coller des adresses Web – séparées par des virgules – des endroits où se trouvent les textes que vous souhaitez analyser. Une troisième option consiste à cliquer sur « Ouvrir » et à sélectionner l’un des trois corpus que Voyant a préchargé (les pièces de Shakespeare, les romans de Jane Austen ou *Frankenstein* de Mary Shelley : tous trois en anglais).
+Sur la page d'entrée de Voyant Tools, vous trouverez quatre options simples pour télécharger du texte[^2]. Les deux premières options se trouvent dans la zone blanche. Dans cette zone, vous pouvez coller directement un texte que vous avez copié quelque part ; ou, coller des adresses Web – séparées par des virgules – des endroits où se trouvent les textes que vous souhaitez analyser. Une troisième option consiste à cliquer sur « Ouvrir » et à sélectionner l’un des trois corpus que Voyant a préchargé (les pièces de Shakespeare, les romans de Jane Austen ou *Frankenstein* de Mary Shelley : tous trois en anglais).
 
-Enfin, il y a l'option que nous allons utiliser dans ce tutoriel, dans lequel vous pouvez télécharger directement les documents que vous avez sur votre ordinateur. Dans ce cas, nous soulèverons le [corpus complet](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/analyse-voyant-tools/corpus-esclavage.zip) des discours sur l'esclavage.
+Enfin, il y a l'option que nous allons utiliser dans ce tutoriel : vous pouvez télécharger directement les documents que vous avez sur votre ordinateur. Dans ce cas, nous chargerons le [corpus complet](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/analyse-voyant-tools/corpus-esclavage.zip) des discours sur l'esclavage.
 
 Pour télécharger les matériaux, cliquez sur l’icône qui indique « Télécharger », ouvrez votre explorateur de fichiers et, en laissant la touche « Maj » appuyée, sélectionnez tous les fichiers que vous souhaitez analyser.
 
@@ -225,7 +225,7 @@ La façon dont Voyant calcule la longueur des phrases doit être considérée co
 
 **Activité 4 :**
 
-1. Observez les statistiques des mots par phrase par (mpp) : quel modèle ou quels modèles pouvez-vous discerner si vous examinez l’index « mpp » et les métadonnées de la date et de l'identité du locuteur contenues dans le nom du document ?
+1. Observez les statistiques des mots par phrase (mpp) : quel modèle ou quels modèles pouvez-vous discerner si vous examinez l’index « mpp » et les métadonnées de la date et de l'identité du locuteur contenues dans le nom du document ?
 
 2. Cliquez sur les noms de certains documents qui vous intéressent pour leur index « mpp ». Regardez la fenêtre « Lecteur » et lisez quelques lignes, la lecture du texte original ajoute-t-elle de nouvelles informations à votre lecture des données ? Dites pourquoi.
 
@@ -269,12 +269,12 @@ Voyant a déjà chargé une liste de mots vides en français. Cependant, vous po
 4\. Une fois ajoutés les mots que vous voulez filtrer, cliquez sur « Sauvegarder ».
 
 <div class="alert alert-warning">
-Une option « Appliquer partout » est sélectionnée par défaut ; si on la laisse ainsi sélectionnée, le filtrage de mots affectera les métriques de tous les autres outils. Il est très important que vous documentiez vos décisions. Une bonne pratique est de sauvegarder la liste des mots vides dans un fichier texte (.txt) Pour ce tutoriel, nous avons créé <a href='https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/analyse-voyant-tools/mots-a-filtrer.txt'>une liste de mots à filtrer</a> et vous pouvez l'utiliser si vous le souhaitez, rappelez-vous simplement que cela affectera vos résultats. Par exemple : dans la liste des mots filtrés, ont été inclus « tous » et « toutes » ; or ces mots pourraient être intéressants s’ils montrent que « tous » est beaucoup plus utilisé que « toutes », car pourrait donner des indices sur l’utilisation d'un langage genré.
+Une option « Appliquer partout » est sélectionnée par défaut ; si on la laisse ainsi sélectionnée, le filtrage de mots affectera les métriques de tous les autres outils. Il est très important que vous documentiez vos décisions. Une bonne pratique est de sauvegarder la liste des mots vides dans un fichier texte (.txt) Pour ce tutoriel, nous avons créé <a href='https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/analyse-voyant-tools/mots-a-filtrer.txt'>une liste de mots à filtrer</a> et vous pouvez l'utiliser si vous le souhaitez, rappelez-vous simplement que cela affectera vos résultats. Par exemple : dans la liste des mots filtrés, ont été inclus « tous » et « toutes » ; or ces mots pourraient être intéressants s’ils montrent que « tous » est beaucoup plus utilisé que « toutes », car cela pourrait donner des indices sur l’utilisation d'un langage genré.
 </div>
 
 #### Fréquences avec des mots vides filtrés
 
-Revenons alors à la section du résumé. Comme nous l'avons dit précédemment, les mots vides filtrés (c'est-à-dire : enlevés du corpus) affectent d'autres champs de Voyant. Dans ce cas, avec la case « Appliquer à tout » sélectionnée, dans la liste ci-dessous : **Mots les plus fréquents** dans le corpus, seront affichés les mots qui sont répétés le plus souvent sans compter ceux qui ont été filtrés. Dans le cas présent, on :
+Revenons alors à la section du résumé. Comme nous l'avons dit précédemment, les mots vides filtrés (c'est-à-dire : enlevés du corpus) affectent d'autres champs de Voyant. Dans ce cas, avec la case « Appliquer à tout » sélectionnée, dans la liste ci-dessous : **Mots les plus fréquents** dans le corpus, seront affichés les mots qui sont répétés le plus souvent sans compter ceux qui ont été filtrés. Dans le cas présent, on obtient :
 
 > l'esclavage (843); mémoire (472); france (454); république (382); aujourd'hui (306)
 
@@ -286,7 +286,7 @@ Alors que, si dans l'onglet **mots vides** des options on choisit : **aucune**, 
 
 1.  Pensez à ces mots et réfléchissez aux informations qu’ils fournissent et à la façon dont cette information se distingue de celle que vous obtenez en regardant le nuage de mots.
     
-2.  Si vous êtes dans un groupe, discutez des différences de vos résultats avec ceux des autres
+2.  Si vous êtes dans un groupe, discutez des différences de vos résultats avec ceux des autres.
     
 
 ### Termes
@@ -295,7 +295,7 @@ Alors que les fréquences peuvent nous communiquer une information à propos de 
 
 #### Fréquence normalisée
 
-Dans la section précédente, nous avons observé la « fréquence brute » des mots. Cependant, si nous avions un corpus de six mots et 3.000 mots, les fréquences brutes sont peu informatives. Trois mots dans un corpus de six mots représentent 50% du total, trois mots dans un corpus de 6.000 représentent 0,1% du total. Pour éviter la surreprésentation d’un terme, les linguistes ont conçu une autre mesure appelée « fréquence relative normalisée ». Ceci est calculé comme suit : Fréquence brute * 1,000.000 / Nombre total de mots. Voyons un vers comme un exemple. Prenons les vers cités plus haut « il dit non avec la tête mais il dit oui avec le cœur », qui ont 13 mots au total. Si on calcule les fréquences brute et relative des noms, on obtient :
+Dans la section précédente, nous avons observé la « fréquence brute » des mots. Cependant, si nous avions des corpus de six mots et de 3.000 mots, les fréquences brutes seraient peu informatives. Trois mots dans un corpus de six mots représentent 50% du total, trois mots dans un corpus de 6.000 représentent 0,05% du total. Pour éviter la surreprésentation d’un terme, les linguistes ont conçu une autre mesure appelée « fréquence relative normalisée ». Celle-ci est calculée comme suit : Fréquence brute * 1,000.000 / Nombre total de mots. Prenons un extrait de poème comme  exemple. Prenons les vers cités plus haut « il dit non avec la tête mais il dit oui avec le cœur », qui ont 13 mots au total. Si on calcule les fréquences brute et relative des noms, on obtient :
 
 | mots | fréquence brute | fréquence relative      |
 |------|-----------------|-------------------------|
@@ -317,7 +317,7 @@ Voyons comment cela fonctionne dans Voyant Tools :
 
 Bien que la fréquence relative ne serve pas à comprendre la distribution de notre corpus, il existe une mesure qui, elle, nous donne des informations sur la constante d'un terme tout au long des documents : l'asymétrie statistique.
 
-Cette mesure nous donne une idée de la distribution de probabilité d'une variable sans avoir à en faire la représentation graphique. Elle est calculée est en observant les écarts de fréquence à la moyenne, pour savoir si ceux qui se produisent à droite de la moyenne (asymétrie négative) sont plus grands que ceux de gauche (asymétrie positive). Plus le degré d'asymétrie statistique est proche de zéro, plus la distribution de ce terme est régulière (c'est-à-dire qu'elle se produit avec une moyenne très similaire dans tous les documents). Une chose pas très intuitive : si un terme a une asymétrie statistique avec des **nombres positifs**, cela signifie que ce terme est **inférieur** à la moyenne, et plus le nombre est grand, plus le terme est asymétrique (c'est-à-dire que cela se produit beaucoup dans un document mais  guère dans le corpus). Les **chiffres négatifs**, quant à eux, indiquent que ce terme a tendance à être **supérieur** à la moyenne.
+Cette mesure nous donne une idée de la distribution de probabilité d'une variable sans avoir à en faire la représentation graphique. Elle est calculée en observant les écarts de fréquence à la moyenne, pour savoir si ceux qui se produisent à droite de la moyenne (asymétrie négative) sont plus grands que ceux de gauche (asymétrie positive). Plus le degré d'asymétrie statistique est proche de zéro, plus la distribution de ce terme est régulière (c'est-à-dire qu'elle se produit avec une moyenne très similaire dans tous les documents). Une chose pas très intuitive : si un terme a une asymétrie statistique avec des **nombres positifs**, cela signifie que ce terme est **inférieur** à la moyenne, et plus le nombre est grand, plus le terme est asymétrique (c'est-à-dire que cela se produit beaucoup dans un document mais  guère dans le corpus). Les **chiffres négatifs**, quant à eux, indiquent que ce terme a tendance à être **supérieur** à la moyenne.
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-14.png" alt="Visual description of figure image" caption="Figure 13. Asymétrie statistique." %}
 
@@ -392,14 +392,14 @@ Vous pouvez ajouter la colonne **Position** qui indique l'endroit dans le docume
 
 #### Exporter des tableaux
 
-Pour exporter les données, cliquez sur la case avec la flèche qui apparaît lorsque vous survolez le coin droit de « Contextes ». L’option ** Exporter les données actuelles** est ensuite sélectionnée.
+Pour exporter les données, cliquez sur la case avec la flèche qui apparaît lorsque vous survolez le coin droit de « Contextes ». L’option **Exporter les données actuelles** est ensuite sélectionnée.
 
 Ce qui ouvre une page ainsi constituée :
 
 {% include figure.html filename="fr-tr-analyse-voyant-tools-15.png" alt="Visual description of figure image" caption="Figure 15. Caption text to display" %}
 
 
-Sélectionnez toutes les données (Ctrl+A ou Ctrl+E) ; copiez-les (Ctrl+C) et collez-les dans une feuille de calcul (Ctrl+V). Si cela ne fonctionne pas, enregistrez les données comme dans un simple éditeur de texte comme .txt (n’oubliez pas l’encodage UTF-8) et ensuite dans votre feuille de calcul importez les données. Voir la méthode pour [Libre Office](https://help.libreoffice.org/latest/fr/text/shared/guide/data_dbase2office.html), pour [Excel](https://support.microsoft.com/fr-fr/excel/get-started/import-or-export-text-txt-or-csv-files).
+Sélectionnez toutes les données (Ctrl+A ou Ctrl+E) ; copiez-les (Ctrl+C) et collez-les dans une feuille de calcul (Ctrl+V). Si cela ne fonctionne pas, enregistrez les données comme dans un simple éditeur de texte comme .txt (n’oubliez pas l’encodage UTF-8) et ensuite importez ces données dans votre feuille de calcul. Voir la méthode pour [Libre Office](https://help.libreoffice.org/latest/fr/text/shared/guide/data_dbase2office.html), pour [Excel](https://support.microsoft.com/fr-fr/excel/get-started/import-or-export-text-txt-or-csv-files).
 
 
 ## Activités : réponses
@@ -433,7 +433,7 @@ On peut aussi observer que, parmi les dix premiers discours qui utilisent les ph
 **Activité 5 :**
 
 1.  `l'esclavage (843) ; mémoire (472) ; france (454) ; république (382) ; aujourd'hui (306)`
-2.  Ces mots sont significatifs dans la mesure où ils représentent la thématique principale des discours qui est « l'esclavage » (843 occurrences) ; « mémoire » (472 occurrences) renvoie à l'esclavage historique, colonial, principalement pratiqué par la France (mot qui apparaît en troisième position, 454 occurrences) dans l'espace caraïbe et dans l'océan Indien ; « république » (382 occurrences) est le régime sous lequel l'esclavage a été aboli pour la première fois (1794), puis rétabli sous le consulat de Napoléon Bonaparte (1802) et enfin définitivement aboli sous la seconde république (1848) ; « aujourd'hui » (306 occurrences) signale le moment d'où parlent les 38 personnes ayant prononcé les 94 discours et peut aussi renvoyer à l'esclavage contemporain, illégal, qui sévit dans de nombreux pays et qui est parfois évoqué dans ces discours.
+2.  Ces mots sont significatifs dans la mesure où ils représentent la thématique principale des discours qui est « l'esclavage » (843 occurrences) ; « mémoire » (472 occurrences) renvoie à l'esclavage historique, colonial, principalement pratiqué par la France (mot qui apparaît en troisième position, 454 occurrences) dans l'espace caraïbe et dans l'océan Indien ; « république » (382 occurrences) est le régime sous lequel l'esclavage a été aboli pour la première fois (1794), puis rétabli sous le consulat de Napoléon Bonaparte (1802) et enfin définitivement aboli sous la Seconde République (1848) ; « aujourd'hui » (306 occurrences) signale le moment d'où parlent les 38 personnes ayant prononcé les 94 discours et peut aussi renvoyer à l'esclavage contemporain, illégal, qui sévit dans de nombreux pays et qui est parfois évoqué dans ces discours.
 
 **Activité 6 :**
 

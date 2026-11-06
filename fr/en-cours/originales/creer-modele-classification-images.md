@@ -97,9 +97,13 @@ Pour vérifier que l'installation s'est déroulée correctement, nous allons uti
 yolo classify predict model=yolo26n-cls.pt source='https://ultralytics.com/images/bus.jpg'
 ```
 
-Le modèle YOLO attribue des scores de probabilité pour chaque catégorie possible. Par exemple, pour l’image du [bus](https://ultralytics.com/images/bus.jpg), le modèle retourne les informations suivantes :
+Le modèle YOLO attribue des scores de probabilité pour chaque catégorie possible. 
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-01.png" alt="Sortie dans une console de la commande de test proposée pour la bibliothèque YOLO avec l'analyse d'une photo comprenant un bus." caption="Figure 1. Test de la bibliothèque YOLO" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-11.jpg" alt="Image de test." caption="Figure 1. Image de test" %}
+
+Par exemple, pour l’image du [bus](https://ultralytics.com/images/bus.jpg), le modèle retourne les informations suivantes :
+
+{% include figure.html filename="fr-or-creer-modele-classification-images-01.png" alt="Sortie dans une console de la commande de test proposée pour la bibliothèque YOLO avec l'analyse d'une photo comprenant un bus." caption="Figure 2. Test de la bibliothèque YOLO" %}
 
 0.57 pour la catégorie mini-bus
 
@@ -165,7 +169,7 @@ LIMIT 1000
 ```
 Exemple d'exécution de la requête :
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-02.png" alt="Requête en SPARQL exécutée sur l'interface Web de Wikidata permettant d'interroger les données de la base Joconde présente sur Wikidata" caption="Figure 2. Requête Wikidata sur la base de données Joconde" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-02.png" alt="Requête en SPARQL exécutée sur l'interface Web de Wikidata permettant d'interroger les données de la base Joconde présente sur Wikidata" caption="Figure 3. Requête Wikidata sur la base de données Joconde" %}
 
 #### 2.2.2 Constitution des données d’apprentissage pour la catégorie Dessin
 
@@ -278,20 +282,20 @@ Explications des options :
 
 Un exemple des tableaux téléchargés
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-03.png" alt="Une capture d'écran de quelques miniatures des tableaux téléchargés présents dans le dossier" caption="Figure 3. Un exemple des tableaux téléchargés" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-03.png" alt="Une capture d'écran de quelques miniatures des tableaux téléchargés présents dans le dossier" caption="Figure 4. Un exemple des tableaux téléchargés" %}
 
 Un exemple des dessins téléchargés
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-04.png" alt="Une capture d'écran de quelques miniatures des dessins téléchargés présents dans le dossier" caption="Figure 4. Un exemple des dessins téléchargés" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-04.png" alt="Une capture d'écran de quelques miniatures des dessins téléchargés présents dans le dossier" caption="Figure 5. Un exemple des dessins téléchargés" %}
 
 
 Un exemple des photos téléchargées
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-05.png" alt="Une capture d'écran de quelques miniatures des photos téléchargées présentes dans le dossier" caption="Figure 5. Un exemple des photos téléchargés" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-05.png" alt="Une capture d'écran de quelques miniatures des photos téléchargées présentes dans le dossier" caption="Figure 6. Un exemple des photos téléchargés" %}
 
 Un exemple des cartes géographiques téléchargées
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-06.png" alt="Une capture d'écran de quelques miniatures des cartes téléchargées présentes dans le dossier" caption="Figure 6. Un exemple des cartes téléchargées" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-06.png" alt="Une capture d'écran de quelques miniatures des cartes téléchargées présentes dans le dossier" caption="Figure 7. Un exemple des cartes téléchargées" %}
 
 
 #### 2.3.3 Organisation des données
@@ -416,7 +420,7 @@ Dans notre cas, la matrice de confusion ne présente aucune erreur de classifica
 
 L’entraînement, effectué sur une carte graphique (NVIDIA RTX 2060 SUPER, 8 Go de VRAM), a requis 108 époques et 1,2 heures de calcul.
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-07.png" alt="Capture d'écran de la sortie console de la fin de l'entraînement du modèle" caption="Figure 7. Fin de l'entraînement du modèle" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-07.png" alt="Capture d'écran de la sortie console de la fin de l'entraînement du modèle" caption="Figure 8. Fin de l'entraînement du modèle" %}
 
 Le meilleur modèle est le fichier runs/classify/train7/weights/best.pt.
 
@@ -432,7 +436,7 @@ yolo classify predict \
 
 Réponse :
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-08.png" alt="Capture d'écran de la sortie console du test du modèle sur une carte" caption="Figure 8. Test du modèle" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-08.png" alt="Capture d'écran de la sortie console du test du modèle sur une carte" caption="Figure 9. Test du modèle" %}
 
 **Interprétation des résultats**
 
@@ -554,11 +558,11 @@ Le fichier JSON généré contient pour chaque image :
 
 Voici les résultats avec un score de confiance de 1,0 pour la catégorie Tableau :
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="Capture d'écran des miniatures de quelques images classées comme Tableau avec un score égal à 1" caption="Figure 9. Les résultats pour la catégorie Tableau" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="Capture d'écran des miniatures de quelques images classées comme Tableau avec un score égal à 1" caption="Figure 10. Les résultats pour la catégorie Tableau" %}
 
 Voici les résultats avec un score de confiance de 1,0 pour la catégorie Carte géographique :
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="Capture d'écran des miniatures de quelques images classées comme Carte avec un score égal à 1" caption="Figure 10. Les résultats pour la catégorie Carte" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="Capture d'écran des miniatures de quelques images classées comme Carte avec un score égal à 1" caption="Figure 11. Les résultats pour la catégorie Carte" %}
 
 Les résultats contiennent également des images mal classées. Elles ont un score de confiance élevé malgré une classification incorrecte. Ces images permettent d'identifier les cas difficiles et peuvent dans un deuxième temps servir à la constitution d'une nouvelle version des données d'apprentissage.
 

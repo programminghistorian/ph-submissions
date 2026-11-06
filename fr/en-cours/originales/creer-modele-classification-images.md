@@ -81,7 +81,7 @@ source bin/activate .
 #### Installation des bibliothèques nécessaires au projet :
 
 ```python
-pip install ultralytics==8.4.6 splitfolders==0.6.1
+pip install ultralytics==8.4.6 split-folders==0.6.1
 ```
 La bibliothèque ultralytics est nécessaire à la création du modèle et la bibliothèque splitfolders à la création des jeux de données.
 

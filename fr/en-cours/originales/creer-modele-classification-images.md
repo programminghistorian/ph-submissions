@@ -215,7 +215,7 @@ LIMIT 1000
 
 #### 2.2.4 Constitution des données d’apprentissage pour la catégorie Carte géographique
 
-La catégorie Carte géographique est plus difficile à constituer, car Wikidata référence relativement peu de cartes géographiques. Pour pallier ce manque, nous utiliserons l’ensemble des cartes géographiques référencées dans Wikidata, puis nous effectuerons une sélection manuelle afin de constituer un corpus divers et représentatif.
+Pour constituer cette catégorie, nous utiliserons l’ensemble des cartes géographiques référencées dans Wikidata.
 
 
 **Requête SPARQL pour extraire l'ensemble des cartes géographiques**
@@ -227,7 +227,7 @@ SELECT ?image WHERE {
     wdt:P18 ?image. # Récupère l'URL de l'image associée
  FILTER regex(STR(?image), "\\.jpg$")
 }
-LIMIT 1000
+LIMIT 10000
 ```
 
 ### 2.3 Téléchargement des images depuis Wikimedia Commons

@@ -250,9 +250,9 @@ Pour chaque catégorie, nous sélectionnons aléatoirement 500 images parmi les 
 shuf -n 500 query_dessin.csv > dessin_final.csv
 shuf -n 500 query_tableau.csv > tableau_final.csv
 shuf -n 500 query_photo.csv > photo_final.csv
-```
-Il existe peu de cartes enregistrées dans la base Wikidata. Notre corpus doit contenir un nombre équivalent de chaque élément. Il est donc nécessaire de sélectionner et de télécharger des cartes diverses et de compléter le fichier query_carte.csv avec ces nouveaux éléments.
+shuf -n 500 query_carte.csv > carte_final.csv
 
+```
 
 #### 2.3.2 Téléchargement respectueux des règles de Wikimedia
 

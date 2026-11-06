@@ -264,10 +264,10 @@ Pour télécharger les images, nous devons respecter la politique d’utilisatio
 Nous utiliserons la commande wget avec des paramètres adaptés pour respecter ces contraintes :
 
 ```bash
-wget -i dessin_final.csv -P Dessin/ -nc --limit-rate=1M --user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -w 15
-wget -i tableau_final.csv -P Tableau/ -nc --limit-rate=1M --user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -w 15
-wget -i photo_final.csv -P Photo/ -nc --limit-rate=1M --user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -w 15
-wget -i query_carte.csv -P Carte/ -nc --limit-rate=1M --user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -w 15
+wget -i dessin_final.csv -P Dessin/ -nc --limit-rate=1M --user-agent="programminghistorianBot/0.0 (https://programminghistorian.org/) generic-library/0.0" -w 1
+wget -i tableau_final.csv -P Tableau/ -nc --limit-rate=1M --user-agent="programminghistorianBot/0.0 (https://programminghistorian.org/) generic-library/0.0" -w 1
+wget -i photo_final.csv -P Photo/ -nc --limit-rate=1M --user-agent="programminghistorianBot/0.0 (https://programminghistorian.org/) generic-library/0.0" -w 1
+wget -i query_carte.csv -P Carte/ -nc --limit-rate=1M --user-agent="programminghistorianBot/0.0 (https://programminghistorian.org/) generic-library/0.0" -w 1
 ```
 
 Explications des options :
@@ -276,8 +276,8 @@ Explications des options :
 - -P Dossier/ : Enregistre les images dans un dossier dédié (ex : Dessin/, Tableau/).
 - -nc : Évite de retélécharger les fichiers déjà présents (no-clobber).
 - --limit-rate=1M : Limite la bande passante à 1 Mo/s.
-- -w 15 : Attend 15 secondes entre chaque téléchargement.
-- --user-agent : Simule un navigateur web pour éviter d’être bloqué par les serveurs.
+- -w 1 : Attend 1 secondes entre chaque téléchargement.
+- --user-agent : Champ permettant de s'identifier auprès des serveurs de la Fondation Wikimedia.
 
 
 Un exemple des tableaux téléchargés

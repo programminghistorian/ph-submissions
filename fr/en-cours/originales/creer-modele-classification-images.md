@@ -232,7 +232,7 @@ LIMIT 1000
 
 ### 2.3 Téléchargement des images depuis Wikimedia Commons
 
-À l’issue des différentes requêtes SPARQL, nous disposons de quatre fichiers CSV contenant les liens vers les images :
+À l’issue des différentes requêtes SPARQL, nous avons téléchargé le résultat des requêtes sous la forme de quatre fichiers CSV contenant les liens vers les images :
 
 - query_dessin.csv (Dessins)
 

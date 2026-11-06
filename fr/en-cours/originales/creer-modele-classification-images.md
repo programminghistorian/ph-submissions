@@ -247,10 +247,10 @@ LIMIT 10000
 Pour chaque catégorie, nous sélectionnons aléatoirement 500 images parmi les résultats issus des requêtes SPARQL grâce à la commande shuf.
 
 ```bash
-shuf -n 500 query_dessin.csv > dessin_final.csv
-shuf -n 500 query_tableau.csv > tableau_final.csv
-shuf -n 500 query_photo.csv > photo_final.csv
-shuf -n 500 query_carte.csv > carte_final.csv
+tail -n +2 query_dessin.csv | shuf -n 500 > dessin_final.csv
+tail -n +2 query_tableau.csv | shuf -n 500 > tableau_final.csv
+tail -n +2 query_photo.csv | shuf -n 500 > photo_final.csv
+tail -n +2 query_carte.csv | shuf -n 500 > carte_final.csv
 
 ```
 

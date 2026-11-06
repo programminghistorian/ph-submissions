@@ -428,6 +428,8 @@ Le meilleur modèle est le fichier runs/classify/train7/weights/best.pt.
 
 Une fois l’entraînement terminé, nous testons les performances du modèle sur une carte géographique représentative : une [carte de l'Europe](https://magrit.cnrs.fr/example_map_europe_1.png).
 
+{% include figure.html filename="fr-or-creer-modele-classification-images-12.jpg" alt="Image de test." caption="Figure 9. Image de test" %}
+
 ```bash
 yolo classify predict \
     model=runs/classify/train7/weights/best.pt \
@@ -436,7 +438,7 @@ yolo classify predict \
 
 Réponse :
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-08.png" alt="Capture d'écran de la sortie console du test du modèle sur une carte" caption="Figure 9. Test du modèle" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-08.png" alt="Capture d'écran de la sortie console du test du modèle sur une carte" caption="Figure 10. Test du modèle" %}
 
 **Interprétation des résultats**
 
@@ -558,11 +560,11 @@ Le fichier JSON généré contient pour chaque image :
 
 Voici les résultats avec un score de confiance de 1,0 pour la catégorie Tableau :
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="Capture d'écran des miniatures de quelques images classées comme Tableau avec un score égal à 1" caption="Figure 10. Les résultats pour la catégorie Tableau" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="Capture d'écran des miniatures de quelques images classées comme Tableau avec un score égal à 1" caption="Figure 11. Les résultats pour la catégorie Tableau" %}
 
 Voici les résultats avec un score de confiance de 1,0 pour la catégorie Carte géographique :
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="Capture d'écran des miniatures de quelques images classées comme Carte avec un score égal à 1" caption="Figure 11. Les résultats pour la catégorie Carte" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="Capture d'écran des miniatures de quelques images classées comme Carte avec un score égal à 1" caption="Figure 12. Les résultats pour la catégorie Carte" %}
 
 Les résultats contiennent également des images mal classées. Elles ont un score de confiance élevé malgré une classification incorrecte. Ces images permettent d'identifier les cas difficiles et peuvent dans un deuxième temps servir à la constitution d'une nouvelle version des données d'apprentissage.
 

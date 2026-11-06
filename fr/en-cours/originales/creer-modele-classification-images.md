@@ -353,11 +353,10 @@ Le dossier **test** et ses sous-dossiers contiennent les images utilisées pour 
 
 ### 3.2 Construction du dataset :
 
-Pour automatiser la répartition aléatoire des images entre les dossiers d'entraînement (train/), de validation (val/) et de test (test/), nous allons utiliser le script Python suivant :
+Pour automatiser la répartition aléatoire des images entre les dossiers d'entraînement (train/), de validation (val/) et de test (test/), nous allons utiliser la commande suivante :
 
-```python
-import splitfolders
-splitfolders.ratio("./Data", output="./Yolo", seed=42, ratio=(0.8, 0.1, 0.1))
+```bash
+splitfolders --output Yolo --seed 42 --ratio .8 .1 .1 -- Data
 ```
 
 

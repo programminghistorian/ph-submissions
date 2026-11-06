@@ -264,10 +264,11 @@ Pour télécharger les images, nous devons respecter la politique d’utilisatio
 Nous utiliserons la commande wget avec des paramètres adaptés pour respecter ces contraintes :
 
 ```bash
-wget -i dessin_final.csv -P Dessin/ -nc --limit-rate=1M --user-agent="programminghistorianBot/0.0 (https://programminghistorian.org/) generic-library/0.0" -w 1
-wget -i tableau_final.csv -P Tableau/ -nc --limit-rate=1M --user-agent="programminghistorianBot/0.0 (https://programminghistorian.org/) generic-library/0.0" -w 1
-wget -i photo_final.csv -P Photo/ -nc --limit-rate=1M --user-agent="programminghistorianBot/0.0 (https://programminghistorian.org/) generic-library/0.0" -w 1
-wget -i query_carte.csv -P Carte/ -nc --limit-rate=1M --user-agent="programminghistorianBot/0.0 (https://programminghistorian.org/) generic-library/0.0" -w 1
+mkdir -p Data/Dessin; mkdir -p Data/Tableau; mkdir -p Data/Photo; mkdir -p Data/Carte
+wget -i dessin_final.csv -P Data/Dessin/ -nc --limit-rate=1M --user-agent="programminghistorianBot/0.0 (https://programminghistorian.org/) generic-library/0.0" -w 1
+wget -i tableau_final.csv -P Data/Tableau/ -nc --limit-rate=1M --user-agent="programminghistorianBot/0.0 (https://programminghistorian.org/) generic-library/0.0" -w 1
+wget -i photo_final.csv -P Data/Photo/ -nc --limit-rate=1M --user-agent="programminghistorianBot/0.0 (https://programminghistorian.org/) generic-library/0.0" -w 1
+wget -i query_carte.csv -P Data/Carte/ -nc --limit-rate=1M --user-agent="programminghistorianBot/0.0 (https://programminghistorian.org/) generic-library/0.0" -w 1
 ```
 
 Explications des options :

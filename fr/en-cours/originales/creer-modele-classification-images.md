@@ -43,7 +43,7 @@ Pour suivre ce tutoriel, il est recommandé de disposer d’une carte graphique 
 
 ## 1 Création du modèle de classification
 
-L’objectif est de développer un modèle capable de classifier automatiquement les images. Pour cela, nous avons choisi de nous appuyer sur un modèle de classification de la famille **YOLO**, proposé par **Ultralytics**, plutôt que de construire et d’entraîner un réseau de neurones à partir de zéro.
+L’objectif est de développer un modèle capable de classifier automatiquement les images. Pour cela, nous avons choisi de nous appuyer sur un modèle de classification de la famille **YOLO**, proposé par **Ultralytics**, plutôt que de construire et d’entraîner un réseau de neurones à partir de zéro. Ces modèles de classification sont pré-entraînés sur le corpus [ImageNet](https://www.image-net.org/index.php);  corpus d'images annotées destinée à la recherche en vision par ordinateur.
 
 Le modèle utilisé, `yolo26n-cls.pt`, est un modèle pré-entraîné à **poids ouverts (*open weights*)** destiné à la classification d’images : les paramètres appris lors de son entraînement sont accessibles et peuvent être réutilisés pour spécialiser le modèle. 
 
@@ -86,8 +86,6 @@ pip install ultralytics==8.4.6 split-folders==0.6.1
 La bibliothèque ultralytics est nécessaire à la création du modèle et la bibliothèque splitfolders à la création des jeux de données.
 
 ### 1.2 Validation de l'installation et test du modèle par défaut
-
-Les modèles de classification sont pré-entraînés sur le corpus [ImageNet](https://www.image-net.org/index.php).
 
 Pour vérifier que l'installation s'est déroulée correctement, nous allons utiliser le modèle de classification par défaut. Ce modèle peut reconnaître une large variété de catégories d'images.
 

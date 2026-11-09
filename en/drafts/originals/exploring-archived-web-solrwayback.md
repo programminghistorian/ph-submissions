@@ -13,8 +13,8 @@ editors:
 - Caio Mello
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/696
 difficulty: 
-activity: 
-topics: 
+activity: presenting
+topics: web-archiving
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
@@ -40,11 +40,11 @@ This lesson requires at least 4GB of RAM and approximately 2GB of free disk spac
 
 The lesson also requires a valid Java installation of at least version 11. Java 17 is preferred. Mac users can install Java 17 using their preferred method; [Homebrew](https://formulae.brew.sh/formula/openjdk@17) is recommended, as it provides a simple way of installing Java on macOS. Windows users, please follow the installation guide provided by [Oracle](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html). The SolrWayback bundle used in this lesson does not run on Java versions older than 11.
 
-The bundle also requires `JAVA_HOME`, an environment variable that tells applications where Java is installed, to be set correctly. On most Mac installations this happens automatically, while Windows users need to set it manually, which can be done by following this [guide](https://www.geeksforgeeks.org/java/setting-environment-java/).
+The bundle also requires `JAVA_HOME`, an environment variable that tells applications where Java is installed, to be set correctly. On most Mac installations this happens automatically, while Windows users need to set it manually, which can be done by following this [guide](https://perma.cc/EY27-4LJU).
 
 Administrative access is required to run the startup commands on Windows.
 
-Finally, while beginner-friendly guidance will be provided, a basic familiarity with the command line will be helpful to follow this lesson. You can refer to the Programming Historian lessons on the [Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash) for Mac and Linux users and [PowerShell](https://programminghistorian.org/en/lessons/intro-to-powershell) for Windows users.
+Finally, while beginner-friendly guidance will be provided, a basic familiarity with the command line will be helpful to follow this lesson. You can refer to the Programming Historian lessons on the [Bash Command Line](/en/lessons/intro-to-bash) for Mac and Linux users and [PowerShell](/en/lessons/intro-to-powershell) for Windows users.
 
 ### Lesson Structure
 
@@ -67,9 +67,9 @@ The World Wide Web has existed for more than 30 years, and during this period it
 
 The live web, however, is ephemeral, as web content is continually changed or removed, meaning that earlier versions are often no longer available. Much of the material that has appeared on the web is preserved by web archiving institutions. The archived web is an exceptionally rich primary source for investigating histories of the 1990s and 2000s, but historians have been reluctant to engage with this material.[^17] This lesson will introduce you to working with material from the archived web on your personal computer.
 
-When institutions such as the Internet Archive (IA), the Royal Danish Library (RDL) or the Bibliothèque nationale de France (BnF) archive the internet, they store the data in [WARC files](https://en.wikipedia.org/wiki/WARC_(file_format)). WARC files can be daunting to work with if you are unfamiliar with them, due to their technical nature and archival structure.[^1] Their primary objective is to ensure that the archived web can be saved for posterity and therefore prioritise effective long-term preservation above usability. This lesson teaches a method to unlock the potential of WARC files as a source for research. To do this, the lesson introduces the open-source software SolrWayback.
+When institutions such as the Internet Archive (IA), the Royal Danish Library (RDL) or the Bibliothèque nationale de France (BnF) archive the internet, they store the data in [WARC files](https://perma.cc/SJ9Y-VSWP). WARC files can be daunting to work with if you are unfamiliar with them, due to their technical nature and archival structure.[^1] Their primary objective is to ensure that the archived web can be saved for posterity and therefore prioritise effective long-term preservation above usability. This lesson teaches a method to unlock the potential of WARC files as a source for research. To do this, the lesson introduces the open-source software SolrWayback.
 
-<a href='https://doi.org/10.5281/zenodo.18314399'>SolrWayback</a> is an open-source search and discovery tool developed primarily by the Royal Danish Library and designed to make archived web content searchable and viewable in a single solution. Other tools for playback do exist, such as [pywb](https://github.com/webrecorder/pywb). However, no other tool currently provides the search and discovery possibilities that SolrWayback does. Through this software, you can search for individual words and phrases across your collection. You can also use it to identify the parts of a collection most relevant to your research. The software provides multiple ways to export subsets of the data for further analysis.[^2]
+[SolrWayback](https://doi.org/10.5281/zenodo.18314399) is an open-source search and discovery tool developed primarily by the Royal Danish Library and designed to make archived web content searchable and viewable in a single solution. Other tools for playback do exist, such as [pywb](https://perma.cc/3KW9-9YFX). However, no other tool currently provides the search and discovery possibilities that SolrWayback does. Through this software, you can search for individual words and phrases across your collection. You can also use it to identify the parts of a collection most relevant to your research. The software provides multiple ways to export subsets of the data for further analysis.[^2]
 
 ## Software Download
 
@@ -109,7 +109,7 @@ There are also commands for closing both parts of the system: `shutdown.bat` and
 
 Now you have SolrWayback running. To verify that it runs, you can access the application in your web browser by entering the URL: `http://localhost:8080/solrwayback/`. When accessing the application by URL, it is important to remember to type in the full address. Here you should see the front page of the application, which looks like this:
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-01.png" alt="Screenshot of the SolrWayback front page showing the search bar, toggle buttons, and empty results area" caption="Figure 1: SolrWayback front page" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-01.png" alt="Screenshot of the SolrWayback front page showing the search bar, toggle buttons, and empty results area" caption="Figure 1. SolrWayback front page" %}
 
 You have now started the application successfully and are ready to acquire the WARC files used in this lesson from the End of Term Web Archive and make them searchable in the system.
 
@@ -119,6 +119,8 @@ During this lesson, you will work with WARC files from the End of Term Web Archi
 
 The collection preserves U.S. government websites at the end of presidential administrations.[^18] The EOTWA has done this systematically since 2008, with its collections growing exponentially between elections.
 
+<div class="table-wrapper" markdown="block">
+
 | Dataset                | Compressed Size of all WARCs |
 | ---------------------- | ---------------------------- |
 | EOT-2004               | 6.42 TB
@@ -127,6 +129,9 @@ The collection preserves U.S. government websites at the end of presidential adm
 | EOT-2016               | 284 TB                       |
 | EOT-2020               | 266.04 TB                    |
 | EOT-2024               | 2.29 PB                      |
+
+</div>
+
 
 Extracting WARC files from this archive is challenging because the documentation is highly technical. In this lesson, you will download six WARC files from the EOT-2008 collection to use as your dataset.
 
@@ -144,10 +149,10 @@ For now, save these files in their own directory or leave them in your Downloads
 ## Indexing
 
 <div class="alert alert-warning">
- Before you start the indexing process, please make sure that you are using a compatible Java version. Java 17 is preferred, but versions 21 and 23 also work. This can be checked by executing the command <code>java -version</code> in your terminal.
+Before you start the indexing process, please make sure that you are using a compatible Java version. Java 17 is preferred, but versions 21 and 23 also work. This can be checked by executing the command <code>java -version</code> in your terminal.
 </div>
 
-SolrWayback uses a search engine named [Solr](https://en.wikipedia.org/wiki/Apache_Solr). To make your WARC files available for querying in SolrWayback, you need to index the files. This process is dependent on your operating system, just like the start-up above. 
+SolrWayback uses a search engine named [Solr](https://perma.cc/D27F-A8EA). To make your WARC files available for querying in SolrWayback, you need to index the files. This process is dependent on your operating system, just like the start-up above. 
 
 The first thing you need to do is move the WARC files you downloaded previously to their permanent location. For this lesson, please move them into the directory `indexing/warcs1` inside the `solrwayback_package_5.5.0` directory. Once indexed, WARC files cannot be moved without breaking playback. If you move them, you will need to rebuild the index. After moving the files to their intended location, run the following commands in your command-line interface (CLI), such as Terminal or PowerShell.
 
@@ -162,15 +167,15 @@ To index your WARC files from the directory `solrwayback_package_5.5.0/indexing/
 To index your WARC files from the directory `solrwayback_package_5.5.0/indexing/warcs1` move to the directory `indexing` by running the following command in your terminal: `cd ./indexing`, then run the following bat-file in your terminal: `batch_warcs1_folder.bat`. This will start the indexing process.
 
 <div class="alert alert-warning">
-  On Windows it is very important that you follow the directions above explicitly and move into the directory before you run the <code>.bat</code>-file.
+On Windows it is very important that you follow the directions above explicitly and move into the directory before you run the <code>.bat</code>-file.
 </div>
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-02.png" alt="Terminal window on a Mac displaying scrolling output produced during WARC file indexing" caption="Figure 2: Terminal output when indexing on a Mac" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-02.png" alt="Terminal window on a Mac displaying scrolling output produced during WARC file indexing" caption="Figure 2. Terminal output when indexing on a Mac" %}
 
 This indexes all documents in the `warcs1` folder. Your terminal will display output showing indexing progress. This is expected.
 
 <div class="alert alert-warning">
-  Indexing is the heaviest part of setting up the application and can take up to 10 to 15 minutes on consumer hardware. When the indexing has finished, your terminal will return to an interactive state, represented by a prompt such as <code>$</code>, and now you should be able to see the indexed documents in the SolrWayback web interface.
+Indexing is the heaviest part of setting up the application and can take up to 10 to 15 minutes on consumer hardware. When the indexing has finished, your terminal will return to an interactive state, represented by a prompt such as <code>$</code>, and now you should be able to see the indexed documents in the SolrWayback web interface.
 </div>
 
 To confirm that the documents have been indexed, you can go to the application at the URL: `http://localhost:8080/solrwayback/` and type `*:*` in the search box. This is a wildcard query that fetches all documents available in the application. This should return 6,025 results.
@@ -187,19 +192,21 @@ This webpage was harvested on 14 May 2009. When you first view the Bilirakis web
 
 This fragmentation of source material also means that you cannot expect sources to be shown in a complete state in the lesson collection that you are working with here. Parts of the resources that are used to construct the webpage simply aren't available in the few archival sources that you have in hand through this lesson. The replay would almost certainly be more complete with a larger portion of the EOTWA collection.  
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-03.png" alt="Archived playback of the Bilirakis congressional website from 2009 rendered with missing images and broken layout due to incomplete archiving" caption="Figure 3: Playback of Bilirakis website from 2009" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-03.png" alt="Archived playback of the Bilirakis congressional website from 2009 rendered with missing images and broken layout due to incomplete archiving" caption="Figure 3. Playback of Bilirakis website from 2009" %}
 
 To get an overview of how an individual site has been archived, SolrWayback provides a small but useful toolbar when an archived site is shown. By opening the toolbar in the top left corner and then clicking the button `View page resources`, you can get information on how the individual resources from the currently shown page have been archived. This explains why the replayed site shows mostly links and text. 
 
 The resource overview below shows that sixteen resources that were part of the live webpage are missing from your archived version. If you were working with the complete EOTWA collection, the replay would likely be more complete, as the missing resources are most likely stored in other WARC files available from the End of Term Web Archive.
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-04.png" alt="SolrWayback page resource overview panel listing sixteen resources from the Bilirakis website that were not captured in the archive" caption="Figure 4: Missing resources from Bilirakis website" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-04.png" alt="SolrWayback page resource overview panel listing sixteen resources from the Bilirakis website that were not captured in the archive" caption="Figure 4. Missing resources from Bilirakis website" %}
 
 ### Querying
 
 The search field in SolrWayback supports a multitude of complex search functionalities. They can, however, be hard to navigate when using the software for the first time. The search box supports the standard query types found in any information retrieval system or library database. 
 
-This includes traditional use of [Boolean operators](https://en.wikipedia.org/wiki/Boolean_algebra) such as AND, OR, and NOT. They must be entered in uppercase or else the search technology understands them as search terms instead of Boolean operators. An overview of advanced search terms can be found in the table, drawing on examples relevant for the research question related to immigration in this lesson: 
+This includes traditional use of [Boolean operators](https://perma.cc/LC8B-CLPH) such as AND, OR, and NOT. They must be entered in uppercase or else the search technology understands them as search terms instead of Boolean operators. An overview of advanced search terms can be found in the table, drawing on examples relevant for the research question related to immigration in this lesson: 
+
+<div class="table-wrapper" markdown="block">
 
 | Feature | Example Query | Result Count | Notes |
 |---------|---------------|--------------|-------|
@@ -210,10 +217,11 @@ This includes traditional use of [Boolean operators](https://en.wikipedia.org/wi
 | Wildcard `?` | `Analy?e` | 112 | Replaces a single character; captures American/British spellings (analyse/analyze). |
 | Phrase search (quotes) | `"mexican immigrant"` | N/A | Requires the words to appear adjacent; differs from `mexican AND immigrant` (which only requires co‑occurrence in a document). |
 
+</div>
 
 The searching strategies above are often available in all sorts of information retrieval systems and they provide a basis for constructing complex queries. SolrWayback also provides searching capabilities that are tailored towards the specific content from archived web material. 
 
-The <a href='https://doi.org/10.5281/zenodo.18183416'>warc-indexer</a> parsed and analysed content and metadata for each document during the indexing step above. In practice, this means much of the metadata is searchable in specific *fields*. A specific field can contain one type of content and only that type. 
+The [warc-indexer](https://doi.org/10.5281/zenodo.18183416) parsed and analysed content and metadata for each document during the indexing step above. In practice, this means much of the metadata is searchable in specific *fields*. A specific field can contain one type of content and only that type. 
 
 For instance, all documents have the field `content_length` which contains a number representing how much content is available in the given document. A long text document would have a high number in this field, whereas a short status update or an almost empty website would have a much lower number in this field. 
 
@@ -223,7 +231,7 @@ Luckily SolrWayback supports *range queries*. This is a type of query that speci
 
 The section above uses the field `content_length` as the primary example of how to query with a field. SolrWayback contains multiple such fields. The quickest way to view them is to run a wildcard query (`*:*`) and then click the `View data fields` button shown below:
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-05.png" alt="Close-up of the View data fields button located below an entry in the SolrWayback search results list" caption="Figure 5: Where to find data fields" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-05.png" alt="Close-up of the View data fields button located below an entry in the SolrWayback search results list" caption="Figure 5. Where to find data fields" %}
 
 When you click this button, a list of available fields appears. Here you see fields such as `content`, `content_type`, `crawl_date`, `elements_used`, `links` and many more. Most of these fields can be used in queries just as the `content_length` above. These fields can be used in multiple ways to construct very niche searches. For now, it is enough to know where to find them for future reference.
 
@@ -237,7 +245,7 @@ The grouped search functionality in SolrWayback collapses results by URL into on
 
 The `URL Search` button provides another useful function. It is particularly helpful in a common situation: when you have a collection of material and want to find a specific webpage at a particular URL.
 
-For example, in this small collection you’re working with, you might want to find the webpage of Congresswoman Virginia Foxx and you know that her web page was archived from the following URL: http://foxx.house.gov/index.cfm?sectionid=102&sectiontree=&pageNum=51. 
+For example, in this small collection you’re working with, you might want to find the webpage of Congresswoman Virginia Foxx and you know that her web page was archived from the following URL: `http://foxx.house.gov/index.cfm?sectionid=102&sectiontree=&pageNum=51`. 
 
 If you copy this URL directly into the search field and try to search for it, no results will appear. If, however, you tick the `URL Search` button and rerun your search, you will find a result. Why is this so, you may ask? URLs often contain special characters such as '&' and '#'. When you ticked the `URL Search` box, you instructed the software to handle these characters directly as part of the URL and therefore you get a valid result in this case. 
 
@@ -249,7 +257,7 @@ Until now, the lesson has been focused on how to search through the search bar. 
 
 Run a new `*:*` query and then have a look at the resulting page. Here you get some useful information on the left of the screen. These are facets that give you an overview of content in your collection and they can tailor your search. When a facet is clicked, it will be applied to your query and only documents with that value in the faceted field will be included in the result. 
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-06.png" alt="Left-hand facet panel in SolrWayback showing filter options for content type, domain, and crawl year" caption="Figure 6: SolrWayback facets" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-06.png" alt="Left-hand facet panel in SolrWayback showing filter options for content type, domain, and crawl year" caption="Figure 6. SolrWayback facets" %}
 
 Facets can also be used to get an overview of how the material in the collection is distributed across different domains, content types, or crawl years, amongst others. One important thing to mention in relation to facets is the relationship between entries in the search bar and the application of facets.
 
@@ -279,11 +287,11 @@ In SolrWayback and other Wayback-based web archives, such as the Internet Archiv
 
 The `/web/20090514061634` part of the URL would also be present if you had accessed the source in the Internet Archive or any other web archive. The 14-digit number is a timestamp in the format YYYYMMDDHHMMSS. When you click a link in SolrWayback this date changes to the version closest in time to the page you came from. In SolrWayback harvest date information can also be read in the toolbar accessible in the top left corner of the playback view. 
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-07.png" alt="Archived webpage playback in SolrWayback with an arrow indicating the toolbar toggle icon in the top left corner" caption="Figure 7: Toolbar location" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-07.png" alt="Archived webpage playback in SolrWayback with an arrow indicating the toolbar toggle icon in the top left corner" caption="Figure 7. Toolbar location" %}
 
 The toolbar provides a human-readable version of the harvest date and a quick overview of how much material is available on the given page. The time of collection can either be extracted directly from the URL or read in the toolbar.
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-08.png" alt="Expanded SolrWayback playback toolbar showing the human-readable harvest date and a summary count of available page resources" caption="Figure 8: Toolbar content" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-08.png" alt="Expanded SolrWayback playback toolbar showing the human-readable harvest date and a summary count of available page resources" caption="Figure 8. Toolbar content" %}
 
 Remember that this timestamp changes when you click a link, because each source was collected individually. This resembles traditional library frameworks, just as the searching capabilities above did.[^8]
 
@@ -291,17 +299,17 @@ When working with vast amounts of sources, which is often the case when working 
 
 SolrWayback includes a navigation tracking feature that records your actions as you use the software. This navigation history can then be downloaded and used to support a methodological argument, provide transparency about source discovery, or keep a personal record of the sources you have already investigated.[^10] The Navigation History button is available below the search box on the front page of the application; clicking it downloads a JSON file with your history.  
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-09.png" alt="The Navigation History download button located below the search box on the SolrWayback front page" caption="Figure 9: Button for downloading navigation history" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-09.png" alt="The Navigation History download button located below the search box on the SolrWayback front page" caption="Figure 9. Button for downloading navigation history" %}
 
 ### Tools for Visualisation
 
 Collections of archived web material are often extremely large. Access to web archive collections should include tools that help researchers navigate large volumes of material.[^11] SolrWayback provides built-in tools for distant reading of archived web material. These tools can be found in the toolbox highlighted below.
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-10.png" alt="The toolbox icon button highlighted below the SolrWayback search bar" caption="Figure 10: Button for opening the toolbox" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-10.png" alt="The toolbox icon button highlighted below the SolrWayback search bar" caption="Figure 10. Button for opening the toolbox" %}
 
 The following section provides a brief overview of how these tools can be used to explore your collection with the purpose of discovering sources that can be interpreted as part of the initial research question of this lesson. To make sure you can follow along, please run a query for everything: `*:*`. Then click the toolbox icon, and the following page will appear:
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-11.png" alt="SolrWayback toolbox panel listing five tools: Wordcloud, Link Graph, Domain stats, Link graph Gephi export, and Ngram Netarchive, each with an input field" caption="Figure 11: View of the SolrWayback toolbox" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-11.png" alt="SolrWayback toolbox panel listing five tools: Wordcloud, Link Graph, Domain stats, Link graph Gephi export, and Ngram Netarchive, each with an input field" caption="Figure 11. View of the SolrWayback toolbox" %}
 
 The toolbox currently contains five different tools:
 
@@ -317,17 +325,17 @@ The `wordcloud` tool generates domain-wide wordclouds. These wordclouds can prov
 
 This generates a wordcloud of the most frequently used terms across pages from the `house.gov` domain in your collection. You could use this, for example, to explore whether words such as `immigration` appear frequently across the `house.gov` domain.
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-12.png" alt="Word cloud visualisation showing the most frequently occurring terms across the house.gov domain, with larger words indicating higher frequency" caption="Figure 12: Example wordcloud of house.gov" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-12.png" alt="Word cloud visualisation showing the most frequently occurring terms across the house.gov domain, with larger words indicating higher frequency" caption="Figure 12. Example wordcloud of house.gov" %}
 
 The next tool, the `Link Graph` tool, is central if you want to understand or investigate the linked nature of the web. Network analysis can be used for exploring how parts of the collection refer to other parts. It is not, however, as accurate as link analysis of the live web.[^12] Please click the `Link Graph` tool at the top of the toolbox and then input `house.gov` into the input field. Make sure that link direction is set to outgoing before you click generate. 
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-13.png" alt="Network graph showing outgoing links from house.gov to other domains, with nodes representing domains and edges representing hyperlinks" caption="Figure 13: Example linkgraph of house.gov" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-13.png" alt="Network graph showing outgoing links from house.gov to other domains, with nodes representing domains and edges representing hyperlinks" caption="Figure 13. Example linkgraph of house.gov" %}
 
 What you see here are the domains that are linked to from webpages on `house.gov`.You can also produce a graph of incoming links. This is often a more complex task, but SolrWayback makes it easier by using information already available in its index. To generate the graph, select the *ingoing* radio button and click *generate* again. However, for `house.gov` in your collection, this produces a meaningless graph with no edges. 
 
 If you change the domain from `house.gov` to `wikipedia.org` you can get a feel of how a graph of ingoing links looks. This link graph tool provides an accessible entrypoint to getting started with link analysis of archived web material. 
 
-For more complex link analysis, the `Link graph Gephi export` tool can export data in a format compatible with the network analysis software Gephi. For an introduction to network analysis, see <a href='https://programminghistorian.org/en/lessons/exploring-and-analyzing-network-data-with-python'>the Programming Historian lesson by Ladd et al. 2017</a>.
+For more complex link analysis, the `Link graph Gephi export` tool can export data in a format compatible with the network analysis software Gephi. For an introduction to network analysis, see [Exploring and Analyzing Network Data with Python](/en/lessons/exploring-and-analyzing-network-data-with-python) by John Ladd et al.
 
 Next in line is the `Domain stats` tool. This tool visualises statistics about a single domain at different levels of granularity. To get an understanding of how this tool works enter `house.gov` in the input box. The X-axis defaults to the years 1998 to 2027. This can be changed in the two timeframe boxes. The scale of the X-axis can also be customised down to daily intervals. 
 
@@ -335,11 +343,11 @@ When you click *generate*, a combined line chart appears. This combined chart vi
 
 The domain statistics can be used to investigate temporal changes in the archived material. Your subset from the total collection was collected on the same day in 2009 and therefore there are not enough datapoints to create a meaningful visualisation. An example of how the graph could look with more data from a different collection is shown here.
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-14.png" alt="Combined line chart from the domain stats tool showing four metrics over time: number of pages, ingoing links, average page size in characters, and size in kilobytes" caption="Figure 14: Example of visualising domain stats from a much bigger collection" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-14.png" alt="Combined line chart from the domain stats tool showing four metrics over time: number of pages, ingoing links, average page size in characters, and size in kilobytes" caption="Figure 14. Example of visualising domain stats from a much bigger collection" %}
 
 The last tool in the toolbox is the `Ngram Netarchive` tool. You can use this tool to visualise how frequently a term appears in the collection over time. Multiple terms can be shown on the same graph at once by searching for them individually. For instance, you can add terms such as `immigrant`, `immigration`, and `foreigner` to the visualisation and if you then had material from multiple years, the visualisation would represent how often the words were present in the collection. 
 
-{% include figure.html filename="en-or-exploring-archived-web-solrwayback-15.png" alt="Ngram line chart showing the frequency of the search terms immigrant, immigration, and foreigner across the collection over time" caption="Figure 15: Example of an Ngram search for the words 'immigrant', 'immigration', and 'foreigner' across your collection" %}
+{% include figure.html filename="en-or-exploring-archived-web-solrwayback-15.png" alt="Ngram line chart showing the frequency of the search terms immigrant, immigration, and foreigner across the collection over time" caption="Figure 15. Example of an Ngram search for the words 'immigrant', 'immigration', and 'foreigner' across your collection" %}
 
 This type of visualisation investigates trends in usage of different words. Collections from web archives are very strictly bound to the collecting practices of holding institutions such as the Internet Archive or the Royal Danish Library. This means that spikes in these visualisations need to be treated with care, as they could just as easily reflect changes in collecting practices rather than actual changes in the prevalence of the term.
 
@@ -357,7 +365,7 @@ SolrWayback also includes tools for the initial distant reading of archived web 
 
 
 ## Endnotes
-[^1]: Emily Maemura, ‘All WARC and No Playback: The Materialities of Data-Centered Web Archives Research’, *Big Data & Society* 10, no. 1 (2023): 20539517231163172, https://doi.org/10.1177/20539517231163172; Nick Ruest et al., ‘Creating Order from the Mess: Web Archive Derivative Datasets and Notebooks’, *Archives and Records* 43, no. 3 (2022): 316–31, https://doi.org/10.1080/23257962.2022.2100336.
+[^1]: Emily Maemura, ‘All WARC and No Playback: The Materialities of Data-Centered Web Archives Research’, *Big Data & Society* 10, no. 1 (2023): 20539517231163172, [https://doi.org/10.1177/20539517231163172](https://doi.org/10.1177/20539517231163172); Nick Ruest et al., ‘Creating Order from the Mess: Web Archive Derivative Datasets and Notebooks’, *Archives and Records* 43, no. 3 (2022): 316–31, [https://doi.org/10.1080/23257962.2022.2100336](https://doi.org/10.1080/23257962.2022.2100336).
 
 [^2]: Michael Kurzmeier, ‘Contextualizing and Unlocking Political Web Defacements for Research’, *Journal of Digital History*, no. preprint (2025).
 
@@ -365,27 +373,22 @@ SolrWayback also includes tools for the initial distant reading of archived web 
 
 [^5]: Brügger, *The Archived Web: Doing History in the Digital Age*, 22–23; Emily Maemura, ‘All WARC and No Playback: The Materialities of Data-Centered Web Archives Research’, 8.
 
-[^6]: John Berlin et al., ‘To Re-Experience the Web: A Framework for the Transformation and Replay of Archived Web Pages’, *ACM Trans. Web* 17, no. 4 (2023): 28:1–28:49, https://doi.org/10.1145/3589206.
+[^6]: John Berlin et al., ‘To Re-Experience the Web: A Framework for the Transformation and Replay of Archived Web Pages’, *ACM Trans. Web* 17, no. 4 (2023): 28:1–28:49, [https://doi.org/10.1145/3589206](https://doi.org/10.1145/3589206).
 
 [^7]: Niels Brügger, *The Archived Web: Doing History in the Digital Age*, 28–30.
 
-[^8]: Kieran Hegarty, ‘The Invention of the Archived Web: Tracing the Influence of Library Frameworks on Web Archiving Infrastructure’, *Internet Histories* 6, no. 4 (2022): 432–51, https://doi.org/10.1080/24701475.2022.2103988, 447.
+[^8]: Kieran Hegarty, ‘The Invention of the Archived Web: Tracing the Influence of Library Frameworks on Web Archiving Infrastructure’, *Internet Histories* 6, no. 4 (2022): 432–51, [https://doi.org/10.1080/24701475.2022.2103988](https://doi.org/10.1080/24701475.2022.2103988), 447.
 
-[^9]: Lara Putnam, ‘The Transnational and the Text-Searchable: Digitized Sources and the Shadows They Cast’, *The American Historical Review* (Oxford) 121, no. 2 (2016): 377–402, https://doi.org/10.1093/ahr/121.2.377; Helle Strandgaard Jensen, ‘Digital Archival Literacy for (All) Historians’, *Media History* 27, no. 2 (2021), https://doi.org/10.1080/13688804.2020.1779047.
+[^9]: Lara Putnam, ‘The Transnational and the Text-Searchable: Digitized Sources and the Shadows They Cast’, *The American Historical Review* (Oxford) 121, no. 2 (2016): 377–402, [https://doi.org/10.1093/ahr/121.2.377](https://doi.org/10.1093/ahr/121.2.377); Helle Strandgaard Jensen, ‘Digital Archival Literacy for (All) Historians’, *Media History* 27, no. 2 (2021), [https://doi.org/10.1080/13688804.2020.1779047](https://doi.org/10.1080/13688804.2020.1779047).
 
-[^10]: Victor Harbo Johnston, ‘Introducing Reproducible Navigation of a Web Archive: SolrWayback Navigation Tracker’, *Computational Humanities Research*, 13 April 2026, 1–8, https://doi.org/10.1017/chr.2026.10030.
+[^10]: Victor Harbo Johnston, ‘Introducing Reproducible Navigation of a Web Archive: SolrWayback Navigation Tracker’, *Computational Humanities Research*, 13 April 2026, 1–8, [https://doi.org/10.1017/chr.2026.10030](https://doi.org/10.1017/chr.2026.10030).
 
-[^11]: Ruest et al., ‘Creating Order from the Mess’; Helen Hockx-Yu, ‘Access and Scholarly Use of Web Archives’, *Alexandria: The Journal of National and International Library and Information Issues* 25, no. 1–2 (2014): 113–27, https://doi.org/10.7227/ALX.0023; Mark Bell et al., ‘Chapter 2: Web Archives and the Problem of Access: Prototyping a Researcher Dashboard for the UK Government Web Archive’, in *Archives, Access and Artificial Intelligence: Working with Born-Digital and Digitized Archival Collections*, ed. Lise Jaillant (Bielefeld University Press, 2022), https://www.degruyterbrill.com/document/doi/10.1515/9783839455845-003/html.
+[^11]: Ruest et al., ‘Creating Order from the Mess’; Helen Hockx-Yu, ‘Access and Scholarly Use of Web Archives’, *Alexandria: The Journal of National and International Library and Information Issues* 25, no. 1–2 (2014): 113–27, [https://doi.org/10.7227/ALX.0023](https://doi.org/10.7227/ALX.0023); Mark Bell et al., ‘Chapter 2: Web Archives and the Problem of Access: Prototyping a Researcher Dashboard for the UK Government Web Archive’, in *Archives, Access and Artificial Intelligence: Working with Born-Digital and Digitized Archival Collections*, ed. Lise Jaillant (Bielefeld University Press, 2022), [https:///doi.org/10.1515/9783839455845-003](https:///doi.org/10.1515/9783839455845-003).
 
-[^12]: Niels Brügger, ‘Historical Network Analysis of the Web’, *Social Science Computer Review* (Los Angeles, CA) 31, no. 3 (2013): 306–21, https://doi.org/10.1177/0894439312454267.
+[^12]: Niels Brügger, ‘Historical Network Analysis of the Web’, *Social Science Computer Review* (Los Angeles, CA) 31, no. 3 (2013): 306–21, [https://doi.org/10.1177/0894439312454267](https://doi.org/10.1177/0894439312454267).
 
 [^14]: Kurzmeier, ‘Contextualizing and Unlocking Political Web Defacements for Research’.
 
-[^17]: Jane Winters, ‘Breaking in to the Mainstream: Demonstrating the Value of Internet (and Web) Histories’, *Internet Histories* 1 (2017): 173–79, https://doi.org/10.1080/24701475.2017.1305713.
+[^17]: Jane Winters, ‘Breaking in to the Mainstream: Demonstrating the Value of Internet (and Web) Histories’, *Internet Histories* 1 (2017): 173–79, [https://doi.org/10.1080/24701475.2017.1305713](https://doi.org/10.1080/24701475.2017.1305713).
 
 [^18]: Tracey Seneca et al., ‘It Takes a Village to Save the Web’, *DttP: Documents to the People* 40, no. 1 (2012): 12–15.
-
-
-
-
-

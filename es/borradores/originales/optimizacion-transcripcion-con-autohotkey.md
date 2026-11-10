@@ -15,7 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/707
 difficulty: 2
 activity: analyzing
 topics: [data-manipulation, get-ready, text-encoding]
-abstract: En esta lección aprenderás a crear un script de AutoHotkey que agilice la transcripción y el marcado de documentos históricos. Definirás hotkeys y hotstrings para insertar elementos TEI, desarrollar abreviaturas y abrir tus recursos de trabajo, y crearás funciones que etiqueten el texto seleccionado o conviertan un marcado sencillo en XML-TEI. Al terminar sabrás además limitar los atajos a determinados programas con HotIf, construir una interfaz gráfica mínima para probarlos y compilar tu script como ejecutable portable.
+abstract: En esta lección aprenderás a crear un script de AutoHotkey que agilice la transcripción y el marcado de documentos históricos. Definirás hotkeys y hotstrings para insertar elementos TEI, expandir abreviaturas y abrir tus recursos de trabajo, y crearás funciones que etiqueten el texto seleccionado o conviertan un marcado sencillo en XML-TEI. Al terminar, sabrás además limitar los atajos a determinados programas con `HotIf`, construir una interfaz gráfica mínima para probarlos y compilar tu script como ejecutable portable.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
@@ -24,9 +24,9 @@ doi: XX.XXXXX/phen0000
 
 ## Introducción
 
-Esta lección[^1] se integra en una serie de recursos didácticos de _The Programming Historian_ dedicados al empleo de las recomendaciones de la Text Encoding Initiative (en adelante, TEI), basadas en XML, para la edición digital de textos. En estos se abordan cuestiones como la estructura básica de un documento o las formas más adecuadas de organizarlo para obtener mejores resultados en su posterior consulta, tratamiento y publicación. Sin embargo, hay un aspecto importante que todavía no ha sido abordado con la profundidad que merece: el proceso mismo de transcripción de un texto.
+Esta lección[^1] se integra en una serie de recursos didácticos de _Programming Historian_ dedicados al empleo de las recomendaciones de la Text Encoding Initiative (en adelante, TEI), basadas en XML, para la edición digital de textos. En estos se abordan cuestiones como la estructura básica de un documento o las formas más adecuadas de organizarlo para obtener mejores resultados en su posterior consulta, tratamiento y publicación. Sin embargo, hay un aspecto importante que todavía no ha sido abordado con la profundidad que merece: el proceso mismo de transcripción de un texto.
 
-Aunque las herramientas de reconocimiento óptico de caracteres ([OCR](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres), por sus siglas en inglés) son cada vez más eficaces, y el desarrollo de sistemas de reconocimiento de texto manuscrito ([HTR](https://es.wikipedia.org/wiki/Reconocimiento_de_escritura), por sus siglas en inglés) permite transcribir semiautomáticamente buena parte de las escrituras históricas, quienes trabajamos con documentos escritos en [letra cortesana o procesal](https://es.wikipedia.org/wiki/Escritura_espa%C3%B1ola_en_el_siglo_XV#Escritura_cortesana_del_siglo_XV) todavía no podemos confiar plenamente en estos mecanismos[^2]. De ahí que, en muchos casos, el proceso de transcripción siga siendo total o parcialmente manual.
+Aunque las herramientas de reconocimiento óptico de caracteres ([OCR](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres), por sus siglas en inglés) son cada vez más eficaces y el desarrollo de sistemas de reconocimiento de texto manuscrito ([HTR](https://es.wikipedia.org/wiki/Reconocimiento_de_escritura), por sus siglas en inglés) permite transcribir semiautomáticamente buena parte de las escrituras históricas, quienes trabajamos con documentos escritos en [letra cortesana o procesal](https://es.wikipedia.org/wiki/Escritura_espa%C3%B1ola_en_el_siglo_XV#Escritura_cortesana_del_siglo_XV) todavía no podemos confiar plenamente en estos mecanismos[^2]. De ahí que, en muchos casos, el proceso de transcripción siga siendo total o parcialmente manual.
 
 Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de transcripción manual o etiquetar un texto procedente de OCR, HTR o, en general, de una transcripción previa a la que todavía no hayas aplicado ningún marcado TEI.
 
@@ -58,7 +58,7 @@ Además de AHK, necesitarás contar con un editor de texto plano. Aunque podría
 
 El primer paso, entonces, es acceder a la página oficial de [AutoHotkey](https://www.autohotkey.com/) e instalar el programa en tu computador. Los archivos creados para AHK tendrán la extensión `.ahk`. Utilizaremos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^6].
 
-Instalado AHK, puedes abrir AutoHotkey Dash, su interfaz de inicio. Allí verás varias opciones; sin embargo, por ahora solo nos interesa crear un nuevo _script_.
+Instalado AHK, puedes abrir _AutoHotkey Dash_, su interfaz de inicio. Allí verás varias opciones; sin embargo, por ahora solo nos interesa crear un nuevo _script_.
 
 <div class="alert alert-info" markdown="1">
 Algunos antivirus pueden identificar AHK o los _scripts_ que hayas creado con esta herramienta como potencialmente peligrosos. Por ello, obtén siempre el programa desde la web oficial y comprueba el origen de cualquier _script_ de terceros antes de ejecutarlo.
@@ -74,15 +74,15 @@ Lo primero que haremos será crear una carpeta en Windows, que llamaremos `ahk_s
 
 2. Desde la carpeta `ahk_scripts`: para ello, busca la opción **Nuevo** y, después, **AutoHotkey script** o similar. A continuación, asigna un nombre al archivo y añade al comienzo la línea `#Requires AutoHotkey v2.0`.
 
-Nuestro _script_ se llamará `tph_script.ahk`. A lo largo de la lección, incorporaremos los ejemplos a este mismo archivo, salvo aquellos que puedan generar conflicto, lo cual indicaremos cuando corresponda.
+Nuestro script se llamará `tph_script.ahk`. A lo largo de la lección, incorporaremos los ejemplos a este mismo archivo, salvo aquellos que puedan generar conflicto, lo cual indicaremos cuando corresponda.
 
-Una vez indicado que el archivo debe ejecutarse con AHK 2, aprenderás dos conceptos básicos para empezar a trabajar con este lenguaje: las _hotkeys_ y las _hotstrings_.
+Una vez indicado que el archivo debe ejecutarse con AHK 2, aprenderás dos conceptos básicos para empezar a trabajar con este lenguaje: las 'hotkeys' y las 'hotstrings'.
 
 ### Hotkey
 
-Las primeras seguramente te resultarán familiares, aunque no las hayas llamado así hasta ahora. Una _hotkey_ es una combinación de teclas que permite ejecutar una acción o comando, como ocurre con las combinaciones habituales para copiar con `Ctrl + C` o pegar con `Ctrl + V`. Como ves, ¡ya utilizabas _hotkeys_ sin saberlo!
+Las primeras seguramente te resultarán familiares, aunque no las hayas llamado así hasta ahora. Una 'hotkey' es una combinación de teclas que permite ejecutar una acción o comando, como ocurre con las combinaciones habituales para copiar con _Ctrl + C_ o pegar con _Ctrl + V_. Como ves, ¡ya utilizabas 'hotkeys' sin saberlo!
 
-Antes de ver cómo configurar una _hotkey_ conviene que conozcas cómo se representan en AHK algunas teclas especiales, como `Ctrl`, `Windows`, `Alt` o `Shift`. Para ello, utilizaremos una versión modificada de la tabla para principiantes de tidbit:
+Antes de ver cómo configurar una 'hotkey' conviene que conozcas cómo se representan en AHK algunas teclas especiales, como _Ctrl_, _Windows_, _Alt_ o _Shift_. Para ello, utilizaremos una versión modificada de la tabla para principiantes de tidbit:
 
 | Tecla | Representación en AHK 2 |
 |---|---|
@@ -104,9 +104,9 @@ De igual manera, como ocurre en otros lenguajes de programación, AHK cuenta con
 De aquí en adelante usaremos `SendText`, una variante de `Send` destinada a enviar texto literal y, por ello, más adecuada en buena parte de los contextos que veremos porque evita que determinados caracteres se interpreten como teclas o pulsaciones especiales.
 </div>
 
-Asimismo, debes conocer una parte esencial de la sintaxis de AHK: los dobles dos puntos (`::`). En una _hotkey_, lo situado a la izquierda de los dobles dos puntos indica la combinación de teclas que debes pulsar. Lo situado a la derecha, o dentro del bloque delimitado por llaves (`{}`), indica la acción que se ejecutará.
+Asimismo, debes conocer una parte esencial de la sintaxis de AHK: los dobles dos puntos (`::`). En una 'hotkey', lo situado a la izquierda de los dobles dos puntos indica la combinación de teclas que debes pulsar. Lo situado a la derecha, o dentro del bloque delimitado por llaves (`{}`), indica la acción que se ejecutará.
 
-Dicho esto, creemos nuestra primera _hotkey_. Para ello, abre el archivo que acabas de crear y escribe la siguiente línea. Con `Ctrl + Alt + H`, escribiremos en la ventana activa nuestro “Hola, mundo”:
+Dicho esto, creemos nuestra primera 'hotkey'. Para ello, abre el archivo que acabas de crear y escribe la siguiente línea. Con `Ctrl + Alt + H`, escribiremos en la ventana activa nuestro “Hola, mundo”:
 ```ahk
 ^!h::SendText "Hola, mundo"
 ```
@@ -117,17 +117,17 @@ También puedes escribir la misma instrucción entre llaves, en forma de bloque:
     SendText "Hola, mundo"
 }
 ```
-Recuerda: no uses ambas formas en el mismo _script_, solo una de ellas. Guárdalo y ejecútalo como lo harías con cualquier otro archivo asociado a un programa en Windows. En caso de que la extensión `.ahk` no estuviese asociada automáticamente con AHK, deberás seleccionar AutoHotkey en el listado de opciones que te ofrecerá Windows para abrir el archivo. Después, abre cualquier campo de texto y presiona `Ctrl + Alt + H`: ¡es tu primera _hotkey_ en funcionamiento!
+Recuerda: no uses ambas formas en el mismo script, solo una de ellas. Guárdalo y ejecútalo como lo harías con cualquier otro archivo asociado a un programa en Windows. En caso de que la extensión `.ahk` no estuviese asociada automáticamente con AHK, deberás seleccionar AutoHotkey en el listado de opciones que te ofrecerá Windows para abrir el archivo. Después, abre cualquier campo de texto y presiona `Ctrl + Alt + H`: ¡es tu primera 'hotkey' en funcionamiento!
 
 A partir de este punto, utilizaremos como ejemplo guía un fragmento de texto propuesto por Nicolás Vaughan en la parte 1 de su lección _Introducción a TEI_:
 
-> Hay muchas formas de codificar un texto. Por ejemplo, podemos encerrar entre asteriscos simples los nombres propios de personas: \*Simón Bolívar\*, \*Soledad Acosta\*, etc. Y entre asteriscos dobles los de lugares: \*\*Bogotá\*\*, \*\*Framingham\*\*, etc. Podemos también usar guiones bajos para indicar los nombres de obras y de libros: \_La divina comedia\_, \_Cien años de soledad\_, etc. Estos signos sirven para etiquetar o marcar el texto que encierran, para así identificar en el texto un determinado contenido. Como es fácil de imaginar, las posibilidades de codificación son casi infinitas.
+> Hay muchas formas de codificar un texto. Por ejemplo, podemos encerrar entre asteriscos simples los nombres propios de personas: \*Simón Bolívar\*, \*Soledad Acosta\*, etc. Y entre asteriscos dobles los de lugares: \*\*Bogotá\*\*, \*\*Framingham\*\*, etc. Podemos también usar guiones bajos para indicar los nombres de obras y de libros: \_La divina comedia\, \_Cien años de soledad\, etc. Estos signos sirven para etiquetar o marcar el texto que encierran, para así identificar en el texto un determinado contenido. Como es fácil de imaginar, las posibilidades de codificación son casi infinitas.
 
 A medida que avancemos, tomaremos fragmentos de este texto para ver cómo AHK nos puede ayudar en el proceso de marcado y automatización.
 
 Hagamos ahora algo más específico para un flujo de trabajo orientado a la edición TEI: introduciremos los elementos `<gap>` y `<supplied>`. Las pautas del estándar TEI P5 definen el primero de ellos así:
 
-> `<gap>` (gap) indica un punto donde algún material ha sido omitido en una transcripción, bien por criterios de edición descritos en el encabezado TEI, bien como parte de una práctica habitual, o bien porque el material es ilegible o incomprensible[^7].
+> `<gap>` (gap) indica un punto donde algún material ha sido omitido en una transcripción, bien por criterios de edición descritos en el encabezado TEI, bien como parte de una práctica habitual, o bien porque el material es ilegible o incomprensible [^7].
 
 Normalmente, este elemento puede contener atributos como `reason` o `agent`. Para este ejemplo, asumiremos que en nuestra edición solo nos interesa marcar, dentro de `<gap>`, el motivo del vacío:
 ```ahk
@@ -139,7 +139,7 @@ En este caso, `Alt + G` insertará lo siguiente:
 ```
 Por otro lado, el elemento `<supplied>` se define como sigue:
 
-> `<supplied>` (supplied) indica fragmentos de texto añadidos por el transcriptor o por el revisor en el lugar donde el original es ilegible porque presenta daños físicos, lagunas o por otros motivos[^8].
+> `<supplied>` (supplied) indica fragmentos de texto añadidos por el transcriptor o por el revisor en el lugar donde el original es ilegible porque presenta daños físicos, lagunas o por otros motivos [^8].
 
 Nuevamente, incluiremos solo el atributo `reason`:
 ```ahk
@@ -157,7 +157,7 @@ Como ves, el procedimiento es sencillo, aunque sería mucho más cómodo que el 
 El valor de `{Left N}` dependerá de la etiqueta de apertura; si cambias su nombre, deberás recalcular el número de desplazamientos a la izquierda que necesites.
 </div>
 
-En este caso es necesario usar llaves, ya que nuestro _script_ combina dos acciones. No olvides que no puedes usar una misma _hotkey_ en dos ocasiones: modifica o elimina la anterior.
+En este caso es necesario usar llaves, ya que nuestro script combina dos acciones. No olvides que no puedes usar una misma 'hotkey' en dos ocasiones: modifica o elimina la anterior.
 
 Ahora vamos a conocer la función `Run`. Como indicamos en la tabla, esta función permite abrir programas instalados en el computador, pero también puede utilizarse para abrir enlaces web. Por ejemplo, para abrir una página web con una combinación de teclas, puedes escribir:
 ```ahk
@@ -190,15 +190,15 @@ Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la fun
 Los comentarios deben ir precedidos de un punto y coma, como en el ejemplo anterior: `; LibreOffice Writer`.
 </div>
 
-Siempre podrás pausar o cerrar tu _script_ desde el área de notificación de Windows. Asimismo, la opción de recarga te permite aplicar los cambios realizados en el contenido del _script_ sin necesidad de cerrarlo y abrirlo de nuevo. Por tanto, si añades una nueva _hotkey_, bastará con recargar para poder utilizarla.
+Siempre podrás pausar o cerrar tu script desde el área de notificación de Windows. Asimismo, la opción de recarga te permite aplicar los cambios realizados en el contenido del script sin necesidad de cerrarlo y abrirlo de nuevo. Por tanto, si añades una nueva 'hotkey', bastará con recargar para poder utilizarla.
 
 ### Hotstrings
 
-Pasemos ahora a las _hotstrings_. A diferencia de las _hotkeys_, no se activan mediante una combinación de teclas, sino al escribir una determinada secuencia de caracteres. Su uso es más localizado, pues básicamente se emplean para expandir abreviaturas, palabras o frases frecuentes mientras escribes.
+Pasemos ahora a las 'hotstrings'. A diferencia de las 'hotkeys', no se activan mediante una combinación de teclas, sino al escribir una determinada secuencia de caracteres. Su uso es más localizado, porque básicamente se emplean para expandir abreviaturas, palabras o frases frecuentes mientras escribes.
 
-La sintaxis es sencilla: entre el primer y el segundo par de dos puntos escribimos la abreviatura que queremos desarrollar y, después del segundo par, el texto que AHK debe insertar. Vamos a hacer una pequeña prueba con _The Programming Historian_, que abreviaremos como `tph`:
+La sintaxis es sencilla: entre el primer y el segundo par de dos puntos escribimos la abreviatura que queremos desarrollar y, después del segundo par, el texto que AHK debe insertar. Vamos a hacer una pequeña prueba con _Programming Historian_, que abreviaremos como `tph`:
 ```ahk
-::tph::The Programming Historian
+::tph::Programming Historian
 ```
 Escribe ahora `tph` en cualquier campo de texto y pulsa una tecla de cierre, como espacio, punto o salto de línea. Verás que AHK sustituye automáticamente la abreviatura por _The Programming Historian_. Mira lo que pasa si añadimos un asterisco después de los primeros dos puntos:
 ```ahk

@@ -1,0 +1,670 @@
+---
+title:  "Visualising networks in library catalogue metadata using iPySIGMA and Llama Extract"
+slug: visualising-networks-ipysigma-llama-extract
+layout: lesson
+collection: lessons
+date: YYYY-MM-DD
+authors:
+- Halie Kerns
+- Arnoud Wils
+reviewers:
+- Forename Surname
+- Forename Surname
+editors:
+- Forename Surname
+review-ticket:
+difficulty: 2
+activity: presenting 
+topics: [network-analysis, data-visualization, metadata]
+abstract: Library catalogues usually present records as lists, making it difficult to see broader patterns across a collection. This lesson introduces network visualisation as a way of exploring relationships between books, subjects, and other catalogue metadata, helping participants identify clusters, connections, and areas for further investigation. Using prepared examples, we'll discuss how this approach can support collection development, research, and discovery.
+avatar_alt:
+doi: XX.XXXXX/phen0000
+---
+
+{% include toc.html %}
+
+
+## Preliminaries
+
+Library catalogues are rich repositories of metadata, capturing details such as publisher, subject headings, year and place of publication, and language. Books that share common metadata attributes are inherently related, and these relationships can surface compelling and often overlooked stories about a collection, whether tied to a shared theme, a geographical area, or a particular period in time.
+
+The potential of bibliographical metadata for DH research is now generally acknowledged, from [visualising the growing of the collection over time, or the proportion of subject classifications in the collection](https://www.research.ed.ac.uk/en/publications/the-library-catalogue-as-dataset-exploring-data-science-approache/), to the potential of [linking well-structured bibliographical metadata to related works, such as film adaptations, stage productions, musical adaptations or works of art that share metadata](https://www.klassik-stiftung.de/herzogin-anna-amalia-bibliothek/werktitel-als-wissensraum/).
+
+In most online catalogues, clicking on a metadata value returns a flat list of results: books that share that attribute. But there is a more powerful way to explore these connections. By visualising catalogue metadata as a network graph — where books and metadata values become nodes, and their relationships become edges — it becomes possible to navigate and interact with the collection in an entirely new way, revealing subsets and clusters that would otherwise remain hidden.
+
+This lesson uses [ipysigma](https://github.com/medialab/ipysigma), a Python wrapper around sigma.js, a JavaScript library purpose-built for network visualisation, to build and explore these graphs directly from catalogue metadata.
+
+The hope for this lesson is not just to show creative ways library data can be displayed, but how a librarian or researcher could utlilise network analysis on their own collection data for practical collection development tasks in the daily work. This lesson may be particularly helpful for librarians interested in demonstrating the value of their collections to audiences who might not typically interact with catalogue metadata.
+
+### Network Analysis
+
+The method for this data exploration is network analysis, the visualisation of relationships between data points. In a network, individual entities are represented as nodes, while the connections between them are represented as edges, allowing patterns of association and clustering to become visible. As a research skill, network analysis helps scholars move beyond isolated records to examine how individual data points are connected within a larger system.The network analysis visualisations created here are interactive and meant to be manipulated by the user to dive deeper into the data, which are library records. 
+
+The library records in this example are drawn from the [Nederlandse Bibliografie Online](https://www.kb.nl/over-ons/diensten/de-nederlandse-bibliografie), which contains all publications that have appeared in the Netherlands, about the Netherlands, or in the Dutch language. These publications have been collected, preserved, and annotated by the Dutch Royal Library (KB). We have selected a curated subset of bibliographic publications classified under the subject heading 'exact sciences'. It provides structured metadata that allows us to learn more about the books that made up the collection at different times. In this example, we have chosen twenty-five-year increments over two hundred years in order to compare how bibliographic metadata, such as subject headings, tell the story of the history of science in the Netherlands over time. Similar library data, such as MARC records, would contain comparable information and could be used for analysis.
+
+To create the visualisations, the JavaScript library [Sigma.js](https://www.sigmajs.org/) was used. Sigma.js is one of the most powerful libraries for large-scale network visualisation. Using the [networkx](https://pypi.org/project/networkx/) Python library, catalogue metadata from the selected dataset was first transformed into a network structure. In this structure, bibliographic records and subject attribution metadata values are represented as nodes, and their relationships are represented as edges. In the second step the [ipysigma](https://pypi.org/project/ipysigma/) Python framework wrapped the network data in a web page that included the Sigma.js JavaScript library. Users can then explore patterns across the collection by interacting with the network online. Researchers love the potential of the Sigma library because it can handle large-scale networks very well, providing an interactive yet oversight-friendly visualisation.
+
+### Technical context
+
+Network analysis is a popular tool across disciplines. In libraries specifically, it is often utilised to understand scholarly publishing and bibliometrics. However, it offers even more potential by using it on library collection data. When applied to catalogue metadata, network analysis can reveal relationships among items that are difficult to see in traditional search results. This makes it a useful method for collection exploration and development.
+
+That being said, today's technical stack — Python, NetworkX and ipysigma — can handle all kinds of structured data very well, such as XML (like MARC 21), JSON or CSV, provided that relevant connections between data points can be observed in the data collection, making network visualisation useful. Many library management systems will directly export bibliographic data in MARC XML files. 
+
+The bibliographic datasets that we use can be downloaded for free from the linked data [publishing portal of the Royal Library](https://data.bibliotheken.nl/). We make them available for use in this lesson.
+Once you have downloaded the data and installed the required Python libraries, you can complete this lesson offline without requiring live internet access.
+
+### Social context
+
+Library collections offer a wealth of information outside of normal utilisation, through the metadata they collect for items. Beyond using this metadata for search and retrieval, this data can be used to understand what makes up a library collection and leverage that knowledge for many uses including special collection building, purchases, weeding, and other collection development activities. For those outside the library, these actions are often carried out while asking questions such as: What materials should the library get rid of? What collections could be expanded? What items would benefit from being promoted together? How have our materials changed over time? The latter question is the one that researchers here aim to answer with the Dutch Library dataset.
+
+A further consideration is that catalogue metadata is itself a product of its time and reflects the perspective of the cataloguer. The catalogue examined in this lesson, _De Nederlandse Bibliografie Online (NBO)_, has been built up since 1974, meaning that the subject heading terminology used to describe books from earlier centuries is shaped by a twentieth-century scholarly perspective. This terminology may therefore diverge from, or be less precise than, the terminology that was originally used to describe the scientific disciplines of those earlier periods.
+ 
+All catalogue data in this lesson is in Dutch. However, this should not be an obstacle, as you can use a browser translation plugin to display the catalogue data in your preferred language (see below), making it easy to follow along.
+
+The datasets used in this lesson are publicly available and can be downloaded via this lesson page (see below). No costs are involved in using the data or the software used in this lesson.
+
+### Prerequisites
+
+* Basic understanding of Python libraries
+* Basic skills for working with a code editor such as [VS Code](https://code.visualstudio.com/)
+* Public or personal dataset of library materials organized in a structure scheme (MARC, Dublin Core, etc)
+* Github account
+
+This lesson works well on both Windows and Mac OS machines.
+We will first walk you through the installation of [uv](https://docs.astral.sh/uv/), a Python package manager that creates a separate virtual environment for your project. This ensures that your project does not conflict with other packages that may already be installed on your computer. Next, we will guide you through installing all the required packages.
+
+## Use Case
+
+This workflow could be used as a way of telling thematic stories through library collections by librarians and researchers alike. This approach is a new way to visualize library collections to gain better insights and justify their importance for a wider audience. Rather than presenting catalogue records as static entries this workflow treats the collection as a connected system of relationships that can be explored visually. This makes it especially useful for communicating the value of collections to audiences who may not otherwise engage with catalogue metadata directly.
+
+This lesson uses a subset of the [catalogue of the National Library of the Netherlands (KB)](https://www.kb.nl/over-ons/diensten/de-nederlandse-bibliografie) as its working example. As the national library, the KB collects, preserves and describes all publications published in the Netherlands, about the Netherlands, or in Dutch. This legal deposit function results in a collection that is both exceptionally complete and consistently well described. The catalogue metadata are correspondingly rich, offering a wealth of detail about each item. In this lesson, we focus specifically on the subject heading attributions in the collection, which are applied extensively and with notable consistency. This is precisely why we selected this catalogue dataset from the National Library of the Netherlands.
+
+### A synchronic perspective
+
+The richness of this metadata is also its main challenge. With such volume and detail, it becomes difficult to analyse the data by traditional means alone, to detect patterns, or to identify anomalies and turning points in the history of the collection.
+
+This is where visualisation proves valuable. By visualising the metadata and allowing interactive selection of search criteria, even a brief exploration of the network graph can reveal which subjects and topics are most prominent within the collection, and how individual books relate to one another through shared subject headings.
+
+### A diachronic perspective
+
+Beyond its scale, the KB collection is distinctive for another reason: it offers complete and consistent metadata spanning a long historical period, a direct consequence of its role as the official deposit institution for Dutch publications. This means the catalogue does more than document the library's holdings. It also provides a window into the history of publishing in the Netherlands.
+
+For this lesson, we selected the subset of books catalogued under the subject heading _wetenschap_ ('science'), spanning the period from 1800 to 2000. This range includes the nineteenth century, a formative period during which many modern scientific disciplines took shape.
+
+This use case allows us to address the following research questions:
+
+- Which scientific subject headings are most predominant in the collection?
+- How did scientific subject headings change over time? What do these shifts reveal, both about the library's acquisition history and about the emergence and development of scientific disciplines in the Netherlands since 1800?
+- How can we discover books that are related through a shared subject heading at a higher level, revealing unexpected clusters that may not be apparent from their Universal Decimal Classification (UDC) number alone?
+
+Exploring the network graph of Dutch publications since 1800 through catalogue metadata visualisation may also be of value to historians of science, offering a fresh angle on the traditional narrative of how the sciences developed in the Netherlands. At the same time, researchers working within a specific discipline, such as mathematics or literary studies, may use this same network graph to discover related publications they had not previously considered.
+
+Other activities that could be carried out, focusing on subject heading data in libraries, include:
+* Looking at a complete collection of subject headings for the main collection to understand which sections are strongly represented and could be highlighted.
+* Visualising secondary subject headings in a picture book collection to understand the social and cultural contexts included in the collection and identify gaps.
+* Comparing the topic clustering of two different special collections, one of vintage plant books and one of current gardening books, to research what overlap exists and how this topic has changed over time.
+
+Library data includes information beyond subject headings and there is universe of possibility when it comes to exploring metadata.
+
+### Dataset
+
+To experiment with in this lesson, we provide eight data files containing bibliographic metadata for books in the [Nederlandse Bibliografie Online (Online Dutch Bibliography)](https://www.kb.nl/over-ons/diensten/de-nederlandse-bibliografie), the catalogue of the National Library of the Netherlands. Together, these files span the period from 1800 to 2000, with each file covering a twenty-five-year segment. The first segment (1800–1825) contains 2,119 nodes. The final segment, spanning 1975–2000, contains over 10,000 nodes.
+
+The data files are provided in JSON format, a plain-text format well suited to representing structured data. For each book catalogued under the broader subject heading "wetenschap" (science), the JSON files contain at least the following metadata:
+
+- a uniform identifier
+- title
+- author
+- subject heading (preferred label, narrower label, and broader label)
+- genre
+- language
+- year of publication
+
+Given the focus of this lesson, we are particularly interested in how publications are attributed to subjects. For this reason, we queried not only the general subject heading assigned to each book, but also the corresponding higher-level (broader) heading and lower-level (narrower) subdivisions. All publications in this lesson's dataset have been assigned a subject heading drawn from the [Brinkman Thesaurus](https://www.begrippenxl.nl/brinkman/nl/index) keywords. This thesaurus is hierarchically structured, meaning that subject headings may have a broader, umbrella term and/or a more specific, narrower subject description. This layered structure provides richer data for visualising the relationships between book titles and subject headings. The dataset includes all books for which at least one broader subject label contains the term _wetenschap_ ('science').
+
+{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-01.png" alt="Diagram showing the book 'De Familie Bernoulli in de geschiedenis der wiskunde' (1896) connected to the preferred subject 'Wiskunde, algemeen'. That subject branches to the broader subject 'Wiskunde en natuurwetenschappen' and the narrower subject 'Biografie', which each connect to other books, including 'Liste alphabétique de la correspondance de Christiaan Huygens' (1886)." caption="Figure 1. Example of how a book is linked to other books through its preferred, broader and narrower subject headings." %}
+
+A single JSON entry, describing one book, looks as follows:
+
+```json
+{
+    "uri": {
+      "type": "uri",
+      "value": "http://data.bibliotheken.nl/id/nbt/p096038845"
+    },
+    "name": {
+      "type": "literal",
+      "value": "Gewone logarithmen met zeven decimalen der getallen van 1 tot 108000 en der sinussen, cosinussen, tangenten en cotangenten van alle hoeken in het quadrant van 10 tot 10 seconden, benevens eene interpolatietafel ter berekening van de evenredige deelen"
+    },
+    "label": {
+      "type": "literal",
+      "value": "Gewone logarithmen met zeven decimalen der getallen van 1 tot 108000 en der sinussen, cosinussen, tangenten en cotangenten van alle hoeken in het quadrant van 10 tot 10 seconden, benevens eene interpolatietafel ter berekening van de evenredige deelen / Ludwig Schrön ; uit het Hoogduitsch door D. Bierens de Haan"
+    },
+    "authorname": {
+      "type": "literal",
+      "value": "Heinrich Ludwig Friedrich Schrön"
+    },
+    "about": {
+      "type": "uri",
+      "value": "http://data.bibliotheken.nl/id/thes/p397577818"
+    },
+    "preflabel": {
+      "type": "literal",
+      "value": "Wiskunde, algemeen"
+    },
+    "broader": {
+      "type": "uri",
+      "value": "http://data.bibliotheken.nl/id/thes/p397577443"
+    },
+    "broaderlabel": {
+      "type": "literal",
+      "value": "Wiskunde en natuurwetenschappen"
+    },
+    "narrower": {
+      "type": "uri",
+      "value": "http://data.bibliotheken.nl/id/thes/p397577826"
+    },
+    "narrowerlabel": {
+      "type": "literal",
+      "value": "Inleiding"
+    },
+    "language": {
+      "type": "literal",
+      "value": "nl"
+    },
+    "jaar": {
+      "type": "literal",
+      "value": "1862",
+      "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+    }
+}
+```
+
+### Retrieving the data
+
+The data were downloaded from the publicly accessible portal of the [National Library of the Netherlands](https://data.bibliotheken.nl/KB/-/queries/Titel-zoeken-in-de-NBT/), where records can be retrieved by submitting a SPARQL query. SPARQL is a query language designed for retrieving and working with Linked Open Data. No prior knowledge of SPARQL is required for this lesson, but readers interested in learning more are encouraged to consult the lesson [Introduction to the Principles of Linked Open Data](https://programminghistorian.org/en/lessons/intro-to-linked-data).
+
+For reference, the SPARQL query used to construct the datasets for this lesson is given below. You are encouraged to try it yourself on the [library portal of the National Library of the Netherlands](https://data.bibliotheken.nl/KB/-/queries/Titel-zoeken-in-de-NBT/), and to experiment with adapting the query to suit your own field of study.
+
+```sparql
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix schema: <http://schema.org/>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select distinct ?uri ?name ?label ?authorname ?about ?preflabel ?broader ?broaderlabel ?narrower ?narrowerlabel ?location ?genre ?genrelabel ?language ?jaar ?editie ?type
+where {
+  ?uri schema:name ?name .
+  ?uri rdf:type schema:Book .
+  optional {
+    ?uri schema:author/schema:name ?authorname.
+  }
+  optional {
+    ?uri schema:about ?about .
+    ?about skos:prefLabel ?preflabel .
+    ?about skos:broader ?broader .
+    ?broader skos:prefLabel ?broaderlabel .
+    ?about skos:narrower ?narrower .
+    ?narrower skos:prefLabel ?narrowerlabel .
+  }
+  filter contains(lcase(?broaderlabel), lcase("wetenschap"))
+  optional {
+    ?uri schema:location ?location.
+  }
+  optional {
+    ?uri schema:genre ?genre .
+    ?genre skos:prefLabel ?genrelabel .
+  }
+  optional {
+    ?uri schema:inLanguage ?language.
+  }
+  ?uri rdfs:label ?label .
+  ?uri schema:publication/schema:startDate ?jaar .
+  filter(?jaar > "1800"^^xsd:gYear && ?jaar <= "1825"^^xsd:gYear)
+  optional {
+    ?uri schema:bookFormat ?type.
+  }
+  optional {
+    ?uri schema:bookEdition ?editie .
+  }
+}
+order by ?jaar
+```
+
+Two elements of this query are worth highlighting. Line 21 contains the filter statement that restricts results to records classified under the broader label "wetenschap" (science), while the filter on line 34 restricts results to the relevant time frame, in this case 1800–1825.
+
+You don't need to run the queries yourself, as we have made the datasets available for this lesson in the _Programming Historian_ repository: [`nbt_in_json.zip`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/nbt_in_json.zip).
+
+### Software/tool
+
+[_NetworkX_](https://pypi.org/project/networkx/) is the leading Python package for defining and representing data as a network of nodes and edges. However, the default NetworX visualisation can be overcrowded and difficult to interpret or navigate when handling large datasets. [_Sigma.js_](https://www.sigmajs.org/), a Javascript library for large-scale network visualisation, not only displays the network interactively in a web browser (also allowing the graph to be embedded in a web page), but also excels at displaying large, data-rich networks in an insightful, user-friendly, and uncluttered way. To bridge our Python _NetworkX_ structure with a JavaScript-based webpage, we use [_ipysigma_](https://github.com/medialab/ipysigma), a Python wrapper around sigma.js.
+
+## Learning keys
+### Concepts
+This lesson explores how library catalogue metadata, or the structured information recorded about a library item, can be transformed into network data to better understand relationships within a collection. This metadata may include details such as title, author, publication information, and related subjects. Subject headings are especially useful for this process because they provide a structured way of describing what a library item is about and can therefore be used to identify meaningful connections between items.
+
+Using subject headings as the basis for connection, we will examine how catalogue records can be represented as a network graph. In this visual representation, nodes stand for entities within the network, such as subject headings or book titles, while edges show the relationships that connect those nodes. Viewing catalogue metadata in this way allows us to see how different parts of a collection relate to one another and to identify clusters, or groups of nodes that are more closely connected to each other. We will also consider how [centrality](https://programminghistorian.org/en/lessons/exploring-and-analyzing-network-data-with-python#centrality) can help measure which nodes are especially important or highly connected within the network.
+
+The lesson will then demonstrate how interactive visualisations can support collection analysis and development by making patterns, clusters, and relationships easier to explore. By comparing network visualisations created from catalogue data at different points in time, librarians can gain insight into how a collection has developed historically and how it may continue to evolve in the future. These concepts will be demonstrated through a workflow built with Python, _ipysigma_, and _sigma.js_.
+
+### Terms
+
+Before turning to the hands-on part of this lesson, it is useful to review a few basic concepts underlying network graphs and how they apply to our use case.
+
+#### Nodes and edges
+
+At its core, a network graph charts a set of relations between data points. These data points, the items being linked to one another, are called **nodes**. The relations between them, in essence a list of statements that point x is connected to point y, are called **edges**.
+
+{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-02.png" alt="Simple diagram of circles labeled 'Node' connected by arrows labeled 'Edge', with a large node branching into smaller nodes." caption="Figure 2. The basic building blocks of a network are nodes connected by directed edges." %}
+
+In our use case, we are visualising the relations between book titles and subject headings, both of which are available in the bibliographic metadata described in the previous section. Book titles and subject headings will therefore form the nodes in our network visualisation, with edges representing the connections between them.
+
+{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-03.png" alt="Diagram with a 'Book Title' node pointing to a 'Preferred Label' node. The preferred label branches into a 'Broader Label' and a 'Narrower Label', and each of those points to two further book nodes." caption="Figure 3. Generalised model of the network structure, in which book titles connect to other books via preferred, broader and narrower subject labels." %}
+
+
+#### Attributes
+
+Beyond the connections that link them, nodes can also carry additional characteristics, or fields, that are not used to establish relations but instead provide supplementary descriptive information about each node. In a network graph, it is often valuable to be able to view these **node attributes*** directly alongside the network structure itself.
+
+In our use case, while the network primarily visualises relations between book titles and subject headings, it is useful to also have immediate access to further attributes of each node. For book title nodes, this includes information such as the author, year of publication, genre and language. For subject heading nodes, it is similarly useful to be able to see, at a glance, related subject headings at a higher or lower level.
+
+### Time
+
+This workflow has several different steps and the time it takes to go from start to finish will depend on the data you are using and your familiarity with Python. If you are working with data that has already been cleaned and prepared, like the dataset supplied here, you will just need to create your virtual environment and run and tweak the code to create your html visualization. Depending on the amount of tweaking, plan for about 1-2 hours to get the code running. More time may be needed if you need to review Python basics. If you are working with your own data, plan at least an hour to clean and organize it for the activity. 
+
+## Learning experiment
+
+### Aims
+
+The objective of this lesson is to visualise library catalogue data in an interactive, navigable display. By the time you have completed it, you will be able to transform the example dataset from the National Library of the Netherlands (KB) into a network graph that allows you to interactively explore the relations between book titles and subject headings in the domain of *wetenschap* (science) over the period 1800–2000.
+
+Beyond this specific example, you will also have acquired the skills to visualise any library catalogue dataset of your choosing, and to define for yourself which nodes and connections you wish to explore. Possible combinations are not limited to book titles and subject headings: authors, genres, languages, publication dates, and other metadata fields can all serve as nodes in their own right.
+
+### Inventory
+
+In this lesson, nodes, edges and the visualisation itself are defined in Python, using the following tools and packages:
+
+- [NetworkX](https://pypi.org/project/networkx/): a Python package for creating and manipulating networks
+- [Sigma.js](https://www.sigmajs.org/): a JavaScript library for large-scale network visualisation
+- [ipysigma](https://github.com/medialab/ipysigma): a Python wrapper around Sigma.js that enables network visualisation within a Python environment
+
+All materials related to this lesson are available to download from [the _Programming Historian_ repository](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract).
+
+#### Data files
+
+- 8 JSON data files that follow the Linked Open Data standards and hold the library catalogue data from the _Nederlandse Bibliografie Online_ (_Online Dutch Bibliography_) (NBT). Each file covers a twenty-five-year period within the range 1800–2000:
+
+   - `nbt_index_1800-1825.json`
+   - `nbt_index_1826-1850.json`
+   - `nbt_index_1851-1875.json`
+   - `nbt_index_1876-1900.json`
+   - `nbt_index_1901-1925.json`
+   - `nbt_index_1926-1950.json`
+   - `nbt_index_1951-1975.json`
+   - `nbt_index_1976-2000.json`
+ 
+- As an alternative, there is one MARCXML file (`salinger_example.marcxml`) containing one bibliographic record to illustrate the process if you are starting from a MARCXML dump of your library catalogue data rather than JSON files (see the section _Local application_ below).
+
+### Notebooks
+
+2 Jupyter notebooks to help you follow the lesson code step by step:
+
+- [`nbt.py`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/nbt.py)
+- [`nbt-from-marcxml.ipynb`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/nbt-from-marcxml.ipynb): an alternative notebook that uses the sample MARC XML file as input.
+
+### Script
+
+An executable Python script ([`nbt.py`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/nbt.py)) is also provided. It runs the full process, taking the eight JSON files as input and generating the corresponding visualisations as standalone HTML files, one for each data file.
+
+#### Directory structure
+
+To keep code and data well organised, we recommend the following directory structure:
+
+```
+src/
+├── nbt.py               # Python script
+├── nbt.ipynb            # Jupyter notebook
+└── data/
+    ├── in/              # Source data files (JSON)
+    └── out/             # Generated output files (HTML network graphs)
+```
+
+### Workflow
+
+#### Setting up the environment
+
+To keep the working environment tidy and avoid conflicts with other software and packages installed on your machine, we recommend creating a virtual environment using [uv](https://docs.astral.sh/uv/), a widely used Python package manager.
+
+Begin by installing uv by following the [installation instructions](https://docs.astral.sh/uv/getting-started/installation/) for your operating system. Then navigate to the folder where you want to create the project, initialise the project directory, and move into it:
+
+```bash
+$ uv init src
+$ cd src
+```
+
+Next, create a virtual environment within the `src` folder and install the required Python version for this project:
+
+```bash
+$ uv sync --python 3.12
+```
+
+Then install the packages required for this lesson:
+
+```bash
+$ uv add matplotlib scipy networkx ipysigma ipywidgets pathlib
+```
+
+Once the environment is set up, launch VS Code (or your preferred code editor) within the virtual environment to ensure all installed packages are available:
+
+```bash
+$ uv run code .
+```
+
+#### Importing the required packages
+
+Open the `main.py` file that was generated automatically during project initialisation, and remove its pre-generated contents. Begin your script by importing the required packages:
+
+```python
+import json
+
+import time
+from pathlib import Path
+
+import networkx as nx
+from ipysigma import Sigma
+```
+
+#### Importing the data files
+
+We will now create a function that reads a time-range-specific JSON data file from the sample dataset (for example, `nbt_index_1800-1825.json`). Recall that each file has the following structure, where each entry in the `bindings` array represents one book in the catalogue:
+
+```json
+{
+  "head": { "..." },
+  "results": {
+    "bindings": [
+      {
+        "uri": {"..."},
+        "name": {"..."},
+        "about": {"..."},
+        "preflabel": {"..."},
+        "broader": {"..."},
+        "broaderlabel": {"..."},
+        "narrower": {"..."},
+        "narrowerlabel": {"..."},
+        "language": {"..."},
+        "jaar": {"..."},
+        "editie": {"..."}
+      }
+    ]
+  }
+}
+```
+
+The function will convert the contents of this file into a network format, that is, a list of nodes and edges. Begin by opening the file and extracting the catalogue entries:
+
+```python
+# Function to convert bibliographic JSON input data to a NetworkX graph
+def convert_json_to_nx(date_range: str):
+    # Open the JSON file containing the parsed data
+    file_path = Path("data") / "in" / f"nbt_index_{date_range}.json"
+    with file_path.open("r") as f:
+        data = json.load(f)
+        
+    # Extract the bibliographic catalogue data from the JSON
+    catalogue_items = data["results"]["bindings"]
+    item_dict_list = []
+```
+
+Define placeholders for the nodes and edges:
+
+```python
+    edges = []
+    nodes = {}
+```
+
+Then iterate over the catalogue entries and convert each one into a [dictionary](https://www.w3schools.com/python/python_dictionaries.asp), building up a list in which each entry holds the metadata for one book:
+
+```python
+    # Iterate through each bibliographic record and extract the relevant information.
+    for x in catalogue_items:
+
+        if x is not None:
+            itemdata = x
+            # Create a dictionary for each catalogue item
+            item = {
+                "uri": itemdata.get("uri").get("value"),
+                "title": itemdata.get("name").get("value"),
+                "language": itemdata.get("language").get("value"),
+                "date": itemdata.get("jaar").get("value"),
+                "pref_subject": itemdata.get("preflabel").get("value").lower() if itemdata.get("preflabel") is not None else None,
+                "narrower_subject": itemdata.get("narrowerlabel").get("value").lower() if itemdata.get("narrowerlabel") is not None else None,
+                "broader_subject": itemdata.get("broaderlabel").get("value").lower() if itemdata.get("broaderlabel") is not None else None,
+            }
+            item_dict_list.append(item)
+```
+
+#### Defining nodes and edges
+
+##### Edges
+
+With the catalogue data now structured as a list of dictionaries, we can define the **edges** of our network graph. For this lesson, we connect:
+
+- each book title to its preferred, narrower and broader subject headings
+- subject headings to one another, linking preferred labels to both their narrower and broader equivalents
+
+```python
+            # Define edges for the catalogue graph
+            # Add edges based on the relationships between titles and subjects
+            # and between subjects themselves (broader and narrower)
+            if item["title"] is not None and item["pref_subject"] is not None:
+                edges.append((item["pref_subject"], item["title"]))
+                if item["narrower_subject"] is not None:
+                    edges.append((item["pref_subject"], item["narrower_subject"]))
+                    edges.append((item["narrower_subject"], item["title"]))
+                if item["broader_subject"] is not None:
+                    edges.append((item["pref_subject"], item["broader_subject"]))
+                    edges.append((item["broader_subject"], item["title"]))
+```
+
+##### Nodes
+
+The nodes in our graph are book titles and subject headings. As discussed in the previous section, it is valuable to also display node attributes alongside the graph structure:
+
+- For **book title nodes**, we include additional metadata such as the preferred, narrower and broader subject headings, the date of publication, the language, and the unique identifier (URI).
+- For **subject heading nodes**, we include the related broader and narrower subject headings.
+
+```python
+            # Define nodes for the catalogue graph
+            keys_title_to_extract = ["title", "pref_subject", "narrower_subject", "broader_subject", "date", "language", "uri"]
+            keys_subject_to_extract = ["pref_subject", "narrower_subject", "broader_subject"]
+            for node_attributes in item_dict_list:
+                node_title = node_attributes["title"]
+                node_pref_subject = node_attributes["pref_subject"]
+                node_narrower_subject = node_attributes["narrower_subject"]
+                node_broader_subject = node_attributes["broader_subject"]
+
+                # Create sub-dictionaries for title and subject nodes with relevant attributes
+                sub_dict_title = {key: node_attributes[key] for key in keys_title_to_extract if key in node_attributes and node_attributes[key] is not None}
+                sub_dict_title["type"] = "book"
+                sub_dict_subject = {key: node_attributes[key] for key in keys_subject_to_extract if key in node_attributes and node_attributes[key] is not None}
+                sub_dict_subject["type"] = "subject"
+                
+                if node_title is not None:
+                    nodes[node_title] = sub_dict_title
+                if node_pref_subject is not None:
+                    nodes[node_pref_subject] = sub_dict_subject
+                if node_narrower_subject is not None:
+                    nodes[node_narrower_subject] = sub_dict_subject
+                if node_broader_subject is not None:
+                    nodes[node_broader_subject] = sub_dict_subject
+```
+
+Note that each node is assigned a `type` attribute, either `"book"` or `"subject"`, which will allow us to distinguish between the two kinds of node visually when we render the network graph in the next step.
+
+#### Building the network graph
+
+With the nodes and edges defined, we can now construct the network graph using NetworkX and prepare it for visualisation.
+
+#### A preliminary look with NetworkX
+
+Before introducing the interactive visualisation, it is instructive to first render the graph using NetworkX's built-in drawing functionality. Create an empty directed graph, populate it with the nodes and edges defined in the previous step, and save a static image:
+
+```python
+    G = nx.DiGraph()
+    for edge in edges:
+        G.add_edge(edge[0], edge[1])
+    nx.set_node_attributes(G, nodes)
+    nx.draw(G, with_labels=True)
+    plt.savefig("catalogue_graph.png")
+```
+
+To run the script against a single data file — in this case covering the period 1800–1825 — add the following block at the very end of your script and execute it:
+
+```python
+if __name__ == "__main__":
+    convert_json_to_nx("1800-1825")
+```
+
+Open the resulting `catalogue_graph.png` file. The image will likely appear as a dense, near-black tangle of overlapping nodes, edges and labels. This is an inevitable consequence of the sheer volume of data: a static rendering cannot meaningfully represent a graph of this complexity.
+
+This is precisely where _ipysigma_ proves its value. Rather than attempting to display all nodes, edges and labels at once, it renders the graph as an interactive visualisation that the user can navigate freely, revealing detail progressively as they explore.
+
+#### Creating the interactive visualisation
+
+Remove the test call added in the previous step:
+
+```python
+convert_json_to_nx("1800-1825")
+```
+
+Then append the following block to the `convert_json_to_nx` function. This uses _ipysigma_ to wrap the NetworkX graph in an interactive Sigma.js visualisation and write it to an HTML file:
+
+```python
+    # Create a Sigma visualisation
+    Sigma(
+        G,
+        node_color="pref_subject",
+        node_label_size=G.degree,
+        node_size=G.degree
+    )
+    Sigma.write_html(
+        G,
+        f"data/nbt_index_{date_range}.html",
+        fullscreen=True,
+        node_metrics=["louvain"],
+        node_color="pref_subject",
+        node_size_range=(3, 30),
+        node_shape="type",
+        node_shape_mapping={
+            "book": "book_2",
+            "subject": "label"
+        },
+        max_categorical_colors=50,
+        default_edge_type="curve",
+        default_node_label_size=14,
+        node_size=G.degree
+    )
+```
+
+A few parameters are worth highlighting:
+
+- `node_color="pref_subject"`: each preferred subject label is mapped to a distinct colour, making it easy to visually distinguish subject clusters and the book titles associated with them.
+- `node_shape_mapping`: custom icons from the [Google Fonts icon library](https://fonts.google.com/icons) are used to make node types immediately recognisable. In this lesson, book title nodes are represented by a book icon (`book_2`) and subject heading nodes by a label icon (`label`).
+- `node_metrics=["louvain"]`: The Louvain algorithm is a community detection method for networks that iteratively groups nodes into clusters by calculating how densely connected nodes are within a group compared to between groups. The algorithm is applied to detect communities within the graph, which can reveal clusters of closely related books and subject headings that might not be apparent from classification numbers alone.
+- `node_size=G.degree`: A node's degree is simply the sum of its edges (see the [lesson on network data](https://programminghistorian.org/en/lessons/exploring-and-analyzing-network-data-with-python#centrality)). Consider a subject heading node to which many publications are allocated. That node has a high degree and will consequently be represented at a larger size.
+- `default_edge_type="curve": By default, the edges are drawn using a curved line, but you can change the edge type to 'arrow' or 'line' if you prefer.
+
+#### Generating output files for all time periods
+
+To process all eight data files and generate a separate interactive HTML file for each twenty-five-year period, replace the entry point block at the end of your script with the following:
+
+```python
+if __name__ == "__main__":
+    date_ranges = [
+        "1800-1825",
+        "1826-1850",
+        "1851-1875",
+        "1876-1900",
+        "1901-1925",
+        "1926-1950",
+        "1951-1975",
+        "1976-2000"
+    ]
+    for dr in date_ranges:
+        convert_json_to_nx(dr)
+```
+
+Running the script will produce eight HTML files in your `data/out` folder, one for each time segment. Each file is a self-contained, interactive network graph that can be opened in any modern web browser. But wouldn't it be great to be able to visualise how the graph changes over time using a time slider?
+For those of you who are already intrigued, we can reveal that the final section of the [`nbt.ipynb`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/nbt.py) notebook demonstrates how to add a time slider to the graphs. This allows you to cycle through all eight graphs interactively.
+
+{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-04.jpg" alt="Screenshot of a time range slider set to 1925 above a dense directed graph of 1,206 nodes and 3,836 edges. Nodes are coloured by preferred subject according to a legend on the right, with larger subject nodes labelled, such as 'inleiding', 'geschiedenis' and 'strategie'." caption="Figure 4. The time range slider filters the network by publication year, shown here set to 1925." %}
+
+#### Navigating through the network graph
+
+Now that the nodes and edges have been defined, we can begin to move around the visualization with the _ipysigma_ features. Open the first HTML file (`nbt_index_1800-1825.html`) that was generated. Your web browser will now display a network graph that shows the relationships between the books and the subject headings. In the uppermost righthand corner, Box A in the image, is information about the graph you are looking at including the number of nodes and edges. 
+
+{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-05.png" alt="Screenshot of a directed graph of 491 nodes and 1,667 edges with the subject node 'inleiding' selected, its connecting edges highlighted, and four interface areas outlined and labelled A–D. Panel C lists the node’s attributes, such as preferred, narrower and broader subjects, and its degree metrics." caption="Figure 5. Overview of the interactive network visualization interface, with (A) graph statistics, (B) navigation and layout controls, (C) the node information panel, and (D) export options." %}
+
+Each graph has a natural state where all the nodes and edges are layered on top of each other. Before trying to analyze the graph in this state, run the layout animation by clicking the play button. In the image above, it is located in upper right hand corner in the box labelled B. It is recommended that before you interact with the graph that you click the play button to run the layout animation. This allows the graph to settle into a more readable arrangement, where closely related nodes cluster together and less connected groups move farther apart. In network visualization, this is known as a force-directed layout. Moving the nodes through the layout animation also helps to see the physical distance between different topics. The closer together or more tightly clustered they are, the more they are related or prominently connected. Because some of the book titles and subject labels may appear in another language, Google Chrome’s translation feature can help translate the text while you navigate the network.
+
+{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-06.jpg" alt="Screenshot of a directed graph whose colored nodes are scattered evenly across a square area and overlaid with a dense web of grey edges, making structure hard to see. A few large subject nodes are labelled, such as 'inleiding', 'strategie' and 'biografie', and a legend on the right lists the subject colours." caption="Figure 6. A network of 766 nodes and 2,484 edges in its initial state, before a layout algorithm is applied." %}
+
+{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-07.jpg" alt="Screenshot of a directed graph of 766 nodes and 2,484 edges in which nodes have formed distinct coloured clusters, such as 'militaire wetenschappen', 'inleiding', 'algemeen' and 'geneeskundige wetenschappen', connected by grey edges. A pause button indicates the layout is running, and a legend lists the subject colours." caption="Figure 7. The same 766-node network after running the layout algorithm, with books grouped into coloured clusters around their shared subjects." %}
+
+Each point is a node, whether it be an individual book title (with a book icon) or a controlled subject heading (with a label icon). If a book has a subject heading assigned, there is a line drawn between that subject and the book. These lines are edges, which illuminate the relationships. Subject headings are also connected by subject labels from the JSON file data in the form of a preferred subject label, a broader subject label, and a narrower subject label to help contextualize the more controlled vocabulary of the subject headings.
+
+The size of the node describes its level of connectivity within the graph, or how many edges (connections) it has. The larger the subject node, the more connections it has. That means the larger nodes are highly connected and act as thematic hubs of the visualization. Our eyes are drawn to them and they surface quickly, the prominent subjects available in a collection. Smaller nodes are not as obvious, often representing those single book titles or less used subject headings. However, the _ipysigma_ shell still makes them easy to find if you are looking for them and they are revealed as we move through the graph.
+
+For example, looking at the 1800-1825 network, we can see that one of the largest labels is Geschiedenis (History). If you click on it within the graph, all the edges are highlighted and in the right panel, information about that specific node appears in the box to the right of the graph. In the labelled image, this is box C on the upper right side of the screen. It explains the size of the node (how many edges it has), the node attributes from the JSON file, and the metrics in degrees (number of edges again), indegree (how many edges point towards this node), and outdegree (how many edges point out from this node). Not all network graphs are directed, but this one is. The direction of each edge is directionally identified within the data. Since this is a subject heading node, a high outdegree means that this subject heading connects outward to many book titles and/or related broader and narrower subject labels. Which makes sense since history is a major subject in the collection during that time.
+
+Now, if we click on one of the book icons connected to history, Geschiedenis der Romeinen : een leesboek voor de jeugd translated as, History of the Romans: a reading book for young people, we can glean different information. A book in this network is more concerned with indegrees, or rather, how many subjects it connects to. In this case it is six, including mathematics and biography. Exploring individual books helps us to understand how the subjects connect within a single item.
+
+Another option for exploration of the graph, is to click on a subject heading from the list in the legend box on the right and temporarily isolate its immediate connections. They are organized by colour, based on the subject headings. However, since there are so many subject headings, the color as a differentiator is not as helpful in this example as it would in a sample with ten or less subject headings. Users can also search directly for a subject heading or book title, making it easier to locate the same concept or work in each chronological graph without relying on its visual prominence. Once selected, the graph will zoom in on that node, no matter how small it is. The search function is helpful for exploring collections and items that you wish to target.
+
+Other tools within the _ipysigma_ interface can make the graph easier to navigate and document. You can use the zoom controls to move closer to dense clusters or pull back to view the overall network structure. The center button returns the graph to the middle of the screen if you move too far away from it, while the reset button restores the original view and selections. Once the layout animation has settled the nodes into a readable arrangement, you can pause it to keep the graph stationary as you explore. All of these tools are located in the upper right hand corner of the screen in the box labelled B. You can also export a static image of the graph to use in presentations, reports, or comparisons between time periods. The buttons to export to different file formats are in the lower right hand corner of the screen in the box labelled D. 
+
+The network graph visualisation that is a result of this activity is meant to be an exploratory tool for collections that takes traditional catalog records out of a list-based search interface. Instead, the graph allows a user to explore how records are connected to one another, making it possible to identify themes and gaps that might not be visible through search results alone. These findings can then support collection development in new and creative ways by helping librarians identify areas for future acquisition, create new collections from existing clusters, compare changes in a collection over time, and reveal unexpected relationships among materials.
+
+
+### Key insights from the catalogue visualisation
+
+Looking at the eight graphs, we start to see patterns emerge and how the collection changes over time. A good starting point is looking at the size and density of the collection under the topic _wetenschap_ (science). In this example, over the years, the network gets denser and denser which makes sense with basic knowledge about scientific advancement over the nineteenth and twentieth century. Density may reflect more items in the dataset, more detailed subject cataloguing, or both.
+
+{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-08.jpg" alt="Screenshot of a network arranged into many small grey clusters, with the highlighted node 'computermethoden' connected by a few lines to nearby books and to the larger subject node 'wetenschappelijke technieken'. The information panel lists its subjects and a degree of 20." caption="Figure 8. Selecting the subject 'computermethoden' in a clustered network of 3,348 nodes shows its links to related books and to the subject 'wetenschappelijke technieken'. %}
+
+If you are comparing graphs chronologically, as we have done here, you can also follow a single subject heading or individual work across time. For example, searching for _Computermethoden_ (Computer Methods) shows that this subject heading does not appear in the networks before 1950. Its later emergence may reflect the development of computing as a recognized field, changes in publishing, or the adoption of new subject terminology by cataloguers. By contrast, _Algemene literatuurwetenschap_ (General Literary Studies) appears in some of the earlier graphs even though literary studies did not become established as a formal academic field until the late nineteenth century. This somewhat biased classification may indicate retrospective cataloguing, later authority control, or the reclassification of older books using more modern subject headings. The graph cannot determine which explanation is correct, but it makes these chronological inconsistencies visible and identifies records or cataloguing practices that may warrant closer investigation.
+
+Other subjects can be followed to examine periods of growth, decline, or changing relationships. _Militaire wetenschappen_ (Military Sciences), for example, becomes increasingly connected to military topics toward the end of the nineteenth century and, perhaps unsurprisingly, appears to peak during that period. The 19th century saw numerous military conflicts, including the Napoleonic Wars.  Particularly in the Netherlands, the 19th century military conflicts with Bali included several significant wars, notably the Bali Wars from 1846 to 1849, which were part of the Dutch colonial conquest of Indonesia. This pattern could prompt questions about historical events, publishing activity, collecting priorities, or changes in subject description. A subject such as _Sociale wetenschappen_ (Social Sciences) can also be explored through its connections to more specific areas such as sociology, political science, sexuality studies, and _sekseverschillen_ (sex differences). Examining how these subjects cluster helps reveal when new areas of study become visible and how their relationships to broader fields change over time.
+
+Individual books provide another way to compare the networks. Because this is a directed graph, the direction of a relationship matters. Subject headings often have a high outdegree because they connect outward to multiple book titles or to broader and narrower subject labels. A book node is more usefully examined through its indegree, which shows how many subject headings point toward and describe it. Following a recurring title such as the _Bijbel_ (Bible) across the eight graphs could reveal changes in the number and types of subjects assigned to the same work. This makes it possible to examine not only whether a title remains present in the collection, but also whether its intellectual and cataloguing context changes over time.
+
+### Conclusion
+
+These examples demonstrate that increases in network density are only one part of the collection’s development. The visualizations also reveal when particular subjects emerge, when they become more or less prominent, how their neighbouring topics change, and whether older records have been described using terminology that developed later. The visualization cannot explain the cause on its own, but it helps identify where further research should begin. For collection analysis, this is useful because it helps reveal which subject areas are especially prominent and which topics sit at the center of the collection’s structure. Large subject nodes can be read as thematic anchors, while smaller clusters may point to specialized areas of collecting or emerging fields.
+
+Many more hours could be spent looking at each graphs minute details and comparing them. Depending on the collection you want to work with, this could be a much simpler or more complex task than the example. However, across our graphs and yours, the value of this method is that it makes catalogue metadata visible as a system of relationships. For the National Library of the Netherlands, this analysis suggests that the wetenschap subject is not a narrow or static science collection. Instead, it appears as a changing intellectual field shaped by categories of scientific expertise and cataloging practices shifting over the nineteenth and twentieth century. For librarians, this kind of visualization can support collection development in all sorts of ways. It could be a “changes over time” approach as explored here or it could be a comparison of different subjects or collections. One could look at publishing trends based on subject headings or emerging fields. The opportunities are endless. Anything from the bibliographic data can work as a connection, such as publishers or languages published in. In addition, for researchers, it offers a way to ask historical questions about the organization of knowledge within a national library collection and what external forces affect that process. No matter who you are, this exploratory approach cannot explain the why of the cataloging, but it helps identify where further research and collection development should begin.
+
+## Local application
+
+While this example uses metadata from publically available datasets, the same process could be applied to an institutional specific dataset made up of MARC records from that collection. Extracting those records and applying similar analysis through these steps could help better understand how your local collections connect and cluster.
+
+As an added bonus, a [`nbt-from-marcxml.ipynb`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/nbt-from-marcxml.ipynb) notebook is provided that contains some boilerplate code for use with input files in MARCXML format. The notebook uses the sample MARCXML file as input [`salinger_example.marcxml`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/salinger_example.marcxml), creates the network data, and generates an interactive graph using _ipysigma_, in a manner similar to that of the main code of this lesson.
+
+As a test case, the authors extracted MARC XML files from their library management system, Koha. This process was fairly simple, there exists a form in Koha where an administrator can fill out which records should be pulled. This will different depending on the library management system. In this example, the authors pulled records related to Criminal Justice using Library of Congress call numbers HV. These records were exported as XML and the initial code was simplified to rework the three layers of `pref_subject`, `narrower_subject`, and `broader_subject` since the subject headings were not organized this way directly from the catalog. From there the network was created. 
+
+{% include figure.html filename="enablar-lesson-3-04.jpg" alt="Screenshot of a large network of mostly greyed-out nodes, with the selected subject node in the centre and lines connecting it to highlighted book titles such as 'Kids who commit adult crimes' and 'Trapped in a vice'. The information panel shows the node’s attributes and an outdegree of 40." caption="Figure 9. Selecting the subject 'juvenile justice, administration of -- united states' in a network of 13,826 nodes highlights the 40 books linked to it." %}
+
+The scope and size of a library’s material will differ. As seen in the example image, although the author’s library is not a research library, the criminal justice collections under the HV call number were still quite extensive. As such, the number of nodes and edges obfuscates some of the helpful visual analysis that the Exact Sciences collection had. To truly be helpful for collection development, the authors would iterate on the initial graph and add some limiters to their scope to make the visualization more helpful or perhaps make multiple graphs. 
+
+This local test demonstrates that the method is transferable, but also that meaningful network analysis depends on carefully defining the scope of the dataset. A graph that includes too many items and relationships may accurately represent the collection while still being difficult to interpret visually. However, seeing the collection in this way and because of the interactive functionality of _ipysigma_, to move around and select nodes in the graph, there are still insights and analysis to be drawn, no matter what size of the dataset. 
+
+### Apply this method
+
+Begin by identifying a question you have about a library collection, whether it belongs to the library where you work or one that you regularly use. Formulating a focused question will help determine which records should be included in the network. You might ask which subjects are most prominent within a collection, how two subject areas overlap, or whether a field has grown over time. You could also investigate potential collection gaps, changes in cataloguing terminology, or the relationships among books within a particular call-number range. The question does not need to be complex, but it should be specific enough to guide the scope of the dataset and prevent the resulting graph from becoming unnecessarily large or difficult to interpret.
+
+Once you have established your question, obtain a file containing the relevant bibliographic records from your library catalogue or another collection dataset in CSV, JSON, or XML form (for the easiest workflow). Include any additional metadata categories needed to explore your question in the form of attributes. The exact export process and available file formats will depend on the library management system, and the data may require some cleaning or restructuring before it can be used. After preparing the records, you can adapt the visualization process demonstrated in this lesson by defining which values will become nodes, which relationships will become edges, and whether the network should be divided into multiple graphs for comparison. The first visualization should be treated as a starting point: reviewing its density, clusters, and individual connections can help you refine new questions for further collection analysis.
+
+### Continued learning
+
+If you are looking for more background information on network concepts and an in-depth explanation of how to analyse network data, you may be interested in the lesson on analysing network data: [Exploring and Analyzing Network Data with Python](https://programminghistorian.org/en/lessons/exploring-and-analyzing-network-data-with-python).

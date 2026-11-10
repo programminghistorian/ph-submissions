@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+    http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd"
+	xmlns="http://www.loc.gov/MARC21/slim">
+	<record>
+		<leader>02725cam a2200433Ii 4500</leader>
+		<controlfield tag="001">example001</controlfield>
+		<controlfield tag="008">120319t20101951nyu           000 f eng d</controlfield>
+		<datafield tag="020" ind1=" " ind2=" ">
+			<subfield code="a">9780316769532</subfield>
+		</datafield>
+		<datafield tag="050" ind1=" " ind2="4">
+			<subfield code="a">PS3537.A426</subfield>
+			<subfield code="b">C3 2010</subfield>
+		</datafield>
+		<datafield tag="100" ind1="1" ind2=" ">
+			<subfield code="a">Salinger, J. D.</subfield>
+			<subfield code="q">(Jerome David),</subfield>
+			<subfield code="d">1919-2010,</subfield>
+			<subfield code="e">author.</subfield>
+		</datafield>
+		<datafield tag="245" ind1="1" ind2="4">
+			<subfield code="a">The catcher in the rye /</subfield>
+			<subfield code="c">J.D. Salinger.</subfield>
+		</datafield>
+		<datafield tag="260" ind1=" " ind2=" ">
+			<subfield code="a">New York :</subfield>
+			<subfield code="b">Little, Brown and Company,</subfield>
+			<subfield code="c">2010.</subfield>
+		</datafield>
+		<datafield tag="300" ind1=" " ind2=" ">
+			<subfield code="a">277 pages ;</subfield>
+			<subfield code="c">21 cm</subfield>
+		</datafield>
+		<datafield tag="650" ind1=" " ind2="0">
+			<subfield code="a">Caulfield, Holden (Fictitious character)</subfield>
+			<subfield code="v">Fiction.</subfield>
+		</datafield>
+		<datafield tag="650" ind1=" " ind2="0">
+			<subfield code="a">Runaway teenagers</subfield>
+			<subfield code="v">Fiction.</subfield>
+		</datafield>
+		<datafield tag="650" ind1=" " ind2="0">
+			<subfield code="a">Teenage boys</subfield>
+			<subfield code="v">Fiction.</subfield>
+		</datafield>
+		<datafield tag="651" ind1=" " ind2="0">
+			<subfield code="a">New York (N.Y.)</subfield>
+			<subfield code="v">Fiction.</subfield>
+		</datafield>
+		<datafield tag="655" ind1=" " ind2="0">
+			<subfield code="a">American fiction</subfield>
+			<subfield code="y">20th century.</subfield>
+		</datafield>
+	</record>
+</collection>

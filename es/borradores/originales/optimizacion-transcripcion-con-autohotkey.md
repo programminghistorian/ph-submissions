@@ -24,57 +24,57 @@ doi: XX.XXXXX/phen0000
 
 ## Introducción
 
-Esta lección[^1] se integra en una serie de recursos didácticos de _Programming Historian_ dedicados al empleo de las recomendaciones de la Text Encoding Initiative (en adelante, TEI), basadas en XML, para la edición digital de textos. En estos se abordan cuestiones como la estructura básica de un documento o las formas más adecuadas de organizarlo para obtener mejores resultados en su posterior consulta, tratamiento y publicación. Sin embargo, hay un aspecto importante que todavía no ha sido abordado con la profundidad que merece: el proceso mismo de transcripción de un texto.
+Esta lección[^1] se integra en una serie de recursos didácticos de _Programming Historian_ dedicados al empleo de las recomendaciones de la Text Encoding Initiative (en adelante, TEI), basadas en XML, para la edición digital de textos. En ellos se abordan cuestiones como la estructura básica de un documento o las formas más adecuadas de organizarlo para obtener mejores resultados en su posterior consulta, tratamiento y publicación. Sin embargo, hay un aspecto importante que todavía no ha sido tratado con la profundidad que merece: el proceso mismo de transcripción de un texto.
 
 Aunque las herramientas de reconocimiento óptico de caracteres ([OCR](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres), por sus siglas en inglés) son cada vez más eficaces y el desarrollo de sistemas de reconocimiento de texto manuscrito ([HTR](https://es.wikipedia.org/wiki/Reconocimiento_de_escritura), por sus siglas en inglés) permite transcribir semiautomáticamente buena parte de las escrituras históricas, quienes trabajamos con documentos escritos en [letra cortesana o procesal](https://es.wikipedia.org/wiki/Escritura_espa%C3%B1ola_en_el_siglo_XV#Escritura_cortesana_del_siglo_XV) todavía no podemos confiar plenamente en estos mecanismos[^2]. De ahí que, en muchos casos, el proceso de transcripción siga siendo total o parcialmente manual.
 
 Por ello, esta lección pretende ser útil si quieres optimizar tu flujo de transcripción manual o etiquetar un texto procedente de OCR, HTR o, en general, de una transcripción previa a la que todavía no hayas aplicado ningún marcado TEI.
 
-Ahora bien, ¿cómo puede un [_script_](https://es.wikipedia.org/wiki/Script) ayudarnos en nuestras tareas de humanidades digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows orientado a la automatización de tareas y a la creación de [macros](https://es.wikipedia.org/wiki/Macro), gratuito y de código abierto. Partiendo de ejemplos sencillos, aprenderás a crear un _script_ de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
+Ahora bien, ¿cómo puede un [_script_](https://es.wikipedia.org/wiki/Script) ayudarnos en nuestras tareas de humanidades digitales? Eso es lo que aprenderás en esta lección con la ayuda de AutoHotkey (en adelante, AHK), un lenguaje de programación para Windows gratuito, de código abierto y orientado a la automatización de tareas y a la creación de [macros](https://es.wikipedia.org/wiki/Macro). Partiendo de ejemplos sencillos, aprenderás a crear un script de AHK para insertar etiquetas TEI, expandir abreviaturas frecuentes y probar el flujo de transcripción en una interfaz de usuario mínima.
 
-Esta herramienta cuenta con antecedentes en el ámbito de la traducción[^3] y nuestra propuesta pretende ser una solución inspirada en los principios de la computación mínima (_minimal computing_)[^4].
+Esta herramienta cuenta con antecedentes en el ámbito de la traducción[^3], y nuestra propuesta pretende ser una solución inspirada en los principios de la computación mínima (_minimal computing_)[^4].
 
 ## Objetivos
 
 Una vez finalizada la lección, esperamos que puedas:
 
 - Instalar y configurar AHK en Windows para automatizar tus tareas de transcripción.
-- Definir _hotkeys_ personalizadas para etiquetar selecciones, transformar texto y abrir programas o recursos web.
-- Crear tus propias _hotstrings_ para desarrollar abreviaturas e insertar fragmentos de texto o estructuras basadas en TEI.
-- Adaptar y ampliar el _script_ que te proporcionamos según tus necesidades, creando tu propio flujo de trabajo y convirtiéndolo en un ejecutable para que lo puedas usar en más de un computador.
+- Definir 'hotkeys' personalizadas para etiquetar selecciones, transformar texto y abrir programas o recursos web.
+- Crear tus propias 'hotstrings' para desarrollar abreviaturas e insertar fragmentos de texto o estructuras basadas en TEI.
+- Adaptar y ampliar el script que te proporcionamos según tus necesidades, creando tu propio flujo de trabajo y convirtiéndolo en un ejecutable para que lo puedas usar en más de un computador.
 - Opcionalmente, crear una interfaz gráfica sencilla.
 
 ## ¿Qué debes saber?
 
-Al tratarse de una lección centrada en la edición de textos con TEI, te recomendamos que antes hayas leído las dos lecciones de Nicolás Vaughan, tituladas Introducción a la codificación de textos en TEI ([parte 1](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1) y [parte 2](https://programminghistorian.org/es/lecciones/introduccion-a-tei-2)), y la guía de Susanna Allés-Torrent, titulada [Introducción a la Text Encoding Initiative](https://tthub.io/aprende/tutorial/introduccion-text-encoding-initiative). Si después quieres visualizar tus resultados en un entorno web, también puedes consultar la lección de Gabriel Calarco y Gimena del Río Riande sobre [CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean).
+Al tratarse de una lección centrada en la edición de textos con TEI, te recomendamos que antes hayas leído las dos lecciones de Nicolás Vaughan, tituladas _Introducción a la codificación de textos en TEI_([parte 1](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1) y [parte 2](https://programminghistorian.org/es/lecciones/introduccion-a-tei-2)), y la guía de Susanna Allés-Torrent, titulada [_Introducción a la Text Encoding Initiative_](https://tthub.io/aprende/tutorial/introduccion-text-encoding-initiative). Si después quieres visualizar tus resultados _online_, también puedes consultar la lección de Gabriel Calarco y Gimena del Río Riande sobre [CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean).
 
 En particular, para la sección dedicada a las funciones, conviene que tengas algunas nociones básicas de programación. No necesitas experiencia avanzada: los fragmentos de código estarán acompañados de una explicación paso a paso. Sin embargo, te resultará útil entender qué es una función y cómo operan estructuras condicionales como `if`, puesto que AHK comparte algunos principios con otros lenguajes de programación como Python o R. Para reforzar estos conceptos, te recomendamos consultar las lecciones de William J. Turkel y Adam Crymble, [Reutilización de código y modularidad en Python](https://programminghistorian.org/es/lecciones/reutilizacion-de-codigo-y-modularidad) y [De HTML a lista de palabras (parte 2)](https://programminghistorian.org/es/lecciones/de-html-a-lista-de-palabras-2).
 
 ## ¿Qué necesitas?
 
-El primer requisito es disponer de un computador con Windows. Aunque AHK es gratuito y de código abierto, su dependencia de este sistema operativo limita el alcance de la lección y excluye a quienes trabajan exclusivamente en otros sistemas. Sin embargo, hemos elegido esta herramienta porque permite automatizar tareas mediante _scripts_ breves, sin necesidad de instalar entornos de programación complejos ni disponer de conocimientos avanzados. De este modo, ofrece a una amplia audiencia de humanidades digitales una vía accesible de entrada a la automatización, ya que Windows es el [sistema operativo para computadores de escritorio y portátiles más utilizado en el mundo](https://en.wikipedia.org/wiki/Usage_share_of_operating_systems#Desktop_and_laptop_computers)[^5].
+El primer requisito es disponer de un computador con Windows. Aunque AHK es gratuito y de código abierto, su dependencia de este sistema operativo limita el alcance de la lección y excluye a quienes trabajan exclusivamente en otros sistemas. Sin embargo, hemos elegido esta herramienta porque permite automatizar tareas mediante scripts breves, sin necesidad de instalar entornos de programación complejos ni disponer de conocimientos avanzados. De este modo, ofrece a una amplia audiencia de humanidades digitales una vía accesible de entrada a la automatización, ya que Windows es el [sistema operativo para computadores de escritorio y portátiles más utilizado en el mundo](https://en.wikipedia.org/wiki/Usage_share_of_operating_systems#Desktop_and_laptop_computers)[^5].
 
-Además de AHK, necesitarás contar con un editor de texto plano. Aunque podrías utilizar el Bloc de notas de Windows, conviene trabajar con un editor que cuente con funcionalidades avanzadas, como [Notepad++](https://notepad-plus-plus.org/) o [Visual Studio Code](https://code.visualstudio.com/), ya que facilitará la lectura y edición del código de tu _script_.
+Además de AHK, necesitarás contar con un editor de texto plano. Aunque podrías utilizar el Bloc de notas de Windows, conviene trabajar con un editor que cuente con funcionalidades avanzadas, como [Notepad++](https://notepad-plus-plus.org/) o [Visual Studio Code](https://code.visualstudio.com/), ya que facilitará la lectura y edición del código de tu script.
 
 El primer paso, entonces, es acceder a la página oficial de [AutoHotkey](https://www.autohotkey.com/) e instalar el programa en tu computador. Los archivos creados para AHK tendrán la extensión `.ahk`. Utilizaremos AutoHotkey 2 porque la versión 1 está desaconsejada por su desarrollador y porque la versión más reciente incorpora numerosas mejoras y funcionalidades nuevas[^6].
 
-Instalado AHK, puedes abrir _AutoHotkey Dash_, su interfaz de inicio. Allí verás varias opciones; sin embargo, por ahora solo nos interesa crear un nuevo _script_.
+Instalado AHK, puedes abrir AutoHotkey Dash, su interfaz de inicio. Allí verás varias opciones; sin embargo, por ahora solo nos interesa crear un nuevo script.
 
 <div class="alert alert-info" markdown="1">
-Algunos antivirus pueden identificar AHK o los _scripts_ que hayas creado con esta herramienta como potencialmente peligrosos. Por ello, obtén siempre el programa desde la web oficial y comprueba el origen de cualquier _script_ de terceros antes de ejecutarlo.
+Algunos antivirus pueden identificar AHK o los scripts que hayas creado con esta herramienta como potencialmente peligrosos. Por ello, obtén siempre el programa desde la web oficial y comprueba el origen de cualquier script de terceros antes de ejecutarlo.
 </div>
 
-## ¿Qué son las hotkeys y hotstrings? Aprende con tu primer script
+## ¿Qué son las 'hotkeys' y 'hotstrings'? Aprende con tu primer script
 
 Buena parte de lo que encontrarás en esta sección se basa en la [explicación introductoria de tidbit](https://www.autohotkey.com/docs/v2/Tutorial.htm), aunque aquí ajustaremos sus indicaciones al objetivo de esta lección. Te recomendamos consultarla no solo para resolver dudas, sino también para ampliar tus conocimientos y aprovechar al máximo las posibilidades de AHK.
 
-Lo primero que haremos será crear una carpeta en Windows, que llamaremos `ahk_scripts`. Puedes elegir la ubicación que prefieras. Una vez hecho esto, puedes crear tu _script_ de dos formas:
+Lo primero que haremos será crear una carpeta en Windows, que llamaremos `ahk_scripts`. Puedes elegir la ubicación que prefieras. Una vez hecho esto, puedes crear tu script de dos formas:
 
 1. Desde AutoHotkey Dash: en este caso, deberás seleccionar la opción **New script**, indicar un nombre para el archivo, elegir la carpeta de destino y marcar la opción **Minimal for v2**, plantilla que introduce la instrucción `#Requires AutoHotkey v2.0`.
 
 2. Desde la carpeta `ahk_scripts`: para ello, busca la opción **Nuevo** y, después, **AutoHotkey script** o similar. A continuación, asigna un nombre al archivo y añade al comienzo la línea `#Requires AutoHotkey v2.0`.
 
-Nuestro script se llamará `tph_script.ahk`. A lo largo de la lección, incorporaremos los ejemplos a este mismo archivo, salvo aquellos que puedan generar conflicto, lo cual indicaremos cuando corresponda.
+Nuestro script se llamará `tph_script.ahk`. A lo largo de la lección, incorporaremos los ejemplos a este mismo archivo, salvo aquellos que puedan generar conflicto, algo que te indicaremos cuando corresponda.
 
 Una vez indicado que el archivo debe ejecutarse con AHK 2, aprenderás dos conceptos básicos para empezar a trabajar con este lenguaje: las 'hotkeys' y las 'hotstrings'.
 
@@ -82,7 +82,7 @@ Una vez indicado que el archivo debe ejecutarse con AHK 2, aprenderás dos conce
 
 Las primeras seguramente te resultarán familiares, aunque no las hayas llamado así hasta ahora. Una 'hotkey' es una combinación de teclas que permite ejecutar una acción o comando, como ocurre con las combinaciones habituales para copiar con _Ctrl + C_ o pegar con _Ctrl + V_. Como ves, ¡ya utilizabas 'hotkeys' sin saberlo!
 
-Antes de ver cómo configurar una 'hotkey' conviene que conozcas cómo se representan en AHK algunas teclas especiales, como _Ctrl_, _Windows_, _Alt_ o _Shift_. Para ello, utilizaremos una versión modificada de la tabla para principiantes de tidbit:
+Antes de ver cómo configurar una 'hotkey', conviene que conozcas cómo se representan en AHK algunas teclas especiales, como _Ctrl_, _Windows_, _Alt_ o _Shift_. Para ello, utilizaremos una versión modificada de la tabla para principiantes de tidbit:
 
 | Tecla | Representación en AHK 2 |
 |---|---|
@@ -101,7 +101,7 @@ De igual manera, como ocurre en otros lenguajes de programación, AHK cuenta con
 | `Run` | Ejecuta un programa externo o abre una URL en el navegador predeterminado. |
 
 <div class="alert alert-info" markdown="1">
-De aquí en adelante usaremos `SendText`, una variante de `Send` destinada a enviar texto literal y, por ello, más adecuada en buena parte de los contextos que veremos porque evita que determinados caracteres se interpreten como teclas o pulsaciones especiales.
+De aquí en adelante usaremos `SendText`, una variante de `Send` destinada a enviar texto literal y, por ello, más adecuada en buena parte de los contextos que veremos, porque evita que determinados caracteres se interpreten como teclas o pulsaciones especiales.
 </div>
 
 Asimismo, debes conocer una parte esencial de la sintaxis de AHK: los dobles dos puntos (`::`). En una 'hotkey', lo situado a la izquierda de los dobles dos puntos indica la combinación de teclas que debes pulsar. Lo situado a la derecha, o dentro del bloque delimitado por llaves (`{}`), indica la acción que se ejecutará.
@@ -117,11 +117,11 @@ También puedes escribir la misma instrucción entre llaves, en forma de bloque:
     SendText "Hola, mundo"
 }
 ```
-Recuerda: no uses ambas formas en el mismo script, solo una de ellas. Guárdalo y ejecútalo como lo harías con cualquier otro archivo asociado a un programa en Windows. En caso de que la extensión `.ahk` no estuviese asociada automáticamente con AHK, deberás seleccionar AutoHotkey en el listado de opciones que te ofrecerá Windows para abrir el archivo. Después, abre cualquier campo de texto y presiona `Ctrl + Alt + H`: ¡es tu primera 'hotkey' en funcionamiento!
+Recuerda: no uses ambas formas en el mismo script, solo una de ellas. Guárdalo y ejecútalo como lo harías con cualquier otro archivo asociado a un programa en Windows. En caso de que la extensión `.ahk` no estuviese asociada automáticamente con AHK, deberás seleccionar AutoHotkey en el listado de opciones que te ofrecerá Windows para abrir el archivo. Después, abre cualquier campo de texto y presiona _Ctrl + Alt + H_: ¡es tu primera 'hotkey' en funcionamiento!
 
-A partir de este punto, utilizaremos como ejemplo guía un fragmento de texto propuesto por Nicolás Vaughan en la parte 1 de su lección _Introducción a TEI_:
+A partir de este punto, utilizaremos como ejemplo guía un fragmento de texto propuesto por Nicolás Vaughan en la parte 1 de su lección _Introducción a la codificación de textos en TEI_:
 
-> Hay muchas formas de codificar un texto. Por ejemplo, podemos encerrar entre asteriscos simples los nombres propios de personas: \*Simón Bolívar\*, \*Soledad Acosta\*, etc. Y entre asteriscos dobles los de lugares: \*\*Bogotá\*\*, \*\*Framingham\*\*, etc. Podemos también usar guiones bajos para indicar los nombres de obras y de libros: \_La divina comedia\, \_Cien años de soledad\, etc. Estos signos sirven para etiquetar o marcar el texto que encierran, para así identificar en el texto un determinado contenido. Como es fácil de imaginar, las posibilidades de codificación son casi infinitas.
+> Hay muchas formas de codificar un texto. Por ejemplo, podemos encerrar entre asteriscos simples los nombres propios de personas: \*Simón Bolívar\*, \*Soledad Acosta\*, etc. Y entre asteriscos dobles los de lugares: \*\*Bogotá\*\*, \*\*Framingham\*\*, etc. Podemos también usar guiones bajos para indicar los nombres de obras y de libros: \_La divina comedia_\, \_Cien años de soledad_\, etc. Estos signos sirven para etiquetar o marcar el texto que encierran, para así identificar en el texto un determinado contenido. Como es fácil de imaginar, las posibilidades de codificación son casi infinitas.
 
 A medida que avancemos, tomaremos fragmentos de este texto para ver cómo AHK nos puede ayudar en el proceso de marcado y automatización.
 
@@ -157,7 +157,7 @@ Como ves, el procedimiento es sencillo, aunque sería mucho más cómodo que el 
 El valor de `{Left N}` dependerá de la etiqueta de apertura; si cambias su nombre, deberás recalcular el número de desplazamientos a la izquierda que necesites.
 </div>
 
-En este caso es necesario usar llaves, ya que nuestro script combina dos acciones. No olvides que no puedes usar una misma 'hotkey' en dos ocasiones: modifica o elimina la anterior.
+En este caso, es necesario usar llaves, ya que nuestro script combina dos acciones. No olvides que no puedes usar una misma 'hotkey' en dos ocasiones: modifica o elimina la anterior.
 
 Ahora vamos a conocer la función `Run`. Como indicamos en la tabla, esta función permite abrir programas instalados en el computador, pero también puede utilizarse para abrir enlaces web. Por ejemplo, para abrir una página web con una combinación de teclas, puedes escribir:
 ```ahk
@@ -168,7 +168,7 @@ Para abrir un programa, debes indicar el nombre del ejecutable (`.exe`). Por eje
 !2::Run "notepad.exe"
 ```
 <div class="alert alert-warning" markdown="1">
-En el caso de programas de terceros, conviene comprobar el nombre exacto del ejecutable en la carpeta donde fue instalado y, si es necesario, indicar la ruta completa.
+En el caso de programas de terceros, conviene comprobar el nombre exacto del archivo del programa en la carpeta donde fue instalado y, si es necesario, indicar la ruta completa.
 </div>
 
 Abrir un único acceso directo puede ser útil, pero la mayor utilidad de la función `Run` aparece cuando necesitas abrir varios recursos que forman parte de tu flujo de trabajo. Por ejemplo, supongamos que necesitas abrir el Portal de Archivos Españoles (PARES) para buscar documentación, el _Diccionario de abreviaturas novohispanas_ (DICABENOVO) y LibreOffice Writer para transcribir:
@@ -546,9 +546,9 @@ Estas líneas de código permiten que, al seleccionar esos fragmentos de texto, 
 
 #### Opcional: crea una interfaz
 
-Aunque los _scripts_ siempre muestran por defecto un icono en el área de notificación desde donde puedes controlarlos, puede ser de utilidad contar con una interfaz gráfica. Empezaremos por una que llamaremos mínima, que aprovecharemos como espacio de pruebas y control.
+Aunque los scripts siempre muestran por defecto un icono en el área de notificación desde donde puedes controlarlos, puede ser de utilidad contar con una interfaz gráfica. Empezaremos por una que llamaremos 'mínima', que aprovecharemos como espacio de pruebas y control.
 
-El funcionamiento sigue una lógica basada en eventos, es decir, las acciones que la persona usuaria realice sobre la interfaz desencadenarán funciones asociadas a estos eventos:
+El funcionamiento sigue una lógica basada en eventos, es decir, las acciones que realices sobre la interfaz desencadenarán funciones asociadas a estos eventos:
 ```ahk
 global scriptActive := true
 global mainGui, testEdit, toggleButton
@@ -616,52 +616,52 @@ confirmExit(guiObj) {
     return true
 }
 ```
-{% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey-02.jpg" alt="Interfaz gráfica del _script_ de AutoHotkey con una caja de texto para probar atajos y un botón para desactivarlos" caption="Figura 1. Interfaz gráfica de prueba creada con el _script_." %}
+{% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey-02.jpg" alt="Interfaz gráfica del script de AutoHotkey con una caja de texto para probar atajos y un botón para desactivarlos" caption="Figura 1. Interfaz gráfica de prueba creada con el script." %}
 
 Las dos primeras líneas declaran las variables que usará la interfaz: `scriptActive`, que almacena el estado de los atajos, y `mainGui`, `testEdit` y `toggleButton`, que guardarán sus componentes. La tercera llama a `createGui()`, la función encargada de construirla.
 
-Ten en cuenta que en la interfaz que hemos construido, las variables se declaran como globales al inicio del _script_. Aunque la palabra `global` es redundante en ese nivel, se mantiene para hacer explícito su alcance. En cambio, las declaraciones incluidas en `createGui()` y `toggleScript()` son necesarias, pues estas funciones asignan nuevos valores a las variables y, en AHK v2, las funciones trabajan con variables locales de manera predeterminada.
+Ten en cuenta que, en la interfaz que hemos construido, las variables se declaran como globales al inicio del script. Aunque la palabra `global` es redundante en ese nivel, se mantiene para hacer explícito su alcance. En cambio, las declaraciones incluidas en `createGui()` y `toggleScript()` son necesarias, pues estas funciones asignan nuevos valores a las variables y, en AHK v2, las funciones trabajan con variables locales de manera predeterminada.
 
-Dentro de `createGui()` se crea la ventana con `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que no pueda cambiar de tamaño (`-Resize`) y que pueda minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para quien lo utilice. Recuerda que para activar la interfaz de usuario solo tienes que ejecutar el _script_ como lo harías normalmente.
+Dentro de `createGui()` se crea la ventana con `mainGui := Gui(...)`, para la que, además, hemos definido que se mantenga por encima de las demás (`+AlwaysOnTop`), que no pueda cambiar de tamaño (`-Resize`) y que pueda minimizarse (`+MinimizeBox`). Asimismo, le asignamos un nombre. Posteriormente, definimos el tipo de letra y tamaño y, a continuación, añadimos un pequeño texto para quien la utilice. Recuerda que para activar la interfaz de usuario solo tienes que ejecutar el script como lo harías normalmente.
 
-Con `testEdit` podemos añadir una caja de texto, que será donde podamos hacer las pruebas que consideremos necesarias antes de trabajar con el _script_ sobre nuestros documentos. En ella definimos el ancho (`w500`), el alto (`h180`) y permitimos el uso del tabulador (`WantTab`) en el campo de texto. Se añaden algunos ejemplos de uso, aunque puedes eliminarlos si así lo prefieres.
+Con `testEdit` podemos añadir una caja de texto, que será donde podamos hacer las pruebas que consideremos necesarias antes de trabajar con el script sobre nuestros documentos. En ella definimos el ancho (`w500`), el alto (`h180`) y permitimos el uso del tabulador (`WantTab`) en el campo de texto. Se añaden algunos ejemplos de uso, aunque puedes eliminarlos si así lo prefieres.
 
 Configuramos un botón para activar y desactivar los atajos con `toggleButton` que, al pulsarlo, ejecuta `toggleScript()`, el cual activa o suspende los atajos. Asimismo, hemos configurado la ventana para que ajuste su tamaño al contenido (`AutoSize`) y aparezca centrada en pantalla (`Center`).
 
-En último lugar, hemos vinculado el evento de cierre de la ventana a la función `confirmExit()`, mediante la cual se abrirá un cuadro de diálogo asociado a la ventana principal en el que se preguntará si se quiere finalizar por completo el _script_ o mantenerlo activo. Así evitamos que la interfaz desaparezca mientras el _script_ continúa ejecutándose en el área de notificación.
+En último lugar, hemos vinculado el evento de cierre de la ventana a la función `confirmExit()`, mediante la cual se abrirá un cuadro de diálogo asociado a la ventana principal en el que se preguntará si se quiere finalizar por completo el script o mantenerlo activo. Así evitamos que la interfaz desaparezca mientras el script continúa ejecutándose en el área de notificación.
 
-Te dejamos a continuación una versión final y depurada del _script_ resultante de la lección para que puedas modificarlo como quieras: [`tph_script.ahk`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.ahk).
+Te dejamos a continuación una versión final y depurada del script resultante de la lección para que puedas modificarlo como quieras: [`tph_script.ahk`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.ahk).
 
 ## Compilación a un ejecutable
 
-Ya hemos construido un _script_ que cubre buena parte del flujo de trabajo vinculado a la edición digital de textos. Los archivos en formato `.ahk` pueden compartirse con otras personas, pero es necesario que la persona destinataria tenga AHK instalado. Sin embargo, si queremos utilizarlo en otros computadores sin depender de una instalación, puede ser conveniente convertirlo en un archivo ejecutable (`.exe`).
+Ya hemos construido un script que cubre buena parte del flujo de trabajo vinculado a la edición digital de textos. Los archivos en formato `.ahk` pueden compartirse con otras personas, pero es necesario que la persona destinataria tenga AHK instalado. Sin embargo, si queremos utilizarlo en otros computadores sin depender de una instalación, puede ser conveniente convertirlo en un archivo ejecutable (`.exe`).
 
-AHK cuenta con un compilador que permite convertir tus _scripts_ `.ahk` a `.exe` llamado `Ahk2Exe`. Lo puedes instalar desde el propio AutoHotkey Dash entrando en la opción **Compile**. De esta manera, podrás ejecutar tu _script_ sin necesidad de instalar AHK en el equipo de destino, ya que se compila como un programa portable. Por tanto, puedes llevarlo en una memoria USB o en un disco duro portátil.
+AHK cuenta con un compilador que permite convertir tus scripts `.ahk` a `.exe` llamado `Ahk2Exe`. Lo puedes instalar desde el propio AutoHotkey Dash entrando en la opción **Compile**. De esta manera, podrás ejecutar tu script sin necesidad de instalar AHK en el equipo de destino, ya que se compila como un programa portable. Por tanto, puedes llevarlo en una memoria USB o en un disco duro portátil.
 
 Para hacerlo, abre el compilador `Ahk2Exe`:
 
 {% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey-01.jpg" alt="Ventana del compilador Ahk2Exe con campos para seleccionar el archivo fuente, el archivo de destino, el icono personalizado y el botón de convertir a ejecutable" caption="Figura 2. Interfaz de usuario de Ahk2Exe." %}
 
-Una vez allí, busca el _script_ que has creado en la carpeta (`tph_script.ahk`) y deja el resto de opciones predeterminadas, ya que suelen funcionar en la mayoría de computadores Windows. Además, tienes la posibilidad de añadir un icono al `.exe`; recuerda que debe estar en formato `.ico`.
+Una vez allí, busca el script que has creado en la carpeta (`tph_script.ahk`) y deja el resto de opciones predeterminadas, ya que suelen funcionar en la mayoría de computadores Windows. Además, tienes la posibilidad de añadir un icono al `.exe`; recuerda que debe estar en formato `.ico`.
 
 <div class="alert alert-warning" markdown="1">
-Los ejecutables generados con `Ahk2Exe` pueden ser identificados por algunos programas antivirus como posibles amenazas, puesto que el mismo compilador también es utilizado para empaquetar programas maliciosos, generando así falsos positivos. Por tanto, te recomendamos que compiles por tu cuenta el `.ahk` que te enlazamos más arriba.
+Los programas generados con `Ahk2Exe` pueden ser identificados por algunos antivirus como posibles amenazas, puesto que el mismo compilador también es utilizado para empaquetar codigos maliciosos, generando así falsos positivos. Por tanto, te recomendamos que compiles por tu cuenta el `.ahk` que te enlazamos más arriba.
 </div>
 
 ## Conclusiones
 
 Como habrás observado hasta ahora, en esta lección solo hemos explorado una pequeña parte de lo que es posible hacer con AHK. Además, nos hemos centrado en algunas de sus funciones más sencillas, pero con este lenguaje podemos hacer mucho más. AHK no solo permite reducir o simplificar tareas repetitivas, sino también construir herramientas mínimas que se adapten a lo que requiere nuestro corpus, sin necesidad de desarrollar una aplicación compleja desde cero.
 
-Por ello, creemos que puede ser un recurso sumamente útil para quienes quieran mejorar su flujo de trabajo paleográfico o de edición sin necesidad de tener conocimientos avanzados de programación. De hecho, puedes ayudarte con inteligencia artificial (IA) generativa para desarrollar tu propio _script_, partiendo de lo aprendido en esta lección y de la documentación oficial.
+Por ello, creemos que puede ser un recurso sumamente útil para quienes quieran mejorar su flujo de trabajo paleográfico o de edición sin necesidad de tener conocimientos avanzados de programación. De hecho, puedes ayudarte con inteligencia artificial (IA) generativa para desarrollar tu propio script, partiendo de lo aprendido en esta lección y de la documentación oficial.
 
 Te recomendamos explorar los repositorios de GitHub basados en AHK, ya que permiten imaginar flujos de trabajo mucho más complejos, especialmente aquellos que conectan con interfaces de programación de aplicaciones (API), herramientas de OCR o modelos de lenguaje de gran tamaño (LLM).
 
-Nuestra recomendación final es que programes y hagas pruebas de forma constante. De esa manera, podrás ampliar y mejorar tu _script_ a medida que trabajes con tus propios materiales. Como has visto, AHK ofrece múltiples posibilidades y esa flexibilidad es una gran ventaja para quienes trabajamos en humanidades digitales: nuestras necesidades son diversas, nuestros corpus presentan problemas distintos y puede que lo que funcione para ti no lo haga para otra persona.
+Nuestra recomendación final es que programes y hagas pruebas de forma constante. De esa manera, podrás ampliar y mejorar tu script a medida que trabajes con tus propios materiales. Como has visto, AHK ofrece múltiples posibilidades y esa flexibilidad es una gran ventaja para quienes trabajamos en humanidades digitales: nuestras necesidades son diversas, nuestros corpus presentan problemas distintos y puede que lo que funcione para ti no lo haga para otra persona.
 
 ## Referencias
 
 - Campos Leza, Fernando. "Introducción a AutoHotkey para traductores." _La linterna del traductor_, 4 de abril de 2017. [https://lalinternadeltraductor.org/n14/autohotkey.html](https://lalinternadeltraductor.org/n14/autohotkey.html).
-- Gray, Steve, Chris Mallett, AutoIt Team, at al. AutoHotkey (versión 2.0.29). GNU General Public License. 2026. [https://github.com/AutoHotkey/AutoHotkey](https://github.com/AutoHotkey/AutoHotkey).
+- Gray, Steve, Chris Mallett, AutoIt Team, et al. AutoHotkey (versión 2.0.29). GNU General Public License. 2026. [https://github.com/AutoHotkey/AutoHotkey](https://github.com/AutoHotkey/AutoHotkey).
 - Gray, Steve, Chris Mallett, AutoIt Team, et al. "Hotkeys - Definition & Usage AutoHotkey v2." AutoHotkey v2 Documentation. Consultado el 6 de octubre de 2026. [https://www.autohotkey.com/docs/v2/Hotkeys.htm](https://www.autohotkey.com/docs/v2/Hotkeys.htm).
 - Instituto de Investigaciones Filológicas, Universidad Nacional Autónoma de México. "Diccionario de abreviaturas novohispanas Ak’ab Ts’ib." Última actualización el 2 de septiembre de 2024. [https://www.iifilologicas.unam.mx/dicabenovo/](https://www.iifilologicas.unam.mx/dicabenovo/).
 - Río Riande, Gimena del. "Humanidades Digitales o las Humanidades en la intersección de lo digital, lo público, lo mínimo y lo abierto." _Publicaciones de la Asociación Argentina de Humanidades Digitales_ 3 (2022): e038. [https://doi.org/10.24215/27187470e038](https://doi.org/10.24215/27187470e038).
@@ -671,12 +671,12 @@ Nuestra recomendación final es que programes y hagas pruebas de forma constante
 
 ## Notas
 
-[^1]: El texto de esta lección ha sido revisado con herramientas de IA generativa, en concreto, ChatGPT (modelo 5.6 Sol). Quiero agradecer a las revisoras Inmaculada Asensio y Alexandra Wingate sus valiosas aportaciones, así como a Nicolás Vaughan por su exhaustivo trabajo de revisión y su ayuda en la preparación de la lección. Finalmente, agradezco al equipo editorial de _The Programming Historian en español_ por el acompañamiento en el proceso y, en particular, a Anisa Hawes y a Jennifer Isasi.
+[^1]: El texto de esta lección ha sido revisado con herramientas de IA generativa, en concreto, ChatGPT (modelo 5.6 Sol). Quiero agradecer a las revisoras Inmaculada Asensio y Alexandra Wingate sus valiosas aportaciones, así como a Nicolás Vaughan por su exhaustivo trabajo de revisión y su ayuda en la preparación de la lección. Finalmente, agradezco al equipo editorial de _Programming Historian en español_ por el acompañamiento en el proceso y, en particular, a Anisa Hawes y a Jennifer Isasi.
 [^2]: El tipo de letra no es la única barrera a la que nos enfrentamos desde la investigación: las digitalizaciones de los manuscritos no siempre son lo suficientemente fieles para poder aplicar estas herramientas que, además, en algunos casos, son de pago o están sujetas a límites de uso. Las alternativas de código abierto y gratuitas, por su parte, requieren ciertos conocimientos técnicos superiores a los necesarios para utilizar la herramienta aquí propuesta.
 [^3]: Fernando Campos Leza, "Introducción a AutoHotkey."
 [^4]: Gimena del Río Riande, "Humanidades Digitales"; Gimena del Río Riande et al., "Minimal Computing 101."
 [^5]: Enlazamos a Wikipedia en inglés por la ausencia de una fuente equivalente en español. La compatibilidad está garantizada en computadores con sistema operativo Windows 7 o superior. Aunque no se aborda en esta lección, en Linux existe [AutoKey](https://github.com/autokey/autokey), una herramienta independiente de automatización de escritorio con funciones similares. Está diseñada para entornos X11 y presenta problemas de compatibilidad cuando se utiliza Wayland en lugar de Xorg. Algo similar ocurre con implementaciones como [AHK_X11](https://github.com/phil294/AHK_X11). En macOS, una alternativa multiplataforma es [Espanso](https://espanso.org/), aunque su funcionamiento difiere del de AHK y no reproduce todas las funciones utilizadas en esta lección. Agradezco a Alexandra Wingate por esta valiosa aportación.
-[^6]: Puedes acceder al listado detallado de cambios aquí: [https://www.autohotkey.com/docs/v2/v2-changes.htm](https://www.autohotkey.com/docs/v2/v2-changes.htm). También encontrarás el enlace a un convertidor de _scripts_ versión 1 a 2.
+[^6]: Puedes acceder al listado detallado de cambios aquí: [https://www.autohotkey.com/docs/v2/v2-changes.htm](https://www.autohotkey.com/docs/v2/v2-changes.htm). También encontrarás el enlace a un convertidor de scripts versión 1 a 2.
 [^7]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-gap.html). Traducción basada en la original y regularizada por el autor.
 [^8]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-supplied.html). Traducción basada en la original y regularizada por el autor.
 [^9]: TEI Consortium, _The TEI Guidelines_, [https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-ex.html](https://tei-c.org/release/doc/tei-p5-doc/es/html/ref-ex.html). Véase un ejemplo de su uso en [https://tei-c.org/release/doc/tei-p5-doc/es/html/CO.html#COEDADD](https://tei-c.org/release/doc/tei-p5-doc/es/html/CO.html#COEDADD).

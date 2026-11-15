@@ -200,13 +200,13 @@ La sintaxis es sencilla: entre el primer y el segundo par de dos puntos escribim
 ```ahk
 ::tph::Programming Historian
 ```
-Escribe ahora `tph` en cualquier campo de texto y pulsa una tecla de cierre, como espacio, punto o salto de línea. Verás que AHK sustituye automáticamente la abreviatura por _The Programming Historian_. Mira lo que pasa si añadimos un asterisco después de los primeros dos puntos:
+Escribe ahora `tph` en cualquier campo de texto y pulsa una tecla de cierre, como espacio, punto o salto de línea. Verás que AHK sustituye automáticamente la abreviatura por _Programming Historian_. Mira lo que pasa si añadimos un asterisco después de los primeros dos puntos:
 ```ahk
-:*:tph::The Programming Historian
+:*:tph::Programming Historian
 ```
-La opción `*` hace que la _hotstring_ se active inmediatamente al completar la secuencia, sin necesidad de pulsar después un punto, un espacio, la tecla `Enter` u otro carácter de cierre. Recuerda no dejar las dos versiones de la _hotstring_ en el _script_: no funcionará.
+La opción `*` hace que la 'hotstring' se active inmediatamente al completar la secuencia, sin necesidad de pulsar después un punto, un espacio, la tecla _Enter_ u otro carácter de cierre. Recuerda no dejar las dos versiones de la 'hotstring' en el script: no funcionará.
 
-Como habrás observado, puedes aplicar este procedimiento a cualquier abreviatura frecuente, histórica o no. En tareas como la transcripción manual, resulta especialmente conveniente para expandir abreviaturas tomadas de recursos como el DICABENOVO o para insertar formas ya adaptadas a las necesidades de tu corpus, incluido el marcado que quieras aplicar desde el primer momento.
+Como habrás observado, puedes aplicar este procedimiento a cualquier abreviatura frecuente, histórica o no. En tareas como la transcripción manual, resulta especialmente conveniente cuando necesites expandir las que provienen de recursos como el DICABENOVO, o insertar formas ya adaptadas a las necesidades de tu corpus (tu colección de textos), incluyendo las etiquetas que quieras aplicar desde el inicio.
 
 Según las directrices TEI P5, utilizamos el elemento `<ex>` para marcar las letras añadidas por quien edita durante el desarrollo de una abreviatura[^9]. Veamos un ejemplo con la palabra _ulteriormente_ y una de sus posibles abreviaturas, tomada del DICABENOVO.
 
@@ -214,7 +214,7 @@ Según las directrices TEI P5, utilizamos el elemento `<ex>` para marcar las let
 Recuerda que la edición en TEI admite múltiples soluciones. Por ejemplo, puedes representar conjuntamente la forma original y su desarrollo mediante la estructura `<choice><abbr>…</abbr><expan>…</expan></choice>`. Sin embargo, en esta lección usamos `<ex>` porque nuestro objetivo es marcar únicamente las letras suplidas en el interior de la palabra.
 </div>
 
-En un texto podemos encontrar la forma abreviada _ulteriormte_. Si queremos transcribirla con la abreviatura desarrollada y marcada en TEI, podemos representarla así: `ulteriorm<ex>en</ex>te`. Para automatizar este proceso, podríamos emplear la siguiente _hotstring_:
+En un texto podemos encontrar la forma abreviada _ulteriormte_. Si queremos transcribirla con la abreviatura desarrollada y marcada en TEI, podemos representarla así: `ulteriorm<ex>en</ex>te`. Para automatizar este proceso, podríamos emplear la siguiente 'hotstring':
 ```ahk
 :*:ulte.::ulteriorm<ex>en</ex>te
 ```
@@ -225,14 +225,14 @@ En casos como este, conviene evitar secuencias de activación demasiado largas. 
 :*:ulto.::ult<ex>im</ex>o
 :*:ulta.::ult<ex>im</ex>a
 ```
-Otra posibilidad es usar como secuencia de activación la abreviatura original delimitada por caracteres especiales, como el punto y coma (te hemos dejado en el _script_ descargable ambas opciones). Por ejemplo:
+Otra posibilidad es usar como secuencia de activación la abreviatura original delimitada por caracteres especiales, como el punto y coma (te hemos dejado en el script descargable ambas opciones). Por ejemplo:
 ```ahk
 :*:;ulte;::ulteriorm<ex>en</ex>te
 :*:;ulti;::ultimam<ex>en</ex>te
 :*:;ulto;::ult<ex>im</ex>o
 :*:;ulta;::ult<ex>im</ex>a
 ```
-Ahora, ¡haz la prueba en cualquier campo de texto! Como actividad, te proponemos trabajar con una letra del DICABENOVO, la que prefieras. El objetivo es que practiques la creación de _hotstrings_ y reflexiones sobre cómo puedes adaptarlas a las necesidades de tu corpus. En el _script_ de ejemplo que acompaña a esta lección encontrarás desarrollada la letra U.
+Ahora, ¡haz la prueba en cualquier campo de texto! Como actividad, te proponemos trabajar con una letra del DICABENOVO, la que prefieras. El objetivo es que practiques la creación de 'hotstrings' y reflexiones sobre cómo puedes adaptarlas a las necesidades de tu corpus. En el script de ejemplo que acompaña a esta lección encontrarás desarrollada la letra U.
 
 Combinando todo lo que hemos aprendido hasta ahora, podríamos crear algo similar al autocompletado que usan los entornos de programación para preetiquetar entidades como nombres, lugares o títulos de obras:
 ```ahk
@@ -243,7 +243,7 @@ Combinando todo lo que hemos aprendido hasta ahora, podríamos crear algo simila
 
 De este modo, puedes abrir y cerrar automáticamente una etiqueta en cualquier campo de texto y colocar el cursor dentro de ella para seguir escribiendo.
 
-También podríamos aprovechar una _hotstring_ para almacenar una plantilla básica para documentos TEI, como la propuesta por Nicolás Vaughan en [Introducción a la codificación de textos en TEI](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1), y crearla desde cero en pocos segundos. Para hacerlo correctamente, conviene que antes conozcas qué son y cómo trabajan las funciones en AHK.
+También podríamos aprovechar una 'hotstring' para almacenar una plantilla básica para documentos TEI, como la propuesta por Nicolás Vaughan en [Introducción a la codificación de textos en TEI](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1), y crearla desde cero en pocos segundos. Para hacerlo correctamente, conviene que antes conozcas qué son y cómo trabajan las funciones en AHK.
 
 ### Funciones
 
@@ -253,7 +253,7 @@ En esta lección utilizaremos funciones para automatizar tareas frecuentes de tr
 
 #### Limitar el funcionamiento de los atajos
 
-Vamos a seguir trabajando con el _script_ que creamos en la sección anterior. Mantendremos `#Requires AutoHotkey v2.0` como primera línea del archivo y añadiremos algunas líneas generales al inicio del archivo:
+Vamos a seguir trabajando con el script que creamos en la sección anterior. Mantendremos `#Requires AutoHotkey v2.0` como primera línea del archivo y le añadiremos algunas líneas generales al inicio:
 ```ahk
 #Requires AutoHotkey v2.0
 #SingleInstance Force
@@ -261,7 +261,7 @@ SetTitleMatchMode "RegEx"
 ```
 La primera línea indica que el archivo requiere AHK 2. La segunda previene que se abran varias copias del mismo _script_. La tercera habilita el uso de [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular) para comprobar los nombres y títulos de las ventanas. A diferencia de las dos primeras, que son directivas, `SetTitleMatchMode` es una función, por lo que no precisa almohadilla al inicio.
 
-Anteriormente indicamos que las _hotkeys_ podían utilizarse en cualquier campo de texto. Sin embargo, no siempre queremos que se ejecuten en todos los programas de nuestro computador. Para limitar su funcionamiento, hemos desarrollado una función que comprueba si la ventana activa corresponde a uno de los editores autorizados o a la interfaz de prueba, de manera que no interfiera allí donde no queramos usarlas:
+Anteriormente indicamos que las 'hotkeys' podían utilizarse en cualquier campo de texto. Sin embargo, no siempre queremos que se ejecuten en todos los programas de nuestro computador. Para limitar su funcionamiento, hemos desarrollado una función que comprueba si la ventana activa corresponde a uno de los editores autorizados o a la interfaz de prueba, para que no interfieran en el resto del sistema:
 ```ahk
 isEditorActive() {
     return WinActive("ahk_exe soffice\.(exe|bin)")
@@ -273,15 +273,15 @@ isEditorActive() {
 
 #HotIf isEditorActive()
 ```
-Al habilitar las expresiones regulares en nuestro código, hemos tenido que escapar algunos caracteres especiales de los nombres de los programas, motivo por el que el código parece más complejo de lo que es en realidad: se usa la función `WinActive` para comprobar si la ventana activa corresponde a alguno de los programas o ventanas que aparecen entre paréntesis.
+Al habilitar las expresiones regulares en nuestro código, hemos tenido que anteponer una barra invertida a algunos caracteres especiales de los nombres de los programas, motivo por el cual el código parece más complejo de lo que es en realidad. Por otro lado, se usa la función `WinActive` para comprobar si la ventana activa corresponde a alguno de los programas o ventanas que aparecen entre paréntesis.
 
-La función `isEditorActive()` devuelve internamente un valor verdadero (que no se muestra al usuario) cuando está activa una ventana de LibreOffice Writer, Notepad++, el Bloc de notas (si usas la versión moderna, desactiva el autocorrector, pues hemos comprobado que puede entrar en conflicto con los _scripts_) o la interfaz del _script_ que crearemos más adelante (así sabe cuándo activarse y cuándo no). `#HotIf` usa el resultado como condición para activar las _hotkeys_ y _hotstrings_ que definiremos posteriormente solo cuando una de esas ventanas esté activa.
+La función `isEditorActive()` devuelve internamente un valor verdadero (que no se muestra al usuario) cuando está activa una ventana de LibreOffice Writer, Notepad++, el Bloc de notas (si usas la versión moderna, desactiva el autocorrector, ya que hemos comprobado que puede entrar en conflicto con los scripts) o la interfaz del script que crearemos más adelante (así sabe cuándo activarse y cuándo no). `#HotIf` usa el resultado como condición para activar las 'hotkeys' y 'hotstrings' que definiremos posteriormente solo cuando una de esas ventanas esté activa.
 
-Como anteriormente hemos establecido `SetTitleMatchMode "RegEx"`, los nombres de los ejecutables también se interpretan como expresiones regulares. Por ello, hemos añadido una barra inversa antes de cada carácter especial, como los puntos o los signos de suma. Es importante que tengas esto en cuenta, ya que los caracteres especiales de las expresiones regulares deben escaparse cuando se pretende que se interpreten literalmente. De no hacerlo, puede que tu _script_ no se ejecute correctamente.
+Como anteriormente hemos establecido `SetTitleMatchMode "RegEx"`, los nombres de los archivos de los programas también se interpretan como expresiones regulares. Por ello, recuerda añadir siempre la barra invertida antes de los caracteres especiales (como los puntos o los signos de suma), cuando pretendas que se interpreten literalmente. De no hacerlo, puede que tu script no se ejecute correctamente.
 
-`#HotIf` es una directiva dependiente de su posición en el _script_, lo que quiere decir que todas las _hotkeys_ y _hotstrings_ escritas después de `#HotIf isEditorActive()` estarán sometidas a esa condición. Para cerrar este bloque y recuperar el funcionamiento global, debes añadir la directiva `#HotIf` sin ninguna condición.
+`#HotIf` es una directiva dependiente de su posición en el script, lo que quiere decir que todas las 'hotkeys' y 'hotstrings' escritas después de `#HotIf isEditorActive()` estarán sometidas a esa condición. Para cerrar este bloque y recuperar el funcionamiento global, debes añadir la directiva `#HotIf` sin ninguna condición.
 
-En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web están después de la directiva `#HotIf` sin condición para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos está activo. En el siguiente fragmento reproducimos nuevamente la _hotkey_ `!3` únicamente para mostrar su posición en el _script_, así como anticipamos `^!x`, que explicaremos más adelante:
+En nuestro script, las 'hotkeys' destinadas a abrir programas o recursos web se encuentran después de la directiva `#HotIf` escrita sola, para que puedas utilizarlas cuando quieras, incluso si ninguno de los editores definidos esté activo. En el siguiente fragmento reproducimos nuevamente la 'hotkey' `!3` únicamente para mostrar su posición en el script, así como anticipamos `^!x`, que explicaremos más adelante:
 ```ahk
 ; |----------------------MARCADO SENCILLO A TEI-XML---------------------------|
 
@@ -304,11 +304,11 @@ En nuestro _script_, las _hotkeys_ destinadas a abrir programas o recursos web e
     }
 }
 ```
-Como actividad exploratoria, te animamos a que muevas el `#HotIf` para ver cómo se comportan las _hotkeys_ y _hotstrings_ dentro o fuera de la condición.
+Como actividad exploratoria, te animamos a que muevas el `#HotIf` para ver cómo se comportan las 'hotkeys' y 'hotstrings' dentro o fuera de la condición.
 
 #### Crear un etiquetador con `tagger()`
 
-Imagina la siguiente situación: tienes un texto parcialmente editado con TEI, pero todavía no has etiquetado sus entidades y no es posible hacerlo de forma automática. Podríamos crear una _hotkey_ para cada etiqueta, pero sería poco práctico: todas ellas seguirían la misma lógica y, además, aumentaría el riesgo de errores. Para evitar esta repetición, crearemos nuestra propia función, llamada `tagger()`.
+Imagina la siguiente situación: tienes un texto parcialmente editado con TEI, pero todavía no has etiquetado sus entidades (nombres de personas, lugares u obras) y no es posible hacerlo de forma automática. Podríamos crear una 'hotkey' para cada etiqueta, pero sería poco práctico: todas ellas seguirían la misma lógica y, además, aumentaría el riesgo de errores. Para evitar esta repetición, crearemos nuestra propia función, llamada `tagger()`.
 
 ##### Lo que hace `tagger()`
 
@@ -337,21 +337,21 @@ tagger(openTag, closeTag) {
     SendText(openTag . selectedText . closeTag)
 }
 ```
-Con esta función podemos seleccionar cualquier texto y escribir alrededor de él las etiquetas que queramos, dependiendo de la combinación de teclas que usemos. Para ello, `tagger()` recibe dos valores: el primero es la etiqueta de apertura y el segundo la de cierre.
+Con esta función podemos seleccionar cualquier texto y escribir alrededor de él las etiquetas que deseemos, dependiendo de la combinación de teclas que usemos. Para ello, `tagger()` recibe dos valores: el primero es la etiqueta de apertura y el segundo la de cierre.
 
-Vamos a definir las _hotkeys_ de los etiquetadores de `<persName>`, `<placeName>` y `<title>`, de manera que podamos llamar a la función con una combinación de teclas:
+Vamos a definir las 'hotkeys' de los etiquetadores de `<persName>`, `<placeName>` y `<title>`, de manera que podamos llamar a la función con un atajo:
 ```ahk
 !n::tagger("<persName>", "</persName>")
 !p::tagger("<placeName>", "</placeName>")
 !t::tagger("<title>", "</title>")
 ```
-Recuerda: lo que está a la izquierda de los dobles dos puntos (`::`) es nuestra combinación de teclas. A la derecha de estos, definimos la acción que deberá ejecutar AHK. Como puedes ver, los valores van a reemplazar los parámetros `openTag` (por `<persName>`) y `closeTag` (por `</persName>`). Por tanto, si seleccionamos un fragmento de texto, por ejemplo un nombre propio como Simón Bolívar, se convertirá en:
+Recuerda: lo que está a la izquierda de los dobles dos puntos (`::`) son las teclas que debemos pulsar. A la derecha de ellos, definimos la acción que deberá ejecutar AHK. Como puedes ver, los valores van a reemplazar los parámetros `openTag` (por `<persName>`) y `closeTag` (por `</persName>`). Por tanto, si seleccionamos un fragmento de texto, por ejemplo un nombre propio como Simón Bolívar, se convertirá en:
 ```xml
 <persName>Simón Bolívar</persName>
 ```
 ##### Cómo funciona `tagger()`
 
-Ahora bien, ¿qué hace `releaseModifiers()` en nuestro código? Se trata de una función esencial para evitar un problema frecuente en AHK: que las teclas `Ctrl` o `Alt` permanezcan "presionadas" después de ejecutar la _hotkey_. Esto lo evitaremos con `releaseModifiers()`:
+Ahora bien, ¿qué hace `releaseModifiers()` en nuestro código? Se trata de una función esencial para evitar un problema frecuente en AHK: que las teclas _Ctrl_ o _Alt_ permanezcan "presionadas" después de ejecutar la 'hotkey'. Esto lo evitaremos con `releaseModifiers()`:
 ```ahk
 releaseModifiers() {
     ; Libera los modificadores antes de enviar otras combinaciones
@@ -360,13 +360,13 @@ releaseModifiers() {
     Send "{Alt Up}{Ctrl Up}"
 }
 ```
-Llamándola al inicio de nuestras funciones, primero se espera a que se suelten físicamente las teclas `Ctrl` y `Alt` con `KeyWait`. En nuestro caso, hemos añadido la opción `"T1"` que fija un tiempo máximo de espera (en este particular, un segundo) para evitar que la función quede bloqueada si el sistema interpreta que alguna de ellas sigue pulsada. Luego, `Send "{Alt Up}{Ctrl Up}"` envía una instrucción mediante la cual se fuerza su liberación antes de simular otras combinaciones (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el _script_).
+Llamándola al inicio de nuestras funciones, primero se espera a que se suelten físicamente las teclas _Ctrl_ y _Alt_ con `KeyWait`. En nuestro caso, hemos añadido la opción `"T1"`, que fija un tiempo máximo de espera (en este caso, un segundo) para evitar que la función quede bloqueada si el sistema interpreta que alguna de ellas sigue pulsada. Luego, `Send "{Alt Up}{Ctrl Up}"` envía una instrucción mediante la cual se fuerza su liberación antes de simular otras combinaciones (aunque podrían ser las que quieras, nosotros solo citamos estas porque son las empleadas en el script).
 
 Por otro lado, uno de los inconvenientes de trabajar con el [portapapeles](https://es.wikipedia.org/wiki/Cortar,_copiar_y_pegar#Portapapeles) es que puede darse el caso de querer utilizarlo a la par que usamos el etiquetador. Entonces, ¿cómo usamos el etiquetador sin perjudicar el portapapeles? Para eso tenemos la línea: `savedClipboard := ClipboardAll()`. Esta instrucción permite guardar de forma temporal el contenido actual del portapapeles y, posteriormente, restaurar lo que estuviese copiado. De ese modo no se pierde el flujo de trabajo aunque el etiquetado use el portapapeles.
 
-`A_Clipboard := ""` deja el portapapeles vacío, asegurándonos así de que el contenido copiado coincide con el seleccionado. A continuación, con `Send "^c"` simulamos la acción `Ctrl + C`, es decir, copiamos al portapapeles el texto que tenemos seleccionado.
+`A_Clipboard := ""` deja el portapapeles vacío, asegurándonos así de que el contenido copiado coincide con el seleccionado. A continuación, con `Send "^c"` simulamos la acción _Ctrl + C_, es decir, copiamos al portapapeles el texto que tenemos seleccionado.
 
-Por otro lado, si la copia se ha realizado correctamente, el contenido se guarda en la variable `selectedText` y se restaura el portapapeles original con `A_Clipboard := savedClipboard`. A continuación, el _script_ comprueba nuevamente si el texto está vacío. Si no hay texto seleccionado o la copia falla (esperando tres décimas de segundo mediante la condición `if !ClipWait(0.3)`), la función se detiene, evitando crear así etiquetas fantasma.
+Por otro lado, si la copia se ha realizado correctamente, el contenido se guarda en la variable `selectedText` y se restaura el portapapeles original con `A_Clipboard := savedClipboard`. A continuación, el script comprueba nuevamente si el texto está vacío. Si no hay texto seleccionado o la copia falla (esperando tres décimas de segundo mediante la condición `if !ClipWait(0.3)`), la función se detiene, evitando crear así etiquetas fantasma.
 
 Hechas todas estas comprobaciones, pasamos al etiquetado en sí, que se realiza en la operación final:
 ```ahk
@@ -374,11 +374,11 @@ SendText(openTag . selectedText . closeTag)
 ```
 Con esta acción nos aseguramos de que AHK componga la siguiente estructura: etiqueta de apertura + texto seleccionado + etiqueta de cierre. Estas partes se concatenan mediante el operador `.` (punto).
 
-Ahora, crea tus propias _hotkeys_ y añade las funciones `tagger()` y `releaseModifiers()` a tu _script_.
+Ahora, crea tus propias 'hotkeys' y añade las funciones `tagger()` y `releaseModifiers()` a tu script.
 
 #### Convertir texto a mayúsculas y minúsculas
 
-Otras dos funciones útiles durante el proceso son las de conversión a mayúsculas y minúsculas. Aunque los procesadores de texto ya las incluyen, a veces resulta más cómodo seleccionar el texto y pulsar una combinación de teclas. Antes de definir estas funciones, asignaremos una combinación de teclas a cada una:
+Otras dos funciones útiles durante el proceso son las de conversión a mayúsculas y minúsculas. Aunque los procesadores de texto ya las incluyen, a veces resulta más cómodo seleccionar el texto y pulsar una combinación de teclas. Antes de definir estas funciones, asignaremos un atajo a cada una:
 
 ```ahk
 !u::convertSelection("upper") ; mayúsculas
@@ -412,13 +412,13 @@ convertSelection(mode) {
         SendText(selectedText)
 }
 ```
-En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasándolo a mayúsculas, mientras que en el segundo, aplica `SendText(StrLower(selectedText))` y lo convierte en minúsculas. Si no recibe ninguno de los anteriores, lo deja igual: `SendText(selectedText)`[^10].
+En caso de recibir el primero, aplica `SendText(StrUpper(selectedText))`, pasándolo a mayúsculas, mientras que en el segundo caso aplica `SendText(StrLower(selectedText))` y lo convierte en minúsculas. Si no recibe ninguno de los anteriores, lo deja igual: `SendText(selectedText)`[^10].
 
-Una vez copiado el texto seleccionado, restaura el portapapeles original, convierte a mayúsculas o minúsculas y, finalmente, introduce el resultado con `SendText()`. Al inicio, con `releaseModifiers()`, nos aseguramos de liberar preventivamente las teclas `Alt` y `Ctrl`. En el descargable podrás llamar a estas funciones con `Alt + U` (convertir a mayúsculas) y `Alt + L` (convertir a minúsculas).
+Una vez copiado el texto seleccionado, restaura el portapapeles original, convierte a mayúsculas o minúsculas y, finalmente, introduce el resultado con `SendText()`. Al inicio, con `releaseModifiers()`, nos aseguramos de liberar preventivamente las teclas _Alt_ y _Ctrl_. En el script que acompaña esta lección podrás llamar a estas funciones con _Alt + U_ (convertir a mayúsculas) y _Alt + L_ (convertir a minúsculas).
 
 #### Insertar notas
 
-Otra función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante `Alt + C`, la cual inserta un texto definido previamente en la ventana en la que estemos trabajando:
+Otra función que consideramos útil es la que permite incluir notas en el texto de forma sistemática. En la transcripción paleográfica (es decir, aquella en la que intentamos ser lo más fieles al texto posible), normalmente es necesario añadir notas o comentarios. Para ello, hemos creado la función `insertNote()`, llamada mediante _Alt + C_, la cual inserta un texto definido previamente en la ventana en la que estemos trabajando:
 ```ahk
 !c::insertNote("<note>[nota de edición]</note>")
 
@@ -427,13 +427,13 @@ insertNote(noteText) {
     SendText(noteText)
 }
 ```
-De este modo, al pulsar la combinación `Alt + C` obtendremos:
+De este modo, al pulsar la combinación _Alt + C_ obtendremos:
 ```xml
 <note>[nota de edición]</note>
 ```
 #### Plantilla TEI
 
-Retomemos ahora la plantilla propuesta por Nicolás Vaughan. Podemos almacenarla en una _hotstring_ e insertarla con una secuencia sencilla. A continuación, te dejamos nuestra propuesta:
+Retomemos ahora la plantilla propuesta por Nicolás Vaughan. Podemos almacenarla en una 'hotstring' e insertarla con una secuencia sencilla. A continuación, te dejamos nuestra propuesta:
 ```ahk
 :*:tei.xml::
 {
@@ -485,11 +485,11 @@ Retomemos ahora la plantilla propuesta por Nicolás Vaughan. Podemos almacenarla
     A_Clipboard := savedClipboard
 }
 ```
-En este caso, usamos la _hotstring_ `tei.xml` y, para evitar que se pegue incorrectamente, la almacenamos en una variable `template` porque, de otra forma, perdería el formato original. Además, hemos añadido dos pausas de seguridad: una para asegurarnos de que el portapapeles reciba toda la plantilla `ClipWait(1)` y otra para cerciorarnos de que la pueda pegar completamente antes de restaurar el portapapeles `Sleep 100`, ya que es un fragmento relativamente largo.
+En este caso, usamos la 'hotstring' `tei.xml` y, para evitar que se pegue incorrectamente, la almacenamos en una variable `template` porque, de otra forma, perdería el formato original. Además, hemos añadido dos pausas de seguridad: una para asegurarnos de que el portapapeles reciba toda la plantilla `ClipWait(1)` y otra para comprobar que la pueda pegar completamente antes de restaurar el portapapeles `Sleep 100`, ya que es un fragmento relativamente largo.
 
-#### Transformar marcado sencillo en etiquetas TEI
+#### Transformar símbolos sencillos en etiquetas TEI
 
-Esta lógica de trabajo se puede aplicar a casi cualquier etiqueta. Pensemos, por ejemplo, en entidades como nombres de persona, lugares o títulos de obras. Retomemos nuestro ejemplo guía, en el que se emplean asteriscos simples, dobles y guiones bajos. Partiendo de este marcado sencillo, podemos transformarlo automáticamente con AHK mediante expresiones regulares presionando `Ctrl + Alt + X`:
+Esta lógica de trabajo se puede aplicar a casi cualquier etiqueta. Pensemos, por ejemplo, en entidades como nombres de persona, lugares o títulos de obras. Retomemos nuestro ejemplo guía, en el que se emplean asteriscos simples, dobles y guiones bajos. A partir de estos símbolos, podemos transformarlos automáticamente con AHK mediante expresiones regulares presionando _Ctrl + Alt + X_:
 ```ahk
 ^!x::convertSimpleMarkup()
 

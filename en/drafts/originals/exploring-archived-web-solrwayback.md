@@ -15,11 +15,21 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/696
 difficulty: 3
 activity: presenting
 topics: [web-archiving, distant-reading]
-abstract: Short abstract of this lesson
+abstract: Sources from web archives are central for understanding the 1990s and the following decades. These sources are however hard to access as they are stored in technical WARC files built for preservation rather than research. This lesson introduces SolrWayback, an open-source search and discovery tool for web archives, and shows you how to set it up locally and load a small sample of WARC files.
 avatar_alt: A circular engraving depicts a sun setting over a calm body of water, with horizontal lines suggesting ripples and reflections and dark foliage along the right-hand shoreline.
 doi: XX.XXXXX/phen0000
 ---
 
+<div class="alert alert-info">
+  <p><strong>Computing environment</strong>: Mac, Linux, Windows.</p>
+  <p><strong>Tested compatibility</strong>: macOS Sequoia (version 15), macOS Tahoe (version 26), Ubuntu v 24 LTS. Tested 2026.</p>
+  <p><strong>Software and dependencies</strong>: Java 11 or newer. Java 17 or newer is recommended.</p>
+  <p><strong>Software reference</strong>: Egense, T., Eskildsen, T., Lauridsen, J., O'Brien, B., Jackson, A., Bellony, L., Thøgersen, J., & Johnston, V. H. (2026). SolrWayback (Version 5.5.0) [Computer software]. Zenodo. <a href="https://doi.org/10.5281/zenodo.22768996">doi.org/10.5281/zenodo.22768996</a></p>
+  <p><strong>Data</strong>: WARC files downloaded from the End of Term Web Archive.</p>
+  <p><strong>Data citation</strong>: Alam, S., & Phillips, M. E. (2026). End of term datasets. End of Term Web Archive. <a href="https://eotarchive.org/data/">eotarchive.org/data</a></p>
+  <p><strong>Hardware or resource requirements</strong>: 4 GB of RAM, 2 GB of free disk space.</p>
+  <p><strong>External services</strong>: Data is downloaded from the End of Term Web Archive during the lesson.</p>
+</div>
 
 {% include toc.html %}
 

@@ -16,7 +16,7 @@ difficulty: 3
 activity: presenting
 topics: [web-archiving, distant-reading]
 abstract: Short abstract of this lesson
-avatar_alt: Visual description of lesson image
+avatar_alt: A circular engraving depicts a sun setting over a calm body of water, with horizontal lines suggesting ripples and reflections and dark foliage along the right-hand shoreline.
 doi: XX.XXXXX/phen0000
 ---
 

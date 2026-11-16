@@ -74,7 +74,7 @@ Lo primero que haremos será crear una carpeta en Windows, que llamaremos `ahk_s
 
 2. Desde la carpeta `ahk_scripts`: para ello, busca la opción **Nuevo** y, después, **AutoHotkey script** o similar. A continuación, asigna un nombre al archivo y añade al comienzo la línea `#Requires AutoHotkey v2.0`.
 
-Nuestro script se llamará `tph_script.ahk`. A lo largo de la lección, incorporaremos los ejemplos a este mismo archivo, salvo aquellos que puedan generar conflicto, algo que te indicaremos cuando corresponda.
+Nuestro script se llamará `ph_script.ahk`. A lo largo de la lección, incorporaremos los ejemplos a este mismo archivo, salvo aquellos que puedan generar conflicto, algo que te indicaremos cuando corresponda.
 
 Una vez indicado que el archivo debe ejecutarse con AHK 2, aprenderás dos conceptos básicos para empezar a trabajar con este lenguaje: las 'hotkeys' y las 'hotstrings'.
 
@@ -196,13 +196,13 @@ Siempre podrás pausar o cerrar tu script desde el área de notificación de Win
 
 Pasemos ahora a las 'hotstrings'. A diferencia de las 'hotkeys', no se activan mediante una combinación de teclas, sino al escribir una determinada secuencia de caracteres. Su uso es más localizado, porque básicamente se emplean para expandir abreviaturas, palabras o frases frecuentes mientras escribes.
 
-La sintaxis es sencilla: entre el primer y el segundo par de dos puntos escribimos la abreviatura que queremos desarrollar y, después del segundo par, el texto que AHK debe insertar. Vamos a hacer una pequeña prueba con _Programming Historian_, que abreviaremos como `tph`:
+La sintaxis es sencilla: entre el primer y el segundo par de dos puntos escribimos la abreviatura que queremos desarrollar y, después del segundo par, el texto que AHK debe insertar. Vamos a hacer una pequeña prueba con _Programming Historian_, que abreviaremos como `ph`:
 ```ahk
-::tph::Programming Historian
+::ph::Programming Historian
 ```
-Escribe ahora `tph` en cualquier campo de texto y pulsa una tecla de cierre, como espacio, punto o salto de línea. Verás que AHK sustituye automáticamente la abreviatura por _Programming Historian_. Mira lo que pasa si añadimos un asterisco después de los primeros dos puntos:
+Escribe ahora `ph` en cualquier campo de texto y pulsa una tecla de cierre, como espacio, punto o salto de línea. Verás que AHK sustituye automáticamente la abreviatura por _Programming Historian_. Mira lo que pasa si añadimos un asterisco después de los primeros dos puntos:
 ```ahk
-:*:tph::Programming Historian
+:*:ph::Programming Historian
 ```
 La opción `*` hace que la 'hotstring' se active inmediatamente al completar la secuencia, sin necesidad de pulsar después un punto, un espacio, la tecla _Enter_ u otro carácter de cierre. Recuerda no dejar las dos versiones de la 'hotstring' en el script: no funcionará.
 
@@ -268,7 +268,7 @@ isEditorActive() {
         || WinActive("ahk_exe notepad\+\+\.exe")
         || WinActive("ahk_exe notepad\.exe")
         || WinActive("ahk_class Notepad")
-        || WinActive("^Prueba de script TPH AHK$")
+        || WinActive("^Prueba de script PH AHK$")
 }
 
 #HotIf isEditorActive()
@@ -560,7 +560,7 @@ createGui() {
 
     mainGui := Gui(
         "+AlwaysOnTop -Resize +MinimizeBox",
-        "Prueba de script TPH AHK"
+        "Prueba de script PH AHK"
     )
 
     mainGui.OnEvent("Close", confirmExit)
@@ -630,7 +630,7 @@ Configuramos un botón para activar y desactivar los atajos con `toggleButton` q
 
 En último lugar, hemos vinculado el evento de cierre de la ventana a la función `confirmExit()`, mediante la cual se abrirá un cuadro de diálogo asociado a la ventana principal en el que se preguntará si se quiere finalizar por completo el script o mantenerlo activo. Así evitamos que la interfaz desaparezca mientras el script continúa ejecutándose en el área de notificación.
 
-Te dejamos a continuación una versión final y depurada del script resultante de la lección para que puedas modificarlo como quieras: [`tph_script.ahk`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/tph_script.ahk).
+Te dejamos a continuación una versión final y depurada del script resultante de la lección para que puedas modificarlo como quieras: [`ph_script.ahk`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/optimizacion-transcripcion-con-autohotkey/ph_script.ahk).
 
 ## Compilación a un ejecutable
 
@@ -642,7 +642,7 @@ Para hacerlo, abre el compilador `Ahk2Exe`:
 
 {% include figure.html filename="es-or-optimizacion-transcripcion-con-autohotkey-01.jpg" alt="Ventana del compilador Ahk2Exe con campos para seleccionar el archivo fuente, el archivo de destino, el icono personalizado y el botón de convertir a ejecutable" caption="Figura 2. Interfaz de usuario de Ahk2Exe." %}
 
-Una vez allí, busca el script que has creado en la carpeta (`tph_script.ahk`) y deja el resto de opciones predeterminadas, ya que suelen funcionar en la mayoría de computadores Windows. Además, tienes la posibilidad de añadir un icono al `.exe`; recuerda que debe estar en formato `.ico`.
+Una vez allí, busca el script que has creado en la carpeta (`ph_script.ahk`) y deja el resto de opciones predeterminadas, ya que suelen funcionar en la mayoría de computadores Windows. Además, tienes la posibilidad de añadir un icono al `.exe`; recuerda que debe estar en formato `.ico`.
 
 <div class="alert alert-warning" markdown="1">
 Los programas generados con `Ahk2Exe` pueden ser identificados por algunos antivirus como posibles amenazas, puesto que el mismo compilador también es utilizado para empaquetar codigos maliciosos, generando así falsos positivos. Por tanto, te recomendamos que compiles por tu cuenta el `.ahk` que te enlazamos más arriba.

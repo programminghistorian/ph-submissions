@@ -312,7 +312,7 @@ createGui() {
 
     testEdit := mainGui.AddEdit(
         "w500 h180 WantTab",
-        "Prueba aquí:`r`n`r`ntph`r`nulte.`r`n@n`r`n@p`r`n@t"
+        "Prueba aquí:`r`n`r`nph`r`nulte.`r`n@n`r`n@p`r`n@t"
     )
 
     toggleButton := mainGui.AddButton(

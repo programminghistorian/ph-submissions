@@ -12,9 +12,9 @@ reviewers:
 editors:
 - Caio Mello
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/696
-difficulty: 
+difficulty: 3
 activity: presenting
-topics: web-archiving
+topics: [web-archiving, distant-reading]
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
@@ -186,7 +186,7 @@ You have now indexed your WARC files into SolrWayback and can begin exploring th
 
 You are now ready to start exploring your collection and discover sources that could be used to answer research questions related to politicians' views on immigration using the End of Term collection from 2008.
 
-To analyse politicians' views on immigration, a starting point could be a simple search query for the word `immigration`. In your small subset of the overall collection, this query provides you with 233 results. If you click the top result, coming from the URL [http://bilirakis.house.gov...](http://localhost:8080/solrwayback/services/web/20090514060646/http://bilirakis.house.gov/index.php?option=com_content&task=view&id=193&Itemid=132) you are presented with a replayed version of the archived webpage.
+To analyse politicians' views on immigration, a starting point could be a simple search query for the word `immigration`. In your small subset of the overall collection, this query provides you with 233 results. If you click the top result coming from the URL `http://localhost:8080/solrwayback/services/web/20090514060646/http://bilirakis.house.gov/index.php?option=com_content&task=view&id=193&Itemid=132`, you are presented with a replayed version of the archived webpage.
 
 This webpage was harvested on 14 May 2009. When you first view the Bilirakis website from 2009, it appears visually incomplete. To understand why, consider how the web, and by extension the archived web, is structured. The web is inherently fragmented, meaning that when you view a website, the text could be stored on one server and an image on another.[^3] 
 
@@ -283,7 +283,7 @@ When you click this link, you would be taken to an archived version of his webpa
 
 If this is the case and the archive has a version of the requested page from 2008, 2010 or 2015, the playback engine in the software would show the version of the site that is closest in time. It would not tell you that your temporal context has shifted. 
 
-In SolrWayback and other Wayback-based web archives, such as the Internet Archive, the harvest date can always be extracted from the archival URL. Return to the Bilirakis front page in your SolrWayback collection which should be available at the following [Bilirakis front page in your collection](http://localhost:8080/solrwayback/services/web/20090514061634/http://bilirakis.house.gov/index.php?option=com_search&searchword=index.php?option=com_search&searchword=The%20Congenital%20Heart%20Futures%20Act&submit=Search&searchphrase=any&ordering=newest). 
+In SolrWayback and other Wayback-based web archives, such as the Internet Archive, the harvest date can always be extracted from the archival URL. Return to the Bilirakis front page in your SolrWayback collection which should be available at the following page: `http://localhost:8080/solrwayback/services/web/20090514061634/http://bilirakis.house.gov/index.php?option=com_search&searchword=index.php?option=com_search&searchword=The%20Congenital%20Heart%20Futures%20Act&submit=Search&searchphrase=any&ordering=newest`. 
 
 The `/web/20090514061634` part of the URL would also be present if you had accessed the source in the Internet Archive or any other web archive. The 14-digit number is a timestamp in the format YYYYMMDDHHMMSS. When you click a link in SolrWayback this date changes to the version closest in time to the page you came from. In SolrWayback harvest date information can also be read in the toolbar accessible in the top left corner of the playback view. 
 

@@ -29,15 +29,15 @@ doi: XX.XXXXX/phen0000
     <dt>Software and dependencies</dt>
     <dd>Java 11 or newer. Java 17 or newer is recommended.</dd>
     <dt>Software reference</dt>
-    <dd>Egense, T., Eskildsen, T., Lauridsen, J., O'Brien, B., Jackson, A., Bellony, L., Thøgersen, J., & Johnston, V. H. (2026). SolrWayback (Version 5.5.0) [Computer software]. Zenodo. <a href="https://doi.org/10.5281/zenodo.22768996">doi.org/10.5281/zenodo.22768996</a></dd>
+    <dd>Egense, T., Eskildsen, T., Lauridsen, J., O'Brien, B., Jackson, A., Bellony, L., Thøgersen, J., & Johnston, V. H. (2026). SolrWayback (Version 5.5.0) [Computer software]. Zenodo. <a href="https://doi.org/10.5281/zenodo.22768996">doi.org/10.5281/zenodo.22768996</a>.</dd>
     <dt>Data</dt>
     <dd>WARC files downloaded from the End of Term Web Archive.</dd>
     <dt>Data citation</dt>
-    <dd>Alam, S., & Phillips, M. E. (2026). End of term datasets. End of Term Web Archive. <a href="https://eotarchive.org/data/">eotarchive.org/data</a></dd>
+    <dd>Alam, S., & Phillips, M. E. (2026). End of term datasets. End of Term Web Archive. <a href="https://eotarchive.org/data/">eotarchive.org/data</a>.</dd>
     <dt>Hardware or resource requirements</dt>
     <dd>4 GB of RAM, 2 GB of free disk space.</dd>
     <dt>External services</dt>
-    <dd>External services</strong>: Data is downloaded from the End of Term Web Archive during the lesson.</dd>
+    <dd>Data is downloaded from the End of Term Web Archive during the lesson.</dd>
   </dl>
 </div>
 

@@ -9,7 +9,7 @@ isEditorActive() {
         || WinActive("ahk_exe notepad\+\+\.exe")
         || WinActive("ahk_exe notepad\.exe")
         || WinActive("ahk_class Notepad")
-        || WinActive("^Prueba de script TPH AHK$")
+        || WinActive("^Prueba de script PH AHK$")
 }
 
 #HotIf isEditorActive()
@@ -39,7 +39,7 @@ isEditorActive() {
 
 ; |----------------------HOTSTRINGS---------------------------|
 
-:*:tph::The Programming Historian
+:*:ph::The Programming Historian
 :*:@n::<persName></persName>{Left 11}
 :*:@p::<placeName></placeName>{Left 12}
 :*:@t::<title></title>{Left 8}
@@ -299,7 +299,7 @@ createGui() {
 
     mainGui := Gui(
         "+AlwaysOnTop -Resize +MinimizeBox",
-        "Prueba de script TPH AHK"
+        "Prueba de script PH AHK"
     )
 
     mainGui.OnEvent("Close", confirmExit)

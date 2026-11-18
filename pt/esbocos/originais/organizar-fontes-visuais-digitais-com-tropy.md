@@ -56,7 +56,7 @@ Tropy é um aplicativo para desktop. Para instalá-lo, basta acessar o sítio pr
 
 Um projeto no Tropy é o ficheiro onde os elementos de bancos de imagens são armazenados, juntamente com seus dados e metadados.
 
-Ao abrir o Tropy pela primeira vez, você precisará nomear seu projeto e escolher o tipo. Recomenda-se abordar os projetos da maneira mais abrangente possível: como um manuscrito de livro, uma tese de doutorado ou um tema geral que possa englobar múltiplas possibilidades. Por exemplo, para este projeto, em vez de nomeá-lo com o nome do ficheiro ou repositório, você poderia escolher um nome que reflita um tema geral, como “Cartazes da Democracia”. Você poderá alterar o nome posteriormente dentro do projeto. (inserir figura 1)
+Ao abrir o Tropy pela primeira vez, você precisará nomear e escolher o tipo de projeto. Recomenda-se abordar os projetos da maneira mais abrangente possível: como um manuscrito de livro, uma tese de doutorado ou um tema geral que possa englobar múltiplas possibilidades. Por exemplo, para este projeto, em vez de nomeá-lo com o nome do ficheiro ou repositório, você poderia escolher um nome que reflita um tema geral, como “Cartazes da Democracia”. Você poderá alterar o nome posteriormente dentro do projeto.
 
 {% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-02.jpg" alt="Visual description of figure image" caption="Figura 2. Tela inicial do projeto novo do Tropy." %}
 
@@ -92,8 +92,7 @@ No caso dos ficheiros do Centro Pró Memória da Constituinte, os documentos for
 
 Você pode arrastar imagens do seu computador ou de um dispositivo conectado (como um pen drive, um disco rígido externo ou uma pasta na nuvem) para um projeto do Tropy. Basta arrastar um ficheiro ou um conjunto de ficheiros para a interface principal (a visualização do projeto). O Tropy começará a importá-los para o projeto um por um.
 
-Você também pode selecionar as imagens para importar em Arquivo > Importar > Fotos (Ctrl+shift+I).
-
+Você também pode selecionar as imagens para importar clicando nos três pontos localizados no canto superior esquerdo da interface do Tropy e, em seguida, acessando Arquivo > Importar > Fotos (Ctrl+shift+I).
 ### Pastas
 
 Também é possível importar uma pasta de imagens por meio do menu Arquivo > Importar > Pasta.
@@ -173,11 +172,12 @@ Todos esses parâmetros, juntamente com as dicas, podem ajudar a padronizar os m
 Na janela Preferências (Ctrl+shift+S), você pode revisar os vocabulários que acompanham o Tropy na opção “vocabulários”. Clique em qualquer esquema para visualizar seus elementos. Você pode adicionar outros vocabulários clicando com o botão esquerdo no botão + na parte inferior da janela. Os esquemas devem estar no formato .n3 ou .txt. Você pode visualizar uma lista extensa de esquemas de vocabulário controlado que podem ser facilmente importados para o Tropy no repositório de [Vocabulários Abertos Vinculados](https://vocabularyserver.com/vocabularies/) (LOV)[^1].
 
 ## Editar e anotar imagens
+
 Na visualização de objetos, existem várias ferramentas para alterar a aparência e a legibilidade de uma imagem. Também é possível adicionar anotações tanto a imagens quanto a seleções.
 
 ### Edições para facilitar a leitura
 
-Na parte superior da visualização do objeto, encontram-se diversas ferramentas para ajustar e rotacionar a imagem atual. No canto superior direito, está o botão "Editar Foto”, onde, utilizando controles deslizantes, é possível ajustar o brilho, o contraste, a tonalidade, a saturação e a nitidez — tudo com o objetivo de melhorar a legibilidade de documentos desfocados, seja devido ao seu estado ou à qualidade da fotografia original.
+Na parte superior da visualização do objeto, encontram-se diversas ferramentas para ajustar e rotacionar a imagem atual. No canto superior direito, está o botão "Editar Foto”, onde, utilizando controles deslizantes, é possível ajustar o brilho, o contraste, a tonalidade, a saturação e a nitidez — tudo com o objetivo de melhorar a legibilidade de documentos desfocados, seja devido ao seu estado ou à qualidade da imagem original.
 
 Há também uma opção para inverter as cores, um recurso que facilita a leitura de microfilmes ou permite visualizar o negativo de uma fonte visual. 
 

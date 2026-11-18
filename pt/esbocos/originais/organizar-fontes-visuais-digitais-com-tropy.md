@@ -28,10 +28,9 @@ Pesquisadores que trabalham com fontes visuais digitalizadas frequentemente lida
 
 O Tropy foi desenvolvido para responder a esse tipo de demanda. Criado por pesquisadores e para pesquisadores, o software permite organizar, descrever, classificar, anotar e agrupar fontes visuais digitalizadas em um mesmo ambiente de trabalho. Com isso, o tratamento das imagens deixa de ser apenas uma etapa de armazenamento e passa a integrar de modo mais direto o processo de construção do conhecimento histórico.
 
-Nesta lição, apresento as principais funções do Tropy a partir de um estudo de caso: a pesquisa desenvolvida em minha dissertação de mestrado, defendida no Programa de Pós-Graduação em História da Universidade Federal Fluminense, intitulada *Cartazes da democracia: imagem, política e ação coletiva no Brasil republicano*. O corpus documental é composto por 121 cartazes políticos produzidos por movimentos sociais no contexto da Redemocratização do Brasil, pertencentes à coleção do Centro Pró-Memória da Constituinte, preservada pelo Museu da República, no Rio de Janeiro.
+Nesta lição, apresento as principais funções do Tropy a partir de um estudo de caso: a pesquisa desenvolvida em minha dissertação de mestrado, defendida no Programa de Pós-Graduação em História da Universidade Federal Fluminense, intitulada *Cartazes da democracia: imagem, política e ação coletiva no Brasil republicano*. O corpus documental é composto por 121 cartazes de cunho político produzidos por movimentos sociais no contexto da Redemocratização do Brasil.
 
-A lição dialoga com “Gestionar fuentes primarias digitales con Tropy”, de Douglas McRae, publicada no *Programming Historian* em espanhol, mas constitui uma proposta original ao mobilizar outro conjunto documental e outra experiência de pesquisa. Ao final, espera-se que o leitor seja capaz de criar um projeto no Tropy, importar imagens, trabalhar com metadados, etiquetas e notas, associar múltiplas imagens a um mesmo item, realizar backups e exportar dados para outros usos acadêmicos.
-
+A lição dialoga com “[Gestionar fuentes primarias digitales con Tropy](https://programminghistorian.org/es/lecciones/gestionar-fuentes-primarias-digitales-con-tropy)”, de Douglas McRae, publicada no *Programming Historian* em espanhol, mas constitui uma proposta original ao mobilizar outro conjunto documental e outra experiência de pesquisa. Ao final, espera-se que o leitor seja capaz de criar um projeto no Tropy, importar imagens, trabalhar com metadados, etiquetas e notas, associar múltiplas imagens a um mesmo item, realizar backups e exportar dados para outros usos acadêmicos. Também serão apresentados recursos avançados, como a instalação de plugins e a integração com o Zotero, que permite aproveitar os metadados organizados no Tropy na gestão de referências bibliográficas e documentais.
 
 ## Descrição do Tropy
 
@@ -39,13 +38,15 @@ O Tropy é um software livre, gratuito e de código aberto voltado à organizaç
 
 {% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-01.jpg" alt="Visual description of figure image" caption="Figure 1. Imagem da tela inicial do Tropy" %}
 
-O software tem sido amplamente utilizado por pesquisadores das Humanidades, especialmente em investigações que envolvem grandes conjuntos de fontes visuais. Entre seus recursos estão a criação de metadados personalizados, o agrupamento de imagens, o registro de notas de pesquisa e a exportação estruturada dos dados produzidos. Além da aplicação, o projeto disponibiliza documentação técnica, materiais de formação, fórum de usuários e acesso público ao código-fonte. Mais informações podem ser encontradas no site oficial do Tropy (https://tropy.org/).
+O software tem sido amplamente utilizado por pesquisadores das Humanidades, especialmente em investigações que envolvem grandes conjuntos de fontes visuais. Entre seus recursos estão a criação de metadados personalizados, o agrupamento de imagens, o registro de notas de pesquisa e a exportação estruturada dos dados produzidos. Além da aplicação, o projeto disponibiliza documentação técnica, materiais de formação, fórum de usuários e acesso público ao código-fonte. Mais informações podem ser encontradas no [site oficial do Tropy](https://tropy.org/).
 
 ## Conjunto de dados
 
-A presente lição utilizará como corpus documental um conjunto de 121 cartazes produzidos por movimentos sociais no contexto da Redemocratização do Brasil. Esses documentos integram a coleção do Centro Pró-Memória da Constituinte (CPMC), hoje sob a guarda do Museu da República, no Rio de Janeiro. O acervo reúne materiais relacionados à Assembleia Nacional Constituinte e à participação da sociedade civil, incluindo cartazes de entidades e movimentos populares que atuaram nos debates em torno das Emendas Populares, da Constituinte e da Constituição de 1988. Nesta lição, esse conjunto foi escolhido por oferecer um caso especialmente fértil para demonstrar o uso do Tropy no tratamento de fontes digitais compostas por imagens, permitindo trabalhar com descrição, organização, classificação, notas e metadados em um corpus visual coeso e historicamente situado. Além disso, por se tratar de um conjunto documental já preservado institucionalmente, ele também favorece a discussão de questões metodológicas ligadas à pesquisa com coleções históricas, ao tratamento sistemático de fontes e à construção de procedimentos replicáveis em outros projetos. A documentação mencionada se encontra integralmente no endereço https://atom-museurepublica.museus.gov.br/index.php/29bt-t3yb-gaxa
+Como mencionado anteriormente, a presente lição utilizará como exemplo um conjunto espcífico de cartazes. Esses documentos integram a coleção do Centro Pró-Memória da Constituinte (CPMC) [Coleção de cartazes do Centro Pró-Memória da Constituinte (CPMC)](https://atom-museurepublica.museus.gov.br/index.php/29bt-t3yb-gaxa), hoje sob a guarda do Museu da República, no Rio de Janeiro [Acervo digital do Museu da República (AtoM)](https://atom-museurepublica.museus.gov.br/). O acervo reúne materiais relacionados à Assembleia Nacional Constituinte e à participação da sociedade civil, incluindo cartazes de entidades e movimentos populares que atuaram nos debates em torno das Emendas Populares, da Constituinte e da Constituição de 1988. Nesta lição, esse conjunto foi escolhido por oferecer um caso especialmente fértil para demonstrar o uso do Tropy no tratamento de fontes digitais compostas por imagens, permitindo trabalhar com descrição, organização, classificação, notas e metadados em um corpus visual coeso e historicamente situado. Além disso, por se tratar de um conjunto documental já preservado institucionalmente, ele também favorece a discussão de questões metodológicas ligadas à pesquisa com coleções históricas, ao tratamento sistemático de fontes e à construção de procedimentos replicáveis em outros projetos.
 
 ## Instalando e configurando o projeto
+
+Para acompanhar esta lição, não é necessário possuir conhecimentos de programação ou experiência prévia com o Tropy. Entretanto, recomenda-se que o leitor tenha familiaridade com operações básicas de informática, como instalar programas, organizar pastas e ficheiros, navegar na internet e transferir imagens para o computador. A lição foi estruturada de modo a permitir que usuários iniciantes conheçam as principais funcionalidades do software e desenvolvam progressivamente suas habilidades de organização e tratamento de fontes visuais digitais. Além dessas operações iniciais, serão apresentados procedimentos mais avançados, como a criação de modelos personalizados de metadados, a instalação de plugins e a integração com o Zotero, que podem ser explorados conforme as necessidades e os conhecimentos prévios de cada pesquisador.
 
 ### Instalação
 
@@ -119,7 +120,7 @@ O modelo pré-configurado Tropy Generic contém um conjunto de propriedades padr
 
 Para revisar e editar os campos de metadados de um objeto, clique em uma imagem e preencha todos os campos desejados. Para revisar e editar os campos de metadados de vários objetos simultaneamente, clique com o botão direito do mouse (Ctrl+clique no Mac) em cada imagem ou use Selecionar Tudo (Ctrl+A no Windows, Command+A no Mac) para selecionar todos os objetos no projeto ou na lista ativa. Você pode editar os campos presentes no modelo predefinido selecionado e as alterações serão aplicadas a todos os objetos selecionados. Da mesma forma, se você editar os campos de metadados de um objeto e, em seguida, selecioná-lo como parte de um conjunto, um símbolo de + aparecerá, indicando que há dados diferentes no mesmo campo para objetos diferentes. Se você modificar esse campo, os novos dados serão aplicados a todos os objetos selecionados.
 
-Os Cartazes da Democracia não compartilham muitos campos de metadados comuns, mas isso pode ocorrer, dependendo do corpus de pesquisa. Outros campos podem variar dependendo do volume ou ficheiro específico (Título, Criador, Data), portanto, os campos de metadados podem ser editados usando uma combinação de ações em massa e descrições individuais. O desenvolvimento de modelos de metadados personalizados para coleções específicas será explicado posteriormente. Campos adicionais podem ser adicionados a um objeto individual, clicando com o botão direito do mouse (Ctrl+clique no Mac) no modelo de metadados ativo e selecionando Novo Campo no menu. Em seguida, use a barra de pesquisa para encontrar a propriedade mais apropriada. O Tropy contém um grande número de vocabulários de metadados, que serão discutidos posteriormente.
+Os cartazes da democracia não compartilham muitos campos de metadados comuns, mas isso pode ocorrer, dependendo do corpus de pesquisa. Outros campos podem variar dependendo do volume ou ficheiro específico (Título, Criador, Data), portanto, os campos de metadados podem ser editados usando uma combinação de ações em massa e descrições individuais. O desenvolvimento de modelos de metadados personalizados para coleções específicas será explicado posteriormente. Campos adicionais podem ser adicionados a um objeto individual, clicando com o botão direito do mouse (Ctrl+clique no Mac) no modelo de metadados ativo e selecionando Novo Campo no menu. Em seguida, use a barra de pesquisa para encontrar a propriedade mais apropriada. O Tropy contém um grande número de vocabulários de metadados, que serão discutidos posteriormente.
 
 ### Combinando / expandindo
 
@@ -127,7 +128,7 @@ O Tropy permite mesclar imagens individuais em objetos com várias imagens. Isso
 
 No caso de um ficheiro PDF com várias páginas, as imagens serão importadas como um objeto mesclado. Em alguns casos, será necessário desconstruir esse objeto, o que pode ser feito selecionando-o e escolhendo “Expandir Item” no menu de contexto. O resultado será a separação das imagens individuais, preservando quaisquer metadados e anotações adicionados anteriormente.
 
-Logo no início da pesquisa, ao acessar o catálogo digital disponibilizado pelo Museu da República, foi possível utilizar esse recurso para importar o ficheiro PDF que reúne os 121 cartazes da coleção. Como o documento continha a reprodução integral do conjunto documental, suas páginas puderam ser desmembradas em entradas individuais no Tropy, permitindo que cada cartaz passasse a constituir um item próprio dentro do projeto.
+Logo no início da pesquisa, ao acessar o catálogo digital disponibilizado pelo Museu da República, foi possível utilizar esse recurso para importar o ficheiro PDF que reúne os cartazes da coleção. Como o documento continha a reprodução integral do conjunto documental, suas páginas puderam ser desmembradas em entradas individuais no Tropy, permitindo que cada cartaz passasse a constituir um item próprio dentro do projeto.
 
 A partir dessa estrutura inicial, foi possível criar metadados, notas e descrições específicas para cada cartaz. Posteriormente, as fotografias que realizei presencialmente durante a pesquisa foram incorporadas aos respectivos itens, ampliando o conjunto de informações disponíveis sobre cada documento. Dessa forma, o catálogo digital forneceu a base para a organização inicial do corpus, que foi posteriormente enriquecido com registros produzidos durante o trabalho de investigação.
 
@@ -151,13 +152,13 @@ Para criar um novo modelo do zero, certifique-se de que "Novo Modelo" apareça n
 
 Ao adicionar uma propriedade, você pode modificá-la para especificar o tipo de dados, atribuir um rótulo diferente do nome padrão, adicionar uma dica (por exemplo, "Sobrenome, Nome", para lembrar a ordem em que o nome do autor deve ser registrado) e também definir um valor predefinido. Este último pode ajudar no processamento da origem, por exemplo, ao aplicar um modelo pré-preenchido a uma coleção com várias imagens semelhantes.
 
-Para registros ANHV, você pode criar um modelo de metadados a partir do site, como Descrição (dc:description), Escopo (dcterms:extent)  e Local de Criação (Iptc4xmpExt:LocationCreated). Outras propriedades dependerão do que você considerar relevante para descrever as fontes do projeto.
+Para registros novos de uma coleção de fontes online específica, você pode criar um modelo de metadados a partir da sua própria coleção de fontes, como Descrição (dc:description), Escopo (dcterms:extent) e Local de Criação (Iptc4xmpExt:LocationCreated). Outras propriedades dependerão do que você considerar relevante para descrever as fontes do projeto.
 
 Você pode criar um modelo personalizado com base em um modelo existente.
 
 Escolha um modelo no menu suspenso e clique nos dois retângulos que aparecem à direita. O editor criará uma cópia, que você poderá salvar após revisar e confirmar os metadados — por exemplo, renomeando-a. O novo modelo conterá as mesmas propriedades do original, e você poderá adicionar ou remover quaisquer outras que precisar.
 
-Na pesquisa com os Cartazes da Democracia, o uso de metadados personalizados constituiu um dos pontos cruciais da metodologia. Na primeira fase do trabalho, realizei uma análise detalhada de cada cartaz, levando em conta aspectos materiais e documentais como dimensões, tipo e gramatura do papel, tipo de impressão, instituição responsável por sua produção — neste caso, em grande medida, movimentos sociais de luta popular — e, quando foi possível identificar, também o artista ou fotógrafo responsável pela imagem. Além disso, registrei marcas físicas relevantes, como fitas adesivas, furos, sinais de fixação, dobras e indícios de envio pelo correio. Esse nível de organização tornou possível extrair informações que ultrapassavam o conteúdo visual mais imediato dos cartazes. A observação sistemática desses elementos permitiu levantar hipóteses sobre as condições de produção e circulação dos cartazes, inclusive sobre condições materiais dos grupos e formas de financiamento, a partir da qualidade material empregada, e sobre seus usos concretos, distinguindo, por exemplo, cartazes efetivamente expostos daqueles que permaneceram guardados. Em alguns casos, a presença de carimbos dos Correios confirmou que o envio postal também integrava o universo de circulação dos cartazes políticos, ampliando a compreensão de suas formas de difusão. 
+Na pesquisa com os cartazes da democracia, o uso de metadados personalizados constituiu um dos pontos cruciais da metodologia. Na primeira fase do trabalho, realizei uma análise detalhada de cada cartaz, levando em conta aspectos materiais e documentais como dimensões, tipo e gramatura do papel, tipo de impressão, instituição responsável por sua produção — neste caso, em grande medida, movimentos sociais de luta popular — e, quando foi possível identificar, também o artista ou fotógrafo responsável pela imagem. Além disso, registrei marcas físicas relevantes, como fitas adesivas, furos, sinais de fixação, dobras e indícios de envio pelo correio. Esse nível de organização tornou possível extrair informações que ultrapassavam o conteúdo visual mais imediato dos cartazes. A observação sistemática desses elementos permitiu levantar hipóteses sobre as condições de produção e circulação dos cartazes, inclusive sobre condições materiais dos grupos e formas de financiamento, a partir da qualidade material empregada, e sobre seus usos concretos, distinguindo, por exemplo, cartazes efetivamente expostos daqueles que permaneceram guardados. Em alguns casos, a presença de carimbos dos Correios confirmou que o envio postal também integrava o universo de circulação dos cartazes políticos, ampliando a compreensão de suas formas de difusão. 
 
 {% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-05.jpg" alt="Visual description of figure image" caption="Figura 5. Um exemplo de metadados personalizados." %}
 
@@ -222,7 +223,7 @@ A exportação por este método é semelhante à impressão (Arquivo > Imprimir)
 
 {% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-08.jpg" alt="Visual description of figure image" caption="Figura 8. Tela de preferências do Tropy." %}
 
-Para exportar uma seleção, encontre o nome da seleção no painel "Fotos", abaixo do modelo de metadados. Clique com o botão direito do mouse (ou Control-clique no Mac) sobre o nome na lista e escolha Exportar Foto no menu de contexto. Você terá duas opções: exportar para um arquivo ou pra área de transferência. A seleção será exportada em formato .jpg, sem metadados.
+Para exportar uma seleção, encontre o nome da seleção no painel "Fotos", abaixo do modelo de metadados. Clique com o botão direito do mouse (ou Control-clique no Mac) sobre o nome na lista e escolha Exportar Foto no menu de contexto. Você terá duas opções: exportar para um ficheiro ou pra área de transferência. A seleção será exportada em formato .jpg, sem metadados.
 
 ## Instalando programas adicionais (plugins)
 
@@ -245,36 +246,38 @@ Antes de começar, vale a pena se perguntar se você realmente precisa importar 
 1. Abra sua instalação do Zotero e crie um item de exemplo que represente o objeto que você deseja importar do Tropy. Por exemplo, você pode fazer o seguinte: Arquivo > Novo Item > Livro ou Caso.
 2. No elemento de exemplo que você criou, preencha os valores (por exemplo, x) para as propriedades que deseja importar de suas fontes para o Tropy. Essas propriedades devem ser as mais importantes para a construção de suas referências (Título, Data, Volume, etc.).
 3. Clique com o botão direito do mouse no item de amostra e selecione Exportar item… no menu de contexto e exporte-o no .json  formato (CSL JSON).
-4. Abra o arquivo exportado .json (ele será aberto no seu navegador ou outro aplicativo padrão) e anote os termos CSL usados (em inglês) para cada campo que você preencheu anteriormente. Você usará esses termos na etapa 4 da próxima seção. Somente as propriedades com valores em seus respectivos campos aparecerão no arquivo .json.
+4. Abra o ficheiro![Uploading image.png…]()
+![Uploading image.png…]()
+ exportado .json (ele será aberto no seu navegador ou outro aplicativo padrão) e anote os termos CSL usados (em inglês) para cada campo que você preencheu anteriormente. Você usará esses termos na etapa 4 da próxima seção. Somente as propriedades com valores em seus respectivos campos aparecerão no ficheiro .json.
 
 ### Criando um modelo personalizado no Tropy para importar objetos para o Zotero
 
 1. Na sua instalação do Tropy, acesse a janela de Preferências (Tropy no Mac ou Editar > Preferências no Windows) e selecione Modelos. Escolha o modelo que você usará para os objetos que serão importados para o Zotero.
 2. Crie uma cópia deste modelo de metadados.
 3. Renomeie a cópia para diferenciá-la no menu Modelos. (Por exemplo: adicione "Zotero" ao nome original).
-4. Renomeie os rótulos das propriedades no novo modelo usando os termos CSL que apareceram no .json arquivo de item de exemplo copiado na etapa 4 da seção anterior. Use letras minúsculas e respeite os hífenes.
+4. Renomeie os rótulos das propriedades no novo modelo usando os termos CSL que apareceram no .json ficheiro de item de exemplo copiado na etapa 4 da seção anterior. Use letras minúsculas e respeite os hífenes.
 * Para importar com sucesso para o Zotero, seu modelo deve incluir uma propriedade de metadados chamada "tipo" com um elemento válido do Zotero, como "livro", "relatório" ou "artigo-periódico", no campo de metadados (consulte: [Tipos CSL](https://perma.cc/837L-8RRC)). Você pode preencher esse campo para cada objeto que pretende importar ou atribuí-lo como um valor predefinido no editor de modelos.
 * Nem todos os metadados do Tropy serão importados para o Zotero no mesmo formato: por exemplo, valores de data ou a separação de sobrenomes e nomes. Para importar uma data, recomenda-se usar o termo CSL "issued".
 * Se você alterar o idioma local no Tropy, precisará renomear seu modelo de importação do Zotero, substituindo as tags predefinidas pelas tags CSL (inglês).
 * NOTA: Atualmente, não há como transferir o texto do campo "Notas" do Tropy para o Zotero. Como alternativa, você pode adicionar uma propriedade de metadados ao seu modelo de exportação com o termo CSL "nota" e, em seguida, copiar e colar manualmente as notas nesse campo. As notas aparecerão no Zotero no campo "Extras" incluído em todos os itens.
 5. Aplique o novo modelo aos objetos que deseja importar para o Zotero. \* Pouca coisa deve mudar em termos de valores, pois você está mapeando novas tags em propriedades de metadados preexistentes.
-EXPORTANDO OBJETOS TROPY COMO UM ARQUIVO JSON CSL (Para posterior importação no Zotero)
+EXPORTANDO OBJETOS TROPY COMO UM FICHEIRO JSON CSL (Para posterior importação no Zotero)
 6. Em Editar > Preferências (Ctrl + shift + S), na seção Plugins, selecione CSL e, em seguida, Parâmetros.
 7. Adicione uma nova instância do plugin e você poderá dar um nome a ela para diferenciá-la no menu de contexto.
 8. Selecione o modelo que você acabou de criar.
 9. Lembre-se de que você pode criar vários modelos e opções de exportação para diferentes elementos do Zotero.
-10. Retorne à visualização do projeto e clique com o botão direito do mouse no objeto — ou em vários objetos — que você deseja exportar como um arquivo .json.
+10. Retorne à visualização do projeto e clique com o botão direito do mouse no objeto — ou em vários objetos — que você deseja exportar como um ficheiro .json.
 11. Selecione Exportar objeto > \[nome da instância do plugin]
-12. Dê um nome ao arquivo .json e salve-o. Se você pretende criar uma nova coleção no Zotero, pode usar esse nome, ao importar, o Zotero gerará uma coleção com o nome do arquivo.
+12. Dê um nome ao ficheiro .json e salve-o. Se você pretende criar uma nova coleção no Zotero, pode usar esse nome, ao importar, o Zotero gerará uma coleção com o nome do ficheiro.
 
 ### Importar para o Zotero
 
-1. Na sua instalação do Zotero, selecione Arquivo > Importar e escolha um arquivo.
-2. Selecione o .json arquivo exportado e clique em Continuar na caixa de diálogo de importação (você pode decidir se deseja criar uma nova coleção).
+1. Na sua instalação do Zotero, selecione Arquivo > Importar e escolha um ficheiro.
+2. Selecione o .json ficheiro exportado e clique em Continuar na caixa de diálogo de importação (você pode decidir se deseja criar uma nova coleção).
 3. Clique em Concluído quando a importação estiver finalizada e verifique se os itens recém-importados incluem os campos de metadados desejados. (Caso contrário, retorne à etapa 4 da seção anterior.)
 4. A partir daqui você pode gerenciar e citar essas referências por meio da sua instalação do Zotero.
 
-## O Tropy e Os Cartazes da Democracia
+## O Tropy e os Cartazes da democracia
 
 No desenvolvimento da pesquisa sobre os Cartazes da democracia, o uso do Tropy produziu ganhos metodológicos importantes para a organização do corpus e para o tratamento documental das fontes. Ao reunir, ordenar e descrever sistematicamente os cartazes em um mesmo ambiente, o software permitiu transformar um conjunto extenso e heterogêneo de imagens em uma série documental comparável. A criação de metadados personalizados, o registro de notas analíticas, a classificação temática e a associação de múltiplas imagens a uma mesma entrada favoreceram uma leitura mais rigorosa dos documentos, especialmente no que se refere à sua materialidade, circulação e usos políticos.
 
@@ -282,9 +285,9 @@ Esse processo mostrou que o Tropy não serviu apenas para ordenar e recuperar do
 
 ## Conclusão
 
-No transcorrer desta lição, vimos como o Tropy pode ser utilizado para criar projetos, importar imagens, organizar conjuntos documentais, editar metadados, registrar notas, associar múltiplas imagens a um mesmo item e exportar dados para outros usos acadêmicos. Mais do que apresentar uma sequência de procedimentos técnicos, a lição procurou demonstrar que essas operações fazem parte da construção metodológica da pesquisa.
+A experiência com os cartazes do CPMC demonstra, assim, como os procedimentos apresentados ao transcorrer da lição podem ser adaptados a outros conjuntos documentais, considerando suas características específicas e os problemas de investigação de cada pesquisa.
 
-No caso dos Cartazes da democracia, o uso do Tropy permitiu transformar um conjunto de imagens digitalizadas em um corpus documental estruturado, passível de comparação, descrição sistemática e análise histórica. Essa experiência indica que ferramentas digitais como o Tropy podem ocupar um lugar central na pesquisa com fontes visuais, pois ajudam a organizar os dados e, ao mesmo tempo, a produzir novas formas de interrogar os documentos.
+No caso dos cartazes da democracia, o uso do Tropy permitiu transformar um conjunto de imagens digitalizadas em um corpus documental estruturado, passível de comparação, descrição sistemática e análise histórica. Essa experiência indica que ferramentas digitais como o Tropy podem ocupar um lugar central na pesquisa com fontes visuais, pois ajudam a organizar os dados e, ao mesmo tempo, a produzir novas formas de interrogar os documentos.
 
 
 

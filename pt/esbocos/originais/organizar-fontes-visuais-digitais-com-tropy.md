@@ -60,11 +60,11 @@ Ao abrir o Tropy pela primeira vez, você precisará nomear e escolher o tipo de
 
 {% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-02.jpg" alt="Visual description of figure image" caption="Figura 2. Tela inicial do projeto novo do Tropy." %}
 
-Você também precisará escolher entre um projeto padrão .tpy ou avançado .tropy.
+Você também precisará escolher entre um projeto padrão (.tropy) ou avançado (.tpy).
 
 A diferença está em como o Tropy vincula as imagens ao ficheiro do projeto. Ao importar uma imagem, o Tropy estabelece um caminho entre o projeto e a imagem, exibindo-a na interface do projeto. Em um projeto padrão, o Tropy faz cópias das imagens importadas, salvando-as no diretório do projeto, usando esse local como caminho. Em um projeto avançado, o Tropy usa o local original da imagem como caminho entre ela e o projeto, sem fazer uma cópia.
 
-Com um projeto padrão, realocá-lo é mais fácil: basta transferi-lo para outro computador ou compartilhá-lo com outro usuário. Com um projeto avançado, realocar o ficheiro exigirá restaurar o caminho entre as imagens e o projeto por meio de um processo de consolidação. Para consolidar uma imagem com um caminho corrompido (indicado por um ícone com um ponto de exclamação), basta clicar com o botão direito do mouse, selecionar "Consolidar Item" no menu de contexto e navegar até o novo local da imagem.
+Com um projeto padrão, realocá-lo é mais fácil: basta transferir a pasta completa do projeto, incluindo as imagens armazenadas. Com um projeto avançado, realocar o ficheiro exigirá restaurar o caminho entre as imagens e o projeto por meio de um processo de consolidação. Para consolidar uma imagem com um caminho corrompido (indicado por um ícone com um ponto de exclamação), basta clicar com o botão direito do mouse, selecionar "Consolidar Item" no menu de contexto e navegar até o novo local da imagem.
 
 O Tropy geralmente solicitará que você vincule novamente outras imagens no mesmo diretório, caso mais imagens precisem ser consolidadas.
 
@@ -129,9 +129,13 @@ No caso de um ficheiro PDF com várias páginas, as imagens serão importadas co
 
 Logo no início da pesquisa, ao acessar o catálogo digital disponibilizado pelo Museu da República, foi possível utilizar esse recurso para importar o ficheiro PDF que reúne os cartazes da coleção. Como o documento continha a reprodução integral do conjunto documental, suas páginas puderam ser desmembradas em entradas individuais no Tropy, permitindo que cada cartaz passasse a constituir um item próprio dentro do projeto.
 
-A partir dessa estrutura inicial, foi possível criar metadados, notas e descrições específicas para cada cartaz. Posteriormente, as fotografias que realizei presencialmente durante a pesquisa foram incorporadas aos respectivos itens, ampliando o conjunto de informações disponíveis sobre cada documento. Dessa forma, o catálogo digital forneceu a base para a organização inicial do corpus, que foi posteriormente enriquecido com registros produzidos durante o trabalho de investigação.
+A partir dessa estrutura inicial, foi possível criar metadados, notas e descrições específicas para cada cartaz. Posteriormente, as fotografias que realizei presencialmente durante a pesquisa foram incorporadas aos respectivos itens, ampliando o conjunto de informações disponíveis sobre cada documento. Dessa forma, o catálogo digital forneceu a base para a organização inicial do corpus, que foi posteriormente enriquecido com registros produzidos durante o trabalho de investigação. 
+
+Na prática, cada cartaz já possuía uma entrada individual no projeto, criada a partir da reprodução disponível no catálogo digital. As fotografias realizadas durante a pesquisa presencial, incluindo registros do verso, de assinaturas e de outros detalhes materiais, foram então associadas aos respectivos itens, sem a necessidade de criar uma nova entrada para cada imagem. Dessa forma, foi possível reunir diferentes registros fotográficos de um mesmo documento, mantendo seus metadados e notas de pesquisa vinculados a um único item no Tropy.
 
 ## Descrevendo as imagens
+
+Uma das funções mais importantes do Tropy é descrever as fontes por meio de metadados e anotações. Os metadados permitem registrar informações estruturadas em campos específicos, como título, autoria, data e procedência do documento, enquanto as notas possibilitam acrescentar observações e interpretações do pesquisador em texto livre. Além disso, é possível organizar as imagens com um sistema de etiquetas e listas personalizadas. As etiquetas permitem identificar características ou temas compartilhados por diferentes documentos, enquanto as listas possibilitam agrupá-los segundo critérios definidos pelo pesquisador. Essas funcionalidades, ilustradas na Figura 8, complementam a descrição documental e facilitam a organização, a recuperação e a análise das fontes históricas.
 
 Uma das funções mais importantes do Tropy é descrever as fontes por meio de metadados e anotações. Além disso, é possível organizar as imagens com um sistema de etiquetas e listas personalizadas. Essas descrições, adicionadas pelo pesquisador, ajudam a revelar informações presentes nas fontes e permitem a criação manual de referências às fontes primárias.
 
@@ -143,7 +147,7 @@ Essa visualização facilita a análise da imagem e a adição de metadados indi
 
 ### Personalizando metadados
 
-O Tropy inclui um editor para facilitar a criação de modelos de metadados personalizados. Em Editar > Preferências > Modelos (ou Ctrl+shift+S > Modelos), você pode revisar todos os modelos incluídos na instalação, bem como criar um modelo de metadados do zero. 
+O Tropy inclui um editor para facilitar a criação de modelos de metadados personalizados. Em Editar > Preferências > Modelos (ou Ctrl+shift+S > Modelos), você pode revisar todos os modelos incluídos na instalação, bem como criar um modelo de metadados do zero, conforme ilustrado na Figura 5.
 
 {% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-04.jpg" alt="Visual description of figure image" caption="Figura 4. Construindo metadados personalizados." %}
 
@@ -151,13 +155,13 @@ Para criar um novo modelo do zero, certifique-se de que "Novo Modelo" apareça n
 
 Ao adicionar uma propriedade, você pode modificá-la para especificar o tipo de dados, atribuir um rótulo diferente do nome padrão, adicionar uma dica (por exemplo, "Sobrenome, Nome", para lembrar a ordem em que o nome do autor deve ser registrado) e também definir um valor predefinido. Este último pode ajudar no processamento da origem, por exemplo, ao aplicar um modelo pré-preenchido a uma coleção com várias imagens semelhantes.
 
-Para registros novos de uma coleção de fontes online específica, você pode criar um modelo de metadados a partir da sua própria coleção de fontes, como Descrição (dc:description), Escopo (dcterms:extent) e Local de Criação (Iptc4xmpExt:LocationCreated). Outras propriedades dependerão do que você considerar relevante para descrever as fontes do projeto.
+No caso dos cartazes do Centro Pró-Memória da Constituinte (CPMC), é possível utilizar as informações disponíveis no catálogo digital do Museu da República como referência para a criação de um modelo de metadados personalizado no Tropy. Para isso, podem ser utilizadas propriedades como Descrição (dc:description), Extensão (dcterms:extent), para registrar as dimensões dos documentos, e Local de Criação (Iptc4xmpExt:LocationCreated), quando essa informação estiver disponível. Outras propriedades podem ser acrescentadas conforme as características do conjunto documental e as necessidades específicas da pesquisa.
 
 Você pode criar um modelo personalizado com base em um modelo existente.
 
 Escolha um modelo no menu suspenso e clique nos dois retângulos que aparecem à direita. O editor criará uma cópia, que você poderá salvar após revisar e confirmar os metadados — por exemplo, renomeando-a. O novo modelo conterá as mesmas propriedades do original, e você poderá adicionar ou remover quaisquer outras que precisar.
 
-Na pesquisa com os cartazes da democracia, o uso de metadados personalizados constituiu um dos pontos cruciais da metodologia. Na primeira fase do trabalho, realizei uma análise detalhada de cada cartaz, levando em conta aspectos materiais e documentais como dimensões, tipo e gramatura do papel, tipo de impressão, instituição responsável por sua produção — neste caso, em grande medida, movimentos sociais de luta popular — e, quando foi possível identificar, também o artista ou fotógrafo responsável pela imagem. Além disso, registrei marcas físicas relevantes, como fitas adesivas, furos, sinais de fixação, dobras e indícios de envio pelo correio. Esse nível de organização tornou possível extrair informações que ultrapassavam o conteúdo visual mais imediato dos cartazes. A observação sistemática desses elementos permitiu levantar hipóteses sobre as condições de produção e circulação dos cartazes, inclusive sobre condições materiais dos grupos e formas de financiamento, a partir da qualidade material empregada, e sobre seus usos concretos, distinguindo, por exemplo, cartazes efetivamente expostos daqueles que permaneceram guardados. Em alguns casos, a presença de carimbos dos Correios confirmou que o envio postal também integrava o universo de circulação dos cartazes políticos, ampliando a compreensão de suas formas de difusão. 
+Na pesquisa com os cartazes da democracia, o uso de metadados personalizados constituiu um dos pontos cruciais da metodologia. Na primeira fase do trabalho, realizei uma análise detalhada de cada cartaz, levando em conta aspectos materiais e documentais como dimensões, tipo e gramatura do papel, tipo de impressão, instituição responsável por sua produção — neste caso, em grande medida, movimentos sociais de luta popular — e, quando foi possível identificar, também o artista ou fotógrafo responsável pela imagem. Além disso, registrei marcas físicas relevantes, como fitas adesivas, furos, sinais de fixação, dobras e indícios de envio pelo correio. Esse nível de organização tornou possível extrair informações que ultrapassavam o conteúdo visual mais imediato dos cartazes. A observação sistemática desses elementos permitiu levantar hipóteses sobre as condições de produção e circulação dos cartazes, inclusive sobre condições materiais dos grupos e formas de financiamento, a partir da qualidade material empregada, e sobre seus usos concretos, distinguindo, por exemplo, cartazes efetivamente expostos daqueles que permaneceram guardados. Em alguns casos, a presença de carimbos dos Correios confirmou que o envio postal também integrava o universo de circulação dos cartazes políticos, ampliando a compreensão de suas formas de difusão. A Figura 6 apresenta um exemplo dos metadados personalizados utilizados na pesquisa, demonstrando como essas informações foram organizadas no Tropy.
 
 {% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-05.jpg" alt="Visual description of figure image" caption="Figura 5. Um exemplo de metadados personalizados." %}
 
@@ -169,7 +173,7 @@ Todos esses parâmetros, juntamente com as dicas, podem ajudar a padronizar os m
 
 ### Vocabulários controlados
 
-Na janela Preferências (Ctrl+shift+S), você pode revisar os vocabulários que acompanham o Tropy na opção “vocabulários”. Clique em qualquer esquema para visualizar seus elementos. Você pode adicionar outros vocabulários clicando com o botão esquerdo no botão + na parte inferior da janela. Os esquemas devem estar no formato .n3 ou .txt. Você pode visualizar uma lista extensa de esquemas de vocabulário controlado que podem ser facilmente importados para o Tropy no repositório de [Vocabulários Abertos Vinculados](https://vocabularyserver.com/vocabularies/) (LOV)[^1].
+Na janela Preferências (Ctrl+shift+S), você pode revisar os vocabulários que acompanham o Tropy na opção “vocabulários”. Clique em qualquer esquema para visualizar seus elementos. Você pode adicionar outros vocabulários clicando com o botão esquerdo no botão + na parte inferior da janela. Os esquemas devem estar nos formatos `.n3` ou `.ttl`. Você pode visualizar uma lista extensa de esquemas de vocabulário controlado que podem ser facilmente importados para o Tropy no repositório de [Vocabulários Abertos Vinculados](https://vocabularyserver.com/vocabularies/) (LOV)[^1].
 
 ## Editar e anotar imagens
 
@@ -177,7 +181,7 @@ Na visualização de objetos, existem várias ferramentas para alterar a aparên
 
 ### Edições para facilitar a leitura
 
-Na parte superior da visualização do objeto, encontram-se diversas ferramentas para ajustar e rotacionar a imagem atual. No canto superior direito, está o botão "Editar Foto”, onde, utilizando controles deslizantes, é possível ajustar o brilho, o contraste, a tonalidade, a saturação e a nitidez — tudo com o objetivo de melhorar a legibilidade de documentos desfocados, seja devido ao seu estado ou à qualidade da imagem original.
+Na parte superior da visualização do objeto, encontram-se diversas ferramentas para ajustar e rotacionar a imagem atual. No canto superior direito, está o botão "Editar Foto”, onde, utilizando controles deslizantes, é possível ajustar o brilho, o contraste, a tonalidade, a saturação e a nitidez — tudo com o objetivo de melhorar a legibilidade de documentos desfocados, seja devido ao seu estado ou à qualidade da imagem original. A Figura 7 apresenta as ferramentas de edição de imagens disponíveis no Tropy, permitindo visualizar os recursos mencionados.
 
 Há também uma opção para inverter as cores, um recurso que facilita a leitura de microfilmes ou permite visualizar o negativo de uma fonte visual. 
 
@@ -191,27 +195,25 @@ Você pode revisar cada seleção clicando nela ou usando o painel de imagens à
 
 ### Notas
 
-No campo de notas (Figura 5), você pode adicionar qualquer anotação usando texto formatado. Esse texto também pode ser pesquisado usando a barra de pesquisa na visualização do projeto. Depois de adicionar uma anotação ao campo de notas, retorne à visualização do projeto e digite uma palavra ou frase que você escreveu no campo de notas (por exemplo, da Figura 5: "alta gramatura"). Todos os objetos que contêm essa palavra ou frase (ou melhor, esse "valor"), seja no campo de notas ou no modelo de metadados, aparecerão na visualização do projeto. Para retornar à visualização com todos os objetos, limpe o valor digitado na barra de pesquisa. Usando esse recurso, você pode descobrir e agrupar vários objetos na visualização principal, facilitando a conexão entre documentos que mencionam os mesmos termos. É também uma maneira de localizar rapidamente um documento específico com base na transcrição do documento ou nas anotações que você fez.
+No campo de notas, você pode adicionar qualquer anotação usando texto formatado. Esse texto também pode ser pesquisado usando a barra de pesquisa na visualização do projeto. Depois de adicionar uma anotação ao campo de notas, retorne à visualização do projeto e digite uma palavra ou frase que você escreveu no campo de notas (por exemplo, da Figura 5: "alta gramatura"). Todos os objetos que contêm essa palavra ou frase (ou melhor, esse "valor"), seja no campo de notas ou no modelo de metadados, aparecerão na visualização do projeto. Para retornar à visualização com todos os objetos, limpe o valor digitado na barra de pesquisa. Usando esse recurso, você pode descobrir e agrupar vários objetos na visualização principal, facilitando a conexão entre documentos que mencionam os mesmos termos. É também uma maneira de localizar rapidamente um documento específico com base na transcrição do documento ou nas anotações que você fez.
 
 Dependendo da sua preferência, você pode alterar o modo de exibição do campo de notas de horizontal para lado a lado. Você também pode inserir links no campo de notas. É possível adicionar anotações tanto a seleções quanto a imagens. Para começar, basta digitar no campo de notas; as anotações serão salvas automaticamente no banco de dados do projeto.
 
 ## Organizando imagens
 
-Além do modelo de metadados, você pode descrever suas fontes no Tropy usando metadados "não estruturados" — ou seja, metadados que não pertencem a nenhum esquema ou vocabulário formal. Exemplos desse tipo de metadado incluem descrições temáticas relacionadas ao documento ("artístico", "fotográfico", "constituinte"), descrições cronológicas ("1983") ou descrições relacionadas ao seu fluxo de trabalho ("Transcrição ausente", "Metadados completos"). Você pode adicionar esses tópicos usando a barra de etiquetas, no lado esquerdo da visualização do projeto (Figura 6).
-
-As listas desempenham uma função semelhante: podem ser usadas para organizar as fontes em grupos e subgrupos. Trata-se de pastas que podem ser criadas com agrupamentos de imagens. Esses agrupamentos podem ser por tema ou refletir a organização de uma publicação planejada.
+Além dos metadados e das notas, o Tropy permite organizar as fontes por meio de listas e etiquetas. Essas ferramentas possibilitam agrupar documentos de acordo com diferentes critérios, como temas de investigação, características compartilhadas ou etapas do trabalho de pesquisa. A Figura 8 apresenta as funcionalidades de organização por listas e etiquetas disponíveis no Tropy.
 
 {% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-07.jpg" alt="Visual description of figure image" caption="Figura 7. Criando listas e etiquetas de organização." %}
 
-Em resumo, essas funções ajudam a criar uma lógica organizacional para o seu projeto, seja por meio de uma série de listas que transmitem uma organização por capítulos e seções, seja por meio de etiquetas que destacam vínculos entre objetos que não estão representados nos metadados formais.
-
 ### Listas
 
-As listas funcionam com uma lógica parecida de um diretório de ficheiros com subníveis e objetos. Sempre que você clicar em cima de uma lista específica, ela mostrará todos os seus elementos internos na tela do projeto. Para criar uma lista, clique com o botão direito do mouse (ou Ctrl+clique no Mac) na barra lateral esquerda. Selecione "Nova Lista" no menu de contexto e nomeie a pasta resultante (por exemplo, "Constituinte"). Em seguida, pressione Enter ou clique com o botão esquerdo do mouse.
+As listas funcionam com uma lógica parecida de um diretório de ficheiros com subníveis e objetos. Sempre que você clicar em cima de uma lista específica, ela mostrará todos os seus elementos internos na tela do projeto. Para criar uma lista, clique com o botão direito do mouse (ou Ctrl+clique no Mac) na barra lateral esquerda. Selecione "Nova Lista" no menu de contexto e nomeie a pasta resultante (por exemplo, "Constituinte"). Em seguida, pressione Enter ou clique com o botão esquerdo do mouse. A Figura 8 apresenta um exemplo da organização de documentos por meio de listas no Tropy, permitindo visualizar a disposição dos itens na interface do programa.
 
 Agora, você pode arrastar suas fontes da visualização do Projeto para a nova lista. Você pode adicionar uma fonte a várias listas, incluindo sublistas da lista principal. Para remover um item de uma lista, selecione esta opção no menu de contexto. Se você escolher "Excluir Item", o item será movido para a pasta "Itens Excluídos”. Para criar uma sublista dentro de uma lista, clique com o botão direito do mouse (ou Ctrl+clique no Mac) na lista e selecione "Nova Lista”. Você pode alterar a ordem de uma lista simplesmente arrastando-a para um local diferente dentro das listas; no entanto, seus nomes aparecem em ordem alfabética.
 
 ### Etiquetas e rótulos
+
+As etiquetas permitem classificar as fontes a partir de critérios definidos pelo pesquisador, sem a necessidade de utilizar campos estruturados de metadados. Podem ser empregadas para identificar características temáticas relacionadas aos documentos, como “artístico”, “fotográfico” ou “constituinte”, ou ainda para acompanhar diferentes etapas do trabalho, por meio de etiquetas como “Transcrição ausente” e “Metadados completos”. Dessa forma, é possível estabelecer relações entre documentos que compartilham determinadas características, facilitando sua localização e análise.
 
 Existem várias opções para se criar uma nova etiqueta. Selecione um ou mais objetos na visualização do projeto. No lado direito da visualização do projeto, clique no botão Etiquetas para abrir o editor de etiquetas. Clique em Adicionar etiqueta ao objeto X (sendo X o número de objetos selecionados) e digite um nome para a etiqueta. Um ponto aparecerá na barra de etiquetas e também ao lado do título (ou o título exibido na visualização da galeria). Usando o menu de contexto, você pode alterar ou configurar a cor da etiqueta.
 
@@ -219,7 +221,7 @@ Existem várias opções para se criar uma nova etiqueta. Selecione um ou mais o
 
 Você pode exportar imagens individuais, objetos (com ou sem metadados e anotações) e seleções de imagens em vários formatos. Clique com o botão direito do mouse em um objeto na visualização do projeto e selecione “Exportar Item” no menu de contexto. No submenu, você pode escolher [JSON-LD](https://pt.wikipedia.org/wiki/JSON-LD) ou PDF (e, dentro do PDF, pode escolher a orientação retrato ou paisagem). A exportação em formato JSON-LD, com extensão ".json", transmitirá apenas os metadados e as anotações associadas às imagens selecionadas, a imagem em si não será incluída. Para exportar a imagem com os metadados e as anotações, você deve selecionar a opção PDF.
 
-A exportação por este método é semelhante à impressão (Arquivo > Imprimir) em formato PDF. Os parâmetros para imagens exportadas para PDF se encontram em Editar > Preferências > Definições. É possível escolher entre incluir ou não imagens, metadados e notas, bem como ajustar a formatação: otimizar o tamanho e a qualidade das imagens, incluir apenas imagens com notas e permitir que o conteúdo ocupe mais de uma página.
+A exportação por este método é semelhante à impressão (Arquivo > Imprimir) em formato PDF. Os parâmetros para imagens exportadas para PDF se encontram em Editar > Preferências > Definições. É possível escolher entre incluir ou não imagens, metadados e notas, bem como ajustar a formatação: otimizar o tamanho e a qualidade das imagens, incluir apenas imagens com notas e permitir que o conteúdo ocupe mais de uma página. A Figura 9 apresenta a tela de preferências do Tropy, na qual é possível configurar os parâmetros de exportação de imagens e documentos em formato PDF.
 
 {% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-08.jpg" alt="Visual description of figure image" caption="Figura 8. Tela de preferências do Tropy." %}
 
@@ -230,6 +232,8 @@ Para exportar uma seleção, encontre o nome da seleção no painel "Fotos", aba
 Plugins, ou programas complementares, são extensões que você pode instalar para facilitar a importação e exportação de imagens e metadados. Os plugins oficiais estão localizados no repositório [GitHub](https://github.com/tropy) do Tropy. Você também pode acessá-los no site do Tropy, na parte inferior da página inicial. Para instalar um, navegue até o repositório e baixe o plugin desejado. Em seguida, na janela de Preferências da sua instalação do Tropy, você deve ativá-lo (veja os passos abaixo). Existem plugins disponíveis para integração com uma instalação do Omeka S, exportação de objetos para o [Zotero](https://www.zotero.org/) (CSL) e exportação em vários formatos .zip. .csv. Além disso, é possível importar ficheiros [IIIF](https://pt.wikipedia.org/wiki/Estrutura_Internacional_para_Interoperabilidade_de_Imagens) e manifestos.
 
 ## Integração com o Zotero
+
+O [Zotero](https://www.zotero.org/) é um software livre e gratuito de gerenciamento de referências bibliográficas, que permite organizar fontes de pesquisa, armazenar informações documentais e gerar citações e bibliografias durante a escrita acadêmica.
 
 Em alguns casos, pode ser útil converter os metadados armazenados no Tropy em uma referência compatível com o Zotero. Isso pode auxiliar na organização das fontes e na conexão delas ao processo de escrita. É preciso deixar registrado que este é considerado um uso avançado do Tropy, adequado apenas para determinados usuários.
 
@@ -243,7 +247,7 @@ Antes de começar, vale a pena se perguntar se você realmente precisa importar 
 
 ### Que tipo de elemento você deseja importar para o Zotero?
 
-1. Abra sua instalação do Zotero e crie um item de exemplo que represente o objeto que você deseja importar do Tropy. Por exemplo, você pode fazer o seguinte: Arquivo > Novo Item > Livro ou Caso.
+1. Abra sua instalação do Zotero e crie um item de exemplo que represente uma das fontes utilizadas na pesquisa. No caso dos cartazes do Centro Pró-Memória da Constituinte, você pode selecionar Arquivo > Novo Item > Documento e preencher os campos com informações como o título do cartaz, a autoria, a data de produção e a instituição responsável por sua preservação, neste caso, o Museu da República.
 2. No elemento de exemplo que você criou, preencha os valores (por exemplo, x) para as propriedades que deseja importar de suas fontes para o Tropy. Essas propriedades devem ser as mais importantes para a construção de suas referências (Título, Data, Volume, etc.).
 3. Clique com o botão direito do mouse no item de amostra e selecione Exportar item… no menu de contexto e exporte-o no .json  formato (CSL JSON).
 4. Abra o ficheiro![Uploading image.png…]()
@@ -256,10 +260,10 @@ Antes de começar, vale a pena se perguntar se você realmente precisa importar 
 2. Crie uma cópia deste modelo de metadados.
 3. Renomeie a cópia para diferenciá-la no menu Modelos. (Por exemplo: adicione "Zotero" ao nome original).
 4. Renomeie os rótulos das propriedades no novo modelo usando os termos CSL que apareceram no .json ficheiro de item de exemplo copiado na etapa 4 da seção anterior. Use letras minúsculas e respeite os hífenes.
-* Para importar com sucesso para o Zotero, seu modelo deve incluir uma propriedade de metadados chamada "tipo" com um elemento válido do Zotero, como "livro", "relatório" ou "artigo-periódico", no campo de metadados (consulte: [Tipos CSL](https://perma.cc/837L-8RRC)). Você pode preencher esse campo para cada objeto que pretende importar ou atribuí-lo como um valor predefinido no editor de modelos.
+* Para importar com sucesso para o Zotero, seu modelo deve incluir uma propriedade de metadados cujo rótulo seja `type`, com um valor válido do padrão CSL, como `book` (livro), `report` (relatório) ou `document` (documento). No caso dos cartazes do CPMC, pode ser utilizado o valor `document`, correspondente à categoria documental escolhida para o exemplo. Você pode preencher esse campo para cada objeto que pretende importar ou atribuí-lo como um valor predefinido no editor de modelos.
 * Nem todos os metadados do Tropy serão importados para o Zotero no mesmo formato: por exemplo, valores de data ou a separação de sobrenomes e nomes. Para importar uma data, recomenda-se usar o termo CSL "issued".
 * Se você alterar o idioma local no Tropy, precisará renomear seu modelo de importação do Zotero, substituindo as tags predefinidas pelas tags CSL (inglês).
-* NOTA: Atualmente, não há como transferir o texto do campo "Notas" do Tropy para o Zotero. Como alternativa, você pode adicionar uma propriedade de metadados ao seu modelo de exportação com o termo CSL "nota" e, em seguida, copiar e colar manualmente as notas nesse campo. As notas aparecerão no Zotero no campo "Extras" incluído em todos os itens.
+* NOTA: Atualmente, não há como transferir o texto do campo "Notas" do Tropy para o Zotero. Como alternativa, você pode adicionar uma propriedade de metadados ao seu modelo de exportação com o identificador CSL "note" e, em seguida, copiar e colar manualmente as notas nesse campo. As notas aparecerão no Zotero no campo "Extras" incluído em todos os itens.
 5. Aplique o novo modelo aos objetos que deseja importar para o Zotero. \* Pouca coisa deve mudar em termos de valores, pois você está mapeando novas tags em propriedades de metadados preexistentes.
 EXPORTANDO OBJETOS TROPY COMO UM FICHEIRO JSON CSL (Para posterior importação no Zotero)
 6. Em Editar > Preferências (Ctrl + shift + S), na seção Plugins, selecione CSL e, em seguida, Parâmetros.

@@ -90,8 +90,8 @@ First, install all required Python packages. These packages support different pa
 
 ```bash
 pip install pandas numpy matplotlib \
-  seaborn nltk spacy scipy \
-  transformers torch tqdm
+  nltk spacy transformers torch 
+  
 ```
 
 In the next two steps you will download language processing resources that will be used for sentence splitting later in the lesson. The NLTK tokenizer data will be used to split text into sentences when building larger window-level passages. Download the NLTK tokenizer data **inside Python**:
@@ -127,17 +127,19 @@ This lesson was tested with:
 - torch 2.6
 - DeBERTa NLI: `MoritzLaurer/deberta-v3-large-zeroshot-v2.0` (Hugging Face)
 
-Now that you have installed the packages and language resources, load the libraries used throughout the lesson. `difflib` and `warnings` are already included in Python’s standard library so they do not need to be installed. `difflib` will be used in the data preparation section for fuzzy string matching. `warnings` will be used to suppress non-essential warning messages:
+Now that you have installed the packages and language resources, load the libraries used throughout the lesson. `os` and `difflib` are part of Python's standard library, so they do not need to be installed. `os` is used to build file paths when saving cleaned texts, and `difflib` is used in the data preparation section for fuzzy string matching. `hf_logging` controls how many status messages the `transformers` library prints; you will use it when setting up the NLI pipeline.
 
 ```python
+import os
+import difflib
+
 import pandas as pd
 import numpy as np
-import difflib
+import matplotlib.pyplot as plt
 from nltk import sent_tokenize
 import spacy
-from transformers import AutoTokenizer, pipeline
 import torch
-import warnings
+from transformers import AutoTokenizer, pipeline
 ```
 
 ## Case Study: Chinese Immigration Law in British Columbia
@@ -152,16 +154,19 @@ However, Crease was not considered straightforwardly sympathetic to Chinese immi
 
 To explore this question computationally, you will compare the language of Crease's rulings with two reference points: the discriminatory Act itself, and Justice [Matthew Baillie Begbie](https://www.biographi.ca/en/bio/begbie_matthew_baillie_12E.html),[^4] the first Chief Justice of British Columbia. Unlike Crease, historical accounts describe Begbie as protective of marginalized peoples, including Chinese immigrants.[^5][^6] Begbie struck down discriminatory municipal by-laws in Victoria targeting Chinese-owned businesses in the 1888 case of *R v. Victoria*.[^7]
 
-The corpus consists of ten digitized texts: legal rulings (*R v. Wing Chong*,[^2] *Wong Hoy Woon v. Duncan*,[^8] *R v. Mee Wah*,[^9] *R v. Victoria*[^7]), the *1884 Chinese Regulation Act*, and reports from the 1884 Royal Commission on Chinese Immigration.[^10] The texts were converted from archival scans to machine-readable format using [Optical Character Recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition). Direct quotes of the Act within Crease's ruling were identified using fuzzy string matching and removed so they do not contaminate the analysis of his own language (this process is described in the corpus preparation section).
+The analysis compares four court rulings, two by Crease (*R v. Wing Chong*[^2] and *Wong Hoy Woon v. Duncan*,[^8]) and two by Begbie (*R v. Mee Wah*[^9] and *R v. Victoria*[^7]), with the text of the *1884 Chinese Regulation Act*. The full corpus we use has ten digitized texts. Besides the five just listed (two court rulings by Crease, twyo by Begbie, the the Act), the corpus includes Crease's and Begbie's reports to the 1884 Royal Commission on Chinese Immigration,[^10] two further documents connected to that Commission (by Chapleau and by Powell), and a later Superme Court of Canada ruling by Chief Justice Charles Fitzpatrick (*Quong Wing v. The King*). These five additional texts are included as background material, but they are not part of the stance comparison. The [Preparing the Corpus](#preparing-the-corpus) section explains how they are set aside.
+
+The texts were converted from archival scans to machine-readable format using [Optical Character Recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition). Direct quotes of the Act within Crease's ruling were identified using fuzzy string matching and removed so they do not contaminate the analysis of his own language. This process is described in the corpus preparation section.
 
 ## Downloading the Data
 
 Download the lesson data files from the [_Programming Historian_ repository](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/natural-language-inference-historical-text/data.zip). Create a `data/` directory in your working folder and place all files there. The dataset includes:
 
-- `data/core/metadata_cleaned.csv` -- a table listing the ten source documents with author, group, and type metadata
-- Thirteen `.txt` files in `data/texts/` -- the OCR-transcribed historical texts (legal rulings, the 1884 Chinese Regulation Act, and Royal Commission reports)
+- `data/core/metadata_cleaned.csv` -- a table with one row for each of the ten source documents, recording its author, document type, and full text. The texts in this table have already had direct quotations of the Act removed.
+- `data/texts/analytic/` -- the ten original OCR-transcribed texts, one .txt file per document, before quotations were removed
+- `data/texts/quotations_removed/` -- cleaned versions of the four court rulings, produced with the quotation-removal code in this lesson. Running that code yourself saves your own cleaned files to this folder.
 - `data/core/labelled_snippets.csv` -- 45 sentence excerpts hand-labelled for evaluation by one of the lesson co-authors
-- `data/texts/quotations_removed/` -- versions of Crease's texts with direct quotations of the Act removed
+- `data/results/` -- precomputed model outputs (the sentence-level and window-level scores, the evaluation predictions, and the label sensitivity summary), so that you can follow the lesson without running the slowest steps
 
 These sources are nineteenth-century British Columbia legal and government documents in the public domain. Openly accessible copies are available without login through UBC Open Collections, Canadiana, the Internet Archive, and BC Laws. We produced the text files by running modern OCR on those scans and organising the results. The OCR transcriptions and derived data files in this lesson are shared under a Creative Commons Attribution (CC BY 4.0) license.
 
@@ -184,7 +189,7 @@ After OCRing the source documents, we created a CSV file, `metadata_cleaned.csv`
 
 Next, you will create the comparison groups that you want to use in your analysis. Since this lesson compares the language of Crease, Begbie, and the Act, you will be grouping documents by author (for Crease and Begbie) and document type (for the Act). 
 
-First, load the metadata CSV into a `pandas` DataFrame. Then create a new `group` column and assign each document to one of the comparison groups: Crease, Begbie, or the Regulation Act. The code starts by labelling every document as `Other`, then replaces that label for documents by Crease, documents by Begbie, and the Act using author and type metadata.
+First, load the metadata CSV into a `pandas` DataFrame. Then create a new `group` column and assign each document to one of the comparison groups. The code starts by labelling every document as `Other`, then replaces that label for documents by Crease, documents by Begbie, and the Act using the author and type columns. The Act is given the short name `Act 1884`, which is stored in the variable `ACT_LABEL` so that the same name is used in every table and figure later in the lesson.
 
 ```python
 df = pd.read_csv("data/core/metadata_cleaned.csv")
@@ -213,7 +218,9 @@ Regulation Act    1
 Name: group, dtype: int64
 ```
 
-This check confirms that the comparison groups are present before any model scores are calculated. You can see there are three texts assigned to Crease, three to Begbie, and the 1884 Chinese Regulation Act. 
+This check confirms that the comparison groups are in place before any model scores are calculated. Crease and Begbie each have three texts: two court rulings and one report to the Royal Commission. The Act has one text. The three `Other` texts are the Fitzpatrick ruling and the two Commission documents by Chapleau and Powell.
+
+The stance comparison in this lesson uses only the four court rulings and the Act. The reports and the `Other` texts are kept in the data because they help situate the rulings historically, and five snippets from Royal Commission material appear in the evaluation sample later in the lesson. They are left out of the stance comparison because the research question is about how the judges wrote in their rulings; mixing in a different genre, such as Commission reports, would make the comparison between authors less even. If you adapt this workflow, decide early which documents answer your research question and which are background, and filter your corpus accordingly.
 
 ### Detecting and Removing Direct Quotations
 
@@ -223,7 +230,7 @@ Quotation removal is a necessary data preparation step because stance classifica
 
 The approach uses fuzzy string matching via Python's [`difflib.SequenceMatcher`](https://docs.python.org/3/library/difflib.html), which computes a similarity ratio between two strings based on the longest contiguous matching subsequences. Exact string matching would be too weak here: the texts were produced by OCR, so a sentence Crease quotes from the Act and the same sentence in the Act itself rarely match character-for-character. Small transcription differences (a misread letter, a dropped word, inconsistent punctuation) would defeat an exact-match filter while leaving the quotation in place. Fuzzy matching tolerates this noise by scoring *how similar* two sentences are rather than demanding they be identical. For each sentence in Crease's text, you compute its similarity to every sentence in the Act and retain the highest score.
 
-The following code prepares the quotation-matching process. First, it loads spaCy’s English model and uses it to split the Regulation Act into sentences. These sentences will serve as the reference set. It then reads one of Crease’s original texts (`Regina_V_Wing_Chong`) and defines a function, `compute_quote_similarity()`, which compares one sentence against every sentence in the reference set and returns the highest similarity score:
+The following code prepares the quotation-matching process. First, it loads spaCy's English model and uses it to split the Act into sentences, keeping only sentences longer than 20 characters so that headings and stray fragments are ignored. These Act sentences will serve as the reference set. The code then reads the original text of *R v. Wing Chong* and defines a function, `compute_quote_similarity()`, which compares one sentence against every sentence in the reference set and returns the highest similarity score. The comparison is made in lower case so that differences in capitalisation do not affect the score.
 
 ```python
 nlp = spacy.load("en_core_web_sm")
@@ -288,7 +295,7 @@ Inspecting the highest-scoring rows helps you choose a threshold instead of trea
 
 In this case, we set the threshold to 0.6. A threshold of 0.6 catches near-exact quotes (accounting for OCR errors) while leaving Crease's own paraphrases intact. A lower threshold such as 0.4 also catches loose paraphrases but risks discarding original sentences that merely share legal vocabulary with the Act.
 
-This count lets you check how many sentences remain after quotation removal:
+The following code applies the threshold. It keeps only the sentences whose similarity score is below 0.6 and then prints two numbers: how many sentences the text had before quotation removal, and how many remain afterwards.
 
 ```python
 quote_threshold = 0.6
@@ -299,7 +306,48 @@ cleaned_crease_sents = quote_scores[
 len(crease_sents), len(cleaned_crease_sents)
 ```
 
-In this example, the threshold removes 12 sentences from *R v. Wing Chong*. The `act_quote_sentences_removed` column in the metadata records how many sentences were removed from each document, and the cleaned texts are saved under `data/texts/quotations_removed/`. The later NLI analysis uses these quotation-removed versions for Crease's texts. The same `compute_quote_similarity` function is reused later as a sensitivity check (see [Quote Sensitivity](#quote-sensitivity)), where you sweep across thresholds to confirm that residual quotations are not driving the results.
+Expected output:
+
+```text
+(218, 206)
+```
+
+The threshold removes 12 of the 218 sentences in *R v. Wing Chong*. This matches the `act_quote_sentences_removed` column in the metadata, which records how many sentences were removed from each document.
+
+Next, save the cleaned text so that you can use it later. The code below joins the remaining sentences back into a single text, separating them with spaces, and writes it to the `data/texts/quotations_removed/` folder under the same file name as the original. The `os.makedirs()` line creates the folder if it does not already exist.
+
+```python
+output_dir = "data/texts/quotations_removed"
+os.makedirs(output_dir, exist_ok=True)
+
+cleaned_crease_text = " ".join(cleaned_crease_sents)
+
+with open(
+    os.path.join(output_dir, "regina_v_wing_chong.txt"),
+    "w",
+    encoding="utf-8",
+) as f:
+    f.write(cleaned_crease_text)
+```
+
+Joining sentences with spaces removes the original paragraph breaks. This does not affect the analysis, because every later step splits the texts into sentences again.
+
+We applied the same process to the other three court rulings in the stance comparison. *R v. Wing Chong* was the only text from which Act quotations were removed: the other rulings contained no sentences above the 0.6 threshold, so their `act_quote_sentences_removed` value is 0. We then placed the cleaned texts in the `text` column of `metadata_cleaned.csv`, which is why the rest of the lesson can load them directly from the DataFrame `df`. You can confirm this by checking that one of the quoted Act sentences no longer appears in the stored text of *R v. Wing Chong*:
+
+```python
+wing_chong_text = df.loc[
+    df["filename"] == "regina_v_wing_chong.txt", "text"
+].iloc[0]
+
+"In case any employer of Chinese fails" in wing_chong_text
+```
+Exptected output:
+
+```text
+False
+```
+
+If you are working with your own corpus, you can repeat the scoring, threshold, and saving steps for each document, then load the cleaned files from your `quotations_removed` folder into a DataFrame in the same way. The same `compute_quote_similarity` function is reused later as a sensitivity check (see [Quote Sensitivity](#quote-sensitivity), where you test several thresholds to confirm that leftover quotations are not driving the results.
 
 #### Checking the Threshold
 
@@ -324,7 +372,7 @@ Expected output:
 | 0.64 | Section 16 amends the License Ordinance of 1867... |
 | 0.64 | By Sec. 5 "Any Chinese who shall be found within the Province..." |
 
-Only two sentences fall in this band, and both refer to the Act rather than stating Crease's own argument. This suggests that the 0.6 threshold is reasonable for this text, because the borderline cases are still closer to quoted or cited Act language than to Crease’s own stance.
+Only two sentences fall in this band. Both score just above 0.6, so both were removed, and both summarise or quote sections of the Act rather than stating Crease's own argument. This suggests that the 0.6 threshold is reasonable for this text, because the borderline cases are still closer to quoted or cited Act language than to Crease's own stance.
 
 Read this table before accepting the threshold. If the rows just above 0.6 are quoted Act language and the rows just below 0.6 are Crease's own argument, the threshold is doing what you need. If both sides contain a mixture of quotations, paraphrases, and original legal language, report that uncertainty and consider a more conservative threshold.
 
@@ -332,9 +380,9 @@ Read this table before accepting the threshold. If the rows just above 0.6 are q
 
 ### Identifying Relevant Passages
 
-Zero-shot classification is computationally expensive, so rather than scoring every sentence in every document, you focus the analysis on the passages that discuss Chinese immigration. The strategy is to split the texts into sentences and keep those that mention immigration-related keywords. These keyword snippets become the unit of analysis for the sentence-level classifier, while the full documents are reused for window-level classification later.
+Now that the texts are free of direct Act quotations, you can select the passages to classify. Zero-shot classification is computationally expensive, so rather than scoring every sentence in every document, you focus the analysis on the passages that discuss Chinese immigration. The strategy is to split the texts into sentences and keep those that mention immigration-related keywords. These keyword sentences, which this lesson calls *snippets*, become the unit of analysis for the sentence-level classifier, while the full documents are reused for window-level classification later.
 
-The following code builds the set of passages that will be classified at the sentence level. First, it selects the case texts by Crease and Begbie and the text of the Regulation Act. It then stores these texts in a dictionary, `corpus_by_author`, so that each group can be processed in the same way. Next, it defines a list of immigration-related keywords. Finally, it loops through each text sentence by sentence and keeps any sentence that contains one of those keywords.
+The following code builds the set of snippets that will be classified at the sentence level. It takes the texts from the `text` column of `df`, which, as shown in the previous section, already contains the quotation-removed versions. First, it selects the court rulings by Crease and Begbie (rows where `type` is `case`) and the text of the Act. As explained in [Preparing the Corpus](#preparing-the-corpus), the reports and the `Other` texts are left out at this point. It then stores these texts in a dictionary, `corpus_by_author`, so that each group can be processed in the same way. Next, it defines a list of immigration-related keywords. Finally, it loops through each text sentence by sentence, using the spaCy model loaded earlier, and keeps any sentence that contains one of those keywords. The keyword check is made on a lower-case copy of each sentence, so "Chinese" and "chinese" both match.
 
 ```python
 crease_cases = df[
@@ -357,8 +405,6 @@ keywords = [
     "alien", "aliens", "immigration",
 ]
 
-warnings.filterwarnings("ignore")
-
 keyword_snippets = {}
 for author, texts in corpus_by_author.items():
     snippets = []
@@ -371,9 +417,23 @@ for author, texts in corpus_by_author.items():
     keyword_snippets[author] = snippets
 ```
 
-`keyword_snippets` contains the extracted sentences for each comparison group. For example, `keyword_snippets['Crease']` contains the sentences from texts by Crease that include at least one of the keywords.
+`keyword_snippets` is a dictionary with one entry for each comparison group. For example, `keyword_snippets['Crease']` is a list of the sentences from Crease's rulings that include at least one of the keywords. Check how many snippets each group has:
+
+```python
+{author: len(snippets) for author, snippets in keyword_snippets.items()}
+```
+
+Expected output:
+
+```text
+{'Crease': 83, 'Begbie': 18, 'Act 1884': 24}
+```
+
+Crease has many more snippets than Begbie, partly because his ruling in *R v. Wing Chong* is long and discusses the Act section by section. Keep this imbalance in mind: averages for Begbie are based on far fewer sentences, which makes them less certain. Depending on your version of spaCy, your counts may differ by a few sentences, because different versions split some sentences differently.
 
 Keyword filtering is deliberately simple and high-recall: it casts a wide net so that few relevant passages are missed, and the NLI model does the discriminating work of judging stance later. The `corpus_by_author` dictionary is kept alongside the snippets because the window-level analysis needs the full document text, not just the extracted sentences.
+
+With the corpus cleaned and the relevant passages selected, the data preparation stage is complete. The next section turns to the core of the lesson: using an NLI model to score the stance of these passages.
 
 ## Stance Classification with Zero-Shot NLI
 
@@ -427,10 +487,17 @@ The `Neutral` label also needs special care. In this workflow it means "not clea
 
 ### Setting Up the Pipeline
 
-The lesson presents the pipeline in its simplest form. If you have limited computing time, you can load the precomputed CSV files shown below and still complete the interpretation and evaluation sections. If you want to reproduce the model outputs from scratch, run the scoring cells instead.
+With the model chosen and the labels designed, you can now build the classifier. The code in this section does not classify anything yet. It sets up the tools that the next two sections use, in four parts:
+
+1. **Load the model"** The `pipeline()` function from `transformers` downloads the DeBERTa NLI model from Hugging Face the first time you run it (about 870 MB, so this can take several minutes) and wraps it in a ready-made `zero-shot-classification` tool called `zero_shot`. The `hypothesis_template` argument tells the tool how to turn each label description into a hypothesis. The `device` argument tells it to use a GPU if PyTorch can find one (`0`) and the CPU otherwise (`-1`).
+2. **Define the labels:** `zs_labels` holds the three label descriptions from the previous section, in the order `Pro`, `Neutral`, `Cons`.
+3. **Score one passage:** The `get_scores()` function sends one passage and the three labels to `zero_shot`. The tool returns the labels sorted from highest to lowest score, so the function puts the scores back into a dictionary keyed by label, which keeps them in a fixed order.
+4. **Score many passages:** The `score_texts()` function loops over every passage for every author, calls `get_scores()` on each one, and collects the results in a DataFrame. Each row of this DataFrame holds the author, the passage, and its `Pro`, `Neutral`, and `Cons` scores. Because the classifier is set up for single-label classification, the three scores for each passage add up to 1.
+
+The code also records the main settings in a dictionary called `run_notes`, and sets `hf_logging.set_verbosity_error()`. Loading the model and the tokenizer can print informational messages and warnings about features this lesson does not use. This line hides those messages but still shows errors, so you will see anything that actually stops the code. If you are troubleshooting, remove the line to see every message.
 
 ```python
-warnings.filterwarnings("ignore")
+
 model_name = "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
 run_notes = {
     "model_name": model_name,
@@ -498,47 +565,47 @@ def score_texts(texts_by_author, labels):
     return pd.DataFrame(rows)
 ```
 
+The `truncation=True` setting in `get_scores()` tells the tool to cut off any passage that is longer than the model can read at once, rather than stopping with an error. The window-level section below explains this limit.
+
 The `run_notes` dictionary is not required by the model. It is there for auditability. If you change the model, labels, hypothesis template, or classification mode, save the new outputs under a new filename or add a short note explaining the change.
 
-The next two sections show the direct calculation steps. To use the lower-resource path, replace the scoring cell with the `pd.read_csv()` line shown in each section.
+The pipeline is now ready to score passages. The next two sections apply it at two scales: first to the individual keyword snippets, then to larger windows of text. Each section shows two paths. The scoring path runs the model yourself. The lower-resource path skips the model and loads the precomputed results from `data/results/` instead; use it in place of the scoring code if you have limited computing time. Both paths produce the same variables, so everything after them works either way. Note that the scoring path saves its results to the same file names in `data/results/`, replacing the precomputed files.
 
 ### Sentence-Level Classification
 
-One limitation of transformer models is a fixed token limit (typically 512 tokens). For longer documents, you must split text into smaller units. The sentence approach classifies each sentence individually, capturing fine-grained variation in stance.
+The first scale of analysis is the single sentence. Here the classifier scores each keyword snippet on its own, which captures fine-grained variation in stance within each author's writing.
 
-Classification of all sentences takes approximately 20 to 40 minutes on CPU.
+The code below passes the `keyword_snippets` dictionary to `score_texts()`, which returns a DataFrame, `df_scores`, with one row per snippet and a score for each of the three labels. It then saves this table as a CSV file so that you do not need to run the model again. Classifying all 125 snippets takes approximately 20 to 40 minutes on CPU.
 
 ```python
 sentence_scores_path = "data/results/zero_shot_sentence_scores.csv"
 df_scores = score_texts(keyword_snippets, labels=zs_labels)
 df_scores.to_csv(sentence_scores_path, index=False)
-
-sentence_summary = (
-    df_scores.groupby("Author")
-    .agg(
-        Sentences=("Text", "size"),
-        Pro=("Pro", "mean"),
-        Neutral=("Neutral", "mean"),
-        Cons=("Cons", "mean"),
-    )
-    .round(2)
-)
 ```
 
 Lower-resource path:
 
 ```python
 df_scores = pd.read_csv("data/results/zero_shot_sentence_scores.csv")
-sentence_summary = (
-    df_scores.groupby("Author")
-    .agg(
-        Sentences=("Text", "size"),
-        Pro=("Pro", "mean"),
-        Neutral=("Neutral", "mean"),
-        Cons=("Cons", "mean"),
+```
+
+Whichever path you used, `df_scores` now holds the score for every snippet. Individual scores are hard to compare across hundreds of rows, so the next step summarises them by author. The function below groups the rows by author, counts the passages for each author, and calculates the mean `Pro`, `Neutral`, and `Cons` scores, rounded to two decimal places. It is written as a function because you will reuse it for the window-level results.
+
+```python
+def summarise_scores(scores_df, count_name):
+    return (
+        scores_df.groupby("Author")
+        .agg(
+            **{count_name: ("Text", "size")},
+            Pro=("Pro", "mean"),
+            Neutral=("Neutral", "mean"),
+            Cons=("Cons", "mean"),
+        )
+        .round(2)
     )
-    .round(2)
-)
+
+sentence_summary = summarise_scores(df_scores, "Sentences")
+sentence_summary
 ```
 
 Expected summary:
@@ -549,15 +616,41 @@ Expected summary:
 | Begbie | 18 | 0.27 | 0.14 | 0.59 |
 | Crease | 83 | 0.12 | 0.49 | 0.38 |
 
-The Act has the highest mean `Cons` score at the sentence level. Begbie also receives high sentence-level `Cons` scores, which is one reason the lesson later compares sentence results with wider context windows.
+Each value is an average across all of an author's snippets. For example, 0.60 in the `Cons` column for the Act means that, on average, the model gave 60 per cent of its score for an Act sentence to the `Cons` label. The Act has the highest mean `Cons` score, as you would expect from discriminatory legislation. Crease's snippets lean towards `Neutral`, which fits the many sentences in which he describes the Act's provisions before assessing them. Begbie's mean `Cons` score is almost as high as the Act's. This is surprising, given that historians describe Begbie as protective of Chinese immigrants, and it is one reason the lesson later compares sentence results with wider context windows and checks them against hand-labelled examples.
 
-{% include figure.html filename="en-or-natural-language-inference-historical-text-01.png" alt="Scatter plot of Pro versus Cons zero-shot classification scores coloured by author, showing that Regulation Act points cluster towards higher Cons scores" caption="Figure 1. Pro versus Cons classification scores by author (sentence level). The Regulation Act clusters towards higher Cons scores, while Crease and Begbie sentences distribute more broadly." %}
+Averages can hide a lot of variation, so it helps to look at the individual scores. The code below draws a scatter plot with one point per snippet: the Pro score on the horizontal axis and the `Cons` score on the vertical axis, coloured by author. The dictionary `AUTHOR_COLOURS` fixes one colour per author so that the same colours are used in every figure in the lesson.
+
+```python
+AUTHOR_COLOURS = {
+    "Crease": "tab:blue",
+    "Begbie": "tab:red",
+    ACT_LABEL: "tab:green",
+}
+
+fig, ax = plt.subplots(figsize=(8, 5))
+for author, colour in AUTHOR_COLOURS.items():
+    subset = df_scores[df_scores["Author"] == author]
+    ax.scatter(
+        subset["Pro"], subset["Cons"],
+        label=author, color=colour, alpha=0.7, s=15,
+    )
+ax.set_xlabel("Pro Score")
+ax.set_ylabel("Cons Score")
+ax.set_title("Pro vs. Cons Zero-Shot Scores by Author")
+ax.legend()
+plt.show()
+```
+{% include figure.html filename="en-or-natural-language-inference-historical-text-01.png" alt="Scatter plot of Pro versus Cons zero-shot classification scores coloured by author, showing that Act 1884 points cluster towards higher Cons scores" caption="Figure 1. Pro versus Cons classification scores by author (sentence level). The Act clusters towards higher Cons scores, while Crease and Begbie sentences distribute more broadly." %}
+
+Points in the top-left corner are sentences the model reads as clearly `Cons`; points in the bottom-right corner are clearly `Pro`. Points near the bottom-left corner have low scores on both, which means most of their score went to `Neutral`. The green Act points sit almost entirely along the left edge, with `Pro` scores close to zero. Crease's and Begbie's points are spread much more widely: each has some strongly `Pro` sentences and some strongly `Cons` sentences. This spread suggests that individual sentences from the judges are often hard to classify out of context, which leads to the next step.
 
 ### Window-Level Classification
 
-The sentence approach captures variation but loses context. The window approach classifies larger overlapping chunks of text, giving the model more surrounding argument at the cost of per-sentence detail.
+The sentence approach captures variation but loses context: a single sentence does not show whether the judge is endorsing an idea or describing it in order to reject it. The window approach classifies larger, overlapping chunks of text, called *windows*, giving the model more of the surrounding argument at the cost of per-sentence detail.
 
-The windowing function uses the NLI tokenizer to measure token lengths, ensuring each chunk fits within the model's 512-token limit:
+Windows cannot be any length. Transformer models such as DeBERTa read text as tokens, which are words or pieces of words, and can only read a fixed number of tokens at once. For this model the limit is 512 tokens, roughly 350 to 400 English words. A window therefore needs to be as long as possible without going over that limit.
+
+The function below, `chunk_into_windows()`, builds windows from a full document. It first loads the model's tokenizer, the tool that converts text into tokens, so that window lengths are measured exactly as the model will count them. The function then splits the document into sentences with NLTK and adds them to the current window one at a time. Before adding each sentence, it counts the tokens the window would have. If the total stays within 512 tokens, the sentence is added. If not, the current window is saved, and a new window is started. The new window begins with the last 128 tokens of the previous one (the `stride`), followed by the sentence that did not fit. This overlap means that an argument running across the boundary between two windows still appears whole in at least one of them.
 
 ```python
 nli_tokenizer = AutoTokenizer.from_pretrained(
@@ -582,7 +675,9 @@ def chunk_into_windows(text, max_tokens=512, stride=128):
     return windows
 ```
 
-The same pattern works for larger windows:
+When the function measures a candidate window that is longer than 512 tokens, the tokenizer would normally print a warning such as "Token indices sequence length is longer than the specified maximum sequence length for this model". The `hf_logging.set_verbosity_error()` line from the pipeline setup hides it, but you will see it if you removed that line. You can ignore this message here: the function is only measuring the length, and it never sends that over-long text to the model.
+
+Next, apply the function and score the windows. Note that the windows are built from the full texts in `corpus_by_author`, not from the keyword snippets, so they also include sentences that do not mention any keyword. The code below builds a dictionary, `window_texts_by_author`, that maps each author to a list of all the windows from their texts. It then passes this dictionary to `score_texts()`, exactly as you did for the snippets, and saves the results. Scoring the windows takes longer per passage than scoring single sentences, because each window is much longer.
 
 ```python
 window_scores_path = "data/results/zero_shot_windowed_scores.csv"
@@ -596,35 +691,20 @@ window_texts_by_author = {
 }
 window_scores_df = score_texts(window_texts_by_author, labels=zs_labels)
 window_scores_df.to_csv(window_scores_path, index=False)
-
-window_summary = (
-    window_scores_df.groupby("Author")
-    .agg(
-        Windows=("Text", "size"),
-        Pro=("Pro", "mean"),
-        Neutral=("Neutral", "mean"),
-        Cons=("Cons", "mean"),
-    )
-    .round(2)
-)
 ```
 
-Lower-resource path:
+Lower-resource path: instead of running the code above, load the precomputed scores.
 
 ```python
 window_scores_df = pd.read_csv(
     "data/results/zero_shot_windowed_scores.csv"
 )
-window_summary = (
-    window_scores_df.groupby("Author")
-    .agg(
-        Windows=("Text", "size"),
-        Pro=("Pro", "mean"),
-        Neutral=("Neutral", "mean"),
-        Cons=("Cons", "mean"),
-    )
-    .round(2)
-)
+```
+Then summarise the window scores by author with the same function you used for sentences:
+
+```python
+window_summary = summarise_scores(window_scores_df, "Windows")
+window_summary
 ```
 
 Expected summary:
@@ -635,11 +715,13 @@ Expected summary:
 | Begbie | 19 | 0.38 | 0.30 | 0.33 |
 | Crease | 30 | 0.32 | 0.33 | 0.35 |
 
-The window-level results still mark the Act as the most discriminatory source, but Begbie's mean `Cons` score falls once more surrounding context is included.
+If you built the windows yourself, your window counts may differ slightly from this table, depending on your versions of NLTK and `transformers`.
+
+The window-level results still mark the Act as the most discriminatory source, with a mean `Cons` score of 0.67. The picture for the judges changes, however. Begbie's mean `Cons` score falls from 0.59 at the sentence level to 0.33, and his `Pro` score rises to 0.38. Crease's scores become nearly even across the three labels. In other words, once the model sees more of the surrounding argument, the judges' writing looks less discriminatory than single sentences suggested. Comparing the two scales in this way is a useful diagnostic: where sentence and window results disagree, the stance of a passage depends on its context.
+
+These two sets of results are what the model produced. The next stage asks how far you should trust them.
 
 ## Evaluation and Robustness
-
-*You are in stage 3 of 4, evaluation and robustness: check the model against a labelled sample and test how stable the results are.*
 
 Computational results from zero-shot NLI should be treated as hypotheses, not conclusions. Unlike supervised models evaluated on held-out test sets, zero-shot classifiers carry no built-in accuracy guarantee for a new domain. This section first measures performance against a manually labelled set, then applies three checks, quote sensitivity, label sensitivity, and bootstrap confidence intervals, to assess how stable the findings are.
 
@@ -649,28 +731,95 @@ Before interpreting zero-shot results on the full corpus, measure performance on
 
 The accompanying CSV records one expert label per snippet. It does not report separate annotator IDs, adjudication notes, or inter-annotator agreement. That is acceptable for a small tutorial evaluation set, but it affects how the numbers should be read: the labels are a co-author's reading of the stance categories, not an external benchmark or objective facts. In a larger study, you would also keep an annotation guide, record how ambiguous cases were handled, and you might ask a second reader to label at least a subset of the sample.
 
-The evaluation reports overall accuracy, per-class precision/recall/F1 (the harmonic mean of precision and recall, where 1.0 is perfect), and a majority-class baseline. Report the baseline because a trivial classifier can perform well by always predicting one class, making apparent gains in accuracy misleading. Per-author breakdowns show whether performance is concentrated in one source type or generalises across legal voices.
+The labelled sample is stored in `data/core/labelled_snippets.csv`, which has three columns: `Author`, `Sentence`, and `Label` (the hand-assigned stance). The code below runs the classifier on each labelled sentence. For each sentence, it calls `get_scores()`, takes the label with the highest score as the model's prediction, and records the true label, the predicted label, whether the two match, and the three scores. The `label_names` dictionary translates each long label description back into its short name (`Pro`, `Neutral`, or `Cons`). Scoring 45 sentences takes a few minutes on CPU.
 
-In this run, overall accuracy on the 45-sentence set is 0.667 (30/45), compared with a majority-class baseline of 0.333. Per-class F1 scores are 0.500 (Pro), 0.686 (Neutral), and 0.743 (Cons). Per-author accuracy is highest for Commission snippets (1.000), followed by Crease (0.733) and the Regulation Act (0.700), and lower for Begbie (0.467), which is consistent with the rhetoric discussed below.
+```python
+labelled = pd.read_csv("data/core/labelled_snippets.csv")
+label_names = dict(zip(zs_labels, SCORE_COLS))
 
-| Metric | Value |
-| --- | ---: |
-| Overall accuracy | 0.667 |
-| Majority-class baseline | 0.333 |
-| F1, Pro | 0.500 |
-| F1, Neutral | 0.686 |
-| F1, Cons | 0.743 |
+eval_rows = []
+for _, row in labelled.iterrows():
+    scores = get_scores(row["Sentence"], zs_labels)
+    pred = label_names[max(scores, key=scores.get)]
+    eval_rows.append(
+        {
+            "Author": row["Author"],
+            "sentence": row["Sentence"],
+            "true": row["Label"],
+            "pred": pred,
+            "correct": pred == row["Label"],
+            "pro_score": scores[zs_labels[0]],
+            "neutral_score": scores[zs_labels[1]],
+            "cons_score": scores[zs_labels[2]],
+        }
+    )
 
-For interpretive tasks, this level of performance is usable but not definitive. Treat these scores as decision support for close reading, not a substitute for it.[^17][^18][^19][^20]
+eval_df = pd.DataFrame(eval_rows)
+eval_df.to_csv("data/results/ground_truth_eval.csv", index=False)
+```
 
-After the summary metrics, inspect the errors. Accuracy tells you how often the model matches the evaluation labels; it does not tell you what kinds of mistakes the model makes. For this lesson, the most important errors are false `Cons` predictions for passages that quote or describe discriminatory law to reject it, and false `Neutral` predictions for passages whose stance depends on legal context.
+Lower-resource path: instead of running the code above, load the precomputed predictions.
 
 ```python
 eval_df = pd.read_csv("data/results/ground_truth_eval.csv")
+```
+The evaluation reports four measures:
+
+- **Accuracy:** the share of sentences where the predicted label matches the hand-assigned label.
+- **Majority-class baseline:** the accuracy you would get by always predicting the most common label. Report it because a trivial classifier can score well by always predicting one class, which would make an accuracy figure look better than it is. Because this sample is balanced across the three labels, the baseline is 0.333.
+- **Precision, recall, and F1 for each label:** for a given label, *precision* is the share of the model's predictions of that label that are correct, and *recall* is the share of the sentences that truly have that label which the model found. *F1* combines the two into one number (their harmonic mean), where 1.0 is perfect.
+- **Accuracy by author:** shows whether the model works well across all sources or only on some.
+
+The code below calculates these measures from `eval_df`. For each label, it counts the true positives (sentences where the label was both predicted and correct) and uses them to calculate precision, recall, and F1.
+
+```python
+accuracy = eval_df["correct"].mean()
+baseline = eval_df["true"].value_counts(normalize=True).max()
+
+class_metrics = []
+for stance in SCORE_COLS:
+    true_pos = (
+        (eval_df["pred"] == stance) & (eval_df["true"] == stance)
+    ).sum()
+    precision = true_pos / (eval_df["pred"] == stance).sum()
+    recall = true_pos / (eval_df["true"] == stance).sum()
+    f1 = 2 * precision * recall / (precision + recall)
+    class_metrics.append(
+        {"Label": stance, "Precision": precision,
+         "Recall": recall, "F1": f1}
+    )
+
+print(f"Accuracy: {accuracy:.3f}  Baseline: {baseline:.3f}")
+print(pd.DataFrame(class_metrics).round(3))
+print(eval_df.groupby("Author")["correct"].mean().round(3))
+```
+Expected output:
+
+```text
+Accuracy: 0.667  Baseline: 0.333
+     Label  Precision  Recall     F1
+0      Pro       1.00   0.333  0.500
+1  Neutral       0.60   0.800  0.686
+2     Cons       0.65   0.867  0.743
+Author
+Act 1884      0.700
+Begbie        0.467
+Commission    1.000
+Crease        0.733
+Name: correct, dtype: float64
+```
+The model labels 30 of the 45 sentences correctly (accuracy 0.667), twice the baseline of 0.333. The per-label results show where it struggles. Every sentence it labels Pro is correct (precision 1.000), but it finds only a third of the truly `Pro` sentences (recall 0.333). In other words, the model is cautious about assigning Pro and often gives sentences that support equal treatment a `Neutral` or `Cons` label instead. Accuracy is highest for the five Commission snippets and lowest for Begbie (0.467), which fits the pattern in the sentence-level results above.
+
+For interpretive tasks, this level of performance is usable but not definitive. Treat these scores as decision support for close reading, not a substitute for it.[^17][^18][^19][^20]
+
+After the summary metrics, inspect the errors. Accuracy tells you how often the model matches the evaluation labels; it does not tell you what kinds of mistakes the model makes. For this lesson, the most important errors are false `Cons` predictions for passages that quote or describe discriminatory law to reject it, and false `Neutral` predictions for passages whose stance depends on legal context. The code below selects the rows where the prediction was wrong and shows the first five, with the author, true label, predicted label, and sentence:
+
+```python
 eval_df[eval_df["correct"] == False][
     ["Author", "true", "pred", "sentence"]
 ].head()
 ```
+
 
 Expected output:
 
@@ -682,13 +831,17 @@ Expected output:
 | Crease | Pro | Neutral | Held, that the Chinese Regulation Act, 1884, is ultra vires of the Provincial Legislature. |
 | Crease | Pro | Cons | Every Chinese is guilty until proved innocent, a provision which fills one conversant with subjects with alarm. |
 
-Fifteen of the 45 predictions are wrong. The last row, where Crease is labelled Pro but predicted Cons, is the quotation-induced stance reversal discussed in the interpretation stage: the sentence carries discriminatory words that Crease is condemning.
+Fifteen of the 45 predictions are wrong. The last row, where Crease is labelled `Pro` but predicted `Cons`, is the quotation-induced stance reversal discussed in the interpretation stage: the sentence carries discriminatory words that Crease is condemning.
 
-Read a few false positives and false negatives before interpreting author-level means. If most errors cluster in one author, document type, or rhetorical pattern, report that pattern alongside the accuracy score.
+Read a few false positives and false negatives before interpreting author-level means. If most errors cluster in one author, document type, or rhetorical pattern, report that pattern alongside the accuracy score. Here, 8 of the 15 errors are Begbie sentences, and all but one of those are sentences that support equal treatment but were labelled `Neutral` or `Cons`. This tells you to be especially cautious about Begbie's sentence-level scores.
+
+The evaluation sample tells you how accurate the model is. The next three checks ask a different question: how stable are the results if you change a choice made along the way, such as the quotation threshold or the label wording?
 
 ### Quote Sensitivity
 
-Even after removing near-exact quotations of the Act from Crease's text, some paraphrased passages may remain. To test whether residual quotations drive the results, you can apply progressively stricter similarity thresholds and store the filtered means for comparison:
+Even after removing near-exact quotations of the Act from Crease's text, some paraphrased passages may remain. To test whether residual quotations drive the results, you can recalculate Crease's mean scores while removing more and more sentences that resemble the Act.
+
+The code below first takes Crease's rows from the sentence scores and uses the `compute_quote_similarity()` function from the data preparation section to give each snippet a similarity score against the Act. It then tries four thresholds. For each one, it keeps only the snippets whose similarity is at or below the threshold, records how many snippets were removed, and calculates the mean `Pro`, `Neutral`, and `Cons` scores of the snippets that remain. A lower threshold is stricter, because it removes any snippet that resembles the Act even loosely.
 
 ```python
 crease_sc = df_scores[df_scores['Author'] == 'Crease'].copy()
@@ -723,11 +876,17 @@ Expected output:
 | 0.5 | 0 | 0.12 | 0.49 | 0.38 |
 | 0.6 | 0 | 0.12 | 0.49 | 0.38 |
 
-If the mean scores remain stable across thresholds, the results are not driven by residual Act quotations. If scores shift sharply, inspect the removed sentences before interpreting the author-level means.
+At thresholds of 0.5 and 0.6, no snippets are removed. This is expected, because Crease's snippets come from the text that already had quotations above 0.6 removed. At 0.4, eight snippets are removed and the means barely change. At 0.3, the filter removes 62 of Crease's 83 snippets, including many of his own sentences that simply share legal vocabulary with the Act. The `Cons` score rises a little, but the remaining 21 snippets are too few to say much. (Results at this strictest threshold are also the most sensitive to how spaCy splits sentences, so your counts here may differ a little.) Taken together, the scores are stable across the reasonable thresholds (0.4 to 0.6), which suggests that leftover Act quotations are not driving Crease's results.
+
+In general: if the mean scores remain stable across thresholds, the results are not driven by leftover Act quotations. If scores shift sharply, inspect the removed sentences before interpreting the author-level means.
 
 ### Label Sensitivity
 
-Zero-shot classification results depend heavily on how candidate labels are phrased. Testing alternative label sets helps determine whether the ranking of authors is an artifact of specific wording or a stable finding. The code below compares the primary labels with two shorter alternatives:
+Zero-shot classification results depend heavily on how candidate labels are phrased. Testing alternative label sets helps determine whether the ranking of authors is an artifact of specific wording or a stable finding.
+
+The code below defines two alternative label sets: a short version (`alt_labels_1`) and a version phrased in legal terms (`alt_labels_2`). Each lists its labels in the same `Pro`, `Neutral`, `Cons` order as the primary labels. The code then scores a small sample with each of the three label sets and compares the results. To keep this check quick, the sample is the first two snippets for each author (six snippets in total), selected with `groupby("Author").head(2)`. For each label set, the code scores the sample with `score_texts()`, averages the scores by author, and adds a `LabelSet` column recording which labels were used. Finally, `pd.concat()` stacks the three results into one table, which is saved to a CSV file.
+
+Because this check runs the model 18 times (six snippets, three label sets), it takes a few minutes on CPU. If you skip it, you can load the precomputed table with `label_sens_df = pd.read_csv("data/results/label_sensitivity_summary.csv")`.
 
 ```python
 alt_labels_1 = [
@@ -779,6 +938,16 @@ label_sens_df = pd.concat(
 label_sens_df.to_csv("data/results/label_sensitivity_summary.csv", index=False)
 ```
 
+`label_sens_df` has one row for each combination of label set and author. To compare the authors' `Cons` scores side by side, reshape it so that each label set is a row and each author is a column:
+
+```python
+(
+    label_sens_df.pivot(index="LabelSet", columns="Author", values="Cons")
+    .loc[list(label_sets)]
+    .round(2)
+)
+```
+
 Expected output:
 
 | Label set | Act Cons | Begbie Cons | Crease Cons |
@@ -787,11 +956,13 @@ Expected output:
 | Alt-short | 0.37 | 0.22 | 0.13 |
 | Alt-legal | 0.60 | 0.28 | 0.31 |
 
-If the relative ordering of authors holds across label sets, the finding is less likely to be an artifact of one label wording. Here the Act remains highest on `Cons`, but Begbie and Crease move depending on label phrasing. That instability should be reported rather than smoothed over.
+If the relative ordering of authors holds across label sets, the finding is less likely to be an artifact of one label wording. Here the Act remains highest on `Cons` with every label set, but the scores for all three sources change considerably, and the order of Begbie and Crease is not stable: Begbie scores higher than Crease with the primary and short labels, but slightly lower with the legal labels. That instability should be reported rather than smoothed over. Because this check uses only six snippets, treat it as a quick test of wording effects; for a publishable analysis, run it on a larger sample.
 
 ### Bootstrap Confidence Intervals
 
-With small sample sizes, mean scores can be misleading. Bootstrap resampling provides 95% confidence intervals that quantify the uncertainty in each estimate:
+With small sample sizes, mean scores can be misleading. A mean based on Begbie's 18 snippets could change a lot if a few snippets were different. *Bootstrap resampling* estimates how much. It draws many new samples from the data you have, each the same size as the original and drawn *with replacement* (so the same snippet can be picked more than once), and calculates the mean of each sample. The spread of these means shows how uncertain the original mean is. The middle 95 per cent of them gives a *95 per cent confidence interval*.
+
+The function `bootstrap_ci()` below does this for one column of scores. It draws 1,000 samples and returns the original mean together with the lower and upper ends of the interval. The `seed` argument fixes the random draws so that you get the same intervals every time you run the code. The loop then applies the function to each author's `Pro`, `Neutral`, and `Cons` sentence-level scores and collects the results in a DataFrame, `bootstrap_summary`.
 
 ```python
 def bootstrap_ci(data, n_boot=1000, ci=0.95, seed=42):
@@ -829,16 +1000,43 @@ for author in ['Crease', 'Begbie', ACT_LABEL]:
 
 bootstrap_summary = pd.DataFrame(bootstrap_rows)
 ```
+The intervals are easiest to read as a figure. The code below plots each mean as a dot with a vertical line (an error bar) running from the lower to the upper end of its interval. The three stances are placed along the horizontal axis, and each author's dots are shifted slightly left or right (using the offsets dictionary) so that they do not overlap. The colours match Figure 1.
+
+```python
+stances = ["Pro", "Neutral", "Cons"]
+offsets = {"Crease": -0.2, "Begbie": 0.0, ACT_LABEL: 0.2}
+
+fig, ax = plt.subplots(figsize=(8, 5))
+for author, colour in AUTHOR_COLOURS.items():
+    rows = (
+        bootstrap_summary[bootstrap_summary["Author"] == author]
+        .set_index("Stance")
+        .loc[stances]
+    )
+    x = np.arange(len(stances)) + offsets[author]
+    ax.errorbar(
+        x, rows["Mean"],
+        yerr=[rows["Mean"] - rows["CI_low"], rows["CI_high"] - rows["Mean"]],
+        fmt="o", capsize=4, color=colour, label=author,
+    )
+ax.set_xticks(np.arange(len(stances)))
+ax.set_xticklabels(stances)
+ax.set_ylabel("Mean Score")
+ax.set_ylim(0, 0.85)
+ax.set_title("Bootstrap 95% Confidence Intervals by Author and Stance")
+ax.legend(loc="upper left")
+plt.show()
+```
 
 {% include figure.html filename="en-or-natural-language-inference-historical-text-02.png" alt="Dot-and-whisker plot of mean Pro, Neutral, and Cons stance scores for Crease, Begbie, and the Regulation Act, each with a bootstrap 95 percent confidence interval. Begbie's intervals are the widest, reflecting its small sample of 18 snippets, so its estimates are the least certain, and where two authors' intervals overlap on a stance the difference between them is not statistically reliable." caption="Figure 2. Bootstrap 95% confidence intervals for mean stance scores. Begbie's wide intervals reflect the smaller sample size (18 snippets versus 83 for Crease)." %}
 
-Wide confidence intervals (especially for Begbie with only 18 snippets) indicate that the point estimates should be interpreted cautiously. Where intervals for different authors overlap on a given stance, the difference between them is not statistically reliable.
+Wide confidence intervals (especially for Begbie with only 18 snippets) indicate that the point estimates should be interpreted cautiously. Where intervals for different authors overlap on a given stance, the difference between them is not statistically reliable. For example, Begbie's `Cons` interval (about 0.45 to 0.72) overlaps almost completely with the Act's (about 0.53 to 0.67), so at the sentence level the data cannot reliably distinguish the two. Crease's `Cons` interval (about 0.33 to 0.44) sits clearly below the Act's.
 
 These bootstrap intervals summarise variation in the observed snippets, not every uncertainty in the workflow. They do not account for OCR errors, label ambiguity, model bias, quotation removal choices, or the fact that sentences from the same document are not fully independent. Treat them as a warning system for unstable averages, not as a final statistical test.
 
-## Interpreting Results and Adapting the Workflow
+You now have the model's results, a measure of their accuracy, and three checks on their stability. The final stage brings these together to interpret what the results can and cannot tell you about Crease and Begbie.
 
-*You are in stage 4 of 4, interpretation: read what the results can and cannot show, and adapt the workflow to your own corpus.*
+## Interpreting Results and Adapting the Workflow
 
 ### What NLI Can and Cannot Do
 
@@ -848,7 +1046,45 @@ Consider this example from Crease's ruling: "...every Chinese is guilty until pr
 
 Linguists and discourse analysts have documented what may be called *quotation-induced stance reversal*: when a speaker quotes another's words to criticise them, surface-level analysis attributes the quoted stance to the speaker.[^21] Sentence-level NLI is vulnerable to this because the model reads the discriminatory words without the surrounding argumentative frame that signals condemnation. Rights-protective legal judgments can therefore receive high "Cons" scores at the sentence level when judges quote or describe discriminatory rules to reject them.
 
-To address this, window-level aggregates serve as the primary summary and sentence-level results serve as granular diagnostics. Confidence-aware summaries (filtering rows whose maximum label score falls below 0.5 and computing confidence-weighted means) further reduce the influence of ambiguous sentences.
+To address this, window-level aggregates serve as the primary summary and sentence-level results serve as granular diagnostics.
+
+You can also reduce the influence of ambiguous sentences with *confidence-aware summaries*. The highest of a sentence's three scores shows how confident the model is in its prediction: a sentence scored 0.9 `Cons` is a clear call, while one scored 0.4, 0.35, and 0.25 is not. The code below calculates two summaries of the sentence-level scores that take this into account. The first, `filtered_means`, drops every sentence whose highest score is below 0.5 before averaging. The second, `weighted_means`, keeps every sentence but weights each one by its highest score, so that confident predictions count for more.
+
+```python
+max_score = df_scores[SCORE_COLS].max(axis=1)
+
+filtered_means = (
+    df_scores[max_score >= 0.5]
+    .groupby("Author")[SCORE_COLS]
+    .mean()
+    .round(2)
+)
+
+weighted_scores = df_scores[SCORE_COLS].mul(max_score, axis=0)
+weighted_means = (
+    weighted_scores.groupby(df_scores["Author"]).sum()
+    .div(max_score.groupby(df_scores["Author"]).sum(), axis=0)
+    .round(2)
+)
+```
+
+Expected output for `filtered_means`:
+
+| Author | Pro | Neutral | Cons |
+| --- | ---: | ---: | ---: |
+| Act 1884 | 0.02 | 0.37 | 0.61 |
+| Begbie | 0.26 | 0.12 | 0.62 |
+| Crease | 0.11 | 0.51 | 0.38 |
+
+Expected output for `weighted_means`:
+
+| Author | Pro | Neutral | Cons |
+| --- | ---: | ---: | ---: |
+| Act 1884 | 0.02 | 0.35 | 0.63 |
+| Begbie | 0.27 | 0.12 | 0.61 |
+| Crease | 0.11 | 0.50 | 0.38 |
+
+Both summaries are close to the plain means in the sentence-level table, which shows that the sentence-level pattern is not caused by a handful of uncertain predictions. They do not fix the quotation problem described above, however: the model can be confidently wrong about a sentence that quotes discriminatory language in order to condemn it. That is why the window-level results and close reading remain essential.
 
 To evaluate zero-shot results responsibly:
 

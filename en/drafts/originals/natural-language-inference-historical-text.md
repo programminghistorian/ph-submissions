@@ -37,7 +37,7 @@ This lesson uses NLI for *zero-shot classification*. A classifier sorts texts in
 
 ### Why NLI?
 
-A simple way to measure stance count be by counting words: tally discriminatory or rights-affirming terms and compare authors. This is the logic behind domain-specific lexicons such as the Loughran-McDonald dictionary in financial text analysis, which counts curated word lists tailored to a domain rather than relying on general-purpose sentiment polarity.[^11] But keyword counting has a decisive blind spot for our question: it cannot tell the difference between a judge who *uses* a discriminatory word and one who *quotes it to condemn it*. The word "alien" counts the same whether the Act imposes it or Crease attacks it, and stance-bearing phrases such as "fills one with alarm" or "rule the country" use common words that no lexicon would flag. Stance depends on how words are combined and framed, which is the kind of comparison NLI is designed to make.
+A simple way to measure stance count could be by counting words: tally discriminatory or rights-affirming terms and compare authors. This is the logic behind domain-specific lexicons such as the Loughran-McDonald dictionary in financial text analysis, which counts curated word lists tailored to a domain rather than relying on general-purpose sentiment polarity.[^11] But keyword counting has a decisive blind spot for our question: it cannot tell the difference between a judge who *uses* a discriminatory word and one who *quotes it to condemn it*. The word "alien" counts the same whether the Act imposes it or Crease attacks it, and stance-bearing phrases such as "fills one with alarm" or "rule the country" use common words that no lexicon would flag. Stance depends on how words are combined and framed, which is the kind of comparison NLI is designed to make.
 
 NLI is a practical middle ground for historical corpora. Supervised models need large labelled datasets that most historians do not have, and lexicon or topic methods often miss stance direction.[^12][^13] NLI instead scores whether a passage supports researcher-defined hypotheses, so you can run three-way stance classification without retraining.[^14]
 
@@ -74,7 +74,7 @@ By the end, you will be able to:
 
 ## Prerequisites
 
-To follow this lesson, you will need intermediate Python experience: working with pandas, reading and understanding functions, and installing packages. This lesson uses pip, but readers who work with other package managers, such as `conda`, can adapt the installation steps to their own setup. If you are newer to Python, start with the [_Programming Historian_'s Introduction to Python](https://programminghistorian.org/en/lessons/introduction-and-installation). You do not need prior experience with transformer models, NLI, or the validation and bootstrap steps used later; the lesson introduces each of these where it appears. Some familiarity with NLP methods such as word embeddings and similarity measures will be helpful. Readers who want more background can consult Programming Historian lessons on ["Understanding and Creating Word Embeddings"](https://programminghistorian.org/en/lessons/understanding-creating-word-embeddings) and ["Understanding and Using Common Similarity Measures for Text Analysis"](https://programminghistorian.org/en/lessons/common-similarity-measures).
+To follow this lesson, you will need intermediate Python experience: working with pandas, reading and understanding functions, and installing packages. This lesson uses `pip`, but readers who work with other package managers, such as `conda`, can adapt the installation steps to their own setup. If you are newer to Python, start with the [_Programming Historian_'s Introduction to Python](https://programminghistorian.org/en/lessons/introduction-and-installation). You do not need prior experience with transformer models, NLI, or the validation and bootstrap steps used later; the lesson introduces each of these where it appears. Some familiarity with NLP methods such as word embeddings and similarity measures will be helpful. Readers who want more background can consult Programming Historian lessons on ["Understanding and Creating Word Embeddings"](https://programminghistorian.org/en/lessons/understanding-creating-word-embeddings) and ["Understanding and Using Common Similarity Measures for Text Analysis"](https://programminghistorian.org/en/lessons/common-similarity-measures).
 
 
 The lesson was tested with Python 3.13, but it is expected to work with 3.10 or later. Because the lesson uses transformer models, you will need at least 8GB of RAM. A GPU or iGPU is not required, but it can speed up model inference. 
@@ -102,7 +102,7 @@ nltk.download('punkt')
 nltk.download('punkt_tab')
 ```
 
-You will also use spaCy’s small English model to segment text into sentences during the quotation removal and keyword filtering stages. Then download the English spaCy model **from the terminal**:
+You will also use spaCy’s small English model to segment text into sentences during the quotation removal and keyword filtering stages. Download the English spaCy model **from the terminal**:
 
 ```bash
 python -m spacy download en_core_web_sm
@@ -140,6 +140,7 @@ from nltk import sent_tokenize
 import spacy
 import torch
 from transformers import AutoTokenizer, pipeline
+from transformers.utils import logging as hf_logging
 ```
 
 ## Case Study: Chinese Immigration Law in British Columbia
@@ -154,7 +155,7 @@ However, Crease was not considered straightforwardly sympathetic to Chinese immi
 
 To explore this question computationally, you will compare the language of Crease's rulings with two reference points: the discriminatory Act itself, and Justice [Matthew Baillie Begbie](https://www.biographi.ca/en/bio/begbie_matthew_baillie_12E.html),[^4] the first Chief Justice of British Columbia. Unlike Crease, historical accounts describe Begbie as protective of marginalized peoples, including Chinese immigrants.[^5][^6] Begbie struck down discriminatory municipal by-laws in Victoria targeting Chinese-owned businesses in the 1888 case of *R v. Victoria*.[^7]
 
-The analysis compares four court rulings, two by Crease (*R v. Wing Chong*[^2] and *Wong Hoy Woon v. Duncan*,[^8]) and two by Begbie (*R v. Mee Wah*[^9] and *R v. Victoria*[^7]), with the text of the *1884 Chinese Regulation Act*. The full corpus we use has ten digitized texts. Besides the five just listed (two court rulings by Crease, twyo by Begbie, the the Act), the corpus includes Crease's and Begbie's reports to the 1884 Royal Commission on Chinese Immigration,[^10] two further documents connected to that Commission (by Chapleau and by Powell), and a later Superme Court of Canada ruling by Chief Justice Charles Fitzpatrick (*Quong Wing v. The King*). These five additional texts are included as background material, but they are not part of the stance comparison. The [Preparing the Corpus](#preparing-the-corpus) section explains how they are set aside.
+The analysis compares four court rulings, two by Crease (*R v. Wing Chong*[^2] and *Wong Hoy Woon v. Duncan*,[^8]) and two by Begbie (*R v. Mee Wah*[^9] and *R v. Victoria*[^7]), with the text of the *1884 Chinese Regulation Act*. The full corpus we use has ten digitized texts. Besides the five just listed (two court rulings by Crease, two by Begbie, and the Act), the corpus includes Crease's and Begbie's reports to the 1884 Royal Commission on Chinese Immigration,[^10] two further documents connected to that Commission (by Chapleau and by Powell), and a later Supreme Court of Canada ruling by Chief Justice Charles Fitzpatrick (*Quong Wing v. The King*). These five additional texts are included as background material, but they are not part of the stance comparison. The [Preparing the Corpus](#preparing-the-corpus) section explains how they are set aside.
 
 The texts were converted from archival scans to machine-readable format using [Optical Character Recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition). Direct quotes of the Act within Crease's ruling were identified using fuzzy string matching and removed so they do not contaminate the analysis of his own language. This process is described in the corpus preparation section.
 
@@ -341,7 +342,7 @@ wing_chong_text = df.loc[
 
 "In case any employer of Chinese fails" in wing_chong_text
 ```
-Exptected output:
+Expected output:
 
 ```text
 False
@@ -457,9 +458,9 @@ For a publishable analysis, also record the exact model identifier, the date you
 
 A central challenge is lexical drift: words in nineteenth-century legal writing can carry meanings that differ from modern usage. OCR noise adds another layer of uncertainty. There is no complete fix, but you can reduce risk by:
 
-- Verify that key terms in your corpus appear in the model's vocabulary
-- Compare model outputs against passages where the expected stance is clear
-- Treat all computational results as hypotheses that require human validation, not as conclusions
+- Verifying that key terms in your corpus appear in the model's vocabulary
+- Comparing model outputs against passages where the expected stance is clear
+- Treating all computational results as hypotheses that require human validation, not as conclusions
 
 ### Designing Effective Labels
 
@@ -489,14 +490,16 @@ The `Neutral` label also needs special care. In this workflow it means "not clea
 
 With the model chosen and the labels designed, you can now build the classifier. The code in this section does not classify anything yet. It sets up the tools that the next two sections use, in four parts:
 
-1. **Load the model"** The `pipeline()` function from `transformers` downloads the DeBERTa NLI model from Hugging Face the first time you run it (about 870 MB, so this can take several minutes) and wraps it in a ready-made `zero-shot-classification` tool called `zero_shot`. The `hypothesis_template` argument tells the tool how to turn each label description into a hypothesis. The `device` argument tells it to use a GPU if PyTorch can find one (`0`) and the CPU otherwise (`-1`).
+1. **Load the model:** The `pipeline()` function from `transformers` downloads the DeBERTa NLI model from Hugging Face the first time you run it (about 870 MB, so this can take several minutes) and wraps it in a ready-made `zero-shot-classification` tool called `zero_shot`. The `hypothesis_template` argument tells the tool how to turn each label description into a hypothesis. The `device` argument tells it to use a GPU if PyTorch can find one (`0`) and the CPU otherwise (`-1`).
 2. **Define the labels:** `zs_labels` holds the three label descriptions from the previous section, in the order `Pro`, `Neutral`, `Cons`.
 3. **Score one passage:** The `get_scores()` function sends one passage and the three labels to `zero_shot`. The tool returns the labels sorted from highest to lowest score, so the function puts the scores back into a dictionary keyed by label, which keeps them in a fixed order.
 4. **Score many passages:** The `score_texts()` function loops over every passage for every author, calls `get_scores()` on each one, and collects the results in a DataFrame. Each row of this DataFrame holds the author, the passage, and its `Pro`, `Neutral`, and `Cons` scores. Because the classifier is set up for single-label classification, the three scores for each passage add up to 1.
 
-The code also records the main settings in a dictionary called `run_notes`, and sets `hf_logging.set_verbosity_error()`. Loading the model and the tokenizer can print informational messages and warnings about features this lesson does not use. This line hides those messages but still shows errors, so you will see anything that actually stops the code. If you are troubleshooting, remove the line to see every message.
+The code also records the main settings in a dictionary called `run_notes`, and sets `hf_logging.set_verbosity_error()`. Loading the model and the tokenizer can print informational messages and warnings about features this lesson does not use. This line hides those messages but still shows errors, so you will see anything that actually stops the code. If you are troubleshooting, remove the line to restore the default warning messages.
 
 ```python
+
+hf_logging.set_verbosity_error()
 
 model_name = "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
 run_notes = {

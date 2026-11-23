@@ -86,7 +86,7 @@ If you have NVIDIA CUDA, PyTorch can use it automatically for acceleration. On s
 
 ## Software and Setup
 
-First, install all required Python packages. These packages support different parts of the workflow: `pandas` and `numpy` handle tables and numerical operations, `nltk` and `spacy` split texts into sentences, `transformers` and `torch` run the NLI model, and `matplotlib` and `seaborn` make the figures. Run this in your terminal:
+First, install all required Python packages. These packages support different parts of the workflow: `pandas` and `numpy` handle tables and numerical operations, `nltk` and `spacy` split texts into sentences, `transformers` and `torch` run the NLI model, and `matplotlib` makes the figures. Run this in your terminal:
 
 ```bash
 pip install pandas numpy matplotlib \
@@ -195,7 +195,7 @@ First, load the metadata CSV into a `pandas` DataFrame. Then create a new `group
 ```python
 df = pd.read_csv("data/core/metadata_cleaned.csv")
 
-ACT_LABEL = "Regulation Act"
+ACT_LABEL = "Act 1884"
 
 df["group"] = "Other"
 df.loc[df["author"] == "Crease", "group"] = "Crease"
@@ -215,7 +215,7 @@ Expected output:
 Crease            3
 Begbie            3
 Other             3
-Regulation Act    1
+Act 1884          1
 Name: group, dtype: int64
 ```
 

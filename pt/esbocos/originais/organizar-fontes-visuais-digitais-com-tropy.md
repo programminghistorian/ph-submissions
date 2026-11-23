@@ -126,6 +126,8 @@ Os cartazes da democracia não compartilham muitos campos de metadados comuns, m
 
 O Tropy permite mesclar imagens individuais em objetos com várias imagens. Mesclar imagens significa reunir dois ou mais registros visuais em um único item do projeto, permitindo que sejam consultados em conjunto e associados à mesma descrição documental. Esse procedimento é especialmente útil quando um documento possui diferentes páginas ou quando o pesquisador dispõe de fotografias da frente, do verso e de detalhes de uma mesma fonte histórica. Por exemplo, as diferentes páginas de uma carta ou de um manuscrito, fotografadas separadamente, podem ser reunidas em um único item, preservando sua sequência documental. Para mesclar, selecione as imagens no projeto, abra o menu de contexto (clique com o botão direito no Windows ou Ctrl+clique no Mac) e escolha “Combinar itens selecionados” — a primeira imagem selecionada se tornará a capa do novo objeto mesclado. Como alternativa, se você arrastar uma imagem sobre a outra, elas serão mescladas (com a segunda imagem se tornando a capa). Você pode reorganizar a ordem das imagens no painel abaixo do modelo de metadados, no lado direito da interface.
 
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-04.png" alt="Visual description of figure image" caption="Figure 4. Resultado da mesclagem de imagens." %}
+
 No caso de um ficheiro PDF com várias páginas, as imagens serão importadas como um objeto mesclado. Em alguns casos, será necessário desconstruir esse objeto, o que pode ser feito selecionando-o e escolhendo “Expandir Item” no menu de contexto. O resultado será a separação das imagens individuais, preservando quaisquer metadados e anotações adicionados anteriormente.
 
 Logo no início da pesquisa, ao acessar o catálogo digital disponibilizado pelo Museu da República, foi possível utilizar esse recurso para importar o ficheiro PDF que reúne os cartazes da coleção. Como o documento continha a reprodução integral do conjunto documental, suas páginas puderam ser desmembradas em entradas individuais no Tropy, permitindo que cada cartaz passasse a constituir um item próprio dentro do projeto.
@@ -146,7 +148,7 @@ Essa visualização facilita a análise da imagem e a adição de metadados indi
 
 O Tropy inclui um editor para facilitar a criação de modelos de metadados personalizados. Em Editar > Preferências > Modelos (ou Ctrl+shift+S > Modelos), você pode revisar todos os modelos incluídos na instalação, bem como criar um modelo de metadados do zero, conforme ilustrado na Figura 5.
 
-{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-04.jpg" alt="Visual description of figure image" caption="Figura 4. Construindo metadados personalizados." %}
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-05.jpg" alt="Visual description of figure image" caption="Figura 5. Construindo metadados personalizados." %}
 
 Para criar um novo modelo do zero, certifique-se de que "Novo Modelo" apareça no menu suspenso e insira os metadados necessários para identificar o modelo: Nome, Tipo, Criador e Descrição (não é recomendável modificar o URI gerado pelo editor). Em seguida, clique em "Criar". Usando os botões ( + ) e ( - ), você pode adicionar ou remover propriedades do novo modelo. Essas propriedades podem fazer parte de qualquer vocabulário instalado no Tropy: elementos e termos do [Dublin Core](https://pt.wikipedia.org/wiki/Dublin_Core), [vocabulários RDF](https://pt.wikipedia.org/wiki/Resource_Description_Framework), [Modelo de Dados Europeu](https://pt.wikipedia.org/wiki/Europeana) e vocabulários relacionados. O Tropy oferece a flexibilidade de combinar diferentes vocabulários, bem como usar elementos exclusivos do Tropy.
 
@@ -160,7 +162,7 @@ Escolha um modelo no menu suspenso e clique nos dois retângulos que aparecem à
 
 Na pesquisa com os cartazes da democracia, o uso de metadados personalizados constituiu um dos pontos cruciais da metodologia. Na primeira fase do trabalho, realizei uma análise detalhada de cada cartaz, levando em conta aspectos materiais e documentais como dimensões, tipo e gramatura do papel, tipo de impressão, instituição responsável por sua produção — neste caso, em grande medida, movimentos sociais de luta popular — e, quando foi possível identificar, também o artista ou fotógrafo responsável pela imagem. Além disso, registrei marcas físicas relevantes, como fitas adesivas, furos, sinais de fixação, dobras e indícios de envio pelo correio. Esse nível de organização tornou possível extrair informações que ultrapassavam o conteúdo visual mais imediato dos cartazes. A observação sistemática desses elementos permitiu levantar hipóteses sobre as condições de produção e circulação dos cartazes, inclusive sobre condições materiais dos grupos e formas de financiamento, a partir da qualidade material empregada, e sobre seus usos concretos, distinguindo, por exemplo, cartazes efetivamente expostos daqueles que permaneceram guardados. Em alguns casos, a presença de carimbos dos Correios confirmou que o envio postal também integrava o universo de circulação dos cartazes políticos, ampliando a compreensão de suas formas de difusão. A Figura 6 apresenta um exemplo dos metadados personalizados utilizados na pesquisa, demonstrando como essas informações foram organizadas no Tropy.
 
-{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-05.jpg" alt="Visual description of figure image" caption="Figura 5. Um exemplo de metadados personalizados." %}
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-06.jpg" alt="Visual description of figure image" caption="Figura 6. Um exemplo de metadados personalizados." %}
 
 ### Campos obrigatórios e campos somente leitura
 
@@ -182,7 +184,7 @@ Na parte superior da visualização do objeto, encontram-se diversas ferramentas
 
 Há também uma opção para inverter as cores, um recurso que facilita a leitura de microfilmes ou permite visualizar o negativo de uma fonte visual. 
 
-{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-06.jpg" alt="Visual description of figure image" caption="Figura 6. Opções de edição da imagem." %}
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-07.jpg" alt="Visual description of figure image" caption="Figura 7. Opções de edição da imagem." %}
 
 ### Seleções
 
@@ -200,7 +202,7 @@ Dependendo da sua preferência, você pode alterar o modo de exibição do campo
 
 Além dos metadados e das notas, o Tropy permite organizar as fontes por meio de listas e etiquetas. Essas ferramentas possibilitam agrupar documentos de acordo com diferentes critérios, como temas de investigação, características compartilhadas ou etapas do trabalho de pesquisa. A Figura 8 apresenta as funcionalidades de organização por listas e etiquetas disponíveis no Tropy.
 
-{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-07.jpg" alt="Visual description of figure image" caption="Figura 7. Criando listas e etiquetas de organização." %}
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-08.jpg" alt="Visual description of figure image" caption="Figura 8. Criando listas e etiquetas de organização." %}
 
 ### Listas
 
@@ -228,7 +230,7 @@ Você pode exportar imagens individuais, objetos (com ou sem metadados e anotaç
 
 A exportação por este método é semelhante à impressão (Arquivo > Imprimir) em formato PDF. Os parâmetros para imagens exportadas para PDF se encontram em Editar > Preferências > Definições. É possível escolher entre incluir ou não imagens, metadados e notas, bem como ajustar a formatação: otimizar o tamanho e a qualidade das imagens, incluir apenas imagens com notas e permitir que o conteúdo ocupe mais de uma página. A Figura 9 apresenta a tela de preferências do Tropy, na qual é possível configurar os parâmetros de exportação de imagens e documentos em formato PDF.
 
-{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-08.jpg" alt="Visual description of figure image" caption="Figura 8. Tela de preferências do Tropy." %}
+{% include figure.html filename="pt-or-organizar-fontes-visuais-digitais-com-tropy-09.jpg" alt="Visual description of figure image" caption="Figura 9. Tela de preferências do Tropy." %}
 
 Para exportar uma seleção, encontre o nome da seleção no painel "Fotos", abaixo do modelo de metadados. Clique com o botão direito do mouse (ou Control-clique no Mac) sobre o nome na lista e escolha Exportar Foto no menu de contexto. Você terá duas opções: exportar para um ficheiro ou para a área de transferência. A seleção será exportada em formato .jpg, sem metadados.
 

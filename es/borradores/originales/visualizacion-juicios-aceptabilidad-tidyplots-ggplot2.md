@@ -612,7 +612,7 @@ Del mismo modo, los diagramas de dispersión con líneas de tendencia (Figura 8)
 - Matuschek, Hannes, Reinhold Kliegl, Shravan Vasishth, Harald Baayen, and Douglas Bates. "Balancing Type I error and power in linear mixed models." Journal of memory and language 94 (2017): 305-315.
 - Sprouse, Jon. "Acceptability judgments and grammaticality, prospects and challenges." Syntactic structures after 60 (2018): 195-224. 
 - Schütze, Carson T., and Jon Sprouse. 2018. “Judgment Data.” In Cambridge University Press eBooks, 27–50. https://doi.org/10.1017/cbo9781139013734.004.
-- Taylor, Jack E., Guillaume A. Rousselet, Christoph Scheepers, and Sara C. Sereno. "Rating norms should be calculated from cumulative link mixed effects models." Behavior research methods 55, no. 5 (2023): 2175-2196. 
+- Taylor, Jack E., Guillaume A. Rousselet, Christoph Scheepers, and Sara C. Sereno. "Rating norms should be calculated from cumulative link mixed effects models." Behavior research methods 55, no. 5 (2023): 2175-2196. https://doi.org/10.3758/s13428-022-01814-7 
 
 
 ---

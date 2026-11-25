@@ -419,7 +419,7 @@ legend("right",
 
 Esta matriz de diagramas de dispersión muestra las asociaciones entre el juicio medio de aceptabilidad (`mean_rating`), la edad de adquisición (`aoa`) y los años de aprendizaje (`years_learning`) según el grupo (círculos rojos para el grupo bilingüe y cruces verdes para el grupo ELE). En general, no se observan correlaciones lineales fuertes entre las variables, aunque destaca una posible correlación negativa entre `aoa` y `years_learning`. Los dos grupos presentan una distribución solapada en la mayoría de los paneles, con diferencias leves en `mean_rating`. 
 
-## Análisis estadístico: modelo de enlace acumulativo mixto
+## Análisis estadístico: modelo de enlace acumulativo mixto 
 
 #### ¿Qué son los modelos mixtos y para qué sirven?
 

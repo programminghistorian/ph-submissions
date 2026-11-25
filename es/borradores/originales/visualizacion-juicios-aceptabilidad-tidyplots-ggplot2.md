@@ -308,7 +308,7 @@ El gráfico de dispersión indica que ambos grupos tienen sus juicios concentrad
 
 ### `tidyplots` vs. `ggplot2` 
 
-`ggplot2` se basa en la idea de que todo gráfico puede describirse como la combinación de: un conjunto de datos, un mapeo de variables a propiedades visuales (`aesthetics`: posición, color, forma, tamaño) y uno o más objetos geométricos (`geoms`: puntos, líneas, barras, violines). Esta estructura modular hace que `ggplot2` sea más verboso que `tidyplots`, pero también mucho más flexible.
+`ggplot2` se basa en la idea de que todo gráfico puede describirse como la combinación de: un conjunto de datos, un mapeo de variables a propiedades visuales (`aesthetics`: posición, color, forma, tamaño) y uno o más objetos geométricos (`geoms`: puntos, líneas, barras, violines).Esta estructura modular hace que ggplot2 sea más prolijo que tidyplots (es decir, requiere más código), pero también mucho más flexible.
 
 La estructura básica de un gráfico con `ggplot2` es:
 

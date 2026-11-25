@@ -45,16 +45,16 @@ Pour suivre ce tutoriel, il est recommandé de disposer d’une carte graphique 
 
 L’objectif est de développer un modèle capable de classifier automatiquement les images. Pour cela, nous avons choisi de nous appuyer sur un modèle de classification de la famille **YOLO**, proposé par **Ultralytics**, plutôt que de construire et d’entraîner un réseau de neurones à partir de zéro. Ces modèles de classification sont pré-entraînés sur le corpus [ImageNet](https://www.image-net.org/index.php);  corpus d'images annotées destinée à la recherche en vision par ordinateur.
 
-Le modèle utilisé, `yolo26n-cls.pt`, est un modèle pré-entraîné à **poids ouverts (*open weights*)** destiné à la classification d’images.
+Le modèle utilisé, `yolo26n-cls.pt`, est un modèle pré-entraîné à **poids ouverts (*open weights*)** destiné à la classification d’images pour un usage généraliste ( voitures, chats, humains )
 
-Pour chaque image, le modèle attribuera une probabilité d’appartenance à chaque catégorie :
+Pour chaque image, le modèle fine-tuné attribuera une probabilité d’appartenance à quatre nouvelles catégories :
 
 - carte géographique
 - dessin
 - photographie
 - tableau
 
-Cela permettra d’identifier rapidement les cartes géographiques dans un grand volume d’images.
+Ainsi ce nouveau modèle permettra d’identifier rapidement les cartes géographiques dans un grand volume d’images.
 
 ### 1.1 Installation du framework Yolo
 
@@ -290,7 +290,7 @@ Un exemple des dessins téléchargés
 
 Un exemple des photos téléchargées
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-05.png" alt="Une capture d'écran de quelques miniatures des photos téléchargées présentes dans le dossier" caption="Figure 6. Un exemple des photos téléchargés" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-05.png" alt="Une capture d'écran de quelques miniatures des photos téléchargées présentes dans le dossier" caption="Figure 6. Un exemple des photos téléchargées" %}
 
 Un exemple des cartes géographiques téléchargées
 
@@ -375,7 +375,6 @@ yolo mode=train task=classify \
 
 **Explications des paramètres :**
 
-```
 mode=train task=classify : Nous entraînons un modèle pour une tâche de classification.
 
 model=yolo26n-cls.pt : Spécifie le modèle de base utilisé pour le fine-tuning.
@@ -391,7 +390,6 @@ batch=-1 : Utilise la taille de lot maximale possible en fonction de la mémoire
 patience=100 : Nombre d’époques à attendre avant d’arrêter l’entraînement si aucune amélioration n’est détectée (mécanisme d’early stopping).
 
 workers=8 : Nombre de processus parallèles utilisés pour charger les données, optimisant ainsi la vitesse d’entraînement.
-```
 
 Il existe de nombreux autres [paramètres](https://docs.ultralytics.com/fr/usage/cfg) pour ajuster le processus de spécialisation.
 
@@ -408,7 +406,7 @@ Plusieurs modèles ont été entraînés, et la bibliothèque YOLO identifie aut
 
 Le graphique produit par la bibliothèque YOLO à la fin du fine-tuning permet d'analyser le meilleur modèle à l'aide de quatre différents indicateurs.
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="Les graphiques produits par la bibliothèque YOLO" caption="Figure 8. Les graphiques produits par la bibliothèque YOLO" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="Les graphiques produits par la bibliothèque YOLO" caption="Figure 9. Les graphiques produits par la bibliothèque YOLO" %}
 
 L’accuracy Top-1 est le pourcentage d’images que le modèle classe correctement.
 L’accuracy Top-5 est le pourcentage d’images dont la bonne catégorie figure parmi les cinq premières prédictions du modèle. Cet indicateur n'est pas utile dans le cadre de notre tutoriel, puisque notre modèle de classification ne comporte que quatre catégories
@@ -427,13 +425,13 @@ yolo task=classify mode=val \
     data=Yolo/ \
     split=test
 ```
-{% include figure.html filename="fr-or-creer-modele-classification-images-13.png" alt="Lancement de la commande d'évaluation="Figure 9. Lancement de la commande d'évaluation" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-13.png" alt="Lancement de la commande d'évaluation="Figure 10. Lancement de la commande d'évaluation" %}
 
 Cette commande génère plusieurs graphiques permettant d’analyser les performances du modèle, dont une matrice de confusion, disponible dans le répertoire runs/classify/val.
 
 La matrice de confusion normalisée (confusion_matrix_normalized.png) permet de visualiser la répartition des prédictions pour chacune des quatre catégories et de mettre en évidence les éventuelles confusions entre elles.
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="Matrice de confusion" caption="Figure 9. Matrice de confusion" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="Matrice de confusion" caption="Figure 11. Matrice de confusion" %}
 
 Dans notre cas, les résultats montrent une faible confusion entre les catégories « Tableaux » et « Cartes géographiques ». En effet, certaines images de tableaux sont incorrectement classées comme des cartes géographiques.
 
@@ -441,7 +439,7 @@ Dans notre cas, les résultats montrent une faible confusion entre les catégori
 
 Une fois l’entraînement terminé, nous testons les performances du modèle sur une carte géographique représentative : une [carte de l'Europe](https://magrit.cnrs.fr/example_map_europe_1.png).
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-12.jpg" alt="Image de test." caption="Figure 10. Image de test" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-12.jpg" alt="Image de test." caption="Figure 12. Image de test" %}
 
 ```bash
 yolo classify predict \
@@ -451,7 +449,7 @@ yolo classify predict \
 
 Réponse :
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-08.png" alt="Capture d'écran de la sortie console du test du modèle sur une carte" caption="Figure 10. Test du modèle" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-08.png" alt="Capture d'écran de la sortie console du test du modèle sur une carte" caption="Figure 13. Test du modèle" %}
 
 **Interprétation des résultats**
 
@@ -539,7 +537,7 @@ def main():
     repertoires_epub = [os.path.join(dossier_epub, dir, "OEBPS") for dir in os.listdir(dossier_epub)]
     model = YOLO("./runs/classify/train7/weights/best.pt")
     for repertoire_epub in repertoires_epub:
-        fichiers_jpg = [os.path.join(repertoire_epub, f) for f in os.listdir(repertoire_epub) if f.lower().endswith('.jpg')]
+        fichiers_jpg = [os.path.join(repertoire_epub, f) for f in os.listdir(repertoire_epub) if f.lower().endswith(('.jpg', '.png'))]
         if len(fichiers_jpg) > 0:
             results = model(fichiers_jpg, stream=True)
             for result in results:
@@ -595,7 +593,7 @@ Pour améliorer les performances de notre modèle, il est nécessaire d’enrich
 
 - en intégrant davantage d’exemples variés.
 
-- en prenant en compte les cas limites et en intégrant les les erreurs de classification détectés dans la première version du modèle, afin de ré-entraîner une version améliorée sur l’ensemble de ces données.
+- en prenant en compte les cas limites et en intégrant les erreurs de classification détectées dans la première version du modèle, afin de ré-entraîner une version améliorée sur l’ensemble de ces données.
 
 Des jeux de données complémentaires peuvent être utilisés comme [Gallica : jeu d'images annotées pour la classification](https://api.bnf.fr/fr/node/181) ou [Nubis – Carte (Version 1). https://doi.org/10.34847/NKL.9E96QOS6](https://doi.org/10.34847/NKL.9E96QOS6).
 

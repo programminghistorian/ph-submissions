@@ -345,10 +345,7 @@ Yolo/
     └── Dessin/
 ```
 
-Le dossier **train** et ses sous-dossiers contiennent les images utilisées pour entraîner les modèles.
-Le dossier **val** et ses sous-dossiers contiennent les images utilisées pour comparer les performances des modèles et sélectionner le meilleur.
-Le dossier **test** et ses sous-dossiers contiennent les images utilisées pour évaluer le modèle final sur des données inédites.
-
+Le dossier **train** et ses sous-dossiers regroupent les images utilisées pour l’entraînement des modèles. Le dossier **val** contient les images destinées à comparer leurs performances et à sélectionner le modèle le plus performant. Enfin, le dossier **test** et ses sous-dossiers contiennent les images utilisées pour évaluer le modèle final sur des données inédites. Ces trois différents dossiers correspondent aux trois ensemble de données utilisés lors du fine-tuning d’un modèle : l’entraînement (train), la validation (val) et le test (test).
 
 ### 3.2 Construction du dataset :
 
@@ -401,28 +398,34 @@ Il existe de nombreux autres [paramètres](https://docs.ultralytics.com/fr/usage
 ---
 
 
-### 3.4 Évaluation du modèle
-
-Les graphiques produits par la bibliothéque YOLO pendant l'entraînement permettent de suivre l’évolution du modèle à l'aide de différents indicateurs.
-
-{% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="Les graphiques produits par la bibliothéque YOLO" caption="Figure 8. Les graphiques produits par la bibliothéque YOLO" %}
-
-L’accuracy Top-1 permet de suivre le pourcentage d’images que le modèle classe correctement.
-
-Les champs train/loss et val/loss permettent de suivre l’évolution de l’erreur du modèle pendant l’apprentissage et la validation.
-
-L’évaluation finale est réalisée sur le jeu de test, constitué d’images qui n’ont pas été utilisées pour entraîner le modèle. La matrice de confusion permet de visualiser les prédictions pour chacune des quatre catégories et d’identifier d’éventuelles confusions entre elles.
-Dans notre cas, la matrice de confusion ne présente aucune erreur de classification sur le jeu de test : toutes les images ont été correctement attribuées à leur catégorie.
-
-{% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="Matrice de confusion" caption="Figure 8. Matrice de confusion" %}
+### 3.4 Suivi de l'entraînement et évaluation du modèle
 
 L’entraînement, effectué sur une carte graphique (NVIDIA RTX 2060 SUPER, 8 Go de VRAM), a requis 108 époques et 1,2 heures de calcul.
 
 {% include figure.html filename="fr-or-creer-modele-classification-images-07.png" alt="Capture d'écran de la sortie console de la fin de l'entraînement du modèle" caption="Figure 8. Fin de l'entraînement du modèle" %}
 
-Le meilleur modèle est le fichier runs/classify/train7/weights/best.pt.
+Plusieurs modèles ont été entraînés, et la bibliothèque YOLO identifie automatiquement celui présentant les meilleures performances ( le fichier runs/classify/train7/weights/best.pt ).
 
-### 3.5 Application du modèle sur une nouvelle image
+Le graphique produit par la bibliothéque YOLO à la fin du fine-tuning permet d'analyser le meilleur modèle à l'aide de quatre différents indicateurs.
+
+{% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="Les graphiques produits par la bibliothéque YOLO" caption="Figure 8. Les graphiques produits par la bibliothéque YOLO" %}
+
+L’accuracy Top-1 est le pourcentage d’images que le modèle classe correctement.
+L’accuracy Top-5 est le pourcentage d’images dont la bonne catégorie figure parmi les cinq premières prédictions du modèle. Cet indicateur n'est pas utile dans le cadre de notre tutoriel, puisque notre modèle de classification ne comporte que quatre catégories
+
+Les champs train/loss et val/loss permettent de suivre l’évolution de l’erreur du modèle pendant l’apprentissage et la validation.
+
+Une loss qui diminue indique que le modèle s’améliore, et une accuracy Top-1 qui monte vers 1 indique qu’il classe de mieux en mieux les images du jeu de validation/
+
+### 3.5 Évaluation finale du modèle sur le jeu de test
+
+L’évaluation finale est réalisée sur le jeu de test, constitué d’images qui n’ont pas été utilisées pour entraîner le modèle. La matrice de confusion permet de visualiser les prédictions pour chacune des quatre catégories et d’identifier d’éventuelles confusions entre elles.
+
+{% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="Matrice de confusion" caption="Figure 8. Matrice de confusion" %}
+
+Dans notre cas, la matrice de confusion ne présente aucune erreur de classification sur le jeu de test : toutes les images ont été correctement attribuées à leur catégorie.
+
+### 3.6 Application du modèle sur une nouvelle image
 
 Une fois l’entraînement terminé, nous testons les performances du modèle sur une carte géographique représentative : une [carte de l'Europe](https://magrit.cnrs.fr/example_map_europe_1.png).
 

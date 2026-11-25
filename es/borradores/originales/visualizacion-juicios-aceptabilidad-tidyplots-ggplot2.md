@@ -58,7 +58,7 @@ Esta lección utiliza dos herramientas complementarias:
 
 ### Más allá del caso de estudio: otros contextos de aplicación
 
-Aunque esta lección utiliza juicios de aceptabilidad gramatical como hilo conductor, las técnicas de visualización y el marco estadístico que se presentan son directamente transferibles a cualquier diseño que recoja respuestas en [escala ordinal](https://perma.cc/PR5F-EW5W) o continua con estructura de medidas repetidas. Los siguientes ejemplos ilustran esta transferibilidad.
+Aunque esta lección utiliza juicios de aceptabilidad gramatical como hilo conductor, las técnicas de visualización y el marco estadístico que se presentan también pueden aplicarse a otro tipo de diseños experimentales que recojan respuestas en [escala ordinal](https://perma.cc/PR5F-EW5W) o continua con estructura de medidas repetidas. Los siguientes ejemplos ilustran esta transferibilidad.
 
 1. Otros usos de los juicios de aceptabilidad en lingüística. Las tareas de juicios de aceptabilidad se emplean ampliamente más allá de la morfología verbal. En sociolingüística, se usan para evaluar la aceptabilidad de variantes dialectales o de contacto, por ejemplo, construcciones de español en contacto con el inglés entre hablantes de herencia en EE. UU.(Regulez & Montrul, 2023), y las visualizaciones por grupo etario, de género o generacional (Gondra, 2021) siguen exactamente la misma lógica que la comparación nativos/aprendientes de esta lección. En pragmática experimental, se emplean para valorar la adecuación de actos de habla (peticiones, rechazos, disculpas) en diferentes contextos culturales o interlingüísticos (Leimkuhler, 2025). En fonología, se recogen juicios de naturalidad sobre secuencias de sonidos o sobre el acento de hablantes no nativos.
 

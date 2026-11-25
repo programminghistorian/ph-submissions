@@ -419,17 +419,27 @@ Une loss qui diminue indique que le modèle s’améliore, et une accuracy Top-1
 
 ### 3.5 Évaluation finale du modèle
 
-L’évaluation finale est réalisée sur le jeu de validation afin de sélectionner le meilleur modèle. La matrice de confusion permet de visualiser les prédictions pour chacune des quatre catégories et d’identifier d’éventuelles confusions entre elles.
+L’évaluation finale est réalisée sur le jeu de test. 
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="Matrice de confusion" caption="Figure 8. Matrice de confusion" %}
+```bash
+yolo task=classify mode=val \
+    model=runs/classify/train7/weights/best.pt \
+    data=Yolo/ \
+    split=test
+```
+Cette commande génère plusieurs graphiques permettant d’analyser les performances du modèle, dont une matrice de confusion, disponible dans le répertoire runs/classify/val.
 
-Dans notre cas, la matrice de confusion ne présente aucune erreur de classification sur le jeu de validation : toutes les images ont été correctement attribuées à leur catégorie.
+La matrice de confusion normalisée (confusion_matrix_normalized.png) permet de visualiser la répartition des prédictions pour chacune des quatre catégories et de mettre en évidence les éventuelles confusions entre elles.
+
+{% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="Matrice de confusion" caption="Figure 9. Matrice de confusion" %}
+
+Dans notre cas, les résultats montrent une faible confusion entre les catégories « Tableaux » et « Cartes géographiques ». En effet, certaines images de tableaux sont incorrectement classées comme des cartes géographiques.
 
 ### 3.6 Application du modèle sur une nouvelle image
 
 Une fois l’entraînement terminé, nous testons les performances du modèle sur une carte géographique représentative : une [carte de l'Europe](https://magrit.cnrs.fr/example_map_europe_1.png).
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-12.jpg" alt="Image de test." caption="Figure 9. Image de test" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-12.jpg" alt="Image de test." caption="Figure 10. Image de test" %}
 
 ```bash
 yolo classify predict \

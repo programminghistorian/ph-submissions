@@ -66,7 +66,7 @@ Aunque esta lección utiliza juicios de aceptabilidad gramatical como hilo condu
 
 3. Tareas de tiempo de reacción y lectura. En psicolingüística experimental, los tiempos de lectura palabra por palabra o los tiempos de reacción en tareas de decisión léxica son variables continuas con estructura de medidas repetidas (cada participante responde a múltiples estímulos). Aunque en ese caso los datos no son ordinales, por lo cual se usaría un modelo lineal mixto en lugar de un CLMM (Cumulative Link Mixed Model, en español: modelo mixto de enlace acumulativo), las estrategias de visualización con `tidyplots` y `ggplot2` que se presentan en esta lección se aplican directamente: gráficos de violín por condición, dispersión entre variables individuales y tiempos medios, y facetas por grupo.
 
-4. Estudios de producción y corpus. En análisis de corpus o estudios de producción oral o escrita, es habitual contar frecuencias de uso de una construcción gramatical por participante o por texto, o asignar puntuaciones de corrección a producciones de aprendientes. Estos datos que representan frecuencias por condición o puntuaciones por rasgo analizado pueden visualizarse y analizarse con los mismos modelos mixtos que se describen en la sección de análisis estadístico.
+4. Estudios de producción y corpus. En análisis de corpus o estudios de producción oral o escrita (Vyatkina et al., 2015), es habitual contar frecuencias de uso de una construcción gramatical por participante o por texto, o asignar puntuaciones de corrección a producciones de aprendientes. Estos datos que representan frecuencias por condición o puntuaciones por rasgo analizado pueden visualizarse y analizarse con los mismos modelos mixtos que se describen en la sección de análisis estadístico.
 
 En todos estos contextos, la pregunta de investigación es la misma: ¿Cómo varía la respuesta en función de las condiciones experimentales y de las características individuales de los participantes, teniendo en cuenta que cada participante contribuye con múltiples observaciones? Es precisamente esa pregunta la que los modelos mixtos están diseñados para responder.
 
@@ -618,7 +618,8 @@ Del mismo modo, los diagramas de dispersión con líneas de tendencia (Figura 8)
 - Regulez, Begoña Arechabaleta, and Silvina Montrul. "Production, acceptability, and online comprehension of Spanish differential object marking by heritage speakers and L2 learners." Frontiers in Psychology 14 (2023): 1106613.
 - Sprouse, Jon. "Acceptability judgments and grammaticality, prospects and challenges." Syntactic structures after 60 (2018): 195-224. 
 - Schütze, Carson T., and Jon Sprouse. 2018. “Judgment Data.” In Cambridge University Press eBooks, 27–50. https://doi.org/10.1017/cbo9781139013734.004.
-- Taylor, Jack E., Guillaume A. Rousselet, Christoph Scheepers, and Sara C. Sereno. "Rating norms should be calculated from cumulative link mixed effects models." Behavior research methods 55, no. 5 (2023): 2175-2196. https://doi.org/10.3758/s13428-022-01814-7 
+- Taylor, Jack E., Guillaume A. Rousselet, Christoph Scheepers, and Sara C. Sereno. "Rating norms should be calculated from cumulative link mixed effects models." Behavior research methods 55, no. 5 (2023): 2175-2196. https://doi.org/10.3758/s13428-022-01814-7
+- Vyatkina, Nina, Hagen Hirschmann, and Felix Golcher. "Syntactic modification at early stages of L2 German writing development: A longitudinal learner corpus study." Journal of Second Language Writing 29 (2015): 28-50.
 
 
 ---

@@ -406,9 +406,9 @@ L’entraînement, effectué sur une carte graphique (NVIDIA RTX 2060 SUPER, 8 G
 
 Plusieurs modèles ont été entraînés, et la bibliothèque YOLO identifie automatiquement celui présentant les meilleures performances ( le fichier runs/classify/train7/weights/best.pt ).
 
-Le graphique produit par la bibliothéque YOLO à la fin du fine-tuning permet d'analyser le meilleur modèle à l'aide de quatre différents indicateurs.
+Le graphique produit par la bibliothèque YOLO à la fin du fine-tuning permet d'analyser le meilleur modèle à l'aide de quatre différents indicateurs.
 
-{% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="Les graphiques produits par la bibliothéque YOLO" caption="Figure 8. Les graphiques produits par la bibliothéque YOLO" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="Les graphiques produits par la bibliothèque YOLO" caption="Figure 8. Les graphiques produits par la bibliothèque YOLO" %}
 
 L’accuracy Top-1 est le pourcentage d’images que le modèle classe correctement.
 L’accuracy Top-5 est le pourcentage d’images dont la bonne catégorie figure parmi les cinq premières prédictions du modèle. Cet indicateur n'est pas utile dans le cadre de notre tutoriel, puisque notre modèle de classification ne comporte que quatre catégories
@@ -427,6 +427,8 @@ yolo task=classify mode=val \
     data=Yolo/ \
     split=test
 ```
+{% include figure.html filename="fr-or-creer-modele-classification-images-13.png" alt="Lancement de la commande d'évaluation="Figure 9. Lancement de la commande d'évaluation" %}
+
 Cette commande génère plusieurs graphiques permettant d’analyser les performances du modèle, dont une matrice de confusion, disponible dans le répertoire runs/classify/val.
 
 La matrice de confusion normalisée (confusion_matrix_normalized.png) permet de visualiser la répartition des prédictions pour chacune des quatre catégories et de mettre en évidence les éventuelles confusions entre elles.

@@ -45,16 +45,16 @@ Pour suivre ce tutoriel, il est recommandé de disposer d’une carte graphique 
 
 L’objectif est de développer un modèle capable de classifier automatiquement les images. Pour cela, nous avons choisi de nous appuyer sur un modèle de classification de la famille **YOLO**, proposé par **Ultralytics**, plutôt que de construire et d’entraîner un réseau de neurones à partir de zéro. Ces modèles de classification sont pré-entraînés sur le corpus [ImageNet](https://www.image-net.org/index.php);  corpus d'images annotées destinée à la recherche en vision par ordinateur.
 
-Le modèle utilisé, `yolo26n-cls.pt`, est un modèle pré-entraîné à **poids ouverts (*open weights*)** destiné à la classification d’images : les paramètres appris lors de son entraînement sont accessibles et peuvent être réutilisés pour spécialiser le modèle. 
+Le modèle utilisé, `yolo26n-cls.pt`, est un modèle pré-entraîné à **poids ouverts (*open weights*)** destiné à la classification d’images.
 
-Pour chaque image, le modèle attribue une probabilité d’appartenance à chaque catégorie :
+Pour chaque image, le modèle attribuera une probabilité d’appartenance à chaque catégorie :
 
 - carte géographique
 - dessin
 - photographie
 - tableau
 
-Cela permet d’identifier rapidement les cartes géographiques dans un grand volume d’images.
+Cela permettra d’identifier rapidement les cartes géographiques dans un grand volume d’images.
 
 ### 1.1 Installation du framework Yolo
 
@@ -87,7 +87,7 @@ La bibliothèque ultralytics est nécessaire à la création du modèle et la bi
 
 ### 1.2 Validation de l'installation et test du modèle par défaut
 
-Pour vérifier que l'installation s'est déroulée correctement, nous allons utiliser le modèle de classification par défaut. Ce modèle peut reconnaître une large variété de catégories d'images.
+Pour vérifier que l'installation s'est déroulée correctement, nous allons utiliser le modèle de classification par défaut. Ce modèle peut reconnaître une large variété de catégories d'images pour un usage industriel (voitures, chat, humain, etc).
 
 **Exécution d'un test de démonstration**
 
@@ -95,7 +95,7 @@ Pour vérifier que l'installation s'est déroulée correctement, nous allons uti
 yolo classify predict model=yolo26n-cls.pt source='https://ultralytics.com/images/bus.jpg'
 ```
 
-Le modèle YOLO attribue des scores de probabilité pour chaque catégorie possible. 
+Le modèle de classification attribue des scores de probabilité pour chaque catégorie. 
 
 {% include figure.html filename="fr-or-creer-modele-classification-images-11.jpg" alt="Image de test." caption="Figure 1. Image de test" %}
 
@@ -103,9 +103,9 @@ Par exemple, pour l’image du [bus](https://ultralytics.com/images/bus.jpg), le
 
 {% include figure.html filename="fr-or-creer-modele-classification-images-01.png" alt="Sortie dans une console de la commande de test proposée pour la bibliothèque YOLO avec l'analyse d'une photo comprenant un bus." caption="Figure 2. Test de la bibliothèque YOLO" %}
 
-0.57 pour la catégorie mini-bus
+0.52 pour la catégorie mini-bus
 
-0.34 pour la catégorie police_van
+0.37 pour la catégorie police_van
 
 Ces scores indiquent la confiance du modèle dans sa prédiction. Plus le score est proche de 1, plus le modèle est certain que l'image appartient à cette catégorie.
 
@@ -113,7 +113,7 @@ Ces scores indiquent la confiance du modèle dans sa prédiction. Plus le score 
 
 ## 2 Constitution des données d'apprentissage
 
-Pour entraîner notre modèle de classification, la deuxième étape consiste à construire un corpus d’images représentatif et équilibré destiné à trois usages : le jeu de données d’apprentissage permettant la spécialisation du modèle, le jeu de données de validation permettant de tester les performances du modèle et enfin le jeu de données de test permettant d'évaluer le modèle final.
+Pour entraîner notre modèle de classification pour notre usage sur des données patrimoniales, la deuxième étape consiste à construire un corpus d’images représentatif et équilibré destiné à trois usages : le jeu de données d’apprentissage permettant la spécialisation du modèle, le jeu de données de validation permettant de tester les performances du modèle et enfin le jeu de données de test permettant d'évaluer le modèle final.
 
 De la qualité des données d'apprentissage va dépendre la qualité du modèle ainsi créé. Nous nous appuierons sur Wikimedia Commons pour plusieurs raisons :
 
@@ -171,7 +171,7 @@ Exemple d'exécution de la requête :
 
 #### 2.2.2 Constitution des données d’apprentissage pour la catégorie Dessin
 
-Pour constituer cette catégorie, nous avons choisi de réutiliser les numérisations des œuvres de quelques artistes. Cette contrainte limite l'apprentissage du modèle à ces seuls artistes.
+Pour constituer cette catégorie, nous avons choisi de réutiliser les numérisations des œuvres de plusieurs artistes. La sélection porte sur les artistes dont les œuvres sont disponibles sur la plateforme Wikimedia et référencées dans Wikidata sous la catégorie « Dessin ». Ces critères restreignent le nombre d’images disponibles et diminuent la diversité des données sur lesquelles le modèle sera entraîné.
 
 **Requête SPARQL pour extraire une liste des dessins de plusieurs auteurs**
 
@@ -230,7 +230,7 @@ LIMIT 10000
 
 ### 2.3 Téléchargement des images depuis Wikimedia Commons
 
-À l’issue des différentes requêtes SPARQL, nous avons téléchargé le résultat des requêtes sous la forme de quatre fichiers CSV contenant les liens vers les images :
+À l’issue de l’exécution des différentes requêtes SPARQL, nous avons téléchargé les résultats. Nous obtenons ainsi quatre fichiers au format CSV contenant les liens vers les images correspondant à chacune des catégories. Afin de faciliter leur identification, nous adopterons la nomenclature suivante :
 
 - query_dessin.csv (Dessins)
 

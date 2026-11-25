@@ -627,7 +627,7 @@ Del mismo modo, los diagramas de dispersión con líneas de tendencia (Figura 8)
 - Sprouse, Jon. "Acceptability judgments and grammaticality, prospects and challenges." Syntactic structures after 60 (2018): 195-224. 
 - Schütze, Carson T., and Jon Sprouse. 2018. “Judgment Data.” In Cambridge University Press eBooks, 27–50. https://doi.org/10.1017/cbo9781139013734.004.
 - Taylor, Jack E., Guillaume A. Rousselet, Christoph Scheepers, and Sara C. Sereno. "Rating norms should be calculated from cumulative link mixed effects models." Behavior research methods 55, no. 5 (2023): 2175-2196. https://doi.org/10.3758/s13428-022-01814-7
-- Unanue, Jasna Toquero, and María del Pilar García-Mayo. "El morfema–s en AICLE e ILE: La estructura de la DP y las tareas con/sin límite de tiempo." Porta Linguarum. An International Journal of Foreign Language Teaching and Learning 43 (2025): 183-198.
+- Unanue, Jasna Toquero, and María del Pilar García Mayo. "El morfema–s en AICLE e ILE: La estructura de la DP y las tareas con/sin límite de tiempo." Porta Linguarum. An International Journal of Foreign Language Teaching and Learning 43 (2025): 183-198.
 - Vyatkina, Nina, Hagen Hirschmann, and Felix Golcher. "Syntactic modification at early stages of L2 German writing development: A longitudinal learner corpus study." Journal of Second Language Writing 29 (2015): 28-50.
 
 

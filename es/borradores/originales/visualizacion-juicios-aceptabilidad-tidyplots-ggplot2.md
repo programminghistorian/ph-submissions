@@ -255,8 +255,8 @@ linechart01 <- resumen |>
   adjust_x_axis(rotate_labels = TRUE) |>
   adjust_y_axis_title("Juicio medio de aceptabilidad") |>
   adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
-  adjust_title("Interacción entre el tipo de modificador adverbial, el tiempo verbal y  el grupo en los juicios de aceptabilidad") |>
   adjust_legend_title("Grupo") |>
+  adjust_title("Interacción entre el tipo de modificador adverbial, el tiempo verbal y  el grupo en los juicios de aceptabilidad") |>
   adjust_colors(new_colors = c("#2C7BB6", "#D7191C")) |>
   split_plot(by = tense)
 linechart01
@@ -300,6 +300,7 @@ scatterplot01 <- datos |>
   adjust_y_axis_title("Juicio medio de aceptabilidad") |>
   adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
   adjust_legend_title("Tipo de instrucción") |>
+  adjust_title("Juicios medios según el tipo de instrucción: Bilingüe vs. ELE") |>
   adjust_colors(new_colors = c("#1B7837", "#762A83")) 
 scatterplot01
 ```
@@ -379,11 +380,13 @@ matrix <- datos |>
   scale_fill_manual(values = c(PPS = "#4DAC26", PPC = "#D01C8B"),
                     guide = "none") +
   scale_y_continuous(limits = c(1, 7), breaks = 1:7) +
-  labs(x = "Tipo de modificador adverbial",
-       y = "Juicio de aceptabilidad") +
+  labs(title = "Matriz de gráficos de violín",
+  x = "Tipo de modificador adverbial",
+  y = "Juicio de aceptabilidad") +
   theme_bw(base_size = 11) +
   theme(axis.text.x = element_text(angle = 55, hjust = 1),
         strip.background = element_rect(fill = "grey90"))
+        plot.title = element_text(hjust = 0.5))
  matrix
  ```       
 

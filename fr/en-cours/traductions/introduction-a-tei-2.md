@@ -117,7 +117,7 @@ Si leur localisation nous intéressait, nous utiliserions les éléments TEI pr�
         <pubPlace>Rouen, France</pubPlace>
         <date>2026</date>
         <availability>
-          <p>Œuvre en libre accès sous licence Creative Commons Attribution 4.0 International.</p>
+          <p>Libre utilisation non commercial - Réseau des bibliothèques-ludothèques de Dieppe</p>
         </availability>
       </publicationStmt>
       <sourceDesc>

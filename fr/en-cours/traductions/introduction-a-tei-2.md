@@ -977,7 +977,7 @@ Et de cette manière. nous avons fait le tour par tous les phénomènes énoncé
 ### Code complet du document
 
 
-Après tout ce voyage grâce à la main de George Sand, nous pouvons présenter le code complet du document TEI de la page 6 du manuscrit des _Maîtres sonneurs_ :
+Après tout ce voyage grâce à la main de George Sand, nous pouvons présenter [le code complet](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/introduction-a-tei-2/maitres-sonneurs.xml) du document TEI de la page 6 du manuscrit des _Maîtres sonneurs_ :
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

@@ -30,7 +30,7 @@ La adquisición de segundas lenguas (ASL) es un campo de investigación en el qu
 
 Uno de los tipos de juicios de aceptabilidad más utilizado en ASL consiste en presentar a los participantes una serie de  estímulos lingüísticos y pedirles que evalúen su aceptabilidad mediante una [escala de Likert](https://perma.cc/4BB7-SWES ) con un número finito de puntos ordenados (p. ej., del 1 al 7), cuyos extremos están etiquetados para indicar los números mínimo y máximo de aceptabilidad. 
 Para ilustrar este tipo de tarea, consideremos un estudio en el cual se manipula la combinación de tiempos verbales en la oración principal y en la subordinada. Las condiciones con tiempos concordantes (*Quiero que venga*, *Quería que viniera*) se contrastan con una condición discordante (*Quería que venga*), con el fin de determinar si los hablantes de español rioplatense y los hablantes de español peninsular aceptan la falta de concordancia temporal. Los juicios de aceptabilidad también permiten comprobar qué factores dificultan la comprensión de una estructura en una lengua extranjera. Un ejemplo concreto del campo de ASL es el estudio de Toquero Unanue y García Mayo (2024) quienes utilizaron los juicios de aceptabilidad para examinar si la distancia entre el sujeto y el verbo afecta a la comprensión del morfema -s de tercera persona del singular del inglés. Los participantes (estudiantes españoles de 15 y 16 años) evaluaron la aceptabilidad de oraciones con sujetos de complejidad creciente, como *My brother owns a house* frente a *The brother of my best friend owns a house* y *My best friend's brother owns a house*. 
-En ambos casos, las respuestas numéricas adquieren significado cuando se analizan en relación con el conjunto de datos y las variables del estudio. El análisis nos permite identificar diferencias entre grupos,  condiciones experimentales, y participantes con distintas características o experiencias de aprendizaje. Sin embargo, las tablas de medias y otras medidas de tendencia central no permiten apreciar plenamente la variabilidad ni la forma de la distribución de las respuestas. Las representaciones gráficas complementan esta información y facilitan la exploración de los datos. Por ejemplo, un gráfico de violín muestra simultáneamente la distribución, la densidad y la dispersión de los juicios de aceptabilidad, mientras que un diagrama de dispersión facilita la exploración de la relación entre los juicios y variables continuas, como los años de aprendizaje y la exposición a la L2. 
+En ambos casos, las respuestas numéricas adquieren significado cuando se analizan en relación con el conjunto de datos y las variables del estudio. El análisis de los juicios de aceptabilidad nos permite identificar diferencias entre grupos, condiciones experimentales, y participantes con distintas características o experiencias de aprendizaje. Sin embargo, las tablas de medias y otras medidas de tendencia central no permiten apreciar plenamente la variabilidad ni la forma de la distribución de las respuestas. Las representaciones gráficas complementan esta información y facilitan la exploración de los datos. Por ejemplo, un gráfico de violín muestra simultáneamente la distribución, la densidad y la dispersión de los juicios de aceptabilidad, mientras que un diagrama de dispersión facilita la exploración de la relación entre los juicios y variables continuas, como los años de aprendizaje y la exposición a la L2. 
 
 ### Características de los juicios de aceptabilidad en ASL
 
@@ -39,7 +39,7 @@ Los juicios de aceptabilidad presentan varias características que condicionan s
 - Naturaleza ordinal: las respuestas son categorías ordenadas (1, 2, 3, 4, 5, 6, 7), no distancias iguales entre valores continuos 
 - Variabilidad interindividual elevada: los aprendientes con el mismo nivel de competencia pueden diferir considerablemente en sus juicios 
 - Estructura de medidas repetidas: cada participante evalúa múltiples ítems, lo que crea dependencia en los datos 
-- Diferencias individuales relevantes: variables como la edad de adquisición, los años de aprendizaje o el tipo de instrucción recibida (por ejemplo, clases de ELE vs. instrucción bilingüe)  modulan los juicios.
+- Diferencias individuales relevantes: variables como la edad de adquisición, los años de aprendizaje o el tipo de instrucción recibida (por ejemplo, clases de ELE vs. instrucción bilingüe) modulan los juicios.
 
 ### Objetivos de la lección
 Esta lección tiene los siguientes objetivos:   
@@ -419,7 +419,7 @@ legend("right",
 
 Esta matriz de diagramas de dispersión muestra las asociaciones entre el juicio medio de aceptabilidad (`mean_rating`), la edad de adquisición (`aoa`) y los años de aprendizaje (`years_learning`) según el grupo (círculos rojos para el grupo bilingüe y cruces verdes para el grupo ELE). En general, no se observan correlaciones lineales fuertes entre las variables, aunque destaca una posible correlación negativa entre `aoa` y `years_learning`. Los dos grupos presentan una distribución solapada en la mayoría de los paneles, con diferencias leves en `mean_rating`. 
 
-### Análisis estadístico: modelo de enlace acumulativo mixto
+## Análisis estadístico: modelo de enlace acumulativo mixto
 
 #### ¿Qué son los modelos mixtos y para qué sirven?
 
@@ -594,7 +594,7 @@ El modelo 2.2. reveló que, en la condición de referencia (PPC con anterioridad
 Con respecto a las interacciones, tanto la anterioridad lejana (β = 3.68, z = 12.89, p < .001) como el momento no terminado (β = 2.22, z = 8.10, p < .001) hacen que el PPS sea juzgado de forma significativamente más favorable en comparación con el PPC, respecto a lo observado en la condición de referencia; de hecho, en el caso de la anterioridad lejana, el patrón se invierte por completo, y los aprendientes juzgan el PPS como más aceptable que el PPC.
 Interesantemente, ninguna de las variables individuales resultó ser estadísticamente significativa. 
 
-### ¿Qué revelan los gráficos que las tablas no muestran?
+## ¿Qué revelan los gráficos que las tablas no muestran?
 
 La tabla de medias del modelo en el apartado anterior puede reportar, por ejemplo, que la diferencia entre los juicios del PPC con los adverbios de anterioridad inmediata entre los aprendientes y los hablantes nativos es de 2.51. Pero esa diferencia puede esconder distribuciones muy distintas, por ejemplo, en los puntos exactos de la escala en los que los aprendientes bilingües y los de ELE dispersan sus juicios. Los  gráficos de violín que hemos aprendido a hacer en esta lección (Figuras 2, 3 y 10) hacen estas diferencias inmediatamente visibles.
 
@@ -602,7 +602,7 @@ Del mismo modo, los diagramas de dispersión con líneas de tendencia (Figura 8)
 
 ---
 
-### Referencias
+## Referencias
 
 - Badiola, Lucia, Rodrigo Delgado, Ariane Sande, and Sara Stefanich. "Code-switching attitudes and their effects on acceptability judgment tasks." Linguistic Approaches to Bilingualism 8, no. 1 (2018): 5-24.
 - Barr, Dale J., Roger Levy, Christoph Scheepers, and Harry J. Tily. "Random effects structure for confirmatory hypothesis testing: Keep it maximal." Journal of memory and language 68, no. 3 (2013): 255-278.

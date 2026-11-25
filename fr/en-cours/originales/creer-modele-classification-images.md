@@ -480,7 +480,7 @@ Les images sont généralement situées dans le répertoire OEBPS.
 
 **Commande d’extraction :**
 
-Les commandes suivantes permettent de télécharger les fichiers EPUB et d'en extraire les images de test.
+Les commandes suivantes permettent de télécharger les fichiers EPUB et d'en extraire les images.
 
 ```bash
 wget https://www.gutenberg.org/ebooks/48451.epub3.images
@@ -493,7 +493,11 @@ unzip 50710.epub3.images
 ```
 
 Après extraction, les répertoires OEBPS propres à chaque EPUB contiendront au total 1 862 images.
-Ces images serviront de base pour la classification.
+
+C'est sur ce corpus d'images que nous appliquerons le modèle.
+
+Après extraction, les répertoires OEBPS associés à chaque fichier EPUB contiendront un total de 1 862 images. Ce corpus constituera le jeu de données sur lequel nous appliquerons le modèle de classification.
+
 
 ### 4.3 Le script Python pour le traitement
 
@@ -557,19 +561,6 @@ Le fichier JSON généré contient pour chaque image :
     },
 ```
 
-### 4.4 Les résultats
-
-Voici les résultats avec un score de confiance de 1,0 pour la catégorie Tableau :
-
-{% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="Capture d'écran des miniatures de quelques images classées comme Tableau avec un score égal à 1" caption="Figure 11. Les résultats pour la catégorie Tableau" %}
-
-Voici les résultats avec un score de confiance de 1,0 pour la catégorie Carte géographique :
-
-{% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="Capture d'écran des miniatures de quelques images classées comme Carte avec un score égal à 1" caption="Figure 12. Les résultats pour la catégorie Carte" %}
-
-Les résultats contiennent également des images mal classées. Elles ont un score de confiance élevé malgré une classification incorrecte. Ces images permettent d'identifier les cas difficiles et peuvent dans un deuxième temps servir à la constitution d'une nouvelle version des données d'apprentissage.
-
-
 ### 4.5 Limites et biais liés au jeu de données d’apprentissage
 
 Les images utilisées pour l’entraînement proviennent majoritairement de Wikimedia Commons et sont sélectionnées à partir de bases patrimoniales (Joconde, Mérimée, œuvres d’art documentées).
@@ -592,11 +583,11 @@ Pour améliorer les performances de notre modèle, il est nécessaire d’enrich
 
 - en intégrant davantage d’exemples variés.
 
-- en prenant en compte les cas limites et en intégrant les les erreurs de classification détectés dans la première version du modèle afin d'en améliorer les performances.
+- en prenant en compte les cas limites et en intégrant les les erreurs de classification détectés dans la première version du modèle, afin de ré-entraîner une version améliorée sur l’ensemble de ces données.
 
 Des jeux de données complémentaires peuvent être utilisés comme [Gallica : jeu d'images annotées pour la classification](https://api.bnf.fr/fr/node/181) ou [Nubis – Carte (Version 1). https://doi.org/10.34847/NKL.9E96QOS6](https://doi.org/10.34847/NKL.9E96QOS6).
 
 Une version améliorée du modèle est disponible à cette [URL](https://huggingface.co/LaMOP/Yolo26n-Cls-Carte).
 
-Ce modèle a ensuite été utilisé pour analyser un corpus important de fichiers EPUB issus du projet Kiwix [World History (Europe, Asia, Africa, Australia)](https://browse.library.kiwix.org/viewer#gutenberg_en_lcc-d_2025-12/Home).
+Ce modèle a été utilisé pour analyser un corpus important de fichiers EPUB issus du projet Kiwix [World History (Europe, Asia, Africa, Australia)](https://browse.library.kiwix.org/viewer#gutenberg_en_lcc-d_2025-12/Home).
 Les résultats de cette analyse ont été enrichis de métadonnées et publiés dans un [entrepôt de données](https://nakala.fr/10.34847/nkl.264878np).

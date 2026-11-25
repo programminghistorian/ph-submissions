@@ -421,14 +421,14 @@ Esta matriz de diagramas de dispersión muestra las asociaciones entre el juicio
 
 ## Análisis estadístico: modelo de enlace acumulativo mixto 
 
-#### ¿Qué son los modelos mixtos y para qué sirven?
+### ¿Qué son los modelos mixtos y para qué sirven?
 
 [Un modelo mixto](https://perma.cc/QD49-V3VQ), también llamado modelo de efectos mixtos o modelo multinivel, es un modelo estadístico que incluye dos tipos de efectos:
 
 - Efectos fijos: los predictores cuyo efecto queremos estimar y generalizar, en nuestro caso, el tiempo verbal, el tipo de modificador adverbial, y el grupo (nativo/aprendiente) y las diferencias individuales. Se llaman "fijos" porque asumimos que representan efectos constantes en la población de interés.
 - Efectos aleatorios: fuentes de variabilidad que no nos interesa estimar directamente, pero que debemos tener en cuenta para no distorsionar las estimaciones de los efectos fijos. En un diseño con medidas repetidas, los participantes y los ítems son efectos aleatorios típicos: cada participante tiene su propio "nivel de base" de aceptabilidad, y cada ítem tiene su propio nivel de dificultad, independientemente de la condición experimental.
 
-#### ¿Cuándo conviene usar un modelo mixto? 
+### ¿Cuándo conviene usar un modelo mixto? 
 
 Los modelos mixtos son apropiados cuando se cumplen una o más de las siguientes condiciones:
 
@@ -439,14 +439,14 @@ Los modelos mixtos son apropiados cuando se cumplen una o más de las siguientes
 
 El artículo [Using Mixed Effects Models to Analyze Acceptability Ratings](https://perma.cc/62MF-7NPZ) ofrece un tutorial detallado en inglés sobre cómo utilizar los modelos de efectos mixtos para analizar juicios de aceptabilidad, mientras que en el artículo [Rating norms should be calculated from cumulative link mixed effects models](https://perma.cc/4J46-C26J) se puede encontrar una explicación detallada de por qué los datos de escalas Likert deberían analizarse utilizando modelos mixtos lineales acumulativos (CLMM).
 
-#### Efectos aleatorios: interceptos y pendientes
+### Efectos aleatorios: interceptos y pendientes
 
 El tipo más sencillo de efecto aleatorio es el intercepto aleatorio: permite que cada participante (o ítem) tenga su propio punto de partida en la escala de respuesta. En notación de R con los paquetes `lme4` u `ordinal`, se especifica como `(1 | participant_id)`.
 
 Un paso más es incluir también pendientes aleatorias: permiten que el efecto de una variable experimental, por ejemplo, el efecto del tiempo verbal, varíe entre participantes. Si algunos aprendientes son muy sensibles a la distinción PPS/PPC y otros no, una pendiente aleatoria para `tense` `(1 + tense | participant_id)` capturará esa heterogeneidad. Las pendientes aleatorias hacen el modelo más realista, pero también más exigente en términos de datos; con muestras pequeñas pueden generar problemas de convergencia. 
 Una explicación visual de la diferencia entre los interceptos y las pendientes aleatorias se puede consultar en [este enlace](http://mfviz.com/hierarchical-models/).
 
-#### Instalación y carga del paquete `ordinal`
+### Instalación y carga del paquete `ordinal`
 
 Primero, instalamos y cargamos los paquetes `ordinal` y `emmeans`.  
 
@@ -456,7 +456,7 @@ library(ordinal)
 library(emmeans)
 ```
 
-#### Modelo 1: efecto del grupo y las variables lingüísticas
+### Modelo 1: efecto del grupo y las variables lingüísticas
 
 Después, preparamos las variables para todos nuestros modelos estadísticos: transformamos la variable dependiente en factor ordenado para su uso en el CLMM y convertimos las variables `group`, `instruction`, `tense`, y `adverb_type` en factores. Después estandardizamos las variables continuas (`aoa` y `years_learning`) mediante puntuaciones z (M = 0, DT = 1). También filtramos el dataframe `datos` para incluir solo los aprendientes (para luego utilizarlo en los modelos 2.1 y 2.2).  
 
@@ -547,7 +547,7 @@ Los resultados muestran las diferencias entre los dos grupos de participantes en
 | PPS | momento_no_terminado | learner - native | 1.75 | 0.305 | 5.722 | < .0001 |
 
 
-#### Modelo 2: Diferencias individuales en el grupo de los aprendientes
+### Modelo 2: Diferencias individuales en el grupo de los aprendientes
 
 El segundo modelo se ajusta únicamente con los datos de los aprendientes, por lo cual era necesario primero filtrar el dataframe `datos`  para incluir solo los aprendientes e incluir como predictores adicionales las diferencias individuales. 
 

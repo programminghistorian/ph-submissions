@@ -53,7 +53,7 @@ sequence: 2
 
 ## Introduction
 
-Cette leçon est la deuxième partie de la leçon d'encodage des textes en langage de balisage [TEI](https://tei-c.org/). La [première](https://programminghistorian.org/fr/lecons/introduction-a-tei-1) a consisté en une brève introduction au concept même d'encodage et son importance dans les Humanités numériques, ainsi qu'aux documents [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language) et TEI.
+Cette leçon est la deuxième partie de la leçon d'encodage des textes en langage de balisage [TEI (Text Encoding Initiative)](https://tei-c.org/). La [première](https://programminghistorian.org/fr/lecons/introduction-a-tei-1) a consisté en une brève introduction au concept même d'encodage et son importance dans les Humanités numériques, ainsi qu'aux documents [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language) et TEI.
 
 Dans le but d'illustrer les possibilités offertes par la TEI, nous étudierons ici en détail deux exemples d'encodage de textes brefs. 
 

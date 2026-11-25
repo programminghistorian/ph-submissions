@@ -28,7 +28,7 @@ Ce modèle répond à un besoin du projet TOPAMA. Le projet TOPAMA est un systè
 
 Pour parvenir à cet objectif, nous développerons un modèle prototype de classification d’images capable de distinguer quatre catégories visuelles propres (Cartes, Dessins, Photographies et Tableaux). Ce modèle a avant tout une vocation pédagogique et vise à détailler les différentes étapes de création d’un modèle de classification, de la constitution du jeu de données à son évaluation et à son application sur un corpus d’images. Bien qu’une classification binaire distinguant les cartes des images non cartographiques pourrait suffire à répondre aux besoins techniques du projet, le choix d’une classification en quatre catégories permet d’approfondir les mécanismes d’apprentissage du modèle. Cela vise notamment à mieux comprendre la manière dont le modèle exploite les caractéristiques visuelles des images et les erreurs de classification qu’il peut produire.
 
-Dans ce tutoriel, nous constituerons donc un corpus d’images à partir de la base de connaissances Wikidata. Nous diviserons ce corpus en trois sous-ensembles nécessaires à la construction et à la validation du modèle (entraînement, validation et test). Puis nous appliquerons le modèle créé à un corpus de test et nous évoquerons les limites et les biais de ce modèle créé. Le jeu de données utilisé dans le cadre de ce tutoriel reste toutefois trop limité et ne permet pas une utilisation en production. Les pistes d'amélioration possibles (augmentation de la taille et de la diversité du corpus) sont présentées dans la conclusion.
+Dans ce tutoriel, nous constituerons donc un corpus d’images à partir de la base de connaissances Wikidata. Nous diviserons ce corpus en trois sous-ensembles nécessaires à la construction et à la validation du modèle (entraînement, validation et test). Puis nous appliquerons le modèle créé à un corpus d'images et nous évoquerons les limites et les biais de ce modèle créé. Le jeu de données utilisé dans le cadre de ce tutoriel reste toutefois trop limité et ne permet pas une utilisation en production. Les pistes d'amélioration possibles (augmentation de la taille et de la diversité du corpus) sont présentées dans la conclusion.
 
 
 ## Connaissances préalables recommandées
@@ -263,10 +263,10 @@ Nous utiliserons la commande wget avec des paramètres adaptés pour respecter c
 
 ```bash
 mkdir -p Data/Dessin; mkdir -p Data/Tableau; mkdir -p Data/Photo; mkdir -p Data/Carte
-wget -i dessin_final.csv -P Data/Dessin/ -nc --limit-rate=1M --user-agent="e: "Tutorial Création d'un modèle de classification d’images (https://programminghistorian.org/" -w 1
-wget -i tableau_final.csv -P Data/Tableau/ -nc --limit-rate=1M --user-agent="Tutorial Création d'un modèle de classification d’images (https://programminghistorian.org/" -w 1
-wget -i photo_final.csv -P Data/Photo/ -nc --limit-rate=1M --user-agent="Tutorial Création d'un modèle de classification d’images (https://programminghistorian.org/" generic-library/0.0" -w 1
-wget -i carte_final.csv -P Data/Carte/ -nc --limit-rate=1M --user-agent="Tutorial Création d'un modèle de classification d’images (https://programminghistorian.org/" -w 1
+wget -i dessin_final.csv -P Data/Dessin/ -nc --limit-rate=1M --user-agent="Tutorial Création d’un modèle de classification d’images /1.0 (https://programminghistorian.org/; archive@lamop.fr)" -w 1
+wget -i tableau_final.csv -P Data/Tableau/ -nc --limit-rate=1M --user-agent="Tutorial Création d’un modèle de classification d’images /1.0 (https://programminghistorian.org/; archive@lamop.fr)" -w 1
+wget -i photo_final.csv -P Data/Photo/ -nc --limit-rate=1M --user-agent="Tutorial Création d’un modèle de classification d’images /1.0 (https://programminghistorian.org/; archive@lamop.fr)" -w 1
+wget -i carte_final.csv -P Data/Carte/ -nc --limit-rate=1M --user-agent="Tutorial Création d’un modèle de classification d’images /1.0 (https://programminghistorian.org/; archive@lamop.fr)" -w 1
 ```
 
 Explications des options :
@@ -561,7 +561,7 @@ Le fichier JSON généré contient pour chaque image :
     },
 ```
 
-### 4.5 Limites et biais liés au jeu de données d’apprentissage
+### 4.4 Limites et biais liés au jeu de données d’apprentissage
 
 Les images utilisées pour l’entraînement proviennent majoritairement de Wikimedia Commons et sont sélectionnées à partir de bases patrimoniales (Joconde, Mérimée, œuvres d’art documentées).
 

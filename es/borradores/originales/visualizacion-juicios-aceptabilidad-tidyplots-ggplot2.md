@@ -255,6 +255,7 @@ linechart01 <- resumen |>
   adjust_x_axis(rotate_labels = TRUE) |>
   adjust_y_axis_title("Juicio medio de aceptabilidad") |>
   adjust_y_axis(limits = c(1, 7), breaks = 1:7) |>
+  adjust_title("Interacción entre el tipo de modificador adverbial, el tiempo verbal y  el grupo en los juicios de aceptabilidad") |>
   adjust_legend_title("Grupo") |>
   adjust_colors(new_colors = c("#2C7BB6", "#D7191C")) |>
   split_plot(by = tense)

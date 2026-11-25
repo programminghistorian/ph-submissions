@@ -608,13 +608,14 @@ Del mismo modo, los diagramas de dispersión con líneas de tendencia (Figura 8)
 - Bross, Fabian. Acceptability ratings in linguistics: A practical guide to grammaticality judgments, data collection, and statistical analysis. Version 1.0. Mimeo, 2019.
 - Dominiccini, Eduardo. "Las intuiciones y la aceptabilidad en la interfaz semántica-pragmática." Saga. Revista de Letras 7 (2017).
 - Engler, Jan Broder. "Tidyplots empowers life scientists with easy code‐based data visualization." Imeta 4, no. 2 (2025): e70018.
-- Formoso, Jessica. "Modelos mixtos de enlace acumulativo(CLMM): un tutorial paso a paso en R". Zenodo, (2026, April 7). https://doi.org/10.5281/zenodo.19445681
+- Formoso, Jessica. "Modelos mixtos de enlace acumulativo(CLMM): un tutorial paso a paso en R". Zenodo, (2026, April 7). DOI: https://doi.org/10.5281/zenodo.19445681
 - Heisig, Jan Paul, and Merlin Schaeffer. "Why you should always include a random slope for the lower-level variable involved in a cross-level interaction." European Sociological Review 35, no. 2 (2019): 258-279.  
 - Langsford, Steven, Amy Perfors, Andrew T. Hendrickson, Lauren A. Kennedy, and Danielle J. Navarro. "Quantifying sentence acceptability measures: Reliability, bias, and variability." (2019): 37.
 - Matuschek, Hannes, Reinhold Kliegl, Shravan Vasishth, Harald Baayen, and Douglas Bates. "Balancing Type I error and power in linear mixed models." Journal of memory and language 94 (2017): 305-315.
 - Sprouse, Jon. "Acceptability judgments and grammaticality, prospects and challenges." Syntactic structures after 60 (2018): 195-224. 
-- Schütze, Carson T., and Jon Sprouse. 2018. “Judgment Data.” In Cambridge University Press eBooks, 27–50. https://doi.org/10.1017/cbo9781139013734.004.
-- Taylor, Jack E., Guillaume A. Rousselet, Christoph Scheepers, and Sara C. Sereno. "Rating norms should be calculated from cumulative link mixed effects models." Behavior research methods 55, no. 5 (2023): 2175-2196. https://doi.org/10.3758/s13428-022-01814-7 
+- Schütze, Carson T., and Jon Sprouse. 2018. “Judgment Data.” In Cambridge University Press eBooks, 27–50. DOI: https://doi.org/10.1017/cbo9781139013734.004.
+- Taylor, Jack E., Guillaume A. Rousselet, Christoph Scheepers, and Sara C. Sereno. "Rating norms should be calculated from cumulative link mixed effects models." Behavior research methods 55, no. 5 (2023): 2175-2196. DOI: https://doi.org/10.3758/s13428-022-01814-7
+- Unanue, Jasna Toquero, and María del Pilar García-Mayo. "El morfema–s en AICLE e ILE: La estructura de la DP y las tareas con/sin límite de tiempo." Porta Linguarum. An International Journal of Foreign Language Teaching and Learning 43 (2025): 183-198. DOI: https://doi.org/10.30827/portalin.vi43.30409
 
 
 ---

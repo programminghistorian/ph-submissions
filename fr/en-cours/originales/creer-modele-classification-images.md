@@ -75,7 +75,7 @@ python3 -m venv .
 #### Activation de l’environnement :
 
 ```python
-source bin/activate .
+source bin/activate
 ```
 
 #### Installation des bibliothèques nécessaires au projet :
@@ -178,7 +178,7 @@ Pour constituer cette catégorie, nous avons choisi de réutiliser les numérisa
 Cette requête SPARQL permet de récupérer les images des œuvres de Sawrey Gilpin, Fúlvia Gonçalves, James Ensor, Johan Tobias Sergel, Thomas Hastings, Robert Smirke, John Flaxman, Jean-Louis Forain, Jean-Auguste-Dominique Ingres, Edme Bouchardon disponibles sur Wikimedia Commons.
 
 ```sparql
-SELECT ?dessin ?dessinLabel ?image ?creator ?creatorLabel
+SELECT ?image
 WHERE {
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
   ?dessin wdt:P31 wd:Q93184. # nature dessin
@@ -266,7 +266,7 @@ mkdir -p Data/Dessin; mkdir -p Data/Tableau; mkdir -p Data/Photo; mkdir -p Data/
 wget -i dessin_final.csv -P Data/Dessin/ -nc --limit-rate=1M --user-agent="e: "Tutorial Création d'un modèle de classification d’images (https://programminghistorian.org/" -w 1
 wget -i tableau_final.csv -P Data/Tableau/ -nc --limit-rate=1M --user-agent="Tutorial Création d'un modèle de classification d’images (https://programminghistorian.org/" -w 1
 wget -i photo_final.csv -P Data/Photo/ -nc --limit-rate=1M --user-agent="Tutorial Création d'un modèle de classification d’images (https://programminghistorian.org/" generic-library/0.0" -w 1
-wget -i query_carte.csv -P Data/Carte/ -nc --limit-rate=1M --user-agent="Tutorial Création d'un modèle de classification d’images (https://programminghistorian.org/" -w 1
+wget -i carte_final.csv -P Data/Carte/ -nc --limit-rate=1M --user-agent="Tutorial Création d'un modèle de classification d’images (https://programminghistorian.org/" -w 1
 ```
 
 Explications des options :
@@ -417,13 +417,13 @@ Les champs train/loss et val/loss permettent de suivre l’évolution de l’err
 
 Une loss qui diminue indique que le modèle s’améliore, et une accuracy Top-1 qui monte vers 1 indique qu’il classe de mieux en mieux les images du jeu de validation/
 
-### 3.5 Évaluation finale du modèle sur le jeu de test
+### 3.5 Évaluation finale du modèle
 
-L’évaluation finale est réalisée sur le jeu de test, constitué d’images qui n’ont pas été utilisées pour entraîner le modèle. La matrice de confusion permet de visualiser les prédictions pour chacune des quatre catégories et d’identifier d’éventuelles confusions entre elles.
+L’évaluation finale est réalisée sur le jeu de validation afin de sélectionner le meilleur modèle. La matrice de confusion permet de visualiser les prédictions pour chacune des quatre catégories et d’identifier d’éventuelles confusions entre elles.
 
 {% include figure.html filename="fr-or-creer-modele-classification-images-10.png" alt="Matrice de confusion" caption="Figure 8. Matrice de confusion" %}
 
-Dans notre cas, la matrice de confusion ne présente aucune erreur de classification sur le jeu de test : toutes les images ont été correctement attribuées à leur catégorie.
+Dans notre cas, la matrice de confusion ne présente aucune erreur de classification sur le jeu de validation : toutes les images ont été correctement attribuées à leur catégorie.
 
 ### 3.6 Application du modèle sur une nouvelle image
 
@@ -485,11 +485,11 @@ Les commandes suivantes permettent de télécharger les fichiers EPUB et d'en ex
 ```bash
 wget https://www.gutenberg.org/ebooks/48451.epub3.images
 
-unzip 48451.epub3.images
+unzip 48451.epub3.images -d Epub/48451.epub3
 
 wget https://www.gutenberg.org/ebooks/50710.epub3.images
 
-unzip 50710.epub3.images
+unzip 50710.epub3.images -d Epub/50710.epub3
 ```
 
 Après extraction, les répertoires OEBPS propres à chaque EPUB contiendront au total 1 862 images.

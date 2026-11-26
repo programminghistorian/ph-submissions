@@ -42,7 +42,7 @@ Pour suivre ce tutoriel, il est recommandé de disposer d’une carte graphique 
 
 ## 1 Création du modèle de classification
 
-L’objectif est de développer un modèle capable de classifier automatiquement les images. Pour cela, nous avons choisi de nous appuyer sur un modèle de classification de la famille **YOLO**, proposé par **Ultralytics**, plutôt que de construire et d’entraîner un réseau de neurones à partir de zéro. Ces modèles de classification sont pré-entraînés sur le corpus [ImageNet](https://www.image-net.org/index.php);  corpus d'images annotées destiné à la recherche en vision par ordinateur.
+L’objectif est de développer un modèle capable de classifier automatiquement les images. Pour cela, nous avons choisi de nous appuyer sur un modèle de classification de la famille **YOLO**, proposé par **Ultralytics**, plutôt que de construire et d’entraîner un réseau de neurones à partir de zéro. Ces modèles de classification sont pré-entraînés sur le corpus [ImageNet]( https://www.image-net.org/index.php )  corpus d'images annotées destiné à la recherche en vision par ordinateur.
 
 Le modèle utilisé, `yolo26n-cls.pt`, est un modèle pré-entraîné à **poids ouverts (*open weights*)** destiné à la classification d’images pour un usage généraliste ( voitures, chats, aliments )
 

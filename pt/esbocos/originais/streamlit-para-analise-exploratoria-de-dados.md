@@ -7,8 +7,8 @@ date: YYYY-MM-DD
 authors:
 - Ruan Arthur Lima Santos
 reviewers:
-- Forename Surname
-- Forename Surname
+- Karla Oliveira
+- Eric Brasil
 editors:
 - Aracele Torres
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/690

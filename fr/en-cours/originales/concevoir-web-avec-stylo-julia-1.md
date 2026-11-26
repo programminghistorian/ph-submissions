@@ -26,19 +26,21 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
+Cette leçon présente TowSty, un générateur de sites Web qui s’appuie sur Stylo. Aucune connaissance préalable n’est requise, à l’exception de l’utilisation du terminal (cf. la leçon « [Introduction à l'interface en ligne de commande Bash et Zsh]([Introduction à l'interface en ligne de commande Bash et Zsh](https://programminghistorian.org/fr/lecons/intro-a-bash-et-zsh)) »). Vous serez ainsi guidé étape par étape, depuis l’installation jusqu’au déploiement de votre premier site Web.
+
 Lorsque l’on souhaite aujourd’hui publier des textes en ligne, l’offre est importante. WordPress, par exemple, utilisé par plus de 40 % des sites web[^1], s’est imposé comme une solution auprès d’un public qui n’est pas composé que de spécialistes en informatique. Une partie de ce succès nous semble ainsi venir de l’interface d’écriture qu’il propose. Cette interface a subi de nombreuses évolutions, plus ou moins appréciées par la communauté. Elle permet de structurer facilement du contenu pour le web sans avoir besoin de connaître au préalable le HTML ou le CSS, et cela dans une logique qui se révèle relativement proche de celle de l’interface d’un traitement de texte[^2]. Cette interface propose également un moyen simple pour prévisualiser et publier ce contenu structuré.
 
 L’infrastructure du côté du serveur reste cependant assez lourde, avec notamment MySQL et PHP qui demandent un suivi constant et des mises à jour régulières. Si l’on prend en plus en compte les différents *plugins* produits par l’écosystème profitable de cette plateforme, la surface d’attaque se révèle alors importante. Déployer seul une instance de WordPress n’est pas toujours simple, et ce n’est certainement pas commode à maintenir dans le temps.
 
 Il reste toujours la possibilité de créer un site *ex nihilo*, ce qui induit de produire le HTML pour chaque page, une feuille de styles CSS, et de mettre tout cela en ligne avec SSH ou FTP. Cette approche, pourtant garante d’une certaine indépendance technique, d’une très faible maintenance et d’une grande légèreté pour le serveur, apparaît contraignante au quotidien. Il faut baliser -- préalablement à la publication -- chacun des paragraphes et des titres. Si de surcroit on prend en compte le style avec les différentes résolutions des écrans et tout ce qui permet un accès au contenu, par exemple les liens entre les articles ou un index, le développement complet d’un site web prend du temps. Au contraire de WordPress, qui permet de se concentrer sur le contenu[^3].
 
-Une autre solution consiste à utiliser un [générateur de site statique](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_site_statique). L’utilité de cette approche permet de simplifier l’écriture de contenus grâce au langage Markdown[^4] et de permettre la structuration d’un site sans avoir besoin de gérer manuellement le HTML, le CSS ou même le SQL. En général, une commande permet de construire le site, c’est-à-dire de convertir le Markdown en HTML et d’en générer la structure, dont les index. Lorsque l’on est prêt à publier un texte et donc à le copier sur un serveur, ces générateurs de site doivent être exécutés localement et préalablement afin de produire la nouvelle page ainsi que toutes ses relations aux autres[^5].
+Une autre solution consiste à utiliser un [générateur de site statique](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_site_statique). Cette approche permet de simplifier l’écriture de contenus grâce au langage Markdown[^4] et de permettre la structuration d’un site sans avoir besoin de gérer manuellement le HTML, le CSS ou même le SQL. En général, une commande permet de construire le site, c’est-à-dire de convertir le Markdown en HTML et d’en générer la structure, dont les index. Lorsque l’on est prêt à publier un texte et donc à le copier sur un serveur, ces générateurs de site doivent être exécutés localement et préalablement afin de produire la nouvelle page ainsi que toutes ses relations aux autres[^5].
 
 Toutes ces approches ont évidemment un intérêt, et de nombreux universitaires s’en sont emparés afin de produire un site _ad hoc_ pour leur recherche, que ce soit un simple carnet ou même des sites plus complexes[^6]. En ce qui concerne les carnets, le monde universitaire francophone connaît bien Hypothèses, service proposé par l’infrastructure française Open Edition et fondée sur WordPress. Le succès de cette solution n’est pas à démontrer. Mais la possibilité de créer de nouveaux carnets a été temporairement suspendue en 2025, ce qui pourrait rendre l’issue de cette démarche plus incertaine à l’avenir[^7]. Et cela représente toujours un système très complexe et coûteux pour afficher bien souvent des pages de texte simples[^8].
 
 Ces solutions peuvent également induire une certaine dette technique pour les utilisateurs. Si leur grande diversité permet de trouver un système qui s’appuie sur des éléments de syntaxe d’un langage que l’on connaît déjà, par exemple Python, il devient parfois difficile de maîtriser tous les éléments de la chaîne éditoriale. Par exemple, le gestionnaire de paquets de Node.js, [NPM](https://fr.wikipedia.org/wiki/Npm), permet d’installer et de gérer les dépendances d’un projet Javascript. Il montre bien pédagogiquement toutes les dépendances obsolètes qui devraient être mises à jour, mais sans moyen pour l’utilisateur de résoudre ce problème facilement, et sans que soit exercé en amont un contrôle sur ces programmes qui peuvent contenir toutes sortes de surprises[^9]. L’installation sur son ordinateur de la structure à même de produire du contenu peut se révéler ainsi difficile à maintenir, mais aussi relativement complexe à évaluer en regard des conséquences pour son propre ordinateur.
 
-De plus, ces générateurs de sites statiques se reposent sur l’éditeur de code du client qui ne propose pas, par défaut, la capacité d’écrire des articles à plusieurs, de versionner simplement, ni même de pouvoir éventuellement exporter le contenu de son document sous la forme de PDF. Et surtout, pour le monde universitaire, de gérer nativement la bibliographie. Cela contrairement à l’éditeur de texte [Stylo](https://stylo.huma-num.fr).
+De plus, ces générateurs de sites statiques se reposent sur l’éditeur de code du client qui ne propose pas, par défaut, la capacité d’écrire des articles à plusieurs, de versionner simplement, ni même de pouvoir éventuellement exporter le contenu de son document sous la forme de PDF. Et surtout, pour le monde universitaire, de gérer nativement une bibliographie. Cela contrairement à l’éditeur de texte [Stylo](https://stylo.huma-num.fr).
 
 ### Intérêt de l’approche TowSty
 
@@ -46,7 +48,7 @@ C’est là, il nous semble, l’intérêt de l’approche portée par TowSty. D
 
 ### Objectifs de la leçon
 
-Cette leçon présente donc comment générer un site web depuis Stylo avec TowSty. Nous montrerons les avantages de ces deux prérequis au sein de développements spécifiques qui leur sont consacrés. Il n’est donc pas nécessaire de connaitre Stylo ou Julia. Nous verrons ensuite point par point comment réaliser le premier article de ce qui pourrait s’apparenter au site d’un carnet de recherche.
+Cette leçon présente donc comment générer un site web depuis Stylo avec TowSty. Nous commencerons par expliquer le fonctionnement et les avantages de Stylo et du langage Julia : leur connaissance n'est donc pas requise pour comprendre la leçon. Nous verrons ensuite point par point comment réaliser le premier article de ce qui pourrait s’apparenter au site d’un carnet de recherche.
 
 
 ## Stylo : un éditeur de texte sémantique et connectable
@@ -66,7 +68,7 @@ Depuis la page d’accueil de Stylo, vous avez deux options pour la création d�
 Les données stockées par Stylo (et donc par Huma-Num) font l’objet de sauvegardes via des opérations de redondance.
 </div>
 
-Le principe central de Stylo est de permettre une écriture et une édition sémantiques via des formats sources structurés, avec des possibilités d’export divers dans des formats adaptés à des usages personnels et professionnels. Les formats sources sont : Markdown pour les contenus, YAML pour les métadonnées et BibTeX pour les références bibliographiques. Les contenus sont ainsi qualifiés (niveaux de titres, paragraphes, listes, citations longues, liens hypertextes, images, références bibliographiques, etc.) afin de pouvoir être convertis vers les formats PDF, XML, DOCX ou ICML. La philosophie de Stylo repose ainsi sur plusieurs principes : l'écriture et l'édition structurées, l'utilisation de standards et de logiciels libres, l'interopérabilité pour l'interconnexion avec d'autres processus ou outils.
+Le principe central de Stylo est de permettre une écriture et une édition sémantiques via des formats sources structurés, avec des possibilités d’export divers dans des formats adaptés à des usages personnels et professionnels. Les formats sources sont : Markdown pour les contenus, YAML pour les métadonnées et BibTeX pour les références bibliographiques. Les contenus sont ainsi qualifiés (niveaux de titres, paragraphes, listes, citations longues, liens hypertextes, images, références bibliographiques, etc.) afin de pouvoir être convertis vers les formats PDF, XML, DOCX ou ICML. La philosophie de Stylo repose ainsi sur plusieurs principes : l'écriture et l'édition structurées, l'utilisation de standards et de logiciels libres, et l'interopérabilité pour l'interconnexion avec d'autres processus ou outils.
 
 La documentation de Stylo comporte une description des fonctionnalités (de la création de compte aux exports en passant par les options collaboratives), des tutoriels, des vidéos et une foire aux questions. Cette ressource est disponible en français, en anglais, et partiellement en espagnol : [https://stylo-doc.ecrituresnumeriques.ca](https://stylo-doc.ecrituresnumeriques.ca).
 
@@ -110,7 +112,7 @@ Nous avons fait le choix de développer TowSty avec le langage [Julia](https://j
 > (Avons-nous mentionné qu’il devrait être aussi rapide que C ?)  
 > [Jeff Bezanson, Stefan Karpinski, Viral B. Shah, Alan Edelman, Why We Created Julia](https://julialang.org/blog/2012/02/why-we-created-julia/)
 
-Julia est un langage facile d’accès. La syntaxe claire tire pleinement partie d’Unicode tout en étant assez proche des notations mathématiques. Il est également aisé de déployer des environnements et de partager des projets. La gestion des [types](https://fr.wikipedia.org/wiki/Type_(informatique)) est également plus aboutie que ce que propose Python. La communauté est certes plus réduite mais très dynamique et accueillante, et l’organisation de certains *packages* autour de grandes thématiques (l’analyse de réseaux ou les images par exemple) favorise les réflexions et les discussions sur les approches possibles. Enfin, c’est un langage qui permet des passerelles, puisqu’il est possible de faire des appels Python ou R directement depuis Julia : on n’est donc jamais bloqué si d’aventure il manquait une brique à notre projet.
+Julia est un langage facile d’accès. La syntaxe claire tire pleinement partie d’[Unicode](https://fr.wikipedia.org/wiki/Unicode) tout en étant assez proche des notations mathématiques. Il est également aisé de déployer des environnements et de partager des projets. La gestion des [types](https://fr.wikipedia.org/wiki/Type_(informatique)) est également plus aboutie que ce que propose Python. La communauté est certes plus réduite mais très dynamique et accueillante, et l’organisation de certains *packages* autour de grandes thématiques (l’analyse de réseaux ou les images par exemple) favorise les réflexions et les discussions sur les approches possibles. Enfin, c’est un langage qui permet des passerelles, puisqu’il est possible de faire des appels Python ou R directement depuis Julia : on n’est donc jamais bloqué si d’aventure il manquait une brique à notre projet.
 
 ### Installation
 
@@ -189,170 +191,9 @@ help?> println()
 
 Pour quitter le mode *Help*, on peut, au choix, utiliser la touche d’effacement arrière (`backspace`) ou la combinaison `crtl + c`. Cette dernière combinaison permet en outre de mettre fin à tout processus en cours d’exécution.
 
-### Les principaux littéraux et types
-
-Nous avons vu précédemment qu’une chaîne de caractères est placée entre guillemets doubles, mais bien évidemment ce n’est pas le seul type accepté par Julia. Les principaux types sont :
-
-- `"Hello Programming Historian!"::String` → chaîne de caractères
-- `'a'::Char` → caractère
-- `10::Int` → entier
-- `2.0::Float64` → flottant
-- `false::Bool` → booléen
-
-La syntaxe `litt::T` associe un littéral `litt` avec un type `T`. Julia repose sur un [typage dynamique](https://fr.wikipedia.org/wiki/Typage_dynamique). L’assertion de type n’est donc pas nécessaire, même si elle peut s’avérer utile pour optimiser son algorithme. On notera toutefois que les types sont toujours identifiés par une capitale et que Julia distingue les chaînes de caractères entre guillemets doubles (`"Hello"`), des caractères entre guillemets simples (`'a'`).
-
-Pour connaître le type d’un littéral, on utilise la fonction `typeof()` :
-
-```julia
-julia> typeof(99)
-Int64
-
-julia> typeof("10")
-String
-
-julia> typeof("a")
-String
-
-julia> typeof('a')
-Char
-```
-
-### Les variables
-
-Pour affecter une valeur à une variable on utilise l’opérateur `=` :
-```julia
-julia> s = "Hello, Julia!"
-"Hello, Julia!"
-
-julia> x = 10
-10
-```
-
-Et pour appeler une variable, il suffit de la nommer :
-```julia
-julia> println(s)
-Hello, Julia!
-
-julia> x + 9
-19
-```
-
-Les noms de variable peuvent contenir des lettres, des caractères Unicode, des chiffres (mais pas en première position), des underscores `_`, et même des points d’exclamation `!` (par convention placés à la fin des fonctions comportant des mutations). Certains caractères ou mots-clés sont toutefois réservés comme `@`, `struct`, `function`, `if`, `else`, etc.
-
-Enfin, les abréviations LaTeX peuvent être utilisées pour appeler certains caractères Unicode, il suffit de taper la commande LaTeX correspondante, puis d’appuyer sur tabulation.
-
-```julia
-julia> \alpha # + tabulation donne…
-julia> α
-```
-
-
-Attention toutefois, certains caractères cachent une fonction ou une constante :
-```julia
-julia> √16 # \sqrt + tabulation
-4.0
-
-julia> π # \pi + tabulation
-π = 3.1415926535897...
-```
-
-### Opérations courantes
-
-Comme tous les langages de programmation, Julia permet d’effectuer toutes les opérations et comparaisons courantes sur les chaînes de caractères ou les nombres.
-
-#### Les nombres
-
-Les opérateurs arithmétiques permettent d’effectuer les opérations mathématiques fondamentales sur les nombres. L’ordre d’évaluation des opérateurs suit les conventions mathématiques [PEMDAS](https://fr.wikipedia.org/wiki/Ordre_des_op%C3%A9rations).
-
-- `+` : addition
-- `-` : soustraction
-- `^` : puissance
-- `*` : multiplication
-- `/` : division
-- `\` : division inverse
-- `%` : modulo (reste d’une division euclidienne)
-
-```julia
-julia> 2*2+2^3-2/2
-11.0
-
-julia> 7%3
-1
-```
-
-#### Les chaînes de caractères
-
-Les concaténations s’effectuent avec l’opérateur `*` ou la fonction `string()`, et les interpolations avec l’opérateur `$`.
-
-```julia
-julia> forename, surname = "Victor", "Hugo" # affectation de deux variables
-("Victor", "Hugo")
-
-julia> string(forename, " ", surname) # concaténation avec string()
-"Victor Hugo"
-
-julia> forename * " " * surname # concaténation avec l’opérateur *
-"Victor Hugo"
-
-julia> "L’auteur du Dernier jour d’un condamné est $forename $surname." # interpolation
-"L’auteur du Dernier jour d’un condamné est Victor Hugo."
-```
-
-Les chaînes peuvent également être vues comme des tableaux (*array*) de caractères. Il devient alors très facile d’accéder à des sous-chaînes ou d’effectuer des itérations :
-
-```julia
-julia> fullname = string(forename, " ", surname)
-"Victor Hugo"
-
-julia> fullname[1:6] # les tableaux sont indexés à partir de 1 dans Julia
-"Victor"
-
-julia> typeof(fullname[1:6])
-String
-
-julia> typeof(fullname[1])
-Char
-
-julia> fullname[1] + 1 # V + 1 (lettre suivante)
-'W': ASCII/Unicode U+0057 (category Lu: Letter, uppercase)
-
-julia> foreach(println, fullname[1:6]) # itération
-V
-i
-c
-t
-o
-r
-```
-
-#### Comparaisons
-
-Enfin, les opérateurs de comparaison sont les mêmes que dans la plupart des langages de programmation, à savoir :
-
-- `==` : égalité
-- `===` : égalité stricte
-- `!=` : inégalité
-- `>` : plus grand
-- `>=`  : plus grand ou égal
-- `<` : plus petit
-- `<=` : plus petit ou égal
-
-```julia
-julia> x, y = 1, 1.0
-(1, 1.0)
-
-julia> x == y
-true
-
-julia> x === y
-false
-```
-
-Nous n’énumérons bien évidemment pas ici toutes les opérations possibles sur les nombres et les chaînes de caractères.
-
 ### Utiliser des paquets
 
-Lorsque les fonctions inclues dans la bibliothèque standard de Julia ne suffisent plus, il est nécessaire d’installer des paquets afin d’accéder à de nouvelles fonctionnalités. Le REPL de Julia dispose d’un mode *Package* accessible avec la touche `]` depuis l’invite de commandes `julia>`.
+Lorsque les fonctions incluses dans la bibliothèque standard de Julia ne suffisent plus, il est nécessaire d’installer des paquets afin d’accéder à de nouvelles fonctionnalités. Le REPL de Julia dispose d’un mode *Package* accessible avec la touche `]` depuis l’invite de commandes `julia>`.
 
 Les instructions `add` et `remove` permettent respectivement d’installer ou de supprimer un paquet, alors que `status` permet de lister les paquets disponibles. Pour installer le paquet [`Example.jl`](https://github.com/JuliaLang/Example.jl) :
 
@@ -425,36 +266,30 @@ TowSty rapproche Stylo de la fonction de [CMS](https://fr.wikipedia.org/wiki/Sys
 
 La logique de Stylo est de rattacher des articles à des corpus qui peuvent appartenir à différents espaces de travail. TowSty s’appuie profondément sur ces principes d’organisation et structure le site à partir de cette hiérarchie. Dans une première approche, vous pouvez donc créer un espace de travail spécifique qui accueillera votre site.
 
-Par défaut vous disposez d’un seul espace de travail : « Mon espace ». Pour créer un nouvel espace de travail, il faut se rendre dans « Espaces de travail », puis sélectionner « Tous les espaces », et enfin cliquer sur « Créer un espace de travail ».
+Par défaut vous disposez d’un seul espace de travail : « Mon espace ». Pour créer un nouvel espace de travail, il faut se rendre sur la page « [Gérer mes espaces](https://stylo.huma-num.fr/workspaces) », puis cliquer sur « Créer un espace de travail ».
 Il faut alors renseigner un nom, et facultativement une description et une couleur pour faciliter le repérage visuel.
 
 {% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-01.png" alt="vue de l’espace de travail de Stylo" caption="Figure 1. L’interface pour créer un nouvel espace de travail (workspace en anglais)" %}
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-02.gif" alt="champ de titre de l’espace de travail" caption="Figure 2. Donnez un titre à votre espace de travail" %}
+Vous pouvez désormais sélectionner votre nouvel espace de travail dans la barre de menu supérieure.
 
-Vous pouvez désormais sélectionner votre nouvel espace de travail.
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-02.png" alt="l’onglet espace de travail de stylo" caption="Figure 2. Votre nouvel espace de travail devrait apparaître dans l’onglet" %}
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-03.png" alt="l’onglet espace de travail de stylo" caption="Figure 3. Votre nouvel espace de travail devrait apparaître dans l’onglet" %}
+TowSty génère les différentes sections d’un site depuis les corpus. Les titres de ces corpus sont utilisés pour générer les intitulés du menu de navigation. Pour créer un corpus il faut aller dans l’onglet « Corpus », puis cliquer sur « Créer un corpus », puis renseigner au moins le titre, voire la description, et valider. Les corpus sont rattachés à l’espace de travail sélectionné précédemment.
 
-TowSty génère les différentes sections d’un site depuis les corpus. Les titres de ces corpus sont utilisés pour générer les intitulés du menu de navigation. Pour créer un corpus il faut aller dans l’onglet « Corpus », puis cliquer sur « Créer un corpus », puis renseigner au moins le titre, voire la description, et valider. Les corpus sont rattachés à un espace de travail.
-
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-04.gif" alt="champ de création d’un corpus" caption="Figure 4. Donnez un titre à votre corpus" %}
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-03.gif" alt="champ de création d’un corpus" caption="Figure 3. Créer un corpus" %}
 
 Vous pouvez donc créer un corpus « Actualités », par exemple.
 
 Finalement, vous pouvez créer votre premier article.
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-05.png" alt="vue sur la page de création d’article de stylo" caption="Figure 5. Créez le premier article de votre site" %}
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-04.gif" alt="vue sur la page de création d’article de stylo" caption="Figure 4. Créez le premier article de votre site" %}
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-06.png" alt="champ de titre pour l’article" caption="Figure 6. Donnez un titre à votre article" %}
+Et le rattacher à votre corpus : cliquez de nouveau sur le bouton « corpus », puis pour chaque corpus présent, cliquer sur « Choisir des articles », puis ajoutez vos articles avant de confirmer.
 
-Et le rattacher à votre corpus : déroulez les options, puis cochez les corpus souhaités pour chaque article.
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-05.gif" alt="rattachement au corpus" caption="Figure 5. Rattacher un article à un corpus" %}
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-07.gif" alt="rattachement au corpsu" caption="Figure 7. Cliquez sur la flêche  devant le nom de votre article pour faire apparaître le menu de rattachement aux corpus" %}
-
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-08.png" alt="boutton de rattachement" caption="Figure 8. Il ne vous reste qu’à cliquer sur le case à cocher pour le rattacher" %}
-
-À noter que depuis l’onglet « Corpus », et pour chaque corpus, il est possible de réorganiser l’ordre des articles,  il est également possible d’accéder aux articles _depuis_ les corpus.
+Depuis l'espace « corpus » il est possible de réorganiser l’ordre des articles, ou d’accéder directement à l'un d'entre eux.
 
 Les articles Stylo sont rédigés en Markdown. Il s’agit d’un langage de balisage léger, conçu d’abord pour produire des documents HTML sans avoir besoin d’écrire des balises verbeuses.
 À partir de signes typographiques non ambigus et relativement discrets, il est possible de rédiger un texte de façon sémantique : différents niveaux de titre, des paragraphes, des listes, des citations longues, de l’emphase, etc.
@@ -473,15 +308,15 @@ Les trois tirets `---` délimitent le début et la fin des métadonnées.
 
 Stylo propose également un _masque de saisie_ afin de simplifier la rédaction et éviter les erreurs de syntaxe. L’ajout d’une espace avant les deux points ou l’oubli de guillemets peuvent rendre impossible la lecture des métadonnées. 
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-09.png" alt="Masque de saisie" caption="Figure 9. Un premier entête avec le titre de notre article" %}
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-06.png" alt="Masque de saisie" caption="Figure 6. Un premier entête avec le titre de notre article" %}
 
 Pour TowSty, l’entête doit contenir au moins la métadonnée `title`. La valeur de cette clé est alors utilisée par TowSty pour générer le titre de l’article sur le site. Il n’est donc pas nécessaire de le préciser dans le corps du texte.
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-10.png" alt="rendu de l’entête YAML dans stylo" caption="Figure 10. Un premier entête avec le titre de notre article" %}
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-07.png" alt="rendu de l’entête YAML dans stylo" caption="Figure 7. Un premier entête avec le titre de notre article" %}
 
 Vous pouvez bien évidemment ajouter autant de paragraphes et de niveaux hiérarchiques que vous le souhaitez.
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-11.png" alt="article avec des niveaux hiérarchiques" caption="Figure 11. Ajouter en Markdown autant de texte et de paragraphes que vous le souhaitez" %}
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-08.png" alt="article avec des niveaux hiérarchiques" caption="Figure 8. Ajouter en Markdown autant de texte et de paragraphes que vous le souhaitez" %}
 
 L’un des avantages majeurs de cette démarche est de permettre une gestion native de la bibliographie avec l’implémentation par Stylo du format [BibTeX](https://fr.wikipedia.org/wiki/BibTeX) et de [Zotero](https://fr.wikipedia.org/wiki/Zotero). Le format BibTeX est un langage de description de références bibliographiques, qui est également fondé sur un principe de clé-valeur, par exemple :
 
@@ -501,13 +336,11 @@ L’un des avantages majeurs de cette démarche est de permettre une gestion nat
 
 Si vous utilisez Zotero pour organiser votre bibliographie, vous pouvez également connecter directement votre compte à Stylo afin d’ajouter un corpus bibliographique :
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-12.png" alt="bouton bibliographie" caption="Figure 12. Cliquez sur le panneau latéral de Stylo puis sur le menu bibliographie" %}
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-09.gif" alt="bouton bibliographie" caption="Figure 9. Cliquez sur le panneau latéral de Stylo puis sur le menu bibliographie" %}
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-13.png" alt="contenu du menu bibliographie" caption="Figure 13. C’est ici que vous pouvez lier votre texte à sa bibliographie Zotero" %}
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-10.png" alt="contenu du menu bibliographie" caption="Figure 10. C’est ici que vous pouvez lier votre texte à sa bibliographie Zotero" %}
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-14.png" alt="champ d’ajout de bibliographie" caption="Figure 14. C’est ici que vous pouvez lier votre texte à sa bibliographie Zotero" %}
-
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-15.png" alt="résultat de l’importation" caption="Figure 15. Les références bibliographiques apparaissent alors sur le côté" %}
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-11.png" alt="champ d’ajout de bibliographie" caption="Figure 11. Les références bibliographiques apparaissent alors sur le côté" %}
 
 Pour aller au plus vite depuis la page jusqu’à sa publication, vous pouvez citer l’intégralité des références présentes dans votre collection. Il suffit alors d’ajouter la mention `nocite` à votre entête YAML qui devient :
 
@@ -517,11 +350,11 @@ nocite: |
  @*
 ```
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-16.png" alt="vu sur l’entête YAML avec la référence pour les citations" caption="Figure 16. Ajoutez simplement cette référence et cette valeur" %}
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-12.png" alt="vu sur l’entête YAML avec la référence pour les citations" caption="Figure 12. Ajoutez simplement cette référence et cette valeur" %}
 
 La bibliographie apparaît alors à la fin de votre document lorsque vous prévisualisez votre page :
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-17.png" alt="vu sur la bibliographie" caption="Figure 17. La bibliographie est générée automatiquement" %}
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-13.png" alt="vu sur la bibliographie" caption="Figure 13. La bibliographie est générée automatiquement" %}
 
 Maintenant, vous devriez avoir rempli tous les prérequis pour pouvoir
 utiliser TowSty.
@@ -557,7 +390,13 @@ Grâce à Julia, vous bénéficiez de l’aide à la complétion du code et de l
 julia> newproject
 ```
 
-Le seul paramètre indispensable est le nom donné à votre site TowSty. C’est également depuis cette fonction que l’on peut choisir parmi les *templates* possibles. Nous souhaitons proposer à terme une large bibliothèque de choix pour le rendu. Pour lister les modèles disponibles vous pouvez taper :
+Le seul paramètre indispensable est le nom donné à votre site TowSty. 
+
+```julia
+julia> newproject("essai")
+```
+
+Par défaut `newproject()` utilise le *template* `jj`. Nous souhaitons proposer à terme une large bibliothèque de choix pour le rendu. Pour lister les modèles disponibles vous pouvez taper :
 
 ```julia
 julia> templates()
@@ -565,13 +404,7 @@ jj
 tinlizzie
 ```
 
-Par défaut `newproject()` utilise le *template* `jj`.
-
-```julia
-julia> newproject("essai")
-```
-
-Vous pouvez aussi spécifier avec le mot-clé `template` un autre modèle.
+Pour changer le *template* par défaut, vous pouvez spécifier le mot-clé `template`lors de la création du projet :
 
 ```julia
 julia> newproject("essai", template="tinlizzie")
@@ -589,7 +422,7 @@ julia> getworkspace("workspace_id", "clé_apistylo")
 
 Remplacez ces deux valeurs par les vôtres. TowSty va alors récupérer tous les articles et tous les corpus de cet espace de travail.
 
-{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-18.gif" alt="Récupération des données d’un espace de travail" caption="Figure 18. Récupération des données d’un espace de travail" %}
+{% include figure.html filename="fr-or-concevoir-web-avec-stylo-julia-14.gif" alt="Récupération des données d’un espace de travail" caption="Figure 14. Récupération des données d’un espace de travail" %}
 
 ### Génération du site hybride
 
@@ -605,13 +438,15 @@ pour que votre site soit généré. La fonction `toaster()` vous informe que vot
 [ Info: Listening on: 127.0.0.1:8888, thread id: 1
 ```
 
-Vous venez de réaliser ce que nous appelons un site hybride qui peut être mis à jour directement depuis l’interface en ligne du site. Mais cela ne représente qu’une des modalités que propose TowSty. Pour l’instant, afin d’en actualiser le contenu, lorsqu’un nouvel article est ajouté par exemple, vous pouvez utiliser la fonction :
+Vous pouvez à présent consulter votre site dans votre navigateur à l'adresse [`127.0.0.1:8888`](http://127.0.0.1:8888), en prenant soin de ne pas fermer votre console. Le premier accès peut prendre quelques secondes, le temps de la compilation. 
+
+Vous venez de réaliser ce que nous appelons un site hybride : il s'agit d'une application web qui n’est pas directement synchronisée à votre espace de travail Stylo, aucun fichier statique n'est écrit, mais elle peut être mise à jour directement depuis l’interface en ligne. Cela ne représente qu’une des modalités que propose TowSty. Pour l’instant, afin d’en actualiser le contenu, lorsqu’un nouvel article est ajouté par exemple, vous pouvez utiliser la fonction :
 
 ```julia
 julia> getworkspace("workspace_id", "clé_apistylo")
 ```
 
-qui va récupérer l’intégralité des données.
+en ayant au préalable interrompu la commande `toaster()` avec la combinaison de touches `crtl` + `c`, afin de récupérer l’intégralité des données.
 
 Il est également possible de générer un site statique. Dans ce cas, la seule fonction qui change est `toaster()` qui devient `bake()`.
 
@@ -626,6 +461,10 @@ julia> reload_data!()
 ```
 
 Les nouveaux articles ou même les nouveaux corpus sont alors prêts à être transférés. Vous pouvez entrevoir les possibilités de TowSty en consultant un modèle de site réalisé en 1h [ici](https://towsty.unepage.org/).
+
+## Approfondissement
+
+Nous verrons dans une prochaine leçon comment s’approprier le système de gabarits, mais aussi comment définir un routage qui permet ainsi de produire des sites à la structure plus complexe que ce que nous avons présenté ici.
 
 ## Remerciements
 

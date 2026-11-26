@@ -23,7 +23,7 @@ doi: XX.XXXXX/phen0000
 Ce tutoriel a pour objectif de présenter les étapes pour fine-tuner un modèle de classification d’images permettant de distinguer quatre catégories : les cartes géographiques, les dessins, les photographies et les tableaux. Le modèle sera ensuite appliqué sur des collections de données volumineuses, telles que des livres numériques contenant plusieurs milliers d’images.
 
 
-Ce modèle répond à un besoin du projet TOPAMA, repérer des cartes géo-historiques pour les intégrer. Le projet TOPAMA est un système d’information géographique couvrant l’Europe occidentale et l’Afrique du Nord entre l’Antiquité et le Moyen Âge. Il permet de localiser et d’analyser des données historiques (évêchés, monastères, territoires, etc.). Il propose plus d’une centaine de cartes géographiques au format ouvert, modifiables par tous les utilisateurs. Ces cartes géographiques sont en partie issues de la vectorisation de grandes séries documentaires, comme le livre *Géographie de la Gaule au VIe siècle*, écrit par Auguste Longnon (1878). Toutes les données intégrées font l’objet d’une validation scientifique rigoureuse.
+Ce modèle répond à un besoin du projet TOPAMA, repérer, dans de grands corpus de livres numériques, les cartes susceptibles d'enrichir ses sources. Le projet TOPAMA est un système d’information géographique couvrant l’Europe occidentale et l’Afrique du Nord entre l’Antiquité et le Moyen Âge. Il permet de localiser et d’analyser des données historiques (évêchés, monastères, territoires, etc.). Il propose plus d’une centaine de cartes géographiques au format ouvert, modifiables par tous les utilisateurs. Ces cartes géographiques sont en partie issues de la vectorisation de grandes séries documentaires, comme le livre *Géographie de la Gaule au VIe siècle*, écrit par Auguste Longnon (1878). Toutes les données intégrées font l’objet d’une validation scientifique rigoureuse.
 
 Ce modèle a avant tout une vocation pédagogique et vise à détailler les différentes étapes de création d’un modèle de classification, de la constitution du jeu de données à son évaluation et à son application sur un corpus d’images. Bien qu’une classification binaire distinguant les cartes des images non cartographiques puisse suffire à répondre aux besoins techniques du projet, le choix d’une classification en quatre catégories permet d’approfondir les mécanismes d’apprentissage du modèle. Cela vise notamment à mieux comprendre la manière dont le modèle exploite les caractéristiques visuelles des images et les erreurs de classification qu’il peut produire.
 
@@ -346,7 +346,7 @@ Yolo/
     └── Dessin/
 ```
 
-Le dossier **train** et ses sous-dossiers regroupent les images utilisées pour l’entraînement du modèle. Le dossier **val** contient les images destinées à comparer leurs performances et à sélectionner le modèle le plus performant. Enfin, le dossier **test** et ses sous-dossiers contiennent les images utilisées pour évaluer le modèle final sur des données inédites. Ces trois dossiers correspondent aux trois ensembles de données utilisés lors du fine-tuning d’un modèle : l’entraînement (train), la validation (val) et le test (test).
+Le dossier **train** et ses sous-dossiers regroupent les images utilisées pour l’entraînement du modèle. Le dossier **val** contient les images destinées à comparer ses performances et à sélectionner le modèle le plus performant. Enfin, le dossier **test** et ses sous-dossiers contiennent les images utilisées pour évaluer le modèle final sur des données inédites. Ces trois dossiers correspondent aux trois ensembles de données utilisés lors du fine-tuning d’un modèle : l’entraînement (train), la validation (val) et le test (test).
 
 ### 3.2 Construction du dataset :
 
@@ -464,11 +464,11 @@ Tableau 0.00, Photo 0.00, Dessin 0.00 : Aucune probabilité n’est attribuée a
 
 ## 4 Application du modèle à des EPUB téléchargés
 
-Nous procédons à l’application du modèle créé sur les fichiers EPUB téléchargés à l'aide d'un script Python. Ce script nous permettra de classer les images ainsi que leur score de confiance.
+Nous procédons à l’application du modèle créé sur les fichiers EPUB téléchargés à l'aide d'un script Python. Ce script nous permettra de classer chaque image et enregistrer sa catégorie prédite et son score de confiance.
 
 ### 4.1 Le projet Gutenberg
 
-Dans le cadre de ce tutoriel, nous testerons le contenu de deux livres d'histoire disponibles au format EPUB au sein du projet Gutenberg.
+Dans le cadre de ce tutoriel, nous examinerons le contenu de deux livres d'histoire disponibles au format EPUB au sein du projet Gutenberg.
 
 - [Cassell's History of England, Vol. 1](https://www.gutenberg.org/ebooks/48451)
 

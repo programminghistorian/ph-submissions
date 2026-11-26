@@ -616,6 +616,7 @@ Verificamos que los contrastes se aplicaron correctamente:
 contrasts(datos$group)
 contrasts(datos$tense)
 contrasts(datos$adverb_type)
+contrasts(datos$instruction)
 ```
 Con esta codificación, el punto de referencia es la gran media en la escala latente. Para los predictores de dos niveles `(±0,5)`, el coeficiente expresa la diferencia total entre ambos niveles; para `adverb_type` `(contr.sum(3)/2)`, cada coeficiente expresa el doble de la desviación de ese nivel respecto a la media global.
 

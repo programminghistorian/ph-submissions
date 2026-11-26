@@ -1,7 +1,6 @@
 ---
 title: "Création d'un modèle de classification d’images"
 slug: creer-modele-classification-images
-layout: lesson
 collection: lessons
 layout: lesson
 date: YYYY-MM-DD
@@ -21,12 +20,12 @@ avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
 
-Ce tutoriel a pour objectif de présenter les étapes permettant de fine-tuner un modèle de classification d’images permettant de distinguer quatre catégories : les cartes géographiques, les dessins, les photographies et les tableaux. Le modèle sera ensuite appliqué sur des collections de données volumineuses, telles que des livres numériques contenant plusieurs milliers d’images.
+Ce tutoriel a pour objectif de présenter les étapes pour fine-tuner un modèle de classification d’images permettant de distinguer quatre catégories : les cartes géographiques, les dessins, les photographies et les tableaux. Le modèle sera ensuite appliqué sur des collections de données volumineuses, telles que des livres numériques contenant plusieurs milliers d’images.
 
 
 Ce modèle répond à un besoin du projet TOPAMA, repérer des cartes géo-historiques pour les intégrer. Le projet TOPAMA est un système d’information géographique couvrant l’Europe occidentale et l’Afrique du Nord entre l’Antiquité et le Moyen Âge. Il permet de localiser et d’analyser des données historiques (évêchés, monastères, territoires, etc.). Il propose plus d’une centaine de cartes géographiques au format ouvert, modifiables par tous les utilisateurs. Ces cartes géographiques sont en partie issues de la vectorisation de grandes séries documentaires, comme le livre *Géographie de la Gaule au VIe siècle*, écrit par Auguste Longnon (1878). Toutes les données intégrées font l’objet d’une validation scientifique rigoureuse.
 
-Ce modèle a avant tout une vocation pédagogique et vise à détailler les différentes étapes de création d’un modèle de classification, de la constitution du jeu de données à son évaluation et à son application sur un corpus d’images. Bien qu’une classification binaire distinguant les cartes des images non cartographiques pourrait suffire à répondre aux besoins techniques du projet, le choix d’une classification en quatre catégories permet d’approfondir les mécanismes d’apprentissage du modèle. Cela vise notamment à mieux comprendre la manière dont le modèle exploite les caractéristiques visuelles des images et les erreurs de classification qu’il peut produire.
+Ce modèle a avant tout une vocation pédagogique et vise à détailler les différentes étapes de création d’un modèle de classification, de la constitution du jeu de données à son évaluation et à son application sur un corpus d’images. Bien qu’une classification binaire distinguant les cartes des images non cartographiques puisse suffire à répondre aux besoins techniques du projet, le choix d’une classification en quatre catégories permet d’approfondir les mécanismes d’apprentissage du modèle. Cela vise notamment à mieux comprendre la manière dont le modèle exploite les caractéristiques visuelles des images et les erreurs de classification qu’il peut produire.
 
 Dans ce tutoriel, nous constituerons donc un corpus d’images à partir de la base de connaissances Wikidata. Nous diviserons ce corpus en trois sous-ensembles nécessaires à la construction et à la validation du modèle (entraînement, validation et test). Puis nous appliquerons le modèle créé à un corpus d'images et nous évoquerons les limites et les biais de ce modèle créé. Le jeu de données utilisé dans le cadre de ce tutoriel reste toutefois trop limité et ne permet pas une utilisation en production. Les pistes d'amélioration possibles (augmentation de la taille et de la diversité du corpus) sont présentées dans la conclusion.
 
@@ -347,7 +346,7 @@ Yolo/
     └── Dessin/
 ```
 
-Le dossier **train** et ses sous-dossiers regroupent les images utilisées pour l’entraînement des modèles. Le dossier **val** contient les images destinées à comparer leurs performances et à sélectionner le modèle le plus performant. Enfin, le dossier **test** et ses sous-dossiers contiennent les images utilisées pour évaluer le modèle final sur des données inédites. Ces trois différents dossiers correspondent aux trois ensemble de données utilisés lors du fine-tuning d’un modèle : l’entraînement (train), la validation (val) et le test (test).
+Le dossier **train** et ses sous-dossiers regroupent les images utilisées pour l’entraînement du modèle. Le dossier **val** contient les images destinées à comparer leurs performances et à sélectionner le modèle le plus performant. Enfin, le dossier **test** et ses sous-dossiers contiennent les images utilisées pour évaluer le modèle final sur des données inédites. Ces trois dossiers correspondent aux trois ensembles de données utilisés lors du fine-tuning d’un modèle : l’entraînement (train), la validation (val) et le test (test).
 
 ### 3.2 Construction du dataset :
 
@@ -404,14 +403,14 @@ L’entraînement, effectué sur une carte graphique (NVIDIA RTX 2060 SUPER, 8 G
 
 {% include figure.html filename="fr-or-creer-modele-classification-images-07.png" alt="Capture d'écran de la sortie console de la fin de l'entraînement du modèle" caption="Figure 8. Fin de l'entraînement du modèle" %}
 
-À l'issue de chaque epoch, le modèle est évalué sur le jeu de validation. La bibliothèque YOLO conserve automatiquement les poids correspondant à l'epoch ayant obtenu les meilleures performances. Ce modèle est sauvegardé dans le fichier best.pt, qui sera utilisé pour l'évaluation finale sur le jeu de test ( le fichier runs/classify/train7/weights/best.pt ).
+À l'issue de chaque epoque, le modèle est évalué sur le jeu de validation. La bibliothèque YOLO conserve automatiquement les poids correspondant à l'epoch ayant obtenu les meilleures performances. Ce modèle est sauvegardé dans le fichier best.pt, qui sera utilisé pour l'évaluation finale sur le jeu de test ( le fichier runs/classify/train7/weights/best.pt ).
 
-Le graphique produit par la bibliothèque YOLO à la fin du fine-tuning permet d'analyser le meilleur modèle à l'aide de quatre différents indicateurs.
+Le graphique produit par la bibliothèque YOLO à la fin du fine-tuning permet d'analyser le meilleur modèle à l'aide de différents indicateurs.
 
 {% include figure.html filename="fr-or-creer-modele-classification-images-09.png" alt="Les graphiques produits par la bibliothèque YOLO" caption="Figure 9. Les graphiques produits par la bibliothèque YOLO" %}
 
 L’accuracy Top-1 est le pourcentage d’images que le modèle classe correctement.
-L’accuracy Top-5 est le pourcentage d’images dont la bonne catégorie figure parmi les cinq premières prédictions du modèle. Cet indicateur n'est pas utile dans le cadre de notre tutoriel, puisque notre modèle de classification ne comporte que quatre catégories
+L’accuracy Top-5 est le pourcentage d’images dont la bonne catégorie figure parmi les cinq premières prédictions du modèle. Cet indicateur n'est pas utile dans le cadre de notre tutoriel, puisque notre modèle de classification ne comporte que quatre catégories.
 
 Les champs train/loss et val/loss permettent de suivre l’évolution de l’erreur du modèle pendant l’apprentissage et la validation.
 
@@ -439,7 +438,7 @@ Dans notre cas, les résultats montrent une faible confusion entre les catégori
 
 ### 3.6 Application du modèle sur une nouvelle image
 
-Une fois l’entraînement terminé, nous testons les performances du modèle sur une carte géographique représentative : une [carte de l'Europe](https://magrit.cnrs.fr/example_map_europe_1.png).
+Une fois l’entraînement terminé, nous testons les performances du modèle sur une carte géographique : une [carte de l'Europe](https://magrit.cnrs.fr/example_map_europe_1.png).
 
 {% include figure.html filename="fr-or-creer-modele-classification-images-12.jpg" alt="Image de test." caption="Figure 12. Image de test" %}
 
@@ -465,7 +464,7 @@ Tableau 0.00, Photo 0.00, Dessin 0.00 : Aucune probabilité n’est attribuée a
 
 ## 4 Application du modèle à des EPUB téléchargés
 
-Nous procédons à l’application du modèle créé sur les fichiers EPUB téléchargés à l'aide d'un script Python. Ce script nous permettra d'identifier les images classées comme carte ainsi que leur score de confiance.
+Nous procédons à l’application du modèle créé sur les fichiers EPUB téléchargés à l'aide d'un script Python. Ce script nous permettra de classer les images ainsi que leur score de confiance.
 
 ### 4.1 Le projet Gutenberg
 
@@ -504,7 +503,7 @@ wget https://www.gutenberg.org/ebooks/50710.epub3.images
 unzip 50710.epub3.images -d Epub/50710.epub3
 ```
 
-Après extraction, les répertoires OEBPS associés à chaque fichier EPUB contiendront un total de 1 862 images. Ce corpus constituera le jeu de données sur lequel nous appliquerons le modèle de classification.
+Après extraction, les répertoires OEBPS associés à chaque fichier EPUB contiendront un total de 1 862 images sur lequel nous appliquerons le modèle de classification.
 
 
 ### 4.3 Le script Python pour le traitement
@@ -591,7 +590,7 @@ Pour améliorer les performances de notre modèle, il est nécessaire d’enrich
 
 - en intégrant davantage d’exemples variés.
 
-- en prenant en compte les cas limites et en intégrant les erreurs de classification détectées dans la première version du modèle, afin de ré-entraîner une version améliorée sur l’ensemble de ces données.
+- en prenant en compte les cas limites et en intégrant les erreurs de classification repérées avec l'utilisation de la première version du modèle, afin de ré-entraîner une version améliorée sur l’ensemble de ces données.
 
 Des jeux de données complémentaires peuvent être utilisés comme [Gallica : jeu d'images annotées pour la classification](https://api.bnf.fr/fr/node/181) ou [Nubis – Carte (Version 1). https://doi.org/10.34847/NKL.9E96QOS6](https://doi.org/10.34847/NKL.9E96QOS6).
 

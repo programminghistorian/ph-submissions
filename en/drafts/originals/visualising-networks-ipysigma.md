@@ -1,6 +1,6 @@
 ---
-title:  "Visualising networks in library catalogue metadata using iPySIGMA and Llama Extract"
-slug: visualising-networks-ipysigma-llama-extract
+title:  "Visualising networks in library catalogue metadata using iPySIGMA"
+slug: visualising-networks-ipysigma
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD
@@ -122,7 +122,7 @@ The data files are provided in JSON format, a plain-text format well suited to r
 
 Given the focus of this lesson, we are particularly interested in how publications are attributed to subjects. For this reason, we queried not only the general subject heading assigned to each book, but also the corresponding higher-level (broader) heading and lower-level (narrower) subdivisions. All publications in this lesson's dataset have been assigned a subject heading drawn from the [Brinkman Thesaurus](https://www.begrippenxl.nl/brinkman/nl/index) keywords. This thesaurus is hierarchically structured, meaning that subject headings may have a broader, umbrella term and/or a more specific, narrower subject description. This layered structure provides richer data for visualising the relationships between book titles and subject headings. The dataset includes all books for which at least one broader subject label contains the term _wetenschap_ ('science').
 
-{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-01.png" alt="Diagram showing the book 'De Familie Bernoulli in de geschiedenis der wiskunde' (1896) connected to the preferred subject 'Wiskunde, algemeen'. That subject branches to the broader subject 'Wiskunde en natuurwetenschappen' and the narrower subject 'Biografie', which each connect to other books, including 'Liste alphabétique de la correspondance de Christiaan Huygens' (1886)." caption="Figure 1. Example of how a book is linked to other books through its preferred, broader and narrower subject headings." %}
+{% include figure.html filename="en-or-visualising-networks-ipysigma-01.png" alt="Diagram showing the book 'De Familie Bernoulli in de geschiedenis der wiskunde' (1896) connected to the preferred subject 'Wiskunde, algemeen'. That subject branches to the broader subject 'Wiskunde en natuurwetenschappen' and the narrower subject 'Biografie', which each connect to other books, including 'Liste alphabétique de la correspondance de Christiaan Huygens' (1886)." caption="Figure 1. Example of how a book is linked to other books through its preferred, broader and narrower subject headings." %}
 
 A single JSON entry, describing one book, looks as follows:
 
@@ -233,7 +233,7 @@ order by ?jaar
 
 Two elements of this query are worth highlighting. Line 21 contains the filter statement that restricts results to records classified under the broader label "wetenschap" (science), while the filter on line 34 restricts results to the relevant time frame, in this case 1800–1825.
 
-You don't need to run the queries yourself, as we have made the datasets available for this lesson in the _Programming Historian_ repository: [`nbt_in_json.zip`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/nbt_in_json.zip).
+You don't need to run the queries yourself, as we have made the datasets available for this lesson in the _Programming Historian_ repository: [`nbt_in_json.zip`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma/nbt_in_json.zip).
 
 ### Software/tool
 
@@ -255,11 +255,11 @@ Before turning to the hands-on part of this lesson, it is useful to review a few
 
 At its core, a network graph charts a set of relations between data points. These data points, the items being linked to one another, are called **nodes**. The relations between them, in essence a list of statements that point x is connected to point y, are called **edges**.
 
-{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-02.png" alt="Simple diagram of circles labeled 'Node' connected by arrows labeled 'Edge', with a large node branching into smaller nodes." caption="Figure 2. The basic building blocks of a network are nodes connected by directed edges." %}
+{% include figure.html filename="en-or-visualising-networks-ipysigma-02.png" alt="Simple diagram of circles labeled 'Node' connected by arrows labeled 'Edge', with a large node branching into smaller nodes." caption="Figure 2. The basic building blocks of a network are nodes connected by directed edges." %}
 
 In our use case, we are visualising the relations between book titles and subject headings, both of which are available in the bibliographic metadata described in the previous section. Book titles and subject headings will therefore form the nodes in our network visualisation, with edges representing the connections between them.
 
-{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-03.png" alt="Diagram with a 'Book Title' node pointing to a 'Preferred Label' node. The preferred label branches into a 'Broader Label' and a 'Narrower Label', and each of those points to two further book nodes." caption="Figure 3. Generalised model of the network structure, in which book titles connect to other books via preferred, broader and narrower subject labels." %}
+{% include figure.html filename="en-or-visualising-networks-ipysigma-03.png" alt="Diagram with a 'Book Title' node pointing to a 'Preferred Label' node. The preferred label branches into a 'Broader Label' and a 'Narrower Label', and each of those points to two further book nodes." caption="Figure 3. Generalised model of the network structure, in which book titles connect to other books via preferred, broader and narrower subject labels." %}
 
 
 #### Attributes
@@ -288,7 +288,7 @@ In this lesson, nodes, edges and the visualisation itself are defined in Python,
 - [Sigma.js](https://www.sigmajs.org/): a JavaScript library for large-scale network visualisation
 - [ipysigma](https://github.com/medialab/ipysigma): a Python wrapper around Sigma.js that enables network visualisation within a Python environment
 
-All materials related to this lesson are available to download from [the _Programming Historian_ repository](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract).
+All materials related to this lesson are available to download from [the _Programming Historian_ repository](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma).
 
 #### Data files
 
@@ -309,12 +309,12 @@ All materials related to this lesson are available to download from [the _Progra
 
 2 Jupyter notebooks to help you follow the lesson code step by step:
 
-- [`nbt.py`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/nbt.py)
-- [`nbt-from-marcxml.ipynb`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/nbt-from-marcxml.ipynb): an alternative notebook that uses the sample MARC XML file as input.
+- [`nbt.py`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma/nbt.py)
+- [`nbt-from-marcxml.ipynb`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma/nbt-from-marcxml.ipynb): an alternative notebook that uses the sample MARC XML file as input.
 
 ### Script
 
-An executable Python script ([`nbt.py`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/nbt.py)) is also provided. It runs the full process, taking the eight JSON files as input and generating the corresponding visualisations as standalone HTML files, one for each data file.
+An executable Python script ([`nbt.py`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma/nbt.py)) is also provided. It runs the full process, taking the eight JSON files as input and generating the corresponding visualisations as standalone HTML files, one for each data file.
 
 #### Directory structure
 
@@ -596,21 +596,21 @@ if __name__ == "__main__":
 ```
 
 Running the script will produce eight HTML files in your `data/out` folder, one for each time segment. Each file is a self-contained, interactive network graph that can be opened in any modern web browser. But wouldn't it be great to be able to visualise how the graph changes over time using a time slider?
-For those of you who are already intrigued, we can reveal that the final section of the [`nbt.ipynb`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/nbt.py) notebook demonstrates how to add a time slider to the graphs. This allows you to cycle through all eight graphs interactively.
+For those of you who are already intrigued, we can reveal that the final section of the [`nbt.ipynb`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma/nbt.py) notebook demonstrates how to add a time slider to the graphs. This allows you to cycle through all eight graphs interactively.
 
-{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-04.jpg" alt="Screenshot of a time range slider set to 1925 above a dense directed graph of 1,206 nodes and 3,836 edges. Nodes are coloured by preferred subject according to a legend on the right, with larger subject nodes labelled, such as 'inleiding', 'geschiedenis' and 'strategie'." caption="Figure 4. The time range slider filters the network by publication year, shown here set to 1925." %}
+{% include figure.html filename="en-or-visualising-networks-ipysigma-04.jpg" alt="Screenshot of a time range slider set to 1925 above a dense directed graph of 1,206 nodes and 3,836 edges. Nodes are coloured by preferred subject according to a legend on the right, with larger subject nodes labelled, such as 'inleiding', 'geschiedenis' and 'strategie'." caption="Figure 4. The time range slider filters the network by publication year, shown here set to 1925." %}
 
 #### Navigating through the network graph
 
 Now that the nodes and edges have been defined, we can begin to move around the visualization with the _ipysigma_ features. Open the first HTML file (`nbt_index_1800-1825.html`) that was generated. Your web browser will now display a network graph that shows the relationships between the books and the subject headings. In the uppermost righthand corner, Box A in the image, is information about the graph you are looking at including the number of nodes and edges. 
 
-{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-05.png" alt="Screenshot of a directed graph of 491 nodes and 1,667 edges with the subject node 'inleiding' selected, its connecting edges highlighted, and four interface areas outlined and labelled A–D. Panel C lists the node’s attributes, such as preferred, narrower and broader subjects, and its degree metrics." caption="Figure 5. Overview of the interactive network visualization interface, with (A) graph statistics, (B) navigation and layout controls, (C) the node information panel, and (D) export options." %}
+{% include figure.html filename="en-or-visualising-networks-ipysigma-05.png" alt="Screenshot of a directed graph of 491 nodes and 1,667 edges with the subject node 'inleiding' selected, its connecting edges highlighted, and four interface areas outlined and labelled A–D. Panel C lists the node’s attributes, such as preferred, narrower and broader subjects, and its degree metrics." caption="Figure 5. Overview of the interactive network visualization interface, with (A) graph statistics, (B) navigation and layout controls, (C) the node information panel, and (D) export options." %}
 
 Each graph has a natural state where all the nodes and edges are layered on top of each other. Before trying to analyze the graph in this state, run the layout animation by clicking the play button. In the image above, it is located in upper right hand corner in the box labelled B. It is recommended that before you interact with the graph that you click the play button to run the layout animation. This allows the graph to settle into a more readable arrangement, where closely related nodes cluster together and less connected groups move farther apart. In network visualization, this is known as a force-directed layout. Moving the nodes through the layout animation also helps to see the physical distance between different topics. The closer together or more tightly clustered they are, the more they are related or prominently connected. Because some of the book titles and subject labels may appear in another language, Google Chrome’s translation feature can help translate the text while you navigate the network.
 
-{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-06.jpg" alt="Screenshot of a directed graph whose colored nodes are scattered evenly across a square area and overlaid with a dense web of grey edges, making structure hard to see. A few large subject nodes are labelled, such as 'inleiding', 'strategie' and 'biografie', and a legend on the right lists the subject colours." caption="Figure 6. A network of 766 nodes and 2,484 edges in its initial state, before a layout algorithm is applied." %}
+{% include figure.html filename="en-or-visualising-networks-ipysigma-06.jpg" alt="Screenshot of a directed graph whose colored nodes are scattered evenly across a square area and overlaid with a dense web of grey edges, making structure hard to see. A few large subject nodes are labelled, such as 'inleiding', 'strategie' and 'biografie', and a legend on the right lists the subject colours." caption="Figure 6. A network of 766 nodes and 2,484 edges in its initial state, before a layout algorithm is applied." %}
 
-{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-07.jpg" alt="Screenshot of a directed graph of 766 nodes and 2,484 edges in which nodes have formed distinct coloured clusters, such as 'militaire wetenschappen', 'inleiding', 'algemeen' and 'geneeskundige wetenschappen', connected by grey edges. A pause button indicates the layout is running, and a legend lists the subject colours." caption="Figure 7. The same 766-node network after running the layout algorithm, with books grouped into coloured clusters around their shared subjects." %}
+{% include figure.html filename="en-or-visualising-networks-ipysigma-07.jpg" alt="Screenshot of a directed graph of 766 nodes and 2,484 edges in which nodes have formed distinct coloured clusters, such as 'militaire wetenschappen', 'inleiding', 'algemeen' and 'geneeskundige wetenschappen', connected by grey edges. A pause button indicates the layout is running, and a legend lists the subject colours." caption="Figure 7. The same 766-node network after running the layout algorithm, with books grouped into coloured clusters around their shared subjects." %}
 
 Each point is a node, whether it be an individual book title (with a book icon) or a controlled subject heading (with a label icon). If a book has a subject heading assigned, there is a line drawn between that subject and the book. These lines are edges, which illuminate the relationships. Subject headings are also connected by subject labels from the JSON file data in the form of a preferred subject label, a broader subject label, and a narrower subject label to help contextualize the more controlled vocabulary of the subject headings.
 
@@ -631,7 +631,7 @@ The network graph visualisation that is a result of this activity is meant to be
 
 Looking at the eight graphs, we start to see patterns emerge and how the collection changes over time. A good starting point is looking at the size and density of the collection under the topic _wetenschap_ (science). In this example, over the years, the network gets denser and denser which makes sense with basic knowledge about scientific advancement over the nineteenth and twentieth century. Density may reflect more items in the dataset, more detailed subject cataloguing, or both.
 
-{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-08.jpg" alt="Screenshot of a network arranged into many small grey clusters, with the highlighted node 'computermethoden' connected by a few lines to nearby books and to the larger subject node 'wetenschappelijke technieken'. The information panel lists its subjects and a degree of 20." caption="Figure 8. Selecting the subject 'computermethoden' in a clustered network of 3,348 nodes shows its links to related books and to the subject 'wetenschappelijke technieken'." %}
+{% include figure.html filename="en-or-visualising-networks-ipysigma-08.jpg" alt="Screenshot of a network arranged into many small grey clusters, with the highlighted node 'computermethoden' connected by a few lines to nearby books and to the larger subject node 'wetenschappelijke technieken'. The information panel lists its subjects and a degree of 20." caption="Figure 8. Selecting the subject 'computermethoden' in a clustered network of 3,348 nodes shows its links to related books and to the subject 'wetenschappelijke technieken'." %}
 
 If you are comparing graphs chronologically, as we have done here, you can also follow a single subject heading or individual work across time. For example, searching for _Computermethoden_ (Computer Methods) shows that this subject heading does not appear in the networks before 1950. Its later emergence may reflect the development of computing as a recognized field, changes in publishing, or the adoption of new subject terminology by cataloguers. By contrast, _Algemene literatuurwetenschap_ (General Literary Studies) appears in some of the earlier graphs even though literary studies did not become established as a formal academic field until the late nineteenth century. This somewhat biased classification may indicate retrospective cataloguing, later authority control, or the reclassification of older books using more modern subject headings. The graph cannot determine which explanation is correct, but it makes these chronological inconsistencies visible and identifies records or cataloguing practices that may warrant closer investigation.
 
@@ -649,11 +649,11 @@ Many more hours could be spent looking at each graphs minute details and compari
 
 While this example uses metadata from publically available datasets, the same process could be applied to an institutional specific dataset made up of MARC records from that collection. Extracting those records and applying similar analysis through these steps could help better understand how your local collections connect and cluster.
 
-As an added bonus, a [`nbt-from-marcxml.ipynb`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/nbt-from-marcxml.ipynb) notebook is provided that contains some boilerplate code for use with input files in MARCXML format. The notebook uses the sample MARCXML file as input [`salinger_example.marcxml`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma-llama-extract/salinger_example.marcxml), creates the network data, and generates an interactive graph using _ipysigma_, in a manner similar to that of the main code of this lesson.
+As an added bonus, a [`nbt-from-marcxml.ipynb`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma/nbt-from-marcxml.ipynb) notebook is provided that contains some boilerplate code for use with input files in MARCXML format. The notebook uses the sample MARCXML file as input [`salinger_example.marcxml`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualising-networks-ipysigma/salinger_example.marcxml), creates the network data, and generates an interactive graph using _ipysigma_, in a manner similar to that of the main code of this lesson.
 
 As a test case, the authors extracted MARC XML files from their library management system, Koha. This process was fairly simple, there exists a form in Koha where an administrator can fill out which records should be pulled. This will different depending on the library management system. In this example, the authors pulled records related to Criminal Justice using Library of Congress call numbers HV. These records were exported as XML and the initial code was simplified to rework the three layers of `pref_subject`, `narrower_subject`, and `broader_subject` since the subject headings were not organized this way directly from the catalog. From there the network was created. 
 
-{% include figure.html filename="en-or-visualising-networks-ipysigma-llama-extract-09.jpg" alt="Screenshot of a large network of mostly greyed-out nodes, with the selected subject node in the centre and lines connecting it to highlighted book titles such as 'Kids who commit adult crimes' and 'Trapped in a vice'. The information panel shows the node’s attributes and an outdegree of 40." caption="Figure 9. Selecting the subject 'juvenile justice, administration of -- united states' in a network of 13,826 nodes highlights the 40 books linked to it." %}
+{% include figure.html filename="en-or-visualising-networks-ipysigma-09.jpg" alt="Screenshot of a large network of mostly greyed-out nodes, with the selected subject node in the centre and lines connecting it to highlighted book titles such as 'Kids who commit adult crimes' and 'Trapped in a vice'. The information panel shows the node’s attributes and an outdegree of 40." caption="Figure 9. Selecting the subject 'juvenile justice, administration of -- united states' in a network of 13,826 nodes highlights the 40 books linked to it." %}
 
 The scope and size of a library’s material will differ. As seen in the example image, although the author’s library is not a research library, the criminal justice collections under the HV call number were still quite extensive. As such, the number of nodes and edges obfuscates some of the helpful visual analysis that the Exact Sciences collection had. To truly be helpful for collection development, the authors would iterate on the initial graph and add some limiters to their scope to make the visualization more helpful or perhaps make multiple graphs. 
 

@@ -386,7 +386,7 @@ matrix <- datos |>
   y = "Juicio de aceptabilidad") +
   theme_bw(base_size = 11) +
   theme(axis.text.x = element_text(angle = 55, hjust = 1),
-        strip.background = element_rect(fill = "grey90"))
+        strip.background = element_rect(fill = "grey90"),
         plot.title = element_text(hjust = 0.5))
  matrix
  ```       

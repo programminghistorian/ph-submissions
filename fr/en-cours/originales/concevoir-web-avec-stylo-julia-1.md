@@ -96,7 +96,7 @@ Stylo comporte bien d'autres fonctionnalités, la documentation les décrit en d
 Stylo est d’abord accessible via une interface web, mais il est aussi possible de récupérer les différents contenus via une API GraphQL. Cette API, [documentée](https://stylo-doc.ecrituresnumeriques.ca/fr/tutoriels/api-graphql/), offre plusieurs fonctionnalités, et notamment le fait de pouvoir transférer tous les documents d’un espace de travail, ou tous les documents de tous les corpus d’un espace de travail par exemple. Il est ainsi possible de connecter des logiciels ou programmes à cette API pour télécharger les contenus souhaités, sans passer par l’interface web. C’est précisément cette API qu’utilise TowSty pour générer un site web à partir de Stylo.
 
 <div class="alert alert-warning">
-L’utilisation sécurisée de l’API de Stylo nécessite l'utilisation d’une clé qui autorise les applications tierces à récupérer/modifier des contenus. Cette clé est disponible sur la page de profil de Stylo (dans le menu supérieur, cliquer sur votre nom/pseudonyme), sous "Clé d'accès à l'API".
+L’utilisation sécurisée de l’API de Stylo nécessite l'utilisation d’une clé qui autorise les applications tierces à récupérer/modifier des contenus. Cette clé est disponible sur la page de profil de Stylo (dans le menu supérieur, cliquer sur votre nom/pseudonyme), sous « Clé d'accès à l'API ».
 
 <b>Attention</b> : cette clé doit rester secrète et ne doit pas être partagée avec quelqu’un d’autre ou sur un espace public en ligne.
 </div>

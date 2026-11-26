@@ -1,0 +1,279 @@
+"DATA_RETENTION": {
+
+    "phrases": [
+        "store data",
+        "log data",
+        "retain data",
+        "data retention",
+        "storage of data",
+    ],
+
+    "patterns": [
+
+        [
+            {"LEMMA": "store"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","information","content","prompt","input"]}}
+        ],
+
+        [
+            {"LEMMA": "log"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","activity","usage","query"]}}
+        ],
+
+        [
+            {"LEMMA": "retain"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","information","content"]}}
+        ],
+
+        [
+            {"LEMMA": {"IN": ["restrict","restriction"]}},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["use","access","distribution"]}}
+        ],
+
+        [
+            {"LEMMA": "obligation"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["retain","store","protect"]}}
+        ]
+    ]
+    },
+
+    "DATA_OWNERSHIP": {
+
+    "phrases": [
+        "license to use submitted content",
+        "retain rights to user data",
+        "ownership of data",
+        "controller",
+    ],
+
+    "patterns": [
+
+        [
+            {"LEMMA": "license"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LEMMA": "use"}
+        ],
+
+        [
+            {"LEMMA": "retain"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["rights","ownership"]}}
+        ],
+
+        [
+            {"LEMMA": "own"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": "data"}
+        ],
+
+        [
+            {"LEMMA": "restriction"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["ownership","use"]}}
+        ],
+
+        [
+            {"LEMMA": "obligation"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["ownership","control"]}}
+        ],
+     
+        [
+            {"LEMMA": "controller"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["rights", "data", "information"]}}
+        ]
+    ]
+    },
+
+    "SECURITY": {
+
+    "phrases": [
+        "personal data",
+        "third party",
+        "data security",
+    ],
+
+    "patterns": [
+
+        [
+            {"LEMMA": "install"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["software","system"]}}
+        ],
+
+        [
+            {"LOWER": "personal"},
+            {"OP": "?"},
+            {"LOWER": "data"}
+        ],
+
+        [
+            {"LEMMA": "distribute"},
+            {"OP": "?"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","information","content"]}}
+        ],
+
+        [
+            {"LOWER": "third"},
+            {"OP": "?"},
+            {"LOWER": "party"}
+        ]
+    ]
+    },
+
+    "COPYRIGHT": {
+
+    "phrases": [
+        "data protection",
+        "reuse of data",
+        "resale of content",
+        "copyright ownership",
+    ],
+
+    "patterns": [
+
+        [
+            {"LEMMA": "own"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["copyright","data","content"]}}
+        ],
+
+        [
+            {"LOWER": "data"},
+            {"OP": "?"},
+            {"LOWER": "protection"}
+        ],
+
+        [
+            {"LEMMA": "reuse"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","content","material"]}}
+        ],
+
+        [
+            {"LEMMA": "resale"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","content","service"]}}
+        ],
+
+        [
+            {"LEMMA": "output"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","content"]}}
+        ]
+    ]
+    },
+
+    "ACCESSIBILITY": {
+
+    "phrases": [
+        "accessibility standard",
+        "accessibility compliance",
+        "prohibited act", 
+        "permitted use",
+    ],
+
+    "patterns": [
+
+        [
+            {"LEMMA": "accessibility"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["standard","requirement","compliance"]}}
+        ], 
+        [
+            {"LEMMA": "prohibited"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["act","use"]}}
+        ]
+    ]
+    },
+
+    "LIABILITY": {
+
+    "phrases": [
+        "reasonable effort",
+        "force majeure event",
+        "limitation of liability",
+    ],
+
+    "patterns": ["patterns": [
+
+        [
+            {"LEMMA": "indemnify"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["party","provider","company"]}}
+        ],
+
+        [
+            {"LEMMA": "indemnity"}
+        ],
+
+        [
+            {"LEMMA": "protect"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["against","from"]}}
+        ],
+
+        [
+            {"LOWER": "reasonable"},
+            {"OP": "?"},
+            {"LOWER": "effort"}
+        ],
+
+        [
+            {"LEMMA": "enforce"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["agreement","terms","rights"]}}
+        ],
+
+        [
+            {"LEMMA": "terminate"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["service","agreement","access"]}}
+        ],
+
+        [
+            {"LEMMA": "recover"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["damage","loss","cost"]}}
+        ],
+
+        [
+            {"LEMMA": "control"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["data","system","service"]}}
+        ],
+
+        [
+            {"LEMMA": "breach"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["contract","agreement","terms"]}}
+        ],
+
+        [
+            {"LEMMA": "damage"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["loss","liability"]}}
+        ],
+
+        [
+            {"LOWER": "force"},
+            {"OP": "?"},
+            {"LOWER": {"IN": ["against","from"]}}
+        ],
+
+    ]

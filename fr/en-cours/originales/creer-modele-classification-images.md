@@ -24,9 +24,9 @@ doi: XX.XXXXX/phen0000
 Ce tutoriel a pour objectif de présenter les étapes permettant de fine-tuner un modèle de classification d’images permettant de distinguer quatre catégories : les cartes géographiques, les dessins, les photographies et les tableaux. Le modèle sera ensuite appliqué sur des collections de données volumineuses, telles que des livres numériques contenant plusieurs milliers d’images.
 
 
-Ce modèle répond à un besoin du projet TOPAMA. Le projet TOPAMA est un système d’information géographique couvrant l’Europe occidentale et l’Afrique du Nord entre l’Antiquité et le Moyen Âge. Il permet de localiser et d’analyser des données historiques (évêchés, monastères, territoires, etc.). Il propose plus d’une centaine de cartes géographiques au format ouvert, modifiables par tous les utilisateurs. Ces cartes géographiques sont en partie issues de la vectorisation de grandes séries documentaires, comme le livre *Géographie de la Gaule au VIe siècle*, écrit par Auguste Longnon (1878). Toutes les données intégrées font l’objet d’une validation scientifique rigoureuse.
+Ce modèle répond à un besoin du projet TOPAMA, repérer des cartes géo-historiques pour les intégrer. Le projet TOPAMA est un système d’information géographique couvrant l’Europe occidentale et l’Afrique du Nord entre l’Antiquité et le Moyen Âge. Il permet de localiser et d’analyser des données historiques (évêchés, monastères, territoires, etc.). Il propose plus d’une centaine de cartes géographiques au format ouvert, modifiables par tous les utilisateurs. Ces cartes géographiques sont en partie issues de la vectorisation de grandes séries documentaires, comme le livre *Géographie de la Gaule au VIe siècle*, écrit par Auguste Longnon (1878). Toutes les données intégrées font l’objet d’une validation scientifique rigoureuse.
 
-Pour parvenir à cet objectif, nous développerons un modèle prototype de classification d’images capable de distinguer quatre catégories visuelles propres (Cartes, Dessins, Photographies et Tableaux). Ce modèle a avant tout une vocation pédagogique et vise à détailler les différentes étapes de création d’un modèle de classification, de la constitution du jeu de données à son évaluation et à son application sur un corpus d’images. Bien qu’une classification binaire distinguant les cartes des images non cartographiques pourrait suffire à répondre aux besoins techniques du projet, le choix d’une classification en quatre catégories permet d’approfondir les mécanismes d’apprentissage du modèle. Cela vise notamment à mieux comprendre la manière dont le modèle exploite les caractéristiques visuelles des images et les erreurs de classification qu’il peut produire.
+Ce modèle a avant tout une vocation pédagogique et vise à détailler les différentes étapes de création d’un modèle de classification, de la constitution du jeu de données à son évaluation et à son application sur un corpus d’images. Bien qu’une classification binaire distinguant les cartes des images non cartographiques pourrait suffire à répondre aux besoins techniques du projet, le choix d’une classification en quatre catégories permet d’approfondir les mécanismes d’apprentissage du modèle. Cela vise notamment à mieux comprendre la manière dont le modèle exploite les caractéristiques visuelles des images et les erreurs de classification qu’il peut produire.
 
 Dans ce tutoriel, nous constituerons donc un corpus d’images à partir de la base de connaissances Wikidata. Nous diviserons ce corpus en trois sous-ensembles nécessaires à la construction et à la validation du modèle (entraînement, validation et test). Puis nous appliquerons le modèle créé à un corpus d'images et nous évoquerons les limites et les biais de ce modèle créé. Le jeu de données utilisé dans le cadre de ce tutoriel reste toutefois trop limité et ne permet pas une utilisation en production. Les pistes d'amélioration possibles (augmentation de la taille et de la diversité du corpus) sont présentées dans la conclusion.
 
@@ -43,9 +43,9 @@ Pour suivre ce tutoriel, il est recommandé de disposer d’une carte graphique 
 
 ## 1 Création du modèle de classification
 
-L’objectif est de développer un modèle capable de classifier automatiquement les images. Pour cela, nous avons choisi de nous appuyer sur un modèle de classification de la famille **YOLO**, proposé par **Ultralytics**, plutôt que de construire et d’entraîner un réseau de neurones à partir de zéro. Ces modèles de classification sont pré-entraînés sur le corpus [ImageNet](https://www.image-net.org/index.php);  corpus d'images annotées destinée à la recherche en vision par ordinateur.
+L’objectif est de développer un modèle capable de classifier automatiquement les images. Pour cela, nous avons choisi de nous appuyer sur un modèle de classification de la famille **YOLO**, proposé par **Ultralytics**, plutôt que de construire et d’entraîner un réseau de neurones à partir de zéro. Ces modèles de classification sont pré-entraînés sur le corpus [ImageNet](https://www.image-net.org/index.php);  corpus d'images annotées destiné à la recherche en vision par ordinateur.
 
-Le modèle utilisé, `yolo26n-cls.pt`, est un modèle pré-entraîné à **poids ouverts (*open weights*)** destiné à la classification d’images pour un usage généraliste ( voitures, chats, humains )
+Le modèle utilisé, `yolo26n-cls.pt`, est un modèle pré-entraîné à **poids ouverts (*open weights*)** destiné à la classification d’images pour un usage généraliste ( voitures, chats, aliments )
 
 Pour chaque image, le modèle fine-tuné attribuera une probabilité d’appartenance à quatre nouvelles catégories :
 
@@ -87,7 +87,7 @@ La bibliothèque ultralytics est nécessaire à la création du modèle et la bi
 
 ### 1.2 Validation de l'installation et test du modèle par défaut
 
-Pour vérifier que l'installation s'est déroulée correctement, nous allons utiliser le modèle de classification par défaut. Ce modèle peut reconnaître une large variété de catégories d'images pour un usage industriel (voitures, chat, humain, etc).
+Pour vérifier que l'installation s'est déroulée correctement, nous allons utiliser le modèle de classification par défaut. Ce modèle peut reconnaître une large variété de catégories d'images pour un usage généraliste (voitures, chats, aliments, etc).
 
 **Exécution d'un test de démonstration**
 
@@ -322,6 +322,8 @@ Data/
 
 ## 3 Création de notre modèle à partir des images issues de Wikimedia Commons
 
+Dans cette partie, nous répartissons les images en trois jeux (entraînement, validation, test), nous lançons le fine-tuning du modèle, puis nous l'évaluons sur des images inédites.
+
 ### 3.1 Préparation et organisation du dataset
 
 Pour entraîner efficacement notre modèle de classification, il est essentiel d’organiser les données selon une structure séparant les images destinées à l’entraînement de celles réservées à la validation et au test.
@@ -333,7 +335,7 @@ Yolo/
 │   ├── Carte/
 │   ├── Tableau/
 │   └── Dessin/
-├──val/                 # Dossier pour les données de validation
+├── val/                 # Dossier pour les données de validation
 │   ├── Photo/
 │   ├── Carte/
 │   ├── Tableau/
@@ -398,11 +400,11 @@ Il existe de nombreux autres [paramètres](https://docs.ultralytics.com/fr/usage
 
 ### 3.4 Suivi de l'entraînement et évaluation du modèle
 
-L’entraînement, effectué sur une carte graphique (NVIDIA RTX 2060 SUPER, 8 Go de VRAM), a requis 108 époques et 1,2 heures de calcul.
+L’entraînement, effectué sur une carte graphique (NVIDIA RTX 2060 SUPER, 8 Go de VRAM), a requis 108 époques et 1,2 heure de calcul.
 
 {% include figure.html filename="fr-or-creer-modele-classification-images-07.png" alt="Capture d'écran de la sortie console de la fin de l'entraînement du modèle" caption="Figure 8. Fin de l'entraînement du modèle" %}
 
-Plusieurs modèles ont été entraînés, et la bibliothèque YOLO identifie automatiquement celui présentant les meilleures performances ( le fichier runs/classify/train7/weights/best.pt ).
+À l'issue de chaque epoch, le modèle est évalué sur le jeu de validation. La bibliothèque YOLO conserve automatiquement les poids correspondant à l'epoch ayant obtenu les meilleures performances. Ce modèle est sauvegardé dans le fichier best.pt, qui sera utilisé pour l'évaluation finale sur le jeu de test ( le fichier runs/classify/train7/weights/best.pt ).
 
 Le graphique produit par la bibliothèque YOLO à la fin du fine-tuning permet d'analyser le meilleur modèle à l'aide de quatre différents indicateurs.
 
@@ -413,7 +415,7 @@ L’accuracy Top-5 est le pourcentage d’images dont la bonne catégorie figure
 
 Les champs train/loss et val/loss permettent de suivre l’évolution de l’erreur du modèle pendant l’apprentissage et la validation.
 
-Une loss qui diminue indique que le modèle s’améliore, et une accuracy Top-1 qui monte vers 1 indique qu’il classe de mieux en mieux les images du jeu de validation/
+Une loss qui diminue indique que le modèle s’améliore, et une accuracy Top-1 qui monte vers 1 indique qu’il classe de mieux en mieux les images du jeu de validation.
 
 ### 3.5 Évaluation finale du modèle
 
@@ -425,7 +427,7 @@ yolo task=classify mode=val \
     data=Yolo/ \
     split=test
 ```
-{% include figure.html filename="fr-or-creer-modele-classification-images-13.png" alt="Lancement de la commande d'évaluation="Figure 10. Lancement de la commande d'évaluation" %}
+{% include figure.html filename="fr-or-creer-modele-classification-images-13.png" alt="Lancement de la commande d'évaluation" caption="Figure 10. Lancement de la commande d'évaluation" %}
 
 Cette commande génère plusieurs graphiques permettant d’analyser les performances du modèle, dont une matrice de confusion, disponible dans le répertoire runs/classify/val.
 
@@ -463,7 +465,7 @@ Tableau 0.00, Photo 0.00, Dessin 0.00 : Aucune probabilité n’est attribuée a
 
 ## 4 Application du modèle à des EPUB téléchargés
 
-Nous procédons à l’application du modèle créé sur les EPUB téléchargés à l'aide d'un script Python.
+Nous procédons à l’application du modèle créé sur les fichiers EPUB téléchargés à l'aide d'un script Python. Ce script nous permettra d'identifier les images classées comme carte ainsi que leur score de confiance.
 
 ### 4.1 Le projet Gutenberg
 
@@ -501,10 +503,6 @@ wget https://www.gutenberg.org/ebooks/50710.epub3.images
 
 unzip 50710.epub3.images -d Epub/50710.epub3
 ```
-
-Après extraction, les répertoires OEBPS propres à chaque EPUB contiendront au total 1 862 images.
-
-C'est sur ce corpus d'images que nous appliquerons le modèle.
 
 Après extraction, les répertoires OEBPS associés à chaque fichier EPUB contiendront un total de 1 862 images. Ce corpus constituera le jeu de données sur lequel nous appliquerons le modèle de classification.
 

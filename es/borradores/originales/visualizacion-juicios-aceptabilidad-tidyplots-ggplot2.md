@@ -538,7 +538,7 @@ Después de ajustar los modelos e interpretar sus coeficientes, podemos obtener 
 ```r
 emm1 <- emmeans(modelo1.2, ~ group | tense * adverb_type)
 emm1
-pairs(emm1, adjust = "bonferroni")
+pairs(emm1, adjust = "bonferroni", cross.adjust = "bonferroni")
 ```
 Los resultados muestran las diferencias entre los dos grupos de participantes en todas las combinaciones del PPC y PPS con los modificadores adverbiales: 
 

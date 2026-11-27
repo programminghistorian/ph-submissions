@@ -44,7 +44,7 @@ sequence: 2
  Dans la leçon originale, l'auteur étudie deux exemples : une carte postale de Federico García Lorca et un manuscrit de Soledad Acosta de Samper. Pour cette version française, deux documents français ont été choisis : une carte postale de Frédéric Mistral à Camille Saint-Saëns, et un extrait du manuscrit des <em>Maîtres sonneurs</em> de George Sand.
  </p>
  <p>
- Cette leçon comporte la même démarche que celle de M. Vaughan : présentation des documents, encodage, explications, code complet, et transformation en HTML avec OxGarage.
+ Cette leçon comporte la même démarche que celle de M. Vaughan : présentation des documents, encodage, explications, code complet, et transformation en HTML avec TEIGarage.
  </p>
  <p>
  Enfin, cette leçon est une première contribution à Programming Historian. Elle a été rédigée avec beaucoup de plaisir, et l'espoir est qu'elle soit utile au lecteur.
@@ -53,25 +53,25 @@ sequence: 2
 
 ## Introduction
 
-Cette leçon est la deuxième partie de la leçon d'encodage des textes en langage de balisage [TEI (Text Encoding Initiative)](https://tei-c.org/). La [première](https://programminghistorian.org/fr/lecons/introduction-a-tei-1) a consisté en une brève introduction au concept même d'encodage et son importance dans les Humanités numériques, ainsi qu'aux documents [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language) et TEI.
+Cette leçon est la deuxième partie de la leçon d'encodage des textes en langage de balisage [TEI (Text Encoding Initiative)](https://tei-c.org/). La [première](https://programminghistorian.org/fr/lecons/introduction-a-tei-1) consistait en une brève introduction au concept même d'encodage et son importance dans les Humanités numériques, ainsi qu'aux documents [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language) et TEI.
 
-Dans le but d'illustrer les possibilités offertes par la TEI, nous étudierons ici en détail deux exemples d'encodage de textes brefs. 
+Afin d'illustrer les possibilités offertes par la TEI, nous étudierons ici en détail deux exemples d'encodage de textes brefs. 
 
-Bien qu'en principe les deux leçons soient indépendantes dans le sens où l'une peut être comprise sans l'autre, il est vivement recommandé de réviser [la première partie](https://programminghistorian.org/fr/lecons/introduction-a-tei-1) avant de continuer avec les exemples de celle-ci.
+Même si, en principe, ces deux leçons sont indépendantes l’une de l’autre, dans la mesure où elles peuvent être comprises séparément, il est recommandé de revoir [la première partie](https://programminghistorian.org/fr/lecons/introduction-a-tei-1) avant de passer aux exemples abordés dans celle-ci.
 
 
 ### Le logiciel que nous utiliserons
 
-De la même manière que dans la première partie, nous utiliserons l'éditeur de texte [Visual Studio Code](https://code.visualstudio.com/) (abrégé en VS Code) et le *plugin* ou extension [XML Complete](https://marketplace.visualstudio.com/items?itemName=rogalmic.vscode-xml-complete). Les détails de l'installation sont disponibles dans la première leçon.
+Comme dans la première partie, nous utiliserons l'éditeur de texte [Visual Studio Code](https://code.visualstudio.com/) (abrégé en VS Code) et le *plugin* ou l'extension [XML Complete](https://marketplace.visualstudio.com/items?itemName=rogalmic.vscode-xml-complete). Les détails de l'installation sont disponibles dans [la première partie](https://programminghistorian.org/fr/lecons/introduction-a-tei-1) de la leçon.
 
 
 ## Premier exemple : une carte postale
 
-Considérons [la carte postale](https://commons.wikimedia.org/wiki/File:Carte_postale_de_Fr%C3%A9d%C3%A9ric_Mistral_%C3%A0_Camille_Saint-Sa%C3%ABns_(manuscrit_autographe)_-_btv1b531998565_(1_of_4).jpg) suivante, de Frédéric Mistral :
+Prenons [la carte postale](https://commons.wikimedia.org/wiki/File:Carte_postale_de_Fr%C3%A9d%C3%A9ric_Mistral_%C3%A0_Camille_Saint-Sa%C3%ABns_(manuscrit_autographe)_-_btv1b531998565_(1_of_4).jpg) suivante, de Frédéric Mistral :
 
 {% include figure.html filename="fr-tr-introduction-a-tei-2-01.jpg" alt="Visual description of figure image" caption="Figure 1. Carte postale de Frédéric Mistral à Camille Saint-Saëns." %}
 
-Les cartes postales ont deux faces : le recto, qui contient une image, et le verso, qui contient l'adresse, le timbre et le corps du message.
+Les cartes postales ont deux faces : le recto, qui contient une image, et le verso, qui contient l'adresse du destinataire, le timbre et le corps du message.
 
 En TEI, nous pourrions utiliser deux éléments [`<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html) (« division ») pour chaque face. Ensuite, nous nous servirions de l’attribut [`@type`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.typed.html) (« type »)[^1] pour les distinguer avec les valeurs `recto` et `verso` respectivement, comme suit : 
 
@@ -88,20 +88,20 @@ En TEI, nous pourrions utiliser deux éléments [`<div>`](https://tei-c.org/rele
 </text>
 ```
 
-Pour ce premier exemple, nous aborderons le verso de la carte postale et non son recto, car ce dernier contient l'image et nous ne pourrions pas l'encoder adéquatement pour l'instant. Nous pouvons donc identifier six parties structurelles dans notre carte postale : 
+Pour ce premier exemple, nous nous concentrerons sur le verso. Le recto contient une image et nous ne pourrions pas l'encoder de manière adéquate pour l'instant. Nous pouvons donc identifier six parties structurelles dans notre carte postale : 
 
 - La date
 - Le message
 - La signature
-- Le lieu
-- L'adresse
+- Le lieu d'expédition
+- L'adresse du destinataire
 - Les timbres
 
-Notre encodage ne doit pas être une représentation graphique du texte (c'est-à-dire qu'il ne doit pas simuler à quoi il ressemble), mais une représentation sémantique[^2].
+Notre encodage ne doit pas être une représentation graphique du texte (c'est-à-dire qu'il ne doit pas imiter son aspect visuel), mais une représentation sémantique[^2].
 
-Ainsi, nous utiliserons six éléments `<div>` pour chaque partie de notre carte postale, sans tenir compte de leur localisation spatiale exacte.
+Ainsi, nous utiliserons six éléments `<div>` pour chaque partie de notre carte postale, sans tenir compte de leur position spatiale exacte.
 
-Si leur localisation nous intéressait, nous utiliserions les éléments TEI prévus à cet effet pour encoder des [facsimilés numériques](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX), mais ce n'est pas notre cas pour l'instant. Nous commencerons donc par la structure suivante :
+Si leur position nous intéressait, nous pourrions utiliser les éléments TEI prévus pour encoder des [facsimilés numériques](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX), mais nous ne nous en occuperons pas pour l’instant. Nous pouvons donc commencer avec la structure suivante :
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -109,15 +109,19 @@ Si leur localisation nous intéressait, nous utiliserions les éléments TEI pr�
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title>Carte postale de Frédéric Mistral à Camille Saint-Saëns</title>
-        <author>Frédéric Mistral</author>
-      </titleStmt>
+  <title>Carte postale de Frédéric Mistral à Camille Saint-Saëns</title>
+  <author>Frédéric Mistral</author>
+  <respStmt>
+    <resp>Encodage TEI</resp>
+    <persName>Y. Nataly Garzón Díaz</persName>
+  </respStmt>
+</titleStmt>
       <publicationStmt>
         <publisher>Y. Nataly Garzón Díaz</publisher>
-        <pubPlace>Rouen, France</pubPlace>
-        <date>2026</date>
+        <date when="2026">2026</date>
+<pubPlace>Mondeville, France</pubPlace>
         <availability>
-          <p>Libre utilisation non commercial - Réseau des bibliothèques-ludothèques de Dieppe</p>
+          <p>Ce fichier d'encodage TEI peut être utilisé à des fins pédagogiques et non commerciales.</p>
         </availability>
       </publicationStmt>
       <sourceDesc>
@@ -127,11 +131,14 @@ Si leur localisation nous intéressait, nous utiliserions les éléments TEI pr�
             <title>Carte postale de Frédéric Mistral à Camille Saint-Saëns</title>
             <imprint>
               <pubPlace>Maillane, France</pubPlace>
-              <date>1907</date>
+              <publisher>Ville de Dieppe</publisher>
+<date when="1907">1907</date>
             </imprint>
           </monogr>
-          <ref target="https://gallica.bnf.fr/ark:/12148/btv1b531998565"/>
-        </biblStruct>
+          <ref target="https://patrimoine.dieppe.fr/notices-gallica/item/16072-carte-postale-de-frederic-mistral-a-camille-saint-saens-manuscrit-autographe"/>
+        <note type="rights">
+<p>Mentions légales : Les documents de la bibliothèque numérique du réseau des bibliothèques-ludothèques de Dieppe sont des reproductions d’œuvres tombées dans le domaine public provenant des collections de la bibliothèque. Conformément à la loi n°78-753 du 17 juillet 1978 (version en vigueur au 16 juillet 2012 ) : La réutilisation non-commerciale est libre et gratuite dans le respect de la législation en vigueur et notamment du maintien de la mention de source : Réseau des bibliothèques-ludothèques de Dieppe.</p>
+</note></biblStruct>
       </sourceDesc>
     </fileDesc>
   </teiHeader>
@@ -147,10 +154,10 @@ Si leur localisation nous intéressait, nous utiliserions les éléments TEI pr�
         <!-- Ici, on écrira la signature. -->
       </div>
       <div type="lieu">
-        <!-- Ici, on indiquera le lieu. -->
+        <!-- Ici, on indiquera le lieu d'expédition. -->
       </div>
       <div type="adresse">
-        <!-- Ici, on écrira l'adresse. -->
+        <!-- Ici, on écrira l'adresse du destinataire. -->
       </div>
       <div type="timbres">
         <!-- Ici, on placera le texte correspondant aux timbres et aux cachets postaux. -->
@@ -160,13 +167,13 @@ Si leur localisation nous intéressait, nous utiliserions les éléments TEI pr�
 </TEI>
 ```
 
-Le [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html) de cet encodage contient les données de base de la carte postale (disponibles sur le site de [Wikimedia Commons](https://commons.wikimedia.org/)), ainsi que les métadonnées de l'encodage.
+Le [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html) de cet encodage contient les données de base de la carte postale (disponible sur le site de Gallica), ainsi que les métadonnées relatives à l’encodage.
 
-À l'intérieur de [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html) (texte) nous avons inclus les six éléments `<div>` correspondants aux parties identifiées et nous leur avons attribué l'attribut  `@type` avec les valeurs `date`, `message`, `signature`, `lieu`, `adresse`, et `timbres`.
+Dans [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html) (texte) nous avons inclus les six éléments `<div>` correspondant aux parties que nous avons identifiées et auxquels nous avons adjoint l’attribut `@type` avec les valeurs `date`, `message`, `signature`, `lieu`, `adresse`, et `timbres`.
 
-L'utilisation de cet attribut est facultative, donc il n'est pas nécessaire pour que l'encodage soit valide. Néanmoins, il est utile pour distinguer les différents types de `<div>` de notre encodage, et cela vaut la peine de préciser le type de chacun (comme nous l'avons fait) uniquement si nous pensons nous servir de cette information dans un but précis. Par exemple, si nous souhaitons extraire seulement les informations relatives aux timbres.
+L'utilisation de cet attribut est facultative, il n'est donc pas nécessaire pour que l'encodage soit valide. Néanmoins, il permet de distinguer les différents types de `<div>` dans notre encodage. Il n’est utile de préciser le type de chacun comme nous l’avons fait que si nous comptons utiliser ces informations à des fins précises, par exemple, si nous souhaitons extraire seulement les informations relatives aux timbres.
 
-Au lieu de l'attribut  `@type`, il est également courant d'utiliser l'attribut global [`@n`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.html#tei_att.n), qui sert à numéroter les éléments du même type.
+Il est également courant d'utiliser l'attribut global [`@n`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.html#tei_att.n), qui sert à numéroter les éléments du même type, plutôt que l’attribut @type.
 
 Par exemple : 
 
@@ -183,10 +190,10 @@ Par exemple :
       <!-- Ici, la signature. -->
     </div>
     <div n="4">
-      <!-- Ici, le lieu. -->
+      <!-- Ici, le lieu d'expédition. -->
     </div>
     <div n="5">
-      <!-- Ici, le texte de l'adresse. -->
+      <!-- Ici, le texte de l'adresse du destinataire. -->
     </div>
     <div n="6">
       <!-- Et enfin, le texte correspondant aux timbres et aux cachets. -->
@@ -199,7 +206,7 @@ Cependant, dans le cas de notre carte postale, l’attribut `@type` nous convien
 
 ### Notre premier `<div>` : la date
 
-Comme il s'agit d'un texte manuscrit, il est important de tenir compte des sauts de ligne. Nous utiliserons l’élément autofermant [`<lb/>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lb.html) (*line break* ou saut à la ligne[^3]). Nous commencerons donc l'encodage par notre premier `<div>` :
+Comme il s'agit d'un texte manuscrit, il est important de tenir compte des sauts de ligne. Pour cela, nous utiliserons l’élément autofermant [`<lb/>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lb.html) (*line break* ou saut à la ligne[^3]). Nous commencerons donc l'encodage de notre premier `<div>` :
 
 ```xml
 <div type="date">
@@ -506,35 +513,42 @@ Le [code complet](https://github.com/programminghistorian/ph-submissions/tree/gh
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
- <teiHeader>
- <fileDesc>
- <titleStmt>
- <title>Carte postale de Frédéric Mistral à Camille Saint-Saëns</title>
- <author>Frédéric Mistral</author>
- </titleStmt>
- <publicationStmt>
- <publisher>Y. Nataly GARZON DIAZ</publisher>
- <pubPlace>Mondeville, France</pubPlace>
- <date>2026</date>
- <availability>
- <p>Œuvre en libre accès sous licence Creative Commons Attribution 4.0 International.</p>
- </availability>
- </publicationStmt>
- <sourceDesc>
- <biblStruct>
- <monogr>
- <author>Frédéric Mistral</author>
- <title>Carte postale de Frédéric Mistral à Camille Saint-Saëns</title>
- <imprint>
- <pubPlace>Maillane, France</pubPlace>
- <date>1907</date>
- </imprint>
- </monogr>
- <ref target="https://gallica.bnf.fr/ark:/12148/btv1b531998565"/>
- </biblStruct>
- </sourceDesc>
- </fileDesc>
- </teiHeader>
+   <teiHeader>
+    <fileDesc>
+      <titleStmt>
+  <title>Carte postale de Frédéric Mistral à Camille Saint-Saëns</title>
+  <author>Frédéric Mistral</author>
+  <respStmt>
+    <resp>Encodage TEI</resp>
+    <persName>Y. Nataly Garzón Díaz</persName>
+  </respStmt>
+</titleStmt>
+      <publicationStmt>
+        <publisher>Y. Nataly Garzón Díaz</publisher>
+        <date when="2026">2026</date>
+<pubPlace>Mondeville, France</pubPlace>
+        <availability>
+          <p>Ce fichier d'encodage TEI peut être utilisé à des fins pédagogiques et non commerciales.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <biblStruct>
+          <monogr>
+            <author>Frédéric Mistral</author>
+            <title>Carte postale de Frédéric Mistral à Camille Saint-Saëns</title>
+            <imprint>
+              <pubPlace>Maillane, France</pubPlace>
+              <publisher>Ville de Dieppe</publisher>
+<date when="1907">1907</date>
+            </imprint>
+          </monogr>
+          <ref target="https://patrimoine.dieppe.fr/notices-gallica/item/16072-carte-postale-de-frederic-mistral-a-camille-saint-saens-manuscrit-autographe"/>
+        <note type="rights">
+<p>Mentions légales : Les documents de la bibliothèque numérique du réseau des bibliothèques-ludothèques de Dieppe sont des reproductions d’œuvres tombées dans le domaine public provenant des collections de la bibliothèque. Conformément à la loi n°78-753 du 17 juillet 1978 (version en vigueur au 16 juillet 2012 ) : La réutilisation non-commerciale est libre et gratuite dans le respect de la législation en vigueur et notamment du maintien de la mention de source : Réseau des bibliothèques-ludothèques de Dieppe.</p>
+</note></biblStruct>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
  <text>
  <body>
  <div type="date">
@@ -607,7 +621,7 @@ Bien que VS Code nous indique que notre code est syntaxiquement valide en XML, n
 
 Pour ce deuxième exemple, nous étudierons un extrait du manuscrit de _Les Maîtres sonneurs_, un roman de George Sand publié en 1857. Ce fragment est intéressant pour nos fins, car il introduit des corrections, des ratures et une citation, entre autres particularités textuelles.
 
-L'image de la première du manuscrit, où figure le titre de l'œuvre et de la veillée, est la suivante :
+L'image de la première page du manuscrit, où figure le titre de l'œuvre et de la veillée, est la suivante :
 
 {% include figure.html filename="fr-tr-introduction-a-tei-2-03.png" alt="Visual description of figure image" caption="Figure 3. Page 1 du manuscrit des Maîtres sonneurs : titre, mention du second volume et de la 16e veillée." %}
 
@@ -627,13 +641,13 @@ Dans notre cas, le  `<teiHeader>` de ce document sera le suivant :
  <author>George Sand</author>
  </titleStmt>
  <publicationStmt>
- <publisher>Y. Nataly GARZON DIAZ</publisher>
- <pubPlace>Mondeville, France</pubPlace>
- <date>2026</date>
- <availability>
- <p>Œuvre en libre accès sous licence Creative Commons Attribution 4.0 International.</p>
- </availability>
- </publicationStmt>
+        <publisher>Y. Nataly Garzón Díaz</publisher>
+        <date when="2026">2026</date>
+<pubPlace>Mondeville, France</pubPlace>
+        <availability>
+          <p>Ce fichier d'encodage TEI peut être utilisé à des fins pédagogiques et non commerciales.</p>
+        </availability>
+      </publicationStmt>
  <sourceDesc>
  <biblStruct>
  <monogr>
@@ -641,11 +655,12 @@ Dans notre cas, le  `<teiHeader>` de ce document sera le suivant :
  <title>Les Maîtres sonneurs</title>
  <imprint>
  <pubPlace>Paris</pubPlace>
- <date>1857</date>
+ <date when="1857">1857</date>
  </imprint>
  </monogr>
- <ref target="https://gallica.bnf.fr/ark:/12148/btv1b531998565"/>
- </biblStruct>
+ <ref target="https://gallica.bnf.fr/ark:/12148/btv1b525107009/f23.item.r=george%20sand%20les%20maitres%20sonneurs/>
+ <note>Conditions d'utilisation : Cette œuvre est tombée dans le domaine public et provient des collections de la BnF. Ces contenus sont considérés, en vertu du code des relations entre le public et l’administration, comme étant des informations publiques et leur réutilisation s'inscrit dans le cadre des dispositions prévues aux articles L. 321-1 à L. 327-1 de ce code.</note>
+</biblStruct>
  </sourceDesc>
  </fileDesc>
 </teiHeader>
@@ -989,13 +1004,13 @@ Après tout ce voyage grâce à la main de George Sand, nous pouvons présenter 
  <author>George Sand</author>
  </titleStmt>
  <publicationStmt>
- <publisher>Y. Nataly Garzón Díaz</publisher>
- <pubPlace>Rouen, France</pubPlace>
- <date>2026</date>
- <availability>
- <p>Œuvre en libre accès sous licence Creative Commons Attribution 4.0 International.</p>
- </availability>
- </publicationStmt>
+        <publisher>Y. Nataly Garzón Díaz</publisher>
+        <date when="2026">2026</date>
+<pubPlace>Mondeville, France</pubPlace>
+        <availability>
+          <p>Ce fichier d'encodage TEI peut être utilisé à des fins pédagogiques et non commerciales.</p>
+        </availability>
+      </publicationStmt>
  <sourceDesc>
  <biblStruct>
  <monogr>
@@ -1003,14 +1018,15 @@ Après tout ce voyage grâce à la main de George Sand, nous pouvons présenter 
  <title>Les Maîtres sonneurs</title>
  <imprint>
  <pubPlace>Paris</pubPlace>
- <date>1857</date>
+ <date when="1857">1857</date>
  </imprint>
  </monogr>
- <ref target="https://gallica.bnf.fr/ark:/12148/btv1b531998565"/>
- </biblStruct>
+ <ref target="https://gallica.bnf.fr/ark:/12148/btv1b525107009/f23.item.r=george%20sand%20les%20maitres%20sonneurs/>
+ <note>Conditions d'utilisation : Cette œuvre est tombée dans le domaine public et provient des collections de la BnF. Ces contenus sont considérés, en vertu du code des relations entre le public et l’administration, comme étant des informations publiques et leur réutilisation s'inscrit dans le cadre des dispositions prévues aux articles L. 321-1 à L. 327-1 de ce code.</note>
+</biblStruct>
  </sourceDesc>
  </fileDesc>
- </teiHeader>
+</teiHeader>
  <text>
  <body>
  <div type="veillee" n="16">
@@ -1093,27 +1109,27 @@ Nous avons appris à encoder deux textes en TEI : une carte postale et un extrai
 
 L'encodage est un but en soi. Il s'agit d'un travail analytique sur le texte. Mais il s'inscrit aussi dans une chaîne plus longue de traitement, de transformation et de publication. Donc, une deuxième tâche de réflexion, c'est de se demander ce que l'on veut faire avec notre encodage en XML-TEI. Pour transformer un document TEI en un autre format (HTML, PDF, DOCX, ePub, etc.), il faut d'autres outils. La TEI n'est qu'un langage d'encodage.
 
-Il existe des outils simples pour transformer un document TEI sans avoir à écrire de code XSLT. L'un d'eux est [OxGarage](https://oxgarage.tei-c.org/), un service en ligne créé par le consortium TEI. Il permet de convertir un document TEI en XHTML, PDF, DOCX, ePub, etc.
+Il existe des outils simples pour transformer un document TEI sans avoir à écrire de code XSLT. L'un d'eux est [TEIGarage](https://teigarage.tei-c.org/), un service en ligne créé par le consortium TEI. Il permet de convertir un document TEI en XHTML, PDF, DOCX, ePub, etc.
 
-Avant de commencer, il faut s'assurer que le document TEI est syntaxiquement et sémantiquement valide. Sinon, OxGarage ne pourra pas le traiter. Pour cela, on utilise un outil comme le [TBE Validation Service](https://teibyexample.org/tools/TBEvalidator.htm), que nous avons déjà mentionné. Nos deux documents ont été validés avec cet outil, nous pouvons donc passer à la transformation. Il faut également avoir sous la main le fichier .xml que nous avons créé dans Visual Studio Code (ou dans l'éditeur de votre choix), car c'est ce fichier que nous allons téléverser sur le site d'OxGarage.
+Avant de commencer, il faut s'assurer que le document TEI est syntaxiquement et sémantiquement valide. Sinon, TEIGarage ne pourra pas le traiter. Pour cela, on utilise un outil comme le [TBE Validation Service](https://teibyexample.org/tools/TBEvalidator.htm), que nous avons déjà mentionné. Nos deux documents ont été validés avec cet outil, nous pouvons donc passer à la transformation. Il faut également avoir sous la main le fichier .xml que nous avons créé dans Visual Studio Code (ou dans l'éditeur de votre choix), car c'est ce fichier que nous allons téléverser sur le site d'TEIGarage.
 
-Une fois la page d'OxGarage ouverte, on clique sur l'option « Documents » :
+Une fois la page d'TEIGarage ouverte, on clique sur l'option « Documents » :
 
-{% include figure.html filename="fr-tr-introduction-a-tei-2-07.png" alt="Visual description of figure image" caption="Figure 7. OxGarage : option Documents." %}
+{% include figure.html filename="fr-tr-introduction-a-tei-2-07.png" alt="Visual description of figure image" caption="Figure 7. TEIGarage : option Documents." %}
 
 Ensuite, on sélectionne « TEI P5 XML Document » dans la colonne « Convert from » :
 
-{% include figure.html filename="fr-tr-introduction-a-tei-2-08.png" alt="Visual description of figure image" caption="Figure 8. OxGarage *TEI Garage Conversion* : format d'entrée." %}
+{% include figure.html filename="fr-tr-introduction-a-tei-2-08.png" alt="Visual description of figure image" caption="Figure 8. TEIGarage *TEI Garage Conversion* : format d'entrée." %}
 
-On choisit le format de sortie. OxGarage propose 19 possibilités : LaTeX, ePub, DOCX, PDF, XHTML, etc. Pour notre exemple, nous choisissons « XHTML » :
+On choisit le format de sortie. TEIGarage propose 19 possibilités : LaTeX, ePub, DOCX, PDF, XHTML, etc. Pour notre exemple, nous choisissons « XHTML » :
 
-{% include figure.html filename="fr-tr-introduction-a-tei-2-09.png" alt="Visual description of figure image" caption="Figure 9. OxGarage : format de sortie XHTML." %}
+{% include figure.html filename="fr-tr-introduction-a-tei-2-09.png" alt="Visual description of figure image" caption="Figure 9. TEIGarage : format de sortie XHTML." %}
 
 On téléverse notre document TEI en cliquant sur « Parcourir », nous téléversons notre fichier .xml et nous vérifions que le nom de notre fichier s'affiche bien. Si notre document contient des images, on peut les téléverser dans une archive .zip avec l'option « Téléverser des images » (*Upload images*) de droite.
 
 {% include figure.html filename="fr-tr-introduction-a-tei-2-10.png" alt="Visual description of figure image" caption="Figure 10. OxGarage : téléversement du document." %}
 
-Enfin, on clique sur « Convert » et on attend que le serveur renvoie le résultat. Si rien ne se passe, il y a probablement une erreur dans le document TEI. OxGarage ne signale malheureusement pas les erreurs.
+Enfin, on clique sur « Convert » et on attend que le serveur renvoie le résultat. Si rien ne se passe, il y a probablement une erreur dans le document TEI. TEIGarage ne signale malheureusement pas les erreurs.
 
 {% include figure.html filename="fr-tr-introduction-a-tei-2-11.png" alt="Visual description of figure image" caption="Figure 11. OxGarage : conversion." %}
 
@@ -1128,7 +1144,7 @@ Et voici le résultat pour le manuscrit :
 {% include figure.html filename="fr-tr-introduction-a-tei-2-13.png" alt="Visual description of figure image" caption="Figure 13. Résultat de la conversion de notre encodage des Maîtres sonneurs en XHTML, ouvert dans un navigateur." %}
 
 
-Comme on peut le voir, OxGarage a transformé notre encodage en un document lisible, avec les éléments TEI rendus visuellement. Par exemple, les mots encodés avec `<add>` apparaissent entre crochets, et les mots encodés avec `<unclear>` sont suivis d'un point d'interrogation.
+Comme on peut le voir, TEIGarage a transformé notre encodage en un document lisible, avec les éléments TEI rendus visuellement. Par exemple, les mots encodés avec `<add>` apparaissent entre crochets, et les mots encodés avec `<unclear>` sont suivis d'un point d'interrogation.
 
 Une troisième partie de cette série, consacrée à CETEIcean, est également prévue.
 

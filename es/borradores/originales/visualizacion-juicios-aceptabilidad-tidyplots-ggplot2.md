@@ -621,7 +621,7 @@ contrasts(datos$adverb_type) <- contr.sum(3)/2
 
 Con esta codificación, el intercepto es la gran media en la escala de log-odds, y los coeficientes se interpretan en relación con ella: en los predictores de dos niveles (±0,5), el coeficiente expresa la diferencia entre ambos niveles (es decir, el doble de la desviación de cada nivel); en adverb_type (contr.sum(3)/2), cada coeficiente expresa el doble de la desviación de ese nivel respecto de la gran media.
 
-Alternativamente, si queremos que los coeficientes sean directamente la desviación de cada nivel respecto de la gran media, podemos utilizar la codificación por suma (*sum coding*) sin reescalar con `contr.sum(2)` para los predictores de dos niveles y `contr.sum(3)` para el predictor de tres niveles:
+Alternativamente, si queremos que los coeficientes sean directamente la desviación de cada nivel respecto de la gran media, usamos contr.sum() sin reescalar (+1 y −1 en los predictores de dos niveles): 
 
 ```r
 contrasts(datos$group)       <- contr.sum(2)
@@ -639,7 +639,7 @@ contrasts(datos$instruction)
 
 ```
 Finalmente, ajustamos el modelo como lo hemos visto en la sección *Ajuste y selección del modelo 1*.
-Los coeficientes de los modelos y su interpretación dependen de la codificación de los predictores. Para aprender más sobre los tipos de codificación de las variables categóricas  mencionados en esta sección, te recomendamos leer el recurso [Coding schemes for categorical variables](https://perma.cc/5ZAS-XZ7U). Y, si quieres aprender cómo interpretar los coeficientes de los modelos con codificación por desviación, puedes consultar el artículo [Contrast coding choices in a decade of mixed models](https://perma.cc/2DC9-TWQY). 
+Los coeficientes de los modelos y su interpretación dependen de la codificación de los predictores. Para aprender más sobre los tipos de codificación de las variables categóricas  mencionados en esta sección, te recomendamos leer el recurso [Coding schemes for categorical variables](https://perma.cc/5ZAS-XZ7U). Y, si quieres aprender cómo interpretar los coeficientes de los modelos con diferentes tipos de codificación, puedes consultar el artículo [Contrast coding choices in a decade of mixed models](https://perma.cc/2DC9-TWQY). 
 
 ## ¿Qué revelan los gráficos que las tablas no muestran?
 

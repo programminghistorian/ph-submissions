@@ -75,7 +75,7 @@ En todos estos contextos, la pregunta de investigación es la misma: ¿Cómo var
 
 ## Estudio de caso integrador: descripción del estudio y del conjunto de datos
 
-Para ilustrar la visualización y el análisis de datos, utilizaremos un conjunto de datos del campo de ASL. Este conjunto de datos proviene de un estudio sobre la aceptabilidad de la alternancia aspectual pretérito perfecto simple (*PPS*) y pretérito perfecto compuesto (*PPC*) en interacción con modificadores adverbiales de distancia temporal en español como L2. Los participantes son 60 aprendientes eslovacos de español de nivel avanzado y 20 hablantes nativos de español peninsular. Todos evaluaron en una escala Likert de 7 puntos la aceptabilidad de 18 pares de oraciones que combinaban dos tiempos verbales: el PPS (*canté*) y el PPC (*he cantado*) con tres tipos de modificadores temporales: los modificadores temporales que aluden a anterioridad inmediata (por ejemplo, *hace un rato/hace dos horas/hace unas horas*), los modificadores temporales que aluden a anterioridad más lejana (por ejemplo, *hace dos meses/hace unos meses/hace tres semanas*) y los modificadores temporales que aluden al momento no terminado (por ejemplo, *hoy/esta mañana/esta semana*). El experimento se diseñó con la plataforma [L-rex](https://www.l-rex.de) y los datos se recogieron en línea. Los participantes accedieron a la tarea mediante un enlace y, tras leer y aceptar el consentimiento informado, leyeron en la pantalla 54 oraciones, de las cuales 18 eran experimentales y 36 distractores. Las oraciones se presentaron en orden aleatorio, una a la vez (de modo que solo una oración era visible en la pantalla a la vez). Los participantes valoraron la aceptabilidad de cada oración en una escala Likert de siete puntos (1 = completamente inaceptable, 7 = completamente aceptable). Dentro del grupo de los aprendientes, las diferencias individuales de interés son:
+Para ilustrar la visualización y el análisis de datos, utilizaremos un conjunto de datos del campo de ASL. Este conjunto de datos proviene de un estudio sobre la aceptabilidad de la alternancia aspectual pretérito perfecto simple (*PPS*) y pretérito perfecto compuesto (*PPC*) en interacción con modificadores adverbiales de distancia temporal en español como L2. Los participantes son 60 aprendientes eslovacos de español de nivel avanzado y 20 hablantes nativos de español peninsular. Todos evaluaron en una escala Likert de 7 puntos la aceptabilidad de 18 pares de oraciones que combinaban dos tiempos verbales: el PPS (*canté*) y el PPC (*he cantado*) con tres tipos de modificadores temporales: los modificadores temporales que aluden a anterioridad inmediata (por ejemplo, *hace un rato/hace dos horas/hace unas horas*), los modificadores temporales que aluden a anterioridad más lejana (por ejemplo, *hace dos meses/hace unos meses/hace tres semanas*) y los modificadores temporales que aluden al momento no terminado (por ejemplo, *hoy/esta mañana/esta semana*). El experimento se diseñó con la plataforma [L-rex](https://www.l-rex.de) y los datos se recogieron en línea. Los participantes accedieron a la tarea mediante un enlace y, tras leer y aceptar el consentimiento informado, leyeron en la pantalla 54 oraciones, de las cuales 18 eran experimentales y 36 distractores. Las oraciones se presentaron en orden aleatorio, de modo que solo una oración era visible en la pantalla a la vez. La tarea no fue temporizada y los participantes valoraron la aceptabilidad de cada oración en una escala Likert de siete puntos (1 = completamente inaceptable, 7 = completamente aceptable). Dentro del grupo de los aprendientes, las diferencias individuales de interés son:
 - `instruction`: instrucción bilingüe vs. clases de ELE (variable categórica nominal)
 - `aoa` (age of acquisition): edad de adquisición del español (variable continua)
 - `years_learning`: años de aprendizaje de español (variable continua)
@@ -463,7 +463,7 @@ library(emmeans)
 
 ### Modelo 1: efecto del grupo y las variables lingüísticas
 
-Después, preparamos las variables para todos nuestros modelos estadísticos: transformamos la variable dependiente en factor ordenado para su uso en el CLMM y convertimos las variables `group`, `instruction`, `tense`, y `adverb_type` en factores. Después estandardizamos las variables continuas (`aoa` y `years_learning`) mediante puntuaciones z (M = 0, DT = 1). También filtramos el dataframe `datos` para incluir solo los aprendientes (para luego utilizarlo en los modelos 2.1 y 2.2).  
+Después, preparamos las variables para todos nuestros modelos estadísticos: transformamos la variable dependiente en factor ordenado para su uso en el CLMM y convertimos las variables `group`, `instruction`, `tense`, y `adverb_type` en factores. Después estandardizamos las variables continuas (`aoa` y `years_learning`) mediante puntuaciones z (M = 0, DT = 1). También filtramos el dataframe `datos` para incluir solo los aprendientes (para luego utilizarlo en los modelos 2.1 y 2.2).
 
 ```r
 datos <- datos |>
@@ -512,7 +512,7 @@ summary(modelo1.1)
 summary(modelo1.2)
 ```
 El modelo con el valor más bajo de AIC y BIC es preferible y si [el p-valor de la prueba de razón de verosimilitudes (Likelihood ratio test, LRT)](https://perma.cc/R3AT-Q5QR) obtenido mediante la función `anova` es significativo (p < .05), el modelo más complejo ajusta significativamente mejor los datos y debería preferirse. En nuestro caso, los valores de AIC y BIC son más bajos para el modelo 1.2 y la prueba de razón de verosimilitud no resultó ser estadísticamente significativa, lo que implica que el modelo más complejo (modelo1.1.) no ajusta los datos mejor. [^3]
-Podemos reportar e interpretar el output del modelo 1.2 de la siguiente manera: 
+Podemos reportar e interpretar el output del modelo 1.2 de la siguiente manera [^4]: 
 
 | Term | β | SE | z | p |
 |---|---:|---:|---:|---:|
@@ -533,7 +533,7 @@ El modelo 1.2 indica que, en la condición de referencia (PPC con anterioridad i
 Con respecto a las interacciones de dos vías, la diferencia entre PPC y PPS en la anterioridad inmediata, mostró diferencias estadísticamente significativas entre nativos y aprendientes (β = 5.66, z = 13.29, p < 0.001). Mientras que los aprendientes valoran el PPC más alto que el PPS en la condición de anterioridad inmediata, este patrón se invierte en los nativos, quienes valoran el PPS más alto que el PPC en esta condición. De forma similar, la diferencia entre el momento no terminado y la anterioridad inmediata (dentro del PPC) varió significativamente entre grupos (β = 5.07, z = 12.33, p < 0.001). En cambio, la diferencia correspondiente para la anterioridad lejana no varió significativamente entre grupos (β = −0.12, z = −0.30, p = 0.76). Por otro lado, las interacciones entre tiempo verbal y tipo de modificador adverbial revelan que, para los aprendientes, tanto la anterioridad lejana (β = 3.72, z = 13.11, p < 0.001) como el momento no terminado (β = 2.23, z = 8.15, p < 0.001) reciben juicios relativamente más altos, respecto a la anterioridad inmediata, bajo el PPS que bajo el PPC.
 Por último, el modelo reveló una interacción triple significativa entre grupo, tiempo verbal y tipo de modificador adverbial para el momento no terminado (β = −9.97, z = −16.79, p < 0.001), lo que indica que el patrón de interacción entre tiempo verbal y modificador adverbial difiere significativamente entre nativos y aprendientes específicamente para este modificador. En cambio, la interacción triple correspondiente para la anterioridad lejana no alcanzó significancia (β = 0.02, z = 0.04, p = 0.97).
 
-Para obtener medias marginales estimadas y comparaciones por pares con [corrección de Bonferroni](https://perma.cc/CC7K-EXQ7), utilizamos el paquete `emmeans`: 
+Después de ajustar los modelos e interpretar sus coeficientes, podemos obtener medias marginales estimadas y comparaciones por pares con [corrección de Bonferroni](https://perma.cc/CC7K-EXQ7), utilizamos el paquete `emmeans`[^5]. Para el modelo 1.2:
 
 ```r
 emm1 <- emmeans(modelo1.2, ~ group | tense * adverb_type)
@@ -600,7 +600,15 @@ Las interacciones mostraron que la diferencia entre el PPS y el PPC varió segú
 Interesantemente, ninguna de las variables individuales resultó ser estadísticamente significativa. 
 
 ### Ampliación: codificación de contrastes
-Como se puede observar en los resúmenes de los modelos 1.2 y 2.2, los coeficientes expresan diferencias directas con respecto a una categoría de referencia concreta (aprendientes, PPC, anterioridad inmediata en el modelo 1.2 y aprendientes, PPC, anterioridad inmediata, bilingual en el modelo 2.2). Esto es consecuencia de haber utilizado la codificación de tratamiento (*treatment coding* o *codificación dummy*) para los predictores categóricos (`group`, `tense`, `adverb_type`, `instruction`). En un modelo con interacciones, esta codificación hace que el coeficiente de cada predictor represente su efecto simple, es decir, su efecto en el nivel de referencia de los demás predictores, y no su efecto principal. En concreto, el coeficiente del grupo (nativos) cuantifica la diferencia en la escala de log-odds entre nativos y aprendientes únicamente en la condición de referencia (PPC con anterioridad inmediata), y los términos de interacción reflejan cómo varía esta diferencia en las demás condiciones de tiempo verbal y de tipo de modificador adverbial. 
+Como se puede observar en los resúmenes de los modelos 1.2 y 2.2, los coeficientes expresan diferencias directas con respecto a una categoría de referencia concreta. En R, por defecto, esta categoría es el primer nivel del factor, que es el primero en orden alfabético (`learner`, `PPC`, `anterioridad_inmediata` en el modelo1.2, `PPC`, `anterioridad_inmediata`, `bilingual` en el modelo 2.2, ajustado solo con aprendientes. Si se desea fijar otra categoría de referencia, puede hacerse con `relevel()` o con factor(levels = ...), antes de ajustar el modelo. Por ejemplo, si queremos interpretar los coeficientes con respecto a los hablantes nativos, PPS y anterioridad lejana, fijamos la categoría de referencia de la siguiente manera: 
+
+```r
+datos$group <- relevel(datos$group, ref = "native")
+datos$tense <- relevel(datos$tense, ref = "PPS")
+datos$adverb_type <- relevel(datos$adverb_type, ref = "anterioridad_lejana")
+```
+
+La interpretación de los coeficientes respecto de una categoría de referencia es consecuencia de la codificación de tratamiento (*treatment coding* o *codificación dummy*) para los predictores categóricos (`group`, `tense`, `adverb_type`, `instruction`), que es la que R aplica por defecto a los predictores categóricos. En un modelo con interacciones, esta codificación hace que el coeficiente de cada predictor represente su efecto simple, es decir, su efecto en el nivel de referencia de los demás predictores, y no su efecto principal. En concreto, el coeficiente del grupo (nativos) cuantifica la diferencia en la escala de log-odds entre nativos y aprendientes únicamente en la condición de referencia (PPC con anterioridad inmediata), y los términos de interacción reflejan cómo varía esta diferencia en las demás condiciones de tiempo verbal y de tipo de modificador adverbial. 
 
 Sin embargo, si queremos describir los efectos principales, es decir, el efecto de cada predictor promediado entre los niveles de los demás, y no depender de una categoría de referencia concreta, conviene utilizar una codificación por desviación (*deviation coding*) antes de ajustar el modelo: 
 
@@ -610,14 +618,7 @@ contrasts(datos$tense) <- c(-0.5, 0.5)
 contrasts(datos$instruction) <- c(-0.5, 0.5)
 contrasts(datos$adverb_type) <- contr.sum(3)/2 
 ```
-Verificamos que los contrastes se aplicaron correctamente: 
 
-```r
-contrasts(datos$group)
-contrasts(datos$tense)
-contrasts(datos$adverb_type)
-contrasts(datos$instruction)
-```
 Con esta codificación, el punto de referencia es la gran media en la escala latente. Para los predictores de dos niveles `(±0,5)`, el coeficiente expresa la diferencia total entre ambos niveles; para `adverb_type` `(contr.sum(3)/2)`, cada coeficiente expresa el doble de la desviación de ese nivel respecto a la media global.
 
 Y, por último, si queremos que cada coeficiente sea directamente la desviación de un nivel respecto de la gran media, podemos utilizar la codificación por suma (*sum coding*) `±1`:
@@ -628,8 +629,17 @@ contrasts(datos$tense)       <- contr.sum(2)
 contrasts(datos$adverb_type) <- contr.sum(3)
 contrasts(datos$instruction) <- contr.sum(2)
 ```
+Después de aplicar la codificación deseada, verificamos que los contrastes se aplicaron correctamente: 
 
-Los coeficientes de los modelos dependen de la codificación de los predictores. Para aprender más sobre estos tipos de codificación de las variables categóricas y sobre la interpretación de los modelos ajustados con estas codificaciones, te recomendamos leer el recurso [Coding schemes for categorical variables](https://perma.cc/5ZAS-XZ7U). 
+```r
+contrasts(datos$group)
+contrasts(datos$tense)
+contrasts(datos$adverb_type)
+contrasts(datos$instruction)
+
+```
+Al final, ajustamos el modelo como lo hemos visto en la sección *Ajuste y selección del modelo 1*.
+Los coeficientes de los modelos y su interpretación dependen de la codificación de los predictores. Para aprender más sobre los tipos de codificación de las variables categóricas  mencionados en esta sección y sobre la interpretación de los modelos ajustados con estas codificaciones, te recomendamos leer el recurso [Coding schemes for categorical variables](https://perma.cc/5ZAS-XZ7U). 
 
 ## ¿Qué revelan los gráficos que las tablas no muestran?
 
@@ -662,7 +672,6 @@ Del mismo modo, los diagramas de dispersión con líneas de tendencia (Figura 8)
 - Unanue, Jasna Toquero, and María del Pilar García Mayo. "El morfema–s en AICLE e ILE: La estructura de la DP y las tareas con/sin límite de tiempo." Porta Linguarum. An International Journal of Foreign Language Teaching and Learning 43 (2025): 183-198. DOI: https://doi.org/10.30827/portalin.vi43.30409  
 - Vyatkina, Nina, Hagen Hirschmann, and Felix Golcher. "Syntactic modification at early stages of L2 German writing development: A longitudinal learner corpus study." Journal of Second Language Writing 29 (2015): 28-50. DOI: https://doi.org/10.1016/j.jslw.2015.06.006 
 
-
 ---
 
 *Esta lección fue desarrollada usando R 4.5.3, RStudio 2026.01.1+403, tidyverse 2.0.0, tidyplots 0.3.1 y ordinal 2023.12-4 bajo macOS Ventura 13.5.1. El conjunto de datos y el código completo están disponibles en el repositorio de la lección en GitHub.* 
@@ -670,6 +679,8 @@ Del mismo modo, los diagramas de dispersión con líneas de tendencia (Figura 8)
 ## Notas
 [^1]: Los requisitos para usar tidyplots son: 1. una versión reciente de R (3.6.0 o superior), 2. una versión reciente de ggplot2 (≥ 3.5.0), 3. tener los datos estructurados en formato tidy, es decir, cada variable debe tener su propia columna, cada observación debe tener su propia fila y cada valor debe tener su propia celda. Si los datos están en un formato amplio o desordenado, será necesario reformatearlos primero (por ejemplo, usando tidyr).
 [^2]: Los esquemas de colores de tidyplots están disponibles en [la página oficial de tidyplots](https://jbengler.github.io/tidyplots/articles/Color-schemes.html)
-[^3]: Debido a que el modelo más complejo (modelo1.1) no mostró problemas de convergencia ni singularidad, también podrían reportarse los resultados de este modelo (los modelos 1.1. y 1.2. muestran que los mismos efectos e interacciones son estadísticamente significativas). La decisión de seleccionar el modelo con la estructura de los efectos aleatorios máxima, recomendada por [Barr et. al. (2013)](https://pmc.ncbi.nlm.nih.gov/articles/PMC3881361/) vs. mediante la selección del modelo recomendado por [Matuschek et al (2017)](https://www.sciencedirect.com/science/article/pii/S0749596X17300013) depende de varios factores: el tamaño de la muestra, la complejidad del diseño experimental, el objetivo del análisis, etc., sobre los cuales se puede leer detalladamente en los dos artículos.  
+[^3]: Debido a que el modelo más complejo (modelo1.1) no mostró problemas de convergencia ni singularidad, también podrían reportarse los resultados de este modelo (los modelos 1.1. y 1.2. muestran que los mismos efectos e interacciones son estadísticamente significativas). La decisión de seleccionar el modelo con la estructura de los efectos aleatorios máxima, recomendada por [Barr et. al. (2013)](https://pmc.ncbi.nlm.nih.gov/articles/PMC3881361/) vs. mediante la selección del modelo recomendado por [Matuschek et al (2017)](https://www.sciencedirect.com/science/article/pii/S0749596X17300013) depende de varios factores: el tamaño de la muestra, la complejidad del diseño experimental, el objetivo del análisis, etc., sobre los cuales se puede leer detalladamente en los dos artículos.
+[^4] Los coeficientes del modelo se expresan en la escala de log-odds acumulados: un coeficiente positivo indica una mayor probabilidad de valoraciones más altas en la escala de aceptabilidad, y uno negativo, una mayor probabilidad de valoraciones más bajas. Por tanto, los coeficientes no representan diferencias en puntos de la escala de 1 a 7.
+[^5]: En un modelo de enlace acumulativo, las medias marginales estimadas se expresan en la escala latente (log-odds), y no en puntos de la escala de 1 a 7. Estas comparaciones no dependen de la codificación de los predictores.
 
 

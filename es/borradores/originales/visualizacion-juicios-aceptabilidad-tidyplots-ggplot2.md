@@ -533,14 +533,14 @@ El modelo 1.2 indica que, en la condición de referencia (PPC con anterioridad i
 Con respecto a las interacciones de dos vías, la diferencia entre PPC y PPS en la anterioridad inmediata, mostró diferencias estadísticamente significativas entre nativos y aprendientes (β = 5.66, z = 13.29, p < 0.001). Mientras que los aprendientes valoran el PPC más alto que el PPS en la condición de anterioridad inmediata, este patrón se invierte en los nativos, quienes valoran el PPS más alto que el PPC en esta condición. De forma similar, la diferencia entre el momento no terminado y la anterioridad inmediata (dentro del PPC) varió significativamente entre grupos (β = 5.07, z = 12.33, p < 0.001). En cambio, la diferencia correspondiente para la anterioridad lejana no varió significativamente entre grupos (β = −0.12, z = −0.30, p = 0.76). Por otro lado, las interacciones entre tiempo verbal y tipo de modificador adverbial revelan que, para los aprendientes, tanto la anterioridad lejana (β = 3.72, z = 13.11, p < 0.001) como el momento no terminado (β = 2.23, z = 8.15, p < 0.001) reciben juicios relativamente más altos, respecto a la anterioridad inmediata, bajo el PPS que bajo el PPC.
 Por último, el modelo reveló una interacción triple significativa entre grupo, tiempo verbal y tipo de modificador adverbial para el momento no terminado (β = −9.97, z = −16.79, p < 0.001), lo que indica que el patrón de interacción entre tiempo verbal y modificador adverbial difiere significativamente entre nativos y aprendientes específicamente para este modificador. En cambio, la interacción triple correspondiente para la anterioridad lejana no alcanzó significancia (β = 0.02, z = 0.04, p = 0.97).
 
-Después de ajustar los modelos e interpretar sus coeficientes, podemos obtener medias marginales estimadas y comparaciones por pares con [corrección de Bonferroni](https://perma.cc/CC7K-EXQ7), utilizamos el paquete `emmeans`. Para el modelo 1.2 [^5]: 
+Después de ajustar los modelos e interpretar sus coeficientes, podemos obtener medias marginales estimadas y comparaciones por pares con [corrección de Bonferroni](https://perma.cc/CC7K-EXQ7), utilizamos el paquete `emmeans`. Para el modelo 1.2: 
 
 ```r
 emm1 <- emmeans(modelo1.2, ~ group | tense * adverb_type)
 emm1
 pairs(emm1, adjust = "bonferroni", cross.adjust = "bonferroni")
 ```
-Los resultados muestran las diferencias entre los dos grupos de participantes en todas las combinaciones del PPC y PPS con los modificadores adverbiales: 
+Los resultados muestran las diferencias entre los dos grupos de participantes en todas las combinaciones del PPC y PPS con los modificadores adverbiales [^5]: 
 
 | Tense | Adverb type | Contrast | Estimate | SE | z | p |
 |---|---|---|---:|---:|---:|:---|
@@ -596,11 +596,11 @@ El output del modelo 2.2 está resumido en la siguiente tabla:
 | tense:adverb_type (momento_no_terminado) | 2.22037 | 0.27412 | 8.100 | 5.49e-16 |
 
 El modelo 2.2. reveló que, en la condición de referencia (PPC con anterioridad inmediata), los aprendientes valoran el PPS como significativamente menos aceptable que el PPC (β = −2.64, z = −12.43, p < 0.001). Asimismo, tanto la anterioridad lejana (β = −2.34, z = −11.64, p < 0.001) como el momento no terminado (β = −1.46, z = −7.43, p < 0.001) reciben valoraciones significativamente más bajas que la anterioridad inmediata en combinación con el PPC.
-Las interacciones mostraron que la diferencia entre el PPS y el PPC varió según el tipo de modificador: tanto en la anterioridad lejana (β = 3.68, z = 12.89, p < 0.001) como en el momento no terminado (β = 2.22, z = 8.10, p < 0.001), el PPS fue valorado de forma relativamente más favorable, en comparación con el PPC, que en la anterioridad inmediata. En la anterioridad lejana, la dirección de la diferencia se invierte (PPS − PPC ≈ +1.04 log-odds), mientras que en el momento no terminado el PPS sigue siendo menos aceptable que el PPC, aunque la diferencia se reduce (≈ −0.43). 
+Las interacciones mostraron que la diferencia entre el PPS y el PPC varió según el tipo de modificador: tanto en la anterioridad lejana (β = 3.68, z = 12.89, p < 0.001) como en el momento no terminado (β = 2.22, z = 8.10, p < 0.001), el PPS fue valorado de forma relativamente más favorable, en comparación con el PPC, que en la anterioridad inmediata. En la anterioridad lejana, la dirección de la diferencia se invierte, mientras que en el momento no terminado el PPS sigue siendo menos aceptable que el PPC, aunque la diferencia se reduce (≈ −0.43). 
 Interesantemente, ninguna de las variables individuales resultó ser estadísticamente significativa. 
 
 ### Ampliación: codificación de contrastes
-Como se puede observar en los resúmenes de los modelos 1.2 y 2.2, los coeficientes expresan diferencias directas con respecto a una categoría de referencia concreta. En R, por defecto, esta categoría es el primer nivel del factor, que es el primero en orden alfabético (`learner`, `PPC`, `anterioridad_inmediata` en el modelo1.2, `PPC`, `anterioridad_inmediata`, `bilingual` en el modelo 2.2, ajustado solo con aprendientes. Si se desea fijar otra categoría de referencia, puede hacerse con `relevel()` o con factor(levels = ...), antes de ajustar el modelo. Por ejemplo, si queremos interpretar los coeficientes con respecto a los hablantes nativos, PPS y anterioridad lejana, fijamos la categoría de referencia de la siguiente manera: 
+Como se puede observar en los resúmenes de los modelos 1.2 y 2.2, los coeficientes expresan diferencias directas con respecto a una categoría de referencia concreta. En R, por defecto, esta categoría es el primer nivel del factor, que es el primero en orden alfabético (`learner`, `PPC`, `anterioridad_inmediata` en el modelo1.2, y `PPC`, `anterioridad_inmediata`, `bilingual` en el modelo 2.2). Si queremos fijar otra categoría de referencia, podemos hacerlo con `relevel()` antes de ajustar el modelo. Por ejemplo, si queremos interpretar los coeficientes con respecto a los hablantes nativos, PPS y anterioridad lejana, fijamos las categorías de referencia de la siguiente manera: 
 
 ```r
 datos$group <- relevel(datos$group, ref = "native")
@@ -619,9 +619,9 @@ contrasts(datos$instruction) <- c(-0.5, 0.5)
 contrasts(datos$adverb_type) <- contr.sum(3)/2 
 ```
 
-Con esta codificación, el punto de referencia es la gran media en la escala latente. Para los predictores de dos niveles `(±0,5)`, el coeficiente expresa la diferencia total entre ambos niveles; para `adverb_type` `(contr.sum(3)/2)`, cada coeficiente expresa el doble de la desviación de ese nivel respecto a la media global.
+Con esta codificación, el punto de referencia es la gran media en la escala latente y los coeficientes se interpretan como desviaciones respecto a la gran media. Para los predictores de dos niveles `(±0,5)`, el coeficiente expresa la diferencia total entre ambos niveles; para el predictor de tres niveles `adverb_type` `(contr.sum(3)/2)`, cada coeficiente expresa el doble de la desviación de ese nivel respecto a la media global.
 
-Y, por último, si queremos que cada coeficiente sea directamente la desviación de un nivel respecto de la gran media, podemos utilizar la codificación por suma (*sum coding*) `±1`:
+Y, por último, si queremos que cada coeficiente sea directamente la desviación de un nivel respecto de la gran media, podemos utilizar la codificación por suma (*sum coding* ±1) con `contr.sum(2)` para los predictores de dos niveles y `contr.sum(3)` para el predictor de tres niveles:
 
 ```r
 contrasts(datos$group)       <- contr.sum(2)
@@ -639,7 +639,7 @@ contrasts(datos$instruction)
 
 ```
 Al final, ajustamos el modelo como lo hemos visto en la sección *Ajuste y selección del modelo 1*.
-Los coeficientes de los modelos y su interpretación dependen de la codificación de los predictores. Para aprender más sobre los tipos de codificación de las variables categóricas  mencionados en esta sección y sobre la interpretación de los modelos ajustados con estas codificaciones, te recomendamos leer el recurso [Coding schemes for categorical variables](https://perma.cc/5ZAS-XZ7U). 
+Los coeficientes de los modelos y su interpretación dependen de la codificación de los predictores. Para aprender más sobre los tipos de codificación de las variables categóricas  mencionados en esta sección, te recomendamos leer el recurso [Coding schemes for categorical variables](https://perma.cc/5ZAS-XZ7U) y si quieres aprender cómo interpretar los coeficientes de los modelos con codificación por desviación, puedes consultar el artículo [Constrast coding choices in a decade of mixed models](https://perma.cc/2DC9-TWQY). 
 
 ## ¿Qué revelan los gráficos que las tablas no muestran?
 
@@ -651,9 +651,10 @@ Del mismo modo, los diagramas de dispersión con líneas de tendencia (Figura 8)
 
 ## Referencias
 
-- Alkain Arizmendi, Maddi, María del Pilar García Mayo, and Leona Polyanskaya. "L3 Regressive Transfer: A Study of Null Objects in the Basque and Spanish Grammars of Advanced L3 English Speakers." International Journal of Applied Linguistics (2026). DOI: https://doi.org/10.1111/ijal.70090 
+- Alkain Arizmendi, Maddi, María del Pilar García Mayo, and Leona Polyanskaya. "L3 Regressive Transfer: A Study of Null Objects in the Basque and Spanish Grammars of Advanced L3 English Speakers." International Journal of Applied Linguistics (2026). DOI: https://doi.org/10.1111/ijal.70090. DOI: https://doi.org/10.1016/j.jml.2022.104334 
 - Badiola, Lucia, Rodrigo Delgado, Ariane Sande, and Sara Stefanich. "Code-switching attitudes and their effects on acceptability judgment tasks." Linguistic Approaches to Bilingualism 8, no. 1 (2018): 5-24. DOI: https://doi.org/10.1075/lab.16006.bad
-- Barr, Dale J., Roger Levy, Christoph Scheepers, and Harry J. Tily. "Random effects structure for confirmatory hypothesis testing: Keep it maximal." Journal of memory and language 68, no. 3 (2013): 255-278. DOI: https://doi.org/10.1016/j.jml.2012.11.001. 
+- Barr, Dale J., Roger Levy, Christoph Scheepers, and Harry J. Tily. "Random effects structure for confirmatory hypothesis testing: Keep it maximal." Journal of memory and language 68, no. 3 (2013): 255-278. DOI: https://doi.org/10.1016/j.jml.2012.11.001.
+- Brehm, Laurel, and Phillip M. Alday. "Contrast coding choices in a decade of mixed models." Journal of Memory and Language 125 (2022): 104334. 
 - Bross, Fabian. Acceptability ratings in linguistics: A practical guide to grammaticality judgments, data collection, and statistical analysis. Version 1.0. Mimeo, 2019. Online: www.fabianbross.de/acceptabilityratings.pdf
 - Dominiccini, Eduardo. "Las intuiciones y la aceptabilidad en la interfaz semántica-pragmática." Saga. Revista de Letras 7 (2017). DOI: https://doi.org/10.35305/sa.vi7.208
 - Engler, Jan Broder. "Tidyplots empowers life scientists with easy code‐based data visualization." Imeta 4, no. 2 (2025): e70018. DOI: https://doi.org/10.1002/imt2.70018

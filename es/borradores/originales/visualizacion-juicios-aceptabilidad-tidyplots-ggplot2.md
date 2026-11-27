@@ -651,10 +651,10 @@ Del mismo modo, los diagramas de dispersión con líneas de tendencia (Figura 8)
 
 ## Referencias
 
-- Alkain Arizmendi, Maddi, María del Pilar García Mayo, and Leona Polyanskaya. "L3 Regressive Transfer: A Study of Null Objects in the Basque and Spanish Grammars of Advanced L3 English Speakers." International Journal of Applied Linguistics (2026). DOI: https://doi.org/10.1111/ijal.70090. DOI: https://doi.org/10.1016/j.jml.2022.104334 
+- Alkain Arizmendi, Maddi, María del Pilar García Mayo, and Leona Polyanskaya. "L3 Regressive Transfer: A Study of Null Objects in the Basque and Spanish Grammars of Advanced L3 English Speakers." International Journal of Applied Linguistics (2026). DOI: https://doi.org/10.1111/ijal.70090. 
 - Badiola, Lucia, Rodrigo Delgado, Ariane Sande, and Sara Stefanich. "Code-switching attitudes and their effects on acceptability judgment tasks." Linguistic Approaches to Bilingualism 8, no. 1 (2018): 5-24. DOI: https://doi.org/10.1075/lab.16006.bad
 - Barr, Dale J., Roger Levy, Christoph Scheepers, and Harry J. Tily. "Random effects structure for confirmatory hypothesis testing: Keep it maximal." Journal of memory and language 68, no. 3 (2013): 255-278. DOI: https://doi.org/10.1016/j.jml.2012.11.001.
-- Brehm, Laurel, and Phillip M. Alday. "Contrast coding choices in a decade of mixed models." Journal of Memory and Language 125 (2022): 104334. 
+- Brehm, Laurel, and Phillip M. Alday. "Contrast coding choices in a decade of mixed models." Journal of Memory and Language 125 (2022): 104334.  DOI: https://doi.org/10.1016/j.jml.2022.104334
 - Bross, Fabian. Acceptability ratings in linguistics: A practical guide to grammaticality judgments, data collection, and statistical analysis. Version 1.0. Mimeo, 2019. Online: www.fabianbross.de/acceptabilityratings.pdf
 - Dominiccini, Eduardo. "Las intuiciones y la aceptabilidad en la interfaz semántica-pragmática." Saga. Revista de Letras 7 (2017). DOI: https://doi.org/10.35305/sa.vi7.208
 - Engler, Jan Broder. "Tidyplots empowers life scientists with easy code‐based data visualization." Imeta 4, no. 2 (2025): e70018. DOI: https://doi.org/10.1002/imt2.70018

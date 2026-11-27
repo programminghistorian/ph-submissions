@@ -629,7 +629,7 @@ contrasts(datos$adverb_type) <- contr.sum(3)
 contrasts(datos$instruction) <- contr.sum(2)
 ```
 
-Los coeficientes de los modelos dependen de la codificación de los predictores. Para aprender más sobre estos tipos de codificación de las variables categóricas y sobre la interpretación de los modelos ajustados con estas codificaciones, te recomendamos leer el recurso [Coding schemes for categorical variables](https://perma.cc/5ZAS-XZ7U) y [este artículo](https://perma.cc/3KZW-F8PQ). 
+Los coeficientes de los modelos dependen de la codificación de los predictores. Para aprender más sobre estos tipos de codificación de las variables categóricas y sobre la interpretación de los modelos ajustados con estas codificaciones, te recomendamos leer el recurso [Coding schemes for categorical variables](https://perma.cc/5ZAS-XZ7U). 
 
 ## ¿Qué revelan los gráficos que las tablas no muestran?
 
